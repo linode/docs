@@ -16,7 +16,7 @@ published: 2010-08-10
 title: 'Create an Aggregate Blog using Planet on Ubuntu 9.10 (Karmic)'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
-    - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+    - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
 relations:
     platform:
         key: aggregate-blog-planet

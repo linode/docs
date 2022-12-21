@@ -28,7 +28,7 @@ Managing 2FA through Linode is only available if *Linode* is selected as the **L
 
 ## Security Questions
 
-You can configure three security questions on your user account. Security questions provide our team with a secure method of verifying your identity as the owner of the user account. They can be used to help you regain access to your account in certain situations, such as when TFA is enabled and you no longer have access to the token or recovery codes. When configuring a security question, answers should not be easily guessed or discoverable through research.
+You can configure three security questions on your user account. Security questions provide our team with a secure method of verifying your identity as the owner of the user account. They can be used to help you regain access to your account in certain situations, such as when 2FA is enabled and you no longer have access to the token or recovery codes. When configuring a security question, answers should not be easily guessed or discoverable through research.
 
 ![Screenshot of the Security Questions in Cloud Manager](security-questions.png)
 
@@ -74,4 +74,4 @@ Standard carrier messaging fees apply for each SMS message.
 
 ## Multiple User Accounts
 
-Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain Linode services and areas of the Cloud Manager. This is useful for providing all team members access to a single Linode account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/guides/accounts-and-passwords).
+Organizations that require multiple individuals to access the same customer account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain Linode services and areas of the Cloud Manager. This is useful for providing all team members access to a single Linode account, allowing a billing department to view invoices and billing details, or granting access to outside developers. For more information, see our guide on [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).

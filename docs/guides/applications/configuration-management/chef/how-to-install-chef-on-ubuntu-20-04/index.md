@@ -59,7 +59,7 @@ Chef uses an idiosyncratic terminology based on cooking vocabulary. Some of the 
 - **Resource**: A resource is part of a recipe. It contains a type, name, and list of key-value pairs for a component.
 - **Test Kitchen**: This is a workstation module to help users test recipes before deployment.
 
-Linode has a helpful [Beginner's Guide to Chef](https://www.linode.com/docs/guides/beginners-guide-chef/). For detailed information about Chef, see the [Chef documentation](https://docs.chef.io/). Chef also makes the [Learn Chef](https://learn.chef.io/) training resource available.
+Linode has a helpful [Beginner's Guide to Chef](/docs/guides/beginners-guide-chef/). For detailed information about Chef, see the [Chef documentation](https://docs.chef.io/). Chef also makes the [Learn Chef](https://learn.chef.io/) training resource available.
 
 ## Before You Begin
 
@@ -75,7 +75,7 @@ Linode has a helpful [Beginner's Guide to Chef](https://www.linode.com/docs/guid
     sudo apt update && sudo apt upgrade
     ```
 
-1. Assign a domain name to the Chef Server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1. Assign a domain name to the Chef Server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 1. Configure the host name of the Chef Server so it matches the domain name. This allows SSL certificate allocation to proceed normally. To set the host name of a Ubuntu server, use the command `sudo hostnamectl set-hostname <hostname>`, replacing `<hostname>` with the actual name of your domain.
 
@@ -249,7 +249,7 @@ A few more items must be configured before the Workstation is operational. Tasks
 RSA private keys enable better security between the Chef Server and associated workstations through the use of encryption. Earlier, RSA private keys were created on the Chef Server. Copying these keys to a workstation allows it to communicate with the server. To enable encryption using RSA private keys, follow these steps.
 
 {{< note >}}
-SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](https://www.linode.com/docs/guides/set-up-and-secure/#ssh-daemon-options) for more information.
+SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) for more information.
 {{< /note >}}
 
 1. On the workstation, generate an RSA key pair. This key can be used to initially access the Chef server to copy over the private encryption files.

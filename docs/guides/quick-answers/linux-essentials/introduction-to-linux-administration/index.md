@@ -15,7 +15,7 @@ published: 2018-05-31
 title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
-  - '[Linode API Documentation](https://developers.linode.com/)'
+  - '[Linode API Documentation](/docs/api/)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
 ---
 

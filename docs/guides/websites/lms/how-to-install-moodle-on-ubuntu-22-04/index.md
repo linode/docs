@@ -55,14 +55,14 @@ Some of Moodle's advantages are as follows:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Configure a LAMP Stack, including the Apache web server, the MySQL RDBMS, and PHP. For more information on configuring a LAMP stack, consult the Linode guide on [Installing a LAMP Stack on Ubuntu 22.04](https://www.linode.com/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
+1.  Configure a LAMP Stack, including the Apache web server, the MySQL RDBMS, and PHP. For more information on configuring a LAMP stack, consult the Linode guide on [Installing a LAMP Stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
 
-1.  To properly use Moodle, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1.  To properly use Moodle, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 1.  **(Optional)** A virtual host for the domain is not strictly required, but is recommended.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing the Moodle Prerequisites

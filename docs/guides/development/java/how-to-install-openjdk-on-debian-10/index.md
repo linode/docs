@@ -36,9 +36,9 @@ While there are many available versions of OpenJDK, version 11 is the latest Lon
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for connecting to your Linode with SSH and setting your Linode's hostname and timezone.
 
-1.  Complete the sections of our guide on [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
+1.  Complete the sections of our guide on [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` commands wherever possible, which should be run by a limited, non-root user on your Linode.
 
 1.  Ensure your system is up-to-date:
 

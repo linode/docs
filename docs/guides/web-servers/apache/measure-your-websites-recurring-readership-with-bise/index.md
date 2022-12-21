@@ -77,7 +77,7 @@ To use Bise, you should have the following:
 
 * Access to those logs! Bise needs read-access to those log files in order to work. The [If You Don't Have Read-Access to the Logs](#if-you-don-t-have-read-access-to-the-logs) section will provide suggestions if you don't currently have read access.
 
-* [Cpanminus](/docs/development/perl/manage-cpan-modules-with-cpan-minus), to install Bise's prerequisite libraries.
+* [Cpanminus](/docs/guides/manage-cpan-modules-with-cpan-minus/), to install Bise's prerequisite libraries.
 
 * [Cron](/docs/guides/schedule-tasks-with-cron/), if you plan to run Bise on a regular schedule. Any Linux machine almost certainly has this installed as well.
 

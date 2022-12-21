@@ -241,7 +241,7 @@ mount --bind /srv/repo/git /srv/repo/data/srv/git mount --bind /proc /srv/repo/d
 
 ## Configure Web Server
 
-For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/tools-reference/linux-system-administration-basics#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
+For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/guides/linux-system-administration-basics/#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
 
     a2enmod rewrite
     /etc/init.d/apache2 restart

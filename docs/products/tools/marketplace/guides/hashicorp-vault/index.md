@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-09
 modified_by:
   name: Linode
-title: "Deploying HashiCorp Vault through the Linode Marketplace"
+title: "Deploy HashiCorp Vault through the Linode Marketplace"
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.

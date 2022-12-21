@@ -53,10 +53,10 @@ There are a few minor differences between the behavior of Python-Markdown and th
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Ensure Python is properly installed on the Linode. You must be able to launch and use the Python programming environment and have some basic knowledge of the Python programming language. For information on how to install and use Python, see the [Linode guide to Python](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1.  Ensure Python is properly installed on the Linode. You must be able to launch and use the Python programming environment and have some basic knowledge of the Python programming language. For information on how to install and use Python, see the [Linode guide to Python](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Python-Markdown

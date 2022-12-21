@@ -8,13 +8,13 @@ keywords: ["style guide", "format", "formatting", "how to write", "write for us"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2022-11-28
+modified: 2022-12-07
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
 show_on_rss_feed: false
 external_resources:
- - '[GitHub Beginners Guide](/docs/github-guide)'
+ - '[GitHub Beginners Guide](/docs/guides/a-beginners-guide-to-github/)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
@@ -298,7 +298,7 @@ To use an image in a shortguide, add the image to your shortguide's directory an
 
 The following shortguide describes how to install Python via Miniconda. Create a directory named `install_python_miniconda` and filed named `index.md` within it:
 
-```file {title="install_python_miniconda/index.md" lang="md"}
+```file {title="install_python_miniconda/index.md" lang="yaml"}
 ---
 author:
   name: Linode
@@ -409,7 +409,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     The `hl_lines` parameter can be used to highlight certain lines within the file. The parameter is a space-separated list of strings. Ranges of lines can also be specified:
 
     ````file
-    ```file {title="client/src/Header.js" lang="js" linenostart="11" hl_lines="4-6 9"}
+    ```file {title="client/src/Header.js" lang="react" linenostart="11" hl_lines="4-6 9"}
     import React from 'react';
     function Header() {
         return (
@@ -424,7 +424,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
 
     The above file shortcode highlights lines 4 through 6 and line 9:
 
-    ```file {title="client/src/Header.js" lang="js" linenostart="11" hl_lines="4-6 9"}
+    ```file {title="client/src/Header.js" lang="react" linenostart="11" hl_lines="4-6 9"}
     import React from 'react';
     function Header() {
         return (

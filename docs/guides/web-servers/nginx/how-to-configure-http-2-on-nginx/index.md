@@ -43,7 +43,7 @@ The following high-level steps are necessary to configure HTTP/2 on NGINX. These
 
 ### Install NGINX
 
-The following instructions install the NGINX environment required to support HTTP/2 and encryption. If NGINX is already installed, skip this section and proceed to the [Enable HTTPS Using Certbot and Let's Encrypt Certificates](/docs/guides/how-to-configure-http-2-on-nginx/#enable-https-using-certbot-and-lets-encrypt-certificates) step. For more information about NGINX, consult the Linode's [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx) guide.
+The following instructions install the NGINX environment required to support HTTP/2 and encryption. If NGINX is already installed, skip this section and proceed to the [Enable HTTPS Using Certbot and Let's Encrypt Certificates](/docs/guides/how-to-configure-http-2-on-nginx/#enable-https-using-certbot-and-lets-encrypt-certificates) step. For more information about NGINX, consult the Linode's [How to Configure NGINX](/docs/guides/how-to-configure-nginx/) guide.
 
 1. Update the system packages to pick up the newest version of NGINX. Reboot the system if advised to do so.
 
@@ -72,7 +72,7 @@ The following instructions install the NGINX environment required to support HTT
         sudo ufw enable
 
 {{< note >}}
-You should configure a location block for the domain. This structure is mandatory if there is more than one domain on the Linode. See Linode's [How to Configure NGINX](/docs/web-servers/nginx/how-to-configure-nginx) guide for complete instructions.
+You should configure a location block for the domain. This structure is mandatory if there is more than one domain on the Linode. See Linode's [How to Configure NGINX](/docs/guides/how-to-configure-nginx/) guide for complete instructions.
 {{< /note >}}
 
 ### Enable HTTPS Using Certbot and Let's Encrypt Certificates

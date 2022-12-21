@@ -10,7 +10,7 @@ published: 2020-11-19
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Discourse through the Linode Marketplace"
+title: "Deploy Discourse through the Linode Marketplace"
 external_resources:
 - '[About Discourse](https://discourse.org/about/)'
 - '[Discourse on Github](https://github.com/discourse/discourse)'
@@ -26,7 +26,7 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
   - If you don't already have your domain hosted at Linode, the install creates A and AAAA domain records for you.
 
-    - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) before continuing.
+    - This means you need a Linode API token. If you don't have a token, you must [create one](/docs/products/tools/api/get-started/#get-an-access-token) before continuing.
 
     - Ensure that your domain registrar is [using Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers).
 
@@ -62,7 +62,7 @@ Discourse requires that you have a domain name and access to a personal SMTP ema
 
 Discourse requires that you have a domain name and SMTP email. These fields are required for a successful installation and are marked *Required*. Additionally, the SMTP user must be able to send email from `noreply@your-fully-qualified-domain.com` for account verification.
 
-- **Linode API Token:** If you wish to use the Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. If this is provided along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/). If you do not provide this field, you need to manually configure your DNS records through your DNS provider and point them to the IP address of the new instance.
+- **Linode API Token:** If you wish to use the Linode's [DNS Manager](/docs/products/networking/dns-manager/) to manage DNS records for your custom domain, create a Linode API *Personal Access Token* on your account with Read/Write access to *Domains*. If this is provided along with the subdomain and domain fields (outlined below), the installation attempts to create DNS records via the Linode API. See [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/). If you do not provide this field, you need to manually configure your DNS records through your DNS provider and point them to the IP address of the new instance.
 - **Subdomain:** The subdomain you wish to use, such as *www* for `www.example.com`.
 - **Domain:** The domain name you wish to use, such as *example.com*.
 

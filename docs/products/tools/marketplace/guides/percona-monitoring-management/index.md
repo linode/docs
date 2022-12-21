@@ -10,7 +10,7 @@ published: 2020-06-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Percona Monitoring and Management (PMM) through the Linode Marketplace"
+title: "Deploy Percona Monitoring and Management (PMM) through the Linode Marketplace"
 contributor:
   name: Linode
 image: 'deploy-percona-marketplace.png'

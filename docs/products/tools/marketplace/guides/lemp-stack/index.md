@@ -10,7 +10,7 @@ published: 2020-03-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a LEMP Stack through the Linode Marketplace"
+title: "Deploy a LEMP Stack through the Linode Marketplace"
 image: feature.png
 contributor:
   name: Linode

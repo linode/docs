@@ -29,13 +29,13 @@ aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide.
 
 1.  [Create](/docs/guides/creating-a-compute-instance/) two Linodes in the same region that are running Ubuntu 18.04.
 
 1.  Complete the steps for [setting the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone) for both Linodes. When setting hostnames, it may be helpful to identify one Linode as a server and the other as an agent.
 
-1.  Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services), and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
+1.  Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services), and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
 
     {{< content "limited-user-note-shortguide" >}}
 

@@ -10,7 +10,7 @@ published: 2020-09-28
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying phpMyAdmin through the Linode Marketplace"
+title: "Deploy phpMyAdmin through the Linode Marketplace"
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
