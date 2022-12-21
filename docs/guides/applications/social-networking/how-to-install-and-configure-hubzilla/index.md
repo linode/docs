@@ -75,7 +75,7 @@ For more information about Hubzilla and its features, see the [Hubzilla Document
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Assign a domain name for the Hubzilla hub and point it to the IP address of the server. For information on domain names and pointing a domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1.  Assign a domain name for the Hubzilla hub and point it to the IP address of the server. For information on domain names and pointing a domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 1.  Enable email on the Linode server to allow Hubzilla to send out registration emails containing verification codes. Hubzilla requires a working mail server to authenticate new users. For more information on setting up a mail server, see our [guides on email](/docs/guides/email).
 
