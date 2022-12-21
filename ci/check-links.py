@@ -89,6 +89,15 @@ DOCS_DIR = [
     "docs/reference-architecture",
     "docs/release-notes"
 ]
+#PUBLIC_DIR = [
+#    "public/guides",
+#    "public/products",
+#    "public/bundles",
+#    "public/api",
+#    "public/reference-architecture",
+#    "public/release-notes"
+#]
+PUBLIC_DIR = "public"
 
 # Create all issue types
 issue_types = []
@@ -245,9 +254,9 @@ def get_duplicate_aliases(guides):
     return issues
 
 # ------------------
-# Check internal links
+# Check internal links (Markdown)
 # ------------------
-def check_internal_markdown_links(guides, assets):
+def check_internal_links_markdown(guides, assets):
 
     # The regex pattern used to locate all markdown links containing the string "/docs".
     # This bypasses any external urls and archor links
@@ -372,7 +381,7 @@ def main():
     guides, assets, issues = get_guides()
 
     issues = issues + (get_duplicate_aliases(guides))
-    issues = issues + (check_internal_markdown_links(guides, assets))
+    issues = issues + (check_internal_links_markdown(guides, assets))
 
     # Iterate through each issue type. Then, iterate through all issues
     # and add issues belonging to the specified issue type.
