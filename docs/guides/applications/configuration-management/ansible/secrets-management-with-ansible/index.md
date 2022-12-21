@@ -278,7 +278,7 @@ The following steps walk you through an example using HashiCorp's Vault with Ans
     Success! Data written to: secret/s3
     ```
 
-1.  On your Andible control node, install `hvac` via `pip` in order to use the `hashi_vault` plugin referenced in the Ansible playbook below.
+1.  On your Ansible control node, install `hvac` via `pip` in order to use the `hashi_vault` plugin referenced in the Ansible playbook below.
 
     ```command {title="Ansible Control Node"}
     pip install hvac
