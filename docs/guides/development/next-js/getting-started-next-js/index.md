@@ -97,7 +97,7 @@ For that and to help with managing application dependencies, the guide uses NPM.
 
 1. Create a base Next.js project using `create-next-app`. The example below also names the new project — `example-app` — in the same command.
 
-    The commands below create the new project using the project name in the current user's home directory.
+    The commands below ask whether you want to create a TypeScript project. Click **Yes** to install the necessary types/dependencies and create the new project using the project name in the current user's home directory.
 
         cd ~/
         npx create-next-app example-app
