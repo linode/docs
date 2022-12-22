@@ -136,6 +136,9 @@ def replace_links_to_aliases(path_to_audit):
                             link = link[link.find("(")+1:link.find(")")]
                         # Remove /docs/ from the link so its formatted the same as aliases
                         link_as_alias = link.replace('/docs/','/')
+
+                        if not link_as_alias.endswith('/'):
+                            link_as_alias = link_as_alias + '/'
                         # Searches the aliases dictionary for the canonical link
                         link_canonical = aliases.get(link_as_alias)
                         # Checks if the link matches an alias (is not current)

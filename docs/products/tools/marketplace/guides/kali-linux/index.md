@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-05
 modified_by:
   name: Linode
-title: "Deploying Kali Linux through the Linode Marketplace"
+title: "Deploy Kali Linux through the Linode Marketplace"
 aliases: ['/products/tools/marketplace/guides/kalilinux/']
 ---
 

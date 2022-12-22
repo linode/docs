@@ -9,7 +9,7 @@ published: 2019-04-03
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying an ARK Survival Evolved Server through the Linode Marketplace"
+title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]

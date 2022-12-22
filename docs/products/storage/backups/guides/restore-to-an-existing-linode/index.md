@@ -7,7 +7,7 @@ description: "How to restore a backup to an existing Linode."
 ---
 
 
-These steps cover how to restore a backup to an existing Linode Compute Instance, either by adding the restored disks alongside the existing disks or overwriting the existing disks. The target Compute Instance needs to the same data center that the backup is stored within, though you can [migrate](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) it to any data center you'd like after the restore is complete. The target also needs to have enough free storage space to accommodate the restored disks.
+These steps cover how to restore a backup to an existing Linode Compute Instance, either by adding the restored disks alongside the existing disks or overwriting the existing disks. The target Compute Instance needs to be in the same data center that the backup is stored within, though you can [migrate](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/) it to any data center you'd like after the restore is complete. The target also needs to have enough free storage space to accommodate the restored disks.
 
 Restoring a backup creates a new [configuration profile](/docs/guides/linode-configuration-profiles/) and a new set of [disks](/docs/guides/disks-and-storage/) on the existing Compute Instance. The size of the disk(s) created by the restore process will be equal to the amount of space allocated to the disk when the backup was created. In some cases, this means you may want to reallocate disk space once the restore is complete. For more information regarding this process, see our [Resizing a Disk](/docs/guides/disks-and-storage/#resizing-a-disk) guide.
 

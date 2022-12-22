@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: Deploy_Webmin_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Webmin through the Linode Marketplace"
+title: "Deploy Webmin through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

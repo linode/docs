@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-09
 modified_by:
   name: Linode
-title: "Deploying HashiCorp Nomad through the Linode Marketplace"
+title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.

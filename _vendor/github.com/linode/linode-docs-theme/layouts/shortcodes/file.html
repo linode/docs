@@ -23,8 +23,8 @@ See https://github.com/yuin/goldmark/issues/125 for more context.
         {{ $copyIcon }}
     </div>
  {{ with $title }}
- <dt class="px-8 py-3 bg-titlecolor  sm:rounded-t-md text-white">
-   File: {{ . }}
+ <dt class="px-8 py-3 bg-gray-300 sm:rounded-t-md">
+  File: {{ . }}
  </dt>
  {{ end}}
  <dd class="overflow-x-auto" :class="{ 'is-scroll-x' : $isScrollX($refs.container) }" x-ref="container">

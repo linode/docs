@@ -20,7 +20,7 @@ aliases: ['/applications/configuration-management/vagrant/vagrant-linode-environ
 ---
 
 {{< note >}}
-The Vagrant Linode provider relies on Linode's APIv3, which has been deprecated in favor of [APIv4](https://developers.linode.com/api/v4).
+The Vagrant Linode provider relies on Linode's APIv3, which has been deprecated in favor of [APIv4](/docs/api/).
 {{< /note >}}
 
 [Vagrant](http://www.vagrantup.com) is a configuration management tool that allows users to create portable and reproducible work environments. Vagrant excels at providing consistent, easy-to-configure servers that can be used to keep development environments consistent across all users. It is easy to both launch and tear down, and can be supplied to any part of a development team that may need an environment but does not have the means to configure one themselves. Often paired with providers such as Puppet, Salt, and Chef, it offers an easy solution to keeping a consistent workflow.
@@ -81,7 +81,7 @@ end
 
     All code will take place between the `Vagrant.configure` and `end` lines.
 
-2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/security/securing-your-server#create-an-authentication-key-pair) guide:
+2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) guide:
 
     {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|

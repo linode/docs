@@ -4,7 +4,6 @@ description: "Get started with Linode Block Storage. Learn to add a new Block St
 tab_group_main:
     weight: 20
 modified: 2022-08-24
-aliases: ['/platform/block-storage/how-to-use-block-storage-with-your-linode/','/platform/block-storage/how-to-use-block-storage-with-your-linode-new-manager/','/platform/block-storage/how-to-use-block-storage-with-your-linode-classic-manager/','/platform/how-to-use-block-storage-with-your-linode/','/guides/how-to-use-block-storage-with-your-linode/']
 ---
 
 {{< content "nvme-block-storage-notice-shortguide" >}}

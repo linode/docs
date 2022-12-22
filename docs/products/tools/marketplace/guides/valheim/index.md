@@ -10,7 +10,7 @@ published: 2021-03-09
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Valheim through the Linode Marketplace"
+title: "Deploy Valheim through the Linode Marketplace"
 external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'

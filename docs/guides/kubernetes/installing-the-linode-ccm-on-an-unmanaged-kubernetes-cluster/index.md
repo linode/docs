@@ -20,7 +20,7 @@ contributor:
 aliases: ['/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/']
 ---
 
-The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) provides a way for Kubernetes clusters to access additional Linode services. Linode’s CCM provides access to Linode’s load balancing service, [Linode NodeBalancers](/docs/platform/nodebalancer/).
+The [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) provides a way for Kubernetes clusters to access additional Linode services. Linode’s CCM provides access to Linode’s load balancing service, [Linode NodeBalancers](/docs/products/networking/nodebalancers/).
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The Linode CCM handles the creation and deletion of the NodeBalancer, and, along with other Master Plane components, correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
@@ -54,7 +54,7 @@ It is recommended that you install the Linode CCM on a new Kubernetes cluster, a
 
 1. [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer.
 
-1. Generate a [Linode APIv4 token](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token).
+1. Generate a [Linode APIv4 token](/docs/products/tools/api/get-started/#get-an-access-token).
 
 ## Running the Linode Cloud Controller Manager
 
@@ -71,7 +71,7 @@ These configurations will change the behavior of your cluster and how it interac
 The Linode CCM's GitHub repository provides a helper script that creates a Kubernetes manifest file that you can use to install the CCM on your cluster. These steps should be run on your local computer and were tested on a macOS.
 
 {{< note >}}
-You will need your [Linode APIv4](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) token to complete the steps in this section.
+You will need your [Linode APIv4](/docs/products/tools/api/get-started/#get-an-access-token) token to complete the steps in this section.
 {{</ note >}}
 
 1. Clone the [Linode CCM's GitHub repository](https://github.com/linode/linode-cloud-controller-manager).

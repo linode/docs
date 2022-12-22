@@ -360,7 +360,7 @@ You will be importing your GCP image onto a *raw* disk with the *direct disk* bo
 
 If you would like access to these features after completing your migration, ensure you complete the following steps:
 
-- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [How Linode Billing Works](/docs/guides/understanding-billing-and-payments/#how-hourly-billing-works) guide for details on how hourly billing works.
+- Create a Linode with **twice the storage space** of your [original disk image](#inspect-your-gcp-instances-disks). You can always resize it down later. See the [Billing Overview](/docs/products/platform/billing/#understand-how-billing-works) guide for details on how hourly billing works.
 
 - Follow the steps in the optional section [Transfer Disk to ext4](#optional-transfer-disk-to-ext4).
 {{</ note >}}
@@ -473,7 +473,7 @@ You disabled the Google services from calling out before creating and migrating 
 
 ### Optional: Transfer Disk to ext4
 
-As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/guides/install-a-custom-distribution-on-a-linode/#linode-manager-compatibility).
+As stated above, to take advantage of features like resizing your disks in Cloud Manager and Backup Service, you'll need to move your new disk to an ext4 formatted disk. To do this, follow the procedures in the Linode Manager Compatibility section of the [Install a Custom Distribution on a Linode guide](/docs/guides/install-a-custom-distribution/#linode-manager-compatibility).
 
 ### Cleaning Up
 

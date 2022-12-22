@@ -112,7 +112,7 @@ COMMIT
         sudo iptables -L -nv
         sudo ip6tables -L -nv
 
-4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
 
 ## Install Prerequisite Software
 

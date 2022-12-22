@@ -27,7 +27,7 @@ Please note that Zimbra is a fairly "heavy" (resource-intensive) product compare
 
 We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and that your system is up to date. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
-**Note:** As of this writing, Zimbra is not officially supported on Ubuntu 10.04. These instructions result in a working Zimbra installation, but your support options may be limited. If you wish to use a platform that is fully supported by the Zimbra community, please follow our [Zimbra on Debian 5 (Lenny)](/docs/email/zimbra/install-zimbra-debian-5-lenny) or [Zimbra on CentOS 5](/docs/email/zimbra/install-zimbra-centos-5) guides instead.
+**Note:** As of this writing, Zimbra is not officially supported on Ubuntu 10.04. These instructions result in a working Zimbra installation, but your support options may be limited. If you wish to use a platform that is fully supported by the Zimbra community, please follow our [Zimbra on Debian 5 (Lenny)](/docs/email/zimbra/install-zimbra-debian-5-lenny) or [Zimbra on CentOS 5](/docs/guides/email-and-calendars-with-zimbra-6-on-centos-5/) guides instead.
 
 ## Installing Prerequisite Packages
 

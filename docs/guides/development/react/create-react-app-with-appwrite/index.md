@@ -37,11 +37,11 @@ This tutorial gets you started making your own application using Appwrite and Re
 
 1.  Update your system.
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt update && sudo apt upgrade
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
 
@@ -63,14 +63,14 @@ First, you need to install your own self-hosted Appwrite instance. You also need
 
 1.  Make sure that the Docker services are started and enabled. Enabling the services ensures that they initiate at system startup:
 
-    ```code
+    ```command
     sudo systemctl start docker
     sudo systemctl enable docker
     ```
 
 1.  Start running the Appwrite instance. This first requires you to change into the Appwrite directory, which here is assumed to be `~/appwrite`:
 
-    ```code
+    ```command
     cd ~/appwrite
     sudo docker compose up -d
     ```
@@ -141,7 +141,7 @@ This guide assumes you are creating a fresh React application to interact with t
 
     For this guide, the new React application's directory is created in the current user's home directory:
 
-    ```code
+    ```command
     cd ~/
     npx create-react-app example-app
     ```
@@ -154,13 +154,13 @@ Ok to proceed? (y)
 
 1.  Change into the new React application directory. The rest of this tutorial assumes you are still in this directory unless otherwise noted:
 
-    ```code
+    ```command
     cd example-app
     ```
 
 1.  Install the Appwrite web SDK through the `appwrite` NPM package. The React frontend can use this SDK to simplify interfacing with the Appwrite backend:
 
-    ```code
+    ```command
     npm install appwrite
     ```
 
@@ -428,7 +428,7 @@ First, you need to open port `3000` on your server's firewall. This is the defau
 
 Once you have done that, you can start up the React server with the following command:
 
-```code
+```command
 npm start
 ```
 

@@ -35,7 +35,7 @@ tab_group_main:
 
 ### Custom Distributions
 
-- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution-on-a-linode/)
+- [Install a Custom Distribution on a Linode](/docs/guides/install-a-custom-distribution/)
 
 ### Migration
 

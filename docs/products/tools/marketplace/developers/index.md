@@ -22,6 +22,6 @@ List an application on Linode's Marketplace to reach a new audience of developer
 Submit a Marketplace App:
 
 1. Register your Marketplace App by filling the [Register Your App](https://www.linode.com/marketplace/app-partners/#register) form. A Linode team member will contact you with next steps.
-1. Build a [StackScript](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/) for your Marketplace App. This scripting tool forms the basis of all Marketplace Apps.
+1. Build a [StackScript](/docs/products/tools/stackscripts/guides/write-a-custom-script/) for your Marketplace App. This scripting tool forms the basis of all Marketplace Apps.
 1. Upload the StackScript to [GitHub](https://github.com/linode/Marketplace-Apps) so our team can review the submission and schedule the Marketplace App for release.
 

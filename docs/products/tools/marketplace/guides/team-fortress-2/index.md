@@ -9,7 +9,7 @@ published: 2019-04-04
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a Team Fortress 2 Server through the Linode Marketplace"
+title: "Deploy a Team Fortress 2 Server through the Linode Marketplace"
 contributor:
   name: Linode
 tags: ["linode platform","marketplace","cloud-manager"]

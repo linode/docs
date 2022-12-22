@@ -34,7 +34,7 @@ aliases: ['/applications/containers/how-to-create-a-docker-swarm-manager-and-nod
 3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/docs/guides/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. You need one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
@@ -47,7 +47,7 @@ The Docker Swarm Manager’s purpose is to receive commands on behalf of the clu
 
 In this guide, we create a single Swarm Manager. If your goal is high-availability, you can create multiple managers.
 
-1.  Log in to the Linode you've chosen for Swarm manager and initialize the manager. Replace `PUBLIC_IP` in this example with your Linode's [public IP address](/docs/networking/linux-static-ip-configuration):
+1.  Log in to the Linode you've chosen for Swarm manager and initialize the manager. Replace `PUBLIC_IP` in this example with your Linode's [public IP address](/docs/guides/linux-static-ip-configuration/):
 
         docker swarm init --advertise-addr PUBLIC_IP
 
