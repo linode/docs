@@ -37,3 +37,18 @@ aliases: ['/guides/deploying-superinsight-marketplace-app/','/guides/superinsigh
 
 ## Getting Started after Deployment 
 
+1. Log into your new compute instance through LISH or SSH using the root user and associated password you entered when creating the instance. 
+
+2. The Admin password is generated and printed to the Message of the Day. This displays on login, or through the `cat` command: 
+
+    ```command
+    cat /etc/motd
+    ```
+    The file contains the credentials you will use to connect to the Superinsight DB. 
+    ```file {title="/etc/motd"}
+    Superinsight created the user admin with password: 1d892e9d3584a39471b76121
+    You can can connect using a database client with the following connection string postgres://admin:1d892e9d3584a39471b76121@45.33.112.229:5432/superinsight
+    For complete source code and information, visit: https://github.com/superinsight/superinsight-db
+    ```
+
+For more information on configuration and use-cases please see the [Superinsight DB Documentation](https://docs.superinsight.ai). 
