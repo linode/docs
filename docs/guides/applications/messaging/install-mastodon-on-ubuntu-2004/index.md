@@ -86,32 +86,24 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ## Download Mastodon
 
-1. Clone the Mastodon Git repository into the home directory, and change it into the resulting Mastodon directory.
+1. Clone the Mastodon Git repository into the home directory. Then, change into the resulting Mastodon directory and grab the latest Mastodon release.
 
-    ```command
+    ```code
     cd ~/
-    git clone https://github.com/mastodon/mastodon.git
+    git clone https://github.com/tootsuite/mastodon.git
     cd mastodon
+    git checkout $(git tag -l | grep -v 'rc[0-9]*$' | sort -V | tail -n 1)
     ```
 
-    Unless otherwise stated, all the Docker Compose-related commands to be run in this directory.
+    Unless otherwise stated, all the Docker Compose–related commands to be run in this directory.
 
 ## Configure Docker Compose
 
 1. Using your preferred text editor, open the `docker-compose.yml` file located in the `mastodon` directory.
 
-1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v3.3.0`.
+1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v4.0.2`.
 
     Although you can use `latest` as the release, it is recommended that you select a specific release number. The Mastodon GitHub page provides a chronological [list of Mastodon releases](https://github.com/mastodon/mastodon/releases).
-
-1. In the `db` section, add the following beneath the `image` line. Replace `password` with a password you would like to use for the PostgreSQL database that operates on the Mastodon backend.
-
-    ```file {title="docker-compose.yml"}
-    environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mastodon_production
-      POSTGRES_USER: mastodon
-    ```
 
 1. The resulting `docker-compose.yml` file should resemble [the example Docker file](docker-compose.yml).
 
@@ -124,7 +116,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Use Docker and Mastodon to generate a new value for the `SECRET_KEY_BASE` setting:
 
     ```command
-    SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
+    SECRET_KEY_BASE=$(docker compose run --rm web bundle exec rake secret)
     ```
 
     This creates a string of random characters. If you encounter an error in the next step, run the command again to generate another string.
@@ -138,13 +130,13 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Combine the previous two actions into one step to set a value for the `OTP_SECRET` setting in `.env.production`:
 
     ```command
-    sed -i "s/OTP_SECRET=$/&$(docker-compose run --rm web bundle exec rake secret)/" .env.production
+    sed -i "s/OTP_SECRET=$/&$(docker compose run --rm web bundle exec rake secret)/" .env.production
     ```
 
 1. Generate values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`settings:
 
     ```command
-    docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
+    docker compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
     ```
 
 1. Copy the output from the previous command, open `.env.production` in your text editor, and paste the command output into the two lines for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`.
@@ -153,9 +145,9 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
     - `LOCAL_DOMAIN`: Enter your Mastodon server's domain name.
 
-    - `DB_PASS`: Enter the password you set for the database in the `docker-compose.yml` file.
+    - `DB_USER`: Change this to `postgres`, and leave the `DB_PASS` field empty.
 
-    - Enter `mastodon_db_1` for `DB_HOST` and `mastodon_redis_1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
+    - Enter `mastodon-db-1` for `DB_HOST` and `mastodon-redis-1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
 
     - Fill out the `SMTP` fields with the information from your SMTP provider. If you set up your SMTP server, use its domain name for `SMTP_SERVER` and add the following lines:
 
@@ -173,7 +165,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Build the Docker Compose environment.
 
     ```command
-    docker-compose build
+    docker compose build
     ```
 
 1. Give ownership of the Mastodon `public` directory to user `991`. This is the default user ID for Mastodon, and this command ensures that it has the necessary permissions.
@@ -185,12 +177,12 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance.
 
     ```command
-    docker-compose run --rm web bundle exec rake mastodon:setup
+    docker compose run --rm web bundle exec rake mastodon:setup
     ```
 
     - Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
-    - When prompted to create a Mastodon admin user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
+    - When prompted to create a Mastodon administrator user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
 
     - For any other prompts, enter the default values by pressing **Enter**.
 
@@ -199,13 +191,13 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Start the Docker Compose services.
 
     ```command
-    docker-compose up -d
+    docker compose up -d
     ```
 
 1. Unless manually stopped, the Docker Compose services begin running automatically at system startup. Run the following command to manually stop the Docker Compose services:
 
     ```command
-    docker-compose down
+    docker compose down
     ```
 
 ## Setup an HTTP/HTTPS Proxy
