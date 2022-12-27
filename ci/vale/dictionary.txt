@@ -173,6 +173,7 @@ bitshift
 bitstream
 bitwarden
 bitwise
+Bjarne
 blkid
 blockchain
 blocklists
@@ -1923,6 +1924,7 @@ scribus
 sidekiq
 sievers
 signup
+Simula
 singapore
 sintra
 siri
@@ -2002,6 +2004,7 @@ storages
 strapi
 streamlink
 strongswan
+Stroustrup
 su
 subcommand
 subcommands
