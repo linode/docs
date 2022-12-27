@@ -8,9 +8,9 @@ keywords: ["Apache2", "Jupyter notebook", "SSL", "websocket"]
 tags: ["ssl", "proxy", "apache"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2017-08-22
-modified: 2019-02-01
+modified: 2022-12-23
 modified_by:
-    name: Sam Foo
+    name: Linode
 title: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
 h1_title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
 enable_h1: true
@@ -36,8 +36,6 @@ Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-2.  Have [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html) installed.
-
 ## Install Anaconda Package Manager
 
 Anaconda is a package manager with built-in support for virtual environments. It comes with each installation of Jupyter Notebook and is recommended by Jupyter's official documentation.
@@ -62,7 +60,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 1.  Create a self-signed certificate valid for 365 days:
 
-        openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
 
     This command will create a `mykey.key` and `mycert.pem`.
 
@@ -85,7 +83,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 4.  Uncomment the following lines in the configuration file:
 
-    {{< file "/.jupyter/jupyter-notebook-config.py" py >}}
+    {{< file "~/.jupyter/jupyter_notebook_config.py" py >}}
 c.NotebookApp.allow_origin = '*'
 c.NotebookApp.base_url = '/jupyter'
 c.NotebookApp.certfile = '/absolute/path/to/mycert.pem'
