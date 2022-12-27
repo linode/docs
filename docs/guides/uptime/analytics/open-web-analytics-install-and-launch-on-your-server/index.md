@@ -28,13 +28,13 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 1.  This guide assumes that you have your Linode already set up and running, that you have followed:
 
-     - The [Getting Started](/docs/getting-started) guide.
-     - The [Securing Your Server](/docs/security/securing-your-server) guides.
-     - That the Linode's [hostname is set](/docs/getting-started#setting-the-hostname) and has a FQDN.
+     - The [Getting Started](/docs/guides/getting-started/) guide.
+     - The [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+     - That the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname) and has a FQDN.
 
 
     {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the **Networking** tab next to your public IP address.
 {{< /note >}}
@@ -165,7 +165,7 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
 2.  After clicking on **Let's Get Started**, you should see a configuration page for your OWA installation. OWA will automatically fill in the first field with the path to your OWA installation. You will need to fill in the other fields on the page with the information you set in the MySQL CLI:
 
-    [![Open Web Analytics set up screen.](owa-install_small.png)](owa-install.png)
+    ![Open Web Analytics set up screen.](owa-install.png)
 
 3.  Click **Continue...**.
 

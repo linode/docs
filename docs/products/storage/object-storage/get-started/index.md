@@ -42,7 +42,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
-1.  Click on the **Object Storage** link in the sidebar, and then click on **Add a Bucket**.
+1.  Click on the **Object Storage** link in the sidebar, and then click on **Create Bucket**.
 
     {{< note >}}
 If you have not created an access key or a bucket before, you are prompted to enable Object Storage.
@@ -79,7 +79,7 @@ Individual object uploads are limited to a size of 5GB each, though larger objec
 {{< /note >}}
 
       {{< note >}}
-You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
+You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
 {{< /note >}}
 
 ## Control Permissions with ACLs and Bucket Policies

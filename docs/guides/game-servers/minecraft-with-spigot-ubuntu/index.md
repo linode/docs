@@ -7,7 +7,7 @@ description: 'This guide shows how to set up, configure, and customize a Minecra
 keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-applications/game-servers/minecraft-ubuntu12-04/','/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
+aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
 published: 2015-04-21
 modified: 2019-02-01
 modified_by:
@@ -127,7 +127,7 @@ eula=true
 su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 {{< /file >}}
 
-    This line will, at reboot, create a new [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session as the Minecraft user, and launch SpigotMC in it.
+    This line will, at reboot, create a new [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session as the Minecraft user, and launch SpigotMC in it.
 
 1.  Manually start Spigot:
 
@@ -135,7 +135,7 @@ su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
 
     To access the console, type `screen -r` as your **minecraft** user (note if you `su` to the user, you will need to run `script /dev/null` before you can attach to the Screen session).
 
-    You can now follow the [Connecting to your Minecraft Server](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
+    You can now follow the [Connecting to your Minecraft Server](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
 
     To run admin commands during the game, first run `op username` from the console, replacing `username` with your in-game username. Have fun playing on your new Minecraft server!
 

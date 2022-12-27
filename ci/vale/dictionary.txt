@@ -6,7 +6,9 @@ ack
 aconf
 accessor
 accessors
+ACLs
 acronis
+acunetix
 adc
 addon
 addons
@@ -24,6 +26,7 @@ ahvz
 aircrack
 ajenti
 ajp
+Akamai
 Akaunting
 aker
 alef
@@ -32,7 +35,9 @@ alex
 alexa
 alexey
 alfano
+Algolia
 alives
+allifs
 allmasquerade
 allowlist
 allowlisting
@@ -47,6 +52,7 @@ anonymize
 anonymizing
 ansi
 ansible
+ansible's
 anticompetitive
 antispam
 anycast
@@ -55,6 +61,7 @@ anycasting
 ap
 apache2
 api
+apis
 apiserver
 apk
 apparmor
@@ -63,12 +70,15 @@ appletalk
 approvers
 appsec
 appserver
+appsmith
+appwrite
 apxs
 architecting
 aren
 argv
 arping
 arptables
+arthashastra
 Asana
 aspell
 askbot
@@ -92,6 +102,7 @@ autoconfiguration
 autoconfigure
 autodiscover
 autohosting
+autoindex
 autojoin
 autojump
 autologin
@@ -116,6 +127,7 @@ awk
 aws
 awstats
 axibase
+Axios
 ayehu
 azc
 azlux
@@ -131,6 +143,7 @@ backreferences
 backtick
 backticks
 backupninja
+badblocks
 bampton
 balarin
 banaction
@@ -149,6 +162,7 @@ bernd
 berners
 bgpd
 bialek
+bin_t
 bing
 binlog
 biomes
@@ -156,6 +170,7 @@ bitbucket
 bitnami
 bitrate
 bitshift
+bitstream
 bitwarden
 bitwise
 blkid
@@ -174,6 +189,7 @@ bootable
 bootloader
 bottlerocket
 bottomley
+bookmarkable
 bootup
 bootups
 boto
@@ -181,12 +197,17 @@ bounceback
 brackley
 bram
 brd
+breakpoint
+breakpoints
 brightbox
 browserify
 bs4
 btmp
+bucardo
+Budibase
 bufio
 bugtracker
+buildah
 buildbot
 bukkit
 bundler
@@ -212,6 +233,7 @@ campione
 captcha
 carootcert
 ccm
+CDNs
 celeryd
 centos
 centos7
@@ -234,6 +256,7 @@ characterwise
 chatbot
 chatbots
 chatrooms
+chcon
 cheatsheet
 checkmarx
 checksummed
@@ -241,6 +264,8 @@ checksums
 chefspec
 Chevereto
 chgrp
+chipset
+chipsets
 chmod
 chown
 christianwan
@@ -251,6 +276,7 @@ chrooted
 citad
 cjones
 clamav
+clearable
 clearsign
 clearspace
 cleartext
@@ -295,7 +321,10 @@ configtest
 configurability
 connectionism
 connectionless
+connectionStatus
 containerd
+containerfile
+containerfiles
 containerised
 contentful
 convery
@@ -309,9 +338,12 @@ coreutils
 coroutine
 coroutines
 corporateclean
+Countly
 courseware
 cov
+coverity
 covid
+cpanel
 cpanminus
 cpu
 cqlsh
@@ -329,6 +361,7 @@ cronie
 cronjob
 cronjobs
 crontab
+crosstab
 crowdsourced
 crowdsourcing
 crt
@@ -363,6 +396,7 @@ daemonize
 daemonized
 daemonizes
 daemonizing
+daemonless
 daemonset
 dahdi
 dallas
@@ -391,6 +425,7 @@ dbdir
 dbfiles
 dbname
 dbserver
+dcid
 dcs
 deadman
 deallocation
@@ -404,6 +439,7 @@ dejong
 deloitte
 delpy
 demultiplexer
+Deno
 denormalized
 deprovision
 deprovisioning
@@ -416,6 +452,7 @@ dereference
 dereferencing
 desperados
 destructured
+detectify
 dev
 devel
 devops
@@ -452,9 +489,11 @@ dnf
 dns
 dnsleaktest
 dnsmasq
+dns_linode
 dockercompose
 dockerfile
 dockerfiles
+dockershim
 dockerize
 dockerized
 docstring
@@ -464,6 +503,7 @@ dokku
 domain1
 domain2
 domain3
+domain_id
 domainkey
 domainname
 donenfeld
@@ -483,11 +523,13 @@ dsn
 du
 duf
 ducati
+dumpall
 dust2
 dvcs
 e2fsck
 ea04
 ead
+Easypanel
 ebtables
 ebuild
 ecommerce
@@ -625,6 +667,7 @@ freedns
 freeipa
 fremont
 freshclam
+friendica
 friendster
 frontend
 frontmatter
@@ -633,6 +676,7 @@ froxlor
 fs
 fsck
 fstab
+ftp_client
 fullchain
 func
 fzf
@@ -649,12 +693,17 @@ gbps
 gcc
 gcloud
 gcm
+gdf
 geckodriver
 gem1
 Gemba
 gemfile
 genmask
 gentoolkit
+geo
+geocode
+geocoder
+geocoding
 geoip
 geolocating
 geolocation
@@ -663,6 +712,7 @@ getmail
 getprivs
 getpwent
 getters
+getty
 getuid
 gfx
 gfxmode
@@ -710,6 +760,8 @@ gradle
 grafana
 graphql
 Grav
+Gravatar
+Gravatars
 graylog
 graylog2
 greenbone
@@ -752,6 +804,7 @@ healthtech
 heartbleed
 hebb
 hebbian
+hebern
 heredoc
 heroku
 hexo
@@ -759,6 +812,7 @@ hiera
 highstate
 hilights
 hilmar
+Hively
 hl2
 hl2
 hmac
@@ -791,6 +845,7 @@ httpie
 httpchk
 httpd
 https
+Hubzilla
 huginn
 Hugo
 hulu
@@ -800,6 +855,7 @@ hybla
 hykes
 hypercorn
 hyperefficient
+HyperLogLog
 hyperparameter
 hypervisor
 hypervisors
@@ -821,6 +877,7 @@ identrust
 idlist
 ie
 iface
+ifcfg
 ifconfig
 ifdown
 ifnames
@@ -871,6 +928,8 @@ interruptible
 intra-application
 introducer
 introducers
+Intune
+invicti
 io
 iodef
 iotop
@@ -882,6 +941,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+ipsec
 ipset
 ipsets
 iptables
@@ -900,6 +960,7 @@ iso
 isort
 isoformat
 isp
+isps
 issuewild
 istioctl
 iterable
@@ -936,11 +997,14 @@ jq
 jre
 js
 json
+json_pp
 jsonpath
+jsonpp
 julialang
 jumpbox
 junit
 jupyter
+JWTs
 jx
 kaggle
 kakfa
@@ -948,14 +1012,17 @@ kamkar
 kanban
 kaseya
 kasten
+kbd
 kbits
 keepalive
 keepalived
+keepalived_script
 keras
 kerberos
 kerberos5
 Kernighan
 keychain
+keyfile
 keyfiles
 keygen
 keyid
@@ -982,6 +1049,7 @@ kloth
 kloxo
 knockpy
 knowledgebase
+Konqueror
 konsole
 kotin
 konversation
@@ -1009,11 +1077,13 @@ lbmethod
 lda
 ldap
 le
+leds
 lego
 leiningen
 lelastic
 len
 lennart
+Lerna
 letsencrypt
 ld
 lf
@@ -1046,14 +1116,17 @@ linewise
 Linkedin
 linkerd
 linode
+linode's
 linodego
 linodes
+linroot
 linter
 lish
 liskov
 listdir
 listserv
 listservs
+litespeed
 livigno
 li181
 li263
@@ -1160,6 +1233,7 @@ metacharacter
 metacharacters
 metacity
 metapackage
+metapackages
 metaparameters
 metasploit
 meterpreter
@@ -1171,8 +1245,10 @@ microblogging
 microblogs
 microservice
 microservices
+microsite
 microsystems
 microweb
+Microweber
 middleware
 mimikatz
 minecraft
@@ -1188,6 +1264,8 @@ minimax
 minio
 minisockets
 minitest
+minix
+mirantis
 misconfiguration
 misconfigurations
 misconfigured
@@ -1202,6 +1280,7 @@ mkv
 mnesia
 mngtmpaddr
 moby
+mod_autoindex
 moddable
 modinfo
 modsecurity
@@ -1212,9 +1291,13 @@ mongodb
 mongod
 mongodump
 mongoimport
+mongorestore
 mongosh
 monit
 monitorix
+monorepo
+monorepos
+monospaced
 moolenaar
 morphisec
 motd
@@ -1240,6 +1323,7 @@ multiline
 multilink
 multiplatform
 multiport
+multiprotocol
 multisite
 multitenant
 multiuser
@@ -1264,6 +1348,8 @@ mysqlclient10
 mysqld
 mysqldefault
 mysqldump
+mysql_config_editor
+mysql_secure_installation
 mytestdb
 myuser
 mzet
@@ -1278,6 +1364,7 @@ namespaces
 nano
 nanode
 nanodes
+nast
 natively
 nawk
 nbox
@@ -1327,7 +1414,9 @@ Nikto
 Nirvashare
 nixcraft
 nixpkgs
+nlris
 nmap
+nmcli
 noarch
 node1
 node2
@@ -1347,6 +1436,7 @@ nonprivileged
 nonrecursive
 noscript
 nosync
+notistack
 nouveau
 novaclient
 novell
@@ -1405,6 +1495,8 @@ outputter
 outputters
 overcommit
 overengineer
+overfitted
+overfitting
 overwatch
 ovpn
 owadb
@@ -1430,6 +1522,7 @@ parentheticals
 parsedate
 partitionless
 partyline
+passcode
 passdb
 passlib
 passphraseless
@@ -1452,6 +1545,9 @@ permalink
 permalinks
 Petazzoni
 pflogsumm
+pg_dump
+pg_dumpall
+pg_restore
 pgpass
 pharmer
 pharo
@@ -1468,10 +1564,12 @@ pingable
 pipfile
 pipenv
 pipelined
+pipelining
 piwik
 pki
 plaintext
 platformer
+pleroma
 plesk
 plex
 plone
@@ -1488,6 +1586,7 @@ pop3s
 poplib
 portainer
 portmapper
+portswigger
 postgres
 postgresql
 postgresql0
@@ -1516,6 +1615,7 @@ preprocessing
 preprocessors
 prerotate
 prerouting
+preselection
 prestashop
 prettifier
 prettifiers
@@ -1524,11 +1624,14 @@ printf
 prismic
 pritunl
 privesc
+prizm
 processhider
 procfile
 procmail
 procs
 productpage
+promlens
+promscale
 prosodyctl
 proto
 protobuf
@@ -1568,6 +1671,7 @@ pyspark
 pytest
 python3
 pythonic
+qemu
 qmail
 qmgr
 quadro
@@ -1576,6 +1680,7 @@ quickconnect
 quicklisp
 quickstart
 radeon
+rainloop
 ramdisk
 ransomwhere
 rauth
@@ -1587,6 +1692,7 @@ rclone
 rcon
 rdbadmin
 rdiff
+reachability
 readcaps
 reauthenticate
 reauthenticating
@@ -1594,6 +1700,7 @@ readme
 readonly
 readwrite
 realtime
+rebalancing
 rebase
 rebased
 rebases
@@ -1603,6 +1710,7 @@ rebranded
 recompiles
 reconnections
 recordset
+recoverability
 recursing
 recv
 red5
@@ -1616,6 +1724,8 @@ redislabs
 redmin
 redmine
 redstone
+Redux
+Reduxed
 reenable
 reenabling
 refactorable
@@ -1641,6 +1751,7 @@ replset
 repo
 repos
 reputational
+reseller's
 resharding
 resilvering
 resolv
@@ -1656,10 +1767,15 @@ retpoline
 retrans
 reusability
 reutilize
+revalidate
+revalidating
+revenera
 richlanguage
+rijndael
 rimap
 ripgrep
 ritchie
+rivest
 rkhunter
 rkt
 rmdir
@@ -1678,6 +1794,7 @@ roundcube
 routable
 rpaf
 rpc
+rpcbind
 rpmforge
 rsa
 rspec
@@ -1713,6 +1830,7 @@ salesforce
 Saltcorn
 sam
 samy
+sandboxing
 sandcat
 sanitization
 sar
@@ -1736,12 +1854,16 @@ scm
 scp
 scrapy
 screenrc
+scrollable
+scrollbar
+scrollbars
 scriptfilename
 scrum2b
 sda
 sda1
 sdb
 sdc
+sdks
 se
 seaborn
 seafile
@@ -1841,8 +1963,10 @@ spf1
 splunk
 spm
 spork
+spotify
 sql
 sqlplus
+sqreen
 squirrelmail
 src
 srv
@@ -1851,6 +1975,7 @@ sshfs
 sshpass
 ssi
 ssl
+stackhawk
 stackscript
 stackscripts
 stadia
@@ -1905,6 +2030,7 @@ sudoers
 suhosin
 suid
 sukharev
+supabase
 superset
 supervisord
 supervisorctl
@@ -1913,6 +2039,7 @@ suricata
 sury
 suse
 swappable
+swappiness
 svn
 symantec
 symfony
@@ -1936,6 +2063,8 @@ systeminfo
 systemname
 sysv
 sysvinit
+tabbable
+taggable
 tanium
 targ
 tasksel
@@ -1944,9 +2073,11 @@ taskwarrior
 tbz
 tcp
 tcpdump
+tcptrack
 tcpwrappers
 teamspeak
 teardown
+techdocs
 techland
 telecom
 teleporting
@@ -1969,6 +2100,7 @@ thawte
 theano
 theming
 thingsboard
+Thunar
 thycotic
 tigervnc
 tightvncserver
@@ -1985,6 +2117,7 @@ tiobe
 titlebar
 tl
 tld
+TLDs
 tldr
 tls
 tlz
@@ -2003,6 +2136,9 @@ torvalds
 toolchain
 toolchains
 toolset
+toolstrip
+tooltip
+tooltips
 towson
 trac
 traceroute
@@ -2012,9 +2148,12 @@ transcode
 transcoder
 transcoding
 transpiled
+transpiling
 trello
 triaging
+trie
 trivy
+trojan
 truststore
 tt
 ttl
@@ -2029,17 +2168,19 @@ turtl
 tv
 tw
 twilio
+typecheck
 typeform
 txt
 txz
+typings
 tz
 tzurbaev
 uber
+Ubiquiti
 ubuntu
 ucd
 udp
 ufw
-udp
 ui
 uidl
 umount
@@ -2062,6 +2203,8 @@ uncordoned
 unencrypted
 unexported
 unformatted
+ungroup
+ungrouped
 unicast
 unicode
 uninvoiced
@@ -2086,6 +2229,7 @@ untruncated
 untrust
 untrusted
 unversioned
+unvetted
 upserted
 upsize
 uri
@@ -2133,6 +2277,8 @@ verisign
 veritas
 vhost
 vhosts
+viewport
+vigenere
 vimrc
 vinagre
 virb
@@ -2158,6 +2304,7 @@ vmlinuz
 vmstat
 vmui
 vnc
+vpns
 vset
 vswap
 vue
@@ -2171,6 +2318,8 @@ wasn
 wasm
 wav
 wazuh
+wchar
+wchar_t
 webadmin
 webalizer
 webapp
@@ -2212,6 +2361,7 @@ whois
 whowatch
 wi
 wiktionary
+Widenius's
 widgits
 wildfly
 wimey
@@ -2293,6 +2443,7 @@ yourservice
 youtube
 yubico
 yubikey
+yubikeys
 zabbix
 zapier
 zcat

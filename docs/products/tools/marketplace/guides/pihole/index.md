@@ -10,7 +10,7 @@ published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Pi-hole through the Linode Marketplace"
+title: "Deploy Pi-hole through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -32,7 +32,7 @@ aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplac
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
+- **Supported distributions:** Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Pi-hole Options

@@ -64,7 +64,7 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
 
         sudo adduser minecraft
 
-    Assign a secure password, and configure any additional [SSH hardening](/docs/security/authentication/use-public-key-authentication-with-ssh/) options at this time.
+    Assign a secure password, and configure any additional [SSH hardening](/docs/guides/use-public-key-authentication-with-ssh/) options at this time.
 
 {{< note >}}
 If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
@@ -169,7 +169,7 @@ And you are now running an updated Minecraft server on Ubuntu or Debian.
 eula=true
 {{< /file >}}
 
-1.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session:
+1.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session:
 
         screen /home/minecraft/run.sh
 
@@ -207,19 +207,19 @@ For more information on available settings and how to modify them, or how to run
 
 1.  Open your local Minecraft client. After logging in, click on the **Multiplayer** option:
 
-    [![Minecraft Launch Menu.](minecraft-select-multiplayer_small.png)](minecraft-select-multiplayer.png)
+    ![Minecraft Launch Menu.](minecraft-select-multiplayer.png)
 
 1.  Click **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**:
 
-    [![Edit Server Info.](minecraft-server-info_small.png)](minecraft-server-info.png)
+    ![Edit Server Info.](minecraft-server-info.png)
 
 1.  Your server is now available to incoming connections. Click **Join Server** to connect:
 
-    [![Minecraft Server List.](minecraft-server-added_small.png)](minecraft-server-added.png)
+    ![Minecraft Server List.](minecraft-server-added.png)
 
-    [![Minecraft Players.](minecraft-gameplay_small.png)](minecraft-gameplay.png)
+    ![Minecraft Players.](minecraft-gameplay.png)
 
-Congratulations! Now that you have setup a Minecraft server on Linux, you can play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/).
+Congratulations! Now that you have setup a Minecraft server on Linux, you can play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/).
 
 ## Configure Your Minecraft Server Firewall
 

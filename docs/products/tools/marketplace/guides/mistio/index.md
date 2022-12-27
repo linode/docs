@@ -10,7 +10,7 @@ published: 2020-03-18
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Mist.io through the Linode Marketplace"
+title: "Deploy Mist.io through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -32,7 +32,7 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9, Debian 10
+- **Supported distributions:** Debian 10
 - **Recommended plan:** 8GB Compute Instance
 
 ### Mist.io Options
@@ -46,7 +46,7 @@ Once the Mist.io server is successfully created, a few additional steps must be 
 
 ### Log In to Mist.io
 
-1. In a web browser, enter your Linode's [IP address](/docs/guides/find-your-linodes-ip-address/) or the [Domain](/docs/guides/dns-manager/) associated with it to access your Mist.io App's login screen.
+1. In a web browser, enter your Linode's [IP address](/docs/guides/find-your-linodes-ip-address/) or the [Domain](/docs/products/networking/dns-manager/) associated with it to access your Mist.io App's login screen.
 
 1. Click on the **Sign in** button at the top right of the page.
 

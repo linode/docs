@@ -8,7 +8,7 @@ description: 'Serve dynamic websites and applications with the lightweight nginx
 keywords: ["nginx", "nginx ubuntu 14.04", "nginx fastcgi", "nginx php", "php", "fastcgi", "ubuntu"]
 tags: ["web server","ubuntu","php","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/nginx-phpfastcgi-ubuntu-14-04/','/web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
+aliases: ['/websites/nginx/nginx-phpfastcgi-ubuntu-14-04/']
 modified: 2015-06-12
 modified_by:
   name: Elle Krout
@@ -18,7 +18,7 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Basic Ngnix Configuration](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-php-fastcgi
@@ -32,7 +32,7 @@ It is assumed that you've already followed the steps outlined in our [Setting Up
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

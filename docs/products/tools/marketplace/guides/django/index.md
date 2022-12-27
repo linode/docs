@@ -11,8 +11,8 @@ modified: 2022-03-08
 image: Django_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Django through the Linode Marketplace"
-aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
+title: "Deploy Django through the Linode Marketplace"
+aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/', '/platform/one-click/deploying-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
 external_resources:
  - '[The Django Project](https://www.djangoproject.com/)'
  - '[Django Documentation](https://docs.djangoproject.com/en/2.2/releases/)'

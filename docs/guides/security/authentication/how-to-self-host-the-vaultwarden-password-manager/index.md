@@ -36,7 +36,7 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 
 ### Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone.
+1. Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting the hostname and timezone.
 
 1. Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide in order to harden the Linode against malicious users. This step is important to ensure Vaultwarden is secured.
 
@@ -44,7 +44,7 @@ Ubuntu 20.04 is the distribution used in this guide. Generally speaking, any Lin
 If you choose to configure a firewall, remember to open ports 80 and 443 for the Caddy server. The [Configure a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide outlines different firewall software options.
 {{</ note >}}
 
-1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/guides/managing-ip-addresses/) of the Linode. Consult the [DNS Records: An Introduction](/docs/networking/dns/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
+1. Make sure you have registered a Fully Qualified Domain Name (FQDN) and set up [A and AAAA](/docs/guides/dns-overview/#a-and-aaaa) DNS records that point to the public [IPv4 and IPv6 addresses](/docs/guides/managing-ip-addresses/) of the Linode. Consult the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up a domain. A proper domain name is important to acquire a certificate for HTTPS connectivity.
 
 ## Install Docker
 
@@ -131,13 +131,13 @@ example.com {
   encode gzip
 
   # The negotiation endpoint is also proxied to Rocket
-  reverse_proxy /notifications/hub/negotiate 0.0.0.0:8080
+  reverse_proxy /notifications/hub/negotiate 0.0.0.0:80
 
   # Notifications redirected to the websockets server
   reverse_proxy /notifications/hub 0.0.0.0:3012
 
   # Send all other traffic to the regular Vaultwarden endpoint
-  reverse_proxy 0.0.0.0:8080
+  reverse_proxy 0.0.0.0:80
 }
 {{< /file >}}
 
@@ -153,7 +153,7 @@ The site name you choose in this file must match the desired URL that Vaultwarde
 
 1. Start another Docker container to run a persistent `caddy` daemon.
 
-        sudo docker run -d -p 8080:80 -p 443:443 --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --restart on-failure caddy:2
+        sudo docker run -d -p 80:80 -p 443:443 --name caddy -v /etc/Caddyfile:/etc/caddy/Caddyfile -v /etc/caddy:/root/.local/share/caddy --restart on-failure caddy:2
 
 1. View the logs of the Caddy container in order to confirm that a Let's Encrypt certificate has been provisioned for the chosen domain.
 
@@ -241,7 +241,7 @@ As an additional security precaution, you may elect to disable user registration
 
 Before relying on this service for any important data, you should take additional steps to safeguard the data stored within Vaultwarden. Encrypted data is stored within a flat file sqlite3 database. In order to reliably backup this data, you should *not* simply copy the file. Instead, use the sqlite3 `.backup` command. This command ensures that the database is in a consistent state when the backup is taken.
 
-1. Review the [Backing Up Your Data](/docs/security/backups/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used.
+1. Review the [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide in order to determine the best location to store the backups. In this example, a local file system path is used.
 
     {{< note >}}
 In a more resilient setup, these local backups should be replicated onto another service or host to guard against single-host failure.
@@ -328,7 +328,7 @@ The `Persistent=true` line instructs systemd to fire the timer if the timer was 
    This indicates that a backup is taken in 5 hours and 50 minutes.
 
 {{< caution >}}
-Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/) as one potential solution for permanent backup storage and archival.
+Ensure that the backups are kept on a volume or host independent of the Linode in case of a disaster recover recovery scenario. Consider using [Linode Block Storage](/docs/products/storage/block-storage/) as one potential solution for permanent backup storage and archival.
 {{< /caution >}}
 
 ## Using Vaultwarden

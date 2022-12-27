@@ -22,7 +22,7 @@ aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','
 
 [*Pulumi*](https://www.pulumi.com/) is a development tool that allows you to write computer programs which deploy cloud resources--a practice referred to as *infrastructure as code (IaC)*. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages.
 
-With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/platform/api/using-the-linode-cli/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
+With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](/docs/products/tools/api/) or [CLI](/docs/products/tools/cli/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
 
 Pulumi also comes with a CLI interface for running the cloud infrastructure programs that you write. Once you've written a program, you can create your cloud resources with a single command:
 
@@ -36,7 +36,7 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/platform/api/getting-started-with-the-linode-api/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](/docs/products/tools/api/get-started/#create-an-api-token).
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 
@@ -74,11 +74,11 @@ It is possible to opt-out of using the default web backend and use a filesystem-
 
 1. [Log into your Pulumi account](https://app.pulumi.com/signin). After you've logged in, click on the avatar graphic to the top right of the Pulumi dashboard, then click on the **Settings** option in the dropdown menu that appears:
 
-    [![Location of Pulumi Settings option](pulumi-settings.png "Location of Pulumi Settings option")](pulumi-settings.png)
+    ![Location of Pulumi Settings option](pulumi-settings.png)
 
 1. Select the **Access Tokens** item in the sidebar to the left of the page that appears:
 
-    [![Location of Pulumi Access Token page](pulumi-token.png "Location of Pulumi Access Token page")](pulumi-token.png)
+    ![Location of Pulumi Access Token page](pulumi-token.png)
 
 1. Click on the **New Access Token** button towards the top right of the following page and follow the prompts to create your new token. Make sure you save this in a secure location, similar to your Linode API token.
 
@@ -274,7 +274,7 @@ exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
     {{< note >}}
-In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/platform/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
+In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
 
 If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
 {{< /note >}}

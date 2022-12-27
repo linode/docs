@@ -25,7 +25,7 @@ The Write For Linode freelance contributor program offers payment for new guides
 
 ## Before You Begin
 
-This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/) guide.
+This guide assumes that you've signed up for a [GitHub account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide.
 
 This guide will also use [Hugo](https://gohugo.io) to create a new guide within the Linode library's repository, and Node.js and NPM to build a local development version of Linode's documentation website. Please visit the [Install Hugo](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-hugo) and [Install Node and NPM](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md#install-node-and-npm) sections of our [CONTRIBUTING.md](https://github.com/linode/docs/blob/develop/CONTRIBUTING.md) for installation instructions of those dependencies.
 
@@ -47,15 +47,15 @@ If you are following these instructions on a Windows system, all commands will n
 
 1.  In a browser window, select your user account icon in the upper right-hand corner of the screen, then click **Settings**. Your user account icon may look different than the one below:
 
-    [![GitHub Settings](github-settings.png)](github-settings.png)
+    ![GitHub Settings](github-settings.png)
 
 1.  Select the **SSH keys** option from the **Personal settings** menu, then click the **Add SSH key** button:
 
-    [![SSH key settings](github-ssh-key.png)](github-ssh-key.png)
+    ![SSH key settings](github-ssh-key.png)
 
 1.  Copy the contents of your public key file from your terminal window, and paste them into the **Key** text box.  Add a descriptive title for your key in the **Title** text box:
 
-    [![Add Key](github-load-key.png)](github-load-key.png)
+    ![Add Key](github-load-key.png)
 
 
 ### Setting Up Your Repository
@@ -68,11 +68,11 @@ In order to edit or create documents for our library, you will need to fork your
 
 1.  Once the fork process has completed, visit the **docs** repository under your repository list on the GitHub homepage:
 
-    [![Your repository on GitHub](github-your-repository.png)](github-your-repository.png)
+    ![Your repository on GitHub](github-your-repository.png)
 
 1.  Clone your forked branch to your local machine by copying the clone URL, and appending it to the following command.  We recommend cloning via SSH for this particular step.  This command will create a local copy of your cloned repository that you can work with directly in the directory where the command is run:
 
-    [![GitHub Clone URL](github-clone-url.png)](github-clone-url.png)
+    ![GitHub Clone URL](github-clone-url.png)
 
         git clone <insert clone URL>
 
@@ -120,9 +120,9 @@ nothing to commit, working directory clean
 
 ### Creating Your First Guide
 
-Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
+Using your preferred text editor, you should now be able to edit and create documents within your new branch. When writing your guide, you can refer to the [Linode Writer's Formatting Guide](/docs/guides/linode-writers-formatting-guide/) for help with the format of your guide and the styling of your text. Also note that our site uses the [Hugo](https://gohugo.io/) static site generator to render the website, and Hugo offers several features to enhance your Markdown files. These features are covered in our formatting guide.
 
-1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [https://www.linode.com/docs/guides/kubernetes/](https://www.linode.com/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
+1.  When creating your guide, first determine where it should be located within the docs website's directory structure. For example, to create a new guide in the [/docs/guides/kubernetes/](/docs/guides/kubernetes/) section, you would create your guide within the `docs/guides/kubernetes/` subfolder inside your repository.
 
     {{< note >}}
 To reiterate, the docs repository contains a folder that is also called `docs/`, and this folder then contains all of the content in the library:
@@ -209,11 +209,11 @@ Now that you've completed the composition of your guide, it's time to make your 
 
 1.  Within the GitHub web interface, navigate to your fork of the **linode/docs** repository:
 
-    [![GitHub - Your Repository](github-your-repository.png)](github-your-repository.png)
+    ![GitHub - Your Repository](github-your-repository.png)
 
 1.  Select the branch containing your changes:
 
-    [![GitHub - Switch Branches](github-switch-branches.png)](github-switch-branches.png)
+    ![GitHub - Switch Branches](github-switch-branches.png)
 
 1.  Select the **New pull request** option to generate your first PR.
 
@@ -225,7 +225,7 @@ Now that you've completed the composition of your guide, it's time to make your 
 
 Once you have submitted your first pull request, you will likely receive communication from the Linode Guides and Tutorials team as your PR is run through our tech and copy editing processes.  You can respond to this feedback directly from your PR page:
 
-[![GitHub - Pull Request Comment](github-pr-comments.png)](github-pr-comments.png)
+![GitHub - Pull Request Comment](github-pr-comments.png)
 
 If you need to edit your PR, you can make changes to your locally saved branch, then upload the changes by following steps 4-8 of the [Creating Your First Guide](#creating-your-first-guide) section of this guide.
 

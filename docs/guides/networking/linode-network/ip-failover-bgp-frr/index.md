@@ -7,7 +7,7 @@ description: "Learn how to use Linode's IP Sharing feature to configure IP failo
 keywords: ['IP failover','elastic IP','frr','bgp']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-11
-modified: 2022-03-11
+modified: 2022-04-28
 modified_by:
   name: Linode
 title: "Configuring IP Failover over BGP using FRR (Advanced)"
@@ -18,27 +18,33 @@ external_resources:
 ---
 
 {{<note>}}
-Not all data centers supports configuring IP failover over BGP. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
+Not all data centers support configuring IP failover over BGP. Review the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
 {{</note>}}
 
-This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure IP failover with Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is a **primary** Instance and a **secondary** Instance.
-
-- **Primary**: The primary Compute Instance is the one containing the IP address you'd like to configure for IP failover.
-- **Secondary**: The secondary Compute Instance is then configured to use that IP address in the event the primary Instance stops responding.
+This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure failover between two Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. These instructions supplement the general [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide and are intended as an advanced alternative to lelastic when more control and customization is needed.
 
 ## Before You Begin
 
 Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
-1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [updated the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file).
+1. Read through the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about how failover is implemented within Linode Compute.
+
+1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [update the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) for each Compute Instance.
 
 1. Verify Python3 is installed. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
-1. [Disable Network Helper](/docs/platform/network-helper/#single-per-linode).
+## Configure Failover
 
-## Configure IP Sharing
+These instructions enable you to configure failover using FRR, which is very configurable and can be used for advanced failover implementation. This guide depends on the general [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide for many steps.
 
-Before using FRR to configure IP failover for a public or private IPv4 address (not VLANs), you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](https://www.linode.com/docs/guides/managing-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
+To configure failover, complete each section in the order shown:
+
+1. [Configuring Failover on a Compute Instance > Create and Share the Shared IP Address](/docs/guides/ip-failover/#create-and-share-the-shared-ip-address)
+1. For *each* Compute Instance:
+      - [Configuring Failover on a Compute Instance > Add the Shared IP to the Networking Configuration](/docs/guides/ip-failover/#add-the-shared-ip-to-the-networking-configuration)
+      - [Install FRR](#install-frr)
+      - [Configure FRR](#configure-frr)
+1. [Configuring Failover on a Compute Instance > Test Failover](/docs/guides/ip-failover/#test-failover)
 
 ## Install FRR
 
@@ -58,7 +64,7 @@ For more information on FRR versions, see the [FRR Debian repository](https://de
 
 1.  If you're running an older Debian-based system, you may need to install the packages below, which come default with most modern Debian-based distributions.
 
-        sudo apt install apt-transport-https gnupg
+        sudo apt update && sudo apt install apt-transport-https gnupg
 
 1.  Add FRR's GPG key:
 
@@ -70,7 +76,7 @@ For more information on FRR versions, see the [FRR Debian repository](https://de
 
 1.  Install FRR:
 
-        sudo apt update && sudo apt install frr frr-pythontools
+        sudo apt install frr frr-pythontools
 
 ### CentOS/RHEL 7 and 8
 
@@ -106,11 +112,11 @@ For more information on FRR versions, see the [FRR RPM repository](https://rpm.f
 
             sudo yum install frr frr-pythontools
 
-## Enable BGP within FRR
+## Configure FRR
 
-FRR works using a variety of protocols. Since we're using FRR for its BGP support, the next step is to explicitly enable the `bgpd` daemon.
+With FRR installed, you can now configure it to enable IP failover.
 
-1.  Using a text editor of your choice, enable the `bgpd` daemon by updating its value to `yes` in the FRR daemons configuration file:
+1.  FRR works using a variety of protocols. Since we're using FRR for its BGP support, the next step is to explicitly enable the `bgpd` daemon. Using a text editor of your choice, enable the `bgpd` daemon by updating its value to `yes` in the FRR daemons configuration file:
 
       {{< file "/etc/frr/daemons" >}}
 # The watchfrr and zebra daemons are always started.
@@ -118,33 +124,16 @@ FRR works using a variety of protocols. Since we're using FRR for its BGP suppor
 bgpd=yes
 {{</ file >}}
 
-1.  Restart the FRR service:
-
-        sudo systemctl restart frr.service
-
-## Configure FRR
-
-With FRR installed, you can now configure it to enable IP failover.
-
 1.  Gather the following information, which is required for the next step:
 
-    - **Shared IP address** (`[SHARED_IP]`): The shared IP address you've configured for both the primary and secondary instances. See [Configure IP Sharing](#configure-ip-sharing).
-    - **Hostname** (`[HOSTNAME]`): The hostname defined on the Compute Instance you are configuring (ex: `atl-bgp-1.example.com`).
+    - **Shared IP address** (`[SHARED_IP]`): The IPv4 address you shared or an address from the IPv6 range that you shared. You can choose any address from the IPv6 range. For example, within the range *2001:db8:e001:1b8c::/64*, the address `2001:db8:e001:1b8c::1` can be used.
+    - **Prefix** (`[PREFIX]`): For an IPv4 address, use `32`. For an IPv6 address, use either `56` or `64` depending on the size of the range you are sharing.
+    - **Protocol** (`[PROTOCOL]`): Use `ipv4` when sharing an IPv4 address and `ipv6` when sharing an IPv6 address.
+    - **Hostname** (`[HOSTNAME]`): The hostname defined on the Compute Instance you are configuring (ex: `atl-bgp-1`).
     - **Role** (`[ROLE]`): The role of this Compute Instance within your failover strategy.
       - `primary`: All requests are routed to this Compute Instance, provided it is accessible.
       - `secondary`: If the `primary` instance fails, all requests are routed to this Compute Instance, provided it is accessible.
-    - **Data center ID** (`[DC_ID]`): The ID of this data center as defined by the list below:
-        - Atlanta (USA): `4`
-        - Dallas (USA): `2`
-        - Frankfurt (Germany): `10`
-        - Fremont (USA): `3`
-        - London (UK): `7`
-        - Mumbai (India): `14`
-        - Newark (USA): `6`
-        - Singapore: `9`
-        - Sydney (Australia): `16`
-        - Tokyo (Japan): `11`
-        - Toronto (Canada): `15`
+    - **Data center ID** (`[DC_ID]`): The ID of your data center. See [IP Sharing Availability](/docs/guides/ip-failover/#ip-sharing-availability) for the corresponding ID.
 
 1.  Edit the `/etc/frr/frr.conf` file and add the following lines. Ensure you replace any instances of `[SHARED_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DC_ID]` as outlined above.
 
@@ -164,99 +153,19 @@ neighbor 2600:3c0f:[DC_ID]:34::2 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::3 peer-group RS
 neighbor 2600:3c0f:[DC_ID]:34::4 peer-group RS
 
-address-family ipv4 unicast
-  network [SHARED_IP]/32 route-map [ROLE]
-  redistribute static
-exit-address-family
-
-address-family ipv6 unicast
-  network [SHARED_IPV6]/64 route-map [ROLE]
+address-family [PROTOCOL] unicast
+  network [SHARED_IP]/[PREFIX] route-map [ROLE]
   redistribute static
 exit-address-family
 
 route-map primary permit 10
-set community 65000:1
+  set community 65000:1
 route-map secondary permit 10
-set community 65000:2
+  set community 65000:2
+
 ipv6 nht resolve-via-default
 {{</ file >}}
 
 1.  Restart the FRR service:
 
         sudo systemctl restart frr
-
-## Configure the Network Interface
-
-1.  Configure the Compute Instance's network interface as detailed below. Replace `[SHARED_IP]` with the Shared IP address you've configured.
-
-    - **Debian 10 & Ubuntu 18.04**
-
-        Edit the `/etc/network/interfaces` file with the following entries.
-
-        {{< file >}}
-up   ip addr add [SHARED_IP]/32 dev eth0 label eth0
-down ip addr del [SHARED_IP]/32 dev eth0 label eth0
-{{</ file >}}
-
-    - **Ubuntu 20.04**
-
-        Edit the `/etc/systemd/network/05-eth0.network` file by adding an `Address` entry for the Shared IP.
-
-        {{< file >}}
-[Match]
-Name=eth0
-...
-Address=[SHARED_IP]/32
-{{</ file >}}
-
-    - **CentOS 8**
-
-        Edit the `/etc/sysconfig/network-scripts/ifcfg-eth0` file with the following entry.
-
-        {{< file >}}
-IPADDR1=[SHARED_IP]
-PREFIX1="32"
-{{</ file >}}
-
-1.  Apply the `eth0` network interface configuration:
-
-    -   **Debian, Ubuntu 18.04 (and earlier), and CentOS/RHEL**
-
-            sudo ifdown eth0 && sudo ifup eth0
-
-    -   **Ubuntu 20.04 (and later)**
-
-            systemctl restart systemd-networkd
-
-1.  Ensure that your network interface configurations have been applied as expected:
-
-        ip a | grep inet
-
-    You should see a similar output:
-
-    {{< output >}}
-inet 127.0.0.1/8 scope host lo
-inet6 ::1/128 scope host
-inet 192.0.2.0/24 brd 192.0.2.255 scope global dynamic eth0
-inet 203.0.113.0/32 scope global eth0
-inet6 2600:3c04::f03c:92ff:fe7f:5774/64 scope global dynamic mngtmpaddr
-inet6 fe80::f03c:92ff:fe7f:5774/64 scope link
-{{</ output >}}
-
-1.  Restart the FRR service:
-
-        sudo systemctl restart frr.service
-
-### Test Shared IPs
-
-Depending on how you configured your Compute Instances and Shared IP(s), testing steps may vary. In general, you can use the `ping` command to test sending packets to your Shared IP from a separate instance, your workstation, or any other computer/server:
-
-    ping [SHARED_IP]
-
-For example, if you have two Compute Instances configured with the same Shared IP:
-
-- Ping the Shared IP when both instances are up. The packets should be received by the primary instance.
-
-- Shut down the primary instance and ping the Shared IP. The packets should be received by the secondary instance.
-
-In each testing scenario, you can monitor ping traffic on a Compute Instance by [inspecting icmp packets with the tcpdump command](https://danielmiessler.com/study/tcpdump/#protocol).

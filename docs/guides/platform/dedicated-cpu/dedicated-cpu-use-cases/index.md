@@ -35,7 +35,7 @@ While a shared plan is usually a good fit for most use cases, a Dedicated CPU Li
 
 ### CI/CD Toolchains and Build Servers
 
-CI and CD are abbreviations for *Continuous Integration* and *Continuous Delivery*, respectively, and refer to an active approach to DevOps that reduces overall workloads by automatically testing and regularly implementing small changes. This can help to prevent last-minute conflicts and bugs, and keeps tasks on schedule. For more information on the specifics of CI and CD, see our [Introduction to CI/CD Guide](/docs/development/ci/introduction-ci-cd/).
+CI and CD are abbreviations for *Continuous Integration* and *Continuous Delivery*, respectively, and refer to an active approach to DevOps that reduces overall workloads by automatically testing and regularly implementing small changes. This can help to prevent last-minute conflicts and bugs, and keeps tasks on schedule. For more information on the specifics of CI and CD, see our [Introduction to CI/CD Guide](/docs/guides/introduction-ci-cd/).
 
 In many cases, the CI/CD pipeline can become resource-intensive if many new code changes are built and tested against your build server. When a Linode is used as a remote server and is expected to be regularly active, a Dedicated CPU Linode can add an additional layer of speed and reliability to your toolchain.
 
@@ -43,15 +43,15 @@ In many cases, the CI/CD pipeline can become resource-intensive if many new code
 
 Depending on the intensity of demands they place on your Linode, [game servers](/docs/game-servers/) may benefit from a Dedicated CPU. Modern multiplayer games need to coordinate with a high number of clients, and require syncing entire game worlds for each player. If CPU resources are not available, then players will experience issues like stuttering and lag. Below is a short list of popular games that may benefit from a Dedicated CPU:
 
-- [ARK: Survival Evolved](/docs/platform/marketplace/deploying-ark-survival-evolved-with-marketplace-apps/)
-- [Rust](/docs/platform/marketplace/deploying-rust-with-marketplace-apps/)
-- [Minecraft](/docs/platform/marketplace/deploying-minecraft-with-marketplace-apps/)
-- [CS:GO](/docs/platform/marketplace/deploying-cs-go-with-marketplace-apps/)
-- [Team Fortress 2](/docs/platform/marketplace/deploying-team-fortress-2-with-marketplace-apps/)
+- [ARK: Survival Evolved](/docs/products/tools/marketplace/guides/ark-survival-evolved/)
+- [Rust](/docs/products/tools/marketplace/guides/rust/)
+- [Minecraft](/docs/products/tools/marketplace/guides/minecraft/)
+- [CS:GO](/docs/products/tools/marketplace/guides/counter-strike-go/)
+- [Team Fortress 2](/docs/products/tools/marketplace/guides/team-fortress-2/)
 
 ### Audio and Video Transcoding
 
-[Audio and Video Transcoding](/docs/applications/media-servers/) (AKA Video/Audio Encoding) is the process of taking a video or audio file from its original or source format and converting it to another format for use with a different device or tool. Because this is often a time-consuming and resource-intensive task, a Dedicated CPU or [Dedicated GPU](/docs/platform/linode-gpu/getting-started-with-gpu/) Linode are suggested to maximize performance. [FFmpeg](https://ffmpeg.org/) is a popular open source tool used specifically for the manipulation of audio and video, and is recommended for a wide variety of encoding tasks.
+[Audio and Video Transcoding](/docs/applications/media-servers/) (AKA Video/Audio Encoding) is the process of taking a video or audio file from its original or source format and converting it to another format for use with a different device or tool. Because this is often a time-consuming and resource-intensive task, a Dedicated CPU or [Dedicated GPU](/docs/products/compute/gpu/get-started/) Linode are suggested to maximize performance. [FFmpeg](https://ffmpeg.org/) is a popular open source tool used specifically for the manipulation of audio and video, and is recommended for a wide variety of encoding tasks.
 
 ### Big Data and Data Analysis
 
@@ -65,7 +65,7 @@ Processing big data is often especially hardware-dependent. A Dedicated CPU can 
 
 The following tools can be extremely useful when working with big data:
 
-- [Hadoop](/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/) - an Apache project for the creation of parallel processing applications on large data sets, distributed across networked nodes.
+- [Hadoop](/docs/guides/how-to-install-and-set-up-hadoop-cluster/) - an Apache project for the creation of parallel processing applications on large data sets, distributed across networked nodes.
 
 - [Apache Spark](https://spark.apache.org/) - a unified analytics engine for large-scale data processing designed with speed and ease of use in mind.
 
@@ -84,7 +84,7 @@ It's worth keeping in mind that, beyond general use cases, there are many more e
 
 ### Machine Learning
 
-[Machine learning](/docs/applications/big-data/how-to-move-machine-learning-model-to-production/) is a powerful approach to data science that uses large sets of data to build prediction algorithms. These prediction algorithms are commonly used in “recommendation” features on many popular music and video applications, online shops, and search engines. When you receive intelligent recommendations tailored to your own tastes, machine learning is often responsible. Other areas where you might find machine learning being used are in self-driving cars, process automation, security, marketing analytics, and health care.
+[Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) is a powerful approach to data science that uses large sets of data to build prediction algorithms. These prediction algorithms are commonly used in “recommendation” features on many popular music and video applications, online shops, and search engines. When you receive intelligent recommendations tailored to your own tastes, machine learning is often responsible. Other areas where you might find machine learning being used are in self-driving cars, process automation, security, marketing analytics, and health care.
 
 Below is a list of common tools used for machine learning and AI that can be installed on a Linode CPU instance:
 
@@ -96,4 +96,4 @@ Below is a list of common tools used for machine learning and AI that can be ins
 
 ## Where to Go From Here
 
-If you're ready to get started with a Dedicated CPU Linode, our [Getting Started With Dedicated CPU](/docs/platform/dedicated-cpu/getting-started-with-dedicated-cpu/) guide will walk you through the process of an initial installation. Additionally, see our [Pricing Page](https://www.linode.com/pricing) for a rundown of both hourly and monthly costs.
+If you're ready to get started with a Dedicated CPU Linode, our [Getting Started With Dedicated CPU](/docs/guides/getting-started-with-dedicated-cpu/) guide will walk you through the process of an initial installation. Additionally, see our [Pricing Page](https://www.linode.com/pricing) for a rundown of both hourly and monthly costs.

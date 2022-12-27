@@ -23,10 +23,10 @@ external_resources:
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
 
-If you're using Ubuntu 16.04, please use our guide on how to [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04).
+If you're using Ubuntu 16.04, please use our guide on how to [Install WordPress on Ubuntu 16.04](/docs/guides/install-wordpress-on-ubuntu-16-04/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/weh2nc2dad?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
--  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+-  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and that the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -94,7 +94,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Visit your domain in your web browser and follow the steps outlined by the configuration process. Begin by reviewing the informational page and clicking the "Let's go!" button. Supply WordPress with the database credentials established when you installed the database server. Finally, select "Run the install" and supply the required values as prompted:
 
-    [![WordPress Installer.](wordpress-setup_small.png)](wordpress-setup.png)
+    ![WordPress Installer.](wordpress-setup.png)
 
 2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this, you must alter your `wp-config.php` file by adding the following line:
 

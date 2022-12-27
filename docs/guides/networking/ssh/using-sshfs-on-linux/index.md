@@ -16,7 +16,7 @@ title: Using SSHFS to Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
- - '[Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh)'
+ - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
 ---
 
 ![SSHFS](sshfs_mount_remote.png)
@@ -58,7 +58,7 @@ The `sshfs` package is available with every Linux package manager. Use the comma
 In order to mount file systems using SSHFS from a normal user account, you'll need to add the user to the `fuse` group first.
 
 {{< note >}}
-If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for a brief introduction.
+If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/guides/linux-users-and-groups/) guide for a brief introduction.
 {{< /note >}}
 
 1. To check if the `fuse` group exists run:
@@ -108,7 +108,7 @@ To keep your server's directory mounted on your system through reboots, create a
 
 ### Set Up Key-Based Authentication for SSH
 
-When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/security/authentication/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
+When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
 
 {{< caution >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
@@ -154,4 +154,4 @@ You will need to use `sudo` privileges to edit this file from your limited user.
 
 ## Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your client machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla).
+After completing this guide you will be able to transfer files to a remote server from your client machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/guides/filezilla/).

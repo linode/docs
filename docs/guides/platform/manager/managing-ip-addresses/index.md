@@ -9,11 +9,11 @@ keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip addre
 tags: ["linode platform","cloud manager","networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/']
-modified: 2022-01-14
+modified: 2022-07-19
 modified_by:
   name: Linode
 published: 2016-08-23
-title: "Managing IP Addresses"
+title: "Managing IP Addresses on a Compute Instance"
 ---
 
 Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
@@ -50,15 +50,15 @@ All private IPs in the same data center can communicate with each other over the
 
 - **IPv6 Link Local:** This IPv6 address is assigned to each Compute Instance and used for internal routing.
 
-- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
+- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
 
-- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
+- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
 
 - **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover. By default, up to one /116 pool can be added per customer per data center.
 
     {{< caution >}}
-The IPv6 /116 prefix has been deprecated and is not available in the Toronto, Atlanta, Sydney, or Mumbai data centers. To add a /116 pool in a supported data center, [contact our Support team](https://www.linode.com/support/) with your request.
-{{</ caution >}}
+The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
+{{</ note >}}
 
 ## Adding an IP Address
 
@@ -80,9 +80,9 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
 
     Once the IP address or range has been added, it should be visible in the *IP Address* section.
 
-1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Compute Instance.
+1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
@@ -95,7 +95,7 @@ The ability to point a domain name to an IP address is referred to as *forward* 
 You are able to configure rDNS (or reset it) through the Cloud Manager using the instructions below:
 
 {{< note >}}
-Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
+Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 {{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
@@ -126,9 +126,9 @@ You can verify the reverse DNS entry was properly submitted within the *IP addre
 
 1.  A pop-up confirmation dialog appears. Click the **Delete Range** button to confirm the request.
 
-1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the Compute Instance.
+1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
 
 ## Transferring IP Addresses
 
@@ -159,9 +159,9 @@ The *IP Transfer* form only displays Compute Instances hosted in the same data c
 
 1.  Click **Save** to transfer the requested IPs.
 
-1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/platform/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
+1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
     {{< note >}}
 If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Compute Instance:
@@ -178,28 +178,42 @@ IPv6 SLAAC addresses are not able to be transferred between Compute Instances. I
 
 ## Configuring IP Sharing
 
-*IP sharing*, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. If you're using two Instances to make a website [highly available](/docs/websites/introduction-to-high-availability/) with Keepalived or a similar service, you can use the Cloud Manager to configure IP failover.
+*IP Sharing* is a feature that enables two Compute Instances to be assigned the same IP address for the purpose of configuring failover. Within a typical failover setup, traffic on the shared IP address is routed to the primary instance. In the event that instance fails or goes down, traffic is automatically re-routed to the secondary instance. While IP Sharing can be configured in the Cloud Manager, failover must be manually configured within the internal system of both Compute Instances. See [Configuring IP Failover](/docs/guides/ip-failover/) to learn more about configuring failover.
 
-{{<note>}}
-Not all data centers currently support IP Sharing. Review the [Configuring IP Failover](/docs/guides/ip-failover) to learn more about IP Sharing and IP failover support.
-{{</note>}}
+{{< note >}}
+Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/guides/ip-failover/#ip-sharing-availability).
+{{</ note >}}
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
-1.  Click on your Linode Compute Instance from the list and navigate to the **Network** tab.
+To learn how to enable IP Sharing within the Cloud Manager, review the following steps.
+
+1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. Make sure the IP address you wish to share has been added to one of those instances. If not, add it now. See [Adding an IP Address](#adding-an-ip-address).
+
+1.  Of those two Compute Instance, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
 1.  Click the **IP Sharing** button under the *IP Addresses* section.
 
     ![Configuring IP sharing](ip-sharing-button.png)
 
-1.  The *IP Sharing* form appears. Select the Compute Instance you would like to share an IP address with.
+1.  The *IP Sharing* form appears with a list of IP addresses that are available to be shared. Select the IP address you wish to share with this Compute Instance.
 
     ![Select a Linode to share an IP address with.](remote_access_ip_sharing_add_an_ip.png)
 
+    {{< note >}}
+If your desired IP address does not appear in that list, verify that the Compute Instance to which it belongs has at least two public IPv4 addresses or has been assigned an IPv6 routed range (/56 or /64).
+{{</ note >}}
+
 1.  Click **Save** to enable IP Sharing.
 
-1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as Keepalived) within the internal system on each affected Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/guides/ip-failover).
+1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as FRR, lelastic, or Keepalived) within the internal system on each Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/guides/ip-failover/).
 
-Now, when a failover service such as Keepalived detects failure of your chosen Compute Instance, its IP address will be assigned to the new Instance to avoid an interruption in service.
+## Viewing the DNS Resolvers' IP Addresses
 
-{{< note >}}
-IP sharing does not change ownership of the origin IP address, and the IP address will continue to belong to the same origin Compute Instance. By default, IP sharing alone does not change the behavior of how traffic reaches your Compute Instances and the capability must be further configured with tools like [Keepalived](https://keepalived.org/).
-{{< /note >}}
+Each data center has its own set of DNS resolvers, which are accessed through both IPv4 or IPv6 addresses. To view the DNS resolvers, follow the instructions below.
+
+1.  Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
+
+1.  Click on your Linode Compute Instance from the list to view more details.
+
+1.  Navigate to the **Network** tab and review the **DNS Resolvers** list, which should appear to the right of (or below) the network transfer graph.
+
+    ![Screenshot of the DNS resolvers in the Cloud Manager](dns-resolvers.png)

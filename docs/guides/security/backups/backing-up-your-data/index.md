@@ -94,7 +94,7 @@ This guide will evaluate six different backup utilities to see how they meet the
 -   **Where**: The files are stored in our secure data centers.
 -   **Rotation**: Backups are rotated automatically so you'll always have a daily, weekly, and bi-weekly backup. You can also store one snapshot of your choice indefinitely.
 
-To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/platform/disk-images/linode-backup-service/).
+To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/products/storage/backups/).
 
 ### Linode's Disks
 
@@ -123,7 +123,7 @@ You need a basic level of comfort with the command line to make the initial back
 -   **Rotation**: Basic rotation is manual. However, with the right options, you can store all of your old backups in a minimal amount of space. This will be covered later.
 
 
-Rsync will be covered in more detail later in this guide. You can also read our [rsync guide](/docs/tools-reference/tools/introduction-to-rsync/) for more information.
+Rsync will be covered in more detail later in this guide. You can also read our [rsync guide](/docs/guides/introduction-to-rsync/) for more information.
 
 
 ### MySQL Backups
@@ -135,7 +135,7 @@ The data stored in your database can change quickly. Running a MySQL dump is arg
 -   **Where**: The backup file is saved on your server or downloaded to your home computer by default. You can move the file somewhere else if you want it stored in a different location.
 -   **Rotation**: Basic rotation is manual.
 
-To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/databases/mysql/use-mysqldump-to-back-up-mysql-or-mariadb/).
+To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/guides/mysqldump-backups/).
 
 ### Tar
 
@@ -164,7 +164,7 @@ Explanation of flags:
 -   v or --verbose: Shows which files were processed
 -   f or --file=ARCHIVE: Tells us that the next argument is the name for the new archive file
 
-For a more detailed discussion of tar and more examples, see [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/).
+For a more detailed discussion of tar and more examples, see [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/guides/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip/).
 
 ### Rdiff-backup
 
@@ -175,7 +175,7 @@ Rdiff-backup is a utility designed to make incremental backups. As their [websit
 -   **Where** : You set the destination. You can back up to a different folder on your server, a different Linux server, or your home computer.
 -   **Rotation**: Both old and new files are kept.
 
-For information, see [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/).
+For information, see [Using Rdiff-backup with SSHFS](/docs/guides/using-rdiff-backup-with-sshfs/).
 
 ## Manual Backup via Rsync
 
@@ -275,7 +275,7 @@ If this is your first time running the command, select your favorite text editor
         0   3   *   *   *   rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
     {{< note >}}
-For more information about cron, and to learn how to create a custom schedule for your rsync command, see [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/).
+For more information about cron, and to learn how to create a custom schedule for your rsync command, see [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
 Congratulations! You have now configured daily automatic snapshot-style backups. If something goes wrong with your server, you'll be able to restore from a backup at any time.
@@ -503,7 +503,7 @@ The `copyfrom` location is the path to what you want to back up on your *product
 
 Since you're trying to copy from a remote server (the *production\_server*), you should provide the SSH login credentials first. Then use a colon (`:`), followed by an absolute file path to the folder you want to back up.
 
-In this example, you're backing up the `~/public` directory, which is where your websites should be located if you followed the [Hosting a Website](/docs/websites/hosting-a-website/) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because you want to include the `public` folder itself in the backup, not just its contents.
+In this example, you're backing up the `~/public` directory, which is where your websites should be located if you followed the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because you want to include the `public` folder itself in the backup, not just its contents.
 
 If you want to do a full-server backup from root, you should use `/*` as your path. You should also exclude some folders from the backup so you don't get a lot of warnings and errors every time you run it. `/dev`, `/proc`, `/sys`, `/tmp`, and `/run` do not contain permanent data, and `/mnt` is the mount point for other file systems. To make an exclusion, add the `--exclude` option at the very end of the rsync command, after everything else.
 

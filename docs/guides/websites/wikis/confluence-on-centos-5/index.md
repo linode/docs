@@ -28,7 +28,7 @@ relations:
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -219,30 +219,30 @@ Apache should now be properly configured. Next, you'll configure Confluence.
 
 If you created a virtual host for your Confluence installation, direct your browser to `http://confluence.example.com`, replacing "confluence.example.com" with the site you set up with Apache. Otherwise, visit the URL `http://12.34.56.78:8080`, replacing "12.34.56.78" with your Linode's public IP address. Enter your license key on the first screen and click the "Production Installation" button to continue.
 
-[![Confluence license input screen.](335-confluence-config-01-large.png)](335-confluence-config-01-large.png)
+![Confluence license input screen.](335-confluence-config-01-large.png)
 
 Select "PostgreSQL" under the "External Database" section and click the "External Database" button to continue.
 
-[![Confluence external database selection.](336-confluence-config-02-large.png)](336-confluence-config-02-large.png)
+![Confluence external database selection.](336-confluence-config-02-large.png)
 
 Click the "Direct JDBC" button to continue.
 
-[![Confluence direct JDBC database connection selection.](337-confluence-config-03-large.png)](337-confluence-config-03-large.png)
+![Confluence direct JDBC database connection selection.](337-confluence-config-03-large.png)
 
 Enter the following database connection details, along with your password. Click "Next" to continue.
 
-[![Confluence database connection details entry.](338-confluence-config-04-large.png)](338-confluence-config-04-large.png)
+![Confluence database connection details entry.](338-confluence-config-04-large.png)
 
 You may choose to start with an example site or an empty configuration. If you're new to Confluence, we recommend you install the example site to gain more familiarity with the system.
 
-[![Confluence initial content selection.](339-confluence-config-05-large.png)](339-confluence-config-05-large.png)
+![Confluence initial content selection.](339-confluence-config-05-large.png)
 
 Select an appropriate username for the administrative user, and be sure to enter a strong password. Click "Next" to continue.
 
-[![Confluence administrative user details entry.](340-confluence-config-06-large.png)](340-confluence-config-06-large.png)
+![Confluence administrative user details entry.](340-confluence-config-06-large.png)
 
 If you elected to install the example site, you'll be greeted with a screen resembling the following screenshot.
 
-[![Confluence example site home page.](341-confluence-config-07-large.png)](341-confluence-config-07-large.png)
+![Confluence example site home page.](341-confluence-config-07-large.png)
 
 Congratulations! You've successfully installed Confluence on your CentOS 5 Linode.

@@ -3,38 +3,18 @@ title: Get Started
 description: "Get started with Linode Block Storage. Learn to add a new Block Storage volume to a Linode, increase the size of an attached volume, and transfer a Block Storage volume to a new Linode."
 tab_group_main:
     weight: 20
+modified: 2022-08-24
 ---
 
 {{< content "nvme-block-storage-notice-shortguide" >}}
 
-## Add a New Block Storage Volume to a Linode
+Block Storage Volumes are persistent storage devices that can be attached to a Compute Instance and used to store any type of data. They are especially useful for storing website files, databases, media, backups, and *much* more. To get started with Block Storage, create a Volume using the guide below.
 
-You can attach a Block Storage Volume to an existing Linode. Storage Volumes cannot be sized down, only up. Keep this in mind when sizing your Volume.
+- [View, Create, and Delete Volumes](/docs/products/storage/block-storage/guides/manage-volumes/)
 
-1. Click on the Linodes link in the sidebar.
-1. Select the Linode to which you want to attach a Block Storage Volume from the Linode Detail page.
-1. Click on the Volumes tab, then click on the Add a Volume button.
-1. Select “Create and Attach Volume” to create a new Volume and assign it a unique label and storage size. Then, click submit.
-1. Once you add a Volume it appears under your Linode’s Volumes tab. The new Volume’s label, size, and file system path are displayed.
-1. Create a file system in your new Volume and mount it to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps appear in the Cloud Manager’s Volume Configuration panel.
+Once a Block Storage Volume has been created, it can be attached to any Compute Instance in the same region. Since Volumes are external device, they are portable and can be attached and detached to Compute Instances as needed. Once attached, the device is assigned to an available block device (such as `/dev/sdc`) on a Compute Instance's Configuration Profile and has its own path in your instance's file system. When attaching and detaching a Volume, additional internal configuration is needed to create a file system (if one hasn't already been created), mount or unmount the Volume, and automatically mount the Volume at system boot.
 
+- [Attach and Detach Existing Volumes](/docs/products/storage/block-storage/guides/attach-and-detach/)
+- [Configure a Volume on a Compute Instance](/docs/products/storage/block-storage/guides/configure-volume/)
 
-## Increase the Size of an Attached Volume
-
-You can increase the storage capacity of any Block Storage Volume.
-
-1. Shut down your Linode.
-1. Navigate to the “Volumes” section of the Cloud Manager and click on the more options ellipsis next to the Volume you would like to resize.
-1. Select “Resize” from the dropdown menu.
-1. Enter in the new size for your Volume. The maximum size is 10240 GB. Then click “Submit”.
-1. When the resize is complete, reboot your Linode.
-1. Unmount your Volume and resize its partition to fill the new Volume size.
-1. Mount the Volume back to the filesystem.
-
-## Transfer a Block Storage Volume to a New Linode
-
-1. [Detach your Block Storage Volume](/docs/products/storage/block-storage/guides/detach-volume/) from its current Linode.
-1. Navigate to the “Volumes” section of the Cloud Manager and click on the more options ellipsis next to the Volume you would like to attach to a Linode.
-1. Select “Attach” from the dropdown menu and a panel appears.
-1. From the “Linode” dropdown menu, select the Linode you want the Volume to attach to, and click on “Save”.
-1. Mount the Volume to your Linode. This requires you to SSH into your booted Linode. These Volume configuration steps can be accessed by clicking on the more option ellipsis next to the Volume you are transferring and selecting “Show Configuration”.
+When a Volume is attached to a Compute Instance, you can [log in to that instance](/docs/guides/set-up-and-secure/#connect-to-the-instance) and access the Volume's data through its mount point. For instance, if the Volume was mounted in `/mnt/volume/`, you can navigate to that directly to view any files stored on that Volume. You can also use that directory when integrating your Volume with any software or tooling you might employ.

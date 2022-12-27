@@ -23,7 +23,7 @@ When you hire someone to work on your Linode, there are a variety of ways to gra
 
 This guide explains and answers some of the most frequently asked questions about account access. The sections are separated in order of granularity, starting with service-level access at the top, and working towards application-specific access.
 
-For security and privacy, [Linode Support](/docs/platform/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](/professional-services/) team that can be hired to help with projects.
+For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
 
 {{< note >}}
 The following sections include commands that show how to manipulate credentials on your Linodes, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
@@ -41,20 +41,20 @@ If you're not sure whether you're logged in as the account administrator, look f
 
 ### Add a User to the Linode Account
 
-Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/platform/accounts-and-passwords/#users-and-permissions) guide.
+Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
 
 Useful *Global Grants* for a limited access user might include the ability to:
 
-* Add a [NodeBalancer](/nodebalancers/).
-* Add [Longview](/longview/) clients.
-* Use the [DNS Manager](/dns-manager/) to add domains.
-* Create [StackScripts](/stackscripts/).
-* Create [Images](/docs/platform/linode-images/).
-* Add [Block Storage Volumes](/blockstorage/).
+* Add a [NodeBalancer](/docs/products/networking/nodebalancers/).
+* Add [Longview](/docs/guides/what-is-longview/) clients.
+* Use the [DNS Manager](/docs/products/networking/dns-manager/) to add domains.
+* Create [StackScripts](/docs/products/tools/stackscripts/).
+* Create [Images](/docs/products/tools/images/).
+* Add [Block Storage Volumes](/docs/products/storage/block-storage/).
 
 ### Revoke a User's Access to the Linode Account
 
-1.  If you suspect that the user may have access to the Linode Manager password, [change that first](/docs/platform/manager/accounts-and-passwords/#changing-your-linode-manager-password).
+1.  If you suspect that the user may have access to the Linode Manager password, [change that first](/docs/products/platform/accounts/guides/manage-users/#changing-your-linode-manager-password).
 
 1.  Log in to the [Linode Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
@@ -67,7 +67,7 @@ The primary method for directly administering files and software on a Linode is 
 For the steps in this section, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
 {{< note >}}
-If you don't remember your root password, [reset it through the Manager](/docs/platform/accounts-and-passwords/#resetting-your-linode-manager-password).
+If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
 {{</ note >}}
 
 ### Who Has SSH Access to Your Linode?
@@ -94,7 +94,7 @@ As an optional alternative to setting permissions for each user, create a limite
 
 ### Restrict a User to a Specific Directory
 
-If your user should only have access to a specific directory and its subdirectories, for example `/var/www/html/example.com/`, use `chroot` *jails*, as described in the [Advanced SSH Security](/docs/security/advanced-ssh-server-security/#chroot-users) guide.
+If your user should only have access to a specific directory and its subdirectories, for example `/var/www/html/example.com/`, use `chroot` *jails*, as described in the [Advanced SSH Security](/docs/guides/advanced-ssh-server-security/#chroot-users) guide.
 
 ### Restrict a User to SFTP Only
 
@@ -104,7 +104,7 @@ For some applications, a user may only need to transfer files to or from the ser
 The steps in this section disable a user's SSH access. Do not follow the steps in this section for any user who needs SSH access.
 {{< /caution >}}
 
-Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/tools-reference/tools/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
+Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
 
 1.  Change the `sftp` subsystem line and add a `Match Group sftpOnly` section in `sshd_config`:
 
@@ -259,7 +259,7 @@ While logged in to MySQL:
 
 While logged in to MySQL:
 
-1.  Use `FLUSH PRIVILEGES` before making making changes:
+1.  Use `FLUSH PRIVILEGES` before making changes:
 
         FLUSH PRIVILEGES;
 

@@ -22,7 +22,7 @@ dedicated_cpu_link: true
 
 ![How to Install A SHOUTcast DNAS Server on Linux](install-shoutcast-dnas-title.jpg "How to Install A SHOUTcast DNAS Server on Linux title graphic")
 
-SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
  {{< note >}}
 Be sure to [check the broadcast tools download page](http://www.shoutcast.com/broadcast-tools) for the newest version of SHOUTcast.
@@ -142,7 +142,7 @@ Now that the configuration is set and saved, we can start the server.
 
 Now, you can start the SHOUTcast server. Here's how:
 
-1.  You'll want to run your shoutcast in a [screen session](/docs/linux-tools/utilities/screen). Let's jump into a screen session by entering the following command:
+1.  You'll want to run your shoutcast in a [screen session](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/). Let's jump into a screen session by entering the following command:
 
         screen
 

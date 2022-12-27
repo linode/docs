@@ -34,9 +34,9 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 ## Before You Begin
 
-1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/docs/getting-started) guide.
+1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/docs/guides/getting-started/) guide.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your local system. Then update your server using the following:
 
@@ -56,7 +56,7 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 2. Click on the 'Yubico OTP' menu in the top-left corner, and select 'Quick'. Your screen should look like the one below.
 
-    [![YubiKey Personalization Tool](yubikey-personalization-small.png)](yubikey-personalization.png)
+    ![YubiKey Personalization Tool](yubikey-personalization.png)
 
 3. Click 'Write Configuration'. Click 'Cancel' on the pop-up window that asks where to save the log file.
 

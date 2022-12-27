@@ -15,7 +15,7 @@ title: Apache Configuration Basics
 external_resources:
  - '[Apache Installation](/docs/websites/apache/)'
  - '[LAMP stack guides](/docs/websites/lamp/)'
- - '[Troubleshooting Common Issues with Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
+ - '[Troubleshooting Common Issues with Apache](/docs/guides/troubleshooting-common-apache-issues/)'
  - '[Linode User Community](http://linode.com/community/)'
  - '[Apache Virtual Host Documentation](http://httpd.apache.org/docs/2.2/vhosts/)'
  - '[Virtual Host Directives](http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost)'

@@ -29,7 +29,7 @@ This guide covers how to install and configure Odoo in just 35 minutes using Git
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
 
 2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
 
@@ -330,8 +330,8 @@ exit 0
 
 2.  A screen similar to this will show:
 
-    [![Odoo Db creation](odoo_db_creation.png)](odoo_db_creation.png)
+    ![Odoo Db creation](odoo_db_creation.png)
 
 3.  Congratulations, now you can create your first database and start using Odoo!
 
-    [![Odoo applications](odoo_applications.png)](odoo_applications.png)
+    ![Odoo applications](odoo_applications.png)

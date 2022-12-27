@@ -34,16 +34,16 @@ This guide will describe the installation and configuration of HAProxy for load-
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide to add private IP addresses and internally network your Linodes.
+3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide to add private IP addresses and internally network your Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installation
