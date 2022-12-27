@@ -14,7 +14,7 @@ tags: ["linode platform","python"]
 aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/']
 ---
 
-Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](https://developers.linode.com/api/v4). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
+Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](/docs/api/). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
 
 This guide will show you how to create a simple OAuth application using [Flask](http://flask.pocoo.org/) and the [Linode Python API library](https://linode-api4.readthedocs.io/en/latest/index.html). This app allows a user to log in with their Linode account and create a Linode with a StackScript. The complete code for this example is available in the [Linode APIv4 Python library example](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode) repository.
 
@@ -160,7 +160,7 @@ def index():
     )
 {{< /file >}}
 
-It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](https://developers.linode.com/api/v4#tag/Regions). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](https://developers.linode.com/api/v4#tag/Linode-Types). Some methods in the Linode Python library are top level, such as `domain_create`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
+It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](/docs/api/regions/#regions-list). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](/docs/api/linode-types/#types-list). Some methods in the Linode Python library are top level, such as `domain_create`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
 
 In addition to querying the API, the above route also renders the `configure.html` template by passing it the types, regions, application name, and StackScript object. The StackScript object contains a list of StackScript compatible images. We will cover templating in a later section.
 

@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Moodle through the Linode Marketplace"
+title: "Deploy Moodle through the Linode Marketplace"
 aliases: ['/guides/deploying-moodle-marketplace-app/','/guides/moodle-marketplace-app/']
 external_resources:
 - '[Moodle](https://moodle.org/)'

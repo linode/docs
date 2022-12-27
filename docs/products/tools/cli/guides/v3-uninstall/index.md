@@ -64,7 +64,7 @@ unlink /usr/local/share/perl5/Linode/CLI/Object/Account.pm
 unlink /usr/local/share/perl5/Linode/CLI/Object/Domain.pm
 unlink /usr/local/share/perl5/Linode/CLI/Object/Linode.pm
 unlink /usr/local/share/perl5/Linode/CLI/Object/Nodebalancer.pm
-unlink /usr/local/share/perl5/Linode/CLI/Object/Stackscript.pm
+unlink /usr/local/share/perl5/Linode/CLI/Object/StackScript.pm
 unlink /usr/local/share/perl5/Linode/CLI/SystemInfo.pm
 unlink /usr/local/share/perl5/Linode/CLI/Util.pm
 unlink /usr/local/lib64/perl5/auto/Linode/CLI/.packlist

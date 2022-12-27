@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-06
 modified_by:
   name: Linode
-title: "Deploying Microweber through the Linode Marketplace"
+title: "Deploy Microweber through the Linode Marketplace"
 ---
 
 [Microweber](https://microweber.org/) is an open-source, drag and drop website builder and CMS based on the Laravel PHP Framework. It includes features for e-commerce, live editing, file management, design customization, and has plugins for both cPanel and Plesk.

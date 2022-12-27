@@ -10,7 +10,7 @@ published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying BeEF through the Linode Marketplace"
+title: "Deploy BeEF through the Linode Marketplace"
 external_resources:
 - '[BeEF](https://beefproject.com/)'
 aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']

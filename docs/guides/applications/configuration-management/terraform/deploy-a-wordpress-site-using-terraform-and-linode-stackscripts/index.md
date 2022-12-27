@@ -292,7 +292,7 @@ variable "type" {
 }
 
 variable "stackscript_id" {
-  description = "Stackscript ID"
+  description = "StackScript ID"
 }
 
 variable "stackscript_data" {
@@ -360,7 +360,7 @@ In Terraform 0.12, variables with map and object values will use the last value 
     {{</ note >}}
 
     {{< note >}}
-It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](https://developers.linode.com/api/v4) for assistance in determining appropriate values for Linode resources.
+It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
 {{< /note >}}
 
 1.  Replace the following values in your new `.tfvars` files:

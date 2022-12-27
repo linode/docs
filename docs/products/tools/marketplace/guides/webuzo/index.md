@@ -10,7 +10,7 @@ published: 2020-12-02
 modified: 2022-08-08
 modified_by:
   name: Linode
-title: "Deploying Webuzo through the Linode Marketplace"
+title: "Deploy Webuzo through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

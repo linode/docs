@@ -10,7 +10,7 @@ published: 2019-03-27
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Gitlab through the Linode Marketplace"
+title: "Deploy Gitlab through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

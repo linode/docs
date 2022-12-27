@@ -7,9 +7,8 @@ keywords: ["email address", "email addresses", "address", "addresses"]
 tags: ["linode platform","cloud manager","email"]
 date: 2022-11-21
 image: L_ChangeYourEmail.png
-title: Change Your Email Address on a Linode Account
-h1_title: Change Your Email Address
-enable_h1: true
+title: Change Your Email Address
+title_meta: Change Your Email Address on a Linode Account
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/','/guides/how-to-change-your-email/']
 ---
 

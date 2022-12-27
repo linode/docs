@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: DeployShadowsocksServer_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Shadowsocks through the Linode Marketplace"
+title: "Deploy Shadowsocks through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

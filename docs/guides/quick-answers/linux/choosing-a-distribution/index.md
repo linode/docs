@@ -10,9 +10,8 @@ published: 2019-07-15
 modified: 2022-11-17
 modified_by:
   name: Linode
-title: "How to Choose a Linux Distribution"
-h1_title: "Choosing a Linux Distribution"
-enable_h1: true
+title: "Choosing a Linux Distribution"
+title_meta: "How to Choose a Linux Distribution"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/choosing-a-distribution/']
 ---
@@ -30,7 +29,7 @@ Below is a full list of distributions, along with the release versions that we o
 | [AlmaLinux](https://almalinux.org/) | **9**, 8 | A binary compatible derivative of RHEL intended to provide a long-term stable replacement for CentOS. Made by the same team as [CloudLinux OS](https://www.cloudlinux.com/) |
 | [Alpine](https://alpinelinux.org/) | **3.16**, 3.15, 3.14, 3.13 | **Recommended for advanced Linux users only.** Lightweight distribution popular with [Docker](https://www.docker.com/) and security minded users. |
 | [Arch](https://www.archlinux.org/) | Rolling release\* | **Recommended for advanced Linux users only.** Powerful and detail oriented, empowers more advanced users to fine tune their configuration. |
-| [CentOS](https://www.centos.org) | **Stream 9**, Stream 8, 8\*\*, 7 | Widely popular in professional and business settings while still being accessible to the average user. Versions 8 and earlier are binary equivalents of their corresponding RHEL (Red Hat Enterprise Linux) release. [CentOS Stream](https://www.redhat.com/en/topics/linux/what-is-centos-stream) has replaced CentOS and receives updates *just* ahead of the corresponding RHEL version. |
+| [CentOS](https://www.centos.org) | **Stream 9**, Stream 8, 7 | Widely popular in professional and business settings while still being accessible to the average user. Versions 8 and earlier are binary equivalents of their corresponding RHEL (Red Hat Enterprise Linux) release. [CentOS Stream](https://www.redhat.com/en/topics/linux/what-is-centos-stream) has replaced CentOS and receives updates *just* ahead of the corresponding RHEL version. |
 | [Debian](https://www.debian.org/) | **11**, 10, 9\*\* | A popular and stable distribution that's been actively maintained longer than most other distributions. |
 | [Fedora](https://getfedora.org/) | **37**, 36, 35 | Implements bleeding edge software. Fedora is similar though more advanced than CentOS and great for users who want to use the newest of the new and don't mind an added layer of complexity.  |
 | [Gentoo](https://www.gentoo.org/) | Rolling release\* | **Recommended for advanced Linux users only.** Advanced distribution designed for power users who want more control over their configuration and are comfortable compiling everything from source. |

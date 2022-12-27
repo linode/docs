@@ -10,7 +10,7 @@ published: 2019-03-26
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a LAMP Stack through the Linode Marketplace"
+title: "Deploy a LAMP Stack through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
