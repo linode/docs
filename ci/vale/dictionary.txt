@@ -1965,6 +1965,7 @@ spm
 spork
 spotify
 sql
+sqlcmd
 sqlplus
 sqreen
 squirrelmail
