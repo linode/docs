@@ -3,11 +3,11 @@ slug: support
 author:
   name: Linode
   email: docs@linode.com
-description: Our guide to submitting support tickets and getting technical support.
+description: Information about Linode support, including the scope of support and how to get help.
 keywords: ["support", "tech support", "tickets", "help desk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/platform/billing-and-support/support/','/support/','/platform/support/','/platform/billing-and-support/support-classic-manager/','/platform/billing-and-support/support-new-manager/']
-modified: 2019-01-07
+modified: 2022-12-27
 modified_by:
   name: Linode
 published: 2012-03-21
@@ -31,8 +31,7 @@ The [Cloud Pricing Calculator](https://www.linode.com/cloud-pricing-calculator/)
 
 ![Pricing calculator image](pricing-calculator.png)
 
-To better understand how our billing works, what payment methods we accept, tax information and more,see [the billing guide](/docs/platform/billing-and-support/how-linode-billing-works/) for help.
-
+To better understand how our billing works, what payment methods we accept, tax information, and more see the [Billing guides](/docs/products/platform/billing/) section for help.
 
 ### Need help with large deployments?
 
@@ -52,15 +51,15 @@ We also have a very supportive [IRC channel](https://webchat.oftc.net/?channels=
 
 ### Check out the Linode Docs and Developer Tools
 
-The [Linode Docs](https://www.linode.com/docs/) library hosts a cataloged and searchable list of comprehensive guides on a large number of topics. These guides are written for users at all stages from beginner to advanced, and are currently available in both English and Spanish.
+The [Linode Docs](/docs/) library hosts a cataloged and searchable list of comprehensive guides on a large number of topics. These guides are written for users at all stages from beginner to advanced, and are currently available in both English and Spanish.
 
 ![Linode docs page](docs-page.png)
 
 Here are a few guides that focus on troubleshooting and quick help:
 
-* The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
-* The [Linode Beginner’s Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
-* The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
+- The [Troubleshooting](/docs/troubleshooting/troubleshooting/) quick start guide provides answers for common server connectivity and management issues.
+- The [Linode Beginner’s Guide](/docs/platform/billing-and-support/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+- The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 
 Our [Developer Tools](https://www.linode.com/developers/) space has reference documentation for the Linode API, changelogs with latest updates from the Linode team, and integrations and DevOps tools for the Linode API.
 
@@ -84,16 +83,15 @@ Our Customer Support Team is available 24x7 to provide support related to the ph
 
 We are the subject matter experts for all of our products such as [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/), [Object Storage](https://www.linode.com/products/object-storage/), and [NodeBalancers](https://www.linode.com/products/nodebalancers/). We can also assist you with any Linode software such as the [Linode Cloud Manager](https://cloud.linode.com/), and can help you with understanding and paying your bill.
 
-As declared in our [Master Services Agreement](https://www.linode.com/legal-msa/), our Customer Support Team does not offer or provide support for application-specific issues such as application configuration, CGI programming, web server, mail server, database configuration, or any other such issue. For these issues, please consult the various other [resources](link_to_section_of_doc) we have available or contact your system administrator and/or developer. Additionally, if you are providing a service to your customers, we do not offer technical support for those customers.
+As declared in our [Master Services Agreement](https://www.linode.com/legal-msa/), our Customer Support Team does not offer or provide support for application-specific issues such as application configuration, CGI programming, web server, mail server, database configuration, or any other such issue. For these issues, please consult the various other [resources](#resources-for-application-help--server-configuration-issues) we have available or contact your system administrator and/or developer. Additionally, if you are providing a service to your customers, we do not offer technical support for those customers.
 
 ### How to contact us
 
 The primary method for contacting our Customer Support Team is to open a support ticket through the [Linode Cloud Manager](https://cloud.linode.com/) using the Get Help option in the sidebar. When opening a ticket, you will be required to include the following information:
 
-
-* Notation of what product or service is affected by the issue
-* Summary of the issue you are experiencing
-* Details about the issue in the description
+- Notation of what product or service is affected by the issue
+- Summary of the issue you are experiencing
+- Details about the issue in the description
 
 Additionally, you can attach up to 5 files with your initial ticket update. Accepted file extensions include: .gif, .jpg, .jpeg, .pjpg, .pjpeg, .tif, .tiff, .png, .pdf, or .txt.
 
@@ -101,9 +99,9 @@ Additionally, you can attach up to 5 files with your initial ticket update. Acce
 
 If you are having difficulty logging in to your account, you can email our team at support@linode.com. You can also call us 24 hours a day for urgent issues:
 
-* +1 (609) 380-7100 (International)
-* +1 (855) 454-6633 (North America toll-free)
-* +91 000-800-919-0534 (India toll-free)
+- +1 (609) 380-7100 (International)
+- +1 (855) 454-6633 (North America toll-free)
+- +91 000-800-919-0534 (India toll-free)
 
 If your call is diverted to voicemail, please leave a detailed message explaining your problem. Your call will be returned as quickly as possible.
 
@@ -114,7 +112,6 @@ We want to help you solve your problem efficiently and effectively. To help us g
 Be specific and detailed. We need to know what is happening. Providing error logs and outputs from commands will go a long way to getting you a faster and more accurate answer.
 Be clear. Giving us context and sharing any troubleshooting steps you have already taken or resources you have looked at will help clarify what is going on and what additional steps we need to take on our end.
 Use Markdown. Making sure you have the correct formatting will help make sure we can read what the error outputs you have provided are. For Markdown help, use this [cheat sheet](http://demo.showdownjs.com/).
-
 
 ## Report Abuse
 
