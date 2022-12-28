@@ -228,6 +228,6 @@ Hello, 5!
 
 This guide has covered the foundations you need to start working with variables in Python. Everything from variable assignment through variable operations, types, and scopes. And with that, you have what you need to start making dynamic Python programs.
 
-With that foundation, you may also be looking to move further with your Python skills. In addition to [The Basics of Python Data Types](/docs/guides/python-data-types/) guide linked above, we have numerous other [guides on Python development](https://www.linode.com/docs/guides/development/python/). These can give you tools to elevate your Python skills and start making your Python code more effective.
+With that foundation, you may also be looking to move further with your Python skills. In addition to [The Basics of Python Data Types](/docs/guides/python-data-types/) guide linked above, we have numerous other [guides on Python development](/docs/guides/development/python/). These can give you tools to elevate your Python skills and start making your Python code more effective.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
