@@ -4,14 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Variables form the backbone of programming. So how do they work and how do you use them effectively with Python? Find out in this guide covering Python variables from assignment through scope and type."
-og_description: "Variables form the backbone of programming. So how do they work and how do you use them effectively with Python? Find out in this guide covering Python variables from assignment through scope and type."
-keywords: ['python variables','python variables naming convention','are python variables case sensitive']
+keywords: ['python variables', 'python variables naming convention', 'python variables case sensitive']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-27
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Python Variables"
 h1_title: "Getting Started with Python Variables"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -24,17 +25,17 @@ external_resources:
 
 Variables are what make programs capable of meaningful action and complexity. So understandably you want to know how they work for any language you are working with.
 
-Python variables are straightforward once you see their principles in action. This tutorial shows you the ins and outs of Python variables, with everything from variable assignment to variable operations and scope.
+Python variables are straightforward once you see their principles in action. This guide shows you the ins and outs of Python variables, with everything from variable assignment to variable operations and scope.
 
 ## Assigning Variables
 
-Python does not require variables to be declared ahead of time. Instead, you just need to assign a value to create a variable. You can do this simply with the `=` operator:
+Python does not require variables to be declared ahead of time. Instead, you just need to assign a value to create a variable. You can do this simply with the `=` operator as shown in the example below:
 
 ``` python
 example_variable = "This is an example string variable."
 ```
 
-Python automatically determines the type of the variable. In Python, you can also reassign a variable at any time, even to a different type. For instance, this next example reassigns the variable above as an integer:
+Python automatically determines the type of the variable. In Python, you can also reassign a variable at any time, even to a different type. For instance, the following example reassigns the `example_variable` as an integer:
 
 ``` python
 example_variable = 5
@@ -58,7 +59,7 @@ Example
 
 ### Naming Conventions
 
-Above, the variable names use a specific naming convention with underscores. You may also have seen variables named where each "word" after the first starts with an uppercase letter.
+In the section above, the variable names use a specific naming convention with underscores. You may also have seen variables named where each "word" after the first starts with an uppercase letter.
 
 Python actually supports a wide range of possibilities for variable names, with the following being the only variable-naming rules enforced by Python:
 
@@ -70,21 +71,21 @@ Python actually supports a wide range of possibilities for variable names, with 
 
 - Python variable names are case sensitive
 
-This gives you a wide variety of ways to name variables in your Python code. However, best programming practices dictate that your code should adopt a single naming convention and apply it consistently throughout your codebase. Doing so tends to make code easier to read and navigate.
+These naming rules give you a wide variety of ways to name variables in your Python code. However, best programming practices dictate that your code should adopt a single naming convention and apply it consistently throughout your codebase. Doing so tends to make code easier to read and navigate.
 
 Python variables support three popular naming conventions:
 
-- Camel case, where the first letter is lowercase and each subsequent word in a name begins with an uppercase letter:
+- Camel case, where the first letter is lowercase and each subsequent word in a name begins with an uppercase letter.
 
         exampleVariable = "This is a string variable."
         anotherExampleVariable = 31
 
-- Snake case, where separate words are separated by underscores:
+- Snake case, where separate words are separated by underscores.
 
         example_variable = "This is a string variable."
         another_example_variable = 31
 
-- Pascal case, where each word in a variable name begins with an uppercase letter:
+- Pascal case, where each word in a variable name begins with an uppercase letter.
 
         ExampleVariable = "This is a string variable."
         AnotherExampleVariable = 31
@@ -93,13 +94,13 @@ Python does not have an official naming convention, so you are free to choose be
 
 However, if you are looking to align with more of the Python community, you may want to use the naming conventions of the PEP 8 standard. PEP standards are used frequently for Python development, and they provide the following naming conventions:
 
-- Variable and function names should use *snake case*
+- Variable and function names should use *snake case*.
 
-- Class names should use *Pascal case*
+- Class names should use the *pascal case*.
 
 ## Working with Variables
 
-Variables, once assigned, can be used almost anywhere within your Python code. For instance, the `print` function takes a string as an argument. As this example shows, a variable containing a string can be substituted in place of a plain string:
+Variables, once assigned, can be used almost anywhere within your Python code. For instance, the `print` function takes a string as an argument. As the example below shows, a variable containing a string can be substituted in place of a plain string.
 
 ``` python
 example_variable = "World"
@@ -123,7 +124,7 @@ print("Hello, " + example_variable + "!")
 Hello, World!
 {{< /output >}}
 
-Similarly, variables can be used in number operations. Variables can even be assigned values based on these and other operations:
+Similarly, variables can be used in number operations. Variables can even be assigned values based on number operations and also other operations.
 
 ``` python
 example_variable_one = 9
@@ -151,11 +152,11 @@ Like in many programming languages, Python variables have specific scopes. A var
 
 Variables have two different scopes in Python:
 
-- Global scope. Any variable declared outside of a function or loop, at the "top level," is in this scope. Global variables can be accessed anywhere within the Python code.
+- Global scope: Any variable declared outside of a function or loop, at the "top level," is in the global scope. Global variables can be accessed anywhere within the Python code.
 
-- Local scope. Any variable declared inside of a function or loop is in a local scope. Local variables can only be accessed within their local scope — within the function or loop the variable was declared in.
+- Local scope: Any variable declared inside of a function or loop is in a local scope. Local variables can only be accessed within their local scope — within the function or loop where the variable was declared.
 
-To illustrate, here is an example that makes use of a global variable and two local variables. Follow along with the comments in the code for explanations of each part:
+To illustrate, the following is an example that makes use of a global variable and two local variables. Follow along with the comments in the code for explanations of each part:
 
 ``` python
 # Global variable, declared at the "top level," outside of any function or loop.
@@ -183,11 +184,11 @@ def some_function():
 
 ## Variable Types
 
-The examples above show how variables can vary in their data types. For instance, `example_variable_one` and `example_variable_two` in the **Working with Variables** section above use the *integer* data type. Meanwhile, `local_variable_one` and `local_variable_two` in the **Variable Scope** section use the *string* data type.
+The examples above show how variables can vary in their data types. For instance, `example_variable_one` and `example_variable_two` in the [Working with Variables](/docs/guides/python-variables/#working-with-variables) section above use the *integer* data type. Meanwhile, `local_variable_one` and `local_variable_two` in the [Variable Scope](/docs/guides/python-variables/#variable-scope) section use the *string* data type.
 
-Python is a dynamically-typed language, which means, in part, that you do not have to explicitly indicate variable type. The program automatically, and dynamically, infers the variable type. Nevertheless, understanding variables' types is crucial for making sure your code performs as desired.
+Python is a dynamically-typed language, which means, in part, that you do not have to explicitly indicate the variable type. The program automatically, and dynamically infers the variable type. Nevertheless, understanding variables' types are crucial for making sure your code performs as desired.
 
-Take this example. Running this code produces a type error. Why is that? It is because the code attempts to combine `example_variable_one`, a string, and `example_variable_two`, an integer. Each of these data types uses the `+` operator, but not for operations across data types.
+Consider the following example. Running this code produces a type error. Why is that? It is because the code attempts to combine `example_variable_one`, a string, and `example_variable_two`, an integer. Each of these data types uses the `+` operator, but not for operations across data types.
 
 ``` python
 example_variable_one = "Hello, "
@@ -202,15 +203,15 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 {{< /output >}}
 
-There are many more data types than integer and string, and much more to know about them. To keep learning more, take a look at our guide [The Basics of Python Data Types](/docs/guides/python-data-types/).
+There are many more data types than integers and strings, and much more to know about them. To keep learning more, take a look at our [The Basics of Python Data Types](/docs/guides/python-data-types/) guide.
 
 ### Casting Variables
 
 There is a way to easily remedy the code example shown above. You can *cast* many variables into the type you need for a given operation. In Python, casting means using a particular function to render one type as another.
 
-The guide to Python data types linked above covers casting in more detail and depth. But, for now, you can see how to use it to effectively handle interactions between integers and strings. This is perhaps the most common use case for casting.
+The guide to Python data types linked above covers casting in more detail and depth. But, for now, you can see how to use it to effectively handle interactions between integers, and strings. This is perhaps the most common use case for casting.
 
-The following reworks the example code above to use casting. The `str` method casts the integer variable, `example_variable_two`, as a string. Doing so allows number variables to be used as strings:
+The following rework of the example code above to use casting. The `str` method casts the integer variable, `example_variable_two`, as a string. Doing so allows number variables to be used as strings.
 
 ``` python
 example_variable_one = "Hello, "
@@ -227,6 +228,6 @@ Hello, 5!
 
 This guide has covered the foundations you need to start working with variables in Python. Everything from variable assignment through variable operations, types, and scopes. And with that, you have what you need to start making dynamic Python programs.
 
-With that foundation, you may also be looking to move further with your Python skills. In addition to [The Basics of Python Data Types](/docs/guides/python-data-types/) guide linked above, we have numerous other [guide on Python development](https://www.linode.com/docs/guides/development/python/). These can give you tools to elevate your Python skills and start making your Python code more effective.
+With that foundation, you may also be looking to move further with your Python skills. In addition to [The Basics of Python Data Types](/docs/guides/python-data-types/) guide linked above, we have numerous other [guides on Python development](https://www.linode.com/docs/guides/development/python/). These can give you tools to elevate your Python skills and start making your Python code more effective.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

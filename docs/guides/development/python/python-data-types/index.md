@@ -5,12 +5,14 @@ author:
   email: docs@linode.com
 description: "Python may not be a statically-typed programming language, but data types still play an important role. Knowing what Python data types are and how to use them can make your programs more effective and efficient overall. Learn the basics of Python data types and their operations in this guide."
 keywords: ['python data types', 'python data types check', 'python data types cheat sheet']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-03
 modified_by:
   name: Nathaniel Stickman
 title: "The Basics of Python Data Types"
 h1_title: "The Basics of Python Data Types"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -21,13 +23,13 @@ external_resources:
 - '[GeeksforGeeks: Python Data Types](https://www.geeksforgeeks.org/python-data-types/)'
 ---
 
-Knowing about Python's data types helps to make your Python programs more effective, and helps you to avoid errors more often. This tutorial covers the most useful Python data types, providing knowledge of their fundamentals and giving a cheat sheet that you can refer to.
+Knowing about Python's data types helps to make your Python programs more effective, and helps you to avoid errors more often. This guide covers the most useful Python data types, providing knowledge of their fundamentals and giving a cheat sheet that you can refer to.
 
 ## What Are the Python Data Types?
 
 Python has numerous data types, more than this guide can effectively cover. You can refer to the Python documentation linked at the end of this guide for a comprehensive list of Python data types.
 
-This guide, instead, focuses on listing the most commonly used, and most useful data types. Doing so lets the guide provide more on these data types' usage and operations, helping you grasp the underlying concepts behind Python data types. It can also act as a Python data types cheat sheet for these most common data types.
+This guide, instead, focuses on listing the most commonly used, and most useful data types. Doing so lets the guide provide more on these data types' usage and operations, helping you grasp the underlying concepts behind Python data types. The guide also acts as a Python data types cheat sheet for these most common data types.
 
 ### Boolean
 
@@ -35,7 +37,7 @@ Perhaps the simplest data type, a *Boolean* consists of only one of two values: 
 
 Most often, Booleans are useful as the result of evaluations in Boolean contexts. A Boolean context is one in which an expression is evaluated to determine its truthfulness.
 
-Here are a couple of examples, with in-code comments, to illustrate:
+Following are some example illustrations with inline code comments:
 
 ``` python
 # Mathematical comparisons.
@@ -124,7 +126,7 @@ Python's numbers can be used in mathematical operations using Python's built-in 
 
 ### Strings
 
-Python strings hold sequences of characters contained within either double or single quotation marks. Strings allow you to work with text in your Python code. Like with integers, strings can be any length, limited only by your system's available memory.
+Python strings hold sequences of characters contained within either double or single quotation marks. Strings allow you to work with text in your Python code. Like with integers, strings can be of any length, limited only by your system's available memory.
 
 ``` python
 print("This is a string.")
@@ -139,9 +141,9 @@ This is a string.
 This is a string variable.
 {{< /output >}}
 
-Generally, characters within a string are taken literally — you type `abc?!`, and that is exactly what the string contains. However, there are two main exceptions.
+Generally, characters within a string are taken literally — you type `abc?!`, and that is exactly what the string contains. However, there are two main exceptions:
 
-- Quotation marks that you attempt to include within a string may be interpreted as ending the string. You can fix that by, instead, wrapping the string in the opposite kind of quotation mark:
+- Quotation marks that you attempt to include within a string may be interpreted as ending the string. You can fix that by, instead, wrapping the string in the opposite kind of quotation mark.
 
 ``` python
 string_variable = "This is a double quotation: " ."
@@ -158,7 +160,7 @@ string_variable = "This is a single quotation: ' ."
 # And this remedies the issue by using double quotes to wrap the string.
 ```
 
-- The escape character `\` can be used to either include a special character, like a quotation mark, as a literal character, or to include a special character like a new line.
+- The escape character, `\` can be used to either include a special character, like a quotation mark, as a literal character, or to include a special character like a new line.
 
 ``` python
 string_variable = "This is a double quotation: \" . And this is a backslash: \\ ."
@@ -172,7 +174,7 @@ You can find a full list of escape sequences for Python strings in Python's [lex
 
 #### Strings as Collections
 
-Above, strings are called sequences of characters. In fact, strings act as a type of collection in Python. The next section discusses collections and some of the operations these data types are capable of.
+In the section above, strings are called sequences of characters. Strings act as a type of collection in Python. The next section discusses collections and some of the operations these data types are capable of.
 
 Many of these operations can be used on strings as well. Using them can give you powerful tools for manipulating and extracting data from strings in Python.
 
@@ -195,7 +197,7 @@ tuple_variable[3]
 # 2.3
 ```
 
-- *Lists* are also ordered collections, but they are mutable. A list contains a series of objects wrapped in square brackets. You can change the contents of a list at any time. And, as with tuples, elements of a list can be accessed using indices and slice notation.
+- *Lists* are also ordered collections, but they are mutable. A list contains a series of objects wrapped in square brackets. You can change the contents of a list at any time. And, as with tuples, elements of a list can be accessed using indices, and slice notation.
 
 ``` python
 list_variable = [4.2, "Value 4", 89, "Value 2", "Value 2"]
@@ -236,13 +238,13 @@ Instead, take a look at our other guides to learn more about the ins and outs of
 
 Python dictionaries, or *dicts*, are unordered collections, like sets. But unlike a set, a Python dictionary contains a collection of key-value pairs. Such collections can be useful for associating and organizing data based on specific keys.
 
-Like sets, dictionaries are wrapped in curly braces. They consist of a list of key-value pairs, where the keys can be of any immutable type, like strings, integers, and floats (not lists, sets, and other dictionaries).
+Like sets, dictionaries are wrapped in curly braces. They consist of a list of key-value pairs. The keys can be of any immutable type, like strings, integers, and floats (not lists, sets, and other dictionaries).
 
 ``` python
 dict_variable = {"key1": "Value 1", "key2": 945, 4: "Value 3"}
 ```
 
-Unlike sets, you can fetch a particular item from a dictionary, based on the item's key. In this way, each item is identified by its key. So, extending on the example code above:
+Unlike sets, you can fetch a particular item from a dictionary, based on the item's key. In this way, each item is identified by its key. So, extending on the example code above, you can print the dictionary keys as follows:
 
 ``` python
 print(dict_variable[4])
@@ -254,7 +256,7 @@ Value 3
 Value 1
 {{< /output >}}
 
-Python dictionaries can be especially useful for creating variables with properties. And, if you apply the keys for these properties consistently across variables, these variables' properties can be compared effectively:
+Python dictionaries can be especially useful for creating variables with properties. And, if you apply the keys for these properties consistently across variables, these variables' properties can be compared effectively.
 
 ``` python
 person_one = {"name": "Melissa", "age": 32, "height_inches": 68}
@@ -272,7 +274,7 @@ else:
 Melissa is taller than Edgar.
 {{< /output >}}
 
-You can learn more about Python dictionaries and how to make the most of them by reading our guide [Using Dictionaries in Python 3](/docs/guides/python-3-dictionaries/).
+You can learn more about Python dictionaries and how to make the most of them by reading our [Using Dictionaries in Python 3](/docs/guides/python-3-dictionaries/) guide.
 
 ## Python Data Type Operations
 
@@ -331,7 +333,7 @@ The total is $15.
 
 Python has three functions for casting between numbers and strings.
 
-- The `int` function casts a float or string value as an integer. For floats, the function always rounds down, so that the float `5.6` becomes the integer `5`. The function only works on strings that consists of an integer value. So, it works for the string `"5"`, but not the strings `"5.6"` or `"This is 5"`.
+- The `int` function casts a float or string value as an integer. For floats, the function always rounds down, so float `5.6` becomes the integer `5`. The function only works on strings that consist of an integer value. So, it works for the string `"5"`, but not the strings `"5.6"` or `"This is 5"`.
 
 - The `float` function works similarly, casting an integer or string value as a float. Integers simply have a decimal place added, as in `5` becoming `5.0`. The function works only on strings consisting of either an integer or float value, as in `"5"` or `"5.6"`.
 
@@ -339,7 +341,7 @@ Python has three functions for casting between numbers and strings.
 
 ## Conclusion
 
-With that, you have what you need to start working effectively with the most common data types in Python. Following this tutorial can help you get more familiar with everything from basic types like Boolean and integers to strings, collections, and dictionaries.
+With that, you have what you need to start working effectively with the most common data types in Python. Following this guide can help you get more familiar with everything from basic types like Boolean and integers to strings, collections, and dictionaries.
 
 Looking to deepen your understanding? Then be sure to look at our other [guides on Python](/docs/guides/development/python/). A few of these have been linked throughout this guide, but here is a list gathering those together:
 
