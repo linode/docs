@@ -1227,6 +1227,7 @@ melilla
 memcached
 memcrashed
 menuentry
+Merkle
 mesos
 metabase
 metacharacter
