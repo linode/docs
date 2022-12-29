@@ -176,6 +176,7 @@ bitwise
 blkid
 blockchain
 blocklists
+Blockly
 blockwise
 bluehost
 bokeh
@@ -1049,6 +1050,7 @@ kloth
 kloxo
 knockpy
 knowledgebase
+Kodu
 Konqueror
 konsole
 kotin
@@ -1213,6 +1215,7 @@ maxdepth
 maxretry
 mbit
 mbits
+mBlock
 mbox
 Mbps
 mbstrings
@@ -1322,6 +1325,7 @@ multilib
 multiline
 multilink
 multiplatform
+Multiplo
 multiport
 multiprotocol
 multisite
@@ -2304,6 +2308,7 @@ vmlinuz
 vmstat
 vmui
 vnc
+VPLs
 vpns
 vset
 vswap
