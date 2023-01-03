@@ -1,17 +1,18 @@
 ---
-slug: python-sets
+slug: getting-started-with-python-sets
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Sets in Python provide convenient unordered collections of unique data, and they are capable of applying mathematical set operations. This tutorial explains what sets are and gets you started using them."
-og_description: "Sets in Python provide convenient unordered collections of unique data, and they are capable of applying mathematical set operations. This tutorial explains what sets are and gets you started using them."
-keywords: ['python sets','python sets intersection','python sets operations']
+description: "Sets in Python provide convenient unordered collections of unique data, and they are capable of applying mathematical set operations. This guide explains what sets are and gets you started using them."
+keywords: ['python sets', 'python sets intersection', 'python sets operations']
+tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-20
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Python Sets"
-h1_title: "Getting Started with Python Sets"
+h1_title: "Introduction to Python Sets"
+enable_h1: true
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -25,13 +26,13 @@ external_resources:
 
 Python's sets provide unordered collections modeled on mathematical sets, complete with mathematical sets' logical operations. Among the Python collection data types, sets stand out with unique features that make them especially useful in many contexts.
 
-This tutorial gets you set up with everything you need to start using Python sets. It elaborates on what Python sets are, how to create them, how to modify them, and how to use their mathematical operations.
+This guide gets you set up with everything you need to start using Python sets. It elaborates on what Python sets are, how to create them, how to modify them, and how to use their mathematical operations.
 
 ## What Are Sets in Python?
 
-In Python, a set is an unordered collection of unique elements. Sets are also by nature highly efficient at checking for specific values. Additionally, they are able to perform mathematical set operations like union, intersection, and difference.
+In Python, a set is an unordered collection of unique elements. Sets are also by nature highly efficient at checking for specific values. Additionally, they can perform mathematical set operations like union, intersection, and difference.
 
-A Python set consist of a comma-separated list of unique values wrapped in curly braces, like this:
+A Python set consists of a comma-separated list of unique values wrapped in curly braces as shown below:
 
     {2, 4, 6, 8}
 
@@ -39,13 +40,13 @@ Each element in a set must be not only unique within the set. It must also be of
 
 ## Creating a Python Set
 
-Python provides two ways of creating sets. The first is through simple variable assignment. Just use the set notation to assign a variable with a set:
+Python provides two ways of creating sets. The first is through the simple variable assignment. Just use the set notation to assign a variable with a set.
 
 ``` python
 example_set = {2, 4, 6, 8}
 ```
 
-Alternatively, you can create a set from a list by using the `set` function. This function takes a list as input and returns a set:
+Alternatively, you can create a set from a list by using the `set` function. This function takes a list as input and returns a set.
 
 ``` python
 example_set = set([2, 4, 6, 8])
@@ -55,15 +56,15 @@ The `set` function can be useful in particular scenarios. Lists have some conven
 
 ## Python Set Operations
 
-The operations for Python sets differ from those available for lists and arrays. Those difference mainly relate to sets' being unordered, meaning elements cannot be access by indices, and sets' use of mathematical set operations.
+The operations for Python sets differ from those available for lists and arrays. Those differences mainly relate to sets' being unordered, meaning elements cannot be accessed by indices and sets' use of mathematical set operations.
 
-If you are curious, you can learn more about lists in our guide [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/). And you can learn more about arrays in our guide **Python Arrays: What They Are and How to Use Them**.
+If you are curious, you can learn more about lists in our [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/) guide. And you can learn more about arrays in our **Python Arrays: What They Are and How to Use Them** guide.
 
 These next sections introduce you to the most useful Python set operations. They include all of the Python set functions that you need to be able to start using sets effectively in your Python code.
 
-### Fetching from a Set
+### Fetch From a Set
 
-Python sets are unordered, so elements cannot be accessed based on their indices. Instead, elements can be accessed using the `pop` method. This method returns an arbitrary value from the set while, at the same time, removing that value from the set:
+Python sets are unordered, so elements cannot be accessed based on their indices. Instead, elements can be accessed using the `pop` method. This method returns an arbitrary value from the set while, at the same time, removing that value from the set.
 
 ``` python
 example_set = {"a", 2, "c", 4, "b", 6}
@@ -77,7 +78,7 @@ print(example_set)
 {'b', 4, 6, 'c', 'a'}
 {{< /output >}}
 
-You can check a set for a certain value, however, using Python's `in` operator. Expressions with this operator return `True` if the provided value is found in the set:
+You can check a set for a certain value, however, using Python's `in` operator. Expressions with this operator return `True` if the provided value is found in the set.
 
 ``` python
 if 4 in example_set:
@@ -88,7 +89,7 @@ if 4 in example_set:
 Match found!
 {{< /output >}}
 
-Like lists and arrays, Python sets can be looped through. Using a `for` loop on a set, for instance, yields each item in the set iteratively, as you can see here:
+Like lists and arrays, Python sets can be looped through. Using a `for` loop on a set, for instance, yields each item in the set iteratively, as you can see below:
 
 ``` python
 for item in example_set:
@@ -103,13 +104,13 @@ c
 b
 {{< /output >}}
 
-### Modifying a Set
+### Modify a Set
 
 Python sets are *mutable*, meaning items can be added to and removed from them as needed. Python provides several methods for accomplishing these modifications, which you can see in the next two sections.
 
-#### Adding
+#### Add Elements to a Set
 
-Python has a dedicated method for adding individual elements to a set, the `add` method. The method takes a value as an argument, and adds that value to the set as an element:
+Python has a dedicated method for adding individual elements to a set using the `add` method. The method takes a value as an argument and adds that value to the set as an element.
 
 ``` python
 example_set = {"this", "is", "a"}
@@ -123,7 +124,7 @@ print(example_set)
 {'a', 'this', 'is', 'set'}
 {{< /output >}}
 
-But if you instead need to add multiple values to a set, and want to add them all at the same time, use the `update` method. This method takes a list of values as an argument, and adds any values from the list that are not already in the set:
+But if you instead need to add multiple values to a set, and want to add them all at the same time, use the `update` method. This method takes a list of values as an argument and adds any values from the list that are not already in the set.
 
 ``` python
 example_set = {1, 3, 5, 7}
@@ -137,15 +138,15 @@ print(example_set)
 {1, 2, 3, 4, 5, 7}
 {{< /output >}}
 
-There are two features that make `update` especially noteworthy. First, as you can see above, it only adds unique values to the set, regardless of the method's input. This can conveniently save you from having to check the set's contents before trying to add values to the set. Second, it takes a list, which can be helpful because of all the tools Python has for dealing with lists.
+Two features make `update` method especially noteworthy. First, as you can see above, it only adds unique values to the set, regardless of the method's input. This can conveniently save you from having to check the set's contents before trying to add values to the set. Second, it takes a list, which can be helpful because of all the tools Python has for dealing with lists.
 
-#### Removing
+#### Remove Elements From a Set
 
-Above, you saw one method for removing an element from a set, the `pop` method. But that method removes and returns an arbitrary element. It does not let you remove a specific element based on its value.
+Above, you saw one method for removing an element from a set using the `pop` method. But that method removes and returns an arbitrary element. It does not let you remove a specific element based on its value.
 
 Fortunately, Python sets have two methods for removing specific values.
 
-Use the `remove` method to remove an element from a set. The method's argument is the value of the element to be removed:
+Using the `remove` method, you can remove specific elements from a set. The method's argument is the value of the element to be removed.
 
 ``` python
 example_set = {1, 3, 5, 7}
@@ -159,7 +160,7 @@ print(example_set)
 {1, 5, 7}
 {{< /output >}}
 
-Use the `discard` method similarly. This method differs from `remove` in that it does not give you an error if the value provided is not in the set:
+You can use the `discard` method similarly. This method differs from `remove` in that it does not give you an error if the value provided is not in the set.
 
 ``` python
 example_set = {1, 3, 5, 7}
@@ -179,13 +180,13 @@ print(example_set)
 {3, 5, 7}
 {{< /output >}}
 
-### Combining Sets
+### Combine Sets
 
 One of the benefits of Python sets is their ability to use mathematical set operations like union, intersection, and difference. These logical operations are powerful tools for working with mathematical sets. Having them available for Python sets makes the set data type even more helpful.
 
-These next sections cover each of the logical operations available for Python sets. These operations can be implemented using either a method call or an operator, both of which are shown throughout below.
+These next sections cover each of the logical operations available for Python sets. These operations can be implemented using either a method call or an operator, both of which are shown below.
 
-The examples to follow use two sets, which you can create using the following Python code. These sets consist of, first, a list of four mammals and, second, a list of four insectivores (animals that eat insects):
+The examples that follow use two sets, which you can create using the following Python code. These sets consist of, first, a list of four mammals and, second, a list of four insectivores (animals that eat insects).
 
 ``` python
 mammal_set = {"wolves", "giraffes", "anteaters", "armadillos"}
@@ -194,7 +195,7 @@ insectivore_set = {"frogs", "lizards", "anteaters", "armadillos"}
 
 #### Union
 
-A *union* includes all of the contents of two sets, overlapping and non-overlapping. You can see this in the Venn diagram:
+A *union* includes all of the contents of two sets, overlapping and non-overlapping. You can see this in the below Venn diagram:
 
 ![Venn diagram of set union](python-sets-venn-union.png)
 
@@ -217,7 +218,7 @@ print(mammals_and_insectivores_set)
 
 #### Intersection
 
-An *intersection* includes only the elements shared between two sets, the elements that overlap between two sets:
+An *intersection* includes only the elements shared between two sets, the elements that overlap between two sets.
 
 ![Venn diagram of set intersection](python-sets-venn-intersection.png)
 
@@ -241,7 +242,7 @@ print(insectivore_mammals_set)
 
 A *difference* includes all elements that are in one set but not in another. It excludes the overlap.
 
-The difference operation relies on excluding one set from another, and so there are two possibilities when you are working with two sets:
+The difference operation relies on excluding one set from another, so there are two possibilities when you are working with two sets.
 
 ![Venn diagram of set difference for `mammal_set`](python-sets-venn-difference-1.png)
 
@@ -267,11 +268,11 @@ print(insectivores_not_mammals_set)
 
 #### Symmetric Difference
 
-A *symmetric difference* includes all elements that are not shared in common between two sets. In other words, a symmetric difference is everything in the sets except for the overlap:
+A *symmetric difference* includes all elements that are not shared in common between two sets. In other words, a symmetric difference is everything in the sets except for the overlap.
 
 ![Venn diagram of set symmetric difference](python-sets-venn-symmetric-difference.png)
 
-For the example, this gets you a set that contains both non-insectivore mammals and non-mammalian insectivores. You can think of it as the combination of both differences, or as the opposite of the intersection.
+For example, this gets you a set that contains both non-insectivore mammals and non-mammalian insectivores. You can think of it as the combination of both differences, or as the opposite of the intersection.
 
 ``` python
 # Using the symmetric difference operator, ^.
@@ -289,9 +290,9 @@ print(symmetric_difference_set)
 
 ### Checking Set Relationships
 
-Another way that Python sets resemble mathematical sets are through the comparative operations subset, superset, and disjoint. Each of these operations allows you to check on the relationship between two sets.
+Another way that Python sets resemble mathematical sets is through the comparative operations subset, superset, and disjoint. Each of these operations allows you to check on the relationship between two sets.
 
-- A *subset* is a set in which all of the elements can be found in another set. In this example, `set_A` is a subset of `set_B`. You can verify this using the `issubset` method on `set_A`:
+- A *subset* is a set in which all of the elements can be found in another set. In this example, `set_A` is a subset of `set_B`. You can verify this using the `issubset` method on `set_A`.
 
 ``` python
 set_A = {"a", "b", "c"}
@@ -304,7 +305,7 @@ set_A.issubset(set_B)
 True
 {{< /output >}}
 
-- A *superset* is a set which contains all of the elements of another set. In other words, it is the inverse of a subset. In the example above, `set_B` is a superset of `set_A`. This is the case as well in the example that follows, verified using the `issuperset` method on `set_B`:
+- A *superset* is a set that contains all of the elements of another set. In other words, it is the inverse of a subset. In the example above, `set_B` is a superset of `set_A`. This is the case as well in the example that follows, verified using the `issuperset` method on `set_B`.
 
 ``` python
 set_A = {1, 2, 3, 4}
@@ -317,7 +318,7 @@ set_B.issuperset(set_A)
 True
 {{< /output >}}
 
-- A *disjoint* occurs when two sets share no elements in common. You can verify whether this is the case using the `isdisjoint` method, which you can use on either set:
+- A *disjoint* occurs when two sets share no elements in common. You can verify whether this is the case using the `isdisjoint` method, which you can use on either set.
 
 ``` python
 set_A = {"a", "b", "c", "d"}
