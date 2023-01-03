@@ -14,6 +14,8 @@ modified: 2022-10-28
 
 - [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/): View, edit, and manage DNS records on your domains.
 
+- [Configure Your Domain's Authoritative Name Servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/): To use Linode's DNS Manager for your domain, you must configure the authoritative name server's on your domain's registrar.
+
 ## Additional Management
 
 - [Incoming DNS Zone Transfers (Import a Domain)](/docs/products/networking/dns-manager/guides/incoming-dns-zone-transfers/): Transfer DNS records from an external DNS service to the Linode DNS Manager, including how to operate a *secondary* DNS service on Linode through AXFR transfers from an external *primary* DNS service.
