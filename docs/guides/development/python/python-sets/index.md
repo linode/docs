@@ -1,5 +1,5 @@
 ---
-slug: getting-started-with-python-sets
+slug: python-sets
 author:
   name: Linode Community
   email: docs@linode.com
