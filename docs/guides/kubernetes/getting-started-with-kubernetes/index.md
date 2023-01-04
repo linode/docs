@@ -80,9 +80,9 @@ The following table provides a list of the Kubernetes tooling you need to instal
 | <abbr title="A command line tool used to manage a Kubernetes cluster.">kubectl</abbr>| x | x |
 | <abbr title="The control plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
- {{< note respectIndent=false >}}
- The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
- {{< /note >}}
+{{< note respectIndent=false >}}
+The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
+{{< /note >}}
 
 ### Install the Container Runtime: Docker Engine
 
@@ -172,9 +172,9 @@ After entering the `usermod` command, you need to close your SSH session and ope
    You should see the following output:
 
    {{< output >}}
- Cgroup Driver: systemd
- Cgroup Version: 1
- {{< /output >}}
+Cgroup Driver: systemd
+Cgroup Version: 1
+{{< /output >}}
 
 ### Install the cri-dockerd Service
 

@@ -53,7 +53,7 @@ Once your Linode is fully configured, the next step is to copy your configuratio
 
 1. Select the region and plan for the new Linode. A different region for each backend Linode is recommended when using round-robin DNS.
 
-  {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 You will not be able to choose a plan for your new Linode that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Linode (Nanode).
 {{< /note >}}
 

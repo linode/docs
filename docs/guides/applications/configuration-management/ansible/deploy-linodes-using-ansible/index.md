@@ -324,27 +324,31 @@ types:
 1.  Before you can communicate with your Linode instances using the dynamic inventory plugin, you will need to add your Linode's IPv4 address and label to your `/etc/hosts` file.
 
     The Linode Dynamic Inventory Plugin assumes that the Linodes in your account have labels that correspond to hostnames that are in your resolver search path, `/etc/hosts`. This means you will have to create an entry in your `/etc/hosts` file to map the Linode's IPv4 address to its hostname.
-  {{< note respectIndent=false >}}
+
+    {{< note respectIndent=false >}}
 A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists to support using a public IP, private IP or hostname. This change will enable the inventory plugin to be used with infrastructure that does not have DNS hostnames or hostnames that match Linode labels.
 {{< /note >}}
+
     To add your deployed Linode instance to the `/etc/hosts` file:
 
-  -   Retrieve your Linode instance's IPv4 address:
+    -   Retrieve your Linode instance's IPv4 address:
 
-          ansible-inventory -i ~/development/linode.yml --graph --vars | grep 'ipv4\|simple-linode'
+            ansible-inventory -i ~/development/linode.yml --graph --vars | grep 'ipv4\|simple-linode'
 
-      Your output will resemble the following:
+        Your output will resemble the following:
 
-      {{<output>}}
-|  |--simple-linode-36
-|  |  |--{ipv4 = [u'192.0.2.0']}
-|  |  |--{label = simple-linode-36}
-{{</output>}}
+        ```output
+        |  |--simple-linode-36
+        |  |  |--{ipv4 = [u'192.0.2.0']}
+        |  |  |--{label = simple-linode-36}
+        ```
 
-  -   Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
+    -   Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
 
-          127.0.0.1       localhost
-          192.0.2.0 simple-linode-29
+        ```file {title=""/etc/hosts"}
+        127.0.0.1       localhost
+        192.0.2.0 simple-linode-29
+        ```
 
 1.  Verify that you can communicate with your grouped inventory by pinging the Linodes. The ping command will use the dynamic inventory plugin configuration file to target `example_group`. The `u root` option will run the command as root on the Linode hosts.
 

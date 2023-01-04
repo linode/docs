@@ -167,7 +167,7 @@ production: &base
 {{< /file >}}
 
 
-     {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 If you specified a database name other than `gitlabhq_production` when creating the PostgreSQL database in the previous section, edit the `config/database.yml` file to match with your database name.
 {{< /note >}}
 
@@ -293,8 +293,7 @@ audit_usernames: false
         sudo -u git -H git config --global user.email "gitlab@example.com"
         sudo -u git -H git config --global core.autocrlf input
 
-
-     {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 Set the value for user.email according to what is set in config/gitlab.yml
 {{< /note >}}
 

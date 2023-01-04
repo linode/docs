@@ -47,7 +47,7 @@ The plan's storage must be greater than the combined disk size of the original L
 
 1. Once the cloning process is complete, you need to power on the new Linode to begin using it.
 
-  {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 The new Linode's IP address will be different than the original Linode. If desired, you can transfer the IP address from the original Linode to the new Linode. Swapping the IP address can prevent additional changes from being required, such as changing DNS records or the internal configuration of a Linode. See [Transferring IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses).
 {{< /note >}}
 

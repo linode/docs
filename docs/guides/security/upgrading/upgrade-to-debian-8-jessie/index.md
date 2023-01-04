@@ -106,9 +106,9 @@ Check your `/etc/apt/sources.list.d` for additional package repositories, and en
 
         sudo apt-get dist-upgrade
 
-     {{< note respectIndent=false >}}
-Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
-{{< /note >}}
+    {{< note >}}
+    Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+    {{< /note >}}
 
     During the upgrade process, configuration files that you've modified and require updates will be presented for manual review. Here's an example:
 

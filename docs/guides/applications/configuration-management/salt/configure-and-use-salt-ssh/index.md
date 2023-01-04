@@ -49,7 +49,7 @@ For detailed instruction on how to set up SaltStack repo, please refer to the [S
 The Roster file contains target system information, connection details and credentials.
 The Default location for the Roster file is: `/etc/salt/roster`.
 
-   {{< note respectIndent=false >}}
+{{< note >}}
 The Roster file is configured on the master server.
 {{< /note >}}
 

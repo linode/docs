@@ -130,11 +130,9 @@ Host *
   IdentityFile ~/.ssh/id_rsa
 {{< /file >}}
 
-  {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 Although `kubectl` should be used in all cases possible to interact with nodes in your cluster, the key pair cached in the `ssh-agent` process will enable you to access individual nodes via SSH as the `core` user.
 {{< /note >}}
-
-
 
 1.  Add your key to the `ssh-agent` process:
 

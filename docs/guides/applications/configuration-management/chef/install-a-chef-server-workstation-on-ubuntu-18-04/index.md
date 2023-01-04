@@ -142,13 +142,13 @@ Authentication between the Chef server and workstation and/or nodes is completed
 
         ssh-keygen -b 4096
 
-      Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
+    Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` in `/home/your_username/.ssh` before entering your passphrase.
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
   If you have disabled SSH password authentication on your Chef server's Linode, as recommended by the [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide, re-enable SSH password authentication prior to performing these steps. Be sure to disable it again once you have added your workstation's public ssh key to the Chef server's Linode.
-      {{< /note >}}
+    {{< /note >}}
 
-      Upload your workstation's public key to the Linode hosting the Chef server. Ensure you replace `example_user` with the Chef server's user account and `192.0.2.0` with its IP address:
+    Upload your workstation's public key to the Linode hosting the Chef server. Ensure you replace `example_user` with the Chef server's user account and `192.0.2.0` with its IP address:
 
         ssh-copy-id example_user@192.0.2.0
 

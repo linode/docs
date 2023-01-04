@@ -283,7 +283,7 @@ upstream appcluster {
 
 Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
 {{< /note >}}
 

@@ -161,7 +161,7 @@ You can use the `e2fsck` system utility (short for "ext file system check") to c
 
     The primary disks should not appear in the list. In the [example screenshot](cloud-manager-rescue-form-dev-sda-highlighted.png) from the [Booting into Rescue Mode](#booting-into-rescue-mode) section, the Ubuntu 18.04 disk is assigned to `/dev/sda`. Because this device does not appear in the example output from `df -h`, run a filesystem check on it.
 
-     {{< note type="alert" respectIndent=false >}}
+    {{< note type="alert" respectIndent=false >}}
 Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
 {{< /note >}}
 

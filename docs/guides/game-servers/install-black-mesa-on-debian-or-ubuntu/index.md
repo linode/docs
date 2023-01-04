@@ -250,7 +250,7 @@ You can read the entire list of parameters on the [Valve Wiki](https://developer
 
         wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 This URL constantly changes as MetaMod is updated. Please check the downloads [page](http://www.metamodsource.net/snapshots) for the current URL.
 {{< /note >}}
 

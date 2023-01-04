@@ -63,13 +63,13 @@ In this section, you will install various SELinux packages that will help you wh
 
     A newly deployed CentOS 7 Linode should have the following packages installed:
 
-      {{< output >}}
-libselinux-2.5-14.1.el7.x86_64
-selinux-policy-3.13.1-252.el7_7.6.noarch
-selinux-policy-targeted-3.13.1-252.el7_7.6.noarch
-libselinux-utils-2.5-14.1.el7.x86_64
-libselinux-python-2.5-14.1.el7.x86_64
-    {{</ output >}}
+    ```output
+    libselinux-2.5-14.1.el7.x86_64
+    selinux-policy-3.13.1-252.el7_7.6.noarch
+    selinux-policy-targeted-3.13.1-252.el7_7.6.noarch
+    libselinux-utils-2.5-14.1.el7.x86_64
+    libselinux-python-2.5-14.1.el7.x86_64
+    ```
 
 1. Install the following packages and their associated dependencies:
 
@@ -89,23 +89,23 @@ When SELinux is installed on your system, it can be either *enabled* or *disable
 
 - To disable SELinux, update your SELinux configuration file using the text editor of your choice. Set the `SELINUX` directive to `disabled` as shown in the example.
 
-      {{< file "/etc/selinux/config">}}
-# This file controls the state of SELinux on the system.
-# SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
-#     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
-SELINUX=disabled
-# SELINUXTYPE= can take one of three values:
-#     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected.
-#     mls - Multi Level Security protection.
-SELINUXTYPE=targeted
-      {{</ file >}}
+    ```file {title="/etc/selinux/config"}
+    # This file controls the state of SELinux on the system.
+    # SELINUX= can take one of these three values:
+    #     enforcing - SELinux security policy is enforced.
+    #     permissive - SELinux prints warnings instead of enforcing.
+    #     disabled - No SELinux policy is loaded.
+    SELINUX=disabled
+    # SELINUXTYPE= can take one of three values:
+    #     targeted - Targeted processes are protected,
+    #     minimum - Modification of targeted policy. Only selected processes are protected.
+    #     mls - Multi Level Security protection.
+    SELINUXTYPE=targeted
+    ```
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 You can update the `SELINUX` directive with any of the available SELinux [states](#selinux-states) or [modes](#selinux-modes).
-      {{< /note >}}
+    {{< /note >}}
 
 - Reboot your Linode for the changes to take effect:
 
@@ -196,19 +196,19 @@ An SELinux Boolean is a variable that can be toggled on and off without needing 
 
     You will see a similar output:
 
-    {{< output >}}
-httpd_can_check_spam --> off
-httpd_can_connect_ftp --> off
-httpd_can_connect_ldap --> off
-httpd_can_connect_mythtv --> off
-httpd_can_connect_zabbix --> off
-httpd_can_network_connect --> off
-httpd_can_network_connect_cobbler --> off
-httpd_can_network_connect_db --> off
-httpd_can_network_memcache --> off
-httpd_can_network_relay --> off
-httpd_can_sendmail --> off
-    {{</ output >}}
+    ```output
+    httpd_can_check_spam --> off
+    httpd_can_connect_ftp --> off
+    httpd_can_connect_ldap --> off
+    httpd_can_connect_mythtv --> off
+    httpd_can_connect_zabbix --> off
+    httpd_can_network_connect --> off
+    httpd_can_network_connect_cobbler --> off
+    httpd_can_network_connect_db --> off
+    httpd_can_network_memcache --> off
+    httpd_can_network_relay --> off
+    httpd_can_sendmail --> off
+    ```
 
     You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If, for example, you want to allow HTTPD scripts and modules to connect to the network, update the corresponding boolean variable.
 
@@ -218,19 +218,19 @@ httpd_can_sendmail --> off
 
         sudo getsebool -a | grep "httpd_can"
 
-      {{< output >}}
-httpd_can_check_spam --> off
-httpd_can_connect_ftp --> off
-httpd_can_connect_ldap --> off
-httpd_can_connect_mythtv --> off
-httpd_can_connect_zabbix --> off
-httpd_can_network_connect --> on
-httpd_can_network_connect_cobbler --> off
-httpd_can_network_connect_db --> off
-httpd_can_network_memcache --> off
-httpd_can_network_relay --> off
-httpd_can_sendmail --> off
-      {{</ output >}}
+    ```output
+    httpd_can_check_spam --> off
+    httpd_can_connect_ftp --> off
+    httpd_can_connect_ldap --> off
+    httpd_can_connect_mythtv --> off
+    httpd_can_connect_zabbix --> off
+    httpd_can_network_connect --> on
+    httpd_can_network_connect_cobbler --> off
+    httpd_can_network_connect_db --> off
+    httpd_can_network_memcache --> off
+    httpd_can_network_relay --> off
+    httpd_can_sendmail --> off
+    ```
 
 ### Next Steps
 

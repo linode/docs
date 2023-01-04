@@ -132,7 +132,7 @@ If `update.php` does not load or returns a 403 Forbidden error, you can try to c
 {{< /file >}}
 
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 You may need to add write permission to this file before you can edit it:
 
 chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml

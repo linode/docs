@@ -38,9 +38,9 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/products/networking/dns-manager/) guide for more information.
+1.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/products/networking/dns-manager/) guide for more information.
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 Throughout this guide, replace `example.com` with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.
 {{< /note >}}
 

@@ -53,7 +53,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
         wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
 
-     {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 This Guide is about setting up a new Zimbra Linode, but if you are upgrading an existing Zimbra installation, it is very important that you read the release notes that Zimbra provides! The notes are found on the Download page where you found the software. There may be steps that are required to be performed before or after you upgrade.
 {{< /note >}}
 

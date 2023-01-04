@@ -44,7 +44,7 @@ With the additional configuration we will set up at the end of this guide, all t
 
 ![Splash screen for TunnelBlick.](1360-FullTunneling.jpg)
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 Please note that only one public IP address is required to use OpenVPN
 {{< /note >}}
 

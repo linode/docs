@@ -27,7 +27,7 @@ This guide is intended for Linodes using our older Xen hypervisor. To install a 
 
 We'll use a free virtualization suite called [VirtualBox](https://www.virtualbox.org/) to install a Linux distribution locally, but you can also use another virtualization package, such as VMware or Parallels. If you already have a Linux virtual machine that you'd like to run on your Linode, skip to [Booting the Virtual Machine with Finnix](#booting-the-virtual-machine-with-finnix) .
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 We're using Ubuntu 12.04 as the guest operating system in this guide, but you can install virtually any Linux distribution.
 {{< /note >}}
 

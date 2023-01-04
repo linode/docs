@@ -115,7 +115,7 @@ Now it's time to copy the files from your existing server to your Linode. Here's
 
         rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 If you receive a message indicating that the rsync command couldn't be found, you'll need to install it by entering `apt-get install rsync` on Ubuntu or Debian. If you're using a different distribution, you may need to enter a different command.
 {{< /note >}}
 

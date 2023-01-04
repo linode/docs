@@ -24,7 +24,7 @@ The **Lish Console**, also called the *Linode Shell*, provides direct console ac
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
 {{< /note >}}
 

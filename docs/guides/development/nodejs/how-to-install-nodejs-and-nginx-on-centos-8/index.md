@@ -131,11 +131,11 @@ http {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
     sudo setsebool -P httpd_can_network_connect on
-      {{< /note >}}
+    {{< /note >}}
 
     {{< content "cloud-firewall-shortguide" >}}
 
@@ -231,24 +231,24 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 
 1. Create the `test.js` file in your site's root directory.
 
-      {{< file "/var/www/example.com/test.js" html >}}
-<!DOCTYPE html>
-<html>
-<body>
+    ```file {title="/var/www/example.com/test.js" lang="html"}
+    <!DOCTYPE html>
+    <html>
+    <body>
 
-<h2>
-Your Node.JS server is working.
-</h2>
+    <h2>
+    Your Node.JS server is working.
+    </h2>
 
-<p>
-The below button is technically dynamic. You are now using Javascript on both the client-side and the server-side.</p>
+    <p>
+    The below button is technically dynamic. You are now using Javascript on both the client-side and the server-side.</p>
 
-<button type="button" onclick="document.getElementById('sample').innerHTML = Date()"> Display the date and time.</button>
-<p id="sample"></p>
+    <button type="button" onclick="document.getElementById('sample').innerHTML = Date()"> Display the date and time.</button>
+    <p id="sample"></p>
 
-</body>
-</html>
-    {{</ file >}}
+    </body>
+    </html>
+    ```
 
 ### Create the Node.js Web Server File
 
@@ -256,32 +256,31 @@ In this section, you will create a file named `server.js` that will use Node.js 
 
 1. In your site's root directory, create the `server.js` file with the following content.
 
-      {{< file "/var/www/example.com/server.js" js >}}
-//nodejs.org/api for API docs
-//Node.js web server
-var http = require("http"),                           //Import Node.js modules
-    url = require("url"),
-    path = require("path"),
-    fs = require("fs");
+    ```file {title="/var/www/example.com/server.js" lang="js"}
+    //nodejs.org/api for API docs
+    //Node.js web server
+    var http = require("http"),                           //Import Node.js modules
+        url = require("url"),
+        path = require("path"),
+        fs = require("fs");
 
-http.createServer(function(request, response) {       //Create server
-var name = url.parse(request.url).pathname;           //Parse URL
-var filename = path.join(process.cwd(), name);        //Create filename
-fs.readFile(filename, "binary", function(err, file) { //Read file
-    if(err) {                                         //Tracking Errors
-        response.writeHead(500, {"Content-Type": "text/plain"});
-        response.write(err + "\n");
-        response.end();
-        return;
-    }
-    response.writeHead(200);                          //Header request response
-    response.write(file, "binary");                   //Sends body response
-    response.end();                                   //Signals to server that
- });                                                  //header and body sent
-}).listen(3000);                                      //Listening port
-console.log("Server is listening on port 3000.")      //Terminal output
-        {{</ file >}}
-
+    http.createServer(function(request, response) {       //Create server
+    var name = url.parse(request.url).pathname;           //Parse URL
+    var filename = path.join(process.cwd(), name);        //Create filename
+    fs.readFile(filename, "binary", function(err, file) { //Read file
+        if(err) {                                         //Tracking Errors
+            response.writeHead(500, {"Content-Type": "text/plain"});
+            response.write(err + "\n");
+            response.end();
+            return;
+        }
+        response.writeHead(200);                          //Header request response
+        response.write(file, "binary");                   //Sends body response
+        response.end();                                   //Signals to server that
+    });                                                  //header and body sent
+    }).listen(3000);                                      //Listening port
+    console.log("Server is listening on port 3000.")      //Terminal output
+    ```
 
 1.  Run a new [tmux](/docs/guides/persistent-terminal-sessions-with-tmux/) session:
 

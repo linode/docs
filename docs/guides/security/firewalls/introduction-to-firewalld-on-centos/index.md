@@ -115,7 +115,7 @@ By default, `firewall-cmd` commands apply to runtime configuration but using the
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --reload
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
 {{< /note >}}
 

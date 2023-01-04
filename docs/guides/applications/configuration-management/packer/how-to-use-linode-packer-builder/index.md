@@ -163,9 +163,9 @@ After the template file has been saved with your desired parameters, you're now 
 
        packer validate -var linode_api_token=$TOKEN example.pkr.hcl
 
-      {{< note respectIndent=false >}}
-  To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
-      {{< /note >}}
+    {{< note respectIndent=false >}}
+To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
+    {{< /note >}}
 
 1. Build the image by running the `packer build` command below. Just like in the last step, if you did not set TOKEN as a variable in your shell environment, replace *$TOKEN* with your own Linode API token. This process may take a few minutes to complete.
 

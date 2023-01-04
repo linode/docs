@@ -209,22 +209,22 @@ At minimum, you will migrate your GCP instance's boot disk. On a Linux system, w
 1. To inspect your GCP instance's disks, [ssh into your GCP instance](https://cloud.google.com/compute/docs/instances/connecting-to-instance#gcetools) and issue the following command to view disk size on each mounted disk:
 
     {{< note respectIndent=false >}}
-  The usable disk space that is reported by `df` reflects only 90 percent of full capacity.
+The usable disk space that is reported by `df` reflects only 90 percent of full capacity.
     {{< /note >}}
 
         df -h
 
-      You should see a similar output:
+    You should see a similar output:
 
-      {{< output >}}
-Filesystem      Size  Used Avail Use% Mounted on
-udev            3.7G     0  3.7G   0% /dev
-tmpfs           749M  9.9M  739M   2% /run
-/dev/sda1       9.8G  1.2G  8.2G  13% /
-tmpfs           3.7G     0  3.7G   0% /dev/shm
-tmpfs           5.0M     0  5.0M   0% /run/lock
-tmpfs           3.7G     0  3.7G   0% /sys/fs/cgroup
-      {{</ output >}}
+    ```output
+    Filesystem      Size  Used Avail Use% Mounted on
+    udev            3.7G     0  3.7G   0% /dev
+    tmpfs           749M  9.9M  739M   2% /run
+    /dev/sda1       9.8G  1.2G  8.2G  13% /
+    tmpfs           3.7G     0  3.7G   0% /dev/shm
+    tmpfs           5.0M     0  5.0M   0% /run/lock
+    tmpfs           3.7G     0  3.7G   0% /sys/fs/cgroup
+    ```
 
     You can also issue the following command, which displays all available block devices:
 
@@ -274,7 +274,7 @@ ip_forwarding_daemon = false
         sudo systemctl stop google-ip-forwarding-daemon
         sudo systemctl disable google-ip-forwarding-daemon
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 If your GCP instance was not created with IP forwarding enabled, then you may see a similar message after attempting to stop and disable the `google-ip-forwarding-daemon`:
 
     sudo systemctl disable google-ip-forwarding-daemon
@@ -282,7 +282,7 @@ If your GCP instance was not created with IP forwarding enabled, then you may se
     user@test-instance:~$ sudo systemctl --status
     systemctl: unrecognized option '--status'
     user@test-instance:~$ sudo systemctl status
-      {{< /note >}}
+    {{< /note >}}
 
 #### Stop Your GCP Instance
 In order to create your instance's disk image in the next section, you will first need to stop the instance. This will prevent any new data from being written to the persistent disk.

@@ -213,24 +213,22 @@ Using a plug-in manager automates both the installation and setup of any plug-in
 
 3.  Now, open the *.vimrc.plug* file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plug-in, a Github wrapper. With this plug-in installed, you can now run a Git terminal from within Vim!
 
-     {{< note respectIndent=false >}}
-Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
-{{< /note >}}
+    {{< note >}}
+    Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+    {{< /note >}}
 
-    {{< file "~/.vimrc.plug" vim >}}
-call plug#begin('~/.vim/plugged')
+    ```file {title="~/.vimrc.plug" lang="vim"}
+    call plug#begin('~/.vim/plugged')
 
-"Fugitive Vim Github Wrapper
-Plug 'tpope/vim-fugitive'
+    "Fugitive Vim Github Wrapper
+    Plug 'tpope/vim-fugitive'
 
-call plug#end()
+    call plug#end()
+    ```
 
-{{< /file >}}
-
-
-     {{< note respectIndent=false >}}
-If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755
-{{< /note >}}
+    {{< note >}}
+    If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755
+    {{< /note >}}
 
 4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plug-in manager within Vim and proceed to install all plug-ins listed in the **vimrc.plug* file. Installed plug-ins will automatically load the next time Vim is started.
 

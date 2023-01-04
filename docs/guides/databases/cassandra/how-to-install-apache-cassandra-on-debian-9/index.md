@@ -75,9 +75,9 @@ In this section, you will install package dependencies, Java, Cassandra, and upd
 
         sudo sh -c 'echo "deb http://www.apache.org/dist/cassandra/debian 311x main" > /etc/apt/sources.list.d/cassandra.list'
 
-      {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 You may want to follow the link to the Apache repository to confirm that “40x” is the latest available version.
-      {{< /note >}}
+    {{< /note >}}
 
 1. Update your packages index and install Cassandra:
 

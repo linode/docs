@@ -196,9 +196,9 @@ Installing via the package manager allows you to more easily download updates an
 
             sudo apt-get install steamcmd
 
-           {{< note respectIndent=false >}}
+        {{< note respectIndent=false >}}
   In the window that appears, you may need to enter the keys `shift + tab` to select the `ok` option.
-           {{< /note >}}
+        {{< /note >}}
 
      1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
@@ -221,9 +221,9 @@ deb-src http://mirrors.linode.com/debian stretch main non-free
             sudo apt update
             sudo apt-get install steamcmd
 
-           {{< note respectIndent=false >}}
+        {{< note respectIndent=false >}}
   In the window that appears following the command to install steamCMD, you may need to enter the keys `shift + tab` to select the `ok` option.
-           {{< /note >}}
+        {{< /note >}}
 
 
     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:

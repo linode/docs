@@ -63,7 +63,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 
-      {{< note type="alert" respectIndent=false >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Tomcat 9 version you wish to download.
 {{< /note >}}
 
@@ -82,28 +82,28 @@ Ensure that the version number matches the Tomcat 9 version you wish to download
 
 1.  Create a new `systemd` service file, `/etc/systemd/system/tomcat.service`, in the text editor of your choice with the following details:
 
-      {{< file "/etc/systemd/system/tomcat.service" service >}}
-[Unit]
-Description=Tomcat Server
-After=syslog.target network.target
+    ```file {title="/etc/systemd/system/tomcat.service" lang="service"}
+    [Unit]
+    Description=Tomcat Server
+    After=syslog.target network.target
 
-[Service]
-Type=forking
-User=tomcat
-Group=tomcat
+    [Service]
+    Type=forking
+    User=tomcat
+    Group=tomcat
 
-Environment=JAVA_HOME=/usr/lib/jvm/jre
-Environment='JAVA_OPTS=-Djava.awt.headless=true'
-Environment=CATALINA_HOME=/usr/local/tomcat
-Environment=CATALINA_BASE=/usr/local/tomcat
-Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
-Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
-ExecStart=/usr/local/tomcat/bin/catalina.sh start
-ExecStop=/usr/local/tomcat/bin/catalina.sh stop
+    Environment=JAVA_HOME=/usr/lib/jvm/jre
+    Environment='JAVA_OPTS=-Djava.awt.headless=true'
+    Environment=CATALINA_HOME=/usr/local/tomcat
+    Environment=CATALINA_BASE=/usr/local/tomcat
+    Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
+    Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+    ExecStart=/usr/local/tomcat/bin/catalina.sh start
+    ExecStop=/usr/local/tomcat/bin/catalina.sh stop
 
-[Install]
-WantedBy=multi-user.target
-{{< /file >}}
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
 1.  Reload the `systemd` daemon to let it know about the `tomcat.service` that you created:
 

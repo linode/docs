@@ -129,7 +129,7 @@ If this is your first time using Cron, you will have to select your preferred te
 
 3.  Save the changes to your Cron file. For **nano**, this is `Ctrl-x y`.
 
-     {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 Non-root users will not have permission to access the mail log.
 {{< /note >}}
 

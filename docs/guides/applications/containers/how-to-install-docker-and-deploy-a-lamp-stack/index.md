@@ -74,9 +74,9 @@ When an image downloads, there are no image containers running.
 
         sudo docker run -p 80:80 -t -i linode/lamp /bin/bash
 
-     {{< note type="alert" respectIndent=false >}}
-This command also changes the terminal prompt to the root user within the new container.
-{{< /note >}}
+    {{< note type="alert" >}}
+    This command also changes the terminal prompt to the root user within the new container.
+    {{< /note >}}
 
 2.  As the container's root user, start Apache:
 

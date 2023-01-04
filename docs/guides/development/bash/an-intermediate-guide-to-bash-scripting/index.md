@@ -44,7 +44,7 @@ In this guide, you will learn about:
 
         PATH=$PATH:$HOME/bin/
 
-  {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 Ensure all scripts throughout this guide are executable. To add execute permissions to a file, issue the following command:
 
     chmod +x my-script.sh
@@ -289,10 +289,10 @@ You can use variables as arguments to your `printf` commands. This is a powerful
 
     printf "Your current working directory is: \x1b[32m\n %s\n" $PWD
 
-  {{< output "bash" >}}
+{{< output "bash" >}}
 Your current working directory is:
  /home/user
-  {{</ output >}}
+{{</ output >}}
 
 ### Format Strings
 
@@ -336,9 +336,9 @@ The `-v var` option causes the output of `printf` to be assigned to a variable i
     printf -v myvar "%d\n" "0xF9"
     echo $myvar
 
-  {{< output >}}
+{{< output >}}
 249
-  {{</ output >}}
+{{</ output >}}
 {{< /note >}}
 
 ### Use printf in a Script

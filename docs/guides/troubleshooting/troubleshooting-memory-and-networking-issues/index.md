@@ -54,7 +54,7 @@ If you don't use InnoDB tables, you should disable InnoDB support by adding the 
 
     skip-innodb
 
- {{< note type="alert" respectIndent=false >}}
+{{< note type="alert" respectIndent=false >}}
 The settings in this section are designed to help you temporarily test and troubleshoot MySQL. We recommend that you do not permanently use these settings.
 {{< /note >}}
 
@@ -84,7 +84,7 @@ MaxClients 24
 MaxRequestsPerChild 3000
 {{< /file >}}
 
- {{< note type="alert" respectIndent=false >}}
+{{< note type="alert" respectIndent=false >}}
 The settings in this section are designed to help you temporarily test and troubleshoot Apache. We recommend that you do not permanently use these settings.
 {{< /note >}}
 

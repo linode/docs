@@ -117,7 +117,7 @@ Create files on the development Linode and push them to the forked repository on
 
         git add .
 
-     {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 To add only one file, replace the period above with the full directory path and filename.
 {{< /note >}}
 

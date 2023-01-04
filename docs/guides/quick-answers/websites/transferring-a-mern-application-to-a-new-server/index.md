@@ -30,7 +30,7 @@ Before proceeding with any migration, it is first recommended that the Marketpla
 - Node.js
 - NPM
 
-  {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 Users who prefer building applications with alternative package Managers for Node.js like [Yarn](/docs/guides/install-and-use-the-yarn-package-manager/) will need to install the package manager manually.
 {{< /note >}}
 

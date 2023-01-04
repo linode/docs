@@ -148,8 +148,8 @@ After the file transfer has completed, you should verify the disk by mounting it
         bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
         boot  etc  lib   media       opt  root  selinux  sys  usr
 
-  {{< note respectIndent=false >}}
-   If the system displays any disk errors, then perform the [Copying the Disk](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
+{{< note respectIndent=false >}}
+If the system displays any disk errors, then perform the [Copying the Disk](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
 {{< /note >}}
 
 Now the Linode is ready to boot from the disk.

@@ -194,7 +194,7 @@ To enable an installed module, run the following command:
 
     a2enmod [module-name]
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 In the `/etc/apache2/mods-available/` directory, files have `.load` and `.conf` extensions. Module names do not include the extensions.
 {{< /note >}}
 

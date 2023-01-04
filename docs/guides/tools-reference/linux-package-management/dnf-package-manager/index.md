@@ -164,23 +164,23 @@ DNF has a supplemental package, [DNF Automatic](https://dnf.readthedocs.io/en/la
 
     The following presents example values for some configuration options. It is recommended that you change these values.
 
-    {{< file "/etc/dnf/automatic.conf" >}}
-[commands]
-#
-upgrade_type=default
-#
-download_update=yes
-# ...
-apply_updates=yes
-#
-emit_via=motd
-{{< /file >}}
+    ```file {title="/etc/dnf/automatic.conf"}
+    [commands]
+    #
+    upgrade_type=default
+    #
+    download_update=yes
+    # ...
+    apply_updates=yes
+    #
+    emit_via=motd
+    ```
 
     You can switch `upgrade_type` to `security` if you want to limit the updates made to only those impacting system security. With `emit_via` set to `motd`, DNF Automatic's reports will be stored in the `/etc/motd` file.
 
-   {{< note respectIndent=false >}}
-The `email` option can be used here, but that the email can only be delivered to a local user unless you have configured an SMTP server.
-{{< /note >}}
+    {{< note >}}
+    The `email` option can be used here, but that the email can only be delivered to a local user unless you have configured an SMTP server.
+    {{< /note >}}
 
 1.  You can start the DNF Automatic timer by running the following command:
 

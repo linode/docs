@@ -168,7 +168,8 @@ PostgreSQL commands starting with a backslash are known as *meta-commands*. Post
 {{< /note >}}
 
 8.  Edit the `pg_hba.conf` file to enforce authentication. Find the `local` line under "Unix domain socket connections only" and change the `METHOD` attribute from `peer` to `md5`.
-      {{< note type="alert" respectIndent=false >}}
+
+    {{< note type="alert" respectIndent=false >}}
 Ensure that you do not edit the top line for the default `postgres` user. The `postgres` account requires non-interactive access to PostgreSQL for maintenance tasks. Linode recommends you to make a back-up copy of `pg_hba.conf` before editing it.
     {{< /note >}}
 
@@ -295,7 +296,8 @@ Access method: heap
 {{< /output >}}
 
 5.  To delete an existing table, use the  `DROP TABLE` command.
-      {{< note type="alert" respectIndent=false >}}
+
+    {{< note type="alert" respectIndent=false >}}
 This operation deletes all of the data in the table and cannot be undone.
 {{< /note >}}
 

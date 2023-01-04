@@ -235,7 +235,7 @@ Before visualizing Pod logs, Kibana must be configured with an index pattern for
 
 1.  Use the **Filters** box to search only for logs arriving from Kibana Pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
 
-     {{< note respectIndent=false >}}
+    {{< note respectIndent=false >}}
 When searching in the filters box, field names and values are auto-populated.
 {{< /note >}}
 

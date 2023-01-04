@@ -78,28 +78,34 @@ Restart the Longview client in debug mode for increased logging verbosity.
 
 If your Linode has a firewall, it must allow communication with Longview's aggregation host at `longview.linode.com` (IPv4: `96.126.119.66`). You can view your firewall rules with one of the commands below, depending on the firewall controller used by your Linux distribution:
 
-  > **firewalld**
-  >
-  >     sudo firewall-cmd --list-all
-  >
-  >  {{< note respectIndent=false >}}
-Review our [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
+- **firewalld**
+
+    ```command
+    sudo firewall-cmd --list-all
+    ```
+
+    {{< note >}}
+    Review our [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/) guide for more help with FirewallD.
     {{< /note >}}
 
-  >**iptables**
-  >
-  >     sudo iptables -S
-  >
-   {{< note respectIndent=false >}}
-Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide for more help with iptables.
+- **iptables**
+
+    ```command
+    sudo iptables -S
+    ```
+
+    {{< note >}}
+    Review our [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide for more help with iptables.
     {{< /note >}}
 
->  **ufw**
->
->     sudo ufw show added
->
->    {{< note respectIndent=false >}}
- Review our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more help with UFW.
+- **ufw**
+
+    ```command
+    sudo ufw show added
+    ```
+
+    {{< note >}}
+    Review our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide for more help with UFW.
     {{< /note >}}
 
 If the output of those commands show no rules for the Longview domain (or for `96.126.119.66`, which is the IP for the Longview domain), you must add them. A sample iptables rule that allows outbound HTTPS traffic to Longview would be the following:

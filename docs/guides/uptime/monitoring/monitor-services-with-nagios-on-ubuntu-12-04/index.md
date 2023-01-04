@@ -45,7 +45,7 @@ Now you're ready to install Nagios. Here's how:
 
 3.  Enter an administrator password to complete the installation.
 
- {{< note respectIndent=false >}}
+{{< note respectIndent=false >}}
 If you do not already have an email server installed on your Linode, Postfix will be installed automatically. The *Internet Site* configuration will be used by default. You'll also have to enter a mail name for the system.
 {{< /note >}}
 
