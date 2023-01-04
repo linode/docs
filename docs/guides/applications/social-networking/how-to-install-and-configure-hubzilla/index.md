@@ -3,16 +3,13 @@ slug: how-to-install-and-configure-hubzilla
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide provides an introduction to the federated and decentralized Hubzilla application and explains how to install and configure it.'
-og_description: 'This guide provides an introduction to the distributed and decentralized Hubzilla application and explains how to install and configure it.'
+description: "This guide provides an introduction to the federated and decentralized Hubzilla application and explains how to install and configure it."
 keywords: ['Hubzilla','install Hubzilla','configure Hubzilla','Hubzilla federated']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-14
 modified_by:
   name: Linode
 title: "How to Install and Configure Hubzilla"
-h1_title: "How to Install and Configure Hubzilla"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:
