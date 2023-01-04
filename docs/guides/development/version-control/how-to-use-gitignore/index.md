@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains the .gitignore file, describes how to create and update it, and documents its syntax'
-og_description: 'This guide explains the .gitignore file, describes how to create and update it, and documents its syntax'
 keywords: ['gitignore','.gitignore','Gitignore syntax','How to add files to gitignore','What is gitignore']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10

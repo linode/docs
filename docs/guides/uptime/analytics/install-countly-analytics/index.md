@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Countly Community Edition is a free open source alternative to Google Analytics for your online properties. Install it with the help of this guide."
-og_description: "Countly Community Edition is a free open source alternative to Google Analytics for your online properties. Install it with the help of this guide."
 keywords: ['google analytics alternative','self hosted analytics','open source analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-23

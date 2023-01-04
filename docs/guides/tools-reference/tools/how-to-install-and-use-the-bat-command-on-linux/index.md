@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
-og_description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
 keywords: ['linux bat','linux bat command','linux cat vs bat']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

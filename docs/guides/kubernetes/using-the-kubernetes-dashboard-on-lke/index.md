@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
-og_description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
 keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

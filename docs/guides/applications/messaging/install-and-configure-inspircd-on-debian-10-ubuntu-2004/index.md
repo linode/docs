@@ -3,7 +3,6 @@ slug: install-and-configure-inspircd-on-debian-10-ubuntu-2004
 author:
   name: Nathaniel Stickman
 description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
-og_description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
 keywords: ['irc server', 'inspircd']
 tags: ['debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

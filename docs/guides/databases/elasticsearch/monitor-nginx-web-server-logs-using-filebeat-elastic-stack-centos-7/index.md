@@ -7,7 +7,6 @@ contributor:
   name: Tyler Langlois
   link: https://tjll.net
 description: "This guide shows how to install four components of Elastic Stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver."
-og_description: "This guide shows how to install four components of Elastic Stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kibana','elk stack','elastic stack']

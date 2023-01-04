@@ -3,7 +3,6 @@ slug: express-js-tutorial
 author:
   name: Nathaniel Stickman
 description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
-og_description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
 keywords: ['express js','node.js','app framework','web application','install express','middleware','template engines']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

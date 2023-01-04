@@ -7,7 +7,6 @@ contributor:
   name: Tyler Langlois
   link: https://tjll.net
 description: "The Elastic Stack is an open-source solution to search, collect, and analyze data. Learn how to install it and explore Apache web server logs in Kibana."
-og_description: "The Elastic Stack is an open-source solution to search, collect, and analyze data. Learn how to install it and explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ["apache debian 10", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]

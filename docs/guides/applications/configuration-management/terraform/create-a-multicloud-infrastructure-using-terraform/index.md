@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow so you can manage infrastructure with only a few configuration files.'
-og_description: 'This guide shows you how to use Multicloud Terraform to provide a consistent workflow so you can manage infrastructure with only a few configuration files.'
 keywords: ['Terraform','Linode','IaC','multicloud', 'automation', 'cloud manager']
 tags: ['terraform','ubuntu', 'ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

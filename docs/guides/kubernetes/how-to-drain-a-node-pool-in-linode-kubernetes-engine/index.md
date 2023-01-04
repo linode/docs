@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Learn how to drain a node pool in Linode Kubernetes Engine, create a Persistent Volume and copy the application data to a Persistent Volume."
-og_description: "Learn how to drain a node pool in Linode Kubernetes Engine, create a Persistent Volume and copy the application data to a Persistent Volume."
 keywords:
   [drain, node pool, maintenance, upgrade, pod disruption,]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"

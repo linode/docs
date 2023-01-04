@@ -4,7 +4,6 @@ author:
   name: Nick Brewer
   email: nbrewer@linode.com
 description: 'Learn how to view and organize your media library with Plex on Ubuntu 18.04 in this detailed user guide.'
-og_description: 'Learn how to view and organize your media library with Plex on Ubuntu 18.04 in this detailed user guide.'
 keywords: ["plex media server", "install plex", "plex ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

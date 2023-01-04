@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide walks you through the core features of Pacman and gives you an overview of common commands for using the application to install, upgrade, and remove packages."
-og_description: "This guide walks you through the core features of Pacman and gives you an overview of common commands for using the application to install, upgrade, and remove packages."
 keywords: ['arch','manjaro','package manager']
 tags: ['arch', 'manjaro']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

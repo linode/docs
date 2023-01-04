@@ -4,7 +4,6 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
-og_description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

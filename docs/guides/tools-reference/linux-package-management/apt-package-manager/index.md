@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
-og_description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

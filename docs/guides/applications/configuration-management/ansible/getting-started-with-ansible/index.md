@@ -4,7 +4,6 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
-og_description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/ansible/getting-started-with-ansible/','/applications/configuration-management/getting-started-with-ansible/','/applications/configuration-management/ansible/getting-started-with-ansible/']

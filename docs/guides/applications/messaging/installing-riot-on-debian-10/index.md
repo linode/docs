@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Riot is a secure instant messaging application built on Matrix protocol. This guide provides instructions to setup Riot / Matrix on Debian 10.'
-og_description: 'Riot is a secure instant messaging application built on Matrix protocol. This guide provides instructions to setup Riot / Matrix on Debian 10.'
 keywords: ['riot', 'matrix', 'chat', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-05

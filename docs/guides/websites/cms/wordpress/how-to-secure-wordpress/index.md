@@ -3,7 +3,6 @@ slug: how-to-secure-wordpress
 author:
   name: Hackersploit
 description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
-og_description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
 keywords: ["how to secure wordpress site", "how to make wordpress site secure"]
 tags: ["wordpress","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "An extensive guide on how to grep for text in files in Unix based systems. Understand search, match, and advanced regex to grep for text in files."
-og_description: "An extensive guide on how to grep for text in files in Unix based systems. Understand search, match, and advanced regex to grep for text in files."
 keywords: ["how to use grep", "grep usage", "grep tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/how-to-grep-for-text-in-files/','/tools-reference/search-and-filter-text-with-grep/','/tools-reference/tools/how-to-grep-for-text-in-files/','/linux-tools/common-commands/grep/']

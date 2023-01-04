@@ -3,7 +3,6 @@ slug: using-grpc-for-remote-procedural-calls
 author:
   name: Jeff Novotny
 description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
-og_description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
 keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

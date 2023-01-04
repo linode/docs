@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
-og_description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

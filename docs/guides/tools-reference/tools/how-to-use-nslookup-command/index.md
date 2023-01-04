@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
-og_description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
 keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01

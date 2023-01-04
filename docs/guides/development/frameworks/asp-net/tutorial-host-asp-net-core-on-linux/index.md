@@ -3,7 +3,6 @@ slug: tutorial-host-asp-net-core-on-linux
 author:
   name: Nathaniel Stickman
 description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
-og_description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
 keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

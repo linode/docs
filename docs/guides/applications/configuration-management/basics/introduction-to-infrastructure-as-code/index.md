@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
-og_description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
 keywords: ['IaC','infrastructure','configuration','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-03

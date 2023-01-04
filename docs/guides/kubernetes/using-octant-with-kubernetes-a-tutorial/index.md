@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
-og_description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
 keywords: ['octant','kubernetes','cluster','graph','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

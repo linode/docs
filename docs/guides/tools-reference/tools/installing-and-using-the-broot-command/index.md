@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
-og_description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
 keywords: ['linux broot','linux directory tree','unix broot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24

@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "ssh-agent manages keys and passwords for SSH, and it can make connecting to clients quicker and easier. Find out how ssh-agent works and how you can set it up to start using for your SSH connections."
-og_description: "ssh-agent manages keys and passwords for SSH, and it can make connecting to clients quicker and easier. Find out how ssh-agent works and how you can set it up to start using for your SSH connections."
 keywords: ['start ssh agent','how to use ssh agent','ssh agent list keys']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-10

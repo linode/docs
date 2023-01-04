@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on CentOS 8.'
-og_description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on CentOS 8.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 tags: ["centos", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,6 @@ author:
   name: Tom Henderson
   email: docs@linode.com
 description: 'Learn the basic differences between IPv4 & IPv6, and how to map IPv4 troubleshooting skills to IPv6 with the addition of IPv4-IPv6 example translation.'
-og_description: 'Learn the basic differences between IPv4 & IPv6, and how to map IPv4 troubleshooting skills to IPv6 with the addition of IPv4-IPv6 example translation.'
 keywords: ['networking','troubleshooting','ipv4','ipv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-09

@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
-og_description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
 keywords: ['linux ip command','config ip command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-16

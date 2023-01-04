@@ -4,7 +4,6 @@ author:
   name: Daniele Polencic
   email: daniele@learnk8s.io
 description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
-og_description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
 keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

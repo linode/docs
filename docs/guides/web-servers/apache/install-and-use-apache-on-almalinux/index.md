@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to install, configure, and use Apache on AlmaLinux, a relatively new open source Linux distribution intended to replace CentOS.'
-og_description: 'This guide explains how to install, configure, and use Apache on AlmaLinux, a relatively new open source Linux distribution intended to replace CentOS.'
 keywords: ['AlmaLinux','Apache','installation','configuration']
 tags: ['apache', 'linux', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

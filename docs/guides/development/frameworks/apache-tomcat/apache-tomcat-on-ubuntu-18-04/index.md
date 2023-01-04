@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
 keywords: ["apache tomcat ubuntu 18.04", "tomcat java", "java ubuntu 18.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

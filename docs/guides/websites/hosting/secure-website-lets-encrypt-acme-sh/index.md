@@ -4,7 +4,6 @@ author:
   name: Andy Heathershaw
   email: andy@andysh.uk
 description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
-og_description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
 keywords: ['ssl','lets encrypt','https','website','websites','acme.sh','secure']
 tags: ['http', 'ssl', 'apache', 'nginx', 'security', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

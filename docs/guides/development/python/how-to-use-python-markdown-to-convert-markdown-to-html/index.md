@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
-og_description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
 keywords: ['Python-Markdown','What is Python-Markdown','Python-Markdown Library','Convert Markdown to HTML']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-21

@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Debian 10.'
-og_description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Debian 10.'
 keywords: ["Odoo 13 install Debian 10", "install open source cms erp debian"]
 tags: ["debian", "postgresql", "database", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

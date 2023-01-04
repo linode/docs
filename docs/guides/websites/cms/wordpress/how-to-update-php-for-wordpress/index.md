@@ -3,7 +3,6 @@ slug: how-to-update-php-for-wordpress
 author:
   name: Jeff Novotny
 description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
-og_description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
 tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,6 @@ author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
 description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
-og_description: "K3s is a lightweight, highly-available Kubernetes distribution designed for production workloads. We'll show you how to install and deploy it on Linode."
 keywords: ["rancher", "ubuntu", "18.04", "k3s", "kubernetes"]
 tags: ["mysql","kubernetes","database","container","postgresql","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

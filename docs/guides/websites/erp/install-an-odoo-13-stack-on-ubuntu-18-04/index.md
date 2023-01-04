@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
-og_description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
 keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
 tags: ["debian", "postgresql", "database", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

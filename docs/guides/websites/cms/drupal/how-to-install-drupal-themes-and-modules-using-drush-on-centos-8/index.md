@@ -4,7 +4,6 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on CentOS 8.'
-og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on CentOS 8.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
 tags: ["drupal","centos","apache","lamp","php","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

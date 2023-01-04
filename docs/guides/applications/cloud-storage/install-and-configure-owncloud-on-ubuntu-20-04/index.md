@@ -4,7 +4,6 @@ author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
-og_description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
 keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12

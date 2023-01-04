@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will introduce you to the Solid protocol, created by Tim Berners-Lee and gives Internet users ownership over their data, and how to incorporate the tech.'
-og_description: 'This guide will introduce you to the Solid protocol, created by Tim Berners-Lee and gives Internet users ownership over their data, and how to incorporate the tech.'
 keywords: ['solid protocol']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

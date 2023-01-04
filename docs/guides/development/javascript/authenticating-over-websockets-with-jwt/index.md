@@ -3,7 +3,6 @@ slug: authenticating-over-websockets-with-jwt
 author:
   name: Nathaniel Stickman
 description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
-og_description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
 keywords: ['websocket token authentication']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

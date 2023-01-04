@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
-og_description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
 keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20

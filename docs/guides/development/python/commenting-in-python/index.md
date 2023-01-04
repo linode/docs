@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
-og_description: 'A how-to guide on commenting in Python 3 correctly, with an additional portion discussing commenting incorrectly and why not to do that.'
 keywords: ['python3', 'python', 'commenting', 'code', 'programming language']
 tags: ["python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

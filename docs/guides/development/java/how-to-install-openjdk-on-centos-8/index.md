@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
-og_description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on CentOS 8.'
 keywords: ["java", "openjdk", "jdk", "11", "CentOS", "8"]
 tags: ["java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

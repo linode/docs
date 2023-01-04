@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Appsmith’s platform makes developing internal applications and dashboards quicker and more convenient. A great way to start using Appsmith and to see what it can do is by making your own cloud manager with it. This tutorial shows you how to do that, connecting your self-hosted Appsmith instance with the Linode API."
-og_description: "Appsmith’s platform makes developing internal applications and dashboards quicker and more convenient. A great way to start using Appsmith and to see what it can do is by making your own cloud manager with it. This tutorial shows you how to do that, connecting your self-hosted Appsmith instance with the Linode API."
 keywords: ['appsmith api','appsmith tutorial','appsmith dashboard']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-29

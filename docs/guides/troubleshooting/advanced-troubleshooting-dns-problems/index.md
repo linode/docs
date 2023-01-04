@@ -4,7 +4,6 @@ author:
   name: Tom Henderson
   email: docs@linode.com
 description: 'Sometimes DNS problems require advanced troubleshooting techniques. This guide covers helpful command line tools like dig, nslookup, and ping, along with hosts files and A records. ✓ Click here!'
-og_description: 'Sometimes DNS problems require advanced troubleshooting techniques. This guide covers helpful command line tools like dig, nslookup, and ping, along with hosts files and A records. ✓ Click here!'
 keywords: ['troubleshooting','dns','dns troubleshooting']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-20

@@ -3,7 +3,6 @@ slug: restart-linux-server-from-the-command-line
 author:
   name: Nathaniel Stickman
 description: "This guide shows how you can restart your Linux system, a task you might need to do on occasion when installing or configuring new software or packages."
-og_description: "This guide shows how you can restart your Linux system, a task you might need to do on occasion when installing or configuring new software or packages."
 keywords: ['linux restart','linux restart command','restart linux server']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

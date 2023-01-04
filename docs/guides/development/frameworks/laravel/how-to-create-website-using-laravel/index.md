@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
-og_description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

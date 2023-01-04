@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
-og_description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
 keywords: ["Postfix", "Ubuntu", "Debian", "SMTP", "Gmail"]
 tags: ["debian","ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

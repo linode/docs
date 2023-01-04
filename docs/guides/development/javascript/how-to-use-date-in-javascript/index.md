@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: In this quick overview of JavaScript's Date object, learn how to get dates, set dates, and compare dates using a simple HTML file.
-og_description: In this quick overview of JavaScript's Date object, learn how to get dates, set dates, and compare dates using a simple HTML file.
 keywords: ['javascript','js','date','get date in javascript','set date in javascript','compare date in javascript']
 tags: ["web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,6 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems.'
-og_description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems.'
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
 tags: ["automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'An explanation of what NoSQL is, the differences with SQL, what some of the popular types are, and links to examples of popular NoSQL databases.'
-og_description: 'An explanation of what NoSQL is, the differences with SQL, what some of the popular types are, and links to examples of popular NoSQL databases.'
 keywords: ['nosql','database','nosql database','non-sql','non-sql database']
 tags: ["nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

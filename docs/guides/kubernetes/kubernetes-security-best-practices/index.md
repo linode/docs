@@ -4,7 +4,6 @@ author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
-og_description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
 keywords: ['Kubernetes security best practices']
 tags: ['kubernetes', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

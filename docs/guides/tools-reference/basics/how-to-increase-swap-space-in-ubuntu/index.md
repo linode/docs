@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
-og_description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
 keywords: ['how to increase swap space in ubuntu','ubuntu swap file','linux swap space size','create swap partition ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-07

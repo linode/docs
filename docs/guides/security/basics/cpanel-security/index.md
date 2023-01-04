@@ -3,7 +3,6 @@ slug: cpanel-security
 author:
   name: Hackersploit
 description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
-og_description: 'cPanel is a control panel that provides simple and effective management for a web server. This guide shows how to secure a cPanel installation.'
 keywords: ["how to secure cpanel", "how to protect cpanel from hackers"]
 tags: ["security","cpanel","cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

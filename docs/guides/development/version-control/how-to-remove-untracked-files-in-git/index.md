@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn how to remove untracked files in git using the git clean command.'
-og_description: 'Learn how to remove untracked files in git using the git clean command.'
 keywords: ['Git remove untracked files','Remove untracked files git','Git remove all untracked files','How to remove untracked files in git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18

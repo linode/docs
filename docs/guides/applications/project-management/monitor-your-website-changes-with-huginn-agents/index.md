@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
-og_description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

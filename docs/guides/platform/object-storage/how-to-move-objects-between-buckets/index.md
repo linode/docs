@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide shows you how to move your objects stored in Linode's Object Storage from one bucket to another."
-og_description: "This guide shows you how to move your objects stored in Linode's Object Storage from one bucket to another."
 keywords: ['object','storage','bucket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-04

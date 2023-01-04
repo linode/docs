@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A list of tutorials outlining how to connect to a remote server over SSH from different environments.'
-og_description: 'A list of tutorials outlining how to connect to a remote server over SSH from different environments.'
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

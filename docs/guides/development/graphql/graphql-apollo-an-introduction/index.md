@@ -4,7 +4,6 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'In this guide, you will learn what GraphQL is and how to use the Apollo GraphQL client to manage local and remote data from your command line in Linux.'
-og_description: 'In this guide, you will learn what GraphQL is and how to use the Apollo GraphQL client to manage local and remote data from your command line in Linux.'
 keywords: ['what is apollo graphql', 'apollo graphql client', 'apollo graphql server']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

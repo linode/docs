@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
-og_description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS8"]
 bundles: ['centos-security']
 tags: ["centos","security"]

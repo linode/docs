@@ -4,7 +4,6 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
-og_description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'

@@ -3,7 +3,6 @@ slug: python-3-9-new-features
 author:
   name: John Mueller
 description: 'This guide highlights and showcases examples of three improved features - merge dictionaries, time zone implementation, and type annotations - of Python 3.9.'
-og_description: 'This guide highlights and showcases examples of three improved features - merge dictionaries, time zone implementation, and type annotations - of Python 3.9.'
 keywords: ['python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

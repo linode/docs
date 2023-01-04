@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
-og_description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
 keywords: ['search','advanced search','keywords','cloud manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-08

@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
-og_description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
 keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-19

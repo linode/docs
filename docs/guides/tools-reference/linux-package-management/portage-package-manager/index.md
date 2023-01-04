@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo linux, so you can install software on your system."
-og_description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo linux, so you can install software on your system."
 keywords: ['gentoo', 'portage', 'emerge', package manager']
 tags: ['gentoo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

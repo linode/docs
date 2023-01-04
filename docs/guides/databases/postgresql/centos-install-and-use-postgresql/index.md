@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
-og_description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
 keywords: ['database','postgresql','centos', 'yum']
 tags: ["database","postgresql","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

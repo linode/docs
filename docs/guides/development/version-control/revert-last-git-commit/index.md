@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Mistakes happen, and the Git version control system has tools to help you navigate them. In this tutorial, learn two methods to undo your most recent Git commit, what sets the methods apart, and when to use them."
-og_description: "Mistakes happen, and the Git version control system has tools to help you navigate them. In this tutorial, learn two methods to undo your most recent Git commit, what sets the methods apart, and when to use them."
 keywords: ['revert git commit','undo git commit','revert git commit after push']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-18

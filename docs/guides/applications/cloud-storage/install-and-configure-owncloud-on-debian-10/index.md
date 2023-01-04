@@ -4,7 +4,6 @@ author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: "A popular Dropbox alternative, ownCloud provides easy and secure file storage and file sharing. Here's how to install it on Debian 10."
-og_description: "A popular Dropbox alternative, ownCloud provides easy and secure file storage and file sharing. Here's how to install it on Debian 10."
 keywords: ['ownCloud on Debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-29

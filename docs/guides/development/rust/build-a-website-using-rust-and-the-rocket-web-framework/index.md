@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
-og_description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

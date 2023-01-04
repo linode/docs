@@ -4,7 +4,6 @@ author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
 description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
-og_description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
 keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-30

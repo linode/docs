@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains what a Shebang is and how to use it in a script'
-og_description: 'This guide explains what a Shebang is and how to use it in a script'
 keywords: ['how to use Shebang','Shebang Python','Shebang Bash','what is a Shebang']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-02

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

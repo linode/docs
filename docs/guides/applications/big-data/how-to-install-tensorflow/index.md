@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
-og_description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

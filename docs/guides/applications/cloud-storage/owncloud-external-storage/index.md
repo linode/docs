@@ -4,7 +4,6 @@ author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
-og_description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
 keywords: ['ownCloud external storage', 'ownCloud s3']
 tags: ['marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

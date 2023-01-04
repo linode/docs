@@ -4,7 +4,6 @@ author:
   name: Nathaniel Stickman
   email: docs@linode.com
 description: "Containers offer portable, lightweight environments for developing and deploying applications. And while Docker has been the most popular containerization tool, Podman has arisen as a compelling alternative. What sets the two tools apart, and when should you use one over the other? Find out in this tutorial comparing Podman and Docker."
-og_description: "Containers offer portable, lightweight environments for developing and deploying applications. And while Docker has been the most popular containerization tool, Podman has arisen as a compelling alternative. What sets the two tools apart, and when should you use one over the other? Find out in this tutorial comparing Podman and Docker."
 keywords: ['podman vs docker','docker podman','podman vs docker performance']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26

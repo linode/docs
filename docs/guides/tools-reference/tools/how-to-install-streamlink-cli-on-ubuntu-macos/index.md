@@ -3,7 +3,6 @@ slug: how-to-install-streamlink-cli-on-ubuntu-macos
 author:
   name: Sandro Villinger
 description: 'In this guide, you learn how to install and configure Streamlink on the macOS, Ubuntu, and Debian distributions'
-og_description: 'In this guide, you learn how to install and configure Streamlink on the macOS, Ubuntu, and Debian distributions'
 keywords: ['streamlink']
 tags: ['ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

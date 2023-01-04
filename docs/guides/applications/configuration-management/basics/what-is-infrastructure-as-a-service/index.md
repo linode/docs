@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
-og_description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
 keywords: ['infrastructure as a service','iaas','infrastructure','cloud networks']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,6 @@ slug: run-jobs-or-scripts-using-crontab-on-boot
 author:
   name: Jeff Novotny
 description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts when your Linode boots, as well as best practices when using cron.'
-og_description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts when your Linode boots, as well as best practices when using cron.'
 keywords: ['crontab on boot']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

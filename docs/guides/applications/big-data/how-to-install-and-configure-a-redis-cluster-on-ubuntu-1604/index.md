@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'This guide will show you how to set up a high performance Redis cluster using three Linode servers and promoting a replica to become a master node'
-og_description: 'This guide will show you how to set up a high performance Redis cluster using three Linode servers and promoting a replica to become a master node'
 keywords: ["redis", "redis cluster installation", "data store", "cache", "sharding", "redis cluster setup", "redis cluster set up", "ubuntu"]
 tags: ["nosql","database","ubuntu","redis"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'

@@ -3,7 +3,6 @@ slug: using-an-nfs-server-on-ubuntu2004
 author:
   name: Jeff Novotny
 description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
-og_description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

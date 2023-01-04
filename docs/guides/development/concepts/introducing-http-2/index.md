@@ -3,7 +3,6 @@ slug: introducing-http-2
 author:
   name: Jeff Novotny
 description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
-og_description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
 keywords: ['http2 vs http1']
 tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

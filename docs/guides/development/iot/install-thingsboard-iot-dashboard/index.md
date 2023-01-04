@@ -4,7 +4,6 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: "This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices using a Raspberry Pi."
-og_description: "This guide shows how to install the ThingsBoard open source dashboard for Internet of Things devices using a Raspberry Pi."
 keywords: ["iot", "raspberry pi", "internet of things", "dashboard"]
 tags: ["postgresql", "nginx", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

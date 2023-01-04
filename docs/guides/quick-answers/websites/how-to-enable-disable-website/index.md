@@ -3,7 +3,6 @@ slug: how-to-enable-disable-website
 author:
   name: Jeff Novotny
 description: "This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it."
-og_description: "This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it."
 keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

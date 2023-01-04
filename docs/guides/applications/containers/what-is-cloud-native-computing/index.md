@@ -4,7 +4,6 @@ author:
   name: Steven J. Vaughan-Nichols
   email: sjvn@vna1.com
 description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scaleable on public, private, and hybrid clouds.'
-og_description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scaleable on public, private, and hybrid clouds.'
 keywords: ['cloud native computing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-13

@@ -4,7 +4,6 @@ author:
   name: Cameron Laird
   email: docs@linode.com
 description: 'Learn how to create a LEMP stack application on Linux. Read our guide to learn LEMP stack basics. ✓ Click here!'
-og_description: 'Learn how to create a LEMP stack application on Linux. Read our guide to learn LEMP stack basics. ✓ Click here!'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-27

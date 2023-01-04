@@ -4,7 +4,6 @@ author:
   name: Nathaniel Stickman
   email: docs@linode.com
 description: "Linode Object Storage provides efficient S3-compatible storage. Cross-origin resource sharing policies can make accessing storage across domains more difficult. But you can learn everything you need to make it easier in this tutorial on CORS and Linode Object Storage."
-og_description: "Linode Object Storage provides efficient S3-compatible storage. Cross-origin resource sharing policies can make accessing storage across domains more difficult. But you can learn everything you need to make it easier in this tutorial on CORS and Linode Object Storage."
 keywords: ['enable cors s3','allow cors s3 bucket','cors policy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-25

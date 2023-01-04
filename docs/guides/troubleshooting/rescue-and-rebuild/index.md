@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn how to rescue and rebuild Linode by using the recovery tools available in the Linode Cloud Manager.'
-og_description: 'Learn how to rescue and rebuild Linode by using the recovery tools available in the Linode Cloud Manager.'
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -4,7 +4,6 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: "In this guide, we'll show you how to use a Block Storage Volume to store your Nextcloud data."
-og_description: "In this guide, we'll show you how to use a Block Storage Volume to store your Nextcloud data."
 keywords: ["nextcloud", "cloud", "open source hosting", "block storage"]
 tags: ["docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

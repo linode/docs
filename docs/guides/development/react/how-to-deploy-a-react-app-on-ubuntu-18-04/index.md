@@ -3,7 +3,6 @@ slug: how-to-deploy-a-react-app-on-ubuntu-18-04
 author:
   name: Linode
 description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server.
-og_description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server.
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

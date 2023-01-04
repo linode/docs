@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
-og_description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
 keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
 tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

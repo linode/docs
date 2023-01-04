@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
-og_description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

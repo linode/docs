@@ -4,7 +4,6 @@ author:
   name: Avi
   email: avi.dunken1991@gmail.com
 description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
-og_description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11

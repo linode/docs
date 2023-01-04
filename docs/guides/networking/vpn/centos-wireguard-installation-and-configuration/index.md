@@ -4,7 +4,6 @@ author:
   name: Steven J. Vaughan-Nichols
   email: sjvn01@gmail.com
 description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
-og_description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
 keywords: ['centos', 'wireguard', 'vpn']
 tags: ['wireguard', 'centos', 'vpn']
 bundles: ['network-security']

@@ -3,7 +3,6 @@ slug: gnu-make-tutorial-automate-tasks
 author:
   name: Stephen Savitzky
 description: 'In this tutorial, you will learn how to use GNU Make to automate any task that involves updating files or performing actions based on file changes.'
-og_description: 'In this tutorial, you will learn how to use GNU Make to automate any task that involves updating files or performing actions based on file changes.'
 keywords: ['gnu make tutorial']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

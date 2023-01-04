@@ -4,7 +4,6 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
-og_description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
 keywords: ['How to Install Python on Debian','Python','Python3','Python 2 end of life']
 tags: ['python', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

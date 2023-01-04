@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: Learn what's involved in installing OpenJDK on Debian 10, and how you can test your OpenKDL installation through a simple "Hello World" application.
-og_description: Learn what's involved in installing OpenJDK on Debian 10, and how you can test your OpenKDL installation through a simple "Hello World" application.
 keywords: ["java", "openjdk", "jdk", "11", "Debian", "10"]
 tags: ["java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

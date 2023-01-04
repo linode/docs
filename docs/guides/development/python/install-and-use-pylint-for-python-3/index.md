@@ -4,7 +4,6 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
-og_description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
 keywords: ['install','pylint','python 3']
 tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

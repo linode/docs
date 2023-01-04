@@ -3,7 +3,6 @@ slug: documenting-a-fastapi-app-with-openapi
 author:
   name: Chelsea Troy
 description: 'This guide will show you how to install and use the FastAPI utility to automatically generate technical documentation for your various API endpoints.'
-og_description: 'This guide will show you how to install and use the FastAPI utility to automatically generate technical documentation for your various API endpoints.'
 keywords: ['openapi tutorial']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

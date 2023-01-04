@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
-og_description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
 keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

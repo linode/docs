@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Want to replace MySQL? Read through this guide, which explains how to install MariaDB on Debian 10."
-og_description: "Want to replace MySQL? Read through this guide, which explains how to install MariaDB on Debian 10."
 keywords: ["mariadb", "Debian 10", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-10/','/databases/mariadb/mariadb-setup-debian-10/']

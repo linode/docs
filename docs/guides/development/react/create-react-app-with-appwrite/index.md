@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
-og_description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
 keywords: ['appwrite react','appwrite tutorial','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-13

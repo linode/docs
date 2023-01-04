@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
-og_description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
 keywords: ['install appwrite','appwrite docs','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-03

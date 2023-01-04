@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
-og_description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
 keywords: ["linux alias command"]
 aliases: ['/quick-answers/linux/how-to-use-the-linux-alias-command/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

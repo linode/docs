@@ -3,7 +3,6 @@ slug: install-redis-ubuntu
 author:
   name: Jeff Novotny
 description: 'This guide shows you how to install and configure the open-source database, cache, and message broker application Redis, on Ubuntu 20.04 Server.'
-og_description: 'This guide shows you how to install and configure the open-source database, cache, and message broker application Redis, on Ubuntu 20.04 Server.'
 keywords: ['install redis ubuntu']
 tags: ['ubuntu', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

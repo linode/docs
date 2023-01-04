@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to use Spring Boot and Gradle on Ubuntu 22.04 to quickly create a Java application.'
-og_description: 'This guide explains how to use Spring Boot and Gradle on Ubuntu 22.04 to quickly create a Java application.'
 keywords: ['spring boot','Java','spring boot gradle','tomcat server','ubuntu java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-24

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
-og_description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
 keywords: ['networking','multi-queue']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01

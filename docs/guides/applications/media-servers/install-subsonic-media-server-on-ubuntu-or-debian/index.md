@@ -4,7 +4,6 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Subsonic is a free music streaming application. This guide shows how to install Subsonic media server on a Linode.'
-og_description: 'Subsonic is a free music streaming application. This guide shows how to install Subsonic media server on a Linode.'
 keywords: ["subsonic", "music", "audio", "streaming", "media server"]
 aliases: ['/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian/','/applications/media-servers/subsonic/']
 tags: ["debian", "ubuntu"]

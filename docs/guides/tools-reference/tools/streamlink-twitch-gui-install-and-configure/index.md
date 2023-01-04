@@ -4,7 +4,6 @@ author:
   name: Sandro Villinger
   email: ebmaster@windows-tweaks.info
 description: 'This guide shows you how to install and configure the Streamlink Twitch GUI on macOS and Linux distributions.'
-og_description: 'This guide shows you how to install and configure the Streamlink Twitch GUI on macOS and Linux distributions.'
 keywords: ['streamlink twitch gui']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

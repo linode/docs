@@ -4,7 +4,6 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
-og_description: 'This guide gives you examples for using YAML anchors, aliases, and overrides, which are features of the YAML language that help keep your code DRY.'
 keywords: ['YAML anchors']
 tags: ['docker', 'kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

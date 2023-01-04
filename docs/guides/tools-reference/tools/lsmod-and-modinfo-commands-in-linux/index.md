@@ -3,7 +3,6 @@ slug: lsmod-and-modinfo-commands-in-linux
 author:
   name: Jack Wallen
 description: 'Learn how to use the lsmod and modinfo command on your Linux system. These commands provide information on the Linux kernel modules installed on your desktop or server.'
-og_description: 'Learn how to use the lsmod and modinfo command on your Linux system. These commands provide information on the Linux kernel modules installed on your desktop or server.'
 keywords: ['kernel module','lsmod','modinfo']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
