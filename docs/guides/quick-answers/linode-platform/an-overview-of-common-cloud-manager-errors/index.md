@@ -32,7 +32,7 @@ The above error means that there is an issue retrieving your Linodes from our ba
 
 If the status page shows that everything is all clear, then the next step is to attempt to clear your web browser cache, as this can sometimes cause an issue in loading resources. The method for completing this process varies between browsers, however it usually involves opening your browsers full history and finding an option to clear it.
 
-If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/products/tools/cli/get-started/) if our Manager is inaccessible for any reason.
+If all else fails, you should reach out to our 24/7 [Support Team](https://www.linode.com/support/) for more direct assistance. Additionally, we can also recommend attempting to access your resources through alternative means such as our [API](/docs/products/tools/api/) or [CLI](/docs/products/tools/cli/get-started/) if our Manager is inaccessible for any reason.
 
 ## Error Retrieving Network Information
 

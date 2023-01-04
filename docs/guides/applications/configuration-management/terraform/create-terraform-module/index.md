@@ -71,7 +71,7 @@ Terraform's standard module structure provides guidance on file and directory la
 
 ## Create the Linode StackScripts Module
 
-The Linode Stackscripts module will include two nested modules that split up the required resources between the **root module**, a `linodes` module, and a `stackscripts` module. When you are done creating all required Terraform files your directory structure will look as follows:
+The Linode StackScripts module will include two nested modules that split up the required resources between the **root module**, a `linodes` module, and a `stackscripts` module. When you are done creating all required Terraform files your directory structure will look as follows:
 
 {{< output >}}
 linode_stackscripts/
@@ -235,7 +235,7 @@ variable "root_pass" {
 }
 
 variable "stackscript_id" {
-  description = "Stackscript ID."
+  description = "StackScript ID."
 }
 
 variable "stackscript_data" {

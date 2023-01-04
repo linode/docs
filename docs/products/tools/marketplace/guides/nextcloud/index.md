@@ -9,7 +9,7 @@ published: 2020-06-11
 modified: 2022-05-27
 modified_by:
   name: Linode
-title: "Deploying Nextcloud through the Linode Marketplace"
+title: "Deploy Nextcloud through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

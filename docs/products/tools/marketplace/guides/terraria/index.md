@@ -9,7 +9,7 @@ published: 2019-04-05
 modified: 2022-05-10
 modified_by:
   name: Linode
-title: "Deploying Terraria through the Linode Marketplace"
+title: "Deploy Terraria through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:

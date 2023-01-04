@@ -9,6 +9,7 @@ title_meta: "Continuous Deployment Using LKE: ExternalDNS"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
+modified: 2022-12-12
 modified_by:
   name: Linode
 contributor:
@@ -93,6 +94,6 @@ ExternalDNS is a tool that automatically manages external DNS records from withi
 
       kubectl logs -n external-dns -l app.kubernetes.io/name=external-dns
 
-- It might take a few minutes for ExternalDNS to start, patience!
-- Then try to access `nginx.cloudnative.party` (or whatever domain you picked)
+- It might take a few minutes for ExternalDNS to start. The default TTL is 24 hours. You can specify a shorter TTL by adding the `external-dns.alpha.kubernetes.io/ttl` annotation to your services / ingress. For more information, see [Configure DNS record TTL](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/ttl.md).
 
+- Then try to access `nginx.cloudnative.party` (or whatever domain you picked)

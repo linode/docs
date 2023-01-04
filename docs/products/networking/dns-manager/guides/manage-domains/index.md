@@ -29,7 +29,7 @@ To add a domain to your account, follow the instructions within the [Create a Do
 ## Review and Edit a Domain
 
 {{< note >}}
-This section covers viewing and editing the details of the domain itself. If you wish to view and edit DNS records, see [Manage DNS Records]().
+This section covers viewing and editing the details of the domain itself. If you wish to view and edit DNS records, see [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 {{</ note >}}
 
 1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).

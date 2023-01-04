@@ -6,6 +6,7 @@ ack
 aconf
 accessor
 accessors
+ACLs
 acronis
 acunetix
 adc
@@ -666,6 +667,7 @@ freedns
 freeipa
 fremont
 freshclam
+friendica
 friendster
 frontend
 frontmatter
@@ -843,6 +845,7 @@ httpie
 httpchk
 httpd
 https
+Hubzilla
 huginn
 Hugo
 hulu
@@ -1566,6 +1569,7 @@ piwik
 pki
 plaintext
 platformer
+pleroma
 plesk
 plex
 plone

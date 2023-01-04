@@ -42,7 +42,7 @@ To handle this distinction, you could create a special directory at `/srv/pillar
 
 Pillar data is kept in `.sls` files which are written in the same YAML syntax as states. These are generally stored within `/srv/pillar` on the Salt master, but this location can be configured via the `pillar_roots` option in your master's configuration.
 
-For example, let's say your minion runs an application which accesses the [Linode API](https://developers.linode.com/api/v4). This example pillar file records your API token in a variable called `linode_api_token`:
+For example, let's say your minion runs an application which accesses the [Linode API](/docs/products/tools/api/). This example pillar file records your API token in a variable called `linode_api_token`:
 
 {{< file "/srv/pillar/app_secrets.sls" >}}
 linode_api_token: YOUR_API_TOKEN
