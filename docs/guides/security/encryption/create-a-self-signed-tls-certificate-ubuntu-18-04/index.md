@@ -13,9 +13,8 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: 'Creating a Self-Signed TLS Certificate on Ubuntu 18.04'
-h1_title: 'How to Create a Self-Signed TLS Certificate on Ubuntu 18.04'
-enable_h1: true
+title: 'How to Create a Self-Signed TLS Certificate on Ubuntu 18.04'
+title_meta: 'Creating a Self-Signed TLS Certificate on Ubuntu 18.04'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:

@@ -11,9 +11,8 @@ published: 2021-08-06
 image: HowtoUseanNFSServeronUbuntu2004.jpg
 modified_by:
   name: Linode
-title: "Using an NFS Server on Ubuntu 20.04"
-h1_title: "How to Use an NFS Server on Ubuntu 20.04"
-enable_h1: true
+title: "How to Use an NFS Server on Ubuntu 20.04"
+title_meta: "Using an NFS Server on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
 external_resources:

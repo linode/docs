@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "User Authentication with JWTs in Express and Node.js"
-h1_title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
-enable_h1: true
+title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
+title_meta: "User Authentication with JWTs in Express and Node.js"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

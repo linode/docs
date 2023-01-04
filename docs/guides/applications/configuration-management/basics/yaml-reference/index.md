@@ -3,8 +3,7 @@ slug: yaml-reference
 author:
   name: Cameron Laird
   email: claird@phaseit.net
-description: 'This guide provides you with a brief introduction to the YAML programming language and gives you an understanding of the basics so you can work with YAML files.'
-og_description: 'This guide provides you with a brief introduction to the YAML programming language and gives you an understanding of the basics so you can work with YAML files.'
+description: "This guide provides you with a brief introduction to the YAML programming language and gives you an understanding of the basics so you can work with YAML files."
 keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
@@ -12,7 +11,6 @@ image: YAMLSyntaxRef.png
 modified_by:
   name: Linode
 title: "A YAML Syntax Reference"
-h1_title: "A YAML Syntax reference."
 tags: ["automation"]
 contributor:
   name: Cameron Laird

@@ -11,9 +11,8 @@ modified: 2022-11-21
 modified_by:
   name: Linode
 image: enable-tpa-hero.png
-title: "Enable Third Party Authentication on Your Linode Account"
-h1_title: "Enabling Third Party Authentication on Your Linode Account"
-enable_h1: true
+title: "Enabling Third Party Authentication on Your Linode Account"
+title_meta: "Enable Third Party Authentication on Your Linode Account"
 aliases: ['/platform/manager/third-party-authentication/','/guides/third-party-authentication/']
 ---
 

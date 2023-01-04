@@ -11,7 +11,6 @@ published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Podman for Running Containers"
-h1_title: "How to Install Podman for Running Containers"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -12,9 +12,8 @@ published: 2021-04-16
 image: MultipleWPsites_LXDcont.png
 modified_by:
   name: Linode
-title: "How to Set Up Multiple WordPress Sites with LXD Containers"
-h1_title: "Setting Up Multiple WordPress Sites with LXD Containers"
-enable_h1: true
+title: "Setting Up Multiple WordPress Sites with LXD Containers"
+title_meta: "How to Set Up Multiple WordPress Sites with LXD Containers"
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/

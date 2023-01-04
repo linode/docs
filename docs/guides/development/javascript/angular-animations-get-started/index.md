@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-22
 modified_by:
   name: Linode
-title: "Angular Animations: Get Started"
-h1_title: "Getting Started with Angular Animations"
-enable_h1: true
+title: "Getting Started with Angular Animations"
+title_meta: "Angular Animations: Get Started"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit

@@ -11,9 +11,8 @@ published: 2019-11-12
 modified: 2021-06-25
 modified_by:
   name: Linode
-title: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
-h1_title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
-enable_h1: true
+title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
+title_meta: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 image: nginx-ingress.png
 contributor:
   name: Linode

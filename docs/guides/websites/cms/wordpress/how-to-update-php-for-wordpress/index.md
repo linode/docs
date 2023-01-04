@@ -11,9 +11,8 @@ published: 2021-08-06
 image: UpdatePHPforaMorePerformantWordPressonUbuntu2004.jpg
 modified_by:
   name: Linode
-title: "How to Update PHP for WordPress on Ubuntu 20.04"
-h1_title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
-enable_h1: true
+title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
+title_meta: "How to Update PHP for WordPress on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
 external_resources:

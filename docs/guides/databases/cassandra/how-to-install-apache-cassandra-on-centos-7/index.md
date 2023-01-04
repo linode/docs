@@ -10,9 +10,8 @@ published: 2017-06-12
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on CentOS 7"
-h1_title: "Installing Apache Cassandra on CentOS 7"
-enable_h1: true
+title: "Installing Apache Cassandra on CentOS 7"
+title_meta: "How to Install Apache Cassandra on CentOS 7"
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/

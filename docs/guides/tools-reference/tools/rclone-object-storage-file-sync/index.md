@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "Using Rclone to Sync Files to Linode Object Storage"
-h1_title: "How to Use Rclone to Sync Files to Linode Object Storage"
-enable_h1: true
+title: "How to Use Rclone to Sync Files to Linode Object Storage"
+title_meta: "Using Rclone to Sync Files to Linode Object Storage"
 contributor:
   name: Jack Wallen
 ---

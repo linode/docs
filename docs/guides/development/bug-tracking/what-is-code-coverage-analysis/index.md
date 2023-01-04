@@ -12,7 +12,6 @@ image: CodeCoverageAnalysis.png
 modified_by:
   name: Linode
 title: "What is Code Coverage Analysis?"
-h1_title: "What is Code Coverage Analysis?"
 tags: ["automation"]
 contributor:
   name: Martin Heller

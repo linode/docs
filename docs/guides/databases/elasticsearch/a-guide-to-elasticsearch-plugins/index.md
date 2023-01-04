@@ -18,9 +18,8 @@ published: 2018-01-09
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: "How to Install and Use Elasticsearch Plugins"
-h1_title: "Installing and Using Elasticsearch Plugins"
-enable_h1: true
+title: "Installing and Using Elasticsearch Plugins"
+title_meta: "How to Install and Use Elasticsearch Plugins"
 dedicated_cpu_link: true
 tags: ["ubuntu","debian","database","java"]
 aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']

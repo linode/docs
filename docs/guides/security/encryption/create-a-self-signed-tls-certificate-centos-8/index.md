@@ -13,8 +13,8 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: 'How to Create a Self-Signed TLS Certificate on CentOS 8'
-h1_title: 'Creating a Self-Signed TLS Certificate on CentOS 8'
+title: 'Creating a Self-Signed TLS Certificate on CentOS 8'
+title_meta: 'How to Create a Self-Signed TLS Certificate on CentOS 8'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 relations:

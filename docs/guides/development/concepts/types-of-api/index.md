@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-08
 modified_by:
   name: Nathaniel Stickman
-title: "A Guide to API Formats: The Different Types of APIs"
-h1_title: "What are the Four Types of API Formats?"
+title: "What are the Four Types of API Formats?"
+title_meta: "A Guide to API Formats: The Different Types of APIs"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

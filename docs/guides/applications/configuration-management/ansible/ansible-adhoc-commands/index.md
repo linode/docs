@@ -11,8 +11,8 @@ published: 2020-06-11
 image: Learning_Adhoc_Commands_in_Ansible_1200x631.png
 modified_by:
   name: Linode
-title: 'Ansible Adhoc Commands - A Tutorial'
-h1_title: 'A Tutorial for Learning Adhoc Commands in Ansible'
+title: 'A Tutorial for Learning Adhoc Commands in Ansible'
+title_meta: 'Ansible Adhoc Commands - A Tutorial'
 contributor:
   name: Avi
   link: https://github.com/avidunken/

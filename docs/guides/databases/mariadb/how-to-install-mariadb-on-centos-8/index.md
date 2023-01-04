@@ -12,9 +12,8 @@ modified_by:
     name: Linode
 published: 2020-02-04
 image: Installing_MariaDB_on_CentOS8.png
-title: "How to Install MariaDB on CentOS 8"
-h1_title: "Installing MariaDB on CentOS 8"
-enable_h1: true
+title: "Installing MariaDB on CentOS 8"
+title_meta: "How to Install MariaDB on CentOS 8"
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'

@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
 modified_by:
   name: Linode
-title: "An Introduction to OAuth2 Authentication"
-h1_title: "What Is OAuth2 Authentication?"
-enable_h1: true
+title: "What Is OAuth2 Authentication?"
+title_meta: "An Introduction to OAuth2 Authentication"
 contributor:
   name: Jeff Novotny
 external_resources:

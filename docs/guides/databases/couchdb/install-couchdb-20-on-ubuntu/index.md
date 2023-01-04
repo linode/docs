@@ -12,9 +12,8 @@ published: 2021-05-21
 image: CouchDB.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install CouchDB 2.0 on Ubuntu 20.04"
-h1_title: "Installing CouchDB 2.0 on Ubuntu 20.04"
-enable_h1: true
+title: "Installing CouchDB 2.0 on Ubuntu 20.04"
+title_meta: "How to Install CouchDB 2.0 on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,9 +10,8 @@ modified: 2022-08-10
 modified_by:
     name: Linode
 published: 2019-02-04
-title: "How to Choose a Compute Instance Plan"
-h1_title: "Choosing a Compute Instance Type and Plan"
-enable_h1: true
+title: "Choosing a Compute Instance Type and Plan"
+title_meta: "How to Choose a Compute Instance Plan"
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/']
 ---

@@ -11,8 +11,6 @@ published: 2022-06-10
 modified_by:
   name: Linode
 title: "How to Use .gitignore"
-h1_title: "How to Use .gitignore"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
 modified_by:
   name: Linode
-title: "An Introduction to Python String Interpolation"
-h1_title: "Python String Interpolation"
-enable_h1: true
+title: "Python String Interpolation"
+title_meta: "An Introduction to Python String Interpolation"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

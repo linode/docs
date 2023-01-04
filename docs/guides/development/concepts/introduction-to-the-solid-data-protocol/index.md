@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "Introduction to the Solid Data Protocol"
-h1_title: "An Overview of the Solid Data Protocol"
-enable_h1: true
+title: "An Overview of the Solid Data Protocol"
+title_meta: "Introduction to the Solid Data Protocol"
 contributor:
   name: Andy Patrizio
 external_resources:

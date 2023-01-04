@@ -12,8 +12,8 @@ modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2010-01-18
-title: How to Configure NGINX
-h1_title: Configuring NGINX Servers
+title: Configuring NGINX Servers
+title_meta: How to Configure NGINX
 tags: ["web server","nginx"]
 ---
 

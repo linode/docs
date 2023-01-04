@@ -11,8 +11,8 @@ published: 2021-04-09
 image: SQLiteOverview.png
 modified_by:
   name: Linode
-title: "A SQLite Overview"
-h1_title: "What is SQLite?"
+title: "What is SQLite?"
+title_meta: "A SQLite Overview"
 tags: ["database"]
 contributor:
   name: James Turner

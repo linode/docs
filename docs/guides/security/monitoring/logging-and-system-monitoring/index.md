@@ -12,7 +12,6 @@ modified: 2020-10-29
 modified_by:
   name: Linode
 title: 'Logging and System Monitoring'
-h1_title: 'Logging and System Monitoring'
 aliases: ['/security/monitoring/logging-and-system-monitoring/']
 image: Logging_and_system_monitoring.png
 ---

@@ -12,9 +12,8 @@ modified: 2021-06-01
 modified_by:
   name: Linode
 image: create-a-terraform-module.png
-title: "How to Create a Terraform Module"
-h1_title: "Create a Terraform Module"
-enable_h1: true
+title: "Create a Terraform Module"
+title_meta: "How to Create a Terraform Module"
 contributor:
   name: Linode
 external_resources:

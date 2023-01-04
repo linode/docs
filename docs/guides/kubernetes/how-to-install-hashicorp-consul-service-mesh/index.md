@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Linode
-title: "How to Install HashiCorp Consul Service Mesh"
-h1_title: "How to Install HashiCorp Consul"
-enable_h1: true
+title: "How to Install HashiCorp Consul"
+title_meta: "How to Install HashiCorp Consul Service Mesh"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

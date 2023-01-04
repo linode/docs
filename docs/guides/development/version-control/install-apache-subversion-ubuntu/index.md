@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 modified_by:
   name: Linode
-title: "Install Apache Subversion on Ubuntu 20.04"
-h1_title: "How to Install Apache Subversion on Ubuntu 20.04"
-enable_h1: true
+title: "How to Install Apache Subversion on Ubuntu 20.04"
+title_meta: "Install Apache Subversion on Ubuntu 20.04"
 contributor:
   name: Tom Henderson
 ---

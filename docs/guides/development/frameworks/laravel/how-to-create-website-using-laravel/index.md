@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Create a Website Using Laravel"
-h1_title: "Build a Website Using the Laravel Framework"
-enable_h1: true
+title: "Build a Website Using the Laravel Framework"
+title_meta: "How to Create a Website Using Laravel"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

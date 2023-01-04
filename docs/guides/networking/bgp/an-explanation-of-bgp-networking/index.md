@@ -11,8 +11,6 @@ published: 2022-08-18
 modified_by:
   name: Linode
 title: "An Explanation of BGP Networking"
-h1_title: "An Explanation of BGP Networking"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

@@ -13,7 +13,6 @@ modified_by:
 published: 2021-04-29
 image: DOCKERS.jpg
 title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
-h1_title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'

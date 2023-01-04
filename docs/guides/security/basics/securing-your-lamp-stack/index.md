@@ -2,8 +2,7 @@
 slug: securing-your-lamp-stack
 author:
   name: Hackersploit
-description: 'LAMP is a common web service stack with four open-source components: Linux, Apache, MySQL, and PHP. This guide shows how to secure and audit a LAMP stack.'
-og_description: 'LAMP is a common web service stack with four open-source components: Linux, Apache, MySQL, and PHP. This guide shows how to secure and audit a LAMP stack.'
+description: "LAMP is a common web service stack with four open-source components: Linux, Apache, MySQL, and PHP. This guide shows how to secure and audit a LAMP stack."
 keywords: ["secure lamp stack", "how to make our lamp stack secure"]
 tags: ["lamp","security","web server","php","mysql","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,7 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: How to Secure Your LAMP Stack
-h1_title: Securing Your LAMP Stack
-enable_h1: true
+title: "Securing a LAMP Stack"
 aliases: ['security/basics/securing-your-lamp-stack/']
 image: SecureLAMPstack.png
 ---

@@ -13,8 +13,8 @@ modified_by:
     name: Linode
 published: 2020-02-21
 image: Drupal8onDebian10.png
-title: How to Update Drupal 8 on Debian 10
-h1_title: Update Drupal 8 on Debian 10
+title: Update Drupal 8 on Debian 10
+title_meta: How to Update Drupal 8 on Debian 10
 relations:
     platform:
         key: how-to-update-drupal-8

@@ -10,9 +10,8 @@ published: 2021-07-30
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "Understanding and Using IP Addresses"
-h1_title: "How to Understand and Use IP Addresses"
-enable_h1: true
+title: "How to Understand and Use IP Addresses"
+title_meta: "Understanding and Using IP Addresses"
 contributor:
   name: Jeffery Novotny
 external_resources:

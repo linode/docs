@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "How to Set Up MongoDB on Docker"
-h1_title: "Set Up MongoDB on Docker"
-enable_h1: true
+title: "Set Up MongoDB on Docker"
+title_meta: "How to Set Up MongoDB on Docker"
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
 ---

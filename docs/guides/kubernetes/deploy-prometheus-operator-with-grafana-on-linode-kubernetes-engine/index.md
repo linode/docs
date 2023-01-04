@@ -12,8 +12,8 @@ published: 2020-07-29
 image: DeployPromOp_Graf_LKE.png
 modified_by:
   name: Linode
-title: "How to Deploy Prometheus Operator and Grafana on LKE"
-h1_title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
+title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
+title_meta: "How to Deploy Prometheus Operator and Grafana on LKE"
 external_resources:
 - '[Prometheus Operator Helm Chart on Github](https://github.com/helm/charts/tree/master/stable/prometheus-operator): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'

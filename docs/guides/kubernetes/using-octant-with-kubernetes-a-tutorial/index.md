@@ -12,9 +12,8 @@ published: 2019-11-06
 modified_by:
   name: Linode
 image: using-octant-with-kube.jpg
-title: "How to Use Octant with Kubernetes (A Tutorial)"
-h1_title: "A Overview of Using Octant with Kubernetes"
-enable_h1: true
+title: "A Overview of Using Octant with Kubernetes"
+title_meta: "How to Use Octant with Kubernetes (A Tutorial)"
 external_resources:
 - '[Octant](https://octant.dev/)'
 - '[Octant on GitHub](https://github.com/vmware-tanzu/octant)'

@@ -11,9 +11,8 @@ published: 2017-08-22
 modified: 2019-02-01
 modified_by:
     name: Sam Foo
-title: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
-h1_title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
-enable_h1: true
+title: 'Installing a Jupyter Notebook on a Linode Behind an Apache Reverse Proxy'
+title_meta: 'How to Install a Jupyter Notebook Server on a Reverse Proxy'
 external_resources:
  - '[Jupyter Notebook Documentation](https://jupyter-notebook.readthedocs.io/en/stable/)'
  - '[Anaconda Documentation](https://docs.continuum.io/)'

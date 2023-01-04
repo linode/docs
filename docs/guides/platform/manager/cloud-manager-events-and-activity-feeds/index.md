@@ -7,9 +7,8 @@ description: "Understanding events and a Linode's activity feed in the Linode Cl
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: UnderstandingtheCloudManagerEventsandActivityFeeds.png
-title: "What Are Cloud Manager Events and Activity Feeds"
-h1_title: "Understanding Events and the Activity Feed"
-enable_h1: true
+title: "Understanding Events and the Activity Feed"
+title_meta: "What Are Cloud Manager Events and Activity Feeds"
 published: 2019-12-26
 modified: 2021-08-25
 modified_by:

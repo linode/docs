@@ -12,8 +12,8 @@ modified: 2020-03-18
 modified_by:
   name: Linode
 published: 2018-06-04
-title: 'How to Install the LEMP Stack on Ubuntu 18.04'
-h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title_meta: 'How to Install the LEMP Stack on Ubuntu 18.04'
 image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
 relations:
     platform:

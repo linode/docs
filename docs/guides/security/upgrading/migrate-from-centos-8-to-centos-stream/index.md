@@ -12,8 +12,6 @@ image: MIGRATE.jpg
 modified_by:
   name: Linode
 title: "Migrate From CentOS 8 to CentOS Stream"
-h1_title: "How to Migrate From CentOS 8 to CentOS Stream"
-enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

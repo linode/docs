@@ -12,8 +12,6 @@ modified_by:
   name: Linode
 published: 2021-03-26
 title: cPanel Security
-h1_title: cPanel Security
-enable_h1: true
 aliases: ['security/basics/securing-cpanel/']
 image: cPanelSecurity.png
 ---

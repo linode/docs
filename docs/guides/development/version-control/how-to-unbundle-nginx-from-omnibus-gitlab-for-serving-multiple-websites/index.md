@@ -15,9 +15,8 @@ modified: 2017-06-21
 modified_by:
   name: Phil Zona
 published: 2016-02-29
-title: 'How to Unbundle NGINX from Omnibus GitLab'
-h1_title: 'Unbundling NGINX from Omnibus Gitlab'
-enable_h1: true
+title: 'Unbundling NGINX from Omnibus Gitlab'
+title_meta: 'How to Unbundle NGINX from Omnibus GitLab'
 external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'

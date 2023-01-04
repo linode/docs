@@ -14,8 +14,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: ApacheTomcat_CentOS8.png
-title: 'How to Install Apache Tomcat on CentOS 8'
-h1_title: 'Installing Apache Tomcat on CentOS 8'
+title: 'Installing Apache Tomcat on CentOS 8'
+title_meta: 'How to Install Apache Tomcat on CentOS 8'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

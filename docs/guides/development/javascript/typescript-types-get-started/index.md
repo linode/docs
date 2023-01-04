@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
 modified_by:
   name: Linode
-title: "TypeScript Types: Get Started"
-h1_title: "Getting Started with TypeScript Types"
-enable_h1: true
+title: "Getting Started with TypeScript Types"
+title_meta: "TypeScript Types: Get Started"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller

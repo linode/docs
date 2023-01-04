@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-03
 modified_by:
   name: Andy Heathershaw
-title: "Backup MariaDB Databases to Linode Object Storage with Restic"
-h1_title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
+title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
+title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
 contributor:
   name: Andy Heathershaw
   link: https://andysh.uk

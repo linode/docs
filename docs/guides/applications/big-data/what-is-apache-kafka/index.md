@@ -11,9 +11,8 @@ published: 2021-06-11
 image: KAFKA1.jpg
 modified_by:
   name: Linode
-title: "What is Apache Kafka?"
-h1_title: "An Introduction to Apache Kafka"
-enable_h1: true
+title: "An Introduction to Apache Kafka"
+title_meta: "What is Apache Kafka?"
 contributor:
   name: Jeffery Novotny
   link: https://github.com/JeffreyNovotny

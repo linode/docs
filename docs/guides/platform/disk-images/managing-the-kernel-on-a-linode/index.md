@@ -12,9 +12,8 @@ modified: 2021-08-13
 modified_by:
   name: Linode
 published: 2022-09-02
-title: "How to Manage the Kernel on a Linode"
-h1_title: "Managing the Kernel on a Linode"
-enable_h1: true
+title: "Managing the Kernel on a Linode"
+title_meta: "How to Manage the Kernel on a Linode"
 ---
 
 The primary component of every Linux system is the *Linux kernel*. The kernel interfaces with the system's hardware and it controls the operating system's core functionality. This guide covers the types of kernels that can be assigned to a Linode and how to view, update, or change the kernel.

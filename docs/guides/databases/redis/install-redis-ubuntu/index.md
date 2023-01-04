@@ -11,9 +11,8 @@ published: 2021-07-02
 image: REDIS.jpg
 modified_by:
   name: Linode
-title: "Install and Configure Redis on Ubuntu 20.04"
-h1_title: "How to Install and Configure Redis on Ubuntu 20.04"
-enable_h1: true
+title: "How to Install and Configure Redis on Ubuntu 20.04"
+title_meta: "Install and Configure Redis on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -11,7 +11,6 @@ published: 2022-08-15
 modified_by:
   name: Nathaniel Stickman
 title: "How to Check Python Version"
-h1_title: "How to Check Python Version"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -12,8 +12,8 @@ image: ClearCacheAndCookies.png
 modified: 2018-06-28
 modified_by:
   name: Rajakavitha Kodhandapani
-title: 'How to Clear Cache and Cookies in a Browser'
-h1_title: 'Clearing Cache and Cookies in a Browser'
+title: 'Clearing Cache and Cookies in a Browser'
+title_meta: 'How to Clear Cache and Cookies in a Browser'
 aliases: ['/quick-answers/websites/clear-cache-shortguide/']
 ---
 

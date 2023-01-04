@@ -12,9 +12,8 @@ modified: 2021-08-13
 modified_by:
   name: Linode
 image: SecretsManagementwithTerraform.png
-title: "Secrets Management with Terraform"
-h1_title: "Managing Secrets with Terraform"
-enable_h1: true
+title: "Managing Secrets with Terraform"
+title_meta: "Secrets Management with Terraform"
 contributor:
   name: Linode
 external_resources:

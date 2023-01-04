@@ -13,7 +13,6 @@ image: InstallMagento_CentOS8.png
 modified_by:
   name: Linode
 title: "Install Magento 2.4 on Centos 8"
-h1_title: "Install Magento 2.4 on Centos 8"
 contributor:
   name: Jeffrey Novotny
   link: https://github.com/JeffreyNovotny

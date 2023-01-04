@@ -11,9 +11,8 @@ modified: 2022-07-08
 modified_by:
   name: Linode
 published: 2020-10-28
-title: How to Secure Wordpress
-h1_title: Securing Wordpress
-enable_h1: true
+title: Securing Wordpress
+title_meta: How to Secure Wordpress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'

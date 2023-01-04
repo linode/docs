@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Linode
-title: "How to Install Streamlink CLI on Ubuntu and macOS"
-h1_title: "Install Streamlink CLI on Ubuntu and macOS"
-enable_h1: true
+title: "Install Streamlink CLI on Ubuntu and macOS"
+title_meta: "How to Install Streamlink CLI on Ubuntu and macOS"
 contributor:
   name: Sandro Villinger
   link: https://twitter.com/sandrovillinger

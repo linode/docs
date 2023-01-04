@@ -13,9 +13,8 @@ modified: 2022-07-12
 modified_by:
   name: Linode
 published: 2012-02-17
-title: "How to Set Up and Secure a Linode Compute Instance"
-h1_title: "Setting Up and Securing a Compute Instance"
-enable_h1: true
+title: "Setting Up and Securing a Compute Instance"
+title_meta: "How to Set Up and Secure a Linode Compute Instance"
 ---
 
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.

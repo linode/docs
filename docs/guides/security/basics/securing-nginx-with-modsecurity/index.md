@@ -11,9 +11,8 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: How to Secure Nginx With ModSecurity
-h1_title: Securing Nginx With ModSecurity
-enable_h1: true
+title: Securing Nginx With ModSecurity
+title_meta: How to Secure Nginx With ModSecurity
 aliases: ['security/basics/securing-nginx-with-modsecurity/']
 image: SecureNginx_ModSecurity.png
 relations:

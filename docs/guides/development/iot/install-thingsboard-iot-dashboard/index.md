@@ -12,9 +12,8 @@ published: 2018-01-30
 modified: 2018-01-30
 modified_by:
   name: Linode
-title: "How to View IoT Data with ThingsBoard"
-h1_title: "Viewing IoT Data with ThingsBoard"
-enable_h1: true
+title: "Viewing IoT Data with ThingsBoard"
+title_meta: "How to View IoT Data with ThingsBoard"
 external_resources:
   - '[Getting Started – ThingsBoard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
   - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'

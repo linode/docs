@@ -11,7 +11,6 @@ published: 2021-02-09
 modified_by:
   name: Linode
 title: "How to Write Your Own Vue.js Plugin"
-h1_title: "How to Write Your Own Vue.js Plugin"
 contributor:
   name: John Au-Yeung
   link: https://twitter.com/AuMayeung

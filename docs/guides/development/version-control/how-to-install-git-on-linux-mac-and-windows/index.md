@@ -12,9 +12,8 @@ modified_by:
   name: Linode
 published: 2009-09-04
 os: ["mac", "linux", "windows"]
-title: "Install Git on Linux, Mac or Windows: A How To"
-h1_title: "Installing Git on Linux, Mac or Windows"
-enable_h1: true
+title: "Installing Git on Linux, Mac or Windows"
+title_meta: "Install Git on Linux, Mac or Windows: A How To"
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'

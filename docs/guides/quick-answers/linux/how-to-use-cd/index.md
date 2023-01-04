@@ -11,9 +11,8 @@ modified_by:
   name: Linode
 published: 2020-06-22
 image: UseTheCDCommand.png
-title: "How to Use the cd Command to Navigate the Terminal"
-h1_title: "Using the cd Command to Navigate the Terminal"
-enable_h1: true
+title: "Using the cd Command to Navigate the Terminal"
+title_meta: "How to Use the cd Command to Navigate the Terminal"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-cd/']
 ---

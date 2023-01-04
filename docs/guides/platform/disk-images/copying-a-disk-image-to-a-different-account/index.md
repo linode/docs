@@ -12,9 +12,8 @@ modified: 2022-03-28
 modified_by:
   name: Linode
 published: 2020-06-01
-title: "How to Copy a Disk to a Different Account"
-h1_title: "Copying a Disk to a Different Account"
-enable_h1: true
+title: "Copying a Disk to a Different Account"
+title_meta: "How to Copy a Disk to a Different Account"
 image: copying_a_disk_to_a_differnet_account_smg.png
 ---
 

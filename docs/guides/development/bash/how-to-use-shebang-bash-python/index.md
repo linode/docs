@@ -11,8 +11,6 @@ published: 2022-08-02
 modified_by:
   name: Linode
 title: "How to Use the Shebang in Bash and Python"
-h1_title: "How to Use the Shebang in Bash and Python"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

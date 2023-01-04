@@ -11,7 +11,6 @@ published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use Buildah to Build OCI Container Images"
-h1_title: "How to Use Buildah to Build OCI Container Images"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

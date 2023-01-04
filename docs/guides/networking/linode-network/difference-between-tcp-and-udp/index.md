@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
 modified_by:
   name: Linode
-title: "The Difference Between TCP and UDP Explained | Linode"
-h1_title: "What is the Difference Between TCP and UDP? "
-enable_h1: true
+title: "What is the Difference Between TCP and UDP? "
+title_meta: "The Difference Between TCP and UDP Explained | Linode"
 contributor:
   name: Jeff Novotny
 external_resources:

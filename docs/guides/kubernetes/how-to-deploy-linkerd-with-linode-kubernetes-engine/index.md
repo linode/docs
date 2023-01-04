@@ -12,8 +12,8 @@ published: 2019-11-07
 image: Deploy_Linkerd_2_with_Linode_Kubernetes_Engine_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
-h1_title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
+title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
+title_meta: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
 contributor:
   name: Heather Zoppetti
 external_resources:

@@ -11,8 +11,6 @@ published: 2022-07-14
 modified_by:
   name: Linode
 title: "How to List Cron Jobs on Linux"
-h1_title: "How to List Cron Jobs on Linux"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

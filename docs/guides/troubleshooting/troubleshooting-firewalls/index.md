@@ -11,8 +11,8 @@ published: 2020-08-04
 modified: 2020-08-04
 modified_by:
   name: Linode
-title: Troubleshooting Firewalls
-h1_title: Diagnose & Resolve Issues with Firewalls
+title: Diagnose & Resolve Issues with Firewalls
+title_meta: Troubleshooting Firewalls
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/']
 ---

@@ -12,9 +12,8 @@ published: 2021-05-21
 image: Python.jpg
 modified_by:
   name: Linode
-title: "How to Comment in Python"
-h1_title: "Creating Comments in Python"
-enable_h1: true
+title: "Creating Comments in Python"
+title_meta: "How to Comment in Python"
 external_resources:
 - '[Python Software Foundation](https://www.python.org/)'
 - '[Python Programming at Wikibooks](https://en.wikibooks.org/wiki/Python_Programming)'

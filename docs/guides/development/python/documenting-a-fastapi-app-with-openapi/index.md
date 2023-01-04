@@ -11,9 +11,8 @@ published: 2021-08-06
 image: HowtoDocumentaFastAPIAppwithOpenAPI.jpg
 modified_by:
   name: Linode
-title: "Documenting a FastAPI App with OpenAPI"
-h1_title: "How to Document a FastAPI App with OpenAPI"
-enable_h1: true
+title: "How to Document a FastAPI App with OpenAPI"
+title_meta: "Documenting a FastAPI App with OpenAPI"
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy

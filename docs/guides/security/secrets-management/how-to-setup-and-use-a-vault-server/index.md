@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-26
 modified_by:
   name: Linode
-title: "How to Set Up and Use a Vault Server"
-h1_title: "Setting Up and Using a Vault Server"
-enable_h1: true
+title: "Setting Up and Using a Vault Server"
+title_meta: "How to Set Up and Use a Vault Server"
 aliases: ['/security/secrets-management/how-to-set-up-and-use-a-vault-server/']
 tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png

@@ -11,9 +11,8 @@ published: 2021-03-08
 image: LinuxGameServerHosting.png
 modified_by:
   name: Linode
-title: "How to Get Started with Linux Game Server Hosting"
-h1_title: "Getting Started with Linux Game Server Hosting"
-enable_h1: true
+title: "Getting Started with Linux Game Server Hosting"
+title_meta: "How to Get Started with Linux Game Server Hosting"
 contributor:
   name: Sandro Villinger
 ---

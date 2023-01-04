@@ -10,9 +10,8 @@ published: 2018-08-09
 modified: 2018-08-09
 modified_by:
   name: Linode
-h1_title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
-title: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
-enable_h1: true
+title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
+title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
 contributor:
   name: Linode
 aliases: ['/websites/static-sites/install-gatsbyjs/']

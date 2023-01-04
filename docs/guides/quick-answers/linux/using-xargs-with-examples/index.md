@@ -8,9 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
 modified_by:
   name: Linode
-title: "Using the Linux xargs Command"
-h1_title: "How to Use the Linux xargs Command"
-enable_h1: true
+title: "Use the Linux xargs Command"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

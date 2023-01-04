@@ -10,8 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 modified_by:
   name: Linode
-title: 'How to Install Apps on Kubernetes with Helm 2'
-h1_title: 'Installing Apps on Kubernetes with Helm 2'
+title: "Install Apps on Kubernetes with Helm 2"
 aliases: ['/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-2/']
 deprecated: true
 deprecated_link: 'kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/'

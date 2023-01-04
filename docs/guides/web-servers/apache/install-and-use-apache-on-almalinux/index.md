@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
 modified_by:
   name: Linode
-title: "Install and Use Apache on AlmaLinux"
-h1_title: "How to Install and Use Apache on AlmaLinux"
-enable_h1: true
+title: "How to Install and Use Apache on AlmaLinux"
+title_meta: "Install and Use Apache on AlmaLinux"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

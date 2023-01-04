@@ -13,9 +13,8 @@ published: 2017-12-07
 modified: 2018-07-10
 modified_by:
   name: Linode
-title: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
-h1_title: "Creating a SOCKSS Proxy Server with Shadowsocks"
-enable_h1: true
+title: "Creating a SOCKSS Proxy Server with Shadowsocks"
+title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940

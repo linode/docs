@@ -11,9 +11,8 @@ published: 2021-08-13
 image: HowtoInstallandUseFFmpegonLinux.jpg
 modified_by:
   name: Linode
-title: "Install and Use FFmpeg on Linux"
-h1_title: "How to Install and Use FFmpeg on Linux"
-enable_h1: true
+title: "How to Install and Use FFmpeg on Linux"
+title_meta: "Install and Use FFmpeg on Linux"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

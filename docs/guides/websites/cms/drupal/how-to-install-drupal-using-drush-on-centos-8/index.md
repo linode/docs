@@ -12,8 +12,8 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drupal using Drush on CentOS 8
-h1_title: Install Drupal using Drush on CentOS 8
+title: Install Drupal using Drush on CentOS 8
+title_meta: How to Install Drupal using Drush on CentOS 8
 relations:
     platform:
         key: how-to-install-drupal-drush

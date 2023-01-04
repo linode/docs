@@ -13,8 +13,8 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drush on CentOS 8
-h1_title: Install Drush on CentOS 8
+title: Install Drush on CentOS 8
+title_meta: How to Install Drush on CentOS 8
 image: InstallDrushonCentOS8.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'

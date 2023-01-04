@@ -12,8 +12,8 @@ modified: 2017-07-21
 modified_by:
   name: Linode
 published: 2020-03-18
-title: A Beginner's Guide to SELinux on CentOS 7
-h1_title: Getting Started with SELinux on CentOS 7
+title: Getting Started with SELinux on CentOS 7
+title_meta: A Beginner's Guide to SELinux on CentOS 7
 aliases: ['/security/getting-started-with-selinux/','/security/selinux/a-beginners-guide-to-selinux-on-centos-7/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'

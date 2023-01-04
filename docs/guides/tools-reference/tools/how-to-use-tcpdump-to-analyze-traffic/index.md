@@ -11,7 +11,6 @@ published: 2022-06-11
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use tcdump to Analyze Network Traffic"
-h1_title: "How to Use tcdump to Analyze Network Traffic"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-30
 modified_by:
   name: Linode
-title: 'Solving Real World Problems With Bash Scripts - A Tutorial'
-h1_title: A Tutorial for Solving Real World Problems with Bash Scripts
+title: A Tutorial for Solving Real World Problems with Bash Scripts
+title_meta: 'Solving Real World Problems With Bash Scripts - A Tutorial'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

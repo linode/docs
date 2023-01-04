@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-01
 modified_by:
   name: Linode
-title: "How to Use Views in a MySQL Database"
-h1_title: "Using Views in a MySQL Database"
+title: "Using Views in a MySQL Database"
+title_meta: "How to Use Views in a MySQL Database"
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83

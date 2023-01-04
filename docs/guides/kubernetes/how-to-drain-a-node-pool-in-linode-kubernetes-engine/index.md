@@ -11,8 +11,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-07-07
 modified_by:
   name: Linode
-title: How to Drain a Node Pool in Linode Kubernetes Engine
-h1_title: Draining a Node Pool in Linode Kubernetes Engine
+title: Draining a Node Pool in Linode Kubernetes Engine
+title_meta: How to Drain a Node Pool in Linode Kubernetes Engine
 external_resources:
   - "[Kubernetes Documentation](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)"
 ---

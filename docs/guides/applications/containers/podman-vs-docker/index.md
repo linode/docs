@@ -11,7 +11,6 @@ published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "Podman vs Docker: Comparing the Two Containerization Tools"
-h1_title: "Podman vs Docker: Comparing the Two Containerization Tools"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-04
 modified_by:
   name: Linode
-title: "How to Work with MySQL Subqueries"
-h1_title: Working with MySQL Subqueries"
+title: Working with MySQL Subqueries"
+title_meta: "How to Work with MySQL Subqueries"
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83

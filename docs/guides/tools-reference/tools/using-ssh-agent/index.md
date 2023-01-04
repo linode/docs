@@ -11,7 +11,6 @@ published: 2022-11-10
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use ssh-agent"
-h1_title: "How to Use ssh-agent"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

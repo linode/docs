@@ -12,8 +12,8 @@ modified: 2020-03-18
 modified_by:
   name: Linode
 published: 2018-06-04
-title: 'How to Install the LEMP Stack on CentOS 8'
-h1_title: 'Installing the LEMP Stack on CentOS 8'
+title: 'Installing the LEMP Stack on CentOS 8'
+title_meta: 'How to Install the LEMP Stack on CentOS 8'
 image: How-to-Install-LEMP-Stack-on-CentOS-8_1200x631.png
 relations:
     platform:

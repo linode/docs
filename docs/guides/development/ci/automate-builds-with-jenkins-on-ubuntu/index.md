@@ -15,8 +15,8 @@ published: 2017-11-14
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: 'How to Automate Builds with Jenkins on Ubuntu 16.04'
-h1_title: 'Automating Builds with Jenkins on Ubuntu 16.04'
+title: 'Automating Builds with Jenkins on Ubuntu 16.04'
+title_meta: 'How to Automate Builds with Jenkins on Ubuntu 16.04'
 external_resources:
  - '[Jenkins User Documentation](https://jenkins.io/doc/)'
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'

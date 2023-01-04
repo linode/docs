@@ -12,9 +12,8 @@ published: 2021-07-02
 image: YAML.jpg
 modified_by:
   name: Linode
-title: "YAML Examples for Anchors, Aliases, and Overrides"
-h1_title: "YAML Anchors, Aliases, and Overrides"
-enable_h1: true
+title: "YAML Anchors, Aliases, and Overrides"
+title_meta: "YAML Examples for Anchors, Aliases, and Overrides"
 contributor:
   name: Cameron Laird
 external_resources:

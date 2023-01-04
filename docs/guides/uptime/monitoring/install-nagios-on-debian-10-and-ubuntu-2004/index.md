@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
 modified_by:
   name: Linode
-title: "Install Nagios on Debian 10 and Ubuntu 20.04"
-h1_title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
-enable_h1: true
+title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
+title_meta: "Install Nagios on Debian 10 and Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

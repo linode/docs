@@ -11,8 +11,6 @@ published: 2022-09-09
 modified_by:
   name: Linode
 title: "Troubleshooting Network Issues - IPv4 and IPv6"
-h1_title: "Troubleshooting Network Issues - IPv4 and IPv6"
-enable_h1: true
 contributor:
   name: Tom Henderson
 ---

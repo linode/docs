@@ -11,9 +11,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: A Rust and WebAssembly Tutorial
-h1_title: Getting Started with WebAssembly Tutorial
-enable_h1: true
+title: Getting Started with WebAssembly Tutorial
+title_meta: A Rust and WebAssembly Tutorial
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

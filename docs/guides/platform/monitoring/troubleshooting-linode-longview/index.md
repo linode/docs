@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 image: TroubleshootLinodeLongview.png
-title: Troubleshooting Linode Longview
-h1_title: Troubleshoot Linode Longview
+title: Troubleshoot Linode Longview
+title_meta: Troubleshooting Linode Longview
 published: 2020-01-22
 aliases: ['/platform/longview/troubleshooting-linode-longview/']
 ---

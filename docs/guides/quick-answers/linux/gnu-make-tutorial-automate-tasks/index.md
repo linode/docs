@@ -11,9 +11,8 @@ published: 2021-07-30
 image: GNUMakeTutorial-LearntoAutomateTasks.jpg
 modified_by:
   name: Linode
-title: "GNU Make Tutorial: Learn to Automate Tasks"
-h1_title: "Use GNU Make to Automate Tasks"
-enable_h1: true
+title: "Use GNU Make to Automate Tasks"
+title_meta: "GNU Make Tutorial: Learn to Automate Tasks"
 contributor:
   name: Stephen Savitzky
 ---

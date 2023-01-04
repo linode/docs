@@ -12,8 +12,8 @@ modified: 2020-03-19
 modified_by:
   name: Linode
 published: 2020-03-19
-title: 'How to Install Apache Web Server on CentOS 8'
-h1_title: 'Installing Apache Web Server on CentOS 8'
+title: 'Installing Apache Web Server on CentOS 8'
+title_meta: 'How to Install Apache Web Server on CentOS 8'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'

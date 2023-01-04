@@ -11,8 +11,8 @@ published: 2020-10-29
 modified: 2020-10-29
 modified_by:
   name: Linode
-title: 'Automated Security Auditing with Lynis'
-h1_title: 'Security Auditing with Lynis'
+title: 'Security Auditing with Lynis'
+title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png
 ---
 

@@ -10,8 +10,8 @@ published: 2020-02-11
 modified_by:
   name: Linode
 image: GettingStartedwithGo.png
-title: "A Beginner's Guide to Go"
-h1_title: "Getting Started with Go"
+title: "Getting Started with Go"
+title_meta: "A Beginner's Guide to Go"
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

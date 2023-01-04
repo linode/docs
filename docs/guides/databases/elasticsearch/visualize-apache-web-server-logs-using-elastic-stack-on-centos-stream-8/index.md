@@ -17,9 +17,8 @@ image: VisApacheWSL_ES_CentOSStream8.png
 modified: 2021-03-05
 modified_by:
   name: Linode
-title: "Visualizing Apache Logs With Elastic Stack on CentOS Stream 8"
-h1_title: "Visualizing Apache Logs Using Elastic Stack on CentOS Stream 8"
-enable_h1: true
+title: "Visualizing Apache Logs Using Elastic Stack on CentOS Stream 8"
+title_meta: "Visualizing Apache Logs With Elastic Stack on CentOS Stream 8"
 dedicated_cpu_link: true
 tags: ["centos","analytics","database","monitoring","apache"]
 relations:

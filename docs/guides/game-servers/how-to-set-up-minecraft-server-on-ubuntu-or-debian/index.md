@@ -12,9 +12,8 @@ modified: 2022-01-14
 modified_by:
   name: Linode
 published: 2015-01-28
-title: "How to Set Up a Minecraft Server on Ubuntu or Debian"
-h1_title: "Setting up Minecraft Server on Ubuntu or Debian"
-enable_h1: true
+title: "Setting up Minecraft Server on Ubuntu or Debian"
+title_meta: "How to Set Up a Minecraft Server on Ubuntu or Debian"
 image: How_to_Set_Up_a_Minecraft_Server_smg.jpg
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'

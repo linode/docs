@@ -9,10 +9,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
   name: Linode
-title: "Security Automation for Today’s Modern Business"
-h1_title: "Why Security Automation is Needed for Today’s Modern Business"
+title: "Why Security Automation is Needed for Today’s Modern Business"
+title_meta: "Security Automation for Today’s Modern Business"
 tags: ["security"]
-enable_h1: true
 contributor:
   name: David Strom
 ---

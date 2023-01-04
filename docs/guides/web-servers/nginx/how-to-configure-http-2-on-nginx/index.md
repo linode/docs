@@ -11,9 +11,8 @@ published: 2021-07-16
 image: HowtoConfigureHTTP-2onNGINX.jpg
 modified_by:
   name: Linode
-title: "How to Configure HTTP/2 on NGINX"
-h1_title: "Configure HTTP/2 on NGINX"
-enable_h1: true
+title: "Configure HTTP/2 on NGINX"
+title_meta: "How to Configure HTTP/2 on NGINX"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

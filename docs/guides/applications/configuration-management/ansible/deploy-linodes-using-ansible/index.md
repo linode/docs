@@ -10,9 +10,8 @@ published: 2019-06-04
 modified: 2021-12-30
 modified_by:
   name: Linode
-title: "How to use the Linode Ansible Module to Deploy Linodes"
-h1_title: "Using the Linode Ansible Module to Deploy Linodes"
-enable_h1: true
+title: "Using the Linode Ansible Module to Deploy Linodes"
+title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
 contributor:

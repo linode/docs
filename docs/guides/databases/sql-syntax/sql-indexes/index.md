@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
 modified_by:
   name: Linode
-title: "How to Use SQL Indexes"
-h1_title: "An Introduction to SQL Indexes"
-enable_h1: true
+title: "An Introduction to SQL Indexes"
+title_meta: "How to Use SQL Indexes"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

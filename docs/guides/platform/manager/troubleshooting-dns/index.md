@@ -12,8 +12,8 @@ modified: 2020-07-09
 modified_by:
   name: Linode
 published: 2020-07-09
-title: Troubleshooting DNS Records
-h1_title: Diagnose & Resolve DNS Records in DNS Manager
+title: Diagnose & Resolve DNS Records in DNS Manager
+title_meta: Troubleshooting DNS Records
 aliases: ['/platform/manager/troubleshooting-dns/']
 ---
 

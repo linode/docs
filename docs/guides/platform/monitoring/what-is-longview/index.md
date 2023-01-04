@@ -10,9 +10,8 @@ aliases: ['/platform/longview/longview/','/platform/longview/what-is-longview/',
 published: 2019-12-09
 modified_by:
   name: Linode
-title: "How to Use Longview to Obtain System Metrics"
-h1_title: "Using Longview to Obtain System Metrics"
-enable_h1: true
+title: "Using Longview to Obtain System Metrics"
+title_meta: "How to Use Longview to Obtain System Metrics"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]

@@ -11,7 +11,6 @@ published: 2022-08-18
 modified_by:
   name: Nathaniel Stickman
 title: "How to Revert the Last Git Commit"
-h1_title: "How to Revert the Last Git Commit"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Linode
-title: "SQL Commands: Getting Started"
-h1_title: "Introduction to SQL Commands"
-enable_h1: true
+title: "Introduction to SQL Commands"
+title_meta: "SQL Commands: Getting Started"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

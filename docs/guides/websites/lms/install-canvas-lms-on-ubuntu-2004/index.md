@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Canvas LMS on Ubuntu 20.04"
-h1_title: "Installing Canvas on Ubuntu 20.04"
-enable_h1: true
+title: "Installing Canvas on Ubuntu 20.04"
+title_meta: "How to Install Canvas LMS on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

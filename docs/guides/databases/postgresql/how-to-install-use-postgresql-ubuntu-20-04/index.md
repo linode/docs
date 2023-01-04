@@ -3,16 +3,14 @@ slug: how-to-install-use-postgresql-ubuntu-20-04
 author:
   name: Jeff Novotny
   email: docs@linode.com
-description: 'This guide provides an introduction to PostgreSQL, an open source object-relational database management system (ORDBMS).'
-og_description: 'This guide provides an introduction to PostgreSQL, an open source object-relational database management system (ORDBMS).'
+description: "This guide provides an introduction to PostgreSQL, an open source object-relational database management system (ORDBMS)."
 keywords: ['PostgreSQL','RDBMS','database','guide and tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 image: InstallUse_PostgreSQL_Ubuntu2004.png
 modified_by:
   name: Linode
-title: "How to Install and Use PostgreSQL on Ubuntu 20.04."
-h1_title: "Installing and Using PostgreSQL on Ubuntu 20.04"
+title: "Install and Use PostgreSQL on Ubuntu 20.04."
 contributor:
   name: Jeff Novotny
 external_resources:

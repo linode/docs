@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Nygel Bennett
-title: "Use Ansible to Automate Deployment of Web Server Infrastructure"
-h1_title: "How to Use Ansible to Deploy a Web Server, Log Server, and Database Server"
-enable_h1: true
+title: "Use Ansible to Automate the Deployment of a Web Server, Log Server, and Database Server"
+title_meta: "Use Ansible to Automate Infrastructure Deployment"
 contributor:
   name: Nygel Bennett
   link: https://github.com/bennettnw2

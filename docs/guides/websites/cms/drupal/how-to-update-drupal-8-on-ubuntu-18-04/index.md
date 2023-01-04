@@ -13,8 +13,8 @@ modified_by:
     name: Linode
 published: 2020-02-21
 image: Drupal8onUbuntu1804.png
-title: How to Update Drupal 8 on Ubuntu 18.04
-h1_title: Update Drupal 8 on Ubuntu 18.04
+title: Update Drupal 8 on Ubuntu 18.04
+title_meta: How to Update Drupal 8 on Ubuntu 18.04
 relations:
     platform:
         key: how-to-update-drupal-8

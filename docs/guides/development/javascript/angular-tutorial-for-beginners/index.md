@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-10
 modified_by:
   name: Nathaniel Stickman
-title: "An Angular Tutorial for Beginners"
-h1_title: "How to Build a Website with Angular"
-enable_h1: true
+title: "How to Build a Website with Angular"
+title_meta: "An Angular Tutorial for Beginners"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

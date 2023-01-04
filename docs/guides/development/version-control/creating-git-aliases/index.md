@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
 modified_by:
   name: Linode
-title: "Creating Git Aliases"
-h1_title: "How to Create Git Aliases"
-enable_h1: true
+title: "How to Create Git Aliases"
+title_meta: "Creating Git Aliases"
 contributor:
   name: Stephen Savitzky
   link: https://github.com/ssavitzky/

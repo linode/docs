@@ -11,9 +11,8 @@ published: 2018-04-27
 modified: 2018-09-20
 modified_by:
   name: Linode
-title: "How to Use fsck to Check and Repair Disk Errors"
-h1_title: "Using fsck to Find and Repair Disk Errors and Bad Sectors"
-enable_h1: true
+title: "Using fsck to Find and Repair Disk Errors and Bad Sectors"
+title_meta: "How to Use fsck to Check and Repair Disk Errors"
 external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]

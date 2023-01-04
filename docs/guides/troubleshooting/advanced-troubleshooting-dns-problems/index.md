@@ -11,8 +11,6 @@ published: 2022-09-20
 modified_by:
   name: Linode
 title: "Advanced Troubleshooting DNS Problems"
-h1_title: "Advanced Troubleshooting DNS Problems"
-enable_h1: true
 contributor:
   name: Tom Henderson
 ---

@@ -9,7 +9,6 @@ published: 2022-06-17
 modified_by:
   name: Linode
 title: "Python Arrays: What They Are and How to Use Them"
-h1_title: "Python Arrays: What They Are and How to Use Them"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

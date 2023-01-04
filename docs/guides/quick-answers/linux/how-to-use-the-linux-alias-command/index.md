@@ -12,8 +12,8 @@ modified: 2020-11-06
 modified_by:
   name: Heather Zoppetti
 published: 2020-11-17
-title: How to Use the Linux alias Command
-h1_title: Using the Linux alias Command
+title: Using the Linux alias Command
+title_meta: How to Use the Linux alias Command
 tags: ["linux"]
 ---
 

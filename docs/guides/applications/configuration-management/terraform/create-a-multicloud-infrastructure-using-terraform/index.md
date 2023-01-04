@@ -12,9 +12,8 @@ published: 2021-04-23
 image: MulticloudInfra_Terraform.png
 modified_by:
   name: Linode
-title: "How to Create a Multicloud Infrastructure Using Terraform"
-h1_title: "Creating a Multicloud Infrastructure Using Terraform"
-enable_h1: true
+title: "Creating a Multicloud Infrastructure Using Terraform"
+title_meta: "How to Create a Multicloud Infrastructure Using Terraform"
 contributor:
   name: Jeff Novotny
 external_resources:

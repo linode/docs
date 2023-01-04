@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified_by:
   name: Linode
-title: "Install and Use the MongoDB Community Shell"
-h1_title: "How to Install and Use the MongoDB Community Shell"
-enable_h1: true
+title: "How to Install and Use the MongoDB Community Shell"
+title_meta: "Install and Use the MongoDB Community Shell"
 contributor:
   name: Tom Henderson
 ---

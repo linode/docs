@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 modified_by:
   name: Linode
-title: "An Introduction to PostgreSQL"
-h1_title: "What is PostgreSQL?"
-enable_h1: true
+title: "What is PostgreSQL?"
+title_meta: "An Introduction to PostgreSQL"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny/

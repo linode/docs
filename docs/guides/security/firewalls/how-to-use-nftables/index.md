@@ -12,9 +12,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use nftables"
-h1_title: "Get Started with nftables"
-enable_h1: true
+title: "Get Started with nftables"
+title_meta: "How to Use nftables"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

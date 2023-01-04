@@ -13,8 +13,8 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drush on Ubuntu 18.04
-h1_title: Install Drush on Ubuntu 18.04
+title: Install Drush on Ubuntu 18.04
+title_meta: How to Install Drush on Ubuntu 18.04
 image: Drush_onUbuntu1804.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'

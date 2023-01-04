@@ -10,9 +10,8 @@ modified: 2021-10-18
 modified_by:
   name: Kulshekhar Kabra
 published: 2017-09-19
-title: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"
-h1_title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
-enable_h1: true
+title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
+title_meta: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'

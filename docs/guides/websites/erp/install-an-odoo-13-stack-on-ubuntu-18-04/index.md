@@ -12,8 +12,8 @@ published: 2020-09-17
 modified: 2020-09-17
 modified_by:
   name: Linode
-title: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
-h1_title: Installing an Odoo 13 Stack on Ubuntu 18.04
+title: Installing an Odoo 13 Stack on Ubuntu 18.04
+title_meta: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 image: InstallOdoo13Stack_Ubuntu1804.png
 contributor:
   name: Damaso Sanoja

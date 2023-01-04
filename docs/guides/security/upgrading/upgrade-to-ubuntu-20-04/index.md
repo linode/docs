@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2021-12-30
-title: "How to Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
-h1_title: "Inline Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
-enable_h1: true
+title: "Inline Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
+title_meta: "How to Upgrade to Ubuntu 20.04 LTS (Focal Fossa)"
 relations:
     platform:
         key: how-to-upgrade-ubuntu

@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Mediawiki on CentOS 8"
-h1_title: "Installing Mediawiki on CentOS 8"
-enable_h1: true
+title: "Installing Mediawiki on CentOS 8"
+title_meta: "How to Install Mediawiki on CentOS 8"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

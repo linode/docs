@@ -11,9 +11,8 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: How to Secure Apache 2 With ModSecurity
-h1_title: Securing Apache 2 With ModSecurity
-enable_h1: true
+title: Securing Apache 2 With ModSecurity
+title_meta: How to Secure Apache 2 With ModSecurity
 aliases: ['security/basics/securing-apache2-with-modsecurity/']
 image: SecureApache2_ModSecurity.png
 relations:

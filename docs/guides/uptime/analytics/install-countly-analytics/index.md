@@ -11,7 +11,6 @@ published: 2022-08-23
 modified_by:
   name: Nathaniel Stickman
 title: "Installing Countly Community Edition on Ubuntu 20.04"
-h1_title: "Installing Countly Community Edition on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

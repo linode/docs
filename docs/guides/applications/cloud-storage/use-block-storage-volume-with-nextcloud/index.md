@@ -12,9 +12,8 @@ published: 2018-04-17
 modified: 2018-04-17
 modified_by:
   name: Linode
-title: "How to Use a Block Storage Volume with Nextcloud"
-h1_title: "Use a Block Storage Volume with Nextcloud"
-enable_h1: true
+title: "Use a Block Storage Volume with Nextcloud"
+title_meta: "How to Use a Block Storage Volume with Nextcloud"
 external_resources:
   - '[Nextcloud Docker Image Documentation](https://github.com/nextcloud/docker)'
 aliases: ['/applications/cloud-storage/use-block-storage-volume-with-nextcloud/']

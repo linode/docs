@@ -12,8 +12,8 @@ published: 2021-02-12
 image: InstallPython3_Deb10.png
 modified_by:
   name: Linode
-title: "How to Install Python 3 on Debian 10"
-h1_title: "Installing Python 3 on Debian 10"
+title: "Installing Python 3 on Debian 10"
+title_meta: "How to Install Python 3 on Debian 10"
 contributor:
   name: Angel Guarisma
   link: https://github.com/Guaris/

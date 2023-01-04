@@ -11,7 +11,6 @@ published: 2022-06-24
 modified_by:
   name: Nathaniel Stickman
 title: "How to Self-host Appsmith with Docker Compose"
-h1_title: "How to Self-host Appsmith with Docker Compose"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

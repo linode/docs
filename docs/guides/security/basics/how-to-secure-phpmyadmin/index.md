@@ -11,9 +11,8 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: How to Secure phpMyAdmin
-h1_title: Securing phpMyAdmin
-enable_h1: true
+title: Securing phpMyAdmin
+title_meta: How to Secure phpMyAdmin
 aliases: ['/security/basics/how-to-secure-phpmyadmin/']
 image: Securing_phpMyAdmin.png
 ---

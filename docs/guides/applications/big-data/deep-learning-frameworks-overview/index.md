@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "Deep Learning Frameworks Overview"
-h1_title: "An Overview of Deep Learning Frameworks"
-enable_h1: true
+title: "An Overview of Deep Learning Frameworks"
+title_meta: "Deep Learning Frameworks Overview"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio

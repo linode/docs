@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
 modified_by:
   name: Nathaniel Stickman
-title: "Install and Use gping on Linux"
-h1_title: "How to Install and Use gping on Linux"
-enable_h1: true
+title: "How to Install and Use gping on Linux"
+title_meta: "Install and Use gping on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

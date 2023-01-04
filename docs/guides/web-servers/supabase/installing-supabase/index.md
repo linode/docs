@@ -11,7 +11,6 @@ published: 2022-09-01
 modified_by:
   name: Nathaniel Stickman
 title: "How to Self-host Supabase with Docker"
-h1_title: "How to Self-host Supabase with Docker"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

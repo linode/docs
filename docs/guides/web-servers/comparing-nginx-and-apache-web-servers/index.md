@@ -12,9 +12,8 @@ published: 2021-03-15
 image: ApacheVsNginx.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "Comparing the NGINX and Apache Web Servers"
-h1_title: "A Comparison of the NGINX and Apache Web Servers"
-enable_h1: true
+title: "A Comparison of the NGINX and Apache Web Servers"
+title_meta: "Comparing the NGINX and Apache Web Servers"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

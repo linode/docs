@@ -11,8 +11,6 @@ published: 2022-03-18
 modified_by:
   name: Linode
 title: "How to Remove Untracked Files in Git"
-h1_title: "How to Remove Untracked Files in Git"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

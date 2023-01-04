@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-29
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install WordPress on Debian 10"
-h1_title: "Install WordPress on Debian 10"
-enable_h1: true
+title: "Install WordPress on Debian 10"
+title_meta: "How to Install WordPress on Debian 10"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,9 +10,8 @@ published: 2021-06-04
 image: Anaconda.jpg
 modified_by:
   name: Linode
-title: "How to Install Anaconda on Ubuntu"
-h1_title: "Installing Anaconda on Ubuntu"
-enable_h1: true
+title: "Installing Anaconda on Ubuntu"
+title_meta: "How to Install Anaconda on Ubuntu"
 contributor:
   name: Linode Community
 external_resources:

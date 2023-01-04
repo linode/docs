@@ -11,7 +11,6 @@ published: 2021-07-01
 modified_by:
   name: Linode
 title: "Use Certbot to Enable HTTPS with NGINX on Fedora"
-enable_h1: true
 relations:
     platform:
         key: how-to-use-certbot-with-nginx

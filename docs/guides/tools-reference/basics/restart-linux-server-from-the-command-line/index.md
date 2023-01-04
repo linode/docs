@@ -11,9 +11,8 @@ published: 2021-08-06
 image: HowtoRestartaLinuxServerfromtheCommandLine.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "Using the Linux Restart Command from the Command Line"
-h1_title: "Restart a Linux Server from the Command Line"
-enable_h1: true
+title: "Restart a Linux Server from the Command Line"
+title_meta: "Using the Linux Restart Command from the Command Line"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

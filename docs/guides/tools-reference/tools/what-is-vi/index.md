@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 modified_by:
   name: Nathaniel Stickman
-title: "What Is Vi?"
-h1_title: "Getting Started Using Vi and Vim"
-enable_h1: true
+title: "Getting Started Using Vi and Vim"
+title_meta: "What Is Vi?"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

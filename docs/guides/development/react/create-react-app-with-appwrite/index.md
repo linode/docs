@@ -11,7 +11,6 @@ published: 2022-07-13
 modified_by:
   name: Nathaniel Stickman
 title: "How to Create a React App with Appwrite"
-h1_title: "How to Create a React App with Appwrite"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

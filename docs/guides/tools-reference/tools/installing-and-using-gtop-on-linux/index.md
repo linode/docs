@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
 modified_by:
   name: Linode
-title: "Installing and Using gtop on Linux"
-h1_title: "How to Install and Use gtop on Linux"
-enable_h1: true
+title: "How to Install and Use gtop on Linux"
+title_meta: "Installing and Using gtop on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

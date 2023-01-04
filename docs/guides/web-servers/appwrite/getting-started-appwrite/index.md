@@ -11,7 +11,6 @@ published: 2022-07-03
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Appwrite as a Backend Server"
-h1_title: "Getting Started with Appwrite as a Backend Server"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

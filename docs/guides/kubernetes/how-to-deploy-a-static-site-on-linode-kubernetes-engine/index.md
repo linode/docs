@@ -12,9 +12,8 @@ published: 2019-11-12
 modified: 2020-12-03
 modified_by:
   name: Linode
-h1_title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-title: "Deploying a Static Site on Linode Kubernetes Engine"
-enable_h1: true
+title: "How to Deploy a Static Site on Linode Kubernetes Engine"
+title_meta: "First Post About LKE Clusters"
 contributor:
   name: Linode
 external_resources:
@@ -154,7 +153,8 @@ Git submodules allow you to include one Git repository within another, each main
 
     {{< file "lke-example/content/posts/first_post.md" md >}}
 ---
-title: "First_post"
+title: "How to Deploy a Static Site on Linode Kubernetes Engine"
+title_meta: "First Post About LKE Clusters"
 date: 2019-07-29T14:22:04-04:00
 draft: false
 ---
@@ -164,7 +164,8 @@ draft: false
 
     {{< file "lke-example/content/posts/first_post.md" md >}}
 ---
-title: "First Post About LKE Clusters"
+title: "How to Deploy a Static Site on Linode Kubernetes Engine"
+title_meta: "First Post About LKE Clusters"
 date: 2019-07-29T14:22:04-04:00
 draft: false
 ---

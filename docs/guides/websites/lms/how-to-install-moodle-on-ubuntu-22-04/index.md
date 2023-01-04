@@ -11,8 +11,6 @@ published: 2022-06-01
 modified_by:
   name: Linode
 title: "How to Install Moodle on Ubuntu 22.04"
-h1_title: "How to Install Moodle on Ubuntu 22.04"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

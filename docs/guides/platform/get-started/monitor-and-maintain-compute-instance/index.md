@@ -12,9 +12,8 @@ modified: 2022-09-26
 modified_by:
   name: Linode
 published: 2012-08-22
-title: "Monitor and Maintain a Linode Compute Instance"
-h1_title: "Monitor and Maintain a Compute Instance"
-enable_h1: true
+title: "Monitor and Maintain a Compute Instance"
+title_meta: "Monitor and Maintain a Linode Compute Instance"
 image: monitor-and-maintain-your-server.png
 ---
 

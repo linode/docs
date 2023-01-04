@@ -11,8 +11,6 @@ published: 2022-06-16
 modified_by:
   name: Linode
 title: "How to Use the Linux IP Command"
-h1_title: "How to Use the Linux IP Command"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

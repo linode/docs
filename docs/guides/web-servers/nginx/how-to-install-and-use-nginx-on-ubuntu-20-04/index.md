@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use NGINX on Ubuntu 20.04"
-h1_title: "Installing and Using NGINX on Ubuntu 20.04"
-enable_h1: true
+title: "Installing and Using NGINX on Ubuntu 20.04"
+title_meta: "How to Install and Use NGINX on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

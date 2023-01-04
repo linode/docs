@@ -12,9 +12,8 @@ published: 2018-03-21
 modified: 2019-06-19
 modified_by:
     name: Ryan Syracuse
-title: "Getting Started with Ansible: Installation and Setup"
-h1_title: "Getting Started With Ansible: Basic Installation and Setup"
-enable_h1: true
+title: "Getting Started With Ansible: Basic Installation and Setup"
+title_meta: "Getting Started with Ansible: Installation and Setup"
 contributor:
     name: Joshua Lyman
     link: https://twitter.com/jlyman

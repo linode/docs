@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Linode
-title: "Popular Linux Games and Configuration Tips"
-h1_title: "An Overview of Popular Linux Games and Configuration Tips"
-enable_h1: true
+title: "An Overview of Popular Linux Games and Configuration Tips"
+title_meta: "Popular Linux Games and Configuration Tips"
 contributor:
   name: Sandro Villinger
 ---

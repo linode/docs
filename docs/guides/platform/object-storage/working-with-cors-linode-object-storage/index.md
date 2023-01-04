@@ -11,7 +11,6 @@ published: 2022-09-25
 modified_by:
   name: Nathaniel Stickman
 title: "Working with CORS Policies on Linode Object Storage"
-h1_title: "Working with CORS Policies on Linode Object Storage"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

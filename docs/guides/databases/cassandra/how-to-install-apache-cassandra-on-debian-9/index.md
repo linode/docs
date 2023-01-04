@@ -11,8 +11,8 @@ image: L_Cass_on_Debian9.png
 modified: 2020-01-30
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on Debian 9"
-h1_title: "Install Apache Cassandra on Debian 9"
+title: "Install Apache Cassandra on Debian 9"
+title_meta: "How to Install Apache Cassandra on Debian 9"
 contributor:
   name: Linode
 external_resources:

@@ -11,9 +11,8 @@ published: 2021-03-11
 image: ComparingTerraform_Ansible.png
 modified_by:
   name: Linode
-title: "Comparing Terraform and Ansible"
-h1_title: "Terraform vs Ansible"
-enable_h1: true
+title: "Terraform vs Ansible"
+title_meta: "Comparing Terraform and Ansible"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

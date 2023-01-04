@@ -12,8 +12,6 @@ modified: 2019-01-31
 modified_by:
     name: Phil Zona
 title: "Streaming Data Processing with Apache Storm"
-h1_title: "Streaming Data Processing with Apache Storm"
-enable_h1: true
 contributor:
     name: Karthik Shiraly
     link: https://github.com/pathbreak

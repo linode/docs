@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
-title: 'How to Deploy Kubernetes on Linode with Rancher'
-h1_title: 'Deploying Kubernetes on Linode with Rancher'
+title: 'Deploying Kubernetes on Linode with Rancher'
+title_meta: 'How to Deploy Kubernetes on Linode with Rancher'
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:

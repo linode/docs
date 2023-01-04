@@ -12,9 +12,8 @@ published: 2021-05-21
 image: Pylint.jpg
 modified_by:
   name: Linode
-title: "How to Install and Use Pylint for Python 3"
-h1_title: "Installing and Using Pylint for Python 3"
-enable_h1: true
+title: "Installing and Using Pylint for Python 3"
+title_meta: "How to Install and Use Pylint for Python 3"
 contributor:
  name: Cameron Laird
  link: https://twitter.py/Phaseit

@@ -10,8 +10,8 @@ modified: 2021-02-22
 modified_by:
     name: Linode
 published: 2018-12-12
-title: Introduction to HashiCorp Configuration Language (HCL)
-h1_title: "An Introduction to HashiCorp Configuration Language (HCL)"
+title: "An Introduction to HashiCorp Configuration Language (HCL)"
+title_meta: Introduction to HashiCorp Configuration Language (HCL)
 external_resources:
     - '[HCL on GitHub](https://github.com/hashicorp/hcl)'
     - '[Terraform Official Documentation - Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html)'

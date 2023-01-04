@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
 modified_by:
   name: Linode
-title: "View Active Processes in Linux with the procs Command"
-h1_title: "View Active Linux Processes Using procs"
-enable_h1: true
+title: "View Active Linux Processes Using procs"
+title_meta: "View Active Processes in Linux with the procs Command"
 contributor:
   name: Jeff Novotny
 external_resources:

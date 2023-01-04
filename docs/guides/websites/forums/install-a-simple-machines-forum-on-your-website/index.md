@@ -11,9 +11,8 @@ modified: 2015-02-11
 modified_by:
   name: Elle Krout
 published: 2010-03-18
-title: "How to Install a Simple Machines Forum on Linux"
-h1_title: "Installing a Simple Machines Discussion Forum (SMF) on Linux"
-enable_h1: true
+title: "Installing a Simple Machines Discussion Forum (SMF) on Linux"
+title_meta: "How to Install a Simple Machines Forum on Linux"
 deprecated: false
 external_resources:
  - '[SMF Documentation](http://wiki.simplemachines.org/)'

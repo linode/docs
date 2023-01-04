@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Nathaniel Stickman
-title: "Install and Use the Yarn Package Manager"
-h1_title: "How to Install and Use the Yarn Package Manager"
-enable_h1: true
+title: "How to Install and Use the Yarn Package Manager"
+title_meta: "Install and Use the Yarn Package Manager"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

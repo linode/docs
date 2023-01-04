@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
 modified_by:
   name: Nathaniel Stickman
-title: "Using Lists and Sets in Redis Database"
-h1_title: "How to Use Lists and Sets in Redis Database"
-enable_h1: true
+title: "How to Use Lists and Sets in Redis Database"
+title_meta: "Using Lists and Sets in Redis Database"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,8 +10,8 @@ modified: 2020-10-07
 modified_by:
   name: Linode
 published: 2020-10-07
-title: What is iptables
-h1_title: Understanding iptables
+title: Understanding iptables
+title_meta: What is iptables
 tags: ['networking','security']
 image: "Understanding_iptables.png"
 aliases: ['/security/firewalls/what-is-iptables/']

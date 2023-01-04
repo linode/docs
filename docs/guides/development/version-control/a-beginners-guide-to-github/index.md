@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2015-12-02
-title: "A Beginner's Guide to GitHub"
-h1_title: "Getting Started with GitHub"
+title: "Getting Started with GitHub"
+title_meta: "A Beginner's Guide to GitHub"
 aliases: ['/development/version-control/a-beginners-guide-to-github/','/github-guide/']
 tags: ["version control system"]
 ---

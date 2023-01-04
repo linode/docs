@@ -11,9 +11,8 @@ modified: 2018-08-16
 modified_by:
   name: Linode
 published: 2018-08-16
-title: "How to Install a Mastodon Server on Ubuntu 16.04"
-h1_title: "Installing a Mastodon Server on Ubuntu 16.04"
-enable_h1: true
+title: "Installing a Mastodon Server on Ubuntu 16.04"
+title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"
 external_resources:
 - '[Mastodon GitHub - Docker Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md)'
 - '[Mastodon GitHub - Production Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md)'

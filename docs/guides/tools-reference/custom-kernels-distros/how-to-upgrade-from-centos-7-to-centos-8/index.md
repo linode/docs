@@ -12,8 +12,8 @@ modified: 2020-01-23
 modified_by:
   name: Linode
 published: 2020-01-23
-title: 'How to Upgrade from CentOS 7 to CentOS 8'
-h1_title: "Upgrading from CentOS 7 to CentOS 8"
+title: "Upgrading from CentOS 7 to CentOS 8"
+title_meta: 'How to Upgrade from CentOS 7 to CentOS 8'
 image: Upgrade_CentOS7_to_8.png
 aliases: ['/tools-reference/custom-kernels-distros/how-to-upgrade-from-centos-7-to-centos-8/']
 ---

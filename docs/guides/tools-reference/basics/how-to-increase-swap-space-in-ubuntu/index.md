@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-07
 modified_by:
   name: Linode
-title: "Learn How to Create a Swap File in Ubuntu"
-h1_title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
-enable_h1: true
+title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
+title_meta: "Learn How to Create a Swap File in Ubuntu"
 contributor:
   name: Jeff Novotny
 external_resources:

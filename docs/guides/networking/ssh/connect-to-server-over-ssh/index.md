@@ -12,9 +12,8 @@ published: 2021-06-25
 image: SSH.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH"
-h1_title: "Connecting to a Remote Server Over SSH"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH"
+title_meta: "How to Connect to a Remote Server Over SSH"
 aliases: ['/guides/networking/ssh/connect-to-server-over-ssh/']
 ---
 

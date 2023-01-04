@@ -11,8 +11,6 @@ published: 2022-05-04
 modified_by:
   name: Linode
 title: "How to Monitor and Administer a Server with Cockpit"
-h1_title: "How to Monitor and Administer a Server with Cockpit"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

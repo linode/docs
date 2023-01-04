@@ -13,7 +13,6 @@ modified: 2021-08-27
 modified_by:
   name: Linode
 title: Installing BCC to Use eBPF Tracing Tools
-h1_title: Installing BCC to Use eBPF Tracing Tools
 contributor:
     name: Linode
 tags: ["networking","security"]

@@ -12,8 +12,8 @@ published: 2018-03-09
 modified: 2018-03-09
 modified_by:
   name: Linode
-title: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
-h1_title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
+title: 'Use Selenium Grid for Cross-Browser Compatibility Testing'
+title_meta: 'Install and Configure Selenium Grid on Ubuntu 16.04 for Automated Testing'
 external_resources:
   - '[Selenium Project Home](https://www.seleniumhq.org/projects/webdriver/)'
   - '[Selenium Node.js Documentation](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index.html)'

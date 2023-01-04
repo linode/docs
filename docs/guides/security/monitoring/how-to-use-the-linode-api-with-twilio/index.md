@@ -12,9 +12,8 @@ published: 2021-12-23
 modified: 2022-01-07
 modified_by:
   name: Linode
-title: "How to Use the Linode API with Twilio"
-h1_title: "Using the Linode API with Twilio"
-enable_h1: true
+title: "Using the Linode API with Twilio"
+title_meta: "How to Use the Linode API with Twilio"
 contributor:
   name: John Mueller
   link:

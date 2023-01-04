@@ -12,8 +12,8 @@ published: 2020-07-29
 image: DeployJenkinsX_LinodeKubEng.png
 modified_by:
   name: Linode
-title: "How to Deploy Jenkins X in Linode Kubernetes Engine"
-h1_title: "Deploying Jenkins X in Linode Kubernetes Engine"
+title: "Deploying Jenkins X in Linode Kubernetes Engine"
+title_meta: "How to Deploy Jenkins X in Linode Kubernetes Engine"
 image: 'learnk8s_jenkinsX.png'
 contributor:
   name: Daniele Polencic

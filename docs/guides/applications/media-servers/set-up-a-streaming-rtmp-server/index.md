@@ -12,9 +12,8 @@ published: 2021-05-21
 image: StreamingServer.jpg
 modified_by:
   name: Linode
-title: "How to Set Up an RTMP Streaming Server"
-h1_title: "Setting Up a Streaming RTMP Server"
-enable_h1: true
+title: "Setting Up a Streaming RTMP Server"
+title_meta: "How to Set Up an RTMP Streaming Server"
 contributor:
   name: Jeff Novotny
 external_resources:

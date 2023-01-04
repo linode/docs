@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 modified_by:
   name: Linode
-title: "How to Configure HTTP/2 on Apache"
-h1_title: "Configure HTTP/2 on Apache"
-enable_h1: true
+title: "Configure HTTP/2 on Apache"
+title_meta: "How to Configure HTTP/2 on Apache"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

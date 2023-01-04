@@ -15,9 +15,8 @@ published: 2019-11-11
 modified: 2022-04-01
 modified_by:
   name: Linode
-title: "Deploy and Manage an LKE Kubernetes Cluster on Linode"
-h1_title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)"
-enable_h1: true
+title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)"
+title_meta: "Deploy and Manage an LKE Kubernetes Cluster on Linode"
 image: deploy-and-manage-cluster.png
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'

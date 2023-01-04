@@ -11,7 +11,6 @@ published: 2022-08-01
 modified_by:
   name: Nathaniel Stickman
 title: "Introduction to the Bun JavaScript Runtime"
-h1_title: "Introduction to the Bun JavaScript Runtime"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

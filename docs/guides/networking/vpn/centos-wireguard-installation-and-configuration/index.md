@@ -13,9 +13,8 @@ published: 2021-05-21
 image: WireGuard.jpg
 modified_by:
   name: Linode
-title: "How to Install and Configure WireGuard on CentOS 8"
-h1_title: "Installing and Configuring WireGuard on CentOS 8"
-enable_h1: true
+title: "Installing and Configuring WireGuard on CentOS 8"
+title_meta: "How to Install and Configure WireGuard on CentOS 8"
 contributor:
   name: Steven J Vaughan-Nichols
   link: http://www.twitter.com/sjvn

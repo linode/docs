@@ -11,8 +11,6 @@ published: 2019-07-29
 modified_by:
   name: Linode
 title: "Beginner's Guide to Kubernetes (Part 4): Controllers"
-h1_title: "Beginner's Guide to Kubernetes (Part 4): Controllers"
-enable_h1: true
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]

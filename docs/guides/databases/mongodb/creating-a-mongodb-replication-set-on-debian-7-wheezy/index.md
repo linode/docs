@@ -12,8 +12,8 @@ aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
-h1_title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'

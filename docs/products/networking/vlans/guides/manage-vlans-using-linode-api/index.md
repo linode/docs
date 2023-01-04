@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-07
 modified_by:
   name: Linode
-title: "How to Create a Private Network with VLANs Using Linode's API"
-h1_title: "Creating a Private Network with VLANs Using Linode's API"
-enable_h1: true
+title: "Creating a Private Network with VLANs Using Linode's API"
+title_meta: "How to Create a Private Network with VLANs Using Linode's API"
 contributor:
   name: Linode
 aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']

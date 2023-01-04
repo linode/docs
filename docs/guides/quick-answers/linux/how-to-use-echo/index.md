@@ -12,8 +12,8 @@ modified_by:
   name: Linode
 published: 2021-03-05
 image: UseEchoCommand.png
-title: How to Use Echo
-h1_title: Using the echo Command
+title: Using the echo Command
+title_meta: How to Use Echo
 tags: ["linux"]
 ---
 

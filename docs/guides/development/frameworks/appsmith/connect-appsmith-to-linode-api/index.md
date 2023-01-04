@@ -11,7 +11,6 @@ published: 2022-06-29
 modified_by:
   name: Nathaniel Stickman
 title: "Connecting Appsmith to the Linode API"
-h1_title: "Connecting Appsmith to the Linode API"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

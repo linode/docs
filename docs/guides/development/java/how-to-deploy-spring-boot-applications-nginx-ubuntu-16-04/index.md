@@ -12,8 +12,8 @@ modified: 2018-03-07
 modified_by:
   name: Linode
 published: 2018-03-07
-title: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
-h1_title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
+title: Deploy Spring Boot Applications with an NGINX Reverse Proxy
+title_meta: How to Deploy Spring Boot Applications on NGINX on Ubuntu 16.04
 external_resources:
 - '[Spring Boot](https://projects.spring.io/spring-boot/)'
 - '[SDKMAN!](http://sdkman.io/)'

@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use CouchDB 2.0 on Ubuntu 20.04"
-h1_title: "Using CouchDB 2.0 on Ubuntu 20.04"
-enable_h1: true
+title: "Using CouchDB 2.0 on Ubuntu 20.04"
+title_meta: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

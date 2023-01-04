@@ -11,7 +11,6 @@ published: 2022-06-16
 modified_by:
   name: Nathaniel Stickman
 title: "The Linux cat Command"
-h1_title: "The Linux cat Command"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

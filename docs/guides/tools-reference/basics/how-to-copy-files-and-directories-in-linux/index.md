@@ -11,8 +11,6 @@ published: 2022-07-18
 modified_by:
   name: Linode
 title: "How to Copy Files and Directories in Linux"
-h1_title: "How to Copy Files and Directories in Linux"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

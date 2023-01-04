@@ -11,8 +11,8 @@ published: 2021-03-03
 image: IntroInfastructureAsCode.png
 modified_by:
   name: Linode
-title: "Introducing Infrastructure as Code"
-h1_title: "An Introduction to Infrastructure as Code"
+title: "An Introduction to Infrastructure as Code"
+title_meta: "Introducing Infrastructure as Code"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

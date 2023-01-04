@@ -11,7 +11,6 @@ published: 2022-10-08
 modified_by:
   name: Nathaniel Stickman
 title: "How to Migrate to Linode Object Storage"
-h1_title: "How to Migrate to Linode Object Storage"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

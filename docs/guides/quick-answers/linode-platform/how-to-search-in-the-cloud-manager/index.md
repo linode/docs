@@ -11,8 +11,8 @@ published: 2020-01-08
 modified_by:
   name: Linode
 image: L_SearchInCloudManager.png
-title: "How to Search in the Cloud Manager"
-h1_title: "Searching in the Cloud Manager"
+title: "Searching in the Cloud Manager"
+title_meta: "How to Search in the Cloud Manager"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager"]

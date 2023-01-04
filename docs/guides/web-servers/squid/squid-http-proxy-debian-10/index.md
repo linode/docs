@@ -13,8 +13,8 @@ modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Debian10_1200x631.png
 modified_by:
   name: Rajakavitha Kodhandapani
-title: 'How to Create an HTTP Proxy Using Squid on Debian 10'
-h1_title: 'Creating an HTTP Proxy Using Squid on Debian 10'
+title: 'Creating an HTTP Proxy Using Squid on Debian 10'
+title_meta: 'How to Create an HTTP Proxy Using Squid on Debian 10'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
  - '[Configure Proxy on Windows](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)'

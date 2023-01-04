@@ -11,9 +11,8 @@ published: 2021-03-05
 image: IntroMachineLearning_trainandinterference.png
 modified_by:
   name: Linode
-title: "Machine Learning Training and Inference"
-h1_title: "An Introduction to Machine Learning: Training and Inference"
-enable_h1: true
+title: "An Introduction to Machine Learning: Training and Inference"
+title_meta: "Machine Learning Training and Inference"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio

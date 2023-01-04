@@ -12,9 +12,8 @@ published: 2021-02-02
 image: postgreSQL.jpg
 modified_by:
   name: Linode
-title: "CentOS 8: Install and Use PostgreSQL"
-h1_title: "How to Install and Use PostgreSQL on CentOS 8"
-enable_h1: true
+title: "How to Install and Use PostgreSQL on CentOS 8"
+title_meta: "CentOS 8: Install and Use PostgreSQL"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

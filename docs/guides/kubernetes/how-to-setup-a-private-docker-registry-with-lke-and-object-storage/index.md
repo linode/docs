@@ -13,9 +13,8 @@ published: 2020-03-26
 modified: 2022-08-05
 modified_by:
   name: Linode
-title: "How to Set Up a Docker Registry with LKE and Object Storage"
-h1_title: "Setting Up a Private Docker Registry with LKE and Object Storage"
-enable_h1: true
+title: "Setting Up a Private Docker Registry with LKE and Object Storage"
+title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 contributor:
   name: Leslie Salazar
   link: https://github.com/leslitagordita/

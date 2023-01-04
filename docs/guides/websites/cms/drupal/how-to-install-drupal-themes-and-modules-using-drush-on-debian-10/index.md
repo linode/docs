@@ -12,9 +12,8 @@ modified: 2020-03-11
 modified_by:
     name: Linode
 published: 2014-12-05
-title: How to Install Drupal Using Drush on Debian 10
-h1_title: Install Drupal Themes and Modules Using Drush on Debian 10
-enable_h1: true
+title: Install Drupal Themes and Modules Using Drush on Debian 10
+title_meta: How to Install Drupal Using Drush on Debian 10
 image: DrupalThemesMods_DrushDeb10.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'

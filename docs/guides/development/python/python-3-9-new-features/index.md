@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
   name: Linode
-title: "Python 3.9: An Overview of New Features"
-h1_title: "Python 3.9: Merge Dictionaries, Time Zone Support, and Type Annotations"
-enable_h1: true
+title: "Python 3.9: Merge Dictionaries, Time Zone Support, and Type Annotations"
+title_meta: "Python 3.9: An Overview of New Features"
 contributor:
   name: John Mueller
 external_resources:

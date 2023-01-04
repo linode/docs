@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-04
 modified_by:
   name: Linode
-title: "How to Deploy TOBS (The Observability Stack) on LKE"
-h1_title: "Deploying TOBS (The Observability Stack) on LKE"
-enable_h1: true
+title: "Deploying TOBS (The Observability Stack) on LKE"
+title_meta: "How to Deploy TOBS (The Observability Stack) on LKE"
 external_resources:
 - '[TOBS Helm Chart on Github](https://github.com/timescale/tobs/tree/master/chart): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'

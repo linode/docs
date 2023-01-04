@@ -12,7 +12,6 @@ image: StaticCodeAnalysis.png
 modified_by:
   name: Linode
 title: "What is Static Code Analysis?"
-h1_title: "What is Static Code Analysis?"
 tags: ["automation"]
 contributor:
   name: Martin Heller

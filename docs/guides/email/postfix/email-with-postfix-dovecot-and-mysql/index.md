@@ -11,9 +11,8 @@ modified: 2022-09-29
 modified_by:
   name: Linode
 published: 2013-05-13
-title: "Set up an Email Server with Postfix, Dovecot, and MySQL"
-h1_title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
-enable_h1: true
+title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
+title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'

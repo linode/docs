@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Linode
-title: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
-h1_title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
-enable_h1: true
+title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
+title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

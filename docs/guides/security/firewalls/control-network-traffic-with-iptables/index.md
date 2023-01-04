@@ -13,8 +13,8 @@ modified: 2017-02-28
 modified_by:
   name: Linode
 published: 2010-07-30
-title: Controlling Network Traffic with iptables - A Tutorial
-h1_title: A Tutorial for Controlling Network Traffic with iptables
+title: A Tutorial for Controlling Network Traffic with iptables
+title_meta: Controlling Network Traffic with iptables - A Tutorial
 external_resources:
  - '[Security Basics](/docs/guides/set-up-and-secure/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 modified_by:
   name: Linode
-title: "Run Jobs or Scripts Using Crontab on Boot"
-h1_title: "How to Run Jobs or Scripts Using Crontab on Boot"
-enable_h1: true
+title: "How to Run Jobs or Scripts Using Crontab on Boot"
+title_meta: "Run Jobs or Scripts Using Crontab on Boot"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -13,9 +13,8 @@ image: YUM1.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
-h1_title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
-enable_h1: true
+title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
+title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']
 contributor:
   name: Nathaniel Stickman

@@ -12,9 +12,8 @@ published: 2020-07-16
 image: TutInstall_LinCCM_UnmanagedKubCluster.png
 modified_by:
   name: Linode
-title: "Install the Linode CCM on an Unmanaged Kubernetes Cluster"
-h1_title: "Installing the Linode CCM on an Unmanaged Kubernetes Cluster"
-enable_h1: true
+title: "Installing the Linode CCM on an Unmanaged Kubernetes Cluster"
+title_meta: "Install the Linode CCM on an Unmanaged Kubernetes Cluster"
 contributor:
   name: Linode
 aliases: ['/kubernetes/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/']

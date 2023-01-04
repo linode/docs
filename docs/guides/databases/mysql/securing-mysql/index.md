@@ -9,9 +9,8 @@ aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-
 bundles: ['debian-security', 'centos-security']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'How to Secure MySQL Server'
-h1_title: 'Securing MySQL Server'
-enable_h1: true
+title: 'Securing MySQL Server'
+title_meta: 'How to Secure MySQL Server'
 contributor:
   name: Hackersploit
 modified_by:

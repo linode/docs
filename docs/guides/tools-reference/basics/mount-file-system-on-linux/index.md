@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-15
 modified_by:
   name: Linode
-title: "How to Mount a File System on Linux"
-h1_title: "Mount a File System on Linux"
-enable_h1: true
+title: "Mount a File System on Linux"
+title_meta: "How to Mount a File System on Linux"
 contributor:
   name: Martin Heller
 external_resources:

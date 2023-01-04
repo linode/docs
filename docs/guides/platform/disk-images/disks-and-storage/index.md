@@ -11,9 +11,8 @@ modified: 2021-10-15
 modified_by:
   name: Linode
 published: 2021-04-30
-title: "How to Manage Disks and Storage on a Linode"
-h1_title: "Managing Disks and Storage on a Linode"
-enable_h1: true
+title: "Managing Disks and Storage on a Linode"
+title_meta: "How to Manage Disks and Storage on a Linode"
 aliases: ['/guides/linode-disks/']
 ---
 

@@ -10,9 +10,8 @@ published: 2019-07-15
 modified: 2022-11-17
 modified_by:
   name: Linode
-title: "How to Choose a Linux Distribution"
-h1_title: "Choosing a Linux Distribution"
-enable_h1: true
+title: "Choosing a Linux Distribution"
+title_meta: "How to Choose a Linux Distribution"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/choosing-a-distribution/']
 ---

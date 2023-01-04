@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "Text Processing in Linux: Understanding Grep, sed, and AWK"
-h1_title: "Learn to Process Text in Linux using Grep, sed, and AWK"
-enable_h1: true
+title: "Learn to Process Text in Linux using Grep, sed, and AWK"
+title_meta: "Text Processing in Linux: Understanding Grep, sed, and AWK"
 contributor:
   name: Andy Lester
 ---

@@ -11,9 +11,8 @@ modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2018-03-01
-title: "How to Use a Block Storage Volume with Plex Media Server"
-h1_title: "Using a Block Storage Volume with Plex Media Server"
-enable_h1: true
+title: "Using a Block Storage Volume with Plex Media Server"
+title_meta: "How to Use a Block Storage Volume with Plex Media Server"
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true

@@ -11,9 +11,8 @@ published: 2021-02-19
 image: UseSystemActivityReporter.png
 modified_by:
   name: Linode
-title: "How to Use the System Activity Reporter (sar)"
-h1_title: "Using the System Activity Reporter (sar)"
-enable_h1: true
+title: "Using the System Activity Reporter (sar)"
+title_meta: "How to Use the System Activity Reporter (sar)"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn

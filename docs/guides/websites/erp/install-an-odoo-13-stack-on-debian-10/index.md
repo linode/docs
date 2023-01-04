@@ -12,8 +12,8 @@ published: 2021-04-09
 modified: 2021-04-09
 modified_by:
   name: Linode
-title: 'How to Install an Odoo 13 Stack on Debian 10'
-h1_title: Installing an Odoo 13 Stack on Debian 10
+title: Installing an Odoo 13 Stack on Debian 10
+title_meta: 'How to Install an Odoo 13 Stack on Debian 10'
 image: install-an-odoo-13-stack-on-debian-10-using-linode.png
 contributor:
   name: Damaso Sanoja

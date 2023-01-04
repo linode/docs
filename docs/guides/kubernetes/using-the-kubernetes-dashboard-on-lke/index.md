@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-17
 modified_by:
   name: Linode
-title: "Using the Kubernetes Dashboard on LKE"
-h1_title: "An Overview of the Kubernetes Dashboard on LKE"
-enable_h1: true
+title: "An Overview of the Kubernetes Dashboard on LKE"
+title_meta: "Using the Kubernetes Dashboard on LKE"
 external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'
