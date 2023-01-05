@@ -784,6 +784,8 @@ It's time to commit the complete Jenkinsfile to your Jenkins server and trigger 
 
     ![Test Results](jenkins-all-test-passing.png "Test Results")
 
+    Artifacts Stored:
+
     ![Artifacts Stored](jenkins/jenkins-artifacts.png "Artifacts Stored")
 
 ### Configure Automatic Triggers
