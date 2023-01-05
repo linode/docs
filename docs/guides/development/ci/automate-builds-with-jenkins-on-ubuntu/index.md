@@ -784,10 +784,6 @@ It's time to commit the complete Jenkinsfile to your Jenkins server and trigger 
 
     ![Test Results](jenkins-all-test-passing.png "Test Results")
 
-    Artifacts Stored:
-
-    ![Artifacts Stored](jenkins/jenkins-artifacts.png "Artifacts Stored")
-
 ### Configure Automatic Triggers
 
 You can set Jenkins to scan your repository periodically. To do so just click again on the gear icon on the Pipeline view and then click **Configure**. There are many options available. Find **Scan Repository Triggers** and check the box **Periodically if not otherwise run**. You can choose any amount of time and for this example, one minute will be selected.
