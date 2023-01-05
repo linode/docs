@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "How to Remove Untracked Files in Git"
+title: "Remove Untracked Files in Git"
 contributor:
   name: Jeff Novotny
 external_resources:

@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-15
 modified_by:
   name: Nathaniel Stickman
-title: "How to Check Python Version"
+title: "Check Your Python Version"
+title_meta: "How to Check Which Python Version Is Installed"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

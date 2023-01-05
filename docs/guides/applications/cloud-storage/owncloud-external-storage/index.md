@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-15
 modified_by:
   name: Linode
-title: "How to Configure ownCloud to use External Storage"
-title_meta: "Configuring ownCloud to use External Storage"
+title: "Configure ownCloud to use External Storage"
+title_meta: "How to Configure ownCloud to use External Storage"
 contributor:
   name: Jack Wallen
 ---

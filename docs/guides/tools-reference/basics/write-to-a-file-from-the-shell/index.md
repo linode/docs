@@ -10,8 +10,8 @@ published: 2021-08-12
 image: HowtoWritetoaFileFromtheShell.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "How to Write to a File From the Shell"
-title_meta: "Write to a File From the Shell"
+title: "Write to a File From the Shell"
+title_meta: "How to Write to a File From the Shell"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

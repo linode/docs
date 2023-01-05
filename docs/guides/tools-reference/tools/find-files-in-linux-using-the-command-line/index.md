@@ -12,8 +12,8 @@ modified: 2021-12-29
 modified_by:
   name: Linode
 published: 2010-10-25
-title: "How to Find Files in Linux Using the Command Line"
-title_meta: "Find Files in Linux Using the Command Line"
+title: "Find Files in Linux Using the Command Line"
+title_meta: "How to Find Files in Linux Using the Command Line"
 external_resources:
 - '[Ubuntu Manual page on find](http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html)'
 - '[GNU page on find](https://www.gnu.org/software/findutils/manual/html_mono/find.html)'

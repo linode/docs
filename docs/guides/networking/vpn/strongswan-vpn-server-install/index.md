@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 modified_by:
   name: Linode
-title: "How to Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-title_meta: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
+title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
+title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 contributor:
   name: Tom Henderson
 external_resources:

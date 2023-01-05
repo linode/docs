@@ -10,7 +10,7 @@ tags: ["container","docker"]
 modified: 2012-11-29
 modified_by:
   name: Sam Foo
-title: "How to Install Docker Compose"
+title: "Install Docker Compose"
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']

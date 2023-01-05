@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-24
 modified_by:
   name: Linode
-title: "How to Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
+title: "Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 contributor:
   name: Jeff Novotny
 external_resources:

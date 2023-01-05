@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-16
 modified_by:
   name: Linode
-title: "How to Use the Linux IP Command"
+title: "Use the ip Command in Linux"
+title_meta: "How to Use the ip Command in Linux"
 contributor:
   name: Jeff Novotny
 external_resources:

@@ -10,7 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-14
 modified_by:
   name: Linode
-title: "How to Install and Configure Hubzilla"
+title: "Install and Configure Hubzilla"
+title_meta: "How to Install and Configure Hubzilla"
 contributor:
   name: Jeff Novotny
 external_resources:

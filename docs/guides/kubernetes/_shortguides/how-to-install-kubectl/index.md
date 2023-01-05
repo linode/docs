@@ -10,7 +10,7 @@ published: 2019-11-08
 modified: 2022-08-11
 modified_by:
   name: Linode
-title: "How to Install kubectl"
+title: "Install kubectl"
 contributor:
   name: Linode
 headless: true

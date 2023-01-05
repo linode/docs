@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Nygel Bennett
-title: "How to Use Ansible to Deploy a Web Server, Log Server, and Database Server"
-title_meta: "Use Ansible to Automate Deployment of Web Server Infrastructure"
+title: "Use Ansible to Automate Configuration of Web Server, Log Server, and Database Server"
+title_meta: "Automate Configuration of Cloud Servers with Ansible"
 contributor:
   name: Nygel Bennett
   link: https://github.com/bennettnw2

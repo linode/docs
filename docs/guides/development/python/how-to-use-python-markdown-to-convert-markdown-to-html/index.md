@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-21
 modified_by:
   name: Linode
-title: "How to Use Python-Markdown to Convert Markdown to HTML"
+title: "Use Python-Markdown to Convert Markdown to HTML"
 contributor:
   name: Jeff Novotny
 external_resources:

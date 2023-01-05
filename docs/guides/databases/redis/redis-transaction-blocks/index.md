@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use Redis Transaction Blocks"
-title_meta: "Using Redis Transaction Blocks"
+title: "Use Redis Transaction Blocks"
+title_meta: "How to Use Redis Transaction Blocks"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

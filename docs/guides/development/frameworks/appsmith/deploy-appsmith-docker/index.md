@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-24
 modified_by:
   name: Nathaniel Stickman
-title: "How to Self-host Appsmith with Docker Compose"
+title: "Self-host Appsmith with Docker Compose"
+title_meta: "How to Self-host Appsmith with Docker Compose"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

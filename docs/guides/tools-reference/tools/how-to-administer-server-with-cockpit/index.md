@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-04
 modified_by:
   name: Linode
-title: "How to Monitor and Administer a Server with Cockpit"
+title: "Monitor and Administer a Server with Cockpit"
+title_meta: "How to Monitor and Administer a Server with Cockpit"
 contributor:
   name: Jeff Novotny
 external_resources:

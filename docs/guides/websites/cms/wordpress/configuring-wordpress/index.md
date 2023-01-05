@@ -11,8 +11,7 @@ published: 2021-07-16
 image: HowtoConfigureWordpress.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "How to Configure WordPress"
-title_meta: "Configuring WordPress"
+title: "Best Practices for Configuring WordPress"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-01
 modified_by:
   name: Linode
-title: "How to Install Moodle on Ubuntu 22.04"
+title: "Install Moodle on Ubuntu 22.04"
+title_meta: "How to Install Moodle on Ubuntu 22.04"
 contributor:
   name: Jeff Novotny
 external_resources:

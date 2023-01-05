@@ -12,7 +12,8 @@ modified_by:
 published: 2017-12-12
 contributor:
   name: Luis Cortés
-title: "How to Scrape a Website with Beautiful Soup"
+title: "Scrape a Website with Beautiful Soup"
+title_meta: "How to Scrape a Website with Beautiful Soup"
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/']
 ---

@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use the broot Command"
-title_meta: "Installing and Using the broot Command"
+title: "Install and Use the broot Command"
+title_meta: "How to Install and Use the broot Command"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

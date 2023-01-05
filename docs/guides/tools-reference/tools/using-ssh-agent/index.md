@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-10
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use ssh-agent"
+title: "Use ssh-agent to Manage Private Keys"
+title_meta: "How to Use ssh-agent to Manage Private Keys"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

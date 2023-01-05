@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-18
 modified_by:
   name: Nathaniel Stickman
-title: "How to Revert the Last Git Commit"
+title: "Revert the Last Commit in Git"
+title_meta: "How to Revert the Last Commit in Git"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

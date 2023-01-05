@@ -10,7 +10,7 @@ published: 2022-09-12
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Create a MERN Stack Application"
+title: "Create a MERN Stack Application"
 title_meta: "How to Create a MERN Stack on Linux"
 contributor:
   name: Cameron Laird

@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
 modified_by:
   name: Linode
-title: "How to Use Dictionaries in Python 3"
-title_meta: "Using Dictionaries in Python 3"
+title: "Use Dictionaries in Python 3"
+title_meta: "How to Use Dictionaries in Python 3"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

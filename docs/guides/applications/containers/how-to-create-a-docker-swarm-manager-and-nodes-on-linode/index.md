@@ -14,7 +14,7 @@ modified: 2017-09-28
 modified_by:
   name: Linode
 published: 2017-09-18
-title: "How to Create a Docker Swarm Manager and Nodes on Linode"
+title: "Create a Docker Swarm Manager and Nodes on Linode"
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'

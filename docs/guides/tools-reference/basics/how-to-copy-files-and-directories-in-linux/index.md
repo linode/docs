@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-18
 modified_by:
   name: Linode
-title: "How to Copy Files and Directories in Linux"
+title: "Copy Files and Directories in Linux"
+title_meta: "How to Copy Files and Directories in Linux"
 contributor:
   name: Jeff Novotny
 external_resources:

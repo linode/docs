@@ -10,7 +10,8 @@ published: 2019-01-31
 modified: 2021-07-02
 modified_by:
   name: Linode
-title: "How to Resell Linode Services"
+title: "Resell Linode Services"
+title_meta: "How to Resell Linode Services"
 contributor:
   name: Linode
 tags: ["linode platform"]

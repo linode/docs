@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "How to Use JQ to Process JSON on the Command Line"
-title_meta: "Using JQ to Process JSON on the Command Line"
+title: "Use JQ to Process JSON on the Command Line"
+title_meta: "How to Use JQ to Process JSON on the Command Line"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -11,8 +11,8 @@ published: 2021-08-13
 image: HowtoUseParamikoandPythontoSSHintoaServer.jpg
 modified_by:
   name: Linode
-title: "How to Use Paramiko and Python to SSH into a Server"
-title_meta: "Use Paramiko and Python to SSH into a Server"
+title: "Use Paramiko and Python to SSH into a Server"
+title_meta: "How to Use Paramiko and Python to SSH into a Server"
 contributor:
   name: Cameron Laird
 external_resources:

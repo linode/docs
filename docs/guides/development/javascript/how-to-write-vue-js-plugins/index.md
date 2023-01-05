@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-09
 modified_by:
   name: Linode
-title: "How to Write Your Own Vue.js Plugin"
+title: "Write Your Own Vue.js Plugin"
 contributor:
   name: John Au-Yeung
   link: https://twitter.com/AuMayeung

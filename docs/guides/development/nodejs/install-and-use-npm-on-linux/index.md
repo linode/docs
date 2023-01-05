@@ -9,8 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use the Node Package Manager (NPM) on Linux"
-title_meta: "Install and Use the Node Package Manager (NPM) on Linux"
+title: "Install and Use the Node Package Manager (NPM) on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

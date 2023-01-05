@@ -9,8 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
 modified_by:
   name: Linode
-title: "How to Get Started with TypeScript Modules"
-title_meta: "TypeScript Modules: Getting Started"
+title: "Get Started with TypeScript Modules"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

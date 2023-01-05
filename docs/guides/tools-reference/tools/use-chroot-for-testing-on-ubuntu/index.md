@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use chroot for Testing on Ubuntu"
-title_meta: "Use chroot for Testing on Ubuntu"
+title: "Use chroot for Testing on Ubuntu"
+title_meta: "How to Use chroot for Testing on Ubuntu"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

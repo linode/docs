@@ -11,8 +11,7 @@ published: 2019-11-12
 modified: 2020-12-03
 modified_by:
   name: Linode
-title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-title_meta: "Deploying a Static Site on Linode Kubernetes Engine"
+title: "Deploy a Static Site on Linode Kubernetes Engine"
 contributor:
   name: Linode
 external_resources:

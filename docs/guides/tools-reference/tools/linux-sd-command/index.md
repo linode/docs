@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use the sd Command for Find and Replace on Linux"
-title_meta: "Use the sd Command for Find and Replace on Linux"
+title: "Use the sd Command for Find and Replace on Linux"
+title_meta: "How to Use the sd Command for Find and Replace on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

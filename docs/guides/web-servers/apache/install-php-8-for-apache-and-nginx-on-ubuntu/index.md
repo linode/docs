@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
-title_meta: "Install PHP 8 for Apache and NGINX on Ubuntu"
+title: "Install PHP 8 for Apache and NGINX on Ubuntu"
+title_meta: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

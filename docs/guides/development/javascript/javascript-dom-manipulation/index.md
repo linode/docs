@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
 modified_by:
   name: Linode
-title: "How to Modify the DOM with JavaScript"
+title: "Modify the DOM with JavaScript"
 title_meta: "Manipulating the DOM with JavaScript"
 contributor:
   name: Nathaniel Stickman

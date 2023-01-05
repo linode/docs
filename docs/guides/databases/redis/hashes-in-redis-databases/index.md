@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use Hashes in Redis Databases"
-title_meta: "Using Hashes in Redis Databases"
+title: "Use Hashes in Redis Databases"
+title_meta: "How to Use Hashes in Redis Databases"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

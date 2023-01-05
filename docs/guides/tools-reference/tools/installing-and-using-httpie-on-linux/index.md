@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Linode
-title: "How to Install and Use HTTPie on Linux"
-title_meta: "Installing and Using HTTPie on Linux"
+title: "Install and Use HTTPie on Linux"
+title_meta: "How to Install and Use HTTPie on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

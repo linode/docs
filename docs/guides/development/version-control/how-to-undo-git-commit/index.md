@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-08
 modified_by:
   name: Linode
-title: "How to Undo a Git Commit: A Step-by-Step Guide"
-title_meta: "How to Undo a Commit in Git"
+title: "Undo a Git Commit"
+title_meta: "Undo a Git Commit: A Step-by-Step Guide"
 contributor:
   name: Jeff Novotny
 external_resources:

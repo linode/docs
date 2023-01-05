@@ -9,8 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
 modified_by:
   name: Linode
-title: "How to Configure Source-Replica Replication in MySQL"
-title_meta: "MySQL Replication: Configure a Source-Replica Setup in MySQL"
+title: "Configure Source-Replica Replication in MySQL"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

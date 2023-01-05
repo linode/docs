@@ -9,8 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
 modified_by:
   name: Linode
-title: "How to Navigate the Linux Terminal and File System"
-title_meta: "Linux Navigation Commands: Copy, Move, and Create Files and Directories"
+title: "Navigate the Linux Terminal and File System"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

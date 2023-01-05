@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified_by:
   name: Linode
-title: "How to Install and Import Modules in Python 3"
-title_meta: "Installing and Importing Modules in Python 3"
+title: "Install and Import Modules in Python 3"
+title_meta: "How to Install and Import Modules in Python 3"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

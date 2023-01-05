@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "How to Find Files With the fd Command"
-title_meta: "Finding Files With the fd Command"
+title: "Find Files With the fd Command"
+title_meta: "How to Find Files With the fd Command"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny/

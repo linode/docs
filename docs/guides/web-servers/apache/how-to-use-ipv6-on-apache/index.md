@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-16
 modified_by:
   name: Linode
-title: "How to Use IPv6 With Apache and NGINX"
+title: "Use IPv6 With Apache and NGINX"
+title_meta: "How to Use IPv6 With Apache and NGINX"
 contributor:
   name: Jeff Novotny
 external_resources:

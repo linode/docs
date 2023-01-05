@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-05
 modified_by:
   name: Linode
-title: "How to Install Riot on Debian 10"
-title_meta: "Installing Riot on Debian 10"
+title: "Install Riot on Debian 10"
+title_meta: "How to Install Riot on Debian 10"
 contributor:
   name: Dan Nielsen
 ---

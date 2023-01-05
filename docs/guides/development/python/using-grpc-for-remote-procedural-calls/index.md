@@ -9,8 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-30
 modified_by:
   name: Linode
-title: "How to Use gRPC and Python for Remote Procedural Calls"
-title_meta: "gRPC Tutorial: Using gRPC for Remote Procedural Calls"
+title: "Use gRPC and Python for Remote Procedural Calls"
 contributor:
   name: Jeff Novotny
 external_resources:

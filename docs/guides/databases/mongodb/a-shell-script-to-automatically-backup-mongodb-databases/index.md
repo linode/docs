@@ -10,8 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-04
 modified_by:
   name: Linode
-title: "How to Automatically Backup Mongodb Databases Using Bash Scripting"
-title_meta: "A Shell Script to Automatically Backup MongoDB Databases"
+title: "Automatically Backup Mongodb Databases Using Bash Scripting"
 contributor:
   name: Linode Community
   email: docs@linode.com

@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-13
 modified_by:
   name: Linode
-title: "How to Install a LEMP Stack on Ubuntu 22.04"
+title: "Install a LEMP Stack on Ubuntu 22.04"
+title_meta: "How to Install a LEMP Stack on Ubuntu 22.04"
 contributor:
   name: Jeff Novotny
 external_resources:

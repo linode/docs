@@ -3,15 +3,14 @@ slug: kubernetes-cron-job
 author:
   name: Martin Heller
 description: 'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
-og_description:  'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
 modified_by:
   name: Linode
-title: "How to Create a Kubernetes CronJob"
-title_meta: "Creating a Kubernetes CronJob"
+title: "Create a Kubernetes CronJob"
+title_meta: "How to Create a Kubernetes CronJob"
 contributor:
   name: Martin Heller
 external_resources:

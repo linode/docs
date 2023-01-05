@@ -9,7 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-02
 modified_by:
   name: Linode
-title: "How to Use the Shebang in Bash and Python"
+title: "Use the Shebang in Bash and Python"
+title_meta: "How to Use the Shebang in Bash and Python"
 contributor:
   name: Jeff Novotny
 external_resources:

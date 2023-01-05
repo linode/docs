@@ -12,7 +12,7 @@ published: 2015-09-28
 modified: 2022-07-12
 modified_by:
     name: Linode
-title: "How to Configure a Firewall with Firewalld"
+title: "Configure a Firewall with Firewalld"
 title_meta: "Configure a Firewall with Firewalld (Create and List Rules)"
 contributor:
     name: Florent Houbart

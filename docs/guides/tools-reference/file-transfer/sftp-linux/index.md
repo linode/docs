@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
 modified_by:
   name: Linode
-title: "How to Transfer Files with SFTP"
-title_meta: "Transferring Files with SFTP"
+title: "Transfer Files with SFTP"
+title_meta: "How to Transfer Files with SFTP"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

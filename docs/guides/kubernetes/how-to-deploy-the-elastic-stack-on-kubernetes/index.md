@@ -21,7 +21,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-07-07
 modified_by:
   name: Linode
-title: "How to Deploy the Elastic Stack on Kubernetes"
+title: "Deploy the Elastic Stack on Kubernetes"
+title_meta: "How to Deploy the Elastic Stack on Kubernetes"
 external_resources:
   - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
 aliases: ['/kubernetes/how-to-deploy-the-elastic-stack-on-kubernetes/','/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/']

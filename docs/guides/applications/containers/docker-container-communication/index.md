@@ -12,7 +12,8 @@ published: 2017-12-28
 modified: 2017-11-29
 modified_by:
   name: Jared Kobos
-title: "How to Connect Docker Containers"
+title: "Connect Docker Containers"
+title_meta: "How to Connect Docker Containers"
 external_resources:
 - '[Docker: Understanding Container Communication](https://docs.docker.com/engine/userguide/networking/default_network/container-communication/)'
 - '[Linking Containers](https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb)'

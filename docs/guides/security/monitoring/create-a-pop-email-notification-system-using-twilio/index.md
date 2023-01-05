@@ -11,7 +11,6 @@ published: 2022-02-25
 modified_by:
   name: Linode
 title: "Create an Email Notification System Using Twilio (POP)"
-enable_h1: true
 contributor:
   name: John Mueller
   link:

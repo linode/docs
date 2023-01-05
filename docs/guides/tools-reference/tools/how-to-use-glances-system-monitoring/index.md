@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-30
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use Glances for System Monitoring on Linux"
-title_meta: "Use Glances for System Monitoring on Linux"
+title: "Use Glances for System Monitoring on Linux"
+title_meta: "How to Use Glances for System Monitoring on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

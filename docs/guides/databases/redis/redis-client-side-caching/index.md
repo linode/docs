@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-08
 modified_by:
   name: Linode
-title: "How to Use Redis for Client-Side Caching"
-title_meta: "Using Redis for Client-Side Caching"
+title: "Use Redis for Client-Side Caching"
+title_meta: "How to Use Redis for Client-Side Caching"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
