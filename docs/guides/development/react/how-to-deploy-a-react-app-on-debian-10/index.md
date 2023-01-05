@@ -11,9 +11,8 @@ modified: 2020-04-24
 image: Deploying_a_React_Application_on_Debian_10_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy a React Application on Debian 10"
-h1_title: "Deploying a React Application on Debian 10"
-enable_h1: true
+title: "Deploying a React Application on Debian 10"
+title_meta: "How to Deploy a React Application on Debian 10"
 contributor:
   name: Linode
 external_resources:

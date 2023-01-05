@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Nathaniel Stickman
-title: "Configuring a Redis Server from the Command Line"
-h1_title: "How to Configure a Redis Server from the Command Line"
-enable_h1: true
+title: "How to Configure a Redis Server from the Command Line"
+title_meta: "Configuring a Redis Server from the Command Line"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

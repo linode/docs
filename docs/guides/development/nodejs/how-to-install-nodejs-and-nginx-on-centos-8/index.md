@@ -11,9 +11,8 @@ modified: 2021-08-11
 modified_by:
     name: Linode
 published: 2020-04-14
-title: Installing Node.js and NGINX on CentOS 8
-h1_title: How to Install Node.js and NGINX on CentOS 8
-enable_h1: true
+title: How to Install Node.js and NGINX on CentOS 8
+title_meta: Installing Node.js and NGINX on CentOS 8
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'

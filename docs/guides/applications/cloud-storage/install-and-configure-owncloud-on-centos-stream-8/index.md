@@ -11,9 +11,8 @@ modified: 2022-11-16
 modified_by:
   name: Linode
 image: Install_ownCloud_CentOS_stream.png
-title: "How to Install and Configure ownCloud on CentOS Stream 8"
-h1_title: "Installing and Configuring ownCloud on CentOS Stream 8"
-enable_h1: true
+title: "Installing and Configuring ownCloud on CentOS Stream 8"
+title_meta: "How to Install and Configure ownCloud on CentOS Stream 8"
 tags: ["centos"]
 contributor:
   name: Jack Wallen

@@ -12,12 +12,11 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 image: deploy-and-manage-cluster-copy.png
-title: "Deploy and Manage a Cluster with  Kubernetes Engine"
-h1_title: "Deploying and Managing a Cluster with LKE and the Linode API Tutorial"
-enable_h1: true
+title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 
-title: "Deploy and Manage a Kubernetes Cluster with the Linode API"
-h1_title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 
 contributor:
   name: Linode

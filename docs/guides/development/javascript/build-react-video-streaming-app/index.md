@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-09
 modified_by:
   name: Linode
-title: "How to Build a Video Streaming App with React and Node"
-h1_title: "Building a Video Streaming Application with React and Node"
-enable_h1: true
+title: "Building a Video Streaming Application with React and Node"
+title_meta: "How to Build a Video Streaming App with React and Node"
 image: BuildVidStreamApp_React_Node.png
 contributor:
   name: Deven Rathore

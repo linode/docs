@@ -10,9 +10,8 @@ published: 2022-09-19
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Install SELinux on Ubuntu 22.04"
-h1_title: "Install SELinux on Ubuntu 22.04"
-enable_h1: true
+title: "Install SELinux on Ubuntu 22.04"
+title_meta: "How to Install SELinux on Ubuntu 22.04"
 contributor:
   name: Cameron Laird
 relations:

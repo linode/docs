@@ -9,8 +9,6 @@ published: 2022-05-26
 modified_by:
   name: Linode
 title: "Database Sharding: Concepts, Examples, and Strategies"
-h1_title: "Database Sharding: Concepts, Examples, and Strategies"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

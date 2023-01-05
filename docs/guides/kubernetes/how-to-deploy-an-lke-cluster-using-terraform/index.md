@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
-og_description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-05
 modified_by:
   name: Linode
-title: "How to Deploy an LKE Cluster Using Terraform"
-h1_title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
-enable_h1: true
+title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
+title_meta: "How to Deploy an LKE Cluster Using Terraform"
 image: deploy-lke-cluster-with-terraform.png
 contributor:
   name: Linode

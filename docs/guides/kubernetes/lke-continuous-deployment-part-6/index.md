@@ -4,9 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In part six of our series on Kubernetes, you will learn how to access the sample application with a Domain, setup a Ingress Controller, and collect metrics."
-title: "Continuous Deployment Using LKE: DNS, Ingress, and Metrics"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 6): DNS, Ingress, and Metrics"
-enable_h1: true
+title: "Building a Continuous Deployment Pipeline Using LKE (Part 6): DNS, Ingress, and Metrics"
+title_meta: "Continuous Deployment Using LKE: DNS, Ingress, and Metrics"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06

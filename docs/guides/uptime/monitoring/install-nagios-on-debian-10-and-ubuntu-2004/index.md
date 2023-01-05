@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
-og_description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
 tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
 modified_by:
   name: Linode
-title: "Install Nagios on Debian 10 and Ubuntu 20.04"
-h1_title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
-enable_h1: true
+title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
+title_meta: "Install Nagios on Debian 10 and Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

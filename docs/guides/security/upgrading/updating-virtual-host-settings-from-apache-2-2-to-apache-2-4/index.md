@@ -12,9 +12,8 @@ modified: 2014-03-12
 modified_by:
   name: Linode
 published: 2014-03-12
-title: "How to Update Virtual Host Settings For Apache 2.4"
-h1_title: "Updating Virtual Host Settings For Apache 2.4"
-enable_h1: true
+title: "Updating Virtual Host Settings For Apache 2.4"
+title_meta: "How to Update Virtual Host Settings For Apache 2.4"
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
 ---

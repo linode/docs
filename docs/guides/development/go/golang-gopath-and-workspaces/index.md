@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Linode
-title: "Golang’s GOPATH and Workspaces"
-h1_title: "The GOPATH in Golang"
-enable_h1: true
+title: "The GOPATH in Golang"
+title_meta: "Golang’s GOPATH and Workspaces"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit

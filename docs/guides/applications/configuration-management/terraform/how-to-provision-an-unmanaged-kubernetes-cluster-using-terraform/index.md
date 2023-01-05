@@ -12,8 +12,8 @@ image: UnmanagedKubernetesCluster_Terraform.png
 modified: 2021-03-11
 modified_by:
   name: Linode
-title: "Provision an Unmanaged Kubernetes Cluster using Terraform"
-h1_title: "Provision Unmanaged Kubernetes Cluster using Terraform"
+title: "Provision Unmanaged Kubernetes Cluster using Terraform"
+title_meta: "Provision an Unmanaged Kubernetes Cluster using Terraform"
 contributor:
   name: Linode
 external_resources:

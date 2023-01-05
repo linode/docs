@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "What Are Javascript Service Workers?"
-h1_title: "Javascript Service Workers: An Introduction with Examples"
-enable_h1: true
+title: "Javascript Service Workers: An Introduction with Examples"
+title_meta: "What Are Javascript Service Workers?"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

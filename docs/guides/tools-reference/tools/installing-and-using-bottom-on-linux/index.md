@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
 modified_by:
   name: Linode
-title: "Installing and Using bottom on Linux"
-h1_title: "How to Install and Use bottom on Linux"
-enable_h1: true
+title: "How to Install and Use bottom on Linux"
+title_meta: "Installing and Using bottom on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

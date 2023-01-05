@@ -10,8 +10,8 @@ published: 2017-09-25
 modified: 2022-07-01
 modified_by:
   name: Linode
-title: 'How to Set Up the htaccess File on Apache'
-h1_title: 'Enable and Set Up the .htaccess File on Apache'
+title: 'Enable and Set Up the .htaccess File on Apache'
+title_meta: 'How to Set Up the htaccess File on Apache'
 contributor:
   name: Christopher Piccini
   link: https://twitter.com/chrispiccini11

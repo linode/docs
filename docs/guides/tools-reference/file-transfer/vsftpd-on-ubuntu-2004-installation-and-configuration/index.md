@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-14
 modified_by:
   name: Linode
-title: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
-h1_title: "Install VSFTPD on Ubuntu 20.04"
-enable_h1: true
+title: "Install VSFTPD on Ubuntu 20.04"
+title_meta: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit

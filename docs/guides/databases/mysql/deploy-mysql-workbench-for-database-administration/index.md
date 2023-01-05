@@ -4,7 +4,6 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
-og_description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
 keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-04

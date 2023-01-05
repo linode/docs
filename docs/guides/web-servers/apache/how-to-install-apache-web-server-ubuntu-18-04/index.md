@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
-og_description: 'Install Apache on your Ubuntu 18.04 LTS server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "ubuntu", "ubuntu 18.04", "http", "web server"]
 tags: ["web server","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2018-12-31
 modified_by:
   name: Linode
 published: 2015-07-31
-title: 'How to Install Apache Web Server on Ubuntu 18.04 LTS'
-h1_title: 'Installing Apache Web Server on Ubuntu 18.04 LTS'
+title: 'Installing Apache Web Server on Ubuntu 18.04 LTS'
+title_meta: 'How to Install Apache Web Server on Ubuntu 18.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'

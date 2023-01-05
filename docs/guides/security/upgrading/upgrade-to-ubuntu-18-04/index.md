@@ -11,9 +11,8 @@ modified: 2021-10-26
 modified_by:
   name: Linode
 published: 2018-04-27
-title: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
-h1_title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
-enable_h1: true
+title: "Inline Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
+title_meta: "How to Upgrade to Ubuntu 18.04 LTS (Bionic Beaver)"
 relations:
     platform:
         key: how-to-upgrade-ubuntu

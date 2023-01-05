@@ -10,9 +10,8 @@ modified: 2018-02-20
 modified_by:
   name: Sam Foo
 published: 2018-02-20
-title: "Terminate Processes from the Mac or Linux Command Line"
-h1_title: "Find and Terminate Processes from the Linux or Mac OS Command Line"
-enable_h1: true
+title: "Find and Terminate Processes from the Linux or Mac OS Command Line"
+title_meta: "Terminate Processes from the Mac or Linux Command Line"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/find-and-terminate-processes-from-the-linux-or-macos-command-line/']
 ---

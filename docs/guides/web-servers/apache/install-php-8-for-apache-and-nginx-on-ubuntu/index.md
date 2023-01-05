@@ -3,16 +3,14 @@ slug: install-php-8-for-apache-and-nginx-on-ubuntu
 author:
   name: Jeff Novotny
 description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
-og_description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
 keywords: ['Nginx PHP-fpm','Apache php','Php 8','Php fpm','What is PHP?']
 tags: ['php', 'nginx', 'apache', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "Install PHP 8 for Apache and NGINX on Ubuntu"
-h1_title: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
-enable_h1: true
+title: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
+title_meta: "Install PHP 8 for Apache and NGINX on Ubuntu"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

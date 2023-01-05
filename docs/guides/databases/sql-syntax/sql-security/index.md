@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
 modified_by:
   name: Linode
-title: "SQL Security and User Management"
-h1_title: "SQL Database Security: User Management"
-enable_h1: true
+title: "SQL Database Security: User Management"
+title_meta: "SQL Security and User Management"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

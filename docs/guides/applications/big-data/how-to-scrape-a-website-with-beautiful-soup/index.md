@@ -4,7 +4,6 @@ author:
   name: Luis Cortés
   email: docs@linode.com
 description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
-og_description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01

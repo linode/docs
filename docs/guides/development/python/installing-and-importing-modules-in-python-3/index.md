@@ -3,16 +3,14 @@ slug: installing-and-importing-modules-in-python-3
 author:
   name: Jeff Novotny
 description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
-og_description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
 keywords: ['Python import module', 'Python modules', 'Python install module', 'Python math']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified_by:
   name: Linode
-title: "Installing and Importing Modules in Python 3"
-h1_title: "How to Install and Import Modules in Python 3"
-enable_h1: true
+title: "How to Install and Import Modules in Python 3"
+title_meta: "Installing and Importing Modules in Python 3"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

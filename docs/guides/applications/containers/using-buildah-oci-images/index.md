@@ -4,14 +4,12 @@ author:
   name: Nathaniel Stickman
   email: docs@linode.com
 description: "Buildah is a powerful open-source tool for creating containers and container images. Whether you want to create containers for Dockerfiles and Containerfiles or entirely from scratch, Buildah provides a robust set of features to carry you through. Learn all about Buildah and how to get started using it in this tutorial."
-og_description: "Buildah is a powerful open-source tool for creating containers and container images. Whether you want to create containers for Dockerfiles and Containerfiles or entirely from scratch, Buildah provides a robust set of features to carry you through. Learn all about Buildah and how to get started using it in this tutorial."
 keywords: ['buildah run','what is buildah','install buildah']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use Buildah to Build OCI Container Images"
-h1_title: "How to Use Buildah to Build OCI Container Images"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -4,17 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
-og_description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
 keywords: ['infrastructure as a service','iaas','infrastructure','cloud networks']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
 modified_by:
   name: Linode
-title: "What Is Infrastructure as a Service?"
+title: "An Introduction to Infrastructure as a Service"
+title_meta: "What Is Infrastructure as a Service?"
 image: An_introduction _to_ Infrastructure_as_a_Service.jpg
-h1_title: "An Introduction to Infrastructure as a Service"
-enable_h1: true
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

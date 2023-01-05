@@ -3,7 +3,6 @@ slug: migrate-from-centos-8-to-centos-stream
 author:
   name: Jeff Novotny
 description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
-og_description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 keywords: ['CentOS','CentOS Stream','Migration','Advantages and Drawbacks']
 tags: ['centos', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,8 @@ published: 2021-07-02
 image: MIGRATE.jpg
 modified_by:
   name: Linode
-title: "Migrate From CentOS 8 to CentOS Stream"
-h1_title: "How to Migrate From CentOS 8 to CentOS Stream"
-enable_h1: true
+title: "How to Migrate From CentOS 8 to CentOS Stream"
+title_meta: "Migrate From CentOS 8 to CentOS Stream"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

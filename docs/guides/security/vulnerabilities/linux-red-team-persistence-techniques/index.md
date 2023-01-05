@@ -11,8 +11,6 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Linux Red Team Persistence Techniques"
-h1_title: "Linux Red Team Persistence Techniques"
-enable_h1: true
 contributor:
   name: HackerSploit
 ---

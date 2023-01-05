@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-11
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using the duf Command on Linux"
-h1_title: "How to Install and Use the duf Command on Linux"
-enable_h1: true
+title: "How to Install and Use the duf Command on Linux"
+title_meta: "Installing and Using the duf Command on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -13,9 +13,8 @@ published: 2021-03-05
 image: FilterData.jpg
 modified_by:
   name: Linode
-title: "Filter Data using AWK RegEx"
-h1_title: "How To Filter Data using AWK RegEx"
-enable_h1: true
+title: "How To Filter Data using AWK RegEx"
+title_meta: "Filter Data using AWK RegEx"
 contributor:
   name: Andy Lester
   link: https://twitter.com/petdance

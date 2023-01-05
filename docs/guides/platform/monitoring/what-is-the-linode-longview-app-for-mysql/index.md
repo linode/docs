@@ -12,9 +12,8 @@ modified: 2022-02-17
 modified_by:
   name: Linode
 published: 2013-11-06
-title: "What is the Linode Longview App for MySQL"
-h1_title: "Using the Linode Longview App for MySQL"
-enable_h1: true
+title: "Using the Linode Longview App for MySQL"
+title_meta: "What is the Linode Longview App for MySQL"
 classic_manager_link: platform/longview/longview-app-for-mysql-classic
 relations:
     platform:

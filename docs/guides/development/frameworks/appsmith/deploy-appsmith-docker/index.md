@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
-og_description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
 keywords: ['appsmith tutorial','appsmith examples','install appsmith']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-24
 modified_by:
   name: Nathaniel Stickman
 title: "How to Self-host Appsmith with Docker Compose"
-h1_title: "How to Self-host Appsmith with Docker Compose"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

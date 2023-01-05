@@ -3,16 +3,14 @@ slug: popular-linux-games-overview-and-configuration-tips
 author:
   name: Sandro Villinger
 description: 'This guide discusses popular Linux games and helpful configuration tips for common issues when setting them up.'
-og_description: 'This guide discusses popular Linux games and helpful configuration tips for common issues when setting them up.'
 keywords: ['best linux games']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Linode
-title: "Popular Linux Games and Configuration Tips"
-h1_title: "An Overview of Popular Linux Games and Configuration Tips"
-enable_h1: true
+title: "An Overview of Popular Linux Games and Configuration Tips"
+title_meta: "Popular Linux Games and Configuration Tips"
 contributor:
   name: Sandro Villinger
 ---

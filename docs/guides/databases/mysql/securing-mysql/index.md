@@ -3,15 +3,13 @@ slug: securing-mysql
 author:
   name: Hackersploit
 description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
-og_description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/','/guides/how-to-secure-mysql-server/']
 bundles: ['debian-security', 'centos-security']
 tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: 'How to Secure MySQL Server'
-h1_title: 'Securing MySQL Server'
-enable_h1: true
+title: 'Securing MySQL Server'
+title_meta: 'How to Secure MySQL Server'
 contributor:
   name: Hackersploit
 modified_by:

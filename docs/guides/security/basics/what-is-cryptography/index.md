@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
 modified_by:
   name: Linode
-title: "Understanding Cryptography’s Meaning and Function"
-h1_title: "How Cryptography Enables Secure Communication"
-enable_h1: true
+title: "How Cryptography Enables Secure Communication"
+title_meta: "Understanding Cryptography’s Meaning and Function"
 contributor:
   name: Pam Baker
 ---

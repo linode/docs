@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
 modified_by:
   name: Linode
-title: "Creating a Kubernetes CronJob"
-h1_title: "How to Create a Kubernetes CronJob"
-enable_h1: true
+title: "How to Create a Kubernetes CronJob"
+title_meta: "Creating a Kubernetes CronJob"
 contributor:
   name: Martin Heller
 external_resources:

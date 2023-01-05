@@ -12,9 +12,8 @@ modified: 2020-02-10
 modified_by:
   name: Linode
 published: 2020-02-10
-title: How to Install Ghost CMS on CentOS 8
-h1_title: Installing Ghost CMS on CentOS 8
-enable_h1: true
+title: Installing Ghost CMS on CentOS 8
+title_meta: How to Install Ghost CMS on CentOS 8
 image: GhostCMSonCentos8.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'

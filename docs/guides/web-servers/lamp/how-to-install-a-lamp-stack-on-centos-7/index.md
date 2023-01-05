@@ -11,9 +11,8 @@ modified: 2022-01-14
 modified_by:
     name: Linode
 published: 2015-12-01
-title: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
-h1_title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
-enable_h1: true
+title: "Installing a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
+title_meta: "Install a LAMP Stack (PHP, MySQL, Apache) on CentOS 7"
 aliases: ['/websites/lamp/lamp-on-centos-7/','/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/','/websites/lamp/lamp-server-on-centos-7/','/web-servers/lamp/lamp-on-centos-7/']
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'

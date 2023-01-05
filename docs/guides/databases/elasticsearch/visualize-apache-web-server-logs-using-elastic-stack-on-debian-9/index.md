@@ -17,9 +17,8 @@ image: VizApacheWSL_ElasticStack_Debian9.png
 modified: 2021-03-05
 modified_by:
   name: Linode
-title: "Visualizing Apache Logs With Elastic Stack on Debian 9"
-h1_title: "Visualizing Apache Logs Using the Elastic Stack on Debian 9"
-enable_h1: true
+title: "Visualizing Apache Logs Using the Elastic Stack on Debian 9"
+title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 9"
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring","apache"]
 relations:

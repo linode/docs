@@ -11,9 +11,8 @@ published: 2021-05-21
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
-h1_title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
-enable_h1: true
+title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
+title_meta: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

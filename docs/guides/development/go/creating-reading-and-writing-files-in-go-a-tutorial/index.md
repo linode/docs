@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-09-06
 modified_by:
   name: Linode
-title: 'Creating, Reading and Writing Files in Go - A Tutorial'
-h1_title: 'Creating, Reading and Writing Files in Go'
+title: 'Creating, Reading and Writing Files in Go'
+title_meta: 'Creating, Reading and Writing Files in Go - A Tutorial'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

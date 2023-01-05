@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-30
 modified_by:
 published: 2016-05-20
-title: 'How to Install PostgreSQL on Ubuntu 16.04'
-h1_title: Installing PostgreSQL on Ubuntu 16.04
+title: Installing PostgreSQL on Ubuntu 16.04
+title_meta: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'

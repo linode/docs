@@ -11,8 +11,8 @@ published: 2019-10-10
 modified: 2020-07-11
 modified_by:
   name: abalarin
-title: "How to deploy a Flask Application on Ubuntu"
-h1_title: "Deploying a Flask Application on Ubuntu"
+title: "Deploying a Flask Application on Ubuntu"
+title_meta: "How to deploy a Flask Application on Ubuntu"
 contributor:
   name: Austin Balarin
   link: https://github.com/abalarin

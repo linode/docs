@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
   name: Nathaniel Stickman
-title: "Installing Moodle on Ubuntu Server 20.04"
-h1_title: "How to Install Moodle on Ubuntu 20.04"
-enable_h1: true
+title: "How to Install Moodle on Ubuntu 20.04"
+title_meta: "Installing Moodle on Ubuntu Server 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

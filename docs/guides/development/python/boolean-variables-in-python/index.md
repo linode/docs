@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
 modified_by:
   name: Linode
-title: "Using Boolean Variables, Operators, and Conditional Statements in Python"
-h1_title: "Boolean Variables, Operators, and Conditional Statements in Python"
-enable_h1: true
+title: "Boolean Variables, Operators, and Conditional Statements in Python"
+title_meta: "Using Boolean Variables, Operators, and Conditional Statements in Python"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

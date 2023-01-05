@@ -12,9 +12,8 @@ modified_by:
   name: Linode
 published: 2015-07-09
 modified: 2022-10-03
-title: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
-h1_title: "Configure rDNS (Reverse DNS) on a Compute Instance"
-enable_h1: true
+title: "Configure rDNS (Reverse DNS) on a Compute Instance"
+title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
 image: configure-your-linode-reverse-dns.jpg
 ---
 

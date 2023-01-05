@@ -11,8 +11,8 @@ modified: 2021-06-17
 modified_by:
   name: Linode
 published: 2017-08-11
-title: 'How to Use a Dockerfile to Build a Docker Image'
-h1_title: 'How to Use a Dockerfile to Build a Docker Image.'
+title: 'How to Use a Dockerfile to Build a Docker Image.'
+title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'

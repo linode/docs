@@ -12,9 +12,8 @@ published: 2017-06-22
 modified: 2017-10-18
 modified_by:
   name: Linode
-title: "How to Change SELinux Modes"
-h1_title: "Changing SELinux Modes"
-enable_h1: true
+title: "Changing SELinux Modes"
+title_meta: "How to Change SELinux Modes"
 external_resources:
 - '[Security Enhanced Linux User Guide, Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/index.html)'
 - '[SELinux, CentOS Wiki](https://wiki.centos.org/HowTos/SELinux)'

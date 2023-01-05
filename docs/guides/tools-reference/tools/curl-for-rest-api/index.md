@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-01
 modified_by:
   name: Linode
-title: "Using cURL with RESTful APIs"
-h1_title: "How to Use cURL with RESTful APIs"
-enable_h1: true
+title: "How to Use cURL with RESTful APIs"
+title_meta: "Using cURL with RESTful APIs"
 contributor:
   name: Jeff Novotny
 external_resources:

@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
 modified_by:
   name: Linode
-title: "Resolving Merge Conflicts in Git"
-h1_title: "How to Resolve Merge Conflicts in Git"
-enable_h1: true
+title: "How to Resolve Merge Conflicts in Git"
+title_meta: "Resolving Merge Conflicts in Git"
 contributor:
   name: Stephen Savitzky
 ---

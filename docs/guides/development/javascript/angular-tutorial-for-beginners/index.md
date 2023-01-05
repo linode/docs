@@ -3,16 +3,14 @@ slug: angular-tutorial-for-beginners
 author:
   name: Nathaniel Stickman
 description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
-og_description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-10
 modified_by:
   name: Nathaniel Stickman
-title: "An Angular Tutorial for Beginners"
-h1_title: "How to Build a Website with Angular"
-enable_h1: true
+title: "How to Build a Website with Angular"
+title_meta: "An Angular Tutorial for Beginners"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

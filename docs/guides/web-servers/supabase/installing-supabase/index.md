@@ -4,14 +4,12 @@ author:
   name: Nathaniel Stickman
   email: docs@linode.com
 description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
-og_description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
 keywords: ['install supabase','supabase firebase','supabase self host']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01
 modified_by:
   name: Nathaniel Stickman
 title: "How to Self-host Supabase with Docker"
-h1_title: "How to Self-host Supabase with Docker"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

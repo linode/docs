@@ -12,9 +12,8 @@ modified: 2013-11-12
 modified_by:
   name: Linode
 published: 2013-11-05
-title: What is the Linode Longview App for Nginx
-h1_title: Using the Linode Longview App for Nginx
-enable_h1: true
+title: Using the Linode Longview App for Nginx
+title_meta: What is the Linode Longview App for Nginx
 classic_manager_link: platform/longview/longview-app-for-nginx-classic
 relations:
     platform:

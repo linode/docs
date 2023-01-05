@@ -11,9 +11,8 @@ published: 2021-07-16
 image: MonitorandConfigureNagiosAlertsonDebianandUbuntu.jpg
 modified_by:
   name: Linode
-title: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
-h1_title: "Configuring Nagios Alerts on Debian 10 and Ubuntu 20.04"
-enable_h1: true
+title: "Configuring Nagios Alerts on Debian 10 and Ubuntu 20.04"
+title_meta: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

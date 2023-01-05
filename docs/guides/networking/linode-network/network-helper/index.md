@@ -11,9 +11,8 @@ modified: 2022-07-12
 published: 2014-12-08
 modified_by:
   name: Linode
-title: "Automatically Configure Networking on Linode"
-h1_title: "Automatically Configure Networking on Compute Instances with Network Helper"
-enable_h1: true
+title: "Automatically Configure Networking on Compute Instances with Network Helper"
+title_meta: "Automatically Configure Networking on Linode"
 aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper/','/platform/network-helper-new-manager/']
 image: network-helper-title-graphic.jpg
 ---

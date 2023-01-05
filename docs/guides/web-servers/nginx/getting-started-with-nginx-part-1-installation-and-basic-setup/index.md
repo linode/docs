@@ -11,9 +11,8 @@ modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: "Getting Started with NGINX: Installation and Basic Setup"
-h1_title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
-enable_h1: true
+title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
+title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 tags: ["web server","nginx"]
 ---
 

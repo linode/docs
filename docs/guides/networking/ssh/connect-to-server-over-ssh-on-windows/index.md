@@ -12,9 +12,8 @@ modified: 2022-01-28
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on Windows"
-h1_title: "Connecting to a Remote Server Over SSH on Windows"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH on Windows"
+title_meta: "How to Connect to a Remote Server Over SSH on Windows"
 aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
 relations:
     platform:

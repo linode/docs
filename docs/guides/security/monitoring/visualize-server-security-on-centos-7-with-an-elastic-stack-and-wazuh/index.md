@@ -11,9 +11,8 @@ published: 2017-10-17
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: "How to Visualize Server Security on CentOS 7"
-h1_title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
-enable_h1: true
+title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
+title_meta: "How to Visualize Server Security on CentOS 7"
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940/

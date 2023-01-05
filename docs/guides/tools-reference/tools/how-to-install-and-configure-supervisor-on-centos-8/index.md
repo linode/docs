@@ -3,7 +3,6 @@ slug: how-to-install-and-configure-supervisor-on-centos-8
 author:
   name: Dan Nielsen
 description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
-og_description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
 keywords: ['centos', 'system', 'supervisor', 'supervisord']
 tags: ["linux", "automation", "monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +10,8 @@ published: 2021-02-26
 image: InstallConfig_SupervisiorCentOS8.png
 modified_by:
   name: Linode
-title: "How to Install and Configure Supervisor on CentOS 8"
-h1_title: "Installing and Configuring Supervisor on CentOS 8"
+title: "Installing and Configuring Supervisor on CentOS 8"
+title_meta: "How to Install and Configure Supervisor on CentOS 8"
 contributor:
   name: Dan Nielsen
   link: https://github.com/danielsen

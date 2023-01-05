@@ -4,14 +4,12 @@ author:
   name: Nathaniel Stickman
   email: docs@linode.com
 description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
-og_description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
 keywords: ['what is podman','podman docker','podman tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install Podman for Running Containers"
-h1_title: "How to Install Podman for Running Containers"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

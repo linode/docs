@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
   name: Linode
-title: "Common Security Weaknesses in Web Applications"
-h1_title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
-enable_h1: true
+title: "Common Security Weaknesses in Web Applications (XSS and SQL Injections)"
+title_meta: "Common Security Weaknesses in Web Applications"
 contributor:
   name: David Strom
 aliases: ['/guides/understanding-total-app-security/']

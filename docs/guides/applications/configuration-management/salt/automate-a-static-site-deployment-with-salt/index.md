@@ -12,9 +12,8 @@ modified: 2019-01-02
 modified_by:
   name: Linode
 image: Automate-Static-Site-DeploymentswithSaltGitandWebhooks.png
-title: "Automate Static Site Deployments with Salt and Git"
-h1_title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
-enable_h1: true
+title: "Automate Static Site Deployments with Salt, Git, and Webhooks"
+title_meta: "Automate Static Site Deployments with Salt and Git"
 contributor:
     name: "Nathan Melehan"
     link: "https://github.com/nmelehan"

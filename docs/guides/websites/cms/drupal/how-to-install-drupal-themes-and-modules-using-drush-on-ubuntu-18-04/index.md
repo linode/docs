@@ -4,7 +4,6 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
-og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ modified: 2020-03-11
 modified_by:
     name: Linode
 published: 2014-12-05
-title: How to Install Drupal Themes & Modules on Ubuntu 18.04
-h1_title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
-enable_h1: true
+title: Install Drupal Themes and Modules Using Drush on Ubuntu 18.04
+title_meta: How to Install Drupal Themes & Modules on Ubuntu 18.04
 image: DrupalThemesMods_DrushUbuntu1804.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'

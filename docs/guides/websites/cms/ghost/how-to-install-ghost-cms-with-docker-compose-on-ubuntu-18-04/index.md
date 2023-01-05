@@ -12,9 +12,8 @@ modified: 2018-08-20
 modified_by:
   name: Linode
 published: 2018-08-20
-title: How to Install Ghost CMS with Docker on Ubuntu 18.04
-h1_title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
-enable_h1: true
+title: Installing Ghost CMS with Docker Compose on Ubuntu 18.04
+title_meta: How to Install Ghost CMS with Docker on Ubuntu 18.04
 external_resources:
 - '[Ghost Setup Documentation](https://docs.ghost.org/v1.0.0)'
 - '[Ghost Theme Documentation](https://themes.ghost.org/v1.0.0)'

@@ -13,9 +13,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: InstallJavaDevKit11_Ubuntu2004.png
-title: How To Install Java Development Kit 11 on Ubuntu 20.04
-h1_title: Installing Java Development Kit 11 on Ubuntu 20.04
-enable_h1: true
+title: Installing Java Development Kit 11 on Ubuntu 20.04
+title_meta: How To Install Java Development Kit 11 on Ubuntu 20.04
 contributor:
   name: Rajakavitha Kodhandapani
 audiences: ["beginner"]

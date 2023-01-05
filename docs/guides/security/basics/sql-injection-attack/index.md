@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-03
 modified_by:
   name: Linode
-title: "What is SQL Injection? Attack Examples & Prevention Tips"
-h1_title: "SQL Injection Attack: What It Is and How to Prevent It"
-enable_h1: true
+title: "SQL Injection Attack: What It Is and How to Prevent It"
+title_meta: "What is SQL Injection? Attack Examples & Prevention Tips"
 contributor:
   name: Jeff Novotny
 external_resources:

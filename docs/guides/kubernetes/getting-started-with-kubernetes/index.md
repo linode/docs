@@ -11,9 +11,8 @@ published: 2019-04-30
 modified: 2021-12-30
 modified_by:
   name: Linode
-title: "Use kubeadm to Deploy a Cluster on Linode"
-h1_title: "Using kubeadm to Deploy a Kubernetes Cluster"
-enable_h1: true
+title: "Using kubeadm to Deploy a Kubernetes Cluster"
+title_meta: "Use kubeadm to Deploy a Cluster on Linode"
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/']
 contributor:
   name: Linode

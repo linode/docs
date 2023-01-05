@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: This guide shows how to use journalctl to view, search, and filter your system's logs.
-og_description: This guide shows how to use journalctl to view, search, and filter your system's logs.
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-09-05

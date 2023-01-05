@@ -15,9 +15,8 @@ published: 2020-03-17
 image: InstallSELinux_Deb10.png
 contributor:
   name: Linode
-title: "How to Install SELinux on Debian 10"
-h1_title: "Install SELinux on Debian 10"
-enable_h1: true
+title: "Install SELinux on Debian 10"
+title_meta: "How to Install SELinux on Debian 10"
 relations:
     platform:
         key: how-to-install-selinux

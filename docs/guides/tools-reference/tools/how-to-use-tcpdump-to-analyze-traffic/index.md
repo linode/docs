@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
-og_description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
 keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-11
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use tcdump to Analyze Network Traffic"
-h1_title: "How to Use tcdump to Analyze Network Traffic"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

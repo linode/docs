@@ -12,9 +12,8 @@ modified: 2021-06-23
 modified_by:
   name: Linode
 published: 2021-06-25
-title: 'Installing a LAMP Stack on Ubuntu 20.04'
-h1_title: 'How to Install a LAMP Stack on Ubuntu 20.04'
-enable_h1: true
+title: 'How to Install a LAMP Stack on Ubuntu 20.04'
+title_meta: 'Installing a LAMP Stack on Ubuntu 20.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

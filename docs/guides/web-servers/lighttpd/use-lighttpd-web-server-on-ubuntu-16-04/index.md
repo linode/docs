@@ -12,8 +12,8 @@ modified: 2021-05-26
 modified_by:
   name: Phil Zona
 published: 2016-05-19
-title: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
-h1_title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'

@@ -13,9 +13,8 @@ modified_by:
   name: Linode
 published: 2011-04-05
 modified: 2022-06-17
-title: "How to Use SSH Public Key Authentication"
-h1_title: "Using SSH Public Key Authentication on Linux, macOS, and Windows"
-enable_h1: true
+title: "Using SSH Public Key Authentication on Linux, macOS, and Windows"
+title_meta: "How to Use SSH Public Key Authentication"
 image: use_public_key_authentication_with_ssh.png
 ---
 

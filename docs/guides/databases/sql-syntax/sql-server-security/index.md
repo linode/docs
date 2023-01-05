@@ -8,9 +8,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2022-05-27
 modified_by:
   name: Linode
-title: SQL Server Security Best Practices
-h1_title: "Part 1: SQL Server Security Best Practices"
-enable_h1: true
+title: "Part 1: SQL Server Security Best Practices"
+title_meta: SQL Server Security Best Practices
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

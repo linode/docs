@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-19
 modified_by:
   name: Linode
-title: "How to Self-Host the vaultwarden Password Manager"
-h1_title: "Self-Hosting the vaultwarden Password Manager"
-enable_h1: true
+title: "Self-Hosting the vaultwarden Password Manager"
+title_meta: "How to Self-Host the vaultwarden Password Manager"
 tags: ["ubuntu", "security", "web applications", "docker"]
 contributor:
   name: Tyler Langlois

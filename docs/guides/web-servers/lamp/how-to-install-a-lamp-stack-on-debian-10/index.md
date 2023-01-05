@@ -11,8 +11,8 @@ modified: 2020-02-19
 modified_by:
   name: Linode
 published: 2015-06-29
-title: 'Install a LAMP Stack on Debian 10 (Buster)'
-h1_title: How to Install a LAMP Stack on Debian 10
+title: How to Install a LAMP Stack on Debian 10
+title_meta: 'Install a LAMP Stack on Debian 10 (Buster)'
 image: how-to-install-lamp-stack-on-debian-10.png
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'

@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Linode
-title: "SQL Data Types"
-h1_title: "Introduction to SQL Data Types"
-enable_h1: true
+title: "Introduction to SQL Data Types"
+title_meta: "SQL Data Types"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

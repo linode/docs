@@ -11,9 +11,8 @@ published: 2021-06-25
 modified: 2022-01-28
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on a Mac"
-h1_title: "Connecting to a Remote Server Over SSH on a Mac"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH on a Mac"
+title_meta: "How to Connect to a Remote Server Over SSH on a Mac"
 relations:
     platform:
         key: connecting-to-server-over-ssh

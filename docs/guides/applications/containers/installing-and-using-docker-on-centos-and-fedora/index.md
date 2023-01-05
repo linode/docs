@@ -4,16 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
-og_description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-16
 modified_by:
   name: Linode
-title: "How to Install and Use Docker on CentOS and Fedora"
-h1_title: "Installing and Using Docker on CentOS and Fedora"
-enable_h1: true
+title: "Installing and Using Docker on CentOS and Fedora"
+title_meta: "How to Install and Use Docker on CentOS and Fedora"
 external_resources:
 - '[Website for Docker](https://www.docker.com/)'
 - '[Documentation for Docker](https://docs.docker.com/)'

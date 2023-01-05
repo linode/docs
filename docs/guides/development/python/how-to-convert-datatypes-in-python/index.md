@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-03
 modified_by:
   name: Linode
-title: "Converting Data Types in Python"
-h1_title: "How to Convert Data Types in Python"
-enable_h1: true
+title: "How to Convert Data Types in Python"
+title_meta: "Converting Data Types in Python"
 contributor:
   name: Jeff Novotny
 external_resources:

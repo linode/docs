@@ -11,9 +11,8 @@ modified: 2018-03-27
 modified_by:
   name: Linode
 published: 2018-05-01
-title: "How to Use Pipenv to Manage Python Packages and Versions"
-h1_title: "Using Pipenv to Manage Python Packages and Versions"
-enable_h1: true
+title: "Using Pipenv to Manage Python Packages and Versions"
+title_meta: "How to Use Pipenv to Manage Python Packages and Versions"
 audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]

@@ -4,7 +4,6 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
-og_description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-08-13
 image: HowtoUseParamikoandPythontoSSHintoaServer.jpg
 modified_by:
   name: Linode
-title: "Use Paramiko and Python to SSH into a Server"
-h1_title: "How to Use Paramiko and Python to SSH into a Server"
-enable_h1: true
+title: "How to Use Paramiko and Python to SSH into a Server"
+title_meta: "Use Paramiko and Python to SSH into a Server"
 contributor:
   name: Cameron Laird
 external_resources:

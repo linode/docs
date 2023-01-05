@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
-og_description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-04-07
 image: ElementChat.jpg
 modified_by:
   name: Linode
-title: "How to Install and Configure the Element Chat App"
-h1_title: "Installing and Configuring the Element Chat Application"
-enable_h1: true
+title: "Installing and Configuring the Element Chat Application"
+title_meta: "How to Install and Configure the Element Chat App"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -11,9 +11,8 @@ modified: 2021-06-22
 modified_by:
   name: Linode
 published: 2014-08-05
-title: "How to Use Google Workspace for Email"
-h1_title: "Using Google Workspace for Email"
-enable_h1: true
+title: "Using Google Workspace for Email"
+title_meta: "How to Use Google Workspace for Email"
 tags: ["email"]
 ---
 

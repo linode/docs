@@ -12,9 +12,8 @@ published: 2015-04-21
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
-h1_title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
-enable_h1: true
+title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
+title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
 contributor:
     name: Sam Mauldin
     link: https://github.com/Sxw1212

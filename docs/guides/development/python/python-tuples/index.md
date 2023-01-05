@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "Creating and Using Python Tuples"
-h1_title: "An Introduction to Python Tuples"
-enable_h1: true
+title: "An Introduction to Python Tuples"
+title_meta: "Creating and Using Python Tuples"
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy

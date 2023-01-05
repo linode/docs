@@ -11,8 +11,6 @@ published: 2022-11-14
 modified_by:
   name: Linode
 title: "How to Install and Configure Hubzilla"
-h1_title: "How to Install and Configure Hubzilla"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

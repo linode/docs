@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Linode
-title: "Installing and Using the curlie Command on Linux"
-h1_title: "How to Install and Use the curlie Command on Linux"
-enable_h1: true
+title: "How to Install and Use the curlie Command on Linux"
+title_meta: "Installing and Using the curlie Command on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

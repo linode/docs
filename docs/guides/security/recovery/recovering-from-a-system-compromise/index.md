@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
-og_description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

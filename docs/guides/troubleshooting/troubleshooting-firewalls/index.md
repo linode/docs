@@ -4,15 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
-og_description: This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
 keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-04
 modified: 2020-08-04
 modified_by:
   name: Linode
-title: Troubleshooting Firewalls
-h1_title: Diagnose & Resolve Issues with Firewalls
+title: Diagnose & Resolve Issues with Firewalls
+title_meta: Troubleshooting Firewalls
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/']
 ---

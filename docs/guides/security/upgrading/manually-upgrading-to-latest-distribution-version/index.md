@@ -11,9 +11,8 @@ modified: 2021-09-03
 modified_by:
   name: Linode
 published: 2021-09-03
-title: "How to Upgrade a Linux System to the Latest Distribution"
-h1_title: "Upgrading to the Latest Distribution (Clean Install)"
-enable_h1: true
+title: "Upgrading to the Latest Distribution (Clean Install)"
+title_meta: "How to Upgrade a Linux System to the Latest Distribution"
 aliases: ['/security/upgrading/manually-upgrading-to-latest-distribution-version/']
 ---
 

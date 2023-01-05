@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
 modified_by:
   name: Linode
-title: "Cloud Implementation Strategy Road Map"
-h1_title: "How to Develop a Cloud Strategy Roadmap"
-enable_h1: true
+title: "How to Develop a Cloud Strategy Roadmap"
+title_meta: "Cloud Implementation Strategy Road Map"
 contributor:
   name: Jack Wallen
 ---

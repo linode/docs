@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified_by:
   name: Linode
-title: "Installing and Using McFly to Search Bash or ZSH History"
-h1_title: "Install and Use McFly to Search Bash or ZSH History"
-enable_h1: true
+title: "Install and Use McFly to Search Bash or ZSH History"
+title_meta: "Installing and Using McFly to Search Bash or ZSH History"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

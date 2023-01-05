@@ -4,15 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
-og_description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
 keywords: ['Copy a file linux','Copying a file linux','Copying files linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-18
 modified_by:
   name: Linode
 title: "How to Copy Files and Directories in Linux"
-h1_title: "How to Copy Files and Directories in Linux"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

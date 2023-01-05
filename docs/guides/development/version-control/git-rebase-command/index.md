@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-15
 modified_by:
   name: Linode
-title: "How to Use the Git Rebase Command"
-h1_title: "Using the Git Rebase Command"
-enable_h1: true
+title: "Using the Git Rebase Command"
+title_meta: "How to Use the Git Rebase Command"
 contributor:
   name: Stephen Savitzky
 ---

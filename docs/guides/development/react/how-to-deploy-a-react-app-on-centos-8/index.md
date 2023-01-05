@@ -12,8 +12,8 @@ modified: 2020-04-24
 image: Deploying_a_React_Application_on_Centos_8_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy a React Application on CentOS 8"
-h1_title: "Deploying a React Application on CentOS 8"
+title: "Deploying a React Application on CentOS 8"
+title_meta: "How to Deploy a React Application on CentOS 8"
 contributor:
   name: Linode
 external_resources:

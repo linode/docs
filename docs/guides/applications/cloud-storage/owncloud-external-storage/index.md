@@ -4,16 +4,14 @@ author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
-og_description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
 keywords: ['ownCloud external storage', 'ownCloud s3']
 tags: ['marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-15
 modified_by:
   name: Linode
-title: "Configuring ownCloud to use External Storage"
-h1_title: "How to Configure ownCloud to use External Storage"
-enable_h1: true
+title: "How to Configure ownCloud to use External Storage"
+title_meta: "Configuring ownCloud to use External Storage"
 contributor:
   name: Jack Wallen
 ---

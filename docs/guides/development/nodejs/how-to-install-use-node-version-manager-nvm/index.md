@@ -11,9 +11,8 @@ image: InstallandUseNVM.png
 modified: 2022-08-12
 modified_by:
   name: Linode
-title: "How to Install and Use NVM (Node Version Manager)"
-h1_title: "Installing and Using NVM (Node Version Manager)"
-enable_h1: true
+title: "Installing and Using NVM (Node Version Manager)"
+title_meta: "How to Install and Use NVM (Node Version Manager)"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

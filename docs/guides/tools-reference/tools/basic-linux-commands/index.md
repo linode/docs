@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
 modified_by:
   name: Linode
-title: "A List of the Most Common Linux Commands"
-h1_title: "Basic Linux Commands: A Beginner’s Guide "
-enable_h1: true
+title: "Basic Linux Commands: A Beginner’s Guide "
+title_meta: "A List of the Most Common Linux Commands"
 contributor:
   name: Tom Henderson
 ---

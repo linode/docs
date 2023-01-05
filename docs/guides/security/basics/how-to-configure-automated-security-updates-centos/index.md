@@ -10,9 +10,8 @@ modified: 2020-10-22
 modified_by:
   name: Linode
 published: 2020-10-22
-title: "How to Configure Automated Security Updates on CentOS"
-h1_title: "Configuring Automated Security Updates on CentOS"
-enable_h1: true
+title: "Configuring Automated Security Updates on CentOS"
+title_meta: "How to Configure Automated Security Updates on CentOS"
 aliases: ['/security/basics/how-to-configure-automated-security-updates-centos/']
 relations:
     platform:

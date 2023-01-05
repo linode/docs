@@ -10,9 +10,8 @@ published: 2022-09-14
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Rename Files on Linux"
-h1_title: "Rename Files in Linux"
-enable_h1: true
+title: "Rename Files in Linux"
+title_meta: "How to Rename Files on Linux"
 contributor:
   name: Martin Heller
 ---

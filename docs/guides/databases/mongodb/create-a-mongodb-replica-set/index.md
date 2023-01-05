@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-02
-title: "How To Create a MongoDB Replica Set"
-h1_title: "Creating a MongoDB Replica Set"
-enable_h1: true
+title: "Creating a MongoDB Replica Set"
+title_meta: "How To Create a MongoDB Replica Set"
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/replication/)'

@@ -11,9 +11,8 @@ image: RUST1.jpg
 modified_by:
   name: Linode
 tags: ["rust", "development", "ubuntu"]
-title: "How to Install and Use Rust"
-h1_title: "Installing and Using Rust"
-enable_h1: true
+title: "Installing and Using Rust"
+title_meta: "How to Install and Use Rust"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -4,7 +4,6 @@ author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on CentOS 8 by following this guide.'
 keywords: ["apache tomcat centos 8", "tomcat java", "java centos 8", "tomcat ubuntu"]
 tags: ["web applications","java","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +13,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: ApacheTomcat_CentOS8.png
-title: 'How to Install Apache Tomcat on CentOS 8'
-h1_title: 'Installing Apache Tomcat on CentOS 8'
+title: 'Installing Apache Tomcat on CentOS 8'
+title_meta: 'How to Install Apache Tomcat on CentOS 8'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

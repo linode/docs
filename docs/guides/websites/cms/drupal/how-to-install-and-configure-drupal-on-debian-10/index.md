@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2020-02-18
-title: How to Install and Configure Drupal on Debian 10
-h1_title: Install and Configure Drupal on Debian 10 (Buster)
+title: Install and Configure Drupal on Debian 10 (Buster)
+title_meta: How to Install and Configure Drupal on Debian 10
 image: L_Drupal_on_Debian10.png
 relations:
     platform:

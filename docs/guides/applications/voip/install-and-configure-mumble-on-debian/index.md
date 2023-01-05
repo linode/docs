@@ -11,9 +11,8 @@ published: 2015-11-09
 modified: 2019-02-01
 modified_by:
     name: Linode
-title: "How to Install and Configure Mumble on Debian"
-h1_title: "Installing and Configuring Mumble on Debian"
-enable_h1: true
+title: "Installing and Configuring Mumble on Debian"
+title_meta: "How to Install and Configure Mumble on Debian"
 contributor:
     name: Mark Weiman
     link: https://twitter.com/markzz989/

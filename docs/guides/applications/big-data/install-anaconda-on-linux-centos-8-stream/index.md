@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
 modified_by:
   name: Linode
-title: "Install Anaconda on Linux CentOS"
-h1_title: "How to Install Anaconda on Linux CentOS"
-enable_h1: true
+title: "How to Install Anaconda on Linux CentOS"
+title_meta: "Install Anaconda on Linux CentOS"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit

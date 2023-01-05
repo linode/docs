@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-30
 modified_by:
   name: Nathaniel Stickman
-title: "Use the choose Command for Text Processing on Linux"
-h1_title: "How to Use the choose Command for Text Processing on Linux"
+title: "How to Use the choose Command for Text Processing on Linux"
+title_meta: "Use the choose Command for Text Processing on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

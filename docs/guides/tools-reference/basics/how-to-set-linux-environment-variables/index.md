@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Set and Use Linux Environment Variables"
-h1_title: "Setting and Using Linux Environment Variables"
-enable_h1: true
+title: "Setting and Using Linux Environment Variables"
+title_meta: "How to Set and Use Linux Environment Variables"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

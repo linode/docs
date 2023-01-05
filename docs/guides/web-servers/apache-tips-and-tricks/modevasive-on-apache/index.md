@@ -12,8 +12,8 @@ modified: 2021-07-07
 modified_by:
   name: Linode
 published: 2011-11-14
-title: 'mod_evasive on Apache'
-h1_title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
+title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
+title_meta: 'mod_evasive on Apache'
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 tags: ["web server","apache"]

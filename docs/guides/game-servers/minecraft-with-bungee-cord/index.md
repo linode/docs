@@ -16,8 +16,8 @@ published: 2015-09-09
 modified: 2021-06-11
 modified_by:
     name: linode
-title: 'How to Set Up BungeeCord to Link Spigot Servers'
-h1_title: 'Setting up BungeeCord to Link Spigot Servers'
+title: 'Setting up BungeeCord to Link Spigot Servers'
+title_meta: 'How to Set Up BungeeCord to Link Spigot Servers'
 contributor:
     name: Thomas Wemyss
     link: https://github.com/twemyss

@@ -10,9 +10,8 @@ published: 2017-03-02
 modified: 2022-11-04
 modified_by:
   name: Linode
-title: "Install a Custom Linux Distribution on a Linode Compute Instance"
-h1_title: "Install a Custom Linux Distribution on a Compute Instance"
-enable_h1: true
+title: "Install a Custom Linux Distribution on a Compute Instance"
+title_meta: "Install a Custom Linux Distribution on a Linode Compute Instance"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/','/tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/','/guides/install-a-custom-distribution-on-a-linode/']
 image: install-a-custom-distribution-on-a-linode.png

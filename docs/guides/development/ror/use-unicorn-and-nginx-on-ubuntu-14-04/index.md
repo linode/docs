@@ -14,9 +14,8 @@ deprecated: true
 deprecated_link: 'guides/use-unicorn-and-nginx-on-ubuntu-18-04/'
 modified_by:
     name: Alex Fornuto
-title: "Deploy a Rails App with Unicorn and nginx on Ubuntu 14.04"
-h1_title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 14.04"
-enable_h1: true
+title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 14.04"
+title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 14.04"
 contributor:
     name: Vaibhav Rajput
     link: https://twitter.com/rootaux

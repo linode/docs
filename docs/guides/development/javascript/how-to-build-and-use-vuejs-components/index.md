@@ -10,9 +10,8 @@ published: 2020-02-14
 modified_by:
   name: Linode
 image: BuildingandUsingVueJSComponents.png
-title: How to Build and Use VueJS Components (A Tutorial)
-h1_title: Building and Using VueJS Components
-enable_h1: true
+title: Building and Using VueJS Components
+title_meta: How to Build and Use VueJS Components (A Tutorial)
 contributor:
   name: Pavel Petrov
   link: https://github.com/WebBamboo/

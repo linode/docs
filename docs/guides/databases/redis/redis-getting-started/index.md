@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
 modified_by:
   name: Nathaniel Stickman
-title: "Connecting to Redis and Using The Redis Database"
-h1_title: "How to Connect to Redis and Use The Redis Database"
+title: "How to Connect to Redis and Use The Redis Database"
+title_meta: "Connecting to Redis and Using The Redis Database"
 enable_h1 : true
 contributor:
   name: Nathaniel Stickman

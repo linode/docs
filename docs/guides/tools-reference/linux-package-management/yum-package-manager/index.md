@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide walks you through the core features of YUM and commands for using YUM to install, upgrade, and remove packages on your system."
-og_description: "This guide walks you through the core features of YUM and commands for using YUM to install, upgrade, and remove packages on your system."
 keywords: ['yum','installing','updating','upgrading','uninstalling','removing','package repositories','centos']
 tags: ['yum',centos',]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +12,8 @@ image: YUM1.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
-h1_title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
-enable_h1: true
+title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
+title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']
 contributor:
   name: Nathaniel Stickman

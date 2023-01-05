@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Want to migrate from AWS S3 to Linode Object Storage? This tutorial covers the tools needed to copy and sync objects and buckets from Amazon to Linode."
-og_description: "Want to migrate from AWS S3 to Linode Object Storage? This tutorial covers the tools needed to copy and sync objects and buckets from Amazon to Linode."
 keywords: ['amazon s3 migrate files','aws s3 migrate object','linode object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-08
 modified_by:
   name: Nathaniel Stickman
 title: "How to Migrate to Linode Object Storage"
-h1_title: "How to Migrate to Linode Object Storage"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

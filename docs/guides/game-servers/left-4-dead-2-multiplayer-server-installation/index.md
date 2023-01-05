@@ -11,9 +11,8 @@ published: 2016-02-25
 modified: 2019-02-01
 modified_by:
     name: Linode
-title: "How to Install a Left 4 Dead 2 Multiplayer Server"
-h1_title: "Installing a Left 4 Dead 2 Multiplayer Server"
-enable_h1: true
+title: "Installing a Left 4 Dead 2 Multiplayer Server"
+title_meta: "How to Install a Left 4 Dead 2 Multiplayer Server"
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
