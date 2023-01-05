@@ -263,22 +263,22 @@ Before starting the real automation process, you first need to understand what t
         sudo docker build -f express-image/Dockerfile -t nodeapp-dev:trunk .
         sudo docker build -f test-image/Dockerfile -t test-image:latest .
 
-2.  You will need to start your `nodeapp-dev` container first. The flag `--network` is used to avoid conflicts with the other container network. Notice that port 9000 is opened and  `-d` flag is used to run it in detached mode. Once started you can open your browser and enter the address: `http://localhost:9000` to check it.
+2.  You will need to start your `nodeapp-dev` container first. Notice that port 9000 is opened and  `-d` flag is used to run it in detached mode. Once started you can open your browser and enter the address: `http://localhost:9000` to check it.
 
-        sudo docker run --name nodeapp-dev --network="bridge" -d -p 9000:9000 nodeapp-dev:trunk
+        sudo docker run --name nodeapp-dev -d -p 9000:9000 nodeapp-dev:trunk
 
     ![app.js Mozilla output](jenkins-app-mozilla-output.png "app.js Mozilla output")
 
 3.  Next, start the `test-image` container. It's important to use the same network, along with the `--link` flag, in order to communicate with `nodeapp-dev`. You will notice the container's report folder `JUnit` will be mounted at the current repository root. This is necessary to write the `reports.xml` on the host machine. Run it in interactive mode using the `-it` flag to output the results to `stdout`.
 
-        sudo docker run --name test-image -v $PWD:/JUnit --network="bridge" --link=nodeapp-dev -it -p 9001:9000 test-image:latest npm run mocha
+        sudo docker run --name test-image -v $PWD:/JUnit --link=nodeapp-dev -it -p 9001:9000 test-image:latest npm run mocha
 
     ![Mocha test console output](jenkins-testing-console-output.png "Mocha test console output")
 
 4.  Remove the container (you may need `sudo -i`) and run it again in detached mode to test the `JUnit` output. The `reports.xml` file should be saved afterwards.
 
         sudo docker rm -f test-image
-        sudo docker run --name test-image -v $PWD:/JUnit --network="bridge" --link=nodeapp-dev -d -p 9001:9000 test-image:latest
+        sudo docker run --name test-image -v $PWD:/JUnit --link=nodeapp-dev -d -p 9001:9000 test-image:latest
 
 5.  After testing your application you can publish it in a public registry. First change its tag to something more appropriate.
 
@@ -395,15 +395,15 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
 10.  Check the box corresponding to Blue Ocean plugin and then click the button **Install without restart**.
 
-    ![Install Blue Ocean](jenkins-bo-box.png "Install Blue Ocean")
+    ![Install Blue Ocean](jenkins-box.png "Install Blue Ocean")
 
 11.  You should see the installation progress. Once it's finished click the **Go back to the top page** link, then click the **Open Blue Ocean** link in the sidebar.
 
-    ![Blue Ocean link](jenkins-bo-link.png "Blue Ocean link")
+    ![Blue Ocean link](jenkins-link.png "Blue Ocean link")
 
 12.  You'll then see the new Blue Ocean dashboard:
 
-    ![Blue Ocean Dashboard](jenkins-bo-dashboard.png "Blue Ocean Dashboard")
+    ![Blue Ocean Dashboard](jenkins-dashboard-bo.png "Blue Ocean Dashboard")
 
 ## Scripted vs. Declarative Pipeline Syntax
 
@@ -501,7 +501,7 @@ pipeline {
 
 10.  Click on the build to see your detailed Pipeline.
 
-    ![First Build](jenkins-bo-first-build-02.png "First Build")
+    ![First Build Detail](jenkins-bo-first-build-02.png "First Build Detail")
 
 From here you can obtain valuable information regarding: 1) your build number, 2) the console output for each step, 3) selecting stages for further analysis, 4) browsing through tabs with information about commit changes, tests results, and artifacts stored, 5) replaying your build, 6) editing your pipeline visually, and 7) go to your pipeline settings.
 
@@ -567,9 +567,9 @@ pipeline {
       parallel {
         stage('Mocha Tests') {
           steps {
-            sh 'docker run --name nodeapp-dev --network="bridge" -d \
+            sh 'docker run --name nodeapp-dev -d \
             -p 9000:9000 nodeapp-dev:trunk'
-            sh 'docker run --name test-image -v $PWD:/JUnit --network="bridge" \
+            sh 'docker run --name test-image -v $PWD:/JUnit \
             --link=nodeapp-dev -d -p 9001:9000 \
             test-image:latest'
           }
@@ -710,9 +710,9 @@ The testing stage also uses parallel execution:
       parallel {
         stage('Mocha Tests') {
           steps {
-            sh 'docker run --name nodeapp-dev --network="bridge" -d \
+            sh 'docker run --name nodeapp-dev -d \
             -p 9000:9000 nodeapp-dev:trunk'
-            sh 'docker run --name test-image -v $PWD:/JUnit --network="bridge" \
+            sh 'docker run --name test-image -v $PWD:/JUnit \
             --link=nodeapp-dev -d -p 9001:9000 \
             test-image:latest'
           }
