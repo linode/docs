@@ -473,7 +473,7 @@ pipeline {
 
 1.  Return to the Blue Ocean Dashboard and click **Create a new Pipeline**:
 
-    ![Blue Ocean Dashboard](jenkins-bo-dashboard.png "Blue Ocean Dashboard")
+    ![Blue Ocean Dashboard](jenkins-dashboard-bo.png "Blue Ocean Dashboard")
 
 1.  Select GitHub as your CVS:
 
