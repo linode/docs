@@ -89,6 +89,12 @@ Lua has no concept of a program “main” since it is designed as an extension 
 
 #### Lua Programming Basics
 
+First, start the Lua shell:
+
+```command
+lua
+```
+
 A basic “Hello, World!” program in Lua is as simple as you could expect:
 
 ```command
@@ -100,7 +106,7 @@ Run that and you get:
 ```output
 Hello, World!
 ```
-You can also add this to the code:
+You can also add comments to the code:
 
 ```command
 print("Hello, World!")
@@ -159,7 +165,7 @@ Lua is a dynamically typed language. It supports eight basic types: *nil*, *bool
 
 The table type implements associative arrays, also called key-value stores. Tables are the only data structuring mechanism in Lua, and they are Java-like objects. Keys for Lua tables can be any data type except `nil`. The Lua table constructor is a pair of curly brackets, `{}`. As with any other variable, assigning `nil` to a table field deletes it.
 
-To represent table records, you use the field name as an index. Lua supports this representation by providing `a.name` as syntactic sugar for `a["name"]`. This is the normal way of addressing a table field, assuming that `a` is a pointer to a table.
+To represent table records, you use the field name as an index. Here, `a.name` is syntactic sugar for `a["name"]`, which is the normal way of addressing a table field, assuming that `a` is a pointer to a table.
 
 To represent a conventional array, use a table with integer keys. To iterate over an array, use the `ipairs` library function:
 
@@ -182,7 +188,7 @@ days = {"Sunday", "Monday", "Tuesday", "Wednesday",
             "Thursday", "Friday", "Saturday"}
 ```
 
-The resulting table has days[1] equal to "Sunday". Unlike C, Lua starts an array by default with 1, not 0. An array constructor can contain expressions as well as constants. To create an array starting at 0, specify the first index:
+The resulting table has `days[1]` equal to `Sunday`. Unlike C, Lua starts an array by default with 1, not 0. An array constructor can contain expressions as well as constants. To create an array starting at 0, specify the first index:
 
 ```command
 days = {[0]="Sunday", "Monday", "Tuesday", "Wednesday",
@@ -197,13 +203,13 @@ To initialize a table to be used as a record, use this syntactic shortcut:
 a = {x=0, y=0}
 ```
 
-which is equivalent to
+This is equivalent to:
 
 ```command
 a = {}; a.x=0; a.y=0
 ```
 
-Functions are first-class values in Lua. That means functions can be stored in variables, passed as arguments to other functions, and returned as results. In other words, you can use Lua as a functional language. Lua can call functions written in both Lua and C. The entire standard library in Lua is written in C.
+Functions are first class values in Lua. That means functions can be stored in variables, passed as arguments to other functions, and returned as results. In other words, you can use Lua as a functional language. Lua can call functions written in both Lua and C. The entire standard library in Lua is written in C.
 
 The userdata type allows arbitrary C data to be stored in Lua variables. There is little support for the userdata type in the Lua language - it’s mostly there for use by C functions.
 
@@ -214,13 +220,13 @@ print("Hello " .. "World")  --> Hello World
 print(0 .. 1)               --> 01
 ```
 
-Lua allows multiple-assignment statements, where a list of values is assigned to a list of variables in one step. Both lists have their elements separated by commas. For instance, in the assignment:
+Lua allows multiple-assignment statements, where a list of values is assigned to a list of variables in one step. Both lists have their elements separated by commas. For instance:
 
 ```command
 a, b = 10, 2*x
 ```
 
-the variable a gets the value 10 and b gets 2*x.
+In this assignment, the variable `a` gets the value `10` and `b` gets `2*x`.
 
 In a multiple assignment, Lua first evaluates all values and only then executes the assignments. Therefore, you use a multiple assignment to swap two values:
 
@@ -247,23 +253,23 @@ For more information, read the book [Programming in Lua](https://www.lua.org/pil
 
 ### Python
 
-This section draws from the online [Python Tutorial](https://docs.python.org/3/tutorial/index.html#tutorial-index). Before you start to work with the programming basics section, install or update your copy of Python. Many computers come with Python installed, but most have older versions, sometimes even the now-deprecated Python2. If possible, use Python 3.11 or later for this guide. Python is free and open source software.
+This section draws from the online [Python tutorial](https://docs.python.org/3/tutorial/index.html#tutorial-index). Before you start to work with the programming basics section, install or update your copy of Python. Many computers come with Python installed, but most have older versions, sometimes even the now-deprecated Python2. If possible, use Python 3.11 or later for this guide. Python is free and open source software.
 
-To install Python3, go to the [Python Welcome](https://www.python.org/) page, find one of the download links, then download and install the current stable version of Python. You may find a new download link for your operating system directly, or you may wind up on the latest downloads list. In either case, make sure that you download the version for the operating system you’re currently running.
+To install Python3, go to the [Python welcome page](https://www.python.org/), find one of the download links, then download and install the current stable version of Python. You may find the download link for your operating system directly, or you may be redirected to the latest downloads list. In either case, make sure that you download the version for the operating system you’re currently running.
 
-Once you’ve run the installer, you may need to run a script (from the installation directory) to install root certificates for use by the SSL implementation included with Python. You may also need to run a script to add the current Python binary directory to your executable path, and then restart your shell so that it picks up the new path. If you have a lot of programs and development tools installed, you may need to edit your shell configuration file to get the path order the way you want it.
+Once installed, you may need to run a script (from the installation directory) to install root certificates for use by Python's included SSL implementation. You may also need to run a script to add the current Python binary directory to your executable path. Afterwards, restart your shell so that it picks up the new path. If you already have a lot of programs and development tools installed, you may also need to reorder your shell configuration file.
 
-To check your Python version in your shell after restarting it, type python3 –version. If it reports Python 3.11 or higher, you’re all set. Otherwise, consult the [Python beginner’s guide for downloading](https://wiki.python.org/moin/BeginnersGuide/Download).
+To check your Python version in your shell after restarting it, type `python3 –version`. If it reports Python 3.11 or higher, you’re all set. Otherwise, consult the [Python beginner’s guide for downloading](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-Doing your Python programming in Visual Studio Code with the Python extension produced by Microsoft are good choices since both are free.
+Visual Studio Code and the Python extension produced by Microsoft are good choices for programming in Python, as both are free.
 
-You may prefer another editor or IDE: There are many. If you’re a complete beginner, or your attempted Python3 installation failed, install the [Thonny IDE](https://thonny.org/), which has a stripped-down user interface, and includes Python in its installation.
+You may prefer another editor or IDE, and there are many. If you’re a complete beginner, or your attempted Python3 installation failed, install [Thonny IDE](https://thonny.org/). It features a stripped-down user interface, and includes Python in its installation.
 
-You can also use IDLE, Python’s Integrated Development and Learning Environment, which is installed along with the Python interpreter. If you’re trying IDLE, the user documentation is part of the Library Reference and is available in IDLE by selecting Help => IDLE Help from the IDLE menu.
+You can also use Python’s Integrated Development and Learning Environment (IDLE), which is installed along with the Python interpreter. If you’re trying IDLE, the user documentation is available by selecting **Help** and then **IDLE Help** from the **IDLE** menu.
 
 #### Python Programming Basics
 
-You can use Python as a calculator in interactive mode. Start by typing python3 into your shell:
+You can use Python as a calculator in interactive mode. Start by typing `python3` into your shell:
 
 ```command
 python3
@@ -275,7 +281,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-The `>>>` prompt means that the Python REPL (read–eval–print loop) is active. Document what you’re doing by including comments, which start with a hash, “#”. You don’t have to add print statements, as the REPL prints answers by default. Follow along in your own shell and feel free to omit the comments.
+The `>>>` prompt means that the Python REPL (read–eval–print loop) is active. Document what you’re doing by including comments, which start with a hash `#`. You don’t have to add `print` statements, as the REPL prints answers by default. Follow along in your own shell and feel free to omit the comments.
 
 ```command
 #try some simple arithmetic
@@ -586,9 +592,9 @@ if __name__ == "__main__":
         print(a,"\t",fact(a))
 ```
 
-Starting from the top, `def` means that you are defining a function, the expression inside parentheses is the argument of the function, and the colon `:` says that the next line initiates the function. The first line of the function is indented, which is required in Python. The `if` statement handles the case where `n` is zero. It is followed by another colon and another indent for the body of the case, which returns the value 1.
+Starting from the top, `def` means that you are defining a function. The expression inside parentheses is the argument of the function, and the colon `:` says that the next line initiates the function. The first line of the function is indented, which is required in Python. The `if` statement handles the case where `n` is zero. It is followed by another colon and another indent for the body of the case, which returns the value 1.
 
-The code then outdents for the else statement, which ends in a colon and is followed by an indented body for the case, which implements the factorial function recursively. The outdented statement `if __name__ == "__main__":` is how you implement a command-line utility in Python. The indented for statement generates a sequence from 0 to 50 using the range function. After the colon and next indent, the program prints the current value and its result using `"print(a,"\t",fact(a))"`. The escaped **t** is a tab character, to help the results line up.
+The code then outdents for the `else` statement, which ends in a colon. It is followed by an indented body for the case, which implements the factorial function recursively. The outdented statement `if __name__ == "__main__":` is how you implement a command line utility in Python. The indented `for` statement generates a sequence from 0 to 50 using the range function. After the colon and next indent, the program prints the current value and its result using `"print(a,"\t",fact(a))"`. The escaped `t` is a tab character, to help the results line up.
 
 Now open a shell, change to the directory where you saved **fact.py**, and run it using `python3 fact.py`. You should see this result:
 
@@ -650,7 +656,7 @@ python3 fact.py
 50 	 30414093201713378043612608166064768844377641568960512000000000000
 ```
 
-To learn more, go through the whole [Python tutorial](https://docs.python.org/3/tutorial/index.html), or at least Chapter 4 to the end. Then go back to the section of this guide called Is Python Hard to Learn? and go through the additional material called out in that section.
+To learn more, go through the whole [Python tutorial](https://docs.python.org/3/tutorial/index.html), or at least Chapter 4 to the end. Then go back to the Is Python Hard to Learn? section of this guide and go through the additional material provided in that section.
 
 #### Python Advantages
 
@@ -659,7 +665,7 @@ To learn more, go through the whole [Python tutorial](https://docs.python.org/3/
 -   Very well documented and supported
 -   Numerous Python books and online courses are available
 -   Good standard library and huge selection of modules
--   Very useful for creating command-line utilities
+-   Very useful for creating command line utilities
 -   Widely adopted in the science, engineering, and machine learning communities
 -   Supports classes, type hints, main functions, et cetera
 -   There is a large pool of Python programmers and lots of community support
@@ -671,4 +677,4 @@ To learn more, go through the whole [Python tutorial](https://docs.python.org/3/
 
 ## Conclusion
 
-Lua and Python are both interpreted, dynamically typed, garbage-collected programming languages. Lua is smaller than Python, which makes it a bit easier to learn and to embed, but Python is better supported and more widely applicable.
+Lua and Python are both interpreted, dynamically typed, garbage-collected programming languages. Lua is smaller than Python, making it easier to learn and embed. However, Python is better supported and more widely applicable.
