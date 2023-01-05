@@ -359,49 +359,49 @@ It's out of the scope of this guide to establish security parameters for Jenkins
 
     ![Unlocking Jenkins](jenkins-unlock.png "Unlocking Jenkins")
 
-2.  Copy the temporary administrator password and use it to log in:
+1.  Copy the temporary administrator password and use it to log in:
 
         sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-3.  Choose **Install suggested plugins** to start downloading the standard plugins:
+1.  Choose **Install suggested plugins** to start downloading the standard plugins:
 
     ![Customize Jenkins](jenkins-customize.png "Customize Jenkins")
 
     ![Standard Plugins](jenkins-standard-plugins.png "Standard Plugins")
 
-4.  When the plugin installation finishes, you will be asked to create a new administrative user:
+1.  When the plugin installation finishes, you will be asked to create a new administrative user:
 
     ![First Admin User](jenkins-admin-user.png "First Admin User")
 
-5.  If successful, you will see:
+1.  If successful, you will see:
 
     ![Jenkins Ready](jenkins-ready.png "Jenkins Ready")
 
-6.  Click on **Start using Jenkins** to display the application dashboard:
+1.  Click on **Start using Jenkins** to display the application dashboard:
 
     ![Jenkins Main Dashboard](jenkins-dashboard.png "Jenkins Main Dashboard")
 
-7.  As mentioned earlier, this guide will use the new Blue Ocean interface, so you will need to click the **Manage Jenkins** link on the sidebar:
+1.  As mentioned earlier, this guide will use the new Blue Ocean interface, so you will need to click the **Manage Jenkins** link on the sidebar:
 
     ![Manage Jenkins link](jenkins-manage-sidebar.png "Manage Jenkins link")
 
-8.  A new menu will appear. Click on **Manage Plugins**:
+1.  A new menu will appear. Click on **Manage Plugins**:
 
     ![Manage Plugins link](jenkins-manage-plugins.png "Manage Plugins link")
 
-9.  Click on the **Available** tab and filter the results searching for Blue Ocean.
+1.  Click on the **Available** tab and filter the results searching for Blue Ocean.
 
     ![Filter Plugins](jenkins-filter-plugins.png "Filter Plugins")
 
-10.  Check the box corresponding to Blue Ocean plugin and then click the button **Install without restart**.
+1.  Check the box corresponding to Blue Ocean plugin and then click the button **Install without restart**.
 
     ![Install Blue Ocean](jenkins-box.png "Install Blue Ocean")
 
-11.  You should see the installation progress. Once it's finished click the **Go back to the top page** link, then click the **Open Blue Ocean** link in the sidebar.
+1.  You should see the installation progress. Once it's finished click the **Go back to the top page** link, then click the **Open Blue Ocean** link in the sidebar.
 
     ![Blue Ocean link](jenkins-link.png "Blue Ocean link")
 
-12.  You'll then see the new Blue Ocean dashboard:
+1.  You'll then see the new Blue Ocean dashboard:
 
     ![Blue Ocean Dashboard](jenkins-dashboard-bo.png "Blue Ocean Dashboard")
 
@@ -467,39 +467,39 @@ pipeline {
     }
 {{< /file >}}
 
-2.  Push your commit to GitHub:
+1.  Push your commit to GitHub:
 
         git add . && git commit -m "Jenkinsfile template" && git push origin master
 
-3.  Return to the Blue Ocean Dashboard and click **Create a new Pipeline**:
+1.  Return to the Blue Ocean Dashboard and click **Create a new Pipeline**:
 
     ![Blue Ocean Dashboard](jenkins-bo-dashboard.png "Blue Ocean Dashboard")
 
-4.  Select GitHub as your CVS:
+1.  Select GitHub as your CVS:
 
     ![GitHub pipeline](jenkins-bo-gh-pipeline.png "GitHub pipeline")
 
-5.  You will be asked to connect with your GitHub account by means of an access key. Click on the link to create that key.
+1.  You will be asked to connect with your GitHub account by means of an access key. Click on the link to create that key.
 
     ![GitHub connect](jenkins-bo-gh-connect.png "GitHub connect")
 
-6.  Next you will need to login to your GitHub account, give a description to the token and generate it. You will be presented with a screen similar to this:
+1.  Next you will need to login to your GitHub account, give a description to the token and generate it. You will be presented with a screen similar to this:
 
     ![GitHub token](jenkins-bo-gh-token.png "GitHub token")
 
-7.  Copy the token value and then paste it into the field on the Blue Ocean tab. Then click the **Connect** button:
+1.  Copy the token value and then paste it into the field on the Blue Ocean tab. Then click the **Connect** button:
 
     ![GitHub authentication BO](jenkins-bo-token.png "GitHub authentication BO")
 
-8.  If you have multiple organization accounts along with your personal account, then you will need to choose which organization contains your repository:
+1.  If you have multiple organization accounts along with your personal account, then you will need to choose which organization contains your repository:
 
     ![GitHub Organization](jenkins-bo-organizations.png "GitHub Organization")
 
-9.  After choosing your repository location, click **Create Pipeline**. That will trigger your first build automatically.
+1.  After choosing your repository location, click **Create Pipeline**. That will trigger your first build automatically.
 
     ![First Build](jenkins-bo-first-build-01.png "First Build")
 
-10.  Click on the build to see your detailed Pipeline.
+1.  Click on the build to see your detailed Pipeline.
 
     ![First Build Detail](jenkins-bo-first-build-02.png "First Build Detail")
 
