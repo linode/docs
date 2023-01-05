@@ -25,7 +25,7 @@ To see which users have already been configured on the Linode CLI, run the follo
 linode-cli show-users
 ```
 
-This outputs a list containing the usernames of each user. An asterisks (`*`) marks the user that is current active (the default user).
+This outputs a list containing the usernames of each user. An asterisks (`*`) marks the user that is currently active (the default user).
 
 ```output
 Configured Users:

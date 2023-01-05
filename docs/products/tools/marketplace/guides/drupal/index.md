@@ -34,7 +34,7 @@ In addition to the core infrastructure, there are a number of freely available D
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Drupal Options
@@ -79,9 +79,9 @@ The Drupal Marketplace App installs the following required software on your Lino
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**MariaDB Server**](https://mariadb.org/) | Relational database. |
-| [**PHP 7**](https://www.php.net) | Drupal is written in PHP and requires PHP to operate. |
+| [**PHP 8**](https://www.php.net) | Drupal is written in PHP and requires PHP to operate. |
 | [**Apache HTTP Server**](https://httpd.apache.org) | Web Server used to serve the Drupal site. |
-| [**Drupal 9**](https://www.drupal.org/about/9) | Content management system. |
+| [**Drupal 10**](https://www.drupal.org/about/10) | Content management system. |
 
 {{< content "marketplace-update-note-shortguide">}}
 

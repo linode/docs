@@ -28,7 +28,7 @@ Managing 2FA through Linode is only available if *Linode* is selected as the **L
 
 ## Security Questions
 
-You can configure three security questions on your user account. Security questions provide our team with a secure method of verifying your identity as the owner of the user account. They can be used to help you regain access to your account in certain situations, such as when TFA is enabled and you no longer have access to the token or recovery codes. When configuring a security question, answers should not be easily guessed or discoverable through research.
+You can configure three security questions on your user account. Security questions provide our team with a secure method of verifying your identity as the owner of the user account. They can be used to help you regain access to your account in certain situations, such as when 2FA is enabled and you no longer have access to the token or recovery codes. When configuring a security question, answers should not be easily guessed or discoverable through research.
 
 ![Screenshot of the Security Questions in Cloud Manager](security-questions.png)
 

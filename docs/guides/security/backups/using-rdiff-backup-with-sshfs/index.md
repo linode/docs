@@ -1,5 +1,6 @@
 ---
 slug: using-rdiff-backup-with-sshfs
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com

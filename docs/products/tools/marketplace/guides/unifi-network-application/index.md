@@ -31,7 +31,7 @@ When self-hosting the UniFi Network Application, you are responsible for the sec
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 10
 - **Recommended plan:** All plan types can be used.
 
 ## Getting Started after Deployment

@@ -5,7 +5,7 @@ author:
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-12-06
+modified: 2022-12-15
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -15,10 +15,16 @@ tags: ["linode platform"]
 ---
 
 {{< note >}}
-As a result of Akamai’s acquisition of Linode, businesses or individuals residing in the following regions may be charged tax for some or all services starting December 15th, 2022:
+As a result of Akamai’s acquisition of Linode, businesses or individuals residing in the following regions may be charged tax for some or all services starting December 15th, 2022 or February 1st, 2023:
+
+**December 15th, 2022:**
 
 - **Countries:** Cambodia, Chile, Malaysia, Russian Federation, Switzerland, United Arab Emirates
 - **U.S. States:** Colorado, Connecticut, Massachusetts, Mississippi, New Mexico, New York, South Carolina, Tennessee, Utah, West Virginia
+
+**February 1st, 2023:**
+
+- **U.S. States:** Iowa, Maryland, Ohio
 {{< /note >}}
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
@@ -71,7 +77,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15th, 2022 |
-| United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | *Delayed* |
+| United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15th, 2022 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
 | [United States](#united-states) (see below) | | | |
 
@@ -97,7 +103,7 @@ As of **May 1st, 2022**, Canadian taxes will begin to be collected. The followin
 
 ### United States
 
-The following table lists each U.S. state and district that requires us to collect sales taxes, along with the date Linode has started (or will start) to collect tax in that state. Tax rates are subject to change and the most current rate is used when an invoice is generated. Tax is only collected on taxable products.
+The following table lists each U.S. state and district that requires us to collect sales taxes, along with the date Linode has started (or will start) to collect tax in that state. Tax rates are subject to change and the most current rate is used when an invoice is generated. Tax is only collected on taxable products, which may vary between regions.
 
 | State or District | Start Date |
 | -- | -- |
@@ -105,10 +111,13 @@ The following table lists each U.S. state and district that requires us to colle
 | Colorado localities | December 15th, 2022 |
 | Connecticut | December 15th, 2022 |
 | Hawaii | May 1st, 2022 |
+| Iowa | February 1st, 2023 |
+| Maryland | February 1st, 2023 |
 | Massachusetts | December 15th, 2022 |
 | Mississippi | December 15th, 2022 |
 | New Mexico | December 15th, 2022 |
 | New York | December 15th, 2022 |
+| Ohio | February 1st, 2023 |
 | Pennsylvania | May 1st, 2022 |
 | Rhode Island | December 15th, 2022 |
 | South Carolina | December 15th, 2022 |
@@ -119,7 +128,6 @@ The following table lists each U.S. state and district that requires us to colle
 | Washington | May 1st, 2022 |
 | Washington D.C | August 1st, 2022 |
 | West Virginia | December 15th, 2022 |
-| Wisconsin | December 15th, 2022 |
 
 ## Preventing Tax Collection
 
