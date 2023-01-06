@@ -12,7 +12,7 @@ cascade:
 
 Scientists, artists, and engineers need access to significant parallel computational power. Linode offers GPU-optimized virtual machines accelerated by the NVIDIA Quadro RTX 6000, harnessing the power of CUDA, Tensor, and RT cores to execute complex processing, deep learning, and ray tracing workloads.
 
-**GPU plans are ideal for highly specialized workloads that would benefit from dedicated NVIDIA GPUs, including maching learning, AI, and data/graphics processing.**
+**GPU plans are ideal for highly specialized workloads that would benefit from dedicated NVIDIA GPUs, including machine learning, AI, and data/graphics processing.**
 
 ## On-demand
 

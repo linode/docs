@@ -8,6 +8,7 @@ keywords: ['kubernetes','terraform','infrastructure as code','container orchestr
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-05
+modified: 2023-01-06
 modified_by:
   name: Linode
 title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
@@ -208,7 +209,7 @@ If you leave out a variable value in this file, Terraform will use the variable'
 
       {{< file "$~/terraform/lke-cluster/terraform.tfvars" >}}
 label = "example-lke-cluster"
-k8s_version = "1.23"
+k8s_version = "1.24"
 region = "us-west"
 pools = [
   {

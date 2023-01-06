@@ -39,7 +39,7 @@ Most of these plan types are equipped with dedicated CPU cores for maximum peak 
 
 ### Shared CPU Instances
 
-**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 2840 GB Storage**<br>
+**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 3840 GB Storage**<br>
 Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.com/pricing/#compute-shared) for a full list of plans, resources, and pricing.
 
 [Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPU cores. These CPU cores can be used at 100% for short bursts, but should remain below 80% sustained usage on average. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances. This shared scheduling is done in a secure and performant manner. While Linode works to minimize competition for CPU resources between your instance and other instances on the same hardware, it's possible that high usage from neighboring instances can negatively impact the performance of your instance.
