@@ -4,7 +4,7 @@
 {{ if not (or (strings.Contains $class "dark") (strings.Contains $class "light")) }}
   {{ $class = printf "light %s" $class }}
 {{ end }}
-{{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon"><svg class="fill-current text-brand mr-4" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
+{{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon copy-button"><svg class="fill-current text-brand mr-4" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
 {{ with $title }}
   <div class="text-sm font-semibold mt-4">
     {{ . }}
