@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
-og_description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
 keywords: ['linux bat','linux bat command','linux cat vs bat']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-17
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using the Linux bat Command"
-h1_title: "How to Install and Use the Linux bat Command"
-enable_h1: true
+title: "Install and Use the Linux bat Command"
+title_meta: "How to Install and Use the Linux bat Command"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -29,7 +27,7 @@ The `bat` command is a clone of the ubiquitous `cat` command. It modernizes `cat
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,7 +54,7 @@ For many Linux distributions, you can get `bat` from the package manager. This i
         mkdir -p ~/.local/bin
         ln -s /usr/bin/batcat ~/.local/bin/bat
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have installed the `bacula-console-qt` package, be sure to remove it before executing the commands listed above. Otherwise, if you choose to keep `bacula-console-qt` installed, you must stick with using the `batcat` command instead of `bat`.
     {{< /note >}}
 

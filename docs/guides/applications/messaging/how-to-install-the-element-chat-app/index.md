@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
-og_description: "This guide explains how to download, install, and configure the Element App and Matrix-Synapse communication layer with an NGINX web server."
 keywords: ['Element','Matrix-Synapse','installation','chat','messaging']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-04-07
 image: ElementChat.jpg
 modified_by:
   name: Linode
-title: "How to Install and Configure the Element Chat App"
-h1_title: "Installing and Configuring the Element Chat Application"
-enable_h1: true
+title: "Installing and Configuring the Element Chat Application"
+title_meta: "How to Install and Configure the Element Chat App"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
@@ -86,7 +84,7 @@ The following sections describe each step in more detail.
   - `matrix.example.com` (Matrix/Synapse communication layer)
   - `element.example.com` (Element web client)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/products/networking/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
@@ -345,7 +343,7 @@ ubuntu  18.04
 kernel  4.15.0-142-generic
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Snap is not already installed, run the command `sudo apt install snapd` first.
     {{< /note >}}
 
@@ -434,9 +432,9 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 8448 (v6)                  ALLOW       Anywhere (v6)
     {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `ufw` allows `OpenSSH` traffic. Otherwise, you could lock yourself out of your Linode.
-{{< /caution >}}
+{{< /note >}}
 
 ## Enable and Test the Element Client
 

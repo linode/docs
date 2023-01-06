@@ -3,7 +3,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "These guides include introductory projects that utilize the foundational services of the Akamai and Linode platforms."
-og_description: "These guides include introductory projects that utilize the foundational services of the Akamai and Linode platforms."
 keywords: ["linode", "akamai"]
 tags: ["linode platform", "akamai platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

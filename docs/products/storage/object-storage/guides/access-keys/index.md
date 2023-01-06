@@ -67,7 +67,7 @@ By default, an Access Key is unrestricted and has full access to all Buckets on 
 
 {{< note >}}
 Regardless of permissions, all access keys can create new buckets and list all buckets. However, after creating a bucket, depending on what you select here, a limited access key may not be able to access those buckets, add items, remove items, and other actions.
-{{</ note >}}
+{{< /note >}}
 
 - **None**: Restricts all access to the specified Bucket. This Access Key will still be able to view the Bucket in the list of all Buckets, but will otherwise be unable to access any objects stored within it.
 

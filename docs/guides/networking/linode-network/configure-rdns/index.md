@@ -12,9 +12,8 @@ modified_by:
   name: Linode
 published: 2015-07-09
 modified: 2022-10-03
-title: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
-h1_title: "Configure rDNS (Reverse DNS) on a Compute Instance"
-enable_h1: true
+title: "Configure rDNS (Reverse DNS) on a Compute Instance"
+title_meta: "How To Configure rDNS (Reverse DNS) on a Compute Instance"
 image: configure-your-linode-reverse-dns.jpg
 ---
 
@@ -53,7 +52,7 @@ See our [Introduction to DNS Records](/docs/guides/dns-overview/) and [Common DN
 
 1. In the **Edit Reverse DNS** form, enter the FQDN you've configured in a previous step and click on the **Save** button. The default value of `x.ip.linodeusercontent.com` can be safely removed or replaced. Leave the field blank if you wish to remove the previously configured rDNS value without setting a new value.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you did not previously set up an A record for your domain that matches your Linode's IP address, you will see an error like the following:
 
 {{< output >}}

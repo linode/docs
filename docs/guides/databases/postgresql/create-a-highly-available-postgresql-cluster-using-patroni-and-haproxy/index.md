@@ -10,9 +10,8 @@ modified: 2021-10-18
 modified_by:
   name: Kulshekhar Kabra
 published: 2017-09-19
-title: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"
-h1_title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
-enable_h1: true
+title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
+title_meta: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
@@ -372,7 +371,7 @@ listen postgres
 
     In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the primary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this case, it just so happens that the third Postgres server is promoted to primary. This might not always be the case. It is equally likely that the second server may be promoted to primary.
 {{< /note >}}
 

@@ -41,7 +41,7 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ This example plugin uses an SQLite database file to store "to do" tasks, which t
 
             sudo dnf install git
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These modules rely on [LuaJIT](https://luajit.org/), rather than the standard Lua. Neovim uses LuaJIT, so this is not a problem when it comes to your plugin. However, if you want to test out these modules outside of the plugin environment, you need to install, and use LuaJIT to do so.
     {{< /note >}}
 

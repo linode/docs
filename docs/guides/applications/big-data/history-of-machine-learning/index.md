@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "Machine Learning and Artificial Intelligence Background"
-h1_title: "The History of Machine Learning: A Comprehensive Overview"
-enable_h1: true
+title: "The History of Machine Learning: A Comprehensive Overview"
+title_meta: "Machine Learning and Artificial Intelligence Background"
 contributor:
   name: Pam Baker
 ---

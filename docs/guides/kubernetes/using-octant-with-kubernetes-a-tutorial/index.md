@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
-og_description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
 keywords: ['octant','kubernetes','cluster','graph','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2019-11-06
 modified_by:
   name: Linode
 image: using-octant-with-kube.jpg
-title: "How to Use Octant with Kubernetes (A Tutorial)"
-h1_title: "A Overview of Using Octant with Kubernetes"
-enable_h1: true
+title: "A Overview of Using Octant with Kubernetes"
+title_meta: "How to Use Octant with Kubernetes (A Tutorial)"
 external_resources:
 - '[Octant](https://octant.dev/)'
 - '[Octant on GitHub](https://github.com/vmware-tanzu/octant)'
@@ -38,7 +36,7 @@ This guide will explore a few ways to use Octant with some example software depl
 
 - A [troubleshooting thought experiment](#troubleshooting-with-octant) will show how Octant can make discovering issues in your cluster easier.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide assumes familiarity with the Kubernetes concepts outlined in Linode's [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/). If you have never set up a Kubernetes cluster before, it's also recommended that you do so to get the most out of this guide. The [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide describes a one-line command for generating a cluster.
 {{< /note >}}
 
@@ -46,11 +44,11 @@ This guide assumes familiarity with the Kubernetes concepts outlined in Linode's
 
 The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/guides/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 These examples will create billable services. To stop billing for these services after reading the guide, be sure to read the tear-down instructions at the end of each section. If you created a new cluster for this guide, you can remove the cluster's Nodes from the [Linode Cloud Manager](https://cloud.linode.com).
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works. [Linode's pricing page](https://www.linode.com/pricing/) lists the rate for each Linode service.
-{{< /caution >}}
+{{< /note >}}
 
 ## Installing Octant
 
@@ -73,7 +71,7 @@ Octant can be run as a local server process on your workstation. To install and 
 
             choco install octant
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternative installation instructions are available in the project's [README](https://github.com/vmware-tanzu/octant#installation) on GitHub.
 {{< /note >}}
 
@@ -89,7 +87,7 @@ Alternative installation instructions are available in the project's [README](ht
 Dashboard is available at http://127.0.0.1:7777
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If it does not start successfully, check that you can connect to your cluster with kubectl. For example, try running:
 
     kubectl get pods
@@ -101,7 +99,7 @@ If it does not start successfully, check that you can connect to your cluster wi
 
 The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certain actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm 2](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-2/) guide outlines how to install this software. Please note that this guide uses Helm 2 and not Helm 3 to install the software.
 {{< /note >}}
 
@@ -125,7 +123,7 @@ The cluster objects visible in the following screenshots were created by install
 
     This view shows that the Ghost Helm chart set up two Services: one for the Ghost front-end, and one for its database.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Multiple labels can be selected at the same time.
 {{< /note >}}
 
@@ -149,7 +147,7 @@ Clicking on an object will show more detail for that object, including the visua
 
     - The **Events** tab shows the history of events for the Service. This information can be useful when troubleshooting.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Other panels will appear for different object types. For example, Pods will show container environment variables, Volume mounts, node resources requests and limits, and taints, among other information.
 {{< /note >}}
 
@@ -161,7 +159,7 @@ Other panels will appear for different object types. For example, Pods will show
 
 - The third **YAML** tab shows the YAML representation for the object.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The detail view for Pods will also show a fourth **Logs** tab,which will follow and display the logs for a Pod in real-time:
 
 ![Octant Pod Detail View - Ghost front-end logs](octant-pod-my-blog-ghost-logs.png)
@@ -196,7 +194,7 @@ service/hello-world-service created
 deployment.apps/hello-world-deployment created
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-1.tar.gz). Inspecting these files is not necessary for the tutorial.
 {{< /note >}}
 
@@ -225,7 +223,7 @@ service/hello-world-service unchanged
 deployment.apps/hello-world-deployment configured
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-2.tar.gz). Inspecting these files is not necessary for the tutorial.
 {{< /note >}}
 
@@ -235,7 +233,7 @@ The Dockerfile and other files used to create the Docker Hub image are located [
 
 1. The Deployment has created a new ReplicaSet to run the updated application under. The orange color for the Deployment, ReplicaSet, and Pods indicates an issue with the update that will need further investigating.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Deployment keeps the older ReplicaSet and Pods running in place until the new ReplicaSet is healthy.
 {{< /note >}}
 
@@ -263,7 +261,7 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
         kubectl logs hello-world-deployment-7b69c98754-f4zk5 --previous=true
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace the Pod name above with the name of yours.
 {{< /note >}}
 
@@ -287,7 +285,7 @@ SyntaxError: Invalid or unexpected token
 
         kubectl apply -f release-3.0.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-3.tar.gz). Inspecting these files is not necessary for the tutorial.
 {{< /note >}}
 

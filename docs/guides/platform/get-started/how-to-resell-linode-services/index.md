@@ -10,7 +10,8 @@ published: 2019-01-31
 modified: 2021-07-02
 modified_by:
   name: Linode
-title: "How to Resell Linode Services"
+title: "Resell Linode Services"
+title_meta: "How to Resell Linode Services"
 contributor:
   name: Linode
 tags: ["linode platform"]
@@ -61,9 +62,9 @@ The best way to resell Linode services is through the use of the Linode API. The
 
 If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) section of the Accounts and Passwords guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
-{{</ note >}}
+{{< /note >}}
 
 ### Limited Linux User Accounts
 

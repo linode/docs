@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-13
 modified_by:
   name: Linode
-title: "How to Install Apache Guacamole on Ubuntu and Debian"
-h1_title: "Installing Apache Guacamole on Ubuntu and Debian"
-enable_h1: true
+title: "Installing Apache Guacamole on Ubuntu and Debian"
+title_meta: "How to Install Apache Guacamole on Ubuntu and Debian"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
 ---

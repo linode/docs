@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-26
 modified_by:
   name: Linode
-title: "Ransomware Defined: What It Is and How to Prevent an Attack"
-h1_title: "Ransomware Attack: What It Is and How to Prevent It "
-enable_h1: true
+title: "Ransomware Attack: What It Is and How to Prevent It "
+title_meta: "Ransomware Defined: What It Is and How to Prevent an Attack"
 contributor:
   name: David Strom
 ---

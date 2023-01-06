@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-20
 modified_by:
   name: Linode
-title: "Creating and Using MySQL Stored Procedures - A Tutorial"
-h1_title: "Creating and Using MySQL Stored Procedures"
+title: "Creating and Using MySQL Stored Procedures"
+title_meta: "Creating and Using MySQL Stored Procedures - A Tutorial"
 image: L_MySQLStoredProc.png
 contributor:
   name: Francis Ndungu

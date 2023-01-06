@@ -70,7 +70,7 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 ### Shared CPU Instances
 
-**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 2840 GB Storage**<br>
+**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 3840 GB Storage**<br>
 
 [Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances and Managed Databases. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
 
@@ -86,4 +86,4 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 {{< note >}}
 Once a Managed Database cluster is created, it cannot be resized to a different plan. To modify the resources allocated to your database, you will need to create a new Managed Database with the desired plan, migrate your data, and delete the original Managed Database.
-{{</ note >}}
+{{< /note >}}

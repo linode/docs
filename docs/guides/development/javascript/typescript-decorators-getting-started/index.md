@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-28
 modified_by:
   name: Linode
-title: "TypeScript Decorators: Getting Started"
-h1_title: "Getting Started with TypeScript Decorators"
-enable_h1: true
+title: "Getting Started with TypeScript Decorators"
+title_meta: "TypeScript Decorators: Getting Started"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller

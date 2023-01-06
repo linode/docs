@@ -3,7 +3,6 @@ slug: security-auditing-with-lynis
 author:
   name: Hackersploit
 description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
-og_description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +10,8 @@ published: 2020-10-29
 modified: 2020-10-29
 modified_by:
   name: Linode
-title: 'Automated Security Auditing with Lynis'
-h1_title: 'Security Auditing with Lynis'
+title: 'Security Auditing with Lynis'
+title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png
 ---
 
@@ -35,7 +34,7 @@ Then, import a public GPG key for a secure Lynis installation:
 
     sudo wget -O - https://packages.cisofy.com/keys/cisofy-software-public.key | sudo apt-key add -
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to manually install gnupg2 on some systems in order for GPG to successfully import keys. This can be completed with the following command:
 
     sudo apt-get install gnupg2

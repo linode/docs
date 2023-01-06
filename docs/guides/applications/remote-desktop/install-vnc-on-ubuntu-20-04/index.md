@@ -43,7 +43,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
 
     sudo apt install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal

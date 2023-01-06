@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "What is usermod, and How do I Use It?"
-h1_title: "An Overview of the usermod Command and How It's Used"
-enable_h1: true
+title: "An Overview of the usermod Command and How It's Used"
+title_meta: "What is usermod, and How do I Use It?"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -47,7 +46,7 @@ Take a look at the results with the `id` command.
 uid=1001(example-user) gid=1002(example-group) groups=1002(example-group)
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Linux user group must exist before `usermod` allows you to assign a user to the groups.
 {{< /note >}}
 

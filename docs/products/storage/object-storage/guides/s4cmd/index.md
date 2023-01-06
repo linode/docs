@@ -22,11 +22,11 @@ Additional methods of installing s4cmd can be found within the s4cmd Readme file
 
 To access Object Storage buckets and objects, s4cmd needs to know the Access Key and Secret Key to use. By default, s4cmd looks for these credentials in the `~/.s3cfg` file, which is the configuration file that s3cmd uses. If you do not have s3cmd installed and configured, create this file and add the following contents.
 
-{{< file "~/.s3cfg" >}}
+```file {title="~/.s3cfg"}
 [default]
 access_key = YOUR_ACCESS_KEY
 secret_key = YOUR_SECRET_KEY
-{{< /file >}}
+```
 
 Replace `YOUR_ACCESS_KEY` and `YOUR_SECRET_KEY` with the access key and secret key created on your Linode account. If you haven't yet created these credentials, follow the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 

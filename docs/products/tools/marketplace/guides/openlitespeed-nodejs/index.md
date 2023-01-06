@@ -26,9 +26,9 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Node.js should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -48,7 +48,7 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
     {{< note >}}
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
-    {{</ note >}}
+    {{< /note >}}
 
 Now that you’ve accessed your OpenLiteSpeed Node.js instance, check out [the official OpenLiteSpeed Node.js documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your OpenLiteSpeed Node.js instance.
 

@@ -11,9 +11,8 @@ published: 2017-08-07
 modified: 2017-08-07
 modified_by:
   name: Angel Guarisma
-title: "How to Install and Configure ownCloud on Ubuntu 16.04"
-h1_title: "Installing and Configuring ownCloud on Ubuntu 16.04"
-enable_h1: true
+title: "Installing and Configuring ownCloud on Ubuntu 16.04"
+title_meta: "How to Install and Configure ownCloud on Ubuntu 16.04"
 external_resources:
   - '[ownCloud Official Documentation](https://doc.owncloud.org/)'
   - '[ownCloud Marketplace](https://marketplace.owncloud.com/)'

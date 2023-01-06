@@ -39,11 +39,11 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 1. Click on the **Save** button to create the record.
 
-    {{< disclosure-note "Multi-level Subdomains" >}}
-The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
+    {{< note title="Multi-level Subdomains" >}}
+    The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
 
-See the [subdomains](/docs/products/networking/dns-manager/guides/manage-dns-records/#second-level-subdomains) section of the [DNS manager](/docs/products/networking/dns-manager/) guide for more information.
-    {{</ disclosure-note >}}
+    See the [subdomains](/docs/products/networking/dns-manager/guides/manage-dns-records/#second-level-subdomains) section of the [DNS manager](/docs/products/networking/dns-manager/) guide for more information.
+    {{< /note >}}
 
 ## Host Multiple Domains on a Single Server
 

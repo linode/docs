@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide will show you how to host one or more websites on your Linode by installing a LEMP (Linux, NGINX, MySQL, and PHP) stack on Ubuntu 16.04'
-og_description: 'This guide will show you how to host one or more websites on your Linode by installing a LEMP (Linux, NGINX, MySQL, and PHP) stack on Ubuntu 16.04'
 keywords: ["nginx", "lemp", "php", "mysql"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

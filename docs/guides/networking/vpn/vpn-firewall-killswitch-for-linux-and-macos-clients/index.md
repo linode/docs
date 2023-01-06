@@ -10,9 +10,8 @@ modified: 2018-07-09
 modified_by:
   name: Linode
 published: 2017-09-29
-title: "How to Configure a VPN Kill Switch on OpenVPN Clients"
-h1_title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
-enable_h1: true
+title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
+title_meta: "How to Configure a VPN Kill Switch on OpenVPN Clients"
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
@@ -80,9 +79,9 @@ The majority of GNU/Linux users use either `iptables` or `ufw` to manage their f
 
 ### VPN firewall using iptables
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You may want to back up your current iptables ruleset with `iptables-save`.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a shell script with the following `iptables` ruleset:
 
@@ -116,9 +115,9 @@ Your VPN firewall is now active, but this ruleset is only temporary and will be 
 
 ### VPN Firewall using ufw
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You may want to back up your current firewall ruleset.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a new shell script containing the following commands:
 

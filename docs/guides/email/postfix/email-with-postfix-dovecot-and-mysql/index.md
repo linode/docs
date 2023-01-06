@@ -11,9 +11,8 @@ modified: 2022-09-29
 modified_by:
   name: Linode
 published: 2013-05-13
-title: "Set up an Email Server with Postfix, Dovecot, and MySQL"
-h1_title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
-enable_h1: true
+title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
+title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -111,7 +110,7 @@ You can also reference the [Install an SSL Certificate with Certbot](/docs/guide
         sudo apt-get update && sudo apt-get upgrade
         sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will install the **mysql-server** package, which isn't available by default on some newer versions of Debian. If you receive a message stating that the package is not available, install **mariadb-server** instead. MariaDB is a drop-in MySQL replacement.
 {{< /note >}}
 
@@ -586,7 +585,7 @@ auth_mechanisms = plain login
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For reference, [view a complete `10-auth.conf` file](/docs/assets/1238-dovecot_10-auth.conf.txt).
 {{< /note >}}
 
@@ -633,7 +632,7 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
     1.  Add the alias as the `source` and `destination` email address to the `virtual_aliases` table.
     1.  Change the `/etc/dovecot/dovecot-sql.conf.ext` file's `password_query` value to `password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');`
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a complete `dovecot-sql.conf.ext`file.
 {{< /note >}}
 
@@ -647,7 +646,7 @@ For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a com
 
 1. Edit the service settings file `/etc/dovecot/conf.d/10-master.conf`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When editing the file, be careful not to remove any opening or closing curly braces. If there's a syntax error, Dovecot will crash silently. You can check `/var/log/upstart/dovecot.log` to debug the error.
 
 Here is [an example of a complete `10-master.conf`](/docs/assets/1240-dovecot_10-master.conf.txt) file.
@@ -795,7 +794,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 
 See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.
 {{< /note >}}
 

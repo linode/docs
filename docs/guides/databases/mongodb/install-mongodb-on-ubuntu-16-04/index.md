@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-05-20
-title: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
-h1_title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
+title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
+title_meta: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'

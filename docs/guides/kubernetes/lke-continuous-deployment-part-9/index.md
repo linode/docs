@@ -4,9 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In part nine of our series on Kubernetes, you will learn how to install the popular Traefik Ingress Controller and configure an Ingress with a YAML file."
-title: "Continuous Deployment Using LKE: Installing Traefik"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 9): Installing Traefik"
-enable_h1: true
+title: "Building a Continuous Deployment Pipeline Using LKE (Part 9): Installing Traefik"
+title_meta: "Continuous Deployment Using LKE: Installing Traefik"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06

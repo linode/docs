@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-13
 modified_by:
   name: Linode
-title: 'Learning Go Functions, Loops, and Errors - A Tutorial'
-h1_title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
+title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
+title_meta: 'Learning Go Functions, Loops, and Errors - A Tutorial'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
@@ -33,7 +33,7 @@ If you're just starting with Go, we recommend reading our [Beginner's Guide to G
 
 {{< content "before-you-begin-install-go-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 

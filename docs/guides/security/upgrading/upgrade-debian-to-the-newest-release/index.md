@@ -21,9 +21,9 @@ Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldst
 
 On the other hand, if you're currently tracking repositories by codename, as Debian does by default, you will never upgrade beyond that codename release. This is the safest option and you can still manually upgrade to a newer Debian codename or release status name at any time.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While upstream maintainers try to ensure cross-compatibility and problem-free upgrades, there is risk involved in upgrading operating system versions.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -31,7 +31,7 @@ While upstream maintainers try to ensure cross-compatibility and problem-free up
 
 - **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
 {{< /note >}}
 
@@ -78,7 +78,7 @@ deb http://mirrors.linode.com/debian stretch-updates main
 deb-src http://mirrors.linode.com/debian stretch-updates main
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure any third party repositories are also tracking `stretch`. You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
 {{< /note >}}
 

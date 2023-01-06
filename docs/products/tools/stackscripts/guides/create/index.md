@@ -54,4 +54,4 @@ Once you are finished filling out all required fields, click the **Create StackS
 
 {{< note >}}
 To deploy a new Linode with your StackScript, follow the steps in the [Deploying a New Compute Instance Using a StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#deploy-a-linode-from-an-account-stackscript) guide.
-{{</ note >}}
+{{< /note >}}

@@ -552,7 +552,7 @@ This is a sample note.
 {{</* /note */>}}
 ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is a sample note.
 {{< /note >}}
 
@@ -562,9 +562,9 @@ This is a sample caution.
 {{</* /caution */>}}
 ```
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This is a sample caution.
-{{< / caution >}}
+{{< /note >}}
 
 ### Numerical Values
 

@@ -24,13 +24,13 @@ This guide will show you how to deploy a Linux distribution with [LUKS](https://
 
 The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as *LVM on LUKS*, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
 
 Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/products/storage/backups/) can't mount encrypted disks.
 
 Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/guides/support/).
-{{< /caution >}}
+{{< /note >}}
 
 ## Before you Begin
 
@@ -66,7 +66,7 @@ Please note that this is an non-standard configuration. Troubleshooting encrypte
 
 4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 
@@ -135,9 +135,9 @@ As an additional security step, you can use the keys provided in the same direct
 
     ![Debian 8 Encryption Passphrase Warning](fde-weak-passphrase-warning.png)
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you lose or forget this password, the data on this disk image will be **irrecoverable**.
-{{< /caution >}}
+{{< /note >}}
 
 14. Next you'll receive a full overview of the partitioning scheme being applied to your disk. Once you've confirmed the changes, select **Finish partitioning and write changes to disk**:
 

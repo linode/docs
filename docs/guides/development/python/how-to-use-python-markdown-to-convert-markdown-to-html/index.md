@@ -4,15 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
-og_description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
 keywords: ['Python-Markdown','What is Python-Markdown','Python-Markdown Library','Convert Markdown to HTML']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-21
 modified_by:
   name: Linode
-title: "How to Use Python-Markdown to Convert Markdown to HTML"
-h1_title: "How to Use Python-Markdown to Convert Markdown to HTML"
-enable_h1: true
+title: "Use Python-Markdown to Convert Markdown to HTML"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -192,7 +189,7 @@ The second technique takes an even simpler approach. It invokes the `markdownFro
     -   Translates the source material into HTML using `markdown.markdown` and stores the output in `tempHtml`.
     -   Writes the HTML markup to `List.html` using the Python `write` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Open the initial file in `r` (read) mode, and the second in `w` (write) mode. When handling files, use the `with` statement to ensure Python closes them later on. In actual practice, this program would prompt the user for the names of the Markdown and HTML files. For more information on file processing, see the [Python file documentation](https://docs.python.org/3/tutorial/inputoutput.html).
     {{< /note >}}
 

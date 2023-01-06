@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified_by:
   name: Linode
-title: "Installing and Using dust on Linux"
-h1_title: "Check Disk Usage on Linux with the dust Command"
-enable_h1: true
+title: "Check Disk Usage on Linux with the dust Command"
+title_meta: "Installing and Using dust on Linux"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
@@ -70,7 +69,7 @@ A good strategy is to use dust to get a quick overview of the system's disk spac
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -147,7 +146,7 @@ Dust can also be installed using [*Homebrew*](https://brew.sh/). Homebrew is a p
 
 1. To verify Homebrew is installed and working properly, use the `brew doctor` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To see all of the Homebrew commands, use the `brew help` command.
     {{< /note >}}
 
@@ -169,7 +168,7 @@ Your system is ready to brew.
 Dust 0.7.0
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Homebrew can also be used on the macOS. To install Homebrew on a Mac, see the [Homebrew page](https://brew.sh/) for instructions. To install dust on a Mac using Homebrew, use `brew install dust`. The `tap` command is not necessary for macOS.
     {{< /note >}}
 

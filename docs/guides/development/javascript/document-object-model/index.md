@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
 modified_by:
   name: Nathaniel Stickman
-title: "Accessing the Document Object Model with JavaScript"
-h1_title: "An Introduction to the Document Object Model (DOM)"
-enable_h1: true
+title: "An Introduction to the Document Object Model (DOM)"
+title_meta: "Accessing the Document Object Model with JavaScript"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

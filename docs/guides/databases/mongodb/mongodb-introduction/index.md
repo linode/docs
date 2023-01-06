@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
 modified_by:
   name: Linode
-title: "Introduction to MongoDB and Its Use Cases"
-h1_title: "What Is MongoDB and Why Use It?"
-enable_h1: true
+title: "What Is MongoDB and Why Use It?"
+title_meta: "Introduction to MongoDB and Its Use Cases"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny/

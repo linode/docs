@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
-og_description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
 keywords: ['RTMP','streaming','multi-streaming','NGINX']
 tags: ['rtmp', 'stream', 'nginx', 'vlc']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-05-21
 image: StreamingServer.jpg
 modified_by:
   name: Linode
-title: "How to Set Up an RTMP Streaming Server"
-h1_title: "Setting Up a Streaming RTMP Server"
-enable_h1: true
+title: "Setting Up a Streaming RTMP Server"
+title_meta: "How to Set Up an RTMP Streaming Server"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -103,7 +101,7 @@ To stream, you must configure some server parameters through the `nginx.conf` fi
 1. Use your favorite text editor and open the NGINX configuration file, typically located at `/etc/nginx/nginx.conf`.
 
         sudo vi /etc/nginx/nginx.conf
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you cannot find the `nginx.conf` file, run the command `sudo nginx -t`. It displays the file's location and validates its syntax.
 {{< /note >}}
 1. Add some RTMP configuration to the end of the `nginx.conf` file as shown in this example.
@@ -191,14 +189,14 @@ Streamers typically use either a commercial web-based streaming service or an ap
     ![Stream Settings for OBS](Stream-Settings.png)
 1. To begin streaming, click on the **Start Streaming** button in the lower right of the application in the `Controls` section.
     ![Start Streaming Button for OBS](Start-Streaming.png)
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A quick way to test your stream is with a scrolling text message. Click the **+** button under the `sources` menu to create a text object. When you have created the object, right-click on the source and select **filter** to apply a scrolling effect. See the [*OBS Wiki*](https://obsproject.com/wiki/) for more information.
     {{< /note >}}
 1. If you are recording your streams, you can easily confirm whether the server is accepting the streamed input or not. Navigate to the `record_path` directory (from your RTMP configuration), and list its contents with the `ls` command. If you see a new file, the streaming server is correctly receiving and saving your stream.
 
         cd /var/www/html/streams
         ls
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Streaming at too high a rate could cause OBS to disconnect from the server. If your connection bounces, click  **Settings** and then select **Output**. Set the `Video Bitrate` to a lower value. OBS provides some helpful debugging tips on the [*OBS GitHub page*](https://github.com/obsproject/obs-studio/wiki/Dropped-Frames-and-General-Connection-Issues).
     {{< /note >}}
 
@@ -216,7 +214,7 @@ You are now ready to connect to and view your stream in a multimedia player. We 
 
 {{< note >}}
 Beyond the basics, VLC can get complicated. If you run into trouble, consult the [*VideoLAN support page*](https://www.videolan.org/support/).
-    {{< /note >}}
+{{< /note >}}
 
 ## Set Up and Test Multi-Streaming
 

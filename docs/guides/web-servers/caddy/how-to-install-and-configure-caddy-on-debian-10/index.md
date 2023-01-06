@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
 modified_by:
   name: Linode
-title: "How to Install the Caddy Web Server on Debian 10"
-h1_title: "Installing and Configuring the Caddy Web Server on Debian 10"
-enable_h1: true
+title: "Installing and Configuring the Caddy Web Server on Debian 10"
+title_meta: "How to Install the Caddy Web Server on Debian 10"
 image: CaddyWebServ_Deb10.png
 contributor:
   name: Linode

@@ -34,7 +34,7 @@ This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,7 +79,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update Gmod, run the above 4 commands again.
 {{< /note >}}
 
@@ -165,9 +165,9 @@ writeip
 
         cd ~/ && ./startgmod.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop Gmod.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

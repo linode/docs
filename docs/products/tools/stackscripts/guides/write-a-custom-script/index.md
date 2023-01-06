@@ -78,7 +78,7 @@ Use the following format to insert a UDF tag into a StackScript.
 
 {{< note >}}
 The UDF tags are commented out to prevent execution errors, as the StackScript system parses the tags without removing them.
-{{</ note >}}
+{{< /note >}}
 
 ### UDF Attributes
 
@@ -91,7 +91,7 @@ A UDF tag accepts the following attributes:
     The variable name is the string you wish to use to reference this variable within the StackScript. The string must be alphanumeric (can include underscores), less than 64 characters in length, and be unique within the StackScript.
 
     {{< note >}}
-If you would like to create a masked password input field, use the word `password` anywhere in the UDF `name` attribute.
+    If you would like to create a masked password input field, use the word `password` anywhere in the UDF `name` attribute.
     {{< /note >}}
 
 - **Field label** (*required*):
@@ -157,7 +157,7 @@ source /tmp/system.env
 
 {{< note >}}
 The files you reference within your script must exist and be accessible via `HTTP`. Also, ensure that the files you host externally do not contain any sensitive information.
-{{</ note >}}
+{{< /note >}}
 
 ## Import a StackScript
 
@@ -186,7 +186,7 @@ Linode provides a [StackScript Bash Library](https://cloud.linode.com/stackscrip
 
 {{< note >}}
 Linode's [StackScript Bash Library's](https://cloud.linode.com/stackscripts/1) ID number is `1`.
-{{</ note >}}
+{{< /note >}}
 
 
 ```file {title="Example StackScript using the Linode Bash Library"}

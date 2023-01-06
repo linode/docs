@@ -4,16 +4,14 @@ author:
   name: Sandro Villinger
   email: webmaster@windows-tweaks.info
 description: "Learn the basics of hosting a game server on Linux, including its benefits and drawbacks, along with hosting resources for titles like Valheim and CS:GO."
-og_description: "Learn the basics of hosting a game server on Linux, including its benefits and drawbacks, along with hosting resources for titles like Valheim and CS:GO."
 keywords: ['linux game server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-08
 image: LinuxGameServerHosting.png
 modified_by:
   name: Linode
-title: "How to Get Started with Linux Game Server Hosting"
-h1_title: "Getting Started with Linux Game Server Hosting"
-enable_h1: true
+title: "Getting Started with Linux Game Server Hosting"
+title_meta: "How to Get Started with Linux Game Server Hosting"
 contributor:
   name: Sandro Villinger
 ---
@@ -46,9 +44,9 @@ The general consensus in the gaming community is that Debian or Ubuntu are the b
 
 [Linode's One-Click App Marketplace](https://www.linode.com/marketplace/apps/) offers easy to deploy gaming servers for some games including [Ark](https://www.linode.com/marketplace/apps/linode/ark-game-server/), [Team Fortress 2](https://www.linode.com/marketplace/apps/linode/tf2-game-server/) and [Terraria](https://www.linode.com/marketplace/apps/linode/terraria-game-server/). You can refer to each [Marketplace App's Linode documentation](/docs/products/tools/marketplace/guides/) to learn how to deploy your game server, provide the appropriate configurations, and select the server's appropriate plan size.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can watch the developer Gardiner Bryant explaining [how to set up a Rust game server](https://www.youtube.com/watch?v=RPbIRbj0GyA) on Linode's YouTube channel.
-{{</ note >}}
+{{< /note >}}
 
 ### Manually Installing Linux Game Servers
 

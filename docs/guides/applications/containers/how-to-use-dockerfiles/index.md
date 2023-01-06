@@ -11,8 +11,8 @@ modified: 2021-06-17
 modified_by:
   name: Linode
 published: 2017-08-11
-title: 'How to Use a Dockerfile to Build a Docker Image'
-h1_title: 'How to Use a Dockerfile to Build a Docker Image.'
+title: 'How to Use a Dockerfile to Build a Docker Image.'
+title_meta: 'How to Use a Dockerfile to Build a Docker Image'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
@@ -81,7 +81,7 @@ To create the Dockerfile:
 
         mkdir ~/mydockerbuild && cd ~/mydockerbuild
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
 {{< /note >}}
 
@@ -147,7 +147,7 @@ Hello, Sunshine!
 
 {{< note >}}
 If the `docker run` command is executed and the Docker image is not available in your current working directory, it is pulled from the Docker registry instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Further Reading
 

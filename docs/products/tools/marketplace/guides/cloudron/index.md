@@ -18,9 +18,9 @@ aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/',
 
 [Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage, and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.
 
-{{<note>}}
+{{< note >}}
 Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www.cloudron.io/pricing.html) to view available plans and pricing information.
-{{</note>}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -28,9 +28,9 @@ Cloudron offers both free and paid plans. Visit [Cloudron's website](https://www
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Cloudron should be fully installed within 10-12 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -44,7 +44,8 @@ The Cloudron application is served on the Linode, however it still requires a fe
 1.  The Cloudron setup wizard is served at the IP address of the Linode server . For example, `http://203.0.113.0 `, replacing the IP address with values for the Linode server and accept the self-signed certificate.
 
     {{< note >}}
-In Chrome, you can accept the self-signed certificate by clicking on Advanced and then click Proceed to <ip> (unsafe). In Firefox, click on Advanced, then Add Exception and then Confirm Security Exception. {{< /note >}}
+    In Chrome, you can accept the self-signed certificate by clicking on Advanced and then click Proceed to <ip> (unsafe). In Firefox, click on Advanced, then Add Exception and then Confirm Security Exception.
+    {{< /note >}}
 
 1.  At this point, the Cloudron Domain setup wizard appears.
 

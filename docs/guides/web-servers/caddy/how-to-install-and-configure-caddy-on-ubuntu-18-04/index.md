@@ -11,9 +11,8 @@ published: 2020-03-05
 modified: 2022-02-04
 modified_by:
   name: Linode
-title: "Install and Configure the Caddy Web Server on Ubuntu"
-h1_title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
-enable_h1: true
+title: "Install and Configure the Caddy Web Server on Ubuntu 18.04"
+title_meta: "Install and Configure the Caddy Web Server on Ubuntu"
 image: CaddyWebServ_Ubuntu1804.png
 contributor:
   name: Linode

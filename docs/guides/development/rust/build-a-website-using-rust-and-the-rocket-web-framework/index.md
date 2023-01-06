@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
-og_description: 'Learn what the Rocket framework is, what it does, how it works, and how to install and configure it.'
 keywords: ['rocket','rust','functional programming','web application','app framework','handlebars templates']
 tags: ['rust', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +11,6 @@ published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
 title: "Build a Website Using Rust and the Rocket Web Framework"
-h1_title: "How to Build a Website Using Rust and the Rocket Web Framework"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -43,7 +41,7 @@ Beyond that, Rocket emphasizes an easy and minimalistic path to putting together
 
 1. Throughout, this guide uses `example-app` as the name of the Rocket application. Replace it with your preferred application name.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

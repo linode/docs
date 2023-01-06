@@ -40,7 +40,7 @@ Performance may vary based on the workload and Compute Instance type. Plans with
 
 {{< note >}}
 These performance details are only applicable to newer NVMe-backed Block Storage deployments. Volumes that are still using our older Block Storage solution are less performant.
-{{</ note >}}
+{{< /note >}}
 
 ## Availability
 

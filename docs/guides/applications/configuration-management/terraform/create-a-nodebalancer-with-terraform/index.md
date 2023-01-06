@@ -27,21 +27,21 @@ aliases: ['/applications/configuration-management/create-a-nodebalancer-with-ter
 
 Terraform allows you to represent Infrastructure as Code (IaC). You can use it to manage infrastructure, speed up deployments, and share your infrastructure's configuration files within a team. In this guide you will use Terraform to create a NodeBalancer that distributes traffic between two Linodes.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The configurations and commands used in this guide will result in multiple billable resources being added to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges. See the [Billings and Payments](/docs/products/platform/billing/) guide for more details.
 
 If you would like to stop billing for the resources created in this guide, [remove them](#optional-remove-the-nodebalancer-resources) when you have finished your work.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 1.  You should have Terraform installed in your development environment, and have a working knowledge of Terraform resource configuration and the [Linode provider](https://www.terraform.io/docs/providers/linode/index.html). For more information on how to install and use Terraform, check out our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
 
 The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain a token.
 
@@ -261,9 +261,9 @@ node_count = 2
 
     When Terraform runs, it looks for a file named `terraform.tfvars`, or files with the extension `*.auto.tfvars`, and populates the Terraform variables with those values. If your SSH key is at a file location that is different than the default value, i.e., it does not exist at `~/.ssh/id_rsa.pub`, then you will need to add that value to `terraform.tfvars`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to use an input variable's default value defined in the `variables.tf` file, you can omit providing a value for that variable in the `terraform.tfvars` file.
-    {{</ note >}}
+    {{< /note >}}
 
     Feel free to change any of the values in the `terraform.tfvars` file to your liking. For a list of regional datacenter IDs, you can use the cURL command to query the API:
 

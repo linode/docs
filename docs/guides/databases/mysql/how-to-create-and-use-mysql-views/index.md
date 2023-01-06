@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-01
 modified_by:
   name: Linode
-title: "How to Use Views in a MySQL Database"
-h1_title: "Using Views in a MySQL Database"
+title: "Using Views in a MySQL Database"
+title_meta: "How to Use Views in a MySQL Database"
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83
@@ -49,7 +49,7 @@ Before you create your MySQL views, create a sample database, define a few table
 
     When prompted, enter the root password of your MySQL server and hit **Enter** to continue.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your password is not accepted, you may need to run the previous command with `sudo`:
 
     sudo mysql -u root -p
@@ -61,7 +61,7 @@ If your password is not accepted, you may need to run the previous command with 
 mysql >
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using MariaDB, you may see a prompt like the following instead:
 
     {{< output >}}
@@ -313,7 +313,7 @@ Just like other database objects, you can delete views if you no longer need the
 Query OK, 0 rows affected (0.01 sec)
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Please note, if you attempt to delete a MySQL view that doesn't exist without using the `IF EXISTS` keyword, MySQL throws an error.
 {{< /note >}}
 

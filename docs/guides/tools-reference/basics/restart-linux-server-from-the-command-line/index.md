@@ -3,7 +3,6 @@ slug: restart-linux-server-from-the-command-line
 author:
   name: Nathaniel Stickman
 description: "This guide shows how you can restart your Linux system, a task you might need to do on occasion when installing or configuring new software or packages."
-og_description: "This guide shows how you can restart your Linux system, a task you might need to do on occasion when installing or configuring new software or packages."
 keywords: ['linux restart','linux restart command','restart linux server']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,8 @@ published: 2021-08-06
 image: HowtoRestartaLinuxServerfromtheCommandLine.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "Using the Linux Restart Command from the Command Line"
-h1_title: "Restart a Linux Server from the Command Line"
-enable_h1: true
+title: "Restart a Linux Server from the Command Line"
+title_meta: "Using the Linux Restart Command from the Command Line"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -72,7 +70,7 @@ Please wrap up your current tasks and save your work.
 The system is going down for reboot at Wed 2021-06-30 19:30:00 UTC!
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While the time you give in the `shutdown` command is local time, it gets broadcast to users in UTC.
 {{< /note >}}
 

@@ -26,9 +26,9 @@ external_resources:
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Apache Guacamole should be fully installed within 5-20 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -65,8 +65,8 @@ After Guacamole has finished installing, access the dashboard over `http://` or 
     ![View the Guacamole login page.](guacamole-login-page.png)
 
     {{< note >}}
-The Guacamole login page may take several minutes to become available while the Application completes the creation process.
-{{< /note >}}
+    The Guacamole login page may take several minutes to become available while the Application completes the creation process.
+    {{< /note >}}
 
 1. Once you've completed the login process, you have full access to your Linode from your Guacamole remote desktop using VNC and the XFCE desktop environment.
 

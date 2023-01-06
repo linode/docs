@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-30
 modified_by:
 published: 2016-05-20
-title: 'How to Install PostgreSQL on Ubuntu 16.04'
-h1_title: Installing PostgreSQL on Ubuntu 16.04
+title: Installing PostgreSQL on Ubuntu 16.04
+title_meta: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
@@ -49,9 +49,9 @@ Install PostgreSQL from the Ubuntu package repository:
 
 By default, PostgreSQL creates a Linux user named "postgres" to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The postgres user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1. Change the postgres user’s Linux password: `sudo passwd postgres`
 
