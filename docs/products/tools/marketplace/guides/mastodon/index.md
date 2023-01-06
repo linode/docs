@@ -53,7 +53,7 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 
 ### Configure Your Domain's Name Servers
 
-To use Mastodon with the custom domain you specified during deployment, you must configure the domain to use Linode's name servers. This is typically accomplished directly through your registrar. See [Use Linode’s Name Servers with Your Domain](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers).
+To use Mastodon with the custom domain you specified during deployment, you must configure the domain to use Linode's name servers. This is typically accomplished directly through your registrar. See [Use Linode’s Name Servers with Your Domain](/docs/products/networking/dns-manager/guides/authoritative-name-servers/).
 
 ### View the Mastodon Site
 

@@ -40,7 +40,7 @@ Following this guide will result in the creation of billable Linode resources on
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain one.
 
-1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) to your domain at your domain name's registrar.
+1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) to your domain at your domain name's registrar.
 
 1.  Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 

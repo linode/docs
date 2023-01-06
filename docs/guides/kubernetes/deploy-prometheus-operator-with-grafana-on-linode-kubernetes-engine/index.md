@@ -71,7 +71,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  (Optional) For [public access with HTTPS and basic auth](#prometheus-operator-deployment-with-https-and-basic-auth) configured for your web interfaces of your monitoring tools:
 
-    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) for the one that you have purchased.
+    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) for the one that you have purchased.
 
     *   Ensure that `htpasswd` is installed to your local environment. For many systems, this tool has already been installed. Debian and Ubuntu users will have to install the apache2-utils package with the following command:
 
