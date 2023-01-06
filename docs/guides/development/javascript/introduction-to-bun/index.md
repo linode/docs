@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Bun introduces a JavaScript runtime with incredible speed and built-in bundling and transpiling. Bun thus offers simplified tooling and a sharp contender to the reigning Node.js and Deno runtimes. Learn more about Bun here and see how you can get started using it for your JavaScript projects."
-og_description: "Bun introduces a JavaScript runtime with incredible speed and built-in bundling and transpiling. Bun thus offers simplified tooling and a sharp contender to the reigning Node.js and Deno runtimes. Learn more about Bun here and see how you can get started using it for your JavaScript projects."
 keywords: ['bun javascript','javascript runtime','bun node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-01
 modified_by:
   name: Nathaniel Stickman
 title: "Introduction to the Bun JavaScript Runtime"
-h1_title: "Introduction to the Bun JavaScript Runtime"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -41,7 +39,7 @@ In this tutorial, learn about the Bun JavaScript runtime and how it compares to 
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

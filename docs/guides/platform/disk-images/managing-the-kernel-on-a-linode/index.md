@@ -12,9 +12,8 @@ modified: 2021-08-13
 modified_by:
   name: Linode
 published: 2022-09-02
-title: "How to Manage the Kernel on a Linode"
-h1_title: "Managing the Kernel on a Linode"
-enable_h1: true
+title: "Managing the Kernel on a Linode"
+title_meta: "How to Manage the Kernel on a Linode"
 ---
 
 The primary component of every Linux system is the *Linux kernel*. The kernel interfaces with the system's hardware and it controls the operating system's core functionality. This guide covers the types of kernels that can be assigned to a Linode and how to view, update, or change the kernel.
@@ -49,9 +48,9 @@ The kernel version should be a string that's similar to `5.4.0-80-generic`. In t
 
 You can use the Cloud Manager to view the type of kernel you are using. If you are using a Linode kernel (not an upstream kernel), you can also view the kernel version.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions may not accurately reflect the actual kernel version installed. This is especially true if the Linode hasn't been rebooted in a while or wasn't rebooted after a change to the Linode's Configuration. To determine the actual kernel version installed on your system, see [Determining Which Kernel Is Installed](#determining-which-kernel-is-installed).
-{{</ note >}}
+{{< /note >}}
 
 1.  Navigate to your Linode in the [Cloud Manager](https://cloud.linode.com) and click the **Configuration** tab.
 

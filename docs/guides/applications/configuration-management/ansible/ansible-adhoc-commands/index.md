@@ -4,15 +4,14 @@ author:
   name: Avi
   email: avi.dunken1991@gmail.com
 description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
-og_description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
 image: Learning_Adhoc_Commands_in_Ansible_1200x631.png
 modified_by:
   name: Linode
-title: 'Ansible Adhoc Commands - A Tutorial'
-h1_title: 'A Tutorial for Learning Adhoc Commands in Ansible'
+title: 'A Tutorial for Learning Adhoc Commands in Ansible'
+title_meta: 'Ansible Adhoc Commands - A Tutorial'
 contributor:
   name: Avi
   link: https://github.com/avidunken/
@@ -96,7 +95,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 
 - The `-u` option is used to specify the user on the managed node.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, Ansible will try to establish a connection to the managed node under the same user that you execute the Ansible CLI with on the control node.
 {{< /note >}}
 

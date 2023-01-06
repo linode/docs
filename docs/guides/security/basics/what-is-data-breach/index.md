@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
 modified_by:
   name: Linode
-title: "Data Breach Definition and Protection Protocols"
-h1_title: "What is a Data Breach?"
-enable_h1: true
+title: "What is a Data Breach?"
+title_meta: "Data Breach Definition and Protection Protocols"
 contributor:
   name: David Chernicoff
 ---

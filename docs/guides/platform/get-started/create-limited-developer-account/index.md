@@ -25,7 +25,7 @@ This guide explains and answers some of the most frequently asked questions abou
 
 For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following sections include commands that show how to manipulate credentials on your Linodes, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
 {{< /note >}}
 
@@ -66,9 +66,9 @@ The primary method for directly administering files and software on a Linode is 
 
 For the steps in this section, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
-{{</ note >}}
+{{< /note >}}
 
 ### Who Has SSH Access to Your Linode?
 
@@ -100,9 +100,9 @@ If your user should only have access to a specific directory and its subdirector
 
 For some applications, a user may only need to transfer files to or from the server. In this case, create a user that can transfer files through SFTP but that can't access the server with SSH.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The steps in this section disable a user's SSH access. Do not follow the steps in this section for any user who needs SSH access.
-{{< /caution >}}
+{{< /note >}}
 
 Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
 
@@ -167,9 +167,9 @@ If you instead want to fully remove the file, run:
 
     rm /home/exampleUser/.ssh/authorized_keys
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Files removed in this way can't be easily restored.
-{{< /caution >}}
+{{< /note >}}
 
 ## Add or Remove WordPress Users
 
@@ -292,9 +292,9 @@ While logged in to MySQL:
 
 ### Change the WordPress Database Password in MySQL
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This section changes the WordPress database password itself; not any WordPress user. This may affect your WordPress installation.
-{{< /caution >}}
+{{< /note >}}
 
 If you are only trying to change a WordPress user's login information, see the [WordPress Users](#wordpress-users) section. It is rare that anyone should need to modify the database password except in the case of a WordPress migration. Otherwise, it is not likely that you need to follow this section.
 

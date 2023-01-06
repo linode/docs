@@ -20,7 +20,7 @@ aliases: ['/security/firewalls/configure-firewall-with-ufw/']
 
 UFW, or *uncomplicated firewall*, is a frontend for managing firewall rules in Arch Linux, Debian, or Ubuntu. UFW is used through the command line (although it has GUIs available), and aims to make firewall configuration easy (or, uncomplicated).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are running Docker, by default Docker directly manipulates iptables. Any UFW rules that you specify do not apply to Docker containers.
 {{< /note >}}
 
@@ -78,9 +78,9 @@ Most systems need a only a small number of ports open for incoming connections, 
 
 The `ufw default` command also allows for the use of the `reject` parameter.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place. Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
-{{< /caution >}}
+{{< /note >}}
 
 ### Add Rules
 
@@ -166,7 +166,7 @@ Similarly, to disable UFW's rules:
 
     sudo ufw disable
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This still leaves the UFW service running and enabled on reboots.
 {{< /note >}}
 

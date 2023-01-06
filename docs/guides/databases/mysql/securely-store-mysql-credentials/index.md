@@ -28,7 +28,7 @@ Run the `set` command to store your credentials and database connection details.
 
 {{< note >}}
 You can also use special login path names, which are used by default in certain commands without needing to specify it. These special login paths include `client` and `mysql` for the mysql command and `mysqldump` for the mysqldump command.
-{{</ note >}}
+{{< /note >}}
 
 ## View Stored Credentials
 

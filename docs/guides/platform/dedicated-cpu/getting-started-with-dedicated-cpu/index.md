@@ -29,7 +29,7 @@ While a Shared Linode is a good fit for most use cases, a Dedicated CPU Linode i
 - Scientific Computing
 - [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on Dedicated CPU use cases, see our [Use Cases for Dedicated CPU Instances](/docs/guides/dedicated-cpu-use-cases/).
 {{< /note >}}
 

@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-21
 modified_by:
   name: Linode
-title: "Working with Triggers in a MySQL Database - A Tutorial"
-h1_title: "Working with Triggers in a MySQL Database"
+title: "Working with Triggers in a MySQL Database"
+title_meta: "Working with Triggers in a MySQL Database - A Tutorial"
 image: L_TriggersMySQL_db.png
 contributor:
   name: Francis Ndungu
@@ -480,7 +480,7 @@ A trigger can also be fired after an `UPDATE` event. We will see how we can leve
 
     This trigger records changes to a product's `retail_price` in the `products_price_history` table.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unlike previous examples, this trigger only has one statement in the trigger's body, so we do not need to change the `DELIMITER`.
 {{< /note >}}
 
@@ -560,6 +560,6 @@ Output:
 Query OK, 0 rows affected (0.00 sec)
 {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 Be cautious when deleting tables associated with triggers. Once a table is dropped from the MySQL database, the related triggers are also automatically deleted.
-{{< /caution >}}
+{{< /note >}}

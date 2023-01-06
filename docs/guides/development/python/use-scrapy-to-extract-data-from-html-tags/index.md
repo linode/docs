@@ -35,7 +35,7 @@ This guide will provide you with instructions to build a spider which recursivel
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -122,7 +122,7 @@ All the following commands are done inside the virtual environment. If you resta
 
     This will create a file `~/scrapy/linkChecker/linkChecker/spiders/link_checker.py` with a base spider.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All path and commands in the below section are relative to the new scrapy project directory `~/scrapy/linkChecker`.
 {{< /note >}}
 

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
 modified_by:
   name: Linode
-title: "Build & Deploy a Docker Image to Kubernetes Cluster"
-h1_title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
-enable_h1: true
+title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+title_meta: "Build & Deploy a Docker Image to Kubernetes Cluster"
 aliases: ['/applications/containers/kubernetes/deploy-container-image-to-kubernetes/','/applications/containers/deploy-container-image-to-kubernetes/','/kubernetes/deploy-container-image-to-kubernetes/']
 contributor:
   name: Linode
@@ -37,7 +36,7 @@ This guide will show you how to package a Hugo static site in a Docker container
 
 Hugo is written in [Go](https://golang.org/) and is known for being extremely fast to compile sites, even very large ones. It is well-supported, [well-documented](https://gohugo.io/documentation/), and has an [active community](https://discourse.gohugo.io/). Some useful Hugo features include [*shortcodes*](https://gohugo.io/content-management/shortcodes/), which are an easy way to include predefined templates inside of your Markdown, and built-in [*LiveReload*](https://gohugo.io/getting-started/usage/#livereload) web server, which allows you to preview your site changes locally as you make them.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using version 1.14 of Kubectl.
 {{< /note >}}
 
@@ -98,7 +97,7 @@ In this section you will use the [Hugo CLI](https://gohugo.io/commands/) (comman
 
         git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Hugo has many [available themes](https://themes.gohugo.io/) that can be installed as a submodule of your Hugo site's directory.
     {{< /note >}}
 
@@ -211,9 +210,9 @@ The example Hugo site was initialized as a local Git repository in the previous 
 
         git commit -m 'Add content, theme, and config files.'
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Any time you complete work related to one logical change to the Hugo site, you should make sure you commit the changes to your Git repository. Keeping your commits attached to small changes makes it easier to understand the changes and to roll back to previous commits, if necessary. See the [Getting Started with Git](/docs/guides/how-to-configure-git/) guide for more information.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Create a Docker Image
 ### Create the Dockerfile
@@ -221,7 +220,7 @@ Any time you complete work related to one logical change to the Hugo site, you s
 A Dockerfile contains the steps needed to build a Docker image. The Docker image provides the minimum set up and configuration necessary to deploy a container that satisfies its specific use case. The Hugo site's minimum Docker container configuration requirements are an operating system, Hugo, the Hugo site's content files, and the NGINX web server.
 
 1. In your Hugo site's root directory, create and open a file named `Dockerfile` using the text editor of your choice. Add the following content to the file. You can read the Dockerfile comments to learn what each command will execute in the Docker container.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The following Dockerfile uses Ubuntu to install Hugo. However, Ubuntu may not have the most up to date Hugo package. If this is the case, you could also create a Dockerfile based on Arch Linux or another Linux distribution that has a more up to date Hugo package.
     {{< /note >}}
 
@@ -261,9 +260,9 @@ EXPOSE 80
 
 You are now ready to build the Docker image. When Docker builds an image it incorporates the *build context*. A build context includes any files and directories located in the current working directory. By default, Docker assumes the current working directory is also the location of the Dockerfile.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not yet created a [Docker Hub account](https://hub.docker.com/signup), you will need to do so before proceeding with this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Build the Docker image and add a tag `mydockerhubusername/hugo-site:v1` to the image. Ensure you are in the root directory of your Hugo site. The tag will make it easy to reference a specific image version when creating your Kubernetes deployment manifest. Replace `mydockerhubusername` with your Docker Hub username and `hugo-site` with a Docker repository name you prefer.
 
@@ -367,9 +366,9 @@ The service will group together all pods for the Hugo site, expose the same port
 
 The Hugo site's service manifest file will use the NodePort method to get external traffic to the Hugo site service. NodePort opens a specific port on all the Nodes and any traffic that is sent to this port is forwarded to the service. Kubernetes will choose the port to open on the nodes if you do not provide one in your service manifest file. It is recommended to let Kubernetes handle the assignment. Kubernetes will choose a port in the default range, `30000-32767`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The k8s-alpha CLI creates clusters that are pre-configured with useful Linode service integrations, like the Linode Cloud Controller Manager (CCM) which provides access to Linode's load balancer service, [NodeBalancers](https://www.linode.com/nodebalancers). In order to use Linode's NodeBalancers you can use the [LoadBalancer service type](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) instead of NodePort in your Hugo site's service manifest file. For more details, see the [Kubernetes Cloud Controller Manager for Linode](https://github.com/linode/linode-cloud-controller-manager) GitHub repository.
-{{</ note >}}
+{{< /note >}}
 
 1. Create the manifest file for your service with the following content.
 

@@ -17,9 +17,9 @@ deprecated: true
 
 {{< content "all-linodes-kvm-shortguide" >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide is for legacy Xen Linodes. For newer Linodes, consult our [How to Change your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) guide.
-{{< /caution >}}
+{{< /note >}}
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 

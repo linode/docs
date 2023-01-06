@@ -12,8 +12,8 @@ modified: 2021-07-07
 modified_by:
   name: Linode
 published: 2011-11-14
-title: 'mod_evasive on Apache'
-h1_title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
+title: "Configure mod_evasive to Help Survive DoS/DDoS Attacks"
+title_meta: 'mod_evasive on Apache'
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 tags: ["web server","apache"]
@@ -135,7 +135,7 @@ The blocking period is the amount of time (in seconds) that a client is blocked 
 
 If this value is set, an email is sent to the address specified whenever an IP address becomes blacklisted. A locking mechanism using /tmp prevents continuous emails from being sent.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 Be sure MAILER is set correctly in mod_evasive.c (or mod_evasive20.c). The default is "/bin/mail -t %s" where %s is used to denote the destination email address set in the configuration. If you are running on Linux or some other operating system with a different type of mailer, you need to change this.
 {{< /note >}}
 
@@ -145,7 +145,7 @@ If this value is set, the system command specified is executed whenever an IP ad
 
 ### DOSLogDir
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This setting does not relate to logging for mod_evasive. Actions taken by mod_evasive appear on the syslog.
 {{< /note >}}
 

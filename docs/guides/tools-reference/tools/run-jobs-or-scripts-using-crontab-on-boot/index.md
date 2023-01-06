@@ -3,7 +3,6 @@ slug: run-jobs-or-scripts-using-crontab-on-boot
 author:
   name: Jeff Novotny
 description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts when your Linode boots, as well as best practices when using cron.'
-og_description: 'This guide explains how to use the cron utility and the crontab file to run jobs or scripts when your Linode boots, as well as best practices when using cron.'
 keywords: ['crontab on boot']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +10,7 @@ published: 2021-07-02
 modified_by:
   name: Linode
 title: "Run Jobs or Scripts Using Crontab on Boot"
-h1_title: "How to Run Jobs or Scripts Using Crontab on Boot"
-enable_h1: true
+title_meta: "How to Run Jobs or Scripts Using Crontab on Boot"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
@@ -61,9 +59,9 @@ To schedule a job to run every time the system boots or reboots, add a new entry
 
         sudo crontab -e
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The command `sudo crontab -e` opens the crontab file for the root user, while the `crontab -e` command opens the file for the current user. Do not add too many root-level jobs as the output can easily become overwhelming and be ignored.
-    {{< /caution >}}
+    {{< /note >}}
 
 1. The program asks you to select an editor. Select a number from the list of all available choices. If you do not enter a number, the default editor is selected.
 
@@ -81,7 +79,7 @@ Choose 1-4 [1]:
 
         @reboot date >> ~/clock.txt
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To add a delay before running the job, prefix the string `sleep <numseconds> &&` to the command. The example above would become `@reboot sleep 30 && date >> ~/clock.txt`.
     {{< /note >}}
 

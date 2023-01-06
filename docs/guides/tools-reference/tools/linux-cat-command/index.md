@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "The cat command is one of the most frequently used commands in Linux, noteworthy for its versatility for viewing and creating file contents. Get your introduction to this must-know tool in this tutorial, covering everything you need to start using the Linux cat command."
-og_description: "The cat command is one of the most frequently used commands in Linux, noteworthy for its versatility for viewing and creating file contents. Get your introduction to this must-know tool in this tutorial, covering everything you need to start using the Linux cat command."
 keywords: ['linux cat command','cat linux','what is cat command linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-16
 modified_by:
   name: Nathaniel Stickman
 title: "The Linux cat Command"
-h1_title: "The Linux cat Command"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -144,7 +142,7 @@ One more line of text to the example file.
 
 The *cat* command comes with several display options. These alter how the output is presented, which can make files easier to read or can fit specific use cases.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These options affect the contents of files created (using `>`) or appended to (using `>>`) with the *cat* command. They modify the output of *cat*, and that output is what *cat* uses to give files content.
 
 For instance, take a case where you use the option for line numbers below (`-n`) while copying the contents of `example-file.txt` to a new file. This results in the line numbers being saved as part of the contents of the new file.

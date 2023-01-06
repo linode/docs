@@ -36,7 +36,7 @@ relations:
 
 Ruby on Rails is a web framework that allows web designers and developers to implement dynamic, fully featured web applications. When deploying a Rails app in production, developers can choose from several popular app servers including Puma, Unicorn, and Passenger. This guide will use Passenger, because of its convenient integration with NGINX.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -103,7 +103,7 @@ passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
 passenger_ruby /usr/bin/passenger_free_ruby;
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the file does not already exist, you will need to create it and add the lines manually.
 {{< /note >}}
 
@@ -144,7 +144,7 @@ If the application deployed uses MySQL, install the database server by following
         sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
         sudo apt install nodejs
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Gemfile already includes `therubyracer`, or you have another JavaScript runtime on your system, you can skip this step.
 {{< /note >}}
 

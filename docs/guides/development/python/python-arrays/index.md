@@ -9,7 +9,6 @@ published: 2022-06-17
 modified_by:
   name: Linode
 title: "Python Arrays: What They Are and How to Use Them"
-h1_title: "Python Arrays: What They Are and How to Use Them"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -65,7 +64,7 @@ All of the examples to follow work off of a simple integer array created using t
     example_array = array("i", [2, 4, 6, 8])
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The [array module](https://docs.python.org/3/library/array.html) is not loaded by default in Python. Instead, you need to import the module to start working with arrays.
 {{< /note >}}
 

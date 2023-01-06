@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install and Use NGINX on Ubuntu 20.04"
-h1_title: "Installing and Using NGINX on Ubuntu 20.04"
-enable_h1: true
+title: "Installing and Using NGINX on Ubuntu 20.04"
+title_meta: "How to Install and Use NGINX on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -32,7 +31,7 @@ relations:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-01
 modified_by:
   name: Linode
-title: "Get Started With Bokeh and Python Data Visualizations"
-h1_title: "Use Bokeh and Python to Create Data Visualizations"
-enable_h1: true
+title: "Use Bokeh and Python to Create Data Visualizations"
+title_meta: "Get Started With Bokeh and Python Data Visualizations"
 contributor:
   name: John Mueller
 ---
@@ -30,7 +29,7 @@ When you use Bokeh, you find that it produces beautiful interactive graphics wit
 
 This section shows you how to install Bokeh using Pip and Anaconda or Miniconda.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not familiar with Pip, see our [Managing Python Packages and Versions on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip) guide. To learn how to install Anaconda, see our [How to Install Anaconda on Ubuntu](/docs/guides/how-to-install-anaconda/) guide.
 {{< /note >}}
 

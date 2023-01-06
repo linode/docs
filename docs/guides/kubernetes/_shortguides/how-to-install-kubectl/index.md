@@ -10,7 +10,7 @@ published: 2019-11-08
 modified: 2022-08-11
 modified_by:
   name: Linode
-title: "How to Install kubectl"
+title: "Install kubectl"
 contributor:
   name: Linode
 headless: true
@@ -41,7 +41,7 @@ If you don't have Homebrew installed, visit the [Homebrew](https://brew.sh) home
 
         sudo mv ./kubectl /usr/local/bin/kubectl
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also install kubectl via your package manager; visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux) for instructions.
 {{< /note >}}
 

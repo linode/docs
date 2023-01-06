@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
 modified_by:
   name: Linode
-title: "Object-Oriented Programming Concepts, Explained"
-h1_title: "A Guide to OOP Principles in Java"
+title: "A Guide to OOP Principles in Java"
+title_meta: "Object-Oriented Programming Concepts, Explained"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

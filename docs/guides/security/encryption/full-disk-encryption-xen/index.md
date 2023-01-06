@@ -5,7 +5,6 @@ author:
   name: Quintin Riis
   email: docs@linode.com
 description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
-og_description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
 keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-encryption-xen/']
 tags: ["security","debian"]
@@ -71,11 +70,11 @@ Now you're ready to enable full disk encryption on your Linode running Debian 7 
 
         cryptsetup luksFormat /dev/xvdc
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you lose this passphrase your data will be irretrievable!
-{{< /caution >}}
+{{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may receive a FATAL notice about loading a kernel module used for hardware crypto acceleration. This message can be safely ignored.
 {{< /note >}}
 
@@ -94,7 +93,7 @@ You may receive a FATAL notice about loading a kernel module used for hardware c
         mkswap /dev/mapper/crypt-swap
         swapon /dev/mapper/crypt-swap
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Swap will not persist through reboots, so a random key will be used to encrypt swap data.
 {{< /note >}}
 

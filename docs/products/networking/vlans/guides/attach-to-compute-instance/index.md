@@ -23,8 +23,8 @@ This guide covers implementing both of these methods using the Cloud Manager. Wh
 1. Fill out all desired configuration options in the form that appears, until reaching the **Attach a VLAN** section. See the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for more information.
 
     {{< note >}}
-VLANs are not available in all regions. If the Attach a VLAN section isn't visible, see the Availability section on the [VLANs Overview](/docs/products/networking/vlans/) page.
-{{< /note >}}
+    VLANs are not available in all regions. If the Attach a VLAN section isn't visible, see the Availability section on the [VLANs Overview](/docs/products/networking/vlans/) page.
+    {{< /note >}}
 
 1. Within the **Attach a VLAN** section, enter the *Label* of the VLAN or select from a list of the VLANs that currently exist on the account. If the VLAN does not yet exist, it is automatically created when creating the Compute Instance.
 
@@ -87,12 +87,12 @@ Once a VLAN has been attached to more than one Compute Instance, verify that you
 
     The output should display ICMP packets successfully transmitted and received from this instance to the secondary instance in the private network.
 
-    {{< output >}}
-PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.733 ms
-64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=0.294 ms
-^C
---- 10.0.0.1 ping statistics ---
-2 packets transmitted, 2 received, 0% packet loss, time 18ms
-rtt min/avg/max/mdev = 0.294/0.513/0.733/0.220 ms
-    {{</ output >}}
+    ```output
+    PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+    64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.733 ms
+    64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=0.294 ms
+    ^C
+    --- 10.0.0.1 ping statistics ---
+    2 packets transmitted, 2 received, 0% packet loss, time 18ms
+    rtt min/avg/max/mdev = 0.294/0.513/0.733/0.220 ms
+    ```

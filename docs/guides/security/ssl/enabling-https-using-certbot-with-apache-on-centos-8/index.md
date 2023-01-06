@@ -32,7 +32,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 
 3.  **The Apache web server software installed on your server and configured for your domain.** You can review the [How to Install Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide for information on installing and configuring Apache.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

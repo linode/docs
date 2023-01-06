@@ -39,7 +39,7 @@ aliases: ['/development/nodejs/use-nightmarejs-to-automate-headless-browsing/']
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 {{< /note >}}
@@ -52,7 +52,7 @@ The Ubuntu 16.04 repository is slower to release recent versions of Node.js. Ins
 
         curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command fetches the latest version of Node.js 6. To install a [specific version](https://nodejs.org/en/download/releases/), replace the `6.x` in this example.
 
 {{< /note >}}

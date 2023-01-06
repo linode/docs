@@ -29,9 +29,9 @@ aliases: ['/tools-reference/custom-kernels-distros/install-nixos-on-linode/']
 
 While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages that can make deploying software and application updates easier.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 NixOS is not officially supported by Linode at the time of publishing this guide. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools, such as Network- and Boot-Helpers, will not work with NixOS.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 

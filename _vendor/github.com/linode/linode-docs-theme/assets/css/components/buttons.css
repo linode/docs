@@ -16,7 +16,7 @@
 
 /* Used for the icons that acts as butons. */
 .btn-icon {
-  @apply text-textcolor;
+  @apply text-brand;
 }
 
 .btn-icon:focus {

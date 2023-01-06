@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install Canvas, a learning management system that enables you to create a website for education or training courses, on Ubuntu 20.04.'
-og_description: 'This guide will show you how to install Canvas, a learning management system that enables you to create a website for education or training courses, on Ubuntu 20.04.'
 keywords: ['canvas','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Canvas LMS on Ubuntu 20.04"
-h1_title: "Installing Canvas on Ubuntu 20.04"
-enable_h1: true
+title: "Installing Canvas on Ubuntu 20.04"
+title_meta: "How to Install Canvas LMS on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -54,7 +52,7 @@ This guide shows you how to get a Canvas website up and running on an Ubuntu 20.
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name for your Linode server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -333,7 +331,7 @@ production:
 </IfModule>
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Canvas has a relatively long startup time, which can sometimes lead to timeout issues. You can add a version of the following line to the `passenger.conf` file to increase the time before Canvas times out at startup. This example increases the amount of time before Passenger times out, from the default 60 seconds up to 180 seconds:
 
     PassengerStartTimeout 180

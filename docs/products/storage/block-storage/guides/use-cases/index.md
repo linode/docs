@@ -46,9 +46,9 @@ Below you will find some of the more popular use cases for Block Storage.
 
 Block Storage Volumes can be detached from a cloud instance just as easily as they are attached, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of instances with the same data.
 
-{{< caution >}}
+{{< note type="alert" >}}
 While the Block Storage service has full support for hot swapping, it is important to follow the detachment instructions outlined in our [Attach and Detach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#detach-a-volume) guide. If a Volume is not safely detached, there is a risk of data loss for the Volume.
-{{< /caution >}}
+{{< /note >}}
 
 ### Container Storage
 

@@ -11,9 +11,7 @@ published: 2021-07-16
 image: HowtoConfigureWordpress.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "Configuring WordPress"
-h1_title: "How to Configure WordPress"
-enable_h1: true
+title: "Best Practices for Configuring WordPress"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -43,7 +41,7 @@ If you have not already installed WordPress on your server, you can follow one o
 
    If you are on CentOS and did not use the Remi repository to install PHP, you may have to replace `php74-php` with `php` throughout this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

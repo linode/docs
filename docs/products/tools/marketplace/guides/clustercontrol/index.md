@@ -20,9 +20,9 @@ external_resources:
 
 **Supported databases: MySQL, MariaDB Server, MariaDB Galera, Percona Server, Percona XtraDB, PostgreSQL, Redis, MS SQL Server 2019, TimescaleDB, and MongoDB
 
-{{<note>}}
+{{< note >}}
 ClusterControl offers both free and paid plans. Visit [Severalnines' website](https://severalnines.com/pricing) to view available plans and pricing information.
-{{</note>}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -30,9 +30,9 @@ ClusterControl offers both free and paid plans. Visit [Severalnines' website](ht
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** ClusterControl should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

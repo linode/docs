@@ -195,7 +195,7 @@ MySQL database engine may be the leading open source relational database engine,
 
 4.  Answer all questions when prompted during this process.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If at any point you need to reset the root password for the *MySQL* server, issue the following command:
 
      dpkg-reconfigure mysql-server-5.0

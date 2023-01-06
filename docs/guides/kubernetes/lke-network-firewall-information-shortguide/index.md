@@ -46,6 +46,6 @@ For additional information, [please see this community post](https://www.linode.
 
 Please note, at this time, nodes should be removed from the Cloud Firewall configuration before removing/recycling of node pools within the Kubernetes configuration. Also, when adding node pools to the Kubernetes cluster, Cloud Firewall must be updated with the new node pool(s). Failure to add the new nodes creates a security risk.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All new LKE clusters create a service named `Kubernetes` in the `default` namespace designed to ease interactions with the control plane. This is a standard service for LKE clusters.
 {{< /note >}}

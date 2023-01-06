@@ -9,7 +9,7 @@ published: 2021-12-30
 modified_by:
   name: Nathaniel Stickman
 title: "Use Glances for System Monitoring on Linux"
-h1_title: "How to Use Glances for System Monitoring on Linux"
+title_meta: "How to Use Glances for System Monitoring on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -28,7 +28,7 @@ In this guide, learn how to install and get started with the Glances system moni
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

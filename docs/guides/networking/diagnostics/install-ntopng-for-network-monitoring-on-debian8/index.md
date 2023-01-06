@@ -94,7 +94,7 @@ Create a configuration file for ntopng using the example below. Replace `192.0.2
 --disable-login=1 # optional
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The option flags commented with `# optional` are not mandatory. All flags requiring input must be followed by an `=` and a value.
 {{< /note >}}
 
@@ -147,7 +147,7 @@ If you want to group devices over the same network or host a home media server, 
 
     ![Currently open connections](ntopng-currently-open-connections.png "Currently open connections")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to see all host connections on a single page, set the number of rows to display per page next to the filtering options above the table.
 {{< /note >}}
 
@@ -155,9 +155,9 @@ If you want to see all host connections on a single page, set the number of rows
 
 Ntopng provides a simple and convenient method for monitoring threats.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Ntopng does not replace core security features such as a properly configured firewall. It is meant to run in addition to an existing setup.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Near the top of the web interface, scroll over **Settings** and select **Preferences**. Click on **Alerts** in the menu to the left. Click on **Enable Alerts** and choose which alerts you’d like to enable.
 

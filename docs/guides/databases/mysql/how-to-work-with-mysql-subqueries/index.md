@@ -4,14 +4,13 @@ author:
   name: Francis Ndungu
   email: francisndungu83@gmail.com
 description: 'A subquery is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
-og_description: 'A subquery is an SQL query that is nested within another query. This guide shows how to use correlated subqueries, as well as subqueries as derived tables.'
 keywords: ['MySQL', 'database', 'subqueries']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-04
 modified_by:
   name: Linode
-title: "How to Work with MySQL Subqueries"
-h1_title: Working with MySQL Subqueries"
+title: Working with MySQL Subqueries"
+title_meta: "How to Work with MySQL Subqueries"
 contributor:
   name: Francis Ndungu
   link: https://twitter.com/francisndungu83
@@ -54,7 +53,7 @@ To understand how subqueries work, create a sample database first. This sample d
 
     When prompted, enter the root password of your MySQL server and hit **Enter** to continue. Note that your MySQL server's root password is not the same as the root password for your Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your password is not accepted, you may need to run the previous command with `sudo`:
 
     sudo mysql -u root -p
@@ -66,7 +65,7 @@ If your password is not accepted, you may need to run the previous command with 
 mysql >
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using MariaDB, you may see a prompt like the following instead:
 
     {{< output >}}

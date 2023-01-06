@@ -3,7 +3,6 @@ slug: how-to-deploy-a-react-app-on-ubuntu-18-04
 author:
   name: Linode
 description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server.
-og_description: This guide will show you how to deploy a React app to a Ubuntu 18.04 Linode that is running a web server.
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ modified: 2020-04-24
 image: Deploying_a_React_Application_on_Ubuntu_1804_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy a React Application on Ubuntu 18.04"
-h1_title: "Deploying a React Application on Ubuntu 18.04"
-enable_h1: true
+title: "Deploying a React Application on Ubuntu 18.04"
+title_meta: "How to Deploy a React Application on Ubuntu 18.04"
 contributor:
   name: Linode
 external_resources:
@@ -68,7 +66,7 @@ The steps in this section should be performed on your Linode.
 
         sudo chown -R example_user:www-data /var/www/example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on how you have configured your web root's directory, `www-data` may or may not be the group that owns it. To verify the directory's group, issue the following command:
 
     ls -la /var/www/
@@ -80,7 +78,7 @@ drwxrwxr-x 3 example_user www-data     4096 Apr 24 17:34 example.com
 {{</ output >}}
 
 
-    {{</ note >}}
+    {{< /note >}}
 
 
 
@@ -174,9 +172,9 @@ echo "Deployment complete"
 
     This script will check out the `master` branch of your project on Git, build the app using `npm run build`, and then sync the build files to the remote Linode using Rsync. If your React app was not built with `create-react-app`, the build command may be different and the built files may be stored in a different directory (such as `dist`). Modify the script accordingly.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your React app's directory is not initialized as a Git repository, the command `git checkout master` will return a `fatal: not a git repository (or any of the parent directories): .git` error. However, the script will continue on to the next commands and the files should still be transferred to your remote Linode server. See our [Getting Started with Git](/docs/guides/how-to-configure-git/#use-git-with-a-local-repository) guide to learn how to initialize a Git repository.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Make the script executable:
 

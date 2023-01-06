@@ -76,7 +76,7 @@ ssh dhcpv6-client
 
 1.  Add the SIP services.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All the following firewalld rules contain the `--permanent` flag to ensure the rules persist after a system reboot.
 {{< /note >}}
 
@@ -340,6 +340,6 @@ Connected to Asterisk 16.0.0 currently running on li73-122 (pid = 980)
 
 Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
-{{< caution >}}
+{{< note type="alert" >}}
 When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
-{{< /caution >}}
+{{< /note >}}

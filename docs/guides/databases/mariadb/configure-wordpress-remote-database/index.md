@@ -313,7 +313,7 @@ ssl-cert=/etc/mysql/ssl/client-cert.pem
 ssl-key=/etc/mysql/ssl/client-key.pem
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the web server uses MySQL you can find the configuration file in `/etc/mysql/mysql.conf.d/mysqld.cnf`.
 {{< /note >}}
 

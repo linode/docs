@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified_by:
   name: Linode
-title: "How to Slice and Index Strings in Python"
-h1_title: "Slicing and Indexing Strings in Python"
-enable_h1: true
+title: "Slicing and Indexing Strings in Python"
+title_meta: "How to Slice and Index Strings in Python"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -23,14 +23,14 @@ To view a list of all Compute Instances on your account, run the following comma
 
 This command generates the following output, based on the information within your own account.
 
-{{< output >}}
+```output
 ┌──────────┬────────────────────┬────────────┬───────────────┬───────────────────────┬─────────┬───────────────────┐
 │ id       │ label              │ region     │ type          │ image                 │ status  │ ipv4              │
 ├──────────┼────────────────────┼────────────┼───────────────┼───────────────────────┼─────────┼───────────────────┤
 │ 00000001 │ example-instance   │ us-east    │ g6-standard-1 │ linode/ubuntu18.04    │ running │ 192.0.2.42         │
 │ 00001111 │ centos-us-east     │ us-east    │ g6-nanode-1   │ linode/centos-stream9 │ running │ 192.0.2.108       │
 └──────────┴────────────────────┴────────────┴───────────────┴───────────────────────┴─────────┴───────────────────┘
-{{</ output >}}
+```
 
 See [Using the Linode CLI](/docs/products/tools/cli/guides/#using-the-linode-cli) for additional usage details and examples.
 
@@ -48,7 +48,7 @@ To make information easy to ready, the Linode CLI outputs responses in a text-ba
 
     linode-cli regions list
 
-{{< output >}}
+```output
 ┌──────────────┬─────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬────────┐
 │ id           │ country │ capabilities                                                                                                                                            │ status │
 ├──────────────┼─────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────┤
@@ -64,7 +64,7 @@ To make information easy to ready, the Linode CLI outputs responses in a text-ba
 │ eu-central   │ de      │ Linodes, NodeBalancers, Block Storage, Object Storage, GPU Linodes, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases             │ ok     │
 │ ap-northeast │ jp      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases                                          │ ok     │
 └──────────────┴─────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────┘
-{{</ output >}}
+```
 
 ### Fields
 

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Having problems with your DNS records? This guide to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.'
-og_description: 'Having problems with your DNS records? This guide to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.'
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 tags: ["linode platform","resolving","cloud manager","dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2020-07-09
 modified_by:
   name: Linode
 published: 2020-07-09
-title: Troubleshooting DNS Records
-h1_title: Diagnose & Resolve DNS Records in DNS Manager
+title: Diagnose & Resolve DNS Records in DNS Manager
+title_meta: Troubleshooting DNS Records
 aliases: ['/platform/manager/troubleshooting-dns/']
 ---
 
@@ -23,13 +22,13 @@ Having problems with your DNS records? This guide to help get your DNS settings 
 
 The *Domains* section of the [Linode Cloud Manager](https://cloud.linode.com/domains) is a comprehensive DNS management interface that allows you to add DNS records for all of your domain names. For an introduction to DNS Manager including setting up DNS records, see the [DNS Manager](/docs/products/networking/dns-manager/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode's DNS service employs [Cloudflare](https://cloudflare.com) to provide denial of service (DDoS) mitigation, load balancing, and increased geographic distribution for our [name servers](/docs/guides/dns-overview/#name-servers). These factors make our service reliable, fast, and a great choice for your DNS needs.
 {{</ note>}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To use the Linode DNS Manager to serve your domains, you must have an active Linode on your account. If you remove all active Linodes, your domains will no longer be served.
-{{</ note >}}
+{{< /note >}}
 
 ## Wait for Propagation
 
@@ -45,7 +44,7 @@ However, there are times when you'll want the TTL to be as low as possible. For 
 
 The solution is to lower your TTL before making a DNS change. You'll want to lower the TTL first, before making any other DNS changes. Here's a general overview of what should happen during a smooth DNS update:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 TTL is always written out in seconds, so 24 hours = 86400 seconds.
 {{< /note >}}
 

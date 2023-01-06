@@ -31,9 +31,9 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** OpenVPN should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,9 +42,9 @@ OpenVPN is a widely trusted, free, and open-source VPN (virtual private network)
 
 ### OpenVPN Options
 
-{{<note>}}
+{{< note >}}
 The admin password for the OpenVPN application is no longer manually entered when creating the Compute Instance. Instead, this password is now automatically generated. See [Obtaining the Admin Password](#obtaining-the-admin-password) for instructions on viewing the admin password after deployment.
-{{</note>}}
+{{< /note >}}
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
@@ -55,9 +55,9 @@ The admin password for the OpenVPN application is no longer manually entered whe
 
 ### Access Details
 
-{{< caution >}}
+{{< note type="alert" >}}
 OpenVPN Access Server is only accessible over an *HTTPS* connection (not *HTTP*). When accessing both the admin and client dashboards, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
-{{< /caution >}}
+{{< /note >}}
 
 **OpenVPN Admin Interface:**
 

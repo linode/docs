@@ -4,14 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
-og_description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
 keywords: ['appsmith tutorial','appsmith examples','install appsmith']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-24
 modified_by:
   name: Nathaniel Stickman
-title: "How to Self-host Appsmith with Docker Compose"
-h1_title: "How to Self-host Appsmith with Docker Compose"
+title: "Self-host Appsmith with Docker Compose"
+title_meta: "How to Self-host Appsmith with Docker Compose"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -41,7 +40,7 @@ In this tutorial, learn how to get started with Appsmith by deploying your own s
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -67,7 +66,7 @@ Appsmith, on the other hand, provides a solution to help developers build comple
 
 The official method supported for deploying a self-hosted Appsmith instance is through Docker Compose. That is the method used here, with all the steps you need to get your own instance up and running.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These steps have been tested on Ubuntu 22.04. However, the Docker commands should apply equally on other distributions, such as Debian and CentOS. The section on installing Docker also includes information on how to do so for these and other distributions.
 {{< /note >}}
 

@@ -4,7 +4,6 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
-og_description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
 keywords: ["mtr", "traceroute", "latency", "loss"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -98,7 +97,7 @@ On some systems, using this flag may require administrative privileges:
 
     sudo mtr -rwc 50 -rw 198.51.100.0
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `r` option flag generates the report (short for `--report`).
 
 The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).

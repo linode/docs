@@ -32,7 +32,7 @@ aliases: ['/applications/configuration-management/puppet/install-and-manage-mysq
 
 In this guide, you'll use Puppet to deploy [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the end, you will have MySQL installed, configured, and ready to use for a variety of applications that require a database backend.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

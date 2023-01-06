@@ -35,7 +35,7 @@ Prior to these instructions, follow the steps outlined in our [Setting Up and Se
         apt-get update && apt-get upgrade
         apt-get install -y build-essential libncurses5-dev gcc libssl-dev grub2 bc
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When installing `GRUB`, you'll be asked which disk images you'd like GRUB to configure. Unless you're planning on using the **Direct Disk** option in the Linode Configuration Manager, this is not required.
 {{< /note >}}
 
@@ -120,7 +120,7 @@ GRUB_DISABLE_OS_PROBER=true
 
 3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/guides/lish/) or [GLISH](/docs/guides/glish/) session first, so you can monitor the boot process and troubleshoot if necessary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
 {{< /note >}}
 

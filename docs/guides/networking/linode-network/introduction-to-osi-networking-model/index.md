@@ -4,15 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide introduces and explains the levels of the OSI networking model and how to interact with the network architecture.'
-og_description: 'This guide introduces and explains the levels of the OSI networking model and how to interact with the network architecture.'
 keywords: ['OSI network model','OSI networking','OSI levels','networking model']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-01
 modified_by:
   name: Linode
 title: "An Introduction to the OSI Networking Model"
-h1_title: "An Introduction to the OSI Networking Model"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
-og_description: "Learn the basic concepts of CouchDB 2.0, along with how to use it on Ubuntu."
 keywords: ['couchdb','nosql','fauxton','database','ubuntu 20.04']
 tags: ['couchdb','fauxton', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use CouchDB 2.0 on Ubuntu 20.04"
-h1_title: "Using CouchDB 2.0 on Ubuntu 20.04"
-enable_h1: true
+title: "Using CouchDB 2.0 on Ubuntu 20.04"
+title_meta: "How to Use CouchDB 2.0 on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -119,7 +117,7 @@ Refer to CouchDB's [API guide](https://docs.couchdb.org/en/latest/api/index.html
              -X POST http://admin:password@127.0.0.1:5984/example-db \
              -d '{"key1":"value1","key2":"value2"}'
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 CouchDB automatically assigns an ID to the document if you do not explicitly provide one. However, CouchDB recommends that production applications create document IDs explicitly. Doing so prevents duplication of documents if your application has to retry its connection to the CouchDB database.
     {{< /note >}}
 
@@ -163,7 +161,7 @@ The following are examples of basic queries aiming to provide an idea of how the
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \
              -d '{"selector": {"key_1": {"$gt": 5}}, "fields": ["key_2"], "sort": [{"key_3": "asc"}]}'
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To sort results, you must first define an index for the field and the sort order. For the example above, you could use the following to create the necessary index:
 
         curl -H 'Content-Type: application/json' \
