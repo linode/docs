@@ -4,17 +4,18 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to install and configure Collabora CODE and how to integrate it with Nextcloud'
-og_description: 'This guide explains how to install and configure Collabora CODE and how to integrate it with Nextcloud'
-keywords: ['install Collabora','configure Collabora','Collabora and Nextcloud','integrate Collabora into Nextcloud']
+keywords: ['install Collabora', 'configure Collabora', 'Collabora and Nextcloud', 'integrate Collabora into Nextcloud']
+tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-09
 modified_by:
   name: Linode
 title: "How to Install Collabora CODE"
-h1_title: "How to Install Collabora CODE"
+h1_title: "Install and Configure Collabora CODE"
 enable_h1: true
 contributor:
   name: Jeff Novotny
+  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Collabora Office](https://www.collaboraoffice.com/)'
 - '[Collabora CODE](https://www.collaboraoffice.com/code/)'
@@ -29,17 +30,17 @@ external_resources:
 - '[Certbot](https://certbot.eff.org/)'
 ---
 
-[Collabora](https://www.collaboraoffice.com/) is a fully-featured open source alternative to popular office suites such as Microsoft Office. The [*Collabora Online Development Edition*](https://www.collaboraoffice.com/code/) (CODE) edition is the online development version of Collabora. It is typically integrated into the front end of a file storage application such as [Nextcloud](https://nextcloud.com/). This guide explains how to download, install, and configure the CODE edition of Collabora. It also demonstrates how to connect Collabora and Nextcloud, both running on the same Linode, using the Nextcloud Hub.
+[Collabora](https://www.collaboraoffice.com/) is a fully-featured open-source alternative to popular office suites such as Microsoft Office. The [*Collabora Online Development Edition*](https://www.collaboraoffice.com/code/) (CODE) edition is the online development version of Collabora. It is typically integrated into the front end of a file storage application such as [Nextcloud](https://nextcloud.com/). This guide explains how to download, install, and configure the CODE edition of Collabora. It also demonstrates how to connect Collabora and Nextcloud, both running on the same Linode, using the Nextcloud Hub.
 
 ## What is Collabora?
 
-Collabora CODE is a free open source office productivity suite based on LibreOffice. It includes text editing, spreadsheet, presentation, and vector graphics software applications, along with a note taking utility. It can handle all major document formats, using WYSIWYG formatting to preserve the layout of each document. It includes a shared editing feature and allows users to import and view over one hundred different types of documents.
+Collabora CODE is a free open-source office productivity suite based on LibreOffice. It includes text editing, spreadsheet, presentation, and vector graphics software applications, along with a note-taking utility. It can handle all major document formats, using WYSIWYG formatting to preserve the layout of each document. It includes a shared editing feature and allows users to import and view over one hundred different types of documents.
 
-Collabora is available in desktop and online editions. Products include the commercial Collabora Online enterprise edition, and CODE, which is the free development stream. New CODE releases are distributed about once a month, but CODE is considered less stable than Collabora Online. It is suitable for students, home offices, and small businesses, but it is not recommended for high capacity production environments.
+Collabora is available in desktop and online editions. Products include the commercial Collabora Online enterprise edition, and CODE, which is the free development stream. New CODE releases are distributed about once a month, but CODE is considered less stable than Collabora Online. It is suitable for students, home offices, and small businesses, but it is not recommended for high-capacity production environments.
 
-Collabora can be installed on a private server or hosted in the cloud. It requires either a helper application like Nextcloud or a custom wrapper. Nextcloud is an open source self-hosted file storage solution that places an emphasis on security and privacy. Nextcloud and Collabora have worked together to integrate the two applications. Within the Nextcloud application, Collabora CODE is known as *Nextcloud Office*.
+Collabora can be installed on a private server or hosted in the cloud. It requires either a helper application like Nextcloud or a custom wrapper. Nextcloud is an open-source self-hosted file storage solution that emphasizes security and privacy. Nextcloud and Collabora have worked together to integrate the two applications. Within the Nextcloud application, Collabora CODE is known as *Nextcloud Office*.
 
-To use Collabora from the Nextcloud interface, install both Collabora and Nextcloud and configure each application separately. Then integrate Collabora into Nextcloud using the Nextcloud administrative hub. This allows users to view and edit Collabora documents directly within Nextcloud. When accessed in this manner, Collabora features full editing capabilities and enhanced security, and is accessible from mobile devices.
+To use Collabora from the Nextcloud interface, install both Collabora and Nextcloud and configure each application separately. Then, integrate Collabora into Nextcloud using the Nextcloud administrative hub. This allows users to view and edit Collabora documents directly within Nextcloud. When accessed in this manner, Collabora features full editing capabilities and enhanced security and is accessible from mobile devices.
 
 {{< note >}}
 Throughout the remainder of the installation instructions, Collabora CODE and Collabora are used interchangeably.
@@ -60,7 +61,7 @@ For those users who do not want to use Collabora with Nextcloud, integration and
 1.  Collabora CODE requires a supporting storage application such as Nextcloud. For information on configuring Nextcloud, see the [Linode guide to installing Nextcloud on Ubuntu](/docs/guides/how-to-install-nextcloud-on-ubuntu-22-04/). This guide assumes Collabora is being installed on the same server as Nextcloud.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install and Configure Collabora CODE
@@ -69,22 +70,22 @@ Before installing Collabora CODE, ensure Nextcloud or an equivalent application 
 
 Collabora requires its own domain name, but it functions as an embedded application within Nextcloud, not as a stand-alone website. Nextcloud transmits queries and requests to the Collabora domain, so users do not have to know anything about Collabora. Normally the Collabora server uses a subdomain of the main domain name. The Nextcloud server can either use the main domain name or the name of a second subdomain. For instance, the Collabora server might be named `collabora.example.com`, while Nextcloud is accessed through `nextcloud.example.com` or `example.com`.
 
-These instructions are designed for the Ubuntu 22.04 LTS, but are similar for earlier releases. For instructions on how to install Collabora on other distributions, see the [Collabora Linux packages documentation](https://www.collaboraoffice.com/code/linux-packages/).
+These instructions are designed for the Ubuntu 22.04 LTS but are similar to earlier releases. For instructions on how to install Collabora on other distributions, see the [Collabora Linux packages documentation](https://www.collaboraoffice.com/code/linux-packages/).
 
 ### How to Install Collabora
 
-Collabora CODE is easier to install than Nextcloud. The Collabora prerequisites were all installed when Nextcloud was installed. To install Collabora CODE, follow these steps.
+Collabora CODE is easier to install than Nextcloud. The Collabora prerequisites were all installed when Nextcloud was installed. To install Collabora CODE, follow the steps below:
 
 1.  Import the Collabora CODE signing key.
 
         cd /usr/share/keyrings
         sudo wget https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyring.gpg
 
-2.  Create a source file for the Collabora CODE package repository.
+1.  Create a source file for the Collabora CODE package repository.
 
         sudo vi /etc/apt/sources.list.d/collaboraonline.sources
 
-3.  Add the following information to the file and save it.
+1.  Add the following information to the file and save it.
 
     {{< file "/etc/apt/sources.list.d/collaboraonline.sources" aconf >}}
 Types: deb
@@ -93,32 +94,32 @@ Suites: ./
 Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg
     {{< /file >}}
 
-4.  Update the repository.
+1.  Update the repository.
 
         sudo apt update -y
 
-5.  Install Collabora CODE using `apt`.
+1.  Install Collabora CODE using `apt`.
 
         sudo apt install coolwsd code-brand -y
 
 ### How to Configure Collabora
 
-Collabora configuration depends on an XML file at `/etc/coolwsd/coolwsd.xml`. Although this file can be edited directly, it is faster to use the `coolconfig` tool to make configuration changes. To configure Collabora, follow these steps.
+Collabora configuration depends on an XML file at `/etc/coolwsd/coolwsd.xml`. Although this file can be edited directly, it is faster to use the `coolconfig` tool to make configuration changes. To configure Collabora, follow the steps below:
 
-1.  With the current configuration, the `coolwsd` service continues to fail and restart. This happens because Collabora cannot establish a HTTPS connection with the local host. Use the `coolconfig` tool to disable HTTPS on the connection.
+1.  With the current configuration, the `coolwsd` service continues to fail and restart. This happens because Collabora cannot establish an HTTPS connection with the local host. Use the `coolconfig` tool to disable HTTPS on the connection.
 
         sudo coolconfig set ssl.enable false
         sudo coolconfig set ssl.termination true
 
-2.  Only specifically designated hosts are allowed to access the Collabora server. To designate Nextcloud as a trusted client, set `storage.wopi.host` to the Nextcloud domain, for example, `nextcloud.example.com`. In the following command, substitute the real domain name in place of `example.com`.
+1.  Only specifically designated hosts are allowed to access the Collabora server. To designate Nextcloud as a trusted client, set `storage.wopi.host` to the Nextcloud domain, for example, `nextcloud.example.com`. In the following command, substitute the real domain name in place of `example.com`.
 
         sudo coolconfig set storage.wopi.host nextcloud.example.com
 
-3.  Create an administration account and provide a password for the account. When prompted, enter the `admin username`. Then enter the `admin password` twice.
+1.  Create an administration account and provide a password for the account. When prompted, enter the `admin username`. Then, enter the `admin password` twice.
 
         sudo coolconfig set-admin-password
 
-4.  Restart the `coolwsd` service and verify the service status.
+1.  Restart the `coolwsd` service and verify the service status.
 
         sudo systemctl restart coolwsd
         sudo systemctl status coolwsd
@@ -131,17 +132,17 @@ coolwsd.service - Collabora Online WebSocket Daemon
 
 ### How to Configure the Collabora Virtual Host
 
-NGINX requires a Collabora virtual host to serve the files. This guide uses NGINX, but Collabora can also use the Apache web server. To configure an NGINX virtual host, follow these steps.
+NGINX requires a Collabora virtual host to serve the files. This guide uses NGINX, but Collabora can also use the Apache web server. To configure an NGINX virtual host, follow the steps below:
 
 {{< note >}}
-For details on how to configure the Apache virtual host, see the [Collabora Apache Proxy Settings](https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html#reverse-proxy-with-apache-2-webserver). Enable the `proxy`, `proxy_http`, `proxy_connect`, and `proxy_wstunnel` modules using the `a2enmod` command.
+For details on how to configure the Apache virtual host, see the [Collabora Apache Proxy Settings](https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html#reverse-proxy-with-apache-2-webserver) from the Collabora installation guide. Enable the `proxy`, `proxy_http`, `proxy_connect`, and `proxy_wstunnel` modules using the `a2enmod` command.
 {{< /note >}}
 
 1.  Create a `collabora` NGINX virtual host file.
 
         sudo vi /etc/nginx/sites-available/collabora
 
-2.  Add the following configuration to the file. Change the value of `server_name` from `collabora.example.com` to the name of the Collabora subdomain.
+1.  Add the following configuration to the file. Change the value of `server_name` from `collabora.example.com` to the name of the Collabora subdomain.
 
     {{< file "/etc/nginx/sites-available/collabora" aconf >}}
 server {
@@ -195,44 +196,44 @@ server {
 }
     {{< /file >}}
 
-3.  Enable the site on the server.
+1.  Enable the site on the server.
 
         sudo ln -s /etc/nginx/sites-available/collabora /etc/nginx/sites-enabled/collabora
 
-4.  Test the file syntax to ensure it does not contain any errors.
+1.  Test the file syntax to ensure it does not contain any errors.
 
         sudo nginx -t
 
-5.  Restart NGINX and verify its status.
+1.  Restart NGINX and verify its status.
 
         sudo systemctl reload nginx
         sudo systemctl status nginx
 
 ### How to Enable HTTPS for the Collabora Domain
 
-This section explains how to use [Certbot](https://certbot.eff.org/) to request a Let's Encrypt certificate and enable HTTPS support. The `snap` package manager can be used to install Certbot. For additional information about Certbot, Let's Encrypt certificates, and HTTPS, consult the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
+The steps in this section explain how to use [Certbot](https://certbot.eff.org/) to request a *Let's Encrypt* certificate and enable HTTPS support. The `snap` package manager can be used to install Certbot. For additional information about Certbot, Let's Encrypt certificates, and HTTPS, consult the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
 
 1.  Install the `snap` package manager.
 
         sudo apt install snapd
         sudo snap install core
 
-2.  Remove the old `certbot` package and use `snap` to install the `certbot` Snap. Create a symbolic link to the new directory.
+1.  Remove the old `certbot` package and use `snap` to install the `certbot` Snap. Create a symbolic link to the new directory.
 
         sudo apt remove certbot
         sudo snap install --classic certbot
         sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-3.  Run the `certbot` command to request and install a Let's Encrypt certificate. The `--nginx` option allows Certbot to modify the NGINX virtual host file for the domain.
+1.  Run the `certbot` command to request and install a Let's Encrypt certificate. The `--nginx` option allows Certbot to modify the NGINX virtual host file for the domain.
 
-    During the certificate granting process, `certbot` prompts for more information. Some of these questions might not appear if you have used Certbot on this particular Linode before. To request a certificate, follow these guidelines.
+    During the certificate granting process, `certbot` prompts for more information. Some of these questions might not appear if you have used Certbot on this particular Linode before. To request a certificate, follow the guidelines below:
 
-    -   Enter the administrator's email address when requested to do so. Let's Encrypt sends renewal notices and other relevant updates to this address.
+    -   Enter the administrator's email address when requested to do so. Let's Encrypt sends renewal notices and other relevant updates to this email address.
     -   Enter `Y` to agree to the Terms of Service. Enter `N` to end the program.
     -   Certbot asks for permission to register the address with the Electronic Frontier Foundation. Enter either `Y` or `N`. This does not affect the rest of the installation.
     -   Enter the Collabora domain name, for example, `collabora.example.com`, or choose the correct name from a list. If `certbot` displays a list, select the number corresponding to the Collabora domain.
 
-    The `certbot` program confirms the results of the certificate request and displays any error messages. `certbot` automatically schedules the certificate for auto renewal.
+    The `certbot` program confirms the results of the certificate request and displays any error messages. `certbot` automatically schedules the certificate for auto-renewal.
 
         sudo certbot --nginx
 
@@ -251,37 +252,37 @@ Successfully deployed certificate for collabora.example.com to /etc/nginx/sites-
 Congratulations! You have successfully enabled HTTPS on https://collabora.example.com
     {{< /output >}}
 
-4.  Reload NGINX to incorporate the changes.
+1.  Reload NGINX to incorporate the changes.
 
         sudo systemctl reload nginx
 
 ## How to Connect Collabora to Nextcloud
 
-To use Collabora as a Nextcloud application, connect the Collabora server to Nextcloud via the Nextcloud Hub. Within the Nextcloud context, Collabora CODE is named "Nextcloud Office". To attach Collabora to Nextcloud, follow these steps.
+To use Collabora as a Nextcloud application, connect the Collabora server to Nextcloud via the Nextcloud Hub. Within the Nextcloud context, Collabora CODE is named "Nextcloud Office". To attach Collabora to Nextcloud, follow the steps below:
 
 1.  Navigate to the address of the Nextcloud domain. Enter the administrative login credentials to access the Nextcloud web interface.
 
-2.  Click on the administrator profile, represented by a circle in the upper right hand corner of the window. This reveals a list of options. Click on the link labeled **+ Apps** to view the applications panel.
+1.  Click on the administrator profile, represented by a circle in the upper right-hand corner of the window. This reveals a list of options. Click on the link labeled **+ Apps** to view the applications panel.
 
     ![Access the Nextcloud administrator profile](Nextcloud-Profile.png)
 
-3.  On the applications panel, locate and click the link for **Office & Text** on the left hand side navigation panel.
+1.  On the applications panel, locate and click the link for **Office & text** on the left-hand side navigation panel.
 
     ![The Nextcloud applications page](Nextcloud-Applications.png)
 
-4.  The subsequent page displays all the office and document management applications. Scroll through the list or use the search function to find the `Nextcloud Office` application. Click the **Download and Enable** button beside the application.
+1.  The subsequent page displays all the office and document management applications. Scroll through the list or use the search function to find the `Nextcloud Office` application. Click the **Download and enable** button beside the application.
 
     ![The Nextcloud Office application](Nextcloud-Office-Install.png)
 
-5.  Click on the administrator profile. This is the circle on the upper right of the screen. Select the **Administration Settings** link.
+1.  Click on the administrator profile. This is the circle on the upper right of the screen. Select the **Administration settings** link.
 
     ![Access the Nextcloud administrator profile again](Nextcloud-Profile2.png)
 
-6.  On the left hand side navigation panel, scroll down until the **Nextcloud Office** setting appears and click the label.
+1.  On the left-hand side navigation panel, scroll down until the **Nextcloud Office** setting appears and click the label.
 
     ![The Nextcloud Office administration option](Nextcloud-Office-Administration.png)
 
-7.  Nextcloud displays the `Nextcloud Office` settings. Enable the `Use your own server` setting by clicking the radio button. This reveals a text box for entering the `URL (and Port) of Collabora Online-server`. Enter the Collabora subdomain here, for example `https://collabora.example.com` and click **Save**. If the connection is successful, Nextcloud confirms the `Collabora Online server is reachable`.
+1.  Nextcloud displays the `Nextcloud Office` settings. Enable the `Use your own server` setting by clicking the radio button. This reveals a text box for entering the `URL (and Port) of Collabora Online-server`. Enter the Collabora subdomain here, for example, `https://collabora.example.com` and click **Save**. If the connection is successful, Nextcloud confirms the `Collabora Online server is reachable`.
 
     {{< note >}}
 If Nextcloud states the Collabora is unreachable, consult the [Nextcloud Office Troubleshooting guide](https://docs.nextcloud.com/server/latest/admin_manual/office/troubleshooting.html).
@@ -289,20 +290,20 @@ If Nextcloud states the Collabora is unreachable, consult the [Nextcloud Office 
 
     ![The Nextcloud Office settings page](Nextcloud-Office-Server-Settings.png)
 
-8.  Locate the `Advanced Settings` section lower down on the panel. Click the box to enable the `Use Office Open XML (OOXML) instead of OpenDocument Format by default for next files` setting. This ensures all files are compatible with Microsoft Office. For added security, enter the name of the Collabora domain name beside `Allow list for WOPI requests`.
+1.  Locate the `Advanced Settings` section lower down on the panel. Click the `Use Office Open XML (OOXML) instead of OpenDocument Format by default for next files` checkbox to enable the setting. This ensures all files are compatible with Microsoft Office. For added security, enter the name of the Collabora domain name beside `Allow list for WOPI requests`.
 
     ![The Nextcloud Office advanced settings](Nextcloud-Office-Advanced-Settings.png)
 
-9.  To create a new file, click the file folder symbol on the top menu bar. This presents the `All Files` screen. Click on the **+** symbol to the right of the home button and the `>` symbol. A list of the potential file options appears.
+1.  To create a new file, click the file folder icon on the top menu bar. This presents the `All Files` screen. Click the **+** symbol to the right of the home icon and the `>` symbol. A list of the potential file options appears.
 
     ![Add a new Nextcloud Office file](Nextcloud-New-Files.png)
 
-10. Provide a name for the file and click the **-->** symbol to create it. Base the file on a template or start with a blank file. Enter the contents of the new file. Nextcloud auto-saves the file whenever it changes. Close the file using the **X** button on the top right when done.
+1. Provide a name for the file and click the **-->** icon to create it. Base the file on a template or start with a blank file. Enter the contents of the new file. Nextcloud auto-saves the file whenever it changes. Close the file using the **X** button on the top right when done.
 
     ![Create a Nextcloud text file using Collabora](Nextcloud-Text-File.png)
 
-Additional information on how to use Nextcloud Office is available in the [Nextcloud web interface documentation](https://docs.nextcloud.com/server/stable/user_manual/en/webinterface.html).
+Additional information on how to use Nextcloud Office is available in the [Nextcloud Web interface documentation](https://docs.nextcloud.com/server/stable/user_manual/en/webinterface.html).
 
 ## Conclusion
 
-Collabora is a free open source office suite application that is an alternative to Microsoft Office. It is typically embedded as an application within Nextcloud, but other configuration options are available. Add the Linux package and use `apt` to install Collabora. Use the `coolconfig` utility to configure Collabora and then add a virtual host for the application. To integrate Collabora into Nextcloud, connect it using the Nextcloud Hub. For more information on Collabora, see the [introduction to Collabora CODE](https://www.collaboraoffice.com/code/).
+Collabora is a free open-source office suite application that is an alternative to Microsoft Office. It is typically embedded as an application within Nextcloud, but other configuration options are available. Add the Linux package and use `apt` to install Collabora. Use the `coolconfig` utility to configure Collabora and then add a virtual host for the application. To integrate Collabora into Nextcloud, connect it using the Nextcloud Hub. For more information on Collabora, see the [introduction to Collabora CODE](https://www.collaboraoffice.com/code/).
