@@ -6,7 +6,7 @@ X-Frame-Options = "DENY"
 X-XSS-Protection = "1; mode=block"
 X-Content-Type-Options = "nosniff"
 Referrer-Policy = "no-referrer"
-Content-Security-Policy = "script-src 'self' *.googletagmanager.com *.trustarc.com *.weglot.com *.disqus.com 'unsafe-eval' 'unsafe-inline'"
+Content-Security-Policy = "script-src 'self' *.googletagmanager.com *.adobedtm.com *.trustarc.com *.weglot.com *.disqus.com 'unsafe-eval' 'unsafe-inline'"
 
 [[headers]]
 for = "/**.{css,jpg,js}"
