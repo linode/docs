@@ -11,7 +11,6 @@ modified_by:
   name: Linode
 title_meta: "The Developer’s Guide to Java: Web Servers"
 title: "How to Make a Server in Java in 5 Easy Steps"
-enable_h1: true
 contributor:
   name: John Mueller
 external_resources:
