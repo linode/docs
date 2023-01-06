@@ -133,6 +133,10 @@
   var mount3 = function() {
     fetch("https://www.linode.com/wp-json/linode/v1/header-featured").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
   };
+  window.siteFeatureClick = function(category, action, label) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ "event": "gaEvent", "eventCategory": category, "eventAction": action, "eventLabel": label });
+  };
   var updateDOM2 = function(data) {
     data.forEach((item) => {
       let $slot = document.querySelector('.c-site-header [data-featured="' + item.slot + '"]');
@@ -167,7 +171,7 @@
     $a.id = `c-featured--${data.slot}`;
     $a.href = data.link_url;
     $a.setAttribute("style", data.wrap_styles);
-    $a.setAttribute("onclick", `featureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
+    $a.setAttribute("onclick", `siteFeatureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
     $text.classList.add("c-featured__text");
     $headline.classList.add("c-featured__headline");
     $headline.innerHTML = safeHTML(data.headline);
@@ -213,18 +217,26 @@
     $html4.addEventListener("click", handleClick);
   };
   var handleClick = function(e) {
-    const $anchor = e.target.closest("a"), $trigger = e.target.closest("[data-toggle]");
+    const $trigger = e.target.closest("[data-toggle]");
     if ($trigger === null)
       return;
     if (e.target.closest("form") !== null)
       return;
-    if ($anchor && $anchor !== $trigger)
-      return;
     const $target = $trigger.dataset.toggle ? $html4.querySelector($trigger.dataset.toggle) : $trigger;
     if ($target === null)
       return;
+    const $anchor = e.target.closest("a");
+    if ($anchor) {
+      if ($anchor === $trigger) {
+        e.preventDefault();
+      } else {
+        const $url = new URL($anchor.getAttribute("href"));
+        if ($url && $url.pathname !== window.location.pathname)
+          return;
+        $anchor.blur();
+      }
+    }
     toggle($target, $trigger);
-    e.preventDefault();
   };
   var toggle = function($target, $trigger) {
     const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html4.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent("toggle:" + (target_active ? "off" : "on"), {
