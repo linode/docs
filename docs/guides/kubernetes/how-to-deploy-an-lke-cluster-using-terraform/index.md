@@ -157,7 +157,7 @@ You are now ready to define the input variables that were referenced in your `ma
 
     variable "k8s_version" {
       description = "The Kubernetes version to use for this cluster. (required)"
-      default = "1.23"
+      default = "1.24"
     }
 
     variable "label" {
@@ -219,7 +219,7 @@ pools = [
 ]
       {{</ file >}}
 
-    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.23` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.24` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
 
 ## Deploy your Kubernetes Cluster
 
