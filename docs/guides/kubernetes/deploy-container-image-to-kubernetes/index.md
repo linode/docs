@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-05-07
 modified_by:
   name: Linode
-title: "Build & Deploy a Docker Image to Kubernetes Cluster"
-h1_title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
-enable_h1: true
+title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
+title_meta: "Build & Deploy a Docker Image to Kubernetes Cluster"
 aliases: ['/applications/containers/kubernetes/deploy-container-image-to-kubernetes/','/applications/containers/deploy-container-image-to-kubernetes/','/kubernetes/deploy-container-image-to-kubernetes/']
 contributor:
   name: Linode

@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-30
-title: 'How To Install MongoDB on CentOS 7'
-h1_title: 'Installing MongoDB on CentOS 7'
+title: 'Installing MongoDB on CentOS 7'
+title_meta: 'How To Install MongoDB on CentOS 7'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'

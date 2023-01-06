@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-05
 modified_by:
   name: Linode
-title: "An Essential Guide on How to Add JavaScript to HTML"
-h1_title: "How to Link JavaScript to HTML"
-enable_h1: true
+title: "Link JavaScript to HTML"
+title_meta: "An Essential Guide on How to Add JavaScript to HTML"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

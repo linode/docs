@@ -10,7 +10,8 @@ modified: 2018-06-26
 modified_by:
   name: Nathan Melehan
 published: 2018-06-26
-title: "How to Set Up Cloudflare with Linode"
+title: "Set Up Cloudflare with Linode"
+title_meta: "How to Set Up Cloudflare with Linode"
 external_resources:
   - '[Cloudflare Support](https://support.cloudflare.com/hc/en-us)'
   - '[DNS Records: An Introduction](/docs/guides/dns-overview/)'

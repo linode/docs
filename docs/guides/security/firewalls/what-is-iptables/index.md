@@ -3,15 +3,14 @@ slug: what-is-iptables
 author:
   name: Hackersploit
 description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
-og_description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
 keywords: ['understanding iptables', 'what is iptables']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-07
 modified_by:
   name: Linode
 published: 2020-10-07
-title: What is iptables
-h1_title: Understanding iptables
+title: Understanding iptables
+title_meta: What is iptables
 tags: ['networking','security']
 image: "Understanding_iptables.png"
 aliases: ['/security/firewalls/what-is-iptables/']

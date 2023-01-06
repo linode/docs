@@ -4,14 +4,13 @@ author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
 description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
-og_description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
 keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-30
 modified_by:
   name: Linode
-title: 'Solving Real World Problems With Bash Scripts - A Tutorial'
-h1_title: A Tutorial for Solving Real World Problems with Bash Scripts
+title: A Tutorial for Solving Real World Problems with Bash Scripts
+title_meta: 'Solving Real World Problems With Bash Scripts - A Tutorial'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

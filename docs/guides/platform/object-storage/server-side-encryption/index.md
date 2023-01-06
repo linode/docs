@@ -12,8 +12,8 @@ published: 2020-08-14
 image: UseServerSideEnc_LinObjStorage.png
 modified_by:
   name: Linode
-title: "How to Use Server-Side Encryption with Linode Object Storage"
-h1_title: "Using Server-Side Encryption with Linode Object Storage"
+title: "Using Server-Side Encryption with Linode Object Storage"
+title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
 ---
 

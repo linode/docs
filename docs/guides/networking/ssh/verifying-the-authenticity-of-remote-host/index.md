@@ -11,9 +11,8 @@ published: 2022-01-28
 modified: 2022-05-10
 modified_by:
   name: Linode
-title: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
-h1_title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
-enable_h1: true
+title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
+title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
 ---
 
 ## Warning: The Authenticity of Host Can't Be Established

@@ -3,7 +3,6 @@ slug: use-chroot-for-testing-on-ubuntu
 author:
   name: Nathaniel Stickman
 description: "This guide shows you how to create your own chroot environment to securely test settings and apps by creating an environment isolated from your file system."
-og_description: "This guide shows you how to create your own chroot environment to securely test settings and apps by creating an environment isolated from your file system."
 keywords: ['chroot','chroot linux','chroot jail']
 tags: ['linux', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +10,7 @@ published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "Use chroot for Testing on Ubuntu"
-h1_title: "How to Use chroot for Testing on Ubuntu"
-enable_h1: true
+title_meta: "How to Use chroot for Testing on Ubuntu"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

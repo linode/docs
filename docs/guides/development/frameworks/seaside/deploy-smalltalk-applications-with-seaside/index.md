@@ -12,8 +12,8 @@ modified: 2013-09-27
 modified_by:
   name: Linode
 published: 2010-01-12
-title: Deploy Smalltalk Applications with Seaside
-h1_title: Deploying Smalltalk Apps with Seaside on Debian 5
+title: Deploying Smalltalk Apps with Seaside on Debian 5
+title_meta: Deploy Smalltalk Applications with Seaside
 deprecated: true
 relations:
     platform:

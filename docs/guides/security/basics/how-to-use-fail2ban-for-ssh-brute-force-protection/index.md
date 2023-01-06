@@ -10,9 +10,8 @@ modified: 2020-10-13
 modified_by:
   name: Linode
 published: 2020-10-13
-title: "How to Use Fail2Ban for SSH Brute-force Protection"
-h1_title: "Using Fail2Ban for SSH Brute-force Protection"
-enable_h1: true
+title: "Using Fail2Ban for SSH Brute-force Protection"
+title_meta: "How to Use Fail2Ban for SSH Brute-force Protection"
 image: fail2ban_bruteforceprotection.png
 aliases: ['/security/basics/how-to-use-fail2ban-for-ssh-brute-force-protection/']
 ---

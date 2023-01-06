@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Ubuntu 20.04.'
-og_description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Ubuntu 20.04.'
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms']
 tags: ['wordpress', 'cms', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-27
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install WordPress on Ubuntu 20.04"
-h1_title: "Install WordPress on Ubuntu 20.04"
-enable_h1: true
+title: "Install WordPress on Ubuntu 20.04"
+title_meta: "How to Install WordPress on Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

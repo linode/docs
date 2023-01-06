@@ -11,9 +11,8 @@ modified: 2022-01-14
 modified_by:
   name: Linode
 published: 2011-11-08
-title: "How to Use Nano Text Editor Commands in Linux"
-h1_title: "Using Nano Text Editor Commands in Linux"
-enable_h1: true
+title: "Using Nano Text Editor Commands in Linux"
+title_meta: "How to Use Nano Text Editor Commands in Linux"
 tags: ["linux"]
 ---
 

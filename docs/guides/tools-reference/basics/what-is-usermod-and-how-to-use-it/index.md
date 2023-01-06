@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "What is usermod, and How do I Use It?"
-h1_title: "An Overview of the usermod Command and How It's Used"
-enable_h1: true
+title: "An Overview of the usermod Command and How It's Used"
+title_meta: "What is usermod, and How do I Use It?"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

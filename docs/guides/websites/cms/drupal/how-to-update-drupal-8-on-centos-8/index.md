@@ -4,7 +4,6 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'This guide will show you how to update your Drupal 8 installation running on a CentOS 8 Linode.'
-og_description: 'This guide will show you how to update your Drupal 8 installation running on a CentOS 8 Linode.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "update"]
 tags: ["drupal","centos","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +12,8 @@ modified_by:
     name: Linode
 published: 2020-02-21
 image: Drupal8onCentOS8.png
-title: How to Update Drupal 8 on CentOS 8
-h1_title: Update Drupal 8 on Centos 8
+title: Update Drupal 8 on Centos 8
+title_meta: How to Update Drupal 8 on CentOS 8
 relations:
     platform:
         key: how-to-update-drupal-8

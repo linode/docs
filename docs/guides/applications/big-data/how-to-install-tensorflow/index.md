@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
-og_description: "In this tutorial for TensorFlow, you'll learn what it is, how it works, and how to install it, along with some resources to get you started."
 keywords: ['TensorFlow','installation','machine learning','and key phrases']
 tags: ['python', 'ubuntu', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-08
 modified_by:
   name: Linode
-title: "How to Install TensorFlow on Ubuntu 20.04"
-h1_title: "Installing TensorFlow on Ubuntu 20.04"
-enable_h1: true
+title: "Installing TensorFlow on Ubuntu 20.04"
+title_meta: "How to Install TensorFlow on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

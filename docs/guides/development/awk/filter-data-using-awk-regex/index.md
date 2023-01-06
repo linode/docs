@@ -3,9 +3,7 @@ slug: filter-data-using-awk-regex
 author:
   name: Andy Lester
   email: andy@petdance.com
-description: 'AWK is a powerful tool used for text processing, and data retrieval. It''s support of regular expressions gives you even more power to process your text and data. This guide gives you an introduction to AWK and regex and also, includes useful examples, like finding an IP address, phone number, and dates.'
-og_description: 'AWK is a powerful tool used for text processing, and data retrieval. It''s support of regular expressions gives you even more power to process your text and data. This guide gives you an introduction to AWK and regex and also, includes useful examples, like finding an IP address, phone number, and dates.'
-description: 'Regular expressions are powerful—and awk regex makes them even more so.'
+description: "AWK is a powerful tool used for text processing, and data retrieval. It's support of regular expressions gives you even more power to process your text and data. This guide gives you an introduction to AWK and regex and also, includes useful examples, like finding an IP address, phone number, and dates."
 keywords: ['awk regex']
 tags: ['awk']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +12,7 @@ image: FilterData.jpg
 modified_by:
   name: Linode
 title: "Filter Data using AWK RegEx"
-h1_title: "How To Filter Data using AWK RegEx"
-enable_h1: true
+title_meta: "How to Filter Data using AWK RegEx"
 contributor:
   name: Andy Lester
   link: https://twitter.com/petdance

@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "List of Databases - Most Popular"
-h1_title: "The 8 Most Popular Databases"
-enable_h1: true
+title: "The 8 Most Popular Databases"
+title_meta: "List of Databases - Most Popular"
 contributor:
   name: Jack Wallen
 ---

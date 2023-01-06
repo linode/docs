@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 18.04 by following this guide.'
 keywords: ["apache tomcat ubuntu 18.04", "tomcat java", "java ubuntu 18.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +12,8 @@ modified: 2020-03-25
 modified_by:
   name: Linode
 published: 2020-03-25
-title: 'How to Install Apache Tomcat on Ubuntu 18.04'
-h1_title: 'Installing Apache Tomcat on Ubuntu 18.04'
+title: 'Installing Apache Tomcat on Ubuntu 18.04'
+title_meta: 'How to Install Apache Tomcat on Ubuntu 18.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

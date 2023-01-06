@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Debian 10.'
-og_description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Debian 10.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "debian"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2020-03-18
 modified_by:
   name: Rajakavitha Kodhandapani
 published: 2018-06-04
-title: 'How to Install the LEMP Stack on Debian 10'
-h1_title: 'Installing the LEMP Stack on Debian 10'
+title: 'Installing the LEMP Stack on Debian 10'
+title_meta: 'How to Install the LEMP Stack on Debian 10'
 image: How-to-Install-LEMP-Stack-on-Debian-10_1200x631.png
 relations:
     platform:

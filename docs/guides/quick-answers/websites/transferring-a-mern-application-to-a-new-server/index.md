@@ -9,9 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "Transferring a MERN application to Linode's MERN Marketplace App"
-h1_title: "How to transfer a MERN application to Linode's MERN Marketplace App"
-enable_h1: true
+title: "Transfer a MERN application to Linode's MERN Marketplace App"
 external_resources:
 - '[MongoDB MERN Stack Explained](https://www.mongodb.com/mern-stack)'
 - '[Node.js](https://nodejs.org/en/)'

@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
-og_description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
 keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-09
 modified_by:
   name: Linode
-title: "How to Install a LAMP Stack on Ubuntu 22.04"
-h1_title: "How to Install a LAMP Stack on Ubuntu 22.04"
-enable_h1: true
+title: "Install a LAMP Stack on Ubuntu 22.04"
+title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
 contributor:
   name: Jeff Novotny
 external_resources:

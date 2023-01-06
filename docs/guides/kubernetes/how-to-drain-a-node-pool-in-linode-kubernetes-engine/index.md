@@ -4,15 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Learn how to drain a node pool in Linode Kubernetes Engine, create a Persistent Volume and copy the application data to a Persistent Volume."
-og_description: "Learn how to drain a node pool in Linode Kubernetes Engine, create a Persistent Volume and copy the application data to a Persistent Volume."
 keywords:
   [drain, node pool, maintenance, upgrade, pod disruption,]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-07-07
 modified_by:
   name: Linode
-title: How to Drain a Node Pool in Linode Kubernetes Engine
-h1_title: Draining a Node Pool in Linode Kubernetes Engine
+title: Draining a Node Pool in Linode Kubernetes Engine
+title_meta: How to Drain a Node Pool in Linode Kubernetes Engine
 external_resources:
   - "[Kubernetes Documentation](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)"
 ---

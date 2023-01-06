@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-13
 modified_by:
   name: Linode
-title: "members.linode.com and nodebalancer.linode.com Migration"
-h1_title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
-enable_h1: true
+title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
+title_meta: "members.linode.com and nodebalancer.linode.com Migration"
 ---
 
 ## What are members.linode.com and nodebalancer.linode.com?

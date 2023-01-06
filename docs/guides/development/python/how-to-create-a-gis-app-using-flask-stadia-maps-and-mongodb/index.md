@@ -11,9 +11,8 @@ published: 2020-01-21
 modified_by:
   name: Linode
 image: L_CreateGISapp.png
-title: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
-h1_title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
-enable_h1: true
+title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
+title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
 contributor:
   name: Leslie Salazar
   link: https://twitter.com/leslitasalazar?s=03

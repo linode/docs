@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
 modified_by:
   name: Nathaniel Stickman
-title: "Using Sorted Sets in Redis Databases"
-h1_title: "How to Use Sorted Sets in Redis Databases"
-enable_h1: true
+title: "Use Sorted Sets in Redis Databases"
+title_meta: "How to Use Sorted Sets in Redis Databases"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

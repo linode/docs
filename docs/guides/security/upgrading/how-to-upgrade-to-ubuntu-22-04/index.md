@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
-og_description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
 keywords: ['Upgrade Ubuntu','Upgrade from Ubuntu 20.04','Upgrade to Ubuntu 22.04','Ubuntu inline upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-07
 modified_by:
   name: Linode
-title: "How to Upgrade to Ubuntu 22.04 LTS"
-h1_title: "How to Upgrade to Ubuntu 22.04 LTS"
-enable_h1: true
+title: "Upgrade to Ubuntu 22.04 LTS"
+title_meta: "How to Upgrade to Ubuntu 22.04 LTS"
 contributor:
   name: Jeff Novotny
 external_resources:

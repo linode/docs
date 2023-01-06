@@ -3,7 +3,6 @@ slug: using-an-nfs-server-on-ubuntu2004
 author:
   name: Jeff Novotny
 description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
-og_description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,8 @@ published: 2021-08-06
 image: HowtoUseanNFSServeronUbuntu2004.jpg
 modified_by:
   name: Linode
-title: "Using an NFS Server on Ubuntu 20.04"
-h1_title: "How to Use an NFS Server on Ubuntu 20.04"
-enable_h1: true
+title: "Use an NFS Server on Ubuntu 20.04"
+title_meta: "How to Use an NFS Server on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
 external_resources:

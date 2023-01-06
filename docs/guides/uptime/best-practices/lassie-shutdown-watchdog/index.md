@@ -3,9 +3,8 @@ slug: lassie-shutdown-watchdog
 author:
   name: Linode
   email: docs@linode.com
-title: "Recover from Unexpected Shutdowns with Lassie"
-h1_title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
-enable_h1: true
+title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
+title_meta: "Recover from Unexpected Shutdowns with Lassie"
 keywords: ['lassie','unexpected shutdown','reboot']
 tags: ["linode platform","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Troubleshooting Kubernetes"
-h1_title: "Diagnose and Resolve Kubernetes Issues"
+title: "Diagnose and Resolve Kubernetes Issues"
+title_meta: "Troubleshooting Kubernetes"
 image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:

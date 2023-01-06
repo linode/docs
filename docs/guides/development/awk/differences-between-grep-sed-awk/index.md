@@ -3,16 +3,14 @@ slug: differences-between-grep-sed-awk
 author:
   name: Andy Lester
 description: 'This guide introduces you to Grep, sed, and AWK, which are Linux tools used for text processing. It explains the differences between grep, sed, and AWK and provides beginner examples for each.'
-og_description: 'This guide introduces you to Grep, sed, and AWK, which are Linux tools used for text processing. It explains the differences between grep, sed, and AWK and provides beginner examples for each.'
 keywords: ['difference between sed awk grep']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "Text Processing in Linux: Understanding Grep, sed, and AWK"
-h1_title: "Learn to Process Text in Linux using Grep, sed, and AWK"
-enable_h1: true
+title: "Learn to Process Text in Linux using Grep, sed, and AWK"
+title_meta: "Text Processing in Linux: Understanding Grep, sed, and AWK"
 contributor:
   name: Andy Lester
 ---

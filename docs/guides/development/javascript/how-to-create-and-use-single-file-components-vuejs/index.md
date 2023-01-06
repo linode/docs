@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
-og_description: "As a project grows, VueJS components can become hard to follow. Learn how to add more structure so your components easier to read and manage."
 keywords: ["vue js","javascript","vuejs","vuejs single file components","vuejs eventbus", "vuejs event bus"]
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-05-20
 modified_by:
   name: Linode
-title: "How to Create Single File Components in VueJS (A Tutorial)"
-h1_title: "A Tutorial for Creating Single File Components in VueJS"
-enable_h1: true
+title: "A Tutorial for Creating Single File Components in VueJS"
+title_meta: "How to Create Single File Components in VueJS (A Tutorial)"
 contributor:
   name: Pavel Petrov
   link: https://github.com/WebBamboo/

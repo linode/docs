@@ -12,9 +12,8 @@ modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2018-09-06
-title: "Use Buildbot for Software Testing on Ubuntu 18.04"
-h1_title: "Using Buildbot to Test Software on Ubuntu 18.04"
-enable_h1: true
+title: "Using Buildbot to Test Software on Ubuntu 18.04"
+title_meta: "Use Buildbot for Software Testing on Ubuntu 18.04"
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'

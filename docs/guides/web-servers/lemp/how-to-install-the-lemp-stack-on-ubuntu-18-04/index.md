@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Ubuntu 18.04.'
-og_description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Ubuntu 18.04.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2020-03-18
 modified_by:
   name: Linode
 published: 2018-06-04
-title: 'How to Install the LEMP Stack on Ubuntu 18.04'
-h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title_meta: 'How to Install the LEMP Stack on Ubuntu 18.04'
 image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
 relations:
     platform:

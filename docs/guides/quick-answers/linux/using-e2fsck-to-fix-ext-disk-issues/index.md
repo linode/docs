@@ -11,9 +11,8 @@ published: 2022-04-05
 modified: 2022-04-05
 modified_by:
   name: Linode
-title: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
-h1_title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
-enable_h1: true
+title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
+title_meta: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
 external_resources:
 - '[e2fsck on man7.org](https://man7.org/linux/man-pages/man8/e2fsck.8.html)'
 tags: ["linux"]

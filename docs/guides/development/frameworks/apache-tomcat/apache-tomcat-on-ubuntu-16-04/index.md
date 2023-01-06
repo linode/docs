@@ -12,8 +12,8 @@ modified: 2016-05-09
 modified_by:
   name: Phil Zona
 published: 2016-05-09
-title: 'How to Install Apache Tomcat on Ubuntu 16.04'
-h1_title: 'Installing Apache Tomcat on Ubuntu 16.04'
+title: 'Installing Apache Tomcat on Ubuntu 16.04'
+title_meta: 'How to Install Apache Tomcat on Ubuntu 16.04'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

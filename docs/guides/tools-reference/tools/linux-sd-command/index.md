@@ -9,7 +9,7 @@ published: 2021-12-17
 modified_by:
   name: Nathaniel Stickman
 title: "Use the sd Command for Find and Replace on Linux"
-h1_title: "How to Use the sd Command for Find and Replace on Linux"
+title_meta: "How to Use the sd Command for Find and Replace on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

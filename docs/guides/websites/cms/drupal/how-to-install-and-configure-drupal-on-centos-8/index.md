@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2020-02-18
-title: How to Install and Configure Drupal on CentOS 8
-h1_title: Install and Configure Drupal on CentOS 8
+title: Install and Configure Drupal on CentOS 8
+title_meta: How to Install and Configure Drupal on CentOS 8
 image: L_ConfigDrupalCentOS8.png
 relations:
     platform:

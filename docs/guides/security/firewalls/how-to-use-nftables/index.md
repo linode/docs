@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
-og_description: 'In this guide you will learn about what nftables is and how it differs from iptables, plus you""ll get a look at how to use and create tables, rules, and chains.'
 keywords: ['nftables']
 bundles: ['debian-security', 'centos-security', 'network-security']
 tags: ['ubuntu', 'centos', 'debian', 'security']
@@ -12,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use nftables"
-h1_title: "Get Started with nftables"
-enable_h1: true
+title: "Get Started with nftables"
+title_meta: "How to Use nftables"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

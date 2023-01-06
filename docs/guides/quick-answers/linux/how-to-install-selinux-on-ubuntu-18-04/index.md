@@ -12,9 +12,8 @@ modified: 2021-04-15
 modified_by:
   name: Linode
 published: 2017-06-30
-title: "How to Install SELinux on Ubuntu 18.04"
-h1_title: "Install SELinux on Ubuntu 18.04"
-enable_h1: true
+title: "Install SELinux on Ubuntu 18.04"
+title_meta: "How to Install SELinux on Ubuntu 18.04"
 relations:
     platform:
         key: how-to-install-selinux

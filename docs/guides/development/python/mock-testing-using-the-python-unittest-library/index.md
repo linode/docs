@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Linode
-title: "Mock Testing Using the Python Unittest Library"
-h1_title: "An Introduction to Mock Testing Using the Python Unittest Library"
-enable_h1: true
+title: "An Introduction to Mock Testing Using the Python Unittest Library"
+title_meta: "Mock Testing Using the Python Unittest Library"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

@@ -4,14 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
-og_description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
 keywords: ['appwrite react','appwrite tutorial','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-13
 modified_by:
   name: Nathaniel Stickman
-title: "How to Create a React App with Appwrite"
-h1_title: "How to Create a React App with Appwrite"
+title: "Create a React App with Appwrite"
+title_meta: "How to Create a React App with Appwrite"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

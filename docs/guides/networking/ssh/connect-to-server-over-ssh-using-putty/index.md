@@ -11,9 +11,8 @@ published: 2021-06-25
 modified: 2022-01-28
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH using PuTTY"
-h1_title: "Connecting to a Remote Server Over SSH using PuTTY"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH using PuTTY"
+title_meta: "How to Connect to a Remote Server Over SSH using PuTTY"
 aliases: ['/networking/ssh/ssh-connections-using-putty-on-windows/','/networking/using-putty/']
 relations:
     platform:

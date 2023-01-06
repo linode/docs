@@ -12,9 +12,8 @@ modified_by:
   name: Linode
 published: 2019-03-18
 modified: 2021-08-26
-title: "How to Clone a Linode"
-h1_title: "Cloning a Linode"
-enable_h1: true
+title: "Cloning a Linode"
+title_meta: "How to Clone a Linode"
 ---
 
 The cloning feature allows you to copy a Linode's disks (and configuration profiles) to a new or existing Linode on your account. This guide covers cloning to a new Linode.

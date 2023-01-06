@@ -4,7 +4,6 @@ author:
   name: Tyler Langlois
   email: ty@tjll.net
 description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
-og_description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Linode
-title: "The Advantages of Linux and Why You Should Use It"
-h1_title: "10 Benefits of Linux You Need to Know"
-enable_h1: true
+title: "10 Benefits of Linux You Need to Know"
+title_meta: "The Advantages of Linux and Why You Should Use It"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

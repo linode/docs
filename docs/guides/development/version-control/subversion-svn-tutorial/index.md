@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
 modified_by:
   name: Linode
-title: "SVN Tutorial: Installing and Using the Subversion CLI Client"
-h1_title: "How to Install and Use the Subversion CLI Client"
-enable_h1: true
+title: "Install and Use the Subversion CLI Client"
+title_meta: "How to Install and Use the Subversion CLI Client"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit

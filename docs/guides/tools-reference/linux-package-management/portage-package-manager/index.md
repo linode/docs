@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo linux, so you can install software on your system."
-og_description: "This guide walks you through the core features and common features of Portage, the default package manager on Gentoo linux, so you can install software on your system."
 keywords: ['gentoo', 'portage', 'emerge', package manager']
 tags: ['gentoo']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +12,8 @@ image: UsingPortagetoManagePackagesinGentooLinux.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Use Portage to Manage Packages in Gentoo"
-h1_title: "Using Portage to Manage Packages in Gentoo"
-enable_h1: true
+title: "Using Portage to Manage Packages in Gentoo"
+title_meta: "How to Use Portage to Manage Packages in Gentoo"
 ---
 
 Gentoo provides its entire operating system in source format. These source packages, in concert with `ebuild` scripts, provide a package management system that borrows and builds on many concepts from the BSD's "portage" system.

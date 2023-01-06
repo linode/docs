@@ -4,15 +4,13 @@ author:
   name: Jeff Novotny
   email: docs@linode.com
 description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
-og_description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
 keywords: ['IPv6 Apache','how to enable IPv6 on Apache','NGINX IPv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-16
 modified_by:
   name: Linode
-title: "How to Use IPv6 With Apache and NGINX"
-h1_title: "How to Use IPv6 With Apache and NGINX"
-enable_h1: true
+title: "Use IPv6 With Apache and NGINX"
+title_meta: "How to Use IPv6 With Apache and NGINX"
 contributor:
   name: Jeff Novotny
 external_resources:

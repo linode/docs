@@ -12,9 +12,8 @@ published: 2020-07-17
 modified: 2021-06-25
 modified_by:
   name: Linode
-title: "Configure Load Balancing with TLS Encryption on Kubernetes"
-h1_title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
-enable_h1: true
+title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
+title_meta: "Configure Load Balancing with TLS Encryption on Kubernetes"
 contributor:
   name: Linode
 external_resources:

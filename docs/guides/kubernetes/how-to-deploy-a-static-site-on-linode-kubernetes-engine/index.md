@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
-og_description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,7 @@ published: 2019-11-12
 modified: 2020-12-03
 modified_by:
   name: Linode
-h1_title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-title: "Deploying a Static Site on Linode Kubernetes Engine"
-enable_h1: true
+title: "Deploy a Static Site on Linode Kubernetes Engine"
 contributor:
   name: Linode
 external_resources:

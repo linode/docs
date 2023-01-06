@@ -4,15 +4,14 @@ author:
   name: James Turner
   email: blkbearnh@gmail.com
 description: 'This guide discusses the advantages and disadvantages of SQLite, one of the most popular of the serverless SQL databases, and also common use cases for SQLite.'
-og_description: 'This guide discusses the advantages and disadvantages of SQLite, one of the most popular of the serverless SQL databases, and also common use cases for SQLite.'
 keywords: ['what is sqlite']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
 image: SQLiteOverview.png
 modified_by:
   name: Linode
-title: "A SQLite Overview"
-h1_title: "What is SQLite?"
+title: "What is SQLite?"
+title_meta: "A SQLite Overview"
 tags: ["database"]
 contributor:
   name: James Turner

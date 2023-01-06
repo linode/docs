@@ -9,9 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
 modified_by:
   name: Linode
-title: "Troubleshooting SSH Key Authentication"
-h1_title: "How to Troubleshoot SSH Permission Issues"
-enable_h1: true
+title: "Troubleshoot SSH Key Authentication Issues"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

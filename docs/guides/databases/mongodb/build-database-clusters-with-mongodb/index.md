@@ -10,8 +10,8 @@ aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clus
 modified_by:
   name: Linode
 published: 2010-09-30
-title: How To Build Database Clusters with MongoDB
-h1_title: Building Database Clusters with MongoDB
+title: Building Database Clusters with MongoDB
+title_meta: How To Build Database Clusters with MongoDB
 external_resources:
  - '[MongoDB Documentation for Replica Sets](https://docs.mongodb.com/manual/reference/replica-configuration/)'
  - '[MongoDB Documentation for Master-Slave Replication](https://docs.mongodb.com/manual/core/master-slave/)'

@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "Installing PyTorch on Ubuntu 20.04"
-h1_title: "How to Install PyTorch on Ubuntu 20.04"
-enable_h1: true
+title: "Install PyTorch on Ubuntu 20.04"
+title_meta: "How to Install PyTorch on Ubuntu 20.04"
 contributor:
   name: Tom Henderson
 ---

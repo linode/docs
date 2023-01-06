@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "Installing and Using ripgrep"
-h1_title: "How to Install and Use ripgrep"
-enable_h1: true
+title: "Install and Use ripgrep"
+title_meta: "How to Install and Use ripgrep"
 contributor:
   name: Jeff Novotny
 external_resources:

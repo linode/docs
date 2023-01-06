@@ -11,9 +11,8 @@ image: L_ApacheCass_on_Ubuntu1804.png
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on Ubuntu 18.04"
-h1_title: "Installing Apache Cassandra on Ubuntu 18.04"
-enable_h1: true
+title: "Installing Apache Cassandra on Ubuntu 18.04"
+title_meta: "How to Install Apache Cassandra on Ubuntu 18.04"
 contributor:
   name: Linode
 external_resources:

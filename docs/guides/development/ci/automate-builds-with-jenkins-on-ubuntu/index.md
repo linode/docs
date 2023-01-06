@@ -12,11 +12,11 @@ aliases: ['/development/automate-builds-with-jenkins-on-ubuntu/','/development/c
 tags: ["automation","version control system","docker","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
-modified: 2019-02-01
+modified: 2023-01-06
 modified_by:
   name: Linode
-title: 'How to Automate Builds with Jenkins on Ubuntu 22.04'
-h1_title: 'Automating Builds with Jenkins on Ubuntu 22.04'
+title: 'Automate Builds with Jenkins on Ubuntu 22.04'
+title_meta: 'How to Automate Builds with Jenkins on Ubuntu 22.04'
 external_resources:
  - '[Jenkins User Documentation](https://jenkins.io/doc/)'
  - '[Blue Ocean Documentation](https://jenkins.io/doc/book/blueocean/)'

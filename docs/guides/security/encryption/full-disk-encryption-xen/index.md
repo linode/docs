@@ -5,7 +5,6 @@ author:
   name: Quintin Riis
   email: docs@linode.com
 description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
-og_description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
 keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-encryption-xen/']
 tags: ["security","debian"]

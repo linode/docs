@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified_by:
   name: Linode
-title: "MEAN Stack Tutorial: Create an Example Application"
-h1_title: "How to Create a MEAN Stack Application"
-enable_h1: true
+title: "Create a MEAN Stack Application"
+title_meta: "MEAN Stack Tutorial: Create an Example Application"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit

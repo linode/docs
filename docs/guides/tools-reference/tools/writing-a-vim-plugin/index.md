@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "Writing a Vim Plugin"
-h1_title: "How to Write a Vim Plugin"
-enable_h1: true
+title: "Write a Vim Plugin"
+title_meta: "How to Write a Vim Plugin"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

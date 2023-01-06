@@ -11,8 +11,7 @@ image: HowtoCheckandCleanaLinuxSystemsDiskSpace.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Check and Clean a Linux System's Disk Space"
-h1_title: "How to Check and Clean a Linux System's Disk Space"
-enable_h1: true
+title_meta: "How to Check and Clean a Linux System's Disk Space"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

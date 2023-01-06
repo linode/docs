@@ -11,8 +11,8 @@ modified: 2019-12-03
 modified_by:
   name: Linode
 published: 2015-06-10
-title: How to Create your First Chef Cookbook
-h1_title: Creating your First Chef Cookbook
+title: Creating your First Chef Cookbook
+title_meta: How to Create your First Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'

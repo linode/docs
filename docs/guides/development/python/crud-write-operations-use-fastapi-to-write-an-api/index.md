@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
 modified_by:
   name: Linode
-h1_title: "CRUD Write Operations: How to Use FastAPI to Write an API"
-title: "CRUD Write Operations: Using FastAPI to Write an API"
-enable_h1: true
+title: "CRUD Write Operations: How to Use FastAPI to Write an API"
+title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy

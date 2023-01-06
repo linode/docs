@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
   name: Linode
-title: "Getting Started with App Security Testing Tools "
-h1_title: "An Overview of App Security Testing Tools"
-enable_h1: true
+title: "An Overview of App Security Testing Tools"
+title_meta: "Getting Started with App Security Testing Tools "
 contributor:
   name: David Strom
 ---

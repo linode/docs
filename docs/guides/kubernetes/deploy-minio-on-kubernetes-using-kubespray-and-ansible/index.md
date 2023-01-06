@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
-og_description: 'Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 tags: ["python","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

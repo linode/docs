@@ -12,9 +12,8 @@ modified: 2022-01-28
 image: SSHLINUX.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on Linux"
-h1_title: "Connecting to a Remote Server Over SSH on Linux"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH on Linux"
+title_meta: "How to Connect to a Remote Server Over SSH on Linux"
 relations:
     platform:
         key: connecting-to-server-over-ssh

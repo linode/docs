@@ -11,8 +11,8 @@ image: L_Cass_on_CentOS8.png
 modified: 2020-01-30
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on CentOS 8"
-h1_title: "Install Apache Cassandra on CentOS 8"
+title: "Install Apache Cassandra on CentOS 8"
+title_meta: "How to Install Apache Cassandra on CentOS 8"
 contributor:
   name: Linode
 external_resources:

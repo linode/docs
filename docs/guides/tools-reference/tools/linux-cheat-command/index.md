@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-23
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using the cheat Command on Linux"
-h1_title: "How to Install and Use the cheat Command on Linux"
+title: "Install and Use the cheat Command on Linux"
+title_meta: "How to Install and Use the cheat Command on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

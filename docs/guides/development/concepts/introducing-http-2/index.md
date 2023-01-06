@@ -3,16 +3,14 @@ slug: introducing-http-2
 author:
   name: Jeff Novotny
 description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
-og_description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
 keywords: ['http2 vs http1']
 tags: ['web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 modified_by:
   name: Linode
-title: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
-h1_title: "An Introduction to HTTP/2"
-enable_h1: true
+title: "An Introduction to HTTP/2"
+title_meta: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

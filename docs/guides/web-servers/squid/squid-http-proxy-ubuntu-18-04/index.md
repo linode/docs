@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Ubuntu 18.04.
-og_description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Ubuntu 18.04.
 keywords: ["squid", "proxy", "ubuntu", "18.04", "http"]
 tags: ["proxy","web server","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +12,8 @@ modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Ubuntu1804_1200x631.png
 modified_by:
   name: Rajakavitha Kodhandapani
-title: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'
-h1_title: 'Creating an HTTP Proxy Using Squid on Ubuntu 18.04'
+title: 'Creating an HTTP Proxy Using Squid on Ubuntu 18.04'
+title_meta: 'How to Create an HTTP Proxy Using Squid on Ubuntu 18.04'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
  - '[Configure Proxy on Windows](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)'

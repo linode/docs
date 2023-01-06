@@ -14,9 +14,8 @@ image: Installing_Java_Development_Kit_11_on_Ubuntu1804_1200x631.png
 modified_by:
   name: Linode
 published: 2020-03-25
-title: "Install OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
-h1_title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
-enable_h1: true
+title: "Installing OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
+title_meta: "Install OpenJDK 11 (Java Development Kit) on Ubuntu 18.04"
 contributor:
   name: Rajakavitha Kodhandapani
 audiences: ["beginner"]

@@ -10,8 +10,6 @@ published: 2021-09-24
 modified_by:
   name: Linode
 title: "Create a RESTful API Using Python and Flask"
-h1_title: "How to Create a RESTful API Using Python and Flask"
-enable_h1: true
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy

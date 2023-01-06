@@ -9,9 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 modified_by:
   name: Linode
-title: "PostHog on Linode Kubernetes Engine Installation"
-h1_title: "How to Track Funnel and Product Analytics With PostHog on Linode Kubernetes Engine"
-enable_h1: true
+title: "Track Funnel and Product Analytics With PostHog on LKE"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

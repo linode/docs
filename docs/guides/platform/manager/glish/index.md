@@ -11,9 +11,8 @@ modified: 2022-10-12
 modified_by:
   name: Linode
 published: 2015-08-28
-title: "Access Your Desktop Environment Using Glish"
-h1_title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
-enable_h1: true
+title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
+title_meta: "Access Your Desktop Environment Using Glish"
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
 ---

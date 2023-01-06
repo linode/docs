@@ -9,7 +9,7 @@ tags: ["automation","python"]
 modified: 2018-11-06
 modified_by:
   name: Leslie Salazar
-title: "How to install direnv"
+title: "Install direnv"
 published: 2018-06-12
 headless: true
 show_on_rss_feed: false

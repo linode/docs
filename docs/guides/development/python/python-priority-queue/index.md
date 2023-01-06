@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-17
 modified_by:
   name: Linode
-title: "What is the Python Priority Queue?"
-h1_title: "The Priority Queue in Python 3"
-enable_h1: true
+title: "The Priority Queue in Python 3"
+title_meta: "What is the Python Priority Queue?"
 contributor:
   name: Jeff Novotny
 external_resources:

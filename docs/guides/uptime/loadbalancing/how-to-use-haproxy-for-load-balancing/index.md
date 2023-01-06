@@ -11,9 +11,8 @@ published: 2017-10-30
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: "How to Use HAProxy for Load Balancing"
-h1_title: "Using HAProxy for Load Balancing"
-enable_h1: true
+title: "Using HAProxy for Load Balancing"
+title_meta: "How to Use HAProxy for Load Balancing"
 contributor:
   name: Robert Hussey
   link: https://github.com/hussrj

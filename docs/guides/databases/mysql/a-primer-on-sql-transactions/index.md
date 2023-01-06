@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-25
 modified_by:
   name: Linode
-title: "A Primer on SQL Transactions"
-h1_title: "SQL Transactions: An Introduction"
-enable_h1: true
+title: "SQL Transactions: An Introduction"
+title_meta: "A Primer on SQL Transactions"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

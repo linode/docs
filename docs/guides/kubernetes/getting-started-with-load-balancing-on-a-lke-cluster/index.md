@@ -13,9 +13,8 @@ image: GetStartLoadBal_LKECluster.png
 aliases: ['/kubernetes/deploy-nodebalancers-with-linode-ccm/','/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/']
 modified_by:
   name: Linode
-title: "How to Get Started with Load Balancing on an LKE Cluster"
-h1_title: "Getting Started with Load Balancing on an LKE Cluster"
-enable_h1: true
+title: "Getting Started with Load Balancing on an LKE Cluster"
+title_meta: "How to Get Started with Load Balancing on an LKE Cluster"
 contributor:
   name: Linode
 ---

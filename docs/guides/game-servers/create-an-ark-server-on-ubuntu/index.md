@@ -18,9 +18,8 @@ modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2016-12-28
-title: "How to Create a Dedicated ARK Server on Ubuntu"
-h1_title: "Creating a Dedicated ARK Server on Ubuntu"
-enable_h1: true
+title: "Creating a Dedicated ARK Server on Ubuntu"
+title_meta: "How to Create a Dedicated ARK Server on Ubuntu"
 aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/','/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/', '/guides/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 dedicated_cpu_link: true
 ---

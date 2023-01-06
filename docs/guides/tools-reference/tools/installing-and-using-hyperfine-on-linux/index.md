@@ -10,8 +10,7 @@ published: 2021-10-22
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use hyperfine on Linux"
-h1_title: "How to Install and Use hyperfine on Linux"
-enable_h1: true
+title_meta: "How to Install and Use hyperfine on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

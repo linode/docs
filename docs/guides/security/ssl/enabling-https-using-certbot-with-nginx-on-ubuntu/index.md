@@ -13,7 +13,6 @@ modified: 2021-07-01
 modified_by:
   name: Linode
 title: "Use Certbot to Enable HTTPS with NGINX on Ubuntu"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 aliases: ['/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/','/quick-answers/websites/certbot/how-to-install-certbot-on-ubuntu-18-04/','/quick-answers/websites/how-to-install-certbot-on-ubuntu-18-04/','/guides/how-to-install-certbot-on-ubuntu-18-04/']

@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
 modified_by:
   name: Linode
-title: "Kotlin Tutorial: Learn the Basics"
-h1_title: "Kotlin Tutorial: An Introduction to the Basics"
-enable_h1: true
+title: "Kotlin Tutorial: An Introduction to the Basics"
+title_meta: "Kotlin Tutorial: Learn the Basics"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

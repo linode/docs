@@ -11,9 +11,8 @@ published: 2020-02-27
 modified: 2021-12-29
 modified_by:
   name: Linode
-title: "How to Install and Configure FastCGI and PHP-FPM on CentOS 8"
-h1_title: "Installing and Configuring FastCGI and PHP-FPM on CentOS 8"
-enable_h1: true
+title: "Installing and Configuring FastCGI and PHP-FPM on CentOS 8"
+title_meta: "How to Install and Configure FastCGI and PHP-FPM on CentOS 8"
 contributor:
   name: Linode
 relations:

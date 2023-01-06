@@ -11,9 +11,8 @@ modified: 2020-04-14
 modified_by:
     name: Linode
 published: 2020-04-14
-title: How to Install Node.js and NGINX on Ubuntu 18.04
-h1_title: Installing Node.js and NGINX on Ubuntu 18.04
-enable_h1: true
+title: Installing Node.js and NGINX on Ubuntu 18.04
+title_meta: How to Install Node.js and NGINX on Ubuntu 18.04
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'

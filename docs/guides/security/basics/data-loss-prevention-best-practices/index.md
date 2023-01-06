@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Linode
-title: "Data Loss Prevention Best Practices (with Examples)"
-h1_title: "Data Loss Prevention Best Practices: An In-Depth Guide"
-enable_h1: true
+title: "Data Loss Prevention Best Practices: An In-Depth Guide"
+title_meta: "Data Loss Prevention Best Practices (with Examples)"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio

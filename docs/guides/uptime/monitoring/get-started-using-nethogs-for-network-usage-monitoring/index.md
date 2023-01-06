@@ -11,9 +11,8 @@ published: 2021-02-19
 image: UsingNethogs_NetworkMonitoring.png
 modified_by:
   name: Linode
-title: "How to Use Nethogs to Monitor Network Usage"
-h1_title: "Using Nethogs to Monitor Network Usage"
-enable_h1: true
+title: "Using Nethogs to Monitor Network Usage"
+title_meta: "How to Use Nethogs to Monitor Network Usage"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn

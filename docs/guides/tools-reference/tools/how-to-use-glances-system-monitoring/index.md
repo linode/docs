@@ -9,7 +9,7 @@ published: 2021-12-30
 modified_by:
   name: Nathaniel Stickman
 title: "Use Glances for System Monitoring on Linux"
-h1_title: "How to Use Glances for System Monitoring on Linux"
+title_meta: "How to Use Glances for System Monitoring on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

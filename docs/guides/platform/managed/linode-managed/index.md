@@ -12,9 +12,8 @@ modified: 2021-07-28
 modified_by:
   name: Linode
 published: 2019-09-04
-title: How to Get Started with Linode Managed
-h1_title: Getting Started with Linode Managed
-enable_h1: true
+title: Getting Started with Linode Managed
+title_meta: How to Get Started with Linode Managed
 ---
 
 [Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service.

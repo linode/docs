@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
-og_description: 'R is a programming language commonly used for statistical analysis and data visualization. Learn how to install the base R package on your Linode.'
 keywords: ['R', 'statistics', 'R Foundation', 'data visualization']
 tags: ["statistics", "ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

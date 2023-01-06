@@ -4,7 +4,6 @@ author:
   name: John Mueller
   email: john@johnmuellerbooks.com
 description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
-og_description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-12-23
 modified: 2022-01-07
 modified_by:
   name: Linode
-title: "How to Use the Linode API with Twilio"
-h1_title: "Using the Linode API with Twilio"
-enable_h1: true
+title: "Using the Linode API with Twilio"
+title_meta: "How to Use the Linode API with Twilio"
 contributor:
   name: John Mueller
   link:

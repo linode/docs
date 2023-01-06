@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-08
 modified_by:
   name: Linode
-title: "How to Deploy Kubeflow on LKE (Linode Kubernetes Engine)"
-h1_title: "Deploying Kubeflow on Linode Kubernetes Engine"
-enable_h1: true
+title: "Deploying Kubeflow on Linode Kubernetes Engine"
+title_meta: "How to Deploy Kubeflow on LKE (Linode Kubernetes Engine)"
 contributor:
   name: Daniele Polencic
   link: https://github.com/danielepolencic

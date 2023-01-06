@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
-og_description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS8"]
 bundles: ['centos-security']
 tags: ["centos","security"]
@@ -12,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
 modified_by:
   name: Linode
-title: "A Beginner's Guide to SELinux on CentOS 8"
-h1_title: "Getting Started with SELinux on CentOS 8"
+title: "Getting Started with SELinux on CentOS 8"
+title_meta: "A Beginner's Guide to SELinux on CentOS 8"
 contributor:
   name: Linode
 external_resources:

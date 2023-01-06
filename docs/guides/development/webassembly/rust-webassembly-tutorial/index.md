@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide explores what WebAssembly, sometimes called Wasm, is and how it can be used to develop web applications that run at near-native speeds with Rust."
-og_description: "This guide explores what WebAssembly, sometimes called Wasm, is and how it can be used to develop web applications that run at near-native speeds with Rust."
 keywords: ["webassembly","wasm","rust","web development","demo","tutorial"]
 tags: ['ubuntu', 'debian', 'rust']
 license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
-title: A Rust and WebAssembly Tutorial
-h1_title: Getting Started with WebAssembly Tutorial
-enable_h1: true
+title: Getting Started with WebAssembly Tutorial
+title_meta: A Rust and WebAssembly Tutorial
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -10,7 +10,7 @@ tags: ["dns","networking","linux platform"]
 modified: 2018-07-19
 modified_by:
   name: Nathan Melehan
-title: "How to Use Linode's Nameservers"
+title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']

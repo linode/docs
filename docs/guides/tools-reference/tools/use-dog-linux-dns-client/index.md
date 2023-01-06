@@ -9,7 +9,6 @@ published: 2021-12-23
 modified_by:
   name: Nathaniel Stickman
 title: "Use the Linux dog Command to Look Up DNS Records"
-h1_title: "How to Use the Linux dog Command to Look Up DNS Records"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +13,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: ApacheTomcat_Deb10.png
-title: 'How to Install Apache Tomcat on Debian 10'
-h1_title: 'Installing Apache Tomcat on Debian 10'
+title: 'Installing Apache Tomcat on Debian 10'
+title_meta: 'How to Install Apache Tomcat on Debian 10'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'

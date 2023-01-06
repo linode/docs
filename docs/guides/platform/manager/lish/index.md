@@ -11,9 +11,8 @@ modified: 2022-10-12
 modified_by:
   name: Linode
 published: 2009-08-04
-title: "Access Your System Console Using Lish"
-h1_title: "Access Your System Console Using Lish (Linode Shell)"
-enable_h1: true
+title: "Access Your System Console Using Lish (Linode Shell)"
+title_meta: "Access Your System Console Using Lish"
 tags: ["linode platform","cloud manager"]
 image: using-the-linode-shell-lish.jpg
 ---

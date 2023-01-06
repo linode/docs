@@ -11,9 +11,8 @@ published: 2019-08-28
 modified: 2021-12-26
 modified_by:
   name: Linode
-title: "How to Set Up a Reverse Proxy to Host Websites in LXD"
-h1_title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
-enable_h1: true
+title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
+title_meta: "How to Set Up a Reverse Proxy to Host Websites in LXD"
 contributor:
   name: Simos Xenitellis
   link: https://blog.simos.info/

@@ -10,9 +10,8 @@ published: 2017-10-20
 modified: 2017-10-23
 modified_by:
   name: Linode
-title: "How to Run Spark on Top of a Hadoop YARN Cluster"
-h1_title: "Running Spark on Top of a Hadoop YARN Cluster"
-enable_h1: true
+title: "Running Spark on Top of a Hadoop YARN Cluster"
+title_meta: "How to Run Spark on Top of a Hadoop YARN Cluster"
 contributor:
   name: Florent Houbart
 external_resources:

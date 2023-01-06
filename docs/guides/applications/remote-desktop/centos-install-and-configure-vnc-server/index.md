@@ -10,9 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 modified_by:
   name: Nathaniel Stickman
-title: "CentOS: Install and Configure VNC Server"
-h1_title: "How to Install and Configure VNC Server on Centos 8"
-enable_h1: true
+title: "Install and Configure VNC Server on Centos 8"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

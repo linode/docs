@@ -10,8 +10,7 @@ published: 2022-02-18
 modified_by:
   name: Linode
 title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-h1_title: "How to Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-enable_h1: true
+title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 contributor:
   name: Tom Henderson
 external_resources:

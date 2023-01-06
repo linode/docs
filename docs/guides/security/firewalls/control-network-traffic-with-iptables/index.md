@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
-og_description: "iptables is an application that allows users to configure specific rules that will be enforced by the kernel's netfilter framework. This guide will focus on the configuration and application of iptables rulesets."
 keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/firewalls/control-network-traffic-with-iptables/','/security/firewalls/iptables/','/security/firewalls/control-network-traffic-with-iptables/']
@@ -13,8 +12,8 @@ modified: 2017-02-28
 modified_by:
   name: Linode
 published: 2010-07-30
-title: Controlling Network Traffic with iptables - A Tutorial
-h1_title: A Tutorial for Controlling Network Traffic with iptables
+title: A Tutorial for Controlling Network Traffic with iptables
+title_meta: Controlling Network Traffic with iptables - A Tutorial
 external_resources:
  - '[Security Basics](/docs/guides/set-up-and-secure/)'
  - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish)'

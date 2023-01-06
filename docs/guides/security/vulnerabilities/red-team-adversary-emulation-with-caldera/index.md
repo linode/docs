@@ -11,8 +11,6 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Red Team Adversary Emulation with Caldera"
-h1_title: "Red Team Adversary Emulation with Caldera"
-enable_h1: true
 contributor:
   name: HackerSploit
 external_resources:

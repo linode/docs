@@ -11,9 +11,8 @@ published: 2022-02-16
 modified: 2022-02-15
 modified_by:
   name: Linode
-title: "How to Remove Unused Network-Facing Services"
-h1_title: "Remove Unused Network-Facing Services"
-enable_h1: true
+title: "Remove Unused Network-Facing Services"
+title_meta: "How to Remove Unused Network-Facing Services"
 ---
 
 Most Linux distributions install with running network services which listen for incoming connections from the internet, the loopback interface, or a combination of both. Network-facing services which are not needed should be removed from the system to reduce the attack surface of both running processes and installed packages.

@@ -12,9 +12,8 @@ modified: 2020-02-10
 modified_by:
   name: Linode
 published: 2020-02-10
-title: How to Install Ghost CMS on Debian 10
-h1_title: Installing Ghost CMS on Debian 10
-enable_h1: true
+title: Installing Ghost CMS on Debian 10
+title_meta: How to Install Ghost CMS on Debian 10
 image: GhostCMSonDebian10.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'

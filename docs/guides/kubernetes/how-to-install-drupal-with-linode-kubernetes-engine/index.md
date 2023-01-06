@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
   name: Linode
-title: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
-h1_title: "Installing Drupal on LKE"
-enable_h1: true
+title: "Installing Drupal on LKE"
+title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 contributor:
   name: Rajakavitha Kodhandapani
 

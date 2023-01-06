@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
-og_description: 'This guide describes the Linux ip command and how to use it, along with a list of the main options.'
 keywords: ['linux ip command','config ip command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-16
 modified_by:
   name: Linode
-title: "How to Use the Linux IP Command"
-h1_title: "How to Use the Linux IP Command"
-enable_h1: true
+title: "Use the ip Command in Linux"
+title_meta: "How to Use the ip Command in Linux"
 contributor:
   name: Jeff Novotny
 external_resources:

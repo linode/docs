@@ -10,8 +10,8 @@ published: 2020-01-21
 modified_by:
   name: Linode
 image: L_MigrateFromGCPtoLin.png
-title: 'How to Migrate from Google Cloud Platform to Linode'
-h1_title: 'Migrating a Google Cloud Platform VM Instance to Linode'
+title: 'Migrating a Google Cloud Platform VM Instance to Linode'
+title_meta: 'How to Migrate from Google Cloud Platform to Linode'
 contributor:
   name: Linode
 tags: ["linode platform"]

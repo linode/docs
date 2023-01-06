@@ -4,9 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In part seven of our series on Kubernetes, you will learn what Helm is, how you can use it, and the differences between Helm version 2 and Helm version 3."
-title: "Continuous Deployment Using LKE: Managing Stacks with Helm"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 7): Managing Stacks with Helm"
-enable_h1: true
+title: "Building a Continuous Deployment Pipeline Using LKE (Part 7): Managing Stacks with Helm"
+title_meta: "Continuous Deployment Using LKE: Managing Stacks with Helm"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06

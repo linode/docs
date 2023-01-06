@@ -11,9 +11,8 @@ published: 2021-02-19
 image: UseMonitorix_sysmon.png
 modified_by:
   name: Linode
-title: "How to Use Monitorix for System Monitoring"
-h1_title: "Using Monitorix for System Monitoring"
-enable_h1: true
+title: "Using Monitorix for System Monitoring"
+title_meta: "How to Use Monitorix for System Monitoring"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn

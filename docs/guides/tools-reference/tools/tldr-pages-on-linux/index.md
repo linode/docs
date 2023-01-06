@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
 modified_by:
   name: Nathaniel Stickman
-title: "Using tldr pages on Linux"
-h1_title: "How to Use tldr pages on Linux"
-enable_h1: true
+title: "Use tldr pages on Linux"
+title_meta: "How to Use tldr pages on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

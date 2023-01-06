@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "SQL Grouping and Totaling"
-h1_title: "Introduction to SQL Grouping and Totaling"
-enable_h1: true
+title: "Introduction to SQL Grouping and Totaling"
+title_meta: "SQL Grouping and Totaling"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/

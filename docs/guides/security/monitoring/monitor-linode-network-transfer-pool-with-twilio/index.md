@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 modified_by:
   name: Linode
-title: "Monitor your Linode's Network Transfer Pool"
-h1_title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
-enable_h1: true
+title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
+title_meta: "Monitor your Linode's Network Transfer Pool"
 contributor:
   name: John Mueller
 ---

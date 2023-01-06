@@ -8,9 +8,8 @@ keywords: ["ssh", "yubikey", "2fa", "2 factor authentication", "otp"]
 aliases: ['/security/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/two-factor-authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-title: "How to Use a YubiKey for 2FA when Logging in over SSH"
-h1_title: "Using a YubiKey for 2FA when Logging in over SSH"
-enable_h1: true
+title: "Using a YubiKey for 2FA when Logging in over SSH"
+title_meta: "How to Use a YubiKey for 2FA when Logging in over SSH"
 published: 2017-08-28
 modified: 2018-02-26
 modified_by:

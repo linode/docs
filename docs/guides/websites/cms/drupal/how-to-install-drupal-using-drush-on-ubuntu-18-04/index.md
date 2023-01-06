@@ -4,7 +4,6 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Ubuntu 18.04.'
-og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "drush", "ubuntu"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drupal using Drush on Ubuntu 18.04
-h1_title: Install Drupal using Drush on Ubuntu 18.04
+title: Install Drupal using Drush on Ubuntu 18.04
+title_meta: How to Install Drupal using Drush on Ubuntu 18.04
 relations:
     platform:
         key: how-to-install-drupal-drush

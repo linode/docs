@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
 modified_by:
   name: Linode
-title: "Using For and While Loops in Python 3"
-h1_title: "For and While Loops in Python 3"
-enable_h1: true
+title: "For and While Loops in Python 3"
+title_meta: "Using For and While Loops in Python 3"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

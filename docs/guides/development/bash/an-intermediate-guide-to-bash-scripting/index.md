@@ -4,14 +4,13 @@ author:
   name: Mihalis Tsoukalos
   email: mihalistsoukalos@gmail.com
 description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
-og_description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
 modified_by:
   name: Linode
-title: 'An Intermediate Guide to Bash Scripting'
-h1_title: 'Continuing with Bash Scripting'
+title: 'Continuing with Bash Scripting'
+title_meta: 'An Intermediate Guide to Bash Scripting'
 contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/

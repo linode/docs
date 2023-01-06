@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
-og_description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
 keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "observability"]
 bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,7 +12,6 @@ modified: 2021-08-27
 modified_by:
   name: Linode
 title: Installing BCC to Use eBPF Tracing Tools
-h1_title: Installing BCC to Use eBPF Tracing Tools
 contributor:
     name: Linode
 tags: ["networking","security"]

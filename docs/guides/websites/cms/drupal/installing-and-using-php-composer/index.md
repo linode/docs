@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Linode
-title: "Installing and Using PHP Composer"
-h1_title: "How to Install and Use PHP Composer"
-enable_h1: true
+title: "Install and Use PHP Composer"
+title_meta: "How to Install and Use PHP Composer"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

@@ -4,7 +4,6 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
-og_description: 'Use Drush to install and enable themes and modules on your Drupal site running on Debian 10.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "debian", "drush"]
 tags: ["drupal","lamp","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ modified: 2020-03-11
 modified_by:
     name: Linode
 published: 2014-12-05
-title: How to Install Drupal Using Drush on Debian 10
-h1_title: Install Drupal Themes and Modules Using Drush on Debian 10
-enable_h1: true
+title: Install Drupal Themes and Modules Using Drush on Debian 10
+title_meta: How to Install Drupal Using Drush on Debian 10
 image: DrupalThemesMods_DrushDeb10.png
 external_resources:
  - '[SSL Certificates](/docs/security/ssl/)'

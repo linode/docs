@@ -9,7 +9,7 @@ tags: ["version control system"]
 modified: 2020-04-24
 modified_by:
   name: Sam Foo
-title: "How to Install Node Version Manager (NVM)"
+title: "Install Node Version Manager (NVM)"
 published: 2020-04-24
 headless: true
 show_on_rss_feed: false

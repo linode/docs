@@ -10,8 +10,8 @@ published: 2020-01-22
 modified_by:
   name: Linode
 image: L_LongviewPricingandPlans.png
-title: "Linode Longview Pricing and Plans"
-h1_title: "Longview Pricing and Plans"
+title: "Longview Pricing and Plans"
+title_meta: "Linode Longview Pricing and Plans"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
