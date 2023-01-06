@@ -19,7 +19,7 @@ image: using-linode-glish-title.jpg
 
 Glish is the graphical version of [Lish](/docs/guides/lish/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode distribution images do not have any desktop environments pre-installed. While this guide provides instructions for installing Xfce on Debian, you can use any other desktop environment and distribution. Popular desktop environments on Linux include Gnome, KDE, MATE, and Xfce.
 {{< /note >}}
 
@@ -31,17 +31,17 @@ If you have disabled distro helper on your Compute Instance's [Configuration Pro
 
     exec /sbin/getty -8 38400 tty1 &
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are having issues accessing Weblish or Glish, you may be behind a restrictive local firewall. See [Lish Gateways](/docs/guides/lish/#lish-gateways) for a list of data centers, their corresponding gateways, and the ports that are used.
-{{</ note >}}
+{{< /note >}}
 
 ## Install a Display Manager and Desktop Environment
 
 Before using Glish, a display manager and desktop environment must be installed on the Compute Instance. You can use any desktop environment that you wish, including [Gnome](https://www.gnome.org/), [KDE](https://kde.org/), [MATE](https://mate-desktop.org/), and [Xfce](https://www.xfce.org/). When choosing one, consider the size of your Compute Instance and the requirements of that desktop environment. For instance, Xfce and MATE are lightweight and can run on the smallest Compute Instance. When running Gnome, at least 2 GB of memory is recommended. For KDE, at least 4 GB of memory is recommended.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The instructions below install Xfce4 and LightDM on Debian 11. You are not limited to using these applications or this distribution. If you wish to use other software, follow the instructions for that application.
-{{</ note >}}
+{{< /note >}}
 
 1. Log in to your Compute Instance using [Lish](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
 
@@ -93,6 +93,6 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
     ![Screenshot of Xfce4 in Glish](glish-xfce-desktop.png)
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Glish does not offer copy and paste functionality.
-{{</ caution >}}
+{{< /note >}}

@@ -32,13 +32,13 @@ This guide explains how to install the necessary software, configure your system
 
 1. Review the [Securing Your Server](/docs/guides/set-up-and-secure/) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
-    {{</ note >}}
+    {{< /note >}}
 
 1. You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -70,7 +70,7 @@ Now that the packages have been installed, you'll use them to generate keys. Sof
 
 The following instructions will allow you to specify a user for whom you'd like to generate a password. If you are configuring two-factor authentication for multiple users, follow these steps for each user.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Be sure to have your phone or mobile device ready, since this is where you'll add the password to your authenticator app. If you haven't [downloaded an authenticator app](#before-you-begin), do so before proceeding.
 {{< /note >}}
 
@@ -138,11 +138,11 @@ You have finished generating your key and adding it to your client, but some add
 
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 - It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/guides/lish/) to regain access.
 
 - If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
-{{< /caution >}}
+{{< /note >}}
 
 1. Edit the system's PAM configuration file for SSH.
 
@@ -179,7 +179,7 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
 
     If you created TOTPs for multiple users, and you'd like to have them all use two-factor authentication, create additional `Match User` blocks for each  user, duplicating the command format shown above.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to enforce two-factor authentication globally, you can use the `AuthenticationMethods` directive by itself, outside of a `Match User` block. However, this should not be done until two-factor credentials have been provided to all users.
 {{< /note >}}
 
@@ -195,7 +195,7 @@ If you want to enforce two-factor authentication globally, you can use the `Auth
 
 1. Open a new terminal session and test your configuration by connecting to your Linode via SSH. You will be prompted to enter in your standard user account's password and then, you will be prompted to enter in a `Verification Code`. Open your authorization app, select the account you created in the [Generate a Key](#generate-a-key) section and enter in the password that is displayed. You should authenticate successfully and gain access to your Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
 {{< /note >}}
 
@@ -203,7 +203,7 @@ If your SSH client disconnects before you can enter your two-factor token, check
 
 This section is optional. If you'd like to use [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/) instead of a password authentication with TOTP, follow the steps in this section.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
 
 ```command

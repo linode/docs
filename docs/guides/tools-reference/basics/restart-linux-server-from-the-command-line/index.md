@@ -70,7 +70,7 @@ Please wrap up your current tasks and save your work.
 The system is going down for reboot at Wed 2021-06-30 19:30:00 UTC!
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While the time you give in the `shutdown` command is local time, it gets broadcast to users in UTC.
 {{< /note >}}
 

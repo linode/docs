@@ -148,9 +148,9 @@ COPY visitors (site_id, site_name, visitor_count) FROM stdin;
 \.
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 In Line 22 of `init.sql`, make sure your text editor does not convert tabs to spaces. The app will not work without tabs between the entries in this line.
-{{< /caution >}}
+{{< /note >}}
 
 ### Web
 
@@ -385,7 +385,7 @@ Containers should be:
 
 2.  **Disposable**: Ideally, any single container within a larger application should be able to fail without impacting the performance of the application. Using a `restart: on-failure` option in the `docker-compose.yml` file, as well as having a replica count, makes it possible for some containers in the example microservice to fail gracefully while still serving the web application – with no degradation to the end user.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The replica count directive will only be effective when this configuration is deployed as part of a [Docker Swarm](/docs/guides/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/), which is not covered in this guide.
 {{< /note >}}
 

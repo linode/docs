@@ -42,7 +42,7 @@ This guide will walk you through the process of installing Packer, creating a  t
 
        export TOKEN=x
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some of the example commands provided in this guide will use this variable. If you do not set this variable, you will need to modify these commands by replacing `$TOKEN` with your API token.
 {{< /note >}}
 
@@ -79,7 +79,7 @@ Now that Packer is installed, you can make a Packer [template](https://www.packe
 
 {{< note >}}
 The steps in this section will incur charges related to deploying a [1GB Linode](https://www.linode.com/pricing) (Nanode). The Linode will only be deployed for the duration of the time needed to create and snapshot your image and will then be deleted. See our [Billing and Payments](/docs/products/platform/billing/) guide for details about how hourly billing works.
-{{</ note >}}
+{{< /note >}}
 
 ### Creating the Template File
 
@@ -161,9 +161,9 @@ After the template file has been saved with your desired parameters, you're now 
 
        packer validate -var linode_api_token=$TOKEN example.pkr.hcl
 
-      {{< note >}}
-  To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
-      {{</ note >}}
+    {{< note respectIndent=false >}}
+To learn how to securely store and use your API v4 token, see the [Vault](https://www.packer.io/docs/templates/hcl_templates/functions/contextual/vault) section of Packer's documentation.
+    {{< /note >}}
 
 1. Build the image by running the `packer build` command below. Just like in the last step, if you did not set TOKEN as a variable in your shell environment, replace *$TOKEN* with your own Linode API token. This process may take a few minutes to complete.
 

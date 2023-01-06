@@ -81,7 +81,7 @@ To create the Dockerfile:
 
         mkdir ~/mydockerbuild && cd ~/mydockerbuild
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This places the Docker build directory in your home directory. As a matter of good practice, do not store the Dockerfile in your home directory itself or the server's root directory. Instead, create a separate directory and place all necessary files within it (alongside the Dockerfile) as shown in this guide.
 {{< /note >}}
 
@@ -147,7 +147,7 @@ Hello, Sunshine!
 
 {{< note >}}
 If the `docker run` command is executed and the Docker image is not available in your current working directory, it is pulled from the Docker registry instead.
-{{</ note >}}
+{{< /note >}}
 
 ## Further Reading
 

@@ -45,11 +45,11 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 
 When creating your backup, it's recommended that you [Resize Your Disk](/docs/guides/resize-a-linode-disk/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 
 It is important to note that automatic backups using Linode's Backup Service will be overwritten after between 8-14 days have passed. If you would like a backup of your Linode to be preserved for a longer time period, it is recommended that you take a [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) which will never expire unless manually overwritten.
 
-{{< /caution >}}
+{{< /note >}}
 
 ### Create a New Deployment
 
@@ -75,11 +75,9 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
     ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restore Backup to Existing Linode")
 
-     {{< note >}}
-
-If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot), or [Resize Your Linode](/docs/guides/resizing-a-linode/)
-
-{{< /note >}}
+    {{< note >}}
+    If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot), or [Resize Your Linode](/docs/guides/resizing-a-linode/)
+    {{< /note >}}
 
 1.  Select the current Linode and leave the box for **Overwrite Linode** unchecked. Then click the **Restore** button.
 

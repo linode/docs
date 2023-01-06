@@ -66,7 +66,7 @@ Other tools including Ansible, Strapi, and Portainer serve complementary roles. 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -109,7 +109,7 @@ cockpit.service - Cockpit Web Service
 TriggeredBy: ● cockpit.socket
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Cockpit becomes dormant after a period of inactivity. In this case, it might display a status of `inactive (dead)`. Cockpit automatically wakes up when a user accesses it through its web interface. To confirm it is installed correctly, restart it using the previous instruction.
     {{< /note >}}
 
@@ -150,7 +150,7 @@ OpenSSH (v6)               ALLOW       Anywhere (v6)
     https://Ip_address:9090/
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If HTTPS is not enabled, the web browser displays a warning and tells the user the connection might not be safe. To bypass this warning, Click **Advanced** and then accept the certificate. The actual instructions vary depending on the browser.
     {{< /note >}}
 
@@ -188,7 +188,7 @@ Many server components can be configured directly from Cockpit without any Linux
 
     ![Cockpit VLAN screen](Cockpit-Add-VLAN.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To add a new server to Cockpit, click the arrow next to the user account details in the upper-left corner. You can either add a new host or select/search for an existing host.
 {{< /note >}}
 

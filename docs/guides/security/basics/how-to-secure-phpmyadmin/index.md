@@ -61,7 +61,7 @@ The three pieces of software required are also commonly referred to as a LAMP st
 
         sudo apt install php-curl php-json php-cgi
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This steps in this guide were tested only on Ubuntu 20.04. Different distros may require additional steps to successfully complete installation.
 {{< /note >}}
 
@@ -87,7 +87,7 @@ It is always recommended to create a separate database user for each application
 
         exit
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is additionally recommended that root logins are disabled.
 {{< /note >}}
 
@@ -137,7 +137,7 @@ After restarting Apache2, the homepage for phpMyAdmin, will be freely accessible
 
 Login can be completed using the credentials that were created at the prompt when installing phpMyAdmin.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While not included in this guide or a base installation of phpMyAdmin, it is strongly recommended that [SSL/TLS is installed](/docs/guides/ssl-apache2-debian-ubuntu/) before entering any credentials over `http`, using only `https` on port `443` instead.
 {{< /note >}}
 

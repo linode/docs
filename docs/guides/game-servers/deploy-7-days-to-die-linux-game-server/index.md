@@ -26,9 +26,9 @@ Even eight years after its release, the Zombie Horde Survival game [7 Days to Di
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In order to play 7 Days to Die, you have to [purchase the game on Steam](https://store.steampowered.com/app/251570/7_Days_to_Die/).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploy a Game Server Using LinuxGSM
 
@@ -110,9 +110,9 @@ To start server type:
 
     Your output displays its status as **ONLINE**. This means you and your friends can start playing 7DTD.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Execute the `./sdtdserver` command to get a list of all available 7 Days to Die server commands.
-    {{</ note >}}
+    {{< /note >}}
 
 1. On your computer, use Steam to fire up the game and connect to your [Linode server's IP address](/docs/guides/find-your-linodes-ip-address/).
 

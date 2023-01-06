@@ -25,7 +25,7 @@ Your Linux shell has access to an environment that stores configuration values a
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -116,11 +116,11 @@ To view a list of all (global) environment variables available to the current us
 
     printenv
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can pipe the output of the `printenv` command to the `less` utility to page through all your environment variables.
 
     printenv | less
-{{</ note >}}
+{{< /note >}}
 
 To get a more comprehensive list of (global and local) environment variables, use the `set` command. This list includes environment variables, shell variables, and functions.
 
@@ -146,9 +146,9 @@ To set the value of an existing environment variable type the variable name foll
 
     EXAMPLE_VARIABLE='example value'
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the environment variable does not already exist, it is created as a shell variable. You can promote the shell variable to an environment variable by exporting it. See the [How to Export Environment Variables](#how-to-export-environment-variables) section for details.
-{{</ note >}}
+{{< /note >}}
 
 Use the `set` command to view the variable and its value.
 
@@ -181,9 +181,9 @@ You can also append new items to lists. The example appends the `example-directo
 
     export PATH=$PATH:$HOME/example-directory
 
-{{< note >}}
+{{< note respectIndent=false >}}
 `PATH` is a default environment variable that defines directories where your shell can look for executables. This variable allows you to run an executable without having to specify its path.
-{{</ note >}}
+{{< /note >}}
 
 ### How to Unset an Environment Variable
 
@@ -217,7 +217,7 @@ Create a new shell script file (`.sh`) in the `/etc/profile.d` directory. Add a 
 export EXAMPLE_VARIABLE='example value'
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also add environment variables to the `/etc/profile` or the `/etc/bashrc` files. However, your variables may not persist after upgrades to your shell package.
 {{< /note >}}
 
@@ -233,11 +233,11 @@ export APP_TEST_API="https://api.test.example.com/v1/customers"
 export APP_PROD_API="https://api.example.com/v1/customers"
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you reload your system's `profile` file to give your terminal session access to your new environment variables:
 
     source /etc/profile
-{{</ note >}}
+{{< /note >}}
 
 Create a new file named `main.py` with the example content below. The example application reads the `APP_ENV` variable and fetches the configurations from the appropriate variables. This method makes the application *environment agnostic* — the application responds appropriately depending on its current environment.
 
@@ -258,11 +258,11 @@ Execute the file to view which environment and API URL is currently detected by 
 Your current environment: TEST
 Your APIs URL: https://api.test.example.com/v1/customers
 {{</ output >}}
-{{< note >}}
+{{< note respectIndent=false >}}
 Depending on your system's configuration and installed version of Python, you may need to adjust the above command to explicitly use Python 3.
 
     python3 main.py
-{{</ note >}}
+{{< /note >}}
 
 When you need to change to the production environment, update the `APP_ENV` variable to `PROD`.
 

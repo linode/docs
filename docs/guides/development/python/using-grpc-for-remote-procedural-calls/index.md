@@ -93,7 +93,7 @@ This simple RPC application accepts a single request and returns a single respon
 
 Extensive information about using gRPC with Python can be found in [gRPC's Python Documentation](https://grpc.io/docs/languages/python/). This page contains links to a series of resources, including the gRPC Python API and a basic tutorial.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following example uses an insecure communication channel between the client and the server. To enhance the security of gRPC applications, consult the [gRPC Authentication Documentation](https://grpc.io/docs/guides/auth/).
 {{< /note >}}
 
@@ -114,7 +114,7 @@ This procedure is geared towards Ubuntu users but is generally applicable to all
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -173,7 +173,7 @@ The next step is to complete the `.proto` file, which serves as an API between t
         touch teams.proto
 
 1. The `teams.proto` file contains a shared API that the client and server can use to communicate with one another. At the top of the file, declare the `syntax` attribute as `proto3`.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For simplicity, this example does not use packages. If there are multiple projects in the same Python workspace, add this code to a package to avoid naming conflicts.
     {{< /note >}}
     {{< file "~/teams/protobufs/teams.proto" >}}
@@ -229,11 +229,11 @@ service Teams {
         python3 -m grpc_tools.protoc -I ./protobufs --python_out=. --grpc_python_out=. ./protobufs/teams.proto
 
 1. After compilation of the `.proto` file, the `teams` directory should contain Python files named `teams_pb2.py` and `teams_pb2_grpc.py`. These files contain auto-generated classes for the messages and the service. Make a note of these file names to reference them again later.
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not edit either of the auto-generated files. This could render them unusable.
-    {{< /caution >}}
+    {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To create a response-streaming, request-streaming, or bidirectionally-streaming RPC, declare the message to be streamed as a `stream`. For instance, to allow `GetTeam` to return a stream of team messages, declare it using the following format:
 
     rpc GetTeam (TeamRequest) returns (stream TeamResponse) {}.
@@ -348,7 +348,7 @@ if **__name__** == '**__main__**':
     serve()
     {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To return a stream of teams, `GetTeam` would `yield` each response message rather than returning it. Typically, the routine would iterate over the entire database or dictionary using a `for ... in` control structure and would `yield` each relevant entry in turn. This line would then become `yield teams_pb2.TeamResponse(city=tmp_city_name, nickname=tmp_team_name)`.
 {{< /note >}}
 
@@ -418,7 +418,7 @@ if **__name__** == '**__main__**':
     run()
     {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If `GetTeam` returned a stream, the `stub.GetTeam` function call would have received a list of messages in response. The client would then process these messages, possibly with a Python list comprehension or a `for ... in` control structure.
 {{< /note >}}
 

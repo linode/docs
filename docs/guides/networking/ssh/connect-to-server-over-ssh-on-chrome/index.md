@@ -46,7 +46,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
     ![Typing in the ssh command within the Chrome address bar](chrome-secure-shell-address-bar.png "Chrome address bar")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the server's SSH port is something other than 22, it needs to be specified in the above command. To do this, append `[:port]` as shown in the example below, replacing *port* with the port number that the remote SSH server is using.
 
     ssh user@192.0.2.0[:2022]
@@ -63,11 +63,11 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
     You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
-    {{<note>}}
+    {{< note respectIndent=false >}}
 If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, revoke the key for that IP address.
 
     ssh-keygen -R 198.51.100.4
-{{</note>}}
+{{< /note >}}
 
 1.  Accept the prompt by entering `yes`, which results in a one-time warning that is similar to:
 

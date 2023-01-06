@@ -36,7 +36,7 @@ In this guide you learn how to:
  - Embed content in a component [with slots](#using-slots)
  - Communicate information back to a component's parent [with events](#using-component-events)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can [download all of the example files for this guide here](how-to-build-and-use-vuejs-components.tar.gz).
 {{< /note >}}
 

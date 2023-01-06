@@ -95,7 +95,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 
 - The `-u` option is used to specify the user on the managed node.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, Ansible will try to establish a connection to the managed node under the same user that you execute the Ansible CLI with on the control node.
 {{< /note >}}
 

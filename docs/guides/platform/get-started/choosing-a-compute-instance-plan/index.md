@@ -20,7 +20,7 @@ Linode offers multiple Compute Instance types, each of which can be equipped wit
 
 This guide provides you with the information needed to select the most appropriate instance, helping you sort through all of Linode's offerings and land on the right one for the job.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can easily change between instance types and plans on an existing Compute Instance at any time. Review the [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions.
 {{< /note >}}
 

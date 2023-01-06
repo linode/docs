@@ -105,7 +105,7 @@ deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
 
         sudo apt-get dist-upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 {{< /note >}}
 

@@ -23,7 +23,7 @@ external_resources:
 
 As an example, if you have written a custom Node.js web application, Supervisor could be used to ensure that it starts on boot. As well, Supervisor could restart the application if it quits unexpectedly.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses a Python program called `app.py` as an example for process control. Supervisor can control Python applications, Node.js applications, or programs written in other languages or runtimes.
 {{< /note >}}
 
@@ -45,7 +45,7 @@ This guide shows how to:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -167,7 +167,7 @@ user=myappuser                           ; setuid to this UNIX account to run th
 
         sudo mkdir /var/log/myapp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not create this directory, the following error appears when you try to load the new Supervisor configuration:
 
 {{< output >}}
@@ -241,7 +241,7 @@ myappgroup:myapp                 STARTING
 2021-02-22 16:14:26: Died after 10.7 seconds
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Optionally, you can install and use the [logrotate](/docs/guides/use-logrotate-to-manage-log-files/) tool to manage the log files created by Supervisor.
 {{< /note >}}
 
@@ -288,9 +288,9 @@ A full list of actions and other `supervisorctl` documentation can be found at [
 
 You may want to add HTTP access to `supervisord`, either to enable the web interface or to allow remote RPC calls.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Enabling HTTP access exposes `supervisord` to the internet at large. If you choose to enable HTTP access, make sure to configure firewall rules that limit access to trusted IPs. As well, configure a user name and a long, complex, and unique password for service access.
-{{< /caution >}}
+{{< /note >}}
 
 1. To enable HTTP access, uncomment the `[inet_http_server]` in `/etc/supervisord.conf`. Update the `port`, `username`, and `password` settings:
 

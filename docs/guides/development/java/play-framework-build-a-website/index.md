@@ -31,7 +31,7 @@ This guide helps you learn more about the Play framework and how to get started 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -114,7 +114,7 @@ In these steps, you can see how to download and run one of these examples — th
         mkdir ~/example-play-app
         cd ~/example-play-app
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `example-play-app` directory in the example above can have the same name as your application. Here, however, its name has been varied to make this directory, and the one discussed below easier to distinguish.
     {{< /note >}}
 

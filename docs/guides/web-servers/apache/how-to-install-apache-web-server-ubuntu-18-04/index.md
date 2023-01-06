@@ -29,9 +29,9 @@ The *Apache HTTP Web Sever* (Apache) is an open source web application for deplo
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -189,13 +189,13 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
     Repeat this process for any other domains you host.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
 {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
 Options ExecCGI
 AddHandler cgi-script .pl
-{{</ note >}}
+{{< /note >}}
 
 {{< /file >}}
 

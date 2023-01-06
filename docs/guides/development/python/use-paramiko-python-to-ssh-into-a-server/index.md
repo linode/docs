@@ -33,7 +33,7 @@ You must install Paramiko on your system before being able to use it in your Pyt
 
     pip install paramiko
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not familiar with Pip or do not have it installed on your system, see our [How to Manage Python Packages and Virtual Environments on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#how-pip-works) guide.
 {{< /note >}}
 

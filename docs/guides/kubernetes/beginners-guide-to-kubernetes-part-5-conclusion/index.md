@@ -23,7 +23,7 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 

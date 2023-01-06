@@ -45,7 +45,7 @@ The Spring platform is very powerful and contains a large number of features. Fo
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -152,7 +152,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 
 1.  Ensure the server is working properly. Visit the IP address of the Linode and confirm the default NGINX page appears.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To determine the IP address of the Ubuntu system, use the Linode Dashboard.
     {{< /note >}}
 
@@ -222,7 +222,7 @@ To build a Spring application, follow these steps.
 
 1.  Initialize a new project using the Spring Boot CLI. The `spring init` command creates the project scaffolding. The next command creates a project named `hello` in the `hello-world` directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `spring init` command allows for many possible options. To see all the possible parameters, run the following command.
 
 ```command

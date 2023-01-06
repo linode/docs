@@ -37,7 +37,7 @@ tags: ["automation","salt"]
     curl -L https://bootstrap.saltproject.io -o install_salt.sh
     sudo sh install_salt.sh -P -M -N
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-N` flag indicates not to install `salt-minion`, since this system is the Salt master.
 {{< /note >}}
 
@@ -64,7 +64,7 @@ interface: 203.0.113.0
 
 **Salt Minions**
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This step must be performed on *each* Salt minion.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ master_finger: '4b:2a:81:79...'
 
         sudo salt-key -A
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To accept an individual minion, specify it by hostname or IP address:
 
     sudo salt-key -a hostname

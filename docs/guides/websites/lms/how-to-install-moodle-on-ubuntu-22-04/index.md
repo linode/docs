@@ -59,7 +59,7 @@ Some of Moodle's advantages are as follows:
 
 1.  **(Optional)** A virtual host for the domain is not strictly required, but is recommended.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -67,7 +67,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 In addition to a fully-configured LAMP stack, Moodle requires a few extra PHP modules and other packages. To install the additional components, follow these instructions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ubuntu 22.04 supports PHP 8.1 by default. However, Moodle is not compatible with PHP 8.1, so release 7.4 must be used instead. If PHP 8.1 is already installed on the Linode, you must install PHP 7.4 and configure it as the active release of PHP. PHP 7.3 is also supported, but 7.4 is highly recommended. See the [Moodle and PHP page](https://docs.moodle.org/dev/Moodle_and_PHP) for compatibility information.
 
 Downgrading PHP can potentially affect other applications that use PHP. Use caution before attempting any downgrade. In some cases, it might be better to wait for Moodle to support PHP 8.1 before installing it.
@@ -169,7 +169,7 @@ Your branch is up to date with 'origin/MOODLE_400_STABLE'.
 
 1.  Copy the contents of the Moodle repository to the root directory for the domain. If a virtual host has not been configured, this is `/var/www/html`. If there is a virtual host for the domain, the directory is likely `/var/www/html/your_domain_name/public_html`. The instructions in this guide assume a virtual host has not been configured. Modify the permissions for the `moodle` directory to grant read, write, and execute rights to all users.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These rights are only temporary. After installation is complete, write access should be locked down to the directory owner.
     {{< /note >}}
 
@@ -247,7 +247,7 @@ Finish setting up and configuring Moodle using the web interface. Ensure you hav
 
 1.  Moodle now verifies the installation. Ensure all `Server Checks` indicate `OK`. If the installation is successful, Moodle displays the message `Your server environment meets all minimum requirements` at the bottom. Select **Continue** to move to the next step.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Moodle performs some additional tests and displays the results in the `Other checks` section. This section presents some opportunities to improve performance and security. If HTTPS is not configured on the server, the `site not https` warning is displayed. This warning and any performance suggestions can be ignored for now. It is still possible to proceed with the installation.
     {{< /note >}}
 

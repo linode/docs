@@ -17,13 +17,13 @@ external_resources:
 
 The [ifupdown](https://manpages.debian.org/bullseye/ifupdown/ifup.8.en.html) package is an older network configuration software that's still used by Debian and older Ubuntu distributions (such as 16.04 LTS and earlier).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Newer Ubuntu releases use Netplan in conjunction with systemd-networkd (or NetworkManager). Newer Debian releases also include systemd-networkd, though ifupdown is still the default.
-{{</ note >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuration Files
 
@@ -96,9 +96,9 @@ iface eth0 inet dhcp
 #    gateway 192.0.2.1
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on your Compute Instance. If this happens, any tool or system using the original IPv4 address will no longer be able to connect.
-{{</ caution>}}
+{{< /note >}}
 
 To disable DHCP, switch `dhcp` back to `static` and manually add the relevant `address` and `gateway` lines.
 

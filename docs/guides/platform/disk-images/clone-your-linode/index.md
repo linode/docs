@@ -22,9 +22,9 @@ The cloning feature allows you to copy a Linode's disks (and configuration profi
 
 This process copies all disks and configuration profiles to a newly created Linode on your account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before continuing, it's recommended to power off the Linode you would like to clone to prevent data corruption.
-{{</ note >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com).
 
@@ -38,17 +38,17 @@ Before continuing, it's recommended to power off the Linode you would like to cl
 
 1. Complete the remainder of the form. Enter a label and select the region, the plan, and other options for the new Linode.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 The plan's storage must be greater than the combined disk size of the original Linode. If you wish to select a plan with less storage, you may need to [resize your Linode's disks](/docs/guides/resize-a-linode-disk/) before cloning.
-{{</ note >}}
+{{< /note >}}
 
 1. Click the **Create** button to start the cloning process. Cloning a Linode can be much longer than creating a new Linode based on a distribution or custom image. The length of time depends on the size of the Linode's disks, among other factors. To keep track of the cloning progress, a status bar is displayed above the original Linode with the percentage of completion.
 
 1. Once the cloning process is complete, you need to power on the new Linode to begin using it.
 
-  {{< note >}}
+{{< note respectIndent=false >}}
 The new Linode's IP address will be different than the original Linode. If desired, you can transfer the IP address from the original Linode to the new Linode. Swapping the IP address can prevent additional changes from being required, such as changing DNS records or the internal configuration of a Linode. See [Transferring IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses).
-{{</ note >}}
+{{< /note >}}
 
 ## Cloning to an Existing Linode
 
@@ -70,9 +70,9 @@ This process allows you to select specific disks and configuration profiles and 
 
 1. In the **Destination** dropdown menu, select the destination Linode (the Linode you wish to clone to).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The destination Linode must have enough free storage to accommodate the disks that are to be cloned. If there's not enough free storage space, you'll need to either [resize the Linode's disks](/docs/guides/resize-a-linode-disk/) (either the original or destination Linode) or [upgrade the destination Linode to a larger plan](/docs/guides/resizing-a-linode/).
-{{</ note >}}
+{{< /note >}}
 
 1. Click the **Clone** button to start the cloning process. The length of time this takes depends on the size of the Linode's disks (among other factors). To keep track of the cloning progress, a status bar is displayed above the original Linode with the percentage of completion.
 

@@ -67,9 +67,9 @@ If necessary, please consult this document to setup swap: http://dokku.viewdocs.
 
     ![Initial Dokku Installation](dokku-public-key.png)
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Add the public key immediately after running the installation script to avoid someone else adding a public key to Dokku. For an unattended installation, refer to the [advanced installation instructions](https://github.com/dokku/dokku/blob/master/docs/getting-started/advanced-installation.md).
-{{< /caution >}}
+{{< /note >}}
 
 3.  To add additional SSH keys, pipe the output over SSH to the `dokku` user. Replace `example.com` with the IP address of your Linode.
 
@@ -217,7 +217,7 @@ The remaining steps in this guide should be performed from your Linode.
 
         dokku letsencrypt:cron-job --add
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This requires Dokku version 0.5 or higher. Check by running `dokku version`.
 {{< /note >}}
 

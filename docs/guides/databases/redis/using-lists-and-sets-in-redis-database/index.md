@@ -32,7 +32,7 @@ Also, check out our other guides in this series, including our previous guide on
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -83,7 +83,7 @@ For instance:
 
 As you can see from the `RPUSH` example above, the commands support adding multiple elements to a List at the same time.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In Redis, numbers are automatically converted to strings, though Redis also has a few special commands for handling strings that contain numbers. Like `INCR`, which increments the integer held in a string by one.
 {{< /note >}}
 

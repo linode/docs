@@ -114,7 +114,7 @@ There are many build tools available. The Spring Boot CLI uses Maven by default 
 
         spring init --build=gradle --dependencies=web --name=hello hello-world
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To see a full list of possible parameters for the Spring Boot CLI, run:
 
     spring init --list

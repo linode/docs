@@ -33,7 +33,7 @@ noindex: true
 
 MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable and reliable SQL Server. This guide will help beginners install and configure MariaDB on Debian 9 (Stretch).
 
- {{< note >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -196,9 +196,9 @@ You will be asked to change the root password, remove anonymous users, disable r
 
 This section will demonstrate how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
 
- {{< caution >}}
+{{< note type="alert" >}}
 Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/guides/control-network-traffic-with-iptables/) rules that allow connections only from specific IP addresses.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Log in to MariaDB as root:
 

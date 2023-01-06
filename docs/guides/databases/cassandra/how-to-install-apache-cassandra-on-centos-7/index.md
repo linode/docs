@@ -103,7 +103,7 @@ Update the system and install Java along with Cassandra. NTP will help keep the 
 
 1.  Enable user login authentication. Make a backup of the Cassandra configuration file "cassandra.yaml."
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The CentOS 7 installation already includes a backup file located at `/etc/cassandra/conf/cassandra.yaml.orig`.
 {{< /note >}}
 
@@ -165,7 +165,7 @@ Since your Cassandra username and password can be stored here in plaintext, this
 
 2.  Copy any sections below that you wish to add to your configuration. Details for this file can be found by following the "Cassandra cqlshrc File Configuration Overview" link in the "External Resources" section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 CentOS 7 users can find a sample file containing all the configuration options at `/etc/cassandra/conf/cqlshrc.sample`.
 {{< /note >}}
 
@@ -253,7 +253,7 @@ JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
         nodetool status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
 {{< /note >}}
 

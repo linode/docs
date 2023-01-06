@@ -37,7 +37,7 @@ aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
 
 3.  Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace each instance of `example.com` in this guide with your Buildbot site's domain name.
 {{< /note >}}
 
@@ -51,9 +51,9 @@ Replace each instance of `example.com` in this guide with your Buildbot site's d
 
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master#setup-buildbot-master-web-interface) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install Buildbot
 
@@ -284,7 +284,7 @@ Now that Buildbot is installed, you can configure it to run builds. In this tuto
 
 Before creating the build configuration, fork the `linode/docs` repository into your GitHub account. This is the repository that will be used to run tests against. The repository will also require webhooks to be configured to send push or PR events to Buildbot.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The actions you take to fork, add webhook, and push changes to your fork of `linode/docs` will not affect the parent (or upstream), so you can safely experiment with it. Any changes you make to branches of your fork will remain separate until you submit a pull request to the original `linode/docs` repository.
 {{< /note >}}
 

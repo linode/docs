@@ -41,7 +41,7 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
@@ -107,7 +107,7 @@ deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're using Ubuntu 16.04, replace `trusty` with `xenial` in the above command.
 {{< /note >}}
 

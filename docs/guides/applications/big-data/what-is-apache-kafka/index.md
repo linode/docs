@@ -32,7 +32,7 @@ Kafka can be thought of as a re-implementation, or an evolution of a traditional
 
 In a typical workflow, one or more producer applications send key-value messages about a pre-defined topic to a Kafka cluster. A cluster consists of one or more servers, which are also called *brokers*, and each cluster typically hosts messages for many topics. One of the brokers in the cluster receives these messages and writes them to a log file corresponding to the topic. These log files are called *partitions*, and topics usually contain several partitions. Messages might also get replicated to some of the other nodes within the cluster. Other processes known as consumers can then read and process the events in each partition. You can write these consumer and producer applications yourself or use third-party offerings.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 At the time of writing this guide, the version of Apache Kafka is release 2.7.
 {{< /note >}}
 

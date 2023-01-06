@@ -50,7 +50,7 @@ Virtual machine mode determines whether devices inside your virtual machine are 
 | Net     | Virtio Net          | e1000                 |
 | Serial  | ttyS0               | ttyS0                 |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're unfamiliar with these distinctions, choose paravirtualization
 {{< /note >}}
 
@@ -117,7 +117,7 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 
 3.  Edit your Linode's configuration profile back to the previous setting.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Remember to check [Glish](/docs/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 

@@ -24,9 +24,9 @@ Before beginning this guide, we assume you have completed the [Setting Up and Se
 
 ## Install Unison on a Linode
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Unison is no longer [maintained under active development](https://www.cis.upenn.edu/~bcpierce/unison/status.html).
-{{< /caution >}}
+{{< /note >}}
 
 ### Debian 5 (Lenny)
 

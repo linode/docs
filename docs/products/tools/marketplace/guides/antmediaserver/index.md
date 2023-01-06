@@ -40,9 +40,9 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Ant Media Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ### Configuration Options
 

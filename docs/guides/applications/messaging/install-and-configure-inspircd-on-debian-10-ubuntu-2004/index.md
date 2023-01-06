@@ -105,7 +105,7 @@ Refer to InspIRCd's documentation on [configuration options](https://docs.inspir
 
 1. Open the `/etc/inspircd/inspircd.rules` file, and enter the usage rules for your IRC server. Users can review these with the `/rules` command. The rules should set expectations for the kinds of behavior you allow on your server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Not all IRC clients support the `/rules` command. The popular client WeeChat, for example, does not support this command. If you expect users may frequently use one of these clients, you may also opt to present your rules in the message of the day.
     {{< /note >}}
 

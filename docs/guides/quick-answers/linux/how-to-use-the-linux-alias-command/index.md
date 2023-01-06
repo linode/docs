@@ -109,9 +109,9 @@ To remove all aliases:
 
     unalias -a
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Removing all aliases also removes the system default aliases.
-{{</ note >}}
+{{< /note >}}
 
 ## Helpful Examples
 

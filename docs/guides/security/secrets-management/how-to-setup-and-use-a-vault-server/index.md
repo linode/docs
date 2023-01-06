@@ -43,15 +43,9 @@ A secret is a credential or key that allows you to gain access to a particular r
     sudo apt update
     ```
 
-<<<<<<< HEAD:docs/guides/security/secrets-management/hashicorp-vault-centralized-secrets-management-system/index.md
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
-=======
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-    {{< /note >}}
->>>>>>> develop:docs/guides/security/secrets-management/how-to-setup-and-use-a-vault-server/index.md
+{{< /note >}}
 
 {{< note >}}
 The instructions in this guide are based the steps on Ubuntu 22.04, all the steps are distribution agnostic with the exception of package names and package managers.
@@ -90,7 +84,9 @@ You can now launch the Vault from any directory or user on the system.
 
 To learn the functionality and syntax for using Vault, you need to set up a server. You can use the inbuilt dev server that is not designed to be production ready but used for learning the essentials and testing various pieces of functionality.
 
-{{< note >}} The dev server runs in the foreground. As a result, you need to open a new terminal session to run the consequent commands.{{< /note >}}
+{{< note >}}
+The dev server runs in the foreground. As a result, you need to open a new terminal session to run the consequent commands.
+{{< /note >}}
 
 1.  Start the Vault dev server by running the following command:
 
@@ -139,7 +135,7 @@ To learn the functionality and syntax for using Vault, you need to set up a serv
     ```
 
     {{< note >}}
-The Unseal Key and Root Token values are displayed, these values are used to seal and unseal the vault and to authenticate with the vault. Ensure that you save these values for later use.
+    The Unseal Key and Root Token values are displayed, these values are used to seal and unseal the vault and to authenticate with the vault. Ensure that you save these values for later use.
     {{< /note >}}
 
 1.  Add the Vault address and the token as an environment variables in a new terminal, this ensures that Vault can connect to the vault server automatically without having to specify the address each time.

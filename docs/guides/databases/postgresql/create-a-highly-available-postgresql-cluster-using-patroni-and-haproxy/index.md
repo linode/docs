@@ -371,7 +371,7 @@ listen postgres
 
     In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the primary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this case, it just so happens that the third Postgres server is promoted to primary. This might not always be the case. It is equally likely that the second server may be promoted to primary.
 {{< /note >}}
 

@@ -95,9 +95,9 @@ v2.8.7
 
 acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
-{{</ note >}}
+{{< /note >}}
 
 ## Issue a certificate
 
@@ -109,7 +109,7 @@ Ensure the token you create has **Read/Write** access to **Domains**.
 
         acme.sh --issue --dns dns_linode_v4 --dnssleep 90 -d example.com -d *.example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The above command issues a wildcard certificate for `example.com`, which covers `example.com` and any subdomains under it.
 
 If you only need to secure `www.example.com`, you can issue the example command. This command covers the non-www (`example.com`) and www version of the domain (`www.example.com`). Replace `example.com` with your own domain.
@@ -230,13 +230,13 @@ For example, to store your certificates in `/etc/ssl/example.com` and restart Ap
         --fullchain-file /etc/ssl/example.com/fullchain-example.com.cer \
         --reloadcmd "systemctl restart apache2"
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The target directory must exist first. To create it run the following command:
 
     mkdir -p /etc/ssl/example.com
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The example command uses certificate file system locations (`/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
 {{< /note >}}
 

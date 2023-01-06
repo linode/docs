@@ -70,7 +70,7 @@ Direnv modifies the shell environment depending on your current directory. This 
 
         vim ~/my-project-directory/.envrc
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You must use bash syntax within `.envrc` file.
 {{< /note >}}
 

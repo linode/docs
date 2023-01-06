@@ -35,7 +35,7 @@ Additionally:
         sudo apt install software-properties-common
         sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On Debian 9 and later, run `sudo apt install dirmngr` before importing the key.
 {{< /note >}}
 

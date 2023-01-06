@@ -59,7 +59,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
             sudo apt install podman
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Podman is only available through the APT package manager for Debian 11 or Ubuntu 20.10 and later.
 {{< /note >}}
 

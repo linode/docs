@@ -101,7 +101,7 @@ Issue the following commands to download and unpack OpenCart into your web root 
 
 In the above example, replace `/var/www/html/example.com/public_html/` with your virtual host's web root and `2.3.0.2-compiled.zip` with the file name of the latest OpenCart release.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can find the latest version of OpenCart from their [Download Page](https://www.opencart.com/?route=cms/download).
 {{< /note >}}
 

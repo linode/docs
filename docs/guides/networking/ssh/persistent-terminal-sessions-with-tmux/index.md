@@ -86,7 +86,7 @@ There are three ways to issue commands to tmux:
 
 Most tmux tasks can be accomplished using any of these three methods.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can change the prefix key by editing the `~/.tmux.conf` file. For the remainder of this guide, **Prefix** will be used to refer to either the default `CTRL+b` or the combination you have chosen in your configuration file.
 {{< /note >}}
 
@@ -160,7 +160,7 @@ Sometimes even multiple windows and panes aren't enough and you need to separate
 
     new-session
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It's also possible to type shorter versions of a command, for example: "new-se". But this will work only if there isn't another command that starts with the same string of characters.
 {{< /note >}}
 

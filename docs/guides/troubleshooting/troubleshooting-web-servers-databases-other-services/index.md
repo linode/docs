@@ -64,7 +64,7 @@ Your service may be listening on an unexpected port, or it may not be bound to y
 
 Review the application's documentation for help determining the address and port your service should bind to.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 One notable example is if a service is only bound to a public IPv4 address and not to an IPv6 address. If a user connects to your Linode over IPv6, they will not be able to access the service.
 {{< /note >}}
 
@@ -89,7 +89,7 @@ If your service is running but your connections still fail, your firewall (which
     sudo iptables -L # displays IPv4 rules
     sudo ip6tables -L # displays IPv6 rules
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status
@@ -140,7 +140,7 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 
 If your web server is not running or if connections are timing out, review the [general troubleshooting strategies](#general-troubleshooting-strategies).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Troubleshooting specific to Apache is outlined in [Troubleshooting Common Apache Issues](/docs/guides/troubleshooting-common-apache-issues/#check-virtual-host-definitions).
 {{< /note >}}
 
@@ -187,7 +187,7 @@ One common reason that a database may not start is if your disk is full. To chec
 
     df -h
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This reported disk usage is not the same as the reported storage usage in the Linode Manager. The storage usage in the Linode Manager refers to how much of the disk space you pay for is allocated to your Linode's disks. The output of `df -h` shows how full those disks are.
 {{< /note >}}
 

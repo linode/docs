@@ -38,7 +38,7 @@ In this guide, learn how to install WordPress on your Ubuntu 20.04 server.
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

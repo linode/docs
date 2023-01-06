@@ -117,7 +117,7 @@ Refer to CouchDB's [API guide](https://docs.couchdb.org/en/latest/api/index.html
              -X POST http://admin:password@127.0.0.1:5984/example-db \
              -d '{"key1":"value1","key2":"value2"}'
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 CouchDB automatically assigns an ID to the document if you do not explicitly provide one. However, CouchDB recommends that production applications create document IDs explicitly. Doing so prevents duplication of documents if your application has to retry its connection to the CouchDB database.
     {{< /note >}}
 
@@ -161,7 +161,7 @@ The following are examples of basic queries aiming to provide an idea of how the
              -X POST http://admin:password@127.0.0.1:5984/example-db/_find \
              -d '{"selector": {"key_1": {"$gt": 5}}, "fields": ["key_2"], "sort": [{"key_3": "asc"}]}'
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To sort results, you must first define an index for the field and the sort order. For the example above, you could use the following to create the necessary index:
 
         curl -H 'Content-Type: application/json' \

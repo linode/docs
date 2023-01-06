@@ -43,7 +43,7 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
         start-yarn.sh
 
 {{< note >}}
- This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< / note >}}
 
 ## Download and Install Spark Binaries
@@ -148,7 +148,7 @@ spark.driver.memory    512m
 
   - Use the `--driver-memory` parameter to specify the amount of memory requested by `spark-submit`. See the following section about application submission for examples.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Values given from the command line will override whatever has been set in `spark-defaults.conf`.
 {{< /note >}}
 

@@ -84,7 +84,7 @@ Status: Downloaded newer image for mongo:latest
 docker.io/library/mongo:latest
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command pulls the latest version by default (as it says in the first line of the output). To pull a specific version, add the tag for that version to the command. For example, to install MongoDB 4.4.6, enter `docker pull mongo:4.4.6`.
 {{< /note >}}
 

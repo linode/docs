@@ -21,13 +21,13 @@ Once a Block Storage Volume has been attached to a Compute Instance, you need to
 
     1.  **Create a file system.** If your Volume *has not* been used before, create an ext4 file system on the Volume.
 
-        {{< caution >}}
-Skip this step if you wish to retain any data stored on an existing Volume. Creating a new file system will overwrite any existing data and result in data loss. You can view existing file systems on an unmounted volume with the following command:
+        {{< note type="alert" >}}
+        Skip this step if you wish to retain any data stored on an existing Volume. Creating a new file system will overwrite any existing data and result in data loss. You can view existing file systems on an unmounted volume with the following command:
 
-    blkid FILE_SYSTEM_PATH
+            blkid FILE_SYSTEM_PATH
 
-If you do not receive output, there is currently no file system on this volume.
-    {{< /caution >}}
+        If you do not receive output, there is currently no file system on this volume.
+        {{< /note >}}
 
         You can create an ext4 file system by running the following command, where `FILE_SYSTEM_PATH` is your Volume's file system path:
 
@@ -46,12 +46,12 @@ If you do not receive output, there is currently no file system on this volume.
             FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults 0 2
 
         {{< note >}}
-If you plan on detaching the volume regularly or moving it between other Compute Instances, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
+        If you plan on detaching the volume regularly or moving it between other Compute Instances, you may want to consider adding the flags `noatime` and `nofail` to the **/etc/fstab** entry.
 
-* `noatime` - This will save space and time by preventing writes made to the file system for data being read on the volume.
-*  `nofail`  - If the volume is not attached, this will allow your server to boot/reboot normally without hanging at dependency failures if the volume is not attached.
+        * `noatime` - This will save space and time by preventing writes made to the file system for data being read on the volume.
+        *  `nofail`  - If the volume is not attached, this will allow your server to boot/reboot normally without hanging at dependency failures if the volume is not attached.
 
-Example:
+        Example:
 
-    FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
-{{</ note >}}
+            FILE_SYSTEM_PATH /mnt/BlockStorage1 ext4 defaults,noatime,nofail 0 2
+        {{< /note >}}

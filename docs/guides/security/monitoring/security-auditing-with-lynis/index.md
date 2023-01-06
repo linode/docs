@@ -34,7 +34,7 @@ Then, import a public GPG key for a secure Lynis installation:
 
     sudo wget -O - https://packages.cisofy.com/keys/cisofy-software-public.key | sudo apt-key add -
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to manually install gnupg2 on some systems in order for GPG to successfully import keys. This can be completed with the following command:
 
     sudo apt-get install gnupg2

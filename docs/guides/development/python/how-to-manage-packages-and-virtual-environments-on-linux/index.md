@@ -108,7 +108,7 @@ These packages, once installed, do not interfere with other packages outside of 
 
         virtualenv my-virtual-environment
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not have virtualenv on your machine install it using Pip:
 
     pip3 install virtualenv

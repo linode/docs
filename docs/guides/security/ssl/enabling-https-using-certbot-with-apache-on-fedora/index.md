@@ -32,7 +32,7 @@ Before continuing with this guide, you need a website accessible over HTTP using
 
 3.  **The Apache web server software installed on your server and configured for your domain.** You can review the [Getting started with Apache HTTP Server](https://docs.fedoraproject.org/en-US/quick-docs/getting-started-with-apache-http-server/) guide on Fedora's docs for information on installing and configuring Apache.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

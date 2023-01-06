@@ -38,7 +38,7 @@ This tutorial shows you how to start using Countly for your analytics needs. Cou
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -278,7 +278,7 @@ To get you started and to demonstrate, the rest of this section walks you throug
     <!-- [...] -->
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternatively, you can have Countly automatically generate this code specifically for your applications. Click **Management** (the wrench icon) in the left-hand toolstrip, then **Applications**. Choose your application and scroll all the way down to the blue box titled "Need some help with SDK integration?". Click the **Web** button and you should be redirected to an address that starts with `code.count.ly/integration-web.html`. From here, choose where you want to retrieve the `countly.min.js` file and what features you want to use. When done, click **Generate code** for code that's custom-tailored for your application.
 {{< /note >}}
 

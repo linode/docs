@@ -28,7 +28,7 @@ While a firewall is often responsible for cases of limited access, these issues 
 
 To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/guides/lish/#through-the-cloud-manager-weblish).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When using Lish, you can log into your Linode with the `root` user, even if `root` user login is disabled by your Linode's SSH configuration file.
 {{< /note >}}
 
@@ -58,11 +58,11 @@ If you are using Linode Cloud Firewall, then it's important to verify which Clou
 
 1.  The **Rules** page displays a list of all of the Cloud Firewall rules that are filtering your Linode's network traffic. If you notice that the Cloud Firewall rules do not allow traffic for a specific service's port that you are troubleshooting, you may consider [updating your rule's](/docs/products/networking/cloud-firewall/get-started/#edit-cloud-firewall-rules) to allow connections for that port.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the Cloud Firewall is assigned to more than one Linode, modifying the Cloud Firewall rules affect all Linodes assigned to the Cloud Firewall.
-    {{</ note >}}
+    {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Cloud Firewall rules are applied on the network level and are not detectable internally on Linodes. For more information on setting up and using Cloud Firewall, see the guide [A Tutorial for Adding and Configuring Linode Cloud Firewalls](/docs/products/networking/cloud-firewall/get-started/).
 {{< /note >}}
 
@@ -70,9 +70,9 @@ Cloud Firewall rules are applied on the network level and are not detectable int
 
 *Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
-{{</ note >}}
+{{< /note >}}
 
 To see all active UFW rules, enter the following command:
 
@@ -105,9 +105,9 @@ For example, to delete the Allow rule for port 80 from the example output above,
 
 *firewalld* is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
-{{</ note >}}
+{{< /note >}}
 
 To list all configurations for all zones, enter the following command:
 
@@ -124,9 +124,9 @@ For more information on understanding firewalld, see our [Introduction to Firewa
 
 *iptables* is the most common firewall used on Linux systems. If you're unsure of which firewall software you may be using, chances are that it's iptables in some form.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
-{{</ note >}}
+{{< /note >}}
 
 To list all active firewall rules using iptables, enter the following commands for IPv4 and IPv6 respectfully:
 

@@ -100,9 +100,9 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 
     This command will output the IP addresses configured for the specified network interface, as seen in the example output below. If no IP address appears or if the wrong IP address appears, review the steps outlined above for your distribution and verify that they were all completed. Restarting the Compute Instance, making sure that Network Helper is disabled, may also force the changes to take affect.
 
-    {{< output >}}
-inet 10.0.0.1/24 brd 10.0.0.255 scope global eth1
-    {{< /output >}}
+    ```output
+    inet 10.0.0.1/24 brd 10.0.0.255 scope global eth1
+    ```
 
 2. Test the VLAN's connectivity by pinging another Linode within the VLAN's private network, using the IPAM address assigned to it. For more details, see the *Testing Connectivity* section of the [Getting Started with VLANs](/docs/products/networking/vlans/get-started/#testing-connectivity) guide.
 

@@ -42,7 +42,7 @@ A *LAMP stack* is a particular bundle of software packages commonly used for hos
 
         sudo yum update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
@@ -63,7 +63,7 @@ Install Apache using CentOS’s package manager.
 
 1.  Create a `httpd-mpm.conf` file and add the code in the example to turn off KeepAlive and adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As a best practice, you should create a backup of your Apache configuration file, before making any configuration changes to your Apache installation. To make a backup in your home directory:
 
     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
@@ -127,13 +127,13 @@ IncludeOptional sites-enabled/*.conf
 
         sudo systemctl reload httpd.service
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error when trying to reload your `httpd` service, follow the steps in the [Configure SELinux to Allow HTTP](#configure-selinux-to-allow-http) section and then reattempt to reload the service.
-    {{</ note >}}
+    {{< /note >}}
 
     Additional domains can be added to the `example.com.conf` file as needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -170,9 +170,9 @@ Jun 21 17:58:09 example.com systemd[1]: httpd.service failed.
         sudo systemctl restart httpd.service
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In addition, if you plan to use any HTTPD scripts on the server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the `sudo setsebool -P httpd_can_network_connect on` command.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure FirewallD to Allow HTTP Connections
 
@@ -193,11 +193,11 @@ ssh dhcpv6-client
 
     Visit your domain or public IP to test the Apache server and view the default Apache page.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Rename Apache's default welcome page. When this file is present it takes precedence over other configurations via the `LocationMatch` directive.
 
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bk
-{{</ note >}}
+{{< /note >}}
 
 Once Apache has been installed and configured on your server, it is time to install PHP and the MySQL database on your CentOS 7 Linode.
 
@@ -260,7 +260,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 {{< /note >}}
 

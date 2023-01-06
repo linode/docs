@@ -34,15 +34,15 @@ The sections in this guide will cover the following topics:
 - Starting a local MongoDB instance and importing a data set to your database
 - Creating a Flask app that uses Stadia Maps to display your GeoJSON data as markers on your map.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide assumes a basic familiarity with programming concepts, Python, HTML, CSS, and JavaScript.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Before you Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using Python version 3.7.
-{{</ note >}}
+{{< /note >}}
 
 1. You can optionally [create an account with Stadia maps](https://client.stadiamaps.com/signup/). When developing locally, you are not required to create an account with Stadia Maps. Once you are ready to deploy your app, you will be required to sign up and select an appropriate service plan.
 

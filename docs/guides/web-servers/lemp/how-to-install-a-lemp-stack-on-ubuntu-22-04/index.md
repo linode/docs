@@ -50,7 +50,7 @@ The LEMP stack consists of the following components:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -58,7 +58,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 This section explains how to install and configure the LEMP Stack on Ubuntu 22.04 LTS. However, the instructions for the Ubuntu 20.04 LTS release are very similar. The LEMP stack is not available through Tasksel, so the individual components must be installed separately.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions apply with or without a registered domain name. If the server is hosting a domain, a virtual host must be configured. For more information about domain names and how to point the domain to a Linode, consult the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
@@ -96,7 +96,7 @@ nginx.service - A high performance web server and a reverse proxy server
 
 5.  Install the PHP module for MariaDB/MySQL support.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Do not install the main `php` module because it is optimized for Apache. PHP support for NGINX is installed later.
 {{< /note >}}
 
@@ -126,7 +126,7 @@ NGINX is easier to configure than some other web servers. However, the firewall 
 
 1.  Configure the `ufw` firewall so it accepts NGINX connections. Allow the `Nginx Full` profile, which permits both HTTP and HTTPS connections. Ensure `OpenSSH` connections are also allowed. Enable `ufw` when all changes are complete.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `Nginx Full` profile allows both HTTP and HTTPS traffic. To temporarily limit firewall access to HTTP requests, allow the `Nginx HTTP` profile instead. The `Nginx HTTPS` setting limits firewall access to HTTPS traffic only. You must configure HTTPS on the server before applying this profile.
     {{< /note >}}
 
@@ -159,7 +159,7 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
     http://server_IP_address/
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To determine the IP address of the Ubuntu system, use the Linode Dashboard.
     {{< /note >}}
 
@@ -342,7 +342,7 @@ nginx.service - A high performance web server and a reverse proxy server
     Active: active (running) since Mon 2022-05-16 16:07:47 UTC; 1 day 20h ago
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If NGINX has failed or is `dead`, use the `sudo nginx -t` command to find configuration errors.
     {{< /note >}}
 

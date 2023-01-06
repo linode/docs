@@ -81,6 +81,6 @@ The `-P` option tells `cd` to use the physical directory structure and not to fo
 
     cd -P /var/example.com
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If both `-L` and `-P` are specified, the `-P` option will be ignored.
-{{</ note >}}
+{{< /note >}}

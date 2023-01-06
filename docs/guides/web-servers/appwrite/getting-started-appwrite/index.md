@@ -38,7 +38,7 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -100,7 +100,7 @@ The first step is to install Docker, which is used to both install and run your 
 Docker version 20.10.17, build 100c701
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On RHEL-derived distributions, you may additionally have to run the following command to ensure the Docker daemon starts:
 
 ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}

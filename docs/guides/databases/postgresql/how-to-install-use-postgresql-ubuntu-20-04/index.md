@@ -98,7 +98,7 @@ Installing PostgreSQL from the PostgreSQL repository allows you more control ove
 5.  Install the latest version of PostgreSQL.
 
         sudo apt-get -y install postgresql postgresql-contrib
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To install an earlier version of PostgreSQL, add the release number as a suffix, for example `install postgresql-11`.
     {{< /note >}}
 6.  Ensure PostgreSQL is running with `systemctl`.
@@ -131,7 +131,7 @@ Linode recommends increasing the security of new PostgreSQL installation before 
     You can optionally choose to only apply the password to a specific database with the `-d` option.
 
         psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword'";
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This password only applies when the `postgres` user connects to PostgreSQL over a network, not when logging in locally. This guarantees administrative access to the database for maintenance or cron jobs. It effectively means you can always log in locally to PostgreSQL as the `postgres` user without any password.
     {{< /note >}}
 4.  Confirm PostgreSQL is working properly and you are running the version you expect with the following command. This command returns the version of the PostgreSQL server.
@@ -162,14 +162,15 @@ postgres=#
 (1 row)
     {{< /output >}}
 7.  Exit PostgreSQL with the `\q` meta-command, and return to the Linux shell.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 PostgreSQL commands starting with a backslash are known as *meta-commands*. PostgreSQL pre-processes these commands, which are useful for administration and scripting. See the [*PostgreSQL PSQL Documentation page*](https://www.postgresql.org/docs/current/app-psql.html) for more details.
 {{< /note >}}
 
 8.  Edit the `pg_hba.conf` file to enforce authentication. Find the `local` line under "Unix domain socket connections only" and change the `METHOD` attribute from `peer` to `md5`.
-      {{< caution >}}
+
+    {{< note type="alert" respectIndent=false >}}
 Ensure that you do not edit the top line for the default `postgres` user. The `postgres` account requires non-interactive access to PostgreSQL for maintenance tasks. Linode recommends you to make a back-up copy of `pg_hba.conf` before editing it.
-    {{< /caution >}}
+    {{< /note >}}
 
     {{< file "/etc/postgresql/12/main/pg_hba.conf" >}}
 ...
@@ -219,7 +220,7 @@ Before creating any tables or adding any table rows, you must create a database 
 1.  From the Linux shell, while logged in as `postgres`, create a test database using the `createdb` command.
 
         createdb testdatabase
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can assign ownership to a specific PostgreSQL user with the `-O` option, as in `createdb testdatabase -O testuser`.
     {{< /note >}}
 2.  Connect to the new database directly.
@@ -251,9 +252,9 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 
         \c testdatabase
 6.  If you are absolutely certain you do not need a database any longer, you can delete it with the `dropdb` command.
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command permanently deletes all of the tables and all data from the database. This command cannot be undone.
-{{< /caution >}}
+{{< /note >}}
     Run the command from the Linux shell while logged in as `postgres`.
 
         dropdb testdatabase
@@ -294,9 +295,10 @@ Access method: heap
 {{< /output >}}
 
 5.  To delete an existing table, use the  `DROP TABLE` command.
-      {{< caution >}}
+
+    {{< note type="alert" respectIndent=false >}}
 This operation deletes all of the data in the table and cannot be undone.
-{{< /caution >}}
+{{< /note >}}
 
         DROP TABLE customers;
 
@@ -323,7 +325,7 @@ Tables store the actual data as a series of rows. Each row represents an entry w
            2 | Jane       | Purchaser
 (2 rows)
     {{< /output >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `*` symbol is a wild card indicating all columns.
     {{< /note >}}
 
@@ -364,7 +366,7 @@ The `*` symbol is a wild card indicating all columns.
 (1 row)
    {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A common example of a complex query involving two or more tables is a *join*. Joins are used to combine information from multiple tables. For a join, specify a column in each table where the values must match. The query returns a pair of rows (one from each table) every time a match occurs. For instance, if rows in the `customers` table and the `accounts` table both have the same value in the `customer_id` field, both rows are returned. Matches could be one-to-one, many-to-one, or many-to-many depending on the database schema. When a match has been located, PostgreSQL processes the two rows into one entity and returns the requested columns. The PostgreSQL site provides [*a helpful introduction to joins*](https://www.postgresql.org/docs/13/tutorial-join.html).
     {{< /note >}}
 

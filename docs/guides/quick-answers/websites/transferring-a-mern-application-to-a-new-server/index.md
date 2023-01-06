@@ -28,7 +28,7 @@ Before proceeding with any migration, it is first recommended that the Marketpla
 - Node.js
 - NPM
 
-  {{< note >}}
+{{< note respectIndent=false >}}
 Users who prefer building applications with alternative package Managers for Node.js like [Yarn](/docs/guides/install-and-use-the-yarn-package-manager/) will need to install the package manager manually.
 {{< /note >}}
 
@@ -49,7 +49,7 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 
 Before, proceeding with any remote transfer, it is strongly recommended the original host that will be transferring data to the Linode has [Backups](/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.
 {{< /note >}}
 
@@ -77,7 +77,7 @@ Once the file transfer is completed, Rebuilding the MERN application is generall
 
        npm install
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The packages installed using the `npm install` command will install all node modules included in the project directory. This does not include all modules in any subdirectory. If your project is reliant on additional underlying modules, you will need to navigate to the directory where their configuration information.
 {{< /note >}}
 
@@ -97,7 +97,7 @@ The packages installed using the `npm install` command will install all node mod
 
 Once these steps are completed, your node configuration should successfully be running.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some MERN applications are dependent on a specific version of Node in order to serve content. If you encounter errors related to your version of Node, you can additionally install tools like the [Node Version Manager(NVM)](/docs/guides/how-to-install-use-node-version-manager-nvm/) in order to easily switch to your needed version of Node.
 
 {{< /note >}}

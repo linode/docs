@@ -23,7 +23,7 @@ aliases: ['/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketpl
 
 {{< note >}}
 A license is required to use uTunnel. See [uTunnel's Pricing page](https://www.utunnel.io/vpn-server-pricing-plans) for more information on available plans and their associated costs. A free 14-day trial is installed by default.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -31,9 +31,9 @@ A license is required to use uTunnel. See [uTunnel's Pricing page](https://www.u
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** UTunnel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

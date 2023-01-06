@@ -285,9 +285,9 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you are giving other users access to upload files to your server, consider the [security implications](/docs/guides/set-up-and-secure/) of all additional access that you grant to third parties.
-{{< /caution >}}
+{{< /note >}}
 
 ### Upload Files to a Remote Server
 

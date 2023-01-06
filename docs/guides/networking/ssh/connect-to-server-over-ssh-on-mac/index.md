@@ -46,7 +46,7 @@ As alternatives to the Terminal app, other popular and highly customizable macOS
 
     The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
 
     ssh [username]@[ip-address] -p [port-number]
@@ -62,11 +62,11 @@ Are you sure you want to continue connecting (yes/no)?
 
     You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
-    {{<note>}}
+    {{< note respectIndent=false >}}
 If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, revoke the key for that IP address.
 
     ssh-keygen -R 198.51.100.4
-{{</note>}}
+{{< /note >}}
 
 1. Accept the prompt by entering `y` or `yes`, which results in a one-time warning that is similar to:
 

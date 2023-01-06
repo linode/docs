@@ -30,7 +30,7 @@ This guide walks you through the setup process for Laravel, then shows you how t
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -91,7 +91,7 @@ This guide is written for non-root user. Commands that require elevated privileg
 
         cd example-app
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless noted otherwise, all subsequent commands in this guide assume you are still in `example-app` project directory.
 {{< /note >}}
 
@@ -175,7 +175,7 @@ class AboutController extends Controller
 
 1. This example's views share a navigation menu, so the website can use a layout template to reduce duplicate code. Create the layout template as `~/example-app/resources/views/layouts/master.blade.php`, and give it the contents shown in the example below.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before creating your layout template, you need to create the `layouts` subdirectory.
 
     mkdir ~/example-app/resources/views/layouts

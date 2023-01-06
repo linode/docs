@@ -48,7 +48,7 @@ Here's a few common categories:
 
     The customer generally assumes responsibility for deploying and maintaining their applications on the cluster. The Master Nodes are often provided at no cost, and the customer only pays for the Worker Nodes they provision.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an example of this category.
 {{< /note >}}
 
@@ -78,7 +78,7 @@ The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an e
 
     While a customer will install and run these management applications on their own servers, the companies that author these applications may also offer support similar to cloud KaaS offerings.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
 {{< /note >}}
 
@@ -100,9 +100,9 @@ Kubernetes is declarative: describe to Kubernetes the desired state of the clust
 
 Kubernetes can run on virtually any public cloud, on-premise hardware, or even bare metal. Developing applications for Kubernetes means that code can be redeployed multiple times, allowing you to select the infrastructure of your choosing.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 There are some caveats to this point. Many cloud infrastructure providers support Kubernetes, but there is no guarantee that they support all of the features of Kubernetes. For example, not every cloud provider offers [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) as a feature, so a Kubernetes cluster on those providers will not support [Services of the type `LoadBalancer`](https://kubernetes.io/docs/concepts/services-networking/#loadbalancer).
-{{</ note >}}
+{{< /note >}}
 
 ### Microservice Architecture
 

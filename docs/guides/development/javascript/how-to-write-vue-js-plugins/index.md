@@ -40,7 +40,7 @@ The options object in the second argument is available as the value of the `opti
 
 ## Creating a Simple Vue.js Plugin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The code below assumes that the Vue project is created by the [Vue CLI](https://cli.vuejs.org/).
 {{< /note >}}
 

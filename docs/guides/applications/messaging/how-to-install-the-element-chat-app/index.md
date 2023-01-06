@@ -84,7 +84,7 @@ The following sections describe each step in more detail.
   - `matrix.example.com` (Matrix/Synapse communication layer)
   - `element.example.com` (Element web client)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this section and the rest of the guide, replace `example.com` with your own domain name. See the guide for the Linode [DNS Manager](/docs/products/networking/dns-manager/) for more information on adding domains and DNS records.
     {{< /note >}}
 
@@ -343,7 +343,7 @@ ubuntu  18.04
 kernel  4.15.0-142-generic
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Snap is not already installed, run the command `sudo apt install snapd` first.
     {{< /note >}}
 
@@ -432,9 +432,9 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 8448 (v6)                  ALLOW       Anywhere (v6)
     {{< /output >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `ufw` allows `OpenSSH` traffic. Otherwise, you could lock yourself out of your Linode.
-{{< /caution >}}
+{{< /note >}}
 
 ## Enable and Test the Element Client
 

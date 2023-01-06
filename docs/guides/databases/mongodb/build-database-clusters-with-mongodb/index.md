@@ -384,7 +384,7 @@ bindIp: 192.0.2.5
 
     In this format, `rs0` is the name of the replica set for the first shard, `mongo-repl-1` is the name of the first host in the shard (using port `27017`), and so on. You'll need to run the above command separately for each individual replica set.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before adding replica sets as shards, you must first configure the replica sets themselves.
 {{< /note >}}
 

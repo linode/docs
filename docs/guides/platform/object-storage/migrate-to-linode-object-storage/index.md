@@ -44,7 +44,7 @@ This tutorial the tooling needed to make migration from AWS S3 to Linode Object 
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

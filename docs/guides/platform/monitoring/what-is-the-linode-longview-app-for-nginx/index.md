@@ -60,7 +60,7 @@ If you already have Longview installed, you may find that NGINX is not automatic
 
     ![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](1456-longview_ngnix_popup_crop.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It's also possible that Longview will be able to locate the status page on its own. In that case, you won't get the popup, and you can go directly to Step 5.
 {{< /note >}}
 
@@ -78,7 +78,7 @@ Finished configuring nginx, writing new configuration to /etc/linode/longview.d/
 update-rc.d: using dependency based boot sequencing
         {{</ output >}}
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 The automatic configuration sets the status page location to `http://127.0.0.2/nginx_status`.
         {{< /note >}}
 
@@ -187,7 +187,7 @@ If you don't see Longview data for Nginx, you'll instead get an error on the pag
 
 The error will state `Unable to access server status page (http://example.com/example) for Nginx: <error>`. This error occurs when NGINX's status setting is disabled or has been changed from the default location.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Nginx.conf`, or the default page at `http://127.0.0.1/nginx_status`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is checking doesn't exist.
 {{< /note >}}
 
@@ -229,7 +229,7 @@ location http://127.0.0.1/url-goes-here
 
 6.  Refresh Longview in the Cloud Manager to verify that the NGINX tab is now present and collecting data for your Longview client instance.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If you originally compiled NGINX without the status module, you will need to recompile it with `--with-http_stub_status_module` and all your other settings. Then go back and try to enable the Longview Nginx App.
 {{< /note >}}
 
@@ -237,7 +237,7 @@ If you originally compiled NGINX without the status module, you will need to rec
 
 The error will state `The Nginx status page doesn't look right. Check <http://example.com/example> and investigate any redirects for misconfiguration.` This error occurs when Longview is able to reach the status page, but doesn't receive the expected content.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can't scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn't have the right content. If, for example, Longview was to check your website's home page, you would get this error.
 {{< /note >}}
 

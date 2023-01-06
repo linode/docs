@@ -33,7 +33,7 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
@@ -48,11 +48,11 @@ Configuration of an IP tunnel using this method will not be persistent after reb
 
 3.  Assign IPv6 address and routing information to your new tunnel device. Replace `2001:db8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your "Client IPv6 Address":
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The `ifdown` command **will halt all network traffic to your Linode**. This step is included to avoid an error when adding the IPv6 route. It may not be required on all Linux distributions.
 
 On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 down` and `ip link set eth0 up`
-{{< /caution >}}
+{{< /note >}}
 
         ip addr add 2001:db8:1234:5678::2/64 dev he-ipv6
         ifdown eth0
@@ -72,7 +72,7 @@ On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 d
 
         ping6 -I he-ipv6 irc6.oftc.net
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your system must allow ICMPv6 in through the firewall for pings to be returned.
 {{< /note >}}
 
@@ -82,9 +82,9 @@ If everything is working, you should see ping replies. If not, go back and make 
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When manually modifying your network configuration, always disable [Network Helper](/docs/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
-{{< /caution >}}
+{{< /note >}}
 
 ### Debian and Ubuntu
 

@@ -44,7 +44,7 @@ While this tutorial is specifically concerned with the Linode API, similar steps
 
 1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -76,7 +76,7 @@ This series of steps shows you how to create such an *Authenticated API* for the
 
 1.  If you just setup Appsmith for the first time, you'll already be in the edit screen of your first application: skip to step three. If this is an existing installation, create a new application from the Appsmith dashboard by clicking the **+ New** button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may first have to create an organization to house the application under, which you can do using the **New Organization** button on the left menu.
 
 [![Example application on the Appsmith dashboard](appsmith-example-app-dashboard_small.png)](appsmith-example-app-dashboard.png)

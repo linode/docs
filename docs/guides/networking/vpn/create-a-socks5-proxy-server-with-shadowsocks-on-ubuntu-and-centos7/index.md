@@ -157,9 +157,9 @@ Apply the following optimizations to the system kernel to provide for a smooth r
 
 1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into the file:
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured the system kernel settings for any reason, make sure no conflicts exist.
-{{< /caution >}}
+{{< /note >}}
 
     {{< file "/etc/sysctl.d/local.conf" >}}
 # max open files

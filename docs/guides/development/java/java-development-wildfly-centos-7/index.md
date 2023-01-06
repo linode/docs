@@ -62,7 +62,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 ### Oracle Java 8 SE installation
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Oracle is producing many updates for Java, so below steps ensures you are getting the latest updated Java version.
 {{< /note >}}
 

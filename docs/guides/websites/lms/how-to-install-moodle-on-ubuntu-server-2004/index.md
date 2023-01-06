@@ -35,7 +35,7 @@ relations:
 
     For this guide, you do not need to configure a virtual host for Apache. However, you should follow all other non-optional sections in the guide linked above.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -73,7 +73,7 @@ This guide is written for non-root users. Commands that require elevated privile
         sudo cp -R /opt/moodle /var/www/html/
         sudo chmod -R 0777 /var/www/html/moodle
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Write access to this directory is only meant to be granted temporarily. Once the Moodle installation is completed in the steps below, the permissions are modified to restrict write access to the directory owner (the `root` user).
     {{< /note >}}
 

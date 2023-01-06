@@ -62,9 +62,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         sudo wget https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
 
-      {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Tomcat 9 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into `/usr/local/tomcat` directory:
 
@@ -81,28 +81,28 @@ Ensure that the version number matches the Tomcat 9 version you wish to download
 
 1.  Create a new `systemd` service file, `/etc/systemd/system/tomcat.service`, in the text editor of your choice with the following details:
 
-      {{< file "/etc/systemd/system/tomcat.service" service >}}
-[Unit]
-Description=Tomcat Server
-After=syslog.target network.target
+    ```file {title="/etc/systemd/system/tomcat.service" lang="service"}
+    [Unit]
+    Description=Tomcat Server
+    After=syslog.target network.target
 
-[Service]
-Type=forking
-User=tomcat
-Group=tomcat
+    [Service]
+    Type=forking
+    User=tomcat
+    Group=tomcat
 
-Environment=JAVA_HOME=/usr/lib/jvm/jre
-Environment='JAVA_OPTS=-Djava.awt.headless=true'
-Environment=CATALINA_HOME=/usr/local/tomcat
-Environment=CATALINA_BASE=/usr/local/tomcat
-Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
-Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
-ExecStart=/usr/local/tomcat/bin/catalina.sh start
-ExecStop=/usr/local/tomcat/bin/catalina.sh stop
+    Environment=JAVA_HOME=/usr/lib/jvm/jre
+    Environment='JAVA_OPTS=-Djava.awt.headless=true'
+    Environment=CATALINA_HOME=/usr/local/tomcat
+    Environment=CATALINA_BASE=/usr/local/tomcat
+    Environment=CATALINA_PID=/usr/local/tomcat/temp/tomcat.pid
+    Environment='CATALINA_OPTS=-Xms512M -Xmx1024M'
+    ExecStart=/usr/local/tomcat/bin/catalina.sh start
+    ExecStop=/usr/local/tomcat/bin/catalina.sh stop
 
-[Install]
-WantedBy=multi-user.target
-{{< /file >}}
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
 1.  Reload the `systemd` daemon to let it know about the `tomcat.service` that you created:
 
@@ -133,9 +133,9 @@ You can test your Tomcat installation by pointing your browser at your domain na
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 1.  For Tomcat versions 8+ the managers have been pre-configured to only allow access from the same IP of the server where it's installed. If you're trying to access it from a browser remotely, you'll need to comment out this configuration in the file `/usr/local/tomcat/webapps/manager/META-INF/context.xml`.
 

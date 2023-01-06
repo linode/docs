@@ -129,7 +129,7 @@ If your site uses SSL/TLS, you would add:
 
     listen [::]:443 ssl;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also specify your Linode's public IP addresses for NGINX to listen on. For example, the line would then be `listen 203.0.113.4:80;`.
 {{< /note >}}
 

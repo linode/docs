@@ -148,7 +148,7 @@ Once you've made these changes, restart the `mongod` service:
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.
 {{< /note >}}
 

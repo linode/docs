@@ -20,7 +20,7 @@ In this guide, you learn how to host a website on Ubuntu 18.04 using the LAMP st
 
 This guide is intended for small and medium-sized websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you need to assess your requirements and install custom packages tailored for your particular requirements.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -130,7 +130,7 @@ Apache (v6)                	ALLOW       	Anywhere (v6)
 
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you use *name-based virtual hosts* to host websites in your home directory.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
 {{< /note >}}
 
@@ -265,7 +265,7 @@ The first thing you need to do in MySQL is create a *database*. If you already h
 
         GRANT ALL ON exampleDB.* TO 'example_user' IDENTIFIED BY 'password';
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 MySQL usernames and passwords are only used by scripts connecting to the database. They do not need to represent actual user accounts on the system.
 {{< /note >}}
 
@@ -328,7 +328,7 @@ error_log = /var/log/php/php_errors.log
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The 128M setting for `memory_limit` is a general guideline. While this value should be sufficient for most websites, larger websites and some web applications may require 256 megabytes or more.
 {{< /note >}}
 
@@ -410,17 +410,17 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   If you have configured a firewall on your Linode, ensure your firewall rules allow traffic to your Apache web server. For more information on configuring firewall rules on Ubuntu, see [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
-    {{</ note >}}
+    {{< /note >}}
 
 1.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/) guide for more information.
 
 1.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on a local device. Your websites should load in the web browser.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Remember to remove the entries for the name-based virtual hosts from your `hosts` file when you're ready to test the DNS records.
-{{< /caution >}}
+{{< /note >}}
 
 ## Next Steps
 

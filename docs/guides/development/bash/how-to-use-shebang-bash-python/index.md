@@ -71,7 +71,7 @@ The directive `#!/bin/false` is a special Shebang. It immediately exits and retu
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -85,7 +85,7 @@ To ensure the `sh` interpreter always processes a script, no matter what shell i
 
 One common method to use a Shebang is to specify the full path to the interpreter on the first line of the file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In this program, the line `ps h -p $$ -o args=''` prints out the name of the interpreter along with any arguments passed to it.
 {{< /note >}}
 
@@ -177,7 +177,7 @@ ps h -p $$ -o args=''
 /bin/bash -v ./shebang_absolute
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the Shebang uses `env`, do not declare the option within the Shebang. Instead, use the declaration `set -v` to set the option on the next line.
 {{< /note >}}
 

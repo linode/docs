@@ -25,12 +25,12 @@ Linode does not verify the accuracy of any community submitted StackScripts. Pri
     ![Screenshot of the more options ellipsis menu for a StackScript](stackscript-deploy-button.png)
 
     {{< note >}}
-To find a StackScript, you can scroll through the list or you can use the **Search** field. For advanced searches, you search a specific field for a search term by entering `[field]:[search-term]`. This field can be `label`,`description`, or `username`. The example below searches the label field for the search term "nginx".
+    To find a StackScript, you can scroll through the list or you can use the **Search** field. For advanced searches, you search a specific field for a search term by entering `[field]:[search-term]`. This field can be `label`,`description`, or `username`. The example below searches the label field for the search term "nginx".
 
-```command
-label:nginx
-```
-{{< /note >}}
+    ```command
+    label:nginx
+    ```
+    {{< /note >}}
 
 1. This opens the **Create Linode** form with the StackScript pre-selected. If there are any UDF fields defined in the StackScript, they are displayed in the **StackScript Options** section. UDFs that *do not have* a default value are marked as required. UDFs that *do have* a default value are optional and are listed under the **Advanced Options** section.
 
@@ -42,4 +42,4 @@ label:nginx
 
 {{< note >}}
 Depending on the contents of your StackScript, it may take a few minutes for the script to finish executing.
-{{</ note >}}
+{{< /note >}}

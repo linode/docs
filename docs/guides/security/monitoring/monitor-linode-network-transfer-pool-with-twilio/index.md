@@ -17,7 +17,7 @@ contributor:
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide.
 {{< /note >}}
 
@@ -53,7 +53,7 @@ Using Twilio, you can also build a custom text message notification system for y
 
     The guide instructs you to install the Linode API and Twilio API clients for Python. When following these instructions, run the commands under the limited Linux user on your Linode instance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) that's accessed by the network transfer usage notification system in the current guide.
 {{< /note >}}
 
@@ -207,7 +207,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file and exit your text editor.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. Your script should now look like the code in [this file](transfer-pool-notification-twilio.py).
 {{< /note >}}
 
@@ -396,7 +396,7 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The updated code for this section is now complete. Your script should now look like the code in [this file](transfer-pool-notification-with-threshold-twilio.py).
 {{< /note >}}
 
@@ -416,7 +416,7 @@ https://www.linode.com/docs/guides/network-transfer/
 
     For example, if you set `USAGE_NOTIFICATION_THRESHOLD_RATIO = 0` in your code, then the if statement is always true. This means that a text message is always sent when the script runs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When testing, it can also be helpful to change the cron job schedule to run every minute, which is described in the [Adjusting the Scheduled Notification Time](#optional-adjusting-the-scheduled-notification-time) section.
 {{< /note >}}
 
@@ -513,7 +513,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The updated code for this section is now complete. Your script should now look like the code in [this file](transfer-pool-notification-with-overage-threshold-twilio.py).
 {{< /note >}}
 
@@ -535,7 +535,7 @@ https://www.linode.com/docs/guides/network-transfer/
 
     For example, if you set `OVERAGE_NOTIFICATION_THRESHOLD_RATIO = 0` in your code, then the first if statement is always true. This means that a text message is always sent when the script runs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When testing, it can also be helpful to change the cron job schedule to run every minute, which is described in the [Adjusting the Scheduled Notification Time](#optional-adjusting-the-scheduled-notification-time) section.
 {{< /note >}}
 

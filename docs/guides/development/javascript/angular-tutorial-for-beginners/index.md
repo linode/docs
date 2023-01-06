@@ -28,7 +28,7 @@ Angular is both a development platform and a framework for web application desig
 
 Angular uses [TypeScript](https://www.typescriptlang.org/), a programming language that extends JavaScript with strong typing. This can make your applications more transparent, legible, and helps you catch errors at compile time rather than run time. It may look unfamiliar at first, but many find that TypeScript makes their JavaScript programming more clear and less error-prone.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Angular should not be confused with [AngularJS](https://angularjs.org/), a front-end framework that aims to extend static HTML with dynamic features. Angular came about as the evolution of AngularJS — Angular is also known as Angular 2 for this reason.
 {{< /note >}}
 
@@ -60,7 +60,7 @@ Once you have the Angular CLI, you can use it to create Angular projects. The fo
 
         cd example-app
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless noted otherwise, all subsequent commands in this guide assume you are still in this directory.
 {{< /note >}}
 1. You can test the application with the following command:

@@ -104,7 +104,7 @@ Before installing any plugins, create a test index.
           }
         }
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These settings are suitable for testing, but additional shards and replicas should be used in a production environment.
 {{< /note >}}
 
@@ -158,7 +158,7 @@ In order to use the attachment plugin, a _pipeline_ must be used to process base
 
     The `doc-parser` pipeline can now be specified when indexing documents to extract data from the `encoded_doc` field.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, the attachment processor will create a new field called `attachment` with the parsed content of the target field. See the [attachment processor documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/using-ingest-attachment.html) for additional information.
 {{< /note >}}
 

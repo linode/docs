@@ -61,7 +61,7 @@ Even though Google Analytics is the industry standard, there are many advantages
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -108,7 +108,7 @@ helm installed into /usr/local/bin/helm
 version.BuildInfo{Version:"v3.7.1", GitCommit:"1d11fcb5d3f3bf00dbe6fe31b8412839a96b3dc4", GitTreeState:"clean", GoVersion:"go1.16.9"}
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not configure any web servers or load balancers on the Kubernetes cluster before installing PostHog. They might conflict with the new components and cause the installation to fail.
 {{< /note >}}
 
@@ -242,7 +242,7 @@ The IP address from the previous section is used to configure the domain's DNS r
 
 A new DNS entry usually takes some time to propagate to the various DNS servers. While this can take up to two days, it usually only takes between three to six hours. You cannot access PostHog until the record has finished propagating.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The IP address of the load balancer cannot be used to access PostHog. The cluster is configured to restrict access to PostHog to the domain name.
 {{< /note >}}
 

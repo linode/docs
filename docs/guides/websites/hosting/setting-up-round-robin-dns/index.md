@@ -53,9 +53,9 @@ Once your Linode is fully configured, the next step is to copy your configuratio
 
 1. Select the region and plan for the new Linode. A different region for each backend Linode is recommended when using round-robin DNS.
 
-  {{< note >}}
+    {{< note respectIndent=false >}}
 You will not be able to choose a plan for your new Linode that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Linode (Nanode).
-{{</ note >}}
+{{< /note >}}
 
 1. Provide a label for your new Linode.
 
@@ -95,7 +95,7 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 
 1. Follow the [Cloning Your Web Server](##cloning-your-web-server) steps until you have 4 Linodes fully configured. You should have two Linodes available for each data center you will be creating a NodeBalancer in.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
 {{< /note >}}
 

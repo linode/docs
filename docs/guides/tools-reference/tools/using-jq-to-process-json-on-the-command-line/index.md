@@ -234,7 +234,7 @@ The jq application provides a way of filtering out certain properties or array i
 
 To access a particular property within a JSON record, use the `.field` operator. Type the `.` character followed by the name of a field or object to access its value. The following command displays the values inside the `menu` object. All values, including nested fields and arrays, are displayed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 From this point on, all examples use a local JSON file. However, the output can be piped to `jq` from `curl` or any other process in any of these examples.
 {{< /note >}}
 

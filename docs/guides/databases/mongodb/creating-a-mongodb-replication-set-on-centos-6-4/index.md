@@ -67,7 +67,7 @@ europa
         gpgcheck=0
         enabled=1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A 32-bit system is not recommended for production deployments.
 {{< /note >}}
 

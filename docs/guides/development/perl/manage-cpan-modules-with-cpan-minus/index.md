@@ -77,7 +77,7 @@ You can also specify the url of a Perl module and CPAN will fetch the module fro
 
     cpanm --sudo https://cpan.metacpan.org/authors/id/O/OL/OLIVER/App-Netdisco-2.036011.tar.gz
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to run `cpanm Net::SSLeay` first in order to request a url with `https`.
 {{< /note >}}
 

@@ -191,8 +191,8 @@ NodeBalancers can also be configured to use HTTPS. You will need to have a TLS c
     ```
 
     {{< note >}}
-Provide values for country name, common name, etc. when prompted. The Linode API will reject the certificate if these are left blank.
-{{< /note >}}
+    Provide values for country name, common name, etc. when prompted. The Linode API will reject the certificate if these are left blank.
+    {{< /note >}}
 
 1. Edit your `nodebalancer-config.json` configuration file:
 
@@ -206,7 +206,7 @@ Provide values for country name, common name, etc. when prompted. The Linode API
     ```
 
     {{< note >}}
-Line breaks in SSL certificate and private key strings must be represented by `\n`.
+    Line breaks in SSL certificate and private key strings must be represented by `\n`.
     {{< /note >}}
 
 1. Use a PUT request to update your NodeBalancer's configuration:

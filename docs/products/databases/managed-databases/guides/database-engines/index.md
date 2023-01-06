@@ -86,4 +86,4 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 {{< note >}}
 Once a Managed Database cluster is created, it cannot be resized to a different plan. To modify the resources allocated to your database, you will need to create a new Managed Database with the desired plan, migrate your data, and delete the original Managed Database.
-{{</ note >}}
+{{< /note >}}

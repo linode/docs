@@ -48,9 +48,9 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.3.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 
@@ -74,7 +74,7 @@ $settings['trusted_host_patterns'] = array(
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -119,13 +119,13 @@ In this section, you will use [Drush](https://www.drush.org/) to install a Drupa
 
         drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
     {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you encounter errors related to writing to the `sites/default` directory, follow the steps in the [Setting the Site's Ownership and Permissions](#setting-the-site-s-ownership-and-permissions) section to ensure the web server belongs to the current user's group.
-    {{</ note >}}
+    {{< /note >}}
 
     After the installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 
@@ -164,7 +164,7 @@ In server administration, there are many options for user and group permissions.
 
         drush status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When installing new files, like a module or theme, make sure the Apache user has access rights. Use the command `ls -al` to list the file permissions within a directory to determine which permissions are assigned to it.
     {{</ note  >}}
 

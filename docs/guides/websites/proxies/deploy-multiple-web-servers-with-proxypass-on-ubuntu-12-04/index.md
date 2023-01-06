@@ -52,7 +52,7 @@ You must first edit the file `/etc/apache2/mods-available/proxy.conf` as follows
 
 This turns on proxy support in the module configuration.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 The warning regarding the `ProxyRequests` directive. It should be "off" in your configuration.
 {{< /note >}}
 

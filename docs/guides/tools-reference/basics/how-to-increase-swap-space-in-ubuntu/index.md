@@ -34,7 +34,7 @@ The system uses RAM preferentially, but switches to using the swap space as nece
 
 As of release 17.04, Ubuntu uses a swap file rather than a partition. However, assuming your Linode is setup with our normal configurations, it has a 512MB swap disk rather than a swap file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To increase the size of the swap partition, first power off your Linode from the Cloud Manager. Then simply navigate to the **Storage** tab of your Linode, and click **Resize** next to your swap partition.
 {{< /note >}}
 
@@ -59,7 +59,7 @@ Overall, it is usually better to treat swap space as a safety mechanism to avoid
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -267,7 +267,7 @@ One advantage of using a swap file over the old partitioning method is the relat
     sudo swapoff -a
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This also temporarily disables your swap partition until the next reboot.
     {{< /note >}}
 
@@ -311,7 +311,7 @@ no label, UUID=6e61561d-c03d-4911-9343-8aa4c234576a
     sudo swapon /swapfile
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To also re-enable the swap partition, use `sudo swapon -a` instead.
     {{< /note >}}
 
@@ -336,7 +336,7 @@ NAME      TYPE SIZE USED PRIO
 /swapfile file   2G   0B   -2
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is not necessary to edit `cat /etc/fstab` or edit the swappiness value again, because those items are unaffected by the change.
 {{< /note >}}
 

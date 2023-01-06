@@ -35,7 +35,7 @@ relations:
 
 This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -76,7 +76,7 @@ In this section we will download the latest version of Go (version 1.7 at the ti
         echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> $HOME/.bashrc
         source $HOME/.bashrc
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 We need to specify the `GOROOT` environment variable since we are installing Go to a custom location.
 {{< /note >}}
 

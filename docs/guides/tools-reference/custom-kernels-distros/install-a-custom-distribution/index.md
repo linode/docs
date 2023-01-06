@@ -95,11 +95,11 @@ After the Compute Instance has been created and prepared, the next step is to do
     dd if=mini.iso of=/dev/sda
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would prefer to write the installer directly to the disk as it downloads, use:
 
 ```command {title="Lish console (Rescue Mode)"}
@@ -125,11 +125,11 @@ After the installation disk is ready, you can install the distribution onto your
 
 1. Follow the prompts to install the distribution. When doing so, you may want to consult the installation instructions for that distribution. When selecting a disk or partition to install the system onto, be sure to select the `/dev/sda` volume. Most installers create separate root and swap partitions, but you can adjust this as needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some installers offer an option to place `/boot` on a separate partition. If you intend to make use of the steps in the [second part](#linode-manager-compatibility) of this guide for Linode compatibility, it's important that your `/boot` directory is located on the same partition as your root filesystem.
 {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you ever lose access through Glish, try closing the Glish window and opening it again.
 {{< /note >}}
 
@@ -155,9 +155,9 @@ At this point, you should have a working system that you can connect to over Gli
 
 This section covers how to move your custom installation over to an **ext4** formatted disk so it can take advantage of these tools.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These features are not available even if you formatted the disk to *ext4* during installation because *direct disk* was selected during disk creation.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure Lish Access
 
@@ -206,7 +206,7 @@ To use Lish with your new system, you must enable the serial console in Grub.
 
 1. For the rest of this guide, you can continue working in Glish or start using Lish.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Main* configuration profile.
 {{< /note >}}
 
@@ -292,9 +292,9 @@ This next step involves making changes to your disks and configuration profiles,
 
     - **Swap Disk:** Set the **Label** to *Swap* and the **Filesystem** to *swap*. The size of this disk depends on your own swap needs, but should likely be at least 256-512 MB.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If there is not enough room to create these disks, you may need to temporarily upgrade the plan for your Compute Instance. This provides additional storage space for your disks. See [Resizing a Linode](/docs/guides/resizing-a-linode/).
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to the **Configurations** tab and create an additional configuration profile. See the [Create a Configuration Profile](/docs/guides/linode-configuration-profiles/) guide for instructions.
 

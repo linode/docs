@@ -74,7 +74,7 @@ Our main task is setting up a Zipkin server with MySQL, so that the spans/traces
 
     You can test the installation with `docker-compose --version`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The current stable version of Docker Compose is 1.16.1. Check for the latest version at the [releases page](https://github.com/docker/compose/releases) and update the version in the `curl` command accordingly.
 {{< /note >}}
 

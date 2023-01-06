@@ -46,9 +46,9 @@ However, there are some advanced use cases that require Network Helper to be dis
 - Using other DNS resolvers (not Linode's)
 - Other advanced use cases where custom network configuration is required
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you choose to manually edit your network configuration files, Network Helper must be disabled. If enabled, any configuration changes will be overwritten on the next system boot.
-{{< /caution >}}
+{{< /note >}}
 
 ## Enable or Disable Network Helper
 

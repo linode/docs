@@ -35,7 +35,7 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
 
 4.  Install Drush and a Drupal website core with the [Installing & Using Drupal Drush on Debian 7](/docs/guides/how-to-install-drush-on-ubuntu-18-04/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -47,7 +47,7 @@ Downloading, enabling, and setting the theme is extremely easy with Drupal Drush
 
     ![Corporate Clean Drupal Theme Notes.](corporate-clean-drupal-theme-name.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 At the time of this guide's publication, this theme is not yet available for Drupal 8 beta. If you're using this version of Drupal, select another theme to replace Corporate Clean for this example.
 {{< /note >}}
 
@@ -55,7 +55,7 @@ At the time of this guide's publication, this theme is not yet available for Dru
 
         drush en corporateclean -y
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Notice the warning that "corporateclean was not found." The `drush en` command looks for the theme or module locally before downloading.
 {{< /note >}}
 
@@ -77,7 +77,7 @@ Downloading and enabling a module is similar to working with a theme. However, m
 
         drush en commerce -y
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Notice that Commerce includes 21 sub-modules. Each has its own functionality and most have a control switch within the admin's browser interface.
 {{< /note >}}
 

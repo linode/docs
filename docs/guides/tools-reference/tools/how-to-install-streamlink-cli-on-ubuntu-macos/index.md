@@ -47,7 +47,7 @@ Start with the basic requirements to get Streamlink installed.
 
 1. Confirm the installation with  **Y** and wait for the download and package installation to complete. You’re now ready to start streaming on your Ubuntu or Debian desktop computer. The steps in the following section covers those details.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive a `No playable streams found on this URL` error, install Streamlink using the [Python Package Installer (pip)](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#what-is-pip):
 
 Check the version of your system's `pip` installation by running the command below:
@@ -84,7 +84,7 @@ You’re now ready to start streaming on your macOS desktop computer.
 
     You see a list of available streaming options.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When using Ubuntu or Debian, you may have to specify the video player to open the stream in. For example, to open your stream using VLC, issue the following command:
 
     streamlink -p vlc twitch.tv/linode

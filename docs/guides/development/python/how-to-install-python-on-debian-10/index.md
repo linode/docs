@@ -126,7 +126,7 @@ deb http://http.us.debian.org/debian/ testing non-free contrib main
 
         sudo apt upgrade python3
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Because Python3 requires a lot of dependencies, you are prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
 {{< /note >}}
 

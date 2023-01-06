@@ -40,7 +40,7 @@ Otherwise, you can find instructions on how to manually install cPanel in our gu
 
 This guide provides instructions on how to secure a cPanel account. Once cPanel is installed, log in as the `root` user and complete the steps to [Create a New Account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/). If you are running cPanel on a Linode as a reseller, you can provide this guide to your account holders to assist them in managing their accounts securely.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This demonstration has been performed on a cPanel Linode application running on CentOS. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 

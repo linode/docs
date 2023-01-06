@@ -33,7 +33,7 @@ The steps in this section show you how to install and configure a StrongSwan gat
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -154,9 +154,9 @@ username : EAP "<user’s password>"
 another_username : EAP "<user’s password>"
     {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you use unique usernames each time you add a new user to the access secrets file.
-    {{</ note >}}
+    {{< /note >}}
 
 Your StrongSwan server is now ready to receive client connections. To check the status of the IPsec tunnel created by StrongSwan, use the following command:
 

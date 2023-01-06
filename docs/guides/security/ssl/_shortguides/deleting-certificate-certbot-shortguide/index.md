@@ -26,6 +26,6 @@ The `certbot revoke` command revokes a certificate and provides an option for de
 
     sudo certbot revoke --cert-path /etc/letsencrypt/live/www.example.com/fullchain.pem
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This option should not be used if you plan to host this domain on the same Linode again. Certbot might not always clean up the configuration files properly, and there could be errors if you request the same certificate again later.
-{{< /caution >}}
+{{< /note >}}

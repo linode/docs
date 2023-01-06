@@ -35,9 +35,9 @@ There are two different types of permissions that can be assigned to roles, user
 
 When it comes to the management of users, groups, roles, and permissions, the concepts stated in the previous sections are quite uniform across SQL-based database management systems. What may differ are the names of commands and the syntax used by different SQL database implementations.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The examples below use Microsoft SQL Server syntax. All commands should be executed from the command line. The examples also assume that all server security hardening has already been implemented.
-{{</ note >}}
+{{< /note >}}
 
 To demonstrate SQL security principles, this guide uses an example database that is used by a school. The school's database has tables for students and courses taken by each student. The definition of the `Student` table contains columns for the student's `SSNumber`, `Firstname`, and `Lastname`, and the definition of the `CourseTaken` table contains columns for `SSNumber`, `CourseId`, `NumericGrade`, and `YearTaken`.
 
@@ -121,7 +121,7 @@ Tom grants necessary database entry permissions (`INSERT`, `UPDATE`, `DELETE`) o
     GRANT INSERT, UPDATE, DELETE ON Student TO DBEntry;
     GRANT INSERT, UPDATE, DELETE ON CourseTaken TO DBEntry;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 After executing the above `GRANT` commands, John is permitted to `INSERT`, `UPDATE`, and `DELETE` data in the two database tables, but is not permitted to read (`SELECT`) from it.
 {{< /note >}}
 
@@ -131,7 +131,7 @@ Tom grants necessary database read permission (`SELECT`) on both database tables
     GRANT SELECT ON Student TO QueryReports;
     GRANT SELECT ON CourseTaken TO QueryReports;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 After executing the above `GRANT` commands, Mary and Joan can only read the database tables (via the `SELECT` statement), but cannot manipulate the data (via the `INSERT`, `UPDATE`, or `DELETE` statements).
 {{< /note >}}
 

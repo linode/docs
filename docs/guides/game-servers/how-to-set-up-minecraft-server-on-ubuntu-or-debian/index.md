@@ -46,7 +46,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
 `sudo apt remove openjdk-7-\*` before continuing with this guide.
 {{< /note >}}
@@ -65,7 +65,7 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
 
     Assign a secure password, and configure any additional [SSH hardening](/docs/guides/use-public-key-authentication-with-ssh/) options at this time.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 `-A INPUT -p tcp --dport 25565 -j ACCEPT`
@@ -94,7 +94,7 @@ java -Xms1024M -Xmx1536M -jar minecraft_server.1.17.jar -o true
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minecraft server uses. The settings above are recommended for a Linode 2GB used solely for this purpose. Adjust these values to fit your needs.
 {{< /note >}}
 
@@ -191,7 +191,7 @@ eula=true
         [22:00:21] [Server thread/INFO]: Preparing spawn area: 96%
         [22:00:22] [Server thread/INFO]: Done (14.737s)! For help, type "help" or "?"
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 
 To disconnect from the screen session without stopping the game server, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
 {{< /note >}}

@@ -33,7 +33,7 @@ If you're just starting with Go, we recommend reading our [Beginner's Guide to G
 
 {{< content "before-you-begin-install-go-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 

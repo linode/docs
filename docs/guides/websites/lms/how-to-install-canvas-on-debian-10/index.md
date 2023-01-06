@@ -51,13 +51,13 @@ This guide shows you how to get a Canvas website up and running on a Debian 10 s
 
 1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can run some of the components of your Canvas installation on separate machines to free up memory. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more information on what components can be installed independently. This approach requires that each machine is configured to enable communications between the components, and it is considered an advanced setup.
 {{< /note >}}
 
 1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -346,7 +346,7 @@ production:
 </IfModule>
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Canvas has a relatively long startup time, which can sometimes lead to timeout issues. You can add a version of the following line to the **`passenger.conf`** file to increase the time before Canvas times out at startup. This example increases the amount of time before the Passenger times out from the default 60 seconds up to 180 seconds.
 
     PassengerStartTimeout 180

@@ -68,9 +68,9 @@ Next, you must select the **region** that the Compute Instance will reside. Regi
 
 Linode offers a few different instance types and plan sizes, each with a preset amount of hardware resources (such as vCPU cores, memory, and storage space). The table below displays a list of instance types along with their plan sizes and use cases. Since every workload is different, you may wish to review the [Choosing a Compute Instance Type and Plan](/docs/guides/choosing-a-compute-instance-plan/) guide for advice on selecting the best plan for your needs, application’s requirements, and pricing considerations
 
-{{<note>}}
+{{< note >}}
 You can resize to a different plan size or instance type at any time. This means your aren't locked in to whichever plan you select here. See [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions.
-{{</note>}}
+{{< /note >}}
 
 {{< content "instance-comparison-shortguide" >}}
 

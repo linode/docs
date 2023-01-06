@@ -39,7 +39,7 @@ Before installing Drush, ensure that you complete the following steps:
 
 1.  Install and configure a [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -111,9 +111,9 @@ You may want to install Drush for only certain system users, for example, the **
 
         composer require drush/drush:dev-master
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:9.*`. For more information, visit the [Drush GitHub](https://github.com/drush-ops/drush) repository.
-     {{</note >}}
+    {{< /note >}}
 
 1. To verify the installation, check Drush's version number.
 
@@ -125,7 +125,7 @@ To install a different version of Drush, replace `drush/drush:dev-master` with a
 Drush Commandline Tool 10.2.2
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your system is having trouble finding the `drush` command, add the `vendor` directory to your `$PATH`. Using the text editor of your choice, edit your `.bashrc` file to add the directory to it's path:
 
 {{< file "~/.bashrc">}}
@@ -136,7 +136,7 @@ Run the `source` command on the `.bashrc` file to enable the changes:
 
         source ~/.bashrc
 
-    {{</ note >}}
+    {{< /note >}}
 
 ## Using Drush
 

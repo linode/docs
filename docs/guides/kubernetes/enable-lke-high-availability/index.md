@@ -20,7 +20,7 @@ In LKE, enabling HA ([High Availability](/docs/guides/introduction-to-high-avail
 
 Unlike other LKE configuration options, High Availability is an **optional billable service** that increases the overall operating cost of your cluster. For more information, see our [pricing page](https://www.linode.com/pricing/).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
 
 Additionally, enabling HA on an existing cluster results in the following changes:
@@ -28,7 +28,7 @@ Additionally, enabling HA on an existing cluster results in the following change
 - All nodes will be deleted and new nodes are created to replace them.
 - Any local storage (such as `hostPath` volumes) will be erased.
 - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
-{{< /caution >}}
+{{< /note >}}
 
 ## Configuration Details of LKE HA
 

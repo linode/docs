@@ -27,9 +27,9 @@ aliases: ['/kubernetes/how-to-deploy-linkerd-with-linode-kubernetes-engine/']
 
 Unlike [Istio](/docs/guides/how-to-deploy-istio-with-kubernetes/), another service mesh monitoring tool, it provides it's own proxies written in Rust instead of using Envoy. This makes it both lighter and more secure.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linkerd 1.x is still available and is being actively developed as a separate project. However, it is built on the "Twitter stack" and is not for Kubernetes. Linkerd 2 is built in Rust and Go and only supports Kubernetes.
-{{</ note >}}
+{{< /note >}}
 
 ## In This Guide
 
@@ -41,11 +41,11 @@ This guide provides instructions to:
 - [Upgrade Linkerd](#upgrade-linkerd)
 - [Uninstall Linkerd](#uninstall-linkerd)
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
-{{</ caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -55,9 +55,9 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.
-{{</ note >}}
+{{< /note >}}
 
 ## Install Linkerd
 
@@ -258,9 +258,9 @@ Opening Linkerd dashboard in the default browser
 
     To see what the other Pods are doing, replace `linkerd-web` with a different Pod name, for example, to check on Grafana, use, `linkerd-grafana`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Linkerd is not designed to be a long term metrics data store. It only stores data for 6 hours using Prometheus. However, if you can export the data using [several methods](https://linkerd.io/2/tasks/exporting-metrics/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install Demo Application (Optional)
 
@@ -451,9 +451,9 @@ Uninstalling Linkerd is done in two steps. First, you remove the data plane prox
 
         linkerd install --ignore-cluster | kubectl delete -f -
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may receive errors about deleting resources that haven't been created. You can safely ignore these.
-{{</ note >}}
+{{< /note >}}
 
 1.  Roll the deployments to redeploy the manifests without the Linkerd proxies, replace `namespace` with the namespace where your deployments reside:
 

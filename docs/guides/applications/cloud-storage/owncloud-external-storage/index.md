@@ -32,7 +32,7 @@ One feature found in ownCloud is the ability to connect an instance to Linode Ob
 - ownCloud requires the installation of two external storage applications to connect to an Object Storage service.
 
 - Once the ownCloud Marketplace external storage app is installed, you can configure a connection to your Linode Object Storage bucket.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuring ownCloud
 

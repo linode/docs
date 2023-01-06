@@ -46,7 +46,7 @@ Before installing themes, modules, and a backup system using Drush, make sure th
 
         sudo yum update
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Drush commands to download or enable themes and modules vary depending on the version of Drush that you have installed. This guide uses Drush 10.
 {{< /note >}}
 
@@ -64,13 +64,13 @@ In this section you will download, enable, and set a Drupal theme using Drush.
 
          composer require drupal/bootstrap
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on CentOS 8](/docs/guides/how-to-install-drupal-using-drush-on-centos-8/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 
     sudo chmod 774 -R /var/www/html/example.com/public_html
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Enable the theme that you downloaded in the previous step. For example, to enable the `bootstrap` theme run the following command. Replace `bootstrap` with the name of your theme.
 
@@ -110,6 +110,6 @@ It's always important to keep regular backups of a website. Backups protect you 
 
 2. For a quick backup, select the type of **Backup Source** and select the **Backup Destination**, and click **Backup now**
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Always download a backup prior to updating or installing modules.
-{{</ note >}}
+{{< /note >}}

@@ -32,7 +32,7 @@ relations:
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -127,7 +127,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
         sudo mv /var/www/html/mediawiki-1.35.0 /var/www/html/w
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
  Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction. For more information, see our guide on [Linux Users and Groups](/docs/guides/linux-users-and-groups/#changing-file-ownership).
     {{< /note >}}
 
@@ -139,7 +139,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
         http://192.0.2.1/w/index.php
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you choose to set up the MediaWiki installation using your Linode's IP but later want to use a domain, you can do so by changing the IP address to the appropriate domain in the `LocalSettings.php` file described below.
     {{< /note >}}
 
@@ -151,7 +151,7 @@ If you choose to set up the MediaWiki installation using your Linode's IP but la
 
         sudo chmod 664 /var/www/html/w/LocalSettings.php
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on how you created the `LocalSettings.php` file on your Linode, you may need to adjust its ownership using `chown` as well.
     {{< /note >}}
 

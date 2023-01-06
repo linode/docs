@@ -20,9 +20,9 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Minecraft should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -91,8 +91,8 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
     ![Screenshot of the new Minecraft server](minecraft-server-play.png)
 
     {{< note >}}
-If there is a red *X* over the status bars or if the word *old* appears, then your Compute Instance might not have finished installing Minecraft. Please double check your IPv4 address, wait a few minutes,and then hit **Refresh**.
-{{</ note >}}
+    If there is a red *X* over the status bars or if the word *old* appears, then your Compute Instance might not have finished installing Minecraft. Please double check your IPv4 address, wait a few minutes,and then hit **Refresh**.
+    {{< /note >}}
 
 ## Customization After Installation
 

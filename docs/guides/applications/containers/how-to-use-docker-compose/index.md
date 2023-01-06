@@ -116,9 +116,9 @@ Most of this guide will focus on setting up containers using the `services` sect
 
 Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The example `docker-compose.yml` above uses the `environment` directive to store MySQL user passwords directly in the YAML file to be imported into the container as environment variables. This is not recommended for sensitive information in production environments. Instead, sensitive information can be stored in a separate `.env` file (which is not checked into version control or made public) and accessed from within `docker-compose.yml` by using the `env_file` directive.
-{{< /caution >}}
+{{< /note >}}
 
 ## Build an Application from Scratch
 

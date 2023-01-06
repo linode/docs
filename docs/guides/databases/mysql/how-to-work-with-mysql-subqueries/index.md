@@ -53,7 +53,7 @@ To understand how subqueries work, create a sample database first. This sample d
 
     When prompted, enter the root password of your MySQL server and hit **Enter** to continue. Note that your MySQL server's root password is not the same as the root password for your Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your password is not accepted, you may need to run the previous command with `sudo`:
 
     sudo mysql -u root -p
@@ -65,7 +65,7 @@ If your password is not accepted, you may need to run the previous command with 
 mysql >
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using MariaDB, you may see a prompt like the following instead:
 
     {{< output >}}

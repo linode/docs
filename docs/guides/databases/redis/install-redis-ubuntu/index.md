@@ -267,7 +267,7 @@ Redis recommends several additional optimizations for the best performance. In a
     {{< file "/etc/sysctl.conf" >}}
 vm.overcommit_memory = 1
 {{< /file >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Enter the command `sysctl vm.overcommit_memory=1` to apply this setting immediately.
 {{< /note >}}
 1. Disable the transparent huge pages feature as this adversely affects Redis latency.

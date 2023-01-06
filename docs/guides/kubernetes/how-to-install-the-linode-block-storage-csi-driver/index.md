@@ -31,20 +31,20 @@ If you are not using LKE or the [Kubernetes Terraform installer](https://registr
 
 The Linode Block Storage CSI driver **absolutely requires** that the Linode Cloud Controller Manager (CCM) is pre-installed and running on your cluster in order for the CSI to be installed. Follow the steps in our [CCM installation guide](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) before proceeding.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Block Storage CSI supports Kubernetes version 1.13 or higher. To check the version of Kubernetes you are running, you can issue the following command:
 
     kubectl version
-{{</ note >}}
+{{< /note >}}
 
 ## Installing the CSI Driver
 ### Create a Kubernetes Secret
 
 A secret in Kubernetes is any token, password, or credential that you want Kubernetes to store for you. In the case of the Block Storage CSI, you want to store an API token, and for convenience, the region you would like your Block Storage Volume to be placed in.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your Block Storage Volume must be in the same data center as your Kubernetes cluster.
-{{</ note >}}
+{{< /note >}}
 
 To create an API token:
 

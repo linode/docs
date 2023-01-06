@@ -29,18 +29,18 @@ fsck, short for file system consistency check, is a utility that examines the fi
 
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 `fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+{{< /note >}}
 
 ## When to Use fsck
 
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 Unmount the disks you intend to work on before attempting to check or repair them.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Unmount the target disk first. You risk corrupting your file system and losing data if you run fsck on an active disk.
-{{< /caution >}}
+{{< /note >}}
 
 ## fsck Options and Arguments
 

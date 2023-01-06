@@ -29,7 +29,7 @@ The Linux `chroot` command enables you to run applications or shells within a se
 
 1. Replace all instances of `example-user` in this guide with the username of the limited Linux user you are using to execute the commands in this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -125,7 +125,7 @@ The R interpreter lacks features such as a debugger which may be needed for larg
 
         sudo dpkg -i rstudio-xenial-1.1.414-amd64.deb
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If there are missing dependencies, those can be installed with the following command:
 
     sudo apt install -f

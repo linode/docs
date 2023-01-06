@@ -21,11 +21,11 @@ Project collaborators make local shallow copies of the repository and make chang
 
 Users who want to collaborate on a Subversion project must install a Subversion client on their local machine. You use the local Subversion client to manage your changes and "publish" them to the project repository. This guide shows you how to install the Subversion CLI client on an Ubuntu system and provides commands to get you started collaborating on a Subversion project.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 See our [How to Install Apache Subversion on Ubuntu 20.04](/docs/guides/install-apache-subversion-ubuntu/) guide to learn how to install and configure a Subversion server. A Subversion server can store and version control multiple projects.
 
 If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
-{{</ note >}}
+{{< /note >}}
 
 ## Install the Subversion Client on Ubuntu
 
