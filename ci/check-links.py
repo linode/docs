@@ -17,7 +17,8 @@ if ARGS.fix_issues:
     FIX_ISSUES = True
 
 class Guide:
-    def __init__(self, path, title, link):
+    def __init__(self, root, path, title, link):
+        self.root = root
         self.path = path
         self.title = title
         self.link = link
@@ -43,7 +44,8 @@ class Guide:
         self.logged = True
 
 class Asset:
-    def __init__(self, link):
+    def __init__(self, path, link):
+        self.path = path
         self.link = link
 
 class Alias:
@@ -89,15 +91,6 @@ DOCS_DIR = [
     "docs/reference-architecture",
     "docs/release-notes"
 ]
-#PUBLIC_DIR = [
-#    "public/guides",
-#    "public/products",
-#    "public/bundles",
-#    "public/api",
-#    "public/reference-architecture",
-#    "public/release-notes"
-#]
-PUBLIC_DIR = "public"
 
 # Create all issue types
 issue_types = []
@@ -161,11 +154,11 @@ def get_guides():
     issues = []
 
     # Add top level guides
-    guides.append(Guide("docs/_index.md", "Docs Home", "/docs/"))
-    guides.append(Guide("", "Marketplace", "/docs/marketplace/"))
-    guides.append(Guide("", "Resources", "/docs/resources/"))
-    guides.append(Guide("", "Q&A", "/docs/topresults/?docType=community"))
-    assets.append(Asset("/docs/api/openapi.yaml"))
+    guides.append(Guide("docs/","docs/_index.md", "Docs Home", "/docs/"))
+    guides.append(Guide("docs/marketplace/", "", "Marketplace", "/docs/marketplace/"))
+    guides.append(Guide("docs/resources/", "", "Resources", "/docs/resources/"))
+    guides.append(Guide("docs/topresults/?docType=community", "", "Q&A", "/docs/topresults/?docType=community"))
+    assets.append(Asset("/docs/api/openapi.yaml","/docs/api/openapi.yaml"))
 
     # Iterate through each file in each docs directory
     for dir in DOCS_DIR:
@@ -215,11 +208,15 @@ def get_guides():
                             canonical_link = canonical_link.replace('/_index.md','/')
 
                         # Construct the guide object
-                        guide = Guide(file_path, expanded_guide['title'], canonical_link)
+                        guide = Guide(root, file_path, expanded_guide['title'], canonical_link)
 
                         # Add aliases to the guide object if they exist
                         if "aliases" in expanded_guide.keys():
                             guide.add_aliases(expanded_guide['aliases'])
+
+                        # Find assets
+                        if file == "index.md":
+                            guide = get_guide_assets(guide)
 
                         # Append the guide object to the list of guides
                         guides.append(guide)
@@ -232,9 +229,37 @@ def get_guides():
                         link = "/docs/guides/" + path_segments[-2] + "/" + path_segments[-1]
                     else:
                         link = "/" + file_path
-                    assets.append(Asset(link))
+                    assets.append(Asset(file_path,link))
 
     return guides, assets, issues
+
+# ------------------
+# Get guide assets
+# ------------------
+def get_guide_assets(guide):
+
+    # Walk through all files within the guide's directory
+    for root, dirs, files in os.walk(guide.root):
+        for file in files:
+
+            # If the file is index.md, skip it
+            if file == "index.md":
+                continue
+
+            # Build the full path to the file
+            path = (os.path.join(root, file))
+
+            # Build the relative link to the file
+            relative_link = path.replace(guide.root, "")
+
+            # If the relative link starts with a slash, remove it
+            if relative_link.startswith('/'):
+                relative_link = relative_link.lstrip('/')
+
+            # Add the file as an asset to the guide
+            guide.assets.append(Asset(path,relative_link))
+    return guide
+
 
 # ------------------
 # Check for duplicate aliases
@@ -254,7 +279,7 @@ def get_duplicate_aliases(guides):
     return issues
 
 # ------------------
-# Check internal links (Markdown)
+# Check internal links
 # ------------------
 def check_internal_links_markdown(guides, assets):
 
@@ -327,6 +352,7 @@ def check_internal_links_markdown(guides, assets):
                 # Remove the title, brackets, and parenthesis from the markdown link syntax
                 link = match.group(3)
                 link_unmodified = link
+
                 # Log issue if link contains "linode.com/docs/"
                 if "linode.com/docs/" in link:
                     issues.append(Issue(link_unmodified,'docs-domain-name'))
@@ -339,6 +365,9 @@ def check_internal_links_markdown(guides, assets):
                     continue
                 # Check if links point to an asset within its own directory
                 if next((x for x in assets if x.link == guide.link + link), None):
+                    continue
+                # Check if links point to the relative link of an asset
+                if next((x for x in guide.assets if x.link == link), None):
                     continue
                 # Ignore anchors
                 if link.startswith('#'):
