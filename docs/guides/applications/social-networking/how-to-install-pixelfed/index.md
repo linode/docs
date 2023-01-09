@@ -52,7 +52,7 @@ For a more complete list of Pixelfed features, see the [Pixelfed features page](
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Assign a domain name for the Pixelfed server and point it at the IP address of the server. For information on domain names and pointing a domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1.  Assign a domain name for the Pixelfed server and point it at the IP address of the server. For information on domain names and pointing a domain name to a Linode, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
 
 1.  (**Optional**) To allow Pixelfed to send emails, enable email on the Linode server.
 
@@ -190,7 +190,7 @@ max_file_uploads = 20
 
 ### Configure a Virtual Host and HTTPS Support
 
-The next step is to create a virtual host file for the Pixelfed domain. A virtual host allows for the configuration of domain-specific settings. Pixelfed requires HTTPS support, which can be enabled using the [Certbot](https://certbot.eff.org/) application. This guide covers the main steps required to install and use Certbot. For more detailed information about Certbot, Let's Encrypt certificates, and HTTPS, see the [Linode guide to Using Certbot on NGINX](https://www.linode.com/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
+The next step is to create a virtual host file for the Pixelfed domain. A virtual host allows for the configuration of domain-specific settings. Pixelfed requires HTTPS support, which can be enabled using the [Certbot](https://certbot.eff.org/) application. This guide covers the main steps required to install and use Certbot. For more detailed information about Certbot, Let's Encrypt certificates, and HTTPS, see the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
 
 1.  Create a `/var/www/html/domain_name` directory for the Pixelfed site. Replace `domain_name` with the name of the Pixelfed domain. In the following command, replace `example.com` with the actual name of the domain.
 
