@@ -10,7 +10,7 @@ published: 2021-03-09
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Valheim through the Linode Marketplace"
+title: "Deploy Valheim through the Linode Marketplace"
 external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'
@@ -27,9 +27,9 @@ Install Valheim on Linode with the Valheim Game Server Marketplace App to maximi
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Valheim should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

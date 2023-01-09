@@ -10,7 +10,7 @@ published: 2020-03-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Redis through the Linode Marketplace"
+title: "Deploy Redis through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -27,9 +27,9 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Redis should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

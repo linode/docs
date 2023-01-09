@@ -23,9 +23,9 @@ aliases: ['/platform/manager/manually-enable-elastic-ip-on-your-linode/','/guide
 
 The Atlanta data center was upgraded in April of 2021 to improve performance and expand product availability (see the [Linode Atlanta Data Center Upgrades Completed](https://www.linode.com/blog/linode/linode-atlanta-data-center-upgrades-completed/) blog post). As part of this upgrade, the [IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) feature was impacted and no longer functions as it did before. Customers that currently use this feature can follow this guide to manually enable IP Sharing (also called *Elastic IPs*) through the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool. This allows two Linode Compute Instances to share a single IP address, one serving as the primary and one serving as the secondary. If the primary Compute Instance becomes unavailable, the elastic IP will seamlessly failover to the secondary Compute Instance.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide discusses a temporary workaround specific to the Atlanta data center. Future planned network upgrades may impact this feature again and may require additional configuration.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 

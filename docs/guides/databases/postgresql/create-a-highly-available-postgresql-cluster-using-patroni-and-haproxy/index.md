@@ -10,9 +10,8 @@ modified: 2021-10-18
 modified_by:
   name: Kulshekhar Kabra
 published: 2017-09-19
-title: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"
-h1_title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
-enable_h1: true
+title: "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy"
+title_meta: "How to Create PostgreSQL Cluster Using Patroni and HAProxy"
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
@@ -32,9 +31,9 @@ This guide shows you how to create a highly available Postgres cluster of three 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and familiarize yourself with SSH and connecting to your linode.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and familiarize yourself with SSH and connecting to your linode.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account and harden SSH access.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account and harden SSH access.
 
 3.  Update your system:
 
@@ -43,7 +42,7 @@ This guide shows you how to create a highly available Postgres cluster of three 
 4.  Create five Linodes on your account, all within the same data center. Take note of each Linode's [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install PostgreSQL
@@ -372,7 +371,7 @@ listen postgres
 
     In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the primary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this case, it just so happens that the third Postgres server is promoted to primary. This might not always be the case. It is equally likely that the second server may be promoted to primary.
 {{< /note >}}
 

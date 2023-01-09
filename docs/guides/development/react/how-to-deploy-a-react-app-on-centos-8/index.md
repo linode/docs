@@ -12,8 +12,8 @@ modified: 2020-04-24
 image: Deploying_a_React_Application_on_Centos_8_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy a React Application on CentOS 8"
-h1_title: "Deploying a React Application on CentOS 8"
+title: "Deploying a React Application on CentOS 8"
+title_meta: "How to Deploy a React Application on CentOS 8"
 contributor:
   name: Linode
 external_resources:
@@ -176,9 +176,9 @@ echo "Deployment complete"
 
     This script will check out the `master` branch of your project on Git, build the app using `npm run build`, and then sync the build files to the remote Linode using Rsync. If your React app was not built with `create-react-app`, the build command may be different and the built files may be stored in a different directory (such as `dist`). Modify the script accordingly.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your React app's directory is not initialized as a Git repository, the command `git checkout master` will return a `fatal: not a git repository (or any of the parent directories): .git` error. However, the script will continue on to the next commands and the files should still be transferred to your remote Linode server. See our [Getting Started with Git](/docs/guides/how-to-configure-git/#use-git-with-a-local-repository) guide to learn how to initialize a Git repository.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Make the script executable:
 
@@ -198,4 +198,4 @@ If your React app's directory is not initialized as a Git repository, the comman
 
 Deployment can be a complex topic and there are many factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable on its own for a large scale production application.
 
-More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/guides/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
+More advanced build and continuous integration tools such as [Jenkins](https://jenkins.io) or [Travis](https://travis-ci.org/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guide on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) to get started.

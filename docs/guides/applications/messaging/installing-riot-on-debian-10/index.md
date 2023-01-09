@@ -4,14 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Riot is a secure instant messaging application built on Matrix protocol. This guide provides instructions to setup Riot / Matrix on Debian 10.'
-og_description: 'Riot is a secure instant messaging application built on Matrix protocol. This guide provides instructions to setup Riot / Matrix on Debian 10.'
 keywords: ['riot', 'matrix', 'chat', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-05
 modified_by:
   name: Linode
-title: "Installing Riot on Debian 10"
-h1_title: "How to Install Riot on Debian 10"
+title: "Install Riot on Debian 10"
+title_meta: "How to Install Riot on Debian 10"
 contributor:
   name: Dan Nielsen
 ---
@@ -20,7 +19,7 @@ contributor:
 
 {{< note >}}
 Riot has been renamed to *Element*. You can read more about this name change on the [Element blog](https://element.io/blog/welcome-to-element/). This guide uses the Riot naming to refer to this Matrix web client.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -28,9 +27,9 @@ Riot has been renamed to *Element*. You can read more about this name change on 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
-{{</ note >}}
+{{< /note >}}
 
 1.  To connect to the Synapse / Matrix services with a client other than Riot, you need a [Matrix client](https://matrix.org/clients/).
 

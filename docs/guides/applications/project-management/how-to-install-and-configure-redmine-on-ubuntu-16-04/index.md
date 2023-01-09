@@ -4,7 +4,6 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide will show you how to install and configure the popular open-source, written in Ruby on Rails, project management software suite Redmine.'
-og_description: 'This guide will show you how to install and configure the popular open-source, written in Ruby on Rails, project management software suite Redmine.'
 keywords: ["nginx", "ubuntu", "redmine"]
 tags: ["ubuntu", "nginx", "ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -31,7 +30,7 @@ This guide will show you how to install and set up Redmine on Ubuntu 16.04 throu
 ### Before You Begin
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies

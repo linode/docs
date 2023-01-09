@@ -5,7 +5,7 @@ author:
 description: "How to transfer domain zones using the Linode DNS Manager."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-21
-modified: 2022-11-02
+modified: 2022-11-08
 modified_by:
   name: Linode
 title: "Outgoing DNS Zone Transfers"
@@ -18,9 +18,9 @@ When a domain zone is created within Linode's DNS Manager, you can select if it 
 
 If you have configured your domain zone as *primary*, you can designate external DNS name servers as *secondaries*. The DNS Manager will then send a NOTIFY request to those name servers when you make any DNS changes. The external name server should then respond back with an AXFR query, which triggers Linode to send an AXFR response with the updated DNS zone. This guide covers the configuration needed to perform outgoing DNS zone transfers, including updating your SOA record.
 
-{{< caution >}}
+{{< note type="alert" >}}
 To perform AXFR transfers, you must specify the IP address for each external DNS name server you wish to use. Granting another server access to zone information is potentially dangerous. Do not add any IP addresses that you do not know or trust.
-{{</ caution >}}
+{{< /note >}}
 
 ## Configure the External DNS Provider
 
@@ -30,7 +30,7 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 
 ```
 104.237.137.10
-65.19.178.10
+45.79.109.10 (was 65.19.178.10)
 74.207.225.10
 207.192.70.10
 109.74.194.10
@@ -40,6 +40,10 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 2600:3c03::a
 2a01:7e00::a
 ```
+
+{{< note type="alert" >}}
+On February 7th, 2023, the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP address (`65.19.178.10`) until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP address (`45.79.109.10`) prior to the cutover.
+{{< /note >}}
 
 ## Add Secondary Name Servers
 
@@ -53,7 +57,7 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 
 {{< note >}}
 If you ever decide to stop using the secondary name server, be sure to remove its IP address from this list.
-{{</ note >}}
+{{< /note >}}
 
 ## Test AXFR Transfers
 

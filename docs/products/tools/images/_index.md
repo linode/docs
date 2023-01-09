@@ -44,9 +44,9 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 
 Custom Images cost $0.10/GB per month.
 
-{{<note>}}
+{{< note >}}
 Recovery Images, which are generated automatically after a Compute Instance is deleted, are provided at no charge.
-{{</note>}}
+{{< /note >}}
 
 ## Technical Specifications
 

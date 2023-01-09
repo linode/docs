@@ -10,7 +10,7 @@ published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Akaunting through the Linode Marketplace"
+title: "Deploy Akaunting through the Linode Marketplace"
 external_resources:
 - '[Akaunting](https://akaunting.com)'
 aliases: ['/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']
@@ -26,9 +26,9 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Akaunting should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

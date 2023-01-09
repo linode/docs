@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "List of Databases - Most Popular"
-h1_title: "The 8 Most Popular Databases"
-enable_h1: true
+title: "The 8 Most Popular Databases"
+title_meta: "List of Databases - Most Popular"
 contributor:
   name: Jack Wallen
 ---
@@ -280,7 +279,7 @@ The disadvantages of the MongoDB database include:
 - Can be slow if indexes aren't used correctly.
 - Because relationships aren't defined well, they can lead to duplicated data.
 
-Check out our guide on [MongoDB use cases](/docs/guides/mongodb-and-its-use-cases/) for more information.
+Check out our guide on [MongoDB use cases](/docs/guides/mongodb-introduction/) for more information.
 
 #### Apache Cassandra
 

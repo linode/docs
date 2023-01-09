@@ -12,7 +12,6 @@ modified_by:
   name: Linode
 published: 2015-06-10
 title: A Beginner's Guide to Chef
-h1_title: A Beginner's Guide to Chef
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/)'

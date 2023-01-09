@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
-og_description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
 keywords: ["docker", "volume", "docker volume", "docker volumes", "docker container", "docker containers", "docker volume", "docker volumes"]
 tags: ["volume","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

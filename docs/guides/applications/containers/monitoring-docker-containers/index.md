@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Linode
-title: "Docker Container Monitoring Benefits and Tools"
-h1_title: "Monitoring Docker Containers: Benefits, Best Practices, and Must-Have Tools"
-enable_h1: true
+title: "Monitoring Docker Containers: Benefits, Best Practices, and Must-Have Tools"
+title_meta: "Docker Container Monitoring Benefits and Tools"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: https://twitter.com/sjvn
@@ -126,7 +125,7 @@ While sold primarily as a software-as-a-service (SaaS), it can also be deployed 
 
 Its partner program, [Kibana](https://www.elastic.co/kibana/), is a free, open user UI for visualizing your Elasticsearch data and navigating the ELK Stack. You can track query loads to see how requests flow through your apps with it. Kibana comes with the usual UI dashboard classics: histograms, line graphs, pie charts, sunbursts, and more. And, of course, you can search across all of your documents.
 
-For container monitoring purposes, you use [Filebeat](https://www.elastic.co/beats/filebeat) and [Metricbeat](https://www.elastic.co/beats/metricbeat) to automatically capture container data. Filebeat automatically finds containers and stores their logs in Elasticsearch. You deploy Metricbeat automatically in your containers. Once there, it collects system-level CPU usage, memory, file system, disk IO, and network IO statistics. Its modules, written in Go, can also keep an eye on programs within the containers such as Apache, NGINX, [MongoDB](/docs/guides/mongodb-and-its-use-cases/), [MySQL](/docs/guides/an-overview-of-mysql/), [PostgreSQL](/docs/guides/an-introduction-to-postgresql/), and Prometheus. All this data can then be accessed using Kibana.
+For container monitoring purposes, you use [Filebeat](https://www.elastic.co/beats/filebeat) and [Metricbeat](https://www.elastic.co/beats/metricbeat) to automatically capture container data. Filebeat automatically finds containers and stores their logs in Elasticsearch. You deploy Metricbeat automatically in your containers. Once there, it collects system-level CPU usage, memory, file system, disk IO, and network IO statistics. Its modules, written in Go, can also keep an eye on programs within the containers such as Apache, NGINX, [MongoDB](/docs/guides/mongodb-introduction/), [MySQL](/docs/guides/an-overview-of-mysql/), [PostgreSQL](/docs/guides/an-introduction-to-postgresql/), and Prometheus. All this data can then be accessed using Kibana.
 
 It's very flexible. You need to spend considerable time learning how to configure and use it, but it's worth the time.
 

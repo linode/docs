@@ -10,7 +10,7 @@ published: 2019-03-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Plesk through the Linode Marketplace"
+title: "Deploy Plesk through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Plesk should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -45,9 +45,9 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
         https://[domain]/login_up.php
 
-    {{< caution >}}
-The Plesk dashboard is only accessible over an *HTTPS* connection (not *HTTP*). When accessing it, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
-{{< /caution >}}
+    {{< note type="alert" >}}
+    The Plesk dashboard is only accessible over an *HTTPS* connection (not *HTTP*). When accessing it, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
+    {{< /note >}}
 
 1.  Once you navigate to that URL, a login prompt appears. Use the following credentials.
 

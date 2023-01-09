@@ -12,15 +12,14 @@ modified: 2022-03-28
 modified_by:
   name: Linode
 published: 2020-06-01
-title: "How to Copy a Disk to a Different Account"
-h1_title: "Copying a Disk to a Different Account"
-enable_h1: true
+title: "Copying a Disk to a Different Account"
+title_meta: "How to Copy a Disk to a Different Account"
 image: copying_a_disk_to_a_differnet_account_smg.png
 ---
 
 You can copy a disk of a Linode from one Linode account to another. This is a great way to prepare a disk for another Linode customer and transfer it from one individual account to another individual account. Or if you have multiple Linode accounts, this guide provides instructions to consolidate all the disks in one account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
  If you are copying a disk of a Linode that hosts applications, then ensure that you complete the backup and migrate steps for the respective applications.
 {{< /note >}}
 ## Preparing the Receiving Linode
@@ -35,7 +34,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
     ![Creating a receiving Linode](image-selection.png)
 
-1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/platform/how-to-choose-a-data-center) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
@@ -82,7 +81,7 @@ After the Linode has booted, connect to the Linode through [LISH](/docs/guides/r
 
         passwd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This root password is separate from the root password of the disk that you normally boot from. Setting the root password for Finnix does not affect the root account of the distribution.
 {{< /note >}}
 
@@ -148,8 +147,8 @@ After the file transfer has completed, you should verify the disk by mounting it
         bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
         boot  etc  lib   media       opt  root  selinux  sys  usr
 
-  {{< note >}}
-   If the system displays any disk errors, then perform the [Copying the Disk](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
+{{< note respectIndent=false >}}
+If the system displays any disk errors, then perform the [Copying the Disk](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
 {{< /note >}}
 
 Now the Linode is ready to boot from the disk.

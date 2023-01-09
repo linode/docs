@@ -10,7 +10,7 @@ published: 2019-03-26
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a LAMP Stack through the Linode Marketplace"
+title: "Deploy a LAMP Stack through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -26,9 +26,9 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** The LAMP stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

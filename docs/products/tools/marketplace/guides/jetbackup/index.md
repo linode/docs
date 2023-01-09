@@ -10,7 +10,7 @@ published: 2021-08-13
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying JetBackup through the Linode Marketplace"
+title: "Deploy JetBackup through the Linode Marketplace"
 aliases: ['/guides/deploying-jetbackup-marketplace-app/','/guides/jetbackup-marketplace-app/']
 external_resources:
 - '[JetBackup](https://www.jetbackup.com/)'
@@ -20,7 +20,7 @@ external_resources:
 
 {{< note >}}
 JetBackup requires a valid license to use the software beyond the available 10 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [JetBackup's website](https://billing.jetapps.com/index.php?rp=/store/prorated-license) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -28,9 +28,9 @@ JetBackup requires a valid license to use the software beyond the available 10 d
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** JetBackup should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

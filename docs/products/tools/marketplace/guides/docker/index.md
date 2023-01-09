@@ -6,7 +6,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-04-01
 image: Docker_oneclickapps.png
-title: "Deploying Docker through the Linode Marketplace"
+title: "Deploy Docker through the Linode Marketplace"
 external_resources:
  - '[Docker Commands Cheat Sheet](/docs/guides/docker-commands-quick-reference-cheat-sheet/)'
  - '[Docker Documentation](https://docs.docker.com/)'
@@ -23,9 +23,9 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Docker should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -57,7 +57,7 @@ After Docker has finished installing, you can access Docker from your terminal a
 1.  Locate the application or sample application you wish to deploy.
 
     - [Docker Hub](https://hub.docker.com/): Find official docker images, such as one for [NGINX](https://hub.docker.com/_/nginx), [Node.js](https://hub.docker.com/_/node), or the [Hello World](https://hub.docker.com/_/hello-world) test image. Each image should be accompanied with documentation on how to use it.
-    - [Docker Samples](https://docs.docker.com/samples/): Docker's documentation has a list of sample applications with full instructions for running each sample. This includes a [WordPress]() sample, as well as [ASP.NET Core](https://docs.docker.com/samples/dotnetcore/) and [Django](https://docs.docker.com/samples/django/).
+    - [Docker Samples](https://docs.docker.com/samples/): Docker's documentation has a list of sample applications with full instructions for running each sample. This includes a [WordPress](https://docs.docker.com/samples/wordpress/) sample, as well as [ASP.NET Core](https://docs.docker.com/samples/dotnetcore/) and [Django](https://docs.docker.com/samples/django/).
     - [Docker Samples Repository](https://github.com/dockersamples/): Additional sample applications you can run.
 
 1.  Learn how to use Docker by running through the [Docker for Beginners](https://github.com/docker/labs/tree/master/beginner/) lab or by reading the documentation below:

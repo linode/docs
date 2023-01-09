@@ -10,7 +10,7 @@ published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Node.js through the Linode Marketplace"
+title: "Deploy Node.js through the Linode Marketplace"
 contributor:
   name: Linode
 aliases: ['/guides/nodejs-marketplace-app/']
@@ -24,9 +24,9 @@ aliases: ['/guides/nodejs-marketplace-app/']
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Node.js should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

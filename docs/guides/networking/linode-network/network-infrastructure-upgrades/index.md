@@ -7,7 +7,7 @@ description: "An overview of changes and actions that may be required in advance
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-19
-modified: 2022-10-11
+modified: 2022-12-01
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -50,15 +50,15 @@ Review the table below to learn which data centers have been upgraded with the l
 | **Mumbai (India)** | **Complete** |
 | **Newark (New Jersey, USA)** | **Complete** |
 | **Singapore** | **Complete** |
-| Sydney (Australia) | *Coming soon* |
+| **Sydney (Australia)** | **Complete** |
 | Tokyo (Japan) | *Coming soon* |
 | Toronto (Canada) | *Coming soon* |
 
 A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). See [Configuring IP Failover](/docs/guides/ip-failover/).
-{{</ note >}}
+{{< /note >}}
 
 ## What Action is Required?
 

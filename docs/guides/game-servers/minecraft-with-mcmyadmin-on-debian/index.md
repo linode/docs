@@ -112,7 +112,7 @@ COMMIT
         sudo iptables -L -nv
         sudo ip6tables -L -nv
 
-4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
 
 ## Install Prerequisite Software
 
@@ -160,7 +160,7 @@ This section should be completed as your standard user, **not** as root. McMyAdm
         Notice	: This is the first time McMyAdmin has been started.
         Notice	: You must complete the first-start wizard via the web interface.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To exit McMyAdmin and return to the command line, enter `/quit`.
 {{< /note >}}
 
@@ -178,9 +178,9 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
 4.  Select *Start Server* and accept the Minecraft Server EULA (End User Licensing Agreement).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
-{{</ note >}}
+{{< /note >}}
 
     ![McMyAdmin Status Page](mymyadmin-status-page.png)
 

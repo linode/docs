@@ -10,7 +10,7 @@ published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Focalboard through the Linode Marketplace"
+title: "Deploy Focalboard through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -26,9 +26,9 @@ aliases: ['/guides/focalboard-marketplace-app/']
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Focalboard should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

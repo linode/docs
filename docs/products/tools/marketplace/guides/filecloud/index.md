@@ -10,7 +10,7 @@ published: 2020-03-18
 modified: 2022-06-03
 modified_by:
   name: Linode
-title: "Deploying FileCloud through the Linode Marketplace"
+title: "Deploy FileCloud through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -26,9 +26,9 @@ aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/pla
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** FileCloud should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

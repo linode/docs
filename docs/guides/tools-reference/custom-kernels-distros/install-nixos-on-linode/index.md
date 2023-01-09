@@ -29,13 +29,13 @@ aliases: ['/tools-reference/custom-kernels-distros/install-nixos-on-linode/']
 
 While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages that can make deploying software and application updates easier.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 NixOS is not officially supported by Linode at the time of publishing this guide. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools, such as Network- and Boot-Helpers, will not work with NixOS.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
-Familiarize yourself with [LISH](/docs/networking/using-the-linode-shell-lish) and [GLISH](/docs/networking/use-the-graphic-shell-glish) to connect to your Linode. You will use them throughout this guide.
+Familiarize yourself with [LISH](/docs/guides/lish/) and [GLISH](/docs/guides/glish/) to connect to your Linode. You will use them throughout this guide.
 
 The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts. This should have everything you need to know to get started, but there may be some deeper concepts that are not thoroughly addressed. For more in-depth information, visit the [NixOS](https://nixos.org/nixos/manual/) and [Nixpkgs](https://nixos.org/nixpkgs/manual/) manuals.
 
@@ -78,7 +78,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 1.  In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
-1.  [Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
+1.  [Boot your Linode into rescue mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
 
 1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html):
 
@@ -99,7 +99,7 @@ Now that you have created the installer disk, you need to boot with the installe
 
 ### Boot the Installer
 
-In your Linode's dashboard, boot into your **Installer** configuration profile. Since the installer image isn't configured to support SSH or the LISH console, connect to your Linode using [GLISH](/docs/networking/use-the-graphic-shell-glish).
+In your Linode's dashboard, boot into your **Installer** configuration profile. Since the installer image isn't configured to support SSH or the LISH console, connect to your Linode using [GLISH](/docs/guides/glish/).
 
 ### Set up the Install Environment
 
@@ -261,7 +261,7 @@ NixOS is now installed and can be booted from the **Boot** profile created in [C
 
 In this optional section, you'll create a deployable disk image of NixOS.
 
-1.  [*Linode Images*](/docs/platform/linode-images) allows you to take snapshots of your system. These snapshots are limited to 2GB in size. The NixOS installation includes packages that were essential for the installation process, but aren't needed for the running system. These can be removed after installation:
+1.  [*Linode Images*](/docs/products/tools/images/) allows you to take snapshots of your system. These snapshots are limited to 2GB in size. The NixOS installation includes packages that were essential for the installation process, but aren't needed for the running system. These can be removed after installation:
 
         nix-collect-garbage -d
 
@@ -271,7 +271,7 @@ In this optional section, you'll create a deployable disk image of NixOS.
 
         cd /var/log
 
-1.  Create an image of the **NixOS** disk using the [Linode Images](/docs/platform/linode-images#capturing-your-image) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
+1.  Create an image of the **NixOS** disk using the [Linode Images](/docs/products/tools/images/#capturing-your-image) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
 
 ## Delete the Installer Disk and Profile
 

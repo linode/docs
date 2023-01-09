@@ -4,6 +4,7 @@ import Alpine from 'jslibs/alpinejs/v3/alpinejs/dist/module.esm.js';
 import intersect from 'jslibs/alpinejs/v3/intersect/dist/module.esm.js';
 import persist from 'jslibs/alpinejs/v3/persist/dist/module.esm.js';
 import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
+import { initConsentManager } from './components/index';
 import {
 	alpineRegisterMagicHelpers,
 	alpineRegisterDirectiveSVG,
@@ -74,7 +75,7 @@ const searchConfig = getSearchConfig(params);
 	// Set up AlpineJS stores.
 	{
 		Alpine.store('search', newSearchStore(searchConfig, Alpine));
-		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search')));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params));
 	}
 
 	if (!isMobile()) {

@@ -10,7 +10,7 @@ published: 2020-03-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying MongoDB through the Linode Marketplace"
+title: "Deploy MongoDB through the Linode Marketplace"
 image: MongoDB_oneclickapps.png
 contributor:
   name: Linode
@@ -31,9 +31,9 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** MongoDB should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

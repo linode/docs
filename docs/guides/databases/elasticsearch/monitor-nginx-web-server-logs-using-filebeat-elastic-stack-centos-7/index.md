@@ -7,7 +7,6 @@ contributor:
   name: Tyler Langlois
   link: https://tjll.net
 description: "This guide shows how to install four components of Elastic Stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver."
-og_description: "This guide shows how to install four components of Elastic Stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical NGINX webserver."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: ['nginx centos 7','elasticsearch','filebeat','metricbeat','beats','kibana','elk stack','elastic stack']
@@ -16,9 +15,8 @@ published: 2017-12-13
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: "How to Monitor NGINX Using the Elastic Stack on CentOS 7"
-h1_title: "Monitoring NGINX Using the Elastic Stack on Centos 7"
-enable_h1: true
+title: "Monitoring NGINX Using the Elastic Stack on Centos 7"
+title_meta: "How to Monitor NGINX Using the Elastic Stack on CentOS 7"
 dedicated_cpu_link: true
 tags: ["analytics","database","centos","monitoring"]
 aliases: ['/databases/elasticsearch/monitor-nginx-web-server-logs-using-filebeat-elastic-stack-centos-7/']

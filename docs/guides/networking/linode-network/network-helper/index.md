@@ -11,9 +11,8 @@ modified: 2022-07-12
 published: 2014-12-08
 modified_by:
   name: Linode
-title: "Automatically Configure Networking on Linode"
-h1_title: "Automatically Configure Networking on Compute Instances with Network Helper"
-enable_h1: true
+title: "Automatically Configure Networking on Compute Instances with Network Helper"
+title_meta: "Automatically Configure Networking on Linode"
 aliases: ['/platform/network-helper-classic-manager/','/platform/network-helper/','/platform/network-helper-new-manager/']
 image: network-helper-title-graphic.jpg
 ---
@@ -47,9 +46,9 @@ However, there are some advanced use cases that require Network Helper to be dis
 - Using other DNS resolvers (not Linode's)
 - Other advanced use cases where custom network configuration is required
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you choose to manually edit your network configuration files, Network Helper must be disabled. If enabled, any configuration changes will be overwritten on the next system boot.
-{{< /caution >}}
+{{< /note >}}
 
 ## Enable or Disable Network Helper
 
@@ -112,7 +111,7 @@ Network Helper automatically edits the appropriate network configuration files f
         /etc/conf.d/net
         /etc/resolv.conf
 
--   **OpenSuse Leap:**
+-   **openSUSE Leap:**
 
         /etc/sysconfig/network/ifcfg-eth0
         /etc/sysconfig/network/routes

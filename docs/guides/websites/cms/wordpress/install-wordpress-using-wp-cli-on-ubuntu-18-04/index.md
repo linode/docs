@@ -43,7 +43,7 @@ This guide is written for Ubuntu 18.04. Before moving ahead, make sure you have 
 * [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
 * [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -9,7 +9,7 @@ published: 2019-04-05
 modified: 2022-05-10
 modified_by:
   name: Linode
-title: "Deploying Terraria through the Linode Marketplace"
+title: "Deploy Terraria through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ Hosting your own Terraria server gives you control over the world, the players, 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Terraria should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -53,9 +53,9 @@ Hosting your own Terraria server gives you control over the world, the players, 
 
 After Terraria has finished installing, you will be able to access your server by copying your Linode's IPv4 address from the [Linode Cloud Manager](https://cloud.linode.com) and then connecting to it within the game.
 
-{{< caution >}}
+{{< note type="alert" >}}
 You must disable Steam Guard to connect to your Terraria server. If you don't disable Steam Guard, you may be locked out of your account and will need to reset your password. To disable Steam Guard, navigate to the Steam Preferences menu, then open the **Account** pane. Click on **Manage Steam Guard Account Security**, then click on **Turn Steam Guard off**.
-{{</ caution >}}
+{{< /note >}}
 
 To find your Linode's IPv4 address and connect to it:
 

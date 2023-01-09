@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode Community
+  name: Linode
   email: docs@linode.com
 description: "Use the Guacamole Marketplace App to easily install the popular open source remote desktop and access your Linode from any device."
 keywords: ['guacamole', 'marketplace', 'remote desktop']
@@ -10,7 +10,7 @@ published: 2020-12-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Apache Guacamole through the Linode Marketplace"
+title: "Deploy Apache Guacamole through the Linode Marketplace"
 aliases: ['/platform/marketplace/guacamole/','/guides/deploy-guacamole-with-marketplace-apps/','/guides/guacamole-marketplace-app/']
 contributor:
   name: Linode
@@ -26,9 +26,9 @@ external_resources:
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Apache Guacamole should be fully installed within 5-20 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -65,8 +65,8 @@ After Guacamole has finished installing, access the dashboard over `http://` or 
     ![View the Guacamole login page.](guacamole-login-page.png)
 
     {{< note >}}
-The Guacamole login page may take several minutes to become available while the Application completes the creation process.
-{{< /note >}}
+    The Guacamole login page may take several minutes to become available while the Application completes the creation process.
+    {{< /note >}}
 
 1. Once you've completed the login process, you have full access to your Linode from your Guacamole remote desktop using VNC and the XFCE desktop environment.
 

@@ -4,7 +4,6 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
-og_description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
 keywords: ["linux", "sysadmin", "administration"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,7 +14,7 @@ published: 2018-05-31
 title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
-  - '[Linode API Documentation](https://developers.linode.com/)'
+  - '[Linode API Documentation](/docs/api/)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
 ---
 

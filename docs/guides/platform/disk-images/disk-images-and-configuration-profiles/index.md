@@ -21,9 +21,9 @@ external_resources:
   - '[Types of File Systems](https://en.wikipedia.org/wiki/File_system#Types_of_file_systems)'
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide has been split into two new guides:[Linode Disks and Storage](/docs/guides/disks-and-storage/) and [Linode Configuration Profiles](/docs/guides/linode-configuration-profiles/).
-{{</ note >}}
+{{< /note >}}
 
 The Linode Cloud Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
@@ -104,7 +104,7 @@ The disk will be created. Monitor your bell notifications at the top of the Clou
 
 Resizing allows you to allocate more storage to a disk so you can store more files on it, or shrink a disk so you have more allocatable space for the other disks.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Resizing a disk requires you to power your Linode off, if it is currently in use by your Linode.
 
 When shrinking a disk that is using more space than you wish to allocate, you must first delete or compress files until it is within the reduced allocation size. Use the command `df -h` to determine how much space your disk is using.
@@ -129,9 +129,9 @@ If a disk is created using custom partitions, resizing is not possible. If using
 
 <!--### Duplicating a Disk
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Duplicating a disk is not yet available in the Cloud Manager, but this feature is available in the Classic Manager. See [the Classic Manager version of this guide](/docs/guides/disk-images-and-configuration-profiles/#duplicating-a-disk) for instructions on how to duplicate a disk.
-{{</ note >}}
+{{< /note >}}
 
 You can create an exact copy of a disk by duplicating it. This is an effective way to back up your server or clone an existing Linode to a new Linode. (To clone a disk, see [Cloning disks and Configuration Profiles](#cloning-disks-and-configuration-profiles).) Here's how to duplicate a disk:
 
@@ -150,9 +150,9 @@ The disk will be duplicated. Watch the *Host Job Queue* on the Dashboard to moni
 
 You can delete a disk to remove it from your Linode and reallocate its storage space to another disk. Here's how to delete a disk:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Removing a disk is permanent and cannot be undone.
-{{</ caution >}}
+{{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 2.  Click the **Linodes** link in the sidebar.
@@ -242,7 +242,7 @@ You can *clone* disks and configuration profiles from one Linode to another, as 
 
 To clone an entire Linode, see our [Clone Your Linode guide](/docs/guides/clone-your-linode/). Cloning a Linode is a simple alternative to migrating your Linode to a different data center.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We recommend that you power off your Linode first, and keep it powered off until your disks have completed the cloning process.
 {{< /note >}}
 
@@ -284,7 +284,7 @@ We recommend that you power off your Linode first, and keep it powered off until
     If your **Destination** Linode is not large enough for your clone, you will see a warning and be unable to continue until the Linode has the required space available.
     ![Size Error Message](disks-and-config-size-error.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you need to make room on your destination Linode you can [resize it to a larger plan](/docs/guides/resizing-a-linode/), [resize your disks](/docs/guides/disk-images-and-configuration-profiles/#resizing-a-disk) to a smaller size, or [delete disks](/docs/guides/disk-images-and-configuration-profiles/#removing-a-disk) to free up available space. If you decide to resize your Linode to a larger plan, be sure to uncheck the box that automatically resizes your disks or they will expand to fill up the extra space that you are trying to create.
 {{< /note >}}
 

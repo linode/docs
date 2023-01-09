@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: Deploy_Webmin_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Webmin through the Linode Marketplace"
+title: "Deploy Webmin through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -29,9 +29,9 @@ aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Webmin should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

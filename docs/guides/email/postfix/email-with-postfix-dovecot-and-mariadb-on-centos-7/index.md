@@ -168,7 +168,7 @@ You can now add data to the database and tables that were created in the previou
           ('3', 'hostname'),
           ('4', 'localhost.example.com');
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note which `id` corresponds to which domain, the `id` value is necessary for the next two steps.
 {{< /note >}}
 
@@ -548,7 +548,7 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
 
 1. Edit the service settings file `/etc/dovecot/conf.d/10-master.conf`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When editing the file, be careful not to remove any opening or closing curly braces. If there's a syntax error, Dovecot will crash silently. You can check `/var/log/upstart/dovecot.log` to debug the error.
 {{< /note >}}
 
@@ -651,7 +651,7 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
 
 ## Test Your Configuration
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Given the possibility of hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 {{< /note >}}
 
@@ -794,7 +794,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
         VALUES
           ('5', ENCRYPT('newpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) , 'email3@newdomain.com');
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
 {{< /note >}}
 
@@ -836,7 +836,7 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
         VALUES
           ('5', 'alias@newdomain.com', 'myemail@gmail.com');
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
 {{< /note >}}
 

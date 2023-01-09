@@ -3,7 +3,7 @@ import { getScrollPosNavbar } from './nav';
 import { AnalyticsEventsCollector } from './nav-analytics';
 import { initConsentManager } from '../components/index';
 
-export function newNavStore(searchConfig, searchStore) {
+export function newNavStore(searchConfig, searchStore, params) {
 	return {
 		// Stack used when we manipulate the navigation history and to track it so we can go back if needed.
 		history: [],
@@ -26,9 +26,10 @@ export function newNavStore(searchConfig, searchStore) {
 		// but keep it here so we can react on changes.
 		trustecm: {
 			required: false,
-			advertising: false,
+			socialmedia: false,
+			targeting: false,
 			functional: false,
-			any: false,
+			performance: false,
 		},
 
 		init() {
@@ -37,11 +38,12 @@ export function newNavStore(searchConfig, searchStore) {
 				return searchStore.results.lastQueryID;
 			};
 			this.analytics = new AnalyticsEventsCollector(searchConfig, getLastQueryID, this.trustecm);
-			initConsentManager();
 
-			if (document.body.dataset.objectid) {
-				// Wait a little for the consent to be set.
-				setTimeout(() => {
+			// The callback below may be called multiple times.
+			let analyticsLoadEventPublished = false;
+			let cb = () => {
+				if (!analyticsLoadEventPublished && document.body.dataset.objectid) {
+					analyticsLoadEventPublished = true;
 					let analyticsItem = {
 						__queryID: getLastQueryID(),
 						objectID: document.body.dataset.objectid,
@@ -49,8 +51,10 @@ export function newNavStore(searchConfig, searchStore) {
 						eventName: 'DOCS: Guide Load',
 					};
 					this.analytics.handler.pushItem(analyticsItem);
-				}, 1000);
-			}
+				}
+			};
+
+			initConsentManager(params.trustarc_domain, this.trustecm, cb);
 		},
 
 		openSearchPanel(scrollUp = false) {

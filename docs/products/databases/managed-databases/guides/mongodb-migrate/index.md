@@ -82,7 +82,7 @@ Exporting the data from the original database is facilitated through the [mongod
 
 {{< note >}}
 If your source database is also a Linode Managed Database, add the following options to either of the above commands: `--authenticationDatabase=admin --ssl --sslCAFile=[certificate-file]`. Replace *[certificate-file]* with the filename and path of your CA Certificate (see [Connection Details](/docs/products/databases/managed-databases/guides/mongodb-connect/#view-connection-details)).
-{{</ note >}}
+{{< /note >}}
 
 See the [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/) documentation to learn more about the [options](https://www.mongodb.com/docs/database-tools/mongodump/#options) available for this utility and to view common [examples](https://www.mongodb.com/docs/database-tools/mongodump/#examples).
 

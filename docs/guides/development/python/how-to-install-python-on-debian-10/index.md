@@ -4,7 +4,6 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
-og_description: 'Python 3 is installed by default on Debian 10. This guide shows how to invoke Python 3 on Debian 10 and how to upgrade it from version 3.7 to 3.9.'
 keywords: ['How to Install Python on Debian','Python','Python3','Python 2 end of life']
 tags: ['python', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ published: 2021-02-12
 image: InstallPython3_Deb10.png
 modified_by:
   name: Linode
-title: "How to Install Python 3 on Debian 10"
-h1_title: "Installing Python 3 on Debian 10"
+title: "Installing Python 3 on Debian 10"
+title_meta: "How to Install Python 3 on Debian 10"
 contributor:
   name: Angel Guarisma
   link: https://github.com/Guaris/
@@ -127,7 +126,7 @@ deb http://http.us.debian.org/debian/ testing non-free contrib main
 
         sudo apt upgrade python3
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Because Python3 requires a lot of dependencies, you are prompted to allow Debian to restart certain services. If you are not running any active processes, this is okay. Otherwise, you may decide to restart the services yourself.
 {{< /note >}}
 

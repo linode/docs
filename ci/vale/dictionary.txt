@@ -6,6 +6,7 @@ ack
 aconf
 accessor
 accessors
+ACLs
 acronis
 acunetix
 adc
@@ -34,6 +35,7 @@ alex
 alexa
 alexey
 alfano
+Algolia
 alives
 allifs
 allmasquerade
@@ -125,6 +127,7 @@ awk
 aws
 awstats
 axibase
+Axios
 ayehu
 azc
 azlux
@@ -167,6 +170,7 @@ bitbucket
 bitnami
 bitrate
 bitshift
+bitstream
 bitwarden
 bitwise
 blkid
@@ -185,6 +189,7 @@ bootable
 bootloader
 bottlerocket
 bottomley
+bookmarkable
 bootup
 bootups
 boto
@@ -192,6 +197,8 @@ bounceback
 brackley
 bram
 brd
+breakpoint
+breakpoints
 brightbox
 browserify
 bs4
@@ -269,6 +276,7 @@ chrooted
 citad
 cjones
 clamav
+clearable
 clearsign
 clearspace
 cleartext
@@ -659,6 +667,7 @@ freedns
 freeipa
 fremont
 freshclam
+friendica
 friendster
 frontend
 frontmatter
@@ -751,6 +760,8 @@ gradle
 grafana
 graphql
 Grav
+Gravatar
+Gravatars
 graylog
 graylog2
 greenbone
@@ -801,6 +812,7 @@ hiera
 highstate
 hilights
 hilmar
+Hively
 hl2
 hl2
 hmac
@@ -833,6 +845,7 @@ httpie
 httpchk
 httpd
 https
+Hubzilla
 huginn
 Hugo
 hulu
@@ -984,7 +997,9 @@ jq
 jre
 js
 json
+json_pp
 jsonpath
+jsonpp
 julialang
 jumpbox
 junit
@@ -997,6 +1012,7 @@ kamkar
 kanban
 kaseya
 kasten
+kbd
 kbits
 keepalive
 keepalived
@@ -1067,6 +1083,7 @@ leiningen
 lelastic
 len
 lennart
+Lerna
 letsencrypt
 ld
 lf
@@ -1278,6 +1295,8 @@ mongorestore
 mongosh
 monit
 monitorix
+monorepo
+monorepos
 monospaced
 moolenaar
 morphisec
@@ -1345,6 +1364,7 @@ namespaces
 nano
 nanode
 nanodes
+nast
 natively
 nawk
 nbox
@@ -1396,6 +1416,7 @@ nixcraft
 nixpkgs
 nlris
 nmap
+nmcli
 noarch
 node1
 node2
@@ -1415,6 +1436,7 @@ nonprivileged
 nonrecursive
 noscript
 nosync
+notistack
 nouveau
 novaclient
 novell
@@ -1547,6 +1569,7 @@ piwik
 pki
 plaintext
 platformer
+pleroma
 plesk
 plex
 plone
@@ -1592,6 +1615,7 @@ preprocessing
 preprocessors
 prerotate
 prerouting
+preselection
 prestashop
 prettifier
 prettifiers
@@ -1700,6 +1724,8 @@ redislabs
 redmin
 redmine
 redstone
+Redux
+Reduxed
 reenable
 reenabling
 refactorable
@@ -1768,6 +1794,7 @@ roundcube
 routable
 rpaf
 rpc
+rpcbind
 rpmforge
 rsa
 rspec
@@ -1828,6 +1855,8 @@ scp
 scrapy
 screenrc
 scrollable
+scrollbar
+scrollbars
 scriptfilename
 scrum2b
 sda
@@ -1934,6 +1963,7 @@ spf1
 splunk
 spm
 spork
+spotify
 sql
 sqlplus
 sqreen
@@ -2009,6 +2039,7 @@ suricata
 sury
 suse
 swappable
+swappiness
 svn
 symantec
 symfony
@@ -2032,6 +2063,8 @@ systeminfo
 systemname
 sysv
 sysvinit
+tabbable
+taggable
 tanium
 targ
 tasksel
@@ -2040,6 +2073,7 @@ taskwarrior
 tbz
 tcp
 tcpdump
+tcptrack
 tcpwrappers
 teamspeak
 teardown
@@ -2103,6 +2137,8 @@ toolchain
 toolchains
 toolset
 toolstrip
+tooltip
+tooltips
 towson
 trac
 traceroute
@@ -2132,9 +2168,11 @@ turtl
 tv
 tw
 twilio
+typecheck
 typeform
 txt
 txz
+typings
 tz
 tzurbaev
 uber
@@ -2165,6 +2203,8 @@ uncordoned
 unencrypted
 unexported
 unformatted
+ungroup
+ungrouped
 unicast
 unicode
 uninvoiced
@@ -2237,6 +2277,7 @@ verisign
 veritas
 vhost
 vhosts
+viewport
 vigenere
 vimrc
 vinagre

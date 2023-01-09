@@ -10,7 +10,7 @@ published: 2020-12-02
 modified: 2022-08-08
 modified_by:
   name: Linode
-title: "Deploying Webuzo through the Linode Marketplace"
+title: "Deploy Webuzo through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -27,9 +27,9 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Webuzo should be fully installed within 15-20 minutes after the Compute Instance has finished provisioning. During this time, the instance is rebooted once. This time frame depends on a variety of factors, including which data center has been selected.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -51,8 +51,8 @@ After the deployment process has finished and your Compute Instance has rebooted
     ![Screenshot of the Webuzo Admin Login page](webuzo-admin-login.png)
 
     {{< note >}}
-If you do not see the login screen, the deployment process may not yet be complete.
-{{</ note >}}
+    If you do not see the login screen, the deployment process may not yet be complete.
+    {{< /note >}}
 
 1.  Once logged in, the Admin panel should appear.
 

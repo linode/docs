@@ -27,8 +27,8 @@ In most cases, the target domain should resolve to another type of DNS record, l
     - Enter a string that's 1-63 characters in length and contains only letters, numbers, and underscores. Hyphens can also be used, but the string cannot start with one.
 
     {{< note >}}
-Using the root domain as the hostname for a CNAME record is called *CNAME flattening* and is not supported on Linode's DNS Manager.
-{{</ note >}}
+    Using the root domain as the hostname for a CNAME record is called *CNAME flattening* and is not supported on Linode's DNS Manager.
+    {{< /note >}}
 
 - **Alias to:** The full domain name of the canonical domain, where traffic should be redirected. You can also use the `@` character to use the root domain.
 

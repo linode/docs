@@ -11,9 +11,8 @@ modified: 2021-10-15
 modified_by:
   name: Linode
 published: 2021-04-30
-title: "How to Manage Disks and Storage on a Linode"
-h1_title: "Managing Disks and Storage on a Linode"
-enable_h1: true
+title: "Managing Disks and Storage on a Linode"
+title_meta: "How to Manage Disks and Storage on a Linode"
 aliases: ['/guides/linode-disks/']
 ---
 
@@ -56,9 +55,9 @@ From here, a [disk can be created](#creating-a-disk) using the **Add a Disk** bu
 
 Each Linode can have multiple disks. To create a new disk, follow the instructions below.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
-{{</ note >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 
@@ -68,7 +67,7 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
 1. Select from either the **Create Empty Disk** or **Create from Image** options.
 
-    **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/guides/install-a-custom-distribution-on-a-linode/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
+    **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/guides/install-a-custom-distribution/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
 
     **Images:** Selecting an Image allows you to deploy a [Distribution Image](https://www.linode.com/distributions/), a [Custom Image](/docs/products/tools/images/), or a Recovery Image to the new disk. When creating a disk based on an Image, select the *Image*, *Root Password*, and optionally add *SSH Keys*.
 
@@ -90,9 +89,9 @@ A disk can be duplicated onto the same Linode or any other Linode on the account
 
 A disk can be deleted to remove it form the Linode and free up additional storage space that can be used for other disks.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Deleting a disk is permanent and cannot be undone. Make sure all required data is properly backed up before continuing.
-{{</ caution >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 

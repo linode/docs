@@ -7,7 +7,7 @@ keywords: ['liveswitch','streaming','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-31
-title: "Deploying LiveSwitch through the Linode Marketplace"
+title: "Deploy LiveSwitch through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293
@@ -19,7 +19,7 @@ external_resources:
 
 {{< note >}}
 Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -27,9 +27,9 @@ Using LiveSwitch Server may require a paid license. To obtain a license, [contac
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** LiveSwitch should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

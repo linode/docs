@@ -65,5 +65,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs NGINX Documentation](/docs/web-servers/nginx/)
 - [NGINX Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with NGINX](/docs/web-servers/nginx/perl-fastcgi/arch-linux)
-- [Configure PHP and FastCGI with NGINX](/docs/web-servers/nginx/php-fastcgi/arch-linux)
+- [Configure Perl and FastCGI with NGINX](/docs/guides/nginx-and-perlfastcgi-on-arch-linux/)
+- [Configure PHP and FastCGI with NGINX](/docs/guides/nginx-and-phpfastcgi-on-arch-linux/)

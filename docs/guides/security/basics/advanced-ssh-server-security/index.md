@@ -34,7 +34,7 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
 
 2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.
 
@@ -47,8 +47,8 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
         sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.BACKUP
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Use a Stronger Diffie-Hellman Algorithm
@@ -67,9 +67,9 @@ The `/etc/ssh/moduli` file ships with OpenSSH, so assuming two servers have the 
     sudo ssh-keygen -T /etc/ssh/moduli -f "${HOME}/moduli"
     rm "${HOME}/moduli"
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before running these commands on a production server, be aware that depending on the size of the keys you're generating, this will use significant CPU power and may take anywhere from a minute to several hours.
-{{< /caution >}}
+{{< /note >}}
 
 This sequence of commands generates a new file containing thousands of candidate primes for the Diffie-Hellman algorithm. Next, it tests the candidates and adds suitable primes to your `moduli` file. Note that these keys append to your existing ones; they do not overwrite the file, so it is still possible that your SSH connection will use a precomputed prime in its key exchange. As stated above, however, this is not a vulnerability.
 

@@ -44,7 +44,7 @@ Fedora and CentOS:
 
     sudo service httpd restart
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can use one of the following three commands instead, depending on your Linux distribution:
 
 `/etc/init.d/httpd restart`
@@ -114,9 +114,9 @@ LogLevel debug
 
 4.  Perform the operation that was giving you trouble, then [check the logs](#check-the-logs) for more detailed information and errors.
 
- {{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
-{{< /caution >}}
+{{< /note >}}
 
 ## Check Apache Configuration Syntax
 
@@ -144,7 +144,7 @@ Fedora and CentOS:
 
 Make sure all your `<VirtualHost>` directives use IP addresses and port numbers that match the ones defined in the `NameVirtualHost` directives. For example, if you have set `NameVirtualHosts *:80`, then the virtual host configuration should begin with `<VirtualHost *:80>`. If you've set `NameVirtualHosts 123.234.123.234:80`, then the virtual host configuration should begin with `<VirtualHost 123.234.123.234:80>`. If you've set `NameVirtualHosts *`, then the virtual host configuration should begin with `<VirtualHost *>`.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 You can have multiple `NameVirtualHost` values, which is what you'll need to do if you're running sites on multiple IPs and ports. Just make sure the `<VirtualHost>` configurations correspond to the configured `NameVirtualHost` directives.
 {{< /note >}}
 

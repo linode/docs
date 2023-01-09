@@ -157,7 +157,7 @@ Restart the service:
 Although the process can be automated so that you can easily expand your storage pool, set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the [Before You Begin](#before-you-begin) section apply here as well.
 
 {{< note >}}
-If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode).
+If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/products/storage/block-storage/).
 
 Configure block storage before the other steps in this section.
 
@@ -223,7 +223,7 @@ To confirm each successful setup instead of launching all instances before verif
 This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
 {{< /note >}}
 
-1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://cloud.linode.com/stackscripts/index) to add a new StackScript.
+1.  [Familiarize yourself with StackScripts](/docs/products/tools/stackscripts/), then navigate to the [StackScripts page](https://cloud.linode.com/stackscripts/index) to add a new StackScript.
 
 2.  Select Debian 9 as the distribution and paste the following in the **Script** section:
 

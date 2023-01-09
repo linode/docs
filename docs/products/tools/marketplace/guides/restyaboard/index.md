@@ -10,7 +10,7 @@ published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Restyaboard through the Linode Marketplace"
+title: "Deploy Restyaboard through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ Restyaboard is like an electronic sticky note for organizing tasks and to-dos. I
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Restyaboard should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

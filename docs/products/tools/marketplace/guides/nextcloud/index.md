@@ -9,7 +9,7 @@ published: 2020-06-11
 modified: 2022-05-27
 modified_by:
   name: Linode
-title: "Deploying Nextcloud through the Linode Marketplace"
+title: "Deploy Nextcloud through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ image: deploying_nextcloud_oca.png
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Nextcloud should be fully installed within 5-7 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

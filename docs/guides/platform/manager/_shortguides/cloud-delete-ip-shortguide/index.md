@@ -29,6 +29,6 @@ You can delete a public IP addresses within the Cloud Manager from the **Network
 
 1.  A confirmation popup appears where you can confirm or cancel the operation.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You must have at least one public IP on a Linode. If you attempt to delete the last public IP on a Linode, an error message appears *after* you confirm the deletion.
 {{< /note >}}

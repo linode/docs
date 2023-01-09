@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: Deploy_Virtualmin_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Virtualmin through the Linode Marketplace"
+title: "Deploy Virtualmin through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ aliases: ['/platform/marketplace/how-to-deploy-virtualmin-with-marketplace-apps/
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Virtualmin should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

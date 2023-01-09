@@ -47,8 +47,8 @@ Hadoop is an open-source Apache project that allows creation of parallel process
     -  **node1**: 192.0.2.2
     -  **node2**: 192.0.2.3
 
-      {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
 {{< /note >}}
 
 ## Architecture of a Hadoop Cluster

@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-29
 modified_by:
   name: Linode
-title: "Deploying Prometheus and Grafana through the Linode Marketplace"
+title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
@@ -28,9 +28,9 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Prometheus and Grafana should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -66,20 +66,20 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1. This displays the credentials and endpoint URL for both Prometheus and Grafana, as shown in the example output below.
 
-    {{< output >}}
-#################
-#   Prometheus  #
-#################
-Location: https://192-0-2-1.ip.linodeusercontent.com/prometheus
-Username: prometheus
-Password: htyjuykuyhjyrkit648648#$#%^GDGHDHTTNJMYJTJ__gr9jpoijrpo
-##############
-#  Grafana   #
-##############
-Location: https://192-0-2-1.ip.linodeusercontent.com
-Username: admin
-Password: ewtghwethetrh554y35636#$_0noiuhr09h)
-{{</ output >}}
+    ```output
+    #################
+    #   Prometheus  #
+    #################
+    Location: https://192-0-2-1.ip.linodeusercontent.com/prometheus
+    Username: prometheus
+    Password: htyjuykuyhjyrkit648648#$#%^GDGHDHTTNJMYJTJ__gr9jpoijrpo
+    ##############
+    #  Grafana   #
+    ##############
+    Location: https://192-0-2-1.ip.linodeusercontent.com
+    Username: admin
+    Password: ewtghwethetrh554y35636#$_0noiuhr09h)
+    ```
 
 ### Add Prometheus as a Data Source to Grafana
 

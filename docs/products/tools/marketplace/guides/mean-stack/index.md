@@ -10,7 +10,7 @@ published: 2020-03-17
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a MEAN Stack through the Linode Marketplace"
+title: "Deploy a MEAN Stack through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -39,9 +39,9 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** The MEAN stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

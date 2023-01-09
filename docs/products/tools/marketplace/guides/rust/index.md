@@ -9,7 +9,7 @@ published: 2019-03-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Rust through the Linode Marketplace"
+title: "Deploy Rust through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Rust should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

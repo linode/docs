@@ -13,8 +13,7 @@ modified_by:
   name: Linode
 published: 2010-10-25
 title: "Find Files in Linux Using the Command Line"
-h1_title: "How to Find Files in Linux Using the Command Line"
-enable_h1: true
+title_meta: "How to Find Files in Linux Using the Command Line"
 external_resources:
 - '[Ubuntu Manual page on find](http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html)'
 - '[GNU page on find](https://www.gnu.org/software/findutils/manual/html_mono/find.html)'
@@ -86,7 +85,7 @@ The first command returns a list of all files in the entire file system that end
 
 ## Use `grep` to Find a File in Linux Based on Content
 
-The `find` command can only filter the directory hierarchy based on a file's name and metadata. If you need to search based on the file's content, use a tool like [`grep`](/docs/tools-reference/search-and-filter-text-with-grep). Consider the following example:
+The `find` command can only filter the directory hierarchy based on a file's name and metadata. If you need to search based on the file's content, use a tool like [`grep`](/docs/guides/how-to-grep-for-text-in-files/). Consider the following example:
 
     find . -type f -exec grep "example" '{}' \; -print
 
@@ -106,9 +105,9 @@ The `-exec` or `-execdir` options run without further prompts. If you prefer to 
 
 ## How to Find and Delete a File in Linux
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be very careful using this.
-{{< /caution >}}
+{{< /note >}}
 
 To delete the files that end up matching your search, you can add `-delete` at the end of the expression. Do this only when you are positive the results will only match the files you wish to delete.
 

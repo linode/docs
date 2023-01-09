@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: DeployShadowsocksServer_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Shadowsocks through the Linode Marketplace"
+title: "Deploy Shadowsocks through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -29,9 +29,9 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Shadowsocks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

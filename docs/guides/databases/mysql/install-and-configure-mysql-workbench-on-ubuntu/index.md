@@ -24,11 +24,11 @@ MySQL Workbench is a feature-rich graphical tool used to model data, build SQL q
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  [Install VNC on Ubuntu](/docs/applications/remote-desktop/install-vnc-on-ubuntu-18-04) and connect to VNC from your desktop.
+3.  [Install VNC on Ubuntu](/docs/guides/install-vnc-on-ubuntu-18-04/) and connect to VNC from your desktop.
 
 4.  Update your system:
 
@@ -83,7 +83,7 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/guides/in
 
     ![MySQL Workbench Connection](mysql-workbench-connection.png "MySQL Workbench Connection")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/) for more information.
 {{< /note >}}
 

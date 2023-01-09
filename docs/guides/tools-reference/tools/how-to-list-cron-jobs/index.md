@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to display currently scheduled cron jobs, and list cron jobs satisfying various criteria.'
-og_description: 'This guide explains how to display currently scheduled cron jobs, and list cron jobs satisfying various criteria.'
 keywords: ['List cron job','View cron job','Display cron job','Cron job linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-14
 modified_by:
   name: Linode
-title: "How to List Cron Jobs on Linux"
-h1_title: "How to List Cron Jobs on Linux"
-enable_h1: true
+title: "List Cron Jobs on Linux"
+title_meta: "How to List Cron Jobs on Linux"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -37,7 +35,7 @@ The schedule for a cron job is specified using a formal syntax. The initial five
 
 There are a variety of methods used to display the cron jobs. Cron jobs can be listed on a per-user or per-application basis. It is also possible to list all jobs sharing a specific schedule. These instructions are designed for Ubuntu 22.04, but are valid for most recent releases of Ubuntu. The `cron` utility works similarly in other Linux distributions, but the names and locations of the files might differ.
 
-For more information about creating cron jobs, see the Linode guides to [Scheduling Cron Jobs](https://www.linode.com/docs/guides/schedule-tasks-with-cron/) and [Running Cron Jobs at Boot](https://www.linode.com/docs/guides/run-jobs-or-scripts-using-crontab-on-boot/). On Ubuntu systems, use the `man crontab` command to view user information.
+For more information about creating cron jobs, see the Linode guides to [Scheduling Cron Jobs](/docs/guides/schedule-tasks-with-cron/) and [Running Cron Jobs at Boot](/docs/guides/run-jobs-or-scripts-using-crontab-on-boot/). On Ubuntu systems, use the `man crontab` command to view user information.
 
 ## Before You Begin
 
@@ -45,7 +43,7 @@ For more information about creating cron jobs, see the Linode guides to [Schedul
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -57,7 +55,7 @@ The Linux `cron` utility provides an easy method for listing all the active cron
 
 To list all cron jobs for the active user, run the `crontab -l` command while logged into the account. This displays the contents of the user's cron file. It prints the introductory file information along with any cron job entries. If user `x` does not have a `crontab` file, Ubuntu displays the message `no crontab for x`.
 
-```code
+```command
 crontab -l
 ```
 
@@ -96,7 +94,7 @@ In this example, the user has three jobs scheduled. One runs hourly, the second 
 
 The system-wide root cron jobs are located in the `/etc/crontab` file. The file contents can be displayed using any text editor, or utilities like `cat` and `more`. `sudo` is not required to display the system cron jobs.
 
-```code
+```command
 cat /etc/crontab
 ```
 
@@ -126,7 +124,7 @@ SHELL=/bin/sh
 #
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `crontab` command is not used to display the system-wide cron jobs. Additionally, the `etc/crontab` file should not be confused with the `crontab` account for the root user.
 {{< /note >}}
 
@@ -138,7 +136,7 @@ Linux maintains directories for hourly, daily, weekly, and monthly cron jobs. Th
 
 The daily cron scripts are found at `/etc/cron.daily/`. To view the daily cron jobs, use the following commands. Remember, these entries refer to scripts, not `crontab` entries.
 
-```code
+```command
 ls -l  /etc/cron.daily
 ```
 
@@ -154,7 +152,7 @@ total 24
 
 To see the contents of one of these scripts, use the `cat` command or open the file in a text editor.
 
-```code
+```command
 cat /etc/cron.daily/man-db
 ```
 
@@ -162,11 +160,11 @@ cat /etc/cron.daily/man-db
 
 The `/etc/cron.hourly/` directory contains the scripts that run hourly. To see a list of the hourly cron jobs, use the following command:
 
-```code
+```command
 ls -l  /etc/cron.hourly
 ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The output of this command for the hourly, weekly, and monthly directories resembles the previous example and is not displayed.
 {{< /note >}}
 
@@ -174,7 +172,7 @@ The output of this command for the hourly, weekly, and monthly directories resem
 
 Weekly cron jobs are found at `/etc/cron.weekly`. To see all weekly cron jobs, use this command:
 
-```code
+```command
 ls -l /etc/cron.weekly
 ```
 
@@ -182,7 +180,7 @@ ls -l /etc/cron.weekly
 
 Linux systems also allow users to run scripts on a monthly basis. These jobs are stored in `/etc/cron.monthly`. To display all monthly cron jobs, run the following command:
 
-```code
+```command
 ls -l /etc/cron.monthly
 ```
 
@@ -190,7 +188,7 @@ ls -l /etc/cron.monthly
 
 The `crontab` command can be used with the `-u` option to view all cron jobs owned by a specific user. Specify the command in the format `sudo crontab -l -u username`, replacing `username` with the actual user name of the user. `sudo` authorization is required to view the `crontab` file for another user.
 
-```code
+```command
 sudo crontab -l -u example-user
 ```
 
@@ -198,7 +196,7 @@ sudo crontab -l -u example-user
 
 Software applications can also register recurring tasks as cron jobs. Ubuntu designates the `/etc/cron.d` directory for this purpose. Each file in this directory contains a list of jobs in `crontab` format. To list the software-specific cron files, list the contents of the `cron.d` directory.
 
-```code
+```command
 ls -l /etc/cron.d
 ```
 
@@ -209,7 +207,7 @@ ls -l /etc/cron.d
 
 To see the contents of one of these files, use `cat` or a text editor.
 
-```code
+```command
 cat /etc/cron.d/sysstat
 ```
 
@@ -225,7 +223,7 @@ PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
 59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not modify these files or delete any entries from this directory. This directory is designed for the use of software applications, although other users can add cron jobs here. However, under normal circumstances Linux account users should add their cron jobs to their personal `crontab` file.
 {{< /note >}}
 

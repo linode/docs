@@ -9,9 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-07
 modified_by:
   name: Linode
-title: "How to Create a Private Network with VLANs Using Linode's API"
-h1_title: "Creating a Private Network with VLANs Using Linode's API"
-enable_h1: true
+title: "Create a Private Network with VLANs Using Linode's API"
 contributor:
   name: Linode
 aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']
@@ -53,9 +51,9 @@ The `purpose` of a network interface is required and used to determine whether a
 
 - `vlan`: Configures a network interface for the labeled VLAN and enables the Linode to communicate over the `ipam_address` if one is specified.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The Public Internet must always be set to use the network interface `eth0`.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configuring the Label of an Interface
 
@@ -227,8 +225,8 @@ The Linode's ID is required to utilize these methods. Use the Linodes List ([GET
           https://api.linode.com/v4/linode/instances/123/configs/23456
 
     {{< note >}}
-When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
-{{< /note >}}
+    When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
+    {{< /note >}}
 
 1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
 

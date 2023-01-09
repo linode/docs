@@ -18,9 +18,9 @@ external_resources:
 aliases: ['/guides/ip-failover-keepalived/']
 ---
 
-{{<note>}}
+{{< note >}}
 Not all data centers supports configuring IP failover through keepalived. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
-{{</note>}}
+{{< /note >}}
 
 This guide covers using keepalived to configure IP failover with Linode Compute Instances. Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is one **primary** Instance and one or more **secondary** Instances.
 
@@ -74,9 +74,9 @@ This section covers installing the keepalived software from your distribution's 
 
     - Replace *192.0.2.1* with the IP address for which you'd like to enable failover.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If configuring IP failover on a VLAN IP, you likely need to change the *interface* value from `eth0` to `eth1`. See the **interface** item under [Configuration Options](#configuration-options) for help finding the Network Interface your VLAN may be using.
-{{</ note >}}
+{{< /note >}}
 
     {{< file "/etc/keepalived/keepalived.conf" >}}
 vrrp_instance Instance1 {

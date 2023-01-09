@@ -37,7 +37,7 @@ If your web server is nginx and you plan to use Varnish cache to serve WordPress
 
 3.  Install and configure a [web server](/docs/websites/) like Apache or nginx.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

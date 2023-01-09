@@ -10,7 +10,7 @@ published: 2019-03-25
 modified: 2022-07-11
 modified_by:
   name: Linode
-title: "Deploying Drupal through the Linode Marketplace"
+title: "Deploy Drupal through the Linode Marketplace"
 aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/','/guides/deploying-drupal-with-one-click-apps/','/platform/one-click/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-marketplace-apps/','/guides/drupal-marketplace-app/']
 contributor:
   name: Linode
@@ -28,13 +28,13 @@ In addition to the core infrastructure, there are a number of freely available D
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Drupal should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Drupal Options
@@ -79,9 +79,9 @@ The Drupal Marketplace App installs the following required software on your Lino
 | **Software** | **Description** |
 |:--------------|:------------|
 | [**MariaDB Server**](https://mariadb.org/) | Relational database. |
-| [**PHP 7**](https://www.php.net) | Drupal is written in PHP and requires PHP to operate. |
+| [**PHP 8**](https://www.php.net) | Drupal is written in PHP and requires PHP to operate. |
 | [**Apache HTTP Server**](https://httpd.apache.org) | Web Server used to serve the Drupal site. |
-| [**Drupal 9**](https://www.drupal.org/about/9) | Content management system. |
+| [**Drupal 10**](https://www.drupal.org/about/10) | Content management system. |
 
 {{< content "marketplace-update-note-shortguide">}}
 

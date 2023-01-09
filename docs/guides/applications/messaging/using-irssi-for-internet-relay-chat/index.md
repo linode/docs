@@ -15,12 +15,12 @@ title: Using Irssi for Internet Relay Chat
 external_resources:
  - '[Irssi Project Home Page](http://www.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'
- - '[Screen for Persistent Terminal Sessions](/docs/linux-tools/utilities/screen)'
+ - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
  - '[An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)'
  - '[The Open and Free Technology Community](http://www.oftc.net/oftc/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
- - '[Advanced Irssi Usage](/docs/communications/irc/advanced-irssi)'
+ - '[Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/)'
 ---
 
 ![Using Irssi for Internet Relay Chat](Using-Irssi-for-Internet-Relay-Chat-smg.jpg)
@@ -93,7 +93,7 @@ To disconnect from a channel, run:
 
     /disconnect irc.oftc.net
 
- {{< note >}}
+{{< note >}}
 You can join additional networks by replacing **irc.oftc.net** with a different network.
 {{< /note >}}
 
@@ -151,7 +151,7 @@ To send a private message to just one person on your network, use the `/msg` com
 
     /msg friendnick Hello there!
 
- {{< note >}}
+{{< note >}}
 Please note that if you are in a channel, you can use tab to autocomplete nicks within that channel.
 {{< /note >}}
 

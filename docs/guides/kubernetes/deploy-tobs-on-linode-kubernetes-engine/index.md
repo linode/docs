@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-04
 modified_by:
   name: Linode
-title: "How to Deploy TOBS (The Observability Stack) on LKE"
-h1_title: "Deploying TOBS (The Observability Stack) on LKE"
-enable_h1: true
+title: "Deploying TOBS (The Observability Stack) on LKE"
+title_meta: "How to Deploy TOBS (The Observability Stack) on LKE"
 external_resources:
 - '[TOBS Helm Chart on Github](https://github.com/timescale/tobs/tree/master/chart): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
@@ -39,7 +38,7 @@ TOBS includes the following components:
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using [Kubernetes version 1.23](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
@@ -141,7 +140,7 @@ tobs-kube-prometheus-prometheus                             ClusterIP   10.128.1
 
 1.  Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Press **control+C** on your keyboard to terminate a port-forward process after entering any of the following commands.
     {{< /note >}}
 

@@ -10,7 +10,7 @@ published: 2020-12-02
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying VS Code through the Linode Marketplace"
+title: "Deploy VS Code through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -27,9 +27,9 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Visual Studio Code Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

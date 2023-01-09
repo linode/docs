@@ -29,7 +29,7 @@ This guide makes three assumptions:
 *   You know how to sign in to the [Linode Cloud Manager](https://cloud.linode.com/).
 *   You have a basic knowledge of [how to use SSH](/docs/guides/use-public-key-authentication-with-ssh/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
@@ -71,9 +71,9 @@ Linux and OS X can use [SCP](https://en.wikipedia.org/wiki/Secure_copy) natively
 
     scp example_user@server_ip_address:/home/account_name/public_html ~/
 
-  {{< note >}}
+{{< note respectIndent=false >}}
 The exact location of your website's files may vary depending on your specific implementation. Contact your site's developer to confirm the location of your website's files.
-  {{</ note >}}
+{{< /note >}}
 
 **FileZilla (Linux / OS X / Windows)**
 
@@ -106,7 +106,7 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
         scp ~/example.com example_user@server_ip_address:/var/www/html/example.com/public_html
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `example_user` should be the user on your Linode you want to log in as, and `example.com` should be replaced by your domain name.
 {{< /note >}}
 
@@ -114,7 +114,7 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
 3.  Now check your website's IP address in your browser. Your website should be displayed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your website may not yet function completely correctly if it is URL-dependent. A website created with WordPress is an example of a URL-dependent website. Because you're using the IP address instead of the URL, WordPress gets confused. It should start working correctly once you move your domain to point to your Linode.
 {{< /note >}}
 
@@ -126,7 +126,7 @@ A Linode can run both your web server and an [email server](/docs/guides/running
 
 The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
-1.  Follow our instructions on [adding a domain zone](/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
+1.  Follow our instructions on [adding a domain zone](/docs/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain.
 
 2.  If you use a third-party email service, edit the default MX records.
 
@@ -144,7 +144,7 @@ The last step in your migration is to point your domain at your Linode's IP addr
 
 6.  [Set reverse DNS](/docs/guides/configure-rdns/) for your domain.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
 {{< /note >}}
 

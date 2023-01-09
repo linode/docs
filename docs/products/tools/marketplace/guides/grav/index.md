@@ -10,7 +10,7 @@ published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Grav through the Linode Marketplace"
+title: "Deploy Grav through the Linode Marketplace"
 contributor:
   name: Holden Morris
   link: https://github.com/hmorris3293
@@ -27,9 +27,9 @@ aliases: ['/guides/grav-marketplace-app/']
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Grav should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

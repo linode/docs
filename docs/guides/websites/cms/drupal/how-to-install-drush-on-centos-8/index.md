@@ -4,7 +4,6 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on CentOS 8'
-og_description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on CentOS 8'
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drush-on-centos-8/']
 tags: ["drupal","centos","cms","lamp"]
@@ -13,8 +12,8 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drush on CentOS 8
-h1_title: Install Drush on CentOS 8
+title: Install Drush on CentOS 8
+title_meta: How to Install Drush on CentOS 8
 image: InstallDrushonCentOS8.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
@@ -40,8 +39,8 @@ Before installing Drush, ensure that you complete the following steps:
 
 1.  Install and configure a [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/).
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Git & Composer
@@ -112,9 +111,9 @@ You may want to install Drush for only certain system users, for example, the **
 
         composer require drush/drush:dev-master
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:9.*`. For more information, visit the [Drush GitHub](https://github.com/drush-ops/drush) repository.
-     {{</note >}}
+    {{< /note >}}
 
 1. To verify the installation, check Drush's version number.
 
@@ -126,7 +125,7 @@ To install a different version of Drush, replace `drush/drush:dev-master` with a
 Drush Commandline Tool 10.2.2
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your system is having trouble finding the `drush` command, add the `vendor` directory to your `$PATH`. Using the text editor of your choice, edit your `.bashrc` file to add the directory to it's path:
 
 {{< file "~/.bashrc">}}
@@ -137,7 +136,7 @@ Run the `source` command on the `.bashrc` file to enable the changes:
 
         source ~/.bashrc
 
-    {{</ note >}}
+    {{< /note >}}
 
 ## Using Drush
 

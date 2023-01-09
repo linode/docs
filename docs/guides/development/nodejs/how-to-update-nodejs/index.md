@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-09
 modified_by:
   name: Linode
-title: "Updating Node.js on Linux, macOS, and Windows"
-h1_title: "How to Update Node.js on Linux, macOS, and Windows"
-enable_h1: true
+title: "Update Node.js on Linux, macOS, and Windows"
+title_meta: "How to Update Node.js on Linux, macOS, and Windows"
 external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
 ---
@@ -35,7 +34,7 @@ Node.js is a cross-platform runtime environment for server-side JavaScript appli
 5.  If you're using the installer to update, go to the Node.js downloads page to get the appropriate version. The most recent version of *long-term support* (LTS) is listed and you also have the option to choose a version in the *Current* section.
 ![The Node.js downloads page](nodejs-downloads-page.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 **Current** is for developers and development or testing environments that don't require the systems to be as stable or up and accessible. LTS is aimed at production environments that require stability and continued uptime. If you are unsure which you need, choose LTS.
 {{< /note >}}
 

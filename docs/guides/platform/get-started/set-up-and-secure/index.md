@@ -13,16 +13,15 @@ modified: 2022-07-12
 modified_by:
   name: Linode
 published: 2012-02-17
-title: "How to Set Up and Secure a Linode Compute Instance"
-h1_title: "Setting Up and Securing a Compute Instance"
-enable_h1: true
+title: "Setting Up and Securing a Compute Instance"
+title_meta: "How to Set Up and Secure a Linode Compute Instance"
 ---
 
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
 
-{{<note>}}
+{{< note >}}
 While this guide is optional, it walks you through best practices and covers important steps to secure your server. It is recommended that you follow these instructions when deploying a new Compute Instance. Some guides within our library assume that you have performed these steps, such as setting your hostname and updating your software.
-{{</note>}}
+{{< /note >}}
 
 1. [View your Instance in the Cloud Manager](#view-your-instance-in-the-cloud-manager)
 1. [Connect to the Instance](#connect-to-the-instance)
@@ -74,11 +73,11 @@ Updating your system frequently is the single biggest security precaution you ca
 
     apt update && apt upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version".
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode's Kali Linux distribution image is a [minimum installation](https://www.kali.org/docs/troubleshooting/common-minimum-setup/). You will likely want to install individual [tools](https://www.kali.org/tools/) or [metapackages](https://www.kali.org/tools/kali-meta/), such as the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage.
 {{< /note >}}
 
@@ -125,7 +124,7 @@ All new Linodes are set to UTC time by default. However, you may prefer your Lin
 
 ### Most Distributions
 
-*This includes CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and OpenSuse distributions, though other methods may be preferred in those cases.*
+*This includes CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and openSUSE distributions, though other methods may be preferred in those cases.*
 
 1.  Use `timedatectl` to output a list of available timezones.
 
@@ -176,7 +175,7 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
 #### openSUSE
 
-The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. OpenSuse also has a more friendly way to select a timezone, discussed below.
+The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. openSUSE also has a more friendly way to select a timezone, discussed below.
 
 1.  Open the YaST2 timezone selector tool.
 
@@ -220,7 +219,7 @@ After you've made the change below, you may need to log out and log back in agai
 
 ### Most Distributions
 
-*This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, OpenSuse, Kali Linux, and Arch.*
+*This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, openSUSE, Kali Linux, and Arch.*
 
 Replace `example-hostname` with one of your choice.
 
@@ -273,7 +272,7 @@ See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) fo
 
 Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 {{< /note >}}
 
@@ -315,7 +314,7 @@ By default, password authentication is used to connect to your Compute Instance 
 
 ### Create an Authentication Key-pair
 
-{{< note >}}
+{{< note respectIndent=false >}}
 As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows 10, simplifying the process for securing SSH. **Windows 10** in this guide assumes OpenSSH has been installed as part of this update, while **Earlier Windows Versions** would apply to earlier versions.
 {{< /note >}}
 
@@ -323,9 +322,9 @@ As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows
 
     -   **Linux / macOS / Windows 10 or 11**
 
-        {{< caution >}}
+        {{< note type="alert" respectIndent=false >}}
 If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
-{{< /caution >}}
+{{< /note >}}
 
             ssh-keygen -b 4096
 
@@ -353,7 +352,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
             scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 `ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
 {{< /note >}}
 
@@ -410,7 +409,7 @@ PermitRootLogin no
 PasswordAuthentication no
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
 {{< /note >}}
 
@@ -492,4 +491,4 @@ PasswordAuthentication yes
 
 These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/guides/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).

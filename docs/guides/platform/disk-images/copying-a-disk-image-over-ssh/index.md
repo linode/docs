@@ -21,7 +21,7 @@ Piping SSH commands to utilities such as `dd`, `gzip`, or `rsync` is an easy way
 
 This guide demonstrates how to download a `.img` file to your computer over SSH containing a block-level copy of your Linode's disk device created with `dd`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the amount of data on your disk is much less than the size of the disk, then downloading a copy with `dd` can take longer than just downloading your files. If you're interested in downloading individual files or directories, review the options listed in our [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) and [Backing Up Your Data](/docs/guides/backing-up-your-data/) guides.
 {{< /note >}}
 
@@ -29,7 +29,7 @@ If the amount of data on your disk is much less than the size of the disk, then 
 
 This guide shows you how to download a Linode's disk image over SSH to a separate receiving system, like a personal computer, by executing commands on both the **Origin Linode** as the origin of your disk image, and the **Receiving System** which will receive a copy of this image. The terms "origin Linode" and "receiving system" are used throughout this guide to describe these two separate environments.
 
-While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is instead running Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/guides/using-ssh-on-windows) which can alternatively be used to complete this process.
+While this guide has been written to accommodate computers running Linux as their operating system, if the receiving system is instead running Microsoft Windows, there are multiple SSH solutions available such as [Cygwin and PuTTY](/docs/guides/connect-to-server-over-ssh-on-windows/) which can alternatively be used to complete this process.
 
 ### Boot Linode into Rescue Mode
 

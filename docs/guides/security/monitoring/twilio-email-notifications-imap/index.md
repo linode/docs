@@ -1,5 +1,5 @@
 ---
-slug: create-an-imap-email-notification-system-using-twilio
+slug: twilio-email-notifications-imap
 author:
   name: John Mueller
   email: john@johnmuellerbooks.com
@@ -23,6 +23,7 @@ external_resources:
 - '[imaplib — IMAP4 Client Library — PyMOTW 3](https://pymotw.com/3/imaplib/index.html)'
 - '[imaplib — IMAP4 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/imaplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
+aliases: ['/guides/create-an-imap-email-notification-system-using-twilio/']
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
@@ -348,7 +349,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file and exit your text editor.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. Your script should now look like the code in [this file](forward-last-email-to-text-message.py).
 {{< /note >}}
 
@@ -649,7 +650,7 @@ This new code adds the `SUBJECT` IMAP search command to the search criterion. No
 
 1.  After inserting the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your script should now look like the code in [this file](autoforward-email-with-matching-subject-to-text-message.py).
 {{< /note >}}
 

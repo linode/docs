@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
-og_description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -78,9 +77,9 @@ The next task is to copy your data to the new Linode, and make sure that all com
 1.  Create a temporary directory on the new Linode.
 2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/docs/guides/introduction-to-rsync/) or `scp`.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
-{{< /caution >}}
+{{< /note >}}
 
 3.  Audit your data using tools such as `rkhunter` and [`clamav`](/docs/guides/scanning-your-linode-for-malware/). You can use additional malware scanners to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 
@@ -90,7 +89,7 @@ If you're not comfortable copying from the compromised system prior to auditing 
 
 Swap IP addresses so the new Linode uses the IP address assigned to the old Linode. If you have configured any network services to use the new Linode's IP address, you should modify their configurations to use the old Linode's IP instead. For instructions, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses).
 
- {{< note >}}
+{{< note respectIndent=false >}}
 To swap IP addresses, both Linodes must be located in the same data center.
 {{< /note >}}
 
@@ -98,6 +97,6 @@ Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-
 
 ### Preserving Data for Forensics and Linode Cancellation
 
-You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
+You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/guides/copying-a-disk-image-over-ssh/). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
-When you no longer need the old Linode's disks, you should [remove the Linode](/docs/guides/understanding-billing-and-payments/#removing-services). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/guides/understanding-billing-and-payments/).
+When you no longer need the old Linode's disks, you should [remove the Linode](/docs/products/platform/billing/guides/stop-billing/). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/products/platform/billing/).

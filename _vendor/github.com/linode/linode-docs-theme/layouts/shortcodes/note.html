@@ -1,8 +1,57 @@
-<blockquote
-  class="callout border-brand"
-  style="background-color: rgba(2,177,89,0.1);">
-  <strong class="callout-title"> Note </strong>
-  <div class="leading-tight callout-body">
-    {{ .Inner | .Page.RenderString }}
+{{ $type := .Get "type" | default "primary" }}
+{{ $collapsible := .Get "isCollapsible" }}
+{{ $noTitle := .Get "noTitle" }}
+{{ $respectIndent := .Get "respectIndent" | default true }}
+
+{{ $defaultTitle := ""}}
+
+{{ if ne $noTitle true }}
+    {{ if (strings.Contains $type "secondary") }}
+        {{ $defaultTitle = "Note" }}
+    {{ else if (strings.Contains $type "primary") }}
+        {{ $defaultTitle = "Note" }}
+    {{ else if (strings.Contains $type "warning") }}
+        {{ $defaultTitle = "Warning" }}
+    {{ else if (strings.Contains $type "alert") }}
+        {{ $defaultTitle = "Important" }}
+    {{ end }}
+{{ end }}
+
+{{ $title := .Get "title" | default $defaultTitle }}
+
+<div x-data="{ open: false }" class="{{ if eq $collapsible true }}note-collapsible{{end}} note note-{{ $type }} leading-snug">
+  {{ with $title }}
+  <header class="note-title font-bold">
+    {{ if eq $collapsible true }}
+      <button
+      type="button"
+      @click="open = !open"
+      class="flex justify-between w-full leading-5 font-bold hover:text-black focus:outline-none active:bg-gray-50 active:text-titlecolor">
+      {{ . }}
+      <div
+        class="h-6 w-6 btn-icon flex items-center justify-center mr-2">
+        <template x-if="open">
+          <svg class="h-5 w-5">
+            <use href="#icon--arrow-up"></use>
+          </svg>
+        </template>
+        <template x-if="!open">
+          <svg class="h-5 w-5">
+            <use href="#icon--arrow-down"></use>
+          </svg>
+        </template>
+      </div>
+      </button>
+    {{ else }}
+      {{ . }}
+    {{ end }}
+  </header>
+  {{ end }}
+  <div class="note-content {{ if ne $noTitle true }}mt-2 {{ end }}" :class="open ? 'open' : 'closed'">
+    {{ if eq $respectIndent true }}
+        {{ .InnerDeindent | .Page.RenderString }}
+    {{ else }}
+        {{ .Inner | .Page.RenderString }}
+    {{ end }}
   </div>
-</blockquote>
+</div>

@@ -11,9 +11,8 @@ modified: 2022-10-12
 modified_by:
   name: Linode
 published: 2009-08-04
-title: "Access Your System Console Using Lish"
-h1_title: "Access Your System Console Using Lish (Linode Shell)"
-enable_h1: true
+title: "Access Your System Console Using Lish (Linode Shell)"
+title_meta: "Access Your System Console Using Lish"
 tags: ["linode platform","cloud manager"]
 image: using-the-linode-shell-lish.jpg
 ---
@@ -24,7 +23,7 @@ The **Lish Console**, also called the *Linode Shell*, provides direct console ac
 
 There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Cloud Manager](https://cloud.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 Lish used to be accessible via a direct SSH connection to your Linode's host machine, but as of May 10, 2013, all users must connect to a Lish SSH gateway to access Lish. For more information, please see [this blog post](https://blog.linode.com/2013/04/30/lish-ssh-gateway/).
 {{< /note >}}
 
@@ -50,9 +49,9 @@ You can exit to the Lish prompt by pressing **CTRL+A** then **D**. You cannot ex
 
 You can connect to Lish with the SSH client of your choice. For example, you can use the Terminal application in Mac OS X, PuTTY in Windows, or your favorite X11 terminal emulator.
 
-{{< note >}}
-If you have [Third Party Authentication](/docs/guides/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
-{{</ note >}}
+{{< note respectIndent=false >}}
+If you have [Third Party Authentication](/docs/products/platform/accounts/guides/third-party-authentication/) enabled on your account, you will not be able to log in to your Compute Instance through Lish with password authentication, and must instead use SSH key authentication. Read the [Add Your Public Key](#add-your-public-key) section for more instructions on how to add an SSH key to your account for use with Lish.
+{{< /note >}}
 
 1.  Determine which Lish SSH gateway you wish to use. There's one in every data center. See [Lish Gateways](#lish-gateways) for a full list.
 
@@ -64,8 +63,8 @@ If you have [Third Party Authentication](/docs/guides/third-party-authentication
 
         ssh user@lish-newark.linode.com
 
-    {{< note >}}
-Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/guides/accounts-and-passwords/).
+    {{< note respectIndent=false >}}
+Users who have been granted "Access" rights on a particular Compute Instance will have access to its Lish console via the gateway. Linodes that a user can't access in the Cloud Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/).
 {{< /note >}}
 
 1.  Verify that the Lish SSH gateway's fingerprint is valid by verifying the Terminal's output against the list of our [Lish Gateway Fingerprints](#lish-gateway-fingerprints). Once verified, enter *yes* to proceed.
@@ -94,7 +93,7 @@ Once you have removed the cached IP address, you can again attempt to SSH into t
         Linodes located in other data centers:
         linode287497         Dallas, TX
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can add a public SSH key for Lish in the Cloud Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
 {{< /note >}}
 
@@ -106,7 +105,7 @@ After you log in, you'll have console access to your Compute Instance. You'll be
 
 ## Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/guides/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/) guide for more information.
+If you don't want to enter your password every time you connect to Lish, or if you have [Third Party Authentication](/docs/products/platform/accounts/guides/third-party-authentication/) enabled on your account, you can add your public SSH key to the Linode Cloud Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/) guide for more information.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com).
 
@@ -153,9 +152,9 @@ There are two ways to run these commands for a specific Compute Instance. If you
 
 You can also bring up the Compute Instance's console, then type **CTRL+A** then **D** to drop back to the host for that Instance. Now all of the commands above will be run for that Instance specifically. To exit back to the main Lish menu, type `exit`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can activate the ability to scroll back through the Lish console by pressing **CTRL-A + ESC**
-{{</ note >}}
+{{< /note >}}
 
 ## Advanced Lish Tricks
 
@@ -193,13 +192,13 @@ Each data center has its own gateway, which provides access to Lish, Weblish, an
 | Tokyo (Japan) | `lish-tokyo2.linode.com` <br>or `lish-shg1.linode.com` | `shg1.webconsole.linode.com` |
 | Toronto (Canada) | `lish-tor1.linode.com` | `tor1.webconsole.linode.com` |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are having issues accessing Lish, Weblish, or Glish, you may be blocked by a local firewall. Make sure your firewall allows outbound connections to the following ports and the gateway you wish to access:
 
 - **Lish ports:** 22, 443, 2200
 - **Weblish port:** 8181
 - **Glish port:** 8080
-{{</ note >}}
+{{< /note >}}
 
 ### Lish Gateway Fingerprints
 

@@ -10,7 +10,7 @@ published: 2021-11-12
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying BitNinja through the Linode Marketplace"
+title: "Deploy BitNinja through the Linode Marketplace"
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
 aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
@@ -20,7 +20,7 @@ aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-market
 
 {{< note >}}
 BitNinja requires a valid license to use the software beyond the initial 7 day [free trial](https://registration.bitninja.io/) period. To purchase a license, visit [BitNinja's website](https://bitninja.com/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -28,9 +28,9 @@ BitNinja requires a valid license to use the software beyond the initial 7 day [
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** BitNinja should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
