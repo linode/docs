@@ -6,7 +6,7 @@ description: "Learn how to deploy ONLYOFFICE Docs, an open-source office suite w
 keywords: ['onlyoffice','documents','collaboration','office suite']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 
+published: 2023-01-23
 modified: 
 modified_by:
   name: Linode

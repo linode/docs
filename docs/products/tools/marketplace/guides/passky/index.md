@@ -6,7 +6,7 @@ description: "Learn how to deploy Passky, a lightweight, open-source password ma
 keywords: ['passky','password manager','security','authentication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 
+published: 2023-01-23
 modified: 
 modified_by:
   name: Linode

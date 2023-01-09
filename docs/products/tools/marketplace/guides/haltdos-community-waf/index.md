@@ -6,7 +6,7 @@ description: "Learn how to deploy Haltdos Community WAF, a free web application 
 keywords: ['haltdos','firewall','security','web application firewall']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 
+published: 2023-01-23
 modified: 
 modified_by:
   name: Linode

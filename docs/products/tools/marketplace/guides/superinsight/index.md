@@ -6,7 +6,7 @@ description: "Deploy Superinsight DB, a relational database for unstructured dat
 keywords: ['superinsight','database','relational','unstructured','postgresql']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 
+published: 2023-01-23
 modified: 
 modified_by:
   name: Linode

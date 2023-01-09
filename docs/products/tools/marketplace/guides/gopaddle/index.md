@@ -6,7 +6,7 @@ description: "Learn how to deploy gopaddle, a simple low-code platform for Kuber
 keywords: ['gopaddle','kubernetes','container','low code']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 
+published: 2023-01-23
 modified: 
 modified_by:
   name: Linode
