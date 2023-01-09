@@ -127,6 +127,8 @@ The following section explains how to install the NGINX web server, PostgreSQL d
         Active: active (running) since Tue 2022-12-06 14:35:39 UTC; 15min ago
     ```
 
+    You may need to press the **Q** key to exit the output.
+
 7.  Allow web server access through the firewall and enable the firewall. Add permission for the `Nginx Full` profile to ensure both HTTP and HTTPS are allowed. Run the `ufw status` to ensure `ufw` is configured properly.
 
     ```command
@@ -292,15 +294,22 @@ PeerTube uses two `.yaml` files to control its internal configuration. To config
     sudo -u peertube cp peertube-latest/config/production.yaml.example config/production.yaml
     ```
 
-4.  Edit the `production.yaml` file.
+4.  Create a secrets key and save it for the next step.
+
+    ```command
+    openssl rand -hex 32
+    ```
+
+5.  Edit the `production.yaml` file.
 
     ```command
     sudo -u peertube nano config/production.yaml
     ```
 
-5.  `production.yaml` is a large file with many settings. Many of these can either be changed at a later time or adjusted using the web interface. For now, change the following values.
+6.  `production.yaml` is a large file with many settings. Many of these can either be changed at a later time or adjusted using the web interface. For now, change the following values.
 
     -   Under the `webserver` section, change `hostname` to the domain name. This is the URL for the PeerTube instance. In the following example, change `example.com` to the actual domain name.
+    -   Under the `secrets` section, add the secret key you created in the previous step to the `peertube` entry.
     -   In the `database` section, change the `password` to the password for the `peertube` database user.
     -   In the `admin` section, change the `email` attribute to the administrative email account.
 
@@ -316,6 +325,10 @@ To enable PeerTube to send emails, fill in the mail server details under the `sm
       https: true
       hostname: 'example.com'
       port: 443
+    ...
+    secrets:
+      # Generate one using `openssl rand -hex 32`
+      peertube: 'your_secret_key'
     ...
     database:
       hostname: 'localhost'
@@ -469,6 +482,8 @@ If the service is not running, review the service logs using the command `sudo j
         Active: active (running) since Thu 2022-12-08 10:14:28 UTC; 17s ago
     ```
 
+    You may need to press the **Q** key to exit the output.
+
 8.  The default administrative account for PeerTube is named `root`. Although the password can be found in the logs defined in the `production.yaml` file, it is easier to reset the password. Switch to the `peertube-latest` directory and use the following command to set a unique secure password for the PeerTube `root` account. Supply the new password when prompted to do so.
 
     ```command
@@ -499,4 +514,4 @@ Although the various PeerTube configuration files can be edited to change the si
 
 ## Conclusion
 
-PeerTube is a federated application that allows users to watch or post videos on a distributed network of servers. It includes a wide range of features for both creators and audiences. To install PeerTube, first download and configure the NGINX web server, PostgreSQL database, and other supporting packages. Download PeerTube using `wget` and install it using `yarn`. To complete the PeerTube installation, configure a NGINX virtual host, two PeerTube `.yaml` files, and the TCP settings. For more information about PeerTube, visit the [PeerTube website](https://joinpeertube.org/).
+PeerTube is a federated application that allows users to watch or post videos on a distributed network of servers. It includes a wide range of features for both creators and audiences. To install PeerTube, first download and configure the NGINX web server, PostgreSQL database, and other supporting packages. Download PeerTube using `wget` and install it using `yarn`. To complete the PeerTube installation, configure an NGINX virtual host, two PeerTube `.yaml` files, and the TCP settings. For more information about PeerTube, visit the [PeerTube website](https://joinpeertube.org/).
