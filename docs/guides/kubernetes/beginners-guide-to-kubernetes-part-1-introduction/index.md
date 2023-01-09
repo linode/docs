@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Kubernetes Explained: A Beginners Guide"
-h1_title: "A Beginner's Guide to Kubernetes (Part 1): Introduction"
-enable_h1: true
+title: "A Beginner's Guide to Kubernetes (Part 1): Introduction"
+title_meta: "Kubernetes Explained: A Beginners Guide"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
@@ -24,7 +23,7 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 
 {{< youtube 87FJQPorviM >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is the first guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 

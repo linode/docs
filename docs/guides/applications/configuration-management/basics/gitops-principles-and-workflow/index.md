@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
 modified_by:
   name: Linode
-title: "An Overview of GitOps Principles and Workflow"
-h1_title: "GitOps: An Overview of Its Principles and Workflow"
-enable_h1: true
+title: "GitOps: An Overview of Its Principles and Workflow"
+title_meta: "An Overview of GitOps Principles and Workflow"
 contributor:
   name: Jack Wallen
 ---

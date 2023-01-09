@@ -11,8 +11,7 @@ image: HowtoCheckandCleanaLinuxSystemsDiskSpace.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Check and Clean a Linux System's Disk Space"
-h1_title: "How to Check and Clean a Linux System's Disk Space"
-enable_h1: true
+title_meta: "How to Check and Clean a Linux System's Disk Space"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -173,7 +172,7 @@ If you still need space, you may want to look at your installed packages and sta
 
             sudo dnf remove nginx
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before removing packages, ensure that they are not required by the system. Usually, you can safely remove packages that you installed, but be cautious of removing packages that you do not recognize.
     {{< /note >}}
 

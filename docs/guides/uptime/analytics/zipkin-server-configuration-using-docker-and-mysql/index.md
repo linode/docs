@@ -4,7 +4,6 @@ author:
   name: Luis Cortés
   email: docs@linode.com
 description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems.'
-og_description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems.'
 keywords: ["zipkin", "Docker", "tracking"]
 tags: ["docker","statistics","fedora","analytics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -75,7 +74,7 @@ Our main task is setting up a Zipkin server with MySQL, so that the spans/traces
 
     You can test the installation with `docker-compose --version`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The current stable version of Docker Compose is 1.16.1. Check for the latest version at the [releases page](https://github.com/docker/compose/releases) and update the version in the `curl` command accordingly.
 {{< /note >}}
 

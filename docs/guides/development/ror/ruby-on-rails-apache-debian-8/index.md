@@ -33,7 +33,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
 ![Ruby on Rails with Apache on Debian 8](ruby_on_rails_with_apache_debian_8.png "Ruby on Rails with Apache on Debian 8")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -64,7 +64,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo gem install rails
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you require a specific version of Ruby On Rails, issue one of the following commands for the version you need:
 
 gem install rails --version 2.1.2
@@ -87,7 +87,7 @@ gem install rails --version 3.0.4
         ls /var/lib/gems
         PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/VERSION/bin"
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The step above will only add this PATH to your current session. To retain the change persistently, add the PATH to your local \~/.bashrc file:
 
 echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/VERSION/bin" >> ~/.bashrc

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2020-02-18
-title: How to Install Drupal with Docker Compose on Debian 10
-h1_title: Installing Drupal with Docker Compose on Debian 10
-enable_h1: true
+title: Installing Drupal with Docker Compose on Debian 10
+title_meta: How to Install Drupal with Docker Compose on Debian 10
 image: Drupal_DockerComp_Debian10.png
 relations:
     platform:

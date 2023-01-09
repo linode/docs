@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Linode
-title: "Golang’s GOPATH and Workspaces"
-h1_title: "The GOPATH in Golang"
-enable_h1: true
+title: "The GOPATH in Golang"
+title_meta: "Golang’s GOPATH and Workspaces"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
@@ -71,11 +70,11 @@ You should add the `$GOPATH/bin` directory to your system `PATH`. This makes it 
 
     export PATH=$PATH:$(go env GOPATH)/bin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The examples below assume you are using the default location for your `GOPATH` (`/home/username/go`). If the `go` directory does not yet exist in your home folder, create it now.
 
     mkdir ~/go
-{{</ note >}}
+{{< /note >}}
 
 To start writing your first Go program, first create the `bin`, and `src` directories in your Go Workspace.
 

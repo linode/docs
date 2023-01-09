@@ -16,9 +16,8 @@ published: 2017-09-18
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: "Visualizing Apache Logs With Elastic Stack on Debian 8"
-h1_title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
-enable_h1: true
+title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
+title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 8"
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
 aliases: ['/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/']
@@ -237,7 +236,7 @@ server.host: "localhost"
 
     This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of `logstash-*` matches the default indices created by Logstash. Clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
 {{< /note >}}
 

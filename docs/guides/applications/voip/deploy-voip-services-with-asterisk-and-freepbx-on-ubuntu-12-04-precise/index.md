@@ -33,7 +33,7 @@ For this guide we will install Asterisk from source rather than from Ubuntu's re
 
 **Please note:** Because of the special configuration options required for this setup, you should not run other services on the Linode you intend to use Asterisk on. It is also worth noting that this guide will walk you through using PV-GRUB. Any alterations to the steps in this guide will fall outside the scope of support.
 
- {{< note >}}
+{{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -285,7 +285,7 @@ export APACHE_RUN_USER=asterisk
         su - asterisk
         cd /opt/freepbx/
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/downloads/freepbx-distro/) for the latest build of FreePBX.
 {{< /note >}}
 
@@ -346,7 +346,7 @@ From your web browser, go to your FreePBX web interface.
 3.  Select the **Upgrade All** link. Under the Connectivity section, select **Google Voice/Chan Motif**. If there are other modules on this list you want to install, select them now.
 4.  When finished, press the **Process** button, and then **Confirm**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If downloading modules fails, from the terminal run this command from the terminal: `su asterisk -c 'mkdir /var/www/html/admin/modules/_cache'`. This should resolve the issue.
 {{< /note >}}
 

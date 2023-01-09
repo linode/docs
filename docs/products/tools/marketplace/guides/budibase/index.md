@@ -16,7 +16,7 @@ title: "Deploy Budibase through the Linode Marketplace"
 
 {{< note >}}
 When self-hosting the Budibase application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -24,9 +24,9 @@ When self-hosting the Budibase application, you are responsible for the security
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Budibase should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified_by:
   name: Linode
-title: "How to Set Up MongoDB on Docker"
-h1_title: "Set Up MongoDB on Docker"
-enable_h1: true
+title: "Set Up MongoDB on Docker"
+title_meta: "How to Set Up MongoDB on Docker"
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
 ---
@@ -85,7 +84,7 @@ Status: Downloaded newer image for mongo:latest
 docker.io/library/mongo:latest
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command pulls the latest version by default (as it says in the first line of the output). To pull a specific version, add the tag for that version to the command. For example, to install MongoDB 4.4.6, enter `docker pull mongo:4.4.6`.
 {{< /note >}}
 

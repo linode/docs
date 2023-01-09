@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
-og_description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
 keywords: ["Jupyter", " ruby", " Jekyll"]
 tags: ["ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -112,7 +111,7 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
     ![First Jekyll Post](jekyll_first_post.png "First Jekyll Post")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After starting the Jekyll server, there will be a new `_site` folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.
 {{< /note >}}
 
@@ -314,7 +313,7 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
                         │   └── _syntax-highlighting.scss
                             └── minima.scss
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The default theme is installed as a gem. If there is another `_layouts` or `_includes` folder in the project root, those HTML files will override the theme.
 {{< /note >}}
 

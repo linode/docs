@@ -10,7 +10,7 @@ aliases: ['/mailserver/','/email/running-a-mail-server/','/email/best-practices/
 modified_by:
   name: Linode
 published: 2013-06-05
-modified: 2022-08-25
+modified: 2022-12-23
 title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
@@ -24,13 +24,13 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 ### Sending Email on Linode
 
-In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587 on all Linodes for new accounts created after November 5th, 2019.
+In an effort to fight spam, Linode may restrict outbound connections on ports 25, 465, and 587 on Linodes for new accounts created after November 5th, 2019.
 
-If you have a need to send mail from your Linode, we ask that you first configure (1) [valid DNS A records](/docs/products/networking/dns-manager/guides/manage-dns-records/) and (2) [rDNS records](/docs/guides/configure-rdns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
+To have these restrictions removed, we ask that you first configure (1) [valid DNS A records](/docs/products/networking/dns-manager/guides/manage-dns-records/) and (2) [rDNS records](/docs/guides/configure-rdns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
 {{< /note >}}
 

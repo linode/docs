@@ -26,21 +26,21 @@ Linode's Terraform provider supports [StackScripts](/docs/products/tools/stacksc
 
 In this guide you will learn how to use a Community StackScript to deploy WordPress on a Linode using Terraform.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Following this guide will result in the creation of billable Linode resources on your account. To prevent continued billing for these resources, remove them when you have completed the guide.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 1.  Install Terraform on your computer by following the *Install Terraform* section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Terraform requires an API access token. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to obtain one.
 
-1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) to your domain at your domain name's registrar.
+1.  If you have not already, [assign Linode's name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) to your domain at your domain name's registrar.
 
 1.  Browse the existing [StackScripts Library](https://www.linode.com/stackscripts/) to familiarize yourself with common tasks you can complete with existing StackScripts.
 
@@ -182,7 +182,7 @@ resource "linode_sshkey" "my_wordpress_linode_ssh_key" {
 
     `ssh_key = chomp(file("~/.ssh/id_rsa.pub"))` uses Terraform's built-in `file()` function to provide a local file path to the public SSH key's location. The `chomp()` built-in function removes trailing new lines from the SSH key.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not already have SSH keys, follow the steps in the *Create an Authentication Key-pair* section of the [Securing Your Server Guide](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair).
 {{< /note >}}
 
@@ -254,7 +254,7 @@ resource "linode_domain_record" "my_wordpress_domain_apex_record" {
 }
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not familiar with the Domain Name System (DNS), review the [DNS Records: An Introduction](/docs/guides/dns-overview/) guide.
 {{< /note >}}
 
@@ -328,7 +328,7 @@ Terraform allows you to assign variables in many ways. For example, you can assi
 
 {{< note >}}
 There are several other options available for secrets management with Terraform. For more information on this, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
-{{</ note >}}
+{{< /note >}}
 
 Terraform will automatically load any file named `terraform.tfvars` and use its contents to populate variables. However, you should separate out any sensitive values, like passwords and tokens, into their own file. Keep this sensitive file out of version control.
 
@@ -355,11 +355,11 @@ stackscript_data = {
   "dbuser_password" = "a-third-secure-password"
 }
 {{</ file >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In Terraform 0.12, variables with map and object values will use the last value found and override previous values. This is different from previous versions of Terraform, which would merge map values instead of overriding them. For this reason the `stackscript_data` map and its values are defined in a single variable definitions file.
-    {{</ note >}}
+    {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is helpful to reference Terraform's [Linode provider](https://www.terraform.io/docs/providers/linode/) documentation and the [Linode APIv4 documentation](/docs/api/) for assistance in determining appropriate values for Linode resources.
 {{< /note >}}
 

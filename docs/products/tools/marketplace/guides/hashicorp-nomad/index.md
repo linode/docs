@@ -20,9 +20,9 @@ title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Nomad should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,11 +41,11 @@ title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 
     ![Screenshot of the Nomad Web UI](nomad-webUI.jpg)
 
-    {{<note>}}
-HashiCorp recommends using mutual TLS (mTLS) with a private CA to secure cluster communications and the web UI. Please see the following HashiCorp documentation for more details.
-https://learn.hashicorp.com/tutorials/nomad/security-enable-tls
-https://www.nomadproject.io/docs/configuration/tls#http
-{{</note>}}
+    {{< note >}}
+    HashiCorp recommends using mutual TLS (mTLS) with a private CA to secure cluster communications and the web UI. Please see the following HashiCorp documentation for more details.
+    https://learn.hashicorp.com/tutorials/nomad/security-enable-tls
+    https://www.nomadproject.io/docs/configuration/tls#http
+    {{< /note >}}
 
 1. Additional configurations are required to use the Linode Marketplace Nomad Server in a production environment. We recommend reviewing the [Configuration](https://www.nomadproject.io/docs/configuration) and [Job Spec](https://www.nomadproject.io/docs/job-specification) documentation before proceeding.
 

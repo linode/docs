@@ -30,7 +30,7 @@ Setting up a LAMP (Linux, Apache, MySql, PHP) stack will allow for the creation 
 
 ![LAMP Server on Ubuntu 12.04](lamp_server_on_ubuntu_12_04.png "LAMP Server on Ubuntu 12.04")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -86,7 +86,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -99,7 +99,7 @@ The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained loggi
 
         sudo a2ensite example.com.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you need to disable your website later, run:
 
 sudo a2dissite example.com.conf
@@ -166,7 +166,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure the lines above are uncommented. Commented lines begin with a semicolon (**;**).
 {{< /note >}}
 

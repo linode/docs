@@ -51,9 +51,9 @@ The `purpose` of a network interface is required and used to determine whether a
 
 - `vlan`: Configures a network interface for the labeled VLAN and enables the Linode to communicate over the `ipam_address` if one is specified.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The Public Internet must always be set to use the network interface `eth0`.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configuring the Label of an Interface
 
@@ -225,8 +225,8 @@ The Linode's ID is required to utilize these methods. Use the Linodes List ([GET
           https://api.linode.com/v4/linode/instances/123/configs/23456
 
     {{< note >}}
-When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
-{{< /note >}}
+    When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
+    {{< /note >}}
 
 1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
 

@@ -4,14 +4,13 @@ author:
   name: Nathaniel Stickman
   email: docs@linode.com
 description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
-og_description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
 keywords: ['install supabase','supabase firebase','supabase self host']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-01
 modified_by:
   name: Nathaniel Stickman
-title: "How to Self-host Supabase with Docker"
-h1_title: "How to Self-host Supabase with Docker"
+title: "Self-host Supabase with Docker"
+title_meta: "How to Self-host Supabase with Docker"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -42,7 +41,7 @@ This tutorial, the first in our series on Supabase, introduces you to the basics
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -90,7 +89,7 @@ Supabase operates its Docker Compose setup out of its Git repository. Thus, you 
 
         git clone --depth 1 https://github.com/supabase/supabase
 
-    {{< note >}}You may first need to install Git. Typically, you can do so through your system's package manager.
+    {{< note respectIndent=false >}}You may first need to install Git. Typically, you can do so through your system's package manager.
 
 **Debian and Ubuntu:**
 
@@ -150,7 +149,7 @@ Once you have made the updates, restart your instance:
 
 After making the above preparations, you can access the Supabase interface remotely by navigating to port `3000` on your server's remote IP address. For instance, if your server's remote IP address is `192.0.2.0`, navigate in a web browser to `http://192.0.2.0:3000`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/guides/set-up-and-secure/#configure-a-firewall).
 {{< /note >}}
 
@@ -287,7 +286,7 @@ server {
 
 Afterward, you should be able to access the Supabase dashboard without having to specify port `3000`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Should you encounter a "bad gateway" error, your system may be denying NGINX due to SELinux rules. You can verify this by checking the NGINX logs at `/var/log/nginx/error.log` and looking for "Permission denied".
 
 [According to Stack Overflow](https://stackoverflow.com/a/24830777), the issue can typically be resolved with the following command. This allows NGINX to make network connection on your system:
@@ -349,7 +348,7 @@ server {
 
 Now, you can access your Supabase instance in a web browser via the HTTPS version of your domain. And you can be assured that your Supabase instance is secured using SSL certification.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can optionally also add your server's remote IP address to the NGINX configuration above and use that as well. However, you may receive a certificate warning in your browser. This is because the certificate was issued for your server's domain name, not its IP address.
 {{< /note >}}
 

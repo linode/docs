@@ -38,7 +38,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -165,7 +165,7 @@ listen = /var/run/php5-fpm-site1.com.sock
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the file excerpt above, three sequential dots - `...`  - denote that there is more in this file than is being shown. The three sequential dots are not a literal section to be copied.
 {{< /note >}}
 

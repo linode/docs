@@ -4,16 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide walks you through the key concepts of the Jamstack, a type of system architecture that makes your web applications faster, more secure, and easier to maintain."
-og_description: "This guide walks you through the key concepts of the Jamstack, a type of system architecture that makes your web applications faster, more secure, and easier to maintain."
 keywords: ['jamstack','application architecture','web applications','static site generators','hugo','gatsby','jekyll','microservices']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
   name: Nathaniel Stickman
-title: "An Introduction to the Jamstack"
-h1_title: "Getting Started with the Jamstack"
-enable_h1: true
+title: "Getting Started with the Jamstack"
+title_meta: "An Introduction to the Jamstack"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

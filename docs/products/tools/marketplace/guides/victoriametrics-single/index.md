@@ -32,9 +32,9 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** VictoriaMetrics should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

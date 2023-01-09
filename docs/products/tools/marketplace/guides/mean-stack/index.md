@@ -39,9 +39,9 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** The MEAN stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

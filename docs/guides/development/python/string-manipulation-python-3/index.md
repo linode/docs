@@ -4,7 +4,6 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
-og_description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
 keywords: ["python", "string", "f string", "format string", "python 3"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-13

@@ -11,9 +11,8 @@ published: 2022-04-05
 modified: 2022-04-05
 modified_by:
   name: Linode
-title: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
-h1_title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
-enable_h1: true
+title: "Using e2fsck to Find and Repair Disk Errors On ext File Systems"
+title_meta: "How to Use e2fsck to Check and Repair Disk Errors On ext File Systems"
 external_resources:
 - '[e2fsck on man7.org](https://man7.org/linux/man-pages/man8/e2fsck.8.html)'
 tags: ["linux"]
@@ -27,18 +26,18 @@ aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
 
 On some systems, e2fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+{{< /note >}}
 
 ## When to Use e2fsck
 
 You can use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 Unmount the disks you intend to work on before attempting to check or repair them.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Unmount the target disk first. You risk corrupting your file system and losing data if you run fsck on an active disk.
-{{< /caution >}}
+{{< /note >}}
 
 ## e2fsck Options and Arguments
 

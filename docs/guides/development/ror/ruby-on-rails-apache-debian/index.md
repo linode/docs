@@ -91,7 +91,7 @@ Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy 
 
         sudo passenger-config about ruby-command
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that Passenger reports the version of Ruby that you installed with RVM. Normally RVM uses paths similar to `~/.rvm/wrappers/ruby-X.X.X/ruby`.
 {{< /note >}}
 

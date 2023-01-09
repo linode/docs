@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-12
 modified_by:
   name: Linode
-title: "SQL Server Security Best Practices, Part 2"
-h1_title: "Part 2: SQL Server Security Best Practices"
-enable_h1: true
+title: "Part 2: SQL Server Security Best Practices"
+title_meta: "SQL Server Security Best Practices, Part 2"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
@@ -44,7 +43,7 @@ Protection of data stored with SQL Server depends upon the ability to authentica
 
 You are prompted to select one of these SQL Server authentication modes during SQL Server setup.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can change the SQL Server authentication mode even after the initial installation decision has been made.
 {{< /note >}}
 
@@ -72,7 +71,7 @@ If you are using [SQL Server (mixed-mode) authentication](#sql-server-and-window
 1. For the SA (or renamed) account, select a complex password, consisting of lower/upper case letters, numbers, and punctuation symbols.
 1. Do not allow applications to use the SA (or equivalently renamed) account in any of the application connection strings.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Any other user-based (lower-privileged) SQL Server accounts should also use complex, unique passwords.
 {{< /note >}}
 

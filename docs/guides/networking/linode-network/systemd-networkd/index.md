@@ -16,13 +16,13 @@ tags: ["networking","linode platform"]
 
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ubuntu also has utility called Netplan that serves as a frontend for configuring either systemd-networkd or NetworkManager. By default, NetworkHelper manages networking in Ubuntu using systemd-networkd though you can decide which one works best for your needs.
-{{</ note >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuration Files
 
@@ -112,9 +112,9 @@ DHCP=yes
 # Address=192.0.2.123/24
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When using DHCP, the IPv4 address configured on your system may change if you add or remove IPv4 addresses on your Compute Instance. If this happens, any tool or system using the original IPv4 address will no longer be able to connect.
-{{</ caution>}}
+{{< /note >}}
 
 ## Configuring the Primary IPv6 Address through SLAAC
 
@@ -128,11 +128,11 @@ IPv6PrivacyExtensions=false
 IPv6AcceptRA=true
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `IPv6AcceptRA` parameter isn't strictly required as long as running the `net.ipv6.conf.eth0.autoconf` kernel variable is set to `1` (not a `0`). You can determine the setting by running the following command.
 
     sysctl net.ipv6.conf.eth0.autoconf
-{{</ note >}}
+{{< /note >}}
 
 If you wish to disable IPv6 SLAAC addressing and instead statically configure your IPv6 address (not recommended), you can explicitly set the `IPv6AcceptRA` parameter to `false` and then add your primary IPv6 address (using the prefix of `/128`).
 

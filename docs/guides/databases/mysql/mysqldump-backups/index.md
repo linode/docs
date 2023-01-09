@@ -23,7 +23,7 @@ image: mysqldump-backup-title.jpg
 
 {{< note >}}
 Since the mysqldump utility needs to connect to the database, the database management software must be running and accessible. If the database is not accessible for any reason, you can instead create a [*physical backup*](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the file system directory containing your MySQL database.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -57,13 +57,13 @@ The following list represents mysqldump commands for various scenarios. Within t
 
         mysqldump [options] --all-databases > backup.sql
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not use the `--all-databases` option if you intend on restoring this database to a Linode MySQL Managed Database. It may delete existing users and restrict access to your database.
-{{</ caution >}}
+{{< /note >}}
 
 {{< note >}}
 Depending on the size of the database, it could take a while to complete. For large tables, you may want to use the `--quick` option to receive rows one at a time instead of all at once.
-{{</ note >}}
+{{< /note >}}
 
 ## Common Command Options
 
@@ -71,7 +71,7 @@ The following list is a collection of common options used with the mysqldump com
 
 {{< note >}}
 When backing up a Linode MySQL [Managed Database](/docs/products/databases/managed-databases/) with mysqldump, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
-{{</ note >}}
+{{< /note >}}
 
 - **Username** (`--user=[]` or `-u []`): The username of your MySQL user. This user must have proper grants to access the database.
 

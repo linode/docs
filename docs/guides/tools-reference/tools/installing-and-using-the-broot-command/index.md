@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
-og_description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
 keywords: ['linux broot','linux directory tree','unix broot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using the broot Command"
-h1_title: "How to Install and Use the broot Command"
-enable_h1: true
+title: "Install and Use the broot Command"
+title_meta: "How to Install and Use the broot Command"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -26,7 +24,7 @@ The `broot` command provides a modern approach to generating directory trees on 
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -146,7 +144,7 @@ The file management capabilities of `broot` set it apart from other Linux utilit
 
 - Press **Enter** on a file to have `broot` attempt to call a program to open the file. You can also use the `:e` command to have `broot` attempt to open the file with the default editor program.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `broot` uses the `$EDITOR` environmental variable to determine what editor to use. If you do not have this variable set, you can set it with a shell command like the one below. The below example command sets the default editor to Vim.
 
     export EDITOR=$(which vim)

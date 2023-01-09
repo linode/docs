@@ -4,16 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
-og_description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-16
 modified_by:
   name: Linode
-title: "How to Install and Use Docker on CentOS and Fedora"
-h1_title: "Installing and Using Docker on CentOS and Fedora"
-enable_h1: true
+title: "Installing and Using Docker on CentOS and Fedora"
+title_meta: "How to Install and Use Docker on CentOS and Fedora"
 external_resources:
 - '[Website for Docker](https://www.docker.com/)'
 - '[Documentation for Docker](https://docs.docker.com/)'
@@ -33,7 +31,7 @@ This guide covers installing the Docker Engine on various Linux distributions us
 
 1.  Ensure you have command line access to a Linux server running a supported Linux distribution. If not, follow the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides to create a new Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -121,9 +119,9 @@ Before continuing, make sure you have a limited user account that *does not* bel
 
     The output should have a similar success message as the previous output.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The *docker* group grants similar privileges to those of the root user. Review the [Docker Daemon Attack Surface](https://docs.docker.com/engine/security/#docker-daemon-attack-surface) guide within Docker's documentation for more information about how that can affect system security. To run the Docker daemon without using root privileges, follow the instructions within [Run the Docker daemon as a non-root user (Rootless mode)](https://docs.docker.com/engine/security/rootless/).
-{{< /caution >}}
+{{< /note >}}
 
 ### Resolving Errors with Loading Config Files
 

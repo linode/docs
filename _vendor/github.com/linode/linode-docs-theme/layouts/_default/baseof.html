@@ -3,6 +3,7 @@
   {{ $showToc = .Params.toc }}
   {{ if not $showToc }}
     {{ $showToc = strings.Contains .Content "<h2" }}
+    {{ $showToc = or $showToc (eq .Section "api") }}
   {{ end }}
 {{ end }}
 <!DOCTYPE html>

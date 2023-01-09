@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-09
 modified_by:
   name: Linode
-h1_title: "CRUD Write Operations: How to Use FastAPI to Write an API"
-title: "CRUD Write Operations: Using FastAPI to Write an API"
-enable_h1: true
+title: "CRUD Write Operations: How to Use FastAPI to Write an API"
+title_meta: "CRUD Write Operations: Using FastAPI to Write an API"
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
@@ -37,9 +36,9 @@ FastAPI requires the following items to be installed on your system:
 - Python 3.6+  and [pip](https://pypi.org/project/pip/)
 - [Gunicorn](/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not followed the steps in the [CRUD Read Operations: Use FastAPI to Write an API](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/) guide, ensure that you have created a `main.py` file with [the code](/docs/guides/crud-read-operations-use-fastapi-to-write-an-api/main.py) included in the previous guide's examples.
-{{</ note >}}
+{{< /note >}}
 
 ### Install FastAPI and Hypercorn
 
@@ -126,9 +125,9 @@ async def update_programming_language(programming_language_id: int, updated_prog
    return updated_programming_language
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The update endpoint replaces the *entire object*. When a client sends a request to this endpoint, it needs to send the *entire updated object*. Your code can also be written to accept partial updates; that is, to only update the resource at the given id with the fields sent in the request body. With a partial updates implementation, the associated endpoint accepts the `PATCH` HTTP verb instead of `PUT`.
-{{</ note >}}
+{{< /note >}}
 
 ### Write the Delete Programming Languages Endpoint
 

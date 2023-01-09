@@ -10,9 +10,8 @@ published: 2021-08-27
 modified: 2022-08-12
 modified_by:
   name: Linode
-title: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
-h1_title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
-enable_h1: true
+title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
+title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/']
 ---

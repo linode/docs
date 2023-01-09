@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
-og_description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
 keywords: ['install appwrite','appwrite docs','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-03
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Appwrite as a Backend Server"
-h1_title: "Getting Started with Appwrite as a Backend Server"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -40,7 +38,7 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -102,7 +100,7 @@ The first step is to install Docker, which is used to both install and run your 
 Docker version 20.10.17, build 100c701
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On RHEL-derived distributions, you may additionally have to run the following command to ensure the Docker daemon starts:
 
 ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}

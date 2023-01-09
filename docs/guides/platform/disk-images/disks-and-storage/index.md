@@ -11,9 +11,8 @@ modified: 2021-10-15
 modified_by:
   name: Linode
 published: 2021-04-30
-title: "How to Manage Disks and Storage on a Linode"
-h1_title: "Managing Disks and Storage on a Linode"
-enable_h1: true
+title: "Managing Disks and Storage on a Linode"
+title_meta: "How to Manage Disks and Storage on a Linode"
 aliases: ['/guides/linode-disks/']
 ---
 
@@ -56,9 +55,9 @@ From here, a [disk can be created](#creating-a-disk) using the **Add a Disk** bu
 
 Each Linode can have multiple disks. To create a new disk, follow the instructions below.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk on an Existing Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide for complete instructions on creating the main disk, an optional swap disk, and a configuration profile.
-{{</ note >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 
@@ -90,9 +89,9 @@ A disk can be duplicated onto the same Linode or any other Linode on the account
 
 A disk can be deleted to remove it form the Linode and free up additional storage space that can be used for other disks.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Deleting a disk is permanent and cannot be undone. Make sure all required data is properly backed up before continuing.
-{{</ caution >}}
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com/), click the **[Linodes](https://cloud.linode.com/linodes)** link in the sidebar, and select a Linode from the list.
 

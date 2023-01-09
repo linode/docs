@@ -23,7 +23,7 @@ To install s3cmd on a Mac, [Homebrew](https://brew.sh/) can be used:
 On macOS, s3cmd might fail to install if you do not have XCode command line tools installed. If that is the case, run the following command:
 
     xcode-select --install
-{{</ note >}}
+{{< /note >}}
 
 ### Linux
 
@@ -170,7 +170,7 @@ To ensure that it has been applied correctly, you can use the `info` command:
 
 You should see output like the following:
 
-{{< output >}}
+```output
 s3://example-bucket/ (bucket):
    Location:  default
    Payer:     BucketOwner
@@ -178,7 +178,7 @@ s3://example-bucket/ (bucket):
    Policy:    b'{\n  "Version": "2012-10-17",\n  "Statement": [{\n    "Effect": "Allow",\n    "Principal": {"AWS": ["arn:aws:iam:::user/a0000000-000a-0000-0000-00d0ff0f0000"]},\n    "Action": ["s3:PutObject","s3:GetObject","s3:ListBucket"],\n    "Resource": [\n      "arn:aws:s3:::bucket-policy-example/*"\n    ]\n  }]\n}'
    CORS:      none
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
-{{</ output >}}
+```
 
 ## Create a Signed URL with S3cmd
 
@@ -219,7 +219,7 @@ While you can utilize the `put` command to upload entire directories, the `sync`
 
 {{< note >}}
 To upload the current directory, replace *[local-path]* with `./`.
-{{</ note >}}
+{{< /note >}}
 
 **Example:** Upload the current directory to the bucket labeled *example-bucket* and make all files public.
 

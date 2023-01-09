@@ -349,7 +349,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file and exit your text editor.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. Your script should now look like the code in [this file](forward-last-email-to-text-message.py).
 {{< /note >}}
 
@@ -650,7 +650,7 @@ This new code adds the `SUBJECT` IMAP search command to the search criterion. No
 
 1.  After inserting the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your script should now look like the code in [this file](autoforward-email-with-matching-subject-to-text-message.py).
 {{< /note >}}
 

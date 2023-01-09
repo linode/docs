@@ -4,9 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In part 13 of our series on Kubernetes, you will learn how to deploy a pipeline using a self-hosted Gitlab instance from within your own Kubernetes cluster."
-title: "Continuous Deployment Using LKE: CI/CD with GitLab"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 13): CI/CD with GitLab"
-enable_h1: true
+title: "Building a Continuous Deployment Pipeline Using LKE (Part 13): CI/CD with GitLab"
+title_meta: "Continuous Deployment Using LKE: CI/CD with GitLab"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06

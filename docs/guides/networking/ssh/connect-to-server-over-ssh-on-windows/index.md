@@ -12,9 +12,8 @@ modified: 2022-01-28
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on Windows"
-h1_title: "Connecting to a Remote Server Over SSH on Windows"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH on Windows"
+title_meta: "How to Connect to a Remote Server Over SSH on Windows"
 aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
 relations:
     platform:
@@ -92,7 +91,7 @@ Once you've opened your preferred Windows SSH client (Command Prompt, PowerShell
 
      The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
 
     ssh [username]@[ip-address] -p [port-number]

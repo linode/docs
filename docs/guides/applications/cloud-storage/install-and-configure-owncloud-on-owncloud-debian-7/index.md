@@ -11,9 +11,8 @@ modified: 2017-06-21
 modified_by:
     name: Alex Fornuto
 published: 2014-06-10
-title: "How to Install and Configure ownCloud on Debian 7"
-h1_title: "Installing and Configuring ownCloud on Debian 7"
-enable_h1: true
+title: "Installing and Configuring ownCloud on Debian 7"
+title_meta: "How to Install and Configure ownCloud on Debian 7"
 relations:
     platform:
         key: how-to-install-owncloud

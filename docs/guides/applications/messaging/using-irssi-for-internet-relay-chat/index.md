@@ -93,7 +93,7 @@ To disconnect from a channel, run:
 
     /disconnect irc.oftc.net
 
- {{< note >}}
+{{< note >}}
 You can join additional networks by replacing **irc.oftc.net** with a different network.
 {{< /note >}}
 
@@ -151,7 +151,7 @@ To send a private message to just one person on your network, use the `/msg` com
 
     /msg friendnick Hello there!
 
- {{< note >}}
+{{< note >}}
 Please note that if you are in a channel, you can use tab to autocomplete nicks within that channel.
 {{< /note >}}
 

@@ -4,7 +4,6 @@ author:
   name: Edward Angert
   email: docs@linode.com
 description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
-og_description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-30
@@ -28,9 +27,9 @@ On some systems, fsck runs automatically after an unclean shutdown or after a ce
 
 Use fsck to check your file system if your system fails to boot, if files on a specific disk become corrupt, or if an attached drive does not act as expected.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To run this utility you will want to boot into rescue mode. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
-{{</ note >}}
+{{< /note >}}
 
 ### Verify Disks are Unmounted
 
@@ -54,9 +53,9 @@ devtmpfs         10M     0   10M   0% /dev
 
 ## How to Check for Errors on a Disk
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Never run fsck on a mounted disk. Do not continue unless you’re sure that the target disk is unmounted. You risk corrupting your file system and losing data if you run fsck on an active disk.
-{{</ caution >}}
+{{< /note >}}
 
 Run fsck on the target disk, using the desired options. This example checks all file systems (`-A`) on `/dev/sdb`:
 

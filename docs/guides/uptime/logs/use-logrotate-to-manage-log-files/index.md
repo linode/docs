@@ -11,9 +11,8 @@ modified: 2018-03-20
 modified_by:
   name: Linode
 published: 2010-10-11
-title: "How to Use logrotate to Manage Log Files"
-h1_title: "Using logrotate to Manage Log Files"
-enable_h1: true
+title: "Using logrotate to Manage Log Files"
+title_meta: "How to Use logrotate to Manage Log Files"
 ---
 
 ## What is logrotate?

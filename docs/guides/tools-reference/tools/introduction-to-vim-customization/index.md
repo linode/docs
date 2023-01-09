@@ -56,7 +56,7 @@ The configurations in this section apply system-wide across all user accounts.
 
 1.  A default Vim installation features a file containing Vim's core global settings called *vimrc*. This file is located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your Linux distribution.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 {{< /note >}}
 
@@ -230,13 +230,13 @@ Using a plug-in manager automates both the installation and setup of any plug-in
     call plug#end()
     ```
 
-     {{< note >}}
-Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
-{{< /note >}}
+    {{< note >}}
+    Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+    {{< /note >}}
 
-     {{< note >}}
-If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755`.
-{{< /note >}}
+    {{< note >}}
+    If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755`.
+    {{< /note >}}
 
 4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This opens the plug-in manager within Vim and proceeds to install all plug-ins listed in the **vimrc.plug* file. Installed plug-ins automatically load the next time Vim is started.
 

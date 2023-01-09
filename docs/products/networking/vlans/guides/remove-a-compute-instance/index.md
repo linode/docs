@@ -25,6 +25,6 @@ If you no longer wish to include a particular Compute Instance within a VLAN's p
 
 1. Reboot the Compute Instance to save your changes and completely detach the VLAN.
 
-   {{< note >}}
-If a VLAN is not attached to a Linode service, it will automatically be deleted.
-{{< /note >}}
+    {{< note >}}
+    If a VLAN is not attached to a Linode service, it will automatically be deleted.
+    {{< /note >}}

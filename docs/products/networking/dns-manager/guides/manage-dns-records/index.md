@@ -54,7 +54,7 @@ After a domain has been created, you're able to add DNS records. Each type of DN
 
 {{< note >}}
 New DNS records may take up to 24 hours to propagate throughout the internet, although they are usually visible within several hours.
-{{</ note >}}
+{{< /note >}}
 
 ## Delete a DNS Record
 
@@ -72,7 +72,7 @@ A [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) match
 
 {{< note >}}
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain (what is also called a *second-level* subdomain or *fourth-level* domain), you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
-{{</ note >}}
+{{< /note >}}
 
 ### Second-level Subdomains
 

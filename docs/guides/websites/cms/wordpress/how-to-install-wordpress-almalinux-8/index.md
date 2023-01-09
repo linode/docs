@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install WordPress on AlmaLinux 8"
-h1_title: "Install WordPress on AlmaLinux 8"
-enable_h1: true
+title: "Install WordPress on AlmaLinux 8"
+title_meta: "How to Install WordPress on AlmaLinux 8"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -37,7 +36,7 @@ WordPress is an open-source content management system (CMS). WordPress remains p
 
 1. Replace all instances of `example.com` in this guide with your domain name.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -72,7 +71,7 @@ To satisfy these requirements, you can set up a LAMP (Linux, Apache, MySQL, and 
 
 1. Complete the installation of a LAMP or LEMP stack by following the appropriate guide linked below. For each guide, skip the step on installing PHP/PHP-FPM, since you did that above. Additionally, replace `php` in any commands with `php74-php`. For example, change `php-fpm` and `php-mysqlnd` to `php74-php-fpm` and `php74-php-mysqlnd`, respectively.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Both of the guides linked below are for CentOS 8 rather than AlmaLinux 8. However, the steps in these guides have been tested and verified to work on AlmaLinux without requiring any changes.
     {{< /note >}}
 

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
-og_description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,8 +13,8 @@ modified_by:
   name: Linode
 published: 2020-03-25
 image: ApacheTomcat_Deb10.png
-title: 'How to Install Apache Tomcat on Debian 10'
-h1_title: 'Installing Apache Tomcat on Debian 10'
+title: 'Installing Apache Tomcat on Debian 10'
+title_meta: 'How to Install Apache Tomcat on Debian 10'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
@@ -47,7 +46,7 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
         apt-get update && apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -57,7 +56,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
         sudo apt-get install tomcat9
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 OpenJDK will be installed as a dependency when you install the `tomcat9` package. The package `openjdk-11-jre-headless` is included with the `default-jre-headless` metapackage in Ubuntu.
 {{< /note >}}
 
@@ -89,9 +88,9 @@ If you installed the `tomcat9-admin` web application above, you can configure it
 
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not using the web application and plan to manage your application(s) from the command line only, you should not enter these lines, because doing so may expose your server to unauthorized login attempts.
-{{</ note >}}
+{{< /note >}}
 
 Restart the Tomcat server, which will allow these changes to take effect:
 

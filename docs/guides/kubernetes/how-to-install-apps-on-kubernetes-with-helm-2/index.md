@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-26
 modified_by:
   name: Linode
-title: 'How to Install Apps on Kubernetes with Helm 2'
-h1_title: 'Installing Apps on Kubernetes with Helm 2'
+title: 'Installing Apps on Kubernetes with Helm 2'
+title_meta: 'How to Install Apps on Kubernetes with Helm 2'
 aliases: ['/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-2/']
 deprecated: true
 deprecated_link: 'kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/'
@@ -82,7 +82,7 @@ Helm operates with two components:
 
     This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6. It is enabled on clusters created via the `k8s-alpha` Linode CLI.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
 {{< /note >}}
 
@@ -120,7 +120,7 @@ Install the Helm client software on your computer:
 
 Tiller's default installation instructions will attempt to install it without adequate permissions on a cluster with RBAC enabled, and it will fail. Alternative instructions are available which grant Tiller the appropriate permissions:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following instructions provide Tiller to the `cluster-admin` role, which is a privileged Kubernetes API user for your cluster. This is a potential security concern. [Other access levels](https://v2.helm.sh/docs/using_helm/#role-based-access-control) for Tiller are possible, like restricting Tiller and the charts it installs [to a single namespace](https://v2.helm.sh/docs/using_helm/#example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-only-in-that-namespace). The [Bitnami Engineering blog](https://engineering.bitnami.com/articles/helm-security.html) has an article which further explores security in Helm.
 {{< /note >}}
 
@@ -162,7 +162,7 @@ clusterrolebinding "tiller" created
 
         helm init --service-account tiller --history-max 200
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `--history-max` option prevents Helm's historical record of the objects it tracks from growing too large.
 {{< /note >}}
 
@@ -192,7 +192,7 @@ This guide will use the [Ghost](https://ghost.org) publishing platform as the ex
 
         helm repo update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Run `helm repo list` to see which repositories are registered with your client.
 {{< /note >}}
 
@@ -224,7 +224,7 @@ ghostEmail: email@example.com
 
     Replace the value for ghostHost with a domain or subdomain that you own and would like to assign to the app, and the value for ghostEmail with your email.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.
 {{< /note >}}
 

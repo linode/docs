@@ -12,9 +12,8 @@ published: 2015-09-28
 modified: 2022-07-12
 modified_by:
     name: Linode
-title: "Configure a Firewall with Firewalld (Create and List Rules)"
-h1_title: "How to Configure a Firewall with Firewalld"
-enable_h1: true
+title: "Configure a Firewall with Firewalld"
+title_meta: "Configure a Firewall with Firewalld (Create and List Rules)"
 contributor:
     name: Florent Houbart
 external_resources:
@@ -32,7 +31,7 @@ Working with firewalld has two main differences compared to directly controlling
 1.  Firewalld uses *zones* and *services* instead of chain and rules.
 2.  It manages rulesets dynamically, allowing updates without breaking existing sessions and connections.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While firewalld is a frontend for nftables/iptables and allows easier management of firewall rules, it is not a direct replacement for these utilities. Using nftables directly may provide you with more control. When using firewalld, its recommended to use `firewall-cmd` commands (instead of nftables or iptables commands) to interface directly with firewalld.
 {{< /note >}}
 
@@ -115,7 +114,7 @@ By default, `firewall-cmd` commands apply to runtime configuration but using the
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --reload
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
 {{< /note >}}
 

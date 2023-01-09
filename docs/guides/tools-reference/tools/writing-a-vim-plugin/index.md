@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "Writing a Vim Plugin"
-h1_title: "How to Write a Vim Plugin"
-enable_h1: true
+title: "Write a Vim Plugin"
+title_meta: "How to Write a Vim Plugin"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -41,7 +40,7 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

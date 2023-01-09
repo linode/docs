@@ -15,9 +15,8 @@ modified: 2017-06-21
 modified_by:
   name: Phil Zona
 published: 2016-02-29
-title: 'How to Unbundle NGINX from Omnibus GitLab'
-h1_title: 'Unbundling NGINX from Omnibus Gitlab'
-enable_h1: true
+title: 'Unbundling NGINX from Omnibus Gitlab'
+title_meta: 'How to Unbundle NGINX from Omnibus GitLab'
 external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
@@ -42,7 +41,7 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
 {{< /note >}}
 
@@ -108,7 +107,7 @@ deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're using Ubuntu 16.04, replace `trusty` with `xenial` in the above command.
 {{< /note >}}
 

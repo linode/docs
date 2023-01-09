@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
 modified_by:
   name: Linode
-title: "TypeScript Types: Get Started"
-h1_title: "Getting Started with TypeScript Types"
-enable_h1: true
+title: "Getting Started with TypeScript Types"
+title_meta: "TypeScript Types: Get Started"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
@@ -22,9 +21,9 @@ TypeScript supports various types including `string`, `number`, `boolean`, `enum
 
 The three essential primitive types in JavaScript and TypeScript are `string`, `number`, and `boolean`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All three primitive types are spelled in lower-case. There are capitalized variants of these words that compile successfully in TypeScript. These are referred to as *boxed types*. When a primitive type is boxed it is "wrapped" in an object and can then behave like an object.
-{{</ note >}}
+{{< /note >}}
 
 The example TypeScript code below demonstrates how to assign values of all three primitive types to variables.
 
@@ -71,17 +70,17 @@ var b2 = true; //inferred
 var b3 = !true; //both
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You don’t actually get an immutable variable when you use `const`. To do that, declare an object member `readonly`.
-{{</ note >}}
+{{< /note >}}
 
 ## The Any Type
 
 A variable of type `any` can store any type. The main reason to use the `any` type is to prevent TypeScript from throwing type-checking errors for that variable.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before using `any`, consider the alternatives of explicit [unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html) and [narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html).
-{{< /caution >}}
+{{< /note >}}
 
 If you don't declare a type, and the type can't be inferred, the variable is set as the `any` type by default. The syntax to declare the `any` type is as follows:
 
@@ -119,9 +118,9 @@ There are two ways you can declare an array in TypeScript. They are as follow:
 
 In TypeScript, you can create types from other types. The most common way to do this is with objects. Objects can be [*anonymous*](https://www.typescriptlang.org/docs/handbook/2/objects.html), [type *aliases*](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases), or [*interfaces*](https://www.typescriptlang.org/docs/handbook/2/objects.html#interfaces-vs-intersections).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Notice the difference in syntax when declaring an interface and a type alias. An interface declaration does not make use of the `=` sign.
-{{</ note >}}
+{{< /note >}}
 
 {{< file "object_types_example.ts" typescript >}}
 //objects

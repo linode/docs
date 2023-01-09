@@ -15,8 +15,8 @@ VLANs (Virtual Local Area Network) are a completely free solution available to L
 - **Privacy and Security.** Compute Instances on the same account and in the same region can be added to the same VLAN, allowing for private and secure communications between those instances. The public internet can also be disabled on a Compute Instance to provide even more security.
 
     {{< note >}}
-VLANs are separate from [Private IP Addresses](/docs/guides/managing-ip-addresses/#types-of-ip-addresses). Private IPs are accessible to all Compute Instances in that same data center and can only be further restricted by firewall rules or additional internal configuration.
-{{< /note >}}
+    VLANs are separate from [Private IP Addresses](/docs/guides/managing-ip-addresses/#types-of-ip-addresses). Private IPs are accessible to all Compute Instances in that same data center and can only be further restricted by firewall rules or additional internal configuration.
+    {{< /note >}}
 
 - **Performance.** A VLAN is configured as a Layer 2 networking device and provides low latency for latency-sensitive applications.
 
@@ -40,9 +40,9 @@ VLANs are managed within the Configuration Profile of a Compute Instance. Each i
 
 - **None:** Selecting **None** will deactivate that network interface.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The Public Internet must always be set to use the network interface `eth0`.
-{{< /caution >}}
+{{< /note >}}
 
 ### Selecting a VLAN
 

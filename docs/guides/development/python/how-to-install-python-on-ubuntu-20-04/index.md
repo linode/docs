@@ -11,8 +11,8 @@ published: 2020-02-12
 image: InstallPython3_Ubuntu2004.png
 modified_by:
   name: Linode
-title: "How to Install Python 3 on Ubuntu 20.04"
-h1_title: "Install Python 3 on Ubuntu 20.04"
+title: "Install Python 3 on Ubuntu 20.04"
+title_meta: "How to Install Python 3 on Ubuntu 20.04"
 contributor:
   name: Angel Guarisma
   link: https://github.com/Guaris/

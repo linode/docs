@@ -12,9 +12,8 @@ published: 2015-04-21
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
-h1_title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
-enable_h1: true
+title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
+title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
 contributor:
     name: Sam Mauldin
     link: https://github.com/Sxw1212
@@ -36,7 +35,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
         sudo apt install git openjdk-7-jre-headless
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Linode is running Ubuntu 14.10 or higher, you can choose to install `openjdk-8-jre-headless` instead.
 {{< /note >}}
 
@@ -71,7 +70,7 @@ If your Linode is running Ubuntu 14.10 or higher, you can choose to install `ope
         wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         java -jar BuildTools.jar
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This may take approximately 10 minutes, depending in the size of the Linode you are building on.
 {{< /note >}}
 
@@ -176,7 +175,7 @@ Plugins can be found from the [Spigot Resources](http://www.spigotmc.org/resourc
 
         wget -P /home/minecraft/server/plugins/ --content-disposition <plugin url>
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When downloading plugins from Spigot, the `wget` flag `--content-disposition` will help ensure the plugin is downloaded with the correct filename.
 {{< /note >}}
 

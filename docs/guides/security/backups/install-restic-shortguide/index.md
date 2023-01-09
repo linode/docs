@@ -18,7 +18,7 @@ show_on_rss_feed: false
 
         wget https://github.com/restic/restic/releases/download/v0.11.0/restic_0.11.0_linux_amd64.bz2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure you select the correct file for your system. The above command is correct for most Linux distributions on Linode.
 {{< /note >}}
 

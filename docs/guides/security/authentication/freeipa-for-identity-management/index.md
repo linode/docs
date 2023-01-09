@@ -123,7 +123,7 @@ On the server Linode, install and set up the FreeIPA server with the following c
     kinit admin
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The admin ticket created with `kinit admin` is set to expire in 24 hours following ticket creation. To re-create another admin ticket, enter `kinit admin` again at any time.
 {{< /note >}}
 
@@ -143,7 +143,7 @@ The admin ticket created with `kinit admin` is set to expire in 24 hours followi
 
 New users can be created with the above command at any time.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Kerberos tickets associated with these users will expire similarly to admin users. Basic syntax for creating new kerberos tickets is `kinit username`.
 {{< /note >}}
 
@@ -198,7 +198,7 @@ The kerberos admin server will be freely accessible via it's domain in a web bro
 
 Once logged in, you will have access to many of the tools and utilities available to FreeIPA from the command line directly on a more user friendly web interface.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide rely on a self-signed SSL certificate, and users may see an error message in their web browser claiming that the SSL certificate is not valid. While the self-signed certificate will not be recognized by any certificate authority, it will still provide TLS/SSL encryption. Due to this, the error message can be ignored.
 {{< /note >}}
 

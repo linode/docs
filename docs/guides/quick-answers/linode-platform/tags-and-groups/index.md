@@ -276,6 +276,6 @@ If you have used the Display Groups feature in the Classic Manager, you can impo
 
 1.  A form will appear that lists your Display Groups and asks you to confirm the import action. To proceed, click the **Import Display Groups Now** button in this form.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Importing your Display Groups is a **one-time** operation. If you don't have any Display Groups configured in the Classic Manager this feature will not appear in the Cloud Manager.
 {{< /note >}}

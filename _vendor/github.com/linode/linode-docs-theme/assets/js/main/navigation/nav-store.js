@@ -30,7 +30,6 @@ export function newNavStore(searchConfig, searchStore, params) {
 			targeting: false,
 			functional: false,
 			performance: false,
-			any: false,
 		},
 
 		init() {
@@ -39,11 +38,12 @@ export function newNavStore(searchConfig, searchStore, params) {
 				return searchStore.results.lastQueryID;
 			};
 			this.analytics = new AnalyticsEventsCollector(searchConfig, getLastQueryID, this.trustecm);
-			initConsentManager(params.trustarc_domain);
 
-			if (document.body.dataset.objectid) {
-				// Wait a little for the consent to be set.
-				setTimeout(() => {
+			// The callback below may be called multiple times.
+			let analyticsLoadEventPublished = false;
+			let cb = () => {
+				if (!analyticsLoadEventPublished && document.body.dataset.objectid) {
+					analyticsLoadEventPublished = true;
 					let analyticsItem = {
 						__queryID: getLastQueryID(),
 						objectID: document.body.dataset.objectid,
@@ -51,8 +51,10 @@ export function newNavStore(searchConfig, searchStore, params) {
 						eventName: 'DOCS: Guide Load',
 					};
 					this.analytics.handler.pushItem(analyticsItem);
-				}, 1000);
-			}
+				}
+			};
+
+			initConsentManager(params.trustarc_domain, this.trustecm, cb);
 		},
 
 		openSearchPanel(scrollUp = false) {

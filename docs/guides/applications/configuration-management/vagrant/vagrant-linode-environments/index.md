@@ -57,7 +57,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
         vagrant plugin install vagrant-linode
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using a Mac, it may request to install development tools. Select yes, then re-run the command.
 {{< /note >}}
 
@@ -321,7 +321,7 @@ With the Vagrantfile configured, and scripts and files created, it's now time to
 
     Then go to your chosen web browser and navigate to your ip address with `:6789` appended to the end. You should see Apache2 Ubuntu Default Page.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to shut down or remove the Linode from your workspace you can do so through one of the following commands:
 
 -  `vagrant halt` will power down the Linode through the shutdown mechanism. You can then run `vagrant up` again to power on the Linode.

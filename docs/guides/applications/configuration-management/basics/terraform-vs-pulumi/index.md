@@ -11,9 +11,8 @@ published: 2021-03-22
 image: ComparingTerraform_Pulumi.png
 modified_by:
   name: Linode
-title: "Comparing Pulumi and Terraform"
-h1_title: "Pulumi vs Terraform"
-enable_h1: true
+title: "Pulumi vs Terraform"
+title_meta: "Comparing Pulumi and Terraform"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

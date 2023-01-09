@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Linode
-title: "Golang Testing: Unit Testing Go Applications"
-h1_title: "An Introduction to Golang Unit Testing"
-enable_h1: true
+title: "An Introduction to Golang Unit Testing"
+title_meta: "Golang Testing: Unit Testing Go Applications"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller

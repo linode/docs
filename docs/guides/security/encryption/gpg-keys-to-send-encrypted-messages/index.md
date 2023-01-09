@@ -9,7 +9,8 @@ published: 2018-08-08
 modified: 2018-08-08
 modified_by:
   name: Linode
-title: "How to Use GPG Keys to Send Encrypted Messages"
+title: "Use GPG Keys to Send Encrypted Messages"
+title_meta: "How to Use GPG Keys to Send Encrypted Messages"
 external_resources:
 - '[Primes, Modular Arithmetic, and Public Key Cryptography ](http://pi.math.cornell.edu/~mec/2003-2004/cryptography/diffiehellman/diffiehellman.html)'
 - '[The Mathematics of the RSA Public-Key Cryptosystem ](http://www.mathaware.org/mam/06/Kaliski.pdf)'

@@ -28,7 +28,7 @@ Within Puppet, modules are the building blocks of your servers' configurations. 
 
 In this guide, Apache and PHP modules will be created from scratch, and a MySQL module will be adapted from the Puppet Lab's MySQL module found on the [Puppet Forge](https://forge.puppet.com/). These steps will create a full LAMP stack on your server and provide an overview of the various ways modules can be utilized.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/guides/install-and-configure-puppet/) guide. If using a different setup, please adapt the guide accordingly.
 {{< /note >}}
 
@@ -131,7 +131,7 @@ class apache::params {
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
 {{< /note >}}
 
@@ -308,7 +308,7 @@ class apache::vhosts {
 
     Both distribution families call to the `file` resource and take on the title of the virtual host's location on the respective distribution. For Debian, this once more means referencing the `$servername` value. The `content` attribute calls to the respective templates.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Values containing variables, such as the name of the Debian file resource above, need to be wrapped in double quotes (`"`). Any variables in single quotes (`'`) are parsed exactly as written and will not pull in a variable.
 {{< /note >}}
 

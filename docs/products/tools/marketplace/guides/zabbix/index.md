@@ -27,9 +27,9 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Zabbix should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -52,22 +52,22 @@ After Zabbix has finished installing, you must first obtain the login credential
 
 1. The Zabbix welome banner should appear immediately after logging in. Make a note of the username and password as these are used in a later step.
 
-    {{< output >}}
-********************************************************************************
-Zabbix frontend credentials:
-Username: Admin
-Password: abcdef0123456789
-To learn about available professional services, including technical suppport and training, please visit https://www.zabbix.com/services
-Official Zabbix documentation available at https://www.zabbix.com/documentation/current/
-Note! Do not forget to change timezone PHP variable in /etc/php.d/99-zabbix.ini file.
-********************************************************************************
-{{< /output >}}
+    ```output
+    ********************************************************************************
+    Zabbix frontend credentials:
+    Username: Admin
+    Password: abcdef0123456789
+    To learn about available professional services, including technical suppport and training, please visit https://www.zabbix.com/services
+    Official Zabbix documentation available at https://www.zabbix.com/documentation/current/
+    Note! Do not forget to change timezone PHP variable in /etc/php.d/99-zabbix.ini file.
+    ********************************************************************************
+    ```
 
 1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
 
     {{< note >}}
-Zabbix uses a self-signed certificate. Because it is not signed by a common Certificate Authority, your browser may warn you about the security of the connection and require you to add a security exception.
-{{</ note >}}
+    Zabbix uses a self-signed certificate. Because it is not signed by a common Certificate Authority, your browser may warn you about the security of the connection and require you to add a security exception.
+    {{< /note >}}
 
     ![A screenshot of the Zabbix log in prompt](zabbix-login.png)
 
