@@ -42,7 +42,7 @@ TOBS includes the following components:
 This guide was written using [Kubernetes version 1.23](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
-1.  [Deploy an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](https://www.linode.com/pricing/). Depending on the workloads you plan to deploy on your cluster, you may consider using Linodes with more available resources.
+1.  [Deploy an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [4 GB Linode Shared CPU instance](https://www.linode.com/pricing/). Depending on the workloads you plan to deploy on your cluster, you may consider using Linodes with more available resources.
 
 1.  Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
@@ -124,9 +124,9 @@ lke-monitor-replica                                         ClusterIP   10.128.1
 opentelemetry-operator-controller-manager-metrics-service   ClusterIP   10.128.45.42     <none>        8443/TCP                     4m3s
 opentelemetry-operator-webhook-service                      ClusterIP   10.128.12.89     <none>        443/TCP                      4m3s
 prometheus-operated                                         ClusterIP   None             <none>        9090/TCP                     3m41s
-tobs-kube-prometheus-alertmanager                           ClusterIP   10.128.33.44     <none>        9093/TCP                     4m3s
-tobs-kube-prometheus-operator                               ClusterIP   10.128.175.39    <none>        443/TCP                      4m3s
-tobs-kube-prometheus-prometheus                             ClusterIP   10.128.106.173   <none>        9090/TCP                     4m3s
+lke-monitor-kube-prometheus-alertmanager                           ClusterIP   10.128.33.44     <none>        9093/TCP                     4m3s
+lke-monitor-kube-prometheus-operator                               ClusterIP   10.128.175.39    <none>        443/TCP                      4m3s
+lke-monitor-kube-prometheus-prometheus                             ClusterIP   10.128.106.173   <none>        9090/TCP                     4m3s
 
     {{< /output >}}
 
@@ -148,14 +148,14 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
 
             kubectl -n monitoring \
             port-forward \
-            svc/tobs-kube-prometheus-prometheus \
+            svc/lke-monitor-kube-prometheus-prometheus \
             9090
 
     *   To provide access to the **Alertmanager** interface at the address `127.0.0.1:9093` in your web browser, enter:
 
             kubectl -n monitoring \
             port-forward \
-            svc/tobs-kube-prometheus-alertmanager  \
+            svc/lke-monitor-kube-prometheus-alertmanager  \
             9093
 
     *   To provide access to the **Grafana** interface at the address `127.0.0.1:8081` in your web browser, enter:
