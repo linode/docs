@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "Using Rclone to Sync Files to Linode Object Storage"
-h1_title: "How to Use Rclone to Sync Files to Linode Object Storage"
-enable_h1: true
+title: "Use Rclone to Sync Files to Linode Object Storage"
+title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
 contributor:
   name: Jack Wallen
 ---
@@ -34,7 +33,7 @@ The Rclone installation process is the same on Linux and macOS. Log into either 
 
     curl https://rclone.org/install.sh | sudo bash
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To install cURL on an Ubuntu system, use the following command:
 
     sudo apt-get install curl -y
@@ -43,7 +42,7 @@ To install cURL on a macOS system use the following command:
 
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
     brew install curl
-{{</ note >}}
+{{< /note >}}
 
 Verify the Rclone installation.
 

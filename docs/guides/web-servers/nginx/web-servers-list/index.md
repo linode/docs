@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Linode
-title: "Web Server Software List and Servers Comparison"
-h1_title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
-enable_h1: true
+title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
+title_meta: "Web Server Software List and Servers Comparison"
 contributor:
   name: Wayne Rash
 ---

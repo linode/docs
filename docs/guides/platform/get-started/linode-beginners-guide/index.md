@@ -71,7 +71,7 @@ Please refer to our guide on [Linux package management](/docs/guides/linux-packa
 
 You may add an [additional public IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Linode in the Linode Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/guides/linux-static-ip-configuration/) or enable [Network Helper](/docs/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager explaining the reason for the new IP.
 {{< /note >}}
 

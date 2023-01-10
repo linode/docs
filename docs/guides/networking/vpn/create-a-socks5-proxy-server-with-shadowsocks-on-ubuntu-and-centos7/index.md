@@ -13,9 +13,8 @@ published: 2017-12-07
 modified: 2018-07-10
 modified_by:
   name: Linode
-title: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
-h1_title: "Creating a SOCKSS Proxy Server with Shadowsocks"
-enable_h1: true
+title: "Creating a SOCKSS Proxy Server with Shadowsocks"
+title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940
@@ -158,9 +157,9 @@ Apply the following optimizations to the system kernel to provide for a smooth r
 
 1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into the file:
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured the system kernel settings for any reason, make sure no conflicts exist.
-{{< /caution >}}
+{{< /note >}}
 
     {{< file "/etc/sysctl.d/local.conf" >}}
 # max open files

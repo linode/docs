@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "A Guide to Risk Management in Information Technology"
-h1_title: "How to Build an Information Security Risk Management Program"
-enable_h1: true
+title: "Build an Information Security Risk Management Program"
+title_meta: "A Guide to Risk Management in Information Technology"
 contributor:
   name: David Strom
 ---

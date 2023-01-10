@@ -23,7 +23,7 @@ external_resources:
 
 {{< note >}}
 Kepler requires a valid license to use the software beyond the initial 14 day free trial period. To purchase a license, visit [Kepler's website](https://kepler.app/pricing.php) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -31,9 +31,9 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Kepler should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

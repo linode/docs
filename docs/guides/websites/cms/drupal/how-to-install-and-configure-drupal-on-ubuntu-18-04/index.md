@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2020-02-18
-title: How to Install and Configure Drupal on Ubuntu 18.04 LTS
-h1_title: Install and Configure Drupal on Ubuntu 18.04
+title: Install and Configure Drupal on Ubuntu 18.04
+title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 image: L_Drupal_on_Ubuntu1804.png
 relations:
     platform:
@@ -43,9 +43,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 
@@ -69,7 +69,7 @@ $settings['trusted_host_patterns'] = array(
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -116,7 +116,7 @@ $settings['trusted_host_patterns'] = array(
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you forgot the name of your database, log back in to MySQL or MariaDb with: `mysql -u root -p` and enter: `show databases;`.
 {{< /note >}}
 

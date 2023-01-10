@@ -26,9 +26,9 @@ aliases: ['/guides/deploying-pihole-marketplace-app/','/guides/pihole-marketplac
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Pi-hole should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

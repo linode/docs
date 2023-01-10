@@ -11,9 +11,8 @@ published: 2021-06-25
 modified: 2022-01-28
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH using PuTTY"
-h1_title: "Connecting to a Remote Server Over SSH using PuTTY"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH using PuTTY"
+title_meta: "How to Connect to a Remote Server Over SSH using PuTTY"
 aliases: ['/networking/ssh/ssh-connections-using-putty-on-windows/','/networking/using-putty/']
 relations:
     platform:
@@ -26,9 +25,9 @@ A *secure shell* (SSH) is used for secure communication between devices. When mo
 
 This article covers the basics of connecting to a remote server (such as a Linode) over SSH using the PuTTY application. PuTTY is a free and open source SSH client that provides a graphic interface for connecting to remote servers. It is compatible with Windows XP and later systems, including Windows Vista, 7, 8 and 10. It is also compatible with most UNIX systems.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While PuTTY is compatible with Windows 10, you may want to review the [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/) guide for alternatives to PuTTY that may better suit your needs and preferences.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -60,11 +59,11 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
 
     If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
-    {{<note>}}
+    {{< note respectIndent=false >}}
 If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, you must remove the IP addresses manually from the following registry entry:
 
     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
-{{</note>}}
+{{< /note >}}
 
 1.  PuTTY now prompts you to enter the remote user and the password for that user.
 

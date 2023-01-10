@@ -12,9 +12,8 @@ modified: 2020-02-10
 modified_by:
   name: Linode
 published: 2020-02-10
-title: How to Install Ghost CMS on Ubuntu 18.04 LTS
-h1_title: Installing Ghost CMS on Ubuntu 18.04 LTS
-enable_h1: true
+title: Installing Ghost CMS on Ubuntu 18.04 LTS
+title_meta: How to Install Ghost CMS on Ubuntu 18.04 LTS
 image: GhostCMSonUbuntu1804.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'
@@ -34,7 +33,7 @@ aliases: ['/websites/cms/ghost/how-to-install-ghost-on-ubuntu-18-04/']
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Ubuntu 18.04 LTS, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with your site’s domain name.
@@ -116,9 +115,9 @@ Install Ghost using the Ghost-CLI tool.
 
         cd /var/www/ghost
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Installing Ghost in the `/root` or `/home/{user}` folder won’t work and results in a broken setup. Only use `/var/www/{folder}` because it has the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 1.  Ensure that the directory is empty to avoid file conflicts:
 

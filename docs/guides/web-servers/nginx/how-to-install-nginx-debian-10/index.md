@@ -12,9 +12,8 @@ modified_by:
   name: Linode
 published: 2018-04-16
 image: L_NGINX_on_Debian10.png
-title: "How to Install NGINX on Debian 10"
-h1_title: "Installing NGINX on Debian 10"
-enable_h1: true
+title: "Installing NGINX on Debian 10"
+title_meta: "How to Install NGINX on Debian 10"
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 relations:

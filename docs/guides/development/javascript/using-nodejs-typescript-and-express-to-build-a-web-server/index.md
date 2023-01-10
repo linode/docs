@@ -10,9 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
 modified_by:
   name: Linode
-title: "Using Node.js, Typescript, and Express to Build a Web Server"
-h1_title: "How to Use Node.js, TypeScript, and Express to Build a Web Server"
-enable_h1: true
+title: "Use Node.js, TypeScript, and Express to Build a Web Server"
 contributor:
   name: John Mueller
 external_resources:
@@ -33,9 +31,9 @@ This guide shows you how to use TypeScript with two tools that are commonly used
 
 The majority of the steps in this guide are performed on your computer's local development environment. The following sections show you how to install TypeScript, Node.js, Express, and package dependencies on your computer. Any additional configuration steps required by each tool are also covered.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you do not have Node.js and the node version manager (nvm) installed on your computer, follow our [How to Install and Use the Node Version Manager NVM](/docs/guides/how-to-install-use-node-version-manager-nvm/) guide. The steps in this guide require a minimum Node.js version of 13.0.0.
-{{</ note >}}
+{{< /note >}}
 
 1. In your home directory, create a new directory named `typescript-nodejs` and move into the new directory.
 
@@ -74,7 +72,7 @@ If you do not have Node.js and the node version manager (nvm) installed on your 
    ...
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 There is also a field defined in the `package.json` file called the `repository` field. You don't have to provide a value for this field if you don’t have a repository configured to store your code.
 {{< /note >}}
 
@@ -158,9 +156,9 @@ At this point, you should have all requirements and dependencies installed in yo
 }
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When the `tsconfig.json` file is created, several options are commented out. You can leave the settings as they are, but for more complex project, you can uncomment the necessary settings.
-    {{</ note >}}
+    {{< /note >}}
 
     The generated `tsconfig.json` file contains various default settings. You can learn more about each setting in [TypeScript's TSConfig Reference documentation](https://www.staging-typescript.org/tsconfig). Unless you have reasons to change the `target` and `module` settings, you should leave those as they are defined. Likewise, keep `strict` set to `true` to ensure that your application uses strict type checking. Also, keep `esModuleInterop` set to `true` to ensure that you obtain full interoperability.
 

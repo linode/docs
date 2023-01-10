@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
-og_description: 'Learn how to use a combination of Kubespray and Ansible to provision a cluster and deploy Minio as a private cloud storage.'
 keywords: ['ansible', 'kubernetes', 'cluster', 's3', 'aws']
 tags: ["python","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -36,7 +35,7 @@ Minio is an open source, S3 compatible object store that can be hosted on a Lino
 
 4.  The IP addresses of each node in the cluster and their roles will be represented as `kubernetes-master-ip`, `etcd-ip`, and `slave-ip`
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you do not want to install Ansible and other software locally, consider using another Linode as a jumpbox that will be used to connect with the master node.
 {{< /note >}}
 
@@ -125,7 +124,7 @@ remote_user=username
         declare -a IPS=(kubernetes-master-ip etcd-ip slave-ip)
         CONFIG_FILE=inventory/minio/hosts.ini python3 contrib/inventory_builder/inventory.py ${IPS[@]}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Do not use hostnames when declaring `$IPS`. Only IP addresses are supported by the inventory generator at this time.
 {{< /note >}}
 
@@ -201,9 +200,9 @@ Run the `cluster.yml` Ansible playbook. If your private key is named differently
 
     ansible-playbook -i inventory/minio/hosts.ini cluster.yml -b -v
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This could take up to 20 minutes.
-{{< /caution >}}
+{{< /note >}}
 
 ### Add or Remove Nodes
 

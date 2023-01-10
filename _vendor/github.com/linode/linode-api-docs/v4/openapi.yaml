@@ -1248,6 +1248,7 @@ paths:
       x-linode-cli-action: maintenance-list
       security:
       - personalAccessToken: []
+      - oauth: []
       responses:
         '200':
           description: Returns a paginated list of Maintenance objects.
@@ -6207,7 +6208,7 @@ paths:
               -X POST -d '{
                 "type": "A",
                 "name": "test",
-                "target": "12.34.56.78",
+                "target": "203.0.113.1",
                 "priority": 50,
                 "weight": 50,
                 "port": 80,
@@ -6221,7 +6222,7 @@ paths:
           linode-cli domains records-create 123 \
             --type A \
             --name test \
-            --target 12.34.56.78 \
+            --target 203.0.113.1 \
             --priority 50 \
             --weight 50 \
             --port 80 \
@@ -6308,7 +6309,7 @@ paths:
               -X PUT -d '{
                 "type": "A",
                 "name": "test",
-                "target": "12.34.56.78",
+                "target": "203.0.113.1",
                 "priority": 50,
                 "weight": 50,
                 "port": 80,
@@ -6323,7 +6324,7 @@ paths:
           linode-cli domains records-update 123 234 \
             --type A \
             --name test \
-            --target 12.34.56.78 \
+            --target 203.0.113.1 \
             --priority 50 \
             --weight 50 \
             --port 80 \
@@ -10182,7 +10183,7 @@ paths:
                 -X POST -d '{
                   "label": "cluster12345",
                   "region": "us-central",
-                  "k8s_version": "1.23",
+                  "k8s_version": "1.24",
                   "tags": ["ecomm", "blogs"],
                   "control_plane": {
                       "high_availability": true
@@ -10209,7 +10210,7 @@ paths:
           linode-cli lke cluster-create \
             --label cluster12345 \
             --region us-central \
-            --k8s_version 1.23 \
+            --k8s_version 1.24 \
             --control_plane.high_availability true \
             --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
@@ -10369,7 +10370,7 @@ paths:
           linode-cli lke cluster-update 12345 \
             --label lkecluster54321 \
             --control_plane.high_availability true \
-            --k8s_version 1.23 \
+            --k8s_version 1.24 \
             --tags ecomm \
             --tags blog \
             --tags prod \
@@ -11185,10 +11186,10 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4/lke/versions/1.23
+                https://api.linode.com/v4/lke/versions/1.24
       - lang: CLI
         source: >
-          linode-cli lke version-view 1.23
+          linode-cli lke version-view 1.24
   /longview/clients:
     x-linode-cli-command: longview
     get:
@@ -12393,7 +12394,7 @@ paths:
                 "ssh": {
                   "access": true,
                   "user": "linode",
-                  "ip": "12.34.56.78",
+                  "ip": "203.0.113.1",
                   "port": 22
                 }
               }' \
@@ -12405,7 +12406,7 @@ paths:
             --ssh.access true \
             --ssh.user linode \
             --ssh.port 22 \
-            --ssh.ip 12.34.56.78
+            --ssh.ip 203.0.113.1
   /managed/services:
     x-linode-cli-command: managed
     get:
@@ -23587,7 +23588,7 @@ components:
           description: >
             The desired Kubernetes version for this Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version will be deployed.
-          example: "1.23"
+          example: "1.24"
         control_plane:
           type: object
           description: >
@@ -23788,7 +23789,7 @@ components:
             A Kubernetes version number available for deployment
             to a Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version.
-          example: "1.23"
+          example: "1.24"
     LongviewClient:
       type: object
       description: >
@@ -24277,7 +24278,7 @@ components:
                 when responding to an Issue.
 
                 By default, any of a Linode's IP addresses can be used for incident response access.
-              example: "12.34.56.78"
+              example: "203.0.113.1"
               default: any
             port:
               type: integer
@@ -24461,7 +24462,7 @@ components:
           format: ip
           description: >
             This NodeBalancer's public IPv4 address.
-          example: 12.34.56.78
+          example: 203.0.113.1
           readOnly: true
           x-linode-cli-display: 5
         ipv6:
@@ -26608,7 +26609,7 @@ components:
           type: string
           description: >
             The last IP Address to successfully authenticate with this TrustedDevice.
-          example: 12.34.56.78
+          example: 203.0.113.1
           readOnly: true
     SecurityQuestion:
       type: object

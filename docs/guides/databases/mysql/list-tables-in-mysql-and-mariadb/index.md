@@ -10,8 +10,7 @@ published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "List Tables in MySQL and MariaDB"
-h1_title: "How to List Tables in MySQL and MariaDB"
-enable_h1: true
+title_meta: "How to List Tables in MySQL and MariaDB"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

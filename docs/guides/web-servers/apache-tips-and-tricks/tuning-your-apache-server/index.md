@@ -26,7 +26,7 @@ Your Apache configuration settings have a major effect on your Linode's performa
 
 ## Tools
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,7 +62,7 @@ ExtendedStatus On
     {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Enabling `ExtendedStatus` consumes additional system resources.
 {{< /note >}}
 
@@ -139,7 +139,7 @@ To use the worker or event modules, replace `<IfModule mpm_prefork_module>` with
 
 Next, you should alter the module settings you added in the previous step. To do this, you should take into consideration what each value does, and how best to change it. It is recommended to make incremental changes to your configuration settings and then monitor the effects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 After making alterations to the Apache configuration file, restart the service.
 
 - On Debian/Ubuntu:

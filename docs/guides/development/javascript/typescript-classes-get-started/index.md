@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
 modified_by:
   name: Linode
-title: "TypeScript Classes: Get Started"
-h1_title: "Getting Started with Typescript Classes"
-enable_h1: true
+title: "Getting Started with Typescript Classes"
+title_meta: "TypeScript Classes: Get Started"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
@@ -264,7 +263,7 @@ const b = new Box("hello!");
 
 Using Generics, you can create reusable components that can work with any data type without restricting to one data type. In the above example, the type of `const b` is `Box<string>`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The members of a generic class that use the type can’t be "static". Generic classes are usually more efficient at runtime than classes that use variables of type `any`.
 {{< /note >}}
 

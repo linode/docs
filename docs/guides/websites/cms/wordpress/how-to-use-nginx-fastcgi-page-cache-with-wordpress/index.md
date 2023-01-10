@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to enable NGINX page caching for WordPress.'
-og_description: 'This guide explains how to enable NGINX page caching for WordPress.'
 keywords: ['NGINX caching','FastCGI cache','WordPress page cache','enable caching WordPress']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-21
 modified_by:
   name: Linode
-title: "How to Use the Nginx FastCGI Page Cache With WordPress"
-h1_title: "How to Use the Nginx FastCGI Page Cache With WordPress"
-enable_h1: true
+title: "Use the Nginx FastCGI Page Cache With WordPress"
+title_meta: "How to Use the Nginx FastCGI Page Cache With WordPress"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -54,7 +52,7 @@ No additional components or applications are required to enable the NGINX cache.
 
 1.  WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -82,7 +80,7 @@ Caching is typically enabled on a site-by-site basis. Caching directives are add
     -   The `fastcgi_cache_key` directive defines the key format.
     -   `fastcgi_ignore_headers` disables the processing of certain response header fields that could adversely affect caching.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This example only enables caching on the WordPress domain. However, the directives in this section can also be configured on a server-wide basis. To apply these instructions to the entire server, add them to the top of the `/etc/nginx/nginx.conf` file instead. The remaining configuration must be added to the WordPress virtual host file.
     {{< /note >}}
 
@@ -115,7 +113,7 @@ This example only enables caching on the WordPress domain. However, the directiv
 
 4.  **Optional** To avoid caching requests from a specific access or test address, include the following lines. Substitute the actual addresses for `testaddr1` and `testaddr2`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Adding this rule means it is not possible to test caching from these addresses.
     {{< /note >}}
 
@@ -294,7 +292,7 @@ NGINX does not provide an easy way to clear the cache. While it is possible to w
 
 6.  On the Nginx Helper Settings page, select **Enable Purge**. After this option is enabled, the WordPress administration panel displays more options. Ensure the `Caching Method` is set to `nginx Fastcgi cache`. Select the `Purging Conditions` according to your preferences. In most cases, the default settings are appropriate. Select the **Save All Changes** button to confirm and save the selections.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `Debug Options` are available near the bottom of the configuration page to enable logging and timestamps for easier troubleshooting.
     {{< /note >}}
 

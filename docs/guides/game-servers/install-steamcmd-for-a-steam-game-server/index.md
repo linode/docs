@@ -24,7 +24,7 @@ SteamCMD is a command-line version of the Steam client which works with games th
 
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ COMMIT
 COMMIT
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
 
 Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
@@ -196,9 +196,9 @@ Installing via the package manager allows you to more easily download updates an
 
             sudo apt-get install steamcmd
 
-           {{< note >}}
+        {{< note respectIndent=false >}}
   In the window that appears, you may need to enter the keys `shift + tab` to select the `ok` option.
-           {{< /note >}}
+        {{< /note >}}
 
      1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
@@ -221,9 +221,9 @@ deb-src http://mirrors.linode.com/debian stretch main non-free
             sudo apt update
             sudo apt-get install steamcmd
 
-           {{< note >}}
+        {{< note respectIndent=false >}}
   In the window that appears following the command to install steamCMD, you may need to enter the keys `shift + tab` to select the `ok` option.
-           {{< /note >}}
+        {{< /note >}}
 
 
     1.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
@@ -245,7 +245,7 @@ If your package manager does not include the `steamcmd` package, install it manu
 
             sudo apt-get install lib32gcc1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam game guides add [multiarch support](https://wiki.debian.org/Multiarch/HOWTO) only when a game requires it.
 {{< /note >}}
 
@@ -261,7 +261,7 @@ Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam
 
         tar -xvzf steamcmd_linux.tar.gz
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When running a Steam game, you may encounter the following error:
 
     /home/steam/.steam/sdk32/libsteam.so: cannot open shared object file: No such file or directory
@@ -320,9 +320,9 @@ The game server will still operate despite this error, and it should be somethin
 
         login example_user
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
-{{< /caution >}}
+{{< /note >}}
 
 ## How Do I Update My SteamCMD Game Server?
 

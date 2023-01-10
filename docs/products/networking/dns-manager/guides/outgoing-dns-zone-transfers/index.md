@@ -18,9 +18,9 @@ When a domain zone is created within Linode's DNS Manager, you can select if it 
 
 If you have configured your domain zone as *primary*, you can designate external DNS name servers as *secondaries*. The DNS Manager will then send a NOTIFY request to those name servers when you make any DNS changes. The external name server should then respond back with an AXFR query, which triggers Linode to send an AXFR response with the updated DNS zone. This guide covers the configuration needed to perform outgoing DNS zone transfers, including updating your SOA record.
 
-{{< caution >}}
+{{< note type="alert" >}}
 To perform AXFR transfers, you must specify the IP address for each external DNS name server you wish to use. Granting another server access to zone information is potentially dangerous. Do not add any IP addresses that you do not know or trust.
-{{</ caution >}}
+{{< /note >}}
 
 ## Configure the External DNS Provider
 
@@ -41,9 +41,9 @@ To facilitate quick updates, Linode immediately sends the external name servers 
 2a01:7e00::a
 ```
 
-{{< caution >}}
+{{< note type="alert" >}}
 On February 7th, 2023, the IP address `65.19.178.10` will be retired and replaced with `45.79.109.10`. Both IPs will respond to inbound requests until the cutover date. Outbound requests will only originate from the old IP address (`65.19.178.10`) until the cutover date. Please update your firewall rules and DNS server configurations to add the new IP address (`45.79.109.10`) prior to the cutover.
-{{< /caution >}}
+{{< /note >}}
 
 ## Add Secondary Name Servers
 
@@ -57,7 +57,7 @@ On February 7th, 2023, the IP address `65.19.178.10` will be retired and replace
 
 {{< note >}}
 If you ever decide to stop using the secondary name server, be sure to remove its IP address from this list.
-{{</ note >}}
+{{< /note >}}
 
 ## Test AXFR Transfers
 

@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Ansible is a powerful tool for automating server provisioning and management. But these tasks often require secrets like passwords and access tokens. To keep your secrets secure, you should implement secrets management with Ansible. Learn how to choose the best secrets management solution for your needs and how to get started using it with Ansible in this tutorial."
-og_description: "Ansible is a powerful tool for automating server provisioning and management. But these tasks often require secrets like passwords and access tokens. To keep your secrets secure, you should implement secrets management with Ansible. Learn how to choose the best secrets management solution for your needs and how to get started using it with Ansible in this tutorial."
 keywords: ['ansible secrets manager','ansible vault tutorial','ansible secrets best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-08
 modified_by:
   name: Nathaniel Stickman
 title: "Secrets Management with Ansible"
-h1_title: "Secrets Management with Ansible"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

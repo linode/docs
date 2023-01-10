@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
 modified_by:
   name: Linode
-title: "Application Security Testing Tools"
-h1_title: "Application Security Testing: Fundamentals and Best Practices"
-enable_h1: true
+title: "Application Security Testing: Fundamentals and Best Practices"
+title_meta: "Application Security Testing Tools"
 contributor:
   name: David Newman
 ---

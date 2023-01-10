@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "Installing PyTorch on Ubuntu 20.04"
-h1_title: "How to Install PyTorch on Ubuntu 20.04"
-enable_h1: true
+title: "Install PyTorch on Ubuntu 20.04"
+title_meta: "How to Install PyTorch on Ubuntu 20.04"
 contributor:
   name: Tom Henderson
 ---
@@ -43,9 +42,9 @@ Optimizing a task may also require using external data sources. If using externa
 
     For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
-{{</ note >}}
+{{< /note >}}
 
 ### Use Conda to Install PyTorch
 
@@ -76,9 +75,9 @@ The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
 
         conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Using Anaconda to install PyTorch, installs the NVIDIA CUDA Toolkit. For instances that install CPU-only versions of PyTorch, skip to the [Use Pip to Install PyTorch](#use-pip-to-install-pytorch) section.
-    {{</ note >}}
+    {{< /note >}}
 
     During installation, you are prompted to install new packages. Type `y` to install them. Your output displays a similar output:
 
@@ -154,9 +153,9 @@ Use the steps below to ensure that you have a working PyTorch installation.
 >>>
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the torch library cannot be found, python returns an error message indicating `not-found`.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Determine if PyTorch is using a GPU:
 
@@ -189,21 +188,21 @@ The steps in this section shows you how to use Anaconda to uninstall PyTorch.
 
         conda remove pytorch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also use the `uninstall` command to remove PyTorch libraries. Any datasets must also be removed independently from removing PyTorch.
-    {{</ note >}}
+    {{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 When using the `uninstall` command, the Linode may also be deleted, but it cannot be recovered once deleted.
-     {{</ caution >}}
+     {{< /note >}}
 
 1. Remove Anaconda from your system.
 
         rm -rf ~/anaconda
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The above command is dangerous, and must refer specifically to the directory where anaconda was installed. In the above example, Anaconda was installed in  the `/home/<user>/anaconda` directory. Adjust the command to ensure the directory deleted is indeed the `anaconda` directory.
-    {{</ caution >}}
+    {{< /note >}}
 
 1. Remove the Anaconda installation script:
 

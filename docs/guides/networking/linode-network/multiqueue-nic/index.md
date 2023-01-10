@@ -4,16 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
-og_description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
 keywords: ['networking','multi-queue']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
 image: NICS.jpg
 modified_by:
   name: Linode
-title: "How To Configure Multi-Queue NICs"
-h1_title: "Configuring Multi-Queue NICs"
-enable_h1: true
+title: "Configuring Multi-Queue NICs"
+title_meta: "How To Configure Multi-Queue NICs"
 external_resources:
  - '[KVM Multi-Queue documentation and performance](https://www.linux-kvm.org/page/Multiqueue)'
  - '[HOWTO for multiqueue network device support](https://www.kernel.org/doc/html/latest/networking/multiqueue.html)'

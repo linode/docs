@@ -27,9 +27,9 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Visual Studio Code Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

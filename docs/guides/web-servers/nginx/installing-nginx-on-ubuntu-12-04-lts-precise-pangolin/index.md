@@ -28,7 +28,7 @@ relations:
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,7 +79,7 @@ deb-src http://nginx.org/packages/ubuntu/ trusty nginx
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `deb-src` line is only needed if you want repository access to Nginx's source code.
 {{< /note >}}
 

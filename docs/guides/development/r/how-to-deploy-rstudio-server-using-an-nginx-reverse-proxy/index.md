@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
-og_description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 tags: ["web server", "nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -138,6 +137,6 @@ server {
 
     ![Rstudio Screen](rstudio-server-page.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If Rstudio does not load in the browser, you may need to clear your browser cache.
 {{< /note >}}

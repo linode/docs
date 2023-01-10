@@ -10,9 +10,8 @@ modified: 2022-08-10
 modified_by:
     name: Linode
 published: 2019-02-04
-title: "How to Choose a Compute Instance Plan"
-h1_title: "Choosing a Compute Instance Type and Plan"
-enable_h1: true
+title: "Choosing a Compute Instance Type and Plan"
+title_meta: "How to Choose a Compute Instance Plan"
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/']
 ---
@@ -21,7 +20,7 @@ Linode offers multiple Compute Instance types, each of which can be equipped wit
 
 This guide provides you with the information needed to select the most appropriate instance, helping you sort through all of Linode's offerings and land on the right one for the job.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can easily change between instance types and plans on an existing Compute Instance at any time. Review the [Resizing a Linode](/docs/guides/resizing-a-linode/) for instructions.
 {{< /note >}}
 
@@ -40,7 +39,7 @@ Most of these plan types are equipped with dedicated CPU cores for maximum peak 
 
 ### Shared CPU Instances
 
-**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 2840 GB Storage**<br>
+**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 3840 GB Storage**<br>
 Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.com/pricing/#compute-shared) for a full list of plans, resources, and pricing.
 
 [Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPU cores. These CPU cores can be used at 100% for short bursts, but should remain below 80% sustained usage on average. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances. This shared scheduling is done in a secure and performant manner. While Linode works to minimize competition for CPU resources between your instance and other instances on the same hardware, it's possible that high usage from neighboring instances can negatively impact the performance of your instance.

@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-05
 modified_by:
   name: Linode
-title: "How to Install and Configure the Caddy Web Server on CentOS 8"
-h1_title: "Install and Configure the Caddy Web Server on CentOS 8"
+title: "Install and Configure the Caddy Web Server on CentOS 8"
+title_meta: "How to Install and Configure the Caddy Web Server on CentOS 8"
 contributor:
   name: Linode
 relations:

@@ -9,7 +9,7 @@ keywords: []
 modified: 2018-02-02
 modified_by:
   name: Sam Foo
-title: "How to Install Java 8 JDK"
+title: "Install Java 8 JDK"
 published: 2018-01-09
 headless: true
 show_on_rss_feed: false

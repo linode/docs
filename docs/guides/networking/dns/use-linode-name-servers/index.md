@@ -10,7 +10,7 @@ tags: ["dns","networking","linux platform"]
 modified: 2018-07-19
 modified_by:
   name: Nathan Melehan
-title: "How to Use Linode's Nameservers"
+title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']
@@ -92,6 +92,6 @@ The following support documents describe how to update the authoritative nameser
 
 1.  [Set reverse DNS](/docs/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're having trouble seeing your site at the new IP address, try visiting it in a different browser or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
 {{< /note >}}

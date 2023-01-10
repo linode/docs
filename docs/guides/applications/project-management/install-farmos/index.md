@@ -65,9 +65,9 @@ This guide explains how to install, setup and host your own farmOS web app on a 
 
         sudo wget https://ftp.drupal.org/files/projects/farm-7.x-1.7-core.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the farmOS version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 

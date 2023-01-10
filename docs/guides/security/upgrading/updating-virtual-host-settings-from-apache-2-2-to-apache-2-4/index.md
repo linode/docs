@@ -12,9 +12,8 @@ modified: 2014-03-12
 modified_by:
   name: Linode
 published: 2014-03-12
-title: "How to Update Virtual Host Settings For Apache 2.4"
-h1_title: "Updating Virtual Host Settings For Apache 2.4"
-enable_h1: true
+title: "Updating Virtual Host Settings For Apache 2.4"
+title_meta: "How to Update Virtual Host Settings For Apache 2.4"
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
 ---
@@ -119,7 +118,7 @@ If you are utilizing access control rules within your virtual host files, you wi
 
         systemctl reload httpd.service
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/docs/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
 {{< /note >}}
 

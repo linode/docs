@@ -74,7 +74,7 @@ to source the file to update your current session):
         cd autojump/
         ./install.py
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 autojump supports Python 2.6+, with the exception of 3.2.
 {{< /note >}}
 

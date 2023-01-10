@@ -10,8 +10,8 @@ aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clus
 modified_by:
   name: Linode
 published: 2010-09-30
-title: How To Build Database Clusters with MongoDB
-h1_title: Building Database Clusters with MongoDB
+title: Building Database Clusters with MongoDB
+title_meta: How To Build Database Clusters with MongoDB
 external_resources:
  - '[MongoDB Documentation for Replica Sets](https://docs.mongodb.com/manual/reference/replica-configuration/)'
  - '[MongoDB Documentation for Master-Slave Replication](https://docs.mongodb.com/manual/core/master-slave/)'
@@ -384,7 +384,7 @@ bindIp: 192.0.2.5
 
     In this format, `rs0` is the name of the replica set for the first shard, `mongo-repl-1` is the name of the first host in the shard (using port `27017`), and so on. You'll need to run the above command separately for each individual replica set.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before adding replica sets as shards, you must first configure the replica sets themselves.
 {{< /note >}}
 

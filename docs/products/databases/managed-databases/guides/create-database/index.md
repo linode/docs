@@ -51,7 +51,7 @@ Every node of a database cluster is built on its own Linode Compute Instance. In
 
 {{< note >}}
 Once a Managed Database cluster is created, it cannot be resized to a different plan. To modify the resources allocated to your database, you will need to create a new Managed Database with the desired plan, migrate your data, and delete the original Managed Database.
-{{</ note >}}
+{{< /note >}}
 
 ## Determine the Number of Nodes
 

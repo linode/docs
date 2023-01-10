@@ -11,9 +11,8 @@ modified: 2020-02-14
 modified_by:
   name: Linode
 published: 2018-04-16
-title: "How to Install NGINX on Ubuntu 18.04"
-h1_title: "Installing NGINX on Ubuntu 18.04"
-enable_h1: true
+title: "Installing NGINX on Ubuntu 18.04"
+title_meta: "How to Install NGINX on Ubuntu 18.04"
 external_resources:
   - '[NGINX Official Installation Docs](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/)'
 relations:

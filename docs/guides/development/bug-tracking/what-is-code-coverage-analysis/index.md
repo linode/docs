@@ -4,7 +4,6 @@ author:
   name: Martin Heller
   email: martin.heller@gmail.com
 description: 'This guide provides you with an overview of code coverage analysis, a method of exposing untested code which provides a metric that your QA team can use to improve.'
-og_description: 'This guide provides you with an overview of code coverage analysis, a method of exposing untested code which provides a metric that your QA team can use to improve.'
 keywords: ['code coverage analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-15
@@ -12,7 +11,6 @@ image: CodeCoverageAnalysis.png
 modified_by:
   name: Linode
 title: "What is Code Coverage Analysis?"
-h1_title: "What is Code Coverage Analysis?"
 tags: ["automation"]
 contributor:
   name: Martin Heller

@@ -11,9 +11,8 @@ published: 2021-02-19
 image: UseMonitorix_sysmon.png
 modified_by:
   name: Linode
-title: "How to Use Monitorix for System Monitoring"
-h1_title: "Using Monitorix for System Monitoring"
-enable_h1: true
+title: "Using Monitorix for System Monitoring"
+title_meta: "How to Use Monitorix for System Monitoring"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn
@@ -68,17 +67,17 @@ include_dir = /etc/monitorix/conf.d
 ...
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/monitorix/conf.d/00-debian.conf`. This file includes Debian/Ubuntu-specific options and is read after the main Monitorix configuration file. This means any changes you make to the `/etc/monitorix/conf.d/00-debian.conf` supersede `monitorix.conf` options.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you're done configuring Monitorix, restart the Monitorix service to enable your updates.
 
         sudo service monitorix restart
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
-{{</ note >}}
+{{< /note >}}
 
 ## Getting started with Monitorix
 
@@ -86,9 +85,9 @@ Monitorix is meant to be used as an interactive program. It's not suitable for u
 
 1. To access the Monitorix interface running on your Linode, [find your Linode's IP address](/docs/guides/find-your-linodes-ip-address/). Open a browser window and navigate to the following URL, `http://192.0.2.0:8080/monitorix`. Replace `192.0.2.0` with your own IP address.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are running Monitorix on your computer, instead, navigate to `http://localhost:8080/monitorix`.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you have accessed the Monitorix interface, select **All graphs** from the dropdown menu and click **Ok**.
 
