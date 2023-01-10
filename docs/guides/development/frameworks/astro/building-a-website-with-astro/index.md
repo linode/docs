@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Astro is a web development framework centered on content. With Astro you get a framework that adapts to the tools you use, and all of Astro's design favors putting your content out there. Learn about how Astro accomplishes this and how you can get started building your Astro website with this tutorial."
-og_description: "Astro is a web development framework centered on content. With Astro you get a framework that adapts to the tools you use, and all of Astro's design favors putting your content out there. Learn about how Astro accomplishes this and how you can get started building your Astro website with this tutorial."
 keywords: ['astro website builder','astro web','astro framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-10
 modified_by:
   name: Nathaniel Stickman
 title: "How to Build a Website with Astro"
-h1_title: "How to Build a Website with Astro"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
