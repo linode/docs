@@ -34,7 +34,7 @@ You can view and edit permissions for a user directly in the Cloud Manager by fo
 
 ![Full Account Access](user-permissions-account-access.png)
 
-A user can either be given unrestricted (full) access to an account or they can be restricted by default. If **Full Account Access** is set to *ON*, the user has full access to the account and no further permission settings are available. When set to *OFF*, the user has no access and indiviudal permissions can be granted using the other settings (covered below).
+A user can either be given unrestricted (full) access to an account or they can be restricted by default. If **Full Account Access** is set to *ON*, the user has full access to the account and no further permission settings are available. When set to *OFF*, the user has no access and individual permissions can be granted using the other settings (covered below).
 
 ### Create Services (Global Permissions)
 
