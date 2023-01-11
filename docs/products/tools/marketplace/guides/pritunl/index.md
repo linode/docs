@@ -38,7 +38,6 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 ### Pritunl Options
 
-
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
