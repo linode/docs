@@ -22,7 +22,7 @@ relations:
 tags: ["ubuntu","graph database","nosql"]
 ---
 
-In this Dgraph tutorial, we explain how to install the database on Ubuntu 22.04, and then provide a short guide on some basic features and functions.
+In this Dgraph tutorial, learn how to install the database on Ubuntu 22.04, add a schema and access the GraphQL endpoint.
 
 Graph databases are databases explicitly designed for the analysis of relationships. You can use graph databases if you are interested in the analysis of relationships between data — not to build the data store for your typical backend application.
 
