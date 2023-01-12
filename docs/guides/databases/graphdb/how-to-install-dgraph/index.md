@@ -123,7 +123,7 @@ services:
 1. To access the Ratel UI for queries, mutations, and altering schema, open your web browser and navigate to `http://<LINODE_IP_ADDRESS>:8000`.
 1. Click **Launch Latest** to access the latest stable release of Ratel UI.
 1. In the **Dgraph Server Connection** dialog that set the **Dgraph server URL** as `http://<LINODE_IP_ADDRESS>:8080`
-1. Click **Connect** . THe connection health appears green.
+1. Click **Connect** . The connection health appears green.
 1. Click **Continue** to query or run mutations.
 
 ## Get Started with Dgraph
