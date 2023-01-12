@@ -11,7 +11,6 @@ published: 2023-01-05
 modified_by:
   name: Linode
 title: "How to Install and Use Postal"
-h1_title: "How to Install and Use Postal"
 enable_h1: true
 contributor:
   name: Jeff Novotny
