@@ -111,7 +111,7 @@ services:
 
        sudo docker ps -a
 
-    An output simialr to the following appears:
+    An output similar to the following appears:
 
    {{< output >}}
    CONTAINER ID   IMAGE                  COMMAND                  CREATED
