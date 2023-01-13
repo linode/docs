@@ -459,6 +459,7 @@ devops
 devtmpfs
 dex
 df
+dgraph
 dhclient
 dhparams
 dia
