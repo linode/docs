@@ -1,5 +1,5 @@
 ---
-slug: install-dgraph-on-ubuntu-22-04
+slug: how-to-install-dgraph
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
