@@ -31,7 +31,7 @@ Dgraph is an open-source, scalable, distributed, highly available and fast graph
 Dgraph consists of different nodes such as Zero, Alpha, and Ratel each node serves a different purpose.
 
 * Dgraph Zero control the Dgraph database cluster. It assigns Alpha nodes to groups, re-balances data between groups, handles transaction timestamp and UID assignment.
-* Dgraph Alpha hosts predicates and indexes. Predicates are either the properties associated with a node or the relationship between two nodes. Indexes are the tokenizers that can be associated with the predicates to enable filtering using appropriate functions.
+* Dgraph Alpha hosts predicates and indexes. Predicates are either the properties associated with a node or the relationship between two nodes. Indexes are the tokens that can be associated with the predicates to enable filtering using appropriate functions.
 * Ratel is the UI to run queries, mutations, and altering schema.
 
 
