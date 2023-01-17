@@ -14,8 +14,8 @@ contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 external_resources:
-- '[Socket.IO: Get Started](https://socket.IO/get-started/chat)'
-- '[Tutorials Point: Socket.IO Tutorial](https://www.tutorialspoint.com/socket.IO/index.htm)'
+- '[Socket.IO: Get Started](https://socket.io/get-started/chat)'
+- '[Tutorials Point: Socket.IO Tutorial](https://www.tutorialspoint.com/socket.io/index.htm)'
 - '[Okta Developer: Create a Secure Chat Application with Socket.IO and React](https://developer.okta.com/blog/2021/07/14/socket-io-react-tutorial)'
 ---
 
