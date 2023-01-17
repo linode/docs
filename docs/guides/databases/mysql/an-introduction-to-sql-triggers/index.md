@@ -1,206 +1,264 @@
 ---
-slug: an-introduction-to-sql-triggers
+slug: sql-triggers-sql-server-overview
 author:
   name: Doug Hayman for NanoHertz Solutions Inc.
   email: docs@linode.com
-description: 'In this guide you learn about SQL Triggers and special datbase objects associated with Triggers.'
-keywords: ['referential integrity', 'primary foreign keys', 'special database objects', 'trigger statements']
-tags: ['MySQL']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-18
+description: This guide explains SQL trigger statements, special database objects, and how to enforce referential integrity for primary/foreign key relationships with them.
+keywords:
+  - referential integrity
+  - primary foreign keys
+  - special database objects
+  - trigger statements
+license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
+published: 2023-01-17
 modified_by:
   name: Linode
-title: "An Introduction to SQL Triggers"
-h1_title: "SQL Triggers: An Overview"
-enable_h1: true
+title_meta: An Introduction to SQL Triggers in SQL Server
+title: "SQL Triggers in SQL Server: An Overview"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
 ---
 
-One of the most important tools in SQL is *SQL Triggers*, which are a special type of stored procedure that can be associated with a table and a SQL data modification operation such as **Insert**, **Update**, or **Delete**. Triggers can be used to cause some action to occur whenever a data change takes place on a table. Additionally, a trigger can cause cascading changes from one table to another to enforce referential integrity, which is a key concept in database design.
+## What are Triggers?
 
-In this guide, you understand SQL Triggers in detail and how they work.
+*SQL triggers* are a special type of stored procedure that are executed when a data change takes place on a table. When they are declared, triggers are associated with a specific table and with a SQL data modification operation such as `INSERT`, `UPDATE`, or `DELETE`. Triggers can be implemented for different use cases, including:
+
+- logging
+
+- data validation
+
+- calculating derived data
+
+- enforcing referential integrity
+
+For example, the basic syntax for creating a trigger that runs after a `DELETE` operation on a table is as follows:
+
+```file
+CREATE TRIGGER AfterTriggerName
+ON TableName
+AFTER DELETE
+AS
+BEGIN
+    /* Series SQL code statements */
+END;
+```
+
+This guide shows how to work with [triggers in SQL Server](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql?view=sql-server-ver16). There are some syntax differences for MySQL (and other database systems) when creating triggers, but the concepts are similar. Please consult the [MySQL reference manual](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html) if working with MySQL triggers.
+
+## In this Guide
+
+Before showing how to use triggers in SQL Server, the first sections of this guide describe some basic database concepts that are needed to explain triggers:
+
+- [Primary and foreign keys](#primary-and-foreign-keys) are described, and [an example database schema](#primaryforeign-keys-example) is introduced to show how they can create associations between tables.
+
+- [Referential integrity](#referential-integrity) is defined. This section describes why triggers are sometimes used to maintain referential integrity.
+
+After introducing these concepts, the later sections of this guide show how to work with triggers:
+
+- The different [types of triggers](#types-of-triggers) are described.
+
+- The [special database objects](#special-database-objects-associated-with-triggers) `INSERTED` and `DELETED` are explained.
+
+- The [`CREATE TRIGGER` syntax](#create-trigger-statements) is introduced.
+
+- Examples of how to work with an [`INSTEAD OF` trigger](#instead-of-trigger-example) and an [`AFTER` trigger](#after-trigger-example) are shown.
+
+## Primary and Foreign Keys
+
+To understand the examples of triggers later in this guide, it is important to understand the distinction between primary and foreign keys:
+
+- In a relational database, a *primary key* is a table column that uniquely identifies each record in a table. Primary keys must contain unique values. They cannot contain NULL values. A table cannot have more than one primary key.
+
+- A *foreign key* is a column that associates a record in a table with another record in a different table. The value of the foreign key matches the value of the primary key of the associated record. Foreign keys act as a cross-reference between tables.
+
+## Primary/Foreign Keys Example
+
+Consider a database that consists of `Customer`, `Order`, and `OrderItem` tables. The primary keys in the table schemas are denoted with `PK`, and the foreign keys are denoted with `FK`:
+
+| Customer        | Order            | OrderItem               |
+|-----------------|------------------|-------------------------|
+| CustomerId (PK) | OrderId (PK)     | OrderItemId (PK)        |
+| LastName        | CustomerId (FK)  | OrderItemDescription    |
+| FirstName       | OrderItemId (FK) |
+
+- In this schema, a Customer may have multiple Orders associated with them. The `CustomerId` foreign key of an Order associates it with a record in the Customer table. An Order can only be associated with a single Customer.
+
+- Similarly, each Order is associated with a single OrderItem, via the `OrderItemId` foreign key. An OrderItem can be appear in multiple Orders.
+
+The SQL Server syntax for creating these tables is as follows:
+
+```file
+CREATE TABLE Customer (
+    CustomerId INT NOT NULL PRIMARY KEY,
+    LastName   VARCHAR(50) NOT NULL,
+    FirstName  VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE Order (
+    OrderId INT NOT NULL PRIMARY KEY,
+    CustomerId INT FOREIGN KEY REFERENCES Customer(CustomerId),
+    OrderItemId NOT NULL FOREIGN KEY REFERENCES OrderItem(OrderItemId)
+);
+
+CREATE TABLE OrderItem (
+    OrderItemId INT NOT NULL PRIMARY KEY,
+    OrderItemDescription VARCHAR(255)
+);
+```
+
+The primary key of each table is unique for each record in the table. This schema *does not* ensure that the values of other columns are unique. For example, there may be two different OrderItems with the same `OrderItemDescription`. If you want these values to be unique, you can use a trigger to enforce that condition. The [`INSTEAD OF` Trigger Example](#instead-of-trigger-example) section later in this guide shows how to implement this use case.
 
 ## Referential Integrity
 
-An important concept for SQL Triggers is *referential integrity*.
+Another use case for triggers is enforcing *referential integrity* in a database. An implementation of this use case is shown in the [`AFTER` Trigger Example](#after-trigger-example) section later in this guide.
 
-A referential integrity is a restriction or constraint in the database that enforces the relationship between two tables. It requires that the values in a foreign key column must either be present in the primary key, referenced by the foreign key or must be null.
+Referential integrity refers to the integrity of the primary/foreign key relationships between tables. For example:
 
-By default, database servers ensures that you do not violate the referential integrity. Inherently, there are no provisions in most database server implementations for cascading key changes and deletion of child rows, when a parent row is removed from a table. This is where triggers can be defined to fill this void.
+1.  In the [Primary/Foreign Key Example](#primaryforeign-keys-example) section, a Customer may be associated with one or more Orders.
 
-## Primary and Foreign Key
+1.  For each of a Customer's Orders, the `CustomerId` foreign key of the Order references the `CustomerId` primary key of the Customer.
 
-To understand referential integrity, it is important to understand the distinction between a primary and foreign key.
+1.  If a Customer is deleted, then the `CustomerId` foreign key for those Orders no longer references a record in the database. In this circumstance, referential integrity is violated.
 
-A primary key is a relational database table column (or combination of columns) designated to uniquely identify each table record. Primary keys must contain unique values, and cannot contain NULL values. A table cannot have more than one primary key.
+For SQL Server databases, referential integrity can be ensured by setting a *constraint*. A constraint tells the database what to do when an update or delete operation would violate referential integrity. There are four possible constraints that can be set:
 
-A foreign key is the column (or combination of columns) whose values must match that of a primary key in some other table. They effectively act as a cross-reference between the tables.
+- `NO ACTION`: The database raises an error and does not complete the delete or update operation. This is the default constraint for SQL Server.
 
-## Primary/Foreign Key Example
+- `CASCADE`: When a record is deleted, records in another table that reference it via a foreign key are also deleted. If there are any records in a third table reference those cascade-deleted records in the second table, then the cascade is also propagated to that third table and those records are deleted. This cascade chain can continue in this manner.
 
-To better understand this concept, consider a database that consists of `Customer`, `Order`, and `OrderItem` tables. An SQL Server example of a Primary Key (PK) and Foreign Key (FK) definitions are as follows:
+- `SET NULL`: When a record is deleted, the foreign key of any other records that reference it is set to `NULL`.
 
-    CREATE TABLE Customer (
-      CustomerId INT NOT NULL PRIMARY KEY,
-      LastName   VARCHAR(50) NOT NULL,
-      FirstName  VARCHAR(30) NOT NULL
-    );
+- `SET DEFAULT`: When a record is deleted, the foreign key of any other records that reference it is set to the default value for the column.
 
-    CREATE TABLE Order (
-      OrderId INT NOT NULL PRIMARY KEY,
-      CustomerId INT FOREIGN KEY REFERENCES Customer(CustomerId),
-      OrderItemId NOT NULL FOREIGN KEY REFERENCES OrderItem(OrderItemId)
-    );
+Although constraints can be used to ensure referential integrity, it is sometimes useful to use a trigger to maintain integrity instead. In particular, a trigger can execute statements that work around limitations of the constraints listed above. For example:
 
-    CREATE TABLE OrderItem (
-      OrderItemId INT NOT NULL PRIMARY KEY,
-      OrderItemDescription VARCHAR(255)
-    );
+- The `CASCADE` constraint is limited to cascading changes to a single referencing table.
 
-The key associations between the three tables can be represented as shown described below:
+- In other words, if there are two child tables that both directly reference the same parent table with a foreign key, then `CASCADE` cannot propagate changes to both children.
 
-| Customer        | Order           | OrderItem               |
-| --------------- |-----------------| ------------------------|
-| CustomerId (PK) | OrderId(PK)     | OrderItemId(PK)         |
-| LastName        | CustomerId(FK)  | OrderItemDescription    |
-| FirstName       | OrderItemId(FK) |
-
-From the `Customer` table definition above, `CustomerId` is a unique value associated with each customer (row) in the `Customer` table. Hence, `CustomerId` is defined as a Primary Key for the `Customer` table.
-
-In the `OrderItem` table, the `OrderItemId`, the primary key, is a unique value associated with each order item (row) in the `OrderItem` table.
-
-Similarly, `OrderId`, the primary key, is a unique value associated with each order (row) in the `Order` table. `CustomerId` in the `Order` table is designated as a foreign key since its value directly maps to the primary key, `CustomerId` in the `Customer` table. `OrderItemId` in
-`Order` table is also designated as a foreign key since its value directly maps to the primary key in the `OrderItem` table.
-
-{{< note >}}
-The syntax for defining primary keys and foreign keys is slightly different in MySQL but identical in concept. Please consult the [MySQL reference manual](https://dev.mysql.com/doc/refman/8.0/en/ansi-diff-foreign-keys.html) for the subtle syntactical differences.
-{{</ note >}}
-
-## What are Triggers?
-
-To preserve the integrity of a database in terms of maintaining table relationships that have (key) associations, Triggers are utilized. A database Trigger takes the form of procedural code that is automatically executed in response to certain events on a particular table or view in a database. Again, the Trigger is almost exclusively used for maintaining the integrity of the information in the database.
-
-Triggers can be defined to run instead of or after Data Manipulation Language (DML) actions such as Insert, Update, and Delete statements.
-
-For example, in the three table model above, if a particular customer row (referenced by `CustomerId`) is deleted from the `Customer` table, any reference (row) to that `CustomerId` in the `Order` table would also have to be deleted as well. This maintains the integrity of the database. Failure removing the associated record (row) in the `Order` table would violate the integrity of the database. This is because the `CustomerId` would be referenced in the `Order` table without having a corresponding record in `Customer` table. This is referred to as a *dangling record*.
+- In this scenario, a trigger can be used instead to update or delete records in the child tables when the parent table is changed.
 
 ## Types of Triggers
 
-Two types of Triggers are implemented in most commercial relational database systems:
+Two types of triggers are available for SQL Server:
 
-1. **INSTEAD OF trigger (also known as Before Trigger):**
+-   `INSTEAD OF` trigger:
 
-   *INSTEAD OF* trigger, as their name implies, allows you to skip the DML statements (typically, `Insert`, `Update`, or `Delete`) and execute other statements. Things to be cognizant of when using `Instead Of` triggers include:
+    The `INSTEAD OF` trigger allows you to bypass `INSERT`, `UPDATE`, or `DELETE` Data Manipulation Language (DML) statements and execute other statements instead. An `INSTEAD OF` trigger always overrides the triggering action. One `INSTEAD OF` trigger can be defined per `INSERT`, `UPDATE`, or `DELETE` action for a given table.
 
-   - An `Instead Of` trigger always overrides the triggering action. If an `Instead Of` trigger is defined to execute on an `INSERT` statement, then once the `INSERT` statement is executed, control is immediately passed to the `Instead Of` trigger. This effectively overrides the `Insert` statement.
+    {{< note >}}
+    MySQL does not have an `INSTEAD OF` trigger. [The `BEFORE` trigger](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html) is available to execute similar (but not identical) logic for MySQL databases.
+    {{< /note >}}
 
-   - At most, one `Instead Of` trigger can be defined per action for a given table.
+-   `AFTER` trigger:
 
-1. **After Trigger:**
-
-   The `After Trigger` is fired after the execution of the DML action. Following are some of the key features of the `After Trigger`:
-
-   - The After triggers are executed after the DML statements (`Insert`, `Update`, and `Delete`) completes it execution, this trigger is fired.
-   -  A database action cannot be canceled using an `After Trigger`. This is due to the action having already been completed.
-   - One or more `After Triggers` per action can be defined on a table, but having more than one adds to the complexity of code maintenance.
-   - After triggers cannot be defined on database Views.
+    The `AFTER` trigger is fired after the execution of a DML action. An `AFTER` trigger is only run if the action that triggered it succeeds. `AFTER` triggers cannot be defined on database Views. One or more `AFTER` triggers per `INSERT`, `UPDATE`, or `DELETE` action can be defined on a table, but having more than one can increase your database code complexity.
 
 ## Special Database Objects Associated With Triggers
 
-Triggers use two special database objects, `INSERTED` and `DELETED`, to access rows affected by the database actions. Within the scope of a trigger, the `INSERTED` and `DELETED` objects have the identical columns as the affected trigger’s table. These database objects can
-be referenced as tables within the confines of the trigger code logic.
+Triggers use two special database objects, `INSERTED` and `DELETED`, to access rows affected by database changes. These database objects can be referenced as tables within the scope of a trigger's code. The `INSERTED` and `DELETED` objects have the same columns as the affected table.
 
-The `INSERTED` table contains all the new values; whereas, the `DELETED` table contains old, removed values. These special database objects can be used as follows:
+The `INSERTED` table contains all the new values from the action that caused the trigger to run. The `DELETED` table contains old, removed values from the action. The `INSERTED` and `DELETED` tables are available for different triggers as follows:
 
-1. An `Insert` trigger - The `INSERTED` table determines which rows were added to the affected table.
-1. A `Delete` trigger - The `DELETED` table determines which rows were removed from the affected table.
-1. An `Update` trigger - The `INSERTED` table is used to view the new or updated values of the affected table, and the `DELETED` table is used to view the values prior to the `Update`.
+- Triggers for `INSERT` actions: The `INSERTED` table determines which rows were added to the affected table.
 
-## Create Trigger Statement
+- Triggers for `DELETE` actions: The `DELETED` table determines which rows were removed from the affected table.
 
-The basic SQL Server syntax for creating an `Instead Of` (Before) trigger is as follows:
+- Triggers for `UPDATE` actions: The `INSERTED` table is used to view the new or updated values of the affected table. The `DELETED` table is used to view the values prior to the `UPDATE` action.
 
-     CREATE TRIGGER <InsteadOfTriggerName>
-     ON <TableName>
-     INSTEAD OF {[INSERT],[UPDATE],[DELETE]}
-     /* Either Insert, Update, or Delete specified */
-     AS
-     BEGIN
-           <series sql code statements>
-     END;
+## Create Trigger Statements
 
-The basic SQL Server syntax for creating an `After Trigger` is as follows:
+The basic SQL Server syntax for creating an `AFTER` trigger is as follows:
 
-    CREATE TRIGGER <AfterTriggerName>
-    ON <TableName>
-    AFTER {[INSERT],[UPDATE],[DELETE]}
-    /* Either Insert, Update, or Delete specified */
-    AS
+```file
+CREATE TRIGGER <AfterTriggerName>
+ON <TableName>
+AFTER {[INSERT],[UPDATE],[DELETE]}
+/* Either INSERT, UPDATE, or DELETE specified */
+AS
+BEGIN
+    /* Series SQL code statements */
+END;
+```
+
+The basic SQL Server syntax for creating an `INSTEAD OF` trigger is as follows:
+
+```file
+CREATE TRIGGER <InsteadOfTriggerName>
+ON <TableName>
+INSTEAD OF {[INSERT],[UPDATE],[DELETE]}
+/* Either INSERT, UPDATE, or DELETE specified */
+AS
+BEGIN
+    /* Series SQL code statements */
+END;
+```
+
+## AFTER Trigger Example
+
+This example shows how to maintain referential integrity for the tables defined in the [Primary/Foreign Keys Example](#primaryforeign-keys-example) section. In particular, the trigger code below deletes a Customer's Orders whenever a Customer record is deleted. This trigger is executed when one (or more) records are deleted from the `Customer` table:
+
+```file
+CREATE TRIGGER AfterCustomerDeleteTrigger
+ON             Customer
+AFTER DELETE
+AS
+BEGIN
+    DELETE FROM   Order
+    WHERE DELETED.CustomerId = Order.CustomerId
+END;
+```
+
+- The name of the new trigger is defined on line 1 as `AfterCustomerDeleteTrigger`.
+
+- Lines 2 and 3 associate the trigger with the `Customer` table and with the `AFTER DELETE` operation.
+
+- Lines 6 and 7 delete the associated Order records. The special database object `DELETED` is used to obtain the `customerId` of the deleted Customer.
+
+## INSTEAD OF Trigger Example
+
+This example shows how to validate new records created for the tables defined in the [Primary/Foreign Keys Example](#primaryforeign-keys-example) section. In particular, the trigger code below ensures that every record in the `OrderItem` table has a unique `OrderItemDescription` value. This trigger is executed when one (or more) records are inserted into the `OrderItem` table:
+
+```file
+CREATE TRIGGER InsteadOfOrderItemInsertTrigger
+ON OrderItem
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @OrderItemId INT,
+            @OrderItemDescription VARCHAR(255)
+
+    SELECT @OrderItemId = INSERTED.OrderItemId,
+            @OrderItemDescription = INSERTED.OrderItemDescription
+    FROM INSERTED
+
+    IF (EXISTS(SELECT  OrderItemDescription
+        FROM OrderItem
+        WHERE OrderItemDescription = @OrderItemDescription))
     BEGIN
-         <series sql code statements>
-    END;
-
-{{< note >}}
-There are some subtle syntax differences for MySQL (and other database systems) when creating triggers, but the concept is identical. Please consult the [MySQL reference manual](https://dev.mysql.com/doc/refman/8.0/en/trigger-syntax.html) for the subtle syntactical differences.
-{{</ note >}}
-
-## Trigger Examples
-
-**Example #1:**
-
-Using the three table example above, create an `After Delete` trigger on the `Customer` table. If a record is deleted from the `Customer` table, any `Order` table rows that contain that `CustomerId` is also deleted. This ensures that the database referential integrity is maintained and that you cannot have any extraneous rows (with non-existent customers) remaining in the `Order` table.
-
-    CREATE TRIGGER AfterCustomerDeleteTrigger
-    ON             Customer
-    AFTER DELETE
-    AS
+        ROLLBACK
+    END
+    ELSE
     BEGIN
-        DELETE FROM   Order
-        WHERE DELETED.CustomerId = Order.CustomerId
-    END;
+        INSERT INTO OrderItem
+        VALUES (@OrderItemId, @OrderItemDescription)
+    END
+END;
+```
 
-{{< note >}}
-The `After Trigger` is called when you delete one (or more) customers from the `Customer` table. The special database object `DELETED` is used to obtain the customer Id (or customer Id’s, if many customers are deleted), and to delete the requisite record(s) in the `Order` table, that contain the Customer Id (or Customer Id’s, in the case of many customers).
-{{</ note >}}
+- The name of the new trigger is defined on line 1 as `InsteadOfOrderItemInsertTrigger`.
 
-**Example #2:**
+- Lines 2 and 3 associate the trigger with the `OrderItem` table and with the `INSTEAD OF INSERT` operation. Whenever an `INSERT` statement would be executed on the `OrderItem` table, this trigger is executed instead. The normal `INSERT` action is *not* executed.
 
-Create an `Instead Of` Insert trigger on the `OrderItem` table, that checks to ensure that the `OrderItemDescription` is not already existing in the table. If it exists, roll back the `Insert` transaction and if not, insert a row into that table. Following is the definition and code for this example:
+- Lines 6-11 retrieve the new `OrderItemId` and `OrderItemDescription` values that would have been inserted by the `INSERT` action. The special database object `INSERTED` is used to obtain these values.
 
+- Lines 13-15 check if the new `OrderItemDescription` value already exists for a record in the `OrderItem` table.
 
-    CREATE TRIGGER InsteadOfOrderItemInsertTrigger
-    ON OrderItem
-    INSTEAD OF INSERT
-    AS
-    BEGIN
-         DECLARE @OrderItemId INT,
-                 @OrderItemDescription VARCHAR(255)
+- Lines 16-18 prevent a change to the database if the new `OrderItemDescription` already exists.
 
-         SELECT @OrderItemId = INSERTED.OrderItemId,
-                @OrderItemDescription = INSERTED.OrderItemDescription
-         FROM INSERTED
-
-         IF (EXISTS(SELECT  OrderItemDescription
-                    FROM OrderItem
-                    WHERE OrderItemDescription = @OrderItemDescription))
-        BEGIN
-             ROLLBACK
-        END
-        ELSE
-            BEGIN
-                INSERT INTO OrderItem
-                VALUES (@OrderItemId, @OrderItemDescription)
-            END
-    END;
-
-{{< note >}}
-In this example, the `Instead Of` trigger is called whenever you attempt to insert a record into the `OrderItem` table. The special database object `INSERTED` is used to obtain the inserted `OrderItemId` and `OrderItemDescription`. If `OrderItemDescription` already exists in the `OrderItem` table, roll back the transaction (and refuse the insert); otherwise, insert the record, which was the actual intent before the `Instead Of` trigger was executed.
-{{</ note >}}
-
+- Lines 19-23 insert the new `OrderItemId` and `OrderItemDescription` into the `OrderItem` table if the `OrderItemDescription` does not exist in the table yet. These lines are needed because the original `INSERT` action that caused this `INSTEAD OF` trigger to run is not actually executed.
 
 ## Conclusion
 
-SQL triggers are valuable code segments that can be applied either before/after an `Insert`, `Update`, or `Delete` statement is executed on a given table to ensure that referential integrity is maintained in a database. Additionally, when triggers are employed, the use of the `INSERTED`
-and `DELETED` special database objects can be used within the logic of the SQL trigger.
+In SQL Server, triggers are code segments that can be executed either **instead of** or **after** an `INSERT`, `UPDATE`, or `DELETE` statement. Triggers are associated with a table when they are defined. Within the scope of a trigger, the `INSERTED` and `DELETED` special database objects can be used to access the new or deleted database data. Triggers can be implemented for different use cases, including logging, data validation, calculating derived data, and enforcing referential integrity.
