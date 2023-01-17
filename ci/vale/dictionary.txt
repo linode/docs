@@ -1285,6 +1285,7 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
 msfvenom
