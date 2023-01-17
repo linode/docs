@@ -12,7 +12,6 @@ modified_by:
   name: Linode
 title_meta: "Using the Delete Command in SQL"
 title: "Developer’s Guide to the Delete Query in SQL"
-enable_h1: true
 contributor:
   name: Martin Heller
 ---

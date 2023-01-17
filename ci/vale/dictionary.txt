@@ -1605,6 +1605,7 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
 promlens
