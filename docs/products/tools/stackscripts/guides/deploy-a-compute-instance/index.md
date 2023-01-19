@@ -36,7 +36,7 @@ Linode does not verify the accuracy of any community submitted StackScripts. Pri
 
 1. Next, select the Linux distribution you'd like to use within the **Select an Image** field. This list is limited to only images that the StackScript has targeted.
 
-1. Complete the remainder of the form by follow the instructions outlined in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
+1. Complete the remainder of the form by follow the instructions outlined in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide.
 
 1. Click on the **Create Linode** button to complete the creation of your new Compute Instance. The StackScript is executed when the instance first boots up.
 

@@ -30,7 +30,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com) with the username and password you created when signing up.
 1.  Click **Create** at the top of the page and select **Linode**.
-1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/guides/choosing-a-distribution/) tab.
+1.  Click **X** to not choose any **Image** in the **Choose a Distribution** section of the [Distributions](/docs/products/compute/compute-instances/guides/distributions/) tab.
 
     ![Creating a receiving Linode](image-selection.png)
 
@@ -139,7 +139,7 @@ Wait for the transfer to complete. Note that this process can take a while, depe
 
 ## Verifying the Disk
 
-After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](/docs/guides/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/guides/linux-static-ip-configuration/) is configured to enable networking with the new IP addresses.
+After the file transfer has completed, you should verify the disk by mounting it on the *receiving* Linode. Ensure that the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is on for the *receiving* Linode or the [Static IP](/docs/products/compute/compute-instances/guides/manual-network-configuration/) is configured to enable networking with the new IP addresses.
 
 1.  Connect to the *receiving* Linode through SSH as `root`.
 
@@ -169,7 +169,7 @@ After the file transfer has completed, you should verify the disk by mounting it
     ```
 
 {{< note >}}
-If the system displays any disk errors, then perform the [Copying the Disk](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
+If the system displays any disk errors, then perform the [Copying the Disk](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/#copying-the-disk) steps again.
 {{< /note >}}
 
 Now the Linode is ready to boot from the disk.

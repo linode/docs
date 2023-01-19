@@ -17,7 +17,7 @@ aliases: ['/guides/keepalived-with-bgp-failover/']
 
 [Keepalived](https://linux.die.net/man/8/keepalived) is one of the most commonly used applications that implements VRRP, a networking protocol that manages IP address assignment and ARP-based failover. It can be configured with additional health checks, such as checking the status of a service or running a custom script. When one of these health checks detects an issue, the instance changes to a fault state and failover is triggered. During these state transitions, additional task can be performed through custom scripts.
 
-The Linode platform is currently undergoing [network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/), which affects IP address assignment and failover. Once this upgrade occurs for the data center and hardware that your Compute Instances reside on, VRRP software like Keepalived can no longer directly manage failover. However, other features of Keepalived can still be used. For instance, Keepalived can continue to run health checks or VRRP scripts. It can then be configured to interact with whichever BGP daemon your system is using to manage IP address assignment and failover.
+The Linode platform is currently undergoing [network infrastructure upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/), which affects IP address assignment and failover. Once this upgrade occurs for the data center and hardware that your Compute Instances reside on, VRRP software like Keepalived can no longer directly manage failover. However, other features of Keepalived can still be used. For instance, Keepalived can continue to run health checks or VRRP scripts. It can then be configured to interact with whichever BGP daemon your system is using to manage IP address assignment and failover.
 
 This guide covers how to configure Keepalived with a simple health check and enable it to control [lelastic](https://github.com/linode/lelastic), a BGP daemon created for the Linode platform.
 
@@ -27,7 +27,7 @@ If you are migrating to BGP-based failover and currently have health checks conf
 
 ## Configure IP Sharing and BGP Failover
 
-Before continuing, IP Sharing and BGP failover must be properly configured on both Compute Instances. To do this, follow the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide, which walks you through the process of configuring failover with lelastic. If you decide to use a tool other than lelastic, you will need to make modifications to some of the commands or code examples provided in some of the following sections.
+Before continuing, IP Sharing and BGP failover must be properly configured on both Compute Instances. To do this, follow the [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide, which walks you through the process of configuring failover with lelastic. If you decide to use a tool other than lelastic, you will need to make modifications to some of the commands or code examples provided in some of the following sections.
 
 ## Install and Configure Keepalived
 
@@ -64,7 +64,7 @@ This section covers installing the keepalived software from your distribution's 
     sudo nano /etc/keepalived/keepalived.conf
     ```
 
-1. Enter the following settings for your configuration into this file. Use the example below as a starting point, replacing each item below with the appropriate values for your Compute Instance. For more configuration options, see [Configuration Options](/docs/guides/ip-failover-legacy-keepalived/#configuration-options).
+1. Enter the following settings for your configuration into this file. Use the example below as a starting point, replacing each item below with the appropriate values for your Compute Instance. For more configuration options, see [Configuration Options](/docs/products/compute/compute-instances/guides/failover-legacy-keepalived/#configuration-options).
 
     - *$password*: A secure password to use for this keepalived configuration instance. The same password must be used for each Compute Instance you configure.
 

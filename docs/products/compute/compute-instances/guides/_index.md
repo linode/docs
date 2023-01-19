@@ -31,7 +31,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 
 - [Manage Disks and Storage](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 - [Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/)
-- [Managing the Kernel](/docs/products/compute/compute-instances/guides/managing-the-kernel/)
+- [Managing the Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/)
 - [Copy a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/)
 - [Copying a Disk to a Different Account](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/)
 

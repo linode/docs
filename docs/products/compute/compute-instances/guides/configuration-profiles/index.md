@@ -42,7 +42,7 @@ When adding or editing a configuration profile on a Compute Instance, the follow
 - **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Unless there is a specific need to run devices in full virtualization, select *paravirtualization*. This is required for features like Block Storage.
 
 - **Boot Settings:**
-    - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [Manage the Kernel on a Compute Instance](/docs/guides/managing-the-kernel-on-a-linode/).
+    - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [Manage the Kernel on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-the-kernel/).
     - **Run Level:** Adjust the [run level](https://en.wikipedia.org/wiki/Runlevel) of the OS to allow for advanced diagnostics. Recommended setting: *Run Default Level*.
     - **Memory Limit:** Limits the amount of memory that the Compute Instance can use. Recommended setting: *Do not set any limits on memory usage*.
 
@@ -55,7 +55,7 @@ When adding or editing a configuration profile on a Compute Instance, the follow
     - **Disable `updatedb`:** Disables `updatedb` cron job to avoid disk thrashing.
     - **Enable modules.dep helper:** Creates a module dependency file for the kernel you run.
     - **Auto-mount devtmpfs:** Controls if pv_ops kernels auto-mount devtmpfs at boot.
-    - **Auto-configure networking:** Automatically configures static networking. See [Network Helper](/docs/guides/network-helper/).
+    - **Auto-configure networking:** Automatically configures static networking. See [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/).
 
 ## Create a Configuration Profile
 
@@ -117,7 +117,7 @@ When a Compute Instance is powered on or rebooted, it uses the settings stored w
 
 ## Clone a Configuration Profile and the Attached Disks
 
-A configuration profile, along with any attached disks, can be duplicated to any *other* Compute Instance on the account. See [Cloning to an Existing Compute Instance](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) for instructions.
+A configuration profile, along with any attached disks, can be duplicated to any *other* Compute Instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) for instructions.
 
 ## Delete a Configuration Profile
 

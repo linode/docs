@@ -36,9 +36,9 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Configure a Firewall for Terraria
 
@@ -89,7 +89,7 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
         sudo apt install ufw
 
-2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/guides/lish/):
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](/docs/products/compute/compute-instances/guides/lish/):
 
         sudo ufw allow ssh
         sudo ufw allow 7777/tcp

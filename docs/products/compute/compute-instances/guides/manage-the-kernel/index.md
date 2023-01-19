@@ -33,7 +33,7 @@ Most of the distribution images available on Linode use the upstream distributio
 
 There are may ways you can determine which kernel version is installed on your Linux system. The following instructions cover the most common methods:
 
-1.  Log in to the Compute Instance through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to the Compute Instance through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Run one of the following commands to display the kernel version:
 
@@ -86,7 +86,7 @@ Follow these steps if the Compute Instance is using a Linode kernel:
 
 Follow these steps if the Compute Instance is using an upstream kernel (the default for most new instances created after August 2018):
 
-1.  Log in to the Compute Instance through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to the Compute Instance through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Upgrade any system packages related to the kernel:
 
@@ -170,7 +170,7 @@ If your system does not boot and instead shows a GRUB command line prompt in Lis
 
 For new Compute Instances, an upstream kernel is already installed on your system and you **do not need to follow these steps**. In the case of older instances, this section outlines how to get both an upstream kernel (and GRUB) installed and configured on your system.
 
-1.  Log in to the Compute Instance through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to the Compute Instance through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Update your package management system and install the Linux kernel and GRUB 2. Choose `/dev/sda` if you're asked which disk to install to during installation. Linode provides the GRUB bootloader, so your system only needs to provide a `grub.cfg` file.
 
@@ -219,7 +219,7 @@ For new Compute Instances, an upstream kernel is already installed on your syste
     grub  initramfs-linux-fallback.img  initramfs-linux.img  vmlinuz-linux
     ```
 
-1.  Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/guides/lish/) and [Glish](/docs/guides/glish/). This is outlined in the following steps.
+1.  Next, configure the serial console and other GRUB settings so you can use [Lish](/docs/products/compute/compute-instances/guides/lish/) and [Glish](/docs/products/compute/compute-instances/guides/glish/). This is outlined in the following steps.
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS 7 you should have something similar to:
 

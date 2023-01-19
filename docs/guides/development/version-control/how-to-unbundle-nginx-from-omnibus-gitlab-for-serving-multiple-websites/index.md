@@ -31,9 +31,9 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started guide](/docs/guides/getting-started/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started guide](/docs/products/platform/get-started/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide has been tested with Ubuntu 14.04 LTS and 16.04 LTS. Some commands will be slightly different for each version, so be sure to read each step carefully for version-specific instructions.
 

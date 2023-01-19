@@ -18,33 +18,33 @@ aliases: ['/guides/ip-failover-bgp-frr/']
 ---
 
 {{< note >}}
-Not all data centers support configuring IP failover over BGP. Review the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
+Not all data centers support configuring IP failover over BGP. Review the [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) to learn more about IP Sharing / IP failover availability within each data center.
 {{< /note >}}
 
-This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure failover between two Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. These instructions supplement the general [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide and are intended as an advanced alternative to lelastic when more control and customization is needed.
+This guide covers using the open source [FRRouting (FRR)](http://docs.frrouting.org/en/latest/overview.html#about-frr) tool to configure failover between two Linode Compute Instances. FRR is a routing service that uses BGP to monitor and fail over components in a high availability configuration. These instructions supplement the general [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide and are intended as an advanced alternative to lelastic when more control and customization is needed.
 
 ## Before You Begin
 
 Prior to following this guide, ensure the following has been done on each Compute Instance used within your IP failover strategy.
 
-1. Read through the [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about how failover is implemented within Linode Compute.
+1. Read through the [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about how failover is implemented within Linode Compute.
 
-1. Set the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [update the hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file) for each Compute Instance.
+1. Set the [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [update the hosts file](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file) for each Compute Instance.
 
 1. Verify Python3 is installed. See [FRR's official documentation](http://docs.frrouting.org/en/latest/installation.html#python-dependency-documentation-and-tests) to learn about FRR's Python dependencies.
 
 ## Configure Failover
 
-These instructions enable you to configure failover using FRR, which is very configurable and can be used for advanced failover implementation. This guide depends on the general [Configuring Failover on a Compute Instance](/docs/guides/ip-failover/) guide for many steps.
+These instructions enable you to configure failover using FRR, which is very configurable and can be used for advanced failover implementation. This guide depends on the general [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide for many steps.
 
 To configure failover, complete each section in the order shown:
 
-1. [Configuring Failover on a Compute Instance > Create and Share the Shared IP Address](/docs/guides/ip-failover/#create-and-share-the-shared-ip-address)
+1. [Configuring Failover on a Compute Instance > Create and Share the Shared IP Address](/docs/products/compute/compute-instances/guides/failover/#create-and-share-the-shared-ip-address)
 1. For *each* Compute Instance:
-      - [Configuring Failover on a Compute Instance > Add the Shared IP to the Networking Configuration](/docs/guides/ip-failover/#add-the-shared-ip-to-the-networking-configuration)
+      - [Configuring Failover on a Compute Instance > Add the Shared IP to the Networking Configuration](/docs/products/compute/compute-instances/guides/failover/#add-the-shared-ip-to-the-networking-configuration)
       - [Install FRR](#install-frr)
       - [Configure FRR](#configure-frr)
-1. [Configuring Failover on a Compute Instance > Test Failover](/docs/guides/ip-failover/#test-failover)
+1. [Configuring Failover on a Compute Instance > Test Failover](/docs/products/compute/compute-instances/guides/failover/#test-failover)
 
 ## Install FRR
 
@@ -152,7 +152,7 @@ With FRR installed, you can now configure it to enable IP failover.
     - **Role** (`[ROLE]`): The role of this Compute Instance within your failover strategy.
       - `primary`: All requests are routed to this Compute Instance, provided it is accessible.
       - `secondary`: If the `primary` instance fails, all requests are routed to this Compute Instance, provided it is accessible.
-    - **Data center ID** (`[DC_ID]`): The ID of your data center. See [IP Sharing Availability](/docs/guides/ip-failover/#ip-sharing-availability) for the corresponding ID.
+    - **Data center ID** (`[DC_ID]`): The ID of your data center. See [IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability) for the corresponding ID.
 
 1.  Edit the `/etc/frr/frr.conf` file and add the following lines. Ensure you replace any instances of `[SHARED_IP]`, `[HOSTNAME]`, `[ROLE]`, and `[DC_ID]` as outlined above.
 

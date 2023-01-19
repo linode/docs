@@ -38,11 +38,11 @@ Commonly, the Linux administration role typically involves:
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -286,7 +286,7 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
 
 {{< note type="alert" respectIndent=false >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/guides/set-up-and-secure/) of all additional access that you grant to third parties.
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/products/compute/compute-instances/guides/set-up-and-secure/) of all additional access that you grant to third parties.
 {{< /note >}}
 
 ### Upload Files to a Remote Server

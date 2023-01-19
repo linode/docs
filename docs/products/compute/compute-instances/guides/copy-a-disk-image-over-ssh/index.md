@@ -31,7 +31,7 @@ While this guide has been written to accommodate computers running Linux as thei
 
 ### Boot into Rescue Mode
 
-1.  Boot the *origin* Compute Instance into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/guides/lish/).
+1.  Boot the *origin* Compute Instance into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Set a root password for the rescue system and start the SSH server:
 
@@ -110,7 +110,7 @@ Once the copy has completed, verify it by mounting the image on the receiving sy
 
 ## Upload a Disk over SSH
 
-In some cases, it is necessary to upload your disk image to a new server. For example, if you previously downloaded your Compute Instance's disk and deleted the instance to halt billing on it, you can create a new Compute Instance at a later date and upload the disk to resume your services. This section of the guide assumes that you are creating a new Compute Instance with the default primary and swap disk as outlined in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
+In some cases, it is necessary to upload your disk image to a new server. For example, if you previously downloaded your Compute Instance's disk and deleted the instance to halt billing on it, you can create a new Compute Instance at a later date and upload the disk to resume your services. This section of the guide assumes that you are creating a new Compute Instance with the default primary and swap disk as outlined in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide.
 
 1.  Once you've created a Compute Instance with enough disk space available to accommodate your disk image, prepare the new instance to receive this image. This is completed by first deleting the primary disk created by default, and keeping the swap disk. A swap disk typically starts at 256 MB or 512 MB in size, but can be larger or smaller depending upon your needs.
 

@@ -18,7 +18,7 @@ aliases: ['/guides/ip-failover-keepalived/','/guides/ip-failover-legacy-keepaliv
 ---
 
 {{< note >}}
-Not all data centers supports configuring IP failover through keepalived. Review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) to learn more about IP Sharing / IP failover availability within each data center.
+Not all data centers supports configuring IP failover through keepalived. Review the [Configuring IP Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) to learn more about IP Sharing / IP failover availability within each data center.
 {{< /note >}}
 
 This guide covers using keepalived to configure IP failover with Linode Compute Instances. Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In a typical setup with IP failover, there is one **primary** Instance and one or more **secondary** Instances.
@@ -30,7 +30,7 @@ This guide covers using keepalived to configure IP failover with Linode Compute 
 
 Linode's IP failover feature using keepalived is compatible with various IP address types in certain data centers. Review the list below to learn what types are available in your data center.
 
-- **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. See [Configure Failover > IP Sharing Availability](/docs/guides/ip-failover/#configure-failover) for a list of data centers that support ARP-based failover.
+- **Public and Private IPv4 addresses:** Can be configured in a supported data center using keepalived. You must first configure Linode's IP Sharing feature as outlined in the [Configuring IP Sharing](#configuring-ip-sharing) section. See [Configure Failover > IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#configure-failover) for a list of data centers that support ARP-based failover.
 
 - **IPv6 addresses:** IP failover with IPv6 addresses is not currently supported.
 
@@ -38,7 +38,7 @@ Linode's IP failover feature using keepalived is compatible with various IP addr
 
 ## Configuring IP Sharing
 
-Before using keepalived to configure IP failover for a public or private IPv4 address (not VLANs), you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
+Before using keepalived to configure IP failover for a public or private IPv4 address (not VLANs), you first need to use Linode's IP Sharing feature to share your IP address with other Compute Instances. To do so, follow the instructions within the **Configuring IP Sharing** section of the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) guide for *each secondary* Compute Instance.
 
 ## Installing and Configuring keepalived
 

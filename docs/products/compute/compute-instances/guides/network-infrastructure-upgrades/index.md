@@ -19,7 +19,7 @@ For most customers, these upgrades are performed seamlessly behind the scenes. F
 
 ## What's New?
 
-- **IP Sharing (IP failover) availability:** The IP Sharing feature, as it exists prior to these upgrades, enables IP failover for public IPv4 addresses in select data centers. After the upgrades have been completed, this feature will be expanded to all data centers and will also support IPv6 routed ranges (/64 and /56). See our [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover.
+- **IP Sharing (IP failover) availability:** The IP Sharing feature, as it exists prior to these upgrades, enables IP failover for public IPv4 addresses in select data centers. After the upgrades have been completed, this feature will be expanded to all data centers and will also support IPv6 routed ranges (/64 and /56). See our [Configuring IP Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about configuring IP failover.
 
 - **VLAN availability:** [VLANs](/docs/products/networking/vlans/), which enable private layer 2 networking, will be launched across all data centers soon after the network upgrades have occurred.
 
@@ -31,9 +31,9 @@ The following is a list of breaking changes and any action that may be required 
 
     *Action:* If you are using /116 for IPv6 failover, consider using an IPv6 /64 instead.
 
-- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/guides/ip-failover-legacy-keepalived/)).
+- **IP failover through BGP:** IP failover (IP Sharing) for public IPv4 addresses and IPv6 routed ranges will be facilitated through BGP instead of ARP (configured through [keepalived](/docs/products/compute/compute-instances/guides/failover-legacy-keepalived/)).
 
-    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have been completed.
+    *Action:* If you have previously configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about configuring IP failover using BGP. You can configure BGP ahead of time, but will not be able to test or use the configuration until after the network upgrades have been completed.
 
 ## Which Data Centers Have Been Upgraded?
 
@@ -56,11 +56,11 @@ Review the table below to learn which data centers have been upgraded with the l
 A status of **complete** indicates that all new Compute Instances (and *most* existing instances) are located on fully upgraded hardware. Compute Instances using legacy features, such as ARP-based failover and /116 ranges, may still be located on hardware that hasn't yet been upgraded. These customers have been notified and a migration timeline has been shared.
 
 {{< note >}}
-If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). See [Configuring IP Failover](/docs/guides/ip-failover/).
+If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). See [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/).
 {{< /note >}}
 
 ## What Action is Required?
 
 - **Migration of Compute Instances:** Once a data center has started the network infrastructure upgrades, live migrations will be scheduled for all Compute Instances that do not reside on upgraded hardware. This live migration will occur while your Compute Instance is powered on and operating normally. After the migration has been successfully completed, there may be a brief period of downtime while the Compute Instance is rebooted.
 
-- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/guides/ip-failover/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after your Compute Instances are migrated to upgraded hardware.
+- **Update IP failover configuration:** If you have configured IP failover for a public IPv4 address, review the [Configuring IP Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/) guide to learn more about configuring IP failover using BGP. If you were using a now deprecated IPv6 /116 pool for IP failover, consider using an IPv6 /64 range instead. You can configure BGP ahead of time, but will not be able to test or use the configuration until after your Compute Instances are migrated to upgraded hardware.

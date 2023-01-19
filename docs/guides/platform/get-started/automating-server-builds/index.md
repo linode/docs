@@ -33,20 +33,20 @@ Using a *golden image* as a configuration base is a frequent starting point in c
 1. Configure all packages, applications, and system settings as desired.
 1. Remove any system users you don't want to appear on your duplicated systems.
 1. Shut down the Linode and either:
-    - [Clone the disk](/docs/guides/disks-and-storage/#cloning-a-disk).
+    - [Clone the disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#cloning-a-disk).
     - Alternatively, [take a snapshot](/docs/products/storage/backups/guides/take-a-snapshot/) of the disk with Linode Backups.
 1. Store your golden image. This can be done in a variety of ways. A few examples are:
   - As a snapshot using [Linode Images](/docs/products/tools/images/guides/capture-an-image/) or [Linode Backups](/docs/products/storage/backups/guides/take-a-snapshot/).
   - In a [version control](/docs/guides/introduction-to-version-control/) system running on a remote or local server.
-  - On [local](/docs/guides/copying-a-disk-image-over-ssh/) storage.
+  - On [local](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/) storage.
 
 ### Restore a Golden Image
 
-1. Copy the duplicate disk to your other Linodes, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/guides/copying-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) to the desired Linodes.
-1. Create [configuration profiles](/docs/guides/linode-configuration-profiles/) on those additional Linodes to boot using the duplicated disk.
+1. Copy the duplicate disk to your other Linodes, either using [the Linode API](/docs/api/linode-instances/#disk-clone) or [manually](/docs/products/compute/compute-instances/guides/copy-a-disk-image-to-a-different-account/#copying-the-disk). If you're using a Linode Backups snapshot, you would [restore it](/docs/products/storage/backups/guides/restore-to-an-existing-linode/) to the desired Linodes.
+1. Create [configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) on those additional Linodes to boot using the duplicated disk.
 1. Any user credentials from the golden image will also be on the duplicated disks so you should change the new system's root password.
-1. Update the new Linode's [hostname](/docs/guides/set-up-and-secure/#update-your-systems-hosts-filesetting-the-hostname).
-1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/guides/linux-static-ip-configuration/#static-network-configuration) on your duplicated disks.
+1. Update the new Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-filesetting-the-hostname).
+1. If your golden system was configured to use a static IP address, you'll also need to [reconfigure the IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration) on your duplicated disks.
 
 ## Third-Party Tools
 

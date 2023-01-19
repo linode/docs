@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: "Use Glish (the Linode Graphical Shell) to access a desktop environment, like Xfce or Gnome, on your web browser."
 keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
-aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/']
+aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-10-12
 modified_by:
@@ -17,7 +17,7 @@ tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
 ---
 
-Glish is the graphical version of [Lish](/docs/guides/lish/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
+Glish is the graphical version of [Lish](/docs/products/compute/compute-instances/guides/lish/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
 
 {{< note >}}
 Linode distribution images do not have any desktop environments pre-installed. While this guide provides instructions for installing Xfce on Debian, you can use any other desktop environment and distribution. Popular desktop environments on Linux include Gnome, KDE, MATE, and Xfce.
@@ -27,14 +27,14 @@ Linode distribution images do not have any desktop environments pre-installed. W
 
 By default, Glish is enabled on all Compute Instances as part of the distro helper configuration tool. There is no additional configuration needed. Glish works by accessing the `tty1` console over the virtual VGA device.
 
-If you have disabled distro helper on your Compute Instance's [Configuration Profile](/docs/guides/linode-configuration-profiles/), manually launch a [getty](https://en.wikipedia.org/wiki/Getty_(Unix)) on `tty1` using the command below. This command may vary depending on the installed distribution.
+If you have disabled distro helper on your Compute Instance's [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/), manually launch a [getty](https://en.wikipedia.org/wiki/Getty_(Unix)) on `tty1` using the command below. This command may vary depending on the installed distribution.
 
 ```command
 exec /sbin/getty -8 38400 tty1 &
 ```
 
 {{< note >}}
-If you are having issues accessing Weblish or Glish, you may be behind a restrictive local firewall. See [Lish Gateways](/docs/guides/lish/#lish-gateways) for a list of data centers, their corresponding gateways, and the ports that are used.
+If you are having issues accessing Weblish or Glish, you may be behind a restrictive local firewall. See [Lish Gateways](/docs/products/compute/compute-instances/guides/lish/#lish-gateways) for a list of data centers, their corresponding gateways, and the ports that are used.
 {{< /note >}}
 
 ## Install a Display Manager and Desktop Environment
@@ -45,9 +45,9 @@ Before using Glish, a display manager and desktop environment must be installed 
 The instructions below install Xfce4 and LightDM on Debian 11. You are not limited to using these applications or this distribution. If you wish to use other software, follow the instructions for that application.
 {{< /note >}}
 
-1. Log in to your Compute Instance using [Lish](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1. Log in to your Compute Instance using [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
-1. Follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
+1. Follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
 
     ```command
     sudo apt update && sudo apt upgrade

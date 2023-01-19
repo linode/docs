@@ -78,7 +78,7 @@ If you are using fsck on a Linode, the easiest and safest way to unmount your di
 
 ### Configuration Profile
 
-If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/guides/linode-configuration-profiles). Apply the changes and reboot the Linode.
+If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/). Apply the changes and reboot the Linode.
 
 ### Manual Unmount
 

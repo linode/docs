@@ -70,8 +70,8 @@ For a full overview of the Cloud Manager and its core features, see the [Overvie
 
 Compute Instances (also frequently called *Linodes*) are virtual machines that can be used for nearly any purpose. Many of our customers use them to host websites and web applications, but they can also be used for development workloads, game servers, big data processing, machine learning, scientific processing, and much more. They come in a few different types, including [Shared CPU](https://www.linode.com/products/shared/), [Dedicated CPU](https://www.linode.com/products/dedicated-cpu/), [High Memory](https://www.linode.com/products/high-memory/), and [GPU](https://www.linode.com/products/gpu/). Each of these are tailored for certain workloads. See the guides below to learn more about creating a Compute Instance, configuring it after deployment, and securing it.
 
-- [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/)
-- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
+- [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/)
+- [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
 ## Create Additional Services
 

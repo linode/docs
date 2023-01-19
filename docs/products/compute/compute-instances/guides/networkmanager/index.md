@@ -18,12 +18,12 @@ aliases: ['/guides/networkmanager/']
 [NetworkManager](https://networkmanager.dev/) is a very popular network configuration utility and is used by default on Fedora, CentOS Stream, CentOS, AlmaLinux 8, and Rocky Linux 8. It can also be easily installed on Arch, Ubuntu, and other distributions.
 
 {{< note >}}
-This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
+This guide serves as a supplement to the main [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide. Please review that guide before making any configuration changes to your Compute Instance.
 {{< /note >}}
 
 ## Configuration Files
 
-Most distributions that use NetworkManager enable the ifcfg-rh plugin be default, which allows NetworkManager to use the older *ifcfg* configuration file format. NetworkManager also supports its own native *keyfile* format. By default, [Network Helper](/docs/guides/network-helper/) uses the *ifcfg* format, so that is what this guide covers.
+Most distributions that use NetworkManager enable the ifcfg-rh plugin be default, which allows NetworkManager to use the older *ifcfg* configuration file format. NetworkManager also supports its own native *keyfile* format. By default, [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) uses the *ifcfg* format, so that is what this guide covers.
 
 - **File location:** `/etc/sysconfig/network-scripts/`
 - **Naming convention:** `ifcfg-[interface]`, replacing *[interface]* with the name of the interface you wish to configure.
@@ -59,7 +59,7 @@ PREFIX0=24
 
 ## Configuring IP Addresses Manually
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
+1. Log in to the [Cloud Manager](https://cloud.linode.com/) and review your Compute Instance's IP addresses. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/). Make a note of the following pieces of information or keep this page accessible so you can reference it later.
 
     - Public IPv4 address(es) and the associated IPv4 gateway
     - Private IPv4 address (if one has been added)
@@ -67,9 +67,9 @@ PREFIX0=24
     - IPv6 /64 or /56 routed range (if one has been added)
     - DNS resolvers (if you want to use Linode's resolvers)
 
-1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
+1. Disable Network Helper on the Compute Instance so that it doesn't overwrite any of your changes on the next system reboot. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#single-per-linode) guide. This guide covers disabling Network Helper *globally* (for all Compute Instances on your account) or just for a single instance.
 
-1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). You may want to consider using Lish to avoid getting locked out in the case of a configuration error.
 
 1. Perform any necessary configuration steps as outlined in the workflows below. You can edit your network configuration file using a text editor like [nano](/docs/guides/use-nano-to-edit-files-in-linux/) or [vim](/docs/guides/what-is-vi/).
 

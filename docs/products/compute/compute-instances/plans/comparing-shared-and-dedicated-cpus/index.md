@@ -29,7 +29,7 @@ The following chart outlines the key differences between shared CPUs and dedicat
 | **Maximum *burst* CPU utilization** | 100% | 100% |
 | **CPU contention** | Can be expected during peak usage. | No. |
 | **Recommended Use Cases** | Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. | Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention. |
-| **Plans** | [Shared CPU](/docs/products/compute/shared-cpu/) | [Dedicated CPU](/docs/products/compute/dedicated-cpu/), [High Memory](/docs/products/compute/high-memory/), [GPU](/docs/products/compute/gpu/) |
+| **Plans** | [Shared CPU](/docs/products/compute/compute-instances/plans/shared-cpu/) | [Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/), [High Memory](/docs/products/compute/compute-instances/plans/high-memory/), [GPU](/docs/products/compute/compute-instances/plans/gpu/) |
 
 ## How Physical CPU Cores Are Managed on Virtual Machines
 
@@ -41,9 +41,9 @@ In a **Dedicated CPU** environment, virtual CPU cores on a Compute Instances are
 
 ## When to Choose Shared or Dedicated CPUs
 
-**Shared CPUs** are more affordable and thus may provide a higher value, especially for workloads that are not CPU intensive and when consistently high CPU performance is not needed. Workloads suited to Shared CPU instances include development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. See [Shared CPU > Recommended Workloads](/docs/products/compute/shared-cpu/#recommended-workloads).
+**Shared CPUs** are more affordable and thus may provide a higher value, especially for workloads that are not CPU intensive and when consistently high CPU performance is not needed. Workloads suited to Shared CPU instances include development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. See [Shared CPU > Recommended Workloads](/docs/products/compute/compute-instances/plans/shared-cpu/#recommended-workloads).
 
-**Dedicated CPUs** are recommended for most production applications and any application that requires 100% sustained usage or might be impacted by resource contention. This includes eCommerce sites, business applications, game servers, CI/CD toolchains, audio and video transcoding, machine learning, scientific computing, high traffic databases, and much more. For more information on these use cases and whether or not your use case may be a good fit for Dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/guides/dedicated-cpu-use-cases/).
+**Dedicated CPUs** are recommended for most production applications and any application that requires 100% sustained usage or might be impacted by resource contention. This includes eCommerce sites, business applications, game servers, CI/CD toolchains, audio and video transcoding, machine learning, scientific computing, high traffic databases, and much more. For more information on these use cases and whether or not your use case may be a good fit for Dedicated CPU, see our guide on [Use Cases for Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/).
 
 The following questions may also guide you in choosing shared CPU cores or dedicated CPU cores.
 
@@ -111,12 +111,12 @@ Generally, when observing the CPU graph, good candidates for an upgrade to a Ded
 
 ## What If I Need More Specialized Resources Than a Dedicated CPU?
 
-If you find that a Dedicated CPU alone is not enough for your workload and you may benefit from something more specialized, then you may be interested in service offerings that come with more or different resources than a Dedicated CPU alone can provide. [High Memory](/docs/products/compute/high-memory/) plans feature higher RAM allocations than a standard plan with relatively fewer vCPUs and less storage. This can help to keep your costs down and provide power to memory-intensive applications.
+If you find that a Dedicated CPU alone is not enough for your workload and you may benefit from something more specialized, then you may be interested in service offerings that come with more or different resources than a Dedicated CPU alone can provide. [High Memory](/docs/products/compute/compute-instances/plans/high-memory/) plans feature higher RAM allocations than a standard plan with relatively fewer vCPUs and less storage. This can help to keep your costs down and provide power to memory-intensive applications.
 
-Additionally, [GPU instances](/docs/products/compute/gpu/) provide access to NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU alone, GPUs can perform computations that process large amounts of data in parallel more efficiently.
+Additionally, [GPU instances](/docs/products/compute/compute-instances/plans/gpu/) provide access to NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU alone, GPUs can perform computations that process large amounts of data in parallel more efficiently.
 
 As of June 16, 2020, all High Memory and GPU plans utilize dedicated CPU cores by default, as part of the package including the specialized resources they provide.
 
 ## How to Upgrade Your Shared Instance
 
-For more information on how to upgrade or resize your shared instance, consult our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide.
+For more information on how to upgrade or resize your shared instance, consult our [Resizing a Linode](/docs/products/compute/compute-instances/guides/resize/) guide.

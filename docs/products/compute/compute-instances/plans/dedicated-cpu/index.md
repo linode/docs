@@ -8,7 +8,7 @@ aliases: ['/products/compute/dedicated-cpu/','/platform/dedicated-cpu/getting-st
 
 Dedicated CPU Compute Instances are virtual machines that provide you with dedicated CPU resources. Their vCPU cores are guaranteed (and, thus, competition-free) so there are no surprises or CPU-related performance degradation. This enables you to run your production applications with confidence that your performance won't be impacted by others. These Compute Instances are CPU-optimized and can sustain CPU resource usage at 100% for as long as your workloads need.
 
-**Dedicated CPU plans are ideal for nearly all production applications and CPU-intensive workloads, including high traffic websites, video encoding, machine learning, and data processing.** If your application would benefit from dedicated CPU cores as well as a larger amounts of memory, see [High Memory Compute Instances](/docs/products/compute/high-memory/).
+**Dedicated CPU plans are ideal for nearly all production applications and CPU-intensive workloads, including high traffic websites, video encoding, machine learning, and data processing.** If your application would benefit from dedicated CPU cores as well as a larger amounts of memory, see [High Memory Compute Instances](/docs/products/compute/compute-instances/plans/high-memory/).
 
 ## Dedicated Competition-Free Resources
 
@@ -16,7 +16,7 @@ A Dedicated CPU Compute Instance provides entire vCPU cores accessible only to y
 
 ## Upgrading from a Shared CPU Instance
 
-Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resize a Compute Instance](/docs/guides/resizing-a-linode/) guide for more details on resizing your Linode to a different plan type.
+Moving from a Shared CPU Instance to a Dedicated CPU Instance is a seamless process that can positively impact your applications and users. Review the [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/) guide to learn more about the differences between Shared and Dedicated CPU plans and when each one might be appropriate. This guide also shows you how to investigate your CPU performance to determine if your application is experiencing resource contention on a Shared CPU Compute Instance. If you wish to upgrade, reference the [Resize a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) guide for more details on resizing your Linode to a different plan type.
 
 ## Recommended Workloads
 
@@ -81,7 +81,7 @@ Depending on the intensity of demands they place on your Linode, [game servers](
 
 ### Audio and Video Transcoding
 
-[Audio and Video Transcoding](/docs/applications/media-servers/) (AKA Video/Audio Encoding) is the process of taking a video or audio file from its original or source format and converting it to another format for use with a different device or tool. Because this is often a time-consuming and resource-intensive task, a Dedicated CPU or [Dedicated GPU](/docs/products/compute/gpu/get-started/) Linode are suggested to maximize performance. [FFmpeg](https://ffmpeg.org/) is a popular open source tool used specifically for the manipulation of audio and video, and is recommended for a wide variety of encoding tasks.
+[Audio and Video Transcoding](/docs/applications/media-servers/) (AKA Video/Audio Encoding) is the process of taking a video or audio file from its original or source format and converting it to another format for use with a different device or tool. Because this is often a time-consuming and resource-intensive task, a Dedicated CPU or [Dedicated GPU](/docs/products/compute/compute-instances/get-started/) Linode are suggested to maximize performance. [FFmpeg](https://ffmpeg.org/) is a popular open source tool used specifically for the manipulation of audio and video, and is recommended for a wide variety of encoding tasks.
 
 ### Big Data and Data Analysis
 

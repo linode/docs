@@ -69,7 +69,7 @@ The global Network Helper setting enables or disables Network Helper on *new* Co
 
 Network Helper can also be enabled or disabled on a specific Compute Instance, regardless of the global setting.
 
-1. Follow the [Editing a Configuration Profile](/docs/guides/linode-configuration-profiles/#editing-a-configuration-profile) instructions.
+1. Follow the [Editing a Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile) instructions.
 
 1. Within the **Edit Configuration** form, scroll down to the **Filesystem/Boot Helpers** section.
 

@@ -16,14 +16,14 @@ Compute Instances can be deployed using the Cloud Manager, the Linode API, or th
 - [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/)
 
 {{< note >}}
-Consider deploying an app from the [Linode Marketplace](/marketplace/apps/) to quickly get up and running with many popular applications, including [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/products/tools/marketplace/get-started/).
+Consider deploying an app from the [Linode Marketplace](https://www.linode.com/marketplace/apps/) to quickly get up and running with many popular applications, including [Wordpress](https://www.linode.com/marketplace/apps/linode/wordpress/), [WooCommerce](https://www.linode.com/marketplace/apps/linode/woocommerce/), [LEMP](https://www.linode.com/marketplace/apps/linode/lemp/), [cPanel](https://www.linode.com/marketplace/apps/cpanel/cpanel/), [Plesk](https://www.linode.com/marketplace/apps/plesk/plesk/), and [Nextcloud](https://www.linode.com/marketplace/apps/linode/nextcloud/). See [How to Use Linode's Marketplace Apps](/docs/products/tools/marketplace/get-started/).
 {{< /note >}}
 
 ## Connect to the Instance
 
 After the Compute Instance is finished provisioning and has fully booted up, you can connect to it through the built-in Lish Console in the Cloud Manager (or via the SSH Lish Gateway) or SSH directly to your new system.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/lish/#through-the-cloud-manager-weblish).
+-   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
@@ -35,7 +35,7 @@ After the Compute Instance is finished provisioning and has fully booted up, you
     - **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
     - **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
 
--   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Compute Instance label. Review [Using the Lish Console > Through SSH](/docs/guides/lish/#through-ssh-using-a-terminal) for more instructions.
+-   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Compute Instance label. Review [Using the Lish Console > Through SSH](/docs/products/compute/compute-instances/guides/lish/#through-ssh-using-a-terminal) for more instructions.
 
     ```command
     ssh -t user@lish-newark.linode.com example-instance

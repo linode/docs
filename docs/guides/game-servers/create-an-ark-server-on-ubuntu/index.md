@@ -36,7 +36,7 @@ Consider using the Linode Marketplace to quickly and automatically deploy an Ark
 
 ## Before You Begin
 
-1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](/docs/guides/getting-started/) guide for instructions.
+1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](/docs/products/platform/get-started/) guide for instructions.
 
 1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
 

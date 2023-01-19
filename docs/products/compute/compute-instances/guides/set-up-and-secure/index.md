@@ -36,9 +36,9 @@ While this guide is optional, it walks you through best practices and covers imp
 
 If you haven't done so already, review the following guides to learn more about using Linode and Compute Instances.
 
-- [Getting Started with Linode](/docs/guides/getting-started/)
-- [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/)
-- [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/)
+- [Getting Started with Linode](/docs/products/platform/get-started/)
+- [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/)
+- [Linode Beginner's Guide](/docs/products/compute/compute-instances/faqs/)
 
 ## View your Instance in the Cloud Manager
 
@@ -48,9 +48,9 @@ Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** 
 
 ## Connect to the Instance
 
-Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/guides/lish/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
+Once the Compute Instance has been created and has finished booting up, you can connect to it. Connecting to your instance is usually done through the SSH (Secure Shell) protocol, though you can use the [Lish Console](/docs/products/compute/compute-instances/guides/lish/) to bypass SSH and connect directly to your instance. The Lish Console can be accessed through a web browser (Weblish) or via SSH on the command line.
 
--   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/guides/lish/#through-the-cloud-manager-weblish).
+-   **Weblish (via the Cloud Manager):** Click the **Launch LISH Console** link at the top right corner of the Compute Instance's detail page. See [Using the Lish Console > Through a Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
@@ -62,7 +62,7 @@ Once the Compute Instance has been created and has finished booting up, you can 
     - **macOS:** The *Terminal* application is pre-installed on macOS. See [Connecting to a Remote Server Over SSH on a Mac](/docs/guides/connect-to-server-over-ssh-on-mac/).
     - **Linux:** You can use a terminal window, regardless of desktop environment or window manager. See [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/)
 
--   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Compute Instance label. Review [Using the Lish Console > Through SSH](/docs/guides/lish/#through-ssh-using-a-terminal) for more instructions.
+-   **Lish (via SSH):** Copy the command from the *LISH Console via SSH* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the one below, only with your username, data center, and Compute Instance label. Review [Using the Lish Console > Through SSH](/docs/products/compute/compute-instances/guides/lish/#through-ssh-using-a-terminal) for more instructions.
 
     ```command
     ssh -t user@lish-newark.linode.com example-instance
@@ -540,7 +540,7 @@ Using a *firewall* to block unwanted inbound traffic to your Compute Instance pr
 
 If for whatever reason you find yourself locked out of your Compute Instance after putting your security controls into place, there are still a number of ways that you can regain access to your instance.
 
-- Access your Compute Instance through our out-of-band [Lish console](/docs/guides/lish/) to regain access to the internals of your system without relying on SSH.
+- Access your Compute Instance through our out-of-band [Lish console](/docs/products/compute/compute-instances/guides/lish/) to regain access to the internals of your system without relying on SSH.
 
 -   If you need to re-enable password authentication and/or root login over ssh to your instance, you can do this by reversing the following sections of this file to reflect these changes
 

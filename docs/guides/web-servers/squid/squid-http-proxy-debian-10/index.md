@@ -38,7 +38,7 @@ The traffic passed from your client to your Squid HTTP proxy will not be encrypt
 
 ## Install Squid
 
-1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
+1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
 
     {{< note respectIndent=false >}}
 This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

@@ -23,7 +23,7 @@ Every Compute Instance is equipped with persistent storage, the amount of which 
 
 The storage space on a Compute Instance can be allocated to individual *disks*. Disks are be used to store any data, including the operating system, applications, and files. Most instances are deployed with two disks. A large primary disk is used to store the Linux distribution, software, and data. There's also a much smaller swap disk, which is used in the event that your instance runs out of memory.
 
-While two disks may be the default, a Compute Instance can be configured to have many more disks. These additional disks can serve a variety of purposes, including dedicated file storage or switching between entirely different Linux distributions. When multiple disks are added, [configuration profiles](/docs/guides/linode-configuration-profiles) are used to determine the disks that are accessible when the instance is powered on, as well as which of those disks serves as the primary root disk.
+While two disks may be the default, a Compute Instance can be configured to have many more disks. These additional disks can serve a variety of purposes, including dedicated file storage or switching between entirely different Linux distributions. When multiple disks are added, [configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) are used to determine the disks that are accessible when the instance is powered on, as well as which of those disks serves as the primary root disk.
 
 ### Add Additional Storage
 
@@ -66,12 +66,12 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
     ![Screenshot of the Add a Disk button](add-disk.png)
 
     {{< note >}}
-    If this button is disabled, all of the instance's storage space has been allocated towards disks. Before continuing, [resize an existing disk](#resize-a-disk) or [upgrade the instance](/docs/guides/resizing-a-linode/) to a larger plan. You'll want to confirm there is enough unallocated storage space to accommodate the desired size of the new disk.
+    If this button is disabled, all of the instance's storage space has been allocated towards disks. Before continuing, [resize an existing disk](#resize-a-disk) or [upgrade the instance](/docs/products/compute/compute-instances/guides/resize/) to a larger plan. You'll want to confirm there is enough unallocated storage space to accommodate the desired size of the new disk.
     {{< /note >}}
 
 1. Select from either the **Create Empty Disk** or **Create from Image** options.
 
-    **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/guides/install-a-custom-distribution/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
+    **Empty disks:** An empty disk can store additional data, be used as a swap disk, or it can be used to manually [install a custom distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/). When creating an empty disk, select the desired *Filesystem*. In most cases, it's recommended to use the *ext4* filesystem. This ensures compatibility with our Backups service. If needed, *ext3* and *raw* disks are also available. If creating a swap disk, select the *swap* option.
 
     **Images:** Selecting an Image allows you to deploy a [Distribution Image](https://www.linode.com/distributions/), a [Custom Image](/docs/products/tools/images/), or a Recovery Image to the new disk. When creating a disk based on an Image, select the *Image*, *Root Password*, and optionally add *SSH Keys*.
 
@@ -79,18 +79,18 @@ If you wish to deploy an Image to a new disk, see the [Deploy an Image to a Disk
 
 1. Click the **Add** button to create the disk. The progress can be monitored from the new entry appearing for the disk within the Compute Instance's **Storage** page.
 
-Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide or the [Configuration Profiles](/docs/guides/linode-configuration-profiles) guide for additional details.
+Once a disk has been created, you will need to modify the existing configuration profile or add a new configuration profile. Specifically, the disk will need to be assigned to a device and optionally marked as the root device if this new disk will function as the primary boot disk. See the [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/) guide or the [Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide for additional details.
 
 ## Resize a Disk
 
 The size of a Compute Instance's disk can be increased or decreased as needed. When resizing, it's important to keep the following restrictions in mind:
 
 - The **maximum size** of a disk is equal to the current size of the disk and the remaining unallocated storage space on the Compute Instance. The maximum size is displayed underneath the **Size** field when resizing the disk.
-- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Compute Instance's command line (through [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or [Lish](/docs/guides/lish/)).
+- The **minimum size** of a disk is equal to the current disk usage within the filesystem. This number is not displayed in the Cloud Manager. To determine how much space the files on the disk are using, run the command `df -h` within the Compute Instance's command line (through [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or [Lish](/docs/products/compute/compute-instances/guides/lish/)).
 - **Raw disks** can only be resized to a larger disk.
 - Disks with **custom partitions** cannot be resized.
 
-The following instructions cover how to resize a disk. For instructions regarding resizing a Compute Instance's plan (including downgrading to a smaller plan), see the [Resizing a Compute Instance](/docs/guides/resizing-a-linode/) guide.
+The following instructions cover how to resize a disk. For instructions regarding resizing a Compute Instance's plan (including downgrading to a smaller plan), see the [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/) guide.
 
 1. Navigate to the **Storage** tab on the Compute Instance you wish to edit. See [View Disks](#view-disks).
 
@@ -114,7 +114,7 @@ The following instructions cover how to resize a disk. For instructions regardin
 
 ## Clone a Disk
 
-A disk can be duplicated onto the same Compute Instance or any other instance on the account. See [Cloning to an Existing Compute Instance](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) for instructions.
+A disk can be duplicated onto the same Compute Instance or any other instance on the account. See [Cloning to an Existing Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) for instructions.
 
 ## Delete a Disk
 

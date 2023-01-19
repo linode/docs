@@ -25,7 +25,7 @@ Linode does not offer private IPv6 address allocations. Our IPv6 accounting was 
 {{< note >}}
 In order for your Compute Instance to receive its SLAAC address, it must respond to IPv6's ping protocol.
 
-Please be sure to allow ICMPv6 in your [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall). For example, in `iptables`, you can issue the following commands:
+Please be sure to allow ICMPv6 in your [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall). For example, in `iptables`, you can issue the following commands:
 
 ```command
 ip6tables -A INPUT -p icmpv6 -j ACCEPT
@@ -39,7 +39,7 @@ You can find your Compute Instance's IPv6 address using the Cloud Manager or the
 
 ### Using the Cloud Manager
 
-See the [Viewing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) section of the Managing IP Addresses guide.
+See the [Viewing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) section of the Managing IP Addresses guide.
 
 ### Linux Terminal
 
@@ -76,7 +76,7 @@ If your Compute Instance does not have the correct IPv6 address or any IPv6 addr
 
 ## Additional IPv6 Addresses
 
-If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guides for instructions on adding an IPv6 range and to learn how to configure it within your system.
+If a single IPv6 address isn't sufficient for your application, additional IPv6 addresses are provided through large address blocks, also called routed ranges or pools. From these ranges, you can manually configure individual IPv6 addresses on your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guides for instructions on adding an IPv6 range and to learn how to configure it within your system.
 
 The size of each block is identified through a prefix. These are indicated with a slash `/` followed by a number in base 10: the length of the network **prefix** in bits. This translates to the number of available addresses that are available in the range (or pool). For example, the prefix `/48` contains 2<sup>128-48</sup> = 2<sup>80</sup> = 1,208,925,819,614,629,174,706,176 addresses. For an address like `2001:db8:1234::/48` the block of addresses is `2001:db8:1234:0000:0000:0000:0000:0000` to `2001:db8:1234:ffff:ffff:ffff:ffff:ffff`.
 
@@ -87,7 +87,7 @@ The IPv6 prefixes and their respective quantity of IPv6 addresses that Linode pr
 An IPv6 routed range is assigned to a single Compute Instance. Addresses from that range can only be configured on that instance.
 
 {{< note >}}
-Configuring a `/64` or `/56` routed range requires you to [disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) on your Compute Instance and manually configure its network settings. Please review the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guides for details on this process.
+Configuring a `/64` or `/56` routed range requires you to [disable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper) on your Compute Instance and manually configure its network settings. Please review the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) and [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guides for details on this process.
 {{< /note >}}
 
 - `/64` **routed range** *(18,446,744,073,709,551,616 addresses)*: This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses.
@@ -100,7 +100,7 @@ An IPv6 pool is accessible from every Compute Instance on your account within th
 - `/116` **pool** *(4,096 addresses)*
 
 {{< note type="alert" >}}
-The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
+The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
 {{< /note >}}
 
 ## IPv6 Forwarding

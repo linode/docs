@@ -6,7 +6,7 @@ published: 2023-01-18
 aliases: ['/products/compute/high-memory/']
 ---
 
-High Memory Compute Instances are virtual machines that offer a greater price-to-performance ratio for memory-intensive applications. When compared to [Dedicated CPU Instances](/docs/products/compute/dedicated-cpu/), High Memory Instances provide the same dedicated CPU resources but are equipped with more memory per CPU core. This tunes them specifically for memory-intensive applications that value larger amounts of memory over a larger number of CPU cores.
+High Memory Compute Instances are virtual machines that offer a greater price-to-performance ratio for memory-intensive applications. When compared to [Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), High Memory Instances provide the same dedicated CPU resources but are equipped with more memory per CPU core. This tunes them specifically for memory-intensive applications that value larger amounts of memory over a larger number of CPU cores.
 
 **High Memory plans are ideal for production applications and CPU-intensive workloads that value greater memory over CPU resources, including caching systems, high-performance databases, and in-memory data processing.**
 

@@ -14,8 +14,8 @@ To take advantage of the powerful parallel processing capabilities offered by GP
 
 1.  Deploy a GPU Compute Instance using the [Cloud Manager](https://cloud.linode.com/), the Linode CLI, or the Linode API. It's recommended to follow the instructions within the following guides:
 
-    - [Getting Started with Linode](/docs/guides/getting-started/)
-    - [Securing Your Server](/docs/guides/set-up-and-secure/)
+    - [Getting Started with Linode](/docs/products/platform/get-started/)
+    - [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
     Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
 

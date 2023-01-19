@@ -158,7 +158,7 @@ This guide is a high-level overview, and does not discuss runlevels. Read more a
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/guides/lish/) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/products/compute/compute-instances/guides/lish/) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
@@ -178,7 +178,7 @@ If you use full-disk encryption, enter your password in the LISH console after a
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 

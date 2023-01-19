@@ -26,7 +26,7 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
@@ -36,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note respectIndent=false >}}
-The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
+The Linode kernel does not support SELinux by default. If the system is running a Linode kernel, you need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once the kernel is set to the upstream kernel, continue with the steps in this guide.
     {{< /note >}}
 1. Install [MySQL/MariaDB on Ubuntu](/docs/guides/install-mysql-on-ubuntu-14-04)
 

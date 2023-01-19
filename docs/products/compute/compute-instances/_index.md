@@ -1,14 +1,13 @@
 ---
 title: Compute Instances
-description: "Shared CPU Compute Instances offer an international content delivery network (CDN) and several plan choices so you can find the best price and performance for your workloads."
+description: "Host your workloads on Linode's secure and reliable cloud infrastructure using Compute Instances, versatile Linux-based virtual machines."
 tab_group_main:
     is_root: true
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
+    date: 2023-01-18
     product_description: "Linux virtual machines equipped with a tailored set of resources designed to run any cloud-based workload."
-aliases: ['/products/compute/shared-linodes/']
 ---
 
 Compute Instances are virtual machines that run on Linode's secure and reliable cloud infrastructure. To support a variety of workloads, Compute Instance plans are organized under several basic plan types, each with their own set of resources, unique value propositions, and technical specifications (see [Plan Types](/docs/products/compute/compute-instances/plans/)). Each Compute Instance can run a variety of [supported Linux distributions](/docs/products/compute/compute-instances/guides/distributions/), including the latest versions of Ubuntu, CentOS Stream, Debian, and more.
@@ -31,9 +30,9 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Free inbound network transfer
 - Dedicated IPv4 and IPv6 addresses (additional addresses available on request)
 - Deploy using the many available [Linux Distributions](https://www.linode.com/distributions/), [Marketplace Apps](https://www.linode.com/marketplace/), or Community [StackScripts](https://www.linode.com/products/stackscripts/)
-- Direct console access through [Lish](/docs/guides/lish/)
+- Direct console access through [Lish](/docs/products/compute/compute-instances/guides/lish/)
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
-- [Multi-queue NIC](/docs/guides/multiqueue-nic/) support on plans with 2 or more vCPU cores.
+- [Multi-queue NIC](/docs/products/compute/compute-instances/guides/multiqueue-nic/) support on plans with 2 or more vCPU cores.
 
 ## Services Included at No Extra Cost
 

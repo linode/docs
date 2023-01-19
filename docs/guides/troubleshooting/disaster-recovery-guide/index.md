@@ -37,9 +37,9 @@ If you have ensured that your Linode is booted, but do not have SSH access, you 
 
 1.  Click on the **Launch Console** link. This launches the Lish Console via your browser window and you will be prompted to enter your Linode user and password.
 
-    If you have trouble logging in with your root password, consider [resetting the root password](/docs/guides/reset-the-root-password-on-your-linode/) to rule out any password issues.
+    If you have trouble logging in with your root password, consider [resetting the root password](/docs/products/compute/compute-instances/guides/reset-root-password/) to rule out any password issues.
 
-The [Using the Lish Console](/docs/guides/lish/) contains more information on Lish.
+The [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) contains more information on Lish.
 
 {{< note respectIndent=false >}}
 Lish is an out-of-band management tool, so you can use your root login credentials, if needed.
@@ -57,7 +57,7 @@ Your Linode's Network Helper automatically creates a static networking configura
 
 1. Click **Save Changes**, then reboot your Linode.
 
-For more information, refer to the [Network Helper](/docs/guides/network-helper/) guide.
+For more information, refer to the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) guide.
 
 ## Checking Interfaces/Networking
 

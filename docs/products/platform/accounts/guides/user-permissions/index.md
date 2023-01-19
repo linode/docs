@@ -18,7 +18,7 @@ Here's how to set a user's access permissions:
 
     ![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions.png "Configure User permissions in the Linode Cloud Manager")
 
-1. Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/guides/getting-started/), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/), [Domains](/docs/products/networking/dns-manager/), [Longview](/docs/guides/what-is-longview/) clients, [Block Storage Volumes](/docs/products/storage/block-storage/) to the account, create [StackScripts](/docs/products/tools/stackscripts/), frozen [Images](/docs/products/tools/images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
+1. Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/products/platform/get-started/), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/), [Domains](/docs/products/networking/dns-manager/), [Longview](/docs/guides/what-is-longview/) clients, [Block Storage Volumes](/docs/products/storage/block-storage/) to the account, create [StackScripts](/docs/products/tools/stackscripts/), frozen [Images](/docs/products/tools/images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
 
     {{< note >}}
     Granting access to settings denoted with a dollar sign ($) allows the user to perform actions that incur billing costs, such as adding or resizing a Linode.

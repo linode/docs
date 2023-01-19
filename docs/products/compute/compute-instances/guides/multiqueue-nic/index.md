@@ -28,7 +28,7 @@ Check if multi-queue is already enabled on your network devices by using the [et
 
 1.  Review the number of CPU cores (vCPUs) available on your Compute Instance by finding your plan within the [Linode Pricing](https://www.linode.com/pricing/) page or by logging in to the [Cloud Manager](https://cloud.linode.com/), selecting your Compute Instance, and reviewing the *CPU Cores* value under **Summary**.
 
-1.  Log in to your Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/).
+1.  Log in to your Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/).
 
 1.  Install the `ethtool` utility if not already installed.
 

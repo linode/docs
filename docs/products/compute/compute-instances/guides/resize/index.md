@@ -63,11 +63,11 @@ You are now able to utilize the resources of your new plan.
 
 Upgrading to a plan with additional resources and capacity enables you to scale vertically. Larger plans can accommodate increased traffic and provide your application with the additional computing power it needs. Since larger plans come equipped with more resources, you may want to make adjustments to take advantage of these resources.
 
-- **Resize Disks:** When resizing a Compute Instance to a larger plan, you can (in most cases) opt to automatically resize the disks as well. If your instance does not meet the requirements for this functionality or if you decide not to do this automatically, you can manually resize the disks at any point. See [Resize a Linode's Disk](/docs/guides/resize-a-linode-disk/)
+- **Resize Disks:** When resizing a Compute Instance to a larger plan, you can (in most cases) opt to automatically resize the disks as well. If your instance does not meet the requirements for this functionality or if you decide not to do this automatically, you can manually resize the disks at any point. See [Resize a Linode's Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 
 - **Optimize Applications:** Many applications can be configured to enhance performance when additional resources become available. This configuration may include increasing the memory limit, enabling multiple threads, and increasing the size maximum size of data, cache, logs, or other files. Review the documentation for your application and any software such as PHP, MySQL, Apache, or NGINX.
 
-- **Enable Multi-Queue NICS:** When upgrading to a plan with two or more vCPU cores, make sure that the multi-queue NICs feature is enabled. In most cases, this feature is already enabled or will be enabled once the Compute Instance reboots during the resize process. However, older distributions may require additional steps. See [Configuring Multi-Queue NICS](/docs/guides/multiqueue-nic/).
+- **Enable Multi-Queue NICS:** When upgrading to a plan with two or more vCPU cores, make sure that the multi-queue NICs feature is enabled. In most cases, this feature is already enabled or will be enabled once the Compute Instance reboots during the resize process. However, older distributions may require additional steps. See [Configuring Multi-Queue NICS](/docs/products/compute/compute-instances/guides/multiqueue-nic/).
 
 ## Downgrading to a Smaller Plan
 
@@ -75,7 +75,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
 1.  Determine the storage space that's included in the new desired plan. This information is listed on the [Pricing Page](https://www.linode.com/pricing/) (under the *Storage* column).
 
-1.  Determine the amount of disk space currently being used on your Compute Instance. To do this, log in to your instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and run the following command:
+1.  Determine the amount of disk space currently being used on your Compute Instance. To do this, log in to your instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and run the following command:
 
     ```command
     df -h
@@ -87,7 +87,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
     - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide.
 
-1.  Resize the Compute Instance's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/guides/resize-a-linode-disk/).
+1.  Resize the Compute Instance's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/).
 
 ## Switching to a Different Plan Type
 
@@ -101,7 +101,7 @@ There are quite a few types of Compute Instances available to you, each with the
 
 - **GPU:** The only plan type that is equipped with high performance NVIDIA GPU cards. GPU plans are capable of processing large amounts of data in parallel, performing complex calculations much more efficiently. See [GPU Compute Instances](https://www.linode.com/products/gpu/).
 
-For help deciding on a plan type, review the [Choosing a Compute Instance Type and Plan](/docs/guides/choosing-a-compute-instance-plan/) guide for advice and a comparison of each plan.
+For help deciding on a plan type, review the [Choosing a Compute Instance Type and Plan](/docs/products/compute/compute-instances/plans/choosing-a-plan/) guide for advice and a comparison of each plan.
 
 To switch to a different plan type, follow the instructions outlined within [Resizing a Linode](#resizing-a-linode). When choosing the plan, select the tab that corresponds with your desired plan type.
 

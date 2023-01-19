@@ -22,7 +22,7 @@ GNU Screen is a tool which works with a terminal session to allow users to resum
 
 ![Using GNU Screen to Manage Persistent Terminal Sessions](gnu-screen.png "Using GNU Screen to Manage Persistent Terminal Sessions")
 
-Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/guides/using-the-terminal/).
+Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/guides/using-the-terminal/).
 
 ## Installing GNU Screen
 

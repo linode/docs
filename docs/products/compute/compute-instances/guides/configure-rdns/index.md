@@ -24,7 +24,7 @@ By default, every IP Addresses has a default rDNS value of `x.ip.linodeuserconte
 
 ## Determine the Domain Name to Use for rDNS
 
-First, decide the FQDN (full qualified domain name) you wish to use as your rDNS value. The structure of an FQDN is `[subdomain].[domain].[tld]`. For instance, this could be `web-01-prod.example.com` if you're hosting a website or `mail.example.com` for a mail server. Commonly, your rDNS domain should match the FQDN hostname of your Compute Instance. If you haven't yet configured your hostname, see [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for example hostnames and instructions.
+First, decide the FQDN (full qualified domain name) you wish to use as your rDNS value. The structure of an FQDN is `[subdomain].[domain].[tld]`. For instance, this could be `web-01-prod.example.com` if you're hosting a website or `mail.example.com` for a mail server. Commonly, your rDNS domain should match the FQDN hostname of your Compute Instance. If you haven't yet configured your hostname, see [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for example hostnames and instructions.
 
 ## Configure DNS Records
 

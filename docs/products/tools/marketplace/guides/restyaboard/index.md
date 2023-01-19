@@ -41,7 +41,7 @@ Restyaboard is like an electronic sticky note for organizing tasks and to-dos. I
 
 ### Accessing the Restyaboard App
 
-1.  Open a browser and navigate to your Instance's [IP address](/docs/guides/managing-ip-addresses/).
+1.  Open a browser and navigate to your Instance's [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
 1.  The Restyaboard login page appears. The default username for this instance is `admin` and the default password is `restya`. Click the **Log In** button to continue.
 

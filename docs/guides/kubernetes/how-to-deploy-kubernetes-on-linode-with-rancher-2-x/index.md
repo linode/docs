@@ -60,7 +60,7 @@ You may need to update your local Rancher installation to see the Linode node dr
 
 The Rancher web application will run on a Linode in your Cloud Manager account. Create and prepare the Linode that will run Rancher:
 
-1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
+1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
 
     {{< note respectIndent=false >}}
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
@@ -208,7 +208,7 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 ### Add a Node Template
 
 {{< note respectIndent=false >}}
-Nodes created using Rancher are dependent on the [Network Helper](/docs/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+Nodes created using Rancher are dependent on the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
 {{< /note >}}
 
 

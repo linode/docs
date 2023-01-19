@@ -49,14 +49,14 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
 - **IPv6 Link Local:** This IPv6 address is assigned to each Compute Instance and used for internal routing.
 
-- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
+- **/64 Routed Range:** This is the most common range provided to our customers and sufficient for most applications that require additional IPv6 addresses. A single /64 range provides 18,446,744,073,709,551,616 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /64 range can be added per customer per data center.
 
-- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
+- **/56 Routed Range:** These larger ranges are typically only required by specialized systems or networking applications. A single /56 range provides 4,722,366,482,869,645,213,696 addresses that can be used when configuring the applications within your system. See the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide for instructions on configuring specific addresses from a range. By default, up to one /56 range can be added per customer per data center.
 
 - **/116 Pool:** *(4,096 addresses)* An IPv6 pool is accessible from every Linode on your account within the assigned data center. Addresses from that pool can be configured on each Linode within that data center. This can enable features like IPv6 failover. By default, up to one /116 pool can be added per customer per data center.
 
     {{< note type="alert" >}}
-    The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
+    The IPv6 /116 prefix has been deprecated and is no longer available for new Compute Instances. If you have an existing Compute Instance with a /116 pool, please review the [Upcoming Changes Related to Network Infrastructure Upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/) to learn about changes that may affect your services.
     {{< /note >}}
 
 ## Adding an IP Address
@@ -79,9 +79,9 @@ Follow the instructions below to add an public IPv4, private IPv4, or IPv6 range
 
     Once the IP address or range has been added, it should be visible in the *IP Address* section.
 
-1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
+1.  To make sure the new IP address is configured within the internal system of the Compute Instance, verify that [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/), you need to update the configuration files with the new IP address or enable Network Helper.
 
 {{< note >}}
 Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification for additional public IPv4 addresses. If you have an application that requires multiple IP addresses, consider using an IPv6 /64 range instead.
@@ -89,7 +89,7 @@ Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.
 
 ## Configuring rDNS
 
-To change the rDNS value on an IP address, follow the instructions within the [Configure rDNS](/docs/products/compute/compute-instances/guides/networking/configure-rdns/) guide.
+To change the rDNS value on an IP address, follow the instructions within the [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) guide.
 
 ## Deleting an IP Address
 
@@ -101,9 +101,9 @@ To change the rDNS value on an IP address, follow the instructions within the [C
 
 1.  A pop-up confirmation dialog appears. Click the **Delete Range** button to confirm the request.
 
-1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the Compute Instance.
+1.  To make sure the IP address is removed from the internal system of the Compute Instance, verify that [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is enabled and reboot the Compute Instance.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/), you need to update the configuration files to remove the IP address or enable Network Helper.
 
 ## Transferring IP Addresses
 
@@ -134,9 +134,9 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
 
 1.  Click **Save** to transfer the requested IPs.
 
-1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/guides/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
+1.  To make sure the new IP addresses take affect within the internal configuration of each Compute Instance, verify that [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is enabled and reboot the affected Instance(s). It may take up to 1-2 minutes for the transfer to take affect.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/guides/manual-network-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
+    If Network Helper is turned off *and* you've [configured a static IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/), you need to update the configuration files with the new IP addresses or enable Network Helper.
 
     {{< note >}}
     If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Compute Instance:
@@ -151,14 +151,14 @@ This process only transfers IPv4 addresses and IPv6 ranges, not IPv6 SLAAC addre
 
 ### Transferring an IPv6 SLAAC Address
 
-IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
+IPv6 SLAAC addresses are not able to be transferred between Compute Instances. If this is something you need to do, consider moving the applications you want to be hosted on that IPv6 address over to the Compute Instance containing that IPv6 address. One way to accomplish this is to clone the disks containing the data. See the [Cloning to an Existing Linode](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) section of the **Cloning a Linode** guide. After the cloning process has completed, transfer any required IPv4 addresses.
 
 ## Configuring IP Sharing
 
-*IP Sharing* is a feature that enables two Compute Instances to be assigned the same IP address for the purpose of configuring failover. Within a typical failover setup, traffic on the shared IP address is routed to the primary instance. In the event that instance fails or goes down, traffic is automatically re-routed to the secondary instance. While IP Sharing can be configured in the Cloud Manager, failover must be manually configured within the internal system of both Compute Instances. See [Configuring IP Failover](/docs/guides/ip-failover/) to learn more about configuring failover.
+*IP Sharing* is a feature that enables two Compute Instances to be assigned the same IP address for the purpose of configuring failover. Within a typical failover setup, traffic on the shared IP address is routed to the primary instance. In the event that instance fails or goes down, traffic is automatically re-routed to the secondary instance. While IP Sharing can be configured in the Cloud Manager, failover must be manually configured within the internal system of both Compute Instances. See [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/) to learn more about configuring failover.
 
 {{< note >}}
-Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/guides/ip-failover/#ip-sharing-availability).
+Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability).
 {{< /note >}}
 
 To learn how to enable IP Sharing within the Cloud Manager, review the following steps.
@@ -182,7 +182,7 @@ To learn how to enable IP Sharing within the Cloud Manager, review the following
 
 1.  Click **Save** to enable IP Sharing.
 
-1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as FRR, lelastic, or Keepalived) within the internal system on each Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/guides/ip-failover/).
+1.  After enabling IP Sharing in the Cloud Manager, the next step is to configure a failover service (such as FRR, lelastic, or Keepalived) within the internal system on each Compute Instance. For more information, see our guide on [Configuring IP Failover](/docs/products/compute/compute-instances/guides/failover/).
 
 ## Viewing the DNS Resolvers' IP Addresses
 

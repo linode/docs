@@ -33,7 +33,7 @@ Migrating your Compute Instance to a new data center will result in a number of 
 
 - IP addresses are not transferrable across data centers and they will not be migrated with your Compute Instance. Your instance will be issued a new IPv4 and IPv6 address, which will be accessible once the migration completes. When your instance enters the migration queue, new IP addresses are reserved and can be viewed on your instance's **Networking** detail page. See the [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address/) guide to learn how to access Networking information in the Cloud Manager.
 
-- Any DNS records that point to the original IP address should be changed to use the new IP address once migrated. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/products/networking/dns-manager/), while [rDNS](/docs/guides/configure-rdns/) can be configured directly on each Compute Instance's Networking detail page.
+- Any DNS records that point to the original IP address should be changed to use the new IP address once migrated. If you're hosting your DNS with us, this can be done through the [DNS Manager](/docs/products/networking/dns-manager/), while [rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) can be configured directly on each Compute Instance's Networking detail page.
 
     {{< note >}}
     If any of these DNS records are in use, the software using them will not be able to connect after the migration is completed *until* the DNS records have been upgraded and the changes have propagated.

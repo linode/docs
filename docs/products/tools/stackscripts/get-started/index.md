@@ -48,6 +48,6 @@ When creating a new Compute Instance, you can use one of your Account StackScrip
 
     ![Screenshot of the more options ellipsis menu for a StackScript](stackscript-deploy-button.png)
 
-1. This opens the **Create Linode** form with the StackScript pre-selected. From here, you can follow the instructions outlined in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. If there are any UDF fields defined in the StackScript, they are displayed in the **StackScript Options** section.
+1. This opens the **Create Linode** form with the StackScript pre-selected. From here, you can follow the instructions outlined in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. If there are any UDF fields defined in the StackScript, they are displayed in the **StackScript Options** section.
 
 1. Click on the **Create Linode** button to complete the creation of your new Compute Instance. The StackScript is executed when the instance first boots up.

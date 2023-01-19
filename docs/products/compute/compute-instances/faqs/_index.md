@@ -8,11 +8,11 @@ modified: 2023-01-18
 aliases: ['/beginners-guide/','/platform/linode-beginners-guide/','/platform/billing-and-support/linode-beginners-guide/','/guides/linode-beginners-guide/']
 ---
 
-If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and return here once your Compute Instance has been deployed.
+If you're relatively new to Linux system administration, or just new to our platform, this guide will help address some of the most common questions we receive. If you've just created your first Linode account, please first refer to our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and return here once your Compute Instance has been deployed.
 
 ## How do I log into my Compute Instance?
 
-All Compute Instances can be accessed through [Lish](/docs/guides/lish/) and [SSH](/docs/guides/connect-to-server-over-ssh/) (if properly configured). Both methods provide you with command line access to your system. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+All Compute Instances can be accessed through [Lish](/docs/products/compute/compute-instances/guides/lish/) and [SSH](/docs/guides/connect-to-server-over-ssh/) (if properly configured). Both methods provide you with command line access to your system. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 ## How do I host websites on my Compute Instance?
 
@@ -52,8 +52,8 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 - [Introduction to Rsync](/docs/guides/introduction-to-rsync/): Using `rsync` to mirror files to another server.
 - [Using Rdiff-backup with SSHFS](/docs/guides/using-rdiff-backup-with-sshfs/): An easy approach to using the `rdiff-backup` utility to maintain differential backups.
-- [Cloning a Disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode): Creating an exact copy of a disk in the Cloud Manager.
-- [Copying a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/): How to download an exact binary image of your Compute Instance's disk over SSH.
+- [Cloning a Disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode): Creating an exact copy of a disk in the Cloud Manager.
+- [Copying a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/): How to download an exact binary image of your Compute Instance's disk over SSH.
 
 ## How can I install software on my Compute Instance?
 
@@ -61,7 +61,7 @@ Please refer to our guide on [Linux package management](/docs/guides/linux-packa
 
 ## How do I add another IP address?
 
-You may add an [additional public IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Compute Instance in the Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/guides/linux-static-ip-configuration/) or enable [Network Helper](/docs/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your instance before it can be used.
+You may add an [additional public IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) from the **Networking** tab for each Compute Instance in the Cloud Manager. After you've added a new IP address, you must [configure static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/) or enable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) and reboot your instance before it can be used.
 
 {{< note >}}
 We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the [Support Tickets](https://cloud.linode.com/support/tickets) section of the Cloud Manager explaining the reason for the new IP.
@@ -71,7 +71,7 @@ If you'd like to take advantage of our private networking feature, you may add a
 
 ## How do I set the reverse DNS for an IP address?
 
-To [set rDNS](/docs/guides/configure-rdns/), you can use the **More Options** ellipsis next to your Compute Instance's IPv4 address from the **Networking** tab in the Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Compute Instance's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
+To [set rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/), you can use the **More Options** ellipsis next to your Compute Instance's IPv4 address from the **Networking** tab in the Cloud Manager. Please note that the value you specify needs to match an A record or CNAME in DNS pointing to your Compute Instance's IP address. It may take up to 48 hours for reverse DNS updates to take effect.
 
 ## Why does my Compute Instance keep crashing?
 
@@ -81,11 +81,11 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Compute Instance slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Compute Instance runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Compute Instance, and [submit them](/docs/guides/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/guides/lish/) if you're having problems reaching your Compute Instance via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Compute Instance runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Compute Instance, and [submit them](/docs/guides/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) if you're having problems reaching your Compute Instance via normal networking.
 
 ## How can I upgrade or downgrade my Compute Instance?
 
-You can change your Compute Instance's plan by using the Resize feature in the Cloud manager. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For instructions, refer to our guide on [Resizing a Compute Instance](/docs/guides/resizing-a-linode/).
+You can change your Compute Instance's plan by using the Resize feature in the Cloud manager. If you're downgrading, please make sure you've resized your disk images to fit within your desired plan's disk space allocation before issuing the resize job. For instructions, refer to our guide on [Resizing a Compute Instance](/docs/products/compute/compute-instances/guides/resize/).
 
 ## How can I test downloads speeds from different data centers?
 
@@ -93,7 +93,7 @@ You may use our [speed test](http://www.linode.com/speedtest/) page to check lat
 
 ## Can I transfer my Compute Instance to another data center?
 
-Yes. Any time you'd like to transfer your Compute Instance, you can proceed with a migration from the **Disks/Configs** tab for any instance within the [Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/).
+Yes. Any time you'd like to transfer your Compute Instance, you can proceed with a migration from the **Disks/Configs** tab for any instance within the [Cloud Manager](https://cloud.linode.com). For more information, see our [Data Center Migration Guide](/docs/products/compute/compute-instances/guides/migrate-to-different-dc/).
 
 A migration will result in some changes that will be displayed in a caution message for your review before officially beginning the migration process. Your disks and configuration profiles will move with your Compute Instance, although your IP addresses will need to change. We strongly recommend reviewing this  caution message carefully before proceeding for a list of all changes that you can expect.
 
@@ -105,7 +105,7 @@ For those just getting started with Linux systems, we've created a series of gui
 - [Linux Users and Groups](/docs/guides/linux-users-and-groups/): An introduction to the principal concepts and use of the users and groups system.
 - [Using the Terminal](/docs/guides/using-the-terminal/): Introducing the command line interface known as the shell or terminal.
 - [Linux Package Management](/docs/guides/linux-package-management-overview/): How to install software on your Compute Instance.
-- [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/): Keeping your Linode safe from unauthorized access or abuse.
+- [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/): Keeping your Linode safe from unauthorized access or abuse.
 
 ## Where can I get help with something not covered here?
 
