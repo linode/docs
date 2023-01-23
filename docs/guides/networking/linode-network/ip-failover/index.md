@@ -7,7 +7,7 @@ description: "This guide discusses how to enable failover on a Linode Compute In
 keywords: ['IP failover','IP sharing','elastic IP']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2022-12-01
+modified: 2023-01-20
 modified_by:
   name: Linode
 title: "Configure Failover on a Compute Instance"
@@ -34,7 +34,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Data center | IP Sharing support | Failover method | Software | ID |
 | -- | -- | -- | -- | -- |
 | Atlanta (Georgia, USA) | *Not currently supported* | - | - | 4 |
-| Dallas (Texas, USA) | Supported | ARP-based (legacy) | [keepalived](/docs/guides/ip-failover-legacy-keepalived/) | 2 |
+| Dallas (Texas, USA) | *Undergoing network upgrades* | - | - | 2 |
 | **Frankfurt (Germany)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 10 |
 | Fremont (California, USA) | Supported | ARP-based (legacy) | [keepalived](/docs/guides/ip-failover-legacy-keepalived/) | 3 |
 | **London (United Kingdom)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 7 |
@@ -44,6 +44,10 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | **Sydney (Australia)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/guides/ip-failover/#configure-failover) / [FRR](/docs/guides/ip-failover-bgp-frr/) | 16 |
 | Tokyo (Japan) | Supported | ARP-based (legacy) | [keepalived](/docs/guides/ip-failover-legacy-keepalived/) | 11 |
 | Toronto (Canada) |  *Not currently supported* | - | - | 15 |
+
+{{< note >}}
+If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). Review documentation on our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/) to learn more about these changes.
+{{< /note >}}
 
 {{< note respectIndent=false >}}
 IP failover for VLAN IP addresses is supported within every data center where VLANs are available. This feature does not depend on Linode's IP Sharing feature and depends on ARP-based failover software, such as keepalived.
