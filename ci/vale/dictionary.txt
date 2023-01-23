@@ -1460,6 +1460,7 @@ numpy
 nvidia
 nvim
 nvm
+nvme
 oauth
 obfuscator
 octopress
