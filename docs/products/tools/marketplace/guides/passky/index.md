@@ -7,18 +7,14 @@ keywords: ['passky','password manager','security','authentication']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
-modified: 
-modified_by:
-  name: Linode
 title: "Deploy Passky through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
-aliases: ['/guides/deploying-passky-marketplace-app/','/guides/passky-marketplace-app/']
 ---
 
-[Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open source password manager. 
+[Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open-source password manager.
 
 ## Deploying a Marketplace App
 
@@ -37,12 +33,12 @@ aliases: ['/guides/deploying-passky-marketplace-app/','/guides/passky-marketplac
 
 ### Passky Options
 
-- **Email Address** *(required)*: The email address to use for generating SSL certificates. 
-- **Admin Username** *(required)*: The username for the Passky Admin user. 
+- **Email Address** *(required)*: The email address to use for generating TLS/SSL certificates.
+- **Admin Username** *(required)*: The username for the Passky Admin user.
 - **Admin Password** *(required)*: The password for the Passky Admin user.
-- **MySQL Password** *(required)*: The password for the MySQL database. 
-- **Domain**: The domain name to be included in Apache vhost and used to generated SSL certificates. If none is provided the default rDNS will be used.
-- **Sub Domain**: The sub domain to be included in Apache vhost and used to generated SSL certificates. If none is provided the default rDNS will be used.
+- **MySQL Password** *(required)*: The password for the MySQL database.
+- **Domain**: The domain name to be included in Apache vhost and used to generated SSL certificates. If none is provided the default rDNS is used.
+- **Sub Domain**: The sub domain to be included in Apache vhost and used to generated TLS/SSL certificates.
 
 ## Getting Started after Deployment
 
@@ -50,12 +46,12 @@ aliases: ['/guides/deploying-passky-marketplace-app/','/guides/passky-marketplac
 
 1.  Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
 
-2. On the Passky front page enter the username and password you set during deployment to access the server GUI. 
+1. On the Passky front page, enter the username and password you set during deployment to access the server GUI.
 
-![Screenshot of Passky front page](Passky-frontpage.png)
+    ![Screenshot of Passky front page](Passky-frontpage.png)
 
-3. The Passky GUI shows server resource information, the total accounts and passwords stored in the server, active licenses and server health. 
+1. The Passky GUI shows server resource information, the total accounts and passwords stored in the server, active licenses, and the server health.
 
-4. To access the credentials stored in the Passky server you can use the client at the [Passky website](https://passky.org), by [self hosting](https://github.com/Rabbit-Company/Passky-Website#self-hosted), with a [browser extension](https://github.com/Rabbit-Company/Passky-Browser-Extension#installation) or through the [desktop application](https://github.com/Rabbit-Company/Passky-Desktop#installation).
+1. To access the credentials stored in the Passky server you can use the client at the [Passky website](https://passky.org), by [self hosting](https://github.com/Rabbit-Company/Passky-Website#self-hosted), with a [browser extension](https://github.com/Rabbit-Company/Passky-Browser-Extension#installation) or through the [desktop application](https://github.com/Rabbit-Company/Passky-Desktop#installation).
 
 {{< content "marketplace-update-note-shortguide">}}

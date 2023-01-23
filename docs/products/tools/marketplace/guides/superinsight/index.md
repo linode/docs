@@ -7,18 +7,14 @@ keywords: ['superinsight','database','relational','unstructured','postgresql']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
-modified: 
-modified_by:
-  name: Linode
 title: "Deploy Superinsight DB through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
-aliases: ['/guides/deploying-superinsight-marketplace-app/','/guides/superinsight-marketplace-app/']
 ---
 
-[Superinsight DB](https://github.com/superinsight/superinsight-db) is a Relational Database for Unstructured Data, its main purpose is to provide a simple SQL interface to store and search unstructured data. Superinsight is build on top of PostgreSQL so you can take advantage of everything in PostgreSQL plus the ability to run machine learning operations using SQL statements.
+[Superinsight DB](https://github.com/superinsight/superinsight-db) is a relational database for unstructured data. Its main purpose is to provide a simple SQL interface to store and search unstructured data. Superinsight is built on top of PostgreSQL, which means you can take advantage of PostgreSQL features and the ability to run machine learning operations using SQL statements.
 
 ## Deploying a Marketplace App
 
@@ -33,22 +29,30 @@ aliases: ['/guides/deploying-superinsight-marketplace-app/','/guides/superinsigh
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS and 20.04 LTS
-- **Recommended plan:** All plan types and sizes can be used. 
+- **Recommended plan:** All plan types and sizes can be used.
 
-## Getting Started after Deployment 
+## Getting Started after Deployment
 
-1. Log into your new compute instance through LISH or SSH using the root user and associated password you entered when creating the instance. 
+1. Log into your new Compute Instance through [LISH](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
-2. The Admin password is generated and printed to the Message of the Day. This displays on login, or through the `cat` command: 
+1. If you log in on the same day you deployed the app, a message is displayed with the username and password for the new database as well as an example database connection string.
+
+    ```output
+    Superinsight created the user admin with password: 1d892e9d3584a39471b76121
+    You can can connect using a database client with the following connection string postgres://admin:1d892e9d3584a39471b76121@192.0.2.229:5432/superinsight
+    For complete source code and information, visit: https://github.com/superinsight/superinsight-db
+    ```
+
+    If you don't see this message, you can output it using the command below:
 
     ```command
     cat /etc/motd
     ```
-    The file contains the credentials you will use to connect to the Superinsight DB. 
-    ```file {title="/etc/motd"}
-    Superinsight created the user admin with password: 1d892e9d3584a39471b76121
-    You can can connect using a database client with the following connection string postgres://admin:1d892e9d3584a39471b76121@45.33.112.229:5432/superinsight
-    For complete source code and information, visit: https://github.com/superinsight/superinsight-db
+
+1. You can now connect to the database using any client that supports the PostgreSQL protocol. You can use the example connection string provided in the last step, which should be similar to the following:
+
+    ```command
+    postgres://[username]:[password]@[ip-address]:5432/superinsight
     ```
 
-For more information on configuration and use-cases please see the [Superinsight DB Documentation](https://docs.superinsight.ai). 
+    For more information regarding connecting to the database and adding data, see the [Superinsight Quickstart Guide](https://docs.superinsight.ai/quickstart/).

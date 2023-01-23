@@ -7,15 +7,11 @@ keywords: ['onlyoffice','documents','collaboration','office suite']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
-modified: 
-modified_by:
-  name: Linode
 title: "Deploy ONLYOFFICE Docs through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
 - '[ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer)'
-aliases: ['/guides/deploying-onlyoffice-marketplace-app/','/guides/onlyoffice-marketplace-app/']
 ---
 
 [ONLYOFFICE Docs](https://github.com/ONLYOFFICE/Docker-DocumentServer) is an open-source office suite that comprises web-based viewers and collaborative editors for text documents, spreadsheets, and presentations providing high compatibility with OOXML files (.docx, .xlsx, .pptx). Other popular formats such as .doc, .odt, .rtf, .txt, .pdf, .xls, .ods, .csv, .ppt, .odp, etc. are also supported.
@@ -37,23 +33,23 @@ aliases: ['/guides/deploying-onlyoffice-marketplace-app/','/guides/onlyoffice-ma
 
 ### ONLYOFFICE Docs Options
 
-- **JSON Web Token Validation**: Specifies the enabling the JSON Web Token validation by the ONLYOFFICE Docs. This value set to true by default
-- **JSON Web Token Secret Key**: Defines the secret key to validate the JSON Web Token in the request to the ONLYOFFICE Docs. Default random value
-- **ONLYOFFICE Docs Version**: Specifies the ONLYOFFICE Docs version. Check available versions on hub.docker onlyoffice/documentserver. Keep empty for install latest.
-- **SSL Certificates**: If set to 'true' ssl certificates will be generated automatically. 
-- **Domain**: The Domain name for which SSL certificates will be generated. If no value is entered the Linode's default rDNS will be used. 
-- **Sub Domain**: The sub domain for which SSL certificates will be generated. Optional. 
+- **JSON Web Token Validation**: Enables the JSON Web Token validation. This value set to true by default
+- **JSON Web Token Secret Key**: Defines the secret key to validate the JSON Web Token in the request to the ONLYOFFICE Docs. The default is a random value.
+- **ONLYOFFICE Docs Version**: Specifies the ONLYOFFICE Docs version. Check available versions on hub.docker onlyoffice/documentserver. Keep empty to install the latest.
+- **SSL Certificates**: If set to 'true', TLS/SSL certificates are generated automatically.
+- **Domain**: The Domain name for which TLS/SSL certificates are generated. If no value is entered, the Compute Instance's default rDNS value is used.
+- **Sub Domain**: The sub domain for which TLS/SSL certificates are generated. Optional.
 
 ## Getting Started after Deployment
 
 ### Accessing ONLYOFFICE Docs
 
-1.  Open your web browser and navigate to the custom domain you entered during deployment, your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`), or IP address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
+1.  Open your web browser and navigate to the custom domain you entered during deployment, your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`), or the IP address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#configuring-rdns) guide for information on viewing the rDNS value.
 
-2. The ONLYOFFICE Docs welcome page includes a command to retrieve the randomly generated JSON validation token, and an example document management system to test the application. 
+1. The ONLYOFFICE Docs welcome page includes a command to retrieve the randomly generated JSON validation token and an example document management system to test the application.
 
-![Screenshot of ONLYOFFICE Docs Welcome page](onlyoffice-welcome.png) 
+    ![Screenshot of ONLYOFFICE Docs Welcome page](onlyoffice-welcome.png)
 
-For more information on ONLYOFFICE configurations please see the [documentation](https://helpcenter.onlyoffice.com/userguides/docs-index.aspx). 
+For more information on ONLYOFFICE configurations please see the [documentation](https://helpcenter.onlyoffice.com/userguides/docs-index.aspx).
 
 {{< content "marketplace-update-note-shortguide">}}

@@ -7,18 +7,14 @@ keywords: ['haltdos','firewall','security','web application firewall']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
-modified: 
-modified_by:
-  name: Linode
 title: "Deploy Haltdos Community WAF through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
-aliases: ['/guides/deploying-haltdos-marketplace-app/','/guides/haltdos-marketplace-app/']
 ---
 
-[Haltdos](https://www.haltdos.com/) brings you user friendly Web application firewall as free to access for all, in the form of Haltdos Community Edition (CE). The Community Edition provides 360 degrees of website security from OWASP 10 threats, XSS, SQL and other web-based threats. 
+[Haltdos](https://www.haltdos.com/) Community Edition is a free user-friendly web application. It provides protection from OWASP 10 threats, XSS, SQL, and other web-based threats.
 
 ## Deploying a Marketplace App
 
@@ -26,30 +22,31 @@ aliases: ['/guides/deploying-haltdos-marketplace-app/','/guides/haltdos-marketpl
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Haltdos Community WAF should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 22.04 LTS and Debian 11
-- **Recommended plan:** A 2GB Shared CPU Linode is recommended for Haltdos Community WAF. 
+- **Recommended plan:** A minimum of a 2GB Shared CPU Compute Instance is recommended.
 
 ## Getting Started after Deployment
 
-### Accessing Haltdos Community WAF 
+### Accessing Haltdos Community WAF
 
-1. Open your web browser and navigate to port 9000 on your Linode's IP address. This will look like `https://$IPADDRESS:9000` 
+1. Open your web browser and navigate to `https://[ip-address]:9000/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-Haltdos Community WAF uses a self-signed SSL certificate on port 9000, and you may need to bypass a security warning in your browser to proceed. 
+    {{< note type="warning" >}}
+    Haltdos uses a self-signed TLS/SSL certificate. It is likely that your web browser will display a security warning. You need to accept this risk and bypass the warning to continue.
+    {{< /note >}}
 
-2. You will need to register user and account information, as well as complete email OTP to proceed with the Haltdos Community WAF configuration. 
+1. The initial registration page  should appear, requesting you to enter user registration and account information, as well as complete email OTP to proceed with the Haltdos Community WAF configuration.
 
-![Haltdos registration page](haltdos-registration.png) 
+    ![Haltdos registration page](haltdos-registration.png)
 
-3. Once registration is complete you can proceed to the Haltdos Community WAF home page. 
+1. Once registration is complete, you can start using the Haltdos Community WAF.
 
-![Haltdos home page](haltdos-home.png)
+    ![Haltdos home page](haltdos-home.png)
 
-For more information on configuring Haltdos Community WAF please see the [documentation](https://docs.haltdos.com/community/docs/overview). 
-
+For more information on configuring Haltdos Community WAF please see the [documentation](https://docs.haltdos.com/community/docs/overview).
