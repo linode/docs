@@ -4,6 +4,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Linode Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up you own in this tutorial."
+keywords: ['gitlab runner docker','what is gitlab runner','gitlab runner tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-22
 modified_by:
