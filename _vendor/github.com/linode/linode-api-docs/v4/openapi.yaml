@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.142.2
+  version: 4.143.1
 
   title: Linode API
   description: |
@@ -10155,7 +10155,7 @@ paths:
                 -X POST -d '{
                   "label": "cluster12345",
                   "region": "us-central",
-                  "k8s_version": "1.24",
+                  "k8s_version": "1.25",
                   "tags": ["ecomm", "blogs"],
                   "control_plane": {
                       "high_availability": true
@@ -10182,7 +10182,7 @@ paths:
           linode-cli lke cluster-create \
             --label cluster12345 \
             --region us-central \
-            --k8s_version 1.24 \
+            --k8s_version 1.25 \
             --control_plane.high_availability true \
             --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
@@ -10342,7 +10342,7 @@ paths:
           linode-cli lke cluster-update 12345 \
             --label lkecluster54321 \
             --control_plane.high_availability true \
-            --k8s_version 1.24 \
+            --k8s_version 1.25 \
             --tags ecomm \
             --tags blog \
             --tags prod \
@@ -11153,10 +11153,10 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4/lke/versions/1.24
+                https://api.linode.com/v4/lke/versions/1.25
       - lang: CLI
         source: >
-          linode-cli lke version-view 1.24
+          linode-cli lke version-view 1.25
   /longview/clients:
     x-linode-cli-command: longview
     get:
@@ -13053,7 +13053,6 @@ paths:
     x-linode-cli-command: networking
     post:
       servers:
-      - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-grant: read_write
       tags:
@@ -13100,7 +13099,7 @@ paths:
                   "2001:db8:3c4d:15::"
                 ]
               }' \
-              https://api.linode.com/v4/networking/ips/share
+              https://api.linode.com/v4beta/networking/ips/share
       - lang: CLI
         source: >
           linode-cli networking ip-share \
@@ -15140,7 +15139,7 @@ paths:
               https://api.linode.com/v4/nodebalancers/12345/configs/4567/nodes
       - lang: CLI
         source: >
-          linode-cli nodebalancers node-create \
+          linode-cli nodebalancers node-update \
             12345 4567 \
             --address 192.168.210.120:80 \
             --label node54321 \
@@ -21028,6 +21027,7 @@ components:
           example: 192.0.2.0
           x-linode-filterable: true
           x-linode-cli-display: 4
+          maxLength: 65535
         priority:
           type: integer
           minimum: 0
@@ -22048,16 +22048,18 @@ components:
           x-linode-cli-display: 7
           type: string
           readOnly: true
+          x-linode-filterable: true
           enum:
           - creating
           - pending_upload
           - available
           description: |
-            The current status of this Image.  Only Images in an "available" status
-            can be deployed.  Images in a "creating" status are being created from
-            a Linode Disk, and will become "available" shortly.  Images in a
-            "pending_upload" status are waiting for data to be [uploaded](/docs/api/images/#image-upload),
-            and become "available" after the upload and processing are complete.
+            The current status of this Image.
+
+            Only Images in an "available" status can be deployed. Images in a "creating" status are being created from a Linode Disk, and will become "available" shortly. Images in a "pending_upload" status are waiting for data to be [uploaded](/docs/api/images/#image-upload), and become "available" after the upload and processing are complete.
+
+            The "+order_by" and "+order" operators are not available for [filtering](/docs/api/#filtering-and-sorting) on this key.
+          example: available
     Invoice:
       type: object
       description: Account Invoice object
@@ -23586,7 +23588,7 @@ components:
             and the latest supported patch version will be deployed.
           x-linode-filterable: true
           x-linode-cli-display: 4
-          example: "1.24"
+          example: "1.25"
         control_plane:
           type: object
           description: >
@@ -23788,7 +23790,7 @@ components:
             A Kubernetes version number available for deployment
             to a Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version.
-          example: "1.24"
+          example: "1.25"
     LongviewClient:
       type: object
       description: >
