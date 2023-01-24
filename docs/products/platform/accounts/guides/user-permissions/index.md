@@ -60,7 +60,7 @@ This section provides various levels of access to view or modify billing informa
 
 ![Specific Services](user-permissions-specific-access.png)
 
-A user can be granted individual permissions to each instance of a service, such as Linode Compute Instances, Block Storage Volumes, NodeBalancers, and more Unlike **Global Permissions**, **Specific Permissions** apply to individual resources -- not the service as a whole.
+A user can be granted individual permissions to each instance of a service, such as Linode Compute Instances, Block Storage Volumes, NodeBalancers, and more. Unlike **Global Permissions**, **Specific Permissions** apply to individual resources -- not the service as a whole.
 
 - **None**: The user cannot view or otherwise interact with the selected resource.
 - **Read Only**: The user can view the resource and all of its associated information typically visible within the Cloud Manager, however they cannot otherwise interact with it.
