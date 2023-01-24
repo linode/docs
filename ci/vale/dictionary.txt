@@ -327,6 +327,7 @@ containerfile
 containerfiles
 containerised
 contentful
+continuumio
 convery
 convolutional
 cookstyle
@@ -348,6 +349,7 @@ cpanminus
 cpu
 cqlsh
 cqlshrc
+CPython
 craftbukkit
 craigslist
 crashingdaily
@@ -1368,6 +1370,7 @@ nast
 natively
 nawk
 nbox
+NBViewer
 ncdu
 ncurses
 neo
