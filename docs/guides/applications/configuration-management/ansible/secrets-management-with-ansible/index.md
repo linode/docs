@@ -28,7 +28,7 @@ In this tutorial, learn the most useful methods for implementing secrets managem
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/guides/getting-started/) guide.
+1.  If you have not already done so, create a Linode account. See our [Getting Started with Linode](/docs/products/platform/get-started/) guide.
 
 1.  Follow our guide on [Getting Started With Ansible: Basic Installation and Setup](/docs/guides/getting-started-with-ansible/). Specifically, follow the sections on setting up a control node and managed nodes, configuring Ansible, and creating an Ansible inventory.
 

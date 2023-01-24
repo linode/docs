@@ -41,7 +41,7 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 You will need:
 
-* Two or more Linodes with [Private IPs](/docs/guides/managing-ip-addresses/#adding-an-ip-address)
+* Two or more Linodes with [Private IPs](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address)
 * Each Linode should have a 64-bit distribution of either:
     - Ubuntu 16.04+
     - Debian 9
@@ -57,7 +57,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1.  Create two Linodes with at least 2GB memory within the same data center.
 
-1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/guides/managing-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
+1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
 1.  Configure a firewall with [UFW](/docs/guides/configure-firewall-with-ufw/) or [iptables](/docs/guides/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 

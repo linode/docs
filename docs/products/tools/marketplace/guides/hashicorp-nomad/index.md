@@ -35,7 +35,7 @@ title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 
 ### Accessing the Nomad Web UI
 
-1. Open your web browser and navigate to `http://[ip-address]:8080`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1. Open your web browser and navigate to `http://[ip-address]:8080`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
 1. The [Nomad Web UI](https://learn.hashicorp.com/collections/nomad/web-ui) is displayed. From here, you can manage the cluster, jobs, integrations, and ACL tokens.
 

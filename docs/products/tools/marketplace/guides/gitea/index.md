@@ -43,11 +43,11 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 - **Gitea Database Password** *(required)*: The password for your Gitea database user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
-- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
+- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
 
 #### Additional Security Configuration
 
-- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
+- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
 - **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}

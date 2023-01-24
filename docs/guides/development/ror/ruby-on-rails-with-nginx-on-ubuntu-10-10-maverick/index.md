@@ -27,7 +27,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#settingting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#settingting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

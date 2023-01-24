@@ -44,7 +44,7 @@ modified: 2022-10-28
 
 - [Overview of DNS and DNS Records](/docs/guides/dns-overview/)
 
-- [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/)
+- [Troubleshooting DNS Records](/docs/products/networking/dns-manager/guides/troubleshooting-dns/)
 
 - [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
 

@@ -18,7 +18,7 @@ An **MX** (*mail exchanger*) record sets the mail delivery destination for a dom
 
 ## Properties
 
-- **Mail Server:** The root domain or subdomain where email should be routed. There should be a corresponding A record for this domain that stores the IP address of the mail server. This value should ideally point to a domain that is also the designated [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for the mail server.
+- **Mail Server:** The root domain or subdomain where email should be routed. There should be a corresponding A record for this domain that stores the IP address of the mail server. This value should ideally point to a domain that is also the designated [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for the mail server.
 
     {{< note >}}
     The mail server does not need to be hosted on a Compute Instance. You can also use a domain for a third-party email provider, like Gmail (through Google Workspace), Outlook (through Office 365), or ProtonMail (on plans that support custom domains).

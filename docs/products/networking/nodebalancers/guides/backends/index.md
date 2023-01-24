@@ -7,7 +7,7 @@ description: "Instructions for adding and configuring backend nodes on a NodeBal
 published: 2022-10-07
 ---
 
-Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
+Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
 
 {{< note >}}
 While only a single backend node is required, *at least* two backends need to be configured to make use of load balancing functionality.

@@ -15,7 +15,7 @@ title: 'What You Need to Do to Mitigate Meltdown and Spectre'
 promo_default: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
-  - '[How to Install Software Updates](/docs/guides/set-up-and-secure/#perform-system-updates)'
+  - '[How to Install Software Updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates)'
   - '[Reboot Survival Guide](/docs/guides/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 tags: ["security"]

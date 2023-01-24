@@ -41,7 +41,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before Installing Gogs
 
-1.  Follow the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
 2.  Update your system:
 

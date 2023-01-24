@@ -30,7 +30,7 @@ Create a Block Storage Volume and attach it to the desired target Compute Instan
 
     ![Mount the Block Storage Volume as /dev/sdc and reboot into Rescue Mode](rescue-mode-sdc.png)
 
-1.  Connect to the Linode via [Lish](/docs/guides/lish/).
+1.  Connect to the Linode via [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Run `fdisk -l` to confirm the Compute Instance's primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively.
 
@@ -42,7 +42,7 @@ Create a Block Storage Volume and attach it to the desired target Compute Instan
 
 1.  Power off the Compute Instance.
 
-2.  Edit the Compute Instance's **Configuration Profile**. Under the **Block Device Assignments** section, assign the `/dev/sda` device to your Block Storage Volume (shown below). Confirm that the root device is set to `/dev/sda` (this is the default setting). If your Volume was previously assigned to any other device, such as `/dev/sdc`, set the device to `None`. Save these changes. Review the [Managing Configuration Profiles on a Linode](/docs/guides/linode-configuration-profiles/) guide for more information on editing configuration profiles.
+2.  Edit the Compute Instance's **Configuration Profile**. Under the **Block Device Assignments** section, assign the `/dev/sda` device to your Block Storage Volume (shown below). Confirm that the root device is set to `/dev/sda` (this is the default setting). If your Volume was previously assigned to any other device, such as `/dev/sdc`, set the device to `None`. Save these changes. Review the [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide for more information on editing configuration profiles.
 
     ![/dev/sda set to Block Storage Volume](edit-configuration.png "Configuration Management Block Device Assignment shows /dev/sda set to the Block Storage Volume")
 

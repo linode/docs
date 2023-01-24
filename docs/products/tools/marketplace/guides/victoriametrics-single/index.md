@@ -43,7 +43,7 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 ### VictoriaMetrics Options
 
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 

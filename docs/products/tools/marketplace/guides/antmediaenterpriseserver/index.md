@@ -42,7 +42,7 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 ### Access the Ant Media Server Dashboard
 
-1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The **Create First Account** screen appears. Fill out your full name and enter your desired username and password. Then click **Create Account**.
 

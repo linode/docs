@@ -46,10 +46,10 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
     - One Linode to use as the master Node with 4GB RAM and 2 CPU cores.
     - Two Linodes to use as the worker Nodes each with 2GB RAM and 1 CPU core.
 
-1.  Follow the [Getting Started](/docs/guides/getting-started) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
     {{< note respectIndent=false >}}
-When following the [Getting Started](/docs/guides/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
+When following the [Getting Started](/docs/products/platform/get-started/) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
 {{< /note >}}
 
 1.  Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the <abbr title="The kube-scheduler is a function that looks for newly created Pods that have no nodes.">kube-scheduler</abbr> from assigning a Pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.

@@ -100,7 +100,7 @@ The applications on your Linode require a certain amount of physical memory to f
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of all your Linodes.
 1.  Select a Linode to view its dashboard.
-1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/guides/resizing-a-linode/).
+1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/products/compute/compute-instances/guides/resize/).
 1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
 1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
 
@@ -110,7 +110,7 @@ If your Linode is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Linode via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
@@ -145,13 +145,13 @@ You should follow all steps in the [Linode is Slow](#linode-is-slow) section bef
 
 ### Are You Using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 ## Forgot My Username or Password
 
 ### Linode User/Root Password
 
-If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) from the Linode Manager.
+If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/products/compute/compute-instances/guides/reset-root-password/) from the Linode Manager.
 
 Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. The example resets the password for the `username` user:
 
@@ -184,4 +184,4 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 
     ![Disk storage allocation](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.

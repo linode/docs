@@ -45,7 +45,7 @@ If your Linode is running Ubuntu 14.10 or higher, you can choose to install `ope
         OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~trusty1)
         OpenJDK 64-Bit Server VM (build 24.75-b04, mixed mode)
 
-1.  If you're running an IP tables firewall (as shown in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide), add an exception to your `iptables` rules:
+1.  If you're running an IP tables firewall (as shown in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide), add an exception to your `iptables` rules:
 
         sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 

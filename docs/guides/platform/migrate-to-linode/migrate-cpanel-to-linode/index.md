@@ -32,9 +32,9 @@ This guide does not cover how to handle CPanel deployments that are part of a DN
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose CentOS 7 as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose CentOS 7 as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
 
-1.  Use the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
+1.  Use the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
 
 1.  Stand up a new WHM/CPanel installation by following the [Install CPanel on Linode](/docs/guides/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the **Networking** tab for your Linode in the Linode Cloud Manager, and it will have the form `203-0-113-0.ip.linodeusercontent.com`.
 

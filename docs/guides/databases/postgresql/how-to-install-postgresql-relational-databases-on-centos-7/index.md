@@ -29,9 +29,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 

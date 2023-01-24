@@ -27,7 +27,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
 
 ## Prerequisites
 
-1.  Your Linode should already be configured per our [Getting Started](/docs/guides/getting-started/) guide, and secured per our [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+1.  Your Linode should already be configured per our [Getting Started](/docs/products/platform/get-started/) guide, and secured per our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  Ensure that your Linode is up to date:
 
@@ -42,7 +42,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
         sudo adduser pocketmine
 
     {{< note respectIndent=false >}}
-If you've followed the steps in our [Securing Your Server](/docs/guides/set-up-and-secure/) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
+If you've followed the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
 {{< /note >}}
 
 ## Installation

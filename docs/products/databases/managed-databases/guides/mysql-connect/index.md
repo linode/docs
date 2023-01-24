@@ -46,7 +46,7 @@ To connect direct to the database from a command-line, you can use the `mysql` t
     If your system is using MariaDB instead of MySQL (such as when using the default packages in Debian's own repository), replace the `--ssl-mode=required` parameter with `--ssl=true`.
 
     {{< note >}}
-    If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
+    If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address).
     {{< /note >}}
 
 1.  Enter your password at the prompt.

@@ -72,7 +72,7 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 **1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 3840 GB Storage**<br>
 
-[Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances and Managed Databases. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
+[Shared CPU Instances](/docs/products/compute/compute-instances/plans/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances and Managed Databases. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
 
 *Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention.*
 
@@ -80,7 +80,7 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
 
-[Dedicated CPU Instances](/docs/products/compute/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
+[Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
 *Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
 

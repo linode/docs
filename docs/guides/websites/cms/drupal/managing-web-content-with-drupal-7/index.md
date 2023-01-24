@@ -24,7 +24,7 @@ As the system's functionality is highly modular, one might even be inclined to t
 Before we begin with the Drupal installation, there are few other guides that provide instructions for installing the necessary prerequisites.
 
 - If you're new to Linux system administration, consider our [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/) guides.
-- Before you can install Drupal, please complete our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to get a fully updated and running system.
+- Before you can install Drupal, please complete our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to get a fully updated and running system.
 - Then, you will want to use one of the [LAMP](/docs/web-servers/lamp/) guides, or for beginners, the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide to get a functioning Linux/Apache/MySQL/PHP stack installed on your Linode.
 - If you want more information about installing [Apache](/docs/web-servers/apache/) or [the MySQL database](/docs/databases/mysql/), our guides provide some additional information regarding these dependencies.
 

@@ -40,10 +40,10 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Plex Options
 
-The following configuration options create a secure [Limited User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
+The following configuration options create a secure [Limited User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
 
 {{< note >}}
-- As a security measure, [root login over SSH](/docs/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
+- As a security measure, [root login over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
 - The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
 {{< /note >}}
 

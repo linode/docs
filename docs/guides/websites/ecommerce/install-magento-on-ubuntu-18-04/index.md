@@ -31,9 +31,9 @@ Considering the resources some Magento plugins demand, we strongly recommend tha
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Magento runs on a LAMP stack, and is **only compatible with PHP 7.0 or 7.1**. This guide contains instructions for setting up Apache, MySQL, and PHP in a manner compatible with the latest version of Magento (v. 2.2.5). Check your version of PHP with `php -v`. If your version is incompatible, refer to the included instructions for installing and setting PHP 7.0 as the default version.
 

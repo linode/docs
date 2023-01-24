@@ -23,7 +23,7 @@ tags: ["database","mysql"]
 
 MySQL is a relational database management system (RDBMS) that is used as a backend for countless web and server applications. Originally released in 1995, it remains a popular choice for developers as a database server.
 
-Before beginning this guide, please make sure that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Additionally, make sure you are logged into your system as the root user.
+Before beginning this guide, please make sure that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, make sure you are logged into your system as the root user.
 
 ## Installing MySQL
 

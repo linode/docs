@@ -25,7 +25,7 @@ relations:
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Debian 5 (Lenny) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 
-We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
+We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
 ## Basic System Configuration
 

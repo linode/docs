@@ -23,7 +23,7 @@ external_resources:
 
 Simple Machines Forum (SMF) is a popular forum solution for small- to large-sized communities that offers a variety of features. With its modular design and flexibility, users can create their own plugins to modify the behavior of SMF in any way they wish.
 
-Before you begin, be sure you have followed the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You will also need a working [LAMP stack](/docs/websites/lamp/).
+Before you begin, be sure you have followed the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You will also need a working [LAMP stack](/docs/websites/lamp/).
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

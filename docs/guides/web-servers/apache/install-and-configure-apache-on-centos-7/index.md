@@ -36,9 +36,9 @@ Replace each instance of `example.com` in this guide with the domain name of the
 
 ## Before you begin
 
-1.  Ensure you have followed both the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure you have followed both the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
-2.  Check that the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname). To check the hostname run:
+2.  Check that the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname). To check the hostname run:
 
         hostname
         hostname -f

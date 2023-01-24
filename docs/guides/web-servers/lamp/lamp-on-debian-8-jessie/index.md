@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Prior to installing your LAMP stack ensure that:
 
--   You have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+-   You have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 -   You have a hostname and *fully-qualified domain name* (FQDN) configured on your Linode. To ensure this is set run:
 
         hostname

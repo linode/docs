@@ -40,7 +40,7 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 -  You will need root access to the system, or a user account with `sudo` privileges.
 
--  Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 -  Update your system's packages.
 

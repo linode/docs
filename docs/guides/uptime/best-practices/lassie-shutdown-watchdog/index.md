@@ -62,9 +62,9 @@ The Shutdown Watchdog feature never *causes* a Compute Instance to shut down and
 
 The underlying cause of these issues can vary. The most helpful course of action is to review your system logs.
 
-1. Open the [Lish console](/docs/guides/lish/). This displays your system's boot log and, if your system boot was normal, a login prompt appears. If you do not see a login prompt, look for any errors or unexpected output that indicates a kernel panic, file system corruption, or other type of system crash.
+1. Open the [Lish console](/docs/products/compute/compute-instances/guides/lish/). This displays your system's boot log and, if your system boot was normal, a login prompt appears. If you do not see a login prompt, look for any errors or unexpected output that indicates a kernel panic, file system corruption, or other type of system crash.
 
-1. Log in to your system through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and review the log files for you system using either journald or syslog. For systems using systemd-journald for logging, you can use the `journalctl` command to review system logs. See [Use journalctl to View Your System's Logs](/docs/guides/how-to-use-journalctl/) for instructions.
+1. Log in to your system through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and review the log files for you system using either journald or syslog. For systems using systemd-journald for logging, you can use the `journalctl` command to review system logs. See [Use journalctl to View Your System's Logs](/docs/guides/how-to-use-journalctl/) for instructions.
 
     - `journalctl -b`: Log entries for the last system boot
     - `journalctl -k`: Kernel messages

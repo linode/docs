@@ -38,8 +38,8 @@ In order to successfully execute the commands in this guide, you will need to ru
 
 ## Before You Begin
 
-1. Complete the [Getting Started](/docs/guides/getting-started/) guide for setting up a new Linode.
-1. While it is recommended you complete the entire [Securing Your Server](/docs/guides/set-up-and-secure/) guide, at  minimum, you should [add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
+1. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, at  minimum, you should [add a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ## Install Cassandra and Supporting Applications
 
@@ -202,7 +202,7 @@ permissions_validity_in_ms: 0
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
 {{< note >}}
-Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/guides/set-up-and-secure/#debian), if it does not already have them.
+Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#debian), if it does not already have them.
 {{< /note >}}
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.

@@ -32,11 +32,11 @@ This document provides an overview of using NGINX as a front-end proxy server fo
 
 Ensure that you have completed the following:
 
--   Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/).
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/guides/linode-beginners-guide/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 ## Front-End Proxy Services with NGINX: How It Works
 

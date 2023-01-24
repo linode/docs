@@ -42,7 +42,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/guides/getting-started/) and [Securing the Server](/docs/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/guides/getting-started/#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing the Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check the hostname run:
 

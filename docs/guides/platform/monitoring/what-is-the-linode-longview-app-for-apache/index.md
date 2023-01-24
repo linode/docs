@@ -50,7 +50,7 @@ If Apache is installed and running when you install the Longview client, the Apa
 
 If you already have Longview installed, and later want to install Apache and enable the Longview App for it, you may find that Apache is not automatically detected on initial setup. When this happens, you can run Longview through its automatic configuration sequence again. In most cases, this will result in Longview finding everything it needs to get the Apache App started. And don't worry - your old Longview data will stay safe. To run the automatic Longview configuration:
 
-1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Ensure that Apache is running using your distribution's initialization system.
 
@@ -86,7 +86,7 @@ update-rc.d: using dependency based boot sequencing
 
 To enable the Apache Longview app manually, follow these steps on your Linode via SSH:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the instructions list in the [apache.org](https://httpd.apache.org/docs/2.4/mod/mod_status.html) site. Or, on Debian and Ubuntu systems, run this command:
 

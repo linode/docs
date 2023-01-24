@@ -28,7 +28,7 @@ All modern GitLab installations additionally include tooling to create backups o
 
 ## Configuring Gitlab For Object Storage Backups
 
-In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). To do this, enter the following command, replacing the username and IP address with the unique username and IP address of your Linode:
+In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). To do this, enter the following command, replacing the username and IP address with the unique username and IP address of your Linode:
 
     ssh username@198.51.100.4
 

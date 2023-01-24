@@ -36,10 +36,10 @@ FreeIPA is the Linux version or implementation of Active Directory, which featur
 This guide assumes:
 
 - Two fully functional Linodes equal to a [2GB Plan](https://www.linode.com/pricing/) or greater must be created using CentOS 7 or later. One will host the FreeIPA server, while the other will host the client.
-- You have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides. One will host the FreeIPA server, while the other will host the client.
+- You have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. One will host the FreeIPA server, while the other will host the client.
 - You are familiar with the [command line](/docs/guides/introduction-to-linux-concepts/#so-youre-staring-at-a-shell-prompt)
 - FreeIPA requires that the user has possession of their own fully qualified domain name (FQDN) with an active subdomain for both the client and server. Before proceeding, ensure that each Linode has A/AAAA records configured using a [Unique Subdomain](/docs/products/networking/dns-manager/) for both the server and client Linode respectively.
-- [Set up Reverse DNS](/docs/guides/configure-rdns/) for each Linode using their full unique subdomain.
+- [Set up Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for each Linode using their full unique subdomain.
 
 ## Prepare the Client and Server
 

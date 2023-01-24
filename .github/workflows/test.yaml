@@ -163,5 +163,10 @@ jobs:
 
             sleep 1
         done
+    - name: Check open ports and Hugo process
+      run: |
+        # Start Hugo in background:
+        netstat -plntu
+        ps aux | grep hugo
     - name: Run tests
       run: python ./ci/docs404.py

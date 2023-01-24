@@ -36,7 +36,7 @@ The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-ma
 
 ## Before You Begin
 
-Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and set your hostname.
+Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and set your hostname.
 
 {{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.

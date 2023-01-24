@@ -27,7 +27,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 ## Before You Begin
 
-1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create a Linode.
+1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode.
 
 1. Your local computer needs an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.
 
@@ -125,4 +125,4 @@ If SSH isn't connecting you to your Linode, you may need to investigate the stat
 
 - Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.

@@ -45,7 +45,7 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
 
 - Have a registered domain name that you wish to use with your email server. Verify that your registrar allows *custom nameservers* and *glue records*.
 
-- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
+- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
 
     {{< note type="alert" respectIndent=false >}}
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
@@ -61,7 +61,7 @@ Mail-in-a-Box allows you to configure and manage DNS through its own DNS service
 
 Follow the instructions within the [Register Custom DNS Name Servers](/docs/guides/custom-name-servers/) guide. Since Mail-in-a-Box configures your DNS records for you, you can skip the *Add A Records* section.
 
-1. Add the following glue records on your domain's registrar, replacing *example.com* with the domain name you wish to use. Each glue record should point to the public IPv4 address of the Compute Instance in which will deploy Mail-in-a-Box. To view the IP addresses, see [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+1. Add the following glue records on your domain's registrar, replacing *example.com* with the domain name you wish to use. Each glue record should point to the public IPv4 address of the Compute Instance in which will deploy Mail-in-a-Box. To view the IP addresses, see [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 
     - *ns1.box.example.com*
     - *ns2.box.example.com*
@@ -167,7 +167,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-1. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/guides/configure-rdns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
+1. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/products/compute/compute-instances/guides/configure-rdns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 

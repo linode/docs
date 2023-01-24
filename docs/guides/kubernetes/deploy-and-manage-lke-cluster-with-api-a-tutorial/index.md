@@ -84,7 +84,7 @@ This guide covers how to use the Linode API to:
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
 {{< note respectIndent=false >}}
-The available plan types for LKE worker nodes are [Shared](/docs/guides/choosing-a-compute-instance-plan/#1-shared), [Dedicated CPU](/docs/guides/choosing-a-compute-instance-plan/#3-dedicated-cpu), and [High Memory](/docs/guides/choosing-a-compute-instance-plan/#2-high-memory) plans.
+The available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#1-shared), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#3-dedicated-cpu), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#2-high-memory) plans.
 {{< /note >}}
 
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.

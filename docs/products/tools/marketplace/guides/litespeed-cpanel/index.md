@@ -49,7 +49,7 @@ LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://
 
 ## Verify Installation
 
-To determine if the installation has completed sucessfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and run:
+To determine if the installation has completed sucessfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and run:
 
     tail -3 /var/log/stackscript.log
 
@@ -65,7 +65,7 @@ Please make sure to save this password.
 
 ### Accessing WHM/cPanel
 
-1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The WHM login page appears. Enter `root` as the username and the root password you created when deploying your instance. Click the **Log In** button to continue.
 
@@ -107,7 +107,7 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
 ### Accessing the LiteSpeed WebAdmin Interface
 
-1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Run the following script to reset the password:
 
@@ -115,7 +115,7 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
 1.  When requested, enter *admin* as the username and then enter your desired password.
 
-1.  Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The LiteSpeed WebAdmin Console login prompt appears. Enter *admin* as the username and use the password you just set in the previous steps.
 

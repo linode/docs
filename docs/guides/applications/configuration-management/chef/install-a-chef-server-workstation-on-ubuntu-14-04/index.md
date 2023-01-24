@@ -40,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 -	One 4GB Linode to host the Chef server, running Ubuntu 14.04
 -	Two Linodes of any size to host a workstation and a node, each running Ubuntu 14.04
--	Each Linode should be configured by following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide
+-	Each Linode should be configured by following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide
 -	Each Linode needs to be configured to have a valid FQDN
 -	Ensure that all servers are up-to-date:
 

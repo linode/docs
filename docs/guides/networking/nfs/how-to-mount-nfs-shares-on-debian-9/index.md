@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ## Prerequisites
 
 -   Two Debian 9 Linodes deployed in the same data center.
--   Linodes configured to use private IPs. See our [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide.
+-   Linodes configured to use private IPs. See our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
 
 ## NFS Server Setup
 

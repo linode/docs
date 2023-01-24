@@ -28,8 +28,8 @@ class Docs404Spider(CrawlSpider):
 #    Delay if server is returning lots of 500s
 #    DOWNLOAD_DELAY=0.1
     name = 'docs404'
-    allowed_domains = ['localhost' ]
-    start_urls = ['http://localhost:1313/docs']
+    allowed_domains = ['127.0.0.1' ]
+    start_urls = ['http://127.0.0.1:1313/docs']
     handle_httpstatus_list = [404]
 
     rules = (
@@ -52,6 +52,17 @@ class Docs404Spider(CrawlSpider):
 
 
 if __name__ == "__main__":
+    # test 1313
+    import socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    result = sock.connect_ex(('127.0.0.1',1313))
+    if result == 0:
+        print("Port is open")
+    else:
+        print("Port is not open")
+    sock.close()
+
+
     import os
     import sys
     import requests

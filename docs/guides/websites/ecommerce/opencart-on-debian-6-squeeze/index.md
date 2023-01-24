@@ -20,7 +20,7 @@ relations:
            - distribution: Debian 6
 ---
 
-OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/web-servers/lamp/) on your Linode. You should have also [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/web-servers/lamp/) on your Linode. You should have also [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 ## PHP Settings
 

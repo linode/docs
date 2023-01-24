@@ -25,7 +25,7 @@ relations:
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-10-karmic/) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-10-karmic/) system installed.
 
 ## Install Dependencies
 

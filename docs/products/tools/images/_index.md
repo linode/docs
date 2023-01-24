@@ -34,7 +34,7 @@ Accidentally deleting a production server will almost certainly impact your user
 
 - Web or software agencies deploying similar starter configurations for clients
 - Development workflows requiring the same base image for all developers or applications
-- Workflows requiring distributions other than [those provided by Linode](/docs/guides/choosing-a-distribution/)
+- Workflows requiring distributions other than [those provided by Linode](/docs/products/compute/compute-instances/guides/distributions/)
 
 ## Availability
 

@@ -63,9 +63,9 @@ Linode has a helpful [Beginner's Guide to Chef](/docs/guides/beginners-guide-che
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. At least three Linode systems running Ubuntu 20.04 are required to implement a Chef system. One server is for the Chef Workstation, the second for the Chef Server, while a third represents a node under administration. Due to Chef's memory demands, the Chef Server requires a 8GB Linode. The other two servers can be 2GB Linodes. Both the Chef Server and Chef Workstation should be configured using the previous instructions. Chef is used to set up the target node.
 
@@ -249,7 +249,7 @@ A few more items must be configured before the Workstation is operational. Tasks
 RSA private keys enable better security between the Chef Server and associated workstations through the use of encryption. Earlier, RSA private keys were created on the Chef Server. Copying these keys to a workstation allows it to communicate with the server. To enable encryption using RSA private keys, follow these steps.
 
 {{< note >}}
-SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) for more information.
+SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for more information.
 {{< /note >}}
 
 1. On the workstation, generate an RSA key pair. This key can be used to initially access the Chef server to copy over the private encryption files.

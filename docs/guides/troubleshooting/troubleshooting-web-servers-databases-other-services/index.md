@@ -195,9 +195,9 @@ You have several options for resolving disk space issues:
 
 -   Free up space on your disk by locating and removing files you don't need, using a tool like [ncdu](https://dev.yorhel.nl/ncdu).
 
--   If you have any unallocated space on your Linode (storage that you pay for already but which isn't assigned to your disk), [resize your disk](/docs/guides/resize-a-linode-disk/) to take advantage of the space.
+-   If you have any unallocated space on your Linode (storage that you pay for already but which isn't assigned to your disk), [resize your disk](/docs/products/compute/compute-instances/guides/disks-and-storage/) to take advantage of the space.
 
--   [Upgrade your Linode](/docs/guides/resizing-a-linode/) to a higher-tier resource plan and then resize your disk to use the newly available space. If your Linode has a pending free upgrade for your storage space, you can choose to take this free upgrade to solve the issue.
+-   [Upgrade your Linode](/docs/products/compute/compute-instances/guides/resize/) to a higher-tier resource plan and then resize your disk to use the newly available space. If your Linode has a pending free upgrade for your storage space, you can choose to take this free upgrade to solve the issue.
 
 <!-- >
 Would be nice to eventually have these instructions in a new "How to Free Up Space on Your Linode" guide and then link to it.

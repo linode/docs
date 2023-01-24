@@ -23,12 +23,12 @@ Riot has been renamed to *Element*. You can read more about this name change on 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
-If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
+If you choose to configure a firewall, remember to open ports 80 and 443 for the server when you reach the [configure a firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of the guide.
 {{< /note >}}
 
 1.  To connect to the Synapse / Matrix services with a client other than Riot, you need a [Matrix client](https://matrix.org/clients/).

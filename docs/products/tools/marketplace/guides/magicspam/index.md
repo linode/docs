@@ -52,7 +52,7 @@ If you want to deploy MagicSpam onto an existing Linode Compute Instance, do not
 
 - **Control Panel** *(required)*: The Control Panel to deploy alongside MagicSpam.
 - **MagicSpam License Key** *(required)*: Your MagicSpam license key to for the selected Control Panel.
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 

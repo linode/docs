@@ -47,7 +47,7 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 ## Before You Begin
 
-1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
+1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
 2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 

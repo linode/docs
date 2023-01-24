@@ -52,7 +52,7 @@ Docker is now installed and ready to use. The following steps provide a sample a
 
 After Docker has finished installing, you can access Docker from your terminal and deploy a sample application or any application that you intend on running.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Locate the application or sample application you wish to deploy.
 

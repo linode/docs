@@ -30,9 +30,9 @@ For a different Linux distribution or different mail server, review our [email t
 
 ## Before You Begin
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 1. Review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
 
@@ -723,7 +723,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
 
 ### Domains
 
-1.  To add a new domain, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  To add a new domain, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Log in to the MySQL server:
 

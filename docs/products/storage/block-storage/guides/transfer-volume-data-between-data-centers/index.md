@@ -17,7 +17,7 @@ Consult our [Network Transfer Usage and Costs](/docs/guides/network-transfer/) g
 
 1. [Create, attach, and mount](/docs/products/storage/block-storage/guides/manage-volumes/) a Volume to a Compute Instance within the new data center you wish to use.
 
-1. Log in to your new receiving Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1. Log in to your new receiving Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  [Use the Secure Copy Protocol (SCP)](/docs/guides/download-files-from-your-linode/#download-specific-files-or-directories-over-ssh) to download your Volume's data to the receiving Compute Instance.
 

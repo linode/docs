@@ -64,7 +64,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 The primary method for directly administering files and software on a Linode is through SSH. SSH is a service running on your Linode which listens for and accepts remote terminal connections, and once a connection is opened a user can issue commands to your server. **Your Linode's SSH users are not the same as your Linode Manager users.**
 
-For the steps in this section, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
+For the steps in this section, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
 {{< note respectIndent=false >}}
 If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
@@ -78,7 +78,7 @@ Use `getent` to display the list of users. Keep in mind that some applications c
 
 ### Add an SSH User
 
-[Create a limited Linux user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) on your Linode. Set a unique and secure password for this user.
+[Create a limited Linux user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) on your Linode. Set a unique and secure password for this user.
 
 ### Create a User Group with Specific Permissions
 
@@ -143,7 +143,7 @@ To revoke access to an SSH user, change the password for that user:
 
     passwd exampleUser
 
-In addition to password authentication, a user may rely on [public key authentication](/docs/guides/set-up-and-secure/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
+In addition to password authentication, a user may rely on [public key authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
 
 These public keys are listed as line in a text file in the user's home directory named `/home/exampleUser/.ssh/authorized_keys`. To see which keys are present, run:
 
@@ -237,7 +237,7 @@ While some systems allow the Linux root user to circumvent root database login, 
 
 ### Log in to MySQL
 
-1.  [SSH to your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) as a user with sudo privileges.
+1.  [SSH to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) as a user with sudo privileges.
 
 1.  Connect to MySQL with `sudo`:
 

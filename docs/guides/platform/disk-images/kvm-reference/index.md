@@ -118,12 +118,12 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 3.  Edit your Linode's configuration profile back to the previous setting.
 
 {{< note respectIndent=false >}}
-Remember to check [Glish](/docs/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+Remember to check [Glish](/docs/products/compute/compute-instances/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 
 ### CentOS 6
 
-There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/guides/lish/) and run:
+There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/products/compute/compute-instances/guides/lish/) and run:
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
@@ -137,4 +137,4 @@ You can disable the use of Predictable Network Interface Names with the command 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/guides/lish/) to regain access to your Linode to run this command. Once you've done so, reboot your system.
+If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/products/compute/compute-instances/guides/lish/) to regain access to your Linode to run this command. Once you've done so, reboot your system.

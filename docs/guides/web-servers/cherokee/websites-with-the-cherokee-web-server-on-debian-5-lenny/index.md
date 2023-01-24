@@ -25,7 +25,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to install and configure the Cherokee web server on Debian 5 (Lenny). This guide targets Cherokee version 0.7.2 (provided by the Debian repositories as of this writing), but the install steps should be similar for later versions. We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), we recommend that you do so prior to following these instructions.
 
 ## Install Cherokee
 

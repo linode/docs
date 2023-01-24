@@ -25,7 +25,7 @@ relations:
 
 Prosody is a Lua-based XMPP/Jabber server, designed with minimalist ideas and goals. It has low resource requirements and is intended to be easy to configure and run. As a result, Prosody may not scale to the same level [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) can. However, for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for XMPP development, or running an XMPP server for a very small base of users.
 
-Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu Hardy, have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have logged in via SSH as root.
+Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu Hardy, have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have logged in via SSH as root.
 
 ## Adding Software Repositories
 

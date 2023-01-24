@@ -36,7 +36,7 @@ Linode's [shared](https://www.linode.com/products/shared/) or [dedicated CPU](ht
 
 ## Your Game Server's Linux Distribution
 
-The general consensus in the gaming community is that Debian or Ubuntu are the best [Linux distributions](/docs/guides/choosing-a-distribution/) to use when it comes to hosting a game server. Both distributions offer rock-solid performance and everything you need to get a game server up and running. Debian and Ubuntu are also designed to easily run headless without an active shell, which can save on your game server's system resources.
+The general consensus in the gaming community is that Debian or Ubuntu are the best [Linux distributions](/docs/products/compute/compute-instances/guides/distributions/) to use when it comes to hosting a game server. Both distributions offer rock-solid performance and everything you need to get a game server up and running. Debian and Ubuntu are also designed to easily run headless without an active shell, which can save on your game server's system resources.
 
 ## Hosting your Game Server on a Linode
 

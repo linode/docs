@@ -49,7 +49,7 @@ Follow these steps to safely detach a Block Storage Volume from a Compute Instan
 
 1. It's recommended to power off the instance. To do this, click **Power Off** on the top right of the Compute Instance details page.
 
-1.  If a Volume is currently mounted, detaching it while the instance is powered on could cause data loss or an unexpected reboot. You can unmount the Volume for safe live-detaching by logging in to the Compute Instance over [SSH or Lish](/docs/guides/set-up-and-secure/#connect-to-the-instance) and running the `umount` command, such as in the example below.
+1.  If a Volume is currently mounted, detaching it while the instance is powered on could cause data loss or an unexpected reboot. You can unmount the Volume for safe live-detaching by logging in to the Compute Instance over [SSH or Lish](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and running the `umount` command, such as in the example below.
 
         umount /dev/disk/by-id/scsi-0Linode_Volume_example-volume-1
 

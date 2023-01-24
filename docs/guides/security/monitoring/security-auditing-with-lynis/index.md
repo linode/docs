@@ -19,7 +19,7 @@ image: Security_auditing_with_Lynis.png
 
 This guide was written specifically for Debian and Ubuntu operating systems, however can be adapted to apply to all other operating systems that [Lynis currently supports](https://cisofy.com/documentation/lynis/get-started/).
 
-Ensure that you have followed our [Getting Started](/docs/guides/getting-started/) guide before proceeding.
+Ensure that you have followed our [Getting Started](/docs/products/platform/get-started/) guide before proceeding.
 
 ## Installing Lynis
 

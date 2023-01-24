@@ -131,7 +131,7 @@ Apache (v6)                	ALLOW       	Anywhere (v6)
 Now that Apache is optimized for performance, it's time to starting hosting one or more websites. There are several possible methods of doing this. In this section, you use *name-based virtual hosts* to host websites in your home directory.
 
 {{< note respectIndent=false >}}
-You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 {{< /note >}}
 
 1.  Disable the default Apache virtual host:
@@ -424,4 +424,4 @@ Remember to remove the entries for the name-based virtual hosts from your `hosts
 
 ## Next Steps
 
-Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/products/networking/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/guides/configure-rdns/) for more information on how to set up reverse DNS.
+Now that you have tested your website by visiting its IP address, you can create DNS records so that you can access the website with a domain name. Read the [DNS Manager guide](/docs/products/networking/dns-manager/) for more information on how to add DNS records for your website. After you have a domain name set up, you should also add reverse DNS. Check out our [Reverse DNS guide](/docs/products/compute/compute-instances/guides/configure-rdns/) for more information on how to set up reverse DNS.

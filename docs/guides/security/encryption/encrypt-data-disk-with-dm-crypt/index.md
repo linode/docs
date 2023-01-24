@@ -32,13 +32,13 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1. Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, deploy a Debian image.
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, deploy a Debian image.
 
 1. [Resize the disk][/docs/guides/resize-a-linode-disk/] and reserve approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
 1. [Create a new disk][/docs/guides/disks-and-storage/#creating-a-disk] and select **raw** under **Filesystem**:
 
-1. Open your [configuration profile](/docs/guides/linode-configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
+1. Open your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
 1. After your block device assignments are configured, boot your Linode.
 

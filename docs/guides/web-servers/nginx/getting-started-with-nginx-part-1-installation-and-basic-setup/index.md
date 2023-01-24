@@ -23,7 +23,7 @@ This guide is the first of a four-part series. Parts One and Two will walk you t
 ## Before You Begin
 
 * You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+* Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 * Update your system.
 
 ## Install NGINX

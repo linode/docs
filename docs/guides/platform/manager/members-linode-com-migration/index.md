@@ -101,4 +101,4 @@ If you're following these instructions and do not find a `nodebalancer.linode.co
 
 ### Updating Reverse DNS
 
-To change a Linode's reverse DNS records, review the [Configure Your Linode for Reverse DNS](/docs/guides/configure-rdns/) guide. The new forward DNS records already exist for your Linode's IP, so you can set your Linode's reverse DNS records to match the new name by following the linked guide.
+To change a Linode's reverse DNS records, review the [Configure Your Linode for Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) guide. The new forward DNS records already exist for your Linode's IP, so you can set your Linode's reverse DNS records to match the new name by following the linked guide.

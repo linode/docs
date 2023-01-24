@@ -23,7 +23,7 @@ relations:
 
 
 
-This tutorial explains how to install and configure the Apache web server on Fedora 12. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 12](/docs/guides/lamp-server-on-fedora-12/).
+This tutorial explains how to install and configure the Apache web server on Fedora 12. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 12](/docs/guides/lamp-server-on-fedora-12/).
 
 ## Install Apache HTTP Server
 

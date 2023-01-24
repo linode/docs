@@ -18,7 +18,7 @@ deprecated: true
 
 Firewall software is designed to limit access to network resources running on your Linode to authorized parties. Some services, such as a public web server, may be accessible to anyone. Others might be more restricted, such as an SSH daemon for remote system administration.
 
-This guide will help you get the `arno-iptables-firewall` package installed and configured under Debian 5 (Lenny). For purposes of this tutorial, we assume the user is logged in as root via SSH, and that the prerequisite steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) have already been followed.
+This guide will help you get the `arno-iptables-firewall` package installed and configured under Debian 5 (Lenny). For purposes of this tutorial, we assume the user is logged in as root via SSH, and that the prerequisite steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) have already been followed.
 
 ## Installing the Firewall
 

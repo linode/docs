@@ -46,7 +46,7 @@ external_resources:
 
 The Joplin server dashboard allows you to manage your account, add other users, and perform various administration tasks. Before using your new Joplin instance to take notes, you should first log in to the admin dashboard and update your profile using the instructions below.
 
-1. Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. In the login prompt that appears, enter `admin@localhost` as the **Email** and `admin` as the **Password**. Click **Login** to continue.
 
