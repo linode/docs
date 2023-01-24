@@ -12,7 +12,7 @@ contributor:
   name: Linode
 ---
 
-This Marketplace App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. In addition to creating a limited user with sudo access, the app updates the system, optionally configures a domain in the DNS Manager, and optionally configures a Block Storage Volume. It also configures a basic firewall through UFW and enables Fail2Ban.
+This Marketplace App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. In addition to creating a limited user with sudo access, the app updates the system, optionally configures a domain in the DNS Manager, and optionally configures a Block Storage Volume. It also configures a basic firewall through [UFW](/docs/guides/configure-firewall-with-ufw/) and enables [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).
 
 ## Deploying a Marketplace App
 
@@ -49,7 +49,11 @@ Fill out the following fields to automatically create a limited user for your ne
 
 You can optionally specify an existing Block Storage Volume or create a new Block Storage Volume. This attaches and mounts the Volume to the Compute Instance so you can start using it right away.
 
-- **Block Storage Volume label:** Enter a label for an existing Block Storage Volume you'd lke to use.
+- **Block Storage Volume label:** Enter a label for an existing Block Storage Volume you'd like to use.
 - **Block Storage Volume size (in GB):** If you wish to create a new Block Storage Volume, enter the size in GB. This creates a billable resource. See [Block Storage pricing](/docs/products/storage/block-storage/#plans-and-pricing).
+
+{{< note >}}
+For more information on what Block Storage is and how to get started using it, review the [Block Storage product documentation](/docs/products/storage/block-storage/).
+{{< /note >}}
 
 {{< content "marketplace-update-note-shortguide">}}
