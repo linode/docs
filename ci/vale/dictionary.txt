@@ -748,6 +748,7 @@ golang
 goldmark
 gomega
 goostman
+gopaddle
 gopwt
 goroutine
 goroutines
@@ -788,6 +789,7 @@ h4x0r123
 hackage
 hadoop
 halls3
+Haltdos
 hapis
 haproxy
 hardcoded
@@ -1526,6 +1528,7 @@ partyline
 passcode
 passdb
 passlib
+Passky
 passphraseless
 passwd
 passwdcolumn
@@ -2032,6 +2035,7 @@ suhosin
 suid
 sukharev
 supabase
+Superinsight
 superset
 supervisord
 supervisorctl

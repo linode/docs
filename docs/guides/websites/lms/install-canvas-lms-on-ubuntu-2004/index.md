@@ -104,13 +104,13 @@ Canvas uses Apache and Phusion's Passenger to serve its web pages. Phusion has i
 
 ## Install Ruby
 
-Canvas specifically requires version **2.6** of Ruby, which the default package repositories on Ubuntu do not have. However, Brightbox maintains a repository of Ruby versions for Ubuntu, which this guide makes use of to install the necessary version.
+Canvas specifically requires version **2.7** of Ruby, which the default package repositories on Ubuntu do not have. However, Brightbox maintains a repository of Ruby versions for Ubuntu, which this guide makes use of to install the necessary version.
 
 1. Add the Brightbox Ruby repository, and update the package manager.
 
-        sudo apt install software-properties-common
-        sudo add-apt-repository ppa:brightbox/ruby-ng
-        sudo apt update
+        sudo apt-get install ruby2.7 ruby2.7-dev zlib1g-dev libxml2-dev
+        libsqlite3-dev postgresql libpq-dev
+        libxmlsec1-dev libidn11-dev curl make g++
 
 1. Install Ruby and its development components:
 
@@ -118,7 +118,7 @@ Canvas specifically requires version **2.6** of Ruby, which the default package 
 
 1. Install Bundler, which Canvas uses for managing its Ruby libraries ("Gems"). Canvas specifically calls for version **2.1.4** of Bundler:
 
-        sudo gem install bundler --version 2.1.4
+        sudo gem install bundler --version 2.2.33
 
 ## Install Node.js and Yarn
 
@@ -147,7 +147,7 @@ Canvas specifically requires version **2.6** of Ruby, which the default package 
 1. Change into the repository directory, and check out the latest stable branch of the repository.
 
         cd ~/canvas
-        git checkout stable
+        git checkout prod
 
 1. Create a directory for Canvas, copy the repository there, and change its ownership to the current user.
 
