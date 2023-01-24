@@ -52,6 +52,17 @@ class Docs404Spider(CrawlSpider):
 
 
 if __name__ == "__main__":
+    # test 1313
+    import socket
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    result = sock.connect_ex(('127.0.0.1',1313))
+    if result == 0:
+        print "Port is open"
+    else:
+        print "Port is not open"
+    sock.close()
+
+
     import os
     import sys
     import requests
