@@ -102,6 +102,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Ruby on Rails](/docs/products/tools/marketplace/guides/ruby-on-rails/)
 - [Rust](/docs/products/tools/marketplace/guides/rust/)
 - [Saltcorn](/docs/products/tools/marketplace/guides/saltcorn/)
+- [Secure Your Server](/docs/products/tools/marketplace/guides/secure-your-server/)
 - [ServerWand](/docs/products/tools/marketplace/guides/serverwand/)
 - [Shadowsocks](/docs/products/tools/marketplace/guides/shadowsocks/)
 - [Splunk](/docs/products/tools/marketplace/guides/splunk/)
