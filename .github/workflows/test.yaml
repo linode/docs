@@ -168,6 +168,5 @@ jobs:
         # Start Hugo in background:
         netstat -plntu
         ps aux | grep hugo
-        curl http://localhost:1313/docs/ | tail
     - name: Run tests
       run: python ./ci/docs404.py
