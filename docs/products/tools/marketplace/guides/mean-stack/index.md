@@ -18,6 +18,7 @@ external_resources:
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[Angular Getting Started](https://angular.io/start)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
+- '[PM2 Getting Started](https://pm2.keymetrics.io/docs/usage/quick-start/)'
 aliases: ['/platform/marketplace/deploy-mean-with-marketplace-apps/', '/platform/one-click/deploy-mean-with-one-click-apps/', '/guides/deploy-mean-with-one-click-apps/','/guides/deploy-mean-with-marketplace-apps/','/guides/mean-stack-marketplace-app/']
 ---
 
@@ -30,6 +31,8 @@ A MEAN (MongoDB, Express, Angular, Node.js) stack is a free and open-source web 
 - [Angular](https://angular.io/) is used to build your application's user interfaces using JavaScript. Angular offers Web Workers and server-side rendering that helps your applications achieve the maximum speed possible on the Web Platform.
 
 - [Node.js](https://nodejs.org/en/about/) serves as the run-time environment for your application.
+
+- [PM2](https://pm2.keymetrics.io) is a daemon process manager that helps you manage and keep your application online.
 
 MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, ExpressJS, AngularJS, and NodeJS. You can build entire web applications on JavaScript, from client to server to database with this stack. Single-language programming makes it easier to develop working applications more quickly without sacrificing functionality and features.
 
@@ -86,6 +89,7 @@ Open your web browser and navigate to `https://[domain]`, where *[domain]* can b
 | **Express** | Web application framework |
 | **Angular** | JavaScript library |
 | **Node JS** | Runtime environment |
+| **PM2**     | Daemon process manager |
 | **NGINX** | Web server |
 | **UFW (UncomplicatedFirewall)** | Firewall utility. Ports 22, 80, and 443 for IPv4 and IPv6 are set to allow traffic. All other ports have the following firewall rules: deny (incoming), allow (outgoing). |
 

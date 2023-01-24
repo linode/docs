@@ -6,7 +6,7 @@ description: "An overview of changes and actions that may be required in advance
 keywords: ['networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-19
-modified: 2022-12-01
+modified: 2023-01-20
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -42,7 +42,7 @@ Review the table below to learn which data centers have been upgraded with the l
 | Data center | Upgrade Status |
 | -- | -- |
 | Atlanta (Georgia, USA) | *Coming soon* |
-| Dallas (Texas, USA) | *Coming soon* |
+| Dallas (Texas, USA) | *Undergoing network upgrades* |
 | **Frankfurt (Germany)** | **Complete** |
 | Fremont (California, USA) | *Coming soon* |
 | **London (United Kingdom)** | **Complete** |
