@@ -6,7 +6,7 @@ description: "Automate common security tasks on a Linode Compute Instance by usi
 keywords: ['security']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-11
+published: 2023-01-24
 title: "Secure Your Server through the Linode Marketplace"
 contributor:
   name: Linode
@@ -43,7 +43,9 @@ Fill out the following fields to automatically create a limited user for your ne
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
 - **Email address:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
-- **Send email from domain:** If you'd like to be able to send email from the custom domain you optionally configured, select **Yes**.
+- **Send email from domain:** If you'd like to be able to send email from the custom domain you optionally configured, select **Yes**. This configures the related DNS-records, allows relevant ports within the internal firewall, and sets your rDNS. It does not configure any email software or guarantee email deliverability.
+
+    {{< content "email-warning-shortguide" >}}
 
 #### Block Storage (Optional)
 
