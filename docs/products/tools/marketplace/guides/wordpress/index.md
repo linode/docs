@@ -44,6 +44,9 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 - **WordPress Database Password** *(required)*: The root password for your WordPress database.
 - **Website Title:** Enter a title for your WordPress site.
 
+{{< note >}}
+Ensure that you do not use special characters in the password for the database because it is passed as a [UDF](/docs/products/tools/stackscripts/guides/write-a-custom-script/#declare-user-defined-fields-udfs) in the deployment script. This may cause errors during deployment.
+{{< /note >}}
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
