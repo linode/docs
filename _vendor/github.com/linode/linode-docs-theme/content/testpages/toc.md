@@ -1,13 +1,7 @@
 ---
 title: Testing Table of Contents
 description: This is a test page used in both manual and automatic tests. Do not delete. It will not be listed anywhere.
-noindex: true
 date: 2022-11-17
-promo_default: false
-_build:
-  render: always
-  list: never
-  publishResources: false
 ---
 
 ## First h2
