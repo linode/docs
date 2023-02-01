@@ -4,7 +4,6 @@ import Alpine from 'jslibs/alpinejs/v3/alpinejs/dist/module.esm.js';
 import intersect from 'jslibs/alpinejs/v3/intersect/dist/module.esm.js';
 import persist from 'jslibs/alpinejs/v3/persist/dist/module.esm.js';
 import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
-import { initConsentManager } from './components/index';
 import {
 	alpineRegisterMagicHelpers,
 	alpineRegisterDirectiveSVG,
@@ -20,6 +19,7 @@ import {
 	newPromoCodesController,
 	newSearchExplorerController,
 	newToCController,
+	newPaginatorController,
 } from './navigation/index';
 import { newNavStore } from './navigation/nav-store';
 // AlpineJS controllers and helpers.
@@ -58,6 +58,7 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
 		Alpine.data('lncDisqus', newDisqus);
+		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 
 		// Page controllers.

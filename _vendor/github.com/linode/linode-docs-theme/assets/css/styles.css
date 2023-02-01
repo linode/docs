@@ -21,7 +21,6 @@ html {
   font-size: 16px;
 }
 
-
 body,
 html {
   width: 100vw;
@@ -29,7 +28,7 @@ html {
   line-height: 1.25;
   margin: 0;
   padding: 0;
-  color: var(--color-body-text); 
+  color: var(--color-body-text);
 }
 
 html {
