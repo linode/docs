@@ -33,7 +33,7 @@ A Python virtual environment is an isolated project space on your system that co
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides to prepare your system.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your system.
 
 1.  Update your system:
 

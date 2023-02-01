@@ -28,12 +28,12 @@ This guide explains how to install the necessary software, configure your system
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Review the [Securing Your Server](/docs/guides/set-up-and-secure/) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
+1. Review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
     {{< note respectIndent=false >}}
-If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
+If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
     {{< /note >}}
 
 1. You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
@@ -139,7 +139,7 @@ You have finished generating your key and adding it to your client, but some add
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
 {{< note type="alert" respectIndent=false >}}
-- It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/guides/lish/) to regain access.
+- It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/products/compute/compute-instances/guides/lish/) to regain access.
 
 - If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
 {{< /note >}}
@@ -204,7 +204,7 @@ If your SSH client disconnects before you can enter your two-factor token, check
 This section is optional. If you'd like to use [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/) instead of a password authentication with TOTP, follow the steps in this section.
 
 {{< note respectIndent=false >}}
-Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
+Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
 
 ```command
 cat ~/.ssh/authorized_keys
@@ -241,8 +241,8 @@ cat ~/.ssh/authorized_keys
 
 ## Next Steps
 
-First, be sure you have followed our guide to [Securing Your Server](/docs/guides/set-up-and-secure/). Although there is no single, foolproof method to protect your data, firewalls and services like [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) are a great means to minimize risk.
+First, be sure you have followed our guide to [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Although there is no single, foolproof method to protect your data, firewalls and services like [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) are a great means to minimize risk.
 
-When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/guides/lish/) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/), in the interim.
+When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/products/compute/compute-instances/guides/lish/) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/), in the interim.
 
 While two-factor authentication may be a valuable security feature, total security is an ongoing process not an end goal that can be achieved by adding extra layers of authentication. To provide the best protection for your data, take care to follow security best practices at all times.

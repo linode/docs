@@ -24,9 +24,9 @@ While a firewall is often responsible for cases of limited access, these issues 
 
 ## The Linode Shell (Lish)
 
-[*Lish*](/docs/guides/lish/) is a shell that provides access to your Linode's serial console and is a helpful tool for diagnosing and troubleshooting connection problems. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or your Linode's Secure Shell (SSH) port is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
+[*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Linode's serial console and is a helpful tool for diagnosing and troubleshooting connection problems. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or your Linode's Secure Shell (SSH) port is inaccessible. If you find yourself locked out of SSH, you can use Lish to perform much of the troubleshooting for basic connection issues.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/guides/lish/#through-the-cloud-manager-weblish).
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. A fast and simple way to access Lish is by [the your web browser option](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish).
 
 {{< note respectIndent=false >}}
 When using Lish, you can log into your Linode with the `root` user, even if `root` user login is disabled by your Linode's SSH configuration file.
@@ -71,7 +71,7 @@ Cloud Firewall rules are applied on the network level and are not detectable int
 *Uncomplicated Firewall (UFW)* is an [iptables](/docs/guides/control-network-traffic-with-iptables/) frontend that is designed for ease-of-use. See our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) for a deeper dive into UFW.
 
 {{< note respectIndent=false >}}
-All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
+All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).
 {{< /note >}}
 
 To see all active UFW rules, enter the following command:
@@ -106,7 +106,7 @@ For example, to delete the Allow rule for port 80 from the example output above,
 *firewalld* is the default firewall tool for CentOS and Fedora. While also a frontend for iptables like UFW, firewalld has some unique features, like configuration sets and zones.
 
 {{< note respectIndent=false >}}
-All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
+All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).
 {{< /note >}}
 
 To list all configurations for all zones, enter the following command:
@@ -125,7 +125,7 @@ For more information on understanding firewalld, see our [Introduction to Firewa
 *iptables* is the most common firewall used on Linux systems. If you're unsure of which firewall software you may be using, chances are that it's iptables in some form.
 
 {{< note respectIndent=false >}}
-All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/guides/lish/).
+All steps in this section are performed on your Linode. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) or using [Lish](/docs/products/compute/compute-instances/guides/lish/).
 {{< /note >}}
 
 To list all active firewall rules using iptables, enter the following commands for IPv4 and IPv6 respectfully:

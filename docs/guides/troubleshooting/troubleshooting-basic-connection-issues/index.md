@@ -35,9 +35,9 @@ There are a few core troubleshooting tools you should familiarize yourself with 
 
 ### The Linode Shell (Lish)
 
-[*Lish*](/docs/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
+[*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. Much of your troubleshooting for basic connection issues will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/lish/) guide. In particular, [using your web browser](/docs/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### MTR
 
@@ -61,7 +61,7 @@ The root user is available in Lish even if root user login is disabled in your S
 
 1.  If you can log in at the Lish console, move on to the [diagnose network connection issues](#diagnose-network-connection-issues) section of this guide.
 
-    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) and then attempt to log in at the Lish console again.
+    If you see a log in prompt, but you have forgotten the credentials for your Linode, follow the instructions for [resetting your root password](/docs/products/compute/compute-instances/guides/reset-root-password/) and then attempt to log in at the Lish console again.
 
 2. If you do not see a login prompt, your Linode may have [issues with booting](#troubleshoot-booting-issues).
 
@@ -87,7 +87,7 @@ If your Linode can't boot, then it may have experienced filesystem corruption.
 
 1. If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
 
-1. If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/guides/linode-configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
+1. If the filesystem check reports errors that it has fixed, try rebooting your Linode under your normal [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-linode-running).
 
 1. If the filesystem check does not report any errors, there may be another reason for your booting issues. Continue to [inspecting your system and kernel logs](#inspect-system-and-kernel-logs).
 
@@ -227,7 +227,7 @@ If the recommendations in this section do not resolve your issue, try pasting yo
 
 ### Try Enabling Network Helper
 
-A quick fix may be to enable Linode's [Network Helper](/docs/guides/network-helper/) tool. Network Helper will attempt to generate the appropriate static networking configuration for your Linux distribution. After you enable Network Helper, reboot your Linode for the changes to take effect. If Network Helper was already enabled, continue to the remaining troubleshooting suggestions in this section.
+A quick fix may be to enable Linode's [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) tool. Network Helper will attempt to generate the appropriate static networking configuration for your Linux distribution. After you enable Network Helper, reboot your Linode for the changes to take effect. If Network Helper was already enabled, continue to the remaining troubleshooting suggestions in this section.
 
 ### Did You Upgrade to Ubuntu 18.04+ From an Earlier Version?
 

@@ -305,5 +305,17 @@
     "required": false,
     "type": "number",
     "description": "For guides displayed on the front (landing) page. Setting a higher weight will move the guide to the top of the list of icons."
+  },
+  "weightAge": {
+    "elements": false,
+    "required": false,
+    "type": "number",
+    "description": "When set, this will override the automatically-calculated weightAge, weightAgeMonths, and weightAgeYears values in the Algolia search index. For example, setting this to zero on an older article can help it rank as highly as other newly-published articles."
+  },
+  "weightSearchBoost": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If set to true, the article will be boosted in Algolia search results for search terms that match the article."
   }
 }

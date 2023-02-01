@@ -38,7 +38,7 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 ### Zabbix Options
 
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 
@@ -46,7 +46,7 @@ aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platfo
 
 After Zabbix has finished installing, you must first obtain the login credentials for Zabbix. You can then use these credentials to log in to your Zabbix App via a web browser.
 
-1.  From your terminal, log into your new Compute Instance as the `root` user with the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/guides/managing-ip-addresses/):
+1.  From your terminal, log into your new Compute Instance as the `root` user with the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
         ssh root@192.0.2.1
 
@@ -63,7 +63,7 @@ After Zabbix has finished installing, you must first obtain the login credential
     ********************************************************************************
     ```
 
-1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1.  Access the Zabbix Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
     {{< note >}}
     Zabbix uses a self-signed certificate. Because it is not signed by a common Certificate Authority, your browser may warn you about the security of the connection and require you to add a security exception.

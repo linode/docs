@@ -34,7 +34,7 @@ Make a note of both the algorithm and the displayed fingerprint as you continue 
 
 ## Verifying the Host Key Fingerprint
 
-1.  Log in to your remote server through a trusted method. For a Linode Compute Instance, use [Lish](/docs/guides/lish/).
+1.  Log in to your remote server through a trusted method. For a Linode Compute Instance, use [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Run one of the commands below to output your server's SSH key fingerprint, depending on which algorithm the fingerprint was displayed on your new machine:
 

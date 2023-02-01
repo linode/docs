@@ -31,9 +31,9 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *at least 6* Compute Instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *at least 6* Compute Instances. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
 
 1.  Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
 
@@ -55,7 +55,7 @@ The problem in this configuration is that if one of the shard servers experience
 
 ## Configure Hosts File
 
-If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
+If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
 
 On each Linode in your cluster, add the following to the `/etc/hosts` file:
 

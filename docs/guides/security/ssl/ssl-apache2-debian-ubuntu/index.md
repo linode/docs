@@ -29,7 +29,7 @@ This guide shows you how to enable SSL to secure websites served through Apache 
 
 This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubuntu 14.04 or above. Prior to following this guide, ensure that the following steps have been taken on your Linode:
 
--  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+-  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 -  Complete our [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide, and create a site that you wish to secure with SSL.
 

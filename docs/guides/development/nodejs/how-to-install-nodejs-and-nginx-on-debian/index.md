@@ -36,7 +36,7 @@ relations:
 Node.js is a JavaScript platform which can serve dynamic, responsive content. JavaScript is usually a client-side, browser language like HTML or CSS. However, Node.js is a server-side, JavaScript platform, comparable to PHP. Node.js often works with other popular server applications like NGINX or Apache. In this guide, NGINX is configured to handle front-end, static file requests, and Node.js is configured to handle back-end file requests.
 
 ## Install and Configure NGINX
-This guide can be started immediately after terminal login on a new Linode, it's written for the `root` user. However, before installation you might want to make sure the Linode is up-to-date with our [Getting Started](/docs/guides/getting-started) guide and secured with our [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+This guide can be started immediately after terminal login on a new Linode, it's written for the `root` user. However, before installation you might want to make sure the Linode is up-to-date with our [Getting Started](/docs/products/platform/get-started/) guide and secured with our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1.  Install NGINX as well as screen, which you'll use later:
 

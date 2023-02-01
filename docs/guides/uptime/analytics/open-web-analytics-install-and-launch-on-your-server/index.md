@@ -27,9 +27,9 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 1.  This guide assumes that you have your Linode already set up and running, that you have followed:
 
-     - The [Getting Started](/docs/guides/getting-started/) guide.
-     - The [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
-     - That the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname) and has a FQDN.
+     - The [Getting Started](/docs/products/platform/get-started/) guide.
+     - The [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+     - That the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname) and has a FQDN.
 
 
     {{< note respectIndent=false >}}

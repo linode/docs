@@ -43,7 +43,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 WHM is the core interface for managing your server and all websites (also called "accounts").
 
-1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. The WHM login page should appear. Enter `root` as the username and use the root password you created when deploying this instance. Then click the **Log In** button.
 

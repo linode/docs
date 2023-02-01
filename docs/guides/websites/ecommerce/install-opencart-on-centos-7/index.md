@@ -150,7 +150,7 @@ You can now login using the administrator account details you entered previously
 
 Now that you have your OpenCart installation up and running, there are a few more steps that we recommend. Because of the security-sensitive nature of ecommerce websites, you will want to make sure your system is secure.
 
-1.  Make sure you follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+1.  Make sure you follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  Secure your website with SSL/TLS. Learn to [Install a SSL certificate with Apache on CentOS 7](/docs/guides/ssl-apache2-centos/). Once you've installed a certificate, enable **Use SSL** by following the [Opencart Documentation on SSL](http://docs.opencart.com/administration/ssl/).
 
