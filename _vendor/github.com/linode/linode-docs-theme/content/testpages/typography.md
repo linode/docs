@@ -1,11 +1,6 @@
 ---
 title: Testing
 description: This is a test page used in both manual and automatic tests. Do not delete. It will not be listed anywhere.
-noindex: true
-_build:
-  render: always
-  list: never
-  publishResources: false
 ---
 
 ## Note Shortcode

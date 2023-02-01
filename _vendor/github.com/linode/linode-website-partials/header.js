@@ -28,7 +28,7 @@
   };
   var setActiveMenuItem = function() {
     var current_path = window.location.pathname;
-    if (current_path === "/") {
+    if ("/" === current_path) {
       return;
     } else if (current_path.match(/^\/community\/questions\/.+/)) {
       current_path = "/community/questions/";
@@ -51,9 +51,11 @@
         return;
       $link.classList.add("current");
       const $sub_menu = $link.closest(".c-submenu");
-      if ($sub_menu === null)
+      if (null === $sub_menu)
         return;
-      const $trigger_links = $header.querySelectorAll(`:scope [data-toggle="#${$sub_menu.id}"]`);
+      const $trigger_links = $header.querySelectorAll(
+        `:scope [data-toggle="#${$sub_menu.id}"]`
+      );
       Array.from($trigger_links).forEach(($trigger) => $trigger.classList.add("current"));
     });
   };
@@ -172,6 +174,7 @@
     $a.href = data.link_url;
     $a.setAttribute("style", data.wrap_styles);
     $a.setAttribute("onclick", `siteFeatureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
+    $a.setAttribute("data-analytics-event", `${data.ga_category} | ${data.ga_action} | ${data.ga_label}`);
     $text.classList.add("c-featured__text");
     $headline.classList.add("c-featured__headline");
     $headline.innerHTML = safeHTML(data.headline);
@@ -218,12 +221,12 @@
   };
   var handleClick = function(e) {
     const $trigger = e.target.closest("[data-toggle]");
-    if ($trigger === null)
+    if (null === $trigger)
       return;
-    if (e.target.closest("form") !== null)
+    if (null !== e.target.closest("form"))
       return;
     const $target = $trigger.dataset.toggle ? $html4.querySelector($trigger.dataset.toggle) : $trigger;
-    if ($target === null)
+    if (null === $target)
       return;
     const $anchor = e.target.closest("a");
     if ($anchor) {
@@ -239,9 +242,12 @@
     toggle($target, $trigger);
   };
   var toggle = function($target, $trigger) {
-    const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html4.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent("toggle:" + (target_active ? "off" : "on"), {
-      bubbles: true
-    });
+    const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html4.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent(
+      "toggle:" + (target_active ? "off" : "on"),
+      {
+        bubbles: true
+      }
+    );
     if ($active) {
       $active.forEach(($item) => $item.classList.remove("active"));
     }
