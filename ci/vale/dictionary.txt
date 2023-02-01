@@ -818,6 +818,7 @@ Hively
 hl2
 hl2
 hmac
+hmorris
 hoc
 homebrew
 homomorphic
