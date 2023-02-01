@@ -76,7 +76,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 1.   Follow the [WireGuard Client](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#wireguard-client) section of our WireGuard guide to generate a public/private keypair for your client, and to set up the WireGuard network interface configuration on your client.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Bring down the `wg0` interface on the server:
 
@@ -98,7 +98,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 You should now have your server configuration completed. At this point, you still need to complete your client's configuration; specifically, you need to add your server as a peer to the client:
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Just like your client, your server also has a public/private keypair of its own. The Marketplace App script leaves a copy of these keys in the root user's home folder:
 

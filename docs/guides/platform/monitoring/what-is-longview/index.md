@@ -69,7 +69,7 @@ The displayed `curl` command will be used in the [next section](#install-the-lon
     su - root
     ```
 
-1.  Using your system's package manager update your Linux distribution's packages. See our [Getting Started](/docs/guides/set-up-and-secure/#perform-system-updates) guide for details on updating your Linode distribution's software.
+1.  Using your system's package manager update your Linux distribution's packages. See our [Getting Started](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates) guide for details on updating your Linode distribution's software.
 
 1.  Switch back to the Linode Cloud Manager in your browser, copy the Longview Client instance's `curl` command, and paste it into your Terminal window. Press **Enter** to execute the command. The installation will take a few minutes to complete.
 

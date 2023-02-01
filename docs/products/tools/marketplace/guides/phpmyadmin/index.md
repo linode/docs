@@ -58,7 +58,7 @@ The following sections require that you own a domain that has been configured fo
 
 ### Enable HTTPS with Certbot
 
-1.  [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Install Certbot for authentication with Python and Apache:
 

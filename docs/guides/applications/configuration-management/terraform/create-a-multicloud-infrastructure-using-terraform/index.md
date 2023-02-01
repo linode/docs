@@ -61,9 +61,9 @@ Code that declares the final state of your desired infrastructure is referred to
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. You need a personal access token for [Linode’s API v4](/docs/api/) to use with Terraform and the Terraform Linode Provider. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
@@ -77,7 +77,7 @@ In this section, you install Terraform on an Ubuntu 20.04 Linode. These steps ar
 
 To download Terraform on a Linode server, follow the steps below:
 
-1. [Login to the Linode server via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
+1. [Login to the Linode server via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). This is the Linode server where you want to install Terraform. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/).
 
        ssh username@192.0.2.0
 

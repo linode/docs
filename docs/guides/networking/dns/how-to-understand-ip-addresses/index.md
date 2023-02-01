@@ -148,7 +148,7 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
 ## Finding Your IP Addresses via the Linux Command Line
 
 {{< note respectIndent=false >}}
-If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 {{< /note >}}
 
 1.  On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.

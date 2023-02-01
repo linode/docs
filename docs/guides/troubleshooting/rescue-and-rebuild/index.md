@@ -79,7 +79,7 @@ Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/s
     {{< note respectIndent=false >}}
 You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 
-For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
+For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
 
 Matching these names will be especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Linode's `/etc/fstab` file, which defines where and how your Linode mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
 
@@ -108,7 +108,7 @@ To connect with Lish:
 
     ![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png)
 
-Review the [Using the Lish Console](/docs/guides/lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/lish/#through-ssh-using-a-terminal).
+Review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/products/compute/compute-instances/guides/lish/#through-ssh-using-a-terminal).
 
 ### Starting SSH
 
@@ -134,7 +134,7 @@ You can now connect to the server as root with the SSH client on a local compute
 
 - For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/).
 
-- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/).
+- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/).
 
 ### Performing a File System Check
 
@@ -204,7 +204,7 @@ The software packages you install is available as long as the Linode is running 
 ### Mounting Disks
 
 {{< note respectIndent=false >}}
- Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution/#update-your-fstab) guide.
+ Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#update-your-fstab) guide.
  {{< /note >}}
 
 By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -281,7 +281,7 @@ If you mounted your disk without using the `exec` option prior to reviewing this
     {{< note respectIndent=false >}}
 This `mount` command only specifies a disk name without specifying a mount point. This causes `mount` to use the `/etc/fstab` file in the chroot to determine the mount point and apply the correct mount options.
 
-As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/).
+As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/).
 
 If these names do not match, mounting your disks using only a device name will either fail completely, mount them at the wrong directory, and/or apply the wrong mount options to them.
 
@@ -325,9 +325,9 @@ The Linode Cloud Manager provides a *Rebuild* feature performs the following two
     {{< note type="alert" respectIndent=false >}}
 If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
-If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/guides/resizing-a-linode/) to a higher resource tier.
+The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
     {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.

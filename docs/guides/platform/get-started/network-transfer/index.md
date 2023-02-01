@@ -35,7 +35,7 @@ The following Linode services consume network transfer and, in most cases, inclu
 
 The allowance included with each service on an account is added to an account-wide **monthly network transfer pool**. Whenever a service consumes network transfer, it is counted towards this account-wide pool and not the individual transfer allowance.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 If the service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service was active.
 {{< /note >}}
 
@@ -57,7 +57,7 @@ Costs associated with network transfer can often be unexpected or confusing in a
 
 All metered network transfer consumed by a service is counted toward the account-wide **monthly network transfer pool**. Any additional transfer usage that exceeds this monthly allotment costs $0.01/GB (which comes to $10/TB) and is charged at the end of the billing period.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The combined monthly network transfer pool is typically enough to cover *most* common use cases for our services. You are only billed for additional network transfer if your usage exceeds this monthly pool during a billing period. If traffic for an individual service exceeds the network transfer amount specified by its plan, but the total transfer used between all of your services is still less than your monthly network transfer pool, then you are *not* charged additional fees.
 {{< /note >}}
 
@@ -87,9 +87,11 @@ We recommend that you monitor your network transfer usage throughout the month t
 
 To view your network utilization (in GB) for the current month, issue the following command:
 
-    linode-cli account transfer
+```command
+linode-cli account transfer
+```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You need to generate a Personal Access Token and install the Linode CLI before being able to use the CLI. See the [Linode CLI](/docs/products/tools/cli/get-started/) guide for more information.
 {{< /note >}}
 

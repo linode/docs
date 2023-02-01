@@ -71,9 +71,9 @@ Configuring WireGuard is as simple as [setting up SSH](/docs/guides/security). A
 
 ## Before You Begin
 
-- [Deploy a Linode](/docs/guides/creating-a-compute-instance/) running CentOS 8.
-- [Add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- [Deploy a Linode](/docs/products/compute/compute-instances/guides/create/) running CentOS 8.
+- [Add a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 ## Install WireGuard
 

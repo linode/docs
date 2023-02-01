@@ -64,7 +64,7 @@ This guide's example instructions will create up to three billable Linodes on yo
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works.
 {{< /note >}}
 
-1.  [Create two Linodes](/docs/guides/creating-a-compute-instance/) running Ubuntu 22.04 LTS as your **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
+1.  [Create two Linodes](/docs/products/compute/compute-instances/guides/create/) running Ubuntu 22.04 LTS as your **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
 
 1.  Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/.ssh/id_rsa.pub` and `~/.ssh/id_rsa`.
 

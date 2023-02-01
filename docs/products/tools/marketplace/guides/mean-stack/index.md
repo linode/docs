@@ -67,7 +67,7 @@ Once deployed, a "Hello World" sample application should be running on `http://l
 
 The MEAN sample application is stored in the `/opt/mean/` directory. To access it within the command line, follow the instructions below.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Navigate to the directory in which the application is stored:
 
@@ -79,7 +79,7 @@ The MEAN sample application is stored in the `/opt/mean/` directory. To access i
 
 ### Viewing the MEAN App through a Web Browser
 
-Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
 ## Software Included
 

@@ -35,7 +35,7 @@ Ready to get started? Let's go!
 
 ## Preparing Your Firewall
 
-Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/guides/set-up-and-secure/#configure-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
+Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
 
 {{< file "/etc/iptables.firewall.rules" >}}
 -A INPUT -p udp --dport 60000:61000 -j ACCEPT
