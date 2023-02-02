@@ -31,6 +31,8 @@ title: "Deploy HashiCorp Vault through the Linode Marketplace"
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Obtaining the Unseal Key

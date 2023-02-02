@@ -40,6 +40,8 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 - **Mist admin user's email** *(required)*: The e-mail address of the administrator. Used as a log-in credential similar to a username.
 - **Mist admin user's password** *(required)*: The password of the Mist.io administrator account.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Once the Mist.io server is successfully created, a few additional steps must be completed to be able to begin using the application.

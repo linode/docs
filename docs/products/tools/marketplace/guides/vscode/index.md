@@ -47,6 +47,8 @@ Run a [Visual Studio Code Server](https://github.com/cdr/code-server) in the bro
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Would you like to use a free Let's Encrypt SSL certificate?** Select `Yes` if you want the install to create an SSL certificate for you, or `No` if you do not. If `No` is selected, the VS Code app triggers security warnings in most web browsers. If you create a certificate and do not create a domain, the installer uses the Linode rDNS assigned name for the certificate.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 VS Code is now installed and ready to use.

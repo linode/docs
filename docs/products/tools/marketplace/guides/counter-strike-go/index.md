@@ -50,6 +50,8 @@ This Marketplace App deploys the CS:GO server software through [LinuxGSM](https:
 - **Buy Anywhere:** When enabled, allows teams to buy equipment from outside buy zones.
 - **Friendly Fire Enabled:** Friendly fire allows teammates to damage and kill each other.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Connect with the CS:GO Client

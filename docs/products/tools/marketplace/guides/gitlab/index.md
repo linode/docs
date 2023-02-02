@@ -45,6 +45,8 @@ Self-hosting your software development with GitLab offers total control of your 
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access the GitLab Site

@@ -54,6 +54,8 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After your MERN One-click App has finished installing, you can:

@@ -59,6 +59,8 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 {{< content "email-warning-shortguide" >}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your Gitea Site

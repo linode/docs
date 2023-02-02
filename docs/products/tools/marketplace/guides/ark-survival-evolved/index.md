@@ -45,6 +45,8 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 - **XP Multiplier:** Increases or decreases the amount of experience awarded for various actions.
 - **Server PvE:** Disables player vs player combat and enables player vs environment combat.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Ensure that you have [installed Steam](https://store.steampowered.com/about/) on your personal computer and bought the ARK: Survival Evolved game on your Steam account before getting started with this section.

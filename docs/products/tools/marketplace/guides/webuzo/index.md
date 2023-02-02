@@ -40,6 +40,8 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 After the deployment process has finished and your Compute Instance has rebooted, log in to the Webuzo Admin panel and complete a few post-installation steps. This includes adding a user, setting the domain (or IP), and optionally including a license key.
