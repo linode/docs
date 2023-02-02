@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.143.1
+  version: 4.143.2
 
   title: Linode API
   description: |
@@ -21529,6 +21529,7 @@ components:
         username:
           type: string
           readOnly: true
+          nullable: true
           description: >
             The username of the User who caused the Event.
           example: exampleUser
@@ -21889,51 +21890,49 @@ components:
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Linodes on this Account.
-            There will be one entry per Linode on the Account.
+            The grants this User has for each Linode that is owned by this Account.
+        database:
+          type: array
+          items:
+            $ref: '#/components/schemas/Grant'
+          description: >
+            The grants this User has for each Database that is owned by this Account.
         domain:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Domains on this Account.
-            There will be one entry per Domain on the Account.
+            The grants this User has for each Domain that is owned by this Account.
         nodebalancer:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to NodeBalancers on this
-            Account. There will be one entry per NodeBalancer on the Account.
+            The grants this User has for each NodeBalancer that is owned by this Account.
         image:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Images on this Account.
-            There will be one entry per Image on the Account.
+            The grants this User has for each Image that is owned by this Account.
         longview:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Longview Clients on this
-            Account. There will be one entry per Longview Client on the
-            Account.
+            The grants this User has for each Longview Client that is owned by this Account.
         stackscript:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to StackScripts on this
-            Account.  There will be one entry per StackScript on the Account.
+            The grants this User has for each StackScript that is owned by this Account.
         volume:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Volumes on this Account.
-            There will be one entry per Volume on the Account.
+            The grants this User has for each Block Storage Volume that is owned by this Account.
     Image:
       type: object
       description: Image object
