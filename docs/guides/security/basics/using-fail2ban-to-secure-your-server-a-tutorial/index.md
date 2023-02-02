@@ -36,7 +36,7 @@ Fail2ban is intended to be used in conjunction with an already-hardened server a
 
 ## How to Install Fail2ban
 
-Follow the [Getting Started](/docs/guides/getting-started/) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/guides/set-up-and-secure/) guide before beginning.
+Follow the [Getting Started](/docs/products/platform/get-started/) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before beginning.
 
 ### CentOS/CentOS Stream/RHEL Based Operating Systems
 
@@ -529,7 +529,7 @@ For additional information about `fail2ban-client` commands, see the [Fail2ban w
 
 ## Lockout Recovery
 
-In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/guides/lish/).
+In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
 From here, you can view your firewall rules to ensure that it is fail2ban that blocked your IP, and not something else. To do this, enter the following command:
 

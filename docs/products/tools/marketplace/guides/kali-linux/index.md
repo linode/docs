@@ -60,7 +60,7 @@ After Kali Linux has been fully deployed, you can log in through an SSH session 
 
 If you selected the VNC installation option, [TigerVNC](https://tigervnc.org/) is installed. This allows you to connect remotely to the desktop environment and access Kali's GUI tools. Perform the steps below to access your Kali Linux desktop through a VNC client. While there are many options for OS X and Windows, this guide will use [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
 
-1. From your desktop, create an SSH tunnel to your Compute Instance with the following command. Be sure to replace *[username]* with the VNC username you created and *[ip]* with the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1. From your desktop, create an SSH tunnel to your Compute Instance with the following command. Be sure to replace *[username]* with the VNC username you created and *[ip]* with the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
     ```output
     ssh -L 61000:localhost:5901 -N -l [username] [ip]

@@ -45,6 +45,8 @@ github.com/linode/linode-api-docs/v4 v4.142.3-patch1 h1:kyJSecma6rcFTFqdmmKxWlWv
 github.com/linode/linode-api-docs/v4 v4.142.3-patch1/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-api-docs/v4 v4.143.1 h1:Z0YgEZ1O7VKwilSfckpwI83RrrVn8FBZf1YjNBFhn9A=
 github.com/linode/linode-api-docs/v4 v4.143.1/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
+github.com/linode/linode-api-docs/v4 v4.143.2 h1:ByzaLwD4emxZ9MY1IaYdSZjs7Apuay+3rbR+0jTZyA8=
+github.com/linode/linode-api-docs/v4 v4.143.2/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-docs-theme v0.0.0-20220622135843-166f108e1933 h1:QchGQS6xESuyjdlNJEjvq2ftGX0sCTAhPhD5hAOJVMI=
 github.com/linode/linode-docs-theme v0.0.0-20220622135843-166f108e1933/go.mod h1:6kYeZt+rMvJFZ9Wbnm4CDSn8Sg1MuYjr2Kx6W/awiQM=
 github.com/linode/linode-docs-theme v0.0.0-20220718150422-ea48dbf69943 h1:BE3OgPTfmSdYeNUxcC1clIpJZhdMmYByCCCap0njwyY=
@@ -91,5 +93,8 @@ github.com/linode/linode-docs-theme v0.0.0-20221227190248-59372e6a69d3 h1:tdZcxE
 github.com/linode/linode-docs-theme v0.0.0-20221227190248-59372e6a69d3/go.mod h1:M2BbVkCqjUCiIwjgqVPhwXxTln+gNZVGn9ydsAS3WeI=
 github.com/linode/linode-docs-theme v0.0.0-20230106153507-947d7d44f2ba h1:axiDfu5k+44ZtGdXHoYU9wo8769fQpX8VlhSSmPtppg=
 github.com/linode/linode-docs-theme v0.0.0-20230106153507-947d7d44f2ba/go.mod h1:ByFXfbw9SxL09P8R6pDoRMAjXrFhsjfqxPUtZrwy63E=
+github.com/linode/linode-docs-theme v0.0.0-20230201181921-137b4cf37d93 h1:1AiKbF1UmlcmbrBswLk2tYpetIF2d8a4bWTOWBPZ2Ig=
+github.com/linode/linode-docs-theme v0.0.0-20230201181921-137b4cf37d93/go.mod h1:JZq6hTKfbxKoxOvfRkjYyXqQ/0RkV122sWfE+WXfCm4=
 github.com/linode/linode-website-partials v0.0.0-20221205205120-b6ea1aaa59fb/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
 github.com/linode/linode-website-partials v0.0.0-20221222200538-99862e429110/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=
+github.com/linode/linode-website-partials v0.0.0-20230201145731-a8703d0a954a/go.mod h1:K1Em3lwb16JiCwNVftAFwWGhyB9Zkl/nXhxjBBUC1Ao=

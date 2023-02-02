@@ -53,7 +53,7 @@ MySQL is an open-source database management system that uses a relational databa
 
 After MySQL has finished installing, you will be able to access MySQL from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 

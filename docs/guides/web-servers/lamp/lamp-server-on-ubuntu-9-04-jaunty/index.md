@@ -34,7 +34,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). This guide assumes that you are logged in as the root superuser on your Linode.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). This guide assumes that you are logged in as the root superuser on your Linode.
 
 ## Install and Configure the Apache Web Server
 

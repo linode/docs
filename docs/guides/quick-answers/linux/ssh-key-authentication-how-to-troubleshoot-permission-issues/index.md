@@ -93,9 +93,9 @@ Specify the exact key pair using the following command:
 
 ### The SSH Client Does Not Possess the Correct Private Key
 
-This section covers the situation where the client does not have the correct private key and password authentication is not enabled on the server. In this case, use the [Linode Shell](/docs/guides/lish/), also known as the LISH Console, to access the Linode.
+This section covers the situation where the client does not have the correct private key and password authentication is not enabled on the server. In this case, use the [Linode Shell](/docs/products/compute/compute-instances/guides/lish/), also known as the LISH Console, to access the Linode.
 
-1. Log in to the Linode using the [LISH Console](/docs/guides/lish/). The LISH Console can be accessed from the [*Linode Cloud Manager*](https://cloud.linode.com/). Select the appropriate Linode, and click the **Launch LISH Console** link at the top right-hand side of the page.
+1. Log in to the Linode using the [LISH Console](/docs/products/compute/compute-instances/guides/lish/). The LISH Console can be accessed from the [*Linode Cloud Manager*](https://cloud.linode.com/). Select the appropriate Linode, and click the **Launch LISH Console** link at the top right-hand side of the page.
 
 1. Edit the file located at `/etc/ssh/sshd_config` and change the value of `PasswordAuthentication` to `Yes`. If you are not planning to generate and use an SSH private key in the near future, change `PubKeyAuthentication` to `No` at the same time.
 
@@ -136,7 +136,7 @@ yQdSj8l9dCN9Zf8GBLQTbryHgaSEoinpX5SFmNkdT7yN8TJkv1Z61gpB+NJ3+aJBGH
 Jvl72P8ePqG2nIvSqHsm/4OfdJshaXHA+j6DpvSQ== user@userdevice.local
     {{< /file >}}
 
-1. Log in to the Linode through the [LISH Console](/docs/guides/lish/). Access the LISH Console through the [*Linode Cloud Manager*](https://cloud.linode.com/). Select the Linode to access, then click the **Launch LISH Console** link at the top right-hand side of the page.
+1. Log in to the Linode through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/). Access the LISH Console through the [*Linode Cloud Manager*](https://cloud.linode.com/). Select the Linode to access, then click the **Launch LISH Console** link at the top right-hand side of the page.
 
 1. Display the contents of the `~/.ssh/authorized_keys` file.
 

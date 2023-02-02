@@ -25,7 +25,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
-Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing Cacti we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Prerequisites
 
@@ -128,7 +128,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/docs/guides/set-up-and-secure/)
+- [Linux Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 - [Configure a Basic Firewall in Debian 5 (Lenny)](/docs/security/firewalls/configure-a-firewall-with-arno-iptables-in-debian-5-lenny/)
 
 

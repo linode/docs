@@ -58,7 +58,7 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 After your MERN One-click App has finished installing, you can:
 
-- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
+- [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
 
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 

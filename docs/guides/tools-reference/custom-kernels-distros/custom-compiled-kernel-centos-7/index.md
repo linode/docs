@@ -24,9 +24,9 @@ aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/guides/managing-the-kernel-on-a-linode/).
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/).
 
-Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Then, log in to your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Then, log in to your Linode as the `root` user.
 
 ## Prepare the System
 
@@ -129,7 +129,7 @@ GRUB_TERMINAL="serial console"
 
     ![The GRUB2 Option.](custom-kernel-grub2.png)
 
-3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/guides/lish/) or [GLISH](/docs/guides/glish/) session first, so you can monitor the boot process and troubleshoot if necessary.
+3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/products/compute/compute-instances/guides/lish/) or [GLISH](/docs/products/compute/compute-instances/guides/glish/) session first, so you can monitor the boot process and troubleshoot if necessary.
 
 
 Note that if you install an updated kernel, you need to create a new `initrd` file, and update GRUB.

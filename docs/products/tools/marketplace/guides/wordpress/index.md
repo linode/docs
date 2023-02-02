@@ -55,7 +55,7 @@ Ensure that you do not use special characters in the password for the database b
 
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
@@ -73,7 +73,7 @@ Ensure that you do not use special characters in the password for the database b
 
 ### Viewing Your Website
 
-Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
+Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
 ### Manually Configure a Domain
 
@@ -99,7 +99,7 @@ If you didn't set up a domain during the deployment process, you can add it manu
 
 If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also allows you to update the email address for your admin account without needing an email confirmation.
 
-1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Navigate to the directory of your WordPress installation:.
 

@@ -23,7 +23,7 @@ relations:
 
 
 
-This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 10.10 (Maverick) guide](/docs/web-servers/apache/installation/ubuntu-10-10-maverick). These steps should be performed via an SSH session to your Linode as the root user.
+This guide will assist you with enabling SSL for websites served under the Apache web server. It is assumed that you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 10.10 (Maverick) guide](/docs/web-servers/apache/installation/ubuntu-10-10-maverick). These steps should be performed via an SSH session to your Linode as the root user.
 
 ## Use a Self-Signed SSL Certificate with Apache
 

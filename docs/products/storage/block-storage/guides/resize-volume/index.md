@@ -29,7 +29,7 @@ At this time, the size of Volumes are only able to be increased (not decreased),
 
 1.  Once your Compute Instance has fully booted up, you need to run the previously mentioned commands to resize the file system within your Volume.
 
-    1. Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+    1. Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
     1.  Unmount the Volume, making sure to use the unique path for your own Volume:
 
