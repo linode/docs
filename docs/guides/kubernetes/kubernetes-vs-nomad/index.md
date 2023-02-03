@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-24
 modified_by:
   name: Nathaniel Stickman
-title: "Kubernetes vs Nomad: Whis Is Better?"
+title: "Kubernetes vs Nomad: Which Is Better?"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -62,7 +62,7 @@ Nomad is part of the HashiCorp ecosystem, making it ready for integration with H
 
 Nomad's rise has been relatively recent, and discussions have often centered around Nomad as a simplified Kubernetes alternative. But Nomad's flexibility makes it stand out all on its own. Nomad can handle scheduling and management for highly-scalable clusters, and can work with applications that are containerized, non-containerized, or a mix. And it can accomplish all of this across a wider range of systems.
 
-You can learn more about Nomad and how it operates through our tutorial **How to Use Nomad for Container Orchestration**.
+You can learn more about Nomad and how it operates through our tutorial [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/).
 
 ### Pros and Cons
 
