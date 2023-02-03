@@ -140,4 +140,4 @@ Be sure to reference further of our tutorials to keep learning about Kubernetes 
 
 - [Manage a Docker Cluster with Kubernetes](/docs/guides/manage-a-docker-cluster-with-kubernetes/)
 
-- **How to Use Nomad for Container Orchestration**
+- [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/)
