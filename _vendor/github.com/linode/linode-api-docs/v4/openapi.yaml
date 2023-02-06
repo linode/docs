@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.143.2
+  version: 4.144.1
 
   title: Linode API
   description: |
@@ -6120,8 +6120,10 @@ paths:
       - oauth:
         - domains:read_write
       summary: Domain Record Create
-      description: >
+      description: |
         Adds a new Domain Record to the zonefile this Domain represents.
+
+        Each domain can have up to 12,000 active records.
       operationId: createDomainRecord
       x-linode-cli-action: records-create
       requestBody:
@@ -19292,7 +19294,7 @@ components:
       schema:
         type: integer
         minimum: 25
-        maximum: 100
+        maximum: 500
         default: 100
   links:
     bootLinode:
@@ -20970,7 +20972,7 @@ components:
 
             `A` and `AAAA`: The hostname or FQDN of the Record.
 
-            `NS`: The subdomain, if any, to use with the Domain of the Record.
+            `NS`: The subdomain, if any, to use with the Domain of the Record. Wildcard NS records (`*`) are not supported.
 
             `MX`: The mail subdomain. For example, `sub` for the address `user@sub.example.com` under the `example.com`
             Domain. Must be an empty string (`""`) for a Null MX Record.
@@ -25887,12 +25889,18 @@ components:
           description: The unique ID of this Region.
           example: us-east
           x-linode-cli-display: 1
+        label:
+          type: string
+          description: Detailed location information for this Region, including city, state or region, and country.
+          example: Newark, NJ, USA
+          readOnly: true
+          x-linode-cli-display: 2
         country:
           type: string
           description: The country where this Region resides.
           example: us
           readOnly: true
-          x-linode-cli-display: 2
+          x-linode-cli-display: 3
         capabilities:
           type: array
           items:
@@ -25905,7 +25913,7 @@ components:
           - Block Storage
           - Object Storage
           readOnly: true
-          x-linode-cli-display: 3
+          x-linode-cli-display: 4
         status:
           type: string
           description: >
@@ -25915,11 +25923,11 @@ components:
           - ok
           - outage
           readOnly: true
-          x-linode-cli-display: 4
+          x-linode-cli-display: 5
         resolvers:
           type: object
           readOnly: true
-          x-linode-cli-display: 5
+          x-linode-cli-display: 6
           properties:
             ipv4:
               type: string
