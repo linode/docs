@@ -9,7 +9,7 @@ description: This is a test page used in both manual and automatic tests. Do not
 
 This guide exists:
 
-* [Working Guide](/docs/guides/getting-started/)
+* [Working Guide](/docs/products/platform/get-started/)
 
 These do not exist:
 
