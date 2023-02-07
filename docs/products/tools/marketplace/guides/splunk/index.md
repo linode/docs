@@ -43,6 +43,8 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your Splunk App

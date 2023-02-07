@@ -40,6 +40,8 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 - **RabbitMQ Username** *(required)*: The username for accessing the rabbitMQ management console.
 - **RabbitMQ Password** *(required)*: The user password for SSH access to the Linode.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After the RabbitMQ Server has been deployed, you can access the management console by entering the [public IPv4 address](/docs/guides/find-your-linodes-ip-address/) of the Linode followed by port `15672`:

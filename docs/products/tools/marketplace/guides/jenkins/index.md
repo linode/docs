@@ -47,7 +47,9 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
 1. Retrieve your Jenkins admin password by viewing the contents of the `/var/lib/jenkins/secrets/initialAdminPassword` file.
 
-        cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```command
+    cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```
 
     You should see a similar output
 

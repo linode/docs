@@ -43,6 +43,8 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 - **DNS name:** This is the domain you will be using for your WarpSpeed instance.
 - **Data Directory:** This is the directory that your WarpSpeed data will be stored in, default will be `/wirespeed`.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the WarpSpeed VPN App

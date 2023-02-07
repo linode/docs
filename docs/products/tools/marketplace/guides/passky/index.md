@@ -40,6 +40,8 @@ external_resources:
 - **Domain**: The domain name to be included in Apache vhost and used to generated SSL certificates. If none is provided the default rDNS is used.
 - **Sub Domain**: The sub domain to be included in Apache vhost and used to generated TLS/SSL certificates.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Passky App

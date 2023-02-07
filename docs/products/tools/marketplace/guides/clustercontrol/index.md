@@ -48,6 +48,8 @@ ClusterControl offers both free and paid plans. Visit [Severalnines' website](ht
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Would you like to use a free Let's Encrypt SSL certificate?:** Select *yes* to generate a free Let's Encrypt certificate and enabled secure HTTPS traffic. This uses the default rDNS value for the new instance or the custom domain, if one is specified.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your ClusterControl App

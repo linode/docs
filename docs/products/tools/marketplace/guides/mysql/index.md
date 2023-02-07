@@ -47,6 +47,8 @@ MySQL is an open-source database management system that uses a relational databa
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access MySQL/MariaDB

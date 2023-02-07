@@ -47,6 +47,8 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access Your Grafana Client

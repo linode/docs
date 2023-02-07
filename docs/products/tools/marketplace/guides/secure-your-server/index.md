@@ -47,6 +47,8 @@ Fill out the following fields to automatically create a limited user for your ne
 
     {{< content "email-warning-shortguide" >}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 #### Block Storage (Optional)
 
 You can optionally specify an existing Block Storage Volume or create a new Block Storage Volume. This attaches and mounts the Volume to the Compute Instance so you can start using it right away.

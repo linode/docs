@@ -37,12 +37,13 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 - **Resource to Download**: The url to a hosted [Dockerfile](https://docs.docker.com/engine/reference/builder/) or [docker-compose.yml](/docs/guides/how-to-use-docker-compose/#Basic-Usage) file to be used to assemble an image as part of the application creation process.
 - **Command to run**: A [Docker Command](/docs/guides/docker-commands-quick-reference-cheat-sheet/) to be run as part of the application creation process.
 
-
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Do you need an MX record for this domain?** Select `Yes` to create a basic [MX record](/docs/guides/dns-overview/#mx) for the domain. Select `No` to create no MX records
 - **Do you need an SPF record for this domain?** Select `Yes` to create a basic [SPF record](/docs/guides/dns-overview/#spf) for the domain. Select `No` to create no SPF records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

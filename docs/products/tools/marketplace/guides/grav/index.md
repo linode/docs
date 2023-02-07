@@ -44,6 +44,8 @@ aliases: ['/guides/grav-marketplace-app/']
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Grav Admin Panel

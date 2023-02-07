@@ -42,6 +42,8 @@ In addition to the core infrastructure, there are a number of freely available D
 - **Database Root Password** *(required)*: Password for your Drupal site's MariaDB database `root` user.
 - **Database User Password** *(required)*: Password for your Drupal site's MariaDB database `drupal` user.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your Drupal Site

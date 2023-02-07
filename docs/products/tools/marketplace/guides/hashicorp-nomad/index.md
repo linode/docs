@@ -31,6 +31,8 @@ title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Nomad Web UI

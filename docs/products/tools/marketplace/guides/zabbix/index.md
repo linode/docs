@@ -48,9 +48,11 @@ After Zabbix has finished installing, you must first obtain the login credential
 
 1.  From your terminal, log into your new Compute Instance as the `root` user with the following command, replacing `192.0.2.1` with your instance's [IPv4 address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/):
 
-        ssh root@192.0.2.1
+    ```command
+    ssh root@192.0.2.1
+    ```
 
-1. The Zabbix welome banner should appear immediately after logging in. Make a note of the username and password as these are used in a later step.
+1. The Zabbix welcome banner should appear immediately after logging in. Make a note of the username and password as these are used in a later step.
 
     ```output
     ********************************************************************************
@@ -83,7 +85,4 @@ For more on Zabbix, check out the following resources:
 - [Purchase Technical Support Contract](https://www.zabbix.com/support)
 - [Visit the Zabbix Official Forum](https://www.zabbix.com/forum)
 
-<!-- the following shortcode informs the user that Linode does not provide automatic updates
-     to the Marketplace app, and that the user is responsible for the security and longevity
-     of the installation. -->
 {{< content "marketplace-update-note-shortguide">}}

@@ -45,6 +45,8 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access Grafana and Prometheus

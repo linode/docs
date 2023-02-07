@@ -48,6 +48,8 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 ### Accessing the WordPress Admin Dashboard
