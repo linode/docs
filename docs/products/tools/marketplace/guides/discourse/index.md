@@ -68,6 +68,8 @@ Discourse requires that you have a domain name and SMTP email. These fields are 
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Discourse is now installed and ready to use.

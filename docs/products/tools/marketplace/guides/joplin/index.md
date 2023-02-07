@@ -40,6 +40,8 @@ external_resources:
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Joplin Server

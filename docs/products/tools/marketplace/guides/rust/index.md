@@ -49,6 +49,8 @@ Hosting your own Rust server allows you to customize settings and curate the num
 - **Global Chat Enabled:** Enables global chat. Chat messages will be broadcast to all players.
 - **PvE Enabled:** Allow player vs. environment combat.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 Ensure that you have installed Rust to your computer before getting started with this section. You can install Rust from [Steam's Web Store](https://store.steampowered.com/).

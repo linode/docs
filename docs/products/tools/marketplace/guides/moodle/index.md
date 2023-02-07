@@ -44,6 +44,8 @@ Moodle is the most widely used open source learning management system. It is aim
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 #### Limited User SSH Options (Optional)
 
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.

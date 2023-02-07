@@ -46,13 +46,15 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 - **Yacht Password** *(required)* The password for your Yacht login.
 - **Yacht Compose Support:** Support for using Yacht with [Docker Compose](https://yacht.sh/Advanced/docker-compose/). - **Yacht Theme:** Yacht theme options: Default, RED, and OMV.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your Yacht App
 
 1. After Yacht has finished installing, you can access your Yacht instance by visiting your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) at port 8000 (for example, `http://192.0.2.0:8000`) in a web browser.
 
-    {{< note type="alert" >}}
+    {{< note type="warning" >}}
     By default Yacht is not configured to use SSL, meaning that your login credentials will be sent over plain text. See [Additional Steps for SSL](#additional-steps-for-ssl) for guidance on how to encrypt your connection.
     {{< /note >}}
 

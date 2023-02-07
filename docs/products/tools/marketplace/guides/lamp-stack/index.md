@@ -44,6 +44,8 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After your LAMP stack has finished deploying, you can:

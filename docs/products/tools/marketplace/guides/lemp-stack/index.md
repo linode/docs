@@ -45,6 +45,8 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After your LEMP stack has finished deploying, you can view it and upload your own files using one of the methods below:

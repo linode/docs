@@ -42,6 +42,8 @@ aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/pla
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 Once the FileCloud server is up and running, a few additional steps must be completed before you can begin using your application.

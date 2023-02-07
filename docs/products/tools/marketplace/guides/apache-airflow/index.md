@@ -41,6 +41,8 @@ To learn more about Airflow and determine if it's the right tool for you, read t
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 1. Log into your new Compute Instance through [LISH](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.

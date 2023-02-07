@@ -45,6 +45,8 @@ aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Jitsi is now installed and ready to use.

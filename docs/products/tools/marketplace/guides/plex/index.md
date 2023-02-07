@@ -51,6 +51,8 @@ The following configuration options create a secure [Limited User](/docs/product
 - **Limited User Password** *(required)*: Enter a *strong* password for the new user.
 - **Limited User SSH Key:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After your Plex Server has been deployed, you can upload media and configure access to your Plex Server from Plex clients for your media devices.

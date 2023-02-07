@@ -43,6 +43,8 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access the Redis CLI

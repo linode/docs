@@ -43,6 +43,8 @@ image: deploying_nextcloud_oca.png
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Log Into Your Nextcloud Instance

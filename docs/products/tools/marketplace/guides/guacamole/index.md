@@ -50,6 +50,8 @@ external_resources:
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Admin Email:** The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your absolute domain. This field is required along with your `API Token` and `Domain` for HTTPS access to your Guacamole remote desktop.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your Guacamole App

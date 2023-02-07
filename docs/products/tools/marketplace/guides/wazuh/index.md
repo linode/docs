@@ -43,6 +43,8 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Wazuh App

@@ -51,6 +51,8 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 #### Additional Security Options (Optional)
 
 - **Configure automatic security updates:** Select `Yes` to have the system automatically update WordPress with the latest security updates. Select `No` to if you wish to manage all updates manually.

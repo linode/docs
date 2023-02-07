@@ -44,7 +44,7 @@ Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting
 
 ## Getting Started after Deployment
 
-## Access Your Prometheus Instance
+### Access Your Prometheus Instance
 
 Now that your Prometheus Marketplace App is deployed, you can log into Prometheus to access its [expression browser](https://prometheus.io/docs/prometheus/latest/getting_started/#using-the-graphing-interface), alerts, status, and more.
 

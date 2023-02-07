@@ -1,3 +1,4 @@
+aaPanel
 abc
 abell
 absecon
@@ -1161,6 +1162,7 @@ loopback
 lsadump
 lspci
 lsb
+LSCache
 lsd
 lsmod
 lsof
@@ -1939,6 +1941,8 @@ slavedb
 sls
 smartcard
 smartcards
+SMB
+SMBs
 smishing
 smtp
 smtpd
@@ -2032,6 +2036,7 @@ subtab
 subtransit
 sudo
 sudoers
+suExec
 suhosin
 suid
 sukharev
@@ -2186,6 +2191,8 @@ Ubiquiti
 ubuntu
 ucd
 udp
+UDF
+UDFs
 ufw
 ui
 uidl
@@ -2257,6 +2264,7 @@ usersor
 usr
 ust
 utils
+UTunnel
 uuid
 uwls
 uwsgi

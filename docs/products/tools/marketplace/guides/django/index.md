@@ -41,6 +41,10 @@ external_resources:
 - **Django password** *(required)*: Enter a *strong* password for your Django user.
 - **Django user email** *(required)*: The email address you wish to use for your Django user.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access Django

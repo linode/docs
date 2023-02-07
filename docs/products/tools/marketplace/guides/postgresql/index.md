@@ -38,6 +38,8 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access PostgreSQL

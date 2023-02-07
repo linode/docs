@@ -42,6 +42,8 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the BeEF App

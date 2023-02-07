@@ -46,6 +46,8 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 - **Database User** *(required)*: The username you wish to use for the limited database user.
 - **Database User Password** *(required)*: Enter a *strong* password you wish to use for the limited database user.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Akaunting App

@@ -43,12 +43,14 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 ### MongoDB Options
 
 - **MongoDB admin user password** *(required)*: The Mongo admin user password.
-- **MongoDB Version** *(required)*: Select the verison of MongoDB you'd like to install.
+- **MongoDB Version** *(required)*: Select the version of MongoDB you'd like to install.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for soa record:** The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

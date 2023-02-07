@@ -59,6 +59,8 @@ MEAN is a full-stack JavaScript-based framework consisting of MongoDB database, 
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Once deployed, a "Hello World" sample application should be running on `http://localhost:3000`. An Nginx reverse proxy then serves the application through your custom domain or rDNS domain over ports 80 and 443. Follow the instructions below to view or access it.

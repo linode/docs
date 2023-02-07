@@ -38,7 +38,10 @@ external_resources:
 - **MySQL User Password** *(required)*: The password for the `joomla` MySQL user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
+
 {{< content "marketplace-custom-domain-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

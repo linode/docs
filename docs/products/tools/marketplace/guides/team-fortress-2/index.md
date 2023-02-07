@@ -46,6 +46,8 @@ Setting up a personal game server puts you in control of the game modes and maps
 - **Maximum Rounds:** The maximum amount of rounds before the map changes.
 - **Round Time Limit:** The time per round, in minutes.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 Ensure that you have installed Team Fortress 2 to your computer before getting started with this section. You can install Team Fortress 2 from [Steam's Web Store](https://store.steampowered.com/app/440/Team_Fortress_2/).
