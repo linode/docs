@@ -40,7 +40,7 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to create and connect to an LKE cluster.
 
 ## Create Manifest Files
 
@@ -141,7 +141,7 @@ Follow the instructions in [Deploying and Managing a Cluster with Linode Kuberne
     This manifest is doing several things:
 
     - First it sets up the Service called `drupal-mysql` that is available over TCP on the port 3306.
-    - Next, it creates a Persistant Volume Claim (PVC) for the service. On Linode, this is a Block Storage Volume.
+    - Next, it creates a Persistent Volume Claim (PVC) for the service. On Linode, this is a Block Storage Volume.
     - Finally, it declares the deployment for `mysql` and all it's specifications.
       - The specification creates a container called `mysql`.
       - It includes two environment variables `MYSQL_DATABASE` and `MYSQL_ROOT_PASSWORD`.
@@ -246,7 +246,7 @@ Follow the instructions in [Deploying and Managing a Cluster with Linode Kuberne
     This manifest is doing several things:
 
     - First it sets up the Service called `drupal` that is available over TCP on the port 8081, listening to port 80, with a type of LoadBalancer. This creates a Linode NodeBalancer.
-    - Next, it creates a Persistant Volume Claim (PVC) for the service. On Linode, this is a Block Storage Volume.
+    - Next, it creates a Persistent Volume Claim (PVC) for the service. On Linode, this is a Block Storage Volume.
     - Finally, it declares the deployment for `drupal` and all it's specifications.
       - The specification creates a container called `drupal`.
       - Drupal set-up needs to be able to write to some directories during installation, so the `initContainers` sets these permissions.

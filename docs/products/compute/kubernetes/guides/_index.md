@@ -15,7 +15,7 @@ modified: 2023-02-09
 
 - [Manage Node Pools](/docs/products/compute/kubernetes/guides/manage-node-pools/)
 
-- [High Availability Control Plane](/docs/products/compute/kubernetes/guides/enable-high-availability)
+- [High Availability Control Plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/)
 
 - [Upgrade a Cluster to a Newer Kubernetes Version](/docs/products/compute/kubernetes/guides/upgrade-kubernetes-version/)
 
@@ -29,7 +29,7 @@ modified: 2023-02-09
 
 - [Deploy an LKE Cluster Using Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/)
 
-- [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig)
+- [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig/)
 
 ## Additional Guides
 

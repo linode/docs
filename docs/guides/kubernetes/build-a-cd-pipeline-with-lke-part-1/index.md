@@ -1,5 +1,5 @@
 ---
-slug: cd-pipeline-with-lke-part-1
+slug: build-a-cd-pipeline-with-lke-part-1
 author:
   name: Linode Community
   email: docs@linode.com

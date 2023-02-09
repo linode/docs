@@ -53,7 +53,7 @@ Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kub
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to create and connect to an LKE cluster.
 
 {{< note >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.
@@ -234,7 +234,7 @@ For a more detailed overview, see the Linkerd [architecture](https://linkerd.io/
     linkerd-web              1/1     1            1           105s
     ```
 
-    You can read about what each of these services do in the Linkerd [architechure documentation](https://linkerd.io/2/reference/architecture/#control-plane).
+    You can read about what each of these services do in the Linkerd [architecture documentation](https://linkerd.io/2/reference/architecture/#control-plane).
 
 ### The Data Plane
 

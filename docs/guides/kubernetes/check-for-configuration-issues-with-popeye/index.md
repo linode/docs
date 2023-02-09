@@ -1,4 +1,5 @@
 ---
+slug: check-for-configuration-issues-with-popeye
 author:
   name: Linode
   email: docs@linode.com
@@ -6,7 +7,7 @@ description: "Learn how to use Popeye, a utility that searches for configuration
 keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-08
+published: 2023-02-09
 modified_by:
   name: Linode
 title: "Use Popeye to Check for Kubernetes Configuration Issues"

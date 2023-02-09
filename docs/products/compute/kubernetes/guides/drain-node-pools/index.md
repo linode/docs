@@ -31,12 +31,12 @@ This guide provides instructions to:
 
 This guide assumes you have a working [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) cluster running on Linode and you are familiar with *PodDisruptionBudget* concept and Configured *PodDisruptionBudgets* for applications that need them.
 
-1.  [Install the Kubernetes CLI](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) (`kubectl`) on the local computer.
+1.  [Install the Kubernetes CLI](/docs/products/compute/kubernetes/guides/kubectl/) (`kubectl`) on the local computer.
 
-1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to connect to an LKE cluster.
+1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to connect to an LKE cluster.
 
     {{< note >}}
-    Ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context)
+    Ensure that the `KUBECONFIG` context is [persistent](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context)
     {{< /note >}}
 
 1.  Ensure that Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
@@ -164,7 +164,7 @@ If you remove the resources afterward, you are only billed for the hour(s) that 
 
 ## Add a new node to the cluster and drain the node
 
-1. Add an [additional Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#adding-a-node-pool) to the LKE cluster, of a plan type and size which can accommodate the existing workloads.
+1. Add an [additional Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool) to the LKE cluster, of a plan type and size which can accommodate the existing workloads.
 
 1. After the new Compute Instances have joined the cluster, drain any instances that are scheduled for maintenance. This causes the workloads to be rescheduled to other Compute Instances in the cluster. Linode recommends draining one instance at a time to ensure that the workloads have been rescheduled to other instances. An example Node drain command:
 

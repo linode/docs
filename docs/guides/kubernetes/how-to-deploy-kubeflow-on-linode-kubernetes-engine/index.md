@@ -47,7 +47,7 @@ This guide's example instructions create several billable resources on your Lino
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to create and connect to an LKE cluster.
 
 The [official Kubeflow documentation](https://www.kubeflow.org/docs/started/k8s/overview/) recommends provisioning a cluster with at least 4 CPU cores, 12GB of memory and 50GB of space available. We recommend running three 16GB Linodes — that should give you enough resources to scale your models.
 
@@ -104,7 +104,7 @@ kfctl version
 
 ### The KfDef file
 
-The last piece of the puzzle is the `KfDef` file. Think of the `KfDef` file as a list of components that should be installed with Kubeflow. As an example, Kubeflow can be configured to use the [Spark operator](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator), [Katib (Hyperparameter Tuning)](https://www.kubeflow.org/docs/components/hyperparameter-tuning/hyperparameter/), [Seldon serving](https://www.kubeflow.org/docs/components/serving/seldon/), etc.
+The last piece of the puzzle is the `KfDef` file. Think of the `KfDef` file as a list of components that should be installed with Kubeflow. As an example, Kubeflow can be configured to use the [Spark operator](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator), [Katib (Hyperparameter Tuning)](https://www.kubeflow.org/docs/components/katib/overview/), [Seldon serving](https://www.kubeflow.org/docs/external-add-ons/serving/seldon/), etc.
 
 1.  You can download the following `KfDef` that includes a lighter version of Kubeflow as well as [Dex — an identity provider](https://github.com/dexidp/dex) useful for managing user access.
 

@@ -22,7 +22,7 @@ Rook NFS allows remote hosts to mount filesystems over a network and interact wi
 
 ## Before you Begin
 
-- This guide assumes that you already have an LKE cluster up and running. If that is not the case, please follow the instructions in our [LKE Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/).
+- This guide assumes that you already have an LKE cluster up and running. If that is not the case, please follow the instructions in our [LKE Tutorial](/docs/products/compute/kubernetes/).
 - This guide relies on git wherever `kubectl` is installed. While git is installed on many Linux distributions, others may require manual installation. Git can be installed on most distributions by following our [Git Installation Guide](/docs/guides/how-to-install-git-on-linux-mac-and-windows/)
 
 ## Installing Rook NFS on LKE

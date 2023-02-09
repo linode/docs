@@ -24,9 +24,9 @@ In this guide, you learn the syntax for creating Kubernetes CronJobs. You also l
 
 ## Before You Begin
 
-1. Ensure you have deployed a Kubernetes cluster. To deploy a Linode Kubernetes Engine (LKE) cluster, see our [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+1. Ensure you have deployed a Kubernetes cluster. To deploy a Linode Kubernetes Engine (LKE) cluster, see our [Deploy and Manage a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide.
 
-1. After deploying your Kubernetes cluster, make sure your local environment has [kubectl installed](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and you can access your cluster using `kubectl`.
+1. After deploying your Kubernetes cluster, make sure your local environment has [kubectl installed](/docs/products/compute/kubernetes/guides/kubectl/), and you can access your cluster using `kubectl`.
 
 1. This guide uses a Drupal website deployed with LKE to demonstrate how to back up a MySQL database. To follow along, ensure you use the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to deploy your own Drupal site.
 
@@ -79,7 +79,7 @@ This section shows you how to back up a MySQL database. The example assumes a Dr
 - Schedule your CronJob
 
 {{< note >}}
-Ensure your terminal is using your desired [Kubeconfig context](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
+Ensure your terminal is using your desired [Kubeconfig context](/docs/products/compute/kubernetes/guides/kubectl/#persist-the-kubeconfig-context).
 {{< /note >}}
 
 ### Test Your CronJob Command

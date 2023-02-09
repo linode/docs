@@ -44,7 +44,7 @@ kubectl version | grep Server
 
 ## What Does an Upgrade Look Like
 
-When upgrading a Kubernetes cluster on LKE, it is important to keep in mind that all nodes within the cluster will need to be [recycled](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#upgrade-a-cluster
+When upgrading a Kubernetes cluster on LKE, it is important to keep in mind that all nodes within the cluster will need to be [recycled](/docs/products/compute/kubernetes/guides/upgrade-kubernetes-version/
 ) on a rolling basis. In other words, the nodes within your cluster are taken down and upgraded one at a time, to help ensure that the process completes without downtime.
 
 In the highest level of detail, each node will be independently [drained and cordoned](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) one at a time, while the High Availability features of Kubernetes ensure that all workloads are migrated to other nodes. Once a node is drained and cordoned, it is removed and a new node is created using the correct Kubernetes version in it's place, where it is synced, and then uncordoned, immediately putting it back live into the cluster with the `Ready` status.
@@ -77,7 +77,7 @@ grep -r networking.k8s.io/v1beta1
 
 ## Upgrade a Cluster
 
-1. To Upgrade a cluster access the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+1. To Upgrade a cluster access the [cluster's details page](/docs/products/compute/kubernetes/guides/manage-clusters/).
 
 1. If an upgrade is available, a banner will appear that will display the next available Kubernetes version. Select the **Upgrade Version** button at the end of the banner to upgrade to the next available Kubernetes version.
 

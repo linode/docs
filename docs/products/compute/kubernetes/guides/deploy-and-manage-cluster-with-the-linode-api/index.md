@@ -177,7 +177,7 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
     ```
 
     {{< note >}}
-    You can also access a decoded version of your kubeconfig file in the [Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
+    You can also access a decoded version of your kubeconfig file in the [Cloud Manager](/docs/products/compute/kubernetes/guides/kubectl/).
     {{< /note >}}
 
 1. View all nodes in your LKE cluster using kubectl:

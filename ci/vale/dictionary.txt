@@ -1016,6 +1016,7 @@ kamkar
 kanban
 kaseya
 kasten
+Katib
 kbd
 kbits
 keepalive
@@ -1038,6 +1039,7 @@ keypairs
 keysize
 keyspace
 keystore
+kfctl
 khanaser
 kibana
 kickban
@@ -1881,6 +1883,7 @@ secondsite
 secretpassword
 sed
 sekurlsa
+Seldon
 selinux
 sendable
 sendmail

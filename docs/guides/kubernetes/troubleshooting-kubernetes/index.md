@@ -289,8 +289,8 @@ If one of your Pods requests more memory or CPU than is available on your worker
 If your cluster has insufficient resources for a new Pod, you will need to do one or more of the following:
 
 - Reduce the number of other pods/deployments/applications running on your cluster.
-- [Add a new worker node or nodes](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools) to your cluster.
-- [Add a new Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#adding-a-node-pool) with access to more resources and migrate the workload to the new pool.
+- [Add a new worker node or nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/) to your cluster.
+- [Add a new Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool) with access to more resources and migrate the workload to the new pool.
 
 ### Rolling Back a Highly Available (HA) LKE Cluster
 

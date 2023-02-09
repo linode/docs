@@ -27,7 +27,7 @@ This guide will be a step-by-step introduction to accessing the Kubernetes Dashb
 
 ## Accessing the Cluster Dashboard
 
-The Cluster Dashboard can be found at the top of the Cluster's [details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page). The steps for reaching the dashboard from the Cloud Manager are as follows:
+The Cluster Dashboard can be found at the top of the Cluster's [details page](/docs/products/compute/kubernetes/guides/manage-clusters/). The steps for reaching the dashboard from the Cloud Manager are as follows:
 
 1. Click the Kubernetes link in the Cloud Manager sidebar menu. The Kubernetes listing page appears and you see all of your clusters listed.
 
@@ -39,7 +39,7 @@ The Cluster Dashboard can be found at the top of the Cluster's [details page](/d
 
 1. Once the link has been selected, you will see a login prompt with the option to enter either a Secret valid Bearer **Token**, or a **Kubeconfig** file to authenticate.
 
-    In any [default Kubeconfig file provided for access to LKE clusters](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig) an administrative user token can be found within the file itself, and entered in the `Enter token*` field to authenticate via a token.
+    In any [default Kubeconfig file provided for access to LKE clusters](/docs/products/compute/kubernetes/guides/kubectl/) an administrative user token can be found within the file itself, and entered in the `Enter token*` field to authenticate via a token.
 
     If you prefer to authenticate using a Kubeconfig file, the file can be entered by selecting the `Kubeconfig` option, the `Choose Kubeconfig file` field, and entering the file by using the file explorer menu that appears.
 
