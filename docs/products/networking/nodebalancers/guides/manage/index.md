@@ -27,7 +27,7 @@ To create a NodeBalancer, follow the instructions within the [Create a NodeBalan
 
 ## Review and Edit a NodeBalancer
 
-Navigate to the **NodeBalancer** in the Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
+Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
 
 ![Screenshot of a NodeBalancer entry in the Cloud Manager](nodebalancer-edit.png)
 
@@ -41,7 +41,7 @@ This displays the details and settings for the selected NodeBalancer. From here,
 
 ## Delete a NodeBalancer
 
-1. Navigate to the **NodeBalancer** in the Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
+1. Navigate to the **NodeBalancer** page in the Cloud Manager and select the NodeBalancer you wish to edit. See [View NodeBalancers](#view-nodebalancers).
 
 1. Navigate to the **Settings** tab, scroll to the *Delete NodeBalalancer* section, and click the **Delete** button.
 
