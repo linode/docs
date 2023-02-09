@@ -3,7 +3,7 @@ title: Get Started
 description: "Get started with the Linode DNS Manager. Learn to add a domain and add DNS records."
 tab_group_main:
     weight: 20
-modified: 2022-10-28
+modified: 2023-02-09
 ---
 
 Linode's DNS Manager enables users to manage DNS records for each of their domains directly within the tools they already use: like the Cloud Manager, Linode CLI, or Linode API. It supports most common DNS record types, including A, AAAA (quad A), CNAME, MX, TXT, NS, SOA, SRV, and CAA. Follow this guide to learn how to start using the DNS Manager.
@@ -45,7 +45,7 @@ A *domain zone* (also called a [DNS zone](https://en.wikipedia.org/wiki/DNS_zone
 
 DNS records can associate specific domain names with pieces of information, such as a server's IP address. After the domain has been created, you can immediately start adding and editing DNS records for it. See [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for instructions. You can also view each supported DNS record type to learn more about what it does and how to create it.
 
-- [A and AAA Records](/docs/products/networking/dns-manager/guides/a-record/)
+- [A and AAAA Records](/docs/products/networking/dns-manager/guides/a-record/)
 
 - [CNAME Records](/docs/products/networking/dns-manager/guides/cname-record/)
 
