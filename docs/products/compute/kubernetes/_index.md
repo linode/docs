@@ -7,7 +7,6 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    product_description: "container orchestration engine for deploying and orchestrating your containerized workloads"
     product_description: "A fully-managed Kubernetes service that enables you to easily control and automatically scale your application's infrastructure."
 published: 2020-06-02
 modified: 2023-02-09
