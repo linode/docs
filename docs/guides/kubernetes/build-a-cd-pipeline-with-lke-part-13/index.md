@@ -27,8 +27,8 @@ To complete this series, we'll now build a continuous deployment pipeline using 
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 12: cert-manager](/docs/guides/lke-continuous-deployment-part-12)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 12: cert-manager](/docs/guides/build-a-cd-pipeline-with-lke-part-12/)
 
 ## Presentation Text
 

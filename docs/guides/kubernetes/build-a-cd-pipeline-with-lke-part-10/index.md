@@ -27,9 +27,9 @@ Now that there is an application running on our Kubernetes cluster, the next ste
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 9: Installing Traefik](/docs/guides/lke-continuous-deployment-part-9)
-- **Next section:** [Part 11: Prometheus and Grafana](/docs/guides/lke-continuous-deployment-part-11)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 9: Installing Traefik](/docs/guides/build-a-cd-pipeline-with-lke-part-9/)
+- **Next section:** [Part 11: Prometheus and Grafana](/docs/guides/build-a-cd-pipeline-with-lke-part-11/)
 
 ## Presentation Text
 

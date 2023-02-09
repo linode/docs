@@ -58,7 +58,7 @@ There are a number of advanced topics in Kubernetes. Below are a few you might f
 
 ## Next Steps
 
-Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
+Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
 
 If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods instead. These methods are also a much faster way to get a cluster running, and they will also integrate your cluster with some useful Linode plugins:
 

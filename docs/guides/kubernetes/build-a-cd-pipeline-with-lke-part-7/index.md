@@ -27,9 +27,9 @@ Helm allows us to locate, distribute, and manage software for Kubernetes. This p
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 6: DNS, Ingress, and Metrics](/docs/guides/lke-continuous-deployment-part-6)
-- **Next section:** [Part 8: ExternalDNS](/docs/guides/lke-continuous-deployment-part-8)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 6: DNS, Ingress, and Metrics](/docs/guides/build-a-cd-pipeline-with-lke-part-6/)
+- **Next section:** [Part 8: ExternalDNS](/docs/guides/build-a-cd-pipeline-with-lke-part-8/)
 
 ## Presentation Text
 

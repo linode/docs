@@ -27,9 +27,9 @@ This is an optional part of the series that provides an introduction to Kubernet
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 3: Deploying the LKE Cluster](/docs/guides/lke-continuous-deployment-part-3)
-- **Next section:** [Part 5: Accessing Internal Services](/docs/guides/lke-continuous-deployment-part-5)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 3: Deploying the LKE Cluster](/docs/guides/build-a-cd-pipeline-with-lke-part-3/)
+- **Next section:** [Part 5: Accessing Internal Services](/docs/guides/build-a-cd-pipeline-with-lke-part-5/)
 
 ## Presentation Text
 

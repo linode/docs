@@ -61,9 +61,9 @@ modified: 2023-02-09
 
 ### Networking and Web
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
-- [How to Deploy NGINX Ingress on Linode Kubernetes Engine](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/)
+- [How to Deploy NGINX Ingress on Linode Kubernetes Engine](/docs/guides/deploy-nginx-ingress-on-lke/)
 
 - [How to Deploy a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)
 

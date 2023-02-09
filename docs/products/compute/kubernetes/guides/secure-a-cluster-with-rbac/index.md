@@ -30,11 +30,11 @@ While the Linode Kubernetes Engine(LKE) is a managed Platform as a Service solut
 This guide assumes you have a working Kubernetes cluster that was deployed using the Linode Kubernetes Engine (LKE). You can deploy a Kubernetes cluster using LKE in the following ways:
 
 - The [Linode Cloud Manager](/docs/products/compute/kubernetes/).
-- [Linode's API v4](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
-- [Terraform](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
+- [Linode's API v4](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/).
+- [Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
     {{< note >}}
-    An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
+    An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/).
     {{< /note >}}
 
 ## Create a new User

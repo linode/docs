@@ -27,9 +27,9 @@ Traefik is a popular *Ingress Controller* for Kubernetes, which manages external
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 8: ExternalDNS](/docs/guides/lke-continuous-deployment-part-8)
-- **Next section:** [Part 10: Installing metrics-server](/docs/guides/lke-continuous-deployment-part-10)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 8: ExternalDNS](/docs/guides/build-a-cd-pipeline-with-lke-part-8/)
+- **Next section:** [Part 10: Installing metrics-server](/docs/guides/build-a-cd-pipeline-with-lke-part-10/)
 
 ## Presentation Text
 

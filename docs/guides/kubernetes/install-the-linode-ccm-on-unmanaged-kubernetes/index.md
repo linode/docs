@@ -29,7 +29,7 @@ If you would like to use Kubernetes for production scenarios and make use of Lin
 
 Similarly, if you would like to deploy an unmanaged Kubernetes cluster on Linode, the best way to accomplish that is using [Terraform and the Linode K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/). The Linode K8s module will also include the Linode CCM preinstalled on the Kubernetes master's control plane and does not require any of the steps included in this guide.
 
-If you have used the Linode Kubernetes Engine (LKE) or the Linode Terraform K8s module to deploy your cluster, you should instead refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
+If you have used the Linode Kubernetes Engine (LKE) or the Linode Terraform K8s module to deploy your cluster, you should instead refer to the [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/products/compute/kubernetes/guides/load-balancing/) guide for steps on adding and configuring NodeBalancers on your Kubernetes cluster.
 {{< /note >}}
 
 ## In this Guide
@@ -42,7 +42,7 @@ You will manually install the Linode CCM on your unmanaged Kubernetes cluster. T
 
 ### Before You Begin
 
-1. Deploy a new **unmanaged** Kubernetes cluster. You can deploy an unmanaged Kubernetes cluster on Linode by following the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/)
+1. Deploy a new **unmanaged** Kubernetes cluster. You can deploy an unmanaged Kubernetes cluster on Linode by following the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/)
 
     {{< note >}}
     It is recommended that you install the Linode CCM on a new Kubernetes cluster, as there are a number of issues that prevent the CCM from running on Nodes that are in the "Ready" state.
@@ -135,4 +135,4 @@ The easiest way to update the Linode CCM is to edit the DaemonSet that creates t
 
 ## Next Steps
 
-Now that you have the Linode CCM installed on your Kubernetes cluster, you can learn how to [add and configure Linode NodeBalancers on your cluster](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
+Now that you have the Linode CCM installed on your Kubernetes cluster, you can learn how to [add and configure Linode NodeBalancers on your cluster](/docs/products/compute/kubernetes/guides/load-balancing/#configuring-your-linode-nodebalancers-with-annotations).

@@ -55,10 +55,10 @@ This guide shows you how to:
         Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-cluster/) and [Connect to your LKE Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/) sections.
         {{< /note >}}
 
-    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
+    - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/) tutorial.
 
         {{< note >}}
-        Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
+        Specifically, follow the [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#create-an-lke-cluster) section.
         {{< /note >}}
 
 ### Install kubectl
@@ -463,7 +463,7 @@ In this section, you create a [Deployment](/docs/guides/kubernetes-reference/#de
     Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
     {{< note >}}
-    The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
+    The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
     {{< /note >}}
 
 1.  Name the file `static-site-service.yaml`, save it to your `manifests` directory, and enter the contents of this snippet:

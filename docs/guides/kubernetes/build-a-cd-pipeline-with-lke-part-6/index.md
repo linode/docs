@@ -27,9 +27,9 @@ The next steps are to access our sample application over a domain (DNS), setup a
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 5: Accessing Internal Services](/docs/guides/lke-continuous-deployment-part-5)
-- **Next section:** [Part 7: Managing Stacks with Helm](/docs/guides/lke-continuous-deployment-part-7)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 5: Accessing Internal Services](/docs/guides/build-a-cd-pipeline-with-lke-part-5/)
+- **Next section:** [Part 7: Managing Stacks with Helm](/docs/guides/build-a-cd-pipeline-with-lke-part-7/)
 
 ## Presentation Text
 

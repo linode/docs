@@ -18,7 +18,7 @@ The Linode Kubernetes Engine (LKE) is a managed container orchestration engine b
 
 - **Free fully-managed control plane:** The control plane on a Kubernetes cluster is responsible for managing the cluster's worker nodes, resources, and Pods. Basic control plane infrastructure is provided at no cost. An optional [high availability control plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/) is offered as a paid upgrade.
 - **Automatic monitoring, backup, and recovery**: A snapshot of your cluster's metadata is backed up continuously and your cluster is automatically restored in the event of a failure. In addition, all of the control plane components are monitored and, if a failure is detected, they will automatically recover.
-- **Kubernetes Dashboard:** All LKE installations include access to a [Kubernetes Dashboard installation](/docs/guides/using-the-kubernetes-dashboard-on-lke/#accessing-the-cluster-dashboard).
+- **Kubernetes Dashboard:** All LKE installations include access to a [Kubernetes Dashboard installation](/docs/products/compute/kubernetes/guides/kubernetes-dashboard/#accessing-the-cluster-dashboard).
 - **Third-party integration:** Harness the strong open source ecosystem of Kubernetes tooling. LKE supports integration with popular K8s-related tools, such as [Rancher](http://rancher.com), [Helm](http://helm.sh), [Operators](https://coreos.com/operators/), and more.
 
 ## Availability

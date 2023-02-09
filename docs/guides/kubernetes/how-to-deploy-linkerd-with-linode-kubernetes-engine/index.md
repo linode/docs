@@ -260,7 +260,7 @@ Linkerd comes with two dashboards, a Linkerd dashboard and the [Grafana](https:/
 
     - This command sets up a port forward from the `linkerd-web` Pod.
 
-    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/guides/deploy-nginx-ingress-on-lke/).
 
 1.  The dashboard opens in the browser. If it does not, you can access it by going to http://localhost:50750:
 

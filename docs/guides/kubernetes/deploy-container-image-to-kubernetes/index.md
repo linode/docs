@@ -43,7 +43,7 @@ This guide was written using version 1.14 of Kubectl.
 ## Before You Begin
 
 1. Create a Kubernetes cluster with one worker node. This can be done in two ways:
-    1. Deploy a Kubernetes cluster using [kubeadm](/docs/guides/getting-started-with-kubernetes/).
+    1. Deploy a Kubernetes cluster using [kubeadm](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/).
         - You will need to deploy two Linodes. One will serve as the master node and the other will serve as a worker node.
     1. Deploy a Kubernetes cluster using [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/).
 

@@ -27,9 +27,9 @@ Managed Kubernetes clusters are much easier to setup and maintain than self-mana
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 2: Sample Application](/docs/guides/lke-continuous-deployment-part-2)
-- **Next section:** [Part 4: Kubernetes Review](/docs/guides/lke-continuous-deployment-part-4)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 2: Sample Application](/docs/guides/build-a-cd-pipeline-with-lke-part-2/)
+- **Next section:** [Part 4: Kubernetes Review](/docs/guides/build-a-cd-pipeline-with-lke-part-4/)
 
 ## Presentation Text
 

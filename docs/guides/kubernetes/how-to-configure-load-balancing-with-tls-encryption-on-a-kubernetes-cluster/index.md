@@ -44,14 +44,14 @@ To learn about the various configurations available for Linode NodeBalancers via
 1.  **Create a Kubernetes cluster** through the [Linode Kubernetes Engine](https://www.linode.com/products/kubernetes/) (LKE) using either the Cloud Manager, the Linode API, or Terraform:
 
     - [Cloud Manager LKE instructions](/docs/products/compute/kubernetes/)
-    - [Linode API LKE instructions](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/)
-    - [Terraform instructions](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/)
+    - [Linode API LKE instructions](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/)
+    - [Terraform instructions](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/)
 
-    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
+    You can also use an unmanaged Kubernetes cluster (that's not deployed through LKE). The instructions within this guide depend on the Linode Cloud Controller Manager (CCM), which is installed by default on LKE clusters but needs to be manually installed on unmanaged clusters. To learn how to install the Linode CCM on a cluster that was not deployed through LKE, see the [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/install-the-linode-ccm-on-unmanaged-kubernetes/) guide.
 
-1.  **Setup your local environment** by installing [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
+1.  **Setup your local environment** by installing [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) and [kubectl](/docs/products/compute/kubernetes/guides/kubectl/) on your computer (or whichever system you intend to use to manage your Kubernetes Cluster).
 
-1.  **Configure kubectl** to use the new Kubernetes cluster by downloading the kubeconfig YAML file and adding it to kubectl. See the instructions within the [Download Your kubeconfig](/docs/products/compute/kubernetes/guides/download-kubeconfig) guide.
+1.  **Configure kubectl** to use the new Kubernetes cluster by downloading the kubeconfig YAML file and adding it to kubectl. See the instructions within the [Download Your kubeconfig](/docs/products/compute/kubernetes/guides/kubectl/) guide.
 
 ## Create an Example Application
 
@@ -169,7 +169,7 @@ Each example manifest file creates three Pods to serve the application.
 In this section you will use Helm to install the NGINX Ingress Controller on your Kubernetes Cluster. Installing the NGINX Ingress Controller will create Linode NodeBalancers that your cluster can make use of to load balance traffic to your example application.
 
 {{< note >}}
-If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](/docs/guides/deploy-nginx-ingress-on-lke/).
 {{< /note >}}
 
 1.  Add the following Helm ingress-nginx repository to your Helm repos.

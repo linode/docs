@@ -27,9 +27,9 @@ It's often necessary to access internal services within the Kubernetes cluster w
 
 ## Navigate the Series
 
-- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/lke-continuous-deployment-series)
-- **Previous section:** [Part 4: Kubernetes Review](/docs/guides/lke-continuous-deployment-part-4)
-- **Next section:** [Part 6: DNS, Ingress, and Metrics](/docs/guides/lke-continuous-deployment-part-6)
+- **Main guide:** [Building a Continuous Deployment Pipeline Using LKE](/docs/guides/build-a-cd-pipeline-with-lke/)
+- **Previous section:** [Part 4: Kubernetes Review](/docs/guides/build-a-cd-pipeline-with-lke-part-4/)
+- **Next section:** [Part 6: DNS, Ingress, and Metrics](/docs/guides/build-a-cd-pipeline-with-lke-part-6/)
 
 ## Presentation Text
 

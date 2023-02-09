@@ -69,7 +69,7 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 -   [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
 
--   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/guides/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
+-   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
 
 ## Before You Begin
 
