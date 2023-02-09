@@ -31,7 +31,7 @@ The basic control plane infrastructure on LKE clusters is provided at no additio
 
 ## Technical Specifications
 
-- Equipped with a fully-managed control plane at no cost. The user is responsible for managing their deployment configuration and applications.
+- Equipped with a fully-managed control plane at no cost. While the control plane is fully-managed, the user is responsible for managing their deployment configuration and applications.
 - Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory
 - Nodes per node pool: 1-100 nodes
 - Memory per node: 4GB - 512GB
