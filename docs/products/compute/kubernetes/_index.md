@@ -7,7 +7,7 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    product_description: "A fully-managed Kubernetes service that enables you to easily control and automatically scale your application's infrastructure."
+    product_description: "A managed Kubernetes service that enables you to easily control and scale your application's infrastructure."
 published: 2020-06-02
 modified: 2023-02-09
 ---
@@ -31,6 +31,7 @@ The basic control plane infrastructure on LKE clusters is provided at no additio
 
 ## Technical Specifications
 
+- Equipped with a fully-managed control plane at no cost. The user is responsible for managing their deployment configuration and applications.
 - Compute Instance plans supported: Dedicated CPU, Shared CPU, High Memory
 - Nodes per node pool: 1-100 nodes
 - Memory per node: 4GB - 512GB
@@ -38,6 +39,4 @@ The basic control plane infrastructure on LKE clusters is provided at no additio
 - Transfer per node: 4-20TB
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Full root access for worker nodes
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
-- [Multi-queue NIC](/docs/products/compute/compute-instances/guides/multiqueue-nic/) support on plans with 2 or more vCPU cores.

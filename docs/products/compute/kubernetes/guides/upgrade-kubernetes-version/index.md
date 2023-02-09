@@ -18,29 +18,23 @@ external_resources:
 aliases: ['/guides/upgrading-lke-minor-versions/']
 ---
 
-Upgrading a Kubernetes cluster is often an involved process in manual Kubernetes configurations, with special attention paid to control plane components and ensuring application uptime. LKE aims to make this upgrade process much more transparent, clear, and seamless to an end user by handling the more intricate details of these upgrades and the direct upgrade of Control Plane Components. That being said, there are still things users should be aware of to help ensure the upgrade process will complete without any issues.
+Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Customers can manually upgrade the Kubernetes version of their LKE cluster to the one version ahead of their current version. If the cluster is multiple versions behind the latest, multiple upgrades can be performed if desired.
 
-When new features or bug fixes only stand to benefit Kubernetes as a whole, new capabilities will in most cases be applied by creating a new version of Kubernetes, applied to a cluster at a user's convenience. Minor version upgrades in particular regularly handle the deprecation of Kubernetes features that may no longer be needed, have an improved replacement feature in a newer version, or are otherwise removed. The removal of these deprecated Kubernetes features, specifically in the case of deprecated APIs, can in some cases cause issues when upgrading a cluster. LKE is no exception to this, and minor version updates are created on a regular cadence of approximately every four months to consistently improve on the LKE service.
+Additionally, Kubernetes versions are also regularly *deprecated* on LKE. This prevents customers from experiencing issues as a result of using outdated software. When a Kubernetes version is deprecated, an upgrade is scheduled for any LKE clusters using that version. This scheduled update is communicated to all affected customers in advance. Customers can then manually trigger the upgrade or wait until the schedule time to automatically be upgraded. Since these upgrades can remove or change features, make sure you thoroughly review the associated Kubernetes changelogs before upgrading your LKE cluster.
 
-Additionally, LKE will **deprecate** minor versions of Kubernetes in order to provide access to a service free from issues that an out of date Kubernetes configuration can result in. Deprecation of a minor version of Kubernetes on LKE will require a user upgrade within a specified window of time if the user is currently using a configuration set for deprecation. Within this window, and before any upgrade, Kubernetes version upgrades benefit from careful review by administrators to ensure an upgrade will complete successfully.
+## Check the Kubernetes Version on an LKE Cluster
 
-## In This Guide
+Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
 
-This guide will go over the Kubernetes upgrade process, provide a brief introduction to the public Kubernetes changelog as it applies to LKE, and discuss tools like Popeye that can highlight incompatibilities or other issues within a cluster's configuration both before and after upgrading.
+![Check Kubernetes Version](lke-version.png)
 
-## Checking Cluster Version
+The current Kubernetes version of each LKE cluster is listed within the *Version* column. If an upgrade is available, an **Upgrade** button is displayed next to the version number.
 
-The current version of Kubernetes being used for each of your cluster configurations can be found on your [LKE Cluster Page](https://cloud.linode.com/kubernetes/clusters) on the Cloud Manager in the `Version` column of the Kubernetes table. If an upgrade is available, the text `Upgrade` will appear next to the version number.
-
-![Check Kubernetes Version](check-kubernetes-version.png)
-
-{{< note >}}
-Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl, the following command can be entered:
+Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl, use the following command:
 
 ```command
 kubectl version | grep Server
 ```
-{{< /note >}}
 
 ## What Does an Upgrade Look Like
 
@@ -51,48 +45,36 @@ In the highest level of detail, each node will be independently [drained and cor
 
 While this process generally doesn't impact workloads in a significant way, it is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. For the most comprehensive resource coverage possible, we recommend enabling the [Cluster Autoscaler](/docs/products/compute/kubernetes/guides/manage-node-pools/), or [resizing your node pools](/docs/products/compute/kubernetes/guides/manage-node-pools/) to something larger as needed.
 
-## Reviewing the Kubernetes Changelog
+## Review the Kubernetes Changelog
 
-The best method for ensuring uptime and a clean upgrade without issues is to carefully review the public changelog for the minor release your cluster will be upgrading to. All available information pertaining to Kubernetes version changes can be found on Kubernetes' public [Changelog Page](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) for the Kubernetes project hosted on Github. In order to ensure that you'll be able to upgrade to the next minor version of Kubernetes without issue, find the changelog for the version of Kubernetes you will be upgrading to. For example, if your cluster is currently on version `v1.21`, select the changelog for `v1.22` or `CHANGELOG-1.22.md`. Minor version upgrades can only be performed one minor version ahead at a time, so this will always be one minor version ahead of your current Kubernetes version.
+Changelogs for each new version of Kubernetes are published on the [Kubernetes CHANGELOG](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) page on GitHub. To ensure a clean upgrade and eliminate potential issues, review the changelog entry that corresponds with the Kubernetes version to which your cluster will be upgraded. Since LKE clusters can only be upgraded one minor version at a time (i.e. v1.24.x to v1.25.x), you only need to review a single changelog entry.
 
-{{< note >}}
-When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE Control Plane Components as needed, however this should not effect the intended behavior of your cluster. Only Major and Minor releases will have potentially breaking changes.
-{{< /note >}}
+Each Kubernetes changelog entry includes patch versions and apha/development versions. It's recommended that you review every section titled `Changelog since vX.Y.Z` starting from your current Kubernetes version and continuing through the latest patch release for the version to which you'll be upgraded. Compare these changes with the components and configuration of your cluster to help identify any breaking changes or issues that may occur. Additionally, review any upgrade notes, known issues, deprecation notes, or API changes, all of which may appear alongside each changelog.
 
-Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
+The [Kubernetes Blog](https://kubernetes.io/blog/) may also include a post regarding changes in each version (such as the [Kubernetes Removals and Major Changes In 1.25](https://kubernetes.io/blog/2022/08/04/upcoming-changes-in-kubernetes-1-25/) post). These blog posts may be less detailed, but should be easier to understand so you can quickly identify major changes.
 
-When upgrading from Kubernetes version 1.21 to [version 1.22](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) for example, LKE users will want to pay especially close attention to the removal of several beta Kubernetes APIs they may be using in their clusters and adjust their configurations as needed by following Kubernetes' recommendations [linked from the changelog](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22).
-
-As API changes are an issue that can commonly go unnoticed when upgrading LKE, we additionally recommend checking Kubernetes' [API deprecation guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22) for more information on API changes, and how they should be addressed in specific circumstances.
+As API changes are an issue that can commonly go unnoticed when upgrading LKE, we additionally recommend checking Kubernetes' [API deprecation guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/) for more information on API changes, and how they should be addressed in specific circumstances.
 
 {{< note >}}
-When investigating potential issues discovered by exploring the Kubernetes Changelog, you may need to search for specific strings containing potentially breaking configurations. Using the [grep command](/docs/guides/how-to-grep-for-text-in-files/) is generally a good way to do this quickly.
-
-For example, if you need to find where you may be using the currently deprecated API `networking.k8s.io/v1beta1`, enter the following command from the root directory containing your Kubernetes configuration files:
-
-```command
-grep -r networking.k8s.io/v1beta1
-```
+When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE clusters as needed. These patch versions should not effect the intended behavior of your cluster. Only major and minor releases have potentially breaking changes.
 {{< /note >}}
 
-## Upgrade a Cluster
+## Search for Compatibility Issues with Popeye
 
-1. To Upgrade a cluster access the [cluster's details page](/docs/products/compute/kubernetes/guides/manage-clusters/).
+One way to identify breaking changes and compatibility issues with Kubernetes upgrades is to use the [Popeye](https://github.com/derailed/popeye) tool. For help with this process, see the [Use Popeye to Check for Kubernetes Configuration Issues](/docs/guides/check-for-configuration-issues-with-popeye/) guide.
 
-1. If an upgrade is available, a banner will appear that will display the next available Kubernetes version. Select the **Upgrade Version** button at the end of the banner to upgrade to the next available Kubernetes version.
+## Upgrade Kubernetes on an LKE Cluster
 
-    ![Kubernetes upgrade banner](cluster-upgrade-banner.png "Kubernetes upgrade banner page.")
+1. Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
 
-1. Upgrading a cluster is a two step process which involves first setting the Cluster to use the next version when Nodes are Recycled, and then Recycling all of the Nodes within the Cluster.
+1. Locate the cluster you wish to upgrade and click the corresponding **Upgrade** button in the *Version* column. This button only appears if there is an available upgrade for that cluster.
 
-1. For step 1, click on the **Upgrade Version** button to complete the upgrade process.
+    ![](upgrade-lke-cluster.png)
 
-    ![Kubernetes cluster step 1](cluster-upgrade-step1.png "Kubernetes upgrade step 1.")
+1. A confirmation popup should appear notifying you of the current and target Kubernetes version. Click the **Upgrade Verion** button to continue with the upgrade.
 
-   {{< note >}}
-    If step one of the upgrade process is completed without the completion of step two, the nodes in the cluster will need to be recycled using the [Recycle all Nodes](##Recycle-a-Cluster-or-Nodes) button.
-    {{< /note >}}
+    ![](upgrade-lke-cluster-confirmation.png)
 
-1. For step 2, click on the **Recycle All Nodes** button to set all nodes to complete the upgrade process. Nodes will be recycled on a rolling basis so that only one node will be down at a time throughout the recycling process.
+1. Once the upgrade is complete (which should be nearly instantly), the next step is to recycle all nodes in the cluster so that they are they use the newer Kubernetes version. A second popup should automatically appear requesting that you start this process. Click the **Recycle All Nodes** button. Nodes are recycled on a rolling basis so that only one node is down at a time.
 
-   ![Kubernetes cluster step 2](recycle-all-nodes-step2.png "Kubernetes upgrade step 2.")
+    ![](upgrade-lke-recycle.png)
