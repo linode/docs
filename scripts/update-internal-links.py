@@ -95,8 +95,6 @@ def build_list_of_aliases(path_to_audit):
                         # If the alias does not yet exist in the aliases dictionary, add it
                         else:
                           aliases.update({ alias : canonical_link})
-                          if alias == "/guides/using-the-kubernetes-dashboard-on-lke/":
-                            print("Alias found for " + alias)
                 except:
                     continue
 
