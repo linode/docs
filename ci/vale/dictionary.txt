@@ -944,6 +944,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+iperf
 ipsec
 ipset
 ipsets
