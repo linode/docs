@@ -3,6 +3,7 @@ title: "GPU Compute Instances"
 linkTitle: "GPU"
 description: "Virtual machines equipped with NVIDIA Quadro GPUs that are ideal for complex processing and GPU-optimized workloads."
 published: 2023-01-18
+modified: 2023-02-10
 aliases: ['/products/compute/gpu/','/platform/linode-gpu/why-linode-gpu/','/guides/why-linode-gpu/','/products/compute/gpu/guides/use-cases/']
 ---
 
@@ -12,11 +13,11 @@ Scientists, artists, and engineers need access to significant parallel computati
 
 ## On-demand
 
-Between purchasing, installing, and maintaining GPUs, the cost of ownership is often high. Linode GPUs allow you to leverage the power of GPUs while benefiting from the main value proposition of cloud: turning a CapEx into an OpEx.
+Between purchasing, installing, and maintaining GPUs, the cost of ownership is often high. GPU Compute Instances allow you to leverage the power of GPUs while benefiting from the main value proposition of cloud: turning a CapEx into an OpEx.
 
 ## Market Leading Hardware
 
-Linode GPUs are NVIDIA Quadro RTX 6000, currently considered one of the best in market GPUs. With CUDA, Tensor, and RT cores in each unit, these GPUs support any use cases associated with parallel processing, deep learning, or ray tracing.
+Linode uses NVIDIA Quadro RTX 6000 GPUs, currently considered one of the best in market. With CUDA, Tensor, and RT cores in each unit, these GPUs support any use cases associated with parallel processing, deep learning, or ray tracing. See [GPU Specifications](#gpu-specifications) below for more details.
 
 One GPU card isn’t enough for your projected workloads? Not a problem. Linode GPU plans offer up to four cards per instance, depending on how much horsepower you need.
 
@@ -44,8 +45,9 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 | Resource | Available Plans |
 | -- | -- |
 | GPU cards | 1-4 cards |
-| vCPU cores | 8-24 cores |
-| Memory | 32 GB - 128 GB |
+| GPU Memory (VRAM) | 24 GB - 96 GB |
+| vCPU cores | 8-24 cores (dedicated) |
+| Memory (RAM) | 32 GB - 128 GB |
 | Storage | 640 GB - 2560 GB |
 | Outbound Network Transfer | 16 TB - 20 TB |
 | Outbound Network Bandwidth | 10 Gbps |
@@ -53,6 +55,20 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
 
 {{< content "gpu-deposit-shortguide" >}}
+
+## GPU Specifications
+
+Each of the NVIDIA Quadro RTX 6000 GPUs on the Linode Platform are equipped the following specifications:
+
+|  |  |
+| -- | -- |
+| GPU Memory (VRAM) | 24 GB GDDR6 |
+| CUDA Cores (Parallel-Processing) | 4,608 |
+| Tensor Cores (Machine & Deep Learning) | 576 |
+| RT Cores (Ray Tracing) | 72 |
+| RTX-OPS | 84T |
+| Rays Cast | 10 Giga Rays / Sec |
+| FP32 Performance | 16.3 TFLOPS |
 
 ## What are GPUs?
 
