@@ -166,6 +166,7 @@ bialek
 bin_t
 bing
 binlog
+bioinformaticists
 biomes
 bitbucket
 bitnami
@@ -243,6 +244,7 @@ cer
 certbot
 certcheck
 certutil
+cetera
 cfg
 cgi
 cgroup
@@ -305,6 +307,7 @@ cmusieve
 cnf
 codebase
 codec
+Codeone
 codepen
 colab
 collabnet
@@ -548,6 +551,7 @@ elgg
 elpaso
 emacs
 email2email
+embeddable
 emisoft
 emojivoto
 emscripten
@@ -1113,6 +1117,7 @@ libzypp
 lifecycle
 lightbend
 lighthttpd
+Lightroom
 lighttpd
 lighty
 ligttpd
@@ -1175,6 +1180,7 @@ luckystrike
 lugano
 luminus
 lunasec
+Lutz
 lxd
 lxml
 lynis
@@ -1212,6 +1218,7 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matthes
 mawk
 maxconn
 maxdepth
@@ -1331,6 +1338,7 @@ multiport
 multiprotocol
 multisite
 multitenant
+multithreading
 multiuser
 mutator
 munin
@@ -1497,6 +1505,8 @@ ossec
 ostemplate
 osx
 otomen
+outdented
+outdents
 outputter
 outputters
 overcommit
@@ -1789,6 +1799,7 @@ rmdir
 rmem
 ro
 roadmunk
+Roblox
 rochko
 rockyou
 rocommunity
@@ -2111,6 +2122,7 @@ thawte
 theano
 theming
 thingsboard
+Thonny
 Thunar
 thycotic
 tigervnc
@@ -2256,6 +2268,7 @@ urls
 usemodule
 useradd
 usercolumn
+userdata
 userdb
 usergroup
 userland
@@ -2328,6 +2341,7 @@ vz
 vznetaddbr
 walkthrough
 Wappalyzer
+Warcraft
 wasn
 wasm
 wav
