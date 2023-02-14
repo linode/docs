@@ -3,6 +3,7 @@ abc
 abell
 absecon
 abspath
+Accurics
 ack
 aconf
 accessor
@@ -84,6 +85,7 @@ Asana
 aspell
 askbot
 aske
+Astra
 async
 asynchrony
 atera
@@ -251,6 +253,7 @@ cgi
 cgroup
 cgroupfs
 chainable
+Chainalysis
 changelog
 changelogs
 changeme
@@ -387,6 +390,7 @@ ctx
 cuda
 curlie
 cutover
+Cybeats
 cyber
 cyberattack
 cyberduck
@@ -494,6 +498,7 @@ dnf
 dns
 dnsleaktest
 dnsmasq
+DNSPerf
 dns_linode
 dockercompose
 dockerfile
@@ -982,6 +987,7 @@ java6
 javac
 javalin
 javascript
+JBoss
 jdbc
 jdk
 Jellyfin
@@ -1484,6 +1490,7 @@ oauth
 obfuscator
 octopress
 odoo
+offboarding
 oftc
 ohai
 ok
@@ -1580,6 +1587,7 @@ php
 php5
 php7
 phpmyadmin
+Phrack
 phusion
 pid
 pidfile
@@ -1848,6 +1856,7 @@ s2s
 s3cr37
 s3cret
 saas
+Sailpoint
 sakila
 safend
 salesforce
@@ -1991,6 +2000,7 @@ spm
 spork
 spotify
 sql
+SQLmap
 sqlplus
 sqreen
 squirrelmail
@@ -2077,6 +2087,7 @@ symlinking
 symlinks
 symvers
 syncookies
+Synopsys
 syntastic
 syntaxes
 sys
@@ -2310,6 +2321,7 @@ verisign
 veritas
 vhost
 vhosts
+Vickery
 viewport
 vigenere
 vimrc
