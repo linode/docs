@@ -836,6 +836,7 @@ hotfix
 hotlink
 hotlinked
 hotlinking
+hotspot
 hotspots
 howto
 howtoforge
@@ -1078,6 +1079,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+LANs
 laravel
 largebiomes
 launchd
@@ -2397,6 +2399,7 @@ winscp
 winsxs
 windowlist
 wireguard
+wirelessly
 wireshark
 wkhtmltopdf
 wkhtmltox
