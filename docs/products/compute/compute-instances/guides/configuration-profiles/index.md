@@ -39,7 +39,7 @@ From here, a [configuration profile can be created](#creating-a-configuration-pr
 
 When adding or editing a configuration profile on a Compute Instance, the following settings are available:
 
-- **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Here are the drivers used for various device in each mode:
+- **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Here are the drivers used for various devices in each mode:
 
     | Device | Paravirtualization | Full virtualization |
     | -- | -- | -- |
