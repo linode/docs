@@ -1,12 +1,13 @@
 ---
 author:
-  name: Linode Staff
+  name: Linode
   email: docs@linode.com
-description: "Self-hosted Mastodon server."
+description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
 keywords: ['social', 'messaging', 'mastodon']
 tags: ["linode platform","mastodon","marketplace","cloud-manager",]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-12
+modified: 2023-02-09
 modified_by:
   name: Linode
 title: "Deploy Mastodon through the Linode Marketplace"
@@ -38,7 +39,7 @@ The Mastodon Marketplace App *requires* a custom domain. After deploying Mastodo
 {{< /note >}}
 
 - **Supported distributions:** Debian 11
-- **Recommended minimum plan:** All plan types and sizes can be used.
+- **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher
 
 ### Configuration Options
 
