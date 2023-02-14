@@ -16,8 +16,6 @@ tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
 ---
 
-{{< content "nvme-block-storage-notice-shortguide" >}}
-
 ## What is Block Storage
 
 Block Storage is a type of persistent cloud data storage that is similar to a traditional block device, like the hard drive in a PC. With Block Storage, your data is divided into *blocks*, which are the small, discrete units that Block Storage can read from and write to. These blocks are assigned unique identifiers, but these are generally not human-readable, so a filesystem is usually installed which maps your files to the underlying blocks they correspond to. This relationship is also analogous to your PC's filesystem and hard drive.
@@ -58,7 +56,7 @@ If you are using Docker, you can use the [Docker Volume Driver for Linode](https
 
 ### Database Storage
 
-With the release of NVMe Block Storage, our Block Storage service is able to meet the demands of the most resource-intensive database applications. Many enterprise database solutions benefit from ultra-fast NVMe storage, as well as the redundancy and fault tolerance provided by Block Storage. See the Availability section in the [Block Storage Overview](/docs/products/storage/block-storage/#availability) page to learn which data centers have already been upgraded with NVMe Block Storage.
+With the release of NVMe Block Storage, our Block Storage service is able to meet the demands of the most resource-intensive database applications. Many enterprise database solutions benefit from ultra-fast NVMe storage, as well as the redundancy and fault tolerance provided by Block Storage.
 
 ### Running Cloud Software
 

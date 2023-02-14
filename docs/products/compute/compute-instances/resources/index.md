@@ -126,7 +126,7 @@ Browse our [Linode Community Questions & Answers page](https://www.linode.com/co
 
 ## Videos
 
-- [Linode puts powerful Nvidia GPU in its Linux Cloud](https://www.tfir.io/linode-puts-powerful-nvidia-gpus-in-its-linux-cloud/)
+- [Linode puts powerful NVIDIA GPU in its Linux Cloud](https://www.tfir.io/linode-puts-powerful-nvidia-gpus-in-its-linux-cloud/)
 
 ### Blog Posts
 
