@@ -44,6 +44,12 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Configure Failover](/docs/products/compute/compute-instances/guides/failover/)
 - [An Overview of IPv6 on Linode](/docs/products/compute/compute-instances/guides/ipv6/)
 
+## Recovery and Troubleshooting
+
+- [Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/)
+- [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/)
+- [Troubleshooting Overview](/docs/products/compute/compute-instances/guides/troubleshooting-overview/)
+
 ## GPU Instances
 
 - [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/compute-instances/guides/install-nvidia-cuda/): Details on installing the NVIDIA CUDA Toolkit, required to make full use of your GPU instance.
