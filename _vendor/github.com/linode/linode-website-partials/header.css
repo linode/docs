@@ -259,12 +259,12 @@ body.om-position-floating-top {
 .c-identity__image {
   display: block;
   height: auto;
-  max-width: 160px;
+  max-width: 160px !important;
   width: 100%;
 }
 @media (max-width: 47.99em) {
   .c-identity__image {
-    max-width: 128px;
+    max-width: 128px !important;
   }
 }
 
@@ -281,8 +281,12 @@ body.om-position-floating-top {
 .c-message__x {
   background-color: transparent;
   border: 0;
+  color: #ffffff;
   cursor: pointer;
+  font-size: 18px;
+  height: 18px;
   padding: 0;
+  width: 18px;
 }
 .c-message__x svg {
   aspect-ratio: 1;
@@ -328,6 +332,9 @@ body.om-position-floating-top {
   text-align: center;
   white-space: nowrap;
 }
+.c-site-header__banner a, .c-site-header__banner a:hover, .c-site-header__banner a:visited, .c-site-header__banner a:active {
+  color: inherit;
+}
 .c-site-header__banner .c-message__body {
   /* Hide scrollbar for Chrome, Safari and Opera */
   /* Hide scrollbar for IE, Edge and Firefox */
@@ -339,8 +346,12 @@ body.om-position-floating-top {
 .c-site-header__banner .c-message__body::-webkit-scrollbar {
   display: none;
 }
-@media (max-width: 61.99em) {
-  .c-site-header__banner [data-breakpoint=desktop] {
+@media (max-width: 47.99em) {
+  .c-site-header__banner {
+    text-decoration: underline;
+  }
+  .c-site-header__banner .c-notification__message > span,
+  .c-site-header__banner .c-notification__message > u {
     display: none;
   }
 }
