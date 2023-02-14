@@ -20,7 +20,7 @@ Compute Instances are available across [all regions](https://www.linode.com/glob
 
 {{< content "instance-comparison-shortguide" >}}
 
-## Additional Technical Specifications
+## Technical Specifications
 
 In addition to the resources allocated to each available plan (outlined above), Compute Instances have the following specifications:
 
