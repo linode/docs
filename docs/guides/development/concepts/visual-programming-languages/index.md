@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Visual programming languages are one of the hardest programming languages to learn. ✓ Click here for an in-depth look, including pros and cons.'
-og_description: 'Visual programming languages are one of the hardest programming languages to learn. ✓ Click here for an in-depth look, including pros and cons.'
 keywords: ['visual programming languages', 'hardest programming languages to learn', 'game programming languages', 'what best defines a “programming language”?', 'how to make a programming language', 'c programming language typing discipline', 'how to create a programming language', 'how is programming language created', 'most programming languages allow you to ask two or more questions in a single comparison', 'graphical programming languages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-29
 modified_by:
   name: Linode
-title: "Visual Programming Languages: Pros & Cons"
-h1_title: "The Developer’s Guide to Visual Programming Languages"
-enable_h1: true
+title: "The Developer’s Guide to Visual Programming Languages"
+title_meta: "Visual Programming Languages: Pros & Cons"
 contributor:
   name: John Mueller
 external_resources:
