@@ -53,7 +53,7 @@ Java 18 has new functionality that makes it easier to create, test, debug, and s
 
 ### Considering jwebserver Limitations
 
-The web server included with Java 18 provides a simple activation server that developers can use to serve static files. These files must all appear in a single directory, but this isn’t a problem for the web server’s intended purpose. As described in JEP408, the purpose is to develop a minimal web server that a developer can interact with using an API that allows customization. The `jwebserver` doesn’t replace commercial-grade web servers, such as Jetty, Netty, and Grizzly. Nor production-grade web servers, such as Apache Tomcat, Apache httpd, and NGINX. It does provide a functional option that obviates developers having to install and configure full-fledged web servers so they can get to work. The web server itself doesn’t provide security features, such as authentication, access control, or encryption. The idea here is to save time developing a full-fledged server. This allows the developer to perform testing, debugging, and development without a lot of effort.
+The web server included with Java 18 provides a simple activation server that developers can use to serve static files. These files must all appear in a single directory, but this isn’t a problem for the web server’s intended purpose. As described in JEP408, the purpose is to develop a minimal web server that a developer can interact with using an API that allows customization. The `jwebserver` doesn’t replace commercial-grade web servers, such as Jetty, Netty, and Grizzly. Nor production-grade web servers, such as Apache Tomcat, Apache httpd, and NGINX. It does provide a functional option that allows developers to avoid installing and configuring full-fledged web servers just so they can get to work. The web server itself doesn’t provide security features, such as authentication, access control, or encryption. The idea here is to save time developing a full-fledged server. This allows the developer to perform testing, debugging, and development without a lot of effort.
 
 ## How to Make a Server in Java
 
@@ -63,11 +63,43 @@ These steps walk you through the process of installing Java 18, accessing the `j
 
 These steps show how to install the Oracle Java Development Kit (JDK) 18 on an Ubuntu 22.04 LTS system. They also work with other versions of Linux.
 
-1.  Type `sudo apt -y update` and press **Enter**. The host system tells you the number of packages that need to be upgraded.
-1.  If there are packages to upgrade, type `sudo apt -y upgrade` and press **Enter**. The host system automatically upgrades itself and tells you about the need to reboot, if any.
-1.  Type `sudo apt install -y openjdk-18-jdk` and press **Enter** to perform the installation.
-1.  Type `java -version` and press **Enter**. Your host system is now running Java 18.
-1.  Type `jwebserver -version` and press **Enter**. The output shows which version of jwebserver you’re running, which should be 18.0.2-ea or above to work with the examples in this guide.
+1.  Update the package list:
+
+    ```command
+    sudo apt -y update
+    ```
+
+    The output displays the number of packages that can be upgraded.
+
+1.  If there are packages to upgrade, do so:
+
+    ```commandd
+    sudo apt -y upgrade
+    ```
+
+    The host system automatically upgrades and tells you about the need to reboot if warranted.
+
+1.  Install the `openjdk` package:
+
+    ```command
+    sudo apt install -y openjdk-18-jdk
+    ```
+
+1.  Confirm the installation by checking the version:
+
+    ```commandd
+    java -version
+    ```
+
+    Your system should now be running Java 18.
+
+1.  Now check the `jwebserver` version:
+
+    ```command
+    jwebserver -version
+    ```
+
+    The output shows the version of `jwebserver` you’re running, which should be `18.0.2-ea` or above to work with the examples in this guide.
 
 ### Step 2: Use the Java 18 Web Server
 
@@ -89,7 +121,7 @@ The `jwebserver` capabilities are limited to static files over HTTP/1.1 so you c
 -   If a specific file is requested and it doesn’t exist, then a File Not Found error appears.
 -   When a directory is requested and it doesn’t contain an index file, a listing of the directory appears.
 
-With these requirements in mind, you can create content like this and jwebserver presents it without any problems.
+With these requirements in mind, you can create content like this and `jwebserver` presents it without any problems.
 
 ```file{title="web/index.html" lang="html"}
 <!DOCTYPE html>
