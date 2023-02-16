@@ -77,7 +77,7 @@ These steps show how to install the Oracle Java Development Kit (JDK) 18 on an U
     sudo apt -y upgrade
     ```
 
-    The host system automatically upgrades and tells you about the need to reboot if warranted.
+    The host system automatically upgrades and tells you about the need to reboot, if warranted.
 
 1.  Install the `openjdk` package:
 
@@ -85,9 +85,9 @@ These steps show how to install the Oracle Java Development Kit (JDK) 18 on an U
     sudo apt install -y openjdk-18-jdk
     ```
 
-1.  Confirm the installation by checking the version:
+1.  Confirm the installation by checking the Java version:
 
-    ```commandd
+    ```command
     java -version
     ```
 
