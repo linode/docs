@@ -172,16 +172,16 @@
 }
 
 /* Alt header height if message banner is present */
-body.has-banner .grid--base {
+html.has-banner .grid--base {
   --height-linode-menu-row: 111px; /* 61 + 50 */
 }
 @screen md {
-  body.has-banner .grid--base {
+  html.has-banner .grid--base {
     --height-linode-menu-row: 126px; /* 76 + 50 */
   }
 }
 @screen lg {
-  body.has-banner .grid--base {
+  html.has-banner .grid--base {
     --height-linode-menu-row: 163px; /* 113 + 50 */
   }
 }
