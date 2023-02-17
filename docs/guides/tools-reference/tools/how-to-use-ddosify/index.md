@@ -258,10 +258,10 @@ ddosify --help
 ```output
 Usage of ddosify:
   -P string
-    	Proxy address as protocol://username:password@host:port. Supported proxies [http(s), socks]
+    Proxy address as protocol://username:password@host:port. Supported proxies [http(s), socks]
 ...
   -version
-    	Prints version, git commit, built date (utc), go information and quit
+    Prints version, git commit, built date (utc), go information and quit
 ```
 
 ### Running a Ddosify Test Using a Configuration File
