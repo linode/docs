@@ -428,6 +428,7 @@ dbname
 dbserver
 dcid
 dcs
+Ddosify
 deadman
 deallocation
 deathmatch
