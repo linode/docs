@@ -6,7 +6,7 @@ author:
 description: "Nomad and Kubernetes each offer distinct and compelling approaches to workload orchestration. And it is possible to use these two tools together to better manage your diverse orchestration needs. Learn more about the use cases and how to implement the setup in this tutorial."
 keywords: ['nomad on kubernetes','nomad kubernetes driver','nomad orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-15
+published: 2023-02-20
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use Nomad Alongside Kubernetes"
@@ -24,17 +24,7 @@ You can learn more about the two and how they compare in our guide **Kubernetes 
 
 But as that guide points out, there are cases where you may want the benefits of both tools side by side. You can accomplish this with two distinct parallel setups, but you can also directly run Nomad on a Kubernetes cluster.
 
-This tutorial shows you how to do just that. It walks your through setting up the Kubernetes cluster and deploying Nomad to it, and then it demonstrates how you can orchestrate through each.
-
-## Before You Begin
-
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{< /note >}}
+This tutorial shows you how to do just that. It walks your through setting up the Kubernetes cluster and deploying Nomad to it, and demonstrates how to manage tasks through each tool in parallel.
 
 ## Why Use Nomad on Kubernetes?
 
@@ -44,13 +34,17 @@ In short, Kubernetes tends to be best for large and complicated applications, bu
 
 But many organizations can effectively leverage both use cases. Often, you need to run more than just large and containerized applications. Beside those, you may need to orchestrate batch applications or other non-containerized applications that benefit from a higher degree of flexibility.
 
-Running a Nomad cluster alongside a Kubernetes cluster is a possibility for handling this. And you can learn everything you need for getting started with a Nomad cluster in our guide **How to Use Nomad for Container Orchestration**.
+Running a distinct Nomad cluster in addition to a Kubernetes cluster is a possibility for handling this. And you can learn everything you need for getting started with a Nomad cluster in our guide **How to Use Nomad for Container Orchestration**.
 
-Still, that model may be restrictive, and price-inefficient for your needs. In that case, you may still leverage the advantages of Nomad alongside your Kubernetes setup by running Nomad on the Kubernetes cluster itself.
+Still, that model may be restrictive, and price-inefficient depending on your needs.
+
+The other way to leverage the advantages of Nomad alongside your Kubernetes setup is by running Nomad on the Kubernetes cluster itself. Nomad runs on the same infrastructure as your Kubernetes, but can separately orchestrate tasks. This gives you a means of running batch processes and non-containerized applications alongside your Kubernetes applications.
+
+And such a setup has additional advantages, such as the ability for Kubernetes and Nomad applications to readily communicate across a private Kubernetes network.
 
 ## How to Deploy Nomad on a Kubernetes Cluster
 
-There are several pieces you need to create and deploy to get a full Nomad-and-Kubernetes infrastructure. This includes provisioning a Kubernetes cluster, deploying Nomad, and deploying Consul for Nomad to network through.
+There are several pieces you need to create and deploy to get an infrastructure running Nomad alongside Kubernetes. This includes provisioning a Kubernetes cluster, deploying Nomad, and deploying Consul for Nomad to network through.
 
 This section of the tutorial walks you through everything you need for a basic Kubernetes cluster running Nomad alongside Kubernetes. By the end, you are ready to start orchestrating all of your applications using the tools most fit for the task.
 
@@ -62,11 +56,11 @@ The most straightforward way to deploy a Kubernetes cluster with Linode is using
 
 Learn how to deploy your own LKE cluster through our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/).
 
-The present tutorial presumes for its Kubernetes infrastructure that you followed the guide above to create an LKE cluster with three nodes. The nodes tested were each Dedicated 4GB instances, though you can vary this to fit your needs.
+The present tutorial assumes for its Kubernetes infrastructure that you followed the guide above to create an LKE cluster with three nodes. The tutorial has been tested with Dedicated 4GB nodes, but you should be able to vary that to fit your needs.
 
 For an alternative method to deploy a Kubernetes cluster onto Linode, see our guide [Using kubeadm to Deploy a Kubernetes Cluster](/docs/guides/getting-started-with-kubernetes/). The guide covers using the kubeadm tool to set up a cluster, but the guide also overviews and links to further options for Kubernetes deployments.
 
-The tutorial also requires that you have kubectl installed locally and have employed a kubeconfig file to connect kubectl to your cluster. You can learn more about this in the guides linked above, depending on your method for setting up the Kubernetes cluster.
+The present tutorial additionally requires that you have installed kubectl locally and have set it up with the kubeconfig file to connect to your cluster. You can learn more about this in the guides linked above, depending on your method for setting up the Kubernetes cluster.
 
 ### Deploying a Consul Service Mesh
 
@@ -94,7 +88,7 @@ The steps that follow are based on those covered in the guide above. Some altera
     helm repo update
     ```
 
-1. Create a Helm configuration file with the values for deploying Consul. The configuration that follows has been used for this tutorial and facilitates connections between Consul and Nomad.
+1. Create a Helm configuration file with the values for deploying Consul. The configuration that follows has been used for this tutorial and provides a basic setup that works well with Nomad.
 
     ```file {title="consul-helm.yaml" lang="yaml"}
     global:
@@ -190,6 +184,14 @@ Nomad can be deployed directly using kubectl. HashiCorp does not maintain an off
             bootstrap_expect = 3
         }
 
+        client {
+            enabled = true
+            options {
+                "driver.raw_exec.enable" = "1"
+                "driver.raw_exec.no_cgroups" = "1"
+            }
+        }
+
         consul {
           address = "consul-server.default.svc:8500"
         }
@@ -210,6 +212,10 @@ Nomad can be deployed directly using kubectl. HashiCorp does not maintain an off
           labels:
             app: nomad
         spec:
+          securityContext:
+            runAsUser: 100
+            runAsGroup: 999
+            fsGroup: 999
           containers:
           - name: nomad-instance
             image: noenv/nomad
@@ -233,19 +239,23 @@ Nomad can be deployed directly using kubectl. HashiCorp does not maintain an off
             volumeMounts:
             - name: nomad-config
               mountPath: /etc/nomad/nomad.d
+            - name: nomad-data
+              mountPath: /opt/nomad/data
           volumes:
           - name: nomad-config
             configMap:
               name: nomad-cluster-configmap
+          - name: nomad-data
+            emptyDir: {}
     ```
 
     This example configuration does three main things.
 
     - Creates a load-balancer service for the Nomad instances
 
-    - Prepares a configuration to include with each Nomad instance
+    - Prepares a configuration to include with each Nomad instance; the configuration connects the Nomad instances through Consul and enables the `raw_exec` driver that allows Nomad to execute shell commands
 
-    - Defines a deployment for the Nomad image, consisting of three replicas — one for each node in the cluster — giving the necessary exposed ports, and mounting a volume for the configuration
+    - Defines a deployment for the Nomad image, consisting of three replicas — one for each node in the cluster — giving the necessary exposed ports, and mounting volumes for the Nomad configuration and data
 
 1. Deploy the Nomad setup. This command assumes you saved your Kubernetes configuration for Nomad in a file named `nomad-cluster.yaml`.
 
@@ -288,19 +298,17 @@ With the Kubernetes-Nomad infrastructure in place, you can take a trial run at u
 
 This section provides you with a simple demonstration, orchestrating a containerized application through Kubernetes and a shell-script orchestration for Nomad.
 
-The demonstration goes further, too, taking advantage of the shared cluster to have the Kubernetes and Nomad applications share information across the Kubernetes network.
+The demonstration also takes advantage of the shared cluster to have the Kubernetes and Nomad applications share information across the Kubernetes network.
 
 ### Using Kubernetes
 
-Kubernetes excels at deploying containerized applications, especially when these applications are larger and more complex. So it makes the most sense to deploy a containerized application through the Kubernetes orchestration.
+Kubernetes excels at deploying containerized applications, so that is what this demonstration uses. The simple example application here uses the `http-echo` container to provide a message in response to HTTP requests.
 
-Since this tutorial just sets out to provide a demonstration, the application deployed here is not complex or large. The application uses the `http-echo` container to provide a simple message in response to HTTP requests.
+The application may be simple, but it provides a convenient start. Moreover, the HTTP server lets the next section easily show off the possibilities for network interactions between Kubernetes and Nomad applications.
 
-Nevertheless, the setup should give you a solid start, and it works well with the demonstration of Nomad in the next section.
+1. Create a Kubernetes configuration file with the contents shown here. This configuration file creates a deployment and service for HashiCorp's `http-echo` container, a basic HTTP server for testing communications.
 
-1. Create a Kubernetes configuration file with the contents shown here. This configuration file creates an deployment and service for HashiCorp's `http-echo` container. The container provides a simple application for testing HTTP communications.
-
-    The deployment here sets up the container and has it begin serving a simple message on port `3030`. That message can be accessed from the `http-echo-service` created here. Using Kubernetes's networking, the HTTP server is thus accessible to any other pods on the cluster through `http-echo-service.default.svc:3030`.
+    The deployment here sets up the container and has it begin serving a message on port `3030`. That message can be accessed from the `http-echo-service` created here. Using Kubernetes's networking, the HTTP server is thus accessible to other pods on the cluster through the `http-echo-service.default.svc:3030` URL.
 
     ```file {title="http-echo.yaml" lang="yaml"}
     apiVersion: v1
@@ -324,7 +332,8 @@ Nevertheless, the setup should give you a solid start, and it works well with th
     spec:
       replicas: 3
       selector:
-        app: http-echo
+        matchLabels:
+          app: http-echo
       template:
         metadata:
           labels:
@@ -359,33 +368,36 @@ hello from the echo server
 
 ### Using Nomad
 
-Nomad can run containerized applications, although to do so you should deploy a container with Docker alongside the Nomad container.
+Nomad can run containerized applications, although doing so is more complicated with Nomad on a Kubernetes cluster.
 
-But one of Nomad's strongest contrasts with Kubernetes is its ability to run non-containerized applications. And with the setup above you can already make a simple example, using the `exec` driver to run commands on the Nomad pods.
+But one of Nomad's strongest contrasts with Kubernetes is its ability to run non-containerized applications. The possibilities are expansive, but at its most basic Nomad can already run shell commands for batch jobs.
 
-The demonstration here creates a job with a task to get the message from the `http-echo` server created above and save that message to a file. While simple, you could conceivably use this kind of setup to have a task that checks the health of a server and reports on issues.
+The demonstration here creates a job with a task to get the message from the `http-echo` server created above and save that message to a file. While simple, this shows off some of Nomad's fundamental advantages, and this basis can be leveraged for a variety of use cases.
 
-1. Follow the directions further above to access the Nomad UI. The job can be created and run from entirely within the web interface.
+For instance, a similar process could be expanded to run periodic test cases on a Kubernetes server application and send reports of the results.
+
+1. Follow the directions further above to access the Nomad UI. The job can be created and run entirely from within the web interface.
 
 1. From the **Jobs** section (accessible from the menu on the left), select the **Run Job** button from the upper right.
 
-1. Populate the field provided with the following job configuration. This creates a job that runs a task on all three Nomad clients. Each task uses cURL to query the `http-echo` servers and save the response to a file.
+1. Populate the field provided with the following job configuration. This creates a job that runs a task on all three Nomad clients. Each task uses cURL to query the `http-echo` server and save the response to a file.
 
-    ```file {lang="hcl"}
+    ```
     job "example-job" {
       datacenters = ["dc1"]
+      type = "batch"
 
       group "example-group" {
         count = 3
 
         task "curl-task" {
-          driver = "exec"
+          driver = "raw_exec"
 
           config {
-            command = "curl"
+            command = "sh"
             args = [
-              "http-echo-service.default.svc:3030",
-              "-o", "nomad-output.txt"
+              "-c",
+              "curl http-echo-service.default.svc:3030 -o /opt/nomad/data/curl-output.txt && exit"
             ]
           }
         }
@@ -395,8 +407,31 @@ The demonstration here creates a job with a task to get the message from the `ht
 
 1. Proceed with the options to **Plan** and then **Run** the job. You should then be taken to the job's status page, with a summary of the tasks.
 
+On the new job's page, you should soon see the tasks landing in the *Complete* status. From here, you can navigate to one of the `curl-task` pages, select the **Logs** tab, and select the **stderr** option. This shows you the output from the cURL command.
+
+```output
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    27  100    27    0     0   1540      0 --:--:-- --:--:-- --:--:--  1500
+```
+
+To further verify, you can use a command like the following to read the contents of one of the files created by the Nomad job. Replace `nomad-cluster-deployment-b4fcbd498-867sd` with the name of one of your Nomad pods, which you can get with `kubectl get pods`.
+
+```command
+kubectl exec -it nomad-cluster-deployment-b4fcbd498-867sd -- sh -c 'cat /opt/nomad/data/curl-output.txt'
+```
+
+```output
+hello from the echo server
+```
+
 ## Conclusion
 
-This provides you with a full and extensible setup for running Kubernetes and Nomad together on a shared Kubernetes cluster. Some use cases for this setup are covered above, but, with the rising use of Nomad, you may find many more.
+This provides you with a full and extensible setup for running Kubernetes and Nomad together on a shared Kubernetes cluster. The tutorial covers some compelling use cases for this setup. But the setup also acts as a base that you can expand on and adapt to fit your particular needs. And more use cases are likely to become evident as more setups take advantage of the two tools' distinct feature sets.
 
-Be sure to refer to our other guides on Kubernetes (via LKE) and Nomad linked throughout this guide. Additionally, you may find more ideas for expanding on this setup by reviewing the repository linked below, which provides another Nomad-on-Kubernetes infrastructure.
+Be sure to refer to our other guides on Kubernetes (via LKE) and Nomad linked throughout this guide.
+
+Additionally, you may find ideas for expanding on the setup in this tutorial in the repository linked below, which provides another Nomad-on-Kubernetes infrastructure.
