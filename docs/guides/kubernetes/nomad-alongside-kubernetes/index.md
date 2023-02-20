@@ -20,7 +20,7 @@ external_resources:
 
 Kubernetes and Nomad are two orchestration tools that each come with a compelling set of features. They have some overlap, but each also has its unique strengths and set of use cases they favor.
 
-You can learn more about the two and how they compare in our guide **Kubernetes vs Nomad: Which Is Better?**.
+You can learn more about the two and how they compare in our guide [Kubernetes vs Nomad: Which Is Better?](/docs/guides/kubernetes-vs-nomad/).
 
 But as that guide points out, there are cases where you may want the benefits of both tools side by side. You can accomplish this with two distinct parallel setups, but you can also directly run Nomad on a Kubernetes cluster.
 
@@ -28,13 +28,13 @@ This tutorial shows you how to do just that. It walks your through setting up th
 
 ## Why Use Nomad on Kubernetes?
 
-Reviewing our **Kubernetes vs Nomad: Which Is Better?**, you can see that Kubernetes and Nomad excel in different orchestration areas.
+Reviewing our [Kubernetes vs Nomad: Which Is Better?](/docs/guides/kubernetes-vs-nomad/), you can see that Kubernetes and Nomad excel in different orchestration areas.
 
 In short, Kubernetes tends to be best for large and complicated applications, but it is restricted to containerized applications. Nomad, on the other hand, provides a simpler and more flexible orchestration that can run both containerized and non-containerized applications.
 
 But many organizations can effectively leverage both use cases. Often, you need to run more than just large and containerized applications. Beside those, you may need to orchestrate batch applications or other non-containerized applications that benefit from a higher degree of flexibility.
 
-Running a distinct Nomad cluster in addition to a Kubernetes cluster is a possibility for handling this. And you can learn everything you need for getting started with a Nomad cluster in our guide **How to Use Nomad for Container Orchestration**.
+Running a distinct Nomad cluster in addition to a Kubernetes cluster is a possibility for handling this. And you can learn everything you need for getting started with a Nomad cluster in our guide [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/).
 
 Still, that model may be restrictive, and price-inefficient depending on your needs.
 
