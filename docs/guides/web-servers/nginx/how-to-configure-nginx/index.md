@@ -12,7 +12,7 @@ modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2010-01-18
-title: Configuring NGINX Servers
+title: Complete Guide to NGINX Configuration
 title_meta: How to Configure NGINX
 tags: ["web server","nginx"]
 ---
@@ -27,10 +27,10 @@ This guide shows you several different NGINX server configurations.
 
 ## NGINX Config: Directives, Blocks, and Contexts
 
-All NGINX configuration files are located in the `/etc/nginx/` directory. The primary configuration file is `/etc/nginx/nginx.conf`.
+The location of all NGINX configuration files is in the `/etc/nginx/` directory. The primary NGINX configuration file is `/etc/nginx/nginx.conf`.
 
-The way NGINX configurations are setup is by:
-  1. [directives](http://nginx.org/en/docs/dirindex.html) - they are NGINX configuration options
+To set NGINX configurations, use:
+  1. [directives](http://nginx.org/en/docs/dirindex.html) - they are NGINX configuration options. They tell NGINX to process actions or know a certain variable, such as where to log errors.
   2. Blocks (also known as contexts) - Groups in which Directives are organized
 
 Note that any character after `#` in a line becomes a comment. And NGINX does not interpret it.
@@ -55,7 +55,7 @@ http {
 {{< /file >}}
 
 
-There are 4 directives in this snippet in the main context :
+There are 4 directives provided in this snippet in the main context :
   1. user
   2. worker_processes
   3. error_log
@@ -67,7 +67,7 @@ Let’s take a look at these blocks and their NGINX configurations.
 
 ## NGINX Configuration - http Block
 
-http blocks contain directives for handling web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http block documentation.
+http blocks contain directives to help manage web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http block documentation.
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
@@ -91,7 +91,7 @@ http {
 }
 {{< /file >}}
 
-In the http block there’s an include directive that tells NGINX where website configuration files are located. It changes depending upon your source of NGINX installation:
+In the http block there’s an include directive that tells NGINX where website configuration files are located. The command changes depending upon your source of NGINX installation:
 
   1. Installation from official NGINX repository: include directive is `include /etc/nginx/conf.d/*.conf;`. Every website you host with NGINX gets it’s own configuration file in `/etc/nginx/conf.d/`, with names formatted as `example.com.conf`.
   2. Installation from Debian or Ubuntu repositories: the include directive here would now be `include /etc/nginx/sites-enabled/*;` With site configuration file stored in `/etc/nginx/sites-available/`
@@ -126,7 +126,7 @@ Configuration for processing requests for both `example.com` and `www.example.co
 server_name example.com www.example.com;
 {{< /file >}}
 
-Configuration for processing requests for all subdomains for `example.com`:
+NGINX configuration example for processing requests for all subdomains for `example.com`:
 
 {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name *.example.com;
