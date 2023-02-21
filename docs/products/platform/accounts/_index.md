@@ -5,7 +5,7 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-date: 2022-11-21
+published: 2022-11-21
 modified: 2022-11-23
 aliases: ['/guides/platform/accounts/']
 ---

@@ -5,7 +5,7 @@ author:
 description: "Instructions on updating the email address on an account so that you can receive email notifications."
 keywords: ["email address", "email addresses", "address", "addresses"]
 tags: ["linode platform","cloud manager","email"]
-date: 2022-11-21
+published: 2022-11-21
 image: L_ChangeYourEmail.png
 title: Change Your Email Address
 title_meta: Change Your Email Address on a Linode Account
