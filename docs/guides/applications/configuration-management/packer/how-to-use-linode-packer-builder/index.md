@@ -173,7 +173,7 @@ To learn how to securely store and use your API v4 token, see the [Vault](https:
 
 ## Deploying a Linode with the New Image
 
-Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed a few ways:
+Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed in a few ways:
 
 - **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
 

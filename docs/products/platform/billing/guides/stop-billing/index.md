@@ -1,7 +1,7 @@
 ---
 title: "Stop Further Billing"
 description: "Instructions on removing services to stop charges from accruing on your Linode account."
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 To prevent additional charges from accruing and stop further billing, you can remove any paid services from your account or cancel your account entirely.

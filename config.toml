@@ -20,6 +20,7 @@ home = ["HTML", "JSON", "RSS"]
 
 [taxonomies]
 bundle = "bundles"
+tags = "tags"
 
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
