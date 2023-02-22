@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Vim Fandom Page on Search and Replace](https://vim.fandom.com/wiki/Search_and_replace)'
+authors: ["Nathaniel Stickman"]
 ---
 
 You may have heard of the text editor Vi, and probably also its relative Vim. But what is Vi, and why do many users on Unix systems continue to use it? Keep reading to learn more about Vi and what sets this text editor apart. You can also find some help getting started using Vi.

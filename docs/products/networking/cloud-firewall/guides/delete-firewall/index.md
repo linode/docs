@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: Delete a Cloud Firewall
 description: "How to delete a Linode Cloud Firewall."
+authors: ["Linode"]
 ---
 
 1. Log into your [Linode Cloud Manager](https://cloud.linode.com/) and select **Firewalls** from the navigation menu. This takes you to the **Firewalls** listing page.

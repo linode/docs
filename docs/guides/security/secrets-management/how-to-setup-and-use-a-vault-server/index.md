@@ -15,6 +15,7 @@ tags: ["ubuntu", "security"]
 image: SetUpVaultserver.png
 external_resources:
   - '[Vault Documentation](https://www.vaultproject.io/docs)'
+authors: ["Hackersploit"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.

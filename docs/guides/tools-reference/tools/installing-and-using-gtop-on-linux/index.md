@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[gtop](https://github.com/aksakalli/gtop)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Gtop is a system monitoring dashboard for your terminal, with a rich graphical display. In this guide, you learn more about gtop and how it compares to the Linux utilities, top and htop. This guide also shows you how to install and get started using gtop on your Linux system.

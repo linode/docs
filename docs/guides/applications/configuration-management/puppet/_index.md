@@ -9,5 +9,6 @@ published: 2020-07-15
 title: Puppet
 show_in_lists: true
 aliases: ['/applications/configuration-management/puppet/','/application-stacks/puppet/automation/']
+authors: ["Linode"]
 ---
 

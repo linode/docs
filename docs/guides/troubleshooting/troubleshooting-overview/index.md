@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 published: 2012-04-05
 title: Troubleshooting Overview
+authors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Linode. Each troubleshooting section provides ways to further diagnose your issue and, when applicable, corresponding steps to resolve it. We recommend using this guide in the following way:

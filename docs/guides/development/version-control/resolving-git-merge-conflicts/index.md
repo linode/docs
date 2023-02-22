@@ -13,6 +13,7 @@ title: "Resolve Merge Conflicts in Git"
 title_meta: "How to Resolve Merge Conflicts in Git"
 contributor:
   name: Stephen Savitzky
+authors: ["Stephen Savitzky"]
 ---
 
 ## What Causes Merge Conflicts?

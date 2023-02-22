@@ -16,6 +16,7 @@ contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/']
+authors: ["Linode"]
 ---
 
 ![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")

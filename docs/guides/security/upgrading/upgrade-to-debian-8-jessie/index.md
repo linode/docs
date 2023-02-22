@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
+authors: ["Alex Fornuto"]
 ---
 
 Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. This guide explains how to upgrade your system from Debian 7 (Wheezy) to Debian 8.

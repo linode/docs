@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source NoSQL database that provides performant storage for caching, messaging, and other contexts where speed and low latency are needed.

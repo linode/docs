@@ -9,4 +9,5 @@ published: 2020-09-02
 title: Symfony
 show_in_lists: true
 aliases: ['/development/frameworks/symfony/']
+authors: ["Linode"]
 ---

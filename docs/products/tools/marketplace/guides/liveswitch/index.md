@@ -13,6 +13,7 @@ contributor:
   link: https://github.com/hmorris3293
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
+authors: ["Holden Morris"]
 ---
 
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable streaming for both audio and video media.

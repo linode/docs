@@ -16,6 +16,7 @@ modified_by:
   name: James Stewart
 published: 2014-10-06
 title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
+authors: ["Nick Reichley"]
 ---
 
 

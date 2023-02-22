@@ -19,6 +19,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

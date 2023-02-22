@@ -21,6 +21,7 @@ external_resources:
  - '[GitHub Guides](https://guides.github.com/)'
 audiences: ["foundational"]
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
 ## Introduction to Installing Git

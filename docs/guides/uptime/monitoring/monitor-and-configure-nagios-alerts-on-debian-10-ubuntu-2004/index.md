@@ -19,6 +19,7 @@ contributor:
 external_resources:
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
 - '[Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Nagios](https://www.nagios.com/products/nagios-core/), a popular tool for monitoring servers, comes with a robust web interface to help you effectively manage your server. Its dashboard makes it relatively easy to check in on the hosts and services running on your machine and quickly learn of any issues.

@@ -16,6 +16,7 @@ title: Troubleshooting Common Apache Issues
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
+authors: ["Linode"]
 ---
 
 ![Troubleshooting Common Apache Issues](troubleshooting-common-apache-issues.jpg "Troubleshooting Common Apache Issues")

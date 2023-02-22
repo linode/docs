@@ -9,5 +9,6 @@ aliases: ['/websites/nginx/','/web-servers/nginx/','/websites/nginx/index.cfm/']
 published: 2009-12-14
 title: 'NGINX'
 show_in_lists: true
+authors: ["Linode"]
 ---
 

@@ -17,6 +17,7 @@ author:
   email: docs@linode.com
 modified_by:
   name: Linode
+authors: ["Linode"]
 ---
 
 ## Understanding HTTPS, TLS, Let's Encrypt, and Certbot

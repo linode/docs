@@ -9,5 +9,6 @@ published: 2020-09-01
 title: Mango
 show_in_lists: true
 aliases: ['/websites/cms/mango/']
+authors: ["Linode"]
 ---
 

@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[Python release 3.9.5 Changelog](https://www.python.org/)'
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
+authors: ["John Mueller"]
 ---
 
 ## Python 3.9: New Features

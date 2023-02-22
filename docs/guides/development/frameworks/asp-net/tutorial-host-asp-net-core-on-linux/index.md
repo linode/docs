@@ -18,6 +18,7 @@ contributor:
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
 - '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0) is Microsoft's cross-platform and open-source redesign of its original ASP.NET framework. With ASP.NET Core, you can build and run .NET applications not only on Windows but also macOS and Linux.

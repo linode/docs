@@ -21,6 +21,7 @@ image: deploy-and-manage-cluster.png
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'
 aliases: ['/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
+authors: ["Linode"]
 ---
 
 {{< note respectIndent=false >}}

@@ -13,6 +13,7 @@ modified_by:
 published: 2018-07-26
 title: Create an Account for a Developer to Work on Your Linode
 aliases: ['/platform/create-limited-developer-account/']
+authors: ["Edward Angert"]
 ---
 
 One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then contracting with a developer or administrator is a popular way to get your services up and running.

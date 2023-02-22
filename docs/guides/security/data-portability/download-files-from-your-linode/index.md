@@ -13,6 +13,7 @@ published: 2018-09-25
 title: Download Files from Your Linode
 tags: ["security"]
 aliases: ['/security/data-portability/download-files-from-your-linode/']
+authors: ["Linode"]
 ---
 
 There are a number of open source tools you can use to download files from your Linode. You have the option to either [download specific files and directories](#download-specific-files-or-directories-over-ssh) or [copy complete images](#download-a-disk-over-ssh) of your Linodes' disks.

@@ -19,6 +19,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

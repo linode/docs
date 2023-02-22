@@ -16,6 +16,7 @@ external_resources:
  - '[Steam Support: Required Ports for Steam](https://support.steampowered.com/kb_article.php)'
 aliases: ['/applications/game-servers/install-steamcmd-for-a-steam-game-server/','/game-servers/install-steamcmd-for-a-steam-game-server/']
 dedicated_cpu_link: true
+authors: ["Linode"]
 ---
 
 ![SteamCMD](Install_SteamCMD_for_a_Steam_Game_Server_smg.jpg)

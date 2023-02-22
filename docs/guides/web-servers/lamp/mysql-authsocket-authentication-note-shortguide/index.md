@@ -15,6 +15,7 @@ tags: ["web server","php","mysql","apache","security","lamp"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/web-servers/lamp/mysql-authsocket-authentication-note-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< disclosure-note "About MySQL authentication" >}}

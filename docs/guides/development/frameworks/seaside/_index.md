@@ -9,5 +9,6 @@ published: 2020-08-31
 title: Seaside
 show_in_lists: true
 aliases: ['/development/frameworks/seaside/']
+authors: ["Linode"]
 ---
 

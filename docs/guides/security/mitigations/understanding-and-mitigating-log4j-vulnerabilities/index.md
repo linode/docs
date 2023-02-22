@@ -13,6 +13,7 @@ published: 2021-12-17
 title: Understanding and Mitigating log4j Vulnerabilities
 tags: ["security"]
 aliases: ['/security/mitigations/mitigating-log4j-vulnerabilities/']
+authors: ["Linode"]
 ---
 
 ## Understanding log4j Vulnerabilities

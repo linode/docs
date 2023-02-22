@@ -11,6 +11,7 @@ modified: 2022-09-22
 modified_by:
   name: Linode
 title: "Deploy the UniFi Network Application through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237441-UniFi-Network-Use-the-UniFi-Network-Application) is a versatile control panel developed by [Ubiquiti](https://www.ui.com/). It simplifies network management across regions, customizes access to Wi-Fi networks, and more. Manage and apply updates to UniFi networking devices to ensure your networks are performant and secure.

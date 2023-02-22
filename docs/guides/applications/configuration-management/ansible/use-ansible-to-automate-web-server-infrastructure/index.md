@@ -18,6 +18,7 @@ contributor:
 external_resources:
 - '[Ansible User Guide](https://docs.ansible.com/ansible/latest/user_guide/index.html)'
 - '[Introduction to Ansible Playbooks](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html)'
+authors: ["Nygel Bennett"]
 ---
 
 ## What is Ansible?

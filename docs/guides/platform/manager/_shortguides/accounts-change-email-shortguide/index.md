@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/accounts-change-email-shortguide/']
+authors: ["Linode"]
 ---
 
 Use the **Users & Grants** page to modify the email address associated with a user account. The email addresses listed on this page receive IP whitelist warnings, password reset messages, and support tickets for services that their associated users have permission to access. Users with limited account access can also receive invoices and receipts if granted access to that information.

@@ -17,6 +17,7 @@ title_meta: 'mod_evasive on Apache'
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 tags: ["web server","apache"]
+authors: ["Chris Ciufo"]
 ---
 
 ## What is mod_evasive?

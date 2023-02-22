@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["python"]
 aliases: ['/development/python/install_python_miniconda/']
+authors: ["Jared Kobos"]
 ---
 <!-- Installation instructions for Python 3. -->
 

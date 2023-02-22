@@ -19,6 +19,7 @@ relations:
         key: sinatra-nginx
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

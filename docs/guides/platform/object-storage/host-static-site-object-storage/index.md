@@ -20,6 +20,7 @@ external_resources:
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/host-static-site-object-storage/']
 image: host-a-static-site-using-linode-object-storage.png
+authors: ["Linode"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

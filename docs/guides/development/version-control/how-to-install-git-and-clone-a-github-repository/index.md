@@ -17,6 +17,7 @@ published: 2015-02-06
 title: How to Install Git and Clone a GitHub Repository
 audiences: ["beginner"]
 tags: ["version control system"]
+authors: ["Joe D."]
 ---
 
 ![How to Install Git and Clone a GitHub Repository](install-clone-github-repo-title.jpg "How to Install Git and Clone a GitHub Repository title graphic")

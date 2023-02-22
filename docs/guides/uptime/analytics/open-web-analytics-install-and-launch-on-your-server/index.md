@@ -18,6 +18,7 @@ external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 aliases: ['/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/']
+authors: ["Douglas Colby"]
 ---
 
 

@@ -19,6 +19,7 @@ relations:
             - distribution: CentOS
 tags: ["database"]
 aliases: ['/databases/elasticsearch/install_elasticsearch_centos/']
+authors: ["Jared Kobos"]
 ---
 
 1.  Trust the Elastic signing key:

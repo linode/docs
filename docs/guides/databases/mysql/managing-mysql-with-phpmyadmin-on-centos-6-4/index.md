@@ -22,6 +22,7 @@ relations:
         keywords:
             - distribution: CentOS 6
 tags: ["php","database","mysql","centos"]
+authors: ["Linode"]
 ---
 
 ![Install and Configure phpMyAdmin on CentOS 6](how-to-install-and-configure-phpmyadmin-on-centos-6.png "Install and Configure phpMyAdmin on CentOS 6")

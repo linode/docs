@@ -17,6 +17,7 @@ contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 ---
 
 ![banner_image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg)

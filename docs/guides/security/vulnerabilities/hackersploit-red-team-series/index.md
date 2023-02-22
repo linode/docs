@@ -13,6 +13,7 @@ modified_by:
 title: "Hackersploit Red Team Series"
 contributor:
   name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 The rate of data breaches and APT attacks has been rapidly increasing during the period of COVID-19. Organizations are starting to recognize that their IT infrastructure has weaknesses and vulnerabilities, at great expense to their operations and customer data. For medium to large enterprise organizations, a defense-in-depth strategy that includes testing your defenses is required. This is where red teaming comes into play.

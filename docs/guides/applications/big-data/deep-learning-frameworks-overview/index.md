@@ -14,6 +14,7 @@ title_meta: "Deep Learning Frameworks Overview"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio
+authors: ["Andy Patrizio"]
 ---
 
 ## What is Deep Learning?

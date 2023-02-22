@@ -13,6 +13,7 @@ modified_by:
 published: 2013-01-20
 title: Install a Mosh Server as SSH Alternative on Linux
 tags: ["networking","ssh","security"]
+authors: ["Quintin Riis"]
 ---
 
 ![Install a Mosh Server as SSH Alternative on Linux](mosh-server-ssh-alternative-title.jpg "Install a Mosh Server as SSH Alternative on Linux")

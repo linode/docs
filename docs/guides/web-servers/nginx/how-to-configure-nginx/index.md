@@ -15,6 +15,7 @@ published: 2010-01-18
 title: Configuring NGINX Servers
 title_meta: How to Configure NGINX
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Introduction to NGINX](how_to_configure_nginx.png "Introduction to NGINX")

@@ -9,5 +9,6 @@ published: 2020-09-01
 title: Website Hosting
 show_in_lists: true
 aliases: ['/websites/hosting/']
+authors: ["Linode"]
 ---
 

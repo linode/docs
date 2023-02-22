@@ -15,6 +15,7 @@ modified_by:
 title: 'How to Set up tinc, a Peer-to-Peer VPN'
 contributor:
   name: Damaso Sanoja
+authors: ["Damaso Sanoja"]
 ---
 
 

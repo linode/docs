@@ -18,6 +18,7 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
+authors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")

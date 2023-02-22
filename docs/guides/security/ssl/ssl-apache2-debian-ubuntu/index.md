@@ -21,6 +21,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Debian/Ubuntu
+authors: ["Linode"]
 ---
 
 This guide shows you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.

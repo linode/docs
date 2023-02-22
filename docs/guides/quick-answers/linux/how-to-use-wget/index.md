@@ -18,6 +18,7 @@ external_resources:
  - '[Gentoo](https://packages.gentoo.org/packages/net-misc/wget)'
 
 tags: ["linux"]
+authors: ["Angel"]
 ---
 
 

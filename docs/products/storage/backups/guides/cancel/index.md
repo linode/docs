@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: Cancel Backups
 description: "How to cancel the Linode Backup Service."
+authors: ["Linode"]
 ---
 
 You can cancel the Backup Service at any time, which prevents any new backups from being created using the service and deletes any previously generated backups that may have been stored.

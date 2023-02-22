@@ -14,6 +14,7 @@ modified_by:
 contributor:
   name: Linode
 tags: ["kubernetes", "lke"]
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Accessing Internal Services](cd-presentation-header-05-accessing-internal-services.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Accessing Internal Services")

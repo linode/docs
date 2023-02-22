@@ -22,6 +22,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 

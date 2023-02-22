@@ -19,6 +19,7 @@ relations:
         key: using-confluence
         keywords:
            - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

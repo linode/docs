@@ -13,6 +13,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/terraform-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### Terraform

@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/','/applications/containers/kubernetes/static-site-linode-kubernetes-engine/']
+authors: ["Linode"]
 ---
 
 *Linode Kubernetes Engine (LKE)* allows you to easily create, scale, and manage Kubernetes clusters to meet your application's demands, reducing the often complicated cluster set-up process to just a few clicks. Linode manages your Kubernetes master node, and you select how many Linodes you want to add as worker nodes to your cluster.

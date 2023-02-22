@@ -19,6 +19,7 @@ relations:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-10-karmic/']
+authors: ["Linode"]
 ---
 
 

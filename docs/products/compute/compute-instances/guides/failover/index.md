@@ -13,6 +13,7 @@ title: "Configure Failover on a Compute Instance"
 contributor:
   name: Linode
 aliases: ['/guides/ip-failover/']
+authors: ["Linode"]
 ---
 
 In cloud computing, *failover* is the concept of rerouting traffic to a backup system should the original system become inaccessible. Linode Compute Instances support failover through the [IP Sharing](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) feature. This allows two Compute Instances to share a single IP address, one serving as the *primary* and one serving as the *secondary*. If the primary Compute Instance becomes unavailable, the shared IP address is seamlessly routed to the secondary Compute Instance (fail*over*). Once the primary instance is back online, the IP address route is restored (fail*back*).

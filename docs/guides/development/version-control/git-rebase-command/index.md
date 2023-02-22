@@ -12,6 +12,7 @@ title: "Using the Git Rebase Command"
 title_meta: "How to Use the Git Rebase Command"
 contributor:
   name: Stephen Savitzky
+authors: ["Stephen Savitzky"]
 ---
 
 ## What Does Git Rebase Do?

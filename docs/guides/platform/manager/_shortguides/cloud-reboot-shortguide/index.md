@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-reboot-shortguide/']
+authors: ["Linode"]
 ---
 
 You can reboot a Linode from two places within the Cloud manager.

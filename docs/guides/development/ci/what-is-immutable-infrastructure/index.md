@@ -16,6 +16,7 @@ contributor:
 audiences: ["intermediate"]
 tags: ["automation"]
 aliases: ['/development/ci/what-is-immutable-infrastructure/']
+authors: ["Linode"]
 ---
 
 ## What is Immutable Infrastructure?

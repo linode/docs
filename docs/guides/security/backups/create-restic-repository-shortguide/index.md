@@ -12,6 +12,7 @@ modified_by:
 title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
+authors: ["Andy Heathershaw"]
 ---
 
 {{< note respectIndent=false >}}

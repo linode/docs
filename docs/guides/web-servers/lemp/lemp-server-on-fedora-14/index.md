@@ -19,6 +19,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

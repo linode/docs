@@ -15,6 +15,7 @@ title_meta: "Kubernetes Security Best Practices: A Beginner's Overview"
 contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
+authors: ["Jack Wallen"]
 ---
 
 If you are [deploying your first Kubernetes cluster](/docs/guides/getting-started-with-kubernetes/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.

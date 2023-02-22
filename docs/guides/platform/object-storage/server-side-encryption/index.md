@@ -15,6 +15,7 @@ modified_by:
 title: "Using Server-Side Encryption with Linode Object Storage"
 title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
+authors: ["Ben Bigger"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

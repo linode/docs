@@ -16,6 +16,7 @@ title_meta: "What is Unit Testing?"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 Unit testing exercises each function point in a program to make sure it works. Every application needs to be tested to make sure that it meets specifications – and ideally gives users joy from using it. But there are many kinds of software testing. In quite a few organizations, especially those that follow the [ISTQB Certified Test Foundation Level syllabus](https://astqb.org/certifications/foundation-level-certification/), the major testing phases are:

@@ -18,6 +18,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 9
+authors: ["Linode"]
 ---
 
 ## What is a LEMP Stack?

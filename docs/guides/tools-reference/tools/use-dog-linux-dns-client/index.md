@@ -12,6 +12,7 @@ title: "Use the Linux dog Command to Look Up DNS Records"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 `dog` is a command-line DNS client used for looking up DNS records for domain names. It's an alternative to the popular `dig` command. The `dog` command gives you a simpler interface, more readable results, and additional features like DNS over TLS.

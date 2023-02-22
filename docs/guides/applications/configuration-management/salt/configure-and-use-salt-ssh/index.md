@@ -16,6 +16,7 @@ title: 'Configure and Use Salt SSH to Manage Your Linodes'
 contributor:
   name: Sergey Bulavintsev
 aliases: ['/applications/configuration-management/configure-and-use-salt-ssh/','/applications/configuration-management/salt/configure-and-use-salt-ssh/']
+authors: ["Sergey Bulavintsev"]
 ---
 
 ## Introduction to Salt SSH

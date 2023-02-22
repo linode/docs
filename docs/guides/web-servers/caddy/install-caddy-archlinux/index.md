@@ -23,6 +23,7 @@ relations:
             - distribution: Arch Linux
 tags: ["web server"]
 aliases: ['/web-servers/caddy/install-caddy-archlinux/']
+authors: ["Claudio Costa"]
 ---
 
 ## Before You Begin

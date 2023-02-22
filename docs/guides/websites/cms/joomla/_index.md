@@ -9,5 +9,6 @@ published: 2020-09-01
 title: Joomla
 show_in_lists: true
 aliases: ['/websites/cms/joomla/']
+authors: ["Linode"]
 ---
 

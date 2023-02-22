@@ -19,6 +19,7 @@ external_resources:
 audiences: ["beginner"]
 languages: ["perl"]
 tags: ["perl"]
+authors: ["Linode"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)

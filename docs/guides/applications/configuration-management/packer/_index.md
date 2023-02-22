@@ -9,5 +9,6 @@ published: 2020-07-15
 title: Packer
 show_in_lists: true
 aliases: ['/applications/configuration-management/packer/']
+authors: ["Linode"]
 ---
 

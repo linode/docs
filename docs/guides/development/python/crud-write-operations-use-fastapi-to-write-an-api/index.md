@@ -15,6 +15,7 @@ tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 
 FastAPI is a high-performance Python *micro-framework* designed to help developers build APIs quickly. Out-of-the-box, it generates interactive API documentation powered by the [Swagger UI](https://github.com/swagger-api/swagger-ui). This Python framework is minimal by default, but can be configured, and extended to fit your API's use case.

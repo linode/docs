@@ -22,6 +22,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","mysql","php"]
 deprecated: true
+authors: ["Brett Kaplan"]
 ---
 
 ![Install MySQL with phpMyAdmin on Debian](How_to_Install_MySQL_with_phpMyAdmin_on_Debian_7_smg.jpg)

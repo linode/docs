@@ -13,6 +13,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/kube-controller-manager-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### kube-controller-manager

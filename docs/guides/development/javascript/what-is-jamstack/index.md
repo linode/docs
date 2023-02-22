@@ -19,6 +19,7 @@ external_resources:
 - '[Jamstack](https://jamstack.org/)'
 - '[Jamstack static site generators](https://jamstack.org/generators/)'
 - '[Hugo](https://gohugo.io/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 ## What Is the Jamstack?

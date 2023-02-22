@@ -13,6 +13,7 @@ modified_by:
 published: 2010-11-29
 title: 'Manipulate Lists with sort and uniq'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 ![Manipulate Lists with sort and uniq](manipulate_lists_with_sort_and_uniq_smg.png "Manipulate Lists with sort and uniq")

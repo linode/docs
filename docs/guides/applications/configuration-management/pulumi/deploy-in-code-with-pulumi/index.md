@@ -16,6 +16,7 @@ external_resources:
 - '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
+authors: ["Linode"]
 ---
 
 ## What is Pulumi?

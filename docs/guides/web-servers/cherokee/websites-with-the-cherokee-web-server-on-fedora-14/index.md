@@ -19,6 +19,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

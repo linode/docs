@@ -19,6 +19,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Brett Kaplan"]
 ---
 
 

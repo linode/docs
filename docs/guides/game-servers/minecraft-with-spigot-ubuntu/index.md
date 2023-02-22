@@ -19,6 +19,7 @@ contributor:
     link: https://github.com/Sxw1212
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
+authors: ["Sam Mauldin"]
 ---
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.

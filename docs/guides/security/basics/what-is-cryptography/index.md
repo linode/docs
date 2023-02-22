@@ -12,6 +12,7 @@ title: "How Cryptography Enables Secure Communication"
 title_meta: "Understanding Cryptography’s Meaning and Function"
 contributor:
   name: Pam Baker
+authors: ["Pam Baker"]
 ---
 
 Cryptography is a cornerstone of modern secure communication practices. From digital signatures to disk encryption, these everyday applications of cryptography enable users of the Internet, developers, and business to keep sensitive data private. This guide provides an overview of what cryptography is, a brief history of cryptography, and the differences between symmetric asymmetric encryption.

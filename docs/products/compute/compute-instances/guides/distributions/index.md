@@ -13,6 +13,7 @@ title: "Choosing a Linux Distribution"
 title_meta: "How to Choose a Linux Distribution"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/choosing-a-distribution/','/guides/choosing-a-distribution/']
+authors: ["Linode"]
 ---
 
 ## What is a Distribution?

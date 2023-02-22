@@ -21,6 +21,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Ubuntu
+authors: ["Jeff Novotny"]
 ---
 
 

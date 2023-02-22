@@ -14,6 +14,7 @@ title: "Install Docker Compose"
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
+authors: ["Jared Kobos"]
 ---
 
 <!--- Installation instructions for Docker Compose -->

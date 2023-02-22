@@ -19,6 +19,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

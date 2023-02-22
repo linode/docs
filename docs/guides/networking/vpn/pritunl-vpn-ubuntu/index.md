@@ -17,6 +17,7 @@ contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
+authors: ["Andrew Gottschling"]
 ---
 
 ![Pritunl VPN Server and Management Panel on Ubuntu](Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)

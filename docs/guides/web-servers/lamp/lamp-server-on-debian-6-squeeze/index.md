@@ -24,6 +24,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

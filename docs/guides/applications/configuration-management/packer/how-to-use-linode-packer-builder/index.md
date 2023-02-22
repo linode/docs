@@ -16,6 +16,7 @@ title_meta: "How to Use the Linode Packer Builder"
 contributor:
   name: Linode
 aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/','/applications/configuration-management/packer/how-to-use-linode-packer-builder/']
+authors: ["Linode"]
 ---
 
 ## Introduction to Packer

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: Access the Kubernetes Dashboard
 description: "How to access the Kubernetes Dashboard on a Linode Kubernetes Engine (LKE) cluster."
+authors: ["Linode"]
 ---
 
 ## Access the Kubernetes Dashboard

@@ -13,6 +13,7 @@ modified_by:
 title: 'Logging and System Monitoring'
 aliases: ['/security/monitoring/logging-and-system-monitoring/']
 image: Logging_and_system_monitoring.png
+authors: ["Hackersploit"]
 ---
 
 ## Analyzing system logs

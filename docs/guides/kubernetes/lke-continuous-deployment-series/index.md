@@ -15,6 +15,7 @@ image: cd-presentation-header.png
 contributor:
   name: Linode
 tags: ["kubernetes", "lke"]
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine](cd-presentation-header.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine")

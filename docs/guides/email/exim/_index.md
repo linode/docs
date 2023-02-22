@@ -9,6 +9,7 @@ published: 2009-12-17
 title: Exim Guides
 show_in_lists: true
 aliases: ['/email/exim/']
+authors: ["Linode"]
 ---
 
 Exim is a free, open source MTA (Mail Transfer Agent). This software allows Linux systems to send and receive email both locally and remotely.

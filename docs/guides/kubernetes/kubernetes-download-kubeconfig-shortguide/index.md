@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/kubernetes-download-kubeconfig-shortguide/']
+authors: ["Linode"]
 ---
 
 Anytime after your cluster is created you can download its *kubeconfig*. The kubeconfig is a YAML file that will allow you to use kubectl to communicate with your cluster. Here is an example kubeconfig file:

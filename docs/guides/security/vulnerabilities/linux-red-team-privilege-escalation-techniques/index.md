@@ -13,6 +13,7 @@ modified_by:
 title: "Linux Red Team Privilege Escalation Techniques"
 contributor:
   name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

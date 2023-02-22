@@ -19,6 +19,7 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 

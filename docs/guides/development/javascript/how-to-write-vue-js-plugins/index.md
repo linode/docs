@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 tags: ["web applications"]
+authors: ["John Au-Yeung"]
 ---
 
 ## What is a Vue.js Plugin?

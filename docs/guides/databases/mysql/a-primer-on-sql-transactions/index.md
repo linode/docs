@@ -15,6 +15,7 @@ title_meta: "A Primer on SQL Transactions"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 ## What are SQL Transactions?

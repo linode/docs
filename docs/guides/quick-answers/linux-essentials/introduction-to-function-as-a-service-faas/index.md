@@ -13,6 +13,7 @@ modified_by:
 title: "An Introduction to FaaS (Function as a Service)"
 contributor:
   name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 Developers are used to breaking business logic into standalone functions that an application can call when necessary. Functions as a Service (FaaS) takes advantage of cloud architectures, spinning up functions (and their system resources) only when needed. Using FaaS has several advantages, not the least of which is affordability, but it can also create more complexity.

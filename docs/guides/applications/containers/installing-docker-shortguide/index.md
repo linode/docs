@@ -17,6 +17,7 @@ author:
   email: docs@linode.com
 modified_by:
   name: Linode
+authors: ["Linode"]
 ---
 
 To install Docker CE (Community Edition), follow the instructions within one of the guides below:

@@ -16,6 +16,7 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
+authors: ["Ryan Syracuse"]
 ---
 
 Upgrading a Kubernetes cluster is often an involved process in manual Kubernetes configurations, with special attention paid to control plane components and ensuring application uptime. LKE aims to make this upgrade process much more transparent, clear, and seamless to an end user by handling the more intricate details of these upgrades and the direct upgrade of Control Plane Components. That being said, there are still things users should be aware of to help ensure the upgrade process will complete without any issues.

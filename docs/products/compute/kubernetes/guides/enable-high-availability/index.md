@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: High Availability
 description: "How to Enable High Availability for Linode Kubernetes Engine (LKE)"
+authors: ["Linode"]
 ---
 
 {{< note type="alert" >}}

@@ -19,6 +19,7 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: CentOS 5
+authors: ["Stan Schwertly"]
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." An alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership and control of the data collected from your visitors.

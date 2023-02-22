@@ -19,6 +19,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

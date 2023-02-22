@@ -14,6 +14,7 @@ title: "Deploy MagicSpam through the Linode Marketplace"
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
+authors: ["Linode"]
 ---
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It integrates directly with popular control panels, such as cPanel and Plesk. It's primary function is to stop inbound spam from entering your server right at the SMTP layer, which lowers bandwidth and overhead. It also secure mailboxes on your server from being compromised and used to send outbound spam.

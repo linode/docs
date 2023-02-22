@@ -13,6 +13,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/csi-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### Container Storage Interface

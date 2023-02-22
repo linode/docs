@@ -19,6 +19,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

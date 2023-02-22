@@ -17,6 +17,7 @@ title: Modify File Permissions with chmod
 external_resources:
  - '[Manage File Permission with Users and Groups](/docs/guides/linux-users-and-groups/)'
  - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'
+authors: ["Linode"]
 ---
 
 ![Modify File Permissions with chmod](modify_file_permissions_with_chmod_smg.png "Modify File Permissions with chmod")

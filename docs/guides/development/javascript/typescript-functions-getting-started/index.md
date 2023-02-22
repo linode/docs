@@ -14,6 +14,7 @@ title_meta: "TypeScript Functions: Getting Started"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 ## Declaring Functions

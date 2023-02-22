@@ -31,6 +31,7 @@ relations:
         key: install-an-odoo-13-stack
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Damaso Sanoja"]
 ---
 
 ## What is Odoo?

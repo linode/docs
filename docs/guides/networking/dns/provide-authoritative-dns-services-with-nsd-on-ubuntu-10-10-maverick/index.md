@@ -19,6 +19,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Brett Kaplan"]
 ---
 
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.

@@ -18,6 +18,7 @@ contributor:
   link: https://github.com/tylerjl
 external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
+authors: ["Tyler Langlois"]
 ---
 
 

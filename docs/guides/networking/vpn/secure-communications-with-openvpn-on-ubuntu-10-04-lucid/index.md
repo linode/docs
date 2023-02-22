@@ -19,6 +19,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

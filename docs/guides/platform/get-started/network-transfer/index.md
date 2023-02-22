@@ -15,6 +15,7 @@ contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/']
+authors: ["Linode"]
 ---
 
 ## Overview

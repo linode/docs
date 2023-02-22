@@ -16,6 +16,7 @@ contributor:
   link: https://www.mtsoukalos.eu/
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

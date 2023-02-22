@@ -13,6 +13,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/linode-k8s-cli-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### Linode k8s-alpha CLI

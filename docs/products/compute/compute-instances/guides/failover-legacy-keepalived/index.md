@@ -15,6 +15,7 @@ contributor:
 external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'
 aliases: ['/guides/ip-failover-keepalived/','/guides/ip-failover-legacy-keepalived/']
+authors: ["Linode"]
 ---
 
 {{< note >}}

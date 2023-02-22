@@ -17,6 +17,7 @@ contributor:
   link: https://github.com/JeffreyNovotny/
 external_resources:
 - '[Official MySQL documentation](https://dev.mysql.com/doc/)'
+authors: ["Jeff Novotny"]
 ---
 
 ## What is the MySQL Database?

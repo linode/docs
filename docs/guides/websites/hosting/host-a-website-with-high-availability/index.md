@@ -20,6 +20,7 @@ external_resources:
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server"]
 image: host-a-website-with-high-availability-title-graphic.jpg
+authors: ["Phil Zona"]
 ---
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.

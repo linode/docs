@@ -14,6 +14,7 @@ modified_by:
 contributor:
   name: Linode
 tags: ["kubernetes", "lke"]
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing Stacks with Helm](cd-presentation-header-07-managing-stacks-with-helm.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing Stacks with Helm")

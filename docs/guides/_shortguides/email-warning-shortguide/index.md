@@ -14,6 +14,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/email-warning-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note type="warning" title="Spam prevention and email restrictions on the Linode Platform" isCollapsible=true >}}

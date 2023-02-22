@@ -15,6 +15,7 @@ show_on_rss_feed: false
 title: 'Install Ruby Using RVM'
 tags: ["ruby"]
 aliases: ['/development/ror/install-ruby-with-rvm/']
+authors: ["Linode"]
 ---
 
 1.  Install the mpapis GPG key:

@@ -15,6 +15,7 @@ title: "Search Linode Docs"
 show_on_rss_feed: false
 _build:
   list: false
+authors: ["Steven Jacobs"]
 ---
 
 <!--

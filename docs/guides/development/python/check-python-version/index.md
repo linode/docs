@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[phoenixNAP: How to Check Python Version in Linux, Mac, & Windows](https://phoenixnap.com/kb/check-python-version)'
 - '[LearnPython: How to Check Your Python Version](https://learnpython.com/blog/check-python-version/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Python reigns as one of the most popular programming languages, with a wide range of programs and developer tools relying on it. In fact, your system likely already has at least one version of Python installed.

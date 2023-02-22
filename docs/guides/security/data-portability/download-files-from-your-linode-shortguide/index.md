@@ -14,6 +14,7 @@ title: Download Files from your Linode - Shortguide
 headless: true
 tags: ["security"]
 aliases: ['/security/data-portability/download-files-from-your-linode-shortguide/']
+authors: ["Linode"]
 ---
 
 ## Download Specific Files or Directories over SSH

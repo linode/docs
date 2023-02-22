@@ -25,6 +25,7 @@ relations:
     platform:
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.

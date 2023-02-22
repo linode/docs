@@ -15,6 +15,7 @@ contributor:
   name: Mihalis Tsoukalos
   link: https://www.mtsoukalos.eu/
 aliases: ['/development/data-visualization/visualize-history/','/development/visualize-history/']
+authors: ["Mihalis Tsoukalos"]
 ---
 Creating graphic visualizations for a data set is a powerful way to derive meaning from vast amounts of information. It provides a way to extract meaningful relationships between different aspects of your data depending on how the data is mapped and which graphic representations are chosen. Data visualization is a common practice in many sectors, including various scientific disciplines, business settings, the government sector, and education.
 

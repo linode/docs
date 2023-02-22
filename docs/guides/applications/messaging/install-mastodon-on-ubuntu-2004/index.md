@@ -33,6 +33,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

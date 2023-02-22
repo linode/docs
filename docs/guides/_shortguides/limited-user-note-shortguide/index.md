@@ -14,6 +14,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/limited-user-note-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note >}}

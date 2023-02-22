@@ -19,6 +19,7 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 

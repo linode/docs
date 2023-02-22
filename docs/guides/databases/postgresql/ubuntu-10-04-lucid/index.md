@@ -19,6 +19,7 @@ relations:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-10-04-lucid/']
+authors: ["Linode"]
 ---
 
 

@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-reenable-service-shortguide/']
+authors: ["Linode"]
 ---
 
 To reenable monitoring for a service:

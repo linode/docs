@@ -17,6 +17,7 @@ external_resources:
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
   - '[Quickstart: Compose and Wordpress | Docker Documentation](https://docs.docker.com/compose/wordpress/)'
 aliases: ['/quick-answers/linux/wordpress-with-docker-compose/']
+authors: ["Nathan Melehan"]
 ---
 
 ![Install WordPress with Docker Compose](install-wordpress-with-docker-compose.png "Install WordPress with Docker Compose")

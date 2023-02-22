@@ -13,6 +13,7 @@ title_meta: "The Advantages of Linux and Why You Should Use It"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/
+authors: ["John Mueller"]
 ---
 
 Operating systems, such as Linux, provide an interface between the application software and the underlying hardware. The best operating systems remain invisible to the user, which is where the benefits of Linux first come into play. However, an operating system has to go further in ensuring that the user’s data remains secure and that applications play together nicely, which is another advantage of Linux. This guide examines the advantages of Linux and why you might consider using it as your operating system.

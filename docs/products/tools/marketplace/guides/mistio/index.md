@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[Mist.io Official](https://mist.io/)'
 aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platform/one-click/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-one-click-apps/','/guides/deploy-mistio-with-marketplace-apps/','/guides/mistio-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Mist.io](https://mist.io/) is an open source, multi-cloud management platform. Mist supports all popular infrastructure technologies including public clouds, private clouds, hypervisors, containers, and bare metal servers. It provides a unified interface for performing common management tasks like provisioning, orchestration, monitoring, automation, and cost analysis. It also comes with a RESTful API so you can easily integrate it in your existing workflows.

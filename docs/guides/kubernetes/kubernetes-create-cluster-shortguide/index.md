@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/kubernetes-create-cluster-shortguide/']
+authors: ["Linode"]
 ---
 
 1.  Log into your [Linode Cloud Manager](https://cloud.linode.com/) account.

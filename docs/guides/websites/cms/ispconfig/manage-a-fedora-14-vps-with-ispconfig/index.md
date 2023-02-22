@@ -19,6 +19,7 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

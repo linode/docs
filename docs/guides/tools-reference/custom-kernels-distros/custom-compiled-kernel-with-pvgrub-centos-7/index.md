@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-centos-7/']
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

@@ -9,5 +9,6 @@ aliases: ['/security/upgrading/','/upgrading/']
 published: 2012-06-01
 title: Upgrading
 show_in_lists: true
+authors: ["Linode"]
 ---
 

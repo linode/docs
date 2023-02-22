@@ -20,6 +20,7 @@ external_resources:
   - '[nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html)'
   - '[Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl)'
 aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud-centos-7/']
+authors: ["Andrew Lescher"]
 ---
 
 ![Store and Share your Files with Nextcloud on CentOS](Store_and_Share_your_Files_with_Nextcloud_on_Centos_smg.png "Store and Share your Files with Nextcloud on CentOS")

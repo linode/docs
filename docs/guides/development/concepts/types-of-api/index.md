@@ -13,6 +13,7 @@ title_meta: "A Guide to API Formats: The Different Types of APIs"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 APIs are what keep software connected. Whether you are looking to link your application to others or you want to have smooth communication between services, APIs help bring multiple pieces of an application together.

@@ -13,6 +13,7 @@ title: "Use Rclone to Sync Files to Linode Object Storage"
 title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
 contributor:
   name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 ## What is Rclone?

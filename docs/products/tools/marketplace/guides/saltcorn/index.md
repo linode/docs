@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
 aliases: ['/guides/saltcorn-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, data types, and layouts.

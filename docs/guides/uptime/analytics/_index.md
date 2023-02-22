@@ -9,6 +9,7 @@ aliases: ['/web-applications/analytics/','/uptime/analytics/']
 published: 2010-03-01
 title: Analytics
 show_in_lists: true
+authors: ["Linode"]
 ---
 
 

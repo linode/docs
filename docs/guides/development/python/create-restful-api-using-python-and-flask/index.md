@@ -13,6 +13,7 @@ title: "Create a RESTful API Using Python and Flask"
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 
 [Flask](https://flask.palletsprojects.com/en/2.0.x/) is a Python micro-framework for building web applications and web APIs. The framework provides pared-down core functionality, however, it is highly extensible. This guide shows you how to use Flask to build a REST API that serves up information about different programming languages. The data information exposed by the API can also be referred to as a *resource*. The API’s data comes from [Hillel Wayne’s research](https://www.hillelwayne.com/post/influential-dead-languages/) on influential programming languages. At the end of the guide, you have an API that allows clients to complete the following:

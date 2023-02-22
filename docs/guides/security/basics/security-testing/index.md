@@ -12,6 +12,7 @@ title: "Application Security Testing: Fundamentals and Best Practices"
 title_meta: "Application Security Testing Tools"
 contributor:
   name: David Newman
+authors: ["David Newman"]
 ---
 
 Application security testing tools help you build applications that are less vulnerable to attacks by automating security testing, and by verifying your applications are secured against known vulnerabilities.

@@ -19,6 +19,7 @@ external_resources:
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
 aliases: ['/applications/configuration-management/introduction-to-jinja-templates-for-salt/','/applications/configuration-management/salt/introduction-to-jinja-templates-for-salt/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 ## Introduction to Templating Languages
 

@@ -22,6 +22,7 @@ external_resources:
 - '[core-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)'
 tags: ["database"]
 aliases: ['/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/']
+authors: ["Florent Houbart"]
 ---
 
 

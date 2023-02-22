@@ -15,6 +15,7 @@ title: Use NGINX as a Reverse Proxy
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/web-servers/nginx/use-nginx-reverse-proxy/']
+authors: ["Linode"]
 ---
 
 ## What is a Reverse Proxy?

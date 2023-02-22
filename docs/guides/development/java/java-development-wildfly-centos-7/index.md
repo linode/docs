@@ -26,6 +26,7 @@ relations:
         key: java-development-wildfly
         keywords:
             - distribution: CentOS 7
+authors: ["Ashraf Fouad"]
 ---
 
 ![Java Development with WildFly on CentOS 7](Java-Development-with-WildFly-on-CentOS-7-smg.jpg)

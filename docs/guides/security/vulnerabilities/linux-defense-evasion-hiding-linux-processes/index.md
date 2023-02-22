@@ -13,6 +13,7 @@ modified_by:
 title: "Linux Defense Evasion - Hiding Linux Processes"
 contributor:
   name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

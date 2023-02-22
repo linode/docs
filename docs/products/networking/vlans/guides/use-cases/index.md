@@ -14,6 +14,7 @@ title: "Common Use Cases for Linode's VLAN Service"
 contributor:
   name: Linode
 aliases: ['/guides/common-linode-vlan-use-cases/']
+authors: ["Linode"]
 ---
 
 ## Use Cases

@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 headless: true
 title: 'Install Certbot for TLS on Ubuntu'
+authors: ["Edward Angert"]
 ---
 
 1. Install the Certbot and web server-specific packages, then run Certbot:

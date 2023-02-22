@@ -14,6 +14,7 @@ title_meta: "TypeScript Classes: Get Started"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 TypeScript support for classes was introduced in [ECMAScript 6 (ES6)](https://github.com/lukehoban/es6features#readme). Classes allow programmers to write their code following object-oriented programming (OOP) principles. Class-driven OOP reduces code repetition due to class inheritance and the usage of objects.

@@ -17,6 +17,7 @@ contributor:
 external_resources:
   - '[Go](https://www.golang.com)'
 aliases: ['/development/go/developing-udp-and-tcp-clients-and-servers-in-go/']
+authors: ["Mihalis Tsoukalos"]
 ---
 Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/guides/introduction-to-docker/), [Kubernetes](/docs/guides/beginners-guide-to-kubernetes/), and [Terraform](/docs/guides/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
 

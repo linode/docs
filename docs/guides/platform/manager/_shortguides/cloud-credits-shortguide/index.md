@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-credits-shortguide/']
+authors: ["Linode"]
 ---
 
 To find the amount of available credit that you have:

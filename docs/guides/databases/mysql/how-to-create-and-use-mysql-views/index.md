@@ -16,6 +16,7 @@ contributor:
   link: https://twitter.com/francisndungu83
 external_resources:
 - '[MySQL - Using Views](https://dev.mysql.com/doc/refman/8.0/en/views.html)'
+authors: ["Francis Ndungu"]
 ---
 
 A *view* in MySQL is a named query that can be triggered to display data stored in other tables. In other words, views are user-defined virtual tables. Views can be used to:

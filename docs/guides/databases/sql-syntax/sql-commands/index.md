@@ -15,6 +15,7 @@ title_meta: "SQL Commands: Getting Started"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 In today’s world of increased digitization, big data, and cloud computing, data management is amongst the most important skills a software engineer can have. To this end, one of the most powerful database tools is SQL.

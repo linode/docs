@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 published: 2010-08-05
 title: Planet Feed Aggregator
+authors: ["Linode"]
 ---
 
 

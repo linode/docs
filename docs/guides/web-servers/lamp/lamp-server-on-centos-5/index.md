@@ -24,6 +24,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 

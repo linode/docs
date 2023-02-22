@@ -18,6 +18,7 @@ external_resources:
   - '[ThingsBoard Github Repo](https://github.com/thingsboard/thingsboard)'
 audiences: ["intermediate"]
 aliases: ['/development/iot/install-thingsboard-iot-dashboard/']
+authors: ["Jared Kobos"]
 ---
 
 ![View IoT Data with ThingsBoard](ThingsBoard.jpg)

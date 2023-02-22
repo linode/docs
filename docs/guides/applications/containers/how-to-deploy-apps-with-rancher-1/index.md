@@ -17,6 +17,7 @@ external_resources:
 deprecated: true
 deprecated_link: applications/containers/how-to-deploy-apps-with-rancher/
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-1/']
+authors: ["Angel"]
 ---
 
 ## What is Rancher?

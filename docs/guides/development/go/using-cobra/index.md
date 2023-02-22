@@ -17,6 +17,7 @@ external_resources:
   - '[Go](https://www.golang.com)'
   - '[Cobra](https://github.com/spf13/cobra)'
 aliases: ['/development/go/using-cobra/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Before You Begin

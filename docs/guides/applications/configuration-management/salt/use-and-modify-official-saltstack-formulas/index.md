@@ -19,6 +19,7 @@ external_resources:
 - '[Git Fileserver Backend Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
 aliases: ['/applications/configuration-management/salt/use-and-modify-official-saltstack-formulas/','/applications/configuration-management/use-and-modify-official-saltstack-formulas/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 
 ## Salt State Files

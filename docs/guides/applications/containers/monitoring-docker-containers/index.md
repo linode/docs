@@ -13,6 +13,7 @@ title_meta: "Docker Container Monitoring Benefits and Tools"
 contributor:
   name: Steven J. Vaughan-Nichols
   link: https://twitter.com/sjvn
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 Eight years ago containers were a known technology, but with little public adoption. Then, Solomon Hykes created Docker, a container technology, making containers much easier to use. Today, containers rule the IT world. Gartner predicts 70% of [organizations will run containerized applications](https://www.gartner.com/document/3955920?ref=solrAll&refval=277254196) by 2023.

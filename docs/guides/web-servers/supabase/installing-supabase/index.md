@@ -19,6 +19,7 @@ external_resources:
 - '[Scott Pritchard: Self-hosting with Supabase](https://dev.to/chronsyn/self-hosting-with-supabase-1aii)'
 - '[Vultr: How to Install Supabase on Ubuntu 20.04](https://www.vultr.com/docs/how-to-install-supabase-on-ubuntu-20-04/)'
 - '[HowtoForge: How to Install Supabase with Docker on Debian 11](https://www.howtoforge.com/how-to-install-supabase-on-debian-11/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Supabase is an open source Firebase alternative featuring a Postgres database, user authentication, and REST API capabilities. It offers a robust framework for creating the backend to Angular, React, Next.js, and other frontend applications.

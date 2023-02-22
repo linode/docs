@@ -1,3 +1,4 @@
+authors: ["Linode"]
 ---
 author:
   name: Linode

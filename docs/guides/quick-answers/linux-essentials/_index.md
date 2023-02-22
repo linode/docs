@@ -9,4 +9,5 @@ published: 2018-05-22
 title: Linux Essentials
 show_in_lists: true
 aliases: ['/quick-answers/linux-essentials/']
+authors: ["Linode"]
 ---

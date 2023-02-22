@@ -14,6 +14,7 @@ title_meta: "How to Install and Use the duf Command on Linux"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 Duf is a command-line tool for viewing your system's disk usage and free space. It combines into one place the information you might otherwise get from the `du` and `df` commands and presents that information in a clean and modern interface. In this guide, you learn more about duf, how it compares to the `du` and `df` commands, and how to install it on your Linux system.

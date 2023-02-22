@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
 aliases: ['/guides/focalboard-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Focalboard](https://www.focalboard.com/) is an open source alternative to tools like Asana, Trello, and Notion. It helps teams, individuals, and developers stay aligned and organized on their everyday tasks. With Focalboard, you can reach milestones, keep track of project notes, and achieve goals.

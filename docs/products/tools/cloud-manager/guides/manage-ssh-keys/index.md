@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: "Manage SSH Keys"
 description: "Learn how to view, upload, and remove your public SSH keys in the Cloud Manager."
+authors: ["Linode"]
 ---
 
 When creating a Compute Instance, you have the opportunity to select one or more SSH keys, which are added to the root user account of the new instance. This allows you to login over SSH using your associated private key instead of the root password.

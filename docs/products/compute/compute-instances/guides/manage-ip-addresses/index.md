@@ -13,6 +13,7 @@ modified_by:
 published: 2016-08-23
 title: "Managing IP Addresses on a Compute Instance"
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
+authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.

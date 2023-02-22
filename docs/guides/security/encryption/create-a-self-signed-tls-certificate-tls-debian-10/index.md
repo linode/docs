@@ -21,6 +21,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

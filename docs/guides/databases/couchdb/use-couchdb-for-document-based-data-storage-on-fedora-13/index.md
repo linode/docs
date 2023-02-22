@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Fedora 13
 tags: ["fedora","database","nosql"]
+authors: ["Linode"]
 ---
 
 

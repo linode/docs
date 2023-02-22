@@ -15,6 +15,7 @@ contributor:
   name: Linode
 image: 'deploy-percona-marketplace.png'
 aliases: ['/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-marketplace-apps/','/guides/percona-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Percona Monitoring and Management (PMM) is an open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases. You can use PMM to easily observe important metrics, logging, and statistics related to your databases and the hosts they run on. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats. Linode's Percona (PMM) Marketplace App deploys a Linode with PMM installed and ready for you to begin monitoring your databases.

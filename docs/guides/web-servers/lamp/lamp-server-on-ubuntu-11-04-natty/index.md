@@ -24,6 +24,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 

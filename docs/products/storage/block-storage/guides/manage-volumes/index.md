@@ -6,6 +6,7 @@ title: "View, Create, and Delete Block Storage Volumes"
 description: "Learn how to manage Block Storage Volumes on your Linode account, including viewing, adding, and deleting them."
 aliases: ['/products/storage/block-storage/guides/add-volume/','/products/storage/block-storage/guides/delete-volume/']
 modified: 2022-08-24
+authors: ["Linode"]
 ---
 
 The Block Storage service allows you create *Volumes*, which can be attached to Compute Instances and used to store your data. This guide covers how to view, add, and delete these Volumes.

@@ -17,6 +17,7 @@ tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 ## FastAPI Features
 

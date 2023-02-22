@@ -9,5 +9,6 @@ published: 2014-06-20
 title: 'Squid Proxy/Cache'
 show_in_lists: true
 aliases: ['/web-servers/squid/']
+authors: ["Alex Fornuto"]
 ---
 

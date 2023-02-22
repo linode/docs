@@ -14,6 +14,7 @@ title: "Use GNU Make to Automate Tasks"
 title_meta: "GNU Make Tutorial: Learn to Automate Tasks"
 contributor:
   name: Stephen Savitzky
+authors: ["Stephen Savitzky"]
 ---
 
 [GNU make](https://www.gnu.org/software/make/manual/make.html) is designed as a utility for building large programs. It automatically determines which parts need to be recompiled and issues the commands needed to recompile them. Its uses are not limited to compiling and linking C programs. It can also be a surprisingly effective scripting language for automating any task that involves updating files or performing actions whenever files change.

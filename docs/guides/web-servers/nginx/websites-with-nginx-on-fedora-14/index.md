@@ -19,6 +19,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 Nginx is a lightweight and high performance HTTP web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which can provide more predictable performance under load.

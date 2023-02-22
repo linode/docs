@@ -13,6 +13,7 @@ modified_by:
 published: 2013-06-28
 title: Automating Server Builds
 aliases: ['/platform/automating-server-builds/']
+authors: ["Linode"]
 ---
 
 ## Why You Should Automate Server Builds

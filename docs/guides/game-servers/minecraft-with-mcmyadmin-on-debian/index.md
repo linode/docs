@@ -16,6 +16,7 @@ external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
 aliases: ['/game-servers/minecraft-with-mcmyadmin-on-debian/','/applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 dedicated_cpu_link: true
+authors: ["James Stewart"]
 ---
 
 ![Installing McMyAdmin for Minecraft on Debian](Installing_McMyAdmin_for_Minecraft_on_Debian_smg.png "Installing McMyAdmin for Minecraft on Debian")

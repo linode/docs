@@ -16,6 +16,7 @@ contributor:
   link: https://twitter.com/Phaseit
 external_resources:
 - '[VSFTPD.CONF man page](http://vsftpd.beasts.org/vsftpd_conf.html)'
+authors: ["Cameron Laird"]
 ---
 
 ## What is VSFTPD?

@@ -17,6 +17,7 @@ contributor:
 external_resources:
   - '[Go](https://golang.org)'
 aliases: ['/development/go/go-structures/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

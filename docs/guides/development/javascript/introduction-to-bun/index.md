@@ -17,6 +17,7 @@ external_resources:
 - '[LogRocker: Bun - The JavaScript Runtime Taking on Node.js and Deno](https://blog.logrocket.com/bun-javascript-runtime-taking-node-js-deno/)'
 - '[The New Stack: Meet Bun - A JavaScript Runtime for the Whole Dev Lifecycle](https://thenewstack.io/meet-bun-a-javascript-runtime-for-the-whole-dev-lifecycle/)'
 - "[high0verEngineering: Let's Bun! - A New JavaScript Runtime](https://jenil777007.hashnode.dev/lets-bun)"
+authors: ["Nathaniel Stickman"]
 ---
 
 Bun introduces a new JavaScript runtime with exceptional performance, built-in bundling & transpiling, and first-class support for TypeScript & JSX. This up-and-coming tool promises to be an asset for JavaScript developers and a strong competitor to Node.js and Deno.

@@ -19,6 +19,7 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm 2 Documentation](https://v2.helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
+authors: ["Linode"]
 ---
 
 ![How to Install Apps on Kubernetes with Helm](how-to-install-apps-on-kubernetes-with-helm.png "How to Install Apps on Kubernetes with Helm")

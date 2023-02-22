@@ -17,6 +17,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
+authors: ["Linode"]
 ---
 
 ![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg)

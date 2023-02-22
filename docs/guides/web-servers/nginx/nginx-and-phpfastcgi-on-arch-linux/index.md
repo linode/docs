@@ -19,6 +19,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Arch Linux
+authors: ["Linode"]
 ---
 
 

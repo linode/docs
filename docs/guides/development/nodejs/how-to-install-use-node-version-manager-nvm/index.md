@@ -18,6 +18,7 @@ contributor:
   link: https://github.com/JeffreyNovotny
 external_resources:
 - '[NVM GitHub Page](https://github.com/nvm-sh/nvm)'
+authors: ["Jeff Novotny"]
 ---
 
 The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open source version manager for [*Node.js (Node)*](https://nodejs.org/en/). NVM is easy to understand and works on any POSIX-compliant shell (for example, sh or bash). NVM allows you to easily install and manage different versions of Node and switch between them on a per-shell basis. This guide describes how to install NVM, and how to use it to install and run different versions of Node.

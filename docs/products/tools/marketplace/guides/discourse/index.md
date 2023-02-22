@@ -16,6 +16,7 @@ external_resources:
 - '[Discourse on Github](https://github.com/discourse/discourse)'
 - '[Discourse Community](https://meta.discourse.org)'
 aliases: ['/platform/marketplace/how-to-deploy-discourse-with-marketplace-apps/','/guides/deploy-discourse-with-marketplace-apps/','/guides/discourse-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Discourse](https://www.discourse.org/) is a self-hosted open-source discussion platform that provides a forum, mailing list, chat room, and more.

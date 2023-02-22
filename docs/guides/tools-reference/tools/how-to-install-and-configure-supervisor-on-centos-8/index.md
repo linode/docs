@@ -17,6 +17,7 @@ contributor:
   link: https://github.com/danielsen
 external_resources:
 - '[Configuration File — Supervisor 4.2.1 documentation](http://supervisord.org/configuration.html)'
+authors: ["Dan Nielsen"]
 ---
 
 [**Supervisor**](http://supervisord.org/) is a process control system based on the client/server model. It can be used to simplify process management by providing a centralized location for process control. It's most often deployed to control services that don't have initialization, auto-start, or management scripts. Remote process control is also supported via [Remote Procedure Calls](https://man7.org/linux/man-pages/man3/rpc.3.html), or RPC.

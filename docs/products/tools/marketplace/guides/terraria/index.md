@@ -16,6 +16,7 @@ external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Terraria is a two-dimensional sandbox game in which players explore the world, collect resources, build structures, and battle enemies in procedurally generated environments. In Terraria a player begins by digging for ore, and the further they dig the more adventure they find. Multiplayer mode can be either cooperative or PvP.

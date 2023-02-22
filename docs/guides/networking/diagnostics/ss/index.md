@@ -18,6 +18,7 @@ contributor:
 external_resources:
   - '[iproute2](https://en.wikipedia.org/wiki/Iproute2)'
 aliases: ['/networking/diagnostics/ss/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

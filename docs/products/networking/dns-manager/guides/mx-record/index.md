@@ -10,6 +10,7 @@ modified_by:
 title: "MX Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ## MX Overview

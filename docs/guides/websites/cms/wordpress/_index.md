@@ -9,5 +9,6 @@ published: 2020-09-01
 title: WordPress
 show_in_lists: true
 aliases: ['/websites/cms/wordpress/']
+authors: ["Linode"]
 ---
 

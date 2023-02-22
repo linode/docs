@@ -27,6 +27,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/react/how-to-deploy-a-react-app-on-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is React?

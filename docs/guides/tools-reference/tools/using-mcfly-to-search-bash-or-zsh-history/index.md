@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[McFly GitHub site](https://github.com/cantino/mcfly)'
 - '[Homebrew](https://brew.sh/)'
+authors: ["Jeff Novotny"]
 ---
 
 Many Linux users run certain commands regularly. Newcomers might resort to retyping the command or using the **up** and **down** keys to scroll through previous commands. More experienced users typically search their terminal history using the built-in `Control-r` command. The free and open-source [*McFly*](https://github.com/cantino/mcfly) application is designed as an alternative to these traditional methods. McFly is a bash search history utility that uses AI techniques to display the most relevant commands. This guide provides a brief introduction to the McFly application and its methodology. It also explains how to install McFly and how to use the `mcfly` command to search through the terminal history.

@@ -25,6 +25,7 @@ external_resources:
   - '[Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/)'
   - '[WordPress](https://wordpress.org/)'
   - '[WordPress Administration Over SSL](https://wordpress.org/support/article/administration-over-ssl/)'
+authors: ["Simos Xenitellis"]
 ---
 
 ## Introduction

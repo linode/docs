@@ -21,6 +21,7 @@ contributor:
     name: Julian Meyer
     link: https://github.com/jmeyer2k
 dedicated_cpu_link: true
+authors: ["Julian Meyer"]
 ---
 
 

@@ -25,6 +25,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-8/']
+authors: ["Linode"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on a CentOS 8 Linode.

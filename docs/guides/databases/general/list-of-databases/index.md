@@ -12,6 +12,7 @@ title: "The 8 Most Popular Databases"
 title_meta: "List of Databases - Most Popular"
 contributor:
   name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 Databases power nearly every digital platform on the planet: From websites, to blogs, to social media, to streaming services. Most end-users know databases such as MySQL as a tool to store data. That's a pretty accurate, although fundamental, description of what a database is. However, they are much more than that.

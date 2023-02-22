@@ -22,6 +22,7 @@ external_resources:
  - '[Far.vim](https://github.com/brooth/far.vim)'
 tags: ["linux"]
 image: neovim-basics-title.jpg
+authors: ["Gabriel Cánepa"]
 ---
 
 ## What is NeoVim?

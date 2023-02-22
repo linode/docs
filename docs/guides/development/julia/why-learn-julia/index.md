@@ -20,6 +20,7 @@ concentrations: ["Scientific Computing and Big Data"]
 languages: ["julia"]
 dedicated_cpu_link: true
 aliases: ['/development/julia/why-learn-julia/']
+authors: ["Linode"]
 ---
 ![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 

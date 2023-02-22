@@ -12,6 +12,7 @@ published: 2019-04-09
 title: Tax Information
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/','/guides/tax-information/']
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 {{< note >}}

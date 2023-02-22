@@ -18,6 +18,7 @@ title: "SQL Triggers in SQL Server: An Overview"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 ## What are Triggers?

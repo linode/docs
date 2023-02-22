@@ -12,6 +12,7 @@ title: "Creating a Disaster Recovery Plan: A Definitive Guide"
 title_meta: "Disaster Recovery: What It Is and How to Create a Plan"
 contributor:
   name: Wayne Rash
+authors: ["Wayne Rash"]
 ---
 
 A disaster recovery (DR) plan is a series of instructions that leads your organization through the process of restoring operations following an unplanned event that prevents the use of its IT infrastructure. Such plans allow recovery from a broad range of events, and are tailored to the needs of a specific organization. Because disasters occur without warning, and because they may include substantial damage to existing infrastructure, DR plans must be developed and tested in advance of a disaster.

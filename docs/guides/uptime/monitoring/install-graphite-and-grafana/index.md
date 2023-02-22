@@ -17,6 +17,7 @@ external_resources:
  - '[Grafana Official Documentation](http://docs.grafana.org/)'
  - '[Graphite Official Documentation](https://graphite.readthedocs.io/en/latest/)'
 aliases: ['/uptime/monitoring/install-graphite-and-grafana/']
+authors: ["Jared Kobos"]
 ---
 
 ## What are Graphite and Grafana?

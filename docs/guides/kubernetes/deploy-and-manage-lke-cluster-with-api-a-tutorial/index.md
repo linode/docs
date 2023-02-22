@@ -22,6 +22,7 @@ contributor:
   name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.

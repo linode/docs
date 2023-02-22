@@ -17,6 +17,7 @@ external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 tags: ["ubuntu","debian","database","mysql"]
 image: mysql-master-master-replication-title.jpg
+authors: ["James Stewart"]
 ---
 
 ![Configure Master-Master MySQL Database Replication](mysql-master-master-replication-title.jpg)

@@ -14,6 +14,7 @@ title: "Kotlin vs. Java: Key Differences"
 title_meta: "Kotlin vs. Java: Understanding their Differences"
 contributor:
   name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 ## What is Kotlin?

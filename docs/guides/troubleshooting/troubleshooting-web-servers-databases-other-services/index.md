@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 title: "Troubleshooting Web Servers, Databases, and Other Services"
 aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services/']
+authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Linode. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) and then return to this guide.

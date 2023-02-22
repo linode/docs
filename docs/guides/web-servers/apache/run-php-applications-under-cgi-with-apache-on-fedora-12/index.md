@@ -19,6 +19,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 

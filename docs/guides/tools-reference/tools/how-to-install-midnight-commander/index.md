@@ -17,6 +17,7 @@ external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/how-to-install-midnight-commander/']
+authors: ["Alexandru Andrei"]
 ---
 
 ![Midnight Commander](midnight_commander.jpg)

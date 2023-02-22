@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[Glances GitHub Repository](https://github.com/nicolargo/glances)'
 - '[Glances Official Documentation](https://glances.readthedocs.io/en/latest/index.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Glances is a Linux system monitoring dashboard that you can run from the command line or in your web browser. It aims to fit as much data as possible onto a single screen and dynamically adapts to the current screen size.

@@ -15,6 +15,7 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[GitHub: chmln/sd](https://github.com/chmln/sd)'
+authors: ["Nathaniel Stickman"]
 ---
 
 `sd` is a command-line tool for finding and replacing text, similar to `sed`. But, unlike `sed`, `sd` focuses on substitution only, allowing it to use simpler and easier to read commands. `sd` also uses a common regex syntax, giving you more familiar, well-documented, and powerful search options.

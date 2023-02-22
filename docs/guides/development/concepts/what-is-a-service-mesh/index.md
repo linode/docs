@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - "[The Service Mesh: What Every Software Engineer Needs to Know about the World's Most Over-Hyped Technology](https://buoyant.io/service-mesh-manifesto/)"
+authors: ["Nathaniel Stickman"]
 ---
 
 A service mesh can make managing a service-oriented application on the cloud much easier. It adds an infrastructure layer, keeping operational concerns out of service development, and centralizes service management. This guide covers how a service mesh works and when to use one.

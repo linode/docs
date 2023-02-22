@@ -20,6 +20,7 @@ external_resources:
 contributor:
   name: Steven J. Vaughan-Nichols
   link: http://www.twitter.com/sjvn
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 ![Use vmstat to Monitor System Performance](use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")

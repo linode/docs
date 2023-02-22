@@ -22,6 +22,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

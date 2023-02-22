@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/JeffreyNovotny
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
+authors: ["Jeff Novotny"]
 ---
 
 [*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.

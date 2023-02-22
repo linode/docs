@@ -19,6 +19,7 @@ relations:
         keywords:
             - distribution: Fedora 13
 tags: ["database","mysql","fedora"]
+authors: ["Linode"]
 ---
 
 

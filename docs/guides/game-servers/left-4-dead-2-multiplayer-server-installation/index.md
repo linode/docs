@@ -18,6 +18,7 @@ contributor:
     link: https://github.com/agottschling
 aliases: ['/game-servers/left-4-dead-2-multiplayer-server-installation/','/applications/game-servers/left-4-dead-2-multiplayer-server-installation/']
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 ---
 
 ![Left 4 Dead 2](Left4Dead2_Multiplayer_Server_Installation_smg.jpg)

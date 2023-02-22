@@ -15,6 +15,7 @@ title_meta: "How to Use Longview to Obtain System Metrics"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
+authors: ["Linode"]
 ---
 
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")

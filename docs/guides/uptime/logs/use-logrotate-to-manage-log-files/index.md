@@ -13,6 +13,7 @@ modified_by:
 published: 2010-10-11
 title: "Using logrotate to Manage Log Files"
 title_meta: "How to Use logrotate to Manage Log Files"
+authors: ["Linode"]
 ---
 
 ## What is logrotate?

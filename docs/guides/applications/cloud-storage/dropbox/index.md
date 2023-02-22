@@ -13,6 +13,7 @@ modified_by:
     name: Linode
 published: 2014-04-30
 title: 'Installing and Configuring Dropbox'
+authors: ["Linode"]
 ---
 
 ![Installing and Configuring Dropbox](installing-and-configuring-dropbox.png "Installing and Configuring Dropbox")

@@ -9,5 +9,6 @@ published: 2020-08-31
 title: Software Architecture Concepts
 show_in_lists: true
 aliases: ['/development/concepts/']
+authors: ["Linode"]
 ---
 

@@ -18,6 +18,7 @@ contributor:
 external_resources:
 - '[Laravel](https://laravel.com/)'
 - '[Laravels documentation](https://laravel.com/docs/8.x]'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Laravel](https://laravel.com/) is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.

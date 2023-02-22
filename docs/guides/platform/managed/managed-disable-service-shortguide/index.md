@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-disable-service-shortguide/']
+authors: ["Linode"]
 ---
 
 Service monitoring can be temporarily disabled:

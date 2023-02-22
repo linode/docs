@@ -22,6 +22,7 @@ external_resources:
 - '[SourceMod.net](https://www.sourcemod.net)'
 aliases: ['/game-servers/install-black-mesa-on-debian-or-ubuntu/','/applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 dedicated_cpu_link: true
+authors: ["Davide Beatrici"]
 ---
 
 

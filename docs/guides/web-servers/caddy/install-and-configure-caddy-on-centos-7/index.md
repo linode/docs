@@ -23,6 +23,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
+authors: ["Konstantin Kuchinin"]
 ---
 
 

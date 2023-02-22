@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[man page for cp command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cp.html)'
 - '[Ubuntu 22.04 documentation for the cp command](https://manpages.ubuntu.com/manpages/jammy/man1/cp.1.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Copying a file is one of the most common Linux tasks. Ubuntu and other Linux distributions use the `cp` command to copy one or more files, and to copy entire directories. This guide explains how to use the `cp` command to copy files on Linux. It also lists the different variations of this command and describes the different `cp` command options.

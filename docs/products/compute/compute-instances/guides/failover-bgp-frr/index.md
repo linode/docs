@@ -15,6 +15,7 @@ contributor:
 external_resources:
 - '[FRRouting Documentation](http://docs.frrouting.org/en/latest/overview.html)'
 aliases: ['/guides/ip-failover-bgp-frr/']
+authors: ["Linode"]
 ---
 
 {{< note >}}

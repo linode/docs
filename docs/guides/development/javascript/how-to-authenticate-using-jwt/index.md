@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[IANA JSON Web Token specifications](https://tools.ietf.org/html/rfc7519#section-4.1)'
+authors: ["Nathaniel Stickman"]
 ---
 
 JSON Web Token (JWT) is a compact and self-contained standard for sending information in JSON format. JWTs are designed with efficiency and security in mind, making them especially useful for managing authentication over the web. In this guide, you learn about the core concepts behind JWTs and how to begin implementing an authentication process with them.

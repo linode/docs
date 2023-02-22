@@ -23,6 +23,7 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: Ubuntu and Debian
+authors: ["Linode"]
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.

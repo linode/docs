@@ -15,6 +15,7 @@ aliases: ['/kubernetes/securing-an-LKE-cluster/']
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
+authors: ["Ryan Syracuse"]
 ---
 
 ## Securing Kubernetes Users

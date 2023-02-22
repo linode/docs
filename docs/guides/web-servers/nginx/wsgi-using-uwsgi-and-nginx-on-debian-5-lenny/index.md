@@ -19,6 +19,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

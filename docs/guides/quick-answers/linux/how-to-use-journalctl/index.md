@@ -17,6 +17,7 @@ external_resources:
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-journalctl/']
+authors: ["Linode"]
 ---
 
 ## What is journalctl?

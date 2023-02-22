@@ -8,4 +8,5 @@ published: 2017-05-08
 title: Linode Platform
 show_in_lists: true
 aliases: ['/quick-answers/linode-platform/']
+authors: ["Nick Brewer"]
 ---

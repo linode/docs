@@ -9,5 +9,6 @@ published: 2020-08-31
 title: Best Practices for Email Servers
 show_in_lists: true
 aliases: ['/email/best-practices/']
+authors: ["Linode"]
 ---
 

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: Delete an LKE Cluster
 description: "How to delete a Linode Kubernetes Engine (LKE) cluster."
+authors: ["Linode"]
 ---
 
 {{< content "kubernetes-delete-cluster-shortguide" >}}

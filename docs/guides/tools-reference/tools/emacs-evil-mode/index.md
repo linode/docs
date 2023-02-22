@@ -19,6 +19,7 @@ external_resources:
 - '[EmacsWiki](https://www.emacswiki.org/emacs/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/emacs-evil-mode/']
+authors: ["Edward Angert"]
 ---
 
 ## A Vi/m Layer Makes Emacs Evil

@@ -18,6 +18,7 @@ external_resources:
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
+authors: ["Linode"]
 ---
 
 ![Using Fetchmail to Retrieve Email](using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")

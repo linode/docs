@@ -18,6 +18,7 @@ external_resources:
  - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
  - '[Rewrite URLs with mod_rewrite and Apache](/docs/guides/rewrite-urls-with-modrewrite-and-apache/)'
 tags: ["web server","apache"]
+authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client to a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/docs/current/mod/mod_alias.html) module.

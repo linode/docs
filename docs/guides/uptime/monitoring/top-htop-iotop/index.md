@@ -16,6 +16,7 @@ external_resources:
  - '[iotop](http://guichaz.free.fr/iotop/)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/top-htop-iotop/']
+authors: ["Elle Krout"]
 ---
 
 Viewing a server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage. The `top` command is a Linux process manager that can assist with monitoring.

@@ -15,6 +15,7 @@ contributor:
   name: HackerSploit
 external_resources:
 - '[Official Caldera documentation](https://caldera.readthedocs.io/en/latest/index.html)'
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

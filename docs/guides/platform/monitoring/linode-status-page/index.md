@@ -15,6 +15,7 @@ contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/linode-status-page/']
+authors: ["Linode"]
 ---
 The [Linode Status Page](https://status.linode.com/) provides real-time system status and maintenance updates via email, SMS, and Atom and RSS feed. All Linode customers are encouraged to subscribe to Linode Status notifications to stay up to date with any events that may impact your service.
 

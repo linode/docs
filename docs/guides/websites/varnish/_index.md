@@ -8,4 +8,5 @@ published: 2014-09-09
 title: Varnish Web Cache
 show_in_lists: true
 aliases: ['/websites/varnish/']
+authors: ["Linode"]
 ---

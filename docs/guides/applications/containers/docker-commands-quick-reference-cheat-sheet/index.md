@@ -15,6 +15,7 @@ published: 2015-03-30
 title: Docker Commands Quick Reference Cheat Sheet
 external_resources:
   - '[Docker Cheat Sheet (Github)](https://github.com/wsargent/docker-cheat-sheet)'
+authors: ["Linode"]
 ---
 
 ![Docker Commands Quick Reference Cheat Sheet](Docker_Commands_Quick_Reference_Cheat_Sheet_smg.png "Docker Commands Quick Reference Cheat Sheet")

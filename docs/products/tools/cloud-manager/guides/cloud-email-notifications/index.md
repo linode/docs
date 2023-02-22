@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: Linode Email Notifications
 description: "How to manage email notifications in the Linode Cloud Manager."
+authors: ["Linode"]
 ---
 
 {{< content "cloud-email-notifications-shortguide" >}}

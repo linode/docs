@@ -12,6 +12,7 @@ contributor:
   name: Linode
 external_resources:
 - '[Passky](https://github.com/Rabbit-Company/Passky-Server)'
+authors: ["Linode"]
 ---
 
 [Passky](https://github.com/Rabbit-Company/Passky-Server) is a simple, modern, lightweight and open-source password manager.

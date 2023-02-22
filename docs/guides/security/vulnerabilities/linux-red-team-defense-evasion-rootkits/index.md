@@ -13,6 +13,7 @@ modified_by:
 title: "Linux Red Team Defense Evasion - Rootkits"
 contributor:
   name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

@@ -15,6 +15,7 @@ modified_by:
 contributor:
   name: Linode
 tags: ["kubernetes", "lke"]
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: ExternalDNS](cd-presentation-header-08-externaldns.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: ExternalDNS")

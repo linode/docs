@@ -13,6 +13,7 @@ modified_by:
   name: Linode
 published: 2010-10-13
 title: Use dig to Perform Manual DNS Queries
+authors: ["Linode"]
 ---
 
 ![Use dig to Perform Manual DNS Queries](use-dig-to-perform-manual-dns-queries.jpg "Use dig to Perform Manual DNS Queries")

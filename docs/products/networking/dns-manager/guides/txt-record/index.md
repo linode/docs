@@ -10,6 +10,7 @@ modified_by:
 title: "TXT Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ## TXT Record Overview

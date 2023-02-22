@@ -12,6 +12,7 @@ modified_by:
   name: Linode
 published: 2012-05-31
 title: Rescue and Rebuild
+authors: ["Linode"]
 ---
 
 ![Rescue and Rebuild](rescue-rebuild.jpg)

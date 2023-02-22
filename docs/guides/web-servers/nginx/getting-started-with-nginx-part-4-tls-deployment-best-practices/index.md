@@ -14,6 +14,7 @@ modified_by:
   name: Linode
 title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
 title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
+authors: ["Linode"]
 ---
 
 ![TLS Deployment Best Practices](getting-started-nginx-part-4-tls-deployment-best-practices.jpg)

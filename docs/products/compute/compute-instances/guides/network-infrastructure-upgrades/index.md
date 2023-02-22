@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
 aliases: ['/guides/network-infrastructure-upgrades/']
+authors: ["Linode"]
 ---
 
 Throughout 2022, Linode is rolling out networking infrastructure upgrades to all of our existing data centers. These upgrades increase the stability and resiliency of our already reliable network. It also enables us to bring features, such as VLAN and IP Sharing, to every data center.

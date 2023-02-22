@@ -16,6 +16,7 @@ contributor:
 external_resources:
 - '[Red Hat - Enable Sysadmin: Handling Secrets in Your Ansible Playbooks](https://www.redhat.com/sysadmin/ansible-playbooks-secrets)'
 - '[Ansible Documentation: Protecting Sensitive Data with Ansible Vault](https://docs.ansible.com/ansible/latest/vault_guide/index.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Ansible stands out for its capabilities in automating server provisioning and management. Ansible's playbooks, its ability to group and organize resources, and numerous other features make it a great asset for administering servers.

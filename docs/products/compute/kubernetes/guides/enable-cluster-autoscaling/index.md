@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 title: Cluster Autoscaling
 description: "How to Use Cluster Autoscaling for Linode Kubernetes Engine (LKE)"
+authors: ["Linode"]
 ---
 
 ### Configure Cluster Autoscaling

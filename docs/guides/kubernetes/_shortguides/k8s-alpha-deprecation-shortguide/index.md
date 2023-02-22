@@ -13,6 +13,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/k8s-alpha-deprecation-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note type="alert" respectIndent=false >}}

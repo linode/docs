@@ -16,6 +16,7 @@ title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use with links to guides that dive deeper into each tool.

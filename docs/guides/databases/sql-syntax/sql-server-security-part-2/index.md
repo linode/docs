@@ -14,6 +14,7 @@ title_meta: "SQL Server Security Best Practices, Part 2"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 This guide is the second in a series of articles that covers SQL Server security best practices. [Part 1 of this series](/docs/guides/sql-server-security/) discussed a SQL Server installation's physical security, operating system security, and application maintenance. Additionally, the previous guide outlined how to disable unnecessary features, enable encryption, and implement data masking.

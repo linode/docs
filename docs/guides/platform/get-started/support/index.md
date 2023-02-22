@@ -13,6 +13,7 @@ modified_by:
 published: 2012-03-21
 title: Linode Support
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 Linode provides live technical support services 24 hours a day, 7 days a week. Linode Support ensures network availability, verifies that you can access your Linode, resolves performance issues with hosts, and works to fix any service-related issues you may be experiencing.

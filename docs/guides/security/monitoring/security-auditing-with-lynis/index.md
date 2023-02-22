@@ -13,6 +13,7 @@ modified_by:
 title: 'Security Auditing with Lynis'
 title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png
+authors: ["Hackersploit"]
 ---
 
 ## Before you Begin

@@ -21,6 +21,7 @@ external_resources:
 - '[Express JS middleware functions guide](https://expressjs.com/en/guide/writing-middleware.html)'
 - '[MVC design pattern](https://github.com/expressjs/express/tree/master/examples/mvc)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 This Express JS tutorial shows you how to set up a basic Express JS website and explains its key features for managing web content and traffic.

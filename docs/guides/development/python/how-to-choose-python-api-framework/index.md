@@ -16,6 +16,7 @@ tags: ["python", "django"]
 contributor:
   name: Chelsea Troy
   link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 
 As one of the most popular programming languages, the Python ecosystem offers a variety of frameworks to help you build a web API. You may need to build an API to serve data to a mobile application, a frontend website, or a machine learning project. Your project may only require routing functionality provided by a framework, or it may require an admin interface and a templating system, as well. Which framework you choose depends on your specific use case. To help you choose a Python framework, this guide provides an overview on some well-known Python frameworks used to build APIs and discusses their differences and strengths.

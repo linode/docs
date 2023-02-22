@@ -9,5 +9,6 @@ published: 2020-08-31
 title: Mail-in-a-box
 show_in_lists: true
 aliases: ['/email/mail-in-a-box/']
+authors: ["Linode"]
 ---
 

@@ -14,6 +14,7 @@ published: 2018-02-09
 title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
 title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Getting Started with NGINX - Part 1: Installation and Basic Setup](Getting-Started-with-NGINX-Part-1-smg.jpg)

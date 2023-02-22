@@ -15,6 +15,7 @@ published: 2017-10-04
 title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
+authors: ["Luis Cortés"]
 ---
 
 

@@ -21,6 +21,7 @@ audiences: ["beginner"]
 languages: ["javascript"]
 tags: ["web applications"]
 aliases: ['/development/javascript/how-to-build-and-use-vuejs-components/']
+authors: ["Pavel Petrov"]
 ---
 
 ## What are VueJS Components

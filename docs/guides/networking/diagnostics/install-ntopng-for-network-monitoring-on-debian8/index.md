@@ -16,6 +16,7 @@ title: 'Monitor Your Network with ntopng'
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940/
+authors: ["Andrew Lescher"]
 ---
 
 ![Monitor Your Network with ntopng](monitor-your-network-with-ntopng.jpg "Monitor Your Network with ntopng")

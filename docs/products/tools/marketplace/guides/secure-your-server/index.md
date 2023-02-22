@@ -10,6 +10,7 @@ published: 2023-01-24
 title: "Secure Your Server through the Linode Marketplace"
 contributor:
   name: Linode
+authors: ["Linode"]
 ---
 
 This Marketplace App automatically configures a new Compute Instance with a limited user account and other best practices discussed in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. In addition to creating a limited user with sudo access, the app updates the system, optionally configures a domain in the DNS Manager, and optionally configures a Block Storage Volume. It also configures a basic firewall through [UFW](/docs/guides/configure-firewall-with-ufw/) and enables [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/).

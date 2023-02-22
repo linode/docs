@@ -18,6 +18,7 @@ external_resources:
 - '[NGINX](https://www.nginx.com/)'
 - '[Apache Web Server](https://httpd.apache.org/)'
 
+authors: ["Jeff Novotny"]
 ---
 
 There may be times when you have to temporarily disable a website. For example, you might have to satisfy a legal requirement or make an emergency content change. Fortunately, you do not have to completely delete or radically reconfigure a website to disable it. This guide provides instructions on how to quickly disable and re-enable a website, based on the webserver and Linux distribution.

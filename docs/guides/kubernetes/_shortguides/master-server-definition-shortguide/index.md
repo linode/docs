@@ -13,6 +13,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/master-server-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### Master Server

@@ -18,6 +18,7 @@ contributor:
   link: https://twitter.com/Phaseit
 external_resources:
 - '[A brief YAML reference](https://camel.readthedocs.io/en/latest/yamlref.html)'
+authors: ["Cameron Laird"]
 ---
 
 YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom data types. Since YAML is very popular with automated builds and [continuous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.

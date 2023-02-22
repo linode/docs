@@ -22,6 +22,7 @@ relations:
         keywords:
             - distribution: Ubuntu
 aliases: ['/guides/how-to-install-anaconda/']
+authors: ["Linode Community"]
 ---
 
 ## Install Anaconda on Ubuntu

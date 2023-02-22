@@ -19,6 +19,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

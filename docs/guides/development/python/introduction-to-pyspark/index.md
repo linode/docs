@@ -21,6 +21,7 @@ languages: ["python"]
 dedicated_cpu_link: true
 tags: ["python"]
 aliases: ['/development/python/introduction-to-pyspark/']
+authors: ["Sam Foo"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)

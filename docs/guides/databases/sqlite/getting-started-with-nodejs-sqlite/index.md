@@ -19,6 +19,7 @@ contributor:
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
+authors: ["James Turner"]
 ---
 
 ## Getting Started with Node.js and SQLite

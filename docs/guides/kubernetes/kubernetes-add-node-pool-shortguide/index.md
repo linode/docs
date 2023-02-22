@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/kubernetes-add-node-pool-shortguide/']
+authors: ["Linode"]
 ---
 
 1. To add a new Node Pool to your cluster, navigate to the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-cluster-s-details-page) and select the add a node pool option to the right of the node pools section.

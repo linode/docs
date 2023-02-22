@@ -18,6 +18,7 @@ external_resources:
 - '[MongoDB](https://www.mongodb.com/)'
 - '[Crontab](https://man7.org/linux/man-pages/man5/crontab.5.html)'
 - '[Nano](https://www.nano-editor.org/docs.php)'
+authors: ["Linode Community"]
 ---
 
 MongoDB is a popular non-relationship database management system that stores keys and their values in a collection of documents rather than tables with fixed schemas. MongoDB supports a wide variety of options for horizontal scaling, making it an ideal tool for large enterprise production environments.

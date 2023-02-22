@@ -26,6 +26,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 deprecated: true
+authors: ["Linode"]
 ---
 
 ## What is Mastodon?

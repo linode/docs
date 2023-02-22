@@ -14,6 +14,7 @@ contributor:
   name: Linode
 aliases: ['/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/','/platform/object-storage/lifecycle-policies/','/guides/lifecycle-policies/','/guides/how-to-manage-objects-with-lifecycle-policies/']
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

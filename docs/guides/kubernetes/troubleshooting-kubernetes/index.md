@@ -17,6 +17,7 @@ concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Documentation - Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)'
 aliases: ['/kubernetes/troubleshooting-kubernetes/','/applications/containers/troubleshooting-kubernetes/','/applications/containers/kubernetes/troubleshooting-kubernetes/']
+authors: ["Linode Community"]
 ---
 
 <!-- EDITOR'S NOTE: This guide is split into two halves:

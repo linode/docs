@@ -19,6 +19,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

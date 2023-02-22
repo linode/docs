@@ -9,4 +9,5 @@ published: 2014-09-24
 title: iRedMail
 show_in_lists: true
 aliases: ['/email/iredmail/']
+authors: ["Linode"]
 ---

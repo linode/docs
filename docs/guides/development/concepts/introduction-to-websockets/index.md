@@ -22,6 +22,7 @@ external_resources:
   - '[The WebSocket Protocol](https://tools.ietf.org/html/rfc6455)'
 audiences: ["beginner"]
 aliases: ['/development/concepts/introduction-to-websockets/','/development/introduction-to-websockets/']
+authors: ["Shivam Mishra"]
 ---
 
 ## What are WebSockets?

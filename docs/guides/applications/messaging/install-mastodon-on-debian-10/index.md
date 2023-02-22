@@ -33,6 +33,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Debian 10
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

@@ -15,6 +15,7 @@ title: Troubleshoot Linode Longview
 title_meta: Troubleshooting Linode Longview
 published: 2020-01-22
 aliases: ['/platform/longview/troubleshooting-linode-longview/']
+authors: ["Linode"]
 ---
 
 This guide discusses basic troubleshooting steps to help you diagnose and resolve any issues you may encounter while using Longview. If you're experiencing problems with the Longview client, follow the steps outlined in this guide to help determine the cause.

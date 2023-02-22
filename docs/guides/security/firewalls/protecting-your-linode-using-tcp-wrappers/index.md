@@ -15,6 +15,7 @@ contributor:
     name: Francis McNamee
 tags: ["networking","security"]
 aliases: ['/security/firewalls/protecting-your-linode-using-tcp-wrappers/']
+authors: ["Francis McNamee"]
 ---
 
 

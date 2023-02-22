@@ -12,6 +12,7 @@ title: "What Are the Best Open Source Content Management Systems?"
 title_meta: "The Top Open Source Content Management Systems"
 contributor:
   name: Steven J. Vaughan-Nichols
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 There are dozens of Linux distributions, but only one Linux. There are over a dozen open-source web servers, but only one Apache. When it comes to open-source Content Management Systems (CMS), however, there are more than a hundred choices. This guide includes a line up of the most popular CMSs, a list of features every top-rated CMS provides, and suggestions on how to choose the best one for you.

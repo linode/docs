@@ -16,6 +16,7 @@ title_meta: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
 contributor:
   name: Martin Heller
   link: http://www.twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 ## What is Load Balancing and Why is it Necessary?

@@ -9,5 +9,6 @@ aliases: ['/websites/forums/','/web-applications/bulletin-boards/']
 published: 2010-03-01
 title: Forums
 show_in_lists: true
+authors: ["Linode"]
 ---
 

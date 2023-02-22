@@ -21,6 +21,7 @@ external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
 audiences: ["intermediate"]
+authors: ["Jordi Bassagañas"]
 ---
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.

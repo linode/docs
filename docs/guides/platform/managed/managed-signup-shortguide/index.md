@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-signup-shortguide/']
+authors: ["Linode"]
 ---
 
 To sign up for Linode Managed:

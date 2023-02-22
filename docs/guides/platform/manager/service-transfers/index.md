@@ -15,6 +15,7 @@ image: TransferOwn_LinodeServ_ST.png
 title: Transferring Ownership of Linode Services with Service Transfers
 title_meta: How to Transfer Ownership of Linode Services
 aliases: ['/guides/platform/manager/service-transfers/']
+authors: ["Linode"]
 ---
 
 ## Linode Service Transfers

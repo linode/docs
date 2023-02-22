@@ -19,6 +19,7 @@ relations:
         keywords:
            - distribution: Arch
 tags: ["wiki"]
+authors: ["Linode"]
 ---
 
 

@@ -15,6 +15,7 @@ title: "Using the cd Command to Navigate the Terminal"
 title_meta: "How to Use the cd Command to Navigate the Terminal"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-cd/']
+authors: ["Linode"]
 ---
 
 ## What is cd?

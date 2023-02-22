@@ -19,6 +19,7 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.

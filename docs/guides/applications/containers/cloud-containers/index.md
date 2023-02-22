@@ -14,6 +14,7 @@ title_meta: "Introduction to Containers in Cloud Computing"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio
+authors: ["Andy Patrizio"]
 ---
 
 Tech trends come and go but cloud containers are one tech that’s here to stay. Their origins can be traced back to 1982 Unix, but containers didn't gain wide acceptance until the last decade as the next logical step from virtualization. Today they are a popular means of application modernization and deployment.

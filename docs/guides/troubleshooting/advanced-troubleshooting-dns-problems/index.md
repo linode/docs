@@ -12,6 +12,7 @@ modified_by:
 title: "Advanced Troubleshooting DNS Problems"
 contributor:
   name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 The most common DNS error is a simple typo, whether it’s from the client or the server. Typos and other incorrect DNS data cause many problems. Even when data is correct, DNS can still be a difficult protocol to troubleshoot.

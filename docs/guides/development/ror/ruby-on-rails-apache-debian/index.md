@@ -25,6 +25,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 9
+authors: ["Linode"]
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")

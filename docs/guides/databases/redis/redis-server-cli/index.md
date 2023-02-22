@@ -16,6 +16,7 @@ contributor:
   link: https://github.com/nasanos
 external_resources:
 - '[Redis: Redis Configuration](https://redis.io/topics/config)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source NoSQL database boasting quick transactions and low latency. This guide shows you how to make and adjust settings for your Redis server from the command line.

@@ -14,6 +14,7 @@ title_meta: "How to Use SQL Indexes"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 In relational database systems, a *database index* is an extremely powerful tool for data retrieval. In this guide, you learn about unique indexes, primary keys, and composite primary keys.

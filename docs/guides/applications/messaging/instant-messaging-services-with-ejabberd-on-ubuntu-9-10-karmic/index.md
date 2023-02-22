@@ -19,6 +19,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

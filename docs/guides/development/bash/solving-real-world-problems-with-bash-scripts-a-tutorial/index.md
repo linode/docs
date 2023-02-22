@@ -17,6 +17,7 @@ contributor:
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

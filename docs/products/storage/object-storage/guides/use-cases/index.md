@@ -14,6 +14,7 @@ contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-storage-use-cases/']
+authors: ["Linode"]
 ---
 
 ## What is Object Storage?

@@ -19,6 +19,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

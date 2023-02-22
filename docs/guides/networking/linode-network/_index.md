@@ -9,5 +9,6 @@ published: 2020-09-01
 title: Linode Networking
 show_in_lists: true
 aliases: ['/networking/linode-network/']
+authors: ["Linode"]
 ---
 

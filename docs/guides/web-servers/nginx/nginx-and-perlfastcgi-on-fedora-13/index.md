@@ -19,6 +19,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

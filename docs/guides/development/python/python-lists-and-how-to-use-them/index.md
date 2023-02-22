@@ -17,6 +17,7 @@ contributor:
 external_resources:
 - '[Python 3 Documentation: List Comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)'
 - "[O'Reilly: How Do I Use the Slice Notation in Python?](https://www.oreilly.com/content/how-do-i-use-the-slice-notation-in-python/)"
+authors: ["Nathaniel Stickman"]
 ---
 
 Python includes many built-in methods and operations that help you manipulate lists. This guide shows you how to use the `append()`, `insert()`, and `remove()` built-in list methods. You also learn how to write a list comprehensions, and how to sort lists.

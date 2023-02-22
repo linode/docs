@@ -14,6 +14,7 @@ contributor:
   name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
+authors: ["Linode"]
 ---
 
 ## What is Block Storage

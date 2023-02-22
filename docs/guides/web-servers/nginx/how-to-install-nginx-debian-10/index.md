@@ -22,6 +22,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/nginx/how-to-install-nginx-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is NGINX?

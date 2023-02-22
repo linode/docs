@@ -17,6 +17,7 @@ title_meta: "How to Install PrestaShop on Ubuntu 16.04"
 contributor:
   name: Alexandru Andrei
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
+authors: ["Alexandru Andrei"]
 ---
 
 

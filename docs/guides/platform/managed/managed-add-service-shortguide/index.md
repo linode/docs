@@ -15,6 +15,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-add-service-shortguide/']
+authors: ["Linode"]
 ---
 
 To add a new monitored service to Linode Managed:

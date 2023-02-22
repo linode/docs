@@ -18,6 +18,7 @@ contributor:
 external_resources:
 - '[Apache Airflow Official Documentation](https://airflow.apache.org/docs/stable/)'
 aliases: ['/applications/big-data/apache-airflow-tutorial-creating-connections-and-variables/']
+authors: ["Angel D'az"]
 ---
 
 ## What is Apache Airflow?

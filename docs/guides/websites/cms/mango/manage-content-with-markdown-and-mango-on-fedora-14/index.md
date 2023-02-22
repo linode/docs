@@ -19,6 +19,7 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

@@ -15,6 +15,7 @@ modified_by:
 title: 'Use Terraform to Provision Linode Environments'
 contributor:
   name: Damaso Sanoja
+authors: ["Damaso Sanoja"]
 ---
 
 ![Use Terraform to Provision Linode Environments](use-terraform-to-provision-linode-environments.png "Use Terraform to Provision Linode Environments")
