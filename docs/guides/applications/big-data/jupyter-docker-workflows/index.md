@@ -23,14 +23,10 @@ Container technologies help build lightweight, portable software units that pack
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-1.  Follow the installation guide [here](https://docs.docker.com/engine/install/) to ensure that Docker Desktop is installed.
+1.  Follow the installation guide [here](https://docs.docker.com/engine/install/) to ensure that Docker Desktop is installed on your local machine.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is Jupyter?
@@ -100,13 +96,13 @@ Working with Docker, it's not necessary to set up Jupyter locally. Instead, Jupy
     continuumio/adam-node                                                                     0
     ```
 
-2.  Now pull the Anaconda image:
+1.  Now pull the Anaconda image:
 
     ```command{title="Local Machine Terminal"}
     docker pull continuumio/anaconda3
     ```
 
-3.  Next, create a container from the image in interactive mode. This opens a bash shell where the `conda` tool and commands can be used.
+1.  Next, create a container from the image in interactive mode. This opens a bash shell where the `conda` tool and commands can be used.
 
     ```command{title="Local Machine Terminal"}
     docker run -it --rm -p 8888:8888 continuumio/anaconda3 /bin/bash
@@ -114,19 +110,19 @@ Working with Docker, it's not necessary to set up Jupyter locally. Instead, Jupy
 
     Containers are isolation units, so a way to connect them with the outside world (i.e. your local machine) is needed. It is required to bind the container port to a port on the host machine using the `-p` or `–publish` tag with the syntax `-p <host-port>:<container-port>`. The `–rm` flag tells Docker to discard the container after the docker run command finishes execution, which saves disk space for short-lived containers.
 
-4.  Access the bash shell to run UNIX and `conda` commands, but first, verify if `conda` was installed by issuing the following command in the bash shell:
+1.  Access the bash shell to run UNIX and `conda` commands, but first, verify if `conda` was installed by issuing the following command in the bash shell:
 
     ```command{title="Local Machine Conda Shell"}
     conda info
     ```
 
-5.  View the list of packages and versions installed in this container using the following command:
+1.  View the list of packages and versions installed in this container using the following command:
 
     ```command{title="Local Machine Conda Shell"}
     conda list
     ```
 
-6.  **Optional:** Update all the packages in the conda environment using the command:
+1.  **Optional:** Update all the packages in the conda environment using the command:
 
     ```command{title="Local Machine Conda Shell"}
     conda update --all
@@ -134,7 +130,7 @@ Working with Docker, it's not necessary to set up Jupyter locally. Instead, Jupy
 
     The installed packages list contains `jupyterlab` and some popular data science libraries like `pandas`, `numpy` and `matplotlib` already installed. The Jupyter server is accessible and runs at `localhost:8888` or `127.0.0.1:8888`.
 
-7.  With `jupyterlab` fully installed, start the Jupyter server as follows:
+1.  With `jupyterlab` fully installed, start the Jupyter server as follows:
 
     ```command{title="Local Machine Conda Shell"}
     jupyter-lab --ip="*" --no-browser --allow-root
@@ -174,7 +170,7 @@ Working with Docker, it's not necessary to set up Jupyter locally. Instead, Jupy
      or http://127.0.0.1:8888/lab?token=a5ffa16bffb26db82881a7ed8059fdd78ac4831ae627db24
     ```
 
-8.  We can access the JupyterLab UI at `http://127.0.0.1:8888/lab?token=XXXX` as shown above. The token is passed as a URL parameter, and the value is generated when the Jupyter server starts running with the default token authentication enabled. Upon successful launch, the JupyterLab should have an interface like this:
+1.  We can access the JupyterLab UI at `http://127.0.0.1:8888/lab?token=XXXX` as shown above. The token is passed as a URL parameter, and the value is generated when the Jupyter server starts running with the default token authentication enabled. Upon successful launch, the JupyterLab should have an interface like this:
 
     [![The JupyterLab UI.](JupyterLab-UI_small.png "The JupyterLab UI.")](JupyterLab-UI.png)
 
@@ -188,7 +184,7 @@ Working with Docker, it's not necessary to set up Jupyter locally. Instead, Jupy
     While the file structure is created by default, it's good practice to create a notebook folder to contain notebooks and related files.
     {{< /note >}}
 
-9.  When finished, press **Ctrl+C** then **Y** and **Enter** to stop the server. Type `exit` and press **Enter** to exit the container shell.
+1.  When finished close the browser. In the terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server, then type `exit` and press **Enter** to exit the container shell.
 
 ### Using Pre-Existing Images
 
@@ -248,7 +244,7 @@ In the previous section, the Jupyter development environment was built from an A
 
     [![The Jupyter Docker Stack hierarchy.](Jupyter-Docker-Stack-Hierarchy_small.png "The Jupyter Docker Stack hierarchy.")](Jupyter-Docker-Stack-Hierarchy.png)
 
-2.  Next, run a Jupyter Docker Stack notebook container. A local Docker container can be launched from any notebook images through the Docker CLI. Use the following the syntax `docker run -it -p <host-port>:8888 <notebook-image>`. Use the following command to launch a `datascience-notebook` container:
+1.  Next, run a Jupyter Docker Stack notebook container. A local Docker container can be launched from any notebook images through the Docker CLI. Use the following the syntax `docker run -it -p <host-port>:8888 <notebook-image>`. Use the following command to launch a `datascience-notebook` container:
 
     ```command{title="Local Machine Terminal"}
     docker run -it --rm -p 8888:8888 jupyter/datascience-notebook
@@ -340,17 +336,24 @@ In the previous section, the Jupyter development environment was built from an A
 
     As you can see, Jupyter Docker Stacks notebook images definitely reduce the time needed to set up the Jupyter environment.
 
-3.  The resulting notebook UI of the `datascience-notebook` can be accessed via `http://127.0.0.1:8888/lab?token=XXXX`, which contains libraries for data science computation in the Julia, Python, and R languages. Jupyter Docker Stacks notebook images also simplify the notebook file system with a working directory of `work`.
+1.  The resulting notebook UI of the `datascience-notebook` can be accessed via `http://127.0.0.1:8888/lab?token=XXXX`, which contains libraries for data science computation in the Julia, Python, and R languages. Jupyter Docker Stacks notebook images also simplify the notebook file system with a working directory of `work`.
 
     [![The Jupyter Docker Stacks datascience-notebook UI.](Jupyter-Docker-Stacks-datascience-notebook-UI_small.png "The Jupyter Docker Stacks datascience-notebook UI.")](Jupyter-Docker-Stacks-datascience-notebook-UI.png)
 
-4.  When finished, press **Ctrl+C** then **Y** and **Enter** to stop the server.
+1.  When finished, close the browser. In the terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server.
 
 ### Building Your Own Image with Dockerfile
 
 This section builds on the previous experience with Jupyter Docker Stacks images to create a custom image using a `Dockerfile`. Docker containers are isolated units, therefore changes and updates within a container stay in the container. For example, in the previous section, packages were updated in the anaconda image via `conda update –all`. If we build another container with the same image, the package versions return to defaults. In this section, learn to build a Docker image based on the Jupyter Docker Stacks image and install desired packages in the Jupyter environment.
 
 A python geospatial data analysis project is used to explain this process. This project environment requires Python libraries like `geopandas` and `gdal` for spatial data analysis.
+
+1.  Create and enter a project directory to work in from this point forward:
+
+    ```command{title="Local Machine Terminal"}
+    mkdir Jupyter
+    cd Jupyter
+    ```
 
 1.  Create a file named `Dockerfile` without any file extension:
 
@@ -360,7 +363,7 @@ A python geospatial data analysis project is used to explain this process. This 
 
     The `Dockerfile` is a text document that contains human-readable instructions to build a docker image.
 
-2.  Fill the Dockerfile with the following content:
+1.  Fill the Dockerfile with the following content:
 
     ```file {title="Dockerfile" lang="docker"}
     # Let's use the Jupyter Docker Stack minimal notebook as our base image and build our custom image on top of it
@@ -374,6 +377,8 @@ A python geospatial data analysis project is used to explain this process. This 
     EXPOSE 8888
     ```
 
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
+
     Before building a docker image using the Dockerfile, here's an explanation of the instructions contained within:
 
     -   `FROM jupyter/minimal-notebook`: Docker allows image inheritance, and this instruction inherits the Jupyter Docker Stacks minimal-notebook property and functionality. It comes with some preinstalled packages as well as a Jupyter server and environment.
@@ -381,7 +386,7 @@ A python geospatial data analysis project is used to explain this process. This 
     -   `EXPOSE`: The expose command is for documentation purposes. It's best practice to include it in the `Dockerfile` when an application is required to run on a specific port. It helps to build a container of the image and bind the local host to that particular port (e.g. `8888`).
     -   `#`: Docker treats lines in the Dockerfile beginning with `#` as comments.
 
-3.  Next, proceed to build the Docker image using the tag `custom-jupyter-image` from the Dockerfile with the following command:
+1.  Proceed to build the Docker image using the tag `custom-jupyter-image` from the Dockerfile with the following command:
 
     ```command{title="Local Machine Terminal"}
     docker build -t custom-jupyter-image .
@@ -411,7 +416,7 @@ A python geospatial data analysis project is used to explain this process. This 
     Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
     ```
 
-4.  Next, run an instance of the image (container) as follows:
+1.  Next, run an instance of the image (container) as follows:
 
     ```command{title="Local Machine Terminal"}
     docker run -it --rm -p 8888:8888 custom-jupyter-image
@@ -465,11 +470,11 @@ A python geospatial data analysis project is used to explain this process. This 
             http://127.0.0.1:8888/lab?token=1b3b1365c865152c873c4ac04d53aef48bb570b61ae41b5d
     ```
 
-5.  The JupyterLab UI can be accessed via `http://127.0.0.1:8888/lab?token=XXXX`, and is shown below:
+1.  The JupyterLab UI can be accessed via `http://127.0.0.1:8888/lab?token=XXXX`, and is shown below:
 
     [![The Jupyter Dockerfile Notebook UI.](JupyterLab-Dockerfile-UI_small.png "The Jupyter Dockerfile Notebook UI.")](JupyterLab-Dockerfile-UI.png)
 
-6.  Next, verify if the packages are installed in the container environment by default. Open **Terminal** from the JupyterLab UI and check the list of `conda` packages:
+1.  Next, verify if the packages are installed in the container environment by default. Open **Terminal** from the JupyterLab UI and check the list of `conda` packages:
 
     ```command{title="JupyterLab UI Terminal"}
     conda list
@@ -483,7 +488,7 @@ A python geospatial data analysis project is used to explain this process. This 
     The versions of the `geopandas` and `gdal` libraries shown are from the time of writing, and are subject to change.
     {{< /note >}}
 
-7.  When finished, press **Ctrl+C** then **Y** and **Enter** to stop the server.
+1.  When finished, close the browser. In the terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server.
 
 ### Building Images with Pre-Load Requirements
 
@@ -496,13 +501,13 @@ This section relies on previous knowledge to build images with pre-load requirem
     touch README.md ./data/data.geojson
     ```
 
-2.  Create a `computation.ipynb` file:
+1.  Create a `computation.ipynb` file:
 
     ```command{title="Local Machine Terminal"}
     nano computation.ipynb
     ```
 
-3.  Fill the `computation.ipynb file with the following minimal contents for a blank python notebook:
+1.  Fill the `computation.ipynb file with the following minimal contents for a blank python notebook:
 
     ```file {title="computation.ipynb" lang="python"}
     {
@@ -532,7 +537,7 @@ This section relies on previous knowledge to build images with pre-load requirem
        "name": "python",
        "nbconvert_exporter": "python",
        "pygments_lexer": "ipython3",
-       "version": "3.9.13"
+       "version": "3.10.9"
       }
      },
      "nbformat": 4,
@@ -540,9 +545,11 @@ This section relies on previous knowledge to build images with pre-load requirem
     }
     ```
 
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `computation.ipynb` file and exit `nano`.
+
     This should create a directory structure of:
 
-    ```command
+    ```
     .
     ├── Dockerfile
     ├── README.md
@@ -551,13 +558,13 @@ This section relies on previous knowledge to build images with pre-load requirem
      └── data.geojson
     ```
 
-4.  To create an image that includes these required files, the contents of the `Dockerfile` needs to be modified:
+1.  To create an image that includes these required files, the contents of the `Dockerfile` needs to be modified:
 
     ```command{title="Local Machine Terminal"}
     nano Dockerfile
     ```
 
-5.  Change the content of the `Dockerfile` to reflect the following:
+1.  Change the content of the `Dockerfile` to reflect the following:
 
     ```file {title="Dockerfile" lang="docker"}
     # Let's use the Jupyter Docker Stack minimal notebook as our base image and build our custom image on top of it
@@ -577,12 +584,14 @@ This section relies on previous knowledge to build images with pre-load requirem
     COPY . /work
     ```
 
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
+
     Before building a Docker image using the Dockerfile, here's an overview of the instructions. Since this builds upon the Dockerfile in the previous section, only new instructions are explained below:
 
     -   `WORKDIR /work`: The `WORKDIR` instruction sets the default working (root) directory in the image file system, where `Dockerfile` instructions are executed. This uses the `work` directory seen in the previous sections.
     -   `COPY . /app`: This copies files or directories from the local directory where the Dockerfile is located to the image's file system (working directory). Here, the `data` directory and its content (`data.geojson`) are copied along with the `computation.ipynb` notebook, `README.md` Markdown file, and the `Dockerfile` itself.
 
-6.  Next, proceed to build the docker image from the Dockerfile using the tag `custom-jupyter-image:preload` with the following command:
+1.  Proceed to build the docker image from the Dockerfile using the tag `custom-jupyter-image:preload` with the following command:
 
     ```command {title="Local Machine Terminal"}
     docker build -t custom-jupyter-image:preload .
@@ -612,7 +621,7 @@ This section relies on previous knowledge to build images with pre-load requirem
     Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
     ```
 
-7.  Next, run an instance of the container as follows:
+1.  Next, run an instance of the container as follows:
 
     ```command{title="Local Machine Terminal"}
     docker run -it --rm -p 8888:8888 custom-jupyter-image:preload
@@ -666,11 +675,11 @@ This section relies on previous knowledge to build images with pre-load requirem
             http://127.0.0.1:8888/lab?token=e08a05e66eba87a73806e5f4b4e53cde156ba7b9f1205ce7
     ```
 
-8.  The JupyterLab UI can be accessed via `http://127.0.0.1:8888/lab?token=XXXX`. It should have the requirements pre-loaded in the container as shown below:
+1.  The JupyterLab UI can be accessed via `http://127.0.0.1:8888/lab?token=XXXX`. It should have the requirements pre-loaded in the container as shown below:
 
     [![The Jupyter Dockerfile Notebook UI Terminal.](Jupyter-Dockerfile-Preload.png "The Jupyter Dockerfile Notebook UI Terminal.")](Jupyter-Dockerfile-Preload.png)
 
-9.  When finished, press **Ctrl+C** then **Y** and **Enter** to stop the server.
+1.  When finished, close the browser. In the terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server.
 
 ## Managing Data in Images and Containers
 
@@ -692,7 +701,7 @@ mkdir outputs
 
 The new file directory structure of the project should be as follows:
 
-```command
+```
 .
 ├── Dockerfile
 ├── README.md
@@ -720,7 +729,7 @@ Anonymous volumes are explicitly created for a single container, and only exist 
     nano Dockerfile
     ```
 
-2.  Follow the syntax `VOLUME ["path"]` to mount this anonymous volume as follows:
+1.  Follow the syntax `VOLUME ["path"]` to mount this anonymous volume as follows:
 
     ```file {title="Dockerfile" lang="docker"}
     # Let's use the Jupyter Docker Stack minimal notebook as our base image and build our custom image on top of it
@@ -747,7 +756,9 @@ Anonymous volumes are explicitly created for a single container, and only exist 
     Docker volumes look similar to the `COPY` instruction in the `Dockerfile`. However, the `COPY` instruction creates a one-time snapshot of the host machine file system (where the `Dockerfile` is located). It then adds it to the image during the build phase.
     {{< /note >}}
 
-3.  Next, build the docker image with a mounted anonymous volume using the tag `custom-jupyter-image:anon-volume` from the Dockerfile as follows:
+1.  Press **CTRL+X**, followed by **y** and **Enter** to save the `Dockerfile` and exit `nano`.
+
+1.  Next, build the docker image with a mounted anonymous volume using the tag `custom-jupyter-image:anon-volume` from the Dockerfile as follows:
 
     ```command{title="Local Machine Terminal"}
     docker build -t custom-jupyter-image:anon-volume .
@@ -779,7 +790,7 @@ Anonymous volumes are explicitly created for a single container, and only exist 
     Docker objects are layer-based, where every instruction in the `Dockerfile` is a layer. By default, Docker caches the layer of previously built images and reuses them to speed up build time. This caching works on the `RUN`, `COPY`, and `ADD` commands.
     {{< /note >}}
 
-4.  Next, run an instance of the image (container) while naming it `custom-jupyter-container` as follows:
+1.  Next, run an instance of the image (container) while naming it `custom-jupyter-container` as follows:
 
     ```command{title="Local Machine Terminal"}
     docker run -it --rm -p 8888:8888 --name custom-jupyter-container custom-jupyter-image:anon-volume
@@ -833,7 +844,7 @@ Anonymous volumes are explicitly created for a single container, and only exist 
             http://127.0.0.1:8888/lab?token=463795aac836360180f0ee1b445eac335a7cb426283426cd
     ```
 
-5.  Open a new terminal and view the list of volumes via:
+1.  Open a new terminal and view the list of volumes via:
 
     ```command{title="Local Machine Terminal #2"}
     docker volume ls
@@ -846,7 +857,7 @@ Anonymous volumes are explicitly created for a single container, and only exist 
 
     The volume's name is cryptic, as it is automatically generated and unique to each instance. Removing the container automatically removes the anonymous volume, which is a consequence of starting/running a container with the `--rm` flag.
 
-6.  When finished, type **exit** and press **Enter** to logout and close the second terminal. In the original terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server.
+1.  When finished, type **exit** and press **Enter** to close the second terminal. In the original terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server.
 
 #### Using the Volume Flag
 
@@ -881,15 +892,15 @@ local     3cea43b5229e60cb79b13a712d8be7d55a8ec312ce0dc09d88af027e68e329d1
 ```
 {{< /note >}}
 
-2.  Now check the container's logs using the following command syntax:
+1.  Now check the container's logs using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker logs <container-id>
+    docker logs <Container-ID>
     ```
 
     If successful, the terminal output includes the `http://127.0.0.1:8888/lab?token=XXXX` link.
 
-3.  Open the link in a browser.
+1.  Open the link in a browser.
 
 #### Writing Data
 
@@ -897,7 +908,7 @@ Now write data to the container's `outputs` folder, which persists data to the a
 
 1.  In the JupyterLab UI, open the `computation.ipynb` notebook and enter the following:
 
-    ```file {title="computation.ipynb" lang="python"}
+    ```command
     import pandas as pd
 
     # data url in ArcGIS Hub
@@ -906,7 +917,7 @@ Now write data to the container's `outputs` folder, which persists data to the a
     dataframe.to_csv("outputs/Motorized-Foot-Scooter-Trips-2020.csv", index=False)
     ```
 
-2.  Press the play button to run the code. You should get the following error message:
+1.  Press the play button to run the code. You should get the following error message:
 
     ```output
     PermissionError: [Errno 13] Permission denied: 'outputs/Motorized-Foot-Scooter-Trips-2020.csv'
@@ -946,7 +957,7 @@ Docker, by default, runs containers as root, which is a consequence of the Docke
 
     The three types of user access restrictions are shown following the syntax `-user-group-others`.
 
-2.  Now inspect the user in the container:
+1.  Now inspect the user in the container:
 
     ```command{title="JupyterLab UI Terminal"}
     whoami
@@ -958,7 +969,9 @@ Docker, by default, runs containers as root, which is a consequence of the Docke
     joyvan
     ```
 
-The parent image `jupyter/minimal-notebook` from which we are building runs as a non-root user to prevent containers from accidentally running as root. This can be seen from its Dockerfile [here](https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile). So, a non-root user was trying to access root-owned files, hence the file permission issue in the previous section. It's worth noting that the non-root user has permission to write, read, and execute. However, since the files belong to the root user, no other user aside from root can modify them. There are two ways to fix this. First, run the container as the root user to access root-owned files (not recommended). Second, change the file ownership to the non-root user. This guide employs latter method to fix the Permission Denied issue which arose when copying files into Docker images.
+    The parent image `jupyter/minimal-notebook` from which we are building runs as a non-root user to prevent containers from accidentally running as root. This can be seen from its Dockerfile [here](https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile). So, a non-root user was trying to access root-owned files, hence the file permission issue in the previous section. It's worth noting that the non-root user has permission to write, read, and execute. However, since the files belong to the root user, no other user aside from root can modify them. There are two ways to fix this. First, run the container as the root user to access root-owned files (not recommended). Second, change the file ownership to the non-root user. This guide employs latter method to fix the Permission Denied issue which arose when copying files into Docker images.
+
+1.  When finished, close the browser.
 
 #### Stopping and Removing Containers
 
@@ -967,13 +980,13 @@ Until now, this article used the `--rm` flag for automatic container removal on 
 1.  Stop the container using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker stop <container-id/container-name>
+    docker stop <Container-ID/Container-Name>
     ```
 
-2.  Now remove the container using a similar command syntax:
+1.  Now remove the container using a similar command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker rm <container-id/container-name>
+    docker rm <Container-ID/Container-Name>
     ```
 
 {{< note >}}
@@ -982,18 +995,18 @@ To prevent errors due to multiple containers exposed on the same ports, stop and
 
 #### Removing Volumes
 
-Removing this container does not remove the respective anonymous volume, leading to unused anonymous volumes. These remnant anonymous volumes are unnecessary, as a new running container creates a new anonymous volume.
+Removing this container does not remove the respective anonymous volume, leading to unused anonymous volumes. These remnant anonymous volumes are unnecessary, as new containers create a new anonymous volumes.
 
-1.  To clear these unused volumes, first list determine their names with the following command:
+1.  To clear these unused volumes, first determine their names with the following command:
 
     ```command{title="Local Machine Terminal"}
     docker volume ls
     ```
 
-2.  Now, remove the desired volume using the following command syntax:
+1.  Now, remove the desired volume using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker volume rm <volume-name>
+    docker volume rm <Volume-Name>
     ```
 
 #### Fixing File Permissions
@@ -1004,7 +1017,7 @@ Removing this container does not remove the respective anonymous volume, leading
     nano Dockerfile
     ```
 
-2.  Change the `Dockerfile` content to reflect the following:
+1.  Change the `Dockerfile` content to reflect the following:
 
     ```file {title="Dockerfile" lang="docker"}
     # Let's use the Jupyter Docker Stack minimal notebook as our base image and build our custom image on top of it
@@ -1031,13 +1044,15 @@ Removing this container does not remove the respective anonymous volume, leading
 
     -   `COPY --chown=$NB_UID:$NB_GID . /work`: Linux identifies a user by its user identifierc(UID) and a group by its group identifier (GID). These identifiers are used to determine system access to resources. Here, files from the local directory are copied to the image file system, but using the `--chown` flag to change ownership. Following the syntax `--chown=<user>:<group>` changes ownership of the files and directories to the `jovyan` user. The numeric user ID and group ID of the `jovyan` user matches the `NB_UID` and `NB_GID` of the `NB_USER`, as the `NB_USER` value is `jovyan` by default.
 
-3.  Re-build the image to capture the change of ownership of files within the container:
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
+
+1.  Re-build the image to capture the change of ownership of files within the container:
 
     ```command{title="Local Machine Terminal"}
     docker build -t custom-jupyter-image:anon-volume .
     ```
 
-4.  Now run the container:
+1.  Now run the container:
 
     ```command{title="Local Machine Terminal"}
     docker run -d -v /project/outputs -it -p 8888:8888 --name custom-jupyter-container custom-jupyter-image:anon-volume
@@ -1049,15 +1064,15 @@ Removing this container does not remove the respective anonymous volume, leading
     5e301acf781cedc4f291964a2ec1aecf713d84689da657bbef42fc2b17bc9e25
     ```
 
-5.  Locate the JupyterLab UI URL using the following command syntax:
+1.  Locate the JupyterLab UI URL using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker logs <container-id>
+    docker logs <Container-ID>
     ```
 
-6.  Open the JupyterLab UI in a Web browser using the displayed `127.0.0.1:8888/lab?token=XXXX` link.
+1.  Open the JupyterLab UI in a Web browser using the displayed `127.0.0.1:8888/lab?token=XXXX` link.
 
-7.  Open the JupyterLab UI Terminal and enter:
+1.  Open the JupyterLab UI Terminal and enter:
 
     ```command{title="JupyterLab UI Terminal"}
     ls -l
@@ -1074,7 +1089,7 @@ Removing this container does not remove the respective anonymous volume, leading
     -rw-rw-r-- 1 jovyan users    0 Jan 18 15:11 README.md
     ```
 
-8.  While in the JupyterLab UI Terminal, check the IDs of the user and group:
+1.  While in the JupyterLab UI Terminal, check the IDs of the user and group:
 
     ```command{title="JupyterLab UI Terminal"}
     id
@@ -1092,7 +1107,7 @@ Removing this container does not remove the respective anonymous volume, leading
     The copy instruction can also be applied to `uid` and `gid` as follows `COPY --chown=1000:100`.
     {{< /note >}}
 
-9.  Open the `computation.ipynb` notebook and test the anonymous volume by again attempting to download the geospatial data and write it to the `outputs` folder:
+1.  Open the `computation.ipynb` notebook and test the anonymous volume by again attempting to download the geospatial data and write it to the `outputs` folder:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     import pandas as pd
@@ -1116,35 +1131,33 @@ Removing this container does not remove the respective anonymous volume, leading
       └── Motorized-Foot-Scooter-Trips-2020.csv
     ```
 
-0.  Stop the container using the command syntax:
+1.  Stop the container using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
     docker stop <Container-ID>
     ```
 
-1.  Now restart it using the command syntax:
+1.  Now restart the container using this command syntax:
 
     ```command{title="Local Machine Terminal"}
     docker start <Container-ID>
     ```
 
-2.  Reopen the JupyterLab UI in a web browser.
-
     You can see that the data (`Motorized-Foot-Scooter-Trips-2020.csv`) persisted, and the file structure remains the same in the container. However, this volume only exists as long as the container exists, as anonymous volumes are container-specific. Anonymous volumes are best suited for temporary files in containers. Outsourcing to host machine storage yields better container performance and efficiency. It can also be used to avoid specific files being overwritten by other mounted external storage. However, this could be improved for persisting data across containers to the host machine via named volumes.
 
-3.  When done, stop the container again and remove it using the following command syntax:
+1.  When done, close the browser, stop the container again, and remove it using the following command syntax:
 
     ```command{title=Local Machine Terminal"}
     docker rm <Container-ID>
     ```
 
-4.  Locate the volume name:
+1.  Locate the anonymous volume name:
 
     ```command{title=Local Machine Terminal"}
     docker volume ls
     ```
 
-5.  Remove the volume using the following command syntax:
+1.  Remove the anonymous volume using the following command syntax:
 
     ```command{title=Local Machine Terminal"}
     docker volume rm <Volume-Name>
@@ -1160,7 +1173,7 @@ Docker manages the location of both named and anonymous volumes on the host mach
     nano Dockerfile
     ```
 
-2.  Mount a named volume to the container by removing the `VOLUME` instruction from the `Dockerfile` like so:
+1.  Mount a named volume to the container by removing the `VOLUME` instruction from the `Dockerfile` like so:
 
     ```file{title="Dockerfile" lang="docker"}
     # Let's use the Jupyter Docker Stack minimal notebook as our base image and build our custom image on top of it
@@ -1180,13 +1193,15 @@ Docker manages the location of both named and anonymous volumes on the host mach
     COPY --chown=$NB_UID:$NB_GID . /work
     ```
 
-3.  Rebuild the image as follows:
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
+
+1.  Rebuild the image as follows:
 
     ```command{title="Local Machine Terminal"}
     docker build -t custom-jupyter-image:named-volume .
     ```
 
-4.  Next, create an empty named volume:
+1.  Create an empty named volume:
 
     ```command{title="Local Machine Terminal"}
     docker volume create named-data-volume
@@ -1196,7 +1211,7 @@ Docker manages the location of both named and anonymous volumes on the host mach
     If you donʼt explicitly create a volume, a volume is created the first time it is mounted into a container.
     {{< /note >}}
 
-5.  Now create the custom Jupyter container using the named volume:
+1.  Run the custom Jupyter container using the named volume:
 
     ```command{title="Local Machine Terminal"}
     docker run -d -v named-data-volume:/project/outputs -it -p 8888:8888 --name custom-jupyter-container custom-jupyter-image:named-volume
@@ -1204,15 +1219,15 @@ Docker manages the location of both named and anonymous volumes on the host mach
 
     The container ID should appear in the output.
 
-6.  Locate the `127.0.0.1:8888/lab?token=XXXX` address using the following command syntax:
+1.  Locate the `127.0.0.1:8888/lab?token=XXXX` address using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker logs <container-id>
+    docker logs <Container-ID>
     ```
 
-7.  Reopen the JupyterLab UI in a web browser.
+1.  Reopen the JupyterLab UI in a web browser.
 
-8.  Once again, open the `computation.ipynb` notebook and test the anonymous volume by downloading the geospatial data and writing it to the `outputs` folder:
+1.  Once again, open the `computation.ipynb` notebook and test the anonymous volume by downloading the geospatial data and writing it to the `outputs` folder:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     import pandas as pd
@@ -1231,14 +1246,14 @@ Docker manages the location of both named and anonymous volumes on the host mach
     Docker volumes may look similar to the `COPY` instruction in the `Dockerfile`. However, the `COPY` instruction creates a one-time snapshot of the host machine file system (where the `Dockerfile` is located). It then adds it to the image during the build phase.
     {{< /note >}}
 
-9.  When done, stop and remove the container using the following command syntax:
+1.  When done, close the browser then stop and remove the container using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
-    docker stop <container-id>
+    docker stop <Container-ID>
     ```
 
     ```command{title="Local Machine Terminal"}
-    docker rm <container-id>
+    docker rm <Container-ID>
     ```
 
 ### Bind Mounts
@@ -1315,18 +1330,36 @@ In the previous section, data was persisted and stored on the local machine via 
 
 This section covers both strategies as they further drive understanding of container communication with the local machine and other containers. To better understand the process of working with notebooks and databases, first set the data to persist locally without using containers. Persist the data to MySQL, a free and open source relational database based on SQL that also offers support for python. MySQL is famous for its speed, reliability, compatibility, scalability, and security.
 
+The local setup is an optional section to build an understanding of how Jupyter interacts with a MySQL database. It helps demonstrate how to persist data from the container to either a database running on the local machine, or a container.
+
+### Before You Begin
+
+The local setup requires some prerequisites to follow:
+
+1.  Install MySQL to your local machine using [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04).
+
+1.  Download and install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/), a graphical management tool that facilitates creating, designing, and building databases.
+
+1.  Add your user's local bin directory (`$HOME/.local/bin`) to your $PATH:
+
+    ```command{title=Local Machine Terminal"}
+    echo "export PATH="$HOME/.local/bin:$PATH"" >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+1.  In order to install the remaining items, first install `pip`:
+
+    ```command{title="Local Machine Terminal"}
+    sudo apt install pip
+    ```
+
+1.  Since python requires a MySQL driver to access the MySQL database, install MySQL Connector along with `python-dotenv`, a library to read environment variables, JupyterLab, and `pandas` via `pip`:
+
+    ```command{title="Local Machine Terminal"}
+    pip install mysql-connector-python python-dotenv jupyterlab pandas
+    ```
+
 ### Local Machine
-
-The local setup is an optional section to build an understanding of how Jupyter interacts with a MySQL database. It helps demonstrate how to persist data from the container to either a database running on the local machine, or a container. The local setup requires some prerequisites to follow:
-
--   Install MySQL to your local machine using [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-22-04).
--   Download and install [MySQL Workbench](https://dev.mysql.com/downloads/workbench/), a graphical management tool that facilitates creating, designing, and building databases.
--   Add your user's local bin directory (`$HOME/.local/bin`) to your $PATH using [the instructions here](https://linuxize.com/post/how-to-add-directory-to-path-in-linux/).
--   In order to install the remaining items, first install `pip` via `sudo apt install pip`.
--   Since python requires a MySQL driver to access the MySQL database, install MySQL Connector via `pip install mysql-connector-python`.
--   Install `python-dotenv`, a library to read environment variables via `pip install python-dotenv`.
--   Install Jupyter to your local machine via `pip install jupyterlab`.
--   Install `pandas`via `pip install pandas`.
 
 1.  With the prerequisites satisfied, navigate to the example project directory and create a `.env` environment file to store the database credentials alongside `computation.ipynb`:
 
@@ -1336,12 +1369,14 @@ The local setup is an optional section to build an understanding of how Jupyter 
 
     The `env` file takes key-value pairs, such as `MYSQL_USER=root`.
 
-2.  Add the following content to the `.env` file and be sure to change the example value <Your-MySQL-Password> to your actual MySQL root password:
+1.  Add the following content to the `.env` file and be sure to change the example value `my-secret-pw` to your actual MySQL root password:
 
     ```file{title=".env"}
     MYSQL_USER=root
-    MYSQL_PASSWORD=<Your-MySQL-Password>
+    MYSQL_PASSWORD=my-secret-pw
     ```
+
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `.env` and exit `nano`.
 
     The file system structure should now be as follows:
 
@@ -1356,7 +1391,7 @@ The local setup is an optional section to build an understanding of how Jupyter 
     └── outputs
     ```
 
-3.  Launch JupyterLab from the terminal:
+1.  Launch JupyterLab from the terminal:
 
     ```command{title="Local Machine Terminal"}
     jupyter-lab
@@ -1364,7 +1399,7 @@ The local setup is an optional section to build an understanding of how Jupyter 
 
     A Web browser should automatically open with the JupyterLab UI accessed.
 
-4.  Open the `computation.ipynb` notebook and once again, download the geospatial data and write it to the `output` folder.
+1.  Open the `computation.ipynb` notebook and once again, download the geospatial data and write it to the `output` folder.
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     import pandas as pd
@@ -1377,7 +1412,7 @@ The local setup is an optional section to build an understanding of how Jupyter 
 
     The `Motorized-Foot-Scooter-Trips-2020.csv` file should now be in the `outputs` folder.
 
-5.  Create a database connection (using the cursor object) to the MySQL database using the following environment variables:
+1.  Create a database connection (using the cursor object) to the MySQL database using the following environment variables:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     # import neccessary libraries
@@ -1385,7 +1420,7 @@ The local setup is an optional section to build an understanding of how Jupyter 
     from mysql.connector import Error
     import os
     from dotenv import load_dotenv
-    load_dotenv('.env')
+    load_dotenv()
 
     # Reading enviroment variables
     mysql_user = os.getenv('MYSQL_USER')
@@ -1411,7 +1446,7 @@ The local setup is an optional section to build an understanding of how Jupyter 
 
     If the above code executes with no errors, a database was created successfully. View this table on the MySQL workbench:
 
-    [![The scooter_trips database shown in MySQL Workbench.](scooter-trips-Database-MySQL-Workbench_small.png "The scooter_trips database shown in MySQL Workbench.")](scooter-trips-Database-MySQL-Workbench.png)
+    [![The example Motorized Foot Scooter Trips database shown in MySQL Workbench.](scooter-trips-Database-MySQL-Workbench_small.png "The example Motorized Foot Scooter Trips database shown in MySQL Workbench.")](scooter-trips-Database-MySQL-Workbench.png)
 
     This shows our empty database `scooter_trips` running on local host at port `3306`.
 
@@ -1464,14 +1499,13 @@ The local setup is an optional section to build an understanding of how Jupyter 
         mydb_connection.commit()
     ```
 
-    This writes the output data to the respective columns in the MySQL table. Wait a few minutes for the data to populate and then view this change in the table on the MySQL workbench:
+    This writes the output data to the respective columns in the MySQL table. It could take up to five minutes for the table to populate with data. Wait for the **Python 3 (ipykernel) |** indicator in the lower left-hand side of the screen to change from **Busy** to **Idle** before proceeding. Then, view this change in the table on the MySQL workbench:
 
     [![The full Motorized-Foot-Scooter-Trips-2020 table shown in MySQL Workbench.](Motorized-Foot-Scooter-Trips-2020-Full-Table-MySQL-Workbench_small.png "The full Motorized-Foot-Scooter-Trips-2020 table shown in MySQL Workbench.")](Motorized-Foot-Scooter-Trips-2020-Full-Table-MySQL-Workbench.png)
 
-Data has been successfully persisted from the local Jupyter instance to the local MySQL database.
+    Data has been successfully persisted from the local Jupyter instance to the local MySQL database.
 
-
-9.  When finished, press **Ctrl+C** then **Y** and **Enter** to stop the server.
+9.  When finished, close the browser. In the terminal, press **Ctrl+C** then **Y** and **Enter** to stop the server.
 
 ### Container
 
@@ -1483,7 +1517,7 @@ This logic can be expanded to a containerized notebook environment, persisting d
     nano Dockerfile
     ```
 
-2.  Update the content of the `Dockerfile` with the MySQL driver installed and environment variables set up during build time:
+1.  Update the content of the `Dockerfile` with the MySQL driver installed and environment variables set up during build time:
 
     ```file{title="Dockerfile"}
     # Let's use the Jupyter Docker Stack minimal notebook as our base image and build our custom image on top of it
@@ -1510,19 +1544,25 @@ This logic can be expanded to a containerized notebook environment, persisting d
     ENV MYSQL_PASSWORD=${PASSWORD:-NOT_DEFINED}
     ```
 
-    {{< note >}}
-    The `COPY` instruction in the `Dockerfile` copies everything where the `Dockerfile` is located. This is not ideal for copying the environment file `.env` as it contains sensitive credentials. Add the `.env` file to a `.dockerignore` file to exclude it and use Docker's `ARG` and `ENV` commands to send these variables into the Jupyter environment.
-    {{< /note >}}
+    The `COPY` instruction in the `Dockerfile` copies everything where the `Dockerfile` is located. This is not ideal for copying the environment file `.env` as it contains sensitive credentials.
 
-3.  Next, proceed to build the docker image with the following change:
+1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
+
+1.  Add the `.env` file to a `.dockerignore` file to exclude it and use Docker's `ARG` and `ENV` commands to send these variables into the Jupyter environment:
 
     ```command{title="Local Machine Terminal"}
-    docker build --build-arg USER=root --build-arg PASSWORD=XXXX -t custom-jupyter-image:mysql-connected .
+    echo .env > .dockerignore
+    ```
+
+1.  Next, proceed to build the docker image with the following change:
+
+    ```command{title="Local Machine Terminal"}
+    docker build --build-arg USER=root --build-arg PASSWORD=my-secret-pw -t custom-jupyter-image:mysql-connected .
     ```
 
     Change the values of the `PASSWORD` to your MySQL root password before building the Docker image. Here Docker's `ARG` and `ENV` are used to set up the MySQL credentials using the `--build` flag at image build time.
 
-4.  Next, create the custom Jupyter container to persist data to the local machine's MySQL:
+1.  Next, create the custom Jupyter container to persist data to the local machine's MySQL:
 
     ```command{title="Local Machine Terminal"}
     docker run -d -it -p 8888:8888 --name custom-jupyter-container-mysql custom-jupyter-image:mysql-connected
@@ -1530,15 +1570,15 @@ This logic can be expanded to a containerized notebook environment, persisting d
 
     Notice the volumes and bind mounts were removed. The data is now persisting to the MySQL database on the local machine and preparing the environment for production.
 
-5.  Locate the JuypterLab UI URL using the following command syntax:
+1.  Locate the JuypterLab UI URL using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
     docker logs <Container-ID>
     ```
 
-6.  Use the link to open the JupyterLab UI and the `computation.ipynb` notebook.
+1.  Use the link to open the JupyterLab UI and the `computation.ipynb` notebook.
 
-7.  Load and use another version of the Motorized Foot Scooter Trips data (`Motorized-Foot-Scooter-Trips-2021`) as follows:
+1.  Load and use another version of the Motorized Foot Scooter Trips data (`Motorized-Foot-Scooter-Trips-2021`) as follows:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     import pandas as pd
@@ -1549,7 +1589,7 @@ This logic can be expanded to a containerized notebook environment, persisting d
     data.to_csv("outputs/Motorized-Foot-Scooter-Trips-2021.csv", index=False)
     ```
 
-8.  Next, make a connection from the container to the local database:
+1.  Make a connection from the container to the local database:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     # import neccessary libraries
@@ -1585,7 +1625,7 @@ This logic can be expanded to a containerized notebook environment, persisting d
     Error while connecting to MySQL <class 'mysql.connector.errors.Error'>
     ```
 
-9.  To fix this connection issue, replace `localhost` with a unique domain that Docker can use to connect to the local host, which is `host.docker.internal`. The database connection from the container should look like this:
+1.  To fix this connection issue, replace `localhost` with a unique domain that Docker can use to connect to the local host, which is `host.docker.internal`. The database connection from the container should look like this:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     # import neccessary libraries
@@ -1613,7 +1653,7 @@ This logic can be expanded to a containerized notebook environment, persisting d
 
     This unique domain enables a successful connection to the local database. Notably, computations in the container are persisting data as new tables in the existing database (`scooter_trips` in the local machine).
 
-0.  Next, create an empty table `Motorized_Foot_Scooter_Trips_2021` in the `scooter_trips` database:
+1.  Create an empty table `Motorized_Foot_Scooter_Trips_2021` in the `scooter_trips` database:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     try:
@@ -1644,7 +1684,7 @@ This logic can be expanded to a containerized notebook environment, persisting d
 
     The empty table from the container has persisted from the running container to the local MySQL database. Both the table generated from running the notebook locally as well as running the notebook from a container can be seen.
 
-1.  Next, write the outputs data from the container to the empty table in the local database:
+1.  Write the outputs data from the container to the empty table in the local database:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     # Read data from output folder
@@ -1668,13 +1708,11 @@ This logic can be expanded to a containerized notebook environment, persisting d
     Missing data instances might cause the writing of data to fail. Check if there are missing data instances across the data and either replace them with a value or remove those instances. The data column dimension must also be the same as the database table to which you are trying to create and persist data.
     {{< /note >}}
 
-2.  When done, stop the container using the following command syntax:
+1.  When done, close the browser then stop and remove the container using the following command syntax:
 
     ```command{title="Local Machine Terminal"}
     docker stop <Container-ID>
     ```
-
-3.  Then remove it using this command syntax:
 
     ```command{title="Local Machine Terminal"}
     docker rm <Container-ID>
@@ -1705,13 +1743,13 @@ Moving forward, the Docker network is utilized to make this container-to-contain
 2.  Next, create the running container required to be part of the `jupyter-mysql-net` network. For the MySQL container, create it as follows:
 
     ```command{title="Local Machine Terminal"}
-    docker run -d --name mysql-db --network jupyter-mysql-net -e MYSQL_ROOT_PASSWORD=<your-password> mysql
+    docker run -d --name mysql-db --network jupyter-mysql-net -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
     ```
 
     This instruction creates a new container named `mysql-db` based on the official MySQL image in detached mode, added to the `jupyter-mysql-net network` via the `--network` flag. This container spins up a MySQL database accessible on port `3306` with a required root password.
 
     {{< note >}}
-    To have a successful connection, make your password the same as the one provided in the argument `PASSWORD`.
+    To have a successful connection, replace the example value `my-secret-pw` with your MySQL root password.
     {{< /note >}}
 
 3.  Next, re-create the Jupyter container running in this network for communication:
@@ -1740,7 +1778,7 @@ Moving forward, the Docker network is utilized to make this container-to-contain
     docker logs custom-jupyter-container-mysql
     ```
 
-6.  Launch the JupyterLab UI environment and open the `computation.ipynb` notebook and load another version of the Motorized Foot Scooter Trips data (`Motorized-Foot-Scooter-Trips-2018`):
+6.  Launch the JupyterLab UI environment and open the `computation.ipynb` notebook. Load another version of the Motorized Foot Scooter Trips data (`Motorized-Foot-Scooter-Trips-2018`):
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
     import pandas as pd
@@ -1815,6 +1853,8 @@ Moving forward, the Docker network is utilized to make this container-to-contain
 
     This successfully connects to the `mysql-db` container and `scooter_trips` database, and creates and writes data to `Motorized_Foot_Scooter_Trips_2018` table. Note that this database setup and content cannot be accessed locally (via the command line or MySQL workbench). This is because the database is running in a Docker container, and no ports were published when running the `mysql-db` container.
 
+    It may take up to 30 minutes to populate the table. Wait for the **Python 3 (ipykernel) |** indicator in the lower left-hand side of the screen to change from **Busy** to **Idle** before proceeding.
+
 9.  The content of this `Motorized_Foot_Scooter_Trips_2018` table in the `mysql-db` can be accessed from the Jupyter container by running a query like this:
 
     ```command{title="JupyterLab UI computation.ipynb Notebook"}
@@ -1838,7 +1878,7 @@ Moving forward, the Docker network is utilized to make this container-to-contain
         print("Error while connecting to MySQL", Error)
     ```
 
-    This may take a long time to process, but it eventually yields five queried instances, confirming the connection to `mysql-db` is functional and successful.
+    The query yields five rows of data, confirming the connection to `mysql-db` is functional and successful.
 
     ```output
     connection successfully
@@ -1849,28 +1889,62 @@ Moving forward, the Docker network is utilized to make this container-to-contain
     ('154741', '176', '588', '2018/07/10 12:59:59+00', '2018/07/10 12:59:59+00', '21654', '17250')
     ```
 
-    However, at the moment, the `mysql-db` container does not persist the database data. One option is to let Docker can manage the storage of database data on the host machine via volumes. Alternatively, you can manage the database storage manually. To so by creating a data directory on the host machine and mounting it to the container via bind mounts. Using its internal volume management system, this tutorial uses the Docker volume method (named volume) to manage the containerized database data. However, the bind mounts method can help conveniently inspect the containerized database data. The database data in MySQL containers built from the official image stores database data in the `var/lib/mysql` directory.
+1.  When finished, close the browser.
 
-    {{< note >}}
-    A named volume can be mounted to this path in the `mysql-db` container to persist database data as follows:
+#### Persisting the Database to a Named Volume
+
+At the moment, the `mysql-db` container does not persist the database data. One option is to let Docker can manage the storage of database data on the host machine via volumes.
+
+{{< note >}}
+Alternatively, you can manage the database storage manually. Do so by creating a data directory on the host machine and mounting it to the container via bind mounts.
+
+Using its internal volume management system, this tutorial uses the Docker volume method (named volumes) to manage the containerized database data. However, the bind mounts method can help conveniently inspect the containerized database data.
+{{< /note >}}
+
+1.  First, stop and remove the current `mysql-db` container using the following command syntax:
+
+    ```command{title="Local Machine Terminal"}
+    docker stop mysql-db
+    ```
+
+    ```command{title="Local Machine Terminal"}
+    docker rm mysql-db
+    ```
+
+1.  The database data in MySQL containers built from the official image stores database data in the `var/lib/mysql` directory. A named volume can be mounted to this path in the `mysql-db` container to persist database data as follows:
 
     ```command{title="Local Machine Terminal"}
     docker run -d --name mysql-db --network jupyter-mysql-net -v mysqldata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
     ```
-    This command creates the named volume `mysql-data` and mounts it to the `mysql-db`. This persists the containerized database data to a location on the local machine managed by Docker.
-    {{< /note >}}
+
+    This command creates the named volume `mysql-data` and mounts it to the `mysql-db`. The example workflow from the previous section persists containerized database data to a location on the local machine managed by Docker.
+
+1.  When done, close the browser and stop all running containers using the following command syntax:
+
+    ```command{title="Local Machine Terminal"}
+    docker stop custom-jupyter-container-mysql
+    docker stop mysql-db
+    ```
+
+1.  Also remove all stopped containers, all networks not used, images without at least one container associated to them, and build cache:
+
+    ```command{title="Local Machine Terminal"}
+    docker system prune -a
+    ```
 
 ## Simplify Multi-Container Orchestration with Docker Compose
 
-The commands to run these containers with respective configurations are cumbersome. We can utilize the Docker compose tool to simplify defining and sharing multi-containers with their respective configurations. It is a powerful tool that helps replace multiple `docker build` and `docker run` commands into one configuration file with a set of orchestration commands. The Docker compose also enables defined containers to be spun up and torn down with a single command - `docker compose up` and `docker compose down`.
+The commands to run these containers with respective configurations are cumbersome. Utilizing the Docker compose tool simplifies defining and sharing multi-containers with their respective configurations.
 
 {{< note >}}
-You should already have Docker Compose installed on macOS and Windows through the Docker Desktop. For Linux, you need to install it separately; see the guide [here](https://docs.docker.com/compose/install/).
+You should already have Docker Compose installed through Docker Desktop.
 {{< /note >}}
 
-{{< note >}}
-Docker composes files do not replace Dockerfiles for custom docker images and containers but make working with them more manageable.
-{{< /note >}}
+The Docker compose file is [YAML](https://yaml.org/), a human-readable file that uses indentation to denote dependency. The file defines services that create containers, networks, and volumes.
+
+Docker compose files do not replace Dockerfiles for custom docker images and containers, they simply make working with them more manageable. Instead, it replaces multiple `docker build` and `docker run` commands with one configuration file containing a set of orchestration commands.
+
+Docker compose also enables containers to be spun up and torn back down with a simple command: `docker compose up` and `docker compose down`.
 
 1.  Start by creating a Docker compose file (`compose.yaml`, `compose.yml`, `docker-compose.yaml` or `docker-compose.yml`) in the project directory on your local machine:
 
@@ -1878,11 +1952,11 @@ Docker composes files do not replace Dockerfiles for custom docker images and co
     nano docker-compose.yml
     ```
 
-    The Docker compose file is [YAML](https://yaml.org/), a human-readable file that uses indentation to denote configurations dependency. The file defines services that create containers, networks, and volumes.
-
-2.  In the created `docker-compose.yml` file, define the containers as follows:
+1.  Paste the following content into the created `docker-compose.yml` file:
 
     ```file{title="docker-compose.yml"}
+    version: '3'
+
     services:
       mysql:
         image: 'mysql'
@@ -1894,10 +1968,10 @@ Docker composes files do not replace Dockerfiles for custom docker images and co
       jupyter:
         build:
           context: .
+          args:
+            USER: root
+            PASSWORD: my-secret-pw
         # Looks for a Dockerfile in the current directory to build the image
-        environment:
-          USER: root
-          PASSWORD: my-secret-pw
         container_name: 'custom-jupyter-image'
         ports:
           - '8888:8888'
@@ -1911,32 +1985,11 @@ Docker composes files do not replace Dockerfiles for custom docker images and co
       mysql-data:
     ```
 
-    Before building the images and running the containers using Docker compose, here's an overview of the orchestration instruction outlined in the `docker-compose.yml` file:
+    The `services` key refers to a containers' configurations and takes nested values. It contains configuration settings for both the `mysql-db` and `custom-jupyter-image:mysql-connected` containers. The configuration covers setting up environment variables and arguments, publishing ports, mounting volumes, and running in iterative mode.
 
-    -   services: This key refers to containers' configurations and takes nested values. It contains configuration settings for both the `mysql-db` and `custom-jupyter-image:mysql-connected` containers. The configuration covers setting up environment variables and arguments, publishing ports, mounting volumes, and running in iterative mode.
-    -   Docker compose automatically creates a default network and adds all containers defined in the compose to that network. However, we can manually specify a network.
+    Docker compose automatically creates a default network and adds all containers defined in the compose to that network. However, we can manually specify a network.
 
-3.  Before starting services with Docker compose, first stop containers:
-
-    ```command{title="Local Machine Terminal"}
-    docker ps -q
-    ```
-
-    ```command{title="Local Machine Terminal"}
-    docker stop <Container-ID>
-    ```
-
-    ```command{title="Local Machine Terminal"}
-    docker rm <Container-ID>
-    ```
-
-4.  Also remove all stopped containers, all networks not used, images without at least one container associated to them, and build cache:
-
-    ```command{title="Local Machine Terminal"}
-    docker system prune -a
-    ```
-
-5.  Next, in the directory where the compose file is located, start the services using:
+1.  In the same directory where the Docker compose file is located, start the services using:
 
     ```command{title="Local Machine Terminal"}
     docker compose up
@@ -1950,11 +2003,11 @@ Docker composes files do not replace Dockerfiles for custom docker images and co
     ```
     {{< /note >}}
 
-    This command pulls and builds all the required images and starts the containers as in the previous section. It also creates a default network and mounts required volumes (if not existing) to containers. Upon successful execution of the `docker-compose up`, creates the required container with the necessary configuration as we set up in the previous section.
+    This command pulls and builds all the required images and starts the containers. It also creates a default network and mounts required volumes to containers. Upon successful execution of `docker-compose up`, the required container with the necessary configuration is should be created.
 
-6.  View the running containers:
+1.  Open a second terminal window (unless you ran `docker compose up` in detached mode) to view the running containers:
 
-    ```command{title="Local Machine Terminal"
+    ```command{title="Local Machine Terminal #2"}
     docker ps
     ```
 
@@ -1964,41 +2017,50 @@ Docker composes files do not replace Dockerfiles for custom docker images and co
     ee6927299775   mysql             "docker-entrypoint.s…"   38 minutes ago   Up 23 seconds             3306/tcp, 33060/tcp      mysql-db
     ```
 
-7.  To stop all services and remove all containers use:
+1.  Switch to the example project directory, then stop all services and remove all containers:
 
-    ```command{title="Local Machine Terminal"}
+    ```command{title="Local Machine Terminal #2"}
+    cd ~/Jupyter
     docker compose down
     ```
 
     {{< note >}}
-    This command doesn't remove volumes created as its ideal strategy to persist data on container removal. However, if that is required, it can be achieved by running the following:
+    This command doesn't remove volumes created as its strategy to persist data on container removal. However, if that is required, it can be achieved by running the following:
 
-    ```command{title="Local Machine Terminal"}
+    ```command{title="Local Machine Terminal #2"}
     docker compose down -v
     ```
     {{< /note >}}
 
+1.  Unless you ran in detached mode, in the second terminal window type `exit` and press the **Enter** key when done.
+
 ## Deployment to Linode
 
-You now have a running containerized Jupyter environment persisting data to a separate containerized MySQL database. The next section covers moving this containerized setup to cloud hosting by leveraging Linode Compute instances and the App Marketplace. Using a Linode compute instance is easy to do without the required knowledge or hassle of using the command line. Linode helps you deploy in seconds, with simple app creation procedures, customization features, and a deployment management service. The App Marketplace serves as an online store where your application can be accessed, interacted with, and purchased.
+You now have a running containerized Jupyter environment persisting data to a separate containerized MySQL database. The next section covers moving this containerized setup to cloud hosting by leveraging Linode Compute instances and the App Marketplace.
 
-First, the image must be copied to the remote server. This can be achieved by building the image on the remote machine, or by using a fully built image on the remote server. The latter reduces unnecessary complexity, as images deployed on a public repository like DockerHub can then be pulled to the remote server.
+Using a Linode compute instance is easy to do without the required knowledge or hassle of using the command line. Linode helps you deploy in seconds, with simple app creation procedures, customization features, and a deployment management service.
+
+The App Marketplace serves as an online store where your application can be accessed, interacted with, and purchased.
+
+First, the image must be copied to the remote server. This can be achieved by building the image on the remote machine, or by using a fully built image. The latter reduces unnecessary complexity. Images deployed on a public repository like DockerHub can easily be pulled to the remote server.
+
+### Before You Begin
+
+1.  [Log in to Docker Hub](https://login.docker.com/u/login), or [sign up](https://hub.docker.com/signup) if you don't already have an account.
 
 {{< note >}}
-DockerHub is a service provided by Docker that serves as a community of repositories for users to create, test, manage, store, and share container images. It is free to create public repositories.
+DockerHub is a service provided by Docker that serves as a community of repositories for users to create, test, manage, store, and share container images. Account signup is free, and so is the creation of public repositories.
 {{< /note >}}
 
-Before you begin, follow these steps:
+1.  Configure the Docker Desktop CLI using [these instructions](https://docs.docker.com/desktop/get-started/).
 
--   [Sign up for Docker Hub](https://hub.docker.com/signup) if you don't already have an account.
+### Docker Hub Setup
 
--   After creating an account and successfully logging in, click **Repositories** in the top navigation bar and create a new repository. When done, you should see a UI similar to:
+1.  After creating an account and successfully logging in to Docker Hub, click **Repositories** in the top navigation bar and create a new repository. When done, you should see a UI similar to:
 
     [![The example Project-Jupyter repository screen on Docker Hub.](Docker-Hub-Project-Jupyter_small.png "The example Project-Jupyter repository screen on Docker Hub.")](Docker-Hub-Project-Jupyter.png)
 
--   Configure the Docker Desktop CLI using [these instructions](https://docs.docker.com/desktop/get-started/).
-
-1.  Create a connection between DockerHub and your local machine. Open a terminal and login into DockerHub:
+1.  Create a connection between Docker Hub and your local machine. Open a terminal and login into Docker Hub:
 
     ```command{title="Local Machine Terminal"}
     docker login
@@ -2021,7 +2083,7 @@ Before you begin, follow these steps:
 3.  Before pushing the image to the created repository, rename it to the standard `<your-docker-hub-username>/<repository-name>` format as follows:
 
     ```command{title="Local Machine Terminal"}
-    docker tag project_jupyter <your-docker-hub-username>/project_jupyter
+    docker tag jupyter-jupyter <your-docker-hub-username>/project_jupyter
     ```
 
 4.  Now push the image to DockerHub:
@@ -2030,9 +2092,9 @@ Before you begin, follow these steps:
     docker push <your-docker-hub-username>/project_jupyter
     ```
 
-    Once complete, your DockerHub repository should look like this:
+    Once complete, your Docker Hub repository should look like this:
 
-    [SCREENSHOT]
+    [![The example Project-Jupyter repository on Docker Hub with pushed image.](Docker-Hub-Project-Jupyter-Image_small.png "The example Project-Jupyter repository on Docker Hub with pushed image.")](Docker-Hub-Project-Jupyter-Image.png)
 
 5.  To pull this image from Docker Hub, use the `docker pull` command using the syntax `docker pull <your-docker-hub-username>/<repository-name>:tagname` as follows:
 
@@ -2045,8 +2107,6 @@ Before you begin, follow these steps:
     ```command{title="Local Machine Terminal"}
     docker run <your-docker-hub-username>/project_jupyter
     ```
-
-For the MySQL database container, utilize its official image available on DockerHub.
 
 ### Linode Setup
 
@@ -2074,31 +2134,31 @@ To get started with Linode's Marketplace to aid the deployment of the example Ju
 
 0.  **SSH Keys** are optional here, as this tutorial uses the online LISH (Linode Shell) console.
 
-    [SCREENSHOT]
+    [![The dashboard of the deployed Jupyter-Docker workflow Linode.](Jupyter-Docker-Workflow-Linode-Dashboard_small.png "The dashboard of the deployed Jupyter-Docker workflow Linode.")](Jupyter-Docker-Workflow-Linode-Dashboard.png)
 
-### Deployment to Linode
+### Deployment on Linode
 
 1.  With the setup out of the way, click **Launch LISH Console** and access the compute instance (Docker) with the login as `root` and the root password you provided in the setup.
 
-2.  In the LISH (Linode Shell) console, create a network named `jupyter-mysql-net` for the containers:
+1.  In the LISH (Linode Shell) console, create a network named `jupyter-mysql-net` for the containers:
 
     ```command{title="LISH Console"}
     docker network create jupyter-mysql-net
     ```
 
-3.  Pull the official MySQL image on DockerHub:
+1.  Pull the official MySQL image on DockerHub:
 
     ```command{title="LISH Console"}
     docker run -d --name mysql-db --network jupyter-mysql-net -e MYSQL_ROOT_PASSWORD=my-secret-pw mysql
     ```
 
-4.  Pull and run the custom Jupyter image you previously deployed to DockerHub:
+1.  Pull and run the custom Jupyter image you previously deployed to DockerHub:
 
     ```command{title="LISH Console"}
     docker run -d -it -p 8888:8888 --name custom-jupyter-container --network jupyter-mysql-net <your-docker-hub-username>/project_jupyter
     ```
 
-5.  Upon successful deployment, view the JupyterLab UI using your Linode IP address and Docker port number following the syntax `http://<Linode-IP-address>:8888/lab?token=XXXX`. This URL can be retrieved by logging the Jupyter container:
+1.  Upon successful deployment, view the JupyterLab UI using your Linode IP address and Docker port number following the syntax `http://<Linode-IP-address>:8888/lab?token=XXXX`. This URL can be retrieved by logging the Jupyter container:
 
     ```command{title="LISH Console"}
     docker logs custom-jupyter-container
@@ -2125,21 +2185,13 @@ To get started with Linode's Marketplace to aid the deployment of the example Ju
         Or copy and paste one of these URLs:
             http://5959d9d8b5f3:8888/lab?token=ba162d57a64292a1963086f34b4d824de132fe32dee553b2
             http://127.0.0.1:8888/lab?token=ba162d57a64292a1963086f34b4d824de132fe32dee553b2
-    [I 2023-02-14 19:31:57.721 LabApp] Generating new user for token-authenticated request: 6056729b1716437e8ae579726cd59a38
-    [I 2023-02-14 19:32:01.514 LabApp] Build is up to date
-    [I 2023-02-14 19:32:04.216 ServerApp] Writing notebook-signing key to /home/jovyan/.local/share/jupyter/notebook_secret
-    [W 2023-02-14 19:32:04.217 ServerApp] Notebook computation.ipynb is not trusted
-    [I 2023-02-14 19:32:04.697 ServerApp] Kernel started: 5132612c-6b80-4d72-bec8-c0937ae026a8
-    [I 2023-02-14 19:32:05.717 ServerApp] Connecting to kernel 5132612c-6b80-4d72-bec8-c0937ae026a8.
-    [I 2023-02-14 19:32:05.904 ServerApp] Connecting to kernel 5132612c-6b80-4d72-bec8-c0937ae026a8.
-    [I 2023-02-14 19:32:05.953 ServerApp] Connecting to kernel 5132612c-6b80-4d72-bec8-c0937ae026a8.
     ```
 
     The address described above launches the Jupyter UI and environment with data persisting in the containerized MySQL database hosted in this Linode compute instance.
 
-    [SCREENSHOT]
+    [![The JupyterLab UI running on a Linode.](JupyterLab-UI-Linode_small.png "The JupyterLab UI running on a Linode.")](JupyterLab-UI-Linode.png)
 
-6.  Open the `computation.ipynb` notebook and test the containerized database hosted on Linode by persisting data to it as follows:
+1.  Open the `computation.ipynb` notebook and test the containerized database hosted on Linode by persisting data to it as follows:
 
     ```command{title="computation.ipynb Notebook"}
     import pandas as pd
@@ -2178,7 +2230,7 @@ To get started with Linode's Marketplace to aid the deployment of the example Ju
 
     This command successfully connects to the containerized database hosted on Linode and creates a database named `scooter_trips` in it.
 
-7.  Next, write the downloaded geospatial data to a table in the `scooter_trips` database as follows:
+7.  Next, write the downloaded geospatial data to a table in the `scooter_trips` database:
 
     ```command{title="computation.ipynb Notebook"}
     try:
@@ -2196,7 +2248,7 @@ To get started with Linode's Marketplace to aid the deployment of the example Ju
             record = mycursor.fetchone()
             print("You're connected to database: ", record)
             table_name = "Motorized_Foot_Scooter_Trips_2018"
-            mycursor.execute(f"CREATE TABLE {table_name} (TripID VARCHAR(255), TripDuration VARCHAR(255), TripDistance VARCHAR(255), StartTime VARCHAR(255), EndTime VARCHAR(255), StartCenterlineID VARCHAR(255), StartCenterlineType VARCHAR(255), EndCenterlineID VARCHAR(255), EndCenterlineType VARCHAR(255))")
+            mycursor.execute(f"CREATE TABLE {table_name} (TripID VARCHAR(255), TripDuration VARCHAR(255), TripDistance VARCHAR(255), StartTime VARCHAR(255), EndTime VARCHAR(255), StartCenterlineID VARCHAR(255), EndCenterlineID VARCHAR(255))")
             print(f"{table_name} table created")
             for index, row in data.iterrows():
                 sql = f"INSERT INTO scooter_trips.{table_name} (TripID, TripDuration, TripDistance, StartTime, EndTime, StartCenterlineID, EndCenterlineID) VALUES (%s,%s,%s,%s,%s,%s,%s)"
@@ -2209,10 +2261,10 @@ To get started with Linode's Marketplace to aid the deployment of the example Ju
 
     This command successfully persists data to the containerized database, where data can be queried from the database.
 
-Everything works well on Linode, and ready for your exploration. You can observe your application resource utilization, work load, network traffic, and configuration on the Linode compute instance dashboard:
+You can observe application resource utilization, work load, network traffic, and configuration settings on the Linode compute instance dashboard:
 
-[SCREENSHOT]
+[![The Linode dashboard after running the example Jupyter-Docker workflow.](Linode-Dashboard-After-Jupyter-Docker-Workflow_small.png "The Linode dashboard after running the example Jupyter-Docker workflow.")](Linode-Dashboard-After-Jupyter-Docker-Workflow.png)
 
 ## Conclusion
 
-This tutorial covers the various Jupyter and Docker workflows that may exist. The tutorial also covered persisting data in these images and containers using volumes, bind mounts, and databases. It also guides and resolves file permission issues and simplifies these containers' orchestration via Docker compose. Lastly, guides in deploying these services on the Linode app marketplace.
+This tutorial covers the various Jupyter and Docker workflows that may exist. The tutorial also covers persisting data in these images and containers using volumes, bind mounts, and databases. It also guides and resolves file permission issues and simplifies these containers' orchestration via Docker compose. Lastly, it guides in deploying these services via the Linode app marketplace.
