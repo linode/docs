@@ -3,20 +3,16 @@ slug: jupyter-docker-workflows
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Learn how to set up Jupyter using Docker containers and a MySQL database with this easy-to-follow tutorial. Use docker-compose and DockerHub images to get started.'
+og_description: 'Learn how to set up Jupyter using Docker containers and a MySQL database with this easy-to-follow tutorial. Use docker-compose and DockerHub images to get started.'
+keywords: ['Jupyter','Docker','MySQL','tutorial','docker-compose','DockerHub','containers','setup','data science']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-09
 modified_by:
   name: Linode
 title: "A Comprehensive Guide to Jupyter and Docker Workflows"
 contributor:
-  name: Your Name
-  link: Github/Twitter Link
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+  name: Brian John
 ---
 
 Container technologies help build lightweight, portable software units that package both the application code and required dependencies. This simplifies, secures, and helps make for reliable application development, testing, and deployment. These self-contained environments resolve environment compatibility issues. Applications can be written once and run anywhere without concern for the machine or environment they are running on. Docker is the most popular container technology. It is an open source tool powered by the Linux kernel for building, deploying, and managing containerized applications. This article comprehensively discusses developing on a Jupyter environment through Docker. Continue reading to learn how to set up different Jupyter environments through Docker instances.
@@ -586,10 +582,16 @@ This section relies on previous knowledge to build images with pre-load requirem
 
 1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
 
-    Before building a Docker image using the Dockerfile, here's an overview of the instructions. Since this builds upon the Dockerfile in the previous section, only new instructions are explained below:
+    Here's an overview of the instructions. Since this builds upon the Dockerfile in the previous section, only new instructions are explained below:
 
     -   `WORKDIR /work`: The `WORKDIR` instruction sets the default working (root) directory in the image file system, where `Dockerfile` instructions are executed. This uses the `work` directory seen in the previous sections.
     -   `COPY . /app`: This copies files or directories from the local directory where the Dockerfile is located to the image's file system (working directory). Here, the `data` directory and its content (`data.geojson`) are copied along with the `computation.ipynb` notebook, `README.md` Markdown file, and the `Dockerfile` itself.
+
+1.  Before building a Docker image using the `Dockerfile`, add it to a `dockerignore` file so that it doesn't appear in the built container:
+
+    ```command{title="Local Machine Terminal"}
+    echo .env > Dockerfile
+    ```
 
 1.  Proceed to build the docker image from the Dockerfile using the tag `custom-jupyter-image:preload` with the following command:
 
@@ -1548,10 +1550,10 @@ This logic can be expanded to a containerized notebook environment, persisting d
 
 1.  Press **CTRL+X**, followed by **Y** and **Enter** to save the `Dockerfile` and exit `nano`.
 
-1.  Add the `.env` file to a `.dockerignore` file to exclude it and use Docker's `ARG` and `ENV` commands to send these variables into the Jupyter environment:
+1.  Add the `.env` file to the `.dockerignore` file to exclude it and instead use Docker's `ARG` and `ENV` commands to send these variables into the Jupyter environment:
 
     ```command{title="Local Machine Terminal"}
-    echo .env > .dockerignore
+    echo .env >> .dockerignore
     ```
 
 1.  Next, proceed to build the docker image with the following change:
@@ -1988,6 +1990,12 @@ Docker compose also enables containers to be spun up and torn back down with a s
     The `services` key refers to a containers' configurations and takes nested values. It contains configuration settings for both the `mysql-db` and `custom-jupyter-image:mysql-connected` containers. The configuration covers setting up environment variables and arguments, publishing ports, mounting volumes, and running in iterative mode.
 
     Docker compose automatically creates a default network and adds all containers defined in the compose to that network. However, we can manually specify a network.
+
+1.  Since the `docker-compose.yml` file contains sensitive information, add it to the `dockerignore` file:
+
+    ```command{title="Local Machine Terminal"}
+    echo docker-compose.yml >> .dockerignore
+    ```
 
 1.  In the same directory where the Docker compose file is located, start the services using:
 
