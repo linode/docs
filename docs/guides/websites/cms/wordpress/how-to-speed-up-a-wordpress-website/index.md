@@ -18,7 +18,7 @@ external_resources:
 - '[Profiling with XHProf and XHGUI](https://www.engineyard.com/blog/topic/profiling-with-xhprof-and-xhgui)'
 - '[Tideways XHProf Extension](https://github.com/tideways/php-xhprof-extension)'
 - '[XHGUI](https://github.com/perftools/xhgui)'
-- '[How to Use Docker Compose](/docs/applications/containers/how-to-use-docker-compose/)'
+- '[How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)'
 aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
 ---
 
@@ -294,9 +294,9 @@ When you visit a WordPress page, the page is dynamically generated on each reque
 
 After you fix code performance bottlenecks and install other best practice measures, you can fine-tune the basic settings for your web server and database. This involves estimating the average memory and CPU usage of a request, comparing it with the total level of resources for your server, and then adjusting your software configuration to make the most of those resources. Linode has guides on optimizing Apache and MySQL:
 
-- [Tuning Your Apache Server](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/)
+- [Tuning Your Apache Server](/docs/guides/tuning-your-apache-server/)
 
-- [How to Optimize MySQL Performance Using MySQLTuner](/docs/databases/mysql/how-to-optimize-mysql-performance-using-mysqltuner/)
+- [How to Optimize MySQL Performance Using MySQLTuner](/docs/guides/how-to-optimize-mysql-performance-using-mysqltuner/)
 
 ## Optional: Profile Your Own WordPress Site
 
@@ -336,7 +336,7 @@ These instructions walk through downloading the source code for XHGUI. This may 
 
 2.  Add a line with the value `extension=tideways_xhprof.so` to your `php.ini` configuration file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 There may be multiple `php.ini` files in different locations, like `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`. Add this value in each `php.ini` file both in this step and in Step 4 that follows.
 {{< /note >}}
 

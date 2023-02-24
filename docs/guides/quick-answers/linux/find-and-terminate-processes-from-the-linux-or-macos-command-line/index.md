@@ -10,9 +10,8 @@ modified: 2018-02-20
 modified_by:
   name: Sam Foo
 published: 2018-02-20
-title: "Terminate Processes from the Mac or Linux Command Line"
-h1_title: "Find and Terminate Processes from the Linux or Mac OS Command Line"
-enable_h1: true
+title: "Find and Terminate Processes from the Linux or Mac OS Command Line"
+title_meta: "Terminate Processes from the Mac or Linux Command Line"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/find-and-terminate-processes-from-the-linux-or-macos-command-line/']
 ---
@@ -27,8 +26,8 @@ If the process name is known, `pgrep` will search currently running processes fo
 
     pgrep firefox
 
-{{< note >}}
-`pgrep` is not installed by default on MacOS. This can be installed along with `pkill` and `pfind` with [Homebrew](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) via:
+{{< note respectIndent=false >}}
+`pgrep` is not installed by default on MacOS. This can be installed along with `pkill` and `pfind` with [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) via:
 
     brew install proctools
 
@@ -48,6 +47,6 @@ There may be cases where there are multiple instances of the same program runnin
 
     killall [process name]
 
-For a more information on `kill` and `killall`, see our guide on how to [Use Killall and Kill Commands to Stop Processes on Linux](/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/).
+For a more information on `kill` and `killall`, see our guide on how to [Use Killall and Kill Commands to Stop Processes on Linux](/docs/guides/use-killall-and-kill-to-stop-processes-on-linux/).
 
 <!-- Windows instructions via taskkill someday -->

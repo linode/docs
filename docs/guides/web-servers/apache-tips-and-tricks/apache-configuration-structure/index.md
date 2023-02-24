@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This is an introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
-og_description: 'This is an introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
 keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-servers/apache-tips-and-tricks/apache-configuration-structure/','/websites/apache-tips-and-tricks/apache-configuration-structure/','/web-servers/apache/configuration/configuration-structure/']
@@ -16,7 +15,7 @@ title: Apache Configuration Structure
 external_resources:
  - '[Apache Installation](/docs/web-servers/apache/)'
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
- - '[Troubleshooting Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
+ - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
 tags: ["web server","apache"]
 ---
 
@@ -121,9 +120,9 @@ AllowOverride None
 
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can specify `AllowOverride All` for a directory that falls within a directory where overrides have been disabled.
-{{</ note >}}
+{{< /note >}}
 
 ## "Match" Directives and Regular Expressions
 

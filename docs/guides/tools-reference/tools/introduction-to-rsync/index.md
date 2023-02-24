@@ -18,7 +18,7 @@ external_resources:
 tags: ["linux"]
 ---
 
-[Rsync](https://rsync.samba.org/) is a command line utility which synchronizes files and folders from one location to another. Some workflows that can be implemented using rsync are updating a production host from a development machine, or using a cron job to call rsync to regularly back up data to a storage location. You can even use rsync to [migrate your server to Linode](/docs/platform/disk-images/migrating-a-server-to-your-linode/) from other providers.
+[Rsync](https://rsync.samba.org/) is a command line utility which synchronizes files and folders from one location to another. Some workflows that can be implemented using rsync are updating a production host from a development machine, or using a cron job to call rsync to regularly back up data to a storage location. You can even use rsync to [migrate your server to Linode](/docs/guides/migrating-a-server-to-your-linode/) from other providers.
 
 ![Introduction to rsync](rsync-title-graphic.jpg)
 

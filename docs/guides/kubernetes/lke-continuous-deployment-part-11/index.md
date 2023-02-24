@@ -4,9 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In part 11 of our series on Kubernetes, you will learn how to generate advanced statistics for your cluster using tools like Prometheus and Grafana."
-title: "Continuous Deployment Using LKE: Prometheus and Grafana"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 11): Prometheus and Grafana"
-enable_h1: true
+title: "Building a Continuous Deployment Pipeline Using LKE (Part 11): Prometheus and Grafana"
+title_meta: "Continuous Deployment Using LKE: Prometheus and Grafana"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
@@ -58,7 +57,7 @@ Going beyond metrics-server, this guide goes over collecting more advanced metri
 - Let's install that stack *directly* from its repo (without doing helm repo add first)
 - Otherwise, keep the same naming strategy:
 
-      helm upgrade --install kube-prometheus-stack kube-prometheus-stack \
+      helm upgrade kube-prometheus-stack kube-prometheus-stack --install \
         --namespace kube-prometheus-stack --create-namespace \
         --repo https://prometheus-community.github.io/helm-charts
 

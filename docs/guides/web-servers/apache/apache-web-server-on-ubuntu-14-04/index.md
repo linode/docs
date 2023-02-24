@@ -28,15 +28,15 @@ relations:
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 14.04 LTS.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 14.04](/docs/guides/lamp-on-ubuntu-14-04/) guide.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -149,7 +149,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
     Repeat this process for any other domains you host.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
 {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}

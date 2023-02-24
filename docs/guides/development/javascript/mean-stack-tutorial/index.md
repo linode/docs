@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified_by:
   name: Linode
-title: "MEAN Stack Tutorial: Create an Example Application"
-h1_title: "How to Create a MEAN Stack Application"
-enable_h1: true
+title: "Create a MEAN Stack Application"
+title_meta: "MEAN Stack Tutorial: Create an Example Application"
 contributor:
   name: Cameron Laird
   link: https://twitter.com/Phaseit
@@ -28,9 +27,9 @@ MEAN is an acronym for the combination of technology stacks–**M**ongoDB, **E**
 - Express.js is a web application framework based on Node.
 - Angular is a web framework for the front end.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can learn about each technology of the MEAN stack in our guides on [Angular](/docs/guides/angular-tutorial-for-beginners/), [Node.js](/docs/guides/how-to-install-nodejs/), [MongoDB](/docs/guides/databases/mongodb/), and [Express.js](/docs/guides/express-js-tutorial/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install the MEAN Stack
 
@@ -118,9 +117,9 @@ my-angular-app is running!
 
 This section shows you how to create a simple application that utilizes each component of the MEAN stack and demonstrates communication between each component. The example application illustrates how all the programmable pieces of a web application can be written in JavaScript. It also demonstrates how the different components exchange data between each other.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some additional functionality you might incorporate into a production application is user authentication, reading and writing data from your MongoDB records, data backups, and load balancing.
-{{</ note >}}
+{{< /note >}}
 
 ### Create and Populate the MongoDB Database
 

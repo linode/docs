@@ -33,14 +33,14 @@ Chef is comprised of a Chef server, one or more workstations, and a number of no
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
 -	One 4GB Linode to host the Chef server, running Ubuntu 14.04
 -	Two Linodes of any size to host a workstation and a node, each running Ubuntu 14.04
--	Each Linode should be configured by following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide
+-	Each Linode should be configured by following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide
 -	Each Linode needs to be configured to have a valid FQDN
 -	Ensure that all servers are up-to-date:
 

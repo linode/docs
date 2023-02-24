@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: This guide gives an overview of continuous integration and continuous development, and discusses how to leverage your Linode to create a CI/CD pipeline.
-og_description: This guide gives an overview of continuous integration and continuous development, and discusses how to leverage your Linode to create a CI/CD pipeline.
 keywords: ['jenkins','pipeline','ci','automation', 'continuous integration', 'continuous delivery']
 aliases: ['/development/ci/introduction-ci-cd/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,11 +11,10 @@ published: 2018-04-18
 modified: 2018-04-18
 modified_by:
   name: Linode
-title: "Overview of Continuous Integration and Continuous Delivery"
-h1_title: "Introduction to Continuous Integration and Continuous Delivery (CI/CD)"
-enable_h1: true
+title: "Introduction to Continuous Integration and Continuous Delivery (CI/CD)"
+title_meta: "Overview of Continuous Integration and Continuous Delivery"
 external_resources:
-  - '[How to Automate Builds with Jenkins on Ubuntu](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/)'
+  - '[How to Automate Builds with Jenkins on Ubuntu](/docs/guides/automate-builds-with-jenkins-on-ubuntu/)'
 audiences: ["foundational", "beginner"]
 tags: ["automation"]
 ---

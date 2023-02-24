@@ -23,7 +23,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 ## Before You Begin
 
 1.  You need root access to the system or a user account with `sudo` privilege.
-2.  Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+2.  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 3.  Update your system.
 
 ## Installation
@@ -38,7 +38,7 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
         sudo yum install mariadb-server php-mysql
 
-2.  Ensure MariaDB is running and and enabled to start automatically on reboot:
+2.  Ensure MariaDB is running and enabled to start automatically on reboot:
 
         sudo systemctl start mariadb
         sudo systemctl enable mariadb
@@ -81,7 +81,7 @@ quit
 
         sudo yum install php-fpm
 
-2.  Ensure PHP-FPM is running and and enabled to start automatically on reboots:
+2.  Ensure PHP-FPM is running and enabled to start automatically on reboots:
 
         sudo systemctl start php-fpm
         sudo systemctl enable php-fpm

@@ -1,6 +1,7 @@
 ---
 slug: creating-a-mongodb-replication-set-on-centos-6-4
 deprecated: true
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 author:
   name: Linode
   email: docs@linode.com
@@ -11,8 +12,8 @@ aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on CentOS 6.4'
-h1_title: 'Creating a MongoDB Replication Set on CentOS 6.4'
+title: 'Creating a MongoDB Replication Set on CentOS 6.4'
+title_meta: 'How To Create a MongoDB Replication Set on CentOS 6.4'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -28,9 +29,9 @@ tags: ["nosql","database","centos"]
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) and [Administration Basics guide](/docs/using-linux/administration-basics/).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our using Linux document series including the [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) and [Administration Basics guide](/docs/guides/linux-system-administration-basics/).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can review our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 ## Installing MongoDB
 
@@ -66,7 +67,7 @@ europa
         gpgcheck=0
         enabled=1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A 32-bit system is not recommended for production deployments.
 {{< /note >}}
 

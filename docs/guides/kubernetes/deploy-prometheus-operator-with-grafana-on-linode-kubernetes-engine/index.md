@@ -12,8 +12,8 @@ published: 2020-07-29
 image: DeployPromOp_Graf_LKE.png
 modified_by:
   name: Linode
-title: "How to Deploy Prometheus Operator and Grafana on LKE"
-h1_title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
+title: "Deploying Prometheus Operator and Grafana on LKE (Linode Kubernetes Engine)"
+title_meta: "How to Deploy Prometheus Operator and Grafana on LKE"
 external_resources:
 - '[Prometheus Operator Helm Chart on Github](https://github.com/helm/charts/tree/master/stable/prometheus-operator): Useful for reviewing configuration parameters and troubleshooting.'
 - '[Prometheus Documentation](https://prometheus.io/docs/introduction/overview/)'
@@ -22,7 +22,7 @@ external_resources:
 aliases: ['/kubernetes/deploy-prometheus-operator-with-grafana-on-linode-kubernetes-engine/']
 ---
 
-In this guide, you will deploy the [Prometheus Operator](https://github.com/helm/charts/tree/master/stable/prometheus-operator) to your Linode Kubernetes Engine (LKE) cluster using [Helm](https://helm.sh/), either as:
+In this guide, you will deploy the [Prometheus Operator](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) to your Linode Kubernetes Engine (LKE) cluster using [Helm](https://helm.sh/), either as:
 
 *   a [minimal deployment](#prometheus-operator-minimal-deployment) using `kubectl` port-forward for local access to your monitoring interfaces, or
 *   a [deployment with HTTPS and basic auth](#prometheus-operator-deployment-with-https-and-basic-auth) using the NGINX Ingress Controller and HTTPS for secure, path-based, public access to your monitoring interfaces.
@@ -33,7 +33,7 @@ When administrating any system, effective monitoring tools can empower users to 
 
 Since its release in 2016, [Prometheus](https://prometheus.io/) has become a leading monitoring tool for containerized environments including Kubernetes. [Alertmanager](https://prometheus.io/docs/alerting/latest/alertmanager/) is often used with Prometheus to send and manage alerts with tools such as [Slack](https://slack.com/). [Grafana](https://grafana.com/), an open source visualization tool with a robust web interface, is commonly deployed along with Prometheus to provide centralized visualization of system metrics.
 
-The community-supported [Prometheus Operator Helm Chart](https://github.com/coreos/prometheus-operator) provides a complete monitoring stack including each of these tools along with [Node Exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter) and [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics), and is designed to provide robust Kubernetes monitoring in its default configuration.
+The community-supported [Prometheus Operator Helm Chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) provides a complete monitoring stack including each of these tools along with [Node Exporter](https://github.com/helm/charts/tree/master/stable/prometheus-node-exporter) and [kube-state-metrics](https://github.com/helm/charts/tree/master/stable/kube-state-metrics), and is designed to provide robust Kubernetes monitoring in its default configuration.
 
 While there are several options for deploying the Prometheus Operator, using [Helm](https://helm.sh/), a Kubernetes "package manager," to deploy the community-supported the Prometheus Operator enables you to:
 
@@ -43,15 +43,15 @@ While there are several options for deploying the Prometheus Operator, using [He
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
-1.  [Deploy an LKE Cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with more available resources.
+1.  [Deploy an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [2 GB Linodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using Linodes with more available resources.
 
-1.  Install [Helm 3](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
+1.  Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
-1.  Install [kubectl](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment and [connect to your cluster](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
+1.  Install [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment and [connect to your cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
 
 1.  Create the `monitoring` namespace on your LKE cluster:
 
@@ -71,7 +71,7 @@ This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubern
 
 1.  (Optional) For [public access with HTTPS and basic auth](#prometheus-operator-deployment-with-https-and-basic-auth) configured for your web interfaces of your monitoring tools:
 
-    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/guides/dns-manager/#add-a-domain) for the one that you have purchased.
+    *   Purchase a domain name from a reliable domain registrar and configure your registrar to [use Linode's nameservers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) with your domain. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) for the one that you have purchased.
 
     *   Ensure that `htpasswd` is installed to your local environment. For many systems, this tool has already been installed. Debian and Ubuntu users will have to install the apache2-utils package with the following command:
 
@@ -87,9 +87,9 @@ In this section, you will create a Helm chart values file and use it to deploy P
 
 1.  Using the text editor of your choice, create a file named `values.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The below configuration will establish persistent data storage with three separate 10GB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
-    {{< /caution >}}
+    {{< /note >}}
 
     {{< file "~/lke-monitor/values.yaml" yaml >}}
 # Prometheus Operator Helm Chart values for Linode Kubernetes Engine minimal deployment
@@ -132,7 +132,7 @@ kubeScheduler:
 
 1.  Export an environment variable to store your Grafana admin password:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace `prom-operator` in the below command with a secure password and save the password for later reference.
     {{< /note >}}
 
@@ -141,13 +141,14 @@ Replace `prom-operator` in the below command with a secure password and save the
 1.  Using Helm, deploy a Prometheus Operator release labeled `lke-monitor` in the `monitoring` namespace on your LKE cluster with the settings established in your `values.yaml` file:
 
         helm install \
-        lke-monitor stable/prometheus-operator \
+        lke-monitor stable/kube-prometheus-stack\
         -f ~/lke-monitor/values.yaml \
         --namespace monitoring \
         --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD \
-        --set prometheusOperator.createCustomResource=false
+        --set prometheusOperator.createCustomResource=false \
+        --repo https://prometheus-community.github.io/helm-charts
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can safely ignore messages similar to `manifest_sorter.go:192: info: skipping unknown hook: "crd-install"` as discussed in this [Github issues thread](https://github.com/helm/charts/issues/19452).
 
 Alternatively, you can add `--set prometheusOperator.createCustomResource=false` to the above command to prevent the message from appearing.
@@ -161,14 +162,14 @@ Alternatively, you can add `--set prometheusOperator.createCustomResource=false`
 
     {{< output >}}
 NAME                                                     READY   STATUS    RESTARTS   AGE
-alertmanager-lke-monitor-prometheus-ope-alertmanager-0   2/2     Running   0          45s
-lke-monitor-grafana-84cbb54f98-7gqtk                     2/2     Running   0          54s
-lke-monitor-kube-state-metrics-68c56d976f-n587d          1/1     Running   0          54s
-lke-monitor-prometheus-node-exporter-6xt8m               1/1     Running   0          53s
-lke-monitor-prometheus-node-exporter-dkc27               1/1     Running   0          53s
-lke-monitor-prometheus-node-exporter-pkc65               1/1     Running   0          53s
-lke-monitor-prometheus-ope-operator-f87bc9f7c-w56sw      2/2     Running   0          54s
-prometheus-lke-monitor-prometheus-ope-prometheus-0       3/3     Running   1          35s
+alertmanager-lke-monitor-alertmanager-0           2/2     Running   0          12m
+lke-monitor-grafana-7d5949ddf-kdbdk               3/3     Running   0          12m
+lke-monitor-kube-state-metrics-6c5d86887c-x2hp8   1/1     Running   0          21m
+lke-monitor-operator-957f88688-ztbr7              1/1     Running   0          21m
+lke-monitor-prometheus-node-exporter-5wk87        1/1     Running   0          21m
+lke-monitor-prometheus-node-exporter-m8j2b        1/1     Running   0          21m
+lke-monitor-prometheus-node-exporter-wz8v5        1/1     Running   0          21m
+prometheus-lke-monitor-prometheus-0               2/2     Running   0          12m
     {{< /output >}}
 
 ### Access Monitoring Interfaces with Port-Forward
@@ -180,28 +181,29 @@ prometheus-lke-monitor-prometheus-ope-prometheus-0       3/3     Running   1    
     You should see an output similar to the following:
 
     {{< output >}}
-NAME                                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                     AGE
-alertmanager-operated                     ClusterIP   None            &lt;none&gt;        9093/TCP,9094/TCP,9094/UDP  115s
-lke-monitor-grafana                       ClusterIP   10.128.140.155  &lt;none&gt;        80/TCP                      2m3s
-lke-monitor-kube-state-metrics            ClusterIP   10.128.165.34   &lt;none&gt;        8080/TCP                    2m3s
-lke-monitor-prometheus-node-exporter      ClusterIP   10.128.192.213  &lt;none&gt;        9100/TCP                    2m3s
-lke-monitor-prometheus-ope-alertmanager   ClusterIP   10.128.153.6    &lt;none&gt;        9093/TCP                    2m3s
-lke-monitor-prometheus-ope-operator       ClusterIP   10.128.198.160  &lt;none&gt;        8080/TCP,443/TCP            2m3s
-lke-monitor-prometheus-ope-prometheus     ClusterIP   10.128.121.47   &lt;none&gt;        9090/TCP                    2m3s
-prometheus-operated                       ClusterIP   None            &lt;none&gt;        9090/TCP                    105s
+NAME                                   TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+alertmanager-operated                  ClusterIP   None             <none>        9093/TCP,9094/TCP,9094/UDP   21m
+lke-monitor-alertmanager               ClusterIP   10.128.42.223    <none>        9093/TCP                     22m
+lke-monitor-stack-grafana              ClusterIP   10.128.19.98     <none>        80/TCP                       22m
+lke-monitor-kube-state-metrics         ClusterIP   10.128.74.245    <none>        8080/TCP                     22m
+lke-monitor-operator                   ClusterIP   10.128.150.125   <none>        443/TCP                      22m
+lke-monitor-prometheus                 ClusterIP   10.128.202.139   <none>        9090/TCP                     22m
+lke-monitor-prometheus-node-exporter   ClusterIP   10.128.212.80    <none>        9100/TCP                     22m
+prometheus-operated                              ClusterIP   None             <none>        9090/TCP                     21m
+
     {{< /output >}}
 
     From the above output, the resource services you will access have the corresponding ports:
 
-    | Resource     | Service Name                                                    | Port |
-    | ------------ | --------------------------------------------------------------- | ---- |
-    | Prometheus   | lke&#8209;monitor&#8209;prometheus&#8209;ope&#8209;prometheus   | 9090 |
-    | Alertmanager | lke&#8209;monitor&#8209;prometheus&#8209;ope&#8209;alertmanager | 9093 |
-    | Grafana      | lke&#8209;monitor&#8209;grafana                                 | 80   |
+    | Resource     | Service Name                         | Port |
+    | ------------ | -------------------------------------| ---- |
+    | Prometheus   | lke&#8209;monitor&#8209;prometheus   | 9090 |
+    | Alertmanager | lke&#8209;monitor&#8209;alertmanager | 9093 |
+    | Grafana      | lke&#8209;monitor&#8209;grafana      | 80   |
 
 1.  Use `kubectl` [port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) to open a connection to a service, then access the service's interface by entering the corresponding address in your web browser:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Press **control+C** on your keyboard to terminate a port-forward process after entering any of the following commands.
     {{< /note >}}
 
@@ -230,7 +232,7 @@ Press **control+C** on your keyboard to terminate a port-forward process after e
 
 ## Prometheus Operator Deployment with HTTPS and Basic Auth
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before you start on this section, ensure that you have completed all of the steps in [Before you Begin](#before-you-begin).
 {{< /note >}}
 
@@ -263,13 +265,13 @@ NAME                       TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)
 nginx-ingress-controller   LoadBalancer   10.128.41.200   192.0.2.0      80:30889/TCP,443:32300/TCP   59s   app.kubernetes.io/component=controller,app=nginx-ingress,release=nginx-ingress
     {{< /output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS Manager and [create an A record](/docs/guides/dns-manager/#add-dns-records) using this external IP address and a hostname value corresponding to the subdomain you plan to use with your domain.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to Linode's DNS Manager and [create an A record](/docs/products/networking/dns-manager/guides/manage-dns-records/) using this external IP address and a hostname value corresponding to the subdomain you plan to use with your domain.
 
 Now that your NGINX Ingress Controller has been deployed and your domain's A record has been updated, you are ready to enable HTTPS on your monitoring interfaces.
 
 ### Install cert-manager
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before performing the commands in this section, ensure that your DNS has had time to propagate across the internet. You can query the status of your DNS by using the following command, substituting `example.com` for your domain (including a subdomain if you have configured one).
 
     dig +short example.com
@@ -279,7 +281,7 @@ If successful, the output should return the IP address of your NodeBalancer.
 
 1.  Install cert-manager's CRDs.
 
-        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.2/cert-manager.crds.yaml
+        kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.11.0/cert-manager.crds.yaml
 
 1.  Add the Helm repository which contains the cert-manager Helm chart.
 
@@ -293,8 +295,8 @@ If successful, the output should return the IP address of your NodeBalancer.
 
         helm install \
         cert-manager jetstack/cert-manager \
-        --namespace cert-manager \
-        --version v0.15.2
+        --namespace cert-manager --create-namespace \
+        --version v1.8.0
 
 1.  Verify that the corresponding cert-manager pods are running and ready.
 
@@ -316,7 +318,7 @@ Now that cert-manager is installed and running on your cluster, you will need to
 1.  Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations, replacing the value of `email` with your own email address for the ACME challenge:
 
     {{< file "~/lke-monitor/acme-issuer-prod.yaml" yaml>}}
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
@@ -334,7 +336,7 @@ spec:
 
     - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Let's Encrypt provides a staging ACME server that can be used to test issuing trusted certificates, while not worrying about hitting [Let's Encrypt's production rate limits](https://letsencrypt.org/docs/rate-limits/). The staging URL is `https://acme-staging-v02.api.letsencrypt.org/directory`.
         {{< /note >}}
 
@@ -351,12 +353,12 @@ After you have a ClusterIssuer resource, you can create a Certificate resource. 
 
 1.  Using the text editor of your choice, create a file named `certificate-prod.yaml` with the example configurations:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace the value of `spec.dnsNames` with the domain, including subdomains, that you will use to host your monitoring interfaces.
     {{< /note >}}
 
     {{< file "~/lke-monitor/certificate-prod.yaml" yaml >}}
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: prometheus-operator-prod
@@ -372,7 +374,7 @@ spec:
   - example.com
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The configurations in this example create a Certificate in the `monitoring` namespace that is valid for 90 days and renews 15 days before expiry.
     {{< /note >}}
 
@@ -426,13 +428,13 @@ In this section, you will create a Helm chart values file and use it to deploy P
 
 1.  Using the text editor of your choice, create a file named `values-https-basic-auth.yaml` in the `~/lke-monitor` directory and save it with the configurations below. Since the control plane is Linode-managed, as part of this step we will also disable metrics collection for the control plane component:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace all instances of `example.com` below with the [domain you have configured](#before-you-begin), including subdomains, for use with this guide.
     {{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The below configuration will establish persistent data storage with three separate 10GB [Block Storage Volumes](https://www.linode.com/products/block-storage/) for Prometheus, Alertmanager, and Grafana. Because the Prometheus Operator deploys as [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/), these Volumes and their associated [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) resources must be deleted manually if you later decide to tear down this Helm release.
-    {{< /caution >}}
+    {{< /note >}}
 
     {{< file "~/lke-monitor/values-https-basic-auth.yaml" yaml >}}
 # Helm chart values for Prometheus Operator with HTTPS and basic auth
@@ -533,7 +535,7 @@ kubeScheduler:
 
 1.  Export an environment variable to store your Grafana admin password:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace `prom-operator` in the below command with a secure password and save the password for later reference.
     {{< /note >}}
 
@@ -541,12 +543,12 @@ Replace `prom-operator` in the below command with a secure password and save the
 
 1.  Using Helm, deploy a Prometheus Operator release labeled `lke-monitor` in the `monitoring` namespace on your LKE cluster with the settings established in your `values-https-basic-auth.yaml` file:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have already deployed a Prometheus Operator release, you can upgrade it by replacing `helm install` with `helm upgrade` in the below command.
     {{< /note >}}
 
         helm install \
-        lke-monitor stable/prometheus-operator \
+        lke-monitor stable/kube-prometheus-stack \
         -f ~/lke-monitor/values-https-basic-auth.yaml \
         --namespace monitoring \
         --set grafana.adminPassword=$GRAFANA_ADMINPASSWORD
@@ -572,15 +574,16 @@ to create & configure Alertmanager and Prometheus instances using the Operator.
     You should see a similar output to the following, confirming that you are ready to access your monitoring interfaces using your domain:
 
     {{< output >}}
-NAME                                                     READY   STATUS    RESTARTS   AGE
-alertmanager-lke-monitor-prometheus-ope-alertmanager-0   2/2     Running   0          45s
-lke-monitor-grafana-84cbb54f98-7gqtk                     2/2     Running   0          54s
-lke-monitor-kube-state-metrics-68c56d976f-n587d          1/1     Running   0          54s
-lke-monitor-prometheus-node-exporter-6xt8m               1/1     Running   0          53s
-lke-monitor-prometheus-node-exporter-dkc27               1/1     Running   0          53s
-lke-monitor-prometheus-node-exporter-pkc65               1/1     Running   0          53s
-lke-monitor-prometheus-ope-operator-f87bc9f7c-w56sw      2/2     Running   0          54s
-prometheus-lke-monitor-prometheus-ope-prometheus-0       3/3     Running   1          35s
+NAME                                                        READY   STATUS    RESTARTS   AGE
+alertmanager-lke-monitor-alertmanager-0           2/2     Running   0          12m
+lke-monitor-grafana-7d5949ddf-kdbdk               3/3     Running   0          12m
+lke-monitor-kube-state-metrics-6c5d86887c-x2hp8   1/1     Running   0          21m
+lke-monitor-operator-957f88688-ztbr7              1/1     Running   0          21m
+lke-monitor-prometheus-node-exporter-5wk87        1/1     Running   0          21m
+lke-monitor-prometheus-node-exporter-m8j2b        1/1     Running   0          21m
+lke-monitor-prometheus-node-exporter-wz8v5        1/1     Running   0          21m
+prometheus-lke-monitor-prometheus-0               2/2     Running   0          12m
+
     {{< /output >}}
 
 ### Access Monitoring Interfaces from your Domain

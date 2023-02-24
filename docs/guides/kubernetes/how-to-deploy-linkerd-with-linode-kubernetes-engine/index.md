@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
-og_description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
 keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ published: 2019-11-07
 image: Deploy_Linkerd_2_with_Linode_Kubernetes_Engine_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
-h1_title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
+title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
+title_meta: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
 contributor:
   name: Heather Zoppetti
 external_resources:
@@ -26,11 +25,11 @@ aliases: ['/kubernetes/how-to-deploy-linkerd-with-linode-kubernetes-engine/']
 
 [Linkerd 2](https://linkerd.io) is an ultra lightweight service mesh that monitors, reports, and encrypts connections between Kubernetes services without disturbing the existing applications. It does this by employing proxy sidecars along each instance.
 
-Unlike [Istio](/docs/kubernetes/how-to-deploy-istio-with-kubernetes/), another service mesh monitoring tool, it provides it's own proxies written in Rust instead of using Envoy. This makes it both lighter and more secure.
+Unlike [Istio](/docs/guides/how-to-deploy-istio-with-kubernetes/), another service mesh monitoring tool, it provides it's own proxies written in Rust instead of using Envoy. This makes it both lighter and more secure.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linkerd 1.x is still available and is being actively developed as a separate project. However, it is built on the "Twitter stack" and is not for Kubernetes. Linkerd 2 is built in Rust and Go and only supports Kubernetes.
-{{</ note >}}
+{{< /note >}}
 
 ## In This Guide
 
@@ -42,23 +41,23 @@ This guide provides instructions to:
 - [Upgrade Linkerd](#upgrade-linkerd)
 - [Uninstall Linkerd](#uninstall-linkerd)
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments/)  guide for detailed information about how hourly billing works and for a table of plan pricing.
-{{</ caution >}}
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+{{< /note >}}
 
 ## Before You Begin
 
-Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/kubernetes/kubernetes-use-cases/).
+Familiarize yourself with Kubernetes using our series [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) and [Advantages of Using Kubernetes](/docs/guides/kubernetes-use-cases/).
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linkerd 2 requires Kubernetes version 1.13+. Linode Kubernetes Engine clusters currently support Kubernetes versions 1.15, 1.16, and 1.17.
-{{</ note >}}
+{{< /note >}}
 
 ## Install Linkerd
 
@@ -243,7 +242,7 @@ Opening Linkerd dashboard in the default browser
 
     - This command sets up a port forward from the `linkerd-web` Pod.
 
-    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
+    - If you want to expose the dashboard for others to use as well, you need to add an [ingress controller](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
 
 1.  The dashboard opens in the browser. If it does not, you can access it by going to http://localhost:50750:
 
@@ -259,15 +258,15 @@ Opening Linkerd dashboard in the default browser
 
     To see what the other Pods are doing, replace `linkerd-web` with a different Pod name, for example, to check on Grafana, use, `linkerd-grafana`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Linkerd is not designed to be a long term metrics data store. It only stores data for 6 hours using Prometheus. However, if you can export the data using [several methods](https://linkerd.io/2/tasks/exporting-metrics/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install Demo Application (Optional)
 
 To demonstrate the full ease of use and utility of Linkerd, deploy Drupal on the cluster and monitor it using Linkerd.
 
-1.  Follow the [How to Install Drupal with Linode Kubernetes Engine](/docs/kubernetes/how-to-install-drupal-with-linode-kubernetes-engine/) guide to install Drupal onto your LKE cluster.
+1.  Follow the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/) guide to install Drupal onto your LKE cluster.
 
 ### Add Linkerd to Drupal
 
@@ -452,9 +451,9 @@ Uninstalling Linkerd is done in two steps. First, you remove the data plane prox
 
         linkerd install --ignore-cluster | kubectl delete -f -
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may receive errors about deleting resources that haven't been created. You can safely ignore these.
-{{</ note >}}
+{{< /note >}}
 
 1.  Roll the deployments to redeploy the manifests without the Linkerd proxies, replace `namespace` with the namespace where your deployments reside:
 

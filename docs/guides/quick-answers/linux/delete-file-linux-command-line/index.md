@@ -10,14 +10,14 @@ published: 2018-07-03
 modified: 2022-01-14
 modified_by:
   name: Edward Angert
-title: "Use rm to Delete Files and Directories on Linux (Command Line)"
+title: "Use rm to Delete Files and Directories on Linux"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/delete-file-linux-command-line/']
 ---
 
 This guide shows how to use `rm` to remove files, directories, and other content from the command line in Linux.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To avoid creating examples that might remove important files, this Quick Answer uses variations of `filename.txt`. Adjust each command as needed.
 {{< /note >}}
 
@@ -98,7 +98,7 @@ Add the `f` flag to a recursive `rm` command to skip all confirmation prompts:
 
 ### Remove Old Files Using find and rm
 
-Combine the [find command](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/)'s `-exec` option with `rm` to find and remove all files older than 28 days old.  The files that match are printed on the screen (`-print`):
+Combine the [find command](/docs/guides/find-files-in-linux-using-the-command-line/)'s `-exec` option with `rm` to find and remove all files older than 28 days old.  The files that match are printed on the screen (`-print`):
 
     find filename* -type f -mtime +28 -exec rm '{}' ';' -print
 

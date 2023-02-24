@@ -29,9 +29,9 @@ This guide will walk through the steps necessary to install and configure Tiny T
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Follow the steps in the [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide.
+2.  Follow the steps in the [LAMP on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide.
 
 3.  Make sure your system is up to date:
 
@@ -87,7 +87,7 @@ The recommended installation method for Tiny Tiny RSS is to clone the repository
 
         sudo git clone https://tt-rss.org/git/tt-rss.git /var/www/html
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command will clone tt-rss into the `/var/www/html` directory at the root, which means you will access the application at the root URL of your webserver (for example, at http://myserver).
 If you would prefer to use Tiny Tiny RSS under a separate URL (for example, at http://myserver/tt-rss), you can change the directory indicated in the `git clone` command to `/var/www/html/tt-rss`.
 
@@ -115,7 +115,7 @@ At this point the application should be accessible under Apache. As an example, 
 
 2.  After filling in the fields, click **Test configuration** to perform a preliminary check of your setup. If everything is ready, click the **Initialize database** button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Initializing the database will wipe all data in the `ttrss` database.
 If you are installing over a previous installation, perform any backups as necessary.
 {{< /note >}}

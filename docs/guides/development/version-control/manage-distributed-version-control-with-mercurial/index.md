@@ -23,7 +23,7 @@ tags: ["version control system"]
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privileges.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 - Update your system.
 
 ## Installing Mercurial
@@ -39,7 +39,7 @@ tags: ["version control system"]
 
 ## Local Mercurial Workflows
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
 {{< /note >}}
 

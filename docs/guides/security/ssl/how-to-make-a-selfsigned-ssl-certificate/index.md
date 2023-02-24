@@ -1,7 +1,7 @@
 ---
 slug: how-to-make-a-selfsigned-ssl-certificate
 deprecated: true
-deprecated_link: /guides/create-a-self-signed-tls-certificate/
+deprecated_link: 'guides/create-a-self-signed-tls-certificate/'
 author:
   name: Linode
   email: docs@linode.com
@@ -18,7 +18,7 @@ external_resources:
 tags: ["security","ssl"]
 ---
 
-This guide explains the creation of a self-signed SSL certificate, suitable for personal use or for applications used internally in an organization. The end product may be used with SSL-capable software such as web servers, email servers, or other server systems. We assume that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and that you're logged into your Linode as root via a shell session.
+This guide explains the creation of a self-signed SSL certificate, suitable for personal use or for applications used internally in an organization. The end product may be used with SSL-capable software such as web servers, email servers, or other server systems. We assume that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via a shell session.
 
 ## Installing OpenSSL
 
@@ -51,6 +51,6 @@ You will be asked for several configuration values. Enter values appropriate for
 
 Once your certificate has been generated, you will need to configure your web server to utilize the new certificate. Instructions for doing so with several popular platforms can be found at the links below:
 
-- [SSL Certificates with Apache on Debian and Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu)
-- [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos)
-- [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx)
+- [SSL Certificates with Apache on Debian and Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/)
+- [SSL Certificates with Apache on CentOS 7](/docs/guides/ssl-apache2-centos/)
+- [SSL Certificates with Nginx](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/)

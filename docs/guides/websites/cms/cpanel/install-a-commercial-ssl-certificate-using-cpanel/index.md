@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  This guide requires that you have cPanel/WHM installed and configured on your system. If you do not have it installed, follow our instructions on how to [Install cPanel on CentOS](/docs/websites/cms/install-cpanel-on-centos).
+1.  This guide requires that you have cPanel/WHM installed and configured on your system. If you do not have it installed, follow our instructions on how to [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/).
 
 2.  You should have a cPanel account created. If you have not created an account yet, reference the cPanel Documentation to learn how to [Create a New Account](https://documentation.cpanel.net/display/ALD/Create+a+New+Account).
 

@@ -28,7 +28,7 @@ aliases: ['/applications/containers/when-and-why-to-use-docker/']
 
 Since its release in 2012, [Docker](https://www.docker.com) has become one of the fastest-growing technologies in devops and web development. Like any new technology, however, it is still under development, has some limitations, and is not right for every project. This guide provides an overview of the pros and cons of Docker so that you can decide whether it would be a good addition to your project.
 
-For a more basic introduction to Docker concepts and terminology, see our [An Introduction to Docker](/docs/applications/containers/introduction-to-docker/) guide.
+For a more basic introduction to Docker concepts and terminology, see our [An Introduction to Docker](/docs/guides/introduction-to-docker/) guide.
 
 ## Benefits of Docker
 

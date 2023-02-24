@@ -10,7 +10,7 @@ published: 2021-02-23
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying ServerWand through the Linode Marketplace"
+title: "Deploy ServerWand through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,13 +28,13 @@ aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/pl
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** ServerWand should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 18.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ## Getting Started After Deployment

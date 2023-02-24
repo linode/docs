@@ -25,8 +25,8 @@ A Salt *execution module* is a Python module that runs on a Salt minion. It perf
 
 If you haven't already, set up a Salt master and at least one Salt minion. You can follow the first few steps of our [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide.
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prepare Salt

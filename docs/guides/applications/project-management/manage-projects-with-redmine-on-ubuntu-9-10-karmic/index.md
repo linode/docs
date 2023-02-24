@@ -25,11 +25,11 @@ relations:
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Ubuntu 9.10 (Karmic) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 
-We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
+We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -135,7 +135,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
 
 {{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
 <VirtualHost 12.34.56.78:80>

@@ -10,8 +10,6 @@ published: 2021-12-23
 modified_by:
   name: Linode
 title: "Confidential Computing: A Collaborative Security Model for Data in Use"
-h1_title: "Confidential Computing: A Collaborative Security Model for Data in Use"
-enable_h1: true
 contributor:
   name: Pam Baker
 ---

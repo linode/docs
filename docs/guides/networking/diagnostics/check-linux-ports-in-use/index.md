@@ -11,9 +11,8 @@ modified: 2022-01-14
 tags: ["networking","linux"]
 modified_by:
   name: Linode
-title: "Check Open and Listening Ports on Linux Using netstat and ss"
-h1_title: "Checking Open and Listening Ports on Linux Using netstat and ss"
-enable_h1: true
+title: "Checking Open and Listening Ports on Linux Using netstat and ss"
+title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller

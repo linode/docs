@@ -13,7 +13,7 @@ modified: 2015-12-21
 modified_by:
   name: Sergey Pariev
 published: 2016-02-18
-title: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
+title: 'Deploy Clojure with Immutant and WildFly on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
@@ -33,19 +33,19 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 In this guide `example.com` will be used as a domain name, and `linode-user` as a name of non-root user. Substitute your own FQDN and username accordingly.
 {{< /note >}}
 
 ## Install Oracle JDK 8
 
-1.  Add Oracle Java 8 Installer PPA repository to the system. If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7/) guide.
+1.  Add Oracle Java 8 Installer PPA repository to the system. If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/guides/java-development-wildfly-centos-7/) guide.
 
         sudo add-apt-repository ppa:webupd8team/java
 
@@ -105,7 +105,7 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
     ![Luminus application main page](clj-luminus-main-page.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure port 3000 is open in firewall for this to work.
 {{< /note >}}
 

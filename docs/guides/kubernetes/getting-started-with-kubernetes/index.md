@@ -11,9 +11,8 @@ published: 2019-04-30
 modified: 2021-12-30
 modified_by:
   name: Linode
-title: "Use kubeadm to Deploy a Cluster on Linode"
-h1_title: "Using kubeadm to Deploy a Kubernetes Cluster"
-enable_h1: true
+title: "Using kubeadm to Deploy a Kubernetes Cluster"
+title_meta: "Use kubeadm to Deploy a Cluster on Linode"
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/']
 contributor:
   name: Linode
@@ -26,7 +25,7 @@ external_resources:
 
 You can use <abbr title="kubeadm is a cloud provider agnostic tool that automates many of the tasks required to get a cluster up and running.">kubeadm</abbr> to run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a <abbr title="A separate server in a Kubernetes cluster responsible for maintaining the desired state of the cluster.">master node</abbr> and <abbr title="Worker nodes in a Kubernetes cluster are servers that run your applications’ Pods.">worker nodes</abbr>. This guide walks you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution is covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide's example instructions result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
 {{< /note >}}
 
@@ -42,15 +41,15 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
 
 ## Before You Begin
 
-1.  Deploy three Linodes running Ubuntu 18.04 with the following system requirements:
+1.  Deploy three Linodes running Ubuntu 18.04 with a minimum of the following system requirements:
 
     - One Linode to use as the master Node with 4GB RAM and 2 CPU cores.
-    - Two Linodes to use as the worker Nodes each with 1GB RAM and 1 CPU core.
+    - Two Linodes to use as the worker Nodes each with 2GB RAM and 1 CPU core.
 
-1.  Follow the [Getting Started](/docs/guides/getting-started) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
-    {{< note >}}
-When following the [Getting Started](/docs/guides/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
+    {{< note respectIndent=false >}}
+When following the [Getting Started](/docs/products/platform/get-started/) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
 {{< /note >}}
 
 1.  Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the <abbr title="The kube-scheduler is a function that looks for newly created Pods that have no nodes.">kube-scheduler</abbr> from assigning a Pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.
@@ -75,28 +74,28 @@ The following table provides a list of the Kubernetes tooling you need to instal
 | Tool | Master Node | Worker Nodes |
 | --------- | :---------: | :----------: |
 | <abbr title="This tool provides a simple way to create a Kubernetes cluster by automating the tasks required to get a cluster up and running. New Kubernetes users with access to a cloud hosting provider, like Linode, can use kubeadm to build out a playground cluster. kubeadm is also used as a foundation to create more mature Kubernetes deployment tooling.">kubeadm</abbr>| x | x |
-| <abbr title="A container runtime is responsible for running the containers that make up a cluster's pods. This guide will use Docker as the container runtime.">Container Runtime</abbr> | x | x |
+| <abbr title="A container runtime is responsible for running the containers that make up a cluster's pods. This guide will use Docker Engine as the container runtime.">Container Runtime</abbr> | x | x |
 | <abbr title="kubelet ensures that all pod containers running on a node are healthy and meet the specifications for a pod's desired behavior.">kubelet</abbr> | x | x |
 | <abbr title="A command line tool used to manage a Kubernetes cluster.">kubectl</abbr>| x | x |
 | <abbr title="The control plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
- {{< note >}}
- The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
- {{< /note >}}
+{{< note respectIndent=false >}}
+The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
+{{< /note >}}
 
-### Install the Container Runtime: Docker
+### Install the Container Runtime: Docker Engine
 
-Docker is the software responsible for running the Pods on each node. You can use other container runtime software with Kubernetes, such as [Containerd](https://containerd.io/) and [CRI-O](https://cri-o.io/). You need to install Docker on all three Linodes.
+For this installation, Docker Engine will be the software responsible for running the Pods on each node. If preferred, other container runtimes can be used with Kubernetes, such as [Containerd](https://containerd.io/) and [CRI-O](https://cri-o.io/). In order to ensure the container runtime is usable, it must be installed on **all Linodes in the cluster**.
 
 These steps install Docker Community Edition (CE) using the official Ubuntu repositories. To install on another distribution, see the official [installation page](https://docs.docker.com/install/).
 
 1.  Remove any older installations of Docker that may be on your system:
 
-        sudo apt remove docker docker-engine docker.io
+        sudo apt remove docker docker.io containerd runc
 
 1.  Make sure you have the necessary packages to allow the use of Docker's repository:
 
-        sudo apt install apt-transport-https ca-certificates curl software-properties-common
+        sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg curl lsb-release
 
 1.  Add Docker's GPG key:
 
@@ -106,7 +105,7 @@ These steps install Docker Community Edition (CE) using the official Ubuntu repo
 
         sudo apt-key fingerprint 0EBFCD88
 
-    You should see output similar to the following:
+    You should see the following output:
 
     {{< output >}}
 pub   4096R/0EBFCD88 2017-02-22
@@ -122,7 +121,7 @@ sub   4096R/F273FCD8 2017-02-22
 1.  Update your package index and install Docker CE. For more information, see the [Docker](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker) instructions within the Kubernetes setup guide.
 
         sudo apt update
-        sudo apt install docker-ce docker-ce-cli containerd.io
+        sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
     Alternatively, you can install specific versions of the software if you wish to prioritize stability. The following example installs specific versions, though you may wish to find the latest validated versions within [Kubernetes dependencies file](https://github.com/kubernetes/kubernetes/blob/master/build/dependencies.yaml).
 
@@ -135,7 +134,7 @@ sub   4096R/F273FCD8 2017-02-22
 
         sudo usermod -aG docker $USER
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After entering the `usermod` command, you need to close your SSH session and open a new one for this change to take effect.
 {{< /note >}}
 
@@ -165,17 +164,55 @@ After entering the `usermod` command, you need to close your SSH session and ope
         sudo systemctl daemon-reload
         sudo systemctl restart docker
 
+1. To ensure that Docker is using systemd as the cgroup driver, enter the following command:
+
+        sudo docker info | grep -i cgroup
+
+   You should see the following output:
+
+   {{< output >}}
+Cgroup Driver: systemd
+Cgroup Version: 1
+{{< /output >}}
+
+### Install the cri-dockerd Service
+
+Although previously an unnecessary step when using Docker as a container runtime, as of [Kubernetes v1.24](https://kubernetes.io/releases/#release-v1-24), the [Dockershim adapter service was officially removed from Kubernetes](https://kubernetes.io/blog/2022/02/17/dockershim-faq/). In order to prepare for this change, Mirantis and Docker have worked together to create an adapter service called **cri-dockerd** to continue support for Docker as a container runtime. Installing the [cri-dockerd](https://github.com/mirantis/cri-dockerd) service is a necessary step on all clusters using Kubernetes version 1.24 or later, and should be performed when following the steps in this guide:
+
+1.  Install the `go` programming language to support later commands performed during the installation process:
+
+        sudo apt install golang-go
+
+1.  Clone the `cri-dockerd` repository and change your working directory into the installation path:
+
+        cd && git clone https://github.com/Mirantis/cri-dockerd.git
+        cd cri-dockerd
+
+1.  Build the code:
+
+        sudo mkdir bin
+        cd src && go get && go build -o ../bin/cri-dockerd
+
+1.  Configure `cri-dockerd` to work with systemd:
+
+        cd .. && mkdir -p /usr/local/bin
+        install -o root -g root -m 0755 bin/cri-dockerd /usr/local/bin/cri-dockerd
+        cp -a packaging/systemd/* /etc/systemd/system
+        sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
+
+1.  Reload all systemd files and ensure that the systemd service for `cri-dockerd` is fully enabled:
+
+        systemctl daemon-reload
+        systemctl enable cri-docker.service
+        systemctl enable --now cri-docker.socket
+
 ### Install kubeadm, kubelet, and kubectl
 
 Complete the steps outlined in this section on all three Linodes.
 
-1.  Update the system and install the required dependencies for installation:
-
-        sudo apt-get update && sudo apt-get install -y apt-transport-https curl
-
 1.  Add the required GPG key to your apt-sources keyring to authenticate the Kubernetes related packages you install:
 
-        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg  | sudo apt-key add -
 
 1.  Add Kubernetes to the package manager's list of sources:
 
@@ -201,29 +238,30 @@ After installing the Kubernetes related tooling on all your Linodes, you are rea
 
 The primary components of the control plane are the <abbr title="The kube-apiserver is the front end for the Kubernetes API server. It validates and configures data for Kubernetes’ API objects including Pods, Services, Deployments, and more.">kube-apiserver</abbr>, <abbr title="The kube-controller-manager is a daemon that manages the Kubernetes control loop. It watches the shared state of the cluster through the Kubernetes API server.">kube-controller-manager</abbr>, kube-scheduler, and etcd. You can easily initialize the Kubernetes master node with all the necessary control plane components using kubeadm. For more information on each of control plane component see the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/).
 
-In addition to the baseline control plane components, there are several *addons*, that can be installed on the master node to access additional cluster features. You need to install a networking and network policy provider add on that implements the [Kubernetes' network model](https://kubernetes.io/docs/concepts/cluster-administration/networking/) on the cluster's Pod network.
+In addition to the baseline control plane components, there are several *addons*, that can be installed on the master node to access additional cluster features. You need to install a networking and network policy provider addon that implements the [Kubernetes' network model](https://kubernetes.io/docs/concepts/cluster-administration/networking/) on the cluster's Pod network.
 
 This guide uses *Calico* as the Pod network add on. Calico is a secure and open source L3 networking and network policy provider for containers. There are several other network and network policy providers to choose from. To view a full list of providers, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 kubeadm only supports Container Network Interface (CNI) based networks. CNI consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers
-{{</ note >}}
+{{< /note >}}
 
-1.  Initialize kubeadm on the master node. This command runs checks against the node to ensure it contains all required Kubernetes dependencies, if the checks pass, it then installs the control plane components.
+1.  Initialize kubeadm on the master node. This command runs checks against the node to ensure it contains all required Kubernetes dependencies. If the checks pass, kubeadm installs the control plane components.
 
-    When issuing this command, it is necessary to set the Pod network range that Calico uses to allow your Pods to communicate with each other. It is recommended to use the private IP address space, `10.2.0.0/16`.
+    When issuing this command, it is necessary to set the Pod network range that Calico uses to allow your Pods to communicate with each other. It is recommended to use the private IP address space, `10.2.0.0/16`. Additionally, the CRI connection socket will need to be manually set, in this case to use the socket path to `cri-dockerd`.
 
-    {{< note >}}
-The Pod network IP range should not overlap with the service IP network range. The default service IP address range is `10.96.0.0/12`. You can provide an alternative service ip address range using the `--service-cidr=10.97.0.0/12` option when initializing kubeadm. Replace `10.97.0.0/12` with the desired service IP range.
+    {{< note respectIndent=false >}}
+The Pod network IP range should not overlap with the service IP network range. The default service IP address range is `10.96.0.0/12`. You can provide an alternative service ip address range using the `--service-cidr=10.97.0.0/12` option when initializing kubeadm. Replace `10.97.0.0/12` with the desired service IP range:
 
 For a full list of available kubeadm initialization options, see the official [Kubernetes documentation](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/).
-    {{</ note >}}
+    {{< /note >}}
 
-        sudo kubeadm init --pod-network-cidr=10.2.0.0/16
+        sudo kubeadm init --pod-network-cidr=10.2.0.0/16 --cri-socket=unix:///var/run/cri-dockerd.sock
 
       You should see a similar output:
 
       {{< output >}}
+
 Your Kubernetes control-plane has initialized successfully!
 
 To start using your cluster, you need to run the following as a regular user:
@@ -253,10 +291,10 @@ kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-1.  Install the necessary Calico manifests to your master node and apply them using kubectl. The first file, `rbac-kdd.yaml`, works with Kubernetes' role-based access control (RBAC) to provide Calico components access to necessary parts of the Kubernetes API. The second file, `calico.yaml`, configures a self-hosted Calico installation that uses the Kubernetes API directly as the datastore (instead of etcd).
+1.  Install the necessary Calico manifests to your master node and apply them using kubectl:
 
-        kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-        kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+        kubectl create -f https://projectcalico.docs.tigera.io/manifests/tigera-operator.yaml
+        kubectl create -f https://projectcalico.docs.tigera.io/manifests/custom-resources.yaml
 
 ### Inspect the Master Node with Kubectl
 
@@ -325,10 +363,10 @@ Follow the steps below on each node you would like to bootstrap to the cluster a
 
         ssh username@192.0.2.1
 
-1.  Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server's port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash. The bootstrap process takes a few moments.
+1.  Join the node to your cluster using kubeadm. Ensure you replace `192.0.2.0:6443` with the IP address for your master node along with its Kubernetes API server's port number, `udb8fn.nih6n1f1aijmbnx5` with your bootstrap token, and `sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26` with your CA key hash. Additionally, ensure that the `--cri-socket` option is manually added to the command to specify `cri-docker` using the `unix:///var/run/cri-dockerd.sock` socket. The final command will resemble the following, and may take a few moments to complete:
 
-        sudo kubeadm join 192.0.2.0:6443 --token udb8fn.nih6n1f1aijmbnx5 \
-        --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26
+        sudo kubeadm join :6443 --token udb8fn.nih6n1f1aijmbnx5 \
+        --discovery-token-ca-cert-hash sha256:b7c01e83d63808a4a14d2813d28c127d3a1c4e1b6fc6ba605fe4d2789d654f26 --cri-socket=unix:///var/run/cri-dockerd.sock
 
       When the bootstrap process has completed, you should see a similar output:
 
@@ -361,4 +399,4 @@ Now that you have a Kubernetes cluster up and running, you can begin experimenti
 
 ## Tear Down Your Cluster
 
-If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Removing Services](/docs/guides/billing-and-payments/#removing-services) section of the [Billing and Payments](/docs/guides/billing-and-payments/) guide.
+If you are done experimenting with your Kubernetes cluster, be sure to remove the Linodes you have running in order to avoid being further billed for them. See the [Managing Billing in the Cloud Manager > Removing Services](/docs/products/platform/billing/guides/stop-billing/) guide.

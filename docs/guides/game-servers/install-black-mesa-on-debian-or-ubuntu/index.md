@@ -32,10 +32,10 @@ This guide will show you how to set up your own [Black Mesa](https://blackmesaso
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Black Mesa](http://store.steampowered.com/app/362890/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Black Mesa
@@ -76,7 +76,7 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 
         ./srcds_run -game bms +hostname "My Linode" +map gasworks +maxplayers 24
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The **game** parameter specifies the game's files directory; don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br><br>
 The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br><br>
 The **map** parameter specifies the map with which the server needs to start. You must write the name of the map file without the prefix.<br><br>
@@ -85,15 +85,15 @@ The **maxplayers** parameter specifies the maximum number of players allowed to 
 You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 {{< /note >}}
 
-{{< note >}}
-To keep the server running, execute it using [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/):
+{{< note respectIndent=false >}}
+To keep the server running, execute it using [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/):
 
     screen ./srcds_run -game bms +map gasworks +maxplayers 24
 {{< /note >}}
 
 ## Configure a Black Mesa Dedicated Server
 
-{{< note >}}
+{{< note respectIndent=false >}}
 At the time of writing this guide, Black Mesa has yet to share with customers any official documentation regarding configurations.
 {{< /note >}}
 
@@ -117,9 +117,9 @@ mp_warmup_time 30                 --> Time before the match starts.
 {{< /file >}}
 
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The settings in **server.cfg** will override the ones that you specify (using parameters) when you start the server.
-{{< /caution >}}
+{{< /note >}}
 
 ### Config_deathmatch.cfg
 The **config_deathmatch.cfg** file contains the settings of the gamemode. You can edit almost everything in this file.
@@ -166,7 +166,7 @@ In the following example, maps that were downloaded from workshop to the list ar
 {{< /file >}}
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can find more maps in the [Steam Workshop](http://steamcommunity.com/workshop/browse/?appid=362890&requiredtags[]=Multiplayer).
 {{< /note >}}
 
@@ -229,7 +229,7 @@ screen -r "BMDS" -X stuff "./srcds_run -game bms +map gasworks +maxplayers 24\n"
 
         ./run.sh
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The **game** parameter specifies the game's files directory, don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
 The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br />
 The **map** parameter specifies with which map the server needs to start. You must write the name of the map file without the prefix.<br />
@@ -250,7 +250,7 @@ You can read the entire list of parameters on the [Valve Wiki](https://developer
 
         wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 This URL constantly changes as MetaMod is updated. Please check the downloads [page](http://www.metamodsource.net/snapshots) for the current URL.
 {{< /note >}}
 
@@ -281,7 +281,7 @@ It is recommended that you install the **SourceMod** add-on. It provides useful 
 
         wget https://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5829-linux.tar.gz
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This URL constantly changes as SourceMod is updated. Please check the downloads [page](https://www.sourcemod.net/downloads.php) for the current URL.
 {{< /note >}}
 
@@ -304,7 +304,7 @@ If you get similar output, it means that MetaMod and SourceMod are working.
 
 Now, SourceMod will be automatically loaded by MetaMod when starting the Black Mesa Dedicated Server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Read the [MetaMod Official Wiki](https://wiki.alliedmods.net/Category:Metamod:Source_Documentation) and the [SourceMod Official Wiki](https://wiki.alliedmods.net/index.php/Category:SourceMod_Documentation) for info about configurations, plug-ins, files, etc.
 {{< /note >}}
 

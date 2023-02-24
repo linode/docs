@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-24
 modified_by:
   name: Linode
-title: "Open Source Software: Benefits Explained"
-h1_title: "What are the Advantages of Open Source Software?"
-enable_h1: true
+title: "What are the Advantages of Open Source Software?"
+title_meta: "Open Source Software: Benefits Explained"
 contributor:
   name: Jack Wallen
 ---
@@ -66,7 +65,7 @@ This lack of vendor lock-in plays into cost, reliability, and flexibility. Any c
 
 ## More Web-Based Tools
 
-The world depends on the cloud and other web-based systems. Although many traditional administrators still prefer to configure and manage from the command-line, the tide is shifting to a web-based frontier. Many open-source operating systems, such as Red Hat, Alma Linux, and Rocky Linux, now ship with Cockpit, a web-based admin GUI, installed by default. The Linux operating system is turning more toward web-based tools for those users who prefer them. Tools like Cockpit, [Webmin](/docs/guides/webmin-marketplace-app/), [phpMyAdmin](/docs/guides/phpmyadmin-marketplace-app/), [cPanel](/docs/guides/cpanel-marketplace-app/), VestaCP, Ajenti, froxlor, aaPanel, ISPConfig, and Sentora, provide companies with centralized administration of their servers and services.
+The world depends on the cloud and other web-based systems. Although many traditional administrators still prefer to configure and manage from the command-line, the tide is shifting to a web-based frontier. Many open-source operating systems, such as Red Hat, Alma Linux, and Rocky Linux, now ship with Cockpit, a web-based admin GUI, installed by default. The Linux operating system is turning more toward web-based tools for those users who prefer them. Tools like Cockpit, [Webmin](/docs/products/tools/marketplace/guides/webmin/), [phpMyAdmin](/docs/products/tools/marketplace/guides/phpmyadmin/), [cPanel](/docs/products/tools/marketplace/guides/cpanel/), VestaCP, Ajenti, froxlor, aaPanel, ISPConfig, and Sentora, provide companies with centralized administration of their servers and services.
 
 The need for more web-based tools is continuing to rise because more companies are migrating their servers from on-premises data centers to third-party hosting services, where Linux enjoys the largest deployment market share.
 

@@ -16,7 +16,7 @@ aliases: ['/security/security-patches/disabling-sslv3-for-poodle/']
 ---
 
 ![Disabling_sslv3_for_poodle](Disabling_SSLv3_for_POODLE_smg.jpg)
-Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability/) which was found in OpenSSL.
+Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/guides/patching-openssl-for-the-heartbleed-vulnerability/) which was found in OpenSSL.
 
 SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers to retrieve plain-text output from otherwise encrypted information.
 
@@ -124,7 +124,7 @@ You'll want to look in the `# TLS parameters` section of `/etc/postfix/main.cf`.
 
 For more information about Postfix's `smtpd_tls_mandatory_protocols` setting, please see their [Postfix Configuration Parameters](http://www.postfix.org/postconf.5.html#smtpd_tls_mandatory_protocols) documentation.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Postfix documentation has not yet been adjusted to disallow SSLv3.
 {{< /note >}}
 

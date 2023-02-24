@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-12-06
 modified_by:
   name: Linode
-title: 'How to Install Apps on Kubernetes with Helm 3'
-h1_title: 'Installing Apps on Kubernetes with Helm 3'
+title: 'Installing Apps on Kubernetes with Helm 3'
+title_meta: 'How to Install Apps on Kubernetes with Helm 3'
 aliases: ['/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/how-to-install-apps-on-kubernetes-with-helm/','/applications/containers/kubernetes/how-to-install-apps-on-kubernetes-with-helm/','/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/']
 concentrations: ["Kubernetes"]
 external_resources:
@@ -98,26 +98,26 @@ The Helm client software issues commands to your cluster. You run the client sof
 
 ## Before You Begin
 
-1.   [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
+1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
-1.   You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with [Linode's Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher. This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6 and later.
+1.  You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with [Linode's Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier (g6-standard-2) or higher. This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6 and later.
 
-   {{< content "k8s-alpha-deprecation-shortguide" >}}
+    {{< content "k8s-alpha-deprecation-shortguide" >}}
 
 
-   {{< note >}}
-This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
-{{< /note >}}
+    {{< note >}}
+    This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
+    {{< /note >}}
 
-1.   You should also make sure that your Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
+1.  You should also make sure that your Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
         kubectl config get-contexts
 
-1.   You can set kubectl to use a certain cluster context with the `use-context` subcommand and the cluster name that was previously output from the `get-contexts` subcommand:
+1.  You can set kubectl to use a certain cluster context with the `use-context` subcommand and the cluster name that was previously output from the `get-contexts` subcommand:
 
         kubectl config use-context your-cluster-name
 
-1.  It is beneficial to have a registered [domain name](/docs/networking/dns/dns-records-an-introduction/) for this guide's example app, but it is not required.
+1.  It is beneficial to have a registered [domain name](/docs/guides/dns-overview/) for this guide's example app, but it is not required.
 
 ## Install Helm
 
@@ -186,7 +186,7 @@ mariadb.mariadbRootPassword: "secretpassword"
 
     Replace the value for `ghostHost` with a domain or subdomain that you own and would like to assign to the app; the value for `ghostEmail` with your email; the values for `ghostUsername` and `ghostPassword` with the credentials you wish to use for logging into your site; and the value for `mariabd.mariadbRootPassword` for the password you wish to use for logging into the database.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.
 {{< /note >}}
 
@@ -260,7 +260,7 @@ ghost-1576075187	default  	1       	2019-12-11 09:39:50.168546 -0500 EST	deploye
 
 1.  If you haven't set up DNS for your site yet, you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.66/ghost`). Visit this page in your browser and then follow the steps to complete admin account creation. You should be granted access to the administrative interface.
 
-1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/guides/dns-manager/) guide for instructions.
+1.  To set up DNS for your app, create an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
 ## Upgrade your App
 
@@ -298,9 +298,9 @@ ghost-1576075187	default  	2       	2019-12-11 11:54:49.136865 -0500 EST	deploye
 
 ## Delete a Release
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 By default, Helm 3 does not keep any information about deleted releases, which will prevent you from rolling back. If you suspect that you may need to [rollback](#roll-back-a-release) your release following deletion, you will need to use the `--keep-history` flag.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Use the `uninstall` command with the name of a release to delete it:
 
@@ -308,7 +308,7 @@ By default, Helm 3 does not keep any information about deleted releases, which w
 
     You should also confirm in the [Linode Cloud Manager](https://cloud.linode.com) that the Volumes and NodeBalancer created for the app are removed as well.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In Helm 2, deletions were performed using the `delete` command. This can still be entered to perform the same task, however in helm 3 `delete` aliases to `uninstall`.
 {{< /note >}}
 
@@ -320,6 +320,6 @@ In Helm 2, deletions were performed using the `delete` command. This can still b
 
         helm list --uninstalled
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can no longer rollback a deleted or uninstalled release.
 {{< /note >}}

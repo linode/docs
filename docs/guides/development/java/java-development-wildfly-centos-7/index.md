@@ -50,19 +50,19 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 ## Before You Begin
 
--   Please follow the steps mentioned in [Linode: Securing Your Server](/docs/guides/set-up-and-secure/) but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with [firewalld](https://fedoraproject.org/wiki/FirewallD).
+-   Please follow the steps mentioned in [Linode: Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) but skip the section Creating a Firewall as iptables has been replaced in CentOS 7 with [firewalld](https://fedoraproject.org/wiki/FirewallD).
 
 -   Start & enable Firewalld
 
         sudo systemctl start firewalld
         sudo systemctl enable firewalld
 
--   Please follow the steps mentioned in [Linode: Hosting a Website](/docs/websites/hosting-a-website/) sections "Installing MySQL", "Optimizing MySQL for a Linode 2GB", "Creating a Database".
+-   Please follow the steps mentioned in [Linode: Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) sections "Installing MySQL", "Optimizing MySQL for a Linode 2GB", "Creating a Database".
 
 
 ### Oracle Java 8 SE installation
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Oracle is producing many updates for Java, so below steps ensures you are getting the latest updated Java version.
 {{< /note >}}
 

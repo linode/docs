@@ -4,7 +4,6 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: "In this guide, we'll show you how to use Dokku to quickly deploy a Flask application with SSL and NGINX."
-og_description: "In this guide, we'll show you how to use Dokku to quickly deploy a Flask application with SSL and NGINX."
 keywords: ['docker','containers','nginx', 'heroku', 'PaaS', 'git', 'Platform-as-a-service', 'Platform As a Service']
 tags: ["container","docker","ssl","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -36,7 +35,7 @@ This guide demonstrates how to:
 Dokku v0.12.5 is compatible with Ubuntu 16.04 x64, Ubuntu 14.04 x64, and Debian 8.2 x64. CentOS 7 x64 is only supported experimentally, and as such some steps like configuring SSH keys and virtual hosts must be done manually using the dokku command line interface. See [the official documentation](http://dokku.viewdocs.io/dokku~v0.12.5/getting-started/installation/) for more information.
 {{< /note >}}
 
-A [public key](/docs/security/authentication/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
+A [public key](/docs/guides/use-public-key-authentication-with-ssh/) is assumed to be available. Typically this is located in `~/home/username/.ssh/id_rsa.pub`.
 
 Install Git if needed:
 
@@ -68,9 +67,9 @@ If necessary, please consult this document to setup swap: http://dokku.viewdocs.
 
     ![Initial Dokku Installation](dokku-public-key.png)
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Add the public key immediately after running the installation script to avoid someone else adding a public key to Dokku. For an unattended installation, refer to the [advanced installation instructions](https://github.com/dokku/dokku/blob/master/docs/getting-started/advanced-installation.md).
-{{< /caution >}}
+{{< /note >}}
 
 3.  To add additional SSH keys, pipe the output over SSH to the `dokku` user. Replace `example.com` with the IP address of your Linode.
 
@@ -218,7 +217,7 @@ The remaining steps in this guide should be performed from your Linode.
 
         dokku letsencrypt:cron-job --add
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This requires Dokku version 0.5 or higher. Check by running `dokku version`.
 {{< /note >}}
 

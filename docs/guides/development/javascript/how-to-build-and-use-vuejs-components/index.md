@@ -10,9 +10,8 @@ published: 2020-02-14
 modified_by:
   name: Linode
 image: BuildingandUsingVueJSComponents.png
-title: How to Build and Use VueJS Components (A Tutorial)
-h1_title: Building and Using VueJS Components
-enable_h1: true
+title: Building and Using VueJS Components
+title_meta: How to Build and Use VueJS Components (A Tutorial)
 contributor:
   name: Pavel Petrov
   link: https://github.com/WebBamboo/
@@ -37,7 +36,7 @@ In this guide you learn how to:
  - Embed content in a component [with slots](#using-slots)
  - Communicate information back to a component's parent [with events](#using-component-events)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can [download all of the example files for this guide here](how-to-build-and-use-vuejs-components.tar.gz).
 {{< /note >}}
 
@@ -396,7 +395,7 @@ Let's explore the code for this component:
 
 -   You can see how this default value is referenced for the new `rating-title` component on line 16. Whenever nothing is included between the `<rating-title></rating-title>` tags, the default value is used.
 
--   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is is not rendered.
+-   Compare this with how the component is used on lines 8 and 12. Because a title is included between the component's tags, the default text is not rendered.
 
 ### Named Slots
 

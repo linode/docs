@@ -29,8 +29,8 @@ You will need at least two Linodes with Salt installed. If you have not already,
 
 The following steps will be performed on your Salt master.
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setting Up Your Salt Master and Managed Files
@@ -126,7 +126,7 @@ IncludeOptional sites-enabled/*.conf
 
 ### Individual Steps
 
-This guide will be going through the process of creating the Apache for Debian and Ubuntu state file step by step. If you would like to view the entirety of the state file, [you can view it at the end of this section](/docs/applications/configuration-management/configure-apache-with-salt-stack/#complete-state-file).
+This guide will be going through the process of creating the Apache for Debian and Ubuntu state file step by step. If you would like to view the entirety of the state file, [you can view it at the end of this section](/docs/guides/configure-apache-with-salt-stack/#complete-state-file).
 
 1.  Create a state file named `apache-debian.sls` in `/srv/salt` and open it in a text editor of your choice.
 
@@ -188,7 +188,7 @@ Enable tune_apache:
 ...
 {{< /file >}}
 
-    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/applications/configuration-management/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
+    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/guides/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
 
 1.  Create the necessary directories:
 
@@ -275,7 +275,7 @@ Enable tune_apache:
 
     Any changes made to your `index.html` file on your Salt master will be propagated to your minion.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Since Salt is not watching configuration files for a change to trigger a restart for Apache, you may need to use the command below from your Salt master.
 
     salt '*' apache.signal restart
@@ -515,7 +515,7 @@ Configure Firewall:
       - 443/tcp
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is imperative that you list all ports you need open to your machine in this section. Failure to list these ports will result in their closure by Salt.
 {{< /note >}}
 

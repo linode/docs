@@ -36,7 +36,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
 ## Before You Begin Installing WordPress
 
--   Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-   Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check the hostname run:
 
@@ -45,7 +45,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
     The first command outputs the short hostname; the second, a fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
+-   Configure a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) web stack on Ubuntu 18.04 installation.
 
 -   If you are running NGINX, edit the `location /` block of the configuration to set `index.php` as an index for the site:
 
@@ -131,7 +131,7 @@ quit
 
     WordPress tests the credentials and if authentication is successful, prompts you to **Run the install**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If WordPress doesn't display when you visit the domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in the site's home directory.
 {{< /note >}}
 

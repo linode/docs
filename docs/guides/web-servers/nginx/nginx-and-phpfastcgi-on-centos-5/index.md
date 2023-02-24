@@ -18,8 +18,8 @@ external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
  - '[FastCGI Project Homepage](http://www.fastcgi.com/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
- - '[Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5/)'
- - '[Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+ - '[Installing Nginx on CentOS 5](/docs/guides/websites-with-nginx-on-centos-5/)'
+ - '[Basic Ngnix Configuration](/docs/guides/how-to-configure-nginx/)'
 relations:
     platform:
         key: nginx-php-fastcgi
@@ -29,7 +29,7 @@ relations:
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your CentOS 5 Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 
@@ -142,7 +142,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/guides/dns-manager/) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/products/networking/dns-manager/) pointing your domain name to your Linode's IP address.
 
 ## Configure spawn-fcgi
 

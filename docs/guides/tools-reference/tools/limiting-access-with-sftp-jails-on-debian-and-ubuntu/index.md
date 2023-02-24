@@ -16,7 +16,7 @@ published: 2010-01-06
 title: Limiting Access with SFTP Jails on Debian and Ubuntu
 external_resources:
 - '[OpenSSH Documentation](http://www.openssh.org/manual.html)'
-- '[An Introduction to Users and Groups](/docs/tools-reference/linux-users-and-groups/)'
+- '[An Introduction to Users and Groups](/docs/guides/linux-users-and-groups/)'
 ---
 
 As the system administrator for your Linode, you may want to give your users the ability to securely upload files to your server. The most common way to do this is to allow file transfers via Secure File Transfer Protocol (SFTP), which uses SSH to provide encryption. This requires that you give your users SSH logins. However, by default SSH users are able to view your Linode's entire filesystem, which may not be desirable.

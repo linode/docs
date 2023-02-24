@@ -29,9 +29,9 @@ This guide covers how to install and configure Odoo in just 35 minutes using Git
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/getting-started) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible. Do **not** follow the *Configuring a Firewall* section--this guide has instructions specifically for an Odoo production server.
 
 3.  Log in to your Linode via SSH and check for updates using `apt-get` package manager.
 
@@ -61,7 +61,7 @@ Now we're going to install the PostgreSQL database and other necessary server li
 
         sudo mkdir /var/log/odoo
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In the scenario of running multiple Odoo versions on the same Linode you may want to use different users and directories for each instance.
 {{< /note >}}
 
@@ -75,7 +75,7 @@ In the scenario of running multiple Odoo versions on the same Linode you may wan
 
         sudo git clone https://www.github.com/odoo/odoo --depth 1 --branch 9.0 --single-branch .
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Using Git allows great flexibility because any time a new upgrade ,is available you only need to pull that branch, You can even install a different one alongside the production version; just change the destination directory and the  `--branch X.x` flag. Before performing any operation, remember to make a full backup of your database and custom files.
 {{< /note >}}
 
@@ -91,13 +91,13 @@ Using Git allows great flexibility because any time a new upgrade ,is available 
 
 3.  You'll be prompted for a password, **save it**, we'll need it shortly.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the scenario of a testing or development environment you could create a user with no password using `createuser odoo -U postgres -dRS`.
 {{< /note >}}
 
 4.  Press **CTRL+D** to exit from `postgres` user session.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you want to run multiple Odoo instances on the same Linode remember to check pg_hba.conf and change it according your needs.
 {{< /note >}}
 

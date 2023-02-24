@@ -9,7 +9,7 @@ published: 2019-04-04
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a Team Fortress 2 Server through the Linode Marketplace"
+title: "Deploy a Team Fortress 2 Server through the Linode Marketplace"
 contributor:
   name: Linode
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -26,13 +26,13 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Team Fortress 2 should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ### Team Fortress 2 Options
@@ -45,6 +45,8 @@ Setting up a personal game server puts you in control of the game modes and maps
 - **Team Balance Enabled:** Automatically balance the number of players on a team.
 - **Maximum Rounds:** The maximum amount of rounds before the map changes.
 - **Round Time Limit:** The time per round, in minutes.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

@@ -10,9 +10,8 @@ modified: 2020-10-22
 modified_by:
   name: Linode
 published: 2020-10-22
-title: "How to Configure Automated Security Updates on CentOS"
-h1_title: "Configuring Automated Security Updates on CentOS"
-enable_h1: true
+title: "Configuring Automated Security Updates on CentOS"
+title_meta: "How to Configure Automated Security Updates on CentOS"
 aliases: ['/security/basics/how-to-configure-automated-security-updates-centos/']
 relations:
     platform:
@@ -26,15 +25,15 @@ Keeping your system up-to-date with the latest packages and security updates can
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
 
 1.  Log into your Linode via SSH and update.
 
         sudo yum update
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
 {{< /note >}}
 

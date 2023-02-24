@@ -11,9 +11,8 @@ published: 2021-02-11
 image: UnderstandingUnitTesting.png
 modified_by:
   name: Linode
-title: "What is Unit Testing?"
-h1_title: "Understanding Unit Testing"
-enable_h1: true
+title: "Understanding Unit Testing"
+title_meta: "What is Unit Testing?"
 contributor:
   name: Martin Heller
   link: https://twitter.com/meheller

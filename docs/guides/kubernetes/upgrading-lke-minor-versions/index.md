@@ -34,7 +34,7 @@ The current version of Kubernetes being used for each of your cluster configurat
 
 ![Check Kubernetes Version](check-kubernetes-version.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Alternatively, if you would like to get the current local version of Kubernetes on your cluster through kubectl, the following command can be entered:
 
         kubectl version | grep Server
@@ -53,17 +53,17 @@ While this process generally doesn't impact workloads in a significant way, it i
 
 The best method for ensuring uptime and a clean upgrade without issues is to carefully review the public changelog for the minor release your cluster will be upgrading to. All available information pertaining to Kubernetes version changes can be found on Kubernetes' public [Changelog Page](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG) for the Kubernetes project hosted on Github. In order to ensure that you'll be able to upgrade to the next minor version of Kubernetes without issue, find the changelog for the version of Kubernetes you will be upgrading to. For example, if your cluster is currently on version `v1.21`, select the changelog for `v1.22` or `CHANGELOG-1.22.md`. Minor version upgrades can only be performed one minor version ahead at a time, so this will always be one minor version ahead of your current Kubernetes version.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When reviewing the changelog, it is important to keep in mind that **patch releases** are deployed automatically to LKE Control Plane Components as needed, however this should not effect the intended behavior of your cluster. Only Major and Minor releases will have potentially breaking changes.
 {{< /note >}}
 
-Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
+Once you've found the correct Changelog for the version of Kubernetes you'll be upgrading to, find the section in the changelog that fits the naming convention for the minor release of your current Kubernetes version for the changes of most consequence. If you are upgrading from Kubernetes version `1.21` for example, find the section labeled [Changelog Since v1.21.0](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.20.md#changelog-since-v1190). Read through this section carefully for any new features and deprecations, paying close attention to the [What's New](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) and [Urgent Upgrade Notes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#urgent-upgrade-notes) subsection for information on the most critical changes. Additional areas of special attention should include the [Known Issues](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#known-issues), [Deprecation Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#deprecation), and [API Changes](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#api-change-1) subsections. That being said, for the absolute best guarantee of a clean upgrade, we recommend reading through this full section to gain a full understanding of what you may need to know.
 
 When upgrading from Kubernetes version 1.21 to [version 1.22](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.22.md#whats-new-major-themes) for example, LKE users will want to pay especially close attention to the removal of several beta Kubernetes APIs they may be using in their clusters and adjust their configurations as needed by following Kubernetes' recommendations [linked from the changelog](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22).
 
 As API changes are an issue that can commonly go unnoticed when upgrading LKE, we additionally recommend checking Kubernetes' [API deprecation guide](https://kubernetes.io/docs/reference/using-api/deprecation-guide/#v1-22) for more information on API changes, and how they should be addressed in specific circumstances.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When investigating potential issues discovered by exploring the Kubernetes Changelog, you may need to search for specific strings containing potentially breaking configurations. Using the [grep command](/docs/guides/how-to-grep-for-text-in-files/) is generally a good way to do this quickly.
 
 For example, if you need to find where you may be using the currently deprecated API `networking.k8s.io/v1beta1`, enter the following command from the root directory containing your Kubernetes configuration files:
@@ -83,7 +83,7 @@ Popeye can either be installed using the package manager [Homebrew](https://brew
 
 ### Ubuntu 20.04
 
-Before proceeding with installation on **Ubuntu 20.04 LTS**, ensure that all of the following commands are entered as a [limited sudo user](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with access to a fully configured [LKE](https://www.linode.com/products/kubernetes/) or [Kubernetes](/docs/guides/kubernetes/) cluster with [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl/) fully installed and using your kubeconfig configuration file. A good way to test this is to ensure that you can see all nodes in your cluster when entering the following command:
+Before proceeding with installation on **Ubuntu 20.04 LTS**, ensure that all of the following commands are entered as a [limited sudo user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) with access to a fully configured [LKE](https://www.linode.com/products/kubernetes/) or [Kubernetes](/docs/guides/kubernetes/) cluster with [kubectl](/docs/products/compute/kubernetes/guides/install-kubectl/) fully installed and using your kubeconfig configuration file. A good way to test this is to ensure that you can see all nodes in your cluster when entering the following command:
 
     kubectl get nodes
 

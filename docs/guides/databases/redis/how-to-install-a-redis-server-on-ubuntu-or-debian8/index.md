@@ -38,16 +38,16 @@ Since Redis serves all data from memory, we recommend using a [High Memory Linod
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 4.  Install the `software-properties-common` package:
 
         sudo apt-get install software-properties-common
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 To utilize the replication steps in the second half of this guide, you will need at least two Linodes.
 {{< /note >}}
@@ -164,9 +164,9 @@ The following steps will guide you through master/slave replication, with the sl
 
 For this section of the guide, you will use two Linodes, respectively named `master` and `slave`.
 
-1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode) option in the Linode Manager.
 
-2.  Configure [Private IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
+2.  Configure [Private IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
 
 3.  Configure the `master` Redis instance to listen on a private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the `master` Linode's private IP address
 
@@ -217,7 +217,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. Security methods include:
 
-- Setting up a firewall using [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/).
+- Setting up a firewall using [iptables](/docs/guides/control-network-traffic-with-iptables/).
 
 - Encrypting Redis traffic, using an SSH tunnel or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

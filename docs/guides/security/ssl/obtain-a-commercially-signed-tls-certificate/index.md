@@ -19,7 +19,7 @@ tags: ["security","ssl"]
 
 If you intend to host a publicly accessible website which will use HTTPS, then you will want to install a commercially signed TLS certificate so people visiting your site don't get warnings in their browser about an unsafe connection.
 
-The easiest method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). The [CertBot](/docs/quick-answers/websites/secure-http-traffic-certbot/) tool makes obtaining and renewing certificates through Let's Encrypt extremely simple. However, this isn't a viable option for everyone.
+The easiest method is to sign your certificate using [Let's Encrypt](https://letsencrypt.org/). The [CertBot](/docs/guides/secure-http-traffic-certbot/) tool makes obtaining and renewing certificates through Let's Encrypt extremely simple. However, this isn't a viable option for everyone.
 
 If you need [Domain Validation](https://en.wikipedia.org/wiki/Domain-validated_certificate) or [Extended Validation certificates](https://en.wikipedia.org/wiki/Extended_Validation_Certificate), you must create a Certificate Signing Request (CSR) for submission to a Certificate Authority (CA) such as Thawte or Verisign. This is the method for obtaining a signed TLS certificate that this guide focuses on.
 
@@ -27,7 +27,7 @@ Some CAs allow you to create a CSR directly through their web interface after yo
 
 Research certificate authorities thoroughly before deciding on the company which will be used for things such as protecting customers' personal information via HTTPS, cryptographically signing emails, or granting access to internal platforms.
 
-If you intend to use your SSL certificate on a website, see our guide on [Enabling TLS for HTTPS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections) once you’ve completed the process in this guide.
+If you intend to use your SSL certificate on a website, see our guide on [Enabling TLS for HTTPS on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process in this guide.
 
 ## Create a Certificate Signing Request (CSR)
 

@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: Prometheus_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Prometheus through the Linode Marketplace"
+title: "Deploy Prometheus through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -25,7 +25,7 @@ Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect m
 
 {{< note >}}
 Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting and detailed visualizations. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -33,28 +33,28 @@ Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Prometheus should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9, Debian 10
+- **Supported distributions:** Debian 10
 - **Recommended minimum plan:** 4GB Dedicated CPU or Shared Compute Instance
 
 ## Getting Started after Deployment
 
-## Access Your Prometheus Instance
+### Access Your Prometheus Instance
 
 Now that your Prometheus Marketplace App is deployed, you can log into Prometheus to access its [expression browser](https://prometheus.io/docs/prometheus/latest/getting_started/#using-the-graphing-interface), alerts, status, and more.
 
-1. Open a browser and navigate to `http://192.0.2.0:9090/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). This will bring you to your Prometheus instance's expression browser.
+1. Open a browser and navigate to `http://192.0.2.0:9090/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). This will bring you to your Prometheus instance's expression browser.
 
-1. Verify that Prometheus is serving metrics by navigating to `http://192.0.2.0:9090/metrics`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). You should see a page of metrics similar to the example below.
+1. Verify that Prometheus is serving metrics by navigating to `http://192.0.2.0:9090/metrics`. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). You should see a page of metrics similar to the example below.
 
     ![Verify that Prometheus is serving metrics by visiting the sample metrics page.](example-metrics.png)
 
-1. [Grafana](https://grafana.com/), the open source analytics and metric visualization tool, supports querying Prometheus. Consider [deploying a Grafana instance with Marketplace Apps](/docs/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/) to [create visualizations for your Prometheus metrics](https://prometheus.io/docs/visualization/grafana/#using).
+1. [Grafana](https://grafana.com/), the open source analytics and metric visualization tool, supports querying Prometheus. Consider [deploying a Grafana instance with Marketplace Apps](/docs/products/tools/marketplace/guides/grafana/) to [create visualizations for your Prometheus metrics](https://prometheus.io/docs/visualization/grafana/#using).
 
 ### Prometheus Default Settings
 

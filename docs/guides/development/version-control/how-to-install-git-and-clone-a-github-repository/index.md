@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/developing-git-github/','/development/version-control/how-to-install-git-and-clone-a-github-repository/','/development/version-control/developing-git-github/']
 modified: 2015-02-06
 external_resources:
- - '[Working with the Git Repository](/docs/development/version-control/how-to-configure-git/)'
+ - '[Working with the Git Repository](/docs/guides/how-to-configure-git/)'
  - '[GitHub Help Pages](https://help.github.com/)'
 modified_by:
   name: Linode
@@ -24,7 +24,7 @@ tags: ["version control system"]
 GitHub is a website that allows collaboration between developers using the Git version control system. With Git and GitHub, programmers from across the world can share ideas and code in an organized and up-to-date process.
 
 ## Install and Configure Git
-The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management/) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
+The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
 
 1.  Install:
 
@@ -117,7 +117,7 @@ Create files on the development Linode and push them to the forked repository on
 
         git add .
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 To add only one file, replace the period above with the full directory path and filename.
 {{< /note >}}
 
@@ -129,7 +129,7 @@ To add only one file, replace the period above with the full directory path and 
 
         git push https://github.com/SampleUser1234/test-repo-789.git newbranch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you've configure two-factor authorization (2FA) on this account, you will need to push over SSH. See GitHub's guide on [Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys/).
 {{< /note >}}
 

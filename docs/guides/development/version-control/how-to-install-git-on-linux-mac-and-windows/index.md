@@ -12,9 +12,8 @@ modified_by:
   name: Linode
 published: 2009-09-04
 os: ["mac", "linux", "windows"]
-title: "Install Git on Linux, Mac or Windows: A How To"
-h1_title: "Installing Git on Linux, Mac or Windows"
-enable_h1: true
+title: "Installing Git on Linux, Mac or Windows"
+title_meta: "Install Git on Linux, Mac or Windows: A How To"
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
@@ -32,10 +31,10 @@ Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki
 
 This guide explains how to install the latest, stable, and prepackaged version of Git on GNU/Linux, Mac OSX, and Windows, using their respective package managers. Git can also be [compiled from source and installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git#_installing_from_source) on any operating system.
 
-For more information about using and configuring Git, see our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
+For more information about using and configuring Git, see our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 
-{{< note >}}
-This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account.
+{{< note respectIndent=false >}}
+This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account.
 {{< /note >}}
 
 ## How to Install Git on Mac OSX
@@ -271,4 +270,4 @@ Go to the repository’s page on GitHub, click on the green **Code** button, and
 
 ## Get Started with Git
 
-Visit our guide on [Git configuration](/docs/development/version-control/how-to-configure-git/) for helpful commands to get you started with Git and GitHub repositories.
+Visit our guide on [Git configuration](/docs/guides/how-to-configure-git/) for helpful commands to get you started with Git and GitHub repositories.

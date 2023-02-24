@@ -53,7 +53,7 @@ This example will create an nginx container with port 80 exposed, using the offi
 
     ![DockerContainerImages](docker-container-images.png)
 
-2.  Update the original image with `docker pull nginx` as shown in the [How to Install Docker and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) guide. Run `docker images` again to confirm the update:
+2.  Update the original image with `docker pull nginx` as shown in the [How to Install Docker and Pull Images for Container Deployment](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide. Run `docker images` again to confirm the update:
 
     ![Docker Pull New nginx Image](docker-container-pull-new-image.png "Pull newest nginx image and confirm version number.")
 

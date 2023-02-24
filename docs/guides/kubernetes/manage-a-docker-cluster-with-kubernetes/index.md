@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Kubernetes makes it easy to manage containers across multiple servers. This guide shows how to manage Dockerized applications using Kubernetes.'
-og_description: 'Kubernetes makes it easy to manage containers across multiple servers. This guide shows how to manage Dockerized applications using Kubernetes.'
 keywords: ["Kubernetes", "cluster", "docker"]
 tags: ["docker","nginx","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,13 +29,13 @@ external_resources:
 
 A Kubernetes cluster consists of at least one master node and several worker nodes. The master node runs the API server, the scheduler and the controller manager, and the actual application is deployed dynamically across the cluster.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can now create a Kubernetes cluster with one command using the Linode CLI. To provision Kubernetes on Linodes, this tool uses the [Linode Kubernetes Terraform module](https://github.com/linode/terraform-linode-k8s), the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager), and the [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage.  See the [Kubernetes Tools](https://developers.linode.com/kubernetes/) page for installation steps. For an in-depth dive into the Linode Kubernetes Terraform module, see its related [Community Site post](https://www.linode.com/community/questions/17611/the-linode-kubernetes-module-for-terraform).
-{{</ note >}}
+{{< /note >}}
 
 ## System Requirements
 
-To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Cloud Manager to generate a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each Linode.
+To complete this guide you will need three Linodes running Ubuntu 16.04 LTS, each with at least 4GB of RAM. Before beginning this guide, you should also use the Cloud Manager to generate a [private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each Linode.
 
 ## Before You Begin
 

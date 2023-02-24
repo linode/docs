@@ -84,4 +84,4 @@ A *node* is a single instance of the Docker engine that participates in the Swar
 
 ## Next Steps
 
-To explore Docker further, visit our [Docker Quick Reference](/docs/applications/containers/docker-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](/docs/applications/containers/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide.
+To explore Docker further, visit our [Docker Quick Reference](/docs/guides/docker-commands-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](/docs/guides/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](/docs/guides/how-to-install-docker-and-deploy-a-lamp-stack/) guide.

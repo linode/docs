@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Beginner's Guide to Kubernetes (Part 5): Conclusion"
-h1_title: "A Beginner's Guide to Kubernetes (Part 5): Conclusion"
-enable_h1: true
+title: "A Beginner's Guide to Kubernetes (Part 5): Conclusion"
+title_meta: "Beginner's Guide to Kubernetes (Part 5): Conclusion"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
@@ -24,8 +23,8 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-{{< note >}}
-This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< note respectIndent=false >}}
+This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 In this guide you will learn about [networking](#networking) in Kubernetes and about [advanced Kubernetes topics](#advanced-topics).
@@ -60,10 +59,10 @@ There are a number of advanced topics in Kubernetes. Below are a few you might f
 
 ## Next Steps
 
-Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/kubernetes/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
+Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
 
 If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods instead. These methods are also a much faster way to get a cluster running, and they will also integrate your cluster with some useful Linode plugins:
 
-  - [How to Deploy Kubernetes on Linode with Rancher](/docs/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
+  - [How to Deploy Kubernetes on Linode with Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
   - [Use the Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/index.html)
-  - [Try the Linode Kubernetes Engine](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+  - [Try the Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)

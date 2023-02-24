@@ -31,12 +31,12 @@ Celery can be used in multiple configuration. Most frequent uses are horizontal 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install a Python 3 Environment
@@ -71,7 +71,7 @@ If other Python application are running on your host and you prefer to manage yo
 
         pip install celery
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you use a virtual environment, don't forget to activate your environment with step 3 when working on your project. All command in this guide assume the Celery virtual environment is activated.
 {{< /note >}}
 
@@ -335,7 +335,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
       ![Flower screenshot](flower-screenshot.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Flower is exposed through a public IP address, be sure to take additional steps to secure this through a [reverse proxy](https://flower.readthedocs.io/en/latest/reverse-proxy.html).
 {{< /note >}}
 

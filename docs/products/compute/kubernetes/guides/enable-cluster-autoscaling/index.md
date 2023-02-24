@@ -8,7 +8,7 @@ description: "How to Use Cluster Autoscaling for Linode Kubernetes Engine (LKE)"
 
 ### Configure Cluster Autoscaling
 
-1. To Enable cluster autoscaling, access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+1. To Enable cluster autoscaling, access the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. Click the **Autoscale Pool** option at the top-left of each entry in the **Node Pools** section. The Autoscaling menu will appear.
 

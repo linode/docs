@@ -7,10 +7,10 @@ keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress wit
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-04-26
+modified: 2022-07-28
 modified_by:
   name: Linode
-title: "Deploying WordPress through the Linode Marketplace"
+title: "Deploy WordPress through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -26,9 +26,9 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** WordPress should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -48,13 +48,19 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though the connection will not be secure. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
+
+    {{< note >}}
+    A TLS/SSL certificate is automatically generated for your custom domain, enabling you to connect to the site over the `https` protocol. If you did not enter a custom domain, a TLS/SSL certificate is configured on the rDNS domain instead. Connections using your IP address are not secured and will use the `http` protocol.
+    {{< /note >}}
 
 1.  Within the login page that appears, enter the username (*admin username*) and password (*admin password*) that you created when you deployed this instance. Then click the **Log In** button.
 
@@ -66,13 +72,13 @@ aliases: ['/platform/marketplace/deploying-wordpress-with-marketplace-apps/', '/
 
 ### Viewing Your Website
 
-Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
+Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
 ### Manually Configure a Domain
 
 If you didn't set up a domain during the deployment process, you can add it manually following the instructions in this section. Before beginning, make sure you have a registered domain name.
 
-1. Within the *name servers* for your domain name, create an [*A record*](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa). The *hostname* / *name* field should be *@* for a bare domain (`example.tld`) or should specify the subdomain you wish to use, such as *app* for `app.example.tld`. It's common to create two A records, one using *@* and one using *www*. The IP address should be the IPv4 address of your new Compute Instance. If you do not have a name server, consider using Linode's [DNS Manager](/docs/guides/dns-manager/).
+1. Within the *name servers* for your domain name, create an [*A record*](/docs/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *@* for a bare domain (`example.tld`) or should specify the subdomain you wish to use, such as *app* for `app.example.tld`. It's common to create two A records, one using *@* and one using *www*. The IP address should be the IPv4 address of your new Compute Instance. If you do not have a name server, consider using Linode's [DNS Manager](/docs/products/networking/dns-manager/).
 
 1. Update WordPress so that it uses your new domain name. This can be done directly in the WordPress Admin panel or through the command line. See [Changing The Site URL](https://wordpress.org/support/article/changing-the-site-url/) to learn more.
 
@@ -87,6 +93,26 @@ If you didn't set up a domain during the deployment process, you can add it manu
         ![Screenshot of the WordPress/Site Address URL fields](wordpress-site-address.png)
 
     1. Click the **Save Changes** button at the bottom of the form.
+
+### Resetting Your Admin Password or Email Address
+
+If you need to reset your admin user's password and you aren't receiving the password reset request email, you can update the password from command line. This method also allows you to update the email address for your admin account without needing an email confirmation.
+
+1. Log in to the Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
+
+1.  Navigate to the directory of your WordPress installation:.
+
+        cd /var/www/wordpress
+
+1.  Using the WP-CLI, update either the password or email address. You can also update other values as needed. See [WP-CLI wp user update command](https://developer.wordpress.org/cli/commands/user/update/).
+
+    **Update password** (replace *[user]* with the username of the user you want to update and *[password]* with the password you wish to use):
+
+        wp user update [user] --user_pass="[password]" --allow-root
+
+    **Update email** (replace *[user]* with the username of the user you want to update and *[email]* with the email address you wish to use):
+
+        wp user update [user] --user_email="[email]" --allow-root
 
 ## Going Further
 

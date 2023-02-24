@@ -10,7 +10,7 @@ published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying OpenLiteSpeed Rails through the Linode Marketplace"
+title: "Deploy OpenLiteSpeed Rails through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -26,13 +26,13 @@ The OpenLiteSpeed Rails app automatically installs the performance web server Op
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Rails should be fully installed within 20-25 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 18.04 LTS, Ubuntu 20.04 LTS
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ## Getting Started after Deployment
@@ -47,8 +47,8 @@ The OpenLiteSpeed Rails app automatically installs the performance web server Op
 1.  You are then prompted to enter the domain you'd like to use for this instance. You can optionally use a custom domain provided you've already configured the *A Records* to point to this server's IPv4 and IPv6 addresses. Otherwise, you can skip this by pressing *CTRL+C* which will use the IP address or default RDNS of the Compute Instance.
 
     {{< note >}}
-For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
-    {{</ note >}}
+    For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
+    {{< /note >}}
 
 Now that you’ve accessed your OpenLiteSpeed Rails instance, check out [the official OpenLiteSpeed Rails documentation](https://docs.litespeedtech.com/cloud/images/rails/) to learn how to further configure your OpenLiteSpeed Rails instance.
 

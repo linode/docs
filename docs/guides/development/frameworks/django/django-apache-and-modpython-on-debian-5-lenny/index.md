@@ -25,11 +25,11 @@ Django is a web development framework for the Python programing language. It ena
 
 This guide provides an introduction to getting started with the Django framework on Debian 5 (Lenny). We will be installing Django and related packages from the stable Debian repository, and deploying applications with mod\_python and the Apache web server. This setup is generally accepted as a platform for getting started with Django, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have a running and up to date Debian 5 (Lenny) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/debian-5-lenny) and a functional [MySQL database](/docs/databases/mysql/debian-5-lenny) installed. With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
+We assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and up to date Debian 5 (Lenny) system. Furthermore, you will want to have a running [Apache web server](/docs/guides/apache-2-web-server-on-debian-5-lenny/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/) installed. With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

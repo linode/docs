@@ -19,7 +19,7 @@ external_resources:
 - '[Github Guides](https://guides.github.com/)'
 ---
 
-Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that can be used to manage software projects. This guide's six steps will show you how to initialize a Git repository, stage files for a commit, and commit these files to a local Git repository. For fuller instruction, refer to our more robust guide on [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/).
+Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that can be used to manage software projects. This guide's six steps will show you how to initialize a Git repository, stage files for a commit, and commit these files to a local Git repository. For fuller instruction, refer to our more robust guide on [Git Source Control Management](/docs/guides/how-to-install-git-on-linux-mac-and-windows/).
 
 1.  Create a folder in which to store your files, then initialize a Git repository in that folder:
 
@@ -114,7 +114,7 @@ Now, commit the changes:
     create mode 100644 file3.txt
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 `git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit.
  `git add -A` stages `a`ll of the files in the directory. `git add .` stages only the new and modified files, omitting  any deleted files. `git add -u` stages only the modified and deleted files, omitting any new files.
 {{< /note >}}
