@@ -158,6 +158,7 @@ bashrc
 bc
 bdd
 benchmarked
+barchart
 berkshelf
 bernd
 berners
@@ -1568,6 +1569,7 @@ phusion
 pid
 pidfile
 pingable
+pinterest
 pipfile
 pipenv
 pipelined
