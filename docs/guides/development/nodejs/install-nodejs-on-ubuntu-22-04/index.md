@@ -10,7 +10,7 @@ published: 2023-02-24
 modified_by:
   name: Linode
 title: "How to Install Node.JS on Ubuntu 22.04"
-meta_title: "Installing Node.JS on Ubuntu 22.04"
+title_meta: "Installing Node.JS on Ubuntu 22.04"
 contributor:
   name: John Mueller
 external_resources:
