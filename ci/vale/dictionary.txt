@@ -1495,6 +1495,7 @@ offboarding
 oftc
 ohai
 ok
+okta
 oldstable
 oldfashioned
 onboarding
