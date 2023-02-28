@@ -1,5 +1,5 @@
 ---
-slug: how-to-install-mongodb-ubuntu-20-04
+slug: install-mongodb-on-ubuntu-20-04
 author:
   name: Linode Community
   email: docs@linode.com
@@ -10,7 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-12
 modified_by:
   name: Linode
-title: "How to Install MongoDB on Ubuntu 20.04"
+title: "Installing MongoDB on Ubuntu 20.04"
+title_meta: "How to Install MongoDB on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -23,7 +24,7 @@ external_resources:
 relations:
     platform:
         keywords:
-           - distribution: Ubuntu 22.04
+           - distribution: Ubuntu 20.04
 ---
 
 [MongoDB](https://www.mongodb.com/) is a *NoSQL* database that provides an alternative to *Relational DataBase Management System* (RDBMS) applications such as MySQL and MariaDB. This guide introduces MongoDB and explains how to install the latest release on Ubuntu 20.04.
@@ -64,7 +65,7 @@ The `mongodb` package provided with the standard Ubuntu repository is not the of
     sudo apt-get install gnupg
     ```
 
-2.  Import the public MongoDB GPG signing key. Verify the key is imported successfully.
+1.  Import the public MongoDB GPG signing key. Verify the key is imported successfully.
 
     ```command
     wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
@@ -74,29 +75,33 @@ The `mongodb` package provided with the standard Ubuntu repository is not the of
     OK
     ```
 
-3.  Add details about the official MongoDB repository to the list of Ubuntu packages.
+1.  Add details about the official MongoDB repository to the list of Ubuntu packages.
 
     ```command
     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
     ```
 
-4.  Update the list of packages using `apt`.
+1.  Update the list of packages using `apt`.
 
     ```command
     sudo apt-get update
     ```
 
-5.  Install the latest release of MongoDB.
-
-    {{< note >}}
-To install a specific release of MongoDB, use the command `sudo apt-get install -y mongodb-org=release mongodb-org-database=release mongodb-org-server=release mongodb-org-mongos=release mongodb-org-tools=release`. Replace `release` with the actual release to install.
-    {{< /note >}}
+1.  Install the latest release of MongoDB.
 
     ```command
     sudo apt-get install -y mongodb-org
     ```
 
-6.  **Optional** With the current configuration, the `apt-get` command always upgrades MongoDB whenever a new release becomes available. To prevent automatic upgrades, run the following commands.
+    {{< note >}}
+    To install a specific release of MongoDB, use the command following command, replacing `release` with the actual release to install.
+
+    ```command
+    sudo apt-get install -y mongodb-org=release mongodb-org-database=release mongodb-org-server=release mongodb-org-mongos=release mongodb-org-tools=release
+    ```
+    {{< /note >}}
+
+1.  **Optional** With the current configuration, the `apt-get` command always upgrades MongoDB whenever a new release becomes available. To prevent automatic upgrades, run the following commands.
 
     ```command
     echo "mongodb-org hold" | sudo dpkg --set-selections
@@ -117,13 +122,13 @@ The MongoDB task is typically controlled using the `systemctl` tools. To start a
     sudo systemctl daemon-reload
     ```
 
-2.  Start the `mongod` process using `systemctl start`.
+1.  Start the `mongod` process using `systemctl start`.
 
     ```command
     sudo systemctl start mongod
     ```
 
-3.  Use `systemctl status` to ensure the MongoDB service is `active`.
+1.  Use `systemctl status` to ensure the MongoDB service is `active`.
 
     ```command
     sudo systemctl status mongod
@@ -135,7 +140,7 @@ The MongoDB task is typically controlled using the `systemctl` tools. To start a
     Active: active (running) since Mon 2023-01-16 12:08:37 UTC; 1min 0s ago
     ```
 
-4.  To configure Ubuntu to launch MongoDB at system boot time, enter the following command.
+1.  To configure Ubuntu to launch MongoDB at system boot time, enter the following command.
 
     ```command
     sudo systemctl enable mongod
@@ -145,17 +150,17 @@ The MongoDB task is typically controlled using the `systemctl` tools. To start a
     Created symlink /etc/systemd/system/multi-user.target.wants/mongod.service → /lib/systemd/system/mongod.service.
     ```
 
-5.  **Optional** If necessary, stop and restart MongoDB using the following commands.
+1.  **Optional** If necessary, stop and restart MongoDB using the following commands.
 
     ```command
     sudo systemctl stop mongod
     sudo systemctl restart mongod
     ```
 
-6.  To confirm MongoDB is working properly, enter `mongosh` to access the shell. Because authentication is not yet enabled, no password is required.
+1.  To confirm MongoDB is working properly, enter `mongosh` to access the shell. Because authentication is not yet enabled, no password is required.
 
     {{< note >}}
-Without additional parameters, this command connects to the MongoDB instance running on default port `27017` on the local server. If network access is enabled, or if MongoDB has been moved to a different port, append `--host 127.0.0.1:27017` to the command.
+    Without additional parameters, this command connects to the MongoDB instance running on default port `27017` on the local server. If network access is enabled, or if MongoDB has been moved to a different port, append `--host 127.0.0.1:27017` to the command.
     {{< /note >}}
 
     ```command
@@ -182,7 +187,7 @@ To enable authentication, create an administrator and then configure the authent
     mongosh
     ```
 
-2.  Switch to the `admin` database.
+1.  Switch to the `admin` database.
 
     ```command
     use admin
@@ -192,7 +197,7 @@ To enable authentication, create an administrator and then configure the authent
     switched to db admin
     ```
 
-3.  Use the `db.createUser` command to create an administrator. Provide a user name for the `user` and a password for `pwd`. For better security, use the command `passwordPrompt()` as the value for the `pwd` field. This tells MongoDB to prompt for the password. Grant two roles to the administrator, `userAdminAnyDatabase` and `readWriteAnyDatabase`. Enter the command in the MongoDB shell as follows, substituting the actual administrator name in place of `userAdmin`.
+1.  Use the `db.createUser` command to create an administrator. Provide a user name for the `user` and a password for `pwd`. For better security, use the command `passwordPrompt()` as the value for the `pwd` field. This tells MongoDB to prompt for the password. Grant two roles to the administrator, `userAdminAnyDatabase` and `readWriteAnyDatabase`. Enter the command in the MongoDB shell as follows, substituting the actual administrator name in place of `userAdmin`.
 
     ```command
     db.createUser(
@@ -207,32 +212,32 @@ To enable authentication, create an administrator and then configure the authent
     )
     ```
 
-4.  After entering the command, MongoDB prompts for the administrative password. Enter the password when requested. If the password is accepted, MongoDB returns `ok`.
+1.  After entering the command, MongoDB prompts for the administrative password. Enter the password when requested. If the password is accepted, MongoDB returns `ok`.
 
     ```output
     Enter password
     ********{ ok: 1 }
     ```
 
-5.  Use the `db.adminCommand` command to shut down the `mongod` instance.
+1.  Use the `db.adminCommand` command to shut down the `mongod` instance.
 
     ```command
     db.adminCommand( { shutdown: 1 } )
     ```
 
-6.  Exit the shell.
+1.  Exit the shell.
 
     ```command
     exit
     ```
 
-7.  Edit the `/etc/mongod.conf` configuration file to add the configuration settings.
+1.  Edit the `/etc/mongod.conf` configuration file to add the configuration settings.
 
     ```command
     sudo vi /etc/mongod.conf
     ```
 
-8.  Uncomment the line `security:` and add the line `authorization: enabled` directly below it. Save and close the file.
+1.  Uncomment the line `security:` and add the line `authorization: enabled` directly below it. Save and close the file.
 
     ```file {title="/etc/mongod.conf"}
     ...
@@ -241,16 +246,16 @@ To enable authentication, create an administrator and then configure the authent
     ...
     ```
 
-9.  Restart MongoDB.
+1.  Restart MongoDB.
 
     ```command
     sudo systemctl restart mongod
     ```
 
-10. All subsequent attempts to access MongoDB must specify the user and the name of the authentication database. Substitute the name for the administrator account in place of `userAdmin` and enter the administrator password when prompted. Use the following command to enter the MongoDB shell.
+1. All subsequent attempts to access MongoDB must specify the user and the name of the authentication database. Substitute the name for the administrator account in place of `userAdmin` and enter the administrator password when prompted. Use the following command to enter the MongoDB shell.
 
     {{< note >}}
-This command demonstrates how to authenticate at connection time. To connect first and authenticate afterwards, use the `mongosh` command without any options. Inside the shell, enter `use admin` to switch to the `admin` database. Then use the command `db.auth("userAdmin", passwordPrompt())` to authenticate. Substitute the actual user name for `userAdmin`. Users can enter the MongoDB shell without authentication, but cannot access anything without the proper roles.
+    This command demonstrates how to authenticate at connection time. To connect first and authenticate afterwards, use the `mongosh` command without any options. Inside the shell, enter `use admin` to switch to the `admin` database. Then use the command `db.auth("userAdmin", passwordPrompt())` to authenticate. Substitute the actual user name for `userAdmin`. Users can enter the MongoDB shell without authentication, but cannot access anything without the proper roles.
     {{< /note >}}
 
     ```command
@@ -267,7 +272,7 @@ Unless otherwise specified, MongoDB only provides local access. To enable remote
     sudo vi /etc/mongod.conf
     ```
 
-2.  Under the `net` heading, change the value of `bindIp` to `0.0.0.0` to allow connections from all addresses. Enter a specific address to limit connectivity to that address.
+1.  Under the `net` heading, change the value of `bindIp` to `0.0.0.0` to allow connections from all addresses. Enter a specific address to limit connectivity to that address.
 
     ```file {title="/etc/mongod.conf"}
     ...
@@ -277,13 +282,13 @@ Unless otherwise specified, MongoDB only provides local access. To enable remote
     ...
     ```
 
-3.  Restart MongoDB.
+1.  Restart MongoDB.
 
     ```command
     sudo systemctl restart mongod
     ```
 
-4.  If the `ufw` firewall is enabled, allow connections to port `27017` through.
+1.  If the `ufw` firewall is enabled, allow connections to port `27017` through.
 
     ```command
     sudo ufw allow 27017
