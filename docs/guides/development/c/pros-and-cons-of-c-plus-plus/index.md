@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
 modified_by:
   name: Nathaniel Stickman
-title: "A Programmers’ Guide to C++: Advantages & Disadvantages"
-h1_title: "The Pros and Cons of C++"
+title_meta: "A Programmers’ Guide to C++: Advantages & Disadvantages"
+title: "The Pros and Cons of C++"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
