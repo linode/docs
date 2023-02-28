@@ -21,5 +21,5 @@ To perform the steps in the guide, you need to have a running MongoDB database a
 - **Create a Compute Instance using the MongoDB Marketplace App.** To quickly deploy your own MongoDB instance on Linode, use the MongoDB Marketplace App. See [Deploy MongoDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mongodb/)
 - **Manually install MongoDB on a Compute Instance.** If you prefer to have complete control over the software that's installed and the configuration of MongoDB, you can create a Compute Instance and manually install MongoDB. You can follow the instructions on [MongoDB's documentation site](https://www.mongodb.com/docs/manual/administration/install-on-linux/) or use one of the following Linode guides:
 
+    - [Installing MongoDB on Ubuntu 20.04](/docs/guides/install-mongodb-on-ubuntu-20-04/)
     - [Installing MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/)
-    - [Installing MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/)
