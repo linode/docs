@@ -37,6 +37,8 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
 -   **Network Status:** If a data center experiences downtime, Linode's staff will regularly update the [Status webpage](http://status.linode.com/) until the issue has been resolved.
 
+-  **Cloud Partner Directory**: If you're looking for a partner to help guide your transition to the Cloud or help build your platform, our [Partner Directory](https://partner-directory.linode.com/s/) offers a helpful listing of trusted partners to work with.
+
 ## Scope of Support
 
 As declared in Linode's [Terms of Service](https://www.linode.com/tos), the Linode Support Team does not provide support regarding the installation or configuration of application software, such as mail and web server software, nor does it provide support regarding the configuration of Linux on your server. For these issues, please consult the various other [resources](#resources) Linode makes available. If you are providing a service to your customers, Linode does not offer tech support for those customers. Linode support is additionally only provided in the English language.
@@ -62,7 +64,7 @@ If you are not able to solve an issue with the resources listed above, you can c
 
 The Linode Support Team will respond as soon as possible.
 
-If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day:
+If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, fill out the [can't log in form](https://www.linode.com/support/contact/). You can also call Linode 24 hours a day:
 
 - **+1 (609) 380-7100** (international)
 

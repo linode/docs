@@ -199,5 +199,3 @@ This is a line	with a tab.
 ## Conclusion
 
 This guide gave you the know-how you need to start using *cat* for viewing and even working with text-based files from the command line. Having a good basis in this frequently-used Linux command can make working with files on the command line smoother and easier.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
