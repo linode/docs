@@ -21,7 +21,6 @@ relations:
         key: how-to-install-anaconda
         keywords:
             - distribution: Ubuntu
-aliases: ['/guides/how-to-install-anaconda/']
 ---
 
 ## Install Anaconda on Ubuntu
