@@ -3,7 +3,7 @@ slug: beginners-guide-to-kubernetes-part-2-master-nodes-control-plane
 author:
   name: Andy Stevens
   email: docs@linode.com
-description: 'This is part two in a multi-part beginner''s guide to Kubernetes where you will be introduced to Kubernetes Master, Nodes, and the Control Plane.'
+description: "This is part two in a multi-part beginner's guide to Kubernetes where you will be introduced to Kubernetes Master, Nodes, and the Control Plane."
 keywords: ['kubernetes','k8s','beginner','architecture']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
@@ -20,9 +20,9 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-mas
 tags: ["kubernetes"]
 ---
 
-![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This is the second guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 

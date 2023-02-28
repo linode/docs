@@ -43,11 +43,11 @@ TOBS includes the following components:
 This guide was written using [Kubernetes version 1.23](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
-1. [Deploy an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [4 GB Shared CPU Compute Instances](https://www.linode.com/pricing/). Depending on the workloads you plan to deploy on your cluster, you may consider using other plans with more available resources.
+1. [Deploy an LKE Cluster](/docs/products/compute/kubernetes/). This guide was written using an example node pool with three [4 GB Shared CPU Compute Instances](https://www.linode.com/pricing/). Depending on the workloads you plan to deploy on your cluster, you may consider using other plans with more available resources.
 
 1. Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
-1. Install [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment and [connect to your cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
+1. Install [kubectl](/docs/products/compute/kubernetes/guides/kubectl/) to your local environment and [connect to your cluster](/docs/products/compute/kubernetes/guides/kubectl/).
 
 1. Create the `monitoring` namespace on your LKE cluster:
 

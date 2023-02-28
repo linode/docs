@@ -177,6 +177,7 @@ bitshift
 bitstream
 bitwarden
 bitwise
+Bjarne
 blkid
 blockchain
 blocklists
@@ -260,6 +261,7 @@ changeme
 changeset
 changesets
 characterwise
+charset
 chatbot
 chatbots
 chatrooms
@@ -506,6 +508,7 @@ dockerfiles
 dockershim
 dockerize
 dockerized
+doclet
 docstring
 docstrings
 doctest
@@ -939,6 +942,7 @@ inspec
 intel
 interconnectivity
 interdomain
+interoperation
 interruptible
 intra-application
 introducer
@@ -1012,6 +1016,7 @@ jpetazzo
 jq
 jre
 js
+jshell
 json
 json_pp
 jsonpath
@@ -1020,6 +1025,7 @@ julialang
 jumpbox
 junit
 jupyter
+jwebserver
 JWTs
 jx
 kaggle
@@ -1028,6 +1034,7 @@ kamkar
 kanban
 kaseya
 kasten
+Katib
 kbd
 kbits
 keepalive
@@ -1050,6 +1057,7 @@ keypairs
 keysize
 keyspace
 keystore
+kfctl
 khanaser
 kibana
 kickban
@@ -1495,6 +1503,7 @@ offboarding
 oftc
 ohai
 ok
+okta
 oldstable
 oldfashioned
 onboarding
@@ -1766,6 +1775,7 @@ reflog
 reflogs
 refspec
 regexes
+reimplements
 reimported
 reindexing
 reiner
@@ -1908,6 +1918,7 @@ secondsite
 secretpassword
 sed
 sekurlsa
+Seldon
 selinux
 sendable
 sendmail
@@ -1957,6 +1968,7 @@ scribus
 sidekiq
 sievers
 signup
+Simula
 singapore
 sintra
 siri
@@ -2039,6 +2051,7 @@ storages
 strapi
 streamlink
 strongswan
+Stroustrup
 su
 subcommand
 subcommands
