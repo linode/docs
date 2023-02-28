@@ -260,6 +260,7 @@ changeme
 changeset
 changesets
 characterwise
+charset
 chatbot
 chatbots
 chatrooms
@@ -506,6 +507,7 @@ dockerfiles
 dockershim
 dockerize
 dockerized
+doclet
 docstring
 docstrings
 doctest
@@ -939,6 +941,7 @@ inspec
 intel
 interconnectivity
 interdomain
+interoperation
 interruptible
 intra-application
 introducer
@@ -1012,6 +1015,7 @@ jpetazzo
 jq
 jre
 js
+jshell
 json
 json_pp
 jsonpath
@@ -1020,6 +1024,7 @@ julialang
 jumpbox
 junit
 jupyter
+jwebserver
 JWTs
 jx
 kaggle
@@ -1767,6 +1772,7 @@ reflog
 reflogs
 refspec
 regexes
+reimplements
 reimported
 reindexing
 reiner
