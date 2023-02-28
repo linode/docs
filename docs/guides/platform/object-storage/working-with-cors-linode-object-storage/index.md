@@ -241,6 +241,3 @@ Having CORS-related issues on your S3 instance? Take these steps to help narrow 
 This covers the tools and approaches you need to start managing CORS for your Linode Object Storage or other S3 instance. Once you have these, addressing CORS issues is a matter of reviewing and adjusting policies against desired origins and request types.
 
 Keep improving your resources for managing your S3 through our collection of [object storage guides](/docs/products/storage/object-storage/guides/). These cover a range of topics to help you with S3 generally, and Linode Object Storage in particular.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-

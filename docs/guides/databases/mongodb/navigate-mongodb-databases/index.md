@@ -20,21 +20,21 @@ external_resources:
 - '[Digital Ocean: How To Create Queries in MongoDB](https://www.digitalocean.com/community/tutorials/how-to-create-queries-in-mongodb)'
 ---
 
-[MongoDB](https://www.mongodb.com/) is a flexible, NoSQL database solution which stores data as JSON-like documents.
+[MongoDB](https://www.mongodb.com/) is a flexible, NoSQL database solution which stores data as JSON-like documents. Compared to other database systems, MongoDB has much more to offer for effectively working with data. For those familiar with SQL, it may take some time and experience before feeling confident using MongoDB. This MongoDB tutorial shows you how to make more advanced queries. From querying arrays and nested objects to using comparative and logical operations, learn it all in this guide with practical examples.
 
+{{< note >}}
 Learn all about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide. Then, find out about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
-
-But MongoDB has much more to offer for effectively working with data. And for those familiar with SQL, it may take some more digging before you feel as confident in using MongoDB.
-
-This MongoDB tutorial shows you how to make more advanced queries. From querying arrays and nested objects to using comparative and logical operations, learn it all in this guide with practical examples.
+{{< /note >}}
 
 ## Before You Begin
 
 {{< content "mongodb-deployment-methods-shortguide" >}}
 
+{{< content "mongodb-shell-shortguide" >}}
+
 ## Query Documents
 
-The following sections show you various ways and tools for querying your MongoDB data. To ground the techniques, each section includes examples using a set of documents related to books. You can add the data to your own MongoDB instance using the commands shown below:
+The following sections show you various ways to query your MongoDB data. To apply the techniques, each section includes examples using a set of documents related to books. You can add the data to your own MongoDB instance using the commands shown below:
 
 ```command
 use libraryDb
@@ -149,7 +149,7 @@ Most of the query examples in this guide use the `pretty` method appended to the
 
 ### Basic Query Operators
 
-The simplest query filter is based on specific values in specific fields. The example below, for instance, fetches the book originally published in `1622`:
+The simplest query filter locates specific values within specific fields. The example below, for instance, fetches the book originally published in `1622`:
 
 ```command
 db.bookCatalog.find(
@@ -186,7 +186,7 @@ db.bookCatalog.find(
 
 #### Checking for Null Fields
 
-MongoDB also provides a way to check for documents where a given field is null — empty or absent. Within the MongoDB shell, this just requires the use of the `null` keyword:
+MongoDB also provides a way to check for documents where a given field is null (empty or absent). Within the MongoDB Shell, this just requires the use of the `null` keyword:
 
 ```command
 db.bookCatalog.find( { "editions": null } ).pretty()
@@ -1036,5 +1036,3 @@ However, keep in mind that regex queries tend to take more processing power and 
 This guide gives you everything you need to start making more of your MongoDB database and its querying capabilities. You can use it as a sort of cheat sheet for you when it comes to navigating MongoDB databases.
 
 Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

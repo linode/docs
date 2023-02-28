@@ -3,7 +3,7 @@ slug: getting-started-with-mongodb
 author:
   name: Linode Community
   email: docs@linode.com
-description: "MongoDB gives you a flexible and less rigid way to store your data than traditional relational databases. But where to learn how to get started with it? Look no further. This tutorial gives everything you need to start using MongoDB."
+description: "MongoDB gives you a flexible and less rigid way to store your data than traditional relational databases. This tutorial gives everything you need to start using MongoDB."
 keywords: ['mongodb tutorial','getting started mongodb','basic mongodb commands']
 tags: ['database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -30,11 +30,11 @@ To learn all about what MongoDB is and how it works, see out [Introduction to Mo
 
 {{< content "mongodb-deployment-methods-shortguide" >}}
 
+{{< content "mongodb-shell-shortguide" >}}
+
 ## Working with Databases
 
-Once you have MongoDB installed on your Linux system, you can start working with its databases. Doing so allows you to keep multiple databases on a single MongoDB instance.
-
-Just start up the MongoDB shell with the `mongo` command. The following sections introduce you to the main MongoDB shell commands you can use to review and manipulate your MongoDB instance's databases.
+Each MongoDB instance can have multiple databases. The commands in this section cover creating databases, determine the current database you are operating on, and switching to other databases.
 
 ### Check Current Database
 
@@ -458,5 +458,3 @@ true
 This tutorial has laid out the basics of MongoDB you need for getting started. From how to work with databases and collections, to inserting and modifying documents, this guide gives you the tools you need.
 
 Looking to dive deeper into MongoDB? Be sure to peruse our other [MongoDB guides](/docs/guides/databases/mongodb/) for more on setting up and getting the most out of MongoDB. And take a look at our [How to Navigate Your Data in MongoDB Databases](/docs/guides/navigate-mongodb-databases/) for more on querying and text searches.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

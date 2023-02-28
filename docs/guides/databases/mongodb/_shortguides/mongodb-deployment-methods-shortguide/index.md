@@ -15,7 +15,7 @@ show_on_rss_feed: false
 aliases: ['/mongodb-deployment-methods-shortguide/']
 ---
 
-To perform the steps in the guide, you need to have a running MongoDB database as well as the [MongoDB Shell](/docs/guides/mongodb-community-shell-installation/) installed (either locally or on your remote instance). If you do not yet have one, follow one of the steps below to deploy MongoDB on Linode:
+To perform the steps in the guide, you need to have a running MongoDB database as well as the [MongoDB Shell](/docs/guides/mongodb-community-shell-installation/) installed (either locally or on your remote instance). If needed, follow one of the methods below to deploy MongoDB on Linode:
 
 - **Deploy a MongoDB Managed Database.** Use Linode's Managed Database service to deploy a fully-managed cloud-based MongoDB instance. See [Create a Managed Database](/docs/products/databases/managed-databases/guides/create-database/). Then, follow the [Connect to a MongoDB Database](/docs/products/databases/managed-databases/guides/mongodb-connect/) guide to learn how to connect to your database using the MongoDB Shell.
 - **Create a Compute Instance using the MongoDB Marketplace App.** To quickly deploy your own MongoDB instance on Linode, use the MongoDB Marketplace App. See [Deploy MongoDB through the Linode Marketplace](/docs/products/tools/marketplace/guides/mongodb/)
