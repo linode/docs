@@ -6,8 +6,6 @@ tab_group_main:
 modified: 2022-08-24
 ---
 
-{{< content "nvme-block-storage-notice-shortguide" >}}
-
 Block Storage Volumes are persistent storage devices that can be attached to a Compute Instance and used to store any type of data. They are especially useful for storing website files, databases, media, backups, and *much* more. To get started with Block Storage, create a Volume using the guide below.
 
 - [View, Create, and Delete Volumes](/docs/products/storage/block-storage/guides/manage-volumes/)

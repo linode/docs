@@ -16,3 +16,8 @@ These do not exist:
 * [Path below /guides](/docs/guides/this-does-not-exist/)
 * [Missing Root Section](/docs/missing-section/)
 
+
+## Links to Aliased Pages
+
+* [Applications](/docs/applications/)
+

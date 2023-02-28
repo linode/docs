@@ -5,8 +5,6 @@ tab_group_main:
     weight: 30
 ---
 
-{{< content "nvme-block-storage-notice-shortguide" >}}
-
 ## Basics
 
 - [View, Create, and Delete Volumes](/docs/products/storage/block-storage/guides/manage-volumes/): Learn how to view and manage Block Storage Volumes.

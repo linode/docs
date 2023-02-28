@@ -86,7 +86,7 @@
   }
 
   // src/js/Main/safe-html.js
-  function safeHTML(input, allow_tags = ["b", "br", "em", "i", "strong"]) {
+  function safeHTML(input, allow_tags = ["b", "br", "em", "i", "span", "strong", "u"]) {
     let tmp = document.createElement("div");
     tmp.textContent = input;
     let output = tmp.innerHTML;

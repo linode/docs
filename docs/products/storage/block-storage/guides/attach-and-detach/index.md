@@ -28,7 +28,7 @@ Follow these steps to attach an existing Block Storage Volume to a Compute Insta
     {{< /note >}}
 
     {{< note >}}
-    If the data center has been upgraded to NVMe Block Storage and your Compute Instance was deployed prior to August 24th, 2021, you may need to reboot the instance for it to properly work with a NVMe Block Storage Volume.
+    If your Compute Instance was deployed prior to August 24th, 2021 and hasn't been rebooted since your data center was upgraded to NVMe Block Storage, you may need to reboot the instance for it to properly work with a Block Storage Volume.
     {{< /note >}}
 
 1.  Click the **Save** button to attach the Volume.
