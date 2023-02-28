@@ -23,7 +23,7 @@ external_resources:
 [MongoDB](https://www.mongodb.com/) is a NoSQL database, that provides more flexible and less rigidly structured data storage than traditional relational databases. This MongoDB guide introduces you to all the basic MongoDB operations you need to get started, including commands for operations like queries, inserts, updates, and deletions. It sets you up to begin effectively populating and using your MongoDB instance.
 
 {{< note >}}
-To learn all about what MongoDB is and how it works, see out [Introduction to MongoDB and its Use Cases](https://www.linode.com/docs/guides/mongodb-and-its-use-cases/) guide.
+To learn all about what MongoDB is and how it works, see out [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide.
 {{< /note >}}
 
 ## Before You Begin
