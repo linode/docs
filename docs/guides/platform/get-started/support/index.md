@@ -64,7 +64,7 @@ If you are not able to solve an issue with the resources listed above, you can c
 
 The Linode Support Team will respond as soon as possible.
 
-If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day:
+If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, fill out the [can't log in form](https://www.linode.com/support/contact/). You can also call Linode 24 hours a day:
 
 - **+1 (609) 380-7100** (international)
 
