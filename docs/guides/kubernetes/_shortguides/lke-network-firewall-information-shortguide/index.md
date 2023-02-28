@@ -33,7 +33,7 @@ In an LKE cluster, some entities and services are only accessible from within th
 
 Exposing workloads to the public internet through the above methods can be convenient, but this can also carry a security risk. You may wish to manually install firewall rules on your cluster nodes. The following policies are needed to allow communication between the node pools and the control plane and block unwanted traffic:
 
-- **ALlow kubelet health checks:** TCP port 10250 from 192.168.128.0/17 Accept
+- **Allow kubelet health checks:** TCP port 10250 from 192.168.128.0/17 Accept
 - **Allow Wireguard tunneling for kubectl proxy:** UDP port 51820 from 192.168.128.0/17 Accept
 - **Allow Calico BGP traffic:** TCP port 179 from 192.168.128.0/17 Accept
 - **Allow NodePorts for workload services:** TCP/UDP port 30000 - 32767 192.168.128.0/17 Accept
