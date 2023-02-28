@@ -13,7 +13,7 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2010-05-03
-title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.04 (Lucid)'
+title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.04'
 relations:
     platform:
         key: multiple-servers-proxypass

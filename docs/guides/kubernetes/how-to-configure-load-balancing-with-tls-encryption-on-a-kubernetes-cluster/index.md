@@ -12,9 +12,8 @@ published: 2020-07-17
 modified: 2021-06-25
 modified_by:
   name: Linode
-title: "Configure Load Balancing with TLS Encryption on Kubernetes"
-h1_title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
-enable_h1: true
+title: "Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster"
+title_meta: "Configure Load Balancing with TLS Encryption on Kubernetes"
 contributor:
   name: Linode
 external_resources:
@@ -22,24 +21,24 @@ external_resources:
 aliases: ['/kubernetes/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/']
 ---
 
-This guide will use an example Kubernetes Deployment and Service to demonstrate how to route external traffic to a Kubernetes application over HTTPS. This is accomplished using the [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#using-helm), [cert-manager](https://cert-manager.io/docs/) and [Linode NodeBalancers](/docs/platform/nodebalancer/). The NGINX Ingress Controller uses Linode NodeBalancers, which are Linode's load balancing service, to route a Kubernetes Service's traffic to the appropriate backend Pods over HTTP and HTTPS. The cert-manager tool creates a Transport Layer Security (TLS) certificate from the [Let’s Encrypt](https://letsencrypt.org/) certificate authority (CA) providing secure HTTPS access to a Kubernetes Service.
+This guide will use an example Kubernetes Deployment and Service to demonstrate how to route external traffic to a Kubernetes application over HTTPS. This is accomplished using the [NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/deploy/#using-helm), [cert-manager](https://cert-manager.io/docs/) and [Linode NodeBalancers](/docs/products/networking/nodebalancers/). The NGINX Ingress Controller uses Linode NodeBalancers, which are Linode's load balancing service, to route a Kubernetes Service's traffic to the appropriate backend Pods over HTTP and HTTPS. The cert-manager tool creates a Transport Layer Security (TLS) certificate from the [Let’s Encrypt](https://letsencrypt.org/) certificate authority (CA) providing secure HTTPS access to a Kubernetes Service.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The [*Linode Cloud Controller Manager*](https://github.com/linode/linode-cloud-controller-manager) provides a way for a Kubernetes cluster to create, configure, and delete Linode NodeBalancers. The Linode CCM is installed by default on clusters deployed with the [Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) and the [Linode Terraform K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/).
 
 To learn about the various configurations available for Linode NodeBalancers via [Kubernetes annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/), see [Getting Started with Load Balancing on a Linode Kubernetes Engine (LKE) Cluster](/docs/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/#configuring-your-linode-nodebalancers-with-annotations).
-{{</ note >}}
+{{< /note >}}
 
 
 ## Before You Begin
 
 1.  Review the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to gain an understanding of key concepts within Kubernetes, including master and worker nodes, Pods, Deployments, and Services.
 
-1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/guides/dns-manager/#add-a-domain) and to [add a DNS "A" record](/docs/guides/dns-manager/#add-dns-records) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
+1.  Purchase a domain name from a reliable domain registrar. In a later section, you will use Linode's DNS Manager to [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and to [add a DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for two subdomains: one named `blog` and another named `shop`. Your subdomains will point to the example Kubernetes Services you will create in this guide. The example domain names used throughout this guide are `blog.example.com` and `shop.example.com`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com` and point your NodeBalancer's external IP address to it. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
-{{</ note >}}
+{{< /note >}}
 
 ## Creating and Connecting to a Kubernetes Cluster
 
@@ -166,9 +165,9 @@ kubernetes   ClusterIP   10.128.0.1       <none>        443/TCP   18m
 
 In this section you will use Helm to install the NGINX Ingress Controller on your Kubernetes Cluster. Installing the NGINX Ingress Controller will create Linode NodeBalancers that your cluster can make use of to load balance traffic to your example application.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you would like a slightly deeper dive into the NGINX Ingress Controller, see our guide [Deploying NGINX Ingress on Linode Kubernetes Engine](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/).
-{{</ note >}}
+{{< /note >}}
 
 1.  Add the following Helm ingress-nginx repository to your Helm repos.
 
@@ -213,27 +212,27 @@ NAME                          TYPE           CLUSTER-IP      EXTERNAL-IP    PORT
 my-ingress-nginx-controller   LoadBalancer   10.128.169.60   192.0.2.0   80:32401/TCP,443:30830/TCP   7h51m   app.kubernetes.io/instance=cingress-nginx,app.kubernetes.io/name=ingress-nginx
 {{</ output >}}
 
-1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/guides/dns-manager/#add-dns-records) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
+1.  Copy the IP address of the `EXTERNAL IP` field and navigate to [Linode's DNS manager](https://cloud.linode.com/domains) and [add two "A" records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for the `blog` and `shop` subdomains. Ensure you point each record to the NodeBalancer's IPv4 address you retrieved in the previous step.
 
 Now that your NGINX Ingress Controller has been deployed and your subdomains' A records have been created, you are ready to enable HTTPS on each subdomain.
 
 ## Create a TLS Certificate Using cert-manager
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before performing the commands in this section, ensure that your DNS has had time to propagate across the internet. This process can take a while. You can query the status of your DNS by using the following command, substituting `blog.example.com` for your domain.
 
     dig +short blog.example.com
 
 If successful, the output should return the IP address of your NodeBalancer.
-{{</ note >}}
+{{< /note >}}
 
 To enable HTTPS on your example application, you will create a Transport Layer Security (TLS) certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) using the [ACME protocol](https://tools.ietf.org/html/rfc8555). This will be facilitated by [*cert-manager*](https://cert-manager.io/docs/), the native Kubernetes certificate management controller.
 
 In this section you will install cert-manager using Helm and the required cert-manager [CustomResourceDefinitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRDs). Then, you will create a [ClusterIssuer](https://cert-manager.io/docs/concepts/issuer/) resource to assist in creating a cluster's TLS certificate.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you would like a deeper dive into cert-manager, see our guide [What is Kubernetes cert-manager](/docs/guides/what-is-kubernetes-cert-manager/).
-{{</ note >}}
+{{< /note >}}
 
 ### Install cert-manager
 1.  Install cert-manager's CRDs.
@@ -272,9 +271,9 @@ cert-manager-cainjector-789955d9b7-jfskr   1/1     Running   3          1m
 cert-manager-webhook-64869c4997-hnx6n      1/1     Running   0          1m
 {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You should wait until all cert-manager pods are ready and running prior to proceeding to the next section.
-{{</ note >}}
+{{< /note >}}
 
 ### Create a ClusterIssuer Resource
 
@@ -299,9 +298,9 @@ spec:
 
     - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Let's Encrypt provides a staging ACME server that can be used to test issuing trusted certificates, while not worrying about hitting [Let's Encrypt's production rate limits](https://letsencrypt.org/docs/rate-limits/). The staging URL is `https://acme-staging-v02.api.letsencrypt.org/directory`.
-{{</ note >}}
+{{< /note >}}
 
     - The value of `privateKeySecretRef.name` provides the name of a secret containing the private key for this user's ACME server account (this is tied to the email address you provide in the manifest file). The ACME server will use this key to identify you.
     - To ensure that you own the domain for which you will create a certificate, the ACME server will issue a challenge to a client. cert-manager provides two options for solving challenges, [`http01`](https://cert-manager.io/docs/configuration/acme/http01/) and [`DNS01`](https://cert-manager.io/docs/configuration/acme/dns01/). In this example, the `http01` challenge solver will be used and it is configured in the `solvers` array. cert-manager will spin up *challenge solver* Pods to solve the issued challenges and use Ingress resources to route the challenge to the appropriate Pod.

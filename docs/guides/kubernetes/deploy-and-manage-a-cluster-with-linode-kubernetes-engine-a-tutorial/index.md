@@ -15,20 +15,19 @@ published: 2019-11-11
 modified: 2022-04-01
 modified_by:
   name: Linode
-title: "Deploy and Manage an LKE Kubernetes Cluster on Linode"
-h1_title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)"
-enable_h1: true
+title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)"
+title_meta: "Deploy and Manage an LKE Kubernetes Cluster on Linode"
 image: deploy-and-manage-cluster.png
 external_resources:
  - '[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)'
 aliases: ['/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/','/applications/containers/kubernetes/how-to-deploy-a-cluster-with-lke/','/applications/containers/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/']
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses Linode Kubernetes Engine (LKE) to deploy a managed Kubernetes cluster. For more information on Kubernetes key concepts, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)
 {{< /note >}}
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes. When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 **Additional LKE features:**
 
@@ -48,11 +47,11 @@ In this guide you will learn:
 
  - [Next Steps after deploying your cluster.](#next-steps)
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -78,7 +77,7 @@ After you've created your LKE cluster using the Cloud Manager, you can begin int
 
 If you create a new terminal window, it does not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in your shell's configuration file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) for how to persist your context.
 {{< /note >}}
 
@@ -96,7 +95,7 @@ These instructions persist the context for users of the Bash terminal. They are 
 
         cp ~/Downloads/kubeconfig.yaml $HOME/.kube/configs/kubeconfig.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alter the above line with the location of the Downloads folder on your computer.
 
 Optionally, you can give the copied file a different name to help distinguish it from other files in the `configs` directory.
@@ -191,7 +190,7 @@ The LKE autoscaler will only apply changes when the following conditions are met
 
 LKE Autoscaling is configured for individual Node Pools directly through the Linode Cloud Manager.
 
-1. To Enable cluster autoscaling, access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+1. To Enable cluster autoscaling, access the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. Click the **Autoscale Pool** option at the top-left of each entry in the **Node Pools** section. The Autoscaling menu will appear.
 
@@ -205,7 +204,7 @@ LKE Autoscaling is configured for individual Node Pools directly through the Lin
 
 1. Select the `Save Changes` button to complete the process, and officially activate the autoscaling feature.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The LKE Autoscaler will not automatically increase or decrease the size of the node pool if the current node pool is either below the minimum of the autoscaler, or above the maximum. This behavior can be further described by following examples:
 
 - If the Node pool has 3 nodes in the current node pool and a minimum of 5, the autoscaler will not automatically scale the current node pool up to meet the minimum. It will only scale up if pods are unschedulable otherwise.
@@ -216,7 +215,7 @@ The LKE Autoscaler will not automatically increase or decrease the size of the n
 
 ### Upgrade a Cluster
 
-1. To Upgrade a cluster access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+1. To Upgrade a cluster access the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. If an upgrade is available, a banner will appear that will display the next available Kubernetes version. Select the **Upgrade Version** button at the end of the banner to upgrade to the next available Kubernetes version.
 
@@ -228,7 +227,7 @@ The LKE Autoscaler will not automatically increase or decrease the size of the n
 
    ![Kubernetes cluster step 1](cluster-upgrade-step1.png "Kubernetes upgrade step 1.")
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 If step one of the upgrade process is completed without the completion of step two, the nodes in the cluster will need to be recycled using the [Recycle all Nodes](##Recycle-a-Cluster-or-Nodes) button.
 {{< /note >}}
 
@@ -238,13 +237,13 @@ If step one of the upgrade process is completed without the completion of step t
 
 ### Recycle Nodes
 
-Nodes can be recycled by selected the recycle option for an individual node, in a node pool or, or for all nodes in the cluster. All recycle options are found in the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page)
+Nodes can be recycled by selected the recycle option for an individual node, in a node pool or, or for all nodes in the cluster. All recycle options are found in the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page)
 
 - To recycle all Nodes on all Node Pools in a cluster, select the **Recycle All Nodes** option to the right of the **Node Pools** section.
 
-- To recycle a node pool from the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page), click the **Recycle Nodes** option at the top-right of each entry in the **Node Pools** section.
+- To recycle a node pool from the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page), click the **Recycle Nodes** option at the top-right of each entry in the **Node Pools** section.
 
-- To recycle an individual Node, find the **Node Pools** section on the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page), find the individual node that will be recycled, and click on the **Recycle** button to the right of the respective entry.
+- To recycle an individual Node, find the **Node Pools** section on the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page), find the individual node that will be recycled, and click on the **Recycle** button to the right of the respective entry.
 
 ![Cluster Node Recycle](cluster-node-recycle.png "Cluster Node Recycle.")
 
@@ -254,7 +253,7 @@ When selecting any recycle option a pop-up message will appear confirming that t
 
 In cases where access to a cluster using a current kubeconfig must be revoked, LKE provides the ability to **Reset** a cluster kubeconfig. This will effectively remove the current kubeconfig, and create a new one for cluster administrators to use.
 
-1. To reset the cluster kubeconfig access the [cluster's details page](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
+1. To reset the cluster kubeconfig access the [cluster's details page](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-your-clusters-details-page).
 
 1. Select the **Reset** button under the **kubeconfig** sub-category.
 
@@ -277,9 +276,9 @@ When multiple replicas are created as part of LKE HA, they are always placed on 
 
 Unlike other LKE configuration options, High Availability is an **optional billable service** that increases the overall operating cost of your cluster. For more information, see our [pricing page](https://www.linode.com/pricing/).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While upgrading to an HA cluster is always possible, **downgrading your cluster is not currently supported**. Enabling HA is an **irreversible** change for your cluster.
-{{< /caution >}}
+{{< /note >}}
 
 ### Enabling HA During Cluster Creation
 
@@ -301,13 +300,13 @@ Your cluster’s detail page will appear on the following page where you will se
 
 High Availability can be added to pre-existing clusters at any given time through the cluster's **Summary Page**.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Enabling HA on a pre-existing cluster will result in the following changes:
 
 - All nodes will be deleted and new nodes will be created to replace them.
 - Any local storage (such as `hostPath` volumes) will be erased.
 - The upgrade process may take several minutes to complete, as nodes will be replaced on a rolling basis.
-{{< /caution >}}
+{{< /note >}}
 
 1. To reach the summary page for the cluster, navigate first to the [Kubernetes section of the Cloud Manager](https://cloud.linode.com/kubernetes/clusters).
 

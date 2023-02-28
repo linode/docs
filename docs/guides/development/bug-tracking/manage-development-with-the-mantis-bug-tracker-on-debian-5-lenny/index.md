@@ -13,7 +13,7 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-16
-title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
+title: 'Manage Development with Mantis Bug Tracker on Debian 5'
 relations:
     platform:
         key:  mantis-bug-tracker
@@ -23,7 +23,7 @@ relations:
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) as well as the [Exim guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) as well as the [Exim guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 

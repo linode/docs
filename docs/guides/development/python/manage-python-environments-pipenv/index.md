@@ -11,9 +11,8 @@ modified: 2018-03-27
 modified_by:
   name: Linode
 published: 2018-05-01
-title: "How to Use Pipenv to Manage Python Packages and Versions"
-h1_title: "Using Pipenv to Manage Python Packages and Versions"
-enable_h1: true
+title: "Using Pipenv to Manage Python Packages and Versions"
+title_meta: "How to Use Pipenv to Manage Python Packages and Versions"
 audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]
@@ -110,7 +109,7 @@ python_version = "3.6"
 
     Since no version was specified during when installing Numpy, the Pipfile specifies that any version (`"*"`) is acceptable. The specific version installed is recorded in `Pipfile.lock`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you install a package in a directory that does not have a Pipfile, Pipenv will create a new environment in that directory automatically, using your system's default Python version. This means that the commands in this section can be condensed into two steps:
 
     pipenv install numpy

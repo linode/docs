@@ -26,7 +26,7 @@ Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postf
 {{< content "email-warning-shortguide" >}}
 
 ## Before You Begin
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -123,13 +123,13 @@ Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail 
 
         root's Crontab
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If this is your first time using Cron, you will have to select your preferred text editor.
 {{< /note >}}
 
 3.  Save the changes to your Cron file. For **nano**, this is `Ctrl-x y`.
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 Non-root users will not have permission to access the mail log.
 {{< /note >}}
 

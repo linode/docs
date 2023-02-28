@@ -336,7 +336,7 @@ These instructions walk through downloading the source code for XHGUI. This may 
 
 2.  Add a line with the value `extension=tideways_xhprof.so` to your `php.ini` configuration file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 There may be multiple `php.ini` files in different locations, like `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`. Add this value in each `php.ini` file both in this step and in Step 4 that follows.
 {{< /note >}}
 

@@ -4,7 +4,6 @@ author:
   name: Daniele Polencic
   email: daniele@learnk8s.io
 description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
-og_description: 'Learn how to install CI/CD tool Jenkins X on Linode Kubernetes Engine in this step-by-step guide.'
 keywords: ['kubernetes','pipelines','ci/cd','kubernetes','jenkins x','jenkins']
 tags: ["docker","kubernetes","container","automation","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ published: 2020-07-29
 image: DeployJenkinsX_LinodeKubEng.png
 modified_by:
   name: Linode
-title: "How to Deploy Jenkins X in Linode Kubernetes Engine"
-h1_title: "Deploying Jenkins X in Linode Kubernetes Engine"
+title: "Deploying Jenkins X in Linode Kubernetes Engine"
+title_meta: "How to Deploy Jenkins X in Linode Kubernetes Engine"
 image: 'learnk8s_jenkinsX.png'
 contributor:
   name: Daniele Polencic
@@ -22,11 +21,15 @@ external_resources:
 - '[How to run Jenkins X Boot](https://jenkins-x.io/docs/install-setup/boot/how-it-works/)'
 - '[Creating and importing projects in Jenkins X](https://jenkins-x.io/docs/create-project/creating/)'
 aliases: ['/kubernetes/how-to-deploy-jenkins-x-in-linode-kubernetes-engine/']
+deprecated: true
 ---
 
 ## What is Jenkins X?
 
-[Jenkins X](https://jenkins-x.io) is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X on Linode Kubernetes Engine.
+[Jenkins X](https://jenkins-x.io) is CI/CD tool that automates the management of development environments and the promotion of new versions of applications between environments. This guide illustrates how to install Jenkins X version 2 on Linode Kubernetes Engine.
+{{< note respectIndent=false >}}
+Jenkins X version 2 is no longer maintained. For more information about using Jenkins X version 3, see the [official Jenkins X documentation](https://jenkins-x.io/v3/admin/).
+{{< /note >}}
 
 ## Before You Begin
 
@@ -75,9 +78,9 @@ Git tree state clean
 
 ## Bootstrap Jenkins X
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you used the `export` command with the KUBECONFIG variable so that you can use kubectl to connect to your cluster, you will need to perform the following steps in the same terminal window where you executed that command in order for `jx` to also be able to connect to your cluster.
-{{</ note >}}
+{{< /note >}}
 
 1.   Create a new folder, navigate to the new folder, and execute the `jx boot` command to start a new project:
 
@@ -210,9 +213,9 @@ WARNING: TLS is not enabled so your webhooks will be called using HTTP. This mea
 
     You can create a token for your bot by [visiting this URL](https://github.com/settings/tokens/new?scopes=repo,read:user,read:org,user:email,write:repo_hook,delete_repo).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Please note that you should create the token with the Bot's account and not yours.
-{{</ note >}}
+{{< /note >}}
 
     ![Creating an API token on GitHub](github-token.png)
 

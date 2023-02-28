@@ -3,7 +3,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'AWK is a Turing-complete pattern matching programming language greate for data reporting, analysis, extraction and supports a number of array types, functions, and more.'
-og_description: 'AWK is a Turing-complete pattern matching programming language greate for data reporting, analysis, extraction and supports a number of array types, functions, and more.'
 keywords: ["awk", "pattern matching", "regular expressions", "regex"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-31

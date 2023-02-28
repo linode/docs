@@ -4,16 +4,14 @@ author:
   name: Jack Wallen
   email: jlwallen@monkeypantz.net
 description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
-og_description: "This guide walks you through configuring ownCloud to use external storage, ensuring your ownCloud instance doesn't run out of space."
 keywords: ['ownCloud external storage', 'ownCloud s3']
 tags: ['marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-15
 modified_by:
   name: Linode
-title: "Configuring ownCloud to use External Storage"
-h1_title: "How to Configure ownCloud to use External Storage"
-enable_h1: true
+title: "Configure ownCloud to use External Storage"
+title_meta: "How to Configure ownCloud to use External Storage"
 contributor:
   name: Jack Wallen
 ---
@@ -34,7 +32,7 @@ One feature found in ownCloud is the ability to connect an instance to Linode Ob
 - ownCloud requires the installation of two external storage applications to connect to an Object Storage service.
 
 - Once the ownCloud Marketplace external storage app is installed, you can configure a connection to your Linode Object Storage bucket.
-{{</ note >}}
+{{< /note >}}
 
 ## Configuring ownCloud
 

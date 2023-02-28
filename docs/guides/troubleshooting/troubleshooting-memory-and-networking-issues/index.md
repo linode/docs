@@ -54,9 +54,9 @@ If you don't use InnoDB tables, you should disable InnoDB support by adding the 
 
     skip-innodb
 
- {{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The settings in this section are designed to help you temporarily test and troubleshoot MySQL. We recommend that you do not permanently use these settings.
-{{< /caution >}}
+{{< /note >}}
 
 ### Apache 2 Low-Memory Settings
 
@@ -84,9 +84,9 @@ MaxClients 24
 MaxRequestsPerChild 3000
 {{< /file >}}
 
- {{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The settings in this section are designed to help you temporarily test and troubleshoot Apache. We recommend that you do not permanently use these settings.
-{{< /caution >}}
+{{< /note >}}
 
 ### Reducing SpamAssassin Memory Consumption
 
@@ -94,7 +94,7 @@ If you're filtering mail through SpamAssassin in standalone mode and running int
 
 ## Troubleshooting Network Issues
 
-If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/docs/guides/linux-static-ip-configuration/). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
+If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/docs/products/compute/compute-instances/guides/manual-network-configuration/). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
 
 If you just added an IP address to your Linode, please be sure to reboot before attempting to use it. This is required to properly route the IP address on our network.
 

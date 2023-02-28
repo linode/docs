@@ -25,8 +25,8 @@ Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. 
 
 Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possibility of something not working out as planned. This is one reason why backing up your data is so important.
 
-{{< note >}}
-If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4) guide before continuing.
+{{< note respectIndent=false >}}
+If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](/docs/guides/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide before continuing.
 {{< /note >}}
 
 ## Preparing to Upgrade
@@ -42,11 +42,11 @@ You should install all available updates for Debian 7 before upgrading to Debian
 
 ### Backing Up Your Linode
 
-It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Debian 8. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
+It's a good idea to [back up](/docs/products/storage/backups/) your Linode before performing a major upgrade. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading to Debian 8. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -90,7 +90,7 @@ deb-src http://ftp.us.debian.org/debian/ jessie-updates main
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Check your `/etc/apt/sources.list.d` for additional package repositories, and ensure that they are querying for packages from `jessie`.  You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
 {{< /note >}}
 
@@ -106,9 +106,9 @@ Check your `/etc/apt/sources.list.d` for additional package repositories, and en
 
         sudo apt-get dist-upgrade
 
-     {{< note >}}
-Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
-{{< /note >}}
+    {{< note >}}
+    Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+    {{< /note >}}
 
     During the upgrade process, configuration files that you've modified and require updates will be presented for manual review. Here's an example:
 
@@ -121,7 +121,7 @@ Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentica
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/using-the-lish-console/).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 Your Linode is now running Debian 8!
 

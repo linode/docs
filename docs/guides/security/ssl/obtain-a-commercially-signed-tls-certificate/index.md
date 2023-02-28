@@ -27,7 +27,7 @@ Some CAs allow you to create a CSR directly through their web interface after yo
 
 Research certificate authorities thoroughly before deciding on the company which will be used for things such as protecting customers' personal information via HTTPS, cryptographically signing emails, or granting access to internal platforms.
 
-If you intend to use your SSL certificate on a website, see our guide on [Enabling TLS for HTTPS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections) once you’ve completed the process in this guide.
+If you intend to use your SSL certificate on a website, see our guide on [Enabling TLS for HTTPS on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process in this guide.
 
 ## Create a Certificate Signing Request (CSR)
 

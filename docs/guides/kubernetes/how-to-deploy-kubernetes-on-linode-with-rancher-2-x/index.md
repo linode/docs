@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-14
 modified_by:
   name: Linode
-title: 'How to Deploy Kubernetes on Linode with Rancher'
-h1_title: 'Deploying Kubernetes on Linode with Rancher'
+title: 'Deploying Kubernetes on Linode with Rancher'
+title_meta: 'How to Deploy Kubernetes on Linode with Rancher'
 aliases: ['/applications/containers/how-to-deploy-apps-with-rancher-2-3/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/how-to-deploy-apps-with-rancher/','/applications/containers/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/','/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/','/applications/containers/kubernetes/how-to-deploy-kubernetes-on-linode-with-rancher-2-2/']
 concentrations: ["Kubernetes"]
 external_resources:
@@ -44,11 +44,11 @@ This guide will show how to:
 
 If you are not familiar with Kubernetes and container deployments, we recommend that you review our other guides on these subjects first.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [remove it](#removing-the-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account.
-{{< /caution >}}
+{{< /note >}}
 
 ### If You Already Run Rancher
 
@@ -60,9 +60,9 @@ You may need to update your local Rancher installation to see the Linode node dr
 
 The Rancher web application will run on a Linode in your Cloud Manager account. Create and prepare the Linode that will run Rancher:
 
-1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
+1.  Create a Linode running Ubuntu 18.04 in the data center of your choice. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide for instructions on setting up your server. It is recommended that you create a 2GB Linode or larger.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will be able to create Kubernetes clusters in any Linode data center from the Rancher UI, even if your Rancher Linode is located in a different region.
 {{< /note >}}
 
@@ -71,11 +71,11 @@ You will be able to create Kubernetes clusters in any Linode data center from th
 
 You will also need to generate an API token and prepare a domain zone:
 
-1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) guide to get a token.
+1.  Rancher will need a Linode APIv4 token with read and write privileges from your Linode account in order to create your cluster. Review the instructions from the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) guide to get a token.
 
-1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/guides/dns-manager/#create-and-manage-domains) guide.
+1.  The [Set Up DNS](#set-up-dns-for-the-wordpress-app) section of this guide will assign an address to this guide's example app. In order to do so, you must already have a domain zone created in the Linode Cloud Manager. If you do not have a zone created, review the instructions from our [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you haven't purchased a domain name, then you can read along with the DNS section of this guide without implementing it in your own cluster.
 {{< /note >}}
 
@@ -103,7 +103,7 @@ After you have your Linode up and running with Docker, you can then install and 
 
 1.  Once Docker has finished starting up the container, visit your Linode's IP address in your browser. Your browser will display an SSL certificate warning, but you can bypass it.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are interested in setting up an SSL certificate with Rancher, you may consider also creating an NGINX container with an SSL certificate that proxies traffic to the Rancher container.
 {{< /note >}}
 
@@ -119,7 +119,7 @@ If you are interested in setting up an SSL certificate with Rancher, you may con
 
     ![Rancher enter server URL screen](Rancher1.png "The server URL entry form")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The main interface for navigating Rancher is via the blue navigation bar that spans the top of the page. The items in this navigation bar will change when you view different parts of the application.
 {{< /note >}}
 
@@ -197,9 +197,9 @@ Rancher is shipped with a node driver for Linode that is activated by default. N
 
     ![Linode node driver activated by default](linode-node-driver-active.png "Linode node driver is activated by default")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode node driver **does not** install the Linode CCM and CSI for your new clusters. Further instructions for enabling these features are listed in the [Provision a Cluster](#provision-a-cluster) section. You should wait until the node driver is listed as **Active** before moving on.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< disclosure-note "What are the Linode CCM and CSI?" >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager) and [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface) are Kubernetes addons published by Linode. These addons provide additional integrations with the Linode cloud platform. Specifically, you can use them to create NodeBalancers, DNS records, and Block Storage Volumes.
@@ -207,8 +207,8 @@ The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Cont
 
 ### Add a Node Template
 
-{{< note >}}
-Nodes created using Rancher are dependent on the [Network Helper](/docs/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
+{{< note respectIndent=false >}}
+Nodes created using Rancher are dependent on the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) configuration option being enabled. Due to this, all nodes created using Rancher will have the Network Helper service enabled by default regardless of account wide settings, and disabling the service manually is not recommended.
 {{< /note >}}
 
 
@@ -235,7 +235,7 @@ Before provisioning your cluster, you will need to add the node template it will
 
     ![Rancher Add Node Template form - Linode options](add-node-template-linode-options.png "The Linode options in the Add Node Template form")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 We recommend that you choose a Linode 2GB or higher for the nodes in a Kubernetes cluster.
 
 The Block Storage service has not been deployed to our Atlanta (US-Southeast) data center. Since this guide will use Block Storage Volumes in its example cluster, please choose a different region when creating your node template.
@@ -247,7 +247,7 @@ The Block Storage service has not been deployed to our Atlanta (US-Southeast) da
 
 1.  When finished with the form, click the **Create** button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All other node template settings are optional and will not be used in this guide. You do not need to set a password for the nodes created through this template; Rancher will generate one automatically. As well, Rancher provides command-line access to the Kubernetes API for your cluster, so logging into your nodes generally isn't needed.
     {{< /note >}}
 
@@ -329,7 +329,7 @@ All other node template settings are optional and will not be used in this guide
 
 1.  After you finish with both of these steps, your YAML should resemble [this completed snippet](completed-cluster-config.yml).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Avoid copying and pasting the entire completed snippet example, as it has some variable values outside of the `addons_include`, `addons`, and `services` sections that may not match your deployment (e.g. the `kubernetes_version` setting).
 
 Instead, compare your YAML file with the completed example to ensure you have inserted the `addons_include`, `addons`, and `services` sections in the right places.
@@ -343,7 +343,7 @@ Instead, compare your YAML file with the completed example to ensure you have in
 
     ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Linode Cloud Manager")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
@@ -431,7 +431,7 @@ Rancher provides a library of apps which offer easy setup through Rancher's UI. 
 
 A Helm chart is a popular format for describing Kubernetes resources. Rancher extends the Helm chart format with some additional configuration files, and this extended packaging is referred to as a [*Rancher chart*](https://rancher.com/docs/rancher/v2.x/en/catalog/custom/#custom-helm-chart-repository). The additional information in the Rancher chart format is used to create interactive forms for configuring the app through the Rancher UI.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is possible to enable [more app catalogs](https://rancher.com/docs/rancher/v2.x/en/catalog/) than just Rancher's curated library, including a catalog of stable Helm charts. These other apps will not feature Rancher's easy setup forms and will instead require manual entry of configuration options.
 {{< /note >}}
 
@@ -451,7 +451,7 @@ To test out deploying an app on your new cluster, launch the WordPress app from 
 
     ![Rancher WordPress setup form - WordPress Settings](wordpress-app-form-wordpress-settings.png "Rancher WordPress setup form - WordPress Settings")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Avoid using symbols in the password you enter, as some symbols can cause syntax errors for this Rancher chart.
 {{< /note >}}
 
@@ -461,7 +461,7 @@ Avoid using symbols in the password you enter, as some symbols can cause syntax 
 
     These settings will result in your database deployment keeping its data in a Linode Block Storage Volume.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The default value for the **MariaDB Volume Size** field is 8GB, but the minimum size for a Block Storage Volume is 10GB. The Linode CSI will automatically upgrade any persistent volume claims that are smaller than 10GB to 10GB.
 {{< /note >}}
 
@@ -491,7 +491,7 @@ The default value for the **MariaDB Volume Size** field is 8GB, but the minimum 
 
     Your WordPress site should open in a new browser tab.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using the Toronto data center, you will need to manually update the HTTP NodeBalancer's endpoint URL to use the data center's short form name. Replace the `toronto1` portion of the URL with `tor1`. An updated example URL will appear as follows:
 
 `http://nb-192-0-2-0.tor1.nodebalancer.linode.com`
@@ -500,7 +500,7 @@ If using the Toronto data center, you will need to manually update the HTTP Node
 
 1.  Visit the wp-login.php page on your site (e.g. at `http://your-nodebalancer-name.newark.nodebalancer.linode.com/wp-login.php`). You should be able to login with the WordPress admin username and password you specified earlier in the app's form.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you view the Volumes and NodeBalancers areas of the Linode Cloud Manager, you should see the new Volume and NodeBalancer that were created for this app. They will have random alphanumeric names like `pvc77e0c083490411e9beabf23c916b1`.
 {{< /note >}}
 
@@ -538,9 +538,9 @@ Rancher makes it easy to scale the number of nodes in your cluster and to scale 
 
 ### Scale your Cluster
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The example instructions in this section will add nodes to your cluster, which will add further billable services to your account. You can read these instructions without performing them on your own account if you prefer.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Return to the home page by hovering over the **Global** dropdown menu in the main navigation bar and then clicking the **Global** menu item:
 
@@ -554,7 +554,7 @@ The example instructions in this section will add nodes to your cluster, which w
 
     ![Rancher edit cluster form - node pool count highlighted](edit-cluster-adjust-node-pool-count.png "Rancher edit cluster form - node pool count highlighted")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your example cluster's nodes all run etcd, so you can only scale the node pool to a count of 1, 3, or 5. If you had a separate node pool for your workloads, you could scale it freely to any count.
 {{< /note >}}
 
@@ -590,7 +590,7 @@ Rancher also provides an easy way to scale your app's deployments:
 1.  A second Pod will appear in the **Pods** section on this page, and there will be an **Updating** label at the top of the page. You may see a series of warning messages about the new Pod not being available. Eventually, the new Pod will be labelled as **Running**.
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Rancher does not currently support interacting directly with Linode Volumes via its user interface. However, the scaling method described in this section of the guide will apply complete replication to your application and volumes.
 {{< /note >}}
 

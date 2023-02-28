@@ -11,7 +11,7 @@ published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Pritunl through the Linode Marketplace"
+title: "Deploy Pritunl through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -27,9 +27,9 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Pritunl should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -38,11 +38,12 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 ### Pritunl Options
 
-
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

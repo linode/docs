@@ -10,9 +10,8 @@ modified: 2017-09-05
 modified_by:
   name: Linode
 published: 2015-08-27
-title: "Install MySQL CentOS 7: A How To"
-h1_title: "Installing MySQL on CentOS 7"
-enable_h1: true
+title: "Installing MySQL on CentOS 7"
+title_meta: "Install MySQL CentOS 7: A How To"
 external_resources:
  - '[MySQL 5.6 Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/index.html)'
  - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -41,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -73,7 +72,7 @@ MySQL must be installed from the [community repository](https://dev.mysql.com/do
         sudo yum install mysql-server
         sudo systemctl start mysqld
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases using SSH.
 
 {{< note >}}
 Allowing unrestricted access to MySQL on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.

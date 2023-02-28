@@ -26,7 +26,7 @@ In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rew
 
 ## Before You Begin
 
-1.  This guide assumes you have followed our [[Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
+1.  This guide assumes you have followed our [[Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
 
 2.  In this guide, we'll be modifying Apache configuration files, so be sure you have the proper permissions to do so.
 

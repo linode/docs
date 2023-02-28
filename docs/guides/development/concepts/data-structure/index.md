@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
 modified_by:
   name: Linode
-title: "Understanding Data Structures: Definition, Uses & Benefits"
-h1_title: "Data Structures in Computer Programming"
-enable_h1: true
+title: "Data Structures in Computer Programming"
+title_meta: "Understanding Data Structures: Definition, Uses & Benefits"
 contributor:
   name: Jeff Novotny
 external_resources:

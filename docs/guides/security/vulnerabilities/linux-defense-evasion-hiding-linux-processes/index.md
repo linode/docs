@@ -11,8 +11,6 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Linux Defense Evasion - Hiding Linux Processes"
-h1_title: "Linux Defense Evasion - Hiding Linux Processes"
-enable_h1: true
 contributor:
   name: HackerSploit
 ---

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Beginner's Guide to Kubernetes (Part 5): Conclusion"
-h1_title: "A Beginner's Guide to Kubernetes (Part 5): Conclusion"
-enable_h1: true
+title: "A Beginner's Guide to Kubernetes (Part 5): Conclusion"
+title_meta: "Beginner's Guide to Kubernetes (Part 5): Conclusion"
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
@@ -24,8 +23,8 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-{{< note >}}
-This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< note respectIndent=false >}}
+This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 In this guide you will learn about [networking](#networking) in Kubernetes and about [advanced Kubernetes topics](#advanced-topics).

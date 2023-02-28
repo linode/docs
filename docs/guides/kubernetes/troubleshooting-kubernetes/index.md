@@ -10,8 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "Troubleshooting Kubernetes"
-h1_title: "Diagnose and Resolve Kubernetes Issues"
+title: "Diagnose and Resolve Kubernetes Issues"
+title_meta: "Troubleshooting Kubernetes"
 image: troubleshooting-kube.jpg
 concentrations: ["Kubernetes"]
 external_resources:
@@ -79,7 +79,7 @@ Use the [`get` command](https://kubernetes.io/docs/reference/generated/kubectl/k
         # Show pods in the `kube-system` namespace
         kubectl get pods --namespace kube-system
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you've set up Kubernetes using automated solutions like Linode's Kubernetes Engine, [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/), or [Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/), you'll see [csi-linode](https://github.com/linode/linode-blockstorage-csi-driver) and [ccm-linode](https://github.com/linode/linode-cloud-controller-manager) Pods in the `kube-system` namespace. This is normal as long as they're in the Running status.
 {{< /note >}}
 
@@ -144,7 +144,7 @@ The full syntax for the command is:
 
     kubectl exec ${POD_NAME} -c ${CONTAINER_NAME} -- ${CMD} ${ARG1} ${ARG2} ... ${ARGN}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-c` flag is optional, and is only needed when the specified Pod is running more than one container.
 {{< /note >}}
 
@@ -166,7 +166,7 @@ If your nodes do not run [systemd](/docs/guides/what-is-systemd/), the location 
 - `/var/log/kube-scheduler.log` - [Scheduler](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/ )
 - `/var/log/kube-controller-manager.log` - [Replication controller manager](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will not be able to directly access the master nodes of your cluster if you are using Linode's LKE service.
 {{< /note >}}
 

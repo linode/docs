@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
-og_description: 'This guide walks you through how to author and deploy a static site with Hugo after creating a cluster on LKE.'
 keywords: ['kubernetes','kubernetes tutorial','docker kubernetes','docker and kubernetes', 'static site generator','hugo static site']
 tags: ["docker","version control system","kubernetes","container","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,7 @@ published: 2019-11-12
 modified: 2020-12-03
 modified_by:
   name: Linode
-h1_title: "How to Deploy a Static Site on Linode Kubernetes Engine"
-title: "Deploying a Static Site on Linode Kubernetes Engine"
-enable_h1: true
+title: "Deploy a Static Site on Linode Kubernetes Engine"
 contributor:
   name: Linode
 external_resources:
@@ -26,9 +23,9 @@ aliases: ['/kubernetes/how-to-deploy-a-static-site-on-linode-kubernetes-engine/'
 
 Deploying a static site using an LKE cluster is a great example to follow when learning Kubernetes. A [container](/docs/guides/kubernetes-reference/#container) image for a static site can be written in less than ten lines, and only one container image is needed. Therefore, it's often less complicated to deploy a static site on Kubernetes than some other applications that require multiple components.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Following the instructions in this guide creates billable resources on your account in the form of Linodes and NodeBalancers. You are billed an hourly rate for the time that these resources exist on your account. Be sure to follow the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) at the end of this guide if you do not wish to continue using these resources.
-{{</ caution >}}
+{{< /note >}}
 
 ## In this Guide
 
@@ -54,13 +51,13 @@ This guide shows you how to:
 
     - To create a cluster in the Linode Cloud Manager, review the [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#create-an-lke-cluster) and [Connect to your LKE Cluster with kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl) sections.
         {{< /note >}}
 
     - To create a cluster from the Linode API, review the [Deploy and Manage a Cluster with Linode Kubernetes Engine and the Linode API](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/) tutorial.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Specifically, follow the [Create an LKE Cluster](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/#create-an-lke-cluster) section.
 {{< /note >}}
 
@@ -130,7 +127,7 @@ In this section you creates a static site on your workstation using Hugo.
 
         git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Git submodules allow you to include one Git repository within another, each maintaining their own version history. To view a collection of Hugo themes, visit the [Hugo theme collection](https://themes.gohugo.io/).
 {{< /note >}}
 
@@ -272,7 +269,7 @@ public/
 .gitignore
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This file, similar to the `.gitignore` file you created in the previous section, allows you to ignore certain files within the working directory that you want to leave out of the container. Because you want the container to be the smallest size possible, the `.dockerignore` file includes the `public/` folder and some hidden folders that Git creates.
 {{< /note >}}
 
@@ -280,7 +277,7 @@ This file, similar to the `.gitignore` file you created in the previous section,
 
         docker build -t mydockerhubusername/lke-example:v1 .
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the example below, the container image is named `lke-example` and has been given a version tag of `v1`. Feel free to change these values.
 {{< /note >}}
 
@@ -409,9 +406,9 @@ static-site-deployment-cdb88b5bb-lzdvh  1/1     Running  0          1h
 
 1.  Create a Service manifest file to provide load balancing for the deployment. Load balancing ensures that traffic is balanced efficiently across multiple backend nodes, improving site performance and ensuring that your static site is accessible should a node go down.
 
-    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/guides/getting-started-with-nodebalancers/).
+    Specifically, the Service manifest that is used in this guide triggers the creation of a Linode [NodeBalancer](/docs/products/networking/nodebalancers/get-started/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The NodeBalancer's creation is controlled through the [Linode Cloud Controller Manager (CCM)](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager). The CCM provides a number of settings, called `annotations`, that allow you to control the functionality of the NodeBalancer. To learn more about the CCM, read our [Installing the Linode CCM on an Unmanaged Kubernetes Cluster](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/) guide.
 {{< /note >}}
 
@@ -464,7 +461,7 @@ static-site-service  LoadBalancer  10.128.99.240  192.0.2.1        80:32648/TCP 
 
 ## Next Steps
 
-If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) and [DNS Manager](/docs/guides/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
+If you'd like to continue using the static site that you created in this guide, you may want to assign a domain to it. Review the [DNS Records: An Introduction](/docs/guides/dns-overview/) and [DNS Manager](/docs/products/networking/dns-manager/) guides for help with setting up DNS. When setting up your DNS record, use the external IP address that you noted at the end of the previous section.
 
 If you would rather not continue using the cluster you just created, review the [tear-down section](#tear-down-your-lke-cluster-and-nodebalancer) to remove the billable Linode resources that were generated.
 
@@ -486,4 +483,4 @@ If you would rather not continue using the cluster you just created, review the 
 
     1.  You are prompted to enter the name of the cluster to confirm the action. Enter the cluster name and click **Delete**.
 
--  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/kubernetes/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
+-  Lastly, remove the `KUBECONFIG` line you added to your Bash profile to remove the LKE cluster from your [available contexts](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).

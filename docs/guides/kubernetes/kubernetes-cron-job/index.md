@@ -3,16 +3,14 @@ slug: kubernetes-cron-job
 author:
   name: Martin Heller
 description: 'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
-og_description:  'This guide shows you how to create a Kubernetes CronJob, which you can use to automate and schedule various types of tasks on your Kubernetes clusters.'
 keywords: ['kubernetes cron job']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
 modified_by:
   name: Linode
-title: "Creating a Kubernetes CronJob"
-h1_title: "How to Create a Kubernetes CronJob"
-enable_h1: true
+title: "Create a Kubernetes CronJob"
+title_meta: "How to Create a Kubernetes CronJob"
 contributor:
   name: Martin Heller
 external_resources:
@@ -58,7 +56,7 @@ spec:
           restartPolicy: OnFailure
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The manifest file above uses the example provided in the [Kubernetes official documentation](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#example).
 {{< /note >}}
 
@@ -78,7 +76,7 @@ This section shows you how to back up a MySQL database. The example assumes a Dr
 - Create the CronJob to backup your MySQL database
 - Schedule your CronJob
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure your terminal is using your desired [Kubeconfig context](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context).
 {{< /note >}}
 
@@ -102,7 +100,7 @@ The `mysqldump` command can be executed after logging into your MySQL Pod. Execu
 
 Viewing your MySQL Pod's terminal prompt, run the `mysqldump` command to generate a backup copy of your database. Enter your database's password when prompted. You can verify the `dump.sql` backup file created using the `ls` command.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you deployed your Kubernetes cluster following the [How to Install Drupal with Linode Kubernetes Engine](/docs/guides/how-to-install-drupal-with-linode-kubernetes-engine/), your password should be the same one used in your `kustomization.yaml` file.
 {{< /note >}}
 
@@ -115,7 +113,7 @@ Your CronJob file incorporates the `mysqldump` command that you tested in the pr
 
     mysqldump drupal-db -p$MYSQL_ROOT_PASSWORD > dump.sql
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If your Pod does not have the password stored in its Pod environment, you can use a [Kubernetes secret to store your password as a Pod environment variable](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/).
 {{< /note >}}
 

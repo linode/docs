@@ -1,7 +1,7 @@
 ---
 slug: creating-a-mongodb-replication-set-on-centos-6-4
 deprecated: true
-deprecated_link: '/guides/create-a-mongodb-replica-set/'
+deprecated_link: 'guides/create-a-mongodb-replica-set/'
 author:
   name: Linode
   email: docs@linode.com
@@ -12,8 +12,8 @@ aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on CentOS 6.4'
-h1_title: 'Creating a MongoDB Replication Set on CentOS 6.4'
+title: 'Creating a MongoDB Replication Set on CentOS 6.4'
+title_meta: 'How To Create a MongoDB Replication Set on CentOS 6.4'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -67,7 +67,7 @@ europa
         gpgcheck=0
         enabled=1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A 32-bit system is not recommended for production deployments.
 {{< /note >}}
 

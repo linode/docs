@@ -33,15 +33,15 @@ external_resources:
 
 [Kubernetes](https://kubernetes.io/) is an open-source container management system that is based on [Google Borg](https://research.google.com/pubs/pub43438.html). It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to manually set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can now create a Kubernetes cluster with one command using the Linode CLI. To provision Kubernetes on Linodes, this tool uses the [Linode Kubernetes Terraform module](https://github.com/linode/terraform-linode-k8s), the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager), and the [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage.  See the [Kubernetes Tools](https://developers.linode.com/kubernetes/) page for installation steps. For an in-depth dive into the Linode Kubernetes Terraform module, see its related [Community Site post](https://www.linode.com/community/questions/17611/the-linode-kubernetes-module-for-terraform).
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
 You will need:
 
-* Two or more Linodes with [Private IPs](/docs/guides/managing-ip-addresses/#adding-an-ip-address)
+* Two or more Linodes with [Private IPs](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address)
 * Each Linode should have a 64-bit distribution of either:
     - Ubuntu 16.04+
     - Debian 9
@@ -57,7 +57,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
 
 1.  Create two Linodes with at least 2GB memory within the same data center.
 
-1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/guides/managing-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
+1.  For each node, go into the **Networking** tab of the Linode Cloud Manager and add a [private IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address). It is possible to build a Kubernetes cluster using public IPs between data centers, but performance and security may suffer.
 
 1.  Configure a firewall with [UFW](/docs/guides/configure-firewall-with-ufw/) or [iptables](/docs/guides/control-network-traffic-with-iptables/) to ensure only the two nodes can communicate with each other.
 
@@ -85,9 +85,9 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
     | TCP | Inbound | 30000-32767 | NodePort Services** |  All |
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   By design, kube-proxy will always place its iptables chains first. It inserts 2 rules, KUBE-EXTERNAL-SERVICES and KUBE-FIREWALL at the top of the INPUT chain. See the [Kubernetes discussion forum](https://discuss.kubernetes.io/t/custom-iptables-rules-for-input-chain/3509) for more details.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  You should consider using the Linode NodeBalancer service with the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager).
 

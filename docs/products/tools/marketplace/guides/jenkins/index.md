@@ -10,7 +10,7 @@ published: 2020-03-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Jenkins through the Linode Marketplace"
+title: "Deploy Jenkins through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +28,9 @@ aliases: ['/platform/marketplace/how-to-deploy-jenkins-with-marketplace-apps/', 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Jenkins should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,17 +43,19 @@ After deploying your Jenkins instance, you are ready to log in and continue the 
 
 ### Access Your Jenkins Instance
 
-1. [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1. [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1. Retrieve your Jenkins admin password by viewing the contents of the `/var/lib/jenkins/secrets/initialAdminPassword` file.
 
-        cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```command
+    cat /var/lib/jenkins/secrets/initialAdminPassword
+    ```
 
     You should see a similar output
 
-    {{< output >}}
-0f6fed516bc4ceab24373fe5de513dc
-    {{</ output >}}
+    ```output
+    0f6fed516bc4ceab24373fe5de513dc
+    ```
 
 1. Open a browser and navigate to `http://192.0.2.0:8080/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/). This will bring you the *Unlock Jenkins* page. Enter the password you retrieved in the previous step and click **continue**.
 

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:
   name: Linode
-title: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
-h1_title: "Installing Drupal on LKE"
-enable_h1: true
+title: "Installing Drupal on LKE"
+title_meta: "How to Install Drupal on LKE (Linode Kubernetes Engine)"
 contributor:
   name: Rajakavitha Kodhandapani
 
@@ -29,11 +28,11 @@ This guide provides instructions to:
 - [Create Deployment Manifests](#create-manifest-files)
 - [Install Drupal](#install-drupal)
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide’s example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to delete it when you have finished the guide.
 
-If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for detailed information about how hourly billing works and for a table of plan pricing.
-{{</ caution >}}
+If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -353,8 +352,8 @@ You need to log into the `mysql` Pod to set the root password for the Drupal UI 
 
 1.  In the browser, type the IP address listed under `EXTERNAL_IP` from the `kubectl get services drupal` command above followed by the port `:8081`, for example, `http://192.0.2.3:8081`. The Drupal configuration page appears.
 
-    {{< note >}}
-If you have a registered domain name that you want to use for the Drupal website, add the domain in [Cloud Manager](http://cloud.linode.com) and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/guides/dns-manager/#add-a-domain).
+    {{< note respectIndent=false >}}
+If you have a registered domain name that you want to use for the Drupal website, add the domain in [Cloud Manager](http://cloud.linode.com) and select **Insert default records from one of my NodeBalancers** option. In this case, the `EXTERNAL_IP` address is the IP address of the NodeBalancer. For more information, see [Add a Domain](/docs/products/networking/dns-manager/guides/create-domain/).
 {{< /note >}}
 
     ![Drupal Configuration Screen](install-drupal-setup.png "Drupal Configuration Screen")

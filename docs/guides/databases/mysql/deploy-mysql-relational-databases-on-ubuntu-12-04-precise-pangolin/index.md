@@ -12,7 +12,7 @@ modified: 2015-09-11
 modified_by:
     name: Linode
 published: 2012-10-08
-title: 'Deploy MySQL Relational Databases on Ubuntu 12.04 (Precise Pangolin)'
+title: 'Deploy MySQL Relational Databases on Ubuntu 12.04'
 external_resources:
     - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
     - '[PHP MySQL Manual](http://us2.php.net/manual/en/book.mysql.php)'
@@ -29,9 +29,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Prerequisites
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 

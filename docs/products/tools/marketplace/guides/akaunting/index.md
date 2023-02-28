@@ -10,7 +10,7 @@ published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Akaunting through the Linode Marketplace"
+title: "Deploy Akaunting through the Linode Marketplace"
 external_resources:
 - '[Akaunting](https://akaunting.com)'
 aliases: ['/guides/deploying-akaunting-marketplace-app/','/guides/akaunting-marketplace-app/']
@@ -26,9 +26,9 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Akaunting should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -46,11 +46,13 @@ It is built with modern technologies (such as Laravel and VueJS) and includes a 
 - **Database User** *(required)*: The username you wish to use for the limited database user.
 - **Database User Password** *(required)*: Enter a *strong* password you wish to use for the limited database user.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Akaunting App
 
-1.  Open your web browser and navigate to `http://[ip-address]/`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]/`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The Akaunting login page appears. The username for this instance is the *Admin Email* and the password is the *Admin Password* that you set when you deployed this One-Click Marketplace App.
 

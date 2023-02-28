@@ -10,9 +10,8 @@ published: 2021-04-16
 image: TLSCertificate.png
 modified_by:
   name: Linode
-title: "What is a TLS Certificate?"
-h1_title: "Understanding TLS Certificates and Connections"
-enable_h1: true
+title: "Understanding TLS Certificates and Connections"
+title_meta: "What is a TLS Certificate?"
 tags: ['web server', 'ssl', 'security']
 contributor:
   name: Tom Henderson

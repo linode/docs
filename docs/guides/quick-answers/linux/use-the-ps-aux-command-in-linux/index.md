@@ -10,9 +10,8 @@ modified: 2021-01-25
 modified_by:
   name: Linode
 published: 2021-01-25
-title: How to Use the ps aux Command in Linux
-h1_title: Using the ps aux Command in Linux
-enable_h1: true
+title: Using the ps aux Command in Linux
+title_meta: How to Use the ps aux Command in Linux
 external_resources:
   - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]

@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces."
-h1_title: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces"
-enable_h1: true
+title: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces"
+title_meta: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces."
 contributor:
   name: Linode
 concentrations: ["Kubernetes"]
@@ -24,8 +23,8 @@ aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-par
 
 ![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
 
-{{< note >}}
-This is the third guide in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series that explains the major parts and concepts of Kubernetes.
+{{< note respectIndent=false >}}
+This is the third guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
 In Kubernetes, there are a number of objects that are abstractions of your Kubernetes system's desired state. These objects represent your application, its networking, and disk resources -- all of which together form your application.
@@ -248,7 +247,7 @@ For more information on Namespaces, visit the [Kubernetes Namespaces API documen
 
 ## Next Steps
 
-To continue in the [Beginner's Guide to Kubernetes](/docs/kubernetes/beginners-guide-to-kubernetes) series, visit part 4:
+To continue in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series, visit part 4:
 
  - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)
 

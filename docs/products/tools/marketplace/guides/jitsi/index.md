@@ -11,7 +11,7 @@ modified: 2022-03-08
 image: Deploy_Jitsi_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Jitsi through the Linode Marketplace"
+title: "Deploy Jitsi through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -29,9 +29,9 @@ aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Jitsi should be fully installed within 3-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -45,14 +45,16 @@ aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Jitsi is now installed and ready to use.
 
 1.  Before you go to your app, if you filled out the optional Jitsi configuration fields:
 
-    - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain) there is now an entry for your domain with two `A/AAAA` records pointing to your new server. One for the domain name and one for the hostname.
-    - [Configure the rDNS](/docs/guides/configure-your-linode-for-reverse-dns/) on your Linode.
+    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/) there is now an entry for your domain with two `A/AAAA` records pointing to your new server. One for the domain name and one for the hostname.
+    - [Configure the rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode.
 
 1.  If you didn't setup a domain, navigate to the rDNS address of the Linode in your browser. You can find the rDNS address in the **Networking** tab for your Linode in the [Cloud Manager](https://cloud.linode.com). If you did setup a domain, navigate to the address as described in the [Jitsi Options](#jitsi-options) section above.
 

@@ -21,7 +21,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2020-07-07
 modified_by:
   name: Linode
-title: "How to Deploy the Elastic Stack on Kubernetes"
+title: "Deploy the Elastic Stack on Kubernetes"
+title_meta: "How to Deploy the Elastic Stack on Kubernetes"
 external_resources:
   - "[Elastic Documentation](https://www.elastic.co/guide/index.html)"
 aliases: ['/kubernetes/how-to-deploy-the-elastic-stack-on-kubernetes/','/applications/containers/how-to-deploy-the-elastic-stack-on-kubernetes/']
@@ -39,29 +40,29 @@ This guide provides instructions to:
 
 You can further use the Elastic Stack deployed and configured for application logs or monitoring Kubernetes.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide's example instructions creates the following billable resources on the Linode account: four (4) Linodes and three (3) Block Storage volumes. If you do not want to keep using the example cluster that you create, be sure to delete the cluster Linodes and volumes after you have finished the guide.
 
-If you remove the resources afterward, you are billed only for the hour(s) that the resources were present on the account. For more information, see [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide about how hourly billing works and for a table of plan pricing.
-{{< /caution >}}
+If you remove the resources afterward, you are billed only for the hour(s) that the resources were present on the account. For more information, see [Billing and Payments](/docs/products/platform/billing/) guide about how hourly billing works and for a table of plan pricing.
+{{< /note >}}
 
 ## Before You Begin
 
-{{< note >}}
-This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) guide.
+{{< note respectIndent=false >}}
+This guide uses Kubernetes services which are private by default. Local listeners are opened which allow you to access the services on the local browser, however, web servers and NodeBalancers are out scope for this guide. Due to this, you should complete the steps of this guide from the local computer or from a computer that gives you access to the web browser. If you want to access these services from a public domain, please see the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 {{< /note >}}
 
 1.  [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on the local computer.
 
 1.  Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
 
-    {{< note >}} Ensure that the LKE cluster that you create has three nodes and one master node with  4GB Linode instances. Also ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
+    {{< note respectIndent=false >}} Ensure that the LKE cluster that you create has three nodes and one master node with  4GB Linode instances. Also ensure that the `KUBECONFIG` context is [persistent](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#persist-the-kubeconfig-context){{< /note >}}
 
 1.  You should also make sure that Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
         kubectl config get-contexts
 
-1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/kubernetes/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
+1.  Set up Helm in the Kubernetes cluster by following the [Install Helm](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) section in the *How to Install Apps on Kubernetes with Helm 3* guide.
 
 ## Configure Helm
 
@@ -116,7 +117,7 @@ Before installing the chart, ensure that resources are set appropriately. By def
 
         kubectl port-forward svc/elasticsearch-master 9200:9200
 
-    {{< note >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/elasticsearch-master 9200:9200; done` {{< /note >}}
+    {{< note respectIndent=false >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/elasticsearch-master 9200:9200; done` {{< /note >}}
 
 1.  In another terminal window, send a request to this port:
 
@@ -144,7 +145,7 @@ Before installing the chart, ensure that resources are set appropriately. By def
 }
 {{</ output >}}
 
-    {{< note >}} The specific version numbers and dates may be different in this JSON response. Elasticsearch is operational, but not receiving or serving any data. {{< /note >}}
+    {{< note respectIndent=false >}} The specific version numbers and dates may be different in this JSON response. Elasticsearch is operational, but not receiving or serving any data. {{< /note >}}
 
 ### Install Filebeat
 
@@ -201,7 +202,7 @@ TEST SUITE: None
 
         kubectl port-forward svc/kibana-kibana 5601:5601
 
-    {{< note >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/kibana-kibana 5601:5601; done` {{< /note >}}
+    {{< note respectIndent=false >}} This command times out after 5 minutes, if you find that and want to have the port forward for longer, consider using the following command to keep it open: `while true; do kubectl port-forward svc/kibana-kibana 5601:5601; done` {{< /note >}}
 
 ## Configure Kibana
 
@@ -235,7 +236,7 @@ Before visualizing Pod logs, Kibana must be configured with an index pattern for
 
 1.  Use the **Filters** box to search only for logs arriving from Kibana Pods by filtering for `kubernetes.container.name : "kibana"`. Click the **Update** button to apply the search filter.
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 When searching in the filters box, field names and values are auto-populated.
 {{< /note >}}
 
@@ -293,7 +294,7 @@ Before following these steps, ensure that the `port-forward` command to expose K
 
 Run the following commands on the local machine. This communicates with Kibana over `127.0.0.1:5601` to import default Dashboards that is populated with data from Metricbeat.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The commands should use the same version of Metricbeat deployed to the Kubernetes cluster. You can find this version by issuing the following command:
 
     helm get values --all metricbeat | grep imageTag

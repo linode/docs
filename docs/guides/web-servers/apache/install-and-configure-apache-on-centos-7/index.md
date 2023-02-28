@@ -27,8 +27,8 @@ relations:
 
 This guide explains how to install and configure the Apache web server on CentOS 7. Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with the domain name of the website.
 {{< /note >}}
@@ -36,9 +36,9 @@ Replace each instance of `example.com` in this guide with the domain name of the
 
 ## Before you begin
 
-1.  Ensure you have followed both the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
+1.  Ensure you have followed both the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
-2.  Check that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname). To check the hostname run:
+2.  Check that the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname). To check the hostname run:
 
         hostname
         hostname -f
@@ -91,7 +91,7 @@ DocumentRoot "/var/www/html/example.com/public_html"
 </IfModule>
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These settings may also be added to a separate file. The file must be located in either the `conf.module.d` or `conf` directories and must end in `.conf` (as this is the format of files included in the resulting configuration).
 {{< /note >}}
 
@@ -123,7 +123,7 @@ NameVirtualHost *:80
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined as in the previous step, create the `logs` directories before you restart Apache.
 {{< /note >}}
 
@@ -161,4 +161,4 @@ To add additional security to the site, consider [enabling a *secure sockets lay
 
 ### Install and Configure GlusterFS, Galera, and XtraDB for High Availability
 
-Consult the [Host a Website with High Availability](/docs/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.
+Consult the [Host a Website with High Availability](/docs/guides/host-a-website-with-high-availability/) guide to mitigate downtime through redundancy, monitoring, and failover.

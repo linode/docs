@@ -12,12 +12,11 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 image: deploy-and-manage-cluster-copy.png
-title: "Deploy and Manage a Cluster with  Kubernetes Engine"
-h1_title: "Deploying and Managing a Cluster with LKE and the Linode API Tutorial"
-enable_h1: true
+title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 
-title: "Deploy and Manage a Kubernetes Cluster with the Linode API"
-h1_title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+title: "Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE) with the Linode API"
+title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
 
 contributor:
   name: Linode
@@ -25,7 +24,7 @@ aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-wit
 tags: ["kubernetes"]
 ---
 
-The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/guides/getting-started-with-nodebalancers/) (load balancers), and [Block Storage Volumes](/docs/guides/how-to-use-block-storage-with-your-linode/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
+The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and simple pricing with the infrastructure efficiency of Kubernetes. When you deploy a LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE Cluster's Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers.
 
 **Additional LKE features:**
 
@@ -37,7 +36,7 @@ You can easily deploy an LKE cluster in several ways:
 - Via the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
 - With the Linode API (as presented in this guide)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode API and the Kubernetes API are two separate interfaces, and both are mentioned in this article. The Linode API allows you to manipulate your Linode infrastructure, while the Kubernetes API allows you to manage the software objects running in your cluster.
 {{< /note >}}
 - With the [Linode CLI](/docs/products/tools/cli/get-started/)
@@ -65,7 +64,7 @@ This guide covers how to use the Linode API to:
 
 1. [Familiarize yourself with the Linode Kubernetes Engine service](https://www.linode.com/products/kubernetes/). This information helps you understand the benefits and limitations of LKE.
 
-1. [Create an API Token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token). You need this to access the LKE service.
+1. [Create an API Token](/docs/products/tools/api/get-started/#create-an-api-token). You need this to access the LKE service.
 
 1. [Install kubectl](#install-kubectl) on your computer. You use kubectl to interact with your cluster once it's deployed.
 
@@ -84,8 +83,8 @@ This guide covers how to use the Linode API to:
 | `node_pools` | The collections of Linodes that serve as the worker nodes in your LKE cluster. |
 | `k8s_version` | The desired version of Kubernetes for this cluster. |
 
-{{< note >}}
-The available plan types for LKE worker nodes are [Shared](/docs/guides/how-to-choose-a-linode-plan/#1-shared), [Dedicated CPU](/docs/guides/how-to-choose-a-linode-plan/#3-dedicated-cpu), and [High Memory](/docs/guides/how-to-choose-a-linode-plan/#2-high-memory) plans.
+{{< note respectIndent=false >}}
+The available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#1-shared), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#3-dedicated-cpu), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#2-high-memory) plans.
 {{< /note >}}
 
 1. To create an LKE Cluster, send a `POST` request to the `/lke/clusters` endpoint. The example below displays all possible request body parameters. Note that `tags` is an optional parameter.
@@ -112,9 +111,9 @@ The available plan types for LKE worker nodes are [Shared](/docs/guides/how-to-c
 
 1. Make note of your cluster's ID, as you need it to continue to interact with your cluster in the next sections. In the example above, the cluster's ID is `"id": 456`. You can also access your cluster's ID by [listing all LKE Clusters](#list-lke-clusters) on your account.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
-{{</ note >}}
+{{< /note >}}
 
 ### Connect to your LKE Cluster
 
@@ -135,7 +134,7 @@ To communicate with your LKE cluster, kubectl requires a copy of your cluster's 
 
 1.  Copy the `kubeconfig` field's value from the response body, since you need it in the next step.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you only copy the long string inside the quotes following `"kubeconfig":` in your output. Do not copy the curly braces or anything outside of them. You receive an error if you use the full output in later steps.
 {{< /note >}}
 
@@ -156,7 +155,7 @@ Make sure you only copy the long string inside the quotes following `"kubeconfig
 
         echo $KUBE_VAR | base64 -D > cluster12345-config.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The YAML file that you decode to (`cluster12345-config.yaml` here) can have any name of your choosing.
 {{< /note >}}
 
@@ -172,9 +171,9 @@ The YAML file that you decode to (`cluster12345-config.yaml` here) can have any 
 
         kubectl config view
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also access a decoded version of your kubeconfig file in the [Linode Cloud Manager](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#access-and-download-your-kubeconfig).
-{{</ note >}}
+{{< /note >}}
 
 1. View all nodes in your LKE cluster using kubectl:
 
@@ -197,7 +196,7 @@ lke166-197-5d44703cd211   Ready    none   2d22h   v1.14.0
 
 If you create a new terminal window, it does not have access to the context that you specified using the previous instructions. This context information can be made persistent between new terminals by setting the [`KUBECONFIG` environment variable](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) in your shell's configuration file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are using Windows, review the [official Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/#set-the-kubeconfig-environment-variable) for how to persist your context.
 {{< /note >}}
 
@@ -209,7 +208,7 @@ These instructions persist the context for users of the Bash terminal. They are 
 
         export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/cluster12345-config.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alter the `$HOME/.kube/configs/cluster12345-config.yaml` path in the above line with the name of the file you decoded to in the previous section.
 {{< /note >}}
 
@@ -315,7 +314,7 @@ The response body provides information about the number of nodes in the node poo
 {"count": 2, "id": 193, "type": "g6-standard-2", "linodes": [{"id": "13841932", "status": "ready"}, {"id": "13841933", "status": "ready"}]}%
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If desired, you can use your node pool's Linode ID(s) to get more details about each node in the pool. Send a `GET` request to the `/linode/indstances/{linodeId}` endpoint. In this example, ensure you replace `13841932` with your Linode's ID.
 
     curl -H "Authorization: Bearer $TOKEN" \
@@ -375,21 +374,21 @@ The response body resembles the following:
 {"count": 5, "id": 196, "type": "g6-standard-1", "linodes": [{"id": "13841945", "status": "ready"}, {"id": "13841946", "status": "ready"}, {"id": "13841947", "status": "ready"}, {"id": "13841948", "status": "ready"}, {"id": "13841949", "status": "ready"}]}%
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
-{{</ note >}}
+{{< /note >}}
 
 ### Resize your LKE Node Pool
 
 You can resize an LKE cluster's node pool to add or decrease its number of nodes. You need your cluster's ID and the node pool's ID in order to resize it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Shrinking a node pool results in deletion of Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You cannot modify an existing node pool's plan type. If you would like your LKE cluster to use a different node pool plan type, you can [add a new node pool](#add-a-node-pool-to-your-lke-cluster) to your cluster with the same number of nodes to replace the current node pool. You can then [delete the node pool](#delete-a-node-pool-from-an-lke-cluster) that is no longer needed.
-{{</ note >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -406,17 +405,17 @@ To update your node pool's node count, send a `PUT` request to the `/lke/cluster
             "count": 6
         }' https://api.linode.com/v4/lke/clusters/12345/pools/196
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Each Linode account has a limit to the number of Linode resources they can deploy. This includes services, like Linodes, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
-{{</ note >}}
+{{< /note >}}
 
 ### Recycle All Nodes Within a Cluster
 
 You can recycle all nodes within an LKE cluster to upgrade the nodes to the most recent patch of the cluster's Kubernetes version and to otherwise replace the physical Linodes that comprise the cluster. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID in order to recycle it's nodes. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recycling your cluster involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -433,9 +432,9 @@ To recycle all nodes within a cluster, send a `POST` request to the `/lke/cluste
 
 You can recycle an LKE cluster's node pool to upgrade its nodes to the most recent patch of the cluster's Kubernetes version. Nodes are recycled on a rolling basis, meaning that only one node is down at a time throughout the recycling process. You need your cluster's ID and the node pool's ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node pool's ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -453,9 +452,9 @@ To recycle your node pool, send a `POST` request to the `/lke/clusters/{clusterI
 
 You can recycle an individual node within a LKE Cluster's Node Pool. You need your cluster's ID and the node ID in order to recycle it. If you don’t know your cluster’s ID, see the [List LKE Clusters](#list-lke-clusters) section. If you don’t know your node ID, see the [List a Cluster’s Node Pools](#list-a-cluster-s-node-pools) section.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recycling your node pool involves deleting each of the Linodes in the node pool and replacing them with new Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) is erased.
-{{< /caution >}}
+{{< /note >}}
 
 | **Required Parameters** | **Description** |
 |-------|-------|
@@ -489,9 +488,9 @@ The response body displays the cluster version that will be applied following a 
 {"created": "2019-08-02T17:17:49", "updated": "2019-08-05T19:11:19", "k8s_version": "1.17", "tags": ["ecomm", "blogs"], "label": "updated-cluster-name", "id": 456, "region": "us-central"}%
 {{</ output >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Nodes within the LKE cluster *must* be [recycled](#recycle-your-lke-cluster) before the cluster version will be successfully upgraded.
-{{< /caution >}}
+{{< /note >}}
 
 ### Add New Tags to your LKE Cluster
 
@@ -578,9 +577,9 @@ When you delete a node pool you also delete the Linodes (nodes) and routes to th
 
 To delete a node pool from a LKE cluster, send a `DELETE` request to the `/lke/clusters/{clusterId}/pools/{poolId}` end point. In the URL of this example, replace `12345` with your cluster's ID and `196` with your cluster's node pool ID:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This step is permanent and results in the loss of data.
-{{</ caution >}}
+{{< /note >}}
 
     curl -H "Authorization: Bearer $TOKEN" \
         -X DELETE \
@@ -592,9 +591,9 @@ Deleting an LKE cluster deletes the **Master node**, all **worker nodes**, and a
 
 To delete an LKE Cluster, send a `DELETE` request to the `/lke/clusters/{clusterId}` endpoint. In the URL of this example, replace `12345` with your cluster's ID:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This step is permanent and results in the loss of data.
-{{</ caution >}}
+{{< /note >}}
 
     curl -H "Authorization: Bearer $TOKEN" \
         -X DELETE \

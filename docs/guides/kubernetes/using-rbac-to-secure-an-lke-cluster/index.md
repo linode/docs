@@ -33,9 +33,9 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 - [Linode's API v4](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
 - [Terraform](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
-    {{</ note >}}
+    {{< /note >}}
 
 
 ## Create a new User
@@ -55,7 +55,7 @@ In order for a user to securely authenticate to the Kubernetes server, an `x.509
 
        openssl genrsa -out exampleuser.key 2048
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The text `user` can be replaced with a username of your choice.
     {{< /note >}}
 
@@ -106,7 +106,7 @@ spec:
    certificatesigningrequest.certificates.k8s.io/user1-csr created
    {{< /output >}}
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
    If at any point the status of a CSR needs to be checked, the following command can be entered:
 
        kubectl get csr

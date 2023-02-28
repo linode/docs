@@ -12,9 +12,8 @@ published: 2017-06-22
 modified: 2017-10-18
 modified_by:
   name: Linode
-title: "How to Change SELinux Modes"
-h1_title: "Changing SELinux Modes"
-enable_h1: true
+title: "Changing SELinux Modes"
+title_meta: "How to Change SELinux Modes"
 external_resources:
 - '[Security Enhanced Linux User Guide, Red Hat](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/index.html)'
 - '[SELinux, CentOS Wiki](https://wiki.centos.org/HowTos/SELinux)'
@@ -24,8 +23,8 @@ external_resources:
 
 Ideally, you want to keep SELinux in enforcing mode, but there may be times when you need to set it to permissive mode, or disable it altogether. Note that the *disabled* state means the daemon is still running and is still enforcing rules for [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control), however no MAC security policies are being used, and no violations are being logged.
 
-{{< note >}}
-To use SELinux on CentOS or Fedora, you must use the distribution-supplied *upstream* kernel (as opposed to the Linode-supplied kernel, which does not support SELinux). All recently created Linodes run an upstream kernel by default. Review the [How to Change your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) guide for more information on upstream kernels, the Linode kernel, and how to switch between them.
+{{< note respectIndent=false >}}
+To use SELinux on CentOS or Fedora, you must use the distribution-supplied *upstream* kernel (as opposed to the Linode-supplied kernel, which does not support SELinux). All recently created Linodes run an upstream kernel by default. Review the [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide for more information on upstream kernels, the Linode kernel, and how to switch between them.
 {{< /note >}}
 
 1.  View the current enforcement mode of SELinux on your system using `sestatus`. You can see below that SELinux is set to permissive mode.

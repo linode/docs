@@ -13,7 +13,7 @@ modified: 2012-10-08
 modified_by:
   name: Linode
 published: 2011-02-17
-title: 'Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)'
+title: 'Postfix, Dovecot, and System User Accounts on Debian 5'
 relations:
     platform:
         key: postfix-dovecot-user-accounts
@@ -27,7 +27,7 @@ Postfix is a popular mail transfer agent or "MTA". This document will allow you 
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

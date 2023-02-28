@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 modified_by:
   name: Linode
-title: "Disaster Recovery: What It Is and How to Create a Plan"
-h1_title: "Creating a Disaster Recovery Plan: A Definitive Guide"
-enable_h1: true
+title: "Creating a Disaster Recovery Plan: A Definitive Guide"
+title_meta: "Disaster Recovery: What It Is and How to Create a Plan"
 contributor:
   name: Wayne Rash
 ---

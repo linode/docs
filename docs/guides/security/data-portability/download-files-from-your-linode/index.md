@@ -21,6 +21,6 @@ There are a number of open source tools you can use to download files from your 
 
 ## Download Data from a Block Storage Volume
 
-1. [Attach and mount](/docs/platform/block-storage/how-to-use-block-storage-with-your-linode/#add-a-volume-from-your-account-s-volume-list) the block storage volume.
+1. [Attach and mount](/docs/products/storage/block-storage/guides/attach-and-detach/) the block storage volume.
 
 2. Download files from it by following the same instructions in the [Download Specific Files or Directories over SSH](#download-specific-files-or-directories-over-ssh) section of this guide.
