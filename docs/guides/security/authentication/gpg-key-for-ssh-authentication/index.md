@@ -38,7 +38,7 @@ This guide will only work on UNIX-based (Linux & OS X) machines! The process is 
 This guide assumes:
 
  - You have a fully functional Linode
- - You have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and updated your Linode with `sudo apt-get update && sudo apt-get upgrade`)
+ - You have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and updated your Linode with `sudo apt-get update && sudo apt-get upgrade`)
  - You are familiar with the [command line](/docs/guides/introduction-to-linux-concepts/#so-youre-staring-at-a-shell-prompt)
 
 You don't necessarily need to be familiar with [SSH public key authentication](/docs/guides/use-public-key-authentication-with-ssh/) or [GPG encryption](https://en.wikipedia.org/wiki/GNU_Privacy_Guard), but an understanding of their operation will help you out if you run into problems.
@@ -248,7 +248,7 @@ Your terminal should now look like this:
 ### Secure Your GPG Key
 
 {{< note type="alert" respectIndent=false >}}
-If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/guides/lish/) to regain access.
+If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) to regain access.
 {{< /note >}}
 
 You should always have a backup of your private key in case something goes wrong and you end up locked out of everything that requires it. This private key, along with the instructions in this guide, will be enough to get your setup working again if you need to start afresh on a new computer.

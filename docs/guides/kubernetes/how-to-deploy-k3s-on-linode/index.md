@@ -28,13 +28,13 @@ aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide.
 
-1.  [Create](/docs/guides/creating-a-compute-instance/) two Linodes in the same region that are running Ubuntu 18.04.
+1.  [Create](/docs/products/compute/compute-instances/guides/create/) two Linodes in the same region that are running Ubuntu 18.04.
 
-1.  Complete the steps for [setting the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone) for both Linodes. When setting hostnames, it may be helpful to identify one Linode as a server and the other as an agent.
+1.  Complete the steps for [setting the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone) for both Linodes. When setting hostnames, it may be helpful to identify one Linode as a server and the other as an agent.
 
-1.  Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services), and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
+1.  Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services), and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) to allow all outgoing traffic and deny all incoming traffic except SSH traffic on both Linodes.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -46,7 +46,7 @@ aliases: ['/kubernetes/how-to-deploy-k3s-on-linode/']
 
 First, you will install the K3s server on a Linode, from which you will manage your K3s cluster.
 
-1.  [Connect](/docs/guides/set-up-and-secure/#connect-to-the-instance) to the Linode where you want to install the K3s server.
+1.  [Connect](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to the Linode where you want to install the K3s server.
 
 1.  Open port 6443/tcp on your firewall to make it accessible by other nodes in your cluster:
 
@@ -93,7 +93,7 @@ As detailed in [Rancher's Installation Requirements](https://rancher.com/docs/k3
 
 Next you will install the K3s agent on a Linode.
 
-1.  [Connect](/docs/guides/set-up-and-secure/#connect-to-the-instance) to the Linode where you want to install the K3s agent.
+1.  [Connect](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to the Linode where you want to install the K3s agent.
 
 1.  Open port 8472/udp on your firewall to enable Flannel VXLAN:
 

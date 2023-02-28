@@ -27,9 +27,9 @@ This tutorial, the first in our series on Supabase, introduces you to the basics
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3. Update your system.
 
@@ -117,7 +117,7 @@ If you're on a local machine, simply, navigate to `localhost:3000` in your web b
 
 ![Supabase dashboard](supabase-dashboard.png)
 
-However, if you are wanting to access Supabase remotely, you need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/guides/set-up-and-secure/#configure-a-firewall).
+However, if you are wanting to access Supabase remotely, you need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 
 You also need to modify the URL values in your Supabase instance's configuration to match your server's remote address. Open Supabase's `.env` file, and change the `SITE_URL`, `API_EXTERNAL_URL`, and `PUBLIC_REST_URL` variables, replacing `localhost` with your server's remote address.
 
@@ -150,7 +150,7 @@ Once you have made the updates, restart your instance:
 After making the above preparations, you can access the Supabase interface remotely by navigating to port `3000` on your server's remote IP address. For instance, if your server's remote IP address is `192.0.2.0`, navigate in a web browser to `http://192.0.2.0:3000`.
 
 {{< note respectIndent=false >}}
-You may need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/guides/set-up-and-secure/#configure-a-firewall).
+You may need to open the port in your system's firewall. You can learn about how to do so through our guide on [securing your server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 {{< /note >}}
 
 ## How to Configure Supabase
@@ -357,5 +357,3 @@ You can optionally also add your server's remote IP address to the NGINX configu
 Now you have your Supabase instance running and configured for your security needs. Take advantage of your instance by reading the [Supabase documentation](https://supabase.com/docs/). There, you can find guides on getting started with the wide range of features Supabase has to offer.
 
 And continue learning with us in our upcoming series of guides on Supabase. These cover everything from setting up your instance, to linking your instance to Linode Object Storage, to building JavaScript applications with Supabase.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

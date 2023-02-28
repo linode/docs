@@ -43,11 +43,13 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access the Redis CLI
 
-1.  Log in to your new Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
+1.  Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
 
 1.  To use the redis-cli, run either of the commands below:
 
@@ -67,7 +69,7 @@ There are several types of Redis configurations you can use. For example, you ca
 
 <<<<<<< HEAD
 =======
-Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
+Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
 
 >>>>>>> upstream/develop
 {{< content "marketplace-update-note-shortguide">}}

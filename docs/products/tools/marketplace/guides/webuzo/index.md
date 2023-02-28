@@ -40,11 +40,13 @@ Softaculous [Webuzo](https://www.webuzo.com) is a single user LAMP stack control
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 After the deployment process has finished and your Compute Instance has rebooted, log in to the Webuzo Admin panel and complete a few post-installation steps. This includes adding a user, setting the domain (or IP), and optionally including a license key.
 
-1.  Access the Webuzo Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]:2004`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1.  Access the Webuzo Admin panel by opening a web browser and navigating to the following URL: `http://[ip-address]:2004`, replacing *[ip-address]* with the IPv4 address or rDNS domain assigned to your new Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
 1. In the login screen that appears, enter your root user credentials and click **Login**.
 

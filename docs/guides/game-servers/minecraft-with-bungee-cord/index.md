@@ -97,7 +97,7 @@ If you're running other Spigot servers on the same Linode, then you need to run 
         sudo iptables -A INPUT -j DROP
 
     {{< note respectIndent=false >}}
-If you've configured your `iptables` firewall by following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) tutorial, then you need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
+If you've configured your `iptables` firewall by following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) tutorial, then you need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
 {{< /note >}}
 
 ## Installing BungeeCord

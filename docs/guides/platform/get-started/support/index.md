@@ -31,11 +31,13 @@ Linode provides community spaces, an AI-powered assistant, libraries of referenc
 
   - The [Troubleshooting](/docs/guides/troubleshooting-overview/) quick start guide provides answers for common server connectivity and management issues.
 
-  - The [Linode Beginner's Guide](/docs/guides/linode-beginners-guide/) displays a curated list of the most frequently asked questions from Linode customers.
+  - The [Linode Beginner's Guide](/docs/products/compute/compute-instances/faqs/) displays a curated list of the most frequently asked questions from Linode customers.
 
   - The [Quick Answers](/docs/quick-answers/) section offers short guides with fast answers.
 
 -   **Network Status:** If a data center experiences downtime, Linode's staff will regularly update the [Status webpage](http://status.linode.com/) until the issue has been resolved.
+
+-  **Cloud Partner Directory**: If you're looking for a partner to help guide your transition to the Cloud or help build your platform, our [Partner Directory](https://partner-directory.linode.com/s/) offers a helpful listing of trusted partners to work with.
 
 ## Scope of Support
 
@@ -62,7 +64,7 @@ If you are not able to solve an issue with the resources listed above, you can c
 
 The Linode Support Team will respond as soon as possible.
 
-If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, you can email Linode Support at <support@linode.com>. You can also call Linode 24 hours a day:
+If you are having difficulty logging in to the Linode Cloud Manager and opening a support ticket, fill out the [can't log in form](https://www.linode.com/support/contact/). You can also call Linode 24 hours a day:
 
 - **+1 (609) 380-7100** (international)
 

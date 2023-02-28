@@ -23,7 +23,7 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Before you Begin
 
-- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/guides/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/guides/set-up-and-secure/)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/products/platform/get-started/) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
 - Generate an [SSL certificate](/docs/guides/security/ssl/) for your domain name that supports TLS version 1.2 or later. This can be done through any Certificate Authority, including Let's Encrypt using the [Certbot](https://certbot.eff.org/) tool. Since Certbot cannot run directly on the NodeBalancer, run the following command on any Linode to generate the certificate (after following [Certbot's installation instructions](https://certbot.eff.org/instructions)). This allows you to manually verify ownership by updating a DNS record on your domain:
 

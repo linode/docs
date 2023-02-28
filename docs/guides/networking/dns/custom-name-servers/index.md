@@ -47,7 +47,7 @@ When a domain name is resolved, your system's DNS resolvers first query the root
 
 To overcome this circular resolution, glue records are needed. Glue records are set within the domain's registrar and can map the custom domain of a name server to the IP address of that name server. To configure glue records, follow the instructions below.
 
-1. Obtain the public IPv4 addresses for each of your custom name servers. If they are hosted on a Linode Compute Instance, see [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+1. Obtain the public IPv4 addresses for each of your custom name servers. If they are hosted on a Linode Compute Instance, see [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 
 1. Log in to your domain's registrar.
 

@@ -48,11 +48,13 @@ ClusterControl offers both free and paid plans. Visit [Severalnines' website](ht
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Would you like to use a free Let's Encrypt SSL certificate?:** Select *yes* to generate a free Let's Encrypt certificate and enabled secure HTTPS traffic. This uses the default rDNS value for the new instance or the custom domain, if one is specified.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your ClusterControl App
 
-To access your ClusterControl instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+To access your ClusterControl instance, Open a browser and navigate to the domain you created during in the beginning of your deployment or your Linode rDNS domain `https://203-0-113-0.ip.linodeusercontent.com`. Replace `https://203-0-113-0.ip.linodeusercontent.com` with your [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 
 From there you will see the welcome screen where you can enter the requested information to setup your ClusterControl instance:
 

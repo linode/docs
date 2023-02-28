@@ -51,6 +51,8 @@ The admin password for the OpenVPN application is no longer manually entered whe
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 ### Access Details
@@ -61,7 +63,7 @@ OpenVPN Access Server is only accessible over an *HTTPS* connection (not *HTTP*)
 
 **OpenVPN Admin Interface:**
 
-- **URL:** `https://192.0.2.1:943/admin/`, where `192.0.2.1` represents the IPv4 address of your new Compute Instance. For assistance locating the IP address, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+- **URL:** `https://192.0.2.1:943/admin/`, where `192.0.2.1` represents the IPv4 address of your new Compute Instance. For assistance locating the IP address, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 - **Username:** `openvpn`
 - **Password:** See [Obtaining the Admin Password](#obtaining-the-admin-password) below.
 
@@ -73,7 +75,7 @@ For more details on logging in to the OpenVPN admin interface for the first time
 
 ### Obtaining the Admin Password
 
-The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/guides/lish/#through-the-cloud-manager-weblish). Your credentials should appear towards the end of the installation script.
+The password for the main administrator account was automatically generated during the initial install process. To find this password, log in to your Compute Instance through the [LISH Console](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish). Your credentials should appear towards the end of the installation script.
 
 {{<output>}}
 Access Server Web UIs are available here:

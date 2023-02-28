@@ -45,6 +45,8 @@ Self-hosting your software development with GitLab offers total control of your 
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access the GitLab Site
@@ -53,7 +55,7 @@ Once your new Compute Instance has been fully deployed, follow the instructions 
 
 1. **Find the Gitlab root password:** Before logging in to your Gitlab site, you need to obtain the Gitlab root password that was generated during provisioning.
 
-    1. Log in to your new Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
+    1. Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
 
     1.  Enter the following command in the lish console or terminal session:
 
@@ -61,7 +63,7 @@ Once your new Compute Instance has been fully deployed, follow the instructions 
 
         The Gitlab root password is displayed within the output of that command.
 
-1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
     When presented with a login screen, enter the following credentials:
 

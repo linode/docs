@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.142.2
+  version: 4.145.0
 
   title: Linode API
   description: |
@@ -6029,7 +6029,7 @@ paths:
                   type: string
                   pattern: \A(\*\.)?([a-zA-Z0-9-_]{1,63}\.)+([a-zA-Z]{2,3}\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+)\Z
                   minLength: 1
-                  maxLength: 255
+                  maxLength: 253
                   description: >
                     The new domain for the clone. Domain labels cannot be longer than
                     63 characters and must conform to [RFC1035](https://tools.ietf.org/html/rfc1035).
@@ -6120,8 +6120,10 @@ paths:
       - oauth:
         - domains:read_write
       summary: Domain Record Create
-      description: >
+      description: |
         Adds a new Domain Record to the zonefile this Domain represents.
+
+        Each domain can have up to 12,000 active records.
       operationId: createDomainRecord
       x-linode-cli-action: records-create
       requestBody:
@@ -10155,7 +10157,7 @@ paths:
                 -X POST -d '{
                   "label": "cluster12345",
                   "region": "us-central",
-                  "k8s_version": "1.24",
+                  "k8s_version": "1.25",
                   "tags": ["ecomm", "blogs"],
                   "control_plane": {
                       "high_availability": true
@@ -10182,7 +10184,7 @@ paths:
           linode-cli lke cluster-create \
             --label cluster12345 \
             --region us-central \
-            --k8s_version 1.24 \
+            --k8s_version 1.25 \
             --control_plane.high_availability true \
             --node_pools.type g6-standard-4 --node_pools.count 6 \
             --node_pools.type g6-standard-8 --node_pools.count 3 \
@@ -10342,7 +10344,7 @@ paths:
           linode-cli lke cluster-update 12345 \
             --label lkecluster54321 \
             --control_plane.high_availability true \
-            --k8s_version 1.24 \
+            --k8s_version 1.25 \
             --tags ecomm \
             --tags blog \
             --tags prod \
@@ -10766,37 +10768,32 @@ paths:
               schema:
                 type: object
                 properties:
-                  data:
-                    type: object
+                  id:
+                    type: string
+                    readOnly: true
                     description: >
-                      The selected node in the cluster.
-                    properties:
-                      id:
-                        type: string
-                        readOnly: true
-                        description: >
-                          The Node's ID.
-                        example: "12345-6aa78910bc"
-                      instance_id:
-                        type: integer
-                        description: >
-                          The Linode's ID. If no Linode is currently provisioned for this Node, this is `null`.
-                        example: 123456
-                      status:
-                        type: string
-                        description: >
-                          The creation status of this Node. This status is distinct from this Node's readiness as a
-                          Kubernetes Node Object as determined by the command `kubectl get nodes`.
+                      The Node's ID.
+                    example: "12345-6aa78910bc"
+                  instance_id:
+                    type: integer
+                    description: >
+                      The Linode's ID. If no Linode is currently provisioned for this Node, this is `null`.
+                    example: 123456
+                  status:
+                    type: string
+                    description: >
+                      The creation status of this Node. This status is distinct from this Node's readiness as a
+                      Kubernetes Node Object as determined by the command `kubectl get nodes`.
 
 
-                          `not_ready` indicates that the Linode is still being created.
+                      `not_ready` indicates that the Linode is still being created.
 
 
-                          `ready` indicates that the Linode has successfully been created and is running Kubernetes software.
-                        enum:
-                        - ready
-                        - not_ready
-                        example: ready
+                      `ready` indicates that the Linode has successfully been created and is running Kubernetes software.
+                    enum:
+                    - ready
+                    - not_ready
+                    example: ready
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -11074,6 +11071,116 @@ paths:
       - lang: CLI
         source: >
           linode-cli lke kubeconfig-delete 12345
+  /lke/clusters/{clusterId}/regenerate:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the target Kubernetes cluster.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: lke
+    post:
+      operationId: postLKEClusterRegenerate
+      x-linode-cli-action: regenerate
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Kubernetes Cluster Regenerate
+      description: |
+        Regenerate the Kubeconfig file and/or the service account token for a Cluster.
+
+        This is a helper command that allows performing both the [Kubeconfig Delete](#kubeconfig-delete) and the [Service Token Delete](#service-token-delete) actions with a single request.
+
+        When using this command, at least one of `kubeconfig` or `servicetoken` is required.
+
+        **Note**: When regenerating a service account token, the Cluster's control plane components and Linode CSI drivers are also restarted and configured with the new token. High Availability Clusters should not experience any disruption, while standard Clusters may experience brief control plane downtime while components are restarted.
+      requestBody:
+        description: The Kubernetes Cluster Regenerate request object.
+        content:
+          application/json:
+            schema:
+              properties:
+                kubeconfig:
+                  type: boolean
+                  default: false
+                  example: true
+                  description: |
+                    Whether to delete and regenerate the Kubeconfig file for this Cluster.
+                servicetoken:
+                  type: boolean
+                  default: false
+                  example: true
+                  description: |
+                    Whether to delete and regenerate the service access token for this Cluster.
+      responses:
+        '200':
+          description: Regenerate request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Content-Type: application/json" \
+                -H "Authorization: Bearer $TOKEN" \
+                -X POST -d '{
+                  "kubeconfig": true;
+                  "servicetoken": true
+                }' \
+                https://api.linode.com/v4/lke/clusters/12345/regenerate
+      - lang: CLI
+        source: >
+          linode-cli lke regenerate 12345 \
+              --kubeconfig true \
+              --servicetoken true
+  /lke/clusters/{clusterId}/servicetoken:
+    parameters:
+    - name: clusterId
+      in: path
+      description: ID of the target Kubernetes cluster.
+      required: true
+      schema:
+        type: integer
+    x-linode-cli-command: lke
+    delete:
+      operationId: postLKECServiceTokenDelete
+      x-linode-cli-action: service-token-delete
+      security:
+      - personalAccessToken: []
+      - oauth:
+        - lke:read_write
+      tags:
+      - Linode Kubernetes Engine (LKE)
+      summary: Service Token Delete
+      description: |
+        Delete and regenerate the service account token for a Cluster.
+
+        **Note**: When regenerating a service account token, the Cluster's control plane components and Linode CSI drivers are also restarted and configured with the new token. High Availability Clusters should not experience any disruption, while standard Clusters may experience brief control plane downtime while components are restarted.
+      responses:
+        '200':
+          description: Service token deleted and regenerated successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl -H "Authorization: Bearer $TOKEN" \
+                -X DELETE \
+                https://api.linode.com/v4/lke/clusters/12345/servicetoken
+      - lang: CLI
+        source: >
+          linode-cli lke service-token-delete 12345
   /lke/versions:
     x-linode-cli-command: lke
     get:
@@ -11158,10 +11265,10 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
-                https://api.linode.com/v4/lke/versions/1.24
+                https://api.linode.com/v4/lke/versions/1.25
       - lang: CLI
         source: >
-          linode-cli lke version-view 1.24
+          linode-cli lke version-view 1.25
   /longview/clients:
     x-linode-cli-command: longview
     get:
@@ -13058,7 +13165,6 @@ paths:
     x-linode-cli-command: networking
     post:
       servers:
-      - url: https://api.linode.com/v4
       - url: https://api.linode.com/v4beta
       x-linode-grant: read_write
       tags:
@@ -13105,7 +13211,7 @@ paths:
                   "2001:db8:3c4d:15::"
                 ]
               }' \
-              https://api.linode.com/v4/networking/ips/share
+              https://api.linode.com/v4beta/networking/ips/share
       - lang: CLI
         source: >
           linode-cli networking ip-share \
@@ -15145,7 +15251,7 @@ paths:
               https://api.linode.com/v4/nodebalancers/12345/configs/4567/nodes
       - lang: CLI
         source: >
-          linode-cli nodebalancers node-create \
+          linode-cli nodebalancers node-update \
             12345 4567 \
             --address 192.168.210.120:80 \
             --label node54321 \
@@ -16235,23 +16341,23 @@ paths:
       - lang: Shell
         source: >
           curl -H "Content-Type: application/json" \
-          -H "Authorization: Bearer $TOKEN" \
-            -X POST -d '{
-            "label": "my-object-storage-key",
-            "bucket_access": [
-              {
-                "cluster": "ap-south-1",
-                "bucket_name": "bucket-example-1",
-                "permissions": "read_write"
-              },
-              {
-                "cluster": "us-east-1",
-                "bucket_name": "bucket-example-2",
-                "permissions": "read_only"
-              }
-            ]
-          }' \
-          https://api.linode.com/v4/object-storage/keys
+              -H "Authorization: Bearer $TOKEN" \
+              -X POST -d '{
+                "label": "my-object-storage-key",
+                "bucket_access": [
+                  {
+                    "cluster": "ap-south-1",
+                    "bucket_name": "bucket-example-1",
+                    "permissions": "read_write"
+                  },
+                  {
+                    "cluster": "us-east-1",
+                    "bucket_name": "bucket-example-2",
+                    "permissions": "read_only"
+                  }
+                ]
+              }' \
+            https://api.linode.com/v4/object-storage/keys
       - lang: CLI
         source: >
           linode-cli object-storage keys-create \
@@ -19298,7 +19404,7 @@ components:
       schema:
         type: integer
         minimum: 25
-        maximum: 100
+        maximum: 500
         default: 100
   links:
     bootLinode:
@@ -20807,7 +20913,7 @@ components:
           type: string
           pattern: \A(\*\.)?([a-zA-Z0-9-_]{1,63}\.)+([a-zA-Z]{2,3}\.)?([a-zA-Z]{2,16}|xn--[a-zA-Z0-9]+)\Z
           minLength: 1
-          maxLength: 255
+          maxLength: 253
           description: >
             The domain this Domain represents. Domain labels cannot be longer than
             63 characters and must conform to [RFC1035](https://tools.ietf.org/html/rfc1035).
@@ -20844,7 +20950,7 @@ components:
         description:
           type: string
           minLength: 1
-          maxLength: 255
+          maxLength: 253
           description: |
             A description for this Domain. This is for display purposes only.
           example: null
@@ -20976,7 +21082,7 @@ components:
 
             `A` and `AAAA`: The hostname or FQDN of the Record.
 
-            `NS`: The subdomain, if any, to use with the Domain of the Record.
+            `NS`: The subdomain, if any, to use with the Domain of the Record. Wildcard NS records (`*`) are not supported.
 
             `MX`: The mail subdomain. For example, `sub` for the address `user@sub.example.com` under the `example.com`
             Domain. Must be an empty string (`""`) for a Null MX Record.
@@ -21033,6 +21139,7 @@ components:
           example: 192.0.2.0
           x-linode-filterable: true
           x-linode-cli-display: 4
+          maxLength: 65535
         priority:
           type: integer
           minimum: 0
@@ -21534,6 +21641,7 @@ components:
         username:
           type: string
           readOnly: true
+          nullable: true
           description: >
             The username of the User who caused the Event.
           example: exampleUser
@@ -21894,51 +22002,49 @@ components:
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Linodes on this Account.
-            There will be one entry per Linode on the Account.
+            The grants this User has for each Linode that is owned by this Account.
+        database:
+          type: array
+          items:
+            $ref: '#/components/schemas/Grant'
+          description: >
+            The grants this User has for each Database that is owned by this Account.
         domain:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Domains on this Account.
-            There will be one entry per Domain on the Account.
+            The grants this User has for each Domain that is owned by this Account.
         nodebalancer:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to NodeBalancers on this
-            Account. There will be one entry per NodeBalancer on the Account.
+            The grants this User has for each NodeBalancer that is owned by this Account.
         image:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Images on this Account.
-            There will be one entry per Image on the Account.
+            The grants this User has for each Image that is owned by this Account.
         longview:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Longview Clients on this
-            Account. There will be one entry per Longview Client on the
-            Account.
+            The grants this User has for each Longview Client that is owned by this Account.
         stackscript:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to StackScripts on this
-            Account.  There will be one entry per StackScript on the Account.
+            The grants this User has for each StackScript that is owned by this Account.
         volume:
           type: array
           items:
             $ref: '#/components/schemas/Grant'
           description: >
-            The grants this User has pertaining to Volumes on this Account.
-            There will be one entry per Volume on the Account.
+            The grants this User has for each Block Storage Volume that is owned by this Account.
     Image:
       type: object
       description: Image object
@@ -22053,16 +22159,18 @@ components:
           x-linode-cli-display: 7
           type: string
           readOnly: true
+          x-linode-filterable: true
           enum:
           - creating
           - pending_upload
           - available
           description: |
-            The current status of this Image.  Only Images in an "available" status
-            can be deployed.  Images in a "creating" status are being created from
-            a Linode Disk, and will become "available" shortly.  Images in a
-            "pending_upload" status are waiting for data to be [uploaded](/docs/api/images/#image-upload),
-            and become "available" after the upload and processing are complete.
+            The current status of this Image.
+
+            Only Images in an "available" status can be deployed. Images in a "creating" status are being created from a Linode Disk, and will become "available" shortly. Images in a "pending_upload" status are waiting for data to be [uploaded](/docs/api/images/#image-upload), and become "available" after the upload and processing are complete.
+
+            The "+order_by" and "+order" operators are not available for [filtering](/docs/api/#filtering-and-sorting) on this key.
+          example: available
     Invoice:
       type: object
       description: Account Invoice object
@@ -23591,7 +23699,7 @@ components:
             and the latest supported patch version will be deployed.
           x-linode-filterable: true
           x-linode-cli-display: 4
-          example: "1.24"
+          example: "1.25"
         control_plane:
           type: object
           description: >
@@ -23793,7 +23901,7 @@ components:
             A Kubernetes version number available for deployment
             to a Kubernetes cluster in the format of &lt;major&gt;.&lt;minor&gt;,
             and the latest supported patch version.
-          example: "1.24"
+          example: "1.25"
     LongviewClient:
       type: object
       description: >
@@ -25891,12 +25999,18 @@ components:
           description: The unique ID of this Region.
           example: us-east
           x-linode-cli-display: 1
+        label:
+          type: string
+          description: Detailed location information for this Region, including city, state or region, and country.
+          example: Newark, NJ, USA
+          readOnly: true
+          x-linode-cli-display: 2
         country:
           type: string
           description: The country where this Region resides.
           example: us
           readOnly: true
-          x-linode-cli-display: 2
+          x-linode-cli-display: 3
         capabilities:
           type: array
           items:
@@ -25909,7 +26023,7 @@ components:
           - Block Storage
           - Object Storage
           readOnly: true
-          x-linode-cli-display: 3
+          x-linode-cli-display: 4
         status:
           type: string
           description: >
@@ -25919,11 +26033,11 @@ components:
           - ok
           - outage
           readOnly: true
-          x-linode-cli-display: 4
+          x-linode-cli-display: 5
         resolvers:
           type: object
           readOnly: true
-          x-linode-cli-display: 5
+          x-linode-cli-display: 6
           properties:
             ipv4:
               type: string

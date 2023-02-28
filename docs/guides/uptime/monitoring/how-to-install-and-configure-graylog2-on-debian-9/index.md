@@ -37,7 +37,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources:
 

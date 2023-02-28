@@ -39,7 +39,7 @@ This guide was written for and tested with Ubuntu 18.04. You may be able to adap
 
 ### Secure your Server
 
-Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Change your Linode's Default SSH Port
 

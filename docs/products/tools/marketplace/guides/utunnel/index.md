@@ -22,7 +22,7 @@ aliases: ['/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketpl
 [UTunnel VPN](https://www.utunnel.io/) lets you set up your own private VPN server quickly and easily; no technical expertise is required. It is well suited for small and medium businesses to set up easy and secure remote access for their employees, or for anyone who wants to keep their data private using their own VPN. UTunnel VPN supports multiple VPN protocols and comes with a server management console, secure 256-bit encryption, easy team management, single sign-on, 2-factor authentication, and an inbuilt firewall.
 
 {{< note >}}
-A license is required to use uTunnel. See [uTunnel's Pricing page](https://www.utunnel.io/vpn-server-pricing-plans) for more information on available plans and their associated costs. A free 14-day trial is installed by default.
+A license is required to use UTunnel. See [UTunnel's Pricing page](https://www.utunnel.io/vpn-server-pricing-plans) for more information on available plans and their associated costs. A free 14-day trial is installed by default.
 {{< /note >}}
 
 ## Deploying a Marketplace App

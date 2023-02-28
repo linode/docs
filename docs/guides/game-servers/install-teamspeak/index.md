@@ -24,7 +24,7 @@ This guide shows you how to install a TeamSpeak Server on your Linode. TeamSpeak
 
 ## Before You Begin
 
-* Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+* Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
 * Install the [TeamSpeak](http://www.teamspeak.com/) client on your local computer.
 
@@ -184,5 +184,5 @@ If you use a firewall the following ports need to be opened: 9987, 30033, 10011,
     iptables -A INPUT -p tcp --dport 41144 -j ACCEPT
 
 {{< note respectIndent=false >}}
-If you've configured your firewall according to our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, you need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
+If you've configured your firewall according to our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
 {{< /note >}}

@@ -68,6 +68,8 @@ Discourse requires that you have a domain name and SMTP email. These fields are 
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 Discourse is now installed and ready to use.
@@ -75,7 +77,7 @@ Discourse is now installed and ready to use.
 1.  Your A and AAAA Domain records for the domain and subdomain, if you designated one, have been created and you should see them in the Cloud Manager.
 
     - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there are now an entries for your domain and possible subdomain.
-    - [Configure rDNS](/docs/guides/configure-rdns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
+    - [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode to point to `subdomain.your-domain.com` or `your-domain.com` if you did not enter a subdomain.
 
 1.  While the installation has created the A and AAAA domain records, it does not create the email records you need. In the Cloud Manager DNS Manager, [add the MX, TXT, and any other records](/docs/products/networking/dns-manager/guides/manage-dns-records/) required to send email as specified by your email provider.
 
@@ -120,7 +122,7 @@ Ensure that you have correctly setup the [email DNS records](/docs/products/netw
 ### Change the Confirmation Email Sender
 Discourse sends this email from `noreply@subdomain.your-domain.com`. The SMTP user you entered during setup must have permissions to send from this address. If this is not the case, and you did not receive the email, you can change this address in a configuration file.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Change into the directory `/var/discourse/containers/`:
 

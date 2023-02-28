@@ -37,12 +37,13 @@ aliases: ['/platform/marketplace/deploying-docker-with-marketplace-apps/', '/pla
 - **Resource to Download**: The url to a hosted [Dockerfile](https://docs.docker.com/engine/reference/builder/) or [docker-compose.yml](/docs/guides/how-to-use-docker-compose/#Basic-Usage) file to be used to assemble an image as part of the application creation process.
 - **Command to run**: A [Docker Command](/docs/guides/docker-commands-quick-reference-cheat-sheet/) to be run as part of the application creation process.
 
-
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Do you need an MX record for this domain?** Select `Yes` to create a basic [MX record](/docs/guides/dns-overview/#mx) for the domain. Select `No` to create no MX records
 - **Do you need an SPF record for this domain?** Select `Yes` to create a basic [SPF record](/docs/guides/dns-overview/#spf) for the domain. Select `No` to create no SPF records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -52,7 +53,7 @@ Docker is now installed and ready to use. The following steps provide a sample a
 
 After Docker has finished installing, you can access Docker from your terminal and deploy a sample application or any application that you intend on running.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the limited user account you may have created during deployment. If you do not yet have one, login as the `root` user and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Locate the application or sample application you wish to deploy.
 

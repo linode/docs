@@ -1,7 +1,9 @@
+aaPanel
 abc
 abell
 absecon
 abspath
+Accurics
 ack
 aconf
 accessor
@@ -83,6 +85,7 @@ Asana
 aspell
 askbot
 aske
+Astra
 async
 asynchrony
 atera
@@ -165,6 +168,7 @@ bialek
 bin_t
 bing
 binlog
+bioinformaticists
 biomes
 bitbucket
 bitnami
@@ -176,6 +180,7 @@ bitwise
 blkid
 blockchain
 blocklists
+Blockly
 blockwise
 bluehost
 bokeh
@@ -242,11 +247,13 @@ cer
 certbot
 certcheck
 certutil
+cetera
 cfg
 cgi
 cgroup
 cgroupfs
 chainable
+Chainalysis
 changelog
 changelogs
 changeme
@@ -304,6 +311,7 @@ cmusieve
 cnf
 codebase
 codec
+Codeone
 codepen
 colab
 collabnet
@@ -382,6 +390,7 @@ ctx
 cuda
 curlie
 cutover
+Cybeats
 cyber
 cyberattack
 cyberduck
@@ -489,6 +498,7 @@ dnf
 dns
 dnsleaktest
 dnsmasq
+DNSPerf
 dns_linode
 dockercompose
 dockerfile
@@ -547,6 +557,7 @@ elgg
 elpaso
 emacs
 email2email
+embeddable
 emisoft
 emojivoto
 emscripten
@@ -748,6 +759,7 @@ golang
 goldmark
 gomega
 goostman
+gopaddle
 gopwt
 goroutine
 goroutines
@@ -788,6 +800,7 @@ h4x0r123
 hackage
 hadoop
 halls3
+Haltdos
 hapis
 haproxy
 hardcoded
@@ -816,6 +829,7 @@ Hively
 hl2
 hl2
 hmac
+hmorris
 hoc
 homebrew
 homomorphic
@@ -828,6 +842,7 @@ hotfix
 hotlink
 hotlinked
 hotlinking
+hotspot
 hotspots
 howto
 howtoforge
@@ -972,6 +987,7 @@ java6
 javac
 javalin
 javascript
+JBoss
 jdbc
 jdk
 Jellyfin
@@ -1049,6 +1065,7 @@ kloth
 kloxo
 knockpy
 knowledgebase
+Kodu
 Konqueror
 konsole
 kotin
@@ -1070,6 +1087,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+LANs
 laravel
 largebiomes
 launchd
@@ -1109,6 +1127,7 @@ libzypp
 lifecycle
 lightbend
 lighthttpd
+Lightroom
 lighttpd
 lighty
 ligttpd
@@ -1158,6 +1177,7 @@ loopback
 lsadump
 lspci
 lsb
+LSCache
 lsd
 lsmod
 lsof
@@ -1170,6 +1190,7 @@ luckystrike
 lugano
 luminus
 lunasec
+Lutz
 lxd
 lxml
 lynis
@@ -1207,12 +1228,14 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matthes
 mawk
 maxconn
 maxdepth
 maxretry
 mbit
 mbits
+mBlock
 mbox
 Mbps
 mbstrings
@@ -1227,6 +1250,7 @@ melilla
 memcached
 memcrashed
 menuentry
+Merkle
 mesos
 metabase
 metacharacter
@@ -1322,10 +1346,12 @@ multilib
 multiline
 multilink
 multiplatform
+Multiplo
 multiport
 multiprotocol
 multisite
 multitenant
+multithreading
 multiuser
 mutator
 munin
@@ -1465,6 +1491,7 @@ oauth
 obfuscator
 octopress
 odoo
+offboarding
 oftc
 ohai
 ok
@@ -1492,6 +1519,8 @@ ossec
 ostemplate
 osx
 otomen
+outdented
+outdents
 outputter
 outputters
 overcommit
@@ -1526,6 +1555,7 @@ partyline
 passcode
 passdb
 passlib
+Passky
 passphraseless
 passwd
 passwdcolumn
@@ -1558,6 +1588,7 @@ php
 php5
 php7
 phpmyadmin
+Phrack
 phusion
 pid
 pidfile
@@ -1783,6 +1814,7 @@ rmdir
 rmem
 ro
 roadmunk
+Roblox
 rochko
 rockyou
 rocommunity
@@ -1825,6 +1857,7 @@ s2s
 s3cr37
 s3cret
 saas
+Sailpoint
 sakila
 safend
 salesforce
@@ -1935,6 +1968,8 @@ slavedb
 sls
 smartcard
 smartcards
+SMB
+SMBs
 smishing
 smtp
 smtpd
@@ -1966,6 +2001,7 @@ spm
 spork
 spotify
 sql
+SQLmap
 sqlplus
 sqreen
 squirrelmail
@@ -2028,10 +2064,12 @@ subtab
 subtransit
 sudo
 sudoers
+suExec
 suhosin
 suid
 sukharev
 supabase
+Superinsight
 superset
 supervisord
 supervisorctl
@@ -2050,6 +2088,7 @@ symlinking
 symlinks
 symvers
 syncookies
+Synopsys
 syntastic
 syntaxes
 sys
@@ -2101,6 +2140,7 @@ thawte
 theano
 theming
 thingsboard
+Thonny
 Thunar
 thycotic
 tigervnc
@@ -2181,6 +2221,8 @@ Ubiquiti
 ubuntu
 ucd
 udp
+UDF
+UDFs
 ufw
 ui
 uidl
@@ -2244,6 +2286,7 @@ urls
 usemodule
 useradd
 usercolumn
+userdata
 userdb
 usergroup
 userland
@@ -2252,6 +2295,7 @@ usersor
 usr
 ust
 utils
+UTunnel
 uuid
 uwls
 uwsgi
@@ -2278,6 +2322,7 @@ verisign
 veritas
 vhost
 vhosts
+Vickery
 viewport
 vigenere
 vimrc
@@ -2305,6 +2350,7 @@ vmlinuz
 vmstat
 vmui
 vnc
+VPLs
 vpns
 vset
 vswap
@@ -2315,6 +2361,7 @@ vz
 vznetaddbr
 walkthrough
 Wappalyzer
+Warcraft
 wasn
 wasm
 wav
@@ -2370,6 +2417,7 @@ winscp
 winsxs
 windowlist
 wireguard
+wirelessly
 wireshark
 wkhtmltopdf
 wkhtmltox

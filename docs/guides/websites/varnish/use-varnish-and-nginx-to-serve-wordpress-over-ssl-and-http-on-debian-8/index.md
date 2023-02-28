@@ -50,7 +50,7 @@ Our setup is illustrated below. Please note that frontend NGINX and backend NGIN
 
 This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started:
 
-1.  Complete the steps in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
+1.  Complete the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
 2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/guides/install-a-lemp-stack-on-debian/) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
 
