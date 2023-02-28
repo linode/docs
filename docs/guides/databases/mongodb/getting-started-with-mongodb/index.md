@@ -447,11 +447,13 @@ The `deleteMany()` method described in the section above removes all of the docu
 
 To do that, you can use the `drop()` method:
 
-    db.exampleCollection.drop()
+```command
+db.exampleCollection.drop()
+```
 
-{{< output >}}
+```output
 true
-{{< /output >}}
+```
 
 ## Conclusion
 

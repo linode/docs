@@ -30,29 +30,9 @@ In this guide, you learn what MongoDB indices are and how to use them to improve
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+{{< content "mongodb-deployment-methods-shortguide" >}}
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On **Debian** and **Ubuntu**, use the following command:
-
-        ```command
-        sudo apt update && sudo apt upgrade
-        ```
-
-    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
-
-        ```command
-        sudo dnf upgrade
-        ```
-
-1. Install MongoDB on your Linux system. You can follow our guide on [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/) or our guide on [How To Install MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/). For other Linux distributions, you can follow MongoDB's [official Linux installation documentation](https://www.mongodb.com/docs/manual/administration/install-on-linux/).
-
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+{{< content "mongodb-shell-shortguide" >}}
 
 ## How Does MongoDB Indexing Work?
 
