@@ -1,5 +1,5 @@
 ---
-slug: how-to-navigate-your-data-in-mongodb-databases
+slug: navigate-mongodb-databases
 author:
   name: Linode Community
   email: docs@linode.com
@@ -7,12 +7,10 @@ description: "Learn how to navigate your MongoDB database. From examples of the 
 keywords: ['mongodb query examples','mongodb filter query','mongodb text search']
 tags: ['database', 'nosql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-14
+published: 2023-02-28
 modified_by:
   name: Nathaniel Stickman
-title: "How to Navigate Your Data in MongoDB Databases"
-h1_title: "Navigate Your Data in MongoDB Databases"
-enable_h1: true
+title: "Navigate MongoDB and Query Your Data"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -24,7 +22,7 @@ external_resources:
 
 [MongoDB](https://www.mongodb.com/) is a flexible, NoSQL database solution which stores data as JSON-like documents.
 
-Learn all about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](https://www.linode.com/docs/guides/mongodb-and-its-use-cases/) guide. Then, find out about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
+Learn all about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide. Then, find out about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
 
 But MongoDB has much more to offer for effectively working with data. And for those familiar with SQL, it may take some more digging before you feel as confident in using MongoDB.
 
@@ -32,123 +30,105 @@ This MongoDB tutorial shows you how to make more advanced queries. From querying
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started on the Linode Platform](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
-
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On **Debian** and **Ubuntu**, use the following command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
-
-            sudo dnf upgrade
-
-1. Install MongoDB on your Linux system. You can follow our guide on [How To Install MongoDB on Ubuntu 16.04](/docs/guides/install-mongodb-on-ubuntu-16-04/) or our guide on [How To Install MongoDB on CentOS 7](/docs/guides/install-mongodb-on-centos-7/).
-
-    For other Linux distributions, you can follow MongoDB's [official Linux installation documentation](https://www.mongodb.com/docs/manual/administration/install-on-linux/).
-
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
+{{< content "mongodb-deployment-methods-shortguide" >}}
 
 ## Query Documents
 
 The following sections show you various ways and tools for querying your MongoDB data. To ground the techniques, each section includes examples using a set of documents related to books. You can add the data to your own MongoDB instance using the commands shown below:
 
-    use libraryDb
+```command
+use libraryDb
 
-    db.bookCatalog.insertMany([
-        {
-            "title": "A Midsummer Night's Dream",
-            "author": "William Shakespeare",
-            "originalPublicationYear": 1600,
-            "originalPublisherLocation": ["London", "England"],
-            "editions": [
-                {
-                    "publicationYear": 2004,
-                    "publisher": "Simon & Schuster",
-                    "format": "paperback"
-                },
-                {
-                    "publicationYear": 2018,
-                    "publisher": "W. W. Norton & Company",
-                    "format": "paperback"
-                }
-            ]
-        },
-        {
-            "title": "Othello",
-            "author": "William Shakespeare",
-            "originalPublicationYear": 1622,
-            "originalPublisherLocation": ["London", "England"],
-            "editions": [
-                {
-                    "publicationYear": 1993,
-                    "publisher": "Simon & Schuster",
-                    "format": "paperback"
-                },
-                {
-                    "publicationYear": 2008,
-                    "publisher": "Dover Publications",
-                    "format": "paperback"
-                }
-            ]
-        },
-        {
-            "title": "The Sound and the Fury",
-            "author": "William Faulkner",
-            "originalPublicationYear": 1929,
-            "originalPublisherLocation": ["New York", "United States"],
-            "editions": [
-                {
-                    "publicationYear": 1956,
-                    "publisher": "Random House",
-                    "format": "hardcover"
-                },
-                {
-                    "publicationYear": 1990,
-                    "publisher": "Vintage",
-                    "format": "paperback"
-                },
-                {
-                    "publicationYear": 1992,
-                    "publisher": "Modern Library",
-                    "format": "hardcover"
-                }
-            ]
-        },
-        {
-            "title": "Everything that Rises Must Converge",
-            "author": "Flannery O'Connor",
-            "originalPublicationYear": 1965,
-            "originalPublisherLocation": ["New York", "United States"],
-            "editions": [
-                {
-                    "publicationYear": 1984,
-                    "publisher": "Farrar, Straus and Giroux",
-                    "format": "hardcover"
-                },
-                {
-                    "publicationYear": 1996,
-                    "publisher": "Farrar, Straus and Giroux",
-                    "format": "paperback"
-                }
-            ]
-        },
-        {
-            "title": "Native Guard",
-            "author": "Natasha Tretheway",
-            "originalPublicationYear": 2007,
-            "originalPublisherLocation": ["Boston", "United States"],
-            "publisher": "Houghton Mifflin",
-            "format": "Hardcover"
-        }
-    ])
+db.bookCatalog.insertMany([
+    {
+        "title": "A Midsummer Night's Dream",
+        "author": "William Shakespeare",
+        "originalPublicationYear": 1600,
+        "originalPublisherLocation": ["London", "England"],
+        "editions": [
+            {
+                "publicationYear": 2004,
+                "publisher": "Simon & Schuster",
+                "format": "paperback"
+            },
+            {
+                "publicationYear": 2018,
+                "publisher": "W. W. Norton & Company",
+                "format": "paperback"
+            }
+        ]
+    },
+    {
+        "title": "Othello",
+        "author": "William Shakespeare",
+        "originalPublicationYear": 1622,
+        "originalPublisherLocation": ["London", "England"],
+        "editions": [
+            {
+                "publicationYear": 1993,
+                "publisher": "Simon & Schuster",
+                "format": "paperback"
+            },
+            {
+                "publicationYear": 2008,
+                "publisher": "Dover Publications",
+                "format": "paperback"
+            }
+        ]
+    },
+    {
+        "title": "The Sound and the Fury",
+        "author": "William Faulkner",
+        "originalPublicationYear": 1929,
+        "originalPublisherLocation": ["New York", "United States"],
+        "editions": [
+            {
+                "publicationYear": 1956,
+                "publisher": "Random House",
+                "format": "hardcover"
+            },
+            {
+                "publicationYear": 1990,
+                "publisher": "Vintage",
+                "format": "paperback"
+            },
+            {
+                "publicationYear": 1992,
+                "publisher": "Modern Library",
+                "format": "hardcover"
+            }
+        ]
+    },
+    {
+        "title": "Everything that Rises Must Converge",
+        "author": "Flannery O'Connor",
+        "originalPublicationYear": 1965,
+        "originalPublisherLocation": ["New York", "United States"],
+        "editions": [
+            {
+                "publicationYear": 1984,
+                "publisher": "Farrar, Straus and Giroux",
+                "format": "hardcover"
+            },
+            {
+                "publicationYear": 1996,
+                "publisher": "Farrar, Straus and Giroux",
+                "format": "paperback"
+            }
+        ]
+    },
+    {
+        "title": "Native Guard",
+        "author": "Natasha Tretheway",
+        "originalPublicationYear": 2007,
+        "originalPublisherLocation": ["Boston", "United States"],
+        "publisher": "Houghton Mifflin",
+        "format": "Hardcover"
+    }
+])
+```
 
-{{< output >}}
+```output
 switched to db libraryDb
 
 {
@@ -161,24 +141,25 @@ switched to db libraryDb
         ObjectId("627abd0a9709397b4c053873")
     ]
 }
-{{< /output >}}
+```
 
 {{< note >}}
 Most of the query examples in this guide use the `pretty` method appended to the end. This is to make the results displayed in an easier-to-read format.
 {{< /note >}}
 
-
 ### Basic Query Operators
 
 The simplest query filter is based on specific values in specific fields. The example below, for instance, fetches the book originally published in `1622`:
 
-    db.bookCatalog.find(
-        {
-            "originalPublicationYear": 1622
-        }
-    ).pretty()
+```command
+db.bookCatalog.find(
+    {
+        "originalPublicationYear": 1622
+    }
+).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053870"),
     "title" : "Othello",
@@ -201,15 +182,17 @@ The simplest query filter is based on specific values in specific fields. The ex
         }
     ]
 }
-{{< /output >}}
+```
 
 #### Checking for Null Fields
 
 MongoDB also provides a way to check for documents where a given field is null — empty or absent. Within the MongoDB shell, this just requires the use of the `null` keyword:
 
-    db.bookCatalog.find( { "editions": null } ).pretty()
+```command
+db.bookCatalog.find( { "editions": null } ).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053873"),
     "title" : "Native Guard",
@@ -222,7 +205,7 @@ MongoDB also provides a way to check for documents where a given field is null �
     "publisher" : "Houghton Mifflin",
     "format" : "Hardcover"
 }
-{{< /output >}}
+```
 
 ### Comparison Query Operators
 
@@ -232,171 +215,177 @@ MongoDB has several operators (keywords) that let you query by comparison. This 
 
 - Using the `$gt` and `$lt` operators lets you query for values greater than and less than a given value. These operators also come in variants `$gte` and `$lte` for matching values greater-than-or-equal-to and less-than-or-equal-to, respectively:
 
-        db.bookCatalog.find( { "originalPublicationYear": { $gt: 1950 } } ).pretty()
+    ```command
+    db.bookCatalog.find( { "originalPublicationYear": { $gt: 1950 } } ).pretty()
+    ```
 
-    {{< output >}}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053872"),
-    "title" : "Everything that Rises Must Converge",
-    "author" : "Flannery O'Connor",
-    "originalPublicationYear" : 1965,
-    "originalPublisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1984,
-            "publisher" : "Farrar, Straus and Giroux",
-            "format" : "hardcover"
-        },
-        {
-            "publicationYear" : 1996,
-            "publisher" : "Farrar, Straus and Giroux",
-            "format" : "paperback"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053873"),
-    "title" : "Native Guard",
-    "author" : "Natasha Tretheway",
-    "originalPublicationYear" : 2007,
-    "originalPublisherLocation" : [
-        "Boston",
-        "United States"
-    ],
-    "publisher" : "Houghton Mifflin",
-    "format" : "Hardcover"
-}
-    {{< /output >}}
+    ```output
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053872"),
+        "title" : "Everything that Rises Must Converge",
+        "author" : "Flannery O'Connor",
+        "originalPublicationYear" : 1965,
+        "originalPublisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1984,
+                "publisher" : "Farrar, Straus and Giroux",
+                "format" : "hardcover"
+            },
+            {
+                "publicationYear" : 1996,
+                "publisher" : "Farrar, Straus and Giroux",
+                "format" : "paperback"
+            }
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053873"),
+        "title" : "Native Guard",
+        "author" : "Natasha Tretheway",
+        "originalPublicationYear" : 2007,
+        "originalPublisherLocation" : [
+            "Boston",
+            "United States"
+        ],
+        "publisher" : "Houghton Mifflin",
+        "format" : "Hardcover"
+    }
+    ```
 
 - Using the `$in` operator lets you check for documents with a given value in array fields. So long as one of the values in the array matches the given value, the query returns that document.
 
-        db.bookCatalog.find(
-            {
-                "originalPublisherLocation": { $in: ["England"] }
-            }
-        ).pretty()
+    ```command
+    db.bookCatalog.find(
+        {
+            "originalPublisherLocation": { $in: ["England"] }
+        }
+    ).pretty()
+    ```
 
-    {{< output >}}
-{
-    "_id" : ObjectId("627abd0a9709397b4c05386f"),
-    "title" : "A Midsummer Night's Dream",
-    "author" : "William Shakespeare",
-    "originalPublicationYear" : 1600,
-    "publisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 2004,
-            "publisher" : "Simon & Schuster",
-            "format" : "paperback"
-        },
-        {
-            "publicationYear" : 2018,
-            "publisher" : "W. W. Norton & Company",
-            "format" : "paperback"
-        }
-    ],
-    "originalPublisherLocation" : [
-        "London",
-        "England"
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053870"),
-    "title" : "Othello",
-    "author" : "William Shakespeare",
-    "originalPublicationYear" : 1622,
-    "originalPublisherLocation" : [
-        "London",
-        "England"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1993,
-            "publisher" : "Simon & Schuster",
-            "format" : "paperback"
-        },
-        {
-            "publicationYear" : 2008,
-            "publisher" : "Dover Publications",
-            "format" : "paperback"
-        }
-    ]
-}
-    {{< /output >}}
+    ```output
+    {
+        "_id" : ObjectId("627abd0a9709397b4c05386f"),
+        "title" : "A Midsummer Night's Dream",
+        "author" : "William Shakespeare",
+        "originalPublicationYear" : 1600,
+        "publisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 2004,
+                "publisher" : "Simon & Schuster",
+                "format" : "paperback"
+            },
+            {
+                "publicationYear" : 2018,
+                "publisher" : "W. W. Norton & Company",
+                "format" : "paperback"
+            }
+        ],
+        "originalPublisherLocation" : [
+            "London",
+            "England"
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053870"),
+        "title" : "Othello",
+        "author" : "William Shakespeare",
+        "originalPublicationYear" : 1622,
+        "originalPublisherLocation" : [
+            "London",
+            "England"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1993,
+                "publisher" : "Simon & Schuster",
+                "format" : "paperback"
+            },
+            {
+                "publicationYear" : 2008,
+                "publisher" : "Dover Publications",
+                "format" : "paperback"
+            }
+        ]
+    }
+    ```
 
 - Using the `$ne` operator matches where a given field does not equal a given value. This operator comes with a variant of `$nin`, the inverse of `$in`, that matches when a given value is not in a given array.
 
-        db.bookCatalog.find( { "author": { $ne: "William Sharkspeare" } } ).pretty()
+    ```command
+    db.bookCatalog.find( { "author": { $ne: "William Sharkspeare" } } ).pretty()
+    ```
 
-    {{< output >}}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053871"),
-    "title" : "The Sound and the Fury",
-    "author" : "William Faulkner",
-    "originalPublicationYear" : 1929,
-    "originalPublisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1956,
-            "publisher" : "Random House",
-            "format" : "hardcover"
-        },
-        {
-            "publicationYear" : 1990,
-            "publisher" : "Vintage",
-            "format" : "paperback"
-        },
-        {
-            "publicationYear" : 1992,
-            "publisher" : "Modern Library",
-            "format" : "hardcover"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053872"),
-    "title" : "Everything that Rises Must Converge",
-    "author" : "Flannery O'Connor",
-    "originalPublicationYear" : 1965,
-    "originalPublisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1984,
-            "publisher" : "Farrar, Straus and Giroux",
-            "format" : "hardcover"
-        },
-        {
-            "publicationYear" : 1996,
-            "publisher" : "Farrar, Straus and Giroux",
-            "format" : "paperback"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053873"),
-    "title" : "Native Guard",
-    "author" : "Natasha Tretheway",
-    "originalPublicationYear" : 2007,
-    "originalPublisherLocation" : [
-        "Boston",
-        "United States"
-    ],
-    "publisher" : "Houghton Mifflin",
-    "format" : "Hardcover"
-}
-    {{< /output >}}
+    ```output
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053871"),
+        "title" : "The Sound and the Fury",
+        "author" : "William Faulkner",
+        "originalPublicationYear" : 1929,
+        "originalPublisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1956,
+                "publisher" : "Random House",
+                "format" : "hardcover"
+            },
+            {
+                "publicationYear" : 1990,
+                "publisher" : "Vintage",
+                "format" : "paperback"
+            },
+            {
+                "publicationYear" : 1992,
+                "publisher" : "Modern Library",
+                "format" : "hardcover"
+            }
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053872"),
+        "title" : "Everything that Rises Must Converge",
+        "author" : "Flannery O'Connor",
+        "originalPublicationYear" : 1965,
+        "originalPublisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1984,
+                "publisher" : "Farrar, Straus and Giroux",
+                "format" : "hardcover"
+            },
+            {
+                "publicationYear" : 1996,
+                "publisher" : "Farrar, Straus and Giroux",
+                "format" : "paperback"
+            }
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053873"),
+        "title" : "Native Guard",
+        "author" : "Natasha Tretheway",
+        "originalPublicationYear" : 2007,
+        "originalPublisherLocation" : [
+            "Boston",
+            "United States"
+        ],
+        "publisher" : "Houghton Mifflin",
+        "format" : "Hardcover"
+    }
+    ```
 
 ### Logical Query Operators
 
@@ -406,184 +395,192 @@ In total, MongoDB has four logical operations for queries.
 
 - The `$and` operator matches documents where two or more conditions *all* match.
 
-        db.bookCatalog.find( {
-            $and: [
-                {
-                    "originalPublicationYear": { $lt: 1980 }
-                },
-                {
-                    "originalPublicationYear": { $gte: 1900 }
-                }
-            ]
-        } ).pretty()
+    ```command
+    db.bookCatalog.find( {
+        $and: [
+            {
+                "originalPublicationYear": { $lt: 1980 }
+            },
+            {
+                "originalPublicationYear": { $gte: 1900 }
+            }
+        ]
+    } ).pretty()
+    ```
 
-    {{< output >}}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053871"),
-    "title" : "The Sound and the Fury",
-    "author" : "William Faulkner",
-    "originalPublicationYear" : 1929,
-    "originalPublisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1956,
-            "publisher" : "Random House",
-            "format" : "hardcover"
-        },
-        {
-            "publicationYear" : 1990,
-            "publisher" : "Vintage",
-            "format" : "paperback"
-        },
-        {
-            "publicationYear" : 1992,
-            "publisher" : "Modern Library",
-            "format" : "hardcover"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053872"),
-    "title" : "Everything that Rises Must Converge",
-    "author" : "Flannery O'Connor",
-    "originalPublicationYear" : 1965,
-    "originalPublisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1984,
-            "publisher" : "Farrar, Straus and Giroux",
-            "format" : "hardcover"
-        },
-        {
-            "publicationYear" : 1996,
-            "publisher" : "Farrar, Straus and Giroux",
-            "format" : "paperback"
-        }
-    ]
-}
-    {{< /output >}}
+    ```output
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053871"),
+        "title" : "The Sound and the Fury",
+        "author" : "William Faulkner",
+        "originalPublicationYear" : 1929,
+        "originalPublisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1956,
+                "publisher" : "Random House",
+                "format" : "hardcover"
+            },
+            {
+                "publicationYear" : 1990,
+                "publisher" : "Vintage",
+                "format" : "paperback"
+            },
+            {
+                "publicationYear" : 1992,
+                "publisher" : "Modern Library",
+                "format" : "hardcover"
+            }
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053872"),
+        "title" : "Everything that Rises Must Converge",
+        "author" : "Flannery O'Connor",
+        "originalPublicationYear" : 1965,
+        "originalPublisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1984,
+                "publisher" : "Farrar, Straus and Giroux",
+                "format" : "hardcover"
+            },
+            {
+                "publicationYear" : 1996,
+                "publisher" : "Farrar, Straus and Giroux",
+                "format" : "paperback"
+            }
+        ]
+    }
+    ```
 
 - The `$or` operator matches documents where *at least* one condition matches a given array of two or more conditions.
 
-        db.bookCatalog.find( {
-            $or: [
-                {
-                    "originalPublisherLocation": { $in: ["London"] }
-                },
-                {
-                    "originalPublisherLocation": { $in: ["Boston"] }
-                }
-            ]
-        } ).pretty()
+    ```command
+    db.bookCatalog.find( {
+        $or: [
+            {
+                "originalPublisherLocation": { $in: ["London"] }
+            },
+            {
+                "originalPublisherLocation": { $in: ["Boston"] }
+            }
+        ]
+    } ).pretty()
+    ```
 
-    {{< output >}}
-{
-    "_id" : ObjectId("627abd0a9709397b4c05386f"),
-    "title" : "A Midsummer Night's Dream",
-    "author" : "William Shakespeare",
-    "originalPublicationYear" : 1600,
-    "publisherLocation" : [
-        "New York",
-        "United States"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 2004,
-            "publisher" : "Simon & Schuster",
-            "format" : "paperback"
-        },
-        {
-            "publicationYear" : 2018,
-            "publisher" : "W. W. Norton & Company",
-            "format" : "paperback"
-        }
-    ],
-    "originalPublisherLocation" : [
-        "London",
-        "England"
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053870"),
-    "title" : "Othello",
-    "author" : "William Shakespeare",
-    "originalPublicationYear" : 1622,
-    "originalPublisherLocation" : [
-        "London",
-        "England"
-    ],
-    "editions" : [
-        {
-            "publicationYear" : 1993,
-            "publisher" : "Simon & Schuster",
-            "format" : "paperback"
-        },
-        {
-            "publicationYear" : 2008,
-            "publisher" : "Dover Publications",
-            "format" : "paperback"
-        }
-    ]
-}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053873"),
-    "title" : "Native Guard",
-    "author" : "Natasha Tretheway",
-    "originalPublicationYear" : 2007,
-    "originalPublisherLocation" : [
-        "Boston",
-        "United States"
-    ],
-    "publisher" : "Houghton Mifflin",
-    "format" : "Hardcover"
-}
-    {{< /output >}}
+    ```output
+    {
+        "_id" : ObjectId("627abd0a9709397b4c05386f"),
+        "title" : "A Midsummer Night's Dream",
+        "author" : "William Shakespeare",
+        "originalPublicationYear" : 1600,
+        "publisherLocation" : [
+            "New York",
+            "United States"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 2004,
+                "publisher" : "Simon & Schuster",
+                "format" : "paperback"
+            },
+            {
+                "publicationYear" : 2018,
+                "publisher" : "W. W. Norton & Company",
+                "format" : "paperback"
+            }
+        ],
+        "originalPublisherLocation" : [
+            "London",
+            "England"
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053870"),
+        "title" : "Othello",
+        "author" : "William Shakespeare",
+        "originalPublicationYear" : 1622,
+        "originalPublisherLocation" : [
+            "London",
+            "England"
+        ],
+        "editions" : [
+            {
+                "publicationYear" : 1993,
+                "publisher" : "Simon & Schuster",
+                "format" : "paperback"
+            },
+            {
+                "publicationYear" : 2008,
+                "publisher" : "Dover Publications",
+                "format" : "paperback"
+            }
+        ]
+    }
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053873"),
+        "title" : "Native Guard",
+        "author" : "Natasha Tretheway",
+        "originalPublicationYear" : 2007,
+        "originalPublisherLocation" : [
+            "Boston",
+            "United States"
+        ],
+        "publisher" : "Houghton Mifflin",
+        "format" : "Hardcover"
+    }
+    ```
 
 - The `$not` operator matches documents that do not match a given condition. The syntax for this operator is a little different from the other logical operations.
 
-        db.bookCatalog.find(
-            {
-                "originalPublicationYear": { $not: { $lt: 1980 } }
-            }
-        ).pretty()
+    ```command
+    db.bookCatalog.find(
+        {
+            "originalPublicationYear": { $not: { $lt: 1980 } }
+        }
+    ).pretty()
+    ```
 
-    {{< output >}}
-{
-    "_id" : ObjectId("627abd0a9709397b4c053873"),
-    "title" : "Native Guard",
-    "author" : "Natasha Tretheway",
-    "originalPublicationYear" : 2007,
-    "originalPublisherLocation" : [
-        "Boston",
-        "United States"
-    ],
-    "publisher" : "Houghton Mifflin",
-    "format" : "Hardcover"
-}
-    {{< /output >}}
+    ```output
+    {
+        "_id" : ObjectId("627abd0a9709397b4c053873"),
+        "title" : "Native Guard",
+        "author" : "Natasha Tretheway",
+        "originalPublicationYear" : 2007,
+        "originalPublisherLocation" : [
+            "Boston",
+            "United States"
+        ],
+        "publisher" : "Houghton Mifflin",
+        "format" : "Hardcover"
+    }
+    ```
 
 ### Query Nested Objects
 
 MongoDB can query for documents that contain specific other documents. These queries, at their simplest, work similar to other queries, except that you are matching for an exact object rather than some other kind of value.
 
-    db.bookCatalog.find(
-        {
-            "editions": { $in: [
-                {
-                    "publicationYear": 1992,
-                    "publisher": "Modern Library",
-                    "format": "hardcover"
-                } ] }
-        }
-    ).pretty()
+```command
+db.bookCatalog.find(
+    {
+        "editions": { $in: [
+            {
+                "publicationYear": 1992,
+                "publisher": "Modern Library",
+                "format": "hardcover"
+            } ] }
+    }
+).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053871"),
     "title" : "The Sound and the Fury",
@@ -611,22 +608,24 @@ MongoDB can query for documents that contain specific other documents. These que
         }
     ]
 }
-{{< /output >}}
+```
 
 From the example above, if `editions` contained one object, rather than an array of objects, the query could instead look like the following:
 
-    db.bookCatalog.find(
-        {
-            "editions":
-                {
-                    "publicationYear": 1992,
-                    "publisher": "Modern Library",
-                    "format": "hardcover"
-                }
-        }
-    ).pretty()
+```command
+db.bookCatalog.find(
+    {
+        "editions":
+            {
+                "publicationYear": 1992,
+                "publisher": "Modern Library",
+                "format": "hardcover"
+            }
+    }
+).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053871"),
     "title" : "The Sound and the Fury",
@@ -643,7 +642,7 @@ From the example above, if `editions` contained one object, rather than an array
             "format" : "hardcover"
         }
 }
-{{< /output >}}
+```
 
 But this approach has very limited applications in practice. Because it requires you to provide the entire nested document in your query, it is too specific for many real-world use cases.
 
@@ -651,14 +650,16 @@ Instead, more often you want to query for one or more nested fields. You can do 
 
 Following is an example that fetches the same book as above but only using the `publicationYear` and `format` nested fields:
 
-    db.bookCatalog.find(
-        {
-            "editions.publicationYear": { $gt: 1990 },
-            "editions.format": "hardcover"
-        }
-    ).pretty()
+```command
+db.bookCatalog.find(
+    {
+        "editions.publicationYear": { $gt: 1990 },
+        "editions.format": "hardcover"
+    }
+).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053871"),
     "title" : "The Sound and the Fury",
@@ -708,7 +709,7 @@ Following is an example that fetches the same book as above but only using the `
         }
     ]
 }
-{{< /output >}}
+```
 
 Notice that the above example fetched another book. This is because the `editions` field is an array of nested documents. The dot notation approach searches for matching nested fields in each of the documents in the array. A match can be made for multiple fields across objects in such a case.
 
@@ -718,24 +719,28 @@ MongoDB can conduct text searches on collections. However, doing so requires tha
 
 For example, you can create a text index for the `title` and `author` fields using the following command:
 
-    db.bookCatalog.createIndex( { "title": "text", "author": "text" } )
+```command
+db.bookCatalog.createIndex( { "title": "text", "author": "text" } )
+```
 
-{{< output >}}
+```output
 {
     "createdCollectionAutomatically" : false,
     "numIndexesBefore" : 1,
     "numIndexesAfter" : 2,
     "ok" : 1
 }
-{{< /output >}}
+```
 
 ### Exact Text
 
 Text searches can be then made using the `$text` and `$search` keywords in combination.
 
-    db.bookCatalog.find( { $text: { $search: "william" } } ).pretty()
+```command
+db.bookCatalog.find( { $text: { $search: "william" } } ).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053871"),
     "title" : "The Sound and the Fury",
@@ -807,21 +812,25 @@ Text searches can be then made using the `$text` and `$search` keywords in combi
         }
     ]
 }
-{{< /output >}}
+```
 
 A search for `"william shakespeare` actually returns the same results as above. This is because MongoDB text searches by default match any term in the search, not the exact phrase.
 
 To match an exact phrase, you can surround the text in quotes, using a backslash before each quote to include it in the search string.
 
-    db.bookCatalog.find( { $text: { $search: "\"william shakespeare\"" } } ).pretty()
+```command
+db.bookCatalog.find( { $text: { $search: "\"william shakespeare\"" } } ).pretty()
+```
 
 ### Exclude Text
 
 Search terms can be excluded as well. This is done by adding a `-` symbol before the search term to exclude.
 
-    db.bookCatalog.find( { $text: { $search: "william -shakespeare" } } ).pretty()
+```command
+db.bookCatalog.find( { $text: { $search: "william -shakespeare" } } ).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053871"),
     "title" : "The Sound and the Fury",
@@ -849,18 +858,20 @@ Search terms can be excluded as well. This is done by adding a `-` symbol before
         }
     ]
 }
-{{< /output >}}
+```
 
 ### Sort Results
 
 MongoDB's text searches have a built-in text scoring capability based on search relevance. The following example shows the text scoring field, `$textScore`, applied to a text search for `"william shakespeare"`. You can see in the output that the relevancy scores are actually added to the resulting documents.
 
-    db.bookCatalog.find(
-        { $text: { $search: "william shakespeare" } },
-        { score: { $meta: "textScore" } }
-    ).sort( { score: { $meta: "textScore" } } ).pretty()
+```command
+db.bookCatalog.find(
+    { $text: { $search: "william shakespeare" } },
+    { score: { $meta: "textScore" } }
+).sort( { score: { $meta: "textScore" } } ).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c053870"),
     "title" : "Othello",
@@ -935,7 +946,7 @@ MongoDB's text searches have a built-in text scoring capability based on search 
     ],
     "score" : 0.75
 }
-{{< /output >}}
+```
 
 ### Regex Queries
 
@@ -945,9 +956,11 @@ The format for a regex search in MongoDB is: `{ "field": { $regex: "pattern" } }
 
 The following example matches all documents where `editions.publisher` has either the word `and` (surrounded by spaces), the symbol `&`, or a comma.
 
-    db.bookCatalog.find( { "editions.publisher": { $regex: "\sand\s|&|," } } ).pretty()
+```command
+db.bookCatalog.find( { "editions.publisher": { $regex: "\sand\s|&|," } } ).pretty()
+```
 
-{{< output >}}
+```output
 {
     "_id" : ObjectId("627abd0a9709397b4c05386f"),
     "title" : "A Midsummer Night's Dream",
@@ -1014,7 +1027,7 @@ The following example matches all documents where `editions.publisher` has eithe
         }
     ]
 }
-{{< /output >}}
+```
 
 However, keep in mind that regex queries tend to take more processing power and time — they are not efficient compared to standard text searches. This may become noticeable with larger collections and more complex queries.
 
