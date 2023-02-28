@@ -33,7 +33,7 @@ external_resources:
 
 ## Getting Started after Deployment
 
-1. Log into your new Compute Instance through [LISH](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1. Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
 1. If you log in on the same day you deployed the app, a message is displayed with the username and password for the new database as well as an example database connection string.
 

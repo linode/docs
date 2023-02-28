@@ -101,7 +101,7 @@ As the demand for an application changes, the underlying hardware must scale to 
     -   Increased complexity due to needed tasks, such as cloning servers.
     -   Added demand on downstream servers to provide caching and database support.
     -   Reduced reliability because a single load balancer can become a single point of failure.
--   **Vertical**: Where the [size of the server changes](/docs/guides/resizing-a-linode/) to meet new needs. This form of scaling is typically used to enhance anticipated changes in application use and is a manual process. It’s also normally used by small-to-medium-sized businesses that don’t want, or need, the complexity of load balancing. Issues with vertical scaling include:
+-   **Vertical**: Where the [size of the server changes](/docs/products/compute/compute-instances/guides/resize/) to meet new needs. This form of scaling is typically used to enhance anticipated changes in application use and is a manual process. It’s also normally used by small-to-medium-sized businesses that don’t want, or need, the complexity of load balancing. Issues with vertical scaling include:
     -   Potential size limitations of the physical server or virtual server instance.
     -   Higher risk of downtime and outages because the load isn’t distributed across multiple, redundant servers.
 
