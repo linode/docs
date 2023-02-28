@@ -23,7 +23,7 @@ external_resources:
 [MongoDB](https://www.mongodb.com/) is a flexible, NoSQL database solution which stores data as JSON-like documents. Compared to other database systems, MongoDB has much more to offer for effectively working with data. For those familiar with SQL, it may take some time and experience before feeling confident using MongoDB. This MongoDB tutorial shows you how to make more advanced queries. From querying arrays and nested objects to using comparative and logical operations, learn it all in this guide with practical examples.
 
 {{< note >}}
-Learn all about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-and-its-use-cases/) guide. Then, find out about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
+Learn all about what MongoDB is and how it works in our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-introduction/) guide. Then, find out about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.
 {{< /note >}}
 
 ## Before You Begin
