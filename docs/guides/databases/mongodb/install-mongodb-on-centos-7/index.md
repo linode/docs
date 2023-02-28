@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-30
-title: 'How To Install MongoDB on CentOS 7'
-h1_title: 'Installing MongoDB on CentOS 7'
+title: 'Installing MongoDB on CentOS 7'
+title_meta: 'How To Install MongoDB on CentOS 7'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](https://www.mongodb.com/)'
@@ -36,9 +36,9 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 
@@ -215,7 +215,7 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/manual/reference/method/db.createCollection/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
 {{< /note >}}
 

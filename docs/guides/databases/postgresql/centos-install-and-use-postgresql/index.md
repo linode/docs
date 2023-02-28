@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
-og_description: 'This guide provides an introduction to installing PostgreSQL, an open source object-Relational Database Management System (RDBMS) on CentOS 8.'
 keywords: ['database','postgresql','centos', 'yum']
 tags: ["database","postgresql","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-02-02
 image: postgreSQL.jpg
 modified_by:
   name: Linode
-title: "CentOS 8: Install and Use PostgreSQL"
-h1_title: "How to Install and Use PostgreSQL on CentOS 8"
-enable_h1: true
+title: "Install and Use PostgreSQL on CentOS 8"
+title_meta: "How to Install and Use PostgreSQL on CentOS 8"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
@@ -43,9 +41,9 @@ This guide demonstrates how to install and use [*PostgreSQL*](https://www.postgr
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -169,7 +167,7 @@ You should enhance the security of your PostgreSQL installation before proceedin
     The `-d` option allows you to restrict the password to a specific database.
 
         psql -d template1 -c "ALTER USER postgres WITH PASSWORD 'newpassword'";
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This password does not apply when the `postgres` user logs in via the localhost. This ensures the account has administrative access to PostgreSQL for maintenance jobs and scripting access. Unless you override this setting, PostgreSQL always allows you to log in locally as `postgres` without any password.
     {{< /note >}}
 1. Verify you can communicate with PostgreSQL and you are running the version you expect. The following command queries the PostgreSQL database for the current version.
@@ -208,7 +206,7 @@ postgres=#
 1. Exit PostgreSQL using the `\q` meta-command to return to the Linux shell.
 
         \q
-    {{< note >}}
+    {{< note respectIndent=false >}}
 PostgreSQL commands starting with a backslash are called *meta-commands*. These pre-processed commands are helpful for administration and scripting purposes. See the [*PostgreSQL PSQL Documentation*](https://www.postgresql.org/docs/current/app-psql.html) page for more information.
 {{< /note >}}
 1. Edit the `pg_hba.conf` file to require passwords from local users. Locate the line `local` under `Unix domain socket connections only` and change the `METHOD` attribute from `peer` to `md5`.
@@ -227,9 +225,9 @@ local   all             postgres                                peer
 local   all             all                                     md5
 ...
     {{< /file >}}
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you do not define this exception for the `postgres` user, you could potentially lock yourself out of the database. We recommend making a backup copy of this file before editing it and taking note of its location.
-{{< /caution >}}
+{{< /note >}}
 
 1. You must restart PostgreSQL to apply the new access rule.
 
@@ -272,7 +270,7 @@ Like most common RDBMS systems, PostgreSQL uses fairly standard SQL commands. If
 1. As the `postgres` Linux user, create a test database from the Linux shell using the `createdb` command.
 
         createdb testdatabase
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can assign database ownership to a specific PostgreSQL user when you create it with the `-O` option, for example, `createdb testdatabase -O testuser`.
     {{< /note >}}
 1. Connect directly to the new database.
@@ -307,9 +305,9 @@ You are connected to database "testdatabase" as user "postgres" via socket in "/
 
         dropdb testdatabase
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `dropdb` command permanently deletes all of the tables and data inside the database and cannot be undone.
-{{< /caution >}}
+{{< /note >}}
 
 ### Work With PostgreSQL Tables
 
@@ -350,9 +348,9 @@ Table "public.customers"
 1. The `DROP TABLE` command can be used to delete an existing table.
 
         DROP TABLE customers;
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The `DROP TABLE` operation deletes all of the data in the table. It cannot be undone.
-{{< /caution >}}
+{{< /note >}}
 
 ### Work With PostgreSQL Columns
 
@@ -399,7 +397,7 @@ PostgreSQL tables store the data entries as a series of rows. A row can be thoug
            2 | Jane       | Purchaser
 (2 rows)
     {{< /output >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `*` symbol represents a wild card. In this case, it indicates all columns.
     {{< /note >}}
 
@@ -443,7 +441,7 @@ The `*` symbol represents a wild card. In this case, it indicates all columns.
 (1 row)
    {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A *join* is a complex query that combines information from two or more tables. To execute a join, indicate a column from each table where the values must match. Every time a match occurs, the join operation returns the pair of relevant rows (one from each table). For instance, if `branch_id` is the same in a row in the `branches` table and another in the `employees` table, both rows are returned. Depending on how your tables are designed, matches might be one-to-one, many-to-one, or many-to-many. PostgreSQL processes the matching rows into one entity and retrieves the requested columns.
 
 You can learn more about [*Joins*](https://www.postgresql.org/docs/13/tutorial-join.html) on the PostgreSQL site.

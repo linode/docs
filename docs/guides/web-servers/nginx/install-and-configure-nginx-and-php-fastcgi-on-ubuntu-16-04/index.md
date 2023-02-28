@@ -29,13 +29,13 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 ![Install and configure nginx and PHP-FastCGI on Ubuntu 16.04](nginx-php-fcgi-tg.png "Install and configure nginx and PHP-FastCGI on Ubuntu 16.04")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-- Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/guides/getting-started/#setting-the-hostname).
+- Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
 - To confirm your hostname, issue the following commands on your Linode:
 

@@ -32,19 +32,19 @@ Currently, there are two available versions of Proxy Protocol, **v1** and **v2**
 
 - **v1**: Proxy Protocol v1 adds a human readable string to all requests, similar to the following:
 
-    {{< output >}}
-PROXY TCP4 192.0.2.0 203.0.113.0 56147 80
-    {{< /output >}}
+    ```output
+    PROXY TCP4 192.0.2.0 203.0.113.0 56147 80
+    ```
 
     The syntax for this output is as follows:
 
-      PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PORT
+        PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PORT
 
 - **v2**: Proxy Protocol v2 adds a more efficient binary data header to all requests, similar to the following:
 
-  {{< output >}}
-\r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
-  {{< /output >}}
+    ```output
+    \r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
+    ```
 
 More information on **v1** and **v2** is available in the [Proxy Protocol Specification](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
 

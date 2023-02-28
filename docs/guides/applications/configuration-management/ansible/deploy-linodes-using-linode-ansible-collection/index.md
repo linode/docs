@@ -36,21 +36,21 @@ This guide shows how to:
 
 -  [Deploy a Linode instance](#deploy-a-linode-with-the-linode-ansible-collection) using Ansible and the Linode Ansible collection.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This guide’s example instructions create a [1GB Linode](https://www.linode.com/pricing/#compute-shared) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to delete the Linode when you have finished the guide.
 
 If you remove the resource, [you are only be billed for the hour(s) that the resources were present on your account](/docs/guides/understanding-billing-and-payments/).
-{{</ caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 {{< note >}}
 The steps outlined in this guide require [Ansible version 2.9.10 or greater](https://github.com/ansible/ansible/releases/tag/v2.9.10) and were tested on a Linode running Ubuntu 22.04. The instructions can be adapted to other Linux distributions or operating systems.
-{{</ note >}}
+{{< /note >}}
 
-1.  Provision a server that acts as the Ansible [*control node*](/docs/guides/getting-started-with-ansible/#what-is-ansible), from which other compute instances are deployed. Follow the instructions in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create a Linode running Ubuntu 22.04. A shared CPU 1GB Nanode is suitable. You can also use an existing workstation or laptop if you prefer.
+1.  Provision a server that acts as the Ansible [*control node*](/docs/guides/getting-started-with-ansible/#what-is-ansible), from which other compute instances are deployed. Follow the instructions in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode running Ubuntu 22.04. A shared CPU 1GB Nanode is suitable. You can also use an existing workstation or laptop if you prefer.
 
-1.  Add a limited Linux user to your control node Linode by following the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Ensure that all commands for the rest of this guide are entered as your limited user.
+1.  Add a limited Linux user to your control node Linode by following the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Ensure that all commands for the rest of this guide are entered as your limited user.
 
 1.  Ensure that you have performed system updates:
 
@@ -115,9 +115,9 @@ When interfacing with the Linode Ansible collection, it is generally good practi
 
         chmod 600 .vault-pass
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not check this file into version control. If this file is located in a Git repository, add it to your [.gitignore file](https://git-scm.com/docs/gitignore).
-{{< /caution >}}
+{{< /note >}}
 
 ### Create an Ansible Configuration File
 

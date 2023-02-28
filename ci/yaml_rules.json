@@ -90,12 +90,6 @@
     "type": "text",
     "description": "Two to three sentences describing the guide."
   },
-  "enable_h1": {
-    "elements": false,
-    "required": false,
-    "type": "bool",
-    "description": "Defaults to false if not present, which means that a guide's title is shown instead of its h1_title at the top of the page. If set to true, the h1_title is displayed."
-  },
   "expiryDate": {
     "elements": false,
     "required": false,
@@ -107,12 +101,6 @@
     "required": false,
     "type": "list",
     "description": "List of external links that will appear at the bottom of the guide."
-  },
-  "h1_title": {
-    "elements": false,
-    "required": false,
-    "type": "text",
-    "description": "This sets the H1, but leaves the title in the metadata"
   },
   "headless": {
     "elements": false,
@@ -317,5 +305,17 @@
     "required": false,
     "type": "number",
     "description": "For guides displayed on the front (landing) page. Setting a higher weight will move the guide to the top of the list of icons."
+  },
+  "weightAge": {
+    "elements": false,
+    "required": false,
+    "type": "number",
+    "description": "When set, this will override the automatically-calculated weightAge, weightAgeMonths, and weightAgeYears values in the Algolia search index. For example, setting this to zero on an older article can help it rank as highly as other newly-published articles."
+  },
+  "weightSearchBoost": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If set to true, the article will be boosted in Algolia search results for search terms that match the article."
   }
 }

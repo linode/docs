@@ -23,9 +23,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make additional firewall exceptions for your specific application.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make additional firewall exceptions for your specific application.
 
 3.  Update your system:
 
@@ -46,9 +46,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
         cd /var/www/html/example.com
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 2.  Extract the downloaded tarball's contents into Apache's DocumentRoot:
 
@@ -75,7 +75,7 @@ $settings['trusted_host_patterns'] = array(
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 *trusted_host_patterns* also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -129,7 +129,7 @@ Require all granted
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you forgot the name of your database, log back in to MySQL with: `mysql -u root -p` and enter: `show databases;`.
 {{< /note >}}
 

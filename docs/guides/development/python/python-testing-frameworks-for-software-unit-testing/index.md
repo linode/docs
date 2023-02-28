@@ -3,16 +3,14 @@ slug: python-testing-frameworks-for-software-unit-testing
 author:
   name: John Mueller
 description: 'This guide provides you with an overview of popular Python testing frameworks used to test software, including overviews of doctest, pytest, and unittest.'
-og_description: 'This guide provides you with an overview of popular Python testing frameworks used to test software, including overviews of doctest, pytest, and unittest.'
 keywords: ['python testing frameworks']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
 modified_by:
   name: Linode
-title: "Python Testing Frameworks for Unit Testing"
-h1_title: "An Overview of Python Testing Frameworks for Unit Testing"
-enable_h1: true
+title: "An Overview of Python Testing Frameworks for Unit Testing"
+title_meta: "Python Testing Frameworks for Unit Testing"
 contributor:
   name: John Mueller
   link: https://github.com/JohnPaulMueller
@@ -127,9 +125,9 @@ To run the above example locally, create a file named `test_example.py` and exec
 
 You should see a standard output returned as shown below. A simple report is displayed that outlines the number of tests that passed and failed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To force verbose mode when running your tests, update the `test_example.py` file by adding `verbose=True` to  `doctest.testmod()`. The updated line should look as follows: `doctest.testmod(verbose=True)`.
-{{</ note >}}
+{{< /note >}}
 
 {{< output >}}
 Trying:
@@ -214,7 +212,7 @@ If you’re looking for a more feature-rich test tool, then Pytest is a good cho
 
 Before you can use Pytest, you must install it on your system.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not already installed `conda`, see our [How to Install Anaconda](/docs/guides/how-to-install-anaconda/) guide for the installation instructions.
 {{< /note >}}
 

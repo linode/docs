@@ -12,9 +12,8 @@ modified: 2020-02-10
 modified_by:
   name: Linode
 published: 2020-02-10
-title: How to Install Ghost CMS on Debian 10
-h1_title: Installing Ghost CMS on Debian 10
-enable_h1: true
+title: Installing Ghost CMS on Debian 10
+title_meta: How to Install Ghost CMS on Debian 10
 image: GhostCMSonDebian10.png
 external_resources:
 - '[Ghost Setup Documentation](https://ghost.org/docs/setup/)'
@@ -34,7 +33,7 @@ aliases: ['/websites/cms/ghost/how-to-install-ghost-on-debian-10/']
 
 In this guide, you'll set up, deploy, and secure a Ghost v3.5.1 blog on a Linode running Debian 10, using NGINX, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt. For installation instructions for other distributions, click [here](/docs/websites/cms/ghost).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with your site’s domain name.
@@ -42,7 +41,7 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
 ## Before you Begin
 
-1. This guide assumes that you've followed the steps in our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
+1. This guide assumes that you've followed the steps in our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
 
 1. Ensure that you have a valid domain name and [properly configured DNS records](/docs/products/networking/dns-manager/) for your domain.
 
@@ -72,7 +71,7 @@ NGINX will be used as a reverse proxy for your Ghost application:
 
         sudo mysql
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 MariaDB is a fork of the popular MySQL database software, and is meant to be functionally alike, meaning that it can be accessed with the 'mysql' command.
 {{</ note>}}
 
@@ -112,9 +111,9 @@ Install Ghost using the Ghost-CLI tool.
 
         sudo mkdir -p /var/www/ghost
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Installing Ghost in the `/root` or `/home/{user}` folder won’t work and results in a broken setup. Only use `/var/www/{folder}` because it has the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 1. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample` is our username:
 
@@ -133,7 +132,7 @@ Installing Ghost in the `/root` or `/home/{user}` folder won’t work and result
 
         ghost install
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default Ghost looks for Ubuntu and will display this warning if it detects a different operating system.
 
 {{< output >}}
@@ -143,7 +142,7 @@ For local installs we recommend using `ghost install local` instead.
 {{</ output >}}
 
 It will ask you if you would like to continue anyway, answer yes.
-{{</ note >}}
+{{< /note >}}
 
 1. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://ghost.org/docs/install/ubuntu/#install-questions):
 

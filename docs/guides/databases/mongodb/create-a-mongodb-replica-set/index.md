@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-02
-title: "How To Create a MongoDB Replica Set"
-h1_title: "Creating a MongoDB Replica Set"
-enable_h1: true
+title: "Creating a MongoDB Replica Set"
+title_meta: "How To Create a MongoDB Replica Set"
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/replication/)'
@@ -28,9 +27,9 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Follow the guide on how to install MongoDB for your distribution. See [MongoDB guides](/docs/databases/mongodb/)
 
@@ -46,7 +45,7 @@ To allow for consistent replication, each node will need to communicate with all
 
 There are two major ways to allow the members of your replica set to communicate.
 
-The first method is to use [private IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
+The first method is to use [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
 
 The second method is to simply use the public IP address assigned to each Linode. You'll need to use this method if your Linodes are located in different data centers, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should [configure SSL/TLS encryption](https://docs.mongodb.com/manual/tutorial/configure-ssl/) for data sent between your hosts, or configure them to communicate over a VPN.
 
@@ -149,7 +148,7 @@ Once you've made these changes, restart the `mongod` service:
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.
 {{< /note >}}
 

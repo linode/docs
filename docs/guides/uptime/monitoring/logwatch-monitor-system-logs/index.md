@@ -20,7 +20,7 @@ image: monitor-system-logs-logwatch.jpg
 
 By default, Logwatch uses Sendmail to send digests.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -86,7 +86,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
     Logwatch will prompt you to select which cron provider to use. Select the default, *cronie*.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Other SMTP clients can also be used for delivering Logwatch messages.
 {{< /note >}}
 
@@ -97,7 +97,7 @@ myhostname = hostname.example.com
 inet_interfaces = loopback-only
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Both A/AAAA, and MX records will need to be set for your domain.
 {{< /note >}}
 
@@ -119,7 +119,7 @@ The default configuration file for Logwatch is located at `/usr/share/logwatch/d
 
 The following settings are the most comment configuration changes that will need to be made. Others can be found in the `logwatch.conf` file, explained in the comments.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If Logwatch initially does not appear to run, within the `logwatch.conf` file, change the `Details` setting to `Med`.
 {{< /note >}}
 
@@ -144,7 +144,7 @@ The default Logwatch configuration will output the digest to your Linode's conso
 
 The Logwatch digest can be sent to local users or external email addresses, in plain text or HTML formats.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Prior to sending mail externally or locally ensure you have Sendmail installed on the Linode. If you choose to use a different MTA client, change the `mailer` line in the Logwatch configuration file to contain the directory of your chosen MTA, or alias `/usr/sbin/sendmail` to your MTA.
 
 If using Arch, and you followed the above install instructions, Sendmail is already aliased to msmtp.

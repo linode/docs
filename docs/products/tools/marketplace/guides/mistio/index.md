@@ -26,9 +26,9 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Mist.io should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -39,6 +39,8 @@ aliases: ['/platform/marketplace/deploy-mistio-with-marketplace-apps/', '/platfo
 
 - **Mist admin user's email** *(required)*: The e-mail address of the administrator. Used as a log-in credential similar to a username.
 - **Mist admin user's password** *(required)*: The password of the Mist.io administrator account.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started After Deployment
 

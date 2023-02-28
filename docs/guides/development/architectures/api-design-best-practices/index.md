@@ -4,14 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Searching for API design best practices to elevate your development process? We identify some of the best practices you need to follow right now. ✓ Learn more!"
-og_description: "Searching for API design best practices to elevate your development process? We identify some of the best practices you need to follow right now. ✓ Learn more!"
 keywords: ['api design best practices','api architecture','rest api design']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Nathaniel Stickman
-title: "REST API Best Practices for Design"
-h1_title: "API Design Best Practices: Elevate Your Development Process"
+title: "API Design Best Practices: Elevate Your Development Process"
+title_meta: "REST API Best Practices for Design"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

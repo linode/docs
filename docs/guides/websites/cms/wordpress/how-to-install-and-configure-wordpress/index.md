@@ -25,7 +25,7 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 If you're using Ubuntu 16.04, please use our guide on how to [Install WordPress on Ubuntu 16.04](/docs/guides/install-wordpress-on-ubuntu-16-04/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
--  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and that the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+-  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and that the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -115,7 +115,7 @@ define('FS_METHOD', 'direct');
 
     Restart Apache.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* code block:
 
 {{< file >}}

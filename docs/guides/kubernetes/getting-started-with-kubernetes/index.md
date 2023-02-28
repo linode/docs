@@ -11,9 +11,8 @@ published: 2019-04-30
 modified: 2021-12-30
 modified_by:
   name: Linode
-title: "Use kubeadm to Deploy a Cluster on Linode"
-h1_title: "Using kubeadm to Deploy a Kubernetes Cluster"
-enable_h1: true
+title: "Using kubeadm to Deploy a Kubernetes Cluster"
+title_meta: "Use kubeadm to Deploy a Cluster on Linode"
 aliases: ['/kubernetes/getting-started-with-kubernetes/','/applications/containers/getting-started-with-kubernetes/','/applications/containers/kubernetes/getting-started-with-kubernetes/']
 contributor:
   name: Linode
@@ -26,7 +25,7 @@ external_resources:
 
 You can use <abbr title="kubeadm is a cloud provider agnostic tool that automates many of the tasks required to get a cluster up and running.">kubeadm</abbr> to run a few simple commands on individual servers to turn them into a Kubernetes cluster consisting of a <abbr title="A separate server in a Kubernetes cluster responsible for maintaining the desired state of the cluster.">master node</abbr> and <abbr title="Worker nodes in a Kubernetes cluster are servers that run your applications’ Pods.">worker nodes</abbr>. This guide walks you through installing kubeadm and using it to deploy a Kubernetes cluster on Linode. While the kubeadm approach requires more manual steps than other Kubernetes cluster creation pathways offered by Linode, this solution is covered as way to dive deeper into the various components that make up a Kubernetes cluster and the ways in which they interact with each other to provide a scalable and reliable container orchestration mechanism.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide's example instructions result in the creation of three billable Linodes. Information on how to tear down the Linodes are provided at the end of the guide. Interacting with the Linodes via the command line will provide the most opportunity for learning, however, this guide is written so that users can also benefit by reading along.
 {{< /note >}}
 
@@ -47,10 +46,10 @@ While kubeadm automates several cluster-provisioning tasks, there are other even
     - One Linode to use as the master Node with 4GB RAM and 2 CPU cores.
     - Two Linodes to use as the worker Nodes each with 2GB RAM and 1 CPU core.
 
-1.  Follow the [Getting Started](/docs/guides/getting-started) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides for instructions on setting up your Linodes. The steps in this guide assume the use of a limited user account with sudo privileges.
 
-    {{< note >}}
-When following the [Getting Started](/docs/guides/getting-started) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
+    {{< note respectIndent=false >}}
+When following the [Getting Started](/docs/products/platform/get-started/) guide, make sure that each Linode is using a different hostname. Not following this guideline leaves you unable to join some or all nodes to the cluster in a later step.
 {{< /note >}}
 
 1.  Disable swap memory on your Linodes. Kubernetes requires that you disable swap memory on any cluster nodes to prevent the <abbr title="The kube-scheduler is a function that looks for newly created Pods that have no nodes.">kube-scheduler</abbr> from assigning a Pod to a node that has run out of CPU/memory or reached its designated CPU/memory limit.
@@ -80,9 +79,9 @@ The following table provides a list of the Kubernetes tooling you need to instal
 | <abbr title="A command line tool used to manage a Kubernetes cluster.">kubectl</abbr>| x | x |
 | <abbr title="The control plane is responsible for keeping a record of the state of a cluster, making decisions about the cluster, and pushing the cluster towards new desired states.">Control Plane</abbr>| x |  |
 
- {{< note >}}
- The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
- {{< /note >}}
+{{< note respectIndent=false >}}
+The control plane is a series of services that form Kubernetes master structure that allow it to control the cluster. The kubeadm tool allows the control plane services to run as containers on the master node. The control plane is created when you initialize kubeadm later in this guide.
+{{< /note >}}
 
 ### Install the Container Runtime: Docker Engine
 
@@ -135,7 +134,7 @@ sub   4096R/F273FCD8 2017-02-22
 
         sudo usermod -aG docker $USER
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After entering the `usermod` command, you need to close your SSH session and open a new one for this change to take effect.
 {{< /note >}}
 
@@ -172,9 +171,9 @@ After entering the `usermod` command, you need to close your SSH session and ope
    You should see the following output:
 
    {{< output >}}
- Cgroup Driver: systemd
- Cgroup Version: 1
- {{< /output >}}
+Cgroup Driver: systemd
+Cgroup Version: 1
+{{< /output >}}
 
 ### Install the cri-dockerd Service
 
@@ -243,19 +242,19 @@ In addition to the baseline control plane components, there are several *addons*
 
 This guide uses *Calico* as the Pod network add on. Calico is a secure and open source L3 networking and network policy provider for containers. There are several other network and network policy providers to choose from. To view a full list of providers, refer to the official [Kubernetes documentation](https://kubernetes.io/docs/concepts/cluster-administration/addons/#networking-and-network-policy).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 kubeadm only supports Container Network Interface (CNI) based networks. CNI consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers
-{{</ note >}}
+{{< /note >}}
 
 1.  Initialize kubeadm on the master node. This command runs checks against the node to ensure it contains all required Kubernetes dependencies. If the checks pass, kubeadm installs the control plane components.
 
     When issuing this command, it is necessary to set the Pod network range that Calico uses to allow your Pods to communicate with each other. It is recommended to use the private IP address space, `10.2.0.0/16`. Additionally, the CRI connection socket will need to be manually set, in this case to use the socket path to `cri-dockerd`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Pod network IP range should not overlap with the service IP network range. The default service IP address range is `10.96.0.0/12`. You can provide an alternative service ip address range using the `--service-cidr=10.97.0.0/12` option when initializing kubeadm. Replace `10.97.0.0/12` with the desired service IP range:
 
 For a full list of available kubeadm initialization options, see the official [Kubernetes documentation](https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/).
-    {{</ note >}}
+    {{< /note >}}
 
         sudo kubeadm init --pod-network-cidr=10.2.0.0/16 --cri-socket=unix:///var/run/cri-dockerd.sock
 

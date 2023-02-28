@@ -105,11 +105,11 @@ deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
 
         sudo apt-get dist-upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 {{< /note >}}
 
-5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/).
+5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 Your Linode is now running Debian 7.
 

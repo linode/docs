@@ -31,7 +31,7 @@ Package management in Python is available through a variety of different tools:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's timezone.
 
 2.  This guide assumes usage of Python 3 and a working installation of `pip` along with `setuptools`. Starting with Python 3.4, `pip` comes with the default installation. On Debian distributions, `pip` can be installed using the apt package manager with `sudo apt install python-pip`.
 
@@ -45,7 +45,7 @@ The basic scaffolding of a Python package is a `__init__.py` file containing cod
 
         mkdir linode_example
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed.
 {{< /note >}}
 
@@ -119,7 +119,7 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
 
         pip install pypiserver
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Alternatively, [download pypiserver from Github](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install with `python setup.py install`.
 {{< /note >}}
 
@@ -183,7 +183,7 @@ WSGIDaemonProcess pypiserver python-path=/absolute/path/to/packages:/absolute/pa
 
     The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To grant open access, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/docs/2.4/howto/access.html).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on the version of Python and virtual environment path, the `WSGIDaemonProcess` directive may require a different path.
 {{< /note >}}
 
@@ -218,7 +218,7 @@ trusted-host = 192.0.2.0
 
         pip install linode_example
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Both the terminal output and showing all packages with `pip list` will show that the underscore in the package name has transformed into a dash. This is expected because `setuptools` uses the `safe_name` utility. For an in-depth discussion about this, [see this mailing list thread](https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html).
 {{< /note >}}
 

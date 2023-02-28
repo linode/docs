@@ -30,13 +30,13 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
 Since Arch does not come in specific versions, this guide is up-to-date as of the December 2015 Arch update.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
 2.  Update your system:
 
@@ -52,7 +52,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  Edit the `httpd-mpm.conf` Apache configuration file in `/etc/httpd/conf/extra/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
 
 cp /etc/httpd/conf/extra/httpd-mpm.conf ~/httpd-mpm.conf.backup
@@ -123,7 +123,7 @@ Include conf/extra/httpd-vhosts.conf
 
     Remove the second example in the file, or use it configure a second website.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -139,7 +139,7 @@ Include conf/extra/httpd-vhosts.conf
 
     You should now be able to access your website. If no files are uploaded you will see an *Index of /* page.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Should any additional changes be made to a configuration file restart Apache:
 
 sudo systemctl restart httpd.service
@@ -209,7 +209,7 @@ extension=mysql.so
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
 {{< /note >}}
 

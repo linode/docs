@@ -23,7 +23,7 @@ external_resources:
 
 {{< note >}}
 Kepler requires a valid license to use the software beyond the initial 14 day free trial period. To purchase a license, visit [Kepler's website](https://kepler.app/pricing.php) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -31,9 +31,9 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Kepler should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -51,10 +51,12 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 #### Additional Security Options (Optional)
 
 - **Configure automatic security updates:** Select `Yes` to have the system automatically update WordPress with the latest security updates. Select `No` to if you wish to manage all updates manually.
-- **Use fail2ban to prevent automated intrusion attemps?** Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. You [can install this at a later time](/docs/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection).
+- **Use fail2ban to prevent automated intrusion attemps?** Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. You [can install this at a later time](/docs/products/compute/compute-instances/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection).
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Do you need an MX record for this domain?** Check `Yes` if you plan on using WordPress to send email. The installer, along with your `API Token` (required) sets up the necessary MX records in the DNS Manager. Select `No` if you do not plan on using WordPress to send email. You can [add an MX record manually](/docs/guides/dns-overview/#mx) at a later time if you change your decision.

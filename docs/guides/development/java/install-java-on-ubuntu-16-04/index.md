@@ -38,9 +38,9 @@ In this guide, we'll install the Oracle Java development kit for building Java a
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -50,7 +50,7 @@ In this guide, we'll install the Oracle Java development kit for building Java a
 
 The OpenJDK, includes an open-source runtime environment and compiler. This allows you to develop your own Java applications and run them on your Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This "Main" repository is maintained by Canonical, the company that maintains Ubuntu.
 {{< /note >}}
 
@@ -103,9 +103,9 @@ Many applications include code or configuration that references the `JAVA_HOME` 
 
 ## Oracle JDK
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 In April 2019, Oracle Java downloads now require logging into an Oracle account to download and update Java 8 due to a change in the Oracle JDK licensing terms. [Read the FAQ](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html) for more details.
-{{< /caution >}}
+{{< /note >}}
 
 Due to the new Oracle agreement and login requirements The PPA to install Oracle JDK 8 is Discontinued. Official note from the PPA:
 

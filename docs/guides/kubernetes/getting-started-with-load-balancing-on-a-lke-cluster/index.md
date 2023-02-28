@@ -13,9 +13,8 @@ image: GetStartLoadBal_LKECluster.png
 aliases: ['/kubernetes/deploy-nodebalancers-with-linode-ccm/','/kubernetes/getting-started-with-load-balancing-on-a-lke-cluster/']
 modified_by:
   name: Linode
-title: "How to Get Started with Load Balancing on an LKE Cluster"
-h1_title: "Getting Started with Load Balancing on an LKE Cluster"
-enable_h1: true
+title: "Getting Started with Load Balancing on an LKE Cluster"
+title_meta: "How to Get Started with Load Balancing on an LKE Cluster"
 contributor:
   name: Linode
 ---
@@ -24,15 +23,15 @@ The Linode Kubernetes Engine (LKE) is Linode's managed Kubernetes service. When 
 
 NodeBalancers provide your Kubernetes cluster with a reliable way of exposing resources to the public internet. The LKE control plane handles the creation and deletion of the NodeBalancer, and correctly identifies the resources, and their networking, that the NodeBalancer will route traffic to. Whenever a Kubernetes Service of the `LoadBalancer` type is created, your Kubernetes cluster will create a Linode NodeBalancer service with the help of the Linode CCM.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Adding external Linode NodeBalancers to your LKE cluster will incur additional costs. See [Linode's Pricing page](https://www.linode.com/pricing/#row--networking) for details.
-{{</ note >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All existing LKE clusters receive CCM updates automatically every two weeks when a new LKE release is deployed. See the [LKE Changelog](/docs/products/compute/kubernetes/release-notes/) for information on the latest LKE release.
-{{</ note >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The [Linode Terraform K8s module](/docs/guides/how-to-provision-an-unmanaged-kubernetes-cluster-using-terraform/) also deploys a Kubernetes cluster with the Linode CCM installed by default. Any Kubernetes cluster with a Linode CCM installation can make use of Linode NodeBalancers in the ways described in this guide.
 {{</ note>}}
 
@@ -53,19 +52,19 @@ This guide assumes you have a working Kubernetes cluster that was deployed using
 - [Linode's API v4](/docs/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/).
 - [Terraform](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/), the popular infrastructure as code (IaC) tool.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 An LKE cluster will already have Linode's Cloud Controller Manager installed in the cluster's control plane. If you **did not** deploy your Kubernetes cluster using LKE and would like to make use of the Linode Cloud Controller Manager, see [Installing the Linode CCM on an Unmanaged Kubernetes Cluster - A Tutorial](/docs/guides/installing-the-linode-ccm-on-an-unmanaged-kubernetes-cluster/).
-    {{</ note >}}
+    {{< /note >}}
 
 ## Adding Linode NodeBalancers to your Kubernetes Cluster
 
 To add an external load balancer to your Kubernetes cluster you can add the example lines to a new configuration file, or more commonly, to a Service file. When the configuration is applied to your cluster, Linode NodeBalancers will be created, and added to your Kubernetes cluster. Your cluster will be accessible via a public IP address and the NodeBalancers will route external traffic to a Service running on healthy nodes in your cluster.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Billing for Linode NodeBalancers begin as soon as the example configuration is successfully applied to your Kubernetes cluster.
 
 In any NodeBalancer configuration, users should keep in mind that NodeBalancers have a maximum connection limit of 10,000 concurrent connections.
-{{</ note >}}
+{{< /note >}}
 
 {{< file >}}
 spec:
@@ -149,9 +148,9 @@ The Linode CCM accepts annotations that configure the behavior and settings of y
 | `nodebalancer-id` | string | None | The ID of the NodeBalancer to front the service. When not specified, a new NodeBalancer will be created. This can be configured on service creation or patching. |
 | `hostname-only-ingress` | Boolean | `false` | When `true`, the LoadBalancerStatus for the service will only contain the Hostname. This is useful for bypassing kube-proxy's rerouting of in-cluster requests originally intended for the external LoadBalancer to the service's constituent Pod IPs. |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To view a list of deprecated annotations, visit the [Linode CCM GitHub repository](https://github.com/linode/linode-cloud-controller-manager/blob/master/README.md#deprecated-annotations).
-{{</ note >}}
+{{< /note >}}
 
 ### Configuring Linode NodeBalancers for TLS Encryption
 
@@ -163,9 +162,9 @@ Kubernetes allows you to store sensitive information in a Secret object for use 
 
 In the context of the Linode CCM, Secrets are useful for storing Transport Layer Security (TLS) certificates and keys. The `linode-loadbalancer-tls` annotation requires TLS certificates and keys to be stored as Kubernetes Secrets with the type `tls`. Follow the steps in this section to create a Kubernetes TLS Secret.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this section will create a self-signed TLS certificate. To learn how to create a TLS certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) and apply it to an application running on Kubernetes, see the [Configuring Load Balancing with TLS Encryption on a Kubernetes Cluster](/docs/guides/how-to-configure-load-balancing-with-tls-encryption-on-a-kubernetes-cluster/).
-{{</ note >}}
+{{< /note >}}
 
 1.  Generate a TLS key and certificate using a TLS toolkit like [OpenSSL](https://www.openssl.org/). Be sure to change the `CN` and `O` values to those of your own website domain.
 
@@ -261,6 +260,6 @@ Similarly, you can delete the Service by name:
 
 After deleting your service, its corresponding NodeBalancer will be removed from your Linode account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If your Service file used the `preserve` annotation, the underlying NodeBalancer will not be removed from your Linode account. See the [annotations reference](#annotations-reference) for details.
-{{</ note >}}
+{{< /note >}}

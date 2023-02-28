@@ -10,9 +10,8 @@ published: 2017-06-24
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "Set Up a Cassandra Node Cluster"
-h1_title: "Setting Up a Cassandra Node Cluster "
-enable_h1: true
+title: "Setting Up a Cassandra Node Cluster "
+title_meta: "Set Up a Cassandra Node Cluster"
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
    name: Andrew Lescher

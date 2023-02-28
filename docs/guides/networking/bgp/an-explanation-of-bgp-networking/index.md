@@ -4,15 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide discusses how BGP works and what role it can play in network outages'
-og_description: 'This guide discusses how BGP works and what role it can play in network outages'
 keywords: ['What is BGP','BGP routing','How does BGP work','BGP advantages and disadvantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-18
 modified_by:
   name: Linode
 title: "An Explanation of BGP Networking"
-h1_title: "An Explanation of BGP Networking"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:

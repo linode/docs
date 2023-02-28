@@ -29,9 +29,9 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Shadowsocks should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,6 +41,8 @@ Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass 
 ### Shadowsocks Options
 
 - **Shadowsock Password** *(required)*: Enter a *strong* password for your Shadowsocks user.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

@@ -26,7 +26,7 @@ relations:
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
 ---
 
-{{< note >}}
+{{< note respectIndent=false >}}
 CoreOS Container Linux is now available for deployment from the Linode Manager.
 {{< /note >}}
 
@@ -38,9 +38,9 @@ CoreOS is not officially supported by Linode so there are limitations to using i
 
 *   Unlike the case with most partitioned images, you *can* resize the disk image holding a CoreOS system; however, it can only grow, not shrink. CoreOS resizes its root partition to fill the disk on next boot.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 These instructions perform **destructive** operations on your Linode! You should not attempt to install CoreOS on a Linode with data you want to preserve. You may wish to [use a second Linode](/docs/guides/recovering-from-a-system-compromise/#using-a-second-linode) and transfer your data after installation.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -65,11 +65,11 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     ![Set /dev/sda to CoreOS disk image](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/guides/lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/products/compute/compute-instances/guides/lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These commands should be run from a root prompt under Finnix through Lish.
 {{< /note >}}
 
@@ -106,7 +106,7 @@ ssh_authorized_keys:
 
         ./coreos-install -v -d /dev/sda -c cloud-config.yml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also supply any other options (see `coreos-install -h`). If you do not want verbose output, you can leave out the `-v` flag.
 {{< /note >}}
 

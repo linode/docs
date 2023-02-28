@@ -45,7 +45,7 @@ To start load balancing traffic, you need to define which ports the NodeBalancer
 
 {{< note >}}
 For most web applications, it's common to configure two ports: port *80* and port *443*.
-{{</ note >}}
+{{< /note >}}
 
 ## Set Up Health Checks for Each Port
 

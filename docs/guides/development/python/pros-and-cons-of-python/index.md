@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'As with any programming language, there are pros and cons of Python. Read our guide to find out whether you can benefit from learning Python. Click here!'
-og_description: 'As with any programming language, there are pros and cons of Python. Read our guide to find out whether you can benefit from learning Python. Click here!'
 keywords: ['benefits of python','pros and cons of python','python advantages','disadvantages of python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
 modified_by:
   name: Linode
-title: "A Programmers’ Guide to Python: Advantages & Disadvantages"
-h1_title: "The Pros and Cons of Python Programming"
-enable_h1: true
+title: "The Pros and Cons of Python Programming"
+title_meta: "A Programmers’ Guide to Python: Advantages & Disadvantages"
 contributor:
   name: Jeff Novotny
 external_resources:

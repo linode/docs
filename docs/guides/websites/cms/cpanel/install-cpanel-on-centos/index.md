@@ -23,7 +23,7 @@ external_resources:
 [cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 
 **Linode does not sell cPanel licenses**
 
@@ -41,11 +41,11 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 ## Kernel Prerequisites
 
-CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) guide for instructions on switching to the upstream kernel.
+CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide for instructions on switching to the upstream kernel.
 
 ## Install cPanel
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -128,7 +128,7 @@ When you've finished, click on **Save & Go to Step 5**.
 
 Step 5 of the cPanel installation covers configuration options for additional cPanel services.
 
-1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/guides/linode-beginners-guide/#how-do-i-upload-files-to-my-linode) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
+1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/products/compute/compute-instances/faqs/#how-do-i-upload-files-to-my-linode) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
 
     ![cPanel FTP server selection.](275-cpanel-whm-05-ftp-large.png)
 

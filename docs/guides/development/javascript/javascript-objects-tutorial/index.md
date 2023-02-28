@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
 modified_by:
   name: Linode
-title: "A Javascript Objects Tutorial"
-h1_title: "An Introduction to Javascript Objects"
+title: "An Introduction to Javascript Objects"
+title_meta: "A Javascript Objects Tutorial"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

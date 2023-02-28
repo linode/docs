@@ -10,8 +10,6 @@ published: 2021-12-10
 modified_by:
   name: Linode
 title: "Install and Use the MongoDB Community Shell"
-h1_title: "How to Install and Use the MongoDB Community Shell"
-enable_h1: true
 contributor:
   name: Tom Henderson
 ---
@@ -57,7 +55,7 @@ The steps in this section work on macOS 13.0 and above.
 
 {{< note >}}
 If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending on the version of macOS) to navigate to *Application Security* in *System Preferences*. Then, verify that `mongosh` and `mongocryptd` have the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 ### Install the MongoDB Shell on Debian Linux
 
@@ -217,9 +215,9 @@ To add a record to a collection, use the `insert` or `insertOne` command. For ex
 
 ## Uninstall the MongoDB Shell
 
-{{< caution >}}
+{{< note type="alert" >}}
 When using the `rm` command ensure you are removing the desired file and directory. You cannot recover files or directories once they are removed.
-{{</ caution>}}
+{{< /note >}}
 
 ### Linux
 

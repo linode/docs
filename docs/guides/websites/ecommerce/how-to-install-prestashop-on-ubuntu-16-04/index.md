@@ -12,9 +12,8 @@ published: 2017-08-29
 modified: 2021-06-23
 modified_by:
   name: Linode
-title: "How to Install PrestaShop on Ubuntu 16.04"
-h1_title: "Installing PrestaShop on Ubuntu 16.04"
-enable_h1: true
+title: "Installing PrestaShop on Ubuntu 16.04"
+title_meta: "How to Install PrestaShop on Ubuntu 16.04"
 contributor:
   name: Alexandru Andrei
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
@@ -34,13 +33,13 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/products/networking/dns-manager/) guide for more information.
+1.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/products/networking/dns-manager/) guide for more information.
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this guide, replace `example.com` with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.
 {{< /note >}}
 

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
-og_description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
 keywords: ["linux alias command"]
 aliases: ['/quick-answers/linux/how-to-use-the-linux-alias-command/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,8 @@ modified: 2020-11-06
 modified_by:
   name: Heather Zoppetti
 published: 2020-11-17
-title: How to Use the Linux alias Command
-h1_title: Using the Linux alias Command
+title: Using the Linux alias Command
+title_meta: How to Use the Linux alias Command
 tags: ["linux"]
 ---
 
@@ -110,9 +109,9 @@ To remove all aliases:
 
     unalias -a
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Removing all aliases also removes the system default aliases.
-{{</ note >}}
+{{< /note >}}
 
 ## Helpful Examples
 

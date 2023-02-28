@@ -10,7 +10,7 @@ tags: ["container","docker"]
 modified: 2012-11-29
 modified_by:
   name: Sam Foo
-title: "How to Install Docker Compose"
+title: "Install Docker Compose"
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
@@ -21,7 +21,7 @@ aliases: ['/applications/containers/install-docker-compose/']
 1. Download the latest version of Docker Compose. Check the [releases](https://github.com/docker/compose/releases) page and replace `1.25.4` in the command below with the version tagged as **Latest release**:
 
     ```command
-    sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo curl -L https://github.com/docker/compose/releases/download/v1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     ```
 
 1. Set file permissions:

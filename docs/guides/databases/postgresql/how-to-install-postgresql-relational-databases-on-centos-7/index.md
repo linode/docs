@@ -29,9 +29,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -98,9 +98,9 @@ When Postgres is installed using this method, the version number is included in 
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Change the `postgres` user's Linux password:
 
@@ -193,9 +193,9 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 
     dropdb mytestdb
 
-{{< caution >}}
+{{< note type="alert" >}}
 Deleted databases cannot be recovered.
-{{< /caution >}}
+{{< /note >}}
 
 ## Work With Tables
 
@@ -455,7 +455,7 @@ local    all        all             peer
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories), you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
 {{< /note >}}
 

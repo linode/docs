@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
-og_description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
 keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-19
 modified_by:
   name: Linode
-title: "How to Install WordPress on Ubuntu 22.04"
-h1_title: "How to Install WordPress on Ubuntu 22.04"
-enable_h1: true
+title: "Install WordPress on Ubuntu 22.04"
+title_meta: "How to Install WordPress on Ubuntu 22.04"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -48,19 +46,19 @@ A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack incl
 
 For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -68,7 +66,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 To properly configure and use WordPress on Ubuntu, a LAMP or LEMP stack must already be installed and working. However, WordPress requires a few additional modifications to the various LAMP/LEMP Stack components. In the following examples, replace `example.com` with the actual domain name wherever it appears.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions are designed for Ubuntu 22.04 LTS, but are generally valid for all recent Ubuntu releases.
 {{< /note >}}
 
@@ -88,7 +86,7 @@ Enabling module rewrite.
 
 2.  **(Optional)** To allow WordPress plug-ins and extensions to use `.htaccess` files, set the `AllowOverride` directive to enable them. Add the following configuration to the `VirtualHost` block within the site configuration file. This file is normally located at `/etc/apache2/sites-available/example.com.conf`. For the `Directory` name, use the actual domain name instead of `example.com`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not using a site configuration file, skip this step.
     {{< /note >}}
 
@@ -155,7 +153,7 @@ WordPress uses a separate SQL database to store the site's contents and configur
     sudo mysql -u root
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you followed all the instructions in our prerequisite guide for LAMP, use `sudo mysql -u root -p` instead, and enter your password when prompted.
     {{< /note >}}
 

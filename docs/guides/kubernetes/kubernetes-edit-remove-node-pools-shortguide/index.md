@@ -23,9 +23,9 @@ aliases: ['/kubernetes/kubernetes-edit-remove-node-pools-shortguide/']
 
     Using the sidebar that appears to the right of the page, you can now remove `-` or add `+` Linodes to the pool, and the total cost of your new resources will be displayed. To accept these changes, select the `Save Changes` button to continue.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Shrinking a node pool will result in deletion of Linodes. Any local storage on deleted Linodes (such as "hostPath" and "emptyDir" volumes, or "local" PersistentVolumes) will be erased.
-{{< /caution >}}
+{{< /note >}}
 
     ![Edit your cluster's node pool](edit-your-node-pool.png "Edit your cluster's node pool")
 
@@ -33,6 +33,6 @@ Shrinking a node pool will result in deletion of Linodes. Any local storage on d
 
     ![Delete your cluster's node pool](delete-node-pool.png "Delete your cluster's node pool")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your cluster must always have at least one active node pool.
     {{< /note >}}

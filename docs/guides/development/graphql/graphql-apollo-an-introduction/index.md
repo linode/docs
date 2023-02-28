@@ -4,16 +4,14 @@ author:
   name: Cameron Laird
   email: claird@phaseit.net
 description: 'In this guide, you will learn what GraphQL is and how to use the Apollo GraphQL client to manage local and remote data from your command line in Linux.'
-og_description: 'In this guide, you will learn what GraphQL is and how to use the Apollo GraphQL client to manage local and remote data from your command line in Linux.'
 keywords: ['what is apollo graphql', 'apollo graphql client', 'apollo graphql server']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Linode
-title: "An Introduction to GraphQL Apollo"
-h1_title: "GraphQL Apollo: An Introduction with Examples"
-enable_h1: true
+title: "GraphQL Apollo: An Introduction with Examples"
+title_meta: "An Introduction to GraphQL Apollo"
 contributor:
   name: Cameron Laird
 external_resources:
@@ -80,7 +78,7 @@ From your system's command line, install the GraphQL client:
 
     npm install graphql @apollo/client cross-fetch
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your system may require [ECMAScript module (esm) loader](https://www.npmjs.com/package/esm). To install esm, use the following command:
 
       sudo npm install --save esm
@@ -217,7 +215,7 @@ The output returns the following:
 Please browse to <http://localhost:4000/graphql>
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To visit the application remotely, you can use an SSH tunnel:
 
 - On macOS or Linux, use the command below to set up the SSH tunnel. Replace `example-user` with your username on the application server and `192.0.2.0` with the server's IP address.

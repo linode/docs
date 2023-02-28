@@ -25,7 +25,7 @@ Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect m
 
 {{< note >}}
 Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting and detailed visualizations. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -33,9 +33,9 @@ Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Prometheus should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -44,7 +44,7 @@ Prometheus is often used alongside [Grafana](https://grafana.com/) for reporting
 
 ## Getting Started after Deployment
 
-## Access Your Prometheus Instance
+### Access Your Prometheus Instance
 
 Now that your Prometheus Marketplace App is deployed, you can log into Prometheus to access its [expression browser](https://prometheus.io/docs/prometheus/latest/getting_started/#using-the-graphing-interface), alerts, status, and more.
 

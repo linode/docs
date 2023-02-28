@@ -8,9 +8,8 @@ license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 published: 2022-05-27
 modified_by:
   name: Linode
-title: SQL Server Security Best Practices
-h1_title: "Part 1: SQL Server Security Best Practices"
-enable_h1: true
+title: "Part 1: SQL Server Security Best Practices"
+title_meta: SQL Server Security Best Practices
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
@@ -20,7 +19,7 @@ SQL Server security is perhaps one of the most overlooked facets of database ser
 
 The [SQL Database Security: User Management](/docs/guides/sql-security/) guide discussed the logical implementation of users, groups, roles, and permissions, to enhance, or limit database user security. This guide is part one in a series of SQL Server security best practices, and it discusses a variety of important additional maintenance security topics.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To review the second set of security recommendations in this series, visit [Part 2: SQL Server Security Best Practices](/docs/guides/sql-server-security-part-2/).
 {{< /note >}}
 
@@ -46,7 +45,7 @@ Additionally, it is extremely good practice to remove unnecessary and unused app
 
 Finally, you can make use of SQL Server’s [*Extended Protection for Authentication*](https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/extended-protection-for-authentication-overview) option to prevent an authentication relay attack that exploits service and channel binding.
 
-{{< disclosure-note >}}
+{{< note type="secondary" title="Enable SQL Server's Extended Protection" isCollapsible=true >}}
 By default, SQL Server's Extended Protection is turned off. You can enable it on a Windows-based client that is connected to the SQL Server by following the steps below:
 1. Select All Programs.
 1. Select Microsoft SQL Server 200X.
@@ -54,7 +53,7 @@ By default, SQL Server's Extended Protection is turned off. You can enable it on
 1. Select **SQL Server Configuration Manager**.
 1. Click **SQL Server Network Configuration** and right-click on **Protocols for MYSQLServer**.
 1. Go to **Advanced** and from the **Extended protection**, select **Allowed**.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 ## Securing Server Ports
 

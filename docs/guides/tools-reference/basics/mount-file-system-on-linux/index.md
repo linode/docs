@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-15
 modified_by:
   name: Linode
-title: "How to Mount a File System on Linux"
-h1_title: "Mount a File System on Linux"
-enable_h1: true
+title: "Mount a File System on Linux"
+title_meta: "How to Mount a File System on Linux"
 contributor:
   name: Martin Heller
 external_resources:
@@ -23,11 +22,11 @@ Mounting or unmounting a file system on Linux is usually straightforward, except
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -254,7 +253,7 @@ Most modern distros automatically mount USB drives when you insert them.
 
     The contents of the USB drive in **/dev/sdd1/** should now be accessible from **/media/usb**.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the USB drive uses the exFAT file system, you may need to install the FUSE [exFAT module and tools](https://linuxize.com/post/how-to-mount-an-exfat-drive-on-ubuntu/).
 {{< /note >}}
 
@@ -296,7 +295,7 @@ The network file system (NFS) supports mounting remote file systems as shares fo
 
         mount /media/nfs
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Instead of using NFS to mount a remote file system, you can instead use [SSHFS](https://www.redhat.com/sysadmin/sshfs). It’s not as stable as NFS, but has fewer dependencies. SSHFS is part of FUSE, and is available for most Linux distros, macOS, and Windows.
 {{< /note >}}
 

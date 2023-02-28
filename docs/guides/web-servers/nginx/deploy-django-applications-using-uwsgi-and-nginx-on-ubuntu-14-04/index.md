@@ -28,15 +28,15 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
+2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -46,7 +46,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install build-essential nginx python-dev python-pip python-sqlite sqlite
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your application uses another database, skip installing `python-sqlite` and `sqlite`.
 {{< /note >}}
 

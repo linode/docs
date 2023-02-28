@@ -41,7 +41,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
 
         curl -sSL https://get.docker.com/ | sh
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The current version of the docker script checks for AUFS support and displays the warning below if support is not found:
 
 Warning: current kernel is not supported by the linux-image-extra-virtual
@@ -74,9 +74,9 @@ When an image downloads, there are no image containers running.
 
         sudo docker run -p 80:80 -t -i linode/lamp /bin/bash
 
-     {{< caution >}}
-This command also changes the terminal prompt to the root user within the new container.
-{{< /caution >}}
+    {{< note type="alert" >}}
+    This command also changes the terminal prompt to the root user within the new container.
+    {{< /note >}}
 
 2.  As the container's root user, start Apache:
 
@@ -90,7 +90,7 @@ This command also changes the terminal prompt to the root user within the new co
 
 5. Enter the IP address in a web browser to test the site.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The website's root directory is `/var/www/example.com/public_html/`.
 {{< /note >}}
 

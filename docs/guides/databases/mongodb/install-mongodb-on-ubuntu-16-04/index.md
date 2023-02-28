@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-05-20
-title: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
-h1_title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
+title: 'Installing MongoDB on Ubuntu 16.04 (Xenial)'
+title_meta: 'How To Install MongoDB on Ubuntu 16.04 (Xenial)'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
@@ -36,9 +36,9 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [Hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 

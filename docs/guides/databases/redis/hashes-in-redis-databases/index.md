@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Nathaniel Stickman
-title: "Using Hashes in Redis Databases"
-h1_title: "How to Use Hashes in Redis Databases"
-enable_h1: true
+title: "Use Hashes in Redis Databases"
+title_meta: "How to Use Hashes in Redis Databases"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -25,9 +24,9 @@ Redis, the open-source NoSQL database, is frequently used for caching, messaging
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 

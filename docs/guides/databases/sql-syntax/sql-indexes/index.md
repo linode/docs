@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-25
 modified_by:
   name: Linode
-title: "How to Use SQL Indexes"
-h1_title: "An Introduction to SQL Indexes"
-enable_h1: true
+title: "An Introduction to SQL Indexes"
+title_meta: "How to Use SQL Indexes"
 contributor:
   name: Doug Hayman for NanoHertz Solutions Inc.
   link: http://nhzsolutions.com/
@@ -59,7 +58,7 @@ You should see the following output:
 +-----------+----------+-----------+
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Unless mentioned otherwise, all the commands in this guide work well on both **MySQL** and **PostgreSQL** databases.
 {{< /note >}}
 
@@ -76,7 +75,7 @@ CREATE TABLE Student (
 
     CREATE UNIQUE INDEX SSIndex ON Student (SSNumber);
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Both the SQL commands above are delimited by a semicolon (;), which is compatible with most relational database systems. `SSNumber` is specifically designated as the table’s primary key.
 {{< /note >}}
 

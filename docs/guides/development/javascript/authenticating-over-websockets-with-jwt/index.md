@@ -3,16 +3,14 @@ slug: authenticating-over-websockets-with-jwt
 author:
   name: Nathaniel Stickman
 description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
-og_description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
 keywords: ['websocket token authentication']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Linode
-title: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
-h1_title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
-enable_h1: true
+title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
+title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -74,11 +72,11 @@ In this section, you learn how to implement a WebSocket server and how to use JW
 
 ### Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -132,7 +130,7 @@ This example uses Node.js and the [Express.js](https://expressjs.com/) applicati
 
 1. Create a JavaScript file called `server.js`. Add the contents of [the `example-server.js` file](example-server.js). This file creates an Express.js server with an endpoint for providing JWTs for authentication and an endpoint for making WebSocket connections. It also serves static files for the application's front end.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The example stores credentials in the application code for the sake of convenience. However, in a production scenario, you should not store credentials in application code, and ideally, passwords should be stored encrypted.
 
 Additionally, the example uses a simple secret. But in production, you should use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can create one with a random 64-character hex string or a random 44-character Base64 string.

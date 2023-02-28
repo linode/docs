@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible."
-og_description: "Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible."
 keywords: ['apache','nginx','web server','open source','vs','comparison']
 tags: ['apache','nginx','web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +11,8 @@ published: 2021-03-15
 image: ApacheVsNginx.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "Comparing the NGINX and Apache Web Servers"
-h1_title: "A Comparison of the NGINX and Apache Web Servers"
-enable_h1: true
+title: "A Comparison of the NGINX and Apache Web Servers"
+title_meta: "Comparing the NGINX and Apache Web Servers"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

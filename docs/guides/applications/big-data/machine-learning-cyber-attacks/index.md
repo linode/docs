@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-20
 modified_by:
   name: Linode
-title: "Common Cyber Attacks on Machine Learning Applications"
-h1_title: "The Most Common Cyber Attacks on Machine Learning Applications"
-enable_h1: true
+title: "The Most Common Cyber Attacks on Machine Learning Applications"
+title_meta: "Common Cyber Attacks on Machine Learning Applications"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

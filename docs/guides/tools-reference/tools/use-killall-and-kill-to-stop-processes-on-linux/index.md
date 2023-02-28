@@ -123,9 +123,9 @@ Use the `ps` command to view processes that are currently running and their PIDs
 
 The number listed in the second column from the left is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result.
 
-{{<note>}}
+{{< note >}}
 You can use the command `ps auxf` to view a hierarchical tree of all running processes.
-{{</note>}}
+{{< /note >}}
 
 Once you have obtained the PID or process name, use `killall` or `kill` to terminate the process as above.
 

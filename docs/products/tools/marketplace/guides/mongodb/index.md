@@ -31,9 +31,9 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** MongoDB should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,12 +43,14 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 ### MongoDB Options
 
 - **MongoDB admin user password** *(required)*: The Mongo admin user password.
-- **MongoDB Version** *(required)*: Select the verison of MongoDB you'd like to install.
+- **MongoDB Version** *(required)*: Select the version of MongoDB you'd like to install.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for soa record:** The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -56,7 +58,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 

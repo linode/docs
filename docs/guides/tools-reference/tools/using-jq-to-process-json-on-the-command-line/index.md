@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "Using JQ to Process JSON on the Command Line"
-h1_title: "How to Use JQ to Process JSON on the Command Line"
-enable_h1: true
+title: "Use JQ to Process JSON on the Command Line"
+title_meta: "How to Use JQ to Process JSON on the Command Line"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
@@ -235,7 +234,7 @@ The jq application provides a way of filtering out certain properties or array i
 
 To access a particular property within a JSON record, use the `.field` operator. Type the `.` character followed by the name of a field or object to access its value. The following command displays the values inside the `menu` object. All values, including nested fields and arrays, are displayed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 From this point on, all examples use a local JSON file. However, the output can be piped to `jq` from `curl` or any other process in any of these examples.
 {{< /note >}}
 

@@ -25,7 +25,7 @@ Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. 
 
 Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possibility of something not working out as planned. This is one reason why backing up your data is so important.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](/docs/guides/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4/) guide before continuing.
 {{< /note >}}
 
@@ -90,7 +90,7 @@ deb-src http://ftp.us.debian.org/debian/ jessie-updates main
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Check your `/etc/apt/sources.list.d` for additional package repositories, and ensure that they are querying for packages from `jessie`.  You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
 {{< /note >}}
 
@@ -106,9 +106,9 @@ Check your `/etc/apt/sources.list.d` for additional package repositories, and en
 
         sudo apt-get dist-upgrade
 
-     {{< note >}}
-Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
-{{< /note >}}
+    {{< note >}}
+    Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+    {{< /note >}}
 
     During the upgrade process, configuration files that you've modified and require updates will be presented for manual review. Here's an example:
 
@@ -121,7 +121,7 @@ Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentica
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 Your Linode is now running Debian 8!
 

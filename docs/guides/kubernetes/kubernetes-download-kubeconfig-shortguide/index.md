@@ -73,16 +73,16 @@ You can also download the kubeconfig from the Kubernetes cluster's details page.
 
         export KUBECONFIG=~/Downloads/kubeconfig.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is common practice to store your kubeconfig files in `~/.kube` directory. By default, kubectl will search for a kubeconfig file named `config` that is located in the  `~/.kube` directory. You can specify other kubeconfig files by setting the `$KUBECONFIG` environment variable, as done in the step above.
-{{</ note >}}
+{{< /note >}}
 
 1. View your cluster's nodes using kubectl.
 
         kubectl get nodes
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your kubectl commands are not returning the resources and information you expect, then your client may be assigned to the wrong cluster context. Visit our [Troubleshooting Kubernetes](/docs/guides/troubleshooting-kubernetes/#troubleshooting-examples) guide to learn how to switch cluster contexts.
-{{</ note >}}
+{{< /note >}}
 
       You are now ready to manage your cluster using kubectl. For more information about using kubectl, see Kubernetes' [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) guide.

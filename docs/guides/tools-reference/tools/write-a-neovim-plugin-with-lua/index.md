@@ -27,9 +27,9 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -41,7 +41,7 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ This example plugin uses an SQLite database file to store "to do" tasks, which t
 
             sudo dnf install git
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These modules rely on [LuaJIT](https://luajit.org/), rather than the standard Lua. Neovim uses LuaJIT, so this is not a problem when it comes to your plugin. However, if you want to test out these modules outside of the plugin environment, you need to install, and use LuaJIT to do so.
     {{< /note >}}
 

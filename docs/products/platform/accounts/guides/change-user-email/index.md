@@ -5,7 +5,7 @@ author:
 description: "Instructions on updating the email address on an account so that you can receive email notifications."
 keywords: ["email address", "email addresses", "address", "addresses"]
 tags: ["linode platform","cloud manager","email"]
-date: 2022-11-21
+published: 2022-11-21
 image: L_ChangeYourEmail.png
 title: Change Your Email Address
 title_meta: Change Your Email Address on a Linode Account
@@ -26,7 +26,7 @@ Use the **Users & Grants** page to modify the email address associated with a us
 
 {{< note >}}
 Only full account access users can receive threshold notification emails.
-{{</ note >}}
+{{< /note >}}
 
 Here's how to change a user's email from the **Users & Grants** page:
 
@@ -43,4 +43,4 @@ The user's email address is now updated.
 
 {{< note >}}
 If you do not have full account access, you can view your user profile settings and update your email address by clicking on your username at the top of the Cloud Manager screen and selecting **Display**.
-{{</ note >}}
+{{< /note >}}

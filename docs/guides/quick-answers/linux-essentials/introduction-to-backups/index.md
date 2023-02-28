@@ -5,7 +5,6 @@ author:
   email: docs@linode.com
 keywords: ["backups", "snapshot", "Linode backup", "beginners"]
 description: This guide explains to new users why and how they should back up data on their Linodes.
-og_description: This guide explains to new users why and how they should back up data on their Linodes.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-18
 modified_by:

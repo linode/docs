@@ -3,16 +3,14 @@ slug: angular-tutorial-for-beginners
 author:
   name: Nathaniel Stickman
 description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
-og_description: 'This guide covers the basics of building a website with Angular, including installation, setup, and the core concepts of Angular application design.'
 keywords: ['angular','node.js','typescript','web applications','app framework','open source']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-10
 modified_by:
   name: Nathaniel Stickman
-title: "An Angular Tutorial for Beginners"
-h1_title: "How to Build a Website with Angular"
-enable_h1: true
+title: "Build a Website with Angular (For Beginners)"
+title_meta: "How to Build a Website with Angular (For Beginners)"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -30,7 +28,7 @@ Angular is both a development platform and a framework for web application desig
 
 Angular uses [TypeScript](https://www.typescriptlang.org/), a programming language that extends JavaScript with strong typing. This can make your applications more transparent, legible, and helps you catch errors at compile time rather than run time. It may look unfamiliar at first, but many find that TypeScript makes their JavaScript programming more clear and less error-prone.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Angular should not be confused with [AngularJS](https://angularjs.org/), a front-end framework that aims to extend static HTML with dynamic features. Angular came about as the evolution of AngularJS — Angular is also known as Angular 2 for this reason.
 {{< /note >}}
 
@@ -62,7 +60,7 @@ Once you have the Angular CLI, you can use it to create Angular projects. The fo
 
         cd example-app
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless noted otherwise, all subsequent commands in this guide assume you are still in this directory.
 {{< /note >}}
 1. You can test the application with the following command:

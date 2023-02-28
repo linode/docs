@@ -30,7 +30,7 @@ A TUI facilitates interaction between users and their systems in a visually orie
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -140,7 +140,7 @@ Choose 1-4 [1]:
 
     ![Midnight Commander's Editor mcedit with Syntax Highlighting Active](midnight-commander-mcedit.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Actions can be cancelled in MC by pressing the **ESC** key twice.
 {{< /note >}}
 

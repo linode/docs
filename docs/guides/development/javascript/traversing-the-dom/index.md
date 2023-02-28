@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-22
 modified_by:
   name: Linode
-title: "Traversing the Document Object Model with JavaScript"
-h1_title: "How to Traverse the DOM with JavaScript"
+title: "Traverse the DOM with JavaScript"
+title_meta: "How to Traverse the DOM with JavaScript"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

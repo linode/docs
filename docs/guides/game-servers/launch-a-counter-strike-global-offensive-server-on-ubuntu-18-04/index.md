@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-01-07
 modified_by:
     name: Linode
-title: "How to Run CS:GO Server on Ubuntu 18.04"
-h1_title: "Running a Counter Strike Global Offensive Server on Ubuntu 18.04"
-enable_h1: true
+title: "Running a Counter Strike Global Offensive Server on Ubuntu 18.04"
+title_meta: "How to Run CS:GO Server on Ubuntu 18.04"
 contributor:
     name: Linode
 aliases: ['/game-servers/launch-a-counter-strike-global-offensive-server-on-ubuntu-18-04/','/applications/game-servers/csgo-server-debian-ubuntu/']
@@ -34,7 +33,7 @@ relations:
 
 ## Before You Begin
 
-1.  [Create a Linode](/docs/guides/getting-started/#create-a-linode) running Ubuntu 18.04.
+1.  [Create a Linode](/docs/products/platform/get-started/#create-a-linode) running Ubuntu 18.04.
 
 1.  Create a [Steam](http://store.steampowered.com) account if you do not have one, and download [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/) to your computer.
 
@@ -42,7 +41,7 @@ relations:
 
 1.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,7 +78,7 @@ After following the SteamCMD guide, some firewall modifications are needed speci
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update CS:GO, run the above 4 commands again.
 {{< /note >}}
 

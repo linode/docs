@@ -4,15 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
-og_description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
 keywords: ['how to increase swap space in ubuntu','ubuntu swap file','linux swap space size','create swap partition ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-07
 modified_by:
   name: Linode
-title: "Learn How to Create a Swap File in Ubuntu"
-h1_title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
-enable_h1: true
+title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
+title_meta: "Learn How to Create a Swap File in Ubuntu"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -36,7 +34,7 @@ The system uses RAM preferentially, but switches to using the swap space as nece
 
 As of release 17.04, Ubuntu uses a swap file rather than a partition. However, assuming your Linode is setup with our normal configurations, it has a 512MB swap disk rather than a swap file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To increase the size of the swap partition, first power off your Linode from the Cloud Manager. Then simply navigate to the **Storage** tab of your Linode, and click **Resize** next to your swap partition.
 {{< /note >}}
 
@@ -57,11 +55,11 @@ Overall, it is usually better to treat swap space as a safety mechanism to avoid
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -269,7 +267,7 @@ One advantage of using a swap file over the old partitioning method is the relat
     sudo swapoff -a
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This also temporarily disables your swap partition until the next reboot.
     {{< /note >}}
 
@@ -313,7 +311,7 @@ no label, UUID=6e61561d-c03d-4911-9343-8aa4c234576a
     sudo swapon /swapfile
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To also re-enable the swap partition, use `sudo swapon -a` instead.
     {{< /note >}}
 
@@ -338,7 +336,7 @@ NAME      TYPE SIZE USED PRIO
 /swapfile file   2G   0B   -2
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is not necessary to edit `cat /etc/fstab` or edit the swappiness value again, because those items are unaffected by the change.
 {{< /note >}}
 

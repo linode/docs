@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-01
 modified_by:
   name: Linode
-title: "Using cURL with RESTful APIs"
-h1_title: "How to Use cURL with RESTful APIs"
-enable_h1: true
+title: "Use cURL with RESTful APIs"
+title_meta: "How to Use  cURL with RESTful APIs"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -29,7 +28,7 @@ In web programming, developers often have to interact with online databases. Man
 
 cURL stands for "Client URL" and is a data transfer application. It consists of two components, the `libcurl` client-side library and the `curl` command-line tool. cURL was originally designed to allow Linux IRC users to automate common tasks. However, it is now available for most operating systems and behaves similarly across platforms.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 cURL is the complete data transfer application, including the library, while `curl` is the command-line utility. The two terms are often used interchangeably. This guide mainly discusses the `curl` utility, which transmits commands directly to a remote REST API.
 {{< /note >}}
 
@@ -169,7 +168,7 @@ Either utility is fine for most simple HTTP requests and downloads. If you are f
 
 To determine the URIs to use for each operation, consult the API documentation provided for the tool or service. As an example, the official [GitHub REST API](https://docs.github.com/en/rest) explains how to use the interface. When designing a REST interface, it is easy to test the API using `curl`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following examples use `example.com` in the instructions. Substitute `example.com` with your own URI.
 {{< /note >}}
 
@@ -201,7 +200,7 @@ The `POST` verb allows users to push data to a REST API and add new entries to t
 
 The server returns the new record, including the `id` of the new entry. The following command adds a new record to the application server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `curl` command infers this is a `POST` operation based on the other details. But it is considered good practice to explicitly state the verb as part of the `-X` option.
 {{< /note >}}
 

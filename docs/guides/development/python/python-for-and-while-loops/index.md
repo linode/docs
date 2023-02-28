@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
 modified_by:
   name: Linode
-title: "Using For and While Loops in Python 3"
-h1_title: "For and While Loops in Python 3"
-enable_h1: true
+title: "For and While Loops in Python 3"
+title_meta: "Using For and While Loops in Python 3"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny
@@ -51,13 +50,13 @@ To summarize, a `for` statement is used when the maximum number of iterations is
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -168,7 +167,7 @@ The for condition is false.
 The loop has ended.
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The iterator continues to execute when the loop terminates. But it is not considered good programming practice to use it outside the loop. This behavior might vary between different versions and releases of Python.
 {{< /note >}}
 
@@ -210,7 +209,7 @@ Python can loop through a dictionary in much the same way it loops through a Lis
 
 Beginning with release 3.6, Python iterates over dictionary keys in the same order the entries were created. The `for` loop provides the name of the next key, not the value. However, the value can be accessed using the indexing operator `[]`. To use the indexing operator, specify the name of the dictionary and append the indexing operator, placing the name of the key inside. The syntax for this operation is `dictionary_name[key]`. For example, if a dictionary named `citystates` contains a key named `Miami`, the associated value of `Miami` is retrieved using `citystates[Miami]`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Earlier releases of Python often order dictionary entries differently.
 {{< /note >}}
 
@@ -235,7 +234,7 @@ The loop has ended.
 
 Every Python Dictionary has a built-in method named `.values`. To use the `.values` method, append an empty arguments list `()`. This function supplies a *view object* containing all the values from the Dictionary without the corresponding keys. This method is useful when a program does not require the keys, only the Dictionary values. Although a view object is not actually a List, a `for` loop can process it in the same way. The `for` loop iterates through the view, supplying the next value in the view each time the loop runs.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A view object is dynamic because it changes when the underlying object changes. However, it is possible to cast a view object into a non-dynamic List.
 {{< /note >}}
 
@@ -258,13 +257,13 @@ The name of the state is Florida
 The loop has ended.
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 There is also a corresponding `.keys()` method that generates a view object containing the Dictionary's keys. Using this view is almost the same as using the default method for iterating through a Dictionary. The Dictionary values are still accessed using the indexing operator.
 {{< /note >}}
 
 The built-in `items` method generates a view object containing all the key-value pairs from a Python dictionary. Each pair is a *tuple* object. The values in a tuple can be separated using a technique known as *tuple unpacking*. To unpack a tuple, assign the tuple to a sequence of variables, separated by commas. The number of variables must match the number of items in the tuple. To assign the values of the two-item tuple `myTuple` to the variables `x` and `y`, use the statement `x, y = myTuple`. This assigns the first value in `myTuple` to `x` and the second value to `y`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A tuple is an immutable collection of objects separated by commas. To learn more about Python tuples, see the [Python data structures documentation](https://docs.python.org/3/tutorial/datastructures.html#tuples-and-sequences).
 {{< /note >}}
 
@@ -294,7 +293,7 @@ The Python `break` statement immediately breaks out of the innermost `for` loop.
 
 In the `loop_break.py` example file, the `break` statement terminates the loop when the factorial of the iterator exceeds `5000`. Based on the `start` and `end` values, the program is expected to loop through the code block five times. However, it stops after three cycles because the factorial of `7` is greater than the guard value of `5000`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This program imports the built-in Python `math` module and uses the module's `factorial` function.
 {{< /note >}}
 
@@ -334,7 +333,7 @@ A `while` loop does not have an iterator or a range and does not assign any vari
 
 As long as the Boolean expression remains `True`, the `while` statement keeps looping. To avoid an infinite loop, one of two events must happen. Either the conditional expression must eventually evaluate as `False`, or a `break` statement must be used inside the code block. For the expression to change, the code block must change one of the values used in the expression.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To forcibly break out of an infinite loop in a Python program, enter `Ctrl-C`. This only works when running in interactive mode or running a Python program from the command line.
 {{< /note >}}
 

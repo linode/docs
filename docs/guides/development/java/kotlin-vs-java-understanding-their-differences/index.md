@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-17
 modified_by:
   name: Linode
-title: "Kotlin vs. Java: Understanding their Differences"
-h1_title: "Kotlin vs. Java: Key Differences"
-enable_h1: true
+title: "Kotlin vs. Java: Key Differences"
+title_meta: "Kotlin vs. Java: Understanding their Differences"
 contributor:
   name: Jack Wallen
 ---

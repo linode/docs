@@ -4,14 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Knowing your Python version can make the difference between an application running or frustratingly failing. Thankfully, there is a quick command, and even some Python script, to check your currently installed Python version. Find out all you need to know about getting your Python version in this guide."
-og_description: "Knowing your Python version can make the difference between an application running or frustratingly failing. Thankfully, there is a quick command, and even some Python script, to check your currently installed Python version. Find out all you need to know about getting your Python version in this guide."
 keywords: ['check python version','how to check python version','python version command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-15
 modified_by:
   name: Nathaniel Stickman
-title: "How to Check Python Version"
-h1_title: "How to Check Python Version"
+title: "Check Your Python Version"
+title_meta: "How to Check Which Python Version Is Installed"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

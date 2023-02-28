@@ -27,9 +27,9 @@ aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/'
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** AzuraCast should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,7 +42,7 @@ aliases: ['/platform/marketplace/how-to-deploy-azuracast-with-marketplace-apps/'
 
 AzuraCast is now installed and ready to use.
 
-1.  Open your web browser and navigate to `http://[ip-address]/`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]/`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The first thing you want to do is create a *Super Administrator* account that has system-wide permissions.
 

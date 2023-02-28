@@ -44,8 +44,8 @@ The protocol can be set to either TCP, HTTP, or HTTPS. While a brief description
 - **HTTPS:** Encrypted web traffic using HTTP/1.1. Since this terminates the request on the NodeBalancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish configure TLS/SSL certificates on the NodeBalancer and not on individual backend nodes.
 
     {{< note >}}
-Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
-{{< /note >}}
+    Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
+    {{< /note >}}
 
 ### Proxy Protocol
 
@@ -77,8 +77,8 @@ This controls how subsequent requests from the same client are routed when selec
 - **HTTP Cookie**: *Requires the configuration protocol be set to HTTP or HTTPS.* The NodeBalancer stores a cookie (named `NB_SRVID`) on the client that identifies the backend the client is initially routed to. Subsequent requests by the same client are routed to that backend, when possible. If a backend node goes offline, the request is rerouted to another backend node (in accordance with the chosen algorithm) and the cookie is rewritten with the new backend identifier.
 
     {{< note >}}
-The client must have cookies enabled. If the client has disabled cookies or deletes cookies, session persistence is not preserved and each new request is routed in accordance with the chosen algorithm.
-{{< /note >}}
+    The client must have cookies enabled. If the client has disabled cookies or deletes cookies, session persistence is not preserved and each new request is routed in accordance with the chosen algorithm.
+    {{< /note >}}
 
 If session persistence is required or desired for the application, it is recommended to utilize both the *Source IP* algorithm in combination with either *Table* or *HTTP Cookie* session stickiness.
 
@@ -94,7 +94,7 @@ A certificate can be obtained for your domain by using [certbot](https://certbot
 
 {{< note >}}
 If you wish to use TLS/SSL pass-through and terminate the HTTPS connection on the backend nodes, select the **TCP** protocol instead of **HTTPS**.
-{{</ note >}}
+{{< /note >}}
 
 ## Health Checks
 

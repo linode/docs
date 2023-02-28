@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-22
 modified_by:
   name: Linode
-title: "An Introduction to OAuth2 Authentication"
-h1_title: "What Is OAuth2 Authentication?"
-enable_h1: true
+title: "What Is OAuth2 Authentication?"
+title_meta: "An Introduction to OAuth2 Authentication"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -93,7 +92,7 @@ When the client receives the code, it asks the service's authorization server fo
 
 In the final phase of the negotiation, the client presents the access token to the resource server, and requests access to the protected resource. If the access token is still valid, the server provides the client access to the account within the scope of the access grant.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Single-page applications, including those generated entirely through JavaScript, cannot securely maintain a secret client identity. In this case, the *Proof Key for Code Exchange* (PKCE) extension is used to dynamically generate a secret key for each request. There are some additional concerns for mobile applications. All applications can use PKCE to eliminate the possibility of the code being intercepted and to enhance security. Consult the [*OAuth2 specification*](https://oauth.net/2/) for more details.
 
 Devices without a keyboard, such as smart televisions, typically implement OAuth2 using a *device code*. The device code is used alongside a user code that is submitted elsewhere.
@@ -105,7 +104,7 @@ Links to popular OAuth2 libraries are available in a variety of languages, inclu
 
 Due to a large number of libraries, this guide focuses on the high-level task of selecting, installing, and using an OAuth2 client library. In this section, a sample Python library is used as an example. Pseudocode is shown for each step, with a more detailed summary of the code at the end of this section. Some basic knowledge of Python is necessary to understand the code samples.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You must register the application with the service before accessing any account information. You must also register and submit a URL to redirect client traffic. After approving your registration, the application provides you with a client ID and secret. All applications must use HTTPS when transmitting and receiving OAuth2 messages.
 {{< /note >}}
 
@@ -117,7 +116,7 @@ You must register the application with the service before accessing any account 
 
 1. Download and install the library. In many cases, the library can be installed using `apt` or `pip`. In other cases, the library must be added to the source list first.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The following command assumes Python and `pip` are already installed on the Linode.
     {{< /note >}}
 

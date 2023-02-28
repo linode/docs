@@ -4,14 +4,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
-og_description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
 keywords: ['appwrite react','appwrite tutorial','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-13
 modified_by:
   name: Nathaniel Stickman
-title: "How to Create a React App with Appwrite"
-h1_title: "How to Create a React App with Appwrite"
+title: "Create a React App with Appwrite"
+title_meta: "How to Create a React App with Appwrite"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -31,9 +30,9 @@ This tutorial gets you started making your own application using Appwrite and Re
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system.
 
@@ -45,7 +44,7 @@ This tutorial gets you started making your own application using Appwrite and Re
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -21,7 +21,7 @@ aliases: ['/products/tools/marketplace/guides/antmediaenterpriseedition/']
 
 {{< note >}}
 The Enterprise Edition of Ant Media Server requires a valid license to use the software beyond the initial 14 day [free trial](https://antmedia.io/free-trial/) period. To purchase a license, visit [Ant Media's website](https://antmedia.io/#selfhosted) and select a plan that fits your needs. Licenses are not available directly through Linode. Alternatively, you can deploy the free [Ant Media Server Community Edition Marketplace App](/docs/products/tools/marketplace/guides/antmediaserver/).
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -29,9 +29,9 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Ant Media Enterprise Server should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,7 +42,7 @@ The Enterprise Edition of Ant Media Server requires a valid license to use the s
 
 ### Access the Ant Media Server Dashboard
 
-1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The **Create First Account** screen appears. Fill out your full name and enter your desired username and password. Then click **Create Account**.
 

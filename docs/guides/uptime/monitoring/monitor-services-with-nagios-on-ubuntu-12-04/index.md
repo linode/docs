@@ -30,7 +30,7 @@ Nagios is a monitoring tool that allows you to monitor services on a single serv
 
 ## Install Nagios
 
-Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) set up on your Linode.
+Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) set up on your Linode.
 
 Now you're ready to install Nagios. Here's how:
 
@@ -45,7 +45,7 @@ Now you're ready to install Nagios. Here's how:
 
 3.  Enter an administrator password to complete the installation.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If you do not already have an email server installed on your Linode, Postfix will be installed automatically. The *Internet Site* configuration will be used by default. You'll also have to enter a mail name for the system.
 {{< /note >}}
 
@@ -53,7 +53,7 @@ If you do not already have an email server installed on your Linode, Postfix wil
 
 You can now access the Nagios web interface for administration and reporting by visiting `http://example.com/nagios3/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios3/`, where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the `nagiosadmin` user you created earlier.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/guides/create-a-self-signed-tls-certificate/).
 {{< /note >}}
 
@@ -86,7 +86,7 @@ define contact{
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/docs/guides/linux-users-and-groups/), edit the `define contactgroup` section.
 {{< /note >}}
 

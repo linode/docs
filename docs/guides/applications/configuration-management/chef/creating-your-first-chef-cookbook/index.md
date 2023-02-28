@@ -11,8 +11,8 @@ modified: 2019-12-03
 modified_by:
   name: Linode
 published: 2015-06-10
-title: How to Create your First Chef Cookbook
-h1_title: Creating your First Chef Cookbook
+title: Creating your First Chef Cookbook
+title_meta: How to Create your First Chef Cookbook
 external_resources:
  - '[Chef](http://www.chef.io)'
  - '[About Cookbooks](https://docs.chef.io/cookbooks.html)'
@@ -163,11 +163,11 @@ end
 
     Because this is not the `default.rb` recipe, the recipe name, *apache*, must be appended to the recipe value.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   To view a list of all nodes managed by your Chef server, issue the following command from your workstation:
 
     knife node list
-    {{</ note >}}
+    {{< /note >}}
 
 1. From your workstation, apply the configurations defined in the cookbook by running the chef-client on your node. Replace `nodename` with the name of your node:
 
@@ -179,7 +179,7 @@ end
 
         knife ssh 'name:nodename' 'systemctl status apache2' -x root
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Repeat steps 4-7 to upload each recipe to your Chef server as you create it. Run `chef-client` on your node as needed throughout the rest of this guide to ensure your recipes are working properly and contain no errors. When adding a new recipe, ensure you are using its correct name in the run list.
 
 This is not the recommended workflow for a production environment. You might consider creating different [Chef environments](https://docs.chef.io/environments.html) for testing, staging, and production.
@@ -464,7 +464,7 @@ depends          'mysql', '~> 8.6.0'
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Check the [MySQL Cookbook's Supermarket page](https://supermarket.chef.io/cookbooks/mysql) to ensure this is the latest version of the cookbook. The MySQL Cookbook does not yet support Ubuntu 18.04.
 {{< /note >}}
 
@@ -486,9 +486,9 @@ Chef contains a feature known as *data bags*. Data bags store information, and c
 
         knife data bag create mysql rtpass.json --secret-file ~/chef-repo/.chef/encrypted_data_bag_secret
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Some knife commands require that information be edited as JSON data using a text editor. Your `config.rb` file should contain a configuration for the text editor to use for such commands. If your `config.rb` file does not already contain this configuration, add `knife[:editor] = "/usr/bin/vim"` to the bottom of the file to set vim as the default text editor.
-{{</ note >}}
+{{< /note >}}
 
     You will be asked to edit the `rtpass.json` file:
 

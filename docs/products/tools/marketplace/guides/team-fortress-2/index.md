@@ -26,9 +26,9 @@ Setting up a personal game server puts you in control of the game modes and maps
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Team Fortress 2 should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -45,6 +45,8 @@ Setting up a personal game server puts you in control of the game modes and maps
 - **Team Balance Enabled:** Automatically balance the number of players on a team.
 - **Maximum Rounds:** The maximum amount of rounds before the map changes.
 - **Round Time Limit:** The time per round, in minutes.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

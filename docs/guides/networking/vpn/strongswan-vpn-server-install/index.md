@@ -10,8 +10,7 @@ published: 2022-02-18
 modified_by:
   name: Linode
 title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-h1_title: "How to Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
-enable_h1: true
+title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
 contributor:
   name: Tom Henderson
 external_resources:
@@ -26,15 +25,15 @@ The steps in this section show you how to install and configure a StrongSwan gat
 
 ### Prerequisites
 
-1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -155,9 +154,9 @@ username : EAP "<user’s password>"
 another_username : EAP "<user’s password>"
     {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you use unique usernames each time you add a new user to the access secrets file.
-    {{</ note >}}
+    {{< /note >}}
 
 Your StrongSwan server is now ready to receive client connections. To check the status of the IPsec tunnel created by StrongSwan, use the following command:
 

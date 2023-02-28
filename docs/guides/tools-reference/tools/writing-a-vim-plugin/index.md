@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
 modified_by:
   name: Linode
-title: "Writing a Vim Plugin"
-h1_title: "How to Write a Vim Plugin"
-enable_h1: true
+title: "Write a Vim Plugin"
+title_meta: "How to Write a Vim Plugin"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -27,9 +26,9 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -41,7 +40,7 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

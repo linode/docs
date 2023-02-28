@@ -4,15 +4,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
-og_description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
 keywords: ['IaC','infrastructure','configuration','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-03
 image: IntroInfastructureAsCode.png
 modified_by:
   name: Linode
-title: "Introducing Infrastructure as Code"
-h1_title: "An Introduction to Infrastructure as Code"
+title: "An Introduction to Infrastructure as Code"
+title_meta: "Introducing Infrastructure as Code"
 contributor:
   name: Jeff Novotny
   link: https://github.com/JeffreyNovotny

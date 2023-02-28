@@ -11,8 +11,8 @@ modified_by:
   name: Linode
 aliases: ['/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/','/quick-answers/linode-platform/understanding-cloud-manager-errors/']
 image: L_UnderstandCommonClManErrors.png
-title: "An Overview of Common Cloud Manager Errors"
-h1_title: "Understanding Common Cloud Manager Errors"
+title: "Understanding Common Cloud Manager Errors"
+title_meta: "An Overview of Common Cloud Manager Errors"
 contributor:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -20,7 +20,7 @@ tags: ["linode platform","cloud manager"]
 
 Have you ever encountered an error message while navigating the cloud Manager and wanted more information as to what may have triggered the error and what your best next steps may be? In this guide we'll go over some common error messages in a higher level of detail than are traditionally provided, and discuss your best path forward.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more information on troubleshooting, see the [Troubleshooting Section](/docs/guides/troubleshooting/) of our documentation.
 {{< /note >}}
 

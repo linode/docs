@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Linode
-title: "Mock Testing Using the Python Unittest Library"
-h1_title: "An Introduction to Mock Testing Using the Python Unittest Library"
-enable_h1: true
+title: "An Introduction to Mock Testing Using the Python Unittest Library"
+title_meta: "Mock Testing Using the Python Unittest Library"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/
@@ -58,7 +57,7 @@ The [Python unittest mock object library](https://docs.python.org/3/library/unit
 
 Working with a mock is different from working with standard objects. A mock can perform assertions and create a consistent result by setting object methods to a particular value. Mock objects can also look for side effects that result from making particular calls. However, a mock isn’t real code. A mock object behaves like a "real" object, but doesn't alter your code. The following steps go through some mock object basics to exemplify what mocks can accomplish.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can run the steps in the following sections using your computer's Python interpreter. To access the Python interpreter, issue the following command:
 
     python3
@@ -72,7 +71,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 {{</ output >}}
 
-{{</ note >}}
+{{< /note >}}
 
 1. Instantiate a new mock object and verify that Python returns the object’s unique identifier.
 

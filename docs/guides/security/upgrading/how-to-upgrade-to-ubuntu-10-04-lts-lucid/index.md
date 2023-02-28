@@ -116,7 +116,7 @@ Add the following line to your file:
 
 Save the file by entering `Ctrl+x` and agreeing to the changes. You may now reboot your Linode from the Linode Manager dashboard using its normal configuration profile.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If you're still having problems, verify that `Automount devtmpfs` is turned on.
 {{< /note >}}
 

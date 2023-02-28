@@ -66,7 +66,8 @@ log_replica_updates = 1
 auto-increment-increment = 2
 auto-increment-offset = 1
 {{< /file >}}
-  {{< note >}}
+
+    {{< note respectIndent=false >}}
 If using MySQL 8.0.25 or earlier, replace `log_replica_updates` with `log_slave_updates` (within both Servers 1 and 2). See [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_slave_updates) for details.
     {{< /note >}}
 
@@ -86,7 +87,7 @@ auto-increment-increment = 2
 auto-increment-offset = 2
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using MySQL 8.0.25 or earlier, replace `log_replica_updates` with `log_slave_updates` (within both Servers 1 and 2). See [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_slave_updates) for details.
     {{< /note >}}
 

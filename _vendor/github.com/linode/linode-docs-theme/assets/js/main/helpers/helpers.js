@@ -88,6 +88,19 @@ export function isElementInViewport(el) {
 	);
 }
 
+// getScrollLeft returns the scrollLeft value needed to make the child element visible.
+export function getScrollLeft(parent, child) {
+	const parentRect = parent.getBoundingClientRect();
+	const childRect = child.getBoundingClientRect();
+
+	// If the child is already visible, return 0.
+	if (childRect.left >= parentRect.left && childRect.right <= parentRect.right) {
+		return 0;
+	}
+
+	return childRect.left - parentRect.left;
+}
+
 // getOffsetTop returns the distance from container down to el.
 export function getOffsetTop(container, el) {
 	var distance = 0;
@@ -102,6 +115,16 @@ export function getOffsetTop(container, el) {
 		}
 	}
 	return distance < 0 ? 0 : distance;
+}
+
+// withBoundingClientRect calls the callback with the boundingClientRect of the element.
+export function withBoundingClientRect(el, callback) {
+	const observer = new IntersectionObserver((entries) => {
+		bounds = entries[0].boundingClientRect;
+		callback(bounds);
+		observer.disconnect();
+	});
+	observer.observe(el);
 }
 
 export function setIsTranslating(el, timeout = 1000) {

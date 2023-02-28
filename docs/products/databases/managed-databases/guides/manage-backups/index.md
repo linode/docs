@@ -22,9 +22,9 @@ Each Managed Database includes daily backups of your data, taken on a 24 hour ca
 
 ## Restore Managed Backups
 
-{{<caution>}}
+{{< note type="alert" >}}
 Restoring from a backup erases all data stored within the database cluster and replaces it with the data from that backup.
-{{</caution>}}
+{{< /note >}}
 
 1. View the available backups by following the [View Managed Backups](#view-managed-backups) instructions.
 

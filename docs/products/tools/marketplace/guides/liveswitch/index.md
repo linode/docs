@@ -19,7 +19,7 @@ external_resources:
 
 {{< note >}}
 Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -27,9 +27,9 @@ Using LiveSwitch Server may require a paid license. To obtain a license, [contac
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** LiveSwitch should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,7 +42,7 @@ After deployment, follow the instructions below to access your application.
 
 ### Accessing the LiveSwitch App
 
-1. Open your web browser and navigate to `http://[ip-address]:9090/admin`, replacing *[ip-address]* with your Compute Instance's IP address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `http://[ip-address]:9090/admin`, replacing *[ip-address]* with your Compute Instance's IP address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. The *Welcome* setup wizard is displayed. Follow the prompts in this wizard to input your license key and create your user.
 

@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Linode
-title: "Python Programming, Machine Learning, and AI"
-h1_title: "Python in ML: Why You Should Use Python for Machine Learning"
-enable_h1: true
+title: "Python in ML: Why You Should Use Python for Machine Learning"
+title_meta: "Python Programming, Machine Learning, and AI"
 contributor:
   name: John Mueller
   link: http://www.johnmuellerbooks.com/

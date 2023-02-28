@@ -3,15 +3,13 @@ slug: how-to-install-hashicorp-consul-service-mesh
 author:
   name: Nathaniel Stickman
 description: "This guide will show you how to install HashiCorp''s Consul service mesh, which centralizes operational tasks around your apps services, on a Kubernetes Cluster."
-og_description: "This guide will show you how to install HashiCorp''s Consul service mesh, which centralizes operational tasks around your apps services, on a Kubernetes Cluster."
 keywords: ['what is consul hashicorp', 'how to install hashicorp consul']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Linode
-title: "How to Install HashiCorp Consul Service Mesh"
-h1_title: "How to Install HashiCorp Consul"
-enable_h1: true
+title: "Install HashiCorp Consul Service Mesh"
+title_meta: "How to Install HashiCorp Consul Service Mesh"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

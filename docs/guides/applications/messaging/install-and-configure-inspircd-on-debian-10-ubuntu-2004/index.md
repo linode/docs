@@ -3,16 +3,13 @@ slug: install-and-configure-inspircd-on-debian-10-ubuntu-2004
 author:
   name: Nathaniel Stickman
 description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
-og_description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
 keywords: ['irc server', 'inspircd']
 tags: ['debian', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 modified_by:
   name: Linode
-title: "Install and Configure InspIRCd on Debian 10 or Ubuntu 20.04"
-h1_title: "How to Install and Configure InspIRCd on Debian 10 and Ubuntu 20.04"
-enable_h1: true
+title: "Install and Configure InspIRCd on Debian 10 and Ubuntu 20.04"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -28,9 +25,9 @@ InspIRCd is a free and open-source IRC server application. It has been designed 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -108,7 +105,7 @@ Refer to InspIRCd's documentation on [configuration options](https://docs.inspir
 
 1. Open the `/etc/inspircd/inspircd.rules` file, and enter the usage rules for your IRC server. Users can review these with the `/rules` command. The rules should set expectations for the kinds of behavior you allow on your server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Not all IRC clients support the `/rules` command. The popular client WeeChat, for example, does not support this command. If you expect users may frequently use one of these clients, you may also opt to present your rules in the message of the day.
     {{< /note >}}
 

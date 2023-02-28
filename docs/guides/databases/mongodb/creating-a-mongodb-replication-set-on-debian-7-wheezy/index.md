@@ -12,8 +12,8 @@ aliases: ['/databases/mongodb/debian-7/','/databases/mongodb/creating-a-mongodb-
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
-h1_title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title: 'Creating a MongoDB Replication Set on Debian 7 (Wheezy)'
+title_meta: 'How To Create a MongoDB Replication Set on Debian 7 (Wheezy)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -30,7 +30,7 @@ deprecated: true
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 

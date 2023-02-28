@@ -27,13 +27,13 @@ Both new and experienced Drupal users can benefit from learning Drush. Users tha
 
 Before installing Drush and Drupal, ensure that the following prerequisites have been met:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 3.  Configure a LAMP stack using the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -116,7 +116,7 @@ Drush can create a Drupal site with half the steps of a normal installation. The
 
         sudo apt-get install php5-gd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the install process displays a prompt concerning a modified configuration file, choose the "keep the local version currently installed" option.
 {{< /note >}}
 
@@ -137,7 +137,7 @@ If the install process displays a prompt concerning a modified configuration fil
 
         sudo drush dl drupal --drupal-project-rename=drupal
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can specify versions of Drupal. For example to install Drupal 8, which is in beta at the time of this publication, use **`drush dl drupal-8`**.
 {{< /note >}}
 
@@ -151,7 +151,7 @@ You can specify versions of Drupal. For example to install Drupal 8, which is in
         sudo drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
 {{< /note >}}
 
@@ -168,7 +168,7 @@ Although MySQL accepts passwords with a special character, for example an exclam
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named **www-data**, is added to the site owner's group. Then read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
-To create a new user for the site owner position, review the [Securing Your Server](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide.
+To create a new user for the site owner position, review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 1.  From the `drupal` directory, change ownership of the site to the chosen owner and that owner's group. Replace `exampleuser` below with the chosen owner's username:
 
@@ -192,9 +192,9 @@ To create a new user for the site owner position, review the [Securing Your Serv
 
         drush status
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user www-data has access rights. Use the command `ls -al` to list the file permissions within a directory.
-{{< /caution >}}
+{{< /note >}}
 
 Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 
@@ -239,7 +239,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 
         composer global require drush/drush:dev-master
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:6.*`. For more information, check out the [Drush GitHub](https://github.com/drush-ops/drush) repository.
 {{< /note >}}
 

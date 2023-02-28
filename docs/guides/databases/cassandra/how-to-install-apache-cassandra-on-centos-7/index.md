@@ -10,9 +10,8 @@ published: 2017-06-12
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on CentOS 7"
-h1_title: "Installing Apache Cassandra on CentOS 7"
-enable_h1: true
+title: "Installing Apache Cassandra on CentOS 7"
+title_meta: "How to Install Apache Cassandra on CentOS 7"
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -41,8 +40,8 @@ After completing this guide, you will have a single-node, production-ready insta
 
 ### Before You Begin
 
-1. Complete the [Getting Started](/docs/guides/getting-started/) guide for setting up a new Linode.
-2. While it is recommended you complete the entire [Securing Your Server](/docs/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
+1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
+2. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
 
 ### Add Repositories and GPG Keys
 
@@ -104,7 +103,7 @@ Update the system and install Java along with Cassandra. NTP will help keep the 
 
 1.  Enable user login authentication. Make a backup of the Cassandra configuration file "cassandra.yaml."
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The CentOS 7 installation already includes a backup file located at `/etc/cassandra/conf/cassandra.yaml.orig`.
 {{< /note >}}
 
@@ -166,7 +165,7 @@ Since your Cassandra username and password can be stored here in plaintext, this
 
 2.  Copy any sections below that you wish to add to your configuration. Details for this file can be found by following the "Cassandra cqlshrc File Configuration Overview" link in the "External Resources" section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 CentOS 7 users can find a sample file containing all the configuration options at `/etc/cassandra/conf/cqlshrc.sample`.
 {{< /note >}}
 
@@ -254,7 +253,7 @@ JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
         nodetool status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
 {{< /note >}}
 

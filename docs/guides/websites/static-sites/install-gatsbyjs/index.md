@@ -10,9 +10,8 @@ published: 2018-08-09
 modified: 2018-08-09
 modified_by:
   name: Linode
-h1_title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
-title: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
-enable_h1: true
+title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
+title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
 contributor:
   name: Linode
 aliases: ['/websites/static-sites/install-gatsbyjs/']
@@ -28,7 +27,7 @@ Gatsby is a [Static Site Generator](/docs/guides/how-to-choose-static-site-gener
 
 The CI/CD (continuous integration/continuous delivery) pipeline created in this guide is an automated sequence of events that is initiated after you update the code for your website on your local computer. These events take care of the work that you would otherwise need to perform manually: previewing your in-development site, testing your new code, and deploying it to your production server. These actions are powered by GitHub, Netlify, and Travis CI.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses GitHub as your central Git repository, but you can use any service that is compatible with Netlify and Travis.
 {{< /note >}}
 
@@ -56,13 +55,13 @@ This guide sets up the following flow of events:
 
 ## Before You Begin
 
-1.  Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and deploy a Linode running Ubuntu 18.04.
+1.  Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and deploy a Linode running Ubuntu 18.04.
 
-1.  Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/guides/configure-rdns/) on your Linode's IP.
+1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode's IP.
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 
@@ -98,7 +97,7 @@ server {
 }
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace all future instances of `example.com` in this guide with your domain name.
 {{< /note >}}
 
@@ -278,7 +277,7 @@ Once connected to your GitHub account, the Netlify service can build a site prev
 
     ![Netlify repository settings](deploy-settings.png "Netlify repository settings")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can add a `netlify.toml` [configuration file](https://www.netlify.com/docs/netlify-toml-reference/) to your Git repository to define more deployment settings.
 {{< /note >}}
 
@@ -327,7 +326,7 @@ Travis CI manages testing your Gatsby site and deploying it to the Linode produc
 
 1.  Navigate to the [Travis CI](https://travis-ci.com/) site and click on the *Sign up with GitHub* button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Be sure to visit [travis-ci.com](https://travis-ci.com/), not [travis-ci.org](https://travis-ci.org/). Travis originally operated travis-ci.com for paid/private repositories, and travis-ci.org was run separately for free/open source projects. [As of May 2018](https://blog.travis-ci.com/2018-05-02-open-source-projects-on-travis-ci-com-with-github-apps), travis-ci.com supports open source projects and should be used for all new projects. Projects on travis-ci.org will eventually be migrated to travis-ci.com.
 {{< /note >}}
 
@@ -351,7 +350,7 @@ Travis builds are run in new virtualized environments created for each build. Th
 
         touch .travis.yml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure you commit changes at logical intervals as you modify the files in your Git repository.
 {{< /note >}}
 
@@ -408,7 +407,7 @@ sudo: false
 
     ![GitHub Travis Builds](github-travis-builds.png "GitHub Travis Builds")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Four rows for your Travis builds will appear, which is more than you may expect. This is because Travis runs your builds whenever your branch is updated, and whenever your pull request is updated, and [Travis considers these to be separate events](https://docs.travis-ci.com/user/pull-requests/#double-builds-on-pull-requests).
 
 In addition, the rows prefixed by `Travis CI - ` are links to GitHub's preview of those builds, while rows prefixed with `continuous-integration/travis-ci/` are direct links to the builds on [travis-ci.com](https://travis-ci.com/).
@@ -451,7 +450,7 @@ The private key will also need to be encrypted, as the key file will live in you
 
     Follow the prompts to provide your GitHub login credentials. These credentials are passed directly to GitHub and are not recorded by Travis. In exchange, GitHub returns a GitHub access token to Travis, after which Travis will provide your CLI with a Travis access token.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [The `--com` argument](https://github.com/travis-ci/travis.rb#general-api-commands) tells your CLI to log in to [travis-ci.com](https://travis-ci.com/) (instead of [travis-ci.org](https://travis-ci.org/)).
 {{< /note >}}
 
@@ -633,7 +632,7 @@ git push -f production HEAD:refs/heads/master
     -   Commits the newly-built `public` directory to the Travis build environment's copy of your Git repository.
     -   Pushes that commit (over the SSH protocol) to a remote repository on your Linode, which you will create in the next section of this guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Remember that because these instructions are executed in an isolated virtual environment, the `git commit` that is run here does not affect the repository on your local computer or on GitHub.
 {{< /note >}}
 
@@ -688,7 +687,7 @@ git --work-tree=/usr/share/nginx/html/example.com --git-dir=/home/example_user/g
 
     This script will check out the files from your Linode repository's *master* branch into your document root folder.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 While a bare Git repository does not keep working copies of files within the repository's directory, you can still use the `--work-tree` option to check out files into another directory.
 {{< /note >}}
 

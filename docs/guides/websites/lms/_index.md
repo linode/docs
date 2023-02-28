@@ -3,7 +3,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Explore software that helps both educators and students communicate, collaborate, and succeed, by tracking courses, assignments, and grades."
-og_description: "Explore software that helps both educators and students communicate, collaborate, and succeed, by tracking courses, assignments, and grades."
 keywords: ["LMS", "learning management software"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28

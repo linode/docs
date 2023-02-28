@@ -36,9 +36,9 @@ The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-ma
 
 ## Before You Begin
 
-Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and set your hostname.
+Prior to using this guide, be sure you have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and set your hostname.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
 {{< /note >}}
 
@@ -136,7 +136,7 @@ Next, perform additional Postfix configuration to set up communication with the 
 
 ## Configure Postfix to work with MySQL
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the next four steps, replace `mail_admin_password` with the `mail_admin` password input earlier.
 {{< /note >}}
 
@@ -401,7 +401,7 @@ Next, populate the MySQL database with domains and email users.
 
 ## Set Up and Test Domains and Users
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before continuing, modify the DNS records for any domains that you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, either delete them or set them to a higher priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 {{< /note >}}
 
@@ -425,7 +425,7 @@ In the following example, the MySQL shell is used to add support for the domain 
 
     Press `Ctrl+D` to complete the message. You can safely leave the field for `Cc:` blank. This completes the configuration for a new domain and email user.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Given the possibility for virtual hosting a large number of domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient for authentication. When email users authenticate to the server, they must supply the *entire* email address created above as their username.
 {{< /note >}}
 

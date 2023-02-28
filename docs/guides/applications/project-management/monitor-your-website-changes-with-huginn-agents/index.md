@@ -4,7 +4,6 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
-og_description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +11,7 @@ published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
 title: "Monitor Your Website Changes with Huginn Agents"
-h1_title: "How to Monitor Your Website Changes with Huginn Agents"
-enable_h1: true
+title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -25,9 +23,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Huginn supports Debian and Ubuntu Linux distributions, and this guide's instructions are intended for these distributions as well.
 

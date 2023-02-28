@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
 modified_by:
   name: Linode
-title: "Manipulating the DOM with JavaScript"
-h1_title: "How to Modify the DOM with JavaScript"
-enable_h1: true
+title: "Modify the DOM with JavaScript"
+title_meta: "Manipulating the DOM with JavaScript"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -290,7 +289,7 @@ However, if you then want to adjust only one of those style properties, the `set
 
 To remedy this, JavaScript allows you to adjust the style attribute, and its individual properties, via the `style` property. This property makes available all of the CSS style properties of the style attribute, letting you set and adjust each one independently.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While CSS hyphenates property names, JavaScript, instead, uses camelCase. So, for instance, the CSS properties `font-weight` and `text-align` become `fontWeight` and `textAlign`, respectively, in JavaScript.
 {{< /note >}}
 

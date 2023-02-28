@@ -3,9 +3,8 @@ slug: lassie-shutdown-watchdog
 author:
   name: Linode
   email: docs@linode.com
-title: "Recover from Unexpected Shutdowns with Lassie"
-h1_title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
-enable_h1: true
+title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
+title_meta: "Recover from Unexpected Shutdowns with Lassie"
 keywords: ['lassie','unexpected shutdown','reboot']
 tags: ["linode platform","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,9 +21,9 @@ Linode Compute Instances have a featured called *Lassie* (Linode Autonomous Syst
 
 The Shutdown Watchdog feature detects when a Compute Instance is powered off and checks if that directive came from the Linode platform (such as the Cloud Manager or Linode API). If the power off command *did not* originate from the Linode platform, the shutdown is considered unexpected and the Compute Instance is automatically powered back on.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Shutdown Watchdog can power back on a Compute Instance up to 5 times within a 15 minute period. If there is a recurring issue that is causing 6 or more shutdowns within this time period, the instance remains powered off until it is manually powered back on. This is to prevent endless reboot loops if there is an issue with the internal software of a Compute Instance.
-{{</ note >}}
+{{< /note >}}
 
 ## Enable (or Disable) Shutdown Watchdog
 
@@ -55,17 +54,17 @@ An *unexpected shutdown* is when a Compute Instance powers off without receiving
 
 - **Other system crashes**, such as a crash caused by the software installed on your system or a malicious process (such as malware).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Shutdown Watchdog feature never *causes* a Compute Instance to shut down and only ever *powers on* an instance if it detects an unexpected shutdown.
-{{</ note >}}
+{{< /note >}}
 
 ## Investigate the Cause of a Shutdown
 
 The underlying cause of these issues can vary. The most helpful course of action is to review your system logs.
 
-1. Open the [Lish console](/docs/guides/lish/). This displays your system's boot log and, if your system boot was normal, a login prompt appears. If you do not see a login prompt, look for any errors or unexpected output that indicates a kernel panic, file system corruption, or other type of system crash.
+1. Open the [Lish console](/docs/products/compute/compute-instances/guides/lish/). This displays your system's boot log and, if your system boot was normal, a login prompt appears. If you do not see a login prompt, look for any errors or unexpected output that indicates a kernel panic, file system corruption, or other type of system crash.
 
-1. Log in to your system through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and review the log files for you system using either journald or syslog. For systems using systemd-journald for logging, you can use the `journalctl` command to review system logs. See [Use journalctl to View Your System's Logs](/docs/guides/how-to-use-journalctl/) for instructions.
+1. Log in to your system through either [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and review the log files for you system using either journald or syslog. For systems using systemd-journald for logging, you can use the `journalctl` command to review system logs. See [Use journalctl to View Your System's Logs](/docs/guides/how-to-use-journalctl/) for instructions.
 
     - `journalctl -b`: Log entries for the last system boot
     - `journalctl -k`: Kernel messages
@@ -79,9 +78,9 @@ The underlying cause of these issues can vary. The most helpful course of action
 
     You may also want to review log files for any other software you have installed on your system that might be causing these issues.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/guides/support/#scope-of-support) of the Linode Support team.
-{{</ note >}}
+{{< /note >}}
 
 ## File System Corruption
 

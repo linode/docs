@@ -14,7 +14,6 @@ modified_by:
   name: Linode
 published: 2010-10-13
 title: Use vmstat to Monitor System Performance
-h1_title: Use vmstat to Monitor System Performance
 external_resources:
  - '[Linux Ate My Ram](http://www.linuxatemyram.com/)'
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'

@@ -57,7 +57,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
         vagrant plugin install vagrant-linode
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using a Mac, it may request to install development tools. Select yes, then re-run the command.
 {{< /note >}}
 
@@ -81,7 +81,7 @@ end
 
     All code will take place between the `Vagrant.configure` and `end` lines.
 
-2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) guide:
+2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) guide:
 
     {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
@@ -150,7 +150,7 @@ end
 
 ## Set Up the Vagrant Box
 
-Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
+Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
 
 ### Configure the Server
 
@@ -321,7 +321,7 @@ With the Vagrantfile configured, and scripts and files created, it's now time to
 
     Then go to your chosen web browser and navigate to your ip address with `:6789` appended to the end. You should see Apache2 Ubuntu Default Page.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to shut down or remove the Linode from your workspace you can do so through one of the following commands:
 
 -  `vagrant halt` will power down the Linode through the shutdown mechanism. You can then run `vagrant up` again to power on the Linode.

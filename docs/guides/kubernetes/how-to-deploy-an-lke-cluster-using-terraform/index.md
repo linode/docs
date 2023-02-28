@@ -4,16 +4,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
-og_description: "In this tutorial, you'll deploy a Kubernetes cluster using the Linode Kubernetes Engine (LKE) and Terraform."
 keywords: ['kubernetes','terraform','infrastructure as code','container orchestration']
 tags: ["linode platform","kubernetes","automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-05-05
+modified: 2023-01-06
 modified_by:
   name: Linode
-title: "How to Deploy an LKE Cluster Using Terraform"
-h1_title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
-enable_h1: true
+title: "Deploying a Linode Kubernetes Engine Cluster Using Terraform"
+title_meta: "How to Deploy an LKE Cluster Using Terraform"
 image: deploy-lke-cluster-with-terraform.png
 contributor:
   name: Linode
@@ -40,9 +39,9 @@ This guide will walk you through the steps needed to deploy a Kubernetes cluster
 
 1. Create a personal access token for the Linode API. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token. You will need a token to be able to create Linode resources using Terraform.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that your token has, at minimum, Read/Write permissions for Linodes, Kubernetes, NodeBalancers, and Volumes.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Review the [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with Terraform concepts if you have not used the tool before. This guide assumes familiarity with Terraform and its native [HCL syntax](https://www.terraform.io/docs/configuration/syntax.html).
 
@@ -134,15 +133,15 @@ output "pool" {
 
     This configuration file uses the Linode provider to create a Kubernetes cluster. All arguments within the `linode_lke_cluster.foobar` resource are required, except for `tags`. The `pool` argument accepts a list of pool objects. In order to read their input variable values, the configuration file makes use of Terraform's [dynamic blocks](https://www.terraform.io/docs/configuration/expressions.html#dynamic-blocks). Finally, [output values](https://www.terraform.io/docs/configuration/outputs.html) are declared in order to capture your cluster's attribute values that will be returned to Terraform after creating your cluster.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You should set any output value as being sensitive in order to prevent Terraform from printing its value to your terminal after running `terraform apply`. In the example configuration for example, the `kubeconfig` output value is listed as sensitive.
 
 See [Terraform's output value documentation](https://www.terraform.io/docs/configuration/outputs.html#sensitive-suppressing-values-in-cli-output) for more details on the behavior of the `sensitive` argument.
-    {{</ note >}}
+    {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
  For a complete `linode_lke_cluster` resource argument reference, see the [Linode Provider Terraform documentation](https://www.terraform.io/docs/providers/linode/r/lke_cluster.html). You can update the `main.tf` file to include any additional arguments you would like to use.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Define your Input Variables
 
@@ -158,7 +157,7 @@ You are now ready to define the input variables that were referenced in your `ma
 
     variable "k8s_version" {
       description = "The Kubernetes version to use for this cluster. (required)"
-      default = "1.23"
+      default = "1.25"
     }
 
     variable "label" {
@@ -196,7 +195,7 @@ You are now ready to define the input variables that were referenced in your `ma
     }
     {{</ file >}}
 
-    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](/docs/products/compute/kubernetes/release-notes/), as well as [Available Plans](/docs/guides/choosing-a-compute-instance-plan/) and [Data Centers](/docs/guides/how-to-choose-a-data-center/)
+    This file describes each variable and provides them with default values. You should review and update the file with your own preferred default values, ensuring that they match currently available [versions of Kubernetes on LKE](/docs/products/compute/kubernetes/release-notes/), as well as [Available Plans](/docs/products/compute/compute-instances/plans/choosing-a-plan/) and [Data Centers](/docs/guides/how-to-choose-a-data-center/)
 
 ### Assign Values to your Input Variables
 
@@ -204,13 +203,13 @@ You will now need to define the values you would like to use in order to create 
 
 1. Create a new file named `terraform.tfvars` to provide values for all the input variables declared in the previous section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you leave out a variable value in this file, Terraform will use the variable's default value that you provided in your `variables.tf` file.
-    {{</ note >}}
+    {{< /note >}}
 
       {{< file "$~/terraform/lke-cluster/terraform.tfvars" >}}
 label = "example-lke-cluster"
-k8s_version = "1.23"
+k8s_version = "1.25"
 region = "us-west"
 pools = [
   {
@@ -220,7 +219,7 @@ pools = [
 ]
       {{</ file >}}
 
-    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.23` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
+    Terraform will use the values in this file to create a new Kubernetes cluster with one node pool that contains three 4 GB nodes. The cluster will be located in the `us-west` data center (Dallas, Texas, USA). Each node in the cluster's node pool will use Kubernetes version `1.25` and the cluster will be named `example-lke-cluster`. You can replace any of the values in this file with your own preferred cluster configurations.
 
 ## Deploy your Kubernetes Cluster
 
@@ -240,9 +239,9 @@ Now that all your Terraform configuration files are ready, you can deploy your K
 
         export TF_VAR_token=70a1416a9.....d182041e1c6bd2c40eebd
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This method commits the environment variable to your shell’s history, so take care when using this method.
-    {{</ caution >}}
+    {{< /note >}}
 
 1. View your Terraform's execution plan before deploying your infrastructure. This command won't take any actions or make any changes on your Linode account. It will provide a report displaying all the resources that will be created or modified when the plan is executed.
 
@@ -278,11 +277,11 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 
         export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -di > lke-cluster-config.yaml
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on your local operating system, to decode the kubeconfig's base64 format, you may need to replace `base64 -di` with `base64 -D` or just `base64 -d`. To determine which `base64` option to use, issue the following command:
 
     base64 --help
-    {{</ note >}}
+    {{< /note >}}
 
 1. Add the kubeconfig file to your `$KUBECONFIG` environment variable. This will give kubectl access to your cluster's kubeconfig file.
 

@@ -64,9 +64,9 @@ This guide provides an overview of the features and services available in Linode
 
 The Cloud Manager automatically ensures that your Domain's zone file does not contain any errors when a Domain Record is created or updated.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This Cloud Manager and [API v4](/docs/api) functionality is currently under active development.
-{{</ note >}}
+{{< /note >}}
 
 - When creating a Zone File for a Domain, the [Linode API v4](/docs/api) checks for any errors that may exist. If an error is found, the Cloud Manager will respond with the corresponding error. This means that the Cloud Manager will not allow you to create an invalid zone file.
 
@@ -133,7 +133,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 - [Enabling Third Party Authentication (TPA)](/docs/guides/third-party-authentication/)
 - Managing trusted devices
 - [Adding and managing public SSH keys](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-ssh-key-to-the-cloud-manager)
-- [Managing LISH authentication methods](/docs/guides/lish/#add-your-public-key)
+- [Managing LISH authentication methods](/docs/products/compute/compute-instances/guides/lish/#add-your-public-key)
 - [Adding and managing personal and third party API v4 access tokens](/docs/products/tools/api/get-started/#get-an-access-token)
 - [Creating and managing OAuth Apps](/docs/products/tools/api/guides/create-an-oauth-app-with-the-python-api-library/#obtaining-a-client-id-and-a-client-secret)
 - [Linode Referral Program](/docs/products/platform/billing/guides/referral-program/)
@@ -143,7 +143,7 @@ The **My Profile** section of Cloud Manager provides access to various settings 
 
 {{< content "cloud-api-keys-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Currently, Cloud Firewall permissions can not be set for Personal Access Tokens using the Linode Cloud Manager and the Linode API should be used directly for this purpose. For more information, see our [API documentation](/docs/api/profile/#personal-access-tokens-list) and our guide on [Getting Started With Cloud Firewall](http://localhost:1313/docs/guides/getting-started-with-cloud-firewall/#limiting-user-access-to-cloud-firewalls-with-the-linode-api)
 {{< /note >}}
 

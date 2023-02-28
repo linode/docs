@@ -11,8 +11,8 @@ published: 2018-04-30
 modified: 2021-03-04
 modified_by:
   name: Linode
-title: Monitor Your System with Graphite and a Grafana Dashboard
-h1_title: Monitoring Your System with Graphite and a Grafana Dashboard
+title: Monitoring Your System with Graphite and a Grafana Dashboard
+title_meta: Monitor Your System with Graphite and a Grafana Dashboard
 external_resources:
  - '[Grafana Official Documentation](http://docs.grafana.org/)'
  - '[Graphite Official Documentation](https://graphite.readthedocs.io/en/latest/)'

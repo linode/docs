@@ -28,9 +28,9 @@ Hosting your own Rust server allows you to customize settings and curate the num
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Rust should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -48,6 +48,8 @@ Hosting your own Rust server allows you to customize settings and curate the num
 - **Seed:** A random numeric seed used by the world generation algorithm to create a unique world. The maximum value is 4,294,967,295.
 - **Global Chat Enabled:** Enables global chat. Chat messages will be broadcast to all players.
 - **PvE Enabled:** Allow player vs. environment combat.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

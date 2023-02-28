@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "User Authentication with JWTs in Express and Node.js"
-h1_title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
-enable_h1: true
+title: "User Authentication with JWTs (JSON Web Tokens) in Express and Node.js"
+title_meta: "User Authentication with JWTs in Express and Node.js"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -66,11 +65,11 @@ The JWTs encoded in this example provide a lightweight and secure means of authe
 
 ### Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -104,7 +103,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 1. Create the example JavaScript file called `server.js`. This contains the skeleton for your Express JS server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In a production scenario, you should not store credentials in application code and your passwords should be encrypted when stored. Additionally, use a secret that conforms to the standards for the signing algorithm you are using. For instance, the HMAC SHA256 algorithm in this example should be given a 256-bit secret. You can achieve this with a random 64-character hex string or a random 44-character Base64 string.
     {{< /note >}}
 

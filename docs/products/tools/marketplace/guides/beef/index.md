@@ -24,9 +24,9 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** BeEF should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,50 +42,56 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the BeEF App
 
-1.  Once the app has been *fully* deployed, view the BeEF completion message through one of the methods below:
+1. Once the app has been *fully* deployed, view the BeEF completion message through one of the methods below:
 
-    -   **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/guides/lish/).
-    -   **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
+    - **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
-            cat /root/beef.info
+        ```command
+        cat /root/beef.info
+        ```
 
-1.  The completion message contains the *Endpoint* URL, as shown in the example below.
+1. The completion message contains the *Endpoint* URL, as shown in the example below.
 
-    {{<output>}}
-##############################
-# BEEF INSTALLATION COMPLETE #
-##############################
-Endpoint: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
-Credentials can be found here:
-/home/beef/config.yaml
-Happy hunting!
-{{</output>}}
+    ```output
+    ##############################
+    # BEEF INSTALLATION COMPLETE #
+    ##############################
+    Endpoint: https://192-0-2-1.ip.linodeusercontent.com:3000/ui/panel
+    Credentials can be found here:
+    /home/beef/config.yaml
+    Happy hunting!
+    ```
 
-1.  Navigate to this URL in a web browser to display the login prompt.
+1. Navigate to this URL in a web browser to display the login prompt.
 
     ![Screenshot of the BeEF login prompt](beef-login-prompt.png)
 
-1.  Enter `beef` as the username and use the password you entered into the *BeEF Password* field when you created the Instance.
+1. Enter `beef` as the username and use the password you entered into the *BeEF Password* field when you created the Instance.
 
-    {{<note>}}
-If you forget this password, run the following command when logged in through Lish or SSH:
+    {{< note >}}
+    If you forget this password, run the following command when logged in through Lish or SSH:
 
+    ```command
     less /home/beef/config.yaml
+    ```
 
-Scroll down until you see the *credentials* section with the *user* and *passwd* parameters as shown in the example output below:
+    Scroll down until you see the *credentials* section with the *user* and *passwd* parameters as shown in the example output below:
 
-{{<output>}}
-# Credentials to authenticate in BeEF.
-# Used by both the RESTful API and the Admin interface
-credentials:
-    user:   "beef"
-    passwd: "T$a%T1O*&2kP"
-{{</output>}}
-{{</note>}}
+    ```output
+    # Credentials to authenticate in BeEF.
+    # Used by both the RESTful API and the Admin interface
+    credentials:
+        user:   "beef"
+        passwd: "T$a%T1O*&2kP"
+    ```
+    {{< /note >}}
 
 Now that you’ve accessed your BeEF instance, check out [the official BeEF documentation](https://github.com/beefproject/beef/wiki) to learn how to further utilize your BeEF instance.
 

@@ -33,13 +33,13 @@ Before troubleshooting your SSH service, familiarize yourself with the Linode Sh
 
 ### The Linode Shell (Lish)
 
-[*Lish*](/docs/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your Linode will be performed from the Lish console.
+[*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your Linode will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/lish/) guide. In particular, [using your web browser](/docs/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### Forgotten your Password?
 
-If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/guides/reset-the-root-password-on-your-linode/). If you are logged in as root, you can change the password of another user with the `passwd` command:
+If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/products/compute/compute-instances/guides/reset-root-password/). If you are logged in as root, you can change the password of another user with the `passwd` command:
 
     passwd <username>
 
@@ -79,7 +79,7 @@ If your connections are *not* timing out or being rejected, or if you are able t
     | CentOS 6 | `less /var/log/secure` |
     | Ubuntu 14.04, Debian 7 | `less /var/log/auth.log` |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Review the [journalctl](/docs/guides/how-to-use-journalctl/) and [less](/docs/guides/how-to-use-less/) guides for help with navigating your logs when using those commands.
 {{< /note >}}
 
@@ -160,7 +160,7 @@ If your service is running but your connections still fail, your firewall (which
     sudo iptables-save # displays IPv4 rules
     sudo ip6tables-save # displays IPv6 rules
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status
@@ -222,7 +222,7 @@ SSH can be configured to disable logins for the root user. To check your SSH con
 
 If the value of the `PermitRootLogin` is `no`, then try logging in with another user. Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in as root again.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This option can also be set with the value `without-password`. If this value is used, root logins are accepted with public key authentication.
 {{< /note >}}
 
@@ -232,7 +232,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 
     grep PasswordAuthentication /etc/ssh/sshd_config
 
-If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 

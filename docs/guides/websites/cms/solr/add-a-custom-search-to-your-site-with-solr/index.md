@@ -26,13 +26,13 @@ Apache Solr is an open source search platform that provides administrators with 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system and package repositories and install `wget`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -129,7 +129,7 @@ Solr listens on port `8983` by default. Open the port to allow access to the web
 
     iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment "Solr port"
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Save your iptables rule using *iptables-persistent*, otherwise it will be lost on the next reboot.
 {{< /note >}}
 

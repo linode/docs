@@ -40,7 +40,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Create a CentOS 7 Linode in your closest data center. A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-1.  Ensure you have followed the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
 1.  Update your system:
 
@@ -76,7 +76,7 @@ ssh dhcpv6-client
 
 1.  Add the SIP services.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All the following firewalld rules contain the `--permanent` flag to ensure the rules persist after a system reboot.
 {{< /note >}}
 
@@ -340,6 +340,6 @@ Connected to Asterisk 16.0.0 currently running on li73-122 (pid = 980)
 
 Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
-{{< caution >}}
+{{< note type="alert" >}}
 When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
-{{< /caution >}}
+{{< /note >}}

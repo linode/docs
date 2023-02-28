@@ -101,7 +101,7 @@ Issue the following commands to download and unpack OpenCart into your web root 
 
 In the above example, replace `/var/www/html/example.com/public_html/` with your virtual host's web root and `2.3.0.2-compiled.zip` with the file name of the latest OpenCart release.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can find the latest version of OpenCart from their [Download Page](https://www.opencart.com/?route=cms/download).
 {{< /note >}}
 
@@ -150,7 +150,7 @@ You can now login using the administrator account details you entered previously
 
 Now that you have your OpenCart installation up and running, there are a few more steps that we recommend. Because of the security-sensitive nature of ecommerce websites, you will want to make sure your system is secure.
 
-1.  Make sure you follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+1.  Make sure you follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  Secure your website with SSL/TLS. Learn to [Install a SSL certificate with Apache on CentOS 7](/docs/guides/ssl-apache2-centos/). Once you've installed a certificate, enable **Use SSL** by following the [Opencart Documentation on SSL](http://docs.opencart.com/administration/ssl/).
 

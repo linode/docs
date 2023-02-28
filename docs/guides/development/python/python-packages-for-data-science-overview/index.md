@@ -10,7 +10,6 @@ published: 2021-06-11
 modified_by:
   name: Linode
 title: "An Overview of Python Packages for Data Science"
-enable_h1: true
 contributor:
   name: John Mueller
 ---

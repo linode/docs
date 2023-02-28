@@ -4,9 +4,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'In part ten on our series on Kubernetes, you will learn how to collect metrics on the resources used in your Kubernetes cluster by installing metrics-server.'
-title: "Continuous Deployment Using LKE: Installing metrics-server"
-h1_title: "Building a Continuous Deployment Pipeline Using LKE (Part 10): Installing metrics-server"
-enable_h1: true
+title: "Building a Continuous Deployment Pipeline Using LKE (Part 10): Installing metrics-server"
+title_meta: "Continuous Deployment Using LKE: Installing metrics-server"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06

@@ -3,7 +3,6 @@ slug: using-an-nfs-server-on-ubuntu2004
 author:
   name: Jeff Novotny
 description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
-og_description: 'This guide provides you with a brief introduction to NFS (Network File System) as well as how to configure NFS on a client and server on Ubuntu 20.04.'
 keywords: ['NFS','file sharing','NFS server','mount point']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +10,8 @@ published: 2021-08-06
 image: HowtoUseanNFSServeronUbuntu2004.jpg
 modified_by:
   name: Linode
-title: "Using an NFS Server on Ubuntu 20.04"
-h1_title: "How to Use an NFS Server on Ubuntu 20.04"
-enable_h1: true
+title: "Use an NFS Server on Ubuntu 20.04"
+title_meta: "How to Use an NFS Server on Ubuntu 20.04"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -58,13 +56,13 @@ Due to its flexibility, openness, and simple mechanisms, there are also some dra
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. To complete the server and client configuration, two Linodes are required. One Linode serves as the NFS host and server, while the other acts as a client. Note the IP addresses of both Linodes. Throughout the following sections, replace `server_ip_addr` with the IP address of the NFS server, and `client_ip_addr` with the address of the client.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -90,7 +88,7 @@ The NFS package must be installed on both the server and the client. The server 
 
         sudo apt install nfs-kernel-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, the NFS server supports versions 3 and 4. Verify the versions that are enabled using the `sudo cat /proc/fs/nfsd/versions` command.
     {{< /note >}}
 
@@ -212,9 +210,9 @@ client_ip_addr(rw,wdelay,root_squash,no_subtree_check,sec=sys,rw,secure,root_squ
 
 To access the export directory on the server, the client must first map the drive to a local directory. This directory is called a *mount point*. To create a mount point, create a new directory on the client and bind the server's export directory to it. Execute the following commands on the client to mount the server's export directory.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Use an empty directory for the mount point. Any pre-existing files or subdirectories in the mounted directory are hidden while the mount point is in use.
-{{< /caution >}}
+{{< /note >}}
 
 1. Create a new directory on the client to serve as the mount point.
 

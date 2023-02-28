@@ -11,9 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified_by:
   name: Linode
-title: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
-h1_title: "Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
-enable_h1: true
+title: "Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
+title_meta: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
 contributor:
   name: Martin Heller
   link: http://www.twitter.com/meheller

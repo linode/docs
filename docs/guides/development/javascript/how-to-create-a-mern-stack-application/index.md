@@ -10,9 +10,8 @@ published: 2022-09-12
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Create a MERN Stack on Linux"
-h1_title: "How to Create a MERN Stack Application"
-enable_h1: true
+title: "Create a MERN Stack Application"
+title_meta: "How to Create a MERN Stack on Linux"
 contributor:
   name: Cameron Laird
 external_resources:
@@ -26,11 +25,11 @@ Of all the possible technical bases for a modern web site, ["MERN holds the lead
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

@@ -124,7 +124,7 @@ You'll want to look in the `# TLS parameters` section of `/etc/postfix/main.cf`.
 
 For more information about Postfix's `smtpd_tls_mandatory_protocols` setting, please see their [Postfix Configuration Parameters](http://www.postfix.org/postconf.5.html#smtpd_tls_mandatory_protocols) documentation.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Postfix documentation has not yet been adjusted to disallow SSLv3.
 {{< /note >}}
 

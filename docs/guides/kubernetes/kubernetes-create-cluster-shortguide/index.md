@@ -34,10 +34,10 @@ aliases: ['/kubernetes/kubernetes-create-cluster-shortguide/']
     ![Select your cluster's setting](cluster-options.png "Select your cluster's setting")
 
 
-1. In the **Add Node Pools** section, select the [hardware resources](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools).
+1. In the **Add Node Pools** section, select the [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions) for the Linode worker node(s) that make up your LKE cluster. To the right of each plan, select the plus `+` and minus `-` to add or remove a Linode to a node pool one at time. Once you're satisfied with the number of nodes in a node pool, select **Add** to include it in your configuration. If you decide that you need more or fewer hardware resources after you deploy your cluster, you can always [edit your Node Pool](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#edit-or-remove-existing-node-pools).
 
-    {{< note >}}
-Currently, the available plan types for LKE worker nodes are [Shared](/docs/guides/choosing-a-compute-instance-plan/#1-shared), [Dedicated CPU](/docs/guides/choosing-a-compute-instance-plan/#4-dedicated-cpu), and [High Memory](/docs/guides/choosing-a-compute-instance-plan/#3-high-memory) plans. In order to meet the minimum system requirements for LKE nodes, [1 GB Shared Nanodes](https://www.linode.com/pricing/) are not an option for worker nodes.
+    {{< note respectIndent=false >}}
+Currently, the available plan types for LKE worker nodes are [Shared](/docs/products/compute/compute-instances/plans/choosing-a-plan/#1-shared), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#4-dedicated-cpu), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#3-high-memory) plans. In order to meet the minimum system requirements for LKE nodes, [1 GB Shared Nanodes](https://www.linode.com/pricing/) are not an option for worker nodes.
     {{< /note >}}
 
     ![Select your cluster's resources](select-your-cluster-resources.png "Select your cluster's resources")

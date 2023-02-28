@@ -13,9 +13,8 @@ published: 2020-03-26
 modified: 2022-08-05
 modified_by:
   name: Linode
-title: "How to Set Up a Docker Registry with LKE and Object Storage"
-h1_title: "Setting Up a Private Docker Registry with LKE and Object Storage"
-enable_h1: true
+title: "Setting Up a Private Docker Registry with LKE and Object Storage"
+title_meta: "How to Set Up a Docker Registry with LKE and Object Storage"
 contributor:
   name: Leslie Salazar
   link: https://github.com/leslitagordita/
@@ -26,17 +25,17 @@ Hosting a private Docker registry alongside your Kubernetes cluster allows you t
 
 ## Before you Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using [Kubernetes version 1.17](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
-{{</ note >}}
+{{< /note >}}
 
 1. [Deploy a LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This example was written using a node pool with two [2 GB nodes](https://www.linode.com/pricing/). Depending on the workloads you will be deploying on your cluster, you may consider using nodes with higher resources.
 
 1. Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm), [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl), and [Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) to your local environment.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For Docker installation instructions on other operating systems, see [Docker's official documentation](https://docs.docker.com/get-docker/).
-    {{</ note >}}
+    {{< /note >}}
 
 1. Configure kubectl to work with your new LKE cluster. See [Connect to your LKE Cluster with kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
 
@@ -44,9 +43,9 @@ For Docker installation instructions on other operating systems, see [Docker's o
 
 1. Purchase a domain name from a reliable domain registrar. Using Linode's DNS Manager, [create a new Domain](/docs/products/networking/dns-manager/guides/create-domain/) and [add an DNS "A" record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for a subdomain named `registry`. Your subdomain will host your Docker registry. This guide will use `registry.example.com` as the example domain.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Optionally, you can create a Wildcard DNS record, `*.example.com`. In a later section, you will point your DNS A record to a Linode NodeBalancer's external IP address. Using a Wildcard DNS record, will allow you to expose your Kubernetes services without requiring further configuration using the Linode DNS Manager.
-    {{</ note >}}
+    {{< /note >}}
 
 ## In this Guide
 
@@ -113,13 +112,13 @@ Now that your NGINX Ingress Controller has been deployed and your subdomain's A 
 
 ## Enable HTTPS
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Before performing the commands in this section, ensure that your DNS has had time to propagate across the internet. This process can take several hours. You can query the status of your DNS by using the following command, substituting `registry.example.com` for your subdomain and domain.
 
     dig +short registry.example.com
 
 If successful, the output should return the IP address of your NodeBalancer.
-{{</ note >}}
+{{< /note >}}
 
 To enable HTTPS on your Docker registry, you will create a Transport Layer Security (TLS) certificate from the [Let's Encrypt](https://letsencrypt.org/) certificate authority (CA) using the [ACME protocol](https://tools.ietf.org/html/rfc8555). This will be facilitated by [*cert-manager*](https://cert-manager.io/docs/), the native Kubernetes certificate management controller.
 
@@ -189,9 +188,9 @@ spec:
 
     - This manifest file creates a ClusterIssuer resource that will register an account on an ACME server. The value of `spec.acme.server` designates Let's Encrypt's production ACME server, which should be trusted by most browsers.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Let's Encrypt provides a staging ACME server that can be used to test issuing trusted certificates, while not worrying about hitting [Let's Encrypt's production rate limits](https://letsencrypt.org/docs/rate-limits/). The staging URL is `https://acme-staging-v02.api.letsencrypt.org/directory`.
-        {{</ note >}}
+        {{< /note >}}
 
     - The value of `privateKeySecretRef.name` provides the name of a secret containing the private key for this user's ACME server account (this is tied to the email address you provide in the manifest file). The ACME server will use this key to identify you.
     - To ensure that you own the domain for which you will create a certificate, the ACME server will issue a challenge to a client. cert-manager provides two options for solving challenges, [`http01`](https://cert-manager.io/docs/configuration/acme/http01/) and [`DNS01`](https://cert-manager.io/docs/configuration/acme/dns01/). In this example, the `http01` challenge solver will be used and it is configured in the `solvers` array. cert-manager will spin up *challenge solver* Pods to solve the issued challenges and use Ingress resources to route the challenge to the appropriate Pod.
@@ -222,9 +221,9 @@ spec:
   - registry.example.com
     {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The configurations in this example create a Certificate that is valid for 90 days and renews 15 days before expiry.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Create the Certificate resource:
 
@@ -289,7 +288,7 @@ Your LKE Cluster will also need to authenticate to your Docker registry in order
 
 Before deploying the Docker Registry Helm chart to your cluster, you will define some configurations so that the Docker registry uses the NGINX Ingress controller, your `registry` Object Storage bucket, and your cert-manager created TLS certificate. See the [Helm Chart's official documentation](https://helm.sh/docs/topics/registries/) for more information about registries.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not yet [generated an Object Storage key pair](/docs/products/storage/object-storage/guides/access-keys/) and [created an Object Storage bucket](/docs/products/storage/object-storage/guides/manage-buckets/) to store your registry's images, do so now before continuing with the rest of this section.
   {{< / note >}}
 
@@ -335,9 +334,9 @@ s3:
 1.  Deploy your Docker registry using the configurations you created in the previous step:
 
         helm install docker-registry stable/docker-registry -f docker-configs.yaml
-    {{< note >}}
+    {{< note respectIndent=false >}}
     If a deprecation error appears during the installation using helm use the following command: `helm repo add twuni https://helm.twun.io`.
-    {{</ note >}}
+    {{< /note >}}
 1.  Navigate to your registry's domain and verify that your browser loads the TLS certificate.
 
     ![Verify that your Docker registry's site loads your TLS certificate](secure-docker-registry.png)

@@ -87,7 +87,7 @@ Linux distributions are frequently updated to fix bugs, add new features, and pa
 
 ### Update Installed Packages
 
-You learned about the importance of regularly updating your server's packages in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
+You learned about the importance of regularly updating your server's packages in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
 
 To check for software updates and install them in Ubuntu or Debian, enter the following commands, one by one:
 
@@ -96,7 +96,7 @@ apt-get update
 apt-get upgrade --show-upgraded
 ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/guides/linux-package-management-overview/).
 {{< /note >}}
 
@@ -142,6 +142,6 @@ Linux distributions such as Ubuntu and Fedora use version numbers to identify th
 
 There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server. See our [Upgrading guides](/docs/security/upgrading) for more information.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.
 {{< /note >}}

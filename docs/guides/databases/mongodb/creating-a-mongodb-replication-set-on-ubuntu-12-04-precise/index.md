@@ -12,8 +12,8 @@ aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
-h1_title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
+title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
+title_meta: 'How To Create a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'

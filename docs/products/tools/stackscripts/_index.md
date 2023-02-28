@@ -40,7 +40,7 @@ StackScripts are available at no charge across [all regions](https://www.linode.
 ## Technical Specifications
 
 - Deployable on new Compute Instances
-- Use any Linode-provided Linux distribution (see [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/))
+- Use any Linode-provided Linux distribution (see [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/))
 - Supports the bash scripting language and any other scripting language supported by your chosen Linux distribution(s) (such as Python)
 - Supports custom user-defined fields (UDFs)
 - StackScripts can be made public to share with the community

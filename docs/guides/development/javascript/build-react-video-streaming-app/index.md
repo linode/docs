@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-09
 modified_by:
   name: Linode
-title: "How to Build a Video Streaming App with React and Node"
-h1_title: "Building a Video Streaming Application with React and Node"
-enable_h1: true
+title: "Building a Video Streaming Application with React and Node"
+title_meta: "How to Build a Video Streaming App with React and Node"
 image: BuildVidStreamApp_React_Node.png
 contributor:
   name: Deven Rathore
@@ -51,7 +50,7 @@ For this tutorial, you’ll need:
 - [FFmpeg](https://www.ffmpeg.org/download.html) installed on your workstation
 - [Node.js](https://nodejs.org/en/download/). [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm) can be used to install and maintain several versions of Node on your computer.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When following the tutorial, you can refer to the [project source code](https://github.com/Dunebook/Videostreaming-app) to compare your code with the final result.
 {{< /note >}}
 
@@ -157,7 +156,7 @@ app.listen(4000, () => {
 
     This command generates our application shell and installs the packages required by React. The `.` argument means all this setup happens in the current directory (`client`).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't have `npx` on your workstation, it can be installed globally with:
 
     npm install -g npx
@@ -284,7 +283,7 @@ After fetching the video metadata, we render it as a list of videos (lines 19-40
 
 On line 28, another endpoint request is made to `http://localhost:4000${video.poster}`, which will return a thumbnail of a video in the list. The `video.poster` variable is populated with a value like `/video/0/poster` from the video metadata array, so the request will have the form `http://localhost:4000/video/:id/poster`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We have not created the `/videos` metadata endpoint, or the `/video/:id/poster` video thumbnail endpoint yet. These will be added to the `server` project in the [Handling Requests from the Frontend](#handling-requests-from-the-frontend) section.
 {{< /note >}}
 
@@ -331,7 +330,7 @@ For the player view, we get the video `id` from the URL parameter (line 6):
 - With the `id`, we can make a request to the server to fetch metadata about the video: `http://localhost:4000/video/${this.state.videoId}/data`, on line 12.
 - In the markup for the view, the video element's `src` attribute is a link which appends the `id` to the `/video` route, and the server responds with the actual video: `http://localhost:4000/video/${this.state.videoId}`, on line 24.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We have not created the `/video/:id/data` metadata endpoint, or the `/video/:id` video streaming endpoint yet. These will be added to the `server` project in the [Handling Requests from the Frontend](#handling-requests-from-the-frontend) section.
 {{< /note >}}
 

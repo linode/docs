@@ -1,7 +1,7 @@
 ---
 title: "Referral Program"
 description: "Learn how to join Linode's referral program and gain credits when you refer new users"
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 When you refer a new user to Linode through our referral program, both you and the new user can receive a promotional credit. Here are the program details:

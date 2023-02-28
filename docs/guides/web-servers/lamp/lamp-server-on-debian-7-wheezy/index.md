@@ -28,13 +28,13 @@ deprecated: true
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -91,7 +91,7 @@ There are different ways to set up virtual hosts; however, the method below is r
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 {{< /note >}}
 
@@ -104,7 +104,7 @@ The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained loggi
 
         sudo a2ensite example.com.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you need to disable your website later, run:
 
 sudo a2dissite example.com.conf
@@ -172,7 +172,7 @@ max_input_time = 30
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure the lines above are uncommented. Commented lines begin with a semicolon (**;**).
 {{< /note >}}
 

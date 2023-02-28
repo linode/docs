@@ -4,15 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
-og_description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
 keywords: ['Python-Markdown','What is Python-Markdown','Python-Markdown Library','Convert Markdown to HTML']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-21
 modified_by:
   name: Linode
-title: "How to Use Python-Markdown to Convert Markdown to HTML"
-h1_title: "How to Use Python-Markdown to Convert Markdown to HTML"
-enable_h1: true
+title: "Use Python-Markdown to Convert Markdown to HTML"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -49,9 +46,9 @@ There are a few minor differences between the behavior of Python-Markdown and th
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure Python is properly installed on the Linode. You must be able to launch and use the Python programming environment and have some basic knowledge of the Python programming language. For information on how to install and use Python, see the [Linode guide to Python](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
@@ -192,7 +189,7 @@ The second technique takes an even simpler approach. It invokes the `markdownFro
     -   Translates the source material into HTML using `markdown.markdown` and stores the output in `tempHtml`.
     -   Writes the HTML markup to `List.html` using the Python `write` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Open the initial file in `r` (read) mode, and the second in `w` (write) mode. When handling files, use the `with` statement to ensure Python closes them later on. In actual practice, this program would prompt the user for the names of the Markdown and HTML files. For more information on file processing, see the [Python file documentation](https://docs.python.org/3/tutorial/inputoutput.html).
     {{< /note >}}
 

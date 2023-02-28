@@ -10,9 +10,8 @@ published: 2021-07-30
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "Understanding and Using IP Addresses"
-h1_title: "How to Understand and Use IP Addresses"
-enable_h1: true
+title: "Understand and Use IP Addresses"
+title_meta: "How to Understand and Use IP Addresses"
 contributor:
   name: Jeffery Novotny
 external_resources:
@@ -33,7 +32,7 @@ Network communications are conceptualized in the *Internet Protocol Suite*, whic
 - **Transport Layer:** The third layer that establishes connectivity between hosts and handles task-specific data exchanges.
 - **Application Layer:** The top layer that provides services to the user using data from the network.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The networking layers are sometimes modeled by the seven-layer *Open Systems Interconnection Model* (OSI). The OSI model is very useful for network engineers but does not map as closely to today's internet.
 {{< /note >}}
 
@@ -66,7 +65,7 @@ A server can offer different services at the same address based on the port numb
 
 The Domain Name System (DNS) eliminates the need for users to know the IP address of the system they want to access. DNS servers translate the domain name to the associated IP address. This process is known as *resolving* the domain.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 IP addresses beginning with the octets `198.51.100` are reserved for testing and documentation. The example used in this section is taken from this address space.
 {{< /note >}}
 
@@ -92,7 +91,7 @@ A *subnet* is a portion of a larger network. For instance, all addresses on the 
 
 The first address within a subnet is frequently used to identify the subnet itself. The final address in the space is used for the broadcast address. Typically, this is an address ending with the octet `255`, such as `198.51.100.255`. The broadcast address might be different in a small subnet that does not contain an address ending with the `255` octet.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 At times, the term subnet is used to refer to the entire network, even if it is further subdivided into smaller networks. As well, the portion of an IP address describing the host is occasionally referred to as the *rest field*.
 {{< /note >}}
 
@@ -148,8 +147,8 @@ A variety of inter-operability approaches between IPv4 and IPv6 are sometimes us
 
 ## Finding Your IP Addresses via the Linux Command Line
 
-{{< note >}}
-If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+{{< note respectIndent=false >}}
+If you are trying to find the IP addresses of a Linode Compute Instance, you can do so from the Cloud Manager. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 {{< /note >}}
 
 1.  On Ubuntu and most Linux systems, the `ip addr show` command displays all networking information. The IPv4 address of the system is shown in the `inet` field, while the IPv6 address is referred to as the `inet6` address.
@@ -183,10 +182,10 @@ If you are trying to find the IP addresses of a Linode Compute Instance, you can
 
 1. On all systems with a browser, the local IP address can be found using Google Search. Type `what is my IP address` in the search bar. Google Search displays the public IP address in the results.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The actual IP address could be masked in certain circumstances, resulting in a different public IP address. With a proxy server, only the address of the proxy is shown. VPNs also hide the system address. Keeping your IP address hidden increases the security of your connection and computer.
     {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The old `ifconfig` Linux command is now deprecated. It can still be used on Ubuntu by using `apt` to install `net-tools`, but this is not recommended.
 {{< /note >}}

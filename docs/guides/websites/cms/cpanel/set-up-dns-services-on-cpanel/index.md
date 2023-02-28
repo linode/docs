@@ -13,8 +13,8 @@ modified: 2021-10-21
 modified_by:
   name: Linode
 published: 2011-11-04
-title: Set Up DNS Services on cPanel
-h1_title: Setting up DNS Services on cPanel
+title: Setting up DNS Services on cPanel
+title_meta: Set Up DNS Services on cPanel
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
@@ -110,9 +110,9 @@ You then want to begin adding your domains to the Linode DNS Manager as secondar
 
 Complete the following steps using Linode Cloud Manager:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Creating a domain also creates its corresponding domain zone.
-{{</ note >}}
+{{< /note >}}
 
 1.  From the **Domains** section, click **Add a Domain**. The **Create a Domain** panel appears where you can fill out the form fields with your domain's information.
     ![add a secondary zone](secondary_zone.png)

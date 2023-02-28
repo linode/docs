@@ -5,7 +5,7 @@ author:
 description: "Learn how to change your user's password on a Linode account."
 keywords: ["password", "change password", "update password", "cloud manager"]
 tags: ["linode platform","cloud manager","security"]
-date: 2022-11-21
+published: 2022-11-21
 image: L_ChangeYourPassword.png
 title: Reset Your User Password
 title_meta: Reset Your User Password on the Linode Platform
@@ -22,8 +22,8 @@ If you want to change your password, or you forgot your password and need a new 
 1. Enter your username in the **Username** field.
 
     {{< note >}}
-If you've forgotten your Linode Cloud Manager username, see [Recovering a Lost Username](/docs/products/platform/accounts/guides/manage-users/#recovering-a-lost-username).
-{{< /note >}}
+    If you've forgotten your Linode Cloud Manager username, see [Recovering a Lost Username](/docs/products/platform/accounts/guides/manage-users/#recovering-a-lost-username).
+    {{< /note >}}
 
 1. Click the **Reset password** button.
 

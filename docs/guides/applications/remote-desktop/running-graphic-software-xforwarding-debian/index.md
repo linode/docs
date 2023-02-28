@@ -87,6 +87,6 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
     ![Iceweasel, running on a Linode](1633-xforwarding_3.png)
 
- {{< note >}}
+{{< note >}}
 More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
 {{< /note >}}

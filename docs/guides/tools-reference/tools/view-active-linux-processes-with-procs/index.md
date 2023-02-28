@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
 modified_by:
   name: Linode
-title: "View Active Processes in Linux with the procs Command"
-h1_title: "View Active Linux Processes Using procs"
-enable_h1: true
+title: "View Active Linux Processes Using procs"
+title_meta: "View Active Processes in Linux with the procs Command"
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -44,11 +43,11 @@ Because the `ps` command's output is relatively sparse, users often append the `
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,7 +74,7 @@ Follow the steps below to install procs using Homebrew:
 
 1. Verify Homebrew is working properly using the `brew doctor` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the `brew help` command to see a full list of the Homebrew commands.
     {{< /note >}}
 
@@ -99,7 +98,7 @@ Use the following command to install procs using snap.
 procs v0.11.8 from dalance installed
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 On certain Linux distributions, the default system package manager can be used to install procs:
 
 - For Fedora systems, use the command `sudo dnf install procs`.
@@ -292,7 +291,7 @@ align = "Right"
 
     ![procs with a new custom field](procs-custom-config.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It can be somewhat difficult to change the configuration using the method outlined in this section. New columns must be added in a certain order and in the proper format. Procs silently ignores non-compliant or improperly formatted configuration. For a ready-made configuration file that displays most of the useful columns, use the standardized [*large.toml template file*](https://github.com/dalance/procs/blob/master/config/large.toml). It might be easier and less error-prone to start with this file and remove any unwanted columns or configuration.
 {{< /note >}}
 
