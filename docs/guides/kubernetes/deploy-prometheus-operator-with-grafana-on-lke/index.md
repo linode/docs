@@ -311,7 +311,7 @@ If successful, the output should return the IP address of your NodeBalancer.
 1.  Install cert-manager's CRDs.
 
     ```command
-    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml
+    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.11.0/cert-manager.crds.yaml
     ```
 
 1.  Add the Helm repository which contains the cert-manager Helm chart.
@@ -357,7 +357,7 @@ Now that cert-manager is installed and running on your cluster, you will need to
 1.  Using the text editor of your choice, create a file named `acme-issuer-prod.yaml` with the example configurations, replacing the value of `email` with your own email address for the ACME challenge:
 
     ```file {title="~/lke-monitor/acme-issuer-prod.yaml" lang="yaml"}
-    apiVersion: cert-manager.io/v1alpha2
+    apiVersion: cert-manager.io/v1
     kind: ClusterIssuer
     metadata:
       name: letsencrypt-prod
@@ -399,7 +399,7 @@ After you have a ClusterIssuer resource, you can create a Certificate resource. 
     {{< /note >}}
 
     ```file {title="~/lke-monitor/certificate-prod.yaml" lang="yaml"}
-    apiVersion: cert-manager.io/v1alpha2
+    apiVersion: cert-manager.io/v1
     kind: Certificate
     metadata:
       name: prometheus-operator-prod
