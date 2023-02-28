@@ -1,5 +1,5 @@
 ---
-slug: mongodb-indexing-explained
+slug: indexing-mongodb
 author:
   name: Linode Community
   email: docs@linode.com
