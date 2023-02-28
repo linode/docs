@@ -357,5 +357,3 @@ You can optionally also add your server's remote IP address to the NGINX configu
 Now you have your Supabase instance running and configured for your security needs. Take advantage of your instance by reading the [Supabase documentation](https://supabase.com/docs/). There, you can find guides on getting started with the wide range of features Supabase has to offer.
 
 And continue learning with us in our upcoming series of guides on Supabase. These cover everything from setting up your instance, to linking your instance to Linode Object Storage, to building JavaScript applications with Supabase.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
