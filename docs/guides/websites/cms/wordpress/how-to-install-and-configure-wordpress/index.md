@@ -129,3 +129,4 @@ If using permalinks to set your posts' URLs, Apache will need to be updated to a
 You will now be able to login to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 
 Congratulations! You have now successfully installed WordPress.
+{{< /note >}}
