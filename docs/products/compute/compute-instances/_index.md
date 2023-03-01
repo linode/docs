@@ -10,9 +10,7 @@ cascade:
     product_description: "Linux virtual machines equipped with a tailored set of resources designed to run any cloud-based workload."
 ---
 
-{{< note title="Notice of Upcoming Pricing Changes">}}
-On April 1st 2023, updated pricing will go into effect for some Compute services. This includes decreasing the cost of network transfer (egress) overage fees and updating the rates for Shared and Dedicated CPU Compute Instance plans (excluding the $5/mo 1GB Shared plan). To learn more about these changes, review the [Akamai’s Cloud Computing Services: Pricing Update](https://www.akamai.com/blog/cloud/akamai-cloud-computing-price-update) blog post.
-{{< /note >}}
+{{< content "april-price-update-shortguide" >}}
 
 Compute Instances are virtual machines that run on Linode's secure and reliable cloud infrastructure. To support a variety of workloads, Compute Instance plans are organized under several basic plan types, each with their own set of resources, unique value propositions, and technical specifications (see [Plan Types](/docs/products/compute/compute-instances/plans/)). Each Compute Instance can run a variety of [supported Linux distributions](/docs/products/compute/compute-instances/guides/distributions/), including the latest versions of Ubuntu, CentOS Stream, Debian, and more.
 
