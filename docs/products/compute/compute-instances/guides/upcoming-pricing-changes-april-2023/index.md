@@ -62,10 +62,10 @@ Starting on April 1st 2023, the network transfer (egress) overage fees will be c
 
 ## Additional IPv4 Addresses
 
-Each Compute Instance includes a free IPv4 address and IPv6 address. Additional IPv4 addresses can be purchased for a fee and added to an instance. Starting on April 1st 2023, the cost for each additional IP address will increase from $1/address to $2/address.
+Each Compute Instance includes a free IPv4 address and IPv6 address. Additional IPv4 addresses can be purchased for a fee and added to an instance. Starting on April 1st 2023, the cost for each additional IP address will increase from $1/mo to $2/mo.
 
 
 | | Existing Price | <span style="color:#02b159">New Price</span> |
 | -- | -- | -- |
 | First IPv4 Address | Free | **<span style="color:#02b159">Free</span>** |
-| Additional IPv4 Addresses | $1/address | **<span style="color:#02b159">$2/address</span>** |
+| Additional IPv4 Addresses | $1/mo | **<span style="color:#02b159">$2/mo</span>** |
