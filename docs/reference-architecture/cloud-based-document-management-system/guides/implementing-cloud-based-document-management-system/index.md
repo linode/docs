@@ -4,14 +4,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: "Implementing an efficient electronic document management system (EDMS) can give you a high performance, high availability solution for storing and processing documents. Learn about our architecture for a cloud-based document management system and how to implement your own in this tutorial."
-og_description: "Implementing an efficient electronic document management system (EDMS) can give you a high performance, high availability solution for storing and processing documents. Learn about our architecture for a cloud-based document management system and how to implement your own in this tutorial."
 keywords: ['open source document management system','cloud document management system','cloud edms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-28
+published: 2023-02-28
 modified_by:
   name: Nathaniel Stickman
 title: "How to Implement a Cloud-based Document Management System"
-h1_title: "How to Implement a Cloud-based Document Management System"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -70,9 +68,9 @@ The included Terraform script can be a little daunting to approach blindly. Ther
 
 With these steps, the Terraform script deploys the application nodes, database nodes, and object storage bucket for your cloud-based document management system.
 
-{{< caution >}}
+{{< note type="warning" >}}
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Download the Terraform package for this tutorial, which you can find [here](cbdms-terraform.zip).
 
@@ -102,9 +100,9 @@ On Linux systems, you may need to install `unzip` in order to unzip the package.
 
     -   `WEBMASTER_EMAIL_ADDRESS` should be the email address to be associated with the application. Specifically, this email address is used for registering an SSL certificate.
 
-    {{< caution >}}
-Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
-    {{< /caution >}}
+    {{< note type="warning" >}}
+    Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+    {{< /note >}}
 
 1.  The Terraform script assumes that you have an SSH public key file stored at `~/.ssh/id_rsa.pub`. If this is not the case, add an `ssh_key` field to the `terraform.tfvars` file, and give it a string value designating the location of your SSH public key.
 
