@@ -18,7 +18,7 @@ aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/netw
 ---
 
 {{< note title="Notice of Upcoming Pricing Changes">}}
-On April 1st 2023, updated pricing will go into effect for some Compute services. This includes decreasing the cost of network transfer (egress) overage fees from $0.01/GB to $0.005/GB. To learn more about these changes, review the [Akamai’s Cloud Computing Services: Pricing Update](https://www.akamai.com/blog/cloud/akamai-cloud-computing-price-update) blog post.
+On April 1st 2023, updated pricing will go into effect for some Compute services. This includes decreasing the cost of network transfer (egress) overage fees from $0.01/GB to $0.005/GB. To learn more about these changes, review the [Akamai’s Cloud Computing Services: Pricing Update](https://www.linode.com/blog/linode/akamai_cloud_computing_price_update/) blog post.
 {{< /note >}}
 
 ## Overview
