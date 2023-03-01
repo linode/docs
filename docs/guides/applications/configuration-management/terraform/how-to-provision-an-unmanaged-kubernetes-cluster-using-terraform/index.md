@@ -34,7 +34,7 @@ Before starting to deploy a Kubernetes cluster with Terraform, make sure:
 
 1. You are familiar with Terraform. You can read through [A Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/) to familiarize yourself with key concepts.
 
-2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) to get familiar with kubeadm.
+2. You are familiar with Kubernetes concepts. For an introduction, see the [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/) series. Read through [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/) to get familiar with kubeadm.
 
 3. You have a personal access token for the Linode API to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 

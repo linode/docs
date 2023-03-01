@@ -46,7 +46,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Toronto (Canada) |  *Not currently supported* | - | - | 15 |
 
 {{< note >}}
-If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). Review documentation on our [planned network infrastructure upgrades](/docs/guides/network-infrastructure-upgrades/) to learn more about these changes.
+If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). Review documentation on our [planned network infrastructure upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/) to learn more about these changes.
 {{< /note >}}
 
 {{< note >}}

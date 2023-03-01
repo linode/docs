@@ -17,6 +17,10 @@ tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/']
 ---
 
+{{< note title="Notice of Upcoming Pricing Changes">}}
+On April 1st 2023, updated pricing will go into effect for some Compute services. This includes decreasing the cost of network transfer (egress) overage fees from $0.01/GB to $0.005/GB. For specific pricing changes, see the [Upcoming Pricing Changes](/docs/products/compute/compute-instances/guides/upcoming-pricing-changes-april-2023/) guide. To learn more general details about these changes, review the [Akamai’s Cloud Computing Services: Pricing Update](https://www.linode.com/blog/linode/akamai_cloud_computing_price_update/) blog post.
+{{< /note >}}
+
 ## Overview
 
 **Network transfer** is the exchange of data between two computers over the public internet or a private network. Other providers and publications may refer to this as data transfer, ingress/egress, and bandwidth, among many other terms. This traffic is broken down into inbound and outbound network transfer. *Inbound network transfer* is data sent *to* your service (such as a file upload). *Outbound network transfer* is data sent *from* your service (such as a web page and its images, stylesheets, and JavaScript files).

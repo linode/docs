@@ -37,7 +37,7 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ## Getting Started After Deployment
 
-1. Log into your new Compute Instance through [LISH](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1. Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
 1. Review the installation log.
 
@@ -56,7 +56,7 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
     The gopaddle dashboard is not available until installation has finished. As such, do not continue with this guide until the completion message appears in the log file.
     {{< /note >}}
 
-1. Open your web browser and navigate to the URL provided in the last step. This should be `http://[ip-address]:30003/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to the URL provided in the last step. This should be `http://[ip-address]:30003/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. Provided the installation has finished, this URL should display the *gopaddle Evaluation Agreement* page. Review the evaluation agreement and subscribe to the lite edition.
 

@@ -36,7 +36,7 @@ modified: 2022-10-07
 
 ## Automated Deployment Tutorials
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
 - [Create a NodeBalancer with Terraform](/docs/guides/create-a-nodebalancer-with-terraform/)
 
