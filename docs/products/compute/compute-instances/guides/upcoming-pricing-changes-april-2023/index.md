@@ -27,7 +27,7 @@ Beginning April 1st 2023, the price for most Shared CPU and Dedicated CPU Comput
 | **1 GB Shared CPU** | $5 | **<span style="color:#02b159">$5 (no change)</span>** | 1 GB | 1 | 25 GB | 1 TB | 40/1 Gbps |
 | **2 GB Shared CPU** | $10 | **<span style="color:#02b159">$12</span>** | 2 GB | 1 | 50 GB | 2 TB | 40/2 Gbps |
 | **4 GB Shared CPU** | $20 | **<span style="color:#02b159">$24</span>**  | 4 GB | 2 | 80 GB | 4 TB | 40/4 Gbps |
-| **8 GB Shared CPU** | $40 | **<span style="color:#02b159">48</span>** | 8 GB | 4 | 160 GB | 5 TB | 40/5 Gbps |
+| **8 GB Shared CPU** | $40 | **<span style="color:#02b159">$48</span>** | 8 GB | 4 | 160 GB | 5 TB | 40/5 Gbps |
 | **16 GB Shared CPU** | $80 | **<span style="color:#02b159">$96</span>** | 16 GB | 6 | 320 GB | 8 TB | 40/6 Gbps |
 | **32 GB Shared CPU** | $160 | **<span style="color:#02b159">$192</span>** | 32 GB | 8 | 640 GB | 16 TB | 40/7 Gbps |
 | **64 GB Shared CPU** | $320| **<span style="color:#02b159">$384</span>** | 64 GB | 16 | 1280 GB | 20 TB | 40/9 Gbps |
