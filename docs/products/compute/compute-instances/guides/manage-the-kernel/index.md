@@ -128,7 +128,7 @@ At the time of this writing, if you wish to switch from a Linode kernel to GRUB2
 
 `Failed to mount /dev/sda as root file system`
 
-Users can generally resolve this issue by either using the latest upstream kernel instead, or by adding a kernel parameter to the grub configuration file, usually found in `/etc/default/grub` to disable the asynchronous scanning which causes the issue. To do this, the following line will need to be added to the end of the grub configuration file:
+Users can generally resolve this issue by either using the latest upstream kernel instead, or by adding a kernel parameter to the grub configuration file, usually found in `/etc/default/grub` to disable the asynchronous scanning which causes the issue. To do this, ensure that you do not delete other lines in the grub configuration file and append the following line to the end of the file:
 
 ```file {title"/etc/default/grub"}
 scsi_mod.scan=sync
