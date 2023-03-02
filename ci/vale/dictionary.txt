@@ -84,6 +84,7 @@ aspell
 askbot
 aske
 async
+astro
 asynchrony
 atera
 atlanta
