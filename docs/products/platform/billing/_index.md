@@ -9,7 +9,7 @@ keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-25
-modified: 2022-11-17
+modified: 2023-03-03
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -46,6 +46,14 @@ You create a 4GB Compute Instance on the second day of the month, half-way throu
 #### A Service is Present on an Account for *Just Some* of the Month
 
 You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
+
+#### A Service is Resized During the Billing Cycle
+
+Resizing a service, such as a Compute Instance, effectively creates a new billable service. Each of these billable services will appear as separate line items on your monthly invoice. For instance, you create a 4GB Compute Instance prior to the start of the month and resize it to an 8GB Compute Instance mid-way through the month. Your invoice will have each of these services as separate line items. Each line item will reflect the hourly rate for the time the service was active (up to the monthly cap).
+
+{{< note type=warning >}}
+If a service is resized to a new plan and then resized back to the original plan all in a single billing cycle, there will be 3 billable services. The combined hourly rate for these services may exceed the monthly cap of the original service plan.
+{{< /note >}}
 
 ### Mid-Month Billing
 
