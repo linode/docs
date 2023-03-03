@@ -236,6 +236,7 @@ cakey
 calc
 campione
 captcha
+Carbonio
 carootcert
 ccm
 CDNs
@@ -2497,6 +2498,7 @@ zabbix
 zapier
 zcat
 zend
+Zextras
 zgrep
 zhao
 zigbee
