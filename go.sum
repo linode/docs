@@ -51,6 +51,8 @@ github.com/linode/linode-api-docs/v4 v4.144.1 h1:5X1IzNNpgd+saxAWgYmdh9qGmEah4f9
 github.com/linode/linode-api-docs/v4 v4.144.1/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-api-docs/v4 v4.145.0 h1:Wkp5sPjfrdX9k3fuLO6lZGyYtYeB/VWUQBF5u/8JTUM=
 github.com/linode/linode-api-docs/v4 v4.145.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
+github.com/linode/linode-api-docs/v4 v4.147.0 h1:bWE6e1GCHPjuGDG/9w7AEGyMdRMFXIkRVm3sbnluWpo=
+github.com/linode/linode-api-docs/v4 v4.147.0/go.mod h1:JRT7kOTjArLJngT4KkAnxWNGszYSP+zlQg2OHQ407RI=
 github.com/linode/linode-docs-theme v0.0.0-20220622135843-166f108e1933 h1:QchGQS6xESuyjdlNJEjvq2ftGX0sCTAhPhD5hAOJVMI=
 github.com/linode/linode-docs-theme v0.0.0-20220622135843-166f108e1933/go.mod h1:6kYeZt+rMvJFZ9Wbnm4CDSn8Sg1MuYjr2Kx6W/awiQM=
 github.com/linode/linode-docs-theme v0.0.0-20220718150422-ea48dbf69943 h1:BE3OgPTfmSdYeNUxcC1clIpJZhdMmYByCCCap0njwyY=

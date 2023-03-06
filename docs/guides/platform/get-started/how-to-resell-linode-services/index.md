@@ -32,7 +32,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 -   An app developer that uses Linode to host their customer's database.
 
--   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/case-studies/cloudnet) for an in-depth look at why they chose to partner with Linode.
+-   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/content/cloudnet/) for an in-depth look at why they chose to partner with Linode.
 
 ## Referral Program
 
