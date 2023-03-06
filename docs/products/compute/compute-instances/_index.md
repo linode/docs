@@ -10,6 +10,8 @@ cascade:
     product_description: "Linux virtual machines equipped with a tailored set of resources designed to run any cloud-based workload."
 ---
 
+{{< content "april-price-update-shortguide" >}}
+
 Compute Instances are virtual machines that run on Linode's secure and reliable cloud infrastructure. To support a variety of workloads, Compute Instance plans are organized under several basic plan types, each with their own set of resources, unique value propositions, and technical specifications (see [Plan Types](/docs/products/compute/compute-instances/plans/)). Each Compute Instance can run a variety of [supported Linux distributions](/docs/products/compute/compute-instances/guides/distributions/), including the latest versions of Ubuntu, CentOS Stream, Debian, and more.
 
 ## Availability
@@ -20,7 +22,7 @@ Compute Instances are available across [all regions](https://www.linode.com/glob
 
 {{< content "instance-comparison-shortguide" >}}
 
-## Additional Technical Specifications
+## Technical Specifications
 
 In addition to the resources allocated to each available plan (outlined above), Compute Instances have the following specifications:
 
