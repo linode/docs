@@ -27,7 +27,7 @@ After you’ve figured out how to create domains, you’ll never need to call IT
 
 ## Open the Create Domain Form in the Cloud Manager
 
-Figuuring out how to create a domain starts with getting into the system. Log in to the [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
+Figuring out how to create a domain starts with getting into the system. Log in to the [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
 
 ## Select the Zone Type
 
@@ -56,7 +56,7 @@ Once you've made your selections, click the **Create Domain** button to add your
 
 ## Finish the Setup
 
-After adding a new domain, there are a few additional stepa required to complete the process:
+After adding a new domain, there are a few additional steps required to complete the process:
 - **Add DNS Records.** After the domain has been created, you can immediately start adding and editing DNS records for it. If you are migrating to Linode from an existing DNS provider, make sure you have added all of the necessary DNS records to your domain *before* adding Linode's name servers to your domain (on your registrar). See [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 
 - **Add Linode's Name Servers.** To use Linode as the authoritative name servers for your domain, you need to change the name servers on your registrar. Note that the process for this varies for each registrar.

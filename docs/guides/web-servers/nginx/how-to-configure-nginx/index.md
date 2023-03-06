@@ -56,10 +56,10 @@ http {
 
 
 There are 4 directives provided in this snippet in the main context :
-  1. user
-  2. worker_processes
-  3. error_log
-  4. pid
+  1. `user`
+  2. `worker_processes`
+  3. `error_log`
+  4. `pid`
 
 Additional directives can be placed inside of events{...}, http{...} and so on. To read more about directives, visit the [official NGINX documentation](https://nginx.org/en/docs/ngx_core_module.html).
 
@@ -113,12 +113,12 @@ server {
 {{</ file >}}
 
 There are several directives in this block that are worth taking a look at:
-  1. listen - tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections
-  2. server_name: allows multiple domains to be served from a single IP address. Ideally, it should be created per domain or site. Based on the request header it receives, the server decides which domain to serve.
+  1. `listen` - tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections
+  2. `server_name`: allows multiple domains to be served from a single IP address. Ideally, it should be created per domain or site. Based on the request header it receives, the server decides which domain to serve.
 
-### NGINX Server Blocks Configuration Example - server_name
+### NGINX Server Blocks Configuration
 
-Here are some examples for server_name NGINX configuration based on sites you want to host on the server.
+Here are some examples for `server_name` NGINX configuration based on sites you want to host on the server.
 
 Configuration for processing requests for both `example.com` and `www.example.com`:
 
