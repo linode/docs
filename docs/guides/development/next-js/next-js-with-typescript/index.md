@@ -6,7 +6,7 @@ author:
 description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
 keywords: ['next js typescript starter', 'nextjs typescript example', 'create next js typescript app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-21
+published: 2023-03-07
 modified_by:
   name: Nathaniel Stickman
 title: "Building a Next.js App with Typescript"
@@ -90,7 +90,9 @@ For running the starter script and managing application dependencies, this guide
 ✔ Would you like to use ESLint with this project? … No / Yes
     {{< /output >}}
 
-The above command gives you a ready-to-run Next.js application built on TypeScript. Running the following command from the project's base directory starts up the "Welcome" application on the Next.js development server:
+The above command gives you a ready-to-run Next.js application built on TypeScript. ESLint is optional, but helps in surfacing errors or problems in application code. 
+
+Running the following command from the project's base directory starts up the "Welcome" application on the Next.js development server:
 
     cd ~/example-app
     npm run dev
