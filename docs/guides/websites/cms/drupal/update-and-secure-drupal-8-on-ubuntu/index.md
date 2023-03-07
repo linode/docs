@@ -26,7 +26,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 1.  Ensure that you have completed the following guides:
 
-    -   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
+    -   [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
     -   [Install a LAMP stack](/docs/guides/lamp-on-ubuntu-14-04/)
     -   [Install and Configure Drupal 8](/docs/guides/how-to-install-and-configure-drupal-8/)
 
@@ -38,7 +38,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 - This guide will use `sudo` wherever possible.
 - You may need additional firewall rules for your specific application.
 - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.
@@ -56,7 +56,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 1.  Log in to your Drupal site and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
 {{< /note >}}
 
@@ -98,7 +98,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
 3.  From a browser on your local machine, navigate to `example.com/update.php`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
 
     chgrp www-data /var/www/html/example.com/public_html/sites/default/files
@@ -108,7 +108,7 @@ If `update.php` does not load or returns a 403 Forbidden error, you can try to c
 
 4.  Follow the prompts to continue the update.
 
-5.  If installing additional modules or configuring additional security settings, proceed to the *[Additional Security](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/#additional-security)* section below. Return to Step 6 once those configurations are complete.
+5.  If installing additional modules or configuring additional security settings, proceed to the *[Additional Security](/docs/guides/update-and-secure-drupal-8-on-ubuntu/#additional-security)* section below. Return to Step 6 once those configurations are complete.
 
 6.  Rebuild the site's cache by clicking **Configuration** in the Admin Toolbar, then **Performance** under Development. Click **Clear all caches**.
 
@@ -116,7 +116,7 @@ If `update.php` does not load or returns a 403 Forbidden error, you can try to c
 
 8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`.
 
-9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu/#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
+9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/guides/update-and-secure-drupal-8-on-ubuntu/#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
 
 ## Additional Security
 
@@ -132,7 +132,7 @@ If `update.php` does not load or returns a 403 Forbidden error, you can try to c
 {{< /file >}}
 
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to add write permission to this file before you can edit it:
 
 chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml

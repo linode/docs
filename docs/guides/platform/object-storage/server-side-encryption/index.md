@@ -12,8 +12,8 @@ published: 2020-08-14
 image: UseServerSideEnc_LinObjStorage.png
 modified_by:
   name: Linode
-title: "How to Use Server-Side Encryption with Linode Object Storage"
-h1_title: "Using Server-Side Encryption with Linode Object Storage"
+title: "Using Server-Side Encryption with Linode Object Storage"
+title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
 ---
 
@@ -46,9 +46,9 @@ In this guide, you will [write an example Python script](#python-example-script)
 
         openssl rand -hex 16
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Linode destroys encryption keys immediately after your data is encrypted. Object Storage data that is encrypted with SSE-C is unrecoverable without your encryption key.
-    {{< /caution >}}
+    {{< /note >}}
 
 1.  Using a code editor, open a new file labeled `example.py` for your Python script and enter the following:
 

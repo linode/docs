@@ -9,8 +9,6 @@ published: 2022-05-26
 modified_by:
   name: Linode
 title: "Database Sharding: Concepts, Examples, and Strategies"
-h1_title: "Database Sharding: Concepts, Examples, and Strategies"
-enable_h1: true
 contributor:
   name: Jeff Novotny
 external_resources:
@@ -28,7 +26,7 @@ Data sharding is a common way of implementing horizontal scaling. Database shard
 
 *Vertical partitioning* and *horizontal partitioning* are two different methods of partitioning tables into shards. Vertical partitioning assigns different columns within a table to different servers, but this technique is not widely used. In most cases, horizontal partitioning/sharding is used to implement sharding, and the two terms are often used interchangeably. Horizontal sharding divides the rows within a table amongst the different shards and keeps the individual table rows intact.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Vertical partitioning and horizontal partitioning should not be confused with vertical and horizontal scaling.
 {{< /note >}}
 
@@ -149,7 +147,7 @@ Hash sharding does not guarantee that the shards are destined to remain perfectl
 
 The following database sharding example demonstrates a simple hash sharing operation. It uses the simple hash function `store_ID % 3` to assign the records in the `store` database to one of three shards. The first step is to calculate a hash result for each entry.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The hash results are not actually stored inside the database. They are shown in the final column for clarity.
 {{< /note >}}
 

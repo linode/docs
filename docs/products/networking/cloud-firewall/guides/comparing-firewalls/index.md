@@ -55,4 +55,4 @@ Consider using Cloud Firewalls provide a line of defense *before* traffic even r
 
 {{< note >}}
 When using both solutions together, consider when each rule will be processed on incoming and outgoing traffic. **For inbound traffic, Cloud Firewall rules are processed first. For outbound traffic, local firewall rules are processed first.**
-{{</ note >}}
+{{< /note >}}

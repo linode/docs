@@ -26,7 +26,7 @@ In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL 
 
 ## Before You Begin
 
-1.  This guide assumes you have followed our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
+1.  This guide assumes you have followed our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](/docs/web-servers/apache/) or [LAMP stack guides](/docs/web-servers/lamp/).
 
 2.  In this guide, you will modify the Apache configuration files, so be sure you have the proper permissions to do so.
 

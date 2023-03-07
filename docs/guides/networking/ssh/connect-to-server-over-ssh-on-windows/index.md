@@ -12,9 +12,8 @@ modified: 2022-01-28
 image: SSHWINDOWS.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on Windows"
-h1_title: "Connecting to a Remote Server Over SSH on Windows"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH on Windows"
+title_meta: "How to Connect to a Remote Server Over SSH on Windows"
 aliases: ['/networking/ssh/using-ssh-on-windows/','/guides/using-ssh-on-windows/']
 relations:
     platform:
@@ -29,7 +28,7 @@ This article walks you through how to use SSH from Windows, covering the basics 
 
 ## Before You Begin
 
-1.  Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create a Linode.
+1.  Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode.
 
 1.  If using Windows 10 or Windows 11, install any pending updates to ensure you are running the latest version of Windows before you enable SSH.
 
@@ -92,7 +91,7 @@ Once you've opened your preferred Windows SSH client (Command Prompt, PowerShell
 
      The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
 
     ssh [username]@[ip-address] -p [port-number]
@@ -161,4 +160,4 @@ If SSH isn't connecting you to your Linode, you may need to investigate the stat
 
 - Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.

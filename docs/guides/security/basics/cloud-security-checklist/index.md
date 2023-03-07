@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Linode
-title: "Cloud Security Best Practices Checklist"
-h1_title: "An Essential Cloud Security Checklist (Plus Best Practices)"
-enable_h1: true
+title: "An Essential Cloud Security Checklist (Plus Best Practices)"
+title_meta: "Cloud Security Best Practices Checklist"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio

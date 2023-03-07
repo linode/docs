@@ -11,8 +11,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-03-30
 modified_by:
 published: 2016-05-20
-title: 'How to Install PostgreSQL on Ubuntu 16.04'
-h1_title: Installing PostgreSQL on Ubuntu 16.04
+title: Installing PostgreSQL on Ubuntu 16.04
+title_meta: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
@@ -29,9 +29,9 @@ The [PostgreSQL](https://www.postgresql.org/) (also known as "Postgres") relatio
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, visit the [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.
@@ -49,9 +49,9 @@ Install PostgreSQL from the Ubuntu package repository:
 
 By default, PostgreSQL creates a Linux user named "postgres" to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The postgres user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1. Change the postgres user’s Linux password: `sudo passwd postgres`
 

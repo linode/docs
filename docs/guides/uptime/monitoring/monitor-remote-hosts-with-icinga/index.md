@@ -25,7 +25,7 @@ aliases: ['/uptime/monitoring/monitor-remote-hosts-with-icinga/']
 
 ## What is Icinga 2?
 
-This guide is a continuation of our guide on [Icinga 2](/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9).
+This guide is a continuation of our guide on [Icinga 2](/docs/guides/install-icinga2-monitoring-on-debian-9/).
 Icinga, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga 2 can monitor hosts on a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file-sharing service, or others.
 
 ## Before You Begin

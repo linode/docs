@@ -25,7 +25,7 @@ relations:
 
 Apache Tomcat is an "[open source software implementation of the Java Servlet and JavaServer Pages technologies.](http://tomcat.apache.org/)" You may choose to use either the OpenJDK implementation or the Sun Microsystems implementation of Java when installing Tomcat.
 
-Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/), and the article concerning [systems administration basics](/docs/using-linux/administration-basics). We also assume you're logged into your Linode via SSH as root for this guide.
+Before beginning this guide we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). We also assume you're logged into your Linode via SSH as root for this guide.
 
 ## Choose and Install Java Implementation
 

@@ -47,7 +47,7 @@ During the certificate granting process, Certbot asks a series of questions abou
 
         www.example.com example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Certbot displays the names of domains configured in the virtual host files within Apache. Select the numbers corresponding to the domains you are requesting certificates for, separated by spaces.
 {{< /note >}}
 

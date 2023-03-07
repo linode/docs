@@ -10,9 +10,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-12
 modified_by:
   name: Linode
-title: "How to Manage Python Packages and Versions on Linux"
-h1_title: "Managing Python Packages and Versions on Linux"
-enable_h1: true
+title: "Managing Python Packages and Versions on Linux"
+title_meta: "How to Manage Python Packages and Versions on Linux"
 contributor:
   name: Angel Guarisma
   link: https://github.com/guaris
@@ -109,7 +108,7 @@ These packages, once installed, do not interfere with other packages outside of 
 
         virtualenv my-virtual-environment
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not have virtualenv on your machine install it using Pip:
 
     pip3 install virtualenv

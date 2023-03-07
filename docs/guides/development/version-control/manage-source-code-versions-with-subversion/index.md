@@ -30,16 +30,16 @@ There are many options for accessing and managing Subversion repositories on loc
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Subversion
@@ -122,8 +122,8 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
 
         svnadmin load /srv/svn/subversion-test-backup < /var/svn/subversion-test-1259853077.svn
 
-    {{< note >}}
-If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/linux-tools/utilities/cron).
+    {{< note respectIndent=false >}}
+If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
 ## Use Subversion for Version Control
@@ -236,9 +236,9 @@ If local system accounts need to access the repository, add those users to the g
 
         chmod -R +s /srv/svn/subversion-test
 
-    {{< caution >}}
-The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for more information.
-{{< /caution >}}
+    {{< note type="alert" respectIndent=false >}}
+The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
+{{< /note >}}
 
 ### Configure the Apache Web Server
 

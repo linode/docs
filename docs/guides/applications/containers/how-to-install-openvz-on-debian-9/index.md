@@ -29,14 +29,14 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
 ### Before You Begin
 
-1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2. The instructions in this guide were written for and tested on Debian 9 only. They are unlikely to work for other Debian or Ubuntu distributions.
 
 3. Certain essential modifications to your Debian 9 system are required to run OpenVZ, including the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain that all software currently installed on the machine will be compatible with these changes.
 
-    {{< note >}}
-Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps to create a disk in the [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) guide.
+    {{< note respectIndent=false >}}
+Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps to create a disk in the [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/) guide.
 {{< /note >}}
 
 ### Optional: Create A Separate Partition For OpenVZ Templates
@@ -117,9 +117,9 @@ e2fsck -f $Volume
 
 1. Choose the Ext4 volume you would like to format and issue the command below, replacing `/dev/sda3` with your selected volume. An output of "0" indicates success.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Formatting a volume with the `mkfs` command may result in data loss.
-{{< /caution >}}
+{{< /note >}}
 
         mkfs -t ext4 -O -metadata_csum /dev/sda3
 

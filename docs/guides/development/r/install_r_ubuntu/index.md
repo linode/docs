@@ -10,7 +10,7 @@ tags: ["ubuntu", "debian"]
 modified: 2018-02-07
 modified_by:
   name: Sam Foo
-title: "How to Install R on Ubuntu"
+title: "Install R on Ubuntu"
 published: 2018-02-07
 headless: true
 show_on_rss_feed: false

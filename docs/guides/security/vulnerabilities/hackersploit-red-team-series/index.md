@@ -11,8 +11,6 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Hackersploit Red Team Series"
-h1_title: "Hackersploit Red Team Series"
-enable_h1: true
 contributor:
   name: HackerSploit
 ---

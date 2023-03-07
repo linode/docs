@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "Machine Learning and Artificial Intelligence Background"
-h1_title: "The History of Machine Learning: A Comprehensive Overview"
-enable_h1: true
+title: "The History of Machine Learning: A Comprehensive Overview"
+title_meta: "Machine Learning and Artificial Intelligence Background"
 contributor:
   name: Pam Baker
 ---
@@ -151,4 +150,4 @@ This is also the year that Google Assistant, an AI-powered virtual assistant, wa
 
 ## Conclusion
 
-Today, there are many available open-source tools and frameworks that you can use to power machine learning applications. PyTorch is a Python-based machine learning framework that makes use of CPU and GPU to accelerate its processing performance. You can [install PyTorch on an Ubuntu 20.04 Linode server](/docs/guides/pytorch-installation-ubuntu-2004/) and make use of [GPU](/docs/products/compute/gpu/) or [dedicated CPU](/docs/products/compute/dedicated-cpu/) compute instances.
+Today, there are many available open-source tools and frameworks that you can use to power machine learning applications. PyTorch is a Python-based machine learning framework that makes use of CPU and GPU to accelerate its processing performance. You can [install PyTorch on an Ubuntu 20.04 Linode server](/docs/guides/pytorch-installation-ubuntu-2004/) and make use of [GPU](/docs/products/compute/compute-instances/plans/gpu/) or [dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/) compute instances.

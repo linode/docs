@@ -10,9 +10,8 @@ published: 2021-03-10
 image: ChoosePythonAPI_fw.png
 modified_by:
   name: Linode
-title: "How to Choose a Python API Framework"
-h1_title: "An Overview of Python API Frameworks"
-enable_h1: true
+title: "An Overview of Python API Frameworks"
+title_meta: "How to Choose a Python API Framework"
 tags: ["python", "django"]
 contributor:
   name: Chelsea Troy

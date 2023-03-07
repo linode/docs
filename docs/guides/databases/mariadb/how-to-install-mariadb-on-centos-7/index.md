@@ -10,9 +10,8 @@ modified: 2015-08-21
 modified_by:
     name: Linode
 published: 2015-08-21
-title: "How to Install MariaDB on CentOS 7"
-h1_title: "Installing MariaDB on CentOS 7"
-enable_h1: true
+title: "Installing MariaDB on CentOS 7"
+title_meta: "How to Install MariaDB on CentOS 7"
 external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[MySQL Reference Manuals](https://dev.mysql.com/doc/)'
@@ -40,9 +39,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure the hostname. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure the hostname. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 

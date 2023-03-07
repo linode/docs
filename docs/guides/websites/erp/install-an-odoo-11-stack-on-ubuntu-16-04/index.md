@@ -20,7 +20,7 @@ external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/11.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/11.0)'
   - '[PostgreSQL 9.6 Documentation](https://www.postgresql.org/docs/9.6/static/index.html)'
-  - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
+  - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
   - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
   - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 ---
@@ -46,9 +46,9 @@ All examples in this guide are for Ubuntu 16.04. If you plan to use a different 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -265,9 +265,9 @@ These settings are:
 
     You will be prompted with the `replicauser` password. Once the transfer is complete your **Standby** will be synchronized with the **Primary** database. This puts an exact replica of the Primary database on the Standby.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not start the Standby's PostgreSQL service until Step 3 of the next section, when all configuration is complete.
-{{< /caution >}}
+{{< /note >}}
 
 ### Create the Recovery File on the Standby Node
 
@@ -370,7 +370,7 @@ The examples in this guide use a separate file for logging Odoo activity:
         sudo git clone https://www.github.com/odoo/odoo --depth 1 \
         --branch 11.0 --single-branch /opt/odoo
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Odoo 11 application now uses Python 3.x instead of Python 2.7. If you are using Ubuntu 14.04 this may mean additional steps for your installation. Dependencies are now grouped to highlight the new changes.
 {{< /note >}}
 
@@ -567,6 +567,6 @@ If all your tests pass, you can safely update your installation.
 
         sudo git reset --hard origin/11.0
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

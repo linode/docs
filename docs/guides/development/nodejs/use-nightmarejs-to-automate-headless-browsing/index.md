@@ -31,16 +31,16 @@ aliases: ['/development/nodejs/use-nightmarejs-to-automate-headless-browsing/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 {{< /note >}}
 
@@ -52,7 +52,7 @@ The Ubuntu 16.04 repository is slower to release recent versions of Node.js. Ins
 
         curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command fetches the latest version of Node.js 6. To install a [specific version](https://nodejs.org/en/download/releases/), replace the `6.x` in this example.
 
 {{< /note >}}
@@ -152,7 +152,7 @@ nightmare
 
 This example automates the script to run once every hour. It changes to the `~/automation/` directory, runs the scraping script, and saves the output to a file with a unique filename that includes the date and time it ran.
 
-For more information about using Cron, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide.
+For more information about using Cron, see our [Schedule Tasks with Cron](/docs/guides/schedule-tasks-with-cron/) guide.
 
 1.  Open the crontab file:
 

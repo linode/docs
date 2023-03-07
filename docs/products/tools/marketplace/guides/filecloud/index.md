@@ -10,7 +10,7 @@ published: 2020-03-18
 modified: 2022-06-03
 modified_by:
   name: Linode
-title: "Deploying FileCloud through the Linode Marketplace"
+title: "Deploy FileCloud through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -26,9 +26,9 @@ aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/pla
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** FileCloud should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,6 +42,8 @@ aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/pla
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 Once the FileCloud server is up and running, a few additional steps must be completed before you can begin using your application.
@@ -50,7 +52,7 @@ Once the FileCloud server is up and running, a few additional steps must be comp
 
 A new administrator password must be created to secure the server:
 
-1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1.  In the login fields that appear, enter the default credentials:
 

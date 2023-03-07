@@ -9,7 +9,7 @@ published: 2019-04-03
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying an ARK Survival Evolved Server through the Linode Marketplace"
+title: "Deploy an ARK Survival Evolved Server through the Linode Marketplace"
 external_resources:
  - '[The Official ARK: Survival Evolved Wiki](https://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -26,9 +26,9 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** ARK Survival Evolved should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -44,6 +44,8 @@ This Marketplace App deploys the ARK: Survival Evolved server software through [
 - **Hardcore Mode Enabled:** Enables Hardcore mode, which resets a player to level 1 after dying.
 - **XP Multiplier:** Increases or decreases the amount of experience awarded for various actions.
 - **Server PvE:** Disables player vs player combat and enables player vs environment combat.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started After Deployment
 

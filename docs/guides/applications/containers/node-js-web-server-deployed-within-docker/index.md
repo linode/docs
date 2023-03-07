@@ -47,7 +47,7 @@ Docker images made for one operating system can be used on servers running a dif
 
         docker run -d -p 80:3000 linode/server-node-js
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command runs the docker image as a daemon.
 {{< /note>}}
 

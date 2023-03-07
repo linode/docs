@@ -28,7 +28,7 @@ Installing the packages is faster and makes things easier to maintain, but the i
 
 If you're running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:
 
- {{< note >}}
+{{< note respectIndent=false >}}
 Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
 {{< /note >}}
 
@@ -46,7 +46,7 @@ Other distributions may also have packages for Zabbix. Check the distribution's 
 
 Zabbix is now installed and running on your Linode.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
 {{< /note >}}
 
@@ -116,7 +116,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
         sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
 
-4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts).
+4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts).
 
 The required applications, modules, and libraries have been installed on your Linode.
 
@@ -141,7 +141,7 @@ date.timezone = America/New_York
 {{< /file >}}
 
 
- {{< note >}}
+{{< note respectIndent=false >}}
 You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
 {{< /note >}}
 
@@ -254,7 +254,7 @@ Now you'll need to create a configuration file for the Zabbix server in your /et
 DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
 {{< /file>}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).
 {{< /note >}}
 
@@ -347,7 +347,7 @@ Now you'll want to create directories for the Zabbix files on your client server
 Server = 12.34.56.78
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A full listing of supported parameters, as well as their default values, is available in [the Zabbix manual](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd).
 {{< /note >}}
 
@@ -378,7 +378,7 @@ Zabbix also has a front-end component that you'll want to install. These instruc
 
 The Zabbix frontend is written in PHP. You'll want to copy the front-end files to your web server's public directory. Here's how to create a subdirectory and copy the Zabbix front-end files to it:
 
- {{< note >}}
+{{< note respectIndent=false >}}
 We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 

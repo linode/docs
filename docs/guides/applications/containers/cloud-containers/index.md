@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified_by:
   name: Linode
-title: "Introduction to Containers in Cloud Computing"
-h1_title: "How Cloud Containers Work And Their Benefits"
-enable_h1: true
+title: "How Cloud Containers Work And Their Benefits"
+title_meta: "Introduction to Containers in Cloud Computing"
 contributor:
   name: Andy Patrizio
   link: https://twitter.com/apatrizio

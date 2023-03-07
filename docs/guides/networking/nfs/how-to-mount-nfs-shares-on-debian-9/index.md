@@ -27,14 +27,14 @@ However, be aware that one limitation of NFS (versions 3 and older) is that serv
 
 This guide walks you through the setup of two Linodes; one is the NFS server, and the other acting as the client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. **Caution**: Other NFS setups can potentially send traffic over the public internet.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
 -   Two Debian 9 Linodes deployed in the same data center.
--   Linodes configured to use private IPs. See our [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide.
+-   Linodes configured to use private IPs. See our [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
 
 ## NFS Server Setup
 

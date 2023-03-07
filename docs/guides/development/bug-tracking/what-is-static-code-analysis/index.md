@@ -4,7 +4,6 @@ author:
   name: Martin Heller
   email: martin.heller@gmail.com
 description: 'This guide provides you with an overview of stack code analysis, a method of testing code that helps prevents bugs in your code during your development process.'
-og_description: 'This guide provides you with an overview of stack code analysis, a method of testing code that helps prevents bugs in your code during your development process.'
 keywords: ['what is static code analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-24
@@ -12,7 +11,6 @@ image: StaticCodeAnalysis.png
 modified_by:
   name: Linode
 title: "What is Static Code Analysis?"
-h1_title: "What is Static Code Analysis?"
 tags: ["automation"]
 contributor:
   name: Martin Heller

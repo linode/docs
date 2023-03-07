@@ -14,7 +14,7 @@ modified_by:
 published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 deprecated: true
-deprecated_link: '/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04/'
+deprecated_link: 'guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -33,7 +33,7 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 ![Install LAMP on Ubuntu 16.04](install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/guides/linux-users-and-groups/).
 
 Replace each instance of `example.com` in this guide with your site's domain name.
@@ -41,9 +41,9 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Quick Install Using Tasksel
 Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to get a LAMP stack running quickly.
@@ -78,7 +78,7 @@ KeepAliveTimeout 5
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
 {{< /note >}}
 
@@ -133,7 +133,7 @@ You can set up virtual hosts several ways; however, below is the recommended met
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The file example above has all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
 
 The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
@@ -143,7 +143,7 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you do not put space after comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
 
@@ -151,7 +151,7 @@ Make sure that you do not put space after comma between `public_html` and `logs`
 
         sudo a2ensite example.com.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you need to disable your website, run:
 
 a2dissite example.com.conf
@@ -165,7 +165,7 @@ a2dissite example.com.conf
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
@@ -218,7 +218,7 @@ error_log = /var/log/php/error.log
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 {{< /note >}}
 
@@ -231,7 +231,7 @@ The beginning of the `php.ini` file contains examples commented out with a semic
 
         sudo systemctl restart apache2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you plan on using your LAMP stack to host a WordPress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
 {{< /note >}}
 

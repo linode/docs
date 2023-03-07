@@ -11,9 +11,8 @@ published: 2019-01-31
 modified: 2019-01-02
 modified_by:
   name: Linode
-title: "How to Install Plex Media Server on Ubuntu 18.04 Using Salt"
-h1_title: "Installing Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
-enable_h1: true
+title: "Installing Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
+title_meta: "How to Install Plex Media Server on Ubuntu 18.04 Using Salt"
 contributor:
   name: Linode
 external_resources:
@@ -28,9 +27,9 @@ Plex is a media server that allows you to stream video and audio content that yo
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. Follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1. Follow the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1.  Update your system:
 
@@ -92,7 +91,7 @@ gitfs_provider: gitpython
 
     The `fileserver_backend` block instructs the Salt minion to look for Salt configuration files in two places. First, it tells Salt to look for Salt state files in our minion's `roots` backend (`/srv/salt`). Secondly, it instructs Salt to use the Git Fileserver (gitfs) to look for Salt configuration files in any Git remote repositories that have been named in the `gitfs_remotes` section. The address for the Plex Salt formula's Git repository is included in the `gitfs_remotes` section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is best practice to create a fork of the Plex formula's Git repository on GitHub and to add your fork's Git repository address in the `gitfs_remotes` section. This will ensure that any further changes to the upstream Plex formula which might break your current configuration can be reviewed and handled accordingly, before applying them.
 {{< /note >}}
 
@@ -154,7 +153,7 @@ disk.format:
     - group: plex
 {{< /file >}}
 
-    The directories that are created during this step are for organizational purposes, and will house your media. Make sure you replace `username` with the name of the limited user account you created when following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. The location of the directories is the volume you mounted in the previous step. If you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
+    The directories that are created during this step are for organizational purposes, and will house your media. Make sure you replace `username` with the name of the limited user account you created when following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. The location of the directories is the volume you mounted in the previous step. If you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
 
 1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar` and change the Plex version number and the name of your Block Storage Volume as necessary:
 

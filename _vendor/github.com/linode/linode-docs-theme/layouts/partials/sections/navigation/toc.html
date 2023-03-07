@@ -1,7 +1,9 @@
+{{ $level2Only := eq .Section "api" }}
 <div
   id="toc-component"
   class="bg-white z-10 w-full h-full border-l-gray--md"
   x-data="lncToc()"
+  x-init="initToC({{ $level2Only }})"
   @scroll.window.debounce.10ms="onScroll()"
   @hashchange.window="onHashchange();">
   <div

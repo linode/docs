@@ -90,9 +90,9 @@ You can update your component preferences or cancel your subscription to Linode 
 
 - If you would like to unsubscribe, click on the **Cancel Subscription** link in the Subscriber section of the page and follow the prompt.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can unsubscribe from SMS notifications by replying to any text message notification with the word "STOP".
-{{</ note >}}
+{{< /note >}}
 
 **RSS**
 

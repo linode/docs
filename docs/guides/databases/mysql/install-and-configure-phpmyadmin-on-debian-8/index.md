@@ -25,12 +25,12 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 ![Install and Configure phpMyAdmin on Debian 8](how-to-install-and-configure-phpmyadmin-on-debian-8.png)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -43,13 +43,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get update && sudo apt-get upgrade -y
 
-3.  Set up a working LAMP stack. Please see the [LAMP on Debian 8](/docs/websites/lamp/lamp-server-debian-8) guide if needed.
+3.  Set up a working LAMP stack. Please see the [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide if needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 {{< /note >}}
 
-4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
+4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on Debian & Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/) guide.
 
 5.  Install the `mcrypt` PHP module:
 

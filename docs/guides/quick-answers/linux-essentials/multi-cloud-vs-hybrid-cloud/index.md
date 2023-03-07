@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified_by:
   name: Linode
-title: "What is the Difference Between Hybrid Cloud and Multicloud?"
-h1_title: "Multicloud vs. Hybrid Cloud: Differences Explained"
-enable_h1: true
+title: "Multicloud vs. Hybrid Cloud: Differences Explained"
+title_meta: "What is the Difference Between Hybrid Cloud and Multicloud?"
 contributor:
   name: Jack Wallen
 ---

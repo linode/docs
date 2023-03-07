@@ -14,7 +14,7 @@ published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
 deprecated: true
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty)'
+ - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 tags: ["ssh","database"]
 ---

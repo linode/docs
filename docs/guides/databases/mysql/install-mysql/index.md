@@ -28,7 +28,7 @@ Currently, there are two primary MySQL releases to consider: MySQL 5.7 and MySQL
 
 {{< note >}}
 For additional instructions on installing MySQL on any supported operating system, see the [Installing and Upgrading MySQL](https://dev.mysql.com/doc/refman/8.0/en/installing.html) guide in the official documentation.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 

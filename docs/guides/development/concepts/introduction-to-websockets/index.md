@@ -114,7 +114,7 @@ ws.onerror = function(e) {
 };
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Errors also cause WebSocket connections to close.
 {{< /note >}}
 

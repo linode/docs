@@ -185,7 +185,7 @@ Run the completed script and trigger the notifications.
 
     This output shows that the `ls` command involves three filesystem events. The `notification_dir` was opened, accessed, and then closed in non-writable mode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Observe that not only files are opened but also directories are opened too.
 {{< /note >}}
 
