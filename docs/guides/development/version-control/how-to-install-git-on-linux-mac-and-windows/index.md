@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-git-on-linux-mac-and-windows
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Git is a popular distributed version control & source code management system. ✓ Here's how to install it on GNU/Linux, MacOSX, & Windows today!"
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +18,7 @@ external_resources:
  - '[GitHub Guides](https://guides.github.com/)'
 audiences: ["foundational"]
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
 ## Introduction to Installing Git

@@ -1,8 +1,5 @@
 ---
 slug: configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems
-author:
-  name: Sergey Bulavintsev
-  email: bulavintsev.sergey@gmail.com
 description: "This guide shows how to install, configure, and use Salt Cloud to provision multiple Linodes from the command line."
 og_description: "Salt Cloud is a part of the SaltStack that makes provisioning multiple cloud systems easy. Use our guide to create, manage, and map your own Salt Cloud."
 keywords: ["SaltStack", "Salt", "salt-cloud"]
@@ -13,10 +10,9 @@ modified_by:
   name: Linode
 title: "Using Salt Cloud and Cloud Maps to Provision Systems"
 title_meta: "How to Use Salt Cloud and Cloud Maps to Provision Systems"
-contributor:
-  name: Sergey Bulavintsev
 aliases: ['/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/','/applications/configuration-management/salt/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/']
 tags: ["automation","salt"]
+authors: ["Sergey Bulavintsev"]
 ---
 
 ![Salt Cloud](SaltCloud.jpg)

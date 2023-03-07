@@ -1,9 +1,6 @@
 ---
 slug: discussion-forums-with-phpbb-on-debian-5-lenny
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Debian 5 (Lenny).'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Debian 5
+authors: ["Stan Schwertly"]
 ---
 
 

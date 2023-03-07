@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nginx-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn the basics of installing and configuring NGINX on your Debian 10 server in this quick guide."
 keywords: ["nginx", "load balancing", "debian", "debian 10", "web server", "static content", "install nginx"]
 tags: ["web server","debian","nginx"]
@@ -22,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/nginx/how-to-install-nginx-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is NGINX?

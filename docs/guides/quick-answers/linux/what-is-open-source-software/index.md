@@ -1,7 +1,5 @@
 ---
 slug: what-is-open-source-software
-author:
-  name: Jack Wallen
 description: 'What is open source software and how does it work? We answer these questions, note the advantages and disadvantages of open source software, plus examples.'
 keywords: ['what is open source software','open source software','keywords','open source software definition']
 tags: ['linux']
@@ -11,8 +9,7 @@ modified_by:
   name: Linode
 title: "What is Open Source Software?"
 title_meta: "Open Source Software Definition and Examples"
-contributor:
-  name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 Every application you use starts as an idea. No matter the platform it’s installed on or its purpose, every piece of software begins in the planning phase. That idea is then turned into a project and at its heart is the source code, which is written by either a single software engineer or a team. The source code is then compiled into a functioning application that you run on your desktop computer or server.

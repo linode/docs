@@ -2,9 +2,6 @@
 slug: creating-a-mongodb-replication-set-on-ubuntu-12-04-precise
 deprecated: true
 deprecated_link: 'guides/create-a-mongodb-replica-set/'
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure a MongoDB Replica Set (aka cluster) with primary-secondary replication and automatic failover on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -25,6 +22,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.

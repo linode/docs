@@ -1,9 +1,6 @@
 ---
 slug: manage-a-fedora-13-vps-with-ispconfig
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the open-source control panel ISPConfig enabling you to setup and maintain your Linode on Fedora 13.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["fedora","cms"]
@@ -19,6 +16,7 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

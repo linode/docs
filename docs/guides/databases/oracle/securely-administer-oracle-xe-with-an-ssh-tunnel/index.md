@@ -1,8 +1,5 @@
 ---
 slug: securely-administer-oracle-xe-with-an-ssh-tunnel
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with information on accessing Oracle XE (Express Edition) databases remotely using an SSH tunnel and client application such as PuTTY.'
 keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 tags: ["ssh","database"]
+authors: ["Linode"]
 ---
 
 Server administrators may wish to use local administration tools to connect to remote Oracle XE home pages. This guide shows you how to do so in a secure manner using an SSH tunnel. It is assumed that you have Oracle XE up and running on your Linode, and that it is configured to listen on `localhost` (127.0.0.1). After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite browser. The connection will be securely forwarded to your Linode over the Internet.

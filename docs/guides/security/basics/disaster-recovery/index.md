@@ -1,7 +1,5 @@
 ---
 slug: disaster-recovery
-author:
-  name: Wayne Rash
 description: 'Disaster recovery allows for the continued use of IT infrastructure in the case of a human or natural disaster. Develop a recovery plan with the help of this guide.'
 keywords: ['disaster recovery plan','define disaster recovery','disaster recovery definition']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +8,7 @@ modified_by:
   name: Linode
 title: "Creating a Disaster Recovery Plan: A Definitive Guide"
 title_meta: "Disaster Recovery: What It Is and How to Create a Plan"
-contributor:
-  name: Wayne Rash
+authors: ["Wayne Rash"]
 ---
 
 A disaster recovery (DR) plan is a series of instructions that leads your organization through the process of restoring operations following an unplanned event that prevents the use of its IT infrastructure. Such plans allow recovery from a broad range of events, and are tailored to the needs of a specific organization. Because disasters occur without warning, and because they may include substantial damage to existing infrastructure, DR plans must be developed and tested in advance of a disaster.

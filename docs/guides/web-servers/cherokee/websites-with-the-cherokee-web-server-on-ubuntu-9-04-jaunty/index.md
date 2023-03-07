@@ -1,9 +1,6 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
 keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 tags: ["web server","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

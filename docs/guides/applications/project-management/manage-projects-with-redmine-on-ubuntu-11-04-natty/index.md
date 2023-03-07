@@ -1,8 +1,5 @@
 ---
 slug: manage-projects-with-redmine-on-ubuntu-11-04-natty
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system, on an Ubuntu 11.04 LTS (Natty) Linode.'
 keywords: ["redmine", "redmine ubuntu 11.04", "redmine linux", "project management software", "redmine postgresql"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
@@ -19,6 +16,7 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 This guide will help you install Redmine on your Ubuntu 11.04 (Natty) Linode. It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.

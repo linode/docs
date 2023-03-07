@@ -1,8 +1,5 @@
 ---
 slug: linode-writers-formatting-guide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
+authors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")

@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.04 (Jaunty).'
 keywords: ["ejabberd", "ejabberd ubuntu jaunty", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

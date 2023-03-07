@@ -1,9 +1,6 @@
 ---
 slug: deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide will show you how to install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange, also known as a PBX, on Ubuntu 12.04'
 keywords: ["ubuntu 12.04", "asterisk", "freepbx", "pbx", "voip", "google voice", "grub", "lamp stack", "apache", "php"]
 tags: ["ubuntu", "lamp"]
@@ -25,6 +22,7 @@ relations:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 Asterisk is an open-source telephone solution that runs over the Internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a landline telephone can.

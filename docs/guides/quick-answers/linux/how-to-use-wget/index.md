@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-wget
-author:
-  name: Angel
-  email: docs@linode.com
 description: 'This Quick Answer guide will explain how to use wget.'
 keywords: ["linux", "how to", "grep", "wget"]
 aliases: ['/quick-answers/linux/how-to-use-wget/','/quick-answers/how-to-use-wget/']
@@ -18,6 +15,7 @@ external_resources:
  - '[Gentoo](https://packages.gentoo.org/packages/net-misc/wget)'
 
 tags: ["linux"]
+authors: ["Angel"]
 ---
 
 

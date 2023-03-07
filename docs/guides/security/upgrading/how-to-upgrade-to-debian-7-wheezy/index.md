@@ -1,9 +1,6 @@
 ---
 slug: how-to-upgrade-to-debian-7-wheezy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to upgrade from Debian 6 (Squeeze) to Debian 7 (Wheezy).'
 keywords: ["debian upgrade", "upgrade distro", "wheezy upgrade", "wheezy"]
 tags: ["security","debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 ---
 
 Debian 7 (Wheezy) was released in May 2013. This guide explains how to upgrade your system from Debian 6 (Squeeze) to Debian 7 (Wheezy). Before you begin, you should make sure that you have a working [backup](/docs/products/storage/backups/) or a copy of your data.

@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.10 (Maverick)'
 keywords: ["apache", "apache ubuntu 10.10", "apache ubuntu maverick", "web server", "apache on ubuntu", "apache maverick"]
 tags: ["web server","apache","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

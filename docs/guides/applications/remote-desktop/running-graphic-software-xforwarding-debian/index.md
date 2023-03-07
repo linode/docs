@@ -1,8 +1,5 @@
 ---
 slug: running-graphic-software-xforwarding-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
 keywords: ["x11", "debian", "debian 7", " debian 8", "x-forwarding", "ssh", "x over ssh"]
 tags: ["debian", "ssh"]
@@ -23,6 +20,7 @@ relations:
         key: forward-x11-gui
         keywords:
             - distribution: Debian
+authors: ["Alex Fornuto"]
 ---
 
 On occasion you may want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.

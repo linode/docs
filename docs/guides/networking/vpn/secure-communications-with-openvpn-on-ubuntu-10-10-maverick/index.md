@@ -1,9 +1,6 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on Ubuntu 10.10 (Maverick).'
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu maverick", "ubuntu 10.10"]
 tags: ["ubuntu","networking","security","vpn"]
@@ -19,6 +16,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

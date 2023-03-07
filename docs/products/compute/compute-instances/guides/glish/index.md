@@ -1,8 +1,5 @@
 ---
 slug: glish
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Use Glish (the Linode Graphical Shell) to access a desktop environment, like Xfce or Gnome, on your web browser."
 keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
 aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
@@ -15,6 +12,7 @@ title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
 title_meta: "Access Your Desktop Environment Using Glish"
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
+authors: ["Linode"]
 ---
 
 Glish is the graphical version of [Lish](/docs/products/compute/compute-instances/guides/lish/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.

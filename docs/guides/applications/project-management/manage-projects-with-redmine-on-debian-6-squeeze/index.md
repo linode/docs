@@ -1,9 +1,6 @@
 ---
 slug: manage-projects-with-redmine-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 6 (Squeeze) Linode running nginx.'
 keywords: ["redmine", "redmine debian 6", "redmine linux", "project management software", "redmine postgresql"]
 tags: ["debian", "ruby", "nginx", "postgresql"]
@@ -19,6 +16,7 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 This guide will help you install Redmine on your Debian 6 (Squeeze) Linode. It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.

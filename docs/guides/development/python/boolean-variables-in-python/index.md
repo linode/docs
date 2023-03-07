@@ -1,7 +1,5 @@
 ---
 slug: boolean-variables-in-python
-author:
-  name: Jeff Novotny
 description: 'Learn about Boolean logic in Python 3. This guide includes examples for Boolean variables, comparison and logical operators, and conditional statements.'
 keywords: ['Python Boolean operators','Python logical operators','Python logical and','Python logical or']
 tags: ['python']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Boolean Variables, Operators, and Conditional Statements in Python"
 title_meta: "Using Boolean Variables, Operators, and Conditional Statements in Python"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python Documentation on Value Comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons)'
 - '[Python documentation for compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
+authors: ["Jeff Novotny"]
 ---
 
 *Boolean logic* is at the heart of [Python](https://www.python.org/) and most programming languages. It allows programmers to make comparisons, execute conditional statements, and implement common algorithms. The "greater than" (`>`) and "equals to" (`==`) symbols are examples of Python comparison operators, while `and` and `or` are some of Python's logical operators. This tutorial explains Boolean logic and expressions and discusses how to use Python's Boolean operators.

@@ -1,9 +1,6 @@
 ---
 slug: set-up-a-lamp-server-on-gentoo
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
 keywords: ["LAMP", "Gentoo Linux", "Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 tags: ["web server","php","mysql","apache","lamp"]
+authors: ["Linode"]
 ---
 
 

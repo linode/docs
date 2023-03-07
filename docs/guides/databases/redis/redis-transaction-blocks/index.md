@@ -1,7 +1,5 @@
 ---
 slug: redis-transaction-blocks
-author:
-  name: Nathaniel Stickman
 description: "Redis transaction blocks group commands and execute them sequential, as a unit. This guide teaches you how to create, execute, and cancel Redis transaction blocks."
 keywords: ['redis transactions','redis multi vs pipeline','redis multi exec']
 tags: ['redis']
@@ -11,12 +9,10 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use Redis Transaction Blocks"
 title_meta: "How to Use Redis Transaction Blocks"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: Transactions](https://redis.io/topics/transactions)'
 - '[Redis: Using Pipelining to Speedup Redis Queries](https://redis.io/topics/pipelining)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source, in-memory database used for caching, messaging, and other storage tasks that benefit from fast execution and low latency. The Redis database supports a high degree of control over parallel executions that allow you to fine-tune its performance.

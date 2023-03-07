@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-firewalls
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall.
 keywords: ["Linode troubleshooting", "Cloud Firewall", "Firewall"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: Diagnose & Resolve Issues with Firewalls
 title_meta: Troubleshooting Firewalls
 image: feature.png
 aliases: ['/troubleshooting/troubleshooting-firewalls/']
+authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for Linodes that may be unresponsive due to issues caused by a firewall. This could be a [Linode Cloud Firewall](/docs/products/networking/cloud-firewall/get-started/), which is applied on the network level or a firewall, like Uncomplicated Firewall (UFW), that is applied on the Linode level.

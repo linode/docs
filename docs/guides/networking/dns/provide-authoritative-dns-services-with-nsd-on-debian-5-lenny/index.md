@@ -1,9 +1,6 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-debian-5-lenny
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Debian 5 "Lenny".'
 keywords: ["NSD", "DNS", "resolving", "Debian", "networking"]
 tags: ["dns","networking","resolving","debian"]
@@ -19,6 +16,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Debian 5
+authors: ["Brett Kaplan"]
 ---
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.

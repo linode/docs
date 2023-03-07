@@ -1,9 +1,6 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-fedora-15
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu Fedora 15.'
 keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","fedora","resolving"]
@@ -19,6 +16,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Fedora 15
+authors: ["Linode"]
 ---
 
 

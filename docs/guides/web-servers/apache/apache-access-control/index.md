@@ -1,8 +1,5 @@
 ---
 slug: apache-access-control
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
 tags: ["http","web server","apache","security"]
@@ -18,6 +15,7 @@ external_resources:
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
  - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
+authors: ["Linode"]
 ---
 
 While most web server content is created to be available to the public, you may want to restrict some or all of a website to specific users or groups. **HTTP Auth** lets you easily create these restrictions.

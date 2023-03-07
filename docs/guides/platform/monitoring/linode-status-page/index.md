@@ -1,8 +1,5 @@
 ---
 slug: linode-status-page
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn how to subscribe to Linode system status and maintenance updates.'
 keywords: ['linode','maintenance','incident','system', 'status']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +8,9 @@ modified: 2018-08-20
 modified_by:
   name: Linode
 title: "Subscribe to Linode Status Updates"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/linode-status-page/']
+authors: ["Linode"]
 ---
 The [Linode Status Page](https://status.linode.com/) provides real-time system status and maintenance updates via email, SMS, and Atom and RSS feed. All Linode customers are encouraged to subscribe to Linode Status notifications to stay up to date with any events that may impact your service.
 

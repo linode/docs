@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-common-apache-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to identify and solve common configuration problems encountered when using Apache.'
 keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 tags: ["apache", "web server"]
@@ -16,6 +13,7 @@ title: Troubleshooting Common Apache Issues
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
+authors: ["Linode"]
 ---
 
 ![Troubleshooting Common Apache Issues](troubleshooting-common-apache-issues.jpg "Troubleshooting Common Apache Issues")

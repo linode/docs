@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-use-node-version-manager-nvm
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn to use NVM to install Node.js on your computer. This guide shows you how to install and use NVM and how to install the LTS version of Node.js.'
 keywords: ['nvm install node', 'nvm install lts', 'node version manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,11 +10,9 @@ modified_by:
   name: Linode
 title: "Installing and Using NVM (Node Version Manager)"
 title_meta: "How to Install and Use NVM (Node Version Manager)"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[NVM GitHub Page](https://github.com/nvm-sh/nvm)'
+authors: ["Jeff Novotny"]
 ---
 
 The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open source version manager for [*Node.js (Node)*](https://nodejs.org/en/). NVM is easy to understand and works on any POSIX-compliant shell (for example, sh or bash). NVM allows you to easily install and manage different versions of Node and switch between them on a per-shell basis. This guide describes how to install NVM, and how to use it to install and run different versions of Node.

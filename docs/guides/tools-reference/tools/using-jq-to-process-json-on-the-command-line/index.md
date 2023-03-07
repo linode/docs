@@ -1,7 +1,5 @@
 ---
 slug: using-jq-to-process-json-on-the-command-line
-author:
-  name: Jeff Novotny
 description: 'This guide shows you how to use the JQ command and includes installation instructions and examples.'
 keywords: ['jq command','linux jq','jq examples','jq filter']
 tags: ['linux', 'debian', 'ubuntu']
@@ -11,11 +9,9 @@ modified_by:
   name: Linode
 title: "Use JQ to Process JSON on the Command Line"
 title_meta: "How to Use JQ to Process JSON on the Command Line"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
+authors: ["Jeff Novotny"]
 ---
 
 [*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.

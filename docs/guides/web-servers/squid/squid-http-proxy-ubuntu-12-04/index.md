@@ -1,9 +1,6 @@
 ---
 slug: squid-http-proxy-ubuntu-12-04
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring Squid, a proxy application with a variety of uses, on your Linode.'
 keywords: ["squid", "proxy", "ubuntu", "12.04", "http"]
 tags: ["proxy","web server","ubuntu"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-12-04/']
+authors: ["Alex Fornuto"]
 ---
 
 ![Creating an HTTP Proxy Using Squid on Ubuntu 12.04](creating-an-http-proxy-with-squid-on-ubuntu-1204-title-graphic.jpg "Creating an HTTP Proxy Using Squid on Ubuntu 12.04")

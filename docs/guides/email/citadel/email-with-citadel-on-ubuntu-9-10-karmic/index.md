@@ -1,9 +1,6 @@
 ---
 slug: email-with-citadel-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["citadel", "ubuntu 9.10 mail server", "groupware", "email server", "email howto"]
 tags: ["ubuntu","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

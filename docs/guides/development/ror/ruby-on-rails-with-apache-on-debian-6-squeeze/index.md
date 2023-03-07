@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-apache-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
@@ -24,6 +21,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

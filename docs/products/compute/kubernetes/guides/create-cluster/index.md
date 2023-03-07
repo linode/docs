@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Create a Cluster
 description: "Learn how to create a Kubernetes cluster on the Linode Kubernetes Engine (LKE)."
 aliases: ['/products/compute/kubernetes/guides/create-lke-cluster/']
 published: 2023-02-09
+authors: ["Linode"]
 ---
 
 This guide walks you through creating an LKE (Linode Kubernetes Engine) cluster through the Cloud Manager.

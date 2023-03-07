@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-rancher-2-x
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Create and manage Kubernetes clusters with Rancher and deploy apps from the Rancher app library.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["docker","kubernetes","container","ubuntu","wordpress"]
@@ -18,6 +15,7 @@ external_resources:
   - '[Rancher Official Docs](http://rancher.com/docs/)'
   - '[Linode CCM](https://github.com/linode/linode-cloud-controller-manager)'
   - '[Linode CSI](https://github.com/linode/linode-blockstorage-csi-driver)'
+authors: ["Linode"]
 ---
 
 ![Rancher title graphic.](rancher_title_graphic.png)

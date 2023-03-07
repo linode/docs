@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-cloudflare-with-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: 'Learn how to use Cloudflare with a website running on Linode.'
 keywords: ["cloudflare", "dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
   - '[DNS Records: An Introduction](/docs/guides/dns-overview/)'
 tags: ["dns","networking"]
 aliases: ['/networking/dns/how-to-set-up-cloudflare-with-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 [Cloudflare](https://www.cloudflare.com) provides a *content delivery network* (CDN) for websites, APIs, and other applications hosted on the web. The Linode platform is compatible with Cloudflare. If you run a web application on a Linode, you can enroll it in Cloudflare's CDN. Using the Cloudflare network can speed up your application's response time and protect your Linode from denial-of-service attacks (DoS).

@@ -1,8 +1,5 @@
 ---
 slug: compress-files-using-the-command-line
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
 description: "Tar, is a GNU utility that provides the ability to create tar archives, extract and compress files."
 og_description: "This guide will detail how to compress and extract files using tar on the Unix filesystem"
 keywords: ["tar", "star", "GNU-Tar", "cryptocurrency"]
@@ -15,6 +12,7 @@ title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
 title_meta: "How to Compress and Extract Files Using tar and gzip"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
+authors: ["Angel Guarisma"]
 ---
 
 `tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux. These utilities take a large number of files, save them together in an archive, and compresses the archive to save space. `tar` does not compress files by itself. Used in conjunction with `gzip`, an archived file can be compressed to reduce disk space. The resulting archived file has the file extension, `tar.gz` and is sometimes called a "tarball".

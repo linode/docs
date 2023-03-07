@@ -1,8 +1,5 @@
 ---
 slug: lemp-stack-on-centos-7-with-fastcgi
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows how to install and configure a LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack on CentOS 7."
 keywords: ["nginx", "lemp", "php", 'mariadb']
 tags: ["lemp","web server","php","mysql","centos","nginx"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2014-12-11
 title: "Install a LEMP Stack on CentOS 7"
 image: lemp-on-centos-7-title-graphic.jpg
+authors: ["Linode"]
 ---
 
 ## What is a LEMP Stack?

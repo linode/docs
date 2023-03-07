@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Detach a VLAN from a Compute Instance
 description: "If a Compute Instance no longer requires access a VLAN's private network, the VLAN can be detached by editing the Configuration Profile."
 aliases: ['/products/networking/vlans/guides/detach-a-linode-from-your-vlan/']
+authors: ["Linode"]
 ---
 
 If you no longer wish to include a particular Compute Instance within a VLAN's private network, the VLAN can be detached by editing that instance's [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#editing-a-configuration-profile).

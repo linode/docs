@@ -1,9 +1,6 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-ubuntu-11-04-natty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 11.04 (Natty).'
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 

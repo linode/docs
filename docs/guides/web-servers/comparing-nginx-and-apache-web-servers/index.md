@@ -1,8 +1,5 @@
 ---
 slug: comparing-nginx-and-apache-web-servers
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Having trouble deciding between Apache or NGINX? Read through our comparison, and you'll know everything you need to make the best choice possible."
 keywords: ['apache','nginx','web server','open source','vs','comparison']
 tags: ['apache','nginx','web server']
@@ -13,13 +10,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "A Comparison of the NGINX and Apache Web Servers"
 title_meta: "Comparing the NGINX and Apache Web Servers"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Apache HTTP Server](https://httpd.apache.org/)'
 - '[NGINX](https://nginx.org/)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 The [*Apache HTTP Server*](https://httpd.apache.org/) (usually called "Apache") and [*NGINX*](https://nginx.org/) (pronounced "engine-X") are the two most popular open-source web servers. So much so that it can often be unclear which one is the best to use. However, once you realize what sets each apart, you can easily make the best choice for your needs.
