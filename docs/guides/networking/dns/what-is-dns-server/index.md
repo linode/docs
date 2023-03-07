@@ -24,7 +24,7 @@ It’s important for developers to understand what DNS is because they use it in
 
 ## What Is a DNS Server?
 
-DNS stands for Domain Name Search. DNS makes it possible to use a name instead of an internet protocol (IP) address. This makes it unnecessary to type in `54.239.28.85`, but instead simply type `amazon.com`.
+DNS stands for Domain Name Search. DNS makes it possible to use a name instead of an internet protocol (IP) address. This makes it unnecessary to type in `198.35.26.96`, but instead simply type `wikipedia.org`.
 
 There are different DNS servers available. Generally, a DNS server doesn't need to be configured because IT departments, hosting providers, or ISPs set up Local Area Network (LAN) devices. This automatically assigns desktops, laptops, and other end-user devices to whatever DNS service they use. However, this doesn't mean that they *must* be used. Standard DNS, such as what's provided by ISP's DNS servers, is often considered less secure.
 
