@@ -11,7 +11,7 @@ title: "Deploy BitNinja through the Linode Marketplace"
 external_resources:
 - '[BitNinja](https://bitninja.com/)'
 aliases: ['/guides/deploying-bitninja-marketplace-app/','/guides/bitninja-marketplace-app/']
-authors: ["Linode Community"]
+authors: ["Linode"]
 ---
 
 [BitNinja](https://bitninja.com/) is a general purpose security-as-a-service server defense tool powered by a social defense system and many active defense modules. Its main purpose is to protect your server against hackers, botnets, attackers, and malicious activities, all with less effort and maintenance on your part. All BitNinja servers form a huge honey farm to collect and analyze attacks from different botnets and then use this knowledge to intelligently adapt to new threats.
