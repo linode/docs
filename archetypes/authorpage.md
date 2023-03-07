@@ -1,8 +1,8 @@
 ---
-title: "Author: FirstName LastName"
+title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 link: ""
 email: ""
-description: "The Linode documentation library's profile page and submission listing for FirstName LastName"
+description: "The Linode documentation library's profile page and submission listing for {{ replace (path.Base .File.Dir) "-" " " | title }}"
 ---
 
 <!--
