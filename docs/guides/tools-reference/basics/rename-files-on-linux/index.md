@@ -3,16 +3,15 @@ slug: rename-files-on-linux
 author:
   name: Martin Heller
   email: docs@linode.com
-description: 'You need to know how to rename, move and work with files and folders on Linux if you work on a cloud server with cloud apps. This is a comprehensive tutorial to get you started? ✓ Click here!'
-og_description: 'You need to know how to rename, move and work with files and folders on Linux if you work on a cloud server with cloud apps. This is a comprehensive tutorial to get you started? ✓ Click here!'
+description: "You need to know how to rename, move and work with files and folders on Linux if you work on a cloud server with cloud apps. This is a comprehensive tutorial to get you started? ✓ Click here!"
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-14
+modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Rename Files on Linux"
-h1_title: "How to Rename Files in Linux"
-enable_h1: true
+title: "Rename Files in Linux"
+title_meta: "How to Rename Files on Linux"
 contributor:
   name: Martin Heller
 ---
@@ -25,21 +24,21 @@ This tutorial primarily discusses how to use the `mv` and `rename` commands to r
 
 For the purposes of this tutorial, a shared instance with 1 CPU and 1 GB of memory running Ubuntu 22.04 LTS works. Pick a region that is close to your location. Create a strong root password and save it for later. Should you ever forget your root password, you can create a new one on your settings page. Don’t bother creating a SSH key for the account unless you're already familiar with RSA keys.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+2.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Navigation
 
-1.  When your new Linode is running, click on the **Launch LISH Console** button.
+1. When your new Linode is running, click on the **Launch LISH Console** button.
 
-2.  Once the **Weblish** side of the display has stopped scrolling, click on the **Glish** side of the display.
+1. Once the **Weblish** side of the display has stopped scrolling, click on the **Glish** side of the display.
 
-3.  Log in as **root** with the password you chose in the previous step.
+1. Log in as **root** with the password you chose in the previous step.
 
 ## Renaming Files Using mv
 
@@ -51,37 +50,37 @@ Short for "move", the `mv` command moves files from one directory to another, bu
 
     You should have no results, as there are no visible files in the root directory.
 
-2.  However, there are hidden files, to reveal them, type:
+1.  However, there are hidden files, to reveal them, type:
 
         ls -a
 
     You should now see a handful of hidden files:
 
-        . .. .bashrc .cache .profile .ssh
+    {{< output >}}. .. .bashrc .cache .profile .ssh{{< /output >}}
 
-3.  Create an empty file:
+1.  Create an empty file:
 
         touch test.txt
 
-4.  View the directory again:
+1.  View the directory again:
 
         ls
 
     Your test file should now be listed:
 
-        test.txt
+    {{< output >}}test.txt{{< /output >}}
 
-5.  Rename the file:
+1.  Rename the file:
 
         mv test.txt test1.txt
 
-6.  View the directory again:
+1.  View the directory again:
 
         ls
 
     Your test file should now be listed with a different filename:
 
-        test1.txt
+    {{< output >}}test1.txt{{< /output >}}
 
 ## Rename File(s) Using the rename Command
 
@@ -93,43 +92,43 @@ If your Ubuntu Linode is brand new, it probably doesn't have the rename command 
 
         apt update
 
-2.  Now install `rename`:
+1.  Now install `rename`:
 
         apt install rename
 
-3.  Once installed, create a second file with touch:
+1.  Once installed, create a second file with touch:
 
         touch test2.txt
 
-4.  List both of them:
+1.  List both of them:
 
         ls
 
     You should now see both files:
 
-        test1.txt test2.txt
+    {{< output >}}test1.txt test2.txt{{< /output >}}
 
-{{< note >}}
+    {{< note respectIndent=false >}}
 `rename` uses a Perl expression to act on the file names. Run `man rename` for an explanation and several examples.
 {{< /note >}}
 
-5.  As an example, let’s rename both text files to backup files:
+1.  As an example, let’s rename both text files to backup files:
+
+    **Ubuntu or Debian:**
 
         rename 's/txt/bak/' *.txt
 
-    {{< note >}}
-On CentOS Stream 9, use this command instead:
+    **RHEL, Fedora, or CentOS:**
 
-    rename .txt .bak *.txt
-{{< /note >}}
+        rename .txt .bak *.txt
 
-6.  Now list them:
+1.  Now list them:
 
         ls
 
     You should see the same files as before, but with .bak extensions:
 
-        test1.bak test2.bak
+    {{< output >}}test1.bak test2.bak{{< /output >}}
 
 When you’re done with this exercise, exit the LISH shell. If you don't need this Linode anymore, delete it from its settings in the **...** dropdown menu to avoid incurring future charges.
 

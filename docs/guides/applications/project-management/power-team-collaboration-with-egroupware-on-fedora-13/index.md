@@ -25,11 +25,11 @@ relations:
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups without the need to rely on a third-party vendor.
 
-Before installing eGroupware, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/guides/lamp-server-on-fedora-13/) as a prerequisite for installing eGroupware.
+Before installing eGroupware, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/guides/lamp-server-on-fedora-13/) as a prerequisite for installing eGroupware.
 
 ## Install eGroupware
 
-In this guide, you will be installing eGroupware from the packages provided by the eGroupware project and built by the OpenSUSE build service for Fedora 13. Begin the installation by issuing the following commands to initialize the eGroupware repositories:
+In this guide, you will be installing eGroupware from the packages provided by the eGroupware project and built by the openSUSE build service for Fedora 13. Begin the installation by issuing the following commands to initialize the eGroupware repositories:
 
     yum update
     yum install wget

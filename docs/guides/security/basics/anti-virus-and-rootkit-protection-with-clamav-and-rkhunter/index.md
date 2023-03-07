@@ -3,7 +3,6 @@ slug: anti-virus-and-rootkit-protection-with-clamav-and-rkhunter
 author:
   name: Hackersploit
 description: 'Learn how to use ClamAV, ClamTK, and rkhunter for anti-virus and rootkit detection to secure your server.'
-og_description: 'Learn how to use ClamAV, ClamTK, and rkhunter for anti-virus and rootkit detection to secure your server.'
 keywords: ["clamav setup", "linux rootkit detection"]
 bundles: ['debian-security', 'centos-security']
 tags: ["security"]
@@ -13,7 +12,7 @@ modified_by:
   name: Linode
 published: 2020-10-30
 title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
-h1_title: Anti-Virus and Rootkit Protection with ClamAV and rkhunter
+title_meta: Anti-Virus Protection with ClamAV and rkhunter
 image: AntiVirus_Rootkitprotec_ClamAV_rkkunter.png
 aliases: ['/security/basics/anti-virus-and-rootkit-protection-with-clamav-and-rkhunter/']
 ---

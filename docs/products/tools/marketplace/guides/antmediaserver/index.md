@@ -10,7 +10,7 @@ published: 2021-03-30
 modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Ant Media Server Community Edition through the Linode Marketplace"
+title: "Deploy Ant Media Server Community Edition through the Linode Marketplace"
 external_resources:
 - '[Ant Media](https://antmedia.io)'
 - '[Document](https://github.com/ant-media/Ant-Media-Server/wiki)'
@@ -40,9 +40,9 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Ant Media Server should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ### Configuration Options
 
@@ -53,7 +53,7 @@ If you need adaptive streaming, cluster, load balancer, and hardware encoding, c
 
 ### Access your Ant Media Server App
 
-1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]:5080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The **Create First Account** screen appears. Complete this form and click **Create Account**.
 

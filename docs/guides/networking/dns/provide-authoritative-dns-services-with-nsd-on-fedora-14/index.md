@@ -23,11 +23,11 @@ relations:
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.
 
-Before beginning, you should be familiar with basic [DNS terminology and records](/docs/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
+Before beginning, you should be familiar with basic [DNS terminology and records](/docs/guides/dns-overview/). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -109,7 +109,7 @@ Rebuild the NSD database and restart the daemon with following command sequence:
     nsdc rebuild
     /etc/init.d/nsd restart
 
-Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/networking/dns/use-dig-to-perform-manual-dns-queries). Issue the following command to test the DNS server:
+Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/guides/use-dig-to-perform-manual-dns-queries/). Issue the following command to test the DNS server:
 
     dig @localhost www.example.org
 

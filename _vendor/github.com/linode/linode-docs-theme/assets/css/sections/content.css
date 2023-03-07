@@ -29,6 +29,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   margin-bottom: 0;
 }
 
+
 .content a {
   @apply text-brand hover:text-green-400;
 }
@@ -89,6 +90,23 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 
 .content .file .chroma .lntable {
   overflow: inherit;
+}
+
+/*  Chroma overrides. Keep them here as chroma.css is auto generated.  */
+.chroma .lntd:first-of-type {
+  border-right: 1px #dedee3 solid;
+  text-align: center;
+  margin: 0;
+}
+
+.chroma .lnt {
+  height: 100%;
+  display: block;
+}
+
+.chroma .hl {
+  display: block;
+  width: 100%;
 }
 
 .content .file tbody tr:first-child {
@@ -155,8 +173,17 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   @apply bg-gray-300;
 }
 
-.chroma .lntable tbody td:first-child {
-  padding-left: 0;
+.content .chroma .lntable {
+  @apply w-full;
+}
+
+.chroma .lntd pre {
+  @apply px-0;
+}
+
+.chroma .line,
+.chroma .lnt {
+  @apply px-5;
 }
 
 .content img.marquee-img {
@@ -195,14 +222,6 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   .content img {
     @apply rounded-lg;
   }
-}
-
-/* Adjust anchor links vs fixed header height. */
-.content :target::before {
-  content: "";
-  display: block;
-  height: 80px;
-  margin: -80px 0 0;
 }
 
 /*

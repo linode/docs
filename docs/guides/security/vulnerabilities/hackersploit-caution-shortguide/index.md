@@ -14,6 +14,6 @@ headless: true
 show_on_rss_feed: false
 ---
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 All labs and tests are to be conducted within the parameters outlined within the text. The use of other domains or IP addresses is prohibited.
-{{< /caution >}}
+{{< /note >}}

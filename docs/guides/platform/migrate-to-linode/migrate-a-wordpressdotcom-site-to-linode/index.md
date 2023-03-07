@@ -21,7 +21,7 @@ This guide describes how to export your content from WordPress.com and self-host
 
 Ubuntu 18.04 is used as the distribution for the new Linode deployment in this guide. If you'd like to choose another distribution, use the examples here as an approximation for the commands you'll need to run. You will also install either a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) or [LEMP](/docs/guides/how-to-install-the-lemp-stack-on-ubuntu-18-04/) environment on your new Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 WordPress.com's export feature will export pages, posts, and comments from your site, but it will not export your themes and widgets. You will need to customize your new self-hosted WordPress site's appearance after completing your migration.
 {{< /note >}}
 
@@ -29,11 +29,11 @@ WordPress.com's export feature will export pages, posts, and comments from your 
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges.
 
-1.  Follow the [Install WordPress on Ubuntu 18.04](/docs/websites/cms/install-wordpress-ubuntu-18-04) guide to stand up a new web server and WordPress installation. Later in this guide you will use the WordPress credentials you create during the installation, so be sure to record them.
+1.  Follow the [Install WordPress on Ubuntu 18.04](/docs/guides/install-wordpress-ubuntu-18-04/) guide to stand up a new web server and WordPress installation. Later in this guide you will use the WordPress credentials you create during the installation, so be sure to record them.
 
 ### Export Your WordPress.com Content
 

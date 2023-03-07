@@ -23,9 +23,9 @@ tags: ["automation","salt"]
 
 -  You will need at least two Linodes: One will function as the Salt Master and the other(s) as Salt Minions.
 
--  Set each Linode's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
+-  Set each Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
 
--  We recommend that you configure [private IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
+-  We recommend that you configure [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
 
 
 ## Install Using Salt Bootstrap
@@ -37,7 +37,7 @@ tags: ["automation","salt"]
     curl -L https://bootstrap.saltproject.io -o install_salt.sh
     sudo sh install_salt.sh -P -M -N
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-N` flag indicates not to install `salt-minion`, since this system is the Salt master.
 {{< /note >}}
 
@@ -64,7 +64,7 @@ interface: 203.0.113.0
 
 **Salt Minions**
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This step must be performed on *each* Salt minion.
 {{< /note >}}
 
@@ -121,7 +121,7 @@ master_finger: '4b:2a:81:79...'
 
         sudo salt-key -A
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To accept an individual minion, specify it by hostname or IP address:
 
     sudo salt-key -a hostname

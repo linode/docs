@@ -10,7 +10,7 @@ modified: 2018-03-20
 modified_by:
   name: Linode
 published: 2018-03-20
-title: Install NGINX on Debian from the Official NGINX Repository
+title: Install NGINX on Debian from the NGINX Repository
 relations:
     platform:
         key: how-to-install-nginx

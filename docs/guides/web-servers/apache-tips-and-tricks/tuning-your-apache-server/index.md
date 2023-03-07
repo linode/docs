@@ -26,7 +26,7 @@ Your Apache configuration settings have a major effect on your Linode's performa
 
 ## Tools
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,7 +62,7 @@ ExtendedStatus On
     {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Enabling `ExtendedStatus` consumes additional system resources.
 {{< /note >}}
 
@@ -139,7 +139,7 @@ To use the worker or event modules, replace `<IfModule mpm_prefork_module>` with
 
 Next, you should alter the module settings you added in the previous step. To do this, you should take into consideration what each value does, and how best to change it. It is recommended to make incremental changes to your configuration settings and then monitor the effects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 After making alterations to the Apache configuration file, restart the service.
 
 - On Debian/Ubuntu:
@@ -191,6 +191,6 @@ When using the `worker` and `event` modules, `ServerLimit` and `ThreadLimit` det
 
 ### KeepAlive
 
-[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP connection to make multiple requests, instead of opening a new one for each request. This decreases page load times and lowers CPU use for your web server, at the expense of an increase in your server's RAM use. A KeepAlive connection will be counted as a single "request" for the [MaxConnectionsPerChild](/docs/web-servers/apache-tips-and-tricks/tuning-your-apache-server/#maxconnectionsperchild).
+[KeepAlive](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) allows connecting clients to use a single TCP connection to make multiple requests, instead of opening a new one for each request. This decreases page load times and lowers CPU use for your web server, at the expense of an increase in your server's RAM use. A KeepAlive connection will be counted as a single "request" for the [MaxConnectionsPerChild](/docs/guides/tuning-your-apache-server/#maxconnectionsperchild).
 
 In the past, this setting was often disabled to conserve RAM use, but server resources have become less expensive, and the option is now enabled by default in Apache 2.4. Enabling KeepAlive can significantly benefit your site's user experience, so be wary of disabling it without testing the effects of doing so. KeepAlive can be enabled or disabled in your web server configuration, or within a Virtual Host block.

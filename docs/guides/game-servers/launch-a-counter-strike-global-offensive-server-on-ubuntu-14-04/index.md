@@ -35,10 +35,10 @@ relations:
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/). A game server token is required to host a public CS:GO server. Without the token, client connections are restricted to the LAN only.
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Counter-Strike: Global Offensive
@@ -78,7 +78,7 @@ From the SteamCMD guide, one additional step is needed specifically for CS:GO.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update CS:GO, run the above 4 commands again.
 {{< /note >}}
 
@@ -116,7 +116,7 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
 {{< /file >}}
 
 
-    When run, the script will change directories to `~/Steam/csgo-ds` and execute a Dust2 server in competitive game mode in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
+    When run, the script will change directories to `~/Steam/csgo-ds` and execute a Dust2 server in competitive game mode in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
 
 3.  Make the script executable:
 
@@ -128,9 +128,9 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
 
         cd ~/ && ./startcsgo.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop CS:GO.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 
@@ -172,4 +172,4 @@ These settings are changed in the launch command.
 
 ### RCON
 
-When logged into the server, you can open the RCON console with the backtick button (`` ` ``), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).
+When logged into the server, you can open the RCON console with the backtick button (`` ` ``), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/guides/team-fortress2-on-debian-and-ubuntu/#rcon).

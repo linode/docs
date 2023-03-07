@@ -53,4 +53,4 @@ There are a number of ways to adopt Linux as your development OS. It’s not nec
 
 - Purchase a [Raspberry Pi](https://www.raspberrypi.org/). Raspberry Pis are small, affordable computers which are an easy introduction to Linux. There is an active Raspberry Pi community, and many [example projects](https://projects.raspberrypi.org/en/) to learn from and follow.
 
-- [Create a Linode](/docs/getting-started) and work with the Linux command line remotely. The Linode platform offers a fast and cost-effective way to create Linux servers. You can easily create a Linode, test something out, then restart with a fresh Linode to try something else out.
+- [Create a Linode](/docs/products/platform/get-started/) and work with the Linux command line remotely. The Linode platform offers a fast and cost-effective way to create Linux servers. You can easily create a Linode, test something out, then restart with a fresh Linode to try something else out.

@@ -4,7 +4,6 @@ author:
   name: Linode
   email: docs@linode.com
 description: The systemd daemon allows you to control Linux system services. This guide shows how to configure a custom systemd service and enable it to start at boot.
-og_description: The systemd daemon allows you to control Linux system services. This guide shows how to configure a custom systemd service and enable it to start at boot.
 keywords: ["systemd","service","enable service","Linux system service"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-01

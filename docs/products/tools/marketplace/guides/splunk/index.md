@@ -10,7 +10,7 @@ published: 2021-09-03
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Splunk through the Linode Marketplace"
+title: "Deploy Splunk through the Linode Marketplace"
 aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
@@ -24,9 +24,9 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Splunk should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,6 +42,8 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

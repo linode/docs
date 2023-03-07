@@ -4,7 +4,7 @@ deprecated: true
 author:
   name: Christopher Piccini
   email: cpiccini11@gmail.com
-description: This guide will show you how to create a Python virtual environment on your Ubuntu 16.10 Linode.
+description: "This guide will show you how to create a Python virtual environment on your Ubuntu 16.10 Linode."
 keywords: ["python", "python virtual environment", "virtualenv"]
 tags: ["python","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +13,7 @@ modified: 2017-08-14
 modified_by:
   name: Linode
 published: 2017-08-13
-title: How to Create a Python Virtual Environment on Ubuntu 16.10
-h1_title: Creating a Python Virtual Environment on Ubuntu 16.10
+title: "Create a Python Virtual Environment on Ubuntu 16.10"
 contributor:
   name: Christopher Piccini
   link: https://twitter.com/chrispiccini11
@@ -39,7 +38,7 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Before You Begin
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Update your system:
 

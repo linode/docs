@@ -11,9 +11,8 @@ published: 2018-02-01
 modified: 2018-02-01
 modified_by:
   name: Linode
-title: "How to Compress and Extract Files Using tar and gzip"
-h1_title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
-enable_h1: true
+title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
+title_meta: "How to Compress and Extract Files Using tar and gzip"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
 ---

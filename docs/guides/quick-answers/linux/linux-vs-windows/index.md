@@ -8,9 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-01
 modified_by:
   name: Linode
-title: "What is the Difference Between Linux and Windows?"
-h1_title: "Linux vs. Windows: What’s the Difference?"
-enable_h1: true
+title: "Linux vs. Windows: What’s the Difference?"
+title_meta: "What is the Difference Between Linux and Windows?"
 contributor:
   name: Tom Henderson
 ---

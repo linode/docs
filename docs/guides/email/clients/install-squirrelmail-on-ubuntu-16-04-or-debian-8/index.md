@@ -28,7 +28,7 @@ SquirrelMail is a webmail package, written in PHP, which supports both SMTP and 
 
 {{< content "email-warning-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -100,7 +100,7 @@ Alias /squirrelmail /usr/share/squirrelmail
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Apache is serving other virtual hosts you may need to adjust them and/or this configuration file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
 {{< /note >}}
 
@@ -134,7 +134,7 @@ Before using SquirrelMail for the first time, configure it to access your mail s
 
 3.  If your mail server is on the same Linode as your SquirrelMail installation, you may not need to make any adjustments to the default settings. Otherwise, adjust the **Domain**, **IMAP**, and **SMTP** settings to match the mail server you want to connect to. You can find additional configuration tips for this section from [SquirrelMail's official documentation](http://squirrelmail.org/docs/admin/admin-5.html#ss5.3).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide does, You will not be able to authenticate using this version of Squirrelmail. Version 1.5.1 and higher can use `STARTTLS`, but are in development and not available in the main repositories. You can [download](https://squirrelmail.org/download.php) the latest build from Squirrelmail's website.
 {{< /note >}}
 

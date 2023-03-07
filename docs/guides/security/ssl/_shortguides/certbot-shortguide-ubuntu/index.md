@@ -41,7 +41,7 @@ blank to select all options shown (Enter 'c' to cancel):
 
 1. When the tool completes, Certbot will store all generated keys and issued certificates in the `/etc/letsencrypt/live/$domain` directory, where `$domain` is the name of the domain entered during the Certbot certificate generation step.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Certbot recommends pointing your web server configuration to the default certificates directory or creating symlinks. Keys and certificates should not be moved to a different directory.
 {{< /note >}}
 

@@ -12,7 +12,6 @@ published: 2020-01-29
 modified_by:
   name: Linode
 title: 'What is Serverless Computing?'
-h1_title: 'What is Serverless Computing?'
 contributor:
   name: Andy Patrizio
 ---

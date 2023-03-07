@@ -9,8 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-15
 modified_by:
   name: Nathaniel Stickman
-title: "Using Redis Transaction Blocks"
-h1_title: "How to Use Redis Transaction Blocks"
+title: "Use Redis Transaction Blocks"
+title_meta: "How to Use Redis Transaction Blocks"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
@@ -25,9 +25,9 @@ This guide walks you through using Redis's transaction blocks. Transaction block
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -41,7 +41,7 @@ This guide walks you through using Redis's transaction blocks. Transaction block
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps written in this guide are for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -171,4 +171,4 @@ As mentioned above, the ability to cancel an in-progress transaction becomes esp
 
 Redis transaction execute a collection of commands and ensure that the command execution is not interrupted by another client. This guide covered creating transaction blocks, understanding common transaction errors, and canceling in-progress transactions.
 
-You can learn more about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/how-to-connect-to-redis/) to working with the [hash data type](/docs/guides/hashes-in-redis-databases/).
+You can learn more about Redis and how to get the most out of your Redis databases through our other guides in this series. These guides cover everything from [connecting to a remote Redis server](/docs/guides/redis-getting-started/) to working with the [hash data type](/docs/guides/hashes-in-redis-databases/).

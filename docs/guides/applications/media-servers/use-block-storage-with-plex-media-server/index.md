@@ -11,9 +11,8 @@ modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2018-03-01
-title: "How to Use a Block Storage Volume with Plex Media Server"
-h1_title: "Using a Block Storage Volume with Plex Media Server"
-enable_h1: true
+title: "Using a Block Storage Volume with Plex Media Server"
+title_meta: "How to Use a Block Storage Volume with Plex Media Server"
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true
@@ -91,7 +90,7 @@ Moving media to the Volume can be done with `scp` using the following syntax:
 Depending on the file size(s), this may take a few minutes.
 
 {{< note >}}
-There are other ways to upload files to a remote server. See our section in [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+There are other ways to upload files to a remote server. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
 {{< /note >}}
 
 ## Scan for New Media on the Volume

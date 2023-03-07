@@ -27,7 +27,7 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -162,7 +162,7 @@ You will need to restart the web server every time the `application.wsgi` file c
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
-- [Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)
+- [Deploy Django Applications with mod\_wsgi](/docs/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)
 - [Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)

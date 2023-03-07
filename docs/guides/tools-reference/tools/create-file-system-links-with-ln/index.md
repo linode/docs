@@ -35,7 +35,7 @@ The `ln` command creates **links** which point to other objects in the file syst
 
     ln -s <from> <to>
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-s` flag specifies a symbolic link. If this flag is omitted, a hard link is created by default.
 {{< /note >}}
 

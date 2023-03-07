@@ -33,7 +33,7 @@ Use [ping6](https://linux.die.net/man/8/ping6) for IPv6:
 
     ping6 -c 5 speedtest.dallas.linode.com
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Many internet connections still don't support IPv6 so don't be alarmed if `ping6` commands don't work *to* your Linode from your local machine. They will, work *from* your Linode to other IPv6-capable network connections (ex. between two Linodes in different data centers).
 {{< /note >}}
 

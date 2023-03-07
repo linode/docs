@@ -96,7 +96,7 @@ The easiest way to install Portainer is by deploying the official image.
 
     ![Portainer Dashboard](linode-on-remote-devices-03.png "Portainer Dashboard")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default your connection with Portainer GUI is not encrypted. If you need to use SSL then you must install the corresponding certificates on your Linode and pass their location to the Docker container on start. For more information please read how to [Secure Portainer using SSL](https://portainer.readthedocs.io/en/stable/deployment.html#secure-portainer-using-ssl) in the Portainer official documentation.
 {{< /note >}}
 

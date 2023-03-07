@@ -24,9 +24,9 @@ dedicated_cpu_link: true
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. [Mono](http://www.mono-project.com/) is an open source implementation of the .NET framework. CubeCoders Limited, the company behind McMyAdmin, packages its own minimal installation of Mono with some necessary source and configuration files. This must be used instead of the generic Mono packages from Debian's repositories.
 
@@ -112,7 +112,7 @@ COMMIT
         sudo iptables -L -nv
         sudo ip6tables -L -nv
 
-4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/security/firewalls/control-network-traffic-with-iptables#introduction-to-iptables-persistent).
+4. To apply your iptables rules automatically on boot, see our section on configuring [iptables-persistent](/docs/guides/control-network-traffic-with-iptables/#introduction-to-iptables-persistent).
 
 ## Install Prerequisite Software
 
@@ -160,7 +160,7 @@ This section should be completed as your standard user, **not** as root. McMyAdm
         Notice	: This is the first time McMyAdmin has been started.
         Notice	: You must complete the first-start wizard via the web interface.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To exit McMyAdmin and return to the command line, enter `/quit`.
 {{< /note >}}
 
@@ -178,9 +178,9 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
 4.  Select *Start Server* and accept the Minecraft Server EULA (End User Licensing Agreement).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not prompted to accept the EULA in McMyAdmin, you can find the EULA at `~/McMyAdmin/Minecraft/eula.txt`. Change the value of `eula=false` to `eula=true`.
-{{</ note >}}
+{{< /note >}}
 
     ![McMyAdmin Status Page](mymyadmin-status-page.png)
 

@@ -4,7 +4,6 @@ author:
   name: Luis Cortés
   email: docs@linode.com
 description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
-og_description: "Learn how to set up te Beautiful Soup Python library to collect data over an extended period of time and export the results to a spreadsheet."
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2019-02-01
@@ -13,7 +12,8 @@ modified_by:
 published: 2017-12-12
 contributor:
   name: Luis Cortés
-title: "How to Scrape a Website with Beautiful Soup"
+title: "Scrape a Website with Beautiful Soup"
+title_meta: "How to Scrape a Website with Beautiful Soup"
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-scrape-a-website-with-beautiful-soup/']
 ---

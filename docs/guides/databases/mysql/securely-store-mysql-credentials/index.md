@@ -10,7 +10,7 @@ published: 2022-07-01
 modified: 2022-07-01
 modified_by:
   name: Linode
-title: "Securely Storing MySQL Credentials using mysql_config_editor"
+title: "Securely Store MySQL Credentials with mysql_config_editor"
 external_resources:
  - '[mysql_config_editor documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html)'
 tags: ["mariadb","database","mysql"]
@@ -28,7 +28,7 @@ Run the `set` command to store your credentials and database connection details.
 
 {{< note >}}
 You can also use special login path names, which are used by default in certain commands without needing to specify it. These special login paths include `client` and `mysql` for the mysql command and `mysqldump` for the mysqldump command.
-{{</ note >}}
+{{< /note >}}
 
 ## View Stored Credentials
 

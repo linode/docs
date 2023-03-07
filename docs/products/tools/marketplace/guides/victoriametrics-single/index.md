@@ -10,7 +10,7 @@ published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying VictoriaMetrics Single through the Linode Marketplace"
+title: "Deploy VictoriaMetrics Single through the Linode Marketplace"
 contributor:
   name: Linode
 external_resources:
@@ -32,9 +32,9 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** VictoriaMetrics should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,7 +43,7 @@ This Marketplace App deploys [VictoriaMetrics Single](https://docs.victoriametri
 
 ### VictoriaMetrics Options
 
-- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
+- **Hostname** *(required)*: Enter a hostname for your new instance. See [Configure a Custom Hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for examples.
 
 ## Getting Started after Deployment
 

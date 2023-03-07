@@ -10,9 +10,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-30
 modified_by:
   name: Angel D'az
-title: "How to Create Connections and Variables in Apache Airflow"
-h1_title: "Creating Connections and Variables in Apache Airflow"
-enable_h1: true
+title: "Create Connections and Variables in Apache Airflow"
 image: ApacheAirflowTut_CreateConn_Var.png
 contributor:
   name: Angel D'az
@@ -43,7 +41,7 @@ In this Apache Airflow tutorial, you learn how to:
 
 ## Airflow Variables and Connections
 
-Airflow needs to access data from external sources, like [databases](https://www.linode.com/blog/marketplace-apps/new-web-development-and-database-marketplace-apps/), [APIs](https://developers.linode.com/api/v4), and [servers](https://www.linode.com/products/shared/). You use [Airflow *Connections*](https://airflow.apache.org/docs/stable/howto/connection/index.html) to create connections to your data sources. Your connections form the building blocks of your Airflow DAGs, because they define your data's sources, [staging area](https://airflow.apache.org/docs/stable/best-practices.html#staging-environment), and destination.
+Airflow needs to access data from external sources, like [databases](https://www.linode.com/blog/marketplace-apps/new-web-development-and-database-marketplace-apps/), [APIs](/docs/api/), and [servers](https://www.linode.com/products/shared/). You use [Airflow *Connections*](https://airflow.apache.org/docs/stable/howto/connection/index.html) to create connections to your data sources. Your connections form the building blocks of your Airflow DAGs, because they define your data's sources, [staging area](https://airflow.apache.org/docs/stable/best-practices.html#staging-environment), and destination.
 
 You use Airflow variables to store reusable values, like URIs, database usernames, configurations, and any other values required by your DAGs. The variables are stored in Airflow's metadata database.
 
@@ -82,9 +80,9 @@ Using a JSON file to load [Airflow variables](https://airflow.apache.org/docs/st
 dbname
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Airflow saves the passwords for connections and any variable values in plain text within the metadata database. See the [A Recommended Workflow for Sensitive Variables](#a-recommended-workflow-for-sensitive-variables) section for ways to keep your variables secure.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Create Your Connection Script
 

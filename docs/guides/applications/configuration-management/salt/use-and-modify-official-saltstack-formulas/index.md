@@ -41,9 +41,9 @@ This guide will use GitHub to fork and modify SaltStack's [timezone formula](htt
 
 1. Use the [Getting Started with Salt - Basic Installation and Setup](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) guide to set up a Salt Master and two Salt minions: one running Ubuntu 18.04 and the second running CentOS 7.
 
-1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -394,7 +394,7 @@ timezone:
     utc: True
     {{</ file >}}
 
-    The `timezone.sls` Pillar file was created from the `pillar.example` file provided in the SaltStack timezone formula. The example was modified to add Jinja control statements that will assign a different timezone on any minion that is a Debian family OS. You can replace any of the timezone `name` values to your preferred timezone or add additional Jinja logic, if necessary. For an introduction to Jinja, read the [Introduction to Jinja Templates for Salt](/docs/applications/configuration-management/introduction-to-jinja-templates-for-salt).
+    The `timezone.sls` Pillar file was created from the `pillar.example` file provided in the SaltStack timezone formula. The example was modified to add Jinja control statements that will assign a different timezone on any minion that is a Debian family OS. You can replace any of the timezone `name` values to your preferred timezone or add additional Jinja logic, if necessary. For an introduction to Jinja, read the [Introduction to Jinja Templates for Salt](/docs/guides/introduction-to-jinja-templates-for-salt/).
 
     You can also override any of the dictionary values defined in the `timezone/defaults.yaml` or `timezone/osfamilymap.yaml` in the Pillar file using Salt's lookup dictionary convention. For example, if you wanted to override the `pkgname` value defined in `timezone/defaults.yaml` your Pillar file might look like the following example:
 

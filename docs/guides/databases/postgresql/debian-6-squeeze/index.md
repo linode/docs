@@ -11,7 +11,7 @@ modified: 2013-03-08
 modified_by:
   name: Linode
 published: 2011-02-18
-title: 'Use PostgreSQL Relational Databases on Debian 6 (Squeeze)'
+title: 'Use PostgreSQL Relational Databases on Debian 6'
 relations:
     platform:
         key: use-postrgesql-database
@@ -21,7 +21,7 @@ tags: ["debian","database","postgresql"]
 aliases: ['/databases/postgresql/debian-6-squeeze/']
 ---
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 6 (Squeeze). It is assumed that you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 6 (Squeeze). It is assumed that you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.
 
 ## Installing PostgreSQL
 

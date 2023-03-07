@@ -10,7 +10,8 @@ published: 2019-01-31
 modified: 2021-07-02
 modified_by:
   name: Linode
-title: "How to Resell Linode Services"
+title: "Resell Linode Services"
+title_meta: "How to Resell Linode Services"
 contributor:
   name: Linode
 tags: ["linode platform"]
@@ -31,11 +32,11 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 -   An app developer that uses Linode to host their customer's database.
 
--   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/case-studies/cloudnet) for an in-depth look at why they chose to partner with Linode.
+-   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/content/cloudnet/) for an in-depth look at why they chose to partner with Linode.
 
 ## Referral Program
 
-As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/guides/understanding-billing-and-payments/#referral-program) section within our billing guide for more details.
+As an alternative to reselling our services, you can participate in our referral program. See the [Referral Program](https://www.linode.com/referral-program/) page on our website or the [Referral Program](/docs/products/platform/billing/guides/referral-program/) section within our billing guide for more details.
 
 Advertising your referral code to others is not the same as reselling Linode services. When someone else uses your referral code, they create an entirely separate Linode account with their own billing.
 
@@ -49,21 +50,21 @@ There are a few stipulations that resellers should keep in mind:
 
 - Payments are to be made directly to Linode by the reseller. If a customer of a reseller fails to pay the reseller for their services, the reseller is still responsible for their monthly payment to Linode.
 
-- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/platform/billing-and-support/support/#scope-of-support). Linode offers a number of [resources](/docs/platform/billing-and-support/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Linode Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
+- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/guides/support/#scope-of-support). Linode offers a number of [resources](/docs/guides/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Linode Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
 
 ## How to Resell Linode Service
 
 ### Linode API
 
-The best way to resell Linode services is through the use of the Linode API. The Linode API provides robust, programmatic access to the full suite of Linode services. Using the API, a reseller could set up a custom user interface to only allow the select features they want available for their customers. For example, it's possible to create a UI that only enables 4GB Linode deployments and that automatically provisions those Linodes with a StackScript. For a tutorial on how to use the Linode API, check out our [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/) guide. For a comprehensive view of the Linode API, see Linode's [API documentation](https://developers.linode.com/api/v4). For a list of Linode API libraries and tools, head over to our [developer portal](https://developers.linode.com/libraries-tools/).
+The best way to resell Linode services is through the use of the Linode API. The Linode API provides robust, programmatic access to the full suite of Linode services. Using the API, a reseller could set up a custom user interface to only allow the select features they want available for their customers. For example, it's possible to create a UI that only enables 4GB Linode deployments and that automatically provisions those Linodes with a StackScript. For a tutorial on how to use the Linode API, check out our [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide. For a comprehensive view of the Linode API, see Linode's [API documentation](/docs/api/). For a list of Linode API libraries and tools, head over to our [developer portal](https://developers.linode.com/libraries-tools/).
 
 ### Limited Cloud Manager Users
 
-If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/platform/manager/accounts-and-passwords-new-manager/#users-and-permissions) section of the Accounts and Passwords guide.
+If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) section of the Accounts and Passwords guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
-{{</ note >}}
+{{< /note >}}
 
 ### Limited Linux User Accounts
 
@@ -77,7 +78,7 @@ Yes. Please use the official [Linode logo assets](https://www.linode.com/logos).
 
 ### What Payment Methods are Available?
 
-Automatic payments can be made with a credit card. All Linode accounts are required to have a credit card on file. Manual PayPal payments can also be made, so you can add credit to your Linode account with PayPal. For more information on Linode's billing, review the [Billing and Payments](/docs/platform/billing-and-support/billing-and-payments-new-manager/#payment-methods) guide.
+Automatic payments can be made with a credit card. All Linode accounts are required to have a credit card on file. Manual PayPal payments can also be made, so you can add credit to your Linode account with PayPal. For more information on Linode's billing, review the [Payment Methods](/docs/products/platform/billing/guides/payment-methods/) guide.
 
 ### Does Linode Have a White-Label Interface?
 

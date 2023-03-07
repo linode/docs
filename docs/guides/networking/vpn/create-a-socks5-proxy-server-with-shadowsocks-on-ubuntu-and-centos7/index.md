@@ -13,9 +13,8 @@ published: 2017-12-07
 modified: 2018-07-10
 modified_by:
   name: Linode
-title: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
-h1_title: "Creating a SOCKSS Proxy Server with Shadowsocks"
-enable_h1: true
+title: "Creating a SOCKSS Proxy Server with Shadowsocks"
+title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940
@@ -34,7 +33,7 @@ Because currently, there is no Shadowsocks package available for Ubuntu or CentO
 
 ## Before You Begin
 
-1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our Securing your Server guide.
+1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our Securing your Server guide.
 
 1.  A working firewall is a necessary security measure. Firewall instructions [are provided](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on a Linode, visit one of the following guides:
 
@@ -158,9 +157,9 @@ Apply the following optimizations to the system kernel to provide for a smooth r
 
 1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into the file:
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured the system kernel settings for any reason, make sure no conflicts exist.
-{{< /caution >}}
+{{< /note >}}
 
     {{< file "/etc/sysctl.d/local.conf" >}}
 # max open files

@@ -40,7 +40,7 @@ Issue the following command to update your package lists:
 
     apt-get update
 
-When running system upgrades, you may want to start a [screen](/docs/linux-tools/utilities/screen) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
+When running system upgrades, you may want to start a [screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
 
     apt-get install screen
 
@@ -68,7 +68,7 @@ You will also be advised that some services need to be restarted. In most cases 
 
 Additionally, you will also be asked if you'd like to replace some of your configuration files with the package maintainer's version. Please read through the prompts carefully and decide the best option for you.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/using-the-lish-console/).
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 You may now check that you're running Ubuntu 11.10 (Oneiric) by issuing the following command as root:
 

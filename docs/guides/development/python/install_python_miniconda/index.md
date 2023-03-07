@@ -9,7 +9,7 @@ keywords: ["python 3", "miniconda", "continuum"]
 modified: 2017-01-08
 modified_by:
   name: Sam Foo
-title: "How to install Python 3 with Miniconda"
+title: "Install Python 3 with Miniconda"
 published: 2018-01-09
 headless: true
 show_on_rss_feed: false

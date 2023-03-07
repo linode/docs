@@ -16,7 +16,7 @@ title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
 external_resources:
  - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
- - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
 ---
 
@@ -32,11 +32,11 @@ This document provides an overview of using NGINX as a front-end proxy server fo
 
 Ensure that you have completed the following:
 
--   Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/).
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/guides/linode-beginners-guide/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 ## Front-End Proxy Services with NGINX: How It Works
 
@@ -50,7 +50,7 @@ When a request reaches the NGINX front-end proxy server, here's an overview of t
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the NGINX front end.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.
 {{< /note >}}
 
@@ -283,7 +283,7 @@ upstream appcluster {
 
 Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
 {{< /note >}}
 

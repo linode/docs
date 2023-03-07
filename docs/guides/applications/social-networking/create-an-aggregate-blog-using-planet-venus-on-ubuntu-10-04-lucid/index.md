@@ -13,10 +13,10 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2010-08-10
-title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 10.04 (Lucid)'
+title: "Aggregate Content Using Planet Venus on Ubuntu 10.04"
 external_resources:
-    - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
-    - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+    - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
+    - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
 relations:
     platform:
         key: aggregate-blog-planet
@@ -28,7 +28,7 @@ relations:
 
 The Planet (Venus) Feed Aggregator takes a collection of RSS feeds and generates what its founders call a "River of News" feed that combines posts from all sources into a single coherent stream. Thus, this software is useful for providing a simple and consolidated overview of ongoing output from selected blogs. Written and configured in Python and run regularly using cron, Planet Venus is an updated variant of the popular Planet software.
 
-Before beginning to follow this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/docs/web-servers/) software.
+Before beginning to follow this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/docs/web-servers/) software.
 
 ## Installing Software
 

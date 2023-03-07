@@ -6,7 +6,6 @@ author:
 keywords: ["Docker", "Docker Compose", "Drupal"]
 tags: ["postresql","docker","drupal","linux"]
 description: 'This guide provides you with step-by-step instructions for installing and configuring Drupal, a popular content management system, using Docker Compose.'
-og_description: 'This guide provides you with step-by-step instructions for installing and configuring Drupal, a popular content management system, using Docker Compose.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-06-29
 modified: 2018-06-29

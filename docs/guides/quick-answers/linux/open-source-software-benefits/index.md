@@ -9,9 +9,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-24
 modified_by:
   name: Linode
-title: "Open Source Software: Benefits Explained"
-h1_title: "What are the Advantages of Open Source Software?"
-enable_h1: true
+title: "What are the Advantages of Open Source Software?"
+title_meta: "Open Source Software: Benefits Explained"
 contributor:
   name: Jack Wallen
 ---

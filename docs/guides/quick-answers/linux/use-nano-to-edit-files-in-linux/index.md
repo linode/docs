@@ -13,7 +13,7 @@ modified_by:
   name: Edward Angert
 title: 'Use nano to Edit Files in Linux'
 external_resources:
- - '[Using nano](/docs/tools-reference/tools/using-nano)'
+ - '[Using nano](/docs/guides/use-nano-text-editor-commands/)'
  - '[nano help](https://www.nano-editor.org/dist/v2.8/nano.html)'
  - '[Emacs, nano, or Vim: Choose your Terminal-Based Test Editor Wisely](https://medium.com/linode-cube/emacs-nano-or-vim-choose-your-terminal-based-text-editor-wisely-8f3826c92a68)'
 tags: ["linux"]

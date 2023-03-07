@@ -11,9 +11,8 @@ published: 2017-08-17
 modified: 2019-02-01
 modified_by:
   name: Linode
-title: "How to Run Half-Life 2 Deathmatch on Debian or Ubuntu"
-h1_title: "Running a Half-Life 2 Deathmatch Server on Debian or Ubuntu"
-enable_h1: true
+title: "Running a Half-Life 2 Deathmatch Server on Debian or Ubuntu"
+title_meta: "How to Run Half-Life 2 Deathmatch on Debian or Ubuntu"
 contributor:
   name: Davide Beatrici
   link: https://github.com/davidebeatrici

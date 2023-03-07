@@ -10,7 +10,7 @@ published: 2020-03-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Grafana through the Linode Marketplace"
+title: "Deploy Grafana through the Linode Marketplace"
 image: feature.png
 contributor:
   name: Linode
@@ -24,7 +24,7 @@ aliases: ['/platform/marketplace/how-to-deploy-grafana-with-marketplace-apps/', 
 
 {{< note >}}
 Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitoring and data collection. Consider using the combined [Prometheus and Grafana Marketplace App](/docs/products/tools/marketplace/guides/prometheus-grafana/) if you intend on using both of these applications together.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -32,9 +32,9 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Grafana should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -47,6 +47,8 @@ Grafana is often used alongside [Prometheus](https://prometheus.io/) for monitor
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access Your Grafana Client
@@ -56,8 +58,8 @@ Now that your Grafana Marketplace App is deployed, you can log into Grafana to a
 1. Open a browser and navigate to your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) and port `3000`, for example, `http://192.0.2.0:3000/`. By default, Grafana will listen to port `3000`.
 
     {{< note >}}
-The Grafana Marketplace App will install and enable the [UFW firewall](/docs/guides/configure-firewall-with-ufw/) allowing TCP traffic on port `3000`.
-    {{</ note >}}
+    The Grafana Marketplace App will install and enable the [UFW firewall](/docs/guides/configure-firewall-with-ufw/) allowing TCP traffic on port `3000`.
+    {{< /note >}}
 
 1. Viewing Grafana's log in page, enter in `admin` as the *username* and the Grafana password you set in the [Grafana Options](#grafana-options) section of the Cloud Manager, as the *password*. Click on the **Log In** button.
 
