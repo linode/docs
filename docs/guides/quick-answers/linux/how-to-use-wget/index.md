@@ -13,9 +13,8 @@ external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'
  - '[Arch Wiki](https://wiki.archlinux.org/index.php/wget)'
  - '[Gentoo](https://packages.gentoo.org/packages/net-misc/wget)'
-
 tags: ["linux"]
-authors: ["Angel"]
+authors: ["Angel Guarisma"]
 ---
 
 
