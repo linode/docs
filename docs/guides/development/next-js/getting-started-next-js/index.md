@@ -12,8 +12,7 @@ modified_by:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
 title: "Getting Started with Next.js"
-h1_title: "Create a Next.js App"
-enable_h1: true
+title_meta: "Create a Next.js App"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
