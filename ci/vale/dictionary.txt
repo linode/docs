@@ -192,6 +192,7 @@ boolean
 booleans
 boolstyle
 boonex
+boostrapping
 bootable
 bootloader
 bottlerocket
@@ -2274,6 +2275,7 @@ uniq
 unittest
 univac
 unix
+unopinionated
 unmanaged
 unmerged
 unmount

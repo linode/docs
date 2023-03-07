@@ -53,7 +53,7 @@ Next.js includes capabilities like routing, data fetching, and server-side rende
 
 And, like React, Next.js gives you the ability to create applications ranging from static, single-page applications to full-stack, dynamic websites.
 
-Learn more about what Next.js has to offer and how it compares to base React in our **Getting Started with Next.js** guide.
+Learn more about what Next.js has to offer and how it compares to base React in our [Getting Started with Next.js](/docs/guides/getting-started-next-js) guide.
 
 ### Why TypeScript?
 
