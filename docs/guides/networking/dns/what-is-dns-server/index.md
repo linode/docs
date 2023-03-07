@@ -46,9 +46,9 @@ If both aren't configured and the primary goes down, no app that requires intern
 
 There are three primary types of DNS Records:
 
--   The **A** Record is the basic DNS record and points a domain (such as `amazon.com`) to an IP address.
+-   The **A** Record is the basic DNS record and points a domain (such as `wikipedia.org`) to an IP address.
 
--   The **CNAME** Record points one domain (such as `www.amazon.com`) to another (such as `amazon.com`).
+-   The **CNAME** Record points one domain (such as `www.wikipedia.org`) to another (such as `wikipedia.org`).
 
 -   The **TXT** Record verifies that you own the domain.
 
@@ -94,7 +94,7 @@ There are three different types of DNS queries:
 
 There are a lot of moving pieces involved in such a simple act. Here is how that flow breaks down in real time:
 
-1.  The user types a name in a web browser, such as `amazon.com`.
+1.  The user types a name in a web browser, such as `wikipedia.org`.
 
 2.  The name is sent to a DNS resolver, which is usually provided by the ISP or IT department.
 
@@ -106,9 +106,9 @@ There are a lot of moving pieces involved in such a simple act. Here is how that
 
 6.  The new Name Server compares the name to its zone file to find a match. If it finds one, it returns the IP address to the DNS resolver.
 
-7.  The Resolver forwards the IP address to the browser, so it then knows where to find `amazon.com`.
+7.  The Resolver forwards the IP address to the browser, so it then knows where to find `wikipedia.org`.
 
-8.  The web browser then displays the contents of `amazon.com`.
+8.  The web browser then displays the contents of `wikipedia.org`.
 
 It's a complicated process, but one most users don't have to worry about. In fact, when any computer has problems resolving a name, it usually means the network is down. If the network is up, it could mean both Primary and Secondary DNS servers are experiencing trouble. This can be common when an ISP uses its DNS servers. Often, the easy fix is to exchange the ISP server addresses with either Google's (`8.8.8.8`, `8.8.4.4`) or Cloudflare's (`1.1.1.1`, `1.0.0.1`). Given the added security of encrypted DNS, that is generally the best way to go. In some cases, ISPs are already using one or the other.
 
@@ -122,7 +122,7 @@ Another option is to **reboot the computer**. This might also clear a corrupted 
 
 Also try **temporarily disabling the firewall**. If that works, then the problem isn't on the DNS server side, but on the local machine side.
 
-**Clear the DNS cache**. If the web browser isn't capable of finding `amazon.com`, clear the OS DNS cache. Note that the procedure may vary, depending on operating system. After clearing the DNS cache, websites may load a bit slower until those address mappings (from name to IP address) are stored in the cache.
+**Clear the DNS cache**. If the web browser isn't capable of finding `wikipedia.org`, clear the OS DNS cache. Note that the procedure may vary, depending on operating system. After clearing the DNS cache, websites may load a bit slower until those address mappings (from name to IP address) are stored in the cache.
 
 ## Conclusion
 
