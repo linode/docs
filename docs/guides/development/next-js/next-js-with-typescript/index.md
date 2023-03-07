@@ -10,8 +10,7 @@ published: 2022-09-21
 modified_by:
   name: Nathaniel Stickman
 title: "Building a Next.js App with Typescript"
-h1_title: "How to Build a Next.js App with Typescript"
-enable_h1: true
+title_meta: "How to Build a Next.js App with Typescript"
 contributor:
   name: Nathaniel Stickman
   link: https://github.com/nasanos
