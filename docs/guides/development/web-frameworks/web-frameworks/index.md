@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-12
 modified_by:
   name: Linode
-title: "The Sixteen Most Popular Web Development Frameworks for Developers | Linode"
+title: "The Sixteen Most Popular Web Development Frameworks for Developers"
 contributor:
   name: Cameron Laird
 external_resources:
