@@ -134,7 +134,7 @@ May 02 15:03:07 localhost bash[2973]: Looping...
 May 02 15:03:37 localhost bash[2973]: Looping...
 {{< /output >}}
 
-For more information about using `systemctl` commands, see the [systemctl guide](/docs/guides/quick-answers/linux-essentials/introduction-to-systemctl/).
+For more information about using `systemctl` commands, see the [systemctl guide](/docs/guides/quick-answers/linux-essentials/introduction-to-systemctl).
 
 
 ## Troubleshooting
