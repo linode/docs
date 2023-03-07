@@ -85,7 +85,7 @@ One of the best ways to get to know Next.js is by building an application with i
 
 Throughout, the guide also attempts to show off some of the main features that Next.js boasts. The goal is to not only get started with Next.js, but to also have a practical demonstration of some of what sets it apart.
 
-Next.js also offers first-class support for TypeScript. This guide only covers a JavaScript approach to Next, but you can learn about using Next with TypeScript in our **Building a Next.js App with TypeScript** guide.
+Next.js also offers first-class support for TypeScript. This guide only covers a JavaScript approach to Next, but you can learn about using Next with TypeScript in our [Building a Next.js App with TypeScript](/docs/guides/next-js-with-typescript) guide.
 
 ### Set Up a Next.js App
 
