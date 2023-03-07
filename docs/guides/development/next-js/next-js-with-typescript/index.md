@@ -6,11 +6,11 @@ author:
 description: "Next.js offers a flexible framework on top of React, with features like routes and server-sider rendering built in. And Next also comes first-class support for TypeScript, a strongly-typed language built on JavaScript. So how do you get started using TypeScript for your Next.js application? Find out in this tutorial."
 keywords: ['next js typescript starter', 'nextjs typescript example', 'create next js typescript app']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-21
+published: 2023-03-07
 modified_by:
   name: Nathaniel Stickman
 title: "Building a Next.js App with Typescript"
-h1_title: "How to Build a Next.js App with Typescript"
+title_meta: "How to Build a Next.js App with Typescript"
 enable_h1: true
 contributor:
   name: Nathaniel Stickman
