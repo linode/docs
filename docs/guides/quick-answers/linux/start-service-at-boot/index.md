@@ -134,6 +134,9 @@ May 02 15:03:07 localhost bash[2973]: Looping...
 May 02 15:03:37 localhost bash[2973]: Looping...
 {{< /output >}}
 
+For more information about using `systemctl` commands, see the [systemctl guide](/docs/guides/quick-answers/linux-essentials/introduction-to-systemctl/).
+
+
 ## Troubleshooting
 
 - "Example service started at ..." line does not appear in the output of the status command. The `systemd-cat` output is not reliable because of a race condition. As a workaround update the `test_service.sh` file as follows:
