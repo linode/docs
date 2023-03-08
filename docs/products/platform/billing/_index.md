@@ -49,7 +49,7 @@ You created a 4GB Compute Instance mid-way through the month and deleted it exac
 
 #### A Service is Resized During the Billing Cycle
 
-Resizing a service, such as a Compute Instance, effectively creates a new billable service. Each of these billable services will appear as separate line items on your monthly invoice. For instance, you create a 4GB Compute Instance prior to the start of the month and resize it to an 8GB Compute Instance mid-way through the month. Your invoice will have each of these services as separate line items. Each line item will reflect the hourly rate for the time the service was active (up to the monthly cap).
+Resizing a service, such as a Compute Instance, effectively creates a new billable service. Each of these billable services will appear as separate line items on your monthly invoice. For instance, you create a 4GB Compute Instance prior to the start of the month and resize it to an 8GB Compute Instance mid-way through the month. Your invoice will have two services as separate line items corresponding with the two different Compute Instance sizes that existed on your account during the billing cycle. Each line item will reflect the hourly rate for the time the service was active (up to the monthly cap).
 
 {{< note type=warning >}}
 If a service is resized to a new plan and then resized back to the original plan all in a single billing cycle, there will be 3 billable services. The combined hourly rate for these services may exceed the monthly cap of the original service plan.
