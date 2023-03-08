@@ -13,12 +13,6 @@ title: 'Setting Filesystem Quotas on Ubuntu 22.04'
 title_meta: 'How To Set Filesystem Quotas on Ubuntu 22.04'
 external_resources:
  - '[Official Documentation for Quota subsystem](https://www.kernel.org/doc/html/next/filesystems/quota.html)'
-
-relations:
-    platform:
-        key: how-to-set-filesystem-quotas
-        keywords:
-            - distribution: Ubuntu 22.04
 tags: ["ubuntu","filesystem","limit disk"]
 ---
 
@@ -105,12 +99,12 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```output
     /dev/sda / ext4 rw,relatime,quota,usrquota,grpquota,errors=remount-ro 0 0
     ```
-1. Create the `aquota.user`, and `aquota.group` files that contain information about the limits and the usage of the filesysttem using:
+1. Create the `aquota.user`, and `aquota.group` files that contain information about the limits and the usage of the filesystem using:
 
     ```
     sudo quotacheck -ugm /
     ```
-    The option `u` created the `aquota.user` file for users, the `g` option created the `aquota.group` file groups, and the `m` option disables remounting the the filesystem as read-only.
+    The option `u` created the `aquota.user` file for users, the `g` option created the `aquota.group` file groups, and the `m` option disables remounting the filesystem as read-only.
     You can view the quota files that are created using the `ls /` command.
 
 1.   Add the quota modules to the Linux kernel using `<kernel_version>` that you made a note of:
