@@ -173,6 +173,33 @@ Example of keyboard shortcuts within a paragraph. Aliqua anim cillum Lorem anim 
 
 ## Command Shortcode
 
+### Padding Issue 547
+
+Command shortcode:
+
+```command
+db.bookCatalog.find( { $text: { $search: "william" } } ).pretty()
+```
+
+Output shortcode:
+
+{{< output class="bg-blue-200" >}}
+Blue output
+{{< /output >}}
+
+
+Command shortcode copy button overlapping content:
+  
+  ```command
+  a = b; b = c; c = a; d = e; e = f; f = d; g = h; h = i; i = g; j = k; k = l; l = j; m = n; n = o; o = m; p = q; q = r; r = p; s = t; t = u; u = s; v = w; w = x; x = v; y = z; z = y;
+  ```
+
+Command shortcode copy button overlapping content, dark:
+  
+  ```command {class="dark"}
+  a = b; b = c; c = a; d = e; e = f; f = d; g = h; h = i; i = g; j = k; k = l; l = j; m = n; n = o; o = m; p = q; q = r; r = p; s = t; t = u; u = s; v = w; w = x; x = v; y = z; z = y;
+  ```
+
 ### Dark
 
 #### Short Code
