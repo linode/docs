@@ -6,7 +6,7 @@ author:
 description: "Supabase comes with a rich set of features, including a powerful database and a full REST API. This makes it a strong choice to act as a backend for many applications. Learn more about how to do just that with your own React application in this tutorial."
 keywords: ['supabase react example','supabase api','supabase vs firebase']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-11
+published: 2023-03-08
 modified_by:
   name: Nathaniel Stickman
 title: "Create a React App with a Supabase Backend"

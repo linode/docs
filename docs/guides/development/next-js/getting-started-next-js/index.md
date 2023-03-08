@@ -7,7 +7,7 @@ description: "Next.js has risen as a flexible and capable framework on top of Re
 keywords: ['next js vs react', 'what is next js', 'set up a next js app']
 tags: ['web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-19
+published: 2023-03-08
 modified_by:
   name: Nathaniel Stickman
   link: https://github.com/nasanos

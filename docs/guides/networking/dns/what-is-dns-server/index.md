@@ -6,7 +6,7 @@ author:
 description: 'What is a DNS server and how does it work? Read our guide to learn about types of DNS servers, why they’re important, and how they work. ✓ Click here!'
 keywords: ['what is dns server','dns traffic','dns stands for','dns name resolution','dns requests','example of dns','what is the importance of using dns','domain name ip address','how dns works step by step','what is dns host']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-28
+published: 2023-03-08
 modified_by:
   name: Linode
 title: "What Is a DNS Server?"
