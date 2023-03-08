@@ -16,7 +16,7 @@ contributor:
 external_resources:
 - '[Oracle Cloud Infrastructure Documentation: Backing Up Snapshots to Object Storage Using rclone](https://docs.oracle.com/en-us/iaas/Content/File/Tasks/backing-up-snapshots-to-object-storage.htm)'
 - '[OSTechNix: How To Backup Your Entire Linux System Using Rsync](https://ostechnix.com/backup-entire-linux-system-using-rsync/)'
-- '[Average Linux User: Backup and Restore Your Linux System with rsync](https://averagelinuxuser.com/backup-and-restore-your-linux-system-with-rsync/)
+- '[Average Linux User: Backup and Restore Your Linux System with rsync](https://averagelinuxuser.com/backup-and-restore-your-linux-system-with-rsync/)'
 - '[Ubuntu Forums: Heliode - Howto: Backup and Restore Your System!](https://ubuntuforums.org/showthread.php?t=35087)'
 ---
 
