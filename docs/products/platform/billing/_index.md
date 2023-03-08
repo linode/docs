@@ -73,4 +73,4 @@ At any time, you can make a manual one-time payment to add funds to your account
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
+If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee for any refunds. Only payments made within the last 180 days are eligible.
