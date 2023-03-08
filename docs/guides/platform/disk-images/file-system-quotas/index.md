@@ -1,5 +1,5 @@
 ---
-slug: how-to-set-filesystem-quotas
+slug: file-system-quotas
 author:
   name: Rajakavitha Kodhandapani
   email: docs@linode.com
