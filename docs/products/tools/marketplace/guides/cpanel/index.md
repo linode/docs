@@ -34,7 +34,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
+- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS, Rocky Linux 8
 - **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment

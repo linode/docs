@@ -142,7 +142,7 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
 
 2.  Create directories for the website's files, logs, and backups. Replace `example.com` with the name of the website:
 
-        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/pubic_html/
+        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/public_html/
         salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/log/
         salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/backups/
 
