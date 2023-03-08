@@ -3,7 +3,7 @@ title: "FAQs"
 description: "Find quick answers to some of the most commonly asked account and login questions."
 tab_group_main:
     weight: 60
-published: 2023-03-03
+published: 2023-03-08
 ---
 
 ## I no longer remember my user password. How can I reset it?
@@ -25,13 +25,13 @@ Login-related emails are sent to the email address of your user account (not to 
 - If you are using a Microsoft email service (like Outlook.com, Microsoft 365, or Exchange), verify that *linode.com* is on the [safe senders list](https://support.microsoft.com/en-us/office/block-or-allow-junk-email-settings-48c9f6f7-2309-4f95-9a4d-de987e880e46#bkmk_safesenders).
 - For Microsoft 365 (business users), you may need to review your [quarantined email messages](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/quarantine-end-user?view=o365-worldwide). When viewing the [quarantine portal](https://protection.office.com/quarantine), search for your email address, locate the email you wish to receive, and release/allow that email. and release any emails from *linode.com*.
 
-If you are still not receiving this email, reach out to [support](https://www.linode.com/support/) for assistance.
+If you are still not receiving this email, submit a support request through the [Can't sign in to your account?](https://www.linode.com/support/contact/) form.
 
 ## 2FA is enabled on my account but I no longer have access to my 2FA device or application. How can I regain access to my Linode account?
 
 2FA (two-factor authentication) adds a layer of security to protect your account from unauthorized access. When switching devices or 2FA applications, it's important to [reset 2FA](/docs/products/platform/accounts/guides/2fa/#switching-to-a-new-device-or-2fa-provider) before decommissioning your original device. If you lose access to your device before resetting 2FA, use one of the scratch codes that were provided to when 2FA was first enabled. As a best practice, these should always be stored in a secure manner separate from your 2FA provider.
 
-If you no longer have access to your device and your scratch codes, you will not able to log in to the Cloud Manager as a result. To regain access, you will need to contact the [support](https://www.linode.com/support/) team and verify your identity. This verification process involves answering your account security questions or, if no security questions are set on your account, providing supporting images and other information as requested by support. Review the [Recovery Procedure](/docs/products/platform/accounts/guides/2fa/#recovery-procedure) to learn more.
+If you no longer have access to your device and your scratch codes, you will not able to log in to the Cloud Manager as a result. To regain access, complete the [Can't sign in to your account?](https://www.linode.com/support/contact/) form, which submits a support request to help verify your identity. This verification process involves answering your account security questions or, if no security questions are set on your account, providing supporting images and other information as requested by support. Review the [Recovery Procedure](/docs/products/platform/accounts/guides/2fa/#recovery-procedure) to learn more.
 
 ## I'd like to provide a developer with access to my Linode account. How should I do this?
 
