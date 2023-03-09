@@ -22,7 +22,7 @@ external_resources:
 
 There may be times when you have to temporarily disable a website. For example, you might have to satisfy a legal requirement or make an emergency content change. Fortunately, you do not have to completely delete or radically reconfigure a website to disable it. This guide provides instructions on how to quickly disable and re-enable a website, based on the webserver and Linux distribution.
 
-The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode. See the section that corresponds to sites enabled with NGINX or Apache: A Comprehensive GuideNGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
+The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode. See the section that corresponds to sites enabled with NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
 
 {{< note respectIndent=false >}}
 Taking a site offline, even temporarily, can affect its *Search Engine Optimization* (SEO) ratings. If you only want to briefly disable a site for maintenance reasons, consider using a temporary redirect instead.
