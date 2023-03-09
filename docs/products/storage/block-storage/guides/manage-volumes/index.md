@@ -61,7 +61,7 @@ If the Linode's data center has been upgraded to NVMe Block Storage and your Lin
 ## Delete Volume
 
 {{< note type="alert" >}}
-Once a Block Storage Volume has been deleted, the data contained on that Volume will be permanently erased. This action cannot be reversed,  so it’s always best to verify or backup the data in the cloud block storage beforehand.
+Once a Block Storage Volume has been deleted, the data contained on that Volume will be permanently erased. This action cannot be reversed,  so it’s always best to verify or backup the data in the block storage volume beforehand.
 {{< /note >}}
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes).
@@ -73,5 +73,3 @@ Once a Block Storage Volume has been deleted, the data contained on that Volume 
 1.  Locate the desired Volume within the list, click the **more options ellipsis** dropdown menu, and select **Delete**.
 
 1.  In the configuration dialog, click **Delete** once again.
-
-And that’s how you work with block cloud storage in Linode!
