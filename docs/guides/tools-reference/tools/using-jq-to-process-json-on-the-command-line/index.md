@@ -18,11 +18,11 @@ external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
 ---
 
-[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. Because this tool os so advanced, it is important to become familiar with how it works before implementing it. This JQ tutorial introduces the jq application, explains how to install and use it, and shows JQ examples in order to help you see the ins and outs of its functionality. Continue reading to learn all about how to use jg!
+[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. Because this tool is advanced, it is important to become familiar with how JQ works before implementing it. This JQ tutorial introduces the jq application, explains how to install and use it, and shows JQ examples in order to understand its functionality. Continue reading to learn all about how to use jg!
 
 ## An Introduction to JSON and jq
 
-jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become one of the most widely used standards for exchanging data due to its flexibility and intuitive, human-readable structure. JSON is derived from JavaScript and is designed as an open standard to be both language-independent and self-describing. This makes it a useful mechanism for data exchange, especially between web applications and servers. The data in a JSON file can usually be understood even without an API. All JSON files have the extension `.json`.
+jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become one of the most widely used standards for exchanging data due to its flexibility and intuitive, human-readable structure. JSON is derived from JavaScript and is designed as an open standard to be both language-independent and self-describing. This makes it a useful mechanism for data exchange, especially between web applications and servers. The data in a JSON file can usually be understood even without an API. All JSON files have the file extension `.json`.
 
 JSON files share a common format. Here are some highlights of the JSON specification.
 
