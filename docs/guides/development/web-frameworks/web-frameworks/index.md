@@ -1,8 +1,5 @@
 ---
 slug: web-frameworks
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Which web frameworks are the best? Check out this list of the best web development frameworks, including the pros and cons of backend frameworks. ✓ Read more!'
 keywords: ['web frameworks', 'web development framework', 'backend frameworks', 'best framework for web', 'web app framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,11 +7,10 @@ published: 2023-02-12
 modified_by:
   name: Linode
 title: "The Sixteen Most Popular Web Development Frameworks for Developers"
-contributor:
-  name: Cameron Laird
 external_resources:
 - '[Web 2.0](https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html)'
 - '[Rich internet application frameworks](https://www.computerworld.com/article/2551058/rich-internet-applications.html)'
+authors: ["Cameron Laird"]
 ---
 
 Internet use is through *web applications*, and nearly all web applications are built with the aid of web frameworks. Programmers, testers, product managers, and everyone else involved in the research, and development of practical Internet applications need to understand the web framework marketplace.
