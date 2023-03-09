@@ -3,7 +3,7 @@ slug: create-next-js-app-supabase
 description: "Supabase gives you an effective Firebase alternative based on PostgresSQL, and includes a ready interface for user authentication and a REST API. This makes Supabase an outstanding backend, and pairs it well with frontend technologies like Next.js. Next.js itself pushes the offerings of React with the addition of server-side and static pre-rendering. Learn in this tutorial how you can get started using these two tools together."
 keywords: ['supabase nextjs example','supabase nextjs typescript','supabase next js api']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-09-13
+published: 2023-03-08
 modified_by:
   name: Nathaniel Stickman
 title: "Create a Next.js App with a Supabase Backend"

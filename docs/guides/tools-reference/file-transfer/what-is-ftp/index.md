@@ -3,7 +3,7 @@ slug: what-is-ftp
 description: 'What is FTP? File transfer protocol makes it easy to communicate and transfer files between computers on a TCP/IP network. ✓ Learn more about FTP here!'
 keywords: ['what is ftp','file transfer protocol','what is ftp server','ftp file','ftp sites meaning','ftp server means','what is a ftp client','example of ftp','how does ftp work','ftp network']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-27
+published: 2023-03-08
 modified_by:
   name: Linode
 title: "What Is FTP and How Does It Work?"
