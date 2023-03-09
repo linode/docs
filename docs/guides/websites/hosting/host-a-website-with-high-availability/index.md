@@ -1,8 +1,5 @@
 ---
 slug: host-a-website-with-high-availability
-author:
-  name: Phil Zona
-  email: docs@linode.com
 description: 'This article shows you how you to configure a high availability stack using GlusterFS replication on two Linodes for your application or website.'
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +17,7 @@ external_resources:
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
 tags: ["web server"]
 image: host-a-website-with-high-availability-title-graphic.jpg
+authors: ["Phil Zona"]
 ---
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.

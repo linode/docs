@@ -1,8 +1,5 @@
 ---
 slug: install-couchdb-20-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install the noteworthy NoSQL database utility known for its scalability and fault tolerance, CouchDB 2.0 on Ubuntu 20.04.'
 keywords: ['couchdb','nosql','database','deploy on ubuntu 20.04']
 tags: ['couchdb','ubuntu','nosql','apache']
@@ -13,11 +10,9 @@ modified_by:
   name: Nathaniel Stickman
 title: "Installing CouchDB 2.0 on Ubuntu 20.04"
 title_meta: "How to Install CouchDB 2.0 on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Cluster Set Up](https://docs.couchdb.org/en/latest/setup/cluster.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 *CouchDB* is a non-relational, or "NoSQL" database designed with scalability and a more trouble-free experience in mind. CouchDB is programmed in Erlang, which boasts a highly scalable concurrency model and fault tolerance. CouchDB capitalizes on both of these features to ensure production databases run with fewer interruptions, regardless of changes in request volumes and inevitable performance potholes.

@@ -1,8 +1,5 @@
 ---
 slug: configure-apache-to-run-multiple-wordpress-sites-on-one-linode
-author:
-  name: Jonathan Tsai
-  email: docs@linode.com
 description: 'This guide shows how to configure Apache Virtual Hosts to serve multiple WordPress sites from the same Linode.'
 keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 tags: ["ubuntu","apache","lamp","wordpress","cms"]
@@ -11,8 +8,6 @@ aliases: ['/websites/cms/wordpress/configure-apache-to-run-multiple-wordpress-si
 modified: 2018-12-17
 modified_by:
   name: Linode
-contributor:
-  name: Jonathan Tsai
 published: 2017-10-24
 title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 external_resources:
@@ -20,6 +15,7 @@ external_resources:
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
 - '[Apache virtual host documentation](http://httpd.apache.org/docs/current/vhosts/)'
+authors: ["Jonathan Tsai"]
 ---
 
 

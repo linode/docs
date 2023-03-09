@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-fsck-qa
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: 'Learn about some of the frequently-used fsck commands to check a system for corrupt files and bad disk sectors and repair any errors it finds.'
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-fsck-qa/']
+authors: ["Edward Angert"]
 ---
 
 ## What is fsck?

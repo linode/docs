@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-memory-and-networking-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Many common issues with Linodes are caused by excessive memory consumption or networking configuration errors. This guide provides suggestions for resolving this.'
 keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
 tags: ["networking", "mysql", "apache"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-08-05
 title: Troubleshooting Memory and Networking Issues
+authors: ["Linode"]
 ---
 
 Many common issues with Linodes are caused by excessive memory consumption or networking configuration errors. This guide provides suggestions for alleviating these problems.

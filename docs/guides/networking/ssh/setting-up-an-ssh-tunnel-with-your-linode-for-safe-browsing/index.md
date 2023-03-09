@@ -1,15 +1,10 @@
 ---
 slug: setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Follow these instructions to launch a SOCKS server on your computer and browse the web securely using your Linode.'
 keywords: ["socks", "proxy", "socks proxy", "tunnel", "tunnelling"]
 tags: ["networking","ssh","security","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/','/networking/socks-proxy/']
-contributor:
-    name: Arnaldo Ariel Arrieta
 modified: 2014-02-17
 modified_by:
   name: Linode
@@ -17,6 +12,7 @@ published: 2014-02-17
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
+authors: ["Arnaldo Ariel Arrieta"]
 ---
 
 ![SSH Tunnel for Safe Browsing](Setting_up_an_SSH_Tunnel_with_Your_Linode_for_Safe_Browsing_smg.jpg)

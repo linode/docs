@@ -1,9 +1,6 @@
 ---
 slug: manage-a-debian-5-lenny-vps-with-ispconfig
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 5 (Lenny) Linode.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["cms","debian"]
@@ -19,6 +16,7 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

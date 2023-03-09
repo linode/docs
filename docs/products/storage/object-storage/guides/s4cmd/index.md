@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using s4cmd with Object Storage"
 description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
+authors: ["Linode"]
 ---
 
 The [s4cmd](https://github.com/bloomreach/s4cmd) software is a command-line tool that can access S3-compatible storage services, such as Linode's Object Storage. It uses the [S3 client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html) in Amazon's boto3 library. Compared to the popular s3cmd tool, s4cmd is typically much faster but it has less options and is less configurable. For many use cases, the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) is recommended.

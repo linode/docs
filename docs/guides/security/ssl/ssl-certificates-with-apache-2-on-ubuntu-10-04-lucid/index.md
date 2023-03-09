@@ -1,9 +1,6 @@
 ---
 slug: ssl-certificates-with-apache-2-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 10.04 (Lucid).'
 keywords: ["apache ssl", "ssl ubuntu", "web sever", "ubuntu", "ubuntu lucid", "ubuntu 10.04"]
 tags: ["apache","security","ssl","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

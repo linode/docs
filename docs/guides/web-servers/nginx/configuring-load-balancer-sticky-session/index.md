@@ -1,8 +1,5 @@
 ---
 slug: configuring-load-balancer-sticky-session
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
 description: "A sticky session creates a session object and storing it on the client or server.  We'll explain how that works, and the pros and cons of this approach."
 og_description: "When a web application needs to maintain state from one request to another, you should consider configuring your load balancer to use sticky sessions. A sticky session enables your load balancer to persist data by creating a session object and storing it on the client or server. This overview provides a definition for sticky sessions along with the pros and cons of using this common load balancer configuration."
 keywords: [‘loadbalancer sticky session']
@@ -13,9 +10,7 @@ modified_by:
   name: Linode
 title: "Pros and Cons of Configuring a Load Balancer for Sticky Sessions"
 title_meta: "Pros and Cons of Using Sticky Sessions on a Load Balancer"
-contributor:
-  name: Martin Heller
-  link: http://www.twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 ## What is Load Balancing and Why is it Necessary?

@@ -1,8 +1,5 @@
 ---
 slug: recovering-from-a-system-compromise
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-08-26
 title: Recovering from a System Compromise
+authors: ["Linode"]
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")

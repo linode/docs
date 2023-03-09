@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Debian 5 "Lenny".'
 keywords: ["nginx", "http", "web servers", "debian", "debian lenny", "debian 5"]
 tags: ["web server","debian","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

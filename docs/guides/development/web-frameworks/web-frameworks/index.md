@@ -1,20 +1,16 @@
 ---
 slug: web-frameworks
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Which web frameworks are the best? Check out this list of the best web development frameworks, including the pros and cons of backend frameworks. ✓ Read more!'
 keywords: ['web frameworks', 'web development framework', 'backend frameworks', 'best framework for web', 'web app framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-12
+published: 2023-03-08
 modified_by:
   name: Linode
 title: "The Sixteen Most Popular Web Development Frameworks for Developers"
-contributor:
-  name: Cameron Laird
 external_resources:
 - '[Web 2.0](https://www.oreilly.com/pub/a/web2/archive/what-is-web-20.html)'
 - '[Rich internet application frameworks](https://www.computerworld.com/article/2551058/rich-internet-applications.html)'
+authors: ["Cameron Laird"]
 ---
 
 Internet use is through *web applications*, and nearly all web applications are built with the aid of web frameworks. Programmers, testers, product managers, and everyone else involved in the research, and development of practical Internet applications need to understand the web framework marketplace.
@@ -33,20 +29,17 @@ The internet’s fundamental task is to deliver web pages to you from your web b
 - The web server responds to the request with a web page, which is received by the browser.
 - The browser renders and makes it visible in a display window.
 
-
 ### Browsers Are Standardized
 
 The leading browsers' actions and capabilities are more-or-less standardized. Most of the work of web application programming consists of the construction of suitable web servers to engage in desired dialogues.
 
 In the early 1990s, programmers built web servers "on their own", from low-level operating system services. Today, it's unusual to build a web server in isolation. Most web application programming leverages web libraries that operate as "higher-level" interfaces to the fundamental request-response dialogue. Web libraries, for example, typically build in the capability to decode a request such as https://www.akamai.com/ into constituent parts, and other interfaces that help put together a well-formatted response.
 
-
 ### Library vs Framework
 
 The term "web framework" has at least a couple of closely-related meanings related to these libraries. For some practitioners, "framework" is a comprehensive bundle of libraries that address the different types of programming a web application. "Framework" is just a library that's big enough to make programming feasible. Usually though, "framework" is reserved for a particular "inside-out" architecture. The first web applications required a programmer to program server responses, perhaps in reliance on specialized libraries for networking, authentication, form management, and so on. Contemporarily, the programmer writes the web application and chooses the libraries.
 
 By contrast, a narrow-sense "framework" is the application. The framework itself launches as the web server. Libraries are only useful when invoked by an application. A framework already acts as a recognizable web server "out of the box". Everything you implement to give concrete functionality fits within the framework as a customization or configuration.
-
 
 ### Program the Server vs Program the Server and the Browser
 
@@ -69,7 +62,6 @@ SPA is an architecture for website construction. SPA is beyond the scope of this
 
 PWA is also an architecture for website construction. It gives web applications many of the most desirable features of *native applications*, but otherwise also outside the scope of this list.
 
-
 ## Benefits and Drawbacks of Web Frameworks
 
 Programming with higher-level abstractions is more productive than working entirely from scratch. You might deploy a single line from a web library that represents several hundred lines of implementation. When you use standard facilities for authentication, formatting, and reporting, it significantly slashes the time it takes to write common applications. Standard facilities also provide conventional functionality. Which parts of a web application are case-sensitive and which parts are case-insensitive? Does the application handle characters outside the Latin alphabet correctly? Can the end-user use the Undo feature? Using a web framework makes it more likely that the application under construction behaves in ways that are familiar to users of other applications built with similar frameworks.
@@ -86,11 +78,9 @@ The personal judgment goes into this list–[jQuery](https://jquery.com/), for e
 
 Popularity and quality are two different quantifiers. Each has superior circumstances, so you should consider the situations which favor each web framework and apply them to your situation.
 
-
 ### Angular 4
 
 Google maintains Angular as a SPA web framework written in TypeScript. Angular development can be in either TypeScript or JavaScript, or even alternatives such as [Dart](https://dart.dev/). Angular supports PWA and mobile development as well as the traditional web. Angular is structured in terms of components and directives rather than MVC. Angular improves on AngularJS in several aspects that promote project management; it builds in a command-line interface tool, for example. [Gmail is an Angular application](https://github.com/markbrown4/gmail-angular).
-
 
 ### AngularJS
 
@@ -102,11 +92,9 @@ ASP.NET Core is a prominent open-source and portable web framework. While Micros
 
 Among ASP.NET's virtues is [high performance](https://www.socalcto.com/2016/07/techempower-benchmarks-and-microsoft.html). ASP.NET frames several of the most well-known websites, including Microsoft's own, GoDaddy, StackOverflow, Dell, and the US Government's Small Business Administration.
 
-
 ### Backbone.js
 
 Backbone is an MVC framework. While Backbone is often used for SPA, it also permits more conventional multiple-page applications. The [WP-AppKit plugin](https://uncategorized-creations.com/wp-appkit/) gives Backbone progressive web application (PWA) capabilities. Backbone supports JavaScript on the front end and a variety of back-end technologies. Prominent uses of Backbone include the corporate sites for Hulu, US Today, Pandora, and Trello.
-
 
 ### CodeIgniter
 
@@ -140,7 +128,6 @@ MeteorJS is like most other JavaScript-based full-stack web frameworks in its MV
 
 Play provides MVC like nearly all these frameworks, but unlike any other, it is written in Scala, and most often programmed in Scala, or Java. Play answers the questions an enterprise-grade web framework needs to address. It integrates support for the Selenium and JUnit testing facilities, as well as full REST capabilities, including asynchronous I/O. HuffPost and Coursera use the Play Framework.
 
-
 ### Rails
 
 Ruby on Rails has been influential over the last two decades. Beginning developers early in this millennium often believed that Rails defined the server-side MVC web framework, or that the Ruby programming language existed only to write web pages. While neither of these is true, Rails remains a leader in new development. Celebrated websites running on Rails include GitHub, AirBnb, Hulu, Shopify, and Twitch.
@@ -152,7 +139,6 @@ Like Angular and AngularJS, React.js is more of an MVC library than a framework.
 ### Spring MVC
 
 Spring MVC is the most popular web framework which extends the Spring Java Enterprise Edition platform to the web. Dave Ramsey's EveryDollar combines Spring MVC on the back end with ReactJS for browser-side programming, and thousands of other organizations leverage their enterprise programming with Spring MVC.
-
 
 ### Vue.js
 

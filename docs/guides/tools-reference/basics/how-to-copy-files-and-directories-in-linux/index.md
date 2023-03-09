@@ -1,8 +1,5 @@
 ---
 slug: how-to-copy-files-and-directories-in-linux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
 keywords: ['Copy a file linux','Copying a file linux','Copying files linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,10 @@ modified_by:
   name: Linode
 title: "Copy Files and Directories in Linux"
 title_meta: "How to Copy Files and Directories in Linux"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[man page for cp command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cp.html)'
 - '[Ubuntu 22.04 documentation for the cp command](https://manpages.ubuntu.com/manpages/jammy/man1/cp.1.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Copying a file is one of the most common Linux tasks. Ubuntu and other Linux distributions use the `cp` command to copy one or more files, and to copy entire directories. This guide explains how to use the `cp` command to copy files on Linux. It also lists the different variations of this command and describes the different `cp` command options.

@@ -1,8 +1,5 @@
 ---
 slug: intro-bash-shell-scripting
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An introduction to bash shell scripting, including variables, if statements, loops, how to get user input, and working with files and directories.'
 keywords: ["UNIX", "shell", "bash", "programming", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,9 @@ published: 2019-09-27
 modified_by:
   name: Linode
 title: 'Introduction to Bash Shell Scripting'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

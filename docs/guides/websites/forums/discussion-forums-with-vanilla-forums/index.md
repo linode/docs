@@ -1,8 +1,5 @@
 ---
 slug: discussion-forums-with-vanilla-forums
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the lightweight Vanilla Forums software to power discussion forums on your Linode.'
 keywords: ["vanilla", "bb", "fourms", "lamp", "discussion forums"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2010-05-03
 title: Discussion Forums with Vanilla Forums
 deprecated: true
+authors: ["Linode"]
 ---
 
 Vanilla is a lightweight and flexible web-based discussion forum engine. Written against the popular LAMP stack, Vanilla combines simplicity and ease of use with a rich and customizable feature set.

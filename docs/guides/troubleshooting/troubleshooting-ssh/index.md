@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-ssh
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Troubleshooting steps for when you can't connect to your Linode via SSH."
 keywords: ['linux','reboot','lish','ssh']
 tags: ["ssh"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 title: "Troubleshooting SSH"
 aliases: ['/troubleshooting/troubleshooting-ssh/']
+authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.

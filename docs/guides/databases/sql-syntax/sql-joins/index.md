@@ -1,7 +1,5 @@
 ---
 slug: sql-joins
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
 description: 'SQL Joins are used to compare and select rows from tables. This guide discusses Cross Joins, Inner Joins, Left Joins, Right Joins, and Full Joins and provides examples for each SQL Join.'
 keywords: ['SQL Joins', 'Cross Joins', 'Left Join', 'Right Join', 'Full Join']
 tags: ['mysql', 'postgresql', 'database']
@@ -11,10 +9,8 @@ modified_by:
   name: Linode
 title: "Introduction to SQL Joins"
 title_meta: "SQL Joins"
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
 
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Traditionally, you pull data from two or more tables using a `WHERE` clause in a query. But in a relational database system (RDBMS), this can be achieved using a single `SELECT` query. This is the true power of relational database systems. In this guide, you learn about SQL Joins, a powerful way to compare and select rows and tables.

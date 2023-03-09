@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 5 (Lenny).'
 keywords: ["apache debian 5", "apache web server", "apache debian lenny", "web server", "apache on debian", "apache lenny"]
 tags: ["web server","apache","debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

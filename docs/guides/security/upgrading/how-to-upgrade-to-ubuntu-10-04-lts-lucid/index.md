@@ -1,9 +1,6 @@
 ---
 slug: how-to-upgrade-to-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
 keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

@@ -1,9 +1,6 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Ubuntu 10.10 (Maverick).'
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

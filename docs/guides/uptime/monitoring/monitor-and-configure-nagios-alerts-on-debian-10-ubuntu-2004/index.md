@@ -1,7 +1,5 @@
 ---
 slug: monitor-and-configure-nagios-alerts-on-debian-10-ubuntu-2004
-author:
-  name: Nathaniel Stickman
 description: 'This guide shows how to you can install the server monitoring app Nagios and configure email alerts and IRC status updates on Ubuntu 20.04 and Debian 10.'
 og_description: 'Nagios is a popular server monitoring tool. In this guide, you learn how to monitor and configure email alerts and IRC status updates for Nagios on Ubuntu 20.04 and Debian 10.'
 keywords: ['nagios monitoring']
@@ -13,12 +11,10 @@ modified_by:
   name: Linode
 title: "Configuring Nagios Alerts on Debian 10 and Ubuntu 20.04"
 title_meta: "Monitor and Configure Nagios Alerts on Debian 10 and Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
 - '[Nagios Installation Guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Nagios](https://www.nagios.com/products/nagios-core/), a popular tool for monitoring servers, comes with a robust web interface to help you effectively manage your server. Its dashboard makes it relatively easy to check in on the hosts and services running on your machine and quickly learn of any issues.

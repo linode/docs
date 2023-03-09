@@ -1,8 +1,5 @@
 ---
 slug: install-go-on-ubuntu
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install the Go programming language on Ubuntu.'
 og_description: 'Go is a statically typed, compiled programming language developed by Google. This guide will show you how to install Go on Ubuntu.'
 keywords: ["Go", "Go Programming", "Golang", "Ubuntu"]
@@ -16,6 +13,7 @@ title: 'How to Install Go on Ubuntu'
 audiences: ["beginner"]
 languages: ["go"]
 aliases: ['/development/go/install-go-on-ubuntu/']
+authors: ["Linode"]
 ---
 
 ![How to Install Go on Ubuntu](install-go-ubuntu-title.jpg "How to Install Go on Ubuntu")

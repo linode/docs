@@ -1,9 +1,6 @@
 ---
 slug: how-to-upgrade-to-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to upgrade from Debian 5 (Lenny) to Debian 6 (Squeeze).'
 keywords: ["debian upgrade", "upgrade distro", "squeeze upgrade", "squeeze"]
 tags: ["security","debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-upgrade-debian
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

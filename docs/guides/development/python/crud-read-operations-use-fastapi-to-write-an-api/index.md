@@ -1,8 +1,5 @@
 ---
 slug: crud-read-operations-use-fastapi-to-write-an-api
-author:
-  name: Chelsea Troy
-  email: heychelseatroy@gmail.com
 description: 'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 og_description:  'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 keywords: ['python api framework fastapi rest']
@@ -14,9 +11,7 @@ modified_by:
 title: "CRUD Read Operations: How to Use FastAPI to Write an API"
 title_meta: "CRUD Read Operations: Use FastAPI to Write an API"
 tags: ["python", "django"]
-contributor:
-  name: Chelsea Troy
-  link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 ## FastAPI Features
 

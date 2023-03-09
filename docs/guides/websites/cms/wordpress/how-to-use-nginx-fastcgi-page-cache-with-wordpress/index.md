@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-nginx-fastcgi-page-cache-with-wordpress
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to enable NGINX page caching for WordPress.'
 keywords: ['NGINX caching','FastCGI cache','WordPress page cache','enable caching WordPress']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,12 @@ modified_by:
   name: Linode
 title: "Use the Nginx FastCGI Page Cache With WordPress"
 title_meta: "How to Use the Nginx FastCGI Page Cache With WordPress"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[NGINX web site](https://www.nginx.com/)'
 - '[NGINX FastCGI module API](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html)'
 - '[NGINXHelper WordPress Plugin](https://wordpress.org/plugins/nginx-helper/)'
 - '[FastCGI Wikipedia page](https://en.wikipedia.org/wiki/FastCGI)'
+authors: ["Jeff Novotny"]
 ---
 
 [NGINX](https://www.nginx.com/) typically fetches a new copy of a web page each time a new request is made. However for complex sites such as WordPress, each new request often involves querying a database and executing PHP code. For heavily used sites, this can cause performance issues and increased latency. As a workaround, NGINX offers the FastCGI page cache, allowing it to serve a static copy of the page more quickly. This guide explains how to enable caching for a WordPress site hosted on an NGINX web server. It also demonstrates how to configure non-cachable exceptions and how to test whether caching is working.

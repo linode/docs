@@ -1,8 +1,5 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'In part ten on our series on Kubernetes, you will learn how to collect metrics on the resources used in your Kubernetes cluster by installing metrics-server.'
 title: "Building a CD Pipeline Using LKE (Part 10): Installing metrics-server"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
@@ -11,10 +8,9 @@ published: 2021-05-06
 modified: 2022-12-14
 modified_by:
   name: Linode
-contributor:
-  name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-10/']
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server](cd-presentation-header-10-installing-metrics-server.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server")

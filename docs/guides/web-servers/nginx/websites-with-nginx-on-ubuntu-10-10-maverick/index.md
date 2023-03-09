@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.10 (Maverick)'
 keywords: ["nginx", "nginx ubuntu 10.10", "http", "web servers", "ubuntu", "ubuntu maverick"]
 tags: ["web server","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

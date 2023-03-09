@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-nginx-part-4-tls-deployment-best-practices
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This is step four in our guide to Getting Started with NGINX where you will learn best practices, tips, and tricks, when you are deploying HTTPS websites and NGINX."
 keywords: ["ssl", "tls", "nginx", "https", "certificate", "hsts", "ocsp", "http2"]
 tags: ["web server","http","nginx","security","ssl"]
@@ -14,6 +11,7 @@ modified_by:
   name: Linode
 title: "Getting Started with NGINX (Part 4): TLS Deployment Best Practices"
 title_meta: "Getting Started with NGINX: TLS Deployment Best Practices"
+authors: ["Linode"]
 ---
 
 ![TLS Deployment Best Practices](getting-started-nginx-part-4-tls-deployment-best-practices.jpg)

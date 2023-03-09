@@ -1,8 +1,5 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to set up an email server with Postfix, Dovecot and MySQL/MariaDB. Your step by step guide towards setting up a secure Postfix email server."
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian and Ubuntu
 aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
+authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.

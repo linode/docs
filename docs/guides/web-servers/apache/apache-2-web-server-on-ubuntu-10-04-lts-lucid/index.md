@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["apache", "apache ubuntu 10.04", "apache ubuntu lucid", "web server", "apache on ubuntu", "apache lucid"]
 tags: ["web server","apache","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 9.10 (Karmic).'
 keywords: ["apache", "apache ubuntu 9.10", "apache ubuntu karmic", "web server", "apache on ubuntu", "apache karmic"]
 tags: ["web server","apache","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

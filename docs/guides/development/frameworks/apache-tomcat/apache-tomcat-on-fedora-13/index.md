@@ -1,9 +1,6 @@
 ---
 slug: apache-tomcat-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 13.'
 keywords: ["apache tomcat fedora 13", "java", "java fedora 13", "java servlets fedora 13", "java fedora"]
 tags: ["web applications","java","fedora"]
@@ -19,6 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

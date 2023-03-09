@@ -1,9 +1,6 @@
 ---
 slug: redis-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 9.10 "Karmic".'
 keywords: ["redis ubuntu 9.10", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 ---
 
 

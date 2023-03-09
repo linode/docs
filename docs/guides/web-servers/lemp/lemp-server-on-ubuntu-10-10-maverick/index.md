@@ -1,9 +1,6 @@
 ---
 slug: lemp-server-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, MySQL, and PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

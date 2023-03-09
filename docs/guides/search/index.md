@@ -1,9 +1,6 @@
 ---
 slug: search
 layout: search
-author:
-  name: Steven Jacobs
-  email: docs@linode.com
 description: 'Search the Linode Docs library'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title: "Search Linode Docs"
 show_on_rss_feed: false
 _build:
   list: false
+authors: ["Steven Jacobs"]
 ---
 
 <!--

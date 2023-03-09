@@ -1,7 +1,5 @@
 ---
 slug: creating-git-aliases
-author:
-  name: Stephen Savitzky
 description: 'This guide shows you how to create Git aliases using the Git configuration files. You also learn how to write and execute a Bash script to customize Git.'
 keywords: ['git alias','git config alias']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,9 +7,7 @@ published: 2022-04-01
 modified_by:
   name: Linode
 title: "Create Git Aliases to Quickly Run Git or Shell Commands"
-contributor:
-  name: Stephen Savitzky
-  link: https://github.com/ssavitzky/
+authors: ["Stephen Savitzky"]
 ---
 
 To customize Git on your computer, you have two options. The first method to customize Git is using *aliases* that are stored in a Git configuration file. The second way is using *custom programs* that Git finds by looking in your system's `$PATH` for executable programs. These programs must be named with a `git-` prefix. These methods are similar to the way shells, like Bash, are extended. Git, however, has multiple configuration files, which lets you make repo-specific aliases.

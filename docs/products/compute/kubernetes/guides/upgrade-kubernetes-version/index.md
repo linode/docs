@@ -1,7 +1,4 @@
 ---
-author:
-  name: Ryan Syracuse
-  email: docs@linode.com
 description: 'This guide describes the process of upgrading LKE cluster versions to prevent any potential downtime due to an outdated configuration'
 keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
@@ -16,6 +13,7 @@ external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
   - '[Kubernetes Changelog](https://github.com/kubernetes/kubernetes/tree/master/CHANGELOG)'
 aliases: ['/guides/upgrading-lke-minor-versions/']
+authors: ["Ryan Syracuse"]
 ---
 
 Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Customers can manually upgrade the Kubernetes version of their LKE cluster to the one version ahead of their current version. If the cluster is multiple versions behind the latest, multiple upgrades can be performed if desired.

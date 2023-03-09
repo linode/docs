@@ -1,8 +1,5 @@
 ---
 slug: faster-file-navigation-with-autojump
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: 'autojump is a cd command that learns - jump to your most frequently visited directories.'
 og_description: "Navigate files in the command line more efficiently with autojump, a tool that jumps to your most frequently accessed directories."
 keywords: ["autojump", "python", "command-line"]
@@ -17,6 +14,7 @@ external_resources:
  - '[Autojump Is a Faster Way to Browse Your Filesystem – Lifehacker](https://lifehacker.com/5583546/autojump-is-a-faster-way-to-browse-your-filesystem)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/faster-file-navigation-with-autojump/']
+authors: ["Sam Foo"]
 ---
 
 ## What is autojump?

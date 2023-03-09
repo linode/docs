@@ -1,8 +1,5 @@
 ---
 slug: use-nginx-reverse-proxy
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to use NGINX as a reverse proxy. Understand how headers and buffers can help optimize your application’s performance.'
 keywords: ["nginx","reverse proxy","proxy","node.js"]
 tags: ["proxy","web server","nginx"]
@@ -15,6 +12,7 @@ title: Use NGINX as a Reverse Proxy
 external_resources:
   - '[NGINX Reverse Proxy – NGINX](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/web-servers/nginx/use-nginx-reverse-proxy/']
+authors: ["Linode"]
 ---
 
 ## What is a Reverse Proxy?

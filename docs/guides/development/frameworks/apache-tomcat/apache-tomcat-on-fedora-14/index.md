@@ -1,9 +1,6 @@
 ---
 slug: apache-tomcat-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 14.'
 keywords: ["apache tomcat fedora 14", "java", "java fedora 14", "java servlets fedora 14", "java fedora"]
 tags: ["web applications","java","fedora"]
@@ -19,6 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

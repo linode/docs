@@ -1,8 +1,5 @@
 ---
 slug: archiving-and-compressing-files-with-gnu-tar-and-gnu-zip
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use GNU tools to compress and archive files.'
 og_description: 'This guide shows you how to use the GNU tar and Gzip commands to compress files to reduce file size and archive files for storage on the Linux operating system.'
 keywords: ["tar", "gnu tar", "gzip", "gnu zip", "tar.gz. tgz", "file archive", "compress", "tarball"]
@@ -17,6 +14,7 @@ external_resources:
  - '[GNU tar](http://www.gnu.org/software/tar/)'
  - '[GNU gzip](http://www.gzip.org/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 `tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux systems. Together, these utilities take a large number of files, save them together in an archive (i.e. as a single file), and compress the archive to save space. However, tar and gzip provide a multitude of features and options that can lead to hard-to-read commands and make even the simplest operations confusing.

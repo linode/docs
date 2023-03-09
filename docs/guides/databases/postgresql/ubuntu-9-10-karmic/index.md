@@ -1,9 +1,6 @@
 ---
 slug: ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
 keywords: ["postgresql", "postgresql database", "postgresql ubuntu", "postgresql ubuntu 9.10", "postgresql ubuntu karmic", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-9-10-karmic/']
+authors: ["Linode"]
 ---
 
 

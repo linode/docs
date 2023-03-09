@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "TLS/SSL Termination on NodeBalancers"
 description: 'This guide provides you with step-by step instructions on how to force all connections to your NodeBalancer to use the secure and encrypted SSL protocol.'
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']
 image: nodebalancer-ssl-configuration.png
+authors: ["Linode"]
 ---
 
 This guide will help you install an SSL certificate on your NodeBalancer. It includes step-by-step instructions for configuring a NodeBalancer to redirect all web connections over port 443/HTTPS using SSL. The provided directions are designed to work with Apache and Nginx web servers, running on Debian and Red Hat-based distributions.

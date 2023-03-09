@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nginx-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn the basics of installing and configuring NGINX on your CentOS 8 server in this quick guide."
 keywords: ["nginx", "load balancing", "centos", "centos 8", "web server", "static content", "install nginx"]
 tags: ["centos","web server","nginx"]
@@ -22,6 +19,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/nginx/how-to-install-nginx-centos-8/']
+authors: ["Linode"]
 ---
 
 ## What is NGINX?
