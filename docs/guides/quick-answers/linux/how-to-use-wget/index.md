@@ -78,7 +78,7 @@ Picking the right location for your Linode is important, you have to decide what
 {{< /file >}}
 
 
-3.  When you use wget to download a large files using wget, you can use the `-b` option in the wget command to download in the background:
+3.  When you use wget to download a large files, you can use the `-b` option in the wget command to download in the background:
 
         wget -b http://speedtest.newark.linode.com/100MB-newark.bin
         Continuing in background, pid 8764.
