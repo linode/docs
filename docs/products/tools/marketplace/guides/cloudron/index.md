@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Cloudron is a platform that makes it easy to install, manage and secure web apps on a server. Deploy Cloudron on a Linode with Marketplace Apps."
 keywords: ['cloudron','web apps','platform','marketplace']
 tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager"]
@@ -14,6 +11,7 @@ title: "Deploy Cloudron through the Linode Marketplace"
 external_resources:
 - '[Cloudron Documentation](https://docs.cloudron.io)'
 aliases: ['/platform/marketplace/how-to-deploy-cloudron-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cloudron-with-one-click-apps/','/guides/how-to-deploy-cloudron-with-one-click-apps/','/guides/deploy-cloudron-with-marketplace-apps/','/guides/cloudron-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Cloudron](https://www.cloudron.io) is a platform that makes it easy to install, manage, and secure web apps on a server. Cloudron provides a centralized way to manage users and specify which apps they can access.

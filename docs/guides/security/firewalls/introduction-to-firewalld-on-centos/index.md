@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-firewalld-on-centos
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide will introduce you to firewalld, its notions of zones and services, & show you some basic configuration steps. ✓ Click here to learn more today!'
 keywords: ["centos firewall", "centos firewall config", "centos firewall gui", "centos configure firewall", "Linux", "Linode", "cloud", "firewall", "firewalld", "Fedora", "CentOS", "iptables", "security", "AlmaLinux", "Rocky Linux"]
 bundles: ['centos-security', 'network-security']
@@ -14,14 +11,13 @@ modified_by:
     name: Linode
 title: "Configure a Firewall with Firewalld"
 title_meta: "Configure a Firewall with Firewalld (Create and List Rules)"
-contributor:
-    name: Florent Houbart
 external_resources:
  - '[Firewalld Official Site](http://www.firewalld.org/)'
  - '[RHEL 9 Security guide: Using and configuring firewalld](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/configuring_firewalls_and_packet_filters/using-and-configuring-firewalld_firewall-packet-filters)'
  - '[Fedora Wiki: Firewalld](https://fedoraproject.org/wiki/Firewalld)'
 aliases: ['/security/firewalls/introduction-to-firewalld-on-centos/']
 image: introduction-to-firewalld-on-centos.png
+authors: ["Florent Houbart"]
 ---
 
 [Firewalld](http://www.firewalld.org/) is frontend controller for nftables (or its older counterpart, iptables) used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. The following distributions have firewalld installed by default: RHEL and its derivatives (including CentOS, AlmaLinux, and Rocky Linux), CentOS Stream, Fedora, and openSUSE Leap.

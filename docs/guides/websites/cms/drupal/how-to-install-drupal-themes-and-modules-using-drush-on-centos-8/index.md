@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on CentOS 8.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
 tags: ["drupal","centos","apache","lamp","php","cms"]
@@ -24,6 +21,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-centos-8/']
+authors: ["Linode"]
 ---
 
 [Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. This tutorial uses Drush to install themes and modules. It will also briefly cover backups and migrations for Drupal websites.

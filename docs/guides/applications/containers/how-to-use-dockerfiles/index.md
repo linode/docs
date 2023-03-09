@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-dockerfiles
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'A guide that introduces how to use a Dockerfile and provides examples on how to use it to build and run a Docker image on your Linode.'
 keywords: ["docker", "container", "dockerfile","dockerfiles","docker image","docker images"]
 tags: ["container","docker"]
@@ -18,6 +15,7 @@ external_resources:
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
 aliases: ['/applications/containers/how-to-use-dockerfiles/']
+authors: ["Linode"]
 ---
 ![How to Use a Dockerfile](how-to-use-dockerfile.png "How to Use a Dockerfile")
 

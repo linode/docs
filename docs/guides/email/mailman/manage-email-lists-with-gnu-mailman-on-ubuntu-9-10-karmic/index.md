@@ -1,9 +1,6 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 9.10 "Karmic".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

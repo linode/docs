@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-the-linux-alias-command
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Save time with the Linux "alias" command by creating customizable shortcuts.'
 keywords: ["linux alias command"]
 aliases: ['/quick-answers/linux/how-to-use-the-linux-alias-command/']
@@ -14,6 +11,7 @@ published: 2020-11-17
 title: Using the Linux alias Command
 title_meta: How to Use the Linux alias Command
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 The command line terminal is a convenient and fast tool for interfacing with the Linux operating system. However, you may find yourself sending the same commands again and again while issuing instructions to your system. This may cost you a significant amount of time, especially if your commands are lengthy, hard to remember, or just repetitive. To help save time and reduce frustration, this guide shows you how to use the `alias` command to create customizable shortcuts.

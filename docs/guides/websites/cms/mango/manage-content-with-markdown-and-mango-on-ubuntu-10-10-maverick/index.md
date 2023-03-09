@@ -1,8 +1,5 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Ubuntu 10.10 "Maverick".'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["ubuntu","cms"]
@@ -19,6 +16,7 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 Mango is a simple static content management system for publishing blogs from content stored in plain text files. Built as a dynamic web application using components from the Django framework, Mango is simple to deploy and administer and uses the Markdown lightweight markup language to process text. This guide describes the process for configuring a Mango-based site using the Apache HTTP Server and `mod_wsgi` to handle the dynamic aspects of the website.

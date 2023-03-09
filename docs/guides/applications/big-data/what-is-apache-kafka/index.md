@@ -1,7 +1,5 @@
 ---
 slug: what-is-apache-kafka
-author:
-  name: Jeffery Novotny
 description: 'This guide provides you with an introduction to Kafka, an open-source platform for stream management and processing, excellent when real-time data streams are needed.'
 og_description:  'This guide provides you with an introduction to Kafka, an open-source platform for stream management and processing, excellent when real-time data streams are needed.'
 keywords: ['Apache','Kafka','streaming','processing','events']
@@ -13,15 +11,13 @@ modified_by:
   name: Linode
 title: "An Introduction to Apache Kafka"
 title_meta: "What is Apache Kafka?"
-contributor:
-  name: Jeffery Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Events](https://kafka.apache.org/intro#intro_concepts_and_terms)'
 - '[Kafka Administration API](https://kafka.apache.org/27/javadoc/index.html)'
 - '[Kafka Documentation](https://kafka.apache.org/documentation/)'
 
+authors: ["Jeff Novotny"]
 ---
 
 [*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event. External agents, independently and asynchronously, send and receive event notifications to and from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.

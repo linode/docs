@@ -1,9 +1,6 @@
 ---
 slug: discussion-forums-with-phpbb-on-fedora-14
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Fedora 14.'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["fedora"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Fedora 14
+authors: ["Stan Schwertly"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: installing-apache-tomcat-on-ubuntu-8-04-lts-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java Servlet engine on Ubuntu 8.04 LTS (Hardy).'
 keywords: ["java", "apache tomcat", "java ubuntu", "java hardy"]
 tags: ["web applications","java","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: lemp-server-on-ubuntu-12-04-precise-pangolin
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on Ubuntu 12.04'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
@@ -25,6 +22,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.

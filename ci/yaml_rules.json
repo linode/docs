@@ -18,14 +18,10 @@
     "type": "list",
     "description": "An array of audiences. Could be Foundational, Beginner, Intermediate, or Expert"
   },
-  "author": {
-    "elements": [
-      "name",
-      "email"
-    ],
+  "authors": {
     "required": true,
-    "type": "dict",
-    "description": "First and last names of the original guide author."
+    "type": "list",
+    "description": "An array of author names associated with the article. Each element in the array should be a string of the form `FirstName LastName`. The first element of the array will be displayed in the guide's byline. A profile page for the author will be displayed at /docs/authors/firstname-lastname/. To add biographical information to this page, create a markdown file at `/docs/authors/firstname-lastname/_index.md`. The Hugo archetype at `docs/authorpage.md` in this repo can be used to generate new author pages."
   },
   "bundles": {
     "elements": false,
@@ -56,15 +52,6 @@
     "required": false,
     "type": "bool",
     "description": "If false, Disqus comments will be disabled for this guide."
-  },
-  "contributor": {
-    "elements": [
-      "name",
-      "link"
-    ],
-    "required": false,
-    "type": "text",
-    "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
   },
   "dedicated_cpu_link": {
         "elements": false,

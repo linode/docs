@@ -1,8 +1,5 @@
 ---
 slug: how-to-resell-linode-services
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'How to resell Linode services using the Linode API, and how to get started with the Linode referral program.'
 keywords: ['resell','linode','services','reseller','referral','code']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,10 +9,9 @@ modified_by:
   name: Linode
 title: "Resell Linode Services"
 title_meta: "How to Resell Linode Services"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/']
+authors: ["Linode"]
 ---
 
 ![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")

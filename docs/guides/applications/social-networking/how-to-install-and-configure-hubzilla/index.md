@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-hubzilla
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides an introduction to the federated and decentralized Hubzilla application and explains how to install and configure it.'
 og_description: 'This guide provides an introduction to the distributed and decentralized Hubzilla application and explains how to install and configure it.'
 keywords: ['Hubzilla','install Hubzilla','configure Hubzilla','Hubzilla federated']
@@ -12,13 +9,12 @@ modified_by:
   name: Linode
 title: "Install and Configure Hubzilla"
 title_meta: "How to Install and Configure Hubzilla"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Hubzilla Project page](https://hubzilla.org//page/hubzilla/hubzilla-project)'
 - '[Hubzilla documentation](https://hubzilla.org/help/en/about/about)'
 - '[Hubzilla code base](https://framagit.org/hubzilla/core)'
 - '[Hubzilla user guide](https://hubzilla.org/help/en/member/member_guide#Overview)'
+authors: ["Jeff Novotny"]
 ---
 
 Recent developments have led to a renewed interest in federated web applications. Much of the interest centers around the Twitter alternative *Mastodon*. However, there are many other federated applications worthy of attention. For example, the federated [*Hubzilla*](https://hubzilla.org//page/hubzilla/hubzilla-project) application allows users to create interconnected websites and channels. This guide provides an introduction to the Hubzilla application and explains how to install and configure it.

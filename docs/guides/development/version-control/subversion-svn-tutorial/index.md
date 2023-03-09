@@ -1,7 +1,5 @@
 ---
 slug: subversion-svn-tutorial
-author:
-  name: Cameron Laird
 description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and commiting your working copy changes.'
 keywords: ['svn tutorial, svn commands']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,9 +8,7 @@ modified_by:
   name: Linode
 title: "Install and Use the Subversion CLI Client"
 title_meta: "How to Install and Use the Subversion CLI Client"
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+authors: ["Cameron Laird"]
 ---
 
 Subversion (SVN) is a *centralized version control system* (VCS) that can be used to collaborate on the development of software projects. A centralized version control system uses a single remote instance of a project to stores its versioned data. This instance can also be referred to as a *repository*.

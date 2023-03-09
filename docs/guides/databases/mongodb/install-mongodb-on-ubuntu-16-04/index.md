@@ -1,8 +1,5 @@
 ---
 slug: install-mongodb-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install MongoDB for document-oriented data storage on Ubuntu 16.04 (Xenial).'
 keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +19,7 @@ relations:
             - distribution: Ubuntu 16.04
 tags: ["ubuntu","database","nosql"]
 aliases: ['/databases/mongodb/install-mongodb-on-ubuntu-16-04/']
+authors: ["Linode"]
 ---
 
 In this MongoDB tutorial, we explain how to install the database on Ubuntu 16.04, and then provide a short guide on some basic features and functions.

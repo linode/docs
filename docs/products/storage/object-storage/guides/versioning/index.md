@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Versioning (Retain Object Version History)"
 description: "Learn how to use versioning with Linode's Object Storage to retain previous versions of an object."
 published: 2022-03-11
 aliases: ['/platform/object-storage/bucket-versioning/','/guides/bucket-versioning/']
+authors: ["Linode"]
 ---
 
 Versioning in Object Storage (also called *bucket versioning*, *object versioning*, and *S3 versioning*) is a method of retaining historical versions of files/objects. When this feature is enabled, objects are not overwritten or deleted. Instead, the new *current* version of an object is stored alongside each older *noncurrent* version. In the event that you need to recover old data, you can restore/retrieve previous versions of each object.

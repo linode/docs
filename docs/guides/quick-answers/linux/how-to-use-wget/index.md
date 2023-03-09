@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-wget
-author:
-  name: Angel
-  email: docs@linode.com
 description: 'Knowing how to use wget to download files makes it easy to retrieve the latest packages from HTTP or FTP repositories. ✓ Read our guide to learn how'
 keywords: ["linux", "how to", "grep", "wget"]
 aliases: ['/quick-answers/linux/how-to-use-wget/','/quick-answers/how-to-use-wget/']
@@ -17,8 +14,8 @@ external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'
  - '[Arch Wiki](https://wiki.archlinux.org/index.php/wget)'
  - '[Gentoo](https://packages.gentoo.org/packages/net-misc/wget)'
-
 tags: ["linux"]
+authors: ["Angel Guarisma"]
 ---
 
 

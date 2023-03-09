@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-nodejs-sqlite
-author:
-  name: James Turner
-  email: docs@linode.com
 description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
 keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
@@ -14,11 +11,10 @@ modified_by:
   name: Linode
 title: "Getting Started with NodeJS SQLite"
 title_meta: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
-contributor:
-  name: James Turner
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
+authors: ["James Turner"]
 ---
 
 ## Getting Started with Node.js and SQLite

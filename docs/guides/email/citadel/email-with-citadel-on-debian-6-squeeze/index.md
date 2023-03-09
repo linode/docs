@@ -1,9 +1,6 @@
 ---
 slug: email-with-citadel-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on a Debian 6 (Squeeze) Linode.'
 keywords: ["citadel debian 6", "citadel debian squeeze", "debian 6 mail server", "groupware", "email server"]
 tags: ["debian","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).

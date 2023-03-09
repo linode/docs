@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-vim-customization
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This how-to guide shows you how to configure the Vim text editor and begin to customize it.'
 keywords: ["vim", " editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,6 @@ modified: 2019-04-17
 modified_by:
   name: 'Linode'
 title: 'Introduction To Vim Customization'
-contributor:
-  name: 'Andrew Lescher'
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
  - '[Vim official home page](http://www.vim.org)'
  - '[Vim-Config](http://vimconfig.com/)'
@@ -22,6 +16,7 @@ external_resources:
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/introduction-to-vim-customization/']
+authors: ["Andrew Lescher"]
 ---
 
 ![Introduction to Vim Customization](Vim_Customization.jpg)

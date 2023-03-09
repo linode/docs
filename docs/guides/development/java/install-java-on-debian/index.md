@@ -1,8 +1,5 @@
 ---
 slug: install-java-on-debian
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
 description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running Debian or Ubuntu.'
 keywords: ["install Java", "Debian", "OpenJDK", "Java JDK"]
 tags: ["java","debian"]
@@ -22,6 +19,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Debian 8
+authors: ["Angel Guarisma"]
 ---
 
 Java is a powerful programming language. Software written in Java can be compiled and run on any system. Unlike Python or C, Java does not come pre-installed on Linode distribution images. This guide installs the OpenJDK 7 runtime environment and development kit in Debian 8. OpenJDK is the free and open-source implementation of the Java SE Development Kit.

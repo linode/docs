@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide provides you with step-by-step instructions for making additional copies of your Compute Instance."
 keywords: ["clone", " cloning", "cloud manager"]
 tags: ["linode platform","cloud manager"]
@@ -13,6 +10,7 @@ modified: 2023-01-18
 title: "Cloning a Compute Instance"
 title_meta: "How to Clone a Compute Instance"
 aliases: ['/migrate-to-linode/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode/','/platform/disk-images/clone-your-linode-classic-manager/','/guides/clone-your-linode/']
+authors: ["Linode"]
 ---
 
 Linode's cloning feature allows you to duplicate a Compute Instance's disks (and configuration profiles) to a new or existing instance.

@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Migrate a MongoDB Database to a Managed Database"
 description: "Learn how to migrate an existing MongoDB database to Linode's Managed Database service."
 published: 2022-06-17
+authors: ["Linode"]
 ---
 
 This guide covers how to migrate an existing MongoDB database to a Managed Database using the `mongodump` and `mongorestore` utilities.

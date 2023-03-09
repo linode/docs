@@ -1,8 +1,5 @@
 ---
 slug: how-to-configure-nginx
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Understand NGINX configuration for HTTP, Server blocks, Location blocks, Reverse proxy, and Load balancers with configuration examples.'
 og_description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This tutorial will outline the basic NGINX parameters and conventions.'
 keywords: ["nginx", "web server", "configuration"]
@@ -15,6 +12,7 @@ published: 2010-01-18
 title: Complete Guide to NGINX Configuration
 title_meta: How to Configure NGINX
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Introduction to NGINX](how_to_configure_nginx.png "Introduction to NGINX")

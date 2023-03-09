@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Comparing Cloud Firewalls to Linux Firewall Software
 description: ""
+authors: ["Linode"]
 ---
 
 With the addition of Linode's Cloud Firewall solution, there are now two primary ways to control network traffic on a Linode Compute Instance: through a Cloud Firewall or locally installed firewall software. While both are robust solutions, there may be certain cases in which you choose to use one over the other. More often than not, both solutions should be used in tandem.

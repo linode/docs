@@ -1,9 +1,6 @@
 ---
 slug: apache-web-server-debian-7
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: ["apache", "apache 2", "debian", "debian 7", "wheezy", "apache web server"]
 tags: ["web server","apache","debian"]
@@ -23,6 +20,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)

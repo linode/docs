@@ -1,7 +1,5 @@
 ---
 slug: introduction-to-jinja-templates-for-salt
-author:
-  name: Linode
 description: 'An introduction to Jinja using Salt configuration management examples.'
 keywords: ['salt','jinja','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +9,13 @@ modified_by:
   name: Linode
 image: IntroductiontoJinjaTemplatesforSalt.png
 title: "Introduction to Jinja Templates for Salt"
-contributor:
-  name: Linode
 external_resources:
 - '[Salt Best Practices](https://docs.saltproject.io/en/latest/topics/best_practices.html#modularity-within-states)'
 - '[Salt States Tutorial](https://docs.saltproject.io/en/latest/topics/tutorials/states_pt1.html)'
 - '[Jinja Template Designer Documentation](http://jinja.pocoo.org/docs/2.10/templates/#import)'
 aliases: ['/applications/configuration-management/introduction-to-jinja-templates-for-salt/','/applications/configuration-management/salt/introduction-to-jinja-templates-for-salt/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 ## Introduction to Templating Languages
 

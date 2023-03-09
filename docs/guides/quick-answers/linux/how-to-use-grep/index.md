@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-grep
-author:
-  name: Phil Zona
-  email: docs@linode.com
 description: "Use the grep command to filter output from administrative commands, so you get only relevant data. This guide shows you how. ✓ Click to learn today!"
 keywords: ["linux", "how to", "grep", "filter"]
 aliases: ['/quick-answers/linux/how-to-use-grep/','/quick-answers/how-to-use-grep/']
@@ -13,6 +10,7 @@ modified_by:
 published: 2017-04-10
 title: "Using the grep Command in Linux: Finding Text & Strings in Files"
 tags: ["linux"]
+authors: ["Phil Zona"]
 ---
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/pz2xgdch29?videoFoam=true" title="Linode - How to use the grep command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>

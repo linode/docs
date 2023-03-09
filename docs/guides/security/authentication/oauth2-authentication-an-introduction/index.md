@@ -1,7 +1,5 @@
 ---
 slug: oauth2-authentication-an-introduction
-author:
-  name: Jeff Novotny
 description: 'This guide provides an introduction to Oauth2 authentication, flows, scopes, and libraries.'
 keywords: ['What is Oauth2','How does Oauth2 work','Oauth2 flow','Oauth vs oauth2']
 tags: ['python', 'security']
@@ -11,11 +9,10 @@ modified_by:
   name: Linode
 title: "What Is OAuth2 Authentication?"
 title_meta: "An Introduction to OAuth2 Authentication"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[OAuth2 website](https://oauth.net/2/)'
 - '[OAuth2 libraries](https://oauth.net/code/)'
+authors: ["Jeff Novotny"]
 ---
 
 [*OAuth 2.0*](https://oauth.net/2/) is an authorization protocol that helps application users securely share access to their accounts. For example, with the help of OAuth 2.0, a social media app user can securely share their email contacts with the app. Providing account details directly to the application is highly problematic from the perspective of web security and privacy. OAuth2 allows users to grant limited access to their accounts with third-party applications without sharing any passwords. This guide discusses how OAuth2 works and compares it to other authorization frameworks.

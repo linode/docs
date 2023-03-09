@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "View, Create, and Delete Block Storage Volumes"
 description: "Learn how to manage Block Storage Volumes on your Linode account, including viewing, adding, and deleting them."
 aliases: ['/products/storage/block-storage/guides/add-volume/','/products/storage/block-storage/guides/delete-volume/']
 modified: 2022-08-24
+authors: ["Linode"]
 ---
 
 What is block storage? Block Storage is a scalable, high-speed, and fault tolerant network storage service used to add additional storage capacity to a Linode Compute Instance.

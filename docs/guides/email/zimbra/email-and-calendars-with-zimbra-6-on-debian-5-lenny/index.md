@@ -1,9 +1,6 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Debian 5 (Lenny) Linode.'
 keywords: ["zimbra debian 5", "zimbra lenny", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["debian","email"]
@@ -19,6 +16,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

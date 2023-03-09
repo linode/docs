@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 9.10 (Karmic) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "karmic"]
 tags: ["wiki","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

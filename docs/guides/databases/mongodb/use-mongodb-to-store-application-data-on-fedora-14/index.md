@@ -1,9 +1,6 @@
 ---
 slug: use-mongodb-to-store-application-data-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'MongoDB is a database engine that provides access to non-relational key-value databases. This guide provides you instructions for installing it on Fedora 14.'
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Fedora 14
 tags: ["nosql","database","fedora"]
+authors: ["Linode"]
 ---
 
 

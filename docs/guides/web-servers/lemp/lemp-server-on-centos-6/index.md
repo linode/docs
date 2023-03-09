@@ -1,8 +1,5 @@
 ---
 slug: lemp-server-on-centos-6
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install a LEMP (Linux, NGINX, MySQL, PHP) stack so you can host multiple websites or applications on a Linode running CentOS 6.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
@@ -26,6 +23,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 6
+authors: ["Linode"]
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.

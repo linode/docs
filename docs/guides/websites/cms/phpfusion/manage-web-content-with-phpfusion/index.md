@@ -1,8 +1,5 @@
 ---
 slug: manage-web-content-with-phpfusion
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn to build and deploy websites using the PHP Fusion content management system.'
 keywords: ["cms", "php fusion", "content mangement system", "lamp"]
 tags: ["php","cms","lamp"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2010-04-17
 title: 'Manage Web Content with PHP-Fusion'
 deprecated: true
+authors: ["Linode"]
 ---
 
 PHP Fusion is a lightweight content management system built on the popular LAMP stack. Designed for maximum flexibility and broad support it's for internationalization, in its latest version PHP Fusion focuses on standards compliance, security, and modular design. PHP Fusion is an obvious choice for developers who need to deploy a system to manage content and community interaction.

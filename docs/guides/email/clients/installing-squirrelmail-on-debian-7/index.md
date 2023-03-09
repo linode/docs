@@ -1,8 +1,5 @@
 ---
 slug: installing-squirrelmail-on-debian-7
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Debian 7.'
 keywords: ["squirrelmail", "debian", "debian 7", "mail client"]
 tags: ["debian","email","lamp"]
@@ -21,6 +18,7 @@ relations:
         key: how-to-install-squirrelmail
         keywords:
             - distribution: Debian 7
+authors: ["Alex Fornuto"]
 ---
 
 SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) guide.

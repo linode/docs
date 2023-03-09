@@ -1,9 +1,6 @@
 ---
 slug: using-mysql-relational-databases-on-arch-linux
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Getting started with MySQL for web and server applications on Arch Linux.'
 keywords: ["mysql arch linux", "mysql linux", "arch linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Arch Linux
 tags: ["arch","database","mysql"]
+authors: ["Alex Fornuto"]
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on Arch Linux. If you would like to deploy MySQL as part of an application stack, consider our [LEMP](/docs/guides/lemp-server-on-arch-linux/) and [LAMP guides](/docs/lamp-guides/).
