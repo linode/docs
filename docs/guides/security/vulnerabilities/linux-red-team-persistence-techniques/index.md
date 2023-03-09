@@ -1,8 +1,5 @@
 ---
 slug: linux-red-team-persistence-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
 description: 'This guide covers the process of setting up and maintaining persistent access on Linux targets.'
 keywords: ['security']
 tags: ['security']
@@ -11,8 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Linux Red Team Persistence Techniques"
-contributor:
-  name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

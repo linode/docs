@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project."
 keywords: ["distro", "distribution", "operating system", "Linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ title: "Choosing a Linux Distribution"
 title_meta: "How to Choose a Linux Distribution"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/choosing-a-distribution/','/guides/choosing-a-distribution/']
+authors: ["Linode"]
 ---
 
 ## What is a Distribution?

@@ -1,7 +1,5 @@
 ---
 slug: typescript-functions-getting-started
-author:
-  name: Martin Heller
 description: 'This guide provides an introduction to creating functions in TypeScript. It discusses some of the differences between functions in JavaScript and TypeScript'
 keywords: ['typescript functions']
 tags: ['typescript']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Getting Started with TypeScript Functions"
 title_meta: "TypeScript Functions: Getting Started"
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 ## Declaring Functions

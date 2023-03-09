@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "How to transfer domain zones using the Linode DNS Manager."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-07-21
@@ -12,6 +9,7 @@ title: "Outgoing DNS Zone Transfers"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/transfer-domain-zones/']
+authors: ["Linode"]
 ---
 
 When a domain zone is created within Linode's DNS Manager, you can select if it will operate as a *primary* or a read-only *secondary* zone (see [Select the Zone Type](/docs/products/networking/dns-manager/guides/create-domain/#select-the-zone-type)). Selecting *primary* allows you to edit the DNS records directly within the DNS Manager and is the most common choice.

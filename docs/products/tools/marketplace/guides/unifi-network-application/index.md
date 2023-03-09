@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy UniFi Network Controller, a multi-use networking control panel with a powerful application suite designed to optimize home and business networks with ease, on a Linode Compute Instance."
 keywords: ['UniFi','Network','gateway', 'routing']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -11,6 +8,7 @@ modified: 2022-09-22
 modified_by:
   name: Linode
 title: "Deploy the UniFi Network Application through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237441-UniFi-Network-Use-the-UniFi-Network-Application) is a versatile control panel developed by [Ubiquiti](https://www.ui.com/). It simplifies network management across regions, customizes access to Wi-Fi networks, and more. Manage and apply updates to UniFi networking devices to ensure your networks are performant and secure.

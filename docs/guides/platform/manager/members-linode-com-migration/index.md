@@ -1,8 +1,5 @@
 ---
 slug: members-linode-com-migration
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS."
 keywords: ['dns','members.linode.com','reverse dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,6 +8,7 @@ modified_by:
   name: Linode
 title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
 title_meta: "members.linode.com and nodebalancer.linode.com Migration"
+authors: ["Linode"]
 ---
 
 ## What are members.linode.com and nodebalancer.linode.com?

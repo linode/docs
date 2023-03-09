@@ -2,9 +2,6 @@
 slug: back-up-your-mysql-databases
 deprecated: true
 deprecated_link: "guides/use-mysqldump-to-back-up-mysql-or-mariadb/"
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide provides instructions for backing up your MySQL databases for disaster recovery and continuity using a variety of methods, including the command line.'
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +17,7 @@ external_resources:
  - '[Schedule Tasks With Cron](/docs/guides/schedule-tasks-with-cron/)'
  - '[MySQL''s Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)'
 tags: ["database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the [LAMP Stack](/docs/web-servers/lamp/). The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.

@@ -1,9 +1,6 @@
 ---
 slug: ubuntu-8-04-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).'
 keywords: ["postgresql", "postgresql database", "postgresql on ubuntu", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
             - distribution: Ubuntu 8.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-8-04-hardy/']
+authors: ["Linode"]
 ---
 
 

@@ -1,8 +1,5 @@
 ---
 slug: install-an-odoo-13-stack-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Debian 10.'
 keywords: ["Odoo 13 install Debian 10", "install open source cms erp debian"]
 tags: ["debian", "postgresql", "database", "cms"]
@@ -14,9 +11,6 @@ modified_by:
 title: Installing an Odoo 13 Stack on Debian 10
 title_meta: 'How to Install an Odoo 13 Stack on Debian 10'
 image: install-an-odoo-13-stack-on-debian-10-using-linode.png
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 aliases: ['/websites/cms/install-an-odoo-13-stack-on-debian-10/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
@@ -29,6 +23,7 @@ relations:
         key: install-an-odoo-13-stack
         keywords:
             - distribution: Debian 10
+authors: ["Damaso Sanoja"]
 ---
 
 ## What is Odoo?

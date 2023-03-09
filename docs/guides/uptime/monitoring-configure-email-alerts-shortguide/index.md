@@ -1,8 +1,5 @@
 ---
 slug: monitoring-configure-email-alerts-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that describes how to configure monitoring email alerts in Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-21
@@ -14,6 +11,7 @@ keywords: ["monitoring"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/uptime/monitoring-configure-email-alerts-shortguide/']
+authors: ["Linode"]
 ---
 
 The Linode Cloud Manager allows you to configure *email alerts* that automatically notify you via email if certain performance thresholds are reached. For example, if you set the threshold for CPU Usage to 90% percent, you'll be notified if your Linode's average CPU usage is greater than 90% for over 2 hours.

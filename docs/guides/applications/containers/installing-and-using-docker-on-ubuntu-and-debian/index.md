@@ -1,8 +1,5 @@
 ---
 slug: installing-and-using-docker-on-ubuntu-and-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Check out our guide on how to install Docker Engine on Ubuntu and Debian Linux distribution's latest version. ✓ Click here to read our guide today!"
 og_description: "A guide on installing Docker Engine on Ubuntu and Debian Linux distributions"
 keywords: ['docker','docker engine','containers']
@@ -23,6 +20,7 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: Ubuntu and Debian
+authors: ["Linode"]
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.

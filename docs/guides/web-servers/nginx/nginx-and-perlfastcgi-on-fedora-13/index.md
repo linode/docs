@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 13.'
 keywords: ["nginx", "nginx fedora 13", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","fedora","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

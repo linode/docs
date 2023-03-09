@@ -1,8 +1,5 @@
 ---
 slug: install-caddy-archlinux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Caddy is an open source HTTP/2-enabled web server with automatic HTTPS. This guide demonstrates how to install Caddy on Arch Linux."
 keywords: ['caddy', 'install caddy', 'archlinux', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,6 @@ modified: 2021-12-30
 modified_by:
   name: Linode
 title: "Install Caddy on Arch Linux"
-contributor:
-  name: Claudio Costa
-  link: https://github.com/streamer45
 external_resources:
 - '[Caddy Official Documentation](https://caddyserver.com/docs)'
 relations:
@@ -23,6 +17,7 @@ relations:
             - distribution: Arch Linux
 tags: ["web server"]
 aliases: ['/web-servers/caddy/install-caddy-archlinux/']
+authors: ["Claudio Costa"]
 ---
 
 ## Before You Begin

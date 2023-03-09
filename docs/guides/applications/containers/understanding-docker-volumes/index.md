@@ -1,8 +1,5 @@
 ---
 slug: understanding-docker-volumes
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'An explanation of Docker volumes, their use, and how to mount volumes and host system directories within a container.'
 keywords: ["docker", "volume", "docker volume", "docker volumes", "docker container", "docker containers", "docker volume", "docker volumes"]
 tags: ["volume","docker"]
@@ -14,6 +11,7 @@ title: "Understanding Docker Volumes"
 external_resources:
 - '[Use volumes at Docker Docs](https://docs.docker.com/storage/volumes/)'
 - '[Troubleshoot volume errors at Docker Docs](https://docs.docker.com/storage/troubleshooting_volume_errors/)'
+authors: ["Linode"]
 ---
 
 Files (and other data) stored within a Docker container does not persist if the container is deleted. To overcome this, Docker *volumes* and *bind mounts* can be used. This guide discusses using [Docker volumes](https://docs.docker.com/storage/volumes/) as a way to store persistent data. Think of volumes as an external hard drive; if the internal hard drive is erased, the external hard drive still retain its own data. Volumes are stored on the host and independent of any container or image. They can be mounted to different containers as needed and, since volumes are separate from the image, they do not increase the image size.

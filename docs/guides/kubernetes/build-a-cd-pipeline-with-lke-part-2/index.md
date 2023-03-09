@@ -1,8 +1,5 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-2
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In part two of our series on Kubernetes, you will learn how the guides the sample application works and how it can be run locally on your own Workstation."
 title: "Building a CD Pipeline Using LKE (Part 2): Sample Application"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
@@ -11,10 +8,9 @@ published: 2021-05-06
 modified: 2022-12-14
 modified_by:
   name: Linode
-contributor:
-  name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-2/']
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Our Sample Application](cd-presentation-header-02-sample-application.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Our Sample Application")

@@ -1,7 +1,5 @@
 ---
 slug: python-ml
-author:
-  name: John Mueller
 description: 'This introduction to Python in ML and AI defines each one, examines their differences and discusses why Python is good for machine learning. ✓ Learn more!'
 keywords: ['ai python code','python for ai','why is python used for machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,9 +8,7 @@ modified_by:
   name: Linode
 title: "Python in ML: Why You Should Use Python for Machine Learning"
 title_meta: "Python Programming, Machine Learning, and AI"
-contributor:
-  name: John Mueller
-  link: http://www.johnmuellerbooks.com/
+authors: ["John Mueller"]
 ---
 
 *Artificial Intelligence* (AI), the appearance or simulation of human intelligence within a machine, is popular today because it can solve a huge number of problems within specific categories using well-known algorithms. Machine Learning (ML) is a sub-category of AI that depends on large datasets to affect the computations of algorithms to allow a generalized result that an application can apply to unseen data. In other words, ML provides an experience-based method to use AI techniques to solve problems realistically. Python ML features handle the required amounts of data effectively, and offer access to a broad range of algorithms using libraries like scikit-learn and SciPy to solve the various ML problem categories. Python’s capabilities deliver in a manner that is understandable in AI Python code, and which reduces the learning curve that most developers face.

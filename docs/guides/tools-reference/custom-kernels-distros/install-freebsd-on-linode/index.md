@@ -1,8 +1,5 @@
 ---
 slug: install-freebsd-on-linode
-author:
-  name: Rainbow
-  email: rainbow@linode.com
 description: 'This guide will show you how to install FreeBSD, the free and open source operating system based on the Berkeley Software Software Distribution from the late 1970s.'
 keywords: ["freebsd", "bsd"]
 tags: ["cloud manager"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: FreeBSD
 aliases: ['/tools-reference/custom-kernels-distros/install-freebsd-on-linode/']
+authors: ["Rainbow"]
 ---
 
 ![Install FreeBSD on Linode](install-freebsd-on-linode.png "Install FreeBSD on Linode")

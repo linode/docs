@@ -1,8 +1,5 @@
 ---
 slug: use-lighttpd-web-server-on-ubuntu-16-04
-author:
-  name: Dave Messina
-  email: docs@linode.com
 description: 'Learn how to install and use Lighttpd web server on Ubuntu 16.04 (Xenial Xerus)'
 keywords: ["lighttpd", "web server", "web hosting"]
 aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
@@ -24,6 +21,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Dave Messina"]
 ---
 
 Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It is commonly deployed on high traffic sites, including WhatsApp and xkcd.

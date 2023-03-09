@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-tcpdump-to-analyze-traffic
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
 keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,12 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use tcdump to Analyze Network Traffic"
 title_meta: "How to Use tcdump to Analyze Network Traffic"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[TCPDUMP & LIBPCAP](https://www.tcpdump.org/)'
 - "[Julia Evans: Let's Learn tcpdump](https://jvns.ca/tcpdump-zine.pdf)"
 - '[Geekflare: How to Capture and Analyze Network Traffic with tcpdump?](https://geekflare.com/tcpdump-examples/)'
 - '[Linux Hint: A Guide to Network Traffic Analysis Utility: TCPDUMP](https://linuxhint.com/tcpdump-beginner-guide/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The *tcpdump* tool provides a powerful command line option for network sniffing. With *tcpdump*, you can effectively capture and analyze network traffic, whether to diagnose network issues or to test network security.

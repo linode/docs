@@ -1,8 +1,5 @@
 ---
 slug: how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to enable Nextcloud's External Storage app and then configure it to use Linode Object Storage as a secondary storage location."
 keywords: ['file hosting','nextcloud','object storage','s3']
 tags: ["linode platform","marketplace"]
@@ -12,11 +9,10 @@ modified_by:
   name: Linode
 title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
 title_meta: "How to Configure Nextcloud to use Object Storage"
-contributor:
-  name: Linode
 external_resources:
 - '[Nextcloud Configuring External Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
 aliases: ['/platform/object-storage/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/']
+authors: ["Linode"]
 ---
 {{< youtube QWaCg4q4a0A >}}
 

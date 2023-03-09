@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-mumble-on-debian
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: "In this tutorial, we'll walk you through how to install a Mumble server on Debian, and offer general guidelines for configuring the Mumble client."
 keywords: ["mumble", " debian", " murmur", " gaming", " voip", " voice chat"]
 tags: ["debian"]
@@ -13,13 +10,11 @@ modified_by:
     name: Linode
 title: "Installing and Configuring Mumble on Debian"
 title_meta: "How to Install and Configure Mumble on Debian"
-contributor:
-    name: Mark Weiman
-    link: https://twitter.com/markzz989/
 external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 dedicated_cpu_link: true
 aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
+authors: ["Mark Weiman"]
 ---
 
 

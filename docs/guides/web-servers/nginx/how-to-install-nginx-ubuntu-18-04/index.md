@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nginx-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn the basics of installing and configuring NGINX on your Ubuntu 18.04 server in this quick guide."
 keywords: ["nginx", "load balancing", "ubuntu", "ubuntu 18", "web server", "static content", "install nginx"]
 tags: ["web server","ubuntu","nginx"]
@@ -21,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/nginx/how-to-install-nginx-ubuntu-18-04/','/web-servers/nginx/install-nginx-ubuntu/']
+authors: ["Linode"]
 ---
 
 ![Install NGINX on Ubuntu 18](install-nginx-ubuntu-smg.jpg)

@@ -1,17 +1,11 @@
 ---
 slug: gpg-key-for-ssh-authentication
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Generate a GPG key-pair, and convert it to an SSH key for authentication with your Linode.'
 keywords: ["gpg", "ssh", "authentication", "ssh-agent", "gpg-agent", "yubikey", "smartcard", "ssh key"]
 aliases: ['/security/authentication/gpg-key-for-ssh-authentication/','/security/gpg-key-for-ssh-authentication/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'How to use a GPG key for SSH authentication'
-contributor:
-  name: Huw Evans
-  link: https://github.com/huw
 external_resources:
  - '[Securely set up smartcard](https://gist.github.com/abeluck/3383449)'
  - '[Instructions for GPG 2.1](https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html)'
@@ -19,6 +13,7 @@ modified: 2016-10-03
 modified_by:
   name: Alex Fornuto
 published: 2016-10-03
+authors: ["Huw Evans"]
 ---
 
 ![GPG key for SSH Authentication](How_to_use_a_GPG_key_smg.jpg)

@@ -1,9 +1,6 @@
 ---
 slug: twiki-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Ubuntu 10.04 "Lucid".'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-twiki
         keywords:
            - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

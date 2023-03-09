@@ -1,7 +1,5 @@
 ---
 slug: restart-linux-server-from-the-command-line
-author:
-  name: Nathaniel Stickman
 description: "This guide shows how you can restart your Linux system, a task you might need to do on occasion when installing or configuring new software or packages."
 keywords: ['linux restart','linux restart command','restart linux server']
 tags: ['linux']
@@ -12,9 +10,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Restart a Linux Server from the Command Line"
 title_meta: "Using the Linux Restart Command from the Command Line"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 While your Linux server can run continuously for weeks or months, some configuration tasks may require a manual system reboot. This guide shows you how to restart a Linux server over SSH, using PuTTY, or on your server's console interface.

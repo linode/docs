@@ -1,8 +1,5 @@
 ---
 slug: pritunl-vpn-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Set up Pritunl, an open source VPN server with an intuitive web interface'
 keywords: ["pritunl", "vpn", "vpn server", "ubuntu", "ubuntu 14.04"]
 tags: ["ubuntu","networking","security","vpn"]
@@ -13,10 +10,8 @@ deprecated: true
 modified_by:
     name: Linode
 title: 'Pritunl VPN Server and Management Panel on Ubuntu 14.04'
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 aliases: ['/networking/vpn/pritunl-vpn-ubuntu/']
+authors: ["Andrew Gottschling"]
 ---
 
 ![Pritunl VPN Server and Management Panel on Ubuntu](Pritunl_VPN_Server_and_Management_Panel_on_Ubuntu_1404_smg.jpg)

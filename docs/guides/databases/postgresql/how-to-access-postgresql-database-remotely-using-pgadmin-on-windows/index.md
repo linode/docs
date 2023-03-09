@@ -1,8 +1,5 @@
 ---
 slug: how-to-access-postgresql-database-remotely-using-pgadmin-on-windows
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation."
 keywords: ["pgadmin", "pgadmin windows", "postgresql gui", "postgresql windows", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
+authors: ["Linode"]
 ---
 
 ![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg)

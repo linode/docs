@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Take a Manual Snapshot
 description: "How to use the Backups Sevice to take a manual backup of a Linode Compute Instance."
+authors: ["Linode"]
 ---
 
 As part of the Backups service, you can store a manual backup of your Compute Instance through the *manual snapshot* feature. This can be useful to save a restore point before a major system upgrade or prior to significant changes to software or configuration within your Compute Instance.

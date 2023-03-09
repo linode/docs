@@ -1,8 +1,5 @@
 ---
 slug: what-is-serverless-computing
-author:
-  name: Andy Patrizio
-  email: andy@andypatrizio.com
 description: 'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
 og_description:  'Serverless computing is an application deployment architecture where cloud resources are supplied on-demand.  Learn how it works and why people use it.'
 keywords: ['serverless computing']
@@ -12,8 +9,7 @@ published: 2020-01-29
 modified_by:
   name: Linode
 title: 'What is Serverless Computing?'
-contributor:
-  name: Andy Patrizio
+authors: ["Andy Patrizio"]
 ---
 Serverless computing is a type of application deployment architecture that allows developers to write an application that is executed on-demand. When the application is no longer needed system resources are not allocated to the app. You don't need to set up a server to host your application, because this is typically managed by a service provider. The usage of the term *serverless* can be misleading because it implies that no servers are involved. However, servers are definitely involved; but the terminology points to the fact the servers are not something developers need to worry about when using this approach to development.
 

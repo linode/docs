@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.04 (Lucid) Linode.'
 keywords: ["nagios", "monitoring"]
 tags: ["monitoring","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

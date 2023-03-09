@@ -1,9 +1,6 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 9.10 (Karmic).'
 keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","resolving","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.

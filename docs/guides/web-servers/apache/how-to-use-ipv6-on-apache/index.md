@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-ipv6-on-apache
-author:
-  name: Jeff Novotny
-  email: docs@linode.com
 description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
 keywords: ['IPv6 Apache','how to enable IPv6 on Apache','NGINX IPv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified_by:
   name: Linode
 title: "Use IPv6 With Apache and NGINX"
 title_meta: "How to Use IPv6 With Apache and NGINX"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[IPv6 rfc 8200](https://www.rfc-editor.org/rfc/rfc8200)'
 - '[Wikipedia IPv6 page](https://en.wikipedia.org/wiki/IPv6)'
@@ -22,6 +17,7 @@ external_resources:
 - '[NGINX Website](https://www.nginx.com/)'
 - '[NGINX Docs page](https://docs.nginx.com/)'
 - '[RHEL documentation to enable IPv6](https://access.redhat.com/solutions/347693)'
+authors: ["Jeff Novotny"]
 ---
 
 The [Internet Protocol version 6 (IPv6)](https://www.rfc-editor.org/rfc/rfc8200) provides some performance advantages over IPv4 as well as additional features. On both the Apache and NGINX web servers, IPv6 is enabled by default. However, many users do not take full advantage of all IPv6 capabilities. This guide explains how to configure and use IPv6 on both the Apache and NGINX web server. It also introduces some useful IPv6 tools.

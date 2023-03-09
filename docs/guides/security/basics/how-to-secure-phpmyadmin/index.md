@@ -1,7 +1,5 @@
 ---
 slug: how-to-secure-phpmyadmin
-author:
-  name: Hackersploit
 description: 'This guide shows how to secure phpMyAdmin. Learn how to change aliases, set up password authentication, restrict access to specific IP addresses, and more.'
 keywords: ["apache security", "apache best practices security", "secure phpMyAdmin config", "phpMyAdmin security"]
 tags: ["security","web server","apache", "php"]
@@ -14,6 +12,7 @@ title: Securing phpMyAdmin
 title_meta: How to Secure phpMyAdmin
 aliases: ['/security/basics/how-to-secure-phpmyadmin/']
 image: Securing_phpMyAdmin.png
+authors: ["Hackersploit"]
 ---
 
 ## What is phpMyAdmin?

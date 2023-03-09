@@ -1,9 +1,6 @@
 ---
 slug: basic-postfix-email-gateway-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'In this tutorial, you will learn how to configure a Postfix MTA as a basic email gateway to send and receive email using POP, IMAP, and SMTP on Debian 5 "Lenny".'
 keywords: ["email", "postfix", "mta", "forwarding"]
 tags: ["debian","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: basic-postifx-gateway
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

@@ -1,7 +1,5 @@
 ---
 slug: data-loss-prevention-best-practices
-author:
-  name: Andy Patrizio
 description: 'What is a data loss prevention (DLP)? This guide explains what it is and why a DLP policy is important for businesses. Learn how to develop a DLP strategy with this guide.'
 keywords: ['dlp policy','data loss prevention policy','dlp controls']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,9 +8,7 @@ modified_by:
   name: Linode
 title: "Data Loss Prevention Best Practices: An In-Depth Guide"
 title_meta: "Data Loss Prevention Best Practices (with Examples)"
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
+authors: ["Andy Patrizio"]
 ---
 
 An organization's data is everything because it gives market and customer insight. Data tells you where the market is going, where your customers are going, and where your company is going.

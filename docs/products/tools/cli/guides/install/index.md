@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Install and Configure the Linode CLI"
 description: "Learn how to install the Linode CLI on most common operating systems"
 modified: 2022-05-05
+authors: ["Linode"]
 ---
 
 ## Install the Linode CLI

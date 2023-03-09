@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-linux-environment-variables
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide introduces you to Linux environment variables and explains the differences between shell variables and environment variables."
 keywords: ['shell','bash','environment variables','command line','terminal','shell scripting']
 tags: ['linux']
@@ -12,9 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Setting and Using Linux Environment Variables"
 title_meta: "How to Set and Use Linux Environment Variables"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 Your Linux shell has access to an environment that stores configuration values and other information in *environment variables*. Accessing these variables can be useful when working with shell commands. You can also set environment variables that can be accessed and used by your scripts, and applications. This guide walks you through the fundamentals of accessing, creating, and using environment variables.

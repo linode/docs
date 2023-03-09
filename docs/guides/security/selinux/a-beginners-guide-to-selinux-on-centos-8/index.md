@@ -1,8 +1,5 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 8.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS8"]
 bundles: ['centos-security']
@@ -13,8 +10,6 @@ modified_by:
   name: Linode
 title: "Getting Started with SELinux on CentOS 8"
 title_meta: "A Beginner's Guide to SELinux on CentOS 8"
-contributor:
-  name: Linode
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
  - '[SELinux User Resources](https://selinuxproject.org/page/User_Resources)'
@@ -26,6 +21,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/security/selinux/a-beginners-guide-to-selinux-on-centos-8/']
+authors: ["Linode"]
 ---
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.

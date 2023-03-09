@@ -1,9 +1,6 @@
 ---
 slug: upgrade-to-debian-8-jessie
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system from Debian 7 "Wheezy" to Debian 8 "Jessie" via command line.'
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
+authors: ["Alex Fornuto"]
 ---
 
 Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. This guide explains how to upgrade your system from Debian 7 (Wheezy) to Debian 8.
