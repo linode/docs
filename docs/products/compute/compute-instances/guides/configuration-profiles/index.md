@@ -10,7 +10,7 @@ modified_by:
 image: Linode-Configuration-Profiles.jpg
 title: "Manage Configuration Profiles on a Compute Instance"
 title_meta: "How to Manage Configuration Profiles on a Compute Instance"
-aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/']
+aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
 authors: ["Linode"]
 ---
 

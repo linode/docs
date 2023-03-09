@@ -667,7 +667,7 @@ This content is hidden until the user expands the note.
 This content is hidden until the user expands the note.
 {{< /note >}}
 
-### Indentation
+#### Indentation
 
 Content within the opening and closing note shortcode tags must respect the expected indentation of any parent elements, such as list items. Since content within a list is indented (using 4 spaces), the content of a note shortcode must be indented by the same number of spaces.
 

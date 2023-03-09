@@ -35,6 +35,7 @@ Migrating your Compute Instance to a new data center will result in a number of 
 
     {{< note >}}
     If any of these DNS records are in use, the software using them will not be able to connect after the migration is completed *until* the DNS records have been upgraded and the changes have propagated.
+    {{< /note >}}
 
 - Any existing Backups created through our [Linode Backup Service](/docs/products/storage/backups/) will not be migrated. Once the Compute Instance's migration has completed, your backup service will restart on its normal schedule.
 
