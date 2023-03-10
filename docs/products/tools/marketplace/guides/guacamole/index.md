@@ -28,8 +28,8 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
-- **Recommended plan:** All plan types and sizes can be used with Guacamole.
+- **Supported distributions:** Ubuntu 22.04 LTS
+- **Recommended plan:**  We recommend a 4GB Dedicated CPU or Shared Compute Instance.
 
 ### Guacamole Options
 
@@ -52,7 +52,7 @@ authors: ["Linode"]
 
 ### Access your Guacamole App
 
-After Guacamole has finished installing, access the dashboard over `http://` or `https://` with your Linode's IPv4 address or absolute domain name, depending on your setup choices.
+After Guacamole has finished installing the Linode will reboot. Once the instance boots back up you can access the dashboard over `http://` or `https://` with your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`) or domain name entered during the deployment.
 
 1. If you set up a [domain name](#guacamole-options) for your Guacamole App during setup, skip to step 3.
 
