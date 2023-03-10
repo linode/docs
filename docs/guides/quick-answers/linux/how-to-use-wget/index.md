@@ -9,7 +9,7 @@ modified_by:
   name: Angel
 published: 2017-06-19
 title: How to Use Wget
-title_meta: "How to Use Wget: Step-by-Step Guide | Linode"
+title_meta: "How to Use Wget: Step-by-Step Guide"
 external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'
  - '[Arch Wiki](https://wiki.archlinux.org/index.php/wget)'

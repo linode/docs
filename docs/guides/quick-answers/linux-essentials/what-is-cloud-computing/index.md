@@ -8,7 +8,7 @@ modified_by:
   name: Linode
 published: 2018-06-12
 title: What is Cloud Computing?
-title_meta: "What is Cloud Computing & Why Should You Use It? | Linode"
+title_meta: "What is Cloud Computing & Why Should You Use It?"
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-cloud-computing/']
 authors: ["Linode"]
