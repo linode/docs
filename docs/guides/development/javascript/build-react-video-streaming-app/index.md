@@ -8,7 +8,7 @@ published: 2020-08-09
 modified_by:
   name: Linode
 title: "How to Build a Node and React Video Streaming App"
-title_meta: "Building a Node and React video streaming application might initially seem daunting, but this guide will explain how this can be achieved. Learn more here"
+title_meta: "How to Build a Node and React Video Streaming App"
 image: BuildVidStreamApp_React_Node.png
 external_resources:
 - '[Video Stream With Node.js and HTML5](https://medium.com/better-programming/video-stream-with-node-js-and-html5-320b3191a6b6)'
