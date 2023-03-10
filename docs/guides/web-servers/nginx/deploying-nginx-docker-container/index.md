@@ -8,9 +8,6 @@ authors: ["Nathaniel Stickman"]
 published: 2023-03-09
 modified_by:
   name: Nathaniel Stickman
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Nginx: Deploying NGINX and NGINX Plus with Docker](https://www.nginx.com/blog/deploying-nginx-nginx-plus-docker/)'
 - '[DigitalOcean: How To Run Nginx in a Docker Container on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-run-nginx-in-a-docker-container-on-ubuntu-22-04)'
