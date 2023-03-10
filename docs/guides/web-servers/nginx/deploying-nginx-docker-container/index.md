@@ -1,11 +1,9 @@
 ---
 slug: deploying-nginx-docker-container
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Running Nginx on a Docker container gives you a portable and maintainable solution for operating your web server. Learn everything you need to know to deploy your own Nginx docker container in this tutorial."
 keywords: ['nginx docker reverse proxy','nginx dockerfile','nginx docker image']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 published: 2023-03-09
 modified_by:
   name: Nathaniel Stickman
