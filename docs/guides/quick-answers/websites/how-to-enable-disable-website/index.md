@@ -7,8 +7,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
 modified_by:
   name: Linode
-title: "Sites Enabled with NGINX or Apache: A Comprehensive Guide"
-title_meta: "Is your site enabled with NGINX or Apache? This guide explains how to quickly disable a website running on Apache/NGINX, & what's involved in re-enabling it."
+title: "Sites Enabled with NGINX or Apache"
+title_meta: "How to Enable Sites in NGINX or Apache"
 external_resources:
 - '[NGINX](https://www.nginx.com/)'
 - '[Apache Web Server](https://httpd.apache.org/)'
