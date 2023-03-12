@@ -76,7 +76,7 @@ In this section you'll create a key file that will be used to secure authenticat
 1.  Issue this command to generate your key file:
 
         openssl rand -base64 756 > mongo-keyfile
-        
+
 2.  The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the `/opt/mongo` directory to store your key file:
 
         sudo mkdir /opt/mongo
@@ -85,10 +85,10 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo mv ~/mongo-keyfile /opt/mongo
         sudo chmod 400 /opt/mongo/mongo-keyfile
-        
+
         {{< note >}} Ensure that you copy the same generated key, to each member of your replica set in the `mongo-keyfile` file under `/opt/mongo`.
-        {{< /note >}} 
-        
+        {{< /note >}}
+
 4.  Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:
 
     **Ubuntu / Debian:**
