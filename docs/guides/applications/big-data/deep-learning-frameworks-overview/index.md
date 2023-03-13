@@ -10,6 +10,7 @@ modified_by:
 title: "An Overview of Deep Learning Frameworks"
 title_meta: "Deep Learning Frameworks Overview"
 authors: ["Andy Patrizio"]
+tags: ["saas"]
 ---
 
 ## What is Deep Learning?

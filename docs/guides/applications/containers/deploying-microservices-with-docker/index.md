@@ -15,6 +15,7 @@ external_resources:
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 aliases: ['/applications/containers/deploying-microservices-with-docker/']
 authors: ["Bob Strecansky"]
+tags: ["saas"]
 ---
 
 ![Deploying Microservices with Docker](how-to-deploy-microservices-with-docker-smg.jpg)

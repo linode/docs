@@ -13,6 +13,7 @@ external_resources:
 - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 aliases: ['/applications/configuration-management/terraform/beginners-guide-to-terraform/','/applications/configuration-management/beginners-guide-to-terraform/']
 authors: ["Linode"]
+tags: ["saas"]
 ---
 
 [Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
