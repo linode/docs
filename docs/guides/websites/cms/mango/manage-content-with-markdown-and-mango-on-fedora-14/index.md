@@ -1,9 +1,6 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how Mango can publish markdown documents from plain text files into a fully customized and dynamic website using Fedora 14.'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["fedora","cms"]
@@ -19,6 +16,7 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Budibase, a low-code platform for building modern business applications, on a Linode Compute Instance."
 keywords: ['budibase','CRUD','low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,6 +7,7 @@ published: 2022-08-09
 modified_by:
   name: Linode
 title: "Deploy Budibase through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 [Budibase](https://github.com/Budibase/budibase) is an open-source, low-code platform for building modern business applications. Build, design, and automate different types of applications, including admin panels, forms, internal tools, and client portals. Using Budibase helps developers avoid spending weeks building simple CRUD applications and, instead, allows them to complete many projects in significantly less time.

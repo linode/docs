@@ -1,8 +1,5 @@
 ---
 slug: use-puppet-modules-to-create-a-lamp-stack
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
 description: 'This guide will show you how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera on Ubuntu 14.04 LTS.'
 keywords: ["puppet", "automation", "puppet master", "puppet agent", "modules", "server automation", "configuration management"]
 tags: ["lamp","automation"]
@@ -20,6 +17,7 @@ relations:
         key: install-puppet-lamp-master
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Elle Krout"]
 ---
 
 ![Use Puppet Modules to Create a LAMP Stack](Use_Puppet_Modules_to_Create_a_LAMP_Stack_smg.jpg)

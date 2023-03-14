@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.145.0
+  version: 4.147.0
 
   title: Linode API
   description: |
@@ -21129,7 +21129,7 @@ components:
             `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef`
             tag, a contact or submission URL (domain, http, https, or mailto). Requirements depend on the tag for this record:
               * `issue`: The domain of your certificate issuer. Must be a valid domain.
-              * `issuewild`: Must begin with `*`.
+              * `issuewild`: The domain of your wildcard certificate issuer. Must be a valid domain and must not start with an asterisk (`*`).
               * `iodef`: Must be either (1) a valid domain, (2) a valid domain prepended with `http://` or `https://`, or (3) a valid email address prepended with `mailto:`.
 
             `PTR`: Required. See our guide on how to [Configure Your Linode for Reverse DNS
@@ -24019,17 +24019,27 @@ components:
         username:
           type: string
           description: >
-            The username of the User that was logged into.
+            The username of the User that attempted the login.
           example: example_user
           readOnly: true
           x-linode-cli-display: 4
+        status:
+          type: string
+          enum:
+            - successful
+            - failed
+          description: |
+            Whether the login attempt succeeded or failed.
+          example: successful
+          readOnly: true
+          x-linode-cli-display: 5
         restricted:
           type: boolean
           description: >
-            True if the User that was logged into was a restricted User, false otherwise.
+            True if the User that attempted the login was a restricted User, false otherwise.
           example: true
           readOnly: true
-          x-linode-cli-display: 5
+          x-linode-cli-display: 6
     LongviewSubscription:
       type: object
       description: >

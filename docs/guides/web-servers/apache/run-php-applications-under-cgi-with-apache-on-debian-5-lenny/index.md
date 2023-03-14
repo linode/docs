@@ -1,9 +1,6 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Methods for enabling dynamic content run as individual users with PHP on Debian 5 (Lenny).'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","debian","php"]
@@ -19,6 +16,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 10.04 LTS (Lucid).'
 keywords: ["postgresql", "postgresql ubuntu 10.04", "postgreql lucid", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-10-04-lucid/']
+authors: ["Linode"]
 ---
 
 

@@ -1,7 +1,5 @@
 ---
 slug: what-is-usermod-and-how-to-use-it
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to use the usermod command in Linux. You learn how to change a user’s home directory, login name, groups, user shell, and more."
 og_description:  "This guide shows you how to use the usermod command in Linux. You learn how to change a user’s home directory, login name, groups, user shell, and more."
 keywords: ['usermod','usermod linux','usermod command']
@@ -12,11 +10,9 @@ modified_by:
   name: Nathaniel Stickman
 title: "An Overview of the usermod Command and How It's Used"
 title_meta: "What is usermod, and How do I Use It?"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[usermod - Ubuntu Manpage](https://manpages.ubuntu.com/manpages/xenial/en/man8/usermod.8.html)'
+authors: ["Nathaniel Stickman"]
 ---
 ## What is usermod?
 

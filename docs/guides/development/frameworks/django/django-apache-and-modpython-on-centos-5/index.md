@@ -1,8 +1,5 @@
 ---
 slug: django-apache-and-modpython-on-centos-5
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the Django web application development framework for Apache on Centos 5 so you can run Django Applications.'
 keywords: ["django", "python", "apache", "mod\\_python", "centos"]
 tags: ["web applications","django","apache","python","centos","cms","database"]
@@ -19,6 +16,7 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.

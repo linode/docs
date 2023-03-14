@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10 with a basic configuration that uses socket connections instead of TCP."
 og_description: "This guide will show you how to install mod_fcgid and PHP-FPM on Debian 10. It will also provide a basic configuration that uses socket based connections, instead of TCP."
 keywords: ['list','of','keywords','and key phrases']
@@ -13,14 +10,13 @@ modified_by:
   name: Linode
 title: "Installing and Configuring FastCGI and PHP-FPM on Debian 10"
 title_meta: "How to Install FastCGI and PHP-FPM on Debian 10"
-contributor:
-  name: Linode
 relations:
     platform:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-debian-10/']
+authors: ["Linode"]
 ---
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.

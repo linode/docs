@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-linkerd-with-linode-kubernetes-engine
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Linkerd offers monitoring, reporting, and encrypted connections between Kubernetes service.. We'll show you how to deploy it to your LKE cluster."
 keywords: ['kubernetes','linkerd','container', 'service mesh', 'k8s']
 tags: ["monitoring","networking","kubernetes","container"]
@@ -13,14 +10,13 @@ modified_by:
   name: Linode
 title: "Deploying Linkerd 2 with Linode Kubernetes Engine"
 title_meta: "How to Deploy Linkerd 2 with Linode Kubernetes Engine"
-contributor:
-  name: Heather Zoppetti
 external_resources:
 - '[Linkerd](https://linkerd.io)'
 - '[Linkerd Documentation](https://linkerd.io/2/overview/)'
 - '[Linkerd Frequently Asked Questions](https://linkerd.io/2/faq/)'
 - '[Linkerd Slack](https://slack.linkerd.io/#_ga=2.178870372.1577931415.1588870876-1893863222.1588769574)'
 aliases: ['/kubernetes/how-to-deploy-linkerd-with-linode-kubernetes-engine/']
+authors: ["Heather Zoppetti"]
 ---
 
 [Linkerd 2](https://linkerd.io) is an ultra lightweight service mesh that monitors, reports, and encrypts connections between Kubernetes services without disturbing the existing applications. It does this by employing proxy sidecars along each instance.

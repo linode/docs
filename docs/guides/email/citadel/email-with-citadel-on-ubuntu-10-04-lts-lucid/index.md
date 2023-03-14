@@ -1,9 +1,6 @@
 ---
 slug: email-with-citadel-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 10.04 LTS (Lucid) Linode.'
 keywords: ["citadel", "citadel ubuntu 10.04", "ubuntu 10.04 mail server", "groupware", "email server"]
 tags: ["ubuntu","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

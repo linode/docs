@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-overview
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
 keywords: ['troubleshooting']
 tags: ["linode platform"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2012-04-05
 title: Troubleshooting Overview
+authors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Linode. Each troubleshooting section provides ways to further diagnose your issue and, when applicable, corresponding steps to resolve it. We recommend using this guide in the following way:

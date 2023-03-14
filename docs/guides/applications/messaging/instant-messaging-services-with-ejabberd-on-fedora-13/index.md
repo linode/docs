@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Fedora 13.'
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["fedora"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

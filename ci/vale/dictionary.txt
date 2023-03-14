@@ -161,6 +161,7 @@ bashrc
 bc
 bdd
 benchmarked
+barchart
 berkshelf
 bernd
 berners
@@ -964,6 +965,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+iperf
 ipsec
 ipset
 ipsets
@@ -1606,6 +1608,7 @@ phusion
 pid
 pidfile
 pingable
+pinterest
 pipfile
 pipenv
 pipelined

@@ -1,9 +1,6 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 10.04 "Lucid".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

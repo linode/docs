@@ -1,9 +1,6 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
 keywords: ["mysql ubuntu 10.10", "mysql maverick", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","mysql"]
+authors: ["Linode"]
 ---
 
 

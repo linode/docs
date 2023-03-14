@@ -1,9 +1,6 @@
 ---
 slug: redis-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Fedora 14.'
 keywords: ["redis fedora 14", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Fedora 14
 tags: ["nosql","database","fedora"]
+authors: ["Linode"]
 ---
 
 

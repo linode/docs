@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-midnight-commander
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install and use Midnight Commander, a text user-interface file manager.'
 keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +8,11 @@ modified: 2017-09-12
 modified_by:
   name: Linode
 title: 'How to Use Midnight Commander, a Visual File Manager'
-contributor:
-  name: Alexandru Andrei
 external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/how-to-install-midnight-commander/']
+authors: ["Alexandru Andrei"]
 ---
 
 ![Midnight Commander](midnight_commander.jpg)

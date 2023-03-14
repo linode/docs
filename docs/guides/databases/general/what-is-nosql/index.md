@@ -1,8 +1,5 @@
 ---
 slug: what-is-nosql
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'An explanation of what NoSQL is, the differences with SQL, what some of the popular types are, and links to examples of popular NoSQL databases.'
 keywords: ['nosql','database','nosql database','non-sql','non-sql database']
 tags: ["nosql"]
@@ -13,6 +10,7 @@ modified_by:
 title: "What is NoSQL?"
 external_resources:
 - '[LIST OF NOSQL DATABASE MANAGEMENT SYSTEMS](https://hostingdata.co.uk/nosql-database/)'
+authors: ["Linode"]
 ---
 
 ## What Makes NoSQL Different From SQL?

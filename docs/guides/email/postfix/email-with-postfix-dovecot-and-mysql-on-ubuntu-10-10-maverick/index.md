@@ -1,9 +1,6 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Ubuntu 10.10 Maverick.'
 keywords: ["postfix ubuntu 10.10", "dovecot ubuntu 10.10", "ubuntu 10.10 mail server", "dovecot", "email", "ubuntu", "maverick"]
 tags: ["mysql","postfix","email","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Brett Kaplan"]
 ---
 
 

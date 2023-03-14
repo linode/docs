@@ -1,8 +1,5 @@
 ---
 slug: dropbox
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Installing and configuration Dropbox on a Linode'
 keywords: ["Dropbox", "debian", "centos", "fedora", "ubuntu", "headless", "storage", "cloud storage"]
 tags: ["ubuntu", "debian", "centos", "fedora"]
@@ -13,6 +10,7 @@ modified_by:
     name: Linode
 published: 2014-04-30
 title: 'Installing and Configuring Dropbox'
+authors: ["Linode"]
 ---
 
 ![Installing and Configuring Dropbox](installing-and-configuring-dropbox.png "Installing and Configuring Dropbox")

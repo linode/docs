@@ -1,8 +1,5 @@
 ---
 slug: install-teamspeak
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Set up TeamSpeak on your Linode and chat with your friends or coworkers while gaming, working, or otherwise'
 keywords: ["teamspeak", "virtual intercom", "chat", "game server"]
 aliases: ['/game-servers/install-teamspeak/','/applications/game-servers/install-teamspeak/']
@@ -12,12 +9,11 @@ modified: 2019-02-01
 modified_by:
     name: Linode
 title: 'Install a TeamSpeak Server on Linode'
-contributor:
-    name: Scott Somner
 external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'
  - '[Changing the serveradmin Password](https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/326/0/how-do-i-change-or-reset-the-password-of-the-serveradmin-server-query-account)'
 dedicated_cpu_link: true
+authors: ["Scott Sumner"]
 ---
 
 This guide shows you how to install a TeamSpeak Server on your Linode. TeamSpeak is a voice server or a "virtual intercom" that lets you talk to others online. It's commonly used for gaming, but people also use it to collaborate with their work groups, hobby projects, or just to chat with friends and family.

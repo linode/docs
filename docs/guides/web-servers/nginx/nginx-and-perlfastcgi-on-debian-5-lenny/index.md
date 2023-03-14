@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Debian 5 (Lenny).'
 keywords: ["nginx", "fastcgi perl", "nginx debian", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","debian","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

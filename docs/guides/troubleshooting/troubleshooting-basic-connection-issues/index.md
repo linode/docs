@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-basic-connection-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Troubleshooting steps to help restore basic connectivity to your Linode when it is unresponsive.'
 keywords: ['linux','reboot','lish']
 tags: ["networking", "linode platform"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 title: "Troubleshooting Basic Connection Issues"
 aliases: ['/troubleshooting/troubleshooting-basic-connection-issues/']
+authors: ["Linode"]
 ---
 
 This guide presents troubleshooting strategies for Linodes that are unresponsive to any network access. One reason that a Linode may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your Linode, as those changes can lead to unexpected problems for your core system components.

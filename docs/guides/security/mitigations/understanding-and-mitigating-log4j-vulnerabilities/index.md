@@ -1,8 +1,5 @@
 ---
 slug: understanding-and-mitigating-log4j-vulnerabilities
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Vulnerabilities in log4j are resulting in RCE exploits and more. This guide empowers users to stay ahead of the issue as it develops.'
 keywords: ["log4j","security","log4shell"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ published: 2021-12-17
 title: Understanding and Mitigating log4j Vulnerabilities
 tags: ["security"]
 aliases: ['/security/mitigations/mitigating-log4j-vulnerabilities/']
+authors: ["Linode"]
 ---
 
 ## Understanding log4j Vulnerabilities

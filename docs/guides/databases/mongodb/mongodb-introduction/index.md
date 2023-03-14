@@ -1,7 +1,5 @@
 ---
 slug: mongodb-introduction
-author:
-  name: Jeff Novotny
 description: 'This article introduces MongoDB, explains how it differs from other SQL databases, and provides some use cases.'
 keywords: ['what is mongodb','mongodb vs sql','is mongodb a relational database','nosql']
 tags: ['mysql', 'database']
@@ -11,13 +9,11 @@ modified_by:
   name: Linode
 title: "What Is MongoDB and Why Use It?"
 title_meta: "Introduction to MongoDB and Its Use Cases"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
 external_resources:
 - '[MongoDB Basics Tutorial](https://university.mongodb.com/courses/M001/about)'
 - '[MongoDB Documentation](https://docs.mongodb.com/)'
 aliases: ['/guides/mongodb-and-its-use-cases/']
+authors: ["Jeff Novotny"]
 ---
 
 [*MongoDB*](https://www.mongodb.com/) is a *document-oriented database* and an alternative to traditional *Relational DataBase Management System* (RDBMS) applications. MongoDB is a *NoSQL* database that stores data in a more flexible and less structured manner. This guide provides an introduction to MongoDB and describes how it works. It also explains how MongoDB differs from SQL-based databases including [MySQL](https://www.mysql.com/) and lists its main use cases.

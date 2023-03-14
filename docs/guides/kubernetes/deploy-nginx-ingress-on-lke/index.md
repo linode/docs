@@ -1,8 +1,5 @@
 ---
 slug: deploy-nginx-ingress-on-lke
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to deploy an NGINX Ingress Controller on an LKE Kubernetes Cluster"
 keywords: ['kubernetes','kubernetes tutorial','lke','linode kubernetes engine', 'ingress','nginx']
 tags: ["nginx","networking","linode platform","kubernetes"]
@@ -14,11 +11,10 @@ modified_by:
 title: "Deploying NGINX Ingress on Linode Kubernetes Engine"
 title_meta: "How to Deploy NGINX Ingress on Linode Kubernetes Engine"
 image: nginx-ingress.png
-contributor:
-  name: Linode
 external_resources:
 - '[Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)'
 aliases: ['/kubernetes/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/','/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/']
+authors: ["Linode"]
 ---
 
 In Kubernetes, an **Ingress** is an API object that manages the routing of external requests to one of the many possible internal services in a Kubernetes cluster. In the majority of cases, the Ingress will rely on an external Load Balancer to accept initial traffic before being routed.

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,10 @@ modified_by:
 title: "Manual Network Configuration on a Compute Instance"
 tags: ["networking","linode platform"]
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/','/guides/manual-network-configuration/']
+authors: ["Linode"]
 ---
 
-Every Compute Instance is assigned several IP addresses, including a pubic IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
+Every Compute Instance is assigned several IP addresses, including a public IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
 
 - Installing a custom distribution on a Compute Instance
 - Configuring failover (see [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/))

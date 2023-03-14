@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Focalboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
 keywords: ['focalboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -11,11 +8,10 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Focalboard through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Focalboard](https://www.focalboard.com/)'
 aliases: ['/guides/focalboard-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Focalboard](https://www.focalboard.com/) is an open source alternative to tools like Asana, Trello, and Notion. It helps teams, individuals, and developers stay aligned and organized on their everyday tasks. With Focalboard, you can reach milestones, keep track of project notes, and achieve goals.

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
 keywords: ["kernel", "grub"]
 tags: ["linode platform","cloud manager"]
@@ -13,6 +10,7 @@ modified_by:
 title: "Manage the Kernel on a Compute Instance"
 title_meta: "How to Manage the Kernel on a Compute Instance"
 aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/', '/guides/update-kernel/','/guides/managing-the-kernel-on-a-linode/']
+authors: ["Linode"]
 ---
 
 The primary component of every Linux system is the *Linux kernel*. The kernel interfaces with the system's hardware and it controls the operating system's core functionality. This guide covers the types of kernels that can be assigned to a Compute Instance and how to view, update, or change the kernel.

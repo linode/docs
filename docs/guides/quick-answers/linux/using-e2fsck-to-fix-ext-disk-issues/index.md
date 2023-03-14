@@ -1,8 +1,5 @@
 ---
 slug: using-e2fsck-to-fix-ext-disk-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the inegitry and repairing issues with ext filesystems using e2fsck."
 og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 keywords: ["e2fsck", "file system", "disk repair", "troubleshoot"]
@@ -17,6 +14,7 @@ external_resources:
 - '[e2fsck on man7.org](https://man7.org/linux/man-pages/man8/e2fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
+authors: ["Linode"]
 ---
 
 

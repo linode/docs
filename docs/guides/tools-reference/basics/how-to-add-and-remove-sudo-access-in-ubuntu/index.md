@@ -1,8 +1,5 @@
 ---
 slug: how-to-add-and-remove-sudo-access-in-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'A guide explaining how to add admin users, or give users sudo privledges, using Unbuntu 20.10 Groovy Gorilla as an example.'
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
 tags: ["Ubuntu","Linux","sudo","users"]
@@ -15,6 +12,7 @@ title: "Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
+authors: ["Linode"]
 ---
 
 `sudo` ("su 'do'" or "substitute user 'do'") allows a system administrator to delegate permissions to specific users on the machine. There are multiple ways to do so. Ubuntu 20.10 is used in this guide as an example, but this should apply to almost any Linux distribution.

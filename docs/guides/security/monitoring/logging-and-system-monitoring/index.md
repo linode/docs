@@ -1,7 +1,5 @@
 ---
 slug: logging-and-system-monitoring
-author:
-  name: Hackersploit
 description: 'Learn to analyze system logs like auth.log, wtmp, and btmp, and monitor system processes with utilities like top, htop, and whowatch.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
@@ -13,6 +11,7 @@ modified_by:
 title: 'Logging and System Monitoring'
 aliases: ['/security/monitoring/logging-and-system-monitoring/']
 image: Logging_and_system_monitoring.png
+authors: ["Hackersploit"]
 ---
 
 ## Analyzing system logs

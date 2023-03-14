@@ -1,8 +1,5 @@
 ---
 slug: automating-server-builds
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows you how to automate server builds using Puppet and Chef cookbooks, golden disks and images, on a Linode running the Linux Operating System.'
 keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
 tags: ["linode platform","automation"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2013-06-28
 title: Automating Server Builds
 aliases: ['/platform/automating-server-builds/']
+authors: ["Linode"]
 ---
 
 ## Why You Should Automate Server Builds

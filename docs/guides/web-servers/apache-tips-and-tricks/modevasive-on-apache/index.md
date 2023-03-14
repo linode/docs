@@ -1,8 +1,5 @@
 ---
 slug: modevasive-on-apache
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: 'Learn what mod_evasive is on an Apache web server, and understand how to configure and test it.'
 og_description: "Configure your Apache web server to evade DoS attacks with mod_evasive."
 keywords: ["mod_evasive", "modevasive", "evasive", "apache"]
@@ -17,6 +14,7 @@ title_meta: 'mod_evasive on Apache'
 external_resources:
  - '[mod_evasive on GitHub](https://github.com/jzdziarski/mod_evasive)'
 tags: ["web server","apache"]
+authors: ["Chris Ciufo"]
 ---
 
 ## What is mod_evasive?

@@ -1,9 +1,6 @@
 ---
 slug: synchronize-files-with-unison
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions on installing and configuring Unison, a file synchronization tool that keeps files in sync between 2 computers.'
 keywords: ["backup", "syncronize files", "unison", "debian", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +13,7 @@ title: Synchronize Files with Unison
 external_resources:
  - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 Unison is a file synchronization tool that allows users to maintain two instances of a given file set on two systems up to date and identical. The tool is designed for maximum usability in a variety of contexts and uses protocols like SSH to securely transfer data between folders. Furthermore, the system is designed to be fault tolerant in the case of interruptions and modifications to both "source" and "remote," and aims to always leave both instances of a file or directory tree in a known working state. Unison can be deployed to synchronize files between systems running disparate operating systems, to backup systems, or as part of a content deployment system, among a plethora of other use cases.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-yubikey-for-two-factor-ssh-authentication
-author:
-  name: Huw Evans
-  email: me@huw.nu
 description: "This guide shows you how to use a YubiKey for Two-Factor secure shell authentication - or make it the primary access method."
 keywords: ["ssh", "yubikey", "2fa", "2 factor authentication", "otp"]
 aliases: ['/security/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/two-factor-authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/']
@@ -14,11 +11,9 @@ published: 2017-08-28
 modified: 2018-02-26
 modified_by:
   name: Linode
-contributor:
-  name: Huw Evans
-  link: https://github.com/huw
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
+authors: ["Huw Evans"]
 ---
 
 ![banner_image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg)

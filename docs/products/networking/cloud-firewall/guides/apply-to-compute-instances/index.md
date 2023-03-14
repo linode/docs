@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Apply Firewall Rules to a Compute Instance"
 description: "Learn how to add and remove Compute Instances from Cloud Firewalls."
 aliases: ['/products/networking/cloud-firewall/guides/assign-firewall/']
+authors: ["Linode"]
 ---
 
 Each Cloud Firewall can be applied to one or more Compute Instances. Use the steps below to view and modify the Compute Instances using this firewall.

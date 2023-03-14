@@ -1,8 +1,5 @@
 ---
 slug: slackware-package-management
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide walks you through the core features of tools from Slackware, including pkgtool and slackpkg, which are common commands for managing packages."
 keywords: ['slackware', 'slackpkg', 'pkgtool', 'installpkg', 'upgradepkg', 'removepkg']
 tags: ['slackware']
@@ -14,6 +11,7 @@ modified_by:
   name: Linode
 title: "Managing Packages in Slackware"
 title_meta: "How to Manage Packages in Slackware"
+authors: ["Linode"]
 ---
 
 Packages in Slackware Linux are distributed as compressed tarballs, generally using gzip or lzma compression. These tarballs can be recognized by their suffixes, `.tgz` or `.txz`. This format includes a complete filesystem layout, as well as additional scripts to be run upon installation or removal of the software. Slackware packages do not offer dependency resolution information; this is generally viewed as allowing more flexibility and control.
