@@ -1,8 +1,5 @@
 ---
 slug: file-system-quotas
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
 description: 'How to set Filesystem Quotas on Ubuntu 22.04.'
 keywords: ["filesystem", "quotas", "disk space", "limit disk", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,11 +11,12 @@ title_meta: 'How To Set Filesystem Quotas on Ubuntu 22.04'
 external_resources:
  - '[Official Documentation for Quota subsystem](https://www.kernel.org/doc/html/next/filesystems/quota.html)'
 tags: ["ubuntu","filesystem","limit disk"]
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 In this guide, learn how to use quotas to limit the amount of disk space a user or group can use on a filesystem.
 
-Quota subsystem allows system administrator to set limits on used space and number of used filesystem structure which is associated with each file or directory for users or groups.
+The quota subsystem allows system administrator to set limits on the space used by each file or directory for users or groups.
 
 ## Before You Begin
 
@@ -36,14 +34,14 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install the Quota Tools
 
-1. Install the quota command line tools using `apt` package manager using:
+1. Install the quota command line tools using `apt` package manager:
 
     ```
     sudo apt update
     sudo apt install quota
     ```
 
-1. Verify that the tools are installed using
+1. Verify that the tools are installed:
 
     ```
     quota --version
@@ -68,7 +66,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     If there are no kernel modules, you can install them using `sudo apt install linux-image-extra-virtual`.
     {{< /note >}}
 
-1. Update the mount options for the filesystem, by updating the entry in `/etc/fstab` configuration file, using an editor of your choice to:
+1. Update the mount options for the filesystem by updating the corresponding entry in `/etc/fstab` configuration file, using an editor of your choice to:
 
    {{< file "/etc/fstab" >}}
     /etc/fstab: static file system information.
@@ -89,7 +87,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```
     sudo mount -o remount /
     ```
-1.  Verify that the new options are used to mount the filesystem using:
+1.  Verify that the new options are used to mount the filesystem:
 
     ```
     cat /proc/mounts | grep ' / '
@@ -99,15 +97,15 @@ This guide is written for a non-root user. Commands that require elevated privil
     ```output
     /dev/sda / ext4 rw,relatime,quota,usrquota,grpquota,errors=remount-ro 0 0
     ```
-1. Create the `aquota.user`, and `aquota.group` files that contain information about the limits and the usage of the filesystem using:
+1. Create the `aquota.user`, and `aquota.group` files that contain information about the limits and the usage of the filesystem:
 
     ```
     sudo quotacheck -ugm /
     ```
-    The option `u` created the `aquota.user` file for users, the `g` option created the `aquota.group` file groups, and the `m` option disables remounting the filesystem as read-only.
+    The option `u` creates the `aquota.user` file for users, the `g` option creates the `aquota.group` file groups, and the `m` option disables remounting the filesystem as read-only.
     You can view the quota files that are created using the `ls /` command.
 
-1.   Add the quota modules to the Linux kernel using `<kernel_version>` that you made a note of:
+1.   Add the quota modules to the Linux kernel using the `<kernel_version>` that you made a note of:
 
      ```
      sudo modprobe quota_v1 -S <kernel_version>
@@ -130,7 +128,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Configure Quotas for a User
 
-1. To edit quota for the sudo user `<example_user>` that you added when securing your Linode compute instance use:
+1. To edit quota for the sudo user `<example_user>` that you added when securing your Linode compute instance, enter the following:
 
    ```
    sudo setquota -u <example_user> 100M 110M 0 0 /
@@ -147,7 +145,7 @@ This guide is written for a non-root user. Commands that require elevated privil
       Filesystem   space   quota   limit   grace   files   quota   limit   grace
        /dev/sda     40K    100M     110M               8       0       0
    ```
-1. Generate  a report for the quota usage for all users on a filesystem use:
+1. You can generate a report for the quota usage of all users on a filesystem:
 
    ```
    sudo repquota -s /
@@ -172,4 +170,4 @@ This guide is written for a non-root user. Commands that require elevated privil
    fwupd-refresh --      4K      0K      0K              1     0     0
    example_user     --     24K    200M    220M              8     0     0
 
-If you want your users to be able to check their quotas even if they do not have sudo access, then you need to give them permission to read the quota files you created. Create a users group, make those files readable by the users group, and then make sure all your users are added in the group.
+If you want your users to be able to check their quotas, even if they do not have sudo access, then you need to give them permission to read the quota files you created. Create a users group, make those files readable by the users group, and then make sure all your users are added in the group.
