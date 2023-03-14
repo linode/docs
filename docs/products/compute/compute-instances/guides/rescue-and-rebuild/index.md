@@ -1,17 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: Rescue and Rebuild
 description: 'Learn how to rescue and rebuild a Compute Instance by using the recovery tools available in the Cloud Manager.'
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
-aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
 published: 2012-05-31
 modified: 2023-03-14
 modified_by:
   name: Linode
-title: Rescue and Rebuild
 image: rescue-rebuild.jpg
+aliases: ['/troubleshooting/rescue-and-rebuild-classic-manager/','/troubleshooting/rescue-and-rebuild/','/rescue-and-rebuild/','/troubleshooting/finnix-rescue-mode/','/guides/rescue-and-rebuild/']
+authors: ["Linode"]
 ---
 
 Even the best system administrators may need to deal with unplanned events in the operation of their services. The Cloud Manager provides recovery tools that you can leverage if you are having trouble connecting to one of the Compute Instances, and this guide describes those tools:
