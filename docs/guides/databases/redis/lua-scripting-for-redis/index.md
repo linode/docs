@@ -1,8 +1,5 @@
 ---
 slug: lua-scripting-for-redis
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In this tutorial learn how to start writing and using Lua scripts to improve your Redis database experience."
 og_description: "In this tutorial learn how to start writing and using Lua scripts to improve your Redis database experience."
 keywords: ['redis lua scripts','redis lua script tutorial','redis lua examples']
@@ -12,13 +9,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Writing Lua Scripts for a Redis Server"
 h1_title: "Writing Lua Scripts for a Redis Server"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: Scripting with Lua](https://redis.io/docs/manual/programmability/eval-intro/)'
 - '[Redis: EVAL](https://redis.io/commands/eval/)'
 - '[freeCodeCamp: A Quick Guide to Redis Lua Scripting](https://www.freecodecamp.org/news/a-quick-guide-to-redis-lua-scripting/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open source NoSQL database that offers low-latency in-memory storage of data structures. Web application developers find Redis a powerful ally for application caching, messaging, and many other operations.
