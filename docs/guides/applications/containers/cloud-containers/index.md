@@ -1,7 +1,5 @@
 ---
 slug: cloud-containers
-author:
-  name: Andy Patrizio
 description: 'What is a cloud container? This guide introduces you to cloud containers, the benefits of container cloud computing and various use cases.'
 keywords: ['cloud containers','containers in cloud computing ','what is a container in cloud']
 tags: ['container', 'kubernetes']
@@ -9,12 +7,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified_by:
   name: Linode
-title: "Introduction to Containers in Cloud Computing"
-h1_title: "How Cloud Containers Work And Their Benefits"
-enable_h1: true
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
+title: "How Cloud Containers Work And Their Benefits"
+title_meta: "Introduction to Containers in Cloud Computing"
+authors: ["Andy Patrizio"]
 ---
 
 Tech trends come and go but cloud containers are one tech that’s here to stay. Their origins can be traced back to 1982 Unix, but containers didn't gain wide acceptance until the last decade as the next logical step from virtualization. Today they are a popular means of application modernization and deployment.

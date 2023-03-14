@@ -1,8 +1,5 @@
 ---
 slug: what-is-unit-testing
-author:
-  name: Martin Heller
-  email: docs@linode.com
 description: "earn what unit testing is, why it's important, and why you should be doing it if you aren't already."
 og_description: "Learn what unit testing is, why it's important, and why you should be doing it if you aren't already."
 keywords: ['what is unit testing']
@@ -11,12 +8,9 @@ published: 2021-02-11
 image: UnderstandingUnitTesting.png
 modified_by:
   name: Linode
-title: "What is Unit Testing?"
-h1_title: "Understanding Unit Testing"
-enable_h1: true
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+title: "Understanding Unit Testing"
+title_meta: "What is Unit Testing?"
+authors: ["Martin Heller"]
 ---
 
 Unit testing exercises each function point in a program to make sure it works. Every application needs to be tested to make sure that it meets specifications – and ideally gives users joy from using it. But there are many kinds of software testing. In quite a few organizations, especially those that follow the [ISTQB Certified Test Foundation Level syllabus](https://astqb.org/certifications/foundation-level-certification/), the major testing phases are:
@@ -40,6 +34,6 @@ The unit testing phase sometimes includes running static code analysis, dataflow
 
 Unit testing frameworks can simplify the process of writing and running unit tests. Among the common frameworks are [SUnit](https://en.wikipedia.org/wiki/SUnit) (for Smalltalk, 1998), [Junit](https://junit.org) (for Java, 2002), and [NUnit](https://nunit.org/) (for .NET, not long after JUnit), referred to collectively as xUnit. These divide the tests into fixtures (setup and teardown), suites (tests requiring a common fixture), assertions (the conditions that must be met for a test to succeed), a runner (driving all tests), and a result formatter (typically producing XML).
 
-Some languages, such as [Go](https://www.linode.com/docs/guides/development/go/), [Python]( https://www.linode.com/docs/guides/development/python/), [Ruby]( https://www.linode.com/docs/guides/development/ror/), and Rust, directly support unit testing. Other languages, such as C++, Objective-C, Scala, and the languages supported by xUnit, rely on third-party unit-testing libraries or frameworks.
+Some languages, such as [Go](/docs/guides/development/go/), [Python](/docs/guides/development/python/), [Ruby](/docs/guides/development/ror/), and Rust, directly support unit testing. Other languages, such as C++, Objective-C, Scala, and the languages supported by xUnit, rely on third-party unit-testing libraries or frameworks.
 
 Parameterized tests can eliminate a lot of the repetitive code bloat of single-purpose unit tests while maintaining code coverage, and xUnit supports parameterized tests. You can supply the parameters for tests manually; sometimes the test framework can generate test parameters automatically.

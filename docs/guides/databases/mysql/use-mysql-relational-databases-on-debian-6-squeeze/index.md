@@ -1,9 +1,6 @@
 ---
 slug: use-mysql-relational-databases-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 6 (Squeeze).'
 keywords: ["mysql debian 6", "mysql debian", "mysql debian squeeze", "mysql linux", "mysql linux Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,11 +16,12 @@ relations:
         keywords:
             - distribution: Debian 6
 tags: ["debian","database","mysql"]
+authors: ["Linode"]
 ---
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ## Install MySQL
 
@@ -38,7 +36,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password on Debian 6 (Squeeze).](357-debian-6-mysql-root-password.png)](357-debian-6-mysql-root-password.png)
+![Setting the MySQL root password on Debian 6 (Squeeze).](357-debian-6-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. It gives you the option to disable root logins from outside localhost, remove anonymous user accounts, and to remove the test database. Additionally, it allows you to set your root password. Run the following command to execute the program:
 

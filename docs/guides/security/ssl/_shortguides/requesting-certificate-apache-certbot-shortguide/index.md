@@ -12,11 +12,9 @@ description: "Shortguide"
 keywords: ["shortguide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
-author:
-  name: Linode
-  email: docs@linode.com
 modified_by:
   name: Linode
+authors: ["Linode"]
 ---
 
 ## Requesting a TLS/SSL Certificate Using Certbot
@@ -47,7 +45,7 @@ During the certificate granting process, Certbot asks a series of questions abou
 
         www.example.com example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Certbot displays the names of domains configured in the virtual host files within Apache. Select the numbers corresponding to the domains you are requesting certificates for, separated by spaces.
 {{< /note >}}
 

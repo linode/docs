@@ -3,6 +3,7 @@ title: Developers
 description: "Linode StackScripts are managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
+published: 2020-04-22
 ---
 
 ## Linode API

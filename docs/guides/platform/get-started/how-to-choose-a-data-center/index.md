@@ -1,8 +1,5 @@
 ---
 slug: how-to-choose-a-data-center
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This article gives you information to help you determine which data center you should choose when deploying your website or app on a Linode.'
 keywords: ["data center", "datacenter", "dc", "speed"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: How to Choose a Data Center
 
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-data-center/']
+authors: ["Linode"]
 ---
 Deploying your Linode to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Linode in the data center nearest to you will make it easier to work with than one in a different region or continent.
 
@@ -33,7 +31,7 @@ Use [ping6](https://linux.die.net/man/8/ping6) for IPv6:
 
     ping6 -c 5 speedtest.dallas.linode.com
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Many internet connections still don't support IPv6 so don't be alarmed if `ping6` commands don't work *to* your Linode from your local machine. They will, work *from* your Linode to other IPv6-capable network connections (ex. between two Linodes in different data centers).
 {{< /note >}}
 

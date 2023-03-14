@@ -1,8 +1,5 @@
 ---
 slug: how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to enable Nextcloud's External Storage app and then configure it to use Linode Object Storage as a secondary storage location."
 keywords: ['file hosting','nextcloud','object storage','s3']
 tags: ["linode platform","marketplace"]
@@ -10,14 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-16
 modified_by:
   name: Linode
-title: "How to Configure Nextcloud to use Object Storage"
-h1_title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
-enable_h1: true
-contributor:
-  name: Linode
+title: "Configuring Nextcloud to use Linode Object Storage as an External Storage Mount"
+title_meta: "How to Configure Nextcloud to use Object Storage"
 external_resources:
 - '[Nextcloud Configuring External Storage Documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#)'
 aliases: ['/platform/object-storage/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/']
+authors: ["Linode"]
 ---
 {{< youtube QWaCg4q4a0A >}}
 
@@ -44,9 +39,9 @@ You can configure Nextcloud to enable external storage devices and services, lik
 
 In this section you enable the *External Storage Support* Nextcloud app in order to use external storage sources.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You must belong to the `admin` user group in order to install the External storage support app.
-{{</ note >}}
+{{< /note >}}
 
 1. Log into your Nextcloud instance.
 
@@ -68,9 +63,9 @@ You must belong to the `admin` user group in order to install the External stora
 
 After enabling the External Storage Support app, you are now ready to add a new external storage mount. You configure the new external storage mount to use the Linode Object Storage service.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you have not yet [created an Object Storage access key](/docs/products/storage/object-storage/guides/access-keys/), you should do so now before proceeding with this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Click the user icon (or cog wheel) in the top navigation menu and select **Settings**.
 
@@ -84,9 +79,9 @@ If you have not yet [created an Object Storage access key](/docs/products/storag
 
 1. From the **External Storage** dropdown menu, select the **Amazon S3** option.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Linode Object Storage is *S3-compatible*. Nextcloud connects to Amazon's Object Storage service by default, however, in the next step you override the default behavior to use Linode Object Storage hosts instead.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Select **Access Key** from the **Authentication** dropdown menu.
 
@@ -113,8 +108,8 @@ Linode Object Storage is *S3-compatible*. Nextcloud connects to Amazon's Object 
 | Singapore, Singapore | `ap-south-1` | ap-south-1.linodeobjects.com |
       {{</ disclosure-note >}}
 
-{{< note >}}
-There is a known bug when configuring Frankfurt buckets that will cause failure unless the the user enters `us-east-1` as the Region ID, despite the correct ID being `eu-central-1`. The correct bucket will still be configured using the hostname. If you are hosting a bucket in Frankfurt and the  Nextcloud configuration is not applying, this solution should be attempted.
+{{< note respectIndent=false >}}
+There is a known bug when configuring Frankfurt buckets that will cause failure unless the user enters `us-east-1` as the Region ID, despite the correct ID being `eu-central-1`. The correct bucket will still be configured using the hostname. If you are hosting a bucket in Frankfurt and the  Nextcloud configuration is not applying, this solution should be attempted.
 {{< /note >}}
 
 1. In the **Available for** text entry box, enter the group name(s) you would like to give access to the Linode Object Storage external storage. To learn more about user and group permissions related to external storage, see [Nextcloud's documentation](https://docs.nextcloud.com/server/15/admin_manual/configuration_files/external_storage_configuration_gui.html#user-and-group-permissions).
@@ -137,6 +132,6 @@ There is a known bug when configuring Frankfurt buckets that will cause failure 
 
       ![Your should see your uploaded file appear in the folder.](uploaded-image.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The file you uploaded is also be available through the [Linode Cloud Manager](https://cloud.linode.com/). You can verify this by following the steps in the [View Bucket Objects](/docs/products/storage/object-storage/guides/manage-buckets/) guide. You should not use the Linode Cloud Manager to remove or add files from your Nextcloud external storage Object Storage bucket.
-    {{</ note >}}
+    {{< /note >}}

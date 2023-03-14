@@ -1,9 +1,6 @@
 ---
 slug: ssl-certificates-with-apache-2-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 9.10 (Karmic).'
 keywords: ["ssl", "apache ssl", "ssl on ubuntu", "web sever", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["apache","security","ssl","ubuntu"]
@@ -19,11 +16,12 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
-This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 9.10 (Karmic) guide](/docs/web-servers/apache/installation/ubuntu-9-10-karmic). These steps should be performed via an SSH session to your Linode as the root user.
+This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 9.10 (Karmic) guide](/docs/web-servers/apache/installation/ubuntu-9-10-karmic). These steps should be performed via an SSH session to your Linode as the root user.
 
 ## Use a Self-Signed SSL Certificate with Apache
 

@@ -1,8 +1,5 @@
 ---
 slug: use-lighttpd-web-server-on-ubuntu-16-04
-author:
-  name: Dave Messina
-  email: docs@linode.com
 description: 'Learn how to install and use Lighttpd web server on Ubuntu 16.04 (Xenial Xerus)'
 keywords: ["lighttpd", "web server", "web hosting"]
 aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
@@ -12,8 +9,8 @@ modified: 2021-05-26
 modified_by:
   name: Phil Zona
 published: 2016-05-19
-title: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
-h1_title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title: 'Using lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
+title_meta: 'Use lighttpd Web Server on Ubuntu 16.04 (Xenial Xerus)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
  - '[mod_fastcgi Documentation (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModFastCGI)'
@@ -24,6 +21,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Dave Messina"]
 ---
 
 Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It is commonly deployed on high traffic sites, including WhatsApp and xkcd.
@@ -34,9 +32,9 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
 ## Before You Begin
 
-1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
+1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
 
-1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure-lighttpd) to use an alternate port until it's configured properly.
 
@@ -44,8 +42,8 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
         sudo apt-get update && apt-get upgrade
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the following steps as **root** or with the `sudo` prefix. For more information on privileges see the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups/).
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the following steps as **root** or with the `sudo` prefix. For more information on privileges see the [Users and Groups guide](/docs/guides/linux-users-and-groups/).
 {{< /note >}}
 
 ## How To Install Lighttpd Web Server On Ubuntu 16.04
@@ -133,7 +131,7 @@ simple-vhost.default-host = "example.com"
     -   If a request is made for the URL `exampleA.com`, content is served from `/var/www/html/exampleA.com/htdocs`.
     -   If a request is made for a URL which resolves to the server, but does not have a directory, content is served from `/var/www/html/example.com/htdocs`, because `example.com` is the default host.
 
-    For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](/docs/guides/dns-manager/) for any subdomains you plan to use.
+    For subdomains, create host directories for each subdomain in the same way. For instance, to use `exampleSub` as a subdomain of `exampleA.com`, create a directory called `exampleSub.exampleA.com` with a `htdocs` directory for content. Be sure to add [DNS records](/docs/products/networking/dns-manager/) for any subdomains you plan to use.
 
 1.  Restart the web server again to reload changes:
 
@@ -171,9 +169,9 @@ server.document-root = "/var/www/html/example.com/htdocs"
 
     With the configuration you set in Steps 3 and 4, if `example.com` is requested, and `/var/www/html/example.com/htdocs/` is found, that directory becomes the document root when serving requests. The `0%` in the path pattern specifies that a request will be checked against host files named in the format of domain and Top Level Domain (TLD). The `server.document-root` directive specifies a default host that is used when a matching directory does not exist.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 These steps configure `server.document-root` to `/var/www/html`. According to lighttpd documentation, this [may expose your server to a vulnerability](https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModEVhost#A-Bad-Example) in which authentication can be bypassed in certain situations. If improperly configured, this may also redirect unmatched requests to the lighttpd index page rather than the default host of your choosing.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Restart lighttpd to load the configuration changes:
 

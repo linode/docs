@@ -1,8 +1,5 @@
 ---
 slug: securely-administer-oracle-xe-with-an-ssh-tunnel
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with information on accessing Oracle XE (Express Edition) databases remotely using an SSH tunnel and client application such as PuTTY.'
 keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,9 +11,10 @@ published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
 deprecated: true
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty)'
+ - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 tags: ["ssh","database"]
+authors: ["Linode"]
 ---
 
 Server administrators may wish to use local administration tools to connect to remote Oracle XE home pages. This guide shows you how to do so in a secure manner using an SSH tunnel. It is assumed that you have Oracle XE up and running on your Linode, and that it is configured to listen on `localhost` (127.0.0.1). After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite browser. The connection will be securely forwarded to your Linode over the Internet.
@@ -27,11 +25,11 @@ Server administrators may wish to use local administration tools to connect to r
 
 You can obtain PuTTY from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). For Microsoft Windows users, PuTTY is compatible with Windows 95 or greater (practically any modern Windows computer can run it). Simply save the program to your desktop and double-click it to begin. You'll be presented with this screen:
 
-[![The session login screen in PuTTY on Windows.](383-putty-01-session.png)](383-putty-01-session.png)
+![The session login screen in PuTTY on Windows.](383-putty-01-session.png)
 
 Enter the hostname or IP address of the system you'd like to log into and click "Open" to start an SSH session. If you haven't logged into this system with PuTTY before, you will receive a warning similar to the following:
 
-[![An unknown host key warning in PuTTY on Windows.](384-putty-02-host-key-warning.png)](384-putty-02-host-key-warning.png)
+![An unknown host key warning in PuTTY on Windows.](384-putty-02-host-key-warning.png)
 
 In this case, PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the Lish console (see the "Console" tab in the Linode Manager) and executing the following command:
 

@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-wordpress-using-wp-cli-on-centos-7
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on CentOS 7'
-og_description: 'Install WordPress Using WP-CLI on CentOS 7'
 keywords: ["install WP-CLI", "centos", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["centos","wordpress","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,10 +8,8 @@ published: 2018-08-06
 modified: 2020-02-17
 modified_by:
     name: Linode
-title: 'How to Install WordPress Using WP-CLI on CentOS 7'
-h1_title: 'Install WordPress Using WP-CLI on CentOS 7'
-contributor:
-    name: Linode
+title: 'Install WordPress Using WP-CLI on CentOS 7'
+title_meta: 'How to Install WordPress Using WP-CLI on CentOS 7'
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -26,6 +20,7 @@ relations:
         keywords:
            - distribution: CentOS 7
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-centos-7/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-7/']
+authors: ["Linode"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.
@@ -42,23 +37,23 @@ This tutorial covers how to complete the following tasks:
 
 Before moving ahead, make sure you have completed the following steps.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1.  If you'd like to use your own [Domain Name](/docs/networking/dns/dns-records-an-introduction/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/guides/dns-manager/#dns-set-up-checklist) to point to your Linode's IP address.
+1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
 
-1.  Follow the [Install a LAMP Stack on CentOS 7](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/) guide. **Skip the steps** in the [Configure Apache Virtual Hosts File](/docs/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-7/#configure-apache-virtual-hosts-file), the [Create a MariaDB Database](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
+1.  Follow the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide. **Skip the steps** in the [Configure Apache Virtual Hosts File](/docs/guides/how-to-install-wordpress-using-wp-cli-on-centos-7/#configure-apache-virtual-hosts-file), the [Create a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#create-a-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
 
-    {{< note >}}
-When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on CentOS 7](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/) guide, you will need to issue the command included below to install the required PHP packages. The command in the linked guide does not currently work with CentOS 7.
+    {{< note respectIndent=false >}}
+When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide, you will need to issue the command included below to install the required PHP packages. The command in the linked guide does not currently work with CentOS 7.
 
     sudo apt install php libapache2-mod-php php-mysql
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install WP-CLI
 
@@ -145,9 +140,9 @@ In this section, you will learn some basics of how WP-CLI works. This will help 
 
 - So far, we have seen WP-CLI accessed through the main command, `wp`. You can follow the main command with nested subcommands. For example, WP-CLI includes a command to download WordPress:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Do not issue the example `wp` command. You will install WordPress in the [Download and Configure WordPress](#download-and-configure-wordpress) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
         wp core download
 
@@ -200,7 +195,7 @@ In this section, you will complete the prerequisite configuration steps needed t
 
         sudo mysql -u root
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you set up a password for MySQL, you would log in with the `-p` flag as well:
 
     sudo mysql -u root -p
@@ -230,9 +225,9 @@ FLUSH PRIVILEGES;
 
         sudo semanage port -a -t mysqld_port_t -p tcp 3306
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use **netstat** to confirm the port used by MariaDB with the command `netstat -tln`. The port in use will typically be `3306`.
-        {{</ note >}}
+        {{< /note >}}
 
 1. Configure SELinux to allow your Apache web server to make database connections:
 
@@ -285,7 +280,7 @@ The latest version of WordPress (5.3.2 at the time of writing this guide) requir
 
         sudo usermod -a -G apache user
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to log out of your SSH session and log back in for the user group change to take effect. To verify issue the following command. You should see the `apache` group returned as one of the groups.
 
     groups
@@ -293,7 +288,7 @@ You may need to log out of your SSH session and log back in for the user group c
 {{< output >}}
 user wheel apache
 {{</ output >}}
-    {{</ note >}}
+    {{< /note >}}
 
 1. Change the user and group ownership of the `/var/www` directory. This will allow the `apache` user to write to the directory when caching downloaded files to the `/var/www/.wp-cli/cache` directory:
 
@@ -372,9 +367,9 @@ IncludeOptional sites-enabled/*.conf
 
         sudo systemctl reload httpd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more details on configuring your Apache virtual hosts file, see [Apache's official documentation](http://httpd.apache.org/docs/current/vhosts/).
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Visit `http://example.com/wp-admin` (or `http://<Linode IP address>/wp-admin` if you haven't set up a domain) and verify that you can log in with the WordPress user you created in the [Download and Configure WordPress](#download-and-configure-wordpress) section of the guide.
 
@@ -508,9 +503,9 @@ The procedure for installing and activating a theme is nearly identical to that 
 
 To update your WordPress site:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more details on best practices when updating your WordPress site, see [WordPress' official documentation](https://wordpress.org/support/article/updating-wordpress/).
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to your WordPress site's root directory. Replace `example.com` with your own site's root directory.
 

@@ -1,8 +1,5 @@
 ---
 slug: configure-master-master-mysql-database-replication
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: "Learn how to set up master-master MySQL databases replication in this simple step-by-step tutorial."
 og_description: "MySQL Master-Master replication adds speed and redundancy. With replication, two separate MySQL servers act as a cluster, particularly useful for high availability website configurations. Use this guide to configure database replication on your Linode."
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
@@ -17,6 +14,7 @@ external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 tags: ["ubuntu","debian","database","mysql"]
 image: mysql-master-master-replication-title.jpg
+authors: ["James Stewart"]
 ---
 
 ![Configure Master-Master MySQL Database Replication](mysql-master-master-replication-title.jpg)
@@ -26,9 +24,13 @@ image: mysql-master-master-replication-title.jpg
 MySQL Master-Master replication adds speed and redundancy for active websites. With replication, two separate MySQL servers act as a cluster. Database clustering is particularly useful for high availability website configurations. Use two separate Linodes to configure database replication, each with private IPv4 addresses.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
-This guide is written for Debian 9 or Ubuntu 18.04.
+This guide is written for Debian 9, Ubuntu 18.04, and Ubuntu 20.04.
+
+If you are unsure of which version of MySQL has been installed on your system when following the steps below, enter the following command:
+
+    mysql --version
 {{< /note >}}
 
 ## Install MySQL
@@ -63,7 +65,9 @@ auto-increment-increment = 2
 auto-increment-offset = 1
 {{< /file >}}
 
-    If using MySQL 8.0.25 or earlier, replace `log_replica_updates` with `log_slave_updates` (within both Servers 1 and 2). See [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_slave_updates) for details.
+    {{< note respectIndent=false >}}
+If using MySQL 8.0.25 or earlier, replace `log_replica_updates` with `log_slave_updates` (within both Servers 1 and 2). See [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_slave_updates) for details.
+    {{< /note >}}
 
     **Server 2:**
 
@@ -80,6 +84,10 @@ log_replica_updates = 1
 auto-increment-increment = 2
 auto-increment-offset = 2
 {{< /file >}}
+
+    {{< note respectIndent=false >}}
+If using MySQL 8.0.25 or earlier, replace `log_replica_updates` with `log_slave_updates` (within both Servers 1 and 2). See [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_slave_updates) for details.
+    {{< /note >}}
 
 2. Edit the `bind-address` configuration in order to use the private IP addresses, for each of the Linodes.
 
@@ -98,6 +106,13 @@ bind-address    = x.x.x.x
         mysql -u root -p
 
 2.  Configure the replication users on each Linode. Replace `x.x.x.x` with the private IP address of the opposing Linode, and `password` with a strong password:
+
+      **MySQL8 and Above**
+
+        CREATE USER 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
+        GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x';
+
+      **Below MySQL8**
 
         GRANT REPLICATION SLAVE ON *.* TO 'replication'@'x.x.x.x' IDENTIFIED BY 'password';
 
@@ -125,6 +140,8 @@ bind-address    = x.x.x.x
 
 2.  On Server 2 at the MySQL prompt, set up the replica functionality for that database. Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `source_log_file` with the file value from the previous step, and the value for `source_log_pos` with the position value.
 
+    **MySQL 8.0.22 or Above:**
+
         STOP REPLICA;
         CHANGE REPLICATION SOURCE TO
             source_host='x.x.x.x',
@@ -135,7 +152,7 @@ bind-address    = x.x.x.x
             source_log_pos=106;
         START REPLICA;
 
-    If you're using MySQL 8.0.22 or earlier, use the following statements instead, and replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value. See the [MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/change-master-to.html) for details.
+    **MySQL 8.0.22 or Earlier:**
 
         STOP SLAVE;
         CHANGE MASTER TO

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example Page</title>
+    <script>
+        function addExampleList() {
+            const exampleList = document.createElement("ul");
+
+            const exampleListItem1 = document.createElement("li");
+            const exampleListItem1Text = document.createTextNode("First item");
+            exampleListItem1.appendChild(exampleListItem1Text);
+
+            const exampleListItem2 = document.createElement("li");
+            const exampleListItem2Text = document.createTextNode("Second item");
+            exampleListItem2.appendChild(exampleListItem2Text);
+
+            exampleList.appendChild(exampleListItem1);
+            exampleList.appendChild(exampleListItem2);
+
+            document.body.appendChild(exampleList);
+        }
+    </script>
+  </head>
+  <body onload="addExampleList();">
+    <p>Example page content.</p>
+  </body>
+</html>
