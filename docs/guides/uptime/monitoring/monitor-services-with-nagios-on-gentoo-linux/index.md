@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-gentoo-linux
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Gentoo Linode.'
 keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,13 +16,14 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["monitoring"]
+authors: ["Linode"]
 ---
 
 
 
 Nagios is a monitoring tool that makes it possible to monitor services on a single server or a pool of servers. It provides the capability to monitor a broad range of network services including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
-Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/) in order to use Nagios.
+Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/) in order to use Nagios.
 
 ## Prepare for Nagios Installation
 
@@ -100,7 +98,7 @@ Any errors will be shown in red. If everything is okay, you may issue the follow
 
 You may now access the web based administration and reporting tools by visiting `http://example.com/nagios/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios/` where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the nagiosadmin user you created earlier.
 
-**Please note:** The above example does not use SSL, and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+**Please note:** The above example does not use SSL, and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/guides/create-a-self-signed-tls-certificate/).
 
 ## Configure Nagios Alerts
 

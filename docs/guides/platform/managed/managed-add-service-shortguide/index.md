@@ -1,8 +1,5 @@
 ---
 slug: managed-add-service-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that describes how to add a service to Linode Managed.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-07-28
@@ -15,6 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-add-service-shortguide/']
+authors: ["Linode"]
 ---
 
 To add a new monitored service to Linode Managed:
@@ -38,7 +36,7 @@ To add a new monitored service to Linode Managed:
     | URL | If you selected **URL** for the **Monitor Type** field, enter a URL for a webpage that you'd like to monitor. If you selected **TCP Connection**, enter the domain or IP address and, optionally, a port number (separated by a colon) in the **TCP** field. |
     | Response Body Match (optional) | A string that Linode Managed will check for in the URL or TCP response. If not present, then an alert will be generated for the service. |
     | Instructions/Notes | Any notes or additional information about this service. The more information Linode Support has about the service and how it's configured, the more quickly they will be able to resolve any issues that may arise. |
-    | Credentials (optional) | Any [credentials](/docs/platform/linode-managed/#adding-service-credentials) that may need to be used to troubleshoot the service. You can select and save more than one credential for a service. |
+    | Credentials (optional) | Any [credentials](/docs/guides/linode-managed/#adding-service-credentials) that may need to be used to troubleshoot the service. You can select and save more than one credential for a service. |
 
 1.  Fill out the form and click the **Add** button.
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-add-and-remove-sudo-access-in-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'A guide explaining how to add admin users, or give users sudo privledges, using Unbuntu 20.10 Groovy Gorilla as an example.'
 keywords: ['ubuntu','linux','sudo','sudoers','admin','admins','adding users to sudo','adding user to sudoers']
 tags: ["Ubuntu","Linux","sudo","users"]
@@ -11,25 +8,25 @@ published: 2021-04-01
 modified: 2021-07-09
 modified_by:
   name: Linode
-title: "How to Add and Remove sudo Access in Ubuntu"
-h1_title: "How to Add and Remove sudo Access in Ubuntu"
+title: "Add and Remove sudo Access in Ubuntu"
 external_resources:
 - '[sudo home](https://www.sudo.ws/)'
 - '[sudoers manual](https://www.sudo.ws/man/1.8.17/sudoers.man.html)'
+authors: ["Linode"]
 ---
 
 `sudo` ("su 'do'" or "substitute user 'do'") allows a system administrator to delegate permissions to specific users on the machine. There are multiple ways to do so. Ubuntu 20.10 is used in this guide as an example, but this should apply to almost any Linux distribution.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  This guide assumes you are comfortable using the *command-line interface* (CLI) or have a graphical desktop environment to perform the tasks.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Adding User Rights Through the sudoers File
