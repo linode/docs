@@ -1,14 +1,13 @@
 ---
 slug: how-to-use-scp
 description: 'Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files.'
-og_description: 'Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files.'
 keywords: ['Scp command','Scp linux','Scp syntax','Scp example']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-15
+published: 2023-03-14
 modified_by:
   name: Linode
-title: "How to Transfer Files With the scp Command on Linux | Linode"
-title_meta: "Transferring Files With the scp Command on Linux | Linode"
+title: "Transfer Files With the scp Command on Linux"
+title_meta: "How to Transfer Files With the scp Command on Linux"
 external_resources:
 - '[Ubuntu man page for scp](http://manpages.ubuntu.com/manpages/focal/man1/scp.1.html)'
 - '[TFTP RFC 1350](https://datatracker.ietf.org/doc/html/rfc1350)'

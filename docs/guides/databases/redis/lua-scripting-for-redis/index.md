@@ -1,14 +1,12 @@
 ---
 slug: lua-scripting-for-redis
 description: "In this tutorial learn how to start writing and using Lua scripts to improve your Redis database experience."
-og_description: "In this tutorial learn how to start writing and using Lua scripts to improve your Redis database experience."
 keywords: ['redis lua scripts','redis lua script tutorial','redis lua examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-29
+published: 2023-03-14
 modified_by:
   name: Nathaniel Stickman
 title: "Writing Lua Scripts for a Redis Server"
-title_meta: "Writing Lua Scripts for a Redis Server"
 external_resources:
 - '[Redis: Scripting with Lua](https://redis.io/docs/manual/programmability/eval-intro/)'
 - '[Redis: EVAL](https://redis.io/commands/eval/)'
