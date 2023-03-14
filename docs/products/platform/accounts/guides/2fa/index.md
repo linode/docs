@@ -4,7 +4,7 @@ keywords: ["security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-27
-modified: 2022-11-21
+modified: 2023-03-14
 modified_by:
   name: Linode
 title: "Manage Two-Factor Authentication (2FA) on a User Account"
@@ -122,7 +122,11 @@ You have successfully disabled the two-factor authentication feature for your Li
 
 ## Recovery Procedure
 
-If you lose access to your 2FA application and scratch code, you will be unable to log in to the Cloud Manager. In this case, you will need to contact Linode Support and provide a few pieces of information to confirm your identity, such as valid answers to your [security questions](/docs/products/platform/accounts/guides/user-security-controls/#security-questions). If you have not configured any security questions, you will need to verify your identity through alternative steps.
+If you lose access to your 2FA provider, you can still log in using the scratch code that was generated when you first enabled 2FA. If you do not have that scratch code, you will be unable to log in to the Cloud Manager and will need to contact the Customer Support team to request 2FA removal. See the instructions below for specific recovery steps.
+
+- [With Scratch Code](#with-scratch-code)
+- [With Security Questions](#with-security-questions)
+- [Without Security Questions](#without-security-questions)
 
 Please keep in mind that if you cannot provide the information required for the recovery options below, we will be unable to remove 2FA from your account.
 
@@ -130,14 +134,13 @@ Please keep in mind that if you cannot provide the information required for the 
 
 You should have received a one-time scratch code when you initially enabled two-factor authentication on your user account. If you have this scratch code, you can provide it in place of a token when prompted during the login process. Once logged in, you can proceed to [disable 2FA](#disabling-2fa) and [enable it again on your preferred device](#enabling-2fa).
 
-It is not possible to generate a new scratch code. If you do not have access to this scratch code and you’re unable to log in to your account, follow the appropriate steps above to [disable 2FA on your Linode user account](#disabling-2fa).
-
+It is not possible to generate a new scratch code. If you do not have access to this scratch code and you’re unable to log in to your account, follow the instructions in one of the next sections ([With Security Questions](#with-security-questions) or [Without Security Questions](#without-security-questions)).
 
 ### With Security Questions
 
 1. Contact the [Linode Support](https://www.linode.com/support/) team via phone and state that you are locked out of your account and would like to remove 2FA. Be prepared to provide Support with your username and/or email address associated with the account.
 
-    - U.S: 855-454-6633
+    - U.S. toll-free: 855-454-6633
     - Global: +1-609-380-7100
 
 1. A member of the Support team will ask you to provide valid answers to each of your security questions.
@@ -146,41 +149,34 @@ It is not possible to generate a new scratch code. If you do not have access to 
 
 ### Without Security Questions
 
-{{< note >}}
-This recovery procedure will soon be deprecated, and our team will instead use your security questions to verify your identity to proceed with 2FA removal. Once you’re able to log in to your account, we suggest updating your security questions to ensure you are able to regain access to your account in the event of another login issue.
+Fill out our [Support Contact Form](https://www.linode.com/support/contact/) after selecting the option “I’ve lost my 2FA device." A member of the Support team will review your submission and respond to your ticket with next steps.
+
+{{< note type="warning">}}
+This recovery procedure will soon be deprecated and our team will instead use your security questions to verify your identity to proceed with 2FA removal. Once you’re able to log in to your account, we suggest updating your security questions to ensure you are able to regain access to your account in the event of another login issue.
 {{</ note >}}
 
-Fill out our [Support Contact Form](https://www.linode.com/support/contact/) after selecting the option “I’ve lost my 2FA device."
-
-A member of the Support team will review your submission and respond to your ticket with next steps.
-
-## FAQ
+## FAQs
 
 ### What should I do if I have access to my 2FA application, but each code I use is invalid when I try to log in?
 
-This usually occurs if the time on the application or device is inaccurate. Make sure the time on the device you’re using is accurate or within 30 seconds of your timezone - official time can be observed from [https://time.gov](https://time.gov).
-
-If you have confirmed that the time on your application is accurate and this doesn’t resolve the issue, proceed with the listed [2FA Recovery Procedures](#recovery-procedure).
+This usually occurs if the time on the application or device is inaccurate. Make sure the time on the device you’re using is accurate or within 30 seconds of your timezone - official time can be observed from [https://time.gov](https://time.gov). If you have confirmed that the time on your application is accurate and this doesn’t resolve the issue, follow the steps within the [Recovery Procedure](#recovery-procedure) section.
 
 ### What should I do if I no longer have access to the application I use to manage 2FA?
 
-You were given a scratch code when you enabled two-factor authentication on your user account. Provide this scratch code in place of the OTP token when prompted during the login process. Scratch codes can only be used once.
+A scratch code was generated and displayed when you enabled 2FA on your user account. Provide this scratch code in place of the OTP token when prompted during the login process. Scratch codes can only be used once.
 
-If you do not have access to this scratch code, proceed with the alternative [Recovery Procedures](#recovery-procedure).
+### I don’t have access to my 2FA application or my scratch code. How can I remove 2FA from my account?
 
-### I don’t have access to my 2FA application or my scratch code, and I can’t log in. How can I have 2FA removed from my Linode user account?
-
-You will need to work through the alternative [Recovery Procedures](#recovery-procedure). Keep in mind that if you don’t have access to any recovery mechanisms, you may not be able to recover access to your account.
+Review all of the alternative recovery options available in the [Recovery Procedure](#recovery-procedure) section. Keep in mind that if you don’t have access to any recovery mechanisms, you may not be able to recover access to your account.
 
 ### Do you support Yubikeys?
 
 We hope to have this functionality soon. In the meantime, we have detailed a workaround in a Community Questions Site Post, [Yubikey as a 2FA Option](https://www.linode.com/community/questions/17374/yubikey-as-2fa-option-for-manager#answer-82565).
 
 ### I’ve lost my scratch code - how do I generate a new one?
-At this time it’s not possible to regenerate a new scratch code. To get new codes, you must [disable 2FA](#disabling-2fa) from your account, and then re-enable 2FA again.
+
+It is not possible to regenerate a new scratch code on an existing 2FA provider. If you have not previously saved your scratch code and wish to do so, you must [disable 2FA](#disabling-2fa) from your account and then enable it again.
 
 ### Can I submit answers to my security questions through a ticket or email?
-It’s not secure to submit answers via ticket, therefore we ask that you call the Support line to utilize this function:
 
-- U.S.: 855-454-6633
-- Global: +1-609-380-7100
+It’s not secure to submit answers via ticket, therefore we ask that you call the Support line to provide your answers.
