@@ -11,6 +11,7 @@ external_resources:
 - '[Wikipedia page on database sharding](https://en.wikipedia.org/wiki/Shard_(database_architecture))'
 - '[MongoDB explanation of database sharding](https://www.mongodb.com/features/database-sharding-explained)'
 authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 Many software applications use a *relational database management system* (RDBMS) to store data. As the database grows, it becomes more time-and-storage intensive to store the data. One popular solution to this problem is [*database sharding*](https://en.wikipedia.org/wiki/Shard_(database_architecture)). A sharded database distributes the records in a database's tables across different databases on different computer systems. This guide explains how database sharding works and discusses some of the advantages and disadvantages of sharding. It also describes some of the main sharding strategies and provides some database sharding examples.

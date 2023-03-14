@@ -13,6 +13,7 @@ modified_by:
 published: 2021-03-26
 image: SecureMySQLserver.png
 authors: ["Hackersploit"]
+tags: ["saas"]
 ---
 
 ## MySQL

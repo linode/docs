@@ -17,6 +17,7 @@ aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-a
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
 authors: ["Linode"]
+tags: ["saas"]
 ---
 
 {{< note >}}
