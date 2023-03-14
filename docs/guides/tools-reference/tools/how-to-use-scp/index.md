@@ -1,5 +1,5 @@
 ---
-slug: how-to-transfer-files-with-the-scp-command-on-linux
+slug: how-to-use-scp
 description: 'Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files.'
 og_description: 'Learn how to transfer files using SCP on Linux, and how SCP compares to other means of transferring files.'
 keywords: ['Scp command','Scp linux','Scp syntax','Scp example']
