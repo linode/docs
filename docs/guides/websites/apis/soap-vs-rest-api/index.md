@@ -1,5 +1,5 @@
 ---
-slug: what-is-the-difference-between-soap-and-rest-api
+slug: soap-vs-rest-api
 description: 'Comparing SOAP vs REST API? Learn more about what each technology is, the primary differences between SOAP and REST API, and the benefits both have to offer.'
 keywords: ['soap vs rest api', 'difference between soap and rest', 'soap rest', 'rest vs soap api']
 tags: ['web server', 'web applications']
