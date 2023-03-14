@@ -30,7 +30,7 @@ If you are still not receiving this email, submit a support request through the 
 
 ## 2FA is enabled on my account but I no longer have access to my 2FA device or application. How can I regain access to my Linode account?
 
-2FA (two-factor authentication) adds a layer of security to protect your account from unauthorized access. When switching devices or 2FA applications, it's important to [reset 2FA](/docs/products/platform/accounts/guides/2fa/#switching-to-a-new-device-or-2fa-provider) before decommissioning your original device. If you lose access to your device before resetting 2FA, use one of the scratch codes that were provided to when 2FA was first enabled. As a best practice, these should always be stored in a secure manner separate from your 2FA provider. If you do not have your scratch code, review the options available within the [2FA Recovery Procedures](/docs/products/platform/accounts/guides/2fa/#recovery-procedure)
+2FA (two-factor authentication) adds a layer of security to protect your account from unauthorized access. When switching devices or 2FA applications, it's important to [reset 2FA](/docs/products/platform/accounts/guides/2fa/#switching-to-a-new-device-or-2fa-provider) before decommissioning your original device. If you lose access to your device before resetting 2FA, use one of the scratch codes that were provided to when 2FA was first enabled. As a best practice, these should always be stored in a secure manner separate from your 2FA provider. If you do not have your scratch code, review the options available within the [2FA Recovery Procedures](/docs/products/platform/accounts/guides/2fa/#recovery-procedure).
 
 ## I'd like to provide a developer with access to my Linode account. How should I do this?
 
