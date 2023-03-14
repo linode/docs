@@ -1,5 +1,5 @@
 ---
-slug: how-to-add-directory-to-path-on-linux
+slug: how-to-add-directory-to-path
 description: "What is the PATH variable in Linux, and how does it work? Better still, how can you add your own directories to it? Find out in this tutorial, covering everything you need to know about the PATH variable and adding directories to it."
 keywords: ['linux path variable','linux path directory','add to linux path']
 tags: ['linux']
