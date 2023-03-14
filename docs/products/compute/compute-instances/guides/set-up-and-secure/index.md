@@ -303,7 +303,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
     203.0.113.10 example-hostname.example.com example-hostname
     ```
 
-1.  Add a line for your ompute Instance's IPv6 address. Applications requiring IPv6 will not work without this entry:
+1.  Add a line for your Compute Instance's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
     ```file {title="/etc/hosts"}
     127.0.0.1 localhost.localdomain localhost
@@ -311,7 +311,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
     2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
     ```
 
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your ompute Instance's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your instance's IPv6 address.
+The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Compute Instance's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your instance's IPv6 address.
 
 See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
 

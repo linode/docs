@@ -1,21 +1,17 @@
 ---
-slug: troubleshooting-overview
-author:
-  name: Linode
-  email: docs@linode.com
+title: Troubleshooting General Issues on Compute Instances
 description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
 keywords: ['troubleshooting']
 tags: ["linode platform"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/','/guides/troubleshooting-overview/']
 published: 2012-04-05
-modified: 2022-02-13
+modified: 2023-03-14
 modified_by:
   name: Linode
-title: Troubleshooting Overview
+bundles: ['troubleshooting']
+aliases: ['/quick-start-troubleshooting/','/troubleshooting/troubleshooting/']
 ---
 
-This guide provides common troubleshooting scenarios you may encounter when managing your Compute Instance. Each troubleshooting section provides ways to further diagnose your issue and, when applicable, corresponding steps to resolve it. We recommend using this guide in the following way:
+This guide provides common troubleshooting scenarios you may encounter when managing your Compute Instance. Each troubleshooting section provides ways to further diagnose your issue and the corresponding steps, when applicable, to resolve the issue. We recommend using this guide in the following way:
 
 - Browse the guide's headings and select the issue that best describes your problem.
 
@@ -23,9 +19,15 @@ This guide provides common troubleshooting scenarios you may encounter when mana
 
 - Once you've confirmed a specific problem, try fixing it with the suggested solutions.
 
-- If you can't find your problem in this guide, take a look at some of our other [troubleshooting manuals](/docs/troubleshooting/).
+If the troubleshooting steps in this guide don't apply to your issue, review these additional troubleshooting guides that cover other topics:
 
-{{< note title="Additional resources for help" isCollapsible=true >}}
+- [Troubleshooting Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/)
+- [Troubleshooting SSH Issues](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/)
+- [Troubleshooting Memory Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/)
+- [Troubleshooting Firewall Issues](/docs/products/compute/compute-instances/guides/troubleshooting-firewall-issues/)
+- [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/)
+
+{{< note title="Additional resources for help" type=secondary isCollapsible=true >}}
 This guide explains how to use different troubleshooting commands on your Compute Instance. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
@@ -118,7 +120,7 @@ If your Compute Instance is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Linode via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Compute Instance via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
