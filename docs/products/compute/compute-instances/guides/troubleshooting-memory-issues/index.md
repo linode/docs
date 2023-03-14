@@ -8,7 +8,7 @@ modified: 2023-03-14
 modified_by:
   name: Linode
 bundles: ['troubleshooting']
-aliases: ['/troubleshooting/troubleshooting-memory-and-networking-issues/','/troubleshooting/memory-networking/']
+aliases: ['/troubleshooting/troubleshooting-memory-and-networking-issues/','/troubleshooting/memory-networking/','/guides/troubleshooting-memory-and-networking-issues/']
 ---
 
 Many common issues with Compute Instances are caused by excessive memory consumption. When your Compute Instance is running low on physical memory, it may start to "swap thrash." This means it's attempting to use your swap partition heavily instead of real RAM. We recommend you limit your swap partition size to 256 MB; heavy use of swap in a virtualized environment will cause major performance problems.
