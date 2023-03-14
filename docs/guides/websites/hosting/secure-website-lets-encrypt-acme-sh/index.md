@@ -1,8 +1,5 @@
 ---
 slug: secure-website-lets-encrypt-acme-sh
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
 keywords: ['ssl','lets encrypt','https','website','websites','acme.sh','secure']
 tags: ['http', 'ssl', 'apache', 'nginx', 'security', 'automation']
@@ -12,13 +9,11 @@ modified_by:
   name: Andy Heathershaw
 title: 'Secure a Website or Domain with a Let''s Encrypt SSL Certificate and acme.sh'
 title_meta: 'Secure a Website or Domain with Let''s Encrypt and acme.sh'
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
 external_resources:
 - '[acme.sh](https://acme.sh/)'
 - '[Use Linode domain API (acme.sh wiki)](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#14-use-linode-domain-api)'
 - '[Let''s Encrypt](https://letsencrypt.org/)'
+authors: ["Andy Heathershaw"]
 ---
 [*acme.sh*](https://acme.sh/) is a client application for ACME-compatible services, like those used by [Let's Encrypt](https://letsencrypt.org/). It is an alternative to the popular [Certbot](/docs/guides/quick-answers/websites/) application with two big benefits:
 

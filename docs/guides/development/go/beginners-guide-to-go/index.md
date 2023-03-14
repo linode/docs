@@ -1,8 +1,5 @@
 ---
 slug: beginners-guide-to-go
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will introduce you to the Go programming language and will also instruct you on how you can create and run your first program and more.'
 keywords: ['golang','go','command line arguments']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,15 +9,13 @@ modified_by:
 image: GettingStartedwithGo.png
 title: "Getting Started with Go"
 title_meta: "A Beginner's Guide to Go"
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
 - '[The Go Programming Language Specification](https://golang.org/ref/spec)'
 - '[Go](https://golang.org)'
 - '[Effective Go](https://golang.org/doc/effective_go.html)'
 - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/beginners-guide-to-go/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

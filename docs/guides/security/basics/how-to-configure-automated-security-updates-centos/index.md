@@ -1,7 +1,5 @@
 ---
 slug: how-to-configure-automated-security-updates-centos
-author:
-  name: Hackersploit
 description: "In this tutorial, you will learn how to configure automated updates on CentOS using the dnf-automatic tool or the Cockpit web application."
 keywords: ["centos automated security upgrades", "centos cockpit dashboard"]
 tags: ["centos", "security"]
@@ -19,6 +17,7 @@ relations:
         keywords:
             - distribution: CentOS
 image: Configuring_automated_security_updates_centos.png
+authors: ["Hackersploit"]
 ---
 
 Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Most users forget to do it, leaving them vulnerable to countless threats. Automate security (or other package) updates with the dnf-automatic command line utility or the Cockpit web application on CentOS.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-graphite-and-grafana-on-ubuntu-14-04
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide provides an introduction to the installation and basic setup of Graphite together with Grafana on Ubuntu 14.04.'
 keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "analytics"]
 aliases: ['/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/','/uptime/monitoring/how-to-install-graphite-and-grafana-on-ubuntu-14-04/']
@@ -15,14 +12,12 @@ published: 2015-12-02
 title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
 deprecated: true
 deprecated_link: uptime/monitoring/install-graphite-and-grafana/
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
 external_resources:
   - '[Installing Graphite](http://graphite.readthedocs.org/en/latest/install.html)'
   - '[Configuring Carbon](http://graphite.readthedocs.org/en/latest/config-carbon.html)'
   - '[Installing Grafana on Debian/Ubuntu](http://docs.grafana.org/installation/debian/)'
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
+authors: ["Sergey Pariev"]
 ---
 
 

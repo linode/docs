@@ -1,11 +1,5 @@
 ---
 slug: introduction-to-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
 keywords: ["docker", "container", "dockerfile"]
 tags: ["container","docker"]
@@ -20,6 +14,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/introduction-to-docker/']
+authors: ["Jack Wallen"]
 ---
 
 ![An introduction to Docker](docker-introduction.png "An introduction to Docker")

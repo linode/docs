@@ -1,8 +1,5 @@
 ---
 slug: previewing-websites-without-dns
-author:
-  name: Linode
-  email: afornuto@linode.com
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
 keywords: ["dns", " website", " preview"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2014-01-16
 title: Previewing Websites Without DNS
 tags: ["dns","networking"]
+authors: ["Linode"]
 ---
 
 ![Previewing Websites without DNS](Previewing_Websites_Without_DNS_smg.jpg)

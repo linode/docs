@@ -1,9 +1,6 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install, configure, and setup a basic configuration of Prosody, a lightweight XMPP server on Ubuntu 10.04 (Lucid).'
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

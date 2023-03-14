@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 12.'
 keywords: ["Apache", "web sever", "Fedora 12"]
 tags: ["web server","apache","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 

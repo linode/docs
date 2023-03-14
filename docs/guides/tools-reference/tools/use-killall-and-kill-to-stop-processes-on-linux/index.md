@@ -1,8 +1,5 @@
 ---
 slug: use-killall-and-kill-to-stop-processes-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
 description: Learn how to use Linux commands killall and kill to manage and kill processes on Linux distributions in this simple tutorial.
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2010-11-29
 title: Use killall and kill Commands to Stop Processes on Linux
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 `killall` is a tool for terminating running processes on your system based on name. In contrast, `kill` terminates processes based on Process ID number (PID). `kill` and `killall` can also send specific system signals to processes.

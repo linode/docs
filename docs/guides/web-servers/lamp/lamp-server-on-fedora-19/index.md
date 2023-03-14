@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-fedora-19
 deprecated: true
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 19.'
 keywords: ["fedora 19 lamp","lamp server","linux lamp","fedora 19 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 19
+authors: ["James Stewart"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: sinatra-framework-and-nginx-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Debian 6 "Squeeze".'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","debian","nginx","ruby"]
@@ -19,6 +16,7 @@ relations:
         key: sinatra-nginx
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

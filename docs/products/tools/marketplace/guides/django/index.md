@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace"]
@@ -16,6 +13,7 @@ aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/
 external_resources:
  - '[The Django Project](https://www.djangoproject.com/)'
  - '[Django Documentation](https://docs.djangoproject.com/en/2.2/releases/)'
+authors: ["Linode"]
 ---
 
 [Django](https://www.djangoproject.com/) is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.

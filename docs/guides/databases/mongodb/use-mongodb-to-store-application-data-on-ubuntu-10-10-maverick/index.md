@@ -1,9 +1,6 @@
 ---
 slug: use-mongodb-to-store-application-data-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install MongoDB for use in application development on Ubuntu 10.10 (Maverick)'
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 ---
 
 

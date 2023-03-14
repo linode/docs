@@ -1,8 +1,5 @@
 ---
 slug: create-a-python-virtualenv-on-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on CentOS 8.
 keywords: ["python", "python virtual environment", "virtualenv", "centos 8"]
 tags: ["python","centos"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/python/create-a-python-virtualenv-on-centos-8/']
+authors: ["Linode"]
 ---
 
 ## What is a Python Virtual Environment?

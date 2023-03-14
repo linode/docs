@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-the-solid-data-protocol
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will introduce you to the Solid protocol, created by Tim Berners-Lee and gives Internet users ownership over their data, and how to incorporate the tech.'
 keywords: ['solid protocol']
 tags: ['web applications']
@@ -12,11 +9,10 @@ modified_by:
   name: Linode
 title: "An Overview of the Solid Data Protocol"
 title_meta: "Introduction to the Solid Data Protocol"
-contributor:
-  name: Andy Patrizio
 external_resources:
 - '[Solid Getting Started Developer Guide](https://solidproject.org/developers/tutorials/getting-started)'
 - '[Solid GitHub page](https://github.com/solid/solid-tutorial-intro)'
+authors: ["Andy Patrizio"]
 ---
 ## The Origins of the Solid Protocol
 

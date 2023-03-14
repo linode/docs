@@ -1,9 +1,6 @@
 ---
 slug: discussion-forums-with-phpbb-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Ubuntu 10.04 (Lucid).'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 10.04
+authors: ["Stan Schwertly"]
 ---
 
 

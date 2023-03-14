@@ -1,9 +1,6 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configure NSD to Handle DNS Queries on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["NSD", "DNS", "Ubuntu", "networking", "zone file", "name server daemon"]
 tags: ["dns","networking","resolving","ubuntu"]
@@ -22,6 +19,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 NSD is a lightweight yet full-featured open-source name server daemon created to provide an alternative to BIND.

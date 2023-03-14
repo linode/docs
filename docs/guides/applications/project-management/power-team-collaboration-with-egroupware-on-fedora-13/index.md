@@ -1,9 +1,6 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can build a collaborative groupware system to share information in your organization with the eGroupware software on Fedora 13.'
 keywords: ["groupware", "email", "collaboration", "fedora"]
 tags: ["fedora", "email", "lamp"]
@@ -19,6 +16,7 @@ relations:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

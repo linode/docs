@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-server-on-centos-stream
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream."
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
@@ -13,9 +10,6 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install a Mastodon Server on CentOS Stream 8"
 title_meta: "How to Install a Mastodon Server on CentOS Stream 8"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -32,6 +26,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: CentOS Stream 8
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

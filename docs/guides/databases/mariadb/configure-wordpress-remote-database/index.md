@@ -1,8 +1,5 @@
 ---
 slug: configure-wordpress-remote-database
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: 'This guide shows how to configure WordPress to access a database on a separate Linode.'
 keywords: ["mariadb", "database", "mysql", "remote database", "remote db", "remote client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 tags: ["wordpress","mariadb","database"]
 aliases: ['/databases/mariadb/configure-wordpress-remote-database/']
+authors: ["Edward Angert"]
 ---
 
 ![Configure WordPress to use a Remote Database](Configure_WordPress_to_use_a_Remote_Database_smg.jpg)

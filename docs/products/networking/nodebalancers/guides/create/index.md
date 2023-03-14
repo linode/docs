@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Create a NodeBalancer"
 description: "Instructions on creating a NodeBalancer, Linode's load balancing solution."
 published: 2022-10-07
 modified: 2023-02-06
+authors: ["Linode"]
 ---
 
 This guide walks you through creating a NodeBalancer through the Cloud Manager.

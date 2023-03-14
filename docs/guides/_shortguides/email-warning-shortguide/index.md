@@ -1,8 +1,5 @@
 ---
 slug: email-warning-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays the warning note that email ports are blocked on all new Compute Instances by default.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-31
@@ -14,6 +11,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/email-warning-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note type="warning" title="Spam prevention and email restrictions on the Linode Platform" isCollapsible=true >}}

@@ -1,8 +1,5 @@
 ---
 slug: tahoe-lafs-on-debian-9
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
 og_description: "Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid."
 keywords: ["confidential", "encrypted", "integrity", "redundant", "private", "filesystem", "storage"]
@@ -13,12 +10,11 @@ modified: 2017-10-26
 modified_by:
   name: Linode
 title: "Keep Your Data Private in the Cloud with Tahoe-LAFS"
-contributor:
-  name: Alexandru Andrei
 external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
 aliases: ['/applications/cloud-storage/tahoe-lafs-on-debian-9/']
+authors: ["Alexandru Andrei"]
 ---
 
 

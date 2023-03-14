@@ -1,9 +1,6 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Fedora 12.'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","fedora","php"]
@@ -19,6 +16,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 

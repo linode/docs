@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.10 (Karmic).'
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.10", "karmic"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
@@ -19,6 +16,7 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

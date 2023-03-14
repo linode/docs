@@ -1,9 +1,6 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Methods for enabling dynamic content to run as individual users with PHP on CentOS 5.'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["centos","web server","apache","php"]
@@ -19,6 +16,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 

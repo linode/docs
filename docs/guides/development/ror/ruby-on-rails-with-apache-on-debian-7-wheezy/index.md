@@ -1,8 +1,5 @@
 ---
 slug: ruby-on-rails-with-apache-on-debian-7-wheezy
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: 'Using the Apache web server with Debian 7 Wheezy to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
@@ -23,6 +20,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 7
+authors: ["James Stewart"]
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.

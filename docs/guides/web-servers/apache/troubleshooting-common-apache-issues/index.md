@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-common-apache-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to identify and solve common configuration problems encountered when using Apache.'
 keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 tags: ["apache", "web server"]
@@ -17,6 +14,7 @@ image: troubleshooting-common-apache-issues.jpg
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
+authors: ["Linode"]
 ---
 
 This article provides troubleshooting guidelines for the [Apache web server](/docs/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.

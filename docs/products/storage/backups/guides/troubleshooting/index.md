@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Troubleshooting"
 description: "Troubleshooting issues related to the Linode Backup Service."
+authors: ["Linode"]
 ---
 
 ## Linode Backup Disk Won't Boot

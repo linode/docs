@@ -1,8 +1,5 @@
 ---
 slug: install-docker-compose
-author:
-  name: Jared Kobos
-  email: sfoo@linode.com
 description: 'Shortguide for installing Docker Compose'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "docker compose", "container"]
@@ -14,6 +11,7 @@ title: "Install Docker Compose"
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
+authors: ["Jared Kobos"]
 ---
 
 <!--- Installation instructions for Docker Compose -->

@@ -1,9 +1,6 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["cherokee", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 tags: ["web server","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

@@ -1,11 +1,5 @@
 ---
 slug: a-guide-to-elasticsearch-plugins
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: "Elasticsearch supports a wide variety of plugins which enable more powerful search features. Learn how to manage, install, and use them."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
@@ -22,6 +16,7 @@ title_meta: "How to Install and Use Elasticsearch Plugins"
 dedicated_cpu_link: true
 tags: ["ubuntu","debian","database","java"]
 aliases: ['/databases/elasticsearch/a-guide-to-elasticsearch-plugins/']
+authors: ["Tyler Langlois"]
 ---
 
 ![banner_image](How_to_Install_and_Use_Elasticsearch_Plugins_smg.jpg)

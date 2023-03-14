@@ -1,8 +1,5 @@
 ---
 slug: how-to-speed-up-a-wordpress-website
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
 keywords: ["htaccess", "apache", "wordpress"]
 tags: ["docker","linux","analytics","php","wordpress","cms"]
@@ -20,6 +17,7 @@ external_resources:
 - '[XHGUI](https://github.com/perftools/xhgui)'
 - '[How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)'
 aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
+authors: ["Nathan Melehan"]
 ---
 
 ## Goals For This Guide

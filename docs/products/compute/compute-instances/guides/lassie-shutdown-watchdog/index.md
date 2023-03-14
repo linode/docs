@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
 title_meta: "Recover from Unexpected Shutdowns with Lassie"
 keywords: ['lassie','unexpected shutdown','reboot']
@@ -12,6 +9,7 @@ aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/','/g
 published: 2022-09-29
 modified_by:
   name: Linode Docs
+authors: ["Linode"]
 ---
 
 Linode Compute Instances have a featured called *Lassie* (Linode Autonomous System Shutdown Intelligent rEbooter), also referred to as the Shutdown Watchdog. When this feature is enabled, a Compute Instance automatically reboots if it ever powers off unexpectedly.

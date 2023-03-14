@@ -1,8 +1,5 @@
 ---
 slug: docker-container-communication
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide will show you how to link Docker containers using a Node.js application and PostgreSQL.'
 og_description: "Learn to link Docker containers using a Node.js application and PostgreSQL through a simple 'Hello World' application."
 keywords: ['docker','containers','database','container communication']
@@ -19,6 +16,7 @@ external_resources:
 - '[Linking Containers](https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb)'
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
 aliases: ['/applications/containers/docker-container-communication/']
+authors: ["Jared Kobos"]
 ---
 
 ![Connect Docker Containers](connect-docker-containers.jpg)

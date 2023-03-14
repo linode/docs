@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-chef-on-ubuntu-20-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides a brief introduction to the Chef configuration management software and explains how to install and use it.'
 keywords: ['Install Chef','Configure Chef','Chef Ubuntu','Chef Server','Chef Workstation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,6 @@ modified_by:
   name: Linode
 title: "Install Chef on Ubuntu 20.04"
 title_meta: "How to Install Chef on Ubuntu 20.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Chef Website](https://www.chef.io/)'
 - '[Chef Overview](https://docs.chef.io/platform_overview/)'
@@ -26,6 +21,8 @@ external_resources:
 - '[Chef Supermarket](https://supermarket.chef.io/)'
 - '[Chef Supermarket documentation](https://docs.chef.io/workstation/knife_supermarket/)'
 - '[Chef bootstrap documentation](https://docs.chef.io/install_bootstrap/)'
+authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 [Chef](https://www.chef.io/) is a free and open source *Infrastructure as Code* (IaC) application. It's a configuration management system that allows administrators to provision and manage infrastructure using automation. A complete Chef workflow includes one or more Chef Workstations, a Chef Server, and a set of nodes. This guide provides some background on how Chef works, and explains how to install and configure Chef on Ubuntu 20.04.

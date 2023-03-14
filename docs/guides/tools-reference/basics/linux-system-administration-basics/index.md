@@ -1,8 +1,5 @@
 ---
 slug: linux-system-administration-basics
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2009-12-13
 title: "Linux System Administration Basics"
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.

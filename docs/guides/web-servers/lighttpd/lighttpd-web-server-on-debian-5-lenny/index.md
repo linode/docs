@@ -1,9 +1,6 @@
 ---
 slug: lighttpd-web-server-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install and configure lighttpd to host multiple websites or web-based applications on a Linode running Debian 5 "Lenny".'
 keywords: ["lighttpd server", "lighttpd Linode", "web server", "Linode web server", "Linode hosting"]
 tags: ["web server","debian"]
@@ -19,6 +16,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Debian 5 (Lenny). Lighttpd is designed to provide a lightweight web server, capable of serving large loads, using less memory than servers like the Apache httpd server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.

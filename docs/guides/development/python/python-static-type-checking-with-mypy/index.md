@@ -1,7 +1,5 @@
 ---
 slug: python-static-type-checking-with-mypy
-author:
-  name: Cameron Laird
 description: 'This guide provides some of the techniques to migrate real-world Python projects to type annotated code using the Mypy tool.'
 keywords: ['mypy static typing', 'mypy type aliases']
 tags: ['python']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Use Mypy for Python Static Type Checking"
 title_meta: "Python Static Type Checking with Mypy"
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+authors: ["Cameron Laird"]
 ---
 
 Python is a dynamically typed language. It determines data types at run time, rather than compile time. Some examples of Python types include integers, floats, strings, and boolean. Dynamically typed languages stand in contrast to statically typed languages, like C++, Java, and Fortran, that perform type checking at compile time.

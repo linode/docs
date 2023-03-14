@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-ubuntu-12-04-precise-pangolin
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["ubuntu lamp server", "ubuntu 12.04 lamp", "lamp", "ubuntu server", "ubuntu", "apache", "mysql", "php", "lamp stacks"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack will allow for the creation and hosting of websites and web applications. This guide provides step by step instructions for installing a LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.

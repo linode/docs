@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-machine-learning-training-and-inference
-author:
-  name: Andy Patrizio
-  email: ndy@andypatrizio.com
 description: "Training and inference in machine learning each have their own requirements. We will walk you through the differences, along with hosting advice."
 og_description: "Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises."
 keywords: ['cloud machine learning']
@@ -13,12 +10,10 @@ modified_by:
   name: Linode
 title: "An Introduction to Machine Learning: Training and Inference"
 title_meta: "Machine Learning Training and Inference"
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
 external_resources:
 - '[How to Move Your Machine Learning Model to Production](/docs/guides/how-to-move-machine-learning-model-to-production/)'
 - '[Use Cases for Linode GPU Instances](/docs/products/compute/compute-instances/plans/gpu/)'
+authors: ["Andy Patrizio"]
 ---
 
 Machine learning (ML) has been around conceptually since 1959, when [Arthur Samuel](https://en.wikipedia.org/wiki/Arthur_Samuel), a pioneer in the field of computer gaming and artificial intelligence, coined the term. Samuel said that machine learning "gives computers the ability to learn without being explicitly programmed". While at IBM he wrote a program to play Checkers, which became the first known self-learning program.

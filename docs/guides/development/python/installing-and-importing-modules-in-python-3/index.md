@@ -1,7 +1,5 @@
 ---
 slug: installing-and-importing-modules-in-python-3
-author:
-  name: Jeff Novotny
 description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
 keywords: ['Python import module', 'Python modules', 'Python install module', 'Python math']
 tags: ['python']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Install and Import Modules in Python 3"
 title_meta: "How to Install and Import Modules in Python 3"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html)'
 - '[List of Python Built-in Modules](https://docs.python.org/3/py-modindex.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Except for very short and simple programs, most [Python](https://www.python.org/) applications contain code from many files, directories, and packages. Related functions and attributes are often grouped together as part of a Python *module*. A programmer can *import* this module and use its functions and variables in their application. This guide provides an introduction to Python modules and explains how to install and import modules in Python.

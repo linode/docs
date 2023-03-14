@@ -1,8 +1,5 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to install and use Certbot with NGINX on Debian 10 and 9, which automates the process adding TLS/SSL to your websites."
 keywords: ["Debian", "Certbot", "TLS", "SSL", "HTTPS", "Encryption", "NGINX"]
 tags: ["debian", "ssl", "nginx"]
@@ -17,6 +14,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Debian
+authors: ["Linode"]
 ---
 
 

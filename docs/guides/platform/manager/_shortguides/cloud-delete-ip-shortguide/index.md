@@ -1,8 +1,5 @@
 ---
 slug: cloud-delete-ip-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that shows you how to delete a public IP address from a Linode in the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
@@ -15,6 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-delete-ip-shortguide/']
+authors: ["Linode"]
 ---
 
 You can delete a public IP addresses within the Cloud Manager from the **Network** tab in a Linode's details page.

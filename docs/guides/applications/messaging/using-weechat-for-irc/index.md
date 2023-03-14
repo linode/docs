@@ -1,13 +1,8 @@
 ---
 slug: using-weechat-for-irc
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
 keywords: ["weechat", "irc", "oftc", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-  name: Samuel Damashek
 modified: 2016-03-10
 modified_by:
     name: 'Linode'
@@ -18,6 +13,7 @@ external_resources:
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Screen for Persistent Terminal Sessions](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/)'
 aliases: ['/applications/messaging/using-weechat-for-irc/']
+authors: ["Samuel Damashek"]
 ---
 
 

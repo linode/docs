@@ -1,8 +1,5 @@
 ---
 slug: configure-firewall-with-ufw
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'Learn how to use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux.'
 keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tutorial", "ubuntu firewall", "iptables", "networking", "firewalls", "filtering", "firewall setup", "ubuntu", "debian", "arch"]
 bundles: ['debian-security', 'network-security']
@@ -14,6 +11,7 @@ published: 2015-11-17
 title: How to Configure a Firewall with UFW
 tags: ["networking","security"]
 aliases: ['/security/firewalls/configure-firewall-with-ufw/']
+authors: ["Elle Krout"]
 ---
 
 ## What is UFW?

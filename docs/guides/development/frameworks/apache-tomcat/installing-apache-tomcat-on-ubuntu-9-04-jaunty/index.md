@@ -1,9 +1,6 @@
 ---
 slug: installing-apache-tomcat-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.04 (Jaunty).'
 keywords: ["Tomcat", "Java", "Apache Tomcat", "Ubuntu Jaunty", "Ubuntu 9.04", "Tomcat Linode"]
 tags: ["web applications","java","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 
