@@ -1,10 +1,6 @@
 ---
 slug: configure-postfix-to-send-mail-using-gmail-and-google-workspace-on-debian-or-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
-og_description: 'Learn how to configure Postfix to send mail using Gmail and Google Workspace on Debian or Ubuntu in this detailed guide.'
 keywords: ["Postfix", "Ubuntu", "Debian", "SMTP", "Gmail"]
 tags: ["debian","ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,10 +8,10 @@ modified: 2021-06-22
 modified_by:
   name: Linode
 published: 2016-12-13
-title: How to Configure a Postfix Server to Send Email through Gmail
-h1_title: Configuring a Postfix Server to Send Email through Gmail or Google Workspace
-enable_h1: true
+title: Configuring a Postfix Server to Send Email through Gmail or Google Workspace
+title_meta: How to Configure a Postfix Server to Send Email through Gmail
 aliases: ['/email/email-services/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/','/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/', '/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/']
+authors: ["Linode"]
 ---
 
 ![Configure Postfix to Send Mail Using Gmail and Google Workspace](Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
@@ -28,7 +24,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 ## Before You Begin
 
-1.  Complete our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and ensure that the Linode's [hostname is set](/docs/guides/getting-started/#getting-started#setting-the-hostname).
+1.  Complete our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and ensure that the Linode's [hostname is set](/docs/products/platform/get-started/#getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -36,7 +32,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 3.  Use your web browser to confirm your email login credentials by logging in to [Gmail](https://gmail.com).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -90,7 +86,7 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The SMTP server address configuration `smtp.gmail.com` supports message submission over port 587 ([StartTLS](https://en.wikipedia.org/wiki/Opportunistic_TLS)) and port 465 ([SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security)). Whichever protocol you choose, be sure the port number is the same in `/etc/postfix/sasl/sasl\\_passwd` and `/etc/postfix/main.cf` files. See Google Workspace's [Send email from a printer, scanner, or app](https://support.google.com/a/answer/176600?hl=en) help article for more information.
 {{< /note >}}
 

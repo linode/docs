@@ -1,9 +1,6 @@
 ---
 slug: lighttpd-web-server-on-ubuntu-12-04-preci
 deprecated: true
-author:
-  name: Dave Messina
-  email: docs@linode.com
 description: 'This guide will show you how to install and configure lighttpd to host multiple websites or web-based applications on a Linode running Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["lighttpd", "web server", "web hosting"]
 tags: ["web server","ubuntu"]
@@ -24,11 +21,12 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Dave Messina"]
 ---
 
 This tutorial explains how to install and configure the lighttpd (e.g. "lighty") web server on Ubuntu 12.04 (Precise). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
 
-Our example will illustrate the installation of a lighttpd server on an Ubuntu 12.04 (Precise) system. We assume that you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
+Our example will illustrate the installation of a lighttpd server on an Ubuntu 12.04 (Precise) system. We assume that you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
 
 If you're switching from an alternate web server like Apache, remember to turn Apache off for testing purposes, or configure lighttpd to serve on an alternate port until it's configured properly.
 
@@ -36,7 +34,7 @@ For purposes of this tutorial we'll assume you are logged into an SSH session on
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

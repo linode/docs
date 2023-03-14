@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 9.10 to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
@@ -24,6 +21,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

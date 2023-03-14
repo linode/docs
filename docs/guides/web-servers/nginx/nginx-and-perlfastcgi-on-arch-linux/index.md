@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-arch-linux
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Arch Linux.'
 keywords: ["perl fastcgi arch linux", "fastcgi", "nginx arch linux", "nginx arch", "nginx perl"]
 tags: ["web server","perl","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Arch Linux
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

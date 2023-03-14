@@ -1,9 +1,6 @@
 ---
 slug: install-redis-ubuntu
-author:
-  name: Jeff Novotny
 description: 'This guide shows you how to install and configure the open-source database, cache, and message broker application Redis, on Ubuntu 20.04 Server.'
-og_description: 'This guide shows you how to install and configure the open-source database, cache, and message broker application Redis, on Ubuntu 20.04 Server.'
 keywords: ['install redis ubuntu']
 tags: ['ubuntu', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,11 +9,7 @@ image: REDIS.jpg
 modified_by:
   name: Linode
 title: "Install and Configure Redis on Ubuntu 20.04"
-h1_title: "How to Install and Configure Redis on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title_meta: "How to Install and Configure Redis on Ubuntu 20.04"
 external_resources:
 - '[Redis](https://redis.io/)'
 - '[Redis commands](https://redis.io/commands)'
@@ -25,15 +18,16 @@ relations:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install and perform the basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store. It can serve as a database cache and message broker and works well with web applications. Redis is an example of a key-value store database. A key is used to retrieve a stored value. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -269,7 +263,7 @@ Redis recommends several additional optimizations for the best performance. In a
     {{< file "/etc/sysctl.conf" >}}
 vm.overcommit_memory = 1
 {{< /file >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Enter the command `sysctl vm.overcommit_memory=1` to apply this setting immediately.
 {{< /note >}}
 1. Disable the transparent huge pages feature as this adversely affects Redis latency.

@@ -1,12 +1,8 @@
 ---
 slug: wordpress-with-docker-compose
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 keywords: ["Docker", "Docker Compose", "WordPress"]
 tags: ["wordpress","docker","linux"]
 description: 'This guide shows how to use Docker and Docker Compose to host a WordPress website using a LAMP stack configured in Docker and linked with Compose.'
-og_description: 'This guide shows how to use Docker and Docker Compose to host a WordPress website using a LAMP stack configured in Docker and linked with Compose.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-05-29
 modified: 2018-05-29
@@ -18,6 +14,7 @@ external_resources:
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
   - '[Quickstart: Compose and Wordpress | Docker Documentation](https://docs.docker.com/compose/wordpress/)'
 aliases: ['/quick-answers/linux/wordpress-with-docker-compose/']
+authors: ["Nathan Melehan"]
 ---
 
 ![Install WordPress with Docker Compose](install-wordpress-with-docker-compose.png "Install WordPress with Docker Compose")

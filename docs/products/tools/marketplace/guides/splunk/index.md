@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows you how to install Splunk, a powerful data solution that collects, monitors, analyzes, and visualizes data, using the Linode One-Click Marketplace."
 keywords: ['monitoring','splunk', 'data solution']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -14,6 +11,7 @@ title: "Deploy Splunk through the Linode Marketplace"
 aliases: ['/guides/deploying-splunk-marketplace-app/','/guides/splunk-marketplace-app/']
 external_resources:
 - '[Splunk](http://splunk.com/)'
+authors: ["Linode"]
 ---
 
 Splunk is a powerful log analyzer that can be used to obtain insight into your infrastructure. Splunk collects, monitors, analyzes, and visualizes data from database applications, web servers, cloud networks, and a variety of other sources.
@@ -24,9 +22,9 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Splunk should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,6 +40,8 @@ Splunk is a powerful log analyzer that can be used to obtain insight into your i
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

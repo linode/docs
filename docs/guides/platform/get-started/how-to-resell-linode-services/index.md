@@ -1,8 +1,5 @@
 ---
 slug: how-to-resell-linode-services
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'How to resell Linode services using the Linode API, and how to get started with the Linode referral program.'
 keywords: ['resell','linode','services','reseller','referral','code']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,11 +7,11 @@ published: 2019-01-31
 modified: 2021-07-02
 modified_by:
   name: Linode
-title: "How to Resell Linode Services"
-contributor:
-  name: Linode
+title: "Resell Linode Services"
+title_meta: "How to Resell Linode Services"
 tags: ["linode platform"]
 aliases: ['/platform/how-to-resell-linode-services/']
+authors: ["Linode"]
 ---
 
 ![How to Resell Linode Services](how-to-resell-linode-services.png "How to Resell Linode Services")
@@ -31,7 +28,7 @@ There are a variety of reasons one might want to resell Linode services. One of 
 
 -   An app developer that uses Linode to host their customer's database.
 
--   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/case-studies/cloudnet) for an in-depth look at why they chose to partner with Linode.
+-   A business which operates a fully-fledged hosting platform based on Linode services, using tools like the [Linode API](#linode-api). One such example is Cloudnet Sweden, a platform-as-a-service (PaaS) that uses Linode as a cloud host for their managed platform. Read our [case study on Cloudnet Sweden](https://www.linode.com/content/cloudnet/) for an in-depth look at why they chose to partner with Linode.
 
 ## Referral Program
 
@@ -61,9 +58,9 @@ The best way to resell Linode services is through the use of the Linode API. The
 
 If a reseller wants to be able to give reseller customers access to parts of the Linode Cloud Manager without developing a new user interface, they can create a limited Manager *user* in the Cloud Manager. A user is a set of credentials that can access your Linode account, and your Linode account can have multiple users. A user can be restricted to have a limited set of permissions, such as only being able to access certain Linodes and not having access to your billing information. To create a limited user in the Cloud Manager, review the [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) section of the Accounts and Passwords guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Cloud Manager users are not related to the Linux users on your Linodes. If you need to revoke a customer's account access, you should remove access to both their Cloud Manager users and their Linux users. Read the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on this subject.
-{{</ note >}}
+{{< /note >}}
 
 ### Limited Linux User Accounts
 

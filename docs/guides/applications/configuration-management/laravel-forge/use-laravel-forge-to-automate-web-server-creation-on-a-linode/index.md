@@ -1,8 +1,5 @@
 ---
 slug: use-laravel-forge-to-automate-web-server-creation-on-a-linode
-author:
-    name: Onwuka Gideon
-    email: dongidomed@gmail.com
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
 keywords: ["content management", "web-server automation", "laravel", "php", "wordpress", "drupal", "cms", "joomla", "Laravel Forge"]
 tags: ["automation", "php", "drupal", "wordpress", "cms"]
@@ -15,6 +12,7 @@ title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
 aliases: ['/applications/configuration-management/use-laravel-forge-to-automate-web-server-creation-on-a-linode/','/applications/configuration-management/laravel-forge/use-laravel-forge-to-automate-web-server-creation-on-a-linode/']
+authors: ["Onwuka Gideon"]
 ---
 
 ![Laravel Forge Banner](Laravel_Forge.jpg)
@@ -35,7 +33,7 @@ Once your server has been created, deploying updates becomes as clear and painle
 
 1.  If you don't have a registered domain name for your website, purchase one from a domain name registrar.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will be able to set up a site without a domain name (by visiting your Linode's IP address directly), but you will only be able to use SSL with a domain.
 {{< /note >}}
 
@@ -146,7 +144,7 @@ If you do not want to use a domain with your website, you can configure the *def
 
     ![Git Repository Form](adding_git_repository.png "The form for adding a Git repository to your site")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not use [Composer](https://getcomposer.org), leave the **Install Composer Dependencies** option disabled, as it will cause errors for your deployment if enabled.
 {{< /note >}}
 
@@ -178,7 +176,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
     ![Let's Encrypt Form](laravel_forge_adding_ssl.png "The form for adding Let's Encrypt to your site")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 [Let's Encrypt](https://letsencrypt.org) is a free and widely-trusted SSL certificate authority.
 {{< /note >}}
 

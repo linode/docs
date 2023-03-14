@@ -1,23 +1,17 @@
 ---
 slug: introduction-to-infrastructure-as-code
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
-og_description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
 keywords: ['IaC','infrastructure','configuration','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-03
 image: IntroInfastructureAsCode.png
 modified_by:
   name: Linode
-title: "Introducing Infrastructure as Code"
-h1_title: "An Introduction to Infrastructure as Code"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "An Introduction to Infrastructure as Code"
+title_meta: "Introducing Infrastructure as Code"
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
+authors: ["Jeff Novotny"]
 ---
 
 *Infrastructure as Code* (IaC) is a technique for deploying and managing infrastructure using software, configuration files, and automated tools. This strategy can be used for devices such as web servers, routers, databases, load balancers, and personal computers, as well as on cloud services. It differs from traditional infrastructure management, which relies upon manual or interactive configuration, one device at a time. IaC encompasses a high-level approach to infrastructure, and does not refer to a specific technique, tool, or protocol. This guide discusses the history, concepts, and rationale behind IaC. It also explores the main implementation decisions and the available software tools.

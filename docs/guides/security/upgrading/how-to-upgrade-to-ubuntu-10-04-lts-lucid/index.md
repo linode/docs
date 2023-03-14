@@ -1,9 +1,6 @@
 ---
 slug: how-to-upgrade-to-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
 keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 tags: ["security","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-upgrade-ubuntu
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}
@@ -116,7 +114,7 @@ Add the following line to your file:
 
 Save the file by entering `Ctrl+x` and agreeing to the changes. You may now reboot your Linode from the Linode Manager dashboard using its normal configuration profile.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If you're still having problems, verify that `Automount devtmpfs` is turned on.
 {{< /note >}}
 

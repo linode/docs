@@ -1,9 +1,6 @@
 ---
 slug: install-php-8-for-apache-and-nginx-on-ubuntu
-author:
-  name: Jeff Novotny
 description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
-og_description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
 keywords: ['Nginx PHP-fpm','Apache php','Php 8','Php fpm','What is PHP?']
 tags: ['php', 'nginx', 'apache', 'ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,11 @@ published: 2021-08-27
 modified_by:
   name: Linode
 title: "Install PHP 8 for Apache and NGINX on Ubuntu"
-h1_title: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title_meta: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
 external_resources:
 - '[Introductory PHP tutorial](https://www.php.net/)'
 - '[Complete PHP Documentation](https://www.php.net/manual/en/)'
+authors: ["Jeff Novotny"]
 ---
 
 [*PHP*](https://www.php.net/) is one of the building blocks of the modern internet. It is a free, open-source scripting language that typically runs on a web server and can be integrated into regular HTML code. PHP is fast, flexible, and can interact with databases, forms, and file systems. This guide provides a brief introduction to PHP and explains how to install, configure, upgrade, and test it.
@@ -69,13 +63,13 @@ PHP has only a few disadvantages. Some of these drawbacks include a lack of libr
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall section* yet as this guide includes firewall rules specifically for an OpenVPN server.
 
 1. PHP is usually used in conjunction with a web server. An Apache or NGINX web server should already be installed on the Linode. See the Linode guides for [Apache](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/) or [NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/) for more information. Instructions for both servers are included in this guide. If `ufw` is enabled, ensure it allows web server access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -166,7 +160,7 @@ php8.0-fpm.service - The PHP 8.0 FastCGI Process Manager
 
         sudo a2enmod actions fcgid alias proxy_fcgi
 1. If you have configured a virtual host for your domain, add an FPM handler to the site's `.conf` file. Otherwise, add the handler to the default `000-default.conf` file. The `.conf` files can be found in the `/etc/apache2/sites-available` directory. Add the line `SetHandler "proxy:unix:/var/run/php/php8.0-fpm.sock|fcgi://localhost"` to the `VirtualHost` block as shown here.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For information on how to add a virtual host, see the Linode guide on [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/).
     {{< /note >}}
 
@@ -190,7 +184,7 @@ The procedure to install PHP on NGINX is very similar to the procedure for [Apac
 1. Install the `php-fpm` module.
 
         sudo apt install php-fpm
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Install the `php-fpm` module, but do not install `php`. If the `php` module is installed first, it configures the Apache server instead of NGINX. The `php-fpm` package contains all core modules for PHP.
     {{< /note >}}
 1. (**Optional**) Install any additional PHP packages. The `php-mysql` package is required to run WordPress.
@@ -214,7 +208,7 @@ php8.0-fpm.service - The PHP 8.0 FastCGI Process Manager
      Active: active (running) since Thu 2021-07-29 14:16:36 UTC; 1min 18s ago
     {{< /output >}}
 1. Add the following configuration to the virtual host `.conf` file for your domain. If a virtual host has not been configured, add it to the `default` NGINX file instead. These files are located in the `/etc/nginx/sites-available` directory.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on configuring a virtual host on NGINX, consult the Linode Guide on [How to Install and Use NGINX on Ubuntu 20.04](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/).
     {{< /note >}}
 
@@ -264,7 +258,7 @@ To create and display the standard "PHP Info" page, follow the below steps:
 
 Earlier versions of PHP can easily be upgraded to version 8. All PHP-related packages should be upgraded at the same time. Otherwise, conflicts or crashes might occur. To determine whether the PHP 8.0 packages are present on the system or not, consult the [Add the PHP Repository](#add-the-php-repository) section of this guide. If the 8.0 package is not present, the `ondrej/php` repository must be installed first. The steps in this section explain how to upgrade PHP and PHP-FPM from version 7.4 to 8.0, using Apache as the webserver.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Because PHP version 8 has many changes, it is possible old code might not work after an upgrade. It is a good idea to test any websites and applications in a development environment before putting them into production. A list of non-backward-compatible changes is available on the [PHP GitHub repository](https://github.com/php/php-src/blob/PHP-8.0/UPGRADING#L20).
 {{< /note >}}
 
@@ -291,7 +285,7 @@ php7.4-xmlrpc     install
 1. Upgrade all other PHP packages, including `php-fpm`, to version 8. Include the `8.0` identifier when specifying the packages. The exact list depends on the specific PHP modules that are installed.
 
         sudo apt install php8.0-common php8.0-mysql php8.0-cgi php8.0-mbstring php8.0-curl php8.0-gd php8.0-xml php8.0-xmlrpc php-pear php8.0-fpm
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Apache module `libapache2-mod-fcgid` does not have to be upgraded. The `php-pear` module does not require a version number.
     {{< /note >}}
 1. Verify the version of PHP and confirm version 8.0 is now installed.

@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-vim-customization
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This how-to guide shows you how to configure the Vim text editor and begin to customize it.'
 keywords: ["vim", " editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,6 @@ modified: 2019-04-17
 modified_by:
   name: 'Linode'
 title: 'Introduction To Vim Customization'
-contributor:
-  name: 'Andrew Lescher'
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
  - '[Vim official home page](http://www.vim.org)'
  - '[Vim-Config](http://vimconfig.com/)'
@@ -22,6 +16,7 @@ external_resources:
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/introduction-to-vim-customization/']
+authors: ["Andrew Lescher"]
 ---
 
 ![Introduction to Vim Customization](Vim_Customization.jpg)
@@ -36,9 +31,9 @@ Fine-tune your Vim editor to behave more intelligently with this tutorial and ac
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 
@@ -56,7 +51,7 @@ The configurations in this section apply system-wide across all user accounts.
 
 1.  A default Vim installation features a file containing Vim's core global settings called *vimrc*. This file is located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your Linux distribution.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 {{< /note >}}
 
@@ -230,13 +225,13 @@ Using a plug-in manager automates both the installation and setup of any plug-in
     call plug#end()
     ```
 
-     {{< note >}}
-Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
-{{< /note >}}
+    {{< note >}}
+    Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+    {{< /note >}}
 
-     {{< note >}}
-If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755`.
-{{< /note >}}
+    {{< note >}}
+    If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755`.
+    {{< /note >}}
 
 4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This opens the plug-in manager within Vim and proceeds to install all plug-ins listed in the **vimrc.plug* file. Installed plug-ins automatically load the next time Vim is started.
 

@@ -1,8 +1,5 @@
 ---
 slug: ruby-on-rails-nginx-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows how to host a Ruby on Rails application on Debian using NGINX and Passenger."
 og_description: "This guide shows how to host a Ruby on Rails application on Debian using the NGINX web server and the Passenger app server."
 keywords: ["ruby on rails", "ruby on nginx", "rails apps", "debian", "debian 9", " ruby", " nginx"]
@@ -30,19 +27,20 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Debian 9
+authors: ["Linode"]
 ---
 
 ![Ruby on Rails with nginx on Debian](ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")
 
 Ruby on Rails is a web framework that allows web designers and developers to implement dynamic, fully featured web applications. When deploying a Rails app in production, developers can choose from several popular app servers including Puma, Unicorn, and Passenger. This guide will use Passenger, because of its convenient integration with NGINX.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/guides/getting-started/) and [Securing the Server](/docs/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/guides/getting-started/#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing the Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and [set the Linode's hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check the hostname run:
 
@@ -103,7 +101,7 @@ passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
 passenger_ruby /usr/bin/passenger_free_ruby;
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the file does not already exist, you will need to create it and add the lines manually.
 {{< /note >}}
 
@@ -144,7 +142,7 @@ If the application deployed uses MySQL, install the database server by following
         sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
         sudo apt install nodejs
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your Gemfile already includes `therubyracer`, or you have another JavaScript runtime on your system, you can skip this step.
 {{< /note >}}
 

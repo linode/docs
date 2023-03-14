@@ -1,8 +1,5 @@
 ---
 slug: upgrade-to-ubuntu-16-04
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system to the latest LTS (Long Term Support) version of Ubuntu - 16.04 LTS.'
 keywords: ["upgrading", "ubuntu", "16.04"]
 tags: ["security","ubuntu"]
@@ -18,13 +15,14 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/security/upgrading/upgrade-to-ubuntu-16-04/']
+authors: ["Alex Fornuto"]
 ---
 
 ![Upgrade to Ubuntu 16.04](How_to_Upgrade_to_Ubuntu_smg.jpg)
 
 Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
 
  - Create a new Linode with the latest disk template
@@ -32,12 +30,12 @@ Distribution upgrades sometimes yield unpredictable results. If possible, use th
  - Transfer your data
  - Swap IP addresses
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/guides/lish/) or [Glish](/docs/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/products/compute/compute-instances/guides/lish/) or [Glish](/docs/products/compute/compute-instances/guides/glish/) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 **Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
-{{< /caution >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

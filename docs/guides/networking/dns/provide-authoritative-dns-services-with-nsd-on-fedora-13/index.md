@@ -1,9 +1,6 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-fedora-13
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Fedora 13.'
 keywords: ["NSD", "DNS", "resolving", "Fedora 13", "networking"]
 tags: ["dns","networking","fedora","resolving"]
@@ -19,6 +16,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Fedora 13
+authors: ["Brett Kaplan"]
 ---
 
 

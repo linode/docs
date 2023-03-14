@@ -1,7 +1,5 @@
 ---
 slug: transferring-a-mern-application-to-a-new-server
-author:
-  name: Linode
 description: "This guide discusses guidelines for quickly transferring a MERN stack application over to Linode built with Linode's Marketplace App."
 keywords: ['mern stack','node.js','javascript','mongodb']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
@@ -9,13 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "Transferring a MERN application to Linode's MERN Marketplace App"
-h1_title: "How to transfer a MERN application to Linode's MERN Marketplace App"
-enable_h1: true
+title: "Transfer a MERN application to Linode's MERN Marketplace App"
 external_resources:
 - '[MongoDB MERN Stack Explained](https://www.mongodb.com/mern-stack)'
 - '[Node.js](https://nodejs.org/en/)'
 - '[NPM](https://www.npmjs.com/)'
+authors: ["Linode"]
 ---
 
 The [Linode Marketplace App](/docs/products/tools/marketplace/guides/mern-stack/) for the MERN stack (MongoDB, Express, React, Node.js) is a great way to create the base configuration equipped with all the essentials for a MERN stack quickly, however the Marketplace APP itself will still require tuning to host your MERN application. Transferring an application to a new host for example, can be a complex process depending on the specifics of your configuration. This guide was designed to serve as reference for users currently undergoing the migration process, and aims to clear up potential confusion and common issues that can occur.
@@ -30,7 +27,7 @@ Before proceeding with any migration, it is first recommended that the Marketpla
 - Node.js
 - NPM
 
-  {{< note >}}
+{{< note respectIndent=false >}}
 Users who prefer building applications with alternative package Managers for Node.js like [Yarn](/docs/guides/install-and-use-the-yarn-package-manager/) will need to install the package manager manually.
 {{< /note >}}
 
@@ -51,7 +48,7 @@ The default `hello-world` Flask application included as part of the MERN Marketp
 
 Before, proceeding with any remote transfer, it is strongly recommended the original host that will be transferring data to the Linode has [Backups](/docs/guides/backing-up-your-data/) available to restore from. While standard backup solutions will work for the majority of the MERN Stack, a database dump for MongoDB should be performed by using the [mongodump](https://docs.mongodb.com/database-tools/mongodump/) command.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If using a Cloud-Native database like **MongoDB Atlas**, the steps for transferring your database may differ, and users should consult the documentation of their database host.
 {{< /note >}}
 
@@ -79,7 +76,7 @@ Once the file transfer is completed, Rebuilding the MERN application is generall
 
        npm install
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The packages installed using the `npm install` command will install all node modules included in the project directory. This does not include all modules in any subdirectory. If your project is reliant on additional underlying modules, you will need to navigate to the directory where their configuration information.
 {{< /note >}}
 
@@ -99,7 +96,7 @@ The packages installed using the `npm install` command will install all node mod
 
 Once these steps are completed, your node configuration should successfully be running.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some MERN applications are dependent on a specific version of Node in order to serve content. If you encounter errors related to your version of Node, you can additionally install tools like the [Node Version Manager(NVM)](/docs/guides/how-to-install-use-node-version-manager-nvm/) in order to easily switch to your needed version of Node.
 
 {{< /note >}}

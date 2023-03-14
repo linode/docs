@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["apache", "apache ubuntu 10.04", "apache ubuntu lucid", "web server", "apache on ubuntu", "apache lucid"]
 tags: ["web server","apache","ubuntu"]
@@ -19,15 +16,16 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 10.04 (Lucid). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.04](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 10.04 (Lucid). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 10.04](/docs/guides/apache-2-web-server-on-ubuntu-10-04-lts-lucid/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

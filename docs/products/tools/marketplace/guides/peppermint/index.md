@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install Peppermint, a ticket management system that allows teams to create tickets, and more, with the Linode One-Click Marketplace."
 keywords: ["ticket management", "marketplace"]
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -15,13 +12,14 @@ external_resources:
 - "[Peppermint Github](https://github.com/Peppermint-Lab/Peppermint/blob/master/README.md)"
 - "[Peppermint Documentation](https://docs.peppermint.sh/)"
 aliases: ['/guides/deploy-peppermint-with-marketplace-apps/','/guides/peppermint-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Peppermint Ticket Management](https://peppermint.sh/) is a ticket management system that allows teams and solo users the ability create & track tickets, todo items, and more. The project is meant to provide help desks and services desks manage internal and customer requests, but Peppermint is a good solution for anyone looking for a ticket management system that is free and easy to use.
 
-{{< caution >}}
+{{< note type="alert" >}}
 While Peppermint is still technically in alpha, it is stable enough for production use.
-{{</ caution >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -29,9 +27,9 @@ While Peppermint is still technically in alpha, it is stable enough for producti
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Peppermint should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

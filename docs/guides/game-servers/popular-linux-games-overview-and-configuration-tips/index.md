@@ -1,20 +1,15 @@
 ---
 slug: popular-linux-games-overview-and-configuration-tips
-author:
-  name: Sandro Villinger
 description: 'This guide discusses popular Linux games and helpful configuration tips for common issues when setting them up.'
-og_description: 'This guide discusses popular Linux games and helpful configuration tips for common issues when setting them up.'
 keywords: ['best linux games']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-03
 modified_by:
   name: Linode
-title: "Popular Linux Games and Configuration Tips"
-h1_title: "An Overview of Popular Linux Games and Configuration Tips"
-enable_h1: true
-contributor:
-  name: Sandro Villinger
+title: "An Overview of Popular Linux Games and Configuration Tips"
+title_meta: "Popular Linux Games and Configuration Tips"
+authors: ["Sandro Villinger"]
 ---
 
 Once a niche industry, gaming under Linux is now a growing market for publishers and gamers alike. In this guide, you learn about popular Linux games and helpful configurations for common issues when setting them up.
@@ -71,7 +66,7 @@ The Linux version on Steam should run normally. However, some gamers have recent
 
 Rocket League combines soccer with remote-controlled cars. Rocket League is no longer a small indie title, it’s one of the most played games ever. The game is addictive and supports a four-player co-op. It includes great graphics and an upbeat dance soundtrack.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The official support for Linux has been stopped, but the game still runs well although some features might not work anymore. You can still play locally with friends.
 {{< /note >}}
 

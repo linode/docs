@@ -1,24 +1,18 @@
 ---
 slug: how-to-list-cron-jobs
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to display currently scheduled cron jobs, and list cron jobs satisfying various criteria.'
-og_description: 'This guide explains how to display currently scheduled cron jobs, and list cron jobs satisfying various criteria.'
 keywords: ['List cron job','View cron job','Display cron job','Cron job linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-14
 modified_by:
   name: Linode
-title: "How to List Cron Jobs on Linux"
-h1_title: "How to List Cron Jobs on Linux"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "List Cron Jobs on Linux"
+title_meta: "How to List Cron Jobs on Linux"
 external_resources:
 - '[Wikipedia Cron Page](https://en.wikipedia.org/wiki/Cron)'
 - '[Crontab Man Page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html)'
 - '[Ubuntu cron documentation](https://help.ubuntu.com/community/CronHowto)'
+authors: ["Jeff Novotny"]
 ---
 
 All Linux distributions are equipped with the `cron` utility, which allows users to schedule jobs to run at certain fixed times. Cron jobs can be scheduled at the user or root level, or by software applications. This guide explains how to view cron jobs on Linux and how to list cron jobs by user or schedule.
@@ -41,11 +35,11 @@ For more information about creating cron jobs, see the Linode guides to [Schedul
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -126,7 +120,7 @@ SHELL=/bin/sh
 #
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `crontab` command is not used to display the system-wide cron jobs. Additionally, the `etc/crontab` file should not be confused with the `crontab` account for the root user.
 {{< /note >}}
 
@@ -166,7 +160,7 @@ The `/etc/cron.hourly/` directory contains the scripts that run hourly. To see a
 ls -l  /etc/cron.hourly
 ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The output of this command for the hourly, weekly, and monthly directories resembles the previous example and is not displayed.
 {{< /note >}}
 
@@ -225,7 +219,7 @@ PATH=/usr/lib/sysstat:/usr/sbin:/usr/sbin:/usr/bin:/sbin:/bin
 59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not modify these files or delete any entries from this directory. This directory is designed for the use of software applications, although other users can add cron jobs here. However, under normal circumstances Linux account users should add their cron jobs to their personal `crontab` file.
 {{< /note >}}
 

@@ -1,17 +1,14 @@
 ---
 slug: members-linode-com-migration
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "The members.linode.com and nodebalancer.linode.com are deprecated. Follow the steps in this guide to use the new domain for forward and reverse DNS."
 keywords: ['dns','members.linode.com','reverse dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-13
 modified_by:
   name: Linode
-title: "members.linode.com and nodebalancer.linode.com Migration"
-h1_title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
-enable_h1: true
+title: "Migrating Away from members.linode.com and nodebalancer.linode.com"
+title_meta: "members.linode.com and nodebalancer.linode.com Migration"
+authors: ["Linode"]
 ---
 
 ## What are members.linode.com and nodebalancer.linode.com?
@@ -80,7 +77,7 @@ To find an existing `members.linode.com` address:
 
     The value under reverse DNS is the Linode Instance's current `members.linode.com` address.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're following these instructions and do not find a `members.linode.com` address, and instead find an `ip.linodeusercontent.com` address, then your Linode Instance has already been configured to use the new domain.
 {{< /note >}}
 
@@ -96,10 +93,10 @@ To find an existing `nodebalancer.linode.com` address:
 
     This is your NodeBalancer's existing forward DNS.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're following these instructions and do not find a `nodebalancer.linode.com` address, and instead find an `ip.linodeusercontent.com` address, then your NodeBalancer has already been configured to use the new domain.
 {{< /note >}}
 
 ### Updating Reverse DNS
 
-To change a Linode's reverse DNS records, review the [Configure Your Linode for Reverse DNS](/docs/guides/configure-rdns/) guide. The new forward DNS records already exist for your Linode's IP, so you can set your Linode's reverse DNS records to match the new name by following the linked guide.
+To change a Linode's reverse DNS records, review the [Configure Your Linode for Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) guide. The new forward DNS records already exist for your Linode's IP, so you can set your Linode's reverse DNS records to match the new name by following the linked guide.

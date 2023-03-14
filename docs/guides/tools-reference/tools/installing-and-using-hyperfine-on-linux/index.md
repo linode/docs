@@ -1,7 +1,5 @@
 ---
 slug: installing-and-using-hyperfine-on-linux
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use hyperfine for benchmarking command-line tools on your Linux system."
 keywords: ['hyperfine linux','install hyperfine','benchmarking linux']
 tags: ['linux']
@@ -10,11 +8,8 @@ published: 2021-10-22
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use hyperfine on Linux"
-h1_title: "How to Install and Use hyperfine on Linux"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "How to Install and Use hyperfine on Linux"
+authors: ["Nathaniel Stickman"]
 ---
 
 hyperfine is a Linux tool used to benchmark command-line commands. It includes features to test the performance of individual commands, side by side. hyperfine stands out from similar tools by giving you fine-tuned control over the benchmarking process and advanced features for more effective testing.
@@ -23,11 +18,11 @@ In this guide, you learn what hyperfine is and how it compares to other tools. T
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

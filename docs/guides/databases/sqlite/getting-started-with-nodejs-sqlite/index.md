@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-nodejs-sqlite
-author:
-  name: James Turner
-  email: docs@linode.com
 description: 'With npm and sqlite3, you can make your NodeJS applications shine. This guide explains how you can install NodeJS SQLite, create a SQLite database, create tables, and insert data.'
 keywords: ['nodejs sqlite']
 tags: ['nodejs', 'sqlite', 'database']
@@ -12,14 +9,12 @@ modified: 2022-01-14
 image: NodeSQLite.jpg
 modified_by:
   name: Linode
-title: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
-h1_title: "Getting Started with NodeJS SQLite"
-enable_h1: true
-contributor:
-  name: James Turner
+title: "Getting Started with NodeJS SQLite"
+title_meta: "NodeJS SQLite3: A Beginner's Guide to Installation & Usage"
 external_resources:
 - '[SQLite3 API](https://github.com/mapbox/node-sqlite3/wiki/API)'
 - '[Marvel Cinematic Universe](https://www.marvel.com/movies)'
+authors: ["James Turner"]
 ---
 
 ## Getting Started with Node.js and SQLite
@@ -59,7 +54,7 @@ var sqlite3 = require('sqlite3');
 
 new sqlite3.Database('./mcu.db', sqlite3.OPEN_READWRITE, (err) ...);
 {{</ file >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The following are the different SQLite flag combinations:
 
    - `OPEN_READONLY`: The database is opened in read-only mode. If the database does not already exist, an error is returned.
@@ -159,7 +154,7 @@ function runQueries(db) {
 
 The `all()` method of the sqlite3 returns an array of rows on success, or an error on failure.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is good practice to parameterize the query by providing a list of substation values or an object with properties. Because it can be substituted using `$properyname` syntax. This avoids SQL injection hacks. See our guide [SQL Injection Attack: What It Is and How to Prevent It](/docs/guides/sql-injection-attack/) to learn more about this type security vulnerability.
 {{< /note >}}
 

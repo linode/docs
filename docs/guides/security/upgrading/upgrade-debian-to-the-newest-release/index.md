@@ -1,8 +1,5 @@
 ---
 slug: upgrade-debian-to-the-newest-release
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for upgrading your Debian system to the latest Debian stable, or LTS (Long Term Support) release.'
 keywords: ['debian','upgrade','update']
 aliases: ['/security/upgrading/upgrade-debian-to-the-newest-release/']
@@ -13,6 +10,7 @@ modified: 2018-12-14
 modified_by:
   name: Linode
 title: "Upgrade Debian to the Newest Release"
+authors: ["Linode"]
 ---
 
 Debian repositories can be tracked either by codename (Wheezy, Jessie, etc.), or by status name (stable, testing, etc.). For example, Debian 9 Stretch is the *stable* release at the time of this writing; the status of Debian 8 (Jessie) is *oldstable*. Debian stable releases are eventually managed by the [Debian Long Term Support](https://wiki.debian.org/LTS/) (LTS) team for a total lifespan of about 5 years.
@@ -21,9 +19,9 @@ Linode offers Debian's [stable](https://wiki.debian.org/DebianStable) and [oldst
 
 On the other hand, if you're currently tracking repositories by codename, as Debian does by default, you will never upgrade beyond that codename release. This is the safest option and you can still manually upgrade to a newer Debian codename or release status name at any time.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While upstream maintainers try to ensure cross-compatibility and problem-free upgrades, there is risk involved in upgrading operating system versions.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -31,16 +29,16 @@ While upstream maintainers try to ensure cross-compatibility and problem-free up
 
 - **Back up any important data stored on your Linode!** If you subscribe to the Linode Backups service, we recommend taking a [manual snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) before upgrading your system. If you use a different backup service or application, you should do a manual backup now.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
 {{< /note >}}
 
 
 ## Prepare to Upgrade
 
-1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/guides/managing-the-kernel-on-a-linode/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
+1.  Verify that you are booting with Debian's kernel using the *GRUB 2* [boot setting](/docs/products/compute/compute-instances/guides/manage-the-kernel/) in the Linode Cloud Manager. We recommend you use the distribution-supplied kernel unless you have a specific reason not to.
 
-2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/guides/lish/).
+2.  Exit the SSH session if you're currently logged in to one and instead open a Lish session to your Linode. Lish will give you continuous access to your Linode whereas SSH could disconnect during the upgrade. Read more about Lish [here](/docs/products/compute/compute-instances/guides/lish/).
 
 3.  Install all available updates for your current Debian system:
 
@@ -78,7 +76,7 @@ deb http://mirrors.linode.com/debian stretch-updates main
 deb-src http://mirrors.linode.com/debian stretch-updates main
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure any third party repositories are also tracking `stretch`. You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
 {{< /note >}}
 

@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Debian 5 (Lenny).'
 keywords: ["nagios", "monitoring"]
 tags: ["debian","monitoring"]
@@ -19,11 +16,12 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 Nagios is an open source monitoring tool that monitors services within a server cluster. In addition to monitoring services such as SMTP/POP3 and HTTP, Nagios can also be used to check the health of the server itself.
 
-Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Additionally, you will also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) in order to use Nagios.
+Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) in order to use Nagios.
 
 ## Prepare for Nagios Installation
 

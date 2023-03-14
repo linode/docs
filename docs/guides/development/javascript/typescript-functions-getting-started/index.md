@@ -1,7 +1,5 @@
 ---
 slug: typescript-functions-getting-started
-author:
-  name: Martin Heller
 description: 'This guide provides an introduction to creating functions in TypeScript. It discusses some of the differences between functions in JavaScript and TypeScript'
 keywords: ['typescript functions']
 tags: ['typescript']
@@ -9,12 +7,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-29
 modified_by:
   name: Linode
-title: "TypeScript Functions: Getting Started"
-h1_title: "Getting Started with TypeScript Functions"
-enable_h1: true
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+title: "Getting Started with TypeScript Functions"
+title_meta: "TypeScript Functions: Getting Started"
+authors: ["Martin Heller"]
 ---
 
 ## Declaring Functions
@@ -73,9 +68,9 @@ In a TypeScript supported editor such as **Visual Studio Code**, or in the **tsc
 Argument of type 'string' is not assignable to parameter of type 'number'.ts(2345)
 {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The transpiled **FtoC.js** can run even though the compiler generated an error. This is because all the TypeScript annotations are stripped out, and the TypeScript philosophy is to "report errors but trust the programmer". The second call generates a `NaN` when it tries to perform arithmetic, since “hello” is not a number, and the call returns `undefined`.
-{{</ note >}}
+{{< /note >}}
 
 ## Using Generics
 
@@ -97,9 +92,9 @@ const n = firstElement([1, 2, 3]);
 
 In this example, TypeScript infers the type of `<Type>` from the input array and propagates that to the return value. `["a", "b", "c"]` is an array of strings, so `s` is a string. `[1, 2, 3]` is an array of numbers, so `n` is a number.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also constrain generics using the [extends](https://www.typescriptlang.org/docs/handbook/2/functions.html#constraints) clause.
-{{</ note >}}
+{{< /note >}}
 
 ## Optional Parameters
 
@@ -113,9 +108,9 @@ f(); // OK
 f(10); // OK
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should not define optional parameters unless there are actual use cases where you would omit them.
-{{</ note >}}
+{{< /note >}}
 
 ## Function Overloads
 

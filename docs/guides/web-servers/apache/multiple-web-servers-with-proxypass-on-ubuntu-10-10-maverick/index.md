@@ -1,9 +1,6 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Ubuntu 10.10 "Maverick".'
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers"]
 tags: ["proxy","web server","apache","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

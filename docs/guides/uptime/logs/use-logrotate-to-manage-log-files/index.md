@@ -1,8 +1,5 @@
 ---
 slug: use-logrotate-to-manage-log-files
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to make system logs easier to manage and keep track of with logrotate."
 keywords: ["logrotate", "log files", "access logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,9 @@ modified: 2018-03-20
 modified_by:
   name: Linode
 published: 2010-10-11
-title: "How to Use logrotate to Manage Log Files"
-h1_title: "Using logrotate to Manage Log Files"
-enable_h1: true
+title: "Using logrotate to Manage Log Files"
+title_meta: "How to Use logrotate to Manage Log Files"
+authors: ["Linode"]
 ---
 
 ## What is logrotate?

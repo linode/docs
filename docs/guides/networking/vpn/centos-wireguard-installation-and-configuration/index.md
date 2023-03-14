@@ -1,10 +1,6 @@
 ---
 slug: centos-wireguard-installation-and-configuration
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn01@gmail.com
 description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
-og_description: 'This guide provides you with step-by-step instructions on how to install and configure the WireGuard Virtual Private Network services on CentOS 8.'
 keywords: ['centos', 'wireguard', 'vpn']
 tags: ['wireguard', 'centos', 'vpn']
 bundles: ['network-security']
@@ -13,12 +9,8 @@ published: 2021-05-21
 image: WireGuard.jpg
 modified_by:
   name: Linode
-title: "How to Install and Configure WireGuard on CentOS 8"
-h1_title: "Installing and Configuring WireGuard on CentOS 8"
-enable_h1: true
-contributor:
-  name: Steven J Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
+title: "Installing and Configuring WireGuard on CentOS 8"
+title_meta: "How to Install and Configure WireGuard on CentOS 8"
 external_resources:
 - '[WireGuard](https://www.wireguard.com/)'
 - '[WireGuard was merged into the Linux kernel 5.6](https://www.zdnet.com/article/linuxs-wireguard-vpn-is-here-and-ready-to-protect-you/)'
@@ -39,6 +31,7 @@ external_resources:
 - '[Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux)'
 - '[CentOS](https://www.centos.org/)'
 - '[wg-quick](https://manpages.debian.org/unstable/wireguard-tools/wg-quick.8.en.html)'
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 ## What is WireGuard?
@@ -73,14 +66,14 @@ Configuring WireGuard is as simple as [setting up SSH](/docs/guides/security). A
 
 ## Before You Begin
 
-- [Deploy a Linode](/docs/guides/creating-a-compute-instance/) running CentOS 8.
-- [Add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- [Deploy a Linode](/docs/products/compute/compute-instances/guides/create/) running CentOS 8.
+- [Add a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 ## Install WireGuard
 
 There are many ways to install WireGuard. The simplest way is to use the [*ELRepo*](http://elrepo.org/tiki/HomePage)'s pre-built module.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ELRepo is a community repository for [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) style distributions such as [CentOS](https://www.centos.org/). It focuses on hardware-related packages. All its packages are built against the RHEL kernel.
     {{< /note >}}
 
@@ -116,7 +109,7 @@ Here's an explanation of the above configuration file:
 - **PrivateKey:** The server's private key.
 - **Address:** Defines the private IPv4 and IPv6 addresses for the WireGuard server. Each peer in the VPN network should have a unique value. Typical values are `10.0.0.1/24`, `192.168.1.1/24`, or `192.168.2.1/24`. This is not the same as a private IP address that Linode can assign to your Linode instance.
 - **ListenPort:** Specifies which port WireGuard uses for incoming connections. The default is `51820`.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The value you set in `ListenPort` is referenced in your firewall settings later.
 {{< /note >}}
 - **PostUp** and **PostDown** define steps to run after the interface is turned on or off, respectively. In this case, `iptables` sets Linux IP masquerade rules to allow all the clients to share the server's IPv4 and IPv6 addresses. The rules are cleared once the tunnel is down.

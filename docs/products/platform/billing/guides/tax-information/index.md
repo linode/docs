@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,6 +9,7 @@ published: 2019-04-09
 title: Tax Information
 aliases: ['/platform/billing-and-support/european-union-vat-linode/','/platform/billing-and-support/european-union-vat-linode-classic-manager/','/platform/billing-and-support/tax-information/','/platform/billing-and-support/tax-information-classic-manager/','/guides/tax-information/']
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 {{< note >}}
@@ -25,7 +23,7 @@ As a result of Akamai’s acquisition of Linode, businesses or individuals resid
 **February 1st, 2023:**
 
 - **U.S. States:** Iowa, Maryland, Ohio
-{{</ note >}}
+{{< /note >}}
 
 Some countries, states, and regions require us by law to collect taxes. As such, customers located in these locations are charged the appropriate tax rate for any taxable services billed to their account. The taxes that Linode collects are listed on customer invoices (see the [Viewing Invoices and Payments](/docs/products/platform/billing/guides/view-history/) section of our Cloud Manager Billing guide).
 
@@ -135,9 +133,9 @@ For most customers, including those using Linode for most business and personal 
 
 In most cases, tax collection can be prevented by [adding a tax ID](#adding-a-tax-id) to your Linode account. Users within the **United States** and **Canada** will need to submit both their tax ID and a state tax exemption or reseller's certificate in a [Support Ticket](https://www.linode.com/support/) before becoming exempt. Registered Canadian businesses may become exempt from *PST* sales tax but will always be billed for GST, HST, and QST sales tax.
 
-{{< caution >}}
+{{< note type="alert" >}}
 If you are located in one of the countries that require taxes on our services, you are still liable for those taxes. Adding your tax ID does not exempt you from your liability to pay any taxes that have been mandated by your country for our services. Instead, this allows you to settle your taxes directly with your government's tax agency.
-{{</ caution >}}
+{{< /note >}}
 
 ### Adding a Tax ID
 

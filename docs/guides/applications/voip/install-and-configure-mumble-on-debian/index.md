@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-mumble-on-debian
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: "In this tutorial, we'll walk you through how to install a Mumble server on Debian, and offer general guidelines for configuring the Mumble client."
 keywords: ["mumble", " debian", " murmur", " gaming", " voip", " voice chat"]
 tags: ["debian"]
@@ -11,16 +8,13 @@ published: 2015-11-09
 modified: 2019-02-01
 modified_by:
     name: Linode
-title: "How to Install and Configure Mumble on Debian"
-h1_title: "Installing and Configuring Mumble on Debian"
-enable_h1: true
-contributor:
-    name: Mark Weiman
-    link: https://twitter.com/markzz989/
+title: "Installing and Configuring Mumble on Debian"
+title_meta: "How to Install and Configure Mumble on Debian"
 external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 dedicated_cpu_link: true
 aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
+authors: ["Mark Weiman"]
 ---
 
 
@@ -28,15 +22,15 @@ aliases: ['/applications/voip/install-and-configure-mumble-on-debian/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,7 +50,7 @@ This guide is written for non-root users. Commands that require elevated privile
 
     ![Image description](murmur-debian-auto-start.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to disable the server starting at boot, you can use your init system to disable it.
 
 For Debian 8:

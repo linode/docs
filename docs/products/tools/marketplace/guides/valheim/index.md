@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy Valheim, an open-world Viking themed survivial game, on Linode using Marketplace Apps."
 keywords: ['gaming','game server','valheim']
 tags: ["linode platform", "cloud manager", "marketplace"]
@@ -15,6 +12,7 @@ external_resources:
 - '[LinuxGSM Valheim Documentation](https://linuxgsm.com/lgsm/vhserver/)'
 - '[Valheim official website](https://www.valheimgame.com/)'
 aliases: ['/guides/deploy-valheim-with-marketplace-apps/','/guides/valheim-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Valheim is an open-world Viking-themed survival and sandbox game developed by [Iron Gate Studio](https://irongatestudio.se/). Play solo in single player mode, or invite your friends for player vs. environment multiplayer mode. With challenging combat, numerous boss battles, and a creative building system that lets you craft things like halls, forts, and even imposing Viking warships, there's always something to do. Explore, build, conquer, and survive. The further you travel the more challenging adventures await.
@@ -27,9 +25,9 @@ Install Valheim on Linode with the Valheim Game Server Marketplace App to maximi
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Valheim should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -46,7 +44,9 @@ Install Valheim on Linode with the Valheim Game Server Marketplace App to maximi
 #### SSH Options (Optional)
 
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
-- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/guides/lish/).
+- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

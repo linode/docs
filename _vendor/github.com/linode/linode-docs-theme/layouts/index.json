@@ -60,10 +60,10 @@
 {{- $sections := partial "funcs/get-parent-sections" . -}}
 
 {{- if gt (len $sections) 2 -}}
-  
+
     {{/*  For the reference-architecture section we index all items with the first section's href and use the distinct feature in Algolia.
 
-    We store the page hierarchy down to this page as a JSON. 
+    We store the page hierarchy down to this page as a JSON.
 
     Note that we will probably use this hierarchy JSON for "hashlink" searches in the future.
 
@@ -90,34 +90,36 @@
 {{- with .Params.authors -}}
 {{- $keywords = $keywords | append . -}}
 {{- end -}}
+{{- $weightSearchBoost := .Params.weightSearchBoost | default false }}
 {{- $titleH1 := .Params.h1_title | default "" }}
 {{- $titleMeta := .Params.title_meta | default "" }}
 {{- $titleSocial := .Params.title_social | default "" }}
-{{- $dict := (dict 
-    "objectID" $objectID 
-    "ordinal" $ordinal 
-    "thumbnailUrl" $thumb.RelPermalink 
-    "section" $section 
-    "category" $category 
-    "tags" $tags 
-    "excerpt" $excerpt 
-    "title" $title 
-    "linkTitle"  .LinkTitle 
-    "href" $href 
-    "lastUpdatedTime" .Lastmod.Unix 
-    "firstPublishedTime" .PublishDate.Unix 
-    "firstPublishedYear" .PublishDate.Year 
-    "keywords" $keywords 
+{{- $dict := (dict
+    "objectID" $objectID
+    "ordinal" $ordinal
+    "thumbnailUrl" $thumb.RelPermalink
+    "section" $section
+    "category" $category
+    "tags" $tags
+    "excerpt" $excerpt
+    "title" $title
+    "linkTitle"  .LinkTitle
+    "href" $href
+    "lastUpdatedTime" .Lastmod.Unix
+    "firstPublishedTime" .PublishDate.Unix
+    "firstPublishedYear" .PublishDate.Year
+    "keywords" $keywords
     "keywordsAlgolia" $keywordsAlgolia
     "weightAge" (.Params.weightAge | default 0)
+    "weightSearchBoost" $weightSearchBoost
     "deprecated" $deprecated
-    "hiddenguide" .Params.hiddenguide 
-    "titleH1" $titleH1 
-    "titleMeta" $titleMeta 
-    "titleSocial" $titleSocial 
-    "toc" (.TableOfContents | plainify | transform.HTMLUnescape  ) 
-    "excludeFromViews" $excludeFromViews 
-    "hierarchy" $hierarchy ) 
+    "hiddenguide" .Params.hiddenguide
+    "titleH1" $titleH1
+    "titleMeta" $titleMeta
+    "titleSocial" $titleSocial
+    "toc" (.TableOfContents | plainify | transform.HTMLUnescape  )
+    "excludeFromViews" $excludeFromViews
+    "hierarchy" $hierarchy )
 -}}
 {{- $dict = $dict | merge (dict "skillLevel" .Params.skillLevel "languages" .Params.languages) -}}
 {{- $sectionPath := "" -}}

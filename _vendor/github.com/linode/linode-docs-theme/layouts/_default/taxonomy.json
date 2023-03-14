@@ -1,0 +1,6 @@
+{{ $terms := .Data.Terms }}
+{{- $items := slice -}}
+{{ range $k, $v := $terms }}
+{{- $items = $items | append (dict "term" $k "href" .Page.Permalink ) -}}
+{{ end }}
+{{- $items | jsonify (dict "indent" "  ")  -}}

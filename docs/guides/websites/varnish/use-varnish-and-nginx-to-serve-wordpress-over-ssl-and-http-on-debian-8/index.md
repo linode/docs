@@ -1,8 +1,5 @@
 ---
 slug: use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn to integrate Varnish with nginx to serve cached WordPress content for both SSL and plain HTTP websites.'
 keywords: ["Varnish", "cache", "Nginx", "WordPress", "SSL", "PHP-FPM"]
 tags: ["wordpress", "ssl", "nginx"]
@@ -12,13 +9,11 @@ modified: 2016-11-23
 modified_by:
     name: Nick Brewer
 title: Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8
-contributor:
-  name: Frederick Jost Zweig
-  link: https://github.com/Fred-Zweig
 external_resources:
  - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
  - '[NGINX Documentation](https://nginx.org/en/docs/)'
 aliases: ['/websites/varnish/use-varnish-and-nginx-to-serve-wordpress-over-ssl-and-http-on-debian-8/']
+authors: ["Frederick Jost Zweig"]
 ---
 
 ![Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8](varnish-nginx-wordpress-ssl-http-debian.png "Use Varnish & NGINX to Serve WordPress over SSL & HTTP on Debian 8")
@@ -50,7 +45,7 @@ Our setup is illustrated below. Please note that frontend NGINX and backend NGIN
 
 This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started:
 
-1.  Complete the steps in our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
+1.  Complete the steps in our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
 2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/guides/install-a-lemp-stack-on-debian/) guide. Skip the NGINX configuration section, since we'll address it later in this guide.
 
@@ -223,7 +218,7 @@ unset req.http.cookie;
 {{< /file >}}
 
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 This is the final setting to be placed inside the `sub vcl_recv` routine. All directives in the following steps (from Step 6 onward) should be placed after the closing last bracket.
 {{< /note >}}
 
@@ -276,7 +271,7 @@ unset beresp.http.set-cookie;
 
     Remember to include in the above series any page that requires cookies to work, for example `phpmyadmin|webmail|postfixadmin`, etc. If you change the WordPress login page from `wp-login.php` to something else, also add that new name to this series.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The "WooCommerce Recently Viewed" widget, which displays a group of recently viewed products, uses a cookie to store recent user-specific actions and this cookie prevents Varnish from caching product pages when they are browsed by visitors. If you want to cache product pages when they are only browsed, before products are added to the cart, you must disable this widget.
 
 Special attention is required when enabling widgets that use cookies to store recent user-specific activities, if you want Varnish to cache as many pages as possible.
@@ -296,7 +291,7 @@ set resp.http.X-Purger = req.http.X-Purger;
 
     This concludes the `custom.vcl` configuration. You can now save and exit the file. The final `custom.vcl` file will look like [this](/docs/assets/custom.vcl).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can download the complete sample configuration file using the link above and `wget`. If you do, remember to replace the variables as described above.
 {{< /note >}}
 
@@ -494,9 +489,9 @@ server {
 
     For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
-{{< /caution >}}
+{{< /note >}}
 
     Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
 
@@ -583,7 +578,7 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
     The output should be similar to that of the HTTP-only site.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're using a self-signed certificate while testing, add the `--no-check-certificate` option to the `wget` command:
 
 wget -SS --no-check-certificate https://www.example-over-https.com

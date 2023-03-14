@@ -1,9 +1,6 @@
 ---
 slug: manage-source-code-versions-with-subversion
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to manage source code with Subversion, an open source version control system.'
 keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
 Subversion (SVN) is a centralized [version control system](https://en.wikipedia.org/wiki/Version_control). Used by software developers to track changes during the production and maintenance of a project. SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the Concurrent Versions System (CVS). SVN attempts to fix many of the major problems with CVS without requiring any paradigm shifts in the way software is developed:
@@ -30,15 +28,15 @@ There are many options for accessing and managing Subversion repositories on loc
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -122,7 +120,7 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
 
         svnadmin load /srv/svn/subversion-test-backup < /var/svn/subversion-test-1259853077.svn
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/guides/schedule-tasks-with-cron/).
 {{< /note >}}
 
@@ -236,9 +234,9 @@ If local system accounts need to access the repository, add those users to the g
 
         chmod -R +s /srv/svn/subversion-test
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configure the Apache Web Server
 

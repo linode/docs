@@ -1,9 +1,6 @@
 ---
 slug: manage-a-debian-6-squeeze-vps-with-ispconfig
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 6 (Squeeze) Linode.'
 keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 tags: ["cms","debian"]
@@ -19,11 +16,12 @@ relations:
         key: manage-a-linode-with-ISPConfig
         keywords:
            - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before beginning this guide we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 

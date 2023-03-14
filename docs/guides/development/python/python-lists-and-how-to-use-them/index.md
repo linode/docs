@@ -1,24 +1,18 @@
 ---
 slug: python-lists-and-how-to-use-them
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to use the Lists feature in Python to append and remove items from a list, and then convert those list items into a sortable string."
-og_description: "This guide shows you how to use the Lists feature in Python to append and remove items from a list, and then convert those list items into a sortable string."
 keywords: ['python list','python list append','python list sort']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
-title: "Python Lists and How to Use Them"
-h1_title: "Python Lists and How to Use Their Built-In Methods"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Python Lists and How to Use Their Built-In Methods"
+title_meta: "Python Lists and How to Use Them"
 external_resources:
 - '[Python 3 Documentation: List Comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)'
 - "[O'Reilly: How Do I Use the Slice Notation in Python?](https://www.oreilly.com/content/how-do-i-use-the-slice-notation-in-python/)"
+authors: ["Nathaniel Stickman"]
 ---
 
 Python includes many built-in methods and operations that help you manipulate lists. This guide shows you how to use the `append()`, `insert()`, and `remove()` built-in list methods. You also learn how to write a list comprehensions, and how to sort lists.

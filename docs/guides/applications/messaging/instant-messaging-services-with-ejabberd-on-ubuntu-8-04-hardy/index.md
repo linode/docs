@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-ubuntu-8-04-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 8.04 (Hardy).'
 keywords: ["ejabberd", "ejabberd ubuntu hardy", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics, but mostly due to the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads: ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 
-This installation process assumes that you have a working installation of Ubuntu 8.04 (Hardy) and have followed the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and now have an up to date instance of the Ubuntu Hardy operating system and are connected to your Linode via SSH and have root access. Once you've completed these requirements we can begin with the installation process.
+This installation process assumes that you have a working installation of Ubuntu 8.04 (Hardy) and have followed the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and now have an up to date instance of the Ubuntu Hardy operating system and are connected to your Linode via SSH and have root access. Once you've completed these requirements we can begin with the installation process.
 
 ## XMPP/Jabber Basics
 

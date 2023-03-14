@@ -1,21 +1,16 @@
 ---
 slug: turbocharge-wordpress-search-with-solr
-author:
-    name: Karthik Shiraly
-    email: docs@linode.com
 description: 'The built-in WordPress search doesn''t always provide the best search experience. This guide provides instructions for installing Solr, a better WP search engine.'
 keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
 tags: ["ubuntu","wordpress","cms","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-contributor:
-    name: Karthik Shiraly
-    link: https://twitter.com/pathbreaksoft
 modified: 2015-04-03
 modified_by:
     name: James Stewart
 published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
 aliases: ['/websites/cms/solr/turbocharge-wordpress-search-with-solr/','/websites/cms/turbocharge-wordpress-search-with-solr/']
+authors: ["Karthik Shiraly"]
 ---
 
 
@@ -23,7 +18,7 @@ The standard search that is built into WordPress does not provide the best searc
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -86,7 +81,7 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 
 4.  Click on the highest available 4.x version to see the files in that release:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
 {{< /note >}}
 
@@ -182,7 +177,7 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
 For security purposes, Solr should run with its own user account and group.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following commands should be run on the server where **Solr** is installed.
 {{< /note >}}
 
@@ -203,7 +198,7 @@ The following commands should be run on the server where **Solr** is installed.
 
 ### Configure Solr as a Startup Service
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Run the following commands on the server where **Solr** is installed.
 {{< /note >}}
 
@@ -213,7 +208,7 @@ Run the following commands on the server where **Solr** is installed.
 
 2.  Copy the following text into the editor, save and close it:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using a different version of Solr, change the `JETTY_HOME=/opt/solr-4.10.4/example` line to match the installed version.
 {{< /note >}}
 
@@ -513,7 +508,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 11. Go to the **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Whenever you publish a new post or page or attachment, this button must be selected for the new pages to be indexed.
 {{< /note >}}
 

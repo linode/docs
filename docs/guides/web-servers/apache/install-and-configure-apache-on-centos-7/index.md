@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-apache-on-centos-7
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
 keywords: ["CentOS", "CentOS 7", "apache", "yum install httpd"]
 tags: ["centos","web server","apache"]
@@ -21,13 +18,14 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 7
+authors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on CentOS 7](How_to_Install_Apache_on_CentOS_7_smg.jpg)
 
 This guide explains how to install and configure the Apache web server on CentOS 7. Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Replace each instance of `example.com` in this guide with the domain name of the website.
@@ -36,9 +34,9 @@ Replace each instance of `example.com` in this guide with the domain name of the
 
 ## Before you begin
 
-1.  Ensure you have followed both the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure you have followed both the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
-2.  Check that the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname). To check the hostname run:
+2.  Check that the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname). To check the hostname run:
 
         hostname
         hostname -f
@@ -91,7 +89,7 @@ DocumentRoot "/var/www/html/example.com/public_html"
 </IfModule>
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These settings may also be added to a separate file. The file must be located in either the `conf.module.d` or `conf` directories and must end in `.conf` (as this is the format of files included in the resulting configuration).
 {{< /note >}}
 
@@ -123,7 +121,7 @@ NameVirtualHost *:80
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined as in the previous step, create the `logs` directories before you restart Apache.
 {{< /note >}}
 

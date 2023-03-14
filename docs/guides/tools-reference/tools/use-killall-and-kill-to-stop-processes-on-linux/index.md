@@ -1,8 +1,5 @@
 ---
 slug: use-killall-and-kill-to-stop-processes-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
 description: Learn how to use Linux commands killall and kill to manage and kill processes on Linux distributions in this simple tutorial.
 keywords: ["kill", "killall", "linux", "common linux commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2010-11-29
 title: Use killall and kill Commands to Stop Processes on Linux
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 `killall` is a tool for terminating running processes on your system based on name. In contrast, `kill` terminates processes based on Process ID number (PID). `kill` and `killall` can also send specific system signals to processes.
@@ -123,9 +121,9 @@ Use the `ps` command to view processes that are currently running and their PIDs
 
 The number listed in the second column from the left is the PID, which is `3896` in the case of the `emacs` process. The `grep` process will always match itself for a simple search, as in the second result.
 
-{{<note>}}
+{{< note >}}
 You can use the command `ps auxf` to view a hierarchical tree of all running processes.
-{{</note>}}
+{{< /note >}}
 
 Once you have obtained the PID or process name, use `killall` or `kill` to terminate the process as above.
 

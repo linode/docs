@@ -1,8 +1,5 @@
 ---
 slug: network-transfer
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how your Linode account's network transfer pool is calculated and billed."
 keywords: ["network","billing","account","transfer", "overage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,14 @@ modified: 2022-06-17
 modified_by:
   name: Linode
 title: "Network Transfer Usage and Costs"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/']
+authors: ["Linode"]
 ---
+
+{{< note title="Notice of Upcoming Pricing Changes">}}
+On April 1st 2023, updated pricing will go into effect for some Compute services. This includes decreasing the cost of network transfer (egress) overage fees from $0.01/GB to $0.005/GB. For specific pricing changes, see the [Upcoming Pricing Changes](/docs/products/compute/compute-instances/guides/upcoming-pricing-changes-april-2023/) guide. To learn more general details about these changes, review the [Akamai’s Cloud Computing Services: Pricing Update](https://www.linode.com/blog/linode/akamai_cloud_computing_price_update/) blog post.
+{{< /note >}}
 
 ## Overview
 
@@ -37,7 +37,7 @@ The allowance included with each service on an account is added to an account-wi
 
 {{< note >}}
 If the service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service was active.
-{{</ note >}}
+{{< /note >}}
 
 ## Usage Costs
 
@@ -59,7 +59,7 @@ All metered network transfer consumed by a service is counted toward the account
 
 {{< note >}}
 The combined monthly network transfer pool is typically enough to cover *most* common use cases for our services. You are only billed for additional network transfer if your usage exceeds this monthly pool during a billing period. If traffic for an individual service exceeds the network transfer amount specified by its plan, but the total transfer used between all of your services is still less than your monthly network transfer pool, then you are *not* charged additional fees.
-{{</ note >}}
+{{< /note >}}
 
 ## Monitoring Network Transfer Usage
 
@@ -87,11 +87,13 @@ We recommend that you monitor your network transfer usage throughout the month t
 
 To view your network utilization (in GB) for the current month, issue the following command:
 
-    linode-cli account transfer
+```command
+linode-cli account transfer
+```
 
 {{< note >}}
 You need to generate a Personal Access Token and install the Linode CLI before being able to use the CLI. See the [Linode CLI](/docs/products/tools/cli/get-started/) guide for more information.
-{{</ note >}}
+{{< /note >}}
 
 ### Email Alerts
 
