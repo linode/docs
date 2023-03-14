@@ -169,7 +169,7 @@ The following list shows the other `SCRIPT` commands used to manage scripts in c
 
     Most often, asynchronous debugging is preferable, as it lets you run scripts without significant consequence.
 
-   Redis recommends script debugging not be used in production environments. Using a testing or development server instead can prevent unforeseen consequences and performance impacts.
+    Redis recommends script debugging not be used in production environments. Using a testing or development server instead can prevent unforeseen consequences and performance impacts.
 
     ```command
     SCRIPT DEBUG YES
