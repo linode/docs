@@ -1,26 +1,24 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
 keywords: ['counter-strike','cs', 'go','marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
-modified: 2022-03-08
+modified: 2022-05-17
 modified_by:
   name: Linode
-title: "Deploying Counter-Strike Global Offensive through the Linode Marketplace"
+title: "Deploy Counter-Strike Global Offensive through the Linode Marketplace"
 external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
+authors: ["Linode"]
 ---
 
 {{< youtube aSivuBZxUgw >}}
 
-Counter-Strike: Global Offensive (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team.
+[Counter-Strike: Global Offensive](https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/) (CS:GO) is a fast-paced first person shooter. Teams compete against each other to complete objectives or to eliminate the opposing team. A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.
 
-A competitive match requires two teams of five players, but hosting your own server offers you control over team size and server location, so you and your friends can play with low latency. Up to 64 players can be hosted on a single server.
+This Marketplace App deploys the CS:GO server software through [LinuxGSM](https://linuxgsm.com/). While no additional license is required to run the server, each client needs to have a license for the game.
 
 ## Deploying a Marketplace App
 
@@ -28,13 +26,13 @@ A competitive match requires two teams of five players, but hosting your own ser
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Counter-Strike Global Offensive should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 4GB Dedicated CPU Compute Instance
 
 ### CS:GO Options
@@ -49,6 +47,8 @@ A competitive match requires two teams of five players, but hosting your own ser
 - **Maximum Rounds:** The maximum amount of rounds before the map changes.
 - **Buy Anywhere:** When enabled, allows teams to buy equipment from outside buy zones.
 - **Friendly Fire Enabled:** Friendly fire allows teammates to damage and kill each other.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -73,7 +73,7 @@ After CS:GO has finished installing, you will be able to access your game server
 1. In the CS:GO developer's console, type `connect 192.0.2.240` and click **Submit**, where `192.0.2.240` is the IP address of your Linode.
 
     {{< note >}}
-If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-options) when installing, submit `connect 192.0.2.240; password your_server_password` instead.
+    If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-options) when installing, submit `connect 192.0.2.240; password your_server_password` instead.
     {{< /note >}}
 
     ![The CS:GO developer's console.](cs-go-developers-console.png)

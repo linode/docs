@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the AWS SDK for PHP with Object Storage"
 description: "Learn how to use the PHP AWS SDK with Linode's S3-compatible Object Storage."
+authors: ["Linode"]
 ---
 
 The [AWS SDK for PHP](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/welcome.html) (GitHub: [aws/aws-sdk-php/](https://github.com/aws/aws-sdk-php)) includes an [S3 client](https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/s3-multiregion-client.html) that enables access to Linode's S3-compatible Object Storage within a PHP application or script.
@@ -165,7 +163,7 @@ Uploads a file as an object stored within the specified bucket. See [putObject()
 
 ## Download an Object to a File
 
-Downloads the specified object to a new file on your system. See [getObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#getobject) for for additional details, syntax, and examples.
+Downloads the specified object to a new file on your system. See [getObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html#getobject) for additional details, syntax, and examples.
 
 ### Syntax
 
@@ -187,7 +185,7 @@ Download the object "file.txt", stored within the bucket called "example-bucket"
 
 ## Delete an Object or Directory
 
-Deletes an object from a bucket. See [deleteObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html) for for additional details, syntax, and examples.
+Deletes an object from a bucket. See [deleteObject()](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-s3-2006-03-01.html) for additional details, syntax, and examples.
 
 ### Syntax
 

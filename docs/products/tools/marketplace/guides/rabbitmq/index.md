@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy the open source message broker RabbitMQ to manage sending and receiving data using Marketplace Apps."
 keywords: ['rabbitmq', 'message broker', 'scheduling']
 tags: ["debian", "marketplace", "web applications", "linode platform", "cloud manager"]
@@ -10,10 +7,11 @@ published: 2020-09-28
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying RabbitMQ through the Linode Marketplace"
+title: "Deploy RabbitMQ through the Linode Marketplace"
 external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'
 aliases: ['/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-server-with-marketplace-apps/','/guides/deploy-rabbitmq-with-marketplace-apps/','/guides/rabbitmq-marketplace-app/']
+authors: ["Linode"]
 ---
 
 RabbitMQ is a popular open source **message broker**, or a tool that enables and empowers components of a system to communicate from a centralized source or application. By "translating" data from a number of different sources into a unified language, RabbitMQ allows component services to interact with each other through a centralized method.
@@ -26,9 +24,9 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** RabbitMQ should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -39,6 +37,8 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 - **RabbitMQ Username** *(required)*: The username for accessing the rabbitMQ management console.
 - **RabbitMQ Password** *(required)*: The user password for SSH access to the Linode.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started After Deployment
 

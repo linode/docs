@@ -1,17 +1,33 @@
-{{ partial "sections/navigation/explorer-icons.html" .}}
-<div data-turbo-permanent id="explorer-component" class="explorer box-border" x-data="lncSearchExplorer()" @click.away="closeIfMobile()" @turbo:before-visit.document="onTurbolinksBeforeVisit($event.detail);"  @turbo:before-render.document="onTurbolinksBeforeRender($event.detail)" @turbo:render.document="onTurbolinksRender($event.detail);"  data-turbo-permanent>
-  <nav class="h-full block top-0 overflow-x-hidden" x-show="isOpen()" x-bind="transitions()">
-    <div x-show="$store.search.query.isFiltered()" class="pl-5 md:pl-6 h-8 bg-black flex items-center text-xs font-semibold" data-testid="search-filter-status" x-cloak>
+{{ partial "sections/navigation/explorer-icons.html" . }}
+<div
+  data-turbo-permanent
+  id="explorer-component"
+  class="explorer box-border"
+  x-data="lncSearchExplorer()"
+  @click.away="closeIfMobile()"
+  @turbo:before-visit.document="onTurbolinksBeforeVisit($event.detail);"
+  @turbo:before-render.document="onTurbolinksBeforeRender($event.detail)"
+  @turbo:render.document="onTurbolinksRender($event.detail);"
+  data-turbo-permanent>
+  <nav
+    class="h-full block top-0 overflow-x-hidden"
+    x-show="isOpen()"
+    x-bind="transitions()">
+    <div
+      x-show="$store.search.query.isFiltered()"
+      class="pl-5 md:pl-6 h-8 bg-black flex items-center text-xs font-semibold"
+      data-testid="search-filter-status"
+      x-cloak>
       <div class="bg-brand rounded-full h-1 w-1 mr-2"></div>
-      <div class="text-white">
-        Filtered by search term
-      </div>
+      <div class="text-white">Filtered by search term</div>
     </div>
     <ul class="search-explorer-root bg-backgroundcolor" x-ref="explorer"></ul>
   </nav>
   <template x-ref="templateLoopRoot">
     <template x-if="open">
-      <template x-for="node in data.rootNode.sections" :key="node.key"></template>
+      <template
+        x-for="node in data.rootNode.sections"
+        :key="node.key"></template>
     </template>
   </template>
   <template x-ref="templateLoopNested">
@@ -20,25 +36,41 @@
     </template>
   </template>
   <template x-ref="templateTree">
-    <li class="explorer__node" x-bind:class="{
+    <li
+      class="explorer__node"
+      x-bind:class="{
       'explorer__node--after-first': node.level > 1,
       'pl-6': node.level === 2
-    }" x-transition.200ms x-show="!node.hidden" :data-testid="`node-${ node.key }`" :id="node.id()">
+    }"
+      x-transition.200ms
+      x-show="!node.hidden"
+      :data-testid="`node-${ node.key }`"
+      :id="node.id()">
       <div class="explorer__node__inner" :data-testid="`li-${ node.level }`">
-        <div x-bind:class="{ 
+        <div
+          x-bind:class="{ 
           'explorer__row--first pl-container bg-white border-b-gray text-gray-900' : (node.level===1), 
           'explorer__row--after-first text-gray-700' : (node.level > 1),
-        }" class="flex items-center justify-between pr-6">
+        }"
+          class="flex items-center justify-between pr-6">
           <div class="flex content-end flex-auto">
-            <div x-show="node.level === 1" class="text-basicgray flex items-center">
-              <svg x-bind:class="{
+            <div
+              x-show="node.level === 1"
+              class="text-basicgray flex items-center">
+              <svg
+                x-bind:class="{
                   'text-gray-300': node.isDisabled(),
-                  'text-brand': node.open }" class="fill-current block w-5" style="height: 16.87px;">
+                  'text-brand': node.open }"
+                class="fill-current block w-5"
+                style="height: 16.87px;">
                 <use x-bind:href="node.icon"></use>
               </svg>
             </div>
             <template x-if="!node.isPage()">
-              <a :href="node.href" @click="node.onClick($event)" x-bind:class="{
+              <a
+                @click="node.onClick($event)"
+                :href="node.href"
+                x-bind:class="{
                 'text-brand': node.level === 1 && node.open,
                 'text-titlecolor': !node.isDisabled() && node.level === 1 && !node.open,
                 'pl-4': node.level === 1,
@@ -50,37 +82,59 @@
                 'text-sm': (node.level === 2),
                 'text-xs': (node.level > 2),
                 'text-gray-300': node.isDisabled()
-                }" class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto" @click="node.toggleOpen()" data-testid="node-link">
-                <span :class="{ 
+                }"
+                class="block relative cursor-pointer pr-3 no-underline capitalize z-10 flex-auto"
+                @click="node.toggleOpen()"
+                data-testid="node-link">
+                <span
+                  :class="{ 
                 'after-second': node.level > 2
-              }" class="bg-container h-full"></span>
-                <span x-html="node.title"></span>
+              }"
+                  class="bg-container h-full"></span>
+                <span x-html="node.title "></span>
               </a>
             </template>
             <template x-if="node.isPage()">
-              <a :href="node.href" @click="node.onClick($event);" x-html="node.title"  :class="{
+              {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
+              <a
+                :href="node.href"
+                x-bind:target="node.href.startsWith('http') ? '_blank' : ''"
+                @click="node.onClick($event);"
+                x-html="node.title"
+                :class="{
                 'text-textcolor': !node.active,
                 'text-brand font-semibold is-active-page': node.active,
-              }" class="py-1-5 page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none"></a>
+              }"
+                class="py-1-5 page-link mr-2 text-xs capitalize cursor-pointer no-underline active:text-brand hover:text-gray-900 focus:outline-none"></a>
             </template>
           </div>
           <div class="flex items-center h-full">
             <template x-if="!node.isPage()">
-              <span x-bind:class="{
+              <span
+                x-bind:class="{
                 'text-brand': !node.isDisabled() && $store.search.query.isFiltered(),
                 'text-gray-100': node.isDisabled(),
-                'text-basicgray': !node.isDisabled() && !$store.search.query.isFiltered() }" x-html="node.count" class="text-xs font-semibold pr-6" data-testid="node-count"></span>
+                'text-basicgray': !node.isDisabled() && !$store.search.query.isFiltered() }"
+                x-html="node.count"
+                class="text-xs font-semibold pr-6"
+                data-testid="node-count"></span>
             </template>
-            <template x-if="!node.isPage() && (node.isDisabled() || node.isLeaf())">
+            <template
+              x-if="!node.isPage() && (node.isDisabled() || node.isLeaf())">
               <div class="w-3"></div>
             </template>
             <template x-if="!node.isPage()">
               <div class="z-10" x-show="!data.disabled && !node.isLeaf()">
-                <button type="button" name="open" class="btn-icon h-full flex items-center justify-center"
-                x-bind:aria-label="node.open ? 'close' : 'open'"
-                x-bind:disabled="node.isDisabled()"
-                x-bind:class="{ 'text-gray-200': node.isDisabled(), 'text-textcolor': !node.isDisabled() }"
-                @click.stop="node.toggleOpen()" @mouseover.once.stop="node.loadPages()" :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`">
+                <button
+                  type="button"
+                  name="open"
+                  class="btn-icon h-full flex items-center justify-center"
+                  x-bind:aria-label="node.open ? 'close' : 'open'"
+                  x-bind:disabled="node.isDisabled()"
+                  x-bind:class="{ 'text-gray-200': node.isDisabled(), 'text-textcolor': !node.isDisabled() }"
+                  @click.stop="node.toggleOpen()"
+                  @mouseover.once.stop="node.loadPages()"
+                  :data-testid="`${ node.open ? 'close' : 'open' }-${ node.level }`">
                   <svg class="w-4 h-3 titlecolor" x-show="!node.open">
                     <use href="#icon--arrow-down"></use>
                   </svg>
@@ -92,7 +146,11 @@
             </template>
           </div>
         </div>
-        <ul class="node-tree h-full" x-transition.in.opacity x-show="node.open" x-bind:class="{
+        <ul
+          class="node-tree h-full"
+          x-transition.in.opacity
+          x-show="node.open"
+          x-bind:class="{
           'py-2': node.level === 1,
           'py-1': node.level > 1,
           'border-l-2 pl-3': node.level > 1,

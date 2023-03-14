@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 9.10 (Karmic)'
 keywords: ["nginx", "http", "web servers", "ubuntu", "ubuntu 9.10", "ubuntu karmic"]
 tags: ["web server","ubuntu","nginx"]
@@ -13,20 +10,20 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-24
-expiryDate: 2011-04-29
 title: 'Websites with nginx on Ubuntu 9.10 (Karmic)'
 relations:
     platform:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
 Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing nginx from Ubuntu Packages
 
@@ -145,7 +142,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/guides/how-to-configure-nginx/) for more information about using and setting up the web server.
 
 ## More Information
 
@@ -153,6 +150,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic)
-- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic)
+- [Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/)
+- [Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-ubuntu-9-10-karmic/)
+- [Configure Ruby on Rails with nginx](/docs/guides/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/)

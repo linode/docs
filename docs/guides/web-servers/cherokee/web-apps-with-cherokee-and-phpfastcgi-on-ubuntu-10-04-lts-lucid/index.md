@@ -1,9 +1,6 @@
 ---
 slug: web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)'
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 tags: ["web server","ubuntu","php"]
@@ -19,6 +16,7 @@ relations:
         key: cherokee-php-fastcgi
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Ubuntu 10.04 LTS (Lucid). Please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to following these instructions.
 
 ## Prerequisites
 
@@ -36,7 +34,7 @@ Make sure your repositories and packages are up to date by issuing the following
     apt-get update
     apt-get upgrade
 
-If you haven't already installed Cherokee, please follow our [Ubuntu 10.04 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid) guide before continuing with these instructions.
+If you haven't already installed Cherokee, please follow our [Ubuntu 10.04 Cherokee installation](/docs/guides/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/) guide before continuing with these instructions.
 
 ## Install Required Packages
 
@@ -64,55 +62,55 @@ Create directories for your site by issuing the following commands. Substitute y
     mkdir /srv/www/mydomain.com/www/logs
     chown -R www-data:www-data /srv/www/mydomain.com
 
-If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/#secure-admin-panel-access).
+If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/guides/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/#secure-admin-panel-access).
 
     cherokee-admin -b &
 
 Navigate to the "General" page in the admin interface. You may wish to enable SSL support, change the server tokens, or enable graphs.
 
-[![General settings in Cherokee admin panel on Ubuntu 10.04 LTS](239-00-cherokee-ubuntu-10-04-general-settings.png)](239-00-cherokee-ubuntu-10-04-general-settings.png)
+![General settings in Cherokee admin panel on Ubuntu 10.04 LTS](239-00-cherokee-ubuntu-10-04-general-settings.png)
 
 Click the "Add New Virtual Server" button on the "Virtual Servers" page.
 
-[![Virtual servers listing in Cherokee admin panel on Ubuntu 10.04 LTS](240-01-cherokee-ubuntu-10-04-virtual-servers.png)](240-01-cherokee-ubuntu-10-04-virtual-servers.png)
+![Virtual servers listing in Cherokee admin panel on Ubuntu 10.04 LTS](240-01-cherokee-ubuntu-10-04-virtual-servers.png)
 
 Assign a nickname for your new virtual server and specify its document root:
 
-[![New virtual server basic settings in Cherokee admin panel on Ubuntu 10.04 LTS](241-02-cherokee-ubuntu-10-04-new-virtual-server.png)](241-02-cherokee-ubuntu-10-04-new-virtual-server.png)
+![New virtual server basic settings in Cherokee admin panel on Ubuntu 10.04 LTS](241-02-cherokee-ubuntu-10-04-new-virtual-server.png)
 
-[![New virtual server listing in Cherokee admin panel on Ubuntu 10.04 LTS](242-03-cherokee-ubuntu-10-04-virtual-servers.png)](242-03-cherokee-ubuntu-10-04-virtual-servers.png)
+![New virtual server listing in Cherokee admin panel on Ubuntu 10.04 LTS](242-03-cherokee-ubuntu-10-04-virtual-servers.png)
 
 Click on your new virtual server's nickname in the server list. Specify which files you would like to consider directory indexes on the "Basic" tab.
 
-[![Configuring directory indexes in Cherokee admin panel on Ubuntu 10.04 LTS](243-04-cherokee-ubuntu-10-04-directory-indexes.png)](243-04-cherokee-ubuntu-10-04-directory-indexes.png)
+![Configuring directory indexes in Cherokee admin panel on Ubuntu 10.04 LTS](243-04-cherokee-ubuntu-10-04-directory-indexes.png)
 
 On the "Host Match" tab, enter your base domain name and the domain prefixed by "www":
 
-[![Configuring host matching in Cherokee admin panel on Ubuntu 10.04 LTS](244-05-cherokee-ubuntu-10-04-host-match.png)](244-05-cherokee-ubuntu-10-04-host-match.png)
+![Configuring host matching in Cherokee admin panel on Ubuntu 10.04 LTS](244-05-cherokee-ubuntu-10-04-host-match.png)
 
 On the "Behavior" tab, remove all rules except for the "Default" rule:
 
-[![Behavior rules list in Cherokee admin panel on Ubuntu 10.04 LTS](245-06-cherokee-ubuntu-10-04-behavior.png)](245-06-cherokee-ubuntu-10-04-behavior.png)
+![Behavior rules list in Cherokee admin panel on Ubuntu 10.04 LTS](245-06-cherokee-ubuntu-10-04-behavior.png)
 
 On the "Logging" tab, specify the location of your access and error logs:
 
-[![Logging configuration in Cherokee admin panel on Ubuntu 10.04 LTS](246-07-cherokee-ubuntu-10-04-logging.png)](246-07-cherokee-ubuntu-10-04-logging.png)
+![Logging configuration in Cherokee admin panel on Ubuntu 10.04 LTS](246-07-cherokee-ubuntu-10-04-logging.png)
 
 Navigate to the "Information Source" page. Specify a new information source with the following settings:
 
-[![PHP-FastCGI information source settings in Cherokee admin panel on Ubuntu 10.04 LTS](247-08-cherokee-ubuntu-10-04-information-sources.png)](247-08-cherokee-ubuntu-10-04-information-sources.png)
+![PHP-FastCGI information source settings in Cherokee admin panel on Ubuntu 10.04 LTS](247-08-cherokee-ubuntu-10-04-information-sources.png)
 
 Navigate back to the "Virtual Servers" page. Create an extensions rule for PHP files on the "Behavior" tab of your virtual server's configuration page.
 
-[![PHP extensions rule in Cherokee admin panel on Ubuntu 10.04 LTS](248-09-cherokee-ubuntu-10-04-virtual-servers-rule.png)](248-09-cherokee-ubuntu-10-04-virtual-servers-rule.png)
+![PHP extensions rule in Cherokee admin panel on Ubuntu 10.04 LTS](248-09-cherokee-ubuntu-10-04-virtual-servers-rule.png)
 
 On the "Handler" tab, specify the following settings for PHP-FastCGI:
 
-[![PHP-FastCGI handler settings in Cherokee admin panel on Ubuntu 10.04 LTS](249-10-cherokee-ubuntu-10-04-virtual-servers-handler.png)](249-10-cherokee-ubuntu-10-04-virtual-servers-handler.png)
+![PHP-FastCGI handler settings in Cherokee admin panel on Ubuntu 10.04 LTS](249-10-cherokee-ubuntu-10-04-virtual-servers-handler.png)
 
 On the "Encoding" tab, enable gzip/deflate compression:
 
-[![PHP-FastCGI gzip/deflate compression settings in Cherokee admin panel on Ubuntu 10.04 LTS](250-11-cherokee-ubuntu-10-04-virtual-servers-encoding.png)](250-11-cherokee-ubuntu-10-04-virtual-servers-encoding.png)
+![PHP-FastCGI gzip/deflate compression settings in Cherokee admin panel on Ubuntu 10.04 LTS](250-11-cherokee-ubuntu-10-04-virtual-servers-encoding.png)
 
 ## Test Your Configuration
 

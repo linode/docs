@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using Cyberduck with Object Storage"
 description: "Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage."
+authors: ["Linode"]
 ---
 
 Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP, and a number of other protocols, including S3.
@@ -12,9 +10,9 @@ Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP
 
 1.  Navigate to Cyberduck's [Download](https://cyberduck.io/download/) webpage and download the latest version of Cyberduck for your operating system. After downloading, run the file to install the application.
 
-    {{<note>}}
-If you already have Cyberduck installed, be sure to update to version 8.2.1 or newer. Some of the steps within this guide do not work properly on earlier versions.
-{{</note>}}
+    {{< note >}}
+    If you already have Cyberduck installed, be sure to update to version 8.2.1 or newer. Some of the steps within this guide do not work properly on earlier versions.
+    {{< /note >}}
 
 1.  Open Cyberduck and then select *Cyberduck* > *Preferences* from the menu bar.
 
@@ -48,9 +46,9 @@ Once the connection is successful, a list appears of all the buckets that your a
 
 ![Main Cyberduck view of buckets](cyberduck-view.png)
 
-{{<note>}}
+{{< note >}}
 To create additional buckets, use the Cloud Manager, Linode CLI, s3cmd, or s4cmd. Cyberduck is not able to create new buckets.
-{{</note>}}
+{{< /note >}}
 
 ## Upload and Manage Files
 
@@ -111,4 +109,4 @@ Object Storage can be used to host static website files, such as html, css, and 
 
 1.  The static site is accessed from a different URL than can be found in the [Obtain the URL of a File](#obtain-the-url-of-a-file) section. Review the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/#website-urls) guide for information on obtaining the website URL.
 
-For more information on hosting a static website with Object Storage, read the [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting a static website with Object Storage, read the [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide.

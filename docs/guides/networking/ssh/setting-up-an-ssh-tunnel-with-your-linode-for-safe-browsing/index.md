@@ -1,15 +1,10 @@
 ---
 slug: setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Follow these instructions to launch a SOCKS server on your computer and browse the web securely using your Linode.'
 keywords: ["socks", "proxy", "socks proxy", "tunnel", "tunnelling"]
 tags: ["networking","ssh","security","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/','/networking/socks-proxy/']
-contributor:
-    name: Arnaldo Ariel Arrieta
 modified: 2014-02-17
 modified_by:
   name: Linode
@@ -17,6 +12,7 @@ published: 2014-02-17
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
+authors: ["Arnaldo Ariel Arrieta"]
 ---
 
 ![SSH Tunnel for Safe Browsing](Setting_up_an_SSH_Tunnel_with_Your_Linode_for_Safe_Browsing_smg.jpg)
@@ -32,7 +28,7 @@ It works by launching a SOCKS proxy server on your computer using SSH. It will l
 -   A Linode running your favorite GNU/Linux flavor.
 -   The SSH service running in your Linode, with the forwarding option enabled (it is enabled by default).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If it is disabled, look for the parameter `AllowTcpForwarding no` in your server's **/etc/ssh/sshd\_config file**, and change it to **yes** before restarting the service.
 {{< /note >}}
 
@@ -49,7 +45,7 @@ The first step is to launch the SOCKS server and establish a connection to your 
 
         ssh -D 12345 user@host.domain
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 **-D 12345** tells SSH to run the SOCKS server on port 12345.
 
 You can choose any port number greater than 1024. Lower numbers could be used but you will need to log in as root, and make sure the port is not in use by another service.
@@ -63,7 +59,7 @@ To establish a tunnel in Windows, you can use the free SSH client PuTTY. It can 
 
 1.  Launch PuTTY. On the first screen you will need to type your login information in the **Host Name (or IP address)** box. The **SSH protocol** and **Port** are checked by default.
 
-    [![PuTTY main window.](1563-01-putty_basic.png)](1563-01-putty_basic.png)
+    ![PuTTY main window.](1563-01-putty_basic.png)
 
 2.  Under the **Connection** menu, under **SSH** select **Tunnels**. There you must enter the port you want (**12345**, for example) in **Source Port**, and check **Dynamic**.
 
@@ -91,7 +87,7 @@ To set up the browser:
 
 4.  The window **Connection Settings** will open. Check **Manual Proxy Configuration**, and in **SOCKS Host** write your local host address (127.0.0.1) and the port you choose when you created the tunnel (**12345**, in this example). Make sure **SOCKS v5** is selected (it will be by default).
 
-    [![Firefox preferences - Proxy Settings.](1567-05-firefox2.png)](1567-05-firefox2.png)
+    ![Firefox preferences - Proxy Settings.](1567-05-firefox2.png)
 
 5.  Click **OK** to accept the changes.
 
@@ -108,21 +104,21 @@ Keep these considerations in mind when you use SSH tunneling.
     1.  Open Firefox. Type **<about:config>** in the Location Bar to display the browser's preferences.
     2.  To be able to edit these settings, click the button **I'll be careful, I promise**.
 
-        [![Firefox about:config warning message.](1568-06-dns1.png)](1568-06-dns1.png)
+        ![Firefox about:config warning message.](1568-06-dns1.png)
 
     3.  In the Search bar type **network.proxy.socks\_remote\_dns** and press `Return`.
     4.  You will see that the default value for that preference is **false**.
 
-        [![Firefox network.proxy.socks\_remote\_dns preference.](1569-07-dns2.png)](1569-07-dns2.png)
+        ![Firefox network.proxy.socks\_remote\_dns preference.](1569-07-dns2.png)
 
     5.  Double click **network.proxy.socks\_remote\_dns** to change its value to **true**. The whole line will change to bold text, and the status column to **user select**, indicating you modified its default value.
 
-        [![Firefox network.proxy.socks\_remote\_dns value changed.](1570-08-dns3.png)](1570-08-dns3.png)
+        ![Firefox network.proxy.socks\_remote\_dns value changed.](1570-08-dns3.png)
 
     6.  Leave the `about:config window` by typing any URL in the location bar or closing Firefox.
 
 -   If the access to SSH is blocked in the public network you are using, it will not be possible to establish the tunnel. A workaround for this is to run your SSH server on a different port, more likely to be open; for example port 80 (HTTP).
--   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the [Linode Shell from the web](/docs/networking/using-the-linode-shell-lish/#using-a-web-browser).
+-   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the [Linode Shell from the web](/docs/products/compute/compute-instances/guides/lish/#using-a-web-browser).
 -   Sometimes, the traffic through the tunnel could be a bit slower than browsing the web without it; but remember, it's a small price to pay when your privacy is at risk.
 -   This is a simple and quick way to establish a secure connection for web browsing, a kind of “poor man's VPN” solution.
 -   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of our [OpenVPN](/docs/networking/vpn/) guides for instructions about that topic.

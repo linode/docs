@@ -1,19 +1,29 @@
 {{/* No hits view. */}}
-<template x-if="$store.search.results.main.loaded && $store.search.results.main.result.stats.totalNbHits === 0">
+<template
+  x-if="$store.search.results.main.loaded && $store.search.results.main.result.stats.totalNbHits === 0">
   <div class="flex flex-col items-center space-y-2">
-    <h2 class="text-3xl">
-      No Results
-    </h2>
-    <p x-text="`There are no results for &quot;${$store.search.query.lndq}&quot;. Check your spelling or try clearing any filters.`"></p>
+    <h2 class="text-3xl">No Results</h2>
+    <p
+      x-text='`There are no results for "${$store.search.query.lndq}". Check your spelling or try clearing any filters.`'></p>
   </div>
 </template>
 
 {{/* First view */}}
 <template x-if="view === 1 && $store.search.results.main.loaded">
   <div class="flex flex-col space-y-2 pt-2" data-testid="view-1">
-    <template x-for="(item, j) in $store.search.results.main.result.hits" :key="item.objectID">
-      <a class="group flex items-center" x-bind:href="item.href" data-testid="link-hit">
-        <span  x-html="item.title" class="font-semibold text-md text-gray-700 no-underline"></span>
+    <template
+      x-for="(item, j) in $store.search.results.main.result.hits"
+      :key="item.objectID">
+      {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
+      <a
+        class="group flex items-center"
+        x-bind:href="item.href"
+        x-bind:target="item.isExternalLink ? '_blank' : ''"
+        data-testid="link-hit"
+        @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Condensed')">
+        <span
+          x-html="item.mainTitle"
+          class="font-semibold text-md text-gray-700 no-underline"></span>
         <div class="ml-2">
           {{ template "search-list-section-label" . }}
         </div>
@@ -24,67 +34,86 @@
 
 {{/* Second view */}}
 <template x-if="view === 2 && $store.search.results.main.loaded">
-  <div class="flex flex-col" data-testid="view-2">
-    <div class="mb-2 md:mb-4">
-      <template x-for="(item, j) in $store.search.results.main.result.hits" :key="item.objectID">
-        <div class="rounded -ml-4 pl-4 py-2 mobile:-mr-4 hover:bg-selected">
-          <div>
-            <template x-if="item.href">
-              <a class="group flex items-center" x-bind:href="item.href" data-testid="link-hit">
-                <span  x-html="item.title" class="font-semibold text-md text-gray-700 no-underline"></span>
-                <div class="ml-2">
-                  {{ template "search-list-section-label" . }}
-                </div>
-              </a>
-            </template>
-            <template x-if="!item.href">
-              <p x-html="item.description"></p>
-            </template>
-            <template x-if="item.excerpt">
-              <div class="text-sm text-textcolor pt-2 leading-relaxed three-lines-ellipsis" x-html="item.excerptHighlighted" data-testid="excerpt"></div>
-            </template>
-            <div class="text-sm text-textcolor pt-2">
-              <template x-for="(value, label) in item.facets" :key="label">
-                <div class="inline-block whitespace-nowrap">
-                  <span class="font-semibold mr-1" x-text="label + ':'"></span>
-                  <span class="mr-2 capitalize" x-html="value.string"></span>
-                </div>
-              </template>
+  <div class="flex flex-col space-y-2" data-testid="view-2">
+    <template
+      x-for="(item, j) in $store.search.results.main.result.hits"
+      :key="item.objectID">
+      <div class="rounded -ml-4 pl-4 py-2 mobile:-mr-4 hover:bg-selected">
+        <template x-if="item.href">
+          {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
+          <a
+            class="group flex items-center"
+            x-bind:href="item.href"
+            x-bind:target="item.isExternalLink ? '_blank' : ''"
+            data-testid="link-hit"
+            @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Detailed')">
+            <span
+              x-html="item.mainTitle"
+              class="font-semibold text-md text-gray-700 no-underline"></span>
+            <div class="ml-2">
+              {{ template "search-list-section-label" . }}
             </div>
-            <div class="pt-2 space-x-1">
-              <template x-for="v in item.tagsValues()">
-                <span x-html="v" style="background-color: #E9EAEC;"
-                                        class="border rounded border-transparent text-basicgray tracking-normal font-semibold text-xs uppercase px-2"></span>
-              </template>
-            </div>
+          </a>
+        </template>
+        <template x-if="!item.href">
+          <p x-html="item.description"></p>
+        </template>
+        <template x-if="item.excerpt">
+          <div
+            class="text-sm text-textcolor pt-2 leading-relaxed three-lines-ellipsis"
+            x-html="item.excerptHighlighted"
+            data-testid="excerpt"></div>
+        </template>
+        <template x-if="item.tagsValues().length > 0">
+          <div class="pt-2">
+            <template x-for="v in item.tagsValues()">
+              <span
+                x-html="v"
+                class="border rounded border-basicgray text-basicgray tracking-normal font-semibold text-xs uppercase px-2 mr-1"></span>
+            </template>
           </div>
-        </div>
-      </template>
-    </div>
+        </template>
+      </div>
+    </template>
   </div>
 </template>
 
 {{/* Third view */}}
 <template x-if="view === 3  && $store.search.results.main.loaded">
   <div class="flex flex-col space-y-2 pt-2" data-testid="view-3">
-  <div class="pb-2 md:pb-6">
-    <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
-      <template x-for="(item, j) in $store.search.results.main.result.hits" :key="item.objectID">
-        <div class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
-          <a :href="item.href" class="no-underline block">
-            <div class="relative overflow-hidden pb-16/9 bg-gray-200">
-              <img :src="item.thumbnailUrl"
-                      alt="Article image" class="absolute h-full w-full object-cover img-transparent" @load="$event.target.classList.remove('img-transparent')" loading="eager">
-            </div>
-            <div class="px-4 p-6">
-              <h3 class="two-lines-ellipsis font-semibold text-sm md:text-lg" x-html="item.linkTitle"></h3>
-              <div class="float-left py-2">
-                {{ template "search-list-section-label" . }}
+    <div class="pb-2 md:pb-6">
+      <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
+        <template
+          x-for="(item, j) in $store.search.results.main.result.hits"
+          :key="item.objectID">
+          <div
+            class="bg-white h-full overflow-hidden rounded-lg shadow-sm hover:shadow-lg">
+            {{/* Note the default target value needs to be an empty string (and not '_self'). */}}
+            <a
+              :href="item.href"
+              x-bind:target="item.isExternalLink ? '_blank' : ''"
+              class="no-underline block"
+              @click="$store.nav.analytics.handler.clickHit(item, 'DOCS: Search Result - Thumbnail')">
+              <div class="relative overflow-hidden pb-16/9 bg-gray-200">
+                <img
+                  :src="item.thumbnailUrl"
+                  alt="Article image"
+                  class="absolute h-full w-full object-cover img-transparent"
+                  @load="$event.target.classList.remove('img-transparent')"
+                  loading="eager" />
               </div>
-            </div>
-          </a>
-        </div>
-      </template>
+              <div class="px-4 p-6">
+                <h3
+                  class="two-lines-ellipsis font-semibold text-sm md:text-lg"
+                  x-html="item.linkTitle"></h3>
+                <div class="float-left py-2">
+                  {{ template "search-list-section-label" . }}
+                </div>
+              </div>
+            </a>
+          </div>
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -95,20 +124,37 @@
 </div>
 
 {{ define "search-list-section-label" }}
-  <span x-html="item.rootSectionTitle"  class="section-label border rounded border-transparen text-basicgray tracking-normal font-semibold text-xs uppercase px-2" style="background-color: #E9EAEC;" :data-testid="`section-label-${item['section.lvl0']}`"></span>
+  <span
+    x-html="item.rootSectionTitle"
+    class="section-label border rounded border-transparen text-basicgray tracking-normal font-semibold text-xs uppercase px-2"
+    style="background-color: #E9EAEC;"
+    :data-testid="`section-label-${item['section.lvl0']}`"></span>
 {{ end }}
 
 {{ define "search-list-pagination" }}
-  <template x-if="$store.search.results.main.loaded && $store.search.results.main.result.stats">
-    <nav class="py-3 flex items-center justify-between border-t border-divider" aria-label="Pagination">
+  <template
+    x-if="$store.search.results.main.loaded && $store.search.results.main.result.stats">
+    <nav
+      class="py-3 flex items-center justify-between border-t border-divider"
+      aria-label="Pagination">
       <div class="hidden sm:block">
-        <p class="text-sm text-textcolor font-medium" x-text="`Showing ${$store.search.results.main.result.stats.hitsStart} to ${$store.search.results.main.result.stats.hitsEnd} of ${$store.search.results.main.result.stats.totalNbHits} results`"></p>
+        <p
+          class="text-sm text-textcolor font-medium"
+          x-text="`Showing ${$store.search.results.main.result.stats.hitsStart} to ${$store.search.results.main.result.stats.hitsEnd} of ${$store.search.results.main.result.stats.totalNbHits} results`"></p>
       </div>
       <div class="flex-1 flex justify-between sm:justify-end">
-        <button :disabled="$store.search.query.p === 0"  type="button" @click="incrPage(-1)" class="relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+        <button
+          :disabled="$store.search.query.p === 0"
+          type="button"
+          @click="incrPage(-1)"
+          class="relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
           Previous
         </button>
-        <button :disabled="$store.search.query.p + 1 >= $store.search.results.main.result.stats.totalNbPages" type="button" @click="incrPage(1)" class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+        <button
+          :disabled="$store.search.query.p + 1 >= $store.search.results.main.result.stats.totalNbPages"
+          type="button"
+          @click="incrPage(1)"
+          class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
           Next
         </button>
       </div>

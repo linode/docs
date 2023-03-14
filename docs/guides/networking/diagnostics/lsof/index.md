@@ -1,8 +1,5 @@
 ---
 slug: lsof
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An introduction to lsof.'
 keywords: ["UNIX", "lsof", "TCP/IP", "network", "utility"]
 tags: ["networking","linux"]
@@ -12,13 +9,11 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 title: 'How to List Open Files with lsof'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[lsof on Wikipedia](https://en.wikipedia.org/wiki/Lsof)'
   - '[lsof Manual Page on die.net](https://linux.die.net/man/8/lsof)'
 aliases: ['/networking/diagnostics/lsof/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -35,7 +30,7 @@ There are two main drawbacks of `lsof`. First, it can only display information a
 
 ## Before You Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Running `lsof` without root privileges only returns the results available to the current user. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -57,7 +52,7 @@ The `lsof(8)` binary supports a large number of command line options, including 
 | `-p list` | The `-p` option allows you to select the files for the processes whose process IDs are in the `list`. The `-p` option supports the `^` character for excluding the matches from the output. |
 | `-g list` | The `-g` option allows you to select the files for the processes whose optional process group IDs are in the `list`. The `-g` option supports the `^` character for excluding the matches from the output. |
 | `-s` | The `-s` option allows you to select the network protocols and states that interest you. The `-s` option supports the `^` character for excluding the matches from the output. The correct form is `PROCOTCOL:STATE`. Possible protocols are `UDP` and `TCP`. Some possible TCP states are: `CLOSED`, `SYN-SENT`, `SYN-RECEIVED`, `ESTABLISHED`, `CLOSE-WAIT`, `LAST-ACK`, `FIN-WAIT-1`, `FIN-WAIT-2`, `CLOSING`, and `TIME-WAIT`. Possible UDP states are `Unbound` and `Idle`. |
-| `+d s` | The `+d` option option tells `lsof` to search for all open instances of directory `s` and the files and directories it contains at its top level. |
+| `+d s` | The `+d` option tells `lsof` to search for all open instances of directory `s` and the files and directories it contains at its top level. |
 | `+D directory` | The `+D` option tells `lsof` to search for all open instances of directory `directory` and all the files and directories it contains to its complete depth. |
 | `-d list` | The `-d` option specifies the `list` of file descriptors to include or exclude from the output. `-d 1,^2` means include file descriptor `1` and exclude file descriptor `2`. |
 | `-i4` | This option is used for displaying IPv4 data only. |
@@ -72,11 +67,11 @@ The `lsof(8)` binary supports a large number of command line options, including 
 | `-n` | The `-n` option prevents network numbers from being converted to host names. |
 | `-F CHARACTER` | The `-F` command instructs `lsof` to produce output that is suitable as input for other programs. For a complete explanation, consult the `lsof` manual entry. |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default, the output of `lsof` includes the output of each one of its command line options, like a big logical expression with multiple OR logical operators between all the command line options. However, this default behavior can change with the use of the `-a` option.
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the full list of command line options supported by `lsof` and a more detailed explanation of the presented command line options, you should consult its manual page:
 
     man lsof
@@ -203,7 +198,7 @@ apache2    27829     www-data    4u    IPv6    8626153    0t0              TCP  
 apache2    27829     www-data    6u    IPv6    8626157    0t0              TCP      *:443 (LISTEN)
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You are allowed to place the `-a` option wherever you like as `lsof` still detects the relevant options.
 {{< /note >}}
 
@@ -267,7 +262,7 @@ f3
 PTCP
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the full list of options supported by `-F`, you should visit the manual page of `lsof`.
 {{< /note >}}
 
@@ -305,7 +300,7 @@ apache2      24571    www-data  6u     IPv6    8626157   0t0       TCP   *:https
 
 #### Internet Connections
 
-If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/quick-answers/linux/how-to-use-grep/) and `awk`, you can list all active network connections:
+If you process the output of `lsof` with some traditional UNIX command line tools, like [grep](/docs/guides/how-to-use-grep/) and `awk`, you can list all active network connections:
 
     sudo lsof -i -n -P | grep ESTABLISHED | awk '{print $1, $9}' | sort -u
 
@@ -313,7 +308,7 @@ If you process the output of `lsof` with some traditional UNIX command line tool
 sshd 109.74.193.253:22->2.86.23.29:60032
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `lsof -i -n -P` command can be also written as `lsof -i -nP` or alternatively as `lsof -nPi` – writing it as `lsof -inP` would generate a syntax error because `lsof` thinks that `np` is a parameter to `-i`.
 {{< /note >}}
 
@@ -545,9 +540,9 @@ Use the ``-h'' option to get more help information.
 
 The following command kills all of the processes owned by the `www-data` user:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Please be careful when combining `lsof` with the `kill(1)` command. Do not try to test similar commands on a live server unless you are absolutely certain you will not experience issues. For testing purposes you can use a disposable Docker image or something similar.
-{{</ caution >}}
+{{< /note >}}
 
     sudo kill -9 `lsof -t -u www-data`
 

@@ -1,8 +1,5 @@
 ---
 slug: vagrant-linode-environments
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
 description: 'This guide shows how to use Vagrant, a configuration management tool, to manage development environments and content on your Linode with the Linode API.'
 keywords: ["linode", "vagrant", "content management", "management", "automation", "development", "ruby", "vagrantfile", "api", "apache"]
 tags: ["cms","automation","ruby","apache"]
@@ -17,10 +14,11 @@ external_resources:
  - '[vagrant-linode Plugin](https://github.com/displague/vagrant-linode)'
 deprecated: true
 aliases: ['/applications/configuration-management/vagrant/vagrant-linode-environments/','/applications/configuration-management/vagrant-linode-environments/']
+authors: ["Elle Krout"]
 ---
 
 {{< note >}}
-The Vagrant Linode provider relies on Linode's APIv3, which has been deprecated in favor of [APIv4](https://developers.linode.com/api/v4).
+The Vagrant Linode provider relies on Linode's APIv3, which has been deprecated in favor of [APIv4](/docs/api/).
 {{< /note >}}
 
 [Vagrant](http://www.vagrantup.com) is a configuration management tool that allows users to create portable and reproducible work environments. Vagrant excels at providing consistent, easy-to-configure servers that can be used to keep development environments consistent across all users. It is easy to both launch and tear down, and can be supplied to any part of a development team that may need an environment but does not have the means to configure one themselves. Often paired with providers such as Puppet, Salt, and Chef, it offers an easy solution to keeping a consistent workflow.
@@ -37,13 +35,13 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
     -   Select the API Keys tab:
 
-        [![Linode API](linode-api-vagrant1-small.png)](linode-api-vagrant1.png)
+        ![Linode API](linode-api-vagrant1.png)
 
     -   Enter a label for your API Key and set an expiration time. Then click **Create API Key**.
 
     -   Your API Key will be output in a green box. **The key will only be shown once** so be sure to record it for later use:
 
-        [![Linode API Key Generated](linode-api-vagrant2-small.png)](linode-api-vagrant2.png)
+        ![Linode API Key Generated](linode-api-vagrant2.png)
 
 
 ## Install the vagrant-linode Plugin
@@ -57,7 +55,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
         vagrant plugin install vagrant-linode
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using a Mac, it may request to install development tools. Select yes, then re-run the command.
 {{< /note >}}
 
@@ -81,7 +79,7 @@ end
 
     All code will take place between the `Vagrant.configure` and `end` lines.
 
-2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/security/securing-your-server#create-an-authentication-key-pair) guide:
+2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) guide:
 
     {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
@@ -150,7 +148,7 @@ end
 
 ## Set Up the Vagrant Box
 
-Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
+Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
 
 ### Configure the Server
 
@@ -321,7 +319,7 @@ With the Vagrantfile configured, and scripts and files created, it's now time to
 
     Then go to your chosen web browser and navigate to your ip address with `:6789` appended to the end. You should see Apache2 Ubuntu Default Page.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you wish to shut down or remove the Linode from your workspace you can do so through one of the following commands:
 
 -  `vagrant halt` will power down the Linode through the shutdown mechanism. You can then run `vagrant up` again to power on the Linode.

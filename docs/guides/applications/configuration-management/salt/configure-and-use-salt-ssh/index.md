@@ -1,8 +1,5 @@
 ---
 slug: configure-and-use-salt-ssh
-author:
-  name: Sergey Bulavintsev
-  email: bulavintsev.sergey@gmail.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring your Linux system to use Salt SSH without installing a salt-minion package.'
 keywords: ["Saltstack", " salt", " salt-ssh"]
 tags: ["automation","salt","ssh"]
@@ -13,9 +10,8 @@ modified_by:
   name: Linode
 image: ConfigureandUseSaltSSHtoManageyourLinodes.png
 title: 'Configure and Use Salt SSH to Manage Your Linodes'
-contributor:
-  name: Sergey Bulavintsev
 aliases: ['/applications/configuration-management/configure-and-use-salt-ssh/','/applications/configuration-management/salt/configure-and-use-salt-ssh/']
+authors: ["Sergey Bulavintsev"]
 ---
 
 ## Introduction to Salt SSH
@@ -36,8 +32,8 @@ Please note: Because it uses SSH, Salt SSH is slower than standard Salt with Zer
         $rpm -q salt
         $rpm -q salt-ssh
 
-    {{< note >}}
-For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](/docs/applications/configuration-management/getting-started-with-salt-basic-installation-and-setup/)
+    {{< note respectIndent=false >}}
+For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/)
 {{< /note >}}
 
 3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run Salt SSH in raw mode. In raw mode, a raw shell command cannot use execution modules or apply Salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems
@@ -49,7 +45,7 @@ For detailed instruction on how to set up SaltStack repo, please refer to the [S
 The Roster file contains target system information, connection details and credentials.
 The Default location for the Roster file is: `/etc/salt/roster`.
 
-   {{< note >}}
+{{< note >}}
 The Roster file is configured on the master server.
 {{< /note >}}
 
@@ -66,7 +62,7 @@ linode1:
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Roster file stores data in YAML format. Do not add unnecessary spaces to the config file.
 {{< /note >}}
 
@@ -82,7 +78,7 @@ linode1:
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Using SSH keys is the safest way to access your minions because passwords are not being stored in plain text.
 {{< /note >}}
 
@@ -109,7 +105,7 @@ linode1:
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Permissions leverage via sudo works only if the NOPASSWD option is set up for the user that is connecting to the minion in `/etc/sudoers`.
 More information on Roster files can be found in the [Roster files documentation](https://docs.saltproject.io/en/latest/topics/ssh/roster.html#ssh-roster).
 {{< /note >}}
@@ -123,7 +119,7 @@ More information on Roster files can be found in the [Roster files documentation
         linode1:
             True
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If SSH keys weren't deployed, you may receive the `The host key needs to be accepted, to auto accept run salt-ssh with the -i flag:` message. In this case just run `salt-ssh` with -i flag. This key will let Salt automatically accept a minion's public key. This has to be done only once, during the initial SSH keys exchange.
 {{< /note >}}
 
@@ -143,7 +139,7 @@ If SSH keys weren't deployed, you may receive the `The host key needs to be acce
         linode2:
             2.6.32-573.3.1.el6.x86_64
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Salt SSH executes commands concurrently, the default-maximum is 25 simultaneous connections.
 {{< /note >}}
 
@@ -166,7 +162,7 @@ Salt SSH executes commands concurrently, the default-maximum is 25 simultaneous 
             linode1:
                 22%
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A full list of execution modules is available at [Execution modules documentation](https://docs.saltproject.io/en/latest/ref/modules/all/index.html).
 {{< /note >}}
 

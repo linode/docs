@@ -1,8 +1,5 @@
 ---
 slug: top-htop-iotop
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'This guide provides you with a how-to reference on using top, a Linux process manager and monitoring utilitie included with most distros, to monitor performance.'
 keywords: ["top", "htop", "iotop", "monitoring", "server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,13 +13,14 @@ external_resources:
  - '[iotop](http://guichaz.free.fr/iotop/)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/top-htop-iotop/']
+authors: ["Elle Krout"]
 ---
 
 Viewing a server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage. The `top` command is a Linux process manager that can assist with monitoring.
 
 ## Reading the Screen
 
-[![The top screen](top-full-small.png)](top-full.png)
+![The top screen](top-full.png)
 
 The `top` screen contains a variety of information regarding your server, beginning with the server's uptime, load average, and tasks status, located in the header.
 
@@ -30,7 +28,7 @@ The `top` screen contains a variety of information regarding your server, beginn
 
 1.  The first line contains the time, uptime, and load average values for the server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then consider a different response compared to when the load is consistently high through all time intervals.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In order to properly read the load average section, be aware of how many CPU cores the Linode has. If there is one CPU core, then a load average of 1.00 means the server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
 
 A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, then reconfigure your resources or look into upgrading your plan.

@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-common-apache-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to identify and solve common configuration problems encountered when using Apache.'
 keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 tags: ["apache", "web server"]
@@ -16,6 +13,7 @@ title: Troubleshooting Common Apache Issues
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
+authors: ["Linode"]
 ---
 
 ![Troubleshooting Common Apache Issues](troubleshooting-common-apache-issues.jpg "Troubleshooting Common Apache Issues")
@@ -26,11 +24,11 @@ In this guide, you'll start with some basic troubleshooting steps and then proce
 
 ## Is Apache Running?
 
-First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/troubleshooting/troubleshooting/#is-the-web-server-running).
+First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/guides/troubleshooting-overview/#is-the-web-server-running).
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 
-You may also want to investigate the possibility of [memory issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
+You may also want to investigate the possibility of [memory issues](/docs/guides/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
 
 ## Restart Apache
 
@@ -44,7 +42,7 @@ Fedora and CentOS:
 
     sudo service httpd restart
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can use one of the following three commands instead, depending on your Linux distribution:
 
 `/etc/init.d/httpd restart`
@@ -114,9 +112,9 @@ LogLevel debug
 
 4.  Perform the operation that was giving you trouble, then [check the logs](#check-the-logs) for more detailed information and errors.
 
- {{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
-{{< /caution >}}
+{{< /note >}}
 
 ## Check Apache Configuration Syntax
 
@@ -144,7 +142,7 @@ Fedora and CentOS:
 
 Make sure all your `<VirtualHost>` directives use IP addresses and port numbers that match the ones defined in the `NameVirtualHost` directives. For example, if you have set `NameVirtualHosts *:80`, then the virtual host configuration should begin with `<VirtualHost *:80>`. If you've set `NameVirtualHosts 123.234.123.234:80`, then the virtual host configuration should begin with `<VirtualHost 123.234.123.234:80>`. If you've set `NameVirtualHosts *`, then the virtual host configuration should begin with `<VirtualHost *>`.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 You can have multiple `NameVirtualHost` values, which is what you'll need to do if you're running sites on multiple IPs and ports. Just make sure the `<VirtualHost>` configurations correspond to the configured `NameVirtualHost` directives.
 {{< /note >}}
 

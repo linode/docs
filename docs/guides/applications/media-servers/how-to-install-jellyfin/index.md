@@ -1,10 +1,5 @@
 ---
 slug: how-to-install-jellyfin
-author:
-  name: Gardiner Bryant
-contributor:
-  name: Gardiner Bryant
-  link: https://www.youtube.com/user/tuxreviews
 description: 'This guide will show you how to install Jellyfin, an open-source solution for organizing your media, on a Linode running Ubuntu 18.04.'
 keywords: ["Jellyfin", "Media Server", "PLEX"]
 tags: ["ubuntu"]
@@ -15,6 +10,7 @@ modified_by:
 published: 2019-08-07
 title: How to Install Jellyfin on Linux
 aliases: ['/applications/media-servers/how-to-install-jellyfin/']
+authors: ["Gardiner Bryant"]
 ---
 Jellyfin is an open source media library management and streaming platform, similar to [Plex](https://www.plex.tv/). This document guides you through the process of installing and configuring **Jellyfin** on your Linode running Ubuntu 18.04.
 
@@ -25,15 +21,15 @@ In this guide you complete the following:
 
 ## Before you Begin
 
-1. If you have not set up your Linode yet, check out our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
+1. If you have not set up your Linode yet, check out our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode’s hostname and timezone.
 
-2. Follow up with our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges.
+2. Follow up with our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges.
 
 3. Run the following command to upgrade your packages:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
@@ -59,7 +55,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         echo "deb [arch=$( dpkg --print-architecture )] https://repo.jellyfin.org/ubuntu $( lsb_release -c -s ) main" | sudo tee /etc/apt/sources.list.d/jellyfin.list
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Current supported releases are `Cxenial`, `bionic`, `cosmic`, and `disco`. Since we're using Ubuntu 18.04, `lsb_release` becomes `bionic`.
 {{< /note >}}
 
@@ -83,7 +79,7 @@ Now that Jellyfin is successfully installed, it needs to be configured and point
 
         ssh user@192.0.2.1 -L 8888:localhost:8096
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Substitute `user` with the `sudo user` on your Linode, and `192.0.2.1` with your Linode's IP address.
 {{< /note >}}
 
@@ -104,7 +100,7 @@ Substitute `user` with the `sudo user` on your Linode, and `192.0.2.1` with your
 
     ![Library Setup](jellyfin-library-setup.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each kind of content type provides a different set of options for you to configure, such as where you would like your metadata retrieved from, etc.
 {{< /note >}}
 
@@ -163,7 +159,7 @@ Jellyfin primarily works as a web frontend for your media. That means you genera
 
         sudo nano /etc/apache2/sites-available/jellyfin.example.com.conf
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although nano is used in this example, feel free to use the text editor of your choice.
 {{< /note >}}
 

@@ -4,7 +4,7 @@
 {{ $p := .Params }}
 {{ $author :=  $p.author }}
 {{ $contributor :=  $p.contributor }}
-{{ $authorName := $author.name}}
+{{ $authorName := $author.name }}
 {{ if and (strings.Contains $authorName "Linode") $contributor }}
   {{ with $contributor.name }}
     {{ $authorName = . }}
@@ -21,15 +21,15 @@
 {{ $mainEntityOfPage := dict "@type" "WebPage" "@id" .Permalink }}
 
 {{ $schema := dict
-    "@context" "https://schema.org" 
-    "@type" "NewsArticle"
-    "mainEntityOfPage" $mainEntityOfPage
-    "headline" .Title
-    "image" $img.Permalink
-    "datePublished" .PublishDate
-    "dateModified" .Lastmod
-    "author" $author
-    "publisher"  $schemaCommonParts.publisher
+  "@context" "https://schema.org"
+  "@type" "NewsArticle"
+  "mainEntityOfPage" $mainEntityOfPage
+  "headline" .Title
+  "image" $img.Permalink
+  "datePublished" .PublishDate
+  "dateModified" .Lastmod
+  "author" $author
+  "publisher"  $schemaCommonParts.publisher
 }}
 
 {{ $script := printf `<script type="application/ld+json">%s%s%s</script>` "\n\t" ($schema | jsonify ) "\n" }}
@@ -41,7 +41,8 @@
     {{ $schema := . | transform.Unmarshal }}
     {{ $script := printf `<script type="application/ld+json">%s%s%s</script>` "\n\t" ($schema | jsonify ) "\n" }}
     {{ $script | safeHTML }}
-  {{ else }}{{ end }}
+  {{ else }}
+  {{ end }}
 {{ end }}
 
 {{ define "partials/sections/head-structured-data-parts" }}
@@ -50,11 +51,11 @@
     "@type": "Organization",
     "name": "Linode",
     "logo": {
-      "@type": "ImageObject",
-      "url": %q
+    "@type": "ImageObject",
+    "url": %q
     }
-  }` $logo | transform.Unmarshal }}
-
+    }` $logo | transform.Unmarshal
+  }}
 
   {{ $parts := dict "publisher" $publisher }}
   {{ return $parts }}
