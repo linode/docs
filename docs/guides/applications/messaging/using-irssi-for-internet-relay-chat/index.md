@@ -1,8 +1,5 @@
 ---
 slug: using-irssi-for-internet-relay-chat
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Use IRC and GNU Screen to maintain persistent connections to IRC networks.'
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +18,7 @@ external_resources:
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/)'
+authors: ["Alex Fornuto"]
 ---
 
 ![Using Irssi for Internet Relay Chat](Using-Irssi-for-Internet-Relay-Chat-smg.jpg)

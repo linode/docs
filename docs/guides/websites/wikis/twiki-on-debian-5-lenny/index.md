@@ -1,9 +1,6 @@
 ---
 slug: twiki-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Debian 5 "Lenny".'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","debian"]
@@ -19,6 +16,7 @@ relations:
         key: install-twiki
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

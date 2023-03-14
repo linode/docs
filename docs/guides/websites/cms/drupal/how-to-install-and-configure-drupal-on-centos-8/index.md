@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-drupal-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running CentOS 8.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "centos 8"]
 tags: ["drupal","centos","apache","lamp","php","cms"]
@@ -19,6 +16,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-centos-8/']
+authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running CentOS 8.

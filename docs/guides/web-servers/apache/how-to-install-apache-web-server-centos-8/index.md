@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-apache-web-server-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Apache on your CentOS 8 server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache", "centos", "centos 8", "http", "web server"]
 tags: ["centos","web server","apache"]
@@ -23,6 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/apache/how-to-install-apache-web-server-centos-8/']
+authors: ["Linode"]
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on CentOS 8.

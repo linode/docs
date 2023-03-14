@@ -1,8 +1,5 @@
 ---
 slug: set-up-dns-services-on-cpanel
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: 'This guide provides you with instructions for setting up DNS on cPanel, a commercial web-based control panel for servers that lets you manage your Linode.'
 og_description: "How to set up DNS on your cPanel server"
 keywords: ["DNS", "cPanel", "DNS on cPanel"]
@@ -19,6 +16,7 @@ external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
  - '[DNS zone transfer](http://en.wikipedia.org/wiki/DNS_zone_transfer)'
+authors: ["Chris Ciufo"]
 ---
 
 [cPanel](https://www.cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide shows you how to set up your cPanel server to serve DNS records. These instructions should be done through your root WHM interface.

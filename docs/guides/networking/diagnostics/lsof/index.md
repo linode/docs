@@ -1,8 +1,5 @@
 ---
 slug: lsof
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An introduction to lsof.'
 keywords: ["UNIX", "lsof", "TCP/IP", "network", "utility"]
 tags: ["networking","linux"]
@@ -12,13 +9,11 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 title: 'How to List Open Files with lsof'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[lsof on Wikipedia](https://en.wikipedia.org/wiki/Lsof)'
   - '[lsof Manual Page on die.net](https://linux.die.net/man/8/lsof)'
 aliases: ['/networking/diagnostics/lsof/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

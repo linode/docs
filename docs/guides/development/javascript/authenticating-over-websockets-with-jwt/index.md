@@ -1,7 +1,5 @@
 ---
 slug: authenticating-over-websockets-with-jwt
-author:
-  name: Nathaniel Stickman
 description: 'In this guide, you will learn how to use Websockets and JSON Web Tokens, which are also called JWTs, together in your app with several practical examples.'
 keywords: ['websocket token authentication']
 tags: ['web applications']
@@ -11,14 +9,12 @@ modified_by:
   name: Linode
 title: "Use JSON Web Tokens (JWT) to Authenticate Users over WebSockets"
 title_meta: "Authenticating Users Over WebSockets with JSON Web Tokens (JWT)"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Mozilla Developer Network: The WebSocket API (WebSockets)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)'
 - '[JWT.IO: Introduction to JSON Web Tokens](https://jwt.io/introduction)'
 - '[Express.js Documentation Page](https://expressjs.com/)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 WebSockets allow you to add real-time communications to your web application. It is the technology frequently behind instant messaging, collaboration, and multiplayer gaming over the web. Any time you want to facilitate real-time communication between clients and servers, the WebSockets API is one of your best options.

@@ -1,8 +1,5 @@
 ---
 slug: set-up-web-server-host-website
-author:
-  name: Linode
-  email: docs@linode.com
 description: "How to set up your first web server and point a domain name to your Linode."
 keywords: ["hosting a website", "website", "linode quickstart guide"]
 tags: ["web server","nginx","lamp"]
@@ -14,6 +11,7 @@ published: 2012-03-13
 title: "Set up a Web Server and Host a Website on Linode"
 aliases: ['/websites/hosting/set-up-web-server-host-website/','/websites/set-up-web-server-host-website/']
 image: Hosting-a-Website-smg.jpg
+authors: ["Linode"]
 ---
 
 ![Hosting a Website](Hosting-a-Website-smg.jpg "Hosting a Website")

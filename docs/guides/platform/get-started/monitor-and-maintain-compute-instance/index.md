@@ -1,8 +1,5 @@
 ---
 slug: monitor-and-maintain-compute-instance
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide introduces concepts and tools for monitoring and maintaining your server."
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 tags: ["cloud manager","monitoring","linode platform"]
@@ -15,6 +12,7 @@ published: 2012-08-22
 title: "Monitor and Maintain a Compute Instance"
 title_meta: "Monitor and Maintain a Linode Compute Instance"
 image: monitor-and-maintain-your-server.png
+authors: ["Linode"]
 ---
 
 Now that your Linode is up and running, it's time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you'll need to keep your server up to date and minimize downtime. You'll learn how to monitor the availability and performance of your system, manage your logs, and update your server's software.

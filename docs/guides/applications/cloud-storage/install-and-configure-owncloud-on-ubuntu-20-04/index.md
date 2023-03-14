@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-owncloud-on-ubuntu-20-04
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
 description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
 keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,14 +10,13 @@ modified_by:
 title: "Installing and Configuring ownCloud on Ubuntu 20.04"
 title_meta: "How to Install and Configure ownCloud on Ubuntu 20.04"
 tags: ["ubuntu"]
-contributor:
-  name: Jack Wallen
 aliases: ['/guides/how-to-install-owncloud-ubuntu-20-04/']
 relations:
     platform:
         key: how-to-install-owncloud
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?

@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Send an API Request with cURL
 description: "Learn how to use cURL to send requests to endpoints on the Linode API."
 aliases: ['/products/tools/linode-api/guides/authenticate-requests/']
+authors: ["Linode"]
 ---
 
 One of the quickest ways to send an API request in the command line is to use the [cURL](https://en.wikipedia.org/wiki/CURL) command, which can be used on most systems. This guide shows you how to build a request using cURL.

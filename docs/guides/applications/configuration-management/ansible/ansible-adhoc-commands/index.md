@@ -1,8 +1,5 @@
 ---
 slug: ansible-adhoc-commands
-author:
-  name: Avi
-  email: avi.dunken1991@gmail.com
 description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,11 +9,9 @@ modified_by:
   name: Linode
 title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 title_meta: 'Ansible Adhoc Commands - A Tutorial'
-contributor:
-  name: Avi
-  link: https://github.com/avidunken/
 aliases: ['/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
 tags: ["automation"]
+authors: ["Avi"]
 ---
 
 In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers.

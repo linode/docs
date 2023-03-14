@@ -1,8 +1,5 @@
 ---
 slug: beginners-guide-to-lxd
-author:
-  name: Linode
-  email: docs@linode.com
 description: "LXD is a container hypervisor that manages Linux Containers. In this guide, we'll show you how to install, setup, and use LXD 3."
 keywords: ["container", "lxd", "lxc", "apache", "virtual machine", "virtualization"]
 tags: ["ubuntu","container","apache"]
@@ -13,9 +10,6 @@ modified_by:
   name: Linode
 title: "A Beginner's Guide to LXD: Setting Up an Apache Web Server"
 title_meta: "How to Set Up an Apache Webserver in an LXD Container"
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
 external_resources:
   - '[What are snap packages](https://docs.snapcraft.io/getting-started/3876)'
   - '[Installing snapd](https://docs.snapcraft.io/installing-snapd/6735)'
@@ -25,6 +19,7 @@ external_resources:
   - '[Try LXD Online](https://linuxcontainers.org/lxd/try-it/)'
   - '[NGINX Reverse Proxy Settings](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)'
 aliases: ['/applications/containers/beginners-guide-to-lxd/']
+authors: ["Simos Xenitellis"]
 ---
 
 ![Access an Apache Web Server Inside a LXD Container](apache-lxd-banner-image.jpg)

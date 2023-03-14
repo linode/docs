@@ -1,11 +1,5 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-10
-author:
-  name: Tyler Langlois
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: "The Elastic Stack is an open-source solution to search, collect, and analyze data. Learn how to install it and explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
@@ -25,6 +19,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 10
+authors: ["Tyler Langlois"]
 ---
 
 ## What is the Elastic Stack?

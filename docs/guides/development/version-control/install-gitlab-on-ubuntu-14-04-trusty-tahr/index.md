@@ -1,16 +1,10 @@
 ---
 slug: install-gitlab-on-ubuntu-14-04-trusty-tahr
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 14.04 "Trusty Tahr".'
 keywords: ["version control", "git", "gitlab", "ruby", "ruby on rails", "mysql", "postgresql", "nginx"]
 tags: ["version control system","email","ruby","nginx","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/','/gitlab-with-ubuntu/','/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/','/applications/development/gitlab-on-ubuntu-14-04/','/applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/']
-contributor:
-    name: Nashruddin Amin
-    link: https://twitter.com/bsd_noobz
 modified: 2017-06-21
 modified_by:
   name: Linode
@@ -29,6 +23,7 @@ relations:
         key: install-gitlab
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Nashruddin Amin"]
 ---
 
 

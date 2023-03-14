@@ -1,9 +1,6 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Ubuntu 9.10 "Karmic".'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu 9.10", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Brett Kaplan"]
 ---
 
 

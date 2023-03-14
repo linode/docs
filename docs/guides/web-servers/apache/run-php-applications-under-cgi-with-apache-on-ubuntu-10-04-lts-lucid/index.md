@@ -1,9 +1,6 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Methods for enabling dynamic content run as individual users with PHP on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["php cgi", "php ubuntu 10.04", "php ubuntu lucid", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
@@ -19,6 +16,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

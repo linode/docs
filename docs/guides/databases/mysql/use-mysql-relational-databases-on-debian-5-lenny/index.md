@@ -1,9 +1,6 @@
 ---
 slug: use-mysql-relational-databases-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Debian Lenny.'
 keywords: ["MySQL on Linux", "MySQL Debian", "MySQL Lenny", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","mysql"]
+authors: ["Linode"]
 ---
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian Lenny Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.

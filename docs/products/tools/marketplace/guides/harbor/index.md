@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy Harbor on a Linode Compute Instance. This provides you with an open source container registry that compliments the Linode Kubernetes Engine."
 keywords: ['harbor','container','container registry','docker']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -11,11 +8,10 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Harbor through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Harbor](https://goharbor.io/)'
 aliases: ['/guides/deploying-harbor-marketplace-app/','/guides/harbor-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Harbor](https://goharbor.io/) is an open source container registry platform, cloud-native content storage, and signing/scanning tool. Harbor enhances the open source Docker distribution by providing features like security, identification, and management. The image transfer efficiency can be improved by having a registry closer to the build and run environment. Harbor includes comprehensive security features like user administration, access control, and activity auditing, as well as image replication between registries.

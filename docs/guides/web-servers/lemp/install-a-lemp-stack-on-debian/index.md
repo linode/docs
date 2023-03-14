@@ -1,8 +1,5 @@
 ---
 slug: install-a-lemp-stack-on-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide teaches basic setup and configuration of Linux, NGINX, MySQL/MariaDB, and PHP (LEMP stack) on Debian 9.'
 keywords: ["nginx", "lemp", "php"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
@@ -18,6 +15,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 9
+authors: ["Linode"]
 ---
 
 ## What is a LEMP Stack?

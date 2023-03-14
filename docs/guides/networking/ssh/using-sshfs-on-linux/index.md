@@ -1,8 +1,5 @@
 ---
 slug: using-sshfs-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to use SSHFS, Secure Shell FileSystem, a tool that allows users to securely access a remote file system over SSH via the command line interface.'
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 tags: ["networking","ssh","security","linux"]
@@ -17,6 +14,7 @@ external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
  - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
+authors: ["Linode"]
 ---
 
 ![SSHFS](sshfs_mount_remote.png)

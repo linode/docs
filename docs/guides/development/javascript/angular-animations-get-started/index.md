@@ -1,7 +1,5 @@
 ---
 slug: angular-animations-get-started
-author:
-  name: Cameron Laird
 description: 'Get started creating Angular animations using components, states, triggers, and transitions. Learn the basics of animating an HTML div element with Angular.'
 keywords: ['angular animations', 'create angular component', 'angular animation trigger', 'angular animation states', 'angular animation transitions', 'toggle function']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,12 +8,10 @@ modified_by:
   name: Linode
 title: "Getting Started with Angular Animations"
 title_meta: "Angular Animations: Get Started"
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
 external_resources:
 - '[Introduction to Angular Animations](https://angular.io/guide/animations)'
 - '[Angular Components Overview](https://angular.io/guide/component-overview)'
+authors: ["Cameron Laird"]
 ---
 
 Web animations add dynamic graphics and effects to a web page. Movement on a web page communicates information to users and adds visual interest. Animation on a web page is typically achieved by changing the state of an HTML element over time. For example, an HTML element's color or position can change as a result of user interaction on a web page. Most popular web frameworks offer animation support that simplifies animating elements on your web pages or applications. This guide shows you how to get started creating animations using the Angular web framework.

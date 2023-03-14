@@ -1,8 +1,5 @@
 ---
 slug: graphql-apollo-an-introduction
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
 description: 'In this guide, you will learn what GraphQL is and how to use the Apollo GraphQL client to manage local and remote data from your command line in Linux.'
 keywords: ['what is apollo graphql', 'apollo graphql client', 'apollo graphql server']
 tags: ['web applications']
@@ -12,12 +9,11 @@ modified_by:
   name: Linode
 title: "GraphQL Apollo: An Introduction with Examples"
 title_meta: "An Introduction to GraphQL Apollo"
-contributor:
-  name: Cameron Laird
 external_resources:
 - '[GraphQL](https://graphql.org/)'
 - '[Apollo](https://www.apollographql.com/)'
 - '[Apollo GraphQL documentation](https://www.apollographql.com/docs/)'
+authors: ["Cameron Laird"]
 ---
 
 GraphQL is a server-side runtime and query language for APIs. Known for its speed, GraphQL is ideal for limited-bandwidth edge devices, and applications that benefit from GraphQL's bandwidth-saving query format. Compared to representational state transfer (REST), GraphQL lets you retrieve all the data you need in a single query. GraphQL began as an internal project at Facebook in 2012. After a public release in 2015, the [GraphQL Foundation](https://graphql.org/foundation/) was created in 2018 to provide a permanent home for GraphQL.

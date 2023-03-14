@@ -1,8 +1,5 @@
 ---
 slug: linux-defense-evasion-hiding-linux-processes
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
 description: 'This guide covers the process of evading detection on Linux systems by hiding processes.'
 keywords: ['security']
 tags: ['security']
@@ -11,8 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Linux Defense Evasion - Hiding Linux Processes"
-contributor:
-  name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

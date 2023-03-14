@@ -1,8 +1,5 @@
 ---
 slug: apt-package-manager
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide will teach you what APT is and walks you through the core features and common commands for using APT to manage packages on Linux."
 keywords: ['apt', 'apt-get','installing','updating','upgrading','uninstalling','removing','package repositories','debian', 'ubuntu']
 tags: ['apt','apt-get','debian','ubuntu']
@@ -15,6 +12,7 @@ modified_by:
 title: "Using APT to Manage Packages in Debian and Ubuntu"
 title_meta: "How to Use APT to Manage Packages in Debian and Ubuntu"
 aliases: ['/guides/using-apt-package-manager/']
+authors: ["Linode"]
 ---
 
 *Advanced Package Tool*, more commonly known as [**APT**](https://en.wikipedia.org/wiki/APT_(software)), is a package management system for Ubuntu, Debian, Kali Linux, and other Debian-based Linux distributions. It acts as a front-end to the lower-level [**dpkg**](https://en.wikipedia.org/wiki/Dpkg) package manager, which is used for installing, managing, and providing information on `.deb` packages. In addition to these functions, APT interfaces with repositories to obtain packages and also provides very efficient dependency management.

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows you how to install Chevereto, a modern image sharing solution with drag-and-drop upload experience and more, using the Linode One-Click Marketplace."
 keywords: ['photo storage','images','Marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -15,6 +12,7 @@ external_resources:
 - '[Chevereto](https://chevereto.com/)'
 - '[Chevereto Documentation](https://chevereto.com/docs)'
 aliases: ['/guides/deploying-chevereto-marketplace-app/','/guides/chevereto-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Chevereto](https://chevereto.com/) is a self-hosted image sharing solution. It can be used to create a myriad of applications or to empower existing systems. Chevereto's features include multi-user support, multi-server support, bulk importing, integration with social media, and more.

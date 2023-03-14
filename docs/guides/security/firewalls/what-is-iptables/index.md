@@ -1,7 +1,5 @@
 ---
 slug: what-is-iptables
-author:
-  name: Hackersploit
 description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
 keywords: ['understanding iptables', 'what is iptables']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +12,7 @@ title_meta: What is iptables
 tags: ['networking','security']
 image: "Understanding_iptables.png"
 aliases: ['/security/firewalls/what-is-iptables/']
+authors: ["Hackersploit"]
 ---
 
 Implemented as Netfilter modules, iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall. The filters are organized into tables containing chains of rules which govern how to treat network traffic packets.

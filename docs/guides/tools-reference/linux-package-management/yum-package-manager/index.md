@@ -1,8 +1,5 @@
 ---
 slug: yum-package-manager
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide walks you through the core features of YUM and commands for using YUM to install, upgrade, and remove packages on your system."
 keywords: ['yum','installing','updating','upgrading','uninstalling','removing','package repositories','centos']
 tags: ['yum',centos',]
@@ -15,11 +12,9 @@ modified_by:
 title: "Using YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 title_meta: "How to Use YUM to Manage Packages in CentOS/RHEL 7 and Earlier"
 aliases: ['/guides/how-to-use-yum/']
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[YUM Package Manager](http://yum.baseurl.org/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 *Yellowdog Updater, Modified*, more commonly known as **YUM**, is a package management tool for a variety of Linux distributions. It provides an easy-to-use interface on top of the low-level functions available in the RPM Package Manger (RPM). YUM is the default package manager for CentOS 7 as well as older versions of RHEL and Fedora. It has largely been replaced by it successor *Dandified YUM*, also called **DNF**, on most newer RPM-based distributions, including CentOS 8, RHEL 8, and Fedora 22 (and later). If you are interested in learning about the DNF package manager, see the [Using the DNF Package Manager](/docs/guides/dnf-package-manager/) guide.

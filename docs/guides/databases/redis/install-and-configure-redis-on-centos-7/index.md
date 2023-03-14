@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-redis-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using master/slave replication on CentOS 7.'
 keywords: ["redis", " centos 7", " redis cluster", " centos"]
 aliases: ['/databases/redis/deploy-redis-on-centos-7/','/databases/redis/install-and-configure-redis-on-centos-7/']
@@ -23,6 +20,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 tags: ["nosql","database","centos"]
+authors: ["Linode"]
 ---
 
 ![Deploy Redis on CentOS 7](install-configure-redis-centos.png "Deploy Redis on CentOS 7")

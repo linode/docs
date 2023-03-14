@@ -1,9 +1,6 @@
 ---
 slug: compress-files-using-the-command-line
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
-description: "Tar, is a GNU utility that provides the ability to create tar archives, extract and compress files."
+description: "Tar, is a GNU utility that provides the ability to create tar archives, extract and compress files in Linux. Check out our step-by-step guide here"
 og_description: "This guide will detail how to compress and extract files using tar on the Unix filesystem"
 keywords: ["tar", "star", "GNU-Tar", "cryptocurrency"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +9,13 @@ modified: 2018-02-01
 modified_by:
   name: Linode
 title: "Archive, Compress, and Extract Files in Linux Using the Command Line"
-title_meta: "How to Compress and Extract Files Using tar and gzip"
+title_meta: "How to Archive, Extract & Compress Files in Linux"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
+authors: ["Angel Guarisma"]
 ---
 
-`tar` and `gzip` provide a standard interface for creating archives and compressing files on Linux. These utilities take a large number of files, save them together in an archive, and compresses the archive to save space. `tar` does not compress files by itself. Used in conjunction with `gzip`, an archived file can be compressed to reduce disk space. The resulting archived file has the file extension, `tar.gz` and is sometimes called a "tarball".
+`tar` and `gzip` provide a standard interface to create archives and to compress files in Linux. These utilities take a large number of files, save them together in an archive, and compresses the archive to save space. `tar` does not compress files by itself. Used in conjunction with `gzip`, an archived file can be compressed to reduce disk space. The resulting archived file has the file extension, `tar.gz` and is sometimes called a "tarball".
 
 ## Archive a Directory
 
@@ -29,7 +27,7 @@ aliases: ['/quick-answers/linux/compress-files-using-the-command-line/']
 
         tar -cvf testdir.tar testdir/
 
-3.  Check for the newly archived file:
+3.  Check for the newly archived tar compressed file:
 
         ls
 
@@ -39,11 +37,11 @@ tesdir  testdir.tar
 
 ## Compression with gzip
 
-1.  Compress the file using `gzip`:
+1.  Compress files in Linux using `gzip`:
 
         gzip testdir.tar
 
-2.  Checking for the file will show:
+2.  Checking for the output file will show:
 
         ls
 
@@ -51,7 +49,7 @@ tesdir  testdir.tar
 testdir  testdir.tar.gz
 {{< /output >}}
 
-3.  The chained file extension (`.tar.gz`) indicates that this is a compressed archive. You can see the difference in size between the two files:
+3.  The chained file extension (`.tar.gz`) indicates that this is a compressed archive. You can see the difference in size between the two files, before and after compression:
 
         ls -l --block-size=KB
 
@@ -80,7 +78,7 @@ The flags used in these example stand for:
 * `-x`: Extract a file from the archive.
 * `-f`: Define STDOUT as the filename, or uses the next parameter.
 
-## Common Options for Archiving
+## Common Options for Compressing and Archiving Files in Linux
 
 Additional flags used with the `tar` command are:
 

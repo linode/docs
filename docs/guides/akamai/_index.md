@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to utilize the Akamai and Linode platforms together to build global, scalable solutions.'
 keywords: ["cdn", "compute", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,4 +9,5 @@ show_on_frontpage: true
 title_short: "Akamai"
 weight: 130
 icon: "akamai"
+authors: ["Linode"]
 ---

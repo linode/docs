@@ -1,8 +1,5 @@
 ---
 slug: download-resources-from-the-command-line-with-wget
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for using the wget command to download files from the Internet or your network via the command line interface.'
 keywords: ["wget", "command line", "linux common commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2010-10-25
 title: Download Resources from the Command Line with wget
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 ![Banner_image](Download_Resources_from_the_Command_Line_with_wget_smg.jpg)

@@ -1,8 +1,5 @@
 ---
 slug: how-to-move-machine-learning-model-to-production
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide will show you how to use an existing deep learning model as part of a production application using an API endpoint for a Flask app.'
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
 og_description: 'Use a pre-trained deep learning model as part of a production application.'
@@ -19,6 +16,7 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-move-machine-learning-model-to-production/']
+authors: ["Jared Kobos"]
 ---
 
 ![How to Move Your Machine Learning Model to Production](move-machine-learning-model-to-production.png "How to Move Your Machine Learning Model to Production")
