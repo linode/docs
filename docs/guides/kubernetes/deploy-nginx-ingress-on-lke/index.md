@@ -293,7 +293,10 @@ If you would rather not continue using the cluster you just created, review the 
     ```command
     kubectl delete -f my-new-ingress.yaml
     ```
-
+  {{< note >}}
+  The NodeBalancer that you created for the LKE Cluster persists and you need to delete the NodeBalancer using [Linode Cloud Manager](https://cloud.linode.com).
+  {{< /note >}}
+  
 - To remove the LKE Cluster and the associated nodes from your account, navigate to the [Linode Cloud Manager](https://cloud.linode.com):
 
     1. Click on the **Kubernetes** link in the sidebar. A new page with a table which lists your clusters will appear.
