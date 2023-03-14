@@ -1,8 +1,5 @@
 ---
 slug: using-redis-scan-commands
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Looking to more efficiently fetch keys from your Redis database, especially when you have large amounts of data? Follow along in this guide to learn how to use Redis’s SCAN commands. These commands incrementally iterate over keys, preventing server blockages for large data sets and providing several features to improve the process of fetching keys."
 keywords: ['how to use redis scan', 'redis scan command', 'redis scan keys']
 tags: ['redis']
@@ -11,15 +8,12 @@ published: 2022-06-05
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use the Scan Commands in Redis"
-h1_title: "Using the Scan Commands in Redis"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "Using the Scan Commands in Redis"
 external_resources:
 - '[Redis: SCAN](https://redis.io/commands/scan/)'
 - '[Linux Hint: How to Use Redis Scan](https://linuxhint.com/redis-scan/)'
 - '[ObjectRocket: SCAN Redis Command Examples](https://kb.objectrocket.com/redis/scan-redis-command-examples-509)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis is a NoSQL database, exceptional for storing data structures in memory. Between that and its low-latency performance, Redis has become a go-to tool for web applications needing efficient caching and messaging storage.
@@ -174,5 +168,3 @@ The `TYPE` option for the `SCAN` command is only supported in Redis 6 or later. 
 With that, you are ready to start making use of SCAN commands on your Redis instance. These commands can provide effective methods for dealing with large and complex data sets. And the tools discussed in this guide help you to make the most of these commands to efficiently handle your data.
 
 Want to continue learning about Redis, and get the most effective use out of your server? Thankfully, we have plenty of [guides on using Redis](/docs/guides/databases/redis/) that can help you navigate Redis data types, configurations, and more.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
