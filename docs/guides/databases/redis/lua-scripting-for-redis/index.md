@@ -8,7 +8,7 @@ published: 2022-05-29
 modified_by:
   name: Nathaniel Stickman
 title: "Writing Lua Scripts for a Redis Server"
-h1_title: "Writing Lua Scripts for a Redis Server"
+title_meta: "Writing Lua Scripts for a Redis Server"
 external_resources:
 - '[Redis: Scripting with Lua](https://redis.io/docs/manual/programmability/eval-intro/)'
 - '[Redis: EVAL](https://redis.io/commands/eval/)'
