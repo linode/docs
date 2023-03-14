@@ -4,11 +4,11 @@ description: "Looking to more efficiently fetch keys from your Redis database, e
 keywords: ['how to use redis scan', 'redis scan command', 'redis scan keys']
 tags: ['redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-05
+published: 2023-03-14
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use the Scan Commands in Redis"
-title_meta: "Using the Scan Commands in Redis"
+title: "Using the Scan Commands in Redis"
+title_meta: "How to Use the Scan Commands in Redis"
 external_resources:
 - '[Redis: SCAN](https://redis.io/commands/scan/)'
 - '[Linux Hint: How to Use Redis Scan](https://linuxhint.com/redis-scan/)'

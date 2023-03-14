@@ -4,11 +4,11 @@ description: "What is the PATH variable in Linux, and how does it work? Better s
 keywords: ['linux path variable','linux path directory','add to linux path']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-13
+published: 2023-03-14
 modified_by:
   name: Nathaniel Stickman
-title: "How to Add a Directory to the PATH on Linux?"
-title_meta: "Adding a Directory to the PATH on Linux"
+title: "Add a Directory to the PATH on Linux"
+title_meta: "How to Add a Directory to the PATH on Linux"
 external_resources:
 - '[Linuxize: How to Add a Directory to PATH in Linux](https://linuxize.com/post/how-to-add-directory-to-path-in-linux/)'
 - "[It's FOSS: How to Add a Directory to PATH in Linux](https://itsfoss.com/add-directory-to-path-linux/)"
