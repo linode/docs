@@ -13,6 +13,7 @@ external_resources:
 - '[Redis: Redis server-assisted client side caching](https://redis.io/topics/client-side-caching)'
 - '[MDN Web Docs: Client-side Storage](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Client-side_storage)'
 authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Redis is an open-source in-memory database with a reputation for working exceptionally well for caching web application data. Redis's fast transactions and low latency help to increase application performance while its server-assisted caching feature makes client-side caching more efficient.

@@ -14,6 +14,7 @@ external_resources:
 - '[Red Hat Developer: Best Practices for Running Buildah in a Container](https://developers.redhat.com/blog/2019/08/14/best-practices-for-running-buildah-in-a-container#)'
 - '[Computing for Geeks: How To Build OCI & Docker Container Images With Buildah](https://computingforgeeks.com/how-to-build-oci-docker-container-images-with-buildah/)'
 authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Buildah is an open source containerization tool capable of creating images from scratch, Dockerfiles, or Containerfiles. It also follows the Open Container Initiative (OCI) specifications, making Buildah images both versatile and open.

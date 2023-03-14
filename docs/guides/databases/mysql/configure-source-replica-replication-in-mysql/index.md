@@ -11,6 +11,7 @@ title: "Configure Source-Replica Replication in MySQL"
 external_resources:
 - '[MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html)'
 authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 The [*MySQL*](https://dev.mysql.com/) is a relational database management system that is one of the most popular open-source projects. Although known for its stability, MySQL is even more reliable if source-replica replication is configured. In replication, one MySQL server is typically designated the *source*. A source sends any database changes and data updates to one or more *replica* database servers. MySQL's data replication procedure is flexible, and the replica servers do not need to be permanently connected to the source. This guide explains how to configure source-replica data replication in MySQL.

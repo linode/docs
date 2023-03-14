@@ -10,6 +10,7 @@ modified_by:
 title: "GitOps: An Overview of Its Principles and Workflow"
 title_meta: "An Overview of GitOps Principles and Workflow"
 authors: ["Jack Wallen"]
+tags: ["saas"]
 ---
 
 If you're a developer, chances are you know what [Git](/docs/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, compares GitOps to DevOps, describes the GitOps workflow, and the tools often used with this methodology.
