@@ -64,7 +64,7 @@ Use our [Abuse Portal](https://www.linode.com/legal-abuse/) to report network ab
 
 For general questions and issues that are [outside the Scope of Support](#scope-of-support), consider using following resources. These resources may already provide an answer to your question or can help you get an answer and resolve your issues.
 
-- [**Linode Documentation**](/docs): The Linode Docs Site contains documentation for all of our products as well as a wide variety of other topics, like using Linux, developing a web application, managing databases, and working with configuration management tools. This is a great resource for learning how to use our products and finding tutorials for installing and configuring third-party software on the Linode platform.
+- [**Linode Documentation**](/docs/): The Linode Docs Site contains documentation for all of our products as well as a wide variety of other topics, like using Linux, developing a web application, managing databases, and working with configuration management tools. This is a great resource for learning how to use our products and finding tutorials for installing and configuring third-party software on the Linode platform.
     - [Product Docs](/docs/products/): Detailed information and guides for each of our products, features, and services.
     - [Troubleshooting Overview](/docs/guides/troubleshooting-overview/): A quick start guide that provides answers for common server connectivity and management issues.
     - [FAQs for Compute Instances](/docs/products/compute/compute-instances/faqs/): A curated list of the most frequently asked questions regarding Compute Instances.
