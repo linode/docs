@@ -1,8 +1,5 @@
 ---
 slug: install_elasticsearch_centos
-author:
-  name: Jared Kobos
-  email: sfoo@linode.com
 description: 'Shortguide for installing Elasticsearch on Fedora systems'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["elasticsearch", "elastic stack", "red hat", "centos"]
@@ -19,6 +16,7 @@ relations:
             - distribution: CentOS
 tags: ["database"]
 aliases: ['/databases/elasticsearch/install_elasticsearch_centos/']
+authors: ["Jared Kobos"]
 ---
 
 1.  Trust the Elastic signing key:

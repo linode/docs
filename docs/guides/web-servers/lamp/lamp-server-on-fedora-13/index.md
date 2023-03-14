@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode.'
 keywords: ["fedora 13 lamp", "lamp server", "linux lamp", "fedora 13 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 
@@ -32,7 +30,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/getting-started#set-the-timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/products/platform/get-started/#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 

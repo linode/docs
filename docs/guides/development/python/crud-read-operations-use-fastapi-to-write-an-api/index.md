@@ -1,8 +1,5 @@
 ---
 slug: crud-read-operations-use-fastapi-to-write-an-api
-author:
-  name: Chelsea Troy
-  email: heychelseatroy@gmail.com
 description: 'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 og_description:  'This guide will show you how to create an API using the Python micro-framework, FastAPI, a fast and easy-to-learn option for building an API.'
 keywords: ['python api framework fastapi rest']
@@ -11,12 +8,10 @@ published: 2021-03-10
 image: CRUD_readop_FastAPI.png
 modified_by:
   name: Linode
-title: "CRUD Read Operations: Use FastAPI to Write an API"
-h1_title: "CRUD Read Operations: How to Use FastAPI to Write an API"
+title: "CRUD Read Operations: How to Use FastAPI to Write an API"
+title_meta: "CRUD Read Operations: Use FastAPI to Write an API"
 tags: ["python", "django"]
-contributor:
-  name: Chelsea Troy
-  link: https://twitter.com/HeyChelseaTroy
+authors: ["Chelsea Troy"]
 ---
 ## FastAPI Features
 
@@ -41,9 +36,9 @@ Throughout this guide you learn how to use FastAPI to create the following REST 
 The [REST protocol](https://en.wikipedia.org/wiki/Representational_state_transfer) allows servers to expose data that a client can access and manipulate. This protocol allows clients to perform create, read, update, and delete (CRUD) operations.
 {{</ disclosure-note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide does not cover integrating FastAPI with a database. FastAPI uses an in-memory data store by default. However, you can integrate FastAPI with a [long list of different database providers](https://fastapi.tiangolo.com/tutorial/sql-databases/).
-{{</ note >}}
+{{< /note >}}
 
 ## Install FastAPI
 
@@ -52,7 +47,7 @@ This guide does not cover integrating FastAPI with a database. FastAPI uses an i
 FastAPI requires the following items to be installed on your system:
 
 - Python 3.6+  and [pip](https://pypi.org/project/pip/)
-- [Gunicorn](https://www.linode.com/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
+- [Gunicorn](/docs/guides/flask-and-gunicorn-on-ubuntu/#install-and-configure-gunicorn) or [Hypercorn](https://pypi.org/project/Hypercorn/). These tools are used as the web server gateway for your API.
 
 ### Install FastAPI and Hypercorn
 
@@ -104,9 +99,9 @@ in_memory_datastore = [
         - the approximate year it was published
         - its conceptual contributions to the design of modern programming languages
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Each record within the `in_memory_datastore` list is a Python dictionary. RESTful APIs are generally organized around a *resource*. A resource is a type of database record that can be accessed by a client.
-{{</ note >}}
+{{< /note >}}
 
 1. Add the List Programming Languages endpoint to your `main.py` file. This endpoint fetches all the records in the data store and returns them to the client as a JSON object. The JSON object has the label `programming_languages`.
 

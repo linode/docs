@@ -1,23 +1,18 @@
-(function () {
-  'use strict';
-
+(() => {
+  // src/js/attribution-inline.js
   function getCookie(e, o) {
     return null == (o = RegExp("(^|; )" + encodeURIComponent(e) + "=([^;]*)").exec(document.cookie)) ? void 0 : o[2] ? o[2] : void 0;
   }
-
   function setCookie(firstLast, cookieName, cookieValue) {
     var cS = "; max-age=31536000; domain=.linode.com; path=/";
     document.cookie = firstLast + cookieName + "=" + cookieValue + cS;
   }
-
-  var parseQueryString = function () {
-    var e = window.location.search.toLowerCase(),
-        r = {};
-    return e.replace(new RegExp("([^?=&]+)(=([^&]*))?", "g"), function (e, n, a, o) {
+  var parseQueryString = function() {
+    var e = window.location.search.toLowerCase(), r = {};
+    return e.replace(new RegExp("([^?=&]+)(=([^&]*))?", "g"), function(e2, n, a, o) {
       r[n] = o;
     }), r;
   };
-
   var pFA = parseQueryString();
   var aV = {
     FullQuery: window.location.search || getCookie("atr_lastFullQuery") || "",
@@ -35,34 +30,30 @@
     UTM_Term: pFA["utm_term"] || getCookie("atr_lastUTM_Term") || getCookie("atr_firstUTM_Term") || ""
   };
   var aVEvery = ["Custom1", "Custom3", "Custom4", "Custom5", "GA_ID", "GCLID"];
-
   if (document.cookie.indexOf("atr1_sessionValsStores=") == -1 && (window.location.search.indexOf("utm") != -1 || window.location.search.indexOf("gclid") != -1 || document.cookie.indexOf("_fbp=") != -1 || document.cookie.indexOf("_fbc=") != -1 || document.cookie.indexOf("_gcl_aw=") != -1)) {
     document.cookie = "atr1_sessionValsStores=true; expires=0; domain=.linode.com; path=/";
-
     if (document.cookie.indexOf("atr1_firstSource=") == -1) {
-      for (var key in aV) {
+      for (key in aV) {
         if (aV.hasOwnProperty(key)) {
           setCookie("atr_first", key, aV[key]);
         }
       }
-
       setCookie("atr1_first", "Source", "true");
       document.cookie = "atr1_isFirst=true; expires=0; domain=.linode.com; path=/";
     }
-
-    for (var key in aV) {
+    for (key in aV) {
       if (aV.hasOwnProperty(key)) {
         setCookie("atr_last", key, aV[key]);
       }
     }
   } else {
-    for (var i = 0; i < aVEvery.length; i++) {
+    for (i = 0; i < aVEvery.length; i++) {
       if (document.cookie.indexOf("atr1_firstSource=") == -1 || document.cookie.indexOf("atr1_isFirst=") != -1) {
         setCookie("atr_first", aVEvery[i], aV[aVEvery[i]]);
       }
-
       setCookie("atr_last", aVEvery[i], aV[aVEvery[i]]);
     }
   }
-
+  var key;
+  var i;
 })();

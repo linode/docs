@@ -1,8 +1,5 @@
 ---
 slug: netcat
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'This guide provides an introduction to Netcat, a simple UNIX utility that reads and writes data across connections, using either the TCP or UDP protocols.'
 keywords: ["UNIX", "TCP", "UDP", "netcat", "nc", "network"]
 tags: ["linux"]
@@ -11,12 +8,10 @@ published: 2019-08-28
 modified_by:
   name: Linode
 title: 'Learning to Use netcat to its Full Potential'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[netcat](https://en.wikipedia.org/wiki/Netcat)'
 aliases: ['/networking/diagnostics/netcat/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 Netcat is a simple but handy UNIX utility that reads and writes data across network connections, using either TCP or UDP. The purpose of this guide is to help you learn the `netcat` command line utility and use it productively.
@@ -25,8 +20,8 @@ Netcat is a simple but handy UNIX utility that reads and writes data across netw
 
 Some of the commands in this guide will require the use of two terminal windows running `netcat`, one acting as a server and the other as the client. These can be separate machines, or you can connect to the same `localhost`.
 
-{{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to get property executed. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 Port numbers 0-1024 are restricted and can only be used with root privileges, which means that you should use the `sudo` command for creating TCP/IP *servers* that use port numbers 0-1024.
 This rule does not apply to TCP/IP *clients* that use port numbers 0-1024.
@@ -34,12 +29,10 @@ This rule does not apply to TCP/IP *clients* that use port numbers 0-1024.
 
 ## Introduction
 
-As `netcat` is not installed by default, you will most likely need to install `netcat` on
-your Linux machine using your favourite package manager.
+As `netcat` is not installed by default, you will most likely need to install `netcat` on your Linux machine using your favourite package manager.
 
-{{< note >}}
-The `netcat` binary usually has an alias named `nc`, which is what will be used
-in this guide because it is shorter. Usually both commands point to the same binary file.
+{{< note respectIndent=false >}}
+The `netcat` binary usually has an alias named `nc`, which is what will be used in this guide because it is shorter. Usually both commands point to the same binary file.
 {{< /note >}}
 
 If you execute `apt-cache search netcat` on a Debian machine, you will see the following output:
@@ -52,24 +45,15 @@ netcat-traditional - TCP/IP swiss army knife
 netcat-openbsd - TCP/IP swiss army knife
 {{< /output >}}
 
-Notice that `netcat` is a dummy package and its purpose is to ease upgrades. The
-differences between the other two packages are not big, but you will need to visit
-their package descriptions and their man pages in order to get a detailed description
-of their capabilities.
+Notice that `netcat` is a dummy package and its purpose is to ease upgrades. The differences between the other two packages are not big, but you will need to visit their package descriptions and their man pages in order to get a detailed description of their capabilities.
 
-The OpenBSD version of `netcat` supports IPv6, proxies and UNIX sockets, which are not
-supported by the `netcat-traditional` variant. On the other hand, `netcat-traditional` includes
-support for the `-e` option that allows you to execute a program from a remote shell, which is
-not offered by `netcat-openbsd`. However, if you do not need any of these features, you will
-not notice any real difference between these two versions of `netcat`.
+The OpenBSD version of `netcat` supports IPv6, proxies and UNIX sockets, which are not supported by the `netcat-traditional` variant. On the other hand, `netcat-traditional` includes support for the `-e` option that allows you to execute a program from a remote shell, which is not offered by `netcat-openbsd`. However, if you do not need any of these features, you will not notice any real difference between these two versions of `netcat`.
 
-This guide will be using the `netcat` binary that comes with the `netcat-traditional` package.
-This version of `netcat` was written by a person known as *Hobbit*.
+This guide will be using the `netcat` binary that comes with the `netcat-traditional` package. This version of `netcat` was written by a person known as *Hobbit*.
 
 ## Command Line Options
 
-`netcat` commands have the `netcat [options] host port` generic form. The `nc` binary
-supports the following command line options:
+`netcat` commands have the `netcat [options] host port` generic form. The `nc` binary supports the following command line options:
 
 | **Option** | **Usage** |
 | --------- | ----- |
@@ -95,15 +79,11 @@ supports the following command line options:
 | `-s address` | The `-s` option allows you to specify the local source address that will be used in the `nc` command. |
 | `-t` | The `-t` option is used for enabling telnet negotiation. |
 
-
 The remainder of this guide will demonstrate the most important of these commands. That being said, `netcat` is a versatile tool, and there's a large opportunity for experimenting on your own.
 
 ## Using netcat as a Client
 
-The most common use of `netcat` is to act as a client for a server process. This is mostly
-used for troubleshooting network servers and network connections because you can see the raw data
-of the interaction. So, providing `nc` with just a hostname or IP address and a port number
-will make `netcat` act as the `telnet` utility:
+The most common use of `netcat` is to act as a client for a server process. This is mostly used for troubleshooting network servers and network connections because you can see the raw data of the interaction. So, providing `nc` with just a hostname or IP address and a port number will make `netcat` act as the `telnet` utility:
 
     nc localhost 22
 
@@ -111,15 +91,13 @@ will make `netcat` act as the `telnet` utility:
 SSH-2.0-OpenSSH_7.9p1 Debian-10
 {{< /output >}}
 
-In the given example, `nc` tries to connect to TCP port number 22 of the `localhost` - notice
-that TCP port number 22 is used by SSH, which is what triggers the provided output.
+In the given example, `nc` tries to connect to TCP port number 22 of the `localhost` - notice that TCP port number 22 is used by SSH, which is what triggers the provided output.
 
 Also notice that as the `-u` option is not used, `nc` will use the TCP protocol by default.
 
 ## Using netcat as a Server
 
-`nc` will accept connections at a given port and act as a server when you execute
-it with the `-l` option:
+`nc` will accept connections at a given port and act as a server when you execute it with the `-l` option:
 
     nc -l -p 1234
 
@@ -134,17 +112,13 @@ This is a client!
 Hello from the server!
 {{< /output >}}
 
-The previous command tells `netcat` to listen on TCP port number 1234 for incoming
-connections - you can also see that `netcat` automatically reads data from the client
-and that you can send your response to the TCP client just by typing it.
+The previous command tells `netcat` to listen on TCP port number 1234 for incoming connections - you can also see that `netcat` automatically reads data from the client and that you can send your response to the TCP client just by typing it.
 
 Once again, as the `-u` option is not used, `nc` will use the TCP protocol.
 
 ## Getting Verbose Output
 
-There are times where you cannot connect to the remote machine or the answer you get is
-not the expected one. In such cases, it is good to use either `-v` or `-vv` in order to
-get more information from the `nc` connection.
+There are times where you cannot connect to the remote machine or the answer you get is not the expected one. In such cases, it is good to use either `-v` or `-vv` in order to get more information from the `nc` connection.
 
     nc -v localhost 1234
 
@@ -152,9 +126,7 @@ get more information from the `nc` connection.
 localhost [127.0.0.1] 1234 (?) : Connection refused
 {{< /output >}}
 
-The output you get shows that the reason you cannot connect to `localhost`
-using TCP port number 1234 is that your connection was refused by the server.
-Executing `nc localhost 1234` will return no output, which offers no help.
+The output you get shows that the reason you cannot connect to `localhost` using TCP port number 1234 is that your connection was refused by the server. Executing `nc localhost 1234` will return no output, which offers no help.
 
 Using `-vv` instead of `-v` will generate the following kind of output:
 
@@ -165,8 +137,7 @@ localhost [127.0.0.1] 1234 (?) : Connection refused
  sent 0, rcvd 0
 {{< /output >}}
 
-If the TCP connection was successful, you would have gotten the following kind of
-output on the client side:
+If the TCP connection was successful, you would have gotten the following kind of output on the client side:
 
     nc -vv localhost 1234
 
@@ -178,9 +149,7 @@ Both `-v` and `-vv` are very valuable when things do not work as expected.
 
 ## Using the UDP Protocol
 
-In order to use the UDP protocol instead of the TCP protocol, you should include
-the `-u` option in your `nc` commands. Therefore, the following command will
-use the UDP protocol:
+In order to use the UDP protocol instead of the TCP protocol, you should include the `-u` option in your `nc` commands. Therefore, the following command will use the UDP protocol:
 
     nc –vv –u 8.8.8.8 53
 
@@ -233,9 +202,7 @@ Netcat can be used for port scanning as a naive version of [nmap](https://nmap.o
  sent 0, rcvd 0
 {{< /output >}}
 
-Notice that as we are using the `-n` option, the server should be specified by its
-IP address. Additionally, if you omit the `-vv` option, you will get a much shorter
-output, which is verified by the following output:
+Notice that as we are using the `-n` option, the server should be specified by its IP address. Additionally, if you omit the `-vv` option, you will get a much shorter output, which is verified by the following output:
 
     nc -z -v -n 127.0.0.1 1-30
 {{< output >}}
@@ -261,9 +228,7 @@ listening on [any] 4567 ...
 connect to [127.0.0.1] from localhost [127.0.0.1] 53952
 {{< /output >}}
 
-When a client connects to TCP port number `4567`, `nc` will send the contents of the
-`access.log` file to it. The correct way to execute a `nc` client in order to get that
-file is the following. Open a new terminal window and enter this command:
+When a client connects to TCP port number `4567`, `nc` will send the contents of the `access.log` file to it. The correct way to execute a `nc` client in order to get that file is the following. Open a new terminal window and enter this command:
 
     nc -vv localhost 4567 > fileToGet
 {{< output >}}
@@ -285,25 +250,17 @@ connect to [127.0.0.1] from localhost [127.0.0.1] 46930
 bash: line 2: asd: command not found
 {{< /output >}}
 
-Here you tell `nc` to accept incoming TCP connections on TCP port number `12345`. When
-a connection is accepted, `nc` will execute `/bin/bash`, which means that it will give
-you shell access on the machine. After a client successfully connects, every input line
-will be executed as a shell command using `/bin/bash`. If the command cannot be found,
-the client will get no output and an error message will be generated on the server side.
-Otherwise, the output of the command will be sent to the client. To test this functionality, in another terminal window create a `nc` client and type in the following command:
+Here you tell `nc` to accept incoming TCP connections on TCP port number `12345`. When a connection is accepted, `nc` will execute `/bin/bash`, which means that it will give you shell access on the machine. After a client successfully connects, every input line will be executed as a shell command using `/bin/bash`. If the command cannot be found, the client will get no output and an error message will be generated on the server side. Otherwise, the output of the command will be sent to the client. To test this functionality, in another terminal window create a `nc` client and type in the following command:
 
     nc localhost 12345
 
-{{< caution >}}
-This capability of `netcat` can introduce security threats on your Linux machine
-when used improperly. It is advised that you exercise caution if using this feature.
-{{< /caution  >}}
+{{< note type="alert" >}}
+This capability of `netcat` can introduce security threats on your Linux machine when used improperly. It is advised that you exercise caution if using this feature.
+{{< /note >}}
 
 ### Executing a Command After Connecting
 
-If you want to execute a given command each time a client connects to a server that is
-implemented using `nc`, then you should use the `-c` option followed by that command.
-The example that follows executes `ls -l` and sends the output to the client:
+If you want to execute a given command each time a client connects to a server that is implemented using `nc`, then you should use the `-c` option followed by that command. The example that follows executes `ls -l` and sends the output to the client:
 
     nc -vv -c "ls -l" -l 127.0.0.1 -p 1234
 
@@ -312,19 +269,15 @@ listening on [any] 1234 ...
 connect to [127.0.0.1] from localhost [127.0.0.1] 33788
 {{< /output >}}
 
-Try executing `nc 127.0.0.1 1234` on another terminal on your local machine to get the
-output of `ls -l`.
+Try executing `nc 127.0.0.1 1234` on another terminal on your local machine to get the output of `ls -l`.
 
-{{< caution >}}
-This capability of `netcat` can introduce security threats on your Linux machine
-when used improperly. It is advised that you exercise caution if using this feature.
-{{< /caution >}}
+{{< note type="alert" >}}
+This capability of `netcat` can introduce security threats on your Linux machine when used improperly. It is advised that you exercise caution if using this feature.
+{{< /note >}}
 
 ### Using netcat as a Simple Web Server
 
-Let us say that you want to serve a simple HTML page, which in this case will be called
-`index.html`, from your Linux machine but you have no real web server available. You can
-use `netcat` to serve that simple HTML page on clients from your local machine as follows:
+Let us say that you want to serve a simple HTML page, which in this case will be called `index.html`, from your Linux machine but you have no real web server available. You can use `netcat` to serve that simple HTML page on clients from your local machine as follows:
 
     nc -vv -l 127.0.0.1 -p 4567 < index.html
 
@@ -341,8 +294,7 @@ Host: localhost:4567
 Connection: Keep-Alive
 {{< /output >}}
 
-Additionally, when using `wget`, we will receive the following output, which reflects the contents
-of the `index.html` page:
+Additionally, when using `wget`, we will receive the following output, which reflects the contents of the `index.html` page:
 
     wget -qO- http://localhost:4567/
 
@@ -366,14 +318,11 @@ body {
 
 ### Using netcat for Getting Data from Web Servers
 
-The HTTP service is just a TCP service; therefore `nc` can be used for getting data from
-a web server or for testing web servers. The following command will connect to the
-`www.linode.com` machine using port number `80`, which corresponds to the HTTP protocol:
+The HTTP service is just a TCP service; therefore `nc` can be used for getting data from a web server or for testing web servers. The following command will connect to the `www.linode.com` machine using port number `80`, which corresponds to the HTTP protocol:
 
     nc www.linode.com 80
 
-You should type the first line (`GET / HTTP/1.1`) and press the enter key two times
-in order to get a response from the web server.
+You should type the first line (`GET / HTTP/1.1`) and press the enter key two times in order to get a response from the web server.
 
 {{< output >}}
 GET / HTTP/1.1
@@ -416,10 +365,7 @@ Location: https:///
 &lt;/html&gt;
 {{< /output >}}
 
-This used to be a very popular way of testing web servers when every web server
-was using the HTTP protocol. Nowadays, the use of HTTPS makes difficult to test
-a web server using tools such as `netcat` and `telnet` because the web traffic is
-encrypted.
+This used to be a very popular way of testing web servers when every web server was using the HTTP protocol. Nowadays, the use of HTTPS makes difficult to test a web server using tools such as `netcat` and `telnet` because the web traffic is encrypted.
 
 ### Using netcat for Creating a Chat Server
 
@@ -441,13 +387,11 @@ And on the client:
 Hello!
 {{< /output >}}
 
-If both people that want to talk are on the same Linux machine, then using `127.0.0.1` is
-safer and quicker. Otherwise, you should use the IP address of the server in both commands.
+If both people that want to talk are on the same Linux machine, then using `127.0.0.1` is safer and quicker. Otherwise, you should use the IP address of the server in both commands.
 
 ### Transferring Entire Directories Using netcat
 
- This section will explain how to transfer entire directories using `netcat`. Imagine that you wish to transfer the `var` directory that resides under
-your home directory. You can do that as follows:
+This section will explain how to transfer entire directories using `netcat`. Imagine that you wish to transfer the `var` directory that resides under your home directory. You can do that as follows:
 
     tar -cvf - ~/var | nc -vv -l 127.0.0.1 -p 1234
 
@@ -458,11 +402,7 @@ tar: Removing leading `/' from member names
 /home/username/var/slide.tar.ORG
 {{< /output >}}
 
-This creates a TCP server that listens on TCP port number 1234
-on the host with the `127.0.0.1` IP address. Generally speaking, using `127.0.0.1`
-as the server IP address is more secure than using one of the real IP addresses of
-your Linux machine provided that both the server and the client are on the same
-Linux machine.
+This creates a TCP server that listens on TCP port number 1234 on the host with the `127.0.0.1` IP address. Generally speaking, using `127.0.0.1` as the server IP address is more secure than using one of the real IP addresses of your Linux machine provided that both the server and the client are on the same Linux machine.
 
 After that you will need to execute the following command on the client side:
 
@@ -503,8 +443,7 @@ You will need to press `Control+C` for the TCP connection to close.
 
 ### Testing the Network Speed Using netcat
 
-This section will explain how to test the connection speed between
-two machines using `nc`. You will need two hosts. On the server machine use the following command:
+This section will explain how to test the connection speed between two machines using `nc`. You will need two hosts. On the server machine use the following command:
 
     time nc -vv -n -l -p 2222 >/dev/null
 
@@ -518,8 +457,7 @@ user	0m0.230s
 sys	0m1.190s
 {{< /output >}}
 
-On the client machine, you should execute the following command and press `Control+C`
-after the desired amount of time to end the connection:
+On the client machine, you should execute the following command and press `Control+C` after the desired amount of time to end the connection:
 
     time yes | nc.traditional -vv -n 127.0.0.1 2222 >/dev/null
 

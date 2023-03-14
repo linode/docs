@@ -1,20 +1,17 @@
 ---
 slug: getting-started-with-nginx-part-1-installation-and-basic-setup
-author:
-  name: Linode
-  email: docs@linode.com
 description: "An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices."
 keywords: ["nginx", "web server", "configure nginx", "optimize nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/configuration/ssl/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
+aliases: ['/web-servers/nginx/install-nginx-web-server-on-debian-8/','/web-servers/nginx/nginx-installation-and-basic-setup/','/security/ssl/ssl-certificates-with-nginx/index.cfm/','/web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/','/guides/nginx-installation-and-basic-setup/']
 modified: 2018-02-09
 modified_by:
   name: Linode
 published: 2018-02-09
-title: "Getting Started with NGINX: Installation and Basic Setup"
-h1_title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
-enable_h1: true
+title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
+title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Getting Started with NGINX - Part 1: Installation and Basic Setup](Getting-Started-with-NGINX-Part-1-smg.jpg)
@@ -24,7 +21,7 @@ This guide is the first of a four-part series. Parts One and Two will walk you t
 ## Before You Begin
 
 * You will need root access to the system, or a user account with `sudo` privilege.
-* Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+* Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 * Update your system.
 
 ## Install NGINX
@@ -130,7 +127,7 @@ If your site uses SSL/TLS, you would add:
 
     listen [::]:443 ssl;
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also specify your Linode's public IP addresses for NGINX to listen on. For example, the line would then be `listen 203.0.113.4:80;`.
 {{< /note >}}
 

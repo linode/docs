@@ -1,19 +1,19 @@
 .api dl {
-    width: 100%;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 .api dt {
-    @apply font-semibold;
-    float: left;
-    clear: left;
-    width: 20%;
-    padding: 0;
-    margin: 0;
+  @apply font-semibold;
+  float: left;
+  clear: left;
+  width: 20%;
+  padding: 0;
+  margin: 0;
 }
 .api dd {
-    width: 80%;
-    padding: 0;
-    margin: 0;
+  width: 80%;
+  padding: 0;
+  margin: 0;
 }
