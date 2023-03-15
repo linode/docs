@@ -1,8 +1,6 @@
 ---
 slug: how-to-use-docker-compose-v2
-authors:
-  name: Linode Community
-  email: docs@linode.com
+authors: ["Jeff Novotny"]
 description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
 og_description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
 keywords: ['Docker Compose V2','Install Docker Compose','Use Docker Compose','what is Docker Compose V2']
@@ -11,8 +9,6 @@ published: 2023-03-09
 modified_by:
   name: Linode
 title: "How to Use Docker Compose V2"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Docker Compose Overview](https://docs.docker.com/compose/)'
 - '[Docker Compose Configuration File Specification](https://docs.docker.com/compose/compose-file/)'
