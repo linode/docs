@@ -13,7 +13,6 @@ external_resources:
 - '[MongoDB: Indexes](https://www.mongodb.com/docs/manual/indexes/)'
 - '[MongoDB: Create Indexes to Support Your Queries](https://www.mongodb.com/docs/manual/tutorial/create-indexes-to-support-queries/)'
 - '[MongoDB: Performance Best Practices — Indexing](https://www.mongodb.com/blog/post/performance-best-practices-indexing)'
-- '[DigitalOcean: How To Use Indexes in MongoDB](https://www.digitalocean.com/community/tutorials/how-to-use-indexes-in-mongodb)'
 authors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
