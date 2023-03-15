@@ -2,6 +2,7 @@
 slug: setting-up-harbor-registry-with-lke
 title: "How to Set Up a Harbor Container Registry on LKE"
 description: "Harbor provides a self-hosted registry for your Docker images, giving you the control and security you need. Harbor readily interfaces with Docker and Kubernetes tools, and you can find out everything you need to know to get started in this tutorial."
+keywords: ['what is harbor registry','install harbor kubernetes','harbor vs docker registry']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
 published: 2023-03-15
