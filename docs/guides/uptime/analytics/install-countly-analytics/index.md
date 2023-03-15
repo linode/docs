@@ -9,7 +9,6 @@ modified_by:
 title: "Installing Countly Community Edition on Ubuntu 20.04"
 external_resources:
 - '[Countly: Community Edition](https://count.ly/community-edition)'
-- '[Vultr: How to Install Countly Analytics on Ubuntu 16.10](https://www.vultr.com/docs/how-to-install-countly-analytics-on-ubuntu-16-10)'
 authors: ["Nathaniel Stickman"]
 ---
 

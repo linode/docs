@@ -11,7 +11,6 @@ title: "Navigate MongoDB and Query Your Data"
 external_resources:
 - '[MongoDB Manual: Query Documents](https://www.mongodb.com/docs/manual/tutorial/query-documents/)'
 - '[MongoDB Guides: Read Data from MongoDB With Queries](https://www.mongodb.com/docs/guides/server/read_queries/)'
-- '[Digital Ocean: How To Create Queries in MongoDB](https://www.digitalocean.com/community/tutorials/how-to-create-queries-in-mongodb)'
 authors: ["Nathaniel Stickman"]
 tags: ["saas"]
 ---
