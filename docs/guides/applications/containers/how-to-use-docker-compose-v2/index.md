@@ -1,6 +1,6 @@
 ---
 slug: how-to-use-docker-compose-v2
-author:
+authors:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
