@@ -27,7 +27,7 @@ In addition to supporting a wide range of DNS record types, the Linode DNS Manag
 The DNS Manager is available at no charge across [all regions](https://www.linode.com/global-infrastructure/).
 
 {{< note >}}
-To use the Linode DNS Manager to serve your domains, you must have at least one billable service on your account, such as a Compute Instance, NodeBalancer, or an Object Storage Bucket. If no services exist on your account or if all services are removed, DNS records will no longer be served.
+To use the Linode DNS Manager to serve your domains, you must have at least one active Linode on your account. If a Linode does not exist on your account or if all Linodes are removed, DNS records will no longer be served.
 {{< /note >}}
 
 ## Technical Specifications
