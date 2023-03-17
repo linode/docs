@@ -286,6 +286,7 @@ chromecast
 chroot
 chrooting
 chrooted
+CIDRs
 citad
 cjones
 clamav
@@ -422,11 +423,14 @@ datadir
 Datadog
 dataflow
 datagram
+dataplane
+dataplanes
 dataset
 datasets
 datasource
 datastax
 datastore
+datastores
 datetime
 datetimeformat
 dav
@@ -616,6 +620,7 @@ failback
 failover
 failregex
 failregexs
+failsafe
 failsafes
 falko
 fastcgi
@@ -966,6 +971,7 @@ ipaserver
 ipchains
 ipconfig
 iperf
+ips
 ipsec
 ipset
 ipsets
@@ -1844,6 +1850,7 @@ rosenblatt
 rossum
 roundcube
 routable
+routings
 rpaf
 rpc
 rpcbind
