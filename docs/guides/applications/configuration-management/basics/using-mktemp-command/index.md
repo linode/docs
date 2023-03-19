@@ -1,13 +1,10 @@
 ---
-slug: using-mktemp-command-to-create-temporary-files-and-directories
-author:
-  name: Linode Community
-  email: docs@linode.com
+slug: using-mktemp-command
 description: 'Learn how to use the mktemp command on an Ubuntu 20.04 Linode server. Using the mktemp command, you can create temporary files and directories.'
 keywords: ['mktemp', 'mktemp bash', 'mktemp directory', 'tmpdir']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-07-19
+published: 2023-03-19
 modified_by:
   name: Linode
 title: "Using mktemp Command to Create Temporary Files and Directories"
@@ -15,6 +12,7 @@ h1_title: "How to Use the mktemp Command to Create Temporary Files and Directori
 enable_h1: true
 external_resources:
 - '[Setting and Using Linux Environment Variables](https://www.linode.com/docs/guides/how-to-set-linux-environment-variables/)'
+authors: ["Tom Henderson"]
 ---
 
 The `mktemp` command is used in Linux and BSD derivative operating systems to create temporary files or directories. The temporary filename and directories can be named using a user-defined "template". This utility is installed by default on major Linux distributions.
@@ -35,21 +33,33 @@ A script or independent invocation of `mktemp` can also use a template that form
 
 Invoking `mktemp` with no arguments creates a random file in the `/tmp` directory. The `/tmp` directory is the default directory for file creations unless specified otherwise.
 
-    mktemp
-    /tmp/tmp.df8N4EE9Y
+```command
+mktemp
+```
+```output
+/tmp/tmp.df8N4EE9Y
+```
 
 **Use Case #2 - Create A Simple Temporary Directory**
 
 The `mktemp` command with the `-d` argument creates a temporary directory in the `/tmp` directory.
 
-    mktemp -d
-    /tmp/tmp.df8N4EE9Y
+```command
+mktemp -d
+```
+```output
+/tmp/tmp.df8N4EE9Y
+```
 
 By default, `mktemp` command generates a random name that can be customized by passing a template argument. The template requires a minimum of three 'X' characters to be specified which indicates the places to be occupied by random characters.
 
-    tmp_dir=$(mktemp -d -t test-XXXX)
-    echo $tmp_dir
-    /tmp/test-Xsd2ewsd
+```command
+tmp_dir=$(mktemp -d -t test-XXXX)
+echo $tmp_dir
+```
+```output
+/tmp/test-Xsd2ewsd
+```
 
 The `mktemp` command uses the currently set environment variable `$TMPDIR` to place a new temporary directory. The default `$TMPDIR` value found by most shell scripts is the `/tmp` directory, or the other choice is the `/var/tmp` directory. The difference between `/tmp` and `/var/tmp` is that the data stored in `/var/tmp` directory is preserved between reboots and is more persistent than the data in `/tmp`. `/var/tmp` is not usually subjected to `systemctl` extensions that may control temporary files.
 
@@ -74,25 +84,22 @@ The exact `mktemp` syntax is described in the [man(mktemp) pages](https://man7.o
 | ----------------------------- |-----------------------------------------------------------------------------|
 | `mktemp`                      | Makes a temporary file in the default temporary directory                   |
 | `mktemp -V`                   | Display mktemp version then exit                                            |
-| `mktemp -d`                   | Make a directory in the default temporary directory, unless                 |
+| `mktemp -d`                   | Make a directory in the default temporary directory                 |
 | `mktemp -p` <directory path>  | (implies `-t`) Uses the <directory path> as a prefix; the `-t` option generates a path in the default temporary directory (as specified by the environmental variable `$TMPDIR`).                                     |
 | `mktemp -q`                   |  Perform execution of the command quietly, meaning without success or failure messages                                                                                                      |
 | `mktemp -t`                   |  Make a temporary filename, using a template, to be located in `/tmp` directory unless the `$TMPDIR` directory exists, and if it exists, make the file in the directory specified by the `$TMPDIR` value             |
 
 ## How to Create a Temporary Directory
 
-When `mktemp` is invoked with the `-d` argument, it creates a directory in `/tmp`. If there is an environmental variable `$TMPDIR`, then it creates a file in the `$TMPDIR` directory.
+When `mktemp` is invoked with the `-d` argument, it creates a directory in `/tmp`. If there is an environmental variable `$TMPDIR`, then it creates a directory in the `$TMPDIR` directory.
 
-    root@localhost:/tmp# mktemp -d
-    /tmp/tmp.sdasdas
+```command
+mktemp -d
+```
+```output
+/tmp/tmp.sdasdas
+```
 
-
-## How to Create a Temporary File Template
-
-The `mktemp` command invoked with the `-d` argument creates a directory (instead of a file) in `/tmp` directory. If you use an environment variable `$TMPDIR`, it creates the file in the `$TMPDIR` directory.
-
-    root@localhost:/tmp# mktemp -d
-    /var/folders/gh/dbgxkdts6414dlmnflxbp2h80000gn/T/tmp.5sSqIhoV
 
 ### How to Create a Temporary File Template
 
@@ -100,20 +107,32 @@ A temporary file template can be used to differentiate the source or criteria by
 
 The following command is used to create a file template, where "X" is replaced by randomized characters:
 
-    root@localhost:/tmp# mktemp -t random-XXXXXXXX
-    /var/folders/gh/dbgxkdts6414dlmnflxbp2h80000gn/T/random-XXXXXXXX.4b5Dfmg4
+```command
+mktemp -t random-XXXXXXXX
+```
+```output
+/var/folders/gh/dbgxkdts6414dlmnflxbp2h80000gn/T/random-XXXXXXXX.4b5Dfmg4
+```
 
 The following command which uses the `-d` argument to `mktemp` produces a directory in the same way.
 
-    root@localhost:/tmp# mktemp -d random-XXXXXXXX
-    random-13EL42PM
+```command
+mktemp -d random-XXXXXXXX
+```
+```output
+random-13EL42PM
+```
 
 You can view the above newly created temporary directory using the `ls -la` command.
 
 You can also add a suffix to a template while creating the directory as shown in the command below:
 
-    root@localhost:/tmp# mktemp -d --suffix TODAY
-    /tmp/tmp.lmnflxbTODAY
+```command
+mktemp -d --suffix TODAY
+```
+```output
+/tmp/tmp.lmnflxbTODAY
+```
 
 ## The TMPDIR Environment Variable
 
@@ -127,19 +146,25 @@ The `mktemp --tmpdir` argument changes the destination relative to the value set
 
 In the example command below, the `$TMPDIR` value is changed to a subdirectory, and `mktemp` applies its files to the new path:
 
-    $TMPDIR=(mktemp -d)
+```command
+$TMPDIR=(mktemp -d)
+```
 
 Template and other arguments could also be added to change the `$TMPDIR` value. An example of a date-codified directory is shown below.
 
-    root@localhost:/home# tmpdir=$(mktemp -d -t ci-$(date +%Y-m-%d-%H-%M-%S)-XXXXXXXXXX)
-    root@localhost:/home# echo $tmpdir
-    /var/folders/gh/dbgxkdts6414dlmnflxbp2h80000gn/T/ci-2022-m-28-22-46-25-XXXXXXXXXX.6lR6R7Az
+```command
+root@localhost:/home# tmpdir=$(mktemp -d -t ci-$(date +%Y-m-%d-%H-%M-%S)-XXXXXXXXXX)
+root@localhost:/home# echo $tmpdir
+```
+```output
+/var/folders/gh/dbgxkdts6414dlmnflxbp2h80000gn/T/ci-2022-m-28-22-46-25-XXXXXXXXXX.6lR6R7Az
+```
 
 ## How to Delete Your Linux System’s Temp Files
 
 Cleaning the temporary files depends on the Linux version you are using. Current Linux systems using *systemd* use a process called *systemd-tempfiles*. Depending on the system version, and its implementation, the files, and process used for cleaning the temporary files, and directories have different configurations.
 
-It is a good practice to delete the temporary files in the `/tmp` directory of your system frequently. This takes up unnecessary space that could be used for other data or processes. Generally, files in the `/tmp` directory is removed by your system after every reboot.
+It is a good practice to delete the temporary files in the `/tmp` directory of your system frequently. This takes up unnecessary space that could be used for other data or processes. Generally, files in the `/tmp` directory are removed by your system after every reboot.
 
 {{< note >}}
 The temporary files in the `/var/tmp` directory are usually preserved between system reboots and are made available to the programs that require temporary files. The data stored in the `/var/tmp` is more persistent that the data in the `/tmp` directory.
@@ -149,17 +174,23 @@ The following section describes the different ways in which you can delete tempo
 
 For the currently logged-in user, where the user has no other active processes, the `/tmp` directory is deleted by invoking the following command:
 
-    rm -rf /tmp
+```command
+rm -rf /tmp
+```
 
 This deletes all `/tmp` files recursively through subdirectories and forces the deletion of all files for which the user has privileges. If the user is the root or sudo, then all files may be deleted, and this can be disruptive. Depending on the currently logged-in user rights, the `rm -rf /tmp` command may destroy files and directories that are otherwise in use.
 
 You can also use the prebuilt `find` command that is available in almost every Linux distribution. The `find` command allows you to find the files and directories that satisfy a specific condition. For example, the following `find` command finds and deletes all the temp files in the `/tmp` directory.
 
-    sudo find /tmp -type f -delete
+```command
+sudo find /tmp -type f -delete
+```
 
 The `trap` command can be used to manage the deletion of files made within a script. When the shell has finished its execution, the `trap` command allows the specified temporary files to be deleted.
 
 For example, if your script creates a temporary file and you want to delete it at each place where you exit your script, you can include a `trap` command at the start of your script that deletes the file on exit:
 
-    tempfile=/tmp/tmpdata
-    trap "rm -f $tempfile" EXIT
+```file
+tempfile=/tmp/tmpdata
+trap "rm -f $tempfile" EXIT
+```
