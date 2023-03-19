@@ -8,10 +8,9 @@ published: 2023-03-19
 modified_by:
   name: Linode
 title: "Using mktemp Command to Create Temporary Files and Directories"
-h1_title: "How to Use the mktemp Command to Create Temporary Files and Directories"
-enable_h1: true
+title_meta: "How to Use the mktemp Command to Create Temporary Files and Directories"
 external_resources:
-- '[Setting and Using Linux Environment Variables](https://www.linode.com/docs/guides/how-to-set-linux-environment-variables/)'
+- '[Setting and Using Linux Environment Variables](/docs/guides/how-to-set-linux-environment-variables/)'
 authors: ["Tom Henderson"]
 ---
 
