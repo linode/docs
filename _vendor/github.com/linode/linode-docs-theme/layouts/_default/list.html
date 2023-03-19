@@ -240,6 +240,7 @@
                 <div class="px-6 md:pl-10 py-4">
                   <a
                     class="tracking-tight cursor-pointer mb-4 text-titlecolor hover:text-gray-400"
+                    :target="item.isExternalLink ? '_blank' : ''"
                     :href="item.href">
                     <h3 class="mb-2 text-2xl " x-html="item.linkTitle"></h3>
                   </a>

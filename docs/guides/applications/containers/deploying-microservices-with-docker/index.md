@@ -1,7 +1,5 @@
 ---
 slug: deploying-microservices-with-docker
-author:
-  name: Bob Strecansky
 description: 'This guide describes how to effectively use Docker in production using a sample NGINX/Flask/Gunicorn/Redis/Postgresql Application Stack.'
 og_description: 'This guide shows how to deploy a simple microservice using Docker. Best practices for using Docker in production are also demonstrated and explained.'
 keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
@@ -12,13 +10,12 @@ modified_by:
   name: Bob Strecansky
 published: 2018-01-04
 title: 'How to Deploy Microservices with Docker'
-contributor:
-  name: Bob Strecansky
-  link: https://twitter.com/bobstrecansky
 external_resources:
 - '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 aliases: ['/applications/containers/deploying-microservices-with-docker/']
+authors: ["Bob Strecansky"]
+tags: ["saas"]
 ---
 
 ![Deploying Microservices with Docker](how-to-deploy-microservices-with-docker-smg.jpg)
@@ -33,9 +30,9 @@ This guide shows how to build and deploy an example microservice using Docker an
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -148,9 +145,9 @@ COPY visitors (site_id, site_name, visitor_count) FROM stdin;
 \.
 {{</ file >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 In Line 22 of `init.sql`, make sure your text editor does not convert tabs to spaces. The app will not work without tabs between the entries in this line.
-{{< /caution >}}
+{{< /note >}}
 
 ### Web
 
@@ -385,7 +382,7 @@ Containers should be:
 
 2.  **Disposable**: Ideally, any single container within a larger application should be able to fail without impacting the performance of the application. Using a `restart: on-failure` option in the `docker-compose.yml` file, as well as having a replica count, makes it possible for some containers in the example microservice to fail gracefully while still serving the web application – with no degradation to the end user.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The replica count directive will only be effective when this configuration is deployed as part of a [Docker Swarm](/docs/guides/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/), which is not covered in this guide.
 {{< /note >}}
 

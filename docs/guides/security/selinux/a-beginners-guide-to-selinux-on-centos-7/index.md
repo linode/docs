@@ -1,10 +1,6 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-7
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
-og_description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
@@ -12,8 +8,8 @@ modified: 2017-07-21
 modified_by:
   name: Linode
 published: 2020-03-18
-title: A Beginner's Guide to SELinux on CentOS 7
-h1_title: Getting Started with SELinux on CentOS 7
+title: Getting Started with SELinux on CentOS 7
+title_meta: A Beginner's Guide to SELinux on CentOS 7
 aliases: ['/security/getting-started-with-selinux/','/security/selinux/a-beginners-guide-to-selinux-on-centos-7/']
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -24,6 +20,7 @@ relations:
         key: get-started-selinux
         keywords:
             - distribution: CentOS 7
+authors: ["Angel Guarisma"]
 ---
 
 ![Getting Started with SELinux](selinux_centos.jpg)
@@ -38,20 +35,20 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 1.  Update your system:
 
         sudo yum update
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Linode kernel does not support SELinux by default. However, all new Linodes running CentOS 7 use the distribution provided kernel, which has **SELinux enabled by default**.
 
-If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
-    {{</ note >}}
+If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+    {{< /note >}}
 
 ## Install Supporting SELinux Packages
 
@@ -63,13 +60,13 @@ In this section, you will install various SELinux packages that will help you wh
 
     A newly deployed CentOS 7 Linode should have the following packages installed:
 
-      {{< output >}}
-libselinux-2.5-14.1.el7.x86_64
-selinux-policy-3.13.1-252.el7_7.6.noarch
-selinux-policy-targeted-3.13.1-252.el7_7.6.noarch
-libselinux-utils-2.5-14.1.el7.x86_64
-libselinux-python-2.5-14.1.el7.x86_64
-    {{</ output >}}
+    ```output
+    libselinux-2.5-14.1.el7.x86_64
+    selinux-policy-3.13.1-252.el7_7.6.noarch
+    selinux-policy-targeted-3.13.1-252.el7_7.6.noarch
+    libselinux-utils-2.5-14.1.el7.x86_64
+    libselinux-python-2.5-14.1.el7.x86_64
+    ```
 
 1. Install the following packages and their associated dependencies:
 
@@ -89,23 +86,23 @@ When SELinux is installed on your system, it can be either *enabled* or *disable
 
 - To disable SELinux, update your SELinux configuration file using the text editor of your choice. Set the `SELINUX` directive to `disabled` as shown in the example.
 
-      {{< file "/etc/selinux/config">}}
-# This file controls the state of SELinux on the system.
-# SELINUX= can take one of these three values:
-#     enforcing - SELinux security policy is enforced.
-#     permissive - SELinux prints warnings instead of enforcing.
-#     disabled - No SELinux policy is loaded.
-SELINUX=disabled
-# SELINUXTYPE= can take one of three values:
-#     targeted - Targeted processes are protected,
-#     minimum - Modification of targeted policy. Only selected processes are protected.
-#     mls - Multi Level Security protection.
-SELINUXTYPE=targeted
-      {{</ file >}}
+    ```file {title="/etc/selinux/config"}
+    # This file controls the state of SELinux on the system.
+    # SELINUX= can take one of these three values:
+    #     enforcing - SELinux security policy is enforced.
+    #     permissive - SELinux prints warnings instead of enforcing.
+    #     disabled - No SELinux policy is loaded.
+    SELINUX=disabled
+    # SELINUXTYPE= can take one of three values:
+    #     targeted - Targeted processes are protected,
+    #     minimum - Modification of targeted policy. Only selected processes are protected.
+    #     mls - Multi Level Security protection.
+    SELINUXTYPE=targeted
+    ```
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 You can update the `SELINUX` directive with any of the available SELinux [states](#selinux-states) or [modes](#selinux-modes).
-      {{</ note >}}
+    {{< /note >}}
 
 - Reboot your Linode for the changes to take effect:
 
@@ -126,9 +123,9 @@ SELinux status:                 disabled
 
 When SELinux is enabled, it can run in either *enforcing* or *permissive* modes.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If SELinux is currently disabled, update your SELinux configuration file with the `SELINUX` directive set to `enabled`, then reboot your system, and SSH back into your Linode. These steps are outlined in the [SELinux States](#selinux-states) section of the guide.
-{{</ note >}}
+{{< /note >}}
 
  - In enforcing mode, SELinux enforces its policies on your system and denies access based on those policies. Use the following command to view SELinux policy modules currently loaded into memory:
 
@@ -150,7 +147,7 @@ If SELinux is currently disabled, update your SELinux configuration file with th
 
         sudo sealert -a /var/log/audit/audit.log
 
-    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
+    The output resembles the example, however, it varies depending on the programs and configurations on your system. The example was generated using a [Linode running the Apache webserver](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/#apache) with a virtual hosts configuration.
 
     {{< output >}}
 SELinux is preventing /usr/sbin/httpd from write access on the directory logs.
@@ -196,19 +193,19 @@ An SELinux Boolean is a variable that can be toggled on and off without needing 
 
     You will see a similar output:
 
-    {{< output >}}
-httpd_can_check_spam --> off
-httpd_can_connect_ftp --> off
-httpd_can_connect_ldap --> off
-httpd_can_connect_mythtv --> off
-httpd_can_connect_zabbix --> off
-httpd_can_network_connect --> off
-httpd_can_network_connect_cobbler --> off
-httpd_can_network_connect_db --> off
-httpd_can_network_memcache --> off
-httpd_can_network_relay --> off
-httpd_can_sendmail --> off
-    {{</ output >}}
+    ```output
+    httpd_can_check_spam --> off
+    httpd_can_connect_ftp --> off
+    httpd_can_connect_ldap --> off
+    httpd_can_connect_mythtv --> off
+    httpd_can_connect_zabbix --> off
+    httpd_can_network_connect --> off
+    httpd_can_network_connect_cobbler --> off
+    httpd_can_network_connect_db --> off
+    httpd_can_network_memcache --> off
+    httpd_can_network_relay --> off
+    httpd_can_sendmail --> off
+    ```
 
     You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If, for example, you want to allow HTTPD scripts and modules to connect to the network, update the corresponding boolean variable.
 
@@ -218,19 +215,19 @@ httpd_can_sendmail --> off
 
         sudo getsebool -a | grep "httpd_can"
 
-      {{< output >}}
-httpd_can_check_spam --> off
-httpd_can_connect_ftp --> off
-httpd_can_connect_ldap --> off
-httpd_can_connect_mythtv --> off
-httpd_can_connect_zabbix --> off
-httpd_can_network_connect --> on
-httpd_can_network_connect_cobbler --> off
-httpd_can_network_connect_db --> off
-httpd_can_network_memcache --> off
-httpd_can_network_relay --> off
-httpd_can_sendmail --> off
-      {{</ output >}}
+    ```output
+    httpd_can_check_spam --> off
+    httpd_can_connect_ftp --> off
+    httpd_can_connect_ldap --> off
+    httpd_can_connect_mythtv --> off
+    httpd_can_connect_zabbix --> off
+    httpd_can_network_connect --> on
+    httpd_can_network_connect_cobbler --> off
+    httpd_can_network_connect_db --> off
+    httpd_can_network_memcache --> off
+    httpd_can_network_relay --> off
+    httpd_can_sendmail --> off
+    ```
 
 ### Next Steps
 

@@ -1,8 +1,5 @@
 ---
 slug: use-linode-name-servers
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: "Shortguide for setting Linode's nameservers as the authoritative nameservers for a domain"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
@@ -10,10 +7,11 @@ tags: ["dns","networking","linux platform"]
 modified: 2018-07-19
 modified_by:
   name: Nathan Melehan
-title: "How to Use Linode's Nameservers"
+title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']
+authors: ["Nathan Melehan"]
 ---
 
 ### (Optional) Prepare Your Domain Name to Move
@@ -50,11 +48,11 @@ Most nameserver authorities will allow you to set the TTL on your domain or on i
 
 1.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-1.  Wait out the original TTL from Step 3 before actually moving your domain--otherwise, DNS caching servers will not know of the new, lower TTL yet. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl).
+1.  Wait out the original TTL from Step 3 before actually moving your domain--otherwise, DNS caching servers will not know of the new, lower TTL yet.
 
 ### Use Linode's Nameservers
 
-1.  Follow Linode's instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview/#add-a-domain-zone) to create DNS records at Linode for your domain. Recreate the DNS records listed in your current nameserver authority's website, but change the IP addresses to reflect your Linode IPs where appropriate.
+1.  Follow Linode's instructions on [adding a domain zone](/docs/products/networking/dns-manager/guides/create-domain/) to create DNS records at Linode for your domain. Recreate the DNS records listed in your current nameserver authority's website, but change the IP addresses to reflect your Linode IPs where appropriate.
 
 1.  Locate your domain's registrar, which is the company you purchased your domain from. If you're not sure who your registrar is, you can find out with a [Whois Search tool](https://whois.icann.org/).
 
@@ -90,8 +88,8 @@ The following support documents describe how to update the authoritative nameser
 
 1.  Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can't tell the difference, use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
 
-1.  [Set reverse DNS](/docs/guides/configure-your-linode-for-reverse-dns/) for your domain. This is especially important if you are running a mail server.
+1.  [Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're having trouble seeing your site at the new IP address, try visiting it in a different browser or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
 {{< /note >}}

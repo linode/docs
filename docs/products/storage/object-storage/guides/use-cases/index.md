@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide provides you with an introduction to Linode Object Storage and also offers you several practical use cases, as well as benefits and limitations."
 image: use-cases-for-linode-obj-storage.png
 keywords: ['object','storage','s3','use','case']
@@ -10,15 +7,14 @@ published: 2019-08-26
 modified_by:
   name: Linode
 title: "Use Cases for Object Storage"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-storage-use-cases/']
+authors: ["Linode"]
 ---
 
 ## What is Object Storage?
 
-Object Storage is a method of storing data that differs in a number of ways from [Block Storage](/docs/guides/how-to-use-block-storage-with-your-linode/). Block Storage splits files into small *blocks* of data. Minimal file metadata is stored alongside this data and, in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
+Object Storage is a method of storing data that differs in a number of ways from [Block Storage](/docs/products/storage/block-storage/). Block Storage splits files into small *blocks* of data. Minimal file metadata is stored alongside this data and, in general, descriptive metadata must be stored in a separate file or database. In order to use a Block Storage volume it must be attached to a host server, where it acts like a hard drive.
 
 In contrast, Object Storage stores data, called *objects*, in containers, called *buckets*, and each object is given a unique identifier with which it is accessed. In this way, the physical location of the object does not need to be known. The objects are stored alongside rich, configurable metadata that can be used to describe any number of arbitrary properties about the object. Each object has its own URL, so accessing the data is often as simple as issuing an HTTP request, either by visiting the object in a browser or retrieving it through the command line.
 
