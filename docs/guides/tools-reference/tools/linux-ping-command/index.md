@@ -1,8 +1,5 @@
 ---
-slug: the-linux-ping-command
-author:
-  name: Linode Community
-  email: docs@linode.com
+slug: linux-ping-command
 description: "The ping command is ubiquitous for its convenience and simplicity when it comes to testing network responses. But while the basics are straightforward, ping has plenty of options that can greatly enhance your network tests. Learn all about them in this guide."
 keywords: ['linux ping command', 'linux ping port', 'linux ping options']
 tags: ['linux']
@@ -11,18 +8,15 @@ published: 2022-06-20
 modified_by:
   name: Nathaniel Stickman
 title: "The Linux ping Command"
-h1_title: "Introduction to the Linux ping Command"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "Introduction to the Linux ping Command"
 external_resources:
 - '[phoenixNAP: Linux Ping Command Tutorial with Examples](https://phoenixnap.com/kb/linux-ping-command-examples)'
 - '[Linuxize: Linux Ping Command Tutorial with Examples](https://linuxize.com/post/linux-ping-command/)'
 - '[GeeksforGeeks: PING Command in Linux with Examples](https://www.geeksforgeeks.org/ping-command-in-linux-with-examples/)'
+authors: ["Nathaniel Stickman"]
 ---
 
-One of the most commonly-used commands on Linux is the *ping* command, used most often to test network connections and troubleshoot connectivity issues. It comes by default on most Linux distributions, making it convenient and accessible.
+One of the most commonly-used commands on Linux is the *ping* command, used most often to test network connections and troubleshoot connectivity issues. It comes by default on most Linux distributions, making it accessible.
 
 You may even have used *ping* or seen it used, supplying the command with a hostname or IP address and seeing it go to work.
 
@@ -40,11 +34,15 @@ This guide introduces you to *ping* in all its variety. In this guide, you can l
 
     - On **Debian** and **Ubuntu**, use the following command:
 
-            sudo apt update && sudo apt upgrade
+        ```command
+        sudo apt update && sudo apt upgrade
+        ```
 
     - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
-            sudo dnf upgrade
+        ```command
+        sudo dnf upgrade
+        ```
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -54,16 +52,18 @@ The steps in this guide are written for non-root users. Commands that require el
 
 Before starting in on how to use *ping*, it can be helpful to know how *ping* displays results. To get your footing with that, look into an example *ping* command that sends one packet to the `localhost` as follows:
 
-    ping -c 1 localhost
+```command
+ping -c 1 localhost
+```
 
-{{< output >}}
+```output
 PING localhost(localhost (::1)) 56 data bytes
 64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.113 ms
 
 --- localhost ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.113/0.113/0.113/0.000 ms
-{{< /output >}}
+```
 
 The line beginning `64 bytes` indicates a packet. There may be several of these depending on the command parameters, and these lines can give you the most insights on the *ping* instance.
 
@@ -87,13 +87,15 @@ In the next several sections, you can learn how to conduct basic *ping* operatio
 
 ### Ping a Hostname
 
-The *ping* command at its simplest just takes a hostname or a host IP address as an argument. It then pings that host.
+The *ping* command at its simplest just takes a hostname or a host IP address as an argument. It then details if the host is reachable from your computer or server.
 
 To get a ping of the `localhost`, you can use the hostname:
 
-    ping localhost
+```command
+ping localhost
+```
 
-{{< output >}}
+```output
 PING localhost(localhost (::1)) 56 data bytes
 64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.117 ms
 64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.079 ms
@@ -104,7 +106,7 @@ PING localhost(localhost (::1)) 56 data bytes
 --- localhost ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 4077ms
 rtt min/avg/max/mdev = 0.079/0.111/0.135/0.021 ms
-{{< /output >}}
+```
 
 The *ping* command keeps running until you manually stop it. You can manually stop it from sending packets using the *Ctrl* + *C* key combination. There are also a few options, covered further on, that designate endpoints for *ping*, causing it to automatically stop at predetermined points.
 
@@ -112,9 +114,11 @@ The *ping* command keeps running until you manually stop it. You can manually st
 
 The same method can be used for IP addresses. Just replace the hostname with the host's IP address. For the example above, you could use `127.0.0.1` instead of `localhost`:
 
-    ping 127.0.0.1
+```command
+ping 127.0.0.1
+```
 
-{{< output >}}
+```output
 PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.127 ms
 64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.136 ms
@@ -122,7 +126,7 @@ PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
 --- 127.0.0.1 ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2042ms
 rtt min/avg/max/mdev = 0.127/0.130/0.136/0.004 ms
-{{< /output >}}
+```
 
 ### Ping a Specific Port
 
@@ -136,77 +140,87 @@ With the *ping* command, any input hostname is automatically resolved, rendering
 
 Take a look at this example. It pings the `google.com` hostname, and, in the first line of output, you can see that the hostname has been resolved to an IP address:
 
-    ping google.com
+```command
+ping google.com
+```
 
-{{< output >}}
+```output
 PING google.com(atl14s08-in-x0e.1e100.net (2607:f8b0:4002:818::200e)) 56 data bytes
 [...]
-{{< /output >}}
+```
 
 The IP address above is IPv6, the default in *ping*. You can learn more about this option below, but *ping* also supports displaying IP addresses in the IPv4 format:
 
-    ping -4 google.com
+```command
+ping -4 google.com
+```
 
-{{< output >}}
+```output
 PING google.com (142.250.177.14) 56(84) bytes of data.
 [...]
-{{< /output >}}
+```
 
 ### Options for Fine-tuning
 
-The *ping* command has numerous options to control how pings operate and how results display. You can see more of these in the [Advanced Options for the ping Command](/docs/guides/the-linux-ping-command/#advanced-options-for-the-ping-command) and [Display Options for the ping Command](/docs/guides/the-linux-ping-command/#display-options-for-the-ping-command) sections below.
+The *ping* command has numerous options to control how pings operate and how results display. You can see more of these in the [Advanced Options for the ping Command](#advanced-options-for-the-ping-command) and [Display Options for the ping Command](#display-options-for-the-ping-command) sections below.
 
 The options covered in this section are ones that you may find more generally useful. They are options that you may find yourself more frequently using to make the *ping* command perform how you would like.
 
 - IP formatting can be either IPv4 or IPv6. The *ping* command defaults to IPv6 on most Linux distributions. But you can explicitly indicate which format you want *ping* to use with the `-4` option for IPv4 and the `-6` option for IPv6:
 
-        ping -4 localhost
+    ```command
+    ping -4 localhost
+    ```
 
-    {{< output >}}
-PING localhost (127.0.0.1) 56(84) bytes of data.
-64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.126 ms
-64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.123 ms
-64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.104 ms
-[...]
-    {{< /output >}}
+    ```output
+    PING localhost (127.0.0.1) 56(84) bytes of data.
+    64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.126 ms
+    64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.123 ms
+    64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.104 ms
+    [...]
+    ```
 
     {{< note >}}
-On some Unix systems, *ping* does not include these options. Instead, *ping* may default to IPv4 and comes with the *ping6* command installed alongside. The *ping6* command can then be used for IPv6 formatting.
+On some Unix systems, *ping* does not include these options. Instead, *ping* may default to IPv4 and come with the *ping6* command installed alongside. The *ping6* command can then be used for IPv6 formatting.
     {{< /note >}}
 
 - Set the number of packets to be sent by *ping* using the `-c` option. This option causes *ping* to automatically stop once it has sent the specified number of packets, rather than continuing until stopped manually with *Ctrl* + *C*:
 
-        ping -c 5 localhost
+    ```command
+    ping -c 5 localhost
+    ```
 
-    {{< output >}}
-PING localhost(localhost (::1)) 56 data bytes
-64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.083 ms
-64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.083 ms
-64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.120 ms
-64 bytes from localhost (::1): icmp_seq=4 ttl=64 time=0.110 ms
-64 bytes from localhost (::1): icmp_seq=5 ttl=64 time=0.112 ms
+    ```output
+    PING localhost(localhost (::1)) 56 data bytes
+    64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.083 ms
+    64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.083 ms
+    64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.120 ms
+    64 bytes from localhost (::1): icmp_seq=4 ttl=64 time=0.110 ms
+    64 bytes from localhost (::1): icmp_seq=5 ttl=64 time=0.112 ms
 
---- localhost ping statistics ---
-5 packets transmitted, 5 received, 0% packet loss, time 4091ms
-rtt min/avg/max/mdev = 0.083/0.101/0.120/0.019 ms
-    {{< /output >}}
+    --- localhost ping statistics ---
+    5 packets transmitted, 5 received, 0% packet loss, time 4091ms
+    rtt min/avg/max/mdev = 0.083/0.101/0.120/0.019 ms
+    ```
 
 - Apply a time limit to the *ping* command using the `-w` option. This option takes a number of seconds as an argument. And, similar to the `-c` option, this option causes *ping* to automatically stop once the given amount of time has passed:
 
-        ping -w 5 localhost
+    ```command
+    ping -w 5 localhost
+    ```
 
-    {{< output >}}
-PING localhost(localhost (::1)) 56 data bytes
-64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.131 ms
-64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.117 ms
-64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.134 ms
-64 bytes from localhost (::1): icmp_seq=4 ttl=64 time=0.122 ms
-64 bytes from localhost (::1): icmp_seq=5 ttl=64 time=0.120 ms
+    ```output
+    PING localhost(localhost (::1)) 56 data bytes
+    64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.131 ms
+    64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.117 ms
+    64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.134 ms
+    64 bytes from localhost (::1): icmp_seq=4 ttl=64 time=0.122 ms
+    64 bytes from localhost (::1): icmp_seq=5 ttl=64 time=0.120 ms
 
---- localhost ping statistics ---
-5 packets transmitted, 5 received, 0% packet loss, time 4132ms
-rtt min/avg/max/mdev = 0.117/0.124/0.134/0.015 ms
-    {{< /output >}}
+    --- localhost ping statistics ---
+    5 packets transmitted, 5 received, 0% packet loss, time 4132ms
+    rtt min/avg/max/mdev = 0.117/0.124/0.134/0.015 ms
+    ```
 
     {{< note >}}
 The `-w` option may not be available for *ping* on some Unix distributions.
@@ -220,25 +234,33 @@ The options for the *ping* command covered in this section fit more advanced use
 
     This example assumes, for instance, that your system has a network interface called `em2` and causes *ping* to operate through that interface instead of the default:
 
-        ping -I em2 localhost
+    ```command
+    ping -I em2 localhost
+    ```
 
 - Control the interval between pings using the `-i` option. The option takes a number of seconds, including fractions (via floating-point numbers). The *ping* command then sends packets at the designated intervals. By default, the interval is `1`, meaning that *ping* sends one packet per second:
 
-        ping -i 0.5 localhost
+    ```command
+    ping -i 0.5 localhost
+    ```
 
 - Adjust the size of packets sent by *ping* using the `-s` option. The option takes a number of bytes as its argument. The *ping* command defaults packet size to 56 bytes, which translates to 64 bytes in the ICMP protocol:
 
-        ping -s 256 localhost
+    ```command
+    ping -s 256 localhost
+    ```
 
-    {{< output >}}
-PING localhost(localhost (::1)) 256 data bytes
-264 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.119 ms
-[...]
-    {{< /output >}}
+    ```outpout
+    PING localhost(localhost (::1)) 256 data bytes
+    264 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.119 ms
+    [...]
+    ```
 
 - Flood a network with hundreds of ping requests using the `-f` option. This is a useful option for testing network performance under a heavy load. Be aware that this option requires you to run *ping* as the root user or use `sudo`:
 
-        sudo ping -f localhost
+    ```command
+    sudo ping -f localhost
+    ```
 
 ## Display Options for the ping Command
 
@@ -246,33 +268,39 @@ This section covers a few more useful options for the *ping* command. The option
 
 - Limit the display to just the summary statistics by adding the `-q` option to the *ping* command. This option quiets the lines of packet information and just displays the lines of summary when the *ping* instance stops:
 
-        ping -q localhost
+    ```command
+    ping -q localhost
+    ```
 
-    {{< output >}}
-PING localhost(localhost (::1)) 56 data bytes
+    ```output
+    PING localhost(localhost (::1)) 56 data bytes
 
---- localhost ping statistics ---
-3 packets transmitted, 3 received, 0% packet loss, time 2076ms
-rtt min/avg/max/mdev = 0.113/0.122/0.129/0.014 ms
-    {{< /output >}}
+    --- localhost ping statistics ---
+    3 packets transmitted, 3 received, 0% packet loss, time 2076ms
+    rtt min/avg/max/mdev = 0.113/0.122/0.129/0.014 ms
+    ```
 
     The `-q` option can be helpful when sending many packets and wanting only the statistics of their overall performance.
 
 - Add timestamps to the beginning of each packet line by adding the `-D` option to your *ping* command. With this option, each line giving packet information begins with a Unix timestamp representing the time of the packet's complete transmission.
 
-        ping -D localhost
+    ```command
+    ping -D localhost
+    ```
 
-    {{< output >}}
-ING localhost(localhost (::1)) 56 data bytes
-[1655740627.544608] 64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.146 ms
-[1655740628.593346] 64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.125 ms
-[1655740629.617371] 64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.117 ms
-[...]
-    {{< /output >}}
+    ```output
+    PING localhost(localhost (::1)) 56 data bytes
+    [1655740627.544608] 64 bytes from localhost (::1): icmp_seq=1 ttl=64 time=0.146 ms
+    [1655740628.593346] 64 bytes from localhost (::1): icmp_seq=2 ttl=64 time=0.125 ms
+    [1655740629.617371] 64 bytes from localhost (::1): icmp_seq=3 ttl=64 time=0.117 ms
+    [...]
+    ```
 
 - Have *ping* deliver an audible ping effect when receiving a response from the host by using the `-a` option. More than just a preference, such an option can be useful when pinging hosts that are taking a long time to respond. The option allows you to look away and still be alerted when the host has been reached.
 
-        ping -a localhost
+    ```command
+    ping -a localhost
+    ```
 
 ## Conclusion
 
