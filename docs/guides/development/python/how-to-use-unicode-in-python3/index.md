@@ -1,21 +1,14 @@
 ---
 slug: how-to-use-unicode-in-python3
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide introduces the concept of Unicode to developers, explains how Python handles unicode, and demonstrates how to handle common errors'
 keywords: ['Python unicode','Unicode python','Unicode error python','Python unicode to string']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-04-21
+published: 2023-03-20
 modified_by:
   name: Linode
-title: "How to Use Unicode in Python 3 | Linode"
-h1_title: "Using Unicode in Python 3"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
+title: "How to Use Unicode in Python 3"
+title_meta: "Using Unicode in Python 3"
 external_resources:
 - '[Python Unicode Documentation](https://docs.python.org/3/howto/unicode.html)'
 - '[Unicode site](https://home.unicode.org/)'
@@ -25,9 +18,12 @@ external_resources:
 - '[RFC 3629](https://datatracker.ietf.org/doc/html/rfc3629)'
 - '[An explanation of the Unicode standard](https://jkorpela.fi/unicode/guide.html)'
 - '[Python background on lexical analysis](https://docs.python.org/3/reference/lexical_analysis.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Most of the time, using [*Unicode*](https://home.unicode.org/) characters in Python does not require extra effort. However, sometimes encoding and decoding do not work properly, which results in errors. To resolve these issues, this guide helps you understand how Python encodes and decodes Unicode. Fortunately, the Python library includes some powerful and useful utilities and built-in functions to manage these tasks. This guide introduces Unicode and the [*UTF-8*](https://en.wikipedia.org/wiki/UTF-8) character encoding and explains how Python handles Unicode. It also discusses some common Python Unicode errors and demonstrates how to resolve them.
+
+For an in-depth explanation of Unicode, read on, otherwise jump to [How Does Python Implement Unicode?](#how-does-python-implement-unicode)
 
 ## An Introduction to Unicode on Python
 
@@ -50,7 +46,7 @@ The Unicode standard includes the following components:
 - **Character Encoding Form (CEF)**: This component explains how to map code points to code units.
 - **Character Encoding Scheme (CES)**: The encoding scheme maps code units to a sequence of bytes. It describes how to transmit files over a network and how to store character information in binary format. Unicode does not recommend a specific CES. Standards including UTF-8, UTF-32, or ISO/IEC 2022 can be used. However, UTF-8 is usually favored, mainly because it is more concise than the other systems.
 
-The Unicode character set includes all traditional ASCII characters, international writing scripts, symbols, and a large number of emojis. Unicode also contains various control and non-printable characters. Each Unicode letter is identified using the letter `A`, the `+` sign, and its code point. For example, the Unicode character having code point `639` is represented by the string `U+0639`.
+The Unicode character set includes all traditional ASCII characters, international writing scripts, symbols, and a large number of emojis. Unicode also contains various control and non-printable characters. Each Unicode letter is identified using the letter `U`, the `+` sign, and its code point. For example, the Unicode character having code point `639` is represented by the string `U+0639`.
 
 The Unicode code space is divided into seventeen planes to help structure and organize the collection. Related characters are placed within contiguous blocks inside a single plane. This makes it easier to locate specific characters in the published Unicode charts. All characters have a fixed name that uniquely identifies them. This name cannot be subsequently changed, even if it is inaccurate or contains errors.
 
@@ -134,16 +130,6 @@ As an example, here is how to encode the Unicode code point for the Peso symbol 
 
 UTF-8 can be contrasted with the UTF-16 and UTF-32 encoding schemes. UTF-16 always uses at least two bytes to encode characters. It can also use four bytes, while UTF-32 always uses four bytes. These schemes are somewhat easier to decode and use fewer framing bits. However, they are less concise than UTF-8 and are not ASCII-compatible.
 
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
 ## How Does Python Implement Unicode?
 
 Python handles Unicode very differently in Python 2 and Python 3. In Python 2, the default encoding is ASCII. But in Python 3, UTF-8 is the default. This makes text processing much easier than before. It is no longer necessary to declare the encoding in the first or second line of the file. Nor is it necessary to preface Unicode strings with `u`.
@@ -156,53 +142,65 @@ According to the Python [Unicode documentation](https://docs.python.org/3/howto/
 
 All Python 3 strings are Unicode strings and are stored as Unicode. This means Unicode characters can be included in a string. When the text is encoded, all characters are converted to their byte equivalent. To use Unicode characters in a string, declare the string normally, and include the Unicode characters in the correct position.
 
-    u = "❤️"
-    print(u)
+```file
+u = "❤️"
+print(u)
+```
 
-{{< output >}}
+```output
 ❤️
-{{< /output >}}
+```
 
 Python 3 also permits many Unicode characters to be used as part of variable and function names. However, symbols or emojis can't serve in these roles. For instance, the "heart" emoji can not be part of a variable name. In the following example, the variable name `Øyen` contains a character from the Norwegian alphabet.
 
-    Øyen = "Lofoten"
-    print(Øyen)
+```file
+Øyen = "Lofoten"
+print(Øyen)
+```
 
-{{< output >}}
+```output
 Lofoten
-{{< /output >}}
+```
 
 A string can still be declared using a `u` at the front of the string, but this is no longer required. If a developer is simultaneously processing Unicode and ASCII files, they might want to use this convention to increase clarity. This is also necessary to backport files to Python 2.
 
-    u = u"❤️"
+```file
+u = u"❤️"
+```
 
 A character can also be declared using its *escape sequence*. The Unicode escape sequence for two-byte characters is a backslash `\` character, a `u`, and four hexadecimal digits indicating the code point. If the hexadecimal character is shorter than four digits, insert leading zeros to pad the length to four.
 
 The Unicode code point for the musical note symbol `♩` is `0x2669`. This symbol can be assigned to a Python string using its hexadecimal equivalent.
 
-    x = "\u2669"
-    print(x)
+```file
+x = "\u2669"
+print(x)
+```
 
-{{< output >}}
+```output
 ♩
-{{< /output >}}
+```
 
 The escape sequence for a Unicode character requiring three or four bytes begins with `\U`. The hexadecimal value must contain eight digits, so pad the front of the value with zeros until it is the proper length.
 
 For example, the Unicode bumblebee emoji is encoded in a three-byte format possessing the Unicode code point `U+1F41D`. To assign this emoji character to a variable using its escape sequence, pad it out to `0001F41D`. After the character is assigned to a string, it can be printed out using the Python `print` function.
 
-    bee = "\U0001F41D"
-    print(bee)
+```file
+bee = "\U0001F41D"
+print(bee)
+```
 
-{{< output >}}
+```output
 🐝
-{{< /output >}}
+```
 
 ### Using the Python `unicodedata` Library
 
 Python provides many additional functions and libraries to help developers work with Unicode. The most relevant library is `unicodedata`. It allows developers to extract more information, such as the official name or code point, about each Unicode character. This library can be imported using the following Python directive.
 
-    import unicodedata
+```file
+import unicodedata
+```
 
 To find the code point of a Unicode character, use the `ord` function. Precede the character with a `u`. This example demonstrates how to determine the code point for the musical note symbol.
 
@@ -210,66 +208,79 @@ To find the code point of a Unicode character, use the `ord` function. Precede t
 This function only returns valid results for Unicode characters with a single code point. Although `ord` is a core Python function, the `unicodedata` library is necessary to determine multi-byte mappings.
 {{< /note >}}
 
-    print(ord(u"♩"))
+```file
+print(ord(u"♩"))
+```
 
-{{< output >}}
+```output
 9833
-{{< /output >}}
+```
 
 The opposite function of `ord` is `chr`. It is used to convert the decimal integer of a code point to the actual character.
 
-    print(chr(9833))
+```file
+print(chr(9833))
+```
 
-{{< output >}}
+```output
 ♩
-{{< /output >}}
+```
 
 The `name` method is used to retrieve the official Unicode name for any Unicode character.
 
-    print(unicodedata.name(u"🐝"))
+```file
+print(unicodedata.name(u"🐝"))
+```
 
-{{< output >}}
+```output
 HONEYBEE
-{{< /output >}}
+```
 
 The official Unicode name can also be used to determine the character. Pass the official name, including all spaces, to the `lookup` method.
 
-    print(unicodedata.lookup("QUARTER NOTE"))
+```file
+print(unicodedata.lookup("QUARTER NOTE"))
+```
 
-{{< output >}}
+```output
 ♩
-{{< /output >}}
+```
 
 A character can also be assigned to a string using its official Unicode name. Enclose the name in braces and precede it with a backslash and `N`. The following example assigns the musical note symbol to the `note` string.
 
-    note = "\N{QUARTER NOTE}"
-    print(note)
-{{< output >}}
+```file
+note = "\N{QUARTER NOTE}"
+print(note)
+```
+
+```output
 ♩
-{{< /output >}}
+```
 
 ### Reading and Writing Unicode Files in Python
 
 The same concepts are used to read a file containing Unicode characters. Declare the file encoding as `utf-8` when calling the `open` function. Read the file normally.
 
-{{< file "read_unicode.py" python >}}
+```file {title="read_unicode.py"}
 with open('sample.txt', encoding='utf-8') as f:
     for line in f:
         print(repr(line))
-{{< /file >}}
+```
 
 Given a `sample.txt` file containing some of the Unicode characters used in this guide, `read_unicode.py` returns the following results.
 
-{{< output >}}
+```output
 'Øyen\n'
 '♩\n'
 '❤️\n'
 '🐝\n'
-{{< /output >}}
+```
 
 For a write operation, create the file object as follows. Ensure the encoding is set to `utf-8`. The `write` method can accept Unicode characters or code points preceded by `\u` or `\U`.
 
-    with open('sample.txt', encoding='utf-8', mode='w') as f:
+```file {title="write_unicode.py"}
+with open('sample.txt', encoding='utf-8', mode='w') as f:
+```
 
 For more information on reading and writing Unicode files, consult the [Python Unicode documentation](https://docs.python.org/3/howto/unicode.html).
 
@@ -285,32 +296,38 @@ Encoding and decoding is the process of converting from strings to bytes. String
 
 To use Python to encode Unicode characters, use the string `encode` method. The default encoding standard is UTF-8, but for reasons of clarity, it is good practice to always explicitly pass in the protocol. The following example demonstrates how to encode the musical note Unicode character. Python converts the Unicode string to bytes and returns an encoded byte object.
 
-    note = "♩"
-    note.encode("utf-8")
+```file
+note = "♩"
+note.encode("utf-8")
+```
 
-{{< output >}}
+```output
 b'\xe2\x99\xa9'
-{{< /output >}}
+```
 
 The `encode` method works the same way on multi-character strings. The ASCII characters are not converted to bytes. This preserves backward compatibility with ASCII-only applications.
 
-    greeting = "Have a nice day! ♩"
-    greeting.encode("utf-8")
+```file
+greeting = "Have a nice day! ♩"
+greeting.encode("utf-8")
+```
 
-{{< output >}}
+```output
 b'Have a nice day! \xe2\x99\xa9'
-{{< /output >}}
+```
 
 ### Decoding Unicode Bytes in Python
 
 The inverse function to `encode` is `decode`. If this function is applied to a sequence of bytes, it returns the equivalent Unicode string of characters. To decode a function, use the `decode` method of the byte object. The encoding protocol is assumed to be UTF-8 by default, but it is safer to explicitly state it. This example decodes the byte encoding for the note character back into a string.
 
-    notebytes = b'\xe2\x99\xa9'
-    notebytes.decode("utf-8")
+```file
+notebytes = b'\xe2\x99\xa9'
+notebytes.decode("utf-8")
+```
 
-{{< output >}}
+```output
 '♩'
-{{< /output >}}
+```
 
 ## Common Unicode Errors in Python
 
@@ -318,40 +335,48 @@ Most of the time, the encoding and decoding process goes smoothly without much e
 
 The most common Python Unicode error happens when a non-UTF-8 file is decoded using the UTF-8 codec. In this example, a string is encoded using the `latin-1` encoding. Attempting to decode it as a UTF-8 file results in a `UnicodeDecodeError`.
 
-    quartercup = "¼"
-    quart_encode = quartercup.encode("latin-1")
-    quart_encode.decode("utf-8")
+```file
+quartercup = "¼"
+quart_encode = quartercup.encode("latin-1")
+quart_encode.decode("utf-8")
+```
 
-{{< output >}}
+```output
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xbc in position 0: invalid start byte
-{{< /output >}}
+```
 
 To decode this string properly, declare it as a `latin-1` file in the function call. The type of encoding is often specified in the first line of the file. Python searches for the keywords `coding: name` or `coding=name`. But the convention is to use the format `# -*- coding: latin-1 -*-`, a carryover from the emacs editor.
 
-    quart_encode.decode("latin-1")
+```file
+quart_encode.decode("latin-1")
+```
 
-{{< output >}}
+```output
 '¼'
-{{< /output >}}
+```
 
 This error can also occur when the `decode` method is applied to a byte object containing invalid Unicode sequences. This can happen if the file was corrupted or the characters were not encoded correctly. In this example, the `0xfe` byte is assigned to a Python byte object. This character is not permitted anywhere in a UTF-8 file because `xfe` is reserved for the UTF-16 byte order mark. If this byte is decoded using the UTF-8 decoder, Python raises an error.
 
-    junk_bytes = b'\xfe'
-    junk_bytes.decode("utf-8")
+```file
+junk_bytes = b'\xfe'
+junk_bytes.decode("utf-8")
+```
 
-{{< output >}}
+```output
 UnicodeDecodeError: 'utf-8' codec can't decode byte 0xfe in position 0: invalid start byte
-{{< /output >}}
+```
 
 The `UnicodeEncodeError` is less common because developers generally have some control over the material they are decoding. However, it can happen if a developer attempts to encode Unicode data using another encoding algorithm. In this case, encoding is used on a string containing the bumblebee emoji. The string can be correctly converted to bytes using the UTF-8 encoder. However, when `encode` is invoked with the `ASCII` encoder, the attempt fails, generating the `UnicodeEncodeError`. This is because the bumblebee emoji does not exist in ASCII, and the ASCII codec cannot translate the Unicode code point.
 
-    bee = "\U0001F41D"
-    utf8_bee = bee.encode("utf-8")
-    ascii_bee = bee.encode("ascii")
+```file
+bee = "\U0001F41D"
+utf8_bee = bee.encode("utf-8")
+ascii_bee = bee.encode("ascii")
+```
 
-{{< output >}}
+```output
 UnicodeEncodeError: 'ascii' codec can't encode character '\U0001f41d' in position 0: ordinal not in range(128)
-{{< /output >}}
+```
 
 {{< note >}}
 This UTF-8 codec permits unassigned Unicode code points to be encoded to bytes. However, these byte objects cannot later be decoded back into characters.
@@ -359,11 +384,14 @@ This UTF-8 codec permits unassigned Unicode code points to be encoded to bytes. 
 
 To avoid errors, `encode` and `decode` accept the `replace` keyword as the second parameter. This substitutes the Unicode replacement character, `U+FFFD` for any character that cannot be properly translated. The `ignore` keyword completely ignores unknown characters. However, most developers prefer to avoid silent errors and receive an indication something has gone wrong.
 
-    junk_bytes = b'\xfe'
-    junk_bytes.decode("utf-8", "replace")
-{{< output >}}
+```file
+junk_bytes = b'\xfe'
+junk_bytes.decode("utf-8", "replace")
+```
+
+```output
 '�'
-{{< /output >}}
+```
 
 ## Concluding Thoughts About Unicode on Python
 
