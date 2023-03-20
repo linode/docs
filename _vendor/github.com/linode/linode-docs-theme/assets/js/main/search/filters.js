@@ -3,9 +3,9 @@
 import { toggleBooleanClass } from '../helpers';
 import { QueryHandler } from './query';
 
-var debug = 0 ? console.log.bind(console, '[filters]') : function() {};
+var debug = 0 ? console.log.bind(console, '[filters]') : function () {};
 
-export function newSearchFiltersController(searchConfig, queryCallback = function(action) {}) {
+export function newSearchFiltersController(searchConfig, queryCallback = function (action) {}) {
 	const queryHandler = new QueryHandler();
 
 	var ctrl = {
@@ -14,8 +14,8 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 
 		filters: {
 			open: false, // Used on mobile to open/close the filter panel.
-			loaded: false
-		}
+			loaded: false,
+		},
 	};
 
 	// The UI state.
@@ -23,13 +23,15 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		// Maps a facet name to a filter. The filter maps to the owning section.
 		filters: new Map(),
 
-		filtersarr: function() {
-			return Array.from(this.filters).map(([ name, value ]) => value).filter((value) => {
-				return !value.hidden;
-			});
+		filtersarr: function () {
+			return Array.from(this.filters)
+				.map(([name, value]) => value)
+				.filter((value) => {
+					return !value.hidden;
+				});
 		},
 
-		countActive: function() {
+		countActive: function () {
 			var count = 0;
 			this.filters.forEach((filter, facetName) => {
 				if (!filter.allChecked) {
@@ -44,7 +46,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 			open: false,
 			searchString: '', // to filter the tags by.
 			filter: [],
-			filterBySearchString: function() {
+			filterBySearchString: function () {
 				let tags = this.filter;
 				if (!tags) {
 					return [];
@@ -56,12 +58,12 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 
 				let searchString = this.searchString.toUpperCase();
 				return checkboxes.filter((cb) => cb.title.toUpperCase().includes(searchString));
-			}
-		}
+			},
+		},
 	};
 
 	// Navigation.
-	ctrl.incrPage = function(num) {
+	ctrl.incrPage = function (num) {
 		let query = this.getQ();
 		query.p += num;
 		if (query.p < 0) {
@@ -70,11 +72,11 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		this.$store.nav.scrollToNavBarIfPinned();
 	};
 
-	ctrl.getQ = function() {
+	ctrl.getQ = function () {
 		return this.$store.search.query;
 	};
 
-	ctrl.init = function() {
+	ctrl.init = function () {
 		debug('init()');
 		this.$nextTick(() => {
 			if (this.$store.search.results.blank.loaded) {
@@ -99,7 +101,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 			});
 
 			this.$watch('$store.nav.searchResults', (value) => {
-				if(value.open && value.userChange) {
+				if (value.open && value.userChange) {
 					this.populateFilters(true);
 				}
 				if (value.open || !value.userChange) {
@@ -117,7 +119,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		});
 	};
 
-	ctrl.updateData = function(result) {
+	ctrl.updateData = function (result) {
 		debug('updateData', result, this.filters.loaded);
 		if (!this.filters.loaded) {
 			return;
@@ -149,7 +151,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		});
 	};
 
-	ctrl.initData = function(result) {
+	ctrl.initData = function (result) {
 		if (this.filters.loaded) {
 			return;
 		}
@@ -189,7 +191,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 				name: facetConfig.name,
 				allChecked: true,
 				wasAllChecked: true,
-				checkboxes: checkboxes
+				checkboxes: checkboxes,
 			});
 		});
 
@@ -198,7 +200,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		this.filters.loaded = true;
 	};
 
-	ctrl.populateFilters = function(force=false) {
+	ctrl.populateFilters = function (force = false) {
 		if (!force && this.filters.loaded) {
 			return;
 		}
@@ -225,7 +227,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 	};
 
 	// apply applies the current UI filters. This is invoked on any change.
-	ctrl.apply = function() {
+	ctrl.apply = function () {
 		debug('apply');
 		let query = this.getQ();
 		// Clear filters, preserve q.

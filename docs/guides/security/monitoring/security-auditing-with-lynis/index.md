@@ -1,9 +1,6 @@
 ---
 slug: security-auditing-with-lynis
-author:
-  name: Hackersploit
 description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
-og_description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,22 +8,23 @@ published: 2020-10-29
 modified: 2020-10-29
 modified_by:
   name: Linode
-title: 'Automated Security Auditing with Lynis'
-h1_title: 'Security Auditing with Lynis'
+title: 'Security Auditing with Lynis'
+title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png
+authors: ["Hackersploit"]
 ---
 
 ## Before you Begin
 
 This guide was written specifically for Debian and Ubuntu operating systems, however can be adapted to apply to all other operating systems that [Lynis currently supports](https://cisofy.com/documentation/lynis/get-started/).
 
-Ensure that you have followed our [Getting Started](/docs/guides/getting-started/) guide before proceeding.
+Ensure that you have followed our [Getting Started](/docs/products/platform/get-started/) guide before proceeding.
 
 ## Installing Lynis
 
 Lynis is an extensible security audit tool for computer systems running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other Unix derivatives. It assists system administrators and security professionals with scanning a system and its defenses, with the final goal being system hardening.
 
-To ensure that that you have the latest version of Lynis installed it's important to manually set up the [CISOfy repository](https://packages.cisofy.com/). While a version of Lynis is available in most repositories by default, the CISOfy repositories will always be the most up to date, ensuring that any auditing performed is based on the best information available. To add the CISOfy repository to your list of repos, enter the following command:
+To ensure that you have the latest version of Lynis installed it's important to manually set up the [CISOfy repository](https://packages.cisofy.com/). While a version of Lynis is available in most repositories by default, the CISOfy repositories will always be the most up to date, ensuring that any auditing performed is based on the best information available. To add the CISOfy repository to your list of repos, enter the following command:
 
     echo "deb https://packages.cisofy.com/community/lynis/deb/ stable main" | sudo tee /etc/apt/sources.list.d/cisofy-lynis.list
 
@@ -35,7 +33,7 @@ Then, import a public GPG key for a secure Lynis installation:
 
     sudo wget -O - https://packages.cisofy.com/keys/cisofy-software-public.key | sudo apt-key add -
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to manually install gnupg2 on some systems in order for GPG to successfully import keys. This can be completed with the following command:
 
     sudo apt-get install gnupg2

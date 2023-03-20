@@ -1,8 +1,5 @@
 ---
 slug: configure-apache-with-salt-stack
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring the Apache Web Server on Ubuntu, Debian, and CentOS with the Salt Sack.'
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
 tags: ["automation","salt","debian","centos","ubuntu","apache"]
@@ -19,6 +16,7 @@ external_resources:
 - '[Salt Apache_Site State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_site.html)'
 - '[Using Grains in SLS Modules](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt3.html#using-grains-in-sls-modules)'
 aliases: ['/applications/configuration-management/salt/configure-apache-with-salt-stack/','/applications/configuration-management/configure-apache-with-salt-stack/']
+authors: ["Linode"]
 ---
 
 Salt is a powerful configuration management tool. In this guide you will create Salt state files that are capable of installing and configuring Apache on Ubuntu 18.04, Debian 9, or CentOS 7.
@@ -29,8 +27,8 @@ You will need at least two Linodes with Salt installed. If you have not already,
 
 The following steps will be performed on your Salt master.
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Setting Up Your Salt Master and Managed Files
@@ -126,7 +124,7 @@ IncludeOptional sites-enabled/*.conf
 
 ### Individual Steps
 
-This guide will be going through the process of creating the Apache for Debian and Ubuntu state file step by step. If you would like to view the entirety of the state file, [you can view it at the end of this section](/docs/applications/configuration-management/configure-apache-with-salt-stack/#complete-state-file).
+This guide will be going through the process of creating the Apache for Debian and Ubuntu state file step by step. If you would like to view the entirety of the state file, [you can view it at the end of this section](/docs/guides/configure-apache-with-salt-stack/#complete-state-file).
 
 1.  Create a state file named `apache-debian.sls` in `/srv/salt` and open it in a text editor of your choice.
 
@@ -188,7 +186,7 @@ Enable tune_apache:
 ...
 {{< /file >}}
 
-    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/applications/configuration-management/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
+    This step takes the `tune_apache.conf` file you created in the [Configuration Files](/docs/guides/configure-apache-with-salt-stack/#configuration-files) step and transfers it to your Salt minion. Then, Salt enables that configuration file with the [apache_conf module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_conf.html).
 
 1.  Create the necessary directories:
 
@@ -275,7 +273,7 @@ Enable tune_apache:
 
     Any changes made to your `index.html` file on your Salt master will be propagated to your minion.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Since Salt is not watching configuration files for a change to trigger a restart for Apache, you may need to use the command below from your Salt master.
 
     salt '*' apache.signal restart
@@ -515,7 +513,7 @@ Configure Firewall:
       - 443/tcp
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It is imperative that you list all ports you need open to your machine in this section. Failure to list these ports will result in their closure by Salt.
 {{< /note >}}
 

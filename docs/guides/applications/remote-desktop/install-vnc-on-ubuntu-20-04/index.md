@@ -1,40 +1,38 @@
 ---
-slug: install-vnc-on-ubuntu-21-04
-author:
-  name: Linode
-  email: docs@linode.com
+slug: install-vnc-on-ubuntu-20-04
 description: 'This guide shows how to install and connect to a desktop environment on your Linode'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
-keywords: ["vnc", "remote desktop", "ubuntu", "21.04"]
+keywords: ["vnc", "remote desktop", "ubuntu", "20.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2021-10-21
-title: 'Install VNC on Ubuntu 21.04'
+title: 'Install VNC on Ubuntu 20.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
- - '[TightVNC](https://www.tightvnc.com/)'
+ - '[TigerVNC](https://tigervnc.org/)'
 relations:
     platform:
         key: install-vnc
         keywords:
-            - distribution: Ubuntu 21.04
-aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-21-04/']
+            - distribution: Ubuntu 20.04
+aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-21-04/', '/guides/install-vnc-on-ubuntu-21-04/']
+authors: ["Linode"]
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
 
-This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 18.04 and how to connect to it from your local computer using VNC.
+This guide explains how to install a graphic desktop environment on your Linode running Ubuntu 20.04 and how to connect to it from your local computer using VNC.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install a Desktop and VNC Server on your Linode
@@ -43,17 +41,18 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
 
     sudo apt install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+
 {{< /note >}}
 
     During the install process, reply with the defaults to any prompts.
 
 2.  Install the VNC server:
 
-        sudo apt install tightvncserver
+        sudo apt install tigervnc-standalone-server
 
 ## Secure your VNC connection
 
@@ -75,7 +74,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
 ### Windows
 
-1.  Open [PuTTY](/docs/networking/using-putty/) and navigate to `Tunnels` under the `SSH` section in the menu. Add a new forwarded port as shown below, replacing `example.com` with your Linode's IP address or hostname:
+1.  Open [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) and navigate to `Tunnels` under the `SSH` section in the menu. Add a new forwarded port as shown below, replacing `example.com` with your Linode's IP address or hostname:
 
     ![Adding a forwarded port to PuTTY.](1648-vnc-putty-1.png)
 
@@ -129,39 +128,43 @@ You'll see a blank gray screen since the desktop processes have not yet started.
 
 This section will configure VNC to launch the full Unity desktop when it starts.
 
-1.  Once you've successfully connected, exit the connection. Close the VNC server:
+1.  After you've successfully connected, exit the connection. Close the VNC server:
 
         vncserver -kill :1
 
-2.  Edit the end of your `~/.vnc/xstartup` file to match the following configuration. This starts the desktop dependencies as background processes upon starting the VNC server:
+1. Create a new file `~/.vnc/xstartup`:
+        sudo nano ~/.vnc/xstartup
+
+1. Add the following configuration. This starts the desktop dependencies as background processes upon starting the VNC server:
 
     {{< file "~/.vnc/xstartup" >}}
-#!/bin/sh
+    #!/bin/sh
 
-# Uncomment the following two lines for normal desktop:
-# unset SESSION_MANAGER
-# exec /etc/X11/xinit/xinitrc
+    # Uncomment the following two lines for normal desktop:
+    # unset SESSION_MANAGER
+    # exec /etc/X11/xinit/xinitrc
 
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-xsetroot -solid grey
-vncconfig -iconic &
-x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
-x-window-manager &
+    [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+    [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+    xsetroot -solid grey
+    vncconfig -iconic &
+    x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+    x-window-manager &
 
-gnome-panel &
-gnome-settings-daemon &
-metacity &
-nautilus &
+    gnome-panel &
+    gnome-settings-daemon &
+    metacity &
+    nautilus &
+    {{< /file >}}
 
-{{< /file >}}
-
-
-3.  Save and exit the file. Begin another VNC session:
+1. Save and exit the file.
+1. Make the file executable:
+       sudo chmod +x ~/.vnc/xstartup
+1.  Begin another VNC session:
 
         vncserver :1
 
-4.  Connect from your local VNC client using the same steps from the [previous section](#connect-to-vnc-from-your-desktop). You should now see the full Ubuntu Desktop:
+1.  Connect from your local VNC client using the same steps from the [previous section](#connect-to-vnc-from-your-desktop). You should now see the full Ubuntu Desktop:
 
     ![A VNC connection with a full Ubuntu desktop.](1642-vnc-ubuntu-3.png)
 

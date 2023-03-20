@@ -1,9 +1,6 @@
 ---
 slug: how-to-install-and-configure-supervisor-on-centos-8
-author:
-  name: Dan Nielsen
 description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
-og_description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
 keywords: ['centos', 'system', 'supervisor', 'supervisord']
 tags: ["linux", "automation", "monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,20 +8,18 @@ published: 2021-02-26
 image: InstallConfig_SupervisiorCentOS8.png
 modified_by:
   name: Linode
-title: "How to Install and Configure Supervisor on CentOS 8"
-h1_title: "Installing and Configuring Supervisor on CentOS 8"
-contributor:
-  name: Dan Nielsen
-  link: https://github.com/danielsen
+title: "Installing and Configuring Supervisor on CentOS 8"
+title_meta: "How to Install and Configure Supervisor on CentOS 8"
 external_resources:
 - '[Configuration File — Supervisor 4.2.1 documentation](http://supervisord.org/configuration.html)'
+authors: ["Dan Nielsen"]
 ---
 
 [**Supervisor**](http://supervisord.org/) is a process control system based on the client/server model. It can be used to simplify process management by providing a centralized location for process control. It's most often deployed to control services that don't have initialization, auto-start, or management scripts. Remote process control is also supported via [Remote Procedure Calls](https://man7.org/linux/man-pages/man3/rpc.3.html), or RPC.
 
 As an example, if you have written a custom Node.js web application, Supervisor could be used to ensure that it starts on boot. As well, Supervisor could restart the application if it quits unexpectedly.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses a Python program called `app.py` as an example for process control. Supervisor can control Python applications, Node.js applications, or programs written in other languages or runtimes.
 {{< /note >}}
 
@@ -42,12 +37,12 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
-Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+    {{< note respectIndent=false >}}
+Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  [Install Python 3.6 or newer](/docs/guides/how-to-install-python-on-centos-8/).
@@ -168,7 +163,7 @@ user=myappuser                           ; setuid to this UNIX account to run th
 
         sudo mkdir /var/log/myapp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not create this directory, the following error appears when you try to load the new Supervisor configuration:
 
 {{< output >}}
@@ -242,7 +237,7 @@ myappgroup:myapp                 STARTING
 2021-02-22 16:14:26: Died after 10.7 seconds
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Optionally, you can install and use the [logrotate](/docs/guides/use-logrotate-to-manage-log-files/) tool to manage the log files created by Supervisor.
 {{< /note >}}
 
@@ -289,9 +284,9 @@ A full list of actions and other `supervisorctl` documentation can be found at [
 
 You may want to add HTTP access to `supervisord`, either to enable the web interface or to allow remote RPC calls.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Enabling HTTP access exposes `supervisord` to the internet at large. If you choose to enable HTTP access, make sure to configure firewall rules that limit access to trusted IPs. As well, configure a user name and a long, complex, and unique password for service access.
-{{< /caution >}}
+{{< /note >}}
 
 1. To enable HTTP access, uncomment the `[inet_http_server]` in `/etc/supervisord.conf`. Update the `port`, `username`, and `password` settings:
 

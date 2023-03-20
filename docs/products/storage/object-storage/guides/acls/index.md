@@ -1,12 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Define Access and Permissions using ACLs (Access Control Lists)"
 description: "Learn how to use ACLs to set permissions and access controls within Object Storage"
 aliases: ['/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/', '/guides/how-to-use-object-storage-acls-and-bucket-policies/']
 published: 2019-12-16
 modified: 2022-03-11
+authors: ["Linode"]
 ---
 
 Access Control Lists (ACLs) are a method of defining access to Object Storage resources. You can apply ACLs to both buckets and objects, giving users access and controlling their permission level. There are two generalized modes of access: setting buckets and/or objects to be private or public. A few other more granular settings are also available; the [Cloud Manager](#granular-permissions-for-cloud-manager) and [s3cmd](#granular-permissions-for-s3cmd) sections provide information on these respective settings.
@@ -29,7 +27,7 @@ Access Control Lists (ACLs) are a method of defining access to Object Storage re
 
 {{< note >}}
 Existing buckets and any new bucket created in the Cloud Manager have a default ACL permission setting of Private.
-{{</ note >}}
+{{< /note >}}
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
@@ -48,8 +46,8 @@ Existing buckets and any new bucket created in the Cloud Manager have a default 
 1.  On this page you can select the ACL for this bucket as well as enable CORS.
 
     {{< note >}}
-CORS is enabled by default on all existing buckets and on all new buckets.
-{{</ note >}}
+    CORS is enabled by default on all existing buckets and on all new buckets.
+    {{< /note >}}
 
 1.  Select the ACL for this bucket from the dropdown menu.
 
@@ -63,7 +61,7 @@ CORS is enabled by default on all existing buckets and on all new buckets.
 
 {{< note >}}
 Existing objects and any new objects created in the Cloud Manager have a default ACL permission setting of Private.
-{{</ note >}}
+{{< /note >}}
 
 1.  If you have not already, log into the [Linode Cloud Manager](https://cloud.linode.com).
 
@@ -133,7 +131,7 @@ Substitute the bucket name (and optional object), `PERMISSION`, and `CANONICAL_I
 
 You should see output like the following:
 
-{{< output >}}
+```output
 s3://acl-bucket-example/ (bucket):
    Location:  default
    Payer:     BucketOwner
@@ -143,7 +141,7 @@ s3://acl-bucket-example/ (bucket):
    ACL:       *anon*: READ
    ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
    URL:       http://us-east-1.linodeobjects.com/acl-example/
-{{</ output >}}
+```
 
 {{< note >}}
 The owner of the bucket always has the `full_control` permission.
@@ -153,4 +151,4 @@ The owner of the bucket always has the `full_control` permission.
 If you set an ACL that does not map to an ACL in the Cloud Manager, the Cloud Manager displays this as `Custom`.
 
 ![Custom ACL Setting Displayed in Cloud Manager](acl-s3cmd-custom-setting-cloud-manager.png "Custom ACL Setting Displayed in Cloud Manager")
-{{</ note >}}
+{{< /note >}}

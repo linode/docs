@@ -1,10 +1,6 @@
 ---
 slug: how-to-monitor-containers-with-the-elastic-stack
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
 description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
-og_description: 'This guide will show you how to configure Filebeat and Metricbeat to montior Docker container logs & metrics for visualization with Elastic Stack in Kibana.'
 keywords: ["elastic", "filebeat", "metricbeat", "elasticsearch", "kibana", "docker", "container", "nginx"]
 tags: ["container","docker","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +15,7 @@ external_resources:
 - '[Elastic Container Monitoring](https://www.elastic.co/docker-kubernetes-container-monitoring)'
 - '[Docker Command-Line Reference](https://docs.docker.com/reference/)'
 aliases: ['/applications/containers/how-to-monitor-containers-with-the-elastic-stack/']
+authors: ["Tyler Langlois"]
 ---
 
 ![Container Instrumentation with the Elastic Stack](container-instrumentation-with-the-elastic-stack.png "Container Instrumentation with the Elastic Stack")
@@ -27,11 +24,11 @@ The [Elastic Stack](https://www.elastic.co/products) can monitor a variety of da
 
 ## Before you Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Follow our [UFW Guide](/docs/security/firewalls/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/security/firewalls/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over SSH for the rest of this guide:
+1.  Follow our [UFW Guide](/docs/guides/configure-firewall-with-ufw/) in order to install and configure a firewall (UFW) on your Ubuntu or Debian-based system, or our [FirewallD Guide](/docs/guides/introduction-to-firewalld-on-centos/) for rpm or CentOS-based systems. After configuring the firewall, ensure that the necessary ports are open in order to proceed with connections over SSH for the rest of this guide:
 
         sudo ufw allow ssh
 
@@ -234,7 +231,7 @@ The following example demonstrates how Filebeat and Metricbeat automatically cap
 
     - Replace `<user@ip-address>` with the username and IP address of your Linode.
     - This forwards port 5601 locally to port 5601 on your Linode.
-    - A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/).
+    - A comprehensive guide to using SSH tunnels on a variety of platforms is available in our [Create an SSH Tunnel for MySQL guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/).
 
 1.  Browse to `http://localhost:5601` in your browser, which will display the following initial landing page for Kibana.
 
