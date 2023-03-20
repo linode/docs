@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,12 +7,11 @@ published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Wazuh through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Wazuh through the Linode Marketplace"
 external_resources:
 - '[Wazuh](https://wazuh.com/)'
 aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Wazuh](https://wazuh.com/) provides a security solution for monitoring your infrastructure and detecting threats, intrusion attempts, system anomalies, poorly configured applications, and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
@@ -26,14 +22,14 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Wazuh should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
 - **Supported distributions:** Ubuntu 20.04 LTS
-- **Recommended plan:** All plan types and sizes can be used, though an 8GB (or higher) Instance is recommended for production.
+- **Recommended plan:** Wazuh recommends a minimum of a 4GB Linode, though an 8-core plan (32GB and up) is recommended for production.
 
 ### Wazuh Options
 
@@ -43,11 +39,13 @@ aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Wazuh App
 
-1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
 1.  In the login screen that appears, enter `admin` as the username and `admin` as the password. Since the default admin user is set to read-only, you need to follow the steps below to reset the admin password.
 

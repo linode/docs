@@ -1,8 +1,5 @@
 ---
 slug: kubernetes-use-cases
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides you with some use cases as well as advantages of using Kubernetes, the container and infrastructure orchestration technology.'
 keywords: ['kubernets', 'k8s', 'use','cases','advantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,10 +7,9 @@ published: 2019-09-04
 modified_by:
   name: Linode
 title: "Advantages of Using Kubernetes"
-contributor:
-  name: Linode
 aliases: ['/applications/containers/kubernetes/kubernetes-use-cases/','/kubernetes/kubernetes-use-cases/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 ## What is Kubernetes
@@ -28,7 +24,7 @@ For a more in-depth explanation of Kubernetes concepts, see our five-part [Begin
 
 *Managed Kubernetes* solutions are concerned with the management of one or more parts of a Kubernetes cluster. Because a cluster is formed from a number of different components, there are many different kinds of managed Kubernetes products, and each will solve a different set of problems.
 
-{{< disclosure-note "Why use a managed Kubernetes solution?" >}}
+{{< note title="Why use a managed Kubernetes solution?" isCollapsible=true >}}
 Kubernetes can make managing containers and microservices easier, but Kubernetes itself also requires some administrative overhead. This includes:
 
 - Performing updates to the Kubernetes control plane and agent software,
@@ -36,7 +32,7 @@ Kubernetes can make managing containers and microservices easier, but Kubernetes
 - Monitoring the health of the underlying hardware systems.
 
 Managed Kubernetes solutions will help offload some or all of this work.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 Here's a few common categories:
 
@@ -49,8 +45,8 @@ Here's a few common categories:
     The customer generally assumes responsibility for deploying and maintaining their applications on the cluster. The Master Nodes are often provided at no cost, and the customer only pays for the Worker Nodes they provision.
 
     {{< note >}}
-The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an example of this category.
-{{< /note >}}
+    The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an example of this category.
+    {{< /note >}}
 
 -   **Software-as-a-Service Kubernetes**
 
@@ -79,8 +75,8 @@ The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an e
     While a customer will install and run these management applications on their own servers, the companies that author these applications may also offer support similar to cloud KaaS offerings.
 
     {{< note >}}
-An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
-{{< /note >}}
+    An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
+    {{< /note >}}
 
 ## Advantages
 
@@ -88,7 +84,7 @@ There are many reasons that developers would choose to use Kubernetes as a solut
 
 ### Declarative in Nature
 
-Kubernetes is declarative: describe to Kubernetes the desired state of the cluster and Kubernetes will ensure that this state is always fulfilled. If you want five containers running at any given time, all you need to do is create a [Deployment](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments) and set the number of replicas to five. And, each set of instructions is rendered in human-readable YAML, which results in further benefits:
+Kubernetes is declarative: describe to Kubernetes the desired state of the cluster and Kubernetes will ensure that this state is always fulfilled. If you want five containers running at any given time, all you need to do is create a [Deployment](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/#deployments) and set the number of replicas to five. And, each set of instructions is rendered in human-readable YAML, which results in further benefits:
 
 - **Version control of your infrastructure.** Because the resources in your cluster are declared in code, you can track changes to that code over time in version control systems like Git.
 
@@ -102,7 +98,7 @@ Kubernetes can run on virtually any public cloud, on-premise hardware, or even b
 
 {{< note >}}
 There are some caveats to this point. Many cloud infrastructure providers support Kubernetes, but there is no guarantee that they support all of the features of Kubernetes. For example, not every cloud provider offers [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) as a feature, so a Kubernetes cluster on those providers will not support [Services of the type `LoadBalancer`](https://kubernetes.io/docs/concepts/services-networking/#loadbalancer).
-{{</ note >}}
+{{< /note >}}
 
 ### Microservice Architecture
 
@@ -114,9 +110,9 @@ Kubernetes determines which Worker Nodes a container should run on based on avai
 
 ### Zero Downtime with Rolling Deployments
 
-[Pods](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) are the smallest unit of computing in Kubernetes, responsible for running your application's containers. Like many features of Kubernetes, pods have the additional capability of increasing your applications overall uptime when compared to other solutions. For example, consider the process that takes place when the code for your application and its container images has been updated by your team. To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
+[Pods](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/#pods) are the smallest unit of computing in Kubernetes, responsible for running your application's containers. Like many features of Kubernetes, pods have the additional capability of increasing your applications overall uptime when compared to other solutions. For example, consider the process that takes place when the code for your application and its container images has been updated by your team. To update your application running in your cluster, you'll need a way to update its Pods with the new container images.
 
-Kubernetes offers a solution with [Deployments](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#deployments), which will create additional Pods with the newer image and assure that they are running and healthy before destroying the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
+Kubernetes offers a solution with [Deployments](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/#deployments), which will create additional Pods with the newer image and assure that they are running and healthy before destroying the old Pods. Kubernetes will also roll back any changes should the newer containers fail. In this way there is limited downtime, ensuring a strong user experience.
 
 ### Self-Healing
 
@@ -126,11 +122,11 @@ For many reasons, containers can fail. Kubernetes keeps deployments healthy by r
 
 It's important that all services have a predictable way of communicating with one another. However, within Kubernetes, containers are created and destroyed many times over, so a particular service may not exist permanently at a particular location. This traditionally meant that some kind of service registry would need to be created or adapted to the application logic to keep track of each container's location.
 
-Kubernetes has a native [Service](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#services) concept which groups your Pods and simplifies service discovery. Kubernetes will provide IP addresses for each Pod, assign a DNS name for each set of Pods, and then load-balance the traffic to the Pods in a set. This creates an environment where the service discovery can be abstracted away from the container level.
+Kubernetes has a native [Service](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/#services) concept which groups your Pods and simplifies service discovery. Kubernetes will provide IP addresses for each Pod, assign a DNS name for each set of Pods, and then load-balance the traffic to the Pods in a set. This creates an environment where the service discovery can be abstracted away from the container level.
 
 ### Multi-Container Pods
 
-Kubernetes [Pods](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#pods) often run a single container, but they are capable of running multiple containers as well. This makes adding a loosely coupled, reusable "sidecar" container to a Pod easy. These sidecar containers serve to enhance the primary container running in a Pod; frequent use-cases including adding [logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/) or a [service mesh](https://en.wikipedia.org/wiki/Service_mesh). These coupled containers will share an IP address with the primary container.
+Kubernetes [Pods](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/#pods) often run a single container, but they are capable of running multiple containers as well. This makes adding a loosely coupled, reusable "sidecar" container to a Pod easy. These sidecar containers serve to enhance the primary container running in a Pod; frequent use-cases including adding [logging](https://kubernetes.io/docs/concepts/cluster-administration/logging/) or a [service mesh](https://en.wikipedia.org/wiki/Service_mesh). These coupled containers will share an IP address with the primary container.
 
 ### Network Policy as Part of Application Deployment
 
@@ -144,7 +140,7 @@ For example, the [Linode Container Storage Interface (CSI)](/docs/kubernetes/dep
 
 ### Cron Jobs
 
-Kubernetes provides a [Jobs](/docs/kubernetes/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. For regular scheduled tasks, Kubernetes also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [jobs you might find in a `crontab` file](/docs/guides/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
+Kubernetes provides a [Jobs](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/#jobs) object for completing single tasks, like running a one-off script. For regular scheduled tasks, Kubernetes also provides [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) objects that can complete a task at a certain time, just like the [jobs you might find in a `crontab` file](/docs/guides/schedule-tasks-with-cron/). This is particularly useful because it provides a declarative way to schedule cron jobs from within a cluster.
 
 ### Secrets Management
 
@@ -170,7 +166,7 @@ With Kubernetes it's easy to create physical or virtual clusters that exactly mi
 
 - You could create a separate testing cluster and use [`kubectl` contexts](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) to switch between testing and production.
 
-- Virtual clusters are called [Namespaces](/docs/kubernetes/beginners-guide-to-kubernetes-part-3-objects/#namespaces). You can create Namespaces for testing, staging, and production, and run them all on the same hardware. With [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) you can easily limit the CPU and memory resource allocation of the Namespace, ensuring that every Namespace has exactly what it needs to run without stealing resources from other Namespaces.
+- Virtual clusters are called [Namespaces](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/#namespaces). You can create Namespaces for testing, staging, and production, and run them all on the same hardware. With [ResourceQuotas](https://kubernetes.io/docs/concepts/policy/resource-quotas/) you can easily limit the CPU and memory resource allocation of the Namespace, ensuring that every Namespace has exactly what it needs to run without stealing resources from other Namespaces.
 
 ### CI/CD Pipelines
 

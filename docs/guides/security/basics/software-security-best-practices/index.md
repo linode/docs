@@ -1,18 +1,14 @@
 ---
 slug: software-security-best-practices
-author:
-  name: David Strom
 description: 'This guide to software security best practices teaches you about types of application security and how to secure a web application.'
 keywords: ['web application security best practices','application security best practices','software development security best practices']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
 modified_by:
   name: Linode
-title: "Software Security Best Practices"
-h1_title: "The 14 Top Software Security Best Practices you Need to Implement Today"
-enable_h1: true
-contributor:
-  name: David Strom
+title: "The 14 Top Software Security Best Practices you Need to Implement Today"
+title_meta: "Software Security Best Practices"
+authors: ["David Strom"]
 ---
 
 The days where software developers wrote their application code in isolation of any security implications are over. Applications are exploited every minute of the day, thanks to the internet that connects them to any hacker around the planet. Application security doesn't have to be overwhelming: there are dozens if not hundreds of tools to help you improve your security posture, prevent exploits, and reduce configuration errors that let bad actors gain unauthorized access to your network.
@@ -89,6 +85,6 @@ A more complete catalog of these tools can be found in these sources:
 
 ## Conclusion
 
-To learn more about application security, [check out this guide which discusses two of the more common application exploits](/docs/guides/understanding-total-app-security/) that can be prevented by using some of the above tools. You can also refer to this author's [more in depth discussion about the need for application security](/docs/guides/understanding-total-app-security/). For more details about best practices in container security, read the [How to Improve Container Security](https://www.csoonline.com/article/3388025/how-to-improve-container-security.html) article.
+To learn more about application security, [check out this guide which discusses two of the more common application exploits](/docs/guides/security-weaknesses-in-web-apps/) that can be prevented by using some of the above tools. You can also refer to this author's [more in depth discussion about the need for application security](/docs/guides/security-weaknesses-in-web-apps/). For more details about best practices in container security, read the [How to Improve Container Security](https://www.csoonline.com/article/3388025/how-to-improve-container-security.html) article.
 
 You can also checkout our [documentation library's security section](/docs/guides/security/) to find guides on installing and using popular open source security tools.

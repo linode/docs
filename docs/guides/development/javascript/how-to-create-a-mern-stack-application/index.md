@@ -1,37 +1,32 @@
 ---
 slug: how-to-create-a-mern-stack-application
-author:
-  name: Cameron Laird
-  email: docs@linode.com
-description: 'Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!'
-og_description: 'Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!'
+description: "Learn how to create a MERN stack application on Linux. Read our guide to learn MERN stack basics. ✓ Click here!"
 keywords: ['MERN Stack Application','How to create a MERN stack application','MERN stack','MERN stack application', 'learn Linux filesystem', 'MERN stack on Linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-12
+modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Create a MERN Stack on Linux"
-h1_title: "How to Create a MERN Stack Application"
-enable_h1: true
-contributor:
-  name: Cameron Laird
+title: "Create a MERN Stack Application"
+title_meta: "How to Create a MERN Stack on Linux"
 external_resources:
 - '[How to Use MERN Stack: A Complete Guide](https://www.mongodb.com/languages/mern-stack-tutorial)'
 - '[The MERN stack: A complete tutorial](https://blog.logrocket.com/mern-stack-tutorial/)'
 - '[Learn the MERN Stack - Full Tutorial for Beginners (MongoDB, Express, React, NodeJS) in 12Hrs (2021)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
 - '[Learn the MERN Stack - Full Tutorial (MongoDB, Express, React, Node.js)](https://www.youtube.com/watch?v=7CqJlxBYj-M)'
+authors: ["Cameron Laird"]
 ---
 
 Of all the possible technical bases for a modern web site, ["MERN holds the leading position when it comes to popularity."](https://www.gkmit.co/blog/web-app-development/mean-vs-mern-stack-who-will-win-the-war-in-2021) This introduction makes you familiar with the essential tools used for a plurality of all web sites worldwide.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is the MERN stack?
@@ -91,7 +86,7 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     You should see diagnostic information that concludes:
 
-        … Started MongoDB Database Server.
+    {{< output >}}… Started MongoDB Database Server.{{< /output >}}
 
 0.  For an even stronger confirmation that the Mongo server is ready for useful action, connect directly to it and issue this command:
 
@@ -103,9 +98,9 @@ You can install a basic MERN stack on a 64-bit x86_64 [Linode Ubuntu 20.04 host]
 
     You should see, along with many other details, this summary of the connectionStatus:
 
-        … MongoDB server … "ok" : 1 …
+    {{< output >}}… MongoDB server … "ok" : 1 …{{< /output >}}
 
-2. Exit Mongo:
+2.  Exit Mongo:
 
         exit
 
@@ -163,81 +158,87 @@ You can create a tiny application which receives a request from a web browser, c
 
 1.  Create `demonstration/server/index.js` with this content:
 
-        const express = require('express');
-        const bodyParser = require('body-parser');
-        const mongoose = require('mongoose');
-        const routes = require('../routes/api');
-        const app = express();
-        const port = 4200;
+    {{< file "demonstration/server/index.js" javascript >}}
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('../routes/api');
+const app = express();
+const port = 4200;
 
-        // Connect to the database
-        mongoose
-          .connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true })
-          .then(() => console.log(`Database connected successfully`))
-          .catch((err) => console.log(err));
+// Connect to the database
+mongoose
+  .connect('mongodb://127.0.0.1:27017/', { useNewUrlParser: true })
+  .then(() => console.log(`Database connected successfully`))
+  .catch((err) => console.log(err));
 
-        // Override mongoose's deprecated Promise with Node's Promise.
-        mongoose.Promise = global.Promise;
-        app.use((req, res, next) => {
-          res.header('Access-Control-Allow-Origin', '*');
-          res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-          });
-          app.use(bodyParser.json());
-          app.use('/api', routes);
-          app.use((err, req, res, next) => {
-            console.log(err);
-            next();
-          });
+// Override mongoose's deprecated Promise with Node's Promise.
+mongoose.Promise = global.Promise;
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+  app.use(bodyParser.json());
+  app.use('/api', routes);
+  app.use((err, req, res, next) => {
+    console.log(err);
+    next();
+  });
 
-          app.listen(port, () => {
-            console.log(`Server runs on port ${port}.`);
-          });
+  app.listen(port, () => {
+    console.log(`Server runs on port ${port}.`);
+  });
+{{</ file >}}
 
 2.  Create `demonstration/routes/api.js` with this content:
 
-        const express = require('express');
-        const router = express.Router();
+    {{< file "demonstration/routes/api.js" javascript >}}
+const express = require('express');
+const router = express.Router();
 
-        var MongoClient = require('mongodb').MongoClient;
-        var url = 'mongodb://127.0.0.1:27017/';
-        const mongoose = require('mongoose');
-        var db = mongoose.connection;
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://127.0.0.1:27017/';
+const mongoose = require('mongoose');
+var db = mongoose.connection;
 
-        router.get('/record', (req, res, next) => {
-          item = req.query.item;
-          MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("mydb");
-            var myobj = { name: item };
-            dbo.collection("demonstration").insertOne(myobj, function(err, res) {
-              if (err) throw err;
-              console.log(`One item (${item}) inserted.`);
-              db.close();
-            })
-          });
-        })
-        module.exports = router;
+router.get('/record', (req, res, next) => {
+  item = req.query.item;
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myobj = { name: item };
+    dbo.collection("demonstration").insertOne(myobj, function(err, res) {
+      if (err) throw err;
+      console.log(`One item (${item}) inserted.`);
+      db.close();
+    })
+  });
+})
+module.exports = router;
+{{</ file >}}
 
 3.  Create `demonstration/server/server.js` with this content:
 
-        const express = require("express");
-        const app = express();
-        const cors = require("cors");
-        require("dotenv").config({ path: "./config.env" });
-        const port = process.env.PORT || 4200;
-        app.use(cors());
-        app.use(express.json());
-        app.use(require("./routes/record"));
-        const dbo = require("./db/conn");
+    {{< file "demonstration/server/server.js" javascript >}}
+const express = require("express");
+const app = express();
+const cors = require("cors");
+require("dotenv").config({ path: "./config.env" });
+const port = process.env.PORT || 4200;
+app.use(cors());
+app.use(express.json());
+app.use(require("./routes/record"));
+const dbo = require("./db/conn");
 
-        app.listen(port, () => {
-          // Connect on start.
-          dbo.connectToServer(function (err) {
-            if (err) console.error(err);
-          });
-          console.log(`Server is running on port: ${port}`);
-        });
+app.listen(port, () => {
+  // Connect on start.
+  dbo.connectToServer(function (err) {
+    if (err) console.error(err);
+  });
+  console.log(`Server is running on port: ${port}`);
+});
+{{</ file >}}
 
 ### Verify your application
 
@@ -251,7 +252,7 @@ You can create a tiny application which receives a request from a web browser, c
 
     At this point, your terminal should display:
 
-        One item (this-new-item) inserted.
+    {{< output >}}One item (this-new-item) inserted.{{< /output >}}
 
 3.  Now launch an interactive shell to connect to the MongoDB datastore:
 
@@ -264,7 +265,7 @@ You can create a tiny application which receives a request from a web browser, c
 
     Mongo should report that it finds a record:
 
-        { "_id" : ObjectId("62c84fe504d6ca2aa325c36b"), "name" : "this-new-item" }
+    {{< output >}}{ "_id" : ObjectId("62c84fe504d6ca2aa325c36b"), "name" : "this-new-item" }{{< /output >}}
 
 This demonstrates a minimal MERN action:
 *   The web browser issues a request with particular data.

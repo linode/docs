@@ -1,8 +1,5 @@
 ---
 slug: lemp-server-on-debian-7-wheezy
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install a LEMP (Linux, NGINX, MySQL, PHP) stack so you can host multiple websites or applications on a Linode running Debian 7 "Wheezy".'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
@@ -16,27 +13,28 @@ title: 'LEMP Server on Debian 7 (Wheezy)'
 deprecated: true
 deprecated_link: web-servers/lemp/install-a-lemp-stack-on-debian/
 external_resources:
- - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
- - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
- - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
- - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
- - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
+ - '[Basic Nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+ - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)'
+ - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/guides/nginx-and-perlfastcgi-on-debian-6-squeeze/)'
+ - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/guides/debian-6-squeeze/)'
+ - '[Deploy Python Applications with uWSGI and Nginx](/docs/guides/wsgi-using-uwsgi-and-nginx-on-debian-6-squeeze/)'
 relations:
     platform:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ![LEMP Server on Debian 7 (Wheezy)](lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -98,7 +96,7 @@ To deactivate a site, simply delete the symbolic link by issuing the following c
 
 The source file is saved, and the site can be re-enabled at any time.
 
-For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
+For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/docs/guides/how-to-configure-nginx/).
 
 ## Deploy PHP with FastCGI
 
@@ -195,7 +193,7 @@ MySQL database engine may be the leading open source relational database engine,
 
 4.  Answer all questions when prompted during this process.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If at any point you need to reset the root password for the *MySQL* server, issue the following command:
 
      dpkg-reconfigure mysql-server-5.0

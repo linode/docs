@@ -1,8 +1,5 @@
 ---
 slug: apache-access-control
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
 tags: ["http","web server","apache","security"]
@@ -18,6 +15,7 @@ external_resources:
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
  - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
+authors: ["Linode"]
 ---
 
 While most web server content is created to be available to the public, you may want to restrict some or all of a website to specific users or groups. **HTTP Auth** lets you easily create these restrictions.
@@ -26,9 +24,9 @@ This guide provides an overview of both credential-based and rule-based access c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -37,7 +35,7 @@ This guide provides an overview of both credential-based and rule-based access c
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 This guide uses the same example file paths as our [Apache on Debian 8](/docs/guides/apache-web-server-debian-8/) guide. Be sure to adjust for your distribution.
