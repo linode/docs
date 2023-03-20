@@ -88,7 +88,7 @@ After your cluster has been fully provisioned, use the instructs below to obtain
     user: mongo-root
     password: ltDpEM2AL1nS1j7L5JocZ7zj+7dXDSgTFDybdgaiGyU=
 
-    user: mew
+    user: example-user
     password: W?lXvW1dZ!o^?..Ea<[9Y9eN3)2MCIr*
 
     # SSL ca password

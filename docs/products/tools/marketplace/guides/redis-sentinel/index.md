@@ -71,6 +71,21 @@ After your cluster has been fully provisioned, use the instructs below to obtain
     cat /home/[username]/.deployment-secrets.txt
     ```
 
+    The file contains your Redis credentials and your system's limited username and password.
+
+    ```file {title="/home/[user]/.deployment-secrets.txt"}
+    # BEGIN ANSIBLE MANAGED BLOCK
+    # system user
+
+    user: example-user
+    password: R(9C!Iwp4dirlC<;~{7^$XMB#v\)yaB\
+
+    # redis password
+    redis-cli --askpass --tls --cacert /etc/redis/tls/ca.crt:
+    7znrp73fCHjpislibge3tRi44tjNKSsTLoAHs1aSZRg=
+    # END ANSIBLE MANAGED BLOCK
+    ```
+
 ### Access the Redis CLI
 
 1.  Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.

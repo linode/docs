@@ -67,7 +67,7 @@ After your cluster has been fully provisioned, use the instructs below to obtain
     # BEGIN ANSIBLE MANAGED BLOCK
     # system user
 
-    user: mew
+    user: example-user
     password: v[[<]xw`pm/]:I+F2:$|1je!nqw|%V2h
     # END ANSIBLE MANAGED BLOCK
     ```
