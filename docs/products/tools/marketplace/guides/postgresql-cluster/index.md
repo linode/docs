@@ -72,20 +72,6 @@ After your cluster has been fully provisioned, use the instructs below to obtain
     # END ANSIBLE MANAGED BLOCK
     ```
 
-### Access PostgreSQL
-
-After PostgreSQL has finished installing, you will be able to access PostgreSQL from the console via ssh with your Linode's IPv4 address:
-
-1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
-
-1.  Log out and log back in as your limited user account.
-
-1.  Update your server:
-
-    ```command
-    sudo apt-get update && sudo apt-get upgrade
-    ```
-
 ## Using PostgreSQL
 
 ### Modify the Postgres Users
