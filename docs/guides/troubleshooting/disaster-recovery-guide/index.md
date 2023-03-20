@@ -1,8 +1,5 @@
 ---
 slug: disaster-recovery-guide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Troubleshooting steps to access your Linode after maintenance has been applied to your host.'
 keywords: ['linux','reboot','lish']
 tags: ["cloud manager"]
@@ -15,6 +12,7 @@ modified_by:
   name: Linode
 title: "Access Your Linode After Maintenance"
 aliases: ['/troubleshooting/disaster-recovery-guide/']
+authors: ["Linode"]
 ---
 
 If you are having issues accessing your Linode after maintenance has been applied to your host, here are a few troubleshooting steps to follow.
@@ -37,13 +35,13 @@ If you have ensured that your Linode is booted, but do not have SSH access, you 
 
 1.  Click on the **Launch Console** link. This launches the Lish Console via your browser window and you will be prompted to enter your Linode user and password.
 
-    If you have trouble logging in with your root password, consider [resetting the root password](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/) to rule out any password issues.
+    If you have trouble logging in with your root password, consider [resetting the root password](/docs/products/compute/compute-instances/guides/reset-root-password/) to rule out any password issues.
 
-The [Using the Lish Console](/docs/guides/using-the-lish-console/) contains more information on Lish.
+The [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) contains more information on Lish.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Lish is an out-of-band management tool, so you can use your root login credentials, if needed.
-{{</ note >}}
+{{< /note >}}
 
 ## Network Helper
 
@@ -57,7 +55,7 @@ Your Linode's Network Helper automatically creates a static networking configura
 
 1. Click **Save Changes**, then reboot your Linode.
 
-For more information, refer to the [Network Helper](/docs/platform/network-helper/) guide.
+For more information, refer to the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) guide.
 
 ## Checking Interfaces/Networking
 
@@ -137,7 +135,7 @@ Apr 06 01:03:17 xlauncher ifup[6359]: run-parts: failed to exec /etc/network/if-
 
 Use the full output of the `sudo systemctl status networking.service -l` to determine if the failure is happening when executing the `etc/network/if-up.d/iptables` file or within the rules of the iptables. The exec codes provided in the output will help you determine which of the two is the source of failure.
 
-See the [Control Network Traffic with Iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide for more information.
+See the [Control Network Traffic with Iptables](/docs/guides/control-network-traffic-with-iptables/) guide for more information.
 
 ### SendMail
 
@@ -251,8 +249,8 @@ If you are unable to determine a specific rule that is causing issues with your 
 
         sudo iptables -X
 
-    You can now begin rebuilding your firewall rules. See [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for more instructions.
+    You can now begin rebuilding your firewall rules. See [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for more instructions.
 
-- Consult the [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) for steps to prepare a Linode for any future maintenance.
+- Consult the [Reboot Survival Guide](/docs/guides/reboot-survival-guide/) for steps to prepare a Linode for any future maintenance.
 
-- For information on Linode Manager tools that can assist you in resolving unlikely system accidents and unplanned events, see the [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild/) guide.
+- For information on Linode Manager tools that can assist you in resolving unlikely system accidents and unplanned events, see the [Rescue and Rebuild](/docs/guides/rescue-and-rebuild/) guide.

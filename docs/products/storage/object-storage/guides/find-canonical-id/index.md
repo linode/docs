@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Find the Canonical User ID for an Account"
 description: "How to cancel the Linode Object Storage service."
 date: 2022-03-11
+authors: ["Linode"]
 ---
 
 Each Object Storage account is given its own *canonical user ID*, which can be used to identify a specific account or share resources between accounts. This ID consists of a long string of letters, dashes, and numbers, such as `a0000000-000a-0000-0000-00d0ff0f0000`.
@@ -21,13 +19,13 @@ The S3cmd utility can be used to retrieve the canonical ID by running the `info`
 
     s3cmd info s3://[bucket-label]
 
-{{<note>}}
+{{< note >}}
 S3cmd must be configured to use the Access Key of the account to which the bucket belongs.
-{{</note>}}
+{{< /note >}}
 
 Within the output, find an ACL that has the FULL_CONTROL permission and looks similar to the string shown in the example below.
 
-{{< output >}}
+```output
 s3://example-bucket/ (bucket):
 Location:  default
 Payer:     BucketOwner
@@ -35,7 +33,7 @@ Expiration Rule: none
 Policy:    none
 CORS:      none
 ACL:       a0000000-000a-0000-0000-00d0ff0f0000: FULL_CONTROL
-{{</ output >}}
+```
 
 If you see *none* as the ACL, it may indicate that your s3cmd is configured with a different region than the bucket is located within. See the [Additional Configuration Options](/docs/products/storage/object-storage/guides/s3cmd/#additional-configuration-options) of our s3cmd guide to learn how to manually edit the s3cmd configuration.
 
@@ -45,9 +43,9 @@ To retrieve the canonical id of *your account* within the AWS CLI, run the follo
 
     aws s3api list-buckets --query Owner.ID --output text --endpoint=[bucket-url]
 
-{{<note>}}
+{{< note >}}
 The AWS CLI must be configured to use the Access Key of the account to which the bucket belongs.
-{{</note>}}
+{{< /note >}}
 
 ## Curl
 
@@ -62,11 +60,11 @@ Run the following curl command, replacing *[bucket-url]* with the URL of the buc
 
 Within the output, the canonical ID is displayed within the `<Owner><ID>` property. In the example output below, the ID is `a0000000-000a-0000-0000-00d0ff0f0000`.
 
-{{< output >}}
+```output
 ...
 <Owner>
     <ID>a0000000-000a-0000-0000-00d0ff0f0000</ID>
     <DisplayName>a0000000-000a-0000-0000-00d0ff0f0000</DisplayName>
 </Owner>
 ...
-{{</ output >}}
+```

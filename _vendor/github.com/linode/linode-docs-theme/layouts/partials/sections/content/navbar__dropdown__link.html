@@ -1,5 +1,9 @@
 <li class="block">
   <a
+    {{ with .eventName }}
+      @click="$store.nav.analytics.handler.convertObject(document.body.dataset.objectid,
+      '{{ . }}')"
+    {{ end }}
     href="{{ .href }}"
     target="_blank"
     rel="noopener"

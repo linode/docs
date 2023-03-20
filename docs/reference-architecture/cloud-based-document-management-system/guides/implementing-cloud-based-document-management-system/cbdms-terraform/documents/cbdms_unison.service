@@ -1,0 +1,12 @@
+[Unit]
+Description=Sync NGINX Certificates
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/unison cbdms-app-unison
+
+[Install]
+WantedBy=multi-user.target
+

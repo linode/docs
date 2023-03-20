@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-ssh
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Troubleshooting steps for when you can't connect to your Linode via SSH."
 keywords: ['linux','reboot','lish','ssh']
 tags: ["ssh"]
@@ -13,18 +10,19 @@ modified_by:
   name: Linode
 title: "Troubleshooting SSH"
 aliases: ['/troubleshooting/troubleshooting-ssh/']
+authors: ["Linode"]
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/tools-reference/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/troubleshooting/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your Linode via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Linode, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Linode but still can't access SSH, return to this guide.
 
-If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/troubleshooting/troubleshooting-web-servers-databases-other-services/) guide.
+If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 
 {{< disclosure-note "Where to go for help outside this guide" >}}
 This guide explains how to use different troubleshooting commands on your Linode. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/platform/billing-and-support/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Linode. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /disclosure-note >}}
 
 ## Before You Begin
@@ -33,13 +31,13 @@ Before troubleshooting your SSH service, familiarize yourself with the Linode Sh
 
 ### The Linode Shell (Lish)
 
-[*Lish*](/docs/guides/using-the-lish-console/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your Linode will be performed from the Lish console.
+[*Lish*](/docs/products/compute/compute-instances/guides/lish/) is a shell that provides access to your Linode's serial console. Lish does not establish a network connection to your Linode, so you can use it when your networking is down or SSH is inaccessible. While troubleshooting SSH, all commands you enter on your Linode will be performed from the Lish console.
 
-To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide. In particular, [using your web browser](/docs/guides/using-the-lish-console/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
+To learn about Lish in more detail, and for instructions on how to connect to your Linode via Lish, review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide. In particular, [using your web browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) is a fast and simple way to access Lish.
 
 ### Forgotten your Password?
 
-If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode-new-manager/). If you are logged in as root, you can change the password of another user with the `passwd` command:
+If you have forgotten your Linux user's password, you will not be able to log in with Lish. You can reset the root password for your Linode with [these instructions](/docs/products/compute/compute-instances/guides/reset-root-password/). If you are logged in as root, you can change the password of another user with the `passwd` command:
 
     passwd <username>
 
@@ -79,8 +77,8 @@ If your connections are *not* timing out or being rejected, or if you are able t
     | CentOS 6 | `less /var/log/secure` |
     | Ubuntu 14.04, Debian 7 | `less /var/log/auth.log` |
 
-    {{< note >}}
-Review the [journalctl](/docs/quick-answers/linux/how-to-use-journalctl/) and [less](/docs/quick-answers/linux/how-to-use-less/) guides for help with navigating your logs when using those commands.
+    {{< note respectIndent=false >}}
+Review the [journalctl](/docs/guides/how-to-use-journalctl/) and [less](/docs/guides/how-to-use-less/) guides for help with navigating your logs when using those commands.
 {{< /note >}}
 
 1.  Review the [Is Another Service Bound on the Same Port?](#is-another-service-bound-on-the-same-port) section. Then:
@@ -131,7 +129,7 @@ This error indicates that another service on your system is already using the sa
             sudo systemctl stop some-other-service
             sudo systemctl disable some-other-service
 
-        Or, [kill](/docs/tools-reference/tools/use-killall-and-kill-to-stop-processes-on-linux/) the process using the process ID listed next to the process name in the output from `netstat`.
+        Or, [kill](/docs/guides/use-killall-and-kill-to-stop-processes-on-linux/) the process using the process ID listed next to the process name in the output from `netstat`.
 
 -   **Assign a different port to the other service**
 
@@ -160,27 +158,27 @@ If your service is running but your connections still fail, your firewall (which
     sudo iptables-save # displays IPv4 rules
     sudo ip6tables-save # displays IPv6 rules
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your deployment may be running FirewallD or UFW, which are frontends used to more easily manage your iptables rules. Run these commands to find out if you are running either package:
 
     sudo ufw status
     sudo firewall-cmd --state
 
-Review [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
+Review [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/#ufw-status) and [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/#firewall-zones) to learn how to manage and inspect your firewall rules with those packages.
 {{< /note >}}
 
-Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
+Firewall rulesets can vary widely. Review the [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) guide to analyze your rules and determine if they are blocking connections. A rule which allows incoming SSH traffic could look like this:
 
 {{< output >}}
 -A INPUT -p tcp -m tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
 {{< /output >}}
 
 
-In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses, may be responsible for creating rules that result in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/#lockout-recovery) for troubleshooting this service.
+In some cases, [fail2ban](https://www.fail2ban.org/wiki/index.php/Main_Page), a tool used for automating the creation of firewall rules to block IP addresses, may be responsible for creating rules that result in a lost connection. If you see firewall chains in place prefixed with `f2b` or `fail2ban`, see our [fail2ban guide](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/#lockout-recovery) for troubleshooting this service.
 
 ### Disable Firewall Rules
 
-In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/security/firewalls/control-network-traffic-with-iptables/) for help with this subject.
+In addition to analyzing your firewall ruleset, you can also temporarily disable your firewall to test if it is interfering with your connections. Leaving your firewall disabled increases your security risk, so we recommend re-enabling it afterward with a modified ruleset that will accept your connections. Review [Control Network Traffic with iptables](/docs/guides/control-network-traffic-with-iptables/) for help with this subject.
 
 1.  Create a temporary backup of your current iptables rules:
 
@@ -222,7 +220,7 @@ SSH can be configured to disable logins for the root user. To check your SSH con
 
 If the value of the `PermitRootLogin` is `no`, then try logging in with another user. Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in as root again.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This option can also be set with the value `without-password`. If this value is used, root logins are accepted with public key authentication.
 {{< /note >}}
 
@@ -232,7 +230,7 @@ SSH can be configured to not accept passwords and instead accept public key auth
 
     grep PasswordAuthentication /etc/ssh/sshd_config
 
-If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
+If the value of the `PasswordAuthentication` is `no`, [create a key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Or, set the value in `/etc/ssh/sshd_config` to `yes`, restart SSH, and try logging in with your password again.
 
 ### Is your Public Key Stored on the Server?
 

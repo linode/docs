@@ -19,7 +19,7 @@ tab_group_main:
 
 - [Linode at 17: A bunch of updates](https://www.linode.com/blog/linode/linode-turns-17/)
 
-- [2019: A Big Year of Innovation for Linode a a Big Thank You to Our Customers](https://www.linode.com/blog/linode/2019-a-year-in-review/)
+- [2019: A Big Year of Innovation for Linode a Big Thank You to Our Customers](https://www.linode.com/blog/linode/2019-a-year-in-review/)
 
 - [Introducing the Linode API](https://www.linode.com/blog/linode/introducing-the-linode-api/)
 

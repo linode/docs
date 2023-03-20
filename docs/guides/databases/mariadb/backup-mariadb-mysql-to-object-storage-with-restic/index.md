@@ -1,26 +1,21 @@
 ---
 slug: backup-mariadb-mysql-to-object-storage-with-restic
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
-og_description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
 tags: ['mariadb', 'mysql', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-03
 modified_by:
   name: Andy Heathershaw
-title: "Backup MariaDB Databases to Linode Object Storage with Restic"
-h1_title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
+title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
+title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
 external_resources:
 - '[mysqldump - MariaDB Knowledge Base](https://mariadb.com/kb/en/mysqldump/)'
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
+authors: ["Andy Heathershaw"]
+tags: ["saas"]
 ---
 
 ## Introduction
@@ -36,14 +31,14 @@ MariaDB is a fork of MySQL. Where you see a reference to *MariaDB* in this guide
 {{< /note >}}
 
 {{< note >}}
-The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide require root privileges, and commands are run with `sudo` unless otherwise noted. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install MariaDB on your Linode by following the [How to Install MariaDB](/docs/databases/mariadb/) guide that is appropriate for your Linode's distribution.
 
@@ -174,7 +169,7 @@ System Cron jobs exist as entries in the `/etc/crontab` file. Open your systems 
 
     sudo crontab -e
 
-Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron/) article for additional scheduling options.
+Add a line pointing to your backup script. This example runs the backup every hour, on the hour. See the [Schedule tasks with Cron](/docs/guides/schedule-tasks-with-cron/) article for additional scheduling options.
 
     0 * * * * /usr/local/bin/backup_mariadb > /tmp/mariadb-backup-log.txt 2>&1
 
