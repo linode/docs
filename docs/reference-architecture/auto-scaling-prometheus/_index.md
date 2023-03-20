@@ -7,7 +7,7 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-published: 2022-02-28
+published: 2023-03-20
 ---
 
 ## Abstract
@@ -16,9 +16,17 @@ This abstract provides a concrete example of how to autoscale a generic, highly 
 
 Cloud-based highly available workloads often need to scale horizontally when faced with periods of high demand, which can include traffic bursts based on marketing campaigns, new product launches, industry-based cyclical usage patterns, or unanticipated demand. Regardless of the reason, having the flexibility to reduce your costs when traffic is low, while also having the capability to expand your workload capacity on-demand, can be critical to customer satisfaction, your reputation, and your bottom line.  This reference architecture demonstrates how to scale your workloads up or down within Akamai Connected Cloud using Compute Instances hosting your application runtime.
 
+### Figure 1: A Common Highly Available Application Architecture
+
+!["Traditional implementation"](diagrams/traditional-cloud-build-implementation.png)
+
 Figure 1 illustrates a common highly available application runtime that includes a delivery pipeline for developers to build the application, integration with [Linode API](/docs/products/tools/api/) through our [Terraform provider](https://registry.terraform.io/namespaces/linode), [Ansible community package](https://github.com/linode/ansible_linode), or [Linode CLI](/docs/products/tools/cli/). The system baseline illustrated here uses GitHub for source control management (although GitLab, Bitbucket, or other SCMs that Jenkins supports would work as well), Jenkins deployed on Linodes, and using Object Storage as a artifact repository. For additional practical details on setting Jenkins up, see How to [Automate Builds with Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/).
 
 This use case assumes a web service deployed in a highly available configuration as shown in Figure 1, with at least two web servers behind a traffic manager. This example uses a Node Balancer as a ingress proxy and Linodes for compute running the application. In summary, this baseline example illustrates the capability to maintain a typical application lifecycle with the tools shown.
+
+## Figure 2: Auto-Scaling Application Architecture with Prometheus
+
+!["Autoscaling with Prometheus diagram"](diagrams/auto-scaling-with-prometheus.png)
 
 Figure 2 illustrates a system architecture where data flow triggers the Compute instances to automatically scale up or scale down. This auto scaling architecture introduces a tool called [Prometheus](https://prometheus.io/) to help monitor the system and trigger events that will ultimately be received by our CI/CD pipeline to help properly scale the system.
 
