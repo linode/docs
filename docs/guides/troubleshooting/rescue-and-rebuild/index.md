@@ -1,10 +1,6 @@
 ---
 slug: rescue-and-rebuild
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to rescue and rebuild Linode by using the recovery tools available in the Linode Cloud Manager.'
-og_description: 'Learn how to rescue and rebuild Linode by using the recovery tools available in the Linode Cloud Manager.'
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +9,7 @@ modified_by:
   name: Linode
 published: 2012-05-31
 title: Rescue and Rebuild
+authors: ["Linode"]
 ---
 
 ![Rescue and Rebuild](rescue-rebuild.jpg)
@@ -69,7 +66,7 @@ To boot a Linode into Rescue Mode:
 
     ![Linode Cloud Manager Rescue form - /dev/sda highlighted](cloud-manager-rescue-form-dev-sda-highlighted.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/sdb`, etc). For example, in the screenshot shown above, the Ubuntu disk corresponds to `/dev/sda`. These assignments are where you can mount the disks from inside Rescue Mode.
 {{< /note >}}
 
@@ -77,10 +74,10 @@ Make a note of which devices the disks are assigned to (e.g. `/dev/sda`, `/dev/s
 
     ![Linode Cloud Manager Rescue form - Add Disk highlighted](cloud-manager-rescue-form-add-disk-highlighted.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 
-For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
+For best results, you should review the names that your Linode's disks are using in your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
 
 Matching these names will be especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Linode's `/etc/fstab` file, which defines where and how your Linode mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
 
@@ -95,7 +92,7 @@ A mismatch in the names of your disks between your Linode's configuration profil
 
 By default, Rescue Mode's Finnix environment does not accept SSH connections. To access the Linode when it's running in Rescue Mode, connect to it through the *Lish* console.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It is possible to enable SSH for Rescue Mode by manually starting the SSH daemon. Using SSH can provide a better experience and allows you to copy files off of the server. Review the [Starting SSH](#starting-ssh) section for instructions. You need to use Lish at least once in order to start SSH.
 {{< /note >}}
 
@@ -109,7 +106,7 @@ To connect with Lish:
 
     ![Linode Cloud Manager Lish console](cloud-manager-new-lish-window.png)
 
-Review the [Using the Lish Console](/docs/guides/using-the-lish-console/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/guides/using-the-lish-console/#through-ssh-using-a-terminal).
+Review the [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/) guide for further explanation of the Lish console and alternative methods for accessing it, including [from your computer's terminal application](/docs/products/compute/compute-instances/guides/lish/#through-ssh-using-a-terminal).
 
 ### Starting SSH
 
@@ -121,7 +118,7 @@ The Finnix recovery distribution does not automatically start an SSH server, but
 
         passwd
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This root password is separate from the root password of the disk that you normally boot from. Setting the root password for Finnix does not affect the root account of the distribution.
 {{< /note >}}
 
@@ -135,7 +132,7 @@ You can now connect to the server as root with the SSH client on a local compute
 
 - For instructions on connecting with an SFTP client, see the [File Transfer reference manuals](/docs/tools-reference/file-transfer/).
 
-- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/guides/copying-a-disk-image-over-ssh/).
+- For instructions on copying an entire disk over SSH, see [Copy a Disk Over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/).
 
 ### Performing a File System Check
 
@@ -161,9 +158,9 @@ You can use the `e2fsck` system utility (short for "ext file system check") to c
 
     The primary disks should not appear in the list. In the [example screenshot](cloud-manager-rescue-form-dev-sda-highlighted.png) from the [Booting into Rescue Mode](#booting-into-rescue-mode) section, the Ubuntu 18.04 disk is assigned to `/dev/sda`. Because this device does not appear in the example output from `df -h`, run a filesystem check on it.
 
-     {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Run `e2fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
@@ -194,7 +191,7 @@ Never run `e2fsck` on a mounted disk. Do not continue unless you're sure that th
 
 ### Installing Packages
 
-The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/tools-reference/linux-package-management/#debian-and-ubuntu-package-management) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by using the following commands:
+The Finnix recovery distribution is based on Debian, so you can use the [`apt` package management system](/docs/guides/apt-package-manager/) to install additional software packages in the temporary rescue environment. For example, you could install and run the `nmon` utility by using the following commands:
 
     apt update
     apt install nmon
@@ -204,8 +201,8 @@ The software packages you install is available as long as the Linode is running 
 
 ### Mounting Disks
 
-{{< note >}}
- Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/guides/install-a-custom-distribution-on-a-linode/#update-your-fstab) guide.
+{{< note respectIndent=false >}}
+ Before you mount the disk check the location of the root partition in the `/etc/fstab` file and update it accordingly. In the following example `/dev/sda` is the location of the disk. For more information, see the [Update your fstab](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/#update-your-fstab) guide.
  {{< /note >}}
 
 By default, your disks are not mounted when your Linode boots into Rescue Mode. However, you can manually mount a disk under Rescue Mode to perform system recovery and maintenance tasks.
@@ -226,7 +223,7 @@ These instructions mount the `/dev/sda` disk. If you are mounting a different di
 
     You can now read and write to files on the mounted disk.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can unmount your disk by running the `unmount` command. You may want to unmount your disk to  [run a file system check](#performing-a-file-system-check), for example.
 
 The `umount` command requires you to specify the device you want to unmount. You may specify this device in one of two ways:
@@ -239,7 +236,7 @@ The `umount` command requires you to specify the device you want to unmount. You
 
       umount /media/sda
 
-{{</ note >}}
+{{< /note >}}
 
 If you would like to mount or unmount additional disks on your system, repeat these instructions with the appropriate substitutions.
 
@@ -257,11 +254,11 @@ Chroot allows you to change user passwords, remove/install packages, and do othe
 
         mount -o exec,barrier=0 /dev/sda /media/sda
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you mounted your disk without using the `exec` option prior to reviewing this section, include the `remount` option in your `mount` command:
 
     mount -o remount,exec,barrier=0 /dev/sda /media/sda
-{{</ note >}}
+{{< /note >}}
 
 1.  To create the chroot, you need to mount the temporary filesystems:
 
@@ -279,15 +276,15 @@ If you mounted your disk without using the `exec` option prior to reviewing this
 
         mount /dev/sdc
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This `mount` command only specifies a disk name without specifying a mount point. This causes `mount` to use the `/etc/fstab` file in the chroot to determine the mount point and apply the correct mount options.
 
-As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/guides/linode-configuration-profiles/).
+As a result, this command depends on you having made these disks available to your Rescue Mode environment under the same names that they use in your Linode's [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/).
 
 If these names do not match, mounting your disks using only a device name will either fail completely, mount them at the wrong directory, and/or apply the wrong mount options to them.
 
 The easiest way to alleviate this problem is by [starting a new Rescue Mode session from Cloud Manager](#booting-into-rescue-mode) which properly matches these disk names between your Rescue Mode environment and your Linode's configuration profile.
-{{</ note >}}
+{{< /note >}}
 
 1.  To exit the chroot and get back to Finnix type "exit" :
 
@@ -303,11 +300,11 @@ If you can't rescue and resolve issues on an existing disk, you likely need to r
 
 -   If you have a backup system other than the Linode Backup Service in place, you can [rebuild your Linode](#use-the-rebuild-feature) and then restore the data from that backup service. The methods for restoring data varies by the kind of backup system that you use.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Did an unauthorized intruder gain access to your Linode? Since it is virtually impossible to determine the full scope of an attacker's reach into a compromised system, you should never continue using a compromised Linode.
 
 Linode recommends that you follow the instructions in [Recovering from a System Compromise](/docs/guides/recovering-from-a-system-compromise/). You need to create a new Linode, copy your existing data from the old Linode to the new one, and then swap IP addresses.
-{{< /caution >}}
+{{< /note >}}
 
 ### Restoring from a Linode Backup
 
@@ -323,13 +320,13 @@ The Linode Cloud Manager provides a *Rebuild* feature performs the following two
 
 1.  A new set of disks is provisioned from one of the Cloud Manager's built-in Linux images, or from one of the [saved images](/docs/products/tools/images/).
 
-    {{< caution >}}
-If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/security/backups/backing-up-your-data) or [create a snapshot through Linode's Backup Service](/docs/platform/disk-images/linode-backup-service#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
+    {{< note type="alert" respectIndent=false >}}
+If you use the Rebuild feature, the data from the disks that are deleted are not retrievable. You may [back up your data manually](/docs/guides/backing-up-your-data/) or [create a snapshot through Linode's Backup Service](/docs/products/storage/backups/#take-a-manual-snapshot) to preserve data before using the Rebuild feature.
 
-If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
+If you'd like to deploy a new Linux distribution without erasing the existing disks, follow the instructions in the [Creating a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk) guide. This is a better option if you need to create a new distribution, but also need to save the existing data.
 
-The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/guides/resizing-a-linode/) to a higher resource tier.
-    {{< /caution >}}
+The Linode needs to have some amount of unallocated disk space in order to provision a new distribution. If the Linode does not have enough unallocated space, you can [shrink your existing disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to free up space or [resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a higher resource tier.
+    {{< /note >}}
 
     If you need to copy files from your existing disk to another location before rebuilding, you can [start SSH](#starting-ssh) under Rescue Mode and then use an SFTP client to copy files to your computer.
 

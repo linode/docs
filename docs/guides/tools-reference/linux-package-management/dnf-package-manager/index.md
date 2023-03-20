@@ -1,8 +1,5 @@
 ---
 slug: dnf-package-manager
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). This guide walks you through the core features of DNF and common commands for using DNF to install, upgrade, and remove packages."
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','centos','fedora']
@@ -11,17 +8,14 @@ published: 2021-05-21
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
-h1_title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
+title_meta: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 aliases: ['/guides/how-to-use-yum-dnf/','/guides/how-to-use-dnf/']
 external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'
 - '[DNF Command Reference](https://dnf.readthedocs.io/en/latest/command_ref.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 *Dandified YUM*, or simply **DNF**, is the successor to the popular *Yellowdog Updater, Modified* package manager, more commonly known as **YUM**. Both DNF and YUM provide a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API.
@@ -40,11 +34,11 @@ This guide aims to familiarize you with the DNF commands you are most likely to 
 
 Before running the commands within this guide, you will need:
 
-1. **A system running on CentOS/RHEL 8, AlmaLinux 8, Rocky Linux 8, Fedora 22, or later versions of these distributions.** Other Linux distributions that employ the DNF package manager can also be used. Review the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide if you do not yet have a compatible system.
+1. **A system running on CentOS/RHEL 8, AlmaLinux 8, Rocky Linux 8, Fedora 22, or later versions of these distributions.** Other Linux distributions that employ the DNF package manager can also be used. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -130,7 +124,7 @@ DNF provides numerous options in common between many of its commands. The exampl
 
             sudo dnf list recent
 
-    -   You can also give the name of a package along with the `--showduplicates` flag. This gives a list of available versions of the package. You can see a version of this command used in the [Useful Options](/docs/guides/how-to-use-dnf/#useful-options) section above. The example below shows all of the versions of Git available in DNF's repositories:
+    -   You can also give the name of a package along with the `--showduplicates` flag. This gives a list of available versions of the package. You can see a version of this command used in the [Useful Options](/docs/guides/dnf-package-manager/#useful-options) section above. The example below shows all of the versions of Git available in DNF's repositories:
 
             sudo dnf list git --showduplicates
 
@@ -164,23 +158,23 @@ DNF has a supplemental package, [DNF Automatic](https://dnf.readthedocs.io/en/la
 
     The following presents example values for some configuration options. It is recommended that you change these values.
 
-    {{< file "/etc/dnf/automatic.conf" >}}
-[commands]
-#
-upgrade_type=default
-#
-download_update=yes
-# ...
-apply_updates=yes
-#
-emit_via=motd
-{{< /file >}}
+    ```file {title="/etc/dnf/automatic.conf"}
+    [commands]
+    #
+    upgrade_type=default
+    #
+    download_update=yes
+    # ...
+    apply_updates=yes
+    #
+    emit_via=motd
+    ```
 
     You can switch `upgrade_type` to `security` if you want to limit the updates made to only those impacting system security. With `emit_via` set to `motd`, DNF Automatic's reports will be stored in the `/etc/motd` file.
 
-   {{< note >}}
-The `email` option can be used here, but that the email can only be delivered to a local user unless you have configured an SMTP server.
-{{< /note >}}
+    {{< note >}}
+    The `email` option can be used here, but that the email can only be delivered to a local user unless you have configured an SMTP server.
+    {{< /note >}}
 
 1.  You can start the DNF Automatic timer by running the following command:
 

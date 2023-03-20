@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 9.10 (Karmic) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "karmic"]
 tags: ["wiki","ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
 Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/development/version-control/) system of your choice, though this guide assumes that you use [git](/docs/guides/how-to-configure-git/).
 
-This guide is written for Ubuntu 9.10 (Karmic), and assumes that you've followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/) and a working installation of [git](/docs/guides/how-to-configure-git/).
+This guide is written for Ubuntu 9.10 (Karmic), and assumes that you've followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/) and a working installation of [git](/docs/guides/how-to-configure-git/).
 
 ## Installing Ikiwiki
 

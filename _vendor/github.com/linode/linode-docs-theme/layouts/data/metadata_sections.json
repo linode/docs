@@ -7,8 +7,10 @@
 {{- with .Resources.GetMatch "*feature*.svg" -}}
 {{- $thumb = . -}}
 {{- else -}}
-{{- $img := partial "funcs/get-bundle-image.html" . -}}
-{{- $thumb = $img.Fill "640x400" -}}
+{{- $thumb = partial "funcs/get-bundle-image.html" . -}}
+{{- if ne $thumb.MediaType.SubType "svg" -}}
+{{- $thumb = $thumb.Fill "640x400" -}}
+{{- end -}}
 {{- end -}}
 {{- $objectID := (printf "%s" (replace .SectionsPath "/" " > ")) -}}
 {{-  $objectID =  $objectID | strings.TrimRight " >" -}}

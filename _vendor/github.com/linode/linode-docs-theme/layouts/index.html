@@ -21,9 +21,9 @@
   {{/* We don't have a search index for the developer section, so create the data structure here. */}}
   {{ $developerItems := slice }}
   {{ $developerItems = $developerItems | append (dict "href" "/docs/api/" "linkTitle" "API Reference" "svgRef" "#icon-developer--api-reference" ) }}
-  {{ $developerItems = $developerItems | append (dict "href" "/docs/guides/platform/api/" "linkTitle" "API Guides" "svgRef" "#icon-developer--api-guides" ) }}
+  {{ $developerItems = $developerItems | append (dict "href" "/docs/products/tools/api/guides/" "linkTitle" "API Guides" "svgRef" "#icon-developer--api-guides" ) }}
   {{ $developerItems = $developerItems | append (dict "href" "/docs/products/tools/cli/" "linkTitle" "CLI" "svgRef" "#icon-developer--cli" ) }}
-  {{ $developerItems = $developerItems | append (dict "href" "https://developers.linode.com/changelog/" "linkTitle" "Changelog" "svgRef" "#icon-developer--changelog" ) }}
+  {{ $developerItems = $developerItems | append (dict "href" "/docs/release-notes/" "linkTitle" "Release Notes" "svgRef" "#icon-developer--changelog" ) }}
   {{ $developerItems = $developerItems | append (dict "href" "https://developers.linode.com/libraries-tools" "linkTitle" "Resource & Tools" "svgRef" "#icon-developer--resources-and-tools" ) }}
 
   {{/* Load the second level product sections statically which makes the home page load faster. */}}
@@ -168,8 +168,8 @@
       <div>
         <div
           class="mt-6 md:space-x-4 space-y-4 md:space-y-0 w-full flex flex-col md:flex-row">
-          {{ template "home/hero/link" (dict "href" "/docs/guides/getting-started/" "text" "Getting Started with Linode") }}
-          {{ template "home/hero/link" (dict "href" "/docs/guides/getting-started-with-the-linode-api/" "text" "Getting Started with the Linode API") }}
+          {{ template "home/hero/link" (dict "href" "/docs/products/platform/get-started/" "text" "Getting Started with Linode") }}
+          {{ template "home/hero/link" (dict "href" "/docs/products/tools/api/get-started/" "text" "Getting Started with the Linode API") }}
           {{ template "home/hero/link" (dict "href" "/docs/guides/quick-answers/" "text" "Quick Answer Guides") }}
         </div>
       </div>

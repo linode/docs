@@ -1,8 +1,5 @@
 ---
 slug: modify-file-permissions-with-chmod
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to modify file and directory permissions using chmod for owner, group, and others in Unix systems.'
 keywords: ["chmod", "commands", "reference", "file permissions"]
 tags: ["security","linux"]
@@ -15,8 +12,9 @@ modified_by:
 published: 2010-07-01
 title: Modify File Permissions with chmod
 external_resources:
- - '[Manage File Permission with Users and Groups](/docs/tools-reference/linux-users-and-groups)'
- - '[Administration Basics](/docs/using-linux/administration-basics)'
+ - '[Manage File Permission with Users and Groups](/docs/guides/linux-users-and-groups/)'
+ - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'
+authors: ["Linode"]
 ---
 
 ![Modify File Permissions with chmod](modify_file_permissions_with_chmod_smg.png "Modify File Permissions with chmod")

@@ -1,8 +1,5 @@
 ---
 slug: sql-commands
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  email: docs@linode.com
 description: 'SQL commands can be used across relational database systems like MySQL and PostgreSQL. Learn the fundamental SQL commands used to insert and modify data in a SQL table.'
 keywords: ['create table', 'alter table', 'drop table', 'ddl commands']
 tags: ['MySQL']
@@ -10,12 +7,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Linode
-title: "SQL Commands: Getting Started"
-h1_title: "Introduction to SQL Commands"
-enable_h1: true
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
+title: "Introduction to SQL Commands"
+title_meta: "SQL Commands: Getting Started"
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 In today’s world of increased digitization, big data, and cloud computing, data management is amongst the most important skills a software engineer can have. To this end, one of the most powerful database tools is SQL.
@@ -57,11 +51,11 @@ From the command line, use the `CREATE TABLE` command followed by the name of th
 
 The parenthesis encloses the table data, starting with a column that labels each row’s data. The next column indicates the data type that this row holds. `CHAR` indicates a fixed-length string data type and `VARCHAR` indicates a variable-length string data type. In the final column, the `NOT NULL` attribute ensures that a record cannot be added to the table if any of the `NOT NULL` columns do not have data associated with them.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `CREATE TABLE` statement is delimited with a trailing semicolon (;), although it is possible that some commercial relational database systems may not require that delimiter.
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Unless mentioned otherwise, all the database commands demonstrated in this guide work well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}
 
@@ -82,15 +76,15 @@ The command above follows a similar syntax as before. It requires the table name
 
     DROP TABLE CourseTaken;
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Dropping a table deletes all the data in the table.
-{{< /caution >}}
+{{< /note >}}
 
 ### How to Insert Data Into a Table in SQL
 
 To insert the data into the table, use the SQL `INSERT INTO` statement. To call this command, provide the table name and the list of row names (in parenthesis) that you want to insert the data into. This is followed by the `VALUES` keyword and the actual values (in parenthesis) that you wish to insert. The values are inserted into the rows in order of which they are called.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 - SQL commands can be broken up across lines. The end of the SQL command is delimited by a semicolon (`;`).
 - The character data is delimited by an opening and closing apostrophe (`‘`), whereas numeric data is not.
 {{< /note >}}
@@ -115,7 +109,7 @@ Similarly, you can also insert multiple rows into the table in a single SQL quer
     ('111111111', 'ENG101', 95, 2022),
     ('222222222', 'CSC101', 100, 2022);
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can use the `INSERT INTO` command similarly in **PostgreSQL** to add rows to the table. Make sure the values match the order of the columns in the table definition.
 
     INSERT INTO student VALUES ('111111111', 'Smith', 'John');
@@ -127,9 +121,9 @@ To delete data from a table, use the SQL `DELETE FROM` statement. Use the `WHERE
 
 For example, the following command deletes a record from the `CourseTaken` table with **SSNumber** `333333333` and **CourseId** `POL101`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you omit the `WHERE` clause, all the records in the table are deleted.
-{{< /caution >}}
+{{< /note >}}
 
     DELETE FROM CourseTaken WHERE SSNumber = '333333333' AND CourseId = 'POL101';
 
@@ -183,7 +177,7 @@ The true power of relational database systems is in its ability to retrieve info
 +-----------+----------+-----------+----------+
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In the above command, the two tables, `Student` and `CourseTaken` are joined to retrieve the required information. The column names in the `SELECT` and `WHERE` clauses are prefixed with their table names for clarity. However, in the case of the `SSNumber` column, we are required to specify the appropriate table name prefixes, since both tables share the same column name. The `FROM` clause indicates the tables that are being used in this query.
 {{< /note >}}
 
@@ -228,7 +222,7 @@ In the above command, the two tables, `Student` and `CourseTaken` are joined to 
 
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `AND` clause in the command above allows you to filter the results by a conditional grade score test.
 {{< /note >}}
 
