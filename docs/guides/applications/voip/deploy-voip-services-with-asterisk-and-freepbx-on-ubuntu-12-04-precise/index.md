@@ -1,9 +1,6 @@
 ---
 slug: deploy-voip-services-with-asterisk-and-freepbx-on-ubuntu-12-04-precise
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide will show you how to install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange, also known as a PBX, on Ubuntu 12.04'
 keywords: ["ubuntu 12.04", "asterisk", "freepbx", "pbx", "voip", "google voice", "grub", "lamp stack", "apache", "php"]
 tags: ["ubuntu", "lamp"]
@@ -25,6 +22,7 @@ relations:
         key: asterisk-freepbx-telephone
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 Asterisk is an open-source telephone solution that runs over the Internet instead of running through copper lines. It offers a variety of features such as voicemail and conference calling, much like a landline telephone can.
@@ -33,8 +31,8 @@ For this guide we will install Asterisk from source rather than from Ubuntu's re
 
 **Please note:** Because of the special configuration options required for this setup, you should not run other services on the Linode you intend to use Asterisk on. It is also worth noting that this guide will walk you through using PV-GRUB. Any alterations to the steps in this guide will fall outside the scope of support.
 
- {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Terms
@@ -52,9 +50,9 @@ The diagram below shows the relationship between each of the components that all
 
 ## Prerequisites
 
-Before you begin, you need to make sure a few things are in order. We assume you have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and have set the hostname and timezone, and have configured networking for the Linode. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/dns-guides/introduction-to-dns#types-of-dns-records) for your domain.
+Before you begin, you need to make sure a few things are in order. We assume you have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and have set the hostname and timezone, and have configured networking for the Linode. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/guides/dns-overview/#types-of-dns-records) for your domain.
 
-There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document. If you want a more detailed explanation, you may wish to take a look at the in-depth information contained in the [PV-GRUB guide](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
+There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document. If you want a more detailed explanation, you may wish to take a look at the in-depth information contained in the [PV-GRUB guide](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/).
 
 This guide includes instructions for integrating a Google Voice account. You will need a Google account that's already configured with a [Google Voice](https://www.google.com/voice) number to complete these steps.
 
@@ -128,11 +126,11 @@ You will now need to log in to the Linode Manager in order to change your Linode
 1.  Navigate to the **Dashboard** page of the Linode you are going to use for Asterisk.
 2.  Click the profile you are currently using and select **pv-grub-x86\_64** (or **pv-grub-x86\_32** if you are using a 32 bit system) from the kernel drop down.
 3.  Save this configuration profile. You may wish to change its name to indicate that this is no longer a default profile.
-4.  Reboot your system to make sure that these changes are applied. You will need to do this before you can proceed. It is a good idea to watch the shutdown and reboot phases via [LISH](/docs/guides/lish/) to see if there are any errors.
+4.  Reboot your system to make sure that these changes are applied. You will need to do this before you can proceed. It is a good idea to watch the shutdown and reboot phases via [LISH](/docs/products/compute/compute-instances/guides/lish/) to see if there are any errors.
 
 ### Troubleshoot
 
-It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [LISH](/docs/guides/lish/). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
+It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [LISH](/docs/products/compute/compute-instances/guides/lish/). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
 
 ## Install Asterisk
 
@@ -285,7 +283,7 @@ export APACHE_RUN_USER=asterisk
         su - asterisk
         cd /opt/freepbx/
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/downloads/freepbx-distro/) for the latest build of FreePBX.
 {{< /note >}}
 
@@ -346,7 +344,7 @@ From your web browser, go to your FreePBX web interface.
 3.  Select the **Upgrade All** link. Under the Connectivity section, select **Google Voice/Chan Motif**. If there are other modules on this list you want to install, select them now.
 4.  When finished, press the **Process** button, and then **Confirm**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If downloading modules fails, from the terminal run this command from the terminal: `su asterisk -c 'mkdir /var/www/html/admin/modules/_cache'`. This should resolve the issue.
 {{< /note >}}
 

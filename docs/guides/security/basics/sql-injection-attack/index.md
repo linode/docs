@@ -1,24 +1,20 @@
 ---
 slug: sql-injection-attack
-author:
-  name: Jeff Novotny
 description: 'SQL injection is a type of attack that alters SQL queries. Learn about the different types of SQL injection attacks, how to detect them, and prevention tips.'
 keywords: ['sql injection attack','sql injection example','what is a sql injection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-03
 modified_by:
   name: Linode
-title: "What is SQL Injection? Attack Examples & Prevention Tips"
-h1_title: "SQL Injection Attack: What It Is and How to Prevent It"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "SQL Injection Attack: What It Is and How to Prevent It"
+title_meta: "What is SQL Injection? Attack Examples & Prevention Tips"
 external_resources:
 - '[Open Web Application Security Project website](https://owasp.org/)'
 - '[Wikipedia SQL Injection page](https://en.wikipedia.org/wiki/SQL_injection)'
 - '[Netsparker SQL Injection Cheat Sheet](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet)'
 - '[OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)'
 - '[OWASP Security Code Review guide](https://owasp.org/www-project-code-review-guide/)'
+authors: ["Jeff Novotny"]
 ---
 
 Security is an important issue for all web applications and databases, especially those using the *Structured Query Language* (SQL). Although criminals most frequently focus on high-value targets, even small online applications can be victimized. When important information is stolen or an application is compromised, the financial, logistical, and reputation costs can be severe. Criminals and hackers frequently use a technique named *SQL Injection* (SQLi) to gain unauthorized entry to a remote database. This guide describes a SQL injection attack and explains how it is used. It also discusses how to detect SQLi vulnerabilities and how to defend against them.
@@ -46,7 +42,7 @@ No matter the purpose of the attack, it can inflict tremendous consequences upon
 
 Any organization can be targeted, even personal websites and small forums. According to the [*Wikipedia SQL Injection page*](https://en.wikipedia.org/wiki/SQL_injection), the average web application is attacked around four times per month. New exploits are always being developed, and it is difficult to design a truly bulletproof site. However, many hackers target sites indiscriminately using brute force. A database that has been secured through a few basic techniques is much more secure and difficult to compromise.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is intended as an introduction to SQL injections and does not cover every possible type of attack. [Web security](/docs/guides/software-security-best-practices/) is a very complex field, and many possible attacks demand careful consideration. You should consult with web security professionals before launching any application that stores private personal or financial information.
 {{< /note >}}
 
@@ -94,7 +90,7 @@ Some out-of-band attacks might only work if certain features are enabled on the 
 
 Many SQL injection attacks take advantage of SQL keywords and syntax. The object is to use valid queries to get the database to operate in an undesirable manner. The particular details of these dangerous commands vary between the various RDBMS applications. However, most attacks use a few basic methods. The following SQL injection examples demonstrate some commonly used approaches.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Although the core SQL syntax is standardized, the implementation varies between RDBMS applications. The different database applications also offer unique enhancements and features. These might be more or less secure. Some of the following attacks might work on some databases and not others. Consult the database documentation for more details.
 {{< /note >}}
 

@@ -338,8 +338,15 @@ This template includes common API logic and functions.
   {{ end }}
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
-    {{ $props = $s.Items.Value.Properties }}
-    {{ $m.Set "ValueType" $s.Items.Value.Type }}
+    {{ $arrschema := $s.Items.Value }}
+    {{ $props = $arrschema.Properties }}
+    {{ $m.Set "ValueType" $arrschema.Type }}
+    {{ range $arrschema.AllOf }}
+      {{ range $k, $v := .Value.Properties }}
+        {{ $dollar.Set "dot" $v }}
+        {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" (path.Join $path $k) "isProperty" true "ordinal" $.ordinal)) }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 
   {{ range $k, $v := $props }}
@@ -573,12 +580,12 @@ This template includes common API logic and functions.
     {{ $schema := partial "openapi3/schema-to-map" (dict "dollar" $) }}
     {{ $body := "{}" }}
     {{ with $schema.Example }}
-      {{ $body = . | jsonify (dict "indent" "  ") }}
+      {{ $body = . | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
     {{ else }}
       {{ $properties := $schema.Properties }}
       {{ with $properties }}
         {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
-        {{ $body = $v | jsonify (dict "indent" "  ") }}
+        {{ $body = $v | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
       {{ end }}
     {{ end }}
     {{ $response.Set "body" $body }}

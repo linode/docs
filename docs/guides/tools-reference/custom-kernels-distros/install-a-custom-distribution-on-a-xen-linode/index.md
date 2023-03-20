@@ -1,9 +1,6 @@
 ---
 slug: install-a-custom-distribution-on-a-xen-linode
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 published: 2009-08-18
 description: 'How to run a custom Linux distribution or pre-built Linux appliance on your Linode.'
 keywords: ["custom distro", "custom distribution", "advanced Linux"]
@@ -13,21 +10,22 @@ modified_by:
   name: Linode
 modified: 2020-12-01
 title: Install a Custom Distribution on a Xen Linode
+authors: ["Linode"]
 ---
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
 
 {{< content "all-linodes-kvm-shortguide" >}}
 
-{{< note >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/guides/install-a-custom-distribution-on-a-linode/).
+{{< note respectIndent=false >}}
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
 
 We'll use a free virtualization suite called [VirtualBox](https://www.virtualbox.org/) to install a Linux distribution locally, but you can also use another virtualization package, such as VMware or Parallels. If you already have a Linux virtual machine that you'd like to run on your Linode, skip to [Booting the Virtual Machine with Finnix](#booting-the-virtual-machine-with-finnix) .
 
- {{< note >}}
+{{< note respectIndent=false >}}
 We're using Ubuntu 12.04 as the guest operating system in this guide, but you can install virtually any Linux distribution.
 {{< /note >}}
 
@@ -77,7 +75,7 @@ Here's how to get started:
 15. Click the CD icon, and then select **Choose a virtual CD/DVD disk file**.
 16. Select your Linux distribution install image, and then click **Open**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you haven't already downloaded the image of the Linux distribution to your desktop computer, do that now.
 {{< /note >}}
 
@@ -90,7 +88,7 @@ If you haven't already downloaded the image of the Linux distribution to your de
 20. You should see the *Oracle VM VirtualBox Manager* window again. Click **Start** to turn on the virtual machine.
 21. Follow the distribution's installation instructions. When prompted to partition the disk, create a single partition for `/` and a small partition for `swap`, as shown below.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will need to ensure that your distribution's installer configures your partitions without LVM (Logical Volume Management), as disks created with LVM cannot be transferred to your Linode.
 {{< /note >}}
 
@@ -152,7 +150,7 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 11. Next, select the **Rescue** sub-tab, which is located on the same row as the **Dashboard** tab. Select **Reboot into Rescue Mode**. Monitor the **Host Job Queue** progress bar for the system shutdown and the system boot. It should take under a minute.
 
-12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/guides/lish/).
+12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
 ## Starting SSH in Finnix
 
@@ -178,7 +176,7 @@ The steps below will walk you through transferring your new disk from your local
 
         mount /media/sda1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 /media/sda1 is typically where the disk lives, but it may be in a different directory path or filename depending on your configuration.
 {{< /note >}}
 
@@ -186,7 +184,7 @@ The steps below will walk you through transferring your new disk from your local
 
         rsync -avz /media/sda1/ root@12.34.56.78:/media/xvda/
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can monitor the progress of your transfer by running the following command at the Lish prompt on your Linode.
 
 watch df -h
@@ -213,6 +211,6 @@ proc /proc proc defaults 0 0
 ~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
 
 Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

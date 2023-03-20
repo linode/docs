@@ -1,8 +1,5 @@
 ---
 slug: create-a-simple-microsite
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Combine the capabilities of the Akamai and Linode platforms to create a complete end-to-end solution for a simple microsite.'
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2022-10-13
 title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
+authors: ["Linode"]
 ---
 
 This use case combines Linode's and Akamai's capabilities to create a complete end-to-end solution for a simple microsite. To build this application we'll use Linode origin servers and an Akamai delivery product.
@@ -69,10 +67,10 @@ To avoid an unexpected bill make sure to delete this Linode Compute Instance onc
 
 1.  Enter required information under the **NodeJS Setup** section. For more information and instructions refer to [Guides - Deploying Node.js through the Linode Marketplace](/docs/products/tools/marketplace/guides/nodejs/).
 
-    {{< note >}}
-This guide involves configuring DNS settings and SSL certificates for your domain. These steps can be automated during the Marketplace App installation process by providing a Linode [API Token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token) during setup.
+    {{< note respectIndent=false >}}
+This guide involves configuring DNS settings and SSL certificates for your domain. These steps can be automated during the Marketplace App installation process by providing a Linode [API Token](/docs/products/tools/api/get-started/#create-an-api-token) during setup.
 
-During installation, the API Token is used to generate a domain zone and records using Linode [DNS Manager](/docs/guides/dns-manager). The Node.js Marketplace App then utilizes [certbot](https://certbot.eff.org/) to generate SSL certificates for your domain and subdomain.
+During installation, the API Token is used to generate a domain zone and records using Linode [DNS Manager](/docs/products/networking/dns-manager/). The Node.js Marketplace App then utilizes [certbot](https://certbot.eff.org/) to generate SSL certificates for your domain and subdomain.
 
 If you plan to utilize Linode DNS Manager, we recommend taking steps now familiarize yourself with our [DNS Manager](/docs/products/networking/dns-manager/) guide.
     {{< /note >}}
@@ -93,18 +91,18 @@ If you plan to utilize Linode DNS Manager, we recommend taking steps now familia
 
 1.  [Verify Marketplace App installation](/docs/products/tools/marketplace/get-started/#verify-installation) before continuing with this guide. It may take several minutes for installation to complete.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also create a Linode Compute instance using these options:
 
-* Create a new Linux machine and install and set up a custom web server. For more information and instructions, refer to [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/).
+* Create a new Linux machine and install and set up a custom web server. For more information and instructions, refer to [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/).
 
 * Select your preferred web server from Linode Marketplace to get a fully configured web server. For more information and instructions, refer to [Marketplace Apps - Get Started](/docs/products/tools/marketplace/get-started/).
 
 * To learn how to manually get an SSL certificate for your web server, refer to the [Enabling HTTPS Using Certbot with NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu) guide.
 {{< /note >}}
 
-    {{< note >}}
-The steps in this example reference the Linode and Akamai user interfaces. You can also perform these tasks using [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/), the management [API](/docs/guides/getting-started-with-the-linode-api/), or [CLI](/docs/products/tools/cli/get-started/).
+    {{< note respectIndent=false >}}
+The steps in this example reference the Linode and Akamai user interfaces. You can also perform these tasks using [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/), the management [API](/docs/products/tools/api/get-started/), or [CLI](/docs/products/tools/cli/get-started/).
 {{< /note >}}
 
 ## Create an Ion Property
@@ -149,7 +147,7 @@ server {
 
 1.  Next, update your origin certificate to include the Origin hostname and reload your web server.
 
-    If using the Node.js Marketplace App, access your origin server via [LISH](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connection, replacing the example hostnames with your own:
+    If using the Node.js Marketplace App, access your origin server via [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) connection, replacing the example hostnames with your own:
 
         certbot --expand -d www.test.com -d origin-0361ece-www.test.com
 
@@ -175,7 +173,7 @@ server {
     | --------------- | ------------ | --------------- | ---------------------- |
     | `www.test.com`  | TXT          | `_acme-challenge` | **Enter Record Value** |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that there no extra empty spaces when entering the Record Value.
     {{< /note >}}
 
@@ -193,7 +191,7 @@ Ensure that there no extra empty spaces when entering the Record Value.
 
 1.  After you complete the test, remove the line you added to your local hosts file and click **Next**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also test with staging IP addresses for your Edge hostname. For example, if your edge hostname is `www.test.com.edgesuite.net`, its staging hostname is `www.test.com.edgesuite-staging.net`.
 
 Run the `nslookup` or `dig` commands on the staging hostname as shown below.
@@ -241,19 +239,19 @@ If you want to use a solution such as [GlusterFS](https://www.gluster.org/), ins
 
 1.  Use the Linode cloning feature to create another Linode origin server in the same region.
 
-    For instructions, refer to [Cloning a Linode](/docs/guides/clone-your-linode/).
+    For instructions, refer to [Cloning a Linode](/docs/products/compute/compute-instances/guides/clone-instance/).
 
 1.  Under **Select Linode to Clone From**, click the Linode you created for the web server in [Create a Linode](#create-a-linode).
 
 1.  Select the same Linode Plan option you previously selected and click **Create Linode**.
 
-1.  [Add a Private IPv4 Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) to the cloned Linode.
+1.  [Add a Private IPv4 Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) to the cloned Linode.
 
 1.  Select **Power On** for the cloned Linode after creation is complete.
 
 1.  Ensure that the web server is running on your cloned Linode.
 
-    If using the Node.js Marketplace App, [LISH](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) into the cloned Linode and start the Node.js server as a background process:
+    If using the Node.js Marketplace App, [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) into the cloned Linode and start the Node.js server as a background process:
 
         node /opt/nodejs/hello.js &
 
@@ -266,7 +264,7 @@ If you want to use a solution such as [GlusterFS](https://www.gluster.org/), ins
 Linode NodeBalancers distribute user requests between compute instances to improve capacity, performance, and availability. For more information, refer to the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 
 {{< note >}}
-Before you start, make sure that each of your origin servers has a private IPv4 address. For more information and instructions on how to add private IPv4 addresses to your origin servers, refer to the [Managing IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide.
+Before you start, make sure that each of your origin servers has a private IPv4 address. For more information and instructions on how to add private IPv4 addresses to your origin servers, refer to the [Managing IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide.
 {{< /note >}}
 
 1.  Log in to the [Linode Cloud Manager](https://login.linode.com/login).
@@ -281,7 +279,7 @@ Before you start, make sure that each of your origin servers has a private IPv4 
 
 1.  In the **SSL Certificate** section, paste the PEM-formatted contents of your web server SSL certificate.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If using the Node.js Marketplace App, certificate files are located in the `/etc/letsencrypt/live/domain/` directory on your origin servers. Use the contents `fullchain.pem` and `privkey.pem` when configuring your NodeBalancer.
 
 Otherwise, to learn how to get an SSL certificate, refer to the [Enabling HTTPS Using Certbot with NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu) guide.
@@ -293,7 +291,7 @@ Otherwise, to learn how to get an SSL certificate, refer to the [Enabling HTTPS 
 
     ![NodeBalancer Port Configuration](portConfiguration.png "NodeBalancer Port Configuration")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To enable [Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) for SSL/TLS connections, follow the instructions in the [NodeBalancer SSL Configuration](/docs/products/networking/nodebalancers/guides/ssl-termination/#diffie-hellman-parameters) guide.
 
 If using the Node.js Marketplace app, Diffie-Hellman parameters are located on the Linode origin server in the `/etc/letsencrypt/ssl-dhparams.pem` file by default.
@@ -303,7 +301,7 @@ If using the Node.js Marketplace app, Diffie-Hellman parameters are located on t
 
     ![NodeBalancer Active Health Checks Configuration](activeHealthCheck.png "NodeBalancer Active Health Checks Configuration")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure all the origin servers listen to HTTP, not HTTPS, otherwise the HTTP Status option will not work.
     {{< /note >}}
 
@@ -331,7 +329,7 @@ Make sure all the origin servers listen to HTTP, not HTTPS, otherwise the HTTP S
     | ----------------------------- | ------------| ------------------ | ----------- |
     | `test.com`                    | A/AAAA      | `origin-0361ece-www` | 203.0.113.2 |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on configuration options, see the [TLS/SSL Termination on NodeBalancers](/docs/products/networking/nodebalancers/guides/ssl-termination/) guide.
 {{< /note >}}
 

@@ -1,15 +1,10 @@
 ---
 slug: setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Follow these instructions to launch a SOCKS server on your computer and browse the web securely using your Linode.'
 keywords: ["socks", "proxy", "socks proxy", "tunnel", "tunnelling"]
 tags: ["networking","ssh","security","proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/','/networking/socks-proxy/']
-contributor:
-    name: Arnaldo Ariel Arrieta
 modified: 2014-02-17
 modified_by:
   name: Linode
@@ -17,6 +12,7 @@ published: 2014-02-17
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
+authors: ["Arnaldo Ariel Arrieta"]
 ---
 
 ![SSH Tunnel for Safe Browsing](Setting_up_an_SSH_Tunnel_with_Your_Linode_for_Safe_Browsing_smg.jpg)
@@ -32,7 +28,7 @@ It works by launching a SOCKS proxy server on your computer using SSH. It will l
 -   A Linode running your favorite GNU/Linux flavor.
 -   The SSH service running in your Linode, with the forwarding option enabled (it is enabled by default).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If it is disabled, look for the parameter `AllowTcpForwarding no` in your server's **/etc/ssh/sshd\_config file**, and change it to **yes** before restarting the service.
 {{< /note >}}
 
@@ -49,7 +45,7 @@ The first step is to launch the SOCKS server and establish a connection to your 
 
         ssh -D 12345 user@host.domain
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 **-D 12345** tells SSH to run the SOCKS server on port 12345.
 
 You can choose any port number greater than 1024. Lower numbers could be used but you will need to log in as root, and make sure the port is not in use by another service.
@@ -122,7 +118,7 @@ Keep these considerations in mind when you use SSH tunneling.
     6.  Leave the `about:config window` by typing any URL in the location bar or closing Firefox.
 
 -   If the access to SSH is blocked in the public network you are using, it will not be possible to establish the tunnel. A workaround for this is to run your SSH server on a different port, more likely to be open; for example port 80 (HTTP).
--   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the [Linode Shell from the web](/docs/guides/lish/#using-a-web-browser).
+-   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the [Linode Shell from the web](/docs/products/compute/compute-instances/guides/lish/#using-a-web-browser).
 -   Sometimes, the traffic through the tunnel could be a bit slower than browsing the web without it; but remember, it's a small price to pay when your privacy is at risk.
 -   This is a simple and quick way to establish a secure connection for web browsing, a kind of “poor man's VPN” solution.
 -   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of our [OpenVPN](/docs/networking/vpn/) guides for instructions about that topic.

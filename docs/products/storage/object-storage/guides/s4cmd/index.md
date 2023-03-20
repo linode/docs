@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using s4cmd with Object Storage"
 description: "Learn how to use the s4cmd command-line tool with Linode's Object Storage."
+authors: ["Linode"]
 ---
 
 The [s4cmd](https://github.com/bloomreach/s4cmd) software is a command-line tool that can access S3-compatible storage services, such as Linode's Object Storage. It uses the [S3 client](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html) in Amazon's boto3 library. Compared to the popular s3cmd tool, s4cmd is typically much faster but it has less options and is less configurable. For many use cases, the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) is recommended.
@@ -22,11 +20,11 @@ Additional methods of installing s4cmd can be found within the s4cmd Readme file
 
 To access Object Storage buckets and objects, s4cmd needs to know the Access Key and Secret Key to use. By default, s4cmd looks for these credentials in the `~/.s3cfg` file, which is the configuration file that s3cmd uses. If you do not have s3cmd installed and configured, create this file and add the following contents.
 
-{{< file "~/.s3cfg" >}}
+```file {title="~/.s3cfg"}
 [default]
 access_key = YOUR_ACCESS_KEY
 secret_key = YOUR_SECRET_KEY
-{{< /file >}}
+```
 
 Replace `YOUR_ACCESS_KEY` and `YOUR_SECRET_KEY` with the access key and secret key created on your Linode account. If you haven't yet created these credentials, follow the [Managing Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide.
 

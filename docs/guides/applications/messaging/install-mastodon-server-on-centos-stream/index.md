@@ -1,10 +1,6 @@
 ---
 slug: install-mastodon-server-on-centos-stream
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream."
-og_description: "In this tutorial, we'll teach you how to install a Mastodons server instance on CentOS Stream"
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','centos stream']
 tags: ['centos', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +8,8 @@ published: 2021-06-04
 image: MASTODON1.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install a Mastodon Server on CentOS Stream 8"
-h1_title: "Installing a Mastodon Server on CentOS Stream 8"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Install a Mastodon Server on CentOS Stream 8"
+title_meta: "How to Install a Mastodon Server on CentOS Stream 8"
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -34,6 +26,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: CentOS Stream 8
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
@@ -46,9 +39,9 @@ Mastodon servers range in size from small private instances to massive public in
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Complete the steps in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
 
@@ -57,6 +50,10 @@ Mastodon servers range in size from small private instances to massive public in
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activities.
 
     - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
+
+        {{< note respectIndent=false >}}
+This guide uses PostgreSQL database as a backend for Mastodon. You can setup the SMTP server with PostgreSQL database instead of MySQL.
+{{< /note >}}
 
     - Alternatively, you can use a third-party SMTP service. This guide provides instructions for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.
 

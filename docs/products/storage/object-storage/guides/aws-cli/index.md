@@ -1,17 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the AWS CLI with Object Storage"
 description: "Learn how to use the AWS CLI with Linode's S3-compatible Object Storage."
 date: 2022-03-11
+authors: ["Linode"]
 ---
 
 Amazon's [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html) is a command-line tool that can be used to interface with Linode's Object Storage service.
 
-{{<note>}}
+{{< note >}}
 This instructions within this guide use AWS CLI version 2. Earlier versions may not work. If you are using version 1 (or earlier), you may want to uninstall it before continuing. See [Installing, updating, and uninstalling the AWS CLI (version 1)](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-install.html).
-{{</note>}}
+{{< /note >}}
 
 ## Install the AWS CLI
 

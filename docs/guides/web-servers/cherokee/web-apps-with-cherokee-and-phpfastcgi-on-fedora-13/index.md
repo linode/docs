@@ -1,9 +1,6 @@
 ---
 slug: web-apps-with-cherokee-and-phpfastcgi-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to use the fast, flexible, open-source Cherokee web server with PHP-FastCGI to serve dynamic website content on Fedora 13.'
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 tags: ["web server","fedora","php"]
@@ -19,13 +16,14 @@ relations:
         key: cherokee-php-fastcgi
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions. This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Fedora 13.
 
-This document assumes that your system is already running the Cherokee web server. If you haven't already installed Cherokee, please follow our [Fedora 13 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-fedora-13) guide before continuing with these instructions. Please make sure you are logged into your Linode as root via SSH.
+This document assumes that your system is already running the Cherokee web server. If you haven't already installed Cherokee, please follow our [Fedora 13 Cherokee installation](/docs/guides/websites-with-the-cherokee-web-server-on-fedora-13/) guide before continuing with these instructions. Please make sure you are logged into your Linode as root via SSH.
 
 ## Install Required Packages
 

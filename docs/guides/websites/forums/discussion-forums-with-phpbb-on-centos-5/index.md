@@ -1,9 +1,6 @@
 ---
 slug: discussion-forums-with-phpbb-on-centos-5
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Centos 5.'
 keywords: ["phpBB", "forum software", "web applications", "PHP"]
 tags: ["centos"]
@@ -24,11 +21,12 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: CentOS 5
+authors: ["Stan Schwertly"]
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.
 
-For this guide, we'll assume you've already started the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and have a working [LAMP stack](/docs/lamp-guides/) on your Linode. You should be connected to your server via SSH and logged in as root.
+For this guide, we'll assume you've already started the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and have a working [LAMP stack](/docs/lamp-guides/) on your Linode. You should be connected to your server via SSH and logged in as root.
 
 ## Prerequisites
 

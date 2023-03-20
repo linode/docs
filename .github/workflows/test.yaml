@@ -73,9 +73,26 @@ jobs:
       with:
         files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
         version: 2.19.0
-        vale_flags: "--minAlertLevel=error"
+        vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  check-links:
+    name: Check Links (Markdown)
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.11.x'
+        architecture: 'x64'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install python-frontmatter
+    - name: Run tests
+      run: python ./ci/check-links.py ${{ steps.files.outputs.all }}
 
   docs404:
     runs-on: ubuntu-latest

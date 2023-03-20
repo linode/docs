@@ -1,8 +1,5 @@
 ---
 slug: linux-system-administration-basics
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2009-12-13
 title: "Linux System Administration Basics"
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
@@ -38,11 +36,11 @@ Commonly, the Linux administration role typically involves:
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -285,9 +283,9 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
 
-{{< caution >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/guides/set-up-and-secure/) of all additional access that you grant to third parties.
-{{< /caution >}}
+{{< note type="alert" respectIndent=false >}}
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/products/compute/compute-instances/guides/set-up-and-secure/) of all additional access that you grant to third parties.
+{{< /note >}}
 
 ### Upload Files to a Remote Server
 
@@ -309,7 +307,7 @@ The syntax of `scp` follows the form `scp [source] [destination]`. You can copy 
 
 ### Protect Files on a Remote Server
 
-Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Our guide on [access control with user accounts and permissions](/docs/tools-reference/linux-users-and-groups) may provide additional insight.
+Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Our guide on [access control with user accounts and permissions](/docs/guides/linux-users-and-groups/) may provide additional insight.
 
 We suggest the following best practices for maintaining security:
 
@@ -364,7 +362,7 @@ For more information about file system navigation and manipulation, please consi
 
 ## Package Management
 
-Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/using-linux/package-management) guide.
+Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/guides/linux-package-management-overview/) guide.
 
 While these tools provide a number of powerful features, it is easy to look past the benefits of package management. If you install software manually without package management tools, it becomes difficult to keep your system up to date and to manage dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.
 
@@ -566,7 +564,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/guides/how-to-grep-for-text-in-files/).
 
 ### Search and Replace Across a Group of Files
 

@@ -1,22 +1,16 @@
 ---
 slug: how-to-use-shebang-bash-python
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains what a Shebang is and how to use it in a script'
-og_description: 'This guide explains what a Shebang is and how to use it in a script'
 keywords: ['how to use Shebang','Shebang Python','Shebang Bash','what is a Shebang']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-02
 modified_by:
   name: Linode
-title: "How to Use the Shebang in Bash and Python"
-h1_title: "How to Use the Shebang in Bash and Python"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Use the Shebang in Bash and Python"
+title_meta: "How to Use the Shebang in Bash and Python"
 external_resources:
 - '[Wikipedia Shebang page](https://en.wikipedia.org/wiki/Shebang_(Unix))'
+authors: ["Jeff Novotny"]
 ---
 
 A [*Shebang*](https://en.wikipedia.org/wiki/Shebang_(Unix)) directive, which always begins with the sequence `#!`, can sometimes be found on the first line of a Bash or Python script. In a Linux environment, the Shebang functions as an interpreter directive. This guide explains what a Shebang is and what advantages it provides. It also describes how to use a Shebang inside a Bash or Python script.
@@ -69,11 +63,11 @@ The directive `#!/bin/false` is a special Shebang. It immediately exits and retu
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -87,7 +81,7 @@ To ensure the `sh` interpreter always processes a script, no matter what shell i
 
 One common method to use a Shebang is to specify the full path to the interpreter on the first line of the file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In this program, the line `ps h -p $$ -o args=''` prints out the name of the interpreter along with any arguments passed to it.
 {{< /note >}}
 
@@ -104,13 +98,13 @@ To use a Shebang to define a mandatory interpreter for a shell script, follow th
 
 2.  Ensure the file is executable.
 
-    ```code
+    ```command
     chmod +x shebang_absolute
     ```
 
 3.  Execute the file from the same directory. The `sh` interpreter is shown in the output.
 
-    ```code
+    ```command
     ./shebang_absolute
     ```
 
@@ -121,7 +115,7 @@ Interpreter test. The interpreter and arguments are:
 
 4.  Change the first line to `#!/bin/bash` and run the program again. The output now shows `bash` as the interpreter.
 
-    ```code
+    ```command
     ./shebang_absolute
     ```
 
@@ -147,13 +141,13 @@ To use `env` in a Shebang, follow these steps.
 
 2.  Change the file attributes so the file is executable.
 
-    ```code
+    ```command
     chmod +x shebang_env
     ```
 
 3.  Execute the file. Run the command from the same directory as the new file.
 
-    ```code
+    ```command
     ./shebang_env
     ```
 
@@ -166,7 +160,7 @@ sh ./shebang_env
 
 A Shebang can pass through interpreter options. The directive `#!/bin/sh -v` runs the interpreter using the `-v`/verbose option. This option echoes each command to the screen upon execution. This example appends the `-v` option to the Shebang in `shebang_absolute`.
 
-```code
+```command
 ./shebang_absolute
 ```
 
@@ -179,7 +173,7 @@ ps h -p $$ -o args=''
 /bin/bash -v ./shebang_absolute
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the Shebang uses `env`, do not declare the option within the Shebang. Instead, use the declaration `set -v` to set the option on the next line.
 {{< /note >}}
 
@@ -201,13 +195,13 @@ To use a Shebang with a Python script, follow these steps.
 
 2.  Set the execute permission on the file.
 
-    ```code
+    ```command
     chmod +x py_v3.py
     ```
 
 3.  Run the executable file, but do not use the `python3` command. The correct Python interpreter is selected at runtime based on the Shebang.
 
-    ```code
+    ```command
     ./py_v3.py
     ```
 
@@ -228,7 +222,7 @@ This version of Python is:
 
 5.  Set the executable attribute and run the file. The program now displays information about the `python2` interpreter.
 
-    ```code
+    ```command
     chmod +x py_v2.py
     ./py_v2.py
     ```
@@ -245,7 +239,7 @@ Even if a file contains a Shebang, it's still possible to override it from the c
 
 In the following example, `py_v2.py` contains the Shebang directive `#!/usr/bin/env python2`. But if the command `python3 ./py_v2.py` is entered, the `python3` interpreter is used instead.
 
-```code
+```command
 python3 ./py_v2.py
 ```
 

@@ -1,21 +1,18 @@
 ---
 slug: monitor-and-maintain-compute-instance
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide introduces concepts and tools for monitoring and maintaining your server."
 keywords: ["lassie", "monitor", "monitoring", "maintaining", "maintenance"]
 tags: ["cloud manager","monitoring","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/uptime/monitoring/monitoring-and-maintaining-your-server/','/uptime/monitoring-and-maintaining-your-server-classic-manager/','/uptime/monitoring-and-maintaining-your-server-new-manager/','/uptime/monitoring-and-maintaining-your-server/','/monitoring-and-maintaining/','/guides/monitoring-and-maintaining-your-server/']
-modified: 2022-09-26
+modified: 2022-12-06
 modified_by:
   name: Linode
 published: 2012-08-22
-title: "Monitor and Maintain a Linode Compute Instance"
-h1_title: "Monitor and Maintain a Compute Instance"
-enable_h1: true
+title: "Monitor and Maintain a Compute Instance"
+title_meta: "Monitor and Maintain a Linode Compute Instance"
 image: monitor-and-maintain-your-server.png
+authors: ["Linode"]
 ---
 
 Now that your Linode is up and running, it's time to think about monitoring and maintaining your server. This guide introduces the essential tools and skills you'll need to keep your server up to date and minimize downtime. You'll learn how to monitor the availability and performance of your system, manage your logs, and update your server's software.
@@ -36,15 +33,15 @@ Whether you use one Linode or dozens of them, mission-critical servers and servi
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, the [Elastic Stack](/docs/guides/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
--   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/guides/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
--   **Linode Managed**: The [Managed](https://www.linode.com/managed) service lets Linode manage your infrastructure and provides incident response around the clock.
+- **Multiple Servers**: If you run more than one server, the [Elastic Stack](/docs/guides/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/) is an excellent monitoring tool.
+- **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. You could also use a network diagnostic tool like [MTR](/docs/guides/diagnosing-network-issues-with-mtr/) to diagnose and isolate networking errors.
+- **Linode Managed**: The [Managed](https://www.linode.com/managed) service lets Linode manage your infrastructure and provides incident response around the clock.
 
 ### Configure Shutdown Watchdog (Lassie)
 
 Shutdown Watchdog, also known as *Lassie*, is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Lassie is not technically an availability monitoring tool, but it can help get your Linode back online fast if it's accidentally powered off.
 
-To turn Lassie on and off, see the []() guide. Once Lassie is enabled, your Linode will automatically reboot if it is unexpectedly powered off in the future.
+To turn Lassie on and off, see the [Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)](/docs/guides/lassie-shutdown-watchdog/#enable-or-disable-shutdown-watchdog) guide. Once Lassie is enabled, your Linode will automatically reboot if it is unexpectedly powered off in the future.
 
 ## Performance Monitoring
 
@@ -88,14 +85,16 @@ Linux distributions are frequently updated to fix bugs, add new features, and pa
 
 ### Update Installed Packages
 
-You learned about the importance of regularly updating your server's packages in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
+You learned about the importance of regularly updating your server's packages in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
 
 To check for software updates and install them in Ubuntu or Debian, enter the following commands, one by one:
 
-    apt-get update
-    apt-get upgrade --show-upgraded
+```command
+apt-get update
+apt-get upgrade --show-upgraded
+```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/guides/linux-package-management-overview/).
 {{< /note >}}
 
@@ -107,29 +106,31 @@ When you first sign up for Linode and create a virtual server, the Linode Cloud 
 
 To check for a new kernel and start using it on your Linode:
 
-1.  First, check what version kernel your Linode is currently using. Log in to your Linode and execute the following command:
+1. First, check what version kernel your Linode is currently using. Log in to your Linode and execute the following command:
 
-        cat /proc/version
+    ```command
+    cat /proc/version
+    ```
 
-1.  Examine the output and remember the version number:
+1. Examine the output and remember the version number:
 
-      {{< output >}}
-Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9.2 (Debian 4.9.2-10+deb8u1)) #1 SMP Thu Mar 22 02:13:40 UTC 2018
-{{< /output >}}
+    ```output
+    Linux version 4.15.12-x86_64-linode105 (maker@build.linode.com) (gcc version 4.9.2 (Debian 4.9.2-10+deb8u1)) #1 SMP Thu Mar 22 02:13:40 UTC 2018
+    ```
 
-1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
-1.  Click the **Linodes** link in the sidebar.
-1.  Select your Linode. The Linode's details page appears.
-1.  Select the active configuration profile by clicking the **Edit** link, as shown below.
+1. Log in to the [Linode Cloud Manager](https://cloud.linode.com).
+1. Click the **Linodes** link in the sidebar.
+1. Select your Linode. The Linode's details page appears.
+1. Select the active configuration profile by clicking the **Edit** link, as shown below.
 
     ![Selecting the active configuration profile](edit-configuration-menu.png)
 
-1.  From the **Kernel** menu, verify that **GRUB 2** is selected:
+1. From the **Kernel** menu, verify that **GRUB 2** is selected:
 
     ![Selecting the latest kernel](kernel-menu.png)
 
-1.  If you selected a new kernel, click **Submit**. The Linode's dashboard appears.
-1.  Select **Reboot** from the status menu to reboot your Linode and start using the new kernel.
+1. If you selected a new kernel, click **Submit**. The Linode's dashboard appears.
+1. Select **Reboot** from the status menu to reboot your Linode and start using the new kernel.
 
     ![Reboot your Linode](reboot.png)
 
@@ -139,6 +140,6 @@ Linux distributions such as Ubuntu and Fedora use version numbers to identify th
 
 There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server. See our [Upgrading guides](/docs/security/upgrading) for more information.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.
 {{< /note >}}

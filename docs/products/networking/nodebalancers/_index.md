@@ -9,6 +9,7 @@ cascade:
     date: 2020-06-02
     product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
 modified: 2022-08-24
+aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
 **NodeBalancers** are managed *load balancers as a service (LBaaS)*, making load balancing accessible and easy to configure on the Linode Platform. They intelligently distribute incoming requests to multiple backend Compute Instances, so that there's no single point of failure. This enables high availability, horizontal scaling, and A/B testing on any application hosted with Linode.
@@ -19,7 +20,7 @@ In a typical single machine configuration, issues with the machine may cause the
 
 ## Horizontal Scaling
 
-There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/guides/resizing-a-linode/) your Compute Instances. *Horizontal scaling* adds or remove machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
+There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/products/compute/compute-instances/guides/resize/) your Compute Instances. *Horizontal scaling* adds or remove machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
 
 ## Additional Features
 

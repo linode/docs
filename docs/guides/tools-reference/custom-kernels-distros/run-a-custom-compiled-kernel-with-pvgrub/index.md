@@ -1,9 +1,6 @@
 ---
 slug: run-a-custom-compiled-kernel-with-pvgrub
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB.'
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,13 +10,14 @@ modified_by:
   name: Linode
 published: 2010-07-17
 title: 'Run a Custom Compiled Kernel with PV-GRUB'
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}
 
 For some use cases, you may wish to run a custom-compiled Linux kernel on your Linode. This can be useful if you need to enable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels, or when you want to disable features that are compiled into such kernels. For example, some users may desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [running a distribution-supplied kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). Before proceeding with these instructions, you should follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. After doing so, make sure you are logged into your Linode as the "root" user via an SSH session.
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [running a distribution-supplied kernel](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/). Before proceeding with these instructions, you should follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. After doing so, make sure you are logged into your Linode as the "root" user via an SSH session.
 
 ## Prepare the System
 

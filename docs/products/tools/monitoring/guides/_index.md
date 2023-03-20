@@ -9,7 +9,7 @@ tab_group_main:
 
 These introductory guides help you get up and running with monitoring your Linode services.
 
-- [Configure Shutdown Watchdog](/docs/products/tools/monitoring/guides/monitoring-configure-watchdog): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
+- [Configure Shutdown Watchdog](/docs/guides/lassie-shutdown-watchdog/): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
 
 - [Cloud Manager Graphs](/docs/products/tools/monitoring/guides/monitoring-cloud-graphs): Cloud Manager provides several basic graphs to give you a view into the performance of your Linodes.
 

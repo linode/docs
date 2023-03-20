@@ -1,8 +1,5 @@
 ---
 slug: create-limited-developer-account
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: Shows how to create an account with access restrictions for developers and maintainers.
 keywords: ["accounts", "passwords", "linode manager", "manager", "security"]
 tags: ["ssh","linode platform","drupal","security","mysql","wordpress"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2018-07-26
 title: Create an Account for a Developer to Work on Your Linode
 aliases: ['/platform/create-limited-developer-account/']
+authors: ["Edward Angert"]
 ---
 
 One of the most powerful features of Linode's unmanaged service is the amount of control Linode users have over their account and the software installed on their systems. If you're a business owner that does not have expertise with installing or maintaining software on Linux, or if you do have experience with Linux but don't have the time to set up a new server, then contracting with a developer or administrator is a popular way to get your services up and running.
@@ -25,7 +23,7 @@ This guide explains and answers some of the most frequently asked questions abou
 
 For security and privacy, [Linode Support](/docs/guides/support/) is not able to troubleshoot issues related to users and application access. Instead, Linode offers an in-house [Professional Services](https://www.linode.com/products/pro-services/) team that can be hired to help with projects.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The following sections include commands that show how to manipulate credentials on your Linodes, and these commands use `exampleUser` in place of your users' names. Replace `exampleUser` with whatever you would like to name your users.
 {{< /note >}}
 
@@ -41,12 +39,12 @@ If you're not sure whether you're logged in as the account administrator, look f
 
 ### Add a User to the Linode Account
 
-Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/guides/accounts-and-passwords/#users-and-permissions) guide.
+Keep your account administrator credentials secret. When hiring an external individual or agency to work on your site or application, create a *restricted* user and assign specific access to the account. Learn more about how to manage users and permissions and how to recover a lost username in our [Accounts and Passwords](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) guide.
 
 Useful *Global Grants* for a limited access user might include the ability to:
 
 * Add a [NodeBalancer](/docs/products/networking/nodebalancers/).
-* Add [Longview](/longview/) clients.
+* Add [Longview](/docs/guides/what-is-longview/) clients.
 * Use the [DNS Manager](/docs/products/networking/dns-manager/) to add domains.
 * Create [StackScripts](/docs/products/tools/stackscripts/).
 * Create [Images](/docs/products/tools/images/).
@@ -54,7 +52,7 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 ### Revoke a User's Access to the Linode Account
 
-1.  If you suspect that the user may have access to the Linode Manager password, [change that first](/docs/guides/accounts-and-passwords/#changing-your-linode-manager-password).
+1.  If you suspect that the user may have access to the Linode Manager password, [change that first](/docs/products/platform/accounts/guides/manage-users/#changing-your-linode-manager-password).
 
 1.  Log in to the [Linode Manager](https://cloud.linode.com/) and click [**Users and Permissions**](https://cloud.linode.com/account/users) in the **Account** tab. You may be prompted to reauthenticate your password.
 
@@ -64,11 +62,11 @@ Useful *Global Grants* for a limited access user might include the ability to:
 
 The primary method for directly administering files and software on a Linode is through SSH. SSH is a service running on your Linode which listens for and accepts remote terminal connections, and once a connection is opened a user can issue commands to your server. **Your Linode's SSH users are not the same as your Linode Manager users.**
 
-For the steps in this section, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
+For the steps in this section, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance/) to log in to the system as `root`, which is the primary administrative (and most powerful) user on every Linux system. Alternatively, you can login as non-root user with *sudo* (i.e. administrative) permissions.
 
-{{< note >}}
-If you don't remember your root password, [reset it through the Manager](/docs/guides/accounts-and-passwords/#resetting-your-linode-manager-password).
-{{</ note >}}
+{{< note respectIndent=false >}}
+If you don't remember your root password, [reset it through the Manager](/docs/products/platform/accounts/guides/manage-users/#resetting-your-linode-manager-password).
+{{< /note >}}
 
 ### Who Has SSH Access to Your Linode?
 
@@ -78,7 +76,7 @@ Use `getent` to display the list of users. Keep in mind that some applications c
 
 ### Add an SSH User
 
-[Create a limited Linux user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) on your Linode. Set a unique and secure password for this user.
+[Create a limited Linux user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) on your Linode. Set a unique and secure password for this user.
 
 ### Create a User Group with Specific Permissions
 
@@ -100,9 +98,9 @@ If your user should only have access to a specific directory and its subdirector
 
 For some applications, a user may only need to transfer files to or from the server. In this case, create a user that can transfer files through SFTP but that can't access the server with SSH.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The steps in this section disable a user's SSH access. Do not follow the steps in this section for any user who needs SSH access.
-{{< /caution >}}
+{{< /note >}}
 
 Consult our guide to configure this using [SFTP jails on Debian or Ubuntu](/docs/guides/limiting-access-with-sftp-jails-on-debian-and-ubuntu/).
 
@@ -143,7 +141,7 @@ To revoke access to an SSH user, change the password for that user:
 
     passwd exampleUser
 
-In addition to password authentication, a user may rely on [public key authentication](/docs/guides/set-up-and-secure/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
+In addition to password authentication, a user may rely on [public key authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access) to connect via SSH. For any users that you would like to revoke access on, you should also check for the presence of a public key.
 
 These public keys are listed as line in a text file in the user's home directory named `/home/exampleUser/.ssh/authorized_keys`. To see which keys are present, run:
 
@@ -167,9 +165,9 @@ If you instead want to fully remove the file, run:
 
     rm /home/exampleUser/.ssh/authorized_keys
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Files removed in this way can't be easily restored.
-{{< /caution >}}
+{{< /note >}}
 
 ## Add or Remove WordPress Users
 
@@ -237,7 +235,7 @@ While some systems allow the Linux root user to circumvent root database login, 
 
 ### Log in to MySQL
 
-1.  [SSH to your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) as a user with sudo privileges.
+1.  [SSH to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) as a user with sudo privileges.
 
 1.  Connect to MySQL with `sudo`:
 
@@ -292,9 +290,9 @@ While logged in to MySQL:
 
 ### Change the WordPress Database Password in MySQL
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This section changes the WordPress database password itself; not any WordPress user. This may affect your WordPress installation.
-{{< /caution >}}
+{{< /note >}}
 
 If you are only trying to change a WordPress user's login information, see the [WordPress Users](#wordpress-users) section. It is rare that anyone should need to modify the database password except in the case of a WordPress migration. Otherwise, it is not likely that you need to follow this section.
 

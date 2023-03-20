@@ -464,6 +464,7 @@ export function newSearchExplorerController(searchConfig) {
 				}
 
 				const nodes = this.sections.concat(this.pages);
+
 				nodes.sort(itemsComparer);
 
 				return nodes;

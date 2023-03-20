@@ -1,23 +1,16 @@
 ---
 slug: getting-started-appwrite
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
-og_description: "Appwrite is an open source BaaS platform for app development. This guide walks you through the installation and basic setup of an Appwrite instance."
 keywords: ['install appwrite','appwrite docs','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-03
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Appwrite as a Backend Server"
-h1_title: "Getting Started with Appwrite as a Backend Server"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Appwrite Docs: Installation](https://appwrite.io/docs/installation)'
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Appwrite is an open source platform for quickly developing RESTful backend services. It is an ideal solution for reducing the time you spend developing repetitive APIs, and instead setting your focus on the frontend. Appwrite seamlessly runs alongside your other backend services, making it an adaptable solution that fits into an existing application or platform.
@@ -26,21 +19,21 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system:
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt update && sudo apt upgrade
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -84,17 +77,17 @@ The first step is to install Docker, which is used to both install and run your 
 
 1.  Install the Docker Compose plugin using your distribution's package manager.
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt install docker-compose-plugin
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf install docker-compose-plugin
     ```
 
 1.  You can verify your Docker installation by checking the version. Your version may not match the one shown below, but that's fine, you just want to get a version response:
 
-    ```code
+    ```command
     docker -v
     ```
 
@@ -102,10 +95,10 @@ The first step is to install Docker, which is used to both install and run your 
 Docker version 20.10.17, build 100c701
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On RHEL-derived distributions, you may additionally have to run the following command to ensure the Docker daemon starts:
 
-```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
 sudo systemctl start docker
 ```
 {{< /note >}}
@@ -116,7 +109,7 @@ Appwrite can be installed with a single Docker command. Essentially, this comman
 
 The command creates a new `appwrite` directory in the current directory, and this new directory becomes the base for your Appwrite instance:
 
-```code
+```command
 sudo docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw --entrypoint="install" appwrite/appwrite:1.0.3
 ```
 
@@ -162,19 +155,19 @@ These are some examples of useful Docker Compose commands for working with your 
 
 -   To restart the Appwrite services:
 
-    ```code
+    ```command
     sudo docker compose restart
     ```
 
 -   To stop the services:
 
-    ```code
+    ```command
     sudo docker compose stop
     ```
 
 -   To stop and uninstall the services:
 
-    ```code
+    ```command
     sudo docker compose down -v
     ```
 
@@ -182,7 +175,7 @@ These are some examples of useful Docker Compose commands for working with your 
 
 -   To start the services back up:
 
-    ```code
+    ```command
     sudo docker compose up -d
     ```
 
@@ -194,7 +187,7 @@ To make a change, take these steps, executing the commands while in the Appwrite
 
 1.  Stop the Appwrite services:
 
-    ```code
+    ```command
     sudo docker compose stop
     ```
 
@@ -202,7 +195,7 @@ To make a change, take these steps, executing the commands while in the Appwrite
 
 1.  Start the services up again:
 
-    ```code
+    ```command
     sudo docker compose up -d
     ```
 

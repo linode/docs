@@ -1,25 +1,19 @@
 ---
 slug: how-to-use-tcpdump-to-analyze-traffic
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
-og_description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
 keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-11
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use tcdump to Analyze Network Traffic"
-h1_title: "How to Use tcdump to Analyze Network Traffic"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Use tcdump to Analyze Network Traffic"
+title_meta: "How to Use tcdump to Analyze Network Traffic"
 external_resources:
 - '[TCPDUMP & LIBPCAP](https://www.tcpdump.org/)'
 - "[Julia Evans: Let's Learn tcpdump](https://jvns.ca/tcpdump-zine.pdf)"
 - '[Geekflare: How to Capture and Analyze Network Traffic with tcpdump?](https://geekflare.com/tcpdump-examples/)'
 - '[Linux Hint: A Guide to Network Traffic Analysis Utility: TCPDUMP](https://linuxhint.com/tcpdump-beginner-guide/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The *tcpdump* tool provides a powerful command line option for network sniffing. With *tcpdump*, you can effectively capture and analyze network traffic, whether to diagnose network issues or to test network security.
@@ -28,21 +22,21 @@ In this tutorial, learn how to get started sniffing network traffic with *tcpdum
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system:
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt update && sudo apt upgrade
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -50,17 +44,17 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 The most straightforward way to install *tcpdump* is via your Linux system's package manager. Fortunately, *tcpdump* is available by default on most Linux distributions.
 
-```code {title="Debian / Ubuntu"}
+```command {title="Debian / Ubuntu"}
 sudo apt install tcpdump
 ```
 
-```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
 sudo dnf install tcpdump
 ```
 
 You can verify your installation using the command below:
 
-```code
+```command
 sudo tcpdump --version
 ```
 
@@ -122,7 +116,7 @@ The example commands and output in these sections use `example.hostname-one.com`
 
 To get a list of available interfaces, use the *tcpdump* command with the `-D` option:
 
-```code
+```command
 sudo tcpdump -D
 ```
 
@@ -140,7 +134,7 @@ sudo tcpdump -D
 
 You can begin capturing packets by simply executing the *tcpdump* command. By default, the command uses the lowest-numbered interface, which you can see from the command above would be `eth0`. However, it can be good practice to explicitly provide the interface, which you can accomplish with the `-i` option.
 
-```code
+```command
 sudo tcpdump -i eth0
 ```
 
@@ -160,7 +154,7 @@ You can stop capturing packets using the *Ctrl* + *C* key combination. And, as y
 
 You can make the output more manageable for the purposes of getting to know *tcpdump* by using the `-c` option. This option allows you to set a number of lines (packets) of output:
 
-```code
+```command
 sudo tcpdump -i eth0 -c 5
 ```
 
@@ -180,7 +174,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 *tcpdump* also gives you the option of capturing packets on all available interfaces, by specifying `any` as the interface. Doing so lets you cast an even wider net when observing network traffic:
 
-```code
+```command
 sudo tcpdump -i any
 ```
 
@@ -192,7 +186,7 @@ Here, you can see the primary filtering options available in *tcpdump*. In the n
 
 -   Port filtering can be accomplished using the `port` option followed by a specific port you want to observe network traffic on:
 
-    ```code
+    ```command
     sudo tcpdump -i eth0 -c 1 port 80
     ```
 
@@ -208,7 +202,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 -   Host filtering can be accomplished using the `host` option followed by the IP address for a host you want to observe network traffic for:
 
-    ```code
+    ```command
     sudo tcpdump -i eth0 -c 5 host 170.187.150.148
     ```
 
@@ -228,7 +222,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 -   Protocol filtering can be used to narrow results to only a given protocol type. You can accomplish this by simply appending the protocol designation to the *tcpdump* command:
 
-    ```code
+    ```command
     sudo tcpdump -i eth0 -c 5 icmp
     ```
 
@@ -250,13 +244,13 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 Filters can be made even more effective by combining them using the logical operators `and`, `or`, and `not`. Here's an example that combines the host and port options:
 
-```code
+```command
 sudo tcpdump -i eth0 -c 5 host 192.0.2.0 and port 80
 ```
 
 The `not` operator can be used on its own as well:
 
-```code
+```command
 sudo tcpdump -i eth0 -c 5 not port 80
 ```
 
@@ -266,13 +260,13 @@ Often, the results from *tcpdump* are extensive, and sometimes you may want to s
 
 This uses the `-w` option followed by the name of the file to save the results to:
 
-```code
+```command
 sudo tcpdump -i eth0 -c 5 -w example-packet-dump.pcap
 ```
 
 You can then read the results again right in *tcpdump*, using the `-r` option:
 
-```code
+```command
 sudo tcpdump -r example-packet-dump.pcap
 ```
 
@@ -292,7 +286,7 @@ dropped privs to tcpdump
 
 -   Use `-v` for verbose results, providing additional information for each packet. You can make the results even more verbose with `-vv`:
 
-    ```code
+    ```command
     sudo tcpdump -i eth0 -c 5 -vv
     ```
 
@@ -316,7 +310,7 @@ tcpdump: listening on eth0, link-type EN10MB (Ethernet), capture size 262144 byt
 
 -   Sometimes results are easier to interpret when hostnames are rendered as IP addresses. Alternatively, rendering hostnames as IP addresses may be essential when DNS resolution is unavailable. In these cases, you can use the `-n` option. This option shows hosts by their IP addresses:
 
-    ```code
+    ```command
     sudo tcpdump -i eth0 -n -c 5
     ```
 
@@ -336,7 +330,7 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 -   To get more human-readable timestamps, as opposed to the default Unix-formatted timestamps, you can use the `-tttt` option:
 
-    ```code
+    ```command
     sudo tcpdump -i eth0 -c 5 -tttt
     ```
 

@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the Linode CLI with Object Storage"
 description: "Learn how to use the Linode CLI to manage Linodes own Object Storage solution."
 modified: 2022-05-02
+authors: ["Linode"]
 ---
 
 The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. For interacting with Object Storage, there are two separate commands within the Linode CLI.
@@ -50,7 +48,7 @@ Currently, the Linode CLI defaults to creating buckets in the Newark data center
 
 {{< note >}}
 You need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
-{{</ note >}}
+{{< /note >}}
 
 If the bucket has objects in it, you can not delete it from the Linode CLI immediately. Instead, remove the objects first, then delete the bucket. The [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
 
@@ -69,12 +67,12 @@ If the bucket has objects in it, you can not delete it from the Linode CLI immed
     - If the bucket is in the Singapore data center, the file is accessible at the URL `https://my-example-bucket.ap-south-1.linodeobjects.com/example.txt`
 
     {{< note >}}
-The `--acl-public` flag is used to make the object publicly accessible, meaning that you can access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
+    The `--acl-public` flag is used to make the object publicly accessible, meaning that you can access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
 
-For example, if you want to make a public file private, you would append the `--acl-private` flag:
+    For example, if you want to make a public file private, you would append the `--acl-private` flag:
 
-    linode-cli obj setacl --acl-private my-example-bucket example.txt
-{{</ note >}}
+        linode-cli obj setacl --acl-private my-example-bucket example.txt
+    {{< /note >}}
 
 1.  To download an object, use the `get` command. Provide the label of the bucket as the first parameter and the name of the file as the second:
 
@@ -125,9 +123,9 @@ For more information on hosting static websites from Linode Object Storage, see 
 
 If for whatever reason the access key you've set up when initially [Configuring the CLI](#install-and-configure-the-cli) has been revoked or deleted, you may see the following error message:
 
-{{< output >}}
+```output
 Error: InvalidAccessKeyId
-{{< /output >}}
+```
 
 You can create and configure a new Access Key at any time by running the following command:
 

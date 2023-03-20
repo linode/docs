@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-overview
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with a reference for common troubleshooting scenarios you may encounter when managing your Linode. Multiple sections are included.'
 keywords: ['troubleshooting']
 tags: ["linode platform"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2012-04-05
 title: Troubleshooting Overview
+authors: ["Linode"]
 ---
 
 This guide provides common troubleshooting scenarios you may encounter when managing your Linode. Each troubleshooting section provides ways to further diagnose your issue and, when applicable, corresponding steps to resolve it. We recommend using this guide in the following way:
@@ -39,7 +37,7 @@ If your Linode is unresponsive, either at the Lish console or to basic network r
 
 ## Linode is Slow
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should follow all steps in the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide before using the checklist in this section.
 {{< /note >}}
 
@@ -100,7 +98,7 @@ The applications on your Linode require a certain amount of physical memory to f
 1.  Log in to the [Linode Cloud Manager](https://cloud.linode.com).
 1.  Click the **Linodes** link in the sidebar to view a list of all your Linodes.
 1.  Select a Linode to view its dashboard.
-1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/guides/resizing-a-linode/).
+1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/products/compute/compute-instances/guides/resize/).
 1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
 1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](https://www.linode.com/pricing) to a larger plan.
 
@@ -110,7 +108,7 @@ If your Linode is not out of memory, continue to the next section.
 
 Disk input/output (I/O) bottlenecks can occur when an application or service is reading or writing an excessive amount of information to disk and the processor has to wait to process the information. High I/O wait can significantly slow down your server. To determine if your server currently has an I/O bottleneck, follow the steps below:
 
-1.  [Log in to your Linode via SSH](/docs/guides/getting-started/#connect-to-your-linode-via-ssh).
+1.  [Log in to your Linode via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
 1.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
     ![Check for Disk I/O bottleneck.](939-troubleshooting2.png)
@@ -119,7 +117,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  If your I/O wait percentage is above zero, verify that your server has enough [free memory available](/docs/guides/troubleshooting-overview/#is-the-linode-out-of-memory). In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 1.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/guides/use-vmstat-to-monitor-system-performance/) to find the application responsible for the excessive I/O. Databases are often a source of excessive I/O. You may need to stop and/or reconfigure the application.
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 You must run `iotop` as `root` or with `sudo`.
     {{< /note >}}
 
@@ -131,7 +129,7 @@ Since `top` only reports what is currently happening, and most I/O issues are te
 
 If your website is unresponsive or not loading correctly, read through the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
 {{< /note >}}
 
@@ -139,19 +137,19 @@ You should follow all steps in the [Linode is Slow](#linode-is-slow) section bef
 
 If you can't connect to your Linode over SSH, read through the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should follow all steps in the [Linode is Slow](#linode-is-slow) section before following the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
 {{< /note >}}
 
 ### Are You Using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) -- the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 ## Forgot My Username or Password
 
 ### Linode User/Root Password
 
-If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/guides/reset-the-root-password-on-your-linode/) from the Linode Manager.
+If you've forgotten the password for the root user on your Linode, you can follow the steps for [resetting your root password](/docs/products/compute/compute-instances/guides/reset-root-password/) from the Linode Manager.
 
 Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. The example resets the password for the `username` user:
 
@@ -171,7 +169,7 @@ Use the following checklist if the Linode Manager is displaying "incorrect" info
 
 ### Did You Recently Change your Account?
 
-If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/guides/understanding-billing-and-payments/) guide for more information.
+If you recently created a new account, resized an existing Linode, or added extra bandwidth, the bandwidth displayed in the Linode Cloud Manager will be prorated for the amount of time left in the current billing cycle. For example, if you create an account on the 15th day of the month, the Manager will indicate that your account has been allocated half of the plan's bandwidth for the current month. This information is an accurate representation of the bandwidth available for the rest of the billing period. When then next billing period starts, the Manager will indicate that all of the plan's bandwidth is available. View the [Billing and Payments](/docs/products/platform/billing/) guide for more information.
 
 ### Did You Add Additional Storage?
 
@@ -184,4 +182,4 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 
     ![Disk storage allocation](disk-storage-allocation.png)
 
-    Follow our steps for [resizing a disk](/docs/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.
+    Follow our steps for [resizing a disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#resizing-a-disk) to take advantage of the extra space.

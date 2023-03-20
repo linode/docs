@@ -1,8 +1,5 @@
 ---
 slug: download-backups-locally
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "This guide provides you with step-by-step instructions for downloading backup images of your Linodes by using the Backup feature in Cloud Manager."
 keywords: ["backup", "backups", "rsync", "restore", "local"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: Download a Local Copy of your Linode Backup
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png
+authors: ["Edward Angert"]
 ---
 
 The [Linode Backups](/docs/products/storage/backups/) service can create automatic and manual snapshots of your Linode. A completed backup can be directly restored to the origin Linode or to a new Linode in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.
@@ -27,7 +25,7 @@ Linode's backups are stored in a way that is only directly readable by the Linod
 
 ### Account Permissions and Billing
 
-Several of the steps in this guide involve adding services to or removing services from a Linode account. Visit our guide on [Users and Permissions](/docs/guides/accounts-and-passwords/#users-and-permissions) for more information about restricted Linode users.
+Several of the steps in this guide involve adding services to or removing services from a Linode account. Visit our guide on [Users and Permissions](/docs/products/platform/accounts/guides/manage-users/#users-and-permissions) for more information about restricted Linode users.
 
 Note that the cost of adding Backups service and adding a Linode to your account is billed, prorated per hour. If the backups service is only enabled for a few hours, you will only be charged for a few hours of the service. See the [Backups pricing details](/docs/products/storage/backups/#pricing) for more information. Likewise, when you create a Linode, you will be billed per hour that the Linode exists, whether it is powered on or not.
 
@@ -35,7 +33,7 @@ The steps in this guide have been designed to minimize the potential costs assoc
 
 - Removing a Linode from your account also cancels the associated Backup service for that Linode.
 - A Linode's backups are deleted when a Linode is deleted.
-- If you choose to leave the Backups service enabled, or if you do not remove the additional Linode from your account, you will be automatically billed. If you only power the Linode off, [you will still be billed for it](/docs/guides/understanding-billing-and-payments/#if-my-linode-is-powered-off-will-i-be-billed).
+- If you choose to leave the Backups service enabled, or if you do not remove the additional Linode from your account, you will be automatically billed. If you only power the Linode off, [you will still be billed for it](/docs/products/platform/billing/#will-i-be-billed-for-powered-off-or-unused-services).
 
 ### Enable Backups and Take a Snapshot
 
@@ -54,4 +52,4 @@ These steps are the minimum required for the scope of this guide. Visit our [Bac
 
 ## Clean Up after Your Download
 
-After you've finished downloading your files or disks, you can optionally [delete the restored disks](/docs/guides/disks-and-storage/#deleting-a-disk). If you created a new Linode to perform the restore, consider [deleting the Linode](/docs/guides/understanding-billing-and-payments/#removing-services). As a reminder, billing for that Linode will continue automatically if you do not remove it. If you only power the Linode off, [you will still be billed for it](/docs/guides/understanding-billing-and-payments/#if-my-linode-is-powered-off-will-i-be-billed).
+After you've finished downloading your files or disks, you can optionally [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk). If you created a new Linode to perform the restore, consider [deleting the Linode](/docs/products/platform/billing/guides/stop-billing/). As a reminder, billing for that Linode will continue automatically if you do not remove it. If you only power the Linode off, [you will still be billed for it](/docs/products/platform/billing/#will-i-be-billed-for-powered-off-or-unused-services).

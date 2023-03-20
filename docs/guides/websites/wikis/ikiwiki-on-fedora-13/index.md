@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Fedora 13 to power a standard wiki implementation.'
 keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
 tags: ["wiki","fedora"]
@@ -19,11 +16,12 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/development/version-control/) system of your choice, though this guide assumes that you use [git](/docs/guides/how-to-configure-git/).
 
-This guide is written for Fedora 13, and assumes that you've followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/guides/apache-2-web-server-on-fedora-13/) and a working installation of [git](/docs/guides/how-to-configure-git/).
+This guide is written for Fedora 13, and assumes that you've followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/guides/apache-2-web-server-on-fedora-13/) and a working installation of [git](/docs/guides/how-to-configure-git/).
 
 ## Installing Ikiwiki
 

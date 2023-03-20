@@ -1,8 +1,5 @@
 ---
 slug: webpy-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Debian 5 (Lenny).'
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","debian"]
@@ -19,15 +16,16 @@ relations:
         key: webpy
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.
 
-This guide assumes that have you followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) prior to beginning. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py
+This guide assumes that have you followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) prior to beginning. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
