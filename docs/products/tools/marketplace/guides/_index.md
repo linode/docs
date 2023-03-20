@@ -4,6 +4,7 @@ description: "Learn how to access and deploy all the Linode Marketplace One-Clic
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
+modified: 2023-03-20
 ---
 
 ## Basics
@@ -71,6 +72,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
 - [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
 - [MongoDB](/docs/products/tools/marketplace/guides/mongodb/)
+- [MongoDB Cluster](/docs/products/tools/marketplace/guides/mongodb-cluster/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)
