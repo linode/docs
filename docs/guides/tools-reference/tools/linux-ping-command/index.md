@@ -4,7 +4,7 @@ description: "The ping command is ubiquitous for its convenience and simplicity 
 keywords: ['linux ping command', 'linux ping port', 'linux ping options']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-06-20
+published: 2023-03-20
 modified_by:
   name: Nathaniel Stickman
 title: "The Linux ping Command"
