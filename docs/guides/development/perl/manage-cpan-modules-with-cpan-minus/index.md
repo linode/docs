@@ -1,8 +1,5 @@
 ---
 slug: manage-cpan-modules-with-cpan-minus
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use cpanimus to easily install and manage Perl Modules with CPAN - the Comprehensive Perl Archive Network, a source for the latest Perl Modules.'
 og_description: "This guide shows how to use cpanminus to easily install and manage Perl modules."
 keywords: ["cpan", "perl", "cpanm"]
@@ -19,6 +16,7 @@ external_resources:
 audiences: ["beginner"]
 languages: ["perl"]
 tags: ["perl"]
+authors: ["Linode"]
 ---
 
 ![banner_image](Manage_CPAN_Modules_with_cpanminus_smg.jpg)
@@ -77,7 +75,7 @@ You can also specify the url of a Perl module and CPAN will fetch the module fro
 
     cpanm --sudo https://cpan.metacpan.org/authors/id/O/OL/OLIVER/App-Netdisco-2.036011.tar.gz
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to run `cpanm Net::SSLeay` first in order to request a url with `https`.
 {{< /note >}}
 

@@ -1,6 +1,6 @@
 ---
 title: Managed Databases
-linkTitle: Databases
+linkTitle: Managed Databases
 description: "Learn about Linode's Managed Database service, which provides fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 tab_group_main:
     is_root: true
@@ -10,7 +10,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-06-06
+modified: 2022-10-31
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -42,8 +42,6 @@ The following database management systems (DBMSs) are available (or coming soon)
 - **MongoDB:** A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible.
 
     {{< content "managed-database-mongodb-private-notice-shortguide" >}}
-
-- **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
 
 See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) for more details on each of the available database engines.
 
@@ -81,7 +79,8 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Multiple database engines and versions
 - Customize access controls to allow connections from trusted sources
 - Automatic backups are taken daily and retained for 7 days
-- Root-level access to the database
+- Administrative access with elevated user permissions
+- Access the database using command-line or desktop applications
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
@@ -93,6 +92,8 @@ In addition to the resources allocated to each available plan (outlined above), 
 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
-- You are not able to access the underlying operating system of a database cluster.
+- You are not able to access the underlying operating system of a database cluster. Configuration files (such as `my.cnf` ) cannot be directly edited and configuration changes done through the `SET PERSIST` command do not persist when the cluster is rebooted.
 
 - MongoDB database clusters are currently only accessible over public IP addresses. As such, any traffic counts towards your monthly network transfer usage. Support for private IP addresses will be available in the coming months.
+
+- Live replicas or standby nodes for a high availability Managed Database cluster cannot be created or hosted outside of Linode's Managed Database service.

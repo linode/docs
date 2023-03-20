@@ -1,18 +1,14 @@
 ---
 slug: list-of-databases
-author:
-  name: Jack Wallen
 description: 'Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage.'
 keywords: ['database',database lists'','best database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "List of Databases - Most Popular"
-h1_title: "The 8 Most Popular Databases"
-enable_h1: true
-contributor:
-  name: Jack Wallen
+title: "The 8 Most Popular Databases"
+title_meta: "List of Databases - Most Popular"
+authors: ["Jack Wallen"]
 ---
 
 Databases power nearly every digital platform on the planet: From websites, to blogs, to social media, to streaming services. Most end-users know databases such as MySQL as a tool to store data. That's a pretty accurate, although fundamental, description of what a database is. However, they are much more than that.
@@ -130,7 +126,7 @@ The Advantages of using MySQL include:
 - **Free** - this is a free, open-source database that can be installed on as many server instances as you need.
 - **Familiarity** - MySQL uses the SQL query language, so db admins familiar with the language are up to speed in no time with this DBMS. MySQL also follows the typical client/structure architecture.
 - **Speed** - Is one of the fastest relational databases, thanks to a unique storage engine.
-- **Integration** - MySQL enjoys integration into thousands of third-party applications, such as blogging systems, CRMs, HRMs, ERPs, and many other other types of applications.
+- **Integration** - MySQL enjoys integration into thousands of third-party applications, such as blogging systems, CRMs, HRMs, ERPs, and many other types of applications.
 
 Learn [how to install a MySQL instance on a Linode server](/docs/guides/installing-and-configuring-mysql-on-ubuntu-2004/).
 
@@ -280,7 +276,7 @@ The disadvantages of the MongoDB database include:
 - Can be slow if indexes aren't used correctly.
 - Because relationships aren't defined well, they can lead to duplicated data.
 
-Check out our guide on [MongoDB use cases](/docs/guides/mongodb-and-its-use-cases/) for more information.
+Check out our guide on [MongoDB use cases](/docs/guides/mongodb-introduction/) for more information.
 
 #### Apache Cassandra
 

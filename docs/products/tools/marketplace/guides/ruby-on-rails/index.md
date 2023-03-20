@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide provides you with installation and configuration instructions for deploying Ruby on Rails using the Lindoe One-Click Apps Marketplace."
 keywords: ['ruby on rails','marketplace', 'marketplace apps']
 tags: ["ruby","linode platform","marketplace","cloud-manager"]
@@ -11,14 +8,13 @@ modified: 2022-03-08
 image: RubyonRails_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Ruby on Rails through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Ruby on Rails through the Linode Marketplace"
 external_resources:
  - '[Ruby on Rails Documentation](https://guides.rubyonrails.org/)'
  - '[Securing Rails Applications](https://guides.rubyonrails.org/security.html)'
  - '[Configuring Rails Applications](https://guides.rubyonrails.org/configuring.html)'
 aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/', '/platform/one-click/deploying-ruby-on-rails-with-one-click-apps/','/guides/deploying-ruby-on-rails-with-one-click-apps/', '/guides/deploying-ruby-on-rails-with-marketplace-apps/','/guides/ruby-on-rails-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Ruby on Rails](http://rubyonrails.org/) is a server-side web application framework that allows web designers and developers to implement dynamic, fully featured web applications.
@@ -29,9 +25,9 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Ruby on Rails should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -48,7 +44,7 @@ aliases: ['/platform/marketplace/deploying-ruby-on-rails-with-marketplace-apps/'
 
 After Ruby on Rails has finished installing, you will be able to access Ruby on Rails from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 
@@ -70,16 +66,16 @@ After Ruby on Rails has finished installing, you will be able to access Ruby on 
 
         rails server --binding=198.51.100.0
 
-    {{< output >}}
-Warning: Running `gem pristine --all` to regenerate your installed gemspecs (and deleting then reinstalling your bundle if you use bundle --path) will improve the startup performance of Spring.
-=> Booting WEBrick
-=> Rails 4.2.7.1 application starting in development on http://198.51.100.0:3000
-=> Run `rails server -h` for more startup options
-=> Ctrl-C to shutdown server
-[2020-03-11 14:17:16] INFO  WEBrick 1.3.1
-[2020-03-11 14:17:16] INFO  ruby 2.3.3 (2016-11-21) [x86_64-linux-gnu]
-[2020-03-11 14:17:16] INFO  WEBrick::HTTPServer#start: pid=3089 port=3000
-{{</ output >}}
+    ```output
+    Warning: Running `gem pristine --all` to regenerate your installed gemspecs (and deleting then reinstalling your bundle if you use bundle --path) will improve the startup performance of Spring.
+    => Booting WEBrick
+    => Rails 4.2.7.1 application starting in development on http://198.51.100.0:3000
+    => Run `rails server -h` for more startup options
+    => Ctrl-C to shutdown server
+    [2020-03-11 14:17:16] INFO  WEBrick 1.3.1
+    [2020-03-11 14:17:16] INFO  ruby 2.3.3 (2016-11-21) [x86_64-linux-gnu]
+    [2020-03-11 14:17:16] INFO  WEBrick::HTTPServer#start: pid=3089 port=3000
+    ```
 
 1.  You can visit your application by visiting the address in the browser.
 
@@ -95,43 +91,43 @@ A controller will receive requests which are then routed and served by various a
 
         rails generate controller Welcome index
 
-    {{< output >}}
-create  app/controllers/welcome_controller.rb
-route   get 'welcome/index'
-invoke  erb
-create    app/views/welcome
-create    app/views/welcome/index.html.erb
-invoke  test_unit
-create    test/controllers/welcome_controller_test.rb
-invoke  helper
-create    app/helpers/welcome_helper.rb
-invoke    test_unit
-invoke  assets
-invoke    coffee
-create      app/assets/javascripts/welcome.coffee
-invoke    scss
-create      app/assets/stylesheets/welcome.scss
-{{</ output >}}
+    ```output
+    create  app/controllers/welcome_controller.rb
+    route   get 'welcome/index'
+    invoke  erb
+    create    app/views/welcome
+    create    app/views/welcome/index.html.erb
+    invoke  test_unit
+    create    test/controllers/welcome_controller_test.rb
+    invoke  helper
+    create    app/helpers/welcome_helper.rb
+    invoke    test_unit
+    invoke  assets
+    invoke    coffee
+    create      app/assets/javascripts/welcome.coffee
+    invoke    scss
+    create      app/assets/stylesheets/welcome.scss
+    ```
 
 1.  With the text editor of your choice, edit the file `app/views/welcome/index.html.erb` and replace the contents with the following:
 
-    {{< file "app/views/welcome/index.html.erb" html >}}
-<h1>Hello, World! This is Ruby on Rails!</h1>
-{{</ file >}}
+    ```file {title="app/views/welcome/index.html.erb" lang="html"}
+    <h1>Hello, World! This is Ruby on Rails!</h1>
+    ```
 
 1.  Tell Rails where to find the document root. Edit the file `config/routes.rb`, find and uncomment the line root as shown:
 
-    {{< file "config/routes" conf >}}
-Rails.application.routes.draw do
-  get 'welcome/index'
+    ```file {title="config/routes" lang="conf"}
+    Rails.application.routes.draw do
+      get 'welcome/index'
 
-...
+    ...
 
-  root 'welcome#index'
+      root 'welcome#index'
 
-...
-end
-{{</ file >}}
+    ...
+    end
+    ```
 
 1.  Start the server again:
 
@@ -147,6 +143,6 @@ For more information on setting up a more substantial application, refer to the 
 
 For more on Ruby on Rails, checkout the following guides:
 
-- [Ruby on Rails with NGINX on Debian](/docs/development/ror/ruby-on-rails-nginx-debian/)
-- [Ruby on Rails with Apache on Debian](/docs/development/ror/ruby-on-rails-apache-debian/)
-- [Use Unicorn and NGINX to Configure Ruby on Rails Applications on Ubuntu](/docs/development/ror/use-unicorn-and-nginx-on-ubuntu-18-04/)
+- [Ruby on Rails with NGINX on Debian](/docs/guides/ruby-on-rails-nginx-debian/)
+- [Ruby on Rails with Apache on Debian](/docs/guides/ruby-on-rails-apache-debian/)
+- [Use Unicorn and NGINX to Configure Ruby on Rails Applications on Ubuntu](/docs/guides/use-unicorn-and-nginx-on-ubuntu-18-04/)

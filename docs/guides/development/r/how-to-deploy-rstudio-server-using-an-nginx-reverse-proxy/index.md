@@ -1,10 +1,6 @@
 ---
 slug: how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
-og_description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 tags: ["web server", "nginx", "proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +13,7 @@ audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/']
+authors: ["Sam Foo"]
 ---
 
 ![How to Deploy Rstudio using an NGINX reverse proxy](How_to_Deploy_RStudio_Server_Using_an_NGINX_Reverse_Proxy_smg.jpg)
@@ -27,7 +24,7 @@ aliases: ['/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-pr
 
 ## Before You Begin
 
-This guide assumes an R installation version of R 3.0.1+ and will show how to install RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/development/r/how-to-install-r-on-ubuntu-and-debian) for steps on installing the latest version of R.
+This guide assumes an R installation version of R 3.0.1+ and will show how to install RStudio Server 1.1. See our guide on [installing R on Ubuntu and Debian](/docs/guides/how-to-install-r-on-ubuntu-and-debian/) for steps on installing the latest version of R.
 
 The steps in this guide are for Ubuntu 16.04 and should be adapted to your specific distribution installation.
 
@@ -138,6 +135,6 @@ server {
 
     ![Rstudio Screen](rstudio-server-page.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If Rstudio does not load in the browser, you may need to clear your browser cache.
 {{< /note >}}

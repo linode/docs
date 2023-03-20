@@ -1,8 +1,5 @@
 ---
 slug: go-data-types
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: "In this guide, we will walk you through the basics of the Go programming language, including pointers, available numeric types, arrays, slices, and maps."
 keywords: ["Go", "Golang", "Pointers", "Arrays", "Slices", "Maps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,14 +7,12 @@ published: 2019-03-19
 modified_by:
   name: Linode
 title: "A Tutorial for Learning Go Data Types"
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://golang.org)'
   - '[Go Packages](https://golang.org/pkg/)'
 image: GoDataTypes.png
 aliases: ['/development/go/go-data-types/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 This guide serves as an introduction to several useful data types in Go. Specifically, you'll learn about:
@@ -38,7 +33,7 @@ If you're just starting with Go, we recommend reading our [Beginner's Guide to G
 
 {{< content "before-you-begin-install-go-shortguide" >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written with Go version 1.13.
 {{< /note >}}
 
@@ -83,7 +78,7 @@ fmt.Println(anInteger)
 
 More complex examples of pointers are illustrated in `pointers.go`, including how a pointer can be used with a function:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more information on how to use functions in Go, review our [functions, loops, and errors guide](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/).
 {{< /note >}}
 
@@ -236,7 +231,7 @@ Type of divFloat: 1.7142857142857142
 
 - Lines 8-18 show how to work with complex numbers. Line 8 shows how to use the shorthand syntax to declare a complex number, and line 9 shows how to use the [built in `complex` function](https://golang.org/pkg/builtin/#complex).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Please note that the shorthand syntax for a complex number is `-12 + 2i`, not `-12 + 2 * i`. The incorrect statement would tell Go that you want to perform an addition and a multiplication using a variable named `i`. If there is no numeric variable named `i` in the current scope, this statement will create a syntax error and the compilation of your Go code will fail. However, if a numeric variable named `i` exists, the calculation will be successful, but you will not get the desired complex number as the result.
 {{< /note >}}
 
@@ -258,7 +253,7 @@ var anArray [4]int
 anArray := [4]int{1, 0, 0, -4}
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 An array's type is composed of both its length and its elements' type. This means that when using the array literal syntax, you must supply the length of the array in the declaration. If you don't (for example, by writing `[]int{1, 0, 0, -4}`), you will create a [slice](#slices), not an array.
 
 Having said that, the Go compiler provides a convenience syntax which will count the items in your array literal for you:
@@ -284,7 +279,7 @@ anArray[3] = -5
 fmt.Println(anArray[3])
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you try to access an array element or a [slice](#slices) element that does not exist, your program will crash. This is called an *out-of-bounds error*. The same thing will happen if you use a negative index number. The good thing is that the Go compiler will catch that kind of error.
 {{< /note >}}
 
@@ -342,7 +337,7 @@ Iterating through threeDimension:
 5 -1 7 0
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This example uses the `range` keyword and `for` loops to iterate through the elements of the `threeDimension` array. For more information on how to use loops in Go, review our [functions, loops, and errors guide](/docs/guides/learning-go-functions-loops-and-errors-a-tutorial/).
 {{< /note >}}
 
@@ -395,7 +390,7 @@ var aSlice []string = anArray[1:3]
 fmt.Println(aSlice)
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note that the element at the ending index is not included in the resulting slice.
 {{< /note >}}
 
@@ -410,7 +405,7 @@ aSlice[2] = "Guide"
 fmt.Println(anArray)
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note that the element at `aSlice[2]` is equal to the element at `anArray[3]`. This is because `aSlice` starts at the second element of `anArray` (see line 2).
 {{< /note >}}
 
@@ -443,7 +438,7 @@ fmt.Println(anotherSlice)
 
 The *length* of a slice is the same as the length of an array with the same number of elements, and it can be found using the `len()` function. The *capacity* of a slice is the current room that has been allocated for a slice, which can be found with the `cap()` function and may be greater than the length.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Arrays do not have a capacity property.
 {{< /note >}}
 
@@ -702,7 +697,7 @@ Like arrays and slices, Go *maps* store collections of values, and maps are equi
 
 Although Go maps do not exclude any data types from being used as keys, for a data type to be used as a key, it must be comparable to other values of the same type. This means that the Go compiler must be able to differentiate one key from another. In other words, the keys of a map must support the `==` and `!=` operators.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 While the `bool` data type is comparable, using it for the keys to a map will limit your options, as `true` and `false` are the only values available.
 {{< /note >}}
 
@@ -729,7 +724,7 @@ aMap["one"] = 1
 fmt.Println(aMap["one"])
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can add elements to a Go map without the need for an `append()` function like you did for slices.
 {{< /note >}}
 
