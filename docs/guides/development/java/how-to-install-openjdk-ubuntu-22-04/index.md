@@ -1,29 +1,23 @@
 ---
 slug: how-to-install-openjdk-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install and test the Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on Ubuntu 22.04.'
 keywords: ['Java', 'OpenJDK', 'OpenJDK Ubuntu', 'How to install OpenJDK']
 tags: ['ubuntu', 'java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-30
+published: 2023-03-20
 modified_by:
   name: Linode
-title: "How to Install OpenJDK on Ubuntu 22.04 | Linode"
-h1_title: "Installing OpenJDK on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
+title: "How to Install OpenJDK on Ubuntu 22.04"
+title_meta: "Installing OpenJDK on Ubuntu 22.04"
 external_resources:
 - '[OpenJDK website](https://openjdk.java.net/)'
 - '[OpenJDK Development Guide](https://openjdk.java.net/guide/)'
 - '[Java development site](https://dev.java/)'
 - '[OpenJDK GA Release Archive](https://jdk.java.net/archive/)'
+authors: ["Jeff Novotny"]
 ---
 
-Although new releases of Oracle Java are available for free, many developers prefer an open-source product. [OpenJDK](https://openjdk.java.net/) is a free open-source production-ready implementation of Java based on Oracle's commercial version of Java. This guide explains how to download and install OpenJDK on Ubuntu 22.04. It also demonstrates how to configure OpenJDK and write a short test script to validate the installation.
+[OpenJDK](https://openjdk.java.net/) is a free, open-source, production-ready implementation of Java based on Oracle's commercial version of Java. This guide explains how to download and install OpenJDK on Ubuntu 22.04. It also demonstrates how to configure OpenJDK and write a short test script to validate the installation.
 
 ## What is OpenJDK?
 
@@ -36,7 +30,7 @@ There are two main components to OpenJDK, the *Java Developer Kit* (JDK) and the
 - **JDK**: The JDK is primarily used by Java developers. The JDK includes the Javac compiler for compiling Java programs into bytecode. It also contains a development kit consisting of developer tools and a debugger. The JDK is necessary to create stand-alone Java executables. Some Java-dependent applications require the JDK because they convert Java Server pages into Java servlets and must compile them first.
 - **JRE**: The JRE executes Java code and compiled Java bytecode. It bundles the *Java Virtual Machine* (JVM) together with the *Java Class Library* (JCL) and other files. The JRE interprets Java bytecode into lower-level code. It can also run Java files, but cannot convert these files into programs. The JRE is much less efficient at running Java files than applications because it must compile the source code first. Users who only want to run Java programs only require the JRE. The JDK is not necessary in this case.
 
-The most widely-used *Long-term support* (LTS) branches of OpenJDK are release 11 and release 17. The newest release is OpenJDK release 18, which does not include significant changes or new features. Release 11 is still supported for several years, but users should consider upgrading to a newer branch. The remaining branches have all reached the end-of-life stage.
+The most widely-used *Long-term support* (LTS) branches of OpenJDK are release 11 and release 17. Release 11 is still supported for several years, but users should consider upgrading to a newer branch. The remaining branches have all reached the end-of-life stage.
 
 For more information about OpenJDK, see the [OpenJDK website](https://openjdk.java.net/).
 
@@ -60,11 +54,15 @@ To install a release of OpenJDK that is not available through `apt`, download th
 
 1.  Ensure the `apt` libraries are updated.
 
-        sudo apt update && sudo apt upgrade -y
+    ```command
+    sudo apt update && sudo apt upgrade -y
+    ```
 
 1.  Confirm whether Java is already installed.
 
-        java -version
+    ```command
+    java -version
+    ```
 
     {{< output >}}
 Command 'java' not found
@@ -76,29 +74,37 @@ Command 'java' not found
 To install release 11 of OpenJDK, use the command `sudo apt-get install openjdk-11-jdk`. Use `sudo apt-get install openjdk-18-jdk` to install release 18. To see all available editions of OpenJDK, search the `apt` libraries using the `apt-cache search openjdk` command.
     {{< /note >}}
 
-        sudo apt-get install openjdk-17-jdk
+    ```command
+    sudo apt-get install openjdk-17-jdk
+    ```
 
 1.  **(Optional)** To install only the JRE component of OpenJDK, use the following command. To install a release other than OpenJDK release 17, change `17` to the appropriate release number.
 
-        sudo apt-get install openjdk-17-jre
+    ```command
+    sudo apt-get install openjdk-17-jre
+    ```
 
 1.  Confirm the correct release of Java has been installed.
 
-        java -version
+    ```command
+    java -version
+    ```
 
-    {{< output >}}
-openjdk version "17.0.3" 2022-04-19
-OpenJDK Runtime Environment (build 17.0.3+7-Ubuntu-0ubuntu0.22.04.1)
-OpenJDK 64-Bit Server VM (build 17.0.3+7-Ubuntu-0ubuntu0.22.04.1, mixed mode, sharing)
-    {{< /output >}}
+    ```output
+    openjdk version "17.0.3" 2022-04-19
+    OpenJDK Runtime Environment (build 17.0.3+7-Ubuntu-0ubuntu0.22.04.1)
+    OpenJDK 64-Bit Server VM (build 17.0.3+7-Ubuntu-0ubuntu0.22.04.1, mixed mode, sharing)
+    ```
 
 1.  If the full JDK platform is installed, confirm the release of the Java compiler.
 
-        javac -version
+     ```command
+     javac -version
+     ```
 
-    {{< output >}}
-javac 17.0.3
-    {{< /output >}}
+    ```output
+    javac 17.0.3
+    ```
 
 ## Set the Environment Variables for Java
 
@@ -110,22 +116,28 @@ Although Java is already installed, further configuration is required. Setting a
 To set these values for all system users, add the following changes to `/etc/environment` instead.
     {{< /note >}}
 
-        vi ~/.bashrc
+    ```output
+    vi ~/.bashrc
+    ```
 
-    {{< file "~/.bashrc" sh >}}
-...
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-export PATH=$PATH:$JAVA_HOME/bin
-    {{< /file >}}
+    ```file {title="~/.bashrc"}
+    ...
+    export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+    export PATH=$PATH:$JAVA_HOME/bin
+    ```
 
 1.  Source the `.bashrc` file to apply the changes.
 
-        source ~/.bashrc
+    ```command
+    source ~/.bashrc
+    ```
 
 1.  Echo `JAVA_HOME` and `PATH` to verify they are set correctly. The `$JAVA_HOME` value should be similar to `/usr/lib/jvm/java-17-openjdk-amd64`, depending on the release. This value should also be appended to the end of the `$PATH` variable.
 
-        echo $JAVA_HOME
-        echo $PATH
+    ```command
+    echo $JAVA_HOME
+    echo $PATH
+    ```
 
 ## Test the OpenJDK Installation
 
@@ -137,23 +149,25 @@ The JRE cannot compile an application, but it can run Java code. To verify the J
 
 1.  Create a sample `HelloWorld` program using a text editor. Inside a file labeled `HelloWorld.java`, create a `HelloWorld` class. The `Main` routine for the class should print `Hello World from Java!` to the console. The file should resemble the following code sample:
 
-    {{< file "HelloWorld.java" java >}}
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello World from Java!");
+    ```file {title="HelloWorld.java"}
+    public class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello World from Java!");
+        }
     }
-}
-    {{< /file >}}
+    ```
 
 1.  In the same directory, use the OpenJDK JRE to run `HelloWorld.java`.
 
-        java HelloWorld.java
+    ```command
+    java HelloWorld.java
+    ```
 
 1.  Verify the console output to ensure the installation was successful. The `Hello World from Java!` text should appear. Because JRE must first compile the program into bytecode, there might be a short delay before the program starts running.
 
-    {{< output >}}
-Hello World from Java!
-    {{< /output >}}
+    ```output
+    Hello World from Java!
+    ```
 
 ### Compile a Java Application Using the JDK
 
@@ -161,15 +175,19 @@ The JDK is a full development environment. It can compile Java code into Java by
 
 1.  From the directory containing the source code, use the `javac` compiler to compile the file.
 
-        javac HelloWorld.java
+    ```command
+    javac HelloWorld.java
+    ```
 
 1.  Confirm a `HelloWorld.class` file now exists in the same directory.
 
-        ls -l HelloWorld.class
+    ```command
+    ls -l HelloWorld.class
+    ```
 
-    {{< output >}}
--rw-rw-r-- 1 userid userid 436 May 31 08:33 HelloWorld.class
-    {{< /output >}}
+    ```output
+    -rw-rw-r-- 1 userid userid 436 May 31 08:33 HelloWorld.class
+    ```
 
 1.  Run the compiled `HelloWorld` class file using the OpenJDK JRE. The output `Hello World from Java!` should appear.
 
@@ -177,11 +195,13 @@ The JDK is a full development environment. It can compile Java code into Java by
 In the previous section, the JRE ran the source file `HelloWorld.java`. This time it is running the compiled class file `HelloWorld`.
     {{< /note >}}
 
-        java HelloWorld
+    ```command
+    java HelloWorld
+    ```
 
-    {{< output >}}
-Hello World from Java!
-    {{< /output >}}
+    ```output
+    Hello World from Java!
+    ```
 
 ## A Summary of How to Install and Test OpenJDK on Ubuntu 22.04
 
