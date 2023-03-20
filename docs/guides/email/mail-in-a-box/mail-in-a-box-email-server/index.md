@@ -2,7 +2,7 @@
 slug: mail-in-a-box-email-server
 description: "This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package."
 keywords: ["install mail-in-a-box", "webmail control panel", "caldav", "cardav", " TLS certificate"]
-tags: ["ubuntu","postfix","email"]
+tags: ["ubuntu","postfix","email","digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-29
 modified: 2022-09-22

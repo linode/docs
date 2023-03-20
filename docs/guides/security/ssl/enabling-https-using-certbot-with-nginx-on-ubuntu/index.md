@@ -2,7 +2,7 @@
 slug: enabling-https-using-certbot-with-nginx-on-ubuntu
 description: "Learn how to install and use Certbot with NGINX on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
-tags: ['ssl','nginx', 'ubuntu']
+tags: ['ssl','nginx', 'ubuntu', "ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-25
 image: SecureWeb.jpg
