@@ -16,7 +16,7 @@ authors: ["Linode"]
 
 Have you ever encountered an error message while navigating the cloud Manager and wanted more information as to what may have triggered the error and what your best next steps may be? In this guide we'll go over some common error messages in a higher level of detail than are traditionally provided, and discuss your best path forward.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 For more information on troubleshooting, see the [Troubleshooting Section](/docs/guides/troubleshooting/) of our documentation.
 {{< /note >}}
 
@@ -56,9 +56,8 @@ If you see the following message, then you'll be unable to create a resource due
 
 The reasons behind these limits can vary, though in most cases are related to default resource limits set on your account.
 
-
 ## Your DNS Zones are Not Being Served
 
 **Your DNS zones are not being served. Your domains will not be served by Linode's nameservers unless you have at least one Linode present on your account. You can create one here.**
 
-This message is seen when using Linode's DNS Manager without any billable resources currently present on your account. While the DNS Manager is a free service, it does require that at least one billable resource is available on your account. See our [pricing page](https://www.linode.com/pricing/) for more information on resources you can add to freely access the DNS Manager.
+This message is seen when using the DNS Manager without any active Compute Instances. While the DNS Manager is a free service, it does require that at least one active Compute Instance is present on your account. See [DNS Manager Pricing and Availability](/docs/products/networking/dns-manager/#pricing-and-availability).
