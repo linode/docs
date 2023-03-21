@@ -224,7 +224,7 @@ The full YAML 1.2 specification is rather involved. It has 211 grammatical rules
 
 ### YAML Tools
 
-Plenty of tools help YAML newcomers. Among them are several automatic YAML linters, including [YAML Lint](https://yamlvalidator.com/). Other tools likely to interest a newcomer to YAML are:
+Plenty of tools help YAML newcomers. Among them are several automatic YAML linters, including [YAML Lint](https://www.yamllint.com/). Other tools likely to interest a newcomer to YAML are:
 
 - Converters between other formats and YAML. For example, VSCode provides a [YAML to JSON extension](https://marketplace.visualstudio.com/items?itemName=ahebrank.yaml2json).
 - YAML prettifiers. The [VSCode Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) is one popular option.

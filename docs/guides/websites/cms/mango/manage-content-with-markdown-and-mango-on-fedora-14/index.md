@@ -172,7 +172,7 @@ Welcome to Mango. If this page appears in full HTML glory (with **bold** and _em
 
 ## More Details
 
-Learn more about [mango](<http://mango.io>) and [Markdown][]!
+Learn more about [Markdown][]!
 
 [Markdown]:<http://daringfireball.net/projects/markdown/>
 ```
@@ -183,8 +183,6 @@ The first three lines of this file define header values that are processed by th
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Mango Home Page](http://mango.io/)
-- [Mango Documentation](http://mango.io/docs/)
 
 
 

@@ -12,9 +12,9 @@ published: 2017-09-12
 title: How to Install Ghost CMS on Ubuntu 16.04
 aliases: ['/websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/','/websites/cms/how-to-install-ghost-cms-on-ubuntu-16-04/','/websites/cms/ghost/how-to-install-ghost-cms-on-ubuntu-16-04/']
 external_resources:
-- '[Ghost Setup Documentation](https://docs.ghost.org/v1.0.0)'
-- '[Ghost Theme Documentation](https://themes.ghost.org/v1.0.0)'
-- '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
+- '[Ghost Setup Documentation](https://ghost.org/docs/)'
+- '[Ghost Theme Documentation](https://ghost.org/docs/themes/)'
+- '[Ghost API Documentation](https://ghost.org/docs/content-api/)'
 relations:
     platform:
         key: how-to-install-ghost-cms
