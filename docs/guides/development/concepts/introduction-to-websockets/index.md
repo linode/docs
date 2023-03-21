@@ -16,9 +16,8 @@ contributor:
   name: Shivam Mishra
   link: http://twitter.com/scmmishra
 external_resources:
-  - '[websocket.org](https://www.websocket.org/)'
   - '[Vanessa Wang, *The Definitive Guide to HTML5 WebSocket*](https://www.apress.com/in/book/9781430247401)'
-  - '[About HTML5 WebSocket](https://www.websocket.org/aboutwebsocket.html)'
+  - '[Introducing WebSockets](https://web.dev/websockets-basics/)'
   - '[The WebSocket Protocol](https://tools.ietf.org/html/rfc6455)'
 audiences: ["beginner"]
 aliases: ['/development/concepts/introduction-to-websockets/','/development/introduction-to-websockets/']
