@@ -107,7 +107,7 @@ Run these commands from your Linode:
 
 3.  Verify that you can view the visualization app by loading `http://<your-Linode-IP-address>:8080` in a web browser:
 
-    ![Visualization app started](./php-profile-visualization-started.png "Visualization app started")
+    ![Visualization app started](php-profile-visualization-started.png "Visualization app started")
 
 ## Profiling the Application
 
