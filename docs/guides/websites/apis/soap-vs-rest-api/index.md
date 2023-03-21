@@ -4,7 +4,7 @@ description: 'Comparing SOAP vs REST API? Learn more about what each technology 
 keywords: ['soap vs rest api', 'difference between soap and rest', 'soap rest', 'rest vs soap api']
 tags: ['web server', 'web applications']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-09
+published: 2023-03-14
 modified_by:
   name: Linode
 title: "What is the Difference Between SOAP and REST API?"
