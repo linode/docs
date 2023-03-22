@@ -66,6 +66,7 @@ apache2
 api
 apis
 apiserver
+apfs
 apk
 apparmor
 appimage
@@ -170,6 +171,7 @@ bgpd
 bialek
 bin_t
 bing
+binhex
 binlog
 bioinformaticists
 biomes
@@ -1914,6 +1916,7 @@ scrapy
 screenrc
 scriptable
 scrollable
+scrollback
 scrollbar
 scrollbars
 scriptfilename
