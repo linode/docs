@@ -3,7 +3,7 @@ description: "Get help deciding which Compute Instance type is right for your us
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-04
-modified: 2022-08-10
+modified: 2023-03-22
 modified_by:
     name: Linode
 title: "Choosing a Compute Instance Type and Plan"
@@ -57,7 +57,7 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 ### Dedicated CPU Instances
 
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
-Starting at $30/mo ($0.045/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
+Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
 
 [Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
