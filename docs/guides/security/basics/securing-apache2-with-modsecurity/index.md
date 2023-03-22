@@ -1,7 +1,5 @@
 ---
 slug: securing-apache2-with-modsecurity
-author:
-  name: Hackersploit
 description: 'This guide shows how you can use ModSecurity, a free web application firewall that can prevent attacks like XSS and SQL injection on your site, using Apache 2.'
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
@@ -19,6 +17,7 @@ relations:
         key: securing-web-servers-with-modsecurity
         keywords:
             - web server: Apache 2
+authors: ["Hackersploit"]
 ---
 
 ## What is ModSecurity?

@@ -1,8 +1,5 @@
 ---
 slug: lke-network-firewall-information-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Language that describes the options for creating workloads on Linode Kubernetes Engine that are accessible from the Internet, and directions for creating firewall rules for your nodes.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["kubernetes"]
 aliases: ['/kubernetes/lke-network-firewall-information-shortguide/']
+authors: ["Linode"]
 ---
 
 In an LKE cluster, some entities and services are only accessible from within that cluster while others are publicly accessible (reachable from the internet).

@@ -1,7 +1,5 @@
 ---
 slug: hashes-in-redis-databases
-author:
-  name: Nathaniel Stickman
 description: "Redis Hashes are maps of field and value pairs. In this guide, you learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
 keywords: ['redis hashes example', 'accessing redis hashes', 'get redis hashes all key']
 tags: ['redis server', 'redis']
@@ -11,13 +9,12 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use Hashes in Redis Databases"
 title_meta: "How to Use Hashes in Redis Databases"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
 - '[Redis: Command Reference - Hashes](https://redis.io/commands#hash)'
 - '[Redis in Action: Hashes in Redis](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/1-2-4-hashes-in-redis/)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed and low latency are required. Redis supports the hash data type which enables you to store field-value pairs of simple to highly complex data. This tutorial breakdown what Redis hashes are and walks you through examples of how to create, access, and modify hashes. This tutorial provides you with the tools to start using hashes in your Redis databases.

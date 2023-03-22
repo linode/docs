@@ -1,7 +1,5 @@
 ---
 slug: configure-source-replica-replication-in-mysql
-author:
-  name: Jeff Novotny
 description: 'This guide explains how to configure source-replica data replication in the popular MySQL database application to keep copies of your database for emergencies.'
 keywords: ['mysql replication']
 tags: ['mysql', 'database', 'security']
@@ -10,11 +8,10 @@ published: 2021-07-30
 modified_by:
   name: Linode
 title: "Configure Source-Replica Replication in MySQL"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[MySQL Documentation](https://dev.mysql.com/doc/refman/8.0/en/replication.html)'
+authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 The [*MySQL*](https://dev.mysql.com/) is a relational database management system that is one of the most popular open-source projects. Although known for its stability, MySQL is even more reliable if source-replica replication is configured. In replication, one MySQL server is typically designated the *source*. A source sends any database changes and data updates to one or more *replica* database servers. MySQL's data replication procedure is flexible, and the replica servers do not need to be permanently connected to the source. This guide explains how to configure source-replica data replication in MySQL.

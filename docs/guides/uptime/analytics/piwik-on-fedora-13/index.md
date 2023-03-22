@@ -1,9 +1,6 @@
 ---
 slug: piwik-on-fedora-13
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Fedora 13.'
 keywords: ["open source analytics", "piwik fedora 13", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["statistics","fedora","analytics"]
@@ -19,6 +16,7 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Fedora 13
+authors: ["Stan Schwertly"]
 ---
 
 

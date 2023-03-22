@@ -1,8 +1,5 @@
 ---
 slug: connect-to-server-over-ssh-on-windows
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Read our guide on how to connect to a remote server over SSH on Windows, including opening the terminal & structuring the command. ✓ Click to read!"
 keywords: ['ssh','linux','windows','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
@@ -20,6 +17,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Windows
+authors: ["Linode"]
 ---
 
 A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.

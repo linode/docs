@@ -1,8 +1,5 @@
 ---
 slug: create-terraform-module
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows you how to create a Terraform module with nested root, linode_instance, and stackscripts modules using a Linode StackScripts installer.'
 keywords: ['terraform','resource','modules','provider']
 tags: ["terraform"]
@@ -14,13 +11,12 @@ modified_by:
 image: create-a-terraform-module.png
 title: "Create a Terraform Module"
 title_meta: "How to Create a Terraform Module"
-contributor:
-  name: Linode
 external_resources:
 - '[Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 - '[Terraform - Creating Modules](https://www.terraform.io/docs/modules/create.html)'
 - '[Terraform - Module Sources](https://www.terraform.io/docs/modules/sources.html)'
 aliases: ['/applications/configuration-management/create-terraform-module/','/applications/configuration-management/terraform/create-terraform-module/']
+authors: ["Linode"]
 ---
 
 Terraform is a popular orchestration tool by [HashiCorp](https://www.hashicorp.com/). It's used to build, maintain, and version infrastructure safely. Terraform modules allow you to better organize your configuration code and make the code reusable.

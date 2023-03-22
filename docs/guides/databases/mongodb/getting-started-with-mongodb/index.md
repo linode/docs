@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-mongodb
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "MongoDB gives you a flexible and less rigid way to store your data than traditional relational databases. This tutorial gives everything you need to start using MongoDB."
 keywords: ['mongodb tutorial','getting started mongodb','basic mongodb commands']
 tags: ['database']
@@ -11,13 +8,12 @@ published: 2023-02-28
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with MongoDB"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MongoDB: Getting Started](https://www.mongodb.com/docs/manual/tutorial/getting-started/)'
 - '[freeCodeCamp: How to Get Started with MongoDB in 10 Minutes](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/)'
 - '[GeeksforGeeks: MongoDB — Getting Started](https://www.geeksforgeeks.org/mongodb-getting-started/)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a NoSQL database, that provides more flexible and less rigidly structured data storage than traditional relational databases. This MongoDB guide introduces you to all the basic MongoDB operations you need to get started, including commands for operations like queries, inserts, updates, and deletions. It sets you up to begin effectively populating and using your MongoDB instance.

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Ryan Syracuse
-  email: docs@linode.com
 description: 'This guide describes how to create roles and set contexts for specific users to create an environment with limited kubernetes permissions.'
 keywords: ["Kubernetes", "cluster", "docker", "security", "permissions"]
 tags: ["security","nginx","kubernetes","container"]
@@ -15,6 +12,7 @@ aliases: ['/kubernetes/securing-an-LKE-cluster/','/guides/using-rbac-to-secure-a
 concentrations: ["Kubernetes"]
 external_resources:
   - '[Kubernetes Documentation](https://kubernetes.io/docs/home)'
+authors: ["Ryan Syracuse"]
 ---
 
 ## Securing Kubernetes Users

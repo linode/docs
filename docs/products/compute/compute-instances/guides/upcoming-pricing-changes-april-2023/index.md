@@ -1,13 +1,11 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 keywords: ["april pricing update", "pricing", "pricing changes"]
 description: "Information related to the Akamai Compute pricing changes effective April 1st, 2023"
 published: 2023-03-01
 modified_by:
   name: Linode
 title: "Upcoming Pricing Changes (Effective 4/1/2023)"
+authors: ["Linode"]
 ---
 
 On April 1st 2023 (4/1/2023), updated pricing will go into effect for some Compute services. This includes increasing the cost for most Shared and Dedicated CPU Compute Instance plans (excluding the $5/mo 1GB Shared plan), decreasing the cost of network transfer (egress) overage fees, and increasing the cost for additional IPv4 addresses. This page covers each pricing change so you know exactly what to expect.
@@ -47,7 +45,7 @@ Beginning April 1st 2023, the price for most Shared CPU and Dedicated CPU Comput
 | **96 GB Dedicated CPU** | $720 | **<span style="color:#02b159">$864</span>** | 96 GB | 48 | 1920 GB | 9 TB | 40/9 Gbps |
 | **128 GB Dedicated CPU** | $960 | **<span style="color:#02b159">$1,152</span>** | 128 GB | 50 | 2500 GB | 10 TB | 40/10 Gbps |
 | **256 GB Dedicated CPU** | $1,920 | **<span style="color:#02b159">$2,304</span>** | 256 GB | 56 | 5000 GB | 11 TB | 40/11 Gbps |
-| **512 GB Dedicatedd CPU** | $3,840 | **<span style="color:#02b159">$4,608</span>** | 512 GB | 64 | 7200 GB | 12 TB | 40/12 Gbps |
+| **512 GB Dedicated CPU** | $3,840 | **<span style="color:#02b159">$4,608</span>** | 512 GB | 64 | 7200 GB | 12 TB | 40/12 Gbps |
 
 ## Network Transfer (Egress) Overages
 

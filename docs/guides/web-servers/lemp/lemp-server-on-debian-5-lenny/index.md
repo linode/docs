@@ -1,8 +1,5 @@
 ---
 slug: lemp-server-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx,MySQL, PHP.'
 keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","debian"]
@@ -20,6 +17,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

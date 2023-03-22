@@ -1,8 +1,5 @@
 ---
 slug: minecraft-with-mcmyadmin-on-debian
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: 'In this tutorial, you''ll learn how to install and configure an MCMyAdmin server on a Debian 7 or 8 Linode.'
 keywords: ["minecraft", "mcmyadmin", "debian", "debian jessie", "debian wheezy", "jessie", "wheezy", "debian 7", "debian 8"]
 tags: ["debian"]
@@ -16,6 +13,7 @@ external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
 aliases: ['/game-servers/minecraft-with-mcmyadmin-on-debian/','/applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 dedicated_cpu_link: true
+authors: ["James Stewart"]
 ---
 
 ![Installing McMyAdmin for Minecraft on Debian](Installing_McMyAdmin_for_Minecraft_on_Debian_smg.png "Installing McMyAdmin for Minecraft on Debian")

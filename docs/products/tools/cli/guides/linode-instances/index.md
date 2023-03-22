@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for Compute Instances"
 description: "How to use the Linode CLI to create and manage Linode instances."
 published: 2020-07-22
 modified: 2022-05-02
+authors: ["Linode"]
 ---
 
 Tasks related to Linode instances are performed with `linode-cli linodes [ACTION]`.

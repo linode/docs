@@ -1,7 +1,5 @@
 ---
 slug: traversing-the-dom
-author:
-  name: Nathaniel Stickman
 description: "You can traverse the DOM with JavaScript using the document object''s built-in methods. Learn to use document object methods to access elements by ID, class name, and tag name. "
 keywords: ['navigating the dom','accessing the dom','dom tree javascript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,13 +8,11 @@ modified_by:
   name: Linode
 title: "Traverse the DOM with JavaScript"
 title_meta: "How to Traverse the DOM with JavaScript"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MDN Web Docs: Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)'
 - '[W3 Schools: HTML DOM querySelector() Method](https://www.w3schools.com/jsref/met_document_queryselector.asp)'
 - '[MDN Web Docs: Document.querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The Document Object Model (DOM) is an interface that gives scripting languages, like JavaScript, access to a web page's structure and content. You can learn more about the DOM and how it represents HTML in our guide [Introduction to the DOM](/docs/guides/document-object-model/).
@@ -97,7 +93,7 @@ Knowing the arrangement of the DOM tree and its leaves, helps you understand how
 
 The diagram below provides a visualization of the DOM tree for this guide's [example web page](example-page.html). You can also view the `example-page.html` file in the [Before You Begin](/docs/guides/traversing-the-dom/#before-you-begin) section of this guide.
 
-[![A DOM tree for an example web page](dom-tree-example_small.png)](dom-tree-example.png)
+![A DOM tree for an example web page](dom-tree-example.png)
 
 ### How Are Nodes Accessed?
 

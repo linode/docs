@@ -1,8 +1,5 @@
 ---
 slug: an-explanation-of-bgp-networking
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide discusses how BGP works and what role it can play in network outages'
 keywords: ['What is BGP','BGP routing','How does BGP work','BGP advantages and disadvantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,13 +7,12 @@ published: 2022-08-18
 modified_by:
   name: Linode
 title: "An Explanation of BGP Networking"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[BGP RFC 4271](https://www.rfc-editor.org/rfc/rfc4271)'
 - '[BGP for IPv6 RFC 2545](https://www.rfc-editor.org/rfc/rfc2545.html)'
 - '[MBGP RFC 4760](https://www.rfc-editor.org/rfc/rfc4760)'
 - '[Wikipedia page for the Border Gateway Protocol](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)'
+authors: ["Jeff Novotny"]
 ---
 
 Routing protocols are crucial for proper network engineering and design. They allow traffic to be quickly routed across a network from source to destination. The [*Border Gateway Protocol*](https://en.wikipedia.org/wiki/Border_Gateway_Protocol) (BGP) is the universally-accepted routing protocol for the internet backbone. Although BGP is incredibly powerful and has many advantages, it is also complex and has some drawbacks. This guide explains what BGP is and how BGP routing works. It also discusses the advantages and disadvantages of BGP and its role in many recent major network outages.

@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-mysql-workbench-on-ubuntu
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install and configure MySQL Workbench and includes a sample MySQL database for testing.'
 keywords: ["mysql", "mysql workbench", "mysql sample database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +13,7 @@ external_resources:
  - '[MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)'
  - '[Deploy MySQL Workbench for Database Administration](/docs/guides/deploy-mysql-workbench-for-database-administration/)'
 tags: ["ubuntu","database","mysql"]
+authors: ["Linode"]
 ---
 
 MySQL Workbench is a feature-rich graphical tool used to model data, build SQL queries, manage MySQL servers, and more. This guide will show you how to install Workbench using the Ubuntu package manager.

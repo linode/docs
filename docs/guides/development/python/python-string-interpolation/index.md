@@ -1,7 +1,5 @@
 ---
 slug: python-string-interpolation
-author:
-  name: John Mueller
 description: 'Python 3 string interpolation provides string substitution and string formatting. This guide covers the str.format() method, the modulo operator, f-strings, and the Template class.'
 keywords: ['python string interpolation','python3 string format','python string format example']
 tags: ['python']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Python String Interpolation"
 title_meta: "An Introduction to Python String Interpolation"
-contributor:
-  name: John Mueller
-  link: http://www.johnmuellerbooks.com/
+authors: ["John Mueller"]
 ---
 
 During *string interpolation* a string literal is evaluated and if any placeholders are present, they are substituted by the indicated variable values. String interpolation helps reduce repetition in code and allows for dynamic string substitution. Python string interpolation consists of two parts: a *string template* and a value, or set of values, that you want to place within that template. To trigger string interpolation, the compiler needs some method of determining where to place the values within the string template. Python provides four techniques to do this, and this guide covers them all. Each string interpolation technique has its own advantages and disadvantages. The four ways to trigger string interpolation are the following:

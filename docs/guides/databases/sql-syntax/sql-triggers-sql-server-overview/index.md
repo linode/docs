@@ -1,8 +1,5 @@
 ---
 slug: sql-triggers-sql-server-overview
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  email: docs@linode.com
 description: This guide explains SQL trigger statements, special database objects, and how to enforce referential integrity for primary/foreign key relationships with them.
 keywords:
   - referential integrity
@@ -15,9 +12,7 @@ modified_by:
   name: Linode
 title_meta: An Introduction to SQL Triggers in SQL Server
 title: "SQL Triggers in SQL Server: An Overview"
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 ## What are Triggers?

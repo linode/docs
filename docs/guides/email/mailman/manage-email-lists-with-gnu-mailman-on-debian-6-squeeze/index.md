@@ -1,9 +1,6 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Debian 6 "Squeeze".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.

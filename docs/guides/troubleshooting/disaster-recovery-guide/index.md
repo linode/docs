@@ -1,8 +1,5 @@
 ---
 slug: disaster-recovery-guide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Troubleshooting steps to access your Linode after maintenance has been applied to your host.'
 keywords: ['linux','reboot','lish']
 tags: ["cloud manager"]
@@ -15,6 +12,7 @@ modified_by:
   name: Linode
 title: "Access Your Linode After Maintenance"
 aliases: ['/troubleshooting/disaster-recovery-guide/']
+authors: ["Linode"]
 ---
 
 If you are having issues accessing your Linode after maintenance has been applied to your host, here are a few troubleshooting steps to follow.

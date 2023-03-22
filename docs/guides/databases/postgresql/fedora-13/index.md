@@ -1,9 +1,6 @@
 ---
 slug: fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Fedora 13.'
 keywords: ["postgresql fedora 13", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
             - distribution: Fedora 13
 tags: ["database","postgresql","fedora"]
 aliases: ['/databases/postgresql/fedora-13/']
+authors: ["Linode"]
 ---
 
 

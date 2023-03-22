@@ -1,8 +1,5 @@
 ---
 slug: using-magicspam-email-authentication
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Securing your email server with MagicSpam by using country authentication, IP authentication, source based authentication, and other restrictions."
 keywords: ["magicspam", "email authentication", "email server security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ published: 2021-12-29
 title: "Using MagicSpam to Secure your Email Server"
 title_meta: "How to stop BEC and Compromised Accounts on cPanel or Plesk Server"
 tags: ["email"]
+authors: ["Linode"]
 ---
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It not only stops inbound spam from entering mailboxes but also provides email authentication security. This prevents email accounts from being compromised and abused by threat actors.

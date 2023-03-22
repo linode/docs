@@ -1,8 +1,5 @@
 ---
 slug: rescue-and-rebuild
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to rescue and rebuild Linode by using the recovery tools available in the Linode Cloud Manager.'
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
@@ -12,6 +9,7 @@ modified_by:
   name: Linode
 published: 2012-05-31
 title: Rescue and Rebuild
+authors: ["Linode"]
 ---
 
 ![Rescue and Rebuild](rescue-rebuild.jpg)

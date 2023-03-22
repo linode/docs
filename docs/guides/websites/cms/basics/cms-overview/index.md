@@ -1,8 +1,5 @@
 ---
 slug: cms-overview
-author:
-  name: Linode
-  email: docs@linode.com
 description: "An overview of the three content management systems that Linode supports"
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framwork"]
 tags: ["drupal","wordpress","cms","lamp"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2014-10-17
 title: "Content Management Systems: An Overview"
 aliases: ['/websites/cms/cms-overview/','/websites/cms/basics/cms-overview/']
+authors: ["Linode"]
 ---
 
 A content management system, or CMS, creates and manages websites. CMS applications eliminate the need for programming. Once running, they enable non-technical professionals to upload and administer their own content. Any coding is replaced with a user-friendly, point-and-click interface. There are dozens of popular CMS apps available, and many are free. Every CMS has a different design with particular web functionalities, aimed at specific users. CMS applications have been around since the late 1990s, and they continue to reach larger and larger audiences.

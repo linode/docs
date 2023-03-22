@@ -1,8 +1,5 @@
 ---
 slug: build-a-cd-pipeline-with-lke-part-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In part eight of our series on Kubernetes, you will learn how to install ExternalDNS using Helm and test its functionality within your Kubernetes cluster."
 title: "Building a CD Pipeline Using LKE (Part 8): ExternalDNS"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
@@ -11,10 +8,9 @@ published: 2021-05-06
 modified: 2022-12-14
 modified_by:
   name: Linode
-contributor:
-  name: Linode
 tags: ["kubernetes", "lke"]
 aliases: ['/guides/lke-continuous-deployment-part-8/']
+authors: ["Linode"]
 ---
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: ExternalDNS](cd-presentation-header-08-externaldns.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: ExternalDNS")

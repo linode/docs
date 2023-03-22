@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Create a StackScript
 description: "How to make a StackScript using Linode StackScripts."
 published: 2022-11-30
 aliases: ['/products/tools/stackscripts/guides/stackscripts-create-stackscript/']
+authors: ["Linode"]
 ---
 
 This guide walks you through creating a StackScript through the Cloud Manager.

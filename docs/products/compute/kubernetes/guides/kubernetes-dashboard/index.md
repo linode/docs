@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "The Kubernetes Dashboard on LKE provides secure insight into the inner workings of kubernetes clusters in a seamless UI."
 keywords: ['kubernetes','cluster','analytics','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
@@ -16,6 +13,7 @@ external_resources:
 - '[Kubernetes Docs](https://kubernetes.io/docs/home/)'
 - '[Kubernetes Dashboard GitHub](https://github.com/kubernetes/dashboard)'
 aliases: ['/guides/using-the-kubernetes-dashboard-on-lke/','/products/compute/kubernetes/guides/access-kubernetes-dashboard/']
+authors: ["Linode"]
 ---
 
 The [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) is an industry standard open-source web-based user interface designed to be a visual hub for interacting with a Kubernetes cluster, allowing for a more intuitive interface for observing cluster objects, components, containers, applications, and more.

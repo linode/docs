@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-on-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install Mastodon, a open source and decentralized alternative to Twitter also part of the Fediverse, on Ubuntu 20.04.'
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','ubuntu 20.04']
 tags: ['ubuntu', 'docker']
@@ -14,9 +11,6 @@ modified_by:
   name: Linode
 title: "Install a Mastodon Server on Ubuntu 20.04"
 title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -33,6 +27,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

@@ -1,8 +1,5 @@
 ---
 slug: create-a-pop-email-notification-system-using-twilio
-author:
-  name: John Mueller
-  email: john@johnmuellerbooks.com
 description: "Linode sends system notifications via email. This guide shows how to use the Python imaplib module to intercept those emails and forward them to text messages with the Twilio API."
 keywords: ['twilio notify']
 tags: ['email']
@@ -11,9 +8,6 @@ published: 2022-02-25
 modified_by:
   name: Linode
 title: "Create an Email Notification System Using Twilio (POP)"
-contributor:
-  name: John Mueller
-  link:
 relations:
   platform:
     key: twilio-email-notifications
@@ -23,6 +17,7 @@ external_resources:
 - '[poplib — POP3 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/poplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-a-pop-email-notification-system-using-twilio/']
+authors: ["John Mueller"]
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.

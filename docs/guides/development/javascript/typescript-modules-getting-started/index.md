@@ -1,7 +1,5 @@
 ---
 slug: typescript-modules-getting-started
-author:
-  name: John Mueller
 description: 'In this guide, you learn about Typescript modules, how to use the import and export keywords in your code, and the differences between Typescript modules and namespaces.'
 keywords: ['typescript module', 'typescript import', 'typescript module exports', 'typescript module vs namespace']
 tags: ['web applications']
@@ -10,9 +8,7 @@ published: 2021-10-08
 modified_by:
   name: Linode
 title: "Get Started with TypeScript Modules"
-contributor:
-  name: John Mueller
-  link: http://www.johnmuellerbooks.com/
+authors: ["John Mueller"]
 ---
 
 TypeScript supports modules and namespaces that can be used to organize your codebase. Modules are currently the favored method for organizing your code when working with TypeScript. This guide shows you how to create TypeScript modules and provides a comparison between modules and namespaces.

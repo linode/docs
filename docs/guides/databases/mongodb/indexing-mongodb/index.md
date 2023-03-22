@@ -1,8 +1,5 @@
 ---
 slug: indexing-mongodb
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn what MongoDB indexes are, how to create and modify them to improve your database query performance."
 keywords: ['mongodb indexing best practices', 'mongodb indexing tutorial', 'mongodb indexing explained']
 tags: ['database']
@@ -12,14 +9,12 @@ modified_by:
   name: Nathaniel Stickman
 title: "How to Use Indexes in MongoDB"
 title_meta: "MongoDB Indexing Explained"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MongoDB: Indexes](https://www.mongodb.com/docs/manual/indexes/)'
 - '[MongoDB: Create Indexes to Support Your Queries](https://www.mongodb.com/docs/manual/tutorial/create-indexes-to-support-queries/)'
 - '[MongoDB: Performance Best Practices — Indexing](https://www.mongodb.com/blog/post/performance-best-practices-indexing)'
-- '[DigitalOcean: How To Use Indexes in MongoDB](https://www.digitalocean.com/community/tutorials/how-to-use-indexes-in-mongodb)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a NoSQL database, an alternative to relational SQL databases that uses JSON-like documents to store data. To learn about what MongoDB is and how it works, review our [Introduction to MongoDB and its Use Cases](/docs/guides/mongodb-introduction/) guide. Know more about the basics of using MongoDB in our [Getting Started with MongoDB](/docs/guides/getting-started-with-mongodb/) guide.

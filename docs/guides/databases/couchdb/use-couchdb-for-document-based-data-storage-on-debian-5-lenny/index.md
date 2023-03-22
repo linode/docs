@@ -1,9 +1,6 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Debian 5 (Lenny) systems.'
 keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","nosql"]
+authors: ["Linode"]
 ---
 
 

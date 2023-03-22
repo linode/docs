@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
 og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
@@ -13,10 +10,9 @@ modified_by:
 image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster with the Linode API"
 title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
-contributor:
-  name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 An LKE cluster can be deployed in one of several ways:

@@ -1,8 +1,5 @@
 ---
 slug: deploy-mysql-workbench-for-database-administration
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
 keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,12 @@ modified: 2018-12-10
 modified_by:
     name: Linode
 title: 'Install MySQL Workbench for Database Administration'
-contributor:
-    name: Scott Somner
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
+authors: ["Scott Sumner"]
 ---
 
 

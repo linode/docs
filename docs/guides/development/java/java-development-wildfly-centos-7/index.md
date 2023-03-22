@@ -1,8 +1,5 @@
 ---
 slug: java-development-wildfly-centos-7
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
 keywords: ["java", "jboss", "jboss as", "wildfly", "apache", "mysql", "mariaDB"]
 tags: ["mysql","apache","java","centos"]
@@ -13,9 +10,6 @@ modified: 2015-09-18
 modified_by:
     name: Linode
 title: 'Java Development with WildFly on CentOS 7'
-contributor:
-    name: Ashraf Fouad
-    link: https://github.com/ashraffouad
 external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
 audiences: ["intermediate"]
@@ -26,6 +20,7 @@ relations:
         key: java-development-wildfly
         keywords:
             - distribution: CentOS 7
+authors: ["Ashraf Fouad"]
 ---
 
 ![Java Development with WildFly on CentOS 7](Java-Development-with-WildFly-on-CentOS-7-smg.jpg)

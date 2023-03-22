@@ -1,8 +1,5 @@
 ---
 slug: what-is-the-linode-longview-app-for-nginx
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide discusses the Linode Longview client, including how to configure Longview for the Nginx web server, how to interact with data from Longview, and more.'
 keywords: ["Longview", " Nginx", " statistics", " HttpStubStatusModule"]
 tags: ["cloud manager","statistics","monitoring","linode platform","nginx"]
@@ -20,6 +17,7 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: NGINX
+authors: ["Linode"]
 ---
 
 Longview for NGINX is a Longview App. The Longview NGINX tab appears in the Linode Cloud Manager when Longview detects that you have NGINX installed on your Linode. With the Longview NGINX App, you'll be able to view statistics for NGINX on your Linode. It can help you keep track of NGINX's settings, workers and requests, system resource consumption, and other information.

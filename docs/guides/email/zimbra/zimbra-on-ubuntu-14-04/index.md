@@ -1,9 +1,6 @@
 ---
 slug: zimbra-on-ubuntu-14-04
 deprecated: true
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how to install Zimbra, a complete self-hosted mail application, pre-configured with Postfix, OpenDKIM, Amavis, ClamAV and running on NGINX.'
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 tags: ["ubuntu","postfix","email"]
@@ -13,8 +10,6 @@ modified: 2015-10-01
 modified_by:
     name: Linode
 title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
-contributor:
-    name: Bill Bardon
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 relations:
@@ -23,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
+authors: ["Bill Bardon"]
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)

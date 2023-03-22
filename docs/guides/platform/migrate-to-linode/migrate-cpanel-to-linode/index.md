@@ -1,8 +1,5 @@
 ---
 slug: migrate-cpanel-to-linode
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'Shows how to use the CPanel Transfer Tool to copy CPanel accounts to a new Linode running WHM and CPanel.'
 keywords: ["cpanel", "transfer tool", "migrate", "website migration"]
 tags: ["cpanel","linode platform"]
@@ -18,6 +15,7 @@ external_resources:
   - '[CPanel Documentation - Transfer Tool](https://documentation.cpanel.net/display/68Docs/Transfer+Tool)'
 
 aliases: ['/platform/migrate-to-linode/migrate-cpanel-to-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 This guide describes how to migrate from a server running WHM and CPanel on another hosting service to Linode. This transfer is completed using CPanel's official [Transfer Tool](https://documentation.cpanel.net/display/70Docs/Transfer+Tool). Prior to using the Transfer Tool, you will complete a basic WHM installation on a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide for more information about migrating your sites before beginning.

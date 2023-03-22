@@ -1,8 +1,5 @@
 ---
 slug: network-transfer
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how your Linode account's network transfer pool is calculated and billed."
 keywords: ["network","billing","account","transfer", "overage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +8,9 @@ modified: 2022-06-17
 modified_by:
   name: Linode
 title: "Network Transfer Usage and Costs"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/network-transfer-quota/']
+authors: ["Linode"]
 ---
 
 {{< note title="Notice of Upcoming Pricing Changes">}}
