@@ -1,6 +1,6 @@
 ---
 title: Guides
-description: "Learn to deploy and secure Shared Linode instances and other guides on related topics."
+description: "A collection of guides to help you start deploying Compute Instances and using them to host your web applications and Cloud workloads"
 tab_group_main:
     weight: 30
 aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-cpu/guides/','/products/compute/gpu/guides/','/products/compute/dedicated-cpu/guides/','/products/compute/high-memory/guides/']
@@ -11,6 +11,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Get Started with Compute Instances](/docs/products/compute/compute-instances/get-started/)
 - [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/)
 - [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
+- [Monitor and Maintain a Compute Instance](/docs/products/compute/compute-instances/guides/monitor-and-maintain/)
 - [Resize a Compute Instance](/docs/products/compute/compute-instances/guides/resize/)
 
 ## Management Tasks
@@ -25,6 +26,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 
 - [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/)
 - [Packages Included on Linode Distribution Images](/docs/products/compute/compute-instances/guides/default-packages/)
+- [Linode Packages Mirrors for Various Distributions](/docs/products/compute/compute-instances/guides/package-mirrors/)
 - [Install a Custom Linux Distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/)
 
 ## Disks and Configurations

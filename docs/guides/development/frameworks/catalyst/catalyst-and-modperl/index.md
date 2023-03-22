@@ -158,9 +158,8 @@ Congratulations, you have now successfully configured a system for deploying Cat
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Catalyst Web Framework Home Page](http://www.catalystframework.org/)
+- [Catalyst Web Framework Home Page](http://catalyst.perl.org/)
 - [Catalyst Manual](http://search.cpan.org/dist/Catalyst-Manual/)
-- [Catalyst Getting Started Guide](http://dev.catalystframework.org/wiki/#Get_Started)
 
 
 
