@@ -29,7 +29,7 @@ A *symlink* is a type of special file whose "data" is a path to the name of a fi
 -   directory
 -   pipe - via `mkfifo`
 -   special device
--   symlink - see [Chains of Soft Links](docs/guides/tools-reference/basics/linux-symlinks#chains-of-soft-links) below
+-   symlink - see [Chains of Soft Links](/docs/guides/tools-reference/basics/linux-symlinks#chains-of-soft-links) below
 
 Also known as a "soft link" in Linux, the term "shortcut" describes symlinks in other operating systems.
 
