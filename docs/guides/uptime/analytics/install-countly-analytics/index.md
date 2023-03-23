@@ -10,6 +10,7 @@ title: "Installing Countly Community Edition on Ubuntu 20.04"
 external_resources:
 - '[Countly: Community Edition](https://count.ly/community-edition)'
 authors: ["Nathaniel Stickman"]
+tags: ["digital agencies"]
 ---
 
 The Countly analytics platform offers an alternative to the ubiquitous Google Analytics. In contrast to Google Analytics, Countly puts more emphasis on privacy and an all-in-one feature set. Countly's data gathering offers compliance with GDPR, HIPAA, and other privacy standards. Meanwhile, it provides not just visitor analytics, but also a wider range of analytics related to marketing.

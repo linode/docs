@@ -2,7 +2,7 @@
 slug: install-magento-on-ubuntu-18-04
 description: "Install Magento Community Edition on Ubuntu 18.04 to manage your e-commerce site."
 keywords: ["magento", "ubuntu", "e-commerce", "magento ubuntu"]
-tags: ["ubuntu", "ssl", "lamp", "cms"]
+tags: ["ubuntu", "ssl", "lamp", "cms","ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-29
 modified_by:
