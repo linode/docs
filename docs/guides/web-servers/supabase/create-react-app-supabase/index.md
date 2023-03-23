@@ -14,6 +14,7 @@ external_resources:
 - '[Adeva: The Complete Tutorial to Building a CRUD App with React.js and Supabase](https://adevait.com/react/building-crud-app-with-react-js-supabase)'
 - '[GitHub: tmm/react-supabase](https://github.com/tmm/react-supabase)'
 authors: ["Nathaniel Stickman"]
+tags: ["digital agencies"]
 ---
 
 Supabase provides a powerful open-source database that comes built-in with features like user authentication and a REST API. This makes Supabase a ready-made solution for backend services, simplifying database operations and connecting application frontends to a ready API.

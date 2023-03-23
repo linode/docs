@@ -3,7 +3,7 @@ slug: what-are-javascript-service-workers
 description: "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 og_description:  "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 keywords: ['javascript service workers', 'service worker example']
-tags: ['web applications']
+tags: ["web applications", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
@@ -15,7 +15,6 @@ external_resources:
 - '[Web Push](https://serviceworke.rs/web-push.html)'
 - '[Specifications and Examples](https://github.com/WICG/background-sync)'
 - '[Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html)'
-
 authors: ["Nathaniel Stickman"]
 ---
 
