@@ -534,6 +534,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+ecto
 edmonds
 edu
 efi
@@ -2259,6 +2260,7 @@ v2
 v4
 v6
 vagrantfile
+valim
 valheim
 validator
 variadic
