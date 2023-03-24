@@ -4,7 +4,7 @@ keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-10
-modified: 2023-03-21
+modified: 2023-03-24
 modified_by:
   name: Linode
 title: "Upgrade a Cluster to a Newer Kubernetes Version"
@@ -16,18 +16,24 @@ aliases: ['/guides/upgrading-lke-minor-versions/']
 authors: ["Linode"]
 ---
 
-Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Customers can manually upgrade Kubernetes on their LKE cluster by one version at a time. If the cluster is multiple versions behind, each version upgrade must be completed individually.
+Kubernetes releases new software versions and patches on a regular cadence. These updates are integrated into LKE *after* they are released on upstream Kubernetes, which ensures they are properly tested on the Linode Platform. Kubernetes uses a semantic versioning system that includes three parts: x.y.z, where **x** is the *major* version, **y** is the *minor* version, and **z** is the *patch* version.
 
-Additionally, Kubernetes versions are also regularly *deprecated* on LKE. This prevents customers from experiencing issues as a result of using outdated software. When a Kubernetes version is deprecated, an upgrade is scheduled for any LKE clusters using that version. This scheduled update is communicated to all affected customers in advance. Customers can then manually trigger the upgrade or wait until the schedule time to automatically be upgraded. Since these upgrades can remove or change features, make sure you thoroughly review the associated Kubernetes changelogs before upgrading your LKE cluster.
+- **Patch version upgrades** *(ex: 1.23.4 to 1.23.5)*: Patches are generally critical bug fixes, which include fixing security vulnerabilities. LKE clusters are automatically upgraded to the latest available patch versions for the cluster's minor version of Kubernetes (once they are released on LKE).
+- **Minor version upgrades** *(ex: 1.23.5 to 1.24.0)*: Minor versions include new features and may make breaking changes or introduce incompatibilities. Customers are highly encouraged to manually upgrade their clusters, though an upgrade will be scheduled automatically once a cluster's existing minor version in deprecated.
 
-## What Does an Upgrade Look Like
+{{< note >}}
+When upgrading a minor version of Kubernetes on LKE, you must upgrade to the next consecutive version. If the cluster is multiple versions behind, each version upgrade must be completed individually. For instance, if the current version on the cluster is 1.23.x and the latest available version on LKE is 1.25.x, the cluster must be upgraded to v1.24.x *before* upgrading to 1.25.x.
+{{< /note >}}
 
-When upgrading a Kubernetes cluster on LKE, it is important to keep in mind that all nodes within the cluster will need to be [recycled](/docs/products/compute/kubernetes/guides/upgrade-kubernetes-version/
-) on a rolling basis. In other words, the nodes within your cluster are taken down and upgraded one at a time, to help ensure that the process completes without downtime.
+## Upgrade Process
 
-In the highest level of detail, each node will be independently [drained and cordoned](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) one at a time, while the High Availability features of Kubernetes ensure that all workloads are migrated to other nodes. Once a node is drained and cordoned, it is removed and a new node is created using the correct Kubernetes version in it's place, where it is synced, and then uncordoned, immediately putting it back live into the cluster with the `Ready` status.
+When Kubernetes is upgraded on an LKE cluster (including both patch versions and minor versions), the control plane components are automatically upgraded. New worker nodes are also created using the new version. In most cases, there is no downtime or impact to performance for this part of the upgrade.
 
-While this process generally doesn't impact workloads in a significant way, it is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. For the most comprehensive resource coverage possible, we recommend enabling the [Cluster Autoscaler](/docs/products/compute/kubernetes/guides/manage-node-pools/), or [resizing your node pools](/docs/products/compute/kubernetes/guides/manage-node-pools/) to something larger as needed.
+Existing worker nodes are only automatically upgraded when you use the Cloud Manager and select **Recycle All Nodes** during the upgrade process. This recycles all nodes on a rolling basis so that only a single node is down at any time. Since this means there is one less worker node during the upgrade process, it can affect performance and might not be preferred for production applications. It is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. To overcome this, you can temporarily add additional worker nodes and perform either an *in-place* or *out-of-place* upgrade to avoid any performance impact. For more details on these approaches, see [Upgrade Worker Nodes](#upgrade-worker-nodes).
+
+## Deprecating Kubernetes Versions (End of Life)
+
+Kubernetes versions are also regularly *deprecated* on LKE. This prevents customers from experiencing issues as a result of using outdated software. When a minor version of Kubernetes is deprecated, an upgrade is scheduled for any LKE clusters using that version. This scheduled update is communicated via email to all affected customers in advance. It is recommended that customers manually initiate the upgrade. If an upgrade does not occur manually, the cluster is automatically upgraded at the scheduled time.
 
 ## Review the Kubernetes Changelog
 
@@ -134,7 +140,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 
     ![](upgrade-lke-cluster-confirmation.png)
 
-1. The next step is to upgrade all worker nodes in the cluster so that they are they use the newer Kubernetes version. A second popup should automatically appear requesting that you start the recycle process. Each worker node is recycled on a rolling basis so that only a single node is down at any time. *Only click the **Recycle All Nodes** button if you do not care about performance impact to your application.* For high performance production applications, consider clicking the **Cancel** button and performing one of upgrade procedures outlined in the [Safely Upgrade Worker Nodes While Reducing Impact](#safely-upgrade-worker-nodes-while-reducing-impact) section.
+1. The next step is to upgrade all worker nodes in the cluster so that they are they use the newer Kubernetes version. A second popup should automatically appear requesting that you start the recycle process. Each worker node is recycled on a rolling basis so that only a single node is down at any time. *Only click the **Recycle All Nodes** button if you do not care about performance impact to your application.* For high performance production applications, consider clicking the **Cancel** button and performing one of the upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 
     ![](upgrade-lke-recycle.png)
 {{% /tab %}}
@@ -167,7 +173,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
     └─────────────────────┴──────┴─────────────────────┴─────────────────────┴──────────────┴─────────────┘
     ```
 
-    Since this process does not upgrade the worker nodes, perform one of upgrade procedures outlined in the [Safely Upgrade Worker Nodes While Reducing Impact](#safely-upgrade-worker-nodes-while-reducing-impact) section.
+    Since this process does not upgrade the worker nodes, perform one of upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 
 {{% /tab %}}
 {{% tab "Linode API" %}}
@@ -227,11 +233,11 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
     }
     ```
 
-    Since this process does not upgrade the worker nodes, perform one of upgrade procedures outlined in the [Safely Upgrade Worker Nodes While Reducing Impact](#safely-upgrade-worker-nodes-while-reducing-impact) section.
+    Since this process does not upgrade the worker nodes, perform one of upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 {{% /tab %}}
 {{< /tabs >}}
 
-### Safely Upgrade Worker Nodes While Reducing Impact
+### Upgrade Worker Nodes
 
 Once the upgrade has been initiated, the control plane should be on the newer Kubernetes version but the existing worker nodes will still be on the older version. You can now decide how you'd like to handle upgrading the existing worker nodes to the newer Kubernetes version. Select from one of the options below.
 
@@ -246,6 +252,8 @@ It is highly recommended to add additional resources and take a "cordon and migr
 #### Recycle All Worker Nodes
 
 *This process is the easiest way to upgrade all worker nodes but will likely impact application performance. It is only recommended if you are not running a production application.*
+
+This recycles each worker node on a rolling basis so that only one node is down at any particular moment. In the highest level of detail, each worker node is independently [drained and cordoned](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) *one at a time*. During this process, all workloads are migrated to other nodes. Once a worker node is drained and cordoned, it is removed and a new node is created using the new Kubernetes version. It is synced, and then uncordoned, immediately putting it back live into the cluster with the `Ready` status.
 
 {{< tabs >}}
 {{% tab "Cloud Manager" %}}
@@ -343,7 +351,7 @@ For more details, review the shell request sample on the [Node Pool Update API r
     kubectl drain [node] --ignore-daemonsets
     ```
 
-    By default, this will allow the pods to gracefully terminate with a default grace period of 30 sections. If your nodes have a long grace period, it may take a while to migrate off the existing workloads. You can adjust this by using the `--grace-period [value]` option in the above drain command, replacing *[value]* with the time in sections you wish to use. See [Termination of Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination) on the official Kubernetes documentation.
+    By default, this will allow the pods to gracefully terminate with a default grace period of 30 seconds. If your nodes have a long grace period, it may take a while to migrate off the existing workloads. You can adjust this by using the `--grace-period [value]` option in the above drain command, replacing *[value]* with the time in seconds you wish to use. See [Termination of Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination) on the official Kubernetes documentation.
 
 1. After the node has been drained, it can be recycled, which rebuilds the worker node using the newer Kubernetes version.
 
@@ -374,13 +382,13 @@ For more details, review the API request sample on the [Node Recycle API referen
     {{% /tab %}}
     {{< /tabs >}}
 
-1. Repeat steps 2 through 4 for *each* worker node until all worker nodes are using the newer Kubernetes version.
+1. Repeat steps 2 through 4 for each worker node until *all but the last* worker nodes are using the newer Kubernetes version. For the last worker node, repeat steps 2 and 3 to cordon and drain that node - but do not recycle it as that will cause workloads to land back on that node. Instead, continue with the step below to delete it.
 
-1. Remove the additional worker node that was added during this upgrade process. To do this, either delete the additional node directly or, if you previously adjusted the Autoscale Pool, adjust the values back to what they were prior to the upgrade.
+1. Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were prior to the upgrade.
 
     {{< tabs >}}
     {{% tab "Cloud Manager" %}}
-Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Resize Pool** button. Decrease the size of the node pool by 1. For example, if you have 4 nodes in the pool, decrease that value to 3. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
+Locate the node pool on the details page of your LKE cluster. Click the corresponding **Resize Pool** button. Decrease the size of the node pool by 1. For example, if you have 4 nodes in the pool, decrease that value to 3. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
 
 If you are also using the autoscale feature, decrease the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
     {{% /tab %}}
