@@ -6,7 +6,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-20
 modified_by:
   name: Linode
-title: "Advanced Troubleshooting DNS Problems"
+title: "Troubleshooting DNS Issues"
+bundles: ['troubleshooting']
 authors: ["Tom Henderson"]
 ---
 
