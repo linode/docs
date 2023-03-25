@@ -1,7 +1,5 @@
 ---
 slug: centos-install-and-configure-vnc-server
-author:
-  name: Nathaniel Stickman
 description: 'This guide will show you how to install and configure a VNC server which you can remotely connect to and run a desktop environment with on CentOS 8.'
 og_description: 'This guide shows you how to install, configure, and use a VNC server to connect to a CentOS 8 remotely.'
 keywords: ['centos vnc server']
@@ -10,12 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 modified_by:
   name: Nathaniel Stickman
-title: "CentOS: Install and Configure VNC Server"
-h1_title: "How to Install and Configure VNC Server on Centos 8"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Install and Configure VNC Server on Centos 8"
 external_resources:
 - '[TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html)'
 - '[RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)'
@@ -24,15 +17,16 @@ relations:
         key: install-vnc
         keywords:
             - distribution: CentOS 8
+authors: ["Nathaniel Stickman"]
 ---
 
 *Virtual Network Computing* (VNC) allows you to connect to and control a remote desktop environment. It is common to use VNC to operate your server with a full desktop experience. This guide walks you through the steps to install, configure, and use VNC on CentOS 8.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. In the examples that follow, change `192.0.2.0` to the IP address for your CentOS 8 machine.
 
@@ -72,7 +66,7 @@ Several VNC options are available for CentOS. This guide uses the open-source Ti
 
     The remainder of this guide uses the above example user and display port.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Display port numbers determine the port numbers on which VNC servers are made available. VNC server ports are `5900` plus the display port number — thus, `5901` for the example above. The resulting port numbers need to be available. However, display port numbers are otherwise arbitrary and do not need to be consecutive.
     {{< /note >}}
 
@@ -91,7 +85,7 @@ Display port numbers determine the port numbers on which VNC servers are made av
 
     Alternatively, you can configure global default parameters in the `/etc/tigervnc/vncserver-config-defaults` file. Parameters in that file are applied for any user unless otherwise overridden by a user's `~/.vnc/config` file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The [TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html) provides a comprehensive list and descriptions of possible configuration parameters for the VNC server.
     {{< /note >}}
 
@@ -113,9 +107,9 @@ The [TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html) provides a comp
 
         sudo netstat -tlnp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The remainder of this guide assumes the VNC server is on port `5901`. This number is derived from the VNC servers operating on port `5900` plus the display port number that is used.
-{{</ note >}}
+{{< /note >}}
 
 ## Secure Your VNC Connection
 

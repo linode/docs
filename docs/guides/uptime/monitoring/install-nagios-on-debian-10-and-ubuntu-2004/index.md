@@ -1,10 +1,6 @@
 ---
 slug: install-nagios-on-debian-10-and-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
-og_description: 'This guide shows you how to install Nagios, a widely-used free and open-source application for server monitoring, on both Debian 10 and Ubuntu 20.04 servers.'
 keywords: ['nagios','monitoring','debian 10','ubuntu 20.04']
 tags: ['ubuntu', 'debian', 'monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,11 +8,7 @@ published: 2021-06-04
 modified_by:
   name: Linode
 title: "Install Nagios on Debian 10 and Ubuntu 20.04"
-h1_title: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "How to Install Nagios on Debian 10 and Ubuntu 20.04"
 external_resources:
 - '[Nagios](https://www.nagios.com/products/nagios-core/)'
 - '[installation guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu)'
@@ -26,23 +18,24 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 10 & Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 ---
 
 Monitoring tools play an important part in effectively operating production servers. They can help you keep tabs on a server's status and quickly catch any issues that might arise. [Nagios](https://www.nagios.com/products/nagios-core/) is a popular solution, providing monitoring and alerts for your server and the applications and services running on it. The wide array of plugins available for Nagios make it adaptable to your needs.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Nagios's official installation guide shows how to compile Nagios from source code rather than from the package manager. Installing Nagios using packages is more straightforward, but you can follow Nagios's official [installation guide](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html#Ubuntu) if you would prefer to install Nagios from source code.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [Install a LAMP Stack on Debian 10](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) or the [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) guide for instructions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

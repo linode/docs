@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.04 (Jaunty).'
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.04", "jaunty"]
 tags: ["web applications","apache","django","mysql","python","ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
 
 This guide provides an introduction to getting started with the Django Framework. We will be installing Django and related packages from the Ubuntu repository, and deploying applications with mod\_python and the Apache web server. This setup is generally accepted as a good platform for getting started with Django, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have a running and up to date Ubuntu 9.04 (Jaunty) system. Furthermore, you will want to have a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-04-jaunty/) installed.
+We assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and up to date Ubuntu 9.04 (Jaunty) system. Furthermore, you will want to have a running [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-04-jaunty/) installed.
 
 ## Enabling the "Universe" Repository
 

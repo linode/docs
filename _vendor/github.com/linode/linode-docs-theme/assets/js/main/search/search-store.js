@@ -110,7 +110,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					m = this.metaResult.get(key);
 					if (!m && sectionConfigIdx !== -1) {
 						let index = searchConfig.sectionsSorted[sectionConfigIdx];
-						m = { title: index.title, linkTitle: index.title };
+						m = { title: index.title, linkTitle: index.title, excerpt: '' };
 					}
 				}
 

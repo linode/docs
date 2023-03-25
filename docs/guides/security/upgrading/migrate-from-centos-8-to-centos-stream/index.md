@@ -1,9 +1,6 @@
 ---
 slug: migrate-from-centos-8-to-centos-stream
-author:
-  name: Jeff Novotny
 description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
-og_description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 keywords: ['CentOS','CentOS Stream','Migration','Advantages and Drawbacks']
 tags: ['centos', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,15 +9,12 @@ image: MIGRATE.jpg
 modified_by:
   name: Linode
 title: "Migrate From CentOS 8 to CentOS Stream"
-h1_title: "How to Migrate From CentOS 8 to CentOS Stream"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title_meta: "How to Migrate From CentOS 8 to CentOS Stream"
 external_resources:
 - '[CentOS Stream Main Page](https://www.centos.org/centos-stream/)'
 - '[The CentOS Documentation Page](https://docs.centos.org/en-US/docs/)'
 - '[CentOS Project Contribution Page](https://wiki.centos.org/Contribute)'
+authors: ["Jeff Novotny"]
 ---
 
 [*CentOS Stream*](https://www.centos.org/centos-stream/) is a free, open-source Linux distribution that replaces CentOS version 8. CentOS Stream serves a different purpose than previous CentOS releases because it is now a development build for *Red Hat Enterprise Linux* (RHEL). It allows developers early access to new features and gives them a chance to influence the CentOS software development process. This guide describes CentOS Stream, its benefits and drawbacks, and explains how to migrate from CentOS 8 to CentOS Stream.
@@ -33,7 +27,7 @@ This decision repositions CentOS Stream as a community-based development platfor
 
 The current version of CentOS Stream is version 8. However, CentOS Stream 9 is currently expected to be ready in mid-2021. The maintenance life cycle for legacy CentOS releases is changing as well. CentOS 8 updates continue until December 31, 2021, which is much earlier than previously planned. CentOS Linux 9 is canceled. However, updates for CentOS 7 continue as planned until mid-2024.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In software engineering terms, the *upstream* direction is closer to the original source code, while *downstream* components are typically forks, rebuilds, or customizations. Previously, CentOS was built from RHEL and was downstream of it. However, CentOS is now upstream of RHEL. New versions of RHEL are based on CentOS Stream.
 {{< /note >}}
 
@@ -75,7 +69,7 @@ In response to these changes, [AlmaLinux](https://almalinux.org/) and [RockyLinu
 
 The `dnf` utility provides a simple, convenient, and trouble-free way to migrate from CentOS 8 to CentOS Stream. You can use `dnf` to download the new packages, swap and sync the streams, and remove any outdated components.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Alternatively, ISO images or RPM packages can be downloaded from [The CentOS Downloads Page](https://www.centos.org/download/). This page also describes alternative download sources, cloud and container images, export regulations, and explains how to download the raw source code.
 {{< /note >}}
 

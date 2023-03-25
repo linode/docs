@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-ubuntu-11-04-natty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.04 (Natty).'
 keywords: ["ubuntu lamp server", "ubuntu 11.04 lamp", "natty lamp", "ubuntu web server", "ubuntu natty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 
@@ -34,7 +32,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

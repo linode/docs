@@ -1,7 +1,5 @@
 ---
 slug: using-sorted-sets-in-redis-database
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use Sorted Sets in your Redis databases, a powerful additional data type for ordered values. You also learn common commands needed to manage Sorted Sets."
 keywords: ['redis sorted set example','redis sorted set commands','how do redis sorted sets work']
 tags: ['redis']
@@ -9,14 +7,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-21
 modified_by:
   name: Nathaniel Stickman
-title: "Using Sorted Sets in Redis Databases"
-h1_title: "How to Use Sorted Sets in Redis Databases"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Use Sorted Sets in Redis Databases"
+title_meta: "How to Use Sorted Sets in Redis Databases"
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis, the open-source, in-memory database, is a popular option for its quick, low-latency storage. Redis's *Sorted Set* data type captures the advantages of both Lists and Sets, giving you a useful tool for ordered collections of unique values. This tutorial dives into what Sorted Sets are and introduces you to commands you can use to manage them.
@@ -25,13 +20,13 @@ Be sure to check out our other guides in this series, including our previous gui
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Follow the instructions in our [How to Install and Configure Redis](/docs/guides/install-redis-ubuntu/) guide to installing a Redis server and command-line interface (CLI). Be sure to use the drop-down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

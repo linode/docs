@@ -1,8 +1,5 @@
 ---
 slug: google-analytics-on-wordpress
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'Get in-depth website visitor statistics with Google Analytics on your WordPress website.'
 keywords: ["analytics", "google analytics", "wordpress", "analytics", "tracking", "statistics"]
 tags: ["wordpress","statistics","analytics"]
@@ -17,13 +14,14 @@ external_resources:
  - '[Google Analytics Developers](https://developers.google.com/analytics/)'
  - '[Google Analytics for Websites](/docs/guides/google-analytics-for-websites/)'
 aliases: ['/uptime/analytics/google-analytics-on-wordpress/']
+authors: ["Elle Krout"]
 ---
 
 Google Analytics offers detailed statistics related to visitor traffic and sales for your website, allowing you to better know your audience. It can be beneficial to any website owner interested in growing their visitor base.
 
 This guide provides three ways to add Google Analytics to WordPress: By directly adding the analytics code to your theme and two plugin options. Prior to using this guide, you should have completed our [Manage Web Content with WordPress](/docs/guides/how-to-install-and-configure-wordpress/) guide and have a fully configured WordPress website set up.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -49,7 +47,7 @@ You are now set up with Google Analytics and can decide how to proceed with addi
 
 WordPress uses PHP includes, so adding a Google Analytics code is as easy as altering a single file in your WordPress theme.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide assumes you have configured your LAMP server as described in our guides, with your publicly accessible directory located at something similar to `/var/www/example.com/public_html`. Replace all instances of `example.com` with your own domain information.
 {{< /note >}}
 
@@ -86,7 +84,7 @@ This guide assumes you have configured your LAMP server as described in our guid
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you copy the above code, replace `UA-00000000-0` with your **tracking ID**.
 
 At this time you may want to consider enabling the *[demographics](https://support.google.com/analytics/answer/2819948?hl=en)* feature of Google Analytics. If you decide to do so, you will need to add an additional line of code to your JavaScript in the steps below. Insert the following between the lines containing `ga('create', 'UA-00000000-0', 'auto');` and `ga('send', 'pageview');`:

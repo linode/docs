@@ -1,8 +1,5 @@
 ---
 slug: how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will use the Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask."
 keywords: ['maps','GIS','flask','mongodb', 'python']
 tags: ["web applications","python"]
@@ -11,13 +8,10 @@ published: 2020-01-21
 modified_by:
   name: Linode
 image: L_CreateGISapp.png
-title: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
-h1_title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
-enable_h1: true
-contributor:
-  name: Leslie Salazar
-  link: https://twitter.com/leslitasalazar?s=03
+title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
+title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
 aliases: ['/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/']
+authors: ["Leslie Salazar"]
 ---
 Geographic Information system (GIS) based applications require a beautiful mapping experience for users. [Stadia Maps](https://stadiamaps.com/) provides digital mapping that you can easily and affordably integrate into your web or mobile applications. They offer hosted map tiles, offline map tiles, static maps, and a few other [core products](https://stadiamaps.com/products/). If you would like to test their services, you can use a local development environment along with their free tier plan. For more details on pricing and service limits, see their [pricing plans](https://stadiamaps.com/pricing/).
 
@@ -35,15 +29,15 @@ The sections in this guide will cover the following topics:
 - Starting a local MongoDB instance and importing a data set to your database
 - Creating a Flask app that uses Stadia Maps to display your GeoJSON data as markers on your map.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide assumes a basic familiarity with programming concepts, Python, HTML, CSS, and JavaScript.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Before you Begin
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written using Python version 3.7.
-{{</ note >}}
+{{< /note >}}
 
 1. You can optionally [create an account with Stadia maps](https://client.stadiamaps.com/signup/). When developing locally, you are not required to create an account with Stadia Maps. Once you are ready to deploy your app, you will be required to sign up and select an appropriate service plan.
 

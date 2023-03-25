@@ -1,7 +1,5 @@
 ---
 slug: silver-searcher-on-linux
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to install and use the code-searching tool Silver Searcher. The Silver Searcher is a tool like ack that emphasizes speed and efficiency."
 keywords: ['silver searcher ag','ag command linux','ack alternative']
 tags: ['ubuntu', 'debian', 'linux']
@@ -9,23 +7,20 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using Silver Searcher on Linux"
-h1_title: "How to Install and Use Silver Searcher on Linux"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Install and Use Silver Searcher on Linux"
+title_meta: "How to Install and Use Silver Searcher on Linux"
+authors: ["Nathaniel Stickman"]
 ---
 
 The Silver Searcher is a command-line tool for searching code. It is similar to the well-known `ack` command, but improves on performance and adds support for `.*ignore` files. In this guide, you learn more about Silver Searcher and how to install and get started using it on your Linux system.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

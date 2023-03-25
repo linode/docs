@@ -1,8 +1,5 @@
 ---
 slug: secure-logstash-connections-using-ssl-certificates
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides you with instructions for securing connections from Logstash, a server-side processing pipeline, using SSL certificates.'
 og_description: 'Secure Logstash connections using SSL certificates.'
 keywords: ['secure logstash with ssl', 'logstash ssl setup', 'logstash ssl certificate']
@@ -13,23 +10,21 @@ modified: 2020-11-05
 modified_by:
   name: Linode
 title: "Secure Logstash Connections Using SSL Certificates"
-contributor:
-  name: Dan Nielsen
-  link: https://github.com/danielsen
 external_resources:
  - '[Logstash Home Page](https://www.elastic.co/logstash)'
  - '[Filebeat Overview](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-overview.html)'
+authors: ["Dan Nielsen"]
 ---
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 <!-- Include one of the following notes if appropriate. --->
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -39,7 +34,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 This guide explores how you can generate an organization certificate authority. The certificate authority can sign server and client certificates that are used in connection authentication.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The commands in this guide are for CentOS systems but they can easily be modified for other Linux distributions.
 {{< /note >}}
 
@@ -127,9 +122,9 @@ DNS.3 = DOMAIN_3
 DNS.4 = DOMAIN_4
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If this Logstash service is available on multiple host names, or if you intend to use this certificate on multiple hosts, those should be added to the `[alt_names]` section. Otherwise, that section can be removed along with the `subjectAltName` line.
-{{</ note >}}
+{{< /note >}}
 
 1.  Create a signing key and CSR.
 
@@ -232,7 +227,7 @@ At this point you should be able to run Logstash, push a message, and see the ou
 
 You can stop here and use the setup as is, or proceed to setup peer verification. When using peer verification Logstash requires that incoming connections present their own certificate for verification rather than a username and password. You may find this method easier to script when automatically deploying hosts or applications that push messages to Logstash.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The remote client host needs copies of the organization certificate (`org_ca.crt`), organization certificate key (`org_ca.key`), and organization certificate serial number (`org_ca.serial`) to generate its certificate. These are all located in the `/etc/pki/tls/private` directory. Make sure to copy those files before proceeding. You may have to update the host permissions with `o+r` on to be able to use `scp` to copy them. Alternatively, you can generate the client certificate on the Logstash host and copy that to the client host when complete.
 {{< /note >}}
 
@@ -329,10 +324,10 @@ extendedKeyUsage = serverAuth, clientAuth
 }
 {{</ output >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Please see the [section on cleaning up](#cleaning-up) to ensure that testing artifacts are
 tidied up correctly.
-{{< /caution >}}
+{{< /note >}}
 
 ## Filebeat
 

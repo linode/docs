@@ -1,32 +1,25 @@
 ---
 slug: installing-and-using-the-broot-command
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
-og_description: "Learn how to use broot on Linux, a tool for navigating directories with an easy-to-follow and modern file tree."
 keywords: ['linux broot','linux directory tree','unix broot']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Nathaniel Stickman
-title: "Installing and Using the broot Command"
-h1_title: "How to Install and Use the broot Command"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Install and Use the broot Command"
+title_meta: "How to Install and Use the broot Command"
+authors: ["Nathaniel Stickman"]
 ---
 
 The `broot` command provides a modern approach to generating directory trees on the Linux command line. It renders the tree in a succinct and intuitive layout that helps you navigate around your computer's directories. Additionally, `broot` offers advanced features for managing and retrieving details about your files and directories. This guide shows you how to install `broot` on your Linux system and get started using it.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -146,7 +139,7 @@ The file management capabilities of `broot` set it apart from other Linux utilit
 
 - Press **Enter** on a file to have `broot` attempt to call a program to open the file. You can also use the `:e` command to have `broot` attempt to open the file with the default editor program.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `broot` uses the `$EDITOR` environmental variable to determine what editor to use. If you do not have this variable set, you can set it with a shell command like the one below. The below example command sets the default editor to Vim.
 
     export EDITOR=$(which vim)

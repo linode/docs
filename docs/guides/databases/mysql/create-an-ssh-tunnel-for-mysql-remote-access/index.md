@@ -1,8 +1,5 @@
 ---
 slug: create-an-ssh-tunnel-for-mysql-remote-access
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to gain remote access to your MySQL server and database through PuTTY or similar mysql-client using an SSH Tunnel.'
 keywords: ["MySQL tunnel", "MySQL over SSH", "SSH tunnel", "MySQL client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
 tags: ["ssh","database","mysql"]
+authors: ["Linode"]
 ---
 
 This guide will show you how to make a secure connection to your remote MySQL or MariaDB server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.
@@ -62,7 +60,7 @@ First, you need to establish a basic connection to your Linode:
 
     ![An unknown host key warning in PuTTY on Windows.](362-putty-02-host-key-warning.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the Lish console (see the **Console** tab in the Linode Manager) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
@@ -95,7 +93,7 @@ This section will show you how to create an SSH tunnel to MySQL on Mac OS X or L
     `-L` - binds a local port to the remote host post.
     `-N` - means forwarding ports.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're already running a local MySQL server on your workstation, use a different local port (3307 is a common choice). Your new command would look like this:
 
     ssh user@example.com -L 3307:127.0.0.1:3306 -N

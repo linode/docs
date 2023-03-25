@@ -1,38 +1,31 @@
 ---
 slug: how-to-install-apache-kafka-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to install and configure Apache Kafka, a popular open-source platform for stream management and processing first developed by LinkedIn."
-og_description: "Learn how to install and configure Apache Kafka, a popular open-source platform for stream management and processing first developed by LinkedIn."
 keywords: ['Apache','Kafka','streaming','processing','events']
 tags: ['ubuntu', 'kafka', 'apache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-11
 modified_by:
   name: Linode
-title: "How to Install Apache Kafka on Ubuntu"
-h1_title: "Install and Configure Apache Kafka on Ubuntu"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Install and Configure Apache Kafka on Ubuntu"
+title_meta: "How to Install Apache Kafka on Ubuntu"
 external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Downloads](https://kafka.apache.org/downloads)'
 - '[Apache Kafka Authentication page](https://www.apache.org/info/verification.html)'
-
+authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 [*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event. External agents, independently and asynchronously, send and receive event notifications to and from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -81,7 +74,7 @@ Tar archives for Apache Kafka can be downloaded directly from the Apache Site an
 1. If you downloaded the software onto a different computer than the host, transfer the Apache Kafka files to the host via `scp`, `ftp`, or another file transfer method. Replace the `user` and `yourhost` values with your user name and host IP address:
 
         scp /localpath/kafka_2.13-2.7.0.tgz user@192.0.2.0:~/
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the transfer is blocked, verify your firewall is not blocking the connection. Execute `sudo ufw allow 22/tcp` to allow `ufw` to allow `scp` transfers.
 {{< /note >}}
 1. (Optional) You can confirm you downloaded the file correctly with a SHA512 checksum. You can find the checksum file on the [Apache Kafka Downloads page](https://kafka.apache.org/downloads). Each release includes a link to a corresponding `sha512` file. Download this file and transfer it to your Kafka host using `scp`. Place the checksum file in the same directory as your tar file.
@@ -112,7 +105,7 @@ gpg:                using RSA key DFB5ABA9CD50A02B5C2A511662A9813636302260
 gpg:                issuer "bbejeck@apache.org"
 gpg: Good signature from "Bill Bejeck (CODE SIGNING KEY) <bbejeck@apache.org>" [unknown]
     {{< /output >}}
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `Gpg` might warn you the "key is not certified with a trusted signature". Unfortunately, there is no easy way to confirm the authenticity of the signer, and for most deployments, this is not necessary. For unqualified authentication for high-security deployments, follow the steps for *Validating Authenticity of a Key* on the [Apache Kafka Authentication page](https://www.apache.org/info/verification.html).
 {{< /note >}}
 
@@ -138,7 +131,7 @@ delete.topic.enable = true
         cd /home/kafka/kafka_2.13-2.7.0/
         bin/zookeeper-server-start.sh config/zookeeper.properties
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Leave all settings in `Zookeeper.properties` at the defaults for most deployments.
 {{< /note >}}
 1. Open a new console session and launch Kafka.
@@ -196,7 +189,7 @@ Kafka's command-line interface allows you to quickly test out the new topic. Use
 1. Create the consumer, specifying the `test-events` topic it should read from. The `--from-beginning` flag indicates it should read all events starting from the beginning of the topic.
 
         bin/kafka-console-consumer.sh --topic test-events --from-beginning --bootstrap-server localhost:9092
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Kafka's Consumer API provides options to format the incoming events. Run the following command to view the full list.
 
     bin/kafka-console-consumer.sh
@@ -217,7 +210,7 @@ key1: This is event 3
 key2: This is event 4
     {{< /output >}}
 1. Stop the producer or consumer anytime you like with a `Ctrl-C` command.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Events are durable and can be read as many times as you want. You can create a second consumer for the same topic and have it read all the same events.
 {{< /note >}}
 

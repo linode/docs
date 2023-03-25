@@ -1,9 +1,6 @@
 ---
 slug: custom-compiled-kernel-with-pvgrub-debian-ubuntu
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for configuring your Debian or Ubuntu Linode to run a custom compiled kernel with PV-GRUB.'
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu/','/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu/']
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "debian", "ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: custom-compiled-kernel-pvgrub
         keywords:
             - distribution: Debian/Ubuntu
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}
@@ -27,7 +25,7 @@ Running a custom-compiled Linux kernel is useful if you need to enable or disabl
 
 If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/guides/run-a-distributionsupplied-kernel-with-pvgrub/).
 
-Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Then, make sure you are logged into your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Then, make sure you are logged into your Linode as the `root` user.
 
 ## Prepare the System
 

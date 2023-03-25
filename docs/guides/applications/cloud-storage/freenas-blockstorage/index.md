@@ -1,8 +1,5 @@
 ---
 slug: freenas-blockstorage
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "FreeNAS is network-attached storage software configured through a web interface.  Learn how to install FreeNAS and connect it to a Block Storage Volume."
 keywords: ["zfs","freenas","block storage","nas"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,17 +12,18 @@ external_resources:
  - '[FreeNAS Volume Manager Manual](http://doc.freenas.org/11/storage.html)'
  - '[Available FreeNAS Plugins](http://doc.freenas.org/11/plugins.html#available-plugins)'
 aliases: ['/applications/cloud-storage/freenas-blockstorage/']
+authors: ["Edward Angert"]
 ---
 
 Network-attached storage (NAS) allows multiple client devices to access the connected storage media as though it's stored locally to the device. FreeNAS is FreeBSD-based NAS software, configurable via a browser interface.
 
 This guides shows how to install FreeNAS on a Linode and attach a [Block Storage Volume](/docs/products/storage/block-storage/) so that you can access both FreeNAS and the Storage Volume from your computer, phone, or tablet almost anywhere in the world.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 FreeNAS is not officially supported by Linode at this time. This means that features like the [Linode Backup Service](/docs/products/storage/backups/) and Lish will be unavailable to you.
 
 Any issues you may encounter with FreeNAS on your Linode are outside the scope of Linode Support. For further help with this guide's subject, you can ask questions on the [Linode Community Site](https://www.linode.com/community/questions/).
-{{< /caution >}}
+{{< /note >}}
 
 ## Prepare Your Linode
 
@@ -33,7 +31,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 2.  Disable the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog/) to prevent it from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-3.  [Create two disks](/docs/guides/disks-and-storage/#creating-a-disk):
+3.  [Create two disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#creating-a-disk):
 
     1.  **Label:** Installer
         * **Type:** unformatted / raw
@@ -43,7 +41,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
         * **Type:** unformatted / raw
         * **Size:** Can be set to use remaining disk. At least 10240MB
 
-4.  [Create two configuration profiles](/docs/guides/linode-configuration-profiles/#creating-a-configuration-profile) with the following settings. In each profile, disable all of the options under **Filesystem/Boot Helpers**.
+4.  [Create two configuration profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/#creating-a-configuration-profile) with the following settings. In each profile, disable all of the options under **Filesystem/Boot Helpers**.
 
     1.  **Label:** Installer
         * **Kernel:** Direct Disk
@@ -60,7 +58,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ## Create an Installer Disk
 
-1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/guides/lish/) from the dashboard of your Linode from the Linode Cloud Manager.
+1.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish](/docs/products/compute/compute-instances/guides/lish/) from the dashboard of your Linode from the Linode Cloud Manager.
 
 2.  Once in Rescue Mode, run the following command to set the [latest FreeNAS release](http://www.freenas.org/download-freenas-release/) (11.1 at the time of this writing) as a variable:
 
@@ -80,7 +78,7 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 6.  Go to the Linode Cloud Manager and access the dashboard for your Linode.
 
-7.  Click the **Launch Console** link to access the [Glish](/docs/guides/glish/) console and start the installation.
+7.  Click the **Launch Console** link to access the [Glish](/docs/products/compute/compute-instances/guides/glish/) console and start the installation.
 
 ## Install FreeNAS
 
@@ -118,9 +116,9 @@ Any issues you may encounter with FreeNAS on your Linode are outside the scope o
 
 ### Format Block Storage Volume as ZFS
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Formatting will erase all data on the volume.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Log back into the web interface for FreeNAS.
 

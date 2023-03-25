@@ -1,8 +1,5 @@
 ---
 slug: kvm-reference
-author:
-  name: Josh Sager
-  email: docs@linode.com
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
 keywords: ["kvm", "kvm reference", "virtual machine mode", "kvm linode", "xen"]
 aliases: ['/platform/disk-images/kvm-reference/','/platform/kvm-reference/','/platform/kvm/']
@@ -14,6 +11,7 @@ published: 2015-06-15
 title: 'KVM Migration Reference'
 tags: ["linode platform"]
 deprecated: true
+authors: ["Josh Sager"]
 ---
 
 Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
@@ -50,7 +48,7 @@ Virtual machine mode determines whether devices inside your virtual machine are 
 | Net     | Virtio Net          | e1000                 |
 | Serial  | ttyS0               | ttyS0                 |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you're unfamiliar with these distinctions, choose paravirtualization
 {{< /note >}}
 
@@ -117,13 +115,13 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 
 3.  Edit your Linode's configuration profile back to the previous setting.
 
-{{< note >}}
-Remember to check [Glish](/docs/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+{{< note respectIndent=false >}}
+Remember to check [Glish](/docs/products/compute/compute-instances/guides/glish/) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 
 ### CentOS 6
 
-There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/guides/lish/) and run:
+There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/products/compute/compute-instances/guides/lish/) and run:
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
@@ -137,4 +135,4 @@ You can disable the use of Predictable Network Interface Names with the command 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/guides/lish/) to regain access to your Linode to run this command. Once you've done so, reboot your system.
+If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/products/compute/compute-instances/guides/lish/) to regain access to your Linode to run this command. Once you've done so, reboot your system.

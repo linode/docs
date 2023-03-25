@@ -82,9 +82,9 @@ These additional guides help you with targeted topics like how to manage your ac
 
 ### Manage Your Linodes
 
-- [Reset the Root Password on your Linode](/docs/guides/reset-the-root-password-on-your-linode/)
+- [Reset the Root Password on your Linode](/docs/products/compute/compute-instances/guides/reset-root-password/)
 
-- [Resize a Linode Disk](/docs/guides/resize-a-linode-disk/)
+- [Resize a Linode Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 
 - [Deploy an Image to a Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)
 

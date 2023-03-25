@@ -1,8 +1,5 @@
 ---
 slug: email-with-postfix-dovecot-and-mariadb-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing the Postfix MTA along with the Dovecot mail server and MariaDB on CentOS.'
 keywords: ["postfix centos 7", "dovecot centos 7", "linux mail server", "email", "centos 7"]
 tags: ["centos","postfix","email","mariadb"]
@@ -18,6 +15,7 @@ external_resources:
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
  - '[Postfix SASL Howto](http://www.postfix.org/SASL_README.html)'
  - '[Dovecot Wiki](https://wiki2.dovecot.org/)'
+authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure virtual user mail server with Postfix, Dovecot, and MariaDB (a drop-in replacement for MySQL) on CentOS 7. We'll explain how to create new user mailboxes and send or receive email to and from configured domains.
@@ -30,9 +28,9 @@ For a different Linux distribution or different mail server, review our [email t
 
 ## Before You Begin
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 1. Review the concepts in the [Running a Mail Server](/docs/guides/running-a-mail-server/) guide.
 
@@ -168,7 +166,7 @@ You can now add data to the database and tables that were created in the previou
           ('3', 'hostname'),
           ('4', 'localhost.example.com');
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note which `id` corresponds to which domain, the `id` value is necessary for the next two steps.
 {{< /note >}}
 
@@ -548,7 +546,7 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
 
 1. Edit the service settings file `/etc/dovecot/conf.d/10-master.conf`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When editing the file, be careful not to remove any opening or closing curly braces. If there's a syntax error, Dovecot will crash silently. You can check `/var/log/upstart/dovecot.log` to debug the error.
 {{< /note >}}
 
@@ -651,7 +649,7 @@ ssl_key = </etc/letsencrypt/live/example.com/privkey.pem
 
 ## Test Your Configuration
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Given the possibility of hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 {{< /note >}}
 
@@ -723,7 +721,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
 
 ### Domains
 
-1.  To add a new domain, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  To add a new domain, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Log in to the MySQL server:
 
@@ -794,7 +792,7 @@ To add new domains, email addresses, and aliases to the mailserver you will need
         VALUES
           ('5', ENCRYPT('newpassword', CONCAT('$6$', SUBSTRING(SHA(RAND()), -16))) , 'email3@newdomain.com');
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
 {{< /note >}}
 
@@ -836,7 +834,7 @@ The `domain_id` should correspond to the `id` value of the domain in the `virtua
         VALUES
           ('5', 'alias@newdomain.com', 'myemail@gmail.com');
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `domain_id` should correspond to the `id` value of the domain in the `virtual_domains` table. In the example, we are creating an email address for `newdomain.com` added in the previous section.
 {{< /note >}}
 

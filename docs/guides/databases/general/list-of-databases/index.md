@@ -1,18 +1,14 @@
 ---
 slug: list-of-databases
-author:
-  name: Jack Wallen
 description: 'Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage.'
 keywords: ['database',database lists'','best database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "List of Databases - Most Popular"
-h1_title: "The 8 Most Popular Databases"
-enable_h1: true
-contributor:
-  name: Jack Wallen
+title: "The 8 Most Popular Databases"
+title_meta: "List of Databases - Most Popular"
+authors: ["Jack Wallen"]
 ---
 
 Databases power nearly every digital platform on the planet: From websites, to blogs, to social media, to streaming services. Most end-users know databases such as MySQL as a tool to store data. That's a pretty accurate, although fundamental, description of what a database is. However, they are much more than that.

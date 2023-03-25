@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Installation and basic usage guide of Mastodon, an open source alternative to Twitter."
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
@@ -11,9 +8,8 @@ modified: 2018-08-16
 modified_by:
   name: Linode
 published: 2018-08-16
-title: "How to Install a Mastodon Server on Ubuntu 16.04"
-h1_title: "Installing a Mastodon Server on Ubuntu 16.04"
-enable_h1: true
+title: "Installing a Mastodon Server on Ubuntu 16.04"
+title_meta: "How to Install a Mastodon Server on Ubuntu 16.04"
 external_resources:
 - '[Mastodon GitHub - Docker Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Docker-Guide.md)'
 - '[Mastodon GitHub - Production Guide](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Production-guide.md)'
@@ -27,6 +23,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 deprecated: true
+authors: ["Linode"]
 ---
 
 ## What is Mastodon?
@@ -47,13 +44,13 @@ While Mastodon servers are privately-operated, they are often open to public reg
 
 This guide will create a Mastodon server on a Linode running Ubuntu 16.04. Docker Compose is used to install Mastodon. If you prefer a different Linux distribution, you may be able to use this guide with small changes to the listed commands.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Consult Mastodon's [resource usage examples](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Resources-needed.md) when considering which Linode plan to deploy on.
 {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
 
 1. Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Mastodon Linode.
 
@@ -67,9 +64,9 @@ Consult Mastodon's [resource usage examples](https://github.com/tootsuite/docume
 
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< disclosure-note "Why not use the Docker Certbot image?" >}}
-When Certbot is run, you generally pass a command with the [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook) which reloads your web server. In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. Another workaround would be needed to enable this architecture.
-{{< /disclosure-note >}}
+    {{< note type="secondary" title="Why not use the Docker Certbot image?" isCollapsible=true >}}
+    When Certbot is run, you generally pass a command with the [`--deploy-hook` option](https://certbot.eff.org/docs/api/hooks.html#certbot.hooks.deploy_hook) which reloads your web server. In your deployment, the web server will run in its own container, and the Certbot container would not be able to directly reload it. Another workaround would be needed to enable this architecture.
+    {{< /note >}}
 
 1. Mastodon sends email notifications to users for different events, like when a user first signs up, or when someone else requests to follow them. You will need to supply an SMTP server which will be used to send these messages.
 
@@ -128,7 +125,7 @@ services:
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide uses Mastodon [v2.4.2](https://github.com/tootsuite/mastodon/releases/tag/v2.4.2). At the time of writing, there was a [known issue](https://github.com/tootsuite/mastodon/issues/8001) with [v2.4.3](https://github.com/tootsuite/mastodon/releases/tag/v2.4.3) during installation.
 {{< /note >}}
 
@@ -213,98 +210,98 @@ COPY default.conf /etc/nginx/conf.d
 
 1. Create a file named `default.conf` in the `nginx` directory and paste in the following contents. Change each instance of `example.com`:
 
-    {{< file "nginx/default.conf" conf >}}
-map $http_upgrade $connection_upgrade {
-  default upgrade;
-  ''      close;
-}
+    ```file {title="nginx/default.conf" lang="nginx"}
+    map $http_upgrade $connection_upgrade {
+      default upgrade;
+      ''      close;
+    }
 
-server {
-  listen 80;
-  listen [::]:80;
-  server_name example.com;
-  # Useful for Let's Encrypt
-  location /.well-known/acme-challenge/ { root /usr/share/nginx/html; allow all; }
-  location / { return 301 https://$host$request_uri; }
-}
+    server {
+      listen 80;
+      listen [::]:80;
+      server_name example.com;
+      # Useful for Let's Encrypt
+      location /.well-known/acme-challenge/ { root /usr/share/nginx/html; allow all; }
+      location / { return 301 https://$host$request_uri; }
+    }
 
-server {
-  listen 443 ssl http2;
-  listen [::]:443 ssl http2;
-  server_name example.com;
+    server {
+      listen 443 ssl http2;
+      listen [::]:443 ssl http2;
+      server_name example.com;
 
-  ssl_protocols TLSv1.2;
-  ssl_ciphers HIGH:!MEDIUM:!LOW:!aNULL:!NULL:!SHA;
-  ssl_prefer_server_ciphers on;
-  ssl_session_cache shared:SSL:10m;
+      ssl_protocols TLSv1.2;
+      ssl_ciphers HIGH:!MEDIUM:!LOW:!aNULL:!NULL:!SHA;
+      ssl_prefer_server_ciphers on;
+      ssl_session_cache shared:SSL:10m;
 
-  ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+      ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+      ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
 
-  keepalive_timeout    70;
-  sendfile             on;
-  client_max_body_size 0;
+      keepalive_timeout    70;
+      sendfile             on;
+      client_max_body_size 0;
 
-  root /home/mastodon/live/public;
+      root /home/mastodon/live/public;
 
-  gzip on;
-  gzip_disable "msie6";
-  gzip_vary on;
-  gzip_proxied any;
-  gzip_comp_level 6;
-  gzip_buffers 16 8k;
-  gzip_http_version 1.1;
-  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+      gzip on;
+      gzip_disable "msie6";
+      gzip_vary on;
+      gzip_proxied any;
+      gzip_comp_level 6;
+      gzip_buffers 16 8k;
+      gzip_http_version 1.1;
+      gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
 
-  add_header Strict-Transport-Security "max-age=31536000";
+      add_header Strict-Transport-Security "max-age=31536000";
 
-  location / {
-    try_files $uri @proxy;
-  }
+      location / {
+        try_files $uri @proxy;
+      }
 
-  location ~ ^/(packs|system/media_attachments/files|system/accounts/avatars) {
-    add_header Cache-Control "public, max-age=31536000, immutable";
-    try_files $uri @proxy;
-  }
+      location ~ ^/(packs|system/media_attachments/files|system/accounts/avatars) {
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        try_files $uri @proxy;
+      }
 
-  location @proxy {
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto https;
-    proxy_set_header Proxy "";
-    proxy_pass_header Server;
+      location @proxy {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Proxy "";
+        proxy_pass_header Server;
 
-    proxy_pass http://web:3000;
-    proxy_buffering off;
-    proxy_redirect off;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
+        proxy_pass http://web:3000;
+        proxy_buffering off;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
 
-    tcp_nodelay on;
-  }
+        tcp_nodelay on;
+      }
 
-  location /api/v1/streaming {
-    proxy_set_header Host $host;
-    proxy_set_header X-Real-IP $remote_addr;
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto https;
-    proxy_set_header Proxy "";
+      location /api/v1/streaming {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Proxy "";
 
-    proxy_pass http://streaming:4000;
-    proxy_buffering off;
-    proxy_redirect off;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
+        proxy_pass http://streaming:4000;
+        proxy_buffering off;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
 
-    tcp_nodelay on;
-  }
+        tcp_nodelay on;
+      }
 
-  error_page 500 501 502 503 504 /500.html;
-}
-{{< /file >}}
+      error_page 500 501 502 503 504 /500.html;
+    }
+    ```
 
 ### Configure Mastodon
 
@@ -381,7 +378,7 @@ SMTP_PASSWORD=your_mailgun_email_password
 
         sudo chown -R 991:991 public
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The UID that Mastodon will run under is `991`, but there is no `mastodon` user created on your system.
 {{< /note >}}
 

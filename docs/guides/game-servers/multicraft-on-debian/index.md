@@ -1,8 +1,5 @@
 ---
 slug: multicraft-on-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide will show you how to install MultiCraft, a free and open-source control panel for Minecraft servers, running on a Linode running Debian.'
 keywords: ["minecraft", "debian", "multicraft"]
 tags: ["debian"]
@@ -23,11 +20,12 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Debian
+authors: ["Alex Fornuto"]
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -55,7 +53,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
 {{< /note >}}
 
@@ -83,9 +81,9 @@ If you want a dedicated Apache virtual host for Multicraft, follow the instructi
 
     This will launch an interactive script that will prompt you to configure several options. If you've purchased a license for Multicraft, enter it when prompted. If you're unsure which option to choose, press `return` to select the default option.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Because of the insecure nature of FTP, we strongly recommend that you **not** enable the built-in FTP server when prompted.
-{{< /caution >}}
+{{< /note >}}
 
 ## Configuring the Control Panel
 

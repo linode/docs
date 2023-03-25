@@ -1,10 +1,6 @@
 ---
 slug: how-to-use-the-linode-api-with-twilio
-author:
-  name: John Mueller
-  email: john@johnmuellerbooks.com
 description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
-og_description: 'Twilio is an internet messaging service that can be used to monitor server infrastructure. This guide shows a first example of embedding Linode API data in a text message with Twilio.'
 keywords: []
 tags: ['python','monitoring']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +8,9 @@ published: 2021-12-23
 modified: 2022-01-07
 modified_by:
   name: Linode
-title: "How to Use the Linode API with Twilio"
-h1_title: "Using the Linode API with Twilio"
-enable_h1: true
-contributor:
-  name: John Mueller
-  link:
+title: "Using the Linode API with Twilio"
+title_meta: "How to Use the Linode API with Twilio"
+authors: ["John Mueller"]
 ---
 
 [Twilio](https://www.twilio.com/) links internet and telecom networks, creating connections using text messages, emails, phone calls, video, and intelligent chatbots. When you first explore the service, it may appear customer service-oriented, especially for marketing purposes. However, Twilio also has value to anyone who needs [operations support](https://www.twilio.com/solutions/operations), including network administrators.
@@ -54,7 +47,7 @@ This guide shows a first example of how to send data from the Linode API to the 
 
     ![Twilio onboarding form - phone number verification](twilio-verify-phone-number-screen.png "Twilio onboarding form - phone number verification")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Later in the onboarding process, Twilio assigns you a new number that Twilio's texts are delivered from.
 {{< /note >}}
 
@@ -264,7 +257,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. The completed example should look like the code in [this file](linode-api-twilio.py).
 {{< /note >}}
 

@@ -1,7 +1,5 @@
 ---
 slug: redis-getting-started
-author:
-  name: Nathaniel Stickman
 description: "Learn how to start using Redis databases, connecting to a Redis server and working with data on it."
 keywords: ['connecting to redis server', 'how to create redis database', 'getting started with redis']
 tags: ['redis', 'database']
@@ -9,15 +7,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
 modified_by:
   name: Nathaniel Stickman
-title: "Connecting to Redis and Using The Redis Database"
-h1_title: "How to Connect to Redis and Use The Redis Database"
-enable_h1 : true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Connect to Redis and Use The Redis Database"
+title_meta: "How to Connect to Redis and Use The Redis Database"
 external_resources:
 - '[Redis: Commands](https://redis.io/commands)'
 aliases: ['/guides/how-to-connect-to-redis/']
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Redis is an open-source NoSQL database used for in-memory storage of data structures. It works exceptionally well for caching, messaging, and other data storage contexts where quick, and low-latency storage is needed.
@@ -26,9 +22,9 @@ This tutorial gets you started using Redis. It explains how to connect to a Redi
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Follow the instructions in our [How to Install and Configure Redis on Ubuntu 20.04](/docs/guides/install-redis-ubuntu/) guide to install a Redis server and command-line interface (CLI). Be sure to use the drop down menu at the top of that page to select your Linux distribution and get the appropriate steps.
 
@@ -36,7 +32,7 @@ This tutorial gets you started using Redis. It explains how to connect to a Redi
 
     Generally, on **Debian** and **Ubuntu**, the location defaults to the above. On **AlmaLinux**, **CentOS**, and **Fedora**, the default location is usually `/etc/redis.conf`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -190,9 +186,9 @@ However, you can clear out the data in a given database using the `FLUSHDB` comm
 
     FLUSHDB
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The effects of this command are immediate and cannot be undone unless you have backed up your database.
-{{< /caution >}}
+{{< /note >}}
 
 ## Working with Keys in Redis
 
@@ -279,7 +275,7 @@ Instead, you may want to use the following command for your production Redis ins
 
 It works like the `SAVE` command, but operates asynchronously, meaning that it does not tie up the server while the backup operation runs.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Because it is asynchronous, additional changes can be made to the database while `BGSAVE` runs. However, `BGSAVE` only saves changes up to the point when the command was run.
 {{< /note >}}
 

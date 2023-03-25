@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Introduction to Load Balancing"
 description: "This guide shows you how to use Linode Node Balancers, which are services built for high availability and designed to be maintenance free once deployed."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
@@ -11,6 +8,7 @@ modified_by:
   name: Linode
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/','/guides/what-are-nodebalancers/']
+authors: ["Linode"]
 ---
 
 Load balancing allows you to distribute incoming network traffic across multiple servers so that no one server takes on all the demand. This allows high traffic sites and applications to field a large number of users without performance degradation. It also allows you to scale a site or application by adding more servers as your need grows, or remove them if your need diminishes.

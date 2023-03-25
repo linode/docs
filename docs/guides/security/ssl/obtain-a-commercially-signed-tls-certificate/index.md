@@ -1,8 +1,5 @@
 ---
 slug: obtain-a-commercially-signed-tls-certificate
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to create a commercially-signed TLS certificate with OpenSSL.'
 keywords: ["ssl", "tls", "https", "certificate", "commercial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
 tags: ["security","ssl"]
+authors: ["Linode"]
 ---
 
 ![Obtain a Commercially Signed TLS Certificate](Obtain-a-Commercially-Signed-TLS-Certificate-smg.jpg)

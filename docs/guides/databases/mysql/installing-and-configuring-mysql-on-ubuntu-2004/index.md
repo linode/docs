@@ -1,7 +1,5 @@
 ---
 slug: installing-and-configuring-mysql-on-ubuntu-2004
-author:
-  name: Jeff Novotny
 description: "This guide hows you how to install and configure MySQL server on Ubuntu 20.04 Linux"
 keywords: ['mariadb vs mysql', 'install mysql linux', 'configure mysql linux']
 tags: ['mysql', 'ubuntu']
@@ -9,15 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-29
 modified_by:
   name: Linode
-title: "How to Install and configure MySQL on Ubuntu 20.04"
-h1_title: "Installing and Configuring MySQL on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Installing and Configuring MySQL on Ubuntu 20.04"
+title_meta: "How to Install and configure MySQL on Ubuntu 20.04"
 external_resources:
 - '[MariaDB website](https://mariadb.com/)'
 - '[MySQL website](https://www.mysql.com/)'
+authors: ["Jeff Novotny"]
 ---
 
 Ubuntu users have a choice between two reliable *Relational Database Management Systems* (RDBMS), [*MySQL*](https://www.mysql.com/) and [*MariaDB*](https://mariadb.com/). MySQL has a long-standing edge in popularity, but there has been increased interest in MariaDB due to its performance advantages and added features. This guide compares the two database systems and provides instructions on how to install and use MySQL on Ubuntu 20.04.
@@ -46,9 +41,9 @@ To summarize, both systems are more than adequate for most users. MariaDB featur
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -200,7 +195,7 @@ mysql>
 
 1.  Create a new user using the `CREATE USER` command. Enter the user name in the format `'username'@'IP_Address'`, where `IP_Address` is the IP address of the user. If the user is accessing MySQL from the local Linode, substitute `localhost` in place of the IP Address. In the command below, replace `mysqluser` and `password` with the actual user name and password.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 MySQL offers several different authentication mechanisms. The `caching_sha2_password` method is recommended for users who want to log in using a password and is used here. However, certain older applications might not be able to authenticate properly this way. In that case, `mysql_native_password` should be used instead. MySQL source-replica replication might require the `sha256_password` method.
     {{< /note >}}
 
@@ -255,7 +250,7 @@ Query OK, 1 row affected (0.00 sec)
 Database changed
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also use the `USE` command when you have more than one database and you want to switch between them.
 {{< /note >}}
 
@@ -329,9 +324,9 @@ Query OK, 0 rows affected (0.02 sec)
 
 1.  If a table is no longer required, delete it using the `DROP TABLE` command.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 When a table is dropped, all data inside the table is lost and cannot be recovered.
-{{< /caution >}}
+{{< /note >}}
 
         DROP TABLE newtablename;
 

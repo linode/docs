@@ -1,9 +1,6 @@
 ---
 slug: sendonly-mail-server-with-exim-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 9.10 (Karmic).'
 keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 tags: ["ubuntu","email"]
@@ -19,6 +16,7 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Many Linux server applications need to send email; cron jobs use mail services t
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface, or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
-We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
+We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
 ## Install Required Packages
 

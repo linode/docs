@@ -1,9 +1,6 @@
 ---
 slug: manage-web-content-with-plone-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
 keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
 tags: ["nginx","apache","cms","debian"]
@@ -14,11 +11,12 @@ modified_by:
   name: Linode
 published: 2010-01-29
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
+authors: ["Linode"]
 ---
 
 Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx).
 
-Before installing the Plone content management system, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). At the end of this document, we will briefly discuss configuring the [Apache](/docs/web-servers/apache/) and [nginx](/docs/web-servers/nginx) web servers for use with Plone as a front end server.
+Before installing the Plone content management system, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). At the end of this document, we will briefly discuss configuring the [Apache](/docs/web-servers/apache/) and [nginx](/docs/web-servers/nginx) web servers for use with Plone as a front end server.
 
 ## Installing Plone
 

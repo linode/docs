@@ -1,28 +1,21 @@
 ---
 slug: how-to-use-gitignore
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains the .gitignore file, describes how to create and update it, and documents its syntax'
-og_description: 'This guide explains the .gitignore file, describes how to create and update it, and documents its syntax'
 keywords: ['gitignore','.gitignore','Gitignore syntax','How to add files to gitignore','What is gitignore']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-10
 modified_by:
   name: Linode
-title: "How to Use .gitignore"
-h1_title: "How to Use .gitignore"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Use .gitignore to Ignore Specific Files and Folders"
 external_resources:
 - '[gitignore Documentation](https://git-scm.com/docs/gitignore)'
 - '[Git website](https://git-scm.com/)'
+authors: ["Jeff Novotny"]
 ---
 
 [Git](https://git-scm.com/) is a powerful *version control system* (VCS). It allows developers to manage, coordinate, and control the contents of their workspaces, but is not without complexity. Git users often struggle with untracked local files that complicate the output of commands like `git status`. This guide explains the `.gitignore` file, which provides a handy workaround to this problem. It also describes how to create a `.gitignore` file, how to add files and folders to `gitignore`, and how to use its powerful syntax.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout this guide, `gitignore` refers to the `.gitignore` file. The full `.gitignore` name is always used in commands, outputs, and when referencing the full path of the file.
 {{< /note >}}
 
@@ -56,9 +49,9 @@ Developers should ignore files and folders they do not plan to push, rather than
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure Git is installed on your Linode. For information on installing up Git, see the Linode guide to [installing Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Essentially:
 
@@ -84,7 +77,7 @@ Developers should ignore files and folders they do not plan to push, rather than
     mkdir {subdir1,subdir2,subdir3} && touch 1.bak a.bin b.bin file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt one.bak subdir1/file7.txt subdir2/file8.txt subdir3/files.log
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -146,7 +139,7 @@ Untracked files:
     file1.txt
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This pattern ignores any file named `file1.txt` anywhere in the Git repository.
 {{< /note >}}
 
@@ -202,7 +195,7 @@ Untracked Files:
 
 `gitignore` can also be used to ignore entire directories, along with any files and subdirectories in the directory. To ignore a specific directory, append a `/` symbol to the end of the directory name.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the `/` symbol is not added to the end of the rule, Git ignores all files and directories matching the pattern. `/` restricts the rule so it only applies to directories.
 {{< /note >}}
 
@@ -363,7 +356,7 @@ Untracked Files:
 
 The negation symbol removes some of the files or folders that match an earlier rule enforcing an ignored state. If the rule `*.bin` ignores all `.bin` files, then the rule `!a.bin` overrides this rule for `a.bin`. It tells Git to stop ignoring these files and move them back to the untracked state.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some of the negated files can be returned to the ignored state using yet another rule later in the file. So it is possible to ignore a set of files `a`, then negate subset `b` out of `a`, then ignore subset `c` from `b`. It is possible to build a long chain of nested rules using this strategy. However, this structure can be difficult to debug and should normally be avoided.
 {{< /note >}}
 
@@ -497,7 +490,7 @@ Git does not ignore any checked in files, even if they are covered by patterns i
 git rm --cached FILENAME
 ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Conversely, it is possible to check in an ignored file using the `-f` option. Run the command `git add -f FILENAME`. After the file is checked in, Git no longer ignores it. However, this command is not recommended. It is better to create a `gitignore` pattern exempting the file, or to design the patterns so the file is never ignored in the first place.
 {{< /note >}}
 

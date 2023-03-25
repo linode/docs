@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-graylog2-on-debian-9
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install and configure Graylog2, a log management and analysis tool with Elasticsearch and MongoDB, on Debian 9 server.'
 og_description: 'Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.'
 keywords: ["Graylog", "Install Graylog", "Graylog Debian"]
@@ -13,14 +10,12 @@ modified: 2019-01-31
 modified_by:
   name: Linode
 title: 'How to Install and Configure Graylog2 on Debian 9'
-contributor:
-  name: Hitesh Jethva
-  link: https://github.com/hitjethva
 external_resources:
 - '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
 dedicated_cpu_link: true
 aliases: ['/uptime/monitoring/how-to-install-and-configure-graylog2-on-debian-9/']
+authors: ["Hitesh Jethva"]
 ---
 
 ## What is Graylog?
@@ -31,13 +26,13 @@ Graylog uses Elasticsearch for searching and storing the log messages, and Mongo
 
 This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources:
 
@@ -111,7 +106,7 @@ script.file: false
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide uses Elasticsearch on a single server. If you are using Elasticsearch on a different server, replace the IP address 127.0.0.1 with your server IP address. Refer to the Elasticsearch documentation for security best practices.
 {{< /note >}}
 
@@ -129,7 +124,7 @@ This guide uses Elasticsearch on a single server. If you are using Elasticsearch
 
         curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For a complete list of the REST API endpoints, refer to the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-get.html)
 {{< /note >}}
 
@@ -170,7 +165,7 @@ In order to install the Graylog server, you need to download and install the Gra
 
         4c941dd2a116bf235e943771ad16c4e8877d75c597936accf168e08c5f93ce24
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will need this password to log in to the Graylog web interface.
 {{< /note >}}
 
@@ -246,7 +241,7 @@ Graylog is now up and running, It's time to access the Graylog web interface.
 
     ![Graylog Login Page](Screenshot-of-graylog-login-page.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Consider limiting Graylog access to a private network, if you are deploying Graylog in a production environment. In the context of this guide, instances of `192.168.0.102` can be replaced with the Linode's public IP address to access on the browser.
 {{< /note >}}
 

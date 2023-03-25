@@ -1,35 +1,29 @@
 ---
 slug: using-ssh-agent
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "ssh-agent manages keys and passwords for SSH, and it can make connecting to clients quicker and easier. Find out how ssh-agent works and how you can set it up to start using for your SSH connections."
-og_description: "ssh-agent manages keys and passwords for SSH, and it can make connecting to clients quicker and easier. Find out how ssh-agent works and how you can set it up to start using for your SSH connections."
 keywords: ['start ssh agent','how to use ssh agent','ssh agent list keys']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-10
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use ssh-agent"
-h1_title: "How to Use ssh-agent"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Use ssh-agent to Manage Private Keys"
+title_meta: "How to Use ssh-agent to Manage Private Keys"
 external_resources:
 - '[die.net: ssh-agent(1)](https://linux.die.net/man/1/ssh-agent)'
 - '[SSH: ssh-agent](https://www.ssh.com/academy/ssh/agent)'
 - '[Smallstep: SSH Agent Explained](https://smallstep.com/blog/ssh-agent-explained/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 ssh-agent manages private keys for SSH connections, facilitating smoother SSH experiences and allowing you to use SSH sessions across programs. This guide aims to give you a full walkthrough of ssh-agent. The tutorial herein explains what ssh-agent is capable of and shows you how to use it.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -65,7 +59,7 @@ Most Linux systems include ssh-agent by default, but you must enable it. The `ss
     eval `ssh-agent`
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Adding that command as a line to your `~/.bashrc` file automatically enables ssh-agent at system start up.
     {{< /note >}}
 
@@ -115,7 +109,7 @@ The start-up command provided above can be expanded with some options. These let
 
 -   `-a` lets you specify a bind address for ssh-agent socket. This address corresponds to a location on your machine. By default, ssh-agent uses a somewhat random path following the format `/tmp/ssh-<RANDOM_STRING>/agent.<PID>`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ssh-agent restricts this location's permissions to the current user. You should ensure similar permissions if you specify a custom bind address.
     {{< /note >}}
 

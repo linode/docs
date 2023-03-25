@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to protect your Linode account using security measures and controls built-in to the Linode platform."
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
@@ -12,6 +9,7 @@ modified: 2022-11-21
 modified_by:
   name: Linode
 title: "Security Controls for User Accounts"
+authors: ["Linode"]
 ---
 
 To protect your Linode user account against unauthorized access, there are several security controls you can implement. This guide covers several of these controls, including 2FA, security questions, and phone verification.
@@ -24,7 +22,7 @@ To protect your Linode user account against unauthorized access, there are sever
 
 {{< note >}}
 Managing 2FA through Linode is only available if *Linode* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Security Questions
 
@@ -56,7 +54,7 @@ This phone number is only ever used to verify your identity when attempting to a
 
 {{< note >}}
 Standard carrier messaging fees apply for each SMS message.
-{{</ note >}}
+{{< /note >}}
 
 ### Adding a Verified Phone Number
 

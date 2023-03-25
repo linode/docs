@@ -1,7 +1,5 @@
 ---
 slug: posthog-on-linode-kubernetes-engine-install
-author:
-  name: Jeff Novotny
 description: 'PostHog is an all-in-one analytics tool that rivals Google Analytics. Learn how to self-host PostHog on LKE to measure and track usage and funnel statistics and insights.'
 keywords: ['PostHog','Product analytics','Funnel analysis','Install PostHog LKE','Install PostHog Linode']
 tags: ['kubernetes']
@@ -9,15 +7,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
 modified_by:
   name: Linode
-title: "PostHog on Linode Kubernetes Engine Installation"
-h1_title: "How to Track Funnel and Product Analytics With PostHog on Linode Kubernetes Engine"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Track Funnel and Product Analytics With PostHog on LKE"
 external_resources:
 - '[PostHog site](https://posthog.com/)'
 - '[PostHog user guide](https://posthog.com/docs/user-guides)'
+authors: ["Jeff Novotny"]
 ---
 
 [*PostHog*](https://posthog.com/) is an open-source product analytics tool that can replace Google Analytics. PostHog can be self-hosted on the [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) (LKE) and installed using `kubectl` and [*Helm 3*](https://helm.sh/), a client that acts as a package manager for Kubernetes. PostHog offers a wide variety of features including funnel analysis, product use trends, and session recordings. This guide introduces PostHog and explains how to install and configure it on the LKE.
@@ -55,15 +49,15 @@ Even though Google Analytics is the industry standard, there are many advantages
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -110,7 +104,7 @@ helm installed into /usr/local/bin/helm
 version.BuildInfo{Version:"v3.7.1", GitCommit:"1d11fcb5d3f3bf00dbe6fe31b8412839a96b3dc4", GitTreeState:"clean", GoVersion:"go1.16.9"}
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not configure any web servers or load balancers on the Kubernetes cluster before installing PostHog. They might conflict with the new components and cause the installation to fail.
 {{< /note >}}
 
@@ -244,7 +238,7 @@ The IP address from the previous section is used to configure the domain's DNS r
 
 A new DNS entry usually takes some time to propagate to the various DNS servers. While this can take up to two days, it usually only takes between three to six hours. You cannot access PostHog until the record has finished propagating.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The IP address of the load balancer cannot be used to access PostHog. The cluster is configured to restrict access to PostHog to the domain name.
 {{< /note >}}
 

@@ -1,9 +1,6 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Methods for enabling dynamic content to run as individual users with PHP on Fedora 12.'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","fedora","php"]
@@ -19,13 +16,14 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 
 
 In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges; it forces all scripts to be executed with the permissions of a shared user account, and is incompatible with some other Apache modules and process. For example, in our experience `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/development/ror/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes, using the method outlined below.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/), and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
 
 ## Installing Apache and PHP
 

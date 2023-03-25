@@ -1,10 +1,6 @@
 ---
 slug: use-paramiko-python-to-ssh-into-a-server
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
 description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
-og_description: 'This guide shows how you can use the Python module Paramiko, an app that uses the SSHv2 protocol to connect to remote servers, to connect to a server remotely.'
 keywords: ['paramiko python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,21 +9,19 @@ image: HowtoUseParamikoandPythontoSSHintoaServer.jpg
 modified_by:
   name: Linode
 title: "Use Paramiko and Python to SSH into a Server"
-h1_title: "How to Use Paramiko and Python to SSH into a Server"
-enable_h1: true
-contributor:
-  name: Cameron Laird
+title_meta: "How to Use Paramiko and Python to SSH into a Server"
 external_resources:
 - '[Paramiko GitHub](https://github.com/paramiko/paramiko)'
+authors: ["Cameron Laird"]
 ---
 
 When your Python program needs to run an external password-dependent program, or access a remote server, use [*Paramiko*](https://github.com/paramiko/paramiko). Paramiko is a Python module that implements the [SSHv2](https://datatracker.ietf.org/doc/html/rfc4253) protocol. Paramiko is not part of Python’s standard library, although it’s widely used. This guide shows you how to use Paramiko in your Python scripts to authenticate to a server using a password and SSH keys.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Paramiko
 
@@ -35,7 +29,7 @@ You must install Paramiko on your system before being able to use it in your Pyt
 
     pip install paramiko
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are not familiar with Pip or do not have it installed on your system, see our [How to Manage Python Packages and Virtual Environments on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/#how-pip-works) guide.
 {{< /note >}}
 

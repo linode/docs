@@ -1,7 +1,5 @@
 ---
 slug: what-is-usermod-and-how-to-use-it
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to use the usermod command in Linux. You learn how to change a user’s home directory, login name, groups, user shell, and more."
 og_description:  "This guide shows you how to use the usermod command in Linux. You learn how to change a user’s home directory, login name, groups, user shell, and more."
 keywords: ['usermod','usermod linux','usermod command']
@@ -10,14 +8,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-23
 modified_by:
   name: Nathaniel Stickman
-title: "What is usermod, and How do I Use It?"
-h1_title: "An Overview of the usermod Command and How It's Used"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "An Overview of the usermod Command and How It's Used"
+title_meta: "What is usermod, and How do I Use It?"
 external_resources:
 - '[usermod - Ubuntu Manpage](https://manpages.ubuntu.com/manpages/xenial/en/man8/usermod.8.html)'
+authors: ["Nathaniel Stickman"]
 ---
 ## What is usermod?
 
@@ -47,7 +42,7 @@ Take a look at the results with the `id` command.
 uid=1001(example-user) gid=1002(example-group) groups=1002(example-group)
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Linux user group must exist before `usermod` allows you to assign a user to the groups.
 {{< /note >}}
 

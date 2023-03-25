@@ -1,9 +1,6 @@
 ---
 slug: write-to-a-file-from-the-shell
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you convenient and built-in commands for writing to a file direct from the shell, and walks you through some practical examples to get you started."
-og_description: "This guide shows you convenient and built-in commands for writing to a file direct from the shell, and walks you through some practical examples to get you started."
 keywords: ['shell write to file', 'append to file', 'bash write output to file', 'zsh write to file', 'write to file command', 'write variable to file']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,14 +9,11 @@ image: HowtoWritetoaFileFromtheShell.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Write to a File From the Shell"
-h1_title: "How to Write to a File From the Shell"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "How to Write to a File From the Shell"
 external_resources:
 - '[Here Documents](https://tldp.org/LDP/abs/html/here-docs.html)'
 - '[Sed](https://www.gnu.org/software/sed/manual/sed.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 When working from the command line, it can be convenient to write to files without the need to open a text editor like [Nano](/docs/guides/use-nano-to-edit-files-in-linux/), or Vim. There are some handy Linux operators and commands to make writing to files simple to accomplish. This guide shows you how to use key operators and commands to write to files from the shell. These commands work with [Bash](/docs/guides/intro-bash-shell-scripting/#bash-basics), [Zsh](https://www.zsh.org/) shells, and several other Unix shells.
@@ -30,9 +24,9 @@ When working from the command line, it can be convenient to write to files witho
 
 You can use the regular output operator (`>`) to write text to a file. If it does not exist already, it creates the file.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Using the `>` operator on an existing file overwrites that file's contents.
-{{< /caution >}}
+{{< /note >}}
 
 Follow the steps below to learn how to use the `>` operator:
 

@@ -1,9 +1,6 @@
 ---
 slug: install-and-use-npm-on-linux
-author:
-  name: Nathaniel Stickman
 description: 'This guide will show you how to install and use the Node Package Manager (NPM), which gives you access to a vast Node.js repository, on Linux.'
-og_description: 'This guide will show you how to install and use the Node Package Manager (NPM), which gives you access to a vast Node.js repository, on Linux.'
 keywords: ['npm','npm install','npm update']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,10 @@ published: 2021-09-03
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use the Node Package Manager (NPM) on Linux"
-h1_title: "How to Install and Use the Node Package Manager (NPM) on Linux"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[NPM Docs](https://docs.npmjs.com/)'
 - '[NPM dependencies](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The [Node Package Manager (NPM)](https://www.npmjs.com/) is the most widely-used package manager for JavaScript projects and includes Node.js by default. This guide walks you through installing NPM and getting started using it on your Linux system.
@@ -38,7 +31,7 @@ NPM is also the most popular Node.js package manager. With that popularity comes
 
 Yarn was originally designed to address performance and security concerns in NPM. And while Yarn still outshines NPM in terms of speed, NPM has made vast security improvements that put it about even with Yarn.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can learn more about Yarn in our [How to Install and Use the Yarn Package Manager](/docs/guides/install-and-use-the-yarn-package-manager) guide.
 
 To learn how to install Node.js, jump to the [How to Install NPM](#how-to-install-npm) section of this guide.

@@ -21,7 +21,7 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 **Cloud Controller Manager**: Linode's [Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager/) is written in Go and is included in every Linode Kubernetes Engine cluster's control plane. It creates a fully supported Kubernetes experience on Linode by providing a way for your cluster to access additional Linode services such as NodeBalancers.
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
 ## Third Party Tools & Integrations
 

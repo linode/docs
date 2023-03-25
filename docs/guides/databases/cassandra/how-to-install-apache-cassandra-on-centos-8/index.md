@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-apache-cassandra-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for CentOS 8.'
 keywords: ["cassandra", " apache cassandra", " centos 7", "CentOS8", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +8,8 @@ image: L_Cass_on_CentOS8.png
 modified: 2020-01-30
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on CentOS 8"
-h1_title: "Install Apache Cassandra on CentOS 8"
-contributor:
-  name: Linode
+title: "Install Apache Cassandra on CentOS 8"
+title_meta: "How to Install Apache Cassandra on CentOS 8"
 external_resources:
    - '[Cassandra Documentation](http://cassandra.apache.org/doc/latest/)'
    - '[Cassandra cqlshrc File Configuration Overview](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html)'
@@ -28,18 +23,19 @@ relations:
             - distribution: CentOS 8
 tags: ["centos","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-centos-8/']
+authors: ["Linode"]
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running CentOS 8. This tutorial will cover basic configuration options, as well as how to harden and secure your database.
 
 {{< note >}}
- In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
- {{</ note >}}
+In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
+{{< /note >}}
 
 ## Before You Begin
 
-1. Complete the [Getting Started](/docs/guides/getting-started/) guide for setting up a new Linode.
-1. While it is recommended you complete the entire [Securing Your Server](/docs/guides/set-up-and-secure/) guide, at  minimum, you should [add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
+1. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, at  minimum, you should [add a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Add Repositories and GPG Keys
 
@@ -111,7 +107,7 @@ In this section, you will enable user login authentication. You can also configu
 
 1.  Open `cassandra.yaml` in your preferred text editor:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Locations of the `cassandra.yaml` file may differ slightly between distros.
     {{< /note >}}
 
@@ -170,14 +166,14 @@ permissions_validity_in_ms: 0
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
 {{< note >}}
-Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/guides/set-up-and-secure/#centos-fedora), if it does not already have them.
-{{</ note >}}
+Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#centos-fedora), if it does not already have them.
+{{< /note >}}
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Do not complete this section as the root user. Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the `[authentication]` section.
-{{</ caution >}}
+{{< /note >}}
 
 1.  Create the file `cqlshrc` using your preferred text editor. If the `~/.cassandra` directory does not exist, create it:
 
@@ -187,9 +183,9 @@ Do not complete this section as the root user. Before proceeding, fully evaluate
 1.  Copy any sections below that you wish to add to your configuration, and ensure you replace the `superuser` and `password` value in brackets with your own values. Details for this file can be found in the [Configuring cqlsh From a File](https://docs.datastax.com/en/archived/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html) guide on the [DataStax](https://www.datastax.com/) site.
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can find a sample file containing all the configuration options in the example `/etc/cassandra/conf/cqlshrc.sample` file.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< file "~/.cassandra/cqlshrc" aconf >}}
 
@@ -237,11 +233,11 @@ encoding = utf8
 
         cqlsh -u superuser
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also login by providing your username and password:
 
     cqlsh -u superuser -p password
-    {{</ note >}}
+    {{< /note >}}
 
 ## Rename the Cluster
 
@@ -306,7 +302,7 @@ JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
         nodetool status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
 {{< /note >}}
 

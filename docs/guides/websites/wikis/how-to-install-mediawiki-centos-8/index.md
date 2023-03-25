@@ -1,22 +1,14 @@
 ---
 slug: how-to-install-mediawiki-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on CentOS 8.'
-og_description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on CentOS 8.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 tags: ["centos", "wiki"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Mediawiki on CentOS 8"
-h1_title: "Installing Mediawiki on CentOS 8"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Installing Mediawiki on CentOS 8"
+title_meta: "How to Install Mediawiki on CentOS 8"
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
 relations:
@@ -24,17 +16,18 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: CentOS 8
+authors: ["Nathaniel Stickman"]
 ---
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software behind Wikipedia and many of the wikis deployed by communities and companies around the world. It provides a versatile, open, and free tool for making knowledge easily accessible and navigable. This guide explains how to install MediaWiki on CentOS 8.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -129,7 +122,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
         sudo mv /var/www/html/mediawiki-1.35.0 /var/www/html/w
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
  Extracting the archive as root makes the root user the files' owner. If this is not your intention, you need to use the `chown` command to change the files' ownership after extraction. For more information, see our guide on [Linux Users and Groups](/docs/guides/linux-users-and-groups/#changing-file-ownership).
     {{< /note >}}
 
@@ -141,7 +134,7 @@ MediaWiki supports a variety of database options, including MariaDB, MySQL, and 
 
         http://192.0.2.1/w/index.php
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you choose to set up the MediaWiki installation using your Linode's IP but later want to use a domain, you can do so by changing the IP address to the appropriate domain in the `LocalSettings.php` file described below.
     {{< /note >}}
 
@@ -153,7 +146,7 @@ If you choose to set up the MediaWiki installation using your Linode's IP but la
 
         sudo chmod 664 /var/www/html/w/LocalSettings.php
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on how you created the `LocalSettings.php` file on your Linode, you may need to adjust its ownership using `chown` as well.
     {{< /note >}}
 

@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-caddy-on-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install and configure Caddy and run it as a systemd service.'
 keywords: ["caddy", "web server"]
 tags: ["centos","web server"]
@@ -12,9 +9,6 @@ modified: 2018-02-02
 modified_by:
   name: Linode
 title: 'Install and Configure Caddy on CentOS 7'
-contributor:
-  name: Konstantin Kuchinin
-  link: https://github.com/coocheenin
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 relations:
@@ -23,6 +17,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
+authors: ["Konstantin Kuchinin"]
 ---
 
 
@@ -32,9 +27,9 @@ aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  You need to register your site's domain name and follow our [DNS Manager Overview](/docs/products/networking/dns-manager/#add-records) guide to point your domain to your Linode.
 

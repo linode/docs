@@ -1,24 +1,20 @@
 ---
 slug: mail-in-a-box-email-server
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package."
 keywords: ["install mail-in-a-box", "webmail control panel", "caldav", "cardav", " TLS certificate"]
-tags: ["ubuntu","postfix","email"]
+tags: ["ubuntu","postfix","email","digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-29
 modified: 2022-09-22
 modified_by:
   name: Linode
 title: "Create an Email Server using Mail-in-a-Box"
-contributor:
-  name: Alexandru Andrei
 external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
 aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mail-in-a-box/how-to-create-an-email-server-with-mail-in-a-box/','/guides/how-to-create-an-email-server-with-mail-in-a-box/']
 image: Mail_in_a_box.jpg
+authors: ["Alexandru Andrei"]
 ---
 
 When deciding on an email solution, there are a few options to consider. You can utilize an external email service provider, use a transactional or marketing email service, or host your own email server on a Linode Compute Instance. If you wish to host your own email server but want to reduce the complexity of configuring individual components yourself, you can utilize a pre-built solution like [Mail-in-a-Box](https://mailinabox.email/). Mail-in-a-Box is a preconfigured self-hosted email server that includes the following software:
@@ -45,13 +41,13 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
 
 - Have a registered domain name that you wish to use with your email server. Verify that your registrar allows *custom nameservers* and *glue records*.
 
-- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
+- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
-{{< /caution >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Wherever you see `example.com` in this tutorial, replace it with your domain name, and leave the prefix as it is. That is, don't change `box` to something else. Also, `203.0.113.1` is used as an example IP; your outputs should reflect your server IP instead.
 {{< /note >}}
 
@@ -61,7 +57,7 @@ Mail-in-a-Box allows you to configure and manage DNS through its own DNS service
 
 Follow the instructions within the [Register Custom DNS Name Servers](/docs/guides/custom-name-servers/) guide. Since Mail-in-a-Box configures your DNS records for you, you can skip the *Add A Records* section.
 
-1. Add the following glue records on your domain's registrar, replacing *example.com* with the domain name you wish to use. Each glue record should point to the public IPv4 address of the Compute Instance in which will deploy Mail-in-a-Box. To view the IP addresses, see [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+1. Add the following glue records on your domain's registrar, replacing *example.com* with the domain name you wish to use. Each glue record should point to the public IPv4 address of the Compute Instance in which will deploy Mail-in-a-Box. To view the IP addresses, see [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 
     - *ns1.box.example.com*
     - *ns2.box.example.com*
@@ -76,7 +72,7 @@ If you don't see your custom name servers in the dig output within an hour of re
 
 ## Install Mail-in-a-Box
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -167,7 +163,7 @@ Since it's very likely that a Let's Encrypt TLS certificate hasn't been installe
 
     ![Control Panel - TLS Certificates Page](mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-1. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/guides/configure-rdns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
+1. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/products/compute/compute-instances/guides/configure-rdns/), to set up a *pointer record* (PTR). Make sure you set it to `box.example.com`. This step is very important to execute and pass some antispam checks. Without it, a lot of mail servers will flag your outbound email as spam and will consider it suspicious that your IP doesn't point to your domain name, and sometimes even reject it.
 
 ## Conclusion
 

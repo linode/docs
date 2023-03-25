@@ -1,21 +1,14 @@
 ---
 slug: how-to-install-moodle-on-ubuntu-server-2004
-author:
-  name: Nathaniel Stickman
 description: 'This guide will show you how to install Moodle, a popular open-source learning management system used in online teaching, on Ubuntu 20.04.'
-og_description: 'This guide will show you how to install Moodle, a popular open-source learning management system, on Ubuntu 20.04.'
 keywords: ['moodle','education','training','learning management system','lms','install on ubuntu 20.04']
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
 modified_by:
   name: Nathaniel Stickman
-title: "Installing Moodle on Ubuntu Server 20.04"
-h1_title: "How to Install Moodle on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Install Moodle on Ubuntu 20.04"
+title_meta: "How to Install Moodle on Ubuntu Server 20.04"
 external_resources:
 - '[Moodle](https://moodle.org/)'
 relations:
@@ -23,21 +16,22 @@ relations:
         key: how-to-install-moodle
         keywords:
             - distribution: Ubuntu 20.04 LTS
+authors: ["Nathaniel Stickman"]
 ---
 
 [Moodle](https://moodle.org/) is a popular, free, and open-source Learning Management System (LMS). With Moodle, you can create a fully-featured website for education and training courses, suitable for fully online, hybrid, and in-person classroom experiences. The Moodle platform is highly customizable and takes a modular approach to features, so it is extensible and adaptable to your needs. This guide shows you how to get a Moodle website up and running on an Ubuntu 20.04 server.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install and configure a LAMP (Linux, Apache, MySQL, and PHP) stack. Follow the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for instructions.
 
     For this guide, you do not need to configure a virtual host for Apache. However, you should follow all other non-optional sections in the guide linked above.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,7 +69,7 @@ This guide is written for non-root users. Commands that require elevated privile
         sudo cp -R /opt/moodle /var/www/html/
         sudo chmod -R 0777 /var/www/html/moodle
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Write access to this directory is only meant to be granted temporarily. Once the Moodle installation is completed in the steps below, the permissions are modified to restrict write access to the directory owner (the `root` user).
     {{< /note >}}
 

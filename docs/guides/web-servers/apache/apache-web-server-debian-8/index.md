@@ -1,8 +1,5 @@
 ---
 slug: apache-web-server-debian-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Apache on your Debian 8 (Jessie) server, configure virtual hosting, and set up modules and scripting.'
 keywords: ["apache debian 8", "apache debian jessie", "linux web server", "apache on debian", "apache jessie", "apache", "debian", "web server"]
 tags: ["web server","apache","debian"]
@@ -21,6 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 8
+authors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on Debian 8](Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)
@@ -29,13 +27,13 @@ The *Apache HTTP Web Sever* (Apache) is an open source web application for deplo
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -149,7 +147,7 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
     Repeat this process for any other domains you host.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
 
 {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
