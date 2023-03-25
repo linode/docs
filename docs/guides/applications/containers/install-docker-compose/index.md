@@ -1,16 +1,14 @@
 ---
 slug: install-docker-compose
-author:
-  name: Jared Kobos
-  email: sfoo@linode.com
 description: 'Shortguide for installing Docker Compose'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["docker", "docker compose", "container"]
-tags: ["container","docker"]
+tags: ["container", "docker"]
 modified: 2012-11-29
 modified_by:
   name: Sam Foo
 title: "How to Install Docker Compose"
+authors: ["Jared Kobos"]
 published: 2018-01-08
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
@@ -18,12 +16,12 @@ aliases: ['/applications/containers/install-docker-compose/']
 
 <!--- Installation instructions for Docker Compose -->
 
-Docker Compose comes in plugin and standalone variants. However, Docker's official documentation prioritizes the plugin. Further, the plugin has a straightforward installation and works well with past Docker Compose commands.
+Docker Compose comes in the plugin and standalone variants. However, Docker's official documentation prioritizes the plugin. Further, the plugin has a straightforward installation and works well with past Docker Compose commands.
 
-These steps thus show how to install the Docker Compose plugin. If you are interested in installing the standalone Docker Compose application, follow the Docker's [official installation guide](https://docs.docker.com/compose/install/other/#on-linux).
+These steps thus show how to install the Docker Compose plugin. If you are interested in installing the standalone Docker Compose application, follow Docker's [official installation guide](https://docs.docker.com/compose/install/other/#on-linux).
 
 {{< note >}}
-Many tutorials retain the Docker Compose standalone command format, which looks like this following:
+Many tutorials retain the Docker Compose standalone command format, which looks like the following:
 
 ```command
 docker-compose [command]
@@ -41,14 +39,14 @@ docker compose [command]
 
 1. Update your package manager, and install the Docker Compose plugin.
 
-    - On Debian and Ubuntu systems, use the following commands:
+    - On **Debian** and **Ubuntu** systems, use the following commands:
 
     ```command
     sudo apt update
     sudo apt install docker-compose-plugin
     ```
 
-    - On CentOS, Fedora, and other RPM-based distributions, use the following commands:
+    - On **CentOS**, **Fedora**, and other RPM-based distributions, use the following commands:
 
     ```command
     sudo yum update
