@@ -15,21 +15,23 @@ external_resources:
 - '[Baeldung: How to Remove Symbolic Links](https://www.baeldung.com/linux/remove-symbolic-links)'
 ---
 
-Symbolic links (also known as *symlinks*) in Linux are special files that reference other files, directories, devices, and pipes. In some other operating systems, symlinks are called "shortcuts". Symlinks can be used to control access to files. For example, by building links in a user’s directory that accesses a more public file for reading and writing. Group permissions do this kind of job, but with a higher administrative maintenance load. Symlinks also bring access to a file deeply nested within a directory tree. Thus, users do not have to "walk the tree" to access the file.
+Symbolic links (also known as *symlinks*) in Linux are special files that reference other files, directories, devices, or pipes. In other operating systems, symlinks may be called "shortcuts". Symlinks can be used to control access to files. For example, by building links in a user’s home directory that accesses a more public file for reading and writing. Group permissions perform this function as well, but with a higher administrative maintenance load. Symlinks also bring access to a file deeply nested within a directory tree. Thus, users do not have to "walk the tree" to access the file.
+
+Learn how to create symlinks in our guide [How to Create Linux Symlinks](/docs/linux-symlinks).
 
 ## What is a Symlink?
 
-A Linux symbolic link is a special kind of file. The content of this file is a file path, like `/tmp/example`, in the data portion of this file. The path name can be any valid path, so a symlink can cross over into other file systems, including network file systems. Most operations, such as reading, overwriting, appending, changing permissions, and changing owners affect the target object, not the symlink. You cannot delete the target via a symlink: a delete request affects the symlink directly.
+A Linux symbolic link is a special kind of file. The content of this file is a file path, for example `/tmp/file`. The path name can be any valid path, so a symlink can cross over into other file systems, including network file systems. Most operations, such as reading, overwriting, appending, changing permissions, and changing owners affect the target object, not the symlink. However, you cannot delete the target via a symlink as a delete request affects the symlink directly.
 
 Symlinks can point to other symlinks, too. The operating system traverses the chain of symlinks to arrive at the ultimate targeted file object.
 
 When you use the `ls -l` to display a symlink, the output looks like this:
 
 ```output
-lrwxrwxrwx 1 user user 9 Sep 21 12:04 symlink -> /tmp/example
+symlink -> /tmp/reference-file
 ```
 
-The first name is the symlink, the name after the arrow is where the symlink points to.
+The first part is the symlink, the part after the arrow is where the symlink points to.
 
 ## How to Remove a Symbolic Link
 
@@ -41,43 +43,48 @@ When the target object is moved or deleted, the symlink that points to it become
 
 ### Using `rm` Command
 
-The `rm` command treats a symlink like any other file. The command specifies any number of names, including non-symlink names. For example:
+The `rm` command treats a symlink like any other file. Just use the normal `rm` syntax:
 
 ```command
-rm symbolic-link regular-file *.py log[123].txt 2nd-symlink
+rm <symlink>
 ```
 
-Use the `-i` flag to be prompted before each file deletion.
+The command can specify any number or combination of files, wildcards, and modifiers, including symlinks:
+```command
+rm <symlink> <regular-file> <*.py> <log[123].txt> <2nd-symbolic-link>
+```
+
+Include the `-i` flag to be prompted before each file deletion.
 
 ### Using `unlink`
 
-The `unlink` command also treats a symlink like any other file. You can only specify one name per invocation. For example:
+The `unlink` command also treats a symlink like any other file. However, you can only specify one object per invocation. For example:
 
 ```command
-unlink symbolic-link
+unlink <symlink>
 ```
 
 ### Using Find and Delete
 
-To see all symlinks in a specific directory, use this command:
-
-```command
-find /path/to/directory -maxdepth 1 -type l
-```
-
-To move downward in the directory, remove the `-maxdepth 1` switch:
+To see all symlinks in a specific directory and its sub-directories, use the `find` command with the `-type l` flag:
 
 ```command
 find /path/to/directory -type l
 ```
 
-For example, this command:
+To look only in the specified directory, ignoring the contents of any subdirectories, add the `-maxdepth 1` switch:
+
+```command
+find /path/to/directory -type l -maxdepth 1
+```
+
+For example, the following command searches the `/tmp` directory for symlinks:
 
 ```command
 find /tmp -maxdepth 1 -type l
 ```
 
-Yields this output on our test system:
+Here's an how the output of that command would look like:
 
 ```output
 /tmp/dangling-symlink1
@@ -97,19 +104,19 @@ find /path/to/directory -maxdepth 1 -type l -delete
 
 ## How to Find Dangling Symlinks
 
-When used a lot, symlinks clog your file system and consume resources. To see the useless symlinks in a directory, use the following command:
+When used a lot, symlinks clog your file system and consume resources. To see the dangling symlinks in a single directory, use the `find` command with the `-xtype l` flag:
 
 ```command
 find /path/to/directory -maxdepth 1 -xtype l
 ```
 
-The command outputs each symlink, one per line. For example, on our test system, the following command:
+The command outputs each symlink, one per line. For example, the following command finds all dangling symlinks in the `/tmp` directory:
 
 ```command
 find /tmp -maxdepth 1 -xtype l
 ```
 
-Generates the following output:
+Here's an example of how that output should appear:
 
 ```output
 /tmp/dangling-symlink1
@@ -117,10 +124,10 @@ Generates the following output:
 /tmp/dangling-symlink2
 ```
 
-When you want to make a clean sweep of the excess, run the following command:
+When you want to make a clean sweep of the excess symlinks, add the `delete` flag:
 
 ```command
-find /path/to/directory -xtype l -maxdepth 1 -delete
+find /path/to/directory -maxdepth 1 -xtype l -delete
 ```
 
 Change the `-maxdepth 1` to the recursion level needed, or remove the switch completely to cleanse all subdirectories of useless, dangling symlinks.
@@ -131,7 +138,7 @@ A symlink can point to another symlink, which in turn can point to a symlink. Th
 
 First, install the package `util-linux` if it’s not already loaded into the Linux system.
 
-The command `namei` takes the file path. If the file path is a symlink, it follows it all the way to the end, or until the symlink recursion limit is reached. For this example, inspect a chained symlink from `/tmp/symlink` to the file `/home/satch/target` with the following command:
+The command `namei` takes a file path. If the file path is a symlink, it follows it all the way to the end, or until the symlink recursion limit is reached. For this example, inspect a chained symlink from `/tmp/symlink` to the file `/home/satch/target` with the following command:
 
 ```command
 namei /tmp/symlink
@@ -153,17 +160,23 @@ f: /tmp/symlink
          - target
 ```
 
-The command follows the path through directories and symbolic links until it encounters a socket, block device, character device, FIFO (named pipe) or regular file. When deleting the symlink chain, start at the top symlink, changing the working directory as you go. In the output of the `namei` command, the first letter indicates the kind of file system object for that name. Here `d` stands for directory, `l` for symbolic link, and `-` for a regular file. The man page describes the indicator letters for other file system objects. Given the output shown above, issue the following to remove all levels of the symlink:
+The command follows the path through directories and symbolic links until it encounters a socket, block device, character device, FIFO (named pipe) or regular file. When deleting the symlink chain, start at the top symlink, changing the working directory as you go. In the output of the `namei` command, the first letter indicates the kind of file system object for that name. Here `d` stands for directory, `l` for symbolic link, and `-` for a regular file. The []`namei` man page](https://man7.org/linux/man-pages/man1/namei.1.html) describes the indicator letters for other file system objects. Given the output shown above, issue the following to remove all levels of the symlink:
 
 ```command
-$ cd /tmp
-$ rm symlink
-$ rm symlink1
-$ rm symlink2
-$ rm symlink3
+cd /tmp
+rm symlink
+rm symlink1
+rm symlink2
+rm symlink3
 ```
 
-Another form of the `namei` command, `namei -mov /tmp/symlink`, shows when the remove command needs to be `sudo rm`. Here's the output from the previous example:
+Run the `namei` command with the `-mov` flag to show when the remove command needs to be run with `sudo`:
+
+```command
+namei -mov /tmp/symlink
+```
+
+Here's an example output from this command:
 
 ```output
 f: /tmp/symlink
