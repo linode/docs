@@ -47,6 +47,7 @@ A special case is a symlink pointing to another symlink. The Linux system walks 
 
 To prevent chain loops from overloading the system, Linux limits the number of hops through a symlink chain to 40.
 
+{{< note >}}
 To see all the nodes in a symlink chain, use [the `namei` command](https://man7.org/linux/man-pages/man1/namei.1.html). Here is sample output from one computer:
 
 ```output
@@ -63,67 +64,68 @@ l in-notes -> in-notes
       l in-notes -> in-notes
         …
 ```
+{{< /note >}}
 
 The command follows from the specified directory down the file system tree. In this case, one of the symlinks points to itself – a chain loop that’s pretty direct.
 
 ## How to Create a Symbolic Link in Linux
 
-There are various ways to create symbolic links depending on how you want to use them.
+There are various ways to create symbolic links depending on how you want to use them. The basic syntax to create a symlink is as follows:
+
+```command
+ln -s </target-directory/target-file> </symlink-directory/example-symlink>
+```
+
+The `-s` switch is important because it tells the Linux `ln` command to create a soft link instead of a hard link. The `</symlink-directory/>` is optional. If not specified, the symlink is created in the current working directory.
+
+{{< note >}}
+When you use the Linux `ln` command in a shell script, the command returns true (0) on success.
+{{< /note >}}
 
 ### Creating a Symlink to a File
 
-Use the following command to create the `working-file` symlink in the current directory, which points to `/tmp/my-working-file`:
+The following example command creates the `symlink-file` symlink in the current directory, which points to `/tmp/reference-file`:
 
 ```command
-ln -s /tmp/my-working-file working-file
+ln -s /tmp/reference-file symlink-file
 ```
 
-In this example, the file pathname is an absolute path. You can create a symlink with a relative path. However, make sure that anything using the symlink first sets the current working directory the same way, or the link is broken.
+{{< note >}}
+In this example, the file pathname is absolute. You can create a symlink with a relative path. However, make sure that anything using the symlink first sets the current working directory, otherwise the link is broken.
+{{</ note >}}
 
 ### Creating a Symlink to a Directory/Folder
 
-Use the following command to create the  `my-directory` symlink in the current directory, which points to `/tmp/reference-directory`:
+The same command can also be used to create a symlink that points to a directory. The following example command creates the  `symlink-directory` symlink in the current directory, which points to `/tmp/reference-directory`:
 
 ```command
-ln -s /tmp/reference-directory my-directory
+ln -s /tmp/reference-directory symlink-directory
 ```
 
-Any reference to `my-directory` acts on the directory `/tmp/reference-directory`. This includes as adding or deleting files in the directory, changing the ownership, and changing the permission if allowed.
+Any reference to `symlink-directory` acts on the directory `/tmp/reference-directory`. This includes as adding or deleting files in the directory, changing the ownership, and changing the permission if allowed.
 
 ### Force Overwriting of a Symbolic Link
 
-If the path in a symlink is wrong, for example a typo, or the target has moved, you can update the link using this command:
+If the path in a symlink is wrong, for example a typo, or the target has moved, you can update the link using the `-f` flag:
 
 ```command
-ln -sf /tmp/new-reference-directory my-directory
+ln -sf /tmp/new-reference-directory symlink-directory
 ```
 
-This results in the old symlink’s contents being replaced with the new.
-
-### General Form of the “ln” Command
-
-The `-s` switch is important because it tells the Linux ln command to create a soft link instead of a hard link.
-
-The `-f` switch automatically removes any conflicting symlink-filepath files or symlinks if there is a conflict. Making a symlink without the `-f` switch, using a sympath-name that is already in use, results in the command failing.
-
-```command
-ln -s [-f] target-filepath symlink-filepath
-```
-
-When you use the Linux `ln` command in a shell script, the command returns true (0) on success.
+This results in the old symlink’s contents being replaced with the new. The `-f` switch automatically removes any conflicting symlink-filepath files or symlinks if there is a conflict. Making a symlink without the `-f` switch, using a sympath-name that is already in use, results in the command failing.
 
 ### Display the Contents of a Symlink
 
 To show the contents of a symlink, use the Linux `ls` command:
 
 ```commnad
-ls -l working-file
+ls -l symlink-directory
 ```
 
 The output looks like this:
 
 ```output
-working-file -> /tmp/my-working-file
+symlink-file -> /tmp/reference-file
 ```
 
 ## Using Linux Symlinks
@@ -134,6 +136,8 @@ Almost all file-based actions on a symlink act on or affect the target file, but
 
 The exceptions to the above-described rule are the Linux commands `unlink`, `rm`, `rmdir`, and their associated system calls. These commands either fail or remove the symlink itself instead of the target file or directory. These exceptions prevent the inadvertent removal of the target.
 
+See more information about removing symlinks in out guide [Quick Guide to Linux: Remove Symbolic Links](/docs/linux-remove-symbolic-link).
+
 ## Finding Dangling Symlinks
 
 A dangling symlink occurs when the target does not exist. The original file may have been deleted or moved to another part of the file system tree.
@@ -141,10 +145,12 @@ A dangling symlink occurs when the target does not exist. The original file may 
 While breaking a symlink can be intentional, dangling symlinks can clutter up the file system if not intended. To find these dangling symlinks within a file system tree, use this command:
 
 ```command
-find file-tree-to-search/ -xtype l
+find </directory/to/search> -xtype l
 ```
 
-Don’t immediately pipe this to the `rm` command, though. Investigate first, so you can repair inadvertently broken symlinks.
+{{< note >}}
+Do not immediately pipe this to the `rm` command. Investigate first, so you can repair inadvertently broken symlinks.
+{{< /note >}}
 
 ## Conclusion
 
