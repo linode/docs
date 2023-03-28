@@ -1,8 +1,5 @@
 ---
 slug: how-to-upgrade-from-centos-7-to-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for upgrading from CentOS 7 to CentOS 8.'
 keywords: ["upgrade", "centos8", "centos7", "upgrade centos", "centos"]
 tags: ["centos"]
@@ -15,6 +12,7 @@ title: "Upgrading from CentOS 7 to CentOS 8"
 title_meta: 'How to Upgrade from CentOS 7 to CentOS 8'
 image: Upgrade_CentOS7_to_8.png
 aliases: ['/tools-reference/custom-kernels-distros/how-to-upgrade-from-centos-7-to-centos-8/']
+authors: ["Linode"]
 ---
 
 [CentOS](https://www.centos.org) is a Linux distribution derived from [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux). Some key features new for [CentOS 8](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905) are:
@@ -43,7 +41,7 @@ For this guide you will need a backup of your existing CentOS 7 installation. Yo
 - You can enroll in [Linode's Backup Service](/docs/products/storage/backups/). This will take automatic regular backups for you, and give you the option of taking a [Manual Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot) at any time.
 - For alternative backups solutions, see our [Backing Up Your Data](/docs/guides/backing-up-your-data/) guide.
 
-When creating your backup, it's recommended that you [Resize Your Disk](/docs/guides/resize-a-linode-disk/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
+When creating your backup, it's recommended that you [Resize Your Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/) to the smallest size possible in advanced in order to ensure that you are able to allocate an extra disk in a later step.
 
 {{< note type="alert" respectIndent=false >}}
 
@@ -59,7 +57,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
 1.  From the **Images** drop down menu, select the CentOS 8 image and enter a Root Password. Optionally, add an SSH key.
 
-1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Managing Configuration Profiles on a Linode](/docs/guides/linode-configuration-profiles/) guide.
+1.  Click the **Rebuild** Button. This will create a new CentOS 8 disk and configuration profile. You can read more about configuration profiles in the [Managing Configuration Profiles on a Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/) guide.
 
 1.  Shut down the Linode by clicking on the status icon and choosing **Power Off** from the drop down menu.
 
@@ -76,7 +74,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
     ![Restore Backup to Existing Linode](upgrade-centos8-restore-to-existing.png "Restore Backup to Existing Linode")
 
     {{< note >}}
-    If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/guides/resize-a-linode-disk/) so that you can take a new [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot), or [Resize Your Linode](/docs/guides/resizing-a-linode/)
+    If your Linode's disks have been using the entirety of allocatable space available to your Linode, then you will either need to [Resize Your Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/) so that you can take a new [Snapshot](/docs/products/storage/backups/#take-a-manual-snapshot), or [Resize Your Linode](/docs/products/compute/compute-instances/guides/resize/)
     {{< /note >}}
 
 1.  Select the current Linode and leave the box for **Overwrite Linode** unchecked. Then click the **Restore** button.
@@ -103,7 +101,7 @@ It is important to note that automatic backups using Linode's Backup Service wil
 
     ![Boot This Configuration Drop Down Menu](upgrade-centos8-boot-this-config.png "Boot This Configuration Drop Down Menu")
 
-1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/guides/set-up-and-secure/).
+1.  Now you can SSH into your server. Don't forget to [secure your new installation](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 ### Mount the Disk
 

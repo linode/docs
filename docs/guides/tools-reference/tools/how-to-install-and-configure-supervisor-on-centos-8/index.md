@@ -1,7 +1,5 @@
 ---
 slug: how-to-install-and-configure-supervisor-on-centos-8
-author:
-  name: Dan Nielsen
 description: "Supervisor is a process control system that's often used for services without management scripts. This guide shows how to configure Supervisor on CentOS 8."
 keywords: ['centos', 'system', 'supervisor', 'supervisord']
 tags: ["linux", "automation", "monitoring", "centos"]
@@ -12,11 +10,9 @@ modified_by:
   name: Linode
 title: "Installing and Configuring Supervisor on CentOS 8"
 title_meta: "How to Install and Configure Supervisor on CentOS 8"
-contributor:
-  name: Dan Nielsen
-  link: https://github.com/danielsen
 external_resources:
 - '[Configuration File — Supervisor 4.2.1 documentation](http://supervisord.org/configuration.html)'
+authors: ["Dan Nielsen"]
 ---
 
 [**Supervisor**](http://supervisord.org/) is a process control system based on the client/server model. It can be used to simplify process management by providing a centralized location for process control. It's most often deployed to control services that don't have initialization, auto-start, or management scripts. Remote process control is also supported via [Remote Procedure Calls](https://man7.org/linux/man-pages/man3/rpc.3.html), or RPC.
@@ -41,9 +37,9 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *CentOS 8* Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

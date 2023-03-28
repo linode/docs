@@ -1,7 +1,5 @@
 ---
 slug: python-for-and-while-loops
-author:
-  name: Jeff Novotny
 description: 'This guide covers using for and while loops in Python 3 and includes examples for looping through dictionaries and lists, and constructing do while loops.'
 keywords: ['Python for loop', 'Python while loop', 'Python for loop range', 'Python loop through dictionary']
 tags: ['python']
@@ -11,13 +9,11 @@ modified_by:
   name: Linode
 title: "For and While Loops in Python 3"
 title_meta: "Using For and While Loops in Python 3"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[Python compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
+authors: ["Jeff Novotny"]
 ---
 
 Programs often have to run the same commands over and over again. [Python](https://www.python.org/) provides two types of loop statements to handle two different situations. The Python `for` loop is used when the number of iterations is known before the loop starts running. In contrast, the Python `while` loop repeats as long as a certain condition is true. This tutorial describes how to use both types of loops and explains how to use Python for common scenarios like looping through a dictionary.
@@ -50,9 +46,9 @@ To summarize, a `for` statement is used when the maximum number of iterations is
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 

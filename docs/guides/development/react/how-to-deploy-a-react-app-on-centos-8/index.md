@@ -1,7 +1,5 @@
 ---
 slug: how-to-deploy-a-react-app-on-centos-8
-author:
-  name: Linode
 description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX.'
 og_description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX'
 keywords: ['react','reactjs','deploy','rsync']
@@ -14,8 +12,6 @@ modified_by:
   name: Linode
 title: "Deploying a React Application on CentOS 8"
 title_meta: "How to Deploy a React Application on CentOS 8"
-contributor:
-  name: Linode
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -28,6 +24,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/react/how-to-deploy-a-react-app-on-centos-8/']
+authors: ["Linode"]
 ---
 
 ## What is React?
@@ -38,9 +35,9 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide or the [Installing NGINX on CentOS 8](/docs/guides/how-to-install-nginx-centos-8/) guide.
 

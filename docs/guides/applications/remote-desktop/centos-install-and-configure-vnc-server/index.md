@@ -1,7 +1,5 @@
 ---
 slug: centos-install-and-configure-vnc-server
-author:
-  name: Nathaniel Stickman
 description: 'This guide will show you how to install and configure a VNC server which you can remotely connect to and run a desktop environment with on CentOS 8.'
 og_description: 'This guide shows you how to install, configure, and use a VNC server to connect to a CentOS 8 remotely.'
 keywords: ['centos vnc server']
@@ -11,9 +9,6 @@ published: 2021-07-02
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Configure VNC Server on Centos 8"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[TigerVNC documentation](https://tigervnc.org/doc/Xvnc.html)'
 - '[RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/)'
@@ -22,15 +17,16 @@ relations:
         key: install-vnc
         keywords:
             - distribution: CentOS 8
+authors: ["Nathaniel Stickman"]
 ---
 
 *Virtual Network Computing* (VNC) allows you to connect to and control a remote desktop environment. It is common to use VNC to operate your server with a full desktop experience. This guide walks you through the steps to install, configure, and use VNC on CentOS 8.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. In the examples that follow, change `192.0.2.0` to the IP address for your CentOS 8 machine.
 

@@ -1,8 +1,5 @@
 ---
 slug: migrate-cpanel-to-linode
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'Shows how to use the CPanel Transfer Tool to copy CPanel accounts to a new Linode running WHM and CPanel.'
 keywords: ["cpanel", "transfer tool", "migrate", "website migration"]
 tags: ["cpanel","linode platform"]
@@ -18,6 +15,7 @@ external_resources:
   - '[CPanel Documentation - Transfer Tool](https://documentation.cpanel.net/display/68Docs/Transfer+Tool)'
 
 aliases: ['/platform/migrate-to-linode/migrate-cpanel-to-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 This guide describes how to migrate from a server running WHM and CPanel on another hosting service to Linode. This transfer is completed using CPanel's official [Transfer Tool](https://documentation.cpanel.net/display/70Docs/Transfer+Tool). Prior to using the Transfer Tool, you will complete a basic WHM installation on a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide for more information about migrating your sites before beginning.
@@ -32,9 +30,9 @@ This guide does not cover how to handle CPanel deployments that are part of a DN
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose CentOS 7 as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose CentOS 7 as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
 
-1.  Use the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
+1.  Use the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
 
 1.  Stand up a new WHM/CPanel installation by following the [Install CPanel on Linode](/docs/guides/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the **Networking** tab for your Linode in the Linode Cloud Manager, and it will have the form `203-0-113-0.ip.linodeusercontent.com`.
 

@@ -1,16 +1,10 @@
 ---
 slug: how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Unbundle the default NGINX server from Omnibus Gitlab and install and configure your own to enable virtual hosting.'
 keywords: ["version control", "git", "gitlab", "install gitlab on ubuntu", "how to manage repositories with gitlab"]
 tags: ["version control system","email","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['/applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/','/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
-contributor:
-    name: Jordi Bassagañas
-    link: https://twitter.com/programarivm
 modified: 2017-06-21
 modified_by:
   name: Phil Zona
@@ -21,6 +15,7 @@ external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
 audiences: ["intermediate"]
+authors: ["Jordi Bassagañas"]
 ---
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
@@ -31,9 +26,9 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started guide](/docs/guides/getting-started/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started guide](/docs/products/platform/get-started/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide has been tested with Ubuntu 14.04 LTS and 16.04 LTS. Some commands will be slightly different for each version, so be sure to read each step carefully for version-specific instructions.
 

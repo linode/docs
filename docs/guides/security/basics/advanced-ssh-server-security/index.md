@@ -1,8 +1,5 @@
 ---
 slug: advanced-ssh-server-security
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will give you some of Linode's best tips and tricks for best practices when it comes to improving the security of your SSH server."
 keywords: ["SSH", "secure shell", "Ubuntu", "CentOS", "security", "2FA", "server", "Linux"]
 tags: ["ssh","security","linux"]
@@ -12,20 +9,18 @@ modified: 2017-04-07
 modified_by:
   name: Linode
 title: "Harden SSH Access with Advanced OpenSSH Features"
-contributor:
-  name: Damaso Sanoja
-  link: https://github.com/damasosanoja
 external_resources:
  - '[OpenSSH](http://www.openssh.com/)'
  - '[Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)'
 aliases: ['/security/advanced-ssh-server-security/','/security/basics/advanced-ssh-server-security/']
+authors: ["Damaso Sanoja"]
 ---
 
 There's a good chance you've been using SSH (Secure Shell) to access your Linode from your computer. Although SSH is a secure protocol, most system compromises are a result of human error or failure to take advantage of the security features offered. In this guide, we'll cover a few key features provided by OpenSSH.
 
 ![Use Advanced OpenSSH Features to Harden Access to Your Linode](advanced-ssh-server-security.png "Use Advanced OpenSSH Features to Harden Access to Your Linode")
 
-[OpenSSH](http://www.openssh.com/) is a suite of connectivity tools that sysadmins use daily to access remote servers. From a security point of view, it's the 'front door' for remote logins so it is extremely important to harden SSH as much as possible. The aim of this guide is to build upon our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide with easy steps that can be implemented in just a few minutes.
+[OpenSSH](http://www.openssh.com/) is a suite of connectivity tools that sysadmins use daily to access remote servers. From a security point of view, it's the 'front door' for remote logins so it is extremely important to harden SSH as much as possible. The aim of this guide is to build upon our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide with easy steps that can be implemented in just a few minutes.
 
 **Assumptions:**
 
@@ -34,9 +29,9 @@ There's a good chance you've been using SSH (Secure Shell) to access your Linode
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, create a basic firewall rule set and remove unnecessary network services.
 
 3.  Log in to your Linode via SSH and check for updates using the corresponding package manager: `apt` (Ubuntu/Debian) or `yum` (RHEL/CentOS) .
 
@@ -120,7 +115,7 @@ Remember to restart your SSH service after changes have been made:
 
 ## Use a Strong Password for your Key-pair
 
-In the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, you're encouraged to use SSH Key Pair Authentication. This is not optional if you are serious about security. But what about remote users that connect to the server with their laptops, which are susceptible to be stolen or lost? Here is where protecting your private key with a strong password or passphrase comes in, at least to gain time before changing the server keys. A strong password shouldn't be dictionary based. If security is your main concern, the convenience of an easy to remember password isn't adequate. [OpenSSL](https://www.openssl.org/) offers an easy way to generate pseudo-random passwords:
+In the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you're encouraged to use SSH Key Pair Authentication. This is not optional if you are serious about security. But what about remote users that connect to the server with their laptops, which are susceptible to be stolen or lost? Here is where protecting your private key with a strong password or passphrase comes in, at least to gain time before changing the server keys. A strong password shouldn't be dictionary based. If security is your main concern, the convenience of an easy to remember password isn't adequate. [OpenSSL](https://www.openssl.org/) offers an easy way to generate pseudo-random passwords:
 
     openssl rand -base64 32
 

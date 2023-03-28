@@ -1,7 +1,5 @@
 ---
 slug: strongswan-vpn-server-install
-author:
-  name: Tom Henderson
 description: 'This guide shows you how to install a StrongSwan VPN server on an Ubuntu 20.04 server. You also learn how to connect to a StrongSwan VPN server from Ubuntu, Windows, and macOS clients.'
 keywords: ['install strongswan', 'strongswan client', 'connecting to strongswan VPN', 'troubleshoot strongswan']
 bundles: ['network-security']
@@ -11,10 +9,9 @@ modified_by:
   name: Linode
 title: "Install and Configure a StrongSwan Gateway VPN Server on Ubuntu 20.04"
 title_meta: "Install and Configure StrongSwan on Ubuntu 20.04"
-contributor:
-  name: Tom Henderson
 external_resources:
 - '[Introduction to StrongSwan](https://wiki.strongswan.org/projects/strongswan/wiki/IntroductionTostrongSwan)'
+authors: ["Tom Henderson"]
 ---
 
 StrongSwan is an open-source tool that operates as a keying daemon and uses the [Internet Key Exchange protocols](https://en.wikipedia.org/wiki/Internet_Key_Exchange) (IKEv1 and IKEv2) to secure connections between two hosts. In this way, you can use StrongSwan to establish a Virtual Private Network (VPN). VPN connections from a client to the StrongSwan server are encrypted and provide a secure gateway to other resources available on the server and its network. This guide shows you how to install and configure a StrongSwan gateway VPN server on Ubuntu 20.04. You also learn how to set up and connect to a StrongSwan server from an Ubuntu, Windows, and macOS client.
@@ -25,9 +22,9 @@ The steps in this section show you how to install and configure a StrongSwan gat
 
 ### Prerequisites
 
-1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Deploy an Ubuntu 20.04 server and follow our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system:
 

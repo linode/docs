@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-linode-packer-builder
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Packer is a HashiCorp maintained open source tool for creating machine images. Here's how to use it."
 keywords: ['packer hashicorp','hashicorp packer','image','machine image','immutable infrastructure','continuous delivery','ansible','ansible playbook','hashicorp terraform','hashicorp']
 tags: ["automation"]
@@ -13,9 +10,8 @@ modified_by:
   name: Linode
 title: "Using the Linode Packer Builder to Create Custom Images"
 title_meta: "How to Use the Linode Packer Builder"
-contributor:
-  name: Linode
 aliases: ['/applications/configuration-management/how-to-use-linode-packer-builder/','/applications/configuration-management/packer/how-to-use-linode-packer-builder/']
+authors: ["Linode"]
 ---
 
 ## Introduction to Packer
@@ -173,7 +169,7 @@ To learn how to securely store and use your API v4 token, see the [Vault](https:
 
 ## Deploying a Linode with the New Image
 
-Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed a few ways:
+Once the Packer build process completes, a new [Custom Image](/docs/products/tools/images/) will appear on your account. This image can be deployed in a few ways:
 
 - **Cloud Manager:** Use the Cloud Manager to deploy a Custom Image by following the [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/) guide.
 

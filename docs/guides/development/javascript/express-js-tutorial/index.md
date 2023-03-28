@@ -1,7 +1,5 @@
 ---
 slug: express-js-tutorial
-author:
-  name: Nathaniel Stickman
 description: 'This tutorial gives a complete overview of how Express JS works, including installation, configuration, templates engines and middleware capabilities.'
 keywords: ['express js','node.js','app framework','web application','install express','middleware','template engines']
 tags: ['web applications']
@@ -12,15 +10,13 @@ modified_by:
   name: Nathaniel Stickman
 title: "Express JS Tutorial: Get Started Building a Website"
 title_meta: "Express JS Tutorial"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Express JS  official documentation](https://expressjs.com/en/4x/api.html)'
 - '[Express JS Template engines](https://expressjs.com/en/resources/template-engines.html)'
 - '[Express JS middleware functions guide](https://expressjs.com/en/guide/writing-middleware.html)'
 - '[MVC design pattern](https://github.com/expressjs/express/tree/master/examples/mvc)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 This Express JS tutorial shows you how to set up a basic Express JS website and explains its key features for managing web content and traffic.
@@ -34,9 +30,9 @@ There are plenty of similar frameworks out there. What sets Express JS apart is 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Throughout, this guide uses `example-app` as the name of the Express JS application and `example.com` as the server domain name. Replace these with your preferred application name and your server's domain name, respectively.
 

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy HashiCorp Nomad, a flexible scheduling and orchestration for diverse workloads, on a Linode Compute Instance.'"
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,6 +7,7 @@ published: 2022-08-09
 modified_by:
   name: Linode
 title: "Deploy HashiCorp Nomad through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.
@@ -31,11 +29,13 @@ title: "Deploy HashiCorp Nomad through the Linode Marketplace"
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Nomad Web UI
 
-1. Open your web browser and navigate to `http://[ip-address]:8080`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1. Open your web browser and navigate to `http://[ip-address]:8080`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
 1. The [Nomad Web UI](https://learn.hashicorp.com/collections/nomad/web-ui) is displayed. From here, you can manage the cluster, jobs, integrations, and ACL tokens.
 

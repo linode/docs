@@ -1,8 +1,5 @@
 ---
 slug: use-nightmarejs-to-automate-headless-browsing
-author:
-  name: Nashruddin Amin
-  email: nashruddin.amin@gmail.com
 description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
 og_description: 'Nightmare.js is an automated, headless browsing tool that can be configured to self-navigate websites, automate data scraping, and quicken QA.'
 keywords: ["nightmare.js", " node.js", " headless browser", " automation"]
@@ -13,9 +10,6 @@ modified: 2017-10-09
 modified_by:
   name: Linode
 title: 'Use Nightmare.js to Automate Headless Browsing'
-contributor:
-  name: Nashruddin Amin
-  link: https://github.com/flowfree
 external_resources:
   - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
@@ -23,6 +17,7 @@ audiences: ["intermediate"]
 concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["javascript"]
 aliases: ['/development/nodejs/use-nightmarejs-to-automate-headless-browsing/']
+authors: ["Nashruddin Amin"]
 ---
 
 ![Use Nightmare.js to Automate Headless Browsing](nightmarejs-automate-headless-browsing-title.jpg "Use Nightmare.js to Automate Headless Browsing")
@@ -31,9 +26,9 @@ aliases: ['/development/nodejs/use-nightmarejs-to-automate-headless-browsing/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 

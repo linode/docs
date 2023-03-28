@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-htaccess-on-apache
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Apache .htaccess file to configure a website on a per-directory basis. This guide shows you how to create and enable an .htaccess file and more.'
 keywords: ["htaccess", " apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,14 +9,12 @@ modified_by:
   name: Linode
 title: 'Enable and Set Up the .htaccess File on Apache'
 title_meta: 'How to Set Up the htaccess File on Apache'
-contributor:
-  name: Christopher Piccini
-  link: https://twitter.com/chrispiccini11
 external_resources:
 - '[HTTP Error and Status Codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)'
 - '[Apache .htaccess Documentation](https://httpd.apache.org/docs/current/howto/htaccess.html)'
 tags: ["web server","apache"]
 aliases: ['/web-servers/apache/how-to-set-up-htaccess-on-apache/']
+authors: ["Christopher Piccini"]
 ---
 
 ![How to Set Up the htaccess File on Apache](how-to-set-up-the-htaccess-file-on-apache-smg.jpg)
@@ -30,9 +25,9 @@ An .htaccess file makes Apache web server configuration changes on a per-directo
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Complete the Apache section in the [Install a Lamp Stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) to install Apache on your Linode.
 

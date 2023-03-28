@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-wordpress-using-wp-cli-on-centos-8
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on CentOS 8'
 keywords: ["install WP-CLI", "centos", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["centos","wordpress","cms","lamp"]
@@ -13,8 +10,6 @@ modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on CentOS 8'
 title_meta: 'How to Install WordPress Using WP-CLI on CentOS 8'
-contributor:
-    name: Linode
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -25,6 +20,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/wordpress/how-to-install-wordpress-using-wp-cli-on-centos-8/','/websites/cms/wp-cli/how-to-install-wordpress-using-wp-cli-on-centos-8/']
+authors: ["Linode"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.
@@ -43,9 +39,9 @@ Before moving ahead, make sure you have completed the following steps.
 
 1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

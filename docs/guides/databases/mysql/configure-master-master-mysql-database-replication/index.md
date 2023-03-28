@@ -1,8 +1,5 @@
 ---
 slug: configure-master-master-mysql-database-replication
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: "Learn how to set up master-master MySQL databases replication in this simple step-by-step tutorial."
 og_description: "MySQL Master-Master replication adds speed and redundancy. With replication, two separate MySQL servers act as a cluster, particularly useful for high availability website configurations. Use this guide to configure database replication on your Linode."
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
@@ -17,6 +14,7 @@ external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 tags: ["ubuntu","debian","database","mysql"]
 image: mysql-master-master-replication-title.jpg
+authors: ["James Stewart"]
 ---
 
 ![Configure Master-Master MySQL Database Replication](mysql-master-master-replication-title.jpg)

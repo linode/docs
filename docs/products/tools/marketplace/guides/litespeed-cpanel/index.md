@@ -1,21 +1,17 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy LiteSpeed cPanel on a Linode Compute Instance. This provides you with a lightning fast, performant, and secure web server that conserves resources."
 keywords: ['web server','cpanel','litespeed']
-tags: ["marketplace", "linode platform", "cloud manager"]
+tags: ["marketplace", "linode platform", "cloud manager","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploy LiteSpeed cPanel through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[LiteSpeed](https://www.litespeedtech.com/)'
 aliases: ['/guides/deploying-litespeed-cpanel-marketplace-app/','/guides/litespeed-cpanel-marketplace-app/']
+authors: ["Linode"]
 ---
 
 The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [LiteSpeed Web Server](https://www.litespeedtech.com/products/litespeed-web-server), and the[WHM/cPanel LiteSpeed Plugin](https://www.litespeedtech.com/products/litespeed-web-server/control-panel-plugins/cpanel).
@@ -29,7 +25,7 @@ The LiteSpeed cPanel App automatically installs [cPanel](https://cpanel.net/), [
 {{< note >}}
 cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
 
-LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://www.litespeedtech.com/products/litespeed-web-server/lsws-pricing) to view available plans and pricing information.
+LiteSpeed offers both free and paid plans. Visit [LiteSpeed's website](https://www.litespeedtech.com/products/litespeed-web-server/lsws-pricing) to view available plans and pricing information.
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -49,23 +45,25 @@ LiteSpeed offers both free and paid plans.  Visit [LiteSpeed's website](https://
 
 ## Verify Installation
 
-To determine if the installation has completed sucessfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) and run:
+To determine if the installation has completed successfully, log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and run:
 
-    tail -3 /var/log/stackscript.log
+```command
+tail -3 /var/log/stackscript.log
+```
 
 This output should be similar to the following. While this does provide instructions to access the LiteSpeed WebAdmin panel, you must reset the password before accessing it. See [Accessing the LiteSpeed WebAdmin Interface](#accessing-the-litespeed-webadmin-interface).
 
-{{<output>}}
+```output
 **LITESPEED AUTOINSTALLER COMPLETE**
 Install finished! Your randomly generated admin password for the LiteSpeed WebAdmin interface on port 7080 is [password]
 Please make sure to save this password.
-{{</output>}}
+```
 
 ## Getting Started after Deployment
 
 ### Accessing WHM/cPanel
 
-1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1.  Open your web browser and navigate to `http://[ip-address]:2087`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
 1.  The WHM login page appears. Enter `root` as the username and the root password you created when deploying your instance. Click the **Log In** button to continue.
 
@@ -107,21 +105,23 @@ Now that you’ve accessed your LiteSpeed instance, check out [the official Lite
 
 ### Accessing the LiteSpeed WebAdmin Interface
 
-1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1. Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-1.  Run the following script to reset the password:
+1. Run the following script to reset the password:
 
-        /usr/local/lsws/admin/misc/admpass.sh
+    ```command
+    /usr/local/lsws/admin/misc/admpass.sh
+    ```
 
-1.  When requested, enter *admin* as the username and then enter your desired password.
+1. When requested, enter *admin* as the username and then enter your desired password.
 
-1.  Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing your IP address.
+1. Once finished, open your web browser and navigate to `http://[ip-address]:7080`, replacing *[ip-address]* with your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing your IP address.
 
-1.  The LiteSpeed WebAdmin Console login prompt appears. Enter *admin* as the username and use the password you just set in the previous steps.
+1. The LiteSpeed WebAdmin Console login prompt appears. Enter *admin* as the username and use the password you just set in the previous steps.
 
     ![Screenshot of LiteSpeed WebAdmin login prompt](litespeed-webadmin-console.png)
 
-1.  After logging in, the LiteSpeed WebAdmin Console appears.
+1. After logging in, the LiteSpeed WebAdmin Console appears.
 
     ![Screenshot of LiteSpeed WebAdmin Console](litespeed-webadmin-interface.png)
 

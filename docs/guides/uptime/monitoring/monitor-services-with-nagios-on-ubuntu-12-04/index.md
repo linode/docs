@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to Monitor Services and Send Status Updates on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["nagios", "monitor services", "ubuntu 12.04", "smtp", "pop3", "http", "icmp", "ssh", "notifications", "alerts"]
 tags: ["monitoring","ubuntu"]
@@ -24,13 +21,14 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
 ## Install Nagios
 
-Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) set up on your Linode.
+Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You also need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/) set up on your Linode.
 
 Now you're ready to install Nagios. Here's how:
 

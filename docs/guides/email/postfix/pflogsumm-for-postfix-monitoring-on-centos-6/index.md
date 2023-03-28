@@ -1,15 +1,10 @@
 ---
 slug: pflogsumm-for-postfix-monitoring-on-centos-6
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how you can configure your Postfix mail server to send you daily notification emails with the status of the server by using Pflogsumm.'
 keywords: ["pflogsumm", " postfix", " monitoring", " mail server"]
 tags: ["centos","perl","monitoring","email","postfix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/email/postfix/pflogsumm-for-postfix-monitoring-on-centos-6/','/email/postfix/pflogsumm-centos-6/']
-contributor:
-    name: Robert Accettura
 modified: 2014-02-05
 modified_by:
   name: Linode
@@ -17,6 +12,7 @@ published: 2014-02-05
 title: Pflogsumm for Postfix Monitoring on CentOS 6
 external_resources:
  - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
+authors: ["Robert Accettura"]
 ---
 
 ![banner_image](Pflogsumm_or_Postfix_Monitoring_on_CentOS_smg.jpg)

@@ -1,8 +1,5 @@
 ---
 slug: how-to-create-and-use-mysql-views
-author:
-  name: Francis Ndungu
-  email: francisndungu83@gmail.com
 description: 'A view in MySQL is a named query that can be triggered to display data stored in other tables. This guide shows how to create, invoke, and delete views.'
 keywords: ['mysql','database','views']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,9 @@ modified_by:
   name: Linode
 title: "Using Views in a MySQL Database"
 title_meta: "How to Use Views in a MySQL Database"
-contributor:
-  name: Francis Ndungu
-  link: https://twitter.com/francisndungu83
 external_resources:
 - '[MySQL - Using Views](https://dev.mysql.com/doc/refman/8.0/en/views.html)'
+authors: ["Francis Ndungu"]
 ---
 
 A *view* in MySQL is a named query that can be triggered to display data stored in other tables. In other words, views are user-defined virtual tables. Views can be used to:
@@ -35,7 +30,7 @@ In this guide you will learn:
 
 To follow along with this guide, make sure you have the following:
 
-1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/guides/getting-started/) guide to provision a Linode.
+1.  A Linode, which you run the MySQL software on. You can follow the [Getting Started with Linode](/docs/products/platform/get-started/) guide to provision a Linode.
 
 1.  The MySQL server software (or MariaDB) installed on your Linode. Please refer to the [MySQL section](/docs/guides/databases/mysql/), which contains guides that describe how to install MySQL on several Linux distributions.
 
@@ -43,7 +38,7 @@ To follow along with this guide, make sure you have the following:
 
 Before you create your MySQL views, create a sample database, define a few tables, and populate them with some data first:
 
-1.  [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to your Linode. Then, enter this command to log in to MySQL as the root user:
+1.  [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to your Linode. Then, enter this command to log in to MySQL as the root user:
 
         mysql -u root -p
 

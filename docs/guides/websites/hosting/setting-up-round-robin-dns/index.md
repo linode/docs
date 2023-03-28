@@ -1,8 +1,5 @@
 ---
 slug: setting-up-round-robin-dns
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to set up round-robin DNS on a set of Linodes as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
 keywords: ["hosting a website", "website", "linode quickstart guide", "high availability", "failover"]
 tags: ["web server","nginx","monitoring"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2012-03-13
 title: Setting up Round-Robin DNS
 aliases: ['/websites/hosting/setting-up-round-robin-dns/','/websites/setting-up-round-robin-dns/']
+authors: ["Linode"]
 ---
 
 ## What is Round-Robin DNS
@@ -27,7 +25,7 @@ This guide will explain how to configure round-robin DNS in it's most basic conf
 
 To continue following this guide, you will need a website that's hosted on a Linode and accessible through a domain name. If you already have a Linode configured this way, you can skip this section.
 
-- [Create a Linode](/docs/guides/getting-started/) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
+- [Create a Linode](/docs/products/platform/get-started/) on any plan that will host your website or web application. While a round-robin DNS configuration is possible with all major distros, the steps in this guide were specifically created using Debian 10.
 
 - [Add a domain and configure an A record](/docs/products/networking/dns-manager/get-started/) to point to your new Linode. When using round-robin DNS, a low TTL is recommended.
 
@@ -99,7 +97,7 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
 {{< /note >}}
 
-1. [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
+1. [Add a Private IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
 
 1. Boot or Reboot all Linodes once they have been given a private IP address to ensure that the network configuration will be applied.
 

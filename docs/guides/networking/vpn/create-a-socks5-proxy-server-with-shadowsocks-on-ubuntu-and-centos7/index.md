@@ -1,8 +1,5 @@
 ---
 slug: create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to create a SOCKS5 proxy server with Shadowsocks on Ubuntu and CentOS 7."
 keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 bundles: ['network-security']
@@ -15,12 +12,10 @@ modified_by:
   name: Linode
 title: "Creating a SOCKSS Proxy Server with Shadowsocks"
 title_meta: "How to Create a SOCKS5 Proxy Server with Shadowsocks"
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940
 external_resources:
  - '[Shadowsocks official](https://shadowsocks.org/)'
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
+authors: ["Andrew Lescher"]
 ---
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
@@ -33,7 +28,7 @@ Because currently, there is no Shadowsocks package available for Ubuntu or CentO
 
 ## Before You Begin
 
-1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our Securing your Server guide.
+1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our Securing your Server guide.
 
 1.  A working firewall is a necessary security measure. Firewall instructions [are provided](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on a Linode, visit one of the following guides:
 

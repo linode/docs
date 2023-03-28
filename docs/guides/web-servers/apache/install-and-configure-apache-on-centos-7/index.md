@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-apache-on-centos-7
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
 keywords: ["CentOS", "CentOS 7", "apache", "yum install httpd"]
 tags: ["centos","web server","apache"]
@@ -21,6 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 7
+authors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on CentOS 7](How_to_Install_Apache_on_CentOS_7_smg.jpg)
@@ -36,9 +34,9 @@ Replace each instance of `example.com` in this guide with the domain name of the
 
 ## Before you begin
 
-1.  Ensure you have followed both the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure you have followed both the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
-2.  Check that the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname). To check the hostname run:
+2.  Check that the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname). To check the hostname run:
 
         hostname
         hostname -f

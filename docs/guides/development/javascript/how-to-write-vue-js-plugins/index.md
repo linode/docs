@@ -1,8 +1,5 @@
 ---
 slug: how-to-write-vue-js-plugins
-author:
-  name: John Au-Yeung
-  email: docs@linode.com
 description: 'Learn how to create your own Vue.js plugin with an easy-to-use package and add functionality to your Vue apps.'
 keywords: ['vue','vue.js','plugin','directive', 'filter', 'mixin']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,12 +7,10 @@ published: 2021-02-09
 modified_by:
   name: Linode
 title: "Write Your Own Vue.js Plugin"
-contributor:
-  name: John Au-Yeung
-  link: https://twitter.com/AuMayeung
 external_resources:
 - '[VueJS](https://vuejs.org/)'
 tags: ["web applications"]
+authors: ["John Au-Yeung"]
 ---
 
 ## What is a Vue.js Plugin?

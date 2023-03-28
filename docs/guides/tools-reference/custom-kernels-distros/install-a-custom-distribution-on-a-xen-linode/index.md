@@ -1,9 +1,6 @@
 ---
 slug: install-a-custom-distribution-on-a-xen-linode
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 published: 2009-08-18
 description: 'How to run a custom Linux distribution or pre-built Linux appliance on your Linode.'
 keywords: ["custom distro", "custom distribution", "advanced Linux"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 modified: 2020-12-01
 title: Install a Custom Distribution on a Xen Linode
+authors: ["Linode"]
 ---
 
 If you'd like to run a Linux distribution on your Linode that isn't available from our distribution list, you can do so by following these instructions. This guide is handy for people who prefer distributions that aren't heavily used in the community, or for those interested in creating a highly customized Linux environment and porting it to their Linode.
@@ -20,7 +18,7 @@ If you'd like to run a Linux distribution on your Linode that isn't available fr
 {{< content "all-linodes-kvm-shortguide" >}}
 
 {{< note respectIndent=false >}}
-This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/guides/install-a-custom-distribution/).
+This guide is intended for Linodes using our older Xen hypervisor. To install a custom distribution on a new KVM Linode, see [this guide](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/).
 {{< /note >}}
 
 ## Creating the Virtual Machine
@@ -152,7 +150,7 @@ Start from the Linode Manager by configuring a Linode to boot your custom image.
 
 11. Next, select the **Rescue** sub-tab, which is located on the same row as the **Dashboard** tab. Select **Reboot into Rescue Mode**. Monitor the **Host Job Queue** progress bar for the system shutdown and the system boot. It should take under a minute.
 
-12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/guides/lish/).
+12. Once your Linode has booted into Finnix Rescue Mode, you should be able to connect to it via the [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
 ## Starting SSH in Finnix
 
@@ -213,6 +211,6 @@ proc /proc proc defaults 0 0
 ~
 6.  Exit and save the file by pressing `Ctrl+x`, type `y` to save your changes, and press `enter` to exit.
 
-The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide.
+The disk has been transferred to your Linode. You should now be able to boot your Linode normally and log in [via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). Remember to use the username and password created during step 23 under the [Creating the Virtual Machine](#creating-the-virtual-machine) heading. Also, check your network configuration and if necessary refer to the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.
 
 Congratulations, you have successfully transferred the custom distro disk from your local virtual machine to your Linode.

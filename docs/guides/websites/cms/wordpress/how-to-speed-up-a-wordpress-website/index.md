@@ -1,8 +1,5 @@
 ---
 slug: how-to-speed-up-a-wordpress-website
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'This guide shows how to analyze performance bottlenecks for a WordPress website and describes optimization best practices for WordPress'
 keywords: ["htaccess", "apache", "wordpress"]
 tags: ["docker","linux","analytics","php","wordpress","cms"]
@@ -14,12 +11,12 @@ modified_by:
 title: 'How to Speed Up a WordPress Website'
 external_resources:
 - '[Finding Bottlenecks in WordPress Code](https://deliciousbrains.com/finding-bottlenecks-wordpress-code/)'
-- '[Profiling WordPress Performance](https://pressjitsu.com/blog/profiling-wordpress-performance/)'
 - '[Profiling with XHProf and XHGUI](https://www.engineyard.com/blog/topic/profiling-with-xhprof-and-xhgui)'
 - '[Tideways XHProf Extension](https://github.com/tideways/php-xhprof-extension)'
 - '[XHGUI](https://github.com/perftools/xhgui)'
 - '[How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)'
 aliases: ['/websites/cms/how-to-speed-up-a-wordpress-website/','/websites/cms/wordpress/how-to-speed-up-a-wordpress-website/']
+authors: ["Nathan Melehan"]
 ---
 
 ## Goals For This Guide
@@ -108,7 +105,7 @@ Run these commands from your Linode:
 
 3.  Verify that you can view the visualization app by loading `http://<your-Linode-IP-address>:8080` in a web browser:
 
-    ![Visualization app started](/docs/websites/cms/how-to-speed-up-a-wordpress-website/php-profile-visualization-started.png "Visualization app started")
+    ![Visualization app started](php-profile-visualization-started.png "Visualization app started")
 
 ## Profiling the Application
 

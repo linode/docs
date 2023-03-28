@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 tags: ["web server","apache","debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 
@@ -29,8 +27,8 @@ Note that if you're looking to install a full LAMP stack, you may want to consid
 
 ## Before You Begin
 
--   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -39,7 +37,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ## Install Apache 2
 

@@ -1,7 +1,5 @@
 ---
 slug: install-openvpn-access-server-on-linux
-author:
-    name: James Stewart
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
 keywords: ["openvpn", "vpn"]
 aliases: ['/networking/vpn/install-openvpn-access-server-on-linux/','/networking/vpn/openvpn-access-server/','/networking/vpn/configure-openvpn-access-server-to-tunnel-traffic/']
@@ -12,6 +10,7 @@ modified_by:
 published: 2015-04-30
 title: Manage OpenVPN with OpenVPN Access Server
 tags: ["networking","security","vpn"]
+authors: ["James Stewart"]
 ---
 
 ![Manage OpenVPN with OpenVPN Access Server](Install_OpenVPN_Access_Server_v2_smg.png "Manage OpenVPN with OpenVPN Access Server title graphic")
@@ -25,8 +24,8 @@ OpenVPN Access Server requires a paid license to use more than two connected dev
 ## Before You Begin
 
 - Ensure that you have not already installed OpenVPN before starting this guide.
-- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
-- Update your system. For more information, see [Install Software Updates](/docs/guides/set-up-and-secure/#perform-system-updates).
+- Ensure that you have root access to your Linode or a user account with `sudo` privilege. For information about creating a user account with `sudo` privilege, see [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
+- Update your system. For more information, see [Install Software Updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates).
 - Allow TCP traffic through port `943` and UDP through port `1194` on your firewall. For more information, see [Add Rules](/docs/guides/configure-firewall-with-ufw/#add-rules).
 
 

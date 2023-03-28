@@ -1,7 +1,5 @@
 ---
 slug: redis-server-cli
-author:
-  name: Nathaniel Stickman
 description: "Redis provides a powerful command-line tool to view and update its configuration options. Learn how to use the Redis CLI set, get, and write commands to update your configurations."
 keywords: ['redis configuration','redis command line','change redis settings']
 tags: ['ubuntu', 'debian', 'centos', 'fedora']
@@ -11,20 +9,18 @@ modified_by:
   name: Nathaniel Stickman
 title: "Configure a Redis Server from the Command Line"
 title_meta: "How to Configure a Redis Server from the Command Line"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: Redis Configuration](https://redis.io/topics/config)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Redis is an open-source NoSQL database boasting quick transactions and low latency. This guide shows you how to make and adjust settings for your Redis server from the command line.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 

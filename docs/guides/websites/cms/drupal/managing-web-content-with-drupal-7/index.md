@@ -1,8 +1,5 @@
 ---
 slug: managing-web-content-with-drupal-7
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
 keywords: ["drupal", "cms", "web framework", "web application", "php", "content management system", "content management framework"]
 tags: ["drupal","cms","lamp"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-09-29
 title: Installing Drupal 7
+authors: ["Linode"]
 ---
 
 Drupal is an advanced and powerful content management framework, built on the PHP scripting language and supported by a [database](/docs/databases/) engine like [MySQL](/docs/databases/mysql/). Drupal provides a flexible system that can be used to manage websites of all different types and profiles. Drupal is capable of providing the tools necessary to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal can also provide support for multifaceted personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
@@ -24,7 +22,7 @@ As the system's functionality is highly modular, one might even be inclined to t
 Before we begin with the Drupal installation, there are few other guides that provide instructions for installing the necessary prerequisites.
 
 - If you're new to Linux system administration, consider our [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/) guides.
-- Before you can install Drupal, please complete our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to get a fully updated and running system.
+- Before you can install Drupal, please complete our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to get a fully updated and running system.
 - Then, you will want to use one of the [LAMP](/docs/web-servers/lamp/) guides, or for beginners, the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide to get a functioning Linux/Apache/MySQL/PHP stack installed on your Linode.
 - If you want more information about installing [Apache](/docs/web-servers/apache/) or [the MySQL database](/docs/databases/mysql/), our guides provide some additional information regarding these dependencies.
 

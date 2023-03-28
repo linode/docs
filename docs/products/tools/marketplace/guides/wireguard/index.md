@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Deploy a WireGuard Server on Linode with Marketplace Apps.'
 keywords: ['vpn','wireguard','tunnel']
 tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
@@ -12,13 +9,12 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy WireGuard through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[WireGuard Quick Start](https://www.wireguard.com/quickstart/)'
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/platform/one-click/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-marketplace-apps/','/guides/wireguard-marketplace-app/']
+authors: ["Linode"]
 ---
 <!-- {{< youtube Q1I6-clkQmQ >}} -->
 
@@ -76,7 +72,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 1.   Follow the [WireGuard Client](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#wireguard-client) section of our WireGuard guide to generate a public/private keypair for your client, and to set up the WireGuard network interface configuration on your client.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Bring down the `wg0` interface on the server:
 
@@ -98,7 +94,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 You should now have your server configuration completed. At this point, you still need to complete your client's configuration; specifically, you need to add your server as a peer to the client:
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Just like your client, your server also has a public/private keypair of its own. The Marketplace App script leaves a copy of these keys in the root user's home folder:
 

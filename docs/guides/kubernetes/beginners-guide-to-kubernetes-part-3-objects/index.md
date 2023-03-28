@@ -1,29 +1,24 @@
 ---
 slug: beginners-guide-to-kubernetes-part-3-objects
-author:
-  name: Andy Stevens
-  email: docs@linode.com
-description: 'This is part three in a multi-part beginner''s guide to Kubernetes where you will be introduced to Kubernetes Pods, Services, and Namespaces.'
+description: "This is part three in a multi-part beginner's guide to Kubernetes where you will be introduced to Kubernetes Pods, Services, and Namespaces."
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["docker","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
   name: Linode
-title: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces"
-title_meta: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces."
-contributor:
-  name: Linode
+title: "A Beginner's Guide to Kubernetes (Part 3): Pods, Services, and Namespaces."
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-3-objects/','/kubernetes/beginners-guide-to-kubernetes-part-3-objects/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-objects/']
+authors: ["Linode"]
 ---
 
-![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This is the third guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
@@ -43,7 +38,7 @@ It is important to note that Pods are destroyed without respect to which Pod was
 
 Below is an example of a Pod manifest:
 
-{{< file "my-apache-pod.yaml" yaml >}}
+```file {title="my-apache-pod.yaml" lang=yaml}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -54,7 +49,7 @@ spec:
   containers:
   - name: apache-container
     image: httpd
-{{</ file >}}
+```
 
 Each manifest has four necessary parts:
 
@@ -71,40 +66,54 @@ For more information on the type of fields you can supply in a Pod manifest, ref
 
 Now that you have the manifest, you can create the Pod using the `create` command:
 
-    kubectl create -f my-apache-pod.yaml
+```command
+kubectl create -f my-apache-pod.yaml
+```
 
 To view a list of your pods, use the `get pods` command:
 
-    kubectl get pods
+```command
+kubectl get pods
+```
 
 You should see output like the following:
 
-    NAME         READY   STATUS    RESTARTS   AGE
-    apache-pod   1/1     Running   0          16s
+```output
+NAME         READY   STATUS    RESTARTS   AGE
+apache-pod   1/1     Running   0          16s
+```
 
 To quickly view which Node the Pod exists on, issue the `get pods` command with the `-o=wide` flag:
 
-    kubectl get pods -o=wide
+```command
+kubectl get pods -o=wide
+```
 
 To retrieve information about the Pod, issue the `describe` command:
 
-    kubectl describe pod apache-pod
+```command
+kubectl describe pod apache-pod
+```
 
 You should see output like the following:
 
-    ...
-    Events:
-    Type    Reason     Age    From                       Message
-    ----    ------     ----   ----                       -------
-    Normal  Scheduled  2m38s  default-scheduler          Successfully assigned default/apache-pod to mycluster-node-1
-    Normal  Pulling    2m36s  kubelet, mycluster-node-1  pulling image "httpd"
-    Normal  Pulled     2m23s  kubelet, mycluster-node-1  Successfully pulled image "httpd"
-    Normal  Created    2m22s  kubelet, mycluster-node-1  Created container
-    Normal  Started    2m22s  kubelet, mycluster-node-1  Started container
+```output
+...
+Events:
+Type    Reason     Age    From                       Message
+----    ------     ----   ----                       -------
+Normal  Scheduled  2m38s  default-scheduler          Successfully assigned default/apache-pod to mycluster-node-1
+Normal  Pulling    2m36s  kubelet, mycluster-node-1  pulling image "httpd"
+Normal  Pulled     2m23s  kubelet, mycluster-node-1  Successfully pulled image "httpd"
+Normal  Created    2m22s  kubelet, mycluster-node-1  Created container
+Normal  Started    2m22s  kubelet, mycluster-node-1  Started container
+```
 
 To delete the Pod, issue the `delete` command:
 
-    kubectl delete pod apache-pod
+```command
+kubectl delete pod apache-pod
+```
 
 ## Services
 
@@ -117,7 +126,7 @@ To delete the Pod, issue the `delete` command:
 
 Below is an example of a Service manifest:
 
-{{< file "my-apache-service.yaml" yaml>}}
+```file {title="my-apache-service.yaml" lang=yaml}
 apiVersion: v1
 kind: Service
 metadata:
@@ -132,7 +141,7 @@ spec:
     nodePort: 30020
   selector:
     app: web
-{{</ file >}}
+```
 
 The above example Service uses the `v1` API, and its `kind` is Service. Like the Pod example in the previous section, this manifest has a name and a label. Unlike the Pod example, this spec uses the `ports` field to define the exposed port on the container (`port`), and the target port on the Pod (`targetPort`). The `type` `NodePort` unlocks the use of `nodePort` field, which allows traffic on the host Node at that port. Lastly, the `selector` field is used to target only the Pods that have been assigned the `app: web` label.
 
@@ -140,25 +149,35 @@ For more information on Services, visit the [Kubernetes Service API documentatio
 
 To create the Service from the YAML file, issue the create command:
 
-    kubectl create -f my-apache-service.yaml
+```command
+kubectl create -f my-apache-service.yaml
+```
 
 To view a list of running services, issue the `get services` command:
 
-    kubectl get services
+```command
+kubectl get services
+```
 
 You should see output like the following:
 
-    NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-    apache-service   NodePort    10.99.57.13   <none>        80:30020/TCP   54s
-    kubernetes       ClusterIP   10.96.0.1     <none>        443/TCP        46h
+```output
+NAME             TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+apache-service   NodePort    10.99.57.13   <none>        80:30020/TCP   54s
+kubernetes       ClusterIP   10.96.0.1     <none>        443/TCP        46h
+```
 
 To retrieve more information about your Service, issue the `describe` command:
 
-    kubectl describe service apache-service
+```command
+kubectl describe service apache-service
+```
 
 To delete the Service, issue the delete command:
 
-    kubectl delete service apache-service
+```command
+kubectl delete service apache-service
+```
 
 ## Volumes
 
@@ -168,7 +187,7 @@ Linode also offers a [Container Storage Interface (CSI) driver](https://github.c
 
 Below is an example of how to create and use a Volume by creating a Pod manifest:
 
-{{< file "my-apache-pod-with-volume.yaml" yaml>}}
+```file {title="my-apache-pod-with-volume.yaml" lang=yaml}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -184,7 +203,7 @@ spec:
     volumeMounts:
     - name: apache-storage-volume
       mountPath: /data/apache-data
-{{</ file >}}
+```
 
 A Volume has two unique aspects to its definition. In this example, the first aspect is the `volumes` block that defines the type of Volume you want to create, which in this case is a simple empty directory (`emptyDir`). The second aspect is the `volumeMounts` field within the container's `spec`. This field is given the name of the Volume you are creating and a mount path within the container.
 
@@ -199,20 +218,22 @@ Namespaces consist of alphanumeric characters, dashes (`-`), and periods (`.`).
 
 Here is an example of how to define a Namespace with a manifest:
 
-{{< file "my-namespace.yaml" yaml>}}
+```file {title="my-namespace.yaml" lang=yaml}
 apiVersion: v1
 kind: Namespace
 metadata:
   name: my-app
-{{</ file >}}
+```
 
 To create the Namespace, issue the `create` command:
 
-    kubectl create -f my-namespace.yaml
+```command
+kubectl create -f my-namespace.yaml
+```
 
 Below is an example of a Pod with a Namespace:
 
-{{< file "my-apache-pod-with-namespace.yaml" yaml >}}
+```file {title="my-apache-pod-with-namespace.yaml" lang=yaml}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -224,24 +245,32 @@ spec:
   containers:
   - name: apache-container
     image: httpd
-{{</ file >}}
+```
 
 To retrieve resources in a certain Namespace, use the `-n` flag.
 
-    kubectl get pods -n my-app
+```command
+kubectl get pods -n my-app
+```
 
 You should see a list of Pods within your namespace:
 
-    NAME         READY   STATUS    RESTARTS   AGE
-    apache-pod   1/1     Running   0          7s
+```output
+NAME         READY   STATUS    RESTARTS   AGE
+apache-pod   1/1     Running   0          7s
+```
 
 To view Pods in all Namespaces, use the `--all-namespaces` flag.
 
-    kubectl get pods --all-namespaces
+```command
+kubectl get pods --all-namespaces
+```
 
 To delete a Namespace, issue the `delete namespace` command. Note that this will delete all resources within that Namespace:
 
-    kubectl delete namespace my-app
+```command
+kubectl delete namespace my-app
+```
 
 For more information on Namespaces, visit the [Kubernetes Namespaces API documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#namespace-v1-core)
 
@@ -249,12 +278,12 @@ For more information on Namespaces, visit the [Kubernetes Namespaces API documen
 
 To continue in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series, visit part 4:
 
- - [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)
+- [Beginner's Guide to Kubernetes, Part 1: Introduction](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/)
 
- - [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
+- [Beginner's Guide to Kubernetes, Part 2: Master, Nodes, and the Control Plane](/docs/guides/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/)
 
- - [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/) (You Are Here)
+- [Beginner's Guide to Kubernetes, Part 3: Objects](/docs/guides/beginners-guide-to-kubernetes-part-3-objects/) (You Are Here)
 
- - [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/)
+- [Beginner's Guide to Kubernetes, Part 4: Controllers](/docs/guides/beginners-guide-to-kubernetes-part-4-controllers/)
 
- - [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/guides/beginners-guide-to-kubernetes-part-5-conclusion/)
+- [Beginner's Guide to Kubernetes, Part 5: Conclusion](/docs/guides/beginners-guide-to-kubernetes-part-5-conclusion/)

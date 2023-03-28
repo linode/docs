@@ -1,8 +1,5 @@
 ---
 slug: securely-store-mysql-credentials
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to securely store MySQL crentials and connection details using the mysql_config_editor utility."
 keywords: ["mysql", "mariadb", "mysql_config_editor", "secure", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: "Securely Store MySQL Credentials with mysql_config_editor"
 external_resources:
  - '[mysql_config_editor documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html)'
 tags: ["mariadb","database","mysql"]
+authors: ["Linode"]
 ---
 
 MySQL includes the [mysql_config_editor](https://dev.mysql.com/doc/refman/8.0/en/mysql-config-editor.html) utility, which is used to store your MySQL credentials inside of an encrypted file in your home directory: `~/.mylogin.cnf`. The file is obfuscated and cannot be viewed in plaintext unless running the [print](#view-stored-credentials) command. Any stored passwords are never made visible. This arrangement adds a layer of security and convenience when connecting to your database using command-line tools like mysql or [mysqldump](/docs/guides/mysqldump-backups).

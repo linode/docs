@@ -1,7 +1,5 @@
 ---
 slug: how-to-install-and-use-nginx-on-ubuntu-20-04
-author:
-  name: Nathaniel Stickman
 description: "Learn the basics of installing and configuring NGINX on your Ubuntu 20.04 server in this quick guide."
 keywords: ['nginx','web server']
 tags: ['ubuntu', 'nginx', 'web server']
@@ -11,9 +9,6 @@ modified_by:
   name: Nathaniel Stickman
 title: "Installing and Using NGINX on Ubuntu 20.04"
 title_meta: "How to Install and Use NGINX on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[NGINX Documentation](https://nginx.org/en/docs/)'
 relations:
@@ -21,15 +16,16 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 ---
 
 [NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was developed with efficiency and concurrency in mind, seeking to address the scalability and performance issues in other popular web servers. Its event-driven architecture continues to set it apart as one of the highest-performing web servers available. This guide aims to show you how to install NGINX on your Ubuntu 20.04 server and how to get started using it.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

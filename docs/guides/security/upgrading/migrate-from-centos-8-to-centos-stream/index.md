@@ -1,7 +1,5 @@
 ---
 slug: migrate-from-centos-8-to-centos-stream
-author:
-  name: Jeff Novotny
 description: 'This guide describes CentOS Stream and its benefits and drawbacks. It also explains how to migrate from CentOS 8 to CentOS Stream.'
 keywords: ['CentOS','CentOS Stream','Migration','Advantages and Drawbacks']
 tags: ['centos', 'linux']
@@ -12,13 +10,11 @@ modified_by:
   name: Linode
 title: "Migrate From CentOS 8 to CentOS Stream"
 title_meta: "How to Migrate From CentOS 8 to CentOS Stream"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[CentOS Stream Main Page](https://www.centos.org/centos-stream/)'
 - '[The CentOS Documentation Page](https://docs.centos.org/en-US/docs/)'
 - '[CentOS Project Contribution Page](https://wiki.centos.org/Contribute)'
+authors: ["Jeff Novotny"]
 ---
 
 [*CentOS Stream*](https://www.centos.org/centos-stream/) is a free, open-source Linux distribution that replaces CentOS version 8. CentOS Stream serves a different purpose than previous CentOS releases because it is now a development build for *Red Hat Enterprise Linux* (RHEL). It allows developers early access to new features and gives them a chance to influence the CentOS software development process. This guide describes CentOS Stream, its benefits and drawbacks, and explains how to migrate from CentOS 8 to CentOS Stream.

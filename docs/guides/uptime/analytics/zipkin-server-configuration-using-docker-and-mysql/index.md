@@ -1,8 +1,5 @@
 ---
 slug: zipkin-server-configuration-using-docker-and-mysql
-author:
-  name: Luis Cortés
-  email: docs@linode.com
 description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems.'
 keywords: ["zipkin", "Docker", "tracking"]
 tags: ["docker","statistics","fedora","analytics"]
@@ -15,6 +12,7 @@ published: 2017-10-04
 title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
+authors: ["Luis Cortés"]
 ---
 
 
@@ -24,9 +22,9 @@ We can configure Zipkin by [deploying it in a Docker container](http://zipkin.io
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. This guide will use the hostname 'zipkinhost'. Also, do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. This guide will use the hostname 'zipkinhost'. Also, do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
 3. Assuming you know how to instrument a Zipkin client machine or have walked through our [Set Up a Zipkin Server with Sample Website Tracking](/docs/guides/set-up-a-zipkin-server/) guide.
 

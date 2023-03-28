@@ -1,8 +1,5 @@
 ---
 slug: migrate-from-shared-hosting-to-linode
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Migrate your website from a shared host to a Linode cloud server running a LAMP stack.'
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,13 +10,14 @@ modified_by:
 published: 2013-10-18
 title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ![Migrate from Shared Hosting to Linode](migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")
 
 This guide walks you through the steps to migrate your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and system administration responsibility.
 
-The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/guides/linux-system-administration-basics/), [security hardening](/docs/guides/set-up-and-secure/) and [system backups](/docs/guides/backing-up-your-data/).
+The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/guides/linux-system-administration-basics/), [security hardening](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and [system backups](/docs/guides/backing-up-your-data/).
 
 ## Before You Begin
 
@@ -33,7 +31,7 @@ This guide makes three assumptions:
 Because this guide is intended to be general in nature, it does not take into account the specific dependencies or frameworks of each individual setup. If you're unsure whether or not your website is compatible with a LAMP configuration, we strongly suggest consulting your web developer before proceeding.
 {{< /note >}}
 
-See our [Getting Started](/docs/guides/getting-started/) guide for more information on signing up and setting up your Linode.
+See our [Getting Started](/docs/products/platform/get-started/) guide for more information on signing up and setting up your Linode.
 
 ## Prepare Your Domain Name to Move
 
@@ -142,7 +140,7 @@ The last step in your migration is to point your domain at your Linode's IP addr
 
 5.  Navigate to your domain in a web browser. It should now show the website being served from your Linode, rather than your old host. If you can't tell the difference, you can use the [DIG utility](/docs/guides/use-dig-to-perform-manual-dns-queries/). It should show the IP address for your Linode.
 
-6.  [Set reverse DNS](/docs/guides/configure-rdns/) for your domain.
+6.  [Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain.
 
     {{< note respectIndent=false >}}
 If you're having trouble seeing your site at the new IP address, you may need to try visiting it in a different browser, or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.
@@ -152,4 +150,4 @@ Your website is now fully migrated to Linode. It is a good idea to wait a few da
 
 ## Next Steps
 
-Your server is only as secure as you make it. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to make sure your Linode is hardened against unauthorized access.
+Your server is only as secure as you make it. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to make sure your Linode is hardened against unauthorized access.

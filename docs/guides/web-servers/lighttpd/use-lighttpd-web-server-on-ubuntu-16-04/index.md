@@ -1,8 +1,5 @@
 ---
 slug: use-lighttpd-web-server-on-ubuntu-16-04
-author:
-  name: Dave Messina
-  email: docs@linode.com
 description: 'Learn how to install and use Lighttpd web server on Ubuntu 16.04 (Xenial Xerus)'
 keywords: ["lighttpd", "web server", "web hosting"]
 aliases: ['/websites/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/','/websites/lighttpd/lighttpd-web-server-on-ubuntu-16-04/','/web-servers/lighttpd/use-lighttpd-web-server-on-ubuntu-16-04/']
@@ -24,6 +21,7 @@ relations:
         key: install-lighttpd
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Dave Messina"]
 ---
 
 Lighttpd provides a lightweight web server that is capable of serving large loads while using less memory than servers like Apache. It is commonly deployed on high traffic sites, including WhatsApp and xkcd.
@@ -34,9 +32,9 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
 ## Before You Begin
 
-1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
+1.  Familiarize yourself with and complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), setting your Linode's hostname and timezone.
 
-1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure-lighttpd) to use an alternate port until it's configured properly.
 

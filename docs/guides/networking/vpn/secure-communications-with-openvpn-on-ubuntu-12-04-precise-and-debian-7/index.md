@@ -1,9 +1,6 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 12.04 (Precise) or Debian 7 Linode.'
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu precise", "12.04", "debian 7", "debian"]
 tags: ["networking","vpn","ubuntu","debian","security"]
@@ -24,11 +21,12 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a local network without making them publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.
 
-Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/guides/introduction-to-linux-concepts/), [Beginner's Guide](/docs/guides/linode-beginners-guide/) and [Administration Basics Guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/guides/set-up-and-secure/) article as well.
+Before installing OpenVPN, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [Introduction to Linux Concepts Guide](/docs/guides/introduction-to-linux-concepts/), [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics Guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing on your Linode, you might be interested in our [Security Basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/) article as well.
 
 {{< note respectIndent=false >}}
 For many private networking tasks, we suggest that you consider the functions of the OpenSSH package which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. For example, see [Using SSHFS on Linux and Mac OS X](/docs/guides/using-sshfs-on-linux/) or our guide on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more information. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.

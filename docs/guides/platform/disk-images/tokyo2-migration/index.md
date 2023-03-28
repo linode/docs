@@ -1,8 +1,5 @@
 ---
 slug: tokyo2-migration
-author:
-  name: Linode
-  email: docs@linode.com
 description: Linode is retiring our Tokyo 1 data center, and this guide shows how to migrate to our new Tokyo 2 location.
 keywords: ["tokyo 1", "tokyo 2", "migrate", "migration", "migrating", "data center"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +13,7 @@ aliases: ['/platform/tokyo2-migration/']
 _build:
   list: false
 noindex: true
+authors: ["Linode"]
 ---
 
 In November 2016, Linode [announced and opened](https://blog.linode.com/2016/11/21/new-linode-datacenter-tokyo-2/) the Tokyo 2 data center. This is the second facility operated by Linode in the Tokyo region. Linode is now making preparations to retire the original Tokyo 1 facility. All Linodes hosted in this data center will be migrated to Tokyo 2. This guide is written to prepare customers for this migration and to make migrating easier.
@@ -48,7 +46,7 @@ Before migrating, we recommend that you create at least one backup **separate fr
 
 There are three different options for moving your servers to the Tokyo 2 data center. The first two of these methods can be followed before the scheduled migration deadlines for your Linodes.
 
-Regardless of which option you choose, **all of your Tokyo 1 Linodes' IP addresses will change** when moving to the new location. This includes all public and private IPv4 addresses, as well as public and link-local IPv6 addresses. When the schedule for your Linodes' migrations is set, new IP addresses in the Tokyo 2 data center will be reserved in advance for each of your Tokyo 1 Linodes. These reserved addresses will be listed for each Linode under the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of the Linode's dashboard.
+Regardless of which option you choose, **all of your Tokyo 1 Linodes' IP addresses will change** when moving to the new location. This includes all public and private IPv4 addresses, as well as public and link-local IPv6 addresses. When the schedule for your Linodes' migrations is set, new IP addresses in the Tokyo 2 data center will be reserved in advance for each of your Tokyo 1 Linodes. These reserved addresses will be listed for each Linode under the [Networking tab](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) of the Linode's dashboard.
 
 Later sections in this guide describe how to update your [network interface configuration](#update-your-network-configuration) and [DNS records](#update-dns-records) to use the new IPs.
 
@@ -59,7 +57,7 @@ When you receive the support ticket which announces your Tokyo 1 Linodes' migrat
 {{< note respectIndent=false >}}
 The early migration banner will actually appear on your Tokyo 1 Linodes' dashboards before you receive the support ticket which announces the migrations. You will be able to perform a migration as soon as you see this banner. However, new IPs in the Tokyo 2 data center will not be reserved for your Linode until you receive the support ticket.
 
-This means that if you migrate before you receive your ticket, you will not know what your new IP addresses will be before you start the migration. Once you start the early migration, your new Tokyo 2 IP addresses will become visible in the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of the Linode's dashboard.
+This means that if you migrate before you receive your ticket, you will not know what your new IP addresses will be before you start the migration. Once you start the early migration, your new Tokyo 2 IP addresses will become visible in the [Networking tab](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) of the Linode's dashboard.
 {{< /note >}}
 
 Clicking on the banner will take you to a new page which shows the estimated duration for the migration. This page will let you initiate the migration.
@@ -68,7 +66,7 @@ The following sequence executes when you start the migration:
 
 1.  If your Linode is running, your Linode is gracefully powered down.
 
-1.  At the same time, your Linode will be assigned its reserved Tokyo 2 IP addresses. These new IPs will become visible in the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of your Linode's dashboard.
+1.  At the same time, your Linode will be assigned its reserved Tokyo 2 IP addresses. These new IPs will become visible in the [Networking tab](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) of your Linode's dashboard.
 
 1.  The migration of your Linode is started immediately after the shutdown completes.
 
@@ -95,14 +93,14 @@ Cloning your Linodes offers these benefits:
 -   To move your customers to your new Tokyo 2 servers, you can update your DNS records with your new Tokyo 2 IP addresses. You can keep your Tokyo 1 servers running while you update your DNS. Updating your DNS records in this way will gracefully direct your users to your new servers without downtime.
 
 {{< note respectIndent=false >}}
-New Linodes that you create in Tokyo 2 will not receive the IP addresses that are reserved for your Tokyo 1 Linodes' scheduled migrations. If you choose to clone your Linodes, your new Tokyo 2 Linodes' IP addresses will be listed in the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of your Linodes' dashboards.
+New Linodes that you create in Tokyo 2 will not receive the IP addresses that are reserved for your Tokyo 1 Linodes' scheduled migrations. If you choose to clone your Linodes, your new Tokyo 2 Linodes' IP addresses will be listed in the [Networking tab](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) of your Linodes' dashboards.
 {{< /note >}}
 
 To clone a Linode, follow these steps:
 
 1.  Create a new Linode in Tokyo 2. Make sure that you [select a plan](https://www.linode.com/pricing) that has as much disk space as the size of your disks on your source Tokyo 1 Linode.
 
-1.  Follow the [cloning guide](/docs/guides/clone-your-linode/) to complete the clone operation. When following these steps, enable all of the configuration profile options for your Linode.
+1.  Follow the [cloning guide](/docs/products/compute/compute-instances/guides/clone-instance/) to complete the clone operation. When following these steps, enable all of the configuration profile options for your Linode.
 
 1.  Boot the new Tokyo 2 Linode when the clone completes.
 
@@ -124,11 +122,11 @@ After the scheduled migration completes, you can log into the Linode's dashboard
 
 ## Update your Network Configuration
 
-In order for your new IP address assignment to work, your Linux deployment's network interface configuration needs to use the new IPs. If Linode's [Network Helper](/docs/guides/network-helper/) tool is enabled for your configuration profile, your network interface should automatically adopt the new IPs without any extra action needed from you.
+In order for your new IP address assignment to work, your Linux deployment's network interface configuration needs to use the new IPs. If Linode's [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) tool is enabled for your configuration profile, your network interface should automatically adopt the new IPs without any extra action needed from you.
 
 If Network Helper is not enabled, but you use DHCP for your network assignments, then your networking should also work automatically.
 
-If you do not use Network Helper or DHCP, then you will need to update your static interface configuration files. Follow the [Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/) guide to enter your new IP addresses. Your new IPs are listed in the [Networking tab](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) of your Linode's dashboard. These new IPs will only appear **after you start its migration** (if you choose to migrate instead of cloning).
+If you do not use Network Helper or DHCP, then you will need to update your static interface configuration files. Follow the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide to enter your new IP addresses. Your new IPs are listed in the [Networking tab](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) of your Linode's dashboard. These new IPs will only appear **after you start its migration** (if you choose to migrate instead of cloning).
 
 You may also need to update the configuration of your applications if they explicitly bind to your public or private IP addresses. Review Linode's [web server](/docs/guides/web-servers/) and [application](/docs/guides/applications/) guides for more information on this topic.
 

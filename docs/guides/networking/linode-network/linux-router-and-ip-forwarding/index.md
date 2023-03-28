@@ -1,8 +1,5 @@
 ---
 slug: linux-router-and-ip-forwarding
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to set up a Linux server as a router, including configuring port forwarding and iptables."
 keywords: ["static", "ip address", "addresses"]
 tags: ["networking","linode platform"]
@@ -11,6 +8,7 @@ published: 2022-09-30
 modified_by:
   name: Linode
 title: "Configure Linux as a Router (IP Forwarding)"
+authors: ["Linode"]
 ---
 
 A computer network is a collection of computer systems that can communicate with each other. To communicate with a computer that's on a *different* network, a system needs a way to connect to that other network. A *router* is a system that acts as a intermediary between multiple different networks. It receives traffic from one network that is ultimately destined for another. It's able to identify where a particular packet should be delivered and then forward that packet over the appropriate network interface.
@@ -38,13 +36,13 @@ Many workloads benefit from custom routing or port forwarding solutions, includi
 
 To get started, you can use the Linode platform to deploy multiple Compute Instances. These can mimic a basic application that is operating on a private VLAN with a single router. If you already have an application deployed and just wish to know how to configure ip forwarding or iptables, you can skip this section.
 
-1. Deploy 2 or more Compute Instances and designate one as the router. Each of these should be deployed to the same region. On the deployment page, you can skip the VLAN section for now. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) to learn how to deploy Linode Compute Instances.
+1. Deploy 2 or more Compute Instances and designate one as the router. Each of these should be deployed to the same region. On the deployment page, you can skip the VLAN section for now. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) to learn how to deploy Linode Compute Instances.
 
-1. On each Compute Instance *other than the router*, edit the instance's configuration profile. See [Managing Configuration Profiles](/docs/guides/linode-configuration-profiles) for information on viewing and editing configuration profiles.
+1. On each Compute Instance *other than the router*, edit the instance's configuration profile. See [Managing Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/) for information on viewing and editing configuration profiles.
     - On the Compute Instance designated as the *router*, leave *eth0* as the public internet and set *eth1* to be configured as a VLAN. Enter a name for the VLAN and assign it an IP address from whichever subnet range you wish to use. For instance, if you wish to use the `10.0.2.0/24` subnet range, assign the IP address `10.0.2.1/24`. By convention, the router should be assigned the value of `1` in the last segment.
     - On each Compute Instance *other than the router*, remove all existing network interfaces. Set *eth0* as a VLAN, select the VLAN you just created, and enter another IP address within your desired subnet (such as `10.0.2.2/24` and `10.0.2.3/24`).
 
-1. Confirm that [Network Helper](/docs/guides/network-helper/) is enabled and reboot each Compute Instance for the changes to take effect.
+1. Confirm that [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is enabled and reboot each Compute Instance for the changes to take effect.
 
 1. Test the connectivity on each Compute Instance to ensure proper configuration. Log in to each instance and confirm the following is true:
 
@@ -65,7 +63,7 @@ To get started, you can use the Linode platform to deploy multiple Compute Insta
 
 By default, forwarding is disabled on most Linux systems. To configure Linux as a router, this needs to be enabled. To enable forwarding, the corresponding parameter should be set to `1`. A value of `0` indicates that forwarding is disabled. To update these kernel parameters, edit the `/etc/sysctl.conf` file as shown in the steps below.
 
-1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) (if you're using a Linode Compute Instance).
+1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) (if you're using a Linode Compute Instance).
 
 1.  Determine if IPv4 forwarding is currently enabled or disabled. The command below outputs the value of the given parameter. A value of `1` indicates that the setting is enabled, while `0` indicates it is disabled. If you intend to configure IPv6 forwarding, check that kernel parameter as well.
 
@@ -97,7 +95,7 @@ net.ipv6.conf.all.forwarding = 1
 
 The iptables utility can serve as both a firewall (through the default `filter` table) and as a router (such as when using the `nat` table). This section covers how to configure iptables to function as a basic router. If you prefer, you can use any other firewall or routing software, such as [nftables](https://wiki.nftables.org/wiki-nftables/index.php/Main_Page) or a commercial application.
 
-1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) (if you're using a Linode Compute Instance).
+1. Log in to the Linux system you intend to use as a router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) (if you're using a Linode Compute Instance).
 
 1.  Review the existing iptables rules. If you are on a fresh installation of Linux and do not have any preconfigured rules, the output of the below command should by empty.
 
@@ -135,15 +133,15 @@ The iptables utility can serve as both a firewall (through the default `filter` 
 
 The last step is to manually adjust the network configuration settings for each Compute Instance *other than* the router.
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com) and disable [Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for each non-router Compute Instance you've deployed. While Network Helper was useful for automatically configuring the VLAN IP addresses, the configuration files controlled by Network Helper now need to be manually edited.
+1. Log in to the [Cloud Manager](https://cloud.linode.com) and disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper) for each non-router Compute Instance you've deployed. While Network Helper was useful for automatically configuring the VLAN IP addresses, the configuration files controlled by Network Helper now need to be manually edited.
 
-1. Log in to each Linux system that is *not* designated as the router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) (if you're using a Linode Compute Instance).
+1. Log in to each Linux system that is *not* designated as the router. You can use [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) (if you're using a Linode Compute Instance).
 
-1.  Edit the configuration file that contains the settings for the private VLAN interface. This name and location of this file depends on the Linux distribution you are using. See the [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) series of guides and select the specific guide for your distribution. For a system running [ifupdown](/docs/guides/ifupdown/) on Debian 10, the network configuration is typically stored within `/etc/network/interfaces`.
+1.  Edit the configuration file that contains the settings for the private VLAN interface. This name and location of this file depends on the Linux distribution you are using. See the [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) series of guides and select the specific guide for your distribution. For a system running [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) on Debian 10, the network configuration is typically stored within `/etc/network/interfaces`.
 
         sudo nano /etc/network/interfaces
 
-1.  Within this file, adjust the parameter that defines the gateway for the VLAN interface. The value should be set to the IP address assigned to the *router's* VLAN interface, such as `10.0.2.1` if you've used the example in this guide. For a system running [ifupdown](/docs/guides/ifupdown/) on Debian 10, you can add the gateway parameter in the location shown in the example below.
+1.  Within this file, adjust the parameter that defines the gateway for the VLAN interface. The value should be set to the IP address assigned to the *router's* VLAN interface, such as `10.0.2.1` if you've used the example in this guide. For a system running [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) on Debian 10, you can add the gateway parameter in the location shown in the example below.
 
     {{< file "/etc/network/interfaces" >}}
 ...
@@ -152,7 +150,7 @@ iface eth0 inet static
     gateway 10.0.2.1
 {{</ file >}}
 
-1.  After those settings have been saved, restart the Compute Instance or run the corresponding command to apply the changes. Continuing to use [ifupdown](/docs/guides/ifupdown/) as an example, run the command below to apply the new network configuration settings.
+1.  After those settings have been saved, restart the Compute Instance or run the corresponding command to apply the changes. Continuing to use [ifupdown](/docs/products/compute/compute-instances/guides/ifupdown/) as an example, run the command below to apply the new network configuration settings.
 
         sudo ifdown eth0 && sudo ip addr flush eth0 && sudo ifup eth0
 

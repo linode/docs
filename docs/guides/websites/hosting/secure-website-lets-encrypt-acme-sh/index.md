@@ -1,8 +1,5 @@
 ---
 slug: secure-website-lets-encrypt-acme-sh
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
 keywords: ['ssl','lets encrypt','https','website','websites','acme.sh','secure']
 tags: ['http', 'ssl', 'apache', 'nginx', 'security', 'automation']
@@ -12,13 +9,11 @@ modified_by:
   name: Andy Heathershaw
 title: 'Secure a Website or Domain with a Let''s Encrypt SSL Certificate and acme.sh'
 title_meta: 'Secure a Website or Domain with Let''s Encrypt and acme.sh'
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
 external_resources:
 - '[acme.sh](https://acme.sh/)'
 - '[Use Linode domain API (acme.sh wiki)](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#14-use-linode-domain-api)'
 - '[Let''s Encrypt](https://letsencrypt.org/)'
+authors: ["Andy Heathershaw"]
 ---
 [*acme.sh*](https://acme.sh/) is a client application for ACME-compatible services, like those used by [Let's Encrypt](https://letsencrypt.org/). It is an alternative to the popular [Certbot](/docs/guides/quick-answers/websites/) application with two big benefits:
 
@@ -30,11 +25,11 @@ If you use Linode for your website's DNS, you can use acme.sh to obtain both sin
 
 ## Before You Begin
 
-1. Deploy a Linode by following the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
+1. Deploy a Linode by following the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
 1. Ensure that either NGINX or the Apache web server is installed and pre-configured on your distro by following our [web server documentation](/docs/guides/web-servers/). Ensure that port 443 is open on your firewall to allow for SSL/TLS resolution.
 
-1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
+1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
 
 ## Install acme.sh
 
@@ -101,7 +96,7 @@ Ensure the token you create has **Read/Write** access to **Domains**.
 
 ## Issue a certificate
 
-1. [Connect to your Linode](/docs/guides/getting-started#connect-to-your-linode-via-ssh) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
+1. [Connect to your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
 
         export LINODE_V4_API_KEY="your-api-token-here"
 

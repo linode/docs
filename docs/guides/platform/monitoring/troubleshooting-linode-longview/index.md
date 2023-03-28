@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-linode-longview
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Longview is a server monitoring client from Linode you can use to watch server performance. This guide describes the process of troubleshooting Longview.'
 og_description: "Learn how to troubleshoot Linode's Longview service."
 keywords: ["system monitoring", "longview", "metrics", "troubleshooting"]
@@ -15,13 +12,14 @@ title: Troubleshoot Linode Longview
 title_meta: Troubleshooting Linode Longview
 published: 2020-01-22
 aliases: ['/platform/longview/troubleshooting-linode-longview/']
+authors: ["Linode"]
 ---
 
 This guide discusses basic troubleshooting steps to help you diagnose and resolve any issues you may encounter while using Longview. If you're experiencing problems with the Longview client, follow the steps outlined in this guide to help determine the cause.
 
 ## Basic Diagnostics
 
-1.  Ensure that your system is [fully updated](/docs/guides/set-up-and-secure/#perform-system-updates).
+1.  Ensure that your system is [fully updated](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates).
 
     {{< note respectIndent=false >}}
   Longview requires Perl 5.8 or later.

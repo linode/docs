@@ -1,8 +1,5 @@
 ---
 slug: kubernetes-security-best-practices
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
 description: 'This guide covers some of the best security practices in Kubernetes so you can deploy clusters that are secured and keep your infrastructure safe.'
 keywords: ['Kubernetes security best practices']
 tags: ['kubernetes', 'container']
@@ -12,14 +9,12 @@ modified_by:
   name: Linode
 title: "Kubernetes Security Best Practices Overview"
 title_meta: "Kubernetes Security Best Practices: A Beginner's Overview"
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
+authors: ["Jack Wallen"]
 ---
 
-If you are [deploying your first Kubernetes cluster](/docs/guides/getting-started-with-kubernetes/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.
+If you are [deploying your first Kubernetes cluster](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/), it's important to consider the security best practices that are available to keep your workload safe. Kubernetes provides several out-of-the-box features to help secure your cluster. This guide provides an overview of three Kubernetes features to you can use to secure different components of a cluster. The three areas covered are Role-Based Access Control (RBAC), Secrets, and Network Policies.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes some familiarity with Kubernetes terminology and concepts. If you are newer to Kubernetes, refer to our [A Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/).
 {{< /note >}}
 
@@ -29,7 +24,7 @@ A Kubernetes cluster consists of many areas –services, networking, namespaces,
 
 The example below defines a security policy that specifies the operations a user can execute and on which namespace.
 
-{{< file "role.yaml" yaml >}}
+```file {title="role.yaml" lang=yaml}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -39,13 +34,13 @@ rules:
 - apiGroups: ["core", "extensions", "apps"]
   resources: ["deployments", "replicasets", "pods"]
   verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
-{{< /file >}}
+```
 
 The above Role allows users to execute operations on `deployments`, `replicasets`, and `pods`, but only within the `core`, `apps`, and `extensions` [API groups](https://kubernetes.io/docs/concepts/overview/kubernetes-api/#api-groups-and-versioning), and within the `office` namespace. The example Role limits what a user can do if they are assigned to the Role.
 
 A separate manifest binds that Role to a specific user. To continue the example, and bind the Role to a user named `admin1`, the corresponding manifest resembles the example below:
 
-{{< file "user-role.yaml" yaml >}}
+```file {title="user-role.yaml" lang=yaml}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -59,7 +54,7 @@ roleRef:
   kind: Role
   name: deployment-manager-binding
   apiGroup: ""
-{{< /file >}}
+```
 
 The manifest binds the `admin1` user, within the `office` namespace. The user can execute operations on `deployments`, `replicasets`, and `pods`, within the `core`, `apps`, and `extensions` API groups.
 
@@ -69,7 +64,7 @@ RBAC authorization is one of the primary ways to keep your Kubernetes cluster se
 
 A Kubernetes Secret is used to keep sensitive information —like passwords, tokens, and keys— out of your application code. Secrets prevent your sensitive data from being exposed during your development workflow. At its simplest, a Secret is an object that contains a key-value pair and metadata. The example below creates a Kubernetes secret that stores a user's plain-text password:
 
-{{< file "secret.yaml" yaml >}}
+```file {title="secret.yaml" lang=yaml}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -78,11 +73,11 @@ type: Opaque
 data:
   username: admin1
   password: BU2Byyz2112
-{{< /file >}}
+```
 
 It is not a good security practice to store a plain-text password in a manifest file. Anyone with access to the Secret's namespace can read the Secret. Similarly, anyone with access to the cluster's API can read and modify the Secret. For this reason, you should encrypt any sensitive data that is stored in a Secret. Kubernetes supports encryption at rest which means your sensitive data will be stored in an encrypted format. To store your Secrets in an encrypted format, create an [encryption at rest configuration](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#understanding-the-encryption-at-rest-configuration) similar to the example below:
 
-{{< file "encryption.yaml" yaml >}}
+```file {title="encryption.yaml" lang=yaml}
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
@@ -94,7 +89,7 @@ resources:
       - name: secretkey1
       secret: <ENCODED SECRET>
   - identity: {}
-{{< /file >}}
+```
 
 Then, generate a random key and use `base64` to encode it.
 
@@ -102,7 +97,7 @@ Then, generate a random key and use `base64` to encode it.
 
 You can then copy the returned output and store it in the `secret` field of your encryption at rest configuration.
 
-{{< file "role.yaml" yaml >}}
+```file {title="role.yaml" lang=yaml}
 apiVersion: apiserver.config.k8s.io/v1
 kind: EncryptionConfiguration
 resources:
@@ -114,7 +109,7 @@ resources:
       - name: secretkey1
       secret: piE9qJYzcavzUz5q+gH70uRjnPWsvMMsoTndPi7KzqA=
   - identity: {}
-{{< /file >}}
+```
 
 Finally, set `--encryption-provider-config` in the `kube-apiserver` so that it points to the encryption configuration file. To learn more about the different encryption providers that Kubernetes supports, see the [Encrypting Secret Data at Rest](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/) documentation.
 
@@ -130,7 +125,7 @@ A network policy spec consists of three main sections:
 
 The file below contains an example Kubernetes network policy:
 
-{{< file "role.yaml" yaml >}}
+```file {title="role.yaml" lang=yaml}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -169,7 +164,7 @@ spec:
     ports:
     - protocol: TCP
       port: 5978
-{{< /file >}}
+```
 
 In the above manifest, each of the following items require values:
 
@@ -184,4 +179,3 @@ To learn more about creating Network Policies for a Kubernetes cluster, see the 
 ## Conclusion
 
 Kubernetes security is a vast topic, however, there are a few core areas that are essential. Aside from the three areas covered in this overview, you can consider limiting resource usage on a cluster, review the [Kubernetes security reporting](https://kubernetes.io/docs/reference/issues-security/security/) page, and review any third-party integrations used by your cluster. The Kubernetes [Securing a Cluster](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/) documentation page provides a deeper discussion on these topics.
-

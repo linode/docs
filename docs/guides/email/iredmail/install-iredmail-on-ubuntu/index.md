@@ -1,21 +1,16 @@
 ---
 slug: install-iredmail-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
 keywords: ["email", "mail", "iredmail"]
 tags: ["mysql","email","apache","ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/installing-iredmail/','/email/iredmail/install-iredmail-on-ubuntu/','/email/iredmail/installing-iredmail/']
-contributor:
-    name: Nick Reichley
-    link: https://github.com/reichley
 modified: 2020-12-04
 modified_by:
   name: James Stewart
 published: 2014-10-06
 title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
+authors: ["Nick Reichley"]
 ---
 
 
@@ -35,7 +30,7 @@ Before beginning this guide you should have:
 - An understanding of the [Linux command line](/docs/guides/using-the-terminal).
 - A Linode running Ubuntu 14.04.
 
-This guide assumes you've followed the Linode [Getting Started](/docs/guides/getting-started) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
+This guide assumes you've followed the Linode [Getting Started](/docs/products/platform/get-started/) documentation. If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
 
@@ -244,7 +239,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 #### rDNS
 
-To set your rDNS, check out the [Setting Reverse DNS](/docs/guides/configure-rdns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
+To set your rDNS, check out the [Setting Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) section of the DNS Manager guide. This is optional but gives additional credibility to a mail server for certain spam filters.
 
 ### Apache Authentication Fix for Cluebringer and AWStats Login
 

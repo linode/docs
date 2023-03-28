@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-git-on-linux-mac-and-windows
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Git is a popular distributed version control & source code management system. ✓ Here's how to install it on GNU/Linux, MacOSX, & Windows today!"
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +18,7 @@ external_resources:
  - '[GitHub Guides](https://guides.github.com/)'
 audiences: ["foundational"]
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
 ## Introduction to Installing Git
@@ -34,7 +32,7 @@ This guide explains how to install the latest, stable, and prepackaged version o
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/guides/how-to-configure-git/) guide.
 
 {{< note respectIndent=false >}}
-This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account.
+This guide uses `sudo` wherever possible. Complete the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account.
 {{< /note >}}
 
 ## How to Install Git on Mac OSX

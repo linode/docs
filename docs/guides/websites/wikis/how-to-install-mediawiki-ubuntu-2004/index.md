@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-mediawiki-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on Ubuntu 20.04.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on ubuntu 20.04"]
 tags: ["ubuntu", "wiki"]
@@ -12,9 +9,6 @@ modified_by:
   name: Nathaniel Stickman
 title: "Installing MediaWiki on Ubuntu 20.04"
 title_meta: "How to Install MediaWiki on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
 relations:
@@ -22,15 +16,16 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 ---
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software behind Wikipedia and many of the wiki websites used by organizations and communities around the world. It provides a versatile, open, and free tool for publishing collaborative content. This guide explains how to deploy MediaWiki on Ubuntu 20.04.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

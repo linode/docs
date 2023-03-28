@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-drush-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on CentOS 8'
 keywords: ["drupal", "cms", "content management system", "content management framework", "centos", "drush"]
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drush-on-centos-8/','/websites/cms/drupal/how-to-install-drush-on-centos-8/']
@@ -23,6 +20,7 @@ relations:
         key: how-to-install-drush
         keywords:
            - distribution: CentOS 8
+authors: ["Linode"]
 ---
 
 [Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
@@ -33,9 +31,9 @@ Both new and experienced Drupal users can benefit from learning Drush. Users tha
 
 Before installing Drush, ensure that you complete the following steps:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Install and configure a [LAMP stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/).
 

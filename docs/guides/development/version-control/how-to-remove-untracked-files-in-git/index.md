@@ -1,8 +1,5 @@
 ---
 slug: how-to-remove-untracked-files-in-git
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn how to remove untracked files in git using the git clean command.'
 keywords: ['Git remove untracked files','Remove untracked files git','Git remove all untracked files','How to remove untracked files in git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,11 +7,10 @@ published: 2022-03-18
 modified_by:
   name: Linode
 title: "Remove Untracked Files in Git"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Git clean documentation](https://git-scm.com/docs/git-clean)'
 - '[Git ignore documentation](https://git-scm.com/docs/gitignore)'
+authors: ["Jeff Novotny"]
 ---
 
 During the development process, programmers and other Git users often wind up with many old and unwanted files. These might include prototypes, test data, and computer-generated files. Although these files do not necessarily cause problems, deleting them increases efficiency and improves organization. The `git clean` command is the fastest, safest, and easiest way to delete these files. This guide explains how to use Git to remove untracked files and provides many examples demonstrating how to use `git clean`.
@@ -51,9 +47,9 @@ To summarize, all files in a Git repository should eventually be handled in one 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  It's also helpful to consult our guides on [Getting Started with Git](/docs/guides/how-to-configure-git/) and [How to Navigate the Linux Terminal and File System](/docs/guides/linux-navigation-commands/).
 

@@ -1,7 +1,10 @@
+aaPanel
+Abhay
 abc
 abell
 absecon
 abspath
+Accurics
 ack
 aconf
 accessor
@@ -83,6 +86,7 @@ Asana
 aspell
 askbot
 aske
+Astra
 async
 asynchrony
 atera
@@ -135,6 +139,7 @@ backdooring
 backdoors
 backend
 backends
+backport
 backported
 backporting
 backports
@@ -157,6 +162,7 @@ bashrc
 bc
 bdd
 benchmarked
+barchart
 berkshelf
 bernd
 berners
@@ -165,6 +171,7 @@ bialek
 bin_t
 bing
 binlog
+bioinformaticists
 biomes
 bitbucket
 bitnami
@@ -173,9 +180,11 @@ bitshift
 bitstream
 bitwarden
 bitwise
+Bjarne
 blkid
 blockchain
 blocklists
+Blockly
 blockwise
 bluehost
 bokeh
@@ -185,6 +194,7 @@ boolean
 booleans
 boolstyle
 boonex
+boostrapping
 bootable
 bootloader
 bottlerocket
@@ -214,6 +224,7 @@ bundler
 bungeecord
 burndown
 burnup
+Bhushan
 busybox
 bypassuac
 byrequests
@@ -242,17 +253,20 @@ cer
 certbot
 certcheck
 certutil
+cetera
 cfg
 cgi
 cgroup
 cgroupfs
 chainable
+Chainalysis
 changelog
 changelogs
 changeme
 changeset
 changesets
 characterwise
+charset
 chatbot
 chatbots
 chatrooms
@@ -304,6 +318,7 @@ cmusieve
 cnf
 codebase
 codec
+Codeone
 codepen
 colab
 collabnet
@@ -382,6 +397,7 @@ ctx
 cuda
 curlie
 cutover
+Cybeats
 cyber
 cyberattack
 cyberduck
@@ -489,6 +505,7 @@ dnf
 dns
 dnsleaktest
 dnsmasq
+DNSPerf
 dns_linode
 dockercompose
 dockerfile
@@ -496,6 +513,7 @@ dockerfiles
 dockershim
 dockerize
 dockerized
+doclet
 docstring
 docstrings
 doctest
@@ -547,6 +565,7 @@ elgg
 elpaso
 emacs
 email2email
+embeddable
 emisoft
 emojivoto
 emscripten
@@ -562,6 +581,7 @@ equifax
 erb
 erlang
 esc
+eslint
 esm
 etcd
 etcd0
@@ -637,6 +657,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+filemask
 findtime
 finnix
 firefart
@@ -818,6 +839,7 @@ Hively
 hl2
 hl2
 hmac
+hmorris
 hoc
 homebrew
 homomorphic
@@ -830,6 +852,7 @@ hotfix
 hotlink
 hotlinked
 hotlinking
+hotspot
 hotspots
 howto
 howtoforge
@@ -926,6 +949,7 @@ inspec
 intel
 interconnectivity
 interdomain
+interoperation
 interruptible
 intra-application
 introducer
@@ -943,6 +967,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+iperf
 ipsec
 ipset
 ipsets
@@ -974,6 +999,7 @@ java6
 javac
 javalin
 javascript
+JBoss
 jdbc
 jdk
 Jellyfin
@@ -998,6 +1024,7 @@ jpetazzo
 jq
 jre
 js
+jshell
 json
 json_pp
 jsonpath
@@ -1006,6 +1033,7 @@ julialang
 jumpbox
 junit
 jupyter
+jwebserver
 JWTs
 jx
 kaggle
@@ -1014,6 +1042,7 @@ kamkar
 kanban
 kaseya
 kasten
+Katib
 kbd
 kbits
 keepalive
@@ -1036,6 +1065,7 @@ keypairs
 keysize
 keyspace
 keystore
+kfctl
 khanaser
 kibana
 kickban
@@ -1051,6 +1081,7 @@ kloth
 kloxo
 knockpy
 knowledgebase
+Kodu
 Konqueror
 konsole
 kotin
@@ -1072,6 +1103,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+LANs
 laravel
 largebiomes
 launchd
@@ -1111,6 +1143,7 @@ libzypp
 lifecycle
 lightbend
 lighthttpd
+Lightroom
 lighttpd
 lighty
 ligttpd
@@ -1160,6 +1193,7 @@ loopback
 lsadump
 lspci
 lsb
+LSCache
 lsd
 lsmod
 lsof
@@ -1172,6 +1206,7 @@ luckystrike
 lugano
 luminus
 lunasec
+Lutz
 lxd
 lxml
 lynis
@@ -1209,12 +1244,14 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matthes
 mawk
 maxconn
 maxdepth
 maxretry
 mbit
 mbits
+mBlock
 mbox
 Mbps
 mbstrings
@@ -1229,6 +1266,7 @@ melilla
 memcached
 memcrashed
 menuentry
+Merkle
 mesos
 metabase
 metacharacter
@@ -1277,6 +1315,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktemp
 mktime
 mkv
 mnesia
@@ -1324,10 +1363,12 @@ multilib
 multiline
 multilink
 multiplatform
+Multiplo
 multiport
 multiprotocol
 multisite
 multitenant
+multithreading
 multiuser
 mutator
 munin
@@ -1467,9 +1508,11 @@ oauth
 obfuscator
 octopress
 odoo
+offboarding
 oftc
 ohai
 ok
+okta
 oldstable
 oldfashioned
 onboarding
@@ -1494,6 +1537,8 @@ ossec
 ostemplate
 osx
 otomen
+outdented
+outdents
 outputter
 outputters
 overcommit
@@ -1545,6 +1590,8 @@ perceptron
 percona
 performant
 perl
+perlre
+perldoc
 permalink
 permalinks
 Petazzoni
@@ -1561,10 +1608,12 @@ php
 php5
 php7
 phpmyadmin
+Phrack
 phusion
 pid
 pidfile
 pingable
+pinterest
 pipfile
 pipenv
 pipelined
@@ -1591,6 +1640,7 @@ poplib
 portainer
 portmapper
 portswigger
+Postel
 postgres
 postgresql
 postgresql0
@@ -1716,6 +1766,7 @@ reconnections
 recordset
 recoverability
 recursing
+recursor
 recv
 red5
 reddit
@@ -1738,6 +1789,7 @@ reflog
 reflogs
 refspec
 regexes
+reimplements
 reimported
 reindexing
 reiner
@@ -1786,6 +1838,7 @@ rmdir
 rmem
 ro
 roadmunk
+Roblox
 rochko
 rockyou
 rocommunity
@@ -1828,6 +1881,7 @@ s2s
 s3cr37
 s3cret
 saas
+Sailpoint
 sakila
 safend
 salesforce
@@ -1858,6 +1912,7 @@ scm
 scp
 scrapy
 screenrc
+scriptable
 scrollable
 scrollbar
 scrollbars
@@ -1878,6 +1933,7 @@ secondsite
 secretpassword
 sed
 sekurlsa
+Seldon
 selinux
 sendable
 sendmail
@@ -1924,9 +1980,11 @@ shotcut
 shoutcast
 scikit
 scribus
+scrollable
 sidekiq
 sievers
 signup
+Simula
 singapore
 sintra
 siri
@@ -1938,6 +1996,8 @@ slavedb
 sls
 smartcard
 smartcards
+SMB
+SMBs
 smishing
 smtp
 smtpd
@@ -1969,6 +2029,7 @@ spm
 spork
 spotify
 sql
+SQLmap
 sqlplus
 sqreen
 squirrelmail
@@ -2006,6 +2067,7 @@ storages
 strapi
 streamlink
 strongswan
+Stroustrup
 su
 subcommand
 subcommands
@@ -2031,6 +2093,7 @@ subtab
 subtransit
 sudo
 sudoers
+suExec
 suhosin
 suid
 sukharev
@@ -2054,6 +2117,7 @@ symlinking
 symlinks
 symvers
 syncookies
+Synopsys
 syntastic
 syntaxes
 sys
@@ -2105,6 +2169,7 @@ thawte
 theano
 theming
 thingsboard
+Thonny
 Thunar
 thycotic
 tigervnc
@@ -2185,6 +2250,8 @@ Ubiquiti
 ubuntu
 ucd
 udp
+UDF
+UDFs
 ufw
 ui
 uidl
@@ -2217,6 +2284,7 @@ uniq
 unittest
 univac
 unix
+unopinionated
 unmanaged
 unmerged
 unmount
@@ -2248,6 +2316,7 @@ urls
 usemodule
 useradd
 usercolumn
+userdata
 userdb
 usergroup
 userland
@@ -2256,6 +2325,7 @@ usersor
 usr
 ust
 utils
+UTunnel
 uuid
 uwls
 uwsgi
@@ -2282,6 +2352,7 @@ verisign
 veritas
 vhost
 vhosts
+Vickery
 viewport
 vigenere
 vimrc
@@ -2309,6 +2380,7 @@ vmlinuz
 vmstat
 vmui
 vnc
+VPLs
 vpns
 vset
 vswap
@@ -2319,10 +2391,12 @@ vz
 vznetaddbr
 walkthrough
 Wappalyzer
+Warcraft
 wasn
 wasm
 wav
 wazuh
+wc
 wchar
 wchar_t
 webadmin
@@ -2374,6 +2448,7 @@ winscp
 winsxs
 windowlist
 wireguard
+wirelessly
 wireshark
 wkhtmltopdf
 wkhtmltox

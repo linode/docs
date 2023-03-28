@@ -1,8 +1,5 @@
 ---
 slug: reboot-survival-guide
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: "This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime."
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ published: 2015-02-27
 title: "Reboot Survival Guide: Recover After an Unexpected Shutdown"
 aliases: ['/uptime/reboot-survival-guide/','/uptime/best-practices/reboot-survival-guide/']
 image: reboot-survival-guide.png
+authors: ["Alex Fornuto"]
 ---
 
 Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.
@@ -158,7 +156,7 @@ This guide is a high-level overview, and does not discuss runlevels. Read more a
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/guides/lish/) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/products/compute/compute-instances/guides/lish/) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
@@ -178,7 +176,7 @@ If you use full-disk encryption, enter your password in the LISH console after a
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 

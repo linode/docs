@@ -1,8 +1,5 @@
 ---
 slug: how-to-administer-server-with-cockpit
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install and configure Cockpit, a system monitoring and administration tool.'
 keywords: ['Cockpit linux','Linux cockpit','Cockpit server management','Cockpit ubuntu server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified_by:
   name: Linode
 title: "Monitor and Administer a Server with Cockpit"
 title_meta: "How to Monitor and Administer a Server with Cockpit"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Cockpit website](https://cockpit-project.org/)'
 - '[Cockpit applications page](https://cockpit-project.org/applications.html)'
@@ -25,6 +20,7 @@ relations:
     platform:
         keywords:
            - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 ---
 
 It can be frustrating to manage a Linux server solely from the terminal, so users are always searching for an easier and more intuitive option. One of the more promising applications in this area is [Cockpit](https://cockpit-project.org/). Cockpit allows users to monitor and configure a server through a graphical user interface. This guide explains how to use Cockpit on Linux for server management and provides some background about the application.
@@ -62,9 +58,9 @@ Other tools including Ansible, Strapi, and Portainer serve complementary roles. 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

@@ -1,8 +1,5 @@
 ---
 slug: installing-and-using-docker-on-centos-and-fedora
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
@@ -21,6 +18,7 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: CentOS and Fedora
+authors: ["Linode"]
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.
@@ -29,7 +27,7 @@ This guide covers installing the Docker Engine on various Linux distributions us
 
 ## Before You Begin
 
-1.  Ensure you have command line access to a Linux server running a supported Linux distribution. If not, follow the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides to create a new Linode.
+1.  Ensure you have command line access to a Linux server running a supported Linux distribution. If not, follow the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to create a new Linode.
 
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -105,7 +103,7 @@ This message shows that your installation appears to be working correctly.
 
 By default, `sudo` is required to run Docker commands, but a new group, called *docker*, was created during installation. When the Docker daemon starts, it opens a Unix socket for the *docker* group members.
 
-Before continuing, make sure you have a limited user account that *does not* belong to the sudo group. If you haven't created a limited user account yet, see the guides [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) or [Linux Users and Groups](/docs/guides/linux-users-and-groups/) for instructions.
+Before continuing, make sure you have a limited user account that *does not* belong to the sudo group. If you haven't created a limited user account yet, see the guides [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) or [Linux Users and Groups](/docs/guides/linux-users-and-groups/) for instructions.
 
 1.  Enter the command below to add a user to the *docker* group, replacing *[user]* with the name of your limited user account.
 

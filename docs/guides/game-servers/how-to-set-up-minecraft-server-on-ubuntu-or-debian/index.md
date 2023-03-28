@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-minecraft-server-on-ubuntu-or-debian
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 keywords: ["minecraft", "ubuntu", "debian"]
 tags: ["ubuntu", "debian"]
 description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This guide shows you how to configure a Minecraft firewall to increase security. ✓ Read now!"
@@ -26,6 +23,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu/Debian
+authors: ["Alex Fornuto"]
 ---
 
 Minecraft is one of the most popular games in the world. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
@@ -36,9 +34,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account.
 
 1.  Update your Linode's software:
 
@@ -66,7 +64,7 @@ Minecraft version 1.13 is only compatible with OpenJDK 8. If you are using OpenJ
     Assign a secure password, and configure any additional [SSH hardening](/docs/guides/use-public-key-authentication-with-ssh/) options at this time.
 
 {{< note respectIndent=false >}}
-If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+If you have a firewall configured according to the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 `-A INPUT -p tcp --dport 25565 -j ACCEPT`
 

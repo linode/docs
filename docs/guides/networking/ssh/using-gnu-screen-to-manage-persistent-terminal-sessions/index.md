@@ -1,8 +1,5 @@
 ---
 slug: using-gnu-screen-to-manage-persistent-terminal-sessions
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'GNU Screen is a tool that works with a terminal session to allow a user to resume that session once they have disconnected. This guide shows how to use this tool.'
 keywords: ["screen", "gnu screen", "terminal", "console", "linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,13 +13,14 @@ external_resources:
  - '[GNU Screen Home Page](http://www.gnu.org/software/screen/)'
  - '[GNU Screen Manual](http://www.gnu.org/software/screen/manual/html_node/index.html)'
 tags: ["networking","ssh","security"]
+authors: ["Linode"]
 ---
 
 GNU Screen is a tool which works with a terminal session to allow users to resume a session after they have disconnected. Screen prevents a session from "timing out" or disconnecting SSH connections or local terminal emulators. A single Screen session has the ability to host multiple sessions or "windows." Screen may be used for a variety of tasks such as maintaining persistent IRC sessions and multitasking in a terminal environment.
 
 ![Using GNU Screen to Manage Persistent Terminal Sessions](gnu-screen.png "Using GNU Screen to Manage Persistent Terminal Sessions")
 
-Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/guides/using-the-terminal/).
+Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/guides/using-the-terminal/).
 
 ## Installing GNU Screen
 

@@ -1,9 +1,6 @@
 ---
 slug: apache-web-server-debian-7
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Apache on your Debian 7 server, configure virtual hosting, and set up module and scripting support.'
 keywords: ["apache", "apache 2", "debian", "debian 7", "wheezy", "apache web server"]
 tags: ["web server","apache","debian"]
@@ -23,6 +20,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Debian 7
+authors: ["Linode"]
 ---
 
 ![Apache Web Server on Debian](Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)
@@ -37,8 +35,8 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
--   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/guides/getting-started/#setting-the-hostname) for your server.
+-   Make sure you've followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/products/platform/get-started/#setting-the-hostname) for your server.
 
     Issue the following commands to make sure your hostname is set properly:
 

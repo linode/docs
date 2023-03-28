@@ -1,8 +1,5 @@
 ---
 slug: back-up-a-postgresql-database
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: "Learn how to back up your PostgreSQL database with this guide for single database, multiple databases, and automated backups. ✓ Click & read!"
 og_description: "This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database."
 keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
@@ -17,6 +14,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/how-to-back-up-your-postgresql-database/','/guides/how-to-back-up-your-postgresql-database/']
 image: back-up-postgresql-database-title.jpg
+authors: ["Jared Kobos"]
 ---
 
 If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, automating backups with a cron task, you can restore your system when your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage. Learn how to backup your PostgreSQL database in Linux, in this guide.

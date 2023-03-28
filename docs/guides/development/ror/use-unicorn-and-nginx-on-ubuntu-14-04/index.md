@@ -1,8 +1,5 @@
 ---
 slug: use-unicorn-and-nginx-on-ubuntu-14-04
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 14.04 '
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 14.04", " nginx", "reverse proxy", "ubuntu 14.04"]
 tags: ["web applications","proxy","ruby","nginx","ubuntu"]
@@ -16,9 +13,6 @@ modified_by:
     name: Alex Fornuto
 title: "Deploy a Ruby on Rails App with Unicorn and nginx on Ubuntu 14.04"
 title_meta: "Deploy a Rails App with Unicorn and nginx on Ubuntu 14.04"
-contributor:
-    name: Vaibhav Rajput
-    link: https://twitter.com/rootaux
 external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 audiences: ["beginner"]
@@ -29,6 +23,7 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Vaibhav Rajput"]
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.
@@ -39,7 +34,7 @@ Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be 
 
 ## Before You Begin
 
-Before starting this guide, make sure that  you have read through and completed our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+Before starting this guide, make sure that  you have read through and completed our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

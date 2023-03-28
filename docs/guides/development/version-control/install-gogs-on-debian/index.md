@@ -1,8 +1,5 @@
 ---
 slug: install-gogs-on-debian
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
 keywords: ["gogs", "git", "golang", "nginx", " postgresql"]
 tags: ["debian","version control system","nginx","postgresql"]
@@ -13,9 +10,6 @@ modified: 2017-11-09
 modified_by:
     name: Linode
 title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
-contributor:
-    name: Nashruddin Amin
-    link: https://twitter.com/flow__free
 external_resources:
     - '[Gogs official site](http://gogs.io)'
     - '[Gogs documentation](http://gogs.io/docs)'
@@ -26,6 +20,7 @@ relations:
         key: install-gogs
         keywords:
             - distribution: Debian 9
+authors: ["Nashruddin Amin"]
 ---
 
 
@@ -41,7 +36,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before Installing Gogs
 
-1.  Follow the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
 2.  Update your system:
 

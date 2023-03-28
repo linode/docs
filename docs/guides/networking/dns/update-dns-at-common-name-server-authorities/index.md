@@ -1,8 +1,5 @@
 ---
 slug: update-dns-at-common-name-server-authorities
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: "Shortguide list of support documentation for updating DNS records at common name server authorities"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
@@ -14,6 +11,7 @@ published: 2018-09-27
 headless: true
 tags: ["dns","networking"]
 aliases: ['/networking/dns/update-dns-at-common-name-server-authorities/']
+authors: ["Nathan Melehan"]
 ---
 
 {{< note type="secondary" title="Updating DNS records at common nameserver authorities" isCollapsible=true >}}

@@ -1,8 +1,5 @@
 ---
 slug: learning-go-functions-loops-and-errors-a-tutorial
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'Learn how to use loops, how to create functions, and how to handle errors in the Go language.'
 keywords: ["Go", "Golang", "functions", "loops"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,12 @@ modified_by:
   name: Linode
 title: 'A Tutorial for Learning Go Functions, Loops, and Errors'
 title_meta: 'Learning Go Functions, Loops, and Errors - A Tutorial'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://golang.org)'
   - '[Effective Go](https://golang.org/doc/effective_go.html)'
   - '[A Tour of Go](https://tour.golang.org/welcome/1)'
 aliases: ['/development/go/learning-go-functions-loops-and-errors-a-tutorial/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 After you've learned the syntax of a simple "Hello World" script in Go, you'll likely want to start making more complicated programs. This guide will introduce language constructs that help with structuring your programs, including:

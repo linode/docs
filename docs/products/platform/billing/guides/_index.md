@@ -4,7 +4,7 @@ description: "Learn more about Linode Billing and related topics."
 tab_group_main:
     weight: 30
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/','/guides/manage-billing-in-cloud-manager/','/products/tools/billing/guides/']
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 ## Basics

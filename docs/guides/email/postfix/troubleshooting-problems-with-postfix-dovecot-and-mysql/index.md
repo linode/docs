@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2013-07-22
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
+authors: ["Linode"]
 ---
 
 ![Troubleshooting Problems with Postfix, Dovecot, and MySQL](troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")
@@ -330,7 +328,7 @@ Throughout this section, we will provide links to the appropriate [Postfix](http
 
 ### Setting Up
 
-Read the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Follow the steps outlined in that section before installing your mail server.
+Read the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Follow the steps outlined in that section before installing your mail server.
 
 You may also want to log into your server as the root user, so you don't have to type "sudo" for each command. You can log in as root by entering the following command:
 

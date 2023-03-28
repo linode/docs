@@ -1,8 +1,5 @@
 ---
 slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'NGINX web server can function as a capable load balancer in addition to serving static and dynamic content. This guide shows how to use it as a front-end proxy as well.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
@@ -18,6 +15,7 @@ external_resources:
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
  - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
+authors: ["Linode"]
 ---
 
 The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
@@ -32,11 +30,11 @@ This document provides an overview of using NGINX as a front-end proxy server fo
 
 Ensure that you have completed the following:
 
--   Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
 -   Familiarize yourself with [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/).
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/guides/linode-beginners-guide/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 ## Front-End Proxy Services with NGINX: How It Works
 

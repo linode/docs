@@ -1,8 +1,5 @@
 ---
 slug: track-bugs-and-manage-development-with-bug-genie
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the advanced bug tracking and issue management software Bug Genie on your Linode to manage projects.'
 keywords: ["bug tracking", "issue tracking", "feature development", "bug genie", "the bug genie"]
 tags: ["lamp"]
@@ -14,11 +11,12 @@ modified_by:
 published: 2010-05-03
 title: Track Bugs and Manage Development with Bug Genie
 deprecated: true
+authors: ["Linode"]
 ---
 
 Bug Genie is an issue tracking system used to help manage all phases of the development process, including planning, bug tracking, feature development, and overall project management. Bug Genie also provides the ability to generate sophisticated reports and graphs to help project leaders and stakeholders gain a rich understanding of the ongoing state and progress of projects' development.
 
-Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system.
+Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system.
 
 ## Installing Prerequisites
 

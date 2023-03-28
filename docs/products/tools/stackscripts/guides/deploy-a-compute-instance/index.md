@@ -4,7 +4,7 @@ description: 'In this guide, you will learn the various methods you can use in c
 keywords: ["stackscripts", "automation", "script", "custom instance", "deployment"]
 tags: ["linode platform","automation","cloud manager"]
 published: 2020-04-22
-modified: 2022-11-30
+modified: 2023-02-02
 modified_by:
   name: Linode
 aliases: ['/platform/stackscripts/how-to-deploy-a-new-linode-using-a-stackscript/','/guides/how-to-deploy-a-new-linode-using-a-stackscript/']
@@ -34,9 +34,13 @@ Linode does not verify the accuracy of any community submitted StackScripts. Pri
 
 1. This opens the **Create Linode** form with the StackScript pre-selected. If there are any UDF fields defined in the StackScript, they are displayed in the **StackScript Options** section. UDFs that *do not have* a default value are marked as required. UDFs that *do have* a default value are optional and are listed under the **Advanced Options** section.
 
+    {{< note type="warning" >}}
+    Do not use a double quotation mark character (`"`) within any of the StackScript-specific configuration fields, including user and database password fields. This special character may cause issues during deployment.
+    {{< /note >}}
+
 1. Next, select the Linux distribution you'd like to use within the **Select an Image** field. This list is limited to only images that the StackScript has targeted.
 
-1. Complete the remainder of the form by follow the instructions outlined in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
+1. Complete the remainder of the form by follow the instructions outlined in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide.
 
 1. Click on the **Create Linode** button to complete the creation of your new Compute Instance. The StackScript is executed when the instance first boots up.
 

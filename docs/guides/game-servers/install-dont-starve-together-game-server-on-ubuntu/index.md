@@ -1,8 +1,5 @@
 ---
 slug: install-dont-starve-together-game-server-on-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install and Configure a Don''t Starve Together Multi-player Game Server for Ubuntu 14.04'
 keywords: ["don''t starve", "don''t starve together", "game servers", "games", "ubuntu", " ubuntu 14.04", "steam cmd", "steamcmd", "token"]
 tags: ["debian", "ubuntu"]
@@ -13,10 +10,8 @@ modified_by:
     name: Linode
 title: 'Install Don''t Starve Together Game Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/dont-starve-together-on-ubuntu/','/game-servers/install-dont-starve-together-game-server-on-ubuntu/','/applications/game-servers/install-dont-starve-together-game-server-on-ubuntu/']
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 ---
 
 ![banner_image](Install_Dont_Starve_Together_Game_Server_on_Ubuntu_smg.jpg)

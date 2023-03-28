@@ -1,8 +1,5 @@
 ---
 slug: deploy-in-code-with-pulumi
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 tags: ["debian"]
@@ -16,6 +13,7 @@ external_resources:
 - '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
+authors: ["Linode"]
 ---
 
 ## What is Pulumi?
@@ -40,7 +38,7 @@ In this guide you will learn how to:
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 
-1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
+1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
 
 1. Install Pulumi on your Linode using their installation script:
 

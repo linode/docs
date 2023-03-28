@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-salt-basic-installation-and-setup
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
 keywords: ["salt", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ image: GettingStartedwithSalt.png
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 
 [Salt](https://saltproject.io/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.
@@ -23,9 +21,9 @@ tags: ["automation","salt"]
 
 -  You will need at least two Linodes: One will function as the Salt Master and the other(s) as Salt Minions.
 
--  Set each Linode's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
+-  Set each Linode's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). The hostname will be used to identify each Linode within Salt so be specific with their naming (e.g. master, minion1, minion2, etc.).
 
--  We recommend that you configure [private IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
+-  We recommend that you configure [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each system if your Linodes are located in the same data center.
 
 
 ## Install Using Salt Bootstrap

@@ -1,8 +1,5 @@
 ---
 slug: deploy-a-react-app-on-linode
-author:
-  name: Phil Zona
-  email: phil.b.zona@gmail.com
 description: 'Learn to deploy a locally developed React application to your Linode using Rsync.'
 og_description: 'Use Rsync to deploy a React application from your local computer to a Linode.'
 keywords: ['react','reactjs','deploy','rsync']
@@ -13,9 +10,6 @@ modified: 2018-01-31
 modified_by:
   name: Linode
 title: "Deploy a React Application on Linode"
-contributor:
-  name: Phil Zona
-  link: https://twitter.com/philzona
 aliases: ['/development/react/deploy-a-react-app-on-linode/','/development/javascript/deploy-a-react-app-on-linode/']
 deprecated: true
 deprecated_link: 'guides/how-to-deploy-a-react-app-on-debian-10/'
@@ -25,6 +19,7 @@ external_resources:
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
 languages: ["javascript"]
+authors: ["Phil Zona"]
 ---
 
 ## What is React?
@@ -35,9 +30,9 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  You will need a [web server](/docs/web-servers/) configured to host a website on your Linode.
 

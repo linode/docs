@@ -1,8 +1,5 @@
 ---
 slug: high-availability-wordpress
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: "This article shows you how you to configure a high availability WordPress website with a two-Linode cluster using MySQL replication and a NodeBalancer."
 keywords: ["wordpress", "mysql", "replication", "master-master", "high availability"]
 tags: ["debian","ubuntu","wordpress","cms","security"]
@@ -14,13 +11,14 @@ published: 2015-01-09
 title: "Deploy a High Availability WordPress Website on Linode"
 deprecated: true
 aliases: ['/websites/cms/high-availability-wordpress/','/websites/cms/wordpress/high-availability-wordpress/']
+authors: ["James Stewart"]
 ---
 
 This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.
 
 ## Prerequisites
 
-This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
+This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 
 {{< note respectIndent=false >}}

@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Create a StackScript
 description: "How to make a StackScript using Linode StackScripts."
 published: 2022-11-30
 aliases: ['/products/tools/stackscripts/guides/stackscripts-create-stackscript/']
+authors: ["Linode"]
 ---
 
 This guide walks you through creating a StackScript through the Cloud Manager.
@@ -32,7 +30,7 @@ Enter a brief overview of your StackScript in the **Description** field, outlini
 
 ## Select Compatible Distribution Images
 
-Within the **Target Images** field, select each distribution image that is compatible with your StackScript. When deploying a Compute Image based on this StackScript, the available images are limited to whichever images are selected here. At least one image must be selected, though you can add multiple images if you wish to provide an option during deployment. See [Choosing a Linux Distribution](/docs/guides/choosing-a-distribution/) to learn more about the distributions that Linode supports.
+Within the **Target Images** field, select each distribution image that is compatible with your StackScript. When deploying a Compute Image based on this StackScript, the available images are limited to whichever images are selected here. At least one image must be selected, though you can add multiple images if you wish to provide an option during deployment. See [Choosing a Linux Distribution](/docs/products/compute/compute-instances/guides/distributions/) to learn more about the distributions that Linode supports.
 
 ## Create the Custom Script
 

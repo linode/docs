@@ -1,15 +1,13 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Instructions on updating the email address on an account so that you can receive email notifications."
 keywords: ["email address", "email addresses", "address", "addresses"]
 tags: ["linode platform","cloud manager","email"]
-date: 2022-11-21
+published: 2022-11-21
 image: L_ChangeYourEmail.png
 title: Change Your Email Address
 title_meta: Change Your Email Address on a Linode Account
 aliases: ['/quick-answers/linode-platform/how-to-change-your-email/','/guides/how-to-change-your-email/']
+authors: ["Linode"]
 ---
 
 Linode uses the contact information on file in your account to notify and bill you. Keep this information current to prevent service interruptions. It's especially important to keep your email address current.

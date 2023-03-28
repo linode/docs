@@ -3,9 +3,9 @@
 {{ end }}
 
 {{ define "main" }}
-  <div class="flex flex-wrap-reverse items-center pb-4 border-b-2">
+  <div class="flex flex-wrap-reverse items-center">
     <h1
-      class="font-bold leading-tight tracking-tight text-4xl text-titlecolor mr-10 pb-2">
+      class="font-bold leading-tight tracking-tight text-4xl text-titlecolor mr-10">
       {{ partial "funcs/get-page-title-h1.html" . }}
     </h1>
 
@@ -27,7 +27,8 @@
     {{ .Content }}
   </div>
   <div class="mt-8">
-  {{ partial "releasenotes/list-pages.html" .RegularPagesRecursive }}
+    {{ $jsonPath := printf "%sindex.json" .RelPermalink }}
+    {{ partial "releasenotes/list-pages-paginated.html" (dict "pages" .RegularPagesRecursive "key"  $jsonPath ) }}
   </div>
 {{ end }}
 

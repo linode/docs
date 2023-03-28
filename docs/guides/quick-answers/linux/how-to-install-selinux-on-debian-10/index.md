@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-selinux-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to install SELinux and use it to protect the security of your Debian 10 system"
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/how-to-install-selinux-on-debian-10/']
@@ -13,8 +10,6 @@ modified_by:
   name: Linode
 published: 2020-03-17
 image: InstallSELinux_Deb10.png
-contributor:
-  name: Linode
 title: "Install SELinux on Debian 10"
 title_meta: "How to Install SELinux on Debian 10"
 relations:
@@ -22,13 +17,14 @@ relations:
         key: how-to-install-selinux
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 ---
 
 Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux), named [AppArmor](https://wiki.ubuntu.com/AppArmor). Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Debian 10, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
     {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
@@ -38,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         sudo apt update
 
     {{< note respectIndent=false >}}
-The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
+The Linode kernel does not support SELinux by default. If your system is running a Linode kernel, you will need to change to an upstream kernel in order to use SELinux. See the [How to Change Your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) for more steps. Once you're kernel is set to the upstream kernel, continue on with the steps in this guide.
     {{< /note >}}
 
 ### Remove AppArmor

@@ -1,8 +1,5 @@
 ---
 slug: pocketmine-server-on-debian-7
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'A third party server for Minecraft Pocket Edition'
 keywords: ["minecraft", "pocketmine", "debian"]
 tags: ["debian"]
@@ -17,6 +14,7 @@ published: 2015-04-02
 title: 'PocketMine Server on Debian 7'
 aliases: ['/game-servers/pocketmine-server-on-debian-7/','/applications/game-servers/pocketmine-server-on-debian-7/']
 dedicated_cpu_link: true
+authors: ["Alex Fornuto"]
 ---
 
 PocketMine is a third party server for the MineCraft - Pocket Edition game for [Android](https://play.google.com/store/apps/details?id=com.mojang.minecraftpe) and [iOS](https://itunes.apple.com/us/app/minecraft-pocket-edition/id479516143?mt=8). It features plugin support, allowing you to customize your gameplay with others. This guide details installing PocketMine on a Linode running Debian 7.
@@ -27,7 +25,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
 
 ## Prerequisites
 
-1.  Your Linode should already be configured per our [Getting Started](/docs/guides/getting-started/) guide, and secured per our [Securing Your Server](/docs/guides/set-up-and-secure/) guide.
+1.  Your Linode should already be configured per our [Getting Started](/docs/products/platform/get-started/) guide, and secured per our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 2.  Ensure that your Linode is up to date:
 
@@ -42,7 +40,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
         sudo adduser pocketmine
 
     {{< note respectIndent=false >}}
-If you've followed the steps in our [Securing Your Server](/docs/guides/set-up-and-secure/) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
+If you've followed the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
 {{< /note >}}
 
 ## Installation

@@ -1,8 +1,5 @@
 ---
 slug: deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for deploying applications written in Django by using the uWSGI and Nginx web server on Ubuntu 14.04.'
 keywords: ["django", "uwsgi", "nginx", "python"]
 tags: ["web server","ubuntu","python","nginx","django"]
@@ -12,9 +9,6 @@ modified_by:
   name: Sergey Pariev
 published: 2015-11-25
 title: "Deploy Django Apps with uWSGI and Nginx on Ubuntu 14.04"
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
 deprecated: True
 aliases: ['/web-servers/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','/websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
@@ -22,15 +16,16 @@ external_resources:
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
   - '[nginx Configuration](/docs/guides/how-to-configure-nginx/)'
+authors: ["Sergey Pariev"]
 ---
 
 [Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
+2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 

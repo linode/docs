@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-fsck-to-fix-disk-problems
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "Having issues with your Linux installation? fsck might be able to help. This guide will walk you through the entire process involved in doing so."
 og_description: "fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
@@ -17,6 +14,7 @@ external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
+authors: ["Edward Angert"]
 ---
 
 ![banner_image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg)
@@ -78,7 +76,7 @@ If you are using fsck on a Linode, the easiest and safest way to unmount your di
 
 ### Configuration Profile
 
-If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/guides/linode-configuration-profiles). Apply the changes and reboot the Linode.
+If you are working on a Linode but do not wish to use Rescue Mode, shut down the Linode from the Linode Manager. Unmount the disk from the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/). Apply the changes and reboot the Linode.
 
 ### Manual Unmount
 

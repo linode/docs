@@ -1,12 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Create and Manage Buckets"
 description: "Learn how to view, create, and delete Object Storage buckets through the Cloud Manager."
 published: 2022-02-07
 modified: 2022-03-04
 aliases: ['/products/storage/object-storage/guides/create-bucket/','/products/storage/object-storage/guides/delete-bucket/']
+authors: ["Linode"]
 ---
 
 Buckets are the primary containers within Object Storage. Each bucket stores your files (objects) and allows you to access or share those files.

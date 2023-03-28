@@ -1,8 +1,5 @@
 ---
 slug: install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy
-author:
-    name: Sam Foo
-    email: docs@linode.com
 description: 'This guide shows you how to install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
 keywords: ["Apache2", "Jupyter notebook", "SSL", "websocket"]
 tags: ["ssl", "proxy", "apache"]
@@ -19,6 +16,7 @@ external_resources:
  - '[Certbot](https://certbot.eff.org/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy/']
+authors: ["Sam Foo"]
 ---
 
 Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy.
@@ -31,9 +29,9 @@ Jupyter Notebook is being replaced by [JupyterLab](https://jupyterlab.readthedoc
 
 Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Install Anaconda Package Manager
 

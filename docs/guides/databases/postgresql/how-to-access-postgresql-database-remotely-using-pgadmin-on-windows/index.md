@@ -1,8 +1,5 @@
 ---
 slug: how-to-access-postgresql-database-remotely-using-pgadmin-on-windows
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Use the open-source pgAdmin program to securely manage remote PostgreSQL databases from a Windows workstation."
 keywords: ["pgadmin", "pgadmin windows", "postgresql gui", "postgresql windows", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
+authors: ["Linode"]
 ---
 
 ![How to Access PostgreSQL Database Remotely Using pgAdmin on Windows](how-to-access-postgresql-database-remotely-using-pgpmyadmin-on-windows-smg.jpg)
@@ -61,7 +59,7 @@ Click the "Open" button to start your connection. If you haven't logged into you
 
 ![An unknown host key warning in PuTTY on Windows 7](371-putty-02-host-key-warning.png)
 
-PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/guides/lish/) and executing the following command:
+PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](/docs/products/compute/compute-instances/guides/lish/) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
