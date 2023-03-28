@@ -113,7 +113,7 @@ nomad --version
 ```
 
 ```output
-Nomad v1.4.3
+Nomad v1.5.2
 ```
 
 #### Installing CNI Plugins for Nomad
@@ -354,9 +354,9 @@ This example uses a simple Docker image to have each client node echo "Hello, wo
 
 ## Conclusion
 
-You now have what's needed to start orchestrating workloads with Nomad. This tutorial contains steps for everything from running a single Nomad instance to deploying an entire Nomad cluster.
+You now know how to start orchestrating workloads with Nomad. This tutorial contains steps for everything from running a single Nomad instance to deploying an entire Nomad cluster.
 
-Regarding the Terraform deployment, the above is meant as a more accessible and readable base. You can and should continue enhancing this to better meet your own specific needs. The following are some initial ideas to start out with:
+The Terraform deployment above is meant as a simple, accessible base. Continue enhancing this to better meet your own specific needs. The following are some initial ideas to start out with:
 
 -   Use Packer to build initial images. This saves deployment time and would replace the steps in the `nomad-installations.sh` script. Learn more about Packer and using it to create Linode images in our guide [Using the Linode Packer Builder to Create Custom Images](/docs/guides/how-to-use-linode-packer-builder/).
 
