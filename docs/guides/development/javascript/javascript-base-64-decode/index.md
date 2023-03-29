@@ -1,8 +1,5 @@
 ---
 slug: javascript-decode-base64-string-a-developers-guide
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Wondering how to encode and decode with base64 in Javascript? Follow these steps to learn how plus find the benefits and limitations of the base64 code.'
 keywords: ['javascript base 64 decode','encode string javascript','base64 js']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +9,12 @@ modified_by:
 title: "Javascript Decode Base64 String - A Developer’s Guide"
 h1_title: "How to Use Javascript Base 64 to Decode and Encode"
 enable_h1: true
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Wikipedia Base64 page](https://en.wikipedia.org/wiki/Base64)'
 - '[RFC 4648 for Base64](https://datatracker.ietf.org/doc/html/rfc4648)'
 - '[Mozilla btoa documentation](https://developer.mozilla.org/en-US/docs/Web/API/btoa)'
 - '[Mozilla atob documentation](https://developer.mozilla.org/en-US/docs/Web/API/atob)'
+authors: ["Jeff Novotny"]
 ---
 
 It is often necessary to embed a binary or other non-ASCII file inside an email or a web page. However, for a variety of reasons, it is not always safe to include the file in its original state. One possible solution is to first convert the binary data to Base64 text before including it. This guide provides an introduction to Base64 encoding and explains how to use the JavaScript Base64 functions to encode and decode data.
