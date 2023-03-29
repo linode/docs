@@ -22,7 +22,7 @@ Most business applications require access to data, which in turn makes it import
 
 ## The Difference Between MySQL and MariaDB
 
-Before we get started, let's understand the relationship between Mysql and Mariadb through their shared history. MySQL is an open-source RDBMS used for everything from small-scale to large-scale industrial applications. Oracle purchased MySQL in May 1995. However, Oracle’s vision of what MySQL should be fell short of some of MySQL developers' and users' expectations. These developers created MariaDB based on the Community Edition of MySQL and released it in October 2009.
+Before we get started, let's understand the relationship between MySQL and MariaDB through their shared history. MySQL is an open-source RDBMS used for everything from small-scale to large-scale industrial applications. Oracle purchased MySQL in May 1995. However, Oracle’s vision of what MySQL should be fell short of some of MySQL developers' and users' expectations. These developers created MariaDB based on the Community Edition of MySQL and released it in October 2009.
 
 MariaDB is touted as a drop-in replacement for MySQL, but there are differences between the two products. A significant number of features present in MariaDB make the move to the RDBMS a one-way process. Especially, when you plan to use the advanced features without using some sort of special tool to help with the transfer. It also pays to know that [MySQL and MariaDB vary in functionality](https://blog.devart.com/mysql-vs-mariadb.html). For example, MySQL doesn’t support `JSON_EXISTS` or `JSON_QUERY`, and MariaDB lacks support for `JSON_TABLE`. When it comes to SQL support, MySQL provides superior indexing capabilities, while MariaDB supports sequences. The following table provides a quick overview of the significant differences between the two products:
 
@@ -40,13 +40,17 @@ MariaDB is touted as a drop-in replacement for MySQL, but there are differences 
 
 The steps in this installation guide are for Ubuntu 22.04 as described at the beginning of the guide. Open a terminal window and log into the system as a user with administrative privileges.
 
-1. Check for any pending updates, with the below command. A message is displayed at the end, with the number of packages that need to be upgraded.
+1. Check for any pending updates, with the below command. A message displays at the end, with the number of packages that need to be upgraded.
 
-        sudo apt update
+    ```command
+    sudo apt update
+    ```
 
 1. In case of any pending updates, upgrade to the latest packages.
 
-        sudo apt upgrade
+    ```command
+    sudo apt upgrade
+    ```
 
     - You may see some messages during this process, such as whether the upgrade requires additional disk space. If additional disk space is required, type `Y` and press **Enter** to continue.
 
@@ -58,17 +62,21 @@ The steps in this installation guide are for Ubuntu 22.04 as described at the be
 
 1. MySQL 8 is provided as part of the default repositories for Ubuntu 22.04, so installation is easy. Give the below command to install the MySQL server.
 
-        sudo apt install mysql-server
+    ```command
+    sudo apt install mysql-server
+    ```
 
     During the update process, you may be asked questions such as, if you want to use additional disk space. Also, a progress indicator is shown as before.
 
 1. At this point, you can verify MySQL's running status with the following command.
 
-        sudo service mysql status
+    ```command
+    sudo service mysql status
+    ```
 
     You should see the output below:
 
-    {{< output >}}
+    ```output
     mysql.service - MySQL Community Server
       Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset:>
       Active: active (running) since Sat 2022-07-23 19:12:02 UTC; 1min 2s ago
@@ -83,7 +91,7 @@ The steps in this installation guide are for Ubuntu 22.04 as described at the be
 
         Jul 23 19:12:01 localhost systemd[1]: Starting MySQL Community Server...
         Jul 23 19:12:02 localhost systemd[1]: Started MySQL Community Server.
-    {{< /output >}}
+    ```
 
 1. Once finished viewing the information, type `q` and press **Enter** to exit the command prompt.
 
@@ -93,26 +101,34 @@ For a safer MySQL installation, use the `mysql_secure_installation` script to cr
 
 1. Launch the MySQL prompt to change its configurations.
 
-        sudo mysql
+    ```command
+    sudo mysql
+    ```
 
 1. To change the password run the below command. Use single quotes for passwords.
 
-        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY <Password That Satisfies Password Policy to be Set in Step 5>;
+    ```command
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY <Password That Satisfies Password Policy to be Set in Step 5>;
+    ```
 
 
     After the password has been set, the output is displayed below:
 
-    {{< output >}}
+    ```output
     Query OK, 0 rows affected (0.00 sec)
-{{< /output >}}
+    ```
 
 1. Exit from the previous state to get back to the command prompt.
 
-        exit
+    ```command
+    exit
+    ```
 
 1. Launch `mysql_secure_installation` utility. In case the system prompts for the password, enter the password that was set in **Step 2** before proceeding.
 
-        sudo mysql_secure_installation
+    ```command
+    sudo mysql_secure_installation
+    ```
 
     A welcome message is displayed on the screen and then the option to install `VALIDATE PASSWORD COMPONENT`. This component verifies that users are relying on strong passwords to log into MySQL, so it’s an important addition to your security suite.
 
@@ -134,22 +150,29 @@ For a safer MySQL installation, use the `mysql_secure_installation` script to cr
 
 1. To directly access MySQL from the command prompt using just the `sudo mysql` command, the first login to MySQL as the root user.
 
-        mysql -u root -p
+    ```command
+    mysql -u root -p
+    ```
 
     You are prompted to enter a password. Once you enter the password, you see the MySQL prompt.
 
 1. Next, modify the root user to give the user access to `auth_socket`, which allows the user to directly login to MySQL using `sudo mysql` command.
 
-        ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+    ```command
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH auth_socket;
+    ```
 
-    You see the below output.
-{{< output >}}
-Query OK, 0 rows affected (0.00 sec)
-{{< /output >}}
+    You see the below output:
+
+    ```output
+    Query OK, 0 rows affected (0.00 sec)
+    ```
 
 1. Type `exit` and press **Enter**. You are back at the command prompt with the default access to MySQL again.
 
-        exit
+    ```command
+    exit
+    ```
 
 ### Configure UFW to Allow Traffic to MySQL
 
@@ -157,75 +180,100 @@ Normally, MySQL doesn’t allow remote connections. By default, MySql can only b
 
 1. Open the MySQL configuration file with the below command.
 
-        sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+    ```command
+    sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+    ```
 
     You see the configuration file loaded.
 
 1. Locate the bind-address entry near the top of the file and comment it out. Then comment out the old bind address using `#` and add a new `bind-address` that looks like the following:
 
-        #bind-address           = 127.0.0.1
-        bind-address            = 0.0.0.0
+    ```command
+    #bind-address           = 127.0.0.1
+    bind-address            = 0.0.0.0
+    ```
 
 1. Restart MySQL.
 
-        sudo systemctl restart mysql
+    ```command
+    sudo systemctl restart mysql
+    ```
 
 1. Before you can go forward, ensure that the terminal stays connected during the MySQL UFW steps that follow. Observe the next steps for the same.
     - List the applications in UFW. The application of interest is OpenSSH.
 
-            sudo ufw app list
+        ```command
+        sudo ufw app list
+        ```
 
     - Enable OpenSSH on UFW.
 
-            sudo ufw allow OpenSSH
+        ```command
+        sudo ufw allow OpenSSH
+        ```
 
-      You see two Rules Updated messages: One for IPv4, and another for IPv6.
-{{< output >}}
-Rule added
-Rule added (v6)
-{{< /output >}}
+        You see two Rules Updated messages: One for IPv4, and another for IPv6.
+
+        ```output
+        Rule added
+        Rule added (v6)
+        ```
 
     - Now you can enable UFW. You may see a message stating that your remote terminal connection might be severed. If this happens, you need to reconnect. After you type `Y` and press **Enter**, you see that the firewall is now active.
 
-            sudo ufw enable
+        ```command
+        sudo ufw enable
+        ```
 
     - Check UFW status.
 
-            sudo ufw status
+        ```command
+        sudo ufw status
+        ```
 
         You should see two messages for the OpenSSH application that say the application is allowed access from anywhere.
-          {{< output >}}
-ufw status
-Status: active
 
-To                         Action      From
---                         ------      ----
-22/tcp                     ALLOW       Anywhere
-22/tcp (v6)                ALLOW       Anywhere (v6)
-{{< /output >}}
+        ```output
+        ufw status
+        Status: active
+
+        To                         Action      From
+        --                         ------      ----
+        22/tcp                     ALLOW       Anywhere
+        22/tcp (v6)                ALLOW       Anywhere (v6)
+        ```
 
 1. List the users logged into the server.
 
-        sudo who
+    ```command
+    sudo who
+    ```
 
     You see a list of users currently logged into the server, including yourself. The output also shows your remote IP address, which is needed for the next step.
 
 1. Allow access from the remote machine to MySQL. This step provides you with remote access to your MySQL setup.
 
-        sudo ufw allow 3306
+    ```command
+    sudo ufw allow 3306
+    ```
 
     Once remote access is successfully enabled, you should see the following output:
-        {{< output >}}
-Rule updated
-        {{< /output >}}
+
+    ```output
+    Rule updated
+    ```
 
 1. Check UFW status using the below command. You should see the output that OpenSSH allows access from anywhere and that port `3306` (for MySQL) allows access from your specific remote login address.
 
-        sudo ufw status
+    ```command
+    sudo ufw status
+    ```
 
 1. To access MySQL from the remote server, type the command below and press **Enter**:
 
-        mysql -u user -h <database_server_ip> -p
+    ```command
+    mysql -u user -h <database_server_ip> -p
+    ```
 
 ## Conclusion
 

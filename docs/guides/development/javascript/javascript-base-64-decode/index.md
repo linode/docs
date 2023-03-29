@@ -49,7 +49,7 @@ The following example explains how to manually convert a file to Base64, using t
 
 The following table illustrates how the text characters are converted into a Base64 encoding. In this case, `0` bits and a padding symbol are added to round out the sequence.
 
-{{< file "Base64_translate.txt" >}}
+```file {title="Base64_translate.txt"}
 L        a
 76       96
 01001100 01100001
@@ -57,7 +57,7 @@ L        a
 010011 000110 000100 pad
 19     6      4      pad
 T      G      E      =
-{{< /file >}}
+```
 
 ## What Are the Benefits of Base64 Code?
 
@@ -113,16 +113,25 @@ To run short JavaScript code snippets without embedding them in a web page, use 
 
 1.  Assign the data to encode to a variable.
 
-        var origString = 'La';
+    ```command
+    var origString = 'La';
+    ```
+
 1.  Encode the data using the built-in `btoa` JavaScript function. Pass the string variable to the function.
 
-        var base64EncodeString = btoa(origString);
+    ```command
+    var base64EncodeString = btoa(origString);
+    ```
+
 1.  Print the result using `console.log` to ensure the string is encoded correctly.
 
-        console.log(base64EncodeString);
-    {{< output >}}
-TGE=
-{{< /output >}}
+    ```command
+    console.log(base64EncodeString);
+    ```
+
+    ```output
+    TGE=
+    ```
 
 ### Decode Data with Base64 in Javascript.
 
@@ -130,24 +139,29 @@ JavaScript can also decode Base64 text. The procedure to decode a Base64 represe
 
 1.  Pass the data to be decoded to the `atob` function and store the result in a new variable.
 
-        var txtDecodeString = atob(base64EncodeString);
+    ```command
+    var txtDecodeString = atob(base64EncodeString);
+    ```
+
 1.  Confirm the data is decoded correctly. The result should match the original data.
 
-        console.log(txtDecodeString);
+    ```command
+    console.log(txtDecodeString);
+    ```
 
-    {{< output >}}
-La
-{{< /output >}}
+    ```output
+    La
+    ```
 
 Here is the full Base64 js file to encode and decode the sample text. The input data is hard coded in this example, but the routine can easily be enhanced to accept input from the user.
 
-{{< file "base64.js" javascript >}}
+```file {title="base64.js"}
 var origString = 'La';
 var base64EncodeString = btoa(origString);
 console.log(base64EncodeString);
 var txtDecodeString = atob(base64EncodeString);
 console.log(txtDecodeString);
-{{< /file >}}
+```
 
 ## A Summary of Base64 in Javascript
 
