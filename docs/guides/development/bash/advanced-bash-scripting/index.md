@@ -6,8 +6,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-29
 modified_by:
   name: Linode
-title: "Guide to Advanced Bash Scripting"
-title_meta: "Part 1: A Software Engineer's Guide to Advanced Bash Scripting"
+title: "Advanced Bash Scripting: Part 1"
+title_meta: "A Software Engineer's Guide to Advanced Bash Scripting: Part 1"
 external_resources:
 - '[Bash cheat sheet](https://scilifelab.github.io/courses/ngsintro/1902/files/Bash_cheat_sheet_level2.pdf)'
 - '[GNU Bash](https://www.gnu.org/software/bash/)'
