@@ -1619,6 +1619,7 @@ pipenv
 pipelined
 pipelining
 piwik
+pixid
 pki
 plaintext
 platformer
@@ -2193,6 +2194,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2249,6 +2251,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 UDF
 UDFs
@@ -2450,6 +2453,7 @@ windowlist
 wireguard
 wirelessly
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll
