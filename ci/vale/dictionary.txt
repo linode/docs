@@ -1618,6 +1618,7 @@ pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
 pixid
 pki
@@ -2434,6 +2435,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
