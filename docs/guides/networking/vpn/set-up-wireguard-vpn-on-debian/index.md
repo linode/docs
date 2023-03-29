@@ -1,8 +1,5 @@
 ---
 slug: set-up-wireguard-vpn-on-debian
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'WireGuard encrypts your traffic quickly and safely. This guide will show you how to set up a Wireguard VPN server and client on Debian.'
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn','debian']
@@ -14,14 +11,14 @@ modified: 2021-10-15
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Debian"
-contributor:
-  name: Linode
 relations:
     platform:
         key: setup-wireguard-vpn
         keywords:
             - distribution: Debian 9
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 ## What is WireGuard?
@@ -52,18 +49,18 @@ In this guide you will learn how to:
 * [Configure a WireGuard client](#configure-wireguard-client) on your local computer or another Linode.
 * [Establish a simple peer connection](#connect-the-client-and-server) between your WireGuard server and client.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent major updates in the future.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
-- [Deploy a Linode](/docs/guides/creating-a-compute-instance/) running Debian 9.
-- [Add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- [Deploy a Linode](/docs/products/compute/compute-instances/guides/create/) running Debian 9.
+- [Add a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privileges to your Linode.
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
-{{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/guides/managing-the-kernel-on-a-linode/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/guides/managing-the-kernel-on-a-linode/#update-your-linode-kernel-with-linode-s-cloud-manager).
+{{< note respectIndent=false >}}
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/products/compute/compute-instances/guides/manage-the-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/products/compute/compute-instances/guides/manage-the-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard
@@ -148,7 +145,7 @@ SaveConfig = true
 
         sudo wg-quick up wg0
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `wg-quick` is a convenient wrapper for many of the common functions in `wg`. You can turn off the wg0 interface with `wg-quick down wg0`
 {{< /note >}}
 
@@ -193,9 +190,9 @@ wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
 
 The process for setting up a client is similar to setting up the WireGuard server. When using Debian as your client's operating system, the only difference between the client and the server is the configuration file. In this section, you will configure a WireGuard client on Debian 9.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
-{{</ note >}}
+{{< /note >}}
 
 1. Follow the steps in the [Install WireGuard](#install-wireguard) section of the guide.
 

@@ -13,12 +13,12 @@
 {{- $parts := split $k "/" -}}
 {{- $section := printf "api > %s" $baseSection -}}
 {{- $op := .o -}}
-{{- $exerpt := $op.Description -}}
+{{- $excerpt := $op.Description | $.RenderString | plainify -}}
 {{- $httpMethod := .m -}}
 {{- $title := $op.Summary }}
 {{- $href := printf "/docs/api/%s/#%s" $baseSection ($op.Summary | anchorize) -}}
 {{- $objectID := printf "%s: %s" $httpMethod $k }}
-{{- $index = $index | append (dict "objectID" $objectID "ordinal" $ordinal "href" $href "title" $title "section" $section "section.lvl0" "api" "section.lvl1" $section  "exerpt" $exerpt "httpMethod" $httpMethod) -}}
+{{- $index = $index | append (dict "objectID" $objectID "ordinal" $ordinal "href" $href "title" $title "section" $section "section.lvl0" "api" "section.lvl1" $section  "excerpt" $excerpt "httpMethod" $httpMethod) -}}
 {{- end -}}
 {{- end -}}
 {{- end  -}}

@@ -1,8 +1,5 @@
 ---
 slug: apache-2-web-server-on-ubuntu-9-04-jaunty
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu Jaunty.'
 keywords: ["Apache", "web sever", "Ubuntu Jaunty"]
 tags: ["web server","apache","ubuntu"]
@@ -19,11 +16,12 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/lamp-guides/ubuntu-9-04-jaunty).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/guides/lamp-server-on-ubuntu-9-04-jaunty/).
 
 ## Install Apache 2
 
@@ -166,7 +164,7 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP Guide for Debian Lenny](/docs/lamp-guides/debian-5-lenny) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice the vast majority of configuration options will probably be located in site-specific virtual host configuration files.
 

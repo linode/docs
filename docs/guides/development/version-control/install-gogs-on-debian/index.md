@@ -1,8 +1,5 @@
 ---
 slug: install-gogs-on-debian
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
 keywords: ["gogs", "git", "golang", "nginx", " postgresql"]
 tags: ["debian","version control system","nginx","postgresql"]
@@ -13,9 +10,6 @@ modified: 2017-11-09
 modified_by:
     name: Linode
 title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
-contributor:
-    name: Nashruddin Amin
-    link: https://twitter.com/flow__free
 external_resources:
     - '[Gogs official site](http://gogs.io)'
     - '[Gogs documentation](http://gogs.io/docs)'
@@ -26,6 +20,7 @@ relations:
         key: install-gogs
         keywords:
             - distribution: Debian 9
+authors: ["Nashruddin Amin"]
 ---
 
 
@@ -33,15 +28,15 @@ relations:
 
 ![Install Gogs on Debian](gogs_tg.png "Install Gogs on Debian")
 
-This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before Installing Gogs
 
-1.  Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and make sure your Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and make sure your Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
 2.  Update your system:
 
@@ -76,7 +71,7 @@ In this section we will download the latest version of Go (version 1.7 at the ti
         echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> $HOME/.bashrc
         source $HOME/.bashrc
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 We need to specify the `GOROOT` environment variable since we are installing Go to a custom location.
 {{< /note >}}
 
@@ -170,7 +165,7 @@ CREATE DATABASE gogs OWNER gogs;
 
 We will use nginx as the reverse proxy for Gogs, so we can access Gogs using our domain name rather than using our host's IP address. In addition, we will let nginx handle the HTTPS connections for our Gogs site.
 
-1.  Create a [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or buy a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) from a certificate authority (CA).
+1.  Create a [self-signed SSL certificate](/docs/guides/create-a-self-signed-tls-certificate/) or buy a [commercial SSL certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/) from a certificate authority (CA).
 
 2.  Install nginx from the repository:
 

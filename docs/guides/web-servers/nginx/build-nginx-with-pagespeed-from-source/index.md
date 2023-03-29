@@ -1,8 +1,5 @@
 ---
 slug: build-nginx-with-pagespeed-from-source
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for compiling the Nginx web server from scratch so you can use Google''s PageSpeed moduleon your website.'
 keywords: ["nginx","pagespeed","optimization"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ modified_by:
 title: 'Build NGINX with PageSpeed From Source'
 dedicated_cpu_link: true
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Build NGINX with PageSpeed From Source](build-nginx-pagespeed-from-source-title.jpg "Build NGINX with PageSpeed From Source title graphic")
@@ -27,9 +25,9 @@ There are currently two ways to get PageSpeed and NGINX working together:
 -  Compile NGINX with support for PageSpeed, then compile PageSpeed.
 -  Compile PageSpeed as a [dynamic module](https://www.nginx.com/blog/compiling-dynamic-modules-nginx-plus/) to use with NGINX, whether NGINX was installed from source or a binary.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Installing NGINX from source requires several manual installation steps and will require manual maintenance when performing tasks like version upgrades. To install NGINX using a package manager see the [NGINX](/docs/web-servers/nginx/) section.
-    {{</ note >}}
+    {{< /note >}}
 
 This guide will show how to compile both NGINX and PageSpeed. If you would prefer to use PageSpeed as a module for NGINX, see [this NGINX blog post](https://www.nginx.com/blog/optimize-website-google-pagespeed-dynamic-module-nginx-plus/) for instructions.
 
@@ -40,7 +38,7 @@ This guide will show how to compile both NGINX and PageSpeed. If you would prefe
 
 -  You will need root access to the system, or a user account with `sudo` privileges.
 
--  Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-  Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
 -  Update your system's packages.
 
@@ -74,9 +72,9 @@ configure arguments: --add-module=/root/incubator-pagespeed-ngx-latest-stable --
 
 The official [PageSpeed documentation](https://www.modpagespeed.com/doc/build_ngx_pagespeed_from_source) provides a bash script to automate the installation process.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The automated installation script will install several compilation tools needed to install PageSpeed. If you are using a production environment, ensure you uninstall any packages that are no longer needed after the installation has completed.
-{{</ note >}}
+{{< /note >}}
 
 1.  If you plan to serve your website using TLS, install the SSL libraries needed to compile the HTTPS module for NGINX:
 
@@ -302,7 +300,7 @@ server {
     }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `RewriteLevel OptimizeForBandwidth` is a [safer choice](https://www.modpagespeed.com/doc/optimize-for-bandwidth) than the default CoreFilters rewrite level.
 {{< /note >}}
 

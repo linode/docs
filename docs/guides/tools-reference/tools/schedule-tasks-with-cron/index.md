@@ -1,8 +1,5 @@
 ---
 slug: schedule-tasks-with-cron
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows how to automate a variety of tasks using Cron, a classic UNIX utility included in Linux distributions that runs tasks at specific times or intervals."
 keywords: ["cron", "crontab", "automation"]
 tags: ["automation","linux"]
@@ -12,10 +9,10 @@ modified: 2018-03-15
 modified_by:
   name: Linode
 published: 2009-12-15
-title: "Cron Jobs: Schedule Tasks for Certain Times or Intervals"
-h1_title: "Using Cron to Schedule Tasks for Certain Times or Intervals"
-enable_h1: true
+title: "Using Cron to Schedule Tasks for Certain Times or Intervals"
+title_meta: "Cron Jobs: Schedule Tasks for Certain Times or Intervals"
 image: schedule-tasks-with-cron.png
+authors: ["Linode"]
 ---
 
 ## What is Cron?
@@ -67,7 +64,7 @@ See [man crontab](https://linux.die.net/man/1/crontab) for more information abou
 
         crontab -e
 
-    {{< note >}} To change the text editor used, add the environment variable to your `~/.bashrc` file, exchanging `vim` for `nano`, or whatever other terminal-based editor you prefer.
+    {{< note respectIndent=false >}} To change the text editor used, add the environment variable to your `~/.bashrc` file, exchanging `vim` for `nano`, or whatever other terminal-based editor you prefer.
 
     export EDITOR=vim
 {{< /note >}}

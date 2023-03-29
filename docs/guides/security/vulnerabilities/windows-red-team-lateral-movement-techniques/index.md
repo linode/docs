@@ -1,8 +1,5 @@
 ---
 slug: windows-red-team-lateral-movement-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
 description: 'This guide covers the process of performing lateral movement on Windows systems.'
 keywords: ['security']
 tags: ['security']
@@ -11,10 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Windows Red Team Lateral Movement Techniques"
-h1_title: "Windows Red Team Lateral Movement Techniques"
-enable_h1: true
-contributor:
-  name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

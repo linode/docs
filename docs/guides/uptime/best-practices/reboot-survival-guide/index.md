@@ -1,8 +1,5 @@
 ---
 slug: reboot-survival-guide
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: "This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime."
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ published: 2015-02-27
 title: "Reboot Survival Guide: Recover After an Unexpected Shutdown"
 aliases: ['/uptime/reboot-survival-guide/','/uptime/best-practices/reboot-survival-guide/']
 image: reboot-survival-guide.png
+authors: ["Alex Fornuto"]
 ---
 
 Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.
@@ -27,7 +25,7 @@ The best way to know what occurs during a server reboot is to test for it. Durin
 
 In most cases a reboot is required when upgrading to a newer Linux kernel. By default, Linode configuration profiles are set to use the latest kernel available provided by Linode at each boot. If you've changed this option or are using a custom configuration, you're responsible for updating the kernel on your system.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode maintains an RSS feed and web page for cataloging current and deprecated Linux kernels. When the support status of a kernel changes, that change will always be recorded and be pushed out to RSS subscribers. See [Available Kernels](https://www.linode.com/kernels).
 {{< /note >}}
 
@@ -56,7 +54,7 @@ If you aren't implementing a system wide backups solution like Linode Backups, y
 
 For future reboots, ensure that any critical stack software is configured to start at boot. This differs depending on operating systems.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels [here](https://en.wikipedia.org/wiki/Runlevel).
 {{< /note >}}
 
@@ -158,7 +156,7 @@ This guide is a high-level overview, and does not discuss runlevels. Read more a
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/guides/using-the-lish-console/) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/products/compute/compute-instances/guides/lish/) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
@@ -172,13 +170,13 @@ Remember, if you use SSL certificates that require a passphrase, enter the passp
 
 The console does not display any characters (ex: **\***) as you enter your passphrase.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you use full-disk encryption, enter your password in the LISH console after a reboot.
 {{< /note >}}
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 
@@ -190,11 +188,11 @@ If you followed the [Creating a Firewall](/docs/guides/set-up-and-secure/#config
 
 If your system absolutely **cannot** afford any downtime, then scale the platform across multiple servers. Multi-server availability ensures that your service can remain live even if one of the servers goes down. The services and options for enabling highly available stacks are too numerous to detail here, but refer to these guides to get started with high availability:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.
 {{< /note >}}
 
- - [Linode NodeBalancers](/docs/platform/nodebalancer/)
+ - [Linode NodeBalancers](/docs/products/networking/nodebalancers/)
  - [Using Nginx for Proxy Services and Software Load Balancing](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)
  - [MySQL Master-Master Replication](/docs/guides/configure-master-master-mysql-database-replication/)
  - [MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
