@@ -3,7 +3,7 @@ slug: javascript-decode-base64-string-a-developers-guide
 description: 'Wondering how to encode and decode with base64 in Javascript? Follow these steps to learn how plus find the benefits and limitations of the base64 code.'
 keywords: ['javascript base 64 decode','encode string javascript','base64 js']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-03-04
+published: 2023-03-29
 modified_by:
   name: Linode
 title: "Javascript Decode Base64 String - A Developer’s Guide"
