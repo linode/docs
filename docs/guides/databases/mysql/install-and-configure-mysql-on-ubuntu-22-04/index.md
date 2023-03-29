@@ -1,24 +1,19 @@
 ---
 slug: install-and-configure-mysql-on-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows you how to install and configure MySQL server on Ubuntu 20.04 Linux.'
 keywords: ['Install Mysql ubuntu 22.04', 'Install Mysql server ubuntu', 'Install Mysql Linux', 'Configure Mysql']
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-07
+published: 2023-03-29
 modified_by:
   name: Linode
 title: "Install and Configure MySQL on Ubuntu 22.04 | Linode"
-h1_title: "How to Install and Configure MySQL on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: John Mueller
+title_meta: "How to Install and Configure MySQL on Ubuntu 22.04"
 external_resources:
 - '[MySQL vs MariaDB](https://blog.devart.com/mysql-vs-mariadb.html)'
 - '[MariaDB vs MySQL compatibility](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
 - '[Introduction to Uncomplicated Firewall](https://www.linux.com/training-tutorials/introduction-uncomplicated-firewall-ufw/)'
+authors: ["John Mueller"]
 ---
 
 ## How to Install and Configure MySQL on Ubuntu 22.04
