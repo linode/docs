@@ -8,7 +8,6 @@ modified_by:
   name: Linode
 title: "Javascript Decode Base64 String - A Developer’s Guide"
 title_meta: "How to Use Javascript Base 64 to Decode and Encode"
-enable_h1: true
 external_resources:
 - '[Wikipedia Base64 page](https://en.wikipedia.org/wiki/Base64)'
 - '[RFC 4648 for Base64](https://datatracker.ietf.org/doc/html/rfc4648)'
