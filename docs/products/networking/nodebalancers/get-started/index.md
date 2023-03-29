@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Get Started
 description: "Learn how to quickly start using a NodeBalancer, including advice on architecting your application and configuring the NodeBalancer"
 tab_group_main:
@@ -10,6 +7,7 @@ keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/nodebalancers/getting-started/','/platform/nodebalancer/getting-started-with-nodebalancers-new-manager/','/platform/nodebalancer/getting-started-with-nodebalancers/','/linode-platform/nodebalancer-howto/','/platform/nodebalancer/getting-started-with-nodebalancers-classic-manager/', '/guides/nodebalancer/getting-started-with-nodebalancers/','/guides/getting-started-with-nodebalancers/']
 published: 2022-10-07
+authors: ["Linode"]
 ---
 
 Nearly every production application can benefit from a load balancing solution like Linode's NodeBalancers. This guide covers how to get started with NodeBalancers, including how to architect your application, configure the NodeBalancer, and update the DNS.
@@ -45,8 +43,8 @@ Once your application has been deployed on multiple Compute Instances, you are r
 1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional ports can be added using the **Add another Configuration** button.
 
     {{< note >}}
-The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
-{{</ note >}}
+    The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/nodebalancers/guides/configure/) guide.
+    {{< /note >}}
 
     - **Port:** For load balancing a website, configure two ports: port 80 and port 443. Each of these ports can be configured separately. See [Configuration Options > Port](/docs/products/networking/nodebalancers/guides/configure/#port).
 
@@ -66,4 +64,4 @@ The following recommended parameters can be used for deploying a website. For ot
 
 ## Update the DNS
 
-After deploying your NodeBalancer and putting your application behind the NodeBalancer, the application can now be accessed using the NodeBalancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the NodeBalancer's IPv4 address and the *AAAA* record (if you're using one) should use the NodeBalancer's IPv6 address. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/#review-and-edit-a-nodebalancer) to view your NodeBalancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/guides/dns-manager/#edit-dns-records). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.
+After deploying your NodeBalancer and putting your application behind the NodeBalancer, the application can now be accessed using the NodeBalancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the NodeBalancer's IPv4 address and the *AAAA* record (if you're using one) should use the NodeBalancer's IPv6 address. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/#review-and-edit-a-nodebalancer) to view your NodeBalancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.

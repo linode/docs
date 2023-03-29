@@ -1,25 +1,20 @@
 ---
 slug: using-podman
-author:
-  name: Nathaniel Stickman
-  email: docs@linode.com
 description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
-og_description: "Podman has risen as a compelling alternative to Docker for deploying and managing containers. Podman stands out for its daemonless architecture, which gives it true rootless containers and heightened security. In this tutorial, find out all you need to get started installing and using Pdoman for running containers."
 keywords: ['what is podman','podman docker','podman tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-26
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Podman for Running Containers"
-h1_title: "How to Install Podman for Running Containers"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Install Podman for Running Containers"
+title_meta: "How to Install Podman for Running Containers"
 external_resources:
 - '[Podman: Getting Started with Podman](https://podman.io/getting-started/)'
 - '[Red Hat Developer: Podman Basics: Resources for Beginners and Experts](https://developers.redhat.com/articles/2022/05/02/podman-basics-resources-beginners-and-experts#)'
 - '[Red Hat Developer: Podman and Buildah for Docker Users](https://developers.redhat.com/blog/2019/02/21/podman-and-buildah-for-docker-users#)'
 - '[phoenixNAP: Install Podman on Ubuntu](https://phoenixnap.com/kb/install-podman-on-ubuntu)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Podman is an open source containerization tool. Like Docker, Podman is a solution for creating, running, and managing containers. But Podman goes beyond Docker, using a secure daemonless process to run containers in rootless mode.
@@ -30,9 +25,9 @@ In this tutorial, learn everything you need to install and start using Podman on
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -45,7 +40,7 @@ In this tutorial, learn everything you need to install and start using Podman on
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Podman
@@ -60,7 +55,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
             sudo apt install podman
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Podman is only available through the APT package manager for Debian 11 or Ubuntu 20.10 and later.
 {{< /note >}}
 

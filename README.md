@@ -12,7 +12,7 @@
 
 1. Fork and clone this repository.
 
-1. Download and install [Hugo version v0.104.3](https://github.com/gohugoio/hugo/releases/tag/v0.104.3). Installation instructions for different operating systems are available in the [Hugo documentation library](https://gohugo.io/getting-started/installing/).
+1. Download and install [Hugo version v0.105.0](https://github.com/gohugoio/hugo/releases/tag/v0.105.0). Installation instructions for different operating systems are available in the [Hugo documentation library](https://gohugo.io/getting-started/installing/).
 
 1. In your terminal, navigate into the cloned docs repository.
 

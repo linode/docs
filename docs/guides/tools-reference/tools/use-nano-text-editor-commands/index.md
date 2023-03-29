@@ -1,8 +1,5 @@
 ---
 slug: use-nano-text-editor-commands
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This tutorial teaches you how to install the Nano text editor and use it to create and edit files in Linux."
 keywords: ["nano", "text editor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +8,10 @@ modified: 2022-01-14
 modified_by:
   name: Linode
 published: 2011-11-08
-title: "How to Use Nano Text Editor Commands in Linux"
-h1_title: "Using Nano Text Editor Commands in Linux"
-enable_h1: true
+title: "Using Nano Text Editor Commands in Linux"
+title_meta: "How to Use Nano Text Editor Commands in Linux"
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 GNU nano is a popular command-line text editor that is included in most Linux distributions. The interface is comparable to GUI-based text editors, which makes nano a popular choice for those who find `vi` or `emacs` commands non-intuitive. This guide shows you how to use Nano Text Editor Commands in Linux.
@@ -55,9 +52,9 @@ A blank new file in the terminal similar to the following appears:
 
 You can make changes to the file using the Nano editor. You may exit the file by pressing *Ctrl + X*. It prompts you to save the file and name it before you exit.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Nano only prompts you if actual changes were made to the file. If you didn't make any changes, you simply exit the editor and you get no prompts.
-{{</ note >}}
+{{< /note >}}
 
 When prompted, select press *Y* and then write the name of the file.
 

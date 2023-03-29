@@ -1,12 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Manage Firewall Rules"
 description: "How to add rules to a Linode Cloud Firewall."
 aliases: ['/products/networking/cloud-firewall/guides/add-rules/','/products/networking/cloud-firewall/guides/edit-rules/','/products/networking/cloud-firewall/guides/delete-rules/']
 published: 2020-11-10
 modified: 2022-08-11
+authors: ["Linode"]
 ---
 
 A Cloud Firewall can be configured with both *Inbound* and *Outbound* rules.
@@ -58,19 +56,19 @@ Rules are separated into *inbound* and *outbound* sections.
     | **Action** | Choose whether this rule will be to allow or drop traffic. The action defined in specific rules will take precedence over the default inbound and outbound traffic policy. *Required* |
 
     {{< note >}}
-When applying individual IP addresses or IP ranges to either the `source` or `destination` field, the addresses must always be valid and formatted correctly. IP address ranges are formatted differently than port number ranges. Instead of using a hyphenated range of numbers, [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) is used to designate the network prefix and the number of bits in the prefix. The following are examples of valid IPv4 and IPv6 ranges:
+    When applying individual IP addresses or IP ranges to either the `source` or `destination` field, the addresses must always be valid and formatted correctly. IP address ranges are formatted differently than port number ranges. Instead of using a hyphenated range of numbers, [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) is used to designate the network prefix and the number of bits in the prefix. The following are examples of valid IPv4 and IPv6 ranges:
 
-- `192.0.2.0/24`
-- `198.51.0.0/16`
-- `2001:db8:1234::/48`
+    - `192.0.2.0/24`
+    - `198.51.0.0/16`
+    - `2001:db8:1234::/48`
 
-In the first example above, using a range of `192.0.2.0/24` applies the rule to all IP addresses from 192.0.2.1 through 192.0.2.254.
-{{</ note >}}
+    In the first example above, using a range of `192.0.2.0/24` applies the rule to all IP addresses from 192.0.2.1 through 192.0.2.254.
+    {{< /note >}}
 
 
-    {{< caution >}}
-As of the time of this writing, if an IP address or range is invalid, users will be unable to **Save Changes** after reviewing new firewall rules, and no error message will appear. Users should ensure that all IP addresses and ranges are valid and formatted correctly should they encounter this issue.
-{{</ caution >}}
+    {{< note type="alert" >}}
+    As of the time of this writing, if an IP address or range is invalid, users will be unable to **Save Changes** after reviewing new firewall rules, and no error message will appear. Users should ensure that all IP addresses and ranges are valid and formatted correctly should they encounter this issue.
+    {{< /note >}}
 
 1. Click on **Add Rule** to add the new rule to this Firewall. If you would like to add any additional rules, repeat the process outlined in this section.
 
@@ -81,8 +79,8 @@ As of the time of this writing, if an IP address or range is invalid, users will
 1. When you are done reviewing the new Firewall rules, click on the **Save Changes** button on the **Rules** page.
 
     {{< note >}}
-Any newly added rules do not take effect until you **Save Changes** to the Firewall.
-{{</ note >}}
+    Any newly added rules do not take effect until you **Save Changes** to the Firewall.
+    {{< /note >}}
 
     ![Apply your changes to the Firewall.](save-changes-firewall.png "Apply your changes to the Firewall.")
 
@@ -120,5 +118,5 @@ Follow the steps in this section to edit predefined and custom Firewall Rules.
 1. When you are done, click on the **Apply Changes** button on the **Rules** page.
 
     {{< note >}}
-Any rule deletion(s) does not take effect until you **Apply Changes** to the Firewall.
-    {{</ note >}}
+    Any rule deletion(s) does not take effect until you **Apply Changes** to the Firewall.
+    {{< /note >}}

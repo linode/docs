@@ -91,6 +91,23 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   overflow: inherit;
 }
 
+/*  Chroma overrides. Keep them here as chroma.css is auto generated.  */
+.chroma .lntd:first-of-type {
+  border-right: 1px #dedee3 solid;
+  text-align: center;
+  margin: 0;
+}
+
+.chroma .lnt {
+  height: 100%;
+  display: block;
+}
+
+.chroma .hl {
+  display: block;
+  width: 100%;
+}
+
 .content .file tbody tr:first-child {
   border: none;
 }
@@ -155,8 +172,17 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   @apply bg-gray-300;
 }
 
-.chroma .lntable tbody td:first-child {
-  padding-left: 0;
+.content .chroma .lntable {
+  @apply w-full;
+}
+
+.chroma .lntd pre {
+  @apply px-0;
+}
+
+.chroma .line,
+.chroma .lnt {
+  @apply px-5;
 }
 
 .content img.marquee-img {
@@ -196,7 +222,6 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     @apply rounded-lg;
   }
 }
-
 
 /*
 Styles for use with API documentation

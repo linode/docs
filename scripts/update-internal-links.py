@@ -28,11 +28,11 @@ def main():
     path_to_guides = docs_path + "docs/guides/"
     path_to_product_docs = docs_path + "docs/products/"
 
-    build_list_of_good_links(path_to_guides)
-    build_list_of_good_links(path_to_product_docs)
+    build_list_of_aliases(path_to_guides)
+    build_list_of_aliases(path_to_product_docs)
 
-    fix_existing_old_links(path_to_guides)
-    fix_existing_old_links(path_to_product_docs)
+    replace_links_to_aliases(path_to_guides)
+    replace_links_to_aliases(path_to_product_docs)
 
     print("Aliases: " + str(len(aliases)))
     print("Duplicate aliases: " + str(len(duplicate_aliases)))
@@ -40,7 +40,7 @@ def main():
     print("Total links analyzed: " + str(link_count))
     print("Total links fixed: " + str(fixed_link_count))
 
-def build_list_of_good_links(path_to_audit):
+def build_list_of_aliases(path_to_audit):
     """
     Build a list of all aliases and map them to their current link
 
@@ -61,16 +61,19 @@ def build_list_of_good_links(path_to_audit):
                 try:
                     # Loads the entire guide (including front matter)
                     guide = frontmatter.load(file_path)
+
                     # Creates the canonical (current) link for the guide
-                    if "/docs/guides/" in file_path:
+                    if "docs/guides/" in file_path:
                         canonical_link = "/docs/guides/" + guide['slug'] + "/"
-                    elif "/docs/products/" in file_path:
-                        canonical_link = file_path.replace('../docs/','/docs/')
+                    elif "docs/products/" in file_path:
+                        canonical_link = file_path.replace('../docs/','docs/')
+                        canonical_link = file_path.replace('docs/','/docs/')
                         canonical_link = canonical_link.replace('/index.md','/')
                         canonical_link = canonical_link.replace('/_index.md','/')
                     else:
                         # Go to the next file if it is not located in /guides/ or /products/
                         file.next()
+
                     # Updates the aliases dictionary with all aliases in the guide
                     # and maps them to the guide's canonical link
                     for alias in guide['aliases']:
@@ -95,7 +98,7 @@ def build_list_of_good_links(path_to_audit):
                 except:
                     continue
 
-def fix_existing_old_links(path_to_audit):
+def replace_links_to_aliases(path_to_audit):
     """
     Find all markdown links, identify if they are an old link (alias),
     and replace them with the current link.
@@ -125,20 +128,26 @@ def fix_existing_old_links(path_to_audit):
                     # Find and iterate through all markdown links to other guides
                     for match in re.finditer(link_pattern, line):
                         link_count += 1
-                        # Remove the title, brackets, and parenthesis from the markdown link
                         link = match.group()
-                        link = link[link.find("(")+1:link.find(")")]
+                        # Remove the title, brackets, parenthesis, and anchors from the markdown link
+                        if "#" in link:
+                            link = link[link.find("(")+1:link.find("#")]
+                        else:
+                            link = link[link.find("(")+1:link.find(")")]
                         # Remove /docs/ from the link so its formatted the same as aliases
                         link_as_alias = link.replace('/docs/','/')
+
+                        if not link_as_alias.endswith('/'):
+                            link_as_alias = link_as_alias + '/'
                         # Searches the aliases dictionary for the canonical link
                         link_canonical = aliases.get(link_as_alias)
                         # Checks if the link matches an alias (is not current)
                         if link_canonical is not None:
                             # Checks if the link matches a duplicate
                             if duplicate_aliases.get(link_as_alias):
+                                print("SKIPPED LINK | Points to duplicate aliases: " + link)
                                 with open(output_duplicates_filename, "w") as f:
                                     f.write(link_as_alias)
-                                print("SKIPPED LINK | Points to duplicate aliases: " + link)
                             else:
                                 print("UPDATED LINK | " + file_path + " | Changed " + link + " to " + link_canonical)
                                 fixed_link_count += 1

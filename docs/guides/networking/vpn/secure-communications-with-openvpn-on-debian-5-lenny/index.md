@@ -1,9 +1,6 @@
 ---
 slug: secure-communications-with-openvpn-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a Debian 5 (Lenny) Linode.'
 keywords: ["openvpn", "networking", "vpn", "debian", "lenny"]
 tags: ["networking","security","vpn","debian"]
@@ -19,6 +16,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tun
 
 For many private networking tasks, we urge users to consider the many capabilities of the OpenSSH package, which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 
-Before installing OpenVPN, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/guides/set-up-and-secure/) article as well.
+Before installing OpenVPN, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/products/compute/compute-instances/guides/set-up-and-secure/) article as well.
 
 ## Install OpenVPN
 
