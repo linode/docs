@@ -1,19 +1,14 @@
 ---
 slug: subversion-svn-tutorial
-author:
-  name: Cameron Laird
 description: 'This guide shows you how to install the Subversion client and how to use the most essential SVN commands. These commands include checking out a branch and commiting your working copy changes.'
 keywords: ['svn tutorial, svn commands']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-14
 modified_by:
   name: Linode
-title: "SVN Tutorial: Installing and Using the Subversion CLI Client"
-h1_title: "How to Install and Use the Subversion CLI Client"
-enable_h1: true
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+title: "Install and Use the Subversion CLI Client"
+title_meta: "How to Install and Use the Subversion CLI Client"
+authors: ["Cameron Laird"]
 ---
 
 Subversion (SVN) is a *centralized version control system* (VCS) that can be used to collaborate on the development of software projects. A centralized version control system uses a single remote instance of a project to stores its versioned data. This instance can also be referred to as a *repository*.
@@ -22,9 +17,11 @@ Project collaborators make local shallow copies of the repository and make chang
 
 Users who want to collaborate on a Subversion project must install a Subversion client on their local machine. You use the local Subversion client to manage your changes and "publish" them to the project repository. This guide shows you how to install the Subversion CLI client on an Ubuntu system and provides commands to get you started collaborating on a Subversion project.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 See our [How to Install Apache Subversion on Ubuntu 20.04](/docs/guides/install-apache-subversion-ubuntu/) guide to learn how to install and configure a Subversion server. A Subversion server can store and version control multiple projects.
-{{</ note >}}
+
+If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
+{{< /note >}}
 
 ## Install the Subversion Client on Ubuntu
 
@@ -162,7 +159,7 @@ The status command displays information about any modified, added, or deleted fi
 | Status Code | Meaning |
 | ----------- | ------- |
 | `?` | The file, directory, or symbolic link item is not under version control. |
-| `C` | The file contains conflicts. This occurs when an an update is performed locally and the changes received from the Subversion repository contains overlapping changes. You must address the conflict before you can commit your changes to the repository. |
+| `C` | The file contains conflicts. This occurs when an update is performed locally and the changes received from the Subversion repository contains overlapping changes. You must address the conflict before you can commit your changes to the repository. |
 | `D` | The file, directory, or symbolic link is scheduled for deletion from the repository. |
 | `M` | The file has been modified. |
 

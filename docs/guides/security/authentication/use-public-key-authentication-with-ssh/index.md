@@ -1,70 +1,67 @@
 ---
 slug: use-public-key-authentication-with-ssh
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Understand SSH Public Key Authentication & learn how to use SSH public key authentication on Linux, macOS, and Windows. ✓ Click to read more now!"
 keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/']
+bundles: ['debian-security', 'centos-security', 'network-security']
 modified_by:
   name: Linode
 published: 2011-04-05
-title: "Creating an SSH Key Pair and Configuring Public Key Authentication"
-h1_title: "Creating an SSH Key Pair and Configuring Public Key Authentication on a Server"
-enable_h1: true
+modified: 2022-06-17
+title: "Using SSH Public Key Authentication on Linux, macOS, and Windows"
+title_meta: "How to Use SSH Public Key Authentication"
 image: use_public_key_authentication_with_ssh.png
+authors: ["Linode"]
 ---
 
-Password authentication is the default method most SSH (Secure Shell) clients use to authenticate with remote servers, but it suffers from potential security vulnerabilities like brute-force login attempts. An alternative to password authentication is using [*public key authentication*](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) with SSH, in which you generate and store on your computer a pair of cryptographic keys and then configure your server to recognize and accept your keys. Using key-based authentication offers a range of benefits:
+[Public key authentication](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) with SSH (Secure Shell) is a method in which you generate and store on your computer a pair of cryptographic keys and then configure your server to recognize and accept your keys. Password authentication is the default method most SSH (Secure Shell) clients use to authenticate with remote servers, but it suffers from potential security vulnerabilities like brute-force login attempts. Using key-based authentication offers a range of benefits:
 
--   Key-based login is not a major target for brute-force hacking attacks.
+-  Key-based login is not a major target for brute-force hacking attacks.
 
--   If a server that uses SSH keys is compromised by a hacker, no authorization credentials are at risk of being exposed.
+-  If a server that uses SSH keys is compromised by a hacker, no authorization credentials are at risk of being exposed.
 
--   Because a password isn't required at login, you can log into servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/applications/configuration-management/running-ansible-playbooks/), and you can run those updates without having to be physically present.
+-  Because a password isn't required at login, you can log into servers from within scripts or automation tools that you need to run unattended. For example, you can set up periodic updates for your servers with a configuration management tool like [Ansible](/docs/guides/running-ansible-playbooks/), and you can run those updates without having to be physically present.
 
-This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with your Linode.
+This guide explains how the SSH key login scheme works, how to generate an SSH key, and how to use those keys with a Linode Linux server.
 
-{{< note >}}
-If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) guide.
+{{< note respectIndent=false >}}
+If you're unfamiliar with SSH connections, review the [Getting Started with Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) guide.
 {{< /note >}}
 
-## How SSH Public Keys Work
+## How Does SSH Public Key Authentication Work?
 
 SSH keys are generated in pairs and stored in plain-text files. The *key pair* (or *keypair*) consists of two parts:
 
 -   A **private key**, usually named `id_rsa`. The private key is stored on your local computer and should be kept secure, with permissions set so that no other users on your computer can read the file.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not share your private key with others.
-{{< /caution >}}
+{{< /note >}}
 
 -   A **public key**, usually named `id_rsa.pub`. The public key is placed on the server you intend to log in to. You can freely share your public key with others. If someone else adds your public key to their server, you will be able to log in to that server.
 
 When a site or service asks for your SSH key, they are referring to your SSH public key (`id_rsa.pub`). For instance, services like [GitHub](https://github.com) and [Gitlab](https://gitlab.com) allow you to place your SSH public key on their servers to streamline the process of pushing code changes to remote repositories.
 
-## How Does SSH Public Key Authentication Work?
-
-In the previous section, we saw that we have a public key and a private key. We understand that they play an important role in enabling secure access. But how? The best way to understand them is to understand that the following components in this authentication system are mathematically related to each other:
+A public key and a private key play an important role in enabling secure access. But how? The best way to understand them is to understand that the following components in this authentication system are mathematically related to each other:
 
 1. Public key
 2. Private key
 3. Authentication algorithm
 
-If you use your Public key to encrypt something, then only your private key can decrypt it. Similarly, once you encrypt something using your private key, it can only be decrypted by your public key. And to enable secure access between servers/machines, we share our public key with the other machine to enable secure access.
+If you use your public key to encrypt something, then only your private key can decrypt it. Similarly, once you encrypt something using your private key, it can only be decrypted by your public key. And to enable secure access between servers/machines, we share our public key with the other machine to enable secure access.
 
 But to carry this encryption and decryption, there is an algorithm that runs in the background and keeps SSH secure. Here’s how it works:
 
 1. **Signed communication**: Any message that goes out is signed using your private keys.
 2. **Verification of communication**: Your server has a public key from the sender stored. A signed message is verified by using this public key to decrypt the message.
 
-When we sign a message, we allow others to decrypt the message as well. But when the receiver decrypts this message, they can safely and securely validate that the communication is in fact from you. To match these keys and validate, we use an algorithm like Diffie-Hellman.
+When you sign a message, you allow others to decrypt the message as well. But when the receiver decrypts this message, they can safely and securely validate that the communication is in fact from you. To match these keys and validate, you use an algorithm like [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange).
 
-### The authorized_keys File
+### The Authorized Keys File
 
-In order for your Linode to recognize and accept your key pair, you must upload your public key to your server. More specifically, you must upload your public key to the home directory of the user you would like to log in as. If you would like to log in to more than one user on the server using your key pair, you must add your public key to each of those users.
+In order for your Linux server to recognize and accept your key pair, you must upload your public key to your server. More specifically, you must upload your public key to the home directory of the user you would like to log in as. If you would like to log in to more than one user on the server using your key pair, you must add your public key to each of those users.
 
 To set up SSH key authentication for one of your server's users, add your public key to a new line inside the user's `authorized_keys` file. This file is stored inside a directory named `.ssh/` under the user's home folder. A user's `authorized_keys` file can store more than one public key, and each public key is listed on its own line. If your file contains more than one public key, then the owner of each key listed can log in as that user.
 
@@ -84,37 +81,21 @@ You can optionally provide an additional level of security for your SSH private 
 
 If you'd like to set up your logins so that they require no user input, then creating a passphrase might not be desirable. Nevertheless, using a passphrase to protect your private key is strongly recommended.
 
-## Is it Safe to Share Public SSH Key?
+## Public Key Authentication on Linux and macOS
 
-Yes, it is safe to share your public SSH key with others. Public keys usually stored as `id_rsa.pub` are used to log into other servers. If anyone else has your public SSH keys on their server and they add them, you can log into their servers.
-
-{{< caution >}}
-Do not confuse **private** SSH keys with **public** SSH keys. **Private** SSH keys should be kept safe and secure, unlike **public** SSH keys.
-{{</ caution >}}
-
-## How Secure is SSH Key Authentication?
-
-SSH key authentication is very secure. In addition to allowing secure remote authentication, it also brings its ability to withstand brute force attacks. Typically, passwords sent over any network can be vulnerable to these brute force attacks. With SSH key authentication, signed messages are exchanged using SSH keys that are up to 4096 bits in length, which is equivalent to a 20 character password.
-
-SSH keys are machine-generated, and not human-generated. Human bias towards certain strings and numbers has proven to increase vulnerability in secure systems as opposed to machine-generated keys.
-
-What makes SSH even more secure is the fact that you can easily add a [passphrase](#ssh-private-key-passphrases) on top of your SSH key authentication. This is also commonly referred to as multi-factor authentication or MFA.
-
-## Public Key Authentication on Linux And macOS
-
-### Generate an SSH Key Pair on Linux And macOS
+### Generate an SSH Key Pair on Linux and macOS
 
 Perform the steps in this section on your local machine.
 
 1.  Create a new key pair.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 **This command will overwrite an existing RSA key pair, potentially locking you out of other systems.**
 
 If you've already created a key pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 
-If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/networking/using-the-linode-shell-lish) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
-{{< /caution >}}
+If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/products/compute/compute-instances/guides/lish/) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
+{{< /note >}}
 
         ssh-keygen -b 4096
 
@@ -165,9 +146,9 @@ your_username@192.0.2.0's password:
 
 Secure Copy (`scp`) is a tool that copies files from a local computer to a remote server over SSH:
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 These instructions will overwrite any existing contents of the `authorized_keys` file on your server. If you have already set up other public keys on your server, use the [`ssh-copy-id` command](#using-ssh-copy-id) or [enter your key manually](#manually-copy-your-public-key).
-{{< /caution >}}
+{{< /note >}}
 
 1.  Connect to your server at its IP address via SSH with the user you would like to add your key to:
 
@@ -219,7 +200,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyVGaw1PuEl98f4/7Kq3O9ZIvDw2OFOSXAFVqilSFN
 
 1.  Save and close the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you initially logged into the server as `root` but edited the `authorized_keys` file of another user, then the `.ssh/` folder and `authorized_keys` file of that user may be owned by `root`. Set that other user as the files' owner:
 
         chown -R your_username:your_username /home/your_username/.ssh
@@ -227,19 +208,19 @@ If you initially logged into the server as `root` but edited the `authorized_key
 
 1.  [Verify that you can log in](#connect-to-the-remote-server) to the server with your key.
 
-### Connect to the Remote Server
+### Use Your Private Key to Connect to the Remote Server
 
 1.  SSH into the server from your local machine:
 
         ssh your_username@192.0.2.0
 
-1.  If you choose to use a passphrase when creating your SSH key, you will be prompted to enter it when you attempt to log in. Depending on your desktop environment, a window may appear:
+1.  If you chose to use a passphrase when creating your SSH key, you are prompted to enter it when you attempt to log in. Depending on your desktop environment, a window may appear:
 
     ![Enter your SSH passphrase in the password field.](1461-SSH-Passphrase.png "A prompt for the password to unlock the key.")
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not allow the local machine to remember the passphrase in its keychain unless you are on a private computer which you trust.
-{{< /caution >}}
+{{< /note >}}
 
     You may also see the passphrase prompt at your command line:
 
@@ -249,9 +230,9 @@ Enter passphrase for key '/root/.ssh/id_rsa':
 
 1.  Enter your passphrase. You should see the connection established in the local terminal.
 
-## Public Key Authentication on Windows
+## Public Key Authentication with PuTTY on Windows
 
-The following instructions use the [PuTTY](https://www.putty.org) software to connect over SSH, but [other options](/docs/networking/ssh/using-ssh-on-windows/) are available on Windows too.
+The following instructions use the [PuTTY](https://www.putty.org) software to connect over SSH, but [other options](/docs/guides/connect-to-server-over-ssh-on-windows/) are available on Windows too.
 
 ### Generate a Key Pair with PuTTY
 
@@ -277,7 +258,7 @@ The following instructions use the [PuTTY](https://www.putty.org) software to co
 
 1.  Enter a passphrase for the private key in the **Key passphrase** and **Confirm passphrase** text fields:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 **Important:** Make a note of your passphrase for later use.
 {{< /note >}}
 
@@ -314,9 +295,9 @@ The following instructions use the [PuTTY](https://www.putty.org) software to co
 
 Uploading a public key from Windows can also be done using [WinSCP](http://winscp.net/):
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 These instructions will overwrite any existing contents of the `authorized_keys` file on your server. If you have already set up other public keys on your server, use the [PuTTY](#manually-copy-the-ssh-key-with-putty) instructions instead.
-{{< /caution >}}
+{{< /note >}}
 
 1.  In the login window, enter your Linode's public IP address as the hostname, the user you would like to add your key to, and your user's password. Click **Login** to connect.
 
@@ -332,34 +313,46 @@ Start PuTTY and **Load** your saved session. You are be prompted to enter your s
 
 ## Upload Your SSH Key to Linode Cloud Manager
 
-It is possible to provision each new Linode you create with an SSH public key automatically through the [Cloud Manager](https://cloud.linode.com).
+To use your SSH key when deploying new Linodes, you must first upload it to your account. This can be done through the Cloud Manager by following the [Manage SSH Keys > Add a Public Key](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/#add-a-public-key) guide. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys).
 
-1.  Log in to the [Cloud Manager](https://cloud.linode.com).
+## Is it Safe to Share Public SSH Key?
 
-1.  Click on your username or profile image at the top bar of the page. Then click on **SSH Keys** in the dropdown menu that appears:
+Yes, it is safe to share your public SSH key with others. Public keys usually stored as `id_rsa.pub` are used to log into other servers. If anyone else has your public SSH keys on their server and they add them, you can log into their servers.
 
-    ![My Profile menu](ssh-key-my-profile.png "Click on your username, and then select 'SSH Keys'")
+{{< note type="alert" respectIndent=false >}}
+Do not confuse **private** SSH keys with **public** SSH keys. **Private** SSH keys should be kept safe and secure, unlike **public** SSH keys.
+{{< /note >}}
 
-1.  From the SSH Keys page, click **Add a SSH Key**:
+## How Secure is SSH Key Authentication?
 
-    ![SSH Keys tab](ssh-key-my-keys.png "Click **Add a SSH Key**")
+SSH key authentication is very secure. In addition to allowing secure remote authentication, it also brings its ability to withstand brute force attacks. Typically, passwords sent over any network can be vulnerable to these brute force attacks. With SSH key authentication, signed messages are exchanged using SSH keys that are up to 4096 bits in length, which is equivalent to a 20 character password.
 
-1.  Create a label for your key, then paste in the contents of your **public** SSH key (`id_rsa.pub`):
+SSH keys are machine-generated, and not human-generated. Human bias towards certain strings and numbers has proven to increase vulnerability in secure systems as opposed to machine-generated keys.
 
-    ![Add SSH Key form](ssh-key-new-key.png "Create a label for your key, then paste in the contents of your public SSH key")
+What makes SSH even more secure is the fact that you can easily add a [passphrase](#ssh-private-key-passphrases) on top of your SSH key authentication. This is also commonly referred to as multi-factor authentication or MFA.
 
-1.  Click **Add Key**.
+## Retrieve Your Public Key from Your Private Key
 
-1.  When you next create a Linode you are given the opportunity to include your SSH key in the Linode's creation. This key is added to the root user of the new Linode.
+You can regenerate your public key as long as you have access to your private key. To retrieve your public key from your private key, use the command shown below on the system that stores your private key. Replace `/home/your_username/id_rsa` with your own private key's path.
 
-    In the **Create Linode** form, select the SSH key to include. This field appears below the **Root Password** field:
+    ssh-keygen -y -f /home/example_user/.ssh/id_rsa
 
-    ![SSH Keys field in the Create Linode form](ssh-key-new-linode.png "Include your SSH key when creating a new Linode")
+Issuing the previous command generates the public key and it is displayed as output:
+
+{{< output >}}
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8r0+yVFLxaxo0a0BPmcq8jR4PPxsK06bLidEoVFpByeL5Iwvjwkan26+N+fBxLE9iyzlxHqGWyXyY+NVdQMamcCfN+v1zwqQpcV2PtI9yTqDY42VqBjPJVFvC+yIsTEZbIyebCHCvZmAmNbT9IqHr4Cgr0UCIm9nJJOB2PmmHGi66tMIadwfMBP9z21bB1zPZkvFSG47r265W7hPhb5CKpu5zsDUYzIAEGjkHeioTyJAt8DTAmtKCh2pMBPOigPIRoLmOsvC+RVsx11scnL8Cny95Vp2PQYJSaCeFlgUfVTcch00tjE7cUR2jeAy2Q0ZeosQsdLFTUO+tTri2TpHuXyNfUdhliBznExCWaiQNoUdB1twbJoAxf1W/KhZNbKfqEg8N5/4Qu7QQfyR1LKDAeWpsqdF8Q+lCaIFvE859jr3KhBGZSSi6XL5D7xRd1IpSmO5E2tsD5HsncfvKV07D9Ipa2BGRAXzn9iL4Gf3Q2ug6N6/9unXNh6NF0NjfgreqK1a27WGaO5CjBZ2r20M34lrisKiFepcqg7B4MXPlwcqbGTfe9LKTc6Tw57jrCLSArNN2Ip8CpI8IY6m2U0jfPyaqCH9ZjhHUr9NdSzJuXI7+Rc9qXU4AzJ7uD8LO0GjQ== example_user@192.0.2.0
+{{</ output >}}
+
+Copy the public key to a new file named `id_rsa.pub` in your home folder's `.ssh` directory (i.e `/home/example_user/.ssh/id_rsa.pub`). You can also copy the public key to a remote server, if needed. See this guide's [Upload Your Public Key](/docs/guides/use-public-key-authentication-with-ssh/#upload-your-public-key) section for more details.
+
+## Disable Password Authentication
+
+The SSH daemon on a Linux server allows you to configure and fine-tune its behavior and security settings. If you have set up SSH keys for all users who need to authenticate to a server, you can disable password authentication in order to further secure the server. While this is a recommended step to take when hardening your server, prior to disabling password authentication, you should make sure that you can reliably access your server using SSH key-pair authentication. To learn how to disable password authentication on a Linux server, see the [SSH Daemon Options](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 ## Troubleshooting
 
-If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/troubleshooting/troubleshooting-ssh/) guide for troubleshooting help.
+If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide for troubleshooting help.
 
 ## Next Steps
 
-After you set up your SSH keys and confirm they are working as expected, review our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.
+After you set up your SSH keys and confirm they are working as expected, review our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) guide for instructions on disabling password authentication for your server.

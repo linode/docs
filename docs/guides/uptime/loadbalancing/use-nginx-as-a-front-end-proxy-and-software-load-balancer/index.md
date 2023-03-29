@@ -1,8 +1,5 @@
 ---
 slug: use-nginx-as-a-front-end-proxy-and-software-load-balancer
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'NGINX web server can function as a capable load balancer in addition to serving static and dynamic content. This guide shows how to use it as a front-end proxy as well.'
 keywords: ["apache", "nginx", "proxy", "load balancer", "load balancing", "web server", "http", "use nginx as proxy", "use nginx as load-balancer", "front-end proxy", "cluster"]
 tags: ["nginx", "proxy"]
@@ -16,15 +13,16 @@ title: 'Use NGINX as a Front-end Proxy and Software Load Balancer'
 external_resources:
  - '[NGINX Proxy Module](http://wiki.nginx.org/NginxHttpProxyModule)'
  - '[HTTP Upstream Module](http://wiki.nginx.org/NginxHttpUpstreamModule)'
- - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[NGINX Configuration](/docs/guides/how-to-configure-nginx/)'
 dedicated_cpu_link: true
+authors: ["Linode"]
 ---
 
 The NGINX web server can act as a very capable software load balancer, in addition to its more traditional roles serving static content over HTTP and dynamic content using FastCGI handlers for scripts. Because NGINX uses a non-threaded, event-driven architecture, it is able to outperform web servers like Apache. This is particularly true in deployments that receive heavy loads.
 
 ![Use NGINX as a Front-end Proxy and Software Load Balancer](use_nginx_as_a_frontend_proxy_and_software_load_balancer.png "Use Nginx as a Front-end Proxy and Software Load Balancer")
 
-Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/development/frameworks/deploy-smalltalk-applications-with-seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using NGINX as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
+Using a proxy is helpful when the demands of serving a single website outgrow the capabilities of a single machine. Additionally, there are some web frameworks, like [Seaside](/docs/guides/deploy-smalltalk-applications-with-seaside/) and Ruby On Rails's Mongrel server, that deploy applications on framework-specific web servers. While these single-purpose servers provide powerful application services, they are not suitable for hosting entire applications. In these cases, using NGINX as a front-end proxy to pass only the essential requests to the application server is a viable means of unifying dynamic content with static content and providing a stable production environment.
 
 This document provides an overview of using NGINX as a front-end proxy server for other HTTP servers, and as a software load balancer to distribute traffic across a cluster of machines providing HTTP resources. For an introductory guide to configuring NGINX, please see our [Basic NGINX Configuration](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/) guide. If you want a simple NGINX deployment with content that uses PHP or Perl scripts, consider following one of our [Installing NGINX](/docs/web-servers/nginx/) guides.
 
@@ -32,11 +30,11 @@ This document provides an overview of using NGINX as a front-end proxy server fo
 
 Ensure that you have completed the following:
 
--   Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+-   Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 -   Install the [NGINX server](/docs/web-servers/nginx/).
--   Familiarize yourself with [Basic NGINX Configuration](/docs/web-servers/nginx/how-to-configure-nginx/).
+-   Familiarize yourself with [Basic NGINX Configuration](/docs/guides/how-to-configure-nginx/).
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/tools-reference/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [Administration Basics](/docs/tools-reference/linux-system-administration-basics/) guide.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux basics](/docs/guides/introduction-to-linux-concepts/) guide, [Beginner's Guide](/docs/products/compute/compute-instances/faqs/) and [Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 ## Front-End Proxy Services with NGINX: How It Works
 
@@ -50,7 +48,7 @@ When a request reaches the NGINX front-end proxy server, here's an overview of t
 
 In this section, you'll configure Apache to listen on an alternate port so it can respond to the NGINX front end.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide assumes you are using Apache 2.4. Some path names will be slightly different if you are using an older version.
 {{< /note >}}
 
@@ -283,7 +281,7 @@ upstream appcluster {
 
 Here, the `ip_hash` directive causes NGINX to attempt to match requests originating from a single IP address with the same back-end component. If a component server is unreachable, NGINX will route those connections to an alternate component.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If a server needs to be taken offline for an extended period of time, append the `down` argument, as shown in the entry for `galloway.example.com:8801`. This will prevent missed connections from attempting to hit a component of the server which is down.
 {{< /note >}}
 

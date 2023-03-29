@@ -1,8 +1,5 @@
 ---
 slug: check-linux-ports-in-use
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
 description: "Tools like netstat, ss, & lsof can help you find which ports are in use on your Linux system. Use this guide for an introduction to Linux tools. ✓ Read now!"
 keywords: ['linux ports in use']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +8,9 @@ modified: 2022-01-14
 tags: ["networking","linux"]
 modified_by:
   name: Linode
-title: "Check Open and Listening Ports on Linux Using netstat and ss"
-h1_title: "Checking Open and Listening Ports on Linux Using netstat and ss"
-enable_h1: true
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+title: "Checking Open and Listening Ports on Linux Using netstat and ss"
+title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
+authors: ["Martin Heller"]
 ---
 
 One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use with links to guides that dive deeper into each tool.
@@ -67,7 +61,7 @@ To learn how to install netstat, interpret its output, and view common command l
 
 ### Using ss
 
-Another way to have Linux check ports is via the [**ss**](https://www.linode.com/docs/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
+Another way to have Linux check ports is via the [**ss**](/docs/guides/ss/) tool. `ss` was created to improve upon netstat and provides more functionality. It allows you to monitor TCP, UDP, and UNIX sockets. A socket enables programs to communicate with each other across a network and is comprised of an IP address and a port number.
 
 Running the `ss` with no options displays TCP, UDP, and UNIX sockets. Similar to netstat, this unrestricted list can get quite big on busy machines, so it is useful to restrict the ss command's output by using command-line options. For example, to view all listening and non-listening TCP sockets issue the following command:
 

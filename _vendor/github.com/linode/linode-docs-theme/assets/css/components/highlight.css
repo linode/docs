@@ -6,5 +6,26 @@
   overflow: auto;
 }
 
-.highlight .chroma .lntd code {
+.highlight .chroma .lntd {
+  padding: 0;
+}
+
+.highlight .chroma .lntd:nth-child(2) {
+  width: 100%;
+}
+
+.highlight .chroma pre,
+.highlight .chroma code,
+.highlight .chroma .lnt {
+  width: inherit;
+}
+
+/* Remove any left padding when the highlighted code is wrapped directly in a pre code block. */
+.highlight .chroma .line {
+  padding-left: 0;
+}
+
+/* Preserve left padding when inside a line number table. */
+.highlight .chroma td .line {
+  padding-left: 1.25rem;
 }

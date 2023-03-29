@@ -1,44 +1,38 @@
 ---
 slug: install-an-odoo-13-stack-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
-og_description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
 keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
-tags: ["debian", "postgresql", "database", "cms"]
+tags: ["debian", "postgresql", "database", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-17
 modified: 2020-09-17
 modified_by:
   name: Linode
-title: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
-h1_title: Installing an Odoo 13 Stack on Ubuntu 18.04
+title: Installing an Odoo 13 Stack on Ubuntu 18.04
+title_meta: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 image: InstallOdoo13Stack_Ubuntu1804.png
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 aliases: ['/websites/erp/install-an-odoo-13-stack-on-ubuntu-18-04/','/websites/cms/install-an-odoo-13-stack-on-ubuntu-18-04/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
   - '[Odoo Developer Documentation](https://www.odoo.com/documentation/13.0)'
   - '[PostgreSQL 10 Documentation](https://www.postgresql.org/docs/10/static/index.html)'
-  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](https://www.linode.com/docs/websites/erp/install-an-odoo-11-stack-on-ubuntu-16-04)'
-  - '[Install an SSL certificate with LetsEncrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates)'
-  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/networking/vpn/how-to-set-up-tinc-peer-to-peer-vpn/)'
-  - '[Using Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/)'
+  - '[Install an Odoo 11 Stack on Ubuntu 16.04 using Linode](/docs/guides/install-an-odoo-11-stack-on-ubuntu-16-04/)'
+  - '[Install an SSL certificate with LetsEncrypt](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/)'
+  - '[How to Set up tinc, a Peer-to-Peer VPN](/docs/guides/how-to-set-up-tinc-peer-to-peer-vpn/)'
+  - '[Using Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/)'
 relations:
     platform:
         key: install-an-odoo-13-stack
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Damaso Sanoja"]
 ---
 
 ## What is Odoo?
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is a self-hosted suite of over 10,000 open source applications for a variety of business needs, including CRM, eCommerce, accounting, inventory, point of sale, and project management. These applications are all fully integrated and can be installed and accessed through a web interface, making it easy to automate and manage your company's processes.
 
-For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu 16.04](/docs/websites/cms/install-odoo-10-on-ubuntu-16-04/) guide for an example of this). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
+For simple installations, Odoo and its dependencies can be installed on a single Linode (see our [Install Odoo 10 on Ubuntu 16.04](/docs/guides/install-odoo-10-on-ubuntu-16-04/) guide for an example of this). However, this single-server setup is not suited for production deployments. This guide covers how to configure a production Odoo 13 cluster where the Odoo server and PostgreSQL database are hosted on separate Linodes. This configuration gives you more flexibility and scalability while allowing you to use PostgreSQL database replication for added performance and reliability.
 
 ## System Requirements
 
@@ -53,9 +47,9 @@ All examples in this guide are for Ubuntu 18.04. If you plan to use a different 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your systems:
 
@@ -74,7 +68,7 @@ Ports `22`, `80`, and `5432` are the defaults for SSH, HTTP, and PostgreSQL comm
 
     sudo ufw allow 22/tcp
 
-For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw/).
+For more detailed information about firewall setup please read our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/).
 
 ## Hostname Assignment
 
@@ -172,7 +166,7 @@ Now that you finished PostgreSQL configuration you can start the `postgresql` se
 
 Configure your Odoo 13 web application to work with the PostgreSQL database backend.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Odoo 13 uses Python 3.6+ instead of Python 3.5. If your server is running an older Ubuntu release, for instance 16.04, you will need to compile a newer Python version to meet this requirement.
 {{< /note >}}
 
@@ -239,7 +233,7 @@ It's considered a best practice to isolate Odoo's Python modules from the module
 
         pip3 install wheel
 
-Let's review the the virtual environment creation:
+Let's review the virtual environment creation:
 
 * `python3 -m venv`: Runs `venv` module using Python 3, this module is in charge of creating the virtual environment.
 * `/home/<user>/odoo-env`: Indicates the path used for the virtual Python environment. For the purpose of this guide, `home` directory of the current user was used but you can change it to any location that suits your needs as long as you remember to grant the `odoo` user with proper permissions afterward.
@@ -370,7 +364,7 @@ You have two options to backup your production database:
 
 1. You can install PostgreSQL 10 on the **Odoo** server using the procedure described on this guide. This installs `pg_dump` and other utilities, allowing you to use the Odoo GUI as before. Since Odoo configuration is explicit about database connection you do not have to worry about anything else. This method restores the database to the **PostgreSQL** server rather than **Odoo**.
 
-2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/databases/postgresql/how-to-back-up-your-postgresql-database/) from the backend **PostgreSQL** server.
+2. You can also use a procedure similar to the one described in our guide [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/) from the backend **PostgreSQL** server.
 
 ### Update Odoo Modules
 
@@ -380,7 +374,7 @@ From your **Odoo** server restart the Odoo service using the following flags to 
 
     sudo service odoo-server restart -u all -d <production_database_name>
 
-{{< note >}}
+{{< note respectIndent=false >}}
 From Odoo version 12 forward it is suggested that you update modules using Odoo's web interface whatever possible.
 {{< /note >}}
 
@@ -397,6 +391,6 @@ If all your tests pass, you can safely update your installation.
 
         sudo git reset --hard origin/13.0
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not confuse the Odoo system update with an Odoo **version** upgrade. With the method explained above, you are updating your Odoo application within the same version rather than **upgrading** to a newer Odoo version. Migrating from one version to another often requires several tests and manual modifications on the PostgreSQL database which are highly dependent on the version of Odoo you are upgrading from.
 {{< /note >}}

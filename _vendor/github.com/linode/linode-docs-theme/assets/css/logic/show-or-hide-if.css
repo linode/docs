@@ -1,24 +1,24 @@
 /* Utility classes to show/hide content. */
 .show-if-topbar-is-pinned {
-    display: none;
+  display: none;
 }
 
 .is-topbar-pinned .show-if-topbar-is-pinned {
-    display: block;
+  display: block;
 }
 
 .is-topbar-pinned .hide-if-topbar-is-pinned {
-    display: none !important;
+  display: none !important;
 }
 
 .is-not-topbar-pinned .hide-if-topbar-is-not-pinned {
-    display: none !important;
+  display: none !important;
 }
 
 .is-search-panel-open .hide-if-search-panel-open {
-    display: none !important;
+  display: none !important;
 }
 
 .is-not-toc .hide-if-is-not-toc {
-    display: none;
+  display: none;
 }

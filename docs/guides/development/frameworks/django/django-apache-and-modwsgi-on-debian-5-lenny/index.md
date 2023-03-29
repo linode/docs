@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modwsgi-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the Django web application development framework for Apache on Debian 5 so you can run Django Applications.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
@@ -19,17 +16,18 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/debian-5-lenny) and a functional [MySQL database](/docs/databases/mysql/debian-5-lenny) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/guides/apache-2-web-server-on-debian-5-lenny/) and a functional [MySQL database](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/) system installed.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -44,11 +42,11 @@ Issue the following commands to ensure that your system's package repositories a
     apt-get upgrade
     apt-get install python-setuptools libapache2-mod-wsgi
 
-Additionally you will need to install a database system and a python driver for this database system. If you want to run the [MySQL database engine](/docs/databases/mysql/debian-5-lenny) issue the following command:
+Additionally you will need to install a database system and a python driver for this database system. If you want to run the [MySQL database engine](/docs/guides/use-mysql-relational-databases-on-debian-5-lenny/) issue the following command:
 
     apt-get install mysql-server python-mysqldb
 
-If you want to run the [PostgreSQL database server](/docs/databases/postgresql/debian-5-lenny) issue the following command:
+If you want to run the [PostgreSQL database server](/docs/guides/debian-5-lenny/) issue the following command:
 
     apt-get install postgresql python-psycopg2
 

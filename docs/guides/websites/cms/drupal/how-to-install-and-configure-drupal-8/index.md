@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-drupal-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install and configure the popular content management system, Drupal 8 on your Linode running Debian or Ubuntu..'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
@@ -15,6 +12,7 @@ published: 2015-11-19
 deprecated: true
 deprecated_link: 'websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/'
 title: Install and Configure Drupal 8
+authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.
@@ -23,9 +21,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make additional firewall exceptions for your specific application.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make additional firewall exceptions for your specific application.
 
 3.  Update your system:
 
@@ -33,9 +31,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 4.  Install and configure a LAMP stack. You can do this in one of two ways:
 
-    *  See our [Hosting a Website](/docs/websites/hosting-a-website) guide to configure each component manually.
+    *  See our [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide to configure each component manually.
 
-    *  Deploy using our LAMP [StackScript](/docs/platform/stackscripts).
+    *  Deploy using our LAMP [StackScript](/docs/products/tools/stackscripts/).
 
 ## Download and Prepare Drupal 8
 
@@ -46,9 +44,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
         cd /var/www/html/example.com
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 2.  Extract the downloaded tarball's contents into Apache's DocumentRoot:
 
@@ -75,7 +73,7 @@ $settings['trusted_host_patterns'] = array(
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 *trusted_host_patterns* also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -119,23 +117,23 @@ Require all granted
 
 1.  Go to your Linode's domain or IP address in a web browser. This will show you the first step of Drupal 8's web configuration. Choose your language and proceed to the next page.
 
-    [![Drupal 8 choose language.](drupal-choose-language-small.png)](drupal-choose-language.png)
+    ![Drupal 8 choose language.](drupal-choose-language.png)
 
 2.  Choose whether you want a Standard or Minimal installation profile.
 
-    [![Drupal 8 choose installation profile.](drupal-choose-installation-profile-small.png)](drupal-choose-installation-profile.png)
+    ![Drupal 8 choose installation profile.](drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/websites/hosting-a-website#create-a-database) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/guides/hosting-a-website-ubuntu-18-04/#create-a-database) with a MySQL or MariaDB database.
 
-    [![Drupal 8 database configuration.](drupal-database-configuration-small.png)](drupal-database-configuration.png)
+    ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you forgot the name of your database, log back in to MySQL with: `mysql -u root -p` and enter: `show databases;`.
 {{< /note >}}
 
 4.  After Drupal 8 installs your site, you'll be shown a site configuration page where you must create the admin user for your website. Do not use the same password that you used for your database.
 
-    [![Drupal 8 site configuration.](drupal-site-configuration-small.png)](drupal-site-configuration.png)
+    ![Drupal 8 site configuration.](drupal-site-configuration.png)
 
     Next, you'll be taken to the administrative dashboard which will say that Drupal 8 was installed successfully.
 

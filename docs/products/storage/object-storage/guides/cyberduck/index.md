@@ -1,30 +1,28 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using Cyberduck with Object Storage"
 description: "Learn how to use the Cyberduck desktop file transfer program to interact with Linode's Object Storage."
+authors: ["Linode"]
 ---
 
 Cyberduck is a desktop application that facilitates file transfer over FTP, SFTP, and a number of other protocols, including S3.
 
 ## Install and Configure Cyberduck
 
-1.  Navigate to Cyberduck's [Download](https://cyberduck.io/download/) webpage and download the latest version of Cyberduck for your operation system. After downloading, run the file to install the application.
+1.  Navigate to Cyberduck's [Download](https://cyberduck.io/download/) webpage and download the latest version of Cyberduck for your operating system. After downloading, run the file to install the application.
 
-    {{<note>}}
-If you already have Cyberduck installed, be sure to update to version 8.2.1 or newer. Some of the steps within this guide do not work properly on earlier versions.
-{{</note>}}
+    {{< note >}}
+    If you already have Cyberduck installed, be sure to update to version 8.2.1 or newer. Some of the steps within this guide do not work properly on earlier versions.
+    {{< /note >}}
 
 1.  Open Cyberduck and then select *Cyberduck* > *Preferences* from the menu bar.
 
 1.  Navigate to the **Profiles** tab to open the *Connection Profiles* page.
 
-    ![](cyberduck-profiles.png)
+    ![Screenshot of the Cyberduck Profiles tab](cyberduck-profiles.png)
 
 1.  Search for "Linode" or scroll down to see the connection profiles designed for Linode's Object Storage service.
 
-    ![](cyberduck-profiles-linode.png)
+    ![Screenshot of the Linode-specific Profiles](cyberduck-profiles-linode.png)
 
 1.  Select the checkbox next to connection profile for each data center you wish to use with Object Storage.
 
@@ -38,7 +36,7 @@ If you already have Cyberduck installed, be sure to update to version 8.2.1 or n
 
 1.  Enter your access key in the **Access Key** field and your secret key in the **Secret Key** field. If you do not yet have an access key, create one now by following the instructions within the [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/) guide. If you intend to create new buckets, the access key must not be limited. Otherwise, the access key must have permissions to read or read/write on the bucket you intend to use.
 
-    ![](cyberduck-new-connection.png)
+    ![Screenshot of the Open Connection form](cyberduck-new-connection.png)
 
 1.  Click **Connect** to open the connection.
 
@@ -46,11 +44,11 @@ If you already have Cyberduck installed, be sure to update to version 8.2.1 or n
 
 Once the connection is successful, a list appears of all the buckets that your access key has permissions to view within the selected data center. You can view the files stored within the buckets by clicking the chevron icon to the left of the bucket label or double clicking the bucket to open it.
 
-![](cyberduck-view.png)
+![Main Cyberduck view of buckets](cyberduck-view.png)
 
-{{<note>}}
+{{< note >}}
 To create additional buckets, use the Cloud Manager, Linode CLI, s3cmd, or s4cmd. Cyberduck is not able to create new buckets.
-{{</note>}}
+{{< /note >}}
 
 ## Upload and Manage Files
 
@@ -73,7 +71,7 @@ In most cases, URLs are used to share and display files. While you can always ma
 
 1. Locate the **Web URL** field. The URL for the file is displayed here.
 
-    ![](cyberduck-file-url.png)
+    ![Screenshot of an Object's URL as it appears within the Info tab](cyberduck-file-url.png)
 
 1. Click on the URL to open it in a web browser or right click it and select **Copy Link** to copy the URL.
 
@@ -85,11 +83,11 @@ It's common to make a file, folder, or even an entire bucket publicly accessible
 
 1.  Click the ellipsis icon at the bottom left of the window and select **Everyone**.
 
-    ![](cyberduck-permissions-add-everyone.png)
+    ![Screenshot of the permission dropdown list](cyberduck-permissions-add-everyone.png)
 
 1.  A new entry for *Everyone* appears in the Access Control List. Next to *Everyone*, under the *Permissions* column heading, select **READ** from the drop down menu.
 
-    ![](cyberduck-permissions-everyone-read.png)
+    ![Screenshot of the Everyone permission set to Read](cyberduck-permissions-everyone-read.png)
 
 The object is now accessible through the internet. See [Obtain the URL of a File](#obtain-the-url-of-a-file) to get the URL.
 
@@ -105,10 +103,10 @@ Object Storage can be used to host static website files, such as html, css, and 
 
 1.  Check the box that reads **Enable Website Configuration (HTTP) Distribution**.
 
-    ![](cyberduck-enable-website.png)
+    ![Screenshot of the Enable Website checkbox](cyberduck-enable-website.png)
 
 1.  Make sure the root of your bucket contains an "index.html" file. If not, you can select a different file to act as the index by modifying the **Index File** field within the same window as the previous step.
 
 1.  The static site is accessed from a different URL than can be found in the [Obtain the URL of a File](#obtain-the-url-of-a-file) section. Review the [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/#website-urls) guide for information on obtaining the website URL.
 
-For more information on hosting a static website with Object Storage, read the [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting a static website with Object Storage, read the [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide.
