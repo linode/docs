@@ -4,7 +4,7 @@ keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-10
-modified: 2023-03-24
+modified: 2023-03-29
 modified_by:
   name: Linode
 title: "Upgrade a Cluster to a Newer Kubernetes Version"
@@ -27,9 +27,15 @@ When upgrading a minor version of Kubernetes on LKE, you must upgrade to the nex
 
 ## Upgrade Process
 
-When Kubernetes is upgraded on an LKE cluster (including both patch versions and minor versions), the control plane components are automatically upgraded. New worker nodes are also created using the new version. In most cases, there is no downtime or impact to performance for this part of the upgrade.
+When a Kubernetes version upgrade is initiated on an LKE cluster (including both patch versions and minor versions), the control plane components are automatically upgraded. New worker nodes are also created using the new version. In most cases, there is no downtime or impact to performance for this part of the upgrade.
 
-Existing worker nodes are only automatically upgraded when you use the Cloud Manager and select **Recycle All Nodes** during the upgrade process. This recycles all nodes on a rolling basis so that only a single node is down at any time. Since this means there is one less worker node during the upgrade process, it can affect performance and might not be preferred for production applications. It is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. To overcome this, you can temporarily add additional worker nodes and perform either an *in-place* or *out-of-place* upgrade to avoid any performance impact. For more details on these approaches, see [Upgrade Worker Nodes](#upgrade-worker-nodes).
+After the initial upgrade, existing worker nodes need to also be upgraded to the newer Kubernetes version. This typically requires a few extra steps. This guide outlines three options for upgrading these existing nodes, including recycling all worker nodes, performing an in-place upgrade, and performing an out-of-place upgrade. Each of these options is discussed in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
+
+{{< note type="warning">}}
+Existing worker nodes are *automatically upgraded* when initiating the upgrade in the Cloud Manager if **Recycle All Nodes** is selected during the upgrade process. This can also be triggered manually by using the recycle all nodes feature in the Cloud Manager, Linode CLI, and Linode API. This recycles all nodes on a rolling basis so that only a single node is down at any time. Since this means there is one less worker node during the upgrade process, it can affect performance and might not be preferred for production applications.
+
+It is strongly recommended that steps are taken to ensure that there is enough space on all nodes to accommodate for this temporary shift in resources. If a cluster of three nodes cannot briefly support the resources demands of an application using only two nodes, then the upgrade process may result in unintended application downtime. To overcome this, you can temporarily add additional worker nodes and perform either an *in-place* or *out-of-place* upgrade to avoid any performance impact. For more details on these approaches, see [Upgrade Worker Nodes](#upgrade-worker-nodes).
+{{< /note >}}
 
 ## Deprecating Kubernetes Versions (End of Life)
 
@@ -140,7 +146,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 
     ![](upgrade-lke-cluster-confirmation.png)
 
-1. The next step is to upgrade all worker nodes in the cluster so that they are they use the newer Kubernetes version. A second popup should automatically appear requesting that you start the recycle process. Each worker node is recycled on a rolling basis so that only a single node is down at any time. *Only click the **Recycle All Nodes** button if you do not care about performance impact to your application.* For high performance production applications, consider clicking the **Cancel** button and performing one of the upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
+1. The next step is to upgrade all worker nodes in the cluster so that they use the newer Kubernetes version. A second popup should automatically appear requesting that you start the recycle process. Each worker node is recycled on a rolling basis so that only a single node is down at any time. *Only click the **Recycle All Nodes** button if you do not care about performance impact to your application.* For high performance production applications, consider clicking the **Cancel** button and performing one of the upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 
     ![](upgrade-lke-recycle.png)
 {{% /tab %}}
