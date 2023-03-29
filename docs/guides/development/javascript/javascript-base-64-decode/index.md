@@ -1,13 +1,13 @@
 ---
 slug: javascript-base-64-decode
-description: 'Wondering how to encode and decode with base64 in Javascript? Follow these steps to learn how plus find the benefits and limitations of the base64 code.'
+description: 'Wondering how to encode and decode with base64 in JavaScript? Follow these steps to learn how plus find the benefits and limitations of the base64 code.'
 keywords: ['javascript base 64 decode','encode string javascript','base64 js']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-29
 modified_by:
   name: Linode
-title: "Javascript Decode Base64 String - A Developer’s Guide"
-title_meta: "How to Use Javascript Base 64 to Decode and Encode"
+title: "JavaScript Decode Base64 String - A Developer’s Guide"
+title_meta: "How to Use JavaScript Base 64 to Decode and Encode"
 external_resources:
 - '[Wikipedia Base64 page](https://en.wikipedia.org/wiki/Base64)'
 - '[RFC 4648 for Base64](https://datatracker.ietf.org/doc/html/rfc4648)'
@@ -18,7 +18,7 @@ authors: ["Jeff Novotny"]
 
 It is often necessary to embed a binary or other non-ASCII file inside an email or a web page. However, for a variety of reasons, it is not always safe to include the file in its original state. One possible solution is to first convert the binary data to Base64 text before including it. This guide provides an introduction to Base64 encoding and explains how to use the JavaScript Base64 functions to encode and decode data.
 
-## An Introduction to Base 64 and Javascript
+## An Introduction to Base 64 and JavaScript
 
 Base64 is an encoding scheme used to convert binary files to text, although it can be used on any type of data. Base64 is sometimes written as Base-64 or Base 64. It converts a sequence of three bytes, totaling 24-bits, into four 6-bit characters. Base64 data is divided into four-character blocks, each representing 24 bits of the original file.
 
@@ -69,7 +69,7 @@ Base64 is very convenient and enhances compatibility and security. Following are
 - Because images are not stored as separate files, Base64 minimizes the number of requests for web data. This can lead to better performance when displaying web pages with many small images.
 - It is useful whenever data must be stored using a limited data set.
 - Base64 encoding is certain to be compatible between different systems. This was far more important during the early days of computing.
-- Most programming languages provide utilities to convert files to and from Base64. Base64 encode and decode functions are available in Javascript.
+- Most programming languages provide utilities to convert files to and from Base64. Base64 encode and decode functions are available in JavaScript.
 - It prevents binary files from accidentally being treated as executables. It also makes it more difficult for other web pages to automatically link to any embedded images.
 
 ## What Are the Limitations of Base64 Code?
@@ -93,7 +93,7 @@ Unfortunately, there are also some drawbacks to Base64 encoding, mainly involvin
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-## How to Encode and Decode with Base64 in Javascript?
+## How to Encode and Decode with Base64 in JavaScript?
 
 Although translating data to or from Base64 manually is quite complicated, it is very easy in JavaScript. Developers can use the built-in function `btoa`, standing for "binary to ASCII", to encode data into Base64. Data can be decoded using the complementary `atob` routine. Applying the `atob` function to the output from `btoa` always results in the original data.
 
@@ -103,7 +103,7 @@ All current releases of all common web browsers support these operations. Howeve
 The names of these functions are not quite accurate. The "binary" text must be in Unicode string format, and the Base64 encoding is only a subset of the ASCII character set.
 {{< /note >}}
 
-### Encode Data with Base64 in Javascript.
+### Encode Data with Base64 in JavaScript.
 
 To encode any data in Base64 format, use the `btoa` function. Provide the original text as an argument to the function. To use JavaScript to encode a string into Base64, follow the steps below. The example below uses the JavaScript debugger found in most web browsers.
 
@@ -133,7 +133,7 @@ To run short JavaScript code snippets without embedding them in a web page, use 
     TGE=
     ```
 
-### Decode Data with Base64 in Javascript.
+### Decode Data with Base64 in JavaScript.
 
 JavaScript can also decode Base64 text. The procedure to decode a Base64 representation back into the original is very similar. Use the `atob` function and pass it the Base64 string. `atob` should produce the original string. To decode Base64 data, follow the steps below:
 
@@ -163,7 +163,7 @@ var txtDecodeString = atob(base64EncodeString);
 console.log(txtDecodeString);
 ```
 
-## A Summary of Base64 in Javascript
+## A Summary of Base64 in JavaScript
 
 The Base64 encoding mechanism is useful for converting files into a safe format, using a restricted set of characters. The Base64 representation can be embedded in HTML and CSS files, allowing for fewer server requests. It ensures compatibility and protects binary files from being executed or linked to from other web pages.
 

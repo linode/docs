@@ -1,7 +1,7 @@
 ---
 slug: install-and-configure-mysql-on-ubuntu-22-04
 description: 'This guide shows you how to install and configure MySQL server on Ubuntu 20.04 Linux.'
-keywords: ['Install Mysql ubuntu 22.04', 'Install Mysql server ubuntu', 'Install Mysql Linux', 'Configure Mysql']
+keywords: ['Install MySQL ubuntu 22.04', 'Install MySQL server ubuntu', 'Install MySQL Linux', 'Configure MySQL']
 tags: ['mysql', 'database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-29
