@@ -13,7 +13,7 @@
   <meta name="robots" content="noindex" />
 {{ end }}
 <meta name="google" content="notranslate" />
-<meta property="og:title" content="{{ .Params.og_title | default .Title }}" />
+<meta property="og:title" content="{{ .Params.title_social | default (.Params.title_meta | default .Title) }}" />
 <meta
   property="og:type"
   content="{{ if .IsPage }}

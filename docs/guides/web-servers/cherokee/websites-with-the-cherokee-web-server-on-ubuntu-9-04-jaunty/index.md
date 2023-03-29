@@ -1,9 +1,6 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
 keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 tags: ["web server","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to install and configure the Cherokee web server on Ubuntu 9.04 (Jaunty). This guide targets Cherokee version 0.11.6 (provided by the Ubuntu Jaunty repositories as of this writing), but the install steps should be similar for later versions. We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 9.04 (Jaunty) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Ubuntu 9.04 (Jaunty) system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, we recommend that you do so prior to following these instructions.
 
 ## Check Package Sources
 

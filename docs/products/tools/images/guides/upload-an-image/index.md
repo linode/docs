@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 image: UploadAnImage.png
 title: Upload an Image
 description: "How to upload an image with Linode Images."
+authors: ["Linode"]
 ---
 
 ## Requirements and Considerations
@@ -21,7 +19,7 @@ When creating an image file to upload as a Custom Image, keep the following limi
 
 - **Pricing considerations:** Custom Images are billed based on the *uncompressed* size of the uploaded image file.
 
-- **For compatibility, use unpartitioned disks formatted with ext3 or ext4 file systems:** [Network Helper](/docs/guides/network-helper/) and other Linode Helpers are compatible with non-partitioned image files formatted using the ext3 or ext4 file systems. Partitioned disks and other file systems may be used, but some manual configuration may be required.
+- **For compatibility, use unpartitioned disks formatted with ext3 or ext4 file systems:** [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) and other Linode Helpers are compatible with non-partitioned image files formatted using the ext3 or ext4 file systems. Partitioned disks and other file systems may be used, but some manual configuration may be required.
 
 ## Creating or Obtaining an Image File
 

@@ -1,8 +1,5 @@
 ---
 slug: rulebased-access-control-for-apache
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Deploying and configuring granular access control with the Apache web server.'
 keywords: ["apache", "access control", "security", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +19,7 @@ external_resources:
  - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
 tags: ["web server","apache"]
+authors: ["Linode"]
 ---
 
 

@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for NodeBalancers"
 description: "How to use the Linode CLI to create and manage NodeBalancers."
 published: 2020-07-20
 modified: 2022-05-02
+authors: ["Linode"]
 ---
 
 1.  Create a new NodeBalancer:

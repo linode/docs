@@ -1,8 +1,5 @@
 ---
 slug: install-mysql-phpmyadmin-debian-7
-author:
-    name: Brett Kaplan
-    email: docs@linode.com
 description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface and GUI on Debian 7.'
 keywords: ["mysql", "phpmyadmin", "sql", "debian", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +19,7 @@ relations:
             - distribution: Debian 7
 tags: ["debian","database","mysql","php"]
 deprecated: true
+authors: ["Brett Kaplan"]
 ---
 
 ![Install MySQL with phpMyAdmin on Debian](How_to_Install_MySQL_with_phpMyAdmin_on_Debian_7_smg.jpg)
@@ -29,12 +27,12 @@ deprecated: true
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -47,13 +45,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get update && sudo apt-get upgrade -y
 
-3.  Set up a working LAMP stack. Please see the [LAMP on Debian 7](/docs/websites/lamp/lamp-server-on-debian-7-wheezy) guide if needed.
+3.  Set up a working LAMP stack. Please see the [LAMP on Debian 7](/docs/guides/lamp-server-on-debian-7-wheezy/) guide if needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 {{< /note >}}
 
-4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
+4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on Debian & Ubuntu](/docs/guides/ssl-apache2-debian-ubuntu/) guide.
 
 5.  Install the `mcrypt` PHP module:
 

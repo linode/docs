@@ -1,8 +1,5 @@
 ---
 slug: how-to-build-your-infrastructure-using-terraform-and-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This article gives you step-by-step instructions on how to use Terraform to provision, modify, and destroy infrastructure using only code and simple commands.'
 og_description: 'Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
@@ -13,8 +10,8 @@ aliases: ['/applications/configuration-management/terraform/how-to-build-your-in
 modified_by:
   name: Linode
 title: 'Use Terraform to Provision Linode Environments'
-contributor:
-  name: Damaso Sanoja
+authors: ["Damaso Sanoja"]
+tags: ["saas", "digital agencies"]
 ---
 
 ![Use Terraform to Provision Linode Environments](use-terraform-to-provision-linode-environments.png "Use Terraform to Provision Linode Environments")
@@ -25,23 +22,23 @@ Terraform is an IaC tool that focuses on creating, modifying, and destroying ser
 
 Linodes created with Terraform can be further configured with container systems like Docker, or with configuration management software like Salt, Puppet, Ansible, or Chef.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The configurations and commands used in this guide results in multiple Linodes being added to your account. Be sure to monitor your account closely in the Linode Manager to avoid unwanted charges.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 -   This guide shows you how to install and use the Terraform client software from a Linux system. Terraform can be installed on other operating systems, and the instructions for those platforms are analogous to the commands presented in this guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When following this guide, your Linux user may need sudo privileges in order to install supplementary software packages.
-{{</ note >}}
+{{< /note >}}
 
--   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/guides/getting-started-with-the-linode-api/#get-an-access-token) to get a token.
+-   You need a personal access token for Linode's [v4 API](/docs/api/) to use with Terraform. Follow the [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token) to get a token.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Any Personal Access Tokens generated from the previous Linode Manager are API v3 tokens and do not work with Terraform's Linode provider.
-{{</ note >}}
+{{< /note >}}
 
 ## Install Terraform
 
@@ -49,7 +46,7 @@ The installation steps in this section are for Linux operating systems. To insta
 
 {{< note >}}
 The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
-{{</ note >}}
+{{< /note >}}
 
 1.  Make a Terraform project directory in your home directory and then navigate to it:
 
@@ -87,7 +84,7 @@ gpg: Total number processed: 1
 gpg:               imported: 1
 {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive errors that indicate the `dirmngr` software is missing or inaccessible, install `dirmngr` using your package manager and run the GPG command again.
 {{< /note >}}
 
@@ -124,7 +121,7 @@ terraform_1.1.9_linux_amd64.zip: OK
 
         unzip terraform_*_linux_amd64.zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package and try again.
 {{< /note >}}
 
@@ -204,7 +201,7 @@ resource "linode_instance" "terraform-web" {
 
     This snippet creates a Linode 2GB labelled `Terraform-Web-Example` in a `Terraform` Linodes group. While the server's software won't be configured in this guide, we can imagine for now that the Linode acts as a webserver.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 See [Terraform's documentation](https://www.terraform.io/docs/configuration/syntax.html) for more information on configuration syntax and any updates to the Linode provider.
 {{< /note >}}
 
@@ -231,7 +228,7 @@ suggested below.
 Terraform has been successfully initialized!
 {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If an error occurs, run the command again in debug mode:
 
     TF_LOG=debug terraform init
@@ -290,7 +287,7 @@ can't guarantee that exactly these actions will be performed if
 
     `terraform plan` won't take any action or make any changes on your Linode account. Instead, an analysis is done to determine which actions (i.e. Linode instance creations, deletions, or modifications) are required to achieve the state described in your configuration.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Debug mode can be applied to the plan command if you need to perform troubleshooting:
 
     TF_LOG=debug terraform plan
@@ -369,7 +366,7 @@ resource "linode_instance" "terraform-db" {
 
     You may notice that the Terraform provider is not specified in this file as it was in `linode-terraform-web.tf`. Terraform loads into memory and concatenates all files present in the working directory which have a `.tf` extension. This means you don't need to define the provider again in new `.tf` files.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this configuration a new parameter, `swap_size`, is used to override the default value of 512MB. You can check all available options for the Linode Terraform provider in the plugin's GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
 {{< /note >}}
 
@@ -520,9 +517,9 @@ resource "linode_instance" "terraform-db" {
 
 Terraform allows you to change a server's name, size, or other attributes without needing to destroy and rebuild it. Terraform handles this through changes to the configuration files.
 
-{{< caution >}}
-Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/guides/resizing-a-linode/) guide for more information.
-{{< /caution >}}
+{{< note type="alert" >}}
+Changing the size of your Linode forces your server to be powered off and migrated to a different host in the same data center. The associated disk migration takes approximately 1 minute for every 3-5 gigabytes of data. See our [Resizing a Linode](/docs/products/compute/compute-instances/guides/resize/) guide for more information.
+{{< /note >}}
 
 1.  Modify `linode-terraform-template.tf` and update the `type` value to `g6-standard-4` for the `terraform-db` resource.
 
