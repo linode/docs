@@ -80,7 +80,7 @@ The underlying cause of these issues can vary. The most helpful course of action
     You may also want to review log files for any other software you have installed on your system that might be causing these issues.
 
 {{< note respectIndent=false >}}
-Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/guides/support/#scope-of-support) of the Linode Support team.
+Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/products/platform/get-started/guides/support/#scope-of-support) of the Linode Support team.
 {{< /note >}}
 
 ## File System Corruption
@@ -91,4 +91,4 @@ In some cases, unexpected shutdowns can cause file system corruption on a Comput
 /dev/sda: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.
 ```
 
-In cases like this, it is recommended that you attempt to correct the issue by running the `fsck` tool in [Rescue Mode](/docs/guides/rescue-and-rebuild/). See [Using fsck to Find and Repair Disk Errors and Bad Sectors](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) for instructions.
+In cases like this, it is recommended that you attempt to correct the issue by running the `fsck` tool in [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/). See [Using fsck to Find and Repair Disk Errors and Bad Sectors](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) for instructions.

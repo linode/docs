@@ -22,11 +22,11 @@ Even the best system administrators may need to deal with unplanned events in th
 
 While this guide outlines the recovery tools that Linode makes available to you, it does not provide a specific troubleshooting strategy. Our other guides offer a logical progression of steps you can follow when troubleshooting different symptoms:
 
-- If you are not able to establish basic network connections with the Compute Instance, then review the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide.
+- If you are not able to establish basic network connections with the Compute Instance, then review the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide.
 
-- If you can ping the instance but can't access SSH, follow the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
+- If you can ping the instance but can't access SSH, follow the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) guide.
 
-- If you can access SSH but are experiencing an outage with a web server or other service, review [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/).
+- If you can access SSH but are experiencing an outage with a web server or other service, review [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/).
 
 - For an overview of all these issues and answers to other questions, check out the [Troubleshooting Overview](/docs/guides/troubleshooting-overview/) guide.
 

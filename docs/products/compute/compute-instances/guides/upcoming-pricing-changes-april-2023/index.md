@@ -49,7 +49,7 @@ Beginning April 1st 2023, the price for most Shared CPU and Dedicated CPU Comput
 
 ## Network Transfer (Egress) Overages
 
-Each Compute Instance plan includes a certain allowance of outbound network transfer per month (ranging from 1 GB to 20 GB). The monthly network allowance of each instance active during a billing period (prorated) is then combined into a monthly transfer pool. Any additional transfer usage that exceeds this monthly pool is billed as a per GB overage charge. To learn more about how network transfer works (and how it is billed), see [Network Transfer Usage and Costs](/docs/guides/network-transfer/).
+Each Compute Instance plan includes a certain allowance of outbound network transfer per month (ranging from 1 GB to 20 GB). The monthly network allowance of each instance active during a billing period (prorated) is then combined into a monthly transfer pool. Any additional transfer usage that exceeds this monthly pool is billed as a per GB overage charge. To learn more about how network transfer works (and how it is billed), see [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/).
 
 Starting on April 1st 2023, the network transfer (egress) overage fees will be cut in half, from $0.01/GB (existing fee) to $0.005/GB (new fee). The table below details this change.
 

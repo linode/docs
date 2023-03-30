@@ -99,7 +99,7 @@ If you were running Ubuntu 9.04 previously and have gone through this guide once
 
 ## Fixing a Broken System
 
-If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/guides/rescue-and-rebuild/). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
+If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
 
     mount /dev/xvda
     nano /media/xvda/etc/fstab

@@ -12,14 +12,14 @@ aliases: ['/troubleshooting/troubleshooting-web-servers-databases-other-services
 authors: ["Linode"]
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Compute Instance. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) and then return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your web server, database, or other services running on your Compute Instance. This guide assumes that you have access to SSH. If you can't log in with SSH, review [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) and then return to this guide.
 
 {{< note title="Additional resources for help" type=secondary isCollapsible=true >}}
 This guide explains how to use different troubleshooting commands on your Compute Instance. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/products/platform/get-started/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /note >}}
 
 ## General Troubleshooting Strategies
@@ -79,7 +79,7 @@ If your service doesn't start normally, review your system logs for the service.
 
 Your service's log location will vary by the application, but they are often stored in `/var/log`. [The `less` command](/docs/guides/how-to-use-less/) is a useful tool for browsing through your logs.
 
-Try pasting your log messages into a search engine or searching for your messages in the [Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Compute Instance](/docs/guides/rescue-and-rebuild/#rebuilding).
+Try pasting your log messages into a search engine or searching for your messages in the [Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Compute Instance](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 ### Review Firewall Rules
 
