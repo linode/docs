@@ -2,6 +2,9 @@
 	if (new URLSearchParams(window.location.search).get('__forceconsent') === 'true') {
 		forceSetCookieConsent();
 	}
+	if (new URLSearchParams(window.location.search).get('__api_shouldfail') === 'true') {
+		window.__api_shouldfail = true;
+	}
 })();
 
 // forceSetCookieConsent simulates setting the TrustArc consent.

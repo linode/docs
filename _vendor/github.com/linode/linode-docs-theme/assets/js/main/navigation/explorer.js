@@ -56,6 +56,7 @@ export function newSearchExplorerController(searchConfig) {
 			indexName: searchConfig.indexName(searchConfig.sections_merged.index),
 			filters: filters,
 			facetFilters: facetFilters.concat(facetFilters, sectionFilter),
+			distinct: 0,
 			params: `query=${encodeURIComponent(query.lndq)}&hitsPerPage=${maxLeafNodes}`,
 		};
 	};
@@ -463,6 +464,7 @@ export function newSearchExplorerController(searchConfig) {
 				}
 
 				const nodes = this.sections.concat(this.pages);
+
 				nodes.sort(itemsComparer);
 
 				return nodes;
@@ -580,7 +582,16 @@ export function newSearchExplorerController(searchConfig) {
 				let pages = [];
 				for (let item of hits) {
 					let href = item.href;
+					if (item.hierarchy && item.hierarchy.length) {
+						// This is the reference-section.
+						// All pages in a section shares the same href (the section),
+						// and the best match is selected while searching using Algolia's distinct keyword.
+						// This is the explorer, and we need to link to the detail page.
+						let last = item.hierarchy[item.hierarchy.length - 1];
+						href = last.href;
+					}
 					let active = href === window.location.pathname;
+
 					pages.push(
 						self.createNode({
 							parent: n,

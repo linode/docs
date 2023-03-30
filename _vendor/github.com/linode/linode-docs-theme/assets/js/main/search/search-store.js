@@ -110,7 +110,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					m = this.metaResult.get(key);
 					if (!m && sectionConfigIdx !== -1) {
 						let index = searchConfig.sectionsSorted[sectionConfigIdx];
-						m = { title: index.title, linkTitle: index.title };
+						m = { title: index.title, linkTitle: index.title, excerpt: '' };
 					}
 				}
 
@@ -258,6 +258,7 @@ export function newSearchStore(searchConfig, Alpine) {
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,
+			distinct: 1,
 			attributesToHighlight: attributesToHighlight,
 			params: `query=${q}&hitsPerPage=${hitsPerPage}&page=${page}`,
 		};
@@ -375,8 +376,11 @@ const normalizeResult = function (self, result) {
 		}
 
 		hit.rootSectionTitle = hit['section.lvl0'];
-		if (hit.rootSectionTitle && hit.rootSectionTitle.endsWith('-branches')) {
-			hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+		if (hit.rootSectionTitle) {
+			if (hit.rootSectionTitle.endsWith('-branches')) {
+				hit.rootSectionTitle = hit.rootSectionTitle.substring(0, hit.rootSectionTitle.indexOf('-branches'));
+			}
+			hit.rootSectionTitle = hit.rootSectionTitle.replace('-', ' ');
 		}
 
 		hit.titleHighlighted =
@@ -386,6 +390,14 @@ const normalizeResult = function (self, result) {
 			hit._highlightResult && hit._highlightResult.excerpt ? hit._highlightResult.excerpt.value : hit.excerpt;
 
 		hit.linkTitle = hit.linkTitle || hit.title;
+		hit.mainTitle = hit.title || hit.linkTitle;
+
+		if (hit.hierarchy && hit.hierarchy.length) {
+			// This is the reference-section, pick the main title from
+			// the top level.
+			let first = hit.hierarchy[0];
+			hit.mainTitle = first.title || first.linkTitle;
+		}
 
 		if (hit.href) {
 			hit.isExternalLink = hit.href.startsWith('http');
@@ -555,6 +567,10 @@ class SearchBatcher {
 			.then((response) => response.json())
 			.then((data) => {
 				this.fetchCount++;
+				if (!data.results) {
+					console.warn('invalid response', data);
+					return;
+				}
 				for (let i = 0; i < data.results.length; i++) {
 					let result = data.results[i];
 					this.resultCallback(result);
@@ -637,7 +653,11 @@ export function getSearchConfig(params) {
 		if (!cfg.index_prefix) {
 			return index;
 		}
-		return `${cfg.index_prefix}${index}`;
+		let prefix = cfg.index_prefix;
+		if (!prefix.endsWith('_')) {
+			prefix += '_';
+		}
+		return `${prefix}${index}`;
 	};
 
 	return cfg;

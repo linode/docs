@@ -1,8 +1,5 @@
 ---
 slug: windows-red-team-defense-evasion-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
 description: 'This guide explains and demonstrates the process of evading AV detection on Windows systems.'
 keywords: ['security']
 tags: ['security']
@@ -11,10 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Windows Red Team Defense Evasion Techniques"
-h1_title: "Windows Red Team Defense Evasion Techniques"
-enable_h1: true
-contributor:
-  name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

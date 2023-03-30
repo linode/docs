@@ -1,9 +1,6 @@
 ---
 slug: twiki-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Twiki is a robust structured wiki compared to other solutions such as Confluence. This guide provides you with instructions for installing Twiki on Fedora 14.'
 keywords: ["wiki", "twiki", "structured wiki", "enterprise wiki"]
 tags: ["wiki","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: install-twiki
         keywords:
            - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

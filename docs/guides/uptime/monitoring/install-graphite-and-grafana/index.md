@@ -1,8 +1,5 @@
 ---
 slug: install-graphite-and-grafana
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: "This guide shows how to use Graphite to monitor server data and connect it to Grafana for an informative, customizable, graphical interface."
 keywords: ['grafana','graphite','monitoring','dashboard', 'docker']
 tags: ["docker","monitoring"]
@@ -11,12 +8,13 @@ published: 2018-04-30
 modified: 2021-03-04
 modified_by:
   name: Linode
-title: Monitor Your System with Graphite and a Grafana Dashboard
-h1_title: Monitoring Your System with Graphite and a Grafana Dashboard
+title: Monitoring Your System with Graphite and a Grafana Dashboard
+title_meta: Monitor Your System with Graphite and a Grafana Dashboard
 external_resources:
  - '[Grafana Official Documentation](http://docs.grafana.org/)'
  - '[Graphite Official Documentation](https://graphite.readthedocs.io/en/latest/)'
 aliases: ['/uptime/monitoring/install-graphite-and-grafana/']
+authors: ["Jared Kobos"]
 ---
 
 ## What are Graphite and Grafana?
