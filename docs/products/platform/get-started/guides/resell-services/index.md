@@ -43,7 +43,7 @@ There are a few stipulations that resellers should keep in mind:
 
 - Payments are to be made directly to Linode by the reseller. If a customer of a reseller fails to pay the reseller for their services, the reseller is still responsible for their monthly payment to Linode.
 
-- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/guides/support/#scope-of-support). Linode offers a number of [resources](/docs/guides/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
+- Linode Support can help with issues related to the physical operation of your Linode services, but issues related to your software configuration are outside of the [scope of Linode Support](/docs/products/platform/get-started/guides/support/#scope-of-support). Linode offers a number of [resources](/docs/products/platform/get-started/guides/support/#resources) to help with configuration questions. Linode Support is only available to people with access to a [Cloud Manager user](#limited-cloud-manager-user). If your customers do not have their own Linode users, they will not be able to contact Linode Support.
 
 ## How to Resell Linode Service
 

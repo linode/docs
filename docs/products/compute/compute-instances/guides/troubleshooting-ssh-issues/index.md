@@ -12,16 +12,16 @@ aliases: ['/troubleshooting/troubleshooting-ssh/','/guides/troubleshooting-ssh/'
 authors: ["Linode"]
 ---
 
-This guide presents troubleshooting strategies for when you can't connect to your Compute Instance via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide. If you restore basic networking to your Compute Instance but still can't access SSH, return to this guide.
+This guide presents troubleshooting strategies for when you can't connect to your Compute Instance via SSH. If you currently cannot [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, then your server also likely has more basic connection issues. If this is the case, you should instead follow the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide. If you restore basic networking to your Compute Instance but still can't access SSH, return to this guide.
 
-If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
+If you can access SSH but not other services, refer to the [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guide.
 
 {{< note type=secondary title="Additional resources for help" isCollapsible=true >}}
 This guide explains how to use different troubleshooting commands on your Compute Instance. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/products/platform/get-started/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /note >}}
 
 ## Before You Begin

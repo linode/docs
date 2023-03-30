@@ -27,7 +27,7 @@ First, check whether Apache is running. Follow the process in this [Troubleshoot
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 
-You may also want to investigate the possibility of [memory issues](/docs/guides/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
+You may also want to investigate the possibility of [memory issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
 
 ## Restart Apache
 

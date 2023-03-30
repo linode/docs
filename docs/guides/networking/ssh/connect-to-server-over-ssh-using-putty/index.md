@@ -71,7 +71,7 @@ Once you have successfully connected, your terminal should be using the remote s
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 

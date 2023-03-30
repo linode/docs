@@ -109,7 +109,7 @@ To prepare the Ubuntu system for the upgrade, follow these steps.
     sudo apt autoremove -y && sudo apt autoclean -y
     ```
 
-3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](/docs/guides/monitor-and-maintain-compute-instance/#apply-kernel-updates).
+3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates).
 
     ```command
     sudo reboot
