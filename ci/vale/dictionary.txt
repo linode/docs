@@ -2089,6 +2089,8 @@ subqueries
 subquery
 subreddit
 subreddits
+subshells
+subshell
 substring
 substrings
 subtab

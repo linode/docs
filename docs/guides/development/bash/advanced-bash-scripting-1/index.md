@@ -1,5 +1,5 @@
 ---
-slug: advanced-bash-scripting
+slug: advanced-bash-scripting-1
 description: 'This guide expands on the previous Bash guides. You learn advanced bash scripting, commands, debugging, and more.'
 keywords: ['advanced bash scripting', 'bash expressions', 'bash functions', 'bash aliases', 'bash debugging', 'bash list constructs']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
