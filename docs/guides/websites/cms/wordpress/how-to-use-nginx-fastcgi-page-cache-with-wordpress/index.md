@@ -128,7 +128,7 @@ Adding this rule means it is not possible to test caching from these addresses.
     -   The `fastcgi_cache_bypass` and `fastcgi_no_cache` are assigned based on the value of `skip_cache` from the previous section. This tells NGINX not to search the cache and not to store any new content.
     -   The `add_header` instruction is used to add a header field indicating whether the resource is taken from the cache or not. This field is handy for debug purposes, but is not strictly required in production code.
 
-    ```file {title="/etc/nginx/sites-available/example.com.conf" lang=aconf"}
+    ```file {title="/etc/nginx/sites-available/example.com.conf" lang="aconf"}
     fastcgi_cache wpcache;
     fastcgi_cache_valid 200 301 302 2h;
     fastcgi_cache_use_stale error timeout updating invalid_header http_500 http_503;
