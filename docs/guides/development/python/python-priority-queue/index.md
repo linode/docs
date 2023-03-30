@@ -1,24 +1,20 @@
 ---
 slug: python-priority-queue
-author:
-  name: Jeff Novotny
 description: 'This guide discusses priority queues and the PriorityQueue class in Python 3. This data structure allows you to sort items in a queue and return them in a desired order.'
 keywords: ['python queue','python priority queue','queue in python','get size of priority queue python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-17
 modified_by:
   name: Linode
-title: "What is the Python Priority Queue?"
-h1_title: "The Priority Queue in Python 3"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "The Priority Queue in Python 3"
+title_meta: "What is the Python Priority Queue?"
 external_resources:
 - '[Wikipedia page on priority queues](https://en.wikipedia.org/wiki/Priority_queue)'
 - '[Big O notation explanation](https://en.wikipedia.org/wiki/Big_O_notation)'
 - '[Python queue documentation](https://docs.python.org/3/library/queue.html)'
 - '[Python PriorityQueue documentation](https://docs.python.org/3/library/queue.html?highlight=priorityqueue#queue.PriorityQueue)'
 - '[Python heapq documentation](https://docs.python.org/3/library/heapq.html#priority-queue-implementation-notes)'
+authors: ["Jeff Novotny"]
 ---
 
 In Python, queues are frequently used to process items using a *first in first out* (FIFO) strategy. However, it is often necessary to account for the priority of each item when determining processing order. A queue that retrieves and removes items based on their priority as well as their arrival time is called a [*priority queue*](https://en.wikipedia.org/wiki/Priority_queue). Prioritization can be complicated, but fortunately Python priority queues can be easily and efficiently implemented using a built-in module. This guide introduces the Python priority queue and explains how to implement it in Python 3.
@@ -53,7 +49,7 @@ The two types of heaps are *max heaps* and *min heaps*. In a max heap, the value
 
 Heaps are a very efficient method for manipulating ordered data. They are particularly useful for retrieving the item with the highest or lowest value. In general, the algorithms used on a heap have either a constant or a [logarithmic time complexity](https://en.wikipedia.org/wiki/Time_complexity#Logarithmic_time). This is very good because algorithmic growth increases fairly slowly as the size of the data set increases. And, of course, [constant-time algorithms](https://en.wikipedia.org/wiki/Time_complexity#Constant_time) do not increase at all.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In computer science, [Big O notation](https://en.wikipedia.org/wiki/Big_O_notation) is used to describe how execution time increases with the size of the data set. Most heap operations have an O(log n) time complexity.
 {{< /note >}}
 
@@ -75,7 +71,7 @@ In Python, it is possible to build your own priority queues using Python lists. 
 
 A Python priority queue always removes and returns the highest-priority item in the queue. If two items have the same priority, Python removes the item that arrived first. For a tuple having both priority and data fields, Python first compares the priority and then the data item.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To avoid using the data field in the comparison, enclose the `PriorityQueue` class in a wrapper and override its default behavior. Consult the [Python PriorityQueue class documentation](https://docs.python.org/3/library/queue.html?highlight=priorityqueue#queue.PriorityQueue) for more details about this technique.
 {{< /note >}}
 
@@ -109,7 +105,7 @@ Developers can create a `PriorityQueue` object using the class constructor. At t
 
     q = PriorityQueue(100)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The examples in this section assume the `PriorityQueue` class has already been imported using `from queue import PriorityQueue`.
 {{< /note >}}
 
@@ -122,7 +118,7 @@ The `PriorityQueue` interface is fairly straightforward to use. The following li
 - **put**: This method adds an item with the specified priority to the priority queue. Developers can add either a single value to function as the priority, or a tuple in the form `(priority_number, data)`. A Python tuple is an ordered and immutable list. Similarly to the `get` method, `block` and `timeout` parameters can be passed to the method. The defaults are `True` and `None`. If the queue is full, the `put` method blocks until it times out waiting for a slot to become available.
 - **qsize**: This method returns the number of items currently in the queue.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some of the `PriorityQueue` commands, including `empty`, `full`, and `qsize` can be subject to race conditions when multiple processes are used.
 {{< /note >}}
 
@@ -185,7 +181,7 @@ False
 
 1.  To remove all remaining entries from the priority queue, use a `while` loop. At the loop entrance, confirm whether the loop is empty or not. If the `empty` method returns false, then there are still entries remaining. In this scenario, the `get` method extracts the highest priority item from the queue. Collins has a higher priority and is popped from the queue before Wilson is.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If `get` is used on an empty queue with default settings, it is blocked until an item is available. To avoid deadlocks, it is important to either set the `block` parameter to `False` or to first verify whether the queue still contains more items.
     {{< /note >}}
 
@@ -207,9 +203,9 @@ True
 
 These instructions can be combined together to form the program `pri_queue.py`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not name this program `queue.py`. This would conflict with the actual `queue` module and hide the actual interface. This bug generates the error `ImportError: cannot import name 'priorityQueue' from partially initialized module 'queue'` at runtime.
-{{< /caution >}}
+{{< /note >}}
 
 {{< file "pri_queue.py" python >}}
 from queue import PriorityQueue

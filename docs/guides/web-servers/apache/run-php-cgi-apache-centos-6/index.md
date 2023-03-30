@@ -1,9 +1,6 @@
 ---
 slug: run-php-cgi-apache-centos-6
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with instructions for using PHP CGI to run PHP scripts as individuals users on your system for better security on and performance on CentOS 6.'
 keywords: ["php cgi", "php", "apache", "cgi", "http", "php scripts", "web apps", "web applications"]
 tags: ["centos","web server","apache","php"]
@@ -22,19 +19,20 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: CentOS 6
+authors: ["Linode"]
 ---
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the process of setting up Apache and PHP CGI.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -53,7 +51,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo chkconfig httpd on
 
-    You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server.
+    You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server.
 
 3.  Install the PHP CGI binaries:
 

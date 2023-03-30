@@ -1,8 +1,5 @@
 ---
 slug: set-up-a-cassandra-node-cluster-on-ubuntu-and-centos
-author:
-  name: Andrew Lescher
-  email: docs@linode.com
 description: "This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster"
 keywords: ["cassandra", " apache-cassandra", " centos 7", " ubuntu 16.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,18 +7,15 @@ published: 2017-06-24
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "Set Up a Cassandra Node Cluster"
-h1_title: "Setting Up a Cassandra Node Cluster "
-enable_h1: true
+title: "Setting Up a Cassandra Node Cluster "
+title_meta: "Set Up a Cassandra Node Cluster"
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
-contributor:
-   name: Andrew Lescher
-   link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 tags: ["ubuntu","centos","database","nosql"]
 image: cass.png
+authors: ["Andrew Lescher"]
 ---
 
 ## What is Apache Cassandra
@@ -38,7 +32,7 @@ You will also learn how to secure communication between your nodes, as well as r
 
 1.  You must have at least two Cassandra nodes set up and configured. These nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur. To install Apache Cassandra, see the [Installing Apache Cassandra](/docs/guides/how-to-install-apache-cassandra-on-ubuntu-18-04/) guide and select your distribution.
 
-2.  A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+2.  A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 
 3.  Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
 

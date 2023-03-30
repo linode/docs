@@ -1,7 +1,5 @@
 ---
 slug: history-of-machine-learning
-author:
-  name: Pam Baker
 description: 'Want to learn about the history of machine learning? Our comprehensive guide discusses all you need to know, including who invented it and its evolution.'
 keywords: ['machine learning history','when was machine learning invented','who invented machine learning']
 tags: ['python']
@@ -9,11 +7,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "Machine Learning and Artificial Intelligence Background"
-h1_title: "The History of Machine Learning: A Comprehensive Overview"
-enable_h1: true
-contributor:
-  name: Pam Baker
+title: "The History of Machine Learning: A Comprehensive Overview"
+title_meta: "Machine Learning and Artificial Intelligence Background"
+authors: ["Pam Baker"]
 ---
 
 Machine learning (ML) is a subset of artificial intelligence (AI) and it is fast becoming the very backbone of most software today. It exists in several different forms from chatbots on websites and digital assistants like Siri and Alexa, to algorithms driving social media like Facebook, and a variety of office software. Machine learning is so prevalent that it is difficult to list all the places where it digitally resides and all the tasks it performs.
@@ -151,4 +147,4 @@ This is also the year that Google Assistant, an AI-powered virtual assistant, wa
 
 ## Conclusion
 
-Today, there are many available open-source tools and frameworks that you can use to power machine learning applications. PyTorch is a Python-based machine learning framework that makes use of CPU and GPU to accelerate its processing performance. You can [install PyTorch on an Ubuntu 20.04 Linode server](/docs/guides/pytorch-installation-ubuntu-2004/) and make use of [GPU](/docs/products/compute/gpu/) or [dedicated CPU](/docs/products/compute/dedicated-cpu/) compute instances.
+Today, there are many available open-source tools and frameworks that you can use to power machine learning applications. PyTorch is a Python-based machine learning framework that makes use of CPU and GPU to accelerate its processing performance. You can [install PyTorch on an Ubuntu 20.04 Linode server](/docs/guides/pytorch-installation-ubuntu-2004/) and make use of [GPU](/docs/products/compute/compute-instances/plans/gpu/) or [dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/) compute instances.

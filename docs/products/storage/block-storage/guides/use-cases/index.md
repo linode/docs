@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how people use Block Storage to expand their persistent storage on the Linode Platform."
 keywords: ['block','storage','use','cases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,13 +7,10 @@ modified: 2022-08-24
 modified_by:
   name: Linode
 title: "Common Use Cases for Block Storage"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
+authors: ["Linode"]
 ---
-
-{{< content "nvme-block-storage-notice-shortguide" >}}
 
 ## What is Block Storage
 
@@ -46,9 +40,9 @@ Below you will find some of the more popular use cases for Block Storage.
 
 Block Storage Volumes can be detached from a cloud instance just as easily as they are attached, meaning that it's possible to create hot-swappable drives with Block Storage. This is useful if you need to perform the same kind of tasks across a fleet of instances with the same data.
 
-{{< caution >}}
+{{< note type="alert" >}}
 While the Block Storage service has full support for hot swapping, it is important to follow the detachment instructions outlined in our [Attach and Detach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#detach-a-volume) guide. If a Volume is not safely detached, there is a risk of data loss for the Volume.
-{{< /caution >}}
+{{< /note >}}
 
 ### Container Storage
 
@@ -58,7 +52,7 @@ If you are using Docker, you can use the [Docker Volume Driver for Linode](https
 
 ### Database Storage
 
-With the release of NVMe Block Storage, our Block Storage service is able to meet the demands of the most resource-intensive database applications. Many enterprise database solutions benefit from ultra-fast NVMe storage, as well as the redundancy and fault tolerance provided by Block Storage. See the Availability section in the [Block Storage Overview](/docs/products/storage/block-storage/#availability) page to learn which data centers have already been upgraded with NVMe Block Storage.
+With the release of NVMe Block Storage, our Block Storage service is able to meet the demands of the most resource-intensive database applications. Many enterprise database solutions benefit from ultra-fast NVMe storage, as well as the redundancy and fault tolerance provided by Block Storage.
 
 ### Running Cloud Software
 

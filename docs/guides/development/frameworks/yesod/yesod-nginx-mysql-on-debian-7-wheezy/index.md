@@ -1,15 +1,10 @@
 ---
 slug: yesod-nginx-mysql-on-debian-7-wheezy
-author:
-  name: Si-Qi Liu
-  email: liusq@tsinghua.edu.cn
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
 keywords: ["yesod", "nginx", "mysql", "debian 7"]
 tags: ["web applications","nginx","mysql","debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/','/development/frameworks/yesod/yesod-nginx-mysql-on-debian-7-wheezy/']
-contributor:
-    name: Si-Qi Liu
 modified: 2014-09-25
 modified_by:
   name: Linode
@@ -27,18 +22,19 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
+authors: ["Si-Qi Liu"]
 ---
 
 
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
-Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for setting your hostname. Here's how to check.
+Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for setting your hostname. Here's how to check.
 
 1.  Enter the following commands to view the hostname:
 

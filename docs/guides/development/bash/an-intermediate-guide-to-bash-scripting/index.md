@@ -1,23 +1,17 @@
 ---
 slug: an-intermediate-guide-to-bash-scripting
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
-og_description: 'In this guide, you will learn more advanced methods of creating complex Bash Scripts to perform common operations frequently used by Linux system administrators.'
 keywords: ["shell", "bash", "printf", "script"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-05
 modified_by:
   name: Linode
-title: 'An Intermediate Guide to Bash Scripting'
-h1_title: 'Continuing with Bash Scripting'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
+title: 'Continuing with Bash Scripting'
+title_meta: 'An Intermediate Guide to Bash Scripting'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/an-intermediate-guide-to-bash-scripting/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 In the previous guide of this series, [Getting Started with Bash Scripting](/docs/guides/intro-bash-shell-scripting/), you learned Bash basics, like creating and using variables, getting user input, using environment variables, and more. In this guide, you will build off what you have already learned and put together more complex Bash scripts for common operations used by Linux system administrators like creating interactive Bash scripts with menu options, scripts that generate formatted output of your data, and scripts that work with files and directories. Each section will provide a brief introduction to each concept and commands with a few examples that you can run to better understand its function.
@@ -45,12 +39,12 @@ In this guide, you will learn about:
 
         PATH=$PATH:$HOME/bin/
 
-  {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure all scripts throughout this guide are executable. To add execute permissions to a file, issue the following command:
 
     chmod +x my-script.sh
 
-{{</ note >}}
+{{< /note >}}
 
 ## Standard Streams
 
@@ -253,9 +247,9 @@ done
 
         ./submenu.sh
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that the directory you are executing your script from contains at least one file in order to run through the full demo of the `submenu.sh` script.
-    {{</ note >}}
+    {{< /note >}}
 
     Your output will resemble the following, but may vary depending on the menu selection you make:
 
@@ -290,10 +284,10 @@ You can use variables as arguments to your `printf` commands. This is a powerful
 
     printf "Your current working directory is: \x1b[32m\n %s\n" $PWD
 
-  {{< output "bash" >}}
+{{< output "bash" >}}
 Your current working directory is:
  /home/user
-  {{</ output >}}
+{{</ output >}}
 
 ### Format Strings
 
@@ -331,16 +325,16 @@ linux-gnu
 0.990000
     {{</ output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `-v var` option causes the output of `printf` to be assigned to a variable instead of being printed to the standard output. In the example below, the result of the `printf` format specifier and argument will be stored in a variable named `myvar`. To view the result, the example echoes the value of `$myvar`.
 
     printf -v myvar "%d\n" "0xF9"
     echo $myvar
 
-  {{< output >}}
+{{< output >}}
 249
-  {{</ output >}}
-{{</ note >}}
+{{</ output >}}
+{{< /note >}}
 
 ### Use printf in a Script
 
@@ -420,10 +414,9 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 
     test -a /etc/passwd && echo "Yes, it exists!"
 
-{{< disclosure-note "File and Directory Test Operators">}}
-
+{{< note type="secondary" title="File and Directory Test Operators" isCollapsible=true >}}
 | Operator | Description |
-|---------|-------------|
+| -- | -- |
 | `-a` | File exists. |
 | `-b` | File exists and is a block special file. |
 | `-c` | File exists and is a character special file. |
@@ -432,8 +425,8 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-f` | File exists and is a regular file (not a directory or a device file). |
 | `-G` | File exists and has the same group as the active user running the bash script. |
 | `-h` | Files exists and is a symbolic link. |
-| `-g` | Files exists and has the [set group ID flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
-| `-k` | File exists and has a [sticky bit flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
+| `-g` | Files exists and has the [set group ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
+| `-k` | File exists and has a [sticky bit flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) set. |
 | `-L` | File exists and is a symbolic link. |
 | `-N` | File exists and has been modified since it was last read. |
 | `-O` | File exists and is owned by the effective user id. |
@@ -441,11 +434,10 @@ The example below tests if your `/etc/passwd` file exists. If the file exists, y
 | `-r` | File exists and is readable. |
 | `-S` | File exists and is socket. |
 | `-s` | File exists and has a nonzero size. |
-| `-u` | File exists and its [set user ID flag](/docs/tools-reference/tools/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
+| `-u` | File exists and its [set user ID flag](/docs/guides/modify-file-permissions-with-chmod/#chmod-command-syntax-and-options) is set. |
 | `-w` | File exists and is writable by the current user. |
 | `-x` | File exists and is executable by the current user. |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Use File and Directory Test Operators in a Script
 
@@ -453,7 +445,7 @@ The example script, `file-operator.sh`, takes file or directory locations as arg
 
 {{< note >}}
 You can use `[]` and `[[]]` commands instead of using the `if` conditional statement to create file conditions. The script makes use of this format on lines 26 - 40.
-{{</ note >}}
+{{< /note >}}
 
 {{< file "file-operator.sh" bash >}}
 #!/bin/bash
@@ -742,11 +734,11 @@ done
 
 An *exit code* is the code returned to a [parent process](https://en.wikipedia.org/wiki/Parent_process) after executing a command or a program. Using exit codes in your Bash scripts allows the script to modify its behavior based on the success or failure of your script's commands. Exit codes range between `0 - 255`. An exit code of `0` indicates success, while any non-zero value indicates failure. This section will provide an introduction to Bash exit codes and a few examples on how to use them in your scripts.
 
-{{< disclosure-note "Exit Codes">}}
+{{< note type="secondary" title="Exit Codes" isCollapsible=true >}}
 The table lists and describes reserved exit codes. You should not use any of the reserved exit codes in your Bash scripts.
 
 | Code | Description |
-| --------- | ------------- |
+| --| -- |
 | `0` | Successful execution |
 | `1` | General failure |
 | `2` | Incorrect usage of Bash built-in commands, by using invalid options, or missing arguments |
@@ -755,8 +747,7 @@ The table lists and describes reserved exit codes. You should not use any of the
 | `128+n` | Command terminated on a fatal signal `n`. The final exit code will be `128` plus the corresponding termination signal number. For example, a script that is terminated using the `kill` signal will have an exit code of `137` (128+9).|
 | `130` | Execution terminated by **CTRL-C** |
 | `255` | Exit status out of range |
-
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Learning the Exit Code of a Shell Command
 
@@ -790,9 +781,9 @@ You can understand whether a bash command was executed successfully or not by ac
 1
       {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 After you execute `echo $?`, the value of `$?` will always be `0` because `echo $?` was successfully executed.
-    {{</ note >}}
+    {{< /note >}}
 
 ### Using set -e
 
@@ -858,9 +849,9 @@ About to create and write to the file:  /dev/new-file
 
 Another handy way to use the `set` command is by enabling the `-x` option. This option displays commands and arguments before they're executed, which makes this a great option for debugging scripts.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Any output generated by the `set -x` execution trace will be preceded by a `+` character. This value is stored in the built-in variable, `PS4`.
-{{</ note >}}
+{{< /note >}}
 
 The example script below, `debug-set-example.sh`, contains identical code to the example in the previous section, however, it makes use of `set -x` in order to print out all commands before they're executed.
 

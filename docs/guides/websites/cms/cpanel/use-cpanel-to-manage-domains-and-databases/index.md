@@ -1,8 +1,5 @@
 ---
 slug: use-cpanel-to-manage-domains-and-databases
-author:
-  name: Chris C.
-  email: docs@linode.com
 description: 'This guide shows how to use cPanel, a popular web server control panel that makes it easy to manage server resources and services, like domains and databases.'
 keywords: ["cpanel", "database", "managing domain", "subdomain", "add-on domain", "parked domain", "phpmyadmin", "mysql", "create database", "manage database"]
 tags: ["centos","dns","cms","cpanel"]
@@ -16,9 +13,10 @@ title: Use cPanel to Manage Domains and Databases
 external_resources:
  - '[cPanel Home Page](http://cpanel.net)'
  - '[cPanel Support](http://cpanel.net/support.html)'
+authors: ["Chris C."]
 ---
 
-[cPanel](http://cpanel.net) is a commercial web-based control panel that simplifies many common system administration tasks such as website creation, database deployment and management, and more. This guide shows you how to manage your domains and databases with your cPanel user account. All of these instructions pertain to the user login located at port 2082 (2083 for SSL connection).
+[cPanel](http://cpanel.net) is a commercial web-based control panel that simplifies many common system administration tasks such as website creation, database deployment and management, and more. This guide shows you how to manage your domains and databases with your cPanel user account. All of these instructions pertain to the user login located at port 2086 (2087 for SSL connection).
 
 ![Use cPanel to Manage Domains and Databases](use-cpanel-to-manage-domains-and-databases.png "Use cPanel to Manage Domains and Databases")
 
@@ -26,7 +24,7 @@ external_resources:
 
 Three types of domains can be associated with your cPanel account: main domains, add-on domains, and parked domains. Your main domain cannot be changed except by the reseller that owns your account or by root itself. Subdomains, add-on domains, and parked domains can be managed in the Domains section.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 The Domains section also allows you to add or delete A or CNAME records to or from your domain. Any of the default entries would need to be modified by someone with the appropriate access (e.g., the reseller that owns your account or the root user).
 {{< /note >}}
 

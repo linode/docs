@@ -1,8 +1,5 @@
 ---
 slug: dokuwiki-engine
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing the DocuWiki software for creating a fully featured Wiki for your organization.'
 keywords: ["wiki", "doku wiki", "php"]
 tags: ["wiki","php"]
@@ -16,13 +13,14 @@ title: DokuWiki Engine
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
  - '[Doku Wiki Manual](http://www.dokuwiki.org/manual)'
+authors: ["Linode"]
 ---
 
 DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage while providing a rich feature set to enable collaborative document editing and creation for users of all skill levels and technical inclinations. DokuWiki stores wiki pages in text files on the web-server rather than in a database management system, which increases data usability and portability for moderately sized wiki projects without requiring the system resources to power a relational database server.
 
 ![Build a Fully Featured Wiki with DokuWiki](dokuwiki_title_graphic.png)
 
-Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before beginning the installation of DokuWiki, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Prerequisites
 
