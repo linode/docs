@@ -78,9 +78,9 @@ First, create the Compute Instance and add the necessary disks and configuration
 
 ### Download the Distribution's Installer Image
 
-After the Compute Instance has been created and prepared, the next step is to download the installer file for whichever distribution you wish to use. To do this, [Rescue Mode](/docs/guides/rescue-and-rebuild/) is used. This loads a recovery operating system that can be used to mount and access your disks.
+After the Compute Instance has been created and prepared, the next step is to download the installer file for whichever distribution you wish to use. To do this, [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) is used. This loads a recovery operating system that can be used to mount and access your disks.
 
-1. Boot your Compute Instance into Rescue Mode. To do this, click the **ellipsis** menu on the top left of your instance's dashboard page and select **Rescue**. You are presented with a prompt to assign your disks. Set **/dev/sda** to your *Installer* disk and then click the **Reboot into Rescue Mode** button to continue. See [Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for instructions.
+1. Boot your Compute Instance into Rescue Mode. To do this, click the **ellipsis** menu on the top left of your instance's dashboard page and select **Rescue**. You are presented with a prompt to assign your disks. Set **/dev/sda** to your *Installer* disk and then click the **Reboot into Rescue Mode** button to continue. See [Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for instructions.
 
     ![Screenshot of Rescue Mode configuration](rescue-mode-assign-disks.png "Screenshot of Rescue Mode configuration, with /dev/sda assigned to the Installer disk")
 
@@ -310,7 +310,7 @@ This next step involves making changes to your disks and configuration profiles,
     - `/dev/sda` > *System*
     - `/dev/sdb` > *System (ext4)*
 
-    See [Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) to learn more about using Rescue Mode.
+    See [Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) to learn more about using Rescue Mode.
 
 1. Connect to your instance using the [Lish Console](/docs/products/compute/compute-instances/guides/lish/) and wait for it to fully boot into Rescue Mode.
 

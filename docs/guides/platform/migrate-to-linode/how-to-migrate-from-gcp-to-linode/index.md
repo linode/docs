@@ -377,7 +377,7 @@ When selecting your Linode's plan, if you want to have access to advanced featur
 
 1.  Once the Linode is finished provisioning, power it down. Click on the **Running** status at the top of the Cloud Manager and select **Power Off** from the drop down menu.
 
-1.  [Disable *Watchdog*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
+1.  [Disable *Watchdog*](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog), also known as *Lassie*, which is a Linode Cloud Manager feature capable of automatically rebooting your Linode if it powers off unexpectedly. Click the **Settings** tab, then **Shutdown Watchdog**. Toggle the **Enabled** switch to **Disabled**.
 
 1.  Disable your Linode's Auto Resize capability. Click the **Resize** tab and scroll to the bottom of the screen. Uncheck the box for **Auto Resize Disk**.
 
@@ -454,7 +454,7 @@ You may also need to update your SSH server's configuration file to temporarily 
 
           PasswordAuthentication yes
 
-See the [SSH guide](/docs/guides/troubleshooting-ssh/) for more SSH troubleshooting tips.
+See the [SSH guide](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for more SSH troubleshooting tips.
     {{< /note >}}
 
 ### Remove Google Packages
@@ -479,7 +479,7 @@ When you're done:
 - [Delete the original disk](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) that was created when you first deployed the Linode. If you chose to transfer your disk to ext4, delete the raw disk you created to import the GCP image.
 - [Resize your Linode](/docs/products/compute/compute-instances/guides/resize/) to a smaller plan or resize your remaining ext4 disk or raw disk to take up the rest of the storage space.
 - [Delete the Configurations for the original Linode](/docs/products/compute/compute-instances/guides/configuration-profiles/#deleting-a-configuration-profile) when it was created. Optionally, delete the configuration for the raw disk if you created a new one for the ext4 boot disk.
-- [Enable Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
+- [Enable Shutdown Watchdog](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) (Lassie) under the **Settings** tab.
 
 ## Additional Migration Considerations
 

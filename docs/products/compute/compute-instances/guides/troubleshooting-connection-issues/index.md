@@ -14,16 +14,16 @@ authors: ["Linode"]
 
 This guide presents troubleshooting strategies for Compute Instances that are unresponsive to any network access. One reason that an instance may be unresponsive is if you recently performed a distribution upgrade or other broad software updates to your system, as those changes can lead to unexpected problems for your core system components.
 
-Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/).
+Similarly, your server may be unresponsive after maintenance was applied by Linode to your server's host (frequently, this is correlated with software/distribution upgrades performed on your deployment prior to the host's maintenance). This guide is designed as a useful resource for either of these scenarios. If you need to troubleshoot memory and networking, read our guide on [Troubleshooting Memory and Networking Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/).
 
-If you can [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guides.
+If you can [ping](/docs/guides/linux-system-administration-basics/#the-ping-command) your Compute Instance, but you cannot access SSH or other services, this guide will not assist with troubleshooting those services. Instead, refer to the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guides.
 
 {{< note title="Additional resources for help" type=secondary isCollapsible=true >}}
 This guide explains how to use different troubleshooting commands on your Compute Instance. These commands can produce diagnostic information and logs that may expose the root of your connection issues. For some specific examples of diagnostic information, this guide also explains the corresponding cause of the issue and presents solutions for it.
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
+Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/products/platform/get-started/guides/support/#scope-of-support) for a description of which issues Linode Support can help with.
 {{< /note >}}
 
 ## Before You Begin
@@ -64,11 +64,11 @@ The root user is available in Lish even if root user login is disabled in your S
 
 ## Troubleshoot Booting Issues
 
-If your Compute Instance isn't booting normally, you will not be able to rely on the Lish console to troubleshoot your deployment directly. To continue, you will first need to reboot your Compute Instance into [Rescue Mode](/docs/guides/rescue-and-rebuild/#rescuing), which is a special recovery environment that Linode provides.
+If your Compute Instance isn't booting normally, you will not be able to rely on the Lish console to troubleshoot your deployment directly. To continue, you will first need to reboot your Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rescuing), which is a special recovery environment that Linode provides.
 
 When you boot into Rescue Mode, you are booting your Compute Instance into the [Finnix recovery Linux distribution](https://www.finnix.org). This Finnix image includes a working network configuration, and you will be able to mount your Compute Instance's disks from this environment, which means that you will be able to access your files.
 
-1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/guides/support/#contacting-linode-support).
+1.  Review the Rescue and Rebuild guide for instructions and [boot into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode). If your Compute Instance does not reboot into Rescue Mode successfully, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
 
 1.  Connect to Rescue Mode via the Lish console as you would normally. You will not be required to enter a username or password to start using the Lish console while in Rescue Mode.
 
@@ -76,13 +76,13 @@ When you boot into Rescue Mode, you are booting your Compute Instance into the [
 
 If your Compute Instance can't boot, then it may have experienced filesystem corruption.
 
-1. Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/guides/rescue-and-rebuild/#performing-a-file-system-check).
+1. Review the Rescue and Rebuild guide for instructions on [running a filesystem check](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#performing-a-file-system-check).
 
     {{< note type="warning" >}}
     Never run a filesystem check on a disk that is mounted.
     {{< /note >}}
 
-1. If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Compute Instance](/docs/guides/rescue-and-rebuild/#rebuilding).
+1. If your filesystem check reports errors that cannot be fixed, you may need to [rebuild your Compute Instance](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 1. If the filesystem check reports errors that it has fixed, try rebooting your Compute Instance under your normal [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/#booting-from-a-configuration-profile). After you reboot, you may find that your connection issues are resolved. If you still cannot connect as normal, restart the troubleshooting process from the [beginning of this guide](#is-your-compute-instance-running).
 
@@ -92,7 +92,7 @@ If your Compute Instance can't boot, then it may have experienced filesystem cor
 
 In addition to being able to mount your Compute Instance's disks, you can also *change root* (sometimes abbreviated as *chroot*) within Rescue Mode. *Chrooting* will make Rescue Mode's working environment emulate your normal Linux distribution. This means your files and logs will appear where you normally expect them, and you will be able to work with tools like your standard package manager and other system utilities.
 
-To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/guides/rescue-and-rebuild/#change-root). Once you have chrooted, you can then investigate your Compute Instance's logs for messages that may describe the cause of your booting issues.
+To proceed, review the Rescue and Rebuild guide's instructions on [changing root](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#change-root). Once you have chrooted, you can then investigate your Compute Instance's logs for messages that may describe the cause of your booting issues.
 
 In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and recent releases of Arch), you can run the [`journalctl` command](/docs/guides/how-to-use-journalctl/) to view system and kernel logs. In these and other distributions, you may also find system log messages in the following files:
 
@@ -101,7 +101,7 @@ In systemd Linux distributions (like Debian 8+, Ubuntu 16.04+, CentOS 7+, and re
 - `/var/log/kern.log`
 - `/var/log/dmesg`
 
-You can use the [`less` command](/docs/guides/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/guides/rescue-and-rebuild/#rebuilding).
+You can use the [`less` command](/docs/guides/how-to-use-less/) to review the contents of these files (e.g. `less /var/log/syslog`). Try pasting your log messages into a search engine or searching in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Linode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 ### Quick Tip for Ubuntu and Debian Systems
 
@@ -111,7 +111,7 @@ After you have chrooted inside Rescue Mode, the following command may help with 
 dpkg --configure -a
 ```
 
-After running this command, try rebooting your Compute Instance into your normal configuration profile. If your issues persist, you may need to investigate and research your system logs further, or consider [rebuilding your Compute Instance](/docs/guides/rescue-and-rebuild/#rebuilding).
+After running this command, try rebooting your Compute Instance into your normal configuration profile. If your issues persist, you may need to investigate and research your system logs further, or consider [rebuilding your Compute Instance](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 ## Diagnose Network Connection Issues
 
@@ -215,7 +215,7 @@ If your report does not look like any of the previous examples, read through the
 
 If your MTR indicates a configuration issue within your Compute Instance, you can confirm the problem by using Rescue Mode:
 
-1.  Reboot your Compute Instance into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode).
+1.  Reboot your Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode).
 
 1.  Run another MTR report from your computer to your Compute Instance's IP address.
 
@@ -227,7 +227,7 @@ If your MTR indicates a configuration issue within your Compute Instance, you ca
 
 Before opening a support ticket, you should also generate a *reverse MTR* report. The MTR tool is run from your Compute Instance and targets your machine's IP address on your local network, whether you're on your home LAN, for example, or public WiFi. To run an MTR from your Compute Instance, log in to your Lish console. To find your local IP, visit a website like https://www.whatismyip.com/.
 
-Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/guides/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
+Once you have generated your original MTR and your reverse MTR, [open a Linode support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support), and include your reports and a description of the troubleshooting you've performed so far. Linode Support will try to help further diagnose the routing issue.
 
 ## Troubleshoot Network Configuration Issues
 
@@ -239,7 +239,7 @@ If you have determined that your network configuration is the cause of the probl
 
 1. If the report still shows the same packet loss, review the remaining troubleshooting suggestions in this section.
 
-If the recommendations in this section do not resolve your issue, try pasting your [diagnostic commands' output](#run-diagnostic-commands) into a search engine or searching for your output in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Compute Instance](/docs/guides/rescue-and-rebuild/#rebuilding).
+If the recommendations in this section do not resolve your issue, try pasting your [diagnostic commands' output](#run-diagnostic-commands) into a search engine or searching for your output in the [Linode Community Site](https://www.linode.com/community/questions/) to see if anyone else has run into similar issues. If you don't find any results, you can try asking about your issues in a new post on the Linode Community Site. If it becomes difficult to find a solution, you may need to [rebuild your Compute Instance](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rebuilding).
 
 ### Try Enabling Network Helper
 
@@ -444,6 +444,6 @@ In addition to analyzing your firewall ruleset, you can also temporarily disable
 
 ## Next Steps
 
-If you are able to restore basic networking, but you still can't access SSH or other services, refer to the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guides.
+If you are able to restore basic networking, but you still can't access SSH or other services, refer to the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) or [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guides.
 
 If your connection issues were the result of maintenance performed by Linode, review the [Reboot Survival Guide](/docs/guides/reboot-survival-guide/) for methods to prepare a Compute Instance for any future maintenance.

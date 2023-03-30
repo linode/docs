@@ -33,17 +33,17 @@ This guide explains how to use different troubleshooting commands on your Comput
 
 If the information and logs you gather do not match a solution outlined here, consider searching the [Linode Community Site](https://www.linode.com/community/questions/) for posts that match your system's symptoms. Or, post a new question in the Community Site and include your commands' output.
 
-Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/guides/support/#scope-of-support) for a description of the issues with which Linode Support can help.
+Linode is not responsible for the configuration or installation of software on your Compute Instance. Refer to Linode's [Scope of Support](/docs/products/platform/get-started/guides/support/#scope-of-support) for a description of the issues with which Linode Support can help.
 {{< /note >}}
 
 ## Compute Instance is Unresponsive
 
-If your Compute Instance is unresponsive, either at the Lish console or to basic network requests, read through the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide.
+If your Compute Instance is unresponsive, either at the Lish console or to basic network requests, read through the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide.
 
 ## Compute Instance is Slow
 
 {{< note >}}
-You should follow all steps in the [Troubleshooting Basic Connection Issues](/docs/guides/troubleshooting-basic-connection-issues/) guide before using the checklist in this section.
+You should follow all steps in the [Troubleshooting Basic Connection Issues](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/) guide before using the checklist in this section.
 {{< /note >}}
 
 ### Is the Disk Full?
@@ -112,7 +112,7 @@ The applications on your Compute Instance require a certain amount of physical m
 1.  Click the **Linodes** link in the sidebar to view a list of all your Compute Instance.
 1.  Select a Compute Instance to view its dashboard.
 1.  Click on the **Launch Console** link in the upper-right hand corner to launch the LISH Console. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or [upgrade to a larger plan](/docs/products/compute/compute-instances/guides/resize/).
-1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/guides/troubleshooting-memory-and-networking-issues/) guide for troubleshooting commands which display your memory use.
+1.  Read through the [Troubleshooting Memory and Networking Issues](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/) guide for troubleshooting commands which display your memory use.
 1.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your instance](https://www.linode.com/pricing) to a larger plan.
 
 If your Compute Instance is not out of memory, continue to the next section.
@@ -134,24 +134,24 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
     You must run `iotop` as `root` or with `sudo`.
     {{< /note >}}
 
-1.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/guides/support/) for assistance.
+1.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/products/platform/get-started/guides/support/) for assistance.
 
 Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
 ## Website is Not Loading
 
-If your website is unresponsive or not loading correctly, read through the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
+If your website is unresponsive or not loading correctly, read through the [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guide.
 
 {{< note >}}
-You should follow all steps in the [Compute Instance is Slow](#compute-instance-is-slow) section before following the [Troubleshooting Web Servers, Databases, and Other Services](/docs/guides/troubleshooting-web-servers-databases-other-services/) guide.
+You should follow all steps in the [Compute Instance is Slow](#compute-instance-is-slow) section before following the [Troubleshooting Web Servers, Databases, and Other Services](/docs/products/compute/compute-instances/guides/troubleshooting-services/) guide.
 {{< /note >}}
 
 ## Can't Connect via SSH or FTP
 
-If you can't connect to your Compute Instance over SSH, read through the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
+If you can't connect to your Compute Instance over SSH, read through the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) guide.
 
 {{< note >}}
-You should follow all steps in the [Compute Instance is Slow](#compute-instance-is-slow) section before following the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide.
+You should follow all steps in the [Compute Instance is Slow](#compute-instance-is-slow) section before following the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) guide.
 {{< /note >}}
 
 ### Are You Using Telnet or FTP?

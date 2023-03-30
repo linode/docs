@@ -97,7 +97,7 @@ If your Linode is currently running on Xen, go to the Linode's Dashboard page. I
 
 ## Troubleshooting
 
-There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/guides/support/).
+There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/products/platform/get-started/guides/support/).
 
 ### Migration from Xen
 

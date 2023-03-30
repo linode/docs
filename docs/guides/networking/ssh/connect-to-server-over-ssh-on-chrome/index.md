@@ -94,7 +94,7 @@ Type `x` to close the tab, `r` to reconnect to the same server, or `c` to be pre
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 

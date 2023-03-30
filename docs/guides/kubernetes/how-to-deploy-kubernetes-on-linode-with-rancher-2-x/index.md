@@ -346,7 +346,7 @@ Before provisioning your cluster, you will need to add the node template it will
     ![Linode Cloud Manager - new cluster nodes](cloud-manager-linodes-provisioning.png "New cluster nodes listed in Linode Cloud Manager")
 
     {{< note >}}
-    If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
+    If your nodes do not appear in the Linode Cloud Manager as expected, then you may have run into a limit on the number of resources allowed on your Linode account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
     {{< /note >}}
 
 ## Explore the New Cluster

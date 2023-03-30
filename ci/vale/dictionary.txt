@@ -1618,7 +1618,9 @@ pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
+pixid
 pki
 plaintext
 platformer
@@ -2087,6 +2089,8 @@ subqueries
 subquery
 subreddit
 subreddits
+subshells
+subshell
 substring
 substrings
 subtab
@@ -2193,6 +2197,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2249,6 +2254,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 UDF
 UDFs
@@ -2431,6 +2437,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
@@ -2450,6 +2457,7 @@ windowlist
 wireguard
 wirelessly
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll

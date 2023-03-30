@@ -177,7 +177,7 @@ You will need to run all of your k8s-alpha CLI commands from the terminal that y
     Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
     ```
 
-    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
+    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/products/platform/get-started/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
     {{< /note >}}
 
 1.  When the operation finishes, you will see options like the following:
