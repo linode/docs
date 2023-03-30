@@ -8,6 +8,7 @@ tab_group_main:
 cascade:
     date: 2023-01-18
     product_description: "Linux virtual machines equipped with a tailored set of resources designed to run any cloud-based workload."
+modified: 2023-03-22
 ---
 
 {{< content "april-price-update-shortguide" >}}
@@ -29,12 +30,15 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Shared or Dedicated vCPU cores (dependent on the chosen plan)
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
-- Free inbound network transfer
+- Free inbound network transfer (ingress)
+- Metered outbound network transfer (egress) that includes 1 TB - 20 TB of prorated* network transfer allowance
 - Dedicated IPv4 and IPv6 addresses (additional addresses available on request)
 - Deploy using the many available [Linux Distributions](https://www.linode.com/distributions/), [Marketplace Apps](https://www.linode.com/marketplace/), or Community [StackScripts](https://www.linode.com/products/stackscripts/)
 - Direct console access through [Lish](/docs/products/compute/compute-instances/guides/lish/)
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 - [Multi-queue NIC](/docs/products/compute/compute-instances/guides/multiqueue-nic/) support on plans with 2 or more vCPU cores.
+
+\**If a service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service is active.*
 
 ## Services Included at No Extra Cost
 

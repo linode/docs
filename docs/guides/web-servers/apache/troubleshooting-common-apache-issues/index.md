@@ -5,18 +5,17 @@ keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 tags: ["apache", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/troubleshooting/troubleshooting-common-apache-issues/','/web-servers/apache/troubleshooting/']
-modified: 2017-10-04
+published: 2009-11-06
+modified: 2023-03-14
 modified_by:
   name: Linode
-published: 2009-11-06
 title: Troubleshooting Common Apache Issues
+image: troubleshooting-common-apache-issues.jpg
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
 authors: ["Linode"]
 ---
-
-![Troubleshooting Common Apache Issues](troubleshooting-common-apache-issues.jpg "Troubleshooting Common Apache Issues")
 
 This article provides troubleshooting guidelines for the [Apache web server](/docs/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.
 
@@ -36,13 +35,17 @@ Even if Apache is running, it can be useful to restart the server. This will let
 
 Debian and Ubuntu:
 
-    sudo service apache2 restart
+```command
+sudo service apache2 restart
+```
 
 Fedora and CentOS:
 
-    sudo service httpd restart
+```command
+sudo service httpd restart
+```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can use one of the following three commands instead, depending on your Linux distribution:
 
 `/etc/init.d/httpd restart`
@@ -60,19 +63,25 @@ Reloading makes Apache reread its configuration files and incorporate the change
 
 Debian and Ubuntu:
 
-    /etc/init.d/apache2 reload
+```command
+/etc/init.d/apache2 reload
+```
 
 Fedora and CentOS:
 
-    /etc/init.d/httpd reload
+```command
+/etc/init.d/httpd reload
+```
 
 ## Check the Logs
 
 The best place to check for Apache errors is the Apache error logs. To view the error logs, we recommend using the `tail` command with the `-f` flag, which shows you the most recent part of the log live as it's updated. Example:
 
-    tail -f /var/log/apache2/error.log
+```command
+tail -f /var/log/apache2/error.log
+```
 
-Type **CTRL-C** to exit the live log.
+Type <kbd>CTRL</kbd> + <kbd>C</kbd> to exit the live log.
 
 The default error log locations are:
 
@@ -92,27 +101,29 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
 
 1.  Open your Apache configuration file for editing. The Fedora and CentOS configuration file should be located at `/etc/httpd/httpd.conf`. This example shows the location of the Debian and Ubuntu configuration file:
 
-        sudo nano /etc/apache2/apache2.conf
+    ```command
+    sudo nano /etc/apache2/apache2.conf
+    ```
 
-2.  Locate the `LogLevel` variable, and update it from the default `warn` to `info` or `debug`. `debug` will produce the greatest amount of output.
+1.  Locate the `LogLevel` variable, and update it from the default `warn` to `info` or `debug`. `debug` will produce the greatest amount of output.
 
-    {{< file "/etc/apache2/apache2.conf" >}}
-# LogLevel: Control the number of messages logged to the error_log.
-# Possible values include: debug, info, notice, warn, error, crit,
-# alert, emerg.
-#
-LogLevel debug
+    ```file {title="/etc/apache2/apache2.conf"}
+    # LogLevel: Control the number of messages logged to the error_log.
+    # Possible values include: debug, info, notice, warn, error, crit,
+    # alert, emerg.
+    #
+    LogLevel debug
+    ```
 
-{{< /file >}}
+1.  Restart Apache:
 
+    ```command
+    sudo service apache2 restart
+    ```
 
-3.  Restart Apache:
+1.  Perform the operation that was giving you trouble, then [check the logs](#check-the-logs) for more detailed information and errors.
 
-        sudo service apache2 restart
-
-4.  Perform the operation that was giving you trouble, then [check the logs](#check-the-logs) for more detailed information and errors.
-
-{{< note type="alert" respectIndent=false >}}
+{{< note type="warning" >}}
 Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
 {{< /note >}}
 
@@ -122,11 +133,15 @@ Apache includes a nice little syntax checking tool. Use it to make sure you aren
 
 Debian and Ubuntu:
 
-    apache2ctl -t
+```command
+apache2ctl -t
+```
 
 Fedora and CentOS:
 
-    httpd -t
+```command
+httpd -t
+```
 
 ## Check Virtual Host Definitions
 
@@ -134,11 +149,15 @@ Another helpful Apache tool lets you see all the virtual hosts on the server, th
 
 Debian and Ubuntu:
 
-    apache2ctl -S
+```command
+apache2ctl -S
+```
 
 Fedora and CentOS:
 
-    httpd -S
+```command
+httpd -S
+```
 
 Make sure all your `<VirtualHost>` directives use IP addresses and port numbers that match the ones defined in the `NameVirtualHost` directives. For example, if you have set `NameVirtualHosts *:80`, then the virtual host configuration should begin with `<VirtualHost *:80>`. If you've set `NameVirtualHosts 123.234.123.234:80`, then the virtual host configuration should begin with `<VirtualHost 123.234.123.234:80>`. If you've set `NameVirtualHosts *`, then the virtual host configuration should begin with `<VirtualHost *>`.
 
@@ -152,12 +171,12 @@ If you've modified a configuration option, and you're still not seeing it take e
 
 These points should help clarify the order in which directives are read:
 
--   Remember that *included files* are read at the point of their inclusion, before the rest of the original file is read.
--   `<Directory>` settings are read whenever the server starts or is reloaded. `.htaccess` files, on the other hand, are read before resources are served. As a result, `.htaccess` files can override directory configurations. To test whether this is occurring, temporarily disable `.htaccess` files.
--   `<Location>` directives are read after `<Directory>` and `<Files>` sections, so settings here might override other earlier settings.
--   Configuration files are read serially. For example, an option set in the beginning of the `apache2.conf` or `httpd.conf` file could be overridden by a setting in the `conf.d/` file or a virtual host file.
--   When an entire directory is included, the files from that directory are included sequentially (alphabetically) based on name.
--   Debian and Ubuntu systems have a file called `/etc/apache2/ports.conf`, where the `NameVirtualHost` and `Listen` directives are set. These values determine the IP address or addresses to which Apache binds, and on which port(s) the web server listens for HTTP requests. This can sometimes conflict with settings in other files.
+- Remember that *included files* are read at the point of their inclusion, before the rest of the original file is read.
+- `<Directory>` settings are read whenever the server starts or is reloaded. `.htaccess` files, on the other hand, are read before resources are served. As a result, `.htaccess` files can override directory configurations. To test whether this is occurring, temporarily disable `.htaccess` files.
+- `<Location>` directives are read after `<Directory>` and `<Files>` sections, so settings here might override other earlier settings.
+- Configuration files are read serially. For example, an option set in the beginning of the `apache2.conf` or `httpd.conf` file could be overridden by a setting in the `conf.d/` file or a virtual host file.
+- When an entire directory is included, the files from that directory are included sequentially (alphabetically) based on name.
+- Debian and Ubuntu systems have a file called `/etc/apache2/ports.conf`, where the `NameVirtualHost` and `Listen` directives are set. These values determine the IP address or addresses to which Apache binds, and on which port(s) the web server listens for HTTP requests. This can sometimes conflict with settings in other files.
 
 ## Further Troubleshooting
 
@@ -165,5 +184,5 @@ If you're continuing to have issues with Apache, we encourage you to make contac
 
 You might want to look at the following Linode guides:
 
--   A group of guides for various [web frameworks](/docs/frameworks/)
--   General [Apache HTTP server](/docs/web-servers/apache/) guides
+- A group of guides for various [web frameworks](/docs/frameworks/)
+- General [Apache HTTP server](/docs/web-servers/apache/) guides
