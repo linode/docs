@@ -873,6 +873,7 @@ https
 Hubzilla
 huginn
 Hugo
+hugo
 hulu
 husch
 hvc0
