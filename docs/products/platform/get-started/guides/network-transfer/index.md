@@ -3,7 +3,7 @@ description: "Learn how your Linode account's network transfer pool is calculate
 keywords: ["network","billing","account","transfer", "overage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
-modified: 2023-03-22
+modified: 2023-03-31
 modified_by:
   name: Linode
 title: "Network Transfer Usage and Costs"
@@ -52,7 +52,7 @@ Costs associated with network transfer can often be unexpected or confusing in a
 
 - Outbound transfer from Object Storage (over both public IPv6 and public IPv4), even to other Linode services within the same data center.
 
-All metered network transfer consumed by a service is counted toward the account-wide **monthly network transfer pool**. Any additional transfer usage that exceeds this monthly allotment costs $0.01/GB (which comes to $10/TB) and is charged at the end of the billing period.
+All metered network transfer consumed by a service is counted toward the account-wide **monthly network transfer pool**. Any additional transfer usage that exceeds this monthly allotment costs $0.005/GB (which comes to $5/TB) and is charged at the end of the billing period.
 
 {{< note >}}
 The combined monthly network transfer pool is typically enough to cover *most* common use cases for our services. You are only billed for additional network transfer if your usage exceeds this monthly pool during a billing period. If traffic for an individual service exceeds the network transfer amount specified by its plan, but the total transfer used between all of your services is still less than your monthly network transfer pool, then you are *not* charged additional fees.
