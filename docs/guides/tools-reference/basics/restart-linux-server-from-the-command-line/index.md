@@ -20,6 +20,7 @@ While your Linux server can run continuously for weeks or months, some configura
 Generally, you do not need to regularly restart your Linux server. It should be able to keep running for weeks or months, without needing to be "refreshed" with a reboot.
 
 However, several factors may make you want to restart your server. Some software installations require a manual reboot after installation, and some applications benefit from the system being periodically rebooted. There are also many administrative processes that require restarting the server for changes to take effect.
+Linode Compute Instances have a feature called Lassie (Linode Autonomous System Shutdown Intelligent rEbooter), also referred to as the Shutdown Watchdog. When this feature is enabled, a Compute Instance automatically reboots if it ever powers off unexpectedly. To have a normal `reboot` functionality, ensure that you have enabled this feature. For more information, see the [Shutdown Watchdog guide](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/).
 
 For those cases and others, it is helpful to know the available commands to quickly initiate a graceful system reboot.
 

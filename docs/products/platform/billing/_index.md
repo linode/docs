@@ -27,7 +27,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/products/platform/get-started/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
 \*Review the [Viewing Current Balance](/docs/products/platform/billing/guides/access-billing/) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 

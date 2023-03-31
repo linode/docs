@@ -1,12 +1,11 @@
 ---
-slug: lassie-shutdown-watchdog
 title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
 title_meta: "Recover from Unexpected Shutdowns with Lassie"
 keywords: ['lassie','unexpected shutdown','reboot']
 tags: ["linode platform","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 description: "Learn how to investigate an unexpected shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
-aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/']
+aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/','/guides/lassie-shutdown-watchdog/']
 published: 2022-09-29
 modified_by:
   name: Linode Docs
@@ -19,7 +18,7 @@ Linode Compute Instances have a featured called *Lassie* (Linode Autonomous Syst
 
 The Shutdown Watchdog feature detects when a Compute Instance is powered off and checks if that directive came from the Linode platform (such as the Cloud Manager or Linode API). If the power off command *did not* originate from the Linode platform, the shutdown is considered unexpected and the Compute Instance is automatically powered back on.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Shutdown Watchdog can power back on a Compute Instance up to 5 times within a 15 minute period. If there is a recurring issue that is causing 6 or more shutdowns within this time period, the instance remains powered off until it is manually powered back on. This is to prevent endless reboot loops if there is an issue with the internal software of a Compute Instance.
 {{< /note >}}
 
@@ -42,17 +41,21 @@ An *unexpected shutdown* is when a Compute Instance powers off without receiving
 
 - **A user issues the [**shutdown command**](https://man7.org/linux/man-pages/man8/shutdown.8.html)** in the shell environment of a Compute Instance. In Linux, a system can be powered off by entering the `shutdown` command (or other similar commands) in the system's terminal. Since Linode has no knowledge of internal commands issued on a Compute Instance, it is considered an unexpected shutdown.
 
--   **Kernel panic:** A kernel panic can occur when your system detects a fatal error and it isn't able to safely recover. Here is an example of a console log entry that indicates a kernel panic has occurred:
+- **Kernel panic:** A kernel panic can occur when your system detects a fatal error and it isn't able to safely recover. Here is an example of a console log entry that indicates a kernel panic has occurred:
 
-        Kernel panic - not syncing: No working init found.
+    ```output
+    Kernel panic - not syncing: No working init found.
+    ```
 
--   **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. OOMing can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
+- **Out of memory (OOM) error:** When a Linux system runs out of memory, it can start killing processes to free up additional memory. In many cases, your system remains accessible but some of the software you use may stop functioning properly. OOMing can occasionally result in your system becoming unresponsive or crashing, causing an unexpected shutdown.
 
-        kernel: Out of memory: Kill process [...]
+    ```output
+    kernel: Out of memory: Kill process [...]
+    ```
 
 - **Other system crashes**, such as a crash caused by the software installed on your system or a malicious process (such as malware).
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The Shutdown Watchdog feature never *causes* a Compute Instance to shut down and only ever *powers on* an instance if it detects an unexpected shutdown.
 {{< /note >}}
 
@@ -77,13 +80,15 @@ The underlying cause of these issues can vary. The most helpful course of action
     You may also want to review log files for any other software you have installed on your system that might be causing these issues.
 
 {{< note respectIndent=false >}}
-Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/guides/support/#scope-of-support) of the Linode Support team.
+Unexpected shutdowns are primarily caused by issues with the internal software configuration of a Compute Instance. To investigate these issues further, it is recommended that you reach out to your own system administrators or on our [Community Site](https://www.linode.com/community/questions/). These issues are generally [outside the scope](/docs/products/platform/get-started/guides/support/#scope-of-support) of the Linode Support team.
 {{< /note >}}
 
 ## File System Corruption
 
 In some cases, unexpected shutdowns can cause file system corruption on a Compute Instance. If an error message (such as the one below) appears within your console logs, your file system may be corrupt or otherwise be in an inconsistent state.
 
-    /dev/sda: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.
+```output
+/dev/sda: UNEXPECTED INCONSISTENCY; RUN fsck MANUALLY.
+```
 
-In cases like this, it is recommended that you attempt to correct the issue by running the `fsck` tool in [Rescue Mode](/docs/guides/rescue-and-rebuild/). See [Using fsck to Find and Repair Disk Errors and Bad Sectors](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) for instructions.
+In cases like this, it is recommended that you attempt to correct the issue by running the `fsck` tool in [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/). See [Using fsck to Find and Repair Disk Errors and Bad Sectors](/docs/guides/how-to-use-fsck-to-fix-disk-problems/) for instructions.

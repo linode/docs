@@ -50,7 +50,7 @@ The default user is the `core` user, so you must log in as `core` rather than `r
 
 Container Linux has no package manager such as *apt* or *yum*, and in fact the operating system is not upgraded with individual package updates like most distributions. Instead, entire [system updates](https://coreos.com/why#updates) are pushed to the distribution and the system reboots in accordance with one of three [reboot strategies](https://coreos.com/os/docs/latest/update-strategies.html).
 
-The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (such as if you are clustering Linodes running Container Linux). If not, the system will reboot immediately after applying the update. For the Linode to boot back up automatically, you will want [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configuring-shutdown-watchdog) enabled in the Linode Manager.
+The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (such as if you are clustering Linodes running Container Linux). If not, the system will reboot immediately after applying the update. For the Linode to boot back up automatically, you will want [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configuring-shutdown-watchdog) enabled in the Linode Manager.
 
 If you find an update has undesirable effects, [roll back](https://coreos.com/os/docs/latest/manual-rollbacks.html) to the previous version you were using. Update checks will take place about 10 minutes after Container Linux boots and about every hour afterwards. Should you need to trigger a [manual update](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update), use:
 
@@ -58,7 +58,7 @@ If you find an update has undesirable effects, [roll back](https://coreos.com/os
 
 ## Recovery Mode
 
-Should you need to access your Container Linux disk using Rescue Mode, use the boot instructions shown in our [Rescue and Rebuild](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`. To access it, enter:
+Should you need to access your Container Linux disk using Rescue Mode, use the boot instructions shown in our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`. To access it, enter:
 
     mount /dev/sda9 && cd /media/sda9
 

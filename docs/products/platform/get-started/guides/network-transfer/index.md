@@ -3,7 +3,7 @@ description: "Learn how your Linode account's network transfer pool is calculate
 keywords: ["network","billing","account","transfer", "overage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
-modified: 2022-06-17
+modified: 2023-03-22
 modified_by:
   name: Linode
 title: "Network Transfer Usage and Costs"
@@ -22,18 +22,18 @@ authors: ["Linode"]
 
 The following Linode services consume network transfer and, in most cases, include a set amount of outbound network transfer allowance per month. The amount of transfer is displayed along with the pricing and plan details for each service. See Linode's [pricing page](https://www.linode.com/pricing) for exact amounts.
 
-- **Compute Instances:** Consume network transfer and include 1-20 TB of transfer allowance per month, depending on plan size
+- **Compute Instances:** Consume network transfer and include 1-20 TB of transfer allowance per month, depending on plan size.
 
 - **NodeBalancers:** Consume network transfer but do not include a monthly transfer allowance.
 
-- **Object Storage:** Consumes network transfer and includes 1TB of transfer allowance per month, regardless of plan size
+- **Object Storage:** Consumes network transfer and includes 1 TB of transfer allowance per month, regardless of usage.
 
 - **Managed Databases:** Does not consume network transfer or include a monthly transfer allowance.
 
 The allowance included with each service on an account is added to an account-wide **monthly network transfer pool**. Whenever a service consumes network transfer, it is counted towards this account-wide pool and not the individual transfer allowance.
 
 {{< note >}}
-If the service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service was active.
+If a service is not active for the entire month, the amount of network transfer allowance is prorated based on the number of hours the service is active.
 {{< /note >}}
 
 ## Usage Costs

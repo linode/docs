@@ -2,7 +2,7 @@
 slug: check-for-configuration-issues-with-popeye
 description: "Learn how to use Popeye, a utility that searches for configuration issues on live Kubernetes clusters."
 keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
-tags: ["security", "kubernetes","container"]
+tags: ["security", "kubernetes","container","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-09
 modified_by:

@@ -1,6 +1,6 @@
 ---
 title: "Jeff Novotny"
-link: "https://github.com/JeffreyNovotny/"
+link: ""
 email: ""
 description: "The Linode documentation library's profile page and submission listing for Jeff Novotny"
 ---

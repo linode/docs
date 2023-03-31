@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 title: "Visualize Apache Logs With Elastic Stack on Ubuntu 18.04"
 dedicated_cpu_link: true
-tags: ["ubuntu","analytics","database","monitoring","apache"]
+tags: ["ubuntu","analytics","database","monitoring","apache","digital agencies"]
 relations:
     platform:
         key: visualize-apache-logs-using-elastic-stack

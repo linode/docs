@@ -351,7 +351,7 @@ The SSH daemon on a Linux server allows you to configure and fine-tune its behav
 
 ## Troubleshooting
 
-If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide for troubleshooting help.
+If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) guide for troubleshooting help.
 
 ## Next Steps
 

@@ -30,7 +30,7 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Debian 10, Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Virtualmin Options

@@ -19,7 +19,7 @@ Every Compute Instance is assigned several IP addresses, including a public IPv4
 - Using other DNS resolvers (not Linode’s)
 - Other advanced use cases where custom network configuration is required
 
-The guides in this series walk you through how to manually configure your networking in most common Linux distributions. To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/guides/support/) and detailing your requirements.
+The guides in this series walk you through how to manually configure your networking in most common Linux distributions. To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/products/platform/get-started/guides/support/) and detailing your requirements.
 
 ## Network Configuration Software in Linux
 
