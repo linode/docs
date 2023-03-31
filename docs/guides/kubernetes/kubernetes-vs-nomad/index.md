@@ -19,7 +19,7 @@ Kubernetes, through efficient container orchestration, has invigorated how peopl
 
 However, Nomad offers its own take on workload orchestration. While Nomad comes with a flexible and simplified approach compared to Kubernetes, it offers more than just a straight alternative.
 
-So what features sets these two apart? Which is better, Kubernetes or Nomad? Better yet, which one should you use?
+So what features set these two apart? Which is better, Kubernetes or Nomad? Better yet, which one should you use?
 
 Learn all about Kubernetes, Nomad, and how they compare in this tutorial.
 
@@ -53,11 +53,11 @@ For a more in-depth breakdown of Kubernetes, see our guide [Advantages of Using 
 
 [Nomad](https://www.nomadproject.io/) from HashiCorp offers a workload orchestration system that prioritizes flexibility and simplicity. Nomad supports highly scalable features like multi-region deployments as well as diverse workloads, from containers to standalone applications.
 
-Nomad is part of the HashiCorp ecosystem, making it ready for integration with HashiCorp's other tools, like Consul, Terraform, and Vault.
+Nomad is part of the HashiCorp ecosystem, making it easy to integrate with HashiCorp's other tools, like Consul, Terraform, and Vault.
 
-Nomad's rise has been relatively recent, and discussions have often centered around Nomad as a simplified Kubernetes alternative. But Nomad's flexibility makes it stand out on its own. Nomad can handle scheduling and management for highly scalable clusters, and can work with applications that are containerized, non-containerized, or a mix. What's more, it can accomplish all of this across a wider range of systems.
+Nomad's rise has been relatively recent, and discussions have often centered around Nomad as a simplified Kubernetes alternative. However, Nomad's flexibility makes it stand out on its own. Nomad can handle scheduling and management for highly scalable clusters, and can work with applications that are containerized, non-containerized, or a mix. What's more, it can accomplish all of this across a wider range of systems.
 
-Learn more about Nomad and how it operates through our tutorial [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/).
+Learn more about Nomad and how it operates in our tutorial [How to Use Nomad for Container Orchestration](/docs/guides/using-nomad-for-orchestration/).
 
 ### Pros and Cons
 
@@ -65,15 +65,15 @@ Learn more about Nomad and how it operates through our tutorial [How to Use Noma
 
 -   Simpler and often requiring less configuration.
 
--   Suited to smaller teams, fewer maintenance resources.
+-   Suited to smaller teams with fewer maintenance resources.
 
 -   Wider range of platforms, operating on macOS and Windows in addition to Linux.
 
 **Cons**:
 
--   Newer, with less community support and less developed tooling.
+-   Newer, with less community support and developed tooling.
 
--   Closely tied to HashiCorp tools and language.
+-   Closely tied to the HashiCorp tools and language.
 
 ## How Do Nomad and Kubernetes Compare?
 
@@ -83,7 +83,7 @@ With an understanding of what each tool offers on its own, here's a closer look 
 
 Both Nomad and Kubernetes are designed to orchestrate workloads. So the two systems share some similarities, features, and benefits with each other.
 
-Below are just a few of their similarities, but they highlight key features that make each tool compelling to use for orchestration:
+Below are just a few of the similarities, but it highlights key features that make each a compelling tool for orchestration:
 
 -   **Declarative Approach**: Both Nomad and Kubernetes use declarative configuration/automation scripts. The declarative language focuses on the desired state and enables an infrastructure-as-code approach to development.
 
@@ -91,15 +91,15 @@ Below are just a few of their similarities, but they highlight key features that
 
 -   **Rolling Deployments**: Nomad and Kubernetes support rolling upgrades that verify a deployment's health before replacing an old deployment, and each can automatically rollback changes if a deployment fails.
 
--   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you could use, for instance, and you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/).
+-   **External Storage Solutions**: Both Kubernetes and Nomad utilize the Container Storage Interface (CSI) standard, allowing them to leverage storage resources on cloud platforms that support CSI. Linode has its own CSI that you can learn more in our guide [How to Deploy Persistent Volume Claims with Linode](/docs/kubernetes/deploy-volumes-with-the-linode-block-storage-csi-driver/).
 
 ### Differences
 
 Despite the similarities, Kubernetes and Nomad have different features to recommend them. This is part of what makes Nomad more than just a Kubernetes alternative, as it is capable of fulfilling a different role.
 
--   **Community & Tooling**: Kubernetes' popularity has given rise to a wide array of community support. Anyone adopting Kubernetes is likely to find a diverse and robust toolset to pull from and solutions from a sizable and experienced community.
+-   **Community & Tooling**: Kubernetes' popularity has given rise to a wide array of community support. Anyone adopting Kubernetes is likely to find a diverse and robust toolset to pull from, along with solutions from a sizable and experienced community.
 
-    On the other hand, Nomad is newer and lacks the community that Kubernetes has. But Nomad does have integration with the full HashiCorp suite of tools, giving it easy access to a range of solutions.
+    On the other hand, Nomad is newer and lacks the community that Kubernetes has. However, Nomad does have integration with the full HashiCorp suite of tools, giving it easy access to a range of solutions.
 
 -   **Maintenance**: Kubernetes can be a complicated system to set up and maintain, and a Kubernetes setup often requires more hardware and staff. Nomad, on the other hand, is designed for simplicity. This makes it ideal for smaller teams getting started with orchestration, or for cases where fewer resources are needed.
 
@@ -113,7 +113,7 @@ Whether to use Nomad or Kubernetes depends on your specific needs, available har
 
 Kubernetes often makes the most sense for large projects and large teams. Kubernetes systems tend to require more hardware and maintenance efforts, although using a platform like the Linode Kubernetes Engine can mitigate those issues. However, Kubernetes offsets such requirements with its robust capabilities when it comes to managing containerized applications across clusters.
 
-Nomad tends to be the better option for smaller projects and smaller teams. Nomad simplifies the orchestration process, with easier maintenance and management. At the same time, Nomad is flexible. This allows it to adapt to particular needs and limitations much more easily than can Kubernetes. Nomad's flexibility makes it a compelling option even for larger projects when scalability is a concern. Nomad has proven more efficient when it comes to large-scale clustering, being capable of handling 10,000 clusters compared to Kubernetes' 5,000. Combine that with Nomad's adaptable design, and a Nomad system can be made to fit your needs more precisely and effectively.
+Nomad tends to be the better option for smaller projects and smaller teams. Nomad simplifies the orchestration process, with easier maintenance and management. At the same time, Nomad is flexible. This allows it to adapt to particular needs and limitations much more easily than Kubernetes. Nomad's flexibility makes it a compelling option when scalability is a concern, even for larger projects. Nomad has proven more efficient when it comes to large-scale clustering, being capable of handling 10,000 clusters compared to Kubernetes' 5,000. Combine that with Nomad's adaptable design, and a Nomad system can be made to fit your needs more precisely and effectively.
 
 ### Using Them Together
 
@@ -125,7 +125,7 @@ However, Nomad can be brought in to supplement this. Its flexibility makes it us
 
 ## Conclusion
 
-This tutorial showcased what features set Nomad and Kubernetes apart, and which tool is more likely to work best for your specific project. Both offer excellent solutions for container orchestration, and being familiar with each helps to better decide on a setup.
+This tutorial showcases what features set Nomad and Kubernetes apart, and which tool is more likely to work best for your specific project. Both offer excellent solutions for container orchestration, and being familiar with each helps to better decide on a setup.
 
 Be sure to reference the tutorials linked throughout this guide to keep learning about Kubernetes and Nomad. For reference, here are several that can act as next steps:
 

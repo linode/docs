@@ -20,15 +20,15 @@ In this tutorial, learn how to get started understanding and using Nomad effecti
 
 ## How to Install Nomad
 
-This section outlines how to install Nomad and access its interface to start getting familiar with Nomad's way of handling jobs.
+This section outlines how to install Nomad and access its interface to get familiar with Nomad's way of handling jobs.
 
-If, instead, you are ready to start deploying a Nomad cluster, skip to the [How to Deploy a Cluster with Nomad](/docs/guides/using-nomad-for-orchestration/#how-to-deploy-a-cluster-with-nomad) section.
+If, instead, you are ready to start deploying a Nomad cluster now, skip to the [How to Deploy a Cluster with Nomad](/docs/guides/using-nomad-for-orchestration/#how-to-deploy-a-cluster-with-nomad) section.
 
 ### Deploying Nomad from the Linode Marketplace
 
-The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, you can quickly set up a Linode instance with Nomad already installed and configured. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/products/tools/marketplace/guides/hashicorp-nomad/).
+The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/products/tools/marketplace/guides/hashicorp-nomad/).
 
-First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to start getting familiar with your new Nomad instance.
+First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to get familiar with the new Nomad instance.
 
 ### Manually Installing Nomad
 
@@ -130,7 +130,7 @@ Completing this part of the setup is optional, but generally recommended.
     sudo tar -C /opt/cni/bin -xzf cni-plugins.tgz
     ```
 
-1.  To further support network traffic over bridge connections, adjust your system's iptables. Nomad provides the configurations implemented below for this purpose. These lines set the necessary iptables values, and adding them to a file ensures they persist at system startup. Run the following command to create a `bridge.conf` file within the `/etc/sysctl.d/` directory:
+1.  To further support network traffic over bridge connections, adjust your system's `iptables`. Nomad provides the configurations implemented below for this purpose. These lines set the necessary `iptables` values, and adding them to a file ensures they persist at system startup. Run the following command to create a `bridge.conf` file within the `/etc/sysctl.d/` directory:
 
     ```command
     sudo tee /etc/sysctl.d/bridge.conf > /dev/null <<EOF
@@ -149,7 +149,7 @@ Completing this part of the setup is optional, but generally recommended.
 
 ## How Nomad Works
 
-With the Nomad instance up and running, it's time to start exploring how Nomad works. This section provided the basics to navigate Nomad's features.
+With the Nomad instance up and running, it's time to start exploring how Nomad works. This section provides the basics to navigate Nomad's features.
 
 ### Using Nomad
 
@@ -185,11 +185,11 @@ What follows is a brief overview of these key essentials for grasping the Nomad 
 
 -   A Nomad **agent** runs on each Node in the Nomad cluster and can be either a *server* agent or a *client* agent. Agents do all the work behind Nomad, and it is the presence of this agent network that makes up the Nomad cluster.
 
-    -   A Nomad **server** agent manages jobs and clients. Each server node communicates with the other server nodes for high availability and awareness across multiple regions. Servers also manage job schedules and disseminate jobs to appropriate client nodes when jobs need to be executed.
+    -   A Nomad **server** agent manages jobs and clients. Each server node communicates with the other server nodes for high availability and awareness across multiple regions. Servers also manage job schedules and disseminate jobs to appropriate client nodes when jobs need executed.
 
-    -   A Nomad **client** agent watches for jobs from its region's server nodes and executes any tasks within those jobs. Essentially clients are the units that fulfill jobs, running the necessary tasks, whether batch processes, services, or otherwise.
+    -   A Nomad **client** agent watches for jobs from its region's server nodes and executes any tasks within those jobs. Essentially, clients are the units that fulfill jobs, running the necessary tasks, whether batch processes, services, or otherwise.
 
--   A Nomad **job** is a collection of one or more *tasks* to be handled by a *client*. *Tasks* are collected within **groups** within their *jobs*. Each **task** in turn contains a single unit of work to be executed by a *client agent*.
+-   A Nomad **job** is a collection of one or more *tasks* to be handled by a *client*. *Tasks* are collected into **groups** within their *jobs*. Each **task** in turn contains a single unit of work to be executed by a *client agent*.
 
 ## How to Deploy a Cluster with Nomad
 
@@ -203,7 +203,7 @@ This setup is meant to serve as a basis for your own specific use case. For that
 
 Probably the most effective way to deploy a Nomad cluster is through [Terraform](https://www.terraform.io/), another tool by HashiCorp. With Terraform, you can provision infrastructure as code, automating the deployment process. This is especially convenient with Nomad. Terraform coordinates configuration and deployment between all nodes in a cluster, in addition to saving manual installation and setup time on each node. Learn more about using Terraform, particularly for provisioning Linode instances, in our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/).
 
-This tutorial leverages our custom Terraform script to deploy the Nomad cluster. The Terraform script here emphasizes simplicity and readability and is helpful for getting started with your own uses.
+This tutorial leverages our custom Terraform script to deploy the Nomad cluster. The Terraform script here emphasizes simplicity and readability, which is helpful for getting started with your own uses.
 
 Here's a rundown of what the Terraform script does:
 
@@ -213,7 +213,7 @@ Here's a rundown of what the Terraform script does:
 
 -   Runs a script on each server node to provide an initial Consul and Nomad server configuration. Repeats the process for each client node, setting the configurations for communication with the server nodes.
 
--   Starts up Consul and Nomad so that the cluster is up and running and accessible by the end of the Terraform process.
+-   Starts up Consul and Nomad so that the cluster is up-and-running and accessible by the end of the Terraform process.
 
 ### Deploying the Cluster with Terraform
 
@@ -223,9 +223,9 @@ Follow the steps outlined here when ready to deploy your own Nomad cluster. Thes
 The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
 {{< /caution >}}
 
-1.  Install Terraform. You can do so by following the [official installation guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). This sets you up with the Terraform command line interface (CLI).
+1.  Install Terraform by following the [official installation guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). This sets you up with the Terraform command line interface (CLI).
 
-1.  Download our Terraform script for deploying a Nomad cluster. A zip archive of the script and its accompanying files [here](example-nomad-terraform.zip).
+1.  Download a `.zip` archive our Terraform script for deploying the Nomad cluster and its accompanying files [here](example-nomad-terraform.zip).
 
     Once downloaded, unzip the archive with the `unzip` program. The set of commands below place the Terraform directory in your current user's home directory:
 
@@ -249,11 +249,11 @@ The configurations and commands used in this guide add multiple Linode instances
 
     -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
-    -   `ssh_keys` takes a list of SSH public keys. These keys are added to the known hosts on each node, allowing SSH access to the nodes.
+    -   `ssh_keys` takes a list of SSH public keys. These keys are added to the known hosts on each node, allowing SSH access to the nodes. Enter the full public key for your local machine in one line.
 
     -   `root_password` is used to set up a root password for each node.
 
-    -   `server_count` and `client_count` dictate the number of Nomad server and client nodes, respectively, to provision. Nomad recommends three or five server nodes for each region. This tutorial uses three server nodes and three client nodes.
+    -   `server_count` and `client_count` dictate the number of Nomad server and client nodes to provision, respectively. Nomad recommends three or five server nodes for each region. This tutorial uses three server nodes and three client nodes.
 
     -   `region` determines what Linode region the nodes should be created in. The full list of regions and their designations is available via the [Linode regions API](https://api.linode.com/v4/regions). However, this tutorial uses Linode's VLAN feature, which is only available for certain regions. Those regions are listed on the [VLAN Overview](/docs/products/networking/vlans/#availability) page.
 
@@ -278,15 +278,15 @@ Sensitive infrastructure data, such as passwords and tokens, are visible in plai
     Apply complete! Resources: 12 added, 0 changed, 0 destroyed.
     ```
 
-At this point, access the Nomad interface to check that the cluster is running and connected. In a web browser, navigate to port `4646` on the public IP address for one of the cluster's server nodes. For instance, if `nomad-server-1` has the public IP address `192.0.2.0`, navigate to `192.0.2.0:4646` in your browser.
+1.  At this point, access the Nomad interface to check that the cluster is running and connected. In a web browser, navigate to port `4646` on the public IP address for one of the cluster's server nodes. For instance, if `nomad-server-1` has the public IP address `192.0.2.0`, navigate to `192.0.2.0:4646` in your browser.
 
-Use the left-hand menu to navigate to the **Server** page to see a list of the Nomad servers deployed in the cluster.
+1.  Use the left-hand menu to navigate to the **Server** page to see a list of the Nomad servers deployed in the cluster:
 
-[![Nomad server nodes listed in the web interface](nomad-cluster-servers_small.png)](nomad-cluster-servers.png)
+    [![Nomad server nodes listed in the web interface](nomad-cluster-servers_small.png)](nomad-cluster-servers.png)
 
-Navigate to the **Clients** page from the same menu to see a list of the deployed Nomad clients.
+1.  Navigate to the **Clients** page from the same menu to see a list of the deployed Nomad clients:
 
-[![Nomad client nodes listed in the web interface](nomad-cluster-clients_small.png)](nomad-cluster-clients.png)
+    [![Nomad client nodes listed in the web interface](nomad-cluster-clients_small.png)](nomad-cluster-clients.png)
 
 ### Creating a Docker Job
 
@@ -342,7 +342,7 @@ This example uses a simple Docker image to have each client node echo "Hello, wo
 
     ![Nomad summarizing the impact of the example job](nomad-cluster-plan.png)
 
-1.  This should open the job's page, with a summary of its execution. The page provides metrics on the job, including breakdowns of the job group and its tasks. The page also provides an option to stop the job.
+1.  This should open the **Jobs** page, with a summary of its execution. The page provides metrics on the job, including breakdowns of the job group and its tasks. The page also provides an option to stop the job.
 
     [![The example job listed in the Nomad web interface](nomad-cluster-job_small.png)](nomad-cluster-job.png)
 
