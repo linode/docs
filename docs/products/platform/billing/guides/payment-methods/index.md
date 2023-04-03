@@ -1,7 +1,7 @@
 ---
 title: "Manage Payment Methods"
 description: "Learn what payment methods Linode accepts and how to view, add, and remove them."
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 ## Payment Methods
@@ -11,8 +11,8 @@ date: 2022-11-17
 - **Google Pay:** Pay using a credit card, debit card, or PayPal through your Google Pay account. Paying with your Google Pay balance or any associated bank accounts are not supported at this time.
 
     {{< note >}}
-To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
-{{</ note >}}
+    To add a PayPal account to your Google Pay account, you currently must do so through the [Google Play Store](https://play.google.com/store/paymentmethods). PayPal cannot currently be added through the Google Pay website or mobile apps. When adding PayPal through Google Pay, it appears as a Discover Card within the Cloud Manager and the Linode API.
+    {{< /note >}}
 
 - **PayPal:** Pay using your PayPal balance, a credit (or debit) card, or bank account through your PayPal account.
 
@@ -37,8 +37,8 @@ New payment methods can be added to an account through the Cloud Manager. Up to 
     ![Form to add a credit card](add-method-credit-card.png)
 
     {{< note >}}
-A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
-{{< /note >}}
+    A $1.00 authorization hold may be placed on your credit card by your banking institution when our payment processor tests the validity of the card. This is normal behavior and does not result in a charge on your card.
+    {{< /note >}}
 
     **To pay with Google Pay:** Click the **Google Pay** icon/button to open Google's own Google Pay form. Log in to your Google account and select the payment method you wish to use. Press **continue** (or otherwise complete the form) to be taken back to the Cloud Manager.
 

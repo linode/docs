@@ -1,8 +1,5 @@
 ---
 slug: download-backups-locally
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "This guide provides you with step-by-step instructions for downloading backup images of your Linodes by using the Backup feature in Cloud Manager."
 keywords: ["backup", "backups", "rsync", "restore", "local"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: Download a Local Copy of your Linode Backup
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png
+authors: ["Edward Angert"]
 ---
 
 The [Linode Backups](/docs/products/storage/backups/) service can create automatic and manual snapshots of your Linode. A completed backup can be directly restored to the origin Linode or to a new Linode in the same data center. These workflows make it easy to revert to a working configuration if you run into any unexpected issues with your software.
@@ -54,4 +52,4 @@ These steps are the minimum required for the scope of this guide. Visit our [Bac
 
 ## Clean Up after Your Download
 
-After you've finished downloading your files or disks, you can optionally [delete the restored disks](/docs/guides/disks-and-storage/#deleting-a-disk). If you created a new Linode to perform the restore, consider [deleting the Linode](/docs/products/platform/billing/guides/stop-billing/). As a reminder, billing for that Linode will continue automatically if you do not remove it. If you only power the Linode off, [you will still be billed for it](/docs/products/platform/billing/#will-i-be-billed-for-powered-off-or-unused-services).
+After you've finished downloading your files or disks, you can optionally [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk). If you created a new Linode to perform the restore, consider [deleting the Linode](/docs/products/platform/billing/guides/stop-billing/). As a reminder, billing for that Linode will continue automatically if you do not remove it. If you only power the Linode off, [you will still be billed for it](/docs/products/platform/billing/#will-i-be-billed-for-powered-off-or-unused-services).

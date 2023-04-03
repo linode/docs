@@ -1,8 +1,5 @@
 ---
 slug: deploy-packer-image-with-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Packer automates the process of developing machine images, and Terraform automates the provisioning of infrastructure. Not surprisingly, combining the two can give you a full and robust chain for automating deployments, including CI/CD. Through this tutorial, learn what you need to put these tools together for your infrastructure."
 keywords: ['packer terraform provider','terraform packer resource','linode packer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +9,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Deploy a Packer Image with Terraform"
 title_meta: "How to Deploy a Packer Image with Terraform"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Terraform - HashiCorp Learn: Provision Infrastructure with Packer](https://learn.hashicorp.com/tutorials/terraform/packer)'
 - '[Packer - Use Cases: Integrate with Terraform](https://www.packer.io/use-cases/integrate-with-terraform)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Both the Packer and Terraform tools by HashiCorp stand out for remarkable infrastructure-automating. Despite some overlap, the tools have distinct and complimentary features. This makes them an effective pair, with Packer used to create images that Terraform then deploys as a complete infrastructure.
@@ -28,9 +24,9 @@ In this tutorial, find out how to use Packer and Terraform together to deploy Li
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -227,7 +223,7 @@ This tutorial handles variables using two files.
     image_id = "private/<LinodeImageId>"
     ```
 
-    The `<LinodeApiToken>` needs to be an API token associated with your Linode account. You can follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    The `<LinodeApiToken>` needs to be an API token associated with your Linode account. You can follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     Above, you can see a value of `private/<LinodeImageId>` for the `image_id`. This value should match the image ID for the Linode image you created with Packer. All custom Linode images are prefaced with `private/` and conclude with the image's ID. In these examples, `private/17691867` is assumed to be the ID for the Linode image built with Packer.
 

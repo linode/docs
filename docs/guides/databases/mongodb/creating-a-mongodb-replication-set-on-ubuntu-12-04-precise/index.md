@@ -2,9 +2,6 @@
 slug: creating-a-mongodb-replication-set-on-ubuntu-12-04-precise
 deprecated: true
 deprecated_link: 'guides/create-a-mongodb-replica-set/'
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure a MongoDB Replica Set (aka cluster) with primary-secondary replication and automatic failover on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,8 @@ aliases: ['/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-12-04
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
-h1_title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
+title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
+title_meta: 'How To Create a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -25,13 +22,14 @@ relations:
         keywords:
             - distribution: Ubuntu 12.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 ---
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our Using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Administration Basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our Using Linux document series including the [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) and [Administration Basics guide](/docs/guides/linux-system-administration-basics/).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
 ## Installing MongoDB
 

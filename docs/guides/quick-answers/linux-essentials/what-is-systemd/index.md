@@ -1,8 +1,5 @@
 ---
 slug: what-is-systemd
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with an introduction to systemd, a Linux initialization system and service monitor daemon, as well as systemd unit files.'
 keywords: ['systemd','linux', 'init', 'unit files']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,12 @@ modified: 2018-09-12
 modified_by:
   name: Linode
 title: "What is systemd?"
-contributor:
-  name: Linode
 external_resources:
 - '[systemd Wiki](https://www.freedesktop.org/wiki/Software/systemd/)'
 - '[systemd GitHub](https://github.com/systemd/systemd)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/what-is-systemd/']
+authors: ["Linode"]
 ---
 
 systemd is a Linux initialization system and service manager that includes features like on-demand starting of daemons, mount and automount point maintenance, snapshot support, and processes tracking using Linux control groups. systemd provides a logging daemon and other tools and utilities to help with common system administration tasks.
@@ -28,9 +24,9 @@ systemd is the default init system for the major Linux distributions but is back
 
 This guide provides an introduction to systemd by taking a closer look at systemd units. The [Mount Units](/docs/guides/what-is-systemd/#mount-units) section will analyze a unit file that is shipped by default with systemd on an Ubuntu 18.04 system, while the [Timer Units](/docs/guides/what-is-systemd/#timer-units) section will create a custom unit file on the same system.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All examples in this guide were created with a Linode running Ubuntu 18.04.
-{{</ note >}}
+{{< /note >}}
 
 ## The Linux Boot Process and systemd
 
@@ -162,9 +158,9 @@ A mount unit file must contain a `[Mount]` section. The example mount unit file 
 - The `Where` option declares an absolute path to a mount point. If the mount point does not exist, it will be created.
 - The `Type` option denotes the file system type.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The official systemd manual notes that configuring mount points through `/etc/fstab` is the recommended approach. systemd has a `system-fstab-generator` that translates the information in the fstab file into systemd mount and swap units at runtime.
-{{</ note >}}
+{{< /note >}}
 
 There are many other unit file types available in systemd. Read the [Use systemd to Start a Linux Service at Boot](/docs/guides/start-service-at-boot/) guide to become more familiar with the service unit type.
 
@@ -180,9 +176,9 @@ You will need three separate files:
 - A service unit file, that will handle running the script.
 - A timer unit file, which will define when and how often the service will initialize.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your script, service unit file, and timer unit file should all have `644` read and write permissions.
-{{</ note >}}
+{{< /note >}}
 
 Below is the script that creates a backup `.sql` file named for a database named `testdb`. The script will append a date and timestamp to the file name:
 

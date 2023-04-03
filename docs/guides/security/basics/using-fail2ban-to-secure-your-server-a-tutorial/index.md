@@ -1,7 +1,5 @@
 ---
 slug: using-fail2ban-to-secure-your-server-a-tutorial
-author:
-  name: Linode
 description: "This guide shows you how to set up Fail2Ban, a log-parsing application, to monitor system logs, and detect automated attacks on your Linode."
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['/tools-reference/tools/using-fail2ban-to-block-network-probes/','/security/using-fail2ban-to-secure-your-server-a-tutorial/','/security/using-fail2ban-for-security/','/security/basics/using-fail2ban-to-secure-your-server-a-tutorial/']
@@ -12,9 +10,9 @@ modified: 2021-01-08
 modified_by:
   name: Linode
 published: 2015-10-12
-title: "How to Use Fail2ban to Secure Your Server (A Tutorial)"
-h1_title: "Using Fail2ban to Secure Your Server"
-enable_h1: true
+title: "Using Fail2ban to Secure Your Server"
+title_meta: "How to Use Fail2ban to Secure Your Server (A Tutorial)"
+authors: ["Linode"]
 ---
 
 ## What is Fail2Ban
@@ -27,17 +25,17 @@ When an attempted compromise is located, using the defined parameters, Fail2ban 
 
 Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups) guide.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Fail2ban is intended to be used in conjunction with an already-hardened server and should not be used as a replacement for secure firewall rules.
-{{< /caution >}}
+{{< /note >}}
 
 ## How to Install Fail2ban
 
-Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/guides/securing-your-server) guide before beginning.
+Follow the [Getting Started](/docs/products/platform/get-started/) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before beginning.
 
 ### CentOS/CentOS Stream/RHEL Based Operating Systems
 
@@ -60,7 +58,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
         systemctl start sendmail
         systemctl enable sendmail
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you encounter the error that there is `no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock`, create the directory manually:
 
     mkdir /var/run/fail2ban
@@ -82,7 +80,7 @@ If you encounter the error that there is `no directory /var/run/fail2ban to cont
 
         apt-get install sendmail-bin sendmail
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation hangs for a minute, but then complete.
 
     Creating /etc/mail/sendmail.cf...
@@ -172,9 +170,9 @@ backend = systemd
 
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If the `backend` configuration is set to `auto`, Fail2ban monitors log files by first using `pyinotify`. Next, it tries `gamin`. If neither are available, a polling algorithm decides what to try next.
-{{</ note >}}
+{{< /note >}}
 
 
 No jails are enabled by default in CentOS 7. For example, to enable the SSH daemon jail, uncomment the following lines in `jail.local`:
@@ -291,7 +289,7 @@ To receive email when fail2ban is triggered, adjust the email settings:
 
 -  `sender`: The email address from which Fail2ban sends emails.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If unsure of what to put under `sender`, run the command `sendmail -t user@email.com`, replacing `user@email.com` with your email address. Check your email (including spam folders, if needed) and review the sender email. This address can be used for the above configuration.
 {{< /note >}}
 
@@ -330,7 +328,7 @@ maxretry = 6
 -   `maxretry`: Will override the global `maxretry` for the defined service. `findtime` and `bantime` can also be added.
 -   `action`: This can be added as an additional setting, if the default action is not suitable for the jail. Additional actions can be found in the `action.d` folder.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Jails can also be configured as individual `.conf` files placed in the `jail.d` directory. The format remains the same.
 {{< /note >}}
 
@@ -530,7 +528,7 @@ For additional information about `fail2ban-client` commands, see the [Fail2ban w
 
 ## Lockout Recovery
 
-In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/guides/lish/).
+In the event that you find yourself locked out of your Linode due to fail2ban, you can still gain access by using our out-of-band [Lish Console](/docs/products/compute/compute-instances/guides/lish/).
 
 From here, you can view your firewall rules to ensure that it is fail2ban that blocked your IP, and not something else. To do this, enter the following command:
 
@@ -548,7 +546,7 @@ To remove your IP address from a [jail](#configure-jail-local-settings), you can
 
     fail2ban-client set jailname unbanip 203.0.113.0
 
-{{< note >}}
+{{< note respectIndent=false >}}
 
 If you can't remember your jail name, then you can always use the following command to list all jails:
 

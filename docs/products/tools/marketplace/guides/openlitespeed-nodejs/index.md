@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy OpenLiteSpeed Node.js on a Linode Compute Instance. This provides you with a high performance web server to manage your Node.js application."
 keywords: ['web server','nodejs','openlitespeed']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,12 +7,11 @@ published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying OpenLiteSpeed Node.js through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy OpenLiteSpeed Node.js through the Linode Marketplace"
 external_resources:
 - '[Node.js OpenLiteSpeed](https://docs.litespeedtech.com/cloud/images/nodejs/)'
 aliases: ['/guides/deploying-openlitespeed-nodejs-marketplace-app/','/guides/openlitespeed-nodejs-marketplace-app/']
+authors: ["Linode"]
 ---
 
 The OpenLiteSpeed Node.js One-Click app automatically installs the performance web server OpenLiteSpeed and Node.js. This tends to be more than 4 times faster than Node.js with Nginx. OpenLiteSpeed features easy setup for SSL and RewriteRules. It is flexible and also supports Python and Ruby apps, as well as CMS software like WordPress.
@@ -26,9 +22,9 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** OpenLiteSpeed Node.js should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -48,7 +44,7 @@ The OpenLiteSpeed Node.js One-Click app automatically installs the performance w
 
     {{< note >}}
     For more documentation on how to assign a domain to your Linode, please review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager, and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
-    {{</ note >}}
+    {{< /note >}}
 
 Now that you’ve accessed your OpenLiteSpeed Node.js instance, check out [the official OpenLiteSpeed Node.js documentation](https://docs.litespeedtech.com/cloud/images/nodejs/) to learn how to further configure your OpenLiteSpeed Node.js instance.
 

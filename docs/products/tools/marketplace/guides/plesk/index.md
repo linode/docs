@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
 keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
@@ -10,14 +7,13 @@ published: 2019-03-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Plesk through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Plesk through the Linode Marketplace"
 external_resources:
  - '[Plesk Support](https://support.plesk.com/hc/en-us)'
  - '[Plesk Documentation](https://docs.plesk.com/en-US/obsidian/)'
  - '[Plesk Help Center](https://support.plesk.com/hc/en-us/categories/201413825-Technical-Questions)'
 aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guides/deploying-plesk-with-marketplace-apps/','/platform/one-click/deploy-plesk-with-one-click-apps/','/guides/deploy-plesk-with-one-click-apps/','/guides/plesk-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Plesk](https://www.plesk.com) is a leading WordPress and website management platform and control panel. Plesk lets you build and manage multiple websites from a single dashboard to configure web services, email, and other applications. Plesk features hundreds of extensions, plus a complete WordPress toolkit. Use the Plesk Marketplace App to manage websites hosted on your Linode.
@@ -28,9 +24,9 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Plesk should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,13 +37,13 @@ aliases: ['/platform/marketplace/deploying-plesk-with-marketplace-apps/','/guide
 
 ### Access your Plesk Site
 
-1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's IP address, its default rDNS domain, or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the IP address and rDNS value.
+1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's IP address, its default rDNS domain, or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the IP address and rDNS value.
 
         https://[domain]/login_up.php
 
-    {{< caution >}}
-The Plesk dashboard is only accessible over an *HTTPS* connection (not *HTTP*). When accessing it, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
-{{< /caution >}}
+    {{< note type="alert" >}}
+    The Plesk dashboard is only accessible over an *HTTPS* connection (not *HTTP*). When accessing it, your browser may warn you that the connection is not private, is not secure, or that there is a potential security risk. You must accept this risk to continue.
+    {{< /note >}}
 
 1.  Once you navigate to that URL, a login prompt appears. Use the following credentials.
 

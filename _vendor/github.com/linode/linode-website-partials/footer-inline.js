@@ -7,9 +7,9 @@
     return d;
   }
   function expireFromLocal(name) {
-    if (localStorage.getItem(name) === null)
+    if (null === localStorage.getItem(name))
       return;
-    let now2 = new Date(), exp_value = localStorage.getItem(`${name}_exp`), exp_date = exp_value !== null ? new Date(exp_value) : now2;
+    let now2 = new Date(), exp_value = localStorage.getItem(`${name}_exp`), exp_date = null !== exp_value ? new Date(exp_value) : now2;
     if (isNaN(exp_date)) {
       localStorage.removeItem(`${name}_exp`);
       return;
@@ -21,10 +21,10 @@
   }
   function saveToLocal(name, value, exp_date = null, overwrite = true) {
     let saved = localStorage.getItem(name);
-    if (saved !== null && saved !== value && !overwrite)
+    if (null !== saved && saved !== value && !overwrite)
       return;
     localStorage.setItem(name, value);
-    if (exp_date !== null) {
+    if (null !== exp_date) {
       localStorage.setItem(`${name}_exp`, exp_date.toUTCString());
     }
   }
@@ -32,7 +32,7 @@
     value = encodeURIComponent(value);
     if (document.cookie.indexOf(`${name}=`) >= 0 && document.cookie.indexOf(`${name}=${value}`) < 0 && !overwrite)
       return;
-    let expires = exp_date !== null ? `expires=${exp_date.toUTCString()}; ` : "";
+    let expires = null !== exp_date ? `expires=${exp_date.toUTCString()}; ` : "";
     document.cookie = `${name}=${value}; domain=.linode.com; ${expires}path=/; secure; samesite=lax; `;
   }
   function storeParams(args) {

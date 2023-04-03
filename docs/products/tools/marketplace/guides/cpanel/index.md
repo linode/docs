@@ -1,26 +1,24 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
 keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager"]
+tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2022-05-31
 modified_by:
   name: Linode
-title: "Deploying cPanel through the Linode Marketplace"
+title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [cPanel](https://cpanel.net/products/) is a Linux-based server/website administration platform that streamlines publishing and managing websites. It is widely used by individual businesses, web development agencies, and hosting platforms. cPanel (and the included WHM interface) provides an easy and intuitive method for managing all aspects of website administration, including software installation, DNS, databases, email, and *much* more.
 
 {{< note >}}
 cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -28,14 +26,14 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** cPanel/WHM should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
-- **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
+- **Supported distributions:** Ubuntu 20.04 LTS, AlmaLinux 8, Rocky Linux 8
+- **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
 
@@ -43,7 +41,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 WHM is the core interface for managing your server and all websites (also called "accounts").
 
-1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. The WHM login page should appear. Enter `root` as the username and use the root password you created when deploying this instance. Then click the **Log In** button.
 
@@ -71,8 +69,8 @@ WHM is the core interface for managing your server and all websites (also called
 1. The cPanel license screen appears. Click on the **Purchase** button to be taken to cPanel's license management system. From here, you can obtain a trial license (if eligible) or purchase a license.
 
     {{< note >}}
-Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
-    {{</ note >}}
+    Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
+    {{< /note >}}
 
 1. After obtaining a license, you are automatically logged in and taken to WHM.
 
@@ -87,6 +85,6 @@ Now that you're able to access WHM, you can manage your server, install software
 
 {{< note >}}
 ***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
-{{</ note >}}
+{{< /note >}}
 
 {{< content "marketplace-update-note-shortguide">}}

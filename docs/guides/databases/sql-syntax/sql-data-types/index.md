@@ -1,7 +1,5 @@
 ---
 slug: sql-data-types
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
 description: 'SQL supports various data types including Binary, Numeric, and Character data types. This guide explains each data type''s storage requirements, syntax, and provides examples.'
 keywords: ['binary data type', 'numeric data type', 'character data type', 'date time data type']
 tags: ['MySQL', 'PostgreSQL']
@@ -9,12 +7,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Linode
-title: "SQL Data Types"
-h1_title: "Introduction to SQL Data Types"
-enable_h1: true
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
+title: "Introduction to SQL Data Types"
+title_meta: "SQL Data Types"
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 Choosing the proper data type for a table column is an important decision. It reduces the need for data type conversions, enhances the performance of database queries, and minimizes storage requirements.
@@ -27,7 +22,7 @@ To store binary data (`0` or `1`), you use the `BINARY` and `VARBINARY` data typ
 
 For example, for a decimal value of `63`, its hexadecimal value is represented by `0x3F` and its binary bit string equivalent is `111111`. To understand the value of these binary strings and how they are stored, consider the example below:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Unless mentioned otherwise, all the database commands demonstrated in this guide work well on both **MySQL** and **PostgreSQL**.
 {{< /note >}}
 
@@ -59,7 +54,7 @@ Unless mentioned otherwise, all the database commands demonstrated in this guide
 
 As you can see, the `BinaryCol` data is padded to the maximum column size with trailing zeros, but the `VarBinaryCol` data column is not. This is because the columns of `VarBinaryCol` are defined as variable length.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The maximum size (length) of Binary and VarBinary data types vary depending on the database implementation. They're generally quite large (over 8,000 bytes). Some database implementations have binary extensions to these core data types that can store data in sizes of multi-gigabytes.
 {{< /note >}}
 
@@ -211,7 +206,7 @@ The columns `LastName` and `Firstname` are declared type `Varchar`. This allows 
 
 The `DATETIME` data type is used to store the date and time values in the database. Values for the `DATETIME` data type use four bytes of storage for the date portion and four bytes for the time portion. The time portion of this data type specifies time with a granularity down to the number of milliseconds after midnight. Precision for this data type ranges from "January 1, 1753", to "December 31, 9999", with an accuracy of 3.33 milliseconds.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you assign only the date value to a `DATETIME` data type column or variable, the time portion defaults to midnight.
 {{< /note >}}
 
@@ -237,7 +232,7 @@ The output resembles the following:
 +----------+-----------+
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some SQL implementations support additional data types, which are either a subset, superset, or variant of all the above specified data types.
 {{< /note >}}
 

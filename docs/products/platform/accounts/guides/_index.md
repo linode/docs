@@ -8,7 +8,7 @@ date: 2022-11-21
 
 ## Basics
 
-- [Manage Users](/docs/products/platform/accounts/guides/manage-users/): View, edit, and manage users and user permissions on your Linode account.
+- [Manage Users](/docs/products/platform/accounts/guides/manage-users/): View, edit, and manage users on your Linode account.
 
 - [Change User Email](/docs/products/platform/accounts/guides/change-user-email/): Update the email address on file.
 
@@ -18,9 +18,9 @@ date: 2022-11-21
 
 ## Security Controls
 
-- [User Permissions](/docs/products/platform/accounts/guides/user-permissions/): View, edit, and manage users and user permissions on your Linode account.
+- [Manage User Permissions](/docs/products/platform/accounts/guides/user-permissions/): View, edit, and manage user permissions on your Linode account.
 
-- [Enable Third Party Authentication on Your Linode Account](/docs/products/platform/accounts/guides/third-party-authentication/): Learn how to sign in using third party credentials, like GitHub or Google.
+- [Enable Third Party Authentication on Your User Account](/docs/products/platform/accounts/guides/third-party-authentication/): Learn how to sign in using third party credentials, like GitHub or Google.
 
 - [Security Controls for User Accounts](/docs/products/platform/accounts/guides/user-security-controls/): Understand the available security features of a Linode account.
 

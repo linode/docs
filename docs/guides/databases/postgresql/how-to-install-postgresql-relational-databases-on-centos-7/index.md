@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-postgresql-relational-databases-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'The PostgreSQL relational database is a powerful open source database platform. Learn how to install it on CentOS 7 in this simple tutorial.'
 keywords: ["postgresql", "CentOS 7", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +18,7 @@ relations:
             - distribution: CentOS 7
 aliases: ['/databases/postgresql/use-postgresql-relational-databases-on-centos-7/','/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7/']
 tags: ["database","postgresql","centos"]
+authors: ["Linode"]
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.
@@ -29,9 +27,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -98,9 +96,9 @@ When Postgres is installed using this method, the version number is included in 
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Change the `postgres` user's Linux password:
 
@@ -193,9 +191,9 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 
     dropdb mytestdb
 
-{{< caution >}}
+{{< note type="alert" >}}
 Deleted databases cannot be recovered.
-{{< /caution >}}
+{{< /note >}}
 
 ## Work With Tables
 
@@ -455,7 +453,7 @@ local    all        all             peer
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories), you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
 {{< /note >}}
 
