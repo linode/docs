@@ -1871,6 +1871,7 @@ rulesets
 rundir
 runfile
 runlevels
+runpy
 runtime
 runtimes
 rustup
@@ -2032,6 +2033,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
