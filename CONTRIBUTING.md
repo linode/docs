@@ -1,8 +1,12 @@
-This guide covers downloading and installing the Linode Docs library, and how to contribute to the library.
+# In this Guide
+
+- [How to download and install the Linode Docs library](#installing-the-docs-library)
+
+- [How to contribute to the library](#contributing-to-the-docs-library)
 
 # Installing the Docs Library
 
-Linode's documentation library uses a static site generator, Hugo, to build the website from Markdown (`.md`) files. Building the site requires Node.js, NPM, and Go.
+Linode's documentation library uses a static site generator, [Hugo](https://gohugo.io/), to build the website from Markdown (`.md`) files. Building the site requires Node.js, NPM, and Go.
 
 ## Install prerequisites
 
@@ -161,9 +165,9 @@ For more information about using Git, refer to the [official Git documentation](
 
 This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
 
-## Fixing an issue
+## Fixing an Issue
 
-If you want to start contributing by helping us correct existing issues, go to our [GitHub issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
+If you want to start contributing by helping us correct existing issues, go to our [GitHub Issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
 
 ## Create a New Guide
 
