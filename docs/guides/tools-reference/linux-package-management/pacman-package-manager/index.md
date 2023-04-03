@@ -1,10 +1,6 @@
 ---
 slug: pacman-package-manager
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide walks you through the core features of Pacman and gives you an overview of common commands for using the application to install, upgrade, and remove packages."
-og_description: "This guide walks you through the core features of Pacman and gives you an overview of common commands for using the application to install, upgrade, and remove packages."
 keywords: ['arch','manjaro','package manager']
 tags: ['arch', 'manjaro']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +9,9 @@ image: UsingPacmantoManagePackagesinArchLinux.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Manage Packages in Arch Using Pacman"
-h1_title: "Using Pacman to Manage Packages in Arch"
-enable_h1: true
+title: "Using Pacman to Manage Packages in Arch"
+title_meta: "How to Manage Packages in Arch Using Pacman"
+authors: ["Linode"]
 ---
 
 Arch Linux uses binary packages in a `.tar.xz` format, and also provides a "ports" build system that facilitates building packages. Arch Linux runs on a *rolling release* schedule, which means packages are added to the main repository when they (and their dependencies) are ready for production. This means that there aren't release versions of Arch, as all systems, once upgraded, are equivalent. Therefore, administrators of Arch Linux must consider the output of `pacman` carefully before agreeing to upgrade or update any packages.
@@ -24,11 +20,11 @@ Arch Linux uses binary packages in a `.tar.xz` format, and also provides a "port
 
 Before running the commands within this guide, you will need:
 
-1. **A system running Arch Linux** or an Arch-based distribution like Manjaro. Review the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide if you do not yet have a compatible system.
+1. **A system running Arch Linux** or an Arch-based distribution like Manjaro. Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -113,7 +109,7 @@ The `Server =` and `Include =` lines are both optional, and the order indicates 
 
 The Arch Build System allows users to compile and install software not included in the Arch repository. This brief guide outlines the steps to building a package using the ABS.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All commands explained here should be run as root unless otherwise specified.
 {{< /note >}}
 

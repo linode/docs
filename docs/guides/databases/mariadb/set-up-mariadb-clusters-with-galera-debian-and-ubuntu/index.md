@@ -1,8 +1,5 @@
 ---
 slug: set-up-mariadb-clusters-with-galera-debian-and-ubuntu
-author:
-  name: James Stewart
-  email: jstewart@linode.com
 description: 'A guide to configuring MariaDB database replication with Galera on Debian and Ubuntu distributions.'
 keywords: ["mariadb", "mysql", "galera", "high availability", "HA", "cluster", "debian", "ubuntu"]
 aliases: ['/databases/mariadb/clustering-with-mariadb-and-galera/','/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/']
@@ -15,12 +12,14 @@ title: Set Up MariaDB Clusters with Galera Debian and Ubuntu
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 tags: ["ubuntu","debian","mariadb","database"]
+authors: ["James Stewart"]
+tags: ["ecommerce"]
 ---
 
 MariaDB replication with Galera adds redundancy for a site's database. With database replication, multiple servers act as a database cluster. Database clustering is particularly useful for high availability website configurations. This guide uses three separate Linodes to configure database replication, each with private IPv4 addresses on Debian and Ubuntu.
 
 {{< note >}}
-Communication between nodes are unencrypted. This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/guides/managing-ip-addresses/) and located within the same data center.
+Communication between nodes are unencrypted. This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) and located within the same data center.
 {{< /note >}}
 
 Additionally:
@@ -35,7 +34,7 @@ Additionally:
         sudo apt install software-properties-common
         sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On Debian 9 and later, run `sudo apt install dirmngr` before importing the key.
 {{< /note >}}
 
@@ -45,6 +44,8 @@ On Debian 9 and later, run `sudo apt install dirmngr` before importing the key.
 
     | Distribution |         Key        | Version | Repository List
     |--------------|--------------------|---------|----------------
+    | Debian 11    | 0xF1656F24C74CD1D8 |   10.5  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.5/debian bullseye main
+    | Debian 10    | 0xF1656F24C74CD1D8 |   10.4  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.4/debian buster main
     | Debian 9     | 0xF1656F24C74CD1D8 |   10.1  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/debian stretch main
     | Debian 8     | 0xcbcb082a1bb943db |   10.0  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.0/debian jessie main
     | Ubuntu 16.04 | 0xF1656F24C74CD1D8 |   10.1  | deb [arch=amd64,i386,ppc64el] http://mirror.nodesdirect.com/mariadb/repo/10.1/ubuntu xenial main

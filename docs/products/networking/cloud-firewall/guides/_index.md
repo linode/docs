@@ -23,4 +23,4 @@ tab_group_main:
 
 - [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/): Learn which firewall solution may work best for your use case.
 
-- [Troubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/): Information on troubleshooting any firewall service.
+- [Troubleshooting Firewalls](/docs/products/compute/compute-instances/guides/troubleshooting-firewall-issues/): Information on troubleshooting any firewall service.

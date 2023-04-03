@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Install and Configure the Linode CLI"
 description: "Learn how to install the Linode CLI on most common operating systems"
 modified: 2022-05-05
+authors: ["Linode"]
 ---
 
 ## Install the Linode CLI
@@ -108,3 +106,7 @@ On most Linux distributions, you can use the distribution's package manager to i
 
         sudo yum update
         sudo yum install python3 && sudo yum install python3-pip
+
+### Confirming Python and Pip Installation
+
+If, when running `python3 --version` or `pip3 --version` you encounter `command not found`, you may need to add Python3 and Pip3's locations to your $PATH.

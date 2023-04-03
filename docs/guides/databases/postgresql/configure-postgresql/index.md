@@ -1,8 +1,5 @@
 ---
 slug: configure-postgresql
-author:
-  name: Angel
-  email: docs@linode.com
 description: 'This guide will show you how to tune PostgreSQL for better performance on your Linode'
 og_description: 'PostgreSQL is a database server that focuses on standards compliance. Follow this guide to optimize PostgreSQL performance.'
 keywords: ["postgresql", "clusters", "databases", "postgres", "database configuration", "database tuning", "configure postgres"]
@@ -16,6 +13,8 @@ external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/configure-postgresql/']
+authors: ["Angel Guarisma"]
+tags: ["saas"]
 ---
 
 ![Configure PostgreSQL](Configure_PostgreSQL.jpg)

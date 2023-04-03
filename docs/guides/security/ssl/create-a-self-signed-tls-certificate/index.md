@@ -1,8 +1,5 @@
 ---
 slug: create-a-self-signed-tls-certificate
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to create a self-signed TLS certificate with OpenSSL.'
 keywords: ["ssl", "tls", "https", "certificate", "self"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2018-01-09
 title: 'Create a Self-Signed TLS Certificate'
 tags: ["security","ssl"]
+authors: ["Linode"]
 ---
 
 ![Create a Self-Signed Certificate title graphic](create-a-self-signed-tls-certificate-title-graphic.jpg "Create a Self-Signed Certificate title graphic")

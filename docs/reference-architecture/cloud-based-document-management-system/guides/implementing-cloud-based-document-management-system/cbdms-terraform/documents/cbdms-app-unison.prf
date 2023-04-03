@@ -1,0 +1,8 @@
+root = /etc/letsencrypt/live
+root = ssh://root@<SERVER_ADDRESS>//etc/letsencrypt/live
+
+path = <DOMAIN_NAME>
+path = <DOMAIN_NAME>
+
+batch = true
+repeat = watch
