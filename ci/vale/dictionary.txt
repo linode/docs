@@ -423,6 +423,7 @@ datadir
 Datadog
 dataflow
 datagram
+datalog
 dataset
 datasets
 datasource
@@ -1686,6 +1687,8 @@ procfile
 procmail
 procs
 productpage
+logic-programming-languages
+prolog
 promlens
 promscale
 prosodyctl
@@ -2078,6 +2081,7 @@ subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage
