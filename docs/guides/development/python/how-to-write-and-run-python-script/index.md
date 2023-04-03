@@ -1,20 +1,14 @@
 ---
 slug: how-to-write-and-run-python-script
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to write and run a Python script. It explains how to install and use modules and how to incorporate important Python features.'
 keywords: ['python', 'how to write a python script', 'how to run a python script', 'understanding python']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-08-08
+published: 2023-04-03
 modified_by:
   name: Linode
 title: "How to Write and Run a Python Script | Linode"
-h1_title: "Writing and Running a Python Script"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title_meta: "Writing and Running a Python Script"
 external_resources:
 - '[Python.org web site](https://www.python.org/)'
 - '[Python documentation](https://docs.python.org/3/contents.html)'
@@ -23,6 +17,7 @@ external_resources:
 - '[Python data structure documentation](https://docs.python.org/3/tutorial/datastructures.html)'
 - '[Python top-level code environment documentation](https://docs.python.org/3/library/__main__.html)'
 - '[Python module documenation](https://docs.python.org/3/tutorial/modules.html)'
+authors: ["Jeff Novotny"]
 ---
 
 [Python](https://www.python.org/) is one of the most popular programming languages due to its ease of use and a large selection of built-in features. This guide describes the basic concepts behind Python, including how to install and use Python modules. It also explains how to write and run a Python script.
@@ -61,22 +56,28 @@ The instructions in this guide are geared toward Ubuntu users but are generally 
 
 Before running any Python programs, Python must be installed on the system. On most modern Linux distributions, Python is already pre-installed. To determine whether the interpreter is installed and up-to-date, use the `-V` option to verify the release number.
 
-    python3 -V
+```command
+python3 -V
+```
 
-{{< output >}}
+```output
 Python 3.10.4
-{{< /output >}}
+```
 
 If the `python3` command is not recognized, Python is not installed. This might be the case if the system has not been upgraded recently or if Python has been uninstalled at some point. To install Python release 3, run the following commands:
 
-    sudo apt update && sudo apt upgrade
-    sudo apt install python3
+```command
+sudo apt update && sudo apt upgrade
+sudo apt install python3
+```
 
 ## How to Install and Use Python Modules
 
 After Python is installed, it is possible to use the Python `pip` package manager to download and install new modules and packages. `pip` is not installed by default and must be downloaded first. To download `pip`, use the command below:
 
-    sudo apt install python3-pip
+```command
+sudo apt install python3-pip
+```
 
 The `pip install` command downloads and installs new modules. The following command installs the Python-Markdown library. This module converts Markdown code to HTML. After it completes the installation process, `pip` provides a confirmation message.
 
@@ -84,30 +85,32 @@ The `pip install` command downloads and installs new modules. The following comm
 Both Python 2 and Python 3 have their own version of `pip`. If both releases of Python are installed on the system, use the `pip3` command to install Python 3 modules. Otherwise, the `pip` command can be used because there is only one instance of Python and no chance of installing the incorrect module.
 {{< /note >}}
 
-    pip install markdown
+```command
+pip install markdown
+```
 
-{{< output >}}
+```output
 Successfully installed markdown-3.4.1
-{{< /output >}}
+```
 
 To access the parameters, classes, and methods from a module, use the `import` command. This command takes the form `import module_name`. Both third-party and built-in Python modules can be imported. `import` directives are traditionally near the top of a Python script. The example below demonstrates how to source and use the `markdown` module.
 
-    import markdown
-    markdown.markdown('## Work Tasks')
+```command
+import markdown
+markdown.markdown('## Work Tasks')
+```
 
-{{< output >}}
+```output
 '<h2>Work Tasks</h2>'
-{{< /output >}}
+```
 
-For more detailed information on modules, see our [How to Install and Import Python Modules](https://www.linode.com/docs/guides/installing-and-importing-modules-in-python-3/) guide.
+For more detailed information on modules, see our [How to Install and Import Python Modules](/docs/guides/installing-and-importing-modules-in-python-3/) guide.
 
-Development environments with many Python projects, packages and modules are often complicated to manage. Package conflicts can occur when new releases of existing packages overwrite older releases. Python *virtual environments* help manage these dependencies and avoid conflicts. For more information, review the Linode guide on [Managing Python Packages and Versions on Linux](https://www.linode.com/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/).
+Development environments with many Python projects, packages and modules are often complicated to manage. Package conflicts can occur when new releases of existing packages overwrite older releases. Python *virtual environments* help manage these dependencies and avoid conflicts. For more information, review the Linode guide on [Managing Python Packages and Versions on Linux](/docs/guides/how-to-manage-packages-and-virtual-environments-on-linux/).
 
 ## How to Write a Python Script
 
-Experienced programmers usually find it easy to pick up Python. However, Python is also a good choice for beginners due to its straightforward syntax and a large number of built-in functions. Many developers find they can write programs in Python more quickly than in C++ or Java.
-
-Python scripts are plain text files ending with the extension `.py`. Any text editor or IDE can be used to write a Python script. Python does not require any type of specialized or proprietary development environment.
+Python scripts are plain text files ending with the extension `.py`. You can use any text editor or IDE to write a Python script. Python does not require any type of specialized or proprietary development environment.
 
 Some Python programs include a *Shebang* as the first line. A Shebang begins with the characters `#!`. In a Python file, a Shebang tells the system which version of the interpreter to use. The Shebang `#!/usr/bin/env python3` indicates the `python3` interpreter should run the program. This ensures the correct Python interpreter is always used and avoids running a script with an incompatible interpreter. If a script does not contain a Shebang, the default interpreter is used.
 
@@ -119,9 +122,9 @@ In most cases, a simple Python script consists of the following elements:
 - A list of function definitions.
 - The main body of the script. This section of code calls any supporting functions or class methods it requires.
 
-Following is an example of a short demo program demonstrating some of the key components of a Python script. It accepts an input value from the user, takes the square root of the number, and multiplies it with a constant. It begins with a Shebang that guarantees the program uses the Python 3 compiler, and imports the `math` and `sys` modules. It declares the `square_and_multiply` function, accepts a value from the user, validates the value, and calls the function with the input value. It then prints the result to standard output.
+The following is an example of a short demo program demonstrating some of the key components of a Python script. It accepts an input value from the user, takes the square root of the number, and multiplies it with a constant. It begins with a Shebang that guarantees the program uses the Python 3 compiler, and imports the `math` and `sys` modules. It declares the `square_and_multiply` function, accepts a value from the user, validates the value, and calls the function with the input value. It then prints the result to standard output.
 
-{{< file "sqrt_multiply.py" python >}}
+```file {title="sqrt_multiply.py"}
 #!/usr/bin/env python3
 
 import math
@@ -141,7 +144,7 @@ if (user_val < 0):
     sys.exit("Negative numbers are not allowed")
 res = square_and_multiply(user_val)
 print("The result after taking the square root of the number and multiplying it is:", res)
-{{< /file >}}
+```
 
 {{< note >}}
 Real-world Python applications should perform input validation and error handling. In this case, the `try` command handles any errors with non-numerical input.
@@ -149,17 +152,17 @@ Real-world Python applications should perform input validation and error handlin
 
 In most large programs, the main code block in the file consists solely of the conditional expression `if __name__ == "__main__"`. This expression only evaluates to `True` in the top-level environment of the program. A top-level environment occurs inside the interactive Python prompt, or inside a script that is passed as a file argument to the `python3` command. For the command `python3 program.py`, the top-level environment includes the code space inside the `program.py` file.
 
-If this conditional evaluates to `True`, the script calls the "real" `main()` function. The `main()` function is only ever called in this situation. At other times, it is not called. This technique prevents the program code from running when the script is sourced by the `import` command. `main()` contains the main block of program code. In a well-structured application `main()` primarily consists of calls to more specialized and modular functions. The supporting functions or classes contain most of the actual functionality.
+If this conditional evaluates to `True`, the script calls the "real" `main()` function. The `main()` function is only ever called in this situation. This technique prevents the program code from running when the script is sourced by the `import` command. `main()` contains the main block of program code. In a well-structured application `main()` primarily consists of calls to more specialized and modular functions. The supporting functions or classes contain most of the actual functionality.
 
 Following is an example demonstrating how to implement this technique.
 
-{{< file "program.py" python >}}
+```file {title="program.py" python"}
 def main():
 # Main body of code. Other functions and class methods are called from main.
 
 if __name__ == "__main__":
     main()
-{{< /file >}}
+```
 
 {{< note >}}
 `__name__` is also set to `"__main__"` under some other circumstances. It happens when a module is passed to the Python interpreter with the `-m` option and inside the `__main__.py` file of a Python package. For a full explanation of the technical details surrounding `__name__`, see the [Python top-level environment documentation](https://docs.python.org/3/library/__main__.html).
@@ -173,13 +176,12 @@ Python programs are built out of fundamental control and data structures. Withou
 
 A control structure controls the execution flow of a program. Operators are used to making logical decisions. Data structures store and organize data, and often provide mechanisms to retrieve and manipulate the data.
 
+- **Comparison Operations**: These operators are used to compare two variables or a variable and a constant. The `==` operator tests for equality, while `!=` tests for inequality. The `<` ("less than") and `>` ("greater than") symbols are relational comparators. For convenience, Python also provides the `<=` ("less than or equal") and `>=` ("greater than or equal") operators. Python allows programs to use comparison operators on strings, characters, and other objects. However, not all operations are valid on all objects. The Linode guide to [ Boolean Variables, Operators, and Conditional Statements in Python](/docs/guides/boolean-variables-in-python/) provides more options.
+- **Conditional Statements**: Conditional statements use *Boolean expressions* to make decisions. These decisions determine the control flow of the program. If the result of the Boolean expression is *True*, the program runs a sequence of commands. If the result is *False*, it might run other lines of code, or it might do nothing at all. In Python, the most important conditional statement is the `if` statement, along with the `if not` and `if else` variants. For more information, see the Linode guide to [If Statements and Chained Conditionals](/docs/guides/if-statements-and-conditionals-in-python/).
+- **Logical Operators**: Logical operators combine several comparison operations into larger compound statements. The main logical operators are `and`, `or`, and `not`. The expression` a and b` means `a` must be `True` and `b` must also be `True`. The expression `a or b` is `True` if either `a` or `b` is `True`, or if both are `True`. `not a` is only `True` when `a` evaluates to `False`. The Linode guide to [Boolean Variables, Operators, and Conditional Statements in Python](/docs/guides/boolean-variables-in-python/#logical-operators-in-python) introduces the logical operators.
+- **Loop Statements**: Python loop statements execute a block of code zero or more times. A `for` loop is used when the number of repetitions is known before entering the loop. The `while` statement is better for situations where a loop keeps running until some condition is met. Loops can also iterate across a sequential data type such as a list or dictionary. The Linode guide to [For and While Loops](/docs/guides/python-for-and-while-loops/) provides more information.
 
-- **Comparison Operations**: These operators are used to compare two variables or a variable and a constant. The `==` operator tests for equality, while `!=` tests for inequality. The `<` ("less than") and `>` ("greater than") symbols are relational comparators. For convenience, Python also provides the `<=` ("less than or equal") and `>=` ("greater than or equal") operators. Python allows programs to use comparison operators on strings, characters, and other objects. However, not all operations are valid on all objects. The Linode guide to [ Boolean Variables, Operators, and Conditional Statements in Python](https://www.linode.com/docs/guides/boolean-variables-in-python/) provides more options.
-- **Conditional Statements**: Conditional statements use *Boolean expressions* to make decisions. These decisions determine the control flow of the program. If the result of the Boolean expression is *True*, the program runs a sequence of commands. If the result is *False*, it might run other lines of code, or it might do nothing at all. In Python, the most important conditional statement is the `if` statement, along with the `if not` and `if else` variants. For more information, see the Linode guide to [If Statements and Chained Conditionals](https://www.linode.com/docs/guides/if-statements-and-conditionals-in-python/).
-- **Logical Operators**: Logical operators combine several comparison operations into larger compound statements. The main logical operators are `and`, `or`, and `not`. The expression` a and b` means `a` must be `True` and `b` must also be `True`. The expression `a or b` is `True` if either `a` or `b` is `True`, or if both are `True`. `not a` is only `True` when `a` evaluates to `False`. The Linode guide to [Boolean Variables, Operators, and Conditional Statements in Python](https://www.linode.com/docs/guides/boolean-variables-in-python/#logical-operators-in-python) introduces the logical operators.
-- **Loop Statements**: Python loop statements execute a block of code zero or more times. A `for` loop is used when the number of repetitions is known before entering the loop. The `while` statement is better for situations where a loop keeps running until some condition is met. Loops can also iterate across a sequential data type such as a list or dictionary. The Linode guide to [For and While Loops](https://www.linode.com/docs/guides/python-for-and-while-loops/) provides more information.
-
-Many programs use data structures to contain and organize a series of values. Simple data structures like strings and arrays are extremely commonplace. More complex data structures including stacks, queues, graphs, trees, and hash tables are used in specialized situations. The Linode guide to [Data Structures in Computer Programming](https://www.linode.com/docs/guides/data-structure/) explains data structures in more depth.
+Many programs use data structures to contain and organize a series of values. Simple data structures like strings and arrays are extremely commonplace. More complex data structures including stacks, queues, graphs, trees, and hash tables are used in specialized situations. The Linode guide to [Data Structures in Computer Programming](/docs/guides/data-structure/) explains data structures in more depth.
 
 Python also features a large number of built-in data structures, including a list, set, and dictionary. Each data structure has its own built-in methods to implement core operations for the structure. Python modules provide access to more specialized data structures. Pre-existing data structures are ready-to-use. They help programmers save development and test time and avoid errors. See the [Python data structure documentation](https://docs.python.org/3/tutorial/datastructures.html) for additional information about the built-in types.
 
@@ -191,27 +193,33 @@ In Python, functions and methods are used to enhance modularity. A function is a
 
 A Python function begins with the `def` keyword. Each line of the function body must be indented. The return value is preceded by the keyword `return`. A Python function looks like the following:
 
-    def sample_function(arg1, arg2):
-        # Body of function
-        return result
+```file {title="function_demo.py"}
+def sample_function(arg1, arg2):
+    # Body of function
+    return result
+```
 
 The calling code invokes a function by specifying the name of the function and passing the arguments in parentheses. A comma separates each argument. If there are no arguments to pass, the parentheses are left empty. To invoke `sample_function` and assign the result to `value`, use the following command:
 
-    value = sample_function(param1, param2)
+```command
+value = sample_function(param1, param2)
+```
 
 A method is very similar to a function, but it is bound to a class definition. A regular function is not associated with a class. Class methods are usually invoked differently. The name of the class must be explicitly stated along with the name of the method, using the format `value = class.class_method(param)`. Functions that are imported as part of a module are invoked in the same way. The name of the module or package precedes the function name. Following is an example demonstrating how to import the `math` module and use the module function `math.sqrt`.
 
-    import math
-    result = math.sqrt(16)
-    print(result)
+```file {title="math_import.py"}
+import math
+result = math.sqrt(16)
+print(result)
+```
 
-{{< output >}}
+```output
 4.0
-{{< /output >}}
+```
 
 ## How to Run a Python Script
 
-There are several ways to execute a Python script. One approach is to use the Python interactive shell. This is useful for developing scripts or for debugging problems. The interactive shell makes it possible to enter commands one at a time and review the results. The contents of an interactive session are only temporary. At the end of the session, the session results and history are lost. However, the output from the session is often still visible in the terminal window.
+There are several ways to execute a Python script. One approach is to use the Python interactive shell. This is useful for developing scripts or for debugging problems. The interactive shell makes it possible to enter commands one at a time and review the results. The contents of an interactive session are only temporary. The session results and history are lost at the end of the session. However, the output from the session is often still visible in the terminal window.
 
 Users can also launch Python scripts from the command line interface. For this method, use the `python3` command to run the script from the terminal. This launches the Python interpreter, which then executes the script. The script potentially prompts the user for information and displays the results to standard output.
 
@@ -219,49 +227,59 @@ Users can also launch Python scripts from the command line interface. For this m
 
 To enter the Python interactive shell, use the command `python3`. The Python interactive prompt `>>>` should appear.
 
-    python3
+```command
+python3
+```
 
-{{< output >}}
+```output
 Python 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0] on linux
 ...
 >>>
-{{< /output >}}
+```
 
 At this point, enter the Python commands one at a time. For example, the following command prints `Welcome to Python`.
 
-    print("Welcome to Python")
+```command
+print("Welcome to Python")
+```
 
-{{< output >}}
+```output
 Welcome to Python
-{{< /output >}}
+```
 
 The interactive shell does not limit developers to simple print statements. It allows users to define and manipulate variables, run loops and conditional statements, and call functions. The following sequence defines variable `x` and sets it to `10`. It then sets `x` to `x + 2` and prints the resulting value. To display a value in the interactive print, enter the name of the variable. The value of `x` could also be printed using the command `print(x)`.
 
-    x = 10
-    x = x + 2
-    x
+```command
+x = 10
+x = x + 2
+x
+```
 
-{{< output >}}
+```output
 12
-{{< /output >}}
+```
 
 The interactive shell allows users to enter multiline statements like conditionals and loops. First, enter the conditional or iterative statement, then add all the commands within the associated code block, which is also known as a *suite*. All lines in the suite must be indented. The indented lines within a suite are known as *continuation lines*. Python changes the interactive prompt to three dots `...` to indicate the current command is a continuation line. After reaching the end of the block, use a backspace to terminate the block.
 
 Following is an example of how to use a `for` loop in the Python interactive shell. The value of `val` increments by `2` ten times and increases from `2` to `22`.
 
-    val = 2
-    for i in range(10):
-    ...     val = val + 2
+```command
+val = 2
+for i in range(10):
+...     val = val + 2
 
-    print(val)
+print(val)
+```
 
-{{< output >}}
+```output
 22
-{{< /output >}}
+```
 
 To exit an interactive session, enter the command `exit()` or `quit()`. On most systems, the command `CTRL-D` also terminates the session.
 
-    exit()
+```command
+exit()
+```
 
 ### How to Run a Python Program Interactively
 
@@ -277,37 +295,46 @@ To see the directories in the PMSP, import the `sys` module and use the `sys.pat
 
 The example below imports the `sqrt_multiply` from the script that was used earlier in the guide. It immediately runs and prompts the user for a number.
 
-    import sqrt_multiply
+```file {title="import_sqrt_multiply"}
+import sqrt_multiply
+```
 
-{{< output >}}
+```output
 Enter a positive numerical value:
-{{< /output >}}
+```
 
 The `importlib` module provides a way to run a script multiple times. To use the `importlib` module inside the interactive shell, follow the steps below:
 
 1.  Import the `importlib` module.
 
-        import importlib
+    ```command
+    import importlib
+    ```
+
 1.  Use the `import_module` method to import and run a script. The example below uses `import_module` to import `sqrt_multiply`.
 
-        importlib.import_module('sqrt_multiply')
+    ```command
+    importlib.import_module('sqrt_multiply')
+    ```
 
-    {{< output >}}
-Enter a positive numerical value:
-...
-<module 'sqrt_multiply' from '/home/testuser/sqrt_multiply.py'>
-    {{< /output >}}
+    ```output
+    Enter a positive numerical value:
+    ...
+    <module 'sqrt_multiply' from '/home/testuser/sqrt_multiply.py'>
+    ```
 
 1.  To reload and run the script again, import the module and then use the `importlib.reload` method. Do not enclose the name of the script or module in quotes. This is because `reload` accepts the name of an object, not a string. The module object is created when the module is imported.
 
-        import sqrt_multiply
-        importlib.reload(sqrt_multiply)
+    ``command
+    import sqrt_multiply
+    importlib.reload(sqrt_multiply)
+    ```
 
-    {{< output >}}
-Enter a positive numerical value:
-...
-<module 'sqrt_multiply' from '/home/testuser/sqrt_multiply.py'>
-    {{< /output >}}
+    ```output
+    Enter a positive numerical value:
+    ...
+    <module 'sqrt_multiply' from '/home/testuser/sqrt_multiply.py'>
+    ```
 
 {{< note >}}
 To find and run a Python module without importing it, use the built-in `runpy` module. The `run_module` and `run_path` methods in `runpy` are powerful but somewhat complicated. Consult the [Python runpy Documentation](https://docs.python.org/3/library/runpy.html) for more information.
@@ -319,26 +346,32 @@ Users can run any Python program non-interactively using the Python interpreter.
 
 For instance, the following program runs the program `py_v3.py`. The program below displays the current release of the Python interpreter.
 
-    python3 py_v3.py
+```command
+python3 py_v3.py
+```
 
-{{< output >}}
+```output
 This version of Python is:
 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0]
-{{< /output >}}
+```
 
 If a Python script includes a Shebang on the first line, it is not necessary to include the `python3` or `python2` keyword. The Shebang indicates the interpreter. Specify the full path of the file containing the Shebang to run the script. To use this method, the file must be executable. Use the `chmod +x` command to make the file executable.
 
-    chmod +x py_v3.py
-    ./py_v3.py
+```command
+chmod +x py_v3.py
+./py_v3.py
+```
 
-{{< output >}}
+```output
 This version of Python is:
 3.10.4 (main, Jun 29 2022, 12:14:53) [GCC 11.2.0]
-{{< /output >}}
+```
 
 When running a Python script using the command line interface, `print` statements are redirected to the terminal window. However, sometimes users might want to save the output to a file. To redirect the standard output to a file, use the `>` symbol. The following command redirects the output from `py_v3.py` to `py_output.txt`. To append the output to an existing file, use the `>>` symbol instead.
 
-    python3 py_v3.py > py_output.txt
+```command
+python3 py_v3.py > py_output.txt
+```
 
 Most modules are designed as libraries, not self-standing programs. However, it is possible to use the Python interpreter to run certain modules. To run a Python module like a program, use the `-m` option. However, this technique does not work on all modules.
 
@@ -346,7 +379,7 @@ Most modules are designed as libraries, not self-standing programs. However, it 
 
 The previous examples demonstrate how to run Python scripts from the command line. But there are some other ways to launch a Python program. Many of these methods require the Python file to use a Shebang and have the execute permission set.
 
-- Scripts can be launched from an *integrated development environment* (IDE). These environments are common in professional software development firms. They make it easier to track, develop, and maintain larger applications. An IDE can launch a Python script using a button, icon, or link.
+- Scripts can be launched from an *integrated development environment* (IDE). These environments are common in professional software development. They make it easier to track, develop, and maintain larger applications. An IDE can launch a Python script using a button, icon, or link.
 - Some text editors can run a script from inside the text editor window.
 - File managers allow users to run Python scripts like any other application. Double-click on the filename of the script to run it. The script must be executable.
 - A Python script can be executed as a cron job or invoked from a shell script or another application.

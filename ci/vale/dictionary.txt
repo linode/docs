@@ -2033,6 +2033,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
