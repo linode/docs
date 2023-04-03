@@ -320,6 +320,7 @@ codebase
 codec
 Codeone
 codepen
+Codership
 colab
 collabnet
 colormaps
