@@ -1,8 +1,5 @@
 ---
 slug: symfony-on-centos-5
-author:
-  name: Ozan Yerli
-  email: oyerli@gmail.com
 description: 'Installing and configuring Symfony for developing PHP applications on your CentOS 5 Linode.'
 keywords: ["cakephp", "cakephp debian", "php framework", "CentOS", "develop php"]
 tags: ["web applications","apache","php","centos","mysql"]
@@ -12,19 +9,14 @@ modified: 2013-09-27
 modified_by:
   name: Linode
 published: 2010-06-08
-expiryDate: 2015-09-27
 title: Symfony on CentOS 5
 deprecated: true
-relations:
-    platform:
-        key: symfony
-        keywords:
-            - distribution: CentOS 5
+authors: ["Ozan Yerli"]
 ---
 
 Symfony is a PHP web application framework, providing the classes and tools required to build and enhance both simple and complex applications. Featuring easy AJAX integration, an admin interface generator, and more, Symfony has become a very popular choice for web application development.
 
-Before installing Symfony, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Symfony, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Basic System Configuration
 

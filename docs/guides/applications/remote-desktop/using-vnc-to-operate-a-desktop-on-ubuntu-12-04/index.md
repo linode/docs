@@ -1,9 +1,6 @@
 ---
 slug: using-vnc-to-operate-a-desktop-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide shows how to install and connect to a remote GUI-based desktop environment using Remmina VNC Client on a Linode running Ubuntu 12.04.'
 keywords: ["vnc", "remote desktop", "ubuntu", "12.04"]
 tags: ["ubuntu"]
@@ -22,6 +19,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 ![Using VNC to Operate a Desktop on Ubuntu 12.04](using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")
@@ -62,7 +60,7 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
 ### Windows
 
-1.  Open [PuTTY](/docs/networking/ssh/ssh-connections-using-putty-on-windows/) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below, replacing example.com with your Linode's IP address or hostname:
+1.  Open [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/) and navigate under the `SSH` menu to `Tunnels`. Add a new forwarded port as shown below, replacing example.com with your Linode's IP address or hostname:
 
     ![Adding a forwarded port to PuTTY.](1648-vnc-putty-1.png)
 

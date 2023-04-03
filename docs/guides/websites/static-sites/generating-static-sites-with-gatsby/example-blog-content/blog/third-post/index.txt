@@ -1,0 +1,7 @@
+---
+title: A Third Blog Post
+date: "2022-03-01"
+description: "Yet one more blog post."
+---
+
+At this point, the blog has reached three posts, all rendered through Gatsby.

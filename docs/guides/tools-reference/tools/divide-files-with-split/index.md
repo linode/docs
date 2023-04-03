@@ -1,8 +1,5 @@
 ---
 slug: divide-files-with-split
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Practical examples for using split to divide large files into multiple smaller files.'
 og_description: 'split is a Unix command line utility for dividing large files into smaller files. This guide provides basic and advanced examples along with explanations of the most common options and parameters.'
 keywords: ["split", "files", "unix", "command-line"]
@@ -14,13 +11,14 @@ published: 2018-01-29
 title: How to Divide Files with split
 tags: ["linux"]
 aliases: ['/tools-reference/tools/divide-files-with-split/']
+authors: ["Linode"]
 ---
 
 ## What is split?
 
 `split` is a Unix command-line utility similar to `grep` or `tail`. It allows you to divide a larger file into several smaller files.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Certain options for `split` will not work by default on macOS because the GNU version of split does not come pre-installed. Use Homebrew to install `brew install coreutils` then invoke in GNU split via `gsplit`.
 {{< /note >}}
 

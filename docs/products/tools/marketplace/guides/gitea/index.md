@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This is a step-by-step guide on how to deploy the Gitea application, a community managed, self-hosted Git service, by using the Linode One-Click App Marketplace."
 keywords: ['Gitea','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
@@ -10,12 +7,11 @@ published: 2021-01-04
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Gitea through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Gitea through the Linode Marketplace"
 external_resources:
 - '[Gitea Documentation](https://docs.gitea.io/)'
 aliases: ['/guides/deploy-gitea-with-one-click-apps/', '/guides/deploy-gitea-with-marketplace-apps/', '/guides/deploy-Gitea-with-marketplace-apps/','/guides/gitea-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Gitea](https://gitea.io/) is a community managed, painless, self-hosted Git service. Gitea is a complete solution for all aspects of your software development. At its core, Gitea serves as your centralized remote Git repository. Gitea also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.
@@ -28,9 +24,9 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Gitea should be fully installed within 3-7 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,21 +39,23 @@ Self-hosting your software development with the Gitea Marketplace App offers tot
 - **Gitea Database Password** *(required)*: The password for your Gitea database user.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
-- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
+- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
 
 #### Additional Security Configuration
 
-- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
-- **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
+- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
+- **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
-- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-records-an-introduction/#mx) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
-- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-records-an-introduction/#spf) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
+- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-overview/#mx) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
+- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-overview/#spf) for the purpose of sending emails from your Linode. Additional configuration with Gitea is required after installation to enable sending emails with this app.
 - **Would you like to use a free Let's Encrypt SSL certificate for your fully qualified domain name?** Select **Yes** to configure an SSL Certificate for HTTPS access to your Gitea remote desktop. Requires a `Domain` and `Admin Email`.
 - **Admin Email for Let's Encrypt certificate:** The email address to register with [Certbot](https://certbot.eff.org/) when generating an SSL certificate for your fully qualified domain name. This field is required for HTTPS access to your Gitea remote desktop.
 
 {{< content "email-warning-shortguide" >}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

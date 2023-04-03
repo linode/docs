@@ -1,7 +1,5 @@
 ---
 slug: docker-security-essentials
-author:
-  name: Hackersploit
 description: "This guide will show you the basics of securing Docker containers, including managing user access, preventing privilege escalations, and more."
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
@@ -13,6 +11,7 @@ published: 2021-03-26
 title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']
 image: DockerSecurityEssentials.png
+authors: ["Hackersploit"]
 ---
 
 ## What is Docker?
@@ -23,9 +22,9 @@ Docker utilizes the host OS Kernel, which makes Docker containers more efficient
 
 ## Prerequisites and Requirements
 
-In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/guides/deploying-docker-with-marketplace-apps/). Otherwise, you can find instructions on how to manually install Docker in [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
+In order to secure Docker containers, you need to have a Linux server with Docker running. For a quick an easy way to install Docker on Linode, check out our guide on [How to Deploy Docker with Marketplace Apps](/docs/products/tools/marketplace/guides/docker/). Otherwise, you can find instructions on how to manually install Docker in [Installing and Using Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This demonstration has been performed on Ubuntu 18.04. All techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 
@@ -35,13 +34,13 @@ This guide assumes you are familiar with using Docker and Dockerfiles. For addit
 
 The security of the host kernel and operating system directly correlates to the security of your Docker containers given their utilization of the host kernel. It is therefore vitally important to keep your host secure. The following steps outline various security best practices to consider for securing your Docker host:
 
-1.  [Secure and harden](/docs/guides/set-up-and-secure/) your host OS.
+1.  [Secure and harden](/docs/products/compute/compute-instances/guides/set-up-and-secure/) your host OS.
 1.  Ensure your host is kept updated.
 1.  Ensure you have the latest version of Docker running.
 1.  Consider the use of a minimal Linux distribution such as Alpine that offers a much smaller threat surface.
 1.  Add your host and containers to a robust vulnerability management plan and constantly scan your host and containers for vulnerabilities.
 1.  Only run the services you need to run.
-1.  Ensure your kernel is [up to date](/docs/guides/update-kernel/).
+1.  Ensure your kernel is [up to date](/docs/products/compute/compute-instances/guides/manage-the-kernel/).
 1.  Keep up with the latest vulnerability news for the Linux kernel and the Docker platform.
 
 ## Running Docker Containers with an Unprivileged User

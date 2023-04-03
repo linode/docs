@@ -1,8 +1,5 @@
 ---
 slug: store-and-share-your-files-with-nextcloud-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Nextcloud is an open content hosting tool built for customization and security. We'll walk you through installing it on CentOS 7."
 keywords: ["nextcloud", "cloud", "open source hosting"]
 tags: ["centos", "lamp"]
@@ -12,23 +9,21 @@ modified: 2018-12-18
 modified_by:
   name: Linode
 title: "Store and Share your Files with Nextcloud on Centos 7"
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
   - '[Using the occ command](https://docs.nextcloud.com/server/12/admin_manual/configuration_server/occ_command.html#http-user-label)'
   - '[nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html)'
   - '[Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl)'
 aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud-centos-7/']
+authors: ["Andrew Lescher"]
 ---
 
 ![Store and Share your Files with Nextcloud on CentOS](Store_and_Share_your_Files_with_Nextcloud_on_Centos_smg.png "Store and Share your Files with Nextcloud on CentOS")
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Install the *EPEL* repository:
 
@@ -185,4 +180,4 @@ Once you have successfully installed you Nextcloud environment, you may want to 
 
 Although Apache was used as the web server in this guide, installing Nextcloud with nginx is possible as well. Navigate to the [Nextcloud NGINX Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html) documentation to setup Nextcloud with NGINX.
 
-[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/applications/cloud-storage/install-nextcloud-talk/).
+[Nextcloud Talk](https://nextcloud.com/talk/), is an addon to Nextcloud that allows for secure text and video conferencing through Nextcloud's platform. Check out our guide on how to [Install Nextcloud Talk](/docs/guides/install-nextcloud-talk/).

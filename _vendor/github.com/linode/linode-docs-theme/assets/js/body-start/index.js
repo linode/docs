@@ -1,6 +1,6 @@
 import { setIsTranslating, isMobile, toggleBooleanClass } from '../main/helpers/index';
 
-(function() {
+(function () {
 	if (!window.turbolinksLoaded) {
 		// If a language other than en is set, we need to try to prevent the
 		// untranslated content from being visible.

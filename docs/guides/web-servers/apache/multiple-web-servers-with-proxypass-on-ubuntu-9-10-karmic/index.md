@@ -1,9 +1,6 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Ubuntu 9.10 "Karmic".'
 keywords: ["apache", "proxypass", "apache on ubuntu", "multiple web servers"]
 tags: ["proxy","web server","apache","ubuntu"]
@@ -13,12 +10,13 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-04
-title: 'Multiple Web Servers with ProxyPass on Ubuntu 9.10 (Karmic)'
+title: 'Multiple Web Servers with ProxyPass on Ubuntu 9.10'
 relations:
     platform:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

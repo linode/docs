@@ -1,10 +1,6 @@
 ---
 slug: persistent-terminal-sessions-with-tmux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will show you how to use tmux Terminal multiplexer to host a server on your Linode and connect to it."
-og_description: "This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window"
 keywords: ['tmux','terminal','multiplexer','attach','detach','panes','sessions']
 tags: ["networking","ssh","ubuntu","debian","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,14 +8,14 @@ published: 2017-12-06
 modified: 2021-12-26
 modified_by:
   name: Linode
-title: "How to Use tmux (a Terminal Multiplexer)"
+title: "Use tmux (a Terminal Multiplexer)"
+title_meta: "How to Use tmux (a Terminal Multiplexer)"
 image: tmux.jpg
-contributor:
-  name: Alexandru Andrei
 external_resources:
 - '[tmux Manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1)'
 - '[The Tao of tmux](https://leanpub.com/the-tao-of-tmux/read)'
 aliases: ['/networking/ssh/persistent-terminal-sessions-with-tmux/']
+authors: ["Alexandru Andrei"]
 ---
 
 ## What is tmux?
@@ -86,7 +82,7 @@ There are three ways to issue commands to tmux:
 
 Most tmux tasks can be accomplished using any of these three methods.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can change the prefix key by editing the `~/.tmux.conf` file. For the remainder of this guide, **Prefix** will be used to refer to either the default `CTRL+b` or the combination you have chosen in your configuration file.
 {{< /note >}}
 
@@ -160,7 +156,7 @@ Sometimes even multiple windows and panes aren't enough and you need to separate
 
     new-session
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It's also possible to type shorter versions of a command, for example: "new-se". But this will work only if there isn't another command that starts with the same string of characters.
 {{< /note >}}
 
