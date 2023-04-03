@@ -1,26 +1,20 @@
 ---
 slug: logic-programming-languages
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'What is logic programming and what are its benefits? Get those answers plus find examples of logic programming languages and their features. ✓ Learn more!'
 keywords: ['logic programming languages', 'logical programs', 'logic programming examples', 'logic programming paradigm']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-01-31
+published: 2023-04-03
 modified_by:
   name: Linode
 title: "A Guide to Understanding Logic Programming | Linode"
-h1_title: "Logic Programming Languages: Use Cases, Examples, and Features"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
+title_meta: "Logic Programming Languages: Use Cases, Examples, and Features"
 external_resources:
 - '[Prolog Standard](https://www.iso.org/standard/21413.html)'
 - '[Prolog Tutorial](https://www.tutorialspoint.com/prolog/prolog_introduction.htm)'
 - '[Prolog Wikipedia page](https://en.wikipedia.org/wiki/Prolog)'
 - '[Logic Programming Wikipedia page](https://en.wikipedia.org/wiki/Logic_programming)'
 - '[GNU Prolog page](http://www.gprolog.org/)'
+authors: ["Jeff Novotny"]
 ---
 
 Most computer programming languages fall into one of several *programming paradigms*. A paradigm classifies a language based on its features and how its programs are constructed and used. Logic programming is a paradigm that uses a system of facts and rules. It is commonly used in the artificial intelligence and machine learning domains. This guide explains the logic programming paradigm and compares it to other programming models. It also explains its benefits and use cases, and introduces the most important logic programming languages.
@@ -33,21 +27,29 @@ Logic programs are completely data-driven and do not typically include any conne
 
 **Facts** are simple statements that do not contain a body clause. They express the core information about a domain. Facts can take the form `x is true` or `x is y`, where y is a statement about x. A real-world example might be "Rex is a dog". In symbolic logic, a fact only has a head named `H`, and is expressed as follows:
 
-    H.
+  ```command
+  H.
+  ```
 
-**Rules**, also known as axioms, are logical clauses. Rules describe the circumstances under which a relationship is valid. A rule contains a head and a body and takes the form `x is true if y and z are true`. The `x is true` section forms the head of the clause, while the `if y and z are true` portions, is the body. A simple example is "x can bite if x is a dog and x is awake." A rule containing head `H` and body clauses `B1` to `Bn` can be expressed symbolically using the following notation:
+**Rules**, also known as axioms, are logical clauses. Rules describe the circumstances under which a relationship is valid. A rule contains a head and a body and takes the form `x is true if y and z are true`. The `x is true` section forms the head of the clause, while the `if y and z are true` portions are the body. A simple example is "x can bite if x is a dog and x is awake." A rule containing head `H` and body clauses `B1` to `Bn` can be expressed symbolically using the following notation:
 
-    H :- B1, …, Bn.
+```command
+H :- B1, …, Bn.
+```
 
 In the simplest case, the head and all body components are definite clauses. This means they are atomic and do not contain any subclauses or connective components. However, negations of definite clauses are still allowed, such as "x is not y". Some implementations also permit "if and only if", or `iff`, clauses. Some advanced programs permit very advanced rules using compound or nested clauses. In any case, the syntax must be very precise and consistent to be meaningful.
 
 The following logic programming example demonstrates how predicate calculus is used. The first rule categorizes dogs as animals. It can be written as follows:
 
-    animals(X) :- dog(X).
+```command
+animals(X) :- dog(X).
+```
 
 A subsequent statement asserts that Rex is a dog.
 
-    dog(Rex).
+```command
+dog(Rex).
+```
 
 Armed with these predicates, the program can automatically deduce Rex is an animal without being told. The fact `animal(Rex).` is not required. The program can choose Rex as an example when a user is looking for either a dog or an animal. If they are searching for something that is not an animal, then the program knows Rex is not a satisfactory choice.
 
@@ -100,7 +102,7 @@ Logic programming is naturally designed to answer queries. It can determine whet
 Some of the other advantages of logic programming include the following:
 
 - It is very useful for representing knowledge. Logical relationships can easily be transferred into facts and rules for use in a logic program.
-- Users do not have to be experts in traditional programming to use it. They only have to understand the logical domain and know how to add the predicates. Logic programming syntax is straightforward and easy to learn.
+- Users do not have to be experts in traditional programming to use it. They only have to understand the logical domain and know how to add the predicates. Logic programming syntax is straightforward.
 - It can be used to represent very complicated ideas and rapidly refine an existing data model.
 - It is very good at pattern matching.
 - It is efficient in terms of memory management and data storage.
@@ -126,17 +128,18 @@ Logic programming is also used in fault diagnosis, pattern matching, and mathema
 
 There are dozens of different logic programming languages. Many of these have been adapted from more generic programs for use in one specific domain. However, three widely-known languages are used across different subject areas.
 
-- **Prolog:** This is the original logic programming language, developed at a French University in 1972. It was designed for use in artificial intelligence and is still the most popular logic programming language today. Prolog mainly uses the declarative programming paradigm but also incorporates imperative programming. It is designed for symbolic computation and inference manipulation. Its logical rules are expressed in terms of relations and take the form of *Horn clauses*. Queries use these relations to generate results. Prolog operates by negating the original query and trying to find information proving it false.
+- **Prolog:** This is the original logic programming language, developed at a French university in 1972. It was designed for use in artificial intelligence and is still the most popular logic programming language today. Prolog mainly uses the declarative programming paradigm but also incorporates imperative programming. It is designed for symbolic computation and inference manipulation. Its logical rules are expressed in terms of relations and take the form of *Horn clauses*. Queries use these relations to generate results. Prolog operates by negating the original query and trying to find information proving it false.
 
   In Prolog, the Horn clause is written as:
 
-      H :- B1,...,Bn.
+  ```command
+  H :- B1,...,Bn.
+  ```
 
   - Antecedents (or left-hand side of the sentence) in the Horn Clause are called *subgoals* or *tail*.
   - The consequent (or right-hand side of the sentence) in the Horn Clause is called *goal* or *head*.
   - A Horn Clause with no tail is a *fact*. For example, `rainy(seattle).` does not depend on any condition.
   - A Horn Clause with a tail is a *rule*. For example, `snowy(X) :- rainy(X),cold(X).`.
-
 
   Developers use Prolog for database search, natural language processing, expert systems, and planning operations. An introduction to Prolog can be found [here](https://www.tutorialspoint.com/prolog/prolog_introduction.htm). To download and install Prolog, see the instructions on the [GNU Prolog website](http://www.gprolog.org/).
 
@@ -144,16 +147,18 @@ There are dozens of different logic programming languages. Many of these have be
 
 - **Answer Set Programming (ASP):** Not to be confused with the server-side scripting language sharing the same acronym. ASP is a form of *declarative programming* designed to solve extremely difficult search-related problems.
 
-  ASP is represented as a finite set of rules in the form as shown below:
+    ASP is represented as a finite set of rules in the form as shown below:
 
-      a0 ← b1, . . . , bn, not c1, . . . , ck
+    ```command
+    a0 ← b1, . . . , bn, not c1, . . . , ck
+    ```
 
-  From the above syntax:
+    From the above syntax:
 
-  - `a` is the *head* of the rule
-  - The list `b1, . . . , bn, not c1, . . . , ck` is called the *body*  of the rule
+    - `a` is the *head* of the rule
+    - The list `b1, . . . , bn, not c1, . . . , ck` is called the *body*  of the rule
 
-  Some examples include [graph coloring](https://www.geeksforgeeks.org/graph-coloring-set-2-greedy-algorithm/) and [Hamiltonian cycles](https://www.geeksforgeeks.org/hamiltonian-cycle-backtracking-6/) on large data sets. It reduces search problems to stable models. These models are then used to perform the search. All ASP queries are guaranteed to resolve.
+    Some examples include [graph coloring](https://www.geeksforgeeks.org/graph-coloring-set-2-greedy-algorithm/) and [Hamiltonian cycles](https://www.geeksforgeeks.org/hamiltonian-cycle-backtracking-6/) on large data sets. It reduces search problems to stable models. These models are then used to perform the search. All ASP queries are guaranteed to resolve.
 
 ## Concluding Thoughts about Logic Programming
 
@@ -161,4 +166,4 @@ Logic Programming is based on the declarative paradigm of computer programming. 
 
 Logic programming is one of several programming paradigms, including imperative/procedural, object-oriented, and functional models. Several variations of logic programming also exist. It is used in artificial intelligence, natural language processing, database management, and predictive analysis. Some of the best-known logic programming languages include Prolog, Datalog, and Answer Set Programming.
 
-Several tutorials provide a foundation to help you get started on logic programming. If you want to try logic programming for yourself, consider doing your development work on a Linode system. A Linode server, configured with a full LAMP stack, satisfies all the requirements to run Prolog. Choose from a high-performance [*Dedicated CPU*](https://www.linode.com/products/dedicated-cpu/) service or a flexible and affordable [*Shared CPU*](https://www.linode.com/products/shared/) alternative.
+Several tutorials provide a foundation to help you get started on logic programming. If you want to try logic programming for yourself, consider doing your development work on a Linode system. A Linode server, configured with a full LAMP stack, satisfies all the requirements to run Prolog.
