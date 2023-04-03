@@ -1,5 +1,5 @@
 ---
-title: Node Balancers
+title: NodeBalancers
 slug: nodebalancers
 ---
 

@@ -1,8 +1,5 @@
 ---
 slug: webpy-on-ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.10 (Maverick).'
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: webpy
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -45,11 +43,11 @@ Issue the following command to install all prerequisite software:
 
     apt-get install apache2 python
 
-The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/guides/apt-package-manager/). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
-For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/ubuntu-10-04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
+For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/guides/ubuntu-10-04-lucid/). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
 
     apt-get install python-pysqlite2 sqlite3
 
@@ -59,7 +57,7 @@ Issue the following commands to download and install Web.py, using a packaged ve
 
 > apt-get install python-webpy
 
-If you want to upload a more recent version, consider [this procedure](/docs/development/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
+If you want to upload a more recent version, consider [this procedure](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/), to install Web.py from source.
 
 ## Create a Basic Application with Web.py
 
@@ -203,7 +201,7 @@ You may wish to consult the following resources for additional information on th
 
 - [The Web.py Project Home Page](http://webpy.org/)
 - [Official Web.py Documentation](http://webpy.org/docs/0.3)
-- [Rewrite URLs in Apache with Mod\_Rewrite](/docs/web-servers/apache/configuration/rewriting-urls)
+- [Rewrite URLs in Apache with Mod\_Rewrite](/docs/guides/rewrite-urls-with-modrewrite-and-apache/)
 - [WSGI Configuration Options](http://code.google.com/p/modwsgi/wiki/ConfigurationDirectives)
 
 

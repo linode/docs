@@ -1,9 +1,6 @@
 ---
 slug: oscommerce-on-fedora-13
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Fedora 13.'
 keywords: ["osCommerce", "Fedora", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,13 +15,14 @@ relations:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Fedora 13
+authors: ["Stan Schwertly"]
 ---
 
 
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Fedora LAMP guide](/docs/lamp-guides/fedora-13/).
+Before installing osCommerce, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Fedora LAMP guide](/docs/guides/lamp-server-on-fedora-13/).
 
 ## Installation
 
@@ -85,7 +83,7 @@ From here you can begin customizing your store. The default index page will give
 
 ## SSL Certificates
 
-You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
+You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/guides/obtain-a-commercially-signed-tls-certificate/), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
 {{< file "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
 // Define the webserver and path parameters

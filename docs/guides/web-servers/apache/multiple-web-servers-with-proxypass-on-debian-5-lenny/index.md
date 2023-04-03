@@ -1,9 +1,6 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Debian 5 "Lenny".'
 keywords: ["apache", "proxypass", "apache on debian", "multiple web servers"]
 tags: ["proxy","web server","apache","debian"]
@@ -19,6 +16,7 @@ relations:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

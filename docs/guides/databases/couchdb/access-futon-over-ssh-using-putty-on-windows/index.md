@@ -1,8 +1,5 @@
 ---
 slug: access-futon-over-ssh-using-putty-on-windows
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial will teach you how to access your CouchDB database remotely by creating an SSH tunnel with PuTTY.'
 keywords: ["futon", " couchdb", " apache", " ssh", " putty", " windows", " os x", " osx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +10,10 @@ modified_by:
 published: 2010-02-04
 title: Access Futon Over SSH to Administer CouchDB
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty/)'
+ - '[Using PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/)'
  - '[Linode Docs - CouchDB](/docs/databases/couchdb/)'
 tags: ["database"]
+authors: ["Linode"]
 ---
 
 [Futon](http://docs.couchdb.org/en/1.6.1/intro/futon.html) is a web-based administrative interface for [Apache CouchDB](https://couchdb.apache.org/). You can use SSH to connect to your Linode's CouchDB server and then access Futon securely through your web browser. This quick answer assumes you already have CouchDB running on your Linode.
@@ -26,7 +24,7 @@ tags: ["database"]
 
 **SSH with Windows Using PuTTY**
 
-If you need to get set up with PuTTY, see [our guide](/docs/networking/ssh/ssh-connections-using-putty-on-windows/) on using it and verifying your Linode's SSH key fingerprint.
+If you need to get set up with PuTTY, see [our guide](/docs/guides/connect-to-server-over-ssh-using-putty/) on using it and verifying your Linode's SSH key fingerprint.
 
 To set up the SSH tunnel:
 
