@@ -1,29 +1,23 @@
 ---
 slug: python-data-types
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Python may not be a statically-typed programming language, but data types still play an important role. Knowing what Python data types are and how to use them can make your programs more effective and efficient overall. Learn the basics of Python data types and their operations in this guide."
 keywords: ['python data types', 'python data types check', 'python data types cheat sheet']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-05-03
+published: 2023-04-03
 modified_by:
   name: Nathaniel Stickman
 title: "The Basics of Python Data Types"
-h1_title: "The Basics of Python Data Types"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "The Basics of Python Data Types"
 external_resources:
 - '[Python Documentation: Built-in Types](https://docs.python.org/3/library/stdtypes.html)'
 - '[Real Python: Basic Data Types in Python](https://realpython.com/python-data-types/)'
 - '[Programiz: Python Data Types](https://www.programiz.com/python-programming/variables-datatypes)'
 - '[GeeksforGeeks: Python Data Types](https://www.geeksforgeeks.org/python-data-types/)'
+authors: ["Nathaniel Stickman"]
 ---
 
-Knowing about Python's data types helps to make your Python programs more effective, and helps you to avoid errors more often. This guide covers the most useful Python data types, providing knowledge of their fundamentals and giving a cheat sheet that you can refer to.
+Knowing about Python's data types helps to make your Python programs more effective, and helps you to avoid errors. This guide covers the most useful Python data types, providing knowledge of their fundamentals and giving a cheat sheet that you can refer to.
 
 ## What Are the Python Data Types?
 
@@ -39,7 +33,7 @@ Most often, Booleans are useful as the result of evaluations in Boolean contexts
 
 Following are some example illustrations with inline code comments:
 
-``` python
+```command
 # Mathematical comparisons.
 
 21 > 0
@@ -61,7 +55,7 @@ string_variable = "This is a string variable."
 string_variable == "This is a string variable."
 # True
 
-string_variable = "This is not a string variable."
+string_variable != "This is not a string variable."
 # False
 
 "is" in string_variable
@@ -73,7 +67,7 @@ string_variable = "This is not a string variable."
 
 This feature of Booleans shines most when used for conditionals, like `if` and `while`:
 
-``` python
+```file {title="python_loop.py" lang="python"}
 counter_variable = 0
 
 # This while loop uses the Boolean for `counter_variable <= 3` to keep
@@ -88,12 +82,12 @@ while counter_variable <= 9:
     counter_variable += 1
 ```
 
-{{< output >}}
+```output
 2
 4
 6
 8
-{{< /output >}}
+```
 
 You can see some of the comparison operators and Boolean operations in the examples above. For a more complete list of these, take a look at Python's [Built-in Types](https://docs.python.org/3/library/stdtypes.html) documentation.
 
@@ -103,21 +97,21 @@ Python has three data types for numerical values: integers, floating-point numbe
 
 Integers include only whole-value numbers, but they can be of any length, limited only by your system's memory.
 
-``` python
+```command
 integer_variable = 8
 another_integer_variable = 2095621
 ```
 
 Floating-point numbers, or floats, include decimal places. A float must have at least one decimal place but can have as many as 15.
 
-``` python
+```command
 float_variable = 8.0
 another_float_variable 209.562149
 ```
 
 Complex numbers consist of a combination of a real and an imaginary value. They take the format `{real value}+{imaginary value}j`.
 
-``` python
+```command
 complex_variable = 2+3j
 another_complex_variable = 1+2j
 ```
@@ -128,7 +122,7 @@ Python's numbers can be used in mathematical operations using Python's built-in 
 
 Python strings hold sequences of characters contained within either double or single quotation marks. Strings allow you to work with text in your Python code. Like with integers, strings can be of any length, limited only by your system's available memory.
 
-``` python
+```file {title="python_string_print.py" lang="python"}
 print("This is a string.")
 
 string_variable = "This is a string variable."
@@ -136,16 +130,16 @@ string_variable = "This is a string variable."
 print(string_variable)
 ```
 
-{{< output >}}
+```output
 This is a string.
 This is a string variable.
-{{< /output >}}
+```
 
 Generally, characters within a string are taken literally — you type `abc?!`, and that is exactly what the string contains. However, there are two main exceptions:
 
 - Quotation marks that you attempt to include within a string may be interpreted as ending the string. You can fix that by, instead, wrapping the string in the opposite kind of quotation mark.
 
-``` python
+```file {title="python_string_variable_quotes.py" lang="python"}
 string_variable = "This is a double quotation: " ."
 # The above results in a syntax error.
 
@@ -162,7 +156,7 @@ string_variable = "This is a single quotation: ' ."
 
 - The escape character, `\` can be used to either include a special character, like a quotation mark, as a literal character, or to include a special character like a new line.
 
-``` python
+```file {title="python_escape_character.py" lang="python"}
 string_variable = "This is a double quotation: \" . And this is a backslash: \\ ."
 # The above works because it escapes the double quote and the backslash.
 
@@ -184,9 +178,9 @@ To see these capabilities and learn more about them, take a look at our guide on
 
 Python has numerous collection data types, each of which can hold sequences of data. Strings are one such data type, but the following three are the ones most often used for their abilities to collect objects.
 
-- *Tuples* are ordered and immutable collections of data. Each consists of a series of objects, separated by commas (with or without spaces), and wrapped in parentheses. A tuple is immutable, meaning that, once a tuple is created, it cannot be modified. Tuples are also ordered, meaning that elements in a tuple collection can be accessed using indices and slice notation.
+- **Tuples** are ordered and immutable collections of data. Each consists of a series of objects, separated by commas (with or without spaces), and wrapped in parentheses. A tuple is immutable, meaning that, once a tuple is created, it cannot be modified. Tuples are also ordered, meaning that elements in a tuple collection can be accessed using indices and slice notation.
 
-``` python
+```file {title="python_tuples.py" lang="python"}
 tuple_variable = ("Value 1", 98, "Value 3", 2.3, 98)
 
 # Elements can be accessed using indices.
@@ -197,9 +191,9 @@ tuple_variable[3]
 # 2.3
 ```
 
-- *Lists* are also ordered collections, but they are mutable. A list contains a series of objects wrapped in square brackets. You can change the contents of a list at any time. And, as with tuples, elements of a list can be accessed using indices, and slice notation.
+- **Lists** are also ordered collections, but they are mutable. A list contains a series of objects wrapped in square brackets. You can change the contents of a list at any time. And, as with tuples, elements of a list can be accessed using indices, and slice notation.
 
-``` python
+```file {title="python_lists.py" lang="python"}
 list_variable = [4.2, "Value 4", 89, "Value 2", "Value 2"]
 
 # Elements can be accessed using indices.
@@ -212,9 +206,9 @@ list_variable[-2:]
 # ['Value 2', 'Value 2']
 ```
 
-- *Sets* are unordered collections of unique data. A set is a list of unique values, all wrapped in curly braces. Sets are mutable, like lists. But, because sets are unordered, elements cannot be accessed by indices, or slices. Instead, sets provide arbitrary but fast and efficient accesses to elements.
+- **Sets** are unordered collections of unique data. A set is a list of unique values, all wrapped in curly braces. Sets are mutable, like lists. But, because sets are unordered, elements cannot be accessed by indices, or slices. Instead, sets provide arbitrary but fast and efficient accesses to elements.
 
-``` python
+```file {title="python_sets.py" lang="python"}
 set_variable = {"Value 5", 5.7, 75, "Value 6", 67}
 
 # Elements are accessed arbitrarily, most often using pop, which removes
@@ -226,13 +220,13 @@ set_variable.pop()
 print(set_variable)
 ```
 
-{{< output >}}
+```output
 {67, 5.7, 'Value 5', 75}
-{{< /output >}}
+```
 
-Python's collections are powerful but more complicated tools than most other data types. As such, they have many operations, more than we can cover here.
+Python's collections are powerful but more complicated than most other data types. As such, they have many operations, more than we can cover here.
 
-Instead, take a look at our other guides to learn more about the ins and outs of Python collections. See our [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/) guide and our **Getting Started with Python Sets** guide. You may also want to refer to the guide on slicing and indexing strings, linked in the previous section, for an in-depth look at slice notation.
+Instead, take a look at our other guides to learn more about the basics of Python collections. See our [Python Lists and How to Use Them](/docs/guides/python-lists-and-how-to-use-them/) guide. You may also want to refer to the guide on slicing and indexing strings, [How to Slice and Index Strings in Python](/docs/guides/how-to-slice-and-index-strings-in-python/), for an in-depth look at slice notation.
 
 ### Dictionaries
 
@@ -240,25 +234,25 @@ Python dictionaries, or *dicts*, are unordered collections, like sets. But unlik
 
 Like sets, dictionaries are wrapped in curly braces. They consist of a list of key-value pairs. The keys can be of any immutable type, like strings, integers, and floats (not lists, sets, and other dictionaries).
 
-``` python
+```command
 dict_variable = {"key1": "Value 1", "key2": 945, 4: "Value 3"}
 ```
 
 Unlike sets, you can fetch a particular item from a dictionary, based on the item's key. In this way, each item is identified by its key. So, extending on the example code above, you can print the dictionary keys as follows:
 
-``` python
+```command
 print(dict_variable[4])
 print(dict_variable["key1"])
 ```
 
-{{< output >}}
+```output
 Value 3
 Value 1
-{{< /output >}}
+```
 
 Python dictionaries can be especially useful for creating variables with properties. And, if you apply the keys for these properties consistently across variables, these variables' properties can be compared effectively.
 
-``` python
+```file {text="python_dictionaries.py" lang="python"}
 person_one = {"name": "Melissa", "age": 32, "height_inches": 68}
 person_two = {"name": "Edgar", "age": 29, "height_inches": 65}
 
@@ -270,9 +264,9 @@ else:
     print(person_one["name"] + " and " + person_two["name"] + "are the same height.")
 ```
 
-{{< output >}}
+```output
 Melissa is taller than Edgar.
-{{< /output >}}
+```
 
 You can learn more about Python dictionaries and how to make the most of them by reading our [Using Dictionaries in Python 3](/docs/guides/python-3-dictionaries/) guide.
 
@@ -280,13 +274,13 @@ You can learn more about Python dictionaries and how to make the most of them by
 
 You can see throughout the previous sections that each data type has its own operations. For example, numbers have mathematical operations, strings can be concatenated, and lists have slice notation.
 
-But Python also includes some specific operations for working with data types generally. These let you see and manipulate how Python deals with data types for different objects.
+But Python also includes some specific operations for working with data types in general. These let you see and manipulate how Python deals with data types for different objects.
 
 ### Checking Data Type
 
 Python provides two functions for checking the data types of given objects. The most straightforward of these is the `type` function. Given an object, the `type` function tells you what that object's data type is.
 
-``` python
+```command lang="python"
 type(True)
 # <class 'bool'>
 
@@ -303,7 +297,7 @@ type({"key": "value"})
 
 The `type` function describes a given object's data type. However, if you want to verify whether an object is or is not of a specific type, you may use the `isinstance` function instead. This function takes an object and a data type identifier as arguments. It then provides you a Boolean: `True` if the object's data type matches the identifier and `False` otherwise.
 
-``` python
+```command lang="python"
 isinstance(4, int)
 # True
 
@@ -320,16 +314,16 @@ Python provides several functions allowing you to convert one data type to anoth
 
 These functions are useful when your program needs to use an operation for one data type — say the `+` operation for strings — for two different types.
 
-``` python
+```file {title="python_casting_data_types.py" lang="python"}
 string_variable = "The total is $"
 int_variable = 15
 
 print(string_variable + str(int_variable) + ".")
 ```
 
-{{< output >}}
+```output
 The total is $15.
-{{< /output >}}
+```
 
 Python has three functions for casting between numbers and strings.
 
@@ -341,7 +335,7 @@ Python has three functions for casting between numbers and strings.
 
 ## Conclusion
 
-With that, you have what you need to start working effectively with the most common data types in Python. Following this guide can help you get more familiar with everything from basic types like Boolean and integers to strings, collections, and dictionaries.
+You now have what you need to start working effectively with the most common data types in Python. Following this guide can help you get more familiar with everything from basic types like Boolean and integers to strings, collections, and dictionaries.
 
 Looking to deepen your understanding? Then be sure to look at our other [guides on Python](/docs/guides/development/python/). A few of these have been linked throughout this guide, but here is a list gathering those together:
 
@@ -352,5 +346,3 @@ Looking to deepen your understanding? Then be sure to look at our other [guides 
 - **Getting Started with Python Sets**
 
 - [Using Dictionaries in Python 3](/docs/guides/python-3-dictionaries/)
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
