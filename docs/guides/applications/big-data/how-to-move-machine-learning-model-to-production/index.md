@@ -1,8 +1,5 @@
 ---
 slug: how-to-move-machine-learning-model-to-production
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide will show you how to use an existing deep learning model as part of a production application using an API endpoint for a Flask app.'
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
 og_description: 'Use a pre-trained deep learning model as part of a production application.'
@@ -19,6 +16,7 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 dedicated_cpu_link: true
 aliases: ['/applications/big-data/how-to-move-machine-learning-model-to-production/']
+authors: ["Jared Kobos"]
 ---
 
 ![How to Move Your Machine Learning Model to Production](move-machine-learning-model-to-production.png "How to Move Your Machine Learning Model to Production")
@@ -29,9 +27,9 @@ This guide will show you how to create a simple Flask API that will use machine 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 This guide uses Ubuntu 16.04 in the examples. Modify the commands as needed for your distribution. The scripts in this guide are written in Python 3, but should also work on Python 2.
 
@@ -74,7 +72,7 @@ Keras is a deep learning library for Python. It provides an object-oriented inte
 
 Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from [Elite Data Science's excellent tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python). If you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the [Flask API](#flask-api) section of this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`
 {{< /note >}}
 

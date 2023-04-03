@@ -1,8 +1,5 @@
 ---
 slug: kubelet-definition-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays the definition for kubelet.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -13,6 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/kubelet-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### kubelet

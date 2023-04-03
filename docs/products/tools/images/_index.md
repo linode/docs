@@ -34,7 +34,7 @@ Accidentally deleting a production server will almost certainly impact your user
 
 - Web or software agencies deploying similar starter configurations for clients
 - Development workflows requiring the same base image for all developers or applications
-- Workflows requiring distributions other than [those provided by Linode](/docs/guides/choosing-a-distribution/)
+- Workflows requiring distributions other than [those provided by Linode](/docs/products/compute/compute-instances/guides/distributions/)
 
 ## Availability
 
@@ -44,9 +44,9 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 
 Custom Images cost $0.10/GB per month.
 
-{{<note>}}
+{{< note >}}
 Recovery Images, which are generated automatically after a Compute Instance is deleted, are provided at no charge.
-{{</note>}}
+{{< /note >}}
 
 ## Technical Specifications
 

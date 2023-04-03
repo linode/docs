@@ -1,4 +1,13 @@
-/* Background */
+/* This file is mostly auto generated:
+
+1. hugo gen chromastyles --style=github > assets/css/components/chroma.css
+2. Formmat with prettier.
+3. Remove the .bg class (not in use)
+
+Preserve this header.
+*/
+
+/* PreWrapper */
 .chroma {
   background-color: #ffffff;
 }
@@ -10,6 +19,9 @@
   color: #a61717;
   background-color: #e3d2d2;
 }
+/* CodeLine */
+.chroma .cl {
+}
 /* LineTableTD */
 .chroma .lntd {
   vertical-align: top;
@@ -17,41 +29,35 @@
   margin: 0;
   border: 0;
 }
-
-.chroma .lntd:first-of-type {
-  border-right: 1px #dedee3 solid;
-  text-align: center;
-  margin: 0;
-  padding: 0 0.075rem 0 0.075rem !important;
-}
-
-.chroma .lntd:nth-of-type(2n) {
-  @apply px-2;
-}
-
 /* LineTable */
 .chroma .lntable {
   border-spacing: 0;
   padding: 0;
-  margin: 0 !important;
+  margin: 0;
   border: 0;
-  width: auto;
-  overflow: auto;
-  display: block;
 }
 /* LineHighlight */
 .chroma .hl {
-  display: block;
-  width: 100%;
-  background-color: #ffffcc;
+  background-color: #02B15926;
 }
 /* LineNumbersTable */
 .chroma .lnt {
+  white-space: pre;
+  user-select: none;
+  padding: 0 0.4em 0 0.4em;
   color: #7f7f7f;
 }
 /* LineNumbers */
 .chroma .ln {
+  white-space: pre;
+  user-select: none;
+  margin-right: 0.4em;
+  padding: 0 0.4em 0 0.4em;
   color: #7f7f7f;
+}
+/* Line */
+.chroma .line {
+  display: flex;
 }
 /* Keyword */
 .chroma .k {

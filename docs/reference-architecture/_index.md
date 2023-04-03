@@ -4,6 +4,8 @@ description = "Reference architectures from Linode show how to arrange cloud inf
 
 [[cascade]]
 date = 2022-05-17
+keywordsAlgolia = ["reference architecture"]
+
 [[cascade]]
 layout = "tabbed-section-layout"
 [cascade._target]

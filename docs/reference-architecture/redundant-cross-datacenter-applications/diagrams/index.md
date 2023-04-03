@@ -10,5 +10,3 @@ published: 2022-09-28
 ---
 
 ![Redundant cross-datacenter application reference architecture diagram](redundant-cross-datacenter-application-diagram.png)
-
-“WireGuard” is a registered trademark of Jason A. Donenfeld.

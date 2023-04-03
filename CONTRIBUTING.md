@@ -68,7 +68,7 @@ To Install the latest Node.js LTS release on Windows, navigate to the [downloads
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.83.1**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.105.0**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
 
 Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
@@ -76,11 +76,10 @@ Note: If you observe any issues on a newer version, please [file an issue](https
 
 To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
 
-    - **macOS (Intel):** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_macOS-64bit.tar.gz
-    - **macOS (Apple Silicon):** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_macOS-ARM64.tar.gz
-    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_extended_0.83.1_Linux-64bit.tar.gz
+    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_darwin-universal.tar.gz
+    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_Linux-64bit.tar.gz
 
     You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
@@ -108,13 +107,13 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
     Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
 
-1. Test hugo by running `hugo version`. This should output a long string indicating that version 0.83.1 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+1. Test hugo by running `hugo version`. This should output a long string indicating that version 0.105.0 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
 
 #### Windows
 
 While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
 
-1. Download the [hugo_0.83.1_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Windows-64bit.zip) file. Additional files for other operating sytems can be found on the [Hugo v0.83.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.83.1) under **Assets**.
+1. Download the [hugo_0.105.0_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_0.105.0_Windows-64bit.zip) file. Additional files for other operating sytems can be found on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
 
 1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
 
@@ -198,6 +197,8 @@ This section takes you through the process of creating a new guide, using the to
         hugo server
 
     This starts a local server you can use to view the Linode library in your browser on `http://localhost:1313/docs/`.
+
+    Note: The first time Hugo is run on your workstation, it needs to compile a cache of web-optimized images for each guide in the documentation library. This process can take 10-20 minutes. If you run Hugo again in the future, the cache from your first build is reused and the startup time is much faster.
 
 1.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/guides/how-to-install-nginx-on-debian/`.
 

@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.04 operating system.'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
@@ -19,6 +16,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 
@@ -125,7 +123,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
 
 
 
