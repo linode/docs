@@ -2,7 +2,7 @@
 slug: beginners-guide-to-kubernetes
 description: 'This is the main introduction page for the mutli-part series - An Introduction to Kubernetes Concepts and Components where you will learn about the various parts of Kubernetes.'
 keywords: ['kubernetes','k8s','beginner','architecture']
-tags: ["kubernetes","container","managed hosting"]
+tags: ["kubernetes","container","managed hosting","education", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-29
 modified_by:
