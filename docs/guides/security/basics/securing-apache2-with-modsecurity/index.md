@@ -1,9 +1,6 @@
 ---
 slug: securing-apache2-with-modsecurity
-author:
-  name: Hackersploit
 description: 'This guide shows how you can use ModSecurity, a free web application firewall that can prevent attacks like XSS and SQL injection on your site, using Apache 2.'
-og_description: 'This guide shows how you can use ModSecurity, a free web application firewall that can prevent attacks like XSS and SQL injection on your site, using Apache 2.'
 keywords: ["apache2 configure modsecurity", "apache2 modsecurity", "apache modsecurity"]
 tags: ["security","web server","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,8 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: How to Secure Apache 2 With ModSecurity
-h1_title: Securing Apache 2 With ModSecurity
-enable_h1: true
+title: Securing Apache 2 With ModSecurity
+title_meta: How to Secure Apache 2 With ModSecurity
 aliases: ['security/basics/securing-apache2-with-modsecurity/']
 image: SecureApache2_ModSecurity.png
 relations:
@@ -21,6 +17,7 @@ relations:
         key: securing-web-servers-with-modsecurity
         keywords:
             - web server: Apache 2
+authors: ["Hackersploit"]
 ---
 
 ## What is ModSecurity?
@@ -35,7 +32,7 @@ In order to install and configure ModSecurity, you need to have a Linux server w
 
 For instructions, see our guide on [How to Install Apache Web Server on Ubuntu 18.04 LTS](/docs/guides/how-to-install-apache-web-server-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 

@@ -1,10 +1,6 @@
 ---
 slug: how-to-use-echo
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
 description: 'This quick answer guide explains how to use the echo command to view values, how to write to a file using the command, and how to use echo with other commands.'
-og_description: 'This quick answer guide explains how to use the echo command to view values, how to write to a file using the command, and how to use echo with other commands.'
 keywords: ["linux", "how to", "echo"]
 aliases: ['quick-answers/how-to-use-echo/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +8,10 @@ modified_by:
   name: Linode
 published: 2021-03-05
 image: UseEchoCommand.png
-title: How to Use Echo
-h1_title: Using the echo Command
+title: Using the echo Command
+title_meta: How to Use Echo
 tags: ["linux"]
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 ## What Is the Echo Command?

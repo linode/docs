@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-selinux-on-ubuntu-22-04
-author:
-  name: Cameron Laird
-  email: docs@linode.com
 description: "By default, Ubuntu 22.04 LTS uses AppArmor for security instead of SELinux. This tutorial shows you how to disable AppArmor and install and SELinux on Ubuntu 22.04. ✓ Click here!"
 keywords: ['Selinux ubuntu','SELinux for ubuntu','Install selinux ubuntu','Disable app armor', 'Disable SELinux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,28 +7,26 @@ published: 2022-09-19
 modified: 2022-09-23
 modified_by:
   name: Linode
-title: "How to Install SELinux on Ubuntu 22.04"
-h1_title: "Install SELinux on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Cameron Laird
+title: "Install SELinux on Ubuntu 22.04"
+title_meta: "How to Install SELinux on Ubuntu 22.04"
 relations:
   platform:
     key: how-to-install-selinux
     keywords:
       - distribution: Ubuntu 22.04
+authors: ["Cameron Laird"]
 ---
 
 According to [the official Security Enhanced Linux project page](http://www.selinuxproject.org/page/Main_Page), SELinux is a security enhancement to Linux. Linux-based security-sensitive projects largely standardize on it. Ubuntu 22.04 is compatible with SELinux and these instructions make it available on your Ubuntu 22.04 host. The steps in this guide appear as command line instructions. Both physical and virtual machines can be configured for SELinux, but it is not possible to enable SELinux in a Docker container without additional steps not covered here.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+2.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## SELinux Installation
@@ -40,9 +35,9 @@ SELinux's technical basis is [access control](https://www.linode.com/blog/cloud-
 
 A standard modern Ubuntu distribution includes [AppArmor](https://apparmor.net/), a Linux application security system which emphasizes ease-of-use and routine reliability. Both AppArmor and SELinux work through the [Linux Security Module](https://www.kernel.org/doc/html/v4.16/admin-guide/LSM/index.html) (LSM) interface. Since Linux only permits a single LSM to be active, the first step in an SELinux installation is to deactivate AppArmor.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 SELinux alters parts of Linux profoundly. An error in its installation can easily render an entire host unresponsive. Make backups, be prepared to dispose or recycle a particular instance, and work with care. Start your SELinux experiments in `permissive` mode, and make backups again before any switch to `enforcing` mode. The simplest SELinux installations are somewhat time-consuming, as they affect the entire filesystem. Each reboot takes a while, since SELinux methodically confirms the state of all filesystems and other resources.
-{{< /caution >}}
+{{< /note >}}
 
 ### Stop and Remove AppArmor
 
@@ -58,7 +53,7 @@ SELinux alters parts of Linux profoundly. An error in its installation can easil
 
 3.  Press `Q` to close the status info.
 
-    {{< note >}}A few Ubuntu 22.04 variants for embedded computing do not run AppArmor. Therefore, if you see "... apparmor.service could not be found ..." you can safely skip the next paragraphs and go immediately to the "Install SELinux" section below.{{< /note >}}
+    {{< note respectIndent=false >}}A few Ubuntu 22.04 variants for embedded computing do not run AppArmor. Therefore, if you see "... apparmor.service could not be found ..." you can safely skip the next paragraphs and go immediately to the "Install SELinux" section below.{{< /note >}}
 
 4.  In the more common case, where AppArmor is running, stop it:
 
@@ -114,15 +109,15 @@ While this output is similar to `getenforce`, once SELinux is enabled, `sestatus
 
 SELinux can be enabled in one of two states: `permissive` or `enforcing`. Your current SELinux installation remains disabled.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 If you connect to your host via SSH, access will be lost once SELinux is enabled. If you’re using a Linode host, you can still login via the LISH console.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Reboot, and the Ubuntu 22.04 host likely comes up with SELinux "on":
 
         sudo reboot
 
-    {{< note >}}The first reboot with SELinux enabled begins a relabelling process that could take a long time, so be patient.{{< /note >}}
+    {{< note respectIndent=false >}}The first reboot with SELinux enabled begins a relabelling process that could take a long time, so be patient.{{< /note >}}
 
 2.  Verify this through examination of /etc/selinux/config:
 
@@ -139,7 +134,7 @@ The presence of `/etc/selinux/config` is a sign that the host is ready for confi
 
 ## SELinux Management
 
-[SELinux has several options](https://www.linode.com/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) beyond the scope of this guide. Configuration is commonly achieved through configuration files rather than graphical user interface (GUI) or command line applications.
+[SELinux has several options](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) beyond the scope of this guide. Configuration is commonly achieved through configuration files rather than graphical user interface (GUI) or command line applications.
 
 ### Enabling SELinux
 

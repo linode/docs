@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Migrate a PostgreSQL Database to a Managed Database"
 description: "Learn how to migrate an existing PostgreSQL database to Linode's Managed Database service."
 published: 2022-06-17
+authors: ["Linode"]
 ---
 
 This guide covers how to migrate an existing PostgreSQL database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
@@ -31,8 +29,8 @@ Exporting the data from the original database is facilitated through the [pg_dum
     If you are connecting to a remote database, add `--host [host]` and `--port [port]` to the command above, replacing *[host]* with the host url of your remote database and *[port]* with the port number.
 
     {{< note >}}
-This step requires admin/superuser access to the PostgreSQL cluster. If you do not have this level of access and you still wish to preserve the existing roles, you can manually create the roles on your Managed Database though [SQL](https://www.postgresql.org/docs/current/sql-createrole.html) or the [`createuser`](https://www.postgresql.org/docs/current/app-createuser.html) functionality of psql. If you do not do this, all data will be owned by the `linpostgres` user once you import your data to your Managed Database cluster.
-{{</ note >}}
+    This step requires admin/superuser access to the PostgreSQL cluster. If you do not have this level of access and you still wish to preserve the existing roles, you can manually create the roles on your Managed Database though [SQL](https://www.postgresql.org/docs/current/sql-createrole.html) or the [`createuser`](https://www.postgresql.org/docs/current/app-createuser.html) functionality of psql. If you do not do this, all data will be owned by the `linpostgres` user once you import your data to your Managed Database cluster.
+    {{< /note >}}
 
 1.  **Export each database you wish to backup.** Replace *[database-name]* with the name of your database and *[user]* with the username for your source database. The other options in this command are used to ensure maximum compatibility with Linode's PostgreSQL Managed Databases.
 
@@ -55,9 +53,9 @@ Once you've successfully backed up the source database, you can import your data
         psql --host=[host] --username=[username] --dbname=postgres --command='DROP DATABASE IF EXISTS [database-name];'
         psql --host=[host] --username=[username] --dbname=postgres --command='CREATE DATABASE [database-name];'
 
-    {{< caution >}}
-Using `DROP DATABASE` command results in the deletion of any data stored on that database. If you are replacing an existing database and would like to avoid data loss, make sure you have a backup containing any data you would like to retain prior to running the command.
-{{</ caution >}}
+    {{< note type="alert" >}}
+    Using `DROP DATABASE` command results in the deletion of any data stored on that database. If you are replacing an existing database and would like to avoid data loss, make sure you have a backup containing any data you would like to retain prior to running the command.
+    {{< /note >}}
 
 1.  **Import your database file** to your newly created database.
 

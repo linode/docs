@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-function-as-a-service-faas
-author:
-  name: Tom Henderson
-  email: thenderson@extremelabs.com
 description: "FaaS gets a lot of attention as a way to save money. But what is it, exactly? And how does it work? Read this guide to learn more."
 keywords: ['function as a service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,7 @@ image: IntroFunctionAsAService.png
 modified_by:
   name: Linode
 title: "An Introduction to FaaS (Function as a Service)"
-contributor:
-  name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 Developers are used to breaking business logic into standalone functions that an application can call when necessary. Functions as a Service (FaaS) takes advantage of cloud architectures, spinning up functions (and their system resources) only when needed. Using FaaS has several advantages, not the least of which is affordability, but it can also create more complexity.

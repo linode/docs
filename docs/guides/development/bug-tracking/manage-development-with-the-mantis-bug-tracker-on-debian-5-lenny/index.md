@@ -1,9 +1,6 @@
 ---
 slug: manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Debian 5 (Lenny).'
 keywords: ["mantis", "mantis debian", "mantis linux", "bug tracker", "development"]
 tags: ["debian", "email", "lamp"]
@@ -19,11 +16,12 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: Debian 5
+authors: ["Stan Schwertly"]
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) as well as the [Exim guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/docs/guides/lamp-server-on-debian-5-lenny/) as well as the [Exim guide](/docs/guides/sendonly-mail-server-with-exim-on-debian-5-lenny/) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 

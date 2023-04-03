@@ -1,8 +1,5 @@
 ---
 slug: master-server-definition-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays the definition for Master Server.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -13,6 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/kubernetes-shortguide-definitions/master-server-definition-shortguide/']
+authors: ["Linode"]
 ---
 
 ### Master Server
