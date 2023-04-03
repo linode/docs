@@ -1,0 +1,7 @@
+---
+title: The First Blog Post 
+date: "2022-01-01"
+description: "Hello, World!"
+---
+
+This is the first blog post on my example Gatsby blog.
