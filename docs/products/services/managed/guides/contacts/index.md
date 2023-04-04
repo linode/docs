@@ -38,4 +38,4 @@ You can optionally attach up to two phone numbers to your contacts, a primary nu
 
 ## Attach a Contact Group to a Service Monitor
 
-A contact group needs to be assigned to a Service Monitor so that members of that group can be alerted when an issue is detected. To do this, follow the instructions for editing a service monitor and select the desired group under the **Contact Group** field. See [Edit a Service Monitor](/docs/products/services/managed/guides/manage-monitors/#edit-a-service-monitor).
+A contact group needs to be assigned to a Service Monitor so that members of that group can be alerted when an issue is detected. To do this, follow the instructions for editing a service monitor and select the desired group under the **Contact Group** field. See [Edit a Service Monitor](/docs/products/services/managed/guides/service-monitors/#edit-a-service-monitor).

@@ -2,7 +2,6 @@
 title: Configure SSH Access for Managed Services
 linkTitle: Configure SSH Access
 description: "Learn how to configure SSH so that our team can access your system when troubleshooting."
-aliases: ['/products/services/managed/guides/sign-up/']
 published: 2023-04-04
 authors: ["Linode"]
 ---
