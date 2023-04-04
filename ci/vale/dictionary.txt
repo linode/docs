@@ -420,9 +420,10 @@ dao
 databags
 datacenter
 datadir
-Datadog
+datadog
 dataflow
 datagram
+datalog
 dataset
 datasets
 datasource
@@ -459,6 +460,7 @@ Deno
 denormalized
 deprovision
 deprovisioning
+deque
 descolada
 descr
 deserialize
@@ -480,6 +482,7 @@ dhparams
 dia
 dialogs
 diavel
+dicts
 diffie
 digicert
 digium
@@ -873,6 +876,7 @@ https
 Hubzilla
 huginn
 Hugo
+hugo
 hulu
 husch
 hvc0
@@ -1686,6 +1690,8 @@ procfile
 procmail
 procs
 productpage
+logic-programming-languages
+prolog
 promlens
 promscale
 prosodyctl
@@ -1871,6 +1877,7 @@ rulesets
 rundir
 runfile
 runlevels
+runpy
 runtime
 runtimes
 rustup
@@ -2032,6 +2039,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
@@ -2076,6 +2084,7 @@ subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage

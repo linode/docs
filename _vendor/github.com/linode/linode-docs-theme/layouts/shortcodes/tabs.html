@@ -15,7 +15,9 @@
   </nav>
   <div class="border border-gray-500 p-4">
     {{- range (.Scratch.Get "tabsContent") -}}
-      <div x-show="isActive({{ .ordinal }})">
+      <div
+        x-show="isActive({{ .ordinal }})"
+        data-testid="tabs-content-{{ .ordinal }}">
         {{ .content }}
       </div>
     {{- end -}}

@@ -5,6 +5,7 @@ description: "Dedicated CPU Compute Instances are virtual machines that provide 
 published: 2023-01-18
 modified: 2023-03-31
 aliases: ['/products/compute/dedicated-cpu/','/platform/dedicated-cpu/getting-started-with-dedicated-cpu/','/guides/getting-started-with-dedicated-cpu/','/platform/dedicated-cpu/dedicated-cpu-use-cases/','/guides/dedicated-cpu-use-cases/','/platform/dedicated-cpu/','/guides//platform/dedicated-cpu/']
+tags: ["media"]
 ---
 
 Dedicated CPU Compute Instances are virtual machines that provide you with dedicated CPU resources. Their vCPU cores are guaranteed (and, thus, competition-free) so there are no surprises or CPU-related performance degradation. This enables you to run your production applications with confidence that your performance won't be impacted by others. These Compute Instances are CPU-optimized and can sustain CPU resource usage at 100% for as long as your workloads need.
