@@ -12,7 +12,7 @@ h1_title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginn
 enable_h1: true
 authors: ['Jeff Novotny']
 external_resources:
-- '[Mozilla Developers documentation for array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)'
+- '[Mozilla Developers documentation for Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)'
 ---
 
 This tutorial shows how to use the JavaScript `map()` function, which applies a transformation to the data in an array and constructs a second parallel array. Using the `map()` function to transform an array is an alternative to using the `for` keyword or the `forEach()` function. An example of using the JavaScript `map()` function looks like:
