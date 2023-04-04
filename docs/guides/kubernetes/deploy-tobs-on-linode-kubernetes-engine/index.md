@@ -1,8 +1,5 @@
 ---
 slug: deploy-tobs-on-linode-kubernetes-engine
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
 description: 'Learn how to quickly deploy TOBS (The Observability Stack), which includes Prometheus and Grafana, on Linode Kubernetes Engine.'
 og_description: 'Great monitoring means fast issue resolution. Learn how to quickly deploy TOBS (The Observability Stack) on Linode Kubernetes Engine'
 keywords: ['kubernetes', 'lke', 'prometheus', 'grafana', 'timescaledb', 'opentelemetry', 'metrics', 'traces']
@@ -21,6 +18,7 @@ external_resources:
 - '[Grafana Tutorials](https://grafana.com/tutorials/)'
 - '[TimescaleDB Documentation](https://docs.timescale.com/)'
 aliases: ['/kubernetes/deploy-tobs-on-linode-kubernetes-engine/']
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 [TOBS](https://github.com/timescale/tobs), short for The Observability Stack, is a pre-packaged distribution of monitoring tools and dashboard interfaces. It can be installed on any existing Kubernetes cluster. It includes many of the most popular open-source observability tools such as Prometheus, Grafana, Promlens, TimescaleDB, and others. Together, these provide a maintainable solution to analyze the traffic on the server and identify any potential problems with a deployment. This guide covers deploying TOBS on [LKE](https://www.linode.com/products/kubernetes/) (Linode Kubernetes Engine) using [Helm](https://helm.sh/) and the [kubectl port-forward](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#port-forward) command for local access to your monitoring interfaces.
@@ -43,11 +41,11 @@ TOBS includes the following components:
 This guide was written using [Kubernetes version 1.23](https://v1-17.docs.kubernetes.io/docs/setup/release/notes/).
 {{< /note >}}
 
-1. [Deploy an LKE Cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/). This guide was written using an example node pool with three [4 GB Shared CPU Compute Instances](https://www.linode.com/pricing/). Depending on the workloads you plan to deploy on your cluster, you may consider using other plans with more available resources.
+1. [Deploy an LKE Cluster](/docs/products/compute/kubernetes/). This guide was written using an example node pool with three [4 GB Shared CPU Compute Instances](https://www.linode.com/pricing/). Depending on the workloads you plan to deploy on your cluster, you may consider using other plans with more available resources.
 
 1. Install [Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm) to your local environment.
 
-1. Install [kubectl](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#install-kubectl) to your local environment and [connect to your cluster](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/#connect-to-your-lke-cluster-with-kubectl).
+1. Install [kubectl](/docs/products/compute/kubernetes/guides/kubectl/) to your local environment and [connect to your cluster](/docs/products/compute/kubernetes/guides/kubectl/).
 
 1. Create the `monitoring` namespace on your LKE cluster:
 

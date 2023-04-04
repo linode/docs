@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-gentoo-linux
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Gentoo Linode.'
 keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Gentoo
 tags: ["monitoring"]
+authors: ["Linode"]
 ---
 
 

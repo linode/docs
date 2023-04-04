@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-selinux-on-ubuntu-18-04
-author:
-  name: Angel
-  email: docs@linode.com
 description: 'This guide shows you how to install SELinux on Ubuntu 18.04, enable SELinux policies, and disable SELinux.'
 keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 aliases: ['/quick-answers/linux/install-selinux-on-ubuntu/','/quick-answers/linux/how-to-install-selinux-on-ubuntu-18-04/']
@@ -20,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 image: selinux-ubuntu-title.jpg
+authors: ["Angel Guarisma"]
 ---
 
 Ubuntu has a Mandatory Access Control (MAC) system similar to [SELinux](https://en.wikipedia.org/wiki/Security-Enhanced_Linux), named [AppArmor](https://wiki.ubuntu.com/AppArmor). Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Ubuntu 18.04, are already familiar with SELinux, and would like to use it to enforce security on your system, you can install it by following the steps in this guide.

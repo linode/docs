@@ -1,8 +1,5 @@
 ---
 slug: linode-longview-pricing-and-plans
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides an overview of how Linode manages billing on the Longview service, a service which is free for up to 10 clients and gives analytics on your instances.'
 keywords: ['longview','billing','pricing','price','limit','transfer', 'plan']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,10 +9,9 @@ modified_by:
 image: L_LongviewPricingandPlans.png
 title: "Longview Pricing and Plans"
 title_meta: "Linode Longview Pricing and Plans"
-contributor:
-  name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
 aliases: ['/platform/longview/pricing/']
+authors: ["Linode"]
 ---
 
 Longview is free for all customers for up to ten clients. You also have the option to purchase **Longview Pro** which includes additional analytics for an added cost. Longview's free version updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 12 hours.

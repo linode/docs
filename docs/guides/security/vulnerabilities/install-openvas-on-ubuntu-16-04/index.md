@@ -1,8 +1,5 @@
 ---
 slug: install-openvas-on-ubuntu-16-04
-author:
-  name: Phil Zona
-  email: docs@linode.com
 description: 'This guide shows how to install OpenVAS, the Open Vulnerability Assessment System, which you can use to scan your system for vulnerabilities on Ubuntu 16.04.'
 keywords: ["openvas", "ubuntu", "install openvas"]
 aliases: ['/security/vulnerabilities/install-openvas-on-ubuntu-16-04/','/security/install-openvas-on-ubuntu-16-04/']
@@ -14,6 +11,7 @@ modified_by:
 published: 2017-02-06
 title: Install OpenVAS 8 on Ubuntu 16.04
 deprecated: true
+authors: ["Phil Zona"]
 ---
 
 OpenVAS, the Open Vulnerability Assessment System, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. This guide will show you how to install OpenVAS 8 on Ubuntu 16.04.

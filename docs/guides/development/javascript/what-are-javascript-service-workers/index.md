@@ -1,27 +1,21 @@
 ---
 slug: what-are-javascript-service-workers
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 og_description:  "This guide provides you with an introduction to Javascript Service Workers and what they are capable of, as well as how to build an example service worker. "
 keywords: ['javascript service workers', 'service worker example']
-tags: ['web applications']
+tags: ["web applications", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
 title: "Javascript Service Workers: An Introduction with Examples"
 title_meta: "What Are Javascript Service Workers?"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Caching Strategies](https://serviceworke.rs/caching-strategies.html)'
 - '[Web Push](https://serviceworke.rs/web-push.html)'
 - '[Specifications and Examples](https://github.com/WICG/background-sync)'
 - '[Cache and Update](https://serviceworke.rs/strategy-cache-and-update.html)'
-
+authors: ["Nathaniel Stickman"]
 ---
 
 Service workers are JavaScript workers that sit between a website or web page and a network. JavaScript service workers give you immense control in developing offline experiences for your web applications, as well as features like push notifications and background sync. This guide introduces the key concepts behind service workers and how they can be used. Then, it provides the steps for setting up your own service worker.

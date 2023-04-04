@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Fedora 12.'
 keywords: ["nginx fedora 12", "nginx fedora", "nginx", "http", "web servers", "fedora 12"]
 tags: ["web server","fedora","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 

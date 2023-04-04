@@ -1,8 +1,5 @@
 ---
 slug: how-to-upgrade-to-ubuntu-14-04-lts
-author:
-  name: Dave Russell
-  email: drussell@linode.com
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
 keywords: ["upgrading", "ubuntu", "ubuntu 14.04"]
 tags: ["security","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/security/upgrading/how-to-upgrade-to-ubuntu-14-04-lts/']
+authors: ["Dave Russell"]
 ---
 
 ![How to Upgrade to Ubuntu 14.04 LTS](How_to_Upgrade_to_Ubuntu_1404_LTS_smg.jpg)
@@ -80,7 +78,7 @@ It's a good idea to back up your Linode before performing a major upgrade. That 
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 

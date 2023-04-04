@@ -1,9 +1,6 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Ubuntu 10.04 "Lucid".'
 keywords: ["NSD", "DNS", "resolving", "Ubuntu", "networking"]
 tags: ["dns","networking","resolving","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Brett Kaplan"]
 ---
 
 

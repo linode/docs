@@ -1,8 +1,5 @@
 ---
 slug: connect-to-server-over-ssh-on-chrome
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension."
 keywords: ['ssh','secure shell', 'chromeos', 'chrome', 'connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
@@ -18,6 +15,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Chrome
+authors: ["Linode"]
 ---
 
 SSH (*secure shell*) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server. This is a common task when administering a website, hosting environment, or even a Raspberry Pi or Arduino system.
@@ -96,7 +94,7 @@ Type `x` to close the tab, `r` to reconnect to the same server, or `c` to be pre
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 

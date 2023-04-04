@@ -1,8 +1,5 @@
 ---
 slug: install-an-odoo-13-stack-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Debian 10.'
 keywords: ["Odoo 13 install Debian 10", "install open source cms erp debian"]
 tags: ["debian", "postgresql", "database", "cms"]
@@ -14,9 +11,6 @@ modified_by:
 title: Installing an Odoo 13 Stack on Debian 10
 title_meta: 'How to Install an Odoo 13 Stack on Debian 10'
 image: install-an-odoo-13-stack-on-debian-10-using-linode.png
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 aliases: ['/websites/cms/install-an-odoo-13-stack-on-debian-10/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
@@ -29,6 +23,7 @@ relations:
         key: install-an-odoo-13-stack
         keywords:
             - distribution: Debian 10
+authors: ["Damaso Sanoja"]
 ---
 
 ## What is Odoo?
@@ -48,7 +43,7 @@ The setup in this guide requires the following *minimal* Linode specifications:
 Your implementation may need more nodes or higher-memory plans. Your required server resources depend on the number of end-users you want to serve and the number of modules you plan to incorporate. If you're not sure what size server you need, you can always start with a lower resource tier and then [resize your Linodes](/docs/products/compute/compute-instances/guides/resize/) to a higher plan later on.
 
 {{< note respectIndent=false >}}
-If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](/docs/guides/network-transfer/).
+If you set up both servers inside the same data center, then you can configure the database server and the application server to talk to each other over that data center's private network. Communication over the data center's private network can be faster than communication between data centers. As well, the data transfer between your servers does not count against your account's [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/).
 {{< /note >}}
 
 All examples in this guide are for Debian 10. If you plan to use a different operating system, adapt the commands as necessary.

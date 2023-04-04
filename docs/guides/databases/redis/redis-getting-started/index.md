@@ -1,7 +1,5 @@
 ---
 slug: redis-getting-started
-author:
-  name: Nathaniel Stickman
 description: "Learn how to start using Redis databases, connecting to a Redis server and working with data on it."
 keywords: ['connecting to redis server', 'how to create redis database', 'getting started with redis']
 tags: ['redis', 'database']
@@ -11,12 +9,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Connect to Redis and Use The Redis Database"
 title_meta: "How to Connect to Redis and Use The Redis Database"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: Commands](https://redis.io/commands)'
 aliases: ['/guides/how-to-connect-to-redis/']
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Redis is an open-source NoSQL database used for in-memory storage of data structures. It works exceptionally well for caching, messaging, and other data storage contexts where quick, and low-latency storage is needed.

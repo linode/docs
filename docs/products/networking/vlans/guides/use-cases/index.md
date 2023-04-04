@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn abut common use cases for Linode's VLAN (Virtual Local Area Network) service and how you might leverage it for your application."
 image:
 keywords: ['vlan','virtual local area network','use case']
@@ -11,9 +8,8 @@ modified_by:
   name: Linode
 tags: ["security", "networking", "linode platform"]
 title: "Common Use Cases for Linode's VLAN Service"
-contributor:
-  name: Linode
 aliases: ['/guides/common-linode-vlan-use-cases/']
+authors: ["Linode"]
 ---
 
 ## Use Cases

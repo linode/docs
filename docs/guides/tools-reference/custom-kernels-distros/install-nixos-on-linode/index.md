@@ -1,8 +1,5 @@
 ---
 slug: install-nixos-on-linode
-author:
-  name: Andrew Miller
-  email: docs@linode.com
 published: 2017-06-16
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
 keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
@@ -21,6 +18,7 @@ relations:
         keywords:
             - distribution: NixOS
 aliases: ['/tools-reference/custom-kernels-distros/install-nixos-on-linode/']
+authors: ["Andrew Miller"]
 ---
 
 ![How to Install NixOS on Linode](nixos-title.png "How to Install NixOS on Linode")
@@ -78,7 +76,7 @@ To create a new Linode, go to the [Create Linode page](https://cloud.linode.com/
 
 1.  In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
-1.  [Boot your Linode into rescue mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
+1.  [Boot your Linode into rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) with the **Installer** disk mounted as `/dev/sda`.
 
 1.  Once in rescue mode, click the **Launch Console** link to launch the Finnix rescue console and run the following commands, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html):
 

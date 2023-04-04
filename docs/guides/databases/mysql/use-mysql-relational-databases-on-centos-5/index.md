@@ -1,9 +1,6 @@
 ---
 slug: use-mysql-relational-databases-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on CentOS 5.'
 keywords: ["MySQL on Linux", "MySQL CentOS", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["database","mysql","centos"]
+authors: ["Linode"]
 ---
 
 

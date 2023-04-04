@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modwsgi-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 10.04 Lucid.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
@@ -19,6 +16,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

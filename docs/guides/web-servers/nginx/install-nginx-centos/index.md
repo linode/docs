@@ -1,8 +1,5 @@
 ---
 slug: install-nginx-centos
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide for installing NGINX on CentOS.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +17,7 @@ relations:
             - distribution: CentOS 7
 tags: ["web server","nginx"]
 aliases: ['/web-servers/nginx/install-nginx-centos/']
+authors: ["Linode"]
 ---
 
 These instructions install NGINX Mainline on CentOS 7 from NGINX Inc's official repository. For other distributions, see the [NGINX admin guide](https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/#installing-a-prebuilt-package). For information on configuring NGINX for production environments, see our *[Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)* series.

@@ -1,8 +1,5 @@
 ---
 slug: secrets-management-with-terraform
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn everything you need to know about secrets management with Terraform.'
 keywords: ['terraform','secrets','secrets management','backend','hcl']
 tags: ["security"]
@@ -14,8 +11,6 @@ modified_by:
 image: SecretsManagementwithTerraform.png
 title: "Managing Secrets with Terraform"
 title_meta: "Secrets Management with Terraform"
-contributor:
-  name: Linode
 external_resources:
 - '[Terraform Input Variable Configuration](https://www.terraform.io/docs/configuration/variables.html)'
 - '[Terraform Backend Configuration](https://www.terraform.io/docs/backends/config.html)'
@@ -23,6 +18,8 @@ external_resources:
 - '[Terraform State Storage and Locking](https://www.terraform.io/docs/backends/state.html)'
 - '[GitHub Discussion - Storing Sensitive Values in State Files](https://github.com/hashicorp/terraform/issues/516)'
 aliases: ['/applications/configuration-management/terraform/secrets-management-with-terraform/','/applications/configuration-management/secrets-management-with-terraform/']
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 Terraform is an Infrastructure as Code (IaC) tool that allows you to write declarative code to manage your infrastructure. In order to implement IaC with Terraform it is necessary to supply secrets, such as server passwords and API tokens, in the code. This guide discusses methods for securing those secrets within Terraform.

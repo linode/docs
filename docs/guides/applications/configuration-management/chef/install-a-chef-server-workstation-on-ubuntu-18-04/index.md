@@ -1,8 +1,5 @@
 ---
 slug: install-a-chef-server-workstation-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions on how to configure a Chef server and a virtual workstation, and how to bootstrap a client node on Ubuntu 18.04.'
 keywords: ["chef", "configuration management", "server automation", "chef server", "chef workstation", "chef-client"]
 tags: ["ubuntu","automation"]
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/configuration-management/chef/install-a-chef-server-workstation-on-ubuntu-18-04/','/applications/configuration-management/install-a-chef-server-workstation-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 [Chef](http://www.chef.io) is a Ruby based configuration management tool used to define infrastructure as code. This enables users to automate the management of many *nodes* and maintain consistency across those nodes. *Recipes* declare the desired state for managed nodes and are created on a user's *workstation* using the *Chef Workstation* package. Your recipes are distributed across nodes via a *Chef server*. A *Chef client*, installed on each node, is in charge of applying the recipe to its corresponding node.

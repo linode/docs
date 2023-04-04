@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modpython-on-ubuntu-8-04-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 8.04 (Hardy).'
 keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 8.04", "hardy"]
 tags: ["web applications","django","apache","python","cms","ubuntu","database"]
@@ -19,6 +16,7 @@ relations:
         key: django-apache-modpython
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 

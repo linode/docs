@@ -1,11 +1,8 @@
 ---
 slug: how-to-use-haproxy-for-load-balancing
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "HAProxy allows a webserver to spread incoming requests across multiple endpoints. Learn how to install and configure HAProxy on a Linode."
 keywords: ["haproxy", "load balancing", "high availability"]
-tags: ["proxy"]
+tags: ["proxy", "ecommerce", "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-30
 modified: 2019-02-01
@@ -13,13 +10,11 @@ modified_by:
   name: Linode
 title: "Using HAProxy for Load Balancing"
 title_meta: "How to Use HAProxy for Load Balancing"
-contributor:
-  name: Robert Hussey
-  link: https://github.com/hussrj
 external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
 dedicated_cpu_link: true
 aliases: ['/uptime/loadbalancing/how-to-use-haproxy-for-load-balancing/']
+authors: ["Robert Hussey"]
 ---
 
 

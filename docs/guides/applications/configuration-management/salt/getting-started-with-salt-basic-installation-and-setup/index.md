@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-salt-basic-installation-and-setup
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
 keywords: ["salt", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ image: GettingStartedwithSalt.png
 published: 2015-09-22
 title: Getting Started with Salt - Basic Installation and Setup
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 
 [Salt](https://saltproject.io/) is a Python-based configuration management platform designed to control a number of slave servers (called Minions in Salt terminology) from a single master server. This guide walks you through configuring a Salt Master and Minion, and is relevant to any supported Linux distribution.

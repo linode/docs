@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-cloudflare-with-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: 'Learn how to use Cloudflare with a website running on Linode.'
 keywords: ["cloudflare", "dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
   - '[DNS Records: An Introduction](/docs/guides/dns-overview/)'
 tags: ["dns","networking"]
 aliases: ['/networking/dns/how-to-set-up-cloudflare-with-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 [Cloudflare](https://www.cloudflare.com) provides a *content delivery network* (CDN) for websites, APIs, and other applications hosted on the web. The Linode platform is compatible with Cloudflare. If you run a web application on a Linode, you can enroll it in Cloudflare's CDN. Using the Cloudflare network can speed up your application's response time and protect your Linode from denial-of-service attacks (DoS).
@@ -49,7 +47,7 @@ In addition to caching content, Cloudflare's network is engineered to absorb and
 
 When you set up Cloudflare, you should keep your Linode's IP address secret from everyone except for Cloudflare. This is because if an attacker were able to discover the IP, they could direct a DDoS towards it. To keep the address hidden, make sure that none of your domains and DNS records reference it.
 
-If you were previously attacked and are setting up Cloudflare to protect yourself from continued attacks, [contact Linode Support](/docs/guides/support/#contacting-linode-support) and request a new IP address for your Linode for use with Cloudflare.
+If you were previously attacked and are setting up Cloudflare to protect yourself from continued attacks, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support) and request a new IP address for your Linode for use with Cloudflare.
 
 If you're not sure if your Linode's IP is still directly referenced by any of your DNS records, you can run `nmap` with [the following options](https://nmap.org/nsedoc/scripts/dns-brute.html) to check for possible references. `nmap` will try to resolve a set of common subdomains on your domain:
 

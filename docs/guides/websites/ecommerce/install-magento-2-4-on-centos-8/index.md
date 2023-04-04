@@ -1,8 +1,5 @@
 ---
 slug: install-magento-2-4-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide describes how to install Magento 2.4 on CentOS8, including any configuration required by the LAMP stack and the Elasticsearch software.'
 keywords: ["magento", "centos", "e-commerce", "magento centos"]
 tags: ["centos", "lamp", "cms", "magento"]
@@ -12,9 +9,6 @@ image: InstallMagento_CentOS8.png
 modified_by:
   name: Linode
 title: "Install Magento 2.4 on Centos 8"
-contributor:
-  name: Jeffrey Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Magento site](https://magento.com/)'
 - '[Magento developer documentation](https://devdocs.magento.com/)'
@@ -23,6 +17,7 @@ relations:
         key: how-to-install-magento
         keywords:
            - distribution: CentOS 8
+authors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install [*Magento*](https://magento.com/) on CentOS 8. Magento is a popular Open source e-commerce platform from Adobe. Magento uses *PHP*, *Elasticsearch*, and either a *MySQL* or *MariaDB* database system, along with a web server such as *Apache*. This guide focuses on how to install the free *Magento Open Source Edition*. Magento also offers *Magento Commerce* (with more extensive out of the box features and unlimited scaling), and the paid *Magento Commerce (On-Premises)* version with even more features and support.

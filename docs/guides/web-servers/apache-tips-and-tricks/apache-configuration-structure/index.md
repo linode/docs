@@ -1,8 +1,5 @@
 ---
 slug: apache-configuration-structure
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This is an introduction to the structure of the Apache web server configuration for maintaining granular configuration.'
 keywords: ["apache", "httpd", "configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[LAMP Stack Guides](/docs/web-servers/lamp/)'
  - '[Troubleshooting Apache](/docs/guides/troubleshooting-common-apache-issues/)'
 tags: ["web server","apache"]
+authors: ["Linode"]
 ---
 
 Throughout our [Apache section](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/web-servers/lamp/), a very simple configuration based on `<VirtualHost>` is offered. This configuration is useful for hosting several websites on a single server. However, this approach does not provide granular control over resource usage within each site.

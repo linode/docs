@@ -1,23 +1,20 @@
 ---
 slug: how-to-increase-swap-space-in-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Need to know how to increase swap space in Ubuntu? Guard yourself against out-of-memory errors and add swap space to your server today. ✓ Read more here!'
 keywords: ['how to increase swap space in ubuntu','ubuntu swap file','linux swap space size','create swap partition ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-02-07
+published: 2022-12-06
+modified: 2023-03-29
 modified_by:
   name: Linode
 title: "Step-by-Step Guide: How to Increase Swap Space in Ubuntu"
 title_meta: "Learn How to Create a Swap File in Ubuntu"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Ubuntu SwapFAQ](https://help.ubuntu.com/community/SwapFaq)'
 - '[Linux man page for the dd command](https://pubs.opengroup.org/onlinepubs/7908799/xcu/dd.html)'
 - '[Ubuntu man page for the swapon command](https://manpages.ubuntu.com/manpages/focal/man8/swapon.8.html)'
 - '[Ubuntu man page for the mkswap command](http://manpages.ubuntu.com/manpages/focal/man8/mkswap.8.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Systems trying to run large, memory-intensive applications with limited RAM can run into serious issues. Operations might become very slow, and the application can sometimes freeze completely or crash with out-of-memory errors. One workaround for this issue is to create extra swap space on the hard drive. The application can use this extra memory supply when RAM is running low. This guide explains the concept of swap space, and demonstrates how to increase swap space on Ubuntu.
@@ -34,7 +31,7 @@ The system uses RAM preferentially, but switches to using the swap space as nece
 
 As of release 17.04, Ubuntu uses a swap file rather than a partition. However, assuming your Linode is setup with our normal configurations, it has a 512MB swap disk rather than a swap file.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To increase the size of the swap partition, first power off your Linode from the Cloud Manager. Then simply navigate to the **Storage** tab of your Linode, and click **Resize** next to your swap partition.
 {{< /note >}}
 
@@ -59,7 +56,7 @@ Overall, it is usually better to treat swap space as a safety mechanism to avoid
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,120 +72,120 @@ It is possible to create multiple swap files. However, it is better to configure
 
 1.  Some systems automatically configure a swap file during installation. To determine whether the system already has a swap file, use the `swapon --show` command. If any files are displayed, this means one or more swap files already exist. Proceed to the "How to Increase Existing Swap Space" section for information on how to resize a swap file.
 
-    ```code
+    ```command
     sudo swapon --show
     ```
 
     If a swap file has already been created, it is shown as follows. If there is no swap file, there is no output.
 
-    {{< output >}}
-NAME     TYPE      SIZE USED PRIO
-/swapfile file 1024M   0B   -2
-    {{< /output >}}
+    ```output
+    NAME     TYPE      SIZE USED PRIO
+    /swapfile file 1024M   0B   -2
+    ```
 
     If you created a Linode using the standard configuration, you should see a swap partition instead:
 
-    {{< output >}}
-NAME     TYPE      SIZE USED PRIO
-/dev/sdb partition 512M   0B   -2
-{{< /output >}}
+    ```output
+    NAME     TYPE      SIZE USED PRIO
+    /dev/sdb partition 512M   0B   -2
+    ```
 
 2.  Confirm swap space has not already been allocated using the `free` command. This command can be used on most Linux systems to verify the swap space size.
 
-    ```code
+    ```command
     free -h
     ```
     If the total memory for `Swap` is `0B`, a swap file or partition has not been created yet.
 
-    {{< output >}}
-              total       used        free      shared  buff/cache   available
-Mem:          3.8Gi       523Mi       2.7Gi       3.0Mi       643Mi       3.1Gi
-Swap:            0B          0B          0B
-    {{< /output >}}
+    ```output
+                  total       used        free      shared  buff/cache   available
+    Mem:          3.8Gi       523Mi       2.7Gi       3.0Mi       643Mi       3.1Gi
+    Swap:            0B          0B          0B
+    ```
 
     If you created a Linode using the standard configuration, you should see a approximately 512MB dedicated to swap:
 
-    {{< output >}}
-               total        used        free      shared  buff/cache   available
-Mem:           1.9Gi       154Mi       1.4Gi       0.0Ki       410Mi       1.6Gi
-Swap:          511Mi          0B       511Mi
-    {{< /output >}}
+    ```output
+                  total        used        free      shared  buff/cache   available
+    Mem:           1.9Gi       154Mi       1.4Gi       0.0Ki       410Mi       1.6Gi
+    Swap:          511Mi          0B       511Mi
+    ```
 
 3.  Ensure there is enough space on the hard drive to create the swap space. Use the `df -h` command and locate the entry for the root directory, which is listed as `/`. The proposed swap file should fit comfortably within the available disk space with some room to spare. The following example indicates the hard drive has 64G of available space. This is more than adequate.
 
-    ```code
+    ```command
     df -h
     ```
 
-    {{< output >}}
-Filesystem      Size  Used Avail Use% Mounted on
-...
-/dev/sda         49G  3.4G   43G   8% /
-...
-    {{< /output >}}
+    ```output
+    Filesystem      Size  Used Avail Use% Mounted on
+    ...
+    /dev/sda         49G  3.4G   43G   8% /
+    ...
+    ```
 
 4.  Allocate memory for the swap file using the `fallocate` command. This command is used to reserve a certain amount of disc space for a file in advance. The following command creates a 1G file named `swapfile` in the root directory. Always give a swap file a very obvious name to avoid confusion.
 
-    ```code
+    ```command
     sudo fallocate -l 1G /swapfile
     ```
 
 5.  Change the file permissions for `swapfile` so only `root` can write to it. This prevents other users from accidentally deleting or overwriting the file.
 
-    ```code
+    ```command
     sudo chmod 600 /swapfile
     ```
 
 6.  Run the `ls` command to confirm the swap file has been successfully created. Use the `-l` option to see the size of the file.
 
-    ```code
+    ```command
     ls -hl /swapfile
     ```
 
-    {{< output >}}
--rw------- 1 root root 1.0G Nov 28 13:22 /swapfile
-    {{< /output >}}
+    ```output
+    -rw------- 1 root root 1.0G Nov 28 13:22 /swapfile
+    ```
 
 7.  Use the `mkswap` command to designate the new file as a swap file. This means it can be used for volatile memory when RAM space runs low.
 
-    ```code
+    ```command
     sudo mkswap /swapfile
     ```
 
-    {{< output >}}
-Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
-no label, UUID=97644d2b-0608-4a32-bfb1-b069af64d86b
-    {{< /output >}}
+    ```output
+    Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+    no label, UUID=97644d2b-0608-4a32-bfb1-b069af64d86b
+    ```
 
 8.  The file swap has now been created, but it is still disabled. Activate it using the `swapon` command.
 
-    ```code
+    ```command
     sudo swapon /swapfile
     ```
 
 9.  The `swapon` command can be used with the `--show` option to confirm the swap space is enabled. If the new swap file is not listed, verify the results of the previous instructions.
 
-    ```code
+    ```command
     sudo swapon --show
     ```
 
-    {{< output >}}
-NAME      TYPE       SIZE USED PRIO
-/dev/sdb  partition  512M   0B   -2
-/swapfile file      1024M   0B   -3
-    {{< /output >}}
+    ```output
+    NAME      TYPE       SIZE USED PRIO
+    /dev/sdb  partition  512M   0B   -2
+    /swapfile file      1024M   0B   -3
+    ```
 
 10. To confirm the amount of swap space available on Ubuntu, use the `free` command. The `total` column for the `Swap` entry should display `1.5Gi` of total memory (1.0GB swap file and 0.5GB swap partition).
 
-    ```code
+    ```command
     free -h
     ```
 
-    {{< output >}}
-               total        used        free      shared  buff/cache   available
-Mem:           1.9Gi       148Mi       1.4Gi       0.0Ki       416Mi       1.6Gi
-Swap:          1.5Gi          0B       1.5Gi
-    {{< /output >}}
+    ```output
+                  total        used        free      shared  buff/cache   available
+    Mem:           1.9Gi       148Mi       1.4Gi       0.0Ki       416Mi       1.6Gi
+    Swap:          1.5Gi          0B       1.5Gi
+    ```
 
 ### Making the Swap File Changes Permanent
 
@@ -207,13 +204,13 @@ To add an entry to the `fstab` file, follow these steps:
 
 1.  As a precaution, make a backup copy of the existing `fstab` file.
 
-    ```code
+    ```command
     sudo cp /etc/fstab /etc/fstab.bak
     ```
 
 2.  Edit the file using a text editor.
 
-    ```code
+    ```command
     sudo nano /etc/fstab
     ```
 
@@ -233,23 +230,23 @@ To adjust the `swappiness` setting, use the following procedure.
 
 1.  Verify the current `swappiness` setting. The default value is `60`.
 
-    ```code
+    ```command
     cat /proc/sys/vm/swappiness
     ```
 
-    {{< output >}}
-60
-    {{< /output >}}
+    ```output
+    60
+    ```
 
 2.  To temporarily adjust the value of `swappiness`, use the `sysctl` utility. The following command lowers the value to `50`.
 
-    ```code
+    ```command
     sudo sysctl vm.swappiness=50
     ```
 
-    {{< output >}}
-vm.swappiness = 50
-    {{< /output >}}
+    ```output
+    vm.swappiness = 50
+    ```
 
 3.  To permanently change this value, edit the `sysctl.conf` file. Add the following line to the bottom of the file.
 
@@ -263,12 +260,12 @@ One advantage of using a swap file over the old partitioning method is the relat
 
 1.  Disable the swap mechanism. Active applications cannot use the swap file while it is disabled.
 
-    ```code
+    ```command
     sudo swapoff -a
     ```
 
-    {{< note respectIndent=false >}}
-This also temporarily disables your swap partition until the next reboot.
+    {{< note >}}
+    This also temporarily disables your swap partition until the next reboot.
     {{< /note >}}
 
 2.  Resize the swap space. `fallocate` can only be used to generate a new file, so the `dd` command must be used instead. Set the individual parameters as follows:
@@ -278,65 +275,65 @@ This also temporarily disables your swap partition until the next reboot.
 -   Set `bs`, or "block size", to `1G`.
 -   The value for `count` indicates how many blocks are allocated. To determine the value of `count`, divide the intended file size by the block size. For example, set the value of `count` to `2` to generate a 2G swap file.
 
-    ```code
+    ```command
     sudo dd if=/dev/zero of=/swapfile bs=1G count=2
     ```
 
-    {{< output >}}
-2+0 records in
-2+0 records out
-2147483648 bytes (2.1 GB, 2.0 GiB) copied, 7.86524 s, 273 MB/s
-    {{< /output >}}
+    ```output
+    2+0 records in
+    2+0 records out
+    2147483648 bytes (2.1 GB, 2.0 GiB) copied, 7.86524 s, 273 MB/s
+    ```
 
 3.  Ensure the permissions are set correctly.
 
-    ```code
+    ```command
     sudo chmod 600 /swapfile
     ```
 
 4.  Convert the file back into swap format.
 
-    ```code
+    ```command
     sudo mkswap /swapfile
     ```
 
-    {{< output >}}
-Setting up swapspace version 1, size = 2 GiB (2147479552 bytes)
-no label, UUID=6e61561d-c03d-4911-9343-8aa4c234576a
-    {{< /output >}}
+    ```output
+    Setting up swapspace version 1, size = 2 GiB (2147479552 bytes)
+    no label, UUID=6e61561d-c03d-4911-9343-8aa4c234576a
+    ```
 
 5.  Enable the swap file.
 
-    ```code
+    ```command
     sudo swapon /swapfile
     ```
 
-    {{< note respectIndent=false >}}
-To also re-enable the swap partition, use `sudo swapon -a` instead.
+    {{< note >}}
+    To also re-enable the swap partition, use `sudo swapon -a` instead.
     {{< /note >}}
 
 6.  Confirm the file has been resized correctly and is ready for use using either the `free` or `swapon --show` command.
 
-    ```code
+    ```command
     free -h
     ```
 
-    {{< output >}}
-               total        used        free      shared  buff/cache   available
-Mem:           1.9Gi       138Mi       1.0Gi       0.0Ki       771Mi       1.6Gi
-Swap:          2.0Gi          0B       2.0Gi
-    {{< /output >}}
+    ```output
+                  total        used        free      shared  buff/cache   available
+    Mem:           1.9Gi       138Mi       1.0Gi       0.0Ki       771Mi       1.6Gi
+    Swap:          2.0Gi          0B       2.0Gi
+    ```
 
-    ```code
+    ```command
     sudo swapon --show
     ```
 
-    {{< output >}}
-NAME      TYPE SIZE USED PRIO
-/swapfile file   2G   0B   -2
-    {{< /output >}}
+    ```output
+    NAME      TYPE SIZE USED PRIO
+    /swapfile file   2G   0B   -2
+    ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 It is not necessary to edit `cat /etc/fstab` or edit the swappiness value again, because those items are unaffected by the change.
 {{< /note >}}
 

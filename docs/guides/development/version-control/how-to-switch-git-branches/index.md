@@ -1,8 +1,5 @@
 ---
 slug: how-to-switch-git-branches
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'A very basic guide on how to switch a branch in Git using Ubuntu 20.10, but for any operating system with the command line git tools installed.'
 keywords: ['git','branch','branches','switch branch','switch branches','switch git branches']
 tags: ["git", "version control"]
@@ -16,6 +13,7 @@ title_meta: "How to Switch Git Branches"
 external_resources:
 - '[Git](https://git-scm.com/)'
 - '[Git Branching - Basic Branching and Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)'
+authors: ["Linode"]
 ---
 
 Git is a distributed version control system. It supports non-linear, distributed development, allowing multiple contributors to work on a project simultaneously within what are called *branches*. This guide walks you through the basics of what a branch is and how to switch between branches.

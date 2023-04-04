@@ -1,7 +1,5 @@
 ---
 slug: how-to-deploy-nginx-on-a-kubernetes-cluster
-author:
-  name: Kiran Singh
 description: 'This guide will show you how to install, configure and deploy NGINX on Kubernetes Cluster.'
 keywords: ["kubernetes","docker","container","deployment","nginx"]
 tags: ["docker","centos","kubernetes","ubuntu","nginx","debian","networking","container"]
@@ -13,9 +11,6 @@ published: 2017-11-27
 image: DeployNGINX_Linode.png
 title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 aliases: ['/applications/containers/how-to-deploy-nginx-on-a-kubernetes-cluster/','/applications/containers/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/','/kubernetes/how-to-deploy-nginx-on-a-kubernetes-cluster/']
-contributor:
-  name: Kiran Singh
-  link: https://github.com/snarik
 og_description: 'Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.'
 deprecated: true
 deprecated_link: 'applications/containers/getting-started-with-kubernetes/'
@@ -25,6 +20,7 @@ external_resources:
 - '[Google Borg](https://research.google.com/pubs/pub43438.html)'
 - '[kubelet Definition](https://kubernetes.io/docs/admin/kubelet/)'
 - '[CNI Spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)'
+authors: ["Kiran Singh"]
 ---
 
 ![Kubernetes on Linode](Nginx_Kubernetes.jpg)
@@ -33,7 +29,7 @@ external_resources:
 
 [Kubernetes](https://kubernetes.io/) is an open-source container management system that is based on [Google Borg](https://research.google.com/pubs/pub43438.html). It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to manually set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can now create a Kubernetes cluster with one command using the Linode CLI. To provision Kubernetes on Linodes, this tool uses the [Linode Kubernetes Terraform module](https://github.com/linode/terraform-linode-k8s), the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager), and the [Container Storage Interface (CSI) Driver](https://github.com/linode/linode-blockstorage-csi-driver) for Linode Block Storage.  See the [Kubernetes Tools](https://developers.linode.com/kubernetes/) page for installation steps. For an in-depth dive into the Linode Kubernetes Terraform module, see its related [Community Site post](https://www.linode.com/community/questions/17611/the-linode-kubernetes-module-for-terraform).
 {{< /note >}}
 
@@ -41,15 +37,15 @@ You can now create a Kubernetes cluster with one command using the Linode CLI. T
 
 You will need:
 
-* Two or more Linodes with [Private IPs](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address)
-* Each Linode should have a 64-bit distribution of either:
+- Two or more Linodes with [Private IPs](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address)
+- Each Linode should have a 64-bit distribution of either:
     - Ubuntu 16.04+
     - Debian 9
     - CentOS 7
     - RHEL 7
     - Fedora 26
-* At least 2GB RAM per Linode
-* Root or sudo privileges to install and configure Kubernetes. Any user can interact with the cluster once it's configured.
+- At least 2GB RAM per Linode
+- Root or sudo privileges to install and configure Kubernetes. Any user can interact with the cluster once it's configured.
 
 ## Prepare the Host Linode for Kubernetes
 
@@ -70,7 +66,7 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
     **Master nodes**
 
     | Protocol | Direction | Port Range | Purpose |  Used By |
-    | -------- | --------- | ---------- | ------- |  ------- |
+    | -- | -- | -- | -- | -- |
     | TCP | Inbound | 6443* | Kubernetes API server |  All |
     | TCP | Inbound | 2379-2380 | etcd server client API |  kube-apiserver, etcd |
     | TCP | Inbound | 10250 | kubelet API |  Self, Control plane |
@@ -80,13 +76,13 @@ The steps in this guide create a two-node cluster. Evaluate your own resource re
     **Worker nodes**
 
     | Protocol | Direction | Port Range | Purpose |  Used By |
-    | -------- | --------- | ---------- | ------- |  ------- |
+    | -- | -- | -- | -- |  -- |
     | TCP | Inbound | 10250 | kubelet API |  Self, Control plane |
     | TCP | Inbound | 30000-32767 | NodePort Services** |  All |
 
 
-    {{< note respectIndent=false >}}
-  By design, kube-proxy will always place its iptables chains first. It inserts 2 rules, KUBE-EXTERNAL-SERVICES and KUBE-FIREWALL at the top of the INPUT chain. See the [Kubernetes discussion forum](https://discuss.kubernetes.io/t/custom-iptables-rules-for-input-chain/3509) for more details.
+    {{< note >}}
+    By design, kube-proxy will always place its iptables chains first. It inserts 2 rules, KUBE-EXTERNAL-SERVICES and KUBE-FIREWALL at the top of the INPUT chain. See the [Kubernetes discussion forum](https://discuss.kubernetes.io/t/custom-iptables-rules-for-input-chain/3509) for more details.
     {{< /note >}}
 
 1.  You should consider using the Linode NodeBalancer service with the [Linode Cloud Controller Manager (CCM)](https://github.com/linode/linode-cloud-controller-manager).
@@ -105,7 +101,7 @@ Linodes come with swap memory enabled by default. [kubelets](https://kubernetes.
 
 The `/etc/fstab` should look something like this:
 
-{{< file "/etc/fstab" >}}
+```file {title="/etc/fstab"}
 # /etc/fstab: static file system information.
 #
 # use 'blkid' to print the universally unique identifier for a
@@ -116,13 +112,15 @@ The `/etc/fstab` should look something like this:
 # / was on /dev/sda1 during installation
 /dev/sda         /               ext4    noatime,errors=remount-ro 0       1
 /dev/sdb         none            swap    sw 0    0
-{{< /file >}}
+```
 
 1.  Delete the line describing the swap partition. In this example, Line 10 with `/dev/sdb`.
 
 1.  Disable swap memory usage:
 
-        swapoff -a
+    ```command
+    swapoff -a
+    ```
 
 ### Set Hostnames for Kubernetes Nodes
 
@@ -132,16 +130,16 @@ To make the commands in this guide easier to understand, set up your hostname an
 
 1.  Edit `/etc/hostname`, and add:
 
-    {{< file "/etc/hostname" >}}
-kube-master
-{{< /file >}}
+    ```file {title="/etc/hostname"}
+    kube-master
+    ```
 
 1.  Add the following lines to `/etc/hosts`:
 
-    {{< file "/etc/hosts" >}}
-<kube-master-private-ip>    kube-master
-<kube-worker-private-ip>    kube-worker-1
-{{< /file >}}
+    ```file {title="/etc/hosts"}
+    <kube-master-private-ip>    kube-master
+    <kube-worker-private-ip>    kube-worker-1
+    ```
 
     If you have more than two nodes, add their private IPs to `/etc/hosts` as well.
 
@@ -171,11 +169,15 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 **Debian/Ubuntu:**
 
-    apt install ebtables ethtool
+```command
+apt install ebtables ethtool
+```
 
 **CentOS/RHEL:**
 
-    yum install ebtables ethtool
+```command
+yum install ebtables ethtool
+```
 
 ### Install Docker
 
@@ -185,26 +187,30 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 **Debian/Ubuntu:**
 
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-    echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list
-    sudo apt update
-    sudo apt install -y kubelet kubeadm kubectl
+```command
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install -y kubelet kubeadm kubectl
+```
 
 **CentOS/RHEL:**
 
-    cat <<eof > /etc/yum.repos.d/kubernetes.repo
-    [kubernetes]
-    name=kubernetes
-    baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
-    enabled=1
-    gpgcheck=1
-    repo_gpgcheck=1
-    gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
-          https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-    eof
-    setenforce 0
-    yum install -y kubelet kubeadm kubectl
-    systemctl enable kubelet && systemctl start kubelet
+```command
+cat <<eof > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+eof
+setenforce 0
+yum install -y kubelet kubeadm kubectl
+systemctl enable kubelet && systemctl start kubelet
+```
 
 ## Kubernetes Master and Slave
 
@@ -212,40 +218,49 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 1.  On the master node initialize your cluster using its private IP:
 
-        kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<private IP>
+    ```command
+    kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<private IP>
+    ```
 
     If you encounter a warning stating that swap is enabled, return to the [Disable Swap Memory](#disable-swap-memory) section.
 
     If successful, your output will resemble:
 
-    {{< output >}}
-To start using your cluster, you need to run (as a regular user):
+    ```output
+    To start using your cluster, you need to run (as a regular user):
 
-  mkdir -p $HOME/.kube
-  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+      mkdir -p $HOME/.kube
+      sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+      sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-You should now deploy a Pod network to the cluster.
-Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-  http://kubernetes.io/docs/admin/addons/
+    You should now deploy a Pod network to the cluster.
+    Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+      http://kubernetes.io/docs/admin/addons/
 
-You can now join any number of machines by running the following on each node
-as root:
+    You can now join any number of machines by running the following on each node
+    as root:
 
-  kubeadm join --token 921e92.d4582205da623812 <private IP>:6443 --discovery-token-ca-cert-hash sha256:bd85666b6a97072709b210ddf677245b4d79dab88d61b4a521fc00b0fbcc710c
-{{< /output >}}
+      kubeadm join --token 921e92.d4582205da623812 <private IP>:6443 --discovery-token-ca-cert-hash sha256:bd85666b6a97072709b210ddf677245b4d79dab88d61b4a521fc00b0fbcc710c
+    ```
 
 1.  On the master node, configure the `kubectl` tool:
 
-        mkdir -p $HOME/.kube
-        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+    ```command
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+    ```
 
 1.  Check on the status of the nodes with `kubectl get nodes`. Output will resemble:
 
-        root@kube-master:~# kubectl get nodes
-        name          status     roles     age       version
-        kube-master   NotReady   master    1m        v1.8.1
+    ```command
+    kubectl get nodes
+    ```
+
+    ```output
+    name          status     roles     age       version
+    kube-master   NotReady   master    1m        v1.8.1
+    ```
 
     The master node is listed as `NotReady` because the cluster does not have a Container Networking Interface ([CNI](https://github.com/containernetworking/cni/blob/master/SPEC.md)). CNI is a spec for a of container based network interface. In this guide, we will be using Calico. Alternatively, you can use [Flannel](https://raw.githubusercontent.com/coreos/flannel/v0.9.0/Documentation/kube-flannel.yml) or another CNI for similar results.
 
@@ -253,52 +268,74 @@ as root:
 
 1.  While still on the master node run the following command to deploy the CNI to your cluster:
 
-        kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+    ```command
+    kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+    ```
 
 1.  To ensure Calico was set up correctly, use `kubectl get pods --all-namespaces` to view the Pods created in the `kube-system` namespace:
 
-        root@kube-master:~# kubectl get pods --all-namespaces
-        NAMESPACE     NAME                                       READY     STATUS             RESTARTS   AGE
-        kube-system   calico-etcd-nmx26                          1/1       Running            0          48s
-        kube-system   calico-kube-controllers-6ff88bf6d4-p25cw   1/1       Running            0          47s
-        kube-system   calico-node-bldzb                          1/2       CrashLoopBackOff   2          48s
-        kube-system   calico-node-k5c9m                          2/2       Running            0          48s
-        kube-system   etcd-master                                1/1       Running            0          3m
-        kube-system   kube-apiserver-master                      1/1       Running            0          3m
-        kube-system   kube-controller-manager-master             1/1       Running            0          3m
-        kube-system   kube-dns-545bc4bfd4-g8xtm                  3/3       Running            0          4m
-        kube-system   kube-proxy-sw562                           1/1       Running            0          4m
-        kube-system   kube-proxy-x6psn                           1/1       Running            0          1m
-        kube-system   kube-scheduler-master                      1/1       Running            0          3m
+    ```command
+    kubectl get pods --all-namespaces
+    ```
+
+    ```output
+    NAMESPACE     NAME                                       READY     STATUS             RESTARTS   AGE
+    kube-system   calico-etcd-nmx26                          1/1       Running            0          48s
+    kube-system   calico-kube-controllers-6ff88bf6d4-p25cw   1/1       Running            0          47s
+    kube-system   calico-node-bldzb                          1/2       CrashLoopBackOff   2          48s
+    kube-system   calico-node-k5c9m                          2/2       Running            0          48s
+    kube-system   etcd-master                                1/1       Running            0          3m
+    kube-system   kube-apiserver-master                      1/1       Running            0          3m
+    kube-system   kube-controller-manager-master             1/1       Running            0          3m
+    kube-system   kube-dns-545bc4bfd4-g8xtm                  3/3       Running            0          4m
+    kube-system   kube-proxy-sw562                           1/1       Running            0          4m
+    kube-system   kube-proxy-x6psn                           1/1       Running            0          1m
+    kube-system   kube-scheduler-master                      1/1       Running            0          3m
+    ```
 
     This command uses the `-n` flag. The `-n` flag is a global kubectl flag that selects a non-default namespace. We can see our existing name spaces by running `kubectl get namespaces`:
 
-        root@kube-master:~# kubectl get namespaces
-        NAME          STATUS    AGE
-        default       Active    4h
-        kube-public   Active    4h
-        kube-system   Active    4h
+    ```command
+    kubectl get namespaces
+    ```
+
+    ```output
+    NAME          STATUS    AGE
+    default       Active    4h
+    kube-public   Active    4h
+    kube-system   Active    4h
+    ```
 
 1.  Run `kubectl get nodes` again to see that the master node is now running properly:
 
-        root@kube-master:~# kubectl get nodes
-        name          status    roles     age       version
-        kube-master   Ready     master    12m       v1.8.1
+    ```command
+    kubectl get nodes
+    ```
+
+    ```output
+    name          status    roles     age       version
+    kube-master   Ready     master    12m       v1.8.1
+    ```
 
 ### Add Nodes to the Kubernetes Cluster
 
 1. Run `kubeadm join` with the `kube-master` hostname to add the first worker:
 
-        kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
+    ```command
+    kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
+    ```
 
 1. On the master node, use `kubectl` to see that the slave node is now ready:
 
-    {{< output >}}
-root@kube-master:~# kubectl get nodes
-name            status    roles     age       version
-kube-master     ready     master    37m       v1.8.1
-kube-worker-1   ready     <none>    2m        v1.8.1
-{{< /output >}}
+    ```command
+    kubectl get nodes
+    ```
+
+    ```output
+    name            status    roles     age       version
+    kube-master     ready     master    37m       v1.8.1
+    kube-worker-1   ready     <none>    2m        v1.8.1
+    ```
 
 ## Deploy NGINX on the Kubernetes Cluster
 
@@ -306,73 +343,97 @@ A *deployment* is a logical reference to a Pod or Pods and their configurations.
 
 1.  From your master node `kubectl create` an nginx deployment:
 
-        kubectl create deployment nginx --image=nginx
+    ```command
+    kubectl create deployment nginx --image=nginx
+    ```
 
 1.  This creates a deployment called `nginx`. `kubectl get deployments` lists all available deployments:
 
-        kubectl get deployments
+    ```command
+    kubectl get deployments
+    ```
 
 1.  Use `kubectl describe deployment nginx` to view more information:
 
-    {{< output >}}
-Name:                   nginx
-Namespace:              default
-CreationTimestamp:      Sun, 15 Oct 2017 06:10:50 +0000
-Labels:                 app=nginx
-Annotations:            deployment.kubernetes.io/revision=1
-Selector:               app=nginx
-Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
-StrategyType:           RollingUpdate
-MinReadySeconds:        0
-RollingUpdateStrategy:  1 max unavailable, 1 max surge
-Pod Template:
-  Labels:  app=nginx
-  Containers:
-    nginx:
-    Image:        nginx
-    Port:         <none>
-    Environment:  <none>
-    Mounts:       <none>
-  Volumes:        <none>
-Conditions:
-  Type           Status  Reason
-  ----           ------  ------
-  Available      True    MinimumReplicasAvailable
-OldReplicaSets:  <none>
-NewReplicaSet:   nginx-68fcbc9696 (1/1 replicas created)
-Events:
-  Type    Reason             Age   From                   Message
-  ----    ------             ----  ----                   -------
-  Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set nginx-68fcbc9696 to 1
-{{< /output >}}
+    ```output
+    Name:                   nginx
+    Namespace:              default
+    CreationTimestamp:      Sun, 15 Oct 2017 06:10:50 +0000
+    Labels:                 app=nginx
+    Annotations:            deployment.kubernetes.io/revision=1
+    Selector:               app=nginx
+    Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+    StrategyType:           RollingUpdate
+    MinReadySeconds:        0
+    RollingUpdateStrategy:  1 max unavailable, 1 max surge
+    Pod Template:
+      Labels:  app=nginx
+      Containers:
+        nginx:
+        Image:        nginx
+        Port:         <none>
+        Environment:  <none>
+        Mounts:       <none>
+      Volumes:        <none>
+    Conditions:
+      Type           Status  Reason
+      ----           ------  ------
+      Available      True    MinimumReplicasAvailable
+    OldReplicaSets:  <none>
+    NewReplicaSet:   nginx-68fcbc9696 (1/1 replicas created)
+    Events:
+      Type    Reason             Age   From                   Message
+      ----    ------             ----  ----                   -------
+      Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set nginx-68fcbc9696 to 1
+    ```
 
     The `describe` command allows you to interrogate different Kubernetes resources such as Pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called `nginx` within the default namespace. This deployment has a single replicate, and is running the docker image `nginx`. The ports, mounts, volumes and environmental variable are all unset.
 
 1.  Make the NGINX container accessible via the internet:
 
-        kubectl create service nodeport nginx --tcp=80:80
+    ```command
+    kubectl create service nodeport nginx --tcp=80:80
+    ```
 
     This creates a public facing service on the host for the NGINX deployment. Because this is a nodeport deployment, Kubernetes will assign this service a port on the host machine in the `32000`+ range.
 
     Try to `get` the current services:
 
-        root@kube-master:~# kubectl get svc
-        NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-        kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP        5h
-        nginx        NodePort    10.98.24.29   <none>        80:32555/TCP   52s
+    ```command
+    kubectl get svc
+    ```
+
+    ```output
+    NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+    kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP        5h
+    nginx        NodePort    10.98.24.29   <none>        80:32555/TCP   52s
+    ```
 
 1.  Verify that the NGINX deployment is successful by using `curl` on the slave node:
 
-        root@kube-master:~# curl kube-worker-1:32555
+    ```command
+    curl kube-worker-1:32555
+    ```
 
     The output will show the unrendered "Welcome to nginx!" page HTML.
 
 1.  To remove the deployment, use `kubectl delete deployment`:
 
-        root@kube-master:~# kubectl delete deployment nginx
-        deployment "nginx" deleted
-        root@kube-master:~# kubectl get deployments
-        No resources found.
+    ```command
+    kubectl delete deployment nginx
+    ```
+
+    ```output
+    deployment "nginx" deleted
+    ```
+
+    ```command
+    kubectl get deployments
+    ```
+
+    ```output
+    No resources found.
+    ```
 
 ## Why Use Ingress?
 
@@ -399,9 +460,11 @@ To identify which controllers your NGINX Kubernetes cluster is using, you can go
 
 To install Ingress with this guide, you can use Helm. If not already installed, you can run the following script on your terminal to install it:
 
-    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-    chmod 700 get_helm.sh
-    ./get_helm.sh
+```command
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+```
 
 For more details on Helm and installing Helm, see [How to Install Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/).
 
@@ -409,16 +472,21 @@ For more details on Helm and installing Helm, see [How to Install Apps on Kubern
 
 1.  First, update your Helm repositories by running the following command:
 
-        helm repo update
+    ```command
+    helm repo update
+    ```
 
 1.  Install NGINX controller
 
-        helm install nginx-ingress stable/nginx-ingress
+    ```command
+    helm install nginx-ingress stable/nginx-ingress
+    ```
 
 When you run the last command, you not only get an Ingress controller installed but this command also automatically creates a Linode LoadBalancer.
 
 Once, the installation is successful you can see a success message like below:
-{{< output >}}
+
+```output
 NAME: nginx-ingress
 LAST DEPLOYED: Wed Jan 15 00:15:11 2021
 NAMESPACE: default
@@ -429,11 +497,11 @@ NOTES:
 The nginx-ingress controller is now installed.
 It may take a few minutes for the LoadBalancer IP to be available.
 You can view the status by running 'kubectl --namespace default get services -o wide -w nginx-ingress-controller'
-{{< /output >}}
+```
 
 It is worth understanding that there are popular controllers that use NGINX:
-    - Kubernetes Ingress NGINX which is maintained by the Kubernetes open-source community
-    - NGINX Kubernetes Ingress which is maintained by NGINX
+
+- Kubernetes Ingress NGINX which is maintained by the Kubernetes open-source community
+- NGINX Kubernetes Ingress which is maintained by NGINX
 
 You should know that there are huge differences between those two Ingress controllers, but that is beyond the scope of this guide.
-

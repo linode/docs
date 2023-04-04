@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-peertube
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to download, install, and configure the federated video sharing application PeerTube.'
 keywords: ['what is PeerTube','configure PeerTube','install PeerTube','PeerTube configuration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +7,6 @@ published: 2022-12-05
 modified_by:
   name: Linode
 title: "How to Install PeerTube"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[PeerTube](https://joinpeertube.org/)'
 - '[PeerTube documentation](https://docs.joinpeertube.org/)'
@@ -19,6 +14,7 @@ external_resources:
 - '[PeerTube installation instructions](https://docs.joinpeertube.org/install-any-os)'
 - '[PeerTube dependencies](https://docs.joinpeertube.org/dependencies)'
 - '[Certbot](https://certbot.eff.org/)'
+authors: ["Jeff Novotny"]
 ---
 
 There is now increased interest in federated web applications as alternatives to the major social media sites. Federated servers operate independently in an interconnected manner. [PeerTube](https://joinpeertube.org/) is a distributed open source variation on YouTube. It allows users to share and enjoy videos without corporate interference or manipulative algorithms. This guide explains how to download, install, and configure a PeerTube instance on a Linode server.
@@ -51,14 +47,14 @@ For more information about PeerTube, see the [PeerTube FAQ](https://joinpeertube
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Create and configure a domain name to point at the Linode. This domain name provides access to the PeerTube instance. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
+1.  Create and configure a domain name to point at the Linode. This domain name provides access to the PeerTube instance. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install PeerTube

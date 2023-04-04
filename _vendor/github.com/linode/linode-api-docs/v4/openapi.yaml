@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.145.0
+  version: 4.149.0
 
   title: Linode API
   description: |
@@ -14385,7 +14385,7 @@ paths:
               https://api.linode.com/v4beta/networking/vlans/
       - lang: CLI
         source: >
-          linode-cli networking vlans-list
+          linode-cli vlans list
   /nodebalancers:
     x-linode-cli-command: nodebalancers
     get:
@@ -21129,7 +21129,7 @@ components:
             `CAA`: The value. For `issue` or `issuewild` tags, the domain of your certificate issuer. For the `iodef`
             tag, a contact or submission URL (domain, http, https, or mailto). Requirements depend on the tag for this record:
               * `issue`: The domain of your certificate issuer. Must be a valid domain.
-              * `issuewild`: Must begin with `*`.
+              * `issuewild`: The domain of your wildcard certificate issuer. Must be a valid domain and must not start with an asterisk (`*`).
               * `iodef`: Must be either (1) a valid domain, (2) a valid domain prepended with `http://` or `https://`, or (3) a valid email address prepended with `mailto:`.
 
             `PTR`: Required. See our guide on how to [Configure Your Linode for Reverse DNS
@@ -22981,24 +22981,23 @@ components:
               readOnly: true
             memory:
               type: integer
-              description: >
-                The amount of RAM, in MB, this Linode has access to. Typically a Linode will
-                choose to boot with all of its available RAM, but this can be configured in a
-                Config profile, see the
-                [/linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profiles-list)
-                endpoints and the LinodeConfig object for more information.
+              description: |
+                The amount of RAM, in MB, this Linode has access to.
+
+                Typically, a Linode boots with all of its available RAM, but this can be configured in a Config profile. See the [/linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profiles-list) endpoints and the LinodeConfig object for more information.
               example: 4096
               readOnly: true
             vcpus:
               type: integer
               description: >
                 The number of vcpus this Linode has access to.
-                Typically a Linode will choose to
-                boot with all of its available vcpus, but this can be configured in a Config
-                Profile, see the
-                [/linode/instances/{linodeId}/configs](/docs/api/linode-instances/#configuration-profiles-list)
-                endpoints and the LinodeConfig object for more information.
               example: 2
+              readOnly: true
+            gpus:
+              type: integer
+              description: |
+                The number of gpus this Linode has access to.
+              example: 0
               readOnly: true
             transfer:
               type: integer
@@ -23556,12 +23555,12 @@ components:
             Cost in US dollars, broken down into hourly and monthly charges.
           properties:
             hourly:
-              type: integer
+              type: number
               description: Cost (in US dollars) per hour.
               example: 0.03
               x-linode-cli-display: 9
             monthly:
-              type: integer
+              type: number
               description: Cost (in US dollars) per month.
               example: 20
               x-linode-cli-display: 10
@@ -23583,12 +23582,12 @@ components:
                   description: Cost of enabling Backups for this Linode Type.
                   properties:
                     hourly:
-                      type: integer
+                      type: number
                       description: >
                         The cost (in US dollars) per hour to add Backups service.
                       example: 0.008
                     monthly:
-                      type: integer
+                      type: number
                       description: >
                         The cost (in US dollars) per month to add Backups service.
                       example: 5
@@ -24019,17 +24018,27 @@ components:
         username:
           type: string
           description: >
-            The username of the User that was logged into.
+            The username of the User that attempted the login.
           example: example_user
           readOnly: true
           x-linode-cli-display: 4
+        status:
+          type: string
+          enum:
+            - successful
+            - failed
+          description: |
+            Whether the login attempt succeeded or failed.
+          example: successful
+          readOnly: true
+          x-linode-cli-display: 5
         restricted:
           type: boolean
           description: >
-            True if the User that was logged into was a restricted User, false otherwise.
+            True if the User that attempted the login was a restricted User, false otherwise.
           example: true
           readOnly: true
-          x-linode-cli-display: 5
+          x-linode-cli-display: 6
     LongviewSubscription:
       type: object
       description: >

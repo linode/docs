@@ -1,18 +1,13 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service, through the Linode Marketplace."
 keywords: ['liveswitch','streaming','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-31
 title: "Deploy LiveSwitch through the Linode Marketplace"
-contributor:
-  name: Holden Morris
-  link: https://github.com/hmorris3293
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
+authors: ["Holden Morris"]
 ---
 
 [LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable streaming for both audio and video media.

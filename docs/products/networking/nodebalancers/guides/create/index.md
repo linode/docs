@@ -1,10 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Create a NodeBalancer"
 description: "Instructions on creating a NodeBalancer, Linode's load balancing solution."
 published: 2022-10-07
+modified: 2023-02-06
+authors: ["Linode"]
 ---
 
 This guide walks you through creating a NodeBalancer through the Cloud Manager.
@@ -23,15 +22,15 @@ Log in to the [Cloud Manager](https://cloud.linode.com/) and select **NodeBalanc
 
 ## Set the Label
 
-Within the **Label** field, enter the label you wish to use identify it from other NodeBalancers on your account. A good label should provide some indication as to what the NodeBalancer will be used for. The label must be alphanumeric, between 3 and 32 characters, and unique from other NodeBalancer labels on your account.
+Within the **Label** field, enter the label you wish to use to identify it from other NodeBalancers on your account. A good label should provide some indication as to what the NodeBalancer will be used for. The label must be alphanumeric, between 3 and 32 characters, and unique from other NodeBalancer labels on your account.
 
 ## Select a Region
 
-Select the **region** where the database cluster will reside. Regions correspond with individual data centers, each located in a different geographical area. Select the region where you've deployed the Compute Instances you intend on using with this NodeBalancer. If you haven't yet deployed Compute Instances or chosen a region, select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality.
+Select the **region** where the NodeBalancer will reside. Regions correspond with individual data centers, each located in a different geographical area. Select the region where you've deployed the Compute Instances you intend on using with this NodeBalancer. If you haven't yet deployed Compute Instances or chosen a region, select the region closest to you and/or your customers. This helps reduce latency and can make a significant impact in connection speeds and quality.
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
-- [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/)
+- [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
 
 ## Add and Configure Ports
 

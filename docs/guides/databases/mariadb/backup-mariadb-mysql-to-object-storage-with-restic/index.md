@@ -1,8 +1,5 @@
 ---
 slug: backup-mariadb-mysql-to-object-storage-with-restic
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: 'Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your MariaDB (or MySQL) databases onto Linode Object Storage.'
 keywords: ['mariadb','mysql','backup','backups','restic','off-site backups','Object Storage']
 tags: ['mariadb', 'mysql', 'automation']
@@ -12,14 +9,13 @@ modified_by:
   name: Andy Heathershaw
 title: "Backup MariaDB or MySQL Databases to Linode Object Storage with Restic"
 title_meta: "Backup MariaDB Databases to Linode Object Storage with Restic"
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
 external_resources:
 - '[mysqldump - MariaDB Knowledge Base](https://mariadb.com/kb/en/mysqldump/)'
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
+authors: ["Andy Heathershaw"]
+tags: ["saas"]
 ---
 
 ## Introduction

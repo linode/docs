@@ -1,8 +1,5 @@
 ---
 slug: how-to-update-nodejs
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide describes how to download a new version of Node.js and update an installed version of Node.js on Linux, macOS, and Windows using multiple methods.'
 keywords: ['nodejs','version','upgrade','update','installation','n','npm','nvm']
 tags: ["node.js"]
@@ -14,6 +11,7 @@ title: "Update Node.js on Linux, macOS, and Windows"
 title_meta: "How to Update Node.js on Linux, macOS, and Windows"
 external_resources:
 - '[The Node.js homepage](https://nodejs.org/)'
+authors: ["Linode"]
 ---
 
 Node.js is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses the V8 JavaScript engine and is very popular. It is regularly updated for security and improvements, and should be kept updated on your systems.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-prestashop-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configurations.'
 og_description: 'PrestaShop is a comprehensive ecommerce solution used by thousands of merchants around the world. Use this guide to set it up with TLS on your Linode.'
 keywords: ["prestashop", "ecommerce", "cms"]
@@ -14,9 +11,8 @@ modified_by:
   name: Linode
 title: "Installing PrestaShop on Ubuntu 16.04"
 title_meta: "How to Install PrestaShop on Ubuntu 16.04"
-contributor:
-  name: Alexandru Andrei
 aliases: ['/websites/ecommerce/how-to-install-prestashop-on-ubuntu-16-04/']
+authors: ["Alexandru Andrei"]
 ---
 
 

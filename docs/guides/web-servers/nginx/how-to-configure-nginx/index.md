@@ -1,8 +1,5 @@
 ---
 slug: how-to-configure-nginx
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Understand NGINX configuration for HTTP, Server blocks, Location blocks, Reverse proxy, and Load balancers with configuration examples.'
 og_description: 'NGINX is a high-performance web server that delivers large amounts of static content quickly. This tutorial will outline the basic NGINX parameters and conventions.'
 keywords: ["nginx", "web server", "configuration"]
@@ -12,9 +9,10 @@ modified: 2018-12-18
 modified_by:
   name: Linode
 published: 2010-01-18
-title: Configuring NGINX Servers
+title: Complete Guide to NGINX Configuration
 title_meta: How to Configure NGINX
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Introduction to NGINX](how_to_configure_nginx.png "Introduction to NGINX")
@@ -27,10 +25,10 @@ This guide shows you several different NGINX server configurations.
 
 ## NGINX Config: Directives, Blocks, and Contexts
 
-All NGINX configuration files are located in the `/etc/nginx/` directory. The primary configuration file is `/etc/nginx/nginx.conf`.
+The location of all NGINX configuration files is in the `/etc/nginx/` directory. The primary NGINX configuration file is `/etc/nginx/nginx.conf`.
 
-The way NGINX configurations are setup is by:
-  1. [directives](http://nginx.org/en/docs/dirindex.html) - they are NGINX configuration options
+To set NGINX configurations, use:
+  1. [directives](http://nginx.org/en/docs/dirindex.html) - they are NGINX configuration options. They tell NGINX to process actions or know a certain variable, such as where to log errors.
   2. Blocks (also known as contexts) - Groups in which Directives are organized
 
 Note that any character after `#` in a line becomes a comment. And NGINX does not interpret it.
@@ -55,11 +53,11 @@ http {
 {{< /file >}}
 
 
-There are 4 directives in this snippet in the main context :
-  1. user
-  2. worker_processes
-  3. error_log
-  4. pid
+There are 4 directives provided in this snippet in the main context :
+  1. `user`
+  2. `worker_processes`
+  3. `error_log`
+  4. `pid`
 
 Additional directives can be placed inside of events{...}, http{...} and so on. To read more about directives, visit the [official NGINX documentation](https://nginx.org/en/docs/ngx_core_module.html).
 
@@ -67,7 +65,7 @@ Let’s take a look at these blocks and their NGINX configurations.
 
 ## NGINX Configuration - http Block
 
-http blocks contain directives for handling web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http block documentation.
+http blocks contain directives to help manage web traffic. These directives are often universal as they are passed on to all website configurations NGINX serves. A list of available directives for http blocks are available on official NGINX http block documentation.
 
 {{< file "/etc/nginx/nginx.conf" nginx >}}
 http {
@@ -91,7 +89,7 @@ http {
 }
 {{< /file >}}
 
-In the http block there’s an include directive that tells NGINX where website configuration files are located. It changes depending upon your source of NGINX installation:
+In the http block there’s an include directive that tells NGINX where website configuration files are located. The command changes depending upon your source of NGINX installation:
 
   1. Installation from official NGINX repository: include directive is `include /etc/nginx/conf.d/*.conf;`. Every website you host with NGINX gets it’s own configuration file in `/etc/nginx/conf.d/`, with names formatted as `example.com.conf`.
   2. Installation from Debian or Ubuntu repositories: the include directive here would now be `include /etc/nginx/sites-enabled/*;` With site configuration file stored in `/etc/nginx/sites-available/`
@@ -113,12 +111,12 @@ server {
 {{</ file >}}
 
 There are several directives in this block that are worth taking a look at:
-  1. listen - tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections
-  2. server_name: allows multiple domains to be served from a single IP address. Ideally, it should be created per domain or site. Based on the request header it receives, the server decides which domain to serve.
+  1. `listen` - tells NGINX the hostname/IP and the TCP port where it should listen for HTTP connections
+  2. `server_name`: allows multiple domains to be served from a single IP address. Ideally, it should be created per domain or site. Based on the request header it receives, the server decides which domain to serve.
 
-### NGINX Server Blocks Configuration Example - server_name
+### NGINX Server Blocks Configuration
 
-Here are some examples for server_name NGINX configuration based on sites you want to host on the server.
+Here are some examples for `server_name` NGINX configuration based on sites you want to host on the server.
 
 Configuration for processing requests for both `example.com` and `www.example.com`:
 
@@ -126,7 +124,7 @@ Configuration for processing requests for both `example.com` and `www.example.co
 server_name example.com www.example.com;
 {{< /file >}}
 
-Configuration for processing requests for all subdomains for `example.com`:
+NGINX configuration example for processing requests for all subdomains for `example.com`:
 
 {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server_name *.example.com;

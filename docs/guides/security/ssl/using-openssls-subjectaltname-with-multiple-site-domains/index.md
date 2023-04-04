@@ -1,8 +1,5 @@
 ---
 slug: using-openssls-subjectaltname-with-multiple-site-domains
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to serve multiple SSL-enabled websites from a single public IP using the SubjectAltName feature of OpenSSL.'
 keywords: ["openssl", "apache ssl", "subjectaltname", "ssl linux"]
 tags: ["apache","security","ssl"]
@@ -15,6 +12,7 @@ published: 2009-11-16
 title: Using OpenSSL's subjectAltName with Multiple Site Domains
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
+authors: ["Linode"]
 ---
 
 ![OpenSSL_SubjectAltName](OpenSSL_subjectAltName.jpg)

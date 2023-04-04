@@ -1,8 +1,5 @@
 ---
 slug: jupyter-notebook-on-jekyll
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
 keywords: ["Jupyter", " ruby", " Jekyll"]
 tags: ["ruby"]
@@ -17,6 +14,7 @@ external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
  - '[Jupyter Notebook](https://jupyter.org/)'
+authors: ["Sam Foo"]
 ---
 
 ![Jupyter and Jekyll](jupyter_jekyll.jpg "Jupyter and Jekyll")

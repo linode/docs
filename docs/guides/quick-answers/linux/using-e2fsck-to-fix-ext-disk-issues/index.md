@@ -1,8 +1,5 @@
 ---
 slug: using-e2fsck-to-fix-ext-disk-issues
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Having issues with your Linux installation? Using e2fsck might be able to help. This guide will walk you through the entire process involved in checking the inegitry and repairing issues with ext filesystems using e2fsck."
 og_description: "e2fsck is the Linux ext file system consistency check utility. This guide shows how to use e2fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 keywords: ["e2fsck", "file system", "disk repair", "troubleshoot"]
@@ -17,6 +14,7 @@ external_resources:
 - '[e2fsck on man7.org](https://man7.org/linux/man-pages/man8/e2fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ aliases: ['/quick-answers/linux/using-e2fsck-to-fix-ext-disk-issues/']
 On some systems, e2fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
 {{< note respectIndent=false >}}
-When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
+When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
 ## When to Use e2fsck
@@ -69,7 +67,7 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 
 ### Boot into Rescue Mode
 
-If you are using e2fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. e2fsck should be run only as a user with root permissions.
+If you are using e2fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. e2fsck should be run only as a user with root permissions.
 
 ### View Mounted Disks and Verify Disk Location
 

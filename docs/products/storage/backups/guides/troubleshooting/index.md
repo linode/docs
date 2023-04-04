@@ -1,22 +1,20 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Troubleshooting"
 description: "Troubleshooting issues related to the Linode Backup Service."
+authors: ["Linode"]
 ---
 
 ## Linode Backup Disk Won't Boot
 
-If you are restoring a single backup disk to your Linode, then the new disk will have a different UUID than the original. When this happens, configuration files on the Linode may still be referencing the old UUID of the original disk, instead of the new one, causing boot issues. If this is the case, you will likely see errors related to the UUID in your console when booting in [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode):
+If you are restoring a single backup disk to your Linode, then the new disk will have a different UUID than the original. When this happens, configuration files on the Linode may still be referencing the old UUID of the original disk, instead of the new one, causing boot issues. If this is the case, you will likely see errors related to the UUID in your console when booting in [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode):
 
 ```output
 ALERT!  UUID=xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx does not exist.  Dropping to a shell!
 ```
 
-To fix this error, you will need to boot into [Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) and edit your `/etc/fstab` file to account for the new UUID. This can be done in the following steps:
+To fix this error, you will need to boot into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) and edit your `/etc/fstab` file to account for the new UUID. This can be done in the following steps:
 
-1. Follow the instructions for [Booting Into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) using our Rescue and Rebuild guide. Once you have successfully completed step 4 in the section to [Change Root](/docs/guides/rescue-and-rebuild/#change-root), proceed to the next step.
+1. Follow the instructions for [Booting Into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) using our Rescue and Rebuild guide. Once you have successfully completed step 4 in the section to [Change Root](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#change-root), proceed to the next step.
 
 1. Enter the following command to obtain the UUID of your current disk:
 

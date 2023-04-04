@@ -1,16 +1,14 @@
 ---
 slug: custom-name-servers
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to configure custom nameservers on popular domain registrars."
 keywords: ["dns"]
-tags: ["dns","networking","cpanel"]
+tags: ["dns","networking","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-22
 modified_by:
   name: Linode
 title: Register Custom DNS Name Servers
+authors: ["Linode"]
 ---
 
 DNS **name servers** (also referenced as the single word *nameservers*) are the backbone of the Domain Name System. They are the servers that host a domain's DNS records, which map human-readable domain names to IP addresses.

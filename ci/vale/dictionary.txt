@@ -1,4 +1,5 @@
 aaPanel
+Abhay
 abc
 abell
 absecon
@@ -138,6 +139,7 @@ backdooring
 backdoors
 backend
 backends
+backport
 backported
 backporting
 backports
@@ -160,6 +162,7 @@ bashrc
 bc
 bdd
 benchmarked
+barchart
 berkshelf
 bernd
 berners
@@ -177,6 +180,7 @@ bitshift
 bitstream
 bitwarden
 bitwise
+Bjarne
 blkid
 blockchain
 blocklists
@@ -190,6 +194,7 @@ boolean
 booleans
 boolstyle
 boonex
+boostrapping
 bootable
 bootloader
 bottlerocket
@@ -219,6 +224,7 @@ bundler
 bungeecord
 burndown
 burnup
+Bhushan
 busybox
 bypassuac
 byrequests
@@ -260,6 +266,7 @@ changeme
 changeset
 changesets
 characterwise
+charset
 chatbot
 chatbots
 chatrooms
@@ -413,9 +420,10 @@ dao
 databags
 datacenter
 datadir
-Datadog
+datadog
 dataflow
 datagram
+datalog
 dataset
 datasets
 datasource
@@ -452,6 +460,7 @@ Deno
 denormalized
 deprovision
 deprovisioning
+deque
 descolada
 descr
 deserialize
@@ -473,6 +482,7 @@ dhparams
 dia
 dialogs
 diavel
+dicts
 diffie
 digicert
 digium
@@ -506,6 +516,7 @@ dockerfiles
 dockershim
 dockerize
 dockerized
+doclet
 docstring
 docstrings
 doctest
@@ -573,6 +584,7 @@ equifax
 erb
 erlang
 esc
+eslint
 esm
 etcd
 etcd0
@@ -648,6 +660,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+filemask
 findtime
 finnix
 firefart
@@ -863,6 +876,7 @@ https
 Hubzilla
 huginn
 Hugo
+hugo
 hulu
 husch
 hvc0
@@ -939,6 +953,7 @@ inspec
 intel
 interconnectivity
 interdomain
+interoperation
 interruptible
 intra-application
 introducer
@@ -956,6 +971,7 @@ ipa
 ipaserver
 ipchains
 ipconfig
+iperf
 ipsec
 ipset
 ipsets
@@ -1012,6 +1028,7 @@ jpetazzo
 jq
 jre
 js
+jshell
 json
 json_pp
 jsonpath
@@ -1020,6 +1037,7 @@ julialang
 jumpbox
 junit
 jupyter
+jwebserver
 JWTs
 jx
 kaggle
@@ -1028,6 +1046,7 @@ kamkar
 kanban
 kaseya
 kasten
+Katib
 kbd
 kbits
 keepalive
@@ -1050,6 +1069,7 @@ keypairs
 keysize
 keyspace
 keystore
+kfctl
 khanaser
 kibana
 kickban
@@ -1299,6 +1319,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktemp
 mktime
 mkv
 mnesia
@@ -1495,6 +1516,7 @@ offboarding
 oftc
 ohai
 ok
+okta
 oldstable
 oldfashioned
 onboarding
@@ -1572,6 +1594,8 @@ perceptron
 percona
 performant
 perl
+perlre
+perldoc
 permalink
 permalinks
 Petazzoni
@@ -1593,11 +1617,14 @@ phusion
 pid
 pidfile
 pingable
+pinterest
 pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
+pixid
 pki
 plaintext
 platformer
@@ -1619,6 +1646,7 @@ poplib
 portainer
 portmapper
 portswigger
+Postel
 postgres
 postgresql
 postgresql0
@@ -1662,6 +1690,8 @@ procfile
 procmail
 procs
 productpage
+logic-programming-languages
+prolog
 promlens
 promscale
 prosodyctl
@@ -1744,6 +1774,7 @@ reconnections
 recordset
 recoverability
 recursing
+recursor
 recv
 red5
 reddit
@@ -1766,6 +1797,7 @@ reflog
 reflogs
 refspec
 regexes
+reimplements
 reimported
 reindexing
 reiner
@@ -1845,6 +1877,7 @@ rulesets
 rundir
 runfile
 runlevels
+runpy
 runtime
 runtimes
 rustup
@@ -1888,6 +1921,7 @@ scm
 scp
 scrapy
 screenrc
+scriptable
 scrollable
 scrollbar
 scrollbars
@@ -1908,6 +1942,7 @@ secondsite
 secretpassword
 sed
 sekurlsa
+Seldon
 selinux
 sendable
 sendmail
@@ -1954,9 +1989,11 @@ shotcut
 shoutcast
 scikit
 scribus
+scrollable
 sidekiq
 sievers
 signup
+Simula
 singapore
 sintra
 siri
@@ -2002,6 +2039,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
@@ -2039,12 +2077,14 @@ storages
 strapi
 streamlink
 strongswan
+Stroustrup
 su
 subcommand
 subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage
@@ -2058,6 +2098,8 @@ subqueries
 subquery
 subreddit
 subreddits
+subshells
+subshell
 substring
 substrings
 subtab
@@ -2164,6 +2206,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2220,6 +2263,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 UDF
 UDFs
@@ -2255,6 +2299,7 @@ uniq
 unittest
 univac
 unix
+unopinionated
 unmanaged
 unmerged
 unmount
@@ -2366,6 +2411,7 @@ wasn
 wasm
 wav
 wazuh
+wc
 wchar
 wchar_t
 webadmin
@@ -2400,6 +2446,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
@@ -2419,6 +2466,7 @@ windowlist
 wireguard
 wirelessly
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll

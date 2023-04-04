@@ -1,8 +1,5 @@
 ---
 slug: meltdown-and-spectre
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide details the recent vulnerabilities disclosed by intel which affect processors installed in most devices from the last 23 years and what you can do about it."
 keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 aliases: ['/security/security-patches/meltdown-and-spectre/','/security/meltdown-and-spectre/','/platform/meltdown_statement/']
@@ -19,6 +16,7 @@ external_resources:
   - '[Reboot Survival Guide](/docs/guides/reboot-survival-guide/)'
   - '[Linode Blog: CPU Vulnerabilities: Meltdown & Spectre](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/)'
 tags: ["security"]
+authors: ["Linode"]
 ---
 
 ## Summary

@@ -1,8 +1,5 @@
 ---
 slug: creating-accounts-on-directadmin
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for creating hosting accounts on the DirectAdmin web-based control panel for use by customers or users.'
 keywords: ["directadmin", " reseller", " accounts"]
 tags: ["web server","cms"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2011-11-02
 title: Creating Accounts on DirectAdmin
 deprecated: true
+authors: ["Chris Ciufo"]
 ---
 
 [DirectAdmin](http://directadmin.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This article will show you how to create a reseller account on DirectAdmin.

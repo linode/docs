@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-puppet
-author:
-    name: Elle Krout
-    email: ekrout@linode.com
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu or CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
@@ -18,6 +15,7 @@ title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppet.com/)'
     - '[Puppet Open Source Documentation](https://puppet.com/docs/open-source-puppet/)'
+authors: ["Elle Krout"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.

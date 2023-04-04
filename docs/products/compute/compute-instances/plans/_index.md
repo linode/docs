@@ -6,4 +6,6 @@ tab_group_main:
 published: 2023-01-12
 ---
 
+{{< content "april-price-update-shortguide" >}}
+
 {{< content "instance-comparison-shortguide" >}}

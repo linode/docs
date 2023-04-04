@@ -1,18 +1,16 @@
 ---
 slug: setting-up-round-robin-dns
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to set up round-robin DNS on a set of Linodes as well as how to employ a NodeBalancer for loadbalancing support for those Linodes.'
 keywords: ["hosting a website", "website", "linode quickstart guide", "high availability", "failover"]
 tags: ["web server","nginx","monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2018-05-07
+modified: 2023-03-30
 modified_by:
   name: Linode
 published: 2012-03-13
 title: Setting up Round-Robin DNS
 aliases: ['/websites/hosting/setting-up-round-robin-dns/','/websites/setting-up-round-robin-dns/']
+authors: ["Linode"]
 ---
 
 ## What is Round-Robin DNS
@@ -53,9 +51,9 @@ Once your Linode is fully configured, the next step is to copy your configuratio
 
 1. Select the region and plan for the new Linode. A different region for each backend Linode is recommended when using round-robin DNS.
 
-    {{< note respectIndent=false >}}
-You will not be able to choose a plan for your new Linode that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Linode (Nanode).
-{{< /note >}}
+    {{< note >}}
+    You will not be able to choose a plan for your new Linode that is smaller than the plan of the Linode you are cloning. For example, a 2GB Linode can not be cloned into a 1GB Linode (Nanode).
+    {{< /note >}}
 
 1. Provide a label for your new Linode.
 
@@ -75,15 +73,17 @@ You will not be able to choose a plan for your new Linode that is smaller than t
 
 1. To ensure that the DNS is correctly configured for all new Linodes, use the following command from your local machine, replacing `example.com` with your domain name:
 
-        dig +short example.com
+    ```command
+    dig +short example.com
+    ```
 
 The output should list the IP address of every Linode currently configured to resolve your domain name.
 
-{{< output >}}
+```output
 203.0.113.0
 198.51.100.255
 203.0.113.255
-{{< /output >}}
+```
 
 ## Putting NodeBalancers in Charge
 
@@ -95,9 +95,9 @@ In this example, round-robin DNS will be used to alternate between two NodeBalan
 
 1. Follow the [Cloning Your Web Server](##cloning-your-web-server) steps until you have 4 Linodes fully configured. You should have two Linodes available for each data center you will be creating a NodeBalancer in.
 
-{{< note respectIndent=false >}}
-If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
-{{< /note >}}
+    {{< note >}}
+    If using NodeBalancers, DNS records should not be configured for the individual Linodes since they will instead be created for the NodeBalancers themselves. You should delete any A records for the individual Linodes now.
+    {{< /note >}}
 
 1. [Add a Private IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each Linode that has been pre-configured for round-robin DNS.
 
@@ -115,6 +115,6 @@ If using NodeBalancers, DNS records should not be configured for the individual 
 
 1.  Now that the NodeBalancers are up, go directly to your NodeBalancer's IP addresses in a browser. You should see your web application freely available as the NodeBalancer proxies the traffic through.
 
-1. After confirming that the Node Balancer is working, [Add a domain and configure two A records](/docs/products/networking/dns-manager/get-started/) pointing towards the NodeBalancers you have created. Each A record should be using the same DNS name, and pointing towards the public IP address of your NodeBalancers.
+1. After confirming that the NodeBalancer is working, [Add a domain and configure two A records](/docs/products/networking/dns-manager/get-started/) pointing towards the NodeBalancers you have created. Each A record should be using the same DNS name, and pointing towards the public IP address of your NodeBalancers.
 
 After completing these steps, round-robin DNS is now successfully configured for your NodeBalancers. Additional Linodes and NodeBalancers can be added to suit your application's specific needs.

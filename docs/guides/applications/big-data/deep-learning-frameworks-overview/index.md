@@ -1,7 +1,5 @@
 ---
 slug: deep-learning-frameworks-overview
-author:
-  name: Andy Patrizio
 description: 'This guide provides an overview of the most popular deep learning frameworks and is meant to help you decide which machine learning framework to choose.'
 keywords: ['deep learning frameworks']
 tags: ['python']
@@ -11,9 +9,8 @@ modified_by:
   name: Linode
 title: "An Overview of Deep Learning Frameworks"
 title_meta: "Deep Learning Frameworks Overview"
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
+authors: ["Andy Patrizio"]
+tags: ["saas"]
 ---
 
 ## What is Deep Learning?

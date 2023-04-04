@@ -1,7 +1,5 @@
 ---
 slug: introducing-http-2
-author:
-  name: Jeff Novotny
 description: 'This guide provides a brief introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.'
 keywords: ['http2 vs http1']
 tags: ['web server']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "An Introduction to HTTP/2"
 title_meta: "HTTP/2 vs. HTTP/1.1: Why You Should Use HTTP/2"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+authors: ["Jeff Novotny"]
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) (also known as HTTP 2) updates and expands the original Hypertext Transfer Protocol (HTTP) implementation. HTTP/2 is designed to improve throughput and latency while maintaining backward compatibility with earlier versions. Because HTTP/2 offers many advantages and no real disadvantages when compared to HTTP/1.1, web servers and clients should use the new version. This guide provides an introduction to HTTP/2, compares it with the original HTTP specification, and explains why you should use it.

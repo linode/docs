@@ -1,9 +1,6 @@
 ---
 slug: manage-mysql-with-phpmyadmin-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on Ubuntu 9.10 "Karmic".'
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 9.10
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 

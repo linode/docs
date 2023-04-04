@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-redmine-on-ubuntu-16-04
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
 description: 'This guide will show you how to install and configure the popular open-source, written in Ruby on Rails, project management software suite Redmine.'
 keywords: ["nginx", "ubuntu", "redmine"]
 tags: ["ubuntu", "nginx", "ruby"]
@@ -17,6 +14,7 @@ external_resources:
 - '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
 - "[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)"
 aliases: ['/applications/project-management/how-to-install-and-configure-redmine-on-ubuntu-16-04/']
+authors: ["Angel Guarisma"]
 ---
 
 ![How to Install and Configure Redmine on Ubuntu](how-to-install-and-configure-redmine-on-ubuntu-smg.jpg)

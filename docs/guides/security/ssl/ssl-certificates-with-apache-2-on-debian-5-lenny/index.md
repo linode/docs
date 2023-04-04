@@ -1,8 +1,5 @@
 ---
 slug: ssl-certificates-with-apache-2-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Debian 5 (Lenny).'
 keywords: ["apache SSL", "ssl on debian", "web sever", "debian lenny"]
 tags: ["apache","security","ssl","debian"]
@@ -19,6 +16,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Debian 5 (Lenny) guide](/docs/web-servers/apache/installation/debian-5-lenny). These steps should be performed via an SSH session to your Linode as the root user.

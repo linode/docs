@@ -1,7 +1,5 @@
 ---
 slug: web-servers-list
-author:
-  name: Wayne Rash
 description: 'Use this helpful web servers list to build your website. Our guide includes a list of web server names and comparisons between them. Learn more here in this guide.'
 keywords: ['servers comparison','web server names','list of web servers']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +8,7 @@ modified_by:
   name: Linode
 title: "The Ultimate Web Servers List: 11 Popular Web Servers To Use Today"
 title_meta: "Web Server Software List and Servers Comparison"
-contributor:
-  name: Wayne Rash
+authors: ["Wayne Rash"]
 ---
 
 This is the web server list you’ve been looking for – the guide discusses the most popular web servers and their advantages.

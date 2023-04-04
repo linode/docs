@@ -1,9 +1,6 @@
 ---
 slug: opencart-on-fedora-15
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install and configure the popular open-source ecommerce application OpenCart to run your own web storefront on Fedora 15.'
 keywords: ["opencart", "ecommerce", "commerce", "store", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: Fedora 15
+authors: ["Linode"]
 ---
 
 

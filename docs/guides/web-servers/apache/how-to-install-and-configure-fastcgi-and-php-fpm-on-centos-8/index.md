@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will show you how to install and configure the mod_fcgid and PHP-FPM protocols for dynamic content generation and processing using Apache on CentOS 8."
 keywords: ['list','of','keywords','and key phrases']
 tags: ["centos","web server","apache","php"]
@@ -13,14 +10,13 @@ modified_by:
   name: Linode
 title: "Installing and Configuring FastCGI and PHP-FPM on CentOS 8"
 title_meta: "How to Install and Configure FastCGI and PHP-FPM on CentOS 8"
-contributor:
-  name: Linode
 relations:
     platform:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-centos-8/']
+authors: ["Linode"]
 ---
 
 `mod_fcgid` is an [Apache module](https://httpd.apache.org/mod_fcgid/) that uses the [FastCGI](https://en.wikipedia.org/wiki/FastCGI) protocol to provide an interface between Apache and Common Gateway Interface (CGI) programs. CGI helps a web server handle dynamic content generation and processing for scripting languages like PHP. This dynamic functionality is commonly used when running content management systems like WordPress on a LAMP stack.

@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-phpfastcgi-on-arch-linux
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Arch Linux.'
 keywords: ["nginx arch linux", "nginx arch", "nginx fastcgi", "nginx php"]
 tags: ["web server","php","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Arch Linux
+authors: ["Linode"]
 ---
 
 

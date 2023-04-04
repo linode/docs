@@ -1,11 +1,8 @@
 ---
 slug: install-an-odoo-13-stack-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Odoo is an open-source suite of over 10,000 business apps with a web interface for managing them. This guide shows how to install Odoo 13 on Ubuntu 18.04.'
 keywords: ["Odoo 13 install ubuntu 18.04", "install open source cms erp ubuntu"]
-tags: ["debian", "postgresql", "database", "cms"]
+tags: ["debian", "postgresql", "database", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-17
 modified: 2020-09-17
@@ -14,9 +11,6 @@ modified_by:
 title: Installing an Odoo 13 Stack on Ubuntu 18.04
 title_meta: 'How to Install an Odoo 13 Stack on Ubuntu 18.04'
 image: InstallOdoo13Stack_Ubuntu1804.png
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 aliases: ['/websites/erp/install-an-odoo-13-stack-on-ubuntu-18-04/','/websites/cms/install-an-odoo-13-stack-on-ubuntu-18-04/']
 external_resources:
   - '[Odoo User Documentation](https://www.odoo.com/documentation/user/13.0/)'
@@ -31,6 +25,7 @@ relations:
         key: install-an-odoo-13-stack
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Damaso Sanoja"]
 ---
 
 ## What is Odoo?

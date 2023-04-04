@@ -1,8 +1,5 @@
 ---
 slug: use-public-key-authentication-with-ssh
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Understand SSH Public Key Authentication & learn how to use SSH public key authentication on Linux, macOS, and Windows. ✓ Click to read more now!"
 keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
@@ -16,6 +13,7 @@ modified: 2022-06-17
 title: "Using SSH Public Key Authentication on Linux, macOS, and Windows"
 title_meta: "How to Use SSH Public Key Authentication"
 image: use_public_key_authentication_with_ssh.png
+authors: ["Linode"]
 ---
 
 [Public key authentication](https://en.wikipedia.org/wiki/Key_authentication#Authentication_using_Public_Key_Cryptography) with SSH (Secure Shell) is a method in which you generate and store on your computer a pair of cryptographic keys and then configure your server to recognize and accept your keys. Password authentication is the default method most SSH (Secure Shell) clients use to authenticate with remote servers, but it suffers from potential security vulnerabilities like brute-force login attempts. Using key-based authentication offers a range of benefits:
@@ -353,7 +351,7 @@ The SSH daemon on a Linux server allows you to configure and fine-tune its behav
 
 ## Troubleshooting
 
-If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) guide for troubleshooting help.
+If your SSH connections are not working as expected, or if you have locked yourself out of your system, review the [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) guide for troubleshooting help.
 
 ## Next Steps
 
