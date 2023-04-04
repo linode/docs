@@ -7,8 +7,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-03
 modified_by:
   name: Linode
-title: "How to Use the JavaScript Map() Function to Transform Arrays"
-h1_title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginners"
+title_meta: "How to Use the JavaScript Map() Function to Transform Arrays"
+title: "Using the JavaScript map() Function: A Comprehensive Guide for Beginners"
 enable_h1: true
 authors: ['Jeff Novotny']
 external_resources:
