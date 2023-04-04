@@ -24,7 +24,7 @@ anArray.map(function(value, index, array) { /* function body */ })
 This guide explains:
 
 - [What the JavaScript map() function is](#what-is-the-javascript-map-function)
-- [What the syntax for the JavaScript map() funcion is](#javascript-map-function-syntax)
+- [What the syntax for the JavaScript map() function is](#javascript-map-function-syntax)
 - [How to use the JavaScript map() function in practice](#how-to-use-the-javascript-map-function), using examples for numerical transformation, string processing, and HTML generation.
 - [How the JavaScript map() function compares to using for loops and the forEach function](#a-comparison-between-javascript-map-function-and-forforeach)
 - [When and why to use the JavaScript map() function](#usage-notes-for-the-javascript-map-function)
