@@ -246,6 +246,17 @@ module.exports = {
 						'blockquote p:last-of-type::after': {
 							content: ''
 						},
+						kbd: {
+							color: colorBodyText,
+							fontWeight: '400',
+							padding: '0.2rem 0.35rem 0.15rem 0.35rem',
+							margin: '0 0.2rem',
+							fontSize: em(13, 18),
+							borderRadius: '2px',
+							borderColor: colorBasicGray,
+							borderWidth: '1px',
+							boxShadow: '0 1px 0 1px #ddd'
+						},
 						code: {
 							color: colorBodyText,
 							backgroundColor: colorLightGray,

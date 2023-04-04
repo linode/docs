@@ -1,8 +1,5 @@
 ---
 slug: linode-managed
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with an overview of the Linode Managed service, which is a 24x7 incident response service that monitors services on your Linode(s).'
 keywords: ["linode managed", "service monitoring"]
 tags: ["linode platform","cloud manager","monitoring"]
@@ -12,16 +9,16 @@ modified: 2021-07-28
 modified_by:
   name: Linode
 published: 2019-09-04
-title: How to Get Started with Linode Managed
-h1_title: Getting Started with Linode Managed
-enable_h1: true
+title: Getting Started with Linode Managed
+title_meta: How to Get Started with Linode Managed
+authors: ["Linode"]
 ---
 
 [Linode Managed](https://www.linode.com/products/managed/) is a 24/7 incident response service.
 These services include incident response, Longview Pro, the Linode Backup service, cPanel, additional dashboard metrics, and free site migrations. This robust, multi-homed monitoring system distributes monitoring checks to ensure that your servers remain online and available at all times. Linode Managed can monitor any service or software stack reachable over TCP or HTTP. Once you add a service to Linode Managed, Linode will monitor it for connectivity, response, and total request time. This guide shows you how to start monitoring your services with Linode Managed.
 
-{{< note >}}
-Linode Managed applies to all Linodes on an account **Except** for nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/). All eligible nodes are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
+{{< note respectIndent=false >}}
+Linode Managed applies to all Linodes on an account **Except** for nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/). All eligible nodes are billed at a rate of $100 per month for each Linode. If this service is not needed for all Linodes, a second account can be created to separate Managed Linodes from non-Managed Linodes. If needed, Linodes can be transferred by [opening up a Support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support) from both accounts and requesting the transfer. You can also contact the support team to install cPanel, add a license, or transfer a license, and other services such as backup, and migration.
 {{< /note >}}
 
 ## Benefits
@@ -44,7 +41,7 @@ All of the benefits for Linode Managed are also discussed on the [Linode Managed
 
 The cost for Linode Managed is $100 per Linode Compute Instance per month. For example, if there are 10 Linodes on your account, your total monthly cost will be $1,000.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://www.linode.com/products/kubernetes/) are not considered Linode Compute Instances for Managed billing purposes. LKE nodes will not be billed when enrolling in the Managed service.
 {{< /note >}}
 
@@ -56,7 +53,7 @@ Nodes created and implemented by the [Linode Kubernetes Engine (LKE)](https://ww
 
 After you've signed up for the service, you'll next want to let Support know about the websites and services you run, how to log into them, and who to contact if needed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Your Managed service dashboard will be blank and the Linode Support Team won't receive health-check notifications for your services until these steps are completed. Please contact Linode Support if you have any questions when working through the initial setup.
 {{< /note >}}
 
@@ -86,31 +83,31 @@ Linode generates and assigns a unique public/private keypair to your account's M
 
 1.  Linode's public key is displayed under this tab, and a **Copy to clipboard** button will appear next to it. Click on this button to copy it.
 
-    [![Linode Managed Public SSH Key](managed-public-ssh-key.png "Linode Managed Public SSH Key")](managed-public-ssh-key.png)
+    ![Linode Managed Public SSH Key](managed-public-ssh-key.png)
 
 1.  After you've copied the key, you can install it on your server, either [under your root user](#installing-as-root) or [under another user](#installing-as-another-user). If you install it under another user, be sure to also update your [Linode's Managed SSH settings](#specifying-linode-ssh-settings) to reflect that user.
 
 #### Installing as Root
 
-Installing the public SSH key for the `root` user is the easiest way to add Linode's public key to your server. However, if your server's SSH configuration doesn't allow [root login](/docs/guides/set-up-and-secure/#ssh-daemon-options), you may want to skip to the next section to add the public key to another user's account.
+Installing the public SSH key for the `root` user is the easiest way to add Linode's public key to your server. However, if your server's SSH configuration doesn't allow [root login](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options), you may want to skip to the next section to add the public key to another user's account.
 
 To install Linode's SSH key for the `root` user:
 
-1.  Open a terminal window and [log into your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  Open a terminal window and [log into your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Log in as `root`:
 
         su
 
-    {{< note >}}
-If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/guides/set-up-and-secure/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
+    {{< note respectIndent=false >}}
+If you followed the instructions in the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
 {{< /note >}}
 
 1.  Open the `authorized_keys` file in a text editor (for example, [nano](/docs/guides/use-nano-to-edit-files-in-linux/)):
 
         nano /root/.ssh/authorized_keys
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `/root/.ssh/` directory may not exist yet. If this is the case, you must create the directory using the following command before opening the `authorized_keys` file:
 
      mkdir /root/.ssh/
@@ -120,22 +117,22 @@ The `/root/.ssh/` directory may not exist yet. If this is the case, you must cre
 
 1.  Save the changes to the `authorized_keys` file and exit your text editor. In the `nano` editor, enter **Control-X**, and then **Y** to confirm.
 
-1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
+1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
 
 #### Installing as Another User
 
-You can also install Linode's public SSH key for another non-root user. This allows you to disable SSH [root login](/docs/guides/set-up-and-secure/#ssh-daemon-options) and still allow our support staff to log into your servers.
+You can also install Linode's public SSH key for another non-root user. This allows you to disable SSH [root login](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) and still allow our support staff to log into your servers.
 
 To install Linode's SSH key as a non-root user:
 
-1.  [Log into your Linode via SSH](/docs/getting-started#connect-to-your-linode-via-ssh).
+1.  [Log into your Linode via SSH](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh).
 
-1.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) for instructions.
+1.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) for instructions.
 
     {{< disclosure-note "Important: providing sudo access" >}}
-After logging into your Linode as a non-root user, the Linode Support team will generally need [sudo privileges](/docs/tools-reference/linux-users-and-groups/#understanding-sudo) to run troubleshooting commands, so you should make sure to give your user sudo privileges.
+After logging into your Linode as a non-root user, the Linode Support team will generally need [sudo privileges](/docs/guides/linux-users-and-groups/#understanding-sudo) to run troubleshooting commands, so you should make sure to give your user sudo privileges.
 
-The [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution), which will grant this privilege. When your user is in this group, your system will ask for the user's password whenever a sudo command is run. Because of this, you will also need to tell us your Linux user and password by following the [Adding Service Credentials](#adding-service-credentials) section.
+The [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide shows how to add your user to the `sudo` group (or `wheel` or `admin` group, depending on your distribution), which will grant this privilege. When your user is in this group, your system will ask for the user's password whenever a sudo command is run. Because of this, you will also need to tell us your Linux user and password by following the [Adding Service Credentials](#adding-service-credentials) section.
 
 Alternatively, you can set up *passwordless sudo* for your user, which means that your user's password won't be requested by the system when running sudo commands. To do this:
 
@@ -162,7 +159,7 @@ example_user ALL=(ALL) NOPASSWD: ALL
 
         nano /home/example_user/.ssh/authorized_keys
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `/home/example_user/.ssh/` directory may not exist yet. If so, create it with the following command before opening the `authorized_keys` file:
 
     mkdir -p /home/example_user/.ssh/
@@ -172,7 +169,7 @@ The `/home/example_user/.ssh/` directory may not exist yet. If so, create it wit
 
 1.  Save the changes to the `authorized_keys` file and exit your text editor. In the `nano` editor, enter **Control-X**, and then **Y** to confirm.
 
-1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/platform/billing-and-support/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
+1. You have successfully added Linode's public key for the `root` user. If you have a firewall installed, you may need to allow access to our infrastructure (see [Configuring Firewall Rules](#configuring-firewall-rules)). To test, you can [open a support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support) to have the Linode Support team confirm that they have access. Repeat this process on every Linode you want to monitor with Linode Managed.
 
 ### Specifying Linode SSH Settings
 
@@ -184,7 +181,7 @@ You can customize Linode Managed's SSH settings for each of your Linodes:
 
 As well, you can disable Managed SSH access for one or more of your servers. This does not turn off the SSH service on your Linode or uninstall our public key from it. Instead the Linode Support Team's client software will simply not attempt connections if you have disabled access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you want us to investigate issues, it's important to keep SSH access enabled, which is the default.
 {{< /note >}}
 
@@ -196,17 +193,17 @@ To access these settings:
 
 1.  Select the **SSH Access** tab. Your Linodes and their Managed SSH settings will appear in the table below:
 
-    [![Linode Managed SSH Settings](managed-ssh-settings.png "Linode Managed SSH Settings")](managed-ssh-settings.png)
+    ![Linode Managed SSH Settings](managed-ssh-settings.png)
 
 1.  To enable or disable Managed SSH access for a Linode, click on the **Enable** or **Disable** option that corresponds to the Linode you'd like to interact with.
 
-1.  To change other Managed SSH settings for a Linode, click on the the **Edit** option. A form appears with fields for each setting.
+1.  To change other Managed SSH settings for a Linode, click on the **Edit** option. A form appears with fields for each setting.
 
 ### Adding Service Credentials
 
 Many of the applications running on your servers can only be accessed with the appropriate username and password combination. To provide Linode's staff with access to those applications, you should upload *credentials* for them to the Linode Cloud Manager. Once uploaded, you can also link credentials to specific Managed services to communicate which ones Linode Support should use when troubleshooting the service.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 All credentials are securely stored in our encrypted database.
 {{< /note >}}
 
@@ -218,9 +215,9 @@ To add a credential:
 
 1.  Select the **Credentials** tab, then click on the **Add Credentials** link under this tab.
 
-    [![Linode Managed Credentials](managed-credentials.png "Linode Managed Credentials")](managed-credentials.png)
+    ![Linode Managed Credentials](managed-credentials.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The table that lists your uploaded credentials will feature a **Last Decrypted** column. This column will show the most recent date/time that a member of Linode Support viewed each credential.
 {{< /note >}}
 
@@ -246,13 +243,13 @@ To add a contact to Linode Managed:
 
 1.  Select the **Contacts** tab, then click on the **Add a Contact** link under this tab.
 
-    [![Linode Managed Contacts](managed-contacts.png "Linode Managed Contacts")](managed-contacts.png)
+    ![Linode Managed Contacts](managed-contacts.png)
 
 1.  A form for your new contact will appear. The form accepts a primary and secondary phone number, which Linode Support may call if they need additional information to troubleshoot an issue on your servers.
 
     In the **Group** field, enter a group name. As described at the beginning of this section, groups can hold multiple contacts. Ideally, you'll combine all of the individuals responsible for a particular service or system into one group.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A Managed service can only be linked to a contact group and not to individual contacts, so you should  create at least one group, even if it only contains one contact.
 {{< /note >}}
 

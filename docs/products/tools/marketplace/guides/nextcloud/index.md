@@ -1,22 +1,19 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud One-Click Marketplace App."
-keywords: ['Nextcloud','omarketplace','file sharing']
+description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
+keywords: ['Nextcloud','marketplace','file sharing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
-modified: 2022-03-08
+modified: 2022-05-27
 modified_by:
   name: Linode
-title: "Deploying Nextcloud through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Nextcloud through the Linode Marketplace"
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
+- '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
 image: deploying_nextcloud_oca.png
+authors: ["Linode"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is an open source solution to file hosting and sharing. With Nextcloud, you can synchronize files from a local computer to the Linode server and share them with collaborators. Nextcloud’s customizable security features and intuitive user interface help to keep files safe and easy to manage.
@@ -27,48 +24,53 @@ image: deploying_nextcloud_oca.png
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Nextcloud should be fully installed within 5-7 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### NextCloud Options
-
-- **The name of the admin user for NextCloud** *(required)*: The administrator username for nextcloud. This will be used to log in to the application.
-- **The password for NextCloud's admin user** *(required)*: The administrator password. This will be used to log in to the application.
-- **MySQL database root password** *(required)*: The root user's password for the Nextcloud database.
-- **MySQL user password** *(required)*: Your new MySQL user's password.
-- **The name of the MySQL database:** The name to assign to the Nextcloud instance's MySQL database. If no value is provided, the database is named `nextcloud`.
-- **The name of the MySQL user to create:** The name of a new MySQL user to create. If no value is provided, the user is named `nextcloud`.
-- **Admin email for the NextCLoud server:** The email address to use for the Nextcloud instance's admin user.
-- **Would you like to use a free Let's Encrypt SSL certificate? (Requires domain):** Enable a free [HTTPS CertBot SSL certificate](https://certbot.eff.org/) on the Nextcloud domain. If you do not provide a value, `no` is set by default.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Log Into Your Nextcloud Instance
 
-1. Open a browser window and navigate to the NextCloud instance's domain. For example, enter `nextcloud.example.com` into the browser, replacing `example.com` with the value of your own domain. If you do not install the App with a domain name, the domain is the public IP address of the Linode appended with a forward slash and "nextcloud. For example, `192.168.17.43/nextcloud/`.
+1. Open a browser window and navigate to the NextCloud instance's domain using port 8443. For example, enter `https://example.com:8443` into the browser, replacing `example.com` with the value of your own domain. If you did not install the App with a domain name, you can use the [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) (such as `https://203-0-113-0.ip.linodeusercontent.com:8443`).
 
-1. Enter the administrator username and password set during initial app creation in the presented form.
+1. The initial Nextcloud setup screen is displayed, which includes an automatically generated password. Save the password and click the **Open Nextcloud AIO login** button.
 
-      ![Create a Nextcloud admin account.](nextcloud-admin.png)
+      ![Nextcloud AIO setup](nextcloudaiosetup.jpg)
 
-1. Once you have successfully logged in, the Nextcloud Hub page appears where you can upload files to the Nextcloud server.
+1. In the login page that appears, enter the password from the previous screen and click **Login**.
 
-      ![Nextcloud Hub](welcome-nextcloud.png)
+      ![Nextcloud Login](nextcloudlogin.jpg)
+
+1. Once you have successfully logged in, you are prompted to configure your domain. Enter the domain you specified when deployed the Marketplace App or use your [rDNS](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) value if no domain was specified.
+
+      ![Nextcloud Domain setup](nextclouddomain.jpg)
+
+1. Now that you've entered the domain, you are ready to start the Nextcloud containers. Select any additional add-ons you'd like to enable for this instance, specify the time zone, and then click **Start Containers**. This may take a few minutes to complete.
+
+      ![Nextcloud Container setup](nextcloudstart.jpg)
+
+1. Once all of the Nextcloud Containers are in a *running* state, you will see the initial Nextcloud username and password as shown in the image below. Please ensure that save the generated password as you will need that to login to your Nextcloud instance. You can click **Open Your Nextcloud** or visit `https://example.com/login`, replacing `example.com` with the domain used in previous steps.
+
+      ![Nextcloud Admin Credentials](nextcloudadmincreds.jpg)
 
 ## Next Steps
 
 {{< content "marketplace-update-note-shortguide">}}
 
-- [Configure Nextcloud to use Linode Object Storage as an External Storage Mount](/docs/platform/object-storage/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/).  You can use Object Storage as a secondary place to store your Nextcloud files. Using Linode Object Storage to store files prevents you from running out of storage space that is limited by your Linode's plan size.
+- [Configure Nextcloud to use Linode Object Storage as an External Storage Mount](/docs/guides/how-to-configure-nextcloud-to-use-linode-object-storage-as-an-external-storage-mount/).  You can use Object Storage as a secondary place to store your Nextcloud files. Using Linode Object Storage to store files prevents you from running out of storage space that is limited by your Linode's plan size.
 - Install the [Nextcloud desktop synchronization client](https://docs.nextcloud.com/desktop/2.3/installing.html) on a local computer to easily synchronize the desktop files to the Nextcloud server.
 

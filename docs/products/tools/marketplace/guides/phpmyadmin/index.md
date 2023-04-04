@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
 keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
 tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
@@ -10,11 +7,12 @@ published: 2020-09-28
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying phpMyAdmin through the Linode Marketplace"
+title: "Deploy phpMyAdmin through the Linode Marketplace"
 external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
 aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/','/guides/phpmyadmin-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Marketplace App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.
@@ -25,13 +23,13 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** phpMyAdmin should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9
+- **Supported distributions:** Debian 11
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### phpMyAdmin Options
@@ -44,6 +42,8 @@ aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/pl
 phpMyAdmin doesn't handle user management itself, but passes all user information onto MySQL. The Admin User you create here is created in MySQL.
 {{< /note >}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After installation is complete, the phpMyAdmin dashboard is accessible at your Linode's IP address followed by `/phpmyadmin` for example:
@@ -54,11 +54,11 @@ However, entering your phpMyAdmin credentials through an HTTP connection is inse
 
 ### Configure Your Domain with DNS Manager
 
-The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/guides/dns-manager/) guide, configure your domain's [name servers](/docs/guides/dns-manager/#use-linodes-name-servers-with-your-domain) and add a [DNS record](/docs/guides/dns-manager/#add-dns-records) so that your domain is pointing to your phpMyAdmin Linode.
+The following sections require that you own a domain that has been configured for your use with your phpMyAdmin Linode. Following the instructions in the Linode [DNS Manager](/docs/products/networking/dns-manager/) guide, configure your domain's [name servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) and add a [DNS record](/docs/products/networking/dns-manager/guides/manage-dns-records/) so that your domain is pointing to your phpMyAdmin Linode.
 
 ### Enable HTTPS with Certbot
 
-1.  [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Install Certbot for authentication with Python and Apache:
 

@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows you how to use the Linode Marketplace to deploy a LEMP (Linux, NGINX, MySQL, PHP) server stack on a Linode Compute Instance."
 keywords: ['LEMP', 'nginx', 'web server', 'mysql', 'php']
 tags: ["lemp","nginx","cloud-manager","linode platform","php","mysql","marketplace"]
@@ -10,16 +7,15 @@ published: 2020-03-11
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a LEMP Stack through the Linode Marketplace"
+title: "Deploy a LEMP Stack through the Linode Marketplace"
 image: feature.png
-contributor:
-  name: Linode
 external_resources:
 - '[NGINX Getting Started](https://www.nginx.com/resources/wiki/start/)'
 aliases: ['/platform/marketplace/deploy-lemp-stack-with-marketplace-apps/', '/platform/marketplace/deploy-lemp-stack-with-one-click-apps/', '/guides/deploy-lemp-stack-with-one-click-apps/','/guides/deploy-lemp-stack-with-marketplace-apps/','/guides/lemp-stack-marketplace-app/']
+authors: ["Linode"]
 ---
 
-The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), [PHP](https://www.php.net/)) is a popular, free, and open-source web software bundle used for hosting websites on the Linux operating system. While similar to the [LAMP Stack](/docs/guides/deploy-lamp-stack-with-marketplace-apps/), a LEMP stack uses the NGINX web server instead of [Apache](https://httpd.apache.org/). NGINX is preferred by many users for a variety of reasons, including its flexibility, speed, and ability to perform under high load.
+The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), [PHP](https://www.php.net/)) is a popular, free, and open-source web software bundle used for hosting websites on the Linux operating system. While similar to the [LAMP Stack](/docs/products/tools/marketplace/guides/lamp-stack/), a LEMP stack uses the NGINX web server instead of [Apache](https://httpd.apache.org/). NGINX is preferred by many users for a variety of reasons, including its flexibility, speed, and ability to perform under high load.
 
 ## Deploying a Marketplace App
 
@@ -27,9 +23,9 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** The LEMP stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -45,13 +41,15 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After your LEMP stack has finished deploying, you can view it and upload your own files using one of the methods below:
 
-- Log in to your new Compute Instance through [Lish](/docs/guides/using-the-lish-console/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance. Your application's web files are located in the `/var/www/html` directory.
+- Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance. Your application's web files are located in the `/var/www/html` directory.
 
-- Navigate to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+- Navigate to the domain entered during the creation of the Linode instance. If you did not enter a domain, you can also use your Compute Instance's rDNS, which may look like `123-0-123-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
 - Consult the following guides to learn more about working with the various components of the LEMP stack:
 

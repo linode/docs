@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s Marketplace Apps."
 keywords: ['webmin','system administration','marketplace']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager", "cms", "email"]
@@ -11,14 +8,13 @@ modified: 2022-03-08
 image: Deploy_Webmin_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Webmin through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Webmin through the Linode Marketplace"
 external_resources:
 - '[Webmin Documentation](https://doxfer.webmin.com/Webmin/Main_Page)'
 - '[Webmin on GitHub](https://github.com/webmin/webmin/commits/master)'
 - '[Webmin Tutorials](https://doxfer.webmin.com/Webmin/Tutorials)'
 aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '/platform/one-click/how-to-deploy-webmin-with-one-click-apps/','/guides/how-to-deploy-webmin-with-one-click-apps/','/guides/how-to-deploy-webmin-with-marketplace-apps/','/platform/one-click/deploy-webmin-with-one-click-apps/','/guides/webmin-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Webmin](http://www.webmin.com) is an open source interface for Unix system administration that offers an easy to use graphical interface for managing user accounts, DNS, file sharing, and more. Webmin alleviates the need to use the command line to edit Unix system configuration files and allows you to configure your system easily from a simple web interface.
@@ -29,9 +25,9 @@ aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Webmin should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,17 +37,19 @@ aliases: ['/platform/marketplace/how-to-deploy-webmin-with-marketplace-apps/', '
 ### Webmin Options
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
-- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
+- **Enable passwordless sudo access for the limited user?** Select **Yes** to [disable SSH password authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for your limited sudo user as an additional security measure. Requires an **SSH Public Key** for SSH access to your Linode.
 
 #### Additional Security Configuration
 
-- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
-- **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/security/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
+- **Configure automatic security updates?** Select **Yes** to enable [automatic security updates](/docs/products/compute/compute-instances/guides/set-up-and-secure/#automatic-security-updates) for your Linode.
+- **Use fail2ban to prevent automated instrusion attempts?** Select **Yes** to enable [SSH login protection with Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) as an additional security measure.
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **SOA Email for your domain** The email address to register as your Start of Authority (SOA). This field is required for creating DNS records for a new domain.
-- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-records-an-introduction/#mx) for the purpose of sending emails from your instance.
-- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-records-an-introduction/#spf) for the purpose of sending emails from your instance.
+- **Do you need an MX record for this domain?** Select **Yes** to automatically configure an [MX record](/docs/guides/dns-overview/#mx) for the purpose of sending emails from your instance.
+- **Do you need an SPF record for this domain?** Select **Yes** to automatically configure an [SPF record](/docs/guides/dns-overview/#spf) for the purpose of sending emails from your instance.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -59,8 +57,8 @@ Webmin is now installed and ready to use.
 
 1.  If you filled out the optional Webmin configuration fields:
 
-    - In the Cloud Manager [DNS Manager](/docs/guides/dns-manager/#add-a-domain), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
-    - [Configure rDNS](/docs/networking/dns/configure-your-linode-for-reverse-dns/) on your Linode to point to your new domain name.
+    - In the Cloud Manager [DNS Manager](/docs/products/networking/dns-manager/guides/create-domain/), confirm that there is now an entry for your domain with possible subdomain, MX, and SPF records pointing to your new server.
+    - [Configure rDNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode to point to your new domain name.
 
 1.  Webmin is served on port 10000. To access Webmin, navigate to either the IP address of your server, or to your domain name followed by port 10000. For example, entering `http://example.com:10000` or `http://203.0.113.0:10000` while replacing the domain name or IP address with values for your server will allow you to reach the Webmin login screen.
 

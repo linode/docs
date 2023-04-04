@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-set-up-hadoop-cluster
-author:
-  name: Florent Houbart
-  email: docs@Linode.com
 description: 'This Linode guide will show you how to install and set up a 3-node Hadoop cluster.'
 keywords: ["Hadoop", " YARN", " HDFS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified: 2017-10-16
 modified_by:
   name: Linode
 title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
-contributor:
-  name: Florent Houbart
 external_resources:
 - '[YARN Command Reference](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html)'
 - '[HDFS Shell Documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)'
@@ -22,6 +17,8 @@ external_resources:
 - '[core-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)'
 tags: ["database"]
 aliases: ['/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/']
+authors: ["Florent Houbart"]
+tags: ["saas"]
 ---
 
 
@@ -33,13 +30,13 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
 ## Before You Begin
 
-1.  Create 3 Linode Compute Instances. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  Create 3 Linode Compute Instances. They'll be referred to throughout this guide as **node-master**, **node1**, and **node2**. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  [Add a Private IP Address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) to each Linode so that your Cluster can communicate with an additional layer of security.
+1.  [Add a Private IP Address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) to each Linode so that your Cluster can communicate with an additional layer of security.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to harden each of the three servers. It is recommended that you set the hostname of each Linode to match the naming convention used when creating them. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to harden each of the three servers. It is recommended that you set the hostname of each Linode to match the naming convention used when creating them. Create a normal user for the Hadoop installation, and a user called `hadoop` for the Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
-1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/java/install-java-on-debian/), [CentOS](/docs/development/java/install-java-on-centos/) or [Ubuntu](/docs/development/java/install-java-on-ubuntu-16-04/), or install the latest JDK from Oracle.
+1. Install the JDK using the appropriate guide for your distribution, [Debian](/docs/guides/install-java-on-debian/), [CentOS](/docs/guides/install-java-on-centos/) or [Ubuntu](/docs/guides/install-java-on-ubuntu-16-04/), or install the latest JDK from Oracle.
 
 1.  The steps below use example IPs for each node. Adjust each example according to your configuration:
 
@@ -47,8 +44,8 @@ Hadoop is an open-source Apache project that allows creation of parallel process
     -  **node1**: 192.0.2.2
     -  **node2**: 192.0.2.3
 
-      {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+    {{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
 {{< /note >}}
 
 ## Architecture of a Hadoop Cluster
@@ -527,4 +524,4 @@ YARN jobs are packaged into `jar` files and submitted to YARN for execution with
 Now that you have a YARN cluster up and running, you can:
 
 - Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
-- Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/).
+- Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/guides/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/).

@@ -5,25 +5,20 @@ tab_group_main:
     weight: 30
 ---
 
-## Building Blocks
+## Basics
 
-- [Attaching a VLAN to a Linode](/docs/products/networking/vlans/get-started/): Add a Linode to your VLAN's private network.
+- [Use Cases](/docs/products/networking/vlans/guides/use-cases/): Learn how VLANs can be utilized by exploring some common scenarios.
 
-- [Detaching a Linode from a VLAN](/docs/products/networking/vlans/guides/detach-a-linode-from-your-vlan/): Remove a Linode from your VLAN's private network.
+- [Getting Started with VLANs](/docs/products/networking/vlans/get-started/): An introduction to VLANs, including how to create and administer them within the Cloud Manager.
+
+- [Attach a VLAN to a Compute Instance](/docs/products/networking/vlans/guides/attach-to-compute-instance/): Learn how to create a VLAN and attach it to a new or existing Compute Instance.
+
+- [Remove a Compute Instance from a VLAN](/docs/products/networking/vlans/guides/remove-a-compute-instance/)
+
+## Going Further
 
 - [Manually Configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/): Manually configure an attached VLAN by adjusting a Linode's internal network configuration files.
 
+- [Creating a Private Network Using Linode API and Linode VLAN](/docs/products/networking/vlans/guides/manage-vlans-using-linode-api/): This guide shows you how to create a VLAN and attach Linodes to it using the Linode APIv4.
 
-## Themes
-
-These additional guides explore targeted topics related to Virtual LANs.
-
-### VLAN Basics
-
-- [Getting Started with VLANs](/docs/guides/getting-started-with-vlans/): An introduction to VLANs, including how to create and administer them within the Cloud Manager.
-
-- [VLAN Use Cases](/docs/guides/common-linode-vlan-use-cases/): Learn how VLANs can be utilized by exploring some common scenarios.
-
-### Developer Tools
-
-- [Creating a Private Network Using Linode API and Linode VLAN](/docs/guides/vlan-api/): This guide shows you how to create a VLAN and attach Linodes to it using the Linode APIv4.
+- [Configure Linux as a Router (IP Forwarding)](/docs/guides/linux-router-and-ip-forwarding/): In this tutorial, connect multiple Compute Instances to the same VLAN and learn how to configure one of them as a router. This allows some or all instances in the private network to share the same public IP address.

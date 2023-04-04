@@ -12,7 +12,8 @@
     <div>
       <p class="pt-2 md:pt-6 text-basicgray">
         This page was originally published on
-        <time datetime="{{ .PublishDate }}">
+        <time
+          datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
           {{ .PublishDate.Format site.Params.time_format_default }}.
         </time>
       </p>

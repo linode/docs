@@ -1,9 +1,6 @@
 ---
 slug: securing-your-lamp-stack
-author:
-  name: Hackersploit
 description: 'LAMP is a common web service stack with four open-source components: Linux, Apache, MySQL, and PHP. This guide shows how to secure and audit a LAMP stack.'
-og_description: 'LAMP is a common web service stack with four open-source components: Linux, Apache, MySQL, and PHP. This guide shows how to secure and audit a LAMP stack.'
 keywords: ["secure lamp stack", "how to make our lamp stack secure"]
 tags: ["lamp","security","web server","php","mysql","apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,11 @@ modified: 2021-03-26
 modified_by:
   name: Linode
 published: 2021-03-26
-title: How to Secure Your LAMP Stack
-h1_title: Securing Your LAMP Stack
-enable_h1: true
+title: Securing Your LAMP Stack
+title_meta: How to Secure Your LAMP Stack
 aliases: ['security/basics/securing-your-lamp-stack/']
 image: SecureLAMPstack.png
+authors: ["Hackersploit"]
 ---
 
 ## What is a LAMP Stack?
@@ -32,11 +29,11 @@ In order to secure a LAMP stack, you need to have a Linux server with the follow
 - MySQL
 - PHP
 
-For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/guides/deploy-lamp-stack-with-marketplace-apps/).
+For a quick an easy way to install a LAMP stack on Linode, check out our guide on [How to Deploy a LAMP Stack with Marketplace Apps](/docs/products/tools/marketplace/guides/lamp-stack/).
 
 Otherwise, you can find instructions on how to manually install a LAMP stack in our guide on [How to Install a LAMP Stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/). Installation instructions for several other Linux distributions are also accessible from this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This demonstration has been performed on Ubuntu 18.04. However, all techniques demonstrated are distribution agnostic with the exception of package names and package managers.
 {{< /note >}}
 
@@ -88,9 +85,9 @@ Giving a user sudo access simply involves adding the user to the `sudo` group wi
 
 ## Disabling "root" Logins
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Before completing this section, make sure that you have created a limited user with sudo access. If you disable root logins without having first created a user account, you may lock yourself out of your system.
-{{< /caution >}}
+{{< /note >}}
 
 The first step in setting up local authentication security is to disable root logins. This prevents any authorized or unauthorized users from gaining access to the `root` user account and consequently the server.
 
@@ -245,13 +242,13 @@ SSH key-pairs can be generated on your local machine by using the `ssh-keygen` u
 
 1.  Generate a secure, 4096-bit key-pair to use with your LAMP stack user by running the following command:
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 **This command will overwrite an existing RSA key pair, potentially locking you out of other systems.**
 
 If you've already created a key pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
 
-If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/guides/using-the-linode-shell-lish) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
-{{< /caution >}}
+If you accidentally lock yourself out of the SSH service on your Linode, you can still use the [Lish](/docs/products/compute/compute-instances/guides/lish/) console to login to your server. After you've logged in via Lish, update your `authorized_keys` file to use your new public key. This should re-establish normal SSH access.
+{{< /note >}}
 
         ssh-keygen -b 4096
 
@@ -287,9 +284,9 @@ PasswordAuthentication no
 
     Both your limited user and `root` user accounts are now secured from unauthorized remote access as you are only able to login to your user account with the unique private key from your SSH key-pair.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Now, you can only authenticate to your LAMP stack Linode via SSH using your unique private key. Accordingly, it is important to keep it safe and secure. Make a backup of your private key to ensure you are able to re-establish access to your Linode in the event of data loss.
-    {{< /caution >}}
+    {{< /note >}}
 
 ## Brute-Force Protection with Fail2Ban
 
@@ -299,7 +296,7 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 
 Fail2Ban allows you to automate the process of blocking brute-force attacks by limiting the number of failed authentication attempts a user can make before being blocked. This is extremely useful for servers that have user accounts that utilize passwords for remote authentication as opposed to SSH key-pair authentication.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Fail2Ban only works if your authentication method is set to password based authentication as opposed to key based authentication. If you opt to use key based authentication and have disabled password based authentication, you do not need brute force protection as only users with the private key can authenticate to the server.
 {{< /note >}}
 
@@ -355,7 +352,7 @@ total 64
     | `maxretry` | Number of login attempts before a ban is applied. |
     | `findtime` | Amount of allowed time between failed login attempts. |
     | `bantime` | Number of seconds an IP is banned for. |
-    | `ignoreip` | IP to whitelist. |
+    | `ignoreip` | IP to be allowed. |
 
 
 1.  With the information in the table above, create a jail configuration for OpenSSH server (sshd) by entering the following values in the `jail.local` file:
@@ -428,7 +425,7 @@ Scanning with ClamAV is simple and can be invoked by running the `clamscan` comm
 
 1.  Get started by scanning a particular directory. For example, scan the `/etc` directory for infected files with the following command:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Performing a scan can take several minutes to complete.
     {{< /note >}}
 
@@ -808,7 +805,7 @@ MySAT is a simple SQL script, so it is easy to understand and maintain. MySAT re
 
 Lynis is an extensible security audit tool for computer systems running Linux, FreeBSD, macOS, OpenBSD, Solaris, and other Unix derivatives. It assists system administrators and security professionals with scanning a system and its defenses, with the final goal being system hardening.
 
-To ensure that that you have the latest version of Lynis installed it's important to manually set up the [CISOfy repository](https://packages.cisofy.com/). While a version of Lynis is available in most repositories by default, the CISOfy repositories are always the most up to date, ensuring that any auditing performed is based on the best information available. To add the CISOfy repository to your list of repos, enter the following command:
+To ensure that you have the latest version of Lynis installed it's important to manually set up the [CISOfy repository](https://packages.cisofy.com/). While a version of Lynis is available in most repositories by default, the CISOfy repositories are always the most up to date, ensuring that any auditing performed is based on the best information available. To add the CISOfy repository to your list of repos, enter the following command:
 
     echo "deb https://packages.cisofy.com/community/lynis/deb/ stable main" | sudo tee /etc/apt/sources.list.d/cisofy-lynis.list
 
@@ -816,7 +813,7 @@ Then, import a public GPG key for a secure Lynis installation:
 
     sudo wget -O - https://packages.cisofy.com/keys/cisofy-software-public.key | sudo apt-key add -
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to manually install gnupg2 on some systems in order for GPG to successfully import keys. This can be completed with the following command:
 
     sudo apt-get install gnupg2
