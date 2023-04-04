@@ -24,7 +24,7 @@ MySQL Master-Master replication adds speed and redundancy for active websites. W
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 
-This guide is written for Ubuntu 18.04, and Ubuntu 20.04.
+This guide is written for Ubuntu 18.04 and 20.04.
 
 If you are unsure of which version of MySQL has been installed on your system when following the steps below, enter the following command:
 

@@ -4,11 +4,10 @@ description: "Python may not be a statically-typed programming language, but dat
 keywords: ['python data types', 'python data types check', 'python data types cheat sheet']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-03
+published: 2023-04-04
 modified_by:
   name: Nathaniel Stickman
 title: "The Basics of Python Data Types"
-title_meta: "The Basics of Python Data Types"
 external_resources:
 - '[Python Documentation: Built-in Types](https://docs.python.org/3/library/stdtypes.html)'
 - '[Real Python: Basic Data Types in Python](https://realpython.com/python-data-types/)'
