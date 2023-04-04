@@ -29,6 +29,10 @@ This guide explains:
 - [How the JavaScript map() function compares to using for loops and the forEach function](#a-comparison-between-javascript-map-function-and-forforeach)
 - [When and why to use the JavaScript map() function](#usage-notes-for-the-javascript-map-function)
 
+{{< note >}}
+The JavaScript `map()` method is not the same as the [JavaScript `Map` object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), which stores an ordered sequence of key-value pairs.
+{{< /note >}}
+
 ## What is the JavaScript map() Function?
 
 The JavaScript `map()` function is a built-in method belonging to the Array [object prototype](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes). It is one of JavaScript's iterators and is designed to work in conjunction with a functional programming model. The `map()` function is invoked on an instance of a [JavaScript `Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array).
@@ -105,10 +109,6 @@ It is also possible to pass the `this` keyword to the `map()` method. In practic
 ```file
 const newArray = anArray.map(function(value, index, array) { /* function body */ }, this)
 ```
-
-{{< note >}}
-The JavaScript `map()` method is not the same as the [JavaScript `Map` object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), which stores an ordered sequence of key-value pairs.
-{{< /note >}}
 
 ## How to Use the JavaScript map() Function
 
