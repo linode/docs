@@ -3,10 +3,10 @@ slug: logic-programming-languages
 description: 'What is logic programming and what are its benefits? Get those answers plus find examples of logic programming languages and their features. ✓ Learn more!'
 keywords: ['logic programming languages', 'logical programs', 'logic programming examples', 'logic programming paradigm']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-03
+published: 2023-04-04
 modified_by:
   name: Linode
-title: "A Guide to Understanding Logic Programming | Linode"
+title: "A Guide to Understanding Logic Programming"
 title_meta: "Logic Programming Languages: Use Cases, Examples, and Features"
 external_resources:
 - '[Prolog Standard](https://www.iso.org/standard/21413.html)'
@@ -27,9 +27,9 @@ Logic programs are completely data-driven and do not typically include any conne
 
 **Facts** are simple statements that do not contain a body clause. They express the core information about a domain. Facts can take the form `x is true` or `x is y`, where y is a statement about x. A real-world example might be "Rex is a dog". In symbolic logic, a fact only has a head named `H`, and is expressed as follows:
 
-  ```command
-  H.
-  ```
+```command
+H.
+```
 
 **Rules**, also known as axioms, are logical clauses. Rules describe the circumstances under which a relationship is valid. A rule contains a head and a body and takes the form `x is true if y and z are true`. The `x is true` section forms the head of the clause, while the `if y and z are true` portions are the body. A simple example is "x can bite if x is a dog and x is awake." A rule containing head `H` and body clauses `B1` to `Bn` can be expressed symbolically using the following notation:
 
@@ -130,18 +130,18 @@ There are dozens of different logic programming languages. Many of these have be
 
 - **Prolog:** This is the original logic programming language, developed at a French university in 1972. It was designed for use in artificial intelligence and is still the most popular logic programming language today. Prolog mainly uses the declarative programming paradigm but also incorporates imperative programming. It is designed for symbolic computation and inference manipulation. Its logical rules are expressed in terms of relations and take the form of *Horn clauses*. Queries use these relations to generate results. Prolog operates by negating the original query and trying to find information proving it false.
 
-  In Prolog, the Horn clause is written as:
+    In Prolog, the Horn clause is written as:
 
-  ```command
-  H :- B1,...,Bn.
-  ```
+    ```command
+    H :- B1,...,Bn.
+    ```
 
-  - Antecedents (or left-hand side of the sentence) in the Horn Clause are called *subgoals* or *tail*.
-  - The consequent (or right-hand side of the sentence) in the Horn Clause is called *goal* or *head*.
-  - A Horn Clause with no tail is a *fact*. For example, `rainy(seattle).` does not depend on any condition.
-  - A Horn Clause with a tail is a *rule*. For example, `snowy(X) :- rainy(X),cold(X).`.
+    - Antecedents (or left-hand side of the sentence) in the Horn Clause are called *subgoals* or *tail*.
+    - The consequent (or right-hand side of the sentence) in the Horn Clause is called *goal* or *head*.
+    - A Horn Clause with no tail is a *fact*. For example, `rainy(seattle).` does not depend on any condition.
+    - A Horn Clause with a tail is a *rule*. For example, `snowy(X) :- rainy(X),cold(X).`.
 
-  Developers use Prolog for database search, natural language processing, expert systems, and planning operations. An introduction to Prolog can be found [here](https://www.tutorialspoint.com/prolog/prolog_introduction.htm). To download and install Prolog, see the instructions on the [GNU Prolog website](http://www.gprolog.org/).
+    Developers use Prolog for database search, natural language processing, expert systems, and planning operations. An introduction to Prolog can be found [here](https://www.tutorialspoint.com/prolog/prolog_introduction.htm). To download and install Prolog, see the instructions on the [GNU Prolog website](http://www.gprolog.org/).
 
 - **Datalog:** Datalog is an offshoot of Prolog that uses a strict declarative model. It is often used for machine learning, data integration, and information extraction. Datalog programs are usually interpreted by another programming language. Statements can be entered without regard to order and finite-set queries are guaranteed to terminate. It imposes more rules than Prolog does for reasons of efficiency. Several open-source products are based on Datalog or include built-in Datalog interpreters.
 

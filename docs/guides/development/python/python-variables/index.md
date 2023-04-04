@@ -4,11 +4,10 @@ description: "Variables form the backbone of programming. So how do they work an
 keywords: ['python variables', 'python variables naming convention', 'python variables case sensitive']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-04-03
+published: 2023-04-04
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Python Variables"
-title_meta: "Getting Started with Python Variables"
 external_resources:
 - '[W3 Schools: Python Variables](https://www.w3schools.com/python/python_variables.asp)'
 - '[Real Python: Variables in Python](https://realpython.com/python-variables/)'

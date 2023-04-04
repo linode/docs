@@ -7,8 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-03
 modified_by:
   name: Linode
-title: "How to Write and Run a Python Script | Linode"
-title_meta: "Writing and Running a Python Script"
+title: "How to Write and Run a Python Script"
 external_resources:
 - '[Python.org web site](https://www.python.org/)'
 - '[Python documentation](https://docs.python.org/3/contents.html)'
