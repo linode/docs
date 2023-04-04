@@ -3,6 +3,7 @@ title: Guides
 description: "Learn how to sign up for Linode Managed, add new services, disable service monitoring, and more."
 tab_group_main:
     weight: 30
+published: 2023-04-04
 ---
 
 ## Basics
@@ -18,3 +19,5 @@ tab_group_main:
 - [Manage Contacts](/docs/products/services/managed/guides/contacts/): Contact groups, which contain one or more contacts, can be attached to a service monitor and are notified if a check fails.
 
 - [Configure Firewall Rules to Allow Access from Linode Infrastructure](/docs/products/services/managed/guides/allow-access-from-linode-infrastructure/): Learn which hostnames and IP addresses are used by Managed Services so that you can allow them within your firewall rules.
+
+- [Cancel Managed Services](/docs/products/services/managed/guides/cancel/): Learn how to cancel Linode's Managed Services offering.
