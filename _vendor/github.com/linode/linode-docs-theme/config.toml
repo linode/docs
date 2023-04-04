@@ -36,8 +36,9 @@ noun = "All"
 hits_per_page = 20
 filtering_facets = [
     { name = "docType", title = "Doc Type" },
-     { name = "category", title = "Category" },
-    { name = "tags", title = "Tags", isTags = true }
+    { name = "category", title = "Category" },
+    { name = "tags", title = "Tags", isTags = true },
+#    { name = "authors", title = "Authors", isTags = true }
 ]
 
 # Note there is a search_config also in the docs project, which would win over this.
