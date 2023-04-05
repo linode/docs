@@ -35,12 +35,12 @@ The following sections help you install the products you need before you can clo
 - Passenger version 6.0.10 was used for this guide
 - Git version 2.34.1
 - PostgreSQL [version 12 minimum](https://github.com/instructure/canvas-lms/wiki/Quick-Start#debianubuntu), version 14.4 used for guide
-- Node JS version v16.16.0 was used for this guide, the old 10.19 version won’t work
+- Node.js version v16.16.0 was used for this guide, the old 10.19 version won’t work
 - (Optional) Redis version 2.6 minimum, version 6.0.16 used for guide
 
-You may have one or more of these products installed. To verify installation, type the name of the product followed by `--version`, such as `git --version`, and press **Enter**. Some products, such as Node JS, use `-v` in place of `--version`. If the version you have installed is equal to or higher than the version used for the guide, then you don’t need to perform another installation. If you have an older product version, update it.
+You may have one or more of these products installed. To verify installation, type the name of the product followed by `--version`, such as `git --version`, and press **Enter**. Some products, such as Node.js, use `-v` in place of `--version`. If the version you have installed is equal to or higher than the version used for the guide, then you don’t need to perform another installation. If you have an older product version, update it.
 
-You also need to install an email application. Canvas uses this email service to send notifications to users. There are numerous email server options and the one you choose depends on how you want to configure email for your server. One option is to use a third-party mail service such as [Mailgun](https://www.mailgun.com/). Another option is to install and configure a local email server using a product combination like [Postfix, Dovecot, and MySQL](https://www.linode.com/docs/guides/email-with-postfix-dovecot-and-mysql/). You can also use an existing email server that you already have in place. You need to know email essentials like the email domain, the username and password for an email account, and the address of the Simple Mail Transfer Protocol (SMTP) server for this guide.
+You also need to install an email application. Canvas uses this email service to send notifications to users. There are numerous email server options and the one you choose depends on how you want to configure email for your server. One option is to use a third-party mail service such as [Mailgun](https://www.mailgun.com/). Another option is to install and configure a local email server using a product combination like [Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/). You can also use an existing email server that you already have in place. You need to know email essentials like the email domain, the username and password for an email account, and the address of the Simple Mail Transfer Protocol (SMTP) server for this guide.
 
 ### Update and Upgrade Your Ubuntu 22.04 Instance
 
@@ -468,7 +468,7 @@ Redis is a key-value database store that Canvas uses to cache data and make your
 
 ## Configure PostgreSQL
 
-1. Switch to the postgres user and launch the PostgreSQL command-line interface using the following commands:
+1. Switch to the `postgres` user and launch the PostgreSQL command-line interface using the following commands:
 
     ```command
     sudo su postgres
@@ -627,7 +627,7 @@ The `pg_hba.conf` file is a configuration file for the PostgreSQL database serve
 
 ## Install Yarn
 
-You can rely on *Corepack* to install Yarn on your system. CorePack is a package manager that provides a simple and fast way to install and manage software packages on Linux. It comes automatically with all versions of NodeJS starting with 16.10. Follow the steps below to install Yarn on your system.
+You can rely on *Corepack* to install Yarn on your system. CorePack is a package manager that provides a simple and fast way to install and manage software packages on Linux. It comes automatically with all versions of Node.js starting with 16.10. Follow the steps below to install Yarn on your system.
 
 1. Install Yarn 1.19.1 using the following command:
 

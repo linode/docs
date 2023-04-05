@@ -349,6 +349,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
