@@ -1,7 +1,6 @@
 ---
 slug: install-mongodb-on-ubuntu-20-04
 description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
-og_description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
 keywords: ['install MongoDB','use MongoDB','configure MongoDB','what is MongoDB']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-12
@@ -18,6 +17,7 @@ external_resources:
 - '[MongoDB Troubleshooting Guide](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/)'
 relations:
     platform:
+        key: how-to-install-mongodb
         keywords:
            - distribution: Ubuntu 20.04
 authors: ["Jeff Novotny"]
