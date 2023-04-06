@@ -1,7 +1,6 @@
 ---
 description: "This guide provides you with instructions for deploying Team Fortress 2, a team-based multiplayer first-person shooter game, on a Linode using the Marketplace Apps."
 keywords: ['team fortress','marketplace', 'tf2', 'server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-04
 modified: 2022-03-08
 modified_by:

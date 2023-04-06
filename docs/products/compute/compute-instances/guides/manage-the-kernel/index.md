@@ -2,7 +2,6 @@
 description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
 keywords: ["kernel", "grub"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2021-08-13
 modified: 2023-01-18
 modified_by:

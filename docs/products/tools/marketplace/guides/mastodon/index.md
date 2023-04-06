@@ -2,7 +2,6 @@
 description: "Learn how to deploy Mastodon, a decentralized social network and micro-blogging platform, on the Linode Marketplace."
 keywords: ['social', 'messaging', 'mastodon']
 tags: ["linode platform","mastodon","marketplace","cloud-manager",]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-12
 modified: 2023-02-09
 modified_by:

@@ -2,7 +2,6 @@
 description: "Deploy Akaunting on a Linode Compute Instance. This provides you a free, open source accounting software designed for small businesses and freelancers."
 keywords: ['akaunting','accounting','productivity']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-25
 modified: 2022-03-08
 modified_by:

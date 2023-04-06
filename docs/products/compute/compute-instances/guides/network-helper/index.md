@@ -2,7 +2,6 @@
 description: 'This guide introduces you to Network Helper, a host-side service which automatically sets a static IPv4 address and gateway when your Linode is being provisioned.'
 keywords: ["network helper", "auto-configure","networking"]
 tags: ["linode platform","networking","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-07-12
 published: 2014-12-08
 modified_by:

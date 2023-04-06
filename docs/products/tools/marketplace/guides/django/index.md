@@ -2,7 +2,6 @@
 description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
 keywords: ['django','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","cms","django","marketplace","digital agencies"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
 image: Django_oneclickapps.png

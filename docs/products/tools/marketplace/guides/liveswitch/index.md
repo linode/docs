@@ -2,7 +2,6 @@
 description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service, through the Linode Marketplace."
 keywords: ['liveswitch','streaming','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-31
 title: "Deploy LiveSwitch through the Linode Marketplace"
 external_resources:

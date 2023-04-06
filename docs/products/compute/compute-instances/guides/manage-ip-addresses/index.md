@@ -3,7 +3,6 @@ description: "Instructions on viewing, adding, deleting, transferring IP address
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-01-18
 modified_by:
   name: Linode

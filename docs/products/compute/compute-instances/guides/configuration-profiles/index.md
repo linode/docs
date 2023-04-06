@@ -2,7 +2,6 @@
 description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-30
 modified: 2023-02-09
 modified_by:
