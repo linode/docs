@@ -50,7 +50,7 @@ A Linode's Activity Feed is similar to the Account's [Events](#events) page. How
 
 ## Managing Email Notifications for Events
 
-Each time an event occurs, you can automatically receive an email notifying you of the event. If desired, you can enable or disable these email event notifications using the Cloud Manager.
+Each time an event occurs, you can automatically receive an email notifying you of the event. If desired, you can enable or disable these email event notifications using the Cloud Manager. Instead, if you want to configure the email notifications you receive for resource usage (like CPU usage) on your Compute Instances, see the [Configure Email Alerts for Resource Usage on Compute Instances](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/).
 
 {{< note >}}
 Only unrestricted users can receive threshold notification emails.
