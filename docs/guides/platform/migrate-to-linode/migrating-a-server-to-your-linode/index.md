@@ -1,6 +1,7 @@
 ---
 slug: migrating-a-server-to-your-linode
 deprecated: true
+deprecated_link: '/docs/guides/best-practices-when-migrating-to-linode/'
 description: 'This guide provides guidelines and tips for migrating an existing Linux server from a local development VM or another hosting provider to a new Linode.'
 keywords: ["migrate to linode", "linode migration", "migrate linux"]
 tags: ["linode platform","cloud manager"]

@@ -53,10 +53,9 @@ From the above commands:
 - `user` - the remote username
 - `host` - Remote hostname or IP address
 
-{{< caution >}}
+{{< note type="warning" >}}
 A trailing `/` appended to the source creates a directory underneath the target destination directory.
-{{< /caution >}}
-
+{{< /note >}}
 
 Some of the commonly used `rysnc` options are discussed below.
 
@@ -115,7 +114,6 @@ ls -l /var/tmp/
 total 0
 drwxr-xr-x  4 user4  staff  128 Dec  9  2021 tmp
 ```
-
 
 ## Null Output or DryRun, and Verbose
 
