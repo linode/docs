@@ -1,7 +1,7 @@
 ---
 slug: implement-jenkins-ci-cd
 title: "How to Implement Jenkins CI/CD on Linode to Any Hyperscaler"
-description: "Two to three sentences describing your guide."
+description: "Jenkins allows you to effectively automate your building, testing, deployment, and more. Its many plugins and its flexible pipeline capabilities make Jenkins exceptional for CI/CD in any context and with any cloud providers. Learn how to implement a Jenkins CI/CD architecture on Linode, capable of builds and deployments to any hyperscaler."
 keywords: ['jenkins ci/cd pipeline','jenkins kubernetes deployments','jenkins tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
@@ -12,7 +12,7 @@ external_resources:
   - '[Jenkins Blog: Create a New Jenkins Node, and Run Your Jenkins Agent as a Service](https://www.jenkins.io/blog/2022/12/27/run-jenkins-agent-as-a-service/)'
 ---
 
-With Jenkins, you can implement a robust Continuous Integration and Continuous Delivery (CI/CD) setup for automating application builds, tests, and deployments. Linode's Jenkins CI/CD reference architecture ensures a scalable setup capable of deploying applications to Linode or an array of other hosting providers.
+With Jenkins, you can implement a robust continuous integration and continuous delivery (CI/CD) setup for automating application builds, tests, and deployments. Linode's Jenkins CI/CD reference architecture ensures a scalable setup capable of deploying applications to Linode or any of many other hosting providers.
 
 Get started by taking a look at the overview and diagrams for the architecture in our [Jenkins CI/CD on Linode to Any Hyperscaler](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/).
 
@@ -32,7 +32,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 [Jenkins](https://www.jenkins.io/) is an open-source tool for automating deployments. Jenkins utilizes build pipelines to allow you to define build, test, and deployment processes. Throughout, you have access to shell commands, a dynamic user interface, and an array of plugins.
 
-All this makes Jenkins an exceptional tool for automating CI/CD workflows. Jenkins handles Continuous Integration through features like Git repository monitoring, where builds can be triggered by Git commits. Jenkins' Continuous Delivery is supported by its ability to pull repositories and build, test and deploy from them.
+All this makes Jenkins an exceptional tool for automating CI/CD workflows. Jenkins handles continuous integration through features like Git repository monitoring, where pipelines can be triggered by Git commits. Jenkins' continuous delivery is supported by its ability to pull repositories and build, test and deploy from them.
 
 Further plugins mean that you can adapt Jenkins to your needs — whether using a particular test suite, storing artifacts, or deploying to cloud providers.
 
@@ -50,9 +50,7 @@ Follow along with this section of the tutorial to get both the Jenkins server an
 
 ### Creating the Jenkins Server
 
-You need to start with a central Jenkins server. This server gives you access to the Jenkins dashboard, from which you can manage Jenkins build agents, pipelines, and plugins.
-
-These steps show you how to install Jenkins and its dependencies on your machine.
+You need to start by installing Jenkins on a central server. This central Jenkins server then gives you access to the Jenkins dashboard, where you can manage everything from build agents to pipelines to plugins.
 
 1. Install Java 11. You can do so through the OpenJDK package. For this tutorial, you just need the Java runtime (JRE), not the development kit.
 
@@ -102,15 +100,13 @@ These steps show you how to install Jenkins and its dependencies on your machine
 
 At this point, you have a Jenkins server up and running and ready to start using. In fact, the Jenkins server includes a built-in build agent, which you could configure to use for building, testing, and deploying.
 
-However, this tutorial aims to provide a more scalable solution through the deployment of several dedicated build agent instances. The next section shows you how to get started with these using a Terraform deployment script.
-
 ### Creating Jenkins Build Agents
 
-While your Jenkins server is capable of running build pipelines, your setup becomes more scalable when you leverage build agents. With this architecture, your center server manages your CI/CD configurations while dedicated build agents run the pipelines.
+While your Jenkins server is capable of running build pipelines, your setup becomes more scalable when you leverage separate build agents. With the architecture covered in this tutorial, your central Jenkins server is dedicated to managing your CI/CD configurations. Pipeline tasks are then handled by dedicated build agents.
 
 Dedicated agents give you a more scalable setup as well as more adaptability for a wider range of build and deployment needs.
 
-Follow along here to deploy a set of three build agents for the Jenkins server set up above. These steps use [Terraform](https://www.terraform.io/) to deploy the servers, making it relatively easy and convenient to scale your agents.
+Follow along here to deploy a set of three build agents for the Jenkins server setup above. These steps use [Terraform](https://www.terraform.io/) to deploy the agent instances, making it relatively easy and convenient to horizontally scale your agents.
 
 #### Configure Agents within Jenkins
 
@@ -118,11 +114,11 @@ To start, you need to configure your Jenkins server to enable the agents and fac
 
 1. Open port `8081` on the system running your Jenkins server. Refer to the link above for securing compute instances to see how to open ports on your system.
 
-1. Within Jenkins, enable TCP port usage for agents. To do so, open the Jenkins web interface, and navigate to **Manage Jenkins** > **Configure Global Security**.
-
-    Under **Agents**, locate the **TCP port for inbound agents** setting, and set it to *Fixed*. Give `8081` as the port.
+1. Within Jenkins, enable TCP port usage for agents. To do so, open the Jenkins web interface, and navigate to **Manage Jenkins** > **Configure Global Security**. Under **Agents**, locate the **TCP port for inbound agents** setting, and set it to *Fixed*. Give `8081` as the port.
 
 1. Create each of the agents from within the Jenkins dashboard. For each, navigate to **Manage Jenkins** > **Manage Nodes and Clouds**. Select the **New Node** button, and complete the agent configurations with the settings here.
+
+    This tutorial starts you off with three agents. So to follow along be sure to create three agents using this configuration.
 
     - **Node name**: `docker-node-agent-1`, `docker-node-agent-2`, and then `docker-node-agent-3`
 
@@ -140,7 +136,7 @@ To start, you need to configure your Jenkins server to enable the agents and fac
 
     - **Availability**: *Keep this agent online as much as possible*
 
-    The `docker-node` naming can later help to distinguish these agents as ones with Docker and Node.js installed. The label gives a convenient way to apply these nodes for specific pipelines.
+    The `docker-node` naming can later help to distinguish these agents as ones with Docker and Node.js installed. The label field adds a tag to each agent, providing a convenient way to designate specific sets of agent for executing pipelines.
 
     [![Example Jenkins configuration for an agent](jenkins-config-agent_small.png)](jenkins-config-agent.png)
 
@@ -148,13 +144,17 @@ To start, you need to configure your Jenkins server to enable the agents and fac
 
 #### Provision Agent Instances
 
-Now you have what you need to support three build agents. This tutorial deploys a Linode Compute instance for each of these build agents, using Terraform to automate the process. This also makes it relatively easy to scale the number of agents as needed later.
+Now you have what you need to support three build agents. This tutorial deploys a Linode Compute instance for each of these build agents, using Terraform to automate the process. This also makes it relatively easy to horizontally scale the number of agents as needed later.
 
 {{< note >}}
 The Terraform script here requires credentials for your Linode Object Storage instance. This is so that the script can automatically prepare the agents with configurations for leveraging object storage later.
 
 For this reason, you should complete the section further below on [Provisioning Linode Object Storage](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/guides/implement-jenkins-ci-cd/#provisioning-linode-object-storage) before proceeding.
 {{< /note >}}
+
+{{< caution >}}
+The configurations and commands used in this guide add multiple Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
+{{< /caution >}}
 
 1. Install Terraform. Follow the relevant section of our [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/#install-terraform) guide to do so.
 
@@ -175,11 +175,11 @@ For this reason, you should complete the section further below on [Provisioning 
 
     - One or more SSH public keys for SSH access into the instances
 
-    - A number of instances to deploy; this tutorial assumes three instances
+    - A number of instances to deploy; this tutorial uses three instances
 
-    - The URL for your Jenkins server, including the port
+    - The URL for your Jenkins server, including the protocol and port, as in: `https://jenkins.example.com:8080`
 
-    - A list of secrets corresponding to each of your Jenkins agents; these are given in the instructions for each agent within the Jenkins web interface
+    - A list of secrets corresponding to each of your Jenkins agents; these are given after you create each agent within the Jenkins web interface
 
     - The access and secret keys for your Linode Object Storage instance
 
@@ -187,18 +187,18 @@ For this reason, you should complete the section further below on [Provisioning 
 
     The information for your Linode Object Storage instance you can get by following the section on provisioning object storage further on.
 
-1. From within the directory with the `main.tf` file, run the following command to initialize the Terraform project and provision the instances.
+1. From within the directory with the `main.tf` file, run the following command to initialize the Terraform project and start deploying the instances.
 
     ```command
     terraform init
     terraform apply
     ```
 
-This runs the `main.tf` script, which provisions the instances. The script additionally delivers and executes a shell script on each instance, which you can see as `scripts/initial_setup.sh`. That script does most of the set-up work, specifically the following:
+This runs the `main.tf` script, which provisions the agents. The script additionally delivers and executes a shell script on each instance, which you can see as `scripts/initial_setup.sh`. That script does most of the set-up work, specifically the following:
 
 - Updates and secures the system, including enabling the firewall
 
-- Installs Node.js, Docker, rclone, and kubectl
+- Installs Docker, Node.js, rclone, and kubectl
 
 - Installs Java 11, and sets up the Jenkins user
 
@@ -208,25 +208,25 @@ This runs the `main.tf` script, which provisions the instances. The script addit
 
 ### Provisioning a Hyperscaler
 
-The architecture covered here aims to use Jenkins to build an application and deploy it to a hyperscaler. To follow through with the examples provided here, you should have such a target cloud you want your application deployed to.
+The architecture covered here aims to use Jenkins to build an application and deploy it to a hyperscaler. To follow through with the examples provided here, you should thus have a target cloud you want your application deployed to.
 
 Because this tutorial builds its example application into a Docker image, it makes sense to deploy the application to a Kubernetes cluster. This is what the example pipeline and Jenkins configuration in the rest of this tutorial do.
 
 You can most readily follow along with the tutorial by deploying a Linode Kubernetes Engine (LKE) cluster. Learn how in our [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
 
-However, the "Deploy" step in the pipeline elaborated below uses kubectl. This means that the setup can readily be adapted to deployments for almost any cloud Kubernetes provider.
+However, the "Deploy" step in the pipeline elaborated below uses kubectl. This means that the setup can readily be adapted to deployments for almost any cloud Kubernetes provide.
 
-And, of course, you can adapt the commands as needed for whatever kind of deployment you need.
+And in fact you can adapt the commands in the "Deploy" portion of the pipeline for deployments to whatever cloud platform you need. Whatever you would normally use to script the deployment you can implement here. Or you could leverage one of the plugins you can find within the Jenkins dashboard, which you can see examples of further on.
 
 #### Preparing a Docker Registry
 
-Because this tutorial uses Kubernetes for its end deployment, you need to have a Docker registry. This allows you to push built Docker images from the Jenkins agents and pull them onto the Kubernetes cluster.
+Because this tutorial uses Kubernetes for its deployment, you need to have a Docker registry. This allows you to push built Docker images from the Jenkins agents and pull them onto the Kubernetes cluster.
 
 The easiest solution here is [Docker Hub](https://hub.docker.com/), where you can add images after registering an account. Learn more, with a full-functioning example, in our guide [Create and Deploy a Docker Container Image to a Kubernetes Cluster](/docs/guides/deploy-container-image-to-kubernetes/).
 
-You can also self-host registry solutions. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. [Deploy Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/).
+You can also self-host a registry solution. One such solution is [Harbor](https://goharbor.io/), and you can deploy your own Harbor server readily through the Linode Marketplace. See our guide [Deploy Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/) to see how.
 
-Whatever solution you choose, you need later to provide its path to the Jenkins pipeline.
+Whatever solution you choose, you need later to provide the registry's path to the Jenkins pipeline.
 
 - For Docker Hub, the path is your Docker Hub username; for instance, `example-docker-hub-user`
 
@@ -234,7 +234,7 @@ Whatever solution you choose, you need later to provide its path to the Jenkins 
 
 ### Provisioning Linode Object Storage
 
-Part of the architecture covered in this tutorial has logs and build artifacts stored on Linode Object Storage. Setting this up is optional — you just need to remove the related portions from the next segment of the tutorial. But object storage does provide an efficient and accessible storage solution.
+Part of the architecture covered in this tutorial has logs and build artifacts stored on Linode Object Storage. Setting this up is optional — you can skip the related portions of the tutorial and remove or adjust the "Package" section of the pipeline. But object storage does provide an efficient and accessible way to backup artifacts from you CI/CD pipelines.
 
 To start, you need to have a Linode Object Storage bucket prepared to store your logs and artifacts. Follow our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide to do so.
 
@@ -274,7 +274,7 @@ The following is a basic example setup that you can expand on.
 
 All of the above sets you up with Jenkins and resources for it to deploy and store artifacts to. But how you go about setting up a Jenkins pipeline and deploying a project with it varies widely from project to project.
 
-This section aims to give you a thorough example. Though your setup may not be the same, you should be able to learn from and build off of this to fit your needs.
+This section aims to give you a thorough example, with a basic functioning application using Node.js and Docker. Though your setup may not be the same, the example covers a wide ground to help you more readily learn and build from it.
 
 ### Setting Up a Project
 
@@ -306,17 +306,19 @@ docker run -p 3000:3000 example-app-image
 
 #### Starting a Repository
 
-To make this work with the Jenkins setup, you need to check the example application into a Git repository. One of Jenkins more powerful features is its ability to watch for changes in a repository and automatically run the relevant pipeline.
-
-Follow along here to set up the example project as a Git repository.
+Jenkins shines when connected to a project on a version control repository. One of Jenkins more powerful features is its ability to watch for changes in a repository and automatically run the relevant pipeline. So for this tutorial you need to check the example application into a Git repository, and you can follow along here to do that.
 
 1. Create a Git repository on a remote source. This can be whatever Git provider you want, but here are two useful examples.
 
-    - GitHub. Perhaps the most popular solution. You can learn more about getting started with GitHub in our guide [Getting Started with GitHub](/docs/guides/a-beginners-guide-to-github/).
+    - GitHub. Perhaps the most popular solution. You can learn more in our guide [Getting Started with GitHub](/docs/guides/a-beginners-guide-to-github/).
 
     - GitLab. A similar solution to GitHub, but with a potential for self-hosted repositories. Learn more about self-hosting a GitLab instance through our guides [Deploy Gitlab through the Linode Marketplace](/docs/products/tools/marketplace/guides/gitlab/) and [Install GitLab with Docker](/docs/guides/install-gitlab-with-docker/).
 
-    Whichever option you choose, you should additionally set up a token with the ability to read and write to the repository.
+    Whichever option you choose, you should additionally set up an access token with the ability to read and write to the repository.
+
+    - For GitHub, see this [GitHub documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
+    - For GitLab, see this [GitLab documentation](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html)
 
 1. Initialize a Git project within the application directory. You first need to have Git installed, which you can generally do from your system's package manager.
 
@@ -341,25 +343,29 @@ Jenkins provides two main ways of configuring pipelines.
 
 - Within a `Jenkinsfile` on a remote repository
 
-For convenience, this tutorial opts to use a `Jenkinsfile` included within the project repository. This file comes with a full pipeline script fit for the needs of this tutorial. You can review the script yourself, but, in summary, it provides the four stages outlined here.
+For convenience, this tutorial opts to use a `Jenkinsfile` included within the project repository. This file comes with a full pipeline script fit for the needs of this tutorial. You can review the script yourself, but, in summary, it provides the five stages outlined here.
 
 - *Build*, where the application's Docker images is built and the Node.js dependencies installed for code analysis
 
 - *Test*, where the Docker image is run and a shell script implements two simple test cases
 
-- *Code Analysis*, where the [ESLint](https://eslint.org/) tool runs a standard static code analysis
+- *Code Analysis*, where the [ESLint](https://eslint.org/) tool runs a standard JavaScript static code analysis
 
-- *Package*, where the logs and artifacts are prepared and stored on Linode Object Storage
+- *Package*, where artifacts are prepared and stored on Linode Object Storage
 
-- *Deploy*, where a kubectl command deploys the built Docker image to the LKE cluster
+- *Deploy*, where a kubectl command deploys the built Docker image to the Kubernetes cluster
 
-Before going on, you need to specify two variables in the `Jenkinsfile`, both within the `environment` block near the top of the pipeline file.
+The example pipeline uses ESLint for a simple JavaScript code analysis, but there are more options to choose from depending on your codebase and needs. You can learn more about code analysis tools in our guide [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/).
+
+Before going on, you need to specify a few variables in the `Jenkinsfile`. These variables are assigned within the `environment` block near the top of the pipeline file.
 
 - `DOCKER_REGISTRY` should correspond to the URL of your Docker registry, as discussed further above
 
 - `LINODE_S3_BUCKET` should correspond to the name of the object storage bucket you created for your Jenkins artifacts; this tutorial uses `jenkins-artifact-bucket` as an example
 
-The example pipeline uses ESLint for a simple JavaScript code analysis, but there are more options to choose from depending on your codebase and needs. You can learn more about code analysis tools in our guide [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/).
+- `SLACK_CHANNEL` should correspond to an existing Slack channel to which you want Jenkins to send pipeline progress messages
+
+The Slack implementation is optional, and if you are not planning to implement Slack messaging you should go through and remove the `slackSend` lines within the `Jenkinsfile`. You may instead want to replace these with another messaging task or simple `echo` commands to post output to the Jenkins log.
 
 ### Configuring the Jenkins Server
 
@@ -381,11 +387,11 @@ The project gets added to Jenkins as a pipeline item, which you can create from 
 
         - For GitLab projects, use the **Build when a change is pushed to GitLab** option. Complete the resulting fields to your liking, but you should at least select **Push events**.
 
-            Make note of the **GitLab webhook URL** here, as you need to input it in your GitLab setup.
+            Make note of the **GitLab webhook URL** here, as you need to input it in your GitLab setup, as discussed below.
 
     - Under **Pipeline** > **Definition**, select *Pipeline script from SCM*. Complete the resulting fields as shown here.
 
-        - Select for **SCM** the *Git* option.
+        - Select the *Git* option for **SCM**.
 
         - For **Repository URL**, enter the full URL for your project's remote repository, as above: `https://GIT_USER:GIT_TOKEN@REMOTE_REPO_URL`.
 
@@ -397,13 +403,13 @@ The project gets added to Jenkins as a pipeline item, which you can create from 
 
         - Enter `Jenkinsfile` for the **Script path**.
 
-1. If you are using GitLab, you need to provide your GitLab project with the webhook URL from Jenkins, as noted above. Navigate to your GitLab project page, select **Settings** > **Integrations**, and search for *Jenkins*. In the form for this intergration:
+1. If you are using GitLab, you need to provide your GitLab project with the webhook URL from Jenkins, as noted above. Navigate to your GitLab project page, select **Settings** > **Integrations**, and search for *Jenkins*. In the form for this integration:
 
     - Select the **Push** trigger
 
-    - Enter the webhook URL from Jenkins in the **Jenkins server URL** field.
+    - Enter the webhook URL from Jenkins in the **Jenkins server URL** field
 
-    - Enter your Jenkins project name in the **Project name** field
+    - Enter your Jenkins project name, as shown in the URL, in the **Project name** field
 
     - Provide the username and password for a Jenkins user with access to the project
 
@@ -415,6 +421,8 @@ Jenkins has a host of available plugins that can support a wide range of pipelin
 
 The example pipeline used in this tutorial leverages three such plugins, which you can add using the steps here. And you can use a similar set of steps for any other plugins you want to add.
 
+These steps also include credential configuration for the plugins and commands from the pipeline to interface with the necessary resources.
+
 - Install the [Kubernetes CLI](https://plugins.jenkins.io/kubernetes-cli/) plugin by searching for it on the **Available Plugins** page. Then complete the following steps to configure the plugin.
 
     1. Within the Jenkins interface, navigate to **Manage Jenkins** > **Manage Credentials** > **System** > **Global credentials**. Select the **Add Credentials** button.
@@ -423,13 +431,11 @@ The example pipeline used in this tutorial leverages three such plugins, which y
 
         - For **Kind**, select *Secret file*
 
-        - For **File**, use the file browser to select a downloaded copy of your kubconfig file
+        - For **File**, use the file browser to select a downloaded copy of your kubeconfig file
 
         - For **ID**, give a name for the credentials; this tutorial uses `jenkins-example-lke`
 
-- Add credentials for the Docker registry. Within the Jenkins interface, navigate to **Manage Jenkins** > **Manage Credentials** > **System** > **Global credentials**. Select the **Add Credentials** button.
-
-    Complete the resulting form as described here.
+- Add credentials for the Docker registry. Within the Jenkins interface, navigate to **Manage Jenkins** > **Manage Credentials** > **System** > **Global credentials**. Select the **Add Credentials** button. Complete the resulting form as described here.
 
     - For **Kind**, select *Username with password*
 
@@ -439,15 +445,13 @@ The example pipeline used in this tutorial leverages three such plugins, which y
 
 - Install the [Warnings Next Generation](https://plugins.jenkins.io/warnings-ng/) plugin by searching for it on the **Available Plugins** page.
 
-    This plugin does not require any additional set up for this tutorial. The pipeline leverages this plugin with its `recordIssues` command, which tells the plugin to look for the `eslint.xml` file.
-
-    *Warnings Next Generation* parses the CheckStyle file output from ESLint and presents the results within a **CheckStyle Warnings** option on the project page.
+    This plugin does not require any additional set up for this tutorial. The pipeline leverages this plugin with its `recordIssues` command, which tells the plugin to look for the `eslint.xml` file. *Warnings Next Generation* parses the CheckStyle file output from ESLint and presents the results within a **CheckStyle Warnings** option on the project page.
 
 - Install the [Slack Notifications](https://plugins.jenkins.io/slack/) plugin by searching for it on the **Available Plugins** page. Then complete the following steps to configure the plugin.
 
     1. Navigate to the [Slack API](https://api.slack.com/) page, and select the **Create App** button. Sign into Slack, select your workspace, and choose to create an application from scratch. Finally, name your application.
 
-    1. This takes you to a page for the Slack application. Select the **OAuth & Permissions**, and under the **Bot Token Scopes** section of the next page select **Add an OAuth Scope**. Choose the *chat:write* option and then the *chat:write.public* option. These allow your Slack application to send messages.
+    1. This takes you to a page for the Slack application. Select **OAuth & Permissions** from the left menu, and under the **Bot Token Scopes** section of the next page select **Add an OAuth Scope**. Choose the *chat:write* option and then the *chat:write.public* option. These allow your Slack application to send messages.
 
     1. From the left menu, select **Install App**, and then use the **Install to Workspace** button to deploy the Slack application.
 
@@ -471,9 +475,9 @@ The example pipeline used in this tutorial leverages three such plugins, which y
 
 Everything is now in place to run the Jenkins CI/CD pipeline on the example project. You can do this manually within Jenkins by navigating to the project's page and selecting the **Build Now** option.
 
-However, you can also trigger the build by making a Git push to the `main` branch on the example project's repository. This is the most illustrative example, as it is likely to be what triggers you build most of the time.
+However, you can also trigger the build by making a Git push to the `main` branch on the example project's repository. This is the most illustrative example, as it is likely to be what triggers your builds most of the time.
 
-To trigger the build from Git, you can use commands like the following. This add changes to a commit and push the commit to the `main` branch.
+To trigger the build from Git, you can use commands like the following. This adds changes within the project to a commit and pushes the commit to the `main` branch.
 
 ```command
 git add .
@@ -489,18 +493,18 @@ Once deployment has finished, you can access the **CheckStyle Warnings** option 
 
 ![Example output from the code analysis portion of the Jenkins pipeline](jenkins-pipeline-checkstyle.png)
 
-Navigating to your Slack workspace, you should see posts from the Jenkins bot in the appropriate channel. The example pipeline has Jenkins send messages to the `#jenkins-cicd-testing` channel, giving the status as each stage in the pipeline completes.
+Navigating to your Slack workspace, you should see messages from the Jenkins bot in the appropriate channel. The example pipeline has Jenkins send messages to the `#jenkins-cicd-testing` channel, giving the status as each stage in the pipeline completes.
 
 ![Notifications on the Jenkins pipeline's progress posted to a Slack channel](slack-jenkins-bot.png)
 
-Finally, to see the deployed example application in action, you can forward the port on the Kubernetes cluster. Use the following command from your Jenkins server to make the application's service available on port `3000`.
+Finally, to see the deployed example application in action, you can forward the port on the Kubernetes cluster. With kubectl installed, use the following command from your Jenkins server to make the application's service available on port `3000`.
 
 ```command
 kubectl port-forward service/example-app-service 3000:3000 --address='0.0.0.0'
 ```
 
 {{< note >}}
-If you enabled a firewall on the Jenkins server, you need to allow inbound TCP traffic on port `3000` before you can test the deployed example application.
+You may first need to allow inbound TCP traffic on port `3000` before you can test the deployed example application in this manner.
 {{< /note >}}
 
 Then, navigate to that port on the server's public IP address to see the output. For instance, if your server's IP address is `192.0.2.0`, navigating to `http://192.0.2.0:3000` should get you this.
@@ -519,6 +523,6 @@ And navigating to `http://192.0.2.0:3000/Jenkins%20User` should get you this.
 
 This covers a full example and model for implementing the Jenkins CI/CD reference architecture.
 
-Numerous features are likely to vary for your particular setup. Your build, for example, may employ a static-site generator and deploy the resulting static site to Linode Object Storage. Or you may be using a language like Java and want a different code analysis tool, like SonarQube.
+Numerous features are likely to vary for your particular setup. Your build, for example, may employ a static-site generator and deploy the built static site to Linode Object Storage. Or you may be using a language like Java and want a different code analysis tool, like SonarQube.
 
-But whatever the case, this tutorial gives you a set of implementation tools that are sure to get you well on your way. Adapt the Terraform script and example pipeline, find the right Jenkins plugins, and the rest should follow readily from what has been covered here.
+But whatever the case, this tutorial gives you a set of implementation examples and tools that are sure to get you well on your way. Adapt the Terraform script and example pipeline, find the right Jenkins plugins, and the rest should follow readily from what has been covered here.
