@@ -10,6 +10,7 @@ modified_by:
 title: "Deploy Mastodon through the Linode Marketplace"
 external_resources:
   - '[Mastodon Deployment Github Repository](https://github.com/linode-solutions/mastodon-oca)'
+  - '[Mastodon Official Documentation](https://docs.joinmastodon.org/)'
 aliases: ['/guides/mastodon-marketplace-app/']
 authors: ["Linode"]
 ---
@@ -96,6 +97,6 @@ Open a web browser and navigate to the custom domain you entered when deploying 
 
 1. The Mastodon server is configured to send emails for actions such as new users signing up or resetting a password. The installation includes only minimal DNS records and there may be limited deliverability without further configuration. Review the guide to [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode) for more information on DNS configurations and email best practices.
 
-To learn more about Mastodon, check out the official [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance. When you are ready to make your instance known to the world, you can add it to the list over at [Instances.social](https://instances.social/admin) by filling out the admin form.
+To learn more about Mastodon, check out the official documentation and [Mastodon blog](https://blog.joinmastodon.org/) with news and articles related to Mastodon. You can engage with the Mastodon administrative community on [Mastodon’s discussion forum](https://discourse.joinmastodon.org/), where you can peruse conversations about technical issues and community governance. When you are ready to make your instance known to the world, you can add it to the list over at [Instances.social](https://instances.social/admin) by filling out the admin form.
 
 {{< content "marketplace-update-note-shortguide">}}
