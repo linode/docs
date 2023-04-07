@@ -20,21 +20,21 @@ external_resources:
 
 Git is a distributed version control system that views data as a series of snapshots. This is in contrast to delta-based version control systems, such as Concurrent Version System (CVS) and Subversion. These view their data as a set of files, and the changes made to each file over time.
 
-In Git, once a copy of the remote repository has been checked out, work can be done on the local copy of the repository. Changes can be committed whenever needed. When ready, simply **push** these changes to the remote repository.
+In Git, once a copy of the remote repository has been checked out, work can be done on the local copy. Changes can be committed whenever needed. When ready, simply *push* these changes to the remote repository.
 
-Working locally can lead to conflicts with code changes. For example, coworkers could be making changes locally on their own copies of the repository. It’s a good idea to avoid potentially messy merges as much as possible by pulling updates before your coding session. In addition, pushing partial change sets to the remote repository can be problematic if the project is deployed in that state. Alternatively, waiting to push changes until the end of a sprint can result in lost work if your local machine is lost or damaged.
+Working locally can lead to conflicts with code changes. For example, coworkers could be making changes locally on their own copies of the repository. It’s a good idea to avoid potentially messy merges as much as possible by pulling updates before a coding session. In addition, pushing partial change sets to the remote repository can be problematic if the project is deployed in that state. Alternatively, waiting to push changes until the end of a sprint can result in lost work if your local machine is lost or damaged.
 
 ## What is a Git Branch?
 
-Work in a *branch* in order to isolate changes made locally from changes that other team members are making on their own machines is. A Git branch is a lightweight movable pointer to a *commit*. A commit object contains a pointer to the snapshot that you staged when you checked in your changes. The default branch name in Git is **master**, although many repositories use the name **main** instead.
+Work in a *branch* in order to isolate changes made locally from changes that other team members are making on their own machines. A Git branch is a basically label for a *commit*. A commit contains a snapshot of saved code along with a link to the previous commit. The default branch name in Git is **master**, although many repositories use the name **main** instead.
 
 Unlike CVS or Subversion, Git encourages the free creation of development branches. The idea is to work in them, and later merge them into project, version, QA, or production branches. While working in a local branch, there is little fear of incomplete and/or untested code winding up in a production build.
 
 ## Why Rename a Git Branch?
 
-It’s common to name a new Git branch with your initials, or git handle, along a date, number, or cryptic description. Once code in the branch is complete, a pull request (PR) may need submitted to the project committers. This starts the process of having the code reviewed and merged.
+It’s common to name a new Git branch with your initials (or git handle) along a date, number, or cryptic description. Once code in the branch is complete, the project committers may require that a pull request (PR) be submitted. This starts the process of having the code reviewed and merged.
 
-However, committers need to know what the branch is intended to accomplish, so renaming the branch to summarize its purpose may be required. The pull request gives you additional space to describe the code in more detail. Different projects may have different standards for branch names submitted in pull requests. The general best practice is for the name to be descriptive, just as each commit comment (log message) is descriptive.
+However, committers need to know what the branch is intended to accomplish, so renaming the branch to summarize its purpose may be required. The pull request provides additional space to describe the code in more detail. Different projects may have different standards for branch names submitted in pull requests. The general best practice is for the name to be descriptive of the changes made.
 
 Another reason to rename a Git branch would be if there’s an error in the original name. For example, in some projects the name of a branch is supposed to contain the number of the bug or issue being fixed. If the bug number is *1291* and you accidentally named the branch *bugfix-1292*, then you'd want to rename the branch to *bugfix-1291*.
 
@@ -48,16 +48,28 @@ Branches in a local repository can be renamed from the command line using the `g
 This guide assumes that the remote origin repository was set when checked out. It also assumes that your terminal is in the working directory of the local repository, so that the `git` command can find the `.git` subdirectory.
 {{< /note >}}
 
-1.  Use the following command to display the current branch:
+1.  Use the following command to display a list of local branches:
 
     ```command
     git branch
     ```
 
-1.  Now use the `-r` flag to display the remote-tracking branches:
+    The current branch is shown with an asterisk (*):
+
+    ```output
+      main
+    * example-branch
+    ```
+
+1.  Now use the `-r` flag to display a list of remote-tracking branches:
 
     ```command
     git branch -r
+    ```
+
+    ```output
+    origin/main
+    origin/example-branch
     ```
 
 1.  Create a new branch using the following command syntax `git branch <new-branch>`:
@@ -80,7 +92,7 @@ To rename this branch to `bugfix-1291`, either switch into the branch or use the
     git branch -m bugfix-1291
     ```
 
-Alternatively, if not already in branch `bugfix-1292`, use the two-parameter rename command syntax `git branch -m <current-name> <new-name>`:
+Alternatively, if not already in branch `bugfix-1292`, use the two-parameter rename command syntax `git branch -m <old-name> <new-name>`:
 
 ```command
 git branch -m bugfix-1292 bugfix-1291
