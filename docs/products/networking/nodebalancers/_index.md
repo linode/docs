@@ -9,6 +9,7 @@ cascade:
     date: 2020-06-02
     product_description: "Managed cloud-based load balancing service that provides high availability and horizontal scaling to any application."
 modified: 2022-08-24
+aliases: ['/platform/nodebalancer/','/nodebalancers/','/guides/platform/nodebalancer/']
 ---
 
 **NodeBalancers** are managed *load balancers as a service (LBaaS)*, making load balancing accessible and easy to configure on the Linode Platform. They intelligently distribute incoming requests to multiple backend Compute Instances, so that there's no single point of failure. This enables high availability, horizontal scaling, and A/B testing on any application hosted with Linode.
@@ -19,7 +20,7 @@ In a typical single machine configuration, issues with the machine may cause the
 
 ## Horizontal Scaling
 
-There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/guides/resizing-a-linode/) your Compute Instances. *Horizontal scaling* adds or remove machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
+There are two main ways to scale an application to increase the performance and capacity within your applications. *Vertical scaling* increases or decreases the resources on the existing machines. This is achieved by [resizing](/docs/products/compute/compute-instances/guides/resize/) your Compute Instances. *Horizontal scaling* adds or remove machines that are identically configured to serve your application or perform a certain task. This is commonly accomplished through a load balancing solution, like NodeBalancers. Horizontal scaling can be much more flexible and allows you to scale as needed without taking down your site while upgrading or downgrading.
 
 ## Additional Features
 
@@ -64,7 +65,7 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
 - Fully customizable health checks to ensure traffic lands on a functioning backend
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
-- Outbound network transfer usage is counted towards the account-wide [monthly network transfer pool](/docs/guides/network-transfer/)
+- Outbound network transfer usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/)
 - Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
 
 ## Limits and Considerations
@@ -74,7 +75,7 @@ Each NodeBalancer on an account costs $10/mo ($0.015/hr).
 - **IP addresses:** A public IPv4 address and IPv6 address are configured on each NodeBalancer. Additional addresses are not available.
 - **Private network:** Communication with backend Linodes occurs over a data center's private network. As such, backend Linodes must be located within the same data center as the NodeBalancer.
 - **HTTP support:** HTTP/1.1 (HTTP/2 support is not yet available).
-- **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Linode on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
+- **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Linode on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
 - **TLS termination:** When using a NodeBalancer with an application that requires HTTPS, you can either terminate the TLS connection on the NodeBalancer (**HTTPS** mode) or on the backend Linodes (**TCP** mode). When terminating TLS connections directly on the NodeBalancer, there are a few key considerations:
     - **TLS protocols:** TLS v1.2 and v1.3 are supported in **HTTPS** mode.
     - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes will be unencrypted.

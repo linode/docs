@@ -1,9 +1,13 @@
 {{ define "main" }}
-  <div class="">
+  <div class="content">
     {{ partial "sections/content/products/title-byline.html" . }}
     <div class="mt-4">
       {{ partial "sections/content/navbar.html" (dict "page" . "mainNavPartial" "sections/content/tab-main.html") }}
     </div>
+
+    {{ if .Params.deprecated }}
+      {{ partial "sections/content/deprecated" . }}
+    {{ end }}
 
     {{ if ne .Params.promo_default false }}
       <div class="mt-8">

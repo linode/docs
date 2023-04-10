@@ -1,8 +1,5 @@
 ---
 slug: deploy-in-code-with-pulumi
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Learn how to install Pulumi, import the Linode module for Pulumi, and write your first Pulumi programs.'
 keywords: ["pulumi", "configuration management", "infrastructure as code", "iac", "javascript", "python"]
 tags: ["debian"]
@@ -16,13 +13,14 @@ external_resources:
 - '[Pulumi API reference](https://pulumi.io/reference/pkg/)'
 - '[Why Pulumi](https://www.pulumi.com/why-pulumi/)'
 aliases: ['/applications/configuration-management/deploy-in-code-with-pulumi/','/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/']
+authors: ["Linode"]
 ---
 
 ## What is Pulumi?
 
 [*Pulumi*](https://www.pulumi.com/) is a development tool that allows you to write computer programs which deploy cloud resources--a practice referred to as *infrastructure as code (IaC)*. Pulumi integrates with multiple cloud platforms, and Pulumi programs can be authored in a number of common programming languages.
 
-With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](https://developers.linode.com/api/v4/) or [CLI](/docs/products/tools/cli/get-started/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
+With Pulumi's Linode integration, you can manage your Linode resources as you would with our [API](/docs/products/tools/api/) or [CLI](/docs/products/tools/cli/), but in a language you may already be familiar with. This guide will present examples written in JavaScript, but Pulumi is also compatible with Go, Python, and TypeScript.
 
 Pulumi also comes with a CLI interface for running the cloud infrastructure programs that you write. Once you've written a program, you can create your cloud resources with a single command:
 
@@ -36,11 +34,11 @@ In this guide you will learn how to:
 
 ##  Before You Begin
 
-1. If you haven't yet, [create a Linode API token](/docs/guides/getting-started-with-the-linode-api/#create-an-api-token).
+1. If you haven't yet, [create a Linode API token](/docs/products/tools/api/get-started/#create-an-api-token).
 
 1. [Create a free Pulumi account](https://app.pulumi.com/signup).
 
-1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
+1. Create a new Debian 9 Linode. Follow our [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to deploy the Linode, and then follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Be sure to create a [limited  Linux user with sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) on your server. All commands in this guide are to be run from a sudo user.
 
 1. Install Pulumi on your Linode using their installation script:
 
@@ -64,13 +62,13 @@ In this guide you will learn how to:
 
 Once you have a Pulumi account, you will need to create an *access token* to use later.
 
-{{< disclosure-note "Why do I need a Pulumi access token?" >}}
+{{< note type="secondary" title="Why do I need a Pulumi access token?" isCollapsible=true >}}
 When Pulumi interprets the infrastructure programs that you write, it determines what cloud resources it needs to create in order to satisfy your program. Every time you run your program, [Pulumi stores the state](https://pulumi.io/reference/state/#state-and-backends) of these resources in a persistent backend. In subsequent updates to your infrastructure, Pulumi will compare your program with the recorded state so that it can determine which changes need to be made.
 
 By default, Pulumi securely stores this state information on a web backend hosted at [https://app.pulumi.com](https://app.pulumi.com). This service is free to start and offers paid tiers for teams and enterprises.
 
 It is possible to opt-out of using the default web backend and use a filesystem-based backend instead. Review [Pulumi's documentation](https://pulumi.io/reference/state/#to-the-filesystem-backend) for instructions.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 1. [Log into your Pulumi account](https://app.pulumi.com/signin). After you've logged in, click on the avatar graphic to the top right of the Pulumi dashboard, then click on the **Settings** option in the dropdown menu that appears:
 
@@ -109,9 +107,9 @@ A Pulumi [project](https://pulumi.io/reference/project/) is the folder structure
     - Enter a project description, or leave blank to use the default option.
     - Enter a *stack* name of your choice, or leave blank to use the default option.
 
-        {{< disclosure-note "What's a stack?" >}}
-Multiple instances of your Pulumi programs can be created. For example, you may want to have separate instances for the development, staging, and production environments of your service. Or, you may create multiple instances of your service if you're offering it to different business clients. In Pulumi, these instances are referred to as [stacks](https://pulumi.io/tour/programs-stacks/).
-{{< /disclosure-note >}}
+        {{< note type="secondary" title="What's a stack?" isCollapsible=true >}}
+        Multiple instances of your Pulumi programs can be created. For example, you may want to have separate instances for the development, staging, and production environments of your service. Or, you may create multiple instances of your service if you're offering it to different business clients. In Pulumi, these instances are referred to as [stacks](https://pulumi.io/tour/programs-stacks/).
+        {{< /note >}}
 
     - Enter your Linode API token.
 
@@ -174,7 +172,7 @@ In this case, your file is only creating a single 1GB Linode (Nanode) instance i
 
         pulumi up
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will create a new billable resource on your account.
 {{< /note >}}
 
@@ -186,7 +184,7 @@ This will create a new billable resource on your account.
 
     Follow the prompts, and you'll be able to see the resources being removed, similar to how we could see them being created.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Many Pulumi commands will be logged on your Pulumi account. You can see this under the **Activity** tab of your project's stack in [Pulumi's Application Page](https://app.pulumi.com/).
 {{< /note >}}
 
@@ -274,10 +272,10 @@ exports.nodeBalancerPort = nodeBalancerConfig.port;
 {{< /file >}}
 
     {{< note >}}
-In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/platform/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
+    In our `index.js` file we've created and configured two Linodes using an existing [StackScript](/docs/products/tools/stackscripts/) which installs NGINX. Pulumi's Linode integration allows for the creation of entirely [new StackScripts](https://pulumi.io/reference/pkg/nodejs/pulumi/linode/#StackScript) directly in code, which can help you to automate your deployments even further.
 
-If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
-{{< /note >}}
+    If you're interested in seeing how this StackScript works, you can view it [here](https://www.linode.com/stackscripts/view/526246).
+    {{< /note >}}
 
 1.  Now that you've successfully prepared your JavaScript code, let's bring up our configuration:
 
@@ -299,7 +297,7 @@ If you're interested in seeing how this StackScript works, you can view it [here
 Hello from PulumiNode1
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you do not see this page right away, you should wait a few additional moments. NodeBalancers can sometimes require a little extra time to fully apply a new configuration.
 {{< /note >}}
 

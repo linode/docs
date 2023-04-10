@@ -1,20 +1,13 @@
 ---
 slug: how-to-use-ipv6-on-apache
-author:
-  name: Jeff Novotny
-  email: docs@linode.com
 description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
-og_description: 'This guide explains how to configure and use IPv6 on the Apache or NGINX web servers along with useful IPv6-related tools'
 keywords: ['IPv6 Apache','how to enable IPv6 on Apache','NGINX IPv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-16
 modified_by:
   name: Linode
-title: "How to Use IPv6 With Apache and NGINX"
-h1_title: "How to Use IPv6 With Apache and NGINX"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Use IPv6 With Apache and NGINX"
+title_meta: "How to Use IPv6 With Apache and NGINX"
 external_resources:
 - '[IPv6 rfc 8200](https://www.rfc-editor.org/rfc/rfc8200)'
 - '[Wikipedia IPv6 page](https://en.wikipedia.org/wiki/IPv6)'
@@ -24,6 +17,7 @@ external_resources:
 - '[NGINX Website](https://www.nginx.com/)'
 - '[NGINX Docs page](https://docs.nginx.com/)'
 - '[RHEL documentation to enable IPv6](https://access.redhat.com/solutions/347693)'
+authors: ["Jeff Novotny"]
 ---
 
 The [Internet Protocol version 6 (IPv6)](https://www.rfc-editor.org/rfc/rfc8200) provides some performance advantages over IPv4 as well as additional features. On both the Apache and NGINX web servers, IPv6 is enabled by default. However, many users do not take full advantage of all IPv6 capabilities. This guide explains how to configure and use IPv6 on both the Apache and NGINX web server. It also introduces some useful IPv6 tools.
@@ -49,11 +43,11 @@ Although IPv4 and IPv6 are not directly compatible, several transitional and upg
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -65,7 +59,7 @@ The following sections explain how to configure IPv6 on an Apache web server. IP
 
 Before proceeding, ensure Apache is already installed and running on the system. Enter the command `apache2 -v` to see the currently installed version. If the system displays the version number, Apache is already running on the system. If the system displays the error message `Command 'apache2' not found`, use the command `sudo apt install apache2` to install it. These instructions are geared towards Ubuntu users, but are generally valid for all Linux distributions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 On some distributions, including CentOS/RHEL, IPv6 must be enabled on a system-wide level. See the [RHEL documentation](https://access.redhat.com/solutions/347693) for details.
 {{< /note >}}
 
@@ -113,7 +107,7 @@ inet6 fe80::f03c:93ff:fe25:6762/64 scope link
 
 4.  Edit the `ports.conf` file and add `Listen` directives for the addresses on port `80` for HTTP, and port `443` for HTTPS. Enclose the IPv6 address in brackets `[]` and follow it with the `:` symbol and the port number. To listen for both IPv4 and IPv6 traffic, add both addresses. To restrict access to IPv6, do not include the IPv4 entry. The following example demonstrates how to configure Apache to only listen for specific requests for its IPv6 and IPv4 addresses.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On older installations of Apache, add this configuration to `httpd.conf`.
 {{< /note >}}
 
@@ -172,7 +166,7 @@ LISTEN    0         511          [2001:db8::f03c:93ff:fe25:6762]:80             
 
         http://[2001:db8::f03c:93ff:fe25:6762]/
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To host multiple domains on the same system using different ports or IP addresses, additional changes to the virtual host files are necessary. See the [Apache virtual host examples](https://httpd.apache.org/docs/2.4/vhosts/examples.html) for more complete information. Virtual host changes are not necessary if all domains are accessed using the same IPv6 address and port.
 {{< /note >}}
 
@@ -268,7 +262,7 @@ LISTEN 0      128                                 [::]:22             [::]:*    
 
 ## Adding an IPv6 Address to the Domain DNS Records
 
-To enforce the use of an IPv6 address to access a hosted domain, update the DNS record for the domain. Change the DNS record to use the IPv6 address instead of the IPv4 address. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/). All DNS changes take some time to propagate across the internet. Changing the DNS record does not affect direct access to the node using the raw IPv4 or IPv6 addresses.
+To enforce the use of an IPv6 address to access a hosted domain, update the DNS record for the domain. Change the DNS record to use the IPv6 address instead of the IPv4 address. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/). All DNS changes take some time to propagate across the internet. Changing the DNS record does not affect direct access to the node using the raw IPv4 or IPv6 addresses.
 
 ## Additional IPv6 Tools
 

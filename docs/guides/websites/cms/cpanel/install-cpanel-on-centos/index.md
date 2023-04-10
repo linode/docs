@@ -1,11 +1,8 @@
 ---
 slug: install-cpanel-on-centos
-author:
-  name: Linode
-  email: docs@Linode.com
 description: 'This guide shows how to install cPanel, a leading server control panel that enables you to manage server services and install applications, on a Linode running CentOS.'
 keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
-tags: ["centos","cms","cpanel"]
+tags: ["centos","cms","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/control-panels/cpanel/centos-6/','/websites/cms/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos-5/','/websites/cms/cpanel/install-cpanel-on-centos/','/websites/cms/cpanel-on-centos/','/websites/cms/cpanel-on-centos-6-5/']
 modified: 2018-08-09
@@ -16,6 +13,7 @@ title: Install cPanel on CentOS
 external_resources:
  - '[cPanel Home Page](https://www.cpanel.com/)'
  - '[cPanel Support](https://www.cpanel.com/support/)'
+authors: ["Linode"]
 ---
 
 ![Install cPanel on CentOS](Install_cPanel_smg.jpg)
@@ -23,7 +21,7 @@ external_resources:
 [cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 
 **Linode does not sell cPanel licenses**
 
@@ -33,7 +31,7 @@ You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.
 
 ## DNS Prerequisites
 
-cPanel includes options for hosting your own DNS services. We generally recommend using [Linode DNS services](/docs/dns-guides/configuring-dns-with-the-linode-manager) because it provides a stable, redundant, and easily managed DNS platform. If you elect to run your own DNS services on a single Linode using cPanel, please be aware that such a setup provides no redundancy.
+cPanel includes options for hosting your own DNS services. We generally recommend using [Linode DNS services](/docs/products/networking/dns-manager/guides/common-dns-configurations/) because it provides a stable, redundant, and easily managed DNS platform. If you elect to run your own DNS services on a single Linode using cPanel, please be aware that such a setup provides no redundancy.
 
 Should you wish to provide DNS services, you'll need to add *A records* for your nameservers in your WHM as described in the [DNS on cPanel guide](/docs/guides/set-up-dns-services-on-cpanel/#nameserver-selection).
 
@@ -41,12 +39,12 @@ If you plan to use a domain name for nameservers for which you will also be host
 
 ## Kernel Prerequisites
 
-CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](/docs/guides/managing-the-kernel-on-a-linode/) guide for instructions on switching to the upstream kernel.
+CPanel requires the distribution-supplied/*upstream* CentOS kernel, as opposed to the Linode-provided kernel. Run `uname -r` on your Linode to check which kernel you are booted with. If you are booted under the Linode kernel, follow the [How to Change your Linode's Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/) guide for instructions on switching to the upstream kernel.
 
 ## Install cPanel
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the **Networking** tab in the Linode Cloud Manager).
@@ -118,7 +116,7 @@ When you've finished, click on **Save & Go to Step 5**.
 
 #### Using Self-Managed DNS
 
-If you wish to operate your own DNS servers on your Linode, select either **BIND** or **NSD** under the *Name Server* column. You must list the nameservers you set up in the "DNS Prerequisites" section of this document. Consult Linode's guide on setting up your own nameservers in WHM using a single IP address, available in our [Set up DNS Services on cPanel](/docs/websites/cms/set-up-dns-services-on-cpanel) guide.
+If you wish to operate your own DNS servers on your Linode, select either **BIND** or **NSD** under the *Name Server* column. You must list the nameservers you set up in the "DNS Prerequisites" section of this document. Consult Linode's guide on setting up your own nameservers in WHM using a single IP address, available in our [Set up DNS Services on cPanel](/docs/guides/set-up-dns-services-on-cpanel/) guide.
 
 ![cPanel DNS server selection using custom nameservers.](274-cpanel-whm-04-02-nameservers-custom-large.png)
 
@@ -128,7 +126,7 @@ When you've finished, click on **Save & Go to Step 5**.
 
 Step 5 of the cPanel installation covers configuration options for additional cPanel services.
 
-1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/guides/linode-beginners-guide/#how-do-i-upload-files-to-my-linode) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
+1. We recommend against installing an FTP server on your Linode, as FTP is an outdated and insecure protocol. Instead, we recommend using [SFTP](/docs/products/compute/compute-instances/faqs/#how-do-i-upload-files-to-my-linode) to upload and download files. However, you may install an FTP server if you wish. SFTP is available by default for any main cPanel username. If you need to add file access for multiple users, you may want to install Pure-FTPd during the configuration phase.
 
     ![cPanel FTP server selection.](275-cpanel-whm-05-ftp-large.png)
 

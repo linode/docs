@@ -73,6 +73,25 @@
   border-color: #32363b;
   color: #ffffff;
 }
+button#cookie-prefs-icon {
+  background: transparent;
+  border: none;
+  bottom: 16px;
+  color: #5e6065;
+  cursor: pointer;
+  left: 16px;
+  padding: 1px 6px;
+  position: fixed;
+  z-index: 10;
+}
+button#cookie-prefs-icon:hover {
+  color: #02b159;
+}
+button#cookie-prefs-icon svg {
+  height: 32px;
+  width: 32px;
+}
+
 .c-site-footer {
   background-color: #ffffff;
   color: #32363b;
@@ -86,7 +105,6 @@
 .c-site-footer a {
   color: inherit;
 }
-
 .c-site-footer__primary {
   background-color: #ffffff;
   border-top: 1px solid var(--divider-color);

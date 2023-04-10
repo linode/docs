@@ -43,7 +43,7 @@ export class AnalyticsEventsCollector {
 		if (searchConfig.click_analytics) {
 			const mergedIndex = searchConfig.indexName(searchConfig.sections_merged.index);
 			const userToken = () => {
-				if (trustecm.functional) {
+				if (trustecm.performance) {
 					return this.anonomousUserToken;
 				}
 				return unspecificedUserToken;

@@ -1,9 +1,6 @@
 ---
 slug: how-to-secure-wordpress
-author:
-  name: Hackersploit
 description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
-og_description: 'How to secure your WordPress installation with SSL, secure password policies, two factor authentication, backups, and a firewall.'
 keywords: ["how to secure wordpress site", "how to make wordpress site secure"]
 tags: ["wordpress","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,8 @@ modified: 2022-07-08
 modified_by:
   name: Linode
 published: 2020-10-28
-title: How to Secure Wordpress
-h1_title: Securing Wordpress
-enable_h1: true
+title: Securing Wordpress
+title_meta: How to Secure Wordpress
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -21,6 +17,7 @@ external_resources:
 - '[Installing Plugins](https://wordpress.org/support/article/managing-plugins/#installing-plugins)'
 aliases: ['/websites/cms/wordpress/how-to-secure-wordpress/']
 image: SecureWordpress.png
+authors: ["Hackersploit"]
 ---
 
 WordPress is a popular content management and website creation software system used by millions of users today. It's easy to use and offers thousands of plugins making it simple for non-developers to create beautiful websites without having to write a single line of code. This guide helps you keep your WordPress site secure with suggestions like installing SSL certificates, installing a firewall, enabling two-factor authentication, and more.
@@ -158,9 +155,9 @@ Directory browsing is a common security misconfiguration that, if left unfixed, 
 
 To disable directory browsing, create an `.htaccess` file in your site’s root directory.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If an `.htaccess` file already exists you do not need to create a new one, simply add the following line to the file.
-{{</ note >}}
+{{< /note >}}
 
 {{< file ".htaccess" >}}
 Options -Indexes

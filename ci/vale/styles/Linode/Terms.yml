@@ -34,7 +34,6 @@ swap:
   nodebalancer: NodeBalancer
   nodebalancers: NodeBalancers
   OpenSUSE: openSUSE
-  pod: Pod
   slackware: Slackware
   ubuntu: Ubuntu
   wordpress: WordPress
@@ -44,6 +43,7 @@ swap:
   Cuda: CUDA
   gpu: GPU
   stackscript: StackScript
+  stackscripts: StackScripts
   typescript: TypeScript
   pulumi: Pulumi
   markdown: Markdown

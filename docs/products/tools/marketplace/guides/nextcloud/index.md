@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
 keywords: ['Nextcloud','marketplace','file sharing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,15 +6,14 @@ published: 2020-06-11
 modified: 2022-05-27
 modified_by:
   name: Linode
-title: "Deploying Nextcloud through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Nextcloud through the Linode Marketplace"
 external_resources:
 - '[Nextcloud Documentation Overview](https://docs.nextcloud.com/)'
 - '[Nextcloud AIO github](https://github.com/nextcloud/all-in-one)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/how-to-deploy-nextcloud-with-marketplace-apps/', '/platform/one-click/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-one-click-apps/','/guides/how-to-deploy-nextcloud-with-marketplace-apps/','/guides/nextcloud-marketplace-app/']
 image: deploying_nextcloud_oca.png
+authors: ["Linode"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is an open source solution to file hosting and sharing. With Nextcloud, you can synchronize files from a local computer to the Linode server and share them with collaborators. Nextcloud’s customizable security features and intuitive user interface help to keep files safe and easy to manage.
@@ -28,9 +24,9 @@ image: deploying_nextcloud_oca.png
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Nextcloud should be fully installed within 5-7 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,11 +39,13 @@ image: deploying_nextcloud_oca.png
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Log Into Your Nextcloud Instance
 
-1. Open a browser window and navigate to the NextCloud instance's domain using port 8443. For example, enter `https://example.com:8443` into the browser, replacing `example.com` with the value of your own domain. If you did not install the App with a domain name, you can use the [Linode's RDNS domain](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) (such as `https://203-0-113-0.ip.linodeusercontent.com:8443`).
+1. Open a browser window and navigate to the NextCloud instance's domain using port 8443. For example, enter `https://example.com:8443` into the browser, replacing `example.com` with the value of your own domain. If you did not install the App with a domain name, you can use the [Linode's RDNS domain](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) (such as `https://203-0-113-0.ip.linodeusercontent.com:8443`).
 
 1. The initial Nextcloud setup screen is displayed, which includes an automatically generated password. Save the password and click the **Open Nextcloud AIO login** button.
 
@@ -57,7 +55,7 @@ image: deploying_nextcloud_oca.png
 
       ![Nextcloud Login](nextcloudlogin.jpg)
 
-1. Once you have successfully logged in, you are prompted to configure your domain. Enter the domain you specified when deployed the Marketplace App or use your [rDNS](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) value if no domain was specified.
+1. Once you have successfully logged in, you are prompted to configure your domain. Enter the domain you specified when deployed the Marketplace App or use your [rDNS](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) value if no domain was specified.
 
       ![Nextcloud Domain setup](nextclouddomain.jpg)
 

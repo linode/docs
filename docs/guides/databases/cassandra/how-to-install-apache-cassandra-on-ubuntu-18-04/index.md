@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-apache-cassandra-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for Ubuntu 18.04.'
 keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,8 @@ image: L_ApacheCass_on_Ubuntu1804.png
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "How to Install Apache Cassandra on Ubuntu 18.04"
-h1_title: "Installing Apache Cassandra on Ubuntu 18.04"
-enable_h1: true
-contributor:
-  name: Linode
+title: "Installing Apache Cassandra on Ubuntu 18.04"
+title_meta: "How to Install Apache Cassandra on Ubuntu 18.04"
 external_resources:
    - '[Cassandra Documentation](http://cassandra.apache.org/doc/latest/)'
    - '[Cassandra cqlshrc File Configuration Overview](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html)'
@@ -29,18 +23,19 @@ relations:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","database","nosql"]
 aliases: ['/databases/cassandra/how-to-install-apache-cassandra-on-ubuntu-18-04/','/databases/cassandra/deploy-scalable-cassandra/','/guides/deploy-scalable-cassandra/','/databases/deploy-scalable-cassandra/','/databases/cassandra/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/','/guides/deploy-scalable-cassandra-on-ubuntu-18.04-and-centos-7/']
+authors: ["Linode"]
 ---
 
 After completing this guide, you will have a single-node, production-ready installation of [Apache Cassandra](http://cassandra.apache.org/) hosted on your Linode running Ubuntu 18.04. This tutorial will cover basic configuration options, as well as harden database security.
 
 {{< note >}}
 In order to successfully execute the commands in this guide, you will need to run them as the `root` user, or log in using an account with root privileges, prefixing each command with `sudo`.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
-1. Complete the [Getting Started](/docs/getting-started) guide for setting up a new Linode.
-1. While it is recommended you complete the entire [Securing Your Server](/docs/security/securing-your-server) guide, at  minimum, you should [add a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
+1. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, at  minimum, you should [add a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ## Install OpenJDK (Java)
 
@@ -63,7 +58,7 @@ Add Apache Cassandra's repository and GPG keys so that you can install Cassandra
 
         echo "deb http://www.apache.org/dist/cassandra/debian 40x main" |  sudo tee /etc/apt/sources.list.d/cassandra.list
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The above command installs the latest version within the Apache Cassandra 4.0 release. To see what other versions are available, you can review the [repository](https://downloads.apache.org/cassandra/debian/dists/) and adjust the command as needed.
 {{< /note >}}
 
@@ -111,7 +106,7 @@ In this section, you will enable user login authentication. You can also configu
 
 1.  Open `cassandra.yaml` in your preferred text editor:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Locations of the `cassandra.yaml` file may differ slightly between distros.
     {{< /note >}}
 
@@ -170,14 +165,14 @@ permissions_validity_in_ms: 0
 The `cqlshrc` file holds configuration settings that influence user preferences and how Cassandra performs certain tasks.
 
 {{< note >}}
-Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/guides/set-up-and-secure/#ubuntu), if it does not already have them.
-{{</ note >}}
+Ensure you complete the steps in this section using your limited user account. This account will need [sudo privileges](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ubuntu), if it does not already have them.
+{{< /note >}}
 
 Since your Cassandra username and password can be stored in plaintext, the `cqlshrc` file should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Do not complete this section as the root user. Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the `[authentication]` section.
-{{</ caution >}}
+{{< /note >}}
 
 1.  Create the file `cqlshrc` using your preferred text editor. If the `~/.cassandra` directory does not exist, create it:
 
@@ -235,11 +230,11 @@ encoding = utf8
 
         cqlsh -u superuser
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also login by providing your username and password:
 
     cqlsh -u superuser -p password
-    {{</ note >}}
+    {{< /note >}}
 
 ## Rename the Cluster
 
@@ -304,7 +299,7 @@ JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
         nodetool status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
 {{< /note >}}
 

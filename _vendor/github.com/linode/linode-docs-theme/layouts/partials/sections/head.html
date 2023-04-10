@@ -11,7 +11,13 @@
   rel="shortcut icon"
   href="{{ "favicon.ico" | relURL }}"
   type="image/x-icon" />
-{{ if hugo.IsProduction }}
+
+{{/* Adobe Analytics.
+  This is configured for the environments production, development (Netlify and local) and staging.
+*/}}<script
+  src="{{ site.Params.adobe_launch_script }}"
+  async></script>
+{{ if (not site.IsServer) }}
   <!-- Google Tag Manager -->  <script>
     (function (w, d, s, l, i) {
     w[l] = w[l] || []; w[l].push({

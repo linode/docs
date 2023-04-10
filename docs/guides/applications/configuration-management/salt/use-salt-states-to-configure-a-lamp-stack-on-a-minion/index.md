@@ -1,8 +1,5 @@
 ---
 slug: use-salt-states-to-configure-a-lamp-stack-on-a-minion
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Written for Debian 8, but easily adaptable to other distros, this guide will show you how to use Salt States to create a LAMP stack on your Linode.'
 keywords: ["salt", "salt states", "linux", "apache", "mysql", "php", "debian 8"]
 tags: ["automation","salt","debian","lamp","apache"]
@@ -14,6 +11,7 @@ modified_by:
 image: UseSaltStatestoConfigureaLAMPStackonaMinion.png
 published: 2015-07-02
 title: Use Salt States to Configure a LAMP Stack on a Minion
+authors: ["Linode"]
 ---
 
 This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/docs/guides/getting-started-with-salt-basic-installation-and-setup/) to get started.
@@ -142,7 +140,7 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
 
 2.  Create directories for the website's files, logs, and backups. Replace `example.com` with the name of the website:
 
-        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/pubic_html/
+        salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/public_html/
         salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/log/
         salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/backups/
 

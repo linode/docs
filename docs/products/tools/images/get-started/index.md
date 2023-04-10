@@ -24,6 +24,6 @@ To take action on an Image, locate the Image within the **Images** page of the C
 
 - **Edit:** Change the *Label* and *Description* for the Image.
 - **Deploy to a New Compute Instance:** Create a new Compute Instance using the Image. See [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/).
-- **Deploy to an Existing Compute Instnace:** Rebuild an Instance or create a new disk using the Image. See [Deploy an Image to an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/).
+- **Deploy to an Existing Compute Instance:** Rebuild an Instance or create a new disk using the Image. See [Deploy an Image to an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/).
 - **Delete:** Delete the Image (cannot be undone).
 

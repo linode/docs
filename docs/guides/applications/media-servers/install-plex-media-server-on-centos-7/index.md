@@ -1,8 +1,5 @@
 ---
 slug: install-plex-media-server-on-centos-7
-author:
-  name: Nick Brewer
-  email: nbrewer@linode.com
 description: 'This guide shows you how to install Plex Media Server, an application that organizes and can stream your photos, videos, music, and more, on CentOS 7.'
 keywords: ["plex", "media", "centos"]
 tags: ["centos"]
@@ -21,20 +18,21 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/applications/media-servers/install-plex-media-server-on-centos-7/']
+authors: ["Nick Brewer"]
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. Basic Plex features are [free](https://support.plex.tv/articles/202526943-plex-free-vs-paid/), while the paid Plex Pass adds additional features.
 
-This guide demonstrates how to set up **Plex Media Server** on a Linode running CentOS 7, and how to connect client devices. A Plex media server could benefit from large amounts of disk space, so consider using Linode's [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This guide demonstrates how to set up **Plex Media Server** on a Linode running CentOS 7, and how to connect client devices. A Plex media server could benefit from large amounts of disk space, so consider using Linode's [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
 ![Install Plex Media Server on CentOS 7](install-plex-media-server-on-centos-7.png)
 
 
 ## Before you Begin
 
-- You will need root access to your Linode, or a [limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privilege.
+- You will need root access to your Linode, or a [limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) with `sudo` privilege.
 
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [time zone](/docs/guides/set-up-and-secure/#set-the-timezone).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [time zone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
 - Plex requires that you create an [account](https://www.plex.tv/features/) to make use of the service, and provides additional features such as DVR capability and offline viewing if you pay for their premium [Plex Pass](https://www.plex.tv/features/plex-pass/) offering. To complete this guide, you will need a Plex account.
 

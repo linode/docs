@@ -1,8 +1,5 @@
 ---
 slug: use-buildbot-for-software-testing-on-ubuntu
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
 description: "This shows how to install, configure, and use Buildbot as a continuous integration platform, as well as how to write configuration for custom testing builds."
 og_description: "Deploy self-hosted continuous integration using Buildbot."
 keywords: ["buildbot", "testing", "python", "continuous integration", "ci", "build", "qa"]
@@ -12,9 +9,8 @@ modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2018-09-06
-title: "Use Buildbot for Software Testing on Ubuntu 18.04"
-h1_title: "Using Buildbot to Test Software on Ubuntu 18.04"
-enable_h1: true
+title: "Using Buildbot to Test Software on Ubuntu 18.04"
+title_meta: "Use Buildbot for Software Testing on Ubuntu 18.04"
 external_resources:
 - '[Official Buildbot Tutorial](http://docs.buildbot.net/current/tutorial/)'
 - '[Buildbot Documentation](http://docs.buildbot.net/current/index.html)'
@@ -26,19 +22,20 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/ci/use-buildbot-for-software-testing-on-ubuntu/']
+authors: ["Tyler Langlois"]
 ---
 
 [Buildbot](https://buildbot.net/) is an open source system for testing software projects. In this guide, you will set up a Linode as a Buildbot server to use as a continuous integration platform to test code. Similarly to hosted solutions like Travis CI, Buildbot is an automated testing platform that can watch for code changes, test a project's code, and send notifications regarding build failures.
 
 ## Before you Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 3.  Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Linode instance hosting Buildbot.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Replace each instance of `example.com` in this guide with your Buildbot site's domain name.
 {{< /note >}}
 
@@ -52,9 +49,9 @@ Replace each instance of `example.com` in this guide with your Buildbot site's d
 
     These commands will download a certificate to `/etc/letsencrypt/live/example.com/` on your Linode.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
   The steps to install NGINX will be covered in the [Set up the Buildbot Master Web Interface](/docs/guides/use-buildbot-for-software-testing-on-ubuntu/#configure-buildbot-master#setup-buildbot-master-web-interface) section of the guide.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Install Buildbot
 
@@ -285,7 +282,7 @@ Now that Buildbot is installed, you can configure it to run builds. In this tuto
 
 Before creating the build configuration, fork the `linode/docs` repository into your GitHub account. This is the repository that will be used to run tests against. The repository will also require webhooks to be configured to send push or PR events to Buildbot.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The actions you take to fork, add webhook, and push changes to your fork of `linode/docs` will not affect the parent (or upstream), so you can safely experiment with it. Any changes you make to branches of your fork will remain separate until you submit a pull request to the original `linode/docs` repository.
 {{< /note >}}
 

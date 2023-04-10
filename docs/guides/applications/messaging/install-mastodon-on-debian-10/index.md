@@ -1,23 +1,16 @@
 ---
 slug: install-mastodon-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to install the open-source, self-hosted microblogging platform Mastodon on Debian 10 Linux."
-og_description: "Learn how to install the open-source, self-hosted microblogging platform Mastodon on Debian 10 Linux."
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','debian 10']
 tags: ['docker', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
-image: MASTODON3.jpg
+modified: 2022-11-29
 modified_by:
-  name: Nathaniel Stickman
-title: "How to Install a Mastodon Server on Debian 10"
-h1_title: "Installing a Mastodon Server on Debian 10"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+  name: Linode
+image: MASTODON3.jpg
+title: "Install a Mastodon Server on Debian 10"
+title_meta: "How to Install a Mastodon Server on Debian 10"
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -34,6 +27,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Debian 10
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
@@ -48,9 +42,9 @@ Mastodon servers range in size from small private instances to massive public in
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Complete the steps in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name to point to your Mastodon instance.
 
@@ -59,6 +53,10 @@ Mastodon servers range in size from small private instances to massive public in
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activity.
 
     - You can create your own SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
+
+        {{< note respectIndent=false >}}
+This guide uses PostgreSQL database as a backend for Mastodon. You can setup the SMTP server with PostgreSQL database instead of MySQL.
+{{< /note >}}
 
     - Alternatively, you can use a third-party SMTP service. This guide provides instructions for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.
 
@@ -87,15 +85,17 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 1. Clone the Mastodon Git repository into the home directory, and change into the resulting Mastodon directory.
 
-        cd ~/
-        git clone https://github.com/mastodon/mastodon.git
-        cd mastodon
+    ```command
+    cd ~/
+    git clone https://github.com/mastodon/mastodon.git
+    cd mastodon
+    ```
 
     Unless otherwise stated, the remainder of the commands related to Docker Compose should be run in this directory.
 
 ## Configure Docker Compose
 
-1. Using your preferred text editor, open the `docker-compose.yml` file.
+1. Using your preferred text editor, open the `docker-compose.yml` file located in the `mastodon` directory.
 
 1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v3.3.0`.
 
@@ -103,44 +103,48 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 1. In the `db` section, add the following beneath the `image` line; replace `password` with a password you would like to use for the PostgreSQL database that operates on the Mastodon backend.
 
-        environment:
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: mastodon_production
-          POSTGRES_USER: mastodon
+    ```file {title="docker-compose.yml"}
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mastodon_production
+      POSTGRES_USER: mastodon
+    ```
 
 1. The resulting `docker-compose.yml` file should look something like [the example Docker file](docker-compose.yml).
 
 1. Copy the `.env.production.sample` file to create a new environment configuration file.
 
-        cp .env.production.sample .env.production
+    ```command
+    cp .env.production.sample .env.production
+    ```
 
-1. Use the following commands to generate a `SECRET_KEY_BASE` and `OTP_SECRET`. Copy the output, and paste it into the `SECRET_KEY_BASE` and `OTP_SECRET` lines in the `.env.production` file.
+1. Use Docker and Mastodon to generate a new value for the `SECRET_KEY_BASE` setting:
 
-        echo SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
-        sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
-        echo OTP_SECRET=$(docker-compose run --rm web bundle exec rake secret)
-        sed -i -e "s/OTP_SECRET=/&${OTP_SECRET}/" .env.production
+    ```command
+    SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
+    ```
 
-    {{< output >}}
-$ echo SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
-Creating mastodon_web_run ... done
-SECRET_KEY_BASE=8bc28644a18cc8f8e30ba30087b71e29ed0b53fcdfc6
+    This creates a string of random characters. If you encounter an error in the next step, run the command again to generate another string.
 
-$ echo OTP_SECRET=$(docker-compose run --rm web bundle exec rake secret)
-Creating mastodon_web_run ... done
-OTP_SECRET=28424e7560ad65d3af38e6d35f9ee7c7a3dfc8475ce2120ff7
-{{< /output >}}
+1. Insert the `SECRET_KEY_BASE` setting into `.env.production` using the `sed` command:
 
-1. Generate the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` using the following command. Copy the output, and paste it into the `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY` lines in the `.env.production` file.
+    ```command
+    sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
+    ```
 
-         docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
+1. Combine the previous two actions into one step to set a value for the `OTP_SECRET` setting in `.env.production`:
 
-    {{< output >}}
-$ docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
-Creating mastodon_web_run ... done
-VAPID_PRIVATE_KEY=yzqlIVTpiNLtWXMHUTRuQIZNCv4hT0BkoMcsMU5-dz8=
-VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
-{{< /output >}}
+    ```command
+    sed -i "s/OTP_SECRET=$/&$(docker-compose run --rm web bundle exec rake secret)/" .env.production
+    ```
+
+1. Generate values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`settings:
+
+    ```command
+    docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
+    ```
+
+1. Copy the output from the previous command, open `.env.production` in your text editor, and paste the command output into the two lines for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`.
 
 1. Fill out the remainder of the `.env.production` file's fields.
 
@@ -152,8 +156,10 @@ VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
 
     - Fill out the `SMTP` fields with the information from your SMTP provider. If you set up your own SMTP server, use its domain name for `SMTP_SERVER` and add the following lines:
 
-          SMTP_AUTH_METHOD=plain
-          SMTP_OPENSSL_VERIFY_MODE=none
+        ```file {title=".env.production"}
+        SMTP_AUTH_METHOD=plain
+        SMTP_OPENSSL_VERIFY_MODE=none
+        ```
 
     - Comment out the sections denoted as "optional" by adding a `#` before each line in the section.
 
@@ -163,15 +169,21 @@ VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
 
 1. Build the Docker Compose environment.
 
-        docker-compose build
+    ```command
+    docker-compose build
+    ```
 
 1. Give ownership of the Mastodon `public` directory to user `991`. This is the default user ID for Mastodon, and this command ensures that it has the necessary permissions.
 
-        sudo chown -R 991:991 public
+    ```command
+    sudo chown -R 991:991 public
+    ```
 
 1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance.
 
-        docker-compose run --rm web bundle exec rake mastodon:setup
+    ```command
+    docker-compose run --rm web bundle exec rake mastodon:setup
+    ```
 
     - Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
@@ -183,34 +195,46 @@ VAPID_PUBLIC_KEY=BAy1_TgcWYBei7pXcX0MX-z0x-Cc85Fl9p-FhpDE4_BWT=
 
 1. Start the Docker Compose services. The following command assumes that you are in the base Mastodon directory (`~/mastodon` in this guide):
 
-        docker-compose up -d
+    ```command
+    docker-compose up -d
+    ```
 
 1. Unless manually stopped, the Docker Compose services begin running automatically at system start up. Run the following command to manually stop the Docker Compose services:
 
-        docker-compose down
+    ```command
+    docker-compose down
+    ```
 
 ## Setup an HTTP/HTTPS Proxy
 
 1. Allow HTTP and HTTPS connections on the system's firewall:
 
-        sudo ufw allow http
-        sudo ufw allow https
-        sudo ufw reload
+    ```command
+    sudo ufw allow http
+    sudo ufw allow https
+    sudo ufw reload
+    ```
 
 1. Install NGINX, which proxies requests to your Mastodon server.
 
-        sudo apt install nginx
+    ```command
+    sudo apt install nginx
+    ```
 
 1. Copy the `nginx.conf` file included with the Mastodon installation to the `sites-available` NGINX folder; use your Mastodon domain name instead of `example.com` in the file name.
 
-        sudo cp ~/mastodon/dist/nginx.conf /etc/nginx/sites-available/example.com.conf
+    ```command
+    sudo cp ~/mastodon/dist/nginx.conf /etc/nginx/sites-available/example.com.conf
+    ```
 
 1. Open the `example.com.conf` file with your preferred text editor, and replace all instances of `example.com` with the domain name for your Mastodon site.
 
 1. Create a symbolic link of this file in the `sites-enabled` NGINX folder.
 
-        cd /etc/nginx/sites-enabled
-        sudo ln -s ../sites-available/example.com.conf
+    ```command
+    cd /etc/nginx/sites-enabled
+    sudo ln -s ../sites-available/example.com.conf
+    ```
 
 ## Get an SSL/TLS Certificate
 
@@ -218,39 +242,55 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
 1. Install the [Snap](https://snapcraft.io/docs/getting-started) app store. Snap provides application bundles that work across major Linux distributions.
 
-        sudo apt install snapd
+    ```command
+    sudo apt install snapd
+    ```
 
 1. Update and refresh Snap.
 
-        sudo snap install core && sudo snap refresh core
+    ```command
+    sudo snap install core && sudo snap refresh core
+    ```
 
 1. Ensure that any existing Certbot installation is removed:
 
-        sudo apt remove certbot
+    ```command
+    sudo apt remove certbot
+    ```
 
 1. Install Certbot.
 
-        sudo snap install --classic certbot
+    ```command
+    sudo snap install --classic certbot
+    ```
 
 1. Create a symbolic link for Certbot.
 
-        sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    ```command
+    sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    ```
 
 1. Download a certificate for your site.
 
-        sudo certbot certonly --nginx
+    ```command
+    sudo certbot certonly --nginx
+    ```
 
     Certbot prompts you to select from the NGINX sites configured on your machine. Select the one with the domain name you set up for your Mastodon instance.
 
 1. Certbot includes a chron job that automatically renews your certificate before it expires. You can test the automatic renewal with the following command:
 
-        sudo certbot renew --dry-run
+    ```command
+    sudo certbot renew --dry-run
+    ```
 
 1. Open the `/etc/nginx/sites-available/example.com.conf` file again, and un-comment the `ssl_certificate` and `ssl_certificate_key` lines.
 
 1. Restart the NGINX server.
 
-        sudo systemctl restart nginx
+    ```command
+    sudo systemctl restart nginx
+    ```
 
 ## Using Mastodon
 

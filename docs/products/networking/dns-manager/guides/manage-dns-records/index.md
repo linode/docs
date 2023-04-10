@@ -1,17 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "How to add DNS records using the Linode DNS Manager."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2022-10-28
+modified: 2023-02-09
 modified_by:
-  name: Linode
+  name: KincaidYang
 published: 2020-07-21
 title: "Manage DNS Records"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-dns-records/','/products/networking/dns-manager/guides/edit-dns-records/']
+authors: ["Linode"]
 ---
 
 ## View DNS Records
@@ -30,11 +28,11 @@ After a domain has been created, you're able to add DNS records. Each type of DN
 
 1. Locate the section for the record type you want to add or edit. To add a new record, click corresponding **Add a Record** button. To edit a record, locate the record in the list and click the corresponding **Edit** button. Both of these actions open up a similar form.
 
-    ![Screenshot of the A/AAA section on the DNS Records page for a domain](add-or-edit-dns-record.png)
+    ![Screenshot of the A/AAAA section on the DNS Records page for a domain](add-or-edit-dns-record.png)
 
 1. The form displays all parameters that are available for your chosen record type. For instance, an *A record* has fields for the **Hostname**, **IP Address**, and **TTL**. An *MX record* has fields for the **Mail Server**, **Preference**, **Subdomain**, and **TTL**. To learn more about the parameters for each record type, see the corresponding guides:
 
-    - [A and AAA Records](/docs/products/networking/dns-manager/guides/a-record/)
+    - [A and AAAA Records](/docs/products/networking/dns-manager/guides/a-record/)
 
     - [CNAME Records](/docs/products/networking/dns-manager/guides/cname-record/)
 
@@ -54,7 +52,7 @@ After a domain has been created, you're able to add DNS records. Each type of DN
 
 {{< note >}}
 New DNS records may take up to 24 hours to propagate throughout the internet, although they are usually visible within several hours.
-{{</ note >}}
+{{< /note >}}
 
 ## Delete a DNS Record
 
@@ -72,7 +70,7 @@ A [wildcard DNS record](https://en.wikipedia.org/wiki/Wildcard_DNS_record) match
 
 {{< note >}}
 A wildcard must always be the furthest subdomain from the TLD (top level domain), i.e. `*.example.com`. If you would like to add a wildcard as a subdomain for a subdomain (what is also called a *second-level* subdomain or *fourth-level* domain), you will need to add a new domain zone for that subdomain and then add the wildcard record to it. For example, to create `*.subdomain.example.com`, you must add a separate domain zone for `subdomain.example.com` first, then add an A/AAAA DNS record to that zone as indicated above.
-{{</ note >}}
+{{< /note >}}
 
 ### Second-level Subdomains
 

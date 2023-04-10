@@ -37,6 +37,62 @@ This template includes common API logic and functions.
   {{ printf "<h%d id='%s'>%s%s</h%d>" .level .id .title $anchor .level | safeHTML }}
 {{ end }}
 
+{{ define "partials/openapi3/algolia-operation-content-plain" }}
+  {{- $m := partial "openapi3/algolia-operation-content"  . -}}
+  {{- $s := newScratch -}}
+  {{- range $k, $v := $m -}}
+    {{- if reflect.IsSlice $v -}}
+      {{ printf "%s: " $k }}
+      {{- range $v -}}
+        {{- printf " %s" (. | plainify) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $v | plainify -}}
+    {{- end -}}
+  {{- end -}}
+{{ end }}
+
+{{ define "partials/openapi3/algolia-operation-content" }}
+  {{ $ctx := .Values }}
+  {{ $api := $ctx.api }}
+  {{ $p := $ctx.page }}
+  {{ $dot := $ctx.dot }}
+  {{ $op := $dot.o }}
+  {{ $result := newScratch }}
+  {{ with $op }}
+    {{ with .RequestBody }}
+      {{ with .Value }}
+        {{ with index .Content "application/json" }}
+          {{ with .Schema }}
+            {{ $.Set "dot" . }}
+            {{ $.Set "hideReadOnly" true }}
+            {{ $items := partial "openapi3/schema-to-plain-slice" $ }}
+            {{ $result.Set "Request Body" $items }}
+            {{ $.Set "hideReadOnly" false }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ with .Responses }}
+      {{ with .Value }}
+        {{ $items := slice }}
+        {{ range $k, $v := . }}
+          {{ $.Set "dot" .Value }}
+          {{ $.Set "title" $k }}
+          {{ with index .Content "application/json" }}
+            {{ with .Schema }}
+              {{ $.Set "dot" . }}
+              {{ $items = $items | append (partial "openapi3/schema-to-plain-slice" $) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $result.Set "Response Body" $items }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ return $result.Values }}
+{{ end }}
+
 {{ define "openapi3/print-operation" }}
   {{ $ctx := .Values }}
   {{ $api := $ctx.api }}
@@ -194,6 +250,25 @@ This template includes common API logic and functions.
   {{ end }}
 {{ end }}
 
+{{ define "partials/openapi3/schema-to-plain-slice" }}
+  {{ $items := slice }}
+  {{- $ctx := .Values -}}
+  {{ $s := $ctx.dot }}
+  {{ $p := $ctx.page }}
+  {{ $.Set "oneOfPickFirst" false }}
+  {{ $required := newScratch }}
+  {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $required "dot" $s.Value ) }}
+  {{ $.Set "requiredMap" $required.Values }}
+  {{ $m := (partial "openapi3/schema-to-map" (dict "dollar" $ )) }}
+  {{ range $k, $v := $m.Properties }}
+    {{ $items = $items | append (printf "%s: %s" $k ( $v.Description | plainify)) }}
+  {{ end }}
+  {{ if not $m.Properties }}
+    {{ $items = $items | append ( $m.Description | plainify ) }}
+  {{ end }}
+  {{ return $items }}
+{{ end }}
+
 {{ define "partials/openapi3/print-schema" }}
   {{ $ctx := .Values }}
   {{ $s := $ctx.dot }}
@@ -338,8 +413,15 @@ This template includes common API logic and functions.
   {{ end }}
   {{ $props := $s.Properties }}
   {{ if eq $s.Type "array" }}
-    {{ $props = $s.Items.Value.Properties }}
-    {{ $m.Set "ValueType" $s.Items.Value.Type }}
+    {{ $arrschema := $s.Items.Value }}
+    {{ $props = $arrschema.Properties }}
+    {{ $m.Set "ValueType" $arrschema.Type }}
+    {{ range $arrschema.AllOf }}
+      {{ range $k, $v := .Value.Properties }}
+        {{ $dollar.Set "dot" $v }}
+        {{ $m.SetInMap "Properties" $k (partial "openapi3/schema-to-map" (dict "dollar" $dollar "path" (path.Join $path $k) "isProperty" true "ordinal" $.ordinal)) }}
+      {{ end }}
+    {{ end }}
   {{ end }}
 
   {{ range $k, $v := $props }}
@@ -573,12 +655,12 @@ This template includes common API logic and functions.
     {{ $schema := partial "openapi3/schema-to-map" (dict "dollar" $) }}
     {{ $body := "{}" }}
     {{ with $schema.Example }}
-      {{ $body = . | jsonify (dict "indent" "  ") }}
+      {{ $body = . | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
     {{ else }}
       {{ $properties := $schema.Properties }}
       {{ with $properties }}
         {{ $v :=  partial "openapi3/get-response-example-properties" $properties }}
-        {{ $body = $v | jsonify (dict "indent" "  ") }}
+        {{ $body = $v | jsonify (dict "indent" "  " "noHTMLEscape" true) }}
       {{ end }}
     {{ end }}
     {{ $response.Set "body" $body }}

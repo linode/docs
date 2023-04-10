@@ -1,10 +1,6 @@
 ---
 slug: install-plex-media-server-on-ubuntu-18-04
-author:
-  name: Nick Brewer
-  email: nbrewer@linode.com
 description: 'Learn how to view and organize your media library with Plex on Ubuntu 18.04 in this detailed user guide.'
-og_description: 'Learn how to view and organize your media library with Plex on Ubuntu 18.04 in this detailed user guide.'
 keywords: ["plex media server", "install plex", "plex ubuntu"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +9,8 @@ modified: 2020-01-04
 modified_by:
   name: Linode
 published: 2017-05-03
-title: 'Install Plex Media Server on Ubuntu 18.04'
-h1_title: 'How to Install Plex Media Server on Ubuntu 18.04'
+title: 'How to Install Plex Media Server on Ubuntu 18.04'
+title_meta: 'Install Plex Media Server on Ubuntu 18.04'
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 dedicated_cpu_link: true
@@ -23,9 +19,10 @@ relations:
         key: how-to-install-plex
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Nick Brewer"]
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from anywhere. This guide shows you how to set up the **Plex Media Server** on your Linode running Ubuntu 18.04 LTS, as well as how to connect to your media server from a [Plex client application](https://www.plex.tv/apps-devices/. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from anywhere. This guide shows you how to set up the **Plex Media Server** on your Linode running Ubuntu 18.04 LTS, as well as how to connect to your media server from a [Plex client application](https://www.plex.tv/apps-devices/. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
 ![Install Plex Media Server on Ubuntu 18.04](install-plex-media-server-on-ubuntu-18-04.png)
 
@@ -35,9 +32,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Prerequisites to Install Plex Media Server on Ubuntu 18.04
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Create a [Plex account](https://www.plex.tv/). This is required to make use of the service, and provides additional features such as DVR capability and offline viewing if you pay for their premium [Plex Pass](https://www.plex.tv/features/plex-pass/). Purchasing a premium Plex Pass is optional.
 
@@ -51,7 +48,7 @@ This section shows you how to install the Plex Media Server on your Ubuntu 18.04
 
     ![Plex server downloads page.](download-plex-server-for-ubuntu.jpg)
 
-1. [Connect to your Ubuntu 18.04 Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) and use `wget` to download the installer via the copied link. Replace the link with your selected distribution as shown in the example below:
+1. [Connect to your Ubuntu 18.04 Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and use `wget` to download the installer via the copied link. Replace the link with your selected distribution as shown in the example below:
 
         wget https://downloads.plex.tv/plex-media-server/1.14.1.5488-cc260c476/plexmediaserver_1.14.1.5488-cc260c476_amd64.deb
 
@@ -82,7 +79,7 @@ In this section, you complete your server setup and start adding media libraries
 
     ![Plex web interface - Server Name.](plex-server-name.png)
 
-1.  Finally, [connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to create the directories that store your Plex media. In the example, you create library directories for `movies` and `television` within a `plex-media` directory. These are located within your user's home directory (`/home/username/`):
+1.  Finally, [connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to create the directories that store your Plex media. In the example, you create library directories for `movies` and `television` within a `plex-media` directory. These are located within your user's home directory (`/home/username/`):
 
         cd ~/
         mkdir -p plex-media/movies && mkdir plex-media/television

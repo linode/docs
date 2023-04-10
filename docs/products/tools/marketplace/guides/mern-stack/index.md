@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
 keywords: ['mongodb','mern','react','express', 'web app']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
@@ -10,15 +7,14 @@ published: 2019-04-02
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying a MERN Stack through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy a MERN Stack through the Linode Marketplace"
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[React Getting Started](https://reactjs.org/docs/getting-started.html)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
 aliases: ['/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/', '/guides/deploy-mern-with-one-click-apps/','/guides/deploy-mern-with-marketplace-apps/','/guides/mern-stack-marketplace-app/']
+authors: ["Linode"]
 ---
 
 A MERN (MongoDB, Express, React, Node.js) stack is a free and open-source web software bundle used to build modern web applications:
@@ -39,9 +35,9 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** The MERN stack should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -54,11 +50,13 @@ All of these technologies are well-established, offer robust feature sets, and a
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 After your MERN One-click App has finished installing, you can:
 
-- [Connect to your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
+- [Connect to your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). You need your Linode's root password to proceed.
 
 - Consult the following guides to learn more about working with the various components of the MERN stack:
 

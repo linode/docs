@@ -8,7 +8,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2022-06-17
+modified: 2022-11-16
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -51,11 +51,11 @@ Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabyte
 
 ## Technical Specifications and Considerations
 
-The following limits apply to all of a customer's buckets combined within the same data center:
+The following limits are per data center per account. They apply to all Object Storage resources deployed within each data center for each customer account.
 
-- **Storage space:** 5 TB
-- **Number of objects:** 50,000,000
-- **Number of buckets:** 1,000
+- **Storage space:** 5 TB (across all buckets for an account within a single data center)
+- **Number of objects:** 50,000,000 (across all buckets for an account within a single data center)
+- **Number of buckets:** 1,000 (for an account within a single data center)
 
 To increase these limits beyond their default values, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements.
 
@@ -66,10 +66,10 @@ To increase these limits beyond their default values, [contact the Support team]
 - Metered outbound network transfer, including traffic to other Linode services within the same data center (over both public IPv4 and IPv6 addresses)
 - Includes 1 TB (prorated) of transfer allowance per month
 
-See the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide for additional details, including costs for network transfer overages.
+See the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide for additional details, including costs for network transfer overages.
 
 ### Additional Limits and Specifications
 
-- **Upload file size limit:** 5 gigabytes. The maximum upload size of a single object is *5 gigabytes*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) and [cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) will do this for you automatically if a file exceeds this limit as part of the uploading process.
+- **Upload file size limit:** 5 GB. The maximum upload size of a single object is *5 GB*, though this can easily be overcome by using multi-part uploads. Both [s3cmd](/docs/products/storage/object-storage/guides/s3cmd) and [cyberduck](/docs/products/storage/object-storage/guides/cyberduck/) will do this for you automatically if a file exceeds this limit as part of the uploading process.
 - **Restricted characters:** Objects uploaded to object storage cannot contain the following special characters when using Cloud Manager or the Linode CLI: `" ' < > & + =`
 - **Rate limiting:** Users accessing Object Storage resources are limited to **750 requests per second**, per bucket.

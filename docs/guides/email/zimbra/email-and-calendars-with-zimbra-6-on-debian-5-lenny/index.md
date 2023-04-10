@@ -1,9 +1,6 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Debian 5 (Lenny) Linode.'
 keywords: ["zimbra debian 5", "zimbra lenny", "zimbra on debian", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["debian","email"]
@@ -19,6 +16,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Zimbra is a groupware system that provides email, calendaring, integrated antivi
 
 Please note that Zimbra is a fairly "heavy" (resource-intensive) product compared to some other groupware offerings. We recommend a Linode 2048 or higher for best results; you may encounter issues using Zimbra with lower-resource plans. Additionally, note that Zimbra works best as a standalone product on your Linode; installation alongside other common software such as web or email servers is not advised.
 
-We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), and that your system is up to date. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+We assume you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that your system is up to date. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Installing Prerequisite Packages
 

@@ -5,8 +5,6 @@ tab_group_main:
     weight: 30
 ---
 
-{{< content "nvme-block-storage-notice-shortguide" >}}
-
 ## Basics
 
 - [View, Create, and Delete Volumes](/docs/products/storage/block-storage/guides/manage-volumes/): Learn how to view and manage Block Storage Volumes.
@@ -27,7 +25,7 @@ tab_group_main:
 
 - [Boot a Linode from a Block Storage Volume](/docs/products/storage/block-storage/guides/boot-from-a-volume/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/guides/create-block-storage-volumes-with-the-linode-api/)
+- [Manage Block Storage Volumes with the Linode API](/docs/products/tools/api/guides/block-storage/)
 
 ### Kubernetes
 
