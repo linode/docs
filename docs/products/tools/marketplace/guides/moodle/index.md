@@ -59,4 +59,17 @@ From there, you can login by clicking the box on the top right of the page. Once
 
 Now that you’ve accessed your dashboard, checkout [the official Moodle documentation](https://docs.moodle.org/311/en/Main_page) to learn how to further configure your instance.
 
+## Software Included
+
+The Moodle Marketplace App will install the following required software on your Linode:
+
+| **Software** | **Description** |
+|:--------------|:------------|
+| [**PHP**](https://www.php.net) | A popular general-purpose scripting language that is especially suited to web development.. |
+| [**MariaDB Server**](https://mariadb.org) | A relational database server. The root password is set, protecting access outside the localhost. To gain access to the root user, get the password from `/root/.root_mysql_password` file. |
+| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility that allows access only for SSH (port 22, rate limited), HTTP (port 80), and HTTPS (port 443). |
+| [**Certbot**](https://certbot.eff.org) | Certbot is a fully-featured, easy-to-use, extensible client for the Let's Encrypt CA. |
+| [**Apache2**](https://httpd.apache.org) | HTTP Server. |
+
+
 {{< content "marketplace-update-note-shortguide">}}
