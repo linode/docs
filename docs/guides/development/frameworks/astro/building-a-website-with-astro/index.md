@@ -26,7 +26,7 @@ Learn more about Astro in this tutorial, covering Astro's key features and provi
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Astro?
@@ -39,7 +39,7 @@ Some of the key features of Astro are:
 
 - Un-opinionated when it comes to UI frameworks, meaning you can utilize virtually any UI framework such as React, Tailwind, or Vue.
 
-- Deploys across numerous services and is edge-ready, with support for static generation (SSG) and live server rendering (SSR)
+- Deploys across numerous services and is edge-ready, with support for Static Site Generation (SSG) and live server-side rendering (SSR)
 
 - Prioritizes server-side processing with no runtime JavaScript by default, which reduces client-side overhead
 
@@ -49,13 +49,13 @@ In short, Astro concerns itself less with developing web applications. Instead, 
 
 The best way to learn about Astro is to start using it. This tutorial walks you through the proces of setting up a default Astro project and through creating your own Astro website.
 
-### Installing the Prerequisites
+### Install the Prerequisites
 
-Astro only has one prerequisite: the Node Package Manager (NPM). You can install NPM by following our tutorial [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-npm).
+Astro only has one prerequisite: the Node Package Manager (NPM). You can install NPM by following our [Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-npm) guide.
 
-Afterward, you are ready to create a new Astro project.
+After you install the NPM, you are ready to create a new Astro project.
 
-### Creating an Astro Project
+### Create an Astro Project
 
 To create an Astro project, move into the directory where you would like your project to reside. Then run the following command:
 
@@ -71,7 +71,7 @@ npm create astro@latest
  astro   v1.9.1 Launch sequence initiated.
 ```
 
-Follow the prompts to complete the project creation. This tutorial uses the following responses for its example.
+Follow the prompts to complete the project creation. This guide uses the following responses for its example.
 
 - Create the project at `example-app`, which creates a new directory by that name for the Astro project
 
@@ -91,7 +91,7 @@ cd example-app
 
 The rest of the tutorial uses this directory, so be sure you are in this directory before executing any further commands.
 
-### Running the Astro Server
+### Run the Astro Server
 
 Astro projects comes with a development server and a default welcome page. The following command starts Astro's development server.
 
@@ -103,7 +103,7 @@ Astro serves the website on `localhost:3000` by default. You can access the serv
 
 - On **Windows**, you can use the PuTTY tool to set up your SSH tunnel. Follow the PuTTY section of our guide on how to [Create an SSH Tunnel for MySQL Remote Access](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/#how-to-access-mysql-remotely-by-creating-an-ssh-tunnel-with-putty). Use `3000` as the **Source port** and `127.0.0.1:3000` as the **Destination**.
 
-- On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` with your username on the remote server and `192.0.2.0` with the remote server's IP address:
+- On **macOS** or **Linux**, use the following command to set up the SSH tunnel. Replace `example-user` in the command below with your username on the remote server and `192.0.2.0` with the remote server's IP address.
 
     ```output
     ssh -L3000:localhost:3000 example-user@192.0.2.0
@@ -161,7 +161,7 @@ With the Astro template set up and an understanding of how Astro structures its 
 
 Additionally, the example makes use of the fact that Astro is UI-agnostic. The code leverages the [Tailwind CSS](https://tailwindcss.com/) framework, but other UI options are possible.
 
-#### Adding a UI Framework
+#### Add a UI Framework
 
 Astro includes a tool for installing many popular UI frameworks. You can learn more from the [official documentation](https://docs.astro.build/en/core-concepts/framework-components/), which includes a link to a list of supported frameworks.
 
@@ -173,7 +173,7 @@ npx astro add tailwind
 
 Answer `Yes` to each prompt, and at the end you should see `tailwind.config.cjs` in your project's base directory. This file controls the Tailwind configuration for your project. The example here uses the default configuration, but you can learn about the configuration possibilities in Tailwind's [official documentation](https://tailwindcss.com/docs/configuration).
 
-#### Creating Layouts
+#### Create Layouts
 
 Astro uses layout components to determine how content should be rendered. With a layout implemented, your content files do not have to include formatting details.
 
@@ -217,7 +217,7 @@ Typically, layouts are stored in the `src/layouts/` directory, and the default A
 
     The layout makes use of the `NavMenu` component you will develop in the next section. The layout also uses a `props` (short for properpties) value. This allows pages to pass a variable into the layout — in this case, a title for the page.
 
-1. Create another file in the `layouts/` directory, this one titled `BlogPostLayout.astro`. Give the file the contents shown here.
+1. Create another file in the `layouts/` directory, this one titled `BlogPostLayout.astro`. Give the file the contents shown below.
 
     ```file {title="src/layouts/BlogPostLayout.astro"}
     ---
@@ -234,17 +234,21 @@ Typically, layouts are stored in the `src/layouts/` directory, and the default A
     </BaseLayout>
     ```
 
+<<<<<<< HEAD
     This layout includes the `BaseLayout` as a nested layout. This allows you to build on to existing layouts and further reduce repeated code.
+=======
+    This layout includes the `BaseLayout` as a nested layout. Doing this allows you to build on layouts and further reduce repeated code.
+>>>>>>> e52554ad969319ee4092faa13eda9abd5c8b8f1f
 
     Like the previous layout, this one accepts variable data. Here, that data is the frontmatter from Markdown files, which we will explore later on.
 
-#### Creating Components
+#### Create Components
 
 Like many web frameworks, Astro utilizes reusable components, saving you from repeated code and keeping your website consistent. Astro websites typically store these components in the `src/components/` directory, and there you can find the `Card` component that is bundled with the default Astro project.
 
 This example uses a component for the navigation menu at the top of the website and a component for the blog list. Should your website expand, having these components can make it easier to adapt in the future.
 
-1. Create a `NavMenu.astro` file in the `components/` directory, and give the file the contents shown below.
+1. Create a `NavMenu.astro` file in the `components/` directory and give the file the contents shown below.
 
     ```file {title="src/Components/NavMenu.astro"}
     <nav class="flex flex-wrap items-center justify-between w-full p-1 md:p-3 text-lg">
@@ -301,7 +305,7 @@ This example uses a component for the navigation menu at the top of the website 
 
     This component takes two input values and creates a list of titles and links. This approach makes the component easier to adapt for additional lists of content your website may incorporate later.
 
-#### Creating Pages
+#### Create Pages
 
 Astro can render pages from several content formats.
 
@@ -354,11 +358,11 @@ The examples that follow employ the two most frequently used of these formats: `
     This is content for the first blog post.
     ```
 
-#### Running Your Astro Website
+#### Run Your Astro Website
 
 You can use the same steps as in the [Running the Astro Server](/docs/guides/building-a-website-with-astro/#running-the-astro-server) section above to run your website locally.
 
-Navigating to `localhost:3000`, you should see the homepage for your website.
+Navigating to `localhost:3000`, you should see the homepage of your website.
 
 [![The homepage for the example Astro website](example-site-home_small.png)](example-site-home.png)
 
@@ -374,7 +378,7 @@ You can see that manipulating your browser's width changes how the top menu disp
 
 Up to this point, Astro has been running on a development server that is not suited for production websites. When your website is production ready, you need to consider how you want to deploy it.
 
-For most options, you first need to build your website, rendering it into static content. You can do this using Astro's build command via NPM, as shown here.
+For most options, you first need to build your website, rendering it into static content. You can do this using Astro's build command via NPM, as shown below.
 
 ```command
 npm run build
@@ -384,7 +388,7 @@ This creates a `dist/` directory within your project that contains the static fi
 
 With Linode, you have two immediate options for deploying your newly-built website.
 
-- Using a [Linode Compute Instance](/docs/products/compute/shared-cpu/). This method uses an HTTP server like NGINX or Apache to serve the static files. You can learn more through our tutorial [Set up a Web Server and Host a Website on Linode](/docs/guides/set-up-web-server-host-website/). In this case, you would move your site's files from `dist/` to `/var/www/example.com`, replacing `example.com` with your actual domain name.
+- Using a [Linode Compute Instance](/docs/products/compute/shared-cpu/). This method uses an HTTP server like NGINX or Apache to serve the static files. You can learn more through our [Set up a Web Server and Host a Website on Linode](/docs/guides/set-up-web-server-host-website/) guide. In this case, you would move your site's files from `dist/` to `/var/www/example.com`, replacing `example.com` with your actual domain name.
 
 - Using a [Linode Object Storage](/docs/products/storage/object-storage/) bucket. This method stores your website's built files within an object storage instance, where they can be accessed as a static website. Hosting your website in this way has the advantage of not having to set up and maintain the infrastructure for an HTTP server. You can see an example of this deployment through our tutorial [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/). The `public/` directory in that tutorial would be equivalent to the `dist/` directory with Astro.
 
