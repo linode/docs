@@ -1350,6 +1350,7 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
 msfvenom
@@ -1690,6 +1691,7 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
 logic-programming-languages
