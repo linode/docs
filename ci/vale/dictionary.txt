@@ -88,6 +88,7 @@ askbot
 aske
 Astra
 async
+astro
 asynchrony
 atera
 atlanta
@@ -1350,6 +1351,7 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
 msfvenom
@@ -1690,6 +1692,7 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
 logic-programming-languages
