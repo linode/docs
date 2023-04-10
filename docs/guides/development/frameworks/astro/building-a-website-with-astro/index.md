@@ -3,7 +3,7 @@ slug: building-a-website-with-astro
 description: "Astro is a web development framework centered on content. With Astro you get a framework that adapts to the tools you use, and all of Astro's design favors putting your content out there. Learn about how Astro accomplishes this and how you can get started building your Astro website with this tutorial."
 keywords: ['astro website builder','astro web','astro framework']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-01-10
+published: 2023-04-10
 modified_by:
   name: Nathaniel Stickman
 title: "How to Build a Website with Astro"
