@@ -4,7 +4,7 @@ description: 'This guide explains how to install and configure Collabora CODE an
 keywords: ['install Collabora', 'configure Collabora', 'Collabora and Nextcloud', 'integrate Collabora into Nextcloud']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-14-10
+published: 2023-04-10
 modified_by:
   name: Linode
 title: "Install and Configure Collabora CODE"
