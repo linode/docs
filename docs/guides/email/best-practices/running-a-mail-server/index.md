@@ -1,8 +1,5 @@
 ---
 slug: running-a-mail-server
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ modified: 2022-12-23
 title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
+authors: ["Linode"]
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
@@ -26,7 +24,7 @@ If you do, you'll have control over your domain's email, but you'll also have to
 
 In an effort to fight spam, Linode may restrict outbound connections on ports 25, 465, and 587 on Linodes for new accounts created after November 5th, 2019.
 
-To have these restrictions removed, we ask that you first configure (1) [valid DNS A records](/docs/products/networking/dns-manager/guides/manage-dns-records/) and (2) [rDNS records](/docs/guides/configure-rdns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
+To have these restrictions removed, we ask that you first configure (1) [valid DNS A records](/docs/products/networking/dns-manager/guides/manage-dns-records/) and (2) [rDNS records](/docs/products/compute/compute-instances/guides/configure-rdns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
 
 Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
 
@@ -200,11 +198,11 @@ Make sure your SPF records are not too strict. If you accidentally exclude a leg
 
 #### Reverse DNS
 
-[Set reverse DNS](/docs/guides/configure-rdns/) for your mail server's domain or subdomain.
+[Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your mail server's domain or subdomain.
 
 The reverse DNS for your mail server must match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner."
 
-If you need to check or set the hostname, see our [Getting Started](/docs/guides/getting-started/#setting-the-hostname) article.
+If you need to check or set the hostname, see our [Getting Started](/docs/products/platform/get-started/#setting-the-hostname) article.
 
 ## Spam and Virus Protection, Mail Clients, and More
 
@@ -253,7 +251,7 @@ Here are some of the typical mail ports:
 * `587`: SMTP (The preferred non-encrypted port for outgoing connections from mail clients. Use STARTTLS for encryption.)
 * `465`: SMTP (should only be used for legacy support)
 
-If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) for more information.
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See Linode's guide to [configuring a firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for more information.
 
 ### Webmail
 

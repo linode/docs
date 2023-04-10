@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configurations for common DNS records.'
 og_description: 'This guide provides you with step-by-step instructions for using the Linode Cloud Manager to configure DNS records such as A, AAA, MX, and other DNS records.'
 keywords: ["dns", "dnssec"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
+authors: ["Linode"]
 ---
 
 {{< youtube Vb1JsfZlFLE >}}

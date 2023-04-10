@@ -1,8 +1,5 @@
 ---
 slug: disabling-sslv3-for-poodle
-author:
-  name: Dave Russell
-  email: drussell@linode.com
 description: 'Instructions on disabling SSLv3 to protect against the POODLE vulnerability'
 keywords: ["sslv3", "poodle", "security", "patch", "ubuntu", "debian", "centos", "fedora"]
 tags: ["web server","security","ssl"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2014-10-15
 title: Disabling SSLv3 for POODLE
 aliases: ['/security/security-patches/disabling-sslv3-for-poodle/']
+authors: ["Dave Russell"]
 ---
 
 ![Disabling_sslv3_for_poodle](Disabling_SSLv3_for_POODLE_smg.jpg)

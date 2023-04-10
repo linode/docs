@@ -1,8 +1,5 @@
 ---
 slug: kotlin-vs-java-understanding-their-differences
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
 description: "In this guide you learn about the Kotlin programming language and how it's different from Java."
 keywords: ['kotlin vs java', 'what is kotlin', 'what is kotlin used for']
 tags: ['java']
@@ -12,8 +9,7 @@ modified_by:
   name: Linode
 title: "Kotlin vs. Java: Key Differences"
 title_meta: "Kotlin vs. Java: Understanding their Differences"
-contributor:
-  name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 ## What is Kotlin?

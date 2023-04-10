@@ -1,8 +1,5 @@
 ---
 slug: beginners-guide-to-lxd-reverse-proxy
-author:
-  name: Linode
-  email: docs@linode.com
 description: "In this tutorial, we explain how to create a reverse proxy in an LXD container in order to host multiple websites, each in their own additional containers."
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization"]
 tags: ["proxy","ubuntu","container","apache","nginx"]
@@ -13,9 +10,6 @@ modified_by:
   name: Linode
 title: "A Beginner's Guide to LXD: Setting Up a Reverse Proxy to Host Mulitple Websites"
 title_meta: "How to Set Up a Reverse Proxy to Host Websites in LXD"
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
@@ -26,6 +20,7 @@ external_resources:
   - '[Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/)'
   - '[TLS Termination Proxy](https://en.wikipedia.org/wiki/TLS_termination_proxy)'
 aliases: ['/applications/containers/beginners-guide-to-lxd-reverse-proxy/']
+authors: ["Simos Xenitellis"]
 ---
 
 ## Introduction

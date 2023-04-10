@@ -1,8 +1,5 @@
 ---
 slug: install-odoo-10-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows you how to install and configure Odoo, an open-source suite of over 4,500 business utilities which you can individually install, on Ubuntu 16.04.'
 keywords: ["Odoo", "Odoo ERP", "CMS", "Ubuntu", "CRM", "OpenERP", "Odoo 10", "Ubuntu 16.04"]
 tags: ["ubuntu"]
@@ -12,12 +9,11 @@ modified: 2018-01-02
 modified_by:
   name: Linode
 title: 'Install Odoo 10 on Ubuntu 16.04'
-contributor:
-  name: Damaso Sanoja
 aliases: ['/websites/cms/install-odoo-10-on-ubuntu-16-04/','/websites/erp/install-odoo-10-on-ubuntu-16-04/']
 external_resources:
  - '[Odoo User Documentation](https://www.odoo.com/documentation/user/10.0/)'
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'
+authors: ["Damaso Sanoja"]
 ---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.
@@ -30,9 +26,9 @@ This guide covers how to install and configure Odoo in under an hour using Git s
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for an Odoo production server in the next section.
 
 ## Configure UFW Firewall for Odoo
 

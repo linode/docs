@@ -1,9 +1,6 @@
 ---
 slug: apache-web-server-on-centos-6
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Install Apache on your CentOS 6 server, configure virtual hosting, and set up mod and scripting support.'
 keywords: ["Apache", "web sever", "CentOS 6", "centos", "apache 2", "httpd"]
 tags: ["centos","web server","apache"]
@@ -22,6 +19,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 6
+authors: ["Alex Fornuto"]
 ---
 
 ![Apache Web Server on CentOS 6](Apache_Web_Server_smg.jpg)
@@ -36,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 

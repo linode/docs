@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Yacht is a web interface for managing Docker containers, with an emphasis on templating. Learn how to deploy Yacht on Linode using Marketplace Apps."
 keywords: ['yacht','marketplace','server', 'docker', 'docker-compose']
 tags: ["marketplace", "linode platform", "cloud manager", "docker", "container"]
@@ -11,12 +8,11 @@ modified: 2022-12-16
 image: DeployYacht_marketplaceapps.png
 modified_by:
   name: Linode
-contributor:
-  name: Linode
 title: "Deploy Yacht through the Linode Marketplace"
 aliases: ['/guides/deploy-yacht-with-marketplace-apps/','/guides/yacht-marketplace-app/']
 external_resources:
 - '[Getting Started](https://yacht.sh/docs/Installation/Getting_Started)'
+authors: ["Linode"]
 ---
 
 [Yacht](https://yacht.sh/) is a web interface for managing Docker containers, with an emphasis on templating to provide easy deployments. The ultimate goal of Yacht is to make Docker easy for anyone to use and manage with templates, template variables, and an intuitive UI.
@@ -46,13 +42,15 @@ Keep in mind, Yacht is still in alpha and is not recommended for production use.
 - **Yacht Password** *(required)* The password for your Yacht login.
 - **Yacht Compose Support:** Support for using Yacht with [Docker Compose](https://yacht.sh/Advanced/docker-compose/). - **Yacht Theme:** Yacht theme options: Default, RED, and OMV.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access your Yacht App
 
 1. After Yacht has finished installing, you can access your Yacht instance by visiting your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/) at port 8000 (for example, `http://192.0.2.0:8000`) in a web browser.
 
-    {{< note type="alert" >}}
+    {{< note type="warning" >}}
     By default Yacht is not configured to use SSL, meaning that your login credentials will be sent over plain text. See [Additional Steps for SSL](#additional-steps-for-ssl) for guidance on how to encrypt your connection.
     {{< /note >}}
 

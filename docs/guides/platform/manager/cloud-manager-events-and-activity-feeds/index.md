@@ -1,8 +1,5 @@
 ---
 slug: cloud-manager-events-and-activity-feeds
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Understanding events and a Linode's activity feed in the Linode Cloud Manager"
 keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/', '/guides/what-are-the-cloud-manager-events-and-activity-feeds/']
+authors: ["Linode"]
 ---
 
 Most actions that occur on an account or to a particular service are logged as *events*. These events include services being created (or deleted), a change in a Linode's power state (such as powering off or rebooting), and many other actions. All events are stored to an account for 90 days.

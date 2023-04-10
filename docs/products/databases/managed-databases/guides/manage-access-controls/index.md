@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Manage Access Controls"
 description: "Learn how to manage access controls on a Managed Database, including allowing connections from specific IP addresses."
+authors: ["Linode"]
 ---
 
 Each Managed Database cluster has its own access control list, which allows specific IPv4 addresses or ranges to connect to the database. By default, all connections (both public and private) are blocked unless they appear on this list.

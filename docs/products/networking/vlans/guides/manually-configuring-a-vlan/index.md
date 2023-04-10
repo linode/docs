@@ -5,7 +5,7 @@ tab_group_main:
 modified: 2022-08-23
 ---
 
-When a VLAN is assigned to a network interface and given an IPAM address, the Compute Instance should automatically be able to communicate over that private network. This is due to [Network Helper](/docs/guides/network-helper/), which is enabled by default on most instances. For compatible distributions, Network Helper adjusts the internal network configuration files. Any network interfaces defined in the Compute Instance's selected [Configuration Profile](/docs/guides/linode-configuration-profiles/) (including those with VLANs attached) are automatically configured.
+When a VLAN is assigned to a network interface and given an IPAM address, the Compute Instance should automatically be able to communicate over that private network. This is due to [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/), which is enabled by default on most instances. For compatible distributions, Network Helper adjusts the internal network configuration files. Any network interfaces defined in the Compute Instance's selected [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (including those with VLANs attached) are automatically configured.
 
 This guide is for users that have disabled Network Helper on their Compute Instance or prefer not to assign an IPAM address within the Configuration Profile. In these cases, the Compute Instance's internal network configuration files must be manually adjusted. The following sections will cover the changes needed to manually configure a VLAN on common Linux distributions.
 
@@ -19,9 +19,9 @@ Ubuntu Server 18.04 and later versions use Netplan to configure networking, with
 
 ### Manually Configuring a VLAN in Ubuntu 18.04
 
-1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
+1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
 
-1. Log in to the Compute Instance via [Lish](/docs/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
+1. Log in to the Compute Instance via [Lish](/docs/products/compute/compute-instances/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
 1. Using your preferred editor, edit the configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Adjust `Name` to match the correct network interface and `Address` to match your desired IPAM address:
 
@@ -46,9 +46,9 @@ Debian 7 and above, as well as Ubuntu 16.04, all use ifup and ifdown to manage n
 
 ### Manually Configuring a VLAN in Debian and Ubuntu 16.04
 
-1. Check if Network Helper is enabled or disabled. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on locating this setting. Network Helper should not interfere with any of the changes below, but its status may impact the files that you're able to edit.
+1. Check if Network Helper is enabled or disabled. See [Enable or Disable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper) for information on locating this setting. Network Helper should not interfere with any of the changes below, but its status may impact the files that you're able to edit.
 
-1. Log in to the Compute Instance via [Lish](/docs/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
+1. Log in to the Compute Instance via [Lish](/docs/products/compute/compute-instances/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
 1. Edit (or create) the specific configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. Replace `eth1` with the correct network interface and adjust `address` to match your desired IPAM address:
 
@@ -75,9 +75,9 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 
 ### Manually Configuring a VLAN in CentOS and Fedora
 
-1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
+1. Verify that Network Helper is disabled to avoid it overwriting any changes on the next reboot. See [Enable or Disable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#enable-or-disable-network-helper) for information on adjusting Network Helper settings.
 
-1. Log in to the Compute Instance via [Lish](/docs/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
+1. Log in to the Compute Instance via [Lish](/docs/products/compute/compute-instances/guides/lish/). While it's possible to make changes while logged in over SSH, you may get disconnected if changes are made to the network interface assigned to the public internet.
 
 1. Edit the configuration file corresponding to the network interface assigned to the VLAN. Replace the contents with the following text. If needed, adjust `NAME` and `DEVICE` to match the correct network interface and `IPADDR0` and `PREFIX0` to match your desired IPAM address and prefix:
 
@@ -108,4 +108,4 @@ CentOS 7 and above, as well as Fedora, all use systemd-networkd and NetworkManag
 
 ## Additional Configuration Instructions
 
-For more details regarding manually configuring IP addresses, see the [Manual Network Configuration on a Compute Instance](/docs/guides/manual-network-configuration/) guide.
+For more details regarding manually configuring IP addresses, see the [Manual Network Configuration on a Compute Instance](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide.

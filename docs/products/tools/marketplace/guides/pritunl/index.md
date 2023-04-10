@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy Pritunl on a Linode Compute Instance. This provides you with an open source VPN server and management panel."
 keywords: ['pritunl','vpn','security','openvpn']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -12,11 +9,10 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Pritunl through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Pritunl](https://pritunl.com/)'
 aliases: ['/guides/deploying-pritunl-marketplace-app/','/guides/pritunl-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Pritunl is an open source VPN server and management panel. It gives the user the power of the OpenVPN protocol while using an intuitive web interface.
@@ -38,11 +34,12 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 ### Pritunl Options
 
-
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

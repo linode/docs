@@ -1,8 +1,5 @@
 ---
 slug: install-ruby-with-rvm
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Ruby on Linux using RVM.'
 keywords: ["ruby", "rvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ show_on_rss_feed: false
 title: 'Install Ruby Using RVM'
 tags: ["ruby"]
 aliases: ['/development/ror/install-ruby-with-rvm/']
+authors: ["Linode"]
 ---
 
 1.  Install the mpapis GPG key:

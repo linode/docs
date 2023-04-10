@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Ikiwiki on Debian to power a standard wiki implementation.'
 keywords: ["ikiwiki debian lenny", "ikiwiki debian 5", "ikiwiki", "wiki", "perl", "git", "markdown", "debian"]
 tags: ["wiki","debian"]
@@ -19,6 +16,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

@@ -1,28 +1,23 @@
 ---
 slug: how-to-enable-disable-website
-author:
-  name: Jeff Novotny
-description: "This guide explains how to quickly disable a website running on Apache or NGINX, along with what's involved in re-enabling it."
+description: "Is your site enabled with NGINX or Apache? This guide explains how to quickly disable a website running on Apache/NGINX, & what's involved in re-enabling it"
 keywords: ['enable website','disable website','apache','nginx']
 tags: ['apache', 'nginx', 'ubuntu', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-17
 modified_by:
   name: Linode
-title: "Enabling and Disabling a Website Running on Apache or NGINX"
-title_meta: "Enable and Disable a Website Running on Apache or NGINX"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Sites Enabled with NGINX or Apache"
+title_meta: "How to Enable Sites in NGINX or Apache"
 external_resources:
 - '[NGINX](https://www.nginx.com/)'
 - '[Apache Web Server](https://httpd.apache.org/)'
-
+authors: ["Jeff Novotny"]
 ---
 
 There may be times when you have to temporarily disable a website. For example, you might have to satisfy a legal requirement or make an emergency content change. Fortunately, you do not have to completely delete or radically reconfigure a website to disable it. This guide provides instructions on how to quickly disable and re-enable a website, based on the webserver and Linux distribution.
 
-The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode. See the section that corresponds to either NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
+The instructions for disabling and re-enabling a website depend on the webserver that is installed on your Linode. See the section that corresponds to sites enabled with NGINX or Apache. Throughout these instructions, replace the placeholder site name of `example.com` with your own domain name.
 
 {{< note respectIndent=false >}}
 Taking a site offline, even temporarily, can affect its *Search Engine Optimization* (SEO) ratings. If you only want to briefly disable a site for maintenance reasons, consider using a temporary redirect instead.
@@ -30,7 +25,7 @@ Taking a site offline, even temporarily, can affect its *Search Engine Optimizat
 
 ## Disable and Enable a Website on the NGINX Web Server
 
-By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems use the `sites-available` and `sites-enabled` directories to control website access. This approach is often used even on other Linux systems. If the Linode is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
+By default, [*NGINX*](https://www.nginx.com/) installed on Ubuntu and Debian systems use the `sites-available` and `sites-enabled` directories or folders to control website access. This approach is often used even on other Linux systems. If the Linode is already using these two directories, follow the instructions in the [Use the Sites-Enabled Directory](#use-the-sites-enabled-directory) subsection. Otherwise, skip to the [Use the Virtual Host File on the NGINX Web Server](/docs/guides/how-to-enable-disable-website/#use-the-virtual-host-file-on-the-nginx-web-server) subsection.
 
 ### Use the Sites-Enabled Directory
 
@@ -67,7 +62,7 @@ To disable and enable a website, follow these directions.
 
 Some Linux systems do not use the `sites-available` and `sites-enabled` directories. In this case, you can disable a site by renaming the virtual host file. In a typical NGINX installation, the web server is specifically searching for host files ending with `.conf`. So you can "hide" a virtual host by changing its extension.
 
-1. Locate the virtual host file you created for the domain using the `sudo nginx -T | grep example.com` command. Change to its parent directory.
+1. Find the location of the virtual host file you created for the domain using the `sudo nginx -T | grep example.com` command. Change to its parent directory.
 
         cd etc/nginx/conf.d/
 1. Change the extension of the `.conf` file to something else, such as `.disable`.
@@ -97,7 +92,7 @@ The `a2dissite` and `a2ensite` tools greatly simplify the process of disabling a
 1. Disable the site using the `a2dissite` command followed by the site name. Enter the name used for the virtual host `.conf` file, without the extension.
 
         a2dissite example.com
-1. Reload the Apache configuration to apply the changes.
+1. Reload the Apache configuration to apply the modified changes.
 
         sudo systemctl reload apache2
     {{< note respectIndent=false >}}
@@ -141,7 +136,7 @@ If the `a2dissite` and `a2ensite` tools are not installed, edit the virtual host
 
         sudo systemctl restart httpd.service
 1. Try to access the domain using a web browser. The site should no longer resolve.
-1. To re-enable the site, uncomment the contents of the `.conf` file. Remove the `#` symbols preceding each of the lines in the file.
+1. To re-enable the site, open the `.conf` file and uncomment these lines. Remove the `#` symbols preceding each of the lines in the file.
 
     {{< file "/etc/httpd/vhost.d/example.com.conf" aconf >}}
  <VirtualHost *:80>

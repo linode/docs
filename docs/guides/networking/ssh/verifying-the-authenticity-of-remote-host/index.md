@@ -1,8 +1,5 @@
 ---
 slug: verifying-the-authenticity-of-remote-host
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A tutorial outlining how and why you should verify a host key's fingerprint when connecting to a server over a new SSH connection."
 keywords: ['ssh','linux','mac','connect to server over ssh','fingerprint']
 tags: ['ssh', 'security']
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 title: "Verifying the Authenticity of a Remote Server through Its SSH Key Fingerprint"
 title_meta: "Verifying the Authenticity of Remote Host (SSH Key Fingerprint)"
+authors: ["Linode"]
 ---
 
 ## Warning: The Authenticity of Host Can't Be Established
@@ -34,7 +32,7 @@ Make a note of both the algorithm and the displayed fingerprint as you continue 
 
 ## Verifying the Host Key Fingerprint
 
-1.  Log in to your remote server through a trusted method. For a Linode Compute Instance, use [Lish](/docs/guides/lish/).
+1.  Log in to your remote server through a trusted method. For a Linode Compute Instance, use [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Run one of the commands below to output your server's SSH key fingerprint, depending on which algorithm the fingerprint was displayed on your new machine:
 

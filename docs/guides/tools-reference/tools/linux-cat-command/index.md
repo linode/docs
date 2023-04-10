@@ -1,8 +1,5 @@
 ---
 slug: linux-cat-command
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "The cat command is one of the most frequently used commands in Linux, noteworthy for its versatility for viewing and creating file contents. Get your introduction to this must-know tool in this tutorial, covering everything you need to start using the Linux cat command."
 keywords: ['linux cat command','cat linux','what is cat command linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,13 +7,11 @@ published: 2022-06-16
 modified_by:
   name: Nathaniel Stickman
 title: "The Linux cat Command"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[phoenixNAP: How to Use Linux Cat Command (with Examples)](https://phoenixnap.com/kb/linux-cat-command)'
 - '[Tecmint: 13 Basic Cat Command Examples in Linux](https://www.tecmint.com/13-basic-cat-command-examples-in-linux/)'
 - '[GeeksforGeeks: Cat Command in Linux with Examples](https://www.geeksforgeeks.org/cat-command-in-linux-with-examples/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 You may sometimes find yourself wanting to quickly view text files from the command line. The most frequently used tool for doing so is the *cat* command. Short for "con*cat*enate," the command shows the contents of text files as output to the command line.
@@ -199,5 +194,3 @@ This is a line	with a tab.
 ## Conclusion
 
 This guide gave you the know-how you need to start using *cat* for viewing and even working with text-based files from the command line. Having a good basis in this frequently-used Linux command can make working with files on the command line smoother and easier.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

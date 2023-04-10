@@ -1,9 +1,6 @@
 ---
 slug: beginners-guide-to-kubernetes-part-5-conclusion
-author:
-  name: Andy Stevens
-  email: docs@linode.com
-description: 'This is part five, the conclusion, of a beginners guide to Kubernetes where you were introduced to several concepts relating to Kubernetes technology.'
+description: "This is part five, the conclusion, of a beginner's guide to Kubernetes where you were introduced to several concepts relating to Kubernetes technology."
 keywords: ['kubernetes','k8s','beginner','architecture']
 tags: ["networking","kubernetes","container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,19 +8,17 @@ published: 2019-07-29
 modified_by:
   name: Linode
 title: "A Beginner's Guide to Kubernetes (Part 5): Conclusion"
-title_meta: "Beginner's Guide to Kubernetes (Part 5): Conclusion"
-contributor:
-  name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-conclusion/','/kubernetes/beginners-guide-to-kubernetes-part-5-conclusion/']
+authors: ["Linode"]
 ---
 
-![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png "A Beginner's Guide to Kubernetes")
+![A Beginner's Guide to Kubernetes](beginners-guide-to-kubernetes.png)
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This is the fifth guide in the [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series that explains the major parts and concepts of Kubernetes.
 {{< /note >}}
 
@@ -59,10 +54,10 @@ There are a number of advanced topics in Kubernetes. Below are a few you might f
 
 ## Next Steps
 
-Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/getting-started-with-kubernetes/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
+Now that you are familiar with Kubernetes concepts and components, you can follow the [Getting Started with Kubernetes: Use kubeadm to Deploy a Cluster on Linode](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/) guide. This guide provides a hands-on activity to continue learning about Kubernetes.
 
 If you would like to deploy a Kubernetes cluster on Linode for production use, we recommend using one of the following methods instead. These methods are also a much faster way to get a cluster running, and they will also integrate your cluster with some useful Linode plugins:
 
   - [How to Deploy Kubernetes on Linode with Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/)
   - [Use the Linode Terraform Provider](https://www.terraform.io/docs/providers/linode/index.html)
-  - [Try the Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
+  - [Try the Linode Kubernetes Engine](/docs/products/compute/kubernetes/)

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-use-the-bat-command-on-linux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows you how to use the bat command, a clone of the default cat command that supports syntax highlighting and Git integration."
 keywords: ['linux bat','linux bat command','linux cat vs bat']
 tags: ['linux']
@@ -12,20 +9,18 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install and Use the Linux bat Command"
 title_meta: "How to Install and Use the Linux bat Command"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[GitHub: sharpdp/bat](https://github.com/sharkdp/bat)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The `bat` command is a clone of the ubiquitous `cat` command. It modernizes `cat` with a more readable design and features like syntax highlighting and a Git integration. This guide details how `bat` compares with its predecessor and shows you how to install and start using it on your Linux system.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

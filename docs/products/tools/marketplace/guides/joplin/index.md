@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Joplin on a Linode Compute Instance. Joplin is an open source note-taking app."
 keywords: ['productivity','notes','docs']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -12,6 +9,7 @@ modified_by:
 title: "Deploy Joplin through the Linode Marketplace"
 external_resources:
 - '[Joplin](https://joplinapp.org/)'
+authors: ["Linode"]
 ---
 
 [Joplin](https://joplinapp.org/) is an open source application designed to take notes using the [Markdown format](https://joplinapp.org/markdown/). It is available on many different platforms, including Windows, macOS, Linux, Android, and iOS. To synchronize your notes across multiple devices, you need to enable synchronization. Synchronization can be facilitated through a service like Nextcloud, Dropbox, OneDrive, the Joplin Cloud, or the Joplin Server software. Our Joplin Marketplace App installs the Joplin Server software, enabling you to securely take control of your own data and enable synchronization between all of your devices.
@@ -40,13 +38,15 @@ external_resources:
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Joplin Server
 
 The Joplin server dashboard allows you to manage your account, add other users, and perform various administration tasks. Before using your new Joplin instance to take notes, you should first log in to the admin dashboard and update your profile using the instructions below.
 
-1. Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address, though your connection will not be encrypted. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. In the login prompt that appears, enter `admin@localhost` as the **Email** and `admin` as the **Password**. Click **Login** to continue.
 

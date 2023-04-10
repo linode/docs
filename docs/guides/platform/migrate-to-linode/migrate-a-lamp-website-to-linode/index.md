@@ -1,8 +1,5 @@
 ---
 slug: migrate-a-lamp-website-to-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: 'How to migrate a LAMP website from another hosting provider to Linode.'
 keywords: ["lamp", "migrate", "website migration"]
 tags: ["linode platform","lamp"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2018-07-31
 title: How to Migrate a LAMP Website to Linode
 aliases: ['/platform/migrate-to-linode/migrate-a-lamp-website-to-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 This guide describes how to migrate a website running in a [LAMP](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/#what-is-a-lamp-stack) environment on another host to a new Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
@@ -23,13 +21,13 @@ This guide includes commands that need to be run at the command line of your cur
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges. The examples below assume this user is named `linode_user`.
 
 ### Install LAMP
 
-1.  [Connect to your Linode via SSH.](/docs/guides/set-up-and-secure/#connect-to-the-instance)
+1.  [Connect to your Linode via SSH.](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance)
 
 1.  If you did not do so previously, update your software:
 

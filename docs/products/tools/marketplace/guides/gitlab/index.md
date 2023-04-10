@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This is a step-by-step guide on how to deploy the GitLab application, a solution for your software development needs, by using the Linode Marketplace."
 keywords: ['gitlab','marketplace apps','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
@@ -11,11 +8,10 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Gitlab through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[GitLab Adminstrator Documentation](https://docs.gitlab.com/ee/administration/)'
 aliases: ['/platform/one-click/deploy-gitlab-with-one-click-apps/','/guides/deploy-gitlab-with-one-click-apps/', '/platform/marketplace/deploy-gitlab-with-marketplace-apps/', '/guides/deploy-gitlab-with-marketplace-apps/','/guides/gitlab-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [GitLab](https://about.gitlab.com/) is a complete solution for all aspects of your software development. At its core, GitLab serves as your centralized remote Git repository. GitLab also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.
@@ -45,6 +41,8 @@ Self-hosting your software development with GitLab offers total control of your 
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access the GitLab Site
@@ -53,7 +51,7 @@ Once your new Compute Instance has been fully deployed, follow the instructions 
 
 1. **Find the Gitlab root password:** Before logging in to your Gitlab site, you need to obtain the Gitlab root password that was generated during provisioning.
 
-    1. Log in to your new Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
+    1. Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
 
     1.  Enter the following command in the lish console or terminal session:
 
@@ -61,7 +59,7 @@ Once your new Compute Instance has been fully deployed, follow the instructions 
 
         The Gitlab root password is displayed within the output of that command.
 
-1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing and setting the rDNS value.
+1. **Log in to your Gitlab site:** Open a web browser and enter either your Compute Instance's default rDNS domain or your domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
     When presented with a login screen, enter the following credentials:
 

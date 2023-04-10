@@ -1,8 +1,5 @@
 ---
 slug: install-plex-media-server-with-salt
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows you how to install Plex Media Server, an application that organizes and can stream your photos, videos, music, and more, using Salt.'
 keywords: ['plex','media','server','ubuntu 18.04','ubuntu','salt','saltstack']
 tags: ["ubuntu", "salt"]
@@ -13,23 +10,22 @@ modified_by:
   name: Linode
 title: "Installing Plex Media Server on Ubuntu 18.04 Using Salt Masterless"
 title_meta: "How to Install Plex Media Server on Ubuntu 18.04 Using Salt"
-contributor:
-  name: Linode
 external_resources:
   - '[Salt Masterless Walkthough](https://docs.saltstack.com/en/latest/topics/tutorials/quickstart.html)'
   - '[Salt Fileserver Backend Walthrough](https://docs.saltstack.com/en/latest/topics/tutorials/gitfs.html)'
   - '[Plex Media Server Quick State](https://support.plex.tv/articles/200264746-quick-start-step-by-step-guides/)'
 dedicated_cpu_link: true
 aliases: ['/applications/media-servers/install-plex-media-server-with-salt/']
+authors: ["Linode"]
 ---
 
 Plex is a media server that allows you to stream video and audio content that you own to many different types of devices. In this guide you will learn how to use a masterless Salt minion to set up a Plex server, attach and use a Block Storage Volume, and how to connect to your media server to stream content to your devices.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. Follow the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1. Follow the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1.  Update your system:
 
@@ -153,7 +149,7 @@ disk.format:
     - group: plex
 {{< /file >}}
 
-    The directories that are created during this step are for organizational purposes, and will house your media. Make sure you replace `username` with the name of the limited user account you created when following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. The location of the directories is the volume you mounted in the previous step. If you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
+    The directories that are created during this step are for organizational purposes, and will house your media. Make sure you replace `username` with the name of the limited user account you created when following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. The location of the directories is the volume you mounted in the previous step. If you wish to add more directories, perhaps one for your music media, you can do so here, just be sure to include the `- require` block, as this prevents Salt from trying to create the directory before the Block Storage Volume has been mounted.
 
 1.  Go to the [Plex Media Server download page](https://www.plex.tv/media-server-downloads/#plex-media-server) and note the most recent version of their Linux distribution. At the time of writing, the most recent version is `1.13.9.5456-ecd600442`. Create the `plex.sls` Pillar file in `/srv/pillar` and change the Plex version number and the name of your Block Storage Volume as necessary:
 

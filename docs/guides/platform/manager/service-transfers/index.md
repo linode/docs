@@ -1,8 +1,5 @@
 ---
 slug: service-transfers
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Transfer your Linode services to another account conveniently with Service Transfers."
 keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
 tags: ["cloud manager","linode platform","account"]
@@ -15,6 +12,7 @@ image: TransferOwn_LinodeServ_ST.png
 title: Transferring Ownership of Linode Services with Service Transfers
 title_meta: How to Transfer Ownership of Linode Services
 aliases: ['/guides/platform/manager/service-transfers/']
+authors: ["Linode"]
 ---
 
 ## Linode Service Transfers

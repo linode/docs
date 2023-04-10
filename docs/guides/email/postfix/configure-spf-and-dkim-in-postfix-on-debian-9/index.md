@@ -1,8 +1,5 @@
 ---
 slug: configure-spf-and-dkim-in-postfix-on-debian-9
-author:
-    name: Linode Community
-    email: contribute@linode.com
 description: 'This guide provides you with step-by-step instructions for configuring your domains SPF and DKIM DNS records in Postfix mail server on Debian 9.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 9", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
@@ -12,8 +9,6 @@ modified_by:
     name: Linode
 published: 2018-12-13
 title: 'Configure SPF and DKIM With Postfix on Debian 9'
-contributor:
-    name: Linode
 external_resources:
  - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
@@ -27,6 +22,7 @@ relations:
         keywords:
             - distribution: Debian 9
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9/']
+authors: ["Linode"]
 ---
 
 This guide provides instructions to set up SPF and DKIM with Postfix.

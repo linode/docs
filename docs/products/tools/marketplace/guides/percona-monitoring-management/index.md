@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database."
 keywords: ['percona','marketplace apps','monitoring', 'database']
 tags: ["database","monitoring","cloud-manager","linode platform","marketplace"]
@@ -11,10 +8,9 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Percona Monitoring and Management (PMM) through the Linode Marketplace"
-contributor:
-  name: Linode
 image: 'deploy-percona-marketplace.png'
 aliases: ['/platform/marketplace/how-to-deploy-percona-monitoring-management-with-marketplace-apps/', '/platform/one-click/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-one-click-apps/','/guides/how-to-deploy-percona-monitoring-management-with-marketplace-apps/','/guides/percona-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Percona Monitoring and Management (PMM) is an open-source tool which provides a GUI powered by [Grafana](https://grafana.com/) for monitoring and managing MySQL, MariaDB, PostgreSQL, and MongoDB databases. You can use PMM to easily observe important metrics, logging, and statistics related to your databases and the hosts they run on. Additionally, it includes a number of tools which can help to optimize your database's performance, manage all database instances, and track and identify potential security threats. Linode's Percona (PMM) Marketplace App deploys a Linode with PMM installed and ready for you to begin monitoring your databases.
@@ -94,7 +90,7 @@ To begin monitoring a database node, you will need to install the [PMM Client](h
 The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatible with [**PMM Client version 2**](https://www.percona.com/doc/percona-monitoring-and-management/2.x/index.html).
 {{< /note >}}
 
-1.  [Connect to your database Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
+1.  [Connect to your database Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
 
 1.  Update your system's software.
 
@@ -164,7 +160,7 @@ The PMM Server deployed with Linode's Percona (PMM) Marketplace App is compatibl
 
 Once your database node and your PMM Server are communicating, the final step is to add your database instance to be monitored by your PMM Server. These steps are completed on your database node.
 
-1. [Connect to your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
+1. [Connect to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) via SSH.
 
 1. Add your database instance to be monitored by your PMM Server. This command will add a MySQL database instance to be monitored. Replace `db_user` with your database's user name, and `db_user_password` with that user's password. You can also replace `mysql` with the database type that your node is hosting (i.e. `postgresql` or `mongodb`). See Percona's [Using PMM Client](https://www.percona.com/doc/percona-monitoring-and-management/2.x/manage/index-using-pmm-client.html) documentation for details.
 

@@ -1,8 +1,5 @@
 ---
 slug: install-configure-selenium-grid-ubuntu-16-04
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide shows how to set up a Selenium grid that can be used to test webpages and applications in different browsers, browser versions, and operating systems.'
 keywords: ["selenium", "node.js", " headless browser", "automation", "webdriver"]
 tags: ["automation"]
@@ -23,6 +20,7 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/development/nodejs/install-configure-selenium-grid-ubuntu-16-04/']
+authors: ["Jared Kobos"]
 ---
 
 ## What is Selenium Grid?

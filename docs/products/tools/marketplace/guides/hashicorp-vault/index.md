@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy HashiCorp Vault, an open source, centralized secrets management system, on a Linode Compute Instance.'"
 keywords: ['HashiCorp','vault','secrets',]
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,6 +7,7 @@ published: 2022-08-09
 modified_by:
   name: Linode
 title: "Deploy HashiCorp Vault through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is an open source, centralized secrets management system. It provides a secure and reliable way of storing and distributing secrets like API keys, access tokens, and passwords.
@@ -31,6 +29,8 @@ title: "Deploy HashiCorp Vault through the Linode Marketplace"
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Obtaining the Unseal Key
@@ -39,7 +39,7 @@ The data within Vault is protected by a series of encryption keys. The first lay
 
 Follow the instructions below to view the unseal key and root token.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/) using the root user credientials you created during deployment.
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) using the root user credientials you created during deployment.
 
 1.  Run the following command to display all five portions of the unseal key. These portions can be used together to decrypt the root key and unseal Vault.
 
@@ -61,7 +61,7 @@ Follow the instructions below to view the unseal key and root token.
 
 ### Accessing the Vault Web UI
 
-1. Open your web browser and navigate to `http://[ip-address]:8200`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses.
+1. Open your web browser and navigate to `http://[ip-address]:8200`, where *[ip-address]* is your Compute Instance's IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
 1. To access the Vault instance, three of the unseal keys must be entered along with the root token.
 

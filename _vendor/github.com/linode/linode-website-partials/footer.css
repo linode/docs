@@ -80,6 +80,7 @@ button#cookie-prefs-icon {
   color: #5e6065;
   cursor: pointer;
   left: 16px;
+  padding: 1px 6px;
   position: fixed;
   z-index: 10;
 }

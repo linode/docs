@@ -2,7 +2,7 @@
   --color-note--secondary:94,96,101;
   --color-note--primary:2,177,89;
   --color-note--warning:255,147,7;
-  --color-note--alert:211,0,0;
+  --color-note--alert:240,38,38;
 
   --alpha-note--bg:0.1;
   --alpha-note--border:1;
@@ -29,7 +29,7 @@
   color: rgba(var(--color-note--secondary), 1);
 }
 .note.note-secondary code, .note.note-secondary pre:not(.chroma,.dark), .note.note-secondary .code.light {
-  background-color: rgba(var(--color-note--secondary), var(--alpha-note--pre));
+  background-color: #dcdddd;
 }
 
 .note.note-primary {
@@ -40,7 +40,7 @@
   color: rgba(var(--color-note--primary), 1);
 }
 .note.note-primary code, .note.note-primary pre:not(.chroma,.dark), .note.note-primary .code.light {
-  background-color: rgba(var(--color-note--primary), var(--alpha-note--pre));
+  background-color: #c0e9d4;
 }
 
 .note.note-warning {
@@ -55,7 +55,7 @@
   color: rgba(var(--color-note--warning), 0.6);
 }
 .note.note-warning code, .note.note-warning pre:not(.chroma,.dark), .note.note-warning .code.light {
-  background-color: rgba(var(--color-note--warning), var(--alpha-note--pre));
+  background-color: #fee1c7;
 }
 
 .note.note-alert {
@@ -70,7 +70,7 @@
   color: rgba(var(--color-note--alert), 0.6);
 }
 .note.note-alert code, .note.note-alert pre:not(.chroma,.dark), .note.note-alert .code.light {
-  background-color: rgba(var(--color-note--alert), var(--alpha-note--pre));
+  background-color: #fac1c9;
 }
 .note-content > :first-child {
   margin-top: 0;

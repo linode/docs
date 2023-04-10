@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Saltcorn on a Linode Compute Instance. This platform is made for building database web applications without writing a single line of code."
 keywords: ['saltcorn','database','development']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -11,11 +8,10 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Saltcorn through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Saltcorn](https://saltcorn.com/)'
 aliases: ['/guides/saltcorn-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Saltcorn](https://saltcorn.com/) is an flexible open source no-code database application builder. You can use it to build web applications based on relational data with flexible views, data types, and layouts.
@@ -43,11 +39,13 @@ aliases: ['/guides/saltcorn-marketplace-app/']
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Saltcorn App
 
-1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `https://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
     ![Screenshot of the URL bar](saltcorn-url.png)
 

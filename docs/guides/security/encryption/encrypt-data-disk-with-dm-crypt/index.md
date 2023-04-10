@@ -1,8 +1,5 @@
 ---
 slug: encrypt-data-disk-with-dm-crypt
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to use dm-crypt in plain mode or with LUKS to encrypt your data disk, partition or file container."
 keywords: ['dm-crypt', 'encryption', 'encrypt', 'luks']
 tags: ["security","linux"]
@@ -12,10 +9,9 @@ modified: 2022-11-22
 modified_by:
   name: Linode
 title: 'How to Encrypt Your Data with dm-crypt'
-contributor:
-  name: Alexandru Andrei
 aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png
+authors: ["Alexandru Andrei"]
 ---
 
 dm-crypt is a transparent disk encryption subsystem. In this guide you will learn how to encrypt disks, partition, swap and even use files as encrypted, and portable containers for your sensitive data.
@@ -32,13 +28,13 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1. Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, deploy a Debian image.
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, deploy a Debian image.
 
 1. [Resize the disk][/docs/guides/resize-a-linode-disk/] and reserve approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
 1. [Create a new disk][/docs/guides/disks-and-storage/#creating-a-disk] and select **raw** under **Filesystem**:
 
-1. Open your [configuration profile](/docs/guides/linode-configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
+1. Open your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
 1. After your block device assignments are configured, boot your Linode.
 

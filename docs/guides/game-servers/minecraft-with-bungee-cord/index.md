@@ -1,8 +1,5 @@
 ---
 slug: minecraft-with-bungee-cord
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Learn how to set up BungeeCord to Link Spigot servers and setup IP routing with some basic troubleshooting'
 keywords: ["minecraft", "spigot", "bungeecord", "link", "bukkit", "25565", "minecraft servers", "linking minecraft servers", "how to set up bungeecord"]
 tags: ["ubuntu", "debian"]
@@ -18,11 +15,9 @@ modified_by:
     name: linode
 title: 'Setting up BungeeCord to Link Spigot Servers'
 title_meta: 'How to Set Up BungeeCord to Link Spigot Servers'
-contributor:
-    name: Thomas Wemyss
-    link: https://github.com/twemyss
 aliases: ['/applications/game-servers/minecraft-with-bungee-cord/','/game-servers/minecraft-with-bungee-cord/']
 dedicated_cpu_link: true
+authors: ["Thomas Wemyss"]
 ---
 
 After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/guides/minecraft-with-spigot-ubuntu/), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows simple and easy switching between the Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than a single Minecraft server instance.
@@ -97,7 +92,7 @@ If you're running other Spigot servers on the same Linode, then you need to run 
         sudo iptables -A INPUT -j DROP
 
     {{< note respectIndent=false >}}
-If you've configured your `iptables` firewall by following the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) tutorial, then you need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
+If you've configured your `iptables` firewall by following the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) tutorial, then you need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
 {{< /note >}}
 
 ## Installing BungeeCord

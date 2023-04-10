@@ -1,8 +1,5 @@
 ---
 slug: docker-images-containers-and-dockerfiles-in-depth
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'A guide that further introduces using a Dockerfile to build Docker Images and Docker Containers and provides examples on your Linode.'
 keywords: ["docker", "container", "docker image", "docker images", "docker container", "docker containers"]
 tags: ["container","docker"]
@@ -17,15 +14,16 @@ external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
+authors: ["Linode"]
 ---
 
 [Docker images](/docs/guides/introduction-to-docker/#docker-images) make it easy to deploy multiple containers without having to maintain the same image across several virtual machines. You can use a Dockerfile to automate the installation and configuration of an image and its dependencies. A [Dockerfile](/docs/guides/how-to-use-dockerfiles) is a text file of the commands (which are executed in order) used to automate installation and configuration of a Docker image. This article expands on our guide on [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles) by covering in-depth utilization of Docker images, containers, and Dockerfiles.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
+2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 

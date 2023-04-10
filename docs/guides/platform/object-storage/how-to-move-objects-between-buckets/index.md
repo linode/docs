@@ -1,8 +1,5 @@
 ---
 slug: how-to-move-objects-between-buckets
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows you how to move your objects stored in Linode's Object Storage from one bucket to another."
 keywords: ['object','storage','bucket']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,12 +10,11 @@ modified_by:
   name: Linode
 title: "Moving Objects Between Buckets in Linode's Object Storage"
 title_meta: "How to Move Objects Between Buckets in Linode's Object Storage"
-contributor:
-  name: Linode
 external_resources:
 - '[Cyberduck duck documentation](https://trac.cyberduck.io/wiki/help/en/howto/cli)'
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-move-objects-between-buckets/']
+authors: ["Linode"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

@@ -1,8 +1,5 @@
 ---
 slug: how-to-list-cron-jobs
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to display currently scheduled cron jobs, and list cron jobs satisfying various criteria.'
 keywords: ['List cron job','View cron job','Display cron job','Cron job linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +8,11 @@ modified_by:
   name: Linode
 title: "List Cron Jobs on Linux"
 title_meta: "How to List Cron Jobs on Linux"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Wikipedia Cron Page](https://en.wikipedia.org/wiki/Cron)'
 - '[Crontab Man Page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html)'
 - '[Ubuntu cron documentation](https://help.ubuntu.com/community/CronHowto)'
+authors: ["Jeff Novotny"]
 ---
 
 All Linux distributions are equipped with the `cron` utility, which allows users to schedule jobs to run at certain fixed times. Cron jobs can be scheduled at the user or root level, or by software applications. This guide explains how to view cron jobs on Linux and how to list cron jobs by user or schedule.
@@ -39,9 +35,9 @@ For more information about creating cron jobs, see the Linode guides to [Schedul
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

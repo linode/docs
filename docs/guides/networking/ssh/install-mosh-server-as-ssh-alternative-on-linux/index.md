@@ -1,8 +1,5 @@
 ---
 slug: install-mosh-server-as-ssh-alternative-on-linux
-author:
-  name: Quintin Riis
-  email: docs@linode.com
 description: Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.
 keywords: ["mosh", " ssh", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2013-01-20
 title: Install a Mosh Server as SSH Alternative on Linux
 tags: ["networking","ssh","security"]
+authors: ["Quintin Riis"]
 ---
 
 ![Install a Mosh Server as SSH Alternative on Linux](mosh-server-ssh-alternative-title.jpg "Install a Mosh Server as SSH Alternative on Linux")
@@ -35,7 +33,7 @@ Ready to get started? Let's go!
 
 ## Preparing Your Firewall
 
-Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/guides/set-up-and-secure/#configure-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
+Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
 
 {{< file "/etc/iptables.firewall.rules" >}}
 -A INPUT -p udp --dport 60000:61000 -j ACCEPT

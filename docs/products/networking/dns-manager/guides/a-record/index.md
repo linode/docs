@@ -1,15 +1,13 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create A and AAAA records using Linode's DNS Manager"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-28
+published: 2023-02-03
 modified_by:
-  name: Linode
-title: "A and AAA Records"
+  name: KincaidYang
+title: "A and AAAA Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ## A and AAAA Overview

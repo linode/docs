@@ -1,8 +1,5 @@
 ---
 slug: what-is-longview
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide demonstrates how to install and use Linode's Longview service, providing real-time performance graphs and metrics for your Linode."
 keywords: ["system monitoring", "longview", "metrics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +9,8 @@ modified_by:
   name: Linode
 title: "Using Longview to Obtain System Metrics"
 title_meta: "How to Use Longview to Obtain System Metrics"
-contributor:
-  name: Linode
 tags: ["linode platform","cloud manager","statistics","monitoring"]
+authors: ["Linode"]
 ---
 
 ![Our guide to installing and using Linode Longview.](longview_smg.png "Our guide to installing and using Linode Longview.")
@@ -69,7 +65,7 @@ The displayed `curl` command will be used in the [next section](#install-the-lon
     su - root
     ```
 
-1.  Using your system's package manager update your Linux distribution's packages. See our [Getting Started](/docs/guides/set-up-and-secure/#perform-system-updates) guide for details on updating your Linode distribution's software.
+1.  Using your system's package manager update your Linux distribution's packages. See our [Getting Started](/docs/products/compute/compute-instances/guides/set-up-and-secure/#perform-system-updates) guide for details on updating your Linode distribution's software.
 
 1.  Switch back to the Linode Cloud Manager in your browser, copy the Longview Client instance's `curl` command, and paste it into your Terminal window. Press **Enter** to execute the command. The installation will take a few minutes to complete.
 

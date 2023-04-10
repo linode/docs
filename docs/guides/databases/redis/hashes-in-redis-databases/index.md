@@ -1,7 +1,5 @@
 ---
 slug: hashes-in-redis-databases
-author:
-  name: Nathaniel Stickman
 description: "Redis Hashes are maps of field and value pairs. In this guide, you learn how to use Redis hashes, maps of fields, and values frequently used for storing objects."
 keywords: ['redis hashes example', 'accessing redis hashes', 'get redis hashes all key']
 tags: ['redis server', 'redis']
@@ -11,22 +9,21 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use Hashes in Redis Databases"
 title_meta: "How to Use Hashes in Redis Databases"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Redis: An Introduction to Redis Data Types and Abstractions](https://redis.io/topics/data-types-intro)'
 - '[Redis: Command Reference - Hashes](https://redis.io/commands#hash)'
 - '[Redis in Action: Hashes in Redis](https://redis.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/1-2-4-hashes-in-redis/)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Redis, the open-source NoSQL database, is frequently used for caching, messaging, and other storage needs where speed and low latency are required. Redis supports the hash data type which enables you to store field-value pairs of simple to highly complex data. This tutorial breakdown what Redis hashes are and walks you through examples of how to create, access, and modify hashes. This tutorial provides you with the tools to start using hashes in your Redis databases.
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 

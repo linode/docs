@@ -1,8 +1,5 @@
 ---
 slug: install-java-jdk
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'Shortguide for installing Java on Ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["java", "jdk", "install java"]
@@ -15,6 +12,7 @@ published: 2018-01-30
 headless: true
 show_on_rss_feed: false
 aliases: ['/development/java/install-java-jdk/']
+authors: ["Jared Kobos"]
 ---
 
 1.  Install `software-properties-common`:

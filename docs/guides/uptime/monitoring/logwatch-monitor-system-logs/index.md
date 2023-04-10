@@ -1,8 +1,5 @@
 ---
 slug: logwatch-monitor-system-logs
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: "This guide shows you how to use logwatch, a Linux utility used to monitor system logs and create reports for critical and non-critical events."
 keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: "Monitor System Logs with Logwatch"
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitor-systems-logwatch/','/guides/monitor-systems-logwatch/','/server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/','/server-monitoring/logwatch/ubuntu-10-10-maverick/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/','/server-monitoring/logwatch/ubuntu-10-04-lucid/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/','/server-monitoring/logwatch/fedora-14/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-14/','/guides/monitor-system-logs-with-logwatch-on-fedora-14/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-13/','/server-monitoring/logwatch/fedora-13/','/guides/monitor-system-logs-with-logwatch-on-fedora-13/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-debian-5-lenny/','/server-monitoring/logwatch/debian-5-lenny/','/guides/monitor-system-logs-with-logwatch-on-debian-5-lenny/','/server-monitoring/logwatch/','/uptime/monitoring/logwatch-log-monitoring/','/guides/logwatch-log-monitoring/']
 image: monitor-system-logs-logwatch.jpg
+authors: ["Elle Krout"]
 ---
 
 *Logwatch* is a log parsing program that analyzes and generates daily reports on your system's log activity. Logwatch does not provide real time alerts, but instead creates a digest organized by systems for ease of review. More advanced users can also pair Logwatch with custom analysis scripts to fine-tune their reports.

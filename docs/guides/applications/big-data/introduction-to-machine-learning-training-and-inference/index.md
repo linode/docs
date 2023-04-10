@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-machine-learning-training-and-inference
-author:
-  name: Andy Patrizio
-  email: ndy@andypatrizio.com
 description: "Training and inference in machine learning each have their own requirements. We will walk you through the differences, along with hosting advice."
 og_description: "Training and inference are interconnected pieces of machine learning. Training refers to the process of creating machine learning algorithms. This process uses deep-learning frameworks, like Apache Spark, to process large data sets, and generate a trained model. Inference uses the trained models to process new data and generate useful predictions. Training and inference each have their own hardware and system requirements. This guide discusses reasons why you may choose to host your machine learning training and inference systems in the cloud versus on premises."
 keywords: ['cloud machine learning']
@@ -13,12 +10,10 @@ modified_by:
   name: Linode
 title: "An Introduction to Machine Learning: Training and Inference"
 title_meta: "Machine Learning Training and Inference"
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
 external_resources:
 - '[How to Move Your Machine Learning Model to Production](/docs/guides/how-to-move-machine-learning-model-to-production/)'
-- '[Use Cases for Linode GPU Instances](/docs/products/compute/gpu/guides/use-cases/)'
+- '[Use Cases for Linode GPU Instances](/docs/products/compute/compute-instances/plans/gpu/)'
+authors: ["Andy Patrizio"]
 ---
 
 Machine learning (ML) has been around conceptually since 1959, when [Arthur Samuel](https://en.wikipedia.org/wiki/Arthur_Samuel), a pioneer in the field of computer gaming and artificial intelligence, coined the term. Samuel said that machine learning "gives computers the ability to learn without being explicitly programmed". While at IBM he wrote a program to play Checkers, which became the first known self-learning program.
@@ -51,7 +46,7 @@ Once a machine learning model is trained, you can move on to the second phase, w
 
 ## Machine Learning: Cloud vs. On Premises
 
-Training and inference are distinct in their processing requirements. Training requires very powerful processors, with [high-end server CPUs and GPUs](/docs/products/compute/gpu/get-started/); whereas inference can often be accomplished on-device, even a mobile phone. Instagram filters that change a person's appearance are an example. The phone recognizes your facial features and suggests changes.
+Training and inference are distinct in their processing requirements. Training requires very powerful processors, with [high-end server CPUs and GPUs](/docs/products/compute/compute-instances/get-started/); whereas inference can often be accomplished on-device, even a mobile phone. Instagram filters that change a person's appearance are an example. The phone recognizes your facial features and suggests changes.
 
 For training, it is not uncommon for systems to use tens or even hundreds of millions of data set examples. The question then becomes where to accumulate all of your data. If the data resides on premises, then it doesn't make sense to upload it to a cloud service provider (CSP). You should just process the data where it resides.
 
@@ -69,7 +64,7 @@ Cloud storage for machine learning data has multiple benefits and advantages. Th
 
 - **De-coupled architecture is bound to specific hardware**: In an on-prem situation, a company is likely tied to its hardware. When the company upgrades their hardware it also has to undergo a major software rewrite. Cloud-based training has a layer of abstraction from the hardware, so when the hardware is upgraded, the training algorithms may not require a rewrite.
 
-ML training is [where GPUs really shine](/docs/products/compute/gpu/guides/use-cases/), but at the cost of expensive hardware and a sizable electric bill. If you are doing training only a few times a year, then the argument for cloud-based training is clear. Do you really want to invest in millions of dollars in high-end GPU-based servers you might use a half dozen times a year? Take your data to the cloud for training and use the models you generate in the cloud or on premises.
+ML training is [where GPUs really shine](/docs/products/compute/compute-instances/plans/gpu/), but at the cost of expensive hardware and a sizable electric bill. If you are doing training only a few times a year, then the argument for cloud-based training is clear. Do you really want to invest in millions of dollars in high-end GPU-based servers you might use a half dozen times a year? Take your data to the cloud for training and use the models you generate in the cloud or on premises.
 
 ## Tips for Machine Learning in the Cloud
 

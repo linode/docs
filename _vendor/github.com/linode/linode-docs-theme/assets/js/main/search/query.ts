@@ -26,7 +26,7 @@ export interface Query {
 }
 
 // Only used to validate query parameters.
-const filterAttributes = [ 'docType', 'category', 'tags' ];
+const filterAttributes = [ 'docType', 'category', 'tags', 'authors' ];
 
 const setQueryValues = function(q: Query, key: string, values: string[]) {
 	// Legacy values.
