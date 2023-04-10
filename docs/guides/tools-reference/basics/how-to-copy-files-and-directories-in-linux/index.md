@@ -1,23 +1,17 @@
 ---
 slug: how-to-copy-files-and-directories-in-linux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
-og_description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
 keywords: ['Copy a file linux','Copying a file linux','Copying files linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-18
 modified_by:
   name: Linode
-title: "How to Copy Files and Directories in Linux"
-h1_title: "How to Copy Files and Directories in Linux"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Copy Files and Directories in Linux"
+title_meta: "How to Copy Files and Directories in Linux"
 external_resources:
 - '[man page for cp command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cp.html)'
 - '[Ubuntu 22.04 documentation for the cp command](https://manpages.ubuntu.com/manpages/jammy/man1/cp.1.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Copying a file is one of the most common Linux tasks. Ubuntu and other Linux distributions use the `cp` command to copy one or more files, and to copy entire directories. This guide explains how to use the `cp` command to copy files on Linux. It also lists the different variations of this command and describes the different `cp` command options.
@@ -32,11 +26,11 @@ Users must have `sudo` privileges to copy protected files. Otherwise, `sudo` is 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -70,19 +64,19 @@ One common use of `cp` is to make a second copy of the source file in the same d
 
 The `cp` command operates in the context of the current working directory. However, files can be specified using either an absolute or relative path. Here is the basic `cp` command to copy a file within the same directory.
 
-```code
+```command
 cp [options] sourcefile targetfile
 ```
 
 The following example demonstrates how to make a backup copy of `clock.txt` named `clock.txt.bak`.
 
-```code
+```command
 cp clock.txt clock.txt.bak
 ```
 
 To confirm the copy operation, use `ls` to list the files in the directory. Both the original source file and the copy are listed.
 
-```code
+```command
 ls -l
 ```
 
@@ -93,17 +87,17 @@ ls -l
 
 The same command could be executed using absolute paths for both filenames.
 
-```code
+```command
 cp ~/clock.txt ~/clock.txt.bak
 ```
 
 To copy a protected file that the `root` account owns, use `sudo`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be very careful when copying any files owned by root, especially those in the system `/` directories.
-{{< /caution >}}
+{{< /note >}}
 
-```code
+```command
 cd /etc
 sudo cp bash.bashrc bash.bashrc.bak
 ls -l bash.*
@@ -116,7 +110,7 @@ ls -l bash.*
 
 To protect against an accidental overwrite, use the interactive option `-i`. The Linux system prompts for confirmation before it overwrites any existing files.
 
-```code
+```command
 cp clock.txt clock.txt.bak -i
 ```
 
@@ -126,7 +120,7 @@ cp: overwrite 'clock.txt.bak'?
 
 Use the `-p` option to retain the file attributes of the original file in the copy. For example, Ubuntu assigns the duplicate the same date stamp as the original.
 
-```code
+```command
 cp clock.txt clock.txt.bak -p
 ```
 
@@ -137,7 +131,7 @@ cp clock.txt clock.txt.bak -p
 
 The `-v` command echoes each copy operation to the standard output. This can be handy for tracking operations that copy hundreds or thousands of files.
 
-```code
+```command
 cp -v clock.txt clock.txt.cp
 ```
 
@@ -147,7 +141,7 @@ cp -v clock.txt clock.txt.cp
 
 If you accidentally make an unwanted copy of the wrong file, remove the copy using the `rm` command.
 
-```code
+```command
 sudo rm bash.bashrc.bak
 ```
 
@@ -159,25 +153,25 @@ All the caveats and options that apply when copying a file within a directory al
 
 Here is the pattern for copying a file to a directory on Linux.
 
-```code
+```command
 cp sourcefile target_directory_path
 ```
 
 To give the copy a new name, append the name to the path of the target directory.
 
-```code
+```command
 cp sourcefile target_directory_path/targetfile
 ```
 
 This example makes a new copy of `clock.txt` in the `archive` directory. In this example, the `archive` directory already exists.
 
-```code
+```command
 cp clock.txt ~/archive
 ```
 
 Change to the new directory to confirm the successful copy.
 
-```code
+```command
 cd archive
 ls -l
 ```
@@ -188,7 +182,7 @@ ls -l
 
 To give the copy a new name, append the new name to the end of the directory path. Linux gives the new file the filename `clock.txt.bak`.
 
-```code
+```command
 cp clock.txt ~/archive/clock.txt.bak
 ```
 
@@ -196,13 +190,13 @@ cp clock.txt ~/archive/clock.txt.bak
 
 `cp` allows users to copy multiple files at a time, but only to a different directory. Here is a template for using `cp` in this context:
 
-```code
+```command
 cp sourcefile1 sourcefile2 target_directory_path
 ```
 
 This example copies two files to the `archive` directory.
 
-```code
+```command
 cp clock.txt system.txt archive
 ```
 
@@ -210,13 +204,13 @@ The `cp` command treats the `*` character is a wildcard. By itself, the wildcard
 
 When used as part of a string, the `*` symbol matches any number of any characters. The filter `*.txt` matches all source files ending with the `.txt` extension. This example copies all `.exe` files to the `archive` directory.
 
-```code
+```command
 cp *.exe archive
 ```
 
 Change context to the `archive` directory to confirm both `.exe` files, and only those files, were copied.
 
-```code
+```command
 cd archive
 ls
 ```
@@ -229,19 +223,19 @@ cleanup.exe  mk_backup.exe
 
 In addition to copying files, Linux can also copy directories. The `-R` option is used to copy a directory and all of its subdirectories and files recursively. The Linux command to copy a directory follows this structure.
 
-```code
+```command
 cp -R source_directory target_directory
 ```
 
 To copy the directory `archive`, along with all of its files and subdirectories, to `archive_bkup` use this command.
 
-```code
+```command
 cp -R archive archive_bkup
 ```
 
 Change context to the `archive_bkup/archive` directory and confirm all the files and subdirectories of `archive` have been copied.
 
-```code
+```command
 cd archive_bkup/archive
 ls -l
 ```

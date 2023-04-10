@@ -9,29 +9,11 @@
     {{ .Title }}
   </h1>
   {{ if $isLinodeAuthor }}
-    {{ $writeForLinodeLink := "https://www.linode.com/lp/write-for-linode/" | safeURL }}
     <div
       class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4 mt-8">
       <div
         class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
-        <p>
-          “{{ .Title }}” is a collective author attribution. You can also
-          <a
-            class="font-semibold text-white underline"
-            href="{{ $writeForLinodeLink }}"
-            target="_blank"
-            s
-            >write for Linode</a
-          >.
-        </p>
-      </div>
-      <div>
-        <a
-          href="{{ $writeForLinodeLink }}"
-          target="_blank"
-          class="bg-transparent hover:bg-gray-800 text-white text-md font-semibold py-2 px-4 border border-white hover:border-gray-800 rounded">
-          Read More
-        </a>
+        <p>“{{ .Title }}” is a collective author attribution.</p>
       </div>
     </div>
   {{ else }}
@@ -56,12 +38,11 @@
           >
         {{ end }}
       </div>
-
-      {{ with .Content }}
-        <div class="content prose prose-sm md:prose-lg max-w-none mt-6">
-          {{ . }}
-        </div>
-      {{ end }}
+    {{ end }}
+    {{ with .Content }}
+      <div class="content prose prose-sm md:prose-lg max-w-none mt-6">
+        {{ . }}
+      </div>
     {{ end }}
   {{ end }}
 

@@ -1,24 +1,19 @@
 ---
 slug: create-react-app-with-appwrite
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
-og_description: "Appwrite provides an intuitive interface for creating a backend server that complements React excellently. Learn how you can set up Appwrite and React to work together."
 keywords: ['appwrite react','appwrite tutorial','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-13
 modified_by:
   name: Nathaniel Stickman
-title: "How to Create a React App with Appwrite"
-h1_title: "How to Create a React App with Appwrite"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Create a React App with Appwrite"
+title_meta: "How to Create a React App with Appwrite"
 external_resources:
 - '[Appwrite Docs: Getting Started for Web](https://appwrite.io/docs/getting-started-for-web)'
 - '[Github: Appwrite - Demos and Tutorials for Getting Started with Appwrite + React JS](https://github.com/appwrite/demos-for-react)'
 - '[Drishti Peshwani: Building a Web App with ReactJS and Appwrite](https://dev.to/drishtipeshwani/building-a-web-app-with-reactjs-and-appwrite-4cno)'
+authors: ["Nathaniel Stickman"]
+tags: ["ecommerce"]
 ---
 
 [React](https://reactjs.org/) has established itself as one of the most prominent frameworks for developing web frontends. Its component-based approach is especially effective at working with web APIs.
@@ -31,21 +26,21 @@ This tutorial gets you started making your own application using Appwrite and Re
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system.
 
-    ```code {title="Debian / Ubuntu"}
+    ```command {title="Debian / Ubuntu"}
     sudo apt update && sudo apt upgrade
     ```
 
-    ```code {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -63,14 +58,14 @@ First, you need to install your own self-hosted Appwrite instance. You also need
 
 1.  Make sure that the Docker services are started and enabled. Enabling the services ensures that they initiate at system startup:
 
-    ```code
+    ```command
     sudo systemctl start docker
     sudo systemctl enable docker
     ```
 
 1.  Start running the Appwrite instance. This first requires you to change into the Appwrite directory, which here is assumed to be `~/appwrite`:
 
-    ```code
+    ```command
     cd ~/appwrite
     sudo docker compose up -d
     ```
@@ -141,7 +136,7 @@ This guide assumes you are creating a fresh React application to interact with t
 
     For this guide, the new React application's directory is created in the current user's home directory:
 
-    ```code
+    ```command
     cd ~/
     npx create-react-app example-app
     ```
@@ -154,13 +149,13 @@ Ok to proceed? (y)
 
 1.  Change into the new React application directory. The rest of this tutorial assumes you are still in this directory unless otherwise noted:
 
-    ```code
+    ```command
     cd example-app
     ```
 
 1.  Install the Appwrite web SDK through the `appwrite` NPM package. The React frontend can use this SDK to simplify interfacing with the Appwrite backend:
 
-    ```code
+    ```command
     npm install appwrite
     ```
 
@@ -428,7 +423,7 @@ First, you need to open port `3000` on your server's firewall. This is the defau
 
 Once you have done that, you can start up the React server with the following command:
 
-```code
+```command
 npm start
 ```
 

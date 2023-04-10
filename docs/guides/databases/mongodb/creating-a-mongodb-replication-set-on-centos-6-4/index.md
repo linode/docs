@@ -2,9 +2,6 @@
 slug: creating-a-mongodb-replication-set-on-centos-6-4
 deprecated: true
 deprecated_link: 'guides/create-a-mongodb-replica-set/'
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide will show you how to configure a MongoDB ReplSet on CentOS 6.4."
 keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,8 @@ aliases: ['/databases/mongodb/centos-6/','/databases/mongodb/creating-a-mongodb-
 modified_by:
   name: Linode
 published: 2014-04-09
-title: 'How To Create a MongoDB Replication Set on CentOS 6.4'
-h1_title: 'Creating a MongoDB Replication Set on CentOS 6.4'
+title: 'Creating a MongoDB Replication Set on CentOS 6.4'
+title_meta: 'How To Create a MongoDB Replication Set on CentOS 6.4'
 external_resources:
  - '[MongoDB](https://www.mongodb.com/)'
  - '[db.collection.insert()](https://docs.mongodb.com/manual/reference/method/db.collection.insert/)'
@@ -25,6 +22,7 @@ relations:
         keywords:
             - distribution: CentOS 6.4
 tags: ["nosql","database","centos"]
+authors: ["Linode"]
 ---
 
 MongoDB is an open-source non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
@@ -67,7 +65,7 @@ europa
         gpgcheck=0
         enabled=1
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A 32-bit system is not recommended for production deployments.
 {{< /note >}}
 

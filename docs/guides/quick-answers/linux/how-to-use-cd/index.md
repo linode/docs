@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-cd
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to usethe cd command to navigate to different directories inside of a Linux or macOS terminal."
 keywords: ["linux", "how to", "cd", "change directory"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,11 @@ modified_by:
   name: Linode
 published: 2020-06-22
 image: UseTheCDCommand.png
-title: "How to Use the cd Command to Navigate the Terminal"
-h1_title: "Using the cd Command to Navigate the Terminal"
-enable_h1: true
+title: "Using the cd Command to Navigate the Terminal"
+title_meta: "How to Use the cd Command to Navigate the Terminal"
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-cd/']
+authors: ["Linode"]
 ---
 
 ## What is cd?
@@ -82,6 +79,6 @@ The `-P` option tells `cd` to use the physical directory structure and not to fo
 
     cd -P /var/example.com
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If both `-L` and `-P` are specified, the `-P` option will be ignored.
-{{</ note >}}
+{{< /note >}}

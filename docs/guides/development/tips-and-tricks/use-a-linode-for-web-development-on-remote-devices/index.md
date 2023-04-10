@@ -1,11 +1,5 @@
 ---
 slug: use-a-linode-for-web-development-on-remote-devices
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
 description: "This guide shows how to set up a remote development environment on your Linode. You can then connect to it from a remote device such as a tablet or laptop."
 og_description: "This guide will show you how to create a remote development environment on your Linode."
 keywords: ["docker","container","portainer","linode","remote", "devices"]
@@ -22,6 +16,7 @@ external_resources:
  - '[Portainer](https://portainer.io/)'
 audiences: ["beginner"]
 aliases: ['/development/tips-and-tricks/use-a-linode-for-web-development-on-remote-devices/','/development/use-a-linode-for-web-development-on-remote-devices/']
+authors: ["Damaso Sanoja"]
 ---
 
 ![Use a Linode for Web Development on Remote Devices](Linode_WebDev.jpg "WebDev_Title Graphic")
@@ -96,7 +91,7 @@ The easiest way to install Portainer is by deploying the official image.
 
     ![Portainer Dashboard](linode-on-remote-devices-03.png "Portainer Dashboard")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default your connection with Portainer GUI is not encrypted. If you need to use SSL then you must install the corresponding certificates on your Linode and pass their location to the Docker container on start. For more information please read how to [Secure Portainer using SSL](https://portainer.readthedocs.io/en/stable/deployment.html#secure-portainer-using-ssl) in the Portainer official documentation.
 {{< /note >}}
 

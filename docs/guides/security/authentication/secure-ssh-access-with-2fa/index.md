@@ -1,25 +1,22 @@
 ---
 slug: secure-ssh-access-with-2fa
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to prevent unauthorized access to your Linux server by enabling 2FA security on SSH."
 keywords: ["2fa","two factor authentication", "ssh", "google authenticator"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-03
-modified: 2022-11-21
+modified: 2022-11-29
 modified_by:
   name: Linode
-title: "Use 2FA with SSH to Prevent Unauthorized Access"
-h1_title: "Use 2FA (Two-Factor Authentication) with SSH"
-enable_h1: true
+title: "Use 2FA (Two-Factor Authentication) with SSH"
+title_meta: "Use 2FA with SSH to Prevent Unauthorized Access"
+linkTitle: "Use 2FA with SSH"
 external_resources:
 - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
 - '[Linux PAM Documentation](http://www.linux-pam.org/)'
 aliases: ['/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh/','/security/authentication/two-factor-authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/guides/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8/','/guides/use-2fa-with-ssh-on-ubuntu-16-04-and-debian-8/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-debian/','/security/authentication/two-factor-authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/','/security/authentication/use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos-7/','/guides/how-to-use-one-time-passwords-for-two-factor-authentication-with-ssh-on-centos/']
+authors: ["Linode"]
 ---
-
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH. No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from being compromised. By default, you will need a password to log in, and you may also configure an authentication key-pair for even greater security. However, another option exists to complement these methods: [time-based one-time passwords](https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm) (*TOTPs*).
 
@@ -29,18 +26,18 @@ This guide explains how to install the necessary software, configure your system
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname), [updating your system's hosts file](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-file), and setting the [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Review the [Securing Your Server](/docs/security/securing-your-server) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
+1. Review the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and create a limited user. This guide will explain a different way to harden SSH access, but you can also [use public key authentication](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) in addition for even greater protection. That method will be covered in the optional section [Combine Two-Factor and Public Key Authentication](#combine-two-factor-and-public-key-authentication-optional).
 
-    {{< note >}}
-If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
-    {{</ note >}}
+    {{< note respectIndent=false >}}
+If you plan on [combining two-factor and public key authentication](#combine-two-factor-and-public-key-authentication-optional), ensure you [upload your computer's public key](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) to your Linode's [standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) before beginning the steps in this guide.
+    {{< /note >}}
 
 1. You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Google Authenticator
@@ -71,7 +68,7 @@ Now that the packages have been installed, you'll use them to generate keys. Sof
 
 The following instructions will allow you to specify a user for whom you'd like to generate a password. If you are configuring two-factor authentication for multiple users, follow these steps for each user.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Be sure to have your phone or mobile device ready, since this is where you'll add the password to your authenticator app. If you haven't [downloaded an authenticator app](#before-you-begin), do so before proceeding.
 {{< /note >}}
 
@@ -93,41 +90,41 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 1. You'll be prompted to answer the following questions:
 
-    {{< output >}}
-Do you want me to update your "/home/exampleuser/.google_authenticator" file (y/n)
-{{</ output >}}
+    ```output
+    Do you want me to update your "/home/exampleuser/.google_authenticator" file (y/n)
+    ```
 
     This specifies whether the authentication settings will be set for this user. Answer `y` to create the file that stores these settings.
 
-    {{< output >}}
-Do you want to disallow multiple uses of the same authentication
-token? This restricts you to one login about every 30s, but it increases
-your chances to notice or even prevent man-in-the-middle attacks (y/n)
-{{</ output >}}
+    ```output
+    Do you want to disallow multiple uses of the same authentication
+    token? This restricts you to one login about every 30s, but it increases
+    your chances to notice or even prevent man-in-the-middle attacks (y/n)
+    ```
 
     This makes your token a true one-time password, preventing the same password from being used twice. For example, if you set this to "no," and your password was intercepted while you logged in, someone may be able to gain entry to your server by entering it before the time expires. We **strongly recommend** answering `y`.
 
-    {{< output >}}
-By default, a new token is generated every 30 seconds by the mobile app.
-In order to compensate for possible time-skew between the client and the server,
-we allow an extra token before and after the current time. This allows for a
-time skew of up to 30 seconds between authentication server and client. If you
-experience problems with poor time synchronization, you can increase the window
-from its default size of 3 permitted codes (one previous code, the current
-code, the next code) to 17 permitted codes (the 8 previous codes, the current
-code, and the 8 next codes). This will permit for a time skew of up to 4 minutes
-between client and server.
-Do you want to do so (y/n)
-{{</ output >}}
+    ```output
+    By default, a new token is generated every 30 seconds by the mobile app.
+    In order to compensate for possible time-skew between the client and the server,
+    we allow an extra token before and after the current time. This allows for a
+    time skew of up to 30 seconds between authentication server and client. If you
+    experience problems with poor time synchronization, you can increase the window
+    from its default size of 3 permitted codes (one previous code, the current
+    code, the next code) to 17 permitted codes (the 8 previous codes, the current
+    code, and the 8 next codes). This will permit for a time skew of up to 4 minutes
+    between client and server.
+    Do you want to do so (y/n)
+    ```
 
     This setting accounts for time syncing issues across devices. Unless you have reason to believe that your phone or device may not sync properly, answer `n`.
 
-    {{< output >}}
-If the computer that you are logging into isn't hardened against brute-force
-login attempts, you can enable rate-limiting for the authentication module.
-By default, this limits attackers to no more than 3 login attempts every 30s.
-Do you want to enable rate-limiting (y/n)
-{{</ output >}}
+    ```output
+    If the computer that you are logging into isn't hardened against brute-force
+    login attempts, you can enable rate-limiting for the authentication module.
+    By default, this limits attackers to no more than 3 login attempts every 30s.
+    Do you want to enable rate-limiting (y/n)
+    ```
 
     This setting prevents attackers from using brute force to guess your token. Although the time limit should be enough to prevent most attacks, this will ensure that an attacker only has three chances per 30 seconds to guess your password. We recommend answering `y`.
 
@@ -139,11 +136,11 @@ You have finished generating your key and adding it to your client, but some add
 
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
-{{< caution >}}
-- It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/platform/manager/using-the-linode-shell-lish) to regain access.
+{{< note type="alert" respectIndent=false >}}
+- It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/products/compute/compute-instances/guides/lish/) to regain access.
 
 - If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
-{{< /caution >}}
+{{< /note >}}
 
 1. Edit the system's PAM configuration file for SSH.
 
@@ -180,7 +177,7 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
 
     If you created TOTPs for multiple users, and you'd like to have them all use two-factor authentication, create additional `Match User` blocks for each  user, duplicating the command format shown above.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to enforce two-factor authentication globally, you can use the `AuthenticationMethods` directive by itself, outside of a `Match User` block. However, this should not be done until two-factor credentials have been provided to all users.
 {{< /note >}}
 
@@ -196,16 +193,16 @@ If you want to enforce two-factor authentication globally, you can use the `Auth
 
 1. Open a new terminal session and test your configuration by connecting to your Linode via SSH. You will be prompted to enter in your standard user account's password and then, you will be prompted to enter in a `Verification Code`. Open your authorization app, select the account you created in the [Generate a Key](#generate-a-key) section and enter in the password that is displayed. You should authenticate successfully and gain access to your Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
 {{< /note >}}
 
 ## Combine Two-Factor and Public Key Authentication (Optional)
 
-This section is optional. If you'd like to use [public key authentication](/docs/security/authentication/use-public-key-authentication-with-ssh) instead of a password authentication with TOTP, follow the steps in this section.
+This section is optional. If you'd like to use [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/) instead of a password authentication with TOTP, follow the steps in this section.
 
-{{< note >}}
-Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
+{{< note respectIndent=false >}}
+Before completing this section, ensure that your computer's [public key has been uploaded to your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair). Public keys are normally stored in your home directory's `authorized_keys` file.
 
 ```command
 cat ~/.ssh/authorized_keys
@@ -242,8 +239,8 @@ cat ~/.ssh/authorized_keys
 
 ## Next Steps
 
-First, be sure you have followed our guide to [Securing Your Server](/docs/security/securing-your-server). Although there is no single, foolproof method to protect your data, firewalls and services like [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) are a great means to minimize risk.
+First, be sure you have followed our guide to [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Although there is no single, foolproof method to protect your data, firewalls and services like [Fail2Ban](/docs/guides/using-fail2ban-to-secure-your-server-a-tutorial/) are a great means to minimize risk.
 
-When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/platform/manager/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/security/authentication/use-public-key-authentication-with-ssh), in the interim.
+When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/products/compute/compute-instances/guides/lish/) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/guides/use-public-key-authentication-with-ssh/), in the interim.
 
 While two-factor authentication may be a valuable security feature, total security is an ongoing process not an end goal that can be achieved by adding extra layers of authentication. To provide the best protection for your data, take care to follow security best practices at all times.

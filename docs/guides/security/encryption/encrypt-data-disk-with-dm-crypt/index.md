@@ -1,8 +1,5 @@
 ---
 slug: encrypt-data-disk-with-dm-crypt
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to use dm-crypt in plain mode or with LUKS to encrypt your data disk, partition or file container."
 keywords: ['dm-crypt', 'encryption', 'encrypt', 'luks']
 tags: ["security","linux"]
@@ -12,10 +9,9 @@ modified: 2022-11-22
 modified_by:
   name: Linode
 title: 'How to Encrypt Your Data with dm-crypt'
-contributor:
-  name: Alexandru Andrei
 aliases: ['/security/encrypt-data-disk-with-dm-crypt/','/security/encryption/encrypt-data-disk-with-dm-crypt/']
 image: How_to_Encrypt_Your_Data_with_dm-crypt_smg.png
+authors: ["Alexandru Andrei"]
 ---
 
 dm-crypt is a transparent disk encryption subsystem. In this guide you will learn how to encrypt disks, partition, swap and even use files as encrypted, and portable containers for your sensitive data.
@@ -28,17 +24,17 @@ dm-crypt is a transparent disk encryption subsystem. In this guide you will lear
 
 ## Before You Begin
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian image.
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, deploy a Debian image.
 
 1. [Resize the disk][/docs/guides/resize-a-linode-disk/] and reserve approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
 1. [Create a new disk][/docs/guides/disks-and-storage/#creating-a-disk] and select **raw** under **Filesystem**:
 
-1. Open your [configuration profile](/docs/guides/linode-configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
+1. Open your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) and review your **Block Device Assignment**. Add any additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide replace `/dev/sdX` with the device name of your storage disk.
 
 1. After your block device assignments are configured, boot your Linode.
 
@@ -54,8 +50,8 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     apt install cryptsetup
     ```
 
-{{< note >}}
-Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
+{{< note respectIndent=false >}}
+Another way to set up an encrypted data partition is by attaching a [Block Storage](/docs/products/storage/block-storage/) volume to your Linode, and skipping the instructions for creating a filesystem and mounting the device, since that will be done on the virtual device mapped by dm-crypt.
 {{< /note >}}
 
 ## How to Map Whole Disks, Partitions and Files
@@ -78,9 +74,9 @@ A benefit of using files as encrypted containers is that they're slightly easier
 
 ## dm-crypt in Plain Mode vs dm-crypt with LUKS Extension
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 In plain mode, dm-crypt simply encrypts the device sector-by-sector, without adding any kind of headers or metadata. It's advised that beginners do not use this until they understand the risks.
-{{</ caution >}}
+{{< /note >}}
 
 Advantages of using Plain Mode:
 
@@ -111,7 +107,7 @@ Disadvantages of using LUKS:
 
 ## How to Use dm-crypt in Plain Mode without LUKS
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Remember to replace `sdX` with the name of the device you want to encrypt.
 {{< /note >}}
 
@@ -147,9 +143,9 @@ Remember to replace `sdX` with the name of the device you want to encrypt.
     cd /root/ && umount /root/encrypted && cryptsetup close sdX-plain
     ```
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're using the same password or encryption settings every time. This exposes your server to the risk of being re-encrypted and having useful data overwritten. It's a good idea to routinely specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
-{{< /caution >}}
+{{< /note >}}
 
 ## How to Use dm-crypt with LUKS
 
@@ -185,9 +181,9 @@ As mentioned earlier, dm-crypt in plain mode doesn't check to see if you're usin
 
 ### Backup and Restore the LUKS Header
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Follow these steps very carefully.
-{{</ caution >}}
+{{< /note >}}
 
 1. Since the LUKS header is so important and losing it means losing your entire container, back it up:
 

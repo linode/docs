@@ -1,8 +1,5 @@
 ---
 slug: obtain-a-commercially-signed-tls-certificate
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to create a commercially-signed TLS certificate with OpenSSL.'
 keywords: ["ssl", "tls", "https", "certificate", "commercial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2017-12-20
 title: 'Obtain a Commercially Signed TLS Certificate'
 tags: ["security","ssl"]
+authors: ["Linode"]
 ---
 
 ![Obtain a Commercially Signed TLS Certificate](Obtain-a-Commercially-Signed-TLS-Certificate-smg.jpg)
@@ -27,7 +25,7 @@ Some CAs allow you to create a CSR directly through their web interface after yo
 
 Research certificate authorities thoroughly before deciding on the company which will be used for things such as protecting customers' personal information via HTTPS, cryptographically signing emails, or granting access to internal platforms.
 
-If you intend to use your SSL certificate on a website, see our guide on [Enabling TLS for HTTPS on NGINX](/docs/web-servers/nginx/enable-tls-on-nginx-for-https-connections) once you’ve completed the process in this guide.
+If you intend to use your SSL certificate on a website, see our guide on [Enabling TLS for HTTPS on NGINX](/docs/guides/getting-started-with-nginx-part-3-enable-tls-for-https/) once you’ve completed the process in this guide.
 
 ## Create a Certificate Signing Request (CSR)
 

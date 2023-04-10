@@ -1,10 +1,6 @@
 ---
 slug: deploy-mysql-workbench-for-database-administration
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
-og_description: 'This guide will show you how to deploy MySQL Workbench, which is a graphical tool for working with MySQL databases in a client/server model.'
 keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-12-04
@@ -12,13 +8,12 @@ modified: 2018-12-10
 modified_by:
     name: Linode
 title: 'Install MySQL Workbench for Database Administration'
-contributor:
-    name: Scott Somner
 external_resources:
   - '[MySQL Workbench Documentation](https://dev.mysql.com/doc/workbench/en/)'
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/deploy-mysql-workbench-for-database-administration/']
+authors: ["Scott Sumner"]
 ---
 
 
@@ -82,13 +77,13 @@ The first step after running MySQL Workbench is to add your Linode as a database
 
     *   Default Schema - This is the default database to connect to.  It's OK to leave this blank if you haven't created a database yet or don't want one to load by default.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Using MySQL Workbench (currently release 8.0.13) with multi-factor authentication for SSH connections is not supported at this time.
 {{< /note >}}
 
 2.  Once you've configured everything, click **Test Connection**.  If you didn't save your passwords then Workbench will prompt for them.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Pay attention to the **Service** area of each dialog.  Use the appropriate password (SSH or MySQL) or the connection will fail.
 {{< /note >}}
 
@@ -148,7 +143,7 @@ MySQL Workbench is deployed in safe mode by default. This will not allow certain
 
 3.  Uncheck the line beginning with **"Safe Updates".**
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In some instances, this may instead be found under **SQL Editor**.
 {{< /note >}}
 

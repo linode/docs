@@ -1,23 +1,16 @@
 ---
 slug: connect-appsmith-to-linode-api
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Appsmith’s platform makes developing internal applications and dashboards quicker and more convenient. A great way to start using Appsmith and to see what it can do is by making your own cloud manager with it. This tutorial shows you how to do that, connecting your self-hosted Appsmith instance with the Linode API."
-og_description: "Appsmith’s platform makes developing internal applications and dashboards quicker and more convenient. A great way to start using Appsmith and to see what it can do is by making your own cloud manager with it. This tutorial shows you how to do that, connecting your self-hosted Appsmith instance with the Linode API."
 keywords: ['appsmith api','appsmith tutorial','appsmith dashboard']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-29
 modified_by:
   name: Nathaniel Stickman
 title: "Connecting Appsmith to the Linode API"
-h1_title: "Connecting Appsmith to the Linode API"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Appsmith: Connecting to REST APIs](https://docs.appsmith.com/core-concepts/connecting-to-data-sources/authentication)'
 - '[Appsmith: Tutorials](https://docs.appsmith.com/tutorials)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Appsmith](https://www.appsmith.com/) is a platform for building applications in a low-code, visual interface. It is an open source tool ideal for quickly developing internal applications with a combination of drag-and-drop UI widgets and JavaScript code.
@@ -30,9 +23,9 @@ While this tutorial is specifically concerned with the Linode API, similar steps
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -46,7 +39,7 @@ While this tutorial is specifically concerned with the Linode API, similar steps
 
 1.  Follow our guide on [How to Self-host Appsmith with Docker Compose](/docs/guides/deploy-appsmith-docker) for steps to install Docker and start running an Appsmith instance on your own server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -78,7 +71,7 @@ This series of steps shows you how to create such an *Authenticated API* for the
 
 1.  If you just setup Appsmith for the first time, you'll already be in the edit screen of your first application: skip to step three. If this is an existing installation, create a new application from the Appsmith dashboard by clicking the **+ New** button.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may first have to create an organization to house the application under, which you can do using the **New Organization** button on the left menu.
 
 [![Example application on the Appsmith dashboard](appsmith-example-app-dashboard_small.png)](appsmith-example-app-dashboard.png)

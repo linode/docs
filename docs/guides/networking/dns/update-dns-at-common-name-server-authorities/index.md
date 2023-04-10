@@ -1,8 +1,5 @@
 ---
 slug: update-dns-at-common-name-server-authorities
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: "Shortguide list of support documentation for updating DNS records at common name server authorities"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
@@ -14,9 +11,10 @@ published: 2018-09-27
 headless: true
 tags: ["dns","networking"]
 aliases: ['/networking/dns/update-dns-at-common-name-server-authorities/']
+authors: ["Nathan Melehan"]
 ---
 
-{{< disclosure-note "Updating DNS records at common nameserver authorities" >}}
+{{< note type="secondary" title="Updating DNS records at common nameserver authorities" isCollapsible=true >}}
 The following support documents describe how to update DNS records at common nameserver authorities:
 
 -   [CloudFlare](https://support.cloudflare.com/hc/en-us/articles/200168686-What-do-I-do-if-I-changed-my-server-IP-address-or-hosting-provider-)
@@ -29,4 +27,4 @@ The following support documents describe how to update DNS records at common nam
 -   [HostGator](https://support.hostgator.com/articles/manage-dns-records-with-hostgatorenom)
 -   [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/319/2237/how-can-i-set-up-an-a-address-record-for-my-domain)
 -   [Hover](https://help.hover.com/hc/en-us/articles/217282457-How-to-Edit-DNS-records-A-AAAA-CNAME-MX-TXT-SRV-)
-{{< /disclosure-note >}}
+{{< /note >}}

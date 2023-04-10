@@ -3,7 +3,7 @@ title: Guides
 description: "Learn the basics of adding and managing Domains and DNS records using the DNS manager. You can also find guides that take a deep dive into DNS records, common DNS configurations, and other more advanced topics."
 tab_group_main:
     weight: 30
-modified: 2022-10-28
+modified: 2023-02-09
 ---
 
 ## Basics
@@ -14,6 +14,8 @@ modified: 2022-10-28
 
 - [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/): View, edit, and manage DNS records on your domains.
 
+- [Configure Your Domain's Authoritative Name Servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/): To use Linode's DNS Manager for your domain, you must configure the authoritative name server's on your domain's registrar.
+
 ## Additional Management
 
 - [Incoming DNS Zone Transfers (Import a Domain)](/docs/products/networking/dns-manager/guides/incoming-dns-zone-transfers/): Transfer DNS records from an external DNS service to the Linode DNS Manager, including how to operate a *secondary* DNS service on Linode through AXFR transfers from an external *primary* DNS service.
@@ -22,7 +24,7 @@ modified: 2022-10-28
 
 ## DNS Record Types
 
-- [A and AAA Records](/docs/products/networking/dns-manager/guides/a-record/)
+- [A and AAAA Records](/docs/products/networking/dns-manager/guides/a-record/)
 
 - [CNAME Records](/docs/products/networking/dns-manager/guides/cname-record/)
 
@@ -42,7 +44,7 @@ modified: 2022-10-28
 
 - [Overview of DNS and DNS Records](/docs/guides/dns-overview/)
 
-- [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/)
+- [Troubleshooting DNS Records](/docs/products/networking/dns-manager/guides/troubleshooting-dns/)
 
 - [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
 

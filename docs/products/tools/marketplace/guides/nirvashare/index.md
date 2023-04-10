@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows you how to deploy NirvaShare, a simplified and secure enterprise file sharing solution by using the Linode One-Click Marketplace App."
 keywords: ['storage','file sharing', 'backups']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,13 +7,14 @@ published: 2021-08-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying NirvaShare through the Linode Marketplace"
+title: "Deploy NirvaShare through the Linode Marketplace"
 aliases: ['/guides/deploying-nirvashare-marketplace-app/','/guides/nirvashare-marketplace-app/']
 external_resources:
 - '[NirvaShare](https://nirvashare.com/)'
+authors: ["Linode"]
 ---
 
-NirvaShare is a simplified and secure enterprise file sharing solution built on top of your existing file storage. Use NirvaShare with SFTP, local storage, or even S3-compatible storage like Linode's [Object Storage](https://www.linode.com/products/object-storage/). Collaborate with your internal or external users such as customers, partners, and vendors. NirvaShare provides fine-tuned access control in a very simplified manner. NirvaShare integrates with multiple many external identity providers such as Active Directory, GSuite, AWS SSO, KeyClock, and others.
+NirvaShare is a simplified and secure enterprise file sharing solution built on top of your existing file storage. Use NirvaShare with SFTP, local storage, or even S3-compatible storage like Linode's [Object Storage](https://www.linode.com/products/object-storage/). Collaborate with your internal or external users such as customers, partners, and vendors. NirvaShare provides fine-tuned access control in a very simplified manner. NirvaShare integrates with multiple many external identity providers such as Active Directory, Google Workspace, AWS SSO, KeyClock, and others.
 
 ## Deploying a Marketplace App
 
@@ -24,9 +22,9 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** NirvaShare should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -36,6 +34,8 @@ NirvaShare is a simplified and secure enterprise file sharing solution built on 
 ### NirvaShare Configuration Options
 
 - **Database Password** *(required)*: Enter a *strong* password for NirvaShare database.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

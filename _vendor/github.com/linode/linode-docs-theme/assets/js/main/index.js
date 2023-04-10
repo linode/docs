@@ -9,6 +9,7 @@ import {
 	alpineRegisterDirectiveSVG,
 	newDisqus,
 	newDropdownsController,
+	newTabsController,
 } from './components/index';
 import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
 import {
@@ -19,6 +20,7 @@ import {
 	newPromoCodesController,
 	newSearchExplorerController,
 	newToCController,
+	newPaginatorController,
 } from './navigation/index';
 import { newNavStore } from './navigation/nav-store';
 // AlpineJS controllers and helpers.
@@ -56,7 +58,9 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncToc', newToCController);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
+		Alpine.data('lncTabs', newTabsController);
 		Alpine.data('lncDisqus', newDisqus);
+		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
 
 		// Page controllers.
@@ -74,7 +78,7 @@ const searchConfig = getSearchConfig(params);
 	// Set up AlpineJS stores.
 	{
 		Alpine.store('search', newSearchStore(searchConfig, Alpine));
-		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search')));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params, Alpine));
 	}
 
 	if (!isMobile()) {

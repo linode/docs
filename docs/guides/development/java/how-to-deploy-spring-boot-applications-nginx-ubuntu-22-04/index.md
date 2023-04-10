@@ -1,20 +1,12 @@
 ---
 slug: how-to-deploy-spring-boot-applications-nginx-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to use Spring Boot and Gradle on Ubuntu 22.04 to quickly create a Java application.'
-og_description: 'This guide explains how to use Spring Boot and Gradle on Ubuntu 22.04 to quickly create a Java application.'
 keywords: ['spring boot','Java','spring boot gradle','tomcat server','ubuntu java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-24
 modified_by:
   name: Linode
-title: "How to Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
-h1_title: "How to Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Deploy Spring Boot Applications for NGINX on Ubuntu 22.04"
 external_resources:
 - '[Spring Boot](https://spring.io/projects/spring-boot/)'
 - '[Spring Framework](https://spring.io/projects/spring-framework/)'
@@ -32,6 +24,7 @@ relations:
         key: spring-boot-nginx
         keywords:
            - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 ---
 
 Java is a powerful and widely used programming language. Unfortunately, it is also very complex and some of the common Java IDEs are difficult to master. [Spring Boot](https://spring.io/projects/spring-boot/) and the [Spring Framework](https://spring.io/projects/spring-framework/) simplify the Java development environment and make it easier to create applications. This guide explains how to use Spring Boot tools to create a simple Java application that runs on an Apache Tomcat server. It also describes how to register the application as a service and make it available remotely through an NGINX reverse proxy.
@@ -44,12 +37,12 @@ The Spring platform is very powerful and contains a large number of features. Fo
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing Spring Boot and all Prerequisites on Ubuntu 22.04
@@ -66,31 +59,31 @@ To install Java JDK release 17, follow these instructions.
 
 1.  Ensure `software-properties-common` is installed. This package is often already installed on the system.
 
-    ```code
+    ```command
     sudo apt install software-properties-common
     ```
 
 1.  Add the `linuxuprising` repository, which provides access to the Java JDK installation program.
 
-    ```code
+    ```command
     sudo add-apt-repository ppa:linuxuprising/java
     ```
 
 1.  Ensure all binaries are updated.
 
-    ```code
+    ```command
     sudo apt update
     ```
 
 1.  Use `apt` to install Java JDK 17.
 
-    ```code
+    ```command
     sudo apt install oracle-java17-installer --install-recommends
     ```
 
 1.  Confirm the system is running the correct release of Java.
 
-    ```code
+    ```command
     java -version
     ```
 
@@ -106,13 +99,13 @@ Spring Boot works well with the NGINX web server, which is now available as part
 
 1.  Install the NGINX server.
 
-    ```code
+    ```command
     sudo apt install nginx
     ```
 
 1.  Confirm NGINX is properly running using the `systemctl` utility.
 
-    ```code
+    ```command
     sudo systemctl status nginx
     ```
 
@@ -124,13 +117,13 @@ nginx.service - A high performance web server and a reverse proxy server
 
 1.  Configure NGINX to start running automatically upon a system boot.
 
-    ```code
+    ```command
     sudo systemctl enable nginx
     ```
 
 1.  Add NGINX to the list of applications with firewall access and enable `ufw`. Ensure `OpenSSH` access is also allowed.
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow in "Nginx Full"
     sudo ufw enable
@@ -138,7 +131,7 @@ nginx.service - A high performance web server and a reverse proxy server
 
 1.  Ensure the firewall is working and all expected services are allowed.
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
@@ -155,11 +148,11 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 
 1.  Ensure the server is working properly. Visit the IP address of the Linode and confirm the default NGINX page appears.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To determine the IP address of the Ubuntu system, use the Linode Dashboard.
     {{< /note >}}
 
-    ```code
+    ```command
     http://server_IP_address/
     ```
 
@@ -171,31 +164,31 @@ The Spring Boot CLI utility can be installed using several different methods. Th
 
 1.  Install the `unzip` and `zip` utilities using `apt`.
 
-    ```code
+    ```command
     sudo apt install unzip zip
     ```
 
 1.  Install SDKMAN!
 
-    ```code
+    ```command
     curl -s https://get.sdkman.io | bash
     ```
 
 1.  Source the new SDKMAN! shell from the terminal window. Alternatively, open a new terminal to use SDKMAN!. In the following command, replace `userdir` with the name of the user directory.
 
-    ```code
+    ```command
     source "/home/userdir/.sdkman/bin/sdkman-init.sh"
     ```
 
 1.  Verify SDKMAN! is properly installed. The `sdk help` command displays information about the release and usage information.
 
-    ```code
+    ```command
     sdk help
     ```
 
 1.  Use `sdk` to install the Spring Boot CLI module.
 
-    ```code
+    ```command
     sdk install springboot
     ```
 
@@ -205,7 +198,7 @@ Spring CLI v2.7.0
 
 1.  Install the most recent release of the Gradle build tool. This is currently `7.4.2`.
 
-    ```code
+    ```command
     sdk install gradle 7.4.2
     ```
 
@@ -225,15 +218,15 @@ To build a Spring application, follow these steps.
 
 1.  Initialize a new project using the Spring Boot CLI. The `spring init` command creates the project scaffolding. The next command creates a project named `hello` in the `hello-world` directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `spring init` command allows for many possible options. To see all the possible parameters, run the following command.
 
-```code
+```command
 spring init --list
 ```
     {{< /note >}}
 
-    ```code
+    ```command
     spring init --build=gradle --dependencies=web --name=hello hello-world
     ```
 
@@ -280,7 +273,7 @@ Project extracted to '/home/userdir/hello-world'
 
 1.  From the root directory of the project, use Gradle to build the Java application. This command creates a new `build` directory inside the project.
 
-    ```code
+    ```command
     cd hello-world
     ./gradlew build
     ```
@@ -294,19 +287,19 @@ BUILD SUCCESSFUL in 51s
 
 1.  Run the application inside a Tomcat server. Apache Tomcat provides an HTTP web server environment that can run Java code. The following command runs a servlet at `localhost:8080`.
 
-    ```code
+    ```command
     java -jar build/libs/hello-world-0.0.1-SNAPSHOT.jar
     ```
 
 1.  **(Optional)** Alternatively, it is possible to run the application in place without first building the jar file. This is a faster option for quick internal testing, especially if the application is not yet ready for a final build.
 
-    ```code
+    ```command
     gradle bootRun
     ```
 
 1.  With Tomcat or Gradle `bootRun` still running, launch a new terminal. Use `curl` to test the application on the local host by sending a request to port `8080`. This is the default port for Apache Tomcat. If the following command returns `Hello World`, the application was built correctly and is working as expected.
 
-    ```code
+    ```command
     curl localhost:8080
     ```
 
@@ -345,13 +338,13 @@ To access the new application externally across the internet, a few more steps a
 
 1.  Start the service.
 
-    ```code
+    ```command
     sudo systemctl start helloworld
     ```
 
 1.  Verify the service is `active`.
 
-    ```code
+    ```command
     sudo systemctl status helloworld
     ```
 
@@ -390,19 +383,19 @@ To create and test a reverse proxy for the application, follow these steps.
 
 1.  Create a soft link to the `sites-enabled` directory to enable the proxy.
 
-    ```code
+    ```command
     sudo ln -s /etc/nginx/sites-available/helloworld.conf /etc/nginx/sites-enabled/
     ```
 
 1.  Unlink the default NGINX site.
 
-    ```code
+    ```command
     sudo unlink /etc/nginx/sites-enabled/default
     ```
 
 1.  Run the NGINX test utility and ensure there are no errors.
 
-    ```code
+    ```command
     sudo nginx -t
     ```
 
@@ -413,13 +406,13 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 1.  Restart the NGINX server.
 
-    ```code
+    ```command
     sudo systemctl restart nginx
     ```
 
 1.  Visit the IP address of the Linode to test the new service. The browser should display the "Hello World" message, which is the output of the Java application.
 
-    ```code
+    ```command
     http://ip_address
     ```
 

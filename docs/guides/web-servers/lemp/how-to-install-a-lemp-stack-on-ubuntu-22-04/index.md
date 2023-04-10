@@ -1,20 +1,13 @@
 ---
 slug: how-to-install-a-lemp-stack-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides some background about the Linux LEMP stack and explains how to install a LEMP stack on Ubuntu 22.04.'
-og_description: 'This guide provides some background about the Linux LEMP stack and explains how to install a LEMP stack on Ubuntu 22.04.'
 keywords: ['Ubuntu LEMP stack','LEMP stack Ubuntu','install LEMP stack','How to install a LEMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-13
 modified_by:
   name: Linode
-title: "How to Install a LEMP Stack on Ubuntu 22.04"
-h1_title: "How to Install a LEMP Stack on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Install a LEMP Stack on Ubuntu 22.04"
+title_meta: "How to Install a LEMP Stack on Ubuntu 22.04"
 external_resources:
 - '[Ubuntu Documentation](https://ubuntu.com/server)'
 - '[PHP Website](https://www.php.net/)'
@@ -29,6 +22,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 ---
 
 Many [Ubuntu](https://ubuntu.com/server) systems use the well-known [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) installation. However, many people consider the *LEMP Stack* to be an even better alternative. A LEMP stack uses the [NGINX web server](https://www.nginx.com/) instead of Apache. This guide explains how to install and configure a LEMP stack on Ubuntu 22.04 LTS. It also provides some background about the LEMP stack and how it contrasts with a LAMP stack.
@@ -48,39 +42,39 @@ The LEMP stack consists of the following components:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install LEMP Stack on Ubuntu
 
 This section explains how to install and configure the LEMP Stack on Ubuntu 22.04 LTS. However, the instructions for the Ubuntu 20.04 LTS release are very similar. The LEMP stack is not available through Tasksel, so the individual components must be installed separately.
 
-{{< note >}}
-These instructions apply with or without a registered domain name. If the server is hosting a domain, a virtual host must be configured. For more information about domain names and how to point the domain to a Linode, consult the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+{{< note respectIndent=false >}}
+These instructions apply with or without a registered domain name. If the server is hosting a domain, a virtual host must be configured. For more information about domain names and how to point the domain to a Linode, consult the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 The various LEMP stack components can be installed using the `apt` utility. To install the LEMP stack, follow these steps. In all cases, enter `y` to proceed with the installation when Ubuntu asks for confirmation.
 
 1.  Use `apt` to update the Ubuntu packages.
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 2.  Install the NGINX server.
 
-    ```code
+    ```command
     sudo apt install nginx
     ```
 
 3.  Confirm NGINX is properly running using the `systemctl` utility.
 
-    ```code
+    ```command
     sudo systemctl status nginx
     ```
 
@@ -92,29 +86,29 @@ nginx.service - A high performance web server and a reverse proxy server
 
 4.  Install the MariaDB database.
 
-    ```code
+    ```command
     sudo apt install mariadb-server
     ```
 
 5.  Install the PHP module for MariaDB/MySQL support.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Do not install the main `php` module because it is optimized for Apache. PHP support for NGINX is installed later.
 {{< /note >}}
 
-    ```code
+    ```command
     sudo apt install php-mysql
     ```
 
 6.  Install the PHP FastCGI Processing Manager. This includes all the PHP packets necessary for NGINX support, along with other core dependencies.
 
-    ```code
+    ```command
     sudo apt install php-fpm
     ```
 
 7.  **(Optional)** Other applications, including WordPress, require additional PHP components. The following optional packages are frequently helpful.
 
-    ```code
+    ```command
     sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc
     ```
 
@@ -128,11 +122,11 @@ NGINX is easier to configure than some other web servers. However, the firewall 
 
 1.  Configure the `ufw` firewall so it accepts NGINX connections. Allow the `Nginx Full` profile, which permits both HTTP and HTTPS connections. Ensure `OpenSSH` connections are also allowed. Enable `ufw` when all changes are complete.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `Nginx Full` profile allows both HTTP and HTTPS traffic. To temporarily limit firewall access to HTTP requests, allow the `Nginx HTTP` profile instead. The `Nginx HTTPS` setting limits firewall access to HTTPS traffic only. You must configure HTTPS on the server before applying this profile.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow in "Nginx Full"
     sudo ufw enable
@@ -140,7 +134,7 @@ The `Nginx Full` profile allows both HTTP and HTTPS traffic. To temporarily limi
 
 2.  Verify the firewall settings using the `ufw status` command.
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
@@ -157,11 +151,11 @@ Nginx Full (v6)            ALLOW       Anywhere (v6)
 
 3.  After configuring the firewall, ensure NGINX allows web access. Using a browser, visit the IP address of the web server. The site displays the default NGINX welcome page. The page includes the message "Welcome to nginx!"
 
-    ```code
+    ```command
     http://server_IP_address/
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To determine the IP address of the Ubuntu system, use the Linode Dashboard.
     {{< /note >}}
 
@@ -169,13 +163,13 @@ To determine the IP address of the Ubuntu system, use the Linode Dashboard.
 
 4.  Create a root `public_html` directory for the site. Create this directory within the `/var/www/html/domain_name` directory, where `domain_name` is the name of the site. In the following command, replace `example.com` with the actual name of the domain.
 
-    ```code
+    ```command
     sudo mkdir -p /var/www/html/example.com/public_html
     ```
 
 5.  It is simpler to base the site configuration file on the default NGINX welcome page. Copy over the default NGINX configuration file to `/etc/nginx/sites-available/example.com.conf`. Replace `example.com` with the name of the domain. The new configuration file must be named after the domain and have the `.conf` extension.
 
-    ```code
+    ```command
     sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/example.com.conf
     ```
 
@@ -220,19 +214,19 @@ To determine the IP address of the Ubuntu system, use the Linode Dashboard.
 
 7.  To enable the site, create a link to the domain configuration file from the `sites-enabled` directory. In the following command, replace `example.com` with the name of the domain.
 
-    ```code
+    ```command
     sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
     ```
 
 8.  **(Optional)** For enhanced security, unlink the default site.
 
-    ```code
+    ```command
     sudo unlink /etc/nginx/sites-enabled/default
     ```
 
 9.  Validate the changes using the `nginx -t` command. If the test command finds any errors, inspect the new file and make any necessary adjustments.
 
-    ```code
+    ```command
     sudo nginx -t
     ```
 
@@ -249,7 +243,7 @@ The MariaDB database is ready to use. However, a new database user has to be cre
 
 1.  Log in to the MariaDB shell as the `root` user. The application displays the `MariaDB` prompt.
 
-    ```code
+    ```command
     sudo mysql -u root
     ```
 
@@ -263,31 +257,31 @@ MariaDB [(none)]
 
 2.  Create the `webdata` database.
 
-    ```code
+    ```command
     CREATE DATABASE webdata;
     ```
 
 3.  Use the `CREATE USER` command to add a new "web application" user. Provide a more secure user name and password in place of `webuser` and `password` in the query.
 
-    ```code
+    ```command
     CREATE USER 'webuser' IDENTIFIED BY 'password';
     ```
 
 4.  Grant full rights to the new user. MariaDB should respond with `Query OK` after each line. Use the following SQL commands to configure the database.
 
-    ```code
+    ```command
     GRANT ALL ON webdata.* TO 'webuser';
     ```
 
 5.  Exit the database shell.
 
-    ```code
+    ```command
     quit
     ```
 
 6.  Use the built-in [mysql_secure_installation](https://mariadb.com/kb/en/mysql_secure_installation/) tool to increase the security of the database.
 
-    ```code
+    ```command
     sudo mysql_secure_installation
     ```
 
@@ -304,7 +298,7 @@ For further information about MariaDB, consult the [MariaDB Server Documentation
 
 PHP does not require any further configuration. However, an extra security measure should be applied. The following command ensures PHP only accepts requests for files that actually exist on the server. Otherwise, it can be tricked into executing malicious code. In the following command, use the socket for the installed release of PHP. This example demonstrates how to apply the configuration for PHP 8.1. If another release of PHP is installed, replace `8.1` with the actual release number.
 
-```code
+```command
 sudo sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/8.1/fpm/php.ini
 ```
 
@@ -322,19 +316,19 @@ To validate the installation, follow these steps.
 
 1.  Restart the `PHP` module. The name of the module consists of `php`, the major and minor release of PHP, and `-fpm`. The following command starts the PHP 8.1 module. Replace `8.1` with the release number of the local PHP installation.
 
-    ```code
+    ```command
     sudo systemctl restart php8.1-fpm
     ```
 
 2.  Reload NGINX to apply the changes.
 
-    ```code
+    ```command
     sudo nginx -s reload
     ```
 
 3.  Confirm NGINX is still running properly using `systemctl status`.
 
-    ```code
+    ```command
     sudo systemctl status nginx
     ```
 
@@ -344,7 +338,7 @@ nginx.service - A high performance web server and a reverse proxy server
     Active: active (running) since Mon 2022-05-16 16:07:47 UTC; 1 day 20h ago
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If NGINX has failed or is `dead`, use the `sudo nginx -t` command to find configuration errors.
     {{< /note >}}
 
@@ -378,7 +372,7 @@ If NGINX has failed or is `dead`, use the `sudo nginx -t` command to find config
 
 5.  Execute the test script using a web browser. In the address bar, enter the domain name followed by `/phptest.php`. In the following example, substitute the actual name of the domain for `example.com`.
 
-    ```code
+    ```command
     http://example.com/phptest.php
     ```
 
@@ -388,7 +382,7 @@ If NGINX has failed or is `dead`, use the `sudo nginx -t` command to find config
 
 7.  **(Optional)** Alternatively, `curl` can be used to test the script. This method can be used if the DNS entry for the domain has not propagated yet. Replace `example.com` with the name of the domain, and `server-ip-address` with the IP address of the Linode. The output is formatted as HTML code, but it is reasonably easy to determine the outcome.
 
-    ```code
+    ```command
     curl -H "Host: example.com" http://<server-ip-address>/phptest.php
     ```
 
@@ -404,7 +398,7 @@ If NGINX has failed or is `dead`, use the `sudo nginx -t` command to find config
 
 8.  When testing is complete, remove the test script.
 
-    ```code
+    ```command
     sudo rm /var/www/html/example.com/public_html/phptest.php
     ```
 
@@ -416,11 +410,11 @@ Here are a few things to consider if the LEMP Stack test script does not work.
 
 -   **Verify NGINX is running**: NGINX might have failed upon a reload or configuration change. Confirm the web server is `active` and restart it if necessary.
 
-    ```code
+    ```command
     sudo systemctl status nginx
     ```
 
-    ```code
+    ```command
     sudo systemctl restart nginx
     ```
 

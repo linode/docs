@@ -1,9 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Use Cases for Managed Databases"
 description: "Learn about the many benefits and use cases for Managed Databaes, including disaster recover, cost reduction, and rapid deployment."
+authors: ["Linode"]
 ---
 
 Managed Databases is Linode's own Database-as-a-Service (DBaaS) platform. These types of database services allow organizations to offload their database infrastructure and management so they can focus on their own applications and services. This guide discusses the use cases and benefits for Managed Databases.

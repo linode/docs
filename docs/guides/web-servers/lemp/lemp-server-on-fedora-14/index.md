@@ -1,9 +1,6 @@
 ---
 slug: lemp-server-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","nginx","fedora"]
@@ -19,17 +16,18 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/guides/introduction-to-linux-concepts/) series, particularly "[Linux Administration Basics](/docs/guides/linux-system-administration-basics/)."
+Prior to beginning this guide, please complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux systems administration, you may want to consider the guides in our [using Linux guide](/docs/guides/introduction-to-linux-concepts/) series, particularly "[Linux Administration Basics](/docs/guides/linux-system-administration-basics/)."
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

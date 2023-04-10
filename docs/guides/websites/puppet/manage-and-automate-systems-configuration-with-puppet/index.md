@@ -1,8 +1,5 @@
 ---
 slug: manage-and-automate-systems-configuration-with-puppet
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use Puppet, an open-source "configuration change management" tool that lets users automate configurations on their infrastructure.'
 keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 tags: ["automation"]
@@ -21,11 +18,12 @@ external_resources:
  - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
  - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
  - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
+authors: ["Linode"]
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
-Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and have installed Puppet according to our [Puppet installation guide](/docs/guides/install-and-configure-puppet/).
+Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have installed Puppet according to our [Puppet installation guide](/docs/guides/install-and-configure-puppet/).
 
 ## Using Puppet
 
@@ -247,7 +245,7 @@ This instructs Puppet to run the specified command, in this case an `rsync` comm
 
 This guide only covers the most basic of puppet configurations options. It is certainly possible to deploy much more complex systems, including the following possibilities:
 
--   Store revisions of your manifest files in a [version control system](/docs/linux-tools/version-control/). Version control will make it easier to revert changes if you run into problems. It will also ease replication of manifests throughout a system with multiple Puppetmaster nodes.
+-   Store revisions of your manifest files in a [version control system](/docs/guides/development/version-control/). Version control will make it easier to revert changes if you run into problems. It will also ease replication of manifests throughout a system with multiple Puppetmaster nodes.
 -   Deploy Puppetmaster with [Passenger](/docs/frameworks/): the default Puppetmaster server is based on WEBrick, which is only capable of supporting 20 or 30 puppet nodes, depending on your configuration, according the Puppet developers.
 -   You may consider using Puppet in combination with the [Linode API](http://www.linode.com/api/) and [StackScripts](http://www.linode.com/stackscripts/) to automate provisioning, deprovisioning, and configuration of Linodes.
 -   Use [Puppet's module support](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules) to more easily manage applications which require more complex configurations.

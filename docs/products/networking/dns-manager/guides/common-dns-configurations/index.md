@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configurations for common DNS records.'
 og_description: 'This guide provides you with step-by-step instructions for using the Linode Cloud Manager to configure DNS records such as A, AAA, MX, and other DNS records.'
 keywords: ["dns", "dnssec"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
+authors: ["Linode"]
 ---
 
 {{< youtube Vb1JsfZlFLE >}}
@@ -24,7 +22,7 @@ The most common DNS configuration is a single domain name on a single Linode. Fo
 ![The SOA record is set to "example-site-demo.com". The NS records are set to "ns1.linode.com" through "ns5.linode.com", inclusive. The MX record is set to "mail.example-site-demo.com". There are A records for [blank], which is the primary domain, and the "mail" and "www" subdomains. They are all set to the same IP.](common-dns-set-up-a-domain.png)
 
  {{< note >}}
-The Domains section of the Cloud Manager can automatically add all of these records when you create a domain. For instructions, see the *Add a Domain* section of the [DNS Manager](/docs/networking/dns/dns-manager) guide.
+The Domains section of the Cloud Manager can automatically add all of these records when you create a domain. For instructions, see the *Add a Domain* section of the [DNS Manager](/docs/products/networking/dns-manager/) guide.
 {{< /note >}}
 
 ## Configure Subdomains
@@ -39,15 +37,15 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 1. Click on the **Save** button to create the record.
 
-    {{< disclosure-note "Multi-level Subdomains" >}}
-The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
+    {{< note title="Multi-level Subdomains" >}}
+    The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
 
-See the [subdomains](/docs/products/networking/dns-manager/guides/manage-dns-records/#second-level-subdomains) section of the [DNS manager](/docs/products/networking/dns-manager/) guide for more information.
-    {{</ disclosure-note >}}
+    See the [subdomains](/docs/products/networking/dns-manager/guides/manage-dns-records/#second-level-subdomains) section of the [DNS manager](/docs/products/networking/dns-manager/) guide for more information.
+    {{< /note >}}
 
 ## Host Multiple Domains on a Single Server
 
-To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
+To host multiple domain names on a single server, create a separate domain entry for each domain name as shown below. When creating the new domain entry, we recommend that you allow the Domains section of the Cloud Manager to automatically [insert basic records](/docs/products/networking/dns-manager/#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
 ![This page shows the Domains page with three different domain zones listed.](common-dns-multiple-domains-one-server.png)
 

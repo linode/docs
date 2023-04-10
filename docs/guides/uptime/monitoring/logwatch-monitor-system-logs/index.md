@@ -1,8 +1,5 @@
 ---
 slug: logwatch-monitor-system-logs
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: "This guide shows you how to use logwatch, a Linux utility used to monitor system logs and create reports for critical and non-critical events."
 keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,13 +11,14 @@ title: "Monitor System Logs with Logwatch"
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitor-systems-logwatch/','/guides/monitor-systems-logwatch/','/server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-12-04-precise-pangolin/','/server-monitoring/logwatch/ubuntu-10-10-maverick/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-10-10-maverick/','/server-monitoring/logwatch/ubuntu-10-04-lucid/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/','/guides/monitor-system-logs-with-logwatch-on-ubuntu-10-04-lucid/','/server-monitoring/logwatch/fedora-14/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-14/','/guides/monitor-system-logs-with-logwatch-on-fedora-14/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-fedora-13/','/server-monitoring/logwatch/fedora-13/','/guides/monitor-system-logs-with-logwatch-on-fedora-13/','/uptime/monitoring/monitor-system-logs-with-logwatch-on-debian-5-lenny/','/server-monitoring/logwatch/debian-5-lenny/','/guides/monitor-system-logs-with-logwatch-on-debian-5-lenny/','/server-monitoring/logwatch/','/uptime/monitoring/logwatch-log-monitoring/','/guides/logwatch-log-monitoring/']
 image: monitor-system-logs-logwatch.jpg
+authors: ["Elle Krout"]
 ---
 
 *Logwatch* is a log parsing program that analyzes and generates daily reports on your system's log activity. Logwatch does not provide real time alerts, but instead creates a digest organized by systems for ease of review. More advanced users can also pair Logwatch with custom analysis scripts to fine-tune their reports.
 
 By default, Logwatch uses Sendmail to send digests.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -86,7 +84,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
     Logwatch will prompt you to select which cron provider to use. Select the default, *cronie*.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Other SMTP clients can also be used for delivering Logwatch messages.
 {{< /note >}}
 
@@ -97,7 +95,7 @@ myhostname = hostname.example.com
 inet_interfaces = loopback-only
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Both A/AAAA, and MX records will need to be set for your domain.
 {{< /note >}}
 
@@ -119,7 +117,7 @@ The default configuration file for Logwatch is located at `/usr/share/logwatch/d
 
 The following settings are the most comment configuration changes that will need to be made. Others can be found in the `logwatch.conf` file, explained in the comments.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If Logwatch initially does not appear to run, within the `logwatch.conf` file, change the `Details` setting to `Med`.
 {{< /note >}}
 
@@ -144,7 +142,7 @@ The default Logwatch configuration will output the digest to your Linode's conso
 
 The Logwatch digest can be sent to local users or external email addresses, in plain text or HTML formats.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Prior to sending mail externally or locally ensure you have Sendmail installed on the Linode. If you choose to use a different MTA client, change the `mailer` line in the Logwatch configuration file to contain the directory of your chosen MTA, or alias `/usr/sbin/sendmail` to your MTA.
 
 If using Arch, and you followed the above install instructions, Sendmail is already aliased to msmtp.

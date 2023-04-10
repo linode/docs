@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-monitorix-for-system-monitoring
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
 description: 'This guide will show you how to use Monitorx, a free and open-source monitoring tool to keep track of several Linux services and system resources.'
 keywords: ['how to use monitorix']
 tags: ["linux","monitoring"]
@@ -11,12 +8,9 @@ published: 2021-02-19
 image: UseMonitorix_sysmon.png
 modified_by:
   name: Linode
-title: "How to Use Monitorix for System Monitoring"
-h1_title: "Using Monitorix for System Monitoring"
-enable_h1: true
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
+title: "Using Monitorix for System Monitoring"
+title_meta: "How to Use Monitorix for System Monitoring"
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 [Monitorix](https://www.monitorix.org/) is a free, open-source system monitoring tool that keeps track of several Linux services and system resources. This Linux system monitoring tool is composed of two programs. The first, monitorix, is a system data logging daemon written in [Perl](/docs/guides/development/perl/). The second, its web interface, uses the CGI script, `monitorix.cgi`.
@@ -29,9 +23,9 @@ Monitorix was originally designed for the [Red Hat Enterprise Linux](https://www
 
 If you are using a Linode, make sure you run the steps in this section to configure your Linode, secure your server, and update your system's packages.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Installing Monitorix
 
@@ -68,17 +62,17 @@ include_dir = /etc/monitorix/conf.d
 ...
 {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Debian and Ubuntu Linux systems contain an additional configuration file, `/etc/monitorix/conf.d/00-debian.conf`. This file includes Debian/Ubuntu-specific options and is read after the main Monitorix configuration file. This means any changes you make to the `/etc/monitorix/conf.d/00-debian.conf` supersede `monitorix.conf` options.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you're done configuring Monitorix, restart the Monitorix service to enable your updates.
 
         sudo service monitorix restart
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default, Monitorix uses its built-in web server. However, it can be set to work with the [Apache](/docs/guides/web-servers/apache/), [Lighttpd](/docs/guides/web-servers/lighttpd/), or Nginx web servers.
-{{</ note >}}
+{{< /note >}}
 
 ## Getting started with Monitorix
 
@@ -86,9 +80,9 @@ Monitorix is meant to be used as an interactive program. It's not suitable for u
 
 1. To access the Monitorix interface running on your Linode, [find your Linode's IP address](/docs/guides/find-your-linodes-ip-address/). Open a browser window and navigate to the following URL, `http://192.0.2.0:8080/monitorix`. Replace `192.0.2.0` with your own IP address.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are running Monitorix on your computer, instead, navigate to `http://localhost:8080/monitorix`.
-{{</ note >}}
+{{< /note >}}
 
 1. Once you have accessed the Monitorix interface, select **All graphs** from the dropdown menu and click **Ok**.
 

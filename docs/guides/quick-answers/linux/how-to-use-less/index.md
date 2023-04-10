@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-less
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'Use the less command to display file and command output one page at a time.'
 og_description: 'Use the less command to display file and command output one page at a time'
 keywords: ["linux", "how to", "less", "page"]
@@ -14,6 +11,7 @@ published: 2018-09-05
 title: How to Use the Less Command
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-less/']
+authors: ["Nathan Melehan"]
 ---
 
 ## What is Less?

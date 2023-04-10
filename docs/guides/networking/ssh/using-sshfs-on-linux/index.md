@@ -1,8 +1,5 @@
 ---
 slug: using-sshfs-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to use SSHFS, Secure Shell FileSystem, a tool that allows users to securely access a remote file system over SSH via the command line interface.'
 keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 tags: ["networking","ssh","security","linux"]
@@ -16,7 +13,8 @@ title: Using SSHFS to Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
- - '[Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh)'
+ - '[Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/)'
+authors: ["Linode"]
 ---
 
 ![SSHFS](sshfs_mount_remote.png)
@@ -31,11 +29,11 @@ This guide will assume you have two systems set up:
 
 -   A client system which will connect to the remote server using SSHFS. This system also runs Ubuntu 18.04.
 
-Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/guides/set-up-and-secure/#add-a-limited-user-account) guide.
+Limited Linux users (non-`root`) with the same username should also exist on both systems. If you have not already set up a limited user, review the [How to Secure your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) guide.
 
 The username for this limited user is assumed to be `example_user`. Replace all instances of `example_user` in this guide with your limited user's name. As well, the IP address of the remote system is assumed to be `192.0.2.4`, so replace all instances of this IP with your remote system's address.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 `sshfs` can be installed on any Linode distribution, so you can adapt this guide if you are not using Ubuntu.
 {{< /note >}}
 
@@ -49,7 +47,7 @@ The username for this limited user is assumed to be `example_user`. Replace all 
 
         apt-get install sshfs
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `sshfs` package is available with every Linux package manager. Use the commands specific to your distribution if you are not using Debian or Ubuntu.
 {{< /note >}}
 
@@ -57,8 +55,8 @@ The `sshfs` package is available with every Linux package manager. Use the comma
 
 In order to mount file systems using SSHFS from a normal user account, you'll need to add the user to the `fuse` group first.
 
-{{< note >}}
-If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for a brief introduction.
+{{< note respectIndent=false >}}
+If you are unfamiliar with users, groups, and file permissions, visit the [Users and Groups](/docs/guides/linux-users-and-groups/) guide for a brief introduction.
 {{< /note >}}
 
 1. To check if the `fuse` group exists run:
@@ -82,7 +80,7 @@ You can use the command `sshfs` to mount a remote filesystem. The syntax for mou
 
     sshfs [user@]host:[directory] mountpoint [options]
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can read more about `sshfs` in the [sshfs manual](https://linux.die.net/man/1/sshfs).
 {{< /note >}}
 
@@ -110,13 +108,13 @@ To keep your server's directory mounted on your system through reboots, create a
 
 When setting up a mount listed in `/etc/fstab`, your client system will not be able to accept a password for the SSH connection. Instead, you can use [public/private keypairs](/docs/guides/use-public-key-authentication-with-ssh/) to authenticate with the remote server. This section describes how to create a keypair if you do not already have one.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This command will overwrite an existing RSA key pair, potentially locking you out of other systems.
 
 If you’ve already created a key pair, skip this step. To check for existing keys, run ls ~/.ssh/id_rsa*.
 
 If you accidentally lock yourself out of your Linode, use Lish to update your authorized_keys file and regain SSH access.
-{{< /caution >}}
+{{< /note >}}
 
 1. Generate a keypair with the `ssh-keygen` command; accept the default values for the options it presents:
 
@@ -126,7 +124,7 @@ If you accidentally lock yourself out of your Linode, use Lish to update your au
 
         ssh-copy-id -i ~/.ssh/id_rsa.pub example_user@192.0.2.4
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your system is older, this file may be named `authorized_keys2`. [Consult](https://www.ssh.com/ssh/sshd_config/#sec-AuthorizedKeysFile-location) your Linode's `/etc/ssh/sshd_config` if you are unsure:
 
     grep authorized_keys /etc/ssh/sshd_config
@@ -144,7 +142,7 @@ If your system is older, this file may be named `authorized_keys2`. [Consult](ht
 example_user@192.0.2.4:/home/example_user /home/example_user/sshfs-dir  fuse.sshfs noauto,x-systemd.automount,_netdev,follow_symlinks,identityfile=/home/example_user/.ssh/id_rsa,allow_other,default_permissions,reconnect 0 0
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You will need to use `sudo` privileges to edit this file from your limited user.
 {{< /note >}}
 
@@ -154,4 +152,4 @@ You will need to use `sudo` privileges to edit this file from your limited user.
 
 ## Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your client machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla).
+After completing this guide you will be able to transfer files to a remote server from your client machine without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/guides/filezilla/).

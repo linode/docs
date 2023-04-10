@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Debian 5 "Lenny".'
 keywords: ["nginx", "http", "web servers", "debian", "debian lenny", "debian 5"]
 tags: ["web server","debian","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
@@ -27,11 +25,11 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Before we begin installing the nginx web server, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -132,6 +130,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/debian-5-lenny)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/debian-5-lenny)
-- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/debian-5-lenny)
+- [Configure Perl and FastCGI with nginx](/docs/guides/nginx-and-perlfastcgi-on-debian-5-lenny/)
+- [Configure PHP and FastCGI with nginx](/docs/guides/nginx-and-phpfastcgi-on-debian-5-lenny/)
+- [Configure Ruby on Rails with nginx](/docs/guides/ruby-on-rails-with-nginx-on-debian-5-lenny/)

@@ -5,14 +5,16 @@ tab_group_main:
     is_root: true
     title: Overview
     weight: 10
-date: 2022-11-21
+published: 2022-11-21
+modified: 2022-11-23
+aliases: ['/guides/platform/accounts/']
 ---
 
-A Linode account is your gateway to deploying and using Linode's products and services. If your new to Linode, see the [Getting Started](/docs/guides/getting-started/) guide to learn how to sign up for an account and deploy your first service.
+A Linode account is your gateway to deploying and using Linode's products and services. If you're new to Linode, see the [Getting Started](/docs/products/platform/get-started/) guide to learn how to sign up for an account and deploy your first service.
 
 ## Multiple Users
 
-Every account can have multiple users, each with their own permissions. This enables each person your team (from account managers to developers) to use Linode with their own set of credentials and levels of access. See [Manage Users](/docs/products/platform/accounts/guides/manage-users/) and [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/).
+Every account can have multiple users, each with their own permissions. This enables each person on your team (from account managers to developers) to use Linode with their own set of credentials and levels of access. See [Manage Users](/docs/products/platform/accounts/guides/manage-users/) and [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/).
 
 ## Enhanced Security
 

@@ -1,35 +1,29 @@
 ---
 slug: using-ssh-agent
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "ssh-agent manages keys and passwords for SSH, and it can make connecting to clients quicker and easier. Find out how ssh-agent works and how you can set it up to start using for your SSH connections."
-og_description: "ssh-agent manages keys and passwords for SSH, and it can make connecting to clients quicker and easier. Find out how ssh-agent works and how you can set it up to start using for your SSH connections."
 keywords: ['start ssh agent','how to use ssh agent','ssh agent list keys']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-10
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use ssh-agent"
-h1_title: "How to Use ssh-agent"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Use ssh-agent to Manage Private Keys"
+title_meta: "How to Use ssh-agent to Manage Private Keys"
 external_resources:
 - '[die.net: ssh-agent(1)](https://linux.die.net/man/1/ssh-agent)'
 - '[SSH: ssh-agent](https://www.ssh.com/academy/ssh/agent)'
 - '[Smallstep: SSH Agent Explained](https://smallstep.com/blog/ssh-agent-explained/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 ssh-agent manages private keys for SSH connections, facilitating smoother SSH experiences and allowing you to use SSH sessions across programs. This guide aims to give you a full walkthrough of ssh-agent. The tutorial herein explains what ssh-agent is capable of and shows you how to use it.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -61,17 +55,17 @@ Most Linux systems include ssh-agent by default, but you must enable it. The `ss
 
 1.  Use the following command to execute the `ssh-agent` commands and enable ssh-agent for your current shell session:
 
-    ```code
+    ```command
     eval `ssh-agent`
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Adding that command as a line to your `~/.bashrc` file automatically enables ssh-agent at system start up.
     {{< /note >}}
 
 1.  Verify that ssh-agent is running by checking for the `SSH_AUTH_SOCK` environmental variable:
 
-    ```code
+    ```command
     echo $SSH_AUTH_SOCK
     ```
 
@@ -83,7 +77,7 @@ Adding that command as a line to your `~/.bashrc` file automatically enables ssh
 
 Before you can use ssh-agent, you need to add at least one key. The `ssh-add` command automatically adds all private keys stored within the `~/.ssh` directory. That includes `~/.ssh/id_rsa`, the default location for most SSH private keys:
 
-```code
+```command
 ssh-add
 ```
 
@@ -93,13 +87,13 @@ Identity added: /home/example-user/.ssh/id_rsa (example-user@localhost)
 
 Should you need to specify a particular key location, you can provide the path to the key as an argument to `ssh-add`. This example adds a key stored at `~/my_documents/ssh/example-user.private_key`:
 
-```code
+```command
 ssh-add ~/my_documents/ssh/example-user.private_key
 ```
 
 You can subsequently get a list of all the keys currently added to ssh-agent using the `-l` option. This lists the identifiers for the keys that are set up for ssh-agent:
 
-```code
+```command
 ssh-add -l
 ```
 
@@ -115,13 +109,13 @@ The start-up command provided above can be expanded with some options. These let
 
 -   `-a` lets you specify a bind address for ssh-agent socket. This address corresponds to a location on your machine. By default, ssh-agent uses a somewhat random path following the format `/tmp/ssh-<RANDOM_STRING>/agent.<PID>`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 ssh-agent restricts this location's permissions to the current user. You should ensure similar permissions if you specify a custom bind address.
     {{< /note >}}
 
     Here is an example that binds the ssh-agent socket at `~/ssh-socket/ssh-agent`:
 
-    ```code
+    ```command
     eval `ssh-agent -a ~/ssh-socket/ssh-agent`
     ```
 
@@ -129,13 +123,13 @@ ssh-agent restricts this location's permissions to the current user. You should 
 
     This example limits identity lifetime to 24 hours (86,400 seconds):
 
-    ```code
+    ```command
     eval `ssh-agent -t 86400
     ```
 
 -   `-k` kills the currently running ssh-agent, using current environmental variables to identify the agent:
 
-    ```code
+    ```command
     eval `ssh-agent -k`
     ```
 
@@ -155,7 +149,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
         For example, to use agent forwarding for your SSH session to a user named `example-user` on a remote host at `192.0.2.1`, you can use:
 
-        ```code
+        ```command
         ssh -A example-user@192.0.2.1
         ```
 
@@ -172,7 +166,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
         Now SSH into the machine. Your SSH connection to the `192.0.2.1` address automatically triggers agent forwarding:
 
-        ```code
+        ```command
         ssh example-user@192.0.2.1
         ```
 
@@ -182,7 +176,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
     Say, for example, you now want to connect to another machine, using the `192.0.2.1` server as a bastion. Simply open a second SSH connection to that machine — which, for this example, is at `192.0.2.2` using a user named `example-user`:
 
-    ```code
+    ```command
     ssh example-user@192.0.2.2
     ```
 
@@ -190,7 +184,7 @@ The agent forwarding feature can be activated once you have everything else set 
 
 1.  To better secure your agent, you can lock the agent before forwarding. To do so, use the command here. This prompts you to create a password, used to secure your ssh-agent:
 
-    ```code
+    ```command
     ssh-add -x
     ```
 
@@ -200,7 +194,7 @@ Agent locked.
 
     You can later unlock the agent using this next command. The command prompts you to reenter the password you created when locking the agent:
 
-    ```code
+    ```command
     ssh-add -X
     ```
 

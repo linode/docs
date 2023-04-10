@@ -1,20 +1,13 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
-og_description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
 keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-09
 modified_by:
   name: Linode
-title: "How to Install a LAMP Stack on Ubuntu 22.04"
-h1_title: "How to Install a LAMP Stack on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Install a LAMP Stack on Ubuntu 22.04"
+title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
 external_resources:
 - '[LAMP Stack Wikipedia page](https://en.wikipedia.org/wiki/LAMP_(software_bundle))'
 - '[MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)'
@@ -27,6 +20,7 @@ relations:
     platform:
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.
@@ -44,11 +38,11 @@ The LAMP Stack is sufficient to host web applications and implement a modern com
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,45 +50,45 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 This section explains how to install a LAMP Stack on Ubuntu 22.04 LTS. These instructions are also generally valid for Ubuntu 20.04 LTS.
 
-{{< note >}}
-These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+{{< note respectIndent=false >}}
+These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 To install the LAMP stack on Ubuntu 22.04 LTS, follow these steps. In all cases, enter `y` to proceed with the installation when asked for confirmation.
 
 1.  Using `apt`, update the Ubuntu packages:
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 2.  Install the Apache web server using `apt`:
 
-    ```code
+    ```command
     sudo apt install apache2
     ```
 
 3.  Install the MySQL web server:
 
-    ```code
+    ```command
     sudo apt install mysql-server
     ```
 
 4.  Install PHP, along with additional PHP modules for Apache and MySQL:
 
-    ```code
+    ```command
     sudo apt install php libapache2-mod-php php-mysql
     ```
 
 5.  **(Optional)** Install the following commonly-used PHP modules. These packages add PHP support for cURL, *JavaScript Object Notation* (JSON), and the *Common Gateway Interface* (CGI).
 
-    ```code
+    ```command
     sudo apt install php-curl php-json php-cgi
     ```
 
 6.  **(Optional)** To host a WordPress site on the server, install the following PHP components:
 
-    ```code
+    ```command
     sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc
     ```
 
@@ -106,7 +100,7 @@ At this point, all LAMP Stack components are installed, but the stack is not yet
 
 1.  Adjust the default Apache keepalive settings to allow the server to better conserve memory. The `KeepAlive` setting should be set to `On`. This allows Apache to reuse connections. When `KeepAlive` is enabled, `MaxKeepAliveRequests` and `KeepAliveTimeouts` should also be configured. Edit the `apache2.conf` file and make the following changes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `MaxKeepAliveRequests` limits the number of requests for each persistent connection. `KeepAliveTimeouts` determines how long the server waits for new requests from a connection. The following sample configuration balances performance and memory utilization. These values are a good starting point for a new installation. However, it is a good idea to test different values to determine the optimal settings.
     {{< /note >}}
 
@@ -118,7 +112,7 @@ At this point, all LAMP Stack components are installed, but the stack is not yet
 
 2.  Change the default multi-processing module settings within the **prefork** module. Edit the `/etc/apache2/mods-available/mpm_prefork.conf` file to reflect the following changes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The following values are optimized for a **2GB Linode**. Systems with more capacity can handle more aggressive settings.
     {{< /note >}}
 
@@ -134,11 +128,11 @@ The following values are optimized for a **2GB Linode**. Systems with more capac
 
 3.  Using the console, configure `ufw` to allow the `Apache Full` profile. This setting permits HTTP and HTTPS connections through the firewall, enabling web access. Ensure `OpenSSH` connections are also allowed. Enable `ufw` when all changes are complete.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `Apache Full` profile allows both HTTP and HTTPS traffic. To temporarily limit firewall access to HTTP requests during configuration, use the `Apache` profile instead. The `Apache Secure` profile only allows encrypted HTTPS traffic through the firewall. Do not use this profile until HTTPS is enabled on the server.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow in "Apache Full"
     sudo ufw enable
@@ -146,7 +140,7 @@ The `Apache Full` profile allows both HTTP and HTTPS traffic. To temporarily lim
 
 4.  Verify the firewall settings using the `ufw status` command:
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
@@ -163,20 +157,20 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 5.  Disable the `mpm_event` module and enable the `mpm_prefork` module using the `a2dismod` and `a2enmod` commands. Depending on the installation, these settings might already be configured.
 
-    ```code
+    ```command
     sudo a2dismod mpm_event
     sudo a2enmod mpm_prefork
     ```
 
 6.  Restart Apache using the `systemctl` utility:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
 7.  Ensure Apache is still `active` after the restart:
 
-    ```code
+    ```command
     sudo systemctl status apache2
     ```
 
@@ -188,11 +182,11 @@ apache2.service - The Apache HTTP Server
 
 8.  Apache is now ready to respond to incoming requests. To verify the server is working properly, visit the IP address of the web server using a web browser. The browser should display the default Ubuntu/Apache2 welcome page. The page includes the message "It works" and some basic information about the installation.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the Linode Dashboard to find the IP address for your Ubuntu system.
     {{< /note >}}
 
-    ```code
+    ```command
     http://your_IP_address/
     ```
 
@@ -210,7 +204,7 @@ To configure a virtual host, follow these steps. Replace `example.com` with the 
 
 1.  It is easiest to use the default file as a basis for the new virtual host. Copy the default Apache configuration file to `/etc/apache2/sites-available/example.com.conf`. The new configuration file must have the same name as the domain and have the `.conf` extension.
 
-    ```code
+    ```command
     sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
     ```
 
@@ -237,25 +231,25 @@ To configure a virtual host, follow these steps. Replace `example.com` with the 
 
 3.  Create the `public_html` and `logs` directories for the domain. Ensure there is no space between `public_html` and `logs`. The two entries must be separated with a comma.
 
-    ```code
+    ```command
     sudo mkdir -p /var/www/html/example.com/{public_html,logs}
     ```
 
 4.  Change the owner of the `public_html` to `www-data`:
 
-    ```code
+    ```command
     sudo chown -R www-data:www-data /var/www/html/example.com/public_html
     ```
 
 5.  Set the directory permissions for the `public_html` directory:
 
-    ```code
+    ```command
     sudo chmod -R 755 /var/www/html/example.com/public_html
     ```
 
 6.  Use `a2ensite` to link the virtual hosts file and enable the site:
 
-    ```code
+    ```command
     sudo a2ensite example.com
     ```
 
@@ -265,17 +259,17 @@ Enabling site example.com
 
 7.  **(Optional)** As a security precaution, disable the default site:
 
-    ```code
+    ```command
     sudo a2dissite 000-default.conf
     ```
 
 8.  Reload Apache to apply all the changes:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Apache fails to reload, validate the syntax of the configuration files. Use the command `sudo apache2ctl configtest` to find any potential errors in the `.conf` file. Ensure the name of the virtual host matches the domain name being used.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo systemctl reload apache2
     ```
 
@@ -289,7 +283,7 @@ The MySQL database is ready to use as soon as it is installed. However, it is ne
 
 1.  Log in to the MySQL shell as the `root` user. The application displays the `mysql>` prompt.
 
-    ```code
+    ```command
     sudo mysql -u root
     ```
 
@@ -305,7 +299,7 @@ mysql>
 
 2.  From the MySQL shell, create the `webdata` database. Create a new user account for web application access. Provide an actual user name and password in place of `webuser` and `password` in the `CREATE USER` query. Grant full rights to the user. MySQL should respond with `Query OK` after each line.
 
-    ```code
+    ```command
     CREATE DATABASE webdata;
     CREATE USER 'webuser' IDENTIFIED BY 'password';
     GRANT ALL ON webdata.* TO 'webuser';
@@ -313,35 +307,35 @@ mysql>
 
 3.  Exit the SQL shell:
 
-    ```code
+    ```command
     quit
     ```
 
 4.  The latest release of MySQL requires a root password before `mysql_secure_installation` can be used. Enter the SQL shell again using `sudo mysql` but do not provide a user.
 
-    ```code
+    ```command
     sudo mysql
     ```
 
 5.  Set a password for `root'@'localhost`. Use an actual secure password instead of `password`.
 
-    ```code
+    ```command
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'password';
     ```
 
 6.  Exit the SQL shell:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To log in to the MySQL shell as `root` after this change, use `mysql -u root -p` and provide the password when prompted.
     {{< /note >}}
 
-    ```code
+    ```command
     exit
     ```
 
 7.  Use the built-in [mysql_secure_installation](https://dev.mysql.com/doc/refman/8.0/en/mysql-secure-installation.html) tool to increase the security of the database. Provide the MySQL password for the `root` account upon request.
 
-    ```code
+    ```command
     sudo mysql_secure_installation
     ```
 
@@ -360,7 +354,7 @@ PHP does not require nearly as much configuration as the other parts of the LAMP
 
 1.  First verify which PHP release is installed using the `-v` option. Store this information for the next step.
 
-    ```code
+    ```command
     php -v
     ```
 
@@ -373,7 +367,7 @@ Zend Engine v4.1.2, Copyright (c) Zend Technologies
 
 2.  PHP errors are easier to debug if error messages and logging are enabled. The `max_input_time` parameter can be adjusted to allow better performance. Edit the `php.ini` file and make the following changes. This file is found in the `/etc/php/php_version/apache2` directory, where `php_version` consists of the major and minor release of PHP. In this example, the PHP release is `8.1`, so the correct file is `/etc/php/8.1/apache2/php.ini`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure these variables are not commented out. If necessary, remove the `;` character at the start of the line.
     {{< /note >}}
 
@@ -385,14 +379,14 @@ Ensure these variables are not commented out. If necessary, remove the `;` chara
 
 3.  Create the PHP error log and assign ownership of the log to the web server:
 
-    ```code
+    ```command
     sudo mkdir /var/log/php
     sudo chown www-data /var/log/php
     ```
 
 4.  Restart the Apache server to apply the PHP changes:
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
@@ -436,7 +430,7 @@ To validate the installation, follow these steps.
 
 2.  Use a web browser to test the script. Enter the name of the domain followed by `phptest.php` in the address bar. In the following example, substitute the actual name of the domain for `example.com`.
 
-    ```code
+    ```command
     http://example.com/phptest.php
     ```
 
@@ -446,7 +440,7 @@ To validate the installation, follow these steps.
 
 4.  To increase security, remove the test script when testing is complete:
 
-    ```code
+    ```command
     sudo rm /var/www/html/example.com/public_html/phptest.php
     ```
 
@@ -458,7 +452,7 @@ Here are a few things to consider if the LAMP Stack is not working.
 
 -   **Verify Apache is running**: Even if Apache was initially working, it could have stopped or failed upon a reload. Confirm it is `active` and restart it using these commands:
 
-    ```code
+    ```command
     sudo systemctl status apache2
     sudo systemctl restart apache2
     ```

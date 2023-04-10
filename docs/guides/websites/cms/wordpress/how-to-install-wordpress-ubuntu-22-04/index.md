@@ -1,20 +1,13 @@
 ---
 slug: how-to-install-wordpress-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
-og_description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
 keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-19
 modified_by:
   name: Linode
-title: "How to Install WordPress on Ubuntu 22.04"
-h1_title: "How to Install WordPress on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Install WordPress on Ubuntu 22.04"
+title_meta: "How to Install WordPress on Ubuntu 22.04"
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[WordPress documentation](https://wordpress.org/support/)'
@@ -32,6 +25,7 @@ relations:
         key: how-to-install-wordpress
         keywords:
            - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 ---
 
 [WordPress](https://wordpress.org/) is one of the most common *content management systems* (CMS) in use today. WordPress allows [Ubuntu](https://ubuntu.com/server) and other Linux users to design a website and add content using its intuitive GUI. WordPress also allows site owners to install a diverse selection of themes and plug-ins to further customize their site. This guide explains how to install WordPress on Ubuntu 22.04 LTS. It also describes how to configure and start using WordPress after installation.
@@ -48,27 +42,27 @@ A Ubuntu LAMP or LEMP stack satisfies all these prerequisites. A LAMP stack incl
 
 For greater security, WordPress highly recommends HTTPS. However, these instructions work whether HTTPS is configured on the server or not. For information about enabling HTTPS on Ubuntu, see the [Linode guide on enabling HTTPS on Apache](/docs/guides/enabling-https-using-certbot-with-apache-on-ubuntu/). An alternate guide for [NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/) is also available.
 
-{{< note >}}
-WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
+{{< note respectIndent=false >}}
+WordPress sites are almost always accessed using a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Prepare the LAMP or LEMP Stack for WordPress
 
 To properly configure and use WordPress on Ubuntu, a LAMP or LEMP stack must already be installed and working. However, WordPress requires a few additional modifications to the various LAMP/LEMP Stack components. In the following examples, replace `example.com` with the actual domain name wherever it appears.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions are designed for Ubuntu 22.04 LTS, but are generally valid for all recent Ubuntu releases.
 {{< /note >}}
 
@@ -78,7 +72,7 @@ If you are using a LAMP stack, enable an additional Apache module and restart th
 
 1.  Enable the rewrite module. This allows for more readable links within the site.
 
-    ```code
+    ```command
     sudo a2enmod rewrite
     ```
 
@@ -88,7 +82,7 @@ Enabling module rewrite.
 
 2.  **(Optional)** To allow WordPress plug-ins and extensions to use `.htaccess` files, set the `AllowOverride` directive to enable them. Add the following configuration to the `VirtualHost` block within the site configuration file. This file is normally located at `/etc/apache2/sites-available/example.com.conf`. For the `Directory` name, use the actual domain name instead of `example.com`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are not using a site configuration file, skip this step.
     {{< /note >}}
 
@@ -104,7 +98,7 @@ If you are not using a site configuration file, skip this step.
 
 3.  Run the Apache `configtest` utility to test the changes. It might display some warnings, but if `Syntax OK` appears in the output, the syntax is valid.
 
-    ```code
+    ```command
     sudo apache2ctl configtest
     ```
 
@@ -114,7 +108,7 @@ Syntax OK
 
 4.  Restart Apache.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
@@ -135,13 +129,13 @@ If you are using a LEMP stack, make the following configuration changes.
 
 2.  Use `unlink` to disable the default NGINX configuration file.
 
-    ```code
+    ```command
     sudo unlink /etc/nginx/sites-enabled/default
     ```
 
 3.  Restart NGINX to reload the configuration.
 
-    ```code
+    ```command
     sudo systemctl restart nginx
     ```
 
@@ -151,23 +145,23 @@ WordPress uses a separate SQL database to store the site's contents and configur
 
 1.  Log in to MySQL as `root`.
 
-    ```code
+    ```command
     sudo mysql -u root
     ```
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you followed all the instructions in our prerequisite guide for LAMP, use `sudo mysql -u root -p` instead, and enter your password when prompted.
     {{< /note >}}
 
 2.  Create a database named `wordpress`.
 
-    ```code
+    ```command
     CREATE DATABASE wordpress;
     ```
 
 3.  Create a new user for the `wordpress` database and grant the user all rights. Flush all privileges at the end. In the following commands, replace `wpuser` with a unique user name and `password` with a more secure password.
 
-    ```code
+    ```command
     CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'password';
     GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
     FLUSH PRIVILEGES;
@@ -175,7 +169,7 @@ If you followed all the instructions in our prerequisite guide for LAMP, use `su
 
 4.  Exit the database.
 
-    ```code
+    ```command
     exit
     ```
 
@@ -185,17 +179,17 @@ Although WordPress can be installed using the default PHP packages, many plug-in
 
 1.  For greater flexibility, install the following PHP components.
 
-    ```code
+    ```command
     sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap
     ```
 
 2.  Reload Apache or NGINX to apply the changes.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
-    ```code
+    ```command
     sudo systemctl restart nginx
     ```
 
@@ -205,43 +199,43 @@ The Ubuntu LAMP or LEMP stack is now fully configured and ready for WordPress. F
 
 1.  Create a new `src` directory inside the root directory for the website. The root directory is normally located at `var/www/html/`. Replace `example.com` with the name of the domain.
 
-    ```code
+    ```command
     sudo mkdir -p /var/www/html/example.com/src
     ```
 
 2.  Enter the new directory.
 
-    ```code
+    ```command
     cd /var/www/html/example.com/src
     ```
 
 3.  Download the WordPress package using `wget`.
 
-    ```code
+    ```command
     sudo wget http://wordpress.org/latest.tar.gz
     ```
 
 4.  Extract the WordPress files from the `tar` file.
 
-    ```code
+    ```command
     sudo tar -xvf latest.tar.gz
     ```
 
 5.  **(Optional)** Rename the archive using the current date. This makes it easier to restore the files in the future.
 
-    ```code
+    ```command
     sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
     ```
 
 6.  Move the extracted files to the root directory for the domain. In a typical configuration, this is the `public_html` directory.
 
-    ```code
+    ```command
     sudo mv wordpress/* ../public_html/
     ```
 
 7.  Ensure the webserver user is given ownership over the entire root directory for the domain.
 
-    ```code
+    ```command
     sudo chown -R www-data:www-data /var/www/html/example.com
     ```
 
@@ -249,7 +243,7 @@ The Ubuntu LAMP or LEMP stack is now fully configured and ready for WordPress. F
 
 1.  Visit the domain using a web browser. The default language selection page first appears. Choose your language and select **Continue**.
 
-    ```code
+    ```command
     http://example.com
     ```
 

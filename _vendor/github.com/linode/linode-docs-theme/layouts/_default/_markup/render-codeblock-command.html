@@ -1,0 +1,11 @@
+{{ $style :=.Attributes.style | default  "bash" }}
+{{ $class := .Attributes.class | default "light" }}
+{{ $title :=  .Attributes.title | default "" }}
+{{ $inner := .Inner }}
+{{ $opts := dict
+  "style" $style
+  "class" $class
+  "title" $title
+  "inner" $inner
+}}
+{{ template "_codeblocks/command" $opts }}

@@ -1,7 +1,7 @@
 ---
 title: "Add a Promo Code"
 description: "Instructions on adding a promo code to your Linode account."
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 A *promo code* adds a positive credit to an account, allowing you to pay for services using that credit. You're able to add a promo code when signing up for an account. If you already signed up but haven't entered a promo code, you may be able to do so from the Cloud Manager. To add a promo code to an existing account, certain conditions must be met:

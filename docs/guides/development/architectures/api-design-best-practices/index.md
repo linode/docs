@@ -1,25 +1,19 @@
 ---
 slug: api-design-best-practices
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Searching for API design best practices to elevate your development process? We identify some of the best practices you need to follow right now. ✓ Learn more!"
-og_description: "Searching for API design best practices to elevate your development process? We identify some of the best practices you need to follow right now. ✓ Learn more!"
 keywords: ['api design best practices','api architecture','rest api design']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-11
 modified_by:
   name: Nathaniel Stickman
-title: "REST API Best Practices for Design"
-h1_title: "API Design Best Practices: Elevate Your Development Process"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "API Design Best Practices: Elevate Your Development Process"
+title_meta: "REST API Best Practices for Design"
 external_resources:
 - '[Microsoft Docs: RESTful Web API Design](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)'
 - '[freeCodeCamp: REST API Best Practices – REST Endpoint Design Examples](https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/ )'
 - '[Swagger: Best Practices in API Design](https://swagger.io/resources/articles/best-practices-in-api-design/ )'
 - '[Stack Overflow Blog: Best Practices for REST API Design](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Looking for flexibility, many modern web applications are turning to microservices and effective APIs to connect those services consistently and effectively. REST APIs in particular stand out as perhaps the most pervasive architecture for connecting microservices today.
@@ -114,13 +108,13 @@ Versioning allows clients to continue accessing API endpoints as they were at a 
 
 Three main approaches exist for versioning your REST APIs.
 
--   **URI Versioning**: This adds a version indicator to the URIs for your REST APIs. Commonly, APIs employ a simple version indicator at the beginning of the URI path. For instance, a client looking to fetch `box` ID `9` using the first version of the API might use `/v1/boxes/9`.
+- **URI Versioning**: This adds a version indicator to the URIs for your REST APIs. Commonly, APIs employ a simple version indicator at the beginning of the URI path. For instance, a client looking to fetch `box` ID `9` using the first version of the API might use `/v1/boxes/9`.
 
--   **Query-String Versioning**: This gives clients the option of indicating the desired version in a query string when making requests. One benefit of this approach is that the query string can be optional, with a default API version used when the query string is omitted. Here is an example of what a client might call to fetch `box` ID `9` from version `2` of the API: `/boxes/9?apiVersion=2`.
+- **Query-String Versioning**: This gives clients the option of indicating the desired version in a query string when making requests. One benefit of this approach is that the query string can be optional, with a default API version used when the query string is omitted. Here is an example of what a client might call to fetch `box` ID `9` from version `2` of the API: `/boxes/9?apiVersion=2`.
 
--   **Header Versioning**: This option works similarly to query-string versioning, but hides the process in the headers. Like query-string versioning, it has the advantage of being able to provide a default version. To give an example, here is a request to fetch `box` ID `9` from version `3` of the API:
+- **Header Versioning**: This option works similarly to query-string versioning, but hides the process in the headers. Like query-string versioning, it has the advantage of being able to provide a default version. To give an example, here is a request to fetch `box` ID `9` from version `3` of the API:
 
-    ```code
+    ```command
     GET /boxes/9
     Custom-Header: api-version=3
     ```

@@ -1,20 +1,13 @@
 ---
 slug: how-to-install-moodle-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install the open source learning management system Moodle on Ubuntu 22.04'
-og_description: 'This guide explains how to install the open source learning management system Moodle on Ubuntu 22.04'
 keywords: ['moodle ubuntu','how to install moodle','learning management system','lms ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-01
 modified_by:
   name: Linode
-title: "How to Install Moodle on Ubuntu 22.04"
-h1_title: "How to Install Moodle on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Install Moodle on Ubuntu 22.04"
+title_meta: "How to Install Moodle on Ubuntu 22.04"
 external_resources:
 - '[Moodle](https://moodle.org/)'
 - '[Moodle Installation Guide](https://docs.moodle.org/400/en/Step-by-step_Installation_Guide_for_Ubuntu)'
@@ -29,6 +22,7 @@ relations:
         key: how-to-install-moodle
         keywords:
             - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 ---
 
 With an increasing trend towards online learning, learning management software is in high demand. [Moodle](https://moodle.org/) is a free and open source Learning Management System (LMS) that is easy for both teachers and students to use. It allows administrators to create a powerful website for education and training courses. This guide explains how to download and install Moodle on Ubuntu 22.04. It also demonstrates how to configure and administer Moodle using the Moodle Dashboard.
@@ -51,25 +45,25 @@ Some of Moodle's advantages are as follows:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Configure a LAMP Stack, including the Apache web server, the MySQL RDBMS, and PHP. For more information on configuring a LAMP stack, consult the Linode guide on [Installing a LAMP Stack on Ubuntu 22.04](https://www.linode.com/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
+1.  Configure a LAMP Stack, including the Apache web server, the MySQL RDBMS, and PHP. For more information on configuring a LAMP stack, consult the Linode guide on [Installing a LAMP Stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
 
-1.  To properly use Moodle, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](https://www.linode.com/docs/guides/dns-manager/).
+1.  To properly use Moodle, configure a domain name for the server. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 
 1.  **(Optional)** A virtual host for the domain is not strictly required, but is recommended.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing the Moodle Prerequisites
 
 In addition to a fully-configured LAMP stack, Moodle requires a few extra PHP modules and other packages. To install the additional components, follow these instructions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ubuntu 22.04 supports PHP 8.1 by default. However, Moodle is not compatible with PHP 8.1, so release 7.4 must be used instead. If PHP 8.1 is already installed on the Linode, you must install PHP 7.4 and configure it as the active release of PHP. PHP 7.3 is also supported, but 7.4 is highly recommended. See the [Moodle and PHP page](https://docs.moodle.org/dev/Moodle_and_PHP) for compatibility information.
 
 Downgrading PHP can potentially affect other applications that use PHP. Use caution before attempting any downgrade. In some cases, it might be better to wait for Moodle to support PHP 8.1 before installing it.
@@ -77,13 +71,13 @@ Downgrading PHP can potentially affect other applications that use PHP. Use caut
 
 1.  Ensure the Ubuntu system packages are up to date.
 
-    ```code
+    ```command
     sudo apt update && sudo apt upgrade
     ```
 
 1.  Confirm the active release of PHP. If this is 7.4, skip the steps marked "For Linode systems using PHP 8.1". For systems running PHP 8.1, follow all instructions.
 
-    ```code
+    ```command
     php -v
     ```
 
@@ -93,7 +87,7 @@ PHP 7.4.29 (cli) (built: Apr 28 2022 11:47:05) ( NTS )
 
 1.  **(For Linode systems using PHP 8.1)** Moodle requires PHP release 7.4 to function properly. If PHP 8.x is the active release, PHP 7.4 must be installed. To install PHP 7.4, add the `ondrej` repository, then use `apt install`.
 
-    ```code
+    ```command
     sudo add-apt-repository ppa:ondrej/php
     sudo apt-get update
     sudo apt install php7.4 libapache2-mod-php7.4
@@ -101,26 +95,26 @@ PHP 7.4.29 (cli) (built: Apr 28 2022 11:47:05) ( NTS )
 
 1.  **(For Linode systems using PHP 8.1)**  Use the `update-alternatives` tool to set the active release of PHP to 7.4. Review the list of available releases and enter the number corresponding to release 7.4.
 
-    ```code
+    ```command
     sudo update-alternatives --config php
     ```
 
 1.  **(For Linode systems using PHP 8.1)** Disable the Apache module associated with PHP 8.1 and enable the module for PHP 7.4 using the following commands.
 
-    ```code
+    ```command
     sudo a2dismod php8.1
     sudo a2enmod php7.4
     ```
 
 1.  Install the remaining PHP 7.4 packages using `apt`. The name of each PHP component follows the pattern `php7.4-component_name`.
 
-    ```code
+    ```command
     sudo apt install graphviz aspell ghostscript clamav php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring git
     ```
 
 1.  Reload Apache to apply the changes.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 
@@ -130,14 +124,14 @@ The Moodle documentation recommends cloning the application from Git. These inst
 
 1.  Move to the `/opt` directory, and clone the Moodle Git repository.
 
-    ```code
+    ```command
     cd /opt
     sudo git clone git://git.moodle.org/moodle.git
     ```
 
 1.  Change to the `moodle` directory.
 
-    ```code
+    ```command
     cd moodle
     ```
 
@@ -145,7 +139,7 @@ The Moodle documentation recommends cloning the application from Git. These inst
 
 1.  Use the `git branch` command to list the branches in the Moodle repository. Review the list and determine the branch matching the latest stable release. Currently, the best match is `MOODLE_400_STABLE`.
 
-    ```code
+    ```command
     sudo git branch -a
     ```
 
@@ -159,7 +153,7 @@ remotes/origin/master
 
 1.  Track and check out the appropriate branch. This example demonstrates how to check out `MOODLE_400_STABLE`.
 
-    ```code
+    ```command
     sudo git branch --track MOODLE_400_STABLE origin/MOODLE_400_STABLE
     sudo git checkout MOODLE_400_STABLE
     ```
@@ -171,18 +165,18 @@ Your branch is up to date with 'origin/MOODLE_400_STABLE'.
 
 1.  Copy the contents of the Moodle repository to the root directory for the domain. If a virtual host has not been configured, this is `/var/www/html`. If there is a virtual host for the domain, the directory is likely `/var/www/html/your_domain_name/public_html`. The instructions in this guide assume a virtual host has not been configured. Modify the permissions for the `moodle` directory to grant read, write, and execute rights to all users.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These rights are only temporary. After installation is complete, write access should be locked down to the directory owner.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo cp -R /opt/moodle /var/www/html/
     sudo chmod -R 0777 /var/www/html/moodle
     ```
 
 1.  Create the `/var/moodledata` directory and change the directory owner and permissions.
 
-    ```code
+    ```command
     sudo mkdir /var/moodledata
     sudo chown -R www-data /var/moodledata
     sudo chmod -R 0777 /var/moodledata
@@ -192,26 +186,26 @@ These rights are only temporary. After installation is complete, write access sh
 
 1.  Log in to MySQL as the `root` user. The SQL prompt should appear.
 
-    ```code
+    ```command
     sudo mysql -u root -p
     ```
 
 1.  Create a database for Moodle to use. MySQL should respond with `Query OK`.
 
-    ```code
+    ```command
     CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
     ```
 
 1.  Create a Moodle MySQL user. Grant them permissions for the database. Provide a better user name and a more secure password in place of `moodle-user` and `password` in the following example. MySQL should reply with `Query OK` in each case.
 
-    ```code
+    ```command
     CREATE USER 'moodle-user'@'localhost' IDENTIFIED BY 'password';
     GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY TABLES,DROP,INDEX,ALTER ON moodle.* TO 'moodle-user'@'localhost';
     ```
 
 1.  Exit the MySQL database.
 
-    ```code
+    ```command
     quit
     ```
 
@@ -225,7 +219,7 @@ Finish setting up and configuring Moodle using the web interface. Ensure you hav
 
 1.  Visit the Moodle web interface at `http://www.example.com/moodle`. Substitute the name of your domain in place of `example.com`.
 
-    ```code
+    ```command
     http://example.com/moodle
     ```
 
@@ -249,7 +243,7 @@ Finish setting up and configuring Moodle using the web interface. Ensure you hav
 
 1.  Moodle now verifies the installation. Ensure all `Server Checks` indicate `OK`. If the installation is successful, Moodle displays the message `Your server environment meets all minimum requirements` at the bottom. Select **Continue** to move to the next step.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Moodle performs some additional tests and displays the results in the `Other checks` section. This section presents some opportunities to improve performance and security. If HTTPS is not configured on the server, the `site not https` warning is displayed. This warning and any performance suggestions can be ignored for now. It is still possible to proceed with the installation.
     {{< /note >}}
 
@@ -269,7 +263,7 @@ Moodle performs some additional tests and displays the results in the `Other che
 
 1. Return to the system console and change permissions for the Moodle site. For better security, restrict write permission to the root user.
 
-    ```code
+    ```command
     sudo chmod -R 0755 /var/www/html/moodle
     ```
 
@@ -309,19 +303,19 @@ To install a SSL certificate for Moodle and the domain, follow these steps.
 
 1.  Update the Snap application, which is used to download application bundles. Snap comes pre-installed on Ubuntu 22.04.
 
-    ```code
+    ```command
     sudo snap install core && sudo snap refresh core
     ```
 
 1.  Remove the default Ubuntu Certbot installation.
 
-    ```code
+    ```command
     sudo apt remove certbot
     ```
 
 1.  Use `snap` to install Certbot.
 
-    ```code
+    ```command
     sudo snap install --classic certbot
     ```
 
@@ -331,7 +325,7 @@ certbot 1.27.0 from Certbot Project (certbot-eff✓) installed
 
 1.  Download a certificate for the domain using `certbot`.
 
-    ```code
+    ```command
     sudo certbot --apache
     ```
 
@@ -350,7 +344,7 @@ Congratulations! You have successfully enabled HTTPS on https://example.com and 
 
 1.  Certbot automatically schedules a renewal and update for the certificate. To test out the renewal procedure, launch a dry run using the `renew` command.
 
-    ```code
+    ```command
     sudo certbot renew --dry-run
     ```
 
@@ -364,7 +358,7 @@ Congratulations! You have successfully enabled HTTPS on https://example.com and 
 
 1.  Restart the Apache server.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     ```
 

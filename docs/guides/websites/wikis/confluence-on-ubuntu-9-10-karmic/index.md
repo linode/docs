@@ -1,9 +1,6 @@
 ---
 slug: confluence-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Confluence on Ubuntu 9.10 (Karmic) to power a full-featured wiki system.'
 keywords: ["confluence ubuntu 9.10", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: using-confluence
         keywords:
            - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
@@ -26,7 +24,7 @@ relations:
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

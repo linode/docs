@@ -1,20 +1,12 @@
 ---
 slug: how-to-use-python-markdown-to-convert-markdown-to-html
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
-og_description: 'This guide explains how to use the Python-Markdown library to convert markdown files to HTML.'
 keywords: ['Python-Markdown','What is Python-Markdown','Python-Markdown Library','Convert Markdown to HTML']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-21
 modified_by:
   name: Linode
-title: "How to Use Python-Markdown to Convert Markdown to HTML"
-h1_title: "How to Use Python-Markdown to Convert Markdown to HTML"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Use Python-Markdown to Convert Markdown to HTML"
 external_resources:
 - '[Python-Markdown website](https://python-markdown.github.io/index.html)'
 - '[Python-Markdown library reference](https://python-markdown.github.io/reference/)'
@@ -23,6 +15,7 @@ external_resources:
 - '[Markdown guide](https://www.markdownguide.org/)'
 - '[HTML Standard](https://html.spec.whatwg.org/)'
 - '[Python Input/Output documentation](https://docs.python.org/3/tutorial/inputoutput.html)'
+authors: ["Jeff Novotny"]
 ---
 
 The [*Markdown*](https://en.wikipedia.org/wiki/Markdown) markup language is a good choice for text formatting. Unfortunately, the Markdown syntax does not align with HTML conventions. Without further modification, Markdown can only be shared as plain text. The [*Python-Markdown*](https://python-markdown.github.io/index.html) library is an open source Python module that converts Markdown text into standards-compliant HTML markup. This guide explains how to install and use the Python-Markdown module and provides some background information about it.
@@ -49,14 +42,14 @@ There are a few minor differences between the behavior of Python-Markdown and th
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Ensure Python is properly installed on the Linode. You must be able to launch and use the Python programming environment and have some basic knowledge of the Python programming language. For information on how to install and use Python, see the [Linode guide to Python](https://www.linode.com/docs/guides/how-to-install-python-on-ubuntu-20-04/).
+1.  Ensure Python is properly installed on the Linode. You must be able to launch and use the Python programming environment and have some basic knowledge of the Python programming language. For information on how to install and use Python, see the [Linode guide to Python](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Python-Markdown
@@ -65,7 +58,7 @@ The Python-Markdown library can be installed using `pip`, a Python package for i
 
 1.  Ensure `pip` is installed. To verify the `pip` release, use the following command.
 
-    ```code
+    ```command
     pip -V
     ```
 
@@ -75,13 +68,13 @@ pip 22.0.2 from /usr/lib/python3/dist-packages/pip (python 3.10)
 
 2.  If `pip` is not installed, use `apt` to install it.
 
-    ```code
+    ```command
     sudo apt install python3-pip
     ```
 
 3.  Use `pip` to install the Python-Markdown library.
 
-    ```code
+    ```command
     pip install markdown
     ```
 
@@ -103,19 +96,19 @@ To use Python-Markdown interactively, follow these steps.
 
 1.  Enter the Python interactive shell. You should see the Python `>>>` prompt.
 
-    ```code
+    ```command
     python3
     ```
 
 2.  To access the Python-Markdown API, source the `markdown` module.
 
-    ```code
+    ```command
     import markdown
     ```
 
 3.  Pass the string of Markdown text to the `markdown.markdown` method as a parameter. Enclose the text inside single quotes. The method translates the Markdown text into HTML and displays the result.
 
-    ```code
+    ```command
     markdown.markdown('## Work Tasks')
     ```
 
@@ -125,7 +118,7 @@ To use Python-Markdown interactively, follow these steps.
 
 4.  For longer sections of Markdown, enclose the text in triple quotes. Triple quoting permits text to span multiple lines. The result is a long string of HTML markup.
 
-    ```code
+    ```command
     markdown.markdown('''
     # To Do
     ## At Home
@@ -141,7 +134,7 @@ To use Python-Markdown interactively, follow these steps.
 
 5.  For properly formatted HTML, store the intermediate output in a temporary variable before printing it.
 
-    ```code
+    ```command
     tempHTML = markdown.markdown('''
     # To Do
     ## At Home
@@ -192,7 +185,7 @@ The second technique takes an even simpler approach. It invokes the `markdownFro
     -   Translates the source material into HTML using `markdown.markdown` and stores the output in `tempHtml`.
     -   Writes the HTML markup to `List.html` using the Python `write` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Open the initial file in `r` (read) mode, and the second in `w` (write) mode. When handling files, use the `with` statement to ensure Python closes them later on. In actual practice, this program would prompt the user for the names of the Markdown and HTML files. For more information on file processing, see the [Python file documentation](https://docs.python.org/3/tutorial/inputoutput.html).
     {{< /note >}}
 
@@ -212,7 +205,7 @@ Open the initial file in `r` (read) mode, and the second in `w` (write) mode. Wh
 
 3.  Run `mdConverter.py` to generate the HTML output.
 
-    ```code
+    ```command
     python3 mdConverter.py
     ```
 
@@ -255,7 +248,7 @@ Use Python's `-m` option to run the `markdown` module as a script from the comma
 
 To write the HTML output to the console, run the `markdown` script. Append the name of the input Markdown file.
 
-```code
+```command
 python3 -m markdown List.md
 ```
 
@@ -276,13 +269,13 @@ Python translates the results to HTML and displays the output in the console win
 
 To write the HTML output to a new file, use the `-f` option and specify the name of the output file.
 
-```code
+```command
 python3 -m markdown List.md -f List.html
 ```
 
 To see which `markdown` options are available from the command line, append the `--help` flag.
 
-```code
+```command
 python3 -m markdown --help
 ```
 

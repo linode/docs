@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install Owncast, a self-hosted live video and webchat server that works with common broadcasting software, from the Linode One-Click Marketplace."
 keywords: ['live streaming','marketplace','web chat']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,11 +7,12 @@ published: 2021-03-31
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Owncast through the Linode Marketplace"
+title: "Deploy Owncast through the Linode Marketplace"
 external_resources:
 - '[Owncast](https://owncast.online/)'
 - '[Owncast Github](https://github.com/owncast/owncast)'
 aliases: ['/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Owncast](https://owncast.online/) is a self-hosted, "Twitch in a box" live streaming and chat server for use with popular broadcasting software such as OBS. You can use Owncast to live stream anything from gaming with your friends to live events for you and your clients. Like other popular streaming platforms, you can use Owncast's APIs to build things such as chat bots and stream overlays to drive further audience engagement.
@@ -25,9 +23,9 @@ aliases: ['/guides/deploy-owncast-with-marketplace-apps/','/guides/owncast-marke
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Owncast should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

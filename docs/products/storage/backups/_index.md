@@ -54,15 +54,15 @@ Linode's Backup service is one part of a well rounded backup strategy. On-site b
 
 - **Disks are backed up, but not Linode-specific settings such as those stored within Configuration Profiles.**
 
-- **Disks must be unencrypted and able to be mounted.** The Backup service is not compatible with full disk encryption or changes that prevent us from mounting the disk as a file system, such as creating partitions. This is because our service operates at the file level, not at the block level.
+- **Disks must be unencrypted and able to be mounted.** The Backup service is not compatible with full disk encryption or changes that prevent us from mounting the disk as a file system, such as creating partitions. This is because our service operates at the file level, not at the block level. Also, the disk must be formatted and an EXT3 or EXT4 file system should be assigned to it.
 
 - All disks will be restored as an ext4 file system and their UUIDs will be different than the original disks.
 
 - **A large number of files will prolong the backup process and may cause failures.** Because the Backup Service is file-based, the number of files stored on disk impacts both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permanently store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.
 
     {{< note >}}
-The percentage of customers who may run into this limitation is low. If you are not sure if this limitation applies to you, please [contact Linode Support](/docs/guides/support/#contacting-linode-support).
-{{< /note >}}
+    The percentage of customers who may run into this limitation is low. If you are not sure if this limitation applies to you, please [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
+    {{< /note >}}
 
 - Files that have been modified but have the same size and modify time are not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.
 

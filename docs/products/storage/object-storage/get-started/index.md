@@ -18,23 +18,23 @@ Billing for Object Storage starts when it is enabled on your account, **regardle
 
 ## Generate an Access Key
 
-1.  Log into the [Linode Cloud Manager](https://cloud.linode.com).
+1. Log into the [Linode Cloud Manager](https://cloud.linode.com).
 
-      {{< note >}}
-Object Storage is not available in the Linode Classic Manager.
-{{</ note >}}
+    {{< note >}}
+    Object Storage is not available in the Linode Classic Manager.
+    {{< /note >}}
 
-1.  Click on the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
+1. Click on the **Object Storage** link in the sidebar, click the **Access Keys** tab, and then click the **Create an Access Key** link.
 
-1.  A prompt appears asking you to confirm that you'd like to enable Object Storage. Click **Enable Object Storage**.
+1. A prompt appears asking you to confirm that you'd like to enable Object Storage. Click **Enable Object Storage**.
 
-1.  The **Create an Access Key** menu appears.
+1. The **Create an Access Key** menu appears.
 
-1.  Enter a label for the key pair. This label is how you reference your key pair in the Linode Cloud Manager. Then, click **Submit**.
+1. Enter a label for the key pair. This label is how you reference your key pair in the Linode Cloud Manager. Then, click **Submit**.
 
-1.  A window appears that contains your access key and your secret key. Write these down somewhere secure. The access key is visible in the Linode Cloud Manager, but **you are not be able to retrieve your secret key again once you close the window.**
+1. A window appears that contains your access key and your secret key. Write these down somewhere secure. The access key is visible in the Linode Cloud Manager, but **you are not be able to retrieve your secret key again once you close the window.**
 
-1.  You now have the credentials needed to connect to Linode Object Storage.
+1. You now have the credentials needed to connect to Linode Object Storage.
 
 ## Create a Bucket
 
@@ -45,8 +45,8 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 1.  Click on the **Object Storage** link in the sidebar, and then click on **Create Bucket**.
 
     {{< note >}}
-If you have not created an access key or a bucket before, you are prompted to enable Object Storage.
-{{</ note >}}
+    If you have not created an access key or a bucket before, you are prompted to enable Object Storage.
+    {{< /note >}}
 
 1.  The **Create a Bucket** menu appears.
 
@@ -66,21 +66,21 @@ If you have not created an access key or a bucket before, you are prompted to en
 
 1. Your bucket's **Objects Listing Page** appears. In the example, the *my-example-bucket* does not yet contain any objects. You can use the **Upload Files Pane** to drag and drop a file from your computer to your object storage bucket.
 
-      {{< note >}}
-You can drag and drop multiple files to the **Upload Files Pane** at one time.
-{{</ note >}}
+    {{< note >}}
+    You can drag and drop multiple files to the **Upload Files Pane** at one time.
+    {{< /note >}}
 
    You can also click on the **Browse Files** button to bring up your computer's file browser and select a file to upload to your bucket.
 
 1.  When the upload has completed, your object is visible on the **Objects Listing Page**.
 
-      {{< note >}}
-Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](#s3cmd) and [cyberduck](#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.
-{{< /note >}}
+    {{< note >}}
+    Individual object uploads are limited to a size of 5GB each, though larger object uploads can be facilitated with multipart uploads. [s3cmd](#s3cmd) and [cyberduck](#cyberduck) do this for you automatically if a file exceeds this limit as part of the uploading process.
+    {{< /note >}}
 
-      {{< note >}}
-You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (https://www.linode.com/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
-{{< /note >}}
+    {{< note >}}
+    You can add an *AbortIncompleteMultipartUpload* lifecycle policy to the buckets to automatically abort unfinished multipart uploads after a certain amount of time. For more information about adding the *AbortIncompleteMultipartUpload* lifecycle policy, see [Additional Actions] (/docs/guides/how-to-manage-objects-with-lifecycle-policies/#additional-actions).
+    {{< /note >}}
 
 ## Control Permissions with ACLs and Bucket Policies
 

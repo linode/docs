@@ -1,10 +1,6 @@
 ---
 slug: install-subsonic-media-server-on-ubuntu-or-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Subsonic is a free music streaming application. This guide shows how to install Subsonic media server on a Linode.'
-og_description: 'Subsonic is a free music streaming application. This guide shows how to install Subsonic media server on a Linode.'
 keywords: ["subsonic", "music", "audio", "streaming", "media server"]
 aliases: ['/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian/','/applications/media-servers/subsonic/']
 tags: ["debian", "ubuntu"]
@@ -13,12 +9,12 @@ modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2015-02-02
-title: "How to Install Subsonic Media Server on Ubuntu or Debian"
-h1_title: "Installing Subsonic Media Server on Ubuntu or Debian to Stream Music"
-enable_h1: true
+title: "Installing Subsonic Media Server on Ubuntu or Debian to Stream Music"
+title_meta: "How to Install Subsonic Media Server on Ubuntu or Debian"
 external_resources:
   - '[Subsonic official site](http://www.subsonic.org)'
 dedicated_cpu_link: true
+authors: ["Alex Fornuto"]
 ---
 
 ![Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode](Install_Subsonic_Media_Server_on_Ubuntu_or_Debian_smg.png "Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode")
@@ -64,7 +60,7 @@ SUBSONIC_ARGS="--max-memory=150"
 SUBSONIC_USER=subsonic
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have a firewall set up, allow connections from the port Subsonic is listening on.
 {{< /note >}}
 
@@ -91,7 +87,7 @@ If you have a firewall set up, allow connections from the port Subsonic is liste
 
 5. Create a password for your admin account. You can also set up any other accounts at this time.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Passwords in the Subsonic database are stored in hex format, but not encrypted.
 {{< /note >}}
 

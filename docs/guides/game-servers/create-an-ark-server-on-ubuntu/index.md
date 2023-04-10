@@ -1,8 +1,5 @@
 ---
 slug: create-an-ark-server-on-ubuntu
-author:
-  name: Nick Brewer
-  email: docs@linode.com
 description: "A guide on installing and configuring an Ark: Survival Evolved server, with its necessary dependencies, on Ubuntu."
 og_description: "How to install an Ark server on Ubuntu."
 keywords: ["ark survival evolved", "ubuntu", "server"]
@@ -11,25 +8,25 @@ license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/ark-survival-evolved/)'
  - '[The Official Ark Website](http://www.playark.com/)'
- - '[Dedicated Server Setup on the Official Ark: Survival Evolved Wiki](https://ark.fandom.com/wiki/Dedicated_server_setup)'
- - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.fandom.com/wiki/Console_commands)'
+ - '[Dedicated Server Setup on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Dedicated_server_setup)'
+ - '[Console commands on the Official Ark: Survival Evolved Wiki](https://ark.wiki.gg/wiki/Console_commands)'
  - '[Studio Wilpost on Epic Games and Steam crossplay](https://survivetheark.com/index.php?/forums/topic/539019-community-crunch-225-crystal-isles-anniversary-event-epic-games-store-and-more/)'
 modified: 2021-10-18
 modified_by:
   name: Linode
 published: 2016-12-28
-title: "How to Create a Dedicated ARK Server on Ubuntu"
-h1_title: "Creating a Dedicated ARK Server on Ubuntu"
-enable_h1: true
+title: "Creating a Dedicated ARK Server on Ubuntu"
+title_meta: "How to Create a Dedicated ARK Server on Ubuntu"
 aliases: ['/applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/','/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/', '/guides/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 dedicated_cpu_link: true
+authors: ["Nick Brewer"]
 ---
 
 This guide demonstrates how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode Compute Instance running a modern Ubuntu distribution.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Consider using the Linode Marketplace to quickly and automatically deploy an Ark server on our platform. See [Deploying an ARK Survival Evolved Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/ark-survival-evolved/) for instructions.
-{{</ note >}}
+{{< /note >}}
 
 **Supported distributions:** Ubuntu 20.04 and 18.04. Recent non-LTS releases like Ubuntu 21.10, 21.04, and 20.10 should also be supported. Ubuntu 16.04 should still be supported, though that LTS release is no longer receiving free security patches or software updates.
 
@@ -37,18 +34,18 @@ Consider using the Linode Marketplace to quickly and automatically deploy an Ark
 
 ## Before You Begin
 
-1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.gamepedia.com/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](/docs/guides/getting-started/) guide for instructions.
+1.  Create an 8GB or larger Dedicated CPU Compute Instance. This recommendation is based on the [system requirements](http://ark.wiki.gg/Dedicated_Server_Setup#Hardware) for an ARK server. Other plans may also work. See the [Getting Started](/docs/products/platform/get-started/) guide for instructions.
 
 1.  Ark will be installed through the Steam *command-line interface* (CLI). See our guide [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/) if you haven't installed Steam already.
 
 1.  To connect to your Ubuntu Ark server, you must have a copy of the [Ark: Survival Evolved](http://www.playark.com/) game client running on a local machine.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 There is no cross-play between different platforms (Linux and Xbox, for example). For a PC-based server such as this, you will need the PC client from Steam or Epic Games (see more below about Steam and Epic cross-play).
 {{< /note >}}
 
-{{< note >}}
-The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Securing Your Ark Server
@@ -94,7 +91,7 @@ The steps in this guide require root privileges unless otherwise noted. Be sure 
 
 1.  Run `steamcmd` with the following options to install the ARK server:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you want to run an *Ark: Survival of the Fittest* server, replace the instances of `376030` below with `445400`.
 {{< /note >}}
 
@@ -164,13 +161,13 @@ ServerPassword=example
 ServerAdminPassword=example
 {{< /file >}}
 
-`ServerPassword` determines the password that users will be required to enter when connecting to your server. You can omit this line to allow access without a password. `ServerAdminPassword` specifies the administrative password that will be used when issuing [game commands](https://ark.fandom.com/wiki/Console_commands).
+`ServerPassword` determines the password that users will be required to enter when connecting to your server. You can omit this line to allow access without a password. `ServerAdminPassword` specifies the administrative password that will be used when issuing [game commands](https://ark.wiki.gg/wiki/Console_commands).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you choose to use the `ServerPassword` option when connecting to the server, you will need to click on **Show Password Protected** in the client's filters.
 {{< /note >}}
 
-Several options can be configured within this file. See the [Server Configuration](http://ark.fandom.com/wiki/Server_Configuration#GameUserSettings.ini) section of the Ark wiki.
+Several options can be configured within this file. See the [Server Configuration](http://ark.wiki.gg/wiki/Server_Configuration#GameUserSettings.ini) section of the Ark wiki.
 
 If you make any changes while the server is running, you will need to stop and start it again before those changes take effect. To stop the server, enter:
 

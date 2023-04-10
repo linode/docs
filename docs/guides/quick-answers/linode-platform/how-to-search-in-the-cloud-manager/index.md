@@ -1,22 +1,17 @@
 ---
 slug: how-to-search-in-the-cloud-manager
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
-og_description: 'How to Leverage the Advanced Search Function of the Linode Cloud Manager.'
 keywords: ['search','advanced search','keywords','cloud manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-01-08
 modified_by:
   name: Linode
 image: L_SearchInCloudManager.png
-title: "How to Search in the Cloud Manager"
-h1_title: "Searching in the Cloud Manager"
-contributor:
-  name: Linode
+title: "Searching in the Cloud Manager"
+title_meta: "How to Search in the Cloud Manager"
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/']
+authors: ["Linode"]
 ---
 
 The Linode Cloud Manager includes a search tool at the top of the dashboard which can be used to search for a large number of active services on your account, including Linodes, Volumes, NodeBalancers, Domains, Tags, and more.
@@ -42,10 +37,10 @@ The search tool can also be used with keywords to help filter and refine the res
 | type | Type of resource. Linode, image, NodeBalancer, etc.  |
 | tag  | Tag applied to your resources. See the guide on [Tags and Groups](/docs/guides/tags-and-groups/). |
 | label | The label or identifier for your Linode. |
-| region | The region for your resources, such as `us-east`. For a full list of regions, see the return values from the API or CLI [List Regions](https://developers.linode.com/api/v4/regions) endpoint. |
+| region | The region for your resources, such as `us-east`. For a full list of regions, see the return values from the API or CLI [List Regions](/docs/api/regions/#regions-list) endpoint. |
 | IP | The IP address of your resource. |
 | created | The date your resource was created. |
-| status | A brief description of a Linode's current state. See the API [View Linode](https://developers.linode.com/api/v4/linode-instances-linode-id) endpoint status field for all possible values. |
+| status | A brief description of a Linode's current state. See the API [View Linode](/docs/api/linode-instances/#linode-view) endpoint status field for all possible values. |
 
 The syntax for using keywords is:
 
