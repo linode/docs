@@ -12,7 +12,7 @@ published: 2020-04-22
 
 ## Community Posts
 
-- [How to Debug Stackscripts](https://www.linode.com/community/questions/5897/stackscripts-how-to-debug)
+- [How to Debug StackScripts](https://www.linode.com/community/questions/5897/stackscripts-how-to-debug)
 
 - [More information StackScripts guide?](https://www.linode.com/community/questions/479/stackscript-guide)
 

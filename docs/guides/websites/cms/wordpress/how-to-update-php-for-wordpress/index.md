@@ -1,9 +1,6 @@
 ---
 slug: how-to-update-php-for-wordpress
-author:
-  name: Jeff Novotny
 description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
-og_description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
 tags: ['php', 'ubuntu', 'wordpress', 'cms']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,15 +8,13 @@ published: 2021-08-06
 image: UpdatePHPforaMorePerformantWordPressonUbuntu2004.jpg
 modified_by:
   name: Linode
-title: "How to Update PHP for WordPress on Ubuntu 20.04"
-h1_title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
+title_meta: "How to Update PHP for WordPress on Ubuntu 20.04"
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[PHP](https://www.php.net/)'
 - '[phpMyAdmin](https://www.phpmyadmin.net/)'
+authors: ["Jeff Novotny"]
 ---
 
 [WordPress](https://wordpress.org/) is one of the most popular free web publishing tools available. Authoring content on WordPress is straightforward, however,  you need to perform regular maintenance on your WordPress site to keep it secure and up to date. One of those maintenance tasks is to regularly update [PHP](https://www.php.net/), which WordPress uses as a server-side programming language. This guide explains how and when to upgrade PHP without adversely affecting your site.
@@ -47,15 +42,15 @@ Additional best practices for WordPress upgrades are listed below:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
 
 1. A full LAMP stack must already be installed. See the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for more details.
 
 1. WordPress should already be installed. See the Linode guides on [Installing WordPress](/docs/guides/install-wordpress-ubuntu-18-04/) and [Deploying WordPress from Marketplace Apps](/docs/products/tools/marketplace/guides/wordpress/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -63,7 +58,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 PHP usually has to be upgraded in one of two situations; when WordPress is first installed, or when it is upgraded to a newer version. Currently, the minimum recommended version of PHP is 7.4, while the latest version of PHP is 8.0. This guide describes how to update PHP to version 7.4. These instructions are designed for Ubuntu users but are generally applicable to all Linux distributions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Certain plug-ins or themes might not be compatible with the latest version of PHP. In this case, temporarily use an older version.
 {{< /note >}}
 
@@ -73,7 +68,7 @@ The easiest way to tell whether the current version of PHP does not meet the min
 
 ![WordPress PHP notification](update_php.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Third-party WordPress management panels can hide maintenance issues related to PHP and other components.
 {{< /note >}}
 
@@ -99,7 +94,7 @@ Although unlikely, the site or its contents could be corrupted during the update
 
 The WordPress site can be backed up externally using FTP or SCP. It can also be backed up in a different folder on the Linode. In the long run, it is much safer to back up the files and database to external storage space. This preserves the archive in the event the server hard drive becomes corrupted or access to the server is permanently lost. However, to quickly upgrade WordPress or PHP, a temporary backup copy can be made somewhere else on the Linode.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For a nominal fee, Linode can take a snapshot of your site through its [Backup Service](/docs/products/storage/backups/). A variety of third-party tools are also available. [cPanel](/docs/guides/use-cpanel-to-manage-domains-and-databases/) can be used to back up a site, but it has a licensing fee. A variety of third-party WordPress plug-ins are also available for this purpose.
 {{< /note >}}
 
@@ -115,7 +110,7 @@ To back up the WordPress files on the Linode, follow the below steps:
 
         sudo cp  public_html/ -r  ~/wpbackup
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To back up files to another system, launch an FTP application from the other system and connect to Linode. Navigate to the `/var/www/html/yourdomainname.com` and copy over the entire contents of the `public_html` directory. For more information on using FTP, see our [Transfer Files with FileZilla](/docs/guides/filezilla/) guide.
     {{< /note >}}
 
@@ -135,7 +130,7 @@ To use a newer version of PHP, all necessary PHP modules must be upgraded to the
 
         sudo apt install php7.4
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the `php7.4` component cannot be found on the system, version 7.4 might still be the default version. To determine the default version of the `php` package, run the command `sudo apt list php`. If this displays a reference to version 7.4, run the command `sudo apt install php`. To install a different version of PHP, follow the instructions in the [How to Install a Specific Version of PHP](/docs/guides/how-to-update-php-for-wordpress/#how-to-install-a-specific-version-of-php) section.
     {{< /note >}}
 
@@ -143,7 +138,7 @@ If the `php7.4` component cannot be found on the system, version 7.4 might still
 
         sudo apt install php7.4-common php7.4-mysql php7.4-cgi libapache2-mod-php7.4 php7.4-mbstring php7.4-curl php7.4-gd php7.4-xml php7.4-xmlrpc
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If NGINX is used as the web server, the `php7.4-fpm` package must also be installed.
     {{< /note >}}
 
@@ -165,7 +160,7 @@ Copyright (c) The PHP Group
         sudo a2dismod php7.0
         sudo a2enmod php7.4
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If NGINX is used as the web server, run the following commands instead:
 
     sudo systemctl start php7.4-fpm
@@ -229,7 +224,7 @@ update-alternatives: using /usr/bin/php7.0 to provide /usr/bin/php (php) in manu
 
 The backup procedures are executed in reverse to restore the backup copy.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Do not add any content or make any changes to the site before restoring the original content. Any further changes are overwritten when the WordPress database is restored.
 {{< /note >}}
 

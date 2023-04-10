@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Database Engines and Plans"
 description: "Learn the differences between the database engines offered by Linode's Managed Database service."
 published: 2022-06-06
 modified: 2022-08-09
+authors: ["Linode"]
 ---
 
 When deploying a Managed Database, you are able to select from a variety of database engines and plans. While each database engine enables you to store data, application compatibility and the way in which they store and access data can vary greatly. This guide aims to provide more information on each database engine, the reasons you might choose one over the other, and advice on selecting an appropriate plan size.
@@ -70,9 +68,9 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 ### Shared CPU Instances
 
-**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 2840 GB Storage**<br>
+**1 GB - 192 GB Memory, 1 - 32 Shared vCPU Cores, 25 GB - 3840 GB Storage**<br>
 
-[Shared CPU Instances](/docs/products/compute/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances and Managed Databases. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
+[Shared CPU Instances](/docs/products/compute/compute-instances/plans/shared-cpu/) offer a balanced array of resources coupled with shared CPUs that can burst up to 100% for short intervals. This keeps costs down while still supporting a wide variety of cloud applications. Your processes are scheduled on the same CPU cores as processes from other Compute Instances and Managed Databases. This shared scheduling is done in a secure and performant manner and Linode works to minimize competition for CPU resources between your server and other servers.
 
 *Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention.*
 
@@ -80,10 +78,10 @@ Each Managed Database can be deployed with a specific set of resources. This col
 
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
 
-[Dedicated CPU Instances](/docs/products/compute/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
+[Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
 *Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
 
 {{< note >}}
 Once a Managed Database cluster is created, it cannot be resized to a different plan. To modify the resources allocated to your database, you will need to create a new Managed Database with the desired plan, migrate your data, and delete the original Managed Database.
-{{</ note >}}
+{{< /note >}}

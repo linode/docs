@@ -1,8 +1,5 @@
 ---
 slug: installing-directadmin-on-debian-6
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: Installing DirectAdmin on Debian 6
 keywords: ["directadmin", "install", "control panels", "debian"]
 tags: ["cms","debian"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2011-11-02
 title: Installing DirectAdmin on Debian 6
 deprecated: true
+authors: ["Chris Ciufo"]
 ---
 
 [DirectAdmin](http://directadmin.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the DirectAdmin control panel on your Debian 6 Linode. Please note that Linode does not sell DirectAdmin licenses; you'll need to obtain one directly from DirectAdmin or an authorized distributor. Additionally, Linode does not provide DirectAdmin support, although you may contact [DirectAdmin support](http://www.directadmin.com/support.html) directly once you've purchased a license. This product should be installed on a freshly deployed Debian 6 Linode. These instructions should be performed as the "root" user via SSH.

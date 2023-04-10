@@ -1,9 +1,6 @@
 ---
 slug: install-anaconda-on-linux-centos-8-stream
-author:
-  name: Cameron Laird
-description: 'Learn how to install Anaconda on a Linux CentOS distribution.'
-og_description: 'Learn how to install Anaconda on Linux CentOS distribution.'
+description: "Learn how to install Anaconda on a Linux CentOS distribution."
 keywords: ['anaconda linux']
 tags: ['python', 'centos']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,16 +8,13 @@ published: 2021-09-10
 modified_by:
   name: Linode
 title: "Install Anaconda on Linux CentOS"
-h1_title: "How to Install Anaconda on Linux CentOS"
-enable_h1: true
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+title_meta: "How to Install Anaconda on Linux CentOS"
 relations:
   platform:
     key: how-to-install-anaconda
     keywords:
       - distribution: CentOS 8 Stream
+authors: ["Cameron Laird"]
 ---
 [Anaconda](http://anaconda.com) is a distribution of the Python and R programming languages. It is a curated bundle of specific language interpreters and add-ons. Anaconda's user base is primarily from the scientific computing, data analytics, and machine learning communities.
 
@@ -65,7 +59,7 @@ Follow the instructions below to install Anaconda. Installation takes around twe
 
     This installs Anaconda 3 and Python 3.8.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to access all Anaconda installers.
     {{< /note >}}
 
@@ -88,7 +82,7 @@ You can navigate to the [Anaconda archive](https://repo.anaconda.com/archive) to
         sudo -s source /root/anaconda3/bin/activate
         export PATH="/root/anaconda3/bin:$PATH"
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 During the `conda init` prompt, if you type **no**, conda cannot modify your shell scripts. In order to initialize conda manually, run the commands below after the installation is completed.
 
     sudo -s source /root/anaconda3/bin/activate

@@ -1,8 +1,5 @@
 ---
 slug: what-is-the-linode-longview-app-for-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
@@ -12,15 +9,15 @@ modified: 2022-02-17
 modified_by:
   name: Linode
 published: 2013-11-06
-title: "What is the Linode Longview App for MySQL"
-h1_title: "Using the Linode Longview App for MySQL"
-enable_h1: true
+title: "Using the Linode Longview App for MySQL"
+title_meta: "What is the Linode Longview App for MySQL"
 classic_manager_link: platform/longview/longview-app-for-mysql-classic
 relations:
     platform:
         key: what-is-longview
         keywords:
             - distribution: MySQL
+authors: ["Linode"]
 ---
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
@@ -49,7 +46,7 @@ If you already have Longview installed, you may find that MySQL is not automatic
 
 To run the automatic Longview configuration:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Ensure that MySQL is running:
 
@@ -70,7 +67,7 @@ update-rc.d: using dependency based boot sequencing
     {{</ output >}}
 Once you see this success message, the Longview MySQL App should automatically start collecting MySQL data. Refresh Longview in the Cloud Manager to verify that the MySQL tab is now present and collecting data for your Longview client instance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
     {{< /note >}}
 
@@ -80,13 +77,13 @@ Unless you already have a specific Longview database user set up in the `/etc/li
 
 ### Manual Configuration (All Distributions)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You cannot configure the location of a socket for the Longview client.
 {{< /note >}}
 
 To enable the MySQL Longview app manually, follow these steps on your Linode:
 
-1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Log into MySQL. For example, to log in as the root user:
 
@@ -222,7 +219,7 @@ This error will state `Unable to connect to the database:` and then specify a re
 
 ### Unable to Collect MySQL Status Information
 
-If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/guides/support/).
+If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/products/platform/get-started/guides/support/).
 
 ### MySQL Tab is Missing
 

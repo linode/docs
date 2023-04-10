@@ -1,8 +1,5 @@
 ---
 slug: install-restic-shortguide
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: 'A shortguide that shows how to install Restic backup.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +9,14 @@ modified_by:
 title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
+authors: ["Andy Heathershaw"]
 ---
 
 1. Download the latest version of Restic from [the Github Releases page](https://github.com/restic/restic/releases) (version 0.11.0 at the time of writing):
 
         wget https://github.com/restic/restic/releases/download/v0.11.0/restic_0.11.0_linux_amd64.bz2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure you select the correct file for your system. The above command is correct for most Linux distributions on Linode.
 {{< /note >}}
 

@@ -1,9 +1,6 @@
 ---
 slug: migrating-a-server-to-your-linode
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides guidelines and tips for migrating an existing Linux server from a local development VM or another hosting provider to a new Linode.'
 keywords: ["migrate to linode", "linode migration", "migrate linux"]
 tags: ["linode platform","cloud manager"]
@@ -14,17 +11,18 @@ modified_by:
   name: Nick Brewer
 published: 2012-05-24
 title: Migrating a Server to Your Linode
+authors: ["Linode"]
 ---
 
-{{< note >}}
-The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
+{{< note respectIndent=false >}}
+The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and then following the steps in our updated [custom distribution](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/) guide to deploy it on a Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
 {{< /note >}}
 
 You can migrate an existing server to your Linode from another hosting provider or a local machine. This is a great option if you're moving to Linode from another hosting provider or if you've built a custom server on your local machine. You can even migrate virtualized servers created with products like VirtualBox or VMware. This guide shows you how to prepare the Linode to receive the files, copy the files from the existing server to the Linode, and then make the disks bootable.
 
 ![Migrating a Server to Your Linode](migrating_a_server_to_your_linode.png "Migrating a Server to Your Linode")
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions assume that you'll be working with a live server. If you can boot into an alternate environment, such as a live CD, you should do so. However, most hosting providers do not offer a bootable recovery or maintenance environment.
 {{< /note >}}
 
@@ -36,7 +34,7 @@ First you'll need to prepare the Linode to receive the files from the existing s
 
 Create two disks: one for the files on your existing server, and another for a swap disk. That way, the import from the existing server will be bootable. Here's how to create the disks:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We assume that your existing server has a single root partition. If you have multiple partitions set up, you'll need to add extra disks to accommodate each partition.
 {{< /note >}}
 
@@ -73,7 +71,7 @@ You'll need a configuration profile to boot your existing server after you uploa
 3.  Enter a name for the configuration profile in the **Label** field.
 4.  *Optional:* Enter notes for the configuration profile in the **Notes** field.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you select the correct kernel for your existing server. There are 32-bit and 64-bit versions available. The 64-bit version has `x86_64` in the name.
 {{< /note >}}
 
@@ -87,9 +85,9 @@ You have successfully created the configuration profile.
 
 Before you initiate the transfer, you need to start the Linode in rescue mode. Here's how:
 
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
-2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
-3.  Start SSH. For instructions, see [Start SSH](/docs/guides/rescue-and-rebuild/#starting-ssh).
+1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
+2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+3.  Start SSH. For instructions, see [Start SSH](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#starting-ssh).
 4.  Mount the blank primary disk by entering the following command:
 
         mount -o barrier=0 /dev/sda
@@ -111,11 +109,11 @@ At this point, you should stop as many services as possible on the existing serv
 Now it's time to copy the files from your existing server to your Linode. Here's how:
 
 1.  Connect to your existing server via SSH and log in as `root`.
-2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/guides/getting-started/#find-the-ip-address-of-your-linode).) :
+2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/products/platform/get-started/#find-the-ip-address-of-your-linode).) :
 
         rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
 
- {{< note >}}
+{{< note respectIndent=false >}}
 If you receive a message indicating that the rsync command couldn't be found, you'll need to install it by entering `apt-get install rsync` on Ubuntu or Debian. If you're using a different distribution, you may need to enter a different command.
 {{< /note >}}
 

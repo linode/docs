@@ -1,7 +1,5 @@
 ---
 slug: how-to-use-gping-on-linux
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use gping, a Linux tool with the functionality of ping and a modern graphical command-line display."
 keywords: ['gping linux','ping linux','ping linux alternatives']
 tags: ['linux']
@@ -10,22 +8,19 @@ published: 2021-10-22
 modified_by:
   name: Nathaniel Stickman
 title: "Install and Use gping on Linux"
-h1_title: "How to Install and Use gping on Linux"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "How to Install and Use gping on Linux"
+authors: ["Nathaniel Stickman"]
 ---
 
 The gping tool takes the functionality of the ping tool and displays its data on a graph. With gping you can track the response time for hosts, and compare the data side by side. This guide shows you how to install gping and get started using it on your Linux system.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

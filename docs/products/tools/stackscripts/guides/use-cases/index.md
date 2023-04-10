@@ -27,8 +27,8 @@ Community StackScripts are publicly available to the entire Linode Community. Th
 
 {{< note >}}
 If you would also like to make your open source project available to the Linode Community as an App in the Linode Marketplace, see the [Linode App Marketplace page](https://www.linode.com/marketplace/) for details.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploy Cluster Instances
 
-If your application makes use of a cluster of nodes, you may be able to automate the deployment of a new cluster-member by using StackScripts to configure the instance. StackScripts, in combination with the [Linode API](https://developers.linode.com/api/v4), can help you to elastically automate deployment and management of a cluster's node. Similarly, you can apply the same concept to creating a [server appliance instance](https://en.wikipedia.org/wiki/Computer_appliance).
+If your application makes use of a cluster of nodes, you may be able to automate the deployment of a new cluster-member by using StackScripts to configure the instance. StackScripts, in combination with the [Linode API](/docs/products/tools/api/), can help you to elastically automate deployment and management of a cluster's node. Similarly, you can apply the same concept to creating a [server appliance instance](https://en.wikipedia.org/wiki/Computer_appliance).

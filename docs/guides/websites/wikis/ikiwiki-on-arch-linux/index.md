@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-arch-linux
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Arch Linux to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
            - distribution: Arch
 tags: ["wiki"]
+authors: ["Linode"]
 ---
 
 

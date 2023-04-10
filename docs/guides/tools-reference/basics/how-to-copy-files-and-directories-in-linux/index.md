@@ -1,23 +1,17 @@
 ---
 slug: how-to-copy-files-and-directories-in-linux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
-og_description: 'This guide explains how to copy files and folders in Linux, including how to copy to different directories.'
 keywords: ['Copy a file linux','Copying a file linux','Copying files linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-18
 modified_by:
   name: Linode
-title: "How to Copy Files and Directories in Linux"
-h1_title: "How to Copy Files and Directories in Linux"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Copy Files and Directories in Linux"
+title_meta: "How to Copy Files and Directories in Linux"
 external_resources:
 - '[man page for cp command](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/cp.html)'
 - '[Ubuntu 22.04 documentation for the cp command](https://manpages.ubuntu.com/manpages/jammy/man1/cp.1.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Copying a file is one of the most common Linux tasks. Ubuntu and other Linux distributions use the `cp` command to copy one or more files, and to copy entire directories. This guide explains how to use the `cp` command to copy files on Linux. It also lists the different variations of this command and describes the different `cp` command options.
@@ -32,11 +26,11 @@ Users must have `sudo` privileges to copy protected files. Otherwise, `sudo` is 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -99,9 +93,9 @@ cp ~/clock.txt ~/clock.txt.bak
 
 To copy a protected file that the `root` account owns, use `sudo`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be very careful when copying any files owned by root, especially those in the system `/` directories.
-{{< /caution >}}
+{{< /note >}}
 
 ```command
 cd /etc

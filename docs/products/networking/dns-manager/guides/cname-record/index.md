@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create CNAME records using Linode's DNS Manager"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-28
@@ -10,6 +7,7 @@ modified_by:
 title: "CNAME Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ## CNAME Overview
@@ -27,8 +25,8 @@ In most cases, the target domain should resolve to another type of DNS record, l
     - Enter a string that's 1-63 characters in length and contains only letters, numbers, and underscores. Hyphens can also be used, but the string cannot start with one.
 
     {{< note >}}
-Using the root domain as the hostname for a CNAME record is called *CNAME flattening* and is not supported on Linode's DNS Manager.
-{{</ note >}}
+    Using the root domain as the hostname for a CNAME record is called *CNAME flattening* and is not supported on Linode's DNS Manager.
+    {{< /note >}}
 
 - **Alias to:** The full domain name of the canonical domain, where traffic should be redirected. You can also use the `@` character to use the root domain.
 

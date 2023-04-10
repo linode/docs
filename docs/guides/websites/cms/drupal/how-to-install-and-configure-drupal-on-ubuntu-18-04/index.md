@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-drupal-on-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Ubuntu 18.04.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "ubuntu 18.04"]
 tags: ["drupal","ubuntu","apache","lamp","php","cms"]
@@ -10,8 +7,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
     name: Linode
 published: 2020-02-18
-title: How to Install and Configure Drupal on Ubuntu 18.04 LTS
-h1_title: Install and Configure Drupal on Ubuntu 18.04
+title: Install and Configure Drupal on Ubuntu 18.04
+title_meta: How to Install and Configure Drupal on Ubuntu 18.04 LTS
 image: L_Drupal_on_Ubuntu1804.png
 relations:
     platform:
@@ -19,15 +16,16 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Ubuntu 18.04.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -43,9 +41,9 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.2.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 
@@ -69,7 +67,7 @@ $settings['trusted_host_patterns'] = array(
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -116,7 +114,7 @@ $settings['trusted_host_patterns'] = array(
 
     ![Drupal 8 database configuration.](drupal-database-configuration.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you forgot the name of your database, log back in to MySQL or MariaDb with: `mysql -u root -p` and enter: `show databases;`.
 {{< /note >}}
 

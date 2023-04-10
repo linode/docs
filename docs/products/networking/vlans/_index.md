@@ -10,7 +10,7 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2022-11-17
+modified: 2023-02-23
 aliases: ['/guides/platform/vlan/']
 ---
 
@@ -20,7 +20,7 @@ aliases: ['/guides/platform/vlan/']
 
 ### Private Communication Between Compute Instances
 
-A VLAN creates a truly private network and communication is isolated to just the Compute Instances belonging to the same VLAN. No other Compute Instances on other VLANs or within the same data center can see this private traffic. This goes beyond Linode's [Private IP](/docs/guides/managing-ip-addresses/#types-of-ip-addresses) feature, which can be accessed by any resource in the same data center.
+A VLAN creates a truly private network and communication is isolated to just the Compute Instances belonging to the same VLAN. No other Compute Instances on other VLANs or within the same data center can see this private traffic. This goes beyond Linode's [Private IP](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#types-of-ip-addresses) feature, which can be accessed by any resource in the same data center.
 
 ### Simple Configuration
 
@@ -28,7 +28,7 @@ Use the Cloud Manager to create a VLAN and assign Compute Instances. Create up t
 
 ### Reduce Network Transfer Costs
 
-Private network transfer is free. Any communication between Compute Instances over a VLAN does not count against the account's monthly [network transfer allowance](/docs/guides/network-transfer/).
+Private network transfer is free. Any communication between Compute Instances over a VLAN does not count against the account's monthly [network transfer allowance](/docs/products/platform/get-started/guides/network-transfer/).
 
 ### Part of a Flexible Custom VPC Solution
 
@@ -44,7 +44,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 | Fremont (California, USA) | Not yet available |
 | **London (United Kingdom)** | **Available** |
 | **Mumbai (India)** | **Available** |
-| Newark (New Jersey, USA) | Not yet available |
+| **Newark (New Jersey, USA)** | **Available** |
 | **Singapore** | **Available** |
 | **Sydney (Australia)** | **Available** |
 | Tokyo (Japan) | Not yet available |
@@ -52,7 +52,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 
 ## Pricing
 
-VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/guides/network-transfer/).
+VLANs are free to use. Communication across your private network does not count against your [monthly network transfer usage](/docs/products/platform/get-started/guides/network-transfer/).
 
 ## Technical Specifications
 
@@ -63,7 +63,7 @@ VLANs are free to use. Communication across your private network does not count 
 - User assignable IPv4 addresses
 - Each account can maintain up to 10 VLANs per region
 - Each Compute Instance can belong to up to 3 VLANs
-- Network transfer over a VLAN does not count towards your account's [network transfer allowance](/docs/guides/network-transfer/)
+- Network transfer over a VLAN does not count towards your account's [network transfer allowance](/docs/products/platform/get-started/guides/network-transfer/)
 
 ## Additional Limits and Considerations
 
@@ -73,6 +73,6 @@ VLANs are free to use. Communication across your private network does not count 
 
 - **VLANs cannot be manually deleted by the user.** There is no need to manually delete a VLAN. If a VLAN is no longer needed, simply detach it from all Linodes. After this, it will automatically be deleted within a short timeframe.
 
-- **Network Helper is required for automatic configuration.** If [Network Helper](/docs/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN’s private network. In this case, advanced users can manually adjust their Linode’s internal network configuration files with the appropriate settings for their VLAN. See [Manually configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
+- **Network Helper is required for automatic configuration.** If [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) has been disabled, the Linode will not *automatically* be able to communicate over the VLAN’s private network. In this case, advanced users can manually adjust their Linode’s internal network configuration files with the appropriate settings for their VLAN. See [Manually configuring a VLAN on a Linode](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
 
 - **The Public Internet must always use the eth0 network interface.** While VLANs themselves can function without issue on the `eth0` interface, the public internet on Linode will not be networked correctly on other interfaces.

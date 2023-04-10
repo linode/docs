@@ -34,7 +34,7 @@ General MySQL guides (not specific to Managed Databases):
 - [An Overview of MySQL](/docs/guides/an-overview-of-mysql/)
 - [How to List Tables in MySQL and MariaDB](/docs/guides/list-tables-in-mysql-and-mariadb/)
 - [How to Use Views in a MySQL Database](/docs/guides/how-to-create-and-use-mysql-views/)
-{{</ note >}}
+{{< /note >}}
 
 ## PostgreSQL
 
@@ -49,7 +49,7 @@ General PostgreSQL guides (not specific to Managed Databases):
 
 - [An Introduction to PostgreSQL](/docs/guides/an-introduction-to-postgresql/)
 - [Backing Up a PostgreSQL Database (Database Dump)](/docs/guides/how-to-back-up-your-postgresql-database/)
-{{</ note >}}
+{{< /note >}}
 
 ## MongoDB
 
@@ -62,4 +62,4 @@ General MongoDB guides (not specific to Managed Databases):
 
 - [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-introduction/)
 - [How to Install and Use the MongoDB Community Shell](/docs/guides/mongodb-community-shell-installation/)
-{{</ note >}}
+{{< /note >}}

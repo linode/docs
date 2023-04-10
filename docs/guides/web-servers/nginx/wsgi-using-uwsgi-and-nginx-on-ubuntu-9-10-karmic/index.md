@@ -1,9 +1,6 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Ubuntu 9.10 "Karmic".'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

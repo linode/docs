@@ -9,7 +9,7 @@ cascade:
     product_description: "Programmatic access to the Linode platform, allowing you to automate tasks through a fully-documented REST API."
 published: 2020-09-11
 modified: 2022-12-06
-aliases: ['/products/tools/linode-api/','/platform/api/']
+aliases: ['/products/tools/linode-api/','/platform/api/','/guides/platform/api/']
 ---
 
 {{< note >}}

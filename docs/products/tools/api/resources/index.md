@@ -47,7 +47,7 @@ aliases: ['/products/tools/linode-api/resources/']
 
 - [How do I use the Linode API to set my Reverse DNS (rDNS)?](https://www.linode.com/community/questions/18889/how-do-i-use-the-linode-api-to-set-my-reverse-dns-rdns)
 
-- [Can I call Private Stackscripts using the API?](https://www.linode.com/community/questions/18287/can-i-call-private-stackscripts-using-the-api)
+- [Can I call Private StackScripts using the API?](https://www.linode.com/community/questions/18287/can-i-call-private-stackscripts-using-the-api)
 
 - [How do I clone a Linode via API?](https://www.linode.com/community/questions/18074/how-do-i-clone-a-linode-via-api)
 

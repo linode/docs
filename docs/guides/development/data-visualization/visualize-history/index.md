@@ -1,8 +1,5 @@
 ---
 slug: visualize-history
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An overview of popular open source data visualization packages for R, Python, and JavaScript.'
 keywords: ["Visualization", "R", "Python", "Perl", "pandas"]
 tags: ["python", "perl"]
@@ -11,10 +8,8 @@ published: 2019-09-27
 modified_by:
   name: Linode
 title: 'An Overview of Open Source Data Visualization Tools'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 aliases: ['/development/data-visualization/visualize-history/','/development/visualize-history/']
+authors: ["Mihalis Tsoukalos"]
 ---
 Creating graphic visualizations for a data set is a powerful way to derive meaning from vast amounts of information. It provides a way to extract meaningful relationships between different aspects of your data depending on how the data is mapped and which graphic representations are chosen. Data visualization is a common practice in many sectors, including various scientific disciplines, business settings, the government sector, and education.
 
@@ -155,11 +150,11 @@ sub check_category {
 
         ./command_length.pl data-sets > ~/command_categories.txt
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your Perl script must be executable in order to run. To add these permissions, execute the following command:
 
     chmod +x command_length.pl
-    {{</ note >}}
+    {{< /note >}}
 
     Open the `.command_categories.txt` file to view the categorizations created by your Perl script. Your file should resemble the following example:
 
@@ -415,9 +410,9 @@ func main() {
 
 1. Create an HTML file named `pieChart.html` and copy and paste the following content. The `DATA` variable on line 31 contains the JSON data that was created by the `cToJSON.go` script in the previous step. Remove the JSON data in the example and replace it with your own JSON data.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. Web browser security constraints restrict how a document or script loaded from one origin can interact with a resource from another origin. However, you may consider using the [d3-fetch module](https://github.com/d3/d3-fetch/blob/v1.1.2/README.md#json) to fetch your JSON data from a specific URL.
-    {{</ note >}}
+    {{< /note >}}
 
       {{< file "~/pieChart.html" javascript >}}
 <!DOCTYPE html>

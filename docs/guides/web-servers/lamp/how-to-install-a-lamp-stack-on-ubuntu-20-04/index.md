@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-20-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on Ubuntu 20.04 Long Term Support (LTS).'
 keywords: ["install lamp ubuntu 20.04", "apache install", "mysql install", "php", "ubuntu 20.04"]
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-20-04/','/web-servers/lamp/install-lamp-stack-on-ubuntu-20-04/']
@@ -12,9 +9,8 @@ modified: 2021-06-23
 modified_by:
   name: Linode
 published: 2021-06-25
-title: 'Installing a LAMP Stack on Ubuntu 20.04'
-h1_title: 'How to Install a LAMP Stack on Ubuntu 20.04'
-enable_h1: true
+title: 'How to Install a LAMP Stack on Ubuntu 20.04'
+title_meta: 'Installing a LAMP Stack on Ubuntu 20.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -25,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Linode"]
 ---
 
 ## What is a LAMP Stack?
@@ -41,11 +38,13 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
- {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+{{< note respectIndent=false >}}
+If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LAMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.
+{{< /note >}}
 
 ## Installation
 
@@ -96,7 +95,7 @@ KeepAliveTimeout 5
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` setting controls how long the server waits (measured in seconds) for new requests from already connected clients. Setting this to 5 will avoid wasting RAM.
 {{< /note >}}
 
@@ -161,7 +160,7 @@ You can set up virtual hosts several ways, and the following steps outline the r
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The file example above has all comment sections removed for brevity. Keep or remove the commented areas as you see fit.
 
 The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
@@ -171,7 +170,7 @@ The `ServerAlias` directive allows you to include multiple domain names or subdo
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that you do not put a space after the comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
 {{< /note >}}
 
@@ -187,7 +186,7 @@ Make sure that you do not put a space after the comma between `public_html` and 
 
         sudo a2ensite example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To disable your website, run `a2dissite example.com`.
 {{< /note >}}
 
@@ -239,7 +238,7 @@ max_input_time = 30
 error_log = /var/log/php/error.log
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 {{< /note >}}
 
@@ -252,7 +251,7 @@ The beginning of the `php.ini` file contains examples commented out with a semic
 
         sudo systemctl restart apache2
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you plan on using your LAMP stack to host a WordPress server, install additional PHP modules: `sudo apt install php-curl php-gd php-mbstring php-xml php-xmlrpc`
 {{< /note >}}
 

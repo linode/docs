@@ -1,8 +1,5 @@
 ---
 slug: how-to-choose-static-site-generator
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: 'A static site generator helps you create professional-looking, responsive sites and blogs with minimal code.'
 og_description: "Use a static site generator to build professional websites without learning how to code. Our guide helps you choose a fast static site generator for your website or blog."
 keywords: ["static site", "static site generator", "ssg", "jekyll", "hugo", "gatsby", "hexo", "gitbook"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2018-03-14
 title: 'How to Choose a Static Site Generator'
 aliases: ['/websites/static-sites/how-to-choose-static-site-generator/']
+authors: ["Edward Angert"]
 ---
 
 ![How to Choose a Static Site Generator](how-to-choose-a-static-site-generator.png "How to Choose a Static Site Generator")

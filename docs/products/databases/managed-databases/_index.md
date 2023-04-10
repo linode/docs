@@ -69,7 +69,7 @@ Managed Databases can be created and deployed across [all regions](https://www.l
 
 Pricing starts at $15/mo for a 1 GB instance with a single node. Review the [pricing page](https://www.linode.com/pricing/#databases) for additional plans and their associated costs. There may be some differences between each available database engine due to licensing costs and other factors.
 
-Managed Databases do not consume [network transfer](/docs/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
+Managed Databases do not consume [network transfer](/docs/products/platform/get-started/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
 
 ## Additional Technical Specifications
 

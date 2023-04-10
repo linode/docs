@@ -1,6 +1,5 @@
 ---
-title: Linode Documentation
+title: Welcome to Linode Docs
+title_meta: Linode Documentation
 linkTitle: Guides
-h1_title: Welcome to Linode Docs
-
 ---

@@ -1,8 +1,5 @@
 ---
 slug: managed-add-service-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that describes how to add a service to Linode Managed.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-07-28
@@ -15,6 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-add-service-shortguide/']
+authors: ["Linode"]
 ---
 
 To add a new monitored service to Linode Managed:

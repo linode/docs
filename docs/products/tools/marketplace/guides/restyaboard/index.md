@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy Restyaboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
 keywords: ['restyaboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -10,12 +7,11 @@ published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Restyaboard through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Restyaboard through the Linode Marketplace"
 external_resources:
 - '[Restyaboard](https://restya.com/board)'
 aliases: ['/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Restyaboard](https://restya.com/board) is an open-source alternative to Trello, but with smart additional features like offline sync, revisions, diff, nested comments, multiple view layouts, chat, and more. And since it is self-hosted, data, privacy, and IP security are under your full control.
@@ -28,9 +24,9 @@ Restyaboard is like an electronic sticky note for organizing tasks and to-dos. I
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Restyaboard should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,7 +37,7 @@ Restyaboard is like an electronic sticky note for organizing tasks and to-dos. I
 
 ### Accessing the Restyaboard App
 
-1.  Open a browser and navigate to your Instance's [IP address](/docs/guides/managing-ip-addresses/).
+1.  Open a browser and navigate to your Instance's [IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/).
 
 1.  The Restyaboard login page appears. The default username for this instance is `admin` and the default password is `restya`. Click the **Log In** button to continue.
 

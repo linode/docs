@@ -1,40 +1,71 @@
 ---
-title: Set User Permissions on a Linode User Account
-h1_title: Set User Permissions
-enable_h1: true
+title: Manage User Permissions
+title_meta: Manage User Permissions for a Linode User Account
 description: "Learn how to manage permissions and restrict user access on a Linode account."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-21
+modified: 2023-01-24
 tags: ["linode platform","users","user permissions"]
 ---
 
-Setting permissions restricts a user's access to certain areas of the Linode Cloud Manager. For example, you could limit a user to a single Linode and prevent them from removing the Linode or adding extra services. Don't worry--these settings aren't permanent. You can add or remove access for a user at any time in the future. User Permissions are divided into three categories. **Global Permissions**, **Billing Access**, and **Specific Permissions**.
+Each user on an account can be given individualized permissions that provides unrestricted access to an account or limits their access to specific information or services. For example, you could give your core team members full unrestricted access, grant your accounts payable team access only to view and modify billing details, and limit an outside developer to only access specific Compute Instances or other services.
 
-Here's how to set a user's access permissions:
-
-1. Click the **Account** link in the sidebar.
-1. Click the **Users & Grants** tab.
-1. Click the **User Permissions** link for the desired user.
-1. Toggle the **Full Account Access** button off to limit the user's account access and show permission categories.
-
-    ![Configure User permissions in the Linode Cloud Manager.](accounts-user-permissions.png "Configure User permissions in the Linode Cloud Manager")
-
-1. Toggle the boxes in the **Global Permissions** section to allow the user to add [Linodes](/docs/guides/getting-started/), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/), [Domains](/docs/products/networking/dns-manager/), [Longview](/docs/guides/what-is-longview/) clients, [Block Storage Volumes](/docs/products/storage/block-storage/) to the account, create [StackScripts](/docs/products/tools/stackscripts/), frozen [Images](/docs/products/tools/images/), access all billing information, and cancel the entire account. These permissions are exactly as described and will not add any additional permissions.
-
-    {{< note >}}
-Granting access to settings denoted with a dollar sign ($) allows the user to perform actions that incur billing costs, such as adding or resizing a Linode.
+{{< note >}}
+The permissions discussed within this guide apply to accessing the Linode platform through the Cloud Manager, Linode API, and Linode CLI. If you wish to only provide someone with direct access to the internal system of a Compute Instance (or revoke their access), that can be accomplished through limited user accounts within your operating system. See [Create an Account for a Developer to Work on Your Compute Instance](/docs/products/platform/get-started/guides/developer-access/).
 {{< /note >}}
 
-1. Select an option for **Billing Access** permissions. These options are as follows:
+## View and Set Permissions for a User
 
-    - **None**: The user is unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous step.
-    - **Read Only**: The user can [View Invoices](/docs/products/platform/billing/guides/view-history/) and [Access Billing Info](/docs/products/platform/billing/guides/access-billing/).
-    - **Read-Write**: The user has full access to [Billing Information](/docs/products/platform/billing/guides/access-billing/), can make payments, edit billing information, view billing information, receive copies of all invoices, and receive email related to payments.
+You can view and edit permissions for a user directly in the Cloud Manager by following the instructions below.
 
-1. Select the appropriate permissions (None, Read Only, or Read-Write) in the **Specific Permissions** section to allow the user to access individual Linodes, StackSripts, Block Storage Volumes, Images, NodeBalancers, and Domains. Unlike Global Permissions, Specific Permissions can apply to individual resources and not the service as a whole. Specific Permission options are as follows:
+1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
 
-    - **None**: The user can not view or otherwise interact with the selected resource.
-    - **Read Only**: The user can view the resource and all of its associated information typically visible within the Linode Manager, however they can not otherwise interact with it through Cloud Manager.
-    - **Read-Write**: The user has full access to the selected resource, and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits.
+1. Navigate to the **Users & Grants** tab, which displays a list of existing users for the account.
 
-1. When you have finished configuring the user's permissions, click **Save**. The user's permissions are saved and effective immediately.
+    ![Screenshot of the Users & Grants tab in the Cloud Manager](list-of-users.png)
+
+1. Locate the user for which you wish to view or modify permissions and click the corresponding **User Permissions** link.
+
+    ![Screenshot of the link to edit a user's permissions.](user-permissions-link.png)
+
+1. Modify the settings as needed. Reference the [Permission Settings](#permission-settings) section below for more information on user permission settings.
+
+1. When you have finished configuring the user's permissions, click **Save**. The user's permissions are saved and become effective immediately.
+
+## Permission Settings
+
+### Full Account Access
+
+![Full Account Access](user-permissions-account-access.png)
+
+A user can either be given unrestricted (full) access to an account or they can be restricted by default. If **Full Account Access** is set to *ON*, the user has full access to the account and no further permission settings are available. When set to *OFF*, the user has no access and individual permissions can be granted using the other settings (covered below).
+
+### Create Services (Global Permissions)
+
+![Global Permissions](user-permissions-global-permissions.png)
+
+The **Global Permissions** settings enable users to add various types of services. There is a setting that corresponds to each type of service. For instance, to allow the user to add NodeBalancers, enable the *Can add NodeBalancers to this account* setting.
+
+{{< note >}}
+Granting access to settings denoted with a dollar sign ($) allows the user to perform actions that incur billing costs, such as adding or resizing a Linode Compute Instance.
+{{< /note >}}
+
+### Billing Access
+
+![Billing Access](user-permissions-billing-access.png)
+
+This section provides various levels of access to view or modify billing information:
+
+- **None**: The user is unable to view any billing information. This does not prevent a user from creating billable resources, which are instead applied as **Global Permissions** in the previous section.
+- **Read Only**: The user can [View Invoices](/docs/products/platform/billing/guides/view-history/) and [Access Billing Info](/docs/products/platform/billing/guides/access-billing/).
+- **Read-Write**: The user has full access to [Billing Information](/docs/products/platform/billing/guides/access-billing/), can make payments, edit billing information, view billing information, receive copies of all invoices, and receive email related to payments.
+
+### Specific Services
+
+![Specific Services](user-permissions-specific-access.png)
+
+A user can be granted individual permissions to each instance of a service, such as Linode Compute Instances, Block Storage Volumes, NodeBalancers, and more. Unlike **Global Permissions**, **Specific Permissions** apply to individual resources -- not the service as a whole.
+
+- **None**: The user cannot view or otherwise interact with the selected resource.
+- **Read Only**: The user can view the resource and all of its associated information typically visible within the Cloud Manager, however they cannot otherwise interact with it.
+- **Read-Write**: The user has full access to the selected resource and can make any changes that only an administrator is otherwise able to. This includes resource deletion, cloning, and all other applicable edits. The user also receives an email notification when a ticket is created or updated for this resource.

@@ -1,8 +1,5 @@
 ---
 slug: deploy-linodes-using-ansible
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
 keywords: ['ansible','Linode module','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,18 +7,17 @@ published: 2019-06-04
 modified: 2021-12-30
 modified_by:
   name: Linode
-title: "How to use the Linode Ansible Module to Deploy Linodes"
-h1_title: "Using the Linode Ansible Module to Deploy Linodes"
-enable_h1: true
+title: "Using the Linode Ansible Module to Deploy Linodes"
+title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
-contributor:
-  name: Linode
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 {{< note >}}
@@ -30,26 +26,24 @@ This guide shows how to use the older *Linode Ansible module* to manage Linode i
 The community-maintained module still functions, but using the Ansible collection is recommended. Review our [Using the Linode Ansible Collection to Deploy a Linode](/docs/guides/deploy-linodes-using-linode-ansible-collection/) guide for more information.
 {{< /note >}}
 
-Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](https://developers.linode.com/api/v4/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
+Ansible is a popular open-source tool that can be used to automate common IT tasks, like cloud provisioning and configuration management. With [Ansible's 2.8 release](https://docs.ansible.com/ansible/latest/roadmap/ROADMAP_2_8.html), you can deploy Linode instances using our latest [API (v4)](/docs/api/). Ansible's `linode_v4` module adds the functionality needed to deploy and manage Linodes via the command line or in your [Ansible Playbooks](/docs/guides/running-ansible-playbooks/). While the dynamic inventory plugin for Linode helps you source your Ansible inventory directly from the Linode API (v4).
 
 In this guide you will learn how to:
 
 * Deploy and manage Linodes using Ansible and the `linode_v4` module.
 * Create an Ansible inventory for your Linode infrastructure using the dynamic inventory plugin for Linode.
 
-{{< caution >}}
-This guide’s example instructions will create a [1GB Linode](https://www.linode.com/pricing) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide.
-
-If you remove the resource afterward, you will only be billed for the hour(s) that the resources were present on your account.
-{{</ caution >}}
+{{< note type="warning" >}}
+This guide’s example instructions will create a [1GB Linode](https://www.linode.com/pricing) (Nanode) billable resource on your Linode account. If you do not want to keep using the Linode that you create, be sure to [delete the resource](#delete-your-resources) when you have finished the guide. If you remove the resource afterward, you will only be billed for the hour(s) that the resources were present on your account.
+{{< /note >}}
 
 ## Before You Begin
 
 {{< note >}}
 The steps outlined in this guide require [Ansible version 2.8](https://github.com/ansible/ansible/releases/tag/v2.8.0), and were created using Ubuntu 18.04.
-{{</ note >}}
+{{< /note >}}
 
--   Add a limited user to your Linode following the steps below, created by following the [Add a limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our  [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Ensure that all commands are entered as your limited user.
+-   Add a limited user to your Linode following the steps below, created by following the [Add a limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our  [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Ensure that all commands are entered as your limited user.
 
 -   Install Ansible on your computer. Use the steps in the [Control Node Setup](/docs/guides/getting-started-with-ansible/#set-up-the-control-node) section of the [Getting Started With Ansible - Basic Installation and Setup](/docs/guides/getting-started-with-ansible/) guide.
 
@@ -64,7 +58,7 @@ The steps outlined in this guide require [Ansible version 2.8](https://github.co
 
 -   Generate a Linode API v4 access token with permission to read and write Linodes. You can follow the [Get an Access Token](/docs/products/tools/api/get-started/#get-an-access-token) section of the [Getting Started with the Linode API](/docs/products/tools/api/get-started/) guide if you do not already have one.
 
-- [Create an authentication Key-pair](/docs/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
+- [Create an authentication Key-pair](/docs/products/compute/compute-instances/guides/set-up-and-secure/#create-an-authentication-key-pair) if your computer does not already have one.
 
 ## Configure Ansible
 
@@ -77,9 +71,9 @@ The Ansible configuration file is used to adjust Ansible's default system settin
 
 In this section, you will create an Ansible configuration file and add options to disable host key checking, and to allow the Linode inventory plugin. The Ansible configuration file will be located in a development directory that you create, however, it could exist in any of the locations listed above. See [Ansible's official documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#common-options) for a full list of available configuration settings.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 When storing your Ansible configuration file, ensure that its corresponding directory does not have world-writable permissions. This could pose a security risk that allows malicious users to use Ansible to exploit your local system and remote infrastructure. At minimum, the directory should restrict access to particular users and groups. For example, you can create an `ansible` group, only add privileged users to the `ansible` group, and update the Ansible configuration file's directory to have `764` permissions. See the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide for more information on permissions.
-{{</ caution >}}
+{{< /note >}}
 
 1.  In your home directory, create a directory to hold all of your Ansible related files and move into the directory:
 
@@ -136,9 +130,9 @@ You can now begin creating Linode instances using Ansible. In this section, you 
     - The `vars_files` key provides the location of a local file that contains variable values to populate in the play. The value of any variables defined in the vars file will substitute any Jinja template variables used in the Playbook. Jinja template variables are any variables between curly brackets, like: `{{ my_var }}`.
     - The `Create a new Linode` task calls the `linode_v4` module and provides all required module parameters as arguments, plus additional arguments to configure the Linode's deployment. For details on each parameter, see the [linode_v4 Module Parameters](#linode-v4-module-parameters) section.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
   Usage of `groups` is deprecated, but still supported by Linode's API v4. The [Linode dynamic inventory module](#linode-dynamic-inventory-module) requires groups to generate an Ansible inventory and will be used later in this guide.
-        {{</ note >}}
+        {{< /note >}}
 
     - The`register` keyword defines a variable name, `my_linode` that will store `linode_v4` module return data. For instance, you could reference the `my_linode` variable later in your Playbook to complete other actions using data about your Linode. This keyword is not required to deploy a Linode instance, but represents a common way to declare and use variables in Ansible Playbooks. The task in the snippet below will use Ansible's [debug module](https://docs.ansible.com/ansible/2.4/debug_module.html) and the `my_linode` variable to print out a message with the Linode instance's ID and IPv4 address during Playbook execution.
 
@@ -167,15 +161,13 @@ label: simple-linode-
 
     - The `ssh_keys` example passes a list of two public SSH keys. The first provides the string value of the key, while the second provides a local public key file location.
 
-        {{< disclosure-note "Configure your SSH Agent" >}}
-If your SSH Keys are passphrase-protected, you should add the keys to your SSH agent so that Ansible does not hang when running Playbooks on the remote Linode. The following instructions are for Linux systems:
+        {{< note type="secondary" title="Configure your SSH Agent" isCollapsible=true >}}
+        If your SSH Keys are passphrase-protected, you should add the keys to your SSH agent so that Ansible does not hang when running Playbooks on the remote Linode. For Linux users, run the following command. If you stored your private key in another location, update the path that’s passed to ssh-add accordingly:
 
-1.  Run the following command; if you stored your private key in another location, update the path that’s passed to ssh-add accordingly:
+            eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
 
-        eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
-
-    If you start a new terminal, you will need to run the commands in this step again before having access to the keys stored in your SSH agent.
-        {{</ disclosure-note >}}
+        If you start a new terminal, you will need to run the commands in this step again before having access to the keys stored in your SSH agent.
+        {{< /note >}}
 
     - `label` provides a label prefix that will be concatenated with a random number. This occurs when the Create Linode Playbook's Jinja templating for the `label` argument is parsed (`label: "{{ label }}{{ 100 |random }}"`).
 
@@ -185,7 +177,7 @@ Ansible Vault allows you to encrypt sensitive data, like passwords or tokens, to
 
 {{< note >}}
 Ansible Vault can also encrypt entire files containing sensitive values. View Ansible's documentation on [Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#what-can-be-encrypted-with-vault) for more information.
-{{</ note >}}
+{{< /note >}}
 
 1.  Create your Ansible Vault password file and add your password to the file. Remember the location of the password file was configured in the `ansible.cfg` file in the [Configure Ansible](#configure-ansible) section of this guide.
 
@@ -279,7 +271,7 @@ localhost                  : ok=3    changed=1    unreachable=0    failed=0    s
 | `root_pass` | string | The password for the root user. If not specified, will be generated. This generated password will be available in the task success JSON.</br></br> The root password must conform to the following constraints: </br></br> &bull; May only use alphanumerics, punctuation, spaces, and tabs.</br>&bull; Must contain at least two of the following characters classes: upper-case letters, lower-case letters, digits, punctuation. |
 | `state` | string, *required* | The desired instance state. The accepted values are `absent` and `present`. |
 | `tags` | list | The user-defined labels attached to Linodes. Tags are used for grouping Linodes in a way that is relevant to the user. |
-| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/guides/choosing-a-compute-instance-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
+| `type` | string, | The Linode instance's plan type. The plan type determines your Linode's [hardware resources](/docs/products/compute/compute-instances/plans/choosing-a-plan/#hardware-resource-definitions) and its [pricing](https://www.linode.com/pricing/). </br></br> To view a list of all available Linode types including pricing and specifications for each type, issue the following command: </br></br>`curl https://api.linode.com/v4/linode/types`. |
 
 ## The Linode Dynamic Inventory Plugin
 
@@ -287,7 +279,7 @@ Ansible uses *inventories* to manage different hosts that make up your infrastru
 
 {{< note >}}
 The dynamic inventory plugin for Linode was enabled in the Ansible configuration file created in the [Configure Ansible](#configure-ansible) section of this guide.
-{{</ note >}}
+{{< /note >}}
 
 ### Configure the Plugin
 
@@ -328,27 +320,31 @@ types:
 1.  Before you can communicate with your Linode instances using the dynamic inventory plugin, you will need to add your Linode's IPv4 address and label to your `/etc/hosts` file.
 
     The Linode Dynamic Inventory Plugin assumes that the Linodes in your account have labels that correspond to hostnames that are in your resolver search path, `/etc/hosts`. This means you will have to create an entry in your `/etc/hosts` file to map the Linode's IPv4 address to its hostname.
-  {{< note >}}
+
+    {{< note respectIndent=false >}}
 A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists to support using a public IP, private IP or hostname. This change will enable the inventory plugin to be used with infrastructure that does not have DNS hostnames or hostnames that match Linode labels.
-{{</note>}}
+{{< /note >}}
+
     To add your deployed Linode instance to the `/etc/hosts` file:
 
-  -   Retrieve your Linode instance's IPv4 address:
+    -   Retrieve your Linode instance's IPv4 address:
 
-          ansible-inventory -i ~/development/linode.yml --graph --vars | grep 'ipv4\|simple-linode'
+            ansible-inventory -i ~/development/linode.yml --graph --vars | grep 'ipv4\|simple-linode'
 
-      Your output will resemble the following:
+        Your output will resemble the following:
 
-      {{<output>}}
-|  |--simple-linode-36
-|  |  |--{ipv4 = [u'192.0.2.0']}
-|  |  |--{label = simple-linode-36}
-{{</output>}}
+        ```output
+        |  |--simple-linode-36
+        |  |  |--{ipv4 = [u'192.0.2.0']}
+        |  |  |--{label = simple-linode-36}
+        ```
 
-  -   Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
+    -   Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
 
-          127.0.0.1       localhost
-          192.0.2.0 simple-linode-29
+        ```file {title="/etc/hosts"}
+        127.0.0.1       localhost
+        192.0.2.0 simple-linode-29
+        ```
 
 1.  Verify that you can communicate with your grouped inventory by pinging the Linodes. The ping command will use the dynamic inventory plugin configuration file to target `example_group`. The `u root` option will run the command as root on the Linode hosts.
 

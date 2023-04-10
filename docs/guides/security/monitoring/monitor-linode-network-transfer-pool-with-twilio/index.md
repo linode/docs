@@ -1,7 +1,5 @@
 ---
 slug: monitor-linode-network-transfer-pool-with-twilio
-author:
-  name: John Mueller
 description: "This guide shows you how to use Twilio and Linode's Python Library to receive alerts about your Linode's network transfer usage."
 keywords: ['twilio notifications']
 tags: ['python', 'monitoring']
@@ -9,26 +7,24 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 modified_by:
   name: Linode
-title: "Monitor your Linode's Network Transfer Pool"
-h1_title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
-enable_h1: true
-contributor:
-  name: John Mueller
+title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
+title_meta: "Monitor your Linode's Network Transfer Pool"
+authors: ["John Mueller"]
 ---
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
-{{< note >}}
-For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide.
+{{< note respectIndent=false >}}
+For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/products/platform/get-started/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide.
 {{< /note >}}
 
 It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have used a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
 
-- The [Cloud Manager](/docs/guides/network-transfer/#cloud-manager) displays your current transfer usage.
+- The [Cloud Manager](/docs/products/platform/get-started/guides/network-transfer/#cloud-manager) displays your current transfer usage.
 
-- The [Linode CLI](/docs/guides/network-transfer/#linode-cli) can report your current transfer usage.
+- The [Linode CLI](/docs/products/platform/get-started/guides/network-transfer/#linode-cli) can report your current transfer usage.
 
-- Linode sends [email alerts](/docs/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
+- Linode sends [email alerts](/docs/products/platform/get-started/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
 
 Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) of the Linode API.
 
@@ -46,15 +42,15 @@ Using Twilio, you can also build a custom text message notification system for y
 
 1. This guide shows how to set up the notification system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/compute-instances/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
 1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Linode API and Twilio API together. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Python Bindings for the Linode API](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-python-bindings-for-the-linode-api) section.
 
     The guide instructs you to install the Linode API and Twilio API clients for Python. When following these instructions, run the commands under the limited Linux user on your Linode instance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) that's accessed by the network transfer usage notification system in the current guide.
 {{< /note >}}
 
@@ -158,7 +154,7 @@ summary_text = "Linode network transfer pool statistics"
 transfer_statistics_text = 'Used: %sGB\n' \
     'Transfer pool size: %sGB\n' \
     'Percent of pool used: %s%%\n\n' \
-    'https://www.linode.com/docs/guides/network-transfer/' % \
+    'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
     (account_network_transfer.used,
     account_network_transfer.quota,
     round(pool_used_ratio * 100, 4))
@@ -208,7 +204,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file and exit your text editor.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. Your script should now look like the code in [this file](transfer-pool-notification-twilio.py).
 {{< /note >}}
 
@@ -261,7 +257,7 @@ Used: 100GB
 Transfer pool size: 1000GB
 Percent of pool used: 10.0%
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
     If you receive an error message when you run the script, review the [Troubleshooting](#troubleshooting) section.
@@ -334,7 +330,7 @@ The cron job sends you a periodic message with your network transfer statistics,
 # transfer_statistics_text = 'Used: %sGB\n' \
 #     'Transfer pool size: %sGB\n' \
 #     'Percent of pool used: %s%%\n\n' \
-#     'https://www.linode.com/docs/guides/network-transfer/' % \
+#     'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
 #     (account_network_transfer.used,
 #     account_network_transfer.quota,
 #     round(pool_used_ratio * 100, 4))
@@ -373,7 +369,7 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     transfer_statistics_text = 'Used: %sGB\n' \
         'Transfer pool size: %sGB\n' \
         'Percent of pool used: %s%%\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4))
@@ -397,7 +393,7 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The updated code for this section is now complete. Your script should now look like the code in [this file](transfer-pool-notification-with-threshold-twilio.py).
 {{< /note >}}
 
@@ -410,14 +406,14 @@ Used: 800GB
 Transfer pool size: 1000GB
 Percent of pool used: 80.0%
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
 1. Your account may not have used more network transfer than the notification threshold. If you want to test the new code to make sure it works, you could temporarily change the value of the `USAGE_NOTIFICATION_THRESHOLD_RATIO` variable in the script to a lower number.
 
     For example, if you set `USAGE_NOTIFICATION_THRESHOLD_RATIO = 0` in your code, then the if statement is always true. This means that a text message is always sent when the script runs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When testing, it can also be helpful to change the cron job schedule to run every minute, which is described in the [Adjusting the Scheduled Notification Time](#optional-adjusting-the-scheduled-notification-time) section.
 {{< /note >}}
 
@@ -441,7 +437,7 @@ The cron job now uses a threshold ratio and only sends a text message if you hav
 #     transfer_statistics_text = 'Used: %sGB\n' \
 #         'Transfer pool size: %sGB\n' \
 #         'Percent of pool used: %s%%\n\n' \
-#         'https://www.linode.com/docs/guides/network-transfer/' % \
+#         'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
 #         (account_network_transfer.used,
 #         account_network_transfer.quota,
 #         round(pool_used_ratio * 100, 4))
@@ -468,7 +464,7 @@ if pool_used_ratio > OVERAGE_NOTIFICATION_THRESHOLD_RATIO:
         'Percent of pool used: %s%%\n' \
         'Overage amount: %sGB\n' \
         'Overage amount cost: $%s\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4),
@@ -486,7 +482,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     transfer_statistics_text = 'Used: %sGB\n' \
         'Transfer pool size: %sGB\n' \
         'Percent of pool used: %s%%\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4))
@@ -499,7 +495,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     {{< disclosure-note "About the code" >}}
 - Line 3 defines a new overage notification threshold ratio and sets it to `1` (representing 100% of your transfer pool size).
 
-- Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/guides/network-transfer/#usage-costs).
+- Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/products/platform/get-started/guides/network-transfer/#usage-costs).
 
 - On line 6, the computed `pool_used_ratio` is compared with the overage threshold ratio number.
 
@@ -514,7 +510,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The updated code for this section is now complete. Your script should now look like the code in [this file](transfer-pool-notification-with-overage-threshold-twilio.py).
 {{< /note >}}
 
@@ -529,14 +525,14 @@ Percent of pool used: 150.0%
 Overage amount: 500GB
 Overage amount cost: $5.0
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
 1. Your account may not have used more than 100% of your network transfer pool. If you want to test the new code to make sure it works, you could temporarily change the value of the `OVERAGE_NOTIFICATION_THRESHOLD_RATIO` variable in the script to a lower number.
 
     For example, if you set `OVERAGE_NOTIFICATION_THRESHOLD_RATIO = 0` in your code, then the first if statement is always true. This means that a text message is always sent when the script runs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When testing, it can also be helpful to change the cron job schedule to run every minute, which is described in the [Adjusting the Scheduled Notification Time](#optional-adjusting-the-scheduled-notification-time) section.
 {{< /note >}}
 

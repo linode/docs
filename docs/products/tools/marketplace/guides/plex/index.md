@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
 keywords: ['streaming','plex','video','media server']
 tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
@@ -11,10 +8,11 @@ modified: 2022-03-08
 image: Deploy_Plex_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Plex Media Server through the Linode Marketplace"
+title: "Deploy Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
 aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.
@@ -29,9 +27,9 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Plex should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -40,16 +38,18 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Plex Options
 
-The following configuration options create a secure [Limited User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
+The following configuration options create a secure [Limited User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
 
 {{< note >}}
--   As a security measure, [root login over SSH](/docs/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
--   The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
+- As a security measure, [root login over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
+- The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
 {{< /note >}}
 
 - **Limited User Name** *(required)*: Enter your preferred username for the limited user. If the username `root` is specified, a limited user is not be created and extra security features are not configured.
 - **Limited User Password** *(required)*: Enter a *strong* password for the new user.
 - **Limited User SSH Key:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started After Deployment
 
@@ -74,9 +74,9 @@ Your shell then interprets `$IP_ADDRESS` as the value you have provided in follo
 
     echo $IP_ADDRESS
 
-{{< output >}}
+```output
 192.0.2.0
-{{< /output >}}
+```
 {{< /note >}}
 
 1.  From your workstation [terminal](/docs/guides/using-the-terminal/), enter the following the command, substituting `$USERNAME` with your Linux [Limited User Name](#plex-marketplace-app-options), and `$IP_ADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) of your Plex Server Linode:
@@ -143,17 +143,17 @@ For future reference, you can find examples of the instructions provided in this
 
         df -BG
 
-    {{< output >}}
-Filesystem     1G-blocks  Used Available Use% Mounted on
-udev                  1G    0G        1G   0% /dev
-tmpfs                 1G    1G        1G  11% /run
-/dev/sda             49G    3G       45G   5% /
-tmpfs                 1G    0G        1G   0% /dev/shm
-tmpfs                 1G    0G        1G   0% /run/lock
-tmpfs                 1G    0G        1G   0% /sys/fs/cgroup
-tmpfs                 1G    0G        1G   0% /run/user/1000
-/dev/sdc             20G    1G       19G   1% /home/username/plex/media/linode-volume
-    {{< /output >}}
+    ```output
+    Filesystem     1G-blocks  Used Available Use% Mounted on
+    udev                  1G    0G        1G   0% /dev
+    tmpfs                 1G    1G        1G  11% /run
+    /dev/sda             49G    3G       45G   5% /
+    tmpfs                 1G    0G        1G   0% /dev/shm
+    tmpfs                 1G    0G        1G   0% /run/lock
+    tmpfs                 1G    0G        1G   0% /sys/fs/cgroup
+    tmpfs                 1G    0G        1G   0% /run/user/1000
+    /dev/sdc             20G    1G       19G   1% /home/username/plex/media/linode-volume
+    ```
 
     Notice that there is some overhead with the Volume due to the file system.
 
@@ -187,7 +187,7 @@ This section directs you to run commands either on your Plex Server Linode throu
     Depending on the file size(s), this may take a few minutes.
 
     {{< note >}}
-There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
+    There are other ways to upload files to your Plex Server Linode. See our section in [Linux System Administration Basics](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) for more information.
     {{< /note >}}
 
 ### Add Media Libraries

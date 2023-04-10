@@ -1,8 +1,5 @@
 ---
 slug: set-up-an-ipv6-tunnel-on-your-linode
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with instructions on how to setup an IPv6 tunnel to connect your system to a network running on IPv4 and pass traffic from one to another.'
 keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,11 +10,12 @@ modified_by:
 published: 2011-04-29
 title: Set Up an IPv6 Tunnel on Your Linode
 tags: ["networking","linode platform"]
+authors: ["Linode"]
 ---
 
 ![Set up an IPv6 Tunnel on Your Linode](Set_Up_an_IPv6_Tunnel_on_Your_Linode_smg.jpg)
 
-As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/guides/an-overview-of-ipv6-on-linode/) addresses in all locations.
+As IPv4 address exhaustion nears, many people are making the switch to IPv6. Linode offers [native IPv6](/docs/products/compute/compute-instances/guides/ipv6/) addresses in all locations.
 
 An IPv6 tunnel lets a system reach an IPv6 network using existing IPv4 connectivity. Follow this guide if you:
 
@@ -33,13 +31,13 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 {{< /note >}}
 
-1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/guides/lish/) or [Glish](/docs/guides/glish/) interface.
+1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/products/compute/compute-instances/guides/lish/) or [Glish](/docs/products/compute/compute-instances/guides/glish/) interface.
 
-2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6` to match the device described in Hurricane Electric's examples. Replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Networking](/docs/guides/managing-ip-addresses/#viewing-ip-addresses) tab of the Linode Cloud Manager:
+2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6` to match the device described in Hurricane Electric's examples. Replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Networking](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses) tab of the Linode Cloud Manager:
 
         ip tunnel add he-ipv6 mode sit remote 203.0.113.10 local 198.51.100.5 ttl 255
         ip link set he-ipv6 up
@@ -48,11 +46,11 @@ Configuration of an IP tunnel using this method will not be persistent after reb
 
 3.  Assign IPv6 address and routing information to your new tunnel device. Replace `2001:db8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your "Client IPv6 Address":
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The `ifdown` command **will halt all network traffic to your Linode**. This step is included to avoid an error when adding the IPv6 route. It may not be required on all Linux distributions.
 
 On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 down` and `ip link set eth0 up`
-{{< /caution >}}
+{{< /note >}}
 
         ip addr add 2001:db8:1234:5678::2/64 dev he-ipv6
         ifdown eth0
@@ -72,7 +70,7 @@ On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 d
 
         ping6 -I he-ipv6 irc6.oftc.net
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your system must allow ICMPv6 in through the firewall for pings to be returned.
 {{< /note >}}
 
@@ -82,9 +80,9 @@ If everything is working, you should see ping replies. If not, go back and make 
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
 
-{{< caution >}}
-When manually modifying your network configuration, always disable [Network Helper](/docs/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
-{{< /caution >}}
+{{< note type="alert" respectIndent=false >}}
+When manually modifying your network configuration, always disable [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
+{{< /note >}}
 
 ### Debian and Ubuntu
 

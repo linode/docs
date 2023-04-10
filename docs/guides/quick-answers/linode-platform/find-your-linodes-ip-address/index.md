@@ -1,8 +1,5 @@
 ---
 slug: find-your-linodes-ip-address
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This quick answer guide shows how to find the IP address of your Linode either through the Linode Manager or while in an SSH session.'
 keywords: ["ip address", "ip addresses", "address", "addresses"]
 tags: ["linode platform","cloud manager","networking"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2017-09-21
 title: Find Your Linode's IP Address
 aliases: ['/quick-answers/linode-platform/find-your-linodes-ip-address-classic-manager/','/quick-answers/linode-platform/find-your-linodes-ip-address/']
+authors: ["Linode"]
 ---
 
 Finding your Linode's IP address (or addresses) is easy and can be done in two different ways.
@@ -59,10 +57,10 @@ The output shows:
 - One public IPv6 address, `2600:3c03::f03c:91ff:fe73:9675`
 - One private IPv6 address, `fe80::f03c:91ff:fe26:7e8e`
 
-{{< note >}}
+{{< note respectIndent=false >}}
 DHCP will only recognize one IPv4 address. If you have more than one IPv4 address assigned to your Linode, you must either set those addresses statically or enable Network Helper. Otherwise, those addresses will not be usable to the system, nor will they display in `ip` commands. See the following guides for more information:
 
-[Linux Static IP Configuration](/docs/guides/linux-static-ip-configuration/)
+[Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/)
 
-[Network Helper](/docs/guides/network-helper/)
+[Network Helper](/docs/products/compute/compute-instances/guides/network-helper/)
 {{< /note >}}

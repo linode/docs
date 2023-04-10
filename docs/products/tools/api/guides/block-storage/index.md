@@ -7,7 +7,7 @@ modified_by:
   name: Linode
 image: manage-block-storage-volumes-with-the-linode-api.png
 external_resources:
-  - '[API Documentation](https://developers.linode.com/api/v4)'
+  - '[API Documentation](/docs/api/)'
 keywords: ["linode api", "block storage", "volume"]
 tags: ["linode platform"]
 aliases: ['/platform/api/create-block-storage-volumes-with-the-linode-api/','/guides/create-block-storage-volumes-with-the-linode-api/']
@@ -53,8 +53,8 @@ Create a new Block Storage Volume by making a POST request to the `/volumes` end
     ```
 
     {{< note >}}
-The Volume and Compute Instance must be in the same region.
-{{< /note >}}
+    The Volume and Compute Instance must be in the same region.
+    {{< /note >}}
 
 1. Examine the response JSON object and copy the values in the `id` and `filesystem_path` fields:
 
@@ -132,8 +132,8 @@ If you did not specify a Compute Instance when creating the Volume, or would lik
     ```
 
     {{< note >}}
-If a Compute Instance is not running and has more than one configuration profile, include a `config_id` parameter in the POST request to specify which profile to use. If you do not specify a profile, the first profile will be used by default.
-{{< /note >}}
+    If a Compute Instance is not running and has more than one configuration profile, include a `config_id` parameter in the POST request to specify which profile to use. If you do not specify a profile, the first profile will be used by default.
+    {{< /note >}}
 
 ## Clone a Volume
 
@@ -174,4 +174,4 @@ curl -H "Content-Type: application/json" \
 
 {{< note >}}
 After resizing the Volume, you also need to resize the file system to accommodate the additional space. For instructions, see the last few steps on the [Resize a Volume](/docs/products/storage/block-storage/guides/resize-volume/) guide.
-{{</ note >}}
+{{< /note >}}

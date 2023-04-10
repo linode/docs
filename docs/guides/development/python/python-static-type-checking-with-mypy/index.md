@@ -1,7 +1,5 @@
 ---
 slug: python-static-type-checking-with-mypy
-author:
-  name: Cameron Laird
 description: 'This guide provides some of the techniques to migrate real-world Python projects to type annotated code using the Mypy tool.'
 keywords: ['mypy static typing', 'mypy type aliases']
 tags: ['python']
@@ -9,12 +7,9 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified_by:
   name: Linode
-title: "Python Static Type Checking with Mypy"
-h1_title: "Use Mypy for Python Static Type Checking"
-enable_h1: true
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+title: "Use Mypy for Python Static Type Checking"
+title_meta: "Python Static Type Checking with Mypy"
+authors: ["Cameron Laird"]
 ---
 
 Python is a dynamically typed language. It determines data types at run time, rather than compile time. Some examples of Python types include integers, floats, strings, and boolean. Dynamically typed languages stand in contrast to statically typed languages, like C++, Java, and Fortran, that perform type checking at compile time.
@@ -27,9 +22,9 @@ Recent enhancements to Python make static typing an option. Alternative syntaxes
 
 Mypy is a tool used for static-type checking Python code. Python’s founder, [Guido van Rossum](https://gvanrossum.github.io/Resume.html), has worked for several years on Mypy. Mypy’s validation of statically typed Python can result in programs being more correct, readable, refactorable, and testable. If you want to use Python, and you want the advantages of static typing, then consider using Mypy. Alternatives to Mypy such as [Pyre](https://pyre-check.org/) exist, but Mypy is currently more popular in the Python community.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Statically typed languages have the reputation of being more difficult to learn. Converting existing Python code to statically typed code may be intimidating since many lines of code might need to change. This guide illustrates how to adapt an existing Python project to incrementally use Mypy and static typing.
-{{</ note >}}
+{{< /note >}}
 
 ## How to Install and Use Mypy
 
@@ -39,9 +34,9 @@ Install Mypy on your system using Pip with the following command:
 
     python -m pip install mypy
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you maintain your configuration through a Graphical User Interface (GUI), like [Anaconda](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-packages/), or use an alternative package manager, modify this command to fit your situation.
-{{</ note >}}
+{{< /note >}}
 
 ### Mypy Basic Usage
 
@@ -112,9 +107,9 @@ Found 1 error in 1 file (checked 1 source file)
 
 The first line `def legal_name(first: str, last:str) -> str:` specifies that the function `legal_name()` expects arguments of type `string` and returns a value of type `string`. Mypy is able to detect that the function call's second argument does not fulfill the type annotation requirements. Without the type annotations, Mypy does not detect any issues with an argument of type `int`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Use mypy's `--disallow-untyped-defs` command-line option, to enforce static typing on all function definitions. This option may be too strict if your Python project works with third-party libraries that do not use type annotations.
-{{</ note >}}
+{{< /note >}}
 
 Mypy recognizes type annotations on all objects in a Python program. For this guide, the emphasis is on function signatures, as opposed to all the other objects in play in a Python program. When beginning with Mypy, focus on your Python code’s function definitions. When refactoring your Python code with type annotations, begin by annotating all function definitions first. Next, you can consider adding type annotations to variables not only contained in function signatures. Some developers consider that most of Mypy's benefit comes from adding type annotations to function declarations. More exhaustive annotation of other variables may require more effort than it's worth.
 

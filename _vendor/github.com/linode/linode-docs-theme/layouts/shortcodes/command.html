@@ -31,7 +31,7 @@
   {{ if not (or (strings.Contains $class "dark") (strings.Contains $class "light")) }}
     {{ $class = printf "light %s" $class }}
   {{ end }}
-  {{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon"><svg class="fill-current text-brand mr-4" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
+  {{ $copyIcon := `<button type="button" aria-label="copy" class="btn-icon copy-button"><svg class="fill-current mr-4" style="width: 0.875rem; height: 1rem;"><use href="#icon--copy"></use></svg></button>` | safeHTML }}
   {{ with $title }}
     <div class="text-sm font-semibold mt-4">
       {{ . }}
@@ -50,7 +50,8 @@
         {{- highlight (trim $.inner "\n" ) $style "linenos=false" -}}
       </div>
       <div
-        class="absolute right-0 top-0 overflow-x-none pt-4 sm:pt-5"
+        class="absolute right-0 top-0 overflow-x-none mt-4 sm:mt-5 pl-3"
+        style="background-color: inherit;"
         @click="$copy($refs.code)">
         {{ $copyIcon }}
       </div>

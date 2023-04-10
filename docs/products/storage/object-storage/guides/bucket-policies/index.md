@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Define Access and Permissions using Bucket Policies"
 description: "Learn how to use bucket policies to set permissions and access controls within Object Storage"
 date: 2022-03-11
+authors: ["Linode"]
 ---
 
 Bucket policies are a mechanism for managing permissions and access to Object Storage. When compared to ACLs, bucket policies can only be applied across an entire bucket (not to individual objects), though they offer finer control over the types of permissions you can grant to a user.
@@ -13,7 +11,7 @@ Bucket policies are a mechanism for managing permissions and access to Object St
 
 Bucket policies are formatted using JSON with the following structure:
 
-{{< file "bucket-policy.json" json >}}
+ ```file {title="bucket-policy.json" lang="json"}
 {
   "Version": "2012-10-17",
   "Statement": [{
@@ -23,7 +21,7 @@ Bucket policies are formatted using JSON with the following structure:
     "Resource": ...
   }]
 }
-{{</ file >}}
+```
 
 This file consists of a **Version** string (set to `2012-10-17`, which is the current version) and one or more **Statement** arrays, which define the actual policies you wish to use. Within each statement array are the **Effect**, **Principal**, **Action**, **Resource**, and optional **Condition** elements. Each of these are discussed below.
 
@@ -81,9 +79,9 @@ A policy is applied to Object Storage **resources**, such as buckets and objects
           "arn:aws:s3:::example-bucket/example-file.ext"
         ]
 
-{{< caution >}}
+{{< note type="alert" >}}
 While a resource can target the bucket itself (by removing the `/*` in the first example), this can cause the bucket to become inaccessible to the Cloud Manager, API, and CLI.
-{{< /caution >}}
+{{< /note >}}
 
 ## Bucket Policy Examples
 
@@ -91,7 +89,7 @@ While a resource can target the bucket itself (by removing the `/*` in the first
 
 If you wish to allow anyone to view and download objects within a bucket, use the following policy:
 
-{{< file "bucket_policy.json" json >}}
+ ```file {title="bucket_policy.json" lang="json"}
 {
   "Version": "2012-10-17",
   "Statement": [{
@@ -106,13 +104,13 @@ If you wish to allow anyone to view and download objects within a bucket, use th
     ]
   }]
 }
-{{</ file >}}
+```
 
 ### Grant an Account Limited Access to a Directory
 
 This policy file allows a user to list the bucket called `example-bucket` and view/download objects within the `test` directory. They are not able to perform any other actions.
 
-{{< file "bucket-policy.json" json >}}
+ ```file {title="bucket_policy.json" lang="json"}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -142,7 +140,7 @@ This policy file allows a user to list the bucket called `example-bucket` and vi
     }
   ]
 }
-{{</ file >}}
+```
 
 ### Allow or Deny Access from a Specific IP Address
 
@@ -154,7 +152,7 @@ If the **Effect** is set to `Deny`, use the **IpAddress** condition to deny traf
 
 The example below allows all traffic from only the specified IP address:
 
-{{< file "bucket-policy.json" json >}}
+ ```file {title="bucket_policy.json" lang="json"}
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -171,7 +169,7 @@ The example below allows all traffic from only the specified IP address:
     }
   ]
 }
-{{</ file >}}
+```
 
 ## Applying Bucket Policies
 

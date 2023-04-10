@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-fedora-20
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 20'
 keywords: ["fedora", "lamp", "fedora 20 lamp", "lamp server", "linux lamp", "fedora 20 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
@@ -24,11 +21,12 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 20
+authors: ["Alex Fornuto"]
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 20 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -36,7 +34,7 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname).
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
 Issue the following commands to make sure it is set properly:
 
