@@ -322,6 +322,7 @@ Codeone
 codepen
 colab
 collabnet
+Collabora
 colormaps
 com2sec
 commoditization
@@ -1625,6 +1626,7 @@ pipelining
 pixid
 piwik
 pixid
+pixelfed
 pki
 plaintext
 platformer
