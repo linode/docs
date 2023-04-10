@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-collabora-code
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install and configure Collabora CODE and how to integrate it with Nextcloud'
 keywords: ['install Collabora', 'configure Collabora', 'Collabora and Nextcloud', 'integrate Collabora into Nextcloud']
 tags: ['nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-12-09
+published: 2023-14-10
 modified_by:
   name: Linode
 title: "Install and Configure Collabora CODE"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title_meta: "Installing and Configuring Collabora CODE"
 external_resources:
 - '[Collabora Office](https://www.collaboraoffice.com/)'
 - '[Collabora CODE](https://www.collaboraoffice.com/code/)'
@@ -26,6 +21,7 @@ external_resources:
 - '[Collabora instructions for other Linux packages](https://www.collaboraoffice.com/code/linux-packages/)'
 - '[Collabora SDK documentation](https://sdk.collaboraonline.com/contents.html)'
 - '[Certbot](https://certbot.eff.org/)'
+authors: ["Jeff Novotny"]
 ---
 
 [Collabora](https://www.collaboraoffice.com/) is a fully-featured open-source alternative to popular office suites such as Microsoft Office. The [*Collabora Online Development Edition*](https://www.collaboraoffice.com/code/) (CODE) edition is the online development version of Collabora. It is typically integrated into the front end of a file storage application such as [Nextcloud](https://nextcloud.com/). This guide explains how to download, install, and configure the CODE edition of Collabora. It also demonstrates how to connect Collabora and Nextcloud, both running on the same Linode, using the Nextcloud Hub.
@@ -72,33 +68,41 @@ These instructions are designed for the Ubuntu 22.04 LTS but are similar to earl
 
 ### How to Install Collabora
 
-Collabora CODE is easier to install than Nextcloud. The Collabora prerequisites were all installed when Nextcloud was installed. To install Collabora CODE, follow the steps below:
+Collabora CODE is more straightforward to install than Nextcloud. Typically, Collabora prerequisites are installed when Nextcloud is installed. To install Collabora CODE, follow the steps below:
 
 1.  Import the Collabora CODE signing key.
 
-        cd /usr/share/keyrings
-        sudo wget https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyring.gpg
+    ```command
+    cd /usr/share/keyrings
+    sudo wget https://collaboraoffice.com/downloads/gpg/collaboraonline-release-keyring.gpg
+    ```
 
 1.  Create a source file for the Collabora CODE package repository.
 
-        sudo vi /etc/apt/sources.list.d/collaboraonline.sources
+    ```command
+    sudo vi /etc/apt/sources.list.d/collaboraonline.sources
+    ```
 
 1.  Add the following information to the file and save it.
 
-    {{< file "/etc/apt/sources.list.d/collaboraonline.sources" aconf >}}
-Types: deb
-URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-ubuntu2204
-Suites: ./
-Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg
-    {{< /file >}}
+    ```file {"title="/etc/apt/sources.list.d/collaboraonline.sources" lang="aconf"}
+    Types: deb
+    URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-ubuntu2204
+    Suites: ./
+    Signed-By: /usr/share/keyrings/collaboraonline-release-keyring.gpg
+    ```
 
 1.  Update the repository.
 
-        sudo apt update -y
+    ```command
+    sudo apt update -y
+    ```
 
 1.  Install Collabora CODE using `apt`.
 
-        sudo apt install coolwsd code-brand -y
+    ```command
+    sudo apt install coolwsd code-brand -y
+    ```
 
 ### How to Configure Collabora
 
@@ -106,31 +110,39 @@ Collabora configuration depends on an XML file at `/etc/coolwsd/coolwsd.xml`. Al
 
 1.  With the current configuration, the `coolwsd` service continues to fail and restart. This happens because Collabora cannot establish an HTTPS connection with the local host. Use the `coolconfig` tool to disable HTTPS on the connection.
 
-        sudo coolconfig set ssl.enable false
-        sudo coolconfig set ssl.termination true
+    ```command
+    sudo coolconfig set ssl.enable false
+    sudo coolconfig set ssl.termination true
+    ```
 
-1.  Only specifically designated hosts are allowed to access the Collabora server. To designate Nextcloud as a trusted client, set `storage.wopi.host` to the Nextcloud domain, for example, `nextcloud.example.com`. In the following command, substitute the real domain name in place of `example.com`.
+1.  Only certain designated hosts are allowed to access the Collabora server. To designate Nextcloud as a trusted client, set `storage.wopi.host` to the Nextcloud domain, for example, `nextcloud.example.com`. In the following command, substitute the real domain name in place of `example.com`.
 
-        sudo coolconfig set storage.wopi.host nextcloud.example.com
+    ```command
+    sudo coolconfig set storage.wopi.host nextcloud.example.com
+    ```
 
 1.  Create an administration account and provide a password for the account. When prompted, enter the `admin username`. Then, enter the `admin password` twice.
 
-        sudo coolconfig set-admin-password
+    ```command
+    sudo coolconfig set-admin-password
+    ```
 
 1.  Restart the `coolwsd` service and verify the service status.
 
-        sudo systemctl restart coolwsd
-        sudo systemctl status coolwsd
+    ```command
+    sudo systemctl restart coolwsd
+    sudo systemctl status coolwsd
+    ```
 
-    {{< output >}}
-coolwsd.service - Collabora Online WebSocket Daemon
+    ```output
+    coolwsd.service - Collabora Online WebSocket Daemon
     Loaded: loaded (/lib/systemd/system/coolwsd.service; enabled; vendor preset: enabled)
     Active: active (running) since Tue 2022-12-13 14:42:09 UTC; 7s ago
-    {{< /output >}}
+    ```
 
 ### How to Configure the Collabora Virtual Host
 
-NGINX requires a Collabora virtual host to serve the files. This guide uses NGINX, but Collabora can also use the Apache web server. To configure an NGINX virtual host, follow the steps below:
+Both NGINX and Apache require a Collabora virtual host to serve the Collabora application. This guide uses NGINX. To configure an NGINX virtual host, follow the steps below:
 
 {{< note >}}
 For details on how to configure the Apache virtual host, see the [Collabora Apache Proxy Settings](https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html#reverse-proxy-with-apache-2-webserver) from the Collabora installation guide. Enable the `proxy`, `proxy_http`, `proxy_connect`, and `proxy_wstunnel` modules using the `a2enmod` command.
@@ -138,93 +150,105 @@ For details on how to configure the Apache virtual host, see the [Collabora Apac
 
 1.  Create a `collabora` NGINX virtual host file.
 
-        sudo vi /etc/nginx/sites-available/collabora
+    ```command
+    sudo vi /etc/nginx/sites-available/collabora
+    ```
 
 1.  Add the following configuration to the file. Change the value of `server_name` from `collabora.example.com` to the name of the Collabora subdomain.
 
-    {{< file "/etc/nginx/sites-available/collabora" aconf >}}
-server {
-    listen 80;
-    listen [::]:80;
-    server_name  collabora.example.com;
+    ```file {title="/etc/nginx/sites-available/collabora" lang="aconf"}
+    server {
+        listen 80;
+        listen [::]:80;
+        server_name  collabora.example.com;
 
-    error_log /var/log/nginx/collabora.error;
+        error_log /var/log/nginx/collabora.error;
 
-    # static files
-    location ^~ /browser {
-      proxy_pass http://127.0.0.1:9980;
-      proxy_set_header Host $http_host;
+        # static files
+        location ^~ /browser {
+        proxy_pass http://127.0.0.1:9980;
+        proxy_set_header Host $http_host;
+        }
+
+        # WOPI discovery URL
+        location ^~ /hosting/discovery {
+        proxy_pass http://127.0.0.1:9980;
+        proxy_set_header Host $http_host;
+        }
+
+        # Capabilities
+        location ^~ /hosting/capabilities {
+        proxy_pass http://127.0.0.1:9980;
+        proxy_set_header Host $http_host;
+        }
+
+        # main websocket
+        location ~ ^/cool/(.*)/ws$ {
+        proxy_pass http://127.0.0.1:9980;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $http_host;
+        proxy_read_timeout 36000s;
+        }
+
+        # download, presentation and image upload
+        location ~ ^/(c|l)ool {
+        proxy_pass http://127.0.0.1:9980;
+        proxy_set_header Host $http_host;
+        }
+
+        # Admin Console websocket
+        location ^~ /cool/adminws {
+        proxy_pass http://127.0.0.1:9980;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $http_host;
+        proxy_read_timeout 36000s;
+        }
     }
+    ```
 
-    # WOPI discovery URL
-    location ^~ /hosting/discovery {
-      proxy_pass http://127.0.0.1:9980;
-      proxy_set_header Host $http_host;
-    }
+1.  Enable the Collabora site on the server by creating a symbolic link in the `sites-enabled` directory.
 
-    # Capabilities
-    location ^~ /hosting/capabilities {
-      proxy_pass http://127.0.0.1:9980;
-      proxy_set_header Host $http_host;
-    }
-
-    # main websocket
-    location ~ ^/cool/(.*)/ws$ {
-      proxy_pass http://127.0.0.1:9980;
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection "Upgrade";
-      proxy_set_header Host $http_host;
-      proxy_read_timeout 36000s;
-    }
-
-    # download, presentation and image upload
-    location ~ ^/(c|l)ool {
-      proxy_pass http://127.0.0.1:9980;
-      proxy_set_header Host $http_host;
-    }
-
-    # Admin Console websocket
-    location ^~ /cool/adminws {
-      proxy_pass http://127.0.0.1:9980;
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection "Upgrade";
-      proxy_set_header Host $http_host;
-      proxy_read_timeout 36000s;
-    }
-}
-    {{< /file >}}
-
-1.  Enable the site on the server.
-
-        sudo ln -s /etc/nginx/sites-available/collabora /etc/nginx/sites-enabled/collabora
+    ```command
+    sudo ln -s /etc/nginx/sites-available/collabora /etc/nginx/sites-enabled/collabora
+    ```
 
 1.  Test the file syntax to ensure it does not contain any errors.
 
-        sudo nginx -t
+    ```command
+    sudo nginx -t
+    ```
 
 1.  Restart NGINX and verify its status.
 
-        sudo systemctl reload nginx
-        sudo systemctl status nginx
+    ```command
+    sudo systemctl reload nginx
+    sudo systemctl status nginx
+    ```
 
 ### How to Enable HTTPS for the Collabora Domain
 
-The steps in this section explain how to use [Certbot](https://certbot.eff.org/) to request a *Let's Encrypt* certificate and enable HTTPS support. The `snap` package manager can be used to install Certbot. For additional information about Certbot, Let's Encrypt certificates, and HTTPS, consult the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
+The steps in this section explain how to use [Certbot](https://certbot.eff.org/) to request a *Let's Encrypt* TLS certificate and enable HTTPS support. The `snap` package manager can be used to install Certbot. For additional information about Certbot, Let's Encrypt certificates, and HTTPS, consult the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
 
 1.  Install the `snap` package manager.
 
-        sudo apt install snapd
-        sudo snap install core
+    ```command
+    sudo apt install snapd
+    sudo snap install core
+    ```
 
-1.  Remove the old `certbot` package and use `snap` to install the `certbot` Snap. Create a symbolic link to the new directory.
+1.  Remove the old `certbot` package and use `snap` to install the newer `certbot` Snap. Then, create a symbolic link to the new directory.
 
-        sudo apt remove certbot
-        sudo snap install --classic certbot
-        sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    ```command
+    sudo apt remove certbot
+    sudo snap install --classic certbot
+    sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    ```
 
-1.  Run the `certbot` command to request and install a Let's Encrypt certificate. The `--nginx` option allows Certbot to modify the NGINX virtual host file for the domain.
+1.  Run the `certbot` command to request and install a Let's Encrypt TLS certificate. The `--nginx` option allows Certbot to modify the NGINX virtual host file for the domain.
 
-    During the certificate granting process, `certbot` prompts for more information. Some of these questions might not appear if you have used Certbot on this particular Linode before. To request a certificate, follow the guidelines below:
+    During the certificate granting process, `certbot` prompts for more information. Some of these questions might not appear if you have used Certbot on this particular Compute Instance before. To request a certificate, follow the guidelines below:
 
     -   Enter the administrator's email address when requested to do so. Let's Encrypt sends renewal notices and other relevant updates to this email address.
     -   Enter `Y` to agree to the Terms of Service. Enter `N` to end the program.
@@ -233,22 +257,24 @@ The steps in this section explain how to use [Certbot](https://certbot.eff.org/)
 
     The `certbot` program confirms the results of the certificate request and displays any error messages. `certbot` automatically schedules the certificate for auto-renewal.
 
-        sudo certbot --nginx
+    ```command
+    sudo certbot --nginx
+    ```
 
-    {{< output >}}
-Requesting a certificate for collabora.example.com
+    ```output
+    Requesting a certificate for collabora.example.com
 
-Successfully received certificate.
-Certificate is saved at: /etc/letsencrypt/live/collabora.example.com/fullchain.pem
-Key is saved at:         /etc/letsencrypt/live/collabora.example.com/privkey.pem
-This certificate expires on 2023-03-14.
-These files will be updated when the certificate renews.
-Certbot has set up a scheduled task to automatically renew this certificate in the background.
+    Successfully received certificate.
+    Certificate is saved at: /etc/letsencrypt/live/collabora.example.com/fullchain.pem
+    Key is saved at:         /etc/letsencrypt/live/collabora.example.com/privkey.pem
+    This certificate expires on 2023-03-14.
+    These files will be updated when the certificate renews.
+    Certbot has set up a scheduled task to automatically renew this certificate in the background.
 
-Deploying certificate
-Successfully deployed certificate for collabora.example.com to /etc/nginx/sites-enabled/collabora
-Congratulations! You have successfully enabled HTTPS on https://collabora.example.com
-    {{< /output >}}
+    Deploying certificate
+    Successfully deployed certificate for collabora.example.com to /etc/nginx/sites-enabled/collabora
+    Congratulations! You have successfully enabled HTTPS on https://collabora.example.com
+    ```
 
 1.  Reload NGINX to incorporate the changes.
 
@@ -258,13 +284,13 @@ Congratulations! You have successfully enabled HTTPS on https://collabora.exampl
 
 To use Collabora as a Nextcloud application, connect the Collabora server to Nextcloud via the Nextcloud Hub. Within the Nextcloud context, Collabora CODE is named "Nextcloud Office". To attach Collabora to Nextcloud, follow the steps below:
 
-1.  Navigate to the address of the Nextcloud domain. Enter the administrative login credentials to access the Nextcloud web interface.
+1.  Navigate to the address of the Nextcloud domain and log in to NextCloud using your credentials.
 
-1.  Click on the administrator profile, represented by a circle in the upper right-hand corner of the window. This reveals a list of options. Click on the link labeled **+ Apps** to view the applications panel.
+1.  Click on the administrator profile, represented by a circle in the upper right-hand corner of the window and choose **+ Apps** to view the applications panel.
 
     ![Access the Nextcloud administrator profile](Nextcloud-Profile.png)
 
-1.  On the applications panel, locate and click the link for **Office & text** on the left-hand side navigation panel.
+1.  On the applications panel, click the link for **Office & text** on the left-hand side navigation panel.
 
     ![The Nextcloud applications page](Nextcloud-Applications.png)
 
@@ -272,7 +298,7 @@ To use Collabora as a Nextcloud application, connect the Collabora server to Nex
 
     ![The Nextcloud Office application](Nextcloud-Office-Install.png)
 
-1.  Click on the administrator profile. This is the circle on the upper right of the screen. Select the **Administration settings** link.
+1.  Open the administrator profile by again clicking on the circle on the upper right of the screen. Select the **Administration settings** link.
 
     ![Access the Nextcloud administrator profile again](Nextcloud-Profile2.png)
 
@@ -283,12 +309,12 @@ To use Collabora as a Nextcloud application, connect the Collabora server to Nex
 1.  Nextcloud displays the `Nextcloud Office` settings. Enable the `Use your own server` setting by clicking the radio button. This reveals a text box for entering the `URL (and Port) of Collabora Online-server`. Enter the Collabora subdomain here, for example, `https://collabora.example.com` and click **Save**. If the connection is successful, Nextcloud confirms the `Collabora Online server is reachable`.
 
     {{< note >}}
-If Nextcloud states the Collabora is unreachable, consult the [Nextcloud Office Troubleshooting guide](https://docs.nextcloud.com/server/latest/admin_manual/office/troubleshooting.html).
+    If Nextcloud states the Collabora is unreachable, consult the [Nextcloud Office Troubleshooting guide](https://docs.nextcloud.com/server/latest/admin_manual/office/troubleshooting.html).
     {{< /note >}}
 
     ![The Nextcloud Office settings page](Nextcloud-Office-Server-Settings.png)
 
-1.  Locate the `Advanced Settings` section lower down on the panel. Click the `Use Office Open XML (OOXML) instead of OpenDocument Format by default for next files` checkbox to enable the setting. This ensures all files are compatible with Microsoft Office. For added security, enter the name of the Collabora domain name beside `Allow list for WOPI requests`.
+1.  Locate the `Advanced Settings` section further down the page. Make sure the `Use Office Open XML (OOXML) instead of OpenDocument Format by default for next files` checkbox is checked. This ensures all files are compatible with Microsoft Office. For added security, enter the name of the Collabora domain name beside `Allow list for WOPI requests`.
 
     ![The Nextcloud Office advanced settings](Nextcloud-Office-Advanced-Settings.png)
 
@@ -296,7 +322,7 @@ If Nextcloud states the Collabora is unreachable, consult the [Nextcloud Office 
 
     ![Add a new Nextcloud Office file](Nextcloud-New-Files.png)
 
-1. Provide a name for the file and click the **-->** icon to create it. Base the file on a template or start with a blank file. Enter the contents of the new file. Nextcloud auto-saves the file whenever it changes. Close the file using the **X** button on the top right when done.
+1. Provide a name for the file and click the right arrow icon to create it. Base the file on a template or start with a blank file. Enter the contents of the new file. Nextcloud auto-saves the file whenever it changes. Close the file using the **X** button on the top right when done.
 
     ![Create a Nextcloud text file using Collabora](Nextcloud-Text-File.png)
 
