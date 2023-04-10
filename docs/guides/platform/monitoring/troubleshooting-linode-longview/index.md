@@ -160,7 +160,7 @@ This is caused by both Linodes posting data using the same Longview key. To reso
 
 ## Contact Support
 
-If you still need assistance after performing these checks, please open a [support ticket](/docs/guides/support/#contacting-linode-support).
+If you still need assistance after performing these checks, please open a [support ticket](/docs/products/platform/get-started/guides/support/#contacting-linode-support).
 
 
 

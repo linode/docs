@@ -2,7 +2,7 @@
 slug: install-mastodon-on-ubuntu-2004
 description: 'This guide will show you how to install Mastodon, a open source and decentralized alternative to Twitter also part of the Fediverse, on Ubuntu 20.04.'
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','ubuntu 20.04']
-tags: ['ubuntu', 'docker']
+tags: ['ubuntu', 'docker', "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: MASTODON2.jpg
 published: 2021-06-04

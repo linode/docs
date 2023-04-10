@@ -187,7 +187,7 @@ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
 
 ## How to Interpret vmstat Output
 
-`vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/guides/support/) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
+`vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/products/platform/get-started/guides/support/) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
 
 The output of `vmstat` is displayed in a number of columns. The following sections provide brief overviews of the data reported in each column.
 

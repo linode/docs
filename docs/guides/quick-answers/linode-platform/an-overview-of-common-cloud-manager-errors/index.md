@@ -40,7 +40,7 @@ The amount of time it takes the Network Transfer History graph to populate can v
 
 If you are still seeing this message after a considerable amount of time, it is recommended that you attempt to clear your web browser cache, as this can sometimes cause an issue in loading resources. The method for completing this process varies between browsers, however it usually involves opening your browser's full history and finding an option to clear it.
 
-If clearing the browser cache doesn't clear the message or you are noticing networking issues on your Linode beyond this message please see the [Troubleshooting Basic Connection Issues guide](/docs/guides/troubleshooting-basic-connection-issues/).
+If clearing the browser cache doesn't clear the message or you are noticing networking issues on your Linode beyond this message please see the [Troubleshooting Basic Connection Issues guide](/docs/products/compute/compute-instances/guides/troubleshooting-connection-issues/).
 
 ## Your Account Must Be Activated
 

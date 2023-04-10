@@ -38,7 +38,7 @@ Removing a backend from the NodeBalancer configuration does not delete the assoc
 Each backend node contains the following configuration parameters.
 
 - **Label**: Sets a label to identify the backend. While any label can be used, it's common to use the label of the associated Compute Instance.
-- **IP Address**: Select the private IPv4 address of the Compute Instance you wish to use as the backend. This field has a dropdown list of all Compute Instances within the same region as the Node Balancer that have a private IPv4 address assigned.
+- **IP Address**: Select the private IPv4 address of the Compute Instance you wish to use as the backend. This field has a dropdown list of all Compute Instances within the same region as the NodeBalancer that have a private IPv4 address assigned.
 - **Port**: Identifies the port that the NodeBalancer should use when sending traffic to the backend. This should be the port that the application is listening on within this backend Compute Instance.
 - **Weight**: Sets the priority of the backend. Backends with a higher weight are allocated more connections than backends with a lower weight.
 - **Mode**: Determines if the backend accepts or rejects traffic and in what circumstances. See [Mode](#mode).

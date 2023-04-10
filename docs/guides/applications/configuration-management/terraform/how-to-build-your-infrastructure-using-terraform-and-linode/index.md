@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 title: 'Use Terraform to Provision Linode Environments'
 authors: ["Damaso Sanoja"]
-tags: ["saas"]
+tags: ["saas", "digital agencies"]
 ---
 
 ![Use Terraform to Provision Linode Environments](use-terraform-to-provision-linode-environments.png "Use Terraform to Provision Linode Environments")

@@ -88,6 +88,7 @@ askbot
 aske
 Astra
 async
+astro
 asynchrony
 atera
 atlanta
@@ -326,6 +327,7 @@ Codeone
 codepen
 colab
 collabnet
+Collabora
 colormaps
 com2sec
 commoditization
@@ -424,9 +426,10 @@ dao
 databags
 datacenter
 datadir
-Datadog
+datadog
 dataflow
 datagram
+datalog
 dataset
 datasets
 datasource
@@ -463,6 +466,7 @@ Deno
 denormalized
 deprovision
 deprovisioning
+deque
 descolada
 descr
 deserialize
@@ -486,6 +490,7 @@ dhparams
 dia
 dialogs
 diavel
+dicts
 diffie
 digicert
 digium
@@ -880,6 +885,7 @@ https
 Hubzilla
 huginn
 Hugo
+hugo
 hulu
 husch
 hvc0
@@ -1352,6 +1358,7 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
 msfvenom
@@ -1628,7 +1635,10 @@ pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
+pixid
+pixelfed
 pki
 plaintext
 platformer
@@ -1692,8 +1702,11 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
+logic-programming-languages
+prolog
 promlens
 promscale
 prosodyctl
@@ -1880,6 +1893,7 @@ rulesets
 rundir
 runfile
 runlevels
+runpy
 runtime
 runtimes
 rustup
@@ -2041,6 +2055,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
@@ -2085,6 +2100,7 @@ subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage
@@ -2098,6 +2114,8 @@ subqueries
 subquery
 subreddit
 subreddits
+subshells
+subshell
 substring
 substrings
 subtab
@@ -2205,6 +2223,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2261,6 +2280,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 UDF
 UDFs
@@ -2444,6 +2464,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
@@ -2463,6 +2484,7 @@ windowlist
 wireguard
 wirelessly
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll
