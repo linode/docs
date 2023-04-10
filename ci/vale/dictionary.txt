@@ -1625,6 +1625,7 @@ pipelining
 pixid
 piwik
 pixid
+pixelfed
 pki
 plaintext
 platformer
