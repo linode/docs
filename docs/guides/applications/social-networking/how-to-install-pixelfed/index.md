@@ -1,19 +1,14 @@
 ---
 slug: how-to-install-pixelfed
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install and configure the distributed photo-sharing site Pixelfed'
 keywords: ['install Pixelfed', 'configure Pixelfed', 'How to install Pixelfed on Ubuntu']
 tags: ['apache', 'nginx', 'web server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-11-28
+published: 2023-04-10
 modified_by:
   name: Linode
 title: "How to Install and Configure Pixelfed"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title_meta: "Installing and Configuring Pixelfed"
 external_resources:
 - '[Pixelfed](https://pixelfed.org/)'
 - '[Pixelfed Documentation](https://docs.pixelfed.org/)'
@@ -21,9 +16,10 @@ external_resources:
 - '[Pixelfed Installation Details](https://docs.pixelfed.org/running-pixelfed/installation)'
 - '[A summary of Pixelfed features](https://pixelfed.org/features)'
 - '[Certbot](https://certbot.eff.org/)'
+authors: ["Jeff Novotny"]
 ---
 
-The emergence of Mastodon as a Twitter alternative has prompted renewed interest in federated websites. [Pixelfed](https://pixelfed.org/) is a decentralized federated application that allows users to share photos, art, and videos. This guide explains how to install and configure Pixelfed and provides details about all prerequisites.
+[Pixelfed](https://pixelfed.org/) is a decentralized federated application that allows users to share photos, art, and videos. This guide explains how to install and configure Pixelfed and provides details about all prerequisites.
 
 ## What is the Federated Web?
 
@@ -80,23 +76,29 @@ Pixelfed requires a web server, database, and the PHP programming language to op
 
 1.  Use `systemctl` to confirm NGINX is `active`.
 
-        sudo systemctl status nginx
+    ```command
+    sudo systemctl status nginx
+    ```
 
-    {{< output >}}
-nginx.service - A high performance web server and a reverse proxy server
-    Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-    Active: active (running) since Tue 2022-11-29 13:01:56 UTC; 15s ago
-    {{< /output >}}
+    ```output
+    nginx.service - A high performance web server and a reverse proxy server
+        Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+        Active: active (running) since Tue 2022-11-29 13:01:56 UTC; 15s ago
+    ```
 
 1.  Install the MariaDB database.
 
-        sudo apt install mariadb-server
+    ```command
+    sudo apt install mariadb-server
+    ```
 
 1.  Configure the `ufw `firewall to accept NGINX connections. Allow the `Nginx Full` profile to permit both HTTP and HTTPS connections. This profile is mandatory because Pixelfed requires HTTPS for uploads.
 
-        sudo ufw allow OpenSSH
-        sudo ufw allow in "Nginx Full"
-        sudo ufw enable
+    ```command
+    sudo ufw allow OpenSSH
+    sudo ufw allow in "Nginx Full"
+    sudo ufw enable
+    ```
 
     {{< note >}}
 After installing Pixelfed and enabling HTTPS, consider changing the `ufw` profile to `Nginx HTTPS`. This setting limits firewall access to HTTPS traffic only.
@@ -104,30 +106,32 @@ After installing Pixelfed and enabling HTTPS, consider changing the `ufw` profil
 
 1.  Verify the firewall settings using the `ufw status` command.
 
-        sudo ufw status
+    ```command
+    sudo ufw status
+    ```
 
-    {{< output >}}
-Status: active
+    ```output
+    Status: active
 
-To                         Action      From
---                         ------      ----
-OpenSSH                    ALLOW       Anywhere
-Nginx Full                 ALLOW       Anywhere
-OpenSSH (v6)               ALLOW       Anywhere (v6)
-Nginx Full (v6)            ALLOW       Anywhere (v6)
-    {{< /output >}}
+    To                         Action      From
+    --                         ------      ----
+    OpenSSH                    ALLOW       Anywhere
+    Nginx Full                 ALLOW       Anywhere
+    OpenSSH (v6)               ALLOW       Anywhere (v6)
+    Nginx Full (v6)            ALLOW       Anywhere (v6)
+    ```
 
 1.  Visit the IP address of the webserver to ensure web access is operational. The browser should display the default NGINX welcome page, including the message “Welcome to nginx!”.
 
-        http://server_IP_address/
-
     {{< note >}}
-Use the Linode Dashboard to determine the address of the Linode.
+    Use the Linode Dashboard to determine the address of the Linode.
     {{< /note >}}
 
 1.  Run the `mysql_secure_installation` tool to increase the security of the database.
 
-        sudo mysql_secure_installation
+    ```command
+    sudo mysql_secure_installation
+    ```
 
 1.  The script prompts several responses. It is not necessary to switch over to Unix socket authentication or change the root password. Answer `Y` to the remaining questions.
 
@@ -138,15 +142,19 @@ Use the Linode Dashboard to determine the address of the Linode.
 
 1.  Install PHP including all supporting packages.
 
-        sudo apt install -y php-gd php-bcmath php-ctype php-curl php-exif php-iconv php-intl php-json  php-imagick php-services-json php-mbstring php-tokenizer php-xml php-zip php-mysql php-fpm
+    ```command
+    sudo apt install -y php-gd php-bcmath php-ctype php-curl php-exif php-iconv php-intl php-json  php-imagick php-services-json php-mbstring php-tokenizer php-xml php-zip php-mysql php-fpm
+    ```
 
 1. Pixelfed requires some additional packages, including image processing utilities. The following command installs the Redis database and its PHP package, supporting utilities such as `git` and `composer`, and image processing packages including `jpegoptim`.
 
     {{< note >}}
-Some utilities might already be installed on the server.
+    Some utilities might already be installed on the server.
     {{< /note >}}
 
-        sudo apt install -y php-redis ffmpeg redis git libgl-dev gcc libc6-dev libjpeg-dev  make jpegoptim optipng pngquant graphicsmagick gifsicle composer zip unzip
+    ```command
+    sudo apt install -y php-redis ffmpeg redis git libgl-dev gcc libc6-dev libjpeg-dev  make jpegoptim optipng pngquant graphicsmagick gifsicle composer zip unzip
+    ```
 
 {{< note >}}
 For enhanced security, especially in a multi-user server, consider creating a dedicated `pixelfed` user to run Pixelfed. Remember to switch to this user when installing and configuring the application. See the [Pixelfed Prerequisites information](https://docs.pixelfed.org/running-pixelfed/prerequisites/#creating-a-dedicated-app-user-and-using-unix-sockets-optional) for more information.
@@ -158,17 +166,21 @@ After installing the LAMP/LEMP stack and the other mandatory packages, more conf
 
 1.  Log in to the database as `root`.
 
-        sudo mysql -u root -p
+    ```command
+    sudo mysql -u root -p
+    ```
 
 1.  Create the `pixelfed` database and the `pixelfed` database user. Flush the privileges and exit the database. Replace `PASSWORD` with a unique secure password.
 
-        CREATE DATABASE pixelfed;
-        CREATE USER 'pixelfed'@'localhost' IDENTIFIED BY 'PASSWORD';
-        GRANT ALL PRIVILEGES ON pixelfed.* TO 'pixelfed'@'localhost';
-        FLUSH PRIVILEGES;
-        EXIT
+    ```command
+    CREATE DATABASE pixelfed;
+    CREATE USER 'pixelfed'@'localhost' IDENTIFIED BY 'PASSWORD';
+    GRANT ALL PRIVILEGES ON pixelfed.* TO 'pixelfed'@'localhost';
+    FLUSH PRIVILEGES;
+    EXIT
+    ```
 
-1.  Update the `php.ini` file with new settings for Pixelfed. This file can be found at `/etc/php/<php_version>/fpm/php.ini`, where `php_version` is the release of PHP used on the server. For instance, if PHP `8.1` is installed, the file, `php.ini` can be found at `/etc/php/8.1/fpm/php.ini`. Make the following changes to the file:
+1.  Update the `php.ini` file with new settings for Pixelfed. This file can be found at `/etc/php/<php_version>/fpm/php.ini`, where `php_version` is the release of PHP used on the server. For instance, if PHP `8.1` is installed, the file, `php.ini` can be found at `/etc/php/8.1/fpm/php.ini`. To check which version of PHP is installed, you can use the command `php -v`. Make the following changes to the file:
 
     - Set `post_max_size` to the maximum size for any submission. The default is `8M`, but this might not be large enough for high-quality photos or animation.
     - Ensure `file_uploads` is set to `On`.
@@ -180,61 +192,73 @@ After installing the LAMP/LEMP stack and the other mandatory packages, more conf
 These settings are found in different sections of the file. In the `vi` editor, use the `/` key to search for the name of the setting.
     {{< /note >}}
 
-    {{< file "/etc/php/8.1/fpm/php.ini" aconf >}}
-max_execution_time = 600
-post_max_size = 8M
-file_uploads = On
-upload_max_filesize = 6M
-max_file_uploads = 20
-    {{< /file >}}
+    ```file {title="/etc/php/8.1/fpm/php.ini" lang="aconf"}
+    max_execution_time = 600
+    post_max_size = 8M
+    file_uploads = On
+    upload_max_filesize = 6M
+    max_file_uploads = 20
+    ```
 
 ### Configure a Virtual Host and HTTPS Support
 
 The next step is to create a virtual host file for the Pixelfed domain. A virtual host allows for the configuration of domain-specific settings. Pixelfed requires HTTPS support, which can be enabled using the [Certbot](https://certbot.eff.org/) application. This guide covers the main steps required to install and use Certbot. For more detailed information about Certbot, Let's Encrypt certificates, and HTTPS, see the [Linode guide to Using Certbot on NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/).
 
-1.  Create a `/var/www/html/domain_name` directory for the Pixelfed site. Replace `domain_name` with the name of the Pixelfed domain. In the following command, replace `example.com` with the actual name of the domain.
+1.  Create a `/var/www/html/domain_name` directory for the Pixelfed site. In the following command, replace `example.com` with the actual name of the domain.
 
-        sudo mkdir -p /var/www/html/example.com
+    ```command
+    sudo mkdir -p /var/www/html/example.com
+    ```
 
-1.  Copy the default site configuration file to the new directory. This ensures the formatting is correct and all essential fields are included. Use the domain name in place of `example.com`.
+1.  Copy the default site configuration file to the `sites-enabled` directory. This ensures the formatting is correct and all essential fields are included. Use the domain name in place of `example.com`.
 
-        sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/example.com.conf
+    ```command
+    sudo cp /etc/nginx/sites-enabled/default /etc/nginx/sites-available/example.com.conf
+    ```
 
-1.  Edit the site `.conf` file. Delete the existing server configuration all the way to the line `Virtual Host configuration for example.com` and uncomment the remaining lines. All further changes must be made inside the code block beginning with the `server`. Change the `server_name` and `root` fields inside the `server` block to reference the Pixelfed domain. In the following example, replace `example.com` with the actual domain name. The remaining changes can be made after HTTPS is enabled.
+1.  Edit the site's `.conf` file. Delete the existing server configuration all the way to the line `Virtual Host configuration for example.com` and uncomment the remaining lines. All further changes must be made inside the code block beginning with the `server`. Change the `server_name` and `root` fields inside the `server` block to reference the Pixelfed domain. In the following example, replace `example.com` with the actual domain name. The remaining changes can be made after HTTPS is enabled.
 
     {{< note >}}
-When Pixelfed is installed inside the `/var/www/html/domain_name` directory, it creates a new `public` subdirectory. The `root` variable must point to this directory. For Apache, add this configuration to `/etc/apache2/sites-available/example.com.conf` instead. The directive names are `ServerName` and `DocumentRoot` on Apache.
+    When Pixelfed is installed inside the `/var/www/html/domain_name` directory, it creates a new `public` subdirectory. The `root` variable must point to this directory. For Apache, add this configuration to `/etc/apache2/sites-available/example.com.conf` instead. The directive names are `ServerName` and `DocumentRoot` on Apache.
     {{< /note >}}
 
-    {{< file "/etc/nginx/sites-available/example.com.conf" aconf >}}
+    ```file {title="/etc/nginx/sites-available/example.com.conf" lang="nginx"}
     server_name example.com www.example.com;
     root /var/www/html/example.com/public;
-    {{< /file >}}
+    ```
 
-1.  Create a soft link to the `sites-enabled` directory to enable the site.
+1.  Create a symbolic link to the `sites-enabled` directory to enable the site.
 
-        sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
+    ```command
+    sudo ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/
+    ```
 
 1.  Certbot is now a Snap package. To use Snap, install the `snapd` package and initialize it.
 
-        sudo apt install snapd
-        sudo snap install core
+    ```command
+    sudo apt install snapd
+    sudo snap install core
+    ```
 
 1.  Remove any old `certbot` Ubuntu packages to avoid conflicts. Use `snap` to install a new `certbot` package. Create a symbolic link to the `certbot` directory.
 
-        sudo apt remove certbot
-        sudo snap install --classic certbot
-        sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    ```command
+    sudo apt remove certbot
+    sudo snap install --classic certbot
+    sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    ```
 
 1.  Use `certbot` to install a certificate for the domain. Add the `--nginx` option to use the NGINX plugin. This option also edits the virtual host file to simplify the configuration process.
 
     {{< note >}}
-To request a certificate without changing the virtual host settings, use the `certonly` option, for example, `sudo certbot certonly --nginx`. To configure Apache, run the command `sudo certbot --apache` instead.
+    To request a certificate without changing the virtual host settings, use the `certonly` option, for example, `sudo certbot certonly --nginx`. To configure Apache, run the command `sudo certbot --apache` instead.
     {{< /note >}}
 
-        sudo certbot --nginx
+    ```command
+    sudo certbot --nginx
+    ```
 
-1.  During the installation process, Certbot prompts for extra information including the email address and domain name. The following instructions apply to the configuration process.
+1.  During the installation process, Certbot prompts for extra information including a email address and domain name. The following instructions apply to the configuration process.
 
     -   **Enter an email address**: Certbot requests an email address where it can send urgent notices about the domain or registration.
     -   **Accept the terms of service**: To agree to the terms, enter `Y.` Enter `N` to terminate the certificate request. Use the link in the output to download the PDF file and review the terms.
@@ -243,21 +267,21 @@ To request a certificate without changing the virtual host settings, use the `ce
 
     Certbot contacts Let’s Encrypt to request the certificate(s) and perform any necessary challenges. In most cases, ownership can be proven through an HTTP challenge. If the operation is successful, Certbot confirms the successful grant request. It also displays some information about the certificates and key chains, along with the expiration date. Certificates typically expire in 90 days.
 
-    {{< output >}}
-Requesting a certificate for example.com and www.example.com
+    ```output
+    Requesting a certificate for example.com and www.example.com
 
-Successfully received certificate.
-Certificate is saved at: /etc/letsencrypt/live/example.com/fullchain.pem
-Key is saved at:         /etc/letsencrypt/live/example.com/privkey.pem
-This certificate expires on 2023-02-28.
-These files will be updated when the certificate renews.
-Certbot has set up a scheduled task to automatically renew this certificate in the background.
+    Successfully received certificate.
+    Certificate is saved at: /etc/letsencrypt/live/example.com/fullchain.pem
+    Key is saved at:         /etc/letsencrypt/live/example.com/privkey.pem
+    This certificate expires on 2023-02-28.
+    These files will be updated when the certificate renews.
+    Certbot has set up a scheduled task to automatically renew this certificate in the background.
 
-Deploying certificate
-Successfully deployed certificate for example.com to /etc/nginx/sites-enabled/example.com.conf
-Successfully deployed certificate for www.example.com to /etc/nginx/sites-enabled/example.com.conf
-Congratulations! You have successfully enabled HTTPS on https://example.com and https://www.example.com
-    {{< /output >}}
+    Deploying certificate
+    Successfully deployed certificate for example.com to /etc/nginx/sites-enabled/example.com.conf
+    Successfully deployed certificate for www.example.com to /etc/nginx/sites-enabled/example.com.conf
+    Congratulations! You have successfully enabled HTTPS on https://example.com and https://www.example.com
+    ```
 
 1.  Edit the site configuration file at `/etc/nginx/sites-available/example.com.conf`, using the sample file as a template. Make the following changes to the file:
     -   Add the three `add_header` directives to the top of the file.
@@ -269,67 +293,69 @@ Congratulations! You have successfully enabled HTTPS on https://example.com and 
     -   Do not change any of the lines added by Certbot. This section begins with the line `listen [::]:443`.
 
     {{< note >}}
-For the Apache web server, add the configuration above to the `/etc/apache2/sites-available/example.com.conf` file. Many directive names are slightly different on Apache. See the [Pixelfed Apache instructions](https://docs.pixelfed.org/running-pixelfed/installation/#handling-web-requests) or consult the Apache documentation for more information.
+    For the Apache web server, add the configuration above to the `/etc/apache2/sites-available/example.com.conf` file. Many directive names are slightly different on Apache. See the [Pixelfed Apache instructions](https://docs.pixelfed.org/running-pixelfed/installation/#handling-web-requests) or consult the Apache documentation for more information.
     {{< /note >}}
+"
+    ```file {title="/etc/nginx/sites-available/example.com.conf" lang="nginx"}
+    server {
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Content-Type-Options "nosniff";
 
-    {{< file "/etc/nginx/sites-available/example.com.conf" aconf >}}
-server {
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-XSS-Protection "1; mode=block";
-    add_header X-Content-Type-Options "nosniff";
+        server_name example.com example.com;
 
-    server_name example.com example.com;
+        root  /var/www/html/example.com/public;
+        index index.html index.htm index.php;
 
-    root  /var/www/html/example.com/public;
-    index index.html index.htm index.php;
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location = /robots.txt  { access_log off; log_not_found off; }
+
+        charset utf-8;
+        client_max_body_size 15M;   # or your desired limit
+        error_page 404 /index.php;
+
+        # pass PHP scripts to FastCGI server
+        #
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            # With php-fpm (or other unix sockets):
+            fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        }
+        listen [::]:443 ssl ipv6only=on; # managed by Certbot
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
     }
 
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
+    server {
+        if ($host = www.example.com) {
+            return 301 https://$host$request_uri;
+        } # managed by Certbot
 
-    charset utf-8;
-    client_max_body_size 15M;   # or your desired limit
-    error_page 404 /index.php;
+        if ($host = example.com) {
+            return 301 https://$host$request_uri;
+        } # managed by Certbot
 
-    # pass PHP scripts to FastCGI server
-    #
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        # With php-fpm (or other unix sockets):
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        listen 80;
+        listen [::]:80;
+
+        server_name example.com www.example.com;
+        return 404; # managed by Certbot
     }
-    listen [::]:443 ssl ipv6only=on; # managed by Certbot
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
-
-server {
-    if ($host = www.example.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    if ($host = example.com) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    listen 80;
-    listen [::]:80;
-
-    server_name example.com www.example.com;
-    return 404; # managed by Certbot
-}
-    {{< /file >}}
+    ```
 
 1. Test the NGINX configuration. If no errors are found, reload NGINX.
 
-        sudo nginx -t
-        sudo systemctl reload nginx
+    ```command
+    sudo nginx -t
+    sudo systemctl reload nginx
+    ```
 
 ## Install and Configure Pixelfed
 
@@ -339,29 +365,39 @@ The LEMP/LAMP stack and all settings are now ready to support Pixelfed. Clone an
 
 1.  Change to the `root` directory for the domain at `/var/www/html/example.com`. Substitute the actual domain name for `example.com`.
 
-        cd /var/www/html/example.com/
+    ```command
+    cd /var/www/html/example.com/
+    ```
 
 1.  Use `git` to `clone` the Pixelfed files.
 
-        git clone -b dev https://github.com/pixelfed/pixelfed.git .
+    ```command
+    git clone -b dev https://github.com/pixelfed/pixelfed.git .
+    ```
 
 1.  Recursively set the owner and permissions for the new directories.
 
-        sudo chown -R www-data:www-data .
-        sudo find . -type d -exec chmod 755 {} \;
-        sudo find . -type f -exec chmod 644 {} \;
+    ```command
+    sudo chown -R www-data:www-data .
+    sudo find . -type d -exec chmod 755 {} \;
+    sudo find . -type f -exec chmod 644 {} \;
+    ```
 
 ### Configure Pixelfed
 
-Use the `composer` tool to initialize and configure PHP. Additional changes must be made to the `.env` file. For more in-depth information about the Pixelfed configuration, see the [Pixelfed Documentation](https://docs.pixelfed.org/).
+Use the `composer` tool to initialize and configure PHP. Additionally, changes must be made to the `.env` file. For more in-depth information about the Pixelfed configuration, see the [Pixelfed Documentation](https://docs.pixelfed.org/).
 
 1.  From the same directory, use `composer` to initialize the PHP settings for Pixelfed.
 
-        sudo composer install --no-ansi --no-interaction --optimize-autoloader
+    ```command
+    sudo composer install --no-ansi --no-interaction --optimize-autoloader
+    ```
 
 1.  Create a new copy of the sample `.env` file.
 
-        sudo cp .env.example .env
+    ```command
+    sudo cp .env.example .env
+    ```
 
 1.  Edit the `.env` file and edit the following server variables. Leave the other variables set to their current values.
 
@@ -379,104 +415,124 @@ Use the `composer` tool to initialize and configure PHP. Additional changes must
     -   **DB_USERNAME**: Set this to `pixelfed`.
     -   **DB_PASSWORD**: Specify the password provided when creating the `pixelfed` user.
 
-            vi .env
+        ```command
+        vi .env
+        ```
 
-    {{< file "/var/www/html/example.com/.env" aconf >}}
-APP_NAME="Pixelfed Demo"
-APP_ENV=production
+    ```file {title="/var/www/html/example.com/.env" lang="env"}
+    APP_NAME="Pixelfed Demo"
+    APP_ENV=production
 
-APP_URL=https://example.com
-APP_DOMAIN="example.com"
-ADMIN_DOMAIN="example.com"
-SESSION_DOMAIN="example.com"
-TRUST_PROXIES="*"
+    APP_URL=https://example.com
+    APP_DOMAIN="example.com"
+    ADMIN_DOMAIN="example.com"
+    SESSION_DOMAIN="example.com"
+    TRUST_PROXIES="*"
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=pixelfed
-DB_USERNAME=pixelfed
-DB_PASSWORD=<Database_Password>
-    {{< /file >}}
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=pixelfed
+    DB_USERNAME=pixelfed
+    DB_PASSWORD=<Database_Password>
+    ```
 
 1.  (**Optional**) By default, Pixelfed does not send emails. To allow Pixelfed to send emails, change the `MAIL_` variables in `.env` to the correct mail server settings. See the [Pixelfed Email Settings example](https://docs.pixelfed.org/running-pixelfed/installation/#email-variables) for instructions.
 
 ### Run the Pixelfed Installation Scripts
 
-Unlike most applications, Pixelfed does not use a single set-up script. It is necessary to run a large number of `php artisan` commands to configure the different parts of the system. To run the install scripts, follow the steps below:
+Pixelfed does not use a single set-up script. It is necessary to run a large number of `php artisan` commands to configure the different parts of the system. To run the install scripts, follow the steps below:
 
 1.  Change to the domain root directory and generate the secret key. In the following example, change `example.com` to the name of the domain.
 
-        cd /var/www/html/example.com
-        sudo php artisan key:generate
+    ```command
+    cd /var/www/html/example.com
+    sudo php artisan key:generate
+    ```
 
-    {{< output >}}
-INFO  Application key set successfully.
-    {{< /output >}}
+    ```output
+    INFO  Application key set successfully.
+    ```
 
 1.  Link the application storage directory.
 
-        sudo php artisan storage:link
+    ```command
+    sudo php artisan storage:link
+    ```
 
-    {{< output >}}
-INFO  The [public/storage] link has been connected to [storage/app/public].
-    {{< /output >}}
+    ```output
+    INFO  The [public/storage] link has been connected to [storage/app/public].
+    ```
 
 1.  Migrate the database.
 
-        sudo php artisan migrate --force
+    ```command
+    sudo php artisan migrate --force
+    ```
 
 1.  Import the city data set to enable support for location data.
 
-        sudo php artisan import:cities
+    ```command
+    sudo php artisan import:cities
+    ```
 
-    {{< output >}}
-Successfully imported 128769 entries!
-    {{< /output >}}
+    ```output
+    Successfully imported 128769 entries!
+    ```
 
 1.  Cache the Pixelfed routes and views to allow for better performance.
 
-        php artisan route:cache
-        php artisan view:cache
+    ```command
+    php artisan route:cache
+    php artisan view:cache
+    ```
 
-    {{< output >}}
-INFO  Routes cached successfully.
-INFO  Blade templates cached successfully.
-    {{< /output >}}
+    ```output
+    INFO  Routes cached successfully.
+    INFO  Blade templates cached successfully.
+    ```
 
 1.  Cache the Pixelfed configuration.
 
     {{< note >}}
-Run this command each time the `.env` file changes.
+    Run this command each time the `.env` file changes.
     {{< /note >}}
 
-        sudo php artisan config:cache
+    ```command
+    sudo php artisan config:cache
+    ```
 
-    {{< output >}}
-INFO  Configuration cached successfully.
-    {{< /output >}}
+    ```output
+    INFO  Configuration cached successfully.
+    ```
 
 1.  Enable the Horizon dashboard and job queueing.
 
     {{< note >}}
-Pixelfed supports other queueing methods, but `horizon` is the simplest. Consult the [Pixelfed documentation](https://docs.pixelfed.org/running-pixelfed/) for more details.
+    Pixelfed supports other queueing methods, but `horizon` is the most straightforward. Consult the [Pixelfed documentation](https://docs.pixelfed.org/running-pixelfed/) for more details.
     {{< /note >}}
 
-        sudo php artisan horizon:install
-        sudo php artisan horizon:publish
+    ```command
+    sudo php artisan horizon:install
+    sudo php artisan horizon:publish
+    ```
 
-    {{< output >}}
-Horizon scaffolding installed successfully.
-INFO  Publishing [horizon-assets] assets
-    {{< /output >}}
+    ```output
+    Horizon scaffolding installed successfully.
+    INFO  Publishing [horizon-assets] assets
+    ```
 
 1.  Add a cron job to regularly schedule the clean-up task. Open the root `crontab` file.
 
-        sudo crontab -e
+    ```command
+    sudo crontab -e
+    ```
 
 1.  Add the following crontab entry to the bottom of the file.
 
-        * * * * * /usr/bin/php /usr/share/webapps/pixelfed/artisan schedule:run >> /dev/null 2>&1
+    ```code
+    * * * * * /usr/bin/php /usr/share/webapps/pixelfed/artisan schedule:run >> /dev/null 2>&1
+    ```
 
 ### Enable the Pixelfed Service in Systemctl
 
@@ -484,46 +540,52 @@ The easiest way to start and stop Pixelfed is to run it as a `systemctl` service
 
 1.  Create a service entry file named `pixelfed.service` in `/etc/systemd/system`.
 
-        sudo vi /etc/systemd/system/pixelfed.service
+    ```command
+    sudo vi /etc/systemd/system/pixelfed.service
+    ```
 
 1.  Add the following service description. For the `ExecStart` parameter, replace `example.com` with the actual name of the domain.
 
     {{< note >}}
-Apache users should change `requires=nginx` to `requires=apache`.
+    Apache users should change `requires=nginx` to `requires=apache`.
     {{< /note >}}
 
-    {{< file "/etc/systemd/system/pixelfed.service" aconf >}}
-[Unit]
-Description=Pixelfed task queueing via Laravel Horizon
-After=network.target
-Requires=mariadb
-Requires=php-fpm
-Requires=redis
-Requires=nginx
+    ```file {title="/etc/systemd/system/pixelfed.service" lang="systemd"}
+    [Unit]
+    Description=Pixelfed task queueing via Laravel Horizon
+    After=network.target
+    Requires=mariadb
+    Requires=php-fpm
+    Requires=redis
+    Requires=nginx
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/php /var/www/html/example.com/artisan horizon
-Restart=on-failure
+    [Service]
+    Type=simple
+    ExecStart=/usr/bin/php /var/www/html/example.com/artisan horizon
+    Restart=on-failure
 
-[Install]
-WantedBy=multi-user.target
-    {{< /file >}}
+    [Install]
+    WantedBy=multi-user.target
+    ```
 
 1.  Enable the service using `systemctl enable`.
 
-        sudo systemctl enable --now pixelfed
+    ```command
+    sudo systemctl enable --now pixelfed
+    ```
 
 1.  Restart the service and verify it is active.
 
-        sudo systemctl restart pixelfed.service
-        sudo systemctl status  pixelfed.service
+    ```command
+    sudo systemctl restart pixelfed.service
+    sudo systemctl status  pixelfed.service
+    ```
 
-    {{< output >}}
-pixelfed.service - Pixelfed task queueing via Laravel Horizon
-    Loaded: loaded (/etc/systemd/system/pixelfed.service; enabled; vendor preset: enabled)
-    Active: active (running) since Thu 2022-12-01 10:24:42 UTC; 3s ago
-    {{< /output >}}
+    ```output
+    pixelfed.service - Pixelfed task queueing via Laravel Horizon
+        Loaded: loaded (/etc/systemd/system/pixelfed.service; enabled; vendor preset: enabled)
+        Active: active (running) since Thu 2022-12-01 10:24:42 UTC; 3s ago
+    ```
 
 ### Create a Pixelfed Administrator and Use the Pixelfed Web Interface
 
@@ -531,8 +593,10 @@ To access the Pixelfed administration dashboard, first create an administrative 
 
 1.  Change to the root directory of the Pixelfed domain. Run the `artisan` account creation script. In the following example, replace `example.com` with the name of the domain.
 
-        cd /var/www/html/example.com
-        sudo php artisan user:create
+    ```command
+    cd /var/www/html/example.com
+    sudo php artisan user:create
+    ```
 
 1.  When prompted, provide the following information.
 
@@ -544,15 +608,15 @@ To access the Pixelfed administration dashboard, first create an administrative 
     - **Manually verify email address? (yes/no)**: It is safe to answer `no` in this case because the account is being created internally. To answer `yes`, email must be enabled on both Pixelfed and Linode.
     - **Are you sure you want to create this user? (yes/no)**: Answer `yes` to create the user of the account.
 
-    {{< output >}}
-Created new user!
-    {{< /output >}}
+    ```output
+    Created new user!
+    ```
 
-1.  Using a web browser, navigate to the site domain name. The browser should display the Pixelfed login page. Enter the email address and password for the administrator account.
+1.  Using a web browser, navigate to the site domain name. The browser should display the Pixelfed login page. Enter the administrator email address and password.
 
     ![The Pixelfed Login Page](Pixelfed-Login.png)
 
-1.  Pixelfed now displays the home page for the account.
+1.  Pixelfed displays the home page for the account.
 
     ![The Pixelfed Home Page](Pixelfed-Home.png)
 
