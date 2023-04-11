@@ -62,7 +62,7 @@ Once you have obtained a compatible image file that meets all the requirements, 
 
     ![Image status](images-upload-status.png "Image status")
 
-    If there is an error when processing the uploaded image file, the newly created Image may be deleted and an error message will be written to the [Events](https://cloud.linode.com/events) log. See [Understanding Events and the Activity Feed](/docs/guides/cloud-manager-events-and-activity-feeds/) for more details on viewing Cloud Manager Events.
+    If there is an error when processing the uploaded image file, the newly created Image may be deleted and an error message will be written to the [Events](https://cloud.linode.com/events) log. See [Understanding Events and the Activity Feed](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) for more details on viewing Cloud Manager Events.
 
 ## Uploading an Image File through the Linode CLI
 

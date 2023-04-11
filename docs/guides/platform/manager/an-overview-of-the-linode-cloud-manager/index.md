@@ -117,7 +117,7 @@ Linode’s Cloud Manager and [API v4](/docs/api) allow you to create tags to hel
 
 Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
-For more details, see the [Understanding Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/) guide.
+For more details, see the [Understanding Events and Activity Feeds](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) guide.
 
 ## My Profile
 

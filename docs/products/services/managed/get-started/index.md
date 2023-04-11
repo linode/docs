@@ -16,7 +16,7 @@ authors: ["Linode"]
 Follow the instructions below to sign up for Managed Services.
 
 {{< note type="warning" >}}
-This is an account-wide setting. Enabling Managed Services will result in additional charges *for each* Compute Instance on your account. If you would like to only enable this for some instances and not others, you will need to create a separate account and transfer any services you do (or do not) want to have managed. See [Transferring Ownership of Linode Services with Service Transfers](/docs/guides/service-transfers/).
+This is an account-wide setting. Enabling Managed Services will result in additional charges *for each* Compute Instance on your account. If you would like to only enable this for some instances and not others, you will need to create a separate account and transfer any services you do (or do not) want to have managed. See [Transferring Ownership of Linode Services with Service Transfers](/docs/products/platform/accounts/guides/service-transfers/).
 {{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Account** link in the sidebar.
