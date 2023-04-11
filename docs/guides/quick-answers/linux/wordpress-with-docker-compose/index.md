@@ -71,6 +71,7 @@ services:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: my_wordpress_db_password
+       WORDPRESS_DB_NAME: wordpress
 
    db:
      image: mysql:5.7

@@ -1,5 +1,4 @@
 ---
-slug: access-keys
 description: "How to create an Access Key for use with Linode Object Storage."
 keywords: ['object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

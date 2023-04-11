@@ -1,7 +1,7 @@
 ---
 title: "Martin Heller"
-link: "http://www.twitter.com/meheller"
-email: "martin.heller@gmail.com"
+link: ""
+email: ""
 description: "The Linode documentation library's profile page and submission listing for Martin Heller"
 ---
 
