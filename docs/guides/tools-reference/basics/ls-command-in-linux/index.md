@@ -6,29 +6,25 @@ description: 'The Ls command in Linux is useful for listing files and directorie
 keywords: ['ls command in linux','ls command','linux ls','linux ls command','what is ls','cmd ls','ls bash','ls output','linux ll command','linux ll']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
-published: 2023-03-21
-modified_by:
-  name: Linode
+published: 2023-04-11
 external_resources:
 - '[freeCodeCamp: The Linux LS Command – How to List Files in a Directory + Option Flags](https://www.freecodecamp.org/news/the-linux-ls-command-how-to-list-files-in-a-directory-with-options/)'
 - '[TechMint: 15 Basic ‘ls’ Command Examples in Linux](https://www.tecmint.com/15-basic-ls-command-examples-in-linux/)'
 ---
 
-`ls` is a Linux shell command that Linux users need to know. This guide explains the `ls` command in Linux and shows you 9 ways to use it.
-
 ## What is the `ls` Command in Linux?
 
-The `ls` command line utility lists all the files and directories under the specified directory. It uses the current directory by default and lists files and directories in alphabetical order by name. The `ls` command supports a whole alphabet of flags that modify its behavior.
+The `ls` command line utility lists all the files and directories under a specified directory. By default, `ls` uses the current directory and lists files and directories in alphabetical order by name. The `ls` command supports many flags that modify its behavior.
 
-It first appeared in version 1 of AT&T UNIX. It is present in all Linux distributions, all BSD distributions, and all Unix-like operating systems. This includes macOS (Darwin) and the Windows Subsystem for Linux (WSL). Today it is part of the GNU coreutils project.
+`ls` first appeared in version 1 of AT&T UNIX. Today, it is included in all Linux distributions, all BSD distributions, and all Unix-like operating systems, including macOS (Darwin) and the Windows Subsystem for Linux (WSL). Today it is part of the GNU coreutils project.
 
 {{< note >}}
-The `ls` command's supported options may vary somewhat among versions and distributions.
+The `ls` command's supported options may vary among OS versions and distributions.
 {{< /note >}}
 
 ## 9 Ways to Use the `ls` Command
 
-`ls` can produce a variety of output styles. Thanks to all the option flags and the ability to send its output to other utilities using a command line pipe. The examples that follow are both common and useful.
+`ls` can output data in a variety of styles depending on the option flags chosen and which command it is piped into. The examples that follow represent common scenarios and use cases.
 
 ### List Files and Directories
 
@@ -47,7 +43,7 @@ ls
 ```
 
 ```output
-'['                                   os-prober
+'['                                  os-prober
 aa-enabled                           pager
 aa-exec                              partx
 aa-features-abi                      passwd
@@ -61,10 +57,10 @@ apport-collect                       pbput
 ```
 
 {{< note >}}
-Some of the outputs in this article have been truncated with `...`, as they're far too long to show here in totality.
+Some of the output in this guide has been truncated with `...` to limit the size of the examples, which can be quite long.
 {{< /note >}}
 
-To specify the directories you wish to list, and ignore the current directory, add arguments. The next example runs from the user’s home directory and lists both the `/bin` and `/sbin` directories. `/sbin` contains utilities that are normally run by a sysadmin with root, while `/bin` contains everything else.
+To specify the directories you wish to list, add directory paths as arguments to the `ls` command. The next example ran in the user’s home directory but lists both the `/bin` and `/sbin` directories.
 
 Before running this command, return to your user's home directory:
 
@@ -72,7 +68,7 @@ Before running this command, return to your user's home directory:
 cd ~
 ```
 
-Now run `ls` with arguments for `/bin` and `/sbin`:
+Now run `ls` with arguments of `/bin` and `/sbin`:
 
 ```command
 ls /bin /sbin
@@ -80,7 +76,7 @@ ls /bin /sbin
 
 ```output
 /bin:
-'['                                   os-prober
+'['                                  os-prober
 aa-enabled                           pager
 aa-exec                              partx
 aa-features-abi                      passwd
@@ -108,7 +104,8 @@ apparmor_parser        ip6tables-apply              reboot
 
 ### List Files Recursively
 
-The `-R` option causes `ls` to list subdirectories recursively:
+The `-R` option instructs `ls` to list subdirectories recursively:
+
 ```command
 ls -R /usr
 ```
@@ -133,18 +130,17 @@ games  lib      lib64  libx32   sbin   src
 ...
 ```
 
-The output from `ls -R` can often be quite long, which makes it less than useful for deep directory trees. Remedy this problem by increasing the size of the scrollback buffer in your terminal, using a scrolling utility such as `more` or `less`, or filtering the output.
-
+The output from `ls -R` can be quite long, making it less useful for deep directory trees. To make the output more readable, you can increase the size of the scrollback buffer in your terminal, use a scrolling utility such as `more` or `less`, or filter the output.
 
 ### List Files Recursively and Scroll Interactively with less
 
-The Linux `more` and `less` utilities enable interactive scrolling, but unfortunately suppress the columnar output. The difference between `more` and `less` was originally that `less` added backward scrolling, however the current GNU versions of the two programs are identical.
+The Linux `more` and `less` utilities enable interactive scrolling at the cost of suppressing the default columnar styling. Originally, `less` differed from `more` by adding backward scrolling. However, the current GNU versions of the two programs are identical.
 
 ```command
 ls -R /usr | less
 ```
 
-The following output shows the first screen of the output when `ls -R /usr` is piped into `less`:
+The following example demonstrates how the first screen of output from `ls -R /usr` looks after it is piped into `less`:
 
 ```output
 /usr:
@@ -173,11 +169,11 @@ apport-bug
 :
 ```
 
-The final `:` prompt means that less is awaiting input. Scroll down in `less` by pressing the **Spacebar**, and scroll up using the **PageUp** key. The **q** key stops the `less` session.
+The final `:` prompt denotes that less is awaiting input. Scroll down in `less` by pressing the **Spacebar**, and scroll up using the **PageUp** key. The **q** key stops the `less` session.
 
 ### List Files Recursively and Filter the Output with `grep`
 
-To find strings and patterns in `less` use the `/<pattern>` or `?<pattern>` commands to search forwards or backwards, respectively. Alternatively, filter output using the `grep` utility. For example, the following command does a recursive listing under `/usr` but displays only lines containing "binhex".
+To find strings and patterns in `less`, use the `/<pattern>` or `?<pattern>` commands to search forwards or backwards, respectively. Alternatively, you can filter output using the `grep` utility. For example, the following command recursively lists the files and directories of `/usr`, but displays only lines containing "binhex".
 
 ```command
 ls -R /usr | grep binhex
@@ -191,12 +187,13 @@ mac-binhex40.xml
 
 ### Listing Files with Full Details
 
-The `ls -l` command lists files with full details, one per line:
+The `ls -l` command lists file and directory details, including permissions, owners, groups, file sizes, and modified dates, listing one file or directory per line:
+
 ```command
 ls -l /usr/include
 ```
 
-In the output below, the `/usr/include` directory has three subdirectories (indicated by a `d` at the beginning of the line). It also contains four normal files (indicated with a `-`) with execution permission for the root (`x`), while others can read but not write them (r-x).
+In the output below, the `/usr/include` directory has three subdirectories indicated by a `d` at the beginning of the line. It also contains four normal files (indicated with a `-` at the beginning) with execution permission for the root (`x`), while others can read but not write them (r-x).
 
 ```output
 total 84
@@ -211,7 +208,7 @@ drwxr-xr-x 2 root root  4096 Feb  8  2022 xfs
 
 ### List Files and Directories with Type Indicators
 
-Sometimes you want to know whether a given file is normal, a directory, a symbolic link, an executable, or a network file, but don’t care about permissions or owners. For this purpose, you can use the `ls -F` command:
+Sometimes you want to know whether a given file is normal, a directory, a symbolic link, an executable, or a network file, but don’t need information about permissions or owners. For this purpose, you can use the `ls -F` command:
 
 ```command
 ls -F /etc
@@ -235,7 +232,7 @@ bash_completion.d/             locale.alias          rmt@
 
 ### Show Hidden Files
 
-Linux uses a period `.` as a prefix for hidden files. Include them in the output using the `-a` flag:
+Linux uses a period `.` as a prefix for hidden files. These are sometimes called dot files. Include them in the output using the `-a` flag:
 
 ```command
 ls -a
@@ -263,7 +260,7 @@ ls -A
 
 ### List Files Ordered by Size or Time
 
-The `-S` flag tells `ls` to show the files listed in descending order of size. The `-t` option flag tells `ls` to show the files listed in descending order of time (i.e. newest first). To easily see the effect of these sort options, combine them with the long display format flag `l`.
+The `-S` flag instructs `ls` to list files in descending order of size. The `-t` option flag tells `ls` to list files in descending order of time (i.e. newest first). To easily see the effect of these sort options, combine them with the long display format flag `l`.
 
 ```command
 ls -Sl /usr/include
