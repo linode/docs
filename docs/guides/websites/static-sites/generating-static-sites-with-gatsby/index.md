@@ -1,5 +1,5 @@
 ---
-
+slug: generating-static-sites-with-gatsby
 description: "Gatsby offers a static-site generation framework based on React. Take all of the advantages of React for designing frontends, and combine them with a rich set of features for generating static sites. Find out more about Gatsby and how to build and deploy your own websites with it in this tutorial."
 keywords: ['what is gatsby js','gatsby static site generator tutorial','gatsby templates']
 tags: ['web server']
