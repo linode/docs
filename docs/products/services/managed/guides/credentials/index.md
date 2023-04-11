@@ -2,7 +2,7 @@
 title: Configure Credentials for Managed Services
 linkTitle: Configure Credentials
 description: "Learn how to view, add, and edit credentials that the Support team can use when investigating an issue related to Linode Managed Services."
-published: 2023-04-04
+published: 2023-04-11
 authors: ["Linode"]
 ---
 

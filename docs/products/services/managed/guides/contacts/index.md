@@ -2,7 +2,7 @@
 title: Manage Contacts for Managed Services
 linkTitle: Manage Contacts
 description: "Learn how to add contacts and contact groups to Linode Managed Services."
-published: 2023-04-04
+published: 2023-04-11
 authors: ["Linode"]
 ---
 

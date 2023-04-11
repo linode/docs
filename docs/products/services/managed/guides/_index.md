@@ -3,7 +3,7 @@ title: Guides
 description: "Learn how to sign up for Linode Managed, add new services, disable service monitoring, and more."
 tab_group_main:
     weight: 30
-published: 2023-04-04
+published: 2023-04-11
 ---
 
 ## Basics

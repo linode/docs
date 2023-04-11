@@ -3,7 +3,7 @@ title: Configure Firewall Rules to Allow Access from Linode Infrastructure (for 
 title_meta: Configure Firewall Rules to Allow Access from Linode Infrastructure
 linkTitle: Configure Firewall Rules
 description: "Learn how to configure your firewall rules so that the Managed Service's team of experts are able to access your Compute Instances and troubleshoot issues."
-published: 2023-04-04
+published: 2023-04-11
 authors: ["Linode"]
 ---
 

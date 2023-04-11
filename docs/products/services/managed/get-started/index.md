@@ -5,7 +5,7 @@ tab_group_main:
     weight: 20
 keywords: ["managed", "managed services", "linode managed"]
 aliases: ['/products/services/managed/guides/sign-up/','/linode-managed/','/uptime/linode-managed/','/platform/linode-managed-classic-manager/','/platform/linode-managed/','/guides/linode-managed/']
-published: 2023-04-04
+published: 2023-04-11
 authors: ["Linode"]
 ---
 
@@ -27,7 +27,7 @@ This is an account-wide setting. Enabling Managed Services will result in additi
 
 ## Initial Setup
 
-After signing up for Managed Services, the next step is to configure which services or resources you'd like to monitor on your Compute Instances, allow the Support team to log in to the Compute Instances and access these services, and then let the Support team know who to contact in case of a failure.
+After signing up for Managed Services, the next steps are to configure which services or resources you'd like to monitor on your Compute Instances, allow the Support team to log in to the Compute Instances and access these services, and then let the Support team know who to contact in case of a failure.
 
 1. **Provide access to the Support team:** In order to investigate any issues with your Compute Instances, our Support team requires access to those instances. Because of this requirement, you should install your unique Managed Services public key on any instances you intend for us to monitor. You may also need to add any credentials that are specific to the applications or services you are running. For example, if you run a WordPress site that communicates with a MySQL database, you should provide the MySQL username and password if you would like us to troubleshoot it in the event of outage for your site. See the following guides:
 
