@@ -3,13 +3,14 @@ title: Developers
 description: "Use the Linode API and CLI to enabled and configure the Linode Managed Service."
 tab_group_main:
     weight: 50
+published: 2023-04-04
 ---
 
 ## Linode API
 
 Linode’s [API v4](/docs/api) provides the ability to programmatically manage the full range of Linode products and services.
 
-- [Enable Linode Managed](/docs/api/account/#enable-linode-managed)
+- [Enable Linode Managed](/docs/api/account/#linode-managed-enable)
 
 - [Managed Endpoint Collection](/docs/api/managed)
 

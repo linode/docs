@@ -3,6 +3,7 @@ title: Resources
 description: "Resources and other information related to the Linode Managed Service including blog posts, community posts, customer stories, and press releases."
 tab_group_main:
     weight: 40
+published: 2023-04-04
 ---
 
 ## Blog Posts

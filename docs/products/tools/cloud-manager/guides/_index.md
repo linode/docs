@@ -77,7 +77,7 @@ These additional guides help you with targeted topics like how to manage your ac
 
 - [Linode Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/)
 
-- [Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/)
+- [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 
 ### Manage Your Linodes
 
