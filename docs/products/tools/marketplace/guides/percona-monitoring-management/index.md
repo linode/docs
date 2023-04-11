@@ -2,7 +2,6 @@
 description: "Learn how to deploy Percona Monitoring & Management with Marketplace Apps and basic configuration steps to get you started monitoring your database."
 keywords: ['percona','marketplace apps','monitoring', 'database']
 tags: ["database","monitoring","cloud-manager","linode platform","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
 modified: 2022-03-08
 modified_by:

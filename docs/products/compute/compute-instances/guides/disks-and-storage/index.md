@@ -2,7 +2,6 @@
 description: "A guide for understanding how local storage works on a Linode and for help performing common tasks on a Linode's disks."
 keywords: ["disks", "storage", "disk space"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2023-01-18
 modified_by:
   name: Linode

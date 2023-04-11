@@ -3,7 +3,6 @@ description: 'Deploy a WireGuard Server on Linode with Marketplace Apps.'
 keywords: ['vpn','wireguard','tunnel']
 tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
 modified: 2022-03-08
 modified_by:

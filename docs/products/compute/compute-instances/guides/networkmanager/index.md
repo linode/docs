@@ -1,7 +1,6 @@
 ---
 description: "Learn how to configure networking using the NetworkManager utility on CentOS, CentOS Stream, Fedora, and other modern Linux distributions"
 keywords: ["static", "ip address","NetworkManager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-27
 modified_by:
   name: Linode

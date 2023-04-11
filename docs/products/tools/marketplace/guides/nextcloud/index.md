@@ -1,7 +1,6 @@
 ---
 description: "This guide shows how you can deploy a NextCloud server to store important documents, images, and more in one location by using the NextCloud Marketplace App."
 keywords: ['Nextcloud','marketplace','file sharing']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-06-11
 modified: 2022-05-27
 modified_by:

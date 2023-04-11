@@ -2,7 +2,6 @@
 description: "Review this guide to find out how to copy a disk of a Linode from one Linode account to another."
 keywords: ["disk", "migration", "moving to different accounts"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-03-28
 modified_by:
   name: Linode

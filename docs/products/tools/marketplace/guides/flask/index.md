@@ -2,7 +2,6 @@
 description: "Learn how to deploy Flask, a quick and light-weight web framework for Python, through the Linode Marketplace."
 keywords: ['flask','python','marketplace']
 tags: ["linode platform","python","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
 modified_by:

@@ -2,7 +2,6 @@
 description: "This guide provides you with instructions for booting a Compute Instance from a Block Storage Volume for use in an emergency or disaster recovery situation."
 og_description: "This guide shows how to boot a Linode from a Block Storage Volume."
 keywords: ["block storage","volume","media","storage","disk", "boot", "boot disk"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-08-24
 modified_by:
   name: Linode

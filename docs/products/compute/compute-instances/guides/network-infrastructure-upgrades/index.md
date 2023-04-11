@@ -1,7 +1,6 @@
 ---
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-19
 modified: 2023-01-20
 modified_by:
