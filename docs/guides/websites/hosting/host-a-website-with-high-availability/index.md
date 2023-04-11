@@ -4,7 +4,7 @@ description: 'This article shows you how you to configure a high availability st
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
-modified: 2023-04-10
+modified: 2023-04-11
 modified_by:
   name: Linode
 title: 'Host a Website with High Availability'
@@ -21,7 +21,7 @@ authors: ["Phil Zona"]
 ---
 
 {{< note type="warning" >}}
-This guide is designed to be used in data centers that support the legacy ARP-based failover method. For a list of data centers supporting this method, see [IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability). If you are located in a data center that uses the newer BGP-based failover method, the steps in the Keepalived section of this guide do not apply. Instead, review the [Configure Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/#configure-failover) for IP Sharing and failover instructions.
+This guide is designed to be used in data centers that support the legacy ARP-based failover method. For a list of data centers supporting this method, see [IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability). The instructions within this guide, specifically the steps within the [Keepalived](#keepalived) section, do not work for data centers that use the newer BGP-based failover method.
 {{< /note >}}
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
@@ -598,6 +598,10 @@ Your Apache servers should now be capable of serving files and applications from
     ```
 
 ## Keepalived
+
+{{< note type="warning" >}}
+The steps in this section do not work as intended in data centers that use the newer BGP-based failover method. To learn how to configure failover in these data centers, review the [Configure Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/#configure-failover). Those instructions do not enable identical functionality to the steps below and additional configuration is needed, which is not covered in this guide.
+{{< /note >}}
 
 So far, we've successfully configured a redundant web stack with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes' `/etc/fstab` files. In this section, we use Keepalived to handle database failover.
 
