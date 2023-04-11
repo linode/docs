@@ -7,7 +7,7 @@ published: 2023-04-11
 authors: ["Linode"]
 ---
 
-As a Managed Services customer, you may need to add or modify your firewall rules to allow access from our infrastructure. When done alongside [configuring SSH access for Managed Services](/docs/products/services/managed/guides/ssh-access/), this enables the Support team to log in to your system and troubleshoot issues. The exact procedure varies based on the firewall software in use. See the following guides for help configuring firewalls:
+As a Managed Services customer, you may need to add or modify your firewall rules to allow access from our infrastructure. When done alongside [configuring SSH access for Managed Services](/docs/products/services/managed/guides/ssh-access/), this enables the Support team to log in to your system and troubleshoot issues. It also enables our infrastructure to perform the checks configured on your monitors. The exact procedure varies based on the firewall software in use. See the following guides for help configuring firewalls:
 
 - Linode Cloud Firewall: [Manage Cloud Firewall Rules](/docs/products/networking/cloud-firewall/guides/manage-firewall-rules/)
 - UFW: [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
