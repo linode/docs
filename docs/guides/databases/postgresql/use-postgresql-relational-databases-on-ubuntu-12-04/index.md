@@ -1,6 +1,7 @@
 ---
 slug: use-postgresql-relational-databases-on-ubuntu-12-04
 deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 description: 'Using the PostgreSQL relational database server with Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: ["postgresql", "ubuntu 12.04", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
