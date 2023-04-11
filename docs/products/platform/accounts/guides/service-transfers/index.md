@@ -5,7 +5,7 @@ description: "Learn how to transfer ownership of Linode services to a different 
 keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
 tags: ["cloud manager","linode platform","account"]
 published: 2021-03-10
-modified: 2023-04-04
+modified: 2023-04-11
 modified_by:
   name: Linode
 image: TransferOwn_LinodeServ_ST.png
@@ -13,7 +13,7 @@ aliases: ['/guides/platform/manager/service-transfers/', '/guides/service-transf
 authors: ["Linode"]
 ---
 
-Within the Linode Platform, certain services can be transferred from one account to a different account. Here's an overview of this transfer process:
+Within the Linode Platform, Compute Instances can be transferred from one account to a different account. Here's an overview of this transfer process:
 
 1. The sending account initiates a transfer by generating a Service Transfer token.
 
@@ -101,7 +101,7 @@ Only users with full account access can use Service Transfers. To adjust user pe
 1. If the services are eligible for transfer, you are prompted to confirm responsibility for billing associated with those services. Billing begins for the receiving account after the transfer has been completed. Confirm billing responsibility and click **Accept Transfer** to begin transfer of services to your account. A confirmation email is sent to both the sending and receiving accounts.
 
     {{< note >}}
-    Service Transfers can take up to 3 hours to complete once accepted. Another confirmation email is sent to both the sending and receiving accounts once the transfer has been completed. If the transfer fails after being accepted, the sending account must initiate a new Service Transfer.
+    Service Transfers can take up to 3 hours to complete once they are accepted by the recipient. Once the transfer is complete, another confirmation email is sent to both the sending and receiving accounts. If the transfer fails, the sending account must initiate a new Service Transfer.
     {{< /note >}}
 
 1. If there are any conditions in place that are blocking the transfer, they are displayed on the Service Transfer page. These conditions must be corrected by the sending or receiving account as is applicable before the transfer can be accepted. Here is a full list of conditions that must be met for a successful transfer request:
@@ -125,7 +125,7 @@ Only users with full account access can use Service Transfers. To adjust user pe
         - have any assigned /56, /64, or /116 IPv6 ranges.
 
 {{< note type="alert" >}}
-When receiving a Compute Instance, it is important to make sure that **Any Longview Key** is fully revoked and removed from that instance by removing the Longview agent. If client keys are not revoked and removed, this can give the transferring user access to all data visible to any Longview client by using the pre-existing API key, even after the transfer has been completed. Users will not be informed by default if the received Compute Instance has a Longview key installed, and should always follow the process for removing the Longview agent to be sure.
+When receiving a Compute Instance, it is important to make sure that **Any Longview Key** is fully revoked and removed from that instance by removing the Longview agent. If client keys are not revoked and removed, the transferring user gains access to all data visible to any Longview client by using the pre-existing API key, even after the transfer has been completed. Users will not be informed by default if the received Compute Instance has a Longview key installed, and should always follow the process for removing the Longview agent to be sure.
 
 For more information on revoking and removing a Longview key and uninstalling the Longview agent, see our [Documentation on Uninstalling Longview](/docs/guides/what-is-longview/#uninstall-the-longview-client).
 {{< /note >}}
