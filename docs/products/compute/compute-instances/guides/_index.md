@@ -4,6 +4,7 @@ description: "A collection of guides to help you start deploying Compute Instanc
 tab_group_main:
     weight: 30
 aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-cpu/guides/','/products/compute/gpu/guides/','/products/compute/dedicated-cpu/guides/','/products/compute/high-memory/guides/']
+modified: 2023-04-11
 ---
 
 ## Basics
@@ -21,6 +22,7 @@ aliases: ['/products/compute/shared-linodes/guides/','/products/compute/shared-c
 - [Reset Root Password](/docs/products/compute/compute-instances/guides/reset-root-password/)
 - [Clone a Compute Instance](/docs/products/compute/compute-instances/guides/clone-instance/)
 - [Initiate a Cross Data Center Migration](/docs/products/compute/compute-instances/guides/migrate-to-different-dc/)
+- [Configure Email Alerts for Resource Usage on Compute Instances](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/)
 
 ## Linux Distributions
 

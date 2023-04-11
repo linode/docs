@@ -91,9 +91,9 @@ The `scp` command permits users to choose from a list of options. The most commo
 
 To use `scp`, the user must have read access for the files they are transferring and write permission on the destination directory. For authentication purposes, either an SSH key or user password is required for the destination. For more information on SSH, see the Linode guide to [Connecting to a Remote Server Over SSH on Linux](/docs/guides/connect-to-server-over-ssh-on-linux/).
 
-{{< caution >}}
+{{< note type="alert" >}}
 Exercise a high degree of caution when using `scp`. It does not provide any warnings or ask for confirmation before overwriting an existing file sharing the same name. It is very easy to accidentally overwrite files or directories, especially when using `scp` in recursive mode.
-{{< /caution >}}
+{{< /note >}}
 
 ### How to Transfer Files from a Local System to a Remote Server Using SCP?
 
