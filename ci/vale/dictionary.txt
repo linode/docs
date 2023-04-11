@@ -102,6 +102,7 @@ authn
 authomator
 authsocket
 authy
+autoclear
 autocompletion
 autoconfiguration
 autoconfigure
@@ -117,6 +118,7 @@ automator
 automattic
 automations
 automount
+automounting
 automox
 autorelabel
 autorun
@@ -242,6 +244,8 @@ caffe
 cakey
 calc
 campione
+canonicalize
+canonicalization
 captcha
 carootcert
 ccm
@@ -474,6 +478,8 @@ desperados
 destructured
 detectify
 dev
+devfs
+devpts
 devel
 devops
 devtmpfs
@@ -705,6 +711,7 @@ fstab
 ftp_client
 fullchain
 func
+fuser
 fzf
 galera
 gamemode
@@ -1452,6 +1459,7 @@ newtag
 nextcloud
 nexthop
 nfs
+nfsd
 nftables
 ng
 nginx
@@ -1550,6 +1558,7 @@ outputter
 outputters
 overcommit
 overengineer
+overmounting
 overfitted
 overfitting
 overwatch
@@ -1620,6 +1629,7 @@ phusion
 pid
 pidfile
 pingable
+pipefs
 pinterest
 pipfile
 pipenv
@@ -1709,6 +1719,7 @@ proxying
 pscp
 pseudocode
 psexec
+psmisc
 psql
 psudo
 psycop2
@@ -2141,6 +2152,7 @@ syntaxes
 sys
 sysconfig
 sysdig
+sysfs
 sysctl
 syslog
 sysstat
@@ -2308,6 +2320,7 @@ unopinionated
 unmanaged
 unmerged
 unmount
+unmounts
 unmounting
 unoptimized
 unpatched
