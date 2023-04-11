@@ -1,7 +1,6 @@
 ---
 description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
 keywords: ['counter-strike','cs', 'go','marketplace']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
 modified: 2022-05-17
 modified_by:

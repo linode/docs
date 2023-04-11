@@ -2,7 +2,6 @@
 description: 'This guide describes the process of upgrading LKE cluster versions to prevent any potential downtime due to an outdated configuration'
 keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-10
 modified: 2023-03-29
 modified_by:

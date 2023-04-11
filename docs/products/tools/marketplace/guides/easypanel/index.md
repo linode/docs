@@ -2,7 +2,6 @@
 description: "Deploy Easypanel on a Linode Compute Instance. This provides a modern server control panel which uses Docker."
 keywords: ['easypanel','control panel','cpanel']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-31
 title: "Deploy Easypanel through the Linode Marketplace"
 authors: ["Holden Morris"]

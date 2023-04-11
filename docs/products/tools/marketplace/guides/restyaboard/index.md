@@ -2,7 +2,6 @@
 description: "Deploy Restyaboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
 keywords: ['restyaboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-25
 modified: 2022-03-08
 modified_by:

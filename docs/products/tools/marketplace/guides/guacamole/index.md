@@ -2,7 +2,6 @@
 description: "Use the Guacamole Marketplace App to easily install the popular open source remote desktop and access your Linode from any device."
 keywords: ['guacamole', 'marketplace', 'remote desktop']
 tags: ["cloud-manager","linode platform","cms","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-11
 modified: 2023-03-14
 modified_by:

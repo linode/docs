@@ -2,7 +2,6 @@
 description: "Deploy the open source message broker RabbitMQ to manage sending and receiving data using Marketplace Apps."
 keywords: ['rabbitmq', 'message broker', 'scheduling']
 tags: ["debian", "marketplace", "web applications", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
 modified_by:

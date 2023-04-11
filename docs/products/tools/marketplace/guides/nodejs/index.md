@@ -2,7 +2,6 @@
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
 keywords: ['nodejs','development','javascript']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
 modified_by:

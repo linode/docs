@@ -1,6 +1,5 @@
 ---
 description: "How to manage domains using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-10-28
 modified_by:
   name: Linode

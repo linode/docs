@@ -3,7 +3,6 @@ title: Reset the Root Password on a Compute Instance
 description: "Change the root user password for the Linux environment running on a Compute Instance."
 keywords: ["linux", "linode", "cloud manager", "image"]
 tags: ["linode platform","cloud manager","security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-11
 modified: 2023-04-05
 modified_by:

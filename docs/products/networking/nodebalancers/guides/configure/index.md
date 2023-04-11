@@ -2,7 +2,6 @@
 title: "Configuration Options for NodeBalancers"
 description: "Learn how to create a NodeBalancer, Linode's custom load balancing solution."
 keywords: ["load balancing", "nodebalancer"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode

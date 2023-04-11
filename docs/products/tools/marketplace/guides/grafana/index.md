@@ -2,7 +2,6 @@
 description: "Learn how to deploy Grafana, an open source analytics and monitoring solution with a focus on metric visualization, through the Linode Marketplace."
 keywords: ['grafana','monitoring','dashboard','marketplace']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
 modified_by:
