@@ -59,7 +59,7 @@ Each monitor can be configured with the following settings, which are available 
 
 ## Enable or Disable a Service Monitor
 
-When a service monitor is created, it is automatically enabled. However, there may be times when you need to temporarily disable the monitor. Service monitors continuously perform checks against the specified resource. When you are performing maintenance on the resource or on the entire Compute Instance, you likely do not want the service monitor performing these checks as it will alert your team (and the Support team) when the check fails. In this event, follow the instructions below to disable the monitor and then re-enable it once the maintenance is complete.
+When a service monitor is created, it is automatically enabled. However, you may need to temporarily disable the monitor. For instance, when you are performing maintenance on the monitored resource or on the entire Compute Instance, you likely do not want the service monitor performing checks as it will alert your team (and the Support team) when the check fails. In this event, follow the instructions below to disable the monitor and then re-enable it once the maintenance is complete.
 
 1. Navigate to the **Monitors** tab for Managed Services in the Cloud Manager. See [View Service Monitors](#view-service-monitors).
 

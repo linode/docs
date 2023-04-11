@@ -30,7 +30,7 @@ All credentials are securely stored in our encrypted database.
 
 1. In the form that appears, enter the details for your credential. The following fields are available:
 
-    - **Label** (required): A descriptive name for the credential that tells the Linode Support Team what it should be used for. For example, if you are entering the MySQL `root` password, you might label it as `MySQL Root`.
+    - **Label** (required): A descriptive name for the credential that explains to the Linode Support Team how the credential should be used. For example, if you are entering the MySQL `root` password, you might label it as `MySQL Root`.
 
     - **Username:** The username to supply when authenticating with the application.
 

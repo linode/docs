@@ -43,7 +43,7 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
         ```
 
         {{< note title="Note for using the root user" isCollapsible=true >}}
-        Also, if you followed the instructions in the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to disable root login via SSH, you need to reenable that feature. Follow the relevant instructions within the [Set Up and Secure](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) guide to edit the `sshd_config` file and reenable root login via SSH.
+        If you followed the instructions in the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to disable root login via SSH, you need to re-enable that feature. Follow the relevant instructions within the [Set Up and Secure](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) guide to edit the `sshd_config` file and re-enable root login via SSH.
         {{< /note >}}
 
     - For a limited user (editing the home directory as needed):

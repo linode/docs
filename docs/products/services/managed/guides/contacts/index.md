@@ -6,11 +6,11 @@ published: 2023-04-04
 authors: ["Linode"]
 ---
 
-If a Service Monitor detects an issue with your system, it can be configured to send an email notification to the people on your team that need to be alerted. This contact information is stored as a *Contact* in Managed Services. Each Service Monitor can be attached to a *Contact Group*, each of which can contain one or more individual *Contacts*. Separate groups can be created for each different system or service.
+Service Monitors can be configured to email your team members in the event of an issue with your system. Team member contact information is stored as a *Contact* in Managed Services. Each Service Monitor can be attached to a *Contact Group*, each of which can contain one or more individual *Contacts*. Separate groups can be created for each different system or service.
 
-For example, you might add all of your database administrators to a group named *DBAs* and then link that group to a Service Monitor that's monitoring the state of your MySQL server. When an issue is detected, all of your database administrators are notified at the same time.
+For example, you might add all of your database administrators to a group named *DBAs* and then link that group to a Service Monitor monitoring the state of your MySQL server. When an issue is detected, all of your database administrators are notified at the same time.
 
-You can optionally attach up to two phone numbers to your contacts, a primary number and a secondary number. This is used by our Support team to call a point of contact on your side to obtain more information when troubleshooting an issue.
+You can optionally attach up to two phone numbers to your contacts, a primary number and a secondary number. These are used by our Support team to call a point of contact on your side to obtain more information when troubleshooting an issue.
 
 ## Add or Edit a Contact
 
