@@ -246,7 +246,7 @@ For a more thorough example that demonstrates this feature, follow along with th
     mkdir /usr/local/openresty/nginx/scripts
     ```
 
-1. Create a new file in that directory with the name `rest.lua`. Give the file the contents shown here. The in-code comments — lines beginning with `--` — explain what each part of this script does.
+1. Create a new file in that directory with the name `rest.lua`. Give the file the contents shown here. The in-code comments — lines beginning with `--` explain what each part of this script does.
 
     ```file {title="/usr/local/openresty/nginx/scripts/rest.lua"}
     -- Imports a module for handling JSON; cjson is included with OpenResty
