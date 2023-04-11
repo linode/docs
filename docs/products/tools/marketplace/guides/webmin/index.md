@@ -2,7 +2,6 @@
 description: "Webmin is an open source interface for Unix system administration. Deploy Webmin using Linode''s Marketplace Apps."
 keywords: ['webmin','system administration','marketplace']
 tags: ["debian","marketplace", "web applications","linode platform", "cloud manager", "cms", "email"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
 image: Deploy_Webmin_oneclickapps.png

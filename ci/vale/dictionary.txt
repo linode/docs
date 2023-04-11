@@ -66,6 +66,7 @@ apache2
 api
 apis
 apiserver
+apfs
 apk
 apparmor
 appimage
@@ -88,6 +89,7 @@ askbot
 aske
 Astra
 async
+astro
 asynchrony
 atera
 atlanta
@@ -101,6 +103,7 @@ authn
 authomator
 authsocket
 authy
+autoclear
 autocompletion
 autoconfiguration
 autoconfigure
@@ -116,6 +119,7 @@ automator
 automattic
 automations
 automount
+automounting
 automox
 autorelabel
 autorun
@@ -170,6 +174,7 @@ bgpd
 bialek
 bin_t
 bing
+binhex
 binlog
 bioinformaticists
 biomes
@@ -241,6 +246,8 @@ caffe
 cakey
 calc
 campione
+canonicalize
+canonicalization
 captcha
 carootcert
 ccm
@@ -322,6 +329,7 @@ Codeone
 codepen
 colab
 collabnet
+Collabora
 colormaps
 com2sec
 commoditization
@@ -472,6 +480,8 @@ desperados
 destructured
 detectify
 dev
+devfs
+devpts
 devel
 devops
 devtmpfs
@@ -703,6 +713,7 @@ fstab
 ftp_client
 fullchain
 func
+fuser
 fzf
 galera
 gamemode
@@ -1349,6 +1360,7 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
 msfvenom
@@ -1449,6 +1461,7 @@ newtag
 nextcloud
 nexthop
 nfs
+nfsd
 nftables
 ng
 nginx
@@ -1547,6 +1560,7 @@ outputter
 outputters
 overcommit
 overengineer
+overmounting
 overfitted
 overfitting
 overwatch
@@ -1617,6 +1631,7 @@ phusion
 pid
 pidfile
 pingable
+pipefs
 pinterest
 pipfile
 pipenv
@@ -1625,6 +1640,7 @@ pipelining
 pixid
 piwik
 pixid
+pixelfed
 pki
 plaintext
 platformer
@@ -1688,6 +1704,7 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
 logic-programming-languages
@@ -1704,6 +1721,7 @@ proxying
 pscp
 pseudocode
 psexec
+psmisc
 psql
 psudo
 psycop2
@@ -1923,6 +1941,7 @@ scrapy
 screenrc
 scriptable
 scrollable
+scrollback
 scrollbar
 scrollbars
 scriptfilename
@@ -2136,6 +2155,7 @@ syntaxes
 sys
 sysconfig
 sysdig
+sysfs
 sysctl
 syslog
 sysstat
@@ -2303,6 +2323,7 @@ unopinionated
 unmanaged
 unmerged
 unmount
+unmounts
 unmounting
 unoptimized
 unpatched

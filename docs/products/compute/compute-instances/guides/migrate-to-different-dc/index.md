@@ -2,7 +2,6 @@
 description: "Learn how to migrate a Compute Instance across data centers using the Cloud Manager."
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
-license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 title: Initiate a Cross Data Center Migration for a Compute Instance
 modified: 2023-01-18
 modified_by:

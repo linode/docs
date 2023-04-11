@@ -2,7 +2,6 @@
 description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 bundles: ['centos-security', 'debian-security']
 modified: 2022-07-12
 modified_by:

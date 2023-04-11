@@ -3,7 +3,6 @@ title: "Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)"
 title_meta: "Recover from Unexpected Shutdowns with Lassie"
 keywords: ['lassie','unexpected shutdown','reboot']
 tags: ["linode platform","monitoring"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 description: "Learn how to investigate an unexpected shutdown and understand how Lassie, the Shutdown Watchdog, works to reboot your Compute Instances."
 aliases: ['/products/tools/monitoring/guides/monitoring-configure-watchdog/','/guides/lassie-shutdown-watchdog/']
 published: 2022-09-29

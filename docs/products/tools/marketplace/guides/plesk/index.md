@@ -2,7 +2,6 @@
 description: "This guide shows how to install and configure Plesk using the Linode Marketplace Apps. Plesk is a leading WordPress and website management control panel."
 keywords: ['plesk','marketplace', 'cms']
 tags: ["linode platform","cms","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2022-03-08
 modified_by:

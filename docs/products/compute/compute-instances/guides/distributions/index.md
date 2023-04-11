@@ -1,7 +1,6 @@
 ---
 description: "A list of all the Linux distributions provided on the Linode Platform and advice for how to select a distribution for your next project."
 keywords: ["distro", "distribution", "operating system", "Linux"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-15
 modified: 2023-01-18
 modified_by:

@@ -2,7 +2,6 @@
 description: "A walkthrough on upgrading or downgrading a Compute Instance's plan, including switching to a different plan type."
 keywords: ["upgrading", "resizing", "disk space"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-08-25
 modified_by:
   name: Linode

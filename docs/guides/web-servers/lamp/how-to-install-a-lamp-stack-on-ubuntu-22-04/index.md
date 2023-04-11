@@ -18,6 +18,7 @@ external_resources:
 - '[PHP Documentation](https://www.php.net/docs.php)'
 relations:
     platform:
+        key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
 authors: ["Jeff Novotny"]

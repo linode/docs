@@ -2,7 +2,6 @@
 description: "Learn how to enable High Availability on Linode Kubernetes Engine."
 keywords: ['kubernetes', 'lke', 'high availability', 'ha']
 tags: ["networking","kubernetes","container","education"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-04
 modified: 2023-02-09
 modified_by:

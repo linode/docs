@@ -1,6 +1,6 @@
 ---
 slug: switch-to-a-64-bit-linux-kernel
-deprecated: false
+deprecated: true
 description: 'Learn how to Switch to a 64-bit Linux Kernel with Your Existing Distribution.'
 keywords: ["linux kernel", "64-bit", "switch kernel", "migrate", "disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

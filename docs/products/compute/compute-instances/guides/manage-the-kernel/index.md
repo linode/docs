@@ -2,7 +2,6 @@
 description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
 keywords: ["kernel", "grub"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2021-08-13
 modified: 2023-01-18
 modified_by:
@@ -58,7 +57,7 @@ These instructions may not accurately reflect the actual kernel version installe
 1.  Review the **Kernel** dropdown menu selection.
 
     - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Compute Instance boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions prior to August 2018.
-    - **Direct Disk**: Instead of a Linux Kernel, this uses the MBE (Master Boot Record) of the primary disk*.
+    - **Direct Disk**: Instead of a Linux Kernel, this uses the MBR (Master Boot Record) of the primary disk*.
     - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Compute Instances created after August 2018.**
     - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
     - **Specific Linode Kernel**: Allows you to specify the exact Linode kernel to use. Since this kernel is maintained regardless of reboots or system updates, it may be preferred in some use cases.
