@@ -1,7 +1,7 @@
 ---
 title: "John Mueller"
-link: "http://www.johnmuellerbooks.com/"
-email: "john@johnmuellerbooks.com"
+link: ""
+email: ""
 description: "The Linode documentation library's profile page and submission listing for John Mueller"
 ---
 

@@ -13,6 +13,7 @@ external_resources:
 - '[Github: Appwrite - Demos and Tutorials for Getting Started with Appwrite + React JS](https://github.com/appwrite/demos-for-react)'
 - '[Drishti Peshwani: Building a Web App with ReactJS and Appwrite](https://dev.to/drishtipeshwani/building-a-web-app-with-reactjs-and-appwrite-4cno)'
 authors: ["Nathaniel Stickman"]
+tags: ["ecommerce"]
 ---
 
 [React](https://reactjs.org/) has established itself as one of the most prominent frameworks for developing web frontends. Its component-based approach is especially effective at working with web APIs.

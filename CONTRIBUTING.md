@@ -1,10 +1,12 @@
-# Contribute to Linode
+# In this Guide
 
-This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+- [How to download and install the Linode Docs library](#installing-the-docs-library)
 
-## Fixing an issue
+- [How to contribute to the library](#contributing-to-the-docs-library)
 
-If you want to start contributing by helping us correct existing issues, go to our [GitHub issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
+# Installing the Docs Library
+
+Linode's documentation library uses a static site generator, [Hugo](https://gohugo.io/), to build the website from Markdown (`.md`) files. Building the site requires Node.js, NPM, and Go.
 
 ## Install prerequisites
 
@@ -14,7 +16,7 @@ Some parts of the Linode documentation environment require the [GO programming l
 
 #### Install Go on macOS and Windows
 
-The Go package can be found on the [offical downloads page](https://go.dev/dl/). Install the latest package available for your operating system. Since the latest version that is available at the time of this writing is 1.19.1, links to that version are used below:
+The Go package can be found on the [official downloads page](https://go.dev/dl/). Install the latest package available for your operating system. Since the latest version that is available at the time of this writing is 1.19.1, links to that version are used below:
 
 - **macOS (Intel):** Use the x.darwin-amd64.pkg file ([go1.19.1.darwin-amd64.pkg](https://go.dev/dl/go1.19.1.darwin-amd64.pkg))
 - **macOS (Apple Silicon):** Use the x.darwin-arm64.pkg file ([go1.19.1.darwin-arm64.pkg](https://go.dev/dl/go1.19.1.darwin-arm64.pkg))
@@ -89,7 +91,7 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
         tar -xvzf [file]
 
-    Once extracted, there should be a `hugo` file in the same directory. This is used to run hugo.
+    Once extracted, there should be a `hugo` file in the same directory. This is used to run Hugo.
 
 1.  Move the hugo file to a location within your system's PATH variable. For most systems, the `/usr/local/bin` path can be used.
 
@@ -107,13 +109,13 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
     Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
 
-1. Test hugo by running `hugo version`. This should output a long string indicating that version 0.105.0 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+1. Test Hugo by running `hugo version`. This should output a long string indicating that version 0.105.0 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
 
 #### Windows
 
 While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
 
-1. Download the [hugo_0.105.0_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_0.105.0_Windows-64bit.zip) file. Additional files for other operating sytems can be found on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
+1. Download the [hugo_0.105.0_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_0.105.0_Windows-64bit.zip) file. Additional files for other operating systems can be found on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
 
 1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
 
@@ -157,6 +159,15 @@ For more information about using Git, refer to the [official Git documentation](
 1.  Install the Node dependencies for the repository:
 
         npm install
+
+
+# Contributing to the Docs Library
+
+This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+
+## Fixing an Issue
+
+If you want to start contributing by helping us correct existing issues, go to our [GitHub Issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
 
 ## Create a New Guide
 

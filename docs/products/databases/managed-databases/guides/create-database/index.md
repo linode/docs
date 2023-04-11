@@ -39,7 +39,7 @@ Select the **region** where the database cluster will reside. Regions correspond
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
-- [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/)
+- [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
 
 ## Choose a Plan
 

@@ -79,7 +79,7 @@ Having backups of your data is always a good idea, and Block Storage Volumes mak
 You can boot from disk images installed to a Block Storage Volume. This provides a cost effective means of maintaining an image that can be attached to a new Linode. For example, you could save money by creating and removing on-demand Linode instances that boot from a Volume.  As well, you can boot from a Volume to access and recover an instance whose normal operating system may not be running as expected.
 
 {{< note >}}
-Linode provides a built-in [Rescue Mode](/docs/guides/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
+Linode provides a built-in [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
 {{< /note >}}
 
 ## Next Steps

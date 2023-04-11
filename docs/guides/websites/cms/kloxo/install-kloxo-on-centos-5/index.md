@@ -14,7 +14,7 @@ deprecated: true
 authors: ["Linode"]
 ---
 
-Kloxo is a web-based control panel that is a free alternative to options such as cPanel and Plesk. At this time, Kloxo only supports 32 bit systems. If you would like to use Kloxo on a 64 bit system, you can follow the documentation [listed on their wiki page](http://wiki.lxcenter.org/Kloxo-64).
+Kloxo is a web-based control panel that is a free alternative to options such as cPanel and Plesk. At this time, Kloxo only supports 32 bit systems. If you would like to use Kloxo on a 64 bit system, you can follow the documentation [listed on their GitHub page](https://github.com/lxcenter/kloxo).
 
 ## Initial Setup
 

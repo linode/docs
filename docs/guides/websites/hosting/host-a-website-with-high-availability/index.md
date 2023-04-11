@@ -15,7 +15,7 @@ external_resources:
 - '[Keepalived](http://www.keepalived.org/)'
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
-tags: ["web server"]
+tags: ["web server", "digital agencies", "ecommerce"]
 image: host-a-website-with-high-availability-title-graphic.jpg
 authors: ["Phil Zona"]
 ---
@@ -175,7 +175,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 {{< /file >}}
 
 {{< note respectIndent=false >}}
-You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/guides/support/).
+You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/products/platform/get-started/guides/support/).
 {{< /note >}}
 
 ### Install Galera and XtraDB
@@ -512,7 +512,7 @@ So far, we've successfully configured a redundant web stack with three layers of
 Alternatively, some users prefer to configure HAProxy instead of or in addition to Keepalived. For more information, visit our guide on [how to use HAProxy for load balancing](/docs/guides/how-to-use-haproxy-for-load-balancing/).
 {{< /note >}}
 
-Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/guides/support/) and do so before continuing.
+Keepalived is a routing service that can be used to monitor and fail over components in a high availability configuration. In this section, you will be using the additional private IP address, or *floating IP* from your database node to fail over to the others if one should go down. A floating IP address is one that can be assigned to a different node if needed. If you didn't request an additional private IP in the Galera section, [contact support](/docs/products/platform/get-started/guides/support/) and do so before continuing.
 
 We've added the floating IP address to `galera1`, but in practice, it can be configured to any of your database nodes.
 
@@ -734,4 +734,4 @@ For more information on DNS configuration, refer to our [introduction to DNS rec
 
 ## Configuration Management
 
-Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](/docs/guides/getting-started-with-salt-basic-installation-and-setup/), [Chef](/docs/guides/beginners-guide-chef/), [Puppet](/docs/guides/install-and-configure-puppet/), and [Ansible](/docs/guides/running-ansible-playbooks/). You can also refer to our guide on [Automating Server Builds](/docs/guides/automating-server-builds/) for an overview of how to choose a solution that is right for you.
+Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](/docs/guides/getting-started-with-salt-basic-installation-and-setup/), [Chef](/docs/guides/beginners-guide-chef/), [Puppet](/docs/guides/install-and-configure-puppet/), and [Ansible](/docs/guides/running-ansible-playbooks/). You can also refer to our guide on [Automating Server Builds](/docs/products/platform/get-started/guides/automating-deployment/) for an overview of how to choose a solution that is right for you.

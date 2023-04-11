@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.149.0
+  version: 4.150.0
 
   title: Linode API
   description: |
@@ -39,16 +39,17 @@ info:
     <a target="_top" href="https://cloud.linode.com/profile/tokens">Linode Cloud Manager</a> or
     the [Create Personal Access Token](/docs/api/profile/#personal-access-token-create) endpoint.
 
-    All scopes for the OAuth security model ([defined below](/docs/api/profile/#oauth)) apply to this
+    All scopes for the OAuth security model ([defined below](/docs/api/#oauth)) apply to this
     security model as well.
 
-    #### Authentication
+    ### Authentication
 
     | Security Scheme Type: | HTTP |
     |-----------------------|------|
     | **HTTP Authorization Scheme** | bearer |
 
-    ### OAuth
+    ## OAuth
+
     If you only need to access the Linode API for personal use,
     we recommend that you create a [personal access token](/docs/api/#personal-access-token).
     If you're designing an application that can authenticate with an arbitrary Linode user, then
@@ -65,7 +66,7 @@ info:
         - A public client is used with applications where the client secret is not guaranteed to be secure. For example, a native app running on a user's computer may not be able to keep the client secret safe, as a user could potentially inspect the source of the application. So, native apps or apps that run in a user's browser should use a public client.
         - Public and private clients follow different workflows, as described below.
 
-    #### OAuth Workflow
+    ### OAuth Workflow
 
     The OAuth workflow is a series of exchanges between your third-party app and Linode. The workflow is used
     to authenticate a user before an application can start making API calls on the user's behalf.
@@ -137,30 +138,34 @@ info:
 
     You'll get another response with an updated `access_token` and `refresh_token`, which can then be used to refresh access again.
 
-    #### OAuth Reference
+    ### OAuth Reference
 
     | Security Scheme Type | OAuth 2.0 |
     |-----------------------|--------|
-    | **Authorization URL** | https://login.linode.com/oauth/authorize |
-    | **Token URL** | https://login.linode.com/oauth/token |
+    | **Authorization URL** | `https://login.linode.com/oauth/authorize` |
+    | **Token URL** | `https://login.linode.com/oauth/token` |
     | **Scopes** | <ul><li>`account:read_only` - Allows access to GET information about your Account.</li><li>`account:read_write` - Allows access to all endpoints related to your Account.</li><li>`databases:read_only` - Allows access to GET Managed Databases on your Account.</li><li>`databases:read_write` - Allows access to all endpoints related to your Managed Databases.</li><li>`domains:read_only` - Allows access to GET Domains on your Account.</li><li>`domains:read_write` - Allows access to all Domain endpoints.</li><li>`events:read_only` - Allows access to GET your Events.</li><li>`events:read_write` - Allows access to all endpoints related to your Events.</li><li>`firewall:read_only` - Allows access to GET information about your Firewalls.</li><li>`firewall:read_write` - Allows access to all Firewall endpoints.</li><li>`images:read_only` - Allows access to GET your Images.</li><li>`images:read_write` - Allows access to all endpoints related to your Images.</li><li>`ips:read_only` - Allows access to GET your ips.</li><li>`ips:read_write` - Allows access to all endpoints related to your ips.</li><li>`linodes:read_only` - Allows access to GET Linodes on your Account.</li><li>`linodes:read_write` - Allow access to all endpoints related to your Linodes.</li><li>`lke:read_only` - Allows access to GET LKE Clusters on your Account.</li><li>`lke:read_write` - Allows access to all endpoints related to LKE Clusters on your Account.</li><li>`longview:read_only` - Allows access to GET your Longview Clients.</li><li>`longview:read_write` - Allows access to all endpoints related to your Longview Clients.</li><li>`nodebalancers:read_only` - Allows access to GET NodeBalancers on your Account.</li><li>`nodebalancers:read_write` - Allows access to all NodeBalancer endpoints.</li><li>`object_storage:read_only` - Allows access to GET information related to your Object Storage.</li><li>`object_storage:read_write` - Allows access to all Object Storage endpoints.</li><li>`stackscripts:read_only` - Allows access to GET your StackScripts.</li><li>`stackscripts:read_write` - Allows access to all endpoints related to your StackScripts.</li><li>`volumes:read_only` - Allows access to GET your Volumes.</li><li>`volumes:read_write` - Allows access to all endpoints related to your Volumes.</li></ul><br/>|
 
     ## Requests
 
-    Requests must be made over HTTPS to ensure transactions are encrypted. The
-    following Request methods are supported:
+    Requests must be made over HTTPS to ensure transactions are encrypted. Data included in requests must be supplied in json format unless otherwise specified in the command description.
 
-    | METHOD | USAGE |
-    |--------|-------|
-    | GET    | Retrieves data about collections and individual resources. |
-    | POST   | For collections, creates a new resource of that type. Also used to perform actions on action endpoints. |
-    | PUT    | Updates an existing resource. |
-    | DELETE | Deletes a resource. This is a destructive action. |
+    The following request methods are supported:
 
+    | METHOD  | USAGE |
+    |---------|-------|
+    | GET     | Retrieves data about collections and individual resources. |
+    | POST    | For collections, creates a new resource of that type. Also used to perform actions on action endpoints. |
+    | PUT     | Updates an existing resource. |
+    | DELETE  | Deletes a resource. This is a destructive action. |
+    | HEAD    | Returns only the response header information of a GET request |
+    | OPTIONS | Provides permitted communication options for a command |
 
     ## Responses
 
-    Actions will return one following HTTP response status codes:
+    ### Response Status Codes
+
+    Actions will return one of the following HTTP response status codes:
 
     | STATUS  | DESCRIPTION |
     |---------|-------------|
@@ -174,6 +179,38 @@ info:
     | 404 Not Found | The resource you're requesting does not exist. |
     | 429 Too Many Requests | You've hit a rate limit. |
     | 500 Internal Server Error | Please [open a Support Ticket](/docs/api/support/#support-ticket-open). |
+
+    ### Response Headers
+
+    There are many ways to access response header information for individual command URLs, depending on how you are accessing the Linode API. For example, to view HTTP response headers for the `/regions` endpoint when making requests with `curl`, use the `-I` or `--head` option as follows:
+
+    ```Shell
+    curl -I https://api.linode.com/v4/regions
+    ```
+
+    Responses may include the following headers:
+
+    | HEADER | DESCRIPTION | EXAMPLE |
+    |--------|-------------|---------|
+    | Access-Control-Allow-Credentials | Responses to credentialed requests are exposed to frontend JavaScript code. | true |
+    | Access-Control-Allow-Headers | All permissible request headers for this endpoint. | Authorization, Origin, X-Requested-With, Content-Type, Accept, X-Filter |
+    | Access-Control-Allow-Methods | Permissible HTTP methods for this endpoint | HEAD, GET, OPTIONS, POST, PUT, DELETE |
+    | Access-Control-Allow-Origin | Indicates origin access permissions. The wildcard character `*` means any origin can access the resource. | * |
+    | Access-Control-Expose-Headers | Available headers to include in response to cross-origin requests. | X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Status |
+    | Cache-Control | Controls caching in browsers and shared caches such as CDNs. | private, max-age=60, s-maxage=60 |
+    | Content-Security-Policy | Controls which resources are allowed to load. By default, resources do not load. | default-src 'none' |
+    | Content-Type | All responses are in json format. | application/json |
+    | Content-Warning | A message containing instructions for successful requests that were not able to be completed. | Please contact support for assistance. |
+    | Retry-After | The remaining time in seconds until the current [rate limit](#rate-limiting) window resets. | 60 |
+    | Strict-Transport-Security | Enforces HTTPS-only access until the returned time in seconds. | max-age=31536000 |
+    | Vary | Optional request headers that affected the response content. | Authorization, X-Filter |
+    | X-Accepted-OAuth-Scopes | Required [scopes](#oauth-reference) for accessing the requested command. | linodes:read_only |
+    | X-Customer-UUID | A unique identifier for the account owning the the [personal access token](#personal-access-token) that was used for the request. | ABCDEF01-3456-789A-BCDEF0123456789A |
+    | X-OAuth-Scopes | Allowed [scopes](#oauth-reference) associated with the [personal access token](#personal-access-token) that was used for the request. A value of `*` indicates read/write access for all scope categories. | images:read_write linodes:read_only |
+    | X-RateLimit-Limit | The maximum number of permitted requests during the [rate limit](#rate-limiting) window for this endpoint. | 800 |
+    | X-RateLimit-Remaining | The remaining number of permitted requests in the current [rate limit](#rate-limiting) window. | 798 |
+    | X-RateLimit-Reset | The time when the current [rate limit](#rate-limiting) window rests in UTC epoch seconds. | 1674747739 |
+    | X-Spec-Version | The current API version that handled the request. | 4.150.0 |
 
     ## Errors
 
@@ -192,7 +229,6 @@ info:
     but it's conceivable that fixing these errors and resubmitting may result in
     new errors coming back once we are able to get further along in the process
     of handling your request.
-
 
     Within each error object, the `field` parameter will be included if the error
     pertains to a specific field in the JSON you've submitted. This will be
@@ -363,18 +399,12 @@ info:
 
     ### Rate Limit HTTP Response Headers
 
-    The Linode API includes the following HTTP response headers which are designed to help you avoid hitting rate limits that might disrupt your applications:
+    The Linode API includes the following HTTP response headers which are designed to help you avoid hitting rate limits which might disrupt your applications:
 
     * **X-RateLimit-Limit**: The maximum number of permitted requests during the rate limit window for this endpoint.
     * **X-RateLimit-Remaining**: The remaining number of permitted requests in the current rate limit window.
     * **X-RateLimit-Reset**: The time when the current rate limit window rests in UTC epoch seconds.
     * **Retry-After**: The remaining time in seconds until the current rate limit window resets.
-
-    There are many ways to access header information for your requests, depending on how you are accessing the Linode API. For example, to view HTTP response headers when making requests with `curl`, use the `-i` or `--include` option as follows:
-
-    ```Shell
-    curl -i https://api.linode.com/v4/regions
-    ```
 
     ## CLI (Command Line Interface)
 
@@ -17160,11 +17190,14 @@ paths:
                 scopes:
                   type: string
                   format: oauth-scope
-                  description: >
-                    The scopes to create the token with.  These cannot be changed
-                    after creation, and may not exceed the scopes of the acting token.
-                    If omitted, the new token will have the same scopes as the acting
-                    token.
+                  description: |
+                    The access [scopes](/docs/api#oauth-reference) to grant to the created token. These cannot be changed after creation, and may not exceed the scopes of the acting token.
+
+                    If omitted or entered with a wildcard character (`*`), the new token will have the same scopes as the acting token.
+
+                    Multiple scopes are separated by a space character (` `).
+
+                    For example, `linodes:read_write account:read_only`.
                   example: '*'
                 expiry:
                   type: string
