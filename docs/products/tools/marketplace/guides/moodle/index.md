@@ -4,7 +4,7 @@ keywords: ['learning','educator','management', and 'school']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
-modified: 2022-03-08
+modified: 2023-04-11
 modified_by:
   name: Linode
 title: "Deploy Moodle through the Linode Marketplace"
@@ -61,12 +61,12 @@ Now that you’ve accessed your dashboard, checkout [the official Moodle documen
 
 ## Software Included
 
-The Moodle Marketplace App will install the following required software on your Linode:
+The Moodle Marketplace App installs the following required software on your Linode:
 
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**PHP**](https://www.php.net) | A popular general-purpose scripting language that is especially suited to web development.. |
-| [**MariaDB Server**](https://mariadb.org) | A relational database server. The root password is set, protecting access outside the localhost. To gain access to the root user, get the password from `/root/.root_mysql_password` file. |
+| Software | Description |
+| -- | -- |
+| [**PHP**](https://www.php.net) | A popular general-purpose scripting language that is especially suited to web development. |
+| [**MariaDB Server**](https://mariadb.org) | A relational database server. The root password is set, locking down access outside the system. To gain access to the root user, obtain the password from `/root/.root_mysql_password` file. |
 | [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility that allows access only for SSH (port 22, rate limited), HTTP (port 80), and HTTPS (port 443). |
 | [**Certbot**](https://certbot.eff.org) | Certbot is a fully-featured, easy-to-use, extensible client for the Let's Encrypt CA. |
 | [**Apache2**](https://httpd.apache.org) | HTTP Server. |
