@@ -9,10 +9,14 @@ external_resources:
 authors: ["Holden Morris"]
 ---
 
-[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable streaming for both audio and video media.
+[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a high-quality and scalable WebRTC live video streaming platform.
+
+Liveswitch is the most flexible video and audio WebRTC SDK on the market. Ultra-low latency meets advanced features for engaging with your audience. LiveSwitch offers a complete solution (front-end and back-end) to develop commercial WebRTC applications.
+
+This LiveSwitch marketplace listing is for a back-end demonstration server, running signalling, media, and TURN together on a single server. It is designed to be tested alongside our client SDKs for .NET, .NET Core, iOS, Android, Xamarin, Maui, Unity and more, available on our website. 
 
 {{< note >}}
-Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
+Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/meetings/jake-steele/linode). Licenses are not available directly through Linode.
 {{< /note >}}
 
 ## Deploying a Marketplace App
