@@ -1,5 +1,6 @@
 ---
 title: DNS Manager
+title_meta: "Linode DNS Manager Product Documentation"
 description: "The Linode DNS Manager provides simple and convenient management for all your high availability DNS records. You can import DNS zones with ease and Cloudflare DDoS mitigation is built-in."
 tab_group_main:
     is_root: true

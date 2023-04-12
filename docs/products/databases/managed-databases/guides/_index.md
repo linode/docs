@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Managed Databases"
 description: "A collection of guides on using Linode's Managed Database service"
 tab_group_main:
     weight: 30

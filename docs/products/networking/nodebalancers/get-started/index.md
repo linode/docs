@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with NodeBalancers"
 description: "Learn how to quickly start using a NodeBalancer, including advice on architecting your application and configuring the NodeBalancer"
 tab_group_main:
     weight: 30
