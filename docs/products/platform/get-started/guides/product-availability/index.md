@@ -11,7 +11,7 @@ authors: ["Linode"]
 
 Linode's global presence helps bring your applications closer to your target audience. Below is table displaying a matrix of which services Linode offers in each particular region.
 
-| Region | Shared Compute | Dedicated Compute | GPUs | Kubernetes | Managed DB | Cloud Firewall | DDoS Protection | NodeBalancers | VLANs | Backups | Block Storage | Object Storage| Images |
+| Region | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [GPUs](m/docs/products/compute/compute-instances/plans/gpu/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
 | --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
 | Atlanta        | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
 | Dallas         | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
