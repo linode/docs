@@ -1,23 +1,16 @@
 ---
 slug: installing-yunohost
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "YunoHost provides an operating system for simplifying self-hosting and server administration. YunoHost can install applications, provision users, control services, and more, and everything is within a straightforward web interface. Learn all you need to install and get started with YunoHost in this tutorial."
-og_description: "YunoHost provides an operating system for simplifying self-hosting and server administration. YunoHost can install applications, provision users, control services, and more, and everything is within a straightforward web interface. Learn all you need to install and get started with YunoHost in this tutorial."
 keywords: ['yunohost install','yunohost apps','yunohost alternative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-14
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install and Use YunoHost"
-h1_title: "How to Install and Use YunoHost"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[YunoHost Documentation](https://yunohost.org/en?q=%2Fdocs)'
 - '[TechRepublic: What Is YunoHost, and How Do You Install It?](https://www.techrepublic.com/article/install-yunohost/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 YunoHost is a platform designed to make self-hosting and server administration more accessible and streamlined. YunoHost can set up a server, install applications, administer users, and more, all through a convenient web interface.
