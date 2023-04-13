@@ -85,7 +85,7 @@ Collabora CODE is more straightforward to install than Nextcloud. Typically, Col
 
 1.  Add the following information to the file and save it.
 
-    ```file {"title="/etc/apt/sources.list.d/collaboraonline.sources" lang="aconf"}
+    ```file {title="/etc/apt/sources.list.d/collaboraonline.sources" lang="aconf"}
     Types: deb
     URIs: https://www.collaboraoffice.com/repos/CollaboraOnline/CODE-ubuntu2204
     Suites: ./
