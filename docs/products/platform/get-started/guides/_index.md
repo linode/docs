@@ -10,6 +10,7 @@ published: 2023-03-14
 
 - [Help & Support](/docs/products/platform/get-started/guides/support/)
 - [Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
+- [Product Availability](/docs/products/platform/get-started/guides/product-availability/)
 - [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/)
 - [Grant a Developer Access a Compute Instance or Linode Account](/docs/products/platform/get-started/guides/developer-access/)
 - [Automate Cloud Resource Deployment](/docs/products/platform/get-started/guides/automating-deployment/)
