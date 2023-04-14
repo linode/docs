@@ -1,16 +1,16 @@
 ---
 slug: installing-yunohost
-description: "YunoHost provides an operating system for simplifying self-hosting and server administration. YunoHost can install applications, provision users, control services, and more, and everything is within a straightforward web interface. Learn all you need to install and get started with YunoHost in this tutorial."
+title: "How to Install and Use YunoHost"
+description: "YunoHost simplifies self-hosting and server administration. It can install applications, provision users, control services, and more within a straightforward web UI. ✓ Click here to get started with YunoHost!"
 keywords: ['yunohost install','yunohost apps','yunohost alternative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 published: 2022-12-14
 modified_by:
-  name: Nathaniel Stickman
-title: "How to Install and Use YunoHost"
+  name: Linode
 external_resources:
 - '[YunoHost Documentation](https://yunohost.org/en?q=%2Fdocs)'
 - '[TechRepublic: What Is YunoHost, and How Do You Install It?](https://www.techrepublic.com/article/install-yunohost/)'
-authors: ["Nathaniel Stickman"]
 ---
 
 YunoHost is a platform designed to make self-hosting and server administration more accessible and streamlined. YunoHost can set up a server, install applications, administer users, and more, all through a convenient web interface.
@@ -37,13 +37,13 @@ One of its most notable features for accomplishing this is a marketplace of open
 
 The applications available in the YunoHost "marketplace" range from system and development tools to social media and publication platforms.
 
-YunoHost also has numerous other features for server administration beyond installing applications. YunoHost can manage user accounts and includes a full-stack email service. YunoHost can manage the server's SSL certification, and it allows you to monitor and engage with running services and firewalls through its web interface.
+YunoHost has numerous other features for server administration beyond installing applications. YunoHost can manage user accounts and the server's SSL certification. It also includes a full-stack email service, and provides tools to monitor and engage with running services and firewalls through its web interface.
 
 ### YunoHost vs Cloudron
 
 YunoHost operates similarly to Cloudron, another tool offering an application marketplace and simplifying system administration. So why choose YunoHost over Cloudron?
 
-Both tools promote an open source ethos, but YunoHost operates on a totally open source model. Cloudron offers a free and a premium tier. This scheme limits some features (e.g. the number of applications) and restricts others (e.g. email services) to the premium tier. By contrast, YunoHost does not have any feature limits or paid services, operating on a fully open source model.
+Both tools promote an open source ethos, but YunoHost operates on a totally open source model. Cloudron offers both a free and a premium tier. This scheme limits some features (e.g. the number of applications) and restricts others (e.g. email services) to the premium tier. By contrast, YunoHost does not have any feature limits or paid services, operating on a fully open source model.
 
 However, Cloudron shines for having a more polished and simplified presentation. The setup for YunoHost can be more complicated, and its interface may not be as clear for some users at the outset.
 
@@ -64,7 +64,7 @@ YunoHost can be installed on a compute instance running stock Debian 11 (or high
     ufw reload
     ```
 
-1.  Use the following commands to install YunoHost. The first command ensures that the prerequisite packages are installed. The second executes the YunoHost installation script:
+1.  Use the following commands to install YunoHost. The first command ensures that the prerequisite packages are installed, while the second executes the YunoHost installation script:
 
     ```command
     apt install curl ca-certificates
@@ -172,11 +172,15 @@ The YunoHost instance starts with a self-signed certificate. However, most moder
 
 1.  Select the **Domains** option from the YunoHost administrator interface main page.
 
-1.  Select the entry for the domain name you added during the post-installation setup. In the example above, this was `example.com`.
+1.  Select the entry for the domain name added during the post-installation setup. In the example above, this was `example.com`.
 
 1.  Open the **Certificate** tab.
 
 1.  Select **Install Let's Encrypt certificate**, then select **OK** to the prompt to start the installation process.
+
+    {{< note >}}
+Several warnings may appear, which render the **Install Let's Encrypt certificate** button inoperable. If so, change the **Ingore diagnosis checks** toggle from **No** to **Yes**, which re-enables the **Install Let's Encrypt certificate** button.
+    {{< /note >}}
 
 Once the process completes, a confirmation of the successful installation appears:
 
@@ -184,13 +188,13 @@ Once the process completes, a confirmation of the successful installation appear
 
 #### Create a User
 
-The post-installation setup created administrator credentials for the YunoHost instance. However, YunoHost requires at least one user account for many operations, including installing applications.
+The post-installation setup created administrator credentials for the YunoHost instance. However, YunoHost requires at least one regular user account for many operations, including installing applications.
 
-Later, such users engage with installed applications and each gets an email address automatically. YunoHost also acts as an SSO portal for users to log in once and access multiple applications seamlessly.
+Users engage with installed applications and each gets an email address automatically. YunoHost also acts as an SSO portal for users to log in once and access multiple applications seamlessly.
 
 1. Select the **Users** option from the YunoHost administrator interface main page.
 
-1. Select **New User** from the upper right of the user page.
+1. Select **+ New User** from the upper right of the user page.
 
 1. Input a **Username**, **Full Name**, and **Password** for the new user. YunoHost automatically creates an email address for the new user based on the username.
 
@@ -208,11 +212,11 @@ Learn more, including how to have the restriction removed, in our blog post [A N
 
 #### Install an Application
 
-One of the most remarkable functions of YunoHost is its ability to simply install server applications from its web interface. Navigate its marketplace of open source tools, select an application and, within a few clicks, have it running on your server.
+One of the most remarkable functions of YunoHost is its ability to simply install server applications from its web interface. Just navigate its marketplace of open source tools, select an application, and within a few clicks have it running on your server.
 
 1.  Select the **Applications** option from the YunoHost administrator interface main page.
 
-1.  Select **Install** from the upper right of the applications page.
+1.  Select **+ Install** from the upper right of the applications page.
 
 1.  Navigate the list of applications to find one to install. Applications presented with gold stars by their names are considered well-integrated with YunoHost, and these are probably the best applications to start with.
 
@@ -220,15 +224,15 @@ One of the most remarkable functions of YunoHost is its ability to simply instal
 
     ![Navigating the social media applications available on YunoHost](yunohost-admin-apps.png)
 
-1.  Adjust the parameters in the installation form to fit your needs. Select the user created above as an administrator for the new application.
+1.  Adjust the parameters in the **Install settings** section to fit your needs. For this example, simply change the language to English and select the standard user created above as an administrator for the new application.
 
 1.  Select **Install** to start the installation process.
 
     ![Installation progress for an application from YunoHost](yunohost-admin-install-app.png)
 
-1.  Once the installation is complete, the application is listed on the **Applications* page of the YunoHost administrator interface.
+1.  Once the installation is complete, the application is listed on the **Applications** page of the YunoHost administrator interface.
 
-Once the application is installed, it is ready to use. YunoHost users automatically have the ability to sign into the new application through the YunoHost user portal. The next section, on the user interface, shows how to use the portal to access the newly installed application.
+The application is now ready to use. YunoHost users automatically have the ability to sign in to the new application through the YunoHost user portal. The next section, on the user interface, shows how to use the portal to access the newly installed application.
 
 ### User Portal
 
@@ -246,16 +250,16 @@ The portal prompts for user credentials to log in. Use the credentials created t
 
 ![The login screen for the YunoHost user portal](yunohost-user-login.png)
 
-Once logged in, you can see a gallery of installed applications. Selecting one of these takes you to the application's interface. And for applications that support the feature, YunoHost uses SSO to automatically log the user in.
+Once logged in, you can see a gallery of installed applications. Selecting one of these takes you to the application's interface. For applications that support the feature, YunoHost uses SSO to automatically log the user in.
 
 ![The main page of the YunoHost user portal](yunohost-user-main.png)
 
-Following the application installation example from above, an icon for the Mastodon application should be visible. Selecting this opens the Mastodon instance and automatically logs in as the current YunoHost user, (e.g. `exampleuser`).
+Following the example application installed above, an icon for Mastodon should now be visible. Selecting this opens the Mastodon instance and automatically logs in as the current YunoHost user (e.g. `exampleuser`).
 
 [![A Mastodon instance installed with YunoHost and logged into using SSO](mastodon-yunohost_small.png)](mastodon-yunohost.png)
 
 ## Conclusion
 
-YunoHost has much to offer as an interface for simplifying self-hosting and server administration. The features covered here provide everything needed for a solid start with YunoHost. Fortunately, many use cases do not need much more than this!
+YunoHost has much to offer as an interface for simplifying self-hosting and server administration. The features covered here provide everything needed for a solid start with YunoHost, and many use cases do not need much more than this.
 
 YunoHost also features a suite of documentation and resources to help build your own setup. The YunoHost documentation, linked below, covers administration, application listing, and links to community resources.
