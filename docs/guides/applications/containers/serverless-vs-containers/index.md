@@ -10,13 +10,13 @@ modified_by:
   name: Linode
 ---
 
-Getting as much done, in as little time, and with as little overhead as possible is an essential element of development today. The end result has to be easy to deploy, maintain, and debug. Plus, it all has to run in the cloud. That’s asking a lot, but both serverless applications and containers are up to the task. They’re both designed to replace virtual machines that require much more work on the organization’s part. Of the two, containers are a heavier weight solution that include everything needed to run an application, usually as a set of microservices. Meanwhile, serverless applications are lighter weight solutions that focus on application code that relies on services provided by a vendor API. There isn’t a right or wrong choice with either technology, simply the choice that benefits your organization most, as this guide explains.
+Getting as much done in as little time, and with as little overhead as possible is an essential element of modern development. The end result needs to be easy to deploy, maintain, and debug. Plus, it all has to run in the cloud. That’s asking a lot, but both serverless applications and containers are up to the task. They’re both designed to replace virtual machines that require much more work on the organization’s part. Of the two, containers are a heavier weight solution that include everything needed to run an application, usually as a set of microservices. Meanwhile, serverless applications are lighter weight solutions that focus on application code that relies on services provided by a vendor API. There isn’t a right or wrong choice with either technology, simply the choice that benefits an organization most, as this guide explains.
 
 ## What Is Serverless?
 
-Serverless applications are hosted on a vendor system, where the functions used to create them respond to events. With *serverless*, the developer gets to focus on the code, the application, and not worry about the server or hardware. The infrastructure, such as backend services and libraries, are generally provided by the vendor. Therefore the developer is only looking at the code, not the code and its dependencies.
+Serverless applications are hosted on a vendor system, where the functions used to create them respond to events. With *serverless*, the developer gets to focus on the code, the application, and not worry about the server or hardware. The infrastructure, such as backend services and libraries, are generally provided by the vendor. Therefore the developer is only looking at the application code, and not its dependencies.
 
-A serverless application provides functionality like automatic scaling, provisioning, built-in service integration, automated configuration, and high-availability. All without any additional effort on the developer’s part. Because of the manner of hosting, serverless applications can also save an organization a huge amount of money on dependency costs.
+A serverless application provides functionality like automatic scaling, provisioning, built-in service integration, automated configuration, and high-availability. All without any additional effort on the developer’s part. Because of the manner of hosting, serverless applications can save an organization a huge amount of money on dependency costs.
 
 A serverless application can provide traditional desktop support, backend services, and serverless web applications. When compared to a microservice, the serverless application represents a method of running an application, while a microservice represents a method of designing an application. Additionally, serverless applications, unlike microservices, don’t run continuously, do require an event to begin execution, and individual functions perform exactly one task. A microservice can run continuously over a long period of time, and can support more than one task or function. The advantage of using a serverless application over a microservice is that the serverless application waits for an event, runs, and then stops. The costs of running a serverless application is therefore less than a microservice in situations where an application is expected to receive frequent usage spikes.
 
@@ -31,10 +31,10 @@ Serverless applications are perfect for mobile and web application startups beca
 
 ### Considering the Serverless Application Process
 
-There is a process to follow in order to architect a serverless application, just as there is with most application development. It doesn’t matter whether the resulting software represents backend services, frontend services, or both. This process is inherently different from working with monolithic applications, microservices, [Packaged Business Capabilities (PBCs)](https://www.elasticpath.com/blog/what-is-the-difference-between-PBCs-and-microservices), container applications, or any number of other software development patterns. The idea is to break a software requirement down into smaller pieces until it’s possible to describe a particular piece very simply. Here’s how:
+As with most application development, there is a process to follow in order to architect a serverless application. It doesn’t matter whether the resulting software represents backend services, frontend services, or both. This process is inherently different from working with monolithic applications, microservices, [Packaged Business Capabilities (PBCs)](https://www.elasticpath.com/blog/what-is-the-difference-between-PBCs-and-microservices), container applications, or any number of other software development patterns. The idea is to break a software requirement down into smaller pieces until it’s possible to describe a particular piece very simply. Here’s how:
 
 1.  Define individual services that perform a specific task.
-1.  Define individual functions, elements that perform one and only one task, to make up the services.
+1.  Define individual functions (elements that perform one and only one task) to make up the services.
 1.  Define events that fire the functions, remembering that serverless applications work around the idea that a function starts, performs a task, and then stops.
 1.  Create configuration files that describe each function.
 1.  Create a configuration provider file that describes how the function is to interact with the framework that supports the serverless application.
@@ -42,13 +42,13 @@ There is a process to follow in order to architect a serverless application, jus
 
 ## What Are Containers?
 
-Containers differ from serverless applications because a container has everything needed to run the application, such as libraries, system settings, and other dependencies. This additional content over a serverless application means that the developer needs to be concerned about the application code and everything that goes with it. Consequently, there is more work for the developer. However, containers have some serious benefits over serverless applications, one of which is a lack of vendor lock-in. For instance, a [Docker](https://www.docker.com/) container application, can run on any system that supports Docker. Just like containers used for shipping, container applications are standardized. They can be moved anywhere, on any system, without regard to the underlying hardware, or operating system details.
+Containers differ from serverless applications because a container has everything needed to run the application, such as libraries, system settings, and other dependencies. This additional content over a serverless application means that the developer needs to be concerned about the application code and everything that goes with it. Consequently, there is more work for the developer. However, containers have some serious benefits over serverless applications, one of which is a lack of vendor lock-in. For instance, a [Docker](https://www.docker.com/) container application can run on any system that supports Docker. Just like containers used for shipping, container applications are standardized. They can be moved anywhere, on any system, without regard to the underlying hardware, or operating system details.
 
-A container is focused on just one application, unlike a virtual machine, which imitates an entire computer, operating system, and all. A container is simpler and less resource intensive. Given an application of equal complexity, it’s possible to run more containers on a physical piece of hardware than virtual machines. On the other hand, a virtual machine can run multiple applications. A major difference between containers and virtual machines is that containers share a single kernel (operating system) on a physical machine. Meanwhile, virtual machines each have their own kernel. Consequently, all container applications running on a physical device must be compatible with the one kernel. Using a virtual machine offers an opportunity to use the particular kernel that works best with one or more applications.
+A container is focused on just one application, unlike a virtual machine, which imitates an entire computer, operating system, and all. A container is simpler and less resource intensive. Given an application of equal complexity, it’s possible to run more containers on a physical piece of hardware than virtual machines. On the other hand, a virtual machine can run multiple applications. A major difference between containers and virtual machines is that containers share a single kernel (operating system) on a physical machine. Meanwhile, virtual machines each have their own kernel. Consequently, all container applications running on a physical device must be compatible with the one kernel. Using a virtual machine offers the opportunity to use the particular kernel that works best with the applications in question.
 
 ### What Are Containers Used For?
 
-Because of the heavy duty emphasis of containers, they often see different use cases than serverless applications. It’s common to use container applications for the following purposes:
+Because of the heavy-duty emphasis of containers, they often see different use cases than serverless applications. It’s common to use containers for the following purposes:
 
 -   Deploying API endpoints
 -   Deploying repetitive jobs and tasks
@@ -66,7 +66,7 @@ As with serverless applications, there is a common process used to create contai
 1.  Create a new container image based on an existing image template.
 1.  Add code, resources, and other application files to the image using host commands.
 1.  Configure the image’s startup commands using host commands.
-1.  Build and run the image from within the container, rather than externally as normal.
+1.  Build and run the image from within the container (rather than externally as normal).
 1.  Deploy the image using the host server’s instance service.
 
 ## What Are Similarities Between Serverless and Containers?
@@ -87,7 +87,7 @@ Serverless applications have an advantage when it comes to scalability because t
 
 ### Cost
 
-Serverless applications run only when they need to, which means they cost less to operate than containers when viewed directly. However, a problem occurs when considering the cost of application latency. Because a container is always running, it provides an immediate response to any request. If a serverless application needs to be loaded from outside the cache before running, then there is additional time to consider before the task completes. Time is money. Consequently, even for loads where the requests are consistent, container applications can actually cost less because they’re more responsive.
+Serverless applications run only when they need to, which means they cost less to operate than containers when viewed directly. However, a problem occurs when considering the cost of application latency. Because a container is always running, it provides an immediate response to any request. If a serverless application needs to be loaded from outside the cache, there is additional time to consider before the task completes. Time is money. Consequently, even for loads where the requests are consistent, container applications may actually cost less because they’re more responsive.
 
 ### Deployment Time
 
@@ -109,4 +109,4 @@ Container applications offer reduced costs for consistent loads and a great deal
 
 ## Conclusion
 
-Serverless applications and containers both have advantages and disadvantages. Sometimes, the best option is not to make a choice, but rather to use the technology that fits a specific need. Parts of a solution can run as serverless applications and other parts can run as containers. Of course, this combined option has drawbacks, too. Not the least of which is having to manage two different technologies for a single solution. This increases complexity and potentially reduces both reliability and security.
+Serverless applications and containers both have advantages and disadvantages. Sometimes the best option is not to make a choice, but rather to use the technology that fits a specific need. Parts of a solution can run as serverless applications and other parts can run as containers. Of course, this combined option has drawbacks, too. Not the least of which is having to manage two different technologies for a single solution. This increases complexity and potentially reduces both reliability and security.
