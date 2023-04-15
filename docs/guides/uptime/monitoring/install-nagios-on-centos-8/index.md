@@ -11,6 +11,11 @@ modified_by:
 external_resources:
 - '[Nagios Library: Nagios Core Documentation](https://library.nagios.com/library/products/nagios-core/documentation/)'
 - '[Nagios Documentation: Nagios Core 4 Documentation](https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/)'
+relations:
+    platform:
+        key: install-nagios-monitoring
+        keywords:
+            - distribution: CentOS 8
 ---
 
 [Nagios](https://www.nagios.com/products/nagios-core/) offers a popular and powerful tool for server monitoring. With a built-in dashboard, alert and notification capabilities, and a range of plugins, Nagios can meet most needs.
