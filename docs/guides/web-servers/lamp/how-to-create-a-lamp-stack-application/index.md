@@ -11,7 +11,7 @@ published: 2023-04-05
 modified_by:
   name: Linode
 external_resources:
-- '[LAMP stack](https://www.linode.com/docs/guides/web-servers/lamp/)'
+- '[LAMP stack](/docs/guides/web-servers/lamp/)'
 - '[Model-View-Controller](https://www.guru99.com/mvc-tutorial.html)'
 ---
 
