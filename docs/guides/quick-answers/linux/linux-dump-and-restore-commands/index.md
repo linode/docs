@@ -117,6 +117,44 @@ If errors are reported while attempting to use a backup file, sometimes you can 
 
 Using verbose mode for `restore` command tells you what is happening in more detail than normal. It differs from debug mode because you aren’t looking at the internals of the file, but rather what restore is doing in more detail. Debug mode helps identify issues with the backup file, while verbose mode assists in identifying issues with the `restore` command's interaction with the debug file. A typical verbose mode command might look like this: `restore -v -t -f /myBackup/10192022 ./root/test`, where the `-v` option specifies verbose mode.
 
+
+## Back up a Dump to a Block Storage Volume
+
+Dumping data to a block storage volume allows you to store the backup data separately from your local hard drive, providing additional storage space and flexibility. If you have a dump stored in a block storage volume and you need to restore or repair a Linode, you can attach the block storage volume to the new Linode and use it for data recovery or restoration purposes. If your local hard drive is running out of space or if the backup data becomes too large, you can easily store the dump on a block storage volume, which can typically be resized to accommodate growing data. To back up a dump to a block storage volume in Linux, you can follow the steps below:
+
+1. Create a block storage volume on your Linux system. This can typically be done using a command-line tool such as `fdisk`, `parted`, or `mkfs`. Make sure you know the device path of the block storage volume, such as `/dev/sdb` or `/dev/xvdf`.
+
+1. Mount the block storage volume to a mount point in your Linux file system. You can do this using the mount command. For example, if you want to mount the block storage volume at the directory `/mnt/backup`, you can use the following command:
+
+    ```command
+    sudo mount /dev/sdb /mnt/backup
+    ```
+
+    Replace `/dev/sdb` with the device path of your block storage volume, and `/mnt/backup` with the desired mount point.
+
+1. Prepare the dump of the data you want to back up. This can typically be done using `dump` command. For example, if you want to create a dump of a directory called `/data` and save it to a file called `backup.dump`, you can use the following command:
+
+    ```command
+    sudo dump -0uf /mnt/backup/backup.dump /data
+    ```
+
+    This creates a level-0 dump of the `/data` directory and saves it to the block storage volume mounted at `/mnt/backup`.
+
+1. Verify its integrity using the `restore` command. For example, you can use the `ls` command to check the file size of the dump using the following command:
+
+    ```command
+    ls -lh /mnt/backup/backup.dump
+    ```
+
+    If the file size matches the size of the data you backed up, then the backup was successful.
+
+1. Unmount the block storage volume using the following `umount` command:
+
+    ```command
+    sudo umount /mnt/backup
+    ```
+
+
 ## Conclusion
 
 This guide takes you through the basics of using the `dump` and `restore` commands with Linux. These simple utilities make creating and restoring backups quite easy and you can do a great deal with them, especially as part of scripting scenarios. Experiment with these utilities to get the full benefit.
