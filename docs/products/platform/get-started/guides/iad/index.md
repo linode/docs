@@ -56,6 +56,20 @@ A new Premium tier Dedicated CPU plan type for Compute Instances is available in
 | Premium 256 GB | $2,765.00 | 256 | 56 | 5,000 | 11 | 40/11 |
 | Premium 512 GB | $5,530.00 | 512 | 64 | 7,200 | 12 | 40/12 |
 
+The pricing for Premium Compute Instance [Backups](/docs/products/storage/backups/) is as follows:
+
+| Plan | $/Mo |
+| --- | --- |
+| Premium 4 GB  | 5    |
+| Premium 8 GB  | 10   |
+| Premium 16 GB | 20   |
+| Premium 32 GB | 40   |
+| Premium 64 GB | 80   |
+| Premium 96 GB | 120  |
+| Premium 128 GB | 160 |
+| Premium 256 GB | 200 |
+| Premium 512 GB | 240 |
+
 ## Deploy Services in Washington, DC
 
 Follow the instructions below to target the Washington, DC data center when deploying a service.
