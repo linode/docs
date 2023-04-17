@@ -7,7 +7,9 @@ modified_by:
   name: Linode
 tags: ["linode platform"]
 authors: ["Linode"]
-headless: true
+_build:
+  list: false
+noindex: true
 ---
 
 Akamai Cloud's newest data center located in Washington, DC is now available in a limited closed beta. The full range of Akamai Cloud Computing (Linode) services are available in Washington, DC, including [Premium Plans](#premium-plans), the newest Compute Instance tier. As a beta participants, please review this guide for additional specifications and details you may need when configuring your workloads in the Washington, DC data center.
@@ -28,16 +30,14 @@ You must be a part of the limited closed beta in order to select the new data ce
 
 The Washington, DC data center features consistent and reliable S3-compatiable Object Storage backed by a 100% SSD-based cluster capable of 750 requests per second per bucket. Object Storage includes 250 GB of storage for a pro-rated $5/month. For more information on pricing, consult our [Object Storage features and limitations](/docs/products/storage/object-storage/#pricing).
 
-cluster ID for IDA is as follows:
+For the ID and URL of the Object Storage cluster in this new data center, see below:
 
-| | |
-| -- | -- |
-| Cluster ID | `us-iad-1` |
-| Cluster URL | `https://us-iad-1.linodeobjects.com` |
+- **Cluster ID:** `us-iad-1`
+- **Cluster URL:** `https://us-iad-1.linodeobjects.com`
 
 ### Premium Plans
 
-The Washington, DC data center offers a new Premium tier Dedicated Compute Instance in addition to our standard tier Dedicated, Shared, and High Memory instance types. These Premium tier Dedicated Compute Instances guarantee a baseline hardware class that including new AMD EPYC CPUs™. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD and bulild servers, and data anlyrsis. Below are the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
+A new Premium tier Dedicated CPU plan type for Compute Instances is available in our Washington, DC data center. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC CPUs™. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis. Below are the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
 
 | Plan | $/Mo | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -57,7 +57,7 @@ Follow the instructions below to target the Washington, DC data center when depl
 
 - **Cloud Manager:** Select **Washington, DC (us-iad)** in the region dropdown menu.
 
-    ![](select-washington-dc-cloud-manager.png)
+    ![Screenshot of the Cloud Manager region selection dropdown menu](select-washington-dc-cloud-manager.png)
 
 - **Linode CLI and Linode API:** Use the `us-iad` data center region ID.
 
@@ -87,9 +87,9 @@ ECDSA 256 SHA256:of9osuoFwh7g5ZiO0G3ZGYi/8JcCw3BA/ZdkpaKQlT0 lish-us-iad.linode.
 ED25519 256 SHA256:oFoUJn/xXV/+b7EJIcIt6G6hV5jXzjM/pOsoceDDOaA lish-us-iad.linode.com
 ```
 
-### Failover
+### IP Sharing and Failover
 
-The Washington, DC data center supports BGP-based failover, which supports IPv4 (public and private) and IPv6 routed ranges (/64 and /56). To configure failover, you can use [lelastic](https://github.com/linode/lelastic), Linode's own software, or software like FRR, BIRD, or GoBGP. For more information on failover, consult our [failover documentation](/docs/products/compute/compute-instances/guides/failover/).
+The Washington, DC data center supports IP sharing and BGP-based failover, which can be configured on IPv4 addresses (public and private) and addresses from IPv6 routed ranges (/64 and /56). To configure failover, you can use [lelastic](https://github.com/linode/lelastic), Linode's own software, or software like FRR, BIRD, or GoBGP. For more information on failover, consult our [failover documentation](/docs/products/compute/compute-instances/guides/failover/).
 
 | Data center | IP Sharing support | Failover method | Software | ID |
 | --- | --- | --- | --- | --- |
