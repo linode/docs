@@ -8,4 +8,4 @@
 
 ### Quickstart
 
-For more information on how to download, install, and contribute to the Linode Docs library, please read [CONTRIBUTING.md](CONTRIBUTING.md)
+For more information on how to download, install, and contribute to the Linode Docs library, please read [CONTRIBUTING.md](CONTRIBUTING.md).
