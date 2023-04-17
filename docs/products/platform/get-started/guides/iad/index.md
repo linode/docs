@@ -14,9 +14,9 @@ noindex: true
 
 Akamai Cloud's newest data center located in Washington, DC is now available in a limited closed beta. The full range of Akamai Cloud Computing (Linode) services are available in Washington, DC, including [Premium Plans](#premium-plans), the newest Compute Instance tier. As a beta participants, please review this guide for additional specifications and details you may need when configuring your workloads in the Washington, DC data center.
 
-{{< warning >}}
+{{< note type="warning" >}}
 This program is in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly recommend participants do not run production workloads during the beta.
-{{< /warning >}}
+{{< /note >}}
 
 
 ## Pricing
