@@ -26,7 +26,7 @@ In this tutorial, learn more about the Phoenix framework and what sets it apart.
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is the Phoenix Framework?
@@ -37,7 +37,7 @@ Like these other frameworks, the Phoenix framework is a server-side solution. An
 
 These modern frameworks aim to increase developer efficiency, streamlining the process of constructing dynamic web applications. With the MVC pattern and a host of other tools, such frameworks make it easier for developers to structure their applications.
 
-Phoenix does the same, but adds to that a promise of high performance in its applications. Frameworks like Ruby on Rails and Django may see performance sacrifices alongside their developer-experience gains. Phoenix, by contrast, keeps both strong developer experience and high application performance.
+Phoenix does the same but adds to that a promise of high performance in its applications. Frameworks like Ruby on Rails and Django may see performance sacrifices alongside their developer-experience gains. Phoenix, by contrast, keeps both strong developer experience, and high application performance.
 
 ### What Is Elixir and What Are Its Advantages?
 
@@ -59,13 +59,13 @@ Elixir maintains packages within the default repositories for most major Linux d
 
 Below are commands to install Elixir for a range of distributions. You can find more covered in Elixir's [official installation guide](https://elixir-lang.org/install.html#gnulinux).
 
-- On Debian and Ubuntu distributions, install Elixir from the APT package manager.
+- On **Debian** and **Ubuntu** distributions, install Elixir from the APT package manager.
 
     ```command
     sudo apt install elixir
     ```
 
-- On Fedora distributions, install Elixir from the DNF package manager.
+- On **Fedora** distributions, install Elixir from the DNF package manager.
 
     ```command
     sudo dnf install elixir erlang
@@ -128,15 +128,15 @@ Everything is now in place to set up and run a basic Phoenix application. You ca
 
 ### Installing a Database (Optional)
 
-Web applications typically utilize a database server for persisting application information, like user profiles and page data. For that reason, this tutorial's examples employ a database server to best demonstrate Phoenix in action.
+Web applications typically utilize a database server for persisting application information, like user profiles and page data. For that reason, this guide's examples employ a database server to best demonstrate Phoenix in action.
 
-The official Phoenix documentation recommends [PostgreSQL](https://www.postgresql.org/) for your database server, and this tutorial follows that recommendation.
+The official Phoenix documentation recommends [PostgreSQL](https://www.postgresql.org/) for your database server, and this guide follows that recommendation.
 
 To learn more about PostgreSQL, you can refer to our [Introduction to PostgreSQL](/docs/guides/an-introduction-to-postgresql/) guide. You can also refer to our [8 Most Popular Databases](/docs/guides/list-of-databases/) guide to compare database solutions.
 
 You can learn more about the databases supported by Phoenix through the [official documentation](https://hexdocs.pm/phoenix/ecto.html) on Phoenix and the module it uses by default for database connections, Ecto.
 
-To install PostgreSQL on your system, you can follow one of our tutorials. See, for instance, [How to Install and Use PostgreSQL on Ubuntu 20.04](/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/) or [How to Install and Use PostgreSQL on CentOS 8](/docs/guides/centos-install-and-use-postgresql/).
+To install PostgreSQL on your system, you can follow one of our guides. See, for instance, [How to Install and Use PostgreSQL on Ubuntu 20.04](/docs/guides/how-to-install-use-postgresql-ubuntu-20-04/) or [How to Install and Use PostgreSQL on CentOS 8](/docs/guides/centos-install-and-use-postgresql/).
 
 Additional distributions are covered in PostgreSQL's [official installation guide](https://www.postgresql.org/download/).
 
@@ -152,7 +152,7 @@ You need to take a few additional configuration steps in order for PostgreSQL wo
 
 1. Find where your Postgres instance's HBA file is stored using the command below. This file controls how different hosts can access your Postgres instance.
 
-    The location can vary widely depending on distribution, which is why the command is necessary. For simplicity, this tutorial uses the location `/var/lib.pgsql/data/pg_hba.conf` throughout.
+    The location can vary widely depending on distribution, which is why the command is necessary. For simplicity, this guide uses the location `/var/lib.pgsql/data/pg_hba.conf` throughout.
 
     ```command
     sudo -u postgres psql -c "show hba_file;"
@@ -182,7 +182,7 @@ You need to take a few additional configuration steps in order for PostgreSQL wo
 
 ## How to Develop a Phoenix Application
 
-With the Phoenix application generator and Phoenix's prerequisites installed, you are ready to start building Phoenix applications of your own. This section of the tutorial shows you how.
+With the Phoenix application generator and Phoenix's prerequisites installed, you are ready to start building Phoenix applications of your own. This section of the guide shows you how.
 
 The process is broken into two parts. The first shows you how to create a new Phoenix project using the base template. At that point, you can start running Phoenix and view the welcome page in your browser.
 
@@ -194,7 +194,7 @@ When creating a new Phoenix application, usually you start with a basic template
 
 Follow these steps to set up a Phoenix project template, run the base application on a development server, and access it from your web browser.
 
-1. Use the Phoenix application generator to create the new project. This example command names the project `exampleapp`, and the rest of this tutorial uses that name as well.
+1. Use the Phoenix application generator to create the new project. This example command names the project `exampleapp`, and the rest of this guide uses that name as well.
 
     ```command
     mix phx.new exampleapp
@@ -266,7 +266,7 @@ This tutorial develops a simple "to-do" list example application. Follow along t
 
 Your Phoenix project directory has a collection of files and subdirectories that define the project structure. You can learn more about the project structure overall in Phoenix's [official documentation](https://hexdocs.pm/phoenix/directory_structure.html).
 
-This tutorial focuses mostly on the `lib` subdirectory. Within this directory are the parts that make up your application structure itself. Most of your development occurs here.
+This guide focuses mostly on the `lib` subdirectory. Within this directory are the parts that make up your application structure itself. Most of your development occurs here.
 
 What follows is a breakdown of the `lib` directory for the default Phoenix project. This uses the `exampleapp` name from further above, so replace that in these examples with the actual name of your project.
 
@@ -278,7 +278,7 @@ What follows is a breakdown of the `lib` directory for the default Phoenix proje
 
     - `repo.ex` defines an interface for the application's database, connecting to PostgreSQL if you followed that setup above
 
-- `exampleapp_web/`contains your application's modules related to presentation, including its controllers and views
+- `exampleapp_web/`contains your application's modules related to the presentation, including its controllers and views
 
     - `controllers/` houses the controllers for the application
 
@@ -306,7 +306,7 @@ Think about these files as they relate to the MVC pattern.
 
 With an understanding of how a Phoenix application is structured, you can start implementing your own models, views, and controllers. This section shows you how to start making changes within the application structure.
 
-By the end of this section you should have a to-do list application running with Phoenix alongside the default welcome-page application.
+By the end of this section, you should have a to-do list application running with Phoenix alongside the default welcome-page application.
 
 1. Add the following two lines to the `scope` section of the `router.ex` file.
 
@@ -478,7 +478,7 @@ By the end of this section you should have a to-do list application running with
 
 1. Copy the `lib/exampleapp_web/view/page_view.ex` to `lib/exampleapp_web/views/todo_view.ex`. Within the new file, change `PageView` to `TodoView`. Using a new view for the to-do list makes the application code cleaner, even if the code operates the same for now.
 
-1. Create a new template by adding a `lib/exampleapp_web/templates/todo` directory and creating a `index.html.heex` file within it. Give that new file the contents shown below to render the to-do list page.
+1. Create a new template by adding a `lib/exampleapp_web/templates/todo` directory and creating an `index.html.heex` file within it. Give that new file the contents shown below to render the to-do list page.
 
     ```file {title="lib/exampleapp_web/templates/todo/index.html.heex"}
     <section class="row">
@@ -524,6 +524,6 @@ The banner at the top of the page appears so long as the application is in a dev
 
 ## Conclusion
 
-With that, you have the basis you need to start making web applications with Phoenix. Phoenix gives you a powerful framework for developing web applications, with a smooth developer experience and a high performance engine.
+With that, you have the basics you need to start making web applications with Phoenix. Phoenix gives you a powerful framework for developing web applications, with a smooth developer experience and a high-performance engine.
 
-The link below to the Phoenix documentation can help you take what you learned in this tutorial and keep building on it. And, if you are unfamiliar with Elixir and want to learn more about how it works, follow the link on the language provided below.
+The link below to the Phoenix documentation can help you take what you learned in this guide and keep building on it. And, if you are unfamiliar with Elixir and want to learn more about how it works, follow the link on the language provided below.
