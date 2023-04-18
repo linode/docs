@@ -4,7 +4,7 @@ description: 'This guide provides you with step-by step instructions on how to f
 keywords: ["Linode", "NodeBalancer", "SSL", "redirect", "load balancing", "install", "certificate", "configuration"]
 tags: ["linode platform","security","networking","ssl"]
 published: 2015-09-01
-modified: 2022-10-07
+modified: 2023-04-18
 modified_by:
   name: Linode
 aliases: ['/platform/nodebalancer/nodebalancer-ssl-configuration/','/guides/nodebalancer-ssl-configuration/']
