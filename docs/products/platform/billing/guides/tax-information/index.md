@@ -1,7 +1,7 @@
 ---
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
-modified: 2023-03-22
+modified: 2023-04-18
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -44,6 +44,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Ireland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Italy | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Japan | 10% | [JCT](https://www.eu-japan.eu/taxes-accounting/consumption-taxes) | April 1st, 2022 |
+| Kenya | 16% | [VAT](https://www.kra.go.ke/individual/filing-paying/types-of-taxes/value-added-tax) | June 1st, 2023 |
 | Latvia | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Lithuania | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Luxembourg | 17% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
@@ -67,7 +68,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 
 ### Canada
 
-As of **May 1st, 2022**, Canadian taxes will begin to be collected. The following table below lists the tax rate for each Province/Territory, as well as additional tax details:
+Taxes have been collected for customers located in Canada since **May 1st, 2022**. The following table below lists the tax rate for each Province/Territory, as well as additional tax details:
 
 | Province | Tax Rate Total | Tax Details |
 | -- | -- | -- | -- |
