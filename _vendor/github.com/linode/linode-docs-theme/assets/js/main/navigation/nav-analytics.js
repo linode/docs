@@ -25,6 +25,7 @@ export class AnalyticsEventsCollector {
 			}
 		}
 
+		this.currentPageTimer = null;
 		var self = this;
 		this.eventQueue = smartQueue(
 			(items, restOfQueue) => {
@@ -82,6 +83,86 @@ export class AnalyticsEventsCollector {
 				pushItem: (item) => {
 					this.eventQueue.push(createEventFromItem(item));
 				},
+				startNewPage: () => {
+					// Stop the old if set.
+					if (this.currentPageTimer) {
+						this.currentPageTimer.stop();
+					}
+
+					this.currentPageTimer = {
+						eventTimers: {
+							'DOCS: Time-on-page 30 seconds': {
+								seconds: 30,
+							},
+							'DOCS: Time-on-page 1 minute': {
+								seconds: 60,
+							},
+							'DOCS: Time-on-page 5 minutes': {
+								seconds: 300,
+							},
+						},
+						eventDistance: {
+							'DOCS: Scroll 50%': { distance: 0.5, fired: false },
+							'DOCS: Scroll 75%': { distance: 0.75, fired: false },
+						},
+						scroll: {
+							scrollTop: 0,
+							height: 0,
+						},
+						onScroll: () => {
+							let scroll = this.currentPageTimer.scroll;
+							if (!scroll.scrollHeight) {
+								return;
+							}
+
+							let scrollDistance = (window.scrollY - scroll.offsetTop) / scroll.scrollHeight;
+
+							for (let eventName in this.currentPageTimer.eventDistance) {
+								const event = this.currentPageTimer.eventDistance[eventName];
+								if (event.fired) {
+									continue;
+								}
+								if (scrollDistance >= event.distance) {
+									if (document.body.dataset.objectid) {
+										debug('convert', eventName, document.body.dataset.objectid);
+										this.handler.convertObject(document.body.dataset.objectid, eventName);
+									}
+									event.fired = true;
+								}
+							}
+						},
+						start: () => {
+							let mainEl = document.getElementsByTagName('main')[0];
+							this.currentPageTimer.scroll = {
+								offsetTop: mainEl ? mainEl.offsetTop : 0,
+								scrollHeight: mainEl ? mainEl.scrollHeight : 0,
+							};
+
+							for (let eventName in this.currentPageTimer.eventTimers) {
+								debug('start', eventName);
+								const timer = this.currentPageTimer.eventTimers[eventName];
+								timer.timer = setTimeout(() => {
+									if (!document.body.dataset.objectid) {
+										return;
+									}
+									debug('convert', eventName, document.body.dataset.objectid);
+									this.handler.convertObject(document.body.dataset.objectid, eventName);
+								}, timer.seconds * 1000);
+							}
+						},
+						stop: () => {
+							for (let eventName in this.currentPageTimer.eventTimers) {
+								debug('stop', eventName);
+								const timer = this.currentPageTimer.eventTimers[eventName];
+								if (timer.timer) {
+									clearTimeout(timer.timer);
+								}
+							}
+						},
+					};
+
+					this.currentPageTimer.start();
+				},
 				clickHit: (hit, eventName) => {
 					if (!hit.__queryID) {
 						// The Explorer node expansions are separate Algolia queries, but they don't have a queryID,
@@ -112,6 +193,12 @@ export class AnalyticsEventsCollector {
 				view: () => {},
 				conversion: () => {},
 			};
+		}
+	}
+
+	onScroll() {
+		if (this.currentPageTimer) {
+			this.currentPageTimer.onScroll();
 		}
 	}
 

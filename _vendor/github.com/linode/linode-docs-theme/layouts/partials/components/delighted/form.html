@@ -12,6 +12,7 @@
     </p>
     <button
       type="submit"
+      @click="$store.nav.analytics.handler.convertObject(document.body.dataset.objectid, 'DOCS: Feedback')"
       class="btn p-4 rounded-md border-2 border-gray-400 hover:border-brand hover:text-brand text-sm sm:text-lg"
       value="Feedback"
       name="feedback">
