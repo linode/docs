@@ -10,7 +10,6 @@ published: 2023-04-18
 modified_by:
   name: Linode
 external_resources:
-- '[phoenixNAP: Ln Command: How to Create Symbolic Links in Linux](https://phoenixnap.com/kb/symbolic-link-linux)'
 - '[freeCodeCamp: Symlink Tutorial in Linux – How to Create and Remove a Symbolic Link](https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/)'
 - '[LinuxHint: Symbolic Link in Linux](https://linuxhint.com/symbolic-link-linux/)'
 ---
@@ -136,7 +135,7 @@ Almost all file-based actions on a symlink act on or affect the target file, but
 
 The exceptions to the above-described rule are the Linux commands `unlink`, `rm`, `rmdir`, and their associated system calls. These commands either fail or remove the symlink itself instead of the target file or directory. These exceptions prevent the inadvertent removal of the target.
 
-See more information about removing symlinks in our Quick Guide to Linux: Remove Symbolic Links(/docs/tools-reference/basics/linux-remove-symbolic-link).
+See more information about removing symlinks in our [Remove Symbolic Links](/docs/tools-reference/basics/linux-remove-symbolic-link).
 
 ## Finding Dangling Symlinks
 
