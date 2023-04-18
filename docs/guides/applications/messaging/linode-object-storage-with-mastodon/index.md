@@ -1,23 +1,14 @@
 ---
 slug: linode-object-storage-with-mastodon
-<<<<<<< HEAD
 description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
 og_description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this tutorial."
 keywords: ['mastodon object storage','how to use mastodon','mastodon s3']
-=======
-description: "Mastodon stores media attachments locally by default, which can make these static files difficult to manage and scale. Using object storage with Mastodon can remedy this and make your instance more efficient. Learn about how Linode Object Storage can be implemented with your Mastodon server in this guide."
-keywords: ['mastodon object storage', 'how to use mastodon', 'mastodon s3']
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-12-24
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use Linode Object Storage with Mastodon"
-<<<<<<< HEAD
-h1_title: "How to Use Linode Object Storage with Mastodon"
-=======
 authors: ["Nathaniel Stickman"]
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 external_resources:
 - '[Thomas Leister: Mastodon - Adding S3 Based Cloud Storage to Your Instance](https://thomas-leister.de/en/mastodon-s3-media-storage/)'
 - '[Mastodon: Proxying Object Storage through NGINX](https://docs.joinmastodon.org/admin/optional/object-storage-proxy/)'
@@ -46,13 +37,7 @@ Mastodon by default stores its media attachments locally. Every upload is saved 
 
 If your Mastodon instance stays below a certain size and traffic level, these image uploads might not cause issues. But as your Mastodon instance grows, the local storage approach can cause difficulties. Media stored in this way is often difficult to manage and a burden on your server.
 
-<<<<<<< HEAD
 But object storage, by contrast, excels when it comes to storing static files — like Mastodon's media attachments. An S3-compatible object storage bucket can more readily store a large number of static files and scale appropriately.
-=======
-But object storage, by contrast, excels when it comes to storing static files — like Mastodon's media attachments. An S3-compatible object storage bucket can more readily store a large number of static files and often provide them with high availability.
-
-Linode Object Storage stands as one of the strongest S3-compatible object storage solutions. With scalable clusters, high availability, and an often more efficient cost, Linode Object Storage fits excellently with the needs of a growing Mastodon instance.
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 
 To learn more about the features of object storage generally and Linode Object Storage more particularly, take a look at our [Linode Object Storage overview](/docs/products/storage/object-storage/).
 
@@ -60,11 +45,7 @@ To learn more about the features of object storage generally and Linode Object S
 
 The rest of this guide walks you through setting up a Mastodon instance to use Linode Object Storage for storing its media attachments. Although the guide uses Linode Object Storage, the steps should also provide an effective model for using other S3-compatible object storage buckets with Mastodon.
 
-<<<<<<< HEAD
 The tutorial gives instructions for creating a new Mastodon instance, but the instructions should also work for most existing Mastodon instances regardless of whether it was installed on Docker or from source. Additionally, the tutorial includes steps for migrating existing, locally-stored Mastodon media to the object storage instance.
-=======
-The guide gives instructions for creating a new Mastodon instance, but the throughout should also work for most existing Mastodon instances. This is the case whether your existing instance was installed with Docker or from a source. Additionally, the guide includes steps for migrating existing, locally-stored Mastodon media to the object storage instance.
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 
 ### Creating the Linode Object Storage Bucket
 
@@ -72,11 +53,7 @@ To get started, your Mastodon instance needs its own access key and bucket on yo
 
 The access keys you generate will be used later within your Mastodon configuration, so keep them somewhere safe. The secret key generated at this time cannot be viewed later — you have to regenerate the keys if you lose them.
 
-<<<<<<< HEAD
 This tutorial uses the name `example-mastodon-bucket` for the Linode Object Storage bucket created for Mastodon. Replace this throughout the rest of the tutorial with the name you gave your bucket.
-=======
-This guide uses the name `example-mastodon-bucket` for the Linode Object Storage bucket created for Mastodon. Replace this throughout the rest of the guide with whatever name you actually use for your bucket.
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 
 Additionally, this guide places the bucket in the Atlanta region, which has the region designation `us-southeast-1`. Likewise, replace this throughout the rest of the guide with your bucket's actual region designation. You can determine your bucket's region designation through the bucket's URL. The region designation is given between the bucket name and `linodeobjects.com`, as in `example-mastodon-bucket.us-southeast-1.linodeobjects.com`.
 
@@ -96,11 +73,7 @@ You may, alternatively, choose to deploy a new Linode with Mastodon via the Lino
 
 ### Configuring an NGINX Proxy
 
-<<<<<<< HEAD
-By default, Mastodon's object storage configuration fetches content from the storage bucket for each content request. That can lead to significant bandwidth usage. For that reason, it is best practices to use caching and an alias for fetching content on your Mastodon instance.
-=======
-By default, Mastodon's object storage configuration fetches content from the storage bucket for each content request. That can lead to significant bandwidth usage. For that reason, the best practice has you use caching and an alias for fetching content on your Mastodon instance.
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
+By default, Mastodon's object storage configuration fetches content from the storage bucket for each content request. That can lead to significant bandwidth usage. For that reason, it is best practice to use caching and an alias for fetching content on your Mastodon instance.
 
 This involves configuring an additional NGINX proxy to the Linode Object Storage bucket. This proxy provides an alias that Mastodon uses for fetching media. The proxy fetches content from a local cache when it is available and from the object storage bucket otherwise. The local cache expires after a certain period, ensuring efficient storage on your Mastodon server.
 
@@ -266,11 +239,7 @@ Perhaps the simplest way to verify your Mastodon configuration is by making a po
 
 ## Conclusion
 
-<<<<<<< HEAD
 You Mastodon instance now has its media storage needs being handled by object storage. And with that your server has become more scalable and prepared for an expanding user base.
-=======
-Your Mastodon instance now has its media storage needs being handled by the efficiency of object storage. And with that, your server has become more scalable and prepared for an expanding user base.
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 
 The links below provide additional information on how the setup between Mastodon and an S3-compatible storage works.
 
