@@ -14,6 +14,11 @@ noindex: true
 
 Akamai Cloud's newest data center located in Washington, DC is now available in a limited closed beta. The full range of Akamai Cloud Computing (Linode) services are available in Washington, DC, including [Premium Plans](#premium-plans), the newest Compute Instance tier. As a beta participants, please review this guide for additional specifications and details you may need when configuring your workloads in the Washington, DC data center.
 
+{{< note type="warning" >}}
+This program is in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly recommend participants do not run production workloads during the beta.
+{{< /note >}}
+
+
 ## Pricing
 
 Resources deployed during the beta will be free to users. You will be notified 30 days in advance of billing as we transition to general availability. Select services will not be available at the time of this message but could become available during the beta period.
@@ -50,6 +55,20 @@ A new Premium tier Dedicated CPU plan type for Compute Instances is available in
 | Premium 128 GB | $1,383.00 | 128 | 50 | 2,500 | 10 | 40/10 |
 | Premium 256 GB | $2,765.00 | 256 | 56 | 5,000 | 11 | 40/11 |
 | Premium 512 GB | $5,530.00 | 512 | 64 | 7,200 | 12 | 40/12 |
+
+The pricing for Premium Compute Instance [Backups](/docs/products/storage/backups/) is as follows:
+
+| Plan | $/Mo |
+| --- | --- |
+| Premium 4 GB  | 5    |
+| Premium 8 GB  | 10   |
+| Premium 16 GB | 20   |
+| Premium 32 GB | 40   |
+| Premium 64 GB | 80   |
+| Premium 96 GB | 120  |
+| Premium 128 GB | 160 |
+| Premium 256 GB | 200 |
+| Premium 512 GB | 240 |
 
 ## Deploy Services in Washington, DC
 
