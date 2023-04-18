@@ -8,7 +8,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "Quickly deploy a Compute Instance with many various software applications pre-installed and ready to use."
-aliases: ['/products/tools/marketplace-one-click-apps/']
+aliases: ['/products/tools/marketplace-one-click-apps/','/guides/platform/marketplace/','/platform/marketplace/','/platform/one-click/']
 ---
 
 The [Linode Marketplace](https://www.linode.com/marketplace/) offers a growing collection of One-Click Apps based on popular and in-demand software.

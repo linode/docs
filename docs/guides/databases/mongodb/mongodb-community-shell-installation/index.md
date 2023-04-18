@@ -1,7 +1,5 @@
 ---
 slug: mongodb-community-shell-installation
-author:
-  name: Tom Henderson
 description: 'This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian-based Linux systems.'
 keywords: ['mongodb community shell', 'mongosh', 'mongodb']
 tags: ['debian', 'database']
@@ -10,10 +8,8 @@ published: 2021-12-10
 modified_by:
   name: Linode
 title: "Install and Use the MongoDB Community Shell"
-h1_title: "How to Install and Use the MongoDB Community Shell"
-enable_h1: true
-contributor:
-  name: Tom Henderson
+authors: ["Tom Henderson"]
+tags: ["saas"]
 ---
 
 MongoDB is a non-relational, document-oriented database that can operate over many hosts, database shards, and collections. A key feature of MongoDB is its ability to associate disparate data types and sources into quickly returned results that link data together. The MongoDB shell can be used to perform queries, update records, and find useful correlations among collections. The MongoDB Shell provides a command-line interface to your database and can run all MongoDB queries. It prints error messages, modifies data, and provide access to JavaScript using JSON queries. This tutorial explains how to install the MongoDB Community Shell on macOS, Windows 10, and Debian. It also shows you how to connect to a MongoDB deployment and provides tips on using the MongoDB Shell with examples.
@@ -57,7 +53,7 @@ The steps in this section work on macOS 13.0 and above.
 
 {{< note >}}
 If, upon invocation, `mongosh` doesn't execute, it may be necessary (depending on the version of macOS) to navigate to *Application Security* in *System Preferences*. Then, verify that `mongosh` and `mongocryptd` have the correct permissions.
-{{</ note >}}
+{{< /note >}}
 
 ### Install the MongoDB Shell on Debian Linux
 
@@ -217,9 +213,9 @@ To add a record to a collection, use the `insert` or `insertOne` command. For ex
 
 ## Uninstall the MongoDB Shell
 
-{{< caution >}}
+{{< note type="alert" >}}
 When using the `rm` command ensure you are removing the desired file and directory. You cannot recover files or directories once they are removed.
-{{</ caution>}}
+{{< /note >}}
 
 ### Linux
 

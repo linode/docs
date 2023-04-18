@@ -1,0 +1,25 @@
+{{- $pages := .Pages | first 20 -}}
+{{- $items := slice -}}
+{{- range $pages -}}
+{{- $img := partial "funcs/get-bundle-image.html" . -}}
+{{- $thumb := $img -}}
+{{- if ne $thumb.MediaType.SubType "svg" -}}
+{{- $thumb = $img.Resize "640x jpg" -}}
+{{- end -}}
+{{- $excerpt := "" -}}
+{{- if .Params.description -}}
+{{- $excerpt = .Params.description -}}
+{{- else -}}
+{{- $excerpt = .Summary -}}
+{{- end -}}
+{{- $items = $items | append (dict 
+    "title" .Title 
+    "linkTitle" .LinkTitle 
+    "excerpt" $excerpt
+    "href" .Permalink 
+    "publishDate" .PublishDate
+    "thumbnail" $thumb.Permalink
+    ) 
+-}}
+{{- end -}}
+{{- $items | jsonify (dict "indent" "  ")  -}}

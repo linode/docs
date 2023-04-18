@@ -1,8 +1,5 @@
 ---
 slug: ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 9.04 to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","apache","ubuntu","ruby"]
@@ -21,6 +18,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 
@@ -31,7 +29,7 @@ Rails enables developers to produce inventive applications on tight time scales.
 
 This guide takes us from a fresh install of Ubuntu 9.04 (Jaunty), to a running Rails stack suitable for deployment in production. There are many different ways to deploy Rails stacks; if you have experience with an alternate stack, we encourage you to deploy your application in whatever you are most familiar. We've chosen to deploy with Phusion Passenger (e.g. mod\_rails or mod\_rack,) which allows us to embed Rails apps directly in Apache applications without needing to worry about FastCGI architectures and complex web server proxies.
 
-Our goal is to provide instructions that are accessible and will have you up and running your with your Rails app as quickly as possible. We assume you've deployed and updated your Ubuntu 9.04 Jaunty Linode according to our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+Our goal is to provide instructions that are accessible and will have you up and running your with your Rails app as quickly as possible. We assume you've deployed and updated your Ubuntu 9.04 Jaunty Linode according to our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 In addition to updating your system before beginning this guide, we recommend you review other guides in the Linode Docs so that you have a functioning installation of the [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-04-jaunty/) and a working installation of the [MySQL database server](/docs/guides/use-mysql-relational-databases-on-ubuntu-9-04-jaunty/). With those prerequisites out of the way, we can get started with Rails. We will assume that you're logged in to your Linode via SSH and have a root prompt for the purpose of this tutorial.
 

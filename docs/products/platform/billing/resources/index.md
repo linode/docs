@@ -4,6 +4,7 @@ description: "Resources and other information related to the Linode Billing incl
 tab_group_main:
     weight: 40
 aliases: ['/products/tools/billing/resources/']
+published: 2022-11-17
 ---
 
 ## Blog Posts

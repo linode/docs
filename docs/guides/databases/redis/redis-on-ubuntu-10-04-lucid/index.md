@@ -1,9 +1,6 @@
 ---
 slug: redis-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Ubuntu 10.04 "Lucid".'
 keywords: ["redis ubuntu 10.04", "redis lucid", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,13 +16,14 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 ---
 
 
 
 Redis is a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
-Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux systems administration, we recommend that you read the guides in our [using Linux](/docs/guides/introduction-to-linux-concepts/) series, particularly the [administration basics guide](/docs/guides/linux-system-administration-basics/).
+Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux systems administration, we recommend that you read the guides in our [using Linux](/docs/guides/introduction-to-linux-concepts/) series, particularly the [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Redis
 

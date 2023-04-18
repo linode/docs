@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-use-node-version-manager-nvm
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn to use NVM to install Node.js on your computer. This guide shows you how to install and use NVM and how to install the LTS version of Node.js.'
 keywords: ['nvm install node', 'nvm install lts', 'node version manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,11 @@ image: InstallandUseNVM.png
 modified: 2022-08-12
 modified_by:
   name: Linode
-title: "How to Install and Use NVM (Node Version Manager)"
-h1_title: "Installing and Using NVM (Node Version Manager)"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Installing and Using NVM (Node Version Manager)"
+title_meta: "How to Install and Use NVM (Node Version Manager)"
 external_resources:
 - '[NVM GitHub Page](https://github.com/nvm-sh/nvm)'
+authors: ["Jeff Novotny"]
 ---
 
 The [*Node Version Manager (NVM)*](https://github.com/nvm-sh/nvm) is an open source version manager for [*Node.js (Node)*](https://nodejs.org/en/). NVM is easy to understand and works on any POSIX-compliant shell (for example, sh or bash). NVM allows you to easily install and manage different versions of Node and switch between them on a per-shell basis. This guide describes how to install NVM, and how to use it to install and run different versions of Node.
@@ -50,7 +44,7 @@ These instructions show you how to install NVM and are generally valid for most 
 
         wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also install NVM using GIT or with a manual download and installation. Consult the GIT section of the [*NVM Documentation Guide*](https://github.com/nvm-sh/nvm#git-install) for detailed instructions.
     {{< /note >}}
 
@@ -62,7 +56,7 @@ You can also install NVM using GIT or with a manual download and installation. C
         export NVM_DIR="$HOME/.nvm"
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    {{< note >}}
+    {{< note respectIndent=false >}}
 NVM uses the following environmental variables. We recommend leaving them at the default settings. Use caution if you decide to change them for any reason.
 
 *   NVM_DIR: NVM's installation directory.
@@ -96,7 +90,7 @@ Now using node v15.5.1 (npm v7.3.0)
 Creating default alias: default -> node (-> v15.5.1)
     {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When used in a NVM command, `node` is an alias for the latest version of Node. The first version of Node you installed automatically becomes the default version. A new shell instantiates with the current version of Node set to `default`. The alias `system` refers to the system-installed version of Node (if any).
     {{< /note >}}
 
@@ -115,7 +109,7 @@ v6.0.0
         nvm install 13.10.1 # Specific minor release
         nvm install 14 # Specify major release only
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you only specify the major release number for a Node version, NVM installs the latest version of that release. You can determine the latest version of each release from the output of `nvm ls-remote`. Node also displays the exact version it selected after installation (for example, `Now using node v14.15.4`). If you specify a version of Node that is not available, NVM responds with the error message `Version '15.0.2' not found - try 'nvm ls-remote' to browse available versions.`
    {{< /note >}}
 
@@ -163,7 +157,7 @@ NVM again returns the current version number.
 v14.15.4
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can also confirm the version of Node currently in use with `node -v`. To go back to using the system's version of Node, run the command `nvm use system`.
 {{< /note >}}
 
@@ -264,7 +258,7 @@ Although NVM is very straightforward to use, it also provides some advanced capa
 
         nvm install node --reinstall-packages-from=default
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Reinstalling packages does not update the NPM version.
     {{< /note >}}
 
@@ -301,6 +295,6 @@ If you no longer intend to use NVM, you can uninstall it with the `unload` comma
         [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
         [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you only want to go back to using the system's version of Node, you do not have to uninstall NVM. In this case, run the command `nvm use system`.
 {{< /note >}}

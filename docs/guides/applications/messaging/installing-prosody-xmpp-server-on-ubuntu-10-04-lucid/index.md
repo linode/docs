@@ -1,9 +1,6 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install, configure, and setup a basic configuration of Prosody, a lightweight XMPP server on Ubuntu 10.04 (Lucid).'
 keywords: ["prosody", "prosody ubuntu lucid", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
 
 Prosody is a XMPP/Jabber server programmed in Lua that is simple and lightweight. Prosody uses fewer resources than its counterparts and is designed to be easy to configure and run. [ejabberd](/docs/guides/use-ejabberd-for-instant-messaging-on-ubuntu-12-04/) or [OpenFire](/docs/guides/install-openfire-on-ubuntu-12-04-for-instant-messaging/) may be better suited for larger applications, but for most independent and small scale uses Prosody is a more resource-efficient solution. Prosody is a very good candidate for running an XMPP server for a very small base of users, or for XMPP development.
 
-Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu 10.04 (Lucid), have completed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and have logged in via SSH as root.
+Before we begin with the installation and configuration of Prosody, we assume that you have a running and up to date installation of Ubuntu 10.04 (Lucid), have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and have logged in via SSH as root.
 
 ## Adding Software Repositories
 

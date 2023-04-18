@@ -3,7 +3,6 @@ title: "Images"
 description: "Custom Images allow for rapid deployments of preconfigured disks to new or existing Compute Instances. They can be easily created by capturing a disk on an existing Instnace or uploading an image file."
 keywords: ["linode Images", "imagize"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/guides/linode-images/','/linode-images/','/platform/disk-images/linode-images/','/platform/disk-images/linode-images-classic-manager/','/platform/linode-images/','/platform/disk-images/linode-images-new-manager/']
 published: 2020-06-02
 modified: 2022-07-12
@@ -34,7 +33,7 @@ Accidentally deleting a production server will almost certainly impact your user
 
 - Web or software agencies deploying similar starter configurations for clients
 - Development workflows requiring the same base image for all developers or applications
-- Workflows requiring distributions other than [those provided by Linode](/docs/guides/choosing-a-distribution/)
+- Workflows requiring distributions other than [those provided by Linode](/docs/products/compute/compute-instances/guides/distributions/)
 
 ## Availability
 
@@ -44,9 +43,9 @@ Images can be created and deployed across [all regions](https://www.linode.com/g
 
 Custom Images cost $0.10/GB per month.
 
-{{<note>}}
+{{< note >}}
 Recovery Images, which are generated automatically after a Compute Instance is deleted, are provided at no charge.
-{{</note>}}
+{{< /note >}}
 
 ## Technical Specifications
 

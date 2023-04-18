@@ -1,7 +1,5 @@
 ---
 slug: use-dog-linux-dns-client
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use the dog command-line DNS client, a modern and more user-friendly alternative to dig."
 keywords: ['dog dns client','dig alternative linux','dig command examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,10 +7,7 @@ published: 2021-12-23
 modified_by:
   name: Nathaniel Stickman
 title: "Use the Linux dog Command to Look Up DNS Records"
-h1_title: "How to Use the Linux dog Command to Look Up DNS Records"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 `dog` is a command-line DNS client used for looking up DNS records for domain names. It's an alternative to the popular `dig` command. The `dog` command gives you a simpler interface, more readable results, and additional features like DNS over TLS.
@@ -21,11 +16,11 @@ In this guide, learn more about `dog` and how to install and start using it on y
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -47,9 +42,9 @@ You can learn more about the `dig` command and its features in our guide [Use di
 
             sudo dnf install gcc tar openssl-devel
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to update your system's version of the GNU C library (glibc).
-{{</ note >}}
+{{< /note >}}
 
 1. Install [Rust](https://www.rust-lang.org/). You need Rust to compile the `dog` source code:
 
@@ -63,9 +58,9 @@ You may need to update your system's version of the GNU C library (glibc).
 
 1. Navigate to the [releases page](https://github.com/ogham/dog/releases/) for `dog`, identify the latest release, and copy the URL for the `.tar.gz` file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To access the `.tar.gz` file, navigate to the [**Tags** section](https://github.com/ogham/dog/tags) of the dog releases page.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Download that file, replacing the URL below with the one you copied:
 
@@ -211,4 +206,4 @@ NS github.com. 6m21s   "ns-520.awsdns-01.net."
 
 ## Conclusion
 
-To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-overview/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.
+To learn more about DNS, including more about record types and the role of DNS in the Internet, take a look at our guide [DNS Records: An Introduction](/docs/guides/dns-overview/). From there, you may also want to look at our guide [Troubleshooting DNS Records](/docs/products/networking/dns-manager/guides/troubleshooting-dns/). It can give you some ideas for how you might use a tool like `dog` to help keep your DNS setup in order.

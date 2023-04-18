@@ -1,8 +1,5 @@
 ---
 slug: configure-spf-and-dkim-in-postfix-on-debian-9
-author:
-    name: Linode Community
-    email: contribute@linode.com
 description: 'This guide provides you with step-by-step instructions for configuring your domains SPF and DKIM DNS records in Postfix mail server on Debian 9.'
 keywords: ["email", "postfix", "spf", "dkim", "debian 9", "opendkim", "dns", "dmarc"]
 tags: ["debian","postfix","email"]
@@ -12,8 +9,6 @@ modified_by:
     name: Linode
 published: 2018-12-13
 title: 'Configure SPF and DKIM With Postfix on Debian 9'
-contributor:
-    name: Linode
 external_resources:
  - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
@@ -27,6 +22,7 @@ relations:
         keywords:
             - distribution: Debian 9
 aliases: ['/email/postfix/configure-spf-and-dkim-in-postfix-on-debian-9/']
+authors: ["Linode"]
 ---
 
 This guide provides instructions to set up SPF and DKIM with Postfix.
@@ -47,15 +43,15 @@ This guide provides instructions to set up SPF and DKIM with Postfix.
 
 The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions to configure the SPF policy agent and OpenDKIM into Postfix work on any distribution. You only need to make respective code adjustments for the package tool, and identify the exact path to the Unix socket file.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](/docs/email/postfix/) for assistance.
 
 You can publish an SPF DNS record without configuring the SPF policy agent within Postfix. However, publishing DKIM DNS records without an OpenDKIM within Postfix can result in your email being discarded by the recipient's email server.
-{{< /caution >}}
+{{< /note >}}
 
 ## Install DKIM, SPF and Postfix
 
@@ -101,7 +97,7 @@ If you're using Linode's DNS Manager, go to the domain zone page for the selecte
 
 If your DNS provider allows it and DNS Manager doesn't, you should also add a record of type SPF. Provide the details in the same way as you did for the TXT record.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The values for the DNS records and for the rest of this guide are that works for Linode's DNS Manager. If you are using another provider, that respective system may require the values in a different style. For example *freedns.afraid.org* requires the values to be written in the style found in BIND zonefiles. Thus, the above SPF record's value need to be wrapped in double-quotes similar to: `"v=spf1 mx -all"`. You need to consult your DNS provider's documentation for the exact style required.
 {{< /note >}}
 
@@ -253,7 +249,7 @@ example     example.com:YYYYMM:/etc/opendkim/keys/example.private
     - The second section is a selector used when looking up key records in DNS.
     - The third section names the file containing the signing key for the domain.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The flow for DKIM lookup starts with the sender's address. The signing table is scanned until an entry pattern of the first item that matches the address is found. Then, the second item's value is used to locate the entry in the key table for the key information. For incoming mail the domain and selector are used to find the public key TXT record in DNS. This public key is used to validate the signature. For outgoing mail the private key is read from the named file and used to generate the signature on the message.
 {{< /note >}}
 

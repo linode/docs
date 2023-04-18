@@ -1,22 +1,15 @@
 ---
 slug: set-up-a-streaming-rtmp-server
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
-og_description: "Learn how to configure an RTMP Server for streaming, including broadcasting, connecting to streams, and streaming simultaneously to YouTube and Twitch."
 keywords: ['RTMP','streaming','multi-streaming','NGINX']
-tags: ['rtmp', 'stream', 'nginx', 'vlc']
+tags: ['rtmp', 'stream', 'nginx', 'vlc', "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-21
 image: StreamingServer.jpg
 modified_by:
   name: Linode
-title: "How to Set Up an RTMP Streaming Server"
-h1_title: "Setting Up a Streaming RTMP Server"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Setting Up a Streaming RTMP Server"
+title_meta: "How to Set Up an RTMP Streaming Server"
 external_resources:
 - '[RTMP Specification](https://www.adobe.com/devnet/rtmp.html)'
 - '[OBS](https://obsproject.com/)'
@@ -33,6 +26,7 @@ external_resources:
 - '[VideoLAN support page](https://www.videolan.org/support/)'
 - '[list of all of its ingest points](https://stream.twitch.tv/ingests/)'
 - '[NGINX GitHub page](https://github.com/arut/nginx-rtmp-module)'
+authors: ["Jeff Novotny"]
 ---
 
 Live streaming has become an important way for creators, gamers, instructors, and media personalities to reach new audiences. Many live streamers are using sites such as Twitch and Facebook Live to stream. However, a *Real-Time Messaging Protocol* (RTMP) Streaming Server is another popular way to distribute live streams. RTMP allows you to send your stream to a central server, which can store it or retransmit it for audience playback.
@@ -41,9 +35,9 @@ This guide discusses how to configure an RTMP streaming server, and how to use o
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -103,7 +97,7 @@ To stream, you must configure some server parameters through the `nginx.conf` fi
 1. Use your favorite text editor and open the NGINX configuration file, typically located at `/etc/nginx/nginx.conf`.
 
         sudo vi /etc/nginx/nginx.conf
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you cannot find the `nginx.conf` file, run the command `sudo nginx -t`. It displays the file's location and validates its syntax.
 {{< /note >}}
 1. Add some RTMP configuration to the end of the `nginx.conf` file as shown in this example.
@@ -191,14 +185,14 @@ Streamers typically use either a commercial web-based streaming service or an ap
     ![Stream Settings for OBS](Stream-Settings.png)
 1. To begin streaming, click on the **Start Streaming** button in the lower right of the application in the `Controls` section.
     ![Start Streaming Button for OBS](Start-Streaming.png)
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A quick way to test your stream is with a scrolling text message. Click the **+** button under the `sources` menu to create a text object. When you have created the object, right-click on the source and select **filter** to apply a scrolling effect. See the [*OBS Wiki*](https://obsproject.com/wiki/) for more information.
     {{< /note >}}
 1. If you are recording your streams, you can easily confirm whether the server is accepting the streamed input or not. Navigate to the `record_path` directory (from your RTMP configuration), and list its contents with the `ls` command. If you see a new file, the streaming server is correctly receiving and saving your stream.
 
         cd /var/www/html/streams
         ls
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Streaming at too high a rate could cause OBS to disconnect from the server. If your connection bounces, click  **Settings** and then select **Output**. Set the `Video Bitrate` to a lower value. OBS provides some helpful debugging tips on the [*OBS GitHub page*](https://github.com/obsproject/obs-studio/wiki/Dropped-Frames-and-General-Connection-Issues).
     {{< /note >}}
 
@@ -216,7 +210,7 @@ You are now ready to connect to and view your stream in a multimedia player. We 
 
 {{< note >}}
 Beyond the basics, VLC can get complicated. If you run into trouble, consult the [*VideoLAN support page*](https://www.videolan.org/support/).
-    {{< /note >}}
+{{< /note >}}
 
 ## Set Up and Test Multi-Streaming
 

@@ -1,16 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Deploy ___App_Name___ through the Linode Marketplace"
 description: "Two to three sentences describing your guide."
 og_description: "Two to three sentences describing your guide when shared on social media. Delete this if not needed."
 keywords: ['list','of','keywords','and key phrases']
 tags: ["marketplace", "linode platform", "cloud manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
-title: "Deploy ___App_Name___ through the Linode Marketplace"
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'

@@ -1,7 +1,5 @@
 ---
 slug: write-a-neovim-plugin-with-lua
-author:
-  name: Nathaniel Stickman
 description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to create a plugin using the Lua programming language."
 og_description: "Learn how to develop a plugin for Neovim. Neovim introduces first-class support for Lua, and this guide shows you how to make a plugin to start taking advantage of that."
 keywords: ['write neovim plugin','neovim plugin development','neovim lua plugin']
@@ -12,13 +10,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Write a Neovim Plugin with Lua"
 title_meta: "How to Write a Neovim Plugin with Lua"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Nvim Documentation: Lua](https://neovim.io/doc/user/lua.html)'
 - '[GitHub: jacobsimpson/nvim-example-lua-plugin](https://github.com/jacobsimpson/nvim-example-lua-plugin)'
 aliases: ['/guides/writing-a-neovim-plugin-with-lua/']
+authors: ["Nathaniel Stickman"]
 ---
 
 Neovim is an open source fork of the ubiquitous Vim text editor. It supports the [Lua programming language](https://www.lua.org/) which opens up vast possibilities for configuration, scripting, and plugin development. The Neovim community has created numerous plugins pushing the boundaries of the text editor's capabilities.
@@ -27,9 +23,9 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -41,7 +37,7 @@ In this tutorial you learn how to write a Neovim plugin using the Lua programmin
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -121,7 +117,7 @@ This example plugin uses an SQLite database file to store "to do" tasks, which t
 
             sudo dnf install git
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 These modules rely on [LuaJIT](https://luajit.org/), rather than the standard Lua. Neovim uses LuaJIT, so this is not a problem when it comes to your plugin. However, if you want to test out these modules outside of the plugin environment, you need to install, and use LuaJIT to do so.
     {{< /note >}}
 

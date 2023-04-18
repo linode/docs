@@ -1,18 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configurations for common DNS records.'
 og_description: 'This guide provides you with step-by-step instructions for using the Linode Cloud Manager to configure DNS records such as A, AAA, MX, and other DNS records.'
 keywords: ["dns", "dnssec"]
 tags: ["dns","networking","cloud manager","linode platform"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/networking/dns/common-dns-configurations/','/dns-guides/configuring-dns-with-the-linode-manager/','/networking/dns/common-dns-configurations-classic-manager/','/guides/common-dns-configurations/']
 modified: 2019-03-14
 modified_by:
   name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
+authors: ["Linode"]
 ---
 
 {{< youtube Vb1JsfZlFLE >}}
@@ -39,11 +36,11 @@ The Domains section of the Cloud Manager can automatically add all of these reco
 
 1. Click on the **Save** button to create the record.
 
-    {{< disclosure-note "Multi-level Subdomains" >}}
-The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
+    {{< note title="Multi-level Subdomains" >}}
+    The Linode Cloud Manager does not support adding a subdomain of a subdomain in the same domain zone. For example, if you have `example.com` as a domain with an A record for `staging.example.com`, you cannot create `test.staging.example.com` within that same domain zone. Instead, create a separate domain zone for the subdomain `staging.example.com`. Then, add an A record for `test.staging.example.com` to that new zone.
 
-See the [subdomains](/docs/products/networking/dns-manager/guides/manage-dns-records/#second-level-subdomains) section of the [DNS manager](/docs/products/networking/dns-manager/) guide for more information.
-    {{</ disclosure-note >}}
+    See the [subdomains](/docs/products/networking/dns-manager/guides/manage-dns-records/#second-level-subdomains) section of the [DNS manager](/docs/products/networking/dns-manager/) guide for more information.
+    {{< /note >}}
 
 ## Host Multiple Domains on a Single Server
 

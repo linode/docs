@@ -1,9 +1,6 @@
 ---
 slug: use-chroot-for-testing-on-ubuntu
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to create your own chroot environment to securely test settings and apps by creating an environment isolated from your file system."
-og_description: "This guide shows you how to create your own chroot environment to securely test settings and apps by creating an environment isolated from your file system."
 keywords: ['chroot','chroot linux','chroot jail']
 tags: ['linux', 'ubuntu', 'debian']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,27 +8,24 @@ published: 2021-08-20
 modified_by:
   name: Nathaniel Stickman
 title: "Use chroot for Testing on Ubuntu"
-h1_title: "How to Use chroot for Testing on Ubuntu"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "How to Use chroot for Testing on Ubuntu"
 external_resources:
 - '[Ubuntu Man Pages: schroot](https://manpages.ubuntu.com/manpages/focal/man1/schroot.1.html)'
 - '[Debian Wiki: schroot](https://wiki.debian.org/Schroot)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The Linux `chroot` command enables you to run applications or shells within a separate, secure environment. Because a `chroot` environment is walled off from the rest of your system, it can be an ideal space for testing. This guide discusses the primary use cases for chroot and shows you how to create your own chroot environment.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Replace all instances of `example-user` in this guide with the username of the limited Linux user you are using to execute the commands in this guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

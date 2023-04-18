@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Connect to a PostgreSQL Database"
 description: "Learn how to connect to a PostgreSQL Managed Databse through the command line or pgAdmin."
 published: 2022-06-06
 modified: 2022-07-28
+authors: ["Linode"]
 ---
 
 To connect to a PostgreSQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a PostgreSQL client. This guide details how to access your database using popular tools.
@@ -43,9 +41,9 @@ To connect direct to the database from the command-line, you can use the `psql` 
 
         psql --host=[host] --username=[username] --password --dbname=postgres
 
-    {{<note>}}
-If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
-{{</note>}}
+    {{< note >}}
+    If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address).
+    {{< /note >}}
 
 1.  Enter your password at the prompt.
 
@@ -57,7 +55,7 @@ If you do not currently have the psql command-line client installed on your syst
 
 {{< note >}}
 If you require a specific version of the PostgreSQL client, it's recommended to use the official PostgreSQL repositories instead of your distribution's. Visit [PostgreSQL Downloads](https://www.postgresql.org/download/), select your operating system (and distribution), and follow the corresponding installation instructions.
-{{</ note >}}
+{{< /note >}}
 
 -   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
 
