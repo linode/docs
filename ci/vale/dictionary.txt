@@ -565,6 +565,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+ecto
 edmonds
 edu
 efi
@@ -957,6 +958,7 @@ inittab
 injectable
 inkscape
 inode
+inodes
 inotify
 inrupt
 insmod
@@ -2370,6 +2372,7 @@ v2
 v4
 v6
 vagrantfile
+valim
 valheim
 validator
 variadic
