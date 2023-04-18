@@ -17,7 +17,7 @@ external_resources:
 
 Symbolic links (also known as *symlinks*) in Linux are special files that reference other files, directories, devices, or pipes. In other operating systems, symlinks may be called "shortcuts". Symlinks can be used to control access to files. For example, you can build links in a user’s home directory that accesses a more public file for reading and writing. Group permissions perform this function as well, but with a higher administrative maintenance load. Symlinks also bring access to a file deeply nested within a directory tree. Thus, users do not have to walk the file directory tree to access the file.
 
-Learn how to create symlinks in our guide [How to Create Linux Symlinks](/docs/tools-reference/basics/linux-symlinks).
+Learn how to create symlinks in our guide [How to Create Linux Symlinks](/docs/guides/inux-symlinks/).
 
 ## What is a Symlink?
 
