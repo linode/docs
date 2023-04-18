@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-drupal-using-drush-on-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Ubuntu 18.04.'
-og_description: 'This guide will show you how to install the popular content management system Drupal on CentOS 8 using the Drush command line tool on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "drush", "ubuntu"]
 tags: ["drupal","ubuntu","cms","lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +8,8 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drupal using Drush on Ubuntu 18.04
-h1_title: Install Drupal using Drush on Ubuntu 18.04
+title: Install Drupal using Drush on Ubuntu 18.04
+title_meta: How to Install Drupal using Drush on Ubuntu 18.04
 relations:
     platform:
         key: how-to-install-drupal-drush
@@ -21,6 +17,7 @@ relations:
            - distribution: Ubuntu 18.04
 image: InstallDrupalUsingDrushUbuntu1804.png
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/','/websites/cms/drupal/how-to-install-drupal-using-drush-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 [Drupal](https://www.drupal.org/docs/8) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive “community” websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.
@@ -29,9 +26,9 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -49,9 +46,9 @@ aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-using-drush-o
 
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.8.3.tar.gz
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Ensure that the version number matches the Drupal 8 version you wish to download.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Extract the downloaded tarball's contents into your site's document root:
 
@@ -75,7 +72,7 @@ $settings['trusted_host_patterns'] = array(
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `trusted_host_patterns` also accepts IP addresses or localhost.
 {{< /note >}}
 
@@ -120,13 +117,13 @@ In this section, you will use [Drush](https://www.drush.org/) to install a Drupa
 
         drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
     {{< /note >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you encounter errors related to writing to the `sites/default` directory, follow the steps in the [Setting the Site's Ownership and Permissions](#setting-the-site-s-ownership-and-permissions) section to ensure the web server belongs to the current user's group.
-    {{</ note >}}
+    {{< /note >}}
 
     After the installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 
@@ -141,7 +138,7 @@ If you encounter errors related to writing to the `sites/default` directory, fol
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named `www-data`, is added to the site owner's group. Then, read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
-1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1. To create a new user for the site owner position, see the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 1.  From the `public_html` directory, change ownership of the site to the site owner and group. Replace `example_user` below with the chosen owner's username:
 
@@ -165,7 +162,7 @@ In server administration, there are many options for user and group permissions.
 
         drush status
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When installing new files, like a module or theme, make sure the Apache user has access rights. Use the command `ls -al` to list the file permissions within a directory to determine which permissions are assigned to it.
     {{</ note  >}}
 

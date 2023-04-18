@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "How to manage domains using the Linode DNS Manager."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-10-28
@@ -12,6 +9,7 @@ title: "Manage Domains"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/docs/products/networking/dns-manager/guides/remove-domains/']
+authors: ["Linode"]
 ---
 
 ## View Domains
@@ -30,7 +28,7 @@ To add a domain to your account, follow the instructions within the [Create a Do
 
 {{< note >}}
 This section covers viewing and editing the details of the domain itself. If you wish to view and edit DNS records, see [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
 
@@ -83,7 +81,7 @@ Before deleting your domain from Linode, consider if you wish to continue using 
 - **If you intend to use another DNS provider:** Recreate all of your DNS records on your other DNS provider and update the name servers on your domain's registrar to point to this new provider. Once theses changes are made and have taken affect, you can delete the domain from Linode without any resolution errors.
 
 - **If you no longer wish to use this domain:** Remove Linode's name servers from your domain's registrar. *If the entries are not deleted, someone could use your domain on Linode's DNS Manager without your permission.*
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to the **Domains** page in the Cloud Manager. See [View Domains](#view-domains).
 

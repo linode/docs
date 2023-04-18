@@ -1,7 +1,5 @@
 ---
 slug: monitor-linode-network-transfer-pool-with-twilio
-author:
-  name: John Mueller
 description: "This guide shows you how to use Twilio and Linode's Python Library to receive alerts about your Linode's network transfer usage."
 keywords: ['twilio notifications']
 tags: ['python', 'monitoring']
@@ -9,16 +7,14 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-07
 modified_by:
   name: Linode
-title: "Monitor your Linode's Network Transfer Pool"
-h1_title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
-enable_h1: true
-contributor:
-  name: John Mueller
+title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
+title_meta: "Monitor your Linode's Network Transfer Pool"
+authors: ["John Mueller"]
 ---
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide.
 {{< /note >}}
 
@@ -46,15 +42,15 @@ Using Twilio, you can also build a custom text message notification system for y
 
 1. This guide shows how to set up the notification system on a Linode instance. A Linode instance is used because it can remain powered on at all times.
 
-    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/shared-cpu/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
+    If you want to implement the notification system, [create a Linode in the Cloud Manager](/docs/products/compute/compute-instances/get-started/). The lowest-cost Shared CPU instance type is appropriate for this guide. If you already have a Linode instance that you want to set up the notification system on, you can use that instead of a new instance. This guide was tested with Ubuntu 20.04, but should also work with other Linux distributions and versions.
 
-    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
+    After you create your Linode, follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to reduce the threat of a system compromise. Specifically, make sure you [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to the Linode. The notification system in this guide should be installed under a limited Linux user.
 
 1.  Another guide in our library, [How to Use the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/), shows the prerequisite steps for using the Linode API and Twilio API together. Follow this guide, starting with its [Before You Begin](/docs/guides/how-to-use-the-linode-api-with-twilio/#before-you-begin) section, up to and including the [Install the Python Bindings for the Linode API](/docs/guides/how-to-use-the-linode-api-with-twilio/#install-the-python-bindings-for-the-linode-api) section.
 
     The guide instructs you to install the Linode API and Twilio API clients for Python. When following these instructions, run the commands under the limited Linux user on your Linode instance.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The prerequisite guide instructs you to select the **Account** resource [when creating the Linode API key](/docs/guides/how-to-use-the-linode-api-with-twilio/#get-a-linode-api-token). This resource is also used for the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) that's accessed by the network transfer usage notification system in the current guide.
 {{< /note >}}
 
@@ -208,7 +204,7 @@ The `create` method returns a reference to the Twilio [message resource](https:/
 
 1. After appending the above snippet, save the file and exit your text editor.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The code example is now complete. Your script should now look like the code in [this file](transfer-pool-notification-twilio.py).
 {{< /note >}}
 
@@ -397,7 +393,7 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The updated code for this section is now complete. Your script should now look like the code in [this file](transfer-pool-notification-with-threshold-twilio.py).
 {{< /note >}}
 
@@ -417,7 +413,7 @@ https://www.linode.com/docs/guides/network-transfer/
 
     For example, if you set `USAGE_NOTIFICATION_THRESHOLD_RATIO = 0` in your code, then the if statement is always true. This means that a text message is always sent when the script runs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When testing, it can also be helpful to change the cron job schedule to run every minute, which is described in the [Adjusting the Scheduled Notification Time](#optional-adjusting-the-scheduled-notification-time) section.
 {{< /note >}}
 
@@ -514,7 +510,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
 
 1. After appending the above snippet, save the file.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The updated code for this section is now complete. Your script should now look like the code in [this file](transfer-pool-notification-with-overage-threshold-twilio.py).
 {{< /note >}}
 
@@ -536,7 +532,7 @@ https://www.linode.com/docs/guides/network-transfer/
 
     For example, if you set `OVERAGE_NOTIFICATION_THRESHOLD_RATIO = 0` in your code, then the first if statement is always true. This means that a text message is always sent when the script runs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When testing, it can also be helpful to change the cron job schedule to run every minute, which is described in the [Adjusting the Scheduled Notification Time](#optional-adjusting-the-scheduled-notification-time) section.
 {{< /note >}}
 

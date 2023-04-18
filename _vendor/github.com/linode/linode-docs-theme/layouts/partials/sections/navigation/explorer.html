@@ -69,6 +69,7 @@
             <template x-if="!node.isPage()">
               <a
                 @click="node.onClick($event)"
+                :href="node.href"
                 x-bind:class="{
                 'text-brand': node.level === 1 && node.open,
                 'text-titlecolor': !node.isDisabled() && node.level === 1 && !node.open,

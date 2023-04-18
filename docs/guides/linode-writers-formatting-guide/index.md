@@ -1,14 +1,11 @@
 ---
 slug: linode-writers-formatting-guide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2022-12-07
+modified: 2023-01-20
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
@@ -18,6 +15,7 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
+authors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
@@ -34,28 +32,40 @@ Through our Write For Linode program, authors can contribute new guides and be p
 
 Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific Markdown formatting notes are given [further below](#markdown-formatting).
 
+Markdown files for guides are stored under the `docs/guides/` content directory. This content directory is then further subdivided into categories for different technical topics. New guides should be placed with a category that they most closely align with. For example, if you are writing a new guide on the Apache web server, it would be placed under `docs/guides/web-servers/apache/`.
+
+A new subdirectory is created for each guide. This subdirectory should contain a file called `index.md`, which will be where the guide's markdown is written to. For example, if your guide's title is `My Apache Guide`, then you would create its Markdown file at `docs/guides/web-servers/apache/my-apache-guide/index.md`.
+
+A [Hugo archetype](https://gohugo.io/content-management/archetypes/) is available to create new Markdown files. For example, if you wanted to create the `My Apache Guide` example guide, you could run this command from inside your cloned docs repository:
+
+```command
+hugo new -k content docs/guides/web-servers/apache/my-apache-guide/index.md
+```
+
 ### Header
 
 Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
+{{< note >}}
+If you use the Hugo archetype command described in the previous section, the created Markdown file will be pre-populated with the frontmatter template below.
+{{< /note >}}
+
 ```file {title="Author Submission" lang="yaml"}
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing the purpose of the guide.'
-keywords: ["list", "of", "keywords", "and key phrases"]
+slug: url-slug-for-your-guide
+title: "Title of Your Guide (appears in H1)"
+title_meta: "Title of Your Guide (appears in meta title tag)"
+description: 'Two to three sentences describing your guide.'
+og_description: 'Two to three sentences describing your guide when shared on social media.'
+keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
+authors: ["Linode"]
+published: 2023-03-07
 modified_by:
   name: Linode
-title: 'Guide Title'
-contributor:
-  name: Your Name
-  link: Github/Twitter/LinkedIn URL
 external_resources:
-  - '[Link Title 1](http://www.example.com)'
-  - '[Link Title 2](http://www.example.net)'
+- '[Link Title 1](http://www.example.com)'
+- '[Link Title 2](http://www.example.net)'
 ---
 ```
 
@@ -72,9 +82,9 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 ```file {title="Author Submission"}
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 ```
 
 ### Include a Note about Root or Non-Root users
@@ -300,16 +310,15 @@ The following shortguide describes how to install Python via Miniconda. Create a
 
 ```file {title="install_python_miniconda/index.md" lang="yaml"}
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Install Python with Miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-23
+authors: ["Author's FirstName LastName`"]
+published: 2023-03-07
+modified: 2023-03-07
 modified_by:
   name: Linode
-title: "Install Python with Miniconda"
 headless: true
 show_on_rss_feed: false
 ---
@@ -517,7 +526,7 @@ Use <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy text.
 
 Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
-- **Internal link example:** `[Getting Started](/docs/guides/getting-started/)`
+- **Internal link example:** `[Getting Started](/docs/products/platform/get-started/)`
 - **External link example:** `[Apache HTTP Server Documentation](https://httpd.apache.org/docs/)`
 
 ### Lists
@@ -542,29 +551,147 @@ Unordered lists are bulleted and should be used for any collection of items that
 - Item 3
 ```
 
-### Notes and Cautions
+### Note Shortcode
 
-Notes should be important text that does not necessarily fit the narrative of the preceding step or paragraph. If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
+The **note** shortcode is used to display a note to the reader.
 
 ```file
 {{</* note */>}}
-This is a sample note.
+This is an example note.
 {{</* /note */>}}
 ```
 
 {{< note >}}
-This is a sample note.
+This is an example note.
 {{< /note >}}
 
-```file
-{{</* caution */>}}
-This is a sample caution.
-{{</* /caution */>}}
+#### Parameters
+
+The shortcode accepts the following parameters:
+
+| Parameter | Values | Description |
+| -- | -- | -- |
+| `type` | | Identifies the note as one of 4 types: |
+|  | `"secondary"` | A muted note. |
+|  | `"primary"` | (*DEFAULT*) A note or tip related to the surrounding content. This is the default type if no type is specified. |
+|  | `"warning"` | A note to take certain precautions. |
+|  | `"alert"` | An important note that should not be skipped over. |
+| `title` | String | Sets the title of the note. |
+| `noTitle` | boolean | Does not apply a default title to the note. Defaults to false. |
+| `isCollapsible` | boolean | Sets the note as collapsible. The note must have a title defined. Defaults to false. |
+| `respectIndent` | boolean | This is only used for older note shortcodes (`{{</* note */>}}`) that have been converted to the newer shortcode. By default, content between the shortcode tags is rendered using `.InnerDeindent`, which allows the shortcode to respect the indentation of any parent elements (such as lists). When set to `false`, `.Inner` is used instead, which does not de-indent the content and does not respect the indentation of parent elements. Defaults to true. |
+
+#### Note Types
+
+There are four unique types of notes:
+
+- **Secondary** (`type="secondary"`, title defaults to "Note")
+
+    {{< note type="secondary" >}}
+    This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+
+    ```command
+    sudo apt update
+    ```
+    {{< /note >}}
+
+- **Primary** (type is unset or `type="primary"`, title defaults to "Note")
+
+    {{< note >}}
+    This is an example of a primary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+
+    ```command
+    sudo apt update
+    ```
+    {{< /note >}}
+
+- **Warning** (`type="warning"`, title defaults to "Warning")
+
+    {{< note type="warning" >}}
+    This is an example of a warning note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+
+    ```command
+    sudo apt update
+    ```
+    {{< /note >}}
+
+- **Alert** (`type="alert"`, title defaults to "Important")
+
+    {{< note type="alert" >}}
+    This is an example of an alert note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
+
+    ```command
+    sudo apt update
+    ```
+    {{< /note >}}
+
+#### Custom Title
+
+Each note can also have a custom title, which is set using the `title` parameter.
+
+```file {lang="text"}
+{{</* note title="Custom title" */>}}
+This is an example note with a custom title.
+{{</* /note */>}}
 ```
 
-{{< caution >}}
-This is a sample caution.
-{{< / caution >}}
+{{< note title="Custom title" >}}
+This is an example note with a custom title.
+{{< /note >}}
+
+#### No Title
+
+Additionally, you can specify that the note should have no title by using `noTitle=true`. This causes the default title to not display.
+
+```file {lang="text"}
+{{</* note noTitle=true */>}}
+This is an example note with no title.
+{{</* /note */>}}
+```
+
+{{< note noTitle=true >}}
+This is an example note with no title.
+{{< /note >}}
+
+#### Collapsible
+
+Additionally, a note can also be collapsible by setting `isCollapsible=true` (defaults to false). This hides the body of the note and displays a collapse/expand icon.
+
+```file {lang="text"}
+{{</* note title="This is a collapsible note with a custom title" isCollapsible=true */>}}
+This content is hidden until the user expands the note.
+{{</* /note */>}}
+```
+
+{{< note title="This is a collapsible note with a custom title" isCollapsible=true >}}
+This content is hidden until the user expands the note.
+{{< /note >}}
+
+#### Indentation
+
+Content within the opening and closing note shortcode tags must respect the expected indentation of any parent elements, such as list items. Since content within a list is indented (using 4 spaces), the content of a note shortcode must be indented by the same number of spaces.
+
+```file
+- First list item.
+
+    {{</* note */>}}
+    This content appears within the first list item and, as such, respects its indentation.
+    {{</* /note */>}}
+
+- Second list item.
+```
+
+If this indentation is not respected, which should only be the case for older note shortcodes made before this change, the following option is set: `respectIndent=false`. If one of these is encountered when editing an existing guide, remove `respectIndent=false` and properly indent the shortcode.
+
+```file
+- First list item.
+
+    {{</* note respectIndent=false */>}}
+This content appears within the first list item but does not respect its indentation.
+{{</* /note */>}}
+
+- Second list item.
+```
 
 ### Numerical Values
 
@@ -657,6 +784,49 @@ Hello world!
 ````
 
 *The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
+
+## Author Pages
+
+Profile pages for authors are listed at https://www.linode.com/docs/authors/. These are automatically generated from the `authors` frontmatter of the guides in the library. These pages list all of the guides that an author has published in the docs library.
+
+Docs contributors can create author pages by following these steps:
+
+{{< note >}}
+The second step is optional. If you do not follow this step, a profile page is still automatically generated from the `authors` frontmatter of the guides you have written. The second step shows you how to add custom biographical information to the profile page.
+{{< /note >}}
+
+1. On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
+
+    ```file
+    authors: ["FirstName LastName"]
+    ```
+
+1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory should named after you, with uppercase letters replaced by lower case, and spaces replaced by a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.
+
+    {{< note >}}
+    Note that the Markdown file is named `_index.md`, not `index.md`
+    {{< /note >}}
+
+    A [Hugo archetype](https://gohugo.io/content-management/archetypes/) is available to create new author pages. For the example author `Nathan Smith`, you would run this command to create the Markdown file for their profile page:
+
+    ```command
+    hugo new -k authorpage docs/authors/nathan-smith/_index.md
+    ```
+
+    The template that will be created looks like:
+
+    ```file
+    ---
+    title: "Nathan Smith"
+    link: ""
+    email: ""
+    description: "The Linode documentation library's profile page and submission listing for Nathan Smith"
+    ---
+
+    A short biography of the docs author/contributor. This biography text is displayed above a listing of their published docs/content.
+    ```
+
+    You can set an email, website link, and short meta description in the frontmatter of this file. You can also update the body of the file with a biography of the author. This biography will be displayed above the author's published guides listing.
 
 ## Legal Information
 

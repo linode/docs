@@ -1,8 +1,5 @@
 ---
 slug: managed-disable-service-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that describes how to temporarily disable service monitoring in Linode Managed.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-20
@@ -15,11 +12,12 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform"]
 aliases: ['/platform/managed-disable-service-shortguide/']
+authors: ["Linode"]
 ---
 
 Service monitoring can be temporarily disabled:
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Linode Managed continuously monitors your services for availability. If you are going to perform scheduled maintenance on a service that temporarily makes it unavailable, you will receive a support ticket from Linode when they are alerted of the service's outage. You can disable monitoring for that service during the maintenance to avoid receiving these reports.
 {{< /note >}}
 

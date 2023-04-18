@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy UTunnel VPN on a Linode Compute Instance. This provides you with a cloud-based subscription service that allows users to create VPN servers."
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -12,18 +9,17 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy UTunnel VPN through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[UTunnel](https://www.utunnel.io/)'
 aliases: ['/guides/deploying-utunnel-marketplace-app/','/guides/utunnel-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [UTunnel VPN](https://www.utunnel.io/) lets you set up your own private VPN server quickly and easily; no technical expertise is required. It is well suited for small and medium businesses to set up easy and secure remote access for their employees, or for anyone who wants to keep their data private using their own VPN. UTunnel VPN supports multiple VPN protocols and comes with a server management console, secure 256-bit encryption, easy team management, single sign-on, 2-factor authentication, and an inbuilt firewall.
 
 {{< note >}}
-A license is required to use uTunnel. See [uTunnel's Pricing page](https://www.utunnel.io/vpn-server-pricing-plans) for more information on available plans and their associated costs. A free 14-day trial is installed by default.
-{{</ note >}}
+A license is required to use UTunnel. See [UTunnel's Pricing page](https://www.utunnel.io/vpn-server-pricing-plans) for more information on available plans and their associated costs. A free 14-day trial is installed by default.
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -31,9 +27,9 @@ A license is required to use uTunnel. See [uTunnel's Pricing page](https://www.u
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** UTunnel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

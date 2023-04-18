@@ -1,8 +1,5 @@
 ---
 slug: install-alpine-linux-on-your-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
 tags: ["cloud manager"]
@@ -13,9 +10,6 @@ modified_by:
 published: 2016-09-22
 title: 'Install Alpine Linux on your Linode'
 deprecated: True
-contributor:
-  name: Andrew Leap
-  link: http://github.com/andyleap
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
 relations:
@@ -24,6 +18,7 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
+authors: ["Andrew Leap"]
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")
@@ -33,7 +28,7 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 
 ## Before You Begin
 
-1.  Familiarize yourself with [Lish](/docs/guides/lish/), as most of this guide will require an out-of-band connection.
+1.  Familiarize yourself with [Lish](/docs/products/compute/compute-instances/guides/lish/), as most of this guide will require an out-of-band connection.
 
 2.  Installing Alpine in this manner will destroy all existing data on the installation target disks. Back up *all* data on the disks which you intend to install Alpine on.
 
@@ -41,9 +36,9 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 
 4.  This guide assumes a consistent present working directory, meaning all commands should be run from the same directory. In most cases, it will be `/alpine` or a chroot of said directory.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 While this guide will provide you with a fully operational Alpine installation, be aware that Linode does not provide official support for Alpine Linux and cannot guarantee its stability or security. Please consider this before proceeding.
-{{< /caution >}}
+{{< /note >}}
 
 ## Prepare the Linode
 
@@ -55,7 +50,7 @@ In this section, we'll create the disk images necessary to install Alpine Linux.
 
 2.  Create your boot disk image by selecting **Create a new Disk** under the Disks section. The size should be between 128 and 256 MB, and the type should be **ext4**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Boot drives (disk images) will need to store your kernel and your initramfs. Currently, Alpine will need about 21 MB for each kernel/initramfs combination, so even 128 MB is enough for several kernel versions, just remember to keep an eye on the available storage in `/boot` when you perform upgrades of the kernel.
 {{< /note >}}
 
@@ -63,7 +58,7 @@ Boot drives (disk images) will need to store your kernel and your initramfs. Cur
 
 4.  Optionally, create a swap disk image with type **swap**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Between 256 and 512 MB of swap is a good estimate. Many sources recommend much more than this, but a new installation of Alpine will use less than 50 MB of RAM when fully booted.
 {{< /note >}}
 
@@ -230,7 +225,7 @@ features="ata ide scsi virtio base ext4"
 
 1.  Reboot into the Alpine Linux configuration you made earlier by selecting the button next to the profile in the Linode Manager and clicking **Reboot**. If this is the only configuration profile, this can also be accomplished directly in Lish using the `boot 1` command. If there are other profiles, you can substitute `1` with the list position of your Alpine profile.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 During boot, the output in Lish that networking fails to start. This is expected, and will be fixed shortly.
 {{< /note >}}
 
@@ -301,6 +296,6 @@ For more information, see Alpine's wiki page on [package management](https://wik
 
 ## Secure Your Server
 
-Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our [Securing Your Server](/docs/guides/set-up-and-secure/) guide provides a good starting point but you should also research additional, Alpine-specific security options. Keep in mind that most security packages (e.g. `iptables`.) will need to be installed.
+Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide provides a good starting point but you should also research additional, Alpine-specific security options. Keep in mind that most security packages (e.g. `iptables`.) will need to be installed.
 
 For more information, refer to their wiki page on [security](https://wiki.alpinelinux.org/wiki/Category:Security).

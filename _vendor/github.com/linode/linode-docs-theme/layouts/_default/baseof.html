@@ -3,6 +3,7 @@
   {{ $showToc = .Params.toc }}
   {{ if not $showToc }}
     {{ $showToc = strings.Contains .Content "<h2" }}
+    {{ $showToc = or $showToc (eq .Section "api") }}
   {{ end }}
 {{ end }}
 <!DOCTYPE html>
@@ -93,7 +94,6 @@
         class="bg-white w-full box-border sticky top-0 z-10 border-b-gray">
         <div id="navbar__icons--left" class="h-full flex justify-start">
           <div
-            class="navbar__logo hide-if-topbar-is-not-pinned md:pr-2 h-full flex items-center justify-center"
             x-data="lncNav"
             x-effect="onEffect()"
             @scroll.window="onScroll()"
@@ -102,9 +102,6 @@
             @popstate.window="onPopState($event)"
             id="nav-controller"
             data-turbo-permanent>
-            <svg>
-              <use href="#icon--logo-small"></use>
-            </svg>
           </div>
           <div class="navbar__explorer-toggle h-full">
             {{ partial "sections/navigation/explorer-toggle.html" . }}

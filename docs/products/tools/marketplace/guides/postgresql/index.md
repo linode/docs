@@ -1,7 +1,4 @@
 ---
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
 keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
@@ -15,6 +12,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 aliases: ['/platform/marketplace/deploy-postresql-with-marketplace-apps/', '/platform/one-click/deploy-postresql-with-one-click-apps/', '/guides/deploy-postresql-with-one-click-apps/','/guides/deploy-postresql-with-marketplace-apps/','/guides/postgresql-marketplace-app/']
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.
@@ -25,9 +23,9 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** PostgreSQL should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -38,13 +36,15 @@ The PostgreSQL relational database system is a powerful, scalable, and standards
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access PostgreSQL
 
 After PostgreSQL has finished installing, you will be able to access PostgreSQL from the console via ssh with your Linode's IPv4 address:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) and [create a limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 1.  Log out and log back in as your limited user account.
 
@@ -58,9 +58,9 @@ After PostgreSQL has finished installing, you will be able to access PostgreSQL 
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The `postgres` user should not be used for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Change the `postgres` user's Linux password:
 

@@ -1,7 +1,5 @@
 ---
 slug: how-to-deploy-a-react-app-on-debian-10
-author:
-  name: Linode
 description: This tutorial will explain how to deploy a React app to a Ubuntu 18.04 Linode installation that's running a web server.
 keywords: ['react','reactjs','deploy','rsync']
 tags: ["web applications","apache","nginx","debian"]
@@ -11,11 +9,8 @@ modified: 2020-04-24
 image: Deploying_a_React_Application_on_Debian_10_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy a React Application on Debian 10"
-h1_title: "Deploying a React Application on Debian 10"
-enable_h1: true
-contributor:
-  name: Linode
+title: "Deploying a React Application on Debian 10"
+title_meta: "How to Deploy a React Application on Debian 10"
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -28,6 +23,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/react/how-to-deploy-a-react-app-on-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is React?
@@ -38,9 +34,9 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on Debian 10](/docs/guides/how-to-install-apache-web-server-debian-10/) guide or the [Installing NGINX on Debian 10](/docs/guides/how-to-install-nginx-debian-10/) guide.
 
@@ -72,7 +68,7 @@ The steps in this section should be performed on your Linode.
 
         sudo chown -R example_user:www-data /var/www/example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Depending on how you have configured your web root's directory, `www-data` may or may not be the group that owns it. To verify the directory's group, issue the following command:
 
     ls -la /var/www/
@@ -84,7 +80,7 @@ drwxrwxr-x 3 example_user www-data     4096 Apr 24 17:34 example.com
 {{</ output >}}
 
 
-    {{</ note >}}
+    {{< /note >}}
 
 
 
@@ -178,9 +174,9 @@ echo "Deployment complete"
 
     This script will check out the `master` branch of your project on Git, build the app using `npm run build`, and then sync the build files to the remote Linode using Rsync. If your React app was not built with `create-react-app`, the build command may be different and the built files may be stored in a different directory (such as `dist`). Modify the script accordingly.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your React app's directory is not initialized as a Git repository, the command `git checkout master` will return a `fatal: not a git repository (or any of the parent directories): .git` error. However, the script will continue on to the next commands and the files should still be transferred to your remote Linode server. See our [Getting Started with Git](/docs/guides/how-to-configure-git/#use-git-with-a-local-repository) guide to learn how to initialize a Git repository.
-    {{</ note >}}
+    {{< /note >}}
 
 1.  Make the script executable:
 
@@ -200,4 +196,4 @@ If your React app's directory is not initialized as a Git repository, the comman
 
 Deployment can be a complex topic and there are many factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable on its own for a large scale production application.
 
-More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/guides/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
+More advanced build and continuous integration tools such as [Jenkins](https://jenkins.io) or [Travis](https://travis-ci.org/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guide on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) to get started.

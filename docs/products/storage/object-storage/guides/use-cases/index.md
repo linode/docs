@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide provides you with an introduction to Linode Object Storage and also offers you several practical use cases, as well as benefits and limitations."
 image: use-cases-for-linode-obj-storage.png
 keywords: ['object','storage','s3','use','case']
@@ -10,10 +7,9 @@ published: 2019-08-26
 modified_by:
   name: Linode
 title: "Use Cases for Object Storage"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-storage-use-cases/']
+authors: ["Linode"]
 ---
 
 ## What is Object Storage?

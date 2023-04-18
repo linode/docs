@@ -1,8 +1,5 @@
 ---
 slug: deploy-just-cause-2-multiplayer-server-on-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install and configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04.'
 keywords: ["just cause 2", "game servers", "ubuntu", "ubuntu 14.04", "steamcmd", "steam", "multiplayer game server"]
 tags: ["ubuntu"]
@@ -13,10 +10,8 @@ modified_by:
     name: Linode
 title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/','/applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 ---
 
 
@@ -28,7 +23,7 @@ dedicated_cpu_link: true
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -75,7 +70,7 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update JC2, run the above 4 commands again.
 {{< /note >}}
 
@@ -115,9 +110,9 @@ screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
 
         cd ~/ && ./startjc2.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop JC2.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

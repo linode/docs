@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy WarpSpeed on a Linode Compute Instance. This provides you with one of the fastest, easiest to use, and most secure VPN gateway software."
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
@@ -12,11 +9,10 @@ modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy WarpSpeed VPN through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
 aliases: ['/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
+authors: ["Linode"]
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
@@ -27,9 +23,9 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** WarpSpeed should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -42,6 +38,8 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 - **Admin Password:** This is the admin user password to login to your WarpSpeed instance.
 - **DNS name:** This is the domain you will be using for your WarpSpeed instance.
 - **Data Directory:** This is the directory that your WarpSpeed data will be stored in, default will be `/wirespeed`.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 

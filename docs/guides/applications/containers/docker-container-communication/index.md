@@ -1,8 +1,5 @@
 ---
 slug: docker-container-communication
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide will show you how to link Docker containers using a Node.js application and PostgreSQL.'
 og_description: "Learn to link Docker containers using a Node.js application and PostgreSQL through a simple 'Hello World' application."
 keywords: ['docker','containers','database','container communication']
@@ -12,12 +9,14 @@ published: 2017-12-28
 modified: 2017-11-29
 modified_by:
   name: Jared Kobos
-title: "How to Connect Docker Containers"
+title: "Connect Docker Containers"
+title_meta: "How to Connect Docker Containers"
 external_resources:
 - '[Docker: Understanding Container Communication](https://docs.docker.com/engine/userguide/networking/default_network/container-communication/)'
 - '[Linking Containers](https://rominirani.com/docker-tutorial-series-part-8-linking-containers-69a4e5bf50fb)'
 - '[Connecting Containers](https://deis.com/blog/2016/connecting-docker-containers-1/)'
 aliases: ['/applications/containers/docker-container-communication/']
+authors: ["Jared Kobos"]
 ---
 
 ![Connect Docker Containers](connect-docker-containers.jpg)
@@ -132,7 +131,7 @@ client.query('SELECT * FROM hello', (err, res) => {
 
     This app uses the `pg` NPM module (node-postgres) to connect to the database created in the previous section. It then queries the 'hello' table (which returns the "Hello world" message) and logs the response to the console. Replace `'newpassword'` with the `postgres` database user password you set in the previous section.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `pg` module can also use environment variables to configure the client connection. This is the recommended option for production apps. Read more about environment variables in the [node-postgres documentation](https://node-postgres.com/features/connecting).
 {{< /note >}}
 
@@ -242,9 +241,9 @@ host    all             postgres        172.17.0.0/16           password
 
 In this section, both the app and database will be running in separate containers. You can use the [official postgres image](https://hub.docker.com/_/postgres/) from Docker Hub and load in the SQL dump created earlier.
 
-{{< caution >}}
+{{< note type="alert" >}}
 You should not store production database data inside a Docker container. Containers should be treated as ephemeral entities: if a container unexpectedly crashes or is restarted, all data in the database will be lost.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Stop and remove the Node.js container:
 

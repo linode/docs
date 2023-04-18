@@ -1,8 +1,5 @@
 ---
 slug: install-seafile-with-nginx-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install Seafile, a free and open-source cross-platform file hosting tool with server applications for Linux and Windows, on Ubuntu 16.04.'
 keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 tags: ["ubuntu", "nginx"]
@@ -15,6 +12,7 @@ title: Install Seafile with NGINX on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
 aliases: ['/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604/']
+authors: ["Linode"]
 ---
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with NGINX or Apache to enable connections over HTTPS.
@@ -45,7 +43,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         ssh sfadmin@<your_linode's_ip>
 
 
-4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#harden-ssh-access) guide to harden SSH access.
+4.  You should now be logged into your Linode as *sfadmin*. Use our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access) guide to harden SSH access.
 
 5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Set the allow rules for SSH and HTTP(S) access with:
 
@@ -71,7 +69,7 @@ This guide is written for a non-root user. Commands that require elevated privil
         [ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
         [ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
 {{< /note >}}
 

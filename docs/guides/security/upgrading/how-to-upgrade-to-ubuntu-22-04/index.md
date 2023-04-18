@@ -1,26 +1,20 @@
 ---
 slug: how-to-upgrade-to-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
-og_description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
 keywords: ['Upgrade Ubuntu','Upgrade from Ubuntu 20.04','Upgrade to Ubuntu 22.04','Ubuntu inline upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-07
 modified_by:
   name: Linode
-title: "How to Upgrade to Ubuntu 22.04 LTS"
-h1_title: "How to Upgrade to Ubuntu 22.04 LTS"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Upgrade to Ubuntu 22.04 LTS"
+title_meta: "How to Upgrade to Ubuntu 22.04 LTS"
 external_resources:
 - '[Ubuntu 22.04.1 LTS release](https://releases.ubuntu.com/22.04/)'
 - '[Ubuntu server documentation](https://ubuntu.com/server/docs)'
 - '[Ubuntu 22.04 release notes](https://discourse.ubuntu.com/t/jammy-jellyfish-release-notes/24668)'
 - '[Ubuntu Long Term Support Schedule](https://ubuntu.com/about/release-cycle)'
 - '[New features in Ubuntu 22.04](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop)'
+authors: ["Jeff Novotny"]
 ---
 
 Although Ubuntu 20.04 LTS (*Long Term Support*) is still supported, users should upgrade Ubuntu to the more recent 22.04 LTS. Upgrading to the new release ensures the system can access the most recent security upgrades and application packages. This guide describes how to perform an inline upgrade from Ubuntu 20.xx or 21.xx to 22.04.
@@ -57,9 +51,9 @@ In an inline upgrade, the primary node is upgraded in place using either the GUI
 -   This method of upgrading tends to retain "digital residue". This includes unnecessary or outdated packages, patches, and data.
 -   This method is recommended if the system is only one release behind and is mainly running a widely used and tested configuration such as a LAMP stack. An inline upgrade might run into more problems when the system configuration is complicated or includes in-house applications.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Although this process upgrades the Ubuntu operating system and most common programs, it does not necessarily upgrade every application. It is difficult to predict how the upgrade might affect these programs.
-{{< /caution >}}
+{{< /note >}}
 
 ### The Clean Install Method
 
@@ -76,13 +70,13 @@ For an in-depth explanation of the clean install method, see the [Linode guide t
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -92,9 +86,9 @@ This guide is designed for users who want to upgrade from Ubuntu 20.04 LTS to Ub
 
 If the Linode is running Ubuntu 18.xx or any earlier release, first upgrade it to Ubuntu 20.04 LTS. Then perform the steps in this guide to upgrade from Ubuntu 20.04 LTS to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](/docs/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 This operation cannot be canceled after it is started. Ensure there is a stable connection to the Linode and backup power is available.
-{{< /caution >}}
+{{< /note >}}
 
 ### How to Prepare the Linode for the Upgrade
 
@@ -137,9 +131,9 @@ mysql.service loaded active running MySQL Community Server
 
 6.  Use the command `sudo systemctl stop <application_name>` to stop a service. The following example demonstrates how to stop the Apache web server instance.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not stop any essential system services such as `ssh` or any `systemd` entry.
-    {{< /caution >}}
+    {{< /note >}}
 
     ```code
     sudo systemctl stop apache2
@@ -179,7 +173,7 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 The node is now ready for the upgrade. Ensure the update manager is installed, then initiate the upgrade. The upgrade might take some time, depending on the configuration, and must not be interrupted. Ensure there is enough time to complete the entire upgrade before proceeding.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The upgrade operation can be performed using either a LISH session or an SSH connection. A LISH session is safer, but if SSH is used, the upgrade manager opens a second port for redundancy. This guide uses SSH for the procedure to demonstrate the additional steps required.
 {{< /note >}}
 
@@ -216,7 +210,7 @@ The upgrade operation can be performed using either a LISH session or an SSH con
 
 3.  Run the `do-release-upgrade` command to start the upgrade.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To force an upgrade from the latest supported release to a development release, use the command `do-release-upgrade -d`. This guide focuses on upgrading to the latest supported release and does not use this flag.
     {{< /note >}}
 
@@ -275,7 +269,7 @@ Continue [yN]
 
 7.  Ubuntu downloads the new packages and files. It determines which packages are no longer supported and requests approval to proceed. It also calculates how long the upgrade might take. To continue with the upgrade, answer `y`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To see details about the packages to be removed, installed, and upgraded, enter `d`. Enter `q` to exit the details screen. Then enter `y` to continue with the upgrade.
     {{< /note >}}
 

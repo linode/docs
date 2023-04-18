@@ -1,8 +1,5 @@
 ---
 slug: host-a-website-with-high-availability
-author:
-  name: Phil Zona
-  email: docs@linode.com
 description: 'This article shows you how you to configure a high availability stack using GlusterFS replication on two Linodes for your application or website.'
 keywords: ["high availability", "web server", "failover"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,8 +15,9 @@ external_resources:
 - '[Keepalived](http://www.keepalived.org/)'
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 aliases: ['/websites/hosting/host-a-website-with-high-availability/','/websites/host-a-website-with-high-availability/']
-tags: ["web server"]
+tags: ["web server", "digital agencies", "ecommerce"]
 image: host-a-website-with-high-availability-title-graphic.jpg
+authors: ["Phil Zona"]
 ---
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
@@ -28,9 +26,9 @@ This guide shows how to host a highly available website with WordPress. However,
 
 ## Before You Begin
 
-1.  Create 9 Compute Instances using the *CentOS 7* distribution, all in the same data center. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  Create 9 Compute Instances using the *CentOS 7* distribution, all in the same data center. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do not create firewall rules yet, as we'll be handling that step in our guide.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
 1.  The Linodes we create in this guide will use the following hostname conventions:
 
@@ -40,9 +38,9 @@ This guide shows how to host a highly available website with WordPress. However,
 
     You can call your nodes anything you like, but try to keep the naming consistent for organizational purposes. When you see one of the above names, be sure to substitute the hostname you configured for the corresponding node.
 
-1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each.
+1.  To create a private network among your Linodes, you'll need a [private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Most steps in this guide require root privileges. Be sure you're entering the commands as root, or using `sudo` if you're using a limited user account. If you’re not familiar with the `sudo` command, visit our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -62,9 +60,9 @@ Edit the `/etc/hosts` file on each Linode to match the following, substituting y
 
 These steps should be run on each file system node in your cluster.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 GlusterFS generates a UUID upon installation. Do not clone a single Linode to replicate your GlusterFS installation; it must be installed separately on each node.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Add the `centos-release-gluster` repository, which will allow you to install the GlusterFS server edition package:
 
@@ -72,7 +70,7 @@ GlusterFS generates a UUID upon installation. Do not clone a single Linode to re
         yum install centos-release-gluster
         yum install glusterfs-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 During the `glusterfs-server` installation, you may be prompted to verify a GPG key from the CentOS Storage SIG repository. Before running the third command, you can manually import the GPG key:
 
     rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
@@ -93,7 +91,7 @@ Run the following commands on each Linode in your GlusterFS cluster.
         firewall-cmd --zone=internal --add-source=192.168.3.4/32 --permanent
         firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the Linode Manger, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
 {{< /note >}}
 
@@ -176,7 +174,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 192.168.5.6    galera3.yourdomain.com    galera3
 {{< /file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/guides/support/).
 {{< /note >}}
 
@@ -194,7 +192,7 @@ Install Galera and XtraDB on each Linode that will be in the database cluster.
         yum install https://downloads.percona.com/downloads/percona-release/percona-release-0.1-6/redhat/percona-release-0.1-6.noarch.rpm
         yum install Percona-XtraDB-Cluster-57 Percona-XtraDB-Cluster-shared-57
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When installing `Percona-XtraDB-Cluster-57` and `Percona-XtraDB-Cluster-shared-57`, you will be prompted to verify a GPG key from the Percona repository. Before running the third command, you can manually import the GPG key:
 
     wget https://repo.percona.com/yum/PERCONA-PACKAGING-KEY &&  rpm --import PERCONA-PACKAGING-KEY
@@ -226,7 +224,7 @@ Run the following commands on each database node.
         firewall-cmd --zone=internal --add-source=192.168.3.4/32 --permanent
         firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In the Linode Manger, you may notice that the netmask for your private IP addresses is `/17`. Firewalld does not recognize this, so a `/32` prefix should be used instead.
 {{< /note >}}
 
@@ -277,7 +275,7 @@ wsrep_sst_auth="sstuser:password"
 
     In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place. It will be needed later.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
 {{< /note >}}
 
@@ -343,7 +341,7 @@ Now that your database nodes are configured, test to make sure they've all joine
 4 rows in set (0.00 sec)
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you add to or remove nodes from the cluster in the future, you may notice the value for `wsrep_cluster_conf_id` increases each time. This value is the number of changes the cluster's configuration has gone through, and does not directly affect functionality. The above value of `3` is only an example.
 {{< /note >}}
 
@@ -510,7 +508,7 @@ Your Apache servers should now be capable of serving files and applications from
 
 So far, we've successfully configured a redundant web stack with three layers of nodes performing a series of tasks. Gluster automatically handles monitoring, and we configured the failover for the file system nodes in our application nodes' `/etc/fstab` files. In this section, we use Keepalived to handle database failover.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Alternatively, some users prefer to configure HAProxy instead of or in addition to Keepalived. For more information, visit our guide on [how to use HAProxy for load balancing](/docs/guides/how-to-use-haproxy-for-load-balancing/).
 {{< /note >}}
 
@@ -522,13 +520,13 @@ No additional Linodes will be created in this section, and all configuration wil
 
     yum install keepalived
 
-{{< caution >}}
-Make sure that [Network Helper](/docs/guides/network-helper/) is turned **OFF** on your database nodes before proceeding.
-{{< /caution >}}
+{{< note type="alert" respectIndent=false >}}
+Make sure that [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) is turned **OFF** on your database nodes before proceeding.
+{{< /note >}}
 
 ### Configure IP Sharing
 
-IP sharing, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. See, [Configuring IP Sharing](/docs/guides/managing-ip-addresses/#configuring-ip-sharing) for information about using Linode Cloud Manager to configure IP failover.
+IP sharing, also referred to as IP failover, is the process by which an IP address is reassigned from one Compute Instance to another in the event the first one fails or goes down. See, [Configuring IP Sharing](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) for information about using Linode Cloud Manager to configure IP failover.
 
 Configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
 
@@ -641,9 +639,9 @@ vrrp_instance VI_1 {
 
 1.  Reboot each of your three database nodes, one at a time, to bring up the failover configuration.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 It is important to boot each database node one at a time, otherwise you may bring down the entire cluster, in which case you would need to bootstrap MySQL and add each node to the cluster again. Refer to the [Galera documentation](http://galeracluster.com/documentation-webpages/restartingcluster.html) on how to restart the entire Galera cluster.
-{{</ caution >}}
+{{< /note >}}
 
 You've successfully installed and configured Keepalived. Your database nodes will now be able to fail over if one goes down, ensuring high availability.
 
@@ -677,7 +675,7 @@ The final step in creating a highly available website or application is to load 
 
 For instructions on how to install this component, follow our guide on [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/). Be sure to use the *private* IP addresses of your application servers when adding nodes to your backend.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 NodeBalancers are an add-on service. Be aware that adding a NodeBalancer will create an additional monthly charge to your account. See [NodeBalancer Pricing](https://www.linode.com/pricing/#nodebalancers) guide for more information.
 {{< /note >}}
 

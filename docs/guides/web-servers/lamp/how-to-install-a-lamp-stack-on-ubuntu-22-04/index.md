@@ -1,20 +1,13 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
-og_description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
 keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-09
 modified_by:
   name: Linode
-title: "How to Install a LAMP Stack on Ubuntu 22.04"
-h1_title: "How to Install a LAMP Stack on Ubuntu 22.04"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
+title: "Install a LAMP Stack on Ubuntu 22.04"
+title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
 external_resources:
 - '[LAMP Stack Wikipedia page](https://en.wikipedia.org/wiki/LAMP_(software_bundle))'
 - '[MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)'
@@ -27,6 +20,7 @@ relations:
     platform:
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.
@@ -44,11 +38,11 @@ The LAMP Stack is sufficient to host web applications and implement a modern com
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -56,7 +50,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 This section explains how to install a LAMP Stack on Ubuntu 22.04 LTS. These instructions are also generally valid for Ubuntu 20.04 LTS.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions are valid with or without a registered domain name. If a domain name maps to the IP address of the server, a virtual host should also be configured. For information on domain names and pointing the domain name to a Linode, see the [Linode DNS Manager guide](/docs/products/networking/dns-manager/).
 {{< /note >}}
 
@@ -106,7 +100,7 @@ At this point, all LAMP Stack components are installed, but the stack is not yet
 
 1.  Adjust the default Apache keepalive settings to allow the server to better conserve memory. The `KeepAlive` setting should be set to `On`. This allows Apache to reuse connections. When `KeepAlive` is enabled, `MaxKeepAliveRequests` and `KeepAliveTimeouts` should also be configured. Edit the `apache2.conf` file and make the following changes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `MaxKeepAliveRequests` limits the number of requests for each persistent connection. `KeepAliveTimeouts` determines how long the server waits for new requests from a connection. The following sample configuration balances performance and memory utilization. These values are a good starting point for a new installation. However, it is a good idea to test different values to determine the optimal settings.
     {{< /note >}}
 
@@ -118,7 +112,7 @@ At this point, all LAMP Stack components are installed, but the stack is not yet
 
 2.  Change the default multi-processing module settings within the **prefork** module. Edit the `/etc/apache2/mods-available/mpm_prefork.conf` file to reflect the following changes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The following values are optimized for a **2GB Linode**. Systems with more capacity can handle more aggressive settings.
     {{< /note >}}
 
@@ -134,7 +128,7 @@ The following values are optimized for a **2GB Linode**. Systems with more capac
 
 3.  Using the console, configure `ufw` to allow the `Apache Full` profile. This setting permits HTTP and HTTPS connections through the firewall, enabling web access. Ensure `OpenSSH` connections are also allowed. Enable `ufw` when all changes are complete.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `Apache Full` profile allows both HTTP and HTTPS traffic. To temporarily limit firewall access to HTTP requests during configuration, use the `Apache` profile instead. The `Apache Secure` profile only allows encrypted HTTPS traffic through the firewall. Do not use this profile until HTTPS is enabled on the server.
     {{< /note >}}
 
@@ -188,7 +182,7 @@ apache2.service - The Apache HTTP Server
 
 8.  Apache is now ready to respond to incoming requests. To verify the server is working properly, visit the IP address of the web server using a web browser. The browser should display the default Ubuntu/Apache2 welcome page. The page includes the message "It works" and some basic information about the installation.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the Linode Dashboard to find the IP address for your Ubuntu system.
     {{< /note >}}
 
@@ -271,7 +265,7 @@ Enabling site example.com
 
 8.  Reload Apache to apply all the changes:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If Apache fails to reload, validate the syntax of the configuration files. Use the command `sudo apache2ctl configtest` to find any potential errors in the `.conf` file. Ensure the name of the virtual host matches the domain name being used.
     {{< /note >}}
 
@@ -331,7 +325,7 @@ mysql>
 
 6.  Exit the SQL shell:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To log in to the MySQL shell as `root` after this change, use `mysql -u root -p` and provide the password when prompted.
     {{< /note >}}
 
@@ -373,7 +367,7 @@ Zend Engine v4.1.2, Copyright (c) Zend Technologies
 
 2.  PHP errors are easier to debug if error messages and logging are enabled. The `max_input_time` parameter can be adjusted to allow better performance. Edit the `php.ini` file and make the following changes. This file is found in the `/etc/php/php_version/apache2` directory, where `php_version` consists of the major and minor release of PHP. In this example, the PHP release is `8.1`, so the correct file is `/etc/php/8.1/apache2/php.ini`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure these variables are not commented out. If necessary, remove the `;` character at the start of the line.
     {{< /note >}}
 

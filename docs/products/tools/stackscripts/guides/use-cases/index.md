@@ -27,7 +27,7 @@ Community StackScripts are publicly available to the entire Linode Community. Th
 
 {{< note >}}
 If you would also like to make your open source project available to the Linode Community as an App in the Linode Marketplace, see the [Linode App Marketplace page](https://www.linode.com/marketplace/) for details.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploy Cluster Instances
 

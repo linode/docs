@@ -1,25 +1,19 @@
 ---
 slug: tutorial-host-asp-net-core-on-linux
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
-og_description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
 keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-02
 modified_by:
   name: Nathaniel Stickman
-title: "An ASP.NET Core on Linux Tutorial"
-h1_title: "Tutorial: Hosting ASP.NET Core on Linux"
+title: "Tutorial: Hosting ASP.NET Core on Linux"
+title_meta: "An ASP.NET Core on Linux Tutorial"
 image: ASPNET.jpg
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
 - '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0) is Microsoft's cross-platform and open-source redesign of its original ASP.NET framework. With ASP.NET Core, you can build and run .NET applications not only on Windows but also macOS and Linux.
@@ -28,13 +22,13 @@ This guide shows you how to install ASP.NET Core on your Linux server and how to
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. This guide uses `example-app` as the name of the ASP.NET Core application and `example.com` as your server's domain name. Replace these with your preferred application name and actual server name, respectively.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are  written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -104,7 +98,7 @@ These installation steps work for Debian 10 and Ubuntu 20.04. If you are using a
 
 1. Now you can visit the application in your browser by navigating to `https://localhost:5001`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 .NET Core serves your application over HTTPS. When visiting the application, you browser may warn you that the SSL certificate is self-signed. Choose to proceed anyway.
     {{< /note >}}
 

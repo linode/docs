@@ -1,25 +1,19 @@
 ---
 slug: how-to-use-tcpdump-to-analyze-traffic
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
-og_description: "The tcpdump tool gives you powerful options for capturing and analyzing traffic on your network. Network sniffing tools like tcpdump are helpful for troubleshooting network issues and testing network security. Learn how to start using tcpdump in this tutorial, including everything from capturing and analyzing network packets to advanced options for filtering them."
 keywords: ['tcpdump examples','tcpdump linux','tcpdump network traffic']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-11
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use tcdump to Analyze Network Traffic"
-h1_title: "How to Use tcdump to Analyze Network Traffic"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Use tcdump to Analyze Network Traffic"
+title_meta: "How to Use tcdump to Analyze Network Traffic"
 external_resources:
 - '[TCPDUMP & LIBPCAP](https://www.tcpdump.org/)'
 - "[Julia Evans: Let's Learn tcpdump](https://jvns.ca/tcpdump-zine.pdf)"
 - '[Geekflare: How to Capture and Analyze Network Traffic with tcpdump?](https://geekflare.com/tcpdump-examples/)'
 - '[Linux Hint: A Guide to Network Traffic Analysis Utility: TCPDUMP](https://linuxhint.com/tcpdump-beginner-guide/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The *tcpdump* tool provides a powerful command line option for network sniffing. With *tcpdump*, you can effectively capture and analyze network traffic, whether to diagnose network issues or to test network security.
@@ -28,9 +22,9 @@ In this tutorial, learn how to get started sniffing network traffic with *tcpdum
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system:
 
@@ -42,7 +36,7 @@ In this tutorial, learn how to get started sniffing network traffic with *tcpdum
     sudo dnf upgrade
     ```
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

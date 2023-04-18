@@ -1,8 +1,5 @@
 ---
 slug: linux-system-administration-basics
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide covers almost everything you wanted to know about Linux system administration but were afraid to ask about."
 keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2009-12-13
 title: "Linux System Administration Basics"
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
@@ -38,11 +36,11 @@ Commonly, the Linux administration role typically involves:
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -285,9 +283,9 @@ Web developers and editors often use the FTP protocol to transfer and manage fil
 
 If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/guides/transfer-files-with-winscp-on-windows/), [using rsync to synchronize files](/docs/guides/introduction-to-rsync/) and [using SSH and the terminal](/docs/guides/using-the-terminal/).
 
-{{< caution >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/docs/guides/set-up-and-secure/) of all additional access that you grant to third parties.
-{{< /caution >}}
+{{< note type="alert" respectIndent=false >}}
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/products/compute/compute-instances/guides/set-up-and-secure/) of all additional access that you grant to third parties.
+{{< /note >}}
 
 ### Upload Files to a Remote Server
 

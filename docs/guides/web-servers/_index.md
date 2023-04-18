@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'These guides cover web server software and common setups such as the LAMP and LEMP stacks.'
 keywords: ["web server", "apache", "nginx", "lighttpd", "cherokee", "http server"]
 aliases: ['/web-servers/nginx/python-uwsgi/','/web-servers/']
@@ -12,4 +9,5 @@ show_on_frontpage: true
 title_short: "Web Servers"
 weight: 50
 icon: "globe"
+authors: ["Linode"]
 ---

@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 10.10 (Maverick) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "lucid"]
 tags: ["wiki","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

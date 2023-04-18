@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy a Counter-Strike: Global Offensive server on Linode using Marketplace Apps."
 keywords: ['counter-strike','cs', 'go','marketplace']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ external_resources:
 - '[List of CS:GO Cvar Commands to use with RCON](https://developer.valvesoftware.com/wiki/List_of_CS:GO_Cvars)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-cs-go-with-marketplace-apps/', '/platform/one-click/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-one-click-apps/','/guides/deploying-cs-go-with-marketplace-apps/','/guides/counter-strike-go-marketplace-app/']
+authors: ["Linode"]
 ---
 
 {{< youtube aSivuBZxUgw >}}
@@ -28,9 +26,9 @@ This Marketplace App deploys the CS:GO server software through [LinuxGSM](https:
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Counter-Strike Global Offensive should be fully installed within 5-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -49,6 +47,8 @@ This Marketplace App deploys the CS:GO server software through [LinuxGSM](https:
 - **Maximum Rounds:** The maximum amount of rounds before the map changes.
 - **Buy Anywhere:** When enabled, allows teams to buy equipment from outside buy zones.
 - **Friendly Fire Enabled:** Friendly fire allows teammates to damage and kill each other.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -73,7 +73,7 @@ After CS:GO has finished installing, you will be able to access your game server
 1. In the CS:GO developer's console, type `connect 192.0.2.240` and click **Submit**, where `192.0.2.240` is the IP address of your Linode.
 
     {{< note >}}
-If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-options) when installing, submit `connect 192.0.2.240; password your_server_password` instead.
+    If you included a **CS:GO Server Password** in your [CS:GO Options](#cs-go-options) when installing, submit `connect 192.0.2.240; password your_server_password` instead.
     {{< /note >}}
 
     ![The CS:GO developer's console.](cs-go-developers-console.png)

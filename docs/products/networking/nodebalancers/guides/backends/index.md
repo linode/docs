@@ -1,17 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Backend Nodes (Compute Instances)"
 description: "Instructions for adding and configuring backend nodes on a NodeBalancer"
 published: 2022-10-07
+authors: ["Linode"]
 ---
 
-Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
+Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
 
 {{< note >}}
 While only a single backend node is required, *at least* two backends need to be configured to make use of load balancing functionality.
-{{</ note >}}
+{{< /note >}}
 
 ## Add, Edit, and Remove Backend Nodes
 
@@ -33,7 +31,7 @@ Backends nodes can be defined through a NodeBalancer's [Configurations](/docs/pr
 
 {{< note >}}
 Removing a backend from the NodeBalancer configuration does not delete the associated Compute Instance. It only removes that instance from operating as a backend for this particular NodeBalancer.
-{{</ note >}}
+{{< /note >}}
 
 ## Backend Configuration Options
 
@@ -56,7 +54,7 @@ By default, all backends are allocated traffic according to the configuration se
 
 {{< note >}}
 Changes made to the Mode field are applied within 60 seconds.
-{{</ note >}}
+{{< /note >}}
 
 ## Understand the Status of a Backend Node
 

@@ -1,8 +1,5 @@
 ---
 slug: using-the-terminal
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to access and use the command line interface, also known as the Shell, via a Terminal application like PuTTY to perform system admin tasks.'
 keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title: Using the Terminal
 external_resources:
  - '[Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 The shell, also known as the "command line interface" or "CLI"", is the primary method for interacting with remote Linux servers. The shell is a rich interface for manipulating your files, managing your system, and scripting common tasks. If you use Linux on your local machine you are likely already familiar with the terminal; Mac OS X users may be familiar with the command line from Terminal.app.

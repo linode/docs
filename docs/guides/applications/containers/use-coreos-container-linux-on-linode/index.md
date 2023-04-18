@@ -1,9 +1,6 @@
 ---
 slug: use-coreos-container-linux-on-linode
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: This tutorial shows how to configure and use CoreOS Container Linux on Linode
 keywords: ["linux containers", "docker", "CoreOS"]
 aliases: ['/platform/use-coreos-container-linux-on-linode/','/platform/using-coreos-container-linux-on-your-linode/','/platform/using-coreos-container-linux-on-linode/','/applications/containers/use-coreos-container-linux-on-linode/']
@@ -14,6 +11,7 @@ modified_by:
   name: Linode
 published: 2017-06-08
 title: Use CoreOS Container Linux on Linode
+authors: ["Linode"]
 ---
 
 CoreOS Container Linux is a container-focused distribution, designed for clustered deployments, that provides automation, security, and scalability for applications. The operating system is heavily streamlined and considered minimal compared to traditional distributions, like Debian or Ubuntu. Rather than being part of the host operating system, CoreOS's runtime or development environment takes place inside a Linux container.
@@ -38,7 +36,7 @@ Container Linux does not use a swap space, so while Linode's other distributions
 
 ### Filesystem/Boot Helpers
 
-These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](/docs/guides/linux-static-ip-configuration/#arch-coreos-container-linux-ubuntu-17-10) guide if you want to configure static and/or multiple IP addresses for your deployment.
+These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/#arch-coreos-container-linux-ubuntu-17-10) guide if you want to configure static and/or multiple IP addresses for your deployment.
 
 {{< note >}}
 The [Linode backup service](/docs/products/storage/backups/) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/docs/guides/backing-up-your-data/).

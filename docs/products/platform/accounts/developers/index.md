@@ -3,7 +3,7 @@ title: Developers
 description: "Learn how to use the Linode API to manage your accounts and users."
 tab_group_main:
     weight: 50
-date: 2022-11-21
+published: 2022-11-21
 ---
 
 ## Linode API

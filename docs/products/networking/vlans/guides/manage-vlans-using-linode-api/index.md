@@ -1,7 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Want to create your own private networks in the cloud? Here's how you can use the Linode API to do so by attaching new and existing Linodes to VLANs."
 keywords: ['linode vlan','linode vlan api']
 tags: ["security", "networking", "linode platform"]
@@ -10,9 +7,8 @@ published: 2021-04-07
 modified_by:
   name: Linode
 title: "Create a Private Network with VLANs Using Linode's API"
-contributor:
-  name: Linode
 aliases: ['/platform/vlan/how-to-create-a-private-network-with-linode-vlans-api/','/guides/how-to-create-a-private-network-with-linode-vlans-api/','/guides/vlan-api/']
+authors: ["Linode"]
 ---
 
 This guide shows you how to use [Linode's API](/docs/api) to create and attach a VLAN to a Linode.
@@ -26,7 +22,7 @@ You can attach a Linode to a VLAN in three different ways using the Linode API:
 The steps in this guide can be adopted to create and use VLANs for your specific use case.
 
 {{< note >}}
-When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/guides/network-helper/) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/#account-settings-update)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
+When you attach a Linode to a VLAN and reboot the Linode, [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) generates network configurations for the specified network interfaces if it is enabled. You can enable Network Helper by default using the Account Settings Update ([PUT /account/settings](/docs/api/account/#account-settings-update)) endpoint. The Linode must be rebooted for any changes within its network interfaces to take effect.
 {{< /note >}}
 
 ## Configuring VLANs with the Interfaces Array
@@ -51,9 +47,9 @@ The `purpose` of a network interface is required and used to determine whether a
 
 - `vlan`: Configures a network interface for the labeled VLAN and enables the Linode to communicate over the `ipam_address` if one is specified.
 
-{{< caution >}}
+{{< note type="alert" >}}
 The Public Internet must always be set to use the network interface `eth0`.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configuring the Label of an Interface
 
@@ -72,7 +68,7 @@ IPAM (IP Address Management) is the system that allows users to assign and manag
 - Linode 1: `10.0.0.1/24`
 - Linode 2: `10.0.0.2/24`
 
-Just like public and private IP addresses, IPAM addresses for a VLAN are automatically configured on a Linode through [Network Helper](/docs/guides/network-helper/). If Network Helper is disabled or if no `ipam_address` is provided, the Linode will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an `ipam_address`. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
+Just like public and private IP addresses, IPAM addresses for a VLAN are automatically configured on a Linode through [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/). If Network Helper is disabled or if no `ipam_address` is provided, the Linode will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an `ipam_address`. When doing so, the Linode's internal network configuration files must be manually adjusted with the desired settings.
 
 {{< note >}}
 No `ipam_address` is specified for `public` purpose interfaces. You can simply omit the property, enter an empty string, or enter `null`.
@@ -225,8 +221,8 @@ The Linode's ID is required to utilize these methods. Use the Linodes List ([GET
           https://api.linode.com/v4/linode/instances/123/configs/23456
 
     {{< note >}}
-When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
-{{< /note >}}
+    When updating a Configuration Profile's `interfaces` array, the previous interface configurations are overwritten. Any interfaces you wish to keep attached to a Linode must be redefined when updating its Configuration Profile.
+    {{< /note >}}
 
 1.  Reboot your Linode with the new Configuration Profile's ID using the Linode Reboot ([POST /linode/instances/{linodeId}/reboot](/docs/api/linode-instances/#linode-reboot)) endpoint.
 

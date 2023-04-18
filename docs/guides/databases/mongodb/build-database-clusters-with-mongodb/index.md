@@ -1,8 +1,5 @@
 ---
 slug: build-database-clusters-with-mongodb
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with instructions for installing, configuring, and scaling the MongoDB database for use in clustered environments on the Linux OS.'
 keywords: ["mongodb", "nosql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +7,8 @@ aliases: ['/databases/mongodb/clusters/','/databases/mongodb/build-database-clus
 modified_by:
   name: Linode
 published: 2010-09-30
-title: How To Build Database Clusters with MongoDB
-h1_title: Building Database Clusters with MongoDB
+title: Building Database Clusters with MongoDB
+title_meta: How To Build Database Clusters with MongoDB
 external_resources:
  - '[MongoDB Documentation for Replica Sets](https://docs.mongodb.com/manual/reference/replica-configuration/)'
  - '[MongoDB Documentation for Master-Slave Replication](https://docs.mongodb.com/manual/core/master-slave/)'
@@ -19,6 +16,7 @@ external_resources:
  - '[MongoDB Documentation for Auto Sharding Configuration](https://docs.mongodb.com/manual/sharding/)'
  - '[Configure MongoDB for SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/)'
 tags: ["ubuntu","database","nosql","centos"]
+authors: ["Linode"]
 ---
 
 MongoDB is a leading non-relational database management system, and a prominent member of the [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement. Rather than using the tables and fixed schemas of a relational database management system (RDBMS), MongoDB uses key-value storage in collection of documents. It also supports a number of options for horizontal scaling in large, production environments. In this guide, we'll explain how to set up a *sharded cluster* for highly available distributed datasets.
@@ -31,9 +29,9 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *at least 6* Compute Instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *at least 6* Compute Instances. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
 
 1.  Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
 
@@ -55,7 +53,7 @@ The problem in this configuration is that if one of the shard servers experience
 
 ## Configure Hosts File
 
-If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
+If your Linodes are all located in the same data center, we recommend [adding a private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
 
 On each Linode in your cluster, add the following to the `/etc/hosts` file:
 
@@ -384,7 +382,7 @@ bindIp: 192.0.2.5
 
     In this format, `rs0` is the name of the replica set for the first shard, `mongo-repl-1` is the name of the first host in the shard (using port `27017`), and so on. You'll need to run the above command separately for each individual replica set.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before adding replica sets as shards, you must first configure the replica sets themselves.
 {{< /note >}}
 
