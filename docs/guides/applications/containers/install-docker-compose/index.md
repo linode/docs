@@ -8,13 +8,8 @@ modified: 2012-11-29
 modified_by:
   name: Sam Foo
 title: "How to Install Docker Compose"
-<<<<<<< HEAD
-title_meta: "Imstall Docker Compose"
-published: 2023-04-18
-=======
 authors: ["Jared Kobos"]
 published: 2018-01-08
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 headless: true
 aliases: ['/applications/containers/install-docker-compose/']
 authors: ["Jared Kobos"]
@@ -22,11 +17,7 @@ authors: ["Jared Kobos"]
 
 <!--- Installation instructions for Docker Compose -->
 
-<<<<<<< HEAD
 Docker Compose is available in plugin and standalone variants. However, Docker's official documentation prioritizes the plugin. Further, the plugin has a straightforward installation and works well with past Docker Compose commands.
-=======
-Docker Compose comes in the plugin and standalone variants. However, Docker's official documentation prioritizes the plugin. Further, the plugin has a straightforward installation and works well with past Docker Compose commands.
->>>>>>> e69245479f2774b70543f7b81e5f1390c0cde95a
 
 These steps thus show how to install the Docker Compose plugin. If you are interested in installing the standalone Docker Compose application, follow Docker's [official installation guide](https://docs.docker.com/compose/install/other/#on-linux).
 
