@@ -3,17 +3,18 @@ description: "Learn how to deploy LiveSwitch Server, an enterprise video streami
 keywords: ['liveswitch','streaming','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-05-31
+modified: 2023-04-18
 title: "Deploy LiveSwitch through the Linode Marketplace"
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
 authors: ["Holden Morris"]
 ---
 
-[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a high-quality and scalable WebRTC live video streaming platform.
+[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted WebRTC live video streaming platform. It provides high quality and reliable streaming for both audio and video media. Here's more from the publisher:
 
-Liveswitch is the most flexible video and audio WebRTC SDK on the market. Ultra-low latency meets advanced features for engaging with your audience. LiveSwitch offers a complete solution (front-end and back-end) to develop commercial WebRTC applications.
+> LiveSwitch is the most flexible video and audio WebRTC SDK on the market. Ultra-low latency meets advanced features for engaging with your audience. LiveSwitch offers a complete solution (front-end and back-end) to develop commercial WebRTC applications.
 
-This LiveSwitch marketplace listing is for a back-end demonstration server, running signalling, media, and TURN together on a single server. It is designed to be tested alongside our client SDKs for .NET, .NET Core, iOS, Android, Xamarin, Maui, Unity and more, available on our website. 
+This Marketplace App deploys a back-end demonstration server, running signalling, media, and TURN together on a single server. It is designed to be tested alongside the official client SDKs for .NET, .NET Core, iOS, Android, Xamarin, Maui, Unity and more. To download these SDKs, see the [Client SDK](https://developer.liveswitch.io/liveswitch-server/guides/intro.html) page on the LiveSwitch Developer documentation site.
 
 {{< note >}}
 Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/meetings/jake-steele/linode). Licenses are not available directly through Linode.
