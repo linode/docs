@@ -1,8 +1,5 @@
 ---
 slug: download-files-from-your-linode-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to download files, database dumps, or whole disks from your Linodes."
 keywords: ["download", "files", "disk", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: Download Files from your Linode - Shortguide
 headless: true
 tags: ["security"]
 aliases: ['/security/data-portability/download-files-from-your-linode-shortguide/']
+authors: ["Linode"]
 ---
 
 ## Download Specific Files or Directories over SSH
@@ -76,4 +74,4 @@ Special care is needed when downloading data from a database. Before it can be d
 
 ## Download a Disk over SSH
 
-Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode’s disk. This *disk image* can later be re-uploaded to the Linode service at a later date, which can be useful if you'd like to temporarily remove your Linode and stop service. Follow our [Copy a Disk over SSH](/docs/guides/copying-a-disk-image-over-ssh/) guide for further instructions.
+Downloading your disk will copy a `.img` file to your computer that encapsulates all of the data that is on your Linode’s disk. This *disk image* can later be re-uploaded to the Linode service at a later date, which can be useful if you'd like to temporarily remove your Linode and stop service. Follow our [Copy a Disk over SSH](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/) guide for further instructions.

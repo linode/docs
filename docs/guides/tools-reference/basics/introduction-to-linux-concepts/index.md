@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-linux-concepts
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
 keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/guides/linux-package-management-overview/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 Linodes run **Linux**. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.
@@ -68,7 +66,7 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install the latest release of **Ubuntu**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) article. Follow that article until you complete [Booting Your Linode](/docs/guides/getting-started/#boot-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) article. Follow that article until you complete [Booting Your Linode](/docs/products/platform/get-started/#boot-your-linode), then come back here.
 
 ### Connecting to Your Linode
 
@@ -82,7 +80,7 @@ In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to
   - **SSH**: A protocol that lets you send shell commands to your Linode securely over the Internet.
 {{< /note >}}
 
-To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
+To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
 
 ## So You're Staring at a Shell Prompt
 
@@ -277,7 +275,7 @@ You can set users and permissions for each file directory on your Linode.
 
 Three categories comprise the file access system in Linux:
 
--   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the **Securing Your Server** guide.
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the **Securing Your Server** guide.
 -   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
 -   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world.
 
@@ -403,7 +401,7 @@ Here's the yum version for Fedora and CentOS:
 
 ## Security
 
-When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode's computing power for their own goals. If you neglect to change default passwords, install out-of-date software, or leave other security holes available for hackers to exploit, it won't take long for your system to get hacked. Follow the steps in the [Securing Your Server](/docs/guides/set-up-and-secure/) guide to harden your server's security.
+When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode's computing power for their own goals. If you neglect to change default passwords, install out-of-date software, or leave other security holes available for hackers to exploit, it won't take long for your system to get hacked. Follow the steps in the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to harden your server's security.
 
 ## Distributions
 

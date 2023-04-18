@@ -1,8 +1,5 @@
 ---
 slug: manage-web-content-with-phpfusion
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn to build and deploy websites using the PHP Fusion content management system.'
 keywords: ["cms", "php fusion", "content mangement system", "lamp"]
 tags: ["php","cms","lamp"]
@@ -14,11 +11,12 @@ modified_by:
 published: 2010-04-17
 title: 'Manage Web Content with PHP-Fusion'
 deprecated: true
+authors: ["Linode"]
 ---
 
 PHP Fusion is a lightweight content management system built on the popular LAMP stack. Designed for maximum flexibility and broad support it's for internationalization, in its latest version PHP Fusion focuses on standards compliance, security, and modular design. PHP Fusion is an obvious choice for developers who need to deploy a system to manage content and community interaction.
 
-Before installing PHP Fusion, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, prior to installing PHP Fusion, you will need to install a fully functional [LAMP stack](/docs/lamp-guides/) on your Linode.
+Before installing PHP Fusion, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, prior to installing PHP Fusion, you will need to install a fully functional [LAMP stack](/docs/lamp-guides/) on your Linode.
 
 ## Install Prerequisites
 

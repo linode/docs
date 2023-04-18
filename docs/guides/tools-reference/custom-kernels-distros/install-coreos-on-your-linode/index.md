@@ -1,9 +1,6 @@
 ---
 slug: install-coreos-on-your-linode
 deprecated: true
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'CoreOS is a container-centric Linux distribution designed for clustered systems running in the cloud. This guide details installing CoreOS on a Linode.'
 keywords: ["coreos", "custom", "finnix", "lish"]
 tags: ["cloud manager"]
@@ -13,10 +10,6 @@ modified: 2020-12-01
 modified_by:
   name: Linode
 title: Install CoreOS on Your Linode
-contributor:
-  name: Michael Zuo
-  link:
-  external_resources:
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
 relations:
     platform:
@@ -24,6 +17,7 @@ relations:
         keywords:
             - distribution: CoreOS
 aliases: ['/tools-reference/custom-kernels-distros/install-coreos-on-your-linode/']
+authors: ["Michael Zuo"]
 ---
 
 {{< note respectIndent=false >}}
@@ -65,7 +59,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
 
     ![Set /dev/sda to CoreOS disk image](coreos-device-identifier.png)
 
-5.  Use [Lish](/docs/guides/lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
+5.  Use [Lish](/docs/products/compute/compute-instances/guides/lish/) to access your Linode. From your Linode's dashboard, click the **Launch Console** link to open an SSH connection in the local system's terminal.
 
 ## Collect Installation Files
 

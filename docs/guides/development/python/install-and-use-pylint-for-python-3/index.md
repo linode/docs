@@ -1,8 +1,5 @@
 ---
 slug: install-and-use-pylint-for-python-3
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
 description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
 keywords: ['install','pylint','python 3']
 tags: ['pylint','python']
@@ -13,9 +10,6 @@ modified_by:
   name: Linode
 title: "Installing and Using Pylint for Python 3"
 title_meta: "How to Install and Use Pylint for Python 3"
-contributor:
- name: Cameron Laird
- link: https://twitter.py/Phaseit
 external_resources:
 - '[PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/)'
 - '[Pylint](https://www.pylint.org/)'
@@ -25,6 +19,7 @@ external_resources:
 - '[isort](https://pypi.org/project/isort/)'
 - '[mypy](http://mypy-lang.org/)'
 
+authors: ["Cameron Laird"]
 ---
 
 ## What is Pylint?

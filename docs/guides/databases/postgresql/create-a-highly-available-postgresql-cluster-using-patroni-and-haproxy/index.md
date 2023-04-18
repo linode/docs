@@ -1,8 +1,5 @@
 ---
 slug: create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy
-author:
-  name: Kulshekhar Kabra
-  email: docs@linode.com
 description: "This guide shows you how to set up a highly available PostgreSQL cluster using Patroni and HA Proxy on your Linode."
 keywords: ["postgresql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy/']
 image: postgresql-cluster-patroni.jpg
+authors: ["Kulshekhar Kabra"]
 ---
 
 ![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](postgresql-cluster-patroni.jpg)
@@ -31,15 +29,15 @@ This guide shows you how to create a highly available Postgres cluster of three 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and familiarize yourself with SSH and connecting to your linode.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and familiarize yourself with SSH and connecting to your linode.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account and harden SSH access.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account and harden SSH access.
 
 3.  Update your system:
 
         sudo apt update && sudo apt upgrade
 
-4.  Create five Linodes on your account, all within the same data center. Take note of each Linode's [private IP address](/docs/guides/managing-ip-addresses/#adding-an-ip-address)
+4.  Create five Linodes on your account, all within the same data center. Take note of each Linode's [private IP address](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address)
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -49,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Install Postgres on three Linodes in your setup. Because the configuration in this guide uses private IP addresses to communicate between Linodes in the same data center, this setup may not meet certain [Highly Available requirements](https://docs.oracle.com/cd/B28359_01/server.111/b28281/hadesign.htm#g1007388).
 
-The examples in this guide assign the private IP addresses of the three Postgres Linodes `192.0.2.11`, `192.0.2.12` and `192.0.2.13`. To setup a private IP address on a Linode, refer to the [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) guide for more information.
+The examples in this guide assign the private IP addresses of the three Postgres Linodes `192.0.2.11`, `192.0.2.12` and `192.0.2.13`. To setup a private IP address on a Linode, refer to the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for more information.
 
 1.  On the three Linodes where you want to install Postgres, update the package lists:
 

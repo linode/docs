@@ -1,8 +1,5 @@
 ---
 slug: task-queue-celery-rabbitmq
-author:
-  name: Florent Houbart
-  email: docs@linode.com
 description: 'This guide provides you with instructions for configuring a task queue using Celery, a Python Task-Queue management app and RabbitMQ, an open-source messaging broker.'
 keywords: ["celery", "Python", "tasks", "asynchronous", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified: 2017-11-30
 modified_by:
   name: Linode
 title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
-contributor:
-  name: Florent Houbart
 external_resources:
 - '[Celery Project page](http://www.celeryproject.org/)'
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
@@ -21,6 +16,7 @@ concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/task-queue-celery-rabbitmq/']
+authors: ["Florent Houbart"]
 ---
 
 ![How to Set Up a Task Queue with Celery and RabbitMQ](how-to-set-up-a-task-queue-with-celery-and-rabbitmq-smg.jpg)
@@ -31,9 +27,9 @@ Celery can be used in multiple configuration. Most frequent uses are horizontal 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

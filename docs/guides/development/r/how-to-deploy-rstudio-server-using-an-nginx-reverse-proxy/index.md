@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: 'RStudio Server is a the web based version of RStudio for a desktop environment. Gain access to your R development environment from anywhere in the world.'
 keywords: ['R', 'statistic', 'R Foundation', 'data visualization']
 tags: ["web server", "nginx", "proxy"]
@@ -16,6 +13,7 @@ audiences: ["beginner"]
 concentrations: ["Scientific Computing and Big Data"]
 languages: ["r"]
 aliases: ['/development/r/how-to-deploy-rstudio-server-using-an-nginx-reverse-proxy/']
+authors: ["Sam Foo"]
 ---
 
 ![How to Deploy Rstudio using an NGINX reverse proxy](How_to_Deploy_RStudio_Server_Using_an_NGINX_Reverse_Proxy_smg.jpg)

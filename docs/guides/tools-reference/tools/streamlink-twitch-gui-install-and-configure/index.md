@@ -1,8 +1,5 @@
 ---
 slug: streamlink-twitch-gui-install-and-configure
-author:
-  name: Sandro Villinger
-  email: ebmaster@windows-tweaks.info
 description: 'This guide shows you how to install and configure the Streamlink Twitch GUI on macOS and Linux distributions.'
 keywords: ['streamlink twitch gui']
 tags: ['linux']
@@ -12,8 +9,7 @@ modified_by:
   name: Linode
 title: "Install and Configure the Streamlink Twitch GUI"
 title_meta: "How to Install and Configure the Streamlink Twitch GUI"
-contributor:
-  name: Sandro Villinger
+authors: ["Sandro Villinger"]
 ---
 Streamlink allows you to watch your favorite Twitch streams using the most popular media players on Linux and macOS. The [Streamlink Twitch GUI](https://streamlink.github.io/streamlink-twitch-gui/) project gives you a straightforward GUI on top of the StreamLink CLI with a focus on Twitch streams only. You can also watch multiple streams at once and manage your favorite Twitch streamers in a single, clean UI. This guide shows you how to install and use the Streamlink GUI on macOS and Linux (Debian/Ubuntu).
 

@@ -1,8 +1,5 @@
 ---
 slug: backing-up-your-data
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide reviews different methods of backing up your Linode's data."
 og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
@@ -17,6 +14,7 @@ external_resources:
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
 tags: ["security"]
 aliases: ['/security/backups/backing-up-your-data/']
+authors: ["Linode"]
 ---
 
 ![Backing Up Your Data](Backing_Up_Your_Data_smg.jpg)
@@ -98,14 +96,14 @@ To configure Linode's Backup Service for your Linode, follow [these instructions
 
 ### Linode's Disks
 
-You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/guides/clone-your-linode/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
+You can use the Cloud Manager to [duplicate/clone your Linode's disk](/docs/products/compute/compute-instances/guides/clone-instance/#cloning-to-an-existing-linode). This is not a backup utility, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
 -   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.
 -   **Where**: The disk is stored on your Linode.
 -   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [Managing Disks and Storage on a Linode](/docs/guides/disks-and-storage/) to learn more about disks.
+See [Managing Disks and Storage on a Linode](/docs/products/compute/compute-instances/guides/disks-and-storage/) to learn more about disks.
 
 ### Rsync
 

@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-ansible
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,14 +10,12 @@ modified_by:
     name: Ryan Syracuse
 title: "Getting Started With Ansible: Basic Installation and Setup"
 title_meta: "Getting Started with Ansible: Installation and Setup"
-contributor:
-    name: Joshua Lyman
-    link: https://twitter.com/jlyman
 external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 tags: ["automation"]
+authors: ["Joshua Lyman"]
 ---
 
 ![Automatically Configure Servers with Ansible and Playbooks](automatically-configure-servers-with-ansible-title.jpg "Automatically Configure Servers with Ansible and Playbooks")
@@ -64,7 +59,7 @@ This guide's example instructions will create up to three billable Linodes on yo
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works.
 {{< /note >}}
 
-1.  [Create two Linodes](/docs/guides/creating-a-compute-instance/) running Ubuntu 22.04 LTS as your **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
+1.  [Create two Linodes](/docs/products/compute/compute-instances/guides/create/) running Ubuntu 22.04 LTS as your **managed nodes**. The examples in this guide can also be followed using a single managed node, if preferred.
 
 1.  Ansible uses the SSH protocol to securely log into managed nodes and apply your Playbook configurations. Create an SSH key-pair on the control node to use for authentication. This guide assumes your public and private SSH key-pair is stored in `~/.ssh/id_rsa.pub` and `~/.ssh/id_rsa`.
 

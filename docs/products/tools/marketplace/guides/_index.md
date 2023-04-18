@@ -4,6 +4,7 @@ description: "Learn how to access and deploy all the Linode Marketplace One-Clic
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
+modified: 2023-03-20
 ---
 
 ## Basics
@@ -42,6 +43,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [FileCloud](/docs/products/tools/marketplace/guides/filecloud/)
 - [Flask](/docs/products/tools/marketplace/guides/flask/)
 - [Focalboard](/docs/products/tools/marketplace/guides/focalboard/)
+- [Galera Cluster](/docs/products/tools/marketplace/guides/galera-cluster/)
 - [Gitea](/docs/products/tools/marketplace/guides/gitea/)
 - [Gitlab](/docs/products/tools/marketplace/guides/gitlab/)
 - [gopaddle](/docs/products/tools/marketplace/guides/gopaddle/)
@@ -71,6 +73,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
 - [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
 - [MongoDB](/docs/products/tools/marketplace/guides/mongodb/)
+- [MongoDB Cluster](/docs/products/tools/marketplace/guides/mongodb-cluster/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)
@@ -92,11 +95,13 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Plesk](/docs/products/tools/marketplace/guides/plesk/)
 - [Plex Media Server](/docs/products/tools/marketplace/guides/plex/)
 - [PostgreSQL](/docs/products/tools/marketplace/guides/postgresql/)
+- [PostgreSQL Cluster](/docs/products/tools/marketplace/guides/postgresql-cluster/)
 - [Pritunl](/docs/products/tools/marketplace/guides/pritunl/)
 - [Prometheus](/docs/products/tools/marketplace/guides/prometheus/)
 - [Prometheus and Grafana](/docs/products/tools/marketplace/guides/prometheus-grafana/)
 - [RabbitMQ](/docs/products/tools/marketplace/guides/rabbitmq/)
 - [Redis](/docs/products/tools/marketplace/guides/redis/)
+- [Redis Sentinel](/docs/products/tools/marketplace/guides/redis-cluster/)
 - [Restyaboard](/docs/products/tools/marketplace/guides/restyaboard/)
 - [Rocket.Chat](/docs/products/tools/marketplace/guides/rocketchat/)
 - [Ruby on Rails](/docs/products/tools/marketplace/guides/ruby-on-rails/)

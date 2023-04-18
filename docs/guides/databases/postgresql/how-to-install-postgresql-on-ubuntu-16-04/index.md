@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-postgresql-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions using Ubuntu 16.04 as an example.'
 keywords: ["postgresql", "ubuntu 16.04", "postgre", "postgresql database", "open source database", "relational database"]
 tags: ["ubuntu","database","postgresql"]
@@ -21,6 +18,7 @@ relations:
         key: install-postrgesql-database
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Linode"]
 ---
 
 ![How to Install PostgreSQL on Ubuntu 16.04](how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")
@@ -29,9 +27,9 @@ The [PostgreSQL](https://www.postgresql.org/) (also known as "Postgres") relatio
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with sudo. If you’re not familiar with the sudo command, visit the [Users and Groups guide](/docs/guides/linux-users-and-groups/) for more information.

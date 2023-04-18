@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy BeEF on a Linode Compute Instance. This provides you with a penetration testing tool that focuses on web-borne attacks against clients."
 keywords: ['security','vulnerability','penetration testing']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-03-08
 modified_by:
@@ -14,6 +10,7 @@ title: "Deploy BeEF through the Linode Marketplace"
 external_resources:
 - '[BeEF](https://beefproject.com/)'
 aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [BeEF](https://beefproject.com/) (The Browser Exploitation Framework) is a penetration testing tool that focuses on the web browser. BeEF offers an efficient and affective penetration test tool to assess the actual security posture of a target environment by using client-side attack vectors. BeEF looks beyond just the network perimeter and client system. It allows you to examine exploitability within the context of the web browser.
@@ -30,7 +27,7 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### BeEF Options
@@ -42,13 +39,15 @@ aliases: ['/guides/deploying-beef-marketplace-app/','/guides/beef-marketplace-ap
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the BeEF App
 
 1. Once the app has been *fully* deployed, view the BeEF completion message through one of the methods below:
 
-    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/guides/lish/).
+    - **Lish Console:** Within the Cloud Manager, navigate to **Linodes** from the left menu, select the Compute Instance you just deployed, and click the **Launch LISH Console** button. See [Using the Lish Console](/docs/products/compute/compute-instances/guides/lish/).
     - **SSH:** Log in to your Compute Instance over SSH using the `root` user and run the following command. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
 
         ```command

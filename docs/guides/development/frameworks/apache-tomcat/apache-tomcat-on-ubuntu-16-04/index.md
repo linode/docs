@@ -1,8 +1,5 @@
 ---
 slug: apache-tomcat-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 16.04 (Xenial Xerus) by following this guide.'
 keywords: ["apache tomcat ubuntu 16.04", "tomcat java", "java ubuntu 16.04", "tomcat ubuntu"]
 tags: ["web applications","java","ubuntu"]
@@ -27,6 +24,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
@@ -35,9 +33,9 @@ Apache Tomcat is an open-source software implementation of the Java Servlet and 
 
 ## Before You Begin
 
-1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
+1.  Ensure that your system is up to date and that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/).
 
-2.  Make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+2.  Make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
         hostname
         hostname -f

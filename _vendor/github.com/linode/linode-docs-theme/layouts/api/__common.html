@@ -37,6 +37,62 @@ This template includes common API logic and functions.
   {{ printf "<h%d id='%s'>%s%s</h%d>" .level .id .title $anchor .level | safeHTML }}
 {{ end }}
 
+{{ define "partials/openapi3/algolia-operation-content-plain" }}
+  {{- $m := partial "openapi3/algolia-operation-content"  . -}}
+  {{- $s := newScratch -}}
+  {{- range $k, $v := $m -}}
+    {{- if reflect.IsSlice $v -}}
+      {{ printf "%s: " $k }}
+      {{- range $v -}}
+        {{- printf " %s" (. | plainify) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $v | plainify -}}
+    {{- end -}}
+  {{- end -}}
+{{ end }}
+
+{{ define "partials/openapi3/algolia-operation-content" }}
+  {{ $ctx := .Values }}
+  {{ $api := $ctx.api }}
+  {{ $p := $ctx.page }}
+  {{ $dot := $ctx.dot }}
+  {{ $op := $dot.o }}
+  {{ $result := newScratch }}
+  {{ with $op }}
+    {{ with .RequestBody }}
+      {{ with .Value }}
+        {{ with index .Content "application/json" }}
+          {{ with .Schema }}
+            {{ $.Set "dot" . }}
+            {{ $.Set "hideReadOnly" true }}
+            {{ $items := partial "openapi3/schema-to-plain-slice" $ }}
+            {{ $result.Set "Request Body" $items }}
+            {{ $.Set "hideReadOnly" false }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ with .Responses }}
+      {{ with .Value }}
+        {{ $items := slice }}
+        {{ range $k, $v := . }}
+          {{ $.Set "dot" .Value }}
+          {{ $.Set "title" $k }}
+          {{ with index .Content "application/json" }}
+            {{ with .Schema }}
+              {{ $.Set "dot" . }}
+              {{ $items = $items | append (partial "openapi3/schema-to-plain-slice" $) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $result.Set "Response Body" $items }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ return $result.Values }}
+{{ end }}
+
 {{ define "openapi3/print-operation" }}
   {{ $ctx := .Values }}
   {{ $api := $ctx.api }}
@@ -192,6 +248,25 @@ This template includes common API logic and functions.
       {{ end }}
     </table>
   {{ end }}
+{{ end }}
+
+{{ define "partials/openapi3/schema-to-plain-slice" }}
+  {{ $items := slice }}
+  {{- $ctx := .Values -}}
+  {{ $s := $ctx.dot }}
+  {{ $p := $ctx.page }}
+  {{ $.Set "oneOfPickFirst" false }}
+  {{ $required := newScratch }}
+  {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $required "dot" $s.Value ) }}
+  {{ $.Set "requiredMap" $required.Values }}
+  {{ $m := (partial "openapi3/schema-to-map" (dict "dollar" $ )) }}
+  {{ range $k, $v := $m.Properties }}
+    {{ $items = $items | append (printf "%s: %s" $k ( $v.Description | plainify)) }}
+  {{ end }}
+  {{ if not $m.Properties }}
+    {{ $items = $items | append ( $m.Description | plainify ) }}
+  {{ end }}
+  {{ return $items }}
 {{ end }}
 
 {{ define "partials/openapi3/print-schema" }}

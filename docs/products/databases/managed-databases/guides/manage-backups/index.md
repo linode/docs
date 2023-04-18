@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Manage Backups"
 description: "Learn how to restore one of the available backups for a Managed Database."
 modified: 2022-07-01
 aliases: ['/products/databases/managed-databases/guides/restore-backup/']
+authors: ["Linode"]
 ---
 
 Each Managed Database includes daily backups of your data, taken on a 24 hour cadence. Up to 7 backups are stored for each database cluster, which provides you with a restore point for each day in the last week. This guide walks you through viewing and restoring from these managed backups.

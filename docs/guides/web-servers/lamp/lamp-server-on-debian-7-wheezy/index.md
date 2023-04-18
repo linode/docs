@@ -1,8 +1,5 @@
 ---
 slug: lamp-server-on-debian-7-wheezy
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
 keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 7
 deprecated: true
+authors: ["Linode"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
@@ -34,7 +32,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 

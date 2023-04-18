@@ -1,8 +1,5 @@
 ---
 slug: recovering-from-a-system-compromise
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide outlines steps to protect your data and recover your system in the event of a suspected system compromise.'
 keywords: ["root compromise", "troubleshooting", "recovery", "security"]
 tags: ["security","resolving","cloud manager"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-08-26
 title: Recovering from a System Compromise
+authors: ["Linode"]
 ---
 
 ![Recovering from a System Compromise](recovering-from-system-compromise-title.jpg "Recovering from a System Compromise")
@@ -38,17 +36,17 @@ This is the easiest option, but also the most destructive. It will wipe all of t
 5.  Choose your new distribution, disk size, swap disk, and root password.
 6.  Click **Rebuild**.
 
-This will delete your current images and deploy fresh disks. All data that was stored on the Linode will be unrecoverable, but your system will be free of compromise. At this point, you should follow the instructions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to disable root logins via SSH and disable password logins for all accounts.
+This will delete your current images and deploy fresh disks. All data that was stored on the Linode will be unrecoverable, but your system will be free of compromise. At this point, you should follow the instructions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to disable root logins via SSH and disable password logins for all accounts.
 
 ## Copy Data Offsite
 
-If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/guides/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/guides/copying-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
+If there is data on the compromised Linode that you need to retain, you can use the [Finnix rescue environment](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) to examine your old disks first. Once you have verified the integrity of your data, copy it to the appropriate location on your new server or another offsite location. Our [SSH disk copy guide](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/) explains how to copy your entire disk offsite.
 
 ## Use a Second Linode
 
 You can use a second Linode for the most seamless transition to a new system.
 
-1.  Add a new Linode to your account. See the [Getting Started](/docs/guides/getting-started/) guide for instructions.
+1.  Add a new Linode to your account. See the [Getting Started](/docs/products/platform/get-started/) guide for instructions.
 2.  Set a strong password for **root** and all user accounts, making sure not to reuse any passwords from the compromised system.
 3.  Upgrade all system packages:
 
@@ -60,7 +58,7 @@ You can use a second Linode for the most seamless transition to a new system.
 
         sudo yum update
 
-4.  Follow the instructions in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to harden SSH access and activate the firewall.
+4.  Follow the instructions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to harden SSH access and activate the firewall.
 
 ### Rebuild Your Configuration
 
@@ -83,11 +81,11 @@ Do not log in to the new Linode from the compromised Linode. Files should be pul
 
 3.  Audit your data using tools such as `rkhunter` and [`clamav`](/docs/guides/scanning-your-linode-for-malware/). You can use additional malware scanners to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 
-If you're not comfortable copying from the compromised system prior to auditing the data, you can instead use the [Finnix rescue environment](/docs/guides/rescue-and-rebuild/) to examine your old disks. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
+If you're not comfortable copying from the compromised system prior to auditing the data, you can instead use the [Finnix rescue environment](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) to examine your old disks. Once you have verified the integrity of your data, copy it to the appropriate location on your new server.
 
 ### Swap IP Addresses
 
-Swap IP addresses so the new Linode uses the IP address assigned to the old Linode. If you have configured any network services to use the new Linode's IP address, you should modify their configurations to use the old Linode's IP instead. For instructions, see [Managing IP Addresses](/docs/guides/managing-ip-addresses/#transferring-ip-addresses).
+Swap IP addresses so the new Linode uses the IP address assigned to the old Linode. If you have configured any network services to use the new Linode's IP address, you should modify their configurations to use the old Linode's IP instead. For instructions, see [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#transferring-ip-addresses).
 
 {{< note respectIndent=false >}}
 To swap IP addresses, both Linodes must be located in the same data center.
@@ -97,6 +95,6 @@ Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-
 
 ### Preserving Data for Forensics and Linode Cancellation
 
-You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/guides/copying-a-disk-image-over-ssh/). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
+You may want to download a complete copy of the compromised Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/products/compute/compute-instances/guides/copy-a-disk-image-over-ssh/). If you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
 When you no longer need the old Linode's disks, you should [remove the Linode](/docs/products/platform/billing/guides/stop-billing/). Your account will only be invoiced for the time the Linode was present on your account since the last invoice. For more information, see [Understanding Billing and Payments](/docs/products/platform/billing/).

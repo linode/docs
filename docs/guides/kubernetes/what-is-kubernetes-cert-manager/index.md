@@ -1,11 +1,5 @@
 ---
 slug: what-is-kubernetes-cert-manager
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Linode
-  link: https://www.linode.com
 description: "Learn how cert-manager works, a tool on Kubernetes designed to assist with the deployment, configuration, and management of certificates on Kubernetes."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster", "ssl", "certbot", "lets-encrypt", "tls"]
 tags: ["secuity","kubernetes"]
@@ -18,13 +12,14 @@ title_meta: 'What is Kubernetes cert-manager?'
 aliases: ['/kubernetes/deploy-and-manage-kubernetes-certificates-with-cert-manager/','/kubernetes/what-is-kubernetes-cert-manager/']
 external_resources:
  - '[Cert-Manager Documentation](https://cert-manager.io/docs/)'
+authors: ["Linode"]
 ---
 
 ## What is cert manager?
 
 Cert-manager is a Kubernetes add-on designed to assist with the creation and management of TLS certificates. Similar to [Certbot](/docs/guides/secure-http-traffic-certbot/), cert-manager can automate the process of creating and renewing self-signed and signed certificates for a large number of use cases, with a specific focus on container orchestration tools like Kubernetes.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes a working knowledge of Kubernetes key concepts, including master and worker nodes, Pods, Deployments, and Services. For more information on Kubernetes, see our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series.
 {{< /note >}}
 
@@ -32,13 +27,11 @@ This guide assumes a working knowledge of Kubernetes key concepts, including mas
 
 Cert-Manager is divided into a number of components and microservices that are each designed to perform specific tasks necessary for the certificate lifecycle.
 
-
 ### Issuers and ClusterIssuers
 
 Certificate creation begins with `Issuers` and `ClusterIssuers`, resources that represent certificate authorities and are able to generate signed certificates using a specific issuer `type`. An issuer `type` represents the method used to create your certificate, such as `SelfSigned` for a [Self-Signed Certificate](/docs/guides/create-a-self-signed-tls-certificate/) and `ACME` for requests for certificates from ACME servers, typically used by tools like [Let's Encrypt](https://letsencrypt.org/). All supported issuer types are listed in [Cert-Manager's Documentation](https://cert-manager.io/docs/configuration/).
 
 While `Issuers` resources are only able to create certificates in the namespace they were created in, `ClusterIssuers` can create certificates for all namespaces. This guide provides an example that demonstrates how `ClusterIssuers` creates certificates for all namespaces in the cluster.
-
 
 ### Certificates and CertificateRequests
 
@@ -46,7 +39,7 @@ Although Issuers are responsible for defining the method used to create a certif
 
 After a `Certificate` resource is created, changed, or a certificate referenced needs renewal, cert-manager creates a corresponding `CertificateRequest` resource, which contains the base64 encoded string of an `x509` certificate request (CSR). Additionally, if successful, it contains the signed certificate where one is successfully returned and updates the `Ready` condition status to `True`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 A `CertificateRequest` resource is not designed to interact with a user directly, and instead is utilized through controllers or similar methods where needed.
 {{< /note >}}
 
@@ -60,7 +53,7 @@ An `Order` resource represents and encapsulates the multiple ACME challenges the
 
 ACME `Order` and `Challenge` resources are **only** created for `Issuers` and `ClusterIssuers` with a `type` of `ACME`.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 An `order` or `challenge` resource is never manually created directly by a user and are instead defined through `CertificateRequest` resources and the `Issuers` type. After it is issued, `order` and `challenge` resources cannot be changed.
 {{< /note >}}
 
@@ -70,20 +63,24 @@ This feature includes the ability to request certificates through Let's Encrypt.
 
 Cert-Manager can be easily installed through a single command as follows:
 
-    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.yaml
+```command
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.yaml
+```
 
 As the installation completes, you should see a number of required resources created, including a `cert-manager` namespace, RBAC rules, CRD's, and a webhook component. To confirm that the installation was a success, enter the following:
 
-    kubectl get pods --namespace cert-manager
+```command
+kubectl get pods --namespace cert-manager
+```
 
 The output is similar to the following:
 
-{{< output >}}
+```output
 NAME                                       READY   STATUS    RESTARTS   AGE
 cert-manager-766d5c494b-l9sdb              1/1     Running   0          19m
 cert-manager-cainjector-6649bbb695-bz999   1/1     Running   0          19m
 cert-manager-webhook-68d464c8b-86tqw       1/1     Running   0          19m
-{{< /output >}}
+```
 
 ## Next Steps
 

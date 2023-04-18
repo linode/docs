@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-journalctl
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide shows how to use journalctl to view, search, and filter your system's logs.
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-journalctl/']
+authors: ["Linode"]
 ---
 
 ## What is journalctl?
@@ -35,7 +33,7 @@ If you do not see output, try running it with `sudo`:
 
     sudo journalctl
 
-If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+If your Linux user does not have sudo privileges, [add your user to the sudo group](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Default Log Format and Ordering
 

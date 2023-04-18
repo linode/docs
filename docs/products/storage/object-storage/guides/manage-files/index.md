@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Upload and Manage Files (Objects)"
 description: ""
 aliases: ['/products/storage/object-storage/guides/upload-objects/','/products/storage/object-storage/guides/delete-objects/','/products/storage/object-storage/guides/view-objects/']
+authors: ["Linode"]
 ---
 
 The primary function of Object Storage is to allow you to host files, also called objects. This guide walks you through using the Cloud Manager to view, upload, download, and delete files.

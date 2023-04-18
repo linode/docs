@@ -1,22 +1,19 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy UniFi Network Controller, a multi-use networking control panel with a powerful application suite designed to optimize home and business networks with ease, on a Linode Compute Instance."
 keywords: ['UniFi','Network','gateway', 'routing']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-06
 modified: 2022-09-22
 modified_by:
   name: Linode
 title: "Deploy the UniFi Network Application through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 The [UniFi Network Application](https://help.ui.com/hc/en-us/articles/1500012237441-UniFi-Network-Use-the-UniFi-Network-Application) is a versatile control panel developed by [Ubiquiti](https://www.ui.com/). It simplifies network management across regions, customizes access to Wi-Fi networks, and more. Manage and apply updates to UniFi networking devices to ensure your networks are performant and secure.
 
 {{< note >}}
-When self-hosting the UniFi Network Application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
+When self-hosting the UniFi Network Application, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -38,7 +35,7 @@ When self-hosting the UniFi Network Application, you are responsible for the sec
 
 ### Accessing the UniFi Network Application
 
-1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address. The URL is also visible when logging into the new Compute Instance for the first time, either through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1. Open your web browser and navigate to `https://[domain]`, where *[domain]* can be replaced with your Compute Instance's rDNS domain or, if you entered one, the domain you specified when you deployed the instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the rDNS value for your public IPv4 address. The URL is also visible when logging into the new Compute Instance for the first time, either through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
     ```output
     The installation is now complete, and you can access the

@@ -1,7 +1,5 @@
 ---
 slug: writing-a-vim-plugin
-author:
-  name: Nathaniel Stickman
 description: "The Vim text editor can be extended using plugins. This guide shows you how to create a Vim plugin using a Vim Script or an external interpreter like Python."
 keywords: ['write vim plugin','create vim plugin','vim plugin python']
 tags: ['neovim', 'vim']
@@ -11,13 +9,11 @@ modified_by:
   name: Linode
 title: "Write a Vim Plugin"
 title_meta: "How to Write a Vim Plugin"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Vim Tips Wiki: How to Write a Plugin](https://vim.fandom.com/wiki/How_to_write_a_plugin)'
 - '[IBM Developer: Scripting the Vim Editor](https://developer.ibm.com/articles/l-vim-script-1/)'
 - '[Vim Reference Manual: The Python Interface to Vim](https://vimhelp.org/if_pyth.txt.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Vim is a minimalist text editor that is highly adaptable. Beyond configuration and scripting, you can extend Vim with a wide array of plugins developed and maintained by a large and active community.
@@ -26,9 +22,9 @@ In this tutorial, you learn how to write a Vim plugin of your own. The guide wal
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 

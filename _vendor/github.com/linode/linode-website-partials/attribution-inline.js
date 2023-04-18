@@ -1,7 +1,7 @@
 (() => {
   // src/js/attribution-inline.js
   function getCookie(e, o) {
-    return (o = RegExp("(^|; )" + encodeURIComponent(e) + "=([^;]*)").exec(document.cookie)) == null ? void 0 : o[2] ? o[2] : void 0;
+    return null == (o = RegExp("(^|; )" + encodeURIComponent(e) + "=([^;]*)").exec(document.cookie)) ? void 0 : o[2] ? o[2] : void 0;
   }
   function setCookie(firstLast, cookieName, cookieValue) {
     var cS = "; max-age=31536000; domain=.linode.com; path=/";

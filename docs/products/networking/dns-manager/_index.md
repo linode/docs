@@ -8,7 +8,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "A comprehensive, reliable, and fast DNS service, providing easy domain management to Linode customers at no charge."
-modified: 2022-10-28
+modified: 2023-03-16
 aliases: ['/dns-manager/','/platform/manager/dns-manager/','/networking/dns/dns-manager/','/platform/manager/dns-manager-new-manager/','/networking/dns/dns-manager-overview/','/platform/manager/dns-manager-classic-manager/','/guides/dns-manager/']
 ---
 
@@ -26,8 +26,8 @@ In addition to supporting a wide range of DNS record types, the Linode DNS Manag
 
 The DNS Manager is available at no charge across [all regions](https://www.linode.com/global-infrastructure/).
 
-{{< note >}}
-To use the Linode DNS Manager to serve your domains, you must have at least one billable service on your account, such as a Compute Instance, NodeBalancer, or an Object Storage Bucket. If no services exist on your account or if all services are removed, DNS records will no longer be served.
+{{< note type="warning" title="DNS Manager Compute Instance requirement">}}
+To use the Linode DNS Manager to serve your domains, you must have at least one active Compute Instance on your account. If your account does not have any Compute Instances (for instance, if they have all been removed), DNS records will not be served.
 {{< /note >}}
 
 ## Technical Specifications

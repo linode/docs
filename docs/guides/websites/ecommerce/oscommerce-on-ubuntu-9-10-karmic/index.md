@@ -1,9 +1,6 @@
 ---
 slug: oscommerce-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Deploying osCommerce, a popular e-commerce web application, on Ubuntu 9.10 (Karmic).'
 keywords: ["oscommerce", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,11 +15,12 @@ relations:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Ubuntu 9.10
+authors: ["Stan Schwertly"]
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Ubuntu LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/).
+Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Ubuntu LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-10-karmic/).
 
 ## Installation
 

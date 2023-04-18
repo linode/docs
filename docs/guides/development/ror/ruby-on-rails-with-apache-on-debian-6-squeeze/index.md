@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-apache-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
@@ -24,6 +21,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 
@@ -32,7 +30,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

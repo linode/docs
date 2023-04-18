@@ -1,8 +1,5 @@
 ---
 slug: using-octant-with-kubernetes-a-tutorial
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Octant is a visual web-based dashboard for Kubernetes clusters. This guide explores Octant's interface and how it makes troubleshooting Kubernetes easier."
 keywords: ['octant','kubernetes','cluster','graph','dashboard','troubleshoot']
 tags: ["monitoring","kubernetes","web application"]
@@ -18,6 +15,7 @@ external_resources:
 - '[Octant on GitHub](https://github.com/vmware-tanzu/octant)'
 - '[Octant on Twitter](https://twitter.com/projectoctant)'
 aliases: ['/applications/containers/kubernetes/using-octant-with-kubernetes-a-tutorial/','/kubernetes/using-octant-with-kubernetes-a-tutorial/']
+authors: ["Linode"]
 ---
 
 ## What is Octant?
@@ -36,7 +34,7 @@ This guide will explore a few ways to use Octant with some example software depl
 
 - A [troubleshooting thought experiment](#troubleshooting-with-octant) will show how Octant can make discovering issues in your cluster easier.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide assumes familiarity with the Kubernetes concepts outlined in Linode's [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/). If you have never set up a Kubernetes cluster before, it's also recommended that you do so to get the most out of this guide. The [How to Deploy Kubernetes on Linode with the k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) guide describes a one-line command for generating a cluster.
 {{< /note >}}
 
@@ -44,7 +42,7 @@ This guide assumes familiarity with the Kubernetes concepts outlined in Linode's
 
 The examples in this guide have been tested on a cluster running with Linode with Linode's [CCM](/docs/guides/kubernetes-reference/#linode-cloud-controller-manager) and [CSI](/docs/guides/kubernetes-reference/#container-storage-interface) plugins installed. If you would like to install these examples as well, a cluster made with [k8s-alpha CLI](/docs/guides/how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli/) will meet these criteria.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 These examples will create billable services. To stop billing for these services after reading the guide, be sure to read the tear-down instructions at the end of each section. If you created a new cluster for this guide, you can remove the cluster's Nodes from the [Linode Cloud Manager](https://cloud.linode.com).
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works. [Linode's pricing page](https://www.linode.com/pricing/) lists the rate for each Linode service.
@@ -60,38 +58,48 @@ Octant can be run as a local server process on your workstation. To install and 
 
     - **Linux**: download a `.deb` or `.rpm` from the [releases page](https://github.com/vmware-tanzu/octant/releases) on GitHub, then install it with `dpkg -i` or `rpm -i`. For example:
 
-            wget https://github.com/vmware-tanzu/octant/releases/download/v0.9.1/octant_0.9.1_Linux-64bit.deb
-            dpkg -i octant_0.9.1_Linux-64bit.deb
+        ```command
+        wget https://github.com/vmware-tanzu/octant/releases/download/v0.9.1/octant_0.9.1_Linux-64bit.deb
+          dpkg -i octant_0.9.1_Linux-64bit.deb
+        ``
 
     - **macOS**, with Homebrew:
 
-            brew install octant
+        ```command
+        brew install octant
+        ```
 
     - **Windows**, with Chocolatey:
 
-            choco install octant
+        ```command
+        choco install octant
+        ```
 
-    {{< note respectIndent=false >}}
-Alternative installation instructions are available in the project's [README](https://github.com/vmware-tanzu/octant#installation) on GitHub.
-{{< /note >}}
+    {{< note >}}
+    Alternative installation instructions are available in the project's [README](https://github.com/vmware-tanzu/octant#installation) on GitHub.
+    {{< /note >}}
 
 1. Then, start the server. In your terminal, run:
 
-        octant
+    ```command
+    octant
+    ```
 
 1. If it starts successfully, you should see a message similar to:
 
-    {{< output >}}
-...
+    ```output
+    ...
 
-Dashboard is available at http://127.0.0.1:7777
-{{< /output >}}
+    Dashboard is available at http://127.0.0.1:7777
+    ```
 
-    {{< note respectIndent=false >}}
-If it does not start successfully, check that you can connect to your cluster with kubectl. For example, try running:
+    {{< note >}}
+    If it does not start successfully, check that you can connect to your cluster with kubectl. For example, try running:
 
+    ```command
     kubectl get pods
-{{< /note >}}
+    ```
+    {{< /note >}}
 
 1. The dashboard may load automatically in your browser, or you can load the dashboard address (e.g. `http://127.0.0.1:7777`) in your browser if it does not. You should see the Octant dashboard.
 
@@ -99,7 +107,7 @@ If it does not start successfully, check that you can connect to your cluster wi
 
 The interfaces that Octant provides are meant to be a complement, and not a replacement, for kubectl. When using Octant, you may find that you sometimes need to return to kubectl to perform certain actions. Still, the Octant dashboard will serve as a helpful overview when inspecting your cluster.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The cluster objects visible in the following screenshots were created by installing the [Helm chart](https://github.com/helm/charts/tree/master/stable/ghost) for the [Ghost](https://ghost.org) blogging software. The [How to Install Apps on Kubernetes with Helm 2](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-2/) guide outlines how to install this software. Please note that this guide uses Helm 2 and not Helm 3 to install the software.
 {{< /note >}}
 
@@ -123,9 +131,9 @@ The cluster objects visible in the following screenshots were created by install
 
     This view shows that the Ghost Helm chart set up two Services: one for the Ghost front-end, and one for its database.
 
-    {{< note respectIndent=false >}}
-Multiple labels can be selected at the same time.
-{{< /note >}}
+    {{< note >}}
+    Multiple labels can be selected at the same time.
+    {{< /note >}}
 
 - This filter will persist across all other views. For example, if you navigate to the Pods view, only Pods with the `release:my-blog` label will be shown. To clear your filters, click the **clear filters** link under the filter dropdown in the top navigation:
 
@@ -147,9 +155,9 @@ Clicking on an object will show more detail for that object, including the visua
 
     - The **Events** tab shows the history of events for the Service. This information can be useful when troubleshooting.
 
-    {{< note respectIndent=false >}}
-Other panels will appear for different object types. For example, Pods will show container environment variables, Volume mounts, node resources requests and limits, and taints, among other information.
-{{< /note >}}
+    {{< note >}}
+    Other panels will appear for different object types. For example, Pods will show container environment variables, Volume mounts, node resources requests and limits, and taints, among other information.
+    {{< /note >}}
 
 - The **Resource Viewer** tab will reveal the object relationship graph for this Service:
 
@@ -159,21 +167,25 @@ Other panels will appear for different object types. For example, Pods will show
 
 - The third **YAML** tab shows the YAML representation for the object.
 
-    {{< note respectIndent=false >}}
-The detail view for Pods will also show a fourth **Logs** tab,which will follow and display the logs for a Pod in real-time:
+    {{< note >}}
+    The detail view for Pods will also show a fourth **Logs** tab,which will follow and display the logs for a Pod in real-time:
 
-![Octant Pod Detail View - Ghost front-end logs](octant-pod-my-blog-ghost-logs.png)
-{{< /note >}}
+    ![Octant Pod Detail View - Ghost front-end logs](octant-pod-my-blog-ghost-logs.png)
+    {{< /note >}}
 
 ### Navigation Example Tear-Down
 
 To delete the objects created by the Helm chart used in this section, run:
 
-    helm delete <release-name>
+```command
+helm delete <release-name>
+```
 
 The Helm release name for can be determined by running:
 
-    helm ls
+```command
+helm ls
+```
 
 ## Troubleshooting with Octant
 
@@ -185,18 +197,20 @@ Your colleague Nathan is learning Kubernetes, and he's deploying a "Hello World"
 
 1. Nathan has uploaded a Docker image for the application to Docker Hub under the name `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v1`. He also tells you that the Kubernetes manifest for the application is hosted here: [release-1.0.yaml](release-1.0.yaml). Download the file and apply it to your cluster with kubectl:
 
-        kubectl apply -f release-1.0.yaml
+    ```command
+    kubectl apply -f release-1.0.yaml
+    ```
 
     Your terminal should respond with:
 
-    {{< output >}}
-service/hello-world-service created
-deployment.apps/hello-world-deployment created
-{{< /output >}}
+    ```output
+    service/hello-world-service created
+    deployment.apps/hello-world-deployment created
+    ```
 
-    {{< note respectIndent=false >}}
-The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-1.tar.gz). Inspecting these files is not necessary for the tutorial.
-{{< /note >}}
+    {{< note >}}
+    The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-1.tar.gz). Inspecting these files is not necessary for the tutorial.
+    {{< /note >}}
 
 1. To learn about how the application is structured on your cluster, you view it in Octant. When visiting the Services tab, you find the new `hello-world-service` object:
 
@@ -214,18 +228,20 @@ The Dockerfile and other files used to create the Docker Hub image are located [
 
 1. Nathan tells you that he has updated the application to return "Hello Octant" instead of "Hello World", and he notes that the new Docker Hub image is named `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2`. The new Kubernetes manifest is here: [release-2.0.yaml](release-2.0.yaml). Download the manifest and apply it to your cluster with kubectl:
 
-        kubectl apply -f release-2.0.yaml
+    ```command
+    kubectl apply -f release-2.0.yaml
+    ```
 
     Your terminal should respond with:
 
-    {{< output >}}
-service/hello-world-service unchanged
-deployment.apps/hello-world-deployment configured
-{{< /output >}}
+    ```output
+    service/hello-world-service unchanged
+    deployment.apps/hello-world-deployment configured
+    ```
 
-    {{< note respectIndent=false >}}
-The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-2.tar.gz). Inspecting these files is not necessary for the tutorial.
-{{< /note >}}
+    {{< note >}}
+    The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-2.tar.gz). Inspecting these files is not necessary for the tutorial.
+    {{< /note >}}
 
 1. If you visit the external IP for the application in your browser again, it will still display the same "Hello World" message. If you return to the Resource Viewer graph for the `hello-world-service` Service in Octant, you'll see that it has been updated:
 
@@ -233,9 +249,9 @@ The Dockerfile and other files used to create the Docker Hub image are located [
 
 1. The Deployment has created a new ReplicaSet to run the updated application under. The orange color for the Deployment, ReplicaSet, and Pods indicates an issue with the update that will need further investigating.
 
-    {{< note respectIndent=false >}}
-The Deployment keeps the older ReplicaSet and Pods running in place until the new ReplicaSet is healthy.
-{{< /note >}}
+    {{< note >}}
+    The Deployment keeps the older ReplicaSet and Pods running in place until the new ReplicaSet is healthy.
+    {{< /note >}}
 
 1. To investigate why the new Pod is unhealthy, click on the orange Pod cell in the graph, and then click on the orange dot in the right-hand panel that appears (highlighted above).
 
@@ -245,7 +261,9 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
 1. The name for the Pod's image has a typo and should be corrected. On your workstation, open the release-2.0.yaml manifest and update **line 32** so that it refers to `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2` instead of `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v2a`. Save the file, then apply the change to your cluster:
 
-        kubectl apply -f release-2.0.yaml
+    ```command
+    kubectl apply -f release-2.0.yaml
+    ```
 
 1. If you visit the external IP for the application in your browser again, it will still display the same "Hello World" message. If you return to the Resource Viewer graph for the `hello-world-service` Service in Octant, you'll see that it has been updated again:
 
@@ -259,35 +277,39 @@ The Deployment keeps the older ReplicaSet and Pods running in place until the ne
 
 1. Clicking on the Pod's name in this panel will take you to the detail view for it. This **Events** panel in this view will show the recent restarts. A good next step would be to investigate the logs for the Pod, but you may find that the **Logs** tab shows no content. In this case, it's worth switching out to kubectl to try and get logs from previous restarts:
 
-        kubectl logs hello-world-deployment-7b69c98754-f4zk5 --previous=true
+    ```command
+    kubectl logs hello-world-deployment-7b69c98754-f4zk5 --previous=true
+    ```
 
-    {{< note respectIndent=false >}}
-Replace the Pod name above with the name of yours.
-{{< /note >}}
+    {{< note >}}
+    Replace the Pod name above with the name of yours.
+    {{< /note >}}
 
-    {{< output >}}
-/usr/src/app/server.js:7
-  res.send('Hello Octant);
-           ^^^^^^^^^^^^^^^
+    ```output
+    /usr/src/app/server.js:7
+      res.send('Hello Octant);
+              ^^^^^^^^^^^^^^^
 
-SyntaxError: Invalid or unexpected token
-    at Module._compile (internal/modules/cjs/loader.js:723:23)
-    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
-    at Module.load (internal/modules/cjs/loader.js:653:32)
-    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
-    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
-    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)
-    at startup (internal/bootstrap/node.js:283:19)
-    at bootstrapNodeJSCore (internal/bootstrap/node.js:623:3)
-{{< /output >}}
+    SyntaxError: Invalid or unexpected token
+        at Module._compile (internal/modules/cjs/loader.js:723:23)
+        at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+        at Module.load (internal/modules/cjs/loader.js:653:32)
+        at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+        at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+        at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)
+        at startup (internal/bootstrap/node.js:283:19)
+        at bootstrapNodeJSCore (internal/bootstrap/node.js:623:3)
+    ```
 
 1. Nathan's code contains the missing quote syntax error reported in these logs, and you let him know what should be fixed. He responds that he's uploaded a `linodedocs/kubernetes_using-octant-with-kubernetes-a-tutorial_hello-world:v3` image to Docker Hub and tells you to apply his updated manifest here: [release-3.0.yaml](release-3.0.yaml). Download the file and apply it to your cluster with kubectl:
 
-        kubectl apply -f release-3.0.yaml
+    ```command
+    kubectl apply -f release-3.0.yaml
+    ```
 
-    {{< note respectIndent=false >}}
-The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-3.tar.gz). Inspecting these files is not necessary for the tutorial.
-{{< /note >}}
+    {{< note >}}
+    The Dockerfile and other files used to create the Docker Hub image are located [here](hello-world-node-js-3.tar.gz). Inspecting these files is not necessary for the tutorial.
+    {{< /note >}}
 
 1. If you return to the external IP for the application in your browser, it should now display "Hello Octant". The cells in Octant's Resource Viewer graph should all be colored green as well.
 
@@ -295,7 +317,9 @@ The Dockerfile and other files used to create the Docker Hub image are located [
 
 To delete the objects created by the troubleshooting example, run:
 
-    kubectl delete -f release-3.0.yaml
+```command
+kubectl delete -f release-3.0.yaml
+```
 
 ## Next Steps
 

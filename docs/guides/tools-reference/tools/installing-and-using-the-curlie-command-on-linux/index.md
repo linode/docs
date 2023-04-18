@@ -1,7 +1,5 @@
 ---
 slug: installing-and-using-the-curlie-command-on-linux
-author:
-  name: Nathaniel Stickman
 description: "Learn how to install and use curlie, a frontend to curl that provides the modernity and user-friendliness of HTTPie."
 keywords: ['linux curlie','httpie curlie','curl vs curlie']
 tags: ['linux', 'ubuntu']
@@ -11,18 +9,16 @@ modified_by:
   name: Linode
 title: "Install and Use the curlie Command on Linux"
 title_meta: "How to Install and Use the curlie Command on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 [Curlie](https://github.com/rs/curlie) is a frontend to the ubiquitous command-line HTTP client cURL. With curlie, you get all of the features and versatility of cURL with a modern and user-friendly interface similar to the HTTP client, [HTTPie](/docs/guides/installing-and-using-httpie-on-linux/). In this guide, you learn about the benefits of curlie and how to install and start using it on a Linux system.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

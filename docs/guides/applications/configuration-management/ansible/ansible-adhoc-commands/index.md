@@ -1,8 +1,5 @@
 ---
 slug: ansible-adhoc-commands
-author:
-  name: Avi
-  email: avi.dunken1991@gmail.com
 description: 'In this tutorial, you will learn about several Ansible adhoc commands which are used by system and devops engineers to perform quick tasks and administer playbooks.'
 keywords: ["ansible", "commands", "adhoc", "ansible adhoc commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,11 +9,9 @@ modified_by:
   name: Linode
 title: 'A Tutorial for Learning Adhoc Commands in Ansible'
 title_meta: 'Ansible Adhoc Commands - A Tutorial'
-contributor:
-  name: Avi
-  link: https://github.com/avidunken/
 aliases: ['/applications/configuration-management/ansible-adhoc-commands/','/applications/configuration-management/ansible/ansible-adhoc-commands/']
 tags: ["automation"]
+authors: ["Avi"]
 ---
 
 In this tutorial, you'll learn about several Ansible adhoc commands which are used by system and devops engineers.
@@ -42,10 +37,10 @@ To run the commands in this tutorial, you'll need:
 
     - You can use Ansible to create the user, which is outlined in the [Add a Limited User Account](/docs/guides/running-ansible-playbooks/#add-a-limited-user-account) section of the [Automate Server Configuration with Ansible Playbooks](/docs/guides/running-ansible-playbooks/) guide.
 
-    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+    - Alternatively, you can manually add the user, which is outlined in the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
 {{< note >}}
-Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide for help with creating Linodes.
+Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide for help with creating Linodes.
 {{< /note >}}
 
 The commands in this guide will be run from the control node and will target a host named `Client`. Your control node's Ansible inventory should be configured so that at least one of your managed nodes has this name. The [Create an Ansible Inventory](/docs/guides/getting-started-with-ansible/#create-an-ansible-inventory) section of the [Getting Started With Ansible](/docs/guides/getting-started-with-ansible/) guide outlines how to set up an inventory file.
@@ -117,7 +112,7 @@ The `-f` option is used to define number of [forks](https://docs.ansible.com/ans
 {{< /note >}}
 
 {{< note >}}
-If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
+If your managed node is a Linode, then [Linode's shutdown watchdog *Lassie*](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) needs to be enabled for the reboot to succeed. This is because a Linode is not able to turn itself on--instead, Linode's host environment must boot the Linode.
 {{< /note >}}
 
 ## Collecting System Diagnostics

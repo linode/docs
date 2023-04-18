@@ -1,16 +1,13 @@
 ---
-author:
-  name: Linode Docs
-  email: docs@linode.com
 title: "Configuration Options for NodeBalancers"
 description: "Learn how to create a NodeBalancer, Linode's custom load balancing solution."
 keywords: ["load balancing", "nodebalancer"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode
 tags: ["linode platform","networking"]
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/','/guides/nodebalancer-reference-guide/']
+authors: ["Linode"]
 ---
 
 NodeBalancers, and load balancers in general, operate by taking inbound traffic over certain ports and distributing that traffic to pre-defined backend instances. For NodeBalancers, the settings that accommodate this behavior are all stored within *Configurations*. Each configuration specifies the inbound port, the protocol, the load balancing algorithm, heath checks, and the backend nodes. This guide covers how to add or edit these configurations as well as the options that are available.

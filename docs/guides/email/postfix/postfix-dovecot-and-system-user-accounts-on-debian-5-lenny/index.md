@@ -1,9 +1,6 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to use the user accounts you already have configured in Linux to send and receive email using the Postfix MTA and Dovecot IMAP/POP3 apps on Debian 5 "Lenny".'
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["ssl","debian","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Postfix is a popular mail transfer agent or "MTA". This document will allow you 
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

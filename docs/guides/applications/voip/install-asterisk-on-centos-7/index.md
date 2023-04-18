@@ -1,8 +1,5 @@
 ---
 slug: install-asterisk-on-centos-7
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how to install Asterisk, the open-source private branch exchange (PBX) application for running your own VoIP services, on CentOS 7.'
 keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 tags: ["centos"]
@@ -12,8 +9,6 @@ modified: 2020-12-03
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
-contributor:
-    name: Nick Rahl
 dedicated_cpu_link: true
 relations:
     platform:
@@ -21,6 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/applications/voip/install-asterisk-on-centos-7/']
+authors: ["Nick Rahl"]
 ---
 
 
@@ -40,13 +36,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Create a CentOS 7 Linode in your closest data center. A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-1.  Ensure you have followed the [Getting Started](/docs/guides/getting-started/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
+1.  Ensure you have followed the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your Linode. **Do not** complete the steps to set up a firewall.
 
 1.  Update your system:
 
         sudo yum update
 
-1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) enabled, your Linode is back up and running in a few minutes.
+1.  Disable SELinux and reboot your Linode. If you have [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) enabled, your Linode is back up and running in a few minutes.
 
         sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
 

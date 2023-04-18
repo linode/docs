@@ -10,7 +10,7 @@ external_resources:
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'
 image: how-to-create-an-oauth-app-with-the-linode-python-api-library.png
 keywords: ['linode','api','python','library','oauth']
-tags: ["linode platform","python"]
+tags: ["linode platform","python","managed hosting"]
 aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/']
 ---
 

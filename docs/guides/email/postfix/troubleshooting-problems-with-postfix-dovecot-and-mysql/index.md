@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2013-07-22
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
+authors: ["Linode"]
 ---
 
 ![Troubleshooting Problems with Postfix, Dovecot, and MySQL](troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")
@@ -29,7 +27,7 @@ Correctly diagnosing a problem is the first step in solving it. At first glance,
 
 ### Are Postfix and Dovecot Running?
 
-Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/guides/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
+Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
 
 To check that Postfix and Dovecot are running and to find startup errors, follow these steps:
 
@@ -330,7 +328,7 @@ Throughout this section, we will provide links to the appropriate [Postfix](http
 
 ### Setting Up
 
-Read the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. Follow the steps outlined in that section before installing your mail server.
+Read the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. Follow the steps outlined in that section before installing your mail server.
 
 You may also want to log into your server as the root user, so you don't have to type "sudo" for each command. You can log in as root by entering the following command:
 

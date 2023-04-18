@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Installation and basic usage guide of Mastodon, an open source alternative to Twitter."
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
@@ -26,6 +23,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 deprecated: true
+authors: ["Linode"]
 ---
 
 ## What is Mastodon?
@@ -46,13 +44,13 @@ While Mastodon servers are privately-operated, they are often open to public reg
 
 This guide will create a Mastodon server on a Linode running Ubuntu 16.04. Docker Compose is used to install Mastodon. If you prefer a different Linux distribution, you may be able to use this guide with small changes to the listed commands.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
     {{< note respectIndent=false >}}
 Consult Mastodon's [resource usage examples](https://github.com/tootsuite/documentation/blob/master/Running-Mastodon/Resources-needed.md) when considering which Linode plan to deploy on.
 {{< /note >}}
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. Replace each instance of `example.com` in this guide with your Mastodon site’s domain name.
 
 1. Complete the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) steps to register a domain name that will point to your Mastodon Linode.
 

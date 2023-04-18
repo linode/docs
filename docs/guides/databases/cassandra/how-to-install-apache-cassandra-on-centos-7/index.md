@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-apache-cassandra-on-centos-7
-author:
-   name: Andrew Lescher
-   email: docs@linode.com
 description: 'This guide will show you how to deploy a scalable and development-driven NoSQL database with Apache Cassandra on a Linode running CentOS 7.'
 keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 18.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +9,6 @@ modified_by:
   name: Linode
 title: "Installing Apache Cassandra on CentOS 7"
 title_meta: "How to Install Apache Cassandra on CentOS 7"
-contributor:
-   name: Andrew Lescher
-   link: https://www.linkedin.com/in/andrew-lescher-87027940/
 relations:
     platform:
         key: install-apache-cassandra
@@ -28,6 +22,7 @@ external_resources:
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
 tags: ["centos","database","nosql"]
 image: Apache_Cassandra.png
+authors: ["Andrew Lescher"]
 ---
 
 ## Introduction to Apache Cassandra
@@ -40,8 +35,8 @@ After completing this guide, you will have a single-node, production-ready insta
 
 ### Before You Begin
 
-1. Complete the [Getting Started](/docs/guides/getting-started/) guide for setting up a new Linode.
-2. While it is recommended you complete the entire [Securing Your Server](/docs/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
+1. Complete the [Getting Started](/docs/products/platform/get-started/) guide for setting up a new Linode.
+2. While it is recommended you complete the entire [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it will be necessary at least to possess a limited user account.
 
 ### Add Repositories and GPG Keys
 

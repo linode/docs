@@ -1,17 +1,12 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to deploy Haltdos Community WAF, a free web application firewall, on the Linode platform."
 keywords: ['haltdos','firewall','security','web application firewall']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
 title: "Deploy Haltdos Community WAF through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Haltdos Community WAF](https://docs.haltdos.com/community)'
+authors: ["Linode"]
 ---
 
 [Haltdos](https://www.haltdos.com/) Community Edition is a free user-friendly web application. It provides protection from OWASP 10 threats, XSS, SQL, and other web-based threats.
@@ -35,7 +30,7 @@ external_resources:
 
 ### Accessing Haltdos Community WAF
 
-1. Open your web browser and navigate to `https://[ip-address]:9000/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `https://[ip-address]:9000/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     {{< note type="warning" >}}
     Haltdos uses a self-signed TLS/SSL certificate. It is likely that your web browser will display a security warning. You need to accept this risk and bypass the warning to continue.

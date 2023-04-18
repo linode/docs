@@ -1,8 +1,5 @@
 ---
 slug: how-to-navigate-less-shortguide
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'Table of key commands used for navigating output with the less command.'
 keywords: ["linux", "how to", "less", "key commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: Less Keyboard Navigation Commands
 headless: true
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-navigate-less-shortguide/']
+authors: ["Nathan Melehan"]
 ---
 
 | Key command | Action |

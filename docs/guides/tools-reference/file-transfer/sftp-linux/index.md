@@ -1,7 +1,5 @@
 ---
 slug: sftp-linux
-author:
-  name: Jeff Novotny
 description: 'Learn how to use SFTP commands to transfer files to and from Linux servers.'
 keywords: ['what is sftp','SFTP commands','Sftp server','sftp vs ftps', 'scp vs sftp']
 tags: ['linux', 'ssh']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Transfer Files with SFTP"
 title_meta: "How to Transfer Files with SFTP"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Wikipedia SFTP Page](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)'
 - '[IETF Draft for SSH File Transfer Protocol](https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13)'
+authors: ["Jeff Novotny"]
 ---
 
 *SSH File Transfer Protocol* (SFTP) provides a mechanism for transferring, accessing, and managing files more securely compared to earlier protocols. It is a free and open-source utility that is available on all Linux systems. SFTP extends version 2.0 of the *Secure Shell* (SSH) protocol to provide greater security. This guide provides some background information about SFTP and explains how to use it to transfer files.
@@ -59,9 +55,9 @@ In summary, SFTP is a good, all-purpose utility with more functionality than the
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

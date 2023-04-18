@@ -1,7 +1,5 @@
 ---
 slug: play-framework-build-a-website
-author:
-  name: Nathaniel Stickman
 description: "Learn how to get started creating Java and Scala web applications in this guide to the Play framework, complete with examples."
 keywords: ['play framework']
 tags: ['java']
@@ -11,14 +9,12 @@ modified_by:
   name: Nathaniel Stickman
 title: "Get Started Building a Website with the Play Framework"
 title_meta: "How to Build a Website using the Play Framework"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Play 2.8.x documentation](https://www.playframework.com/documentation/2.8.x/Home)'
 - '[Play official site](https://www.playframework.com/)'
 - '[Play framework example projects](https://developer.lightbend.com/start/?group=play)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 [Play](https://www.playframework.com/) is a lightweight framework for Java and Scala web applications. Play's conciseness makes it easy to develop modern and efficient web applications.
@@ -27,9 +23,9 @@ This guide helps you learn more about the Play framework and how to get started 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

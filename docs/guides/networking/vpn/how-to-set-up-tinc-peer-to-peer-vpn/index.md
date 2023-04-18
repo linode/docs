@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-tinc-peer-to-peer-vpn
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide details how to set up tinc, an open-source, peer-to-peer VPN on your Linode.'
 keywords: ["VPN", "tinc", "Ubuntu", "security"]
 tags: ["ubuntu","networking","security","vpn"]
@@ -13,8 +10,7 @@ modified: 2017-09-20
 modified_by:
   name: Linode
 title: 'How to Set up tinc, a Peer-to-Peer VPN'
-contributor:
-  name: Damaso Sanoja
+authors: ["Damaso Sanoja"]
 ---
 
 
@@ -28,9 +24,9 @@ From a clear two-server connection to complex mesh private network, this guide w
 
 You will need at least two Linodes for this guide. Complete the following steps for each one:
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-2.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     This guide will use `sudo` wherever possible. Please ensure you have access to privileged user rights.
 

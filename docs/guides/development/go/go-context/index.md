@@ -1,8 +1,5 @@
 ---
 slug: go-context
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'This article showcases some of the use cases of the context package which is part of Go, a programming language created by Google and uised in many popular apps.'
 keywords: ["go", "golang", "context"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,12 +7,10 @@ published: 2019-05-31
 modified_by:
   name: Linode
 title: 'Using the context Go package'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[The Go Programming Language Website](https://www.golang.com)'
 aliases: ['/development/go/go-context/']
+authors: ["Mihalis Tsoukalos"]
 ---
 [Go](https://golang.org/) is a compiled, statically typed programming language developed by Google. Many modern applications, including Docker, Kubernetes, and Caddy, are written in Go.
 

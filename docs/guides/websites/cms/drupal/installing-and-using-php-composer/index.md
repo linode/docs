@@ -1,7 +1,5 @@
 ---
 slug: installing-and-using-php-composer
-author:
-  name: Jeff Novotny
 description: 'In this guide, you learn how to install and use PHP Composer on a Linux system. You also learn how to install and update PHP packages using Composer.'
 keywords: ['composer update','php composer','php composer install','composer update single package']
 tags: ['php']
@@ -11,13 +9,11 @@ modified_by:
   name: Linode
 title: "Install and Use PHP Composer"
 title_meta: "How to Install and Use PHP Composer"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Composer](https://getcomposer.org/)'
 - '[Packagist](https://packagist.org/)'
 - '[Composer Documentation](https://getcomposer.org/doc/)'
+authors: ["Jeff Novotny"]
 ---
 
 [*PHP*](https://www.php.net/) is one of the most popular programming languages for web and internet-based applications. Due to the increasing complexity of these applications, third-party PHP packages have become increasingly popular. However, it can become difficult to manage the minimum version and dependencies for each package. [*Composer*](https://getcomposer.org/), which is a free open source package and dependency manager for PHP, can help oversee this situation. This guide explains how to install and update Composer and how to use it to install and update packages.
@@ -36,9 +32,9 @@ Composer only works on PHP version 5.3.2 or above, although PHP 5.3.4 or higher 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 1. Ensure PHP is already installed on the Linode. PHP 5.3.4 or above is required, but the latest version is recommended. Use the command `php -v` to determine the version of PHP that is installed.
 

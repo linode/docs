@@ -1,24 +1,19 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how you can deploy MongoDB, a database engine that provides access to non-relational, document-oriented databases, using the Linode Marketplace."
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-11
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy MongoDB through the Linode Marketplace"
 image: MongoDB_oneclickapps.png
-contributor:
-  name: Linode
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.com/manual/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
  - '[Language-Specific MongoDB Drivers](https://docs.mongodb.com/ecosystem/drivers/)'
 aliases: ['/platform/marketplace/deploying-mongodb-with-marketplace-apps/', '/platform/one-click/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-one-click-apps/','/guides/deploying-mongodb-with-marketplace-apps/','/guides/mongodb-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [MongoDB](https://www.mongodb.com/) is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
@@ -43,12 +38,14 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 ### MongoDB Options
 
 - **MongoDB admin user password** *(required)*: The Mongo admin user password.
-- **MongoDB Version** *(required)*: Select the verison of MongoDB you'd like to install.
+- **MongoDB Version** *(required)*: Select the version of MongoDB you'd like to install.
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for soa record:** The start of authority (SOA) email address for this server. This email address will be added to the SOA record for the domain. This is a required field if you want the installer to create DNS records.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -56,7 +53,7 @@ MongoDB seeks to provide an alternative to traditional relational database manag
 
 After MongoDB has finished deploying, you can access and administer it directly from the console.
 
-1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to your Compute Instance via [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Launch the [mongo shell](https://docs.mongodb.com/v4.4/mongo/) by running the following command. When prompted, enter the admin user password you set when creating this instance.
 

@@ -1,8 +1,5 @@
 ---
 slug: install-gitlab-with-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode using the container application Docker.'
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
@@ -12,13 +9,12 @@ modified: 2019-01-11
 modified_by:
   name: Linode
 title: "Install GitLab with Docker"
-contributor:
-  name: Linode
 external_resources:
 - '[GitLab EE Docker Image](https://hub.docker.com/r/gitlab/gitlab-ee)'
 - '[GitLab Docker Documentation](https://docs.gitlab.com/omnibus/docker/)'
 - '[GitLab SSL Configuration](https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypt-integration)'
 aliases: ['/development/version-control/install-gitlab-with-docker/']
+authors: ["Linode"]
 ---
 
 ![Install GitLab with Docker](install-gitlab-with-docker.png "Install GitLab with Docker")
@@ -39,7 +35,7 @@ This guide was written for and tested with Ubuntu 18.04. You may be able to adap
 
 ### Secure your Server
 
-Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Change your Linode's Default SSH Port
 
