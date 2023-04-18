@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with the Linode Marketplace"
 description: "Learn how to deploy and use One-Click Apps hosted on the Linode Marketplace."
 tab_group_main:
     weight: 20

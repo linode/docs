@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with the Linode API"
 description: "Get started with the Linode API. Learn to get an access token, create an API token, authenticate requests, get configuration parameters, and build the final query."
 tab_group_main:
     weight: 20
