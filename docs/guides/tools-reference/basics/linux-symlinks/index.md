@@ -2,11 +2,11 @@
 slug: linux-symlinks
 title: "How to Create Linux Symlinks"
 title_meta: "The Ultimate Guide to Creating Linux Symlinks"
-description: 'Linux symlinks are used for managing and collating files. Learn the basics of Linux links and how to create symbolic links like a pro. ✓ Get organized today!'
+description: 'Linux symlinks are used for managing and collating files. Learn the basics of Linux symlinks.'
 keywords: ['linux symlinks','symbolic link linux','soft link in linux','linux symbolic link','ln command','linux ln','linux create symbolic link','ln linux','linux ln command','create symbolic link linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Stephen Satchell"]
-published: 2023-03-23
+published: 2023-04-18
 modified_by:
   name: Linode
 external_resources:
@@ -15,7 +15,7 @@ external_resources:
 - '[LinuxHint: Symbolic Link in Linux](https://linuxhint.com/symbolic-link-linux/)'
 ---
 
-A symbolic link, or symlink, creates a name that references another file, directory, or other Linux file system object. Using symlinks minimizes multiple copies of a file within a system. Any changes can be made in one place, instead of modifying many copies.
+A symbolic link, or symlink, creates a name that references another file, directory, or other Linux file system object. Using symlinks minimizes the necessity of having multiple copies of a file within a system. Any changes can be made in one place, instead of modifying many copies.
 
 Symlinks also provide a way to manage access. Multiple directories each owned by a user can reference a subset of a set of files. This limits visibility in a more complex manner than the file system permissions system permits.
 
@@ -35,15 +35,15 @@ Also known as a "soft link" in Linux, the term "shortcut" describes symlinks in 
 
 ### Soft Link Versus Hard Link
 
-Don’t confuse a symlink with a hard link. A disk’s file system has a number of control blocks called *inodes*. These describe the details of files and other objects, including where on the disk any associated data is stored. Entries in a Linux directory associate a name, for example "config", with an inode number. A hard link creates an alias, as it associates *another* name with the same inode number. See the [man page for the `ln` utility](https://man7.org/linux/man-pages/man1/ln.1.html) for details, particularly limitations on creating and removing hard links.
+It is easy to confuse a symlink with a hard link. A disk’s file system has a number of control blocks called *inodes*. These describe the details of files and other objects, including where on the disk any associated data is stored. Entries in a Linux directory associate a name, for example "config", with an inode number. A hard link creates an alias, or an *associated* name with the same inode number. See the [man page for the `ln` utility](https://man7.org/linux/man-pages/man1/ln.1.html) for details, particularly limitations on creating and removing hard links.
 
-The symlink (AKA soft link) is a referrer rather than an alias. Think of it as a signpost to where the target file can be found. The Linux system reads the symlink’s file path to reach the target.
+The symlink (AKA soft link) is a referrer rather than an alias. Think of it as a signpost pointing to where the target file can be found. The Linux system reads the symlink’s file path to reach the target.
 
 Soft links make restoring backups easier than doing so with hard links. Use of symlinks can simplify the installation or update of an application or file system tree.
 
 ### Chains of Soft Links
 
-A special case is a symlink pointing to another symlink. The Linux system walks down such a chain to get to the final object. When you unlink the head of a symlink chain, you remove only that symlink. When you unlink an intermediate symlink, you break the chain. In both cases, the target remains untouched.
+Symlinks can be used in special cases where the symlink points to another symlink. The Linux system progresses down such a chain of symlinks to get to the final object. When you unlink the head of a symlink chain, you remove only that symlink. When you unlink an intermediate symlink, you break the chain. In both cases, the target remains untouched.
 
 To prevent chain loops from overloading the system, Linux limits the number of hops through a symlink chain to 40.
 
@@ -102,7 +102,7 @@ The same command can also be used to create a symlink that points to a directory
 ln -s /tmp/reference-directory symlink-directory
 ```
 
-Any reference to `symlink-directory` acts on the directory `/tmp/reference-directory`. This includes as adding or deleting files in the directory, changing the ownership, and changing the permission if allowed.
+Any reference to `symlink-directory` acts on the directory `/tmp/reference-directory`. This includes adding or deleting files in the directory, changing the ownership, and changing the permission if allowed.
 
 ### Force Overwriting of a Symbolic Link
 
@@ -136,7 +136,7 @@ Almost all file-based actions on a symlink act on or affect the target file, but
 
 The exceptions to the above-described rule are the Linux commands `unlink`, `rm`, `rmdir`, and their associated system calls. These commands either fail or remove the symlink itself instead of the target file or directory. These exceptions prevent the inadvertent removal of the target.
 
-See more information about removing symlinks in out guide Quick Guide to Linux: Remove Symbolic Links(/docs/tools-reference/basics/linux-remove-symbolic-link).
+See more information about removing symlinks in our Quick Guide to Linux: Remove Symbolic Links(/docs/tools-reference/basics/linux-remove-symbolic-link).
 
 ## Finding Dangling Symlinks
 
