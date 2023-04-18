@@ -4,10 +4,6 @@ go 1.15
 
 require (
 	github.com/hotwired/turbo v7.0.1+incompatible // indirect
-	github.com/linode/linode-api-docs/v4 v4.141.0 // indirect
-<<<<<<< HEAD
-	github.com/linode/linode-docs-theme v0.0.0-20221129190621-04ebe8c558a5 // indirect
-=======
-	github.com/linode/linode-docs-theme v0.0.0-20221213185925-92c319235c60 // indirect
->>>>>>> c6187c416c5022f9f95013fc9695f22fa821e7ed
+	github.com/linode/linode-api-docs/v4 v4.150.0 // indirect
+	github.com/linode/linode-docs-theme v0.0.0-20230404183832-dfd8f681ad09 // indirect
 )
