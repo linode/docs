@@ -2,7 +2,7 @@
 description: "An overview of changes and actions that may be required in advance of upgrades to Linode's networking infrastructure."
 keywords: ['networking']
 published: 2022-07-19
-modified: 2023-01-20
+modified: 2023-04-18
 modified_by:
   name: Linode
 title: "Upcoming Changes Related to Network Infrastructure Upgrades"
@@ -41,7 +41,7 @@ Review the table below to learn which data centers have been upgraded with the l
 | Atlanta (Georgia, USA) | *Coming soon* |
 | Dallas (Texas, USA) | *Undergoing network upgrades* |
 | **Frankfurt (Germany)** | **Complete** |
-| Fremont (California, USA) | *Coming soon* |
+| Fremont (California, USA) | *Undergoing network upgrades* |
 | **London (United Kingdom)** | **Complete** |
 | **Mumbai (India)** | **Complete** |
 | **Newark (New Jersey, USA)** | **Complete** |
