@@ -42,6 +42,8 @@ For the ID and URL of the Object Storage cluster in this new data center, see be
 
 ### Premium Plans
 
+#### Premium Compute Instances
+
 A new Premium tier Dedicated CPU plan type for Compute Instances is available in our Washington, DC data center. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC CPUs™. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis. Below are the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
 
 | Plan | $/Mo | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
@@ -56,6 +58,7 @@ A new Premium tier Dedicated CPU plan type for Compute Instances is available in
 | Premium 256 GB | $2,765.00 | 256 | 56 | 5,000 | 11 | 40/11 |
 | Premium 512 GB | $5,530.00 | 512 | 64 | 7,200 | 12 | 40/12 |
 
+#### Premium Backups
 The pricing for Premium Compute Instance [Backups](/docs/products/storage/backups/) is as follows:
 
 | Plan | $/Mo |
@@ -69,6 +72,10 @@ The pricing for Premium Compute Instance [Backups](/docs/products/storage/backup
 | Premium 128 GB | 160 |
 | Premium 256 GB | 200 |
 | Premium 512 GB | 240 |
+
+#### Premium LKE
+
+You can now deploy Linode Kubernetes Engine (LKE) clusters with Premium Compute Instance node pools. Individual node prices for Premium LKE are the same as the above Premium Compute Instance prices.
 
 ## Deploy Services in Washington, DC
 
