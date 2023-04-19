@@ -1,7 +1,7 @@
 ---
 title: Backups
 title_meta: "Linode Backup Service Product Documentation"
-description: "Linode Backup service is fully managed, easy, and configurable."
+description: "Linode Backup service is a fully managed and easy to use backup service that's fully integrated into the Linode Platform."
 tab_group_main:
     is_root: true
     title: Overview
