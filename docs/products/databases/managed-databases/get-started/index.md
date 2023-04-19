@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with Managed Databases"
 description: "Learn how to quickly get up and running with the Managed Database service."
 tab_group_main:
     weight: 20

@@ -1,5 +1,6 @@
 ---
 title: "FAQs"
+title_meta: "FAQs for Creating and Managing Linode Accounts"
 description: "Find quick answers to some of the most commonly asked account and login questions."
 tab_group_main:
     weight: 60

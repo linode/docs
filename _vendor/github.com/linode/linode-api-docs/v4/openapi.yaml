@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.150.0
+  version: 4.151.1
 
   title: Linode API
   description: |
@@ -1683,7 +1683,7 @@ paths:
           curl -H "Content-Type: image/png" \
               -H "Authorization: Bearer $TOKEN" \
               -X PUT \
-              --data-binary "/path/to/image"
+              --data-binary "@/path/to/image"
               https://api.linode.com/v4/account/oauth-clients/edc6790ea9db4d224c5c/thumbnail
   /account/payment-methods:
     x-linode-cli-command: payment-methods
@@ -3334,6 +3334,7 @@ paths:
     #   requestBody:
     #     description: Information about the Managed MongoDB Database you are creating.
     #     x-linode-cli-allowed-defaults:
+    #     - engine
     #     - region
     #     - type
     #     required: true
@@ -4114,6 +4115,7 @@ paths:
       requestBody:
         description: Information about the Managed MySQL Database you are creating.
         x-linode-cli-allowed-defaults:
+        - engine
         - region
         - type
         required: true
@@ -4867,6 +4869,7 @@ paths:
       requestBody:
         description: Information about the Managed PostgreSQL Database you are creating.
         x-linode-cli-allowed-defaults:
+        - engine
         - region
         - type
         required: true

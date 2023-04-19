@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Getting Started on the Linode Platform"
 description: "A collection of guides to help get you started on the Linode Platform"
 tab_group_main:
     weight: 20
