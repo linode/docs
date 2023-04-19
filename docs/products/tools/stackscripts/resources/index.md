@@ -1,5 +1,6 @@
 ---
 title: Resources
+title_meta: "Resources for StackScripts"
 description: "Resources and other information related to Linode StackScripts including blog posts, community posts, and press releases."
 tab_group_main:
     weight: 40

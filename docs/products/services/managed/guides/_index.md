@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode Managed Service"
 description: "Learn how to sign up for Linode Managed, add new services, disable service monitoring, and more."
 tab_group_main:
     weight: 30

@@ -1,5 +1,6 @@
 ---
 title: "FAQs"
+title_meta: "FAQs for Compute Instances"
 description: "Find quick answers to some of the most commonly asked questions about Compute Instances."
 tab_group_main:
     weight: 60

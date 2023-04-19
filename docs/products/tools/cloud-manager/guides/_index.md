@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode Cloud Manager"
 description: "These guides show you how to use the Linode Cloud Manager to access and deploy the full range of Linode services and how to complete account and user management tasks."
 tab_group_main:
     weight: 30

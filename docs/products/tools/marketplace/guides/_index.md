@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode Marketplace"
 description: "Learn how to access and deploy all the Linode Marketplace One-Click Apps."
 tab_group_main:
     weight: 30

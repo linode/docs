@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Object Storage"
 description: "Find guides on Linode Object Storage management, hosting a static site on Object Storage, access and permissions, and other related topics."
 tab_group_main:
     weight: 30
