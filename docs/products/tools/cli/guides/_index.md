@@ -1,7 +1,7 @@
 ---
 title: Guides
 title_meta: "Guides and Tutorials for the Linode CLI"
-description: "Learn how to manage various Linode services using the Linode CLI."
+description: "A collection of guides to help you learn how to manage various Linode services using the Linode CLI."
 tab_group_main:
     weight: 30
 modified: 2022-12-06

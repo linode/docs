@@ -1,7 +1,7 @@
 ---
 title: Get Started
 title_meta: "Getting Started with the Linode CLI"
-description: "Instructions on installing and using the Linode CLI."
+description: "Learn how to run basic commands on the Linode CLI and modify the output to fit your needs."
 keywords: ["linode api", "linode cli", "python cli"]
 tab_group_main:
     weight: 20
