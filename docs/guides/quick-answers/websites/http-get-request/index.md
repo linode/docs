@@ -15,55 +15,53 @@ external_resources:
 - '[W3Schools: HTTP Request Methods](https://www.w3schools.com/tags/ref_httpmethods.asp)'
 ---
 
-HTTP Requests are the messages made to servers that understand HTTP syntax. The HTTP Request type uses a sentence-like structure to ask, answer, and acknowledge for the application making the request in the HTTP Client.
+HTTP requests are messages that are sent to servers that understand HTTP syntax. An HTTP request uses a sentence-like structure, allowing the application making the request in the HTTP client to ask, answer, and acknowledge information.
 
-HTTP server messages are formed in a similar way, and can have varying types of responses to a given HTTP Request.
+HTTP server messages are structured in a similar way and can have different types of responses to a given HTTP Request.
 
 ## What are HTTP requests?
 
-HTTP requests are messages formatted in the HTTP protocol from a client to a server poised to respond to them. The messages are formatted using standardized HTTP protocol syntax. Each request initiates an action on the target server, which gives a response as an answer.
+HTTP requests are messages formatted in the HTTP protocol that are sent from a client to a server that is poised to respond to them. The messages are formatted using standardized HTTP protocol syntax. Each request initiates an action on the target server, which gives a response as an answer.
 
-The HTTP request is formed from ASCII in HTTP1.1, and is a binary request in HTTP/2. Servers that only understand the older HTTP1.1 may bounce or otherwise ignore Requests sent in HTTP2. Meanwhile, HTTP/2 servers are backward-compatible and understand HTTP1.1 requests by default.
+In HTTP1.1, requests are formed in ASCII, while HTTP/2 uses binary. Servers that only understand HTTP1.1 may bounce or ignore requests sent in HTTP2. Meanwhile, HTTP/2 servers are backward-compatible and understand HTTP1.1 requests by default.
 
-HTTP Requests can be formed by software, APIs, or libraries within an application (e.g web browsers and email clients), and target a specific server with a URL/URI. The server responds to the message. Different HTTP Requests produce different server states/reactions and HTTP Responses to the requests.
+HTTP requests can be formed by software, APIs, or libraries within an application (e.g. web browsers and email clients). They target a specific server with a URL/URI. Different HTTP requests produce different server reactions and HTTP responses.
 
-The syntax of an HTTP request is a rather sentence-like structure. A noun (data values expressed in the message header, options chosen, and body message values) is coupled with a verb (the HTTP Get request method) to form the complete message that is sent to the target server.
+The syntax of an HTTP request is a rather sentence-like structure. A noun (data values expressed in the message header, options chosen, and body message values) is coupled with a verb (the HTTP request method used, such as GET or POST) to form the complete message.
 
-The format of an HTTP Request is routed and qualified by a header. It contains an HTTP method, a target URL/URI, and a target server endpoint path, which may be appended to the target URL/URI. An HTTP Request can optionally have a body, header, a query string, and/or specify the HTTP Protocol Version (HTTP1.1, or HTTP/2).
+The format of an HTTP request is qualified by a header. It contains an HTTP request method, a target URL/URI, and a target server endpoint path. Optional components of an HTTP request include a body, header, a query string, and the HTTP Protocol Version (HTTP1.1, or HTTP/2).
 
-HTTP GET and POST are the two most commonly used *methods* to exchange information between a client and a server. Other rare methods include PUT, PATCH, DELETE, CONNECT, and TRACE.
+HTTP GET and POST are the two most commonly used HTTP methods to exchange information between a client and a server. Other methods include PUT, PATCH, DELETE, CONNECT, and TRACE.
 
-## What Is a HTTP Get Request?
+## What Is a HTTP GET Request?
 
-An HTTP GET request (`http_get_request`) is a formatted message from a client to a server using the HTTP1.1 or HTTP/2 protocols. The client making the request is often, but is not required to be, a web browser. The server responds to the `http_get_request` in a number of ways that does not change the state of the server. This read-only request summons information based on how the server responds in its format, from the URL/URI the HTTP Request message specifies.
+An HTTP GET request (`http_get_request`) is a message from a client, typically a web browser, to a server using HTTP1.1 or HTTP/2. The server responds to the request with information based on the URL/URI specified in the HTTP request. These messages between clients and servers are formatted according to the [standards defined in the HTTP protocol](https://developer.mozilla.org/en-US/docs/Web/HTTP/Resources_and_specifications). The request and corresponding response are called a *transaction*, and both follow a similar structure.
 
-HTTP Get Requests are sent to a target server that understands HTTP messaging, and conversations between client and server are formatted according to [HTTP standards](https://developer.mozilla.org/en-US/docs/Web/HTTP/Resources_and_specifications). The protocol defines the request format, and the server replies in a formatted response to the request. The Request and response are called a *transaction*.
+The first part of an HTTP request is the header, and the first single line of the header is known as the request-line. It specifies the HTTP request method (e.g. `GET`), the path to resource (e.g. `/index.html`), and the HTTP version (e.g. `HTTP/1.1`). Additional, optional header lines provide other data or options. HTTP GET requests must be no longer than 2048 characters.
 
-Both HTTP Requests and HTTP responses have a similar structure. The first two lines of the HTTP Request specify the method, and all meta-information (options) are sent. The first component of the HTTP request is describes the requests to be performed, or a status code indicating success or failure. The start-line must be formed as the first, single line in the request, no matter the method used. The start-line must be no longer than 2048 characters if it’s an HTTP Get Request.
+The next part of the HTTP GET request is a blank line that separates header meta-information from any further data made in the request.
 
-After the start-line, an optional set of HTTP headers specifies a request or other data or options. The third part of the HTTP GET request is a blank line. The blank line separates the meta-information from any further data made in the Request. The data past the meta-information blank line is called the body.
+Data past the blank line is called the *body*. The body can be a document, a form, or other message. A server responding to an HTTP GET request ignores the body. Instead, it parses an HTTP POST request body and considers data and method located in the body.
 
-Fourth and finally, the body can be a document, a form, or other message. A server responding to an HTTP GET Request ignores the body. Instead, it parses an HTTP POST Request body and considers data and method located in the body.
-
-When the target server receives a message, the server parses the method requested, and responds with a message in a similar way. The Response includes meta-information (method and options) and a body, which can contain a message, web page, stream of data, or other content. The HTTP GET Request is a "read-only" request and doesn’t alter the target server.
+When the target server receives an HTTP request message, it parses the method specified, and sends a response message in a similar way. The response includes a header with meta-information and a body, which can contain a message, web page, stream of data, or other content. The HTTP GET request is a read-only request and doesn’t alter the target server.
 
 ## What Is An HTTP POST Request?
 
-An HTTP POST Request is formed by an application, usually a web browser. The HTTP Post Request (`http_post_request`) method informs the server to add, delete, or otherwise alter the state of data on the target server. The difference between GET and POST is that the state of the server is not changed with a GET, which is a read-only request. The POST request sends data to the target server in the Body portion of the message. While GET is a read-only request, as its message Body is ignored, the data in the POST message body performs an action that changes the server.
+An HTTP POST Request is formed by an application, usually a web browser. The HTTP Post request (`http_post_request`) method informs the server to add, delete, or otherwise alter the state of data on the target server. The difference between GET and POST is that the state of the server is not changed with a GET, which is a read-only request. The POST request sends data to the target server in the Body portion of the message. While GET is a read-only request, as its message Body is ignored, the data in the POST message body performs an action that changes the server.
 
 The HTTP Request message interaction between client and server is a series of exchanges involving data and meta-information. The response header information characterizes the body information, which is sent to the client application.
 
 ## HTTP Request Examples
 
-This simple HTTP Get Request example requests a file:
+Here's a simple HTTP GET request example:
 
 ```
 GET /home/user/example.txt HTTP/1.1
 ```
 
-This example opens the file `/home/user/example.txt` via the HTTP 1.1 protocol. The contents of the file `/home/user/example.txt` are displayed as a result of the request.
+This example opens the file `/home/user/example.txt` via the HTTP 1.1 protocol and displays its contents as a result.
 
-The next example adds more details. Note that there is no body sent. Although an HTTP Get Request can have a body sent, most all servers ignore the body and respond with information from the URI/URL requested:
+The next example adds more details. Note that there is no body sent. Although an HTTP GET request can have a body, most servers ignore it and respond with information from the URI/URL requested:
 
 ```
 GET /docs/tutorials/linux/shellscripts/howto.html HTTP/1.1
@@ -76,15 +74,31 @@ Accept-Charset: ISO-8859-1,utf-8
 Cache-Control: no-cache
 ```
 
-The `GET` requests the filename `/docs/tutorials/linux/shellscripts/howto.html`. Note that this file does not actually exist from the host `linode.com`. The `*/*` means `Accept` any application/filetype result.
+Here's a breakdown:
 
-The `Accept` specification tells the target server what the client accepts. Here, `text` is accepted in `HTML`, while the `application` accepts `xhtml` and `xml`. The `Accept-Language` is set to `en-us` (US English), and the accepted character sets (`Accept-Charset`) are `ISO 8859–1` and `utf-8`. The final line tells the server not to assume there is cache control (`Cache-Control`) on the client. All GET Requests require ASCII characters to be used in the formation of the entire request. The body of a POST request can be in ASCII or in a binary format.
+-   The `GET` requests the filename `/docs/tutorials/linux/shellscripts/howto.html`.
+
+       {{< note >}}
+This file does not actually exist from the host `linode.com`.
+       {{< /note >}}
+
+-   The `Accept` specification tells the target server what the client accepts. Here, `text` is accepted in `HTML`, while the `application` accepts `xhtml` and `xml`.
+
+-   `Accept-Language` is set to `en-us` (US English).
+
+-   The accepted character sets (`Accept-Charset`) are `ISO 8859–1` and `utf-8`.
+
+-   The final line tells the server not to assume there is cache control (`Cache-Control`) on the client.
+
+All GET Requests require ASCII characters to be used in the formation of the entire request. In contrast, the body of a POST request can be in ASCII or in a binary format.
 
 ## HTTP POST Request Examples
 
-The header of the HTTP POST Request (`http_post_request`) has a header and body (which can be ASCII or binary in an HTTP/2 request). It is formed in a similar way to the `http_get_request`. However, the body of the Request is read and considered by the application logic of the target server where the request has been sent. HTTP POST and HTTP PUT are identical in use, except PUT tells the target server to read the body of the Request as an object.
+The header of the HTTP POST request (`http_post_request`) has a header and body (which can be ASCII or binary in an HTTP/2 request). It is formed in a similar way to an HTTP GET request. However, the body of a POST request is read and processed by the target server.
 
-An HTTP POST (or the less commonly used PUT) request has a similar header to the HTTP GET Request, specifying the method POST. in this example, values to be POSTed/handled/considered by the target server are specified in the message body:
+An HTTP POST (or the less commonly used PUT) request has a similar header to the HTTP GET Request, specifying the method POST. HTTP POST and HTTP PUT are identical in use, except PUT tells the target server to read the body of the request as an object.
+
+In this example, the values to be handled by the target server are specified in the message body:
 
 ```
 POST /home/user/datafile HTTP/1.1
@@ -92,31 +106,32 @@ From: user@linode33
 User-Agent: Mytools/0.8.0
 Content-Type: application/json
 Content-Length: 32
+
 {
     [Json-formatted data pairs]
 }
 ```
 
-The file `/home/user/datafile` is POSTed using `HTTP/1.1` protocol from `user@linode33` using version 0.8.0 of a program called MyTools. This application sends json formatted data, whose content length is 32 characters.
+Here, the file `/home/user/datafile` is shown using the `HTTP/1.1` protocol from `user@linode33` using version `0.8.0` of a program called `MyTools`. This application sends json formatted data with a content length of 32 characters.
 
 ## HTTP Request States
 
-Either client or server may exchange messages by using any method. The choice of method produces a state between the client and server. GET doesn’t change the server, while POST, DELETE, and PUT can alter the states.
+Either the client or the server may exchange messages using any HTTP request method. The choice of method affects the *state* between the client and server. GET requests do not alter the server's state, while POST, DELETE, and PUT can.
 
 The three possible states are *safe*, *idempotent*, and *cacheable*.
 
--   A safe method request doesn’t change the target server. It’s similar to a read-only request.
+-   A safe method request doesn’t change the state of the target server, similar to a read-only request.
 
--   An idempotent method request alters the state of the server, usually by storing, deleting, or moving data on the server.
+-   An idempotent method request alters the state of the target server, usually by storing, deleting, or moving data.
 
     {{< note >}}
-All safe server states are also idempotent. The HTTP specifications say, *"A request method is considered idempotent if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. Of the request methods defined by this specification, [PUT](https://httpwg.org/specs/rfc9110.html#PUT), [DELETE](https://httpwg.org/specs/rfc9110.html#DELETE), and safe request methods are idempotent."* The concept is important when communications failures might exist, and the retry produces a different server response. Only the server can be idempotent.
+All safe server states are also idempotent. According to the HTTP specifications: *"A request method is considered idempotent if the intended effect on the server of multiple identical requests with that method is the same as the effect for a single such request. Of the request methods defined by this specification, [PUT](https://httpwg.org/specs/rfc9110.html#PUT), [DELETE](https://httpwg.org/specs/rfc9110.html#DELETE), and safe request methods are idempotent."* The concept is important when communications failures might occur, and a retry produces a different server response. Only the server can be idempotent.
 {{< /note >}}
 
--   The cacheable state means that the client can retail data that is session-related until a change in the client’s state requires refreshing what may be bad cache. The client stores this data, rather than making new requests each time to the server, until the server determines that such cached data is "dirty cache" or has expired, or is no longer valid for the session. Not all responses can be [practically or meaningfully cached](https://developer.mozilla.org/en-US/docs/Glossary/cacheable).
+-   The cacheable state means that the client can retain session-related data until a change in the client’s state requires refreshing cache data. The client stores this data, rather than making new requests each time to the server, until the server determines that such cached data has expired, or is no longer valid for the session. However, not all responses can be [practically or meaningfully cached](https://developer.mozilla.org/en-US/docs/Glossary/cacheable).
 
 ## Summary
 
-The HTTP Request methods most commonly used are GET and POST. Either method has a header with options, and a message body, sent to a target server. The target server sends only the URL/URI requested in a GET, and certain information can be cached by the client. A POST or PUT reads the message body. POST parses the values expressed in the data of the body, while PUT receives the data as an object.
+The two most commonly used HTTP request methods are GET and POST. Either method has a header with options and a message body that is sent to a target server. In a GET request, the target server sends only the URL/URI requested, and some information can be cached by the client. In contrast, a POST or PUT reads the message body. In a POST request, the server parses the data values in the message body, while PUT receives this data as an object.
 
-[There are additional, if seldom-used, HTTP Request Methods possible](https://developer.mozilla.org/en-US/docs/Web/HTTP/Resources_and_specifications) that work across most web browsers and servers. However, neither is required to be used in the HTTP protocol.
+Additional HTTP request methods exist, although they are seldom-used. These methods work across most web browsers and servers, but the HTTP protocol does not require their use. For more information on these methods, see the [Mozilla Developer Network Documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Resources_and_specifications).
