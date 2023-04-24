@@ -12,6 +12,7 @@ external_resources:
 - '[phoenixNAP: Podman vs Docker - Everything You Need to Know](https://phoenixnap.com/kb/podman-vs-docker)'
 - '[How-to Geek: What Is Podman and How Does It Differ from Docker?](https://www.howtogeek.com/devops/what-is-podman-and-how-does-it-differ-from-docker/)'
 authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Containers offer you powerful tools for developing and deploying applications. They give you distinct and portable virtual environments with a fraction of the overhead of traditional virtual machines.

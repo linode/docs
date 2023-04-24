@@ -3,7 +3,6 @@ description: "Deploy UTunnel VPN on a Linode Compute Instance. This provides you
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-10
 modified: 2022-03-08
 modified_by:

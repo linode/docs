@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with LKE (Linode Kubernetes Engine)"
 description: "Get Started with the Linode Kubernetes Engine with this quick start guide. Install kubectl, create an LKE Cluster, and access and download your kubeconfig."
 tab_group_main:
     weight: 20

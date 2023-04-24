@@ -66,6 +66,7 @@ apache2
 api
 apis
 apiserver
+apfs
 apk
 apparmor
 appimage
@@ -88,6 +89,7 @@ askbot
 aske
 Astra
 async
+astro
 asynchrony
 atera
 atlanta
@@ -101,6 +103,7 @@ authn
 authomator
 authsocket
 authy
+autoclear
 autocompletion
 autoconfiguration
 autoconfigure
@@ -116,6 +119,7 @@ automator
 automattic
 automations
 automount
+automounting
 automox
 autorelabel
 autorun
@@ -139,6 +143,7 @@ backdooring
 backdoors
 backend
 backends
+backport
 backported
 backporting
 backports
@@ -169,6 +174,7 @@ bgpd
 bialek
 bin_t
 bing
+binhex
 binlog
 bioinformaticists
 biomes
@@ -240,6 +246,8 @@ caffe
 cakey
 calc
 campione
+canonicalize
+canonicalization
 captcha
 carootcert
 ccm
@@ -322,6 +330,7 @@ Codeone
 codepen
 colab
 collabnet
+Collabora
 colormaps
 com2sec
 commoditization
@@ -420,11 +429,12 @@ dao
 databags
 datacenter
 datadir
-Datadog
+datadog
 dataflow
 datagram
 dataplane
 dataplanes
+datalog
 dataset
 datasets
 datasource
@@ -462,6 +472,7 @@ Deno
 denormalized
 deprovision
 deprovisioning
+deque
 descolada
 descr
 deserialize
@@ -473,6 +484,8 @@ desperados
 destructured
 detectify
 dev
+devfs
+devpts
 devel
 devops
 devtmpfs
@@ -483,6 +496,7 @@ dhparams
 dia
 dialogs
 diavel
+dicts
 diffie
 digicert
 digium
@@ -555,6 +569,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+ecto
 edmonds
 edu
 efi
@@ -661,6 +676,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+filemask
 findtime
 finnix
 firefart
@@ -703,6 +719,7 @@ fstab
 ftp_client
 fullchain
 func
+fuser
 fzf
 galera
 gamemode
@@ -876,6 +893,7 @@ https
 Hubzilla
 huginn
 Hugo
+hugo
 hulu
 husch
 hvc0
@@ -945,6 +963,7 @@ inittab
 injectable
 inkscape
 inode
+inodes
 inotify
 inrupt
 insmod
@@ -1319,6 +1338,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktemp
 mktime
 mkv
 mnesia
@@ -1348,6 +1368,7 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
 msfvenom
@@ -1448,6 +1469,7 @@ newtag
 nextcloud
 nexthop
 nfs
+nfsd
 nftables
 ng
 nginx
@@ -1546,6 +1568,7 @@ outputter
 outputters
 overcommit
 overengineer
+overmounting
 overfitted
 overfitting
 overwatch
@@ -1593,6 +1616,8 @@ perceptron
 percona
 performant
 perl
+perlre
+perldoc
 permalink
 permalinks
 Petazzoni
@@ -1614,12 +1639,16 @@ phusion
 pid
 pidfile
 pingable
+pipefs
 pinterest
 pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
+pixid
+pixelfed
 pki
 plaintext
 platformer
@@ -1683,8 +1712,11 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
+logic-programming-languages
+prolog
 promlens
 promscale
 prosodyctl
@@ -1697,6 +1729,7 @@ proxying
 pscp
 pseudocode
 psexec
+psmisc
 psql
 psudo
 psycop2
@@ -1871,6 +1904,7 @@ rulesets
 rundir
 runfile
 runlevels
+runpy
 runtime
 runtimes
 rustup
@@ -1916,6 +1950,7 @@ scrapy
 screenrc
 scriptable
 scrollable
+scrollback
 scrollbar
 scrollbars
 scriptfilename
@@ -1982,6 +2017,7 @@ shotcut
 shoutcast
 scikit
 scribus
+scrollable
 sidekiq
 sievers
 signup
@@ -2031,6 +2067,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
@@ -2075,6 +2112,7 @@ subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage
@@ -2088,6 +2126,8 @@ subqueries
 subquery
 subreddit
 subreddits
+subshells
+subshell
 substring
 substrings
 subtab
@@ -2124,6 +2164,7 @@ syntaxes
 sys
 sysconfig
 sysdig
+sysfs
 sysctl
 syslog
 sysstat
@@ -2194,6 +2235,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2250,6 +2292,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 UDF
 UDFs
@@ -2289,6 +2332,7 @@ unopinionated
 unmanaged
 unmerged
 unmount
+unmounts
 unmounting
 unoptimized
 unpatched
@@ -2335,6 +2379,7 @@ v2
 v4
 v6
 vagrantfile
+valim
 valheim
 validator
 variadic
@@ -2397,6 +2442,7 @@ wasn
 wasm
 wav
 wazuh
+wc
 wchar
 wchar_t
 webadmin
@@ -2431,6 +2477,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
@@ -2450,6 +2497,7 @@ windowlist
 wireguard
 wirelessly
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll

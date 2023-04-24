@@ -3,7 +3,6 @@ title: Using Proxy Protocol with NodeBalancers
 description: "Learn how to enable and use Proxy Protocol on your NodeBalancer to send client connection details to the backend nodes."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode

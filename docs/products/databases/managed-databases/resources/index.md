@@ -1,6 +1,6 @@
 ---
 title: Resources
-description: ""
+description: "Resources and other information related to Managed Databases including videos, blog posts, community posts, and press releases."
 tab_group_main:
     weight: 40
 ---

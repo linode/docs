@@ -125,7 +125,7 @@ Vesta is a free alternative that offers a [similar feature set](https://vestacp.
 
 While the core of Vesta is free, [paid commercial plugins](https://vestacp.com/pricing/) for two functions can be purchased: a web file manager and SFTP chroot restricted access. [Paid support](https://vestacp.com/new/support/) is available starting at $60/hour.
 
-Vesta offers a [community forum](https://forum.vestacp.com) and [documentation library](https://vestacp.com/docs/). [A demo site](https://demo.vestacp.com) is available for you test out Vesta's interfaces.
+Vesta offers a [community forum](https://forum.vestacp.com) and [documentation library](https://vestacp.com/docs/). [A demo site](https://vestacp.com/demo/) is available for you test out Vesta's interfaces.
 
 ### Virtualmin
 

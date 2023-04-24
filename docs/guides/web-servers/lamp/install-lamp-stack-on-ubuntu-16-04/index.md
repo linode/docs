@@ -11,7 +11,7 @@ modified_by:
 published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 deprecated: true
-deprecated_link: 'guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/'
+deprecated_link: '/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'

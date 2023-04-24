@@ -2,7 +2,6 @@
 description: "Deploy HashiCorp Vault, an open source, centralized secrets management system, on a Linode Compute Instance.'"
 keywords: ['HashiCorp','vault','secrets',]
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-08-09
 modified_by:
   name: Linode

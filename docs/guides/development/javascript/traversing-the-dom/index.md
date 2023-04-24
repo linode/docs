@@ -93,7 +93,7 @@ Knowing the arrangement of the DOM tree and its leaves, helps you understand how
 
 The diagram below provides a visualization of the DOM tree for this guide's [example web page](example-page.html). You can also view the `example-page.html` file in the [Before You Begin](/docs/guides/traversing-the-dom/#before-you-begin) section of this guide.
 
-[![A DOM tree for an example web page](dom-tree-example_small.png)](dom-tree-example.png)
+![A DOM tree for an example web page](dom-tree-example.png)
 
 ### How Are Nodes Accessed?
 

@@ -14,6 +14,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/configure-postgresql/']
 authors: ["Angel Guarisma"]
+tags: ["saas"]
 ---
 
 ![Configure PostgreSQL](Configure_PostgreSQL.jpg)

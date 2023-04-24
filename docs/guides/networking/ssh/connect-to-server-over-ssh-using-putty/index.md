@@ -19,7 +19,7 @@ relations:
 authors: ["Linode"]
 ---
 
-A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
+A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
 
 This article covers the basics of connecting to a remote server (such as a Linode) over SSH using the PuTTY application. PuTTY is a free and open source SSH client that provides a graphic interface for connecting to remote servers. It is compatible with Windows XP and later systems, including Windows Vista, 7, 8 and 10. It is also compatible with most UNIX systems.
 
@@ -71,7 +71,7 @@ Once you have successfully connected, your terminal should be using the remote s
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 

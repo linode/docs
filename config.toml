@@ -35,7 +35,7 @@ time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
 time_format_default = "Monday, January 2, 2006"
 
 # Promo code
-promo_code = "docs1000822"
+promo_code = "docs032323"
 promo_code_amount = 100
 promo_code_disclaimer = "This credit will be applied to any valid services used during your first 60 days."
 

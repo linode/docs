@@ -1,7 +1,6 @@
 ---
 description: "Learn how to configure networking using the ifupdown utility on Debian and older Ubuntu distributions"
 keywords: ["static", "ip address","ifupdown", "ifup", "ifdown"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-25
 modified_by:
   name: Linode

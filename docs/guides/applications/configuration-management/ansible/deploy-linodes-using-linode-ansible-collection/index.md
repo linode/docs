@@ -14,7 +14,7 @@ external_resources:
 - '[The Linode Ansible collection](https://github.com/linode/ansible_linode)'
 - '[Ansible Galaxy](https://galaxy.ansible.com/linode/cloud)'
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
-tags: ["automation"]
+tags: ["automation", "saas", "gaming"]
 authors: ["Linode"]
 ---
 

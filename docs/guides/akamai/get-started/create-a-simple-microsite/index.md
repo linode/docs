@@ -83,7 +83,7 @@ If you plan to utilize Linode DNS Manager, we recommend taking steps now familia
 
 1.  Enter a root password.
 
-1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/).
+1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/).
 
 1.  Select **Private IP** under **Add-ons**.
 

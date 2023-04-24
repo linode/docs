@@ -2,7 +2,6 @@
 description: "Review this guide to find out how to copy a disk of a Linode from one Linode account to another."
 keywords: ["disk", "migration", "moving to different accounts"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-03-28
 modified_by:
   name: Linode
@@ -32,7 +31,7 @@ You need to prepare the *receiving* Linode before initiating the transfer. First
 
     ![Creating a receiving Linode](image-selection.png)
 
-1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
+1. Choose the region where you would like the Linode to reside. If you're not sure which to select, see our [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide. You can also generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) for a deeper look at the route path between you and a data center in each specific region.
 
 1. Select a Linode plan.
 
@@ -72,7 +71,7 @@ Start the receiving Linode in rescue mode:
 
 ### Access the Linode in Rescue Mode
 
-After the Linode has booted, connect to the Linode through [LISH](/docs/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+After the Linode has booted, connect to the Linode through [LISH](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
 
 1.  Select the Linode that is receiving the disk. The Linode's dashboard appears.
 1.  Click **Launch Lish Console** . A new window appears that displays the Lish console, a `Welcome to Finnix!` message, and a root prompt.

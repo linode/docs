@@ -2,7 +2,6 @@
 description: "This guide provides you with step-by-step instructions for making additional copies of your Compute Instance."
 keywords: ["clone", " cloning", "cloud manager"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2019-03-18

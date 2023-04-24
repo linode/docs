@@ -10,9 +10,11 @@
 {{ if $p.authors }}
   {{/* author taxonomy set, use that. */}}
   {{/* we currently only use the first one, but there may be more roles applied later (editors etc.). */}}
-  {{ $firstAuthor := index ($.GetTerms "authors") 0 }}
-  {{ $link = printf `<a href="%s">%s</a>` $firstAuthor.RelPermalink  $firstAuthor.Title }}
-{{ else }}
+  {{ with (index ($.GetTerms "authors") 0 ) }}
+    {{ $link = printf `<a href="%s">%s</a>` .RelPermalink  .Title }}
+  {{ end }}
+{{ end }}
+{{ if not $link }}
   {{ $author :=  $p.author }}
   {{ $contributor :=  $p.contributor }}
   {{ $name := $author.name }}
