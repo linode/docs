@@ -2,7 +2,7 @@
 title: "Washington, DC Data Center (Available in a Closed Beta)"
 description: "The specifications for Akamai Cloud Compute's newest data center located in Washington, DC."
 published: 2023-04-17
-modified: 2023-04-17
+modified: 2023-04-19
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -17,7 +17,6 @@ Akamai Cloud's newest data center located in Washington, DC is now available in 
 {{< note type="warning" >}}
 This program is in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly recommend participants do not run production workloads during the beta.
 {{< /note >}}
-
 
 ## Pricing
 
@@ -46,29 +45,31 @@ A new Premium tier Dedicated CPU plan type for Compute Instances is available in
 
 | Plan | $/Mo | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Premium 4 GB   | $44.00    | 4   | 2  | 80    | 4  | 40/4  |
-| Premium 8 GB   | $87.00    | 8   | 4  | 160   | 5  | 40/5  |
-| Premium 16 GB  | $173.00   | 16  | 8  | 320   | 6  | 40/6  |
-| Premium 32 GB  | $346.00   | 32  | 16 | 640   | 7  | 40/7  |
-| Premium 64 GB  | $892.00   | 64  | 32 | 1,280 | 8  | 40/8  |
-| Premium 96 GB  | $1,037.00 | 96  | 48 | 1,920 | 9  | 40/9  |
-| Premium 128 GB | $1,383.00 | 128 | 50 | 2,500 | 10 | 40/10 |
-| Premium 256 GB | $2,765.00 | 256 | 56 | 5,000 | 11 | 40/11 |
-| Premium 512 GB | $5,530.00 | 512 | 64 | 7,200 | 12 | 40/12 |
+| Premium 4 GB   | $43    | 4   | 2  | 80    | 4  | 40/4  |
+| Premium 8 GB   | $86    | 8   | 4  | 160   | 5  | 40/5  |
+| Premium 16 GB  | $173   | 16  | 8  | 320   | 6  | 40/6  |
+| Premium 32 GB  | $346   | 32  | 16 | 640   | 7  | 40/7  |
+| Premium 64 GB  | $892   | 64  | 32 | 1,280 | 8  | 40/8  |
+| Premium 96 GB  | $1,037 | 96  | 48 | 1,920 | 9  | 40/9  |
+| Premium 128 GB | $1,383 | 128 | 50 | 2,500 | 10 | 40/10 |
+| Premium 256 GB | $2,765 | 256 | 56 | 5,000 | 11 | 40/11 |
+| Premium 512 GB | $5,530 | 512 | 64 | 7,200 | 12 | 40/12 |
 
 The pricing for Premium Compute Instance [Backups](/docs/products/storage/backups/) is as follows:
 
 | Plan | $/Mo |
 | --- | --- |
-| Premium 4 GB  | 5    |
-| Premium 8 GB  | 10   |
-| Premium 16 GB | 20   |
-| Premium 32 GB | 40   |
-| Premium 64 GB | 80   |
-| Premium 96 GB | 120  |
-| Premium 128 GB | 160 |
-| Premium 256 GB | 200 |
-| Premium 512 GB | 240 |
+| Premium 4 GB  | $5    |
+| Premium 8 GB  | $10   |
+| Premium 16 GB | $20   |
+| Premium 32 GB | $40   |
+| Premium 64 GB | $80   |
+| Premium 96 GB | $120  |
+| Premium 128 GB | $160 |
+| Premium 256 GB | $200 |
+| Premium 512 GB | $240 |
+
+The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
 
 ## Deploy Services in Washington, DC
 

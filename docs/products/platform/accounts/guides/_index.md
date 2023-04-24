@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Documentation for managing Linode accounts"
+title_meta: "Guides and Tutorials for Managing Linode Accounts"
+description: "A collection of documentation related to managing Linode accounts and users"
 tab_group_main:
     weight: 30
 date: 2022-11-21

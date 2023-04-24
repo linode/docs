@@ -1,5 +1,6 @@
 ---
 title: Marketplace Apps
+title_meta: "Linode Marketplace Product Documentation"
 description: "Explore the Linode App Marketplace to find popular ready-to-run apps and services. Use the Linode Cloud Manager to deploy your Marketplace App in just a few clicks."
 tab_group_main:
     is_root: true

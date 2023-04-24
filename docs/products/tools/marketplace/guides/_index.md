@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Learn how to access and deploy all the Linode Marketplace One-Click Apps."
+title_meta: "Guides and Tutorials for the Linode Marketplace"
+description: "A collection of guides to help you learn how to deploy each Marketplace App that Linode offers."
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']

@@ -1,5 +1,6 @@
 ---
 title: Managed
+title_meta: "Linode Managed Service Product Documentation"
 description: "Linode Managed is a service that offers incident response as well as free migrations and discounted professional services."
 tab_group_main:
     is_root: true

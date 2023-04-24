@@ -1,7 +1,7 @@
 ---
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
-modified: 2023-04-18
+modified: 2023-04-19
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -172,6 +172,7 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | EU VAT | EU372008859 | EU372048842 |
 | India GST | 9919JEY29001OST | 9922CHE29001OSR |
 | Japan JCT | 00140 | 00143 |
+| Kenya VAT | N/A | P052208918D |
 | Manitoba RST | 138835-4 | 141763-3 |
 | Malaysia SST | N/A | 22000048 |
 | Norway VAT | 2063948 | 2070510 |

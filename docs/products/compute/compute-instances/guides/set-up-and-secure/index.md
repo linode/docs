@@ -39,7 +39,7 @@ If you haven't done so already, review the following guides to learn more about 
 
 ## View your Instance in the Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which allows you to view key information and further configure it to your meet your needs.
+Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which allows you to view key information and further configure it to meet your needs.
 
 ![Details page in Cloud Manager](create-instance-details.png)
 
