@@ -7,7 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-04-23
 modified_by:
   name: Nathaniel Stickman
-meta_title: "Introduction to Python Sets and Python Set Operations"
+title_meta: "Introduction to Python Sets and Python Set Operations"
 title: "Getting Started with Python Sets and Python Set Operations"
 authors: ["Nathaniel Stickman"]
 external_resources:
@@ -40,7 +40,7 @@ This guide explains:
 
 - [How to create a Python set](#create-a-python-set) with set literals, the `set()` constructor function, and the set comprehension syntax.
 
-- [How to add elements to and remove elements from Python sets](#modify-a-set) 
+- [How to add elements to and remove elements from Python sets](#modify-a-set)
 
 - [How to combine sets](#combine-sets) with the union, intersection, difference, and symmetric difference Python set operations.
 
@@ -100,7 +100,7 @@ Python provides a few ways to create sets:
     set()
     ```
 
-- Like the `set()` constructor function, the [*set comprehension* syntax](https://docs.python.org/3.0/tutorial/datastructures.html?highlight=comprehension#sets) can be used to construct a set from another iterable. A set comprehension allows you to apply an expression to the elements of the iterable before they are added to the new set. A condition can also be enforced on the members of the iterable before they are included in the new set. 
+- Like the `set()` constructor function, the [*set comprehension* syntax](https://docs.python.org/3.0/tutorial/datastructures.html?highlight=comprehension#sets) can be used to construct a set from another iterable. A set comprehension allows you to apply an expression to the elements of the iterable before they are added to the new set. A condition can also be enforced on the members of the iterable before they are included in the new set.
 
     The general syntax for using a set comprehension is:
 
@@ -120,7 +120,7 @@ Python provides a few ways to create sets:
     ```
 
     This example multiplies the even integers by 2 when adding them to the new set:
-    
+
     ```file {lang="python"}
     double_even_integers_set = { x*2 for x in [1, 2, 3, 4, 5,] if x % 2 == 0 }
     print(double_even_integers_set)
@@ -499,7 +499,7 @@ Another way that Python sets resemble mathematical sets is that they support the
 
 ### Python Subset
 
-A set is a *subset* of another set is a set if all the elements in the first set are also in the second set. The `issubset` method can be used to verify if a Python set is a subset of another set. 
+A set is a *subset* of another set is a set if all the elements in the first set are also in the second set. The `issubset` method can be used to verify if a Python set is a subset of another set.
 
 In this example, `issubset` is called on `set_A`, and `set_B` is passed as an argument. The method returns True because `set_A` is a subset of `set_B`:
 
@@ -516,7 +516,7 @@ True
 
 ### Python Superset
 
-A set is a *superset* of another set is a set if the first set contains all the elements in the second set. The `issuperset` method can be used to verify if a Python set is a superset of another set. 
+A set is a *superset* of another set is a set if the first set contains all the elements in the second set. The `issuperset` method can be used to verify if a Python set is a superset of another set.
 
 In this example, `issuperset` is called on `set_B`, and `set_A` is passed as an argument. The method returns True because `set_B` is a superset of `set_A`:
 
@@ -533,7 +533,7 @@ True
 
 ### Python Disjoint Sets
 
-Two sets are *disjoint* if they share no elements in common. The `isdisjoint` method can be used to verify if a Python set is disjoint with another set. 
+Two sets are *disjoint* if they share no elements in common. The `isdisjoint` method can be used to verify if a Python set is disjoint with another set.
 
 In this example, `isdisjoint` is called on `set_A`, and `set_B` is passed as an argument. The method returns True because `set_A` does not contain any of the elements in `set_B`, and `set_B` does not contain any of the elements in `set_A`:
 
