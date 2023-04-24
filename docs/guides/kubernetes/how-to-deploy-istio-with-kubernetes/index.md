@@ -2,7 +2,7 @@
 slug: how-to-deploy-istio-with-kubernetes
 description: 'This guide will show you how to deploy Istio, a powerful service mesh, or network of microservices, with it''s own API, within a Kubernetes environment.'
 keywords: ['kuberenetes','istio','container','helm', 'k8s']
-tags: ["monitoring","networking","kubernetes","container"]
+tags: ["monitoring","networking","kubernetes","container", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-07
 modified_by:

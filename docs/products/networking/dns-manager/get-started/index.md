@@ -1,9 +1,10 @@
 ---
 title: Get Started
-description: "Get started with the Linode DNS Manager. Learn to add a domain and add DNS records."
+title_meta: "Getting Started with the Linode DNS Manager"
+description: "Learn how to get up and running with the Linode DNS Manager, including creating and importing domains."
 tab_group_main:
     weight: 20
-modified: 2023-02-09
+modified: 2023-03-16
 ---
 
 Linode's DNS Manager enables users to manage DNS records for each of their domains directly within the tools they already use: like the Cloud Manager, Linode CLI, or Linode API. It supports most common DNS record types, including A, AAAA (quad A), CNAME, MX, TXT, NS, SOA, SRV, and CAA. Follow this guide to learn how to start using the DNS Manager.
@@ -12,10 +13,6 @@ Linode's DNS Manager enables users to manage DNS records for each of their domai
 1. [Create the Domain Zone](#create-the-domain-zone)
 1. [Add DNS Records](#add-dns-records)
 1. [Use Linode's Name Servers](#use-linodes-name-servers)
-
-{{< note >}}
-To use the Linode DNS Manager to serve your domains, you must have at least one billable service on your account, such as a Compute Instance, NodeBalancer, or an Object Storage Bucket. If no services exist on your account or if all services are removed, DNS records are not served.
-{{< /note >}}
 
 ## Understanding DNS
 
@@ -40,6 +37,10 @@ A *domain zone* (also called a [DNS zone](https://en.wikipedia.org/wiki/DNS_zone
 1. For *secondary* domains, add the IP Address of your external DNS provider's name server. If they have more than one name server, click **Add an IP** to add each additional one if desired. See [Incoming DNS Zone Transfers > Operate as a Secondary Read-Only DNS Service](/docs/products/networking/dns-manager/guides/incoming-dns-zone-transfers/#operate-as-a-secondary-read-only-dns-service).
 
 1. Click the **Create Domain** button to create the domain zone.
+
+{{< note type="warning" title="DNS Manager Compute Instance requirement">}}
+To use the Linode DNS Manager to serve your domains, you must have at least one active Compute Instance on your account. If your account does not have any Compute Instances (for instance, if they have all been removed), DNS records will not be served.
+{{< /note >}}
 
 ## Add DNS Records
 

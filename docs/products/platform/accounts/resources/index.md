@@ -1,5 +1,6 @@
 ---
 title: Resources
+title_meta: "Resources for Managing Linode Accounts"
 description: "Resources and other information related to Linode accounts including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40

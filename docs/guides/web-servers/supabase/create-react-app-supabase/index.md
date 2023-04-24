@@ -14,6 +14,7 @@ external_resources:
 - '[Adeva: The Complete Tutorial to Building a CRUD App with React.js and Supabase](https://adevait.com/react/building-crud-app-with-react-js-supabase)'
 - '[GitHub: tmm/react-supabase](https://github.com/tmm/react-supabase)'
 authors: ["Nathaniel Stickman"]
+tags: ["digital agencies"]
 ---
 
 Supabase provides a powerful open-source database that comes built-in with features like user authentication and a REST API. This makes Supabase a ready-made solution for backend services, simplifying database operations and connecting application frontends to a ready API.
@@ -24,9 +25,9 @@ In this tutorial, learn how you can put these two remarkable tools together. Fol
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1. Update your system.
 
@@ -39,7 +40,7 @@ In this tutorial, learn how you can put these two remarkable tools together. Fol
             sudo dnf upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Create a Supabase Backend

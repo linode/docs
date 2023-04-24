@@ -25,7 +25,7 @@ authors: ["Linode"]
 On some systems, e2fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
 {{< note respectIndent=false >}}
-When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
+When booting into rescue mode on the Linode Platform, the `e2fsck` tool will be installed as the default disk repair utility. For instructions specific to performing a filesystem check on the Linode platform, see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
 ## When to Use e2fsck
@@ -67,7 +67,7 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 
 ### Boot into Rescue Mode
 
-If you are using e2fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. e2fsck should be run only as a user with root permissions.
+If you are using e2fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. e2fsck should be run only as a user with root permissions.
 
 ### View Mounted Disks and Verify Disk Location
 

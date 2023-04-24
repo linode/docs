@@ -1,5 +1,6 @@
 ---
 title: Billing
+title_meta: "Understanding How Billing Works on the Linode Platform"
 description: "Learn how Linode makes billing simple and easy so you easily anticipate your cloud infrastructure costs"
 tab_group_main:
     is_root: true
@@ -7,7 +8,6 @@ tab_group_main:
     weight: 10
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-25
 modified: 2023-03-03
 modified_by:
@@ -27,7 +27,7 @@ Linode uses a hybrid hourly billing model that is simple and flexible. It enable
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/products/platform/get-started/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
 \*Review the [Viewing Current Balance](/docs/products/platform/billing/guides/access-billing/) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 

@@ -1,14 +1,14 @@
 ---
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-23
-modified: 2023-01-20
+modified: 2023-04-18
 modified_by:
   name: Linode
 title: "Configure Failover on a Compute Instance"
 aliases: ['/guides/ip-failover/']
 authors: ["Linode"]
+tags: ["media"]
 ---
 
 In cloud computing, *failover* is the concept of rerouting traffic to a backup system should the original system become inaccessible. Linode Compute Instances support failover through the [IP Sharing](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) feature. This allows two Compute Instances to share a single IP address, one serving as the *primary* and one serving as the *secondary*. If the primary Compute Instance becomes unavailable, the shared IP address is seamlessly routed to the secondary Compute Instance (fail*over*). Once the primary instance is back online, the IP address route is restored (fail*back*).
@@ -32,7 +32,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Atlanta (Georgia, USA) | *Not currently supported* | - | - | 4 |
 | Dallas (Texas, USA) | *Undergoing network upgrades* | - | - | 2 |
 | **Frankfurt (Germany)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 10 |
-| Fremont (California, USA) | Supported | ARP-based (legacy) | [keepalived](/docs/products/compute/compute-instances/guides/failover-legacy-keepalived/) | 3 |
+| Fremont (California, USA) | *Undergoing network upgrades* | - | - | 3 |
 | **London (United Kingdom)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 7 |
 | **Mumbai (India)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 14 |
 | **Newark (New Jersey, USA)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 6 |
@@ -87,7 +87,7 @@ To configure failover, complete each section in the order shown:
 
 1. Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide.
 
-1. Add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $1 per month*.
+1. Add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $2 per month*.
 
 1. On the *other* Compute Instance, add the newly assigned IPv4 address or IPv6 range as a *Shared IP* using Linode's **IP Sharing** feature. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
 

@@ -2,7 +2,6 @@
 description: "Deploy Wazuh on a Linode Compute Instance. This provides you with an open source a security monitoring solution."
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-03-08
 modified_by:

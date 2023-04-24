@@ -1,9 +1,11 @@
 ---
 title: Get Started
+title_meta: "Getting Started with StackScripts"
 description: "Get started with Linode StackScripts. Learn to create a StackScript and create a new Linode using a StackScript."
 tab_group_main:
     weight: 20
 published: 2022-11-30
+tags: ["managed hosting"]
 ---
 
 StackScripts allow you to reproduce specific software configurations when deploying Compute Instances, with more user control than static system images. This guide covers how to get started with StackScripts, including writing your custom script, creating the StackScript, and deploying a Compute Instance.
