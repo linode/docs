@@ -5,7 +5,7 @@ description: 'How to use a Calico Network Policy to Secure Linode Kubernetes Eng
 keywords: [kubernetes','calico','network policy','secure kubernetes','linode kubernetes engine','lke']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-03-13
+published: 2023-04-24
 modified_by:
   name: Linode
 external_resources:
@@ -15,7 +15,7 @@ external_resources:
 
 A [Linode Kubernetes Engine (LKE) cluster](https://www.linode.com/products/kubernetes/) provides the means for deploying, scaling, and managing containerized applications. [Kubernetes](https://kubernetes.io/) groups application containers into logical units for easy management and discovery. LKE clusters provide efficiencies such as automatic scaling, which makes it easier for developers to create robust applications. They also include tools to make deployments easier for administrators.
 
-Of course, these resources must be secured, which is where [Calico](https://www.tigera.io/project-calico/) comes in. Calico makes it possible to define a complex set of rules and network policies to manage a project. It secures Kubernetes in a way that doesn’t interfere with essential Kubernetes functionality. This guide provides insights into working with Calico on an LKE clusters installation.
+Kubernetes resources must be secured. [Calico](https://www.tigera.io/project-calico/) makes it possible to define a complex set of rules and network policies to manage a project. It secures Kubernetes in a way that doesn’t interfere with essential Kubernetes functionality. This guide provides insights into working with Calico on an LKE clusters installation.
 
 ## What is Calico?
 
@@ -29,7 +29,7 @@ Calico supports three different dataplanes, also called "user planes", "forwardi
 
 ## What is a Network Policy?
 
-A network policy is a set of rules that govern how networks, applications, and users interact. Just as governments set down laws that govern how people are supposed to behave, network policies govern a Kubernetes setup. In this case, it protects communication between a cluster's Pods and Services. Network policies make networks run better because every network element has rules to follow. Network policies provide these benefits:
+A network policy is a set of rules that govern how networks, applications, and users interact. Just as governments set down laws that govern how people are supposed to behave, network policies govern a Kubernetes setup. In this case, it protects communication between a cluster's Pods and Services. Network policies make networks run with more precision because every network element has rules to follow. Network policies provide these benefits:
 
 -   Reduce the work required to create automation
 -   Respond more quickly to changing needs
@@ -79,7 +79,7 @@ There are a [number of ways](https://projectcalico.docs.tigera.io/maintenance/cl
 
 ### Installing on Linux Client
 
-The installation in this section is designed for Ubuntu, but working with other Linux platforms is similar.
+The installation in this section is designed for Ubuntu, but other Linux platforms should have similar workflows.
 
 1.  The `calicoctrl` command line tool needs to be in a directory that’s on the path, so enter the following command:
 
@@ -87,7 +87,7 @@ The installation in this section is designed for Ubuntu, but working with other 
     sudo cd /usr/local/bin/
     ```
 
-1.  Download a copy of the `calicoctrl` command line tool and place it in the `/usr/local/bin/` directory. Remember to replace `3.22.1` in the command below with the `calico-kube-controllers` version installed on your LKE cluster:
+1.  Download a copy of the `calicoctrl` command line tool and place it in the `/usr/local/bin/` directory. Current and previous versions of `calicoctrl` are available on [GitHub](https://github.com/projectcalico/calico/releases). Remember to replace `3.22.1` in the command below with the `calico-kube-controllers` version installed on your LKE cluster:
 
     ```command
     sudo curl -L https://github.com/projectcalico/calico/releases/download/v3.24.5/calicoctl-linux-amd64 -o calicoctl
@@ -111,7 +111,7 @@ This installation assumes Windows 10 or above and access to administrator privil
     cd \users\<Username>\.kube
     ```
 
-1.  Download a copy of the `calicoctrl` command line tool and place it in the `\users\<Username>\.kube` directory:
+1.  Download a copy of the `calicoctrl` command line tool and place it in the `\users\<Username>\.kube` directory. Current and previous versions of `calicoctrl` are available on [GitHub](https://github.com/projectcalico/calico/releases).:
 
     ```command
     Invoke-WebRequest -Uri "https://github.com/projectcalico/calico/releases/download/v3.24.5/calicoctl-windows-amd64.exe" -OutFile "calicoctl.exe"
@@ -135,7 +135,7 @@ The macOS client installation works similarly to the Linux setup with a few smal
     ```
     {{< /note >}}
 
-1.  Download a copy of the `calicoctrl` command line tool and place it in the `/usr/local/bin/` directory:
+1.  Download a copy of the `calicoctrl` command line tool and place it in the `/usr/local/bin/` directory. Current and previous versions of `calicoctrl` are available on [GitHub](https://github.com/projectcalico/calico/releases).:
 
     ```command
     sudo curl -L https://github.com/projectcalico/calico/releases/download/v3.24.3/calicoctl-darwin-amd64 -o calicoctl
@@ -175,7 +175,7 @@ Any basic LKE policy needs to include specific protocol and port entries to ensu
 
 1.  Create a new file called `BasicPolicy.yaml` and paste the following contents into it:
 
-    ```file{title="BasicPolicy.yaml"}
+    ```file{title="BasicPolicy.yaml" lang="yaml"}
     - apiVersion: projectcalico.org/v3
       kind: GlobalNetworkPolicy
       metadata:
@@ -208,7 +208,7 @@ Any basic LKE policy needs to include specific protocol and port entries to ensu
 
     Here's a breakdown of the file contents:
 
-    -   The first entry must be an API version number so that Kubernetes knows what it’s dealing with.
+    -   The first entry must be an API version number so that Kubernetes understand the instructions it receives.
 
     -   A [GlobalNetworkPolicy](https://projectcalico.docs.tigera.io/reference/resources/globalnetworkpolicy) is an ordered set of rules applied to endpoints, which are defined by the selector `all()` (meaning all endpoints).
 
