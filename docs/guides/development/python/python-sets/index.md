@@ -1,8 +1,5 @@
 ---
 slug: python-sets
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn what Python sets are and how to use them. Our comprehensive guide covers essential Python set operations like union, intersection, and difference."
 keywords: ['python sets', 'python sets intersection', 'python sets operations']
 tags: ['python']
@@ -12,9 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 meta_title: "Introduction to Python Sets and Python Set Operations"
 title: "Getting Started with Python Sets and Python Set Operations"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 external_resources:
 - '[Python Documentation: Built-in Types — Set Types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset)'
 - '[W3 Schools: Python Sets](https://www.w3schools.com/python/python_sets.asp)'
