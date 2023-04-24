@@ -20,7 +20,7 @@ In this tutorial, learn how to get started understanding and using Nomad effecti
 
 ## How to Install Nomad
 
-This section outlines how to install Nomad and access its interface to get familiar with Nomad's way of handling jobs.
+This section outlines how to install Nomad and access its interface in order to familiarize yourself with Nomad's method of handling jobs.
 
 If, instead, you are ready to start deploying a Nomad cluster now, skip to the [How to Deploy a Cluster with Nomad](/docs/guides/using-nomad-for-orchestration/#how-to-deploy-a-cluster-with-nomad) section.
 
@@ -28,7 +28,7 @@ If, instead, you are ready to start deploying a Nomad cluster now, skip to the [
 
 The most approachable solution for setting up a Nomad instance with Linode is through the Linode Marketplace. There, a Linode instance with Nomad already installed and configured can be quickly set up. To do so, take a look at our guide to [Deploy HashiCorp Nomad through the Linode Marketplace](/docs/products/tools/marketplace/guides/hashicorp-nomad/).
 
-First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to get familiar with the new Nomad instance.
+First, follow along with that guide to get a Nomad instance ready. Then skip to the section [How Nomad Works](/docs/guides/using-nomad-for-orchestration/#how-nomad-works) to become familiar with the new Nomad instance.
 
 ### Manually Installing Nomad
 
@@ -225,7 +225,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  Install Terraform by following the [official installation guide](https://learn.hashicorp.com/tutorials/terraform/install-cli). This sets you up with the Terraform command line interface (CLI).
 
-1.  Download a `.zip` archive our Terraform script for deploying the Nomad cluster and its accompanying files [here](example-nomad-terraform.zip).
+1.  Download a `.zip` archive of [our Terraform script for deploying the Nomad cluster](example-nomad-terraform.zip) and its accompanying files.
 
     Once downloaded, unzip the archive with the `unzip` program. The set of commands below place the Terraform directory in your current user's home directory:
 

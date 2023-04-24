@@ -15,7 +15,7 @@ authors: ["Nathaniel Stickman"]
 
 Kubernetes and Nomad are both orchestration tools that each come with a compelling set of features. Despite some overlap, each tool has unique strengths and a favorable set of use cases.
 
-Review our [Kubernetes vs Nomad: Which Is Better?](/docs/guides/kubernetes-vs-nomad/) article to see how Kubernetes and Nomad excel in different orchestration areas.
+Review our [Kubernetes vs Nomad?](/docs/guides/kubernetes-vs-nomad/) article to see how Kubernetes and Nomad excel in different orchestration areas.
 
 As that guide points out, there are cases where you may want the benefits of both tools side-by-side. While you can accomplish this with two distinct parallel setups, it's also possible to directly run Nomad on a Kubernetes cluster.
 
@@ -45,7 +45,7 @@ This section of the tutorial walks through a basic Kubernetes cluster running No
 
 The infrastructure in this tutorial builds on a Kubernetes base. For that reason, the first step to take is provisioning a Kubernetes cluster.
 
-The most straightforward way to deploy a Kubernetes cluster with Linode is using the Linode Kubernetes Engine (LKE). The LKE lets you configure and deploy a full Kubernetes cluster through the Linode Cloud Manager.
+The most straightforward way to deploy a Kubernetes cluster with Linode is using the Linode Kubernetes Engine (LKE). LKE lets you configure and deploy a full Kubernetes cluster through the Linode Cloud Manager.
 
 Learn how to deploy an LKE cluster through our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/).
 
@@ -299,7 +299,7 @@ Kubernetes excels at deploying containerized applications, so that's what this d
 
 The application may be simple, but it provides a convenient start. Moreover, the HTTP server lets the next section easily show off the possibilities for network interactions between Kubernetes and Nomad applications.
 
-1.  Create a Kubernetes configuration file with the contents shown here. This configuration file creates a deployment and service for HashiCorp's `http-echo` container, a basic HTTP server for testing communications.
+1.  Create a Kubernetes configuration file with the contents shown below. This configuration file creates a deployment and service for HashiCorp's `http-echo` container, a basic HTTP server for testing communications.
 
     The deployment here sets up the container and has it begin serving a message on port `3030`. That message can be accessed from the `http-echo-service` created here. Using Kubernetes's networking, the HTTP server is thus accessible to other pods on the cluster through the `http-echo-service.default.svc:3030` URL.
 
@@ -350,7 +350,7 @@ The application may be simple, but it provides a convenient start. Moreover, the
 1.  Deploy the `http-echo` setup. This command assumes your Kubernetes configuration for `http-echo` is saved in a file named `http-echo.yaml`.
 
     ```command
-    kubectl apply -f nomad-cluster.yaml
+    kubectl apply -f http-echo.yaml
     ```
 
 1.  Use `kubectl` to check on the deployed pods and see when the `http-echo` pods started up and confirm they are running:
