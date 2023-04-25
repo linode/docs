@@ -72,7 +72,7 @@ To give someone else access to your server's user, simply add their public key o
 
 ### Challenge-Response
 
-When logging in to a server using SSH, if that servers has a public key on file, the server creates a [*challenge*](https://en.wikipedia.org/wiki/Challenge–response_authentication). This challenge is crafted in such a way that only the holder of the private SSH key can decipher it.
+When logging in to a server using SSH, if that server has a public key on file, the server creates a [*challenge*](https://en.wikipedia.org/wiki/Challenge–response_authentication). This challenge is crafted in such a way that only the holder of the private SSH key can decipher it.
 
 This challenge-response action happens without any user interaction. If the person attempting to log in has the corresponding private key, then they can safely log in. If not, the login either fails or falls back to a password-based authentication scheme.
 
@@ -265,7 +265,7 @@ The following instructions use the [PuTTY](https://www.putty.org) software to co
 
 1.  Launch `puttygen.exe`. The `RSA` key type at the bottom of the window is selected by default for an [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) key pair but `ED25519` ([EdDSA](https://en.wikipedia.org/wiki/EdDSA) using [Curve25519](https://en.wikipedia.org/wiki/Curve25519)) is a comparable option if your remote machine's SSH server supports DSA signatures. Do not use the `SSH-1(RSA)` key type unless you know what you're doing.
 
-1.  Increase the RSA key size from `2048` bits `4096` and click **Generate**:
+1.  Increase the RSA key size from `2048` bits to `4096` bits and click **Generate**:
 
     ![Generating the new public/private key pair.](putty-generate-key.png "Generating the new public/private key pair.")
 
@@ -336,13 +336,13 @@ These instructions will overwrite any existing contents of the `authorized_keys`
 
 ### Connect to the Remote Server with PuTTY
 
-Start PuTTY and **Load** your saved session. You are be prompted to enter your server user's login name as before. However, this time you are prompted for your private SSH key's *passphrase* rather than the *password* for your server's user. Enter the passphrase and press **Enter**.
+Start PuTTY and **Load** your saved session. You are prompted to enter your server user's login name as before. However, this time you are prompted for your private SSH key's *passphrase* rather than the *password* for your server's user. Enter the passphrase and press **Enter**.
 
 ## Upload Your SSH Key to Linode Cloud Manager
 
 To use your SSH key when deploying new Linodes, you must first upload it to your account. This can be done through the Cloud Manager by following the [Manage SSH Keys > Add a Public Key](/docs/products/platform/accounts/guides/manage-ssh-keys/#add-a-public-key) guide. For instructions on selecting an SSH key when deploying a Compute Instance see [Creating a Compute Instance > Create a Password and Add SSH Keys](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys).
 
-## Is it Safe to Share Public SSH Key?
+## Is it Safe to Share Public SSH Keys?
 
 Yes, it is safe to share your public SSH key with others. Public keys usually stored as `id_rsa.pub` are used to log into other servers. If anyone else has your public SSH keys on their server and they add them, you can log into their servers.
 
