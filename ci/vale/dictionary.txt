@@ -838,6 +838,7 @@ haproxy
 hardcoded
 hardcopy
 hardlimit
+hashable
 hashmark
 hashicorp
 hasn
@@ -1017,6 +1018,7 @@ isps
 issuewild
 istioctl
 iterable
+iterables
 itk
 ivanti
 Janca
