@@ -358,6 +358,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
@@ -705,6 +706,7 @@ frakti
 framesets
 freedns
 freeipa
+freenom
 fremont
 freshclam
 friendica
@@ -836,6 +838,7 @@ haproxy
 hardcoded
 hardcopy
 hardlimit
+hashable
 hashmark
 hashicorp
 hasn
@@ -977,6 +980,7 @@ intra-application
 introducer
 introducers
 Intune
+Instructure
 invicti
 io
 iodef
@@ -1014,6 +1018,7 @@ isps
 issuewild
 istioctl
 iterable
+iterables
 itk
 ivanti
 Janca
