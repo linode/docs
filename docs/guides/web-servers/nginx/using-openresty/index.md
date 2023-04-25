@@ -4,7 +4,7 @@ description: "OpenResty extends on NGINX with Lua scripting and a collection of 
 keywords: ['what is openresty', 'openresty example', 'openresty vs nginx']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2022-12-26
+published: 2023-04-25
 modified_by:
   name: Nathaniel Stickman
 title: "How to Use the OpenResty Web Server"
@@ -14,7 +14,7 @@ external_resources:
 - "[Ketzal's $HOME: Intro to Lua and Openresty, Part 1 - Hello World Examples](https://ketzacoatl.github.io/posts/2017-03-02-lua-and-openresty-hello-world-examples.html)"
 ---
 
-The OpenResty web server gives you an enhanced version of NGINX. OpenResty's NGINX includes a LuaJIT compiler for running Lua script within your server configuration. And alongside that, it comes with a collection of selected Lua and NGINX modules designed to help scale your web applications.
+The OpenResty web server gives you an enhanced version of NGINX. OpenResty's NGINX includes a LuaJIT compiler for running Lua script within your server configuration. Additionally, it comes with a collection of selected Lua and NGINX modules designed to help scale your web applications.
 
 Learn in this guide everything you need to know about OpenResty and how to install and start using it on your system.
 
@@ -30,27 +30,27 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What Is OpenResty?
 
-[OpenResty](https://openresty.org/en/) is a web server platform that extends on NGINX. OpenResty includes its own enhanced version of NGINX along with an enhanced LuaJIT compiler. And it comes prepackaged with a selection of NGINX modules and Lua libraries for enhanced web application hosting.
+[OpenResty](https://openresty.org/en/) is a web server platform that extends NGINX. OpenResty includes its own enhanced version of NGINX along with an enhanced LuaJIT compiler. And it comes prepackaged with a selection of NGINX modules and Lua libraries for enhanced web application hosting.
 
 OpenResty has been designed and ready-made for scaling web applications. The collection of included features gives you an easier path to scaling your server and adding dynamic services and gateways.
 
 ### OpenResty vs NGINX vs Apache: What Are the Differences?
 
-OpenResty competes in a space with popular tools like NGINX and Apache. What makes OpenResty a compelling alternative to these tools?
+OpenResty competes in a space with popular tools like NGINX and Apache.
 
-Compared to NGINX, OpenResty is essentially a straight upgrade. OpenResty takes the NGINX core and adds to it a LuaJIT compiler for running Lua scripts in the server configuration. Along with that, OpenResty bundles a collection of useful add-ons for hosting web applications.
+OpenResty inherits the NGINX core and adds to it a LuaJIT compiler for running Lua scripts in the server configuration to greatly increase the amount of concurrent connections a single NGINX server can handle. Additionally, OpenResty bundles a collection of useful NGINX components for hosting web applications, including modules for interacting with Redis, Postgres, MySQL, and Memcached in a non-blocking fashion.
 
-Essentially, OpenResty gives you all of the benefits of NGINX with additional features to jump-start using the platform for web applications. This makes OpenResty ideal for most web application hosting and especially so when you are looking to start scaling up your server.
+OpenResty is meant to allow your entire app within NXINGX. This makes OpenResty ideal for most web application hosting and especially so when you are looking to start scaling up your server.
 
-That said, some use cases do not take advantage of the extra features of OpenResty. Your web application, for instance, may not need the additional NGINX modules, or Lua scripting offered by OpenResty. Such cases do not warrant changing over to OpenResty from NGINX, although they can still operate on OpenResty's NGINX core.
+However, there are some use cases that do not take advantage of the extra features of OpenResty. For instance, your web application may not need the additional NGINX modules, or Lua scripting offered by OpenResty. Such cases do not warrant changing over to OpenResty from NGINX, although they could still operate on OpenResty's NGINX core.
 
 Since OpenResty is essentially an enhanced version of NGINX, comparisons between NGINX and Apache apply to OpenResty vs Apache. Thus, you can learn more about how it would compare with Apache through our guide [A Comparison of the NGINX and Apache Web Servers](/docs/guides/comparing-nginx-and-apache-web-servers/).
 
 ## How to Install OpenResty
 
-OpenResty maintains official packages for most major Linux distributions and can be most straightforwardly installed using your system's package manager.
+OpenResty maintains official packages for most major Linux distributions and are usually found using your system's package manager.
 
-The next sections show you how to set up your system's package manager with the OpenResty repository and install OpenResty from there. Navigate to the section matching your system's distribution, and follow the steps to complete the installation.
+In cases where your package manager does not include OpenResty, the next sections show you how to add the OpenResty repository to your existing package manager and install OpenResty. Navigate to the section matching your system's distribution, and follow the steps to complete the installation.
 
 Looking for additional Linux distributions? Likely you can find a relevant distribution covered on OpenResty's [official Linux installation](https://openresty.org/en/linux-packages.html) page.
 
@@ -125,7 +125,7 @@ sudo systemctl status openresty
 ### CentOS/Fedora
 
 {{< note >}}
-The CentOS instructions here assume you are using CentOS 8 or newer. For CentOS 6 and 7, replace `dnf` in the commands that follow with `yum`, and the installation should work.
+The CentOS instructions here assume you are using CentOS 8 or newer. For CentOS 6 and 7, replace `dnf` in the commands that follow with `yum`.
 {{< /note >}}
 
 1. Install the `wget` package if your system does not already have it.
@@ -170,17 +170,15 @@ sudo systemctl status openresty
 
 ## How to Use OpenResty
 
-With an OpenResty instance installed and running, you can now try out some examples with it.
+With an OpenResty instance installed and running, you can now try out a few examples.
 
-This guide uses the standard HTTP port (`80`) for its examples. So to follow along, you should open that port on your instance. Visit our guide on [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#configure-a-firewall). Identify the firewall manager appropriate for your system in the firewall section, and follow the linked guide to open the HTTP port for your system.
+This guide uses the standard HTTP port (`80`) for its examples. To follow along, you should open that port on your instance. Visit our guide on [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/#configure-a-firewall). Identify the firewall manager appropriate for your system in the firewall section, and follow the linked guide to open the HTTP port for your system.
 
 OpenResty serves as a simple welcome page by default, similar to the default NGINX page. You can access the welcome page by navigating to the server's remote IP address in a web browser. For instance, if your server's remote IP address is `192.0.2.0`, navigate in your browser to `http://192.0.2.0`.
 
 ![The default OpenResty welcome page](openresty-welcome.png)
 
-But one of OpenResty's most compelling features is its ability to run Lua scripts within its server configurations.
-
-For a more thorough example that demonstrates this feature, follow along with the steps below. These create a server with basic Lua scripting to highlight OpenResty's capabilities.
+One of OpenResty's most compelling features is its ability to run Lua scripts within its server configurations. The example below demonstrates this feature by creating a server with basic Lua scripting.
 
 1. Using your preferred text editor, open the `nginx.conf` file for your OpenResty instance. This file contains the default OpenResty server configuration and should be located at `/usr/local/openresty/nginx/conf/nginx.conf`.
 
