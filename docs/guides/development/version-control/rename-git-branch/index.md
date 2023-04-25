@@ -6,7 +6,7 @@ description: 'Need to know how to rename a Git branch? This guide explains what 
 keywords: ['rename git branch','git rename branch','rename branch git','git rename local branch','git change branch name','git branch rename','git rename remote branch','rename branch','how to rename a branch in git','change branch name git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
-published: 2023-03-31
+published: 2023-04-25
 modified_by:
   name: Linode
 external_resources:
@@ -22,17 +22,15 @@ Git is a distributed version control system that views data as a series of snaps
 
 In Git, once a copy of the remote repository has been checked out, work can be done on the local copy. Changes can be committed whenever needed. When ready, simply *push* these changes to the remote repository.
 
-Working locally can lead to conflicts with code changes. For example, coworkers could be making changes locally on their own copies of the repository. It’s a good idea to avoid potentially messy merges as much as possible by pulling updates before a coding session. In addition, pushing partial change sets to the remote repository can be problematic if the project is deployed in that state. Alternatively, waiting to push changes until the end of a sprint can result in lost work if your local machine is lost or damaged.
-
 ## What is a Git Branch?
 
-Work in a *branch* in order to isolate changes made locally from changes that other team members are making on their own machines. A Git branch is a basically label for a *commit*. A commit contains a snapshot of saved code along with a link to the previous commit. The default branch name in Git is **master**, although many repositories use the name **main** instead.
+Work in a *branch* in order to isolate changes made locally from changes that other team members are making on their own machines. A Git branch is basically a label for a single or series of *commits*, or changes, that are related. A commit contains a snapshot of saved code along with a link to the previous commit. The default branch name in Git is **master**, although many repositories use the name **main** instead.
 
 Unlike CVS or Subversion, Git encourages the free creation of development branches. The idea is to work in them, and later merge them into project, version, QA, or production branches. While working in a local branch, there is little fear of incomplete and/or untested code winding up in a production build.
 
 ## Why Rename a Git Branch?
 
-It’s common to name a new Git branch with your initials (or git handle) along a date, number, or cryptic description. Once code in the branch is complete, the project committers may require that a pull request (PR) be submitted. This starts the process of having the code reviewed and merged.
+It’s common to name a new Git branch with your initials (or git handle) along a date, number, or  description. Once code in the branch is complete, the project committers may require that a pull request (PR) be submitted. This starts the process of having the code reviewed and merged.
 
 However, committers need to know what the branch is intended to accomplish, so renaming the branch to summarize its purpose may be required. The pull request provides additional space to describe the code in more detail. Different projects may have different standards for branch names submitted in pull requests. The general best practice is for the name to be descriptive of the changes made.
 
