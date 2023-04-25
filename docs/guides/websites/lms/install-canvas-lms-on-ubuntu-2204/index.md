@@ -16,7 +16,7 @@ external_resources:
 - '[PostgreSQL Client Authentication](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html)'
 ---
 
-[Canvas](https://www.instructure.com/canvas) is a modern open-source [Learning Management System (LMS)](https://www.shareknowledge.com/blog/what-learning-management-system-and-why-do-i-need-one) by Instructure, Inc. that helps makes distance learning possible. An LMS like Canvas is a software application or web-based technology that you use to plan, implement, and assess a specific learning process. This guide helps you install all of its prerequisites, install Canvas LMS on Ubuntu, perform required Canvas setups, ensure your Canvas setup is secure, and then access your Canvas setup. It uses a **Ubuntu 22.04** installation as a starting point.
+[Canvas](https://www.instructure.com/canvas) is a modern open-source Learning Management System (LMS) by Instructure, Inc. that helps makes distance learning possible. An LMS like Canvas is a software application or web-based technology that you use to plan, implement, and assess a specific learning process. This guide helps you install all of its prerequisites, install Canvas LMS on Ubuntu, perform required Canvas setups, ensure your Canvas setup is secure, and then access your Canvas setup. This guide uses the **Ubuntu 22.04** distribution.
 
 The result of following this process is the creation of a self-hosted Canvas LMS, rather than using the [online site](https://www.instructure.com/canvas). The advantage of this approach is that you have a setup you can easily customize.
 
@@ -26,19 +26,19 @@ Before you can clone and install Canvas, you must ensure certain prerequisite ap
 
 - 150GB of available hard drive space
 - 8GB of RAM
-- Quad-core CPU
+- Four core CPU
 
-The following sections help you install the products you need before you can clone and install Canvas. Here is a quick list of the products and versions used for this guide:
+The following sections help you install the software you need before you can clone and install Canvas. Here is a quick list of the software and versions used for this guide:
 
 - Ruby [version 2.7 minimum](https://github.com/instructure/canvas-lms/wiki/Quick-Start#dependency-installation), version 3.0 and above are untested
-- Apache version 2.4.52 was used for this guide
-- Passenger version 6.0.10 was used for this guide
+- Apache version 2.4.52
+- Passenger version 6.0.10
 - Git version 2.34.1
 - PostgreSQL [version 12 minimum](https://github.com/instructure/canvas-lms/wiki/Quick-Start#debianubuntu), version 14.4 used for guide
-- Node.js version v16.16.0 was used for this guide, the old 10.19 version won’t work
-- (Optional) Redis version 2.6 minimum, version 6.0.16 used for guide
+- Node.js version v16.16.0, version 10.19 version does not work
+- (Optional) Redis version 6.0.16
 
-You may have one or more of these products installed. To verify installation, type the name of the product followed by `--version`, such as `git --version`, and press **Enter**. Some products, such as Node.js, use `-v` in place of `--version`. If the version you have installed is equal to or higher than the version used for the guide, then you don’t need to perform another installation. If you have an older product version, update it.
+You may have one or more of these software installed. To verify installation, type the name of the software followed by `--version`, such as `git --version`, and press **Enter**. Some products, such as Node.js, use `-v` in place of `--version`. If the version you have installed is equal to or higher than the version used for the guide, then you don’t need to perform another installation. If you have an older software version, update it.
 
 You also need to install an email application. Canvas uses this email service to send notifications to users. There are numerous email server options and the one you choose depends on how you want to configure email for your server. One option is to use a third-party mail service such as [Mailgun](https://www.mailgun.com/). Another option is to install and configure a local email server using a product combination like [Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/). You can also use an existing email server that you already have in place. You need to know email essentials like the email domain, the username and password for an email account, and the address of the Simple Mail Transfer Protocol (SMTP) server for this guide.
 
@@ -107,7 +107,7 @@ You should have Git and Curl already installed on your server.
 
 ### Install Node JS
 
-Canvas requires Node.js version 10.19 or higher. You need the latest version of Node.js, which you can install using the Node Version Manager (NVM) command-line utility as explained below:
+Canvas requires Node.js version 10.19 or higher. You can install latest version of Node.js, which you can install using the Node Version Manager (NVM) command-line utility as explained below:
 
 1. Install the required library support for Node.js using the following command:
 
@@ -152,8 +152,8 @@ The steps in this section explain how to install Ruby using the Ruby Environment
     If you have an old version of Ruby, you can upgrade it using the procedure explained in this section and select the version needed for the Canvas LMS installation.
 
     {{< note type="warning">}}
-You must use Ruby version 2.7.x, rather than version 3 and above because version 3 is untested with Canvas and may cause problems.
-{{< /note >}}
+    You must use Ruby version 2.7.x, rather than version 3 and above. Version 3 is untested with Canvas and may cause problems.
+    {{< /note >}}
 
 1. Obtain the Rbenv installation script using the following command:
 
@@ -189,8 +189,8 @@ You must use Ruby version 2.7.x, rather than version 3 and above because version
     ```
 
     {{< note>}}
-You should see the Ruby version 2.7.6 is on the list.
-{{< /note >}}
+    You should see the Ruby version 2.7.6 is on the list.
+    {{< /note >}}
 
 1. Install the 2.7.6 version of Ruby used for this guide using the following command. The installation process takes several minutes to complete the installation.
 
@@ -239,8 +239,8 @@ Once you have the above prerequisites installed, follow the steps below to insta
     ```
 
     {{< note>}}
-Using other installation methods tends to overwrite your Ruby installation with a 3.x version.
-{{< /note >}}
+    Using other installation methods tends to overwrite your Ruby installation with a 3.x version.
+    {{< /note >}}
 
 1. You can check if the Bundler is installed correctly by running the following command:
 
@@ -316,7 +316,7 @@ Before proceeding, verify if Apache is already installed using the `apache2 -v` 
       sudo apt-get update
       ```
 
-1. Verify you can access your Apache server by opening a browser of your choice, typing `http://<The IP Address of the Server>` in the address field, and pressing **Enter**. You should see the default Apache page. The IP address is the same one you use to access your server using an SSH utility like PuTTY.
+1. Verify you can access your Apache server by opening a browser of your choice and navigating to `http://<The IP Address of the Server>`. You should see the default Apache page. The IP address is the same one you use to access your server using an SSH utility like PuTTY.
 
 1. Install Passenger using the following command:
 
@@ -338,7 +338,7 @@ Before proceeding, verify if Apache is already installed using the `apache2 -v` 
 
 ### Install PostgreSQL on the Same Server
 
-It’s common practice to install a database management system (DBMS) on a separate server to ensure the DBMS has all of the resources it needs. In addition, the amount of disk activity generated by a DBMS can cause delays for other parts of an application. However, for a smaller installation, you can install the DBMS, which is PostgreSQL in this case, on the same server. To verify that you need to install PostgreSQL on your system, type `service postgresql status` and press **Enter**. If it’s already installed, you should see the service statistics. The following steps show you how to install PostgreSQL on your Ubuntu 22.04 server:
+It’s common practice to install a database management system (DBMS) on a separate server to ensure the DBMS has all of the resources it needs. In addition, the amount of disk activity generated by a DBMS can cause delays for other parts of an application. However, for a smaller installation, you can install the DBMS on the same server. Canvas uses PostgreSQL as its DBMS. To verify that you need to install PostgreSQL on your system, enter the command `service postgresql status` and press **Enter**. If it’s already installed, you should see the service statistics. The following steps show you how to install PostgreSQL on your Ubuntu 22.04 server:
 
 1. Install the PostgreSQL DBMS using the following command:
 
@@ -374,7 +374,7 @@ It’s common practice to install a database management system (DBMS) on a separ
 
     The prompt changes to `postgres@localhost:~$`.
 
-1. Verify that you can connect to the database by typing `psql` and pressing **Enter**. This starts with the interactive interface. The prompt changes as follows: `postgres=#`.
+1. Verify that you can connect to the database by using the `psql` command. This starts the interactive interface. The prompt changes to: `postgres=#`.
 
 1. Display the information about the current database connection using the following command:
 
@@ -395,9 +395,9 @@ It’s common practice to install a database management system (DBMS) on a separ
     You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
     ```
 
-1. Type `\q` and press **Enter** to exit the interactive environment.
+1. Enter `\q` to exit the interactive environment.
 
-1. Type `exit` and press **Enter** to exit the PostgreSQL environment. You should see the following output indicating that you have successfully disconnected from the PostgreSQL server.
+1. Enter `exit` to exit the PostgreSQL environment. You should see the following output indicating that you have successfully disconnected from the PostgreSQL server.
 
     ```output
     postgres=# logout
@@ -405,7 +405,7 @@ It’s common practice to install a database management system (DBMS) on a separ
 
 ### (Optional) Install Redis for Caching
 
-Redis is a key-value database store that Canvas uses to cache data and make your installation run faster. Use Redis because it’s extremely fast when compared to a full-fledged DBMS and because it’s also limited to storing just key-value pairs. The following steps install Redis on your server:
+Redis is a key-value database store that Canvas uses to cache data and make your installation run faster. Developers use Redis because it’s extremely fast when compared to a full-fledged DBMS and because it’s also limited to storing just key-value pairs. The following steps install Redis on your server:
 
 1. Install the Redis server using the following command:
 
@@ -459,11 +459,11 @@ Redis is a key-value database store that Canvas uses to cache data and make your
 
     This connects you to the default Redis server running on `127.0.0.1` (localhost) and port `6379`. Once you're connected, you can type `ping` and press **Enter** to test the connection. If the connection is working properly, you should see `PONG` as the output.
 
-1. Create a test entry by typing `set testKey "Test Test"` and pressing **Enter**. You see `OK` as output.
+1. Create a test entry by entering the command `set testKey "Test Test"`. You see `OK` as output.
 
-1. Type `get testKey` and press **Enter** to see the output of `Test Test`.
+1. Enter `get testKey` to see the output of `Test Test`.
 
-1. Type `quit` and press **Enter** to exit the command prompt.
+1. Enter `quit` to exit the command prompt.
 
 
 ## Configure PostgreSQL
@@ -541,13 +541,13 @@ Redis is a key-value database store that Canvas uses to cache data and make your
     After entering the password you assigned to the user, you should see a `canvas_production=>` prompt. If this isn’t the case, modify the `pg_hba.conf` file using the following steps.
 
     {{< note >}}
-The `pg_hba.conf` file is a configuration file for the PostgreSQL database server that controls [client authentication](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html). It specifies which hosts are allowed to connect to the PostgreSQL server and how they can authenticate themselves.
-{{< /note >}}
+    The `pg_hba.conf` file is a configuration file for the PostgreSQL database server that controls [client authentication](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html). It specifies which hosts are allowed to connect to the PostgreSQL server and how they can authenticate themselves.
+    {{< /note >}}
 
-   - Start the PostgreSQL command-line utility, `psql` as the user `postgres`.
-   - Locate the `pg_hba.conf` file using the `SHOW hba_file;` command. You see the location of the `pg_hba.conf` file, such as `/etc/postgresql/14/main/pg_hba.conf`.
-   - Open the `pg_hba.conf` file in a text editor such as vi or nano. You may need to use `sudo` to open it.
-   - Create a new entry for the user `canvas`: Copy the existing `local all postgres` entry as a template and paste it at the bottom of the file. Change the values to match the following:
+    - Start the PostgreSQL command-line utility, `psql` as the user `postgres`.
+    - Locate the `pg_hba.conf` file using the `SHOW hba_file;` command. You see the location of the `pg_hba.conf` file, such as `/etc/postgresql/14/main/pg_hba.conf`.
+    - Open the `pg_hba.conf` file in a text editor such as vi or nano. You may need to use `sudo` to open it.
+    - Create a new entry for the user `canvas`: Copy the existing `local all postgres` entry as a template and paste it at the bottom of the file. Change the values to match the following:
 
       ```output
       # TYPE  DATABASE            USER            ADDRESS                 METHOD
@@ -560,7 +560,7 @@ The `pg_hba.conf` file is a configuration file for the PostgreSQL database serve
     - Restart the PostgreSQL service using the `service postgresql restart` command to apply the changes to the `pg_hba.conf` file.
     - Ensure the PostgreSQL service started using the `service postgresql status` command.
 
-1. Type `\q` and press **Enter** to exit the interactive environment.
+1. Enter `\q` to exit the interactive environment.
 
 
 
@@ -580,7 +580,7 @@ The `pg_hba.conf` file is a configuration file for the PostgreSQL database serve
     sudo chown -R $USER .
     ```
 
-1. Type `git checkout prod` and press **Enter** to check out the code.
+1. Enter `git checkout prod` to check out the code.
 
 1. Copy the example configuration files for several components of the Canvas LMS application using the following command:
 
@@ -641,7 +641,7 @@ You can rely on *Corepack* to install Yarn on your system. CorePack is a package
 
 ## Generate Canvas Assets and Data
 
-The steps in this section generate assets that Canvas needs to function and performs some data-related tasks. Before you begin, ensure you cd you’re in the `/var/canvas` directory.
+The steps in this section generate assets that Canvas needs to function and performs some data-related tasks. Before you begin, ensure you’re in the `/var/canvas` directory.
 
 1. Perform the required user configuration using the following commands:
 
@@ -801,7 +801,7 @@ The steps in this section describe how to create and use a self-signed certifica
 
 1. Reload the Apache2 configuration files using the `sudo systemctl reload apache2` command.
 
-1. Test the SSL setup by typing `https://<Your Domain or IP Address>` and pressing **Enter**. Most browsers complain about the self-signed certificate and some disallow displaying the page without your explicit permission, but you should see the Apache default website in the end.
+1. Test the SSL setup by entering `https://<Your Domain or IP Address>` in your browser. Most browsers complain about the self-signed certificate and some disallow displaying the page without your explicit permission, but you should see the Apache default website in the end.
 
 ## Access Canvas
 
@@ -889,6 +889,8 @@ Following are the steps to configure Apache for accessing Canvas:
     sudo systemctl restart apache2
     ```
 
+1. Navigate to the Canvas website in a browser. In this example, the URL would be `https://canvas.example.com`.
+
 ## Conclusion
 
-This guide has taken you through the process of installing Canvas on *Ubuntu 22.04*. It’s essential to verify the versions of each of the products before you proceed because you may already have some of them installed for use with other applications. Updating and upgrading your server is also important to ensure you don’t have any outdated libraries that cause compatibility issues. When you complete this process, you have a basic Canvas LMS setup to use to start training programs in your organization.
+This guide has taken you through the process of installing Canvas on *Ubuntu 22.04*. It’s essential to verify the versions of each of the software before you proceed because you may already have some of them installed for use with other applications. Updating and upgrading your server is also important to ensure you don’t have any outdated libraries that cause compatibility issues. When you complete this process, you have a basic Canvas LMS setup to use to start training programs in your organization.
