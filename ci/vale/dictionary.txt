@@ -358,6 +358,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
@@ -705,6 +706,7 @@ frakti
 framesets
 freedns
 freeipa
+freenom
 fremont
 freshclam
 friendica
@@ -977,6 +979,7 @@ intra-application
 introducer
 introducers
 Intune
+Instructure
 invicti
 io
 iodef
