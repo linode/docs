@@ -5,7 +5,7 @@ keywords: ['Install canvas lms', 'canvas lms', 'install canvas ubuntu 22.04', 's
 tags: ['canvas', 'ubuntu', 'ssl', 'apache', 'redis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-03-26
+published: 2023-04-25
 modified_by:
   name: Linode
 title: How to Install Canvas on Ubuntu 22.04
