@@ -193,6 +193,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
