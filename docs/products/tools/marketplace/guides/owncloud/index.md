@@ -7,8 +7,8 @@ description: 'Deploy a ownCloud Server on Linode using Marketplace Apps.'
 og_description: 'Deploy a ownCloud Server on Linode using Marketplace Apps.'
 keywords: [ 'ownCloud','marketplace', 'server']
 tags: ["cloud","linode platform", "marketplace"]
-published: 2023-01-20
-modified: 2023-01-20
+published: 2023-05-30
+modified: 2023-05-30
 modified_by:
   name: Linode
 title: "How to Deploy a ownCloud Server with Marketplace Apps"
