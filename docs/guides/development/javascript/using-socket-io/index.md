@@ -1,18 +1,13 @@
 ---
 slug: using-socket-io
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "How to Use WebSockets with Socket.IO"
 description: "Socket.IO builds on WebSockets to provide real-time, bidirectional communications. And Socket.IO brings in improvements in usage and consistency that make it stand out as a WebSocket alternative. Read this tutorial to find out how Socket.IO sets itself apart and how you can start using it."
 keywords: ['what is socket.io','socket.io vs websocket','socket.io node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 published: 2023-01-13
 modified_by:
   name: Nathaniel Stickman
-title: "How to Use WebSockets with Socket.IO"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Socket.IO: Get Started](https://socket.io/get-started/chat)'
 - '[Tutorials Point: Socket.IO Tutorial](https://www.tutorialspoint.com/socket.io/index.htm)'
