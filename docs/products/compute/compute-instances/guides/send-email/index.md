@@ -1,7 +1,7 @@
 ---
 title: "Send Email from a Compute Instance"
 description: "Learn about Linode's email policy, how to lift email restrictions, and best practices to implement when sending email."
-published: 2023-04-27
+published: 2023-04-28
 authors: ["Linode"]
 ---
 
@@ -19,7 +19,7 @@ In an effort to fight spam, Linode restricts outbound connections over ports 25,
 
 ## Request to Lift Restrictions
 
-If you would like to send email on a Compute Instance and notice that these restrictions are in place, contact the [Support] team and request that the restrictions are lifted. Please include the following information in your request.
+If you would like to send email on a Compute Instance and notice that these restrictions are in place, contact the [Support](https://www.linode.com/support/) team and request that the restrictions are lifted. Please include the following information in your request.
 
 - **First and last name** *(required)*: If you are not the account owner, please include their name and confirm that you're acting on their behalf.
 
