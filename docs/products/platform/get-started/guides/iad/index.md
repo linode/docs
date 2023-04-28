@@ -113,4 +113,4 @@ The Washington, DC data center supports IP sharing and BGP-based failover, which
 
 | Data center | IP Sharing support | Failover method | Software | ID |
 | --- | --- | --- | --- | --- |
-| Washington, DC (USA) | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](m/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
+| Washington, DC (USA) | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
