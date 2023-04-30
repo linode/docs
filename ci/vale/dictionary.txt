@@ -1611,6 +1611,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pathnames
 paypal
 pbr
 pem
@@ -2020,6 +2021,7 @@ shortguides
 shortname
 shotcut
 shoutcast
+shutil
 scikit
 scribus
 scrollable
