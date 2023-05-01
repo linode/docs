@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.151.1
+  version: 4.152.0
 
   title: Linode API
   description: |
@@ -21643,6 +21643,7 @@ components:
           readOnly: true
           description: If this Event has been read.
           example: true
+          x-linode-filterable: true
         seen:
           type: boolean
           readOnly: true
@@ -22565,7 +22566,7 @@ components:
           format: ip
           description: >
             The subnet mask.
-          example: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+          example: "ffff:ffff:ffff:ffff::"
           readOnly: true
         prefix:
           type: integer
@@ -22632,7 +22633,7 @@ components:
           format: ip
           description: >
             The subnet mask.
-          example: ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+          example: "ffff:ffff:ffff:ffff::"
           readOnly: true
         prefix:
           type: integer
