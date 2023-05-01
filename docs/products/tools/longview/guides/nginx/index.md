@@ -205,7 +205,7 @@ To fix this, follow these steps:
 
 1. Check the status page location, and make sure it's available over Port 80. The default location Longview checks is `http://127.0.0.1/nginx_status` on localhost, but NGINX doesn't typically have a status page location set up by default. In the NGINX configuration file (typically `/etc/nginx/nginx.conf`) or in a [separate site configuration file](/docs/guides/getting-started-with-nginx-part-2-advanced-configuration/#host-multiple-websites), this is designated with the lines in the example file below. If your configuration file does not contain these lines, add them to the file within the `http` block. For more details, see the [Manual Configuration](/docs/guides/what-is-the-linode-longview-app-for-nginx/#manual-configuration-all-distributions) section of this guide.
 
-    ```file title{"/etc/nginx/nginx.conf"}
+    ```file {title="/etc/nginx/nginx.conf"}
     server {
         listen 127.0.0.1:80;
         server_name 127.0.0.1;
@@ -221,7 +221,7 @@ To fix this, follow these steps:
 
 1. If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Nginx.conf`, and set the `location` variable to match what you set in the NGINX configuration file:
 
-    ```file title{"/etc/linode/longview.d/Nginx.conf"}
+    ```file {title="/etc/linode/longview.d/Nginx.conf"}
     location http://127.0.0.1/url-goes-here
     ```
 
