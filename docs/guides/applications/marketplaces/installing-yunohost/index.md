@@ -5,7 +5,7 @@ description: "YunoHost simplifies self-hosting and server administration. It can
 keywords: ['yunohost install','yunohost apps','yunohost alternative']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2022-12-14
+published: 2023-05-02
 modified_by:
   name: Linode
 external_resources:
@@ -45,9 +45,9 @@ YunoHost operates similarly to Cloudron, another tool offering an application ma
 
 Both tools promote an open source ethos, but YunoHost operates on a totally open source model. Cloudron offers both a free and a premium tier. This scheme limits some features (e.g. the number of applications) and restricts others (e.g. email services) to the premium tier. By contrast, YunoHost does not have any feature limits or paid services, operating on a fully open source model.
 
-However, Cloudron shines for having a more polished and simplified presentation. The setup for YunoHost can be more complicated, and its interface may not be as clear for some users at the outset.
+However, Cloudron provides a more polished and simplified presentation. The setup for YunoHost can be more complicated, and its interface may not be as clear for some users at the outset.
 
-Linode offers a streamlined Cloudron deployment through the Linode Marketplace. Learn more about Cloudron and its deployment process through its [marketplace page](https://www.linode.com/marketplace/apps/cloudron/cloudron/).
+Linode offers a streamlined Cloudron deployment through the Linode Marketplace. Learn more about Cloudron and its deployment process through its [Marketplace page](https://www.linode.com/marketplace/apps/cloudron/cloudron/).
 
 ## How to Install YunoHost
 
@@ -98,7 +98,7 @@ YunoHost can be installed on a compute instance running stock Debian 11 (or high
 1.  Complete the post-installation setup as instructed by the output from the installation script. This can be done either from the command line or from a browser.
 
     {{< note >}}
-The YunoHost post-installation setup requires a domain name. Purchasing and configuring an actual domain can be bypassed by entering a dummy domain, such as `no.domain`. However, be aware that doing so may affect the behavior of some applications.
+    The YunoHost post-installation setup requires a domain name. Purchasing and configuring an actual domain can be bypassed by entering a dummy domain, such as `no.domain`. However, be aware that doing so may affect the behavior of some applications.
     {{< /note >}}
 
     -   To complete post-installation via a browser, navigate to the URL indicated in the output of the installation script. This should be an HTTPS address with your system's remote IP address. For example, if your system's remote IP address is `192.0.2.0`, navigate to `https://192.0.2.0/`.
@@ -147,7 +147,7 @@ ssh admin@example.com
 
 ## How to Get Started with YunoHost
 
-With YunoHost installed, log into it. YunoHost has two interfaces: one for the administrator and another for users. Each is covered below, giving a sense of what can be done through these interfaces.
+With YunoHost installed, log in. YunoHost has two interfaces: one for the administrator and another for users. Each is covered below, giving a sense of what can be done through these interfaces.
 
 To make the server fully operational, start by installing an SSL certificate and adding a user. Find the steps for both of these in the section on the administrator interface below.
 
@@ -168,7 +168,7 @@ These next few sections walk through some of the most useful tasks, including de
 
 #### Installing an SSL Certificate
 
-The YunoHost instance starts with a self-signed certificate. However, most modern web browsers throw a security warning to users visiting any website with self-signed certificates. For that reason, start out by retrieving a free certificate signed by Let's Encrypt.
+The YunoHost instance starts with a self-signed certificate. However, most modern web browsers present a security warning to users visiting any website with self-signed certificates. For that reason, start out by retrieving a free certificate signed by Let's Encrypt.
 
 1.  Select the **Domains** option from the YunoHost administrator interface main page.
 
@@ -212,7 +212,7 @@ Learn more, including how to have the restriction removed, in our blog post [A N
 
 #### Install an Application
 
-One of the most remarkable functions of YunoHost is its ability to simply install server applications from its web interface. Just navigate its marketplace of open source tools, select an application, and within a few clicks have it running on your server.
+One of the most remarkable functions of YunoHost is its ability to simply install server applications from its web interface. Navigate its marketplace of open source tools, select an application, and within a few clicks have it running on your server.
 
 1.  Select the **Applications** option from the YunoHost administrator interface main page.
 
