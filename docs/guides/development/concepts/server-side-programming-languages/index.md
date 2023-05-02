@@ -6,7 +6,7 @@ description: 'Which server side programming languages should you learn? Read our
 keywords: ['server side programming languages','server side scripting languages','server side development','server side coding','best front end languages','best server side language','server side frameworks','most popular server side languages','server side web applications','server side web frameworks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
-published: 2023-04-14
+published: 2023-05-02
 modified_by:
   name: Linode
 external_resources:
@@ -41,7 +41,7 @@ There’s a cottage industry for WordPress (WP) site designers. It requires you 
 
 Facebook, on the other hand, has its own virtual machine for running PHP (the hip-hop virtual machine, or [HHVM](https://hhvm.com/)). The company is also building its own dialect of PHP, [Hack](https://hacklang.org/), to run on the HHVM.
 
-PHP is considered to be multi-paradigm, meaning it supports imperative, functional, object-oriented, procedural, and reflective. It also has a garbage-collected runtime. PHP existed without a formal specification from its release in 1995, though work started on a spec in 2014. A just-in-time (JIT) compiler for PHP was released in 2020, as part of PHP 8.
+PHP is considered to be multi-paradigm, meaning it supports imperative, functional, object-oriented, procedural, and reflective programming. It also has a garbage-collected runtime. PHP existed without a formal specification from its release in 1995, though work started on a spec in 2014. A just-in-time (JIT) compiler for PHP was released in 2020, as part of PHP 8.
 
 For server-side scripting, PHP code is embedded in HTML pages and executed on the server. The following example is the first one given in the [official PHP documentation](https://www.php.net/manual/en/intro-whatis.php):
 
