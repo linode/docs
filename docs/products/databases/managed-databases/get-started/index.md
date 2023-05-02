@@ -25,7 +25,6 @@ Once a Managed Database has been provisioned, you can connect to it from any com
 - [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/)
 - [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/)
 - [Connect to a PostgreSQL Managed Database](/docs/products/databases/managed-databases/guides/postgresql-connect/)
-- [Connect to a MongoDB Managed Database](/docs/products/databases/managed-databases/guides/mongodb-connect/)
 
 ## Migrate an Existing Database
 
