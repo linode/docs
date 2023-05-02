@@ -53,14 +53,3 @@ For more instructions, see [Backing Up MySQL Databases Using mysqldump](/docs/gu
     pg_dump -Fd --host lin-1111-1111-pgsql-primary.servers.linodedb.net --dbname Example --quote-all-identifiers --verbose --lock-wait-timeout=480000 --no-unlogged-table-data --serializable-deferrable --jobs=1 --username linpostgres --file database.backup
 
 For more information, review the [Backing Up a PostgreSQL Database (Database Dump)](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
-
-### MongoDB
-
-One of MongoDB's primary backup tools is[mongodump](https://www.mongodb.com/docs/database-tools/mongodump/#mongodb-binary-bin.mongodump), installed as a separate utility to MongoDB Server. It can create BSON backup files of MongoDB databases. The following command exports the database called *Example* within the given single node MongoDB Managed Database cluster. Replace the host and database name with your own values. MongoDB also requires you to download and reference the CA certificate, replacing *[certificate-file]* with the path and filename of the certificate. See [Connect to a PostgreSQL Managed Database](/docs/products/databases/managed-databases/guides/postgresql-connect/) guide for instructions on viewing the connection details (including the username, password, host, port, and certificate file).
-
-    mongodump --username=linroot --host=lin-1111-1111.servers.linodedb.net:27017 --db=Example --authenticationDatabase=admin --ssl --sslCAFile=[certificate-file] --gzip --archive=database.archive
-
-For more details as well as instructions on backing up a high availability cluster, see [Exporting from a MongoDB Database](/docs/products/databases/managed-databases/guides/mongodb-migrate/#export-from-the-source-database)
-.
-
-

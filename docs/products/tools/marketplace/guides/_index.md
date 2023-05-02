@@ -73,8 +73,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Microweber](/docs/products/tools/marketplace/guides/microweber)
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
 - [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
-- [MongoDB](/docs/products/tools/marketplace/guides/mongodb/)
-- [MongoDB Cluster](/docs/products/tools/marketplace/guides/mongodb-cluster/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)

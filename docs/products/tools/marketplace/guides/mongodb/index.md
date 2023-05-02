@@ -3,6 +3,7 @@ description: "This guide shows how you can deploy MongoDB, a database engine tha
 keywords: ['mongodb','marketplace', 'database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
 published: 2020-03-11
+expiryDate: 2023-05-01
 modified: 2022-03-08
 modified_by:
   name: Linode
