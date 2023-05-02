@@ -5,7 +5,7 @@ description: 'This guide gives an overview of the "dump" and "restore" commands 
 keywords: ['install dump', 'dump levels', 'dump targets', 'perform full backup', 'compress backup', 'restore backup']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-04-12
+published: 2023-05-02
 modified_by:
   name: Linode
 external_resources:
