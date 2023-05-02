@@ -1,9 +1,6 @@
 ---
 slug: web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)'
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 tags: ["web server","ubuntu","php"]
@@ -19,6 +16,7 @@ relations:
         key: cherokee-php-fastcgi
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to configure Cherokee to serve dynamic content with PHP via FastCGI on Ubuntu 10.04 LTS (Lucid). Please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Ubuntu 10.04 system. If you have not followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to following these instructions.
 
 ## Prerequisites
 

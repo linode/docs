@@ -1,9 +1,6 @@
 ---
 slug: web-apps-with-cherokee-and-phpfastcgi-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to use the fast, flexible, open-source Cherokee web server with PHP-FastCGI to serve dynamic website content on Fedora 13.'
 keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 tags: ["web server","fedora","php"]
@@ -19,6 +16,7 @@ relations:
         key: cherokee-php-fastcgi
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

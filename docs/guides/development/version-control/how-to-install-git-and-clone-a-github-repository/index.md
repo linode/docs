@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-git-and-clone-a-github-repository
-author:
-  name: Joe D.
-  email: docs@linode.com
 description: 'This tutorial is an introduction to developing with Git and GitHub with instructions on installing Git and creating your first GitHub test repository.'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "github"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ published: 2015-02-06
 title: How to Install Git and Clone a GitHub Repository
 audiences: ["beginner"]
 tags: ["version control system"]
+authors: ["Joe D."]
 ---
 
 ![How to Install Git and Clone a GitHub Repository](install-clone-github-repo-title.jpg "How to Install Git and Clone a GitHub Repository title graphic")
@@ -117,7 +115,7 @@ Create files on the development Linode and push them to the forked repository on
 
         git add .
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 To add only one file, replace the period above with the full directory path and filename.
 {{< /note >}}
 
@@ -129,7 +127,7 @@ To add only one file, replace the period above with the full directory path and 
 
         git push https://github.com/SampleUser1234/test-repo-789.git newbranch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you've configure two-factor authorization (2FA) on this account, you will need to push over SSH. See GitHub's guide on [Generating SSH Keys](https://help.github.com/articles/generating-ssh-keys/).
 {{< /note >}}
 

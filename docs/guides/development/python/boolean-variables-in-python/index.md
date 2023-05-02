@@ -1,7 +1,5 @@
 ---
 slug: boolean-variables-in-python
-author:
-  name: Jeff Novotny
 description: 'Learn about Boolean logic in Python 3. This guide includes examples for Boolean variables, comparison and logical operators, and conditional statements.'
 keywords: ['Python Boolean operators','Python logical operators','Python logical and','Python logical or']
 tags: ['python']
@@ -9,15 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-04
 modified_by:
   name: Linode
-title: "Using Boolean Variables, Operators, and Conditional Statements in Python"
-h1_title: "Boolean Variables, Operators, and Conditional Statements in Python"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Boolean Variables, Operators, and Conditional Statements in Python"
+title_meta: "Using Boolean Variables, Operators, and Conditional Statements in Python"
 external_resources:
 - '[Python Documentation on Value Comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons)'
 - '[Python documentation for compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
+authors: ["Jeff Novotny"]
 ---
 
 *Boolean logic* is at the heart of [Python](https://www.python.org/) and most programming languages. It allows programmers to make comparisons, execute conditional statements, and implement common algorithms. The "greater than" (`>`) and "equals to" (`==`) symbols are examples of Python comparison operators, while `and` and `or` are some of Python's logical operators. This tutorial explains Boolean logic and expressions and discusses how to use Python's Boolean operators.
@@ -32,13 +27,13 @@ Python uses a built-in data type named `bool` to represent Boolean values. The `
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -135,7 +130,7 @@ For more information, see the [Python Documentation on Value Comparisons](https:
 
  The example below demonstrates how the `==` operator can be used to test `a` and `b` for equality. Because the two items are indeed equal, Python returns `True`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout these examples, do not mix up the assignment operator `=` with the equality operator `==`. Substituting the `=` operator in place of the `==` leads to strange and misleading bugs.
 {{< /note >}}
 
@@ -325,7 +320,7 @@ The following truth table demonstrates how the result of the `or` operation chan
 | False | or | True | True |
 | False | or | False | False |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Python does not have an "exclusive or" operator, also known as a "xor". To satisfy an "exclusive or" test, one but not both of the arguments must be `True`. Certain Python libraries provide this function. A "xor" function can also be derived from the other operators.
 {{< /note >}}
 
@@ -371,7 +366,7 @@ False
 True
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Sometimes Python logical operators can return a result without evaluating both inputs. This is known as *short-circuiting*. For instance, when evaluating an `or` expression, Python can return `True` as soon as any expression evaluates to `True`. This guarantees the `or` expression is `True` no matter what the second argument is. This optimization speeds up execution. Unfortunately, it can also lead to subtle bugs, such as crashes that only occur when the second clause is evaluated.
 {{< /note >}}
 

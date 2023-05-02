@@ -1,18 +1,14 @@
 ---
 slug: pytorch-installation-ubuntu-2004
-author:
-  name: Tom Henderson
 description: 'This guide shows you how to install PyTorch on an Ubuntu 20.04 server. PyTorch is a Python-based deep learning framework that can be used with GPU powered systems.'
 keywords: ['pytorch install','pytorch cpu','conda install pytorch','what is pytorch', 'uninstall pytorch']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "Installing PyTorch on Ubuntu 20.04"
-h1_title: "How to Install PyTorch on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Tom Henderson
+title: "Install PyTorch on Ubuntu 20.04"
+title_meta: "How to Install PyTorch on Ubuntu 20.04"
+authors: ["Tom Henderson"]
 ---
 
 This guide shows you how to install [PyTorch](https://pytorch.org/), a Python framework, on an Ubuntu 20.04 Linode. PyTorch provides support for a variety of math-intensive applications that run on GPU and CPU hardware. Linode offers dedicated [CPU instances](https://www.linode.com/products/dedicated-cpu/) and [GPU instances](https://www.linode.com/products/gpu/) that you can use to run PyTorch-based projects.
@@ -25,7 +21,7 @@ PyTorch allows popular Python-based apps to access GPU hardware to speed up mach
 
 ### Prerequisites
 
-The instructions below install PyTorch and Anaconda on an Ubuntu 20.04 instance. For the best results, use a Linode [GPU instance](/docs/products/compute/gpu/get-started/) with sufficient memory and storage to accomplish your task. Up to 96GB of memory and 7TB of storage are available.
+The instructions below install PyTorch and Anaconda on an Ubuntu 20.04 instance. For the best results, use a Linode [GPU instance](/docs/products/compute/compute-instances/get-started/) with sufficient memory and storage to accomplish your task. Up to 96GB of memory and 7TB of storage are available.
 
 Optimizing a task may also require using external data sources. If using external data sources and data sets, like [Linode Object Storage](/docs/products/tools/cli/guides/object-storage/), you should prepare them ahead of setting up your PyTorch GPU instance.
 
@@ -41,11 +37,11 @@ Optimizing a task may also require using external data sources. If using externa
 
         sudo apt install nvidia-cuda-toolkit
 
-    For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/).
+    For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/compute-instances/guides/install-nvidia-cuda/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
-{{</ note >}}
+{{< /note >}}
 
 ### Use Conda to Install PyTorch
 
@@ -76,9 +72,9 @@ The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.
 
         conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Using Anaconda to install PyTorch, installs the NVIDIA CUDA Toolkit. For instances that install CPU-only versions of PyTorch, skip to the [Use Pip to Install PyTorch](#use-pip-to-install-pytorch) section.
-    {{</ note >}}
+    {{< /note >}}
 
     During installation, you are prompted to install new packages. Type `y` to install them. Your output displays a similar output:
 
@@ -154,9 +150,9 @@ Use the steps below to ensure that you have a working PyTorch installation.
 >>>
     {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the torch library cannot be found, python returns an error message indicating `not-found`.
-    {{</ note >}}
+    {{< /note >}}
 
 1. Determine if PyTorch is using a GPU:
 
@@ -189,21 +185,21 @@ The steps in this section shows you how to use Anaconda to uninstall PyTorch.
 
         conda remove pytorch
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also use the `uninstall` command to remove PyTorch libraries. Any datasets must also be removed independently from removing PyTorch.
-    {{</ note >}}
+    {{< /note >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 When using the `uninstall` command, the Linode may also be deleted, but it cannot be recovered once deleted.
-     {{</ caution >}}
+     {{< /note >}}
 
 1. Remove Anaconda from your system.
 
         rm -rf ~/anaconda
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The above command is dangerous, and must refer specifically to the directory where anaconda was installed. In the above example, Anaconda was installed in  the `/home/<user>/anaconda` directory. Adjust the command to ensure the directory deleted is indeed the `anaconda` directory.
-    {{</ caution >}}
+    {{< /note >}}
 
 1. Remove the Anaconda installation script:
 

@@ -1,9 +1,11 @@
 ---
 title: Get Started
+title_meta: "Getting Started with StackScripts"
 description: "Get started with Linode StackScripts. Learn to create a StackScript and create a new Linode using a StackScript."
 tab_group_main:
     weight: 20
 published: 2022-11-30
+tags: ["managed hosting"]
 ---
 
 StackScripts allow you to reproduce specific software configurations when deploying Compute Instances, with more user control than static system images. This guide covers how to get started with StackScripts, including writing your custom script, creating the StackScript, and deploying a Compute Instance.
@@ -48,6 +50,6 @@ When creating a new Compute Instance, you can use one of your Account StackScrip
 
     ![Screenshot of the more options ellipsis menu for a StackScript](stackscript-deploy-button.png)
 
-1. This opens the **Create Linode** form with the StackScript pre-selected. From here, you can follow the instructions outlined in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. If there are any UDF fields defined in the StackScript, they are displayed in the **StackScript Options** section.
+1. This opens the **Create Linode** form with the StackScript pre-selected. From here, you can follow the instructions outlined in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. If there are any UDF fields defined in the StackScript, they are displayed in the **StackScript Options** section.
 
 1. Click on the **Create Linode** button to complete the creation of your new Compute Instance. The StackScript is executed when the instance first boots up.

@@ -1,8 +1,5 @@
 ---
 slug: garrys-mod-server-on-centos-7
-author:
-  name: Julian Meyer
-  email: --
 description: 'This guide provides you with step-by-step instructions for deploying a Garrys Mod Server, which enables complete control of a video game engine, on CentOS 7.'
 keywords: ["garry''s mod", "centos", "centos 7"]
 tags: ["centos"]
@@ -17,10 +14,8 @@ external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
-contributor:
-    name: Julian Meyer
-    link: https://github.com/jmeyer2k
 dedicated_cpu_link: true
+authors: ["Julian Meyer"]
 ---
 
 
@@ -34,7 +29,7 @@ This guide shows how to create, maintain, and secure a Garry's Mod server.
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -79,7 +74,7 @@ From the SteamCMD guide, two additional steps are needed specifically for Gmod.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update Gmod, run the above 4 commands again.
 {{< /note >}}
 
@@ -165,9 +160,9 @@ writeip
 
         cd ~/ && ./startgmod.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop Gmod.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

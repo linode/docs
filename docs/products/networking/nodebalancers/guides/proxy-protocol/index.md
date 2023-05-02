@@ -1,17 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Using Proxy Protocol with NodeBalancers
 description: "Learn how to enable and use Proxy Protocol on your NodeBalancer to send client connection details to the backend nodes."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode
 image: ProxyProtocol_NodeBalancers.png
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/','/guides/nodebalancer-proxypass-configuration/']
+authors: ["Linode"]
 ---
 
 When a Linode NodeBalancer passes a request from a client to a backend Node, information regarding the original client is not included by default. While this is fine for many environments, your applications may require original client information such as IP address or port. For these cases, Linode NodeBalancers support **Proxy Protocol** for TCP connections so that you can pass client information to backend Nodes.
@@ -32,19 +29,19 @@ Currently, there are two available versions of Proxy Protocol, **v1** and **v2**
 
 - **v1**: Proxy Protocol v1 adds a human readable string to all requests, similar to the following:
 
-    {{< output >}}
-PROXY TCP4 192.0.2.0 203.0.113.0 56147 80
-    {{< /output >}}
+    ```output
+    PROXY TCP4 192.0.2.0 203.0.113.0 56147 80
+    ```
 
     The syntax for this output is as follows:
 
-      PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PORT
+        PROXY, PROTOCOL, CLIENT_IP, NODEBALANCER_IP, CLIENT ORIGIN PORT, NODEBALANCER PORT
 
 - **v2**: Proxy Protocol v2 adds a more efficient binary data header to all requests, similar to the following:
 
-  {{< output >}}
-\r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
-  {{< /output >}}
+    ```output
+    \r\n\r\n\x00\r\nQUIT\n!\x11\x00\x0c\xach\x11\x05\xcf\xc0D8\xfe\x1e\x04\xd2
+    ```
 
 More information on **v1** and **v2** is available in the [Proxy Protocol Specification](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt).
 

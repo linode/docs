@@ -1,10 +1,11 @@
 ---
 title: Guides
-description: "Learn more about Linode Billing and related topics."
+title_meta: "Guides and Tutorials for Billing and Payments"
+description: "A collection of documentation related to managing billing, payments, and other related topics on the Linode platform."
 tab_group_main:
     weight: 30
 aliases: ['/platform/billing-and-support/manage-billing-in-cloud-manager/','/guides/manage-billing-in-cloud-manager/','/products/tools/billing/guides/']
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 ## Basics

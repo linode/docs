@@ -1,21 +1,19 @@
 ---
 slug: custom-name-servers
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to configure custom nameservers on popular domain registrars."
 keywords: ["dns"]
-tags: ["dns","networking","cpanel"]
+tags: ["dns","networking","cpanel","managed hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-22
 modified_by:
   name: Linode
 title: Register Custom DNS Name Servers
+authors: ["Linode"]
 ---
 
 DNS **name servers** (also referenced as the single word *nameservers*) are the backbone of the Domain Name System. They are the servers that host a domain's DNS records, which map human-readable domain names to IP addresses.
 
-When registering a new domain or configuring an existing domain, you must set the FQDN (fully qualified domain name) of each name server you intend to use. This is done through your domain's registrar. You can typically chose to use your registrar's name servers, a third party name server, or a self-hosted name server. If you decide to use your registrar's DNS service or a third party DNS service, that service provides you with the FQDNs for its name servers. For example, the name servers for Linode's [DNS Manager](/docs/products/networking/dns-manager/get-started/#use-linodes-name-servers) are ns1.linode.com through ns5.linode.com.
+When registering a new domain or configuring an existing domain, you must set the FQDN (fully qualified domain name) of each name server you intend to use. This is done through your domain's registrar. You can typically chose to use your registrar's name servers, a third party name server, or a self-hosted name server. If you decide to use your registrar's DNS service or a third party DNS service, that service provides you with the FQDNs for its name servers. For example, the name servers for Linode's [DNS Manager](/docs/products/networking/dns-manager/guides/authoritative-name-servers/) are ns1.linode.com through ns5.linode.com.
 
 If you instead decide to use your own custom name servers, you first need to create glue records on your registrar for the FQDN you wish to use with each name server. In tandem with glue records, you must also set corresponding A records with your domain's DNS records. The last step is to configure your domain to use your new custom name servers.
 
@@ -47,7 +45,7 @@ When a domain name is resolved, your system's DNS resolvers first query the root
 
 To overcome this circular resolution, glue records are needed. Glue records are set within the domain's registrar and can map the custom domain of a name server to the IP address of that name server. To configure glue records, follow the instructions below.
 
-1. Obtain the public IPv4 addresses for each of your custom name servers. If they are hosted on a Linode Compute Instance, see [Managing IP Addresses on a Compute Instance](/docs/guides/managing-ip-addresses/#viewing-ip-addresses).
+1. Obtain the public IPv4 addresses for each of your custom name servers. If they are hosted on a Linode Compute Instance, see [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 
 1. Log in to your domain's registrar.
 

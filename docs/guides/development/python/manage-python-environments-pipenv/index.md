@@ -1,8 +1,5 @@
 ---
 slug: manage-python-environments-pipenv
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 keywords: ["python", "virtual environment", "pip","virtualenv","pipenv"]
 description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool. Here's how to use it."
 og_description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages."
@@ -11,13 +8,13 @@ modified: 2018-03-27
 modified_by:
   name: Linode
 published: 2018-05-01
-title: "How to Use Pipenv to Manage Python Packages and Versions"
-h1_title: "Using Pipenv to Manage Python Packages and Versions"
-enable_h1: true
+title: "Using Pipenv to Manage Python Packages and Versions"
+title_meta: "How to Use Pipenv to Manage Python Packages and Versions"
 audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/manage-python-environments-pipenv/']
+authors: ["Jared Kobos"]
 ---
 
 ## What is Pipenv?
@@ -110,7 +107,7 @@ python_version = "3.6"
 
     Since no version was specified during when installing Numpy, the Pipfile specifies that any version (`"*"`) is acceptable. The specific version installed is recorded in `Pipfile.lock`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you install a package in a directory that does not have a Pipfile, Pipenv will create a new environment in that directory automatically, using your system's default Python version. This means that the commands in this section can be condensed into two steps:
 
     pipenv install numpy

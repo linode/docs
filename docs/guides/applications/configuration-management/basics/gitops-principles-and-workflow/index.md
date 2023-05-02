@@ -1,7 +1,5 @@
 ---
 slug: gitops-principles-and-workflow
-author:
-  name: Jack Wallen
 description: 'This guide provides an overview of GitOps, describes its workflow, and compares GitOps to DevOps and Kubernetes.'
 keywords: ['gitops vs devops', 'gitops and kubernetes', 'gitops workflow']
 tags: ['kubernetes', 'container', 'monitoring']
@@ -9,11 +7,10 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-17
 modified_by:
   name: Linode
-title: "An Overview of GitOps Principles and Workflow"
-h1_title: "GitOps: An Overview of Its Principles and Workflow"
-enable_h1: true
-contributor:
-  name: Jack Wallen
+title: "GitOps: An Overview of Its Principles and Workflow"
+title_meta: "An Overview of GitOps Principles and Workflow"
+authors: ["Jack Wallen"]
+tags: ["saas"]
 ---
 
 If you're a developer, chances are you know what [Git](/docs/guides/a-beginners-guide-to-github/) is. However, you may not be as familiar with *GitOps*. This guide gives you an understanding of GitOps, compares GitOps to DevOps, describes the GitOps workflow, and the tools often used with this methodology.

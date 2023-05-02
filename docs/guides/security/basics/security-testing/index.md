@@ -1,18 +1,14 @@
 ---
 slug: security-testing
-author:
-  name: David Newman
 description: 'Security testing is crucial for spotting and removing vulnerabilities. Learn about the types of application security tools and how to use them.'
 keywords: ['security testing','application security testing','application security tools','security testing tools']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-04-29
 modified_by:
   name: Linode
-title: "Application Security Testing Tools"
-h1_title: "Application Security Testing: Fundamentals and Best Practices"
-enable_h1: true
-contributor:
-  name: David Newman
+title: "Application Security Testing: Fundamentals and Best Practices"
+title_meta: "Application Security Testing Tools"
+authors: ["David Newman"]
 ---
 
 Application security testing tools help you build applications that are less vulnerable to attacks by automating security testing, and by verifying your applications are secured against known vulnerabilities.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-chef-on-ubuntu-20-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides a brief introduction to the Chef configuration management software and explains how to install and use it.'
 keywords: ['Install Chef','Configure Chef','Chef Ubuntu','Chef Server','Chef Workstation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,6 @@ modified_by:
   name: Linode
 title: "Install Chef on Ubuntu 20.04"
 title_meta: "How to Install Chef on Ubuntu 20.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Chef Website](https://www.chef.io/)'
 - '[Chef Overview](https://docs.chef.io/platform_overview/)'
@@ -26,6 +21,8 @@ external_resources:
 - '[Chef Supermarket](https://supermarket.chef.io/)'
 - '[Chef Supermarket documentation](https://docs.chef.io/workstation/knife_supermarket/)'
 - '[Chef bootstrap documentation](https://docs.chef.io/install_bootstrap/)'
+authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 [Chef](https://www.chef.io/) is a free and open source *Infrastructure as Code* (IaC) application. It's a configuration management system that allows administrators to provision and manage infrastructure using automation. A complete Chef workflow includes one or more Chef Workstations, a Chef Server, and a set of nodes. This guide provides some background on how Chef works, and explains how to install and configure Chef on Ubuntu 20.04.
@@ -63,9 +60,9 @@ Linode has a helpful [Beginner's Guide to Chef](/docs/guides/beginners-guide-che
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. At least three Linode systems running Ubuntu 20.04 are required to implement a Chef system. One server is for the Chef Workstation, the second for the Chef Server, while a third represents a node under administration. Due to Chef's memory demands, the Chef Server requires a 8GB Linode. The other two servers can be 2GB Linodes. Both the Chef Server and Chef Workstation should be configured using the previous instructions. Chef is used to set up the target node.
 
@@ -119,7 +116,7 @@ The Chef Server Core can be downloaded using `wget`. The following steps demonst
 
 1. Start the Chef server. Answer `yes` when prompted to accept the product licenses.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The installation process takes several minutes to complete. Upon a successful installation, the message `Chef Infra Server Reconfigured!` is displayed.
     {{< /note >}}
 
@@ -249,7 +246,7 @@ A few more items must be configured before the Workstation is operational. Tasks
 RSA private keys enable better security between the Chef Server and associated workstations through the use of encryption. Earlier, RSA private keys were created on the Chef Server. Copying these keys to a workstation allows it to communicate with the server. To enable encryption using RSA private keys, follow these steps.
 
 {{< note >}}
-SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/guides/set-up-and-secure/#ssh-daemon-options) for more information.
+SSH password authentication must be enabled on the Chef Server to complete the key exchange. If SSH password authentication has been disabled for better security, enable it again before proceeding. After the keys have been retrieved and added to the workstation, SSH password authentication can be disabled again. See the Linode guide to [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) for more information.
 {{< /note >}}
 
 1. On the workstation, generate an RSA key pair. This key can be used to initially access the Chef server to copy over the private encryption files.
@@ -395,7 +392,7 @@ The Chef Knife utility helps a Chef workstation communicate with the server. It 
 
 1. Move back to the `chef-repo` directory and fetch the necessary SSL certificates from the server using the `knife fetch` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The SSL certificates were generated when the Chef server was installed. The certificates are self-signed. This means a certificate authority has not verified them. Before fetching the certificates, log in to the Chef server and ensure the hostname and fully qualified domain name (FQDN) are the same. These values can be confirmed using the commands `hostname` and `hostname -f`.
     {{< /note >}}
 
@@ -440,7 +437,7 @@ At this point, both the Chef Server and Chef Workstation are configured. They ca
 
 1. Bootstrap the node using the `knife bootstrap` command. Specify the IP address of the target node for `node_ip_address`. This is the address of the node to bootstrap. In the following example, use the actual user name and password for the account in place of `username` and `password`. Enter the name of the node in place of `nodename`. Answer `Y` when asked "Are you sure you want to continue connecting".
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The option to bootstrap using key-pair authentication no longer appears to be supported.
     {{< /note >}}
 

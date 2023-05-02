@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-docker-and-deploy-a-lamp-stack
-author:
-  name: Joe D.
-  email: docs@linode.com
 description: 'This article gives you step-by-step instructions for installing Docker and using the application to create a LAMP stack within a Docker container.'
 keywords: ["docker", "lamp", "LAMP", "ubuntu", "debian"]
 tags: ["lamp","container","docker"]
@@ -19,6 +16,7 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
+authors: ["Joe D."]
 ---
 
 Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.
@@ -41,7 +39,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
 
         curl -sSL https://get.docker.com/ | sh
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The current version of the docker script checks for AUFS support and displays the warning below if support is not found:
 
 Warning: current kernel is not supported by the linux-image-extra-virtual
@@ -74,9 +72,9 @@ When an image downloads, there are no image containers running.
 
         sudo docker run -p 80:80 -t -i linode/lamp /bin/bash
 
-     {{< caution >}}
-This command also changes the terminal prompt to the root user within the new container.
-{{< /caution >}}
+    {{< note type="alert" >}}
+    This command also changes the terminal prompt to the root user within the new container.
+    {{< /note >}}
 
 2.  As the container's root user, start Apache:
 
@@ -90,7 +88,7 @@ This command also changes the terminal prompt to the root user within the new co
 
 5. Enter the IP address in a web browser to test the site.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The website's root directory is `/var/www/example.com/public_html/`.
 {{< /note >}}
 

@@ -1,16 +1,10 @@
 ---
 slug: install-gitlab-on-ubuntu-14-04-trusty-tahr
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 14.04 "Trusty Tahr".'
 keywords: ["version control", "git", "gitlab", "ruby", "ruby on rails", "mysql", "postgresql", "nginx"]
 tags: ["version control system","email","ruby","nginx","ubuntu","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/','/gitlab-with-ubuntu/','/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr/','/applications/development/gitlab-on-ubuntu-14-04/','/applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/']
-contributor:
-    name: Nashruddin Amin
-    link: https://twitter.com/bsd_noobz
 modified: 2017-06-21
 modified_by:
   name: Linode
@@ -29,6 +23,7 @@ relations:
         key: install-gitlab
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Nashruddin Amin"]
 ---
 
 
@@ -40,7 +35,7 @@ GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contai
 
 This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/guides/introduction-to-linux-concepts/) and [Linux Administration Basics guide](/docs/guides/linux-system-administration-basics/) guides. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -167,7 +162,7 @@ production: &base
 {{< /file >}}
 
 
-     {{< note >}}
+    {{< note respectIndent=false >}}
 If you specified a database name other than `gitlabhq_production` when creating the PostgreSQL database in the previous section, edit the `config/database.yml` file to match with your database name.
 {{< /note >}}
 
@@ -293,8 +288,7 @@ audit_usernames: false
         sudo -u git -H git config --global user.email "gitlab@example.com"
         sudo -u git -H git config --global core.autocrlf input
 
-
-     {{< note >}}
+    {{< note respectIndent=false >}}
 Set the value for user.email according to what is set in config/gitlab.yml
 {{< /note >}}
 

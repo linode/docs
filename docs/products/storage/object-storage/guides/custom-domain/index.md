@@ -1,19 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
 keywords: ['object','storage','object storage','s3','bucket']
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-07
 modified: 2022-02-07
 modified_by:
   name: Linode
 title: "Configure a Custom Domain (with a TLS/SSL Certificate)"
-contributor:
-  name: Linode
 aliases: ['/platform/object-storage/enable-ssl-for-object-storage/','/guides/enable-ssl-for-object-storage/']
+authors: ["Linode"]
 ---
 
 Linode's Object Storage service supports both shared and custom domain names. By default, files can be accessed through secured (HTTPS) URLs within the shared domain *\*.linodeobjects.com*. If you prefer, you can use a custom domain, such as a subdomain of *\*.example.com*. This guide walks you through the configuration of a custom domain and adding a TLS certificate to secure that custom domain. When configuring Linode services, this guide uses the Cloud Manager, though the [Linode CLI](/docs/products/tools/cli/get-started/) and the [Linode API](/docs/api/object-storage/) can be used instead.

@@ -1,15 +1,12 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create A and AAAA records using Linode's DNS Manager"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2022-10-28
+published: 2023-02-03
 modified_by:
-  name: Linode
-title: "A and AAA Records"
+  name: KincaidYang
+title: "A and AAAA Records"
 keywords: ["dns"]
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ## A and AAAA Overview
@@ -32,7 +29,7 @@ An **A** (*Address*) record matches a domain name to an IPv4 address, specifical
 - **Hosting a website using the domain *example.com*.** Set the **Hostname** to `@` and the **IP Address** to the IPv4 address of the server hosting the website. If you wish to support IPv6 users (such as devices connected over many cellular networks), also create an AAAA record with the same hostname but using the IPv6 address of the server.
 
     {{< note >}}
-While you can also create an A record for a subdomain, like *www.example.com*, it's more common to use CNAME records if the subdomain points to the same server. This limits the amount of places you might need to enter your IP address and reduces the overall number of DNS records you need to maintain.
-{{</ note >}}
+    While you can also create an A record for a subdomain, like *www.example.com*, it's more common to use CNAME records if the subdomain points to the same server. This limits the amount of places you might need to enter your IP address and reduces the overall number of DNS records you need to maintain.
+    {{< /note >}}
 
 - **Configuring the FQDN (fully qualified domain name) for a server.** Machines are often addressed by their FQDN, not their IP addresses. To set up an FQDN, create an A (and/or AAAA) record using the hostname of the machine (such as `web01` for *web01.example.com*.) and map it to its primary IPv4 or IPv6 address.

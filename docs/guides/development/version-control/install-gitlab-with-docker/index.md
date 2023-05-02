@@ -1,8 +1,5 @@
 ---
 slug: install-gitlab-with-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode using the container application Docker.'
 keywords: ['gitlab', 'git', 'docker']
 tags: ["version control system","docker"]
@@ -12,13 +9,12 @@ modified: 2019-01-11
 modified_by:
   name: Linode
 title: "Install GitLab with Docker"
-contributor:
-  name: Linode
 external_resources:
 - '[GitLab EE Docker Image](https://hub.docker.com/r/gitlab/gitlab-ee)'
 - '[GitLab Docker Documentation](https://docs.gitlab.com/omnibus/docker/)'
 - '[GitLab SSL Configuration](https://docs.gitlab.com/omnibus/settings/ssl.html#lets-encrypt-integration)'
 aliases: ['/development/version-control/install-gitlab-with-docker/']
+authors: ["Linode"]
 ---
 
 ![Install GitLab with Docker](install-gitlab-with-docker.png "Install GitLab with Docker")
@@ -33,13 +29,13 @@ The GitLab application has a number of services it depends on, including Postgre
 
 GitLab is a resource-intensive application. To get the most out of GitLab, we recommend a Linode with at least 8GB of memory and at least 2 CPU cores. For more information on system requirements, visit the [GitLab Hardware Requirements page](https://docs.gitlab.com/ce/install/requirements.html#hardware-requirements).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide was written for and tested with Ubuntu 18.04. You may be able to adapt this guide to other operating systems supported by Docker. When following this guide under another OS, use the Docker [installation instructions](https://docs.docker.com/install/) for that OS.
 {{< /note >}}
 
 ### Secure your Server
 
-Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account).
+Review and implement the measures in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including creating a [limited user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account).
 
 ### Change your Linode's Default SSH Port
 
@@ -148,7 +144,7 @@ As an alternative to specifying the `GITLAB_OMNIBUS_CONFIG` variable via the `--
 
 1.  In the above command, replace the values for the `--hostname` option and for the `external_url` configuration setting with the domain or subdomain for your GitLab site. If you did not set up DNS for your site, enter `http://your_linode_ip` (not `https`) for the `external_url` setting. Then, run the command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using the GitLab Community Edition image, replace `gitlab/gitlab-ee:latest` with `gitlab/gitlab-ce:latest`
 {{< /note >}}
 
@@ -215,7 +211,7 @@ Once the container has stopped, you can remove the container using the `rm` comm
 
     sudo docker container rm gitlab-linode
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Removing the container will not delete your projects and repositories.
 {{< /note >}}
 

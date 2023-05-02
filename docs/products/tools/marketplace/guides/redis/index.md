@@ -1,22 +1,17 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how you can install Redis database, a open-source, in-memory, data structure store, with optional write and persistence of data on a disk."
 keywords: ['redis','data store','cluster','database']
 tags: ["linode platform","database","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Redis through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Introduction to Redis Data Types](https://redis.io/topics/data-types-intro)'
 - '[Redis Replication](https://redis.io/topics/replication)'
 aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/platform/one-click/how-to-deploy-redis-with-one-click-apps/','/guides/how-to-deploy-redis-with-one-click-apps/','/guides/how-to-deploy-redis-with-marketplace-apps/','/guides/redis-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Redis](https://redis.io/) is an open-source, in-memory, data-structure store, with the optional ability to write and persist data to a disk, which can be used as a key-value database, cache, and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others.
@@ -27,9 +22,9 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Redis should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,11 +38,13 @@ aliases: ['/platform/marketplace/how-to-deploy-redis-with-marketplace-apps/','/p
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Email address for the SOA record:** The start of authority (SOA) email address for this server. This is a required field if you want the installer to create DNS records.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access the Redis CLI
 
-1.  Log in to your new Compute Instance through [Lish](/docs/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
+1.  Log in to your new Compute Instance through [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/guides/connect-to-server-over-ssh/) using either the `root` user or limited user and the associated password you entered when creating the instance.
 
 1.  To use the redis-cli, run either of the commands below:
 
@@ -67,7 +64,7 @@ There are several types of Redis configurations you can use. For example, you ca
 
 <<<<<<< HEAD
 =======
-Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
+Once you have determined how you would like to configure your Redis deployment, connect to your [Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) to complete your configuration.
 
 >>>>>>> upstream/develop
 {{< content "marketplace-update-note-shortguide">}}

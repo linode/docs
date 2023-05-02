@@ -1,8 +1,5 @@
 ---
 slug: cloud-oauth-apps-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that gives an overview of OAuth support in the Cloud Manager.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-22
@@ -15,6 +12,7 @@ headless: true
 show_on_rss_feed: false
 tags: ["linode platform","cloud manager"]
 aliases: ['/platform/manager/cloud-oauth-apps-shortguide/']
+authors: ["Linode"]
 ---
 
 The Cloud Manager supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the Linode API. For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.

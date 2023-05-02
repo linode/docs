@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for Block Storage"
 description: "Linode Block Storage is managed easily with developer tools like the Linode API or CLI as well as third party tools and integrations."
 tab_group_main:
     weight: 50
