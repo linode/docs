@@ -3,7 +3,7 @@ description: 'This guide describes the process of upgrading LKE cluster versions
 keywords: ["Kubernetes", "cluster", "popeye", "security", "permissions"]
 tags: ["security", "kubernetes","container"]
 published: 2022-03-10
-modified: 2023-03-29
+modified: 2023-05-02
 modified_by:
   name: Linode
 title: "Upgrade a Cluster to a Newer Kubernetes Version"
@@ -61,7 +61,7 @@ One way to identify breaking changes and compatibility issues with Kubernetes up
 ## Check the Kubernetes Version on an LKE Cluster
 
 {{< tabs >}}
-{{% tab "Cloud Manager" %}}
+{{< tab "Cloud Manager" >}}
 Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
 
 ![Check Kubernetes Version](lke-version.png)
@@ -69,8 +69,8 @@ Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.c
 The current overall Kubernetes version of each LKE cluster is listed within the *Version* column. If an upgrade is available, an **Upgrade** button is displayed next to the version number.
 
 To determine the exact version being used by your control plane and your worker nodes, view the instructions for kubectl.
-{{% /tab %}}
-{{% tab "kubectl" %}}
+{{< /tab >}}
+{{< tab "kubectl" >}}
 **Cluster version:**
 
 To get the current overall version of Kubernetes on your cluster through kubectl, use the following command:
@@ -124,7 +124,7 @@ lke83159-127587-63922e6379a9   Ready    <none>   103d   v1.24.8
 lke83159-127587-63922e639de4   Ready    <none>   103d   v1.24.8
 lke83159-127587-63922e63c088   Ready    <none>   103d   v1.24.8
 ```
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ## Upgrade Kubernetes on an LKE Cluster
@@ -134,7 +134,7 @@ lke83159-127587-63922e63c088   Ready    <none>   103d   v1.24.8
 Once you are ready to perform an upgrade, you can start the upgrade process. This automatically upgrades the managed Control Plane on your LKE cluster and ensures that any *new* worker nodes are created using the newer Kubernetes version.
 
 {{< tabs >}}
-{{% tab "Cloud Manager" %}}
+{{< tab "Cloud Manager" >}}
 1. Navigate to the **Kubernetes** page in the [Cloud Manager](http://cloud.linode.com) to see a list of all LKE clusters on your account (see [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)).
 
 1. Locate the cluster you wish to upgrade and click the corresponding **Upgrade** button in the *Version* column. This button only appears if there is an available upgrade for that cluster.
@@ -148,8 +148,8 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 1. The next step is to upgrade all worker nodes in the cluster so that they use the newer Kubernetes version. A second popup should automatically appear requesting that you start the recycle process. Each worker node is recycled on a rolling basis so that only a single node is down at any time. *Only click the **Recycle All Nodes** button if you do not care about performance impact to your application.* For high performance production applications, consider clicking the **Cancel** button and performing one of the upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 
     ![](upgrade-lke-recycle.png)
-{{% /tab %}}
-{{% tab "Linode CLI" %}}
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
 1. Identify the ID of the cluster you wish to upgrade.
 
     ```command
@@ -180,8 +180,8 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
 
     Since this process does not upgrade the worker nodes, perform one of upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
 
-{{% /tab %}}
-{{% tab "Linode API" %}}
+{{< /tab >}}
+{{< tab "Linode API" >}}
 1. Identify the ID of the cluster you wish to upgrade. Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
 
     ```command
@@ -239,7 +239,7 @@ Once you are ready to perform an upgrade, you can start the upgrade process. Thi
     ```
 
     Since this process does not upgrade the worker nodes, perform one of upgrade procedures outlined in the [Upgrade Worker Nodes](#upgrade-worker-nodes) section.
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ### Upgrade Worker Nodes
@@ -261,10 +261,10 @@ It is highly recommended to add additional resources and take a "cordon and migr
 This recycles each worker node on a rolling basis so that only one node is down at any particular moment. In the highest level of detail, each worker node is independently [drained and cordoned](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/) *one at a time*. During this process, all workloads are migrated to other nodes. Once a worker node is drained and cordoned, it is removed and a new node is created using the new Kubernetes version. It is synced, and then uncordoned, immediately putting it back live into the cluster with the `Ready` status.
 
 {{< tabs >}}
-{{% tab "Cloud Manager" %}}
+{{< tab "Cloud Manager" >}}
 On the details page of your LKE cluster in the Cloud Manager, click the **Recycle All Nodes** button. See [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes) for more details.
-{{% /tab %}}
-{{% tab "Linode CLI" %}}
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
 Run the command below, replacing *[cluster-id]* with the ID of your cluster.
 
 ```command
@@ -272,8 +272,8 @@ linode-cli lke cluster-nodes-recycle [cluster-id]
 ```
 
 For more details, review the CLI request sample on the [Cluster Nodes Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#cluster-nodes-recycle).
-{{% /tab %}}
-{{% tab "Linode API" %}}
+{{< /tab >}}
+{{< tab "Linode API" >}}
 Perform the API request below, replacing *[cluster-id]* with the ID of your cluster.
 
 ```command
@@ -284,73 +284,73 @@ curl -H "Content-Type: application/json" \
 ```
 
 For more details, review the API request sample on the [Cluster Nodes Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#cluster-nodes-recycle).
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 #### Perform an In-Place Upgrade
 
 *This process temporarily creates one additional worker node on each node pool. This minimizes the cost impact of the upgrade (compared with an out-of-place upgrade) but increases the time the upgrade may take. This is recommended for smaller production applications.*
 
-1. First, add an additional worker node and, if using the Autoscale feature, increase the minimum number of nodes.
+1.  First, add an additional worker node and, if using the Autoscale feature, increase the minimum number of nodes.
 
     {{< tabs >}}
-    {{% tab "Cloud Manager" %}}
-Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Resize Pool** button. Increase the size of the node pool by 1. For example, if you have 3 nodes in the pool, increase that value to 4. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
+    {{< tab "Cloud Manager" >}}
+    Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Resize Pool** button. Increase the size of the node pool by 1. For example, if you have 3 nodes in the pool, increase that value to 4. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
 
-If you are also using the autoscale feature, increase the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
-    {{% /tab %}}
-    {{% tab "Linode CLI" %}}
-Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
+    If you are also using the autoscale feature, increase the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
+    {{< /tab >}}
+    {{< tab "Linode CLI" >}}
+    Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
 
-- *[cluster-id]*: The ID of your cluster.
-- *[pool-id]*: The ID of your node pool.
-- *[number-of-nodes]*: Enter one value more than the number of nodes that already exist in the node pool.
-- *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value more than the existing value.
-- *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value more than the existing value.
+    - *[cluster-id]*: The ID of your cluster.
+    - *[pool-id]*: The ID of your node pool.
+    - *[number-of-nodes]*: Enter one value more than the number of nodes that already exist in the node pool.
+    - *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value more than the existing value.
+    - *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value more than the existing value.
 
-```command
-linode-cli lke pool-update [cluster-id] [pool-id] \
-  --count [number-of-nodes] \
-  --autoscaler.enabled true \
-  --autoscaler.max [maximum-nodes] \
-  --autoscaler.min [minimum-nodes]
-```
+    ```command
+    linode-cli lke pool-update [cluster-id] [pool-id] \
+      --count [number-of-nodes] \
+      --autoscaler.enabled true \
+      --autoscaler.max [maximum-nodes] \
+      --autoscaler.min [minimum-nodes]
+    ```
 
-For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
-    {{% /tab %}}
-    {{% tab "Linode API" %}}
-Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
+    For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    {{< /tab >}}
+    {{< tab "Linode API" >}}
+    Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
 
-- *[cluster-id]*: The ID of your cluster.
-- *[pool-id]*: The ID of your node pool.
-- *[number-of-nodes]*: Enter one value more than the number of nodes that already exist in the node pool.
-- *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value more than the existing value.
-- *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value more than the existing value.
+    - *[cluster-id]*: The ID of your cluster.
+    - *[pool-id]*: The ID of your node pool.
+    - *[number-of-nodes]*: Enter one value more than the number of nodes that already exist in the node pool.
+    - *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value more than the existing value.
+    - *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value more than the existing value.
 
-```command
-curl -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $TOKEN" \
-      -X PUT -d '{
-        "count": [number-of-nodes],
-        "autoscaler": {
-          "enabled": true,
-          "max": [maximum-nodes],
-          "min": [minimum-nodes]
-      }' \
-      https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
-```
+    ```command
+    curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X PUT -d '{
+            "count": [number-of-nodes],
+            "autoscaler": {
+              "enabled": true,
+              "max": [maximum-nodes],
+              "min": [minimum-nodes]
+          }' \
+          https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
+    ```
 
-For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
-    {{% /tab %}}
+    For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    {{< /tab >}}
     {{< /tabs >}}
 
-1. Select one worker node running the older Kubernetes version and prevent new pods from being created on it. This can be accomplished using the `cordon` command through kubectl, replacing *[node]* with the name of the node you are taking action on.
+1.  Select one worker node running the older Kubernetes version and prevent new pods from being created on it. This can be accomplished using the `cordon` command through kubectl, replacing *[node]* with the name of the node you are taking action on.
 
     ```command
     kubectl cordon [node]
     ```
 
-1. Once traffic is no longer being assigned to that node, drain that worker node so that the existing workloads are rescheduled to other nodes.
+1.  Once traffic is no longer being assigned to that node, drain that worker node so that the existing workloads are rescheduled to other nodes.
 
     ```command
     kubectl drain [node] --ignore-daemonsets
@@ -358,88 +358,88 @@ For more details, review the shell request sample on the [Node Pool Update API r
 
     By default, this will allow the pods to gracefully terminate with a default grace period of 30 seconds. If your nodes have a long grace period, it may take a while to migrate off the existing workloads. You can adjust this by using the `--grace-period [value]` option in the above drain command, replacing *[value]* with the time in seconds you wish to use. See [Termination of Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination) on the official Kubernetes documentation.
 
-1. After the node has been drained, it can be recycled, which rebuilds the worker node using the newer Kubernetes version.
+1.  After the node has been drained, it can be recycled, which rebuilds the worker node using the newer Kubernetes version.
 
     {{< tabs >}}
-    {{% tab "Cloud Manager" %}}
-Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Next to the node that has just been drained, click the corresponding **Recycle** button as outlined in [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes).
-    {{% /tab %}}
-    {{% tab "Linode CLI" %}}
-Run the command below, replacing *[cluster-id]* with the ID of your cluster and *[node-id]* with the ID of the node.
+    {{< tab "Cloud Manager" >}}
+    Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Next to the node that has just been drained, click the corresponding **Recycle** button as outlined in [Recycle Nodes](/docs/products/compute/kubernetes/guides/manage-node-pools/#recycle-nodes).
+    {{< /tab >}}
+    {{< tab "Linode CLI" >}}
+    Run the command below, replacing *[cluster-id]* with the ID of your cluster and *[node-id]* with the ID of the node.
 
-```command
-linode-cli lke node-recycle [cluster-id] [node-id]
-```
+    ```command
+    linode-cli lke node-recycle [cluster-id] [node-id]
+    ```
 
-For more details, review the CLI request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#node-recycle).
-    {{% /tab %}}
-    {{% tab "Linode API" %}}
-Perform the API request below, replacing *[cluster-id]* with the ID of your cluster and *[node-id]* with the ID of the node.
+    For more details, review the CLI request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#node-recycle).
+    {{< /tab >}}
+    {{< tab "Linode API" >}}
+    Perform the API request below, replacing *[cluster-id]* with the ID of your cluster and *[node-id]* with the ID of the node.
 
-```command
-curl -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $TOKEN" \
-      -X POST \
-      https://api.linode.com/v4/lke/clusters/[cluster-id]/nodes/[node-id]/recycle
-```
+    ```command
+    curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X POST \
+          https://api.linode.com/v4/lke/clusters/[cluster-id]/nodes/[node-id]/recycle
+    ```
 
-For more details, review the API request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#node-recycle).
-    {{% /tab %}}
+    For more details, review the API request sample on the [Node Recycle API reference](/docs/api/linode-kubernetes-engine-lke/#node-recycle).
+    {{< /tab >}}
     {{< /tabs >}}
 
-1. Repeat steps 2 through 4 for each worker node until *all but the last* worker nodes are using the newer Kubernetes version. For the last worker node, repeat steps 2 and 3 to cordon and drain that node - but do not recycle it as that will cause workloads to land back on that node. Instead, continue with the step below to delete it.
+1.  Repeat steps 2 through 4 for each worker node until *all but the last* worker nodes are using the newer Kubernetes version. For the last worker node, repeat steps 2 and 3 to cordon and drain that node - but do not recycle it as that will cause workloads to land back on that node. Instead, continue with the step below to delete it.
 
-1. Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were prior to the upgrade.
+1.  Remove the additional worker node that was added during this upgrade process. This can be accomplished by resizing your cluster back to your original value to use one less worker node. The last worker node that was created, which was the one you have not yet recycled, is removed during the resize. Then, if you previously adjusted the Autoscale Pool, adjust the values back to what they were prior to the upgrade.
 
     {{< tabs >}}
-    {{% tab "Cloud Manager" %}}
-Locate the node pool on the details page of your LKE cluster. Click the corresponding **Resize Pool** button. Decrease the size of the node pool by 1. For example, if you have 4 nodes in the pool, decrease that value to 3. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
+    {{< tab "Cloud Manager" >}}
+    Locate the node pool on the details page of your LKE cluster. Click the corresponding **Resize Pool** button. Decrease the size of the node pool by 1. For example, if you have 4 nodes in the pool, decrease that value to 3. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
 
-If you are also using the autoscale feature, decrease the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
-    {{% /tab %}}
-    {{% tab "Linode CLI" %}}
-Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
+    If you are also using the autoscale feature, decrease the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
+    {{< /tab >}}
+    {{< tab "Linode CLI" >}}
+    Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
 
-- *[cluster-id]*: The ID of your cluster.
-- *[pool-id]*: The ID of your node pool.
-- *[number-of-nodes]*: Enter one value less than the number of nodes that exist in the node pool.
-- *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value less than the existing value.
-- *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value less than the existing value.
+    - *[cluster-id]*: The ID of your cluster.
+    - *[pool-id]*: The ID of your node pool.
+    - *[number-of-nodes]*: Enter one value less than the number of nodes that exist in the node pool.
+    - *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value less than the existing value.
+    - *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value less than the existing value.
 
-```command
-linode-cli lke pool-update [cluster-id] [pool-id] \
-  --count [number-of-nodes] \
-  --autoscaler.enabled true \
-  --autoscaler.max [maximum-nodes] \
-  --autoscaler.min [minimum-nodes]
-```
+    ```command
+    linode-cli lke pool-update [cluster-id] [pool-id] \
+      --count [number-of-nodes] \
+      --autoscaler.enabled true \
+      --autoscaler.max [maximum-nodes] \
+      --autoscaler.min [minimum-nodes]
+    ```
 
-For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
-    {{% /tab %}}
-    {{% tab "Linode API" %}}
-Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
+    For more details, review the CLI request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    {{< /tab >}}
+    {{< tab "Linode API" >}}
+    Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
 
-- *[cluster-id]*: The ID of your cluster.
-- *[pool-id]*: The ID of your node pool.
-- *[number-of-nodes]*: Enter one value less than the number of nodes that already exist in the node pool.
-- *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value less than the existing value.
-- *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value less than the existing value.
+    - *[cluster-id]*: The ID of your cluster.
+    - *[pool-id]*: The ID of your node pool.
+    - *[number-of-nodes]*: Enter one value less than the number of nodes that already exist in the node pool.
+    - *[maximum-nodes]*: The maximum number of nodes for the pool. Enter one value less than the existing value.
+    - *[minimum-nodes]*: The minimum number of nodes for the pool. Enter one value less than the existing value.
 
-```command
-curl -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $TOKEN" \
-      -X PUT -d '{
-        "count": [number-of-nodes],
-        "autoscaler": {
-          "enabled": true,
-          "max": [maximum-nodes],
-          "min": [minimum-nodes]
-      }' \
-      https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
-```
+    ```command
+    curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X PUT -d '{
+            "count": [number-of-nodes],
+            "autoscaler": {
+              "enabled": true,
+              "max": [maximum-nodes],
+              "min": [minimum-nodes]
+          }' \
+          https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
+    ```
 
-For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
-    {{% /tab %}}
+    For more details, review the shell request sample on the [Node Pool Update API reference](/docs/api/linode-kubernetes-engine-lke/#node-pool-update).
+    {{< /tab >}}
     {{< /tabs >}}
 
 #### Perform an Out-of-Place Upgrade
@@ -450,64 +450,64 @@ For more details, review the shell request sample on the [Node Pool Update API r
 These instructions cover deleting the old node pool after all nodes have been fully drained. This allows you to fallback to the existing nodes should the need arise. Alternatively, you can delete each node after it has been successfully drained, which reduces the overall cost impact of the upgrade.
 {{< /note >}}
 
-1. Create a new pool with the same Compute Instance plans and number of nodes as your existing pool.
+1.  Create a new pool with the same Compute Instance plans and number of nodes as your existing pool.
 
     {{< tabs >}}
-    {{% tab "Cloud Manager" %}}
-Within the **Node Pools** section on the details page of your LKE cluster in the Cloud Manager, click the **Add a Node Pool** button. In the prompt that appears, enter the plan type, plan size, and the number of nodes to match the existing node pool. See [Add a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool).
-    {{% /tab %}}
-    {{% tab "Linode CLI" %}}
-Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
+    {{< tab "Cloud Manager" >}}
+    Within the **Node Pools** section on the details page of your LKE cluster in the Cloud Manager, click the **Add a Node Pool** button. In the prompt that appears, enter the plan type, plan size, and the number of nodes to match the existing node pool. See [Add a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#add-a-node-pool).
+    {{< /tab >}}
+    {{< tab "Linode CLI" >}}
+    Run the command below, replacing the following values as needed. If you are not using the autoscale feature, remove the last 3 options (starting with *autoscaler*) from the command.
 
-- *[cluster-id]*: The ID of your cluster
-- *[plan-type]*: The ID of the Compute Instance plan you wish to use. You can see all available plans and their corresponding IDs by running `linode-cli linodes types`.
-- *[maximum-nodes]*: The maximum number of nodes for the pool.
-- *[minimum-nodes]*: The minimum number of nodes for the pool.
+    - *[cluster-id]*: The ID of your cluster
+    - *[plan-type]*: The ID of the Compute Instance plan you wish to use. You can see all available plans and their corresponding IDs by running `linode-cli linodes types`.
+    - *[maximum-nodes]*: The maximum number of nodes for the pool.
+    - *[minimum-nodes]*: The minimum number of nodes for the pool.
 
-```command
-linode-cli lke pool-create [cluster-id] \
-    --type [plan-id]
-    --count [number-of-nodes]
-    --autoscaler.enabled true \
-    --autoscaler.max [maximum-nodes] \
-    --autoscaler.min [minimum-nodes] \
-```
+    ```command
+    linode-cli lke pool-create [cluster-id] \
+        --type [plan-id]
+        --count [number-of-nodes]
+        --autoscaler.enabled true \
+        --autoscaler.max [maximum-nodes] \
+        --autoscaler.min [minimum-nodes] \
+    ```
 
-For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-create) (select the **CLI** tab).
-    {{% /tab %}}
-    {{% tab "Linode API" %}}
-Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-create) (select the **CLI** tab).
+    {{< /tab >}}
+    {{< tab "Linode API" >}}
+    Perform the API request below, replacing the following values as needed. If you are not using the autoscale feature, remove the `autoscaler` parameters from the request.
 
-- *[cluster-id]*: The ID of your cluster
-- *[plan-type]*: The ID of the Compute Instance plan you wish to use. You can see all available plans and their corresponding IDs by running `linode-cli linodes types`.
-- *[maximum-nodes]*: The maximum number of nodes for the pool.
-- *[minimum-nodes]*: The minimum number of nodes for the pool.
+    - *[cluster-id]*: The ID of your cluster
+    - *[plan-type]*: The ID of the Compute Instance plan you wish to use. You can see all available plans and their corresponding IDs by running `linode-cli linodes types`.
+    - *[maximum-nodes]*: The maximum number of nodes for the pool.
+    - *[minimum-nodes]*: The minimum number of nodes for the pool.
 
-```command
-curl -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $TOKEN" \
-      -X POST -d '{
-        "type": "[plan-id]",
-        "count": [number-of-nodes],
-        "autoscaler": {
-          "enabled": true,
-          "max": [maximum-nodes],
-          "min": [minimum-nodes]
-        }
-      }' \
-      https://api.linode.com/v4/lke/clusters/[cluster-id]/pools
-```
-For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-create).
-    {{% /tab %}}
+    ```command
+    curl -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $TOKEN" \
+          -X POST -d '{
+            "type": "[plan-id]",
+            "count": [number-of-nodes],
+            "autoscaler": {
+              "enabled": true,
+              "max": [maximum-nodes],
+              "min": [minimum-nodes]
+            }
+          }' \
+          https://api.linode.com/v4/lke/clusters/[cluster-id]/pools
+    ```
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-create).
+    {{< /tab >}}
     {{< /tabs >}}
 
-1. Select one worker node on the old pool and prevent new pods from being created on it. This can be accomplished using the `cordon` command through kubectl, replacing *[node]* with the name of the node you are taking action on.
+1.  Select one worker node on the old pool and prevent new pods from being created on it. This can be accomplished using the `cordon` command through kubectl, replacing *[node]* with the name of the node you are taking action on.
 
     ```command
     kubectl cordon [node]
     ```
 
-1. Once traffic is no longer being assigned to that node, drain that worker node so that the existing workloads are rescheduled to nodes on the other pool.
+1.  Once traffic is no longer being assigned to that node, drain that worker node so that the existing workloads are rescheduled to nodes on the other pool.
 
     ```command
     kubectl drain [node] --ignore-daemonsets
@@ -515,32 +515,32 @@ For more details, reference the corresponding operation on the [API/CLI docs](/d
 
     By default, this will allow the pods to gracefully terminate with a default grace period of 30 sections. If your nodes have a long grace period, it may take a while to migrate off the existing workloads. You can adjust this by using the `--grace-period [value]` option in the above drain command, replacing *[value]* with the time in sections you wish to use. See [Termination of Pods](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination) on the official Kubernetes documentation.
 
-1. Repeat steps 2 through 3 for *each* worker node on the old pool.
+1.  Repeat steps 2 through 3 for *each* worker node on the old pool.
 
-1. Once all worker nodes have been drained on the old node pool, the pool can be deleted.
+1.  Once all worker nodes have been drained on the old node pool, the pool can be deleted.
 
     {{< tabs >}}
-    {{% tab "Cloud Manager" %}}
-Locate the original node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Delete Pool** button as outlined in [Remove a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#remove-a-node-pool).
-    {{% /tab %}}
-    {{% tab "Linode CLI" %}}
-Run the command below, replacing *[cluster-id]* with the ID of your cluster and *[pool-id]* with the ID of the original node pool.
+    {{< tab "Cloud Manager" >}}
+    Locate the original node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Delete Pool** button as outlined in [Remove a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#remove-a-node-pool).
+    {{< /tab >}}
+    {{< tab "Linode CLI" >}}
+    Run the command below, replacing *[cluster-id]* with the ID of your cluster and *[pool-id]* with the ID of the original node pool.
 
-```command
-linode-cli lke pool-delete [cluster-id] [pool-id]
-```
+    ```command
+    linode-cli lke pool-delete [cluster-id] [pool-id]
+    ```
 
-For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-delete) (select the **CLI** tab).
-    {{% /tab %}}
-    {{% tab "Linode API" %}}
-Perform the API request below, replacing *[cluster-id]* with the ID of your cluster and *[pool-id]* with the ID of the original node pool.
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-delete) (select the **CLI** tab).
+    {{< /tab >}}
+    {{< tab "Linode API" >}}
+    Perform the API request below, replacing *[cluster-id]* with the ID of your cluster and *[pool-id]* with the ID of the original node pool.
 
-```command
-curl -H "Authorization: Bearer $TOKEN" \
-    -X DELETE \
-    https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
-```
+    ```command
+    curl -H "Authorization: Bearer $TOKEN" \
+        -X DELETE \
+        https://api.linode.com/v4/lke/clusters/[cluster-id]/pools/[pool-id]
+    ```
 
-For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-delete).
-    {{% /tab %}}
+    For more details, reference the corresponding operation on the [API/CLI docs](/docs/api/linode-kubernetes-engine-lke/#node-pool-delete).
+    {{< /tab >}}
     {{< /tabs >}}
