@@ -81,7 +81,6 @@ In addition to [Compute Instances](#create-your-first-compute-instance), Linode 
 **Compute**
 
 - [LKE](https://www.linode.com/products/kubernetes/) (Linode Kubernetes Engine): Managed Kubernetes clusters that simplify container orchestration.
-- [Bare Metal](https://www.linode.com/products/bare-metal/) *(Coming soon)*: Dedicated single-tenant hardware for advanced workloads.
 
 **Databases**
 
