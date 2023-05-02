@@ -2,7 +2,7 @@
 slug: server-side-programming-languages
 title: "5 Server Side Programming Languages Every Programmer Should Know"
 title_meta: "Guide to the Best Server Side Scripting Languages"
-description: 'Which server side programming languages should you learn? Read our guide for the best server side languages and elevate your coding skills today. ✓ Click here!'
+description: 'Which server side programming languages should you learn? Read our guide for the best server side languages.'
 keywords: ['server side programming languages','server side scripting languages','server side development','server side coding','best front end languages','best server side language','server side frameworks','most popular server side languages','server side web applications','server side web frameworks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
