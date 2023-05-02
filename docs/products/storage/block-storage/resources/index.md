@@ -30,7 +30,7 @@ Some of the blog posts about Linode Block Storage:
 
 ## Community Posts
 
-Some of the community posts that answers the question related to Linode Block Storage:
+Some of the community posts that answer questions related to Linode Block Storage:
 
 - [How do I move my database files to a Block Storage Volume?](https://www.linode.com/community/questions/18893/how-do-i-move-my-database-files-to-a-block-storage-volume)
 

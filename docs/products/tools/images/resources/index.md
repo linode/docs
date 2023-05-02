@@ -20,7 +20,7 @@ Some of the blog posts about custom images:
 
 ## Community Posts
 
-Some of the community posts that answer the questions related to custom images:
+Some of the community posts that answer questions related to custom images:
 
 - [What’s the deal with Linode Images?](https://www.linode.com/community/questions/17805/whats-the-deal-with-linode-images)
 
