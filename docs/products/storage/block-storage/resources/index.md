@@ -8,6 +8,8 @@ tab_group_main:
 
 ## Blog Posts
 
+Some of the blog posts about Linode Block Storage:
+
 - [Block Storage Now Available in Tokyo 2](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-tokyo-2/)
 
 - [Block Storage Now Available in Singapore and London](https://www.linode.com/blog/cloud-storage/block-storage-now-available-in-singapore-and-london/)
@@ -27,6 +29,8 @@ tab_group_main:
 - [Now Available: Linode Terraform Provider](https://www.linode.com/blog/devops/now-available-linode-terraform-provider/)
 
 ## Community Posts
+
+Some of the community posts that answers the question related to Linode Block Storage:
 
 - [How do I move my database files to a Block Storage Volume?](https://www.linode.com/community/questions/18893/how-do-i-move-my-database-files-to-a-block-storage-volume)
 
