@@ -1,6 +1,7 @@
 ---
 title: Get Started
-description: "Get started with the Linode DNS Manager. Learn to add a domain and add DNS records."
+title_meta: "Getting Started with the Linode DNS Manager"
+description: "Learn how to get up and running with the Linode DNS Manager, including creating and importing domains."
 tab_group_main:
     weight: 20
 modified: 2023-03-16

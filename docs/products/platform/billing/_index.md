@@ -1,5 +1,6 @@
 ---
 title: Billing
+title_meta: "Understanding How Billing Works on the Linode Platform"
 description: "Learn how Linode makes billing simple and easy so you easily anticipate your cloud infrastructure costs"
 tab_group_main:
     is_root: true

@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with the Linode Managed Service"
 description: "Learn how to get up and running with Linode Managed and start monitoring your Compute Instances."
 tab_group_main:
     weight: 20

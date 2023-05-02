@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with Custom Images"
 description: "Get started with Linode Images. Learn to create an image with the Linode Images service."
 tab_group_main:
     weight: 20

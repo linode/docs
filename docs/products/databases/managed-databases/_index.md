@@ -1,6 +1,7 @@
 ---
 title: Managed Databases
 linkTitle: Managed Databases
+title_meta: "Managed Databases Product Documentation"
 description: "Learn about Linode's Managed Database service, which provides fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 tab_group_main:
     is_root: true

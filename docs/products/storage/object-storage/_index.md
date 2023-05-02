@@ -1,5 +1,6 @@
 ---
 title: Object Storage
+title_meta: "Object Storage Product Documentation"
 description: "Linode Object Storage is S3-compatible, doesn't require a Linode, and allows you to host static sites."
 tab_group_main:
     is_root: true

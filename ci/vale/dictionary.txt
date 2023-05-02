@@ -295,6 +295,7 @@ chromecast
 chroot
 chrooting
 chrooted
+CIDRs
 citad
 cjones
 clamav
@@ -358,6 +359,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
@@ -433,12 +435,15 @@ datadir
 datadog
 dataflow
 datagram
+dataplane
+dataplanes
 datalog
 dataset
 datasets
 datasource
 datastax
 datastore
+datastores
 datetime
 datetimeformat
 dav
@@ -567,6 +572,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+ecto
 edmonds
 edu
 efi
@@ -632,6 +638,7 @@ failback
 failover
 failregex
 failregexs
+failsafe
 failsafes
 falko
 fastcgi
@@ -703,6 +710,7 @@ framesets
 freedns
 freeipa
 Freemarker
+freenom
 fremont
 freshclam
 friendica
@@ -837,6 +845,7 @@ haproxy
 hardcoded
 hardcopy
 hardlimit
+hashable
 hashmark
 hashicorp
 hasn
@@ -966,6 +975,7 @@ inittab
 injectable
 inkscape
 inode
+inodes
 inotify
 inrupt
 insmod
@@ -979,6 +989,7 @@ intra-application
 introducer
 introducers
 Intune
+Instructure
 invicti
 io
 iodef
@@ -992,6 +1003,7 @@ ipaserver
 ipchains
 ipconfig
 iperf
+ips
 ipsec
 ipset
 ipsets
@@ -1015,6 +1027,7 @@ isps
 issuewild
 istioctl
 iterable
+iterables
 itk
 ivanti
 Janca
@@ -1891,6 +1904,7 @@ rosenblatt
 rossum
 roundcube
 routable
+routings
 rpaf
 rpc
 rpcbind
@@ -2388,6 +2402,7 @@ v4
 v6
 Vaadin
 vagrantfile
+valim
 valheim
 validator
 variadic

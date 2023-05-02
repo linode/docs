@@ -10,7 +10,6 @@ modified_by:
 published: 2016-02-03
 title: 'Configure SPF and DKIM With Postfix on Debian 8'
 external_resources:
- - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
  - '[DMARC](http://dmarc.org/)'
  - '[OpenDKIM](http://www.opendkim.org/)'
@@ -33,7 +32,7 @@ We have created a [new version of this guide](/docs/guides/configure-spf-and-dki
 
 {{< content "email-warning-shortguide" >}}
 
-[SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
+SPF (Sender Policy Framework) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
 [DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.
 
@@ -65,7 +64,7 @@ Publishing an SPF DNS record without having the SPF policy agent configured with
 
 ### Add SPF records to DNS
 
-The value in an SPF DNS record will look something like the following examples. The full syntax is at [the SPF record syntax page](http://www.openspf.org/SPF_Record_Syntax).
+The value in an SPF DNS record will look something like the following examples.
 
 **Example 1**  Allow mail from all hosts listed in the MX records for the domain:
 

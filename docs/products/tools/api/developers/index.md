@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for the Linode API"
 description: "Linode provides a wide array of developer tools including Rancher and Terraform integrations and JavaScript and Python libraries."
 tab_group_main:
     weight: 50
