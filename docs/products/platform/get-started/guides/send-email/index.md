@@ -1,14 +1,15 @@
 ---
-title: "Send Email from a Compute Instance"
+title: "Send Email on the Linode Platform"
 description: "Learn about Linode's email policy, how to lift email restrictions, and best practices to implement when sending email."
-published: 2023-04-28
+published: 2023-05-02
 authors: ["Linode"]
+keywords: ["SMTP", "SMTP restrictions", "email restrictions"]
 ---
 
-Linode Compute Instances can be used to send and receive email, as long as their are no restrictions in place (see [Email Policy and Restrictions](#email-policy-and-restrictions)). You may want to send and receive email on your Compute Instances if you wish to self-host your email server or email delivery tool. This guide covers our email policies and how to lift email restrictions from your account. It also includes best practices for both ensuring your email is compliant with regulations and to decrease the likelihood of having email marked as spam.
+Linode services, such as Compute Instances and LKE clusters, can be used to send and receive email --- though there may be restrictions in place on new accounts (see [Email Policy and Restrictions](#email-policy-and-restrictions)). This guide covers our email policies and details how to lift email restrictions from your account. It also includes best practices for both ensuring your email is compliant with regulations and decreasing the likelihood of having email marked as spam.
 
 {{< note >}}
-Managing an email server can be complicated and, if things aren't properly configured, can result in email deliverability issues. Many organizations choose to instead use dedicated external mail servers, such as those provided by [Fastmail](https://www.fastmail.com/), [Gmail for Google Workspace](https://workspace.google.com/products/gmail/), and [Outlook for Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products?&activetab=tab:primaryr2). There are also email delivery services for marketing and transactional email, including [Postmark](https://postmarkapp.com/), [SendGrid](https://sendgrid.com/), and [Mailchimp](https://mailchimp.com/). If you are using one of these services, you may not need to configure your Compute Instances to send email. Consult with those on your team that use email to determine if an external service better suits your needs.
+Managing an email server is complicated and can result in email deliverability issues if anything is misconfigured. Many organizations choose to instead use dedicated external mail servers, such as those provided by [Fastmail](https://www.fastmail.com/), [Gmail for Google Workspace](https://workspace.google.com/products/gmail/), and [Outlook for Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/business/compare-all-microsoft-365-business-products?&activetab=tab:primaryr2). There are also email delivery services for marketing and transactional email, including [Postmark](https://postmarkapp.com/), [SendGrid](https://sendgrid.com/), and [Mailchimp](https://mailchimp.com/). If you are using one of these services, you may not need to configure your Compute Instances to send email. Consult with those on your team that use email to determine if an external service better suits your needs.
 {{< /note >}}
 
 ## Email Policy and Restrictions
@@ -31,7 +32,7 @@ If you would like to send email on a Compute Instance and notice that these rest
 
 - **Links to public business information**: Links to public information about your organization or application. This could be a website, GitHub repository, social media profile, or another type of link.
 
-Our Support team reviews each request and will respond back with their decision or any additional information they may need.
+Our Support team reviews each request and will respond back with their decision or ask for additional information to help process this request.
 
 ## Best Practices to Follow When Sending Email
 

@@ -15,7 +15,6 @@ modified: 2023-04-11
 - [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 - [Monitor and Maintain a Compute Instance](/docs/products/compute/compute-instances/guides/monitor-and-maintain/)
 - [Resize a Compute Instance](/docs/products/compute/compute-instances/guides/resize/)
-- [Send Email from a Compute Instance](/docs/products/compute/compute-instances/guides/send-email/)
 
 ## Management Tasks
 
