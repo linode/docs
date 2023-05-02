@@ -1,0 +1,11 @@
+{{ $m := newScratch }}
+{{ range site.Pages }}
+  {{ $p := . }}
+  {{ $m.SetInMap "links" .RelPermalink $p }}
+  {{ range .Aliases }}
+    {{ $path := . | strings.TrimPrefix "/" }}
+    {{ $path := $path | relURL | string }}
+    {{ $m.SetInMap "links" $path $p }}
+  {{ end }}
+{{ end }}
+{{ return $m.Values }}
