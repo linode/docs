@@ -4,7 +4,7 @@ description: "The Svelte framework handles frontend development by shifting work
 keywords: ['svelte guide', 'svelte javascript', 'svelte vs react']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2022-12-18
+published: 2022-05-02
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with the Svelte Framework"
@@ -31,7 +31,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What Is the Svelte Framework?
 
-[Svelte](https://svelte.dev/) is a JavaScript framework for developing web application frontends. There are many such frameworks, and these typically have the user's browser handle the majority of work through a virtual DOM. Svelte sets itself apart by shifting the bulk of that work to compile time. Svelte frontends, as a result, do completely without a virtual DOM.
+[Svelte](https://svelte.dev/) is a JavaScript framework for developing web application frontends. There are many such frameworks, and these typically offload the majority of work to a user's browser through a virtual Document Object Model (DOM). Svelte sets itself apart by shifting the bulk of that work to the app compilation step. Svelte frontends, as a result, work without a virtual DOM.
 
 Svelte's leveraging of the compilation step means that its application bundles tend to be smaller and more performant. Couple that with Svelte's more classical frontend model, and you have a compelling tool for efficiency and approachability.
 
@@ -41,15 +41,15 @@ React remains one of the most widely used frameworks for web-frontend developmen
 
 Both React and Vue handle web page changes through a virtual DOM. The virtual DOM provides efficiency over traditional DOM manipulation, but it still has the user's browser handle most of the page processing. As a result, users can experience performance dips with more virtual DOM manipulation.
 
-Svelte takes a turn away from that model. Instead of using a virtual DOM, Svelte applications do the majority of their process during compilation. The result is small, performant application bundles.
+Svelte diverges from that model. Instead of using a virtual DOM, Svelte applications do the majority of their process during compilation. The result is small, performant application bundles.
 
-Svelte also stays closer to standard HTML and JavaScript/TypeScript concepts and tooling. React and Vue reimagine the model for web-frontend development, introducing many novel concepts and tools to enhance the developer experience. However, Svelte's model only slightly deviates from classic frontend models. That fact makes the framework typically more approachable for developers unfamiliar with modern web frontend concepts and tooling.
+Svelte also stays closer to standard HTML and JavaScript/TypeScript concepts and tooling. React and Vue re-imagine the model for web-frontend development, introducing many novel concepts and tools to enhance the developer experience. However, Svelte's model only slightly deviates from classic frontend models. That fact makes the framework typically more approachable for developers unfamiliar with modern web frontend concepts and tooling.
 
 ## How to Install Svelte
 
-The recommended approach in the official documentation is to start your Svelte project using the SvelteKit. The SvelteKit installs with the command for creating a new NPM project, meaning you do not need any global Svelte installation.
+To install Svelte, the recommended approach in the official documentation is to start your Svelte project using the SvelteKit. The SvelteKit installs with the command for creating a new NPM project, meaning you do not need any global Svelte installation.
 
-With the SvelteKit installed, your project compiles `.svelte` files to the appropriate JavaScript and CSS at build time. SvelteKit also brings ready access to convenient frontend development features like routing.
+With the SvelteKit installed, your project compiles `.svelte` files into the appropriate JavaScript and CSS at build time. SvelteKit also brings ready access to convenient frontend development features like routing.
 
 1. Install NPM to manage your Svelte project and install its dependencies. Follow the relevant section of our guide on [How to Install and Use the Node Package Manager (NPM) on Linux](/docs/guides/install-and-use-npm-on-linux/#how-to-install-npm).
 
@@ -61,9 +61,9 @@ With the SvelteKit installed, your project compiles `.svelte` files to the appro
 
     Follow the prompts to complete the setup for your project.
 
-    - Choose an application template to start your project with. This guide later uses the `Skeleton project` for a base template, but you may choose the `SvelteKit demo app` option to get started seeing what Svelte can do.
+    - Choose an application template to start your project with. This guide later uses the `Skeleton project` for a base template, but you may choose the `SvelteKit demo app` option to seem Svelte's capabilities.
 
-    - Choose whether you would like type-checking within your project. This is where you can select TypeScript for your project should you want. Svelte also has the option of type-checking through a JSDoc syntax, which is what this guide uses. Choose `No` for a more traditional JavaScript experience, without type checking.
+    - Choose whether you would like type-checking within your project. This is where you can select TypeScript for your project should you want. Svelte also has the option of type-checking through a `JSDoc` syntax, which is what this guide uses. Choose `No` for a more traditional JavaScript experience, without type checking.
 
     - Choose any additional features you would like from the remaining prompts. This guide selects `No` to all of these subsequent prompts to make the examples simpler, but the features offered here can improve the development experience for many projects.
 
@@ -106,9 +106,9 @@ You should now be able to access the development server from the remote machine.
 
 ## How to Build a Frontend with Svelte
 
-With a Svelte project of your own created, you should now get familiar with how Svelte applications work. Svelte adheres more closely to traditional web development models, making it often more approachable for new frontend developers. However, SvelteKit does implement some particular structures to make getting modern projects off the ground efficient.
+With a Svelte project of your own created, you should now get familiar with how Svelte applications work. Svelte adheres more closely to traditional web development models, making it often more approachable for new frontend developers. However, SvelteKit does implement some particular structures to help modern projects off the ground.
 
-These next sections aim to get you familiar with the SvelteKit structure and its features as well as the fundamentals of developing a Svelte application. The example application makes up for its simplicity by demonstrating some of the characteristics of Svelte applications overall.
+These next sections aim to get you familiar with the SvelteKit structure and its features as well as the fundamentals of developing a Svelte application. The example application demonstrates some of the characteristics of Svelte applications overall.
 
 ### SvelteKit Application Structure
 
@@ -140,13 +140,13 @@ Learn more about the SvelteKit structure and the features it offers through the 
 
 ### Example Svelte Application
 
-The base template set up with the installation above gives only a sparse demonstration of Svelte, without showing your routing and interactive features. So to help better understand Svelte and the SvelteKit features, the following series of steps walk you through creating a basic interactive frontend.
+The base template set up with the installation above gives only a sparse demonstration of Svelte, without showing routing and interactive features. So to help better understand Svelte and the SvelteKit features, the following series of steps walk you through creating a basic interactive frontend.
 
 The example creates a to-do list, adding a new route and a link to it from the main page. The new route includes a script to load the initial to-do list and demonstrates features like dynamic rendering and two-way data binding.
 
 1. Follow the section above on installing Svelte to create a new Svelte project. Use the `Skeleton project` template, and choose the `JSDoc` option for the type checking.
 
-1. Open the `src/routes/+page.svelte` file, and modify its contents to the following. This just changes the paragraph text and includes a link to a `/todo` route:
+1. Open the `src/routes/+page.svelte` file, and modify its contents to include the following. This just changes the paragraph text and includes a link to a `/todo` route:
 
     ```file {title="src/routes/+page.svelte"}
     <h1>Welcome to Your Svelte App!</h1>
