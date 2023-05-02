@@ -110,3 +110,5 @@ Confirm the details for this Compute Instance within the *Linode Summary* sectio
 Once the Compute Instance has been created and is done initializing, you can start configuring and using it. The next recommendation is to follow the guide linked below, which assists you in connecting to your instance, performing any initial configuration steps on your Linux system, and securing your server.
 
 - [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
+
+{{< content "email-warning-shortguide" >}}

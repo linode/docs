@@ -13,6 +13,7 @@ published: 2023-03-14
 - [Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
 - [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/)
 - [Help & Support](/docs/products/platform/get-started/guides/support/)
+- [Send Email on the Linode Platform](/docs/products/platform/get-started/guides/send-email/)
 - [Subscribe to Linode Status Updates](/docs/products/platform/get-started/guides/status-page/)
 
 ## Going Further

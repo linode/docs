@@ -8,7 +8,7 @@ keywords: ["getting started", "intro", "basics", "first steps", "linode platform
 description: "Learn how to create an account and use the Linode Cloud Platform."
 aliases: ['/getting-started/','/getting-started-classic-manager/','/getting-started-new-manager/','/guides/get-started/','/guides/getting-started-with-linode/','/products/platform/accounts/get-started/','/guides/getting-started/','/guides/platform/get-started/']
 published: 2018-11-05
-modified: 2023-03-14
+modified: 2023-04-27
 modified_by:
   name: Linode
 show_on_frontpage: true
@@ -49,10 +49,7 @@ First, you need to create a Linode account to start using our services. If you a
 
 1. Most accounts are activated instantly and you can start adding services right away. A small number of accounts may require manual review prior to activation.
 
-{{< note >}}
-***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, review the [Running a Mail Server](/docs/guides/running-a-mail-server/#sending-email-on-linode) guide, then [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
-{{< /note >}}
-
+{{< content "email-warning-shortguide" >}}
 Once your account has been created, consider **enabling 2FA** to prevent unauthorized access. Anyone that has access to your account may be able to delete your services, add new ones, and reset the root password on your Compute Instances to gain access to them. See [Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/) for instructions on enabling 2FA. If you are logging in with a third party provider, consider adding 2FA through that provider.
 
 ## Navigate the Cloud Manager

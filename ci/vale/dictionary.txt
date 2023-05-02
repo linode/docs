@@ -1253,6 +1253,7 @@ lzma
 lzopio
 macos
 magento
+Mailchimp
 maildir
 maildirs
 maildrop
