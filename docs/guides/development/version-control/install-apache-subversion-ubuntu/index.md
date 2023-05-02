@@ -1,7 +1,5 @@
 ---
 slug: install-apache-subversion-ubuntu
-author:
-  name: Tom Henderson
 description: 'In this guide, you learn how to install Apache Subversion 20.04 LTS on an Ubuntu 20.04 Linode server from Ubuntu repository.'
 keywords: ['apache subversion', 'git', 'apache subversion vs git', 'apache subversion web interface']
 tags: ['apache', 'ubuntu', 'web server']
@@ -10,10 +8,8 @@ published: 2022-01-07
 modified_by:
   name: Linode
 title: "Install Apache Subversion on Ubuntu 20.04"
-h1_title: "How to Install Apache Subversion on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Tom Henderson
+title_meta: "How to Install Apache Subversion on Ubuntu 20.04"
+authors: ["Tom Henderson"]
 ---
 Apache Subversion is an open source version control system released in 2000 and available under the [Apache2 License](https://www.gnu.org/licenses/license-list.html#apache2). Designed as a feature enhancement of the *Concurrent Versions System(CVS)*, Apache Subversion was authored and maintained by Collabnet. In 2009, Subversion became an Apache Incubator Project, finally becoming a top-level project in 2010. In this guide you learn how to install Apache’s Subversion on an Ubuntu 20.04 server.
 
@@ -40,7 +36,7 @@ There can be more than one client that accesses the server at the same time. The
 
 This tutorial covers the steps for installing Subversion on **Ubuntu Server 20.04 LTS**. However, you can install Apache Subversion on Linux, macOS, and Windows systems.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Installing Apache Subversion on Ubuntu Server 20.04 LTS requires the installation of libraries used by Apache Subversion that are not found in the standard distribution of Ubuntu 20.04.
 {{< /note >}}
 
@@ -63,7 +59,7 @@ Apache Subversion provides a different workflow and version control methodology 
 
 The steps in this tutorial demonstrate how to use the APT package manager to install Apache Subversion. There are [pre-compiled binaries of SVN](https://subversion.apache.org/packages.html) available too.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Root or sudo permissions must be available to install Apache Subversion.
 {{< /note >}}
 
@@ -133,7 +129,7 @@ Create a Subversion administrator user. Replace `<<admin_name>>` with the desire
 
     htpasswd -cm /etc/apache2/dav_svn.passwd <<admin_name>>
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you select a strong and secure password for the administrator account.
 {{< /note >}}
 
@@ -202,9 +198,9 @@ AuthName "Subversion Repository"
 #</Location>
     {{</ file >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to restart Subversion using systemctl for your configuration changes to take effect.
-{{</ note >}}
+{{< /note >}}
 
 ### An Example Subversion Directory Structure
 
@@ -240,9 +236,9 @@ You can access your Subversion repository by pointing your browser to the Apache
 
 This URL accesses the desired Subversion project. Ensure you replace all values with your own Subversion server's information.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A complete and in-depth discussion of Subversion commands, version control strategies, project skills, and steps can be found in [Subversion's documentation](https://svnbook.red-bean.com/).
-{{</ note >}}
+{{< /note >}}
 
 ## Conclusion
 

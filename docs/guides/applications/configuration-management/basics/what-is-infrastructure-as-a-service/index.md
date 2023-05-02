@@ -1,27 +1,21 @@
 ---
 slug: what-is-infrastructure-as-a-service
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
-og_description: 'This guide provides you with an overview of IaaS (Infrastructure as a Service), a cloud computing service that provides the virtual infrastructure to customers on demand.'
 keywords: ['infrastructure as a service','iaas','infrastructure','cloud networks']
 tags: ['networking', 'linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-06
 modified_by:
   name: Linode
-title: "What Is Infrastructure as a Service?"
+title: "An Introduction to Infrastructure as a Service"
+title_meta: "What Is Infrastructure as a Service?"
 image: An_introduction _to_ Infrastructure_as_a_Service.jpg
-h1_title: "An Introduction to Infrastructure as a Service"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Open Stack](https://www.openstack.org/)'
 - '[Apache CloudStack](https://cloudstack.apache.org/)'
 - '[Docker](https://www.docker.com/)'
+authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 *Infrastructure as a Service* (IaaS) is a cloud computing service that provides virtual infrastructure to customers on demand. However, customers still manage and operate their own resources. This model frees users from having to operate and maintain their own costly equipment. Some of the infrastructure components offered by IaaS providers include servers, data storage, and networking capabilities. This guide describes IaaS and explains its advantages and rationale, and outlines how to use it.

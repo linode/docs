@@ -10,11 +10,11 @@ external_resources:
 - '[Linode APIv4 Python library example app repository](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode)'
 image: how-to-create-an-oauth-app-with-the-linode-python-api-library.png
 keywords: ['linode','api','python','library','oauth']
-tags: ["linode platform","python"]
+tags: ["linode platform","python","managed hosting"]
 aliases: ['/platform/api/how-to-create-an-oauth-app-with-the-linode-python-api-library/','/guides/how-to-create-an-oauth-app-with-the-linode-python-api-library/']
 ---
 
-Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](https://developers.linode.com/api/v4). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
+Linode supports the OAuth 2 authorization protocol. OAuth 2 allows a user to safely grant a third-party app permission to act on their behalf. This means that a user could authorize an app to access data and / or make changes to their Linode account and services that are exposed by the [Linode APIv4](/docs/api/). For example, an app could create or destroy Linodes, manage a NodeBalancer, or alter a domain.
 
 This guide will show you how to create a simple OAuth application using [Flask](http://flask.pocoo.org/) and the [Linode Python API library](https://linode-api4.readthedocs.io/en/latest/index.html). This app allows a user to log in with their Linode account and create a Linode with a StackScript. The complete code for this example is available in the [Linode APIv4 Python library example](https://github.com/linode/linode_api4-python/tree/master/examples/install-on-linode) repository.
 
@@ -91,13 +91,13 @@ In a text editor, create a file named `config.py`. Add the following variables a
 
 The StackScript used in this example is for demo purposes. To explore other available StackScripts, visit the [Linode StackScript Library](https://www.linode.com/stackscripts). Note that the `stackscript_id` does not have quotation marks around it. The `secret key` is used for serializing session data, and should be a value only you know.
 
-{{< file "config.py" >}}
+```file {title="config.py"}
 client_id = 'ce571a8cdad1ba4a0a7d'
 client_secret = 'fab8e2222e83b9b2f50a76012122ec20a5acb005ed088f3fccda2c9c2c4e1cbd'
 stackscript_id = 320826
 application_name = 'my-application-name'
 secret_key = 'my-secret-key'
-{{< /file >}}
+```
 
 ## Author an OAuth2 App
 
@@ -107,43 +107,43 @@ In this section, you will write the code for the app.
 
 Ensure you are in the `linode-oauth-project` directory and create and open a file called `app.py` in the text editor of your choice. Include the following libraries:
 
-{{< file "app.py" python >}}
+```file {title="app.py" lang="python"}
 import re
 from flask import Flask, redirect, request, render_template, session, send_from_directory
 from flask_session import Session
 from linode_api4 import (LinodeClient, LinodeLoginClient, StackScript, Image, Region, Type, OAuthScopes)
 
 import config
-{{< /file >}}
+```
 
 ### Set Up Flask and Session Key
 
 Copy in the following code to set up Flask and the session secret key:
 
-{{< file "app.py" python >}}
+```file {title="app.py" lang="python"}
 ...
 
 app=Flask(__name__)
 app.config['SECRET_KEY'] = config.secret_key
-{{</ file >}}
+```
 
 ### Create a Function to Return the Linode Login Client
 
 In `app.py` add the following function to return the [LinodeLoginClient class](https://linode-api4.readthedocs.io/en/latest/linode_api4/login_client.html?highlight=linode_login_client). The LinodeLoginClient class is the library's OAuth interface. Note that we are passing the `client_id` and `client_secret` parameters from our `config.py` file to the class:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
 
 def get_login_client():
     return LinodeLoginClient(config.client_id, config.client_secret)
-{{</ file >}}
+```
 
 ### Create an Index Route
 In Flask you can create HTTP endpoints with *routes*. The index route, defined in the code below at the document root `/`, will be the route the user will see when they navigate to `http://localhost:5000/`. This route will be responsible for displaying the available Linode plan types, the available regions, and the StackScript-compatible images that a user will choose from when creating their new Linode.
 
 To query a list of available plan types and regions you can use the [LinodeClient class](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html?highlight=LinodeClient#linodeclient-class), which is an interface for Linode's APIv4. Viewing the Linode plan types and regions does not require any sort of authorization, so you can provide a dummy value of `no-token` to instantiate the class:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
 
 @app.route('/')
@@ -158,9 +158,9 @@ def index():
         application_name=config.application_name,
         stackscript=stackscript
     )
-{{< /file >}}
+```
 
-It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](https://developers.linode.com/api/v4#tag/Regions). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](https://developers.linode.com/api/v4#tag/Linode-Types). Some methods in the Linode Python library are top level, such as `domain_create`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
+It is important to note that the two API queries in the above code are slightly different from one another. The `client.regions` method is a top-level method, just as it appears in the [Linode API](/docs/api/regions/#regions-list). The `client.linode.types` method, on the other hand, is part of the Linode group, which is a collection of methods that deal with Linodes. Again, this is because Linode endpoints are grouped that way in the [API](/docs/api/linode-types/#types-list). Some methods in the Linode Python library are top level, such as `domain_create`, while others, like `networking.ip_assign`, are part of a group. For more information on the top-level methods and groupings, consult the [library documentation](https://linode-api4.readthedocs.io/en/latest/linode_api4/linode_client.html#grouping).
 
 In addition to querying the API, the above route also renders the `configure.html` template by passing it the types, regions, application name, and StackScript object. The StackScript object contains a list of StackScript compatible images. We will cover templating in a later section.
 
@@ -170,7 +170,7 @@ Next, create a login route in `app.py`. This route will perform two functions. F
 
 Second, this route will redirect the user to Linode's login page where they will be prompted to authorize your client app and the *scopes* you have requested for it. Scopes are sets of permissions that define the access level of your client app. For instance, to create a Linode, your end user must authorize the `OAuthScopes.Linodes.create` scope.
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
 
 @app.route('/', methods=["POST"])
@@ -180,7 +180,7 @@ def start_auth():
     session['distro'] = request.form['distribution']
     session['type'] = request.form['type']
     return redirect(login_client.generate_login_url(scopes=OAuthScopes.Linodes.create))
-{{< /file >}}
+```
 
 When the user returns to your app from the Linode login page, they will be directed to the callback URL.
 
@@ -201,7 +201,7 @@ Below is a list of available scopes:
 - OAuthScopes.Volumes
 
 Each scope is broken into five permissions: `view`, `create`, `modify`, `delete`, and `all`. The `all` permission encompasses the other four permissions.
-{{</ note >}}
+{{< /note >}}
 
 ### Manage the OAuth 2 Callback URL
 
@@ -211,7 +211,7 @@ The callback URL's second responsibility is to kick off the process of exchangin
 
 In `app.py`, add the following lines:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
 
 @app.route('/auth_callback_test')
@@ -233,66 +233,65 @@ def auth_callback_test():
         linode=linode,
         application_name=config.application_name
     )
-{{< /file >}}
+```
 
 Let's take a look at what each of the parts of this section does.
 
 First, a route is defined for the callback with `@app.route()`, then a function called `auth_callback` is defined that will run whenever this route is accessed:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
 @app.route('/auth_callback')
 def auth_callback():
 ...
-{{</ file >}}
+```
 
 When the user is returned to the callback URL, an authorization code is appended to the URL. The variable `code` is set to retrieve this value from the URL's request arguments:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
     code = request.args.get('code')
 ...
-{{</ file >}}
+```
 
 Then you retrieve an instance of the LinodeLoginClient class:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
     login_client = get_login_client()
 ...
-{{</ file >}}
+```
 
 Once you have the LinodeLoginClient class, you can pass the authorization code to the `finish_oauth` method, which is a helper method that will manage the authorization code to OAuth token exchange. This method returns an OAuth token, and the scopes the user has agreed upon.
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
     token, scopes, _, _ = login_client.finish_oauth(code)
 ...
-{{</ file >}}
+```
 
 The next section compares the scopes your app requested from the user to the scopes returned by Linode's OAuth login page. If the returned scopes do not include the correct scopes, in this case the `OAuthScopes.Linode.create` scope, then an error template is rendered and an error message is displayed:
 
-
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
     # ensure we have sufficient scopes
     if not OAuthScopes.Linodes.create in scopes:
         return render_template('error.html', error='Insufficient scopes granted to deploy {}'\
                 .format(config.application_name))
 ...
-{{</ file >}}
+```
 
 Once your app has determined that it has the correct permissions, it creates the Linode using the Linode plan type, the region, and the image that the app serialized into session storage. You will create the `make_instance` function in [the next step](#create-a-function-to-deploy-a-linode). The `make_instance` function returns the `linode` object, which contains the Linode's label, group, and IP address, and the function also returns a randomly generated password:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
     (linode, password) = make_instance(token, session['type'], session['dc'], session['distro'])
 ...
-{{</ file >}}
+```
 
 Once the Linode has been created, the app expires the OAuth access token. Expiring tokens after use is a strong security measure but if your app is performing many actions on behalf of the user, you might find that time-based expiration scheme is more suitable to your needs. The app then renders the success template by passing it the `linode` object, the password, and application name:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
     get_login_client().expire_token(token)
     return render_template('success.html',
@@ -300,13 +299,13 @@ Once the Linode has been created, the app expires the OAuth access token. Expiri
         linode=linode,
         application_name=config.application_name
     )
-{{</ file >}}
+```
 
 ### Create a Function to Deploy a Linode
 
 Now, create the `make_instance` function that you referenced above:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 ...
 
 def make_instance(token, type_id, region_id, distribution_id):
@@ -319,7 +318,7 @@ def make_instance(token, type_id, region_id, distribution_id):
     if not linode:
         raise RuntimeError("it didn't work")
     return linode, password
-{{< /file >}}
+```
 
 The `make_instance` function takes an OAuth access token, the type ID, the region ID, and the image (Linux distribution) ID as parameters. It creates an instance of the LinodeClient class, and unlike the instance of LinodeClient used earlier in the guide, this one requires an OAuth token because you will be using it to create a Linode. The function then creates a Linode using the `linode.instance_create` method, returning the `linode` object and the password.
 
@@ -329,11 +328,11 @@ Finally, if there was an error with the creation of the Linode, the `if not lino
 
 At the end of your `app.py`, paste in the following code to make sure you can run your app:
 
-{{< file "~/linode-oauth-project/app.py" python >}}
+```file {title="~/linode-oauth-project/app.py" lang="python"}
 if __name__ == '__main__':
     app.debug=True
     app.run()
-{{</ file >}}
+```
 
 ## Create App Templates
 
@@ -343,7 +342,7 @@ Now that you have written the backend code for your app, you'll need to create a
 
 Using your preferred text editor, create and open `base.html`. This will be the base template from which your other templates will inherit their stylesheets and JavaScript files:
 
-{{< file "~/linode-oauth-project/templates/base.html" html >}}
+```file {title="~/linode-oauth-project/templates/base.html" lang="html"}
 <html>
 <head>
     <title>Install On Linode</title>
@@ -411,7 +410,7 @@ Using your preferred text editor, create and open `base.html`. This will be the 
         integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
 </body>
-{{</ file >}}
+```
 
 The important thing to note in the above template is the Jinja2 templating tags. They are:
 
@@ -422,7 +421,7 @@ As you will see, any template that extends the `base.html` template and includes
 
 Create a file called `configure.html`, which will be the UI a user will see when they reach the document root endpoint (`/`). Copy in the following code:
 
-{{< file "templates/configure.html" html >}}
+```file {title="templates/configure.html" lang="html"}
 {% extends 'base.html' %}
 {% block content %}
     <form method="POST">
@@ -475,7 +474,7 @@ Create a file called `configure.html`, which will be the UI a user will see when
         }
     </script>
 {% endblock %}
-{{</ file >}}
+```
 
 Here the template begins with two statements: `{% extends 'base.html' %}` and a `{% block content %}` statement. These two tags tell Jinja2 to extend the code within `base.html`, and to place everything within `{% block content %} ... {% endblock %}` in `configure.html` between the corresponding `{% block content %} ... {% endblock %}` tags in `base.html`.
 
@@ -483,7 +482,7 @@ Here the template begins with two statements: `{% extends 'base.html' %}` and a 
 
 Create another file called `error.html`. This will be the template that appears whenever there is an error in the Linode deployment. Copy in the following code:
 
-{{< file "templates/error.html" html >}}
+```file {title="templates/error.html" lang="html"}
 {% extends 'base.html' %}
 {% block content %}
     <div class='row'>
@@ -494,13 +493,13 @@ Create another file called `error.html`. This will be the template that appears 
         <a href='/' class='btn btn-lg btn-default'>Try Again</a>
     </div>
 {% endblock %}
-{{</ file >}}
+```
 
 This template works the same way that `configure.html` does, by extending `base.html` and providing its own `content` block.
 
 Lastly, create another file called `success.html`. This file follows the pattern set by `configure.html` and `error.html`, and will present the user with a confirmation message whenever a Linode is successfully created. This message includes the Linode's label, group, IP address, and password:
 
-{{< file "templates/success.html" html >}}
+```file {title="templates/success.html" lang="html"}
 {% extends 'base.html' %}
 {% block content %}
     <div class='row'>
@@ -518,7 +517,7 @@ Lastly, create another file called `success.html`. This file follows the pattern
         </div>
     </div>
 {% endblock %}
-{{</ file >}}
+```
 
 ## Run Your App
 

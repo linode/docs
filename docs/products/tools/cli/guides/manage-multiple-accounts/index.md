@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Manage Multiple Accounts with the Linode CLI"
 description: "How to use the Linode CLI to manage multiple Linode accounts."
 published: 2022-12-06
+authors: ["Linode"]
 ---
 
 The Linode CLI can be configured to run commands from multiple users on separate Linode Accounts. This allows you to control multiple accounts, all through the same system, using the Linode CLI. Once multiple users are configured, you can execute commands as a particular user or set a specific user as the default.
@@ -25,7 +23,7 @@ To see which users have already been configured on the Linode CLI, run the follo
 linode-cli show-users
 ```
 
-This outputs a list containing the usernames of each user. An asterisks (`*`) marks the user that is current active (the default user).
+This outputs a list containing the usernames of each user. An asterisks (`*`) marks the user that is currently active (the default user).
 
 ```output
 Configured Users:

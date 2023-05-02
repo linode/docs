@@ -1,8 +1,5 @@
 ---
 slug: create-a-python-virtualenv-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on Debian 10.
 keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 tags: ["python","debian"]
@@ -12,8 +9,8 @@ modified_by:
   name: Linode
 published: 2017-08-13
 image: Python_virtualenv_Deb10.png
-title: How to Create a Python Virtual Environment on Debian 10
-h1_title: Creating a Python Virtual Environment on Debian 10
+title: Creating a Python Virtual Environment on Debian 10
+title_meta: How to Create a Python Virtual Environment on Debian 10
 external_resources:
 - '[virtualenv Official Documentation](http://virtualenv.pypa.io/)'
 audiences: ["beginner"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/python/create-a-python-virtualenv-on-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is a Python Virtual Environment?
@@ -32,21 +30,21 @@ A Python virtual environment is an isolated project space on your system that co
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides to prepare your system.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides to prepare your system.
 
 1.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
     {{< /note >}}
 
 ## Create a Python Virtual Environment
 
-{{< note >}}
+{{< note respectIndent=false >}}
 By default, [Python 3.7.3](https://docs.python.org/3.6/whatsnew/3.6.html) and [Python 2.7.16](https://docs.python.org/2.7/) are installed on Debian 10.
-{{</ note >}}
+{{< /note >}}
 
 1.  Install the virtualenv tool using your package manager:
 

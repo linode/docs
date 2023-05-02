@@ -2,10 +2,9 @@
 description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
 keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
 tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified: 2022-04-01
-title: "Deploying WooCommerce through the Linode Marketplace"
+title: "Deploy WooCommerce through the Linode Marketplace"
 aliases: ['/platform/marketplace/marketplace-woocommerce/','/platform/marketplace/how-to-deploy-woocommerce-with-marketplace-apps/', '/platform/one-click/how-to-deploy-woocommerce-with-one-click-apps/','/platform/one-click/one-click-woocommerce/','/guides/how-to-deploy-woocommerce-with-one-click-apps/','/guides/how-to-deploy-woocommerce-with-marketplace-apps/','/guides/woocommerce-marketplace-app/']
 external_resources:
 - '[WooCommerce Docs](https://docs.woocommerce.com/)'
@@ -24,9 +23,9 @@ external_resources:
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** WooCommerce should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -48,11 +47,13 @@ external_resources:
 - **Would you like to be able to send password reset emails for WordPress?** Creates the required DNS records and configures the server so you can send emails from WordPress, such as for resetting a password.
 - **Would you like to use a free Let's Encrypt SSL certificate?** If you would like to use the free Let's Encrypt CA to generate TLS/SSL certificates, select *Yes*.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started After Deployment
 
 ### Accessing the WordPress Admin Dashboard
 
-1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1.  Open your web browser and navigate to `http://[domain]/wp-admin/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
     ![Screenshot of the browser's URL bar](wordpress-browser-url.png)
 
@@ -66,7 +67,7 @@ external_resources:
 
 ### Viewing Your Website
 
-Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
+Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with the custom domain you entered during deployment or your Compute Instance's IPv4 address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Your WordPress site should now be displayed.
 
 ### Complete the WooCommerce Setup Wizard
 
@@ -77,8 +78,8 @@ Open a web browser and navigate to `http://[domain]`, replacing *[domain]* with 
 1. Follow each step of the Setup Wizard by entering in your store address details, selecting the industry, selecting the types of products that you intend on selling, entering additional business details, and selecting a theme.
 
     {{< note >}}
-Some WooCommerce features and themes require a monthly or yearly paid subscription or otherwise cost money. When going through the Setup Wizard, be aware of the cost of each optional feature you select.
-{{</ note >}}
+    Some WooCommerce features and themes require a monthly or yearly paid subscription or otherwise cost money. When going through the Setup Wizard, be aware of the cost of each optional feature you select.
+    {{< /note >}}
 
 1. Depending on the options you select, you may be asked to create a [Jetpack](https://jetpack.com/) account or connect your existing account. This enables you to use Jetpack's suite of tools within WordPress. Jetpack offers a free tier as well as multiple paid tiers. See [Jetpack Pricing](https://cloud.jetpack.com/pricing). You can safely ignore this screen if you do not wish to use Jetpack services.
 

@@ -1,7 +1,5 @@
 ---
 slug: vsftpd-on-ubuntu-2004-installation-and-configuration
-author:
-  name: Cameron Laird
 description: 'Learn to install a VSFTPD server on Ubuntu 20.04 for FTP file transfers.'
 keywords: ['vsftpd','vstpd conf','vsftpd ubuntu']
 tags: ['ubuntu']
@@ -9,14 +7,11 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-14
 modified_by:
   name: Linode
-title: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
-h1_title: "Install VSFTPD on Ubuntu 20.04"
-enable_h1: true
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
+title: "Install VSFTPD on Ubuntu 20.04"
+title_meta: "VSFTPD on Ubuntu 20.04: Installation and Configuration"
 external_resources:
 - '[VSFTPD.CONF man page](http://vsftpd.beasts.org/vsftpd_conf.html)'
+authors: ["Cameron Laird"]
 ---
 
 ## What is VSFTPD?
@@ -39,9 +34,9 @@ This guide demonstrates:
 
 ## Before You Begin
 
-This guide assumes that you have access to a server running Ubuntu 20.04 that you can install the FTP server on and upload files to. To create a server on Linode, follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides. Be sure to [add a limited Linux user](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to issue the commands in this guide from.
+This guide assumes that you have access to a server running Ubuntu 20.04 that you can install the FTP server on and upload files to. To create a server on Linode, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides. Be sure to [add a limited Linux user](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to issue the commands in this guide from.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -177,13 +172,13 @@ To make VSFTPD useful for some real-world use-cases, you can adjust some of the 
 
         systemctl restart vsftpd
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A common strategy for securing user accounts is to use VSFTPD's `userlist_enable`, `userlist_file`, and `userlist_deny` attributes. These can be configured to only allow a selected subset of local accounts to establish FTP sessions.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 By default, FTP connections are communicated in clear text and not encrypted. Investigate the SSL options available to VSFTPD to set up encryption.
-{{< /caution >}}
+{{< /note >}}
 
 ### VSFTPD Log File
 
@@ -254,7 +249,7 @@ total 4
 50 bytes sent in 0.00 secs (2.3842 MB/s)
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `write_enable` option for VSFTPD must be set to `YES` for this file upload operation to succeed. Review the [VSFTPD's Configuration File](#vsftpds-configuration-file) section for help with setting this option.
 {{< /note >}}
 

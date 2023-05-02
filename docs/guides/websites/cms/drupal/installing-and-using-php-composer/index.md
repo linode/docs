@@ -1,7 +1,5 @@
 ---
 slug: installing-and-using-php-composer
-author:
-  name: Jeff Novotny
 description: 'In this guide, you learn how to install and use PHP Composer on a Linux system. You also learn how to install and update PHP packages using Composer.'
 keywords: ['composer update','php composer','php composer install','composer update single package']
 tags: ['php']
@@ -9,16 +7,13 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-24
 modified_by:
   name: Linode
-title: "Installing and Using PHP Composer"
-h1_title: "How to Install and Use PHP Composer"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Install and Use PHP Composer"
+title_meta: "How to Install and Use PHP Composer"
 external_resources:
 - '[Composer](https://getcomposer.org/)'
 - '[Packagist](https://packagist.org/)'
 - '[Composer Documentation](https://getcomposer.org/doc/)'
+authors: ["Jeff Novotny"]
 ---
 
 [*PHP*](https://www.php.net/) is one of the most popular programming languages for web and internet-based applications. Due to the increasing complexity of these applications, third-party PHP packages have become increasingly popular. However, it can become difficult to manage the minimum version and dependencies for each package. [*Composer*](https://getcomposer.org/), which is a free open source package and dependency manager for PHP, can help oversee this situation. This guide explains how to install and update Composer and how to use it to install and update packages.
@@ -37,13 +32,13 @@ Composer only works on PHP version 5.3.2 or above, although PHP 5.3.4 or higher 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 1. Ensure PHP is already installed on the Linode. PHP 5.3.4 or above is required, but the latest version is recommended. Use the command `php -v` to determine the version of PHP that is installed.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -51,7 +46,7 @@ The steps in this guide are written for a non-root user. Commands that require e
 
 The most common way of installing Composer is by using the installation program. However, it can also be installed from the source using Git or a similar system. The steps in this section explain how to download and install the latest version of Composer. The following instructions are geared towards Ubuntu users but are generally applicable towards most Linux distributions.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For information on the various installation options and how to install an earlier version of Composer, see the [Composer Download page](https://getcomposer.org/download/).
 {{< /note >}}
 
@@ -81,7 +76,7 @@ Installer verified
 
 1. Run the installation program. The program verifies some settings and downloads the main composer program to the current directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 A directory for the program can be specified using the `--install-dir` option. The filename of the Composer program can be set using the `--filename` option.
     {{< /note >}}
 
@@ -110,7 +105,7 @@ Use it: php composer.phar
 
         composer
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The instructions in the remaining sections are valid for a global installation. For a local directory installation, substitute `php composer.phar` in place of `composer` for the remainder of the guide.
     {{< /note >}}
 
@@ -149,7 +144,7 @@ To use Composer with PHP, it is first necessary to define the required packages 
 
 The steps in the following section illustrate how to create a small PHP project that generates a random number using a package chosen from Packagist. It also explains how to search Packagist for an appropriate package and how to add it to the project using Composer.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These instructions are designed to explain how to keep track of PHP dependencies for use in your own project. If you intend to publish a package to Packagist, you must manually edit the `composer.json` file and add some information. For information on how to publish a PHP package through Packagist, see the "Publishing Packages" section of the [Packagist official documentation](https://packagist.org/).
 {{< /note >}}
 
@@ -170,7 +165,7 @@ These instructions are designed to explain how to keep track of PHP dependencies
 
 1. In the project name, add the package to the project using `composer require`. Composer retrieves information about the package and adds it to the `composer.lock` file. The lock file tracks the currently installed versions of the various packages. If `composer.json` does not already exist, Composer creates it. Otherwise, it appends the new package information to this file. Composer also creates a `vendor` sub-directory. If a version control system (VCS) is used for the project, ensure both `composer.lock` and `composer.json` are added to the VCS.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Many PHP packages require other system-level packages. When adding a new package, Composer ensures all prerequisite packages are already installed. If any are missing, it displays an error and provides details about the outstanding packages. Locate these packages using `apt search` and install them using `apt install`. Then run the `composer require` command again.
     {{< /note >}}
 
@@ -198,7 +193,7 @@ Generating autoload files
 
 1. Review the `composer.json` file to ensure it is correct. In certain circumstances, you might have to edit this information.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `^` symbol in front of the version number for the package tells Composer what versions are allowed. It means version `1.2` is the minimum version but any `1.x` version is allowed. This setting provides maximum flexibility. Other symbols might tighten or loosen the allowable range. If no symbol is present, only version `1.2` is allowed, with no further updates permitted. For more information on versioning, see the [Composer Version Documentation](https://getcomposer.org/doc/articles/versions.md).
     {{< /note >}}
 
@@ -234,7 +229,7 @@ print "\n ";
 1bhf1Icu4IhHq4Xzto98PfC2tYCjaVcV
     {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If a `composer.json` file is already present, but the packages have not yet been installed, run `composer install` instead of `require`. If you are intending to publish the package on Packagist, create a detailed `composer.json` file before installing any packages. To generate this template, run `composer init`. For more information about the structure of the `composer.json` file, see the [Schema Documentation](https://getcomposer.org/doc/04-schema.md). Complete documentation can be found on the [Composer Website](https://getcomposer.org/doc/).
 {{< /note >}}
 

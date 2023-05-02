@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "PostgreSQL Extensions"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
 modified: 2022-08-23
+authors: ["Linode"]
 ---
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
@@ -18,11 +16,11 @@ Many extensions can be viewed, installed, and removed directly from the PostgreS
 
 To view the extensions that are currently installed on your PostgreSQL Managed Database, run the `\dx` command at the prompt. The output should be similar to the following, displaying each extension along with its version number, schema, and a short description.
 
-{{< output >}}
+```output
      Name      | Version |   Schema   |          Description
 ---------------+---------+------------+--------------------------------
  plpgsql       | 1.0     | pg_catalog | PL/pgSQL procedural language
-{{</ output >}}
+```
 
 ### View Available Extensions
 
@@ -30,9 +28,9 @@ To see a full list of all the extensions available for your version of PostgreSQ
 
     SELECT * FROM pg_available_extensions;
 
-{{< caution >}}
+{{< note type="alert" >}}
 Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues.
-{{</ caution >}}
+{{< /note >}}
 
 ### Install an Extension
 
@@ -52,9 +50,9 @@ To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs
 
 The table below lists all of the PostgreSQL extensions that may be supported by our Managed Database service, along with the compatible PostgreSQL versions.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues. Extensions that are known not to work, such as `adminpack`, have been marked as incompatible in the list below. If you encounter an extension that isn't working as expected due to permissions issues, our team can review the extension. Reach out to [Support](https://www.linode.com/support/) with the extension name, the name of the database for which you wish to use the extension, and your use case.
-{{</ caution >}}
+{{< /note >}}
 
 | Extension | Compatible PostgreSQL Version(s) | Description |
 | -- | -- | -- |

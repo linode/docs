@@ -1,8 +1,5 @@
 ---
 slug: beginners-guide-to-terraform
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A look into Terraform''s primary components, features, and configurations for the new Terraform user'
 keywords: ['terraform', 'orchestration', 'linode provider']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,8 @@ title: "A Beginner's Guide to Terraform"
 external_resources:
 - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 aliases: ['/applications/configuration-management/terraform/beginners-guide-to-terraform/','/applications/configuration-management/beginners-guide-to-terraform/']
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 [Terraform](https://www.terraform.io) by HashiCorp is an orchestration tool that allows you to represent your Linode instances and other resources with declarative code inside configuration files, instead of manually creating those resources via the Linode Manager or API. This practice is referred to as *Infrastructure as Code*, and Terraform is a popular example of this methodology. The basic workflow when using Terraform is:
@@ -30,14 +29,14 @@ Terraform's primary job is to create, modify, and destroy servers and other reso
 Terraform is a general orchestration tool that can interface with a number of different cloud platforms. These integrations are referred to as *providers*. The Terraform provider for Linode was [officially released](https://blog.linode.com/2018/10/30/now-available-linode-terraform-provider/) in October 2018.
 
 {{< note >}}
-The Linode provider relies on Linode's [APIv4](https://developers.linode.com/api/v4), so an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
+The Linode provider relies on Linode's [APIv4](/docs/products/tools/api/), so an API access token is needed to use it. See [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) for instructions on getting an API token and installing Terraform and the Linode provider on your computer.
 {{< /note >}}
 
 The Linode provider can be used to create Linode instances, Images, domain records, Block Storage Volumes, StackScripts, and other resources. Terraform's [official Linode provider documentation](https://www.terraform.io/docs/providers/linode/index.html) details each resource that can be managed.
 
 {{< note >}}
-[Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
-{{</ note >}}
+[Terraform’s Linode Provider](https://github.com/linode/terraform-provider-linode) has been updated and now requires Terraform version 0.12+.  To learn how to safely upgrade to Terraform version 0.12+, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes.
+{{< /note >}}
 
 ## Infrastructure as Code
 
@@ -228,9 +227,9 @@ This command will ask you to confirm that you want to proceed. When Terraform ha
 
 When Terraform analyzes and applies your configuration, it creates an internal representation of the infrastructure it created and uses it to track the changes made. This *state* information is recorded in JSON in a local file named `terraform.tfstate` by default, but it can also be stored in other [backends](#backends).
 
-{{< caution >}}
+{{< note type="alert" >}}
 Your sensitive infrastructure data (like passwords and tokens) is visible in plain-text in your `terraform.tfstate` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
-{{< /caution >}}
+{{< /note >}}
 
 ### Other Commands
 

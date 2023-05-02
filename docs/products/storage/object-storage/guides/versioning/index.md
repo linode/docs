@@ -1,20 +1,18 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Versioning (Retain Object Version History)"
 description: "Learn how to use versioning with Linode's Object Storage to retain previous versions of an object."
 published: 2022-03-11
 aliases: ['/platform/object-storage/bucket-versioning/','/guides/bucket-versioning/']
+authors: ["Linode"]
 ---
 
 Versioning in Object Storage (also called *bucket versioning*, *object versioning*, and *S3 versioning*) is a method of retaining historical versions of files/objects. When this feature is enabled, objects are not overwritten or deleted. Instead, the new *current* version of an object is stored alongside each older *noncurrent* version. In the event that you need to recover old data, you can restore/retrieve previous versions of each object.
 
 This works by automatically assigning a *version ID* to each object. When new versions are uploaded, they receive a new version ID and are stored alongside older versions. When viewing or retrieving objects, the latest version of the object is returned *unless a version ID has been specified in the request*. If you delete an object with bucket versioning enabled, a delete marker is inserted into the bucket to report that the object has been deleted, but the bucket will retain all previous versions of the object.
 
-{{< caution >}}
+{{< note type="alert" >}}
 Every version of an object counts towards the monthly billable storage quota. While saving a few revisions is probably not something to worry about, large version controlled buckets with many thousands of objects will see a noticeable increase in storage space demands, and should be monitored carefully.
-{{</ caution >}}
+{{< /note >}}
 
 ## Using Versioning within Linode's Object Storage Service
 
@@ -50,12 +48,12 @@ Versioning is enabled on the bucket level. This means that every object in a buc
 
     The output of that command should display a **Status** of *Enabled*:
 
-    {{< output >}}
-{
-    "Status": "Enabled",
-    "MFADelete": "Disabled"
-}
-{{< /output >}}
+    ```output
+    {
+        "Status": "Enabled",
+        "MFADelete": "Disabled"
+    }
+    ```
 
 ## Test Versioning
 
@@ -142,7 +140,7 @@ To download a previous version of an object, run the `get-object` command, repla
 
 You should see output like the following:
 
-{{< output >}}
+```output
 {
     "AcceptRanges": "bytes",
     "LastModified": "2022-03-11T12:37:19+00:00",
@@ -156,6 +154,6 @@ You should see output like the following:
     },
     "StorageClass": "STANDARD"
 }
-{{< /output >}}
+```
 
 To restore this version, you can re-upload it. Alternatively, you can delete all newer versions.

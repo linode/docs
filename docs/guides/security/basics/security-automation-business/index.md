@@ -1,20 +1,14 @@
 ---
 slug: security-automation-business
-author:
-  name: David Strom
 description: 'This guide discusses the security needs of today''s software and DevOps landscape and provides resources to help you learn more about security automation.'
-og_description:  'This guide discusses the security needs of today''s software and DevOps landscape and provides resources to help you learn more about security automation.'
 keywords: ['security automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-21
 modified_by:
   name: Linode
 title: "Security Automation for Today’s Modern Business"
-h1_title: "Why Security Automation is Needed for Today’s Modern Business"
 tags: ["security"]
-enable_h1: true
-contributor:
-  name: David Strom
+authors: ["David Strom"]
 ---
 
 As developers [release their code more quickly](https://about.gitlab.com/developer-survey/), security threats have become more complex, more difficult to find, and more potent in their potential damage to your networks, your data, and your corporate reputation. Balancing these two megatrends isn’t easy. While developers are making an effort to improve the security of their code earlier in the software life cycle, what one blogger on Twilio [has called “shifting left](https://www.twilio.com/blog/changing-security-tool-requirements-in-the-new-devsecops-world),” there is still plenty of room for improvement.
@@ -27,7 +21,7 @@ There are several trends that make this already difficult situation all the more
 
 - **Attacks continue to happen with regularity**, because bad actors are getting better at hiding inside networks without being detected. The [SolarWinds compromises happened months](https://www.csoonline.com/article/3613571/the-solarwinds-hack-timeline-who-knew-what-and-when.html) after the initial penetration of their networks, and was covered widely in the news. Other malware campaigns, such as [RotaJakiro that has remained hidden inside numerous Linux-based systems for years](https://www.zdnet.com/article/rotajakiro-a-linux-backdoor-that-has-flown-under-the-radar-for-years/), is also notable.
 
-- **Enterprise apps are constantly being updated, creating protection challenges**. The days when an IT shop would take months to refine requirements and then build and test prototypes are a thing of the past. Now, daily and sometimes hourly builds are commonplace. This means that security tools have to work in this ever-changing world and find issues with code quickly. A delay of several hours is no longer effective. Take the example of a common error whereby a piece of code accepts unverified inputs. This can lead towards an [attack type called SQL injection](https://portswigger.net/web-security/sql-injection), something that has been around for decades, and which could lead to data leaks or account takeovers or lost revenues. Some of the common attack methods are discussed in []().
+- **Enterprise apps are constantly being updated, creating protection challenges**. The days when an IT shop would take months to refine requirements and then build and test prototypes are a thing of the past. Now, daily and sometimes hourly builds are commonplace. This means that security tools have to work in this ever-changing world and find issues with code quickly. A delay of several hours is no longer effective. Take the example of a common error whereby a piece of code accepts unverified inputs. This can lead towards an [attack type called SQL injection](https://portswigger.net/web-security/sql-injection), something that has been around for decades, and which could lead to data leaks or account takeovers or lost revenues. Some of the common attack methods are discussed in the [Eight Common Types of Cyber Attacks and How to Prevent Them](/docs/guides/types-of-cyber-attacks/) guide.
 
 - **Hacking tools are now commodities**. Almost anyone can download an attack tool from numerous online sources and target your business network with just a few clicks of the mouse. Gartner, in its [report on the app security hype cycle](https://www.gartner.com/doc/3884178/hype-cycle-application-security-) said that IT managers “need to go beyond identifying common application development security errors and protecting against common attack techniques.”
 

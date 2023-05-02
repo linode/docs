@@ -1,9 +1,6 @@
 ---
 slug: piwik-on-fedora-13
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Fedora 13.'
 keywords: ["open source analytics", "piwik fedora 13", "piwik", "analytics", "centos", "tracking", "statistics"]
 tags: ["statistics","fedora","analytics"]
@@ -19,13 +16,14 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Fedora 13
+authors: ["Stan Schwertly"]
 ---
 
 
 
 Piwik is a downloadable, open source (GPL licensed) web analytics software program. As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership and control of the data collected from your visitors.
 
-For the purpose of this guide, we assume that you have a running and functional server, and have followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+For the purpose of this guide, we assume that you have a running and functional server, and have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 Beyond the basics, Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Fedora 13 LAMP guide](/docs/guides/lamp-server-on-fedora-13/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 

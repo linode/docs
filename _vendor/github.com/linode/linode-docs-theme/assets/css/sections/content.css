@@ -100,6 +100,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 
 .chroma .lnt {
   height: 100%;
+  display: block;
 }
 
 .chroma .hl {
@@ -132,14 +133,29 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   background-color: transparent;
 }
 
+.content div.overflow-table {
+  position: relative;
+  display: block;
+  overflow-x: scroll;
+}
+
 .content table {
   @apply border-collapse mobile:-mx-4;
+  border-style: hidden;
+}
+
+.content div.overflow-table > table {
+  @apply border-collapse mobile:mx-0;
   border-style: hidden;
 }
 
 @screen mobile {
   .content table {
     width: calc(100% + 2rem);
+  }
+
+  .content div.overflow-table table {
+    width: 100%;
   }
 }
 
@@ -171,16 +187,8 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   @apply bg-gray-300;
 }
 
-.chroma .lntable tbody td:first-child {
-  padding-left: 0;
-}
-
 .content .chroma .lntable {
   @apply w-full;
-}
-
-.content .chroma .lntd {
-  padding-right: 0;
 }
 
 .chroma .lntd pre {
@@ -189,7 +197,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 
 .chroma .line,
 .chroma .lnt {
-  @apply px-2;
+  @apply px-5;
 }
 
 .content img.marquee-img {

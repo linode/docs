@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-linux-concepts
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'An introduction to Linux and Unix-like systems covering history, system architecture, and distribution characteristics.'
 keywords: ["Linux", "Unix-Like systems", "history"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[LAMP Guides](/docs/lamp-guides/)'
  - '[Package Management](/docs/guides/linux-package-management-overview/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 Linodes run **Linux**. Linux is an operating system that works just like Windows and Mac OS X. As an operating system, Linux manages your Linode's hardware and provides services your other software needs to run.
@@ -27,7 +25,7 @@ This guide is intended to be very beginner-friendly. It takes a Linux 101 approa
 
 ![Introduction to Linux Concepts](introduction_to_linux_concepts_smg.png)
 
- {{< note >}}
+{{< note respectIndent=false >}}
 Everything on a Linux system is case-sensitive. That means that `photo.jpg`, `photo.JPG`, and `Photo.jpg` are all different files. Usernames and passwords are also case-sensitive.
 {{< /note >}}
 
@@ -68,13 +66,13 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 Here at Linode, you install Linux with the [Linode Manager](https://cloud.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install the latest release of **Ubuntu**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) article. Follow that article until you complete [Booting Your Linode](/docs/guides/getting-started/#boot-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) article. Follow that article until you complete [Booting Your Linode](/docs/products/platform/get-started/#boot-your-linode), then come back here.
 
 ### Connecting to Your Linode
 
 Your Linode is physically housed in the Atlanta, Dallas, Frankfurt, Fremont, London, Newark, Singapore, or Tokyo data center, so you have to use the Internet and a terminal to connect to it and start using it. A *terminal* is a tool that runs a *shell* that lets you run text commands to interact with your server. The Secure Shell (**SSH**) protocol lets you send these commands to your Linode over a secure Internet connection from your local machine.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to refer to the interface you use to send text commands to your Linux system. These are different tools that layer on top of each other to let you interact with your server. To learn more, read these simplified definitions:
 
   - **Terminal**: A device that enters data into and displays data from a computer. The terminal has the most direct access to the operating system. Technically, most terminals these days are actually *terminal emulators* that run as software on Mac OS X, Linux, or Windows computers.
@@ -82,7 +80,7 @@ In this guide, we'll mostly be using the terms *terminal*, *shell*, and *SSH* to
   - **SSH**: A protocol that lets you send shell commands to your Linode securely over the Internet.
 {{< /note >}}
 
-To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/guides/getting-started/#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
+To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode.
 
 ## So You're Staring at a Shell Prompt
 
@@ -99,7 +97,7 @@ What does this bit of text mean? The entire thing is the *shell prompt*. It's yo
 
 You can type any valid Linux shell command at the blinking cursor after the shell prompt. We'll go over a few practical commands in the rest of this article, but to get a really good in-depth introduction to the command-line interface, you should read the [Using the Terminal](/docs/guides/using-the-terminal/) article as well.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 These command line tips will make your Linux forays much more effective:
 
 - Press the `Return` or `Enter` key after you finish a command.
@@ -183,7 +181,7 @@ drwxr-xr-x  13 root root 4.0K Nov  6 16:04 var
 
 There are quite a few files inside this directory. The most important part is the list of directory and file names on the right, listed alphabetically. You'll notice the directories `lib` and `var`, as well as several others.
 
- {{< note >}}
+{{< note respectIndent=false >}}
 The **/root** directory is not the same as the **/** directory. **/** is the top-level directory of the server. Everything else is inside it. It is called the *root* directory when you're talking about it, but its name on the server is just **/**. On the other hand, the **/root** directory is the home directory for the **root** user. It's a sub-directory under the **/** directory, and it's where the **root** user starts after logging in to a new SSH session.
 {{< /note >}}
 
@@ -277,7 +275,7 @@ You can set users and permissions for each file directory on your Linode.
 
 Three categories comprise the file access system in Linux:
 
--   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of the **Securing Your Server** guide.
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of the **Securing Your Server** guide.
 -   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
 -   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world.
 
@@ -383,9 +381,9 @@ Update a Fedora or CentOS system:
 
     yum update
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Updating your software is good for your system security. In most cases updates will go smoothly, but it's possible that some updates may break something on your server. It's always wise to make a [backup](/docs/products/storage/backups/) of your system before updating it.
-{{< /caution >}}
+{{< /note >}}
 
 ### Uninstalling Software
 
@@ -403,7 +401,7 @@ Here's the yum version for Fedora and CentOS:
 
 ## Security
 
-When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode's computing power for their own goals. If you neglect to change default passwords, install out-of-date software, or leave other security holes available for hackers to exploit, it won't take long for your system to get hacked. Follow the steps in the [Securing Your Server](/docs/guides/set-up-and-secure/) guide to harden your server's security.
+When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode's computing power for their own goals. If you neglect to change default passwords, install out-of-date software, or leave other security holes available for hackers to exploit, it won't take long for your system to get hacked. Follow the steps in the [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to harden your server's security.
 
 ## Distributions
 

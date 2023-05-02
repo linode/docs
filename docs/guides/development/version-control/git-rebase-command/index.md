@@ -1,18 +1,14 @@
 ---
 slug: git-rebase-command
-author:
-  name: Stephen Savitzky
 description: 'This guide provides you with an introduction to the rebase command in Git and you will learn when to use these commands to rebuild your Git history.'
 keywords: ['git rebase', 'git rebase interactive']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-15
 modified_by:
   name: Linode
-title: "How to Use the Git Rebase Command"
-h1_title: "Using the Git Rebase Command"
-enable_h1: true
-contributor:
-  name: Stephen Savitzky
+title: "Using the Git Rebase Command"
+title_meta: "How to Use the Git Rebase Command"
+authors: ["Stephen Savitzky"]
 ---
 
 ## What Does Git Rebase Do?
@@ -46,9 +42,9 @@ When merging two branches together using a merge commit, your local branch's com
 
 The `M` represents the merge commit that ties together the two branches. Once you've merged the two branches, you can either keep working on your branch, or merge it back into `main`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This is considered a *fast-forward* merge because `main` is a direct ancestor of `M`. If you continue to work on your feature branch, you eventually have to make another merge with `main`. This makes it difficult for anyone reviewing your code to figure out exactly what changes you made.
-{{</ note >}}
+{{< /note >}}
 
 **Git Rebase**: A Git rebase takes the commits made in your local branch and places them on top of the latest commits pulled down from the `main` branch. This method updates your local feature branch with the latest changes pushed up to the collaboration branch by your teammates. Merging your feature branch with the `main` branch can be accomplished with the following commands:
 
@@ -68,9 +64,9 @@ After running the `git rebase main` command, your local branch's commit history 
 
 `B`, in the rebase diagram and `M`, in the merge diagram, are both snapshots of approximately the same state. What’s different about the two commit histories is the information available in each. `M` and its history record what everyone did – it’s a historical record of what work was done on the project. `B` and its history, on the other hand, tell the story of how the project was made. Typically, your Git repository's project leaders determine which method they prefer to use to combine changes between branches.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Rebasing rewrites your commit history. Never rebase a commit that somebody else might have based their work on. Only change your own local history. Don’t rebase anything that you’ve already pushed to an upstream branch.
-{{< /caution >}}
+{{< /note >}}
 
 ## How Git Rebase Works
 
@@ -78,11 +74,11 @@ During a Git rebase, all the committed changes made in your working feature bran
 
 Then, the rebase does a hard reset to the head of the upstream branch in the local branch. This is effectively like running the `git reset --hard <upstream>` command. Next, the rebase applies the saved changes (stored in your commits) to the local branch. Any commits that introduce the same textual changes as a commit in the upstream branch are omitted.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The commits that are temporarily stored when rebasing are the same set of commits that are displayed when issuing the `git log <upstream>..HEAD` command.
 
 These are also the same set of commits that you would get from the `git log --patch --reverse <upstream>..HEAD` command.
-{{</ note >}}
+{{< /note >}}
 
 ## When to Use Git Rebase?
 
@@ -200,7 +196,7 @@ pick f300b06 Add the screenshots for how-to-resolve-merge-conflicts
 
 The comment block at the end of the file describes the commands you can put in place of `pick` to make modifications. You can replace the full command with its first letter.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you don't modify the seven-digit commit IDs that are presented to you.
 {{< /note >}}
 

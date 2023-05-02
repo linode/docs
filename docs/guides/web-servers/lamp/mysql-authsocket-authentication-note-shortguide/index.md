@@ -1,8 +1,5 @@
 ---
 slug: mysql-authsocket-authentication-note-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that describes how MySQL auth_socket authentication works.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-08-03
@@ -15,6 +12,7 @@ tags: ["web server","php","mysql","apache","security","lamp"]
 headless: true
 show_on_rss_feed: false
 aliases: ['/web-servers/lamp/mysql-authsocket-authentication-note-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< disclosure-note "About MySQL authentication" >}}
