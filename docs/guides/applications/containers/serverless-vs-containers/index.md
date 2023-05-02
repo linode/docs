@@ -1,20 +1,20 @@
 ---
 slug: serverless-vs-containers
 title: "Serverless vs Containers: Choose Which One to Use"
-description: 'What are the similarities and differences between serverless and containers? What should developers consider when choosing one? ✓ Click here to find out!'
+description: 'What are the similarities and differences between serverless and containers? What should developers consider when choosing one?'
 keywords: ['serverless vs. containers','serverless computing','serverless applications','containers','microservices','serverless architecture','serverless web applications','backend services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-04-13
+published: 2023-05-02
 modified_by:
   name: Linode
 ---
 
-Getting as much done in as little time, and with as little overhead as possible is an essential element of modern development. The end result needs to be easy to deploy, maintain, and debug. Plus, it all has to run in the cloud. That’s asking a lot, but both serverless applications and containers are up to the task. They’re both designed to replace virtual machines that require much more work on the organization’s part. Of the two, containers are a heavier weight solution that include everything needed to run an application, usually as a set of microservices. Meanwhile, serverless applications are lighter weight solutions that focus on application code that relies on services provided by a vendor API. There isn’t a right or wrong choice with either technology, simply the choice that benefits an organization most, as this guide explains.
+Getting as much done in as little time, and with as little overhead as possible is an essential element of modern development. The end result needs to be easy to deploy, maintain, and debug. Plus, it all has to run in the cloud. That’s asking a lot, but both serverless applications and containers offer solutions. They’re both designed to replace virtual machines that require much more work on the organization’s part. Of the two, containers are a more robust solution that include everything needed to run an application, usually as a set of microservices. Meanwhile, serverless applications are less complex solutions that focus on application code that relies on services provided by a vendor API. There isn’t a right or wrong choice with either technology, simply the choice that benefits an organization most, as this guide explains.
 
 ## What Is Serverless?
 
-Serverless applications are hosted on a vendor system, where the functions used to create them respond to events. With *serverless*, the developer gets to focus on the code, the application, and not worry about the server or hardware. The infrastructure, such as backend services and libraries, are generally provided by the vendor. Therefore the developer is only looking at the application code, and not its dependencies.
+Serverless applications are hosted on a vendor system, where the functions used to create them respond to events. With *serverless*, the developer focuses on the code, the application, and not the server or hardware. The infrastructure, such as backend services and libraries, are generally provided by the vendor. Therefore the developer is only looking at the application code, and not its dependencies.
 
 A serverless application provides functionality like automatic scaling, provisioning, built-in service integration, automated configuration, and high-availability. All without any additional effort on the developer’s part. Because of the manner of hosting, serverless applications can save an organization a huge amount of money on dependency costs.
 
@@ -22,7 +22,7 @@ A serverless application can provide traditional desktop support, backend servic
 
 ### What is Serverless Used For?
 
-Serverless applications are perfect for mobile and web application startups because of their low startup costs and ability to handle lightweight applications. You often see them employed in these use cases:
+Serverless applications are perfect for mobile and web application startups because of their low startup costs and ability to handle lightweight applications. They are often employed in these use cases:
 
 -   Situations where the traffic is unpredictable
 -   Internet of Things (IoT) applications
@@ -48,7 +48,7 @@ A container is focused on just one application, unlike a virtual machine, which 
 
 ### What Are Containers Used For?
 
-Because of the heavy-duty emphasis of containers, they often see different use cases than serverless applications. It’s common to use containers for the following purposes:
+Containers are often used for the following purposes:
 
 -   Deploying API endpoints
 -   Deploying repetitive jobs and tasks
@@ -79,11 +79,11 @@ In addition to the differences already mentioned, it’s possible to compare the
 
 ### Physical Machines
 
-A serverless application can live on multiple physical machines, while container applications always reside on just one physical machine. The ability to live on multiple machines gives serverless applications a resource availability advantage without a lot of extra work on the developer’s part. However, techniques like load balancing can be used to divide the load between multiple instances of a container application on multiple physical systems. The end result is seemingly the same, but the container application requires more work to get there.
+A serverless application can live on multiple physical machines, while container applications always reside on just one physical machine. The ability to live on multiple machines gives serverless applications a resource availability advantage without a lot of extra work on the developer’s part. However, techniques like load balancing can be used to divide the load between multiple instances of a container application on multiple physical systems. The end result is seemingly the same, but the container application requires more configuration and implementation.
 
 ### Scalability
 
-Serverless applications have an advantage when it comes to scalability because they automatically scale. The hosting vendor provides as little or as much computing power as needed to handle a particular load at a given time. When working with container applications, a developer needs to allocate enough containers to handle the anticipated load. If the load exceeds expectations, the application begins to run slowly and users are disappointed. When the load is less than expected, an organization wastes money on unused resources. It’s entirely possible to find cloud providers that have automatic scaling at the virtual machine level. While this can help mitigate the container disadvantage to some degree, this is *configurable* by the developer, but not *managed* by them.
+Serverless applications have an advantage when it comes to scalability because they automatically scale. The hosting vendor provides as little or as much computing power as needed to handle a particular load at a given time. When working with container applications, a developer needs to allocate enough containers to handle the anticipated load. If the load exceeds expectations, the application begins to run slowly, negatively impacting customers. When the load is less than expected, an organization wastes money on unused resources. It’s entirely possible to find cloud providers that have automatic scaling at the virtual machine level. While this can help mitigate the container disadvantage to some degree, this is *configurable* by the developer, but not *managed* by them.
 
 ### Cost
 
