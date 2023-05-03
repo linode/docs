@@ -360,7 +360,7 @@ The examples that follow employ the two most frequently used of these formats: `
 
 #### Run Your Astro Website
 
-You can use the same steps as in the [Running the Astro Server](/docs/guides/building-a-website-with-astro/#running-the-astro-server) section above to run your website locally.
+You can use the same steps as in the [Running the Astro Server](#run-the-astro-server) section above to run your website locally.
 
 Navigating to `localhost:3000`, you should see the homepage of your website.
 

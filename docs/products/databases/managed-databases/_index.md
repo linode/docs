@@ -11,7 +11,7 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
-modified: 2022-10-31
+modified: 2023-05-02
 ---
 
 {{< content "managed-databases-beta-notice-shortguide" >}}
@@ -34,15 +34,11 @@ Managed Databases can be configured with either 1 or 3 underlying machines, also
 
 ## Database Engines
 
-The following database management systems (DBMSs) are available (or coming soon) to Managed Databases:
+The following database management systems (DBMSs) are available on Managed Databases:
 
 - **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases.
 
 - **PostgreSQL:** An object-relational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it.
-
-- **MongoDB:** A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible.
-
-    {{< content "managed-database-mongodb-private-notice-shortguide" >}}
 
 See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) for more details on each of the available database engines.
 
@@ -94,7 +90,5 @@ In addition to the resources allocated to each available plan (outlined above), 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
 - You are not able to access the underlying operating system of a database cluster. Configuration files (such as `my.cnf` ) cannot be directly edited and configuration changes done through the `SET PERSIST` command do not persist when the cluster is rebooted.
-
-- MongoDB database clusters are currently only accessible over public IP addresses. As such, any traffic counts towards your monthly network transfer usage. Support for private IP addresses will be available in the coming months.
 
 - Live replicas or standby nodes for a high availability Managed Database cluster cannot be created or hosted outside of Linode's Managed Database service.
