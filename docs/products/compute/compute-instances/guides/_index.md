@@ -49,6 +49,12 @@ modified: 2023-04-11
 - [Configure Failover](/docs/products/compute/compute-instances/guides/failover/)
 - [An Overview of IPv6 on Linode](/docs/products/compute/compute-instances/guides/ipv6/)
 
+## Metadata (Automated System Configuration)
+
+- [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/)
+- [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/)
+- [Migrate a StackScript to the Metadata Service](/docs/products/compute/compute-instances/guides/migrate-stackscript-to-metadata/)
+
 ## Recovery and Troubleshooting
 
 - [Recover from Unexpected Shutdowns with Lassie (Shutdown Watchdog)](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/)
