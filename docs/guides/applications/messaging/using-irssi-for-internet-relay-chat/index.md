@@ -249,4 +249,4 @@ To remove a `hilight`, use the command:
 
 ## User-friendly Plugins
 
-Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/guides/advanced-irssi-usage/#using-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.
+Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/guides/advanced-irssi-usage/#use-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.
