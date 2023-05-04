@@ -58,7 +58,7 @@ User data can be provided in many different formats, with the most common being 
 ## Deploy a Compute Instance with User Data
 
 {{< tabs >}}
-{{% tab "Cloud Manager" %}}
+{{< tab "Cloud Manager" >}}
 1.  Navigate to the **Linodes** page in the [Cloud Manager](http://cloud.linode.com) and click the **Create Linode** button. This opens the **Create Linode** form.
 
 1.  Fill out the form with your desired settings. Be sure to select one of the supported distribution images.
@@ -70,8 +70,8 @@ User data can be provided in many different formats, with the most common being 
     If you are unfamiliar with Cloud-Init, you can review the [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) guide for help creating a cloud-config file.
 
 1.  Once you are ready, click the **Create Linode** button to deploy the instance.
-{{% /tab %}}
-{{% tab "Linode CLI" %}}
+{{< /tab >}}
+{{< tab "Linode CLI" >}}
 ```command
 linode-cli linodes create \
   --label linode123 \
@@ -89,8 +89,8 @@ linode-cli linodes create \
 ```output
 Placeholder.
 ```
-{{% /tab %}}
-{{% tab "Linode API" %}}
+{{< /tab >}}
+{{< tab "Linode API" >}}
 Run the API curl request below, making sure to properly paste in or reference your [API token](/docs/products/tools/api/guides/manage-api-tokens/).
 
 ```command
@@ -137,7 +137,7 @@ curl -H "Content-Type: application/json" \
 ```output
 Placeholder.
 ```
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ## View Cloud-Init Logs
