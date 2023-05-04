@@ -4,7 +4,7 @@ description: 'Learn how to rescue and rebuild a Compute Instance by using the re
 keywords: ["rescue", "rebuild"]
 tags: ["cloud manager"]
 published: 2012-05-31
-modified: 2023-03-14
+modified: 2023-05-04
 modified_by:
   name: Linode
 image: rescue-rebuild.jpg
@@ -381,6 +381,8 @@ To use the Rebuild feature:
     ![Cloud Manager Linodes page - rebuild option highlighted](cloud-manager-linodes-rebuild.png)
 
 1.  Complete the Rebuild form. Select an image or StackScript to deploy and enter a root password. Optionally, select one or more SSH keys (if you have not added any SSH Keys via the Cloud Manager, this option does not appear).
+
+    {{< content "password-requirements-shortguide" >}}
 
 1.  Click on **Rebuild** button after completing the form:
 
