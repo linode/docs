@@ -21,7 +21,7 @@ Linode strives to provide transparent and uncomplicated pricing structures and b
 
 Linode uses a hybrid hourly billing model that is simple and flexible. It enables you to continuously add, modify, and remove services throughout the month. After the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. Here are some important billing considerations:
 
-- Every paid service offered by Linode has a predicable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
+- Every paid service offered by Linode has a predictable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
 
 - When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of the Cloud Manager\*. Usage is always rounded up to the nearest hour.
 
