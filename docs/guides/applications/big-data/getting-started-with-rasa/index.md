@@ -3,7 +3,7 @@ slug: getting-started-with-rasa
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Rasa is an open-source machine-learning framework for automating text and voice conversations. With its story-based and contextual approach, Rasa can provide an effective service chatbot, voice assistant, and more. Learn all about Rasa and how to start using it in this tutorial."
+description: "Rasa is an open source machine learning framework for automating text and voice conversations. Learn all about Rasa and how to start using it in this tutorial."
 keywords: ['rasa chatbot tutorial','rasa ai demo','rasa open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-16
@@ -19,9 +19,9 @@ external_resources:
 - '[GeeksforGeeks: Chatbots Using Python and Rasa](https://www.geeksforgeeks.org/chatbots-using-python-and-rasa/)'
 ---
 
-Rasa is an open-source machine-learning framework that uses a story-driven approach for developing automated text and voice chat assistants. Rasa employs an efficient and approachable model for crafting and training chatbots, and the framework includes numerous points for integrating your automated assistants.
+Rasa is an open source machine learning framework that uses a story-driven approach for developing automated text and voice chat assistants. Rasa employs an efficient and approachable model for crafting and training chatbots, and the framework includes numerous points for integrating automated assistants.
 
-In this tutorial, learn how to get started with Rasa. From installing the framework, to working with models, to deploying a Rasa instance to a Kubernetes cluster — find out how here.
+In this tutorial, learn how to get started with Rasa. From installing the framework, to working with models, to deploying a Rasa instance to a Kubernetes cluster, find out how here.
 
 ## Before You Begin
 
@@ -35,66 +35,64 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Install Rasa Open Source
 
-Rasa Open Source can be installed using the Pip package manager for Python 3. These next few sections show you how to set up the prerequisites and get Rasa installed on your system.
+Rasa Open Source can be installed using the Pip package manager for Python 3. These next few sections show how to set up the prerequisites and install Rasa.
 
-At the end, you have a Rasa Open Source instance installed and can create, build, and run Rasa projects as needed. Keep reading further to see how to start your first Rasa project, understand the project's parts, and deploy Rasa to a Kubernetes cluster.
+Once the Rasa Open Source instance is installed, Rasa projects can be created, built, and run as needed. Keep reading further to see how to start a Rasa project, understand its parts, and deploy it to a Kubernetes cluster.
 
 {{< note >}}
-The official documentation for Rasa Open Source only lists Ubuntu as a supported Linux distribution. However, the steps in this tutorial have been successfully used to install Rasa Open Source on CentOS, Debian, and Fedora in addition to Ubuntu.
+The official documentation for Rasa Open Source only lists Ubuntu as a supported Linux distribution. However, the steps in this tutorial have been successfully used to install Rasa Open Source on AlmaLinux, CentOS Stream, Debian, and Rocky Linux as well.
 {{< /note >}}
 
 ### Setting Up the Prerequisites
 
-Rasa runs using Python 3, Pip, and the a Python virtual environment. To support this, you need to make sure your system has the necessary software installed in the supported versions.
+Rasa runs using Python 3, Pip, and the a Python virtual environment. To begin, your system must have the supported versions of the necessary software installed.
 
-These steps walk you through the necessary installations as well as setting up the initial virtual environment to use for your Rasa instance.
+These steps walk through these installations and set up the initial virtual environment.
 
-1. Install a compatible version of Python 3 and Pip 3 using the appropriate command below. Your system may already have these installed, in which case these commands just update them.
+1.  Install a compatible version of Python 3 and Pip 3 using the appropriate command below. Your system may already have these packages installed, in which case these commands simply update them.
 
-    - On Debian and Ubuntu systems, use the command here to install the standard Python 3 version for the distribution along with the packages for Pip and Python's `venv` for virtual environments.
+    -   **Debian 11** and **Ubuntu 22.04 LTS**:
 
         ```command
         sudo apt install python3-dev python3-pip python3-venv
         ```
 
-    - On CentOS, use the command here to install Python 3.9. Installing this package also installs Pip and Python's virtual environment package.
-
-        ```command
-        sudo dnf install python39-devel
-        ```
-
-    - On Fedora, use the command here to install the standard Python 3 version for the distribution. The installation includes Pip and Python's virtual environment package.
+    -   **AlmaLinux 9**, **CentOS Stream 9**, and **Rocky Linux 9**:
 
         ```command
         sudo dnf install python3-devel
         ```
 
-1. Create a Python virtual environment for the Rasa project, and switch into that virtual environment. This tutorial names that virtual environment `rasa-venv` and stores it in the current user's home directory.
+1.  Create a Python virtual environment for the Rasa project and switch into it. This tutorial names the virtual environment `rasa-venv` and stores it in the current user's home directory.
 
     ```command
     python3 -m venv ~/rasa-venv
     source ~/rasa-venv/bin/activate
     ```
 
-    You should now see the `(rasa-venv)` indicator at the beginning of your command line. For reference, you can exit the virtual environment using the command shown here.
+    The `(rasa-venv)` indicator should now be at the beginning of the command line.
 
-    ```command
-    deactivate
-    ```
+    {{< note >}}
+For reference, exit the virtual environment using the command shown here:
 
-    Just be sure to reenter the virtual environment with the `source` command above whenever you want to use Rasa.
+```command
+deactivate
+```
+
+To reenter the virtual environment, simply repeat the `source` command above.
+    {{< /note >}}
 
 ### Installing Rasa Open Source
 
-Now you can install Rasa Open Source. Rasa comes as a Pip package, and so the installation is straightforward once you have the package manager installed.
+Now it's time to install Rasa Open Source. Rasa comes as a Pip package, so the installation is straightforward once the package manager is installed.
 
-1. Upgrade your Pip installation to be sure you have the latest packages available.
+1.  Upgrade the Pip installation to make sure it has the latest available packages:
 
     ```command
     pip3 install --upgrade pip
     ```
 
-1. Install Rasa Open Source.
+1.  Install Rasa Open Source:
 
     ```command
     pip3 install rasa
@@ -102,165 +100,193 @@ Now you can install Rasa Open Source. Rasa comes as a Pip package, and so the in
 
 ## How to Build a Chatbot with Rasa
 
-With Rasa Open Source installed, you can create your first Rasa project. This section of the tutorial gets you started with steps to create a basic project and an in-depth breakdown of the project structure. Following that, you can see how to run the basic project, operating a function Rasa chatbot on your system.
+With Rasa Open Source installed, it's time to create a Rasa project. This section covers steps to create a basic project and an in-depth breakdown of its structure. Following that, learn how to run the project by operating a functioning Rasa chatbot.
 
 ### Creating a Rasa Project
 
-Rasa operates on a project basis, meaning that, to start using it, you need a Rasa project to work out of. Starting a new base project is straightforward, and the new Rasa project comes with a full structure that you can start using immediately.
-
-1. Ensure that you are in the Python virtual environment you created for Rasa in the section on prerequisites above. Using the virtual environment directory created there, you can reactivate the environment with the command here.
-
-    ```command
-    source ~/rasa-venv/bin/activate
-    ```
-
-1. Make sure you are in a directory where you would like to create a Rasa project subdirectory, and run the initialization script to create a new Rasa project. This example starts in the current user's home directory.
+1.  Run the initialization script to create a new Rasa project. This example starts in the current user's home directory, but any directory works for housing the Rasa project subdirectory.
 
     ```command
     cd ~/
     rasa init
     ```
 
-    The first prompt asks where you want to locate your Rasa project. This tutorial uses `rasa-example`, which results in a `~/rasa-example` directory.
+    The first prompt asks where to locate the Rasa project. This tutorial uses `rasa-example`, which results in a `~/rasa-example` directory. Because this directory does not yet exist, press <kbd>Y</kbd> (`Yes`) to create it. The next prompt asks to train an initial model. Select <kbd>n</kbd> (`No`) here, since the tutorial shows how to execute training later.
 
-    The next prompt asks if you want to train an initial model. Select `n` (`No`) here, since the tutorial shows how to execute the training later.
-
-1. Change into the new directory created for your Rasa project. Using the example above, this would be the `rasa-example` directory.
+1.  Change into the new directory created for the Rasa project. Using the example above, this would be the `~/rasa-example` directory.
 
     ```command
-    cd rasa-example
+    cd ~/rasa-example
     ```
 
 ### Understanding the Rasa Project Structure
 
-You new project's directory comes with a basic Rasa project structure. The following breaks down the default project contents to help you understand the structure and start navigating Rasa's components.
+The new project's directory comes with a basic Rasa project structure. The following section breaks down the default project contents to help understand the structure and navigate Rasa's components.
 
-The contents should resemble this outline. The outline skips files like `__init__.py` that you are likely not to need to bother with in developing your Rasa assistant. Otherwise, the outline dives into each file and gives you an explanation of its role, often alone with links to official documentation.
+The contents should resemble this outline. However, the outline skips files like `__init__.py` that are not likely needed in developing the example Rasa assistant. Otherwise, the outline dives into each file and provides an explanation of its role, often along with links to official documentation.
 
-- `actions/`
+-   `actions/`
 
-    - `actions.py` defines custom actions for your Rasa assistant, using Python code that can be activated upon certain conditions. Rasa's [documentation](https://rasa.com/docs/rasa/actions) covers actions and gives context for starting to use them.
+    -   `actions.py` defines custom actions for the Rasa assistant, using Python code that can be activated upon certain conditions.
 
-- `data/` contains the core models for your Rasa assistant. This is where most of the assistant's development is likely to take place.
+        Rasa's [documentation](https://rasa.com/docs/rasa/actions) covers actions and gives context for using them.
 
-    - `nlu.yml` defines Natural Language Understanding (NLU) models for the Rasa assistant. This gives the assistant structures to use in identifying user intention and communicated information.
+-   `data/` contains the core models for the Rasa assistant. This is where most of the assistant's development likely takes place.
+
+    -   `nlu.yml` defines Natural Language Understanding (NLU) models for the Rasa assistant. This gives the assistant structures to use in identifying user intention and communicated information.
 
         See the official documentation's page on [NLU Training Data](https://rasa.com/docs/rasa/nlu-training-data/) for more details on these models.
 
-    - `rules.yml` defines a set of specific actions to take given specific conditions. These should define rule-like behavior, actions to always take when certain intentions or information are provided by the user.
+    -   `rules.yml` defines a set of specific actions to take given specific conditions. These should define rule-like behavior, or actions to always take when certain intentions or information are provided by the user.
 
-        See the official documentation's [Rules](https://rasa.com/docs/rasa/rules/) page for further context for rules.
+        See the official documentation's [Rules](https://rasa.com/docs/rasa/rules/) page for further context.
 
-    - `stories.yml` models dialogues that the Rasa assistant is expected to engage in. These models are used for training the assistant for conversation, and they consist of user intention and/or information annotations alongside sequences of assistant actions.
+    -   `stories.yml` models dialogues that the Rasa assistant is expected to engage in. These models are used for training the assistant for conversation, and consist of user intention and/or information annotations, alongside sequences of assistant actions.
 
         See the official documentation's [Stories](https://rasa.com/docs/rasa/stories/) page for more on the roles and details of stories.
 
-- `tests/`
+-   `tests/`
 
-    - `test_stories.yml` defines test stories to verify that the Rasa assistant responds as expected.
+    -   `test_stories.yml` defines test stories to verify that the Rasa assistant responds as expected.
 
         See the official documentation's page on [Testing Your Assistant](https://rasa.com/docs/rasa/testing-your-assistant) for information on constructing effective Rasa test stories.
 
-- `config.yml` specifies the configuration for training your Rasa assistant. Without specification, Rasa uses a default approach. Learn more on the [Model Configuration](https://rasa.com/docs/rasa/model-configuration/) page of the official documentation.
+-   `config.yml` specifies the configuration for training the Rasa assistant. Without specification, Rasa uses a default approach.
 
-- `credentials.yml` stores credentials to be used by your Rasa assistant for interfacing with text and voice chat platforms. The default file includes placeholders for numerous platforms, including Facebook, Slack, and Socket.IO.
+    Learn more on the [Model Configuration](https://rasa.com/docs/rasa/model-configuration/) page of the official documentation.
+
+-   `credentials.yml` stores credentials used by the Rasa assistant for interfacing with text and voice chat platforms. The default file includes placeholders for numerous platforms, including Facebook, Slack, and Socket.IO.
 
     The official documentation has a page on [Connecting to Messaging and Voice Channels](https://rasa.com/docs/rasa/messaging-and-voice-channels) that provides more information.
 
-    You may also refer to our tutorial on [How to Use WebSockets with Socket.IO](/docs/guides/using-socket-io). There you can see an example of a Socket.IO chat application that can integrate with a Rasa assistant.
+    Also refer to our tutorial on [How to Use WebSockets with Socket.IO](/docs/guides/using-socket-io) for an example of a Socket.IO chat application that can integrate with a Rasa assistant.
 
-- `domain.yml` specifies what from your configurations is included in the "world" of your Rasa assistant. Use this to include, for instance, intents defined in your `nlu.yml` file and actions that you have created. This file is also where responses are defined.
+-   `domain.yml` specifies what components from the configurations to include in the Rasa assistant's "world". For example, use this to include intents defined in the `nlu.yml` file or any created actions. This file is also where responses are defined.
 
-    You can get a more complete explanation and an additional example through the official documentation on [Domains](https://rasa.com/docs/rasa/domain/).
+    Get a more complete explanation and an additional example through the official documentation on [Domains](https://rasa.com/docs/rasa/domain/).
 
-- `endpoints.yml` specifies the different endpoints your Rasa assistant connects to. This includes an endpoint for Rasa to pull a model periodically from a remote server. Follow the links provided in the default file contents to see the different kinds of endpoints available.
+-   `endpoints.yml` specifies the different endpoints the Rasa assistant connects to. This includes an endpoint for Rasa to pull a model periodically from a remote server.
+
+    Follow the links provided in the default file contents to see the different kinds of endpoints available.
 
 ### Running the Rasa Assistant
 
-Before trying out your assistant, you need to train it with a viable model. You can start modifying the files in the `data/` subdirectory to your needs, but actually the default Rasa project comes with enough to sample its capabilities.
+Before trying out the assistant, it must be trained with a viable model. At this point, the files in the `data/` subdirectory could be modified, but the default Rasa project comes with enough to sample its capabilities.
 
-Learn more about crafting effective models for building a Rasa assistant through the official documentation's best-practice guides. These include a guide on [Conversation-driven Development](https://rasa.com/docs/rasa/conversation-driven-development) and a guide on [Generating NLU Data](https://rasa.com/docs/rasa/generating-nlu-data) that is ready for production.
+Learn more about crafting effective models for building a Rasa assistant through the official documentation's best practices guides. These include a guide on [Conversation-driven Development](https://rasa.com/docs/rasa/conversation-driven-development) and a guide on [Generating NLU Data](https://rasa.com/docs/rasa/generating-nlu-data) that is ready for production.
 
-Using the default models or custom models, you can train your assistant with a single command to the Rasa CLI tool.
+Using the default models (or custom models) train the assistant with a single command to the Rasa CLI tool:
 
 ```command
 rasa train
 ```
 
-Rasa runs through the training process, preparing a full machine-learning model from the domain, NLU, story, and rule models you provided.
+Rasa runs through the training process, preparing a full machine learning model from the domain, NLU, story, and rule models provided.
 
-Once the training has finished, you can begin interacting with your assistant right from the command line. Use the command here to initialize a command line chat session with your assistant.
+Once the training has finished, users can interact with the assistant right from the command line. Use the command below to initialize a command line chat session with the assistant:
 
 ```command
 rasa shell
 ```
 
-Play around with the chat to get a sample of how the assistant responds and builds from stories. Here is an example exchange using Rasa's default models.
+Play around with the chat to get a sample of how the assistant responds and builds from stories. Here is an example exchange using Rasa's default models:
 
 ```output
 Your input ->  Hello!
 Hey! How are you?
-Your input ->  Okay, and you?
+Your input ->  Great!
 Great, carry on!
 Your input ->  Thanks!
+Bye
+Your input ->
 ```
 
-From here, it can be helpful to compare the kinds of responses with the model contents in the `/data` directory. This can go a long way to helping you grasp how Rasa interprets these models and mobilizes them.
+When done, type `/stop` to exit the conversation.
+
+Comparing these responses with the model contents in the `/data` directory can shed light on how Rasa interprets and mobilizes these models.
 
 ## How to Deploy a Rasa Chatbot
 
-For some use cases, having Rasa running locally may be all you need. The chat application example in the Socket.IO tutorial linked above, for instance, can leverage a local Rasa instance to integrate the Rasa chat features.
+For some use cases, running Rasa locally may be sufficient. The chat application example in the Socket.IO tutorial linked above, for instance, can leverage a local Rasa instance to integrate the Rasa chat features.
 
-However, most often you need to deploy your Rasa instance. There are several possibilities for doing that, some of which are covered in Rasa's [documentation](https://rasa.com/docs/rasa/deploy/introduction#alternative-deployment-methods).
+However, most often, the Rasa instance must be deployed. There are several possibilities for doing that, some of which are covered in Rasa's [documentation](https://rasa.com/docs/rasa/deploy/introduction#alternative-deployment-methods).
 
-The recommended deployment method for Rasa is via Kubernetes. To get you started, the upcoming sections show you how to set up a Linode Kubernetes cluster and deploy a simple Rasa project to it.
+The recommended deployment method for Rasa is via Kubernetes. To get started, the upcoming sections show how to set up a Linode Kubernetes cluster and deploy a simple Rasa project to it.
 
 ### Deploying Rasa
 
-Rasa needs you to have your Kubernetes cluster up and running and to have a kubectl instance connected to your cluster. You also need to have Helm installed, since the Rasa deployment uses a Helm Chart configuration.
+Rasa needs to have a Kubernetes cluster up-and-running, with a kubectl instance connected to it. Helm must also be installed, since the Rasa deployment uses a Helm Chart configuration.
 
-The steps here give walk you through setting up these prerequisites and deploying an example Rasa project once everything is in place.
+The steps here walk through setting up these prerequisites and deploying an example Rasa project.
 
-1. Follow our [Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to set up a Kubernetes cluster through Linode.
-
-    By the end, you should have a cluster running and a kubectl instance set up to manage the cluster via its kubeconfig file.
-
-1. Create a namespace for your Rasa Kubernetes cluster. This example designates the namespace `rasacluster`.
+1.  Make sure to exit the Python virtual environment:
 
     ```command
-    kubectl create namespace rasaclsuter
+    deactivate
     ```
 
-1. Follow our [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client) tutorial to install the Helm CLI client.
+1.  Follow our [Deploying and Managing a Cluster on Linode Kubernetes Engine (LKE)](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide to set up a Kubernetes cluster through Linode, with a kubectl instance set up to manage the cluster via its kubeconfig file.
 
-1. Create a `~/rasa-chart/` directory, and create a `rasa-values.yaml` file within it.
+1.  Create a namespace for the Rasa Kubernetes cluster. This example designates the namespace `rasacluster`.
 
-    This tutorial uses the [default Rasa Helm Chart configuration](https://raw.githubusercontent.com/RasaHQ/helm-charts/main/charts/rasa/values.yaml). The configuration comes with useful basic features, and also includes an initial example model.
+    ```command
+    kubectl create namespace rasacluster
+    ```
 
-    However, to make this configuration work for this tutorial, you should make two changes within the file:
+1.  Follow our [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-the-helm-client) tutorial how to install the Helm CLI client.
 
-    - Modify the `additionalChannelCredentials` line to remove the curly brackets, and un-comment the `rest` line beneath this. You should have lines like the following after making these changes.
+    {{< note >}}
+AlmaLinux, CentOS Stream, and Rocky Linux users may need to install `git` and `tar` prior to installing Helm:
 
-        ```file {title="rasa-values.yaml" lang="yaml"}
-        # [...]
+```command
+sudo dnf install git tar
+```
+    {{< /note >}}
+
+1.  Create a `rasa-chart` directory in the current user's home directory and change into it:
+
+    ```command
+    mkdir ~/rasa-chart
+    cd ~/rasa-chart
+    ```
+
+1.  Create a `rasa-values.yaml` file within the newly created `~/rasa-chart` directory:
+
+    ```command
+    nano ~/rasa-chart/rasa-values.yaml
+    ```
+
+1.  Give the file the following contents:
+
+    ```file{title="rasa-values.yaml" lang="yaml"}
+    applicationSettings:
+      initialModel: "https://github.com/RasaHQ/rasa-x-demo/blob/master/models/model.tar.gz?raw=true"
+      trainInitialModel: true
+      credentials:
+        enabled: true
         additionalChannelCredentials:
           rest:
-        # [...]
-        ```
+    ```
 
-        Doing this enables REST endpoints for your Rasa assistant, making it readily accessible from other applications.
+    To save the file and exit the `nano` text editor, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd>.
 
-    - Remove or comment out the entire `endpoints` section. This section is used when you want to fetch your model from a model server. You can learn about that approach in the [official documentation](https://rasa.com/docs/rasa/model-storage/#load-model-from-server).
+    The above creates a Rasa instance with a basic example model to get familiar with Rasa deployments and their configuration options. It downloads an initial training model with the Rasa deployment, trains that model, and enables Rasa's REST API endpoints.
 
-    For a more advanced and practical approach to getting an initial model, you can refer to one of Rasa's [example Helm Chart configurations](https://github.com/RasaHQ/helm-charts/blob/main/examples/rasa/train-model-helmfile.yaml). This configuration downloads model files from a Git repository and trains an initial model from those files. Likely you would use a similar approach when you want to deploy a custom model you have develop.
+    For more on Rasa's Helm configurations, look at Rasa's [default Rasa Chart configuration](https://raw.githubusercontent.com/RasaHQ/helm-charts/main/charts/rasa/values.yaml). This includes most of the settings to customize a Rasa deployment, along with helpful comments.
 
-1. Add the Rasa repository to Helm.
+    For a more advanced and practical approach to getting an initial model, refer to one of Rasa's [example Helm Chart configurations](https://github.com/RasaHQ/helm-charts/blob/main/examples/rasa/train-model-helmfile.yaml). This configuration downloads model files from a Git repository and trains an initial model from those files. A similar approach would likely be used to deploy a custom-developed model.
+
+1.  Add the Rasa repository to Helm:
 
     ```command
     helm repo add rasa https://helm.rasa.com
     ```
 
-1. Deploy your Rasa Helm Chart configuration to your cluster's namespace. The `rasarelease` portion of the example command here provides a name for your deployment. You are able to access the deployment later using this designation.
+    ```output
+    "rasa" has been added to your repositories
+    ```
+
+1.  Deploy the Rasa Helm Chart configuration to the cluster's namespace. The `rasarelease` portion of the example command here provides a name for the deployment. The deployment can later be accessed using this designation.
 
     ```command
     helm install --namespace rasacluster --values rasa-values.yaml rasarelease rasa/rasa
@@ -274,7 +300,7 @@ The steps here give walk you through setting up these prerequisites and deployin
 
 ### Accessing the Rasa Assistant
 
-Now a Rasa instance with a basic model should be running on your Kubernetes cluster. To access the instance, use the commands shown here to forward your cluster's port for the instance.
+A Rasa instance with a basic model should now be running on the Kubernetes cluster. To access the instance, use the commands shown here to forward the cluster's port for the instance:
 
 ```command
 export SERVICE_PORT=$(kubectl get --namespace rasacluster -o jsonpath="{.spec.ports[0].port}" services rasarelease)
@@ -286,7 +312,7 @@ Forwarding from 127.0.0.1:5005 -> 5005
 Forwarding from [::1]:5005 -> 5005
 ```
 
-The output indicates the port your Rasa instance has been made available on, which you can see with a command like this.
+The output indicates which port the Rasa instance is available on. Open a new terminal window and view this in action with a command such as:
 
 ```command
 curl localhost:5005
@@ -296,7 +322,7 @@ curl localhost:5005
 Hello from Rasa: 3.2.6
 ```
 
-And the Helm Chart configuration used above also enables the Rasa assistant's REST API. This allows you to access your model readily from other applications. Here is an example of the API in action from cURL.
+The Helm Chart configuration used above also enables the Rasa assistant's REST API. This allows easy access to the model from other applications. Here is an example of the API in action from cURL:
 
 ```command
 curl -X POST localhost:5005/webhooks/rest/webhook -d '{ "sender": "A User", "message": "Hello, Rasa!" }'
@@ -306,13 +332,13 @@ curl -X POST localhost:5005/webhooks/rest/webhook -d '{ "sender": "A User", "mes
 [{"recipient_id":"A User","text":"Hey! How are you?"}]
 ```
 
-Using the `/webhooks/rest/webhook` endpoint, you can chat with the assistant as you would via the command line. And the accepted data structure allows you to specify message senders, allowing your assistant to keep track of conversations across multiple users.
+Using the `/webhooks/rest/webhook` endpoint allows chatting with the assistant just as via the command line. The accepted data structure allows message senders to be specified, enabling the assistant to keep track of conversations across multiple users.
 
 ### Updating the Rasa Deploying
 
-As your setup evolves, you likely need to adjust the Rasa Helm Chart configuration. The example above uses an example model, and you can use the [Rasa API](https://rasa.com/docs/rasa/pages/http-api) to manually create and train models. But likely you want to replace the example URL with a URL for a model derived from your own local Rasa project. And you may later want to adapt your deployment to use a [model server](https://rasa.com/docs/rasa/model-storage/#load-model-from-server).
+As this setup evolves, the need to adjust the Rasa Helm Chart configuration may arise. The example above uses an example model, but the [Rasa API](https://rasa.com/docs/rasa/pages/http-api) can be used to manually create and train models. The example URL can be replaced with a URL for another model, and the deployment can later be adapted to use a [model server](https://rasa.com/docs/rasa/model-storage/#load-model-from-server).
 
-In such cases, you can use Helm's `upgrade` command to push updates based on changes to the`rasa-values.yaml` file. Using the example designations provided in this tutorial, the command should look like the following.
+In such cases, use Helm's `upgrade` command to push updates based on changes to the`rasa-values.yaml` file. Using the example designations provided in this tutorial, the command should look like the following:
 
 ```command
 helm upgrade --namespace rasacluster --reuse-values -f rasa-values.yaml rasarelease rasa/rasa
@@ -320,4 +346,4 @@ helm upgrade --namespace rasacluster --reuse-values -f rasa-values.yaml rasarele
 
 ## Conclusion
 
-This covers everything you need to get started building automated assistants and chatbots with Rasa. Rasa's models are highly capable, developing and adapting to your needs. Planning these out, learning what the models are capable of, and working through Rasa's best practices can help. The links throughout this guide, and resources in the Rasa documentation linked below, can jump start your development of the precise AI assistant you need.
+This covers everything needed to start building automated assistants and chatbots with Rasa. Rasa's models are highly capable, developing and adapting to individual needs. Planning these out, learning what the models are capable of, and working through Rasa's best practices can help. The links throughout this guide, and resources in the Rasa documentation linked below, can help jump start development of a precisely tailored AI assistant.
