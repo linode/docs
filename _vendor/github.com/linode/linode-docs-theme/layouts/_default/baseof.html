@@ -96,13 +96,12 @@
           <div
             x-data="lncNav"
             x-effect="onEffect()"
-            @scroll.window="onScroll()"
+            @scroll.window.debounce.100ms="onScroll()"
             @turbo:before-render.window="onTurboBeforeRender(event)"
             @turbo:render.window="onTurboRender()"
             @popstate.window="onPopState($event)"
             id="nav-controller"
-            data-turbo-permanent>
-          </div>
+            data-turbo-permanent></div>
           <div class="navbar__explorer-toggle h-full">
             {{ partial "sections/navigation/explorer-toggle.html" . }}
           </div>

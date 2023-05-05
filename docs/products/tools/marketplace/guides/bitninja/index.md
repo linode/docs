@@ -2,7 +2,6 @@
 description: "Deploy BitNinja on a Linode Compute Instance. This provides you with a general purpose security-as-a-service server defense tool powered by a social defense system."
 keywords: ['spam','security','waf']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-05-17
 modified_by:

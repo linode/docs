@@ -243,7 +243,7 @@ output {
     {{< note respectIndent=false >}}
 This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
-If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-centos-8/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
+If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-centos-8/#configure-virtual-hosting) section of the [Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
 {{< /note >}}
 
 1.  Start and enable `logstash`:

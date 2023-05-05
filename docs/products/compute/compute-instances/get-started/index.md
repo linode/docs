@@ -1,6 +1,7 @@
 ---
 title: Get Started
-description: "Get Started with Shared Linodes. Deploy a Shared Linode Instance using the Linode Cloud Manager."
+title_meta: "Getting Started with Compute Instances"
+description: "Learn how to quickly start using Compute Instances on the Linode Platform."
 tab_group_main:
     weight: 20
 aliases: ['/products/compute/shared-linodes/get-started/','/products/compute/shared-cpu/get-started/','/products/compute/dedicated-cpu/get-started/','/products/compute/gpu/get-started/','/products/compute/high-memory/get-started/']
@@ -48,3 +49,5 @@ Linode's Compute Instances (and other products and services) can run almost any 
 ## Deploy New Applications
 
 Now you can start using your Compute Instance. Whether you're just here to test things out or are looking to host a specific application with us, we may have a guide that can help you get up and running. Open the [Guides](/docs/guides/) section and start browsing or use the search tool at the top of the page to find any guides related to your use case.
+
+{{< content "email-warning-shortguide" >}}

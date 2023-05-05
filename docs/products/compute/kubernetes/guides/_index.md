@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: 'This short-guide will provide you with step-by-step instructions on how to enable cluster auto-scaling in your Linode Kubernetes Engine (LKE) Clsuter.'
+title_meta: "Guides and Tutorials for LKE (Linode Kubernetes Engine)"
+description: "A collection of guides to help you start deploying LKE clusters and using them to host your web applications and Cloud workloads"
 tab_group_main:
     weight: 30
 published: 2020-06-02

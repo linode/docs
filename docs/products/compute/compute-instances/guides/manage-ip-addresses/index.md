@@ -1,14 +1,13 @@
 ---
+title: "Managing IP Addresses on a Compute Instance"
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-01-18
+published: 2016-08-23
+modified: 2023-04-27
 modified_by:
   name: Linode
-published: 2016-08-23
-title: "Managing IP Addresses on a Compute Instance"
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
 authors: ["Linode"]
 ---
@@ -157,6 +156,10 @@ IPv6 SLAAC addresses are not able to be transferred between Compute Instances. I
 
 {{< note >}}
 Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability).
+{{< /note >}}
+
+{{< note type=warning >}}
+When IP Sharing is enabled for an IP address, all connectivity to that IP address is immediately lost *until* it is configured on [Lelastic](/docs/products/compute/compute-instances/guides/failover/#install-and-configure-lelastic), [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/), or another routing software. This is not an issue when adding a new IP address, but should be considered if you are enabling IP Sharing on an existing IP address that is actively being used.
 {{< /note >}}
 
 To learn how to enable IP Sharing within the Cloud Manager, review the following steps.

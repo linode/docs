@@ -2,7 +2,6 @@
 description: "This guide shows how to install and configure MySQL/MariaDB so you can run databases for anything from a CRM to WordPress by using the Linode One-Click Marketplace."
 keywords: ['database','mysql','rdbms','relational database','mariadb']
 tags: ["database","cloud-manager","linode platform","mysql","marketplace","mariadb"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-13
 modified: 2022-03-08
 modified_by:

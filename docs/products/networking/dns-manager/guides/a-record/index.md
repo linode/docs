@@ -1,6 +1,5 @@
 ---
 description: "Learn how to create A and AAAA records using Linode's DNS Manager"
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-03
 modified_by:
   name: KincaidYang

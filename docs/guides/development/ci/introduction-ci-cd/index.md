@@ -13,7 +13,7 @@ title_meta: "Overview of Continuous Integration and Continuous Delivery"
 external_resources:
   - '[How to Automate Builds with Jenkins on Ubuntu](/docs/guides/automate-builds-with-jenkins-on-ubuntu/)'
 audiences: ["foundational", "beginner"]
-tags: ["automation"]
+tags: ["automation", "education"]
 authors: ["Linode"]
 ---
 

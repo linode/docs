@@ -2,7 +2,6 @@
 description: "This guide is a brief overview of IPv6 support on Linode, including how to find your IPv6 address, requesting additional IPs, and managing IPs via the Cloud Manager."
 keywords: ["ipv6 networking", "IP configuration"]
 aliases: ['/networking/an-overview-of-ipv6-on-linode/','/networking/how-to-enable-native-ipv6-on-linux/','/networking/native-ipv6-networking/','/networking/linode-network/an-overview-of-ipv6-on-linode/','/guides/an-overview-of-ipv6-on-linode/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2011-05-03
 modified: 2022-11-29
 modified_by:
@@ -18,7 +17,7 @@ authors: ["Linode"]
 
 All Compute Instances are created with one IPv6 address, which is acquired by [*Stateless Address Autoconfiguration*](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_(SLAAC)) (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
-Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/guides/network-transfer/), so you can use your default IPv6 address as if it were a private IP address.
+Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your [network transfer quota](/docs/products/platform/get-started/guides/network-transfer/), so you can use your default IPv6 address as if it were a private IP address.
 
 {{< note >}}
 In order for your Compute Instance to receive its SLAAC address, it must respond to IPv6's ping protocol.

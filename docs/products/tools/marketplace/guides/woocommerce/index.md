@@ -2,7 +2,6 @@
 description: "Learn how to deploy WooCommerce, the most popular ecommerce plugin, on Wordpress through the Linode Marketplace."
 keywords: ['woocommerce','wordpress','marketplace apps','ecommerce','e-commerce','cms']
 tags: ["cloud-manager","linode platform","cms","wordpress","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified: 2022-04-01
 title: "Deploy WooCommerce through the Linode Marketplace"

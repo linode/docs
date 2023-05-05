@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for LKE (Linode Kubernetes Engine)"
 description: "Linode Kubernetes Engine instances are managed easily with developer tools like the Linode API or CLI as well as third party tools and integrations."
 tab_group_main:
     weight: 50

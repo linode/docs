@@ -1,7 +1,6 @@
 ---
 description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App."
 keywords: ['terraria','marketplace app', 'game server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
 modified: 2022-05-10
 modified_by:

@@ -2,7 +2,7 @@
 slug: how-to-use-haproxy-for-load-balancing
 description: "HAProxy allows a webserver to spread incoming requests across multiple endpoints. Learn how to install and configure HAProxy on a Linode."
 keywords: ["haproxy", "load balancing", "high availability"]
-tags: ["proxy"]
+tags: ["proxy", "ecommerce", "media"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-30
 modified: 2019-02-01

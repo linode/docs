@@ -1,8 +1,7 @@
 ---
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
 keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 published: 2020-03-13
 modified: 2022-05-31
 modified_by:
@@ -32,7 +31,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS, Rocky Linux 8
+- **Supported distributions:** Ubuntu 20.04 LTS, AlmaLinux 8, Rocky Linux 8
 - **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment

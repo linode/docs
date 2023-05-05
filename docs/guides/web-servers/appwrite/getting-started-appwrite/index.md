@@ -4,6 +4,7 @@ description: "Appwrite is an open source BaaS platform for app development. This
 keywords: ['install appwrite','appwrite docs','appwrite docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-03
+modified: 2023-04-04
 modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with Appwrite as a Backend Server"
@@ -33,7 +34,7 @@ This tutorial introduces you to Appwrite, highlighting its features and how it c
     sudo dnf upgrade
     ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -91,17 +92,17 @@ The first step is to install Docker, which is used to both install and run your 
     docker -v
     ```
 
-    {{< output >}}
-Docker version 20.10.17, build 100c701
-    {{< /output >}}
+    ```output
+    Docker version 20.10.17, build 100c701
+    ```
 
-    {{< note respectIndent=false >}}
-On RHEL-derived distributions, you may additionally have to run the following command to ensure the Docker daemon starts:
+    {{< note >}}
+    On RHEL-derived distributions, you may additionally have to run the following command to ensure the Docker daemon starts:
 
-```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
-sudo systemctl start docker
-```
-{{< /note >}}
+    ```command {title="AlmaLinux / CentOS Stream / Fedora / Rocky Linux"}
+    sudo systemctl start docker
+    ```
+    {{< /note >}}
 
 ### Installing Appwrite
 
@@ -110,16 +111,16 @@ Appwrite can be installed with a single Docker command. Essentially, this comman
 The command creates a new `appwrite` directory in the current directory, and this new directory becomes the base for your Appwrite instance:
 
 ```command
-sudo docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw --entrypoint="install" appwrite/appwrite:1.0.3
+sudo docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw --entrypoint="install" appwrite/appwrite:1.2.1
 ```
 
 Progress through the prompts, which allow you to set the initial configuration options for your Appwrite instance. You can press **Enter** at each prompt to receive the default values.
 
 Docker then runs a Docker Compose command to complete the setup. When this is finished, you should see:
 
-{{< output >}}
+```output
 Appwrite installed successfully
-{{< /output >}}
+```
 
 ### Starting Appwrite
 
@@ -237,7 +238,7 @@ Here you can see the initial steps for creating an Appwrite project. This can se
 
 1.  Click the **Create Project** button, and enter the name for your project. This takes you to the dashboard for the new project.
 
-    [![Appwrite project dashboard](appwrite-project-dashboard_small.png)](appwrite-project-dashboard.png)
+    ![Appwrite project dashboard](appwrite-project-dashboard.png)
 
 1.  From here, you can manage all aspects of your Appwrite project. For instance, from the left-hand sidebar you can:
 

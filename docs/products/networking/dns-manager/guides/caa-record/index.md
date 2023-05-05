@@ -2,7 +2,6 @@
 description: "Learn how to create CAA records using Linode's DNS Manager"
 keywords: ["caa", "dns", "records", "subdomain", "domain"]
 tags: ["linode platform","cloud manager","dns"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-31
 modified: 2022-10-28
 modified_by:

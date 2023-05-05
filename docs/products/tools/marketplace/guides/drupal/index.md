@@ -2,7 +2,6 @@
 description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
 keywords: ['drupal','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2022-07-11
 modified_by:

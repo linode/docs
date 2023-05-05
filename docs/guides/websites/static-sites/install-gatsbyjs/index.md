@@ -61,7 +61,7 @@ This guide sets up the following flow of events:
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 
-1.  [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
+1.  [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-using-homebrew-on-macos) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
 
 ## Prepare Your Production Linode
 

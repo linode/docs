@@ -1,7 +1,6 @@
 ---
 slug: install-mongodb-on-ubuntu-20-04
 description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
-og_description: 'This guide explains how to install MongoDB on Ubuntu 20.04'
 keywords: ['install MongoDB','use MongoDB','configure MongoDB','what is MongoDB']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-12
@@ -18,6 +17,7 @@ external_resources:
 - '[MongoDB Troubleshooting Guide](https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/)'
 relations:
     platform:
+        key: how-to-install-mongodb
         keywords:
            - distribution: Ubuntu 20.04
 authors: ["Jeff Novotny"]
@@ -39,12 +39,12 @@ For a more in-depth introduction to MongoDB, including a comparison between Mong
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install MongoDB

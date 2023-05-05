@@ -2,7 +2,6 @@
 description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
 keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
 tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
 modified_by:

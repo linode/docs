@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for NodeBalancers"
 description: "Linode NodeBalancers can be created and managed with developer tools like the Linode API, CLI, Linode Cloud Controller Manager, and third party tools and integrations."
 tab_group_main:
     weight: 50
