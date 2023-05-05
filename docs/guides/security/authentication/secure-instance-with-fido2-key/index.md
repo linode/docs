@@ -5,7 +5,7 @@ description: 'Learn how to use FIDO2 to access your compute instances via SSH.'
 keywords: ['ssh','fido','security key','mobile','yubikey']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Bill Huang"]
-published: 2023-03-21
+published: 2023-05-05
 modified_by:
   name: Linode
 ---
@@ -18,6 +18,14 @@ Linode's [Cloud Manager](/docs/products/tools/cloud-manager/) recently extended 
 
 [Akamai MFA](https://www.akamai.com/products/akamai-mfa) is a full-service MFA solution for the workforce, featuring a phish-proof FIDO2 authentication factor. However, the full Akamai MFA service is not required in order to support MFA for your compute instances. Rather, you only need the Akamai MFA mobile app, which is available for free in the Apple and Google stores, and Akamai akr. Akamai akr is an SSH agent that cooperates with the Akamai MFA mobile app to perform FIDO2-based authentication. Akamai akr serves as a bridge between your local machine and the Akamai MFA mobile app on your phone, while the Akamai MFA mobile app turns your phone into a FIDO2 authenticator. The FIDO2 private key that serves as your credential is securely stored on your phone (and never leaves the phone) while the actual challenge is presented to you as a phone notification.
 
+## Requirements
+
+The Akamai akr tool generates keys using the ECDSA algorithm with 256-bit strength and outputs them in the `sk-ecdsa-sha2-nistp256` format. Due to this, both the local system and any remote systems that use the public key must have OpenSSH 8.2 or greater. To check your OpenSSH version, run:
+
+```command
+ssh -V
+```
+
 ## Installing Akamai akr
 
 ### Installing Akamai akr on macOS
@@ -29,17 +37,33 @@ brew install akamai/mfa/akr
 brew install pinentry-mac
 ```
 
-### Installing Akamai akr on Debian
+### Installing Akamai akr on Debian and Ubuntu
 
-There are also packages available for the Debian package manager.
+1.  Install GnuPG.
 
-```command
-curl -SsL https://akamai.github.io/akr-pkg/debian/KEY.gpg | sudo apt-key add -
-sudo curl -SsL -o /etc/apt/sources.list.d/akr.list https://akamai.github.io/akr-pkg/debian/akr.list
-sudo apt update
-sudo apt install akr
-sudo apt install pinentry-tty
-```
+    ```command
+    sudo apt update
+    sudo apt install gnupg
+    ```
+
+1.  Download the Akamai AKR key file and add it to the `/usr/share/keyrings/` directory.
+
+    ```command
+    curl -fsSL https://akamai.github.io/akr-pkg/ubuntu/KEY.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/akr.gpg > /dev/null
+    ```
+
+1.  Add the Akamai AKR repository.
+
+    ```command
+    echo "deb [signed-by=/usr/share/keyrings/akr.gpg] https://akamai.github.io/akr-pkg/ubuntu ./" | sudo tee /etc/apt/sources.list.d/akr.list
+    ```
+
+1.  Install the `akr` and `pinentry-tty` packages.
+
+    ```command
+    sudo apt update
+    sudo apt install akr pinentry-tty
+    ```
 
 ### Installing Akamai akr on CentOS and RHEL
 
@@ -83,6 +107,12 @@ When you have Akamai akr installed, you can follow the steps outlined here to se
     akr setup
     ```
 
+    This command attempts to write to the SSH client configuration file in the path `~/.ssh/config`. If this file doesn't exist, you will receive a file IO error that indicates the file can't be found. To overcome this, create the file manually using the command below and then rerun `akr setup`:
+
+    ```command
+    mkdir ~/.ssh/ && touch ~/.ssh/config
+    ```
+
 1.  Run the pair command, which generates a QR code.
 
     ```command
@@ -97,9 +127,7 @@ When you have Akamai akr installed, you can follow the steps outlined here to se
     akr generate --name <key name>
     ```
 
-    {{< note type="alert" >}}
-    `akr generate` produces a public key. Save this key somewhere safe.
-    {{< /note >}}
+1.  An SSH key is generated using the `sk-ecdsa-sha2-nistp256` file format. Retain this public key so you can install it on any systems you wish to access through Akamai MFA.
 
 ## Adding the SSH Key to Cloud Manager
 
