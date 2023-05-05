@@ -51,7 +51,7 @@ The following sections detail specifically how to create a CIFS mount on Ubuntu,
 
 ### Install CIFS Utilities Packages
 
-The CIFS utility package provides the tools needed to connect to a share and manage mounts on a Linux system. You use it to help create and manage a connection to a Windows, macOS, or Linux share. The following steps show how to install this software:
+The CIFS utility package provides the tools needed to connect to a share and manage mounts on a Linux system. You use it to help create and manage a connection to a Windows, macOS, or Linux share. The following steps show how to install CIFS utilities:
 
 1. Update the list of available packages using the below command:
 
@@ -73,15 +73,15 @@ The CIFS utility package provides the tools needed to connect to a share and man
 
     If all packages are updated, skip to step 4.
 
-2. Upgrade all installed packages to their latest versions using the following command. The `-y` option is used to automatically answer "yes" to any questions that may arise during the upgrade process.
+1. Upgrade all installed packages to their latest versions using the following command. The `-y` option is used to automatically answer "yes" to any questions that may arise during the upgrade process.
 
     ```command
     sudo apt -y upgrade
     ```
 
-3. Reboot your server and/or restart services as needed to complete the upgrade process. This step is important to ensure that any changes made during the upgrade process take effect.
+1. Reboot your server and/or restart services as needed to complete the upgrade process. This step is important to ensure that any changes made during the upgrade process take effect.
 
-4. Install the CIFS utility package which is needed to mount SMB shares on Linux using the following command:
+1. Install the CIFS utility package which is needed to mount SMB shares on Linux using the following command:
 
     ```command
     sudo apt -y install cifs-utils
@@ -107,7 +107,7 @@ The CIFS utility package provides the tools needed to connect to a share and man
     Do you want to continue? [Y/n] y
     ```
 
-5. Verify that CIFS is available using the following command:
+1. Verify that CIFS is available using the following command:
 
     ```command
     mount -t cifs
