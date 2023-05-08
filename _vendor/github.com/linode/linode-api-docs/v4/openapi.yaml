@@ -13151,7 +13151,7 @@ paths:
                   type: string
                   description: >
                    The status to be applied to this Firewall.
-                    
+
                     * When a Firewall is first created its status is `enabled`.
                     * Use the [Delete Firewall](/docs/api/networking/#firewall-delete) endpoint to delete a Firewall.
                   enum:
