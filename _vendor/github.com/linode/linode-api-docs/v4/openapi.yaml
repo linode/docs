@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.152.0
+  version: 4.152.3
 
   title: Linode API
   description: |
@@ -7798,13 +7798,13 @@ paths:
                       slaac:
                         $ref: '#/components/schemas/IPAddressV6Slaac'
                       global:
-                        $ref: '#/components/schemas/IPv6Pool'
+                        $ref: '#/components/schemas/IPv6Range'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/linode/instances/123/ips
       - lang: CLI
         source: >
@@ -7916,7 +7916,7 @@ paths:
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/linode/instances/123/ips/97.107.143.141
       - lang: CLI
         source: >
@@ -19609,16 +19609,15 @@ components:
           enum:
           - none
           - asynch
-          - semi_synch
-          example: semi_synch
+          example: async
           description: |
             The replication method used for the Managed Database.
 
-            Defaults to `none` for a single cluster and `semi_synch` for a high availability cluster.
+            Defaults to `none` for a single cluster and `asynch` for a high availability cluster.
 
             Must be `none` for a single node cluster.
 
-            Must be `asynch` or `semi_synch` for a high availability cluster.
+            Must be `asynch` for a high availability cluster.
           x-linode-cli-display: 99
         replication_commit_type:
           type: string
@@ -19634,8 +19633,6 @@ components:
             The synchronization level of the replicating server.
 
             Must be `local` or `off` for the `asynch` replication type.
-
-            Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
           x-linode-cli-display: 100
         port:
           type: integer
@@ -21732,8 +21729,7 @@ components:
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this pool calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 124
           x-linode-cli-display: 2
         region:
@@ -21758,15 +21754,14 @@ components:
         range:
           type: string
           description: >
-            The IPv6 range of addresses in this pool.
+            The IPv6 address of this range.
           example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 64
           x-linode-cli-display: 2
         region:
@@ -21779,9 +21774,8 @@ components:
         route_target:
           type: string
           description: >
-            The last address in this block of IPv6 addresses.
+            The IPv6 SLAAC address.
           example: '2600:3c01::ffff:ffff:ffff:ffff'
-          nullable: true
     IPv6RangeBGP:
       type: object
       description: >
@@ -21790,15 +21784,14 @@ components:
         range:
           type: string
           description: >
-            The IPv6 range of addresses in this pool.
+            The IPv6 address of this range.
           example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 64
           x-linode-cli-display: 2
         region:
