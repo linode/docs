@@ -1911,6 +1911,10 @@ rpaf
 rpc
 rpcbind
 rpmforge
+rrset
+rrsets
+rrsig
+rrsigs
 rsa
 rspec
 rss
