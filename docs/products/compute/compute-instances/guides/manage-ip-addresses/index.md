@@ -24,7 +24,7 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
     ![Summary section with the IP addresses highlighted](compute-ip-addresses-quick.png)
 
-1.  To view all of your IP address for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
+1.  To view all IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
     ![The IP Addresses table on the Network tab](compute-ip-addresses-full.png)
 
@@ -164,7 +164,7 @@ To learn how to enable IP Sharing within the Cloud Manager, review the following
 
 1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. Make sure the IP address you wish to share has been added to one of those instances. If not, add it now. See [Adding an IP Address](#adding-an-ip-address).
 
-1.  Of those two Compute Instance, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
+1.  Of those two Compute Instances, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
 1.  Click the **IP Sharing** button under the *IP Addresses* section.
 
     ![Configuring IP sharing](ip-sharing-button.png)
