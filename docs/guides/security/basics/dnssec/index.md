@@ -13,7 +13,6 @@ external_resources:
 - '[RFC 9364 DNS Security Extensions (DNSSEC)](https://www.rfc-editor.org/rfc/rfc9364)'
 ---
 
-
 The Domain Name System (DNS), the directory name system that underlies the global Internet, provides no assurance that online sites are who they claim to be, or that the information they provide is valid. Recognizing this shortcoming, the Internet Engineering Task Force (IETF) developed Domain Nam,e System Security Extensions (DNSSEC) to add authentication and integrity protection to the DNS protocol.
 
 This guide explains what DNSSEC is and how it works, and why you might or might not want to deploy it. It provides step-by-step procedures for enabling DNSSEC on your name servers.
@@ -84,31 +83,31 @@ This guide uses the example.com domain as an example. Replace this address with 
 
 1.  Remove any previously installed keys and certificates in /etc/nsd, then generate new ones:
 
-	```command
-	cd /etc/nsd
-	sudo rm *pem *key
-	sudo nsd-control-setup
-	```
+    ```command
+    cd /etc/nsd
+    sudo rm *pem *key
+    sudo nsd-control-setup
+    ```
 
-	```output
-	setup in directory /etc/nsd
-	Certificate request self-signature ok
-	subject=CN = nsd-control
-	removing artifacts
-	Setup success. Certificates created.
-	```
+    ```output
+    setup in directory /etc/nsd
+    Certificate request self-signature ok
+    subject=CN = nsd-control
+    removing artifacts
+    Setup success. Certificates created.
+    ```
 
 1.  Restart NSD to ensure the server loads the new keys and certificates:
 
-	```command
+    ```command
     sudo systemctl restart nsd
-	```
+    ```
 
 1.  Install the `ldnsutils` suite, needed for key generation and signing:
 
     ```command
-	sudo apt install ldnsutils
-	```
+    sudo apt install ldnsutils
+    ```
 
 1.  Move to the zones directory and generate ZSK and KSK files. Switch to the root user for export commands because sudo won’t work here. You can optionally capture the ZSK and KSK variables for later reuse in the “Zone Maintenance” section.
 
@@ -128,25 +127,25 @@ This guide uses the example.com domain as an example. Replace this address with 
 
     ```command
     rm *ds
-	````
+    ````
 
 1.  While still logged in as root, sign the example.com zone using the ZSK and KSK variables you previously created.
 
     ```command
     ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
-	```
+    ```
 
 1.  In addition to keys, the zones directory now contains a signed zone file.
 
     ```command
-	ls
-	```
+    ls
+    ```
 
     ```output
-	Klinoderocks.com.+013+06274.key      Klinoderocks.com.+013+55738.private
-    Klinoderocks.com.+013+06274.private  linoderocks.com.zone
-    Klinoderocks.com.+013+55738.key      linoderocks.com.zone.signed
-	```
+    Kexample.com.+013+06274.key       Kexample.com.+013+55738.private
+    Kexample.com.+013+06274.private   example.com.zone
+    Kexamples.com.+013+55738.key      example.com.zone.signed
+    ```
 
 
 1.  Open the main /etc/nsd/nsd.conf configuration file and, in the zone: section, point to the signed zone file.
@@ -165,23 +164,24 @@ This guide uses the example.com domain as an example. Replace this address with 
     nsd-control reload example.com
     # exit as root user
     exit
-	```
+    ```
 
     A dig query for the zone using DNSKEY now return records with DNSSEC signatures::
+
     ```command
     dig DNSKEY @ns1.example.com example.com +multiline +norec
-	```
+    ```
 
     ```output
-	..
+    ..
     example.com.	3600 IN	DNSKEY 256 3 13 (
-		    		LWaVmaC8mVyGlrU1uF+tOsO8od6HCy21owPW+k5EDUI0
-		    		T0MGJietjPQ2akcOuyfixZ3h0DGeCdCByfsrGD4t3w==
+    	    		LWaVmaC8mVyGlrU1uF+tOsO8od6HCy21owPW+k5EDUI0
+    	    		T0MGJietjPQ2akcOuyfixZ3h0DGeCdCByfsrGD4t3w==
 			    	) ; ZSK; alg = ECDSAP256SHA256 ; key id = 6274
     example.com.	3600 IN	DNSKEY 257 3 13 (
-				    ebKStT/78jf0NVrKm5qVrTrSLWRoGIqmvgNYKgdzTAgv
-				    Wxjfjh4P3JPEgwlMxLHmb3liZd+8De2FwJEWy7m0Yg==
-				    ) ; KSK; alg = ECDSAP256SHA256 ; key id = 55738
+        		    ebKStT/78jf0NVrKm5qVrTrSLWRoGIqmvgNYKgdzTAgv
+    			    Wxjfjh4P3JPEgwlMxLHmb3liZd+8De2FwJEWy7m0Yg==
+    			    ) ; KSK; alg = ECDSAP256SHA256 ; key id = 55738
     ..
 	```
 
@@ -190,12 +190,12 @@ This guide uses the example.com domain as an example. Replace this address with 
 	```command
     cd /etc/nsd/zones/master
     sudo ldns-key2ds -n -f -2 example.com.zone.signed
-	```
+    ```
 
-	```output
+    ```output
     example.com.	3600	IN	DS	6274 13 2 044783c65c032a0ae25a1de626e341c483a89601c766e812a001bc512145fc81
     example.com.	3600	IN	DS	55738 13 2 c4dae4d001f8c8f1b4f1adec890eba39010143752e6ce03b6567c85aa7fbde46
-	```
+    ```
 
 1.  Your server does not return valid responses until you upload these DS records at your registrar. For each DS record, add this information at the registrar:
 
