@@ -1,7 +1,7 @@
 ---
 slug: dnssec
 title: "How to Secure DNS with DNSSEC"
-description: ''
+description: "An explanation of DNSSEC, why it's important, and how to implement it."
 keywords: ['dns','security','dnssec','domain name','poison','cache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
@@ -175,19 +175,19 @@ This guide uses the example.com domain as an example. Replace this address with 
     ```output
     ..
     example.com.	3600 IN	DNSKEY 256 3 13 (
-    	    		LWaVmaC8mVyGlrU1uF+tOsO8od6HCy21owPW+k5EDUI0
-    	    		T0MGJietjPQ2akcOuyfixZ3h0DGeCdCByfsrGD4t3w==
-			    	) ; ZSK; alg = ECDSAP256SHA256 ; key id = 6274
+                    LWaVmaC8mVyGlrU1uF+tOsO8od6HCy21owPW+k5EDUI0
+                    T0MGJietjPQ2akcOuyfixZ3h0DGeCdCByfsrGD4t3w==
+                    ) ; ZSK; alg = ECDSAP256SHA256 ; key id = 6274
     example.com.	3600 IN	DNSKEY 257 3 13 (
-        		    ebKStT/78jf0NVrKm5qVrTrSLWRoGIqmvgNYKgdzTAgv
-    			    Wxjfjh4P3JPEgwlMxLHmb3liZd+8De2FwJEWy7m0Yg==
-    			    ) ; KSK; alg = ECDSAP256SHA256 ; key id = 55738
+                    ebKStT/78jf0NVrKm5qVrTrSLWRoGIqmvgNYKgdzTAgv
+                    Wxjfjh4P3JPEgwlMxLHmb3liZd+8De2FwJEWy7m0Yg==
+                    ) ; KSK; alg = ECDSAP256SHA256 ; key id = 55738
     ..
-	```
+    ```
 
 1.  Generate DS records for the zone, and save the results to a text file or to your clipboard. You need these for the final step of having your zone signed at your domain registrar.
 
-	```command
+    ```command
     cd /etc/nsd/zones/master
     sudo ldns-key2ds -n -f -2 example.com.zone.signed
     ```
@@ -204,13 +204,17 @@ This guide uses the example.com domain as an example. Replace this address with 
     - Digest: The message digest (the long string in each record) contained in the .ds file
     - Algorithm: The method used to produce the message digest. In the example above, you used ECDSAP256SHA256 (type 13)
 
-    Putting this all together, here are the DS fields entered at dynadot.com, the registrar for linoderocks.com:
+    Putting this all together, here are the DS fields entered at dynadot.com, a domain name registrar:
+
+	![An example domain name with DNSSEC records](example_configuration.jpg)
 
     Save both DS records at your registrar, and the DNSSEC chain of trust is complete.
 
 1.  Next, verify your configuration with a DNSSEC test site such as dnsviz.net.
 
     In the following test diagram, each rectangle represents a different level in the chain of trust, with one apiece for the root, .com., and linoderocks.com domains. The green arrows all along the path indicate a complete chain of trust extends from the root (“.”) on through to linoderocks.com.
+
+	![A visualization of the chain of trust.](dnsviz_visualization_linoderocks.jpg)
 
     If any zone is missing valid DS records for the zone under it, or has a corrupt or expired ZSK, the dnsviz.net website displays red arrows. If you see red arrows anywhere in your diagram, do not proceed until resolving those. DNSSEC does not work unless the chain of trust is complete.
 
