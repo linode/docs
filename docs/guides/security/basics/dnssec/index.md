@@ -206,7 +206,7 @@ This guide uses the example.com domain as an example. Replace this address with 
 
     Putting this all together, here are the DS fields entered at dynadot.com, a domain name registrar:
 
-	![An example domain name with DNSSEC records](example_configuration.jpg)
+    ![An example domain name with DNSSEC records](example_configuration.jpg)
 
     Save both DS records at your registrar, and the DNSSEC chain of trust is complete.
 
@@ -214,7 +214,7 @@ This guide uses the example.com domain as an example. Replace this address with 
 
     In the following test diagram, each rectangle represents a different level in the chain of trust, with one apiece for the root, .com., and linoderocks.com domains. The green arrows all along the path indicate a complete chain of trust extends from the root (“.”) on through to linoderocks.com.
 
-	![A visualization of the chain of trust.](dnsviz_visualization_linoderocks.jpg)
+    ![A visualization of the chain of trust.](dnsviz_visualization_linoderocks.jpg)
 
     If any zone is missing valid DS records for the zone under it, or has a corrupt or expired ZSK, the dnsviz.net website displays red arrows. If you see red arrows anywhere in your diagram, do not proceed until resolving those. DNSSEC does not work unless the chain of trust is complete.
 
