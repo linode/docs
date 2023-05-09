@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Ubuntu 9.10 (Karmic) to power a standard wiki implementation.'
 keywords: ["ikiwiki", "ubuntu", "wiki", "perl", "git", "markdown", "karmic"]
 tags: ["wiki","ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
-Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/development/version-control/) system of your choice, though this guide assumes that you use [git](/docs/development/version-control/how-to-configure-git/).
+Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/development/version-control/) system of your choice, though this guide assumes that you use [git](/docs/guides/how-to-configure-git/).
 
-This guide is written for Ubuntu 9.10 (Karmic), and assumes that you've followed our [getting started guide](/docs/getting-started/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-9-10-karmic/) and a working installation of [git](/docs/development/version-control/how-to-configure-git/).
+This guide is written for Ubuntu 9.10 (Karmic), and assumes that you've followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/) and a working installation of [git](/docs/guides/how-to-configure-git/).
 
 ## Installing Ikiwiki
 
@@ -201,7 +199,7 @@ You may find yourself wondering why there are so many git repositories for a sin
 
 ## Notes for Using Gitosis with Ikiwiki
 
-If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](/docs/assets/655-ikiwiki.setup) for details on how to configure this.
+If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](/docs/assets/655-ikiwiki.setup) for details on how to configure this.
 
 The files that needed to be owned by the `gitosis` user are the "destination" directory where Ikiwiki puts its output, the "source directory", and the bare repository. Run the following commands to set this ownership.
 

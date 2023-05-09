@@ -1,10 +1,6 @@
 ---
 slug: dolphin
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
-og_description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
 keywords: ["social network", "dolphin", "boonex"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,13 +15,14 @@ external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'
     - '[Boonex Forums](http://www.boonex.com/forums/)'
+authors: ["Chris Ciufo"]
 ---
 
 [Dolphin](http://www.boonex.com/dolphin) is an open-source software package for building social networks, dating sites and niche communities. Dolphin's features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the [Dolphin Market](http://www.boonex.com/market) to find extensions, design templates, mods, plugins, language packs and third party software integrations.
 
 ## Dolphin Prerequisites
 
-Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/websites/hosting-a-website/). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
+Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
 
 ### Installing PHP Extensions
 
@@ -86,7 +83,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
         sudo apt-get install openjdk-6-jre
 
-2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/security/securing-your-server/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
+2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
 
 You have successfully installed JRE on your Linode.
 
@@ -94,15 +91,15 @@ You have successfully installed JRE on your Linode.
 
 Now that you've installed the necessary prerequisites, we can start installing Dolphin. We'll walk you through the process of downloading Dolphin, adding a new MySQL user and database, configuring permissions, running the install script, removing the installation directory, and finally logging in to the Dolphin admin panel.
 
- {{< note >}}
-We assume that you followed the [Hosting a Website guide](/docs/websites/hosting-a-website/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+{{< note >}}
+We assume that you followed the [Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 
 ### Downloading Dolphin
 
 First, you need to download the latest Dolphin release. Here's how:
 
- {{< note >}}
+{{< note >}}
 Be sure to check the [Dolphin web site](http://www.boonex.com/dolphin) to verify that you are downloading the latest release.
 {{< /note >}}
 
@@ -183,29 +180,29 @@ Now you can run the install script from your browser. Here's how:
 
 1.  Navigate to <http://example.com/dolphin/install/index.php>. Replace `example.com` with your domain name or IP address. The Dolphin installation page appears, as shown below.
 
-    [![Dolphin installer.](1076-dolphin-1-small.png)](861-Dolphin1.png)
+    ![Dolphin installer.](861-Dolphin1.png)
 
 2.  Click **Install** to begin. The webpage shown below appears.
 
-    [![Dolphin installer.](1077-dolphin-2-small.png)](862-Dolphin2.png)
+    ![Dolphin installer.](862-Dolphin2.png)
 
-    [![Dolphin installer.](1078-dolphin-3-small.png)](863-Dolphin2a.png)
+    ![Dolphin installer.](863-Dolphin2a.png)
 
 3.  All of the files listed should be *Writable*. Click **Next** to continue. The *Paths Check* webpage appears, as shown below.
 
-    [![Dolphin installer.](1079-dolphin-4-small.png)](864-Dolphin3.png)
+    ![Dolphin installer.](864-Dolphin3.png)
 
 4.  All of the paths listed should be "found". You should also see a **GD library installed** message at the bottom of the webpage. Click **Next** to continue. The *Database* webpage appears, as shown below.
 
-    [![Dolphin installer.](1080-dolphin-5-small.png)](865-Dolphin4.png)
+    ![Dolphin installer.](865-Dolphin4.png)
 
 5.  Enter the details for the Dolphin database you created earlier in this guide. Click **Next** to continue. The *Configuration* webpage appears, as shown below.
 
-    [![Dolphin installer.](1081-dolphin-6-small.png)](866-Dolphin5.png)
+    ![Dolphin installer.](866-Dolphin5.png)
 
 6.  Complete the form by entering the required information for your website, and then click **Next** to continue. The *Cron Jobs* webpage appears, as shown below.
 
-    [![Dolphin installer.](1082-dolphin-7-small.png)](867-Dolphin6.png)
+    ![Dolphin installer.](867-Dolphin6.png)
 
 7.  Now you'll need to set up a cron job specified on the webpage. To set up your cron job, you'll need to open your crontab for editing by entering the following command:
 
@@ -219,7 +216,7 @@ Now you can run the install script from your browser. Here's how:
 9.  To save the cron job, press Control-X, and then press Y to save.
 10. Back in your web browser, click **Next**. The *Permissions Reversal* webpage appears, as shown below.
 
-    [![Dolphin installer.](1083-dolphin-8-small.png)](868-Dolphin7.png)
+    ![Dolphin installer.](868-Dolphin7.png)
 
 11. To reverse your permissions, enter the following commands, one by one. Be sure to replace `example_user` with your username, and `example.com` with your domain name:
 
@@ -230,11 +227,11 @@ Now you can run the install script from your browser. Here's how:
 
 12. Back in your web browser, click **Check**. The webpage should now indicate that the directory is "Non-writable", as shown below.
 
-    [![Dolphin installer.](1084-dolphin-9-small.png)](869-Dolphin7a.png)
+    ![Dolphin installer.](869-Dolphin7a.png)
 
 13. Click **Next**. If the webpage shown below appears, You have successfully installed Dolphin on your Linode.
 
-    [![Dolphin installer.](1085-dolphin-10-small.png)](870-Dolphin8.png)
+    ![Dolphin installer.](870-Dolphin8.png)
 
 14. Copy the languages from the install directory by entering the following command. Be sure to replace `example_user` with your username, and `example.com` with your domain name:
 
@@ -265,7 +262,7 @@ Now you can install any of Dolphin's modules in the **Tools** \> **Modules** sec
 
 If you have PHP running as an Apache module, you may need to update permissions to allow installation of some of these modules.
 
- {{< note >}}
+{{< note >}}
 If you are running PHP in CGI mode, you can skip this section.
 {{< /note >}}
 
@@ -367,10 +364,9 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 
 20. If the start was successful, you can use the [Boonex Media Server Tester](http://www.boonex.com/rms.html) to verify that your RMS install is working properly. If you get "NetConnection.Connect.Success", everything is working.
 
- {{< note >}}
-If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
-{{< /note >}}
-
+    {{< note>}}
+    If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+    {{< /note >}}
 
 21. If your test was successful, hold Control and press C to stop `red5.sh`.
 22. Now you can start RMS as a background process by entering the following command:

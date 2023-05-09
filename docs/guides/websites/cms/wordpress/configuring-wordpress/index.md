@@ -1,23 +1,18 @@
 ---
 slug: configuring-wordpress
-author:
-  name: Nathaniel Stickman
-description: "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
-og_description:  "You can configure your WordPress site''s default installation to enhance its functionality. For example, install the PHP GD extension to modify images within WordPress. Another common change is to prettify your WordPress site''s permalinks. This guide shows you how to configure your WordPress site to enable helpful utilities."
+description: "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
+og_description:  "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 keywords: ['wordpress configurations']
-tags: ['wordpress', 'cms']
+tags: ["wordpress", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
+image: HowtoConfigureWordpress.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "Configuring WordPress"
-h1_title: "How to Configure WordPress"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Best Practices for Configuring WordPress"
 external_resources:
 - '[WordPress Support: First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 WordPress is one of the most popular Content Management Systems (CMSs) around. It is open source and is an outstanding tool for creating your own blog or any content-centered website. This guide walks you through several ways that you can fine-tune your WordPress configuration beyond the basic installation. The steps in this guide should work for most Linux distributions.
@@ -31,18 +26,9 @@ If you have not already installed WordPress on your server, you can follow one o
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
-
-1. Update your system.
-
-    - On Debian and Ubuntu, use the below command:
-
-            sudo apt update && sudo apt upgrade
-
-    - On CentOS, use the below command:
-
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
             sudo yum update
 
 1. Replace all instances of `example.com` in this guide with your domain name.
@@ -51,8 +37,8 @@ If you have not already installed WordPress on your server, you can follow one o
 
    If you are on CentOS and did not use the Remi repository to install PHP, you may have to replace `php74-php` with `php` throughout this guide.
 
-{{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Optional PHP Extensions
@@ -139,7 +125,7 @@ post_max_size = 8M
 
 1. You can verify that the maximum file size for uploads has increased by navigating to your WordPress site's administrator dashboard (`example.com/wp-admin`) and selecting **Media** from the menu on the left. Click **Add New**, and you should see an indication of the current upload limit.
 
-    [![WordPress's Media Library, showing the maximum file size for uploads](wordpress-media-filesize-limit_small.png)](wordpress-media-filesize-limit.png)
+    ![WordPress's Media Library, showing the maximum file size for uploads](wordpress-media-filesize-limit.png)
 
 ## Configure WordPress's Permalinks
 
@@ -151,7 +137,7 @@ Permalinks — a combination of "permanent" and "hyperlink" — provide your pag
 
 1. Select **Permalinks** from the **Settings** menu on the left.
 
-    [![WordPress's permalink style options](wordpress-settings-permalinks_small.png)](wordpress-settings-permalinks.png)
+    ![WordPress's permalink style options](wordpress-settings-permalinks.png)
 
 1. Either select a permalink style from the existing options or create your own style using the **Custom Structure** option. Click **Save Changes** once you have made your selection.
 

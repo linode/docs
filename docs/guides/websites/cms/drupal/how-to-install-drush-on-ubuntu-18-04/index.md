@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-drush-on-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Ubuntu 18.04'
-og_description: 'Drush is a command line tool for creating, maintaining, and modifying Drupal websites. This guide will walk you through installing Drush on Ubuntu 18.04'
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 aliases: ['/websites/cms/drupal/how-to-install-drush-on-ubuntu-18-04/','/websites/cms/drupal/drush-drupal/how-to-install-drush-on-ubuntu-18-04/','/websites/cms/drush-drupal/']
 tags: ["drupal","ubuntu","cms","lamp"]
@@ -13,9 +9,9 @@ modified: 2020-02-29
 modified_by:
     name: Linode
 published: 2020-02-29
-title: How to Install Drush on Ubuntu 18.04
-h1_title: Install Drush on Ubuntu 18.04
-image: feature.png
+title: Install Drush on Ubuntu 18.04
+title_meta: How to Install Drush on Ubuntu 18.04
+image: Drush_onUbuntu1804.png
 external_resources:
  - '[Drush Documentation](https://docs.drush.org/en/master/)'
  - '[Composer Documentation](https://getcomposer.org/doc/)'
@@ -24,6 +20,7 @@ relations:
         key: how-to-install-drush
         keywords:
            - distribution: Ubuntu 18.04
+authors: ["Linode"]
 ---
 
 [Drush](https://www.drush.org/) is a command line tool for creating, administrating, and modifying Drupal websites. Command line tools, like Drush, add functionality through additional command packages. Once installed, Drush is as easy to use as any of the basic Linux commands. The name comes from combining the words Drupal and shell. Drush is designed only for Drupal and cannot be used with other content management systems.
@@ -34,20 +31,19 @@ Both new and experienced Drupal users can benefit from learning Drush. Users tha
 
 Before installing Drush, ensure that the following prerequisites have been met:
 
-1.  [Create a new Linode](/docs/getting-started/#create-a-linode) by following our [Getting Started](/docs/getting-started/) guide. Complete the steps for [setting your Linode's hostname](/docs/getting-started/#set-the-hostname) and [timezone](/docs/getting-started/#set-the-timezone).
-1. Follow our [Securing Your Server](/docs/security/securing-your-server) guide to [create a standard user account](/docs/security/securing-your-server/#add-a-limited-user-account), [harden SSH access](/docs/security/securing-your-server/#harden-ssh-access), [remove unnecessary network services](/docs/security/securing-your-server/#remove-unused-network-facing-services) and [create firewall rules](/docs/security/securing-your-server/#configure-a-firewall) for your Linode.
-1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/web-servers/lamp/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
-1.  Make sure that your system is up to date, using:
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-    {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-    {{< /note >}}
+1.  Install and configure a [LAMP stack on Ubuntu 18.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/)
+
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+{{< /note >}}
 
 ## Install Git & Composer
 
-The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/development/version-control/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
+The developers of Drush recommend installing Drush using [Composer](https://getcomposer.org/doc/00-intro.md), a PHP dependency manager. Since the Drush project is hosted on [GitHub](https://github.com/) and controlled with [Git](/docs/guides/how-to-configure-git/), you will also need to install Git. In this section, you will install both dependencies.
 
 1.  Install Git:
 
@@ -73,7 +69,7 @@ Composer is designed to install PHP dependencies on a per-project basis. The ste
 
         sudo ln -s /usr/local/bin/composer /usr/bin/composer
 
-1.  Use Git to download - or [clone](/docs/development/version-control/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
+1.  Use Git to download - or [clone](/docs/guides/how-to-install-git-and-clone-a-github-repository/#clone-a-github-test-repository) - the [GitHub Drush project](https://github.com/drush-ops/drush) into a new directory, `/usr/local/src/drush`:
 
         sudo git clone https://github.com/drush-ops/drush.git /usr/local/src/drush
 
@@ -129,9 +125,9 @@ export PATH="$HOME/vendor/bin:$PATH"
 
         drush --version
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can install the [Drush Launcher](https://github.com/drush-ops/drush-launcher), a utility to be able to call Drush globally. This program listens on your `$PATH` and hands control to a site-local Drush that is in the `~/vendor` directory.
-    {{</ note >}}
+    {{< /note >}}
 
 ## Using Drush
 

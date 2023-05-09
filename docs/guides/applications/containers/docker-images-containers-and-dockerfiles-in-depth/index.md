@@ -1,8 +1,5 @@
 ---
 slug: docker-images-containers-and-dockerfiles-in-depth
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'A guide that further introduces using a Dockerfile to build Docker Images and Docker Containers and provides examples on your Linode.'
 keywords: ["docker", "container", "docker image", "docker images", "docker container", "docker containers"]
 tags: ["container","docker"]
@@ -11,21 +8,22 @@ modified: 2021-06-17
 modified_by:
   name: Linode
 published: 2021-04-29
+image: DOCKERS.jpg
 title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
-h1_title: 'How to Use Docker Images, Containers, and Dockerfiles in Depth'
 external_resources:
  - '[Best Practices for Writing Dockerfiles](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
  - '[Official Docker Images on Docker Hub](https://hub.docker.com/search?q=&type=image&image_filter=official&page=1)'
  - '[Docker Docs](http://docs.docker.com/)'
+authors: ["Linode"]
 ---
 
 [Docker images](/docs/guides/introduction-to-docker/#docker-images) make it easy to deploy multiple containers without having to maintain the same image across several virtual machines. You can use a Dockerfile to automate the installation and configuration of an image and its dependencies. A [Dockerfile](/docs/guides/how-to-use-dockerfiles) is a text file of the commands (which are executed in order) used to automate installation and configuration of a Docker image. This article expands on our guide on [How to Use a Dockerfile to Build a Docker Image](/docs/guides/how-to-use-dockerfiles) by covering in-depth utilization of Docker images, containers, and Dockerfiles.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide, create and update a Linode, and install Docker. Alternatively, you can quickly deploy an updated, Docker-enabled Linode with the [Docker Marketplace App](https://www.linode.com/marketplace/apps/linode/docker/).
 
-2.  Ensure your Linode is secure by following our guide on [How to Secure Your Server](/docs/guides/securing-your-server/).
+2.  Ensure your Linode is secure by following our guide on [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 
 3.  This guide assumes you are comfortable with using the Docker command-line interface (CLI). To learn more about the Docker CLI, check out their [documentation](https://docs.docker.com/engine/reference/commandline/cli/).
 
@@ -61,7 +59,7 @@ EXPOSE 80
 CMD ["apache2ctl","-D","FOREGROUND"]
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `ARG DEBIAN_FRONTEND=noninteractive` instruction ensures that the subsequent `RUN apt-get` commands execute without requiring additional user input when building images. This instruction could also be written using `ENV` instead of `ARG` to make the environment variable persist in containers that are deployed with the image. Because non-interactivity may not be expected when working within such containers, `ARG` is recommended in this case.
 {{< /note >}}
 
@@ -85,7 +83,7 @@ apache_image   latest    7e5c14739da5   7 seconds ago   215MB
 ubuntu         latest    7e0aa2d69a15   6 weeks ago     72.7MB
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, built images are tagged "latest." If you want to change the tag, such as to "development", format the command as follows:
 
     docker build ~/mydockerbuild -f apache_dockerfile -t apache_image:development
@@ -114,7 +112,7 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS   
 
         docker stop apache
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can enter the container ID in place of `apache` in the above command.
 {{< /note >}}
 
@@ -124,13 +122,13 @@ You can enter the container ID in place of `apache` in the above command.
 
         docker rm apache
 
-{{< caution >}}
+{{< note type="alert" >}}
 Removing a container in this way deletes all data within the container. If you have made adjustments that you want to carry to a new container, you can instead use `docker commit` to build a new image that includes your updates:
 
     docker commit apache apache_image_update
 
 Then, you can deploy a new container based on the new `apache_image_update` image in the next section.
-{{< /caution >}}
+{{< /note >}}
 
 ### Configure your Docker Container's Ports
 
@@ -153,9 +151,9 @@ Each parameter is described in the following list:
 
 Now, navigate to your Linode's IP address at host port 8080 by navigating to `http://<your Linode's IP address>:8080` in a web browser. You should see the "Apache2 Ubuntu Default Page" served from your Docker container.
 
-{{< caution >}}
+{{< note type="alert" >}}
 When deploying containers with port configurations, Docker may also create host firewall rules to allow public access to those containers. This can override or conflict with the host firewall rules you have configured on your Linode.
-{{< /caution >}}
+{{< /note >}}
 
 ## Further Reading
 

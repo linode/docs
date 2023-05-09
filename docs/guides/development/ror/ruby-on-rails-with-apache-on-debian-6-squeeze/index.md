@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-apache-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Debian 6 Squeeze to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
@@ -18,12 +15,13 @@ external_resources:
 - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
 - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
 - '[Install the Apache HTTP Server on Debian 6 (Squeeze)](/docs/web-servers/apache/installation/debian-6-squeeze)'
-- '[Install the MySQL Database System on Debian 6 (Squeeze)](/docs/databases/mysql/debian-6-squeeze)'
+- '[Install the MySQL Database System on Debian 6 (Squeeze)](/docs/guides/use-mysql-relational-databases-on-debian-6-squeeze/)'
 relations:
     platform:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 
@@ -32,7 +30,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -77,7 +75,7 @@ After issuing this command, attempt to run `rails` again. If it works, then you 
 
 Alternatively, you can amend your global \$PATH by adding it to your "/etc/environment" file.
 
-To install support for the [MySQL database system](/docs/databases/mysql/debian-6-squeeze) in Rails, issue the following commands:
+To install support for the [MySQL database system](/docs/guides/use-mysql-relational-databases-on-debian-6-squeeze/) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient16 libmysqlclient-dev mysql-client mysql-common
     gem install mysql

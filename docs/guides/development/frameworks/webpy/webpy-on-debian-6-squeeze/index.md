@@ -1,8 +1,5 @@
 ---
 slug: webpy-on-debian-6-squeeze
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Debian 6 (Squeeze).'
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","debian"]
@@ -19,15 +16,16 @@ relations:
         key: webpy
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.
 
-This guide assumes that have you followed the [getting started guide](/docs/getting-started/) prior to beginning. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py
+This guide assumes that have you followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) prior to beginning. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Furthermore a background in Python programing will be useful as you begin to develop applications with Web.py
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -47,11 +45,11 @@ Issue the following command to install the Apache HTTP Server:
 
     apt-get install apache2
 
-The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/tools-reference/linux-package-management/). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/guides/linux-package-management-overview/). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
-For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/debian-6-squeeze/). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
+For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/guides/debian-6-squeeze/). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
 
     apt-get install python-pysqlite2 sqlite3
 
@@ -227,7 +225,7 @@ You may wish to consult the following resources for additional information on th
 
 - [The Web.py Project Home Page](http://webpy.org/)
 - [Official Web.py Documentation](http://webpy.org/docs/0.3)
-- [Rewrite URLs in Apache with Mod\_Rewrite](/docs/web-servers/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache/)
+- [Rewrite URLs in Apache with Mod\_Rewrite](/docs/guides/rewrite-urls-with-modrewrite-and-apache/)
 - [WSGI Configuration Options](http://code.google.com/p/modwsgi/wiki/ConfigurationDirectives)
 
 

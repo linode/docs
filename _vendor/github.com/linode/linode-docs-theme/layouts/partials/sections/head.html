@@ -1,14 +1,24 @@
 {{ hugo.Generator }}
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0" />
-{{ if .Param "noindex" }}
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0,maximum-scale=5.0" />
+{{ if or site.Params.TestEnv (.Param "noindex") }}
   <meta name="robots" content="noindex" />
 {{ end }}
-<link rel="shortcut icon" href='{{ "favicon.ico" | relURL }}' type="image/x-icon">
-{{ if hugo.IsProduction }}
-  <!-- Google Tag Manager -->
-  <script>
+<link
+  rel="shortcut icon"
+  href="{{ "favicon.ico" | relURL }}"
+  type="image/x-icon" />
+
+{{/* Adobe Analytics.
+  This is configured for the environments production, development (Netlify and local) and staging.
+*/}}<script
+  src="{{ site.Params.adobe_launch_script }}"
+  async></script>
+{{ if (not site.IsServer) }}
+  <!-- Google Tag Manager -->  <script>
     (function (w, d, s, l, i) {
     w[l] = w[l] || []; w[l].push({
     'gtm.start':
@@ -21,4 +31,4 @@
   </script>
   <!-- End Google Tag Manager -->
 {{ end }}
-{{ partialCached "sections/head-src.html" . "-"}} 
+{{ partialCached "sections/head-src.html" . "-" }}

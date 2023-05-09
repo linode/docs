@@ -1,30 +1,34 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using the Linode CLI with Object Storage"
 description: "Learn how to use the Linode CLI to manage Linodes own Object Storage solution."
+modified: 2022-05-02
+authors: ["Linode"]
 ---
 
-The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
+The Linode Command Line Interface (CLI) is a command line utility that allows you complete control over the Linode account. For interacting with Object Storage, there are two separate commands within the Linode CLI.
+
+- `linode object-storage [command]`: This resource provides access to managing Object Storage on a Linode account.
+- `linode obj [command]`: With the Object Storage plugin, you can also create and remove buckets, upload objects, and more.
+
+This guide details how to use the `obj` plugin. For `linode object-storage` usage, see [Linode CLI Commands for Object Storage](/docs/products/tools/cli/guides/object-storage/).
 
 ## Install and Configure the CLI
 
-1.  Download the Linode CLI, or, if you have already downloaded it, make sure it has been upgraded to the latest version:
+Follow the instructions within the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide to get started using the CLI. If you wish to use the obj plugin and perform operations on buckets and objects, be sure to also install the boto library.
 
-        pip3 install linode-cli --upgrade
+## Basic Commands
 
-1.  Configure the Object Storage plugin:
+To get a list of all available buckets, use the `ls` command:
 
-        linode-cli obj --help
+    linode-cli obj ls
 
-    You are prompted to enter the Personal Access Token and default settings for deploying new Linodes.
+To get a list of all objects in a bucket, use the `ls` command with the label of a bucket:
 
-1.  Install the `boto` module:
+    linode-cli obj ls my-example-bucket
 
-        pip3 install boto
+For a complete list of commands available with the Object Storage plugin, use the `--help` flag:
 
-Now you are ready to create buckets and upload objects.
+    linode-cli obj --help
 
 ## Create a Bucket with the CLI
 
@@ -44,9 +48,9 @@ Currently, the Linode CLI defaults to creating buckets in the Newark data center
 
 {{< note >}}
 You need to use the `--cluster` option for every interaction with your bucket if it is not in `us-east-1`.
-{{</ note >}}
+{{< /note >}}
 
-If the bucket has objects in it, you can not delete it from the Linode CLI immediately. Instead, remove the objects first, then delete the bucket. The [s3cmd](/docs/platform/object-storage/how-to-use-object-storage/#s3cmd) tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
+If the bucket has objects in it, you can not delete it from the Linode CLI immediately. Instead, remove the objects first, then delete the bucket. The [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/) tool has commands for deleting all objects from a bucket, and it can also force-delete a bucket with objects in it.
 
 ## Upload, Download, and Delete an Object with the CLI
 
@@ -63,12 +67,12 @@ If the bucket has objects in it, you can not delete it from the Linode CLI immed
     - If the bucket is in the Singapore data center, the file is accessible at the URL `https://my-example-bucket.ap-south-1.linodeobjects.com/example.txt`
 
     {{< note >}}
-The `--acl-public` flag is used to make the object publicly accessible, meaning that you can access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
+    The `--acl-public` flag is used to make the object publicly accessible, meaning that you can access the object from its URL. By default, all objects are set to private. To make a public file private, or a private file public, use the `setacl` command and supply the corresponding flag.
 
-For example, if you want to make a public file private, you would append the `--acl-private` flag:
+    For example, if you want to make a public file private, you would append the `--acl-private` flag:
 
-    linode-cli obj setacl --acl-private my-example-bucket example.txt
-{{</ note >}}
+        linode-cli obj setacl --acl-private my-example-bucket example.txt
+    {{< /note >}}
 
 1.  To download an object, use the `get` command. Provide the label of the bucket as the first parameter and the name of the file as the second:
 
@@ -113,15 +117,15 @@ To create a static website from a bucket:
     - `http://my-example-bucket.website-eu-central-1.linodeobjects.com` or
     - `http://my-example-bucket.website-ap-south-1.linodeobjects.com`
 
-For more information on hosting static websites from Linode Object Storage, see [Host a Static Site on Linode's Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting static websites from Linode Object Storage, see [Host a Static Site on Linode's Object Storage](/docs/guides/host-static-site-object-storage/) guide.
 
 ## Creating a New Access Key
 
 If for whatever reason the access key you've set up when initially [Configuring the CLI](#install-and-configure-the-cli) has been revoked or deleted, you may see the following error message:
 
-{{< output >}}
+```output
 Error: InvalidAccessKeyId
-{{< /output >}}
+```
 
 You can create and configure a new Access Key at any time by running the following command:
 
@@ -129,22 +133,8 @@ You can create and configure a new Access Key at any time by running the followi
 
 After running the command the access is restored, and you can see the new key listed at any time using the following command:
 
-    linode-cli-linode-cli object-storage keys-list
+    linode-cli object-storage keys-list
 
 {{< note >}}
 Any new object storage keys issued through the CLI is prefixed with `linode-cli` as the label.
 {{< /note >}}
-
-## Other CLI Commands
-
-To get a list of all available buckets, use the `ls` command:
-
-    linode-cli obj ls
-
-To get a list of all objects in a bucket, use the `ls` command with the label of a bucket:
-
-    linode-cli obj ls my-example-bucket
-
-For a complete list of commands available with the Object Storage plugin, use the `--help` flag:
-
-    linode-cli obj --help

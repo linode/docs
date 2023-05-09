@@ -1,13 +1,10 @@
 ---
 slug: back-up-your-mysql-databases
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
-description: 'Instructions for backing up MySQL databases using various methods.'
+deprecated_link: "guides/use-mysqldump-to-back-up-mysql-or-mariadb/"
+description: 'This guide provides instructions for backing up your MySQL databases for disaster recovery and continuity using a variety of methods, including the command line.'
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/backup-options/','/databases/mysql/back-up-your-mysql-databases/','/security/backups/back-up-your-mysql-databases/']
 modified: 2013-09-11
 modified_by:
   name: Linode
@@ -17,20 +14,21 @@ external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
  - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
  - '[mysqldump Manual Page](http://linuxcommand.org/man_pages/mysqldump1.html)'
- - '[Schedule Tasks With Cron](/docs/linux-tools/utilities/cron)'
+ - '[Schedule Tasks With Cron](/docs/guides/schedule-tasks-with-cron/)'
  - '[MySQL''s Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)'
 tags: ["database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the [LAMP Stack](/docs/web-servers/lamp/). The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.
 
 ![Back Up Your MySQL Databases](back_up_your_mysql-databases.png "Back Up Your MySQL Databases")
 
-Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+Before beginning the installation process, we assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/guides/linux-users-and-groups/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Backup Methodology
 
-Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/troubleshooting/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
+Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
 
 Nevertheless, this guide provides a mere overview of the `mysqldump` tool, as there are many options for and uses of `mysqldump` that fall beyond the scope of this document. We encourage you to become familiar with all of the procedures covered in this document, and to continue your exploration of `mysqldump` beyond the cases described here. Be sure to note the following:
 
@@ -61,7 +59,7 @@ In the crontab example, ensure that there is no space between the -P flag, and y
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 
-While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/troubleshooting/finnix-rescue-mode) with your system's disks mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
+While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) with your system's disks mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
 
     /etc/init.d/mysqld stop
 
@@ -84,7 +82,7 @@ These commands begin by stopping the MySQL server daemon, then creating a direct
     cd /opt/database/backup-1266872202
     tar -czfv * > /opt/mysqlBackup-1266872202.tar.gz
 
-Once the tarball is created, you can easily [transfer the file](/docs/using-linux/administration-basics#upload-files-to-a-remote-server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
+Once the tarball is created, you can easily [transfer the file](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
 
     /etc/init.d/mysql start
 
@@ -184,7 +182,7 @@ You can continue using your database as normal from this point.
 
 ## Considerations for an Effective Backup Strategy
 
-Creating backups of your MySQL database should be a regular and scheduled task. You might like to consider scheduling periodic backups using `cron`, `mysqldump` and/or `mail`. Consider our documentation for more information regarding [cron](/docs/linux-tools/utilities/cron). Implementing an automated backup solution may help minimize down time in a disaster recovery situation.
+Creating backups of your MySQL database should be a regular and scheduled task. You might like to consider scheduling periodic backups using `cron`, `mysqldump` and/or `mail`. Consider our documentation for more information regarding [cron](/docs/guides/schedule-tasks-with-cron/). Implementing an automated backup solution may help minimize down time in a disaster recovery situation.
 
 You do not need to log in as root when backing up databases. A MySQL user with read (e.g. `SELECT`) permission is able to use both the `mysqldump` and `mysql` (e.g. the MySQL client) tools to take backups, as described below. As a matter of common practice, we recommend that you not use the MySQL `root` user whenever possible to minimize security risks.
 

@@ -1,25 +1,19 @@
 ---
 slug: how-to-use-yubikey-for-two-factor-ssh-authentication
-author:
-  name: Huw Evans
-  email: me@huw.nu
 description: "This guide shows you how to use a YubiKey for Two-Factor secure shell authentication - or make it the primary access method."
 keywords: ["ssh", "yubikey", "2fa", "2 factor authentication", "otp"]
 aliases: ['/security/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/two-factor-authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/','/security/authentication/how-to-use-yubikey-for-two-factor-ssh-authentication/']
 tags: ["ssh","security"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-title: "How to Use a YubiKey for 2FA when Logging in over SSH"
-h1_title: "Using a YubiKey for 2FA when Logging in over SSH"
-enable_h1: true
+title: "Using a YubiKey for 2FA when Logging in over SSH"
+title_meta: "How to Use a YubiKey for 2FA when Logging in over SSH"
 published: 2017-08-28
 modified: 2018-02-26
 modified_by:
   name: Linode
-contributor:
-  name: Huw Evans
-  link: https://github.com/huw
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
+authors: ["Huw Evans"]
 ---
 
 ![banner_image](How_to_use_a_YubiKey_for_Two_Factor_Secure_Shell_Authentication_smg.jpg)
@@ -34,9 +28,9 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 ## Before You Begin
 
-1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/docs/getting-started) guide.
+1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/docs/products/platform/get-started/) guide.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your local system. Then update your server using the following:
 
@@ -44,7 +38,7 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 4. Test your YubiKey at [demo.yubico.com](https://demo.yubico.com) to make sure it's working correctly.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Replace each instance of `user@example.com` in this guide with your site's domain name and the appropriate user.
 {{< /note >}}
 
@@ -56,7 +50,7 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 2. Click on the 'Yubico OTP' menu in the top-left corner, and select 'Quick'. Your screen should look like the one below.
 
-    [![YubiKey Personalization Tool](yubikey-personalization-small.png)](yubikey-personalization.png)
+    ![YubiKey Personalization Tool](yubikey-personalization.png)
 
 3. Click 'Write Configuration'. Click 'Cancel' on the pop-up window that asks where to save the log file.
 
@@ -66,7 +60,7 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
     ![AES key upload form](yubikey-upload-form.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The page will respond with a table containing your key information. You should keep this data in a safe place. Should you ever lose your YubiKey, you will need this data to reconfigure a new one with the same settings.
 {{< /note >}}
 
@@ -76,7 +70,7 @@ The page will respond with a table containing your key information. You should k
 
 1. Register for an API key [here](https://upgrade.yubico.com/getapikey/), by entering your email address and (with the 'YubiKey one time password' field selected) touching the button on your YubiKey. Keep the Client ID and Secret Key returned by the website.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On Ubuntu, you may need to install `software-properties-common` and `python-software-properties` to add the repository.
 {{< /note >}}
 
@@ -98,7 +92,7 @@ On Ubuntu, you may need to install `software-properties-common` and `python-soft
 
     Yubico's documentation also has instructions on [how to build `pam_yubico` from source](https://developers.yubico.com/yubico-pam/).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to move `pam_yubico.so` to wherever PAM modules are stored on your system (usually `lib/security`). The Ubuntu package will automatically install the module in the appropriate location, but you can check to see whether it's in the right location with `ls /lib/security`. It may also be stored in `/usr/local/lib/security`, in which case you will need to move it manually.
 {{< /note >}}
 
@@ -134,7 +128,7 @@ auth required pam_yubico.so id=client id key=secret key authfile=/etc/ssh/author
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On some systems, like Arch Linux, you will need to edit `/etc/pam.d/system-remote-login` instead of `/etc/pam.d/sshd`.
 {{< /note >}}
 

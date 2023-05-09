@@ -1,79 +1,129 @@
 // Configuration (search API key etc.)
 import * as params from '@params';
-// AlpineJS controllers and helpers.
-import { newSearchController, newSearchInputController, newSearchFiltersController } from './search/index';
+import Alpine from 'jslibs/alpinejs/v3/alpinejs/dist/module.esm.js';
+import intersect from 'jslibs/alpinejs/v3/intersect/dist/module.esm.js';
+import persist from 'jslibs/alpinejs/v3/persist/dist/module.esm.js';
+import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
 import {
-	newToCController,
-	newInitController,
+	alpineRegisterMagicHelpers,
+	alpineRegisterDirectiveSVG,
+	newDisqus,
+	newDropdownsController,
+	newTabsController,
+} from './components/index';
+import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
+import {
+	addLangToLinks,
 	newBreadcrumbsController,
+	newLanguageSwitcherController,
+	newNavController,
+	newPromoCodesController,
 	newSearchExplorerController,
-	newNavController
+	newToCController,
+	newPaginatorController,
 } from './navigation/index';
+import { newNavStore } from './navigation/nav-store';
+// AlpineJS controllers and helpers.
+import { newSearchFiltersController, newSearchInputController, newSearchStore, getSearchConfig } from './search/index';
 import { newHomeController } from './sections/home/home';
-import { loadSVG, newClipboardController, newDisqus, newDropdownsController } from './components/index';
 import { newSectionsController } from './sections/sections/index';
-import { newOnIntersectionController, initConsentManager } from './components/index';
-import { sendEvent, isMobile, toggleBooleanClass } from './helpers/index';
 
-// Set up the AlpineJS controllers
+// Set up the search configuration (as defined in config.toml).
 const searchConfig = getSearchConfig(params);
 
-window.lnc = {
-	// Search navigation.
-	NewSearchController: () => newSearchController(searchConfig),
-	NewSearchInputController: newSearchInputController,
-	NewSearchFiltersController: (opts = {}) => newSearchFiltersController(searchConfig, opts),
-	NewInitController: newInitController,
+// Set up and start Alpine.
+(function () {
+	// Register AlpineJS plugins.
+	{
+		Alpine.plugin(intersect);
+		Alpine.plugin(persist);
+	}
 
-	NewSearchExplorerController: () => newSearchExplorerController(searchConfig),
-	NewNavController: newNavController,
-	NewTocController: newToCController,
-	NewBreadcrumbsController: () => newBreadcrumbsController(searchConfig),
+	// Register AlpineJS magics and directives.
+	{
+		// Handles copy to clipboard etc.
+		alpineRegisterMagicHelpers(Alpine);
+		// Handles inlining of SVGs.
+		alpineRegisterDirectiveSVG(Alpine);
+	}
 
-	NewDropdownsController: newDropdownsController,
-	NewDisqusController: newDisqus,
-
-	// Page controllers.
-	NewHomeController: (staticData) => newHomeController(searchConfig, staticData),
-	NewSectionsController: () => newSectionsController(searchConfig)
-};
-
-// Set up the AlpineJS helpers.
-window.lnh = {
-	LoadSVG: loadSVG,
-	OnIntersection: newOnIntersectionController,
-	CopyToClipBoard: newClipboardController,
-	SendEvent: sendEvent
-};
-
-// Set up global event listeners etc.
-(function() {
-	window.deferLoadingAlpine = function(callback) {
-		// This does nothing, which prevents Alpine.start() from doing double work.
-		// The components gets initialized in turbolinks:load by the
-		// Turbolinks AlpineJS adapter.
-		// This hook also prevents the Alpine JS mutation observer to start,
-		// which currently is unneeded overhead as we don't add any components dynamically.
-		// If that changes, uncommenting the line below should do the trick.
-		//  Alpine.listenForNewUninitializedComponentsAtRunTime()
+	let fetchController = function (url) {
+		return {
+			data: {},
+			init: async function () {
+				let res = await fetch(url);
+				if (res.ok) {
+					this.data = await res.json();
+				}
+			},
+		};
 	};
 
+	// Register AlpineJS controllers.
+	{
+		// Search and navigation.
+		Alpine.data('lncNav', () => newNavController(params.weglot_api_key));
+		Alpine.data('lncLanguageSwitcher', newLanguageSwitcherController(params.weglot_api_key));
+		Alpine.data('lncSearchFilters', () => newSearchFiltersController(searchConfig));
+		Alpine.data('lncSearchInput', newSearchInputController);
+		Alpine.data('lncSearchExplorer', () => newSearchExplorerController(searchConfig));
+		Alpine.data('lncToc', newToCController);
+		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
+		Alpine.data('lncDropdowns', newDropdownsController);
+		Alpine.data('lncTabs', newTabsController);
+		Alpine.data('lncDisqus', newDisqus);
+		Alpine.data('lncPaginator', newPaginatorController);
+		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
+		Alpine.data('lncFetch', fetchController);
+
+		// Page controllers.
+		Alpine.data('lncHome', (staticData) => {
+			return newHomeController(searchConfig, staticData);
+		});
+
+		Alpine.data('lncSections', () => newSectionsController(searchConfig, params));
+
+		if (!params.enable_leak_checker) {
+			Alpine.data('lncLeakChecker', () => leackChecker(Alpine));
+		}
+	}
+
+	// Set up AlpineJS stores.
+	{
+		Alpine.store('search', newSearchStore(searchConfig, Alpine));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params, Alpine));
+	}
+
+	if (!isMobile()) {
+		// We always need the blank resul set in desktop, so load that early.
+		let store = Alpine.store('search');
+		store.withBlank();
+	}
+
+	// Start Alpine.
+	Alpine.start();
+
+	// Start the Turbo-Alpine bridge.
+	bridgeTurboAndAlpine(Alpine);
+})();
+
+// Set up global event listeners etc.
+(function () {
 	// Set up a global function to send events to Google Analytics.
-	window.gtag = function(event) {
+	window.gtag = function (event) {
 		this.dataLayer = this.dataLayer || [];
 		this.dataLayer.push(event);
 	};
 
-	let turbolinksLoaded = false;
-	let pushGTag = function(eventName) {
+	let pushGTag = function (eventName) {
 		let event = {
-			event: eventName
+			event: eventName,
 		};
 
 		if (window._dataLayer) {
 			while (window._dataLayer.length) {
 				let obj = window._dataLayer.pop();
-				for (const [ key, value ] of Object.entries(obj)) {
+				for (const [key, value] of Object.entries(obj)) {
 					event[key] = value;
 				}
 			}
@@ -83,104 +133,58 @@ window.lnh = {
 		window.dataLayer.push(event);
 	};
 
-	document.addEventListener('turbolinks:load', function(event) {
+	document.addEventListener('turbo:load', function (event) {
 		// Hide JS-powered blocks on browsers with JavaScript disabled.
 		document.body.classList.remove('no-js');
 
-		// Init the TrustArc
-		initConsentManager();
+		// Update any static links to the current language.
+		let lang = getCurrentLang();
+		if (lang && lang !== 'en') {
+			addLangToLinks(lang, document.getElementById('linode-menus'));
+			addLangToLinks(lang, document.getElementById('footer'));
+		}
 
-		if (turbolinksLoaded) {
+		if (window.turbolinksLoaded) {
 			// Make sure we only fire one event to GTM.
-			// The navigation events gets handled by turbolinks:render
+			// The navigation events gets handled by turbo:render
 			return;
 		}
-		turbolinksLoaded = true;
-		setTimeout(function() {
+
+		// Init language links.
+		let languageSwitcherTarget = document.getElementById('weglot_here');
+
+		let languageSwitcherTemplate = document.getElementById('language-switcher-template');
+		let languageSwitcherSource = document.importNode(languageSwitcherTemplate.content, true);
+		languageSwitcherTarget.appendChild(languageSwitcherSource);
+
+		window.turbolinksLoaded = true;
+		setTimeout(function () {
 			pushGTag('docs_load');
 		}, 2000);
 	});
 
-	document.addEventListener('turbolinks:render', function(event) {
+	document.addEventListener('turbo:before-render', function (event) {
+		let body = event.detail.newBody;
+
+		// This hides the relevant elements for a second if the user has selected a language different from the default one.
+		// This should avoid the static and untranslated content showing.
+		setIsTranslating(body.querySelectorAll('.hide-on-lang-nav'));
+	});
+
+	document.addEventListener('turbo:render', function (event) {
 		if (document.documentElement.hasAttribute('data-turbolinks-preview')) {
 			// Turbolinks is displaying a preview
 			return;
 		}
+
 		pushGTag('docs_navigate');
-	});
-
-	// Prevent turbolinks from handling anchor links.
-	// See https://github.com/turbolinks/turbolinks/issues/75
-	document.addEventListener('turbolinks:click', function(event) {
-		const anchorElement = event.target.closest('a');
-
-		// Turbolinks intercepts all clicks on <a href> links to the same domain.
-		// The documentation is hosted at linode.com/docs, but there are links
-		// to other sections of that same domain, so prevent Turbolinks from handling those.
-		// pathname is a USVString containing an initial '/' followed by the path of the URL
-		//(or the empty string if there is no path).
-		var noTurbolink = !anchorElement.pathname.startsWith('/docs/');
-
-		if (noTurbolink) {
-			// Prepare a clean state for when the user comes back.
-			Turbolinks.clearCache();
-		}
-
-		if (!noTurbolink) {
-			// Prevent Turbolinks from handling #hash locations on the same page.
-			noTurbolink =
-				anchorElement.hash &&
-				anchorElement.origin === window.location.origin &&
-				anchorElement.pathname === window.location.pathname;
-		}
-
-		if (noTurbolink) {
-			event.preventDefault();
-		}
 	});
 
 	// For integration tests. Cypress doesn't catch these (smells like a bug).
 	if (window.Cypress) {
-		window.addEventListener('unhandledrejection', function(e) {
+		window.addEventListener('unhandledrejection', function (e) {
 			console.error(e);
 			return false;
 		});
 	}
 })();
-
-function getSearchConfig(params) {
-	let cfg = params.search_config;
-
-	cfg.sectionsSorted = Object.values(cfg.sections);
-	cfg.sectionsSorted.sort((a, b) => {
-		return a.weight < b.weight ? -1 : 1;
-	});
-
-	cfg.findSectionsBySearchResults = function(results) {
-		var self = this;
-		var sections = [];
-		results.forEach((result) => {
-			let sectionConfig = self.sectionsSorted.find((s) => {
-				if (s.index !== result.index && s.index_by_pubdate != result.index) {
-					return false;
-				}
-				if (s.filters) {
-					let sectionFilter = s.filters.split('OR')[0].trim();
-					// We have some sections that share the same index.
-					return result.params.includes(encodeURIComponent(sectionFilter));
-				}
-				return true;
-			});
-
-			if (!sectionConfig) {
-				throw `no index ${result.index} found`;
-			}
-
-			sections.push(sectionConfig);
-		});
-
-		return sections;
-	};
-
-	return cfg;
-}

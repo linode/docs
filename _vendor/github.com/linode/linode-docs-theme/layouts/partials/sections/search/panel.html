@@ -1,15 +1,44 @@
-<div class="search-panel bg-backgroundcolor w-full h-full">
-  <div class="search-panel__results container" x-data="lnc.NewSearchController()" id="search-main" x-init="init()" x-show="show" @search:subscribe.document="subscribe($event.detail);" @search:query.document="search($event.detail)" @search:nodes.document="searchNodes($event.detail);"
-  @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
-  x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="pb-64" data-turbolinks-permanent>
-    <div class="search-panel__breadcrumbs mb-6 flex justify-between items-center">
-      {{ $topresults := site.GetPage "topresults" }}
-      {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" $topresults "wrap" true) }}
-      {{ partial "sections/search/select-view.html" }}
+<div
+  class="search-panel w-full h-full overflow-y-auto"
+  x-data="lncSearchFilters()"
+  id="search-filters"
+  data-turbo-permanent>
+  <template x-if="$store.nav.searchResults.open">
+    <div class="search-panel__results container">
+      <div
+        class="search-panel__breadcrumbs mb-6 flex justify-between items-center">
+        {{ $topresults := site.GetPage "topresults" }}
+        {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" $topresults "wrap" true) }}
+        {{ partial "sections/search/select-view.html" }}
+      </div>
+      <template x-if="$store.search.results.main.loaded">
+        <div>
+          <h1
+            class="block font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full mb-4">
+            Search Results
+          </h1>
+          <p class="text-2xl" x-show="$store.search.query.lndq">
+            <span
+              x-show="$store.search.query.lndq"
+              x-text="$store.search.results.main.result.stats.totalNbHits"
+              data-testid="search-nb-hits"></span
+            >&nbspresults matching&nbsp<span
+              class="font-bold"
+              x-text="`${'“' + $store.search.query.lndq + '”'}`"></span>
+          </p>
+          <p class="text-2xl" x-show="!$store.search.query.lndq">
+            <span
+              x-text="$store.search.results.main.result.stats.totalNbHits"></span
+            ><span>&nbspresults</span>
+          </p>
+        </div>
+      </template>
+      {{ partial "sections/search/list.html" }}
     </div>
-    {{ partial "sections/search/list.html" }}
-  </div>
-  <div class="search-panel__filters bg-white">
-    {{ partial "sections/search/filters.html" . }}
-  </div>
+  </template>
+  <template x-if="$store.nav.searchResults.open">
+    <div class="search-panel__filters bg-white">
+      {{ partial "sections/search/filters.html" . }}
+    </div>
+  </template>
 </div>

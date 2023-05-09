@@ -1,22 +1,17 @@
 ---
 slug: introduction-to-infrastructure-as-code
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
-og_description: 'This guide discusses the history, concepts, rationale behind Infrastructure as Code, as well as investigating the main design decisions and the available tools.'
 keywords: ['IaC','infrastructure','configuration','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-03-03
+image: IntroInfastructureAsCode.png
 modified_by:
   name: Linode
-title: "Introducing Infrastructure as Code"
-h1_title: "An Introduction to Infrastructure as Code"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "An Introduction to Infrastructure as Code"
+title_meta: "Introducing Infrastructure as Code"
 external_resources:
 - '[Infrastructure as Code on Wikipedia](https://en.wikipedia.org/wiki/Infrastructure_as_code)'
+authors: ["Jeff Novotny"]
 ---
 
 *Infrastructure as Code* (IaC) is a technique for deploying and managing infrastructure using software, configuration files, and automated tools. This strategy can be used for devices such as web servers, routers, databases, load balancers, and personal computers, as well as on cloud services. It differs from traditional infrastructure management, which relies upon manual or interactive configuration, one device at a time. IaC encompasses a high-level approach to infrastructure, and does not refer to a specific technique, tool, or protocol. This guide discusses the history, concepts, and rationale behind IaC. It also explores the main implementation decisions and the available software tools.
@@ -98,9 +93,9 @@ Several *Continuous Configuration Automation* (CCA) software tools are available
 *   [*Ansible*](https://www.ansible.com/) is a very popular open source IaC application from Red Hat. Although it is primarily used on, and with, Linux environments, it also supports Windows. Ansible is often used in conjunction with Kubernetes and Docker. Ansible supplies its own declarative language to define infrastructure, and operates without agents by connecting remotely using SSH. It uses configurable "inventory" text files, along with YAML playbooks, to express the configuration. Ansible is designed to be minimalist, secure, and reliable, and have low resource usage. Ansible's own declarative language is easy to learn and use and features the use of templates. Linode offers a collection of [several Ansible guides](/docs/applications/configuration-management/ansible) for a more comprehensive overview.
 *   [*Chef*](https://www.chef.io/) is an open source tool allowing clients to write configuration recipes in a Ruby-based *Domain Specific Language* (DSL). It is commonly used on Linux machines and interacts with most cloud platforms. Users specify the packages, services, and files for each device, and Chef configures, corrects, and validates the resources.
 *   [*Otter*](https://inedo.com/otter) is a tool for modelling infrastructure and configuration on Windows platforms.
-*   [*Pulumi*](https://www.pulumi.com/) permits the use of a variety of programming languages to deploy and manage infrastructure within a cloud environment. This free open source IaC tool uses familiar IDEs and tools and facilitates sharing and collaboration. Linode has a [good introduction](/docs/applications/configuration-management/pulumi/deploy-in-code-with-pulumi/) to this application.
+*   [*Pulumi*](https://www.pulumi.com/) permits the use of a variety of programming languages to deploy and manage infrastructure within a cloud environment. This free open source IaC tool uses familiar IDEs and tools and facilitates sharing and collaboration. Linode has a [good introduction](/docs/guides/deploy-in-code-with-pulumi/) to this application.
 *   [*Puppet*](https://puppet.com/) provides its own declarative language to describe configuration outcomes. Its model-driven solution allows for easy management of the entire IT-lifecycle, including deployment, configuration, and updates. Puppet uses high-level modelling, requires little programming knowledge, and works with most Linux distributions as well as Windows. A free open source version of this popular tool is available, along with a more powerful and advanced commercial version. Linode offers many [guides and resources for Puppet](/docs/applications/configuration-management/puppet).
-*   [*Salt*](https://www.saltstack.com/), also known as SaltStack, is an open source solution for most platforms. Salt handles IT automation, configuration management, and remote-task execution. Its compartmentalized Python modules can be modified for specific use cases. In addition to the usual IaC tasks, SaltStack also supports security management and vulnerability mitigation. Linode offers a number of [Salt resources](/docs/applications/configuration-management/salt), including a useful [introduction](/docs/applications/configuration-management/salt/beginners-guide-to-salt).
+*   [*Salt*](https://www.saltproject.io/), also known as SaltStack, is an open source solution for most platforms. Salt handles IT automation, configuration management, and remote-task execution. Its compartmentalized Python modules can be modified for specific use cases. In addition to the usual IaC tasks, SaltStack also supports security management and vulnerability mitigation. Linode offers a number of [Salt resources](/docs/applications/configuration-management/salt), including a useful [introduction](/docs/guides/beginners-guide-to-salt/).
 *   [*Terraform*](https://www.terraform.io/) allows users to provision data center infrastructure using either JSON or Terraform's own declarative language. Rather than offer its own configuration management services, Terraform manages resources through the use of providers, which are similar to APIs. Providers declare resources and requisition data sources, and are available for most major vendors. Providers are usually accessed through the [*Terraform Registry*](https://registry.terraform.io/browse/providers). The open source Terraform is available in free and commercial versions, and uses a modular approach to encourage reuse and maintainability. Consult Linode's extensive collection of [Terraform guides](/docs/applications/configuration-management/terraform) for more information.
 
 Wikipedia has summarized the main Infrastructure as Code CCA tools into [*a handy chart*](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software). It includes comparisons of basic properties and supported platforms, as well as a brief description of each tool. Linode also offers a guide that [compares Terraform and Ansible](/docs/guides/terraform-vs-ansible), two of the most common IaC solutions.

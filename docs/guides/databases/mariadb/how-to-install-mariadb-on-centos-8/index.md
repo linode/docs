@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-mariadb-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: "This guide shows how to install and configure the MariaDB server on CentOS 8."
 og_description: "MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on CentOS 8."
 keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
@@ -12,9 +9,8 @@ modified_by:
     name: Linode
 published: 2020-02-04
 image: Installing_MariaDB_on_CentOS8.png
-title: "How to Install MariaDB on CentOS 8"
-h1_title: "Installing MariaDB on CentOS 8"
-enable_h1: true
+title: "Installing MariaDB on CentOS 8"
+title_meta: "How to Install MariaDB on CentOS 8"
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -26,6 +22,7 @@ relations:
             - distribution: CentOS 8
 tags: ["mariadb","database","centos"]
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-centos-8/']
+authors: ["Linode"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
@@ -33,12 +30,14 @@ MariaDB is a fork of the popular cross-platform MySQL database management system
 MariaDB replaced MySQL as the default database system in the CentOS 8 repositories. Though installing MySQL into CentOS 8 is not particularly difficult, if you need a database, MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -46,11 +45,6 @@ This guide is written for a non-root user. Commands that require elevated privil
         hostname -f
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
-
-1.  Update your system:
-
-        sudo yum update
-
 
 ## Install and Setup MariaDB
 
@@ -63,7 +57,7 @@ Enable MariaDB to start on boot and then start the service:
     sudo systemctl enable mariadb
     sudo systemctl start mariadb
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
 
 {{< note >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.

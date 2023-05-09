@@ -1,8 +1,5 @@
 ---
 slug: install-iperf-to-diagnose-network-speed-in-linux
-author:
-  name: Dave R.
-  email: docs@linode.com
 description: 'This tutorial will teach you how to install iPerf, and use its common commands and basic configuration to diagnose your network speed.'
 keywords: ["diagnostics", "iperf"]
 aliases: ['/networking/diagnostics/diagnosing-network-speed-with-iperf/','/networking/diagnostics/install-iperf-to-diagnose-network-speed-in-linux/']
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2015-01-12
 title: Network Throughput Testing with iPerf
+authors: ["Dave R."]
 ---
 
 ![Install iPerf to Diagnose Network Speed in Linux](diagnosing-network-speed-with-iperf.png "Install iPerf to Diagnose Network Speed in Linux")
@@ -52,11 +50,11 @@ CentOS repositories do not have iPerf. Use the [EPEL](https://fedoraproject.org/
 
     emerge iperf
 
-If you have not yet run `emaint --sync` you may need to do so before it will allow you to install the iPerf package. Additionally, by default you will need to substitute each `iperf` command with `/usr/bin/iperf3`. This path may differ dependent on your iPerf version.
+If you have not yet run `emaint --sync` you may need to do so before it will allow you to install the iPerf testing package. Additionally, by default you will need to substitute each `iperf` command with `/usr/bin/iperf3`. This path may differ dependent on your iPerf version.
 
 ## How to Use iPerf
 
-iPerf must be installed on the computers at both ends of the connection you're testing. If you are using a Unix or Linux-based operating system on your personal computer, you can install iPerf on your local machine.
+iPerf must be installed on the computers at both ends of the connection you're testing. If you are using a Unix or Linux-based operating system on your personal computer, you can install iPerf on your local machine for iperf speed test.
 
 If you are testing the throughput of your Linode, however, it's better to use another server as the end point, as your local ISP may impose network restrictions that can affect the results of your test.
 
@@ -140,11 +138,11 @@ UDP buffer size:  208 KByte (default)
 
     1.05 Mbits/sec is considerably less than what was observed on the TCP tests. It is also considerably less than the maximum outbound bandwidth cap provided by the 1GB Linode. This is because iPerf limits the bandwidth for UDP clients to 1 Mbit per second by default.
 
-4.  You can change this with the `-b` flag, replacing the number after with the maximum bandwidth rate you wish to test against. If you are testing for network speed, set this number above the maximum bandwidth cap provided by Linode:
+4.  You can change this with the `-b` flag in the iperf command, replacing the number after with the maximum bandwidth rate you wish to test against. If you are testing for network speed, set this number above the maximum bandwidth cap provided by Linode:
 
         iperf -c 198.51.100.5 -u -b 1000m
 
-    This tells the client that we want to achieve a maximum of 1000 Mbits per second if possible. The `-b` flag only works when using UDP connections, since iPerf does not set a bandwidth limit on the TCP clients.
+    This tells the client that we want to achieve a maximum of 1000 Mbits of data per second if possible. The `-b` flag only works when using UDP connections, since iPerf does not set a bandwidth limit on the TCP clients.
 
     {{< output >}}
   ------------------------------------------------------------
@@ -167,7 +165,7 @@ UDP buffer size:  208 KByte (default)
 
 In some cases, you may want to test both servers for the maximum amount of throughput. This can easily be done using the built-in bidirectional testing feature iPerf offers.
 
-to test both connections, run the following command from the client:
+To test both connection streams, run the following command from the client side:
 
     iperf -c 198.51.100.5 -d
 
@@ -205,8 +203,8 @@ TCP window size:  153 KByte (default)
 
 | Option                             | Description                                                                               |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
-| -f                             | Change the format in which the tests are run. For example, you can use `-f k` to get results in Kbits per second instead of Mbits per second. Valid options include `m` (Mbits, default), `k` (Kbits), `K` (KBytes), and `M` (MBytes). |
+| -f                             | Change the format in which multiple tests are running. For example, you can use `-f k` to get results in Kbits per second instead of Mbits per second. Valid options include `m` (Mbits, default), `k` (Kbits), `K` (KBytes), and `M` (MBytes). |
 | -V                         | Forces iPerf to use IPv6 rather than IPv4.                                |
-| -i                             | Changes the interval between periodic bandwidth tests. For example, `-i 60` will make a new bandwidth report every 60 seconds. The default is zero, which performs one bandwidth test.                                                    |
+| -i                             | Changes the interval between periodic bandwidth tests. For example, `-i 60` makes a new bandwidth report every 60 seconds. The default is zero, which performs a single bandwidth test.                                                    |
 | -p                                 | Changes the port. When not specified, the default port is 5001. You must use this flag on both the client and server.                                                               |
-| -B                         | Binds iPerf to a specific interface or address. If passed through the server command, the incoming interface will be set. If passed through the client command, the outgoing interface will be set.           |
+| -B                         | Binds iPerf to a specific interface or address. If passed through the server command, the incoming interface is set. If passed through the client command, the outgoing interface is set.           |

@@ -1,11 +1,5 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-8
-author:
-  name: Linode
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: 'This guide will show how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs.'
 og_description: 'The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana.'
 external_resources:
@@ -16,9 +10,8 @@ published: 2017-09-18
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: "Visualizing Apache Logs With Elastic Stack on Debian 8"
-h1_title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
-enable_h1: true
+title: "Visualizing Apache Logs Using the Elastic Stack on Debian 8"
+title_meta: "Visualizing Apache Logs With Elastic Stack on Debian 8"
 dedicated_cpu_link: true
 tags: ["debian","analytics","database","monitoring"]
 aliases: ['/databases/elasticsearch/visualize-apache-web-server-logs-using-elastic-stack-on-debian-8/']
@@ -27,6 +20,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 8
+authors: ["Tyler Langlois"]
 ---
 
 
@@ -42,20 +36,16 @@ This guide will explain how to install all three components and use them to expl
 This guide will walk through the installation and set up of version 5 of the Elastic stack, which is the latest at time of this writing.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Follow the steps in our [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8/) guide to set up and configure Apache on your server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services.
-
-4.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
+1.  Follow the steps in our [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8/) guide to set up and configure Apache on your server.
 
 ## Install OpenJDK 8
 
@@ -241,7 +231,7 @@ server.host: "localhost"
 
     This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of `logstash-*` matches the default indices created by Logstash. Clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
 {{< /note >}}
 

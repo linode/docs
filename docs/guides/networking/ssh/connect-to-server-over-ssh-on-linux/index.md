@@ -1,33 +1,31 @@
 ---
 slug: connect-to-server-over-ssh-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command.'
-og_description: 'A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command.'
+description: "A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command."
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
+modified: 2022-01-28
+image: SSHLINUX.jpg
 modified_by:
   name: Linode
-title: "How to Connect to a Remote Server Over SSH on Linux"
-h1_title: "Connecting to a Remote Server Over SSH on Linux"
-enable_h1: true
+title: "Connecting to a Remote Server Over SSH on Linux"
+title_meta: "How to Connect to a Remote Server Over SSH on Linux"
 relations:
     platform:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Linux
+authors: ["Linode"]
 ---
 
-A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
+A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
 
 This article covers the basics of connecting to a remote server (such as a Linode) over SSH on a Linux system.
 
 ## Before You Begin
 
-1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Getting Started](/docs/getting-started/) guide to create a Linode.
+1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode.
 
 1. Your local computer needs an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.
 
@@ -50,7 +48,7 @@ If this key combination does not work for you, other instructions for opening a 
 
     The SSH client attempts to connect to the remote server over port 22 (the default SSH port).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the server's SSH port is something other than 22, it needs to be specified in the SSH command. To do this, use the `-p` option as shown in the command below. Replace [port-number] with the port number that the remote SSH server is using.
 
     ssh [username]@[ip-address] -p [port-number]
@@ -62,9 +60,15 @@ If the server's SSH port is something other than 22, it needs to be specified in
 The authenticity of host ‘example.com (93.184.216.34)’ can't be established.
 ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
 Are you sure you want to continue connecting (yes/no)?
-    {{</ output >}}
+{{</ output >}}
 
-    You can verify the fingerprint by following the instructions under the [Verifying the Host Key's Fingerprint](#verifying-the-host-keys-fingerprint) section.
+    You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
+
+    {{< note respectIndent=false >}}
+If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, revoke the key for that IP address.
+
+    ssh-keygen -R 198.51.100.4
+{{< /note >}}
 
 1. Accept the prompt by entering `y` or `yes`, which results in a one-time warning that is similar to:
 
@@ -109,34 +113,14 @@ The commands should be separated by a semi-colon (`;`) and all of the commands t
 
 It's recommended to disable root access over SSH and only log in to your remote server through a limited user account. However, some commands require elevated privileges, which can usually be accomplished by prepending the command with `sudo`. If you attempt to do this while running commands directly through the SSH command, you may receive an error such as "no tty present" or there isn't a "stable CLI interface". To run the `sudo` command in these instances, use the `-t` option, which forces a psuedo-terminal allocation. For example, to update your packages on a Debian-based system, run `ssh linode@example.com -t "sudo apt update"`.
 
-## Verifying the Host Key's Fingerprint
-
-1.  Log in to your remote server through a trusted method. For a Linode, use [Lish](/docs/networking/using-the-linode-shell-lish/).
-
-1.  Run the command below to output your server's SSH key fingerprint
-
-        ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
-
-    The output looks similar to:
-
-    {{< output >}}
-256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
-{{< /output >}}
-
-    {{< note >}}
-For the fingerprint of an RSA key instead of elliptical curve, use: `ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub`.
-{{< /note >}}
-
-1.  Compare this output to what appears when opening an SSH connection on your local computer. The two fingerprints should match. **If the fingerprints do not match, do not connect to the server.** You won't receive further warnings unless the fingerprint changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
-
 ## Going Further
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 
-- Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. See the guide [Use SSH Public Key Authentication on Linux, macOS, and Windows](/docs/guides/use-public-key-authentication-with-ssh/) for details.
+- Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Securing Your Server](/docs/security/securing-your-server/) to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
