@@ -223,28 +223,26 @@ This guide uses the example.com domain as an example. Replace this address with 
 
 DNSSEC requires extra steps when updating records and keys.
 
-Anytime you make changes within a zone, you need to resign the entire zone:
+1.  Anytime you make changes within a zone, you need to resign the entire zone:
 
-```command
-ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
-```
+    ```command
+    ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
+    ```
 
-For the $ZSK and $KSK variables in this command, enter the names of your current ZSK and KSK files, without the filename extensions. Then reload the zone:
+    For the $ZSK and $KSK variables in this command, enter the names of your current ZSK and KSK files, without the filename extensions.
 
-```command
-sudo nsd-control reload example.com
-```
+1.  Then reload the zone:
 
-Wait for your zone’s default time-to-live (TTL) timer (often, 1 hour) to expire before testing the zone at dnsviz.net or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches, which don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
+    ```command
+    sudo nsd-control reload example.com
+    ```
 
-As for key rotation, zone signatures expire after 30 days by default and, if not renewed, leave your zone unreachable on the public Internet. Neither of the two most common DNS server distributions – bind and NSD – include tools for automated key rollover. The open-source [dnssec-reverb](https://github.com/northox/dnssec-reverb) project does automate key rollover, and works with both Bind and NSD.
+    Wait for your zone’s default time-to-live (TTL) timer (often, 1 hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches, which don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
+
+As for key rotation, zone signatures expire after 30 days by default and, if not renewed, leave your zone unreachable on the public Internet. Neither of the two most common DNS server distributions – Bind and NSD – include tools for automated key rollover. The open-source [dnssec-reverb](https://github.com/northox/dnssec-reverb) project does automate key rollover, and works with both Bind and NSD.
 
 Regardless of whether you use dnssec-reverb, some other tool, or write your own shell scripts, it’s essential that you automate and test key rollover before putting a server into production.
 
 ## Conclusion
 
-DNSSEC corrects a major shortcoming of the original DNS design: It authenticates that every server really is the one it claims to be. It verifies that no one has tampered with zone data. And it provides affirmative proof of the nonexistence of fraudulent hosts and subdomains. Given the critical role DNS plays in networking, DNSSEC not only protects your name servers but also virtually all your applications running all your servers.
-
-
-
-
+DNSSEC corrects a major shortcoming of the original DNS design: it authenticates that every server really is the one it claims to be. It verifies that no one has tampered with zone data. And it provides affirmative proof of the nonexistence of fraudulent hosts and subdomains. Given the critical role DNS plays in networking, DNSSEC not only protects your name servers but also virtually all your applications running all your servers.
