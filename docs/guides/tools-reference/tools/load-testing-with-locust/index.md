@@ -101,7 +101,7 @@ Locust is now ready to start load testing your applications. You just need to bu
 
 The Locust documentation linked at the end of this tutorial provides your most comprehensive resource for working with Locust scripts. However, probably the best way to get started using Locust is with a practical example.
 
-To that end, the rest of this tutorial walk you through using Locust to conduct a relatively simple load test against an example application. After setting up the example application, follow along as the tutorial breaks down a full Locustfile designed to show off a range of useful Locust features.
+To that end, the rest of this tutorial walk you through using Locust to conduct a relatively simple load test against an example application. After setting up the example application, follow along as the tutorial breaks down a full Locustfile designed to show off some useful features.
 
 ### Building an Example Application
 
@@ -109,11 +109,11 @@ You need a web application to run Locust's load testing against for this demonst
 
 The example application uses Python's [Flask](https://flask.palletsprojects.com/en/) web application framework. Since Locust is already running with Python, using Flask here minimizes other dependencies you need to run the example.
 
-The Linode Marketplace also offers an easy way to start with a fresh and ready Flask application of your own. You can learn more about htat in our guide [Deploy Flask through the Linode Marketplace](/docs/products/tools/marketplace/guides/flask/).
+The Linode Marketplace also offers an easy way to start with a fresh and ready Flask application of your own, should you be interested. You can learn more about that in our guide [Deploy Flask through the Linode Marketplace](/docs/products/tools/marketplace/guides/flask/).
 
 #### Installing and Starting the Example
 
-For the application itself, the tutorial uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide. (But you do not need to be on Ubuntu to run the application following the steps below.)
+For the application itself, the tutorial uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide. (But just following in the steps below you do not actually need to be on Ubuntu to run the application.)
 
 1. Install Python's Virtualenv. This tool lets you set up virtual Python environments. For this example and in many other case, it allows you to install project dependencies in an isolated environment, rather than on your system overall.
 
@@ -233,7 +233,7 @@ The commands that follow assume you are working in a different shell session tha
     cd ~/example-locust-testing/
     ```
 
-1. The initial step is to import the necessary features from the `locust` Python module. In this case, you need the `HttpUser`, `task`, and `constant` features, each of which gets explained further on.
+1. Within the file, the initial step is to import the necessary features from the `locust` Python module. In this case, you need the `HttpUser`, `task`, and `constant` features, each of which gets explained further on.
 
     ```file {title="locustfile.py" lang="py"}
     from locust import HttpUser, task, constant
@@ -243,7 +243,7 @@ The commands that follow assume you are working in a different shell session tha
 
     This example also imports from two other packages. PyQuery gives JQuery-like functionality to Python, which makes it relatively easy to pick out links from webpage content. The `random` package gives the script access to random decisions.
 
-    Including these additional packages in this example provides a nice illustration of how Locust test scripts can take advantage of all the richness of Python.
+    Including these additional packages in this example provides a nice illustration. It demonstrates how Locust test scripts can take advantage of all the richness of Python and the Python ecosystem.
 
 1. The main part of most Locust test scripts is the user class. This is a Python class the extends on the `HttpUser` class imported above.
 
@@ -265,7 +265,7 @@ The commands that follow assume you are working in a different shell session tha
 
     - Use the `constant_throughput` method: Each task execution waits to fall within a given maximum number of task executions per second — `wait_time = constant_throughput(0.2)`
 
-    The example script here just uses the `constant` wait time. Notice that this method was imported earlier, and be sure to change that import based on whatever method you choose to use here.
+    The example script here just uses the `constant` wait time. Notice that this method was imported earlier, and be sure to change that import based on whatever method you choose to use here instead.
 
     ```file {title="locustfile.py" lang="py"}
     wait_time = constant(2)
