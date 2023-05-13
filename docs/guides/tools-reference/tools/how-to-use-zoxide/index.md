@@ -1,20 +1,13 @@
 ---
 slug: how-to-use-zoxide
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to use zoxide, a smart and fast alternative to cd. It ranks your most frequently used directories and matches them on minimal keywords for more efficient navigating."
-og_description: "Learn how to use zoxide, a smart and fast alternative to cd. It ranks your most frequently used directories and matches them on minimal keywords for more efficient navigating."
 keywords: ['zoxide install','zoxide linux','zoxide rust']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-28
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install and Use zoxide on Linux"
-h1_title: "How to Install and Use zoxide on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ['Nathaniel Stickman']
 external_resources:
 - '[GitHub: ajeetdsouza/zoxide](https://github.com/ajeetdsouza/zoxide)'
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'
@@ -32,20 +25,20 @@ Learn more about `zoxide` in this guide, including how to install and get starte
 
 1. Update your system.
 
-    - On Debian and Ubuntu, you can do this with:
+    - On **Debian** and **Ubuntu**, use the following command:
 
             sudo apt update && sudo apt upgrade
 
-    - On AlmaLinux, CentOS (8 or later), or Fedora, use:
+    - On **AlmaLinux**, **CentOS** (8 or later), or **Fedora**, use the following command:
 
             sudo dnf upgrade
 
-    - On CentOS 7 or earlier, use:
+    - On **CentOS** 7 or earlier, use the following command:
 
             sudo yum update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What is zoxide?
@@ -68,21 +61,21 @@ But, again, `zoxide` focuses its features on just providing a handy, fast, and i
 
 1. Install `zoxide` from you system's package manager:
 
-    - On Debian and Ubuntu, install `zoxide` using APT:
+    - On **Debian** and **Ubuntu**, install `zoxide` using APT:
 
             sudo apt install zoxide
 
-    - On AlmaLinux and CentOS, use the COPR plugin to enable the `zoxide` repository on DNF, and then install `zoxide` from there:
+    - On **AlmaLinux** and **CentOS**, use the COPR plugin to enable the `zoxide` repository on DNF, and then install `zoxide` from there:
 
             sudo dnf copr enable atim/zoxide
             sudo dnf install zoxide
 
-        If you are on CentOS 7, you need to install DNF and the COPR plugin before executing the above commands:
+        If you are on **CentOS** 7, you need to install DNF and the COPR plugin before executing the above commands:
 
             sudo yum install dnf
             sudo dnf install 'dnf-command(copr)'
 
-    - On Fedora, install `zoxide` directly using DNF:
+    - On **Fedora**, install `zoxide` directly using DNF:
 
             sudo dnf install zoxide
 
@@ -96,7 +89,7 @@ eval "$(zoxide init bash)"
 
     If you're using Zsh, replace `bash` with `zsh` in the line shown above.
 
-1. You can afterward confirm your installation with:
+1. Confirm your installation using the following command:
 
         zoxide --version
 
@@ -104,7 +97,7 @@ eval "$(zoxide init bash)"
 zoxide v0.7.5
     {{< /output >}}
 
-### Setting Up fzf Integration (Optional)
+### Set Up fzf Integration (Optional)
 
 `zoxide` can integrate with [`fzf`](https://github.com/junegunn/fzf) to provide you with interactive selection when you have multiple matching directories. All you need to do is install `fzf`, which you can learn how to do in our guide [How to Install and Use fzf](/docs/guides/how-to-use-fzf).
 
@@ -120,17 +113,15 @@ You can use the following series of commands to do just that. In fact, the examp
     z /usr/local/bin
     z /var/log
 
-Once you've taught `zoxide`, you can start abbreviating your directory searches. For instance, to get into the `/etc/ssh` directory after the above commands, you can simply use:
+Once you've taught `zoxide` your frequently visited directories, you can begin using abbreviated directory searches. For instance, to get into the `/etc/ssh` directory after using the above commands, you can just enter `z ssh`.
 
-    z ssh
-
-Notice that the above takes you to `/etc/ssh`. However, try using the following command three or four times:
+Notice that using `z ssh` command takes you to `/etc/ssh`. However, try using the following command three or four times:
 
     z config
 
-After doing that, the next time you use the `z ssh` command, you are taken to the `/etc/ssh/ssh_config.d` directory. Why? Because `zoxide` has ranked it as you most frequent recent directory matching the `ssh` search.
+After doing that, the next time you use the `z ssh` command, you are taken to the `/etc/ssh/ssh_config.d` directory. Why? Because `zoxide` has ranked it as your most frequent visited directory that matches the search query `ssh`.
 
-But you can use the following command to get back to `/etc/ssh`. This works because the provided search terms more closely match the directory:
+But you can use the following command to get back to `/etc/ssh`. This works because the provided search terms more closely match the directory.
 
     z etc ssh
 
@@ -148,5 +139,4 @@ If you have `fzf` installed, `zoxide` can use it to let you select from a list o
 
 ![zoxide uses fzf for interactive selection](zoxide-interactive-selection.png)
 
-Take a look at the [Setting Up fzf Integration](/docs/guides/how-to-use-zoxide/#setting-up-fzf-integration-optional) section above to learn how to install `fzf` if you don't have it already.
-
+Take a look at the [Set Up fzf Integration](/docs/guides/how-to-use-zoxide/#set-up-fzf-integration-optional) section above to learn how to install `fzf` if you don't have it already.
