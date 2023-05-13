@@ -1,8 +1,5 @@
 ---
 slug: what-is-sqlite
-author:
-  name: James Turner
-  email: blkbearnh@gmail.com
 description: 'This guide discusses the advantages and disadvantages of SQLite, one of the most popular of the serverless SQL databases, and also common use cases for SQLite.'
 keywords: ['what is sqlite']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +10,7 @@ modified_by:
 title: "What is SQLite?"
 title_meta: "A SQLite Overview"
 tags: ["database"]
-contributor:
-  name: James Turner
-  link: https://twitter.com/blackbearnh
+authors: ["James Turner"]
 ---
 
 There are two major types of databases: client/server relational databases (such as [MySQL](/docs/guides/databases/mysql/) or [PostgreSQL](/docs/guides/databases/postgresql/)), and NoSQL databases (like [MongoDB](/docs/guides/databases/mongodb/) or [CouchDB](/docs/guides/databases/couchdb/)). There is, however, a third option that straddles the gap, *serverless SQL databases*. This type of database offers relational SQL capabilities without the need to set up and maintain a database server.

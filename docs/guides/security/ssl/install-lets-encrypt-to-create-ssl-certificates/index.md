@@ -1,8 +1,5 @@
 ---
 slug: install-lets-encrypt-to-create-ssl-certificates
-author:
-  name: 'Linode Community'
-  email: 'docs@linode.com'
 description: "This guide will show you how to install automation tool Certbot on the Ubuntu 18.04 distribution."
 keywords: ['ACME','HTTPS',"Let's Encrypt",'SSL','SSL certificates', 'renew certificate']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,15 +8,13 @@ modified: 2020-12-02
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
-contributor:
-  name: 'Sean Webber'
-  link: 'https://github.com/seanthewebber'
 deprecated: true
 deprecated_link: 'guides/enabling-https-using-certbot-with-nginx-on-ubuntu/'
 external_resources:
   - "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 tags: ["security","ssl"]
 aliases: ['/security/ssl/install-lets-encrypt-to-create-ssl-certificates/']
+authors: ["Sean Webber"]
 ---
 
 ![Let's Encrypt](Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
@@ -32,9 +27,9 @@ For most situations, the recommended method for installing Let's Encrypt certifi
 
 ## Before you Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the steps in our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the steps in our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your server's software packages:
 

@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Connect to a MySQL Managed Database"
 description: "Learn how to connect to a MySQL Managed Databse through the command line or MySQL Workbench."
 published: 2022-02-23
 modified: 2022-07-22
+authors: ["Linode"]
 ---
 
 To connect to a MySQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a MySQL client. This guide details how to access your database using popular tools.
@@ -46,12 +44,12 @@ To connect direct to the database from a command-line, you can use the `mysql` t
     If your system is using MariaDB instead of MySQL (such as when using the default packages in Debian's own repository), replace the `--ssl-mode=required` parameter with `--ssl=true`.
 
     {{< note >}}
-    If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address).
+    If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address).
     {{< /note >}}
 
 1.  Enter your password at the prompt.
 
-Once you are connected successfully, the MySQL prompt appears and you can enter SQL queries. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/#the-sql-language) for examples.
+Once you are connected successfully, the MySQL prompt appears and you can enter SQL queries. See [Introduction to SQL Commands](/docs/guides/sql-commands/) for examples.
 
 See [Using the MySQL Command Line Client](/docs/guides/mysql-command-line-client/) for more information or reference [Connecting to the MySQL Server Using Command Options](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) within MySQL's own documentation.
 

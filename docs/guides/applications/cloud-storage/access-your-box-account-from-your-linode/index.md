@@ -1,8 +1,5 @@
 ---
 slug: access-your-box-account-from-your-linode
-author:
-  name: Tyler Nelson
-  email: tylernelson12@gmail.com
 description: 'Box is a popular cloud storage and file sharing service. This article will show you how to access your Box account from your Linode using WebDAV.'
 keywords: ["box", "box.com", "cloud", "cloud storage", "file storage", "file", "webdav", "davfs", "davfs2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,6 +9,7 @@ modified_by:
 published: 2015-11-06
 title: 'Access Your Box.com Account from Your Linode'
 aliases: ['/applications/cloud-storage/access-your-box-account-from-your-linode/']
+authors: ["Tyler Nelson"]
 ---
 
 
@@ -19,9 +17,9 @@ If you've discovered [Box](https://www.box.com/) then you know that it can be a 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide requires having a Box account.

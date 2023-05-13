@@ -1,8 +1,5 @@
 ---
 slug: connect-to-server-over-ssh-on-chrome
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A tutorial outlining how to connect to a remote server over SSH on ChromeOS or the Chrome web browser using the Secure Shell extension."
 keywords: ['ssh','secure shell', 'chromeos', 'chrome', 'connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
@@ -18,6 +15,7 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Chrome
+authors: ["Linode"]
 ---
 
 SSH (*secure shell*) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server. This is a common task when administering a website, hosting environment, or even a Raspberry Pi or Arduino system.
@@ -26,7 +24,7 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 ## Before You Begin
 
-1. Ensure you have a Linux system with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create a Linode.
+1. Ensure you have a Linux system with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode.
 
 1. Install the [Chrome web browser](https://www.google.com/chrome/) on your local Windows, Mac, or Linux computer. You can skip this step if using ChromeOS.
 
@@ -96,10 +94,10 @@ Type `x` to close the tab, `r` to reconnect to the same server, or `c` to be pre
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, it is possible that it needs to be looked at on the server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 
 - Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.

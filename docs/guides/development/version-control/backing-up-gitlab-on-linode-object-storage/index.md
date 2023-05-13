@@ -1,8 +1,5 @@
 ---
 slug: backing-up-gitlab-on-linode-object-storage
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Use gitlab tooling and Linode Object Storage to seemlessly back up your Gitlab installation in a compressed image with a single command."
 keywords: ["git", "object-storage", "gitlab"]
 tags: ["version control system","email","debian"]
@@ -12,6 +9,7 @@ modified_by:
   name: Linode
 published: 2021-10-27
 title: 'Backing up Gitlab on Linode Object Storage'
+authors: ["Linode"]
 ---
 
 ## In This Guide
@@ -28,7 +26,7 @@ All modern GitLab installations additionally include tooling to create backups o
 
 ## Configuring Gitlab For Object Storage Backups
 
-In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance). To do this, enter the following command, replacing the username and IP address with the unique username and IP address of your Linode:
+In order to configure Gitlab on Linode's Object Storage, the Gitlab instance must first be [Accessed Directly Over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). To do this, enter the following command, replacing the username and IP address with the unique username and IP address of your Linode:
 
     ssh username@198.51.100.4
 

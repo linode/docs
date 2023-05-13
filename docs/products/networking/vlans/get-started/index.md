@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with VLANs"
 description: "Use the Linode Cloud Manager to create a VLAN and attach a Compute Instance to it. When a Compute Instance is attached to a VLAN and configured, it has access to the VLAN's secure and private network."
 keywords: ['networking','vlan','private network']
 tags: ["security", "networking", "linode platform"]
@@ -15,7 +16,7 @@ VLANs (Virtual Local Area Network) are a completely free solution available to L
 - **Privacy and Security.** Compute Instances on the same account and in the same region can be added to the same VLAN, allowing for private and secure communications between those instances. The public internet can also be disabled on a Compute Instance to provide even more security.
 
     {{< note >}}
-    VLANs are separate from [Private IP Addresses](/docs/guides/managing-ip-addresses/#types-of-ip-addresses). Private IPs are accessible to all Compute Instances in that same data center and can only be further restricted by firewall rules or additional internal configuration.
+    VLANs are separate from [Private IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#types-of-ip-addresses). Private IPs are accessible to all Compute Instances in that same data center and can only be further restricted by firewall rules or additional internal configuration.
     {{< /note >}}
 
 - **Performance.** A VLAN is configured as a Layer 2 networking device and provides low latency for latency-sensitive applications.
@@ -24,7 +25,7 @@ VLANs (Virtual Local Area Network) are a completely free solution available to L
 
 ## Configuring VLANs
 
-VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Compute Instance. VLANs can be configured when creating new instances or by modifying the network interfaces on the [Configuration Profile](/docs/guides/linode-configuration-profiles/) of an existing instance.
+VLANs are relatively simple to manage and do not require much configuration beyond attaching (or detaching) a VLAN to a Compute Instance. VLANs can be configured when creating new instances or by modifying the network interfaces on the [Configuration Profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) of an existing instance.
 
 - [Attach a VLAN to a Compute Instance](/docs/products/networking/vlans/guides/attach-to-compute-instance/)
 
@@ -55,7 +56,7 @@ IPAM (IP Address Management) is the system that allows users to assign and manag
 - Instance 1: `10.0.0.1/24`
 - Instance 2: `10.0.0.2/24`
 
-Just like public and private IP addresses, IP addresses for a VLAN are automatically configured on a Linode through [Network Helper](/docs/guides/network-helper/). If Network Helper is disabled or if no IPAM address is provided, the Compute Instance will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an IPAM address. When doing so, the instance's internal network configuration files must be manually adjusted with the desired settings. See [Manually configuring a VLAN on a Compute Instance](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
+Just like public and private IP addresses, IP addresses for a VLAN are automatically configured on a Linode through [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/). If Network Helper is disabled or if no IPAM address is provided, the Compute Instance will not automatically be able to communicate over the VLAN. In some cases, advanced users may disable Network Helper or refrain from providing an IPAM address. When doing so, the instance's internal network configuration files must be manually adjusted with the desired settings. See [Manually configuring a VLAN on a Compute Instance](/docs/products/networking/vlans/guides/manually-configuring-a-vlan/) for instructions.
 
 {{< note >}}
 The Compute Instance must be rebooted for any changes within its network interfaces to take effect. This reboot allows Network Helper to run so it can automatically adjust the necessary network configuration files.

@@ -1,8 +1,5 @@
 ---
 slug: all-linodes-kvm-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays the note that all Linodes are now KVM.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-01
@@ -14,6 +11,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/all-linodes-kvm-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note>}}

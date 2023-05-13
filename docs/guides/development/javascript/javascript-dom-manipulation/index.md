@@ -1,8 +1,5 @@
 ---
 slug: javascript-dom-manipulation
-author:
-  name: Nathaniel Stickman
-  email: docs@linode.com
 description: "Learn to use JavaScript to manipulate the DOM by creating, removing, and changing element nodes. Also, learn how to change an element''s CSS styles with JavaScript."
 keywords: ['modifying the dom javascript','dom manipulation','creating dom elements with javascript']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +8,10 @@ modified_by:
   name: Linode
 title: "Modify the DOM with JavaScript"
 title_meta: "Manipulating the DOM with JavaScript"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MDN Web Docs: Manipulating Documents](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)'
 - '[MDN Web Docs: Document](https://developer.mozilla.org/en-US/docs/Web/API/Document)'
+authors: ["Nathaniel Stickman"]
 ---
 
 The Document Object Model (DOM) is a programming interface for HTML web pages. Scripting languages, like JavaScript, can access and manipulate the DOM to alter the display of a web page. In this guide, you learn about the methods and properties you can use to modify the DOM by adding and removing element nodes. You also learn how to use specialized properties to assign and update a DOM element's CSS styles.

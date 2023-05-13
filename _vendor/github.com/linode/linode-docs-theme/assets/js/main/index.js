@@ -4,12 +4,12 @@ import Alpine from 'jslibs/alpinejs/v3/alpinejs/dist/module.esm.js';
 import intersect from 'jslibs/alpinejs/v3/intersect/dist/module.esm.js';
 import persist from 'jslibs/alpinejs/v3/persist/dist/module.esm.js';
 import { bridgeTurboAndAlpine } from './alpine-turbo-bridge';
-import { initConsentManager } from './components/index';
 import {
 	alpineRegisterMagicHelpers,
 	alpineRegisterDirectiveSVG,
 	newDisqus,
 	newDropdownsController,
+	newTabsController,
 } from './components/index';
 import { isMobile, setIsTranslating, getCurrentLang, leackChecker } from './helpers/index';
 import {
@@ -20,6 +20,7 @@ import {
 	newPromoCodesController,
 	newSearchExplorerController,
 	newToCController,
+	newPaginatorController,
 } from './navigation/index';
 import { newNavStore } from './navigation/nav-store';
 // AlpineJS controllers and helpers.
@@ -46,6 +47,18 @@ const searchConfig = getSearchConfig(params);
 		alpineRegisterDirectiveSVG(Alpine);
 	}
 
+	let fetchController = function (url) {
+		return {
+			data: {},
+			init: async function () {
+				let res = await fetch(url);
+				if (res.ok) {
+					this.data = await res.json();
+				}
+			},
+		};
+	};
+
 	// Register AlpineJS controllers.
 	{
 		// Search and navigation.
@@ -57,15 +70,18 @@ const searchConfig = getSearchConfig(params);
 		Alpine.data('lncToc', newToCController);
 		Alpine.data('lncBreadcrumbs', () => newBreadcrumbsController(searchConfig));
 		Alpine.data('lncDropdowns', newDropdownsController);
+		Alpine.data('lncTabs', newTabsController);
 		Alpine.data('lncDisqus', newDisqus);
+		Alpine.data('lncPaginator', newPaginatorController);
 		Alpine.data('lncPromoCodes', () => newPromoCodesController(params.is_test));
+		Alpine.data('lncFetch', fetchController);
 
 		// Page controllers.
 		Alpine.data('lncHome', (staticData) => {
 			return newHomeController(searchConfig, staticData);
 		});
 
-		Alpine.data('lncSections', () => newSectionsController(searchConfig));
+		Alpine.data('lncSections', () => newSectionsController(searchConfig, params));
 
 		if (!params.enable_leak_checker) {
 			Alpine.data('lncLeakChecker', () => leackChecker(Alpine));
@@ -75,7 +91,7 @@ const searchConfig = getSearchConfig(params);
 	// Set up AlpineJS stores.
 	{
 		Alpine.store('search', newSearchStore(searchConfig, Alpine));
-		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params));
+		Alpine.store('nav', newNavStore(searchConfig, Alpine.store('search'), params, Alpine));
 	}
 
 	if (!isMobile()) {

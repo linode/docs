@@ -1,8 +1,5 @@
 ---
 slug: connect-to-server-over-ssh-on-linux
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A tutorial outlining how to connect to a remote server over SSH on a Linux system, including opening the terminal and structuring the ssh command."
 keywords: ['ssh','linux','connect to server over ssh','connect to linode over ssh']
 tags: ['ssh', 'security']
@@ -19,15 +16,16 @@ relations:
         key: connecting-to-server-over-ssh
         keywords:
             - Environment: Linux
+authors: ["Linode"]
 ---
 
-A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of a connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
+A *secure shell* (SSH) is used for secure communication between devices. When most people refer to SSH, it is within the context of connecting from a local computer to a remote server, commonly for administration tasks related to website hosting.
 
 This article covers the basics of connecting to a remote server (such as a Linode) over SSH on a Linux system.
 
 ## Before You Begin
 
-1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide to create a Linode.
+1. Ensure you have a Linux server with an SSH server (like OpenSSH) installed. Most Linux distributions have an SSH server preinstalled. If you wish to deploy a new server, follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide to create a Linode.
 
 1. Your local computer needs an SSH client that can be used through a terminal application. Most modern Linux distributions have SSH installed and ready to use.
 
@@ -119,10 +117,10 @@ It's recommended to disable root access over SSH and only log in to your remote 
 
 ### Troubleshooting SSH Connection Issues
 
-If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/guides/troubleshooting-ssh/) for assistance.
+If SSH isn't connecting you to your Linode, you may need to investigate the state of your server. See the guide [Troubleshooting SSH](/docs/products/compute/compute-instances/guides/troubleshooting-ssh-issues/) for assistance.
 
 ### Increasing Security
 
 - Now that you can connect from your Linux machine to the Linode over SSH, save not only time but also make the connection even more secure by using SSH public key authentication. For more information, see [SSH add keys](/docs/guides/use-public-key-authentication-with-ssh/).
 
-- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.
+- See the "Harden SSH Access" section of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to review how to secure SSH on the server's side, and the [Advanced SSH Server Security](/docs/guides/advanced-ssh-server-security/) for more information on making it even more secure.

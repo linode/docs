@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-wordpress
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install and optimize the WordPress blogging and CMS on your Linode from scratch using a LAMP setup on Ubuntu 18.04.'
 keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", "how to install wordpress", "how to configure wordpress"]
 tags: ["lamp","wordpress","cms","lemp"]
@@ -19,6 +16,7 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
+authors: ["Linode"]
 ---
 
 WordPress is a popular, dynamic, blog-focused content management system. The software is built upon a LAMP or LEMP stack and features an extensive plugin framework and theme system, which allows site owners and developers to deploy easy-to-use and powerful publishing tools.
@@ -34,7 +32,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
--  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides, and that the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+-  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and that the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -129,3 +127,4 @@ If using permalinks to set your posts' URLs, Apache will need to be updated to a
 You will now be able to login to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 
 Congratulations! You have now successfully installed WordPress.
+{{< /note >}}

@@ -1,8 +1,5 @@
 ---
 slug: persistent-terminal-sessions-with-tmux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will show you how to use tmux Terminal multiplexer to host a server on your Linode and connect to it."
 keywords: ['tmux','terminal','multiplexer','attach','detach','panes','sessions']
 tags: ["networking","ssh","ubuntu","debian","security"]
@@ -14,12 +11,11 @@ modified_by:
 title: "Use tmux (a Terminal Multiplexer)"
 title_meta: "How to Use tmux (a Terminal Multiplexer)"
 image: tmux.jpg
-contributor:
-  name: Alexandru Andrei
 external_resources:
 - '[tmux Manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1)'
 - '[The Tao of tmux](https://leanpub.com/the-tao-of-tmux/read)'
 aliases: ['/networking/ssh/persistent-terminal-sessions-with-tmux/']
+authors: ["Alexandru Andrei"]
 ---
 
 ## What is tmux?

@@ -1,8 +1,5 @@
 ---
 slug: how-to-reverse-a-string-in-python
-author:
-  name: Nathaniel Stickman
-  email: docs@linode.com
 description: "Wondering how to reverse a string in python? Follow our step-by-step instructions on the process, including information on the different methods available."
 keywords: ['how to reverse a string in python','python reverse string','reverse string python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,7 @@ modified_by:
   name: Linode
 title: "Reverse a String in Python"
 title_meta: "How to Reverse a String in Python"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 Python supports several common string operations, like [slicing, indexing, searching,](/docs/guides/how-to-slice-and-index-strings-in-python/) and [advanced formatting](/docs/guides/string-manipulation-python-3/). However, it lacks a dedicated, built-in method for reversing strings. This guide shows you how to reverse a string in Python by leveraging Python's tools for working with sequences.

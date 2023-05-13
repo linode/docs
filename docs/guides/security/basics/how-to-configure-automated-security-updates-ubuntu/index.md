@@ -1,7 +1,5 @@
 ---
 slug: how-to-configure-automated-security-updates-ubuntu
-author:
-  name: Hackersploit
 description: "In this tutorial, you will learn how to configure automated updates on Ubuntu by using the dnf-automatic tool or the Cockpit web application."
 keywords: ["ubuntu unattended-upgrades", "configuring unattended-upgrades"]
 tags: ["ubuntu", "security"]
@@ -19,15 +17,16 @@ relations:
         keywords:
             - distribution: Ubuntu
 image: Configuring_automated_security_updates_ubuntu.png
+authors: ["Hackersploit"]
 ---
 
 Keeping your system up-to-date with the latest packages and security updates can be a tedious task. Most users forget to do it, leaving them vulnerable to countless threats. Automate security (and other package) updates with the utility [Unattended Upgrades](https://wiki.debian.org/UnattendedUpgrades) on Ubuntu.
 
 ## Before You Begin
 
-1.  Complete the [Getting Started](/docs/guides/getting-started) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access.
 
 1.  Log into your Linode via SSH and update and upgrade.
 

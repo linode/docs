@@ -1,9 +1,5 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "How to manage domains using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-10-28
 modified_by:
   name: Linode
@@ -12,6 +8,7 @@ title: "Manage Domains"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/docs/products/networking/dns-manager/guides/remove-domains/']
+authors: ["Linode"]
 ---
 
 ## View Domains

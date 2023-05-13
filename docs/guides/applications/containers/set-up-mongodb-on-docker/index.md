@@ -1,8 +1,5 @@
 ---
 slug: set-up-mongodb-on-docker
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A guide with examples explaining how to install MongoDB on a Docker container utilizing the MongoDB Docker Hub image.'
 keywords: ["docker", "mongodb", "mongodb container", "docker mongodb container", "install mongodb docker", "configure mongodb docker"]
 tags: ["container","docker","mongodb"]
@@ -14,6 +11,7 @@ title: "Set Up MongoDB on Docker"
 title_meta: "How to Set Up MongoDB on Docker"
 external_resources:
 - '[MongoDB on Docker Hub](https://hub.docker.com/_/mongo/)'
+authors: ["Linode"]
 ---
 MongoDB is an open-source NoSQL database utilizing JSON-like documents and schemata that support rapid iterative development. Its scale-out architecture is popular with application developers who use agile methodologies to move quickly. As it's popular within the agile community, using MongoDB with Docker is an excellent approach for a *continuous integration and development* (CI/CD) workflow.
 
@@ -36,9 +34,9 @@ You can quickly set up a secure, updated Linode with the Docker Marketplace App.
 
 #### Manual Installation
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for updating your Linode.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for updating your Linode.
 
-1.  Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 1.  Install Docker on your Linode by following the steps in our guide on [How to Install and Use Docker on Ubuntu and Debian](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/).
 

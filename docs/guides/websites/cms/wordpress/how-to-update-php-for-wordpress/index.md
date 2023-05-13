@@ -1,7 +1,5 @@
 ---
 slug: how-to-update-php-for-wordpress
-author:
-  name: Jeff Novotny
 description: 'This guide will show you how and when to update your outdated and insecure versions of PHP without adversely affecting your WordPress website.'
 keywords: ['update php','update php wordpress','update php version','Ubuntu']
 tags: ['php', 'ubuntu', 'wordpress', 'cms']
@@ -12,12 +10,11 @@ modified_by:
   name: Linode
 title: "Update PHP for a More Performant WordPress on Ubuntu 20.04"
 title_meta: "How to Update PHP for WordPress on Ubuntu 20.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[PHP](https://www.php.net/)'
 - '[phpMyAdmin](https://www.phpmyadmin.net/)'
+authors: ["Jeff Novotny"]
 ---
 
 [WordPress](https://wordpress.org/) is one of the most popular free web publishing tools available. Authoring content on WordPress is straightforward, however,  you need to perform regular maintenance on your WordPress site to keep it secure and up to date. One of those maintenance tasks is to regularly update [PHP](https://www.php.net/), which WordPress uses as a server-side programming language. This guide explains how and when to upgrade PHP without adversely affecting your site.
@@ -45,9 +42,9 @@ Additional best practices for WordPress upgrades are listed below:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. **Do not** follow the *Configure a Firewall* section yet as this guide includes firewall rules specifically for an OpenVPN server.
 
 1. A full LAMP stack must already be installed. See the [How to Install a LAMP Stack on Ubuntu 20.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/) guide for more details.
 

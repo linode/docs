@@ -1,7 +1,5 @@
 ---
 slug: pytorch-installation-ubuntu-2004
-author:
-  name: Tom Henderson
 description: 'This guide shows you how to install PyTorch on an Ubuntu 20.04 server. PyTorch is a Python-based deep learning framework that can be used with GPU powered systems.'
 keywords: ['pytorch install','pytorch cpu','conda install pytorch','what is pytorch', 'uninstall pytorch']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +8,7 @@ modified_by:
   name: Linode
 title: "Install PyTorch on Ubuntu 20.04"
 title_meta: "How to Install PyTorch on Ubuntu 20.04"
-contributor:
-  name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 This guide shows you how to install [PyTorch](https://pytorch.org/), a Python framework, on an Ubuntu 20.04 Linode. PyTorch provides support for a variety of math-intensive applications that run on GPU and CPU hardware. Linode offers dedicated [CPU instances](https://www.linode.com/products/dedicated-cpu/) and [GPU instances](https://www.linode.com/products/gpu/) that you can use to run PyTorch-based projects.
@@ -24,7 +21,7 @@ PyTorch allows popular Python-based apps to access GPU hardware to speed up mach
 
 ### Prerequisites
 
-The instructions below install PyTorch and Anaconda on an Ubuntu 20.04 instance. For the best results, use a Linode [GPU instance](/docs/products/compute/gpu/get-started/) with sufficient memory and storage to accomplish your task. Up to 96GB of memory and 7TB of storage are available.
+The instructions below install PyTorch and Anaconda on an Ubuntu 20.04 instance. For the best results, use a Linode [GPU instance](/docs/products/compute/compute-instances/get-started/) with sufficient memory and storage to accomplish your task. Up to 96GB of memory and 7TB of storage are available.
 
 Optimizing a task may also require using external data sources. If using external data sources and data sets, like [Linode Object Storage](/docs/products/tools/cli/guides/object-storage/), you should prepare them ahead of setting up your PyTorch GPU instance.
 
@@ -40,7 +37,7 @@ Optimizing a task may also require using external data sources. If using externa
 
         sudo apt install nvidia-cuda-toolkit
 
-    For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/gpu/guides/install-nvidia-cuda/).
+    For full instructions, see [Installing the NVIDIA CUDA Toolkit](/docs/products/compute/compute-instances/guides/install-nvidia-cuda/).
 
 {{< note respectIndent=false >}}
 The NVIDIA CUDA Toolkit is not needed on CPU-only (non-GPU) instances.

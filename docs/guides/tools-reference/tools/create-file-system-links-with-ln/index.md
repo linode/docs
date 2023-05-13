@@ -1,8 +1,5 @@
 ---
 slug: create-file-system-links-with-ln
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for creating hard and sym (symbolic) links with the ln command on the Linux operating system.'
 keywords: ["linux", "common commands", "unix", "command line", "file systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title: Create File System Links with ln
 external_resources:
   - '[What is the Difference Between a Hard Link and a Symbolic Link? (Ask Ubuntu)](https://askubuntu.com/questions/108771/what-is-the-difference-between-a-hard-link-and-a-symbolic-link)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 ![Create File System Links with ln](create_file_system_links_with_ln_smg.png)

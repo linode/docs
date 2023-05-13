@@ -1,9 +1,6 @@
 ---
 slug: manage-development-with-the-mantis-bug-tracker-on-centos-5
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on CentOS 5.'
 keywords: ["mantis", "mantis fedora", "mantis linux", "bug tracker", "development"]
 tags: ["centos", "email", "lamp"]
@@ -24,11 +21,12 @@ relations:
         key:  mantis-bug-tracker
         keywords:
             - distribution: CentOS 5
+authors: ["Stan Schwertly"]
 ---
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/guides/linode-beginners-guide/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for CentOS 5](/docs/guides/lamp-server-on-centos-5/) and be able to [send email from your Linode](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and the article concerning [systems administration basics](/docs/guides/linux-system-administration-basics/). Additionally, you'll need to have followed the [LAMP guide for CentOS 5](/docs/guides/lamp-server-on-centos-5/) and be able to [send email from your Linode](/docs/guides/linux-system-administration-basics/#send-email-from-your-server) if you don't already have a means of sending mail from your server.
 
 ## Installing Prerequisites
 

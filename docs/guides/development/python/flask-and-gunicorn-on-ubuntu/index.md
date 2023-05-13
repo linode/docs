@@ -1,8 +1,5 @@
 ---
 slug: flask-and-gunicorn-on-ubuntu
-author:
-  name: Austin Balarin
-  email: abalarin@linode.com
 description: 'This guide walks you through the steps to deploy a Flask application to a production environment running on a Linode.'
 keywords: ['python','flask','gunicorn','nginx', 'flask deployment', 'python flask']
 tags: ["monitoring","python","nginx","ubuntu"]
@@ -13,15 +10,13 @@ modified_by:
   name: abalarin
 title: "Deploying a Flask Application on Ubuntu"
 title_meta: "How to deploy a Flask Application on Ubuntu"
-contributor:
-  name: Austin Balarin
-  link: https://github.com/abalarin
 external_resources:
 - '[Python](https://www.python.org/)'
 - '[Flask](https://flask.palletsprojects.com/en/1.0.x/)'
 - '[NGINX](https://www.nginx.com/resources/wiki/)'
 - '[Gunicorn](http://docs.gunicorn.org/en/stable/)'
 aliases: ['/development/python/flask-and-gunicorn-on-ubuntu/']
+authors: ["Austin Balarin"]
 ---
 Flask is a light-weight web framework for Python that includes several utilities and libraries you can use to create a web application. After you have developed a Flask application in a local environment, you need to prepare the application's production environment in order to run the application and serve it to the users of the application through the internet.
 
@@ -55,9 +50,9 @@ This guide assumes you are familiar with the following concepts and skills:
 
 1. If you are not using the example application, host the Flask application code on a remote version control system, such as GitHub. This guide uses GitHub for all examples.
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Copy the Flask App to Linode
 

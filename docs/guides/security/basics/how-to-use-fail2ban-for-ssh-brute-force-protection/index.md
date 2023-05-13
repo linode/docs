@@ -1,7 +1,5 @@
 ---
 slug: how-to-use-fail2ban-for-ssh-brute-force-protection
-author:
-  name: Hackersploit
 description: "Fail2Ban is an intrusion prevention framework that protects Linux systems and servers from brute-force attacks. Learn how it can do the same for SSH."
 keywords: ["using fail2ban for SSH brute-force protection", "brute-force protection with fail2ban"]
 tags: ["monitoring","security"]
@@ -14,6 +12,7 @@ title: "Using Fail2Ban for SSH Brute-force Protection"
 title_meta: "How to Use Fail2Ban for SSH Brute-force Protection"
 image: fail2ban_bruteforceprotection.png
 aliases: ['/security/basics/how-to-use-fail2ban-for-ssh-brute-force-protection/']
+authors: ["Hackersploit"]
 ---
 
 Fail2Ban is an intrusion prevention framework written in Python that protects Linux systems and servers from brute-force attacks. You can setup Fail2Ban to provide brute-force protection for SSH on your server. This ensures that your server is secure from brute-force attacks. It also allows you to monitor the strength of the attacks in regards to the number of authentication attempts that are being made.
@@ -26,9 +25,9 @@ Brute-force attacks can be extremely powerful and may result in thousands of fai
 This guide uses Ubuntu, but the commands are similar for other systems.
 {{< /note >}}
 
-1.  Complete the [Getting Started](/docs/guides/getting-started/) guide.
+1.  Complete the [Getting Started](/docs/products/platform/get-started/) guide.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, and harden SSH access, but do not create a basic firewall.
 
 1.  Log into your Linode via SSH and update and upgrade.
 
@@ -203,4 +202,4 @@ You have successfully been able to set up, implement, test, and analyze Fail2Ban
 
 ## Next Steps
 
-For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) guide.
+For more detailed information on Fail2Ban, including setting up email alerts and writing regular expressions to filter and parse log files, see the [Using Fail2ban to Secure Your Server - A Tutorial](/docs/products/compute/compute-instances/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection) guide.

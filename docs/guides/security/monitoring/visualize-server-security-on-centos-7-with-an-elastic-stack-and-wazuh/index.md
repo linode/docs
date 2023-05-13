@@ -1,8 +1,5 @@
 ---
 slug: visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to use the Elastic Stack to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection."
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 tags: ["monitoring","security","lemp","centos"]
@@ -13,14 +10,12 @@ modified_by:
   name: Linode
 title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
 title_meta: "How to Visualize Server Security on CentOS 7"
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
   - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
 dedicated_cpu_link: true
 aliases: ['/security/monitoring/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/','/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/']
+authors: ["Andrew Lescher"]
 ---
 
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
@@ -47,7 +42,7 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 ## Before You Begin
 
-1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
+1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
 2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 

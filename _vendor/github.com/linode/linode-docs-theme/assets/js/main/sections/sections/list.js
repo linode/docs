@@ -9,7 +9,7 @@ var debug = 0 ? console.log.bind(console, '[list]') : function () {};
 const searchName = 'search:data-categories-filtered';
 const designMode = false;
 
-export function newSectionsController(searchConfig) {
+export function newSectionsController(searchConfig, params) {
 	if (!searchConfig) {
 		throw 'newSectionsController: must provide searchConfig';
 	}
@@ -18,9 +18,6 @@ export function newSectionsController(searchConfig) {
 
 	const activateSearches = function (self) {
 		self.$store.search.updateLocationWithQuery();
-
-		let currPath = window.location.pathname;
-		let sectionConfig = self.data.sectionConfig;
 
 		let factory = {
 			status: function () {
@@ -234,9 +231,17 @@ export function newSectionsController(searchConfig) {
 
 			this.status.code = 200;
 
+			let seoTitle = this.data.meta.title;
+
+			if (this.data.lvl == 0 && this.data.sectionConfig.seo_title_template) {
+				seoTitle = this.data.sectionConfig.seo_title_template;
+			} else if (this.data.sectionConfig.seo_title_template_category) {
+				seoTitle = this.data.sectionConfig.seo_title_template_category.replace('{category}', this.data.meta.title);
+			}
+
 			// Update <head>
 			setDocumentMeta({
-				title: this.data.meta.title,
+				title: seoTitle + ' | ' + params.page_title_suffix,
 			});
 
 			let facets = this.data.result.facets;

@@ -1,21 +1,18 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Microweber, an open-source, drag and drop website builder and CMS on a Linode Compute Instance."
 keywords: ['Microweber','website builder','cms']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-06
 modified_by:
   name: Linode
 title: "Deploy Microweber through the Linode Marketplace"
+authors: ["Linode"]
 ---
 
 [Microweber](https://microweber.org/) is an open-source, drag and drop website builder and CMS based on the Laravel PHP Framework. It includes features for e-commerce, live editing, file management, design customization, and has plugins for both cPanel and Plesk.
 
 {{< note >}}
-When self-hosting Microweber, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/).
+When self-hosting Microweber, you are responsible for the security of your server. Follow best practices for securing, updating, and backing up the software on your Compute Instance. See [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/).
 {{< /note >}}
 
 ## Deploying a Marketplace App
@@ -37,7 +34,7 @@ When self-hosting Microweber, you are responsible for the security of your serve
 
 ### Accessing the Microweber Application
 
-1. Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* can be replaced with your Compute Instance's IP address or rDNS domain. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `http://[ip-address]`, where *[ip-address]* can be replaced with your Compute Instance's IP address or rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. Complete the initial setup for that appears. This includes setting the database settings, selecting the preferred website design, setting the default language, and more.
 

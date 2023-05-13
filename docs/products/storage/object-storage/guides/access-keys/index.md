@@ -1,17 +1,13 @@
 ---
-slug: access-keys
-author:
-  name: Linode
-  email: docs@linode.com
 description: "How to create an Access Key for use with Linode Object Storage."
 keywords: ['object storage']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-28
 modified: 2022-02-07
 modified_by:
   name: Linode
 title: "Manage Access Keys"
 aliases: ['/products/storage/object-storage/guides/generate-key-pair/','/products/storage/object-storage/guides/generate-access-keys/']
+authors: ["Linode"]
 ---
 
 To start integrating Object Storage with your own applications, you need to create an *access key*. The access key provides access to buckets (and objects stored within those buckets). You can create many access keys, allowing you to create a unique one for each application or user. When an application or user no longer requires access, you can revoke that access key without affecting any other application.

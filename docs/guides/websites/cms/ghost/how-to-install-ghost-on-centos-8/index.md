@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-ghost-on-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on CentOS 8.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running CentOS 8.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on CentOS 8", "ghost cms"]
@@ -25,6 +22,7 @@ relations:
         keywords:
            - distribution: CentOS 8
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-centos-8/']
+authors: ["Linode"]
 ---
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. Ghost is a robust content management system (CMS) with a Markdown editor, an easy-to-use user interface, and beautiful themes. It is easy to install and update with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI).
@@ -41,7 +39,7 @@ Replace each instance of `example.com` in this guide with your site’s domain n
 
 ## Before you Begin
 
-1. This guide assumes that you've followed the steps in our [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
+1. This guide assumes that you've followed the steps in our [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and have created a new user for Ghost with elevated `sudo` privileges. The example username used in this guide is `ghostexample`.
 
 1. Ensure that you have a valid domain name and [properly configured DNS records](/docs/products/networking/dns-manager/) for your domain.
 

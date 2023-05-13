@@ -1,9 +1,6 @@
 ---
 slug: clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04
 deprecated: true
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and using the Clojure programming language with Immutant and WildFly on Ubuntu 14.04.'
 keywords: ["clojure", "luminus", "leiningen", "immutant", "jvm", "wildfly", "jboss", "oracle jdk 8"]
 tags: ["java", "web applications"]
@@ -14,9 +11,6 @@ modified_by:
   name: Sergey Pariev
 published: 2016-02-18
 title: 'Deploy Clojure with Immutant and WildFly on Ubuntu 14.04'
-contributor:
-  name: Sergey Pariev
-  link: https://twitter.com/spariev
 external_resources:
   - '[Installing Leiningen](http://leiningen.org/#install)'
   - '[Installing Oracle JDK 8](https://launchpad.net/~webupd8team/+archive/java)'
@@ -25,6 +19,7 @@ external_resources:
   - '[Script to install JBoss Wildfly 10.x as service in Linux](https://gist.github.com/sukharevd/6087988)'
 audiences: ["beginner"]
 concentrations: ["Web Applications"]
+authors: ["Sergey Pariev"]
 ---
 
 Clojure is a general-purpose programming language with an emphasis on functional programming. It is a dialect of the Lisp programming language running on the Java Virtual Machine (JVM). While Clojure allows you to write elegant and concise code, its ability to make use of the existing JVM infrastructure, such as libraries, tools and application servers, makes it also a very practical choice.
@@ -33,9 +28,9 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

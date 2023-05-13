@@ -1,8 +1,5 @@
 ---
 slug: install-lamp-stack-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
 keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 7.0", "ubuntu 16.04 "]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -14,7 +11,7 @@ modified_by:
 published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 deprecated: true
-deprecated_link: 'guides/how-to-install-a-lamp-stack-on-ubuntu-20-04/'
+deprecated_link: '/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -25,6 +22,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Linode"]
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.
@@ -41,9 +39,9 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 ## Quick Install Using Tasksel
 Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to get a LAMP stack running quickly.
