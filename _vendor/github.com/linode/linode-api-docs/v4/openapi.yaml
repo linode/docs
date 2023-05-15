@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.152.3
+  version: 4.153.0
 
   title: Linode API
   description: |
@@ -6621,8 +6621,13 @@ paths:
     post:
       x-linode-grant: read_write
       summary: Backup Restore
-      description: >
+      description: |
         Restores a Linode's Backup to the specified Linode.
+
+        The following conditions apply:
+          * Backups may not be restored across Regions.
+          * Only successfully completed Backups that are not undergoing maintenance can be restored.
+          * The Linode that the Backup is being restored to must not itself be in the process of creating a Backup.
       tags:
       - Linode Instances
       operationId: restoreBackup
@@ -25712,6 +25717,27 @@ components:
             A boolean value indicating if the User has Two Factor Authentication (TFA)
             enabled. See the Create Two Factor Secret ([POST /profile/tfa-enable](/docs/api/profile/#two-factor-secret-create))
             endpoint to enable TFA.
+        verified_phone_number:
+          type: string
+          format: phone
+          readOnly: true
+          description: |
+            The phone number verified for this User Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
+
+            `null` if this User Profile has no verified phone number.
+          example: "+5555555555"
+        password_created:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+          description: |
+            The date and time when this User's current password was created.
+
+            User passwords are first created during the Account sign-up process, and updated using the [Reset Password](https://login.linode.com/forgot/password) webpage.
+
+            `null` if this User has not created a password yet.
+          example: "2018-01-01T01:01:01"
     UserDefinedField:
       type: object
       required:
