@@ -1,9 +1,9 @@
 ---
 slug: what-is-a-data-warehouse
 title: "What Is a Data Warehouse?"
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'This guide explains what data warehousing is and what it is used for. It also provides some guidance on how to design a data warehouse.'
+og_description: 'This guide explains what data warehousing is and what it is used for. It also provides some guidance on how to design a data warehouse'
+keywords: ['data warehouse','what is a data warehouse','advantages of a data warehouse','design data warehouse']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
 published: 2023-05-09
