@@ -564,6 +564,7 @@ ducati
 dumpall
 dust2
 dvcs
+Dynadot
 e2fsck
 ea04
 ead
