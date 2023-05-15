@@ -5,7 +5,7 @@ description: 'Learn how to use FIDO2 to access your compute instances via SSH.'
 keywords: ['ssh','fido','security key','mobile','yubikey']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Bill Huang"]
-published: 2023-05-05
+published: 2023-05-15
 modified_by:
   name: Linode
 ---
@@ -20,26 +20,36 @@ Linode's [Cloud Manager](/docs/products/tools/cloud-manager/) recently extended 
 
 ## Requirements
 
-The Akamai akr tool generates keys using the ECDSA algorithm with 256-bit strength and outputs them in the `sk-ecdsa-sha2-nistp256` format. Due to this, both the local system and any remote systems that use the public key must have OpenSSH 8.2 or greater. To check your OpenSSH version, run:
+-   **Supported operating systems:** macOS 10.15+, Debian 11+, Ubuntu 20.04+, AlmaLinux 9, Rocky Linux 9. Older versions of some Linux distributions may work *if* the OpenSSH package is upgraded to match the version requirement listed below. Upgrading OpenSSH is outside the scope of this guide.
 
-```command
-ssh -V
-```
+-   **OpenSSH 8.2+:** The Akamai akr tool generates keys using the ECDSA algorithm with 256-bit strength and outputs them in the `sk-ecdsa-sha2-nistp256` format. Due to this, both the local system and any remote systems that use the public key must have OpenSSH 8.2 (or greater) installed. To check your OpenSSH version, run:
+
+    ```command
+    ssh -V
+    ```
 
 ## Installing Akamai akr
 
-### Installing Akamai akr on macOS
+### macOS
 
-To start using FIDO2 authentication with Akamai akr, Mac users can install the agent with [Homebrew](https://brew.sh/).
+To start using FIDO2 authentication with Akamai akr, macOS users can install the agent with [Homebrew](https://brew.sh/).
 
-```command
-brew install akamai/mfa/akr
-brew install pinentry-mac
-```
+1.  The OpenSSH version include on macOS Ventura (and earlier releases) does not support the necessary security keys features. To overcome this, install OpenSSH through Homebrew and update your PATH variable so that this new version is used instead of the default macOS version.
 
-### Installing Akamai akr on Debian and Ubuntu
+    ```command
+    brew install openssh
+    export PATH=$(brew --prefix openssh)/bin:$PATH
+    ```
 
-1.  Install GnuPG.
+1.  Install akr and `pinentry-mac` through Homebrew.
+
+    ```command
+    brew install akamai/mfa/akr pinentry-mac
+    ```
+
+### Debian and Ubuntu
+
+1.  Install GnuPG if you are using Debian. Ubuntu distributions should have this tool already installed.
 
     ```command
     sudo apt update
@@ -65,35 +75,31 @@ brew install pinentry-mac
     sudo apt install akr pinentry-tty
     ```
 
-### Installing Akamai akr on CentOS and RHEL
+### CentOS Stream 9 and RHEL derivatives
 
-For CentOS, and RHEL users, you need to provide yum package resources. Create a file at `/etc/yum.repos.d/akr.repo` using the text editor of your choice.
+1.  Create a repo file for the akr package repo.
 
-```command
-sudo vim /etc/yum.repos.d/akr.repo
-```
+    ```command
+    sudo vim /etc/yum.repos.d/akr.repo
+    ```
 
-Add the akr package repo to the file.
+1.  Add the following contents to that file:
 
-```file {title="/etc/yum.repos.d/akr.repo"}
-...
+    ```file {title="/etc/yum.repos.d/akr.repo"}
+    [akr]
+    name=akr repository
+    baseurl=https://akamai.github.io/akr-pkg/rpm-9/
+    gpgcheck=0
+    enabled=1
+    ```
 
-[akr]
-name=akr repository
-baseurl=https://akamai.github.io/akr-pkg/rpm/
-gpgcheck=0
-enabled=1
-```
+1.  Install the `akr` package along with `pinentry`.
 
-Next, install the akr package.
+    ```command
+    sudo dnf -y install akr pinentry
+    ```
 
-```command
-sudo yum -y update
-sudo yum -y install akr
-sudo yum -y install pinentry-gtk
-```
-
-### Building the akr application with Rust
+### Manually Build akr with Rust
 
 You can also build the application with Rust from the repository. You need to make sure Rust (https://rustup.rs) is installed, then you can run `cargo build` to build the application locally.
 
@@ -110,7 +116,7 @@ When you have Akamai akr installed, you can follow the steps outlined here to se
     This command attempts to write to the SSH client configuration file in the path `~/.ssh/config`. If this file doesn't exist, you will receive a file IO error that indicates the file can't be found. To overcome this, create the file manually using the command below and then rerun `akr setup`:
 
     ```command
-    mkdir ~/.ssh/ && touch ~/.ssh/config
+    mkdir -p ~/.ssh/ && touch ~/.ssh/config
     ```
 
 1.  Run the pair command, which generates a QR code.
