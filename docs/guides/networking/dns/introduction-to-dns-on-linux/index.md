@@ -85,19 +85,19 @@ Before diving into setup details, familiarize yourself with the different types 
 
 Each record describes a different type of information. For example, "A" records associate one hostname with one IPv4 address, while "AAAA" records do the same for IPv6.
 
-There are dozens of RR types; [this Linode guide](https://www.linode.com/docs/products/networking/dns-manager/get-started/#add-dns-records) covers some of the most common and important ones. Most authoritative name servers need at least the following RR types:
+There are dozens of RR types; [this Linode guide](/docs/products/networking/dns-manager/get-started/#add-dns-records) covers some of the most common and important ones. Most authoritative name servers need at least the following RR types:
 
--   [**A**](https://www.linode.com/docs/products/networking/dns-manager/guides/a-record/): Maps a hostname to an IPv4 address.
--   [**AAAA**](https://www.linode.com/docs/products/networking/dns-manager/guides/a-record/): Maps a hostname to an IPv6 address (pronounced "quad-A").
--   [**MX**](https://www.linode.com/docs/products/networking/dns-manager/guides/mx-record/): Identifies a mail server for a given zone, and gives its priority.
--   [**NS**](https://www.linode.com/docs/products/networking/dns-manager/guides/ns-record/): Identifies a name server for a given zone.
--   [**SOA**](https://www.linode.com/docs/products/networking/dns-manager/guides/soa-record/): (Start of Authority) lists primary name server, administrative email contact, serial number, and default timers for a given zone.
+-   [**A**](/docs/products/networking/dns-manager/guides/a-record/): Maps a hostname to an IPv4 address.
+-   [**AAAA**](/docs/products/networking/dns-manager/guides/a-record/): Maps a hostname to an IPv6 address (pronounced "quad-A").
+-   [**MX**](/docs/products/networking/dns-manager/guides/mx-record/): Identifies a mail server for a given zone, and gives its priority.
+-   [**NS**](/docs/products/networking/dns-manager/guides/ns-record/): Identifies a name server for a given zone.
+-   [**SOA**](/docs/products/networking/dns-manager/guides/soa-record/): (Start of Authority) lists primary name server, administrative email contact, serial number, and default timers for a given zone.
 
 The above list is enough for a bare-bones setup, but other common RR types include:
 
--   [**CNAME**](https://www.linode.com/docs/products/networking/dns-manager/guides/cname-record/): Maps a hostname alias to a hostname defined in an A or AAAA record.
+-   [**CNAME**](/docs/products/networking/dns-manager/guides/cname-record/): Maps a hostname alias to a hostname defined in an A or AAAA record.
 -   [**PTR**](https://www.linode.com/community/questions/126/how-do-i-add-a-ptr-record): Maps an IP address to a hostname (sometimes referred to as "reverse DNS" or "rDNS").
--   [**TXT**](https://www.linode.com/docs/products/networking/dns-manager/guides/txt-record/): Provides information in text form and often aids in email security through use of [SPF, DKIM, and DMARC records](https://dmarcly.com/blog/how-to-implement-dmarc-dkim-spf-to-stop-email-spoofing-phishing-the-definitive-guide).
+-   [**TXT**](/docs/products/networking/dns-manager/guides/txt-record/): Provides information in text form and often aids in email security through use of [SPF, DKIM, and DMARC records](https://dmarcly.com/blog/how-to-implement-dmarc-dkim-spf-to-stop-email-spoofing-phishing-the-definitive-guide).
 
 ## Before You Begin
 
@@ -205,8 +205,8 @@ Since the NSD documentation already includes a fully annotated sample configurat
 
     ```file
     remote-control:
-        	# ..
-        	control-enable: yes
+          # ..
+          control-enable: yes
     ```
 
     This allows you to add, remove, and edit DNS entries using the `nsd-control` utility without having to restart the NSD server every time.
@@ -249,12 +249,12 @@ A functional authoritative name server is now set up, but it’s not yet serving
     $TTL 3600
     ;; SOA Record
     @   	IN  	SOA ns1.example.com. hostmaster.example.com. (
-                             	2023030701 ; serial
-                             	3600   	; refresh (1 hour)
-                             	900    	; retry (15 minutes)
-                             	2419200	; expire (4 weeks)
-                             	3600   	; minimum (1 hour)
-                             	)
+                              2023030701 ; serial
+                              3600   	; refresh (1 hour)
+                              900    	; retry (15 minutes)
+                              2419200	; expire (4 weeks)
+                              3600   	; minimum (1 hour)
+                              )
     ;; A Records
     ns1        A     96.126.102.178
     ns2        A     45.79.107.193
