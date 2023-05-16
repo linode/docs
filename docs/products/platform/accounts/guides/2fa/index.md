@@ -2,7 +2,6 @@
 description: "Secure your Linode user account from unauthorized access by enabled 2FA (two-factor authentication)."
 keywords: ["security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-06-27
 modified: 2023-03-14
 modified_by:
@@ -21,7 +20,7 @@ Managing 2FA through Linode is only available if *Linode* is selected as the **L
 
 ## Choosing a 2FA Provider
 
-Before enabling 2FA on your user account, you need to determine which application you wish to use for managing your authentication and generating the expiring tokens (OTPs). You may want to consider using your existing password manager or using a using dedicated authenticator app.
+Before enabling 2FA on your user account, you need to determine which application you wish to use for managing your authentication and generating the expiring tokens (OTPs). You may want to consider using your existing password manager or using a dedicated authenticator app.
 
 ### Use Your Password Manager
 
@@ -72,7 +71,7 @@ Enable two-factor authentication to start using it with your Linode account.
 
     ![Enter the 2FA token](confirm-2fa-token.png)
 
-1. Once the token is successfully confirmed, a scratch code appears. Save this code to a secure place, such as a password manager. If you ever lose access to your authenticator app, this scratch code can be used once in place of the OTP token. is enabled on your account.
+1. Once the token is successfully confirmed, a scratch code appears. Save this code to a secure place, such as a password manager. If you ever lose access to your authenticator app, this scratch code can be used once in place of the OTP token. Two-factor authentication is enabled on your account.
 
 ## Logging in When 2FA Is Enabled
 

@@ -1,7 +1,6 @@
 ---
 description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
 keywords: ["static", "ip address", "addresses"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-19
 modified_by:
   name: Linode

@@ -106,6 +106,7 @@ export function newNavStore(searchConfig, searchStore, params, Alpine) {
 						eventName: 'DOCS: Guide Load',
 					};
 					this.analytics.handler.pushItem(analyticsItem);
+					this.analytics.handler.startNewPage();
 				}
 			};
 

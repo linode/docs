@@ -1,7 +1,6 @@
 ---
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-02-04
 modified: 2023-03-31
 modified_by:

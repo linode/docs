@@ -1,7 +1,6 @@
 ---
 description: "Learn how people use Block Storage to expand their persistent storage on the Linode Platform."
 keywords: ['block','storage','use','cases']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27
 modified: 2022-08-24
 modified_by:

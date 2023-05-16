@@ -2,7 +2,6 @@
 description: "Automate common security tasks on a Linode Compute Instance by using the Secure Your Server Marketplace App."
 keywords: ['security']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-24
 title: "Secure Your Server through the Linode Marketplace"
 authors: ["Linode"]

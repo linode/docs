@@ -1,7 +1,6 @@
 ---
 description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified: 2022-08-12
 modified_by:

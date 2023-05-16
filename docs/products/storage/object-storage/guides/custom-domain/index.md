@@ -2,7 +2,6 @@
 description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
 keywords: ['object','storage','object storage','s3','bucket']
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-07
 modified: 2022-02-07
 modified_by:

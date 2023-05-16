@@ -66,6 +66,7 @@ apache2
 api
 apis
 apiserver
+apfs
 apk
 apparmor
 appimage
@@ -88,6 +89,7 @@ askbot
 aske
 Astra
 async
+astro
 asynchrony
 atera
 atlanta
@@ -101,6 +103,7 @@ authn
 authomator
 authsocket
 authy
+autoclear
 autocompletion
 autoconfiguration
 autoconfigure
@@ -116,6 +119,7 @@ automator
 automattic
 automations
 automount
+automounting
 automox
 autorelabel
 autorun
@@ -168,8 +172,10 @@ bernd
 berners
 bgpd
 bialek
+Bigtable
 bin_t
 bing
+binhex
 binlog
 bioinformaticists
 biomes
@@ -241,6 +247,8 @@ caffe
 cakey
 calc
 campione
+canonicalize
+canonicalization
 captcha
 carootcert
 ccm
@@ -287,6 +295,7 @@ chromecast
 chroot
 chrooting
 chrooted
+CIDRs
 citad
 cjones
 clamav
@@ -322,6 +331,7 @@ Codeone
 codepen
 colab
 collabnet
+Collabora
 colormaps
 com2sec
 commoditization
@@ -349,6 +359,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
@@ -361,6 +372,7 @@ covid
 cpanel
 cpanminus
 cpu
+CPython
 cqlsh
 cqlshrc
 craftbukkit
@@ -423,12 +435,15 @@ datadir
 datadog
 dataflow
 datagram
+dataplane
+dataplanes
 datalog
 dataset
 datasets
 datasource
 datastax
 datastore
+datastores
 datetime
 datetimeformat
 dav
@@ -472,6 +487,8 @@ desperados
 destructured
 detectify
 dev
+devfs
+devpts
 devel
 devops
 devtmpfs
@@ -555,6 +572,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+ecto
 edmonds
 edu
 efi
@@ -620,9 +638,11 @@ failback
 failover
 failregex
 failregexs
+failsafe
 failsafes
 falko
 fastcgi
+Fastify
 fastmail
 fastopen
 fauxhai
@@ -689,6 +709,8 @@ frakti
 framesets
 freedns
 freeipa
+Freemarker
+freenom
 fremont
 freshclam
 friendica
@@ -703,6 +725,7 @@ fstab
 ftp_client
 fullchain
 func
+fuser
 fzf
 galera
 gamemode
@@ -781,6 +804,7 @@ gpasswd
 gpc
 gpg
 gping
+GPUs
 gradle
 grafana
 graphql
@@ -814,11 +838,14 @@ hackage
 hadoop
 halls3
 Haltdos
+Hanami
+Hansson
 hapis
 haproxy
 hardcoded
 hardcopy
 hardlimit
+hashable
 hashmark
 hashicorp
 hasn
@@ -831,6 +858,7 @@ heartbleed
 hebb
 hebbian
 hebern
+Heinemeier
 heredoc
 heroku
 hexo
@@ -857,6 +885,7 @@ hotlinked
 hotlinking
 hotspot
 hotspots
+Hotwire
 howto
 howtoforge
 howtogeek
@@ -947,6 +976,7 @@ inittab
 injectable
 inkscape
 inode
+inodes
 inotify
 inrupt
 insmod
@@ -960,6 +990,7 @@ intra-application
 introducer
 introducers
 Intune
+Instructure
 invicti
 io
 iodef
@@ -973,6 +1004,7 @@ ipaserver
 ipchains
 ipconfig
 iperf
+ips
 ipsec
 ipset
 ipsets
@@ -996,6 +1028,7 @@ isps
 issuewild
 istioctl
 iterable
+iterables
 itk
 ivanti
 Janca
@@ -1028,6 +1061,7 @@ jpg
 jpetazzo
 jq
 jre
+JRuby
 js
 jshell
 json
@@ -1108,6 +1142,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+Laminas
 LANs
 laravel
 largebiomes
@@ -1219,6 +1254,7 @@ lzma
 lzopio
 macos
 magento
+Mailchimp
 maildir
 maildirs
 maildrop
@@ -1249,7 +1285,9 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matsumoto
 Matthes
+Matz
 Mavan
 mawk
 maxconn
@@ -1351,8 +1389,10 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
+MRuby
 msfvenom
 msg
 msgid
@@ -1451,6 +1491,7 @@ newtag
 nextcloud
 nexthop
 nfs
+nfsd
 nftables
 ng
 nginx
@@ -1549,6 +1590,7 @@ outputter
 outputters
 overcommit
 overengineer
+overmounting
 overfitted
 overfitting
 overwatch
@@ -1587,6 +1629,7 @@ passwdfile
 passwordless
 patroni
 paypal
+PBCs
 pbr
 pem
 pentest
@@ -1606,6 +1649,7 @@ pg_dump
 pg_dumpall
 pg_restore
 pgpass
+Phalcon
 pharmer
 pharo
 phonebook
@@ -1619,6 +1663,7 @@ phusion
 pid
 pidfile
 pingable
+pipefs
 pinterest
 pipfile
 pipenv
@@ -1627,6 +1672,7 @@ pipelining
 pixid
 piwik
 pixid
+pixelfed
 pki
 plaintext
 platformer
@@ -1690,6 +1736,7 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
 logic-programming-languages
@@ -1706,6 +1753,7 @@ proxying
 pscp
 pseudocode
 psexec
+psmisc
 psql
 psudo
 psycop2
@@ -1745,6 +1793,7 @@ quicklisp
 quickstart
 radeon
 rainloop
+Ramaze
 ramdisk
 ransomwhere
 rauth
@@ -1859,6 +1908,7 @@ rosenblatt
 rossum
 roundcube
 routable
+routings
 rpaf
 rpc
 rpcbind
@@ -1871,6 +1921,7 @@ rsync
 rsyslog
 rtf
 rtt
+Rubinius
 rubocop
 rubydebug
 rubygems
@@ -1925,6 +1976,7 @@ scrapy
 screenrc
 scriptable
 scrollable
+scrollback
 scrollbar
 scrollbars
 scriptfilename
@@ -2138,6 +2190,7 @@ syntaxes
 sys
 sysconfig
 sysdig
+sysfs
 sysctl
 syslog
 sysstat
@@ -2305,6 +2358,7 @@ unopinionated
 unmanaged
 unmerged
 unmount
+unmounts
 unmounting
 unoptimized
 unpatched
@@ -2350,7 +2404,9 @@ v1
 v2
 v4
 v6
+Vaadin
 vagrantfile
+valim
 valheim
 validator
 variadic
@@ -2532,6 +2588,7 @@ yaml
 yellowbrick
 yellowdog
 yesod
+Yii
 yml
 yoast
 yourdomain
@@ -2543,6 +2600,7 @@ youtube
 yubico
 yubikey
 yubikeys
+Yukihiro
 zabbix
 zapier
 zcat

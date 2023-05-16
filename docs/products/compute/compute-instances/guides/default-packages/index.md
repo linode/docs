@@ -1,7 +1,6 @@
 ---
 description: "This guide contains a list of all default packages on Linode's Distribution Images."
 keywords: ["linux", "linode manager", "image", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-08-27
 modified_by:
   name: Linode
