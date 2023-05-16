@@ -25,6 +25,7 @@ Within the Linode Platform, Compute Instances can be transferred from one accoun
 
 {{< note >}}
 Only users with full account access can use Service Transfers. To adjust user permissions, see our [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
+A transfer fails if the receiving account already has a Linode with the same label as the Linode being transferred. For example, this happens if you used the default label for the Linode when you created it. To ensure that the transfer is successful change the label of the Linode that you are transferring.
 {{< /note >}}
 
 ## Sending Linode Services
