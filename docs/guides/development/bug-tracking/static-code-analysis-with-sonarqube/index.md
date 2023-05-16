@@ -12,9 +12,9 @@ external_resources:
 - '[SonarQube Documentation](https://docs.sonarqube.org/latest/)'
 ---
 
-SonarQube gives you a tool for automating and managing static code analyses, with everything from issue reports to customized quality gates. SonarQube stands out further by integrating with a range of other tools, from project frameworks like Maven to CI/CD pipelines like Jenkins.
+SonarQube gives you a tool for automating and managing static code analyses, with a host of features like issue reports and customized quality gates. SonarQube stands out further by integrating with a range of other tools, from project frameworks like Maven to CI/CD pipelines like Jenkins.
 
-In this tutorial, learn everything you need to get started using SonarQube. The tutorial walks you through setting up your own SonarQube server. And it helps you see how to integrate SonarQube with your projects by using it with an example Maven project.
+In this tutorial, learn everything you need to get started using SonarQube. The tutorial walks you through setting up your own SonarQube server. And it demonstrates how to integrate SonarQube with your projects by using it with an example Maven project.
 
 ## Before You Begin
 
@@ -30,21 +30,21 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Static code analysis reviews code for issues, bugs, and standards violations. On the one hand, static code analysis goes deeper and wider in its review than the grammar and error checking done by compilers and interpreters. On the other hand, static code analysis automates code review and can often catch issues that a human code review may miss.
 
-Tools for static code analysis can prevent potential issues from reaching deployment, and they can also enforce coding standards and legibility in your codebase.
+Tools for static code analysis can prevent potential issues from reaching production environments, and they can also enforce coding standards and legibility in your codebase.
 
 You can learn more about static code analysis and what it has to offer in our guide [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/).
 
 ### Why SonarQube?
 
-[SonarQube](https://www.sonarsource.com/products/sonarqube/) is a tool that automates static code reviews with an emphasis on integration with your projects. SonarQube covers a wide range of programming languages, with useful code standards built in. At the same time, SonarQube is capable of integrating with several project frameworks, from Maven to .NET, or using its CLI tool.
+[SonarQube](https://www.sonarsource.com/products/sonarqube/) is a tool that automates static code reviews by integrating with your projects. SonarQube covers a wide range of programming languages, with useful code standards built in. At the same time, SonarQube is capable of integrating with several project frameworks, from Maven to .NET, or using its CLI tool.
 
-SonarQube also significantly emphasizes integration with CI/CD and DevOps platforms. There, working as part of your GitHub workflows or Jenkins pipelines, SonarQube can automatically enforce quality gates and reporting.
+SonarQube emphasizes integration with CI/CD and DevOps platforms. There, working as part of your GitHub workflows or Jenkins pipelines, SonarQube can automatically enforce quality gates and reporting.
 
 ## How to Install SonarQube
 
 SonarQube runs as a self-hosted server. Projects can then add the SonarScanner plugin or CLI, together with a token generated in your SonarQube instance, to request code analyses from the server.
 
-So, to start, you need to install SonarQube and start running the SonarQube server. This tutorial does so using Docker Compose, which lets you manage the SonarQube server and database implementation from one source.
+To start, you need to install SonarQube and start running the SonarQube server. This tutorial uses Docker Compose, which lets you manage the SonarQube server and database implementation from one source.
 
 ### Installing Docker and Docker Compose
 
@@ -165,7 +165,7 @@ SonarQube requires you to make certain adjustments to system settings. This incl
         sudo firwall-cmd --reload
         ```
 
-1. SonarQube requires the limits for map counts, files, and threads to be set at least to certain values, given here. These commands create dedicated files for the configurations, making the settings persistent.
+1. SonarQube requires the limits for map counts, files, and threads to be set at least to certain values, shown here. These commands create dedicated files for the configurations, making the settings persistent.
 
     ```command
     sudo tee /etc/sysctl.d/99-sonarqube.conf > /dev/null <<EOF
@@ -285,7 +285,7 @@ Additionally, the example shows how to enable projects and review analysis repor
 
 ### Setting Up an Example Project
 
-SonarQube uses the SonarScanner to scan a project's code and get analyses. The SonarScanner itself can be either a plugin for your project framework, or the CLI tool for any unsupported projects types.
+SonarQube uses the SonarScanner to scan and analyze a project's code. The SonarScanner itself can be either a plugin for your project framework, or the CLI tool for any unsupported projects types.
 
 You can see a list of SonarScanner options in the [SonarQube documentation](https://docs.sonarqube.org/latest/analyzing-source-code/overview/).
 
@@ -421,7 +421,7 @@ You can now use Maven to create your base project. To start with a useful base f
     rm example-java-project.zip
     ```
 
-1. Open the `pom.xml` file, and add the `<plugin>` block show below at the end of the `<plugins>` block that should already by in the file. You should also first identify the latest version of the plugin to use [here](https://central.sonatype.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin/).
+1. Open the `pom.xml` file, and add the `<plugin>` block shown below at the end of the `<plugins>` block that should already be in the file. You should also first identify the latest version of the plugin to use [here](https://central.sonatype.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin/).
 
     ```file {title="pom.xml" lang="xml"}
     [...]
@@ -473,7 +473,7 @@ All that remains to test out SonarQube's code analysis is to run the SonarScanne
 
     [![An overview of a project analysis in SonarQube](sonarqube-analysis-overview_small.png)](sonarqube-analysis-overview.png)
 
-The Spring Boot base project fails SonarQube's analysis. To dig deeper into why, navigate to the **Issues** tab, where you can get a description of the issue.
+The Spring Boot base project fails SonarQube's analysis. To understand why, navigate to the **Issues** tab, where you can find a description for the issue.
 
 [![The list of issues on a scan from SonarQube](sonarqube-analysis-issue_small.png)](sonarqube-analysis-issue.png)
 

@@ -886,6 +886,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -1249,6 +1250,7 @@ mathematica
 mathjax
 matplotlib
 Matthes
+Mavan
 mawk
 maxconn
 maxdepth
