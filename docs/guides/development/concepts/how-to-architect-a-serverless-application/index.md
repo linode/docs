@@ -5,7 +5,7 @@ description: 'Learn about back-end and front-end services, microservices, and se
 keywords: ['how to architect a serverless application','serverless','serverless applications','architect a serverless application','microservices','collection of functions','serverless architecture','serverless web applications','backend services']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["John Mueller"]
-published: 2023-04-20
+published: 2023-05-16
 modified_by:
   name: Linode
 external_resources:
@@ -29,7 +29,7 @@ Due to the low startup costs and ability to handle lightweight applications, ser
 
 -   Situations where traffic tends to be unpredictable.
 -   Internet of Things (IoT) applications, because both IoT and serverless applications are event based.
--   Application that see frequent and significant changes, as serverless applications provide great Continuous Integration and Continuous Delivery (CI/CD).
+-   Application that see frequent and significant changes, as serverless applications combine well with Continuous Integration and Continuous Delivery (CI/CD).
 -   Applications that can be broken down into individual functions, and then combined to create a Packaged Business Capability (PBC).
 
 ### How Is Building a Serverless App Different Than a Typical App?
@@ -48,7 +48,7 @@ There's a process to follow when architecting a serverless application, whether 
 
 1.  Define individual services that perform specific tasks.
 
-1.  Define individual functions that perform one and only one task, to make up the services. Build a collection of functions that define each element of a service in detail, and in the most basic way possible. It should not be possible to break a task down any further than the function level. While [lambda functions](https://towardsdatascience.com/lambda-functions-with-practical-examples-in-python-45934f3653a8) are most common, any language works if the [service provider](https://www.geeksforgeeks.org/serverless-computing/) supports it.
+1.  Define individual functions that perform one and only one task, to make up the services. Build a collection of functions that define each element of a service in detail, and in the most basic way possible. It should not be possible to break a task down any further than the function level. While [lambda functions](https://towardsdatascience.com/lambda-functions-with-practical-examples-in-python-45934f3653a8) are most common, any language works if the service provider supports it.
 
 1.  Define events that trigger the functions. Remember that serverless applications work on the premise that a function starts, performs a task, and then stops.
 
