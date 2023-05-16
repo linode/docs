@@ -37,19 +37,19 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 
 ## Availability
 
-| Data center | Status |
-| -- | -- |
-| **Atlanta (Georgia, USA)** | **Available** |
-| Dallas (Texas, USA) | Not yet available |
-| **Frankfurt (Germany)** | **Available** |
-| Fremont (California, USA) | Not yet available |
-| **London (United Kingdom)** | **Available** |
-| **Mumbai (India)** | **Available** |
-| **Newark (New Jersey, USA)** | **Available** |
-| **Singapore** | **Available** |
-| **Sydney (Australia)** | **Available** |
-| Tokyo (Japan) | Not yet available |
-| **Toronto (Canada)** | **Available** |
+| Data center | Region ID | Status |
+| -- | -- | -- |
+| **Atlanta (Georgia, USA)** | **us-southeast** | **Available** |
+| Dallas (Texas, USA) | us-central | Not yet available |
+| **Frankfurt (Germany)** | **eu-central** | **Available** |
+| Fremont (California, USA) | us-west | Not yet available |
+| **London (United Kingdom)** | **eu-west** | **Available** |
+| **Mumbai (India)** | **ap-west** | **Available** |
+| **Newark (New Jersey, USA)** | **us-east** | **Available** |
+| **Singapore** | **ap-south** | **Available** |
+| **Sydney (Australia)** | **ap-southeast** | **Available** |
+| Tokyo (Japan) | ap-northeast | Not yet available |
+| **Toronto (Canada)** | **ca-central** | **Available** |
 
 ## Pricing
 
