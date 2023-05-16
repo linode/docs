@@ -1,3 +1,4 @@
+{{ $respectIndent := .Get "respectIndent" | default true }}
 {{ $name := "" }}
 {{ if .IsNamedParams }}
   {{ $name := .Get "name" }}
@@ -20,5 +21,11 @@
 </button>
 {{/* We need to put the tab content in its own div, so pass it up to the container. */}}
 {{ if .Parent }}
-  {{ .Parent.Scratch.Add "tabsContent" (slice (dict "ordinal" $ordinal "content" .InnerDeindent)) }}
+  {{ $content := "" }}
+  {{- if $respectIndent -}}
+    {{ $content = .InnerDeindent | .Page.RenderString }}
+  {{- else -}}
+    {{ $content = .Inner | .Page.RenderString }}
+  {{- end -}}
+  {{ .Parent.Scratch.Add "tabsContent" (slice (dict "ordinal" $ordinal "content" $content)) }}
 {{ end }}

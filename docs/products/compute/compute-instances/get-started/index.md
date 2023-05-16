@@ -49,3 +49,5 @@ Linode's Compute Instances (and other products and services) can run almost any 
 ## Deploy New Applications
 
 Now you can start using your Compute Instance. Whether you're just here to test things out or are looking to host a specific application with us, we may have a guide that can help you get up and running. Open the [Guides](/docs/guides/) section and start browsing or use the search tool at the top of the page to find any guides related to your use case.
+
+{{< content "email-warning-shortguide" >}}

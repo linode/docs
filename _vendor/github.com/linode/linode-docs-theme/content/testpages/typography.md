@@ -361,3 +361,34 @@ Ipsum officia excepteur sunt quis ut mollit minim consequat adipisicing velit au
 
 Cillum irure fugiat laborum nisi ut deserunt occaecat esse officia sint in et dolore. Deserunt labore veniam ullamco aute. Irure quis amet velit velit non tempor exercitation ipsum.
 {{< /disclosure-note >}}
+
+
+## Tables
+
+### Wide Table
+
+| Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column | Column |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content| Content|
+
+
+### Small Table
+
+| Column | Column | Column | Column |
+| ------ | ------ | ------ | ------ |
+| Content| Content| Content| Content| 
+| Content| Content| Content| Content| 
+| Content| Content| Content| Content| 
+

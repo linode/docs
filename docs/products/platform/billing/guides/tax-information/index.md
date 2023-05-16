@@ -183,4 +183,4 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Switzerland VAT | N/A | CHE-115.356.067 MWST |
 | United Kingdom VAT | GB383720095 | *Pending* |
 | United Arab Emirates | N/A | 104038424800003 |
-| United States EIN | 20-2647179 | - |
+| United States EIN | 20-2647179 | 04-3432319 |
