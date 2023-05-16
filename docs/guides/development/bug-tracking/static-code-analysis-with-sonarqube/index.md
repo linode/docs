@@ -1,7 +1,7 @@
 ---
 slug: static-code-analysis-with-sonarqube
 title: "Setting Up Static Code Analysis with SonarQube"
-description: "SonarQube provides static codes analysis, catching and reporting code issues, and with a range of integration options for your project and CI/CD pipeline. Learn in this tutorial how to set up a SonarQube server and start using it for your projects."
+description: "SonarQube provides static codes analysis, catching and reporting code issues, and with a range of integration options for your project and CI/CD pipeline. Learn in this guide how to set up a SonarQube server and start using it for your projects."
 keywords: ['sonarqube tutorial','what is sonarqube','how to run sonarqube analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
@@ -14,7 +14,7 @@ external_resources:
 
 SonarQube gives you a tool for automating and managing static code analyses, with a host of features like issue reports and customized quality gates. SonarQube stands out further by integrating with a range of other tools, from project frameworks like Maven to CI/CD pipelines like Jenkins.
 
-In this tutorial, learn everything you need to get started using SonarQube. The tutorial walks you through setting up your own SonarQube server. And it demonstrates how to integrate SonarQube with your projects by using it with an example Maven project.
+In this guide, learn everything you need to get started using SonarQube. The guide walks you through setting up your own SonarQube server. And it demonstrates how to integrate SonarQube with your projects by using it with an example Maven project.
 
 ## Before You Begin
 
@@ -23,7 +23,7 @@ In this tutorial, learn everything you need to get started using SonarQube. The 
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Static Code Analysis?
@@ -32,7 +32,7 @@ Static code analysis reviews code for issues, bugs, and standards violations. On
 
 Tools for static code analysis can prevent potential issues from reaching production environments, and they can also enforce coding standards and legibility in your codebase.
 
-You can learn more about static code analysis and what it has to offer in our guide [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/).
+You can learn more about static code analysis and what it has to offer in our [What is Static Code Analysis?](/docs/guides/what-is-static-code-analysis/) guide.
 
 ### Why SonarQube?
 
@@ -44,11 +44,11 @@ SonarQube emphasizes integration with CI/CD and DevOps platforms. There, working
 
 SonarQube runs as a self-hosted server. Projects can then add the SonarScanner plugin or CLI, together with a token generated in your SonarQube instance, to request code analyses from the server.
 
-To start, you need to install SonarQube and start running the SonarQube server. This tutorial uses Docker Compose, which lets you manage the SonarQube server and database implementation from one source.
+So, to start, you need to install SonarQube and start running the SonarQube server. This tutorial does so using Docker Compose, which lets you manage the SonarQube server and database implementation from one source.
 
-### Installing Docker and Docker Compose
+### Install Docker and Docker Compose
 
-These next sets of steps show you how to install Docker with the Docker Compose plugin on Debian and Ubuntu and CentOS and Fedora systems. For other operating systems and distributions, refer to the [official instructions](https://docs.docker.com/engine/install/#server) for installing Docker Engine along with the Docker Compose plugin.
+These next steps show you how to install Docker with the Docker Compose plugin on Debian and Ubuntu and CentOS and Fedora systems. For other operating systems and distributions, refer to the [official instructions](https://docs.docker.com/engine/install/#server) for installing Docker Engine along with the Docker Compose plugin.
 
 #### On Debian and Ubuntu
 
@@ -152,13 +152,13 @@ SonarQube requires you to make certain adjustments to system settings. This incl
 
 1. Open the port for SonarQube in your system's firewall. By default, SonarQube uses port `9000`, and you can use the commands here to open that port.
 
-    - On Debian and Ubuntu:
+    - On **Debian** and **Ubuntu**:
 
         ```command
         sudo ufw allow 9000/tcp
         ```
 
-    - On CentOS and Fedora:
+    - On **CentOS** and **Fedora**:
 
         ```command
         sudo firewall-cmd --zone=public --add-port=9000/tcp --permanent
@@ -249,11 +249,11 @@ If you are, instead, interested in a more traditional installation for your Sona
 
     Docker Compose downloads and prepares the necessary resources and starts up the PostgreSQL and SonarQube servers. From here, you can control the servers using Docker Compose commands.
 
-    {{< note >}}
+    {{< note type="warning">}}
 Avoid using the `-v` option with the `docker compose down` command, or using the `docker volume prune` or `docker system prune` commands. Doing so may remove your otherwise persistent data.
     {{< /note >}}
 
-### Accessing the Interface
+### Access the Interface
 
 With `docker compose up`, your SonarQube server should be running and available to start using. To get started, you should log in, both to set a password for your administrator user and to get familiar with the interface.
 
@@ -275,13 +275,13 @@ After creating a new password for the administrator user, SonarQube directs you 
 
 [![The initial dashboard for SonarQube](sonarqube-initial-dashboard_small.png)](sonarqube-initial-dashboard.png)
 
-The dashboard starts with a prompt to create a new project, and the tutorial picks up with that further on in the next section.
+The dashboard starts with a prompt to create a new project, and the guide picks up with that further on in the next section.
 
 ## How to Analyze Code with SonarQube
 
-With a SonarQube server established, your next step is enabling SonarQube code analyses for one of your projects. To show you how, this section of the tutorial walks you through creating a simple example project with Maven and Spring Boot. The example shows you how to add the SonarScanner plugin for a Maven project and how to start scanning.
+With a SonarQube server established, your next step is enabling SonarQube code analyses for one of your projects. To show you how, this section of the guide walks you through creating a simple example project with Maven and Spring Boot. The example shows you how to add the SonarScanner plugin for a Maven project and how to start scanning.
 
-Additionally, the example shows how to enable projects and review analysis reports from with in the SonarQube interface. These steps apply to a wide range of project types. And, moreover, going through them can give you a clearer idea of what SonarQube can do and how to make the most of it.
+Additionally, the example shows how to enable projects and review analysis reports from within the SonarQube interface. These steps apply to a wide range of project types. And, moreover, going through them can give you a clearer idea of what SonarQube can do and how to make the most of it.
 
 ### Setting Up an Example Project
 
@@ -289,7 +289,7 @@ SonarQube uses the SonarScanner to scan and analyze a project's code. The SonarS
 
 You can see a list of SonarScanner options in the [SonarQube documentation](https://docs.sonarqube.org/latest/analyzing-source-code/overview/).
 
-The example project for this tutorial uses Maven, for which there is a SonarScanner plugin that can readily fit into the project. Follow along here to create the project and see how to add the SonarScanner plugin to it.
+The example project for this guide uses Maven, for which there is a SonarScanner plugin that can readily fit into the project. Follow along here to create the project and see how to add the SonarScanner plugin to it.
 
 #### Installing Maven
 
@@ -337,7 +337,7 @@ Since this project uses the [Maven](https://maven.apache.org/) framework to crea
     OS name: "linux", version: "4.18.0-483.el8.x86_64", arch: "amd64", family: "unix"
     ```
 
-1. Open the Maven global settings file, at `/usr/local/maven/conf/settings.xml` in this case, and make the following changes to it.
+1. Open the Maven global settings file, at `/usr/local/maven/conf/settings.xml` in this case, and make the following changes to it:
 
     - Within the `<pluginGroups>` block, add the `<pluginGroup>` line here to enable the SonarScanner plugin.
 
@@ -349,7 +349,7 @@ Since this project uses the [Maven](https://maven.apache.org/) framework to crea
         [...]
         ```
 
-    - Within the `<profiles>` block, add the `<profile>` block below for the SonarScanner plugin. Replace `SONARQUBE_URL` in this example with the actual URL for your SonarQube server. Alternatively, remove the `<sonar.host.url>` block if you want to use `localhost`.
+    - Within the `<profiles>` block, add the `<profile>` block shown below for the SonarScanner plugin. Replace `SONARQUBE_URL` in this example with the actual URL for your SonarQube server. Alternatively, remove the `<sonar.host.url>` block if you want to use `localhost`.
 
         ```file {title="settings.xml" lang="xml"}
         [...]
@@ -372,7 +372,7 @@ Since this project uses the [Maven](https://maven.apache.org/) framework to crea
 
 #### Creating a Spring Boot Project
 
-You can now use Maven to create your base project. To start with a useful base for a web application, this tutorial leverages the Spring Boot framework. The tutorial also relies on the Spring Boot CLI to initialize the project, saving you from having to create the necessary files and directories manually.
+You can now use Maven to create your base project. To start with a useful base for a web application, this guide leverages the Spring Boot framework. The guide also relies on the Spring Boot CLI to initialize the project, saving you from having to create the necessary files and directories manually.
 
 1. Install the Spring Boot CLI. Visit the [documentation for installing the Spring Boot CLI](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started.html#getting-started.installing.cli.manual-installation) to find the URL for the latest stable version, and replace the URL in the command below with that.
 
@@ -392,7 +392,7 @@ You can now use Maven to create your base project. To start with a useful base f
     sudo chmod +x /etc/profile.d/spring.sh
     ```
 
-1. Either exit and reopen the shell run the command here for the changes to the shell path to take effect.
+1. Either exit and reopen the shell or run the command here for the changes to the shell path to take effect.
 
     ```command
     source /etc/profile.d/spring.sh
@@ -441,7 +441,7 @@ The last step for setting up your project with SonarQube is to create a project 
 
 1. Open the SonarQube interface again, and select the **Manually** option from the list of options for creating a project.
 
-1. Enter a name and a key for the project. This tutorial uses the name from the Maven project, `example-java-project`, for both of these fields.
+1. Enter a name and a key for the project. This guide uses the name from the Maven project, `example-java-project`, for both of these fields.
 
     ![Naming a new SonarQube project](sonarqube-project-name.png)
 
@@ -457,7 +457,7 @@ The last step for setting up your project with SonarQube is to create a project 
 
 All that remains to test out SonarQube's code analysis is to run the SonarScanner against the example project. At this point, everything is set up to run a scan manually with the Maven project manager.
 
-1. Run the command here to setup your Maven project with its dependencies and to execute the initial code scan. Replace `SONARQUBE_PROJECT_TOKEN` with the project token you generated for the project within the SonarQube interface.
+1. Run the command here to set up your Maven project with its dependencies and to execute the initial code scan. Replace `SONARQUBE_PROJECT_TOKEN` with the project token you generated for the project within the SonarQube interface.
 
     ```command
     mvn clean verify sonar:sonar -Dsonar.projectKey=example-java-project   -Dsonar.projectName='example-java-project' -Dsonar.token=SONARQUBE_PROJECT_TOKEN
@@ -485,7 +485,7 @@ You can get more details still by selecting the issue. There, you can see the of
 
 ## Conclusion
 
-You now have an operating SonarQube server, and an example Mavan project to start building off of for your own projects. SonarQube integrates with a wide range of project frameworks, and you can see more on those from the link further above.
+You now have an operating SonarQube server, and an example Maven project to start building off of for your own projects. SonarQube integrates with a wide range of project frameworks, and you can see more on those from the link further above.
 
 One of the other benefits of SonarQube is its integration with CI/CD pipelines, like Jenkins. And you can start getting an idea for what that might look like through our [Jenkins CI/CD on Linode to Any Hyperscaler](/docs/reference-architecture/jenkins-ci-cd-on-linode-to-any-hyperscaler/) reference architecture. The architecture gives a robust CI/CD system and includes a code analysis step.
 
