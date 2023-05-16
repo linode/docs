@@ -40,8 +40,8 @@ The protocol can be set to either TCP, HTTP, or HTTPS. While a brief description
 
 - **HTTPS:** Encrypted web traffic using HTTP/1.1. Since this terminates the request on the NodeBalancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish to configure TLS/SSL certificates on the NodeBalancer and not on individual backend nodes.
 
-    {{< note >}}
-    Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
+    {{< note type="warning" noTitle=true >}}
+    When using the **HTTPS** protocol setting, all traffic is decrypted on the NodeBalancer. Traffic between the NodeBalancer and the backend nodes is sent over the private data center network, is not encrypted, and uses the HTTP protocol.
     {{< /note >}}
 
 ### Proxy Protocol
