@@ -41,7 +41,7 @@ The protocol can be set to either TCP, HTTP, or HTTPS. While a brief description
 - **HTTPS:** Encrypted web traffic using HTTP/1.1. Since this terminates the request on the NodeBalancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish to configure TLS/SSL certificates on the NodeBalancer and not on individual backend nodes.
 
     {{< note >}}
-    Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network use the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
+    Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
     {{< /note >}}
 
 ### Proxy Protocol
@@ -113,7 +113,7 @@ Additionally, configure the following settings to adjust the frequency and numbe
 
 ### Passive Health Checks
 
-The **passive checks** setting controls if passive health checks are enabled. When enabled, the NodeBalancer monitors all requests sent to backend nodes. If the request times out and returns a 5xx response code (excluding 501 and 505), or otherwise fails to connect, the backend is marked as *down* and taken out of rotation.
+The **passive checks** setting controls if passive health checks are enabled. When enabled, the NodeBalancer monitors all requests sent to backend nodes. If the request times out, returns a 5xx response code (excluding 501 and 505), or otherwise fails to connect, the backend is marked as *down* and taken out of rotation.
 
 ## Backend Nodes (Compute Instances)
 
