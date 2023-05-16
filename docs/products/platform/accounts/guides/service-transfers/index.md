@@ -5,7 +5,7 @@ description: "Learn how to transfer ownership of Linode services to a different 
 keywords: ["linode transfer ownership", "transfer linode to another account", "linode can i transfer"]
 tags: ["cloud manager","linode platform","account"]
 published: 2021-03-10
-modified: 2023-04-11
+modified: 2023-05-16
 modified_by:
   name: Linode
 image: TransferOwn_LinodeServ_ST.png
@@ -25,7 +25,10 @@ Within the Linode Platform, Compute Instances can be transferred from one accoun
 
 {{< note >}}
 Only users with full account access can use Service Transfers. To adjust user permissions, see our [Set User Permissions](/docs/products/platform/accounts/guides/user-permissions/) guide. Users with full account access can view and interact with all of the transfers associated with the account, regardless of which user created or accepted the transfer.
-A transfer fails if the receiving account already has a Linode with the same label as the Linode being transferred. For example, this happens if you used the default label for the Linode when you created it. To ensure that the transfer is successful change the label of the Linode that you are transferring.
+{{< /note >}}
+
+{{< note type="warning">}}
+Each Compute Instance that you wish to transfer must have a unique label that is not used for any other instances on the receiving account. If the label is not unique, the transfer will fail. As an example, this commonly happens when the default label has been used. To ensure that the transfer is successful, verify that the label of the Compute Instance you are transferring is unique on the receiving account.
 {{< /note >}}
 
 ## Sending Linode Services
