@@ -137,7 +137,7 @@ For more information about using Git, refer to the [official Git documentation](
 
             git clone https://github.com/USERNAME/docs linode-docs
 
-    -   **SSH URLs:** Before continuing with SSH URLs, you must first a public/private keypair installed on your local system. Then, you must upload your public key to your GitHub account. When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt. For further instructions, [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+    -   **SSH URLs:** Before continuing with SSH URLs, you should first have a public/private key pair installed on your local system. Then, you must upload your public key to your GitHub account. When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt. For further instructions, [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
             git clone git@github.com:USERNAME/docs.git linode-docs
 
