@@ -62,7 +62,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
     You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
     {{< note respectIndent=false >}}
-If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, revoke the key for that IP address.
+If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when the remote host key changes. To fix this, revoke the key for that IP address.
 
     ssh-keygen -R 198.51.100.4
 {{< /note >}}

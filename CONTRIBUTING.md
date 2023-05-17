@@ -131,9 +131,15 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner.
 
-1.  Clone your fork of the repository. Replace `YOUR-USERNAME` with your Github username. This example creates a `linode-docs` directory:
+1.  Clone your fork of the repository using either the [HTTPS URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls) or the [SSH URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls). In the commands below, replace `USERNAME` with your GitHub username.
 
-        git clone https://github.com/YOUR-USERNAME/docs linode-docs
+    -   **HTTPS URL:** When prompted for your password, enter your personal access token from GitHub. For instructions on creating this token, see [Creating a Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token).
+
+            git clone https://github.com/USERNAME/docs linode-docs
+
+    -   **SSH URLs:** Before continuing with SSH URLs, you should first have a public/private key pair installed on your local system. Then, you must upload your public key to your GitHub account. When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt. For further instructions, [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+            git clone git@github.com:USERNAME/docs.git linode-docs
 
     This may take a few minutes to copy all of the files and images to your machine.
 
@@ -154,12 +160,12 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  Add the `linode/docs` repository that you forked from as the `upstream` [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for your local repository:
 
-        git remote add upstream https://github.com/linode/docs.git
+    - **HTTPS URL:** `git remote add upstream https://github.com/linode/docs.git`
+    - **SSH URL:** `git remote add upstream git@github.com:linode/docs.git`
 
 1.  Install the Node dependencies for the repository:
 
         npm install
-
 
 # Contributing to the Docs Library
 
