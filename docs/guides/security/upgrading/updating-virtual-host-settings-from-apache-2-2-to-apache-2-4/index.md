@@ -16,7 +16,7 @@ external_resources:
 authors: ["Linode"]
 ---
 
-This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
+This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
 
 ![Updating Virtual Host Settings from Apache 2.2 to Apache 2.4](updating_virtual_host_settings_tg.png "Updating Virtual Host Settings from Apache 2.2 to Apache 2.4")
 

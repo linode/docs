@@ -140,6 +140,12 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .content table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+}
+
+.content table {
   @apply border-collapse mobile:-mx-4;
   border-style: hidden;
 }

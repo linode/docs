@@ -91,7 +91,7 @@ Swap IP addresses so the new Linode uses the IP address assigned to the old Lino
 To swap IP addresses, both Linodes must be located in the same data center.
 {{< /note >}}
 
-Alternatively, you can [update your DNS entries](/docs/guides/hosting-a-website-ubuntu-18-04/#add-dns-records) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
+Alternatively, you can [update your DNS entries](/docs/products/networking/dns-manager/guides/manage-dns-records/) to point to the new Linode's IP address instead. DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
 
 ### Preserving Data for Forensics and Linode Cancellation
 
