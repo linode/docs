@@ -5,7 +5,7 @@ description: "Jenkins allows you to effectively automate your building, testing,
 keywords: ['jenkins ci/cd pipeline','jenkins kubernetes deployments','jenkins tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2023-04-05
+published: 2023-05-17
 modified_by:
   name: Nathaniel Stickman
 external_resources:
