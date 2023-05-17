@@ -29,7 +29,7 @@ As a result, attackers can easily fool DNS clients into interacting with unautho
 
 A forged response could also affect more than one user. Most recursive name servers maintain a cache of responses. This allows for quicker responses to queries than contacting origin name servers for every lookup. However, an attacker can cause *cache poisoning* by placing one or more fraudulent entries in a cache.
 
-For example, many ISP customers could be given fraudulent DNS responses for a bank, all because one customer went to a rogue name server which poisoned the cache.
+For example, many ISP customers could be given fraudulent DNS responses for a bank, all because one customer went to a rogue name server, which poisoned the cache.
 
 DNSSEC’s digital signatures address this problem in two ways:
 
@@ -48,7 +48,7 @@ DNSSEC provides new record types, Next Secure (NSEC) and Next Secure 3 (NSEC3), 
 
 However, because NSEC records work by pointing to the next legitimate record in the zone, they disclose the names of any legitimate records within that space. For example, the NSEC response would also reveal the information about a "private" unadvertised host called `secret.example.com` in a query for `r.example.com`.
 
-DNS records aren’t supposed to hide anything, it is, after all, a public directory. However, the reality is that some users have non-advertised records, and for these DNSSEC could pose a problem. Its design provides cryptographic proof of the existence of all records, not just the ones intended for the general public.
+DNS records aren’t supposed to hide anything, it is, after all, a public directory. However, the reality is that some users have non-advertised records, and DNSSEC could pose a problem for them. Its design provides cryptographic proof of the existence of all records, not just the ones intended for the general public.
 
 ## Terminology and DNSSEC Resource Records
 
@@ -58,7 +58,7 @@ DNSSEC also provides these other new record types:
 
 -   **RRSIG**: DNSSEC signs RRsets, not individual records. An RRSIG is a cryptographic signature of an RRset.
 -   **DNSKEY**: A public signing key.
--   **DS**: Delegation signer. DS records contain the hash of a DNSKEY record.
+-   **DS**: (Delegation Signer) records contain the hash of a DNSKEY record.
 -   **NSEC and NSEC3**: Next Secure records, which provide proof-of-nonexistence of DNS records. NSEC records are in plaintext and NSEC3 records provide a hash of the record name.
 
 ## How Does DNSSEC Work?
@@ -69,33 +69,21 @@ When a DNSSEC-enabled resolver makes a query for some resource (e.g. an A record
 
 A key-signing key (KSK) verifies the ZSK, validating the DNSKEY record just as the ZSK validates RRsets. The private portion of the KSK signs the public portions of both the ZSK and KSK. Resolvers use the public KSK to validate the public ZSK.
 
-Thus far, all DNSSEC has done is established trust within a zone, but there isn’t any external verification yet. This is where delegation signer (DS) records come in. This is an algorithmic hash created from the zone’s public KSK. Next, list that hash in the parent zone (typically at the domain registrar).
+Thus far, all DNSSEC does is establish trust within a zone, but there isn’t any external verification yet. This is where delegation signer (DS) records come in. This is an algorithmic hash created from the zone’s public KSK. Next, that hash is listed in the parent zone (typically at the domain registrar).
 
-The parent zone’s owner uses its private key to sign that DS key. It's essentially saying "I vouch for this child zone, and all the records within it". In turn, the parent zone lists its DS key in its parent zone. This establishes the chain of trust. Every child zone relies on the validation of its parent, all the way up to the root DNS zone (".").
+The parent zone’s owner uses its private key to sign that DS key. It's essentially says "I vouch for this child zone, and all the records within it". In turn, the parent zone lists its DS key in its parent zone. This establishes the chain of trust. Every child zone relies on the validation of its parent, all the way up to the root DNS zone (".").
 
-There is no parent to sign the root zone, but there is a very public and highly audited Root Signing Ceremony. It takes place every quarter to ensure all DNS operators of the integrity of the entire chain.
+There is no parent to sign the root zone, but there is a very public and highly audited Root Signing Ceremony. It takes place every quarter to ensure the integrity of the entire chain.
 
 The chain of trust is a key concept in DNSSEC. It establishes that each DNSSEC-enabled server is authenticated, and that no one has altered the records each server provides.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.example.com`, replacing `example.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
 
-1.  Install the Name Server Daemon (NSD):
-
-    -   **Debian** and **Ubuntu**:
-
-        ```command
-        sudo apt install nsd
-        ```
-
-    -   **AlmaLinux**, **CentOS**, **Fedora**, and **Rocky Linux**:
-
-        ```command
-        sudo yum install nsd
-        ```
+1.  Follow our [Introduction to DNS on Linux](/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -115,10 +103,8 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
     ```output
     setup in directory /etc/nsd
-    ...
-    Signature ok
+    Certificate request self-signature ok
     subject=CN = nsd-control
-    Getting CA Private Key
     removing artifacts
     Setup success. Certificates created.
     ```
@@ -135,31 +121,36 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     sudo apt install ldnsutils
     ```
 
-1.  Move to the zones directory and generate ZSK and KSK files. Switch to the root user for export commands because `sudo` won’t work here. Optionally, capture the ZSK and KSK variables for later reuse in the “Zone Maintenance” section.
-
-    ```command
-    sudo mkdir -p /etc/nsd/zones/master
-    ```
+1.  Switch to the root user for export commands because `sudo` won’t work here:
 
     ```command
     sudo su - root
+    ```
+
+1.  Move to the zones directory and generate ZSK and KSK files.
+
+    ```command
     cd /etc/nsd/zones/master
     export ZSK=`/usr/bin/ldns-keygen -a ECDSAP256SHA256 -b 1024 example.com`
     export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 example.com`
-    # optional capture of $ZSK and $KSK variables for later maintenance
+    ```
+
+1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/security/basics/dnssec#Zone-Maintenance) section.
+
+    ```command
     echo $ZSK > example.com.zsk
     echo $KSK > example.com.ksk
     ```
 
     Note the use of the ECDSAP256SHA256 algorithm, also known as algorithm 13. Although DNSSEC accommodates many algorithms, this one is a current best practice. It uses the very strong Elliptic Curve Digital Signal Algorithm (ECDSA) with the P-256 curve and computes hashes with SHA-256. Currently, it is not computationally feasible to defeat this algorithm within a key’s lifetime.
 
-1.  The KSK command above generated a delegation signing (DS) record, but you will soon create a separate DS record, and can delete this one:
+1.  The KSK command above generated a delegation signing (DS) record, but we'll soon create a separate DS record, and can delete this one:
 
     ```command
     rm *ds
     ````
 
-1.  While still logged in as root, sign the example.com zone using the ZSK and KSK variables you previously created.
+1.  While still logged in as root, sign the `example.com` zone using the ZSK and KSK variables you previously created:
 
     ```command
     ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
@@ -172,12 +163,23 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     ```
 
     ```output
-    Kexample.com.+013+06274.key       Kexample.com.+013+55738.private
-    Kexample.com.+013+06274.private   example.com.zone
-    Kexamples.com.+013+55738.key      example.com.zone.signed
+    Kexample.com.+013+06274.key
+    Kexample.com.+013+06274.private
+    Kexamples.com.+013+55738.key
+    Kexample.com.+013+55738.private
+    example.com.ksk
+    example.com.zone
+    example.com.zone.signed
+    example.com.zsk
     ```
 
-1.  Open the main /etc/nsd/nsd.conf configuration file and, in the zone: section, point to the signed zone file.
+1.  Open the main `/etc/nsd/nsd.conf` configuration file:
+
+    ```command
+    nano /etc/nsd/nsd.conf
+    ```
+
+1.  Modify the `zonefile:` value in the `zone:` section to point to the signed zone file:
 
     ```code
     zone:
@@ -186,16 +188,22 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     ..
     ```
 
-1.  Save and close the file. Then reload the NSD configuration and signed zone file.
+    When finished, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to save and close the file.
+
+1.  Reload the NSD configuration and signed zone file.
 
     ```command
     nsd-control reconfig
     nsd-control reload example.com
-    # exit as root user
+    ```
+
+1.  Exit as the root user:
+
+    ```command
     exit
     ```
 
-    A dig query for the zone using DNSKEY now return records with DNSSEC signatures::
+1.  A `dig` query for the zone using DNSKEY now return records with DNSSEC signatures:
 
     ```command
     dig DNSKEY @ns1.example.com example.com +multiline +norec
@@ -214,7 +222,7 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     ..
     ```
 
-1.  Generate DS records for the zone, and save the results to a text file or to your clipboard. You need these for the final step of having your zone signed at your domain registrar.
+1.  Generate DS records for the zone, and save the results to a text file or to the clipboard. These are needed for the final step of zone signing at your domain registrar.
 
     ```command
     cd /etc/nsd/zones/master
@@ -226,39 +234,39 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     example.com.	3600	IN	DS	55738 13 2 c4dae4d001f8c8f1b4f1adec890eba39010143752e6ce03b6567c85aa7fbde46
     ```
 
-1.  Your server does not return valid responses until you upload these DS records at your registrar. For each DS record, add this information at the registrar:
+1.  Your server does not return valid responses until these DS records are uploaded at your registrar. For each DS record, add this information at the registrar:
 
-    -   Key tag: A number that identifies the DS record. The tags in these examples are 6274 and 55738.
-    -   Digest type: The hashing function used to create a message digest. In the command above, you used SHA-256 (identified as “2” at the registrar)
-    -   Digest: The message digest (the long string in each record) contained in the .ds file
-    -   Algorithm: The method used to produce the message digest. In the example above, you used ECDSAP256SHA256 (type 13)
+    -   **Key Tag**: A number that identifies the DS record. The tags in these examples are `6274` and `55738`.
+    -   **Digest Type**: The hashing function used to create a message digest. SHA-256 was used in the command above (identified as "2" at the registrar)
+    -   **Digest**: The message digest (the long string in each record) contained in the `.ds` file.
+    -   **Algorithm**: The method used to produce the message digest. ECDSAP256SHA256 (type 13) was used in the example above.
 
-    Putting this all together, here are the DS fields entered at dynadot.com, a domain name registrar:
+    Putting this all together, here are the DS fields entered at `dynadot.com`, a domain name registrar:
 
     ![An example domain name with DNSSEC records](example_configuration.jpg)
 
     Save both DS records at your registrar, and the DNSSEC chain of trust is complete.
 
-1.  Next, verify your configuration with a DNSSEC test site such as dnsviz.net.
+1.  Next, verify the configuration with a DNSSEC test site such as dnsviz.net.
 
-    In the following test diagram, each rectangle represents a different level in the chain of trust, with one apiece for the root, .com., and linoderocks.com domains. The green arrows all along the path indicate a complete chain of trust extends from the root (“.”) on through to linoderocks.com.
+    In the following test diagram, each rectangle represents a different level in the chain of trust, with one apiece for the root, `.com`, and `linoderocks.com` domains. The green arrows along the path indicate a complete chain of trust extends from the root (`.`) on through to `linoderocks.com`.
 
     ![A visualization of the chain of trust.](dnsviz_visualization_linoderocks.jpg)
 
-    If any zone is missing valid DS records for the zone under it, or has a corrupt or expired ZSK, the dnsviz.net website displays red arrows. If you see red arrows anywhere in your diagram, do not proceed until resolving those. DNSSEC does not work unless the chain of trust is complete.
+    If any zone is missing valid DS records for the zone under it, or has a corrupt or expired ZSK, the `dnsviz.net` website displays red arrows. If you see red arrows anywhere in your diagram, do not proceed until resolving those. DNSSEC does not work unless the chain of trust is complete.
 
 
 ## Zone Maintenance
 
 DNSSEC requires extra steps when updating records and keys.
 
-1.  Anytime you make changes within a zone, you need to resign the entire zone:
+1.  Anytime changes are made within a zone, the entire zone must be resigned:
 
     ```command
     ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
     ```
 
-    For the $ZSK and $KSK variables in this command, enter the names of your current ZSK and KSK files, without the filename extensions.
+    For the `$ZSK` and `$KSK` variables in this command, enter the names of your current ZSK and KSK files, without the filename extensions.
 
 1.  Then reload the zone:
 
@@ -266,12 +274,12 @@ DNSSEC requires extra steps when updating records and keys.
     sudo nsd-control reload example.com
     ```
 
-    Wait for your zone’s default time-to-live (TTL) timer (often, 1 hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches, which don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
+    Wait for your zone’s default time-to-live (TTL) timer (often, 1 hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches that don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
 
-As for key rotation, zone signatures expire after 30 days by default and, if not renewed, leave your zone unreachable on the public Internet. Neither of the two most common DNS server distributions (Bind and NSD) include tools for automated key rollover. The open-source [dnssec-reverb](https://github.com/northox/dnssec-reverb) project does automate key rollover, and works with both Bind and NSD.
+As for key rotation, zone signatures expire after 30 days by default. If not renewed, your zone becomes unreachable on the public Internet. Neither of the two most common DNS server distributions (Bind and NSD) include tools for automated key rollover. The open source [dnssec-reverb](https://github.com/northox/dnssec-reverb) project does automate key rollover, and works with both Bind and NSD.
 
-Regardless of whether you use dnssec-reverb, some other tool, or write your own shell scripts, it’s essential that you automate and test key rollover before putting a server into production.
+Whether you use `dnssec-reverb`, some other tool, or write your own shell scripts, it’s essential to automate and test key rollover before putting a server into production.
 
 ## Conclusion
 
-DNSSEC corrects a major shortcoming of the original DNS design: it authenticates that every server really is the one it claims to be. It verifies that no one has tampered with zone data. And it provides affirmative proof of the nonexistence of fraudulent hosts and subdomains. Given the critical role DNS plays in networking, DNSSEC not only protects your name servers but also virtually all your applications running all your servers.
+DNSSEC corrects a major shortcoming of the original DNS design: it authenticates that every server really is what it claims to be. It verifies that no one has tampered with zone data. It provides affirmative proof of the nonexistence of fraudulent hosts and subdomains. Given the critical role DNS plays in networking, DNSSEC not only protects your name servers but virtually all applications running across all your servers.
