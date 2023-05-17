@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
 keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 published: 2020-03-13
 modified: 2022-05-31
 modified_by:
@@ -14,6 +10,7 @@ title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [cPanel](https://cpanel.net/products/) is a Linux-based server/website administration platform that streamlines publishing and managing websites. It is widely used by individual businesses, web development agencies, and hosting platforms. cPanel (and the included WHM interface) provides an easy and intuitive method for managing all aspects of website administration, including software installation, DNS, databases, email, and *much* more.
@@ -34,8 +31,8 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7, Ubuntu 20.04 LTS
-- **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
+- **Supported distributions:** Ubuntu 20.04 LTS, AlmaLinux 8, Rocky Linux 8
+- **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
 
@@ -43,7 +40,7 @@ cPanel requires a valid license to use the software beyond the initial 15 day [f
 
 WHM is the core interface for managing your server and all websites (also called "accounts").
 
-1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. The WHM login page should appear. Enter `root` as the username and use the root password you created when deploying this instance. Then click the **Log In** button.
 

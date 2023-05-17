@@ -1,7 +1,5 @@
 ---
 slug: sql-injection-attack
-author:
-  name: Jeff Novotny
 description: 'SQL injection is a type of attack that alters SQL queries. Learn about the different types of SQL injection attacks, how to detect them, and prevention tips.'
 keywords: ['sql injection attack','sql injection example','what is a sql injection']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,14 +8,13 @@ modified_by:
   name: Linode
 title: "SQL Injection Attack: What It Is and How to Prevent It"
 title_meta: "What is SQL Injection? Attack Examples & Prevention Tips"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Open Web Application Security Project website](https://owasp.org/)'
 - '[Wikipedia SQL Injection page](https://en.wikipedia.org/wiki/SQL_injection)'
 - '[Netsparker SQL Injection Cheat Sheet](https://www.netsparker.com/blog/web-security/sql-injection-cheat-sheet)'
 - '[OWASP Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)'
 - '[OWASP Security Code Review guide](https://owasp.org/www-project-code-review-guide/)'
+authors: ["Jeff Novotny"]
 ---
 
 Security is an important issue for all web applications and databases, especially those using the *Structured Query Language* (SQL). Although criminals most frequently focus on high-value targets, even small online applications can be victimized. When important information is stolen or an application is compromised, the financial, logistical, and reputation costs can be severe. Criminals and hackers frequently use a technique named *SQL Injection* (SQLi) to gain unauthorized entry to a remote database. This guide describes a SQL injection attack and explains how it is used. It also discusses how to detect SQLi vulnerabilities and how to defend against them.

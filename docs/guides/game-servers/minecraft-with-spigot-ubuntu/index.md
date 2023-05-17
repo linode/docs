@@ -1,24 +1,20 @@
 ---
 slug: minecraft-with-spigot-ubuntu
-author:
-  name: Linode Community
-  email: contribute@linode.com
 description: 'This guide shows how to set up, configure, and customize a Minecraft game server using the Spigot application on a Linode running Ubuntu 14.04.'
 keywords: ["minecraft", "spigot"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/applications/game-servers/minecraft-with-spigot-ubuntu/','/game-servers/minecraft-with-spigot-ubuntu/']
+deprecated: true
 published: 2015-04-21
 modified: 2019-02-01
 modified_by:
   name: Linode
 title: "Setting Up a Spigot Server for Minecraft on Ubuntu 14.04"
 title_meta: "How to Set Up a Spigot Server for Minecraft on Ubuntu 14.04"
-contributor:
-    name: Sam Mauldin
-    link: https://github.com/Sxw1212
 dedicated_cpu_link: true
 image: spigot-minecraft-ubuntu-title.jpg
+authors: ["Sam Mauldin"]
 ---
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
@@ -45,7 +41,7 @@ If your Linode is running Ubuntu 14.10 or higher, you can choose to install `ope
         OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~trusty1)
         OpenJDK 64-Bit Server VM (build 24.75-b04, mixed mode)
 
-1.  If you're running an IP tables firewall (as shown in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide), add an exception to your `iptables` rules:
+1.  If you're running an IP tables firewall (as shown in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide), add an exception to your `iptables` rules:
 
         sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 

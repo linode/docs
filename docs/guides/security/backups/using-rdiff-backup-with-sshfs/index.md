@@ -1,9 +1,6 @@
 ---
 slug: using-rdiff-backup-with-sshfs
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Automating offsite backups with the open source rdiff-backup package and SSHFS for remote filesystem mounting.'
 keywords: ["rdiff-backup", "sshfs", "network backup", "linux backup"]
 tags: ["security","linux"]
@@ -14,6 +11,7 @@ modified_by:
   name: Linode
 published: 2009-09-14
 title: Using rdiff-backup with SSHFS
+authors: ["Linode"]
 ---
 
 [Rdiff-backup](http://www.nongnu.org/rdiff-backup/docs.html) is an open source backup system that performs incremental, differential backups on a wide variety of platforms. Many people use rdiff-backup on both sides of a backup operation, but this can be problematic when different operating systems or rdiff-backup versions are in use.

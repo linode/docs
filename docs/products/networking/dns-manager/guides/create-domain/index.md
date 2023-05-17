@@ -1,9 +1,5 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-10-28
 modified_by:
   name: Linode
@@ -12,9 +8,10 @@ title: "Create a Domain"
 keywords: ["dns"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/products/networking/dns-manager/guides/add-domains/']
+authors: ["Linode"]
 ---
 
-This guide walks you through adding a domain through the Cloud Manager.
+This guide walks you through how to create a domain through the Cloud Manager. Adding a domain only takes a few steps. Here's an outline on how to create a domain using Cloud Manager.
 
 1. [Open the Create Domain Form in the Cloud Manager](#open-the-create-domain-form-in-the-cloud-manager)
 1. [Select the Zone Type](#select-the-zone-type)
@@ -23,10 +20,11 @@ This guide walks you through adding a domain through the Cloud Manager.
 1. [Create the Domain](#create-the-domain)
 1. [Finish the Setup](#finish-the-setup)
 
+After you’ve figured out how to create domains, you’ll never need to call IT support for help again. Let’s look at each step in more detail.
 
 ## Open the Create Domain Form in the Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/) and select **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
+Figuring out how to create a domain starts with getting into the system. Log in to the [Cloud Manager](https://cloud.linode.com/) and choose **Domains** from the left navigation menu. Click the **Create Domain** button. This opens the [Domain Create](https://cloud.linode.com/domains/create) form.
 
 ## Select the Zone Type
 
@@ -51,14 +49,17 @@ The **Insert Default Records** dropdown field allows you to pre-populate DNS rec
 
 ## Create the Domain
 
-Once you've made your selections, click the **Create Domain** button to add your domain to DNS Manager. The domain zone is created within seconds and is automatically set to an *Active* status.
+Once you've made your selections, click the **Create Domain** button to add your domain to DNS Manager. The domain zone is created within seconds and is automatically set to an *Active* status. And that's how to create a domain in Cloud Manager. But, you are not done yet.
 
 ## Finish the Setup
 
-- **Add DNS Records.** After the domain has been created, you can immediately start adding and editing DNS records for it. If you are migrating to Linode from another DNS provider, make sure you have added all of the necessary DNS records to your domain *before* adding Linode's name servers to your domain (on your registrar). See [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
+After adding a new domain, there are a few additional steps required to complete the process:
+- **Add DNS Records.** After the domain has been created, you can immediately start adding and editing DNS records for it. If you are migrating to Linode from an existing DNS provider, make sure you have added all of the necessary DNS records to your domain *before* adding Linode's name servers to your domain (on your registrar). See [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/).
 
-- **Add Linode's Name Servers.** To use Linode as the authoritative name servers for your domain, you need to edit the name servers on your registrar. The process for this varies for each registrar.
+- **Add Linode's Name Servers.** To use Linode as the authoritative name servers for your domain, you need to change the name servers on your registrar. Note that the process for this varies for each registrar.
 
     - [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-to-change-dns-for-a-domain/): Look for the *Custom DNS* option.
     - [GoDaddy](https://www.godaddy.com/help/change-nameservers-for-my-domains-664): Select *Enter my own name servers (advanced)*.
     - [Hover](https://help.hover.com/hc/en-us/articles/217282477--Changing-your-domain-nameservers): Find the *Edit* option for your name servers.
+
+    And that’s it. Now you know how to add a domain in Cloud Manager!

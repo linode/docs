@@ -1,7 +1,5 @@
 ---
 slug: installing-and-configuring-mysql-on-ubuntu-2004
-author:
-  name: Jeff Novotny
 description: "This guide hows you how to install and configure MySQL server on Ubuntu 20.04 Linux"
 keywords: ['mariadb vs mysql', 'install mysql linux', 'configure mysql linux']
 tags: ['mysql', 'ubuntu']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Installing and Configuring MySQL on Ubuntu 20.04"
 title_meta: "How to Install and configure MySQL on Ubuntu 20.04"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[MariaDB website](https://mariadb.com/)'
 - '[MySQL website](https://www.mysql.com/)'
+authors: ["Jeff Novotny"]
 ---
 
 Ubuntu users have a choice between two reliable *Relational Database Management Systems* (RDBMS), [*MySQL*](https://www.mysql.com/) and [*MariaDB*](https://mariadb.com/). MySQL has a long-standing edge in popularity, but there has been increased interest in MariaDB due to its performance advantages and added features. This guide compares the two database systems and provides instructions on how to install and use MySQL on Ubuntu 20.04.
@@ -45,9 +41,9 @@ To summarize, both systems are more than adequate for most users. MariaDB featur
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

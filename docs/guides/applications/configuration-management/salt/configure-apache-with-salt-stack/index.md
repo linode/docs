@@ -1,8 +1,5 @@
 ---
 slug: configure-apache-with-salt-stack
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring the Apache Web Server on Ubuntu, Debian, and CentOS with the Salt Sack.'
 keywords: ['salt','stack','saltstack','apache','httpd','ubuntu','debian','centos']
 tags: ["automation","salt","debian","centos","ubuntu","apache"]
@@ -19,6 +16,7 @@ external_resources:
 - '[Salt Apache_Site State Module](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.apache_site.html)'
 - '[Using Grains in SLS Modules](https://docs.saltstack.com/en/latest/topics/tutorials/states_pt3.html#using-grains-in-sls-modules)'
 aliases: ['/applications/configuration-management/salt/configure-apache-with-salt-stack/','/applications/configuration-management/configure-apache-with-salt-stack/']
+authors: ["Linode"]
 ---
 
 Salt is a powerful configuration management tool. In this guide you will create Salt state files that are capable of installing and configuring Apache on Ubuntu 18.04, Debian 9, or CentOS 7.

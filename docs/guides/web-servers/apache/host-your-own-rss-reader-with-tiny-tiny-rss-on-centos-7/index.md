@@ -1,8 +1,5 @@
 ---
 slug: host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This article gives you step-by-step instructions on how you can self-host your own RSS reader on a Linode running CentOS 7 with the Tiny Tiny RSS app.'
 keywords: ["apache", "centos", "rss", "reader", "ttrss", "tt-rss"]
 tags: ["centos","web server","apache"]
@@ -13,11 +10,9 @@ modified: 2017-03-30
 modified_by:
     name: Nick Brewer
 title: 'Host Your Own RSS Reader with Tiny Tiny RSS on CentOS 7'
-contributor:
-  name: Tyler Langlois
-  link: https://github.com/tylerjl
 external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
+authors: ["Tyler Langlois"]
 ---
 
 
@@ -29,7 +24,7 @@ This guide will walk through the steps necessary to install and configure Tiny T
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Follow the steps in the [LAMP on CentOS 7](/docs/guides/how-to-install-a-lamp-stack-on-centos-7/) guide.
 

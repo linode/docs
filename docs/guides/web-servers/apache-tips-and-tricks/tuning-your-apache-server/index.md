@@ -1,8 +1,5 @@
 ---
 slug: tuning-your-apache-server
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'This guide provides you with information on tuning the performance and configuration of your Apache web server to optimize the load times of your website.'
 keywords: ["configuration", "apache", "web server", "resource tuning"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ external_resources:
  - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
 dedicated_cpu_link: true
 tags: ["web server","apache"]
+authors: ["Elle Krout"]
 ---
 
 ![Tuning Your Apache Server](tuning-your-apache-server.png "Tuning Your Apache Server")

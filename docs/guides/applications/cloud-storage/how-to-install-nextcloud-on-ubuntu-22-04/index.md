@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nextcloud-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04.'
 keywords: ['Nextcloud Ubuntu','what is Nextcloud','how to install nextcloud','Ubuntu configure Nextcloud','download Nextcloud Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,6 @@ modified_by:
   name: Linode
 title: "Install Nextcloud on Ubuntu 22.04"
 title_meta: "How to Install Nextcloud on Ubuntu 22.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Nextcloud website](https://nextcloud.com/)'
 - '[Nextcloud documentation](https://docs.nextcloud.com/server/24/admin_manual/contents.html)'
@@ -29,8 +24,10 @@ external_resources:
 - '[ISO Alpha-2 country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)'
 relations:
     platform:
+        key: install-nextcloud
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is a free and open source application for storing and sharing files. It allows approved users to access documents and pictures online from a central location. Nextcloud is considered a strong alternative to Dropbox and Google Drive. This guide explains how to download, install, and configure Nextcloud on Ubuntu 22.04 LTS. It also explains how to configure an Ubuntu LAMP stack to support Nextcloud.
@@ -53,9 +50,9 @@ See the [Nextcloud feature comparison](https://nextcloud.com/compare/) for a mor
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. A LAMP Stack, including an Apache web server, a MariaDB/MySQL RDBMS, and the PHP programming language, must be installed before Nextcloud can be used. This guide includes instructions for installing the LAMP stack components. More information about installing a LAMP stack is available in the [Linode guide to installing a LAMP stack on Ubuntu 22.04](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-22-04/).
 

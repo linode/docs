@@ -1,7 +1,5 @@
 ---
 slug: boolean-variables-in-python
-author:
-  name: Jeff Novotny
 description: 'Learn about Boolean logic in Python 3. This guide includes examples for Boolean variables, comparison and logical operators, and conditional statements.'
 keywords: ['Python Boolean operators','Python logical operators','Python logical and','Python logical or']
 tags: ['python']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Boolean Variables, Operators, and Conditional Statements in Python"
 title_meta: "Using Boolean Variables, Operators, and Conditional Statements in Python"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python Documentation on Value Comparisons](https://docs.python.org/3/reference/expressions.html#value-comparisons)'
 - '[Python documentation for compound statements](https://docs.python.org/3/reference/compound_stmts.html)'
+authors: ["Jeff Novotny"]
 ---
 
 *Boolean logic* is at the heart of [Python](https://www.python.org/) and most programming languages. It allows programmers to make comparisons, execute conditional statements, and implement common algorithms. The "greater than" (`>`) and "equals to" (`==`) symbols are examples of Python comparison operators, while `and` and `or` are some of Python's logical operators. This tutorial explains Boolean logic and expressions and discusses how to use Python's Boolean operators.
@@ -31,9 +27,9 @@ Python uses a built-in data type named `bool` to represent Boolean values. The `
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu 20.04](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 

@@ -1,22 +1,17 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows how to install Kepler, a powerful drag-and-drop WordPress website builder that is highly customizable, using the One-Click Marketplace App"
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress', kepler]
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications", kepler]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-09
 modified: 2022-05-17
 modified_by:
   name: Linode
 title: "Deploy Kepler through the Linode Marketplace"
 aliases: ['/guides/deploy-kepler-with-marketplace-apps/','/guides/kepler-marketplace-app/']
-contributor:
-  name: Linode
 external_resources:
 - '[About Kepler](https://kepler.app)'
 - '[Kepler Community](https://help.kepler.app)'
+authors: ["Linode"]
 ---
 
 [Kepler](https://www.kepler.app) is a powerful drag & drop WordPress website builder with all-new website style filters that instantly change the look and feel of your website.
@@ -51,10 +46,12 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 #### Additional Security Options (Optional)
 
 - **Configure automatic security updates:** Select `Yes` to have the system automatically update WordPress with the latest security updates. Select `No` to if you wish to manage all updates manually.
-- **Use fail2ban to prevent automated intrusion attemps?** Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. You [can install this at a later time](/docs/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection).
+- **Use fail2ban to prevent automated intrusion attemps?** Select `Yes` to install fail2ban. Select `No` to not install fail2ban during installation. You [can install this at a later time](/docs/products/compute/compute-instances/guides/set-up-and-secure/#use-fail2ban-for-ssh-login-protection).
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 - **Do you need an MX record for this domain?** Check `Yes` if you plan on using WordPress to send email. The installer, along with your `API Token` (required) sets up the necessary MX records in the DNS Manager. Select `No` if you do not plan on using WordPress to send email. You can [add an MX record manually](/docs/guides/dns-overview/#mx) at a later time if you change your decision.

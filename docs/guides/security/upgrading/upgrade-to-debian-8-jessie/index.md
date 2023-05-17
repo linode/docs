@@ -1,9 +1,6 @@
 ---
 slug: upgrade-to-debian-8-jessie
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions on how to upgrade your Linux system from Debian 7 "Wheezy" to Debian 8 "Jessie" via command line.'
 keywords: ["debian", "upgrade", "wheezy", "jessie"]
 tags: ["security","debian"]
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/security/upgrading/upgrade-to-debian-8-jessie/']
+authors: ["Alex Fornuto"]
 ---
 
 Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. This guide explains how to upgrade your system from Debian 7 (Wheezy) to Debian 8.
@@ -46,7 +44,7 @@ It's a good idea to [back up](/docs/products/storage/backups/) your Linode befor
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/guides/monitor-and-maintain-compute-instance/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -121,7 +119,7 @@ Check your `/etc/apt/sources.list.d` for additional package repositories, and en
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/guides/lish/).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 Your Linode is now running Debian 8!
 

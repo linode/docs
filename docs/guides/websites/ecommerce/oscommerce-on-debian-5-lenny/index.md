@@ -1,9 +1,6 @@
 ---
 slug: oscommerce-on-debian-5-lenny
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Debian 5 (Lenny).'
 keywords: ["osCommerce", "Debian", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,11 +15,12 @@ relations:
         key: how-to-install-osCommerce
         keywords:
            - distribution: Debian 5
+authors: ["Stan Schwertly"]
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Debian LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/).
+Before installing osCommerce we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Debian LAMP guide](/docs/guides/lamp-server-on-debian-5-lenny/).
 
 ## Installation
 

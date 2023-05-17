@@ -1,7 +1,5 @@
 ---
 slug: using-grpc-for-remote-procedural-calls
-author:
-  name: Jeff Novotny
 description: 'This guide shows how you can use gRPC, a open source remote procedure call framework which enables cross-platform communications between clients and a central server.'
 keywords: ['what is grpc', 'grpc vs rest', 'grpc tutorial']
 tags: ['python']
@@ -10,11 +8,10 @@ published: 2021-07-30
 modified_by:
   name: Linode
 title: "Use gRPC and Python for Remote Procedural Calls"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[gRPC](https://grpc.io/)'
 - '[Google Developers Page for Protocol Buffers](https://developers.google.com/protocol-buffers/docs/overview)'
+authors: ["Jeff Novotny"]
 ---
 
 [*gRPC*](https://grpc.io/) is an open-source **remote procedure call** (RPC) framework that enables cross-platform and cross-language communication between clients and a central server. gRPC allows for the specification of a common interface or API to define shared functions, constants, and message types. The server implements the full interface, while clients use stub functions to call the methods in the API. Client and server applications can be written in one of several supported programming languages, which do not have to necessarily match up. This guide introduces and explains gRPC, and describes how to implement an application with remote function calls using gRPC and Python.
@@ -110,9 +107,9 @@ This procedure is geared towards Ubuntu users but is generally applicable to all
 
 **### Before You Begin**
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 The steps in this guide are written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

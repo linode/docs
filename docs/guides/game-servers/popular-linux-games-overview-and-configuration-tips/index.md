@@ -1,7 +1,5 @@
 ---
 slug: popular-linux-games-overview-and-configuration-tips
-author:
-  name: Sandro Villinger
 description: 'This guide discusses popular Linux games and helpful configuration tips for common issues when setting them up.'
 keywords: ['best linux games']
 tags: ['linux']
@@ -11,8 +9,7 @@ modified_by:
   name: Linode
 title: "An Overview of Popular Linux Games and Configuration Tips"
 title_meta: "Popular Linux Games and Configuration Tips"
-contributor:
-  name: Sandro Villinger
+authors: ["Sandro Villinger"]
 ---
 
 Once a niche industry, gaming under Linux is now a growing market for publishers and gamers alike. In this guide, you learn about popular Linux games and helpful configurations for common issues when setting them up.

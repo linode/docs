@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-nslookup-command
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'The nslookup command lets you quickly obtain DNS records. Learn how to use nslookup, including both interactive and non-interactive modes.'
 keywords: ['nslookup command','nslookup ip address','how to use nslookup','nslookup examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,12 @@ modified_by:
   name: Linode
 title: "Use the nslookup Command"
 title_meta: "A Complete Guide to the nslookup Command"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[nslookup man page](https://manpages.ubuntu.com/manpages/bionic/man1/nslookup.1.html)'
 - '[Wikipedia nslookup page](https://en.wikipedia.org/wiki/Nslookup)'
 - '[Wikipedia Domain Name System page](https://en.wikipedia.org/wiki/Domain_Name_System)'
 - '[Microsoft nslookup documentation](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup)'
+authors: ["Jeff Novotny"]
 ---
 
 The `nslookup` command is a useful tool for investigating domain name propagation issues. It allows users to obtain information regarding domain names and IP addresses from the *Domain Name System* (DNS) infrastructure. This guide introduces and explains how to use the `nslookup` command, and provides several examples.
@@ -63,9 +59,9 @@ A DNS server maintains several different types of domain records, covering topic
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

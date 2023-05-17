@@ -1,17 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Using Proxy Protocol with NodeBalancers
 description: "Learn how to enable and use Proxy Protocol on your NodeBalancer to send client connection details to the backend nodes."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha", "proxy protocol", "proxy"]
 tags: ["cloud manager","linode platform","networking","web applications"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode
 image: ProxyProtocol_NodeBalancers.png
 aliases: ['/platform/nodebalancer/nodebalancer-proxypass-configuration/','/guides/nodebalancer-proxypass-configuration/']
+authors: ["Linode"]
 ---
 
 When a Linode NodeBalancer passes a request from a client to a backend Node, information regarding the original client is not included by default. While this is fine for many environments, your applications may require original client information such as IP address or port. For these cases, Linode NodeBalancers support **Proxy Protocol** for TCP connections so that you can pass client information to backend Nodes.

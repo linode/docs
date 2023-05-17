@@ -1,8 +1,5 @@
 ---
 slug: how-to-manage-packages-and-virtual-environments-on-linux
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
 description: "Python virtual environments help developers avoid dependency conflicts. This guide covers the basic concepts of Python packages and virtual environments."
 keywords: ['How to install python on linux','manage python environments in linux', 'virtualenv python', 'pipenv tutorial']
 tags: ['python']
@@ -12,10 +9,8 @@ modified_by:
   name: Linode
 title: "Managing Python Packages and Versions on Linux"
 title_meta: "How to Manage Python Packages and Versions on Linux"
-contributor:
-  name: Angel Guarisma
-  link: https://github.com/guaris
 aliases: ['/development/python/how-to-manage-packages-and-virtual-environments-on-linux/']
+authors: ["Angel Guarisma"]
 ---
 
 Python is a programming language with a large library of third party modules, or packages. Python developers rely on third party packages to simplify problems when they are writing code. When you install third party Python packages to your machine, you typically use a repository, like [Pypi](https://pypi.org/search/). This repository contains packages that can, by default, be installed with [Pip](https://pip.pypa.io/en/stable/). Pip is a tool used to install Python packages, like [Apt](https://en.wikipedia.org/wiki/APT_(software)) for Ubuntu, onto the host system.

@@ -1,8 +1,5 @@
 ---
 slug: manage-python-environments-pipenv
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 keywords: ["python", "virtual environment", "pip","virtualenv","pipenv"]
 description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool. Here's how to use it."
 og_description: "Pipenv combines the functionality of Pip and Virtualenv into a single tool, helping to simplify workflows as you install packages and manage virtual environments. This guide will show you how to install Pipenv, create and work with virtual envrionments, and install packages."
@@ -17,6 +14,7 @@ audiences: ["beginner"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/manage-python-environments-pipenv/']
+authors: ["Jared Kobos"]
 ---
 
 ## What is Pipenv?

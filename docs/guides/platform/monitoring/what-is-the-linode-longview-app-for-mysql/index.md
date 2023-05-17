@@ -1,8 +1,5 @@
 ---
 slug: what-is-the-linode-longview-app-for-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description:  "This guide discusses the Linode Longview client, including how to configure Longview for the MySQL database server, how to interact with data from Longview, and more."
 keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
@@ -20,6 +17,7 @@ relations:
         key: what-is-longview
         keywords:
             - distribution: MySQL
+authors: ["Linode"]
 ---
 
 Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Linode Cloud Manager when Longview detects that you have MySQL installed on your Linode. With the Longview MySQL App, you'll be able to view statistics for MySQL on your Linode. It can help you keep track of MySQL's settings, queries, system resource consumption, and other information.
@@ -48,7 +46,7 @@ If you already have Longview installed, you may find that MySQL is not automatic
 
 To run the automatic Longview configuration:
 
-1.  [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
+1.  [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Ensure that MySQL is running:
 
@@ -85,7 +83,7 @@ You cannot configure the location of a socket for the Longview client.
 
 To enable the MySQL Longview app manually, follow these steps on your Linode:
 
-1. [SSH into your Linode](/docs/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
+1. [SSH into your Linode](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) whose system you are monitoring with Longview.
 
 1.  Log into MySQL. For example, to log in as the root user:
 
@@ -221,7 +219,7 @@ This error will state `Unable to connect to the database:` and then specify a re
 
 ### Unable to Collect MySQL Status Information
 
-If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/guides/support/).
+If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/products/platform/get-started/guides/support/).
 
 ### MySQL Tab is Missing
 

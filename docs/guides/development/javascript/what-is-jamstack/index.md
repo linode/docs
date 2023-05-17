@@ -1,8 +1,5 @@
 ---
 slug: what-is-jamstack
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide walks you through the key concepts of the Jamstack, a type of system architecture that makes your web applications faster, more secure, and easier to maintain."
 keywords: ['jamstack','application architecture','web applications','static site generators','hugo','gatsby','jekyll','microservices']
 tags: ['web applications']
@@ -12,13 +9,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Getting Started with the Jamstack"
 title_meta: "An Introduction to the Jamstack"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Jamstack](https://jamstack.org/)'
 - '[Jamstack static site generators](https://jamstack.org/generators/)'
 - '[Hugo](https://gohugo.io/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 ## What Is the Jamstack?

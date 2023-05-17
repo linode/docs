@@ -1,8 +1,5 @@
 ---
 slug: install-alpine-linux-on-your-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Alpine Linux is a small, security-oriented Linux distro. This guide explains how to install and configure Alpine Linux on a Linode'
 keywords: ["alpine", "alpine linux", "custom", "custom distro", "install alpine linux", "alpine linux packages"]
 tags: ["cloud manager"]
@@ -13,9 +10,6 @@ modified_by:
 published: 2016-09-22
 title: 'Install Alpine Linux on your Linode'
 deprecated: True
-contributor:
-  name: Andrew Leap
-  link: http://github.com/andyleap
 external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
 relations:
@@ -24,6 +18,7 @@ relations:
         keywords:
             - distribution: Alpine
 aliases: ['/tools-reference/custom-kernels-distros/install-alpine-linux-on-your-linode/']
+authors: ["Andrew Leap"]
 ---
 
 ![Install Alpine Linux on your Linode](Install_Alpine_Linux_on_your_Linode_smg.png "Install Alpine Linux on your Linode")
@@ -33,7 +28,7 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 
 ## Before You Begin
 
-1.  Familiarize yourself with [Lish](/docs/guides/lish/), as most of this guide will require an out-of-band connection.
+1.  Familiarize yourself with [Lish](/docs/products/compute/compute-instances/guides/lish/), as most of this guide will require an out-of-band connection.
 
 2.  Installing Alpine in this manner will destroy all existing data on the installation target disks. Back up *all* data on the disks which you intend to install Alpine on.
 
@@ -79,7 +74,7 @@ Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be le
 
 ### Boot into Rescue Mode
 
-1.  From the Linode Cloud Manager, boot your Linode into [Rescue Mode](/docs/guides/rescue-and-rebuild/), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
+1.  From the Linode Cloud Manager, boot your Linode into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
 
 2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it in the Linode Cloud Manager. Access it by clicking the **Launch Console** link from the Linode's dashboard.
 
@@ -301,6 +296,6 @@ For more information, see Alpine's wiki page on [package management](https://wik
 
 ## Secure Your Server
 
-Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our [Securing Your Server](/docs/guides/set-up-and-secure/) guide provides a good starting point but you should also research additional, Alpine-specific security options. Keep in mind that most security packages (e.g. `iptables`.) will need to be installed.
+Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide provides a good starting point but you should also research additional, Alpine-specific security options. Keep in mind that most security packages (e.g. `iptables`.) will need to be installed.
 
 For more information, refer to their wiki page on [security](https://wiki.alpinelinux.org/wiki/Category:Security).

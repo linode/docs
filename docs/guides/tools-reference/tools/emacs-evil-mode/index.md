@@ -1,8 +1,5 @@
 ---
 slug: emacs-evil-mode
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for navigating Emacs, a very popular and endlessly versatile text editor, using it''s infamous Evil Mode.'
 keywords: ['emacs','evil','text editor']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
 - '[EmacsWiki](https://www.emacswiki.org/emacs/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/emacs-evil-mode/']
+authors: ["Edward Angert"]
 ---
 
 ## A Vi/m Layer Makes Emacs Evil

@@ -1,8 +1,5 @@
 ---
 slug: dns-overview
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn about DNS records and system structure.'
 keywords: ["dns", "record", "domain", "resolution"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ published: 2009-07-29
 title: "Overview of DNS and DNS Records"
 tags: ["dns","networking"]
 image: dns-records-an-introduction.png
+authors: ["Linode"]
 ---
 
 The [Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System) (DNS) is the Internet's address book. DNS directs web traffic to your Linode and email to your inbox by mapping memorable domain names like `example.com` to IP addresses like `192.0.2.8` or `0123:4567:89ab:cdef:0123:4567:89ab:cdef`. This guide introduces basic DNS concepts and the different types of DNS records.
@@ -146,7 +144,7 @@ An *MX record* or *mail exchanger record* sets the mail delivery destination for
     example.com         MX      10  mail.example.com.
     mail.example.com    A           12.34.56.78
 
-The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. An MX record should ideally point to a domain that is also the [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for its server.
+The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. An MX record should ideally point to a domain that is also the [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for its server.
 
 Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service like [Google Workspace](/docs/guides/using-google-workspace-for-email/), you should use the MX records they provide.
 
@@ -191,7 +189,7 @@ PTR records are usually set with your hosting provider. They are not part of you
 
 As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain or subdomain to your Linode's IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode's IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.
 
-For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/guides/configure-rdns/#setting-reverse-dns) guide.
+For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/#setting-reverse-dns) guide.
 
 {{< note respectIndent=false >}}
 It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.

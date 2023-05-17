@@ -1,7 +1,5 @@
 ---
 slug: install-and-configure-inspircd-on-debian-10-ubuntu-2004
-author:
-  name: Nathaniel Stickman
 description: 'InspIRCd is a free and open-source IRC server. It is easy to set up, lightweight, and extensible through its modular design. This guide walks you through deploying your own InspIRCd server on Debian 10 or Ubuntu 20.04.'
 keywords: ['irc server', 'inspircd']
 tags: ['debian', 'ubuntu']
@@ -10,13 +8,11 @@ published: 2021-07-02
 modified_by:
   name: Linode
 title: "Install and Configure InspIRCd on Debian 10 and Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[InspIRCd configuration options](https://docs.inspircd.org/3/configuration/)'
 - '[IRC help website](https://www.irchelp.org/)'
 - '[IRC networks and server lists](https://www.irchelp.org/networks/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Internet Relay Chat (IRC) is a real-time, text-based communication protocol with a long history of use for group chats and discussion forums. IRC networks — which can be made up of several independent servers — may each have numerous channels, with each channel functioning as a space for group chat.
@@ -25,9 +21,9 @@ InspIRCd is a free and open-source IRC server application. It has been designed 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

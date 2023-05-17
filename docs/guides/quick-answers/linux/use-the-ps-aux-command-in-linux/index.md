@@ -1,8 +1,5 @@
 ---
 slug: use-the-ps-aux-command-in-linux
-author:
-  name: James Turner
-  email: turner@blackbear.biz
 keywords: ["ps aux command"]
 description: "The ps aux command is a tool that provides Linux system process information. This guide explain why that matters, and how to use it.'"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title_meta: How to Use the ps aux Command in Linux
 external_resources:
   - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]
+authors: ["James Turner"]
 ---
 The `ps aux` command is a tool to monitor processes running on your Linux system. A *process* is associated with any program running on your system, and is used to manage and monitor a program's memory usage, processor time, and I/O resources. Since the `ps aux` command displays an overview of all the processes that are running, it is a great tool to understand and troubleshoot the health and state of your Linux system. This guide provides an introduction to the `ps aux` command with brief examples to help you interpret its output.
 

@@ -1,8 +1,5 @@
 ---
 slug: using-fetchmail-to-retrieve-email
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Fetchmail is a classic Linux utility used to fetch email from a remote server. This guide shows how to use this with multiple mail protocols, such as IMAP.'
 keywords: ["mail", "fetchmail", "unix", "esr", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,13 +15,14 @@ external_resources:
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
+authors: ["Linode"]
 ---
 
 ![Using Fetchmail to Retrieve Email](using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")
 
 The `fetchmail` program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an "email gateway," where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.
 
-If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/guides/linode-beginners-guide/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
+If you're new to Linode we always recommend completing our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/products/compute/compute-instances/faqs/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
 
 ## Installing Fetchmail
 

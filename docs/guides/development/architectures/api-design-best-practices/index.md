@@ -1,8 +1,5 @@
 ---
 slug: api-design-best-practices
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Searching for API design best practices to elevate your development process? We identify some of the best practices you need to follow right now. ✓ Learn more!"
 keywords: ['api design best practices','api architecture','rest api design']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,12 @@ modified_by:
   name: Nathaniel Stickman
 title: "API Design Best Practices: Elevate Your Development Process"
 title_meta: "REST API Best Practices for Design"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Microsoft Docs: RESTful Web API Design](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)'
 - '[freeCodeCamp: REST API Best Practices – REST Endpoint Design Examples](https://www.freecodecamp.org/news/rest-api-best-practices-rest-endpoint-design-examples/ )'
 - '[Swagger: Best Practices in API Design](https://swagger.io/resources/articles/best-practices-in-api-design/ )'
 - '[Stack Overflow Blog: Best Practices for REST API Design](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Looking for flexibility, many modern web applications are turning to microservices and effective APIs to connect those services consistently and effectively. REST APIs in particular stand out as perhaps the most pervasive architecture for connecting microservices today.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-kubernetes-on-linode-with-k8s-alpha-cli
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This article gives you step-by-step instructions for deploying and managing Kubernetes clusters with the K8S-Alpha CLI, a plugin for the Linode CLI.'
 keywords: ["rancher", "docker", "kubernetes", "container"]
 tags: ["linode platform","kubernetes"]
@@ -16,10 +13,11 @@ concentrations: ["Kubernetes"]
 deprecated: true
 external_resources:
   - '[Linode Kubernetes Tools](https://developers.linode.com/kubernetes/)'
+authors: ["Linode"]
 ---
-![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png "How to Deploy Kubernetes on Linode with the k8s-alpha CLI")
+![How to Deploy Kubernetes on Linode with the k8s-alpha CLI](how-to-deploy-kubernetes-on-linode.png)
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This guide's example instructions will create several billable resources on your Linode account. If you do not want to keep using the example cluster that you create, be sure to [delete it](#delete-a-cluster) when you have finished the guide.
 
 If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. Consult the [Billing and Payments](/docs/products/platform/billing/) guide for detailed information about how hourly billing works and for a table of plan pricing.
@@ -31,13 +29,15 @@ If you remove the resources afterward, you will only be billed for the hour(s) t
 
 The Linode [k8s-alpha CLI](https://developers.linode.com/kubernetes/) is a plugin for the [Linode CLI](https://github.com/linode/linode-cli) that offers quick, single-command deployments of Kubernetes clusters on your Linode account. When you have it installed, creating a cluster can be as simple as:
 
-    linode-cli k8s-alpha create example-cluster
+```command
+linode-cli k8s-alpha create example-cluster
+```
 
 The clusters that it creates are pre-configured with useful Linode integrations, like our [CCM](https://github.com/linode/linode-cloud-controller-manager), [CSI](https://github.com/linode/linode-blockstorage-csi-driver), and [ExternalDNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md) plugins. As well, the Kubernetes [metrics-server](https://github.com/kubernetes-incubator/metrics-server) is pre-installed, so you can run `kubectl top`. Nodes in your clusters will also be labeled with the Linode Region and Linode Type, which can also be used by Kubernetes controllers for the purposes of scheduling pods.
 
-{{< disclosure-note "What are Linode's CCM, CSI, and ExternalDNS plugins?" >}}
+{{< note title="What are Linode's CCM, CSI, and ExternalDNS plugins?" isCollapsible=true >}}
 The [CCM](https://github.com/linode/linode-cloud-controller-manager) (Cloud Controller Manager), [CSI](https://github.com/linode/linode-blockstorage-csi-driver) (Container Storage Interface), and [ExternalDNS](https://github.com/kubernetes-incubator/external-dns/blob/master/docs/tutorials/linode.md) plugins are Kubernetes addons published by Linode. You can use them to create NodeBalancers, Block Storage Volumes, and DNS records through your Kubernetes manifests.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 The k8s-alpha CLI will create two kinds of nodes on your account:
 
@@ -49,8 +49,8 @@ These nodes will all exist as billable services on your account. You can specify
 
 ### Alternatives for Creating Clusters
 
-
 #### Rancher
+
 Another easy way to create clusters is with [Rancher](https://rancher.com). Rancher is a web application that provides a GUI interface for cluster creation and for management of clusters. Rancher also provides easy interfaces for deploying and scaling apps on your clusters, and it has a built-in catalog of curated apps to choose from.
 
 To get started with Rancher, review our [How to Deploy Kubernetes on Linode with Rancher](/docs/guides/how-to-deploy-kubernetes-on-linode-with-rancher-2-x/) guide. Rancher is capable of importing clusters that were created outside of it, so you can still use it even if you create your clusters through the k8s-alpha CLI or some other means.
@@ -59,7 +59,7 @@ To get started with Rancher, review our [How to Deploy Kubernetes on Linode with
 
 The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. LKE combines Linode’s ease of use and [simple pricing](https://www.linode.com/pricing/) with the infrastructure efficiency of Kubernetes.
 
-When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) guide.
+When you deploy an LKE cluster, you receive a Kubernetes Master at no additional cost; you only pay for the Linodes (worker nodes), [NodeBalancers](/docs/products/networking/nodebalancers/get-started/) (load balancers), and [Block Storage Volumes](/docs/products/storage/block-storage/). Your LKE cluster’s Master node runs the Kubernetes control plane processes – including the API, scheduler, and resource controllers. To get started with LKE, review our [Deploy a Cluster with Linode Kubernetes Engine](/docs/products/compute/kubernetes/) guide.
 
 ### Beginners Resources
 
@@ -67,7 +67,7 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 -   [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/): this guide explains the concepts and architecture of Kubernetes.
 
--   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/guides/getting-started-with-kubernetes/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
+-   [Getting Started with Kubernetes - Basic Installation and Setup](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/): this guide shows how to create a Kubernetes cluster manually. While you wouldn't normally set your clusters up in this way, doing it once can help provide a better understanding for how a cluster's components fit together.
 
 ## Before You Begin
 
@@ -75,9 +75,9 @@ If you haven't used Kubernetes before, we recommend reading through our introduc
 
 1.  If you do not already have a public-private SSH key pair, you will need to generate one. Follow the [Generate a Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#linux-and-macos) section of our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide for instructions.
 
-    {{< note respectIndent=false >}}
-If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide explains what they are.
-{{< /note >}}
+    {{< note >}}
+    If you're unfamiliar with the concept of public-private key pairs, the introduction to our [Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/) guide explains what they are.
+    {{< /note >}}
 
 ## Install the k8s-alpha CLI
 
@@ -85,8 +85,8 @@ The k8s-alpha CLI is bundled with the Linode CLI, and using it requires the inst
 
 -   [Terraform](#install-terraform): The k8s-alpha CLI creates clusters by defining a resource *plan* in Terraform and then having Terraform create those resources. If you're interested in how Terraform works, you can review our [Beginner's Guide to Terraform](/docs/guides/beginners-guide-to-terraform/), but doing so is not required to use the k8s-alpha CLI.
 
-    {{< note respectIndent=false >}}
-The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
+    {{< note >}}
+    The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com/blog/announcing-terraform-0-12).
     {{< /note >}}
 
 -   [kubectl](#install-kubectl): kubectl is the client software for Kubernetes, and it is used to interact with your Kubernetes cluster's API.
@@ -97,7 +97,9 @@ The k8s-alpha CLI requires [Terraform version 0.12.0+](https://www.hashicorp.com
 
 Follow the [Install the CLI](/docs/products/tools/cli/get-started/#install-the-cli) section of our CLI guide to install the Linode CLI. If you already have the CLI, upgrade it to the latest version available:
 
-    pip install --upgrade linode-cli
+```command
+pip install --upgrade linode-cli
+```
 
 ### Install Terraform
 
@@ -113,9 +115,11 @@ Your SSH key pair is stored in your home directory (or another location), but th
 
 **Linux:** Run the following command; if you stored your private key in another location, update the path that's passed to `ssh-add` accordingly:
 
-    eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
+```command
+eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa
+```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You will need to run all of your k8s-alpha CLI commands from the terminal that you start the `ssh-agent` process in. If you start a new terminal, you will need to run the commands in this step again before using the k8s-alpha CLI.
 {{< /note >}}
 
@@ -123,73 +127,83 @@ You will need to run all of your k8s-alpha CLI commands from the terminal that y
 
 1.  Update your `~/.ssh/config` SSH configuration file. This configuration will add keys to the persistent agent and store passphrases in the OS keychain:
 
-    {{< file "~/.ssh/config" >}}
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
-{{< /file >}}
+    ```file {title="~/.ssh/config"}
+    Host *
+      AddKeysToAgent yes
+      UseKeychain yes
+      IdentityFile ~/.ssh/id_rsa
+    ```
 
-    {{< note respectIndent=false >}}
-Although `kubectl` should be used in all cases possible to interact with nodes in your cluster, the key pair cached in the `ssh-agent` process will enable you to access individual nodes via SSH as the `core` user.
-{{< /note >}}
+    {{< note >}}
+    Although `kubectl` should be used in all cases possible to interact with nodes in your cluster, the key pair cached in the `ssh-agent` process will enable you to access individual nodes via SSH as the `core` user.
+    {{< /note >}}
 
 1.  Add your key to the `ssh-agent` process:
 
-        ssh-add -K ~/.ssh/id_rsa
+    ```command
+    ssh-add -K ~/.ssh/id_rsa
+    ```
 
 ## Create a Cluster
 
 1.  To create your first cluster, run:
 
-        linode-cli k8s-alpha create example-cluster
+    ```command
+    linode-cli k8s-alpha create example-cluster
+    ```
 
 1.  Your terminal will show output related to the Terraform plan for your cluster. The output will halt with the following messages and prompt:
 
-        Plan: 5 to add, 0 to change, 0 to destroy.
+    ```output
+    Plan: 5 to add, 0 to change, 0 to destroy.
 
-        Do you want to perform these actions in workspace "example-cluster"?
-          Terraform will perform the actions described above.
-          Only 'yes' will be accepted to approve.
+    Do you want to perform these actions in workspace "example-cluster"?
+      Terraform will perform the actions described above.
+      Only 'yes' will be accepted to approve.
 
-          Enter a value:
+      Enter a value:
+    ```
 
-    {{< note respectIndent=false >}}
-Your Terraform configurations will be stored under `~/.k8s-alpha-linode/`
-{{< /note >}}
+    {{< note >}}
+    Your Terraform configurations will be stored under `~/.k8s-alpha-linode/`
+    {{< /note >}}
 
 1.  Enter `yes` at the `Enter a value:` prompt. The Terraform plan will be applied over the next few minutes.
 
-    {{< note respectIndent=false >}}
-You may see an error like the following:
+    {{< note >}}
+    You may see an error like the following:
 
-{{< output >}}
-Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
-{{< /output >}}
+    ```output
+    Error creating a Linode Instance: [400] Account Limit reached. Please open a support ticket.
+    ```
 
-If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
-{{< /note >}}
+    If this appears, then you have run into a limit on the number of resources allowed on your Linode account. If this is the case, or if your nodes do not appear in the [Linode Cloud Manager](https://cloud.linode.com) as expected, contact [Linode Support](/docs/products/platform/get-started/guides/support/). This limit also applies to Block Storage Volumes and NodeBalancers, which some of your cluster app deployments may try to create.
+    {{< /note >}}
 
 1.  When the operation finishes, you will see options like the following:
 
-        Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
-        Switched to context "example-cluster-4-kacDTg9RmZK@example-cluster-4".
-        Your cluster has been created and your kubectl context updated.
+    ```output
+    Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+    Switched to context "example-cluster-4-kacDTg9RmZK@example-cluster-4".
+    Your cluster has been created and your kubectl context updated.
 
-        Try the following command:
-        kubectl get pods --all-namespaces
+    Try the following command:
+    kubectl get pods --all-namespaces
 
-        Come hang out with us in #linode on the Kubernetes Slack! http://slack.k8s.io/
+    Come hang out with us in #linode on the Kubernetes Slack! http://slack.k8s.io/
+    ```
 
 1.  If you visit the [Linode Cloud Manager](https://cloud.linode.com), you will see your newly created cluster nodes on the Linodes page. By default, your Linodes will be created under the region and Linode plan that you have set as the default for your Linode CLI. To set new defaults for your Linode CLI, run:
 
-        linode-cli configure
+    ```command
+    linode-cli configure
+    ```
 
     The k8s-alpha CLI will conform to your CLI defaults, with the following exceptions:
 
-    -   If you set a default plan size smaller than Linode 4GB, the k8s-alpha CLI will create your master node(s) on the Linode 4GB plan, which is the minimum recommended for master nodes. It will still create your worker nodes using your default plan.
+    - If you set a default plan size smaller than Linode 4GB, the k8s-alpha CLI will create your master node(s) on the Linode 4GB plan, which is the minimum recommended for master nodes. It will still create your worker nodes using your default plan.
 
-    -   The k8s-alpha CLI will always create nodes running CoreOS (instead of the default distribution that you set).
+    - The k8s-alpha CLI will always create nodes running CoreOS (instead of the default distribution that you set).
 
 1.  The k8s-alpha CLI will also update your kubectl client's configuration (the *kubeconfig file*) to allow immediate access to the cluster. Review the [Manage your Clusters with kubectl](#manage-your-clusters-with-kubectl) section for further instructions.
 
@@ -197,31 +211,37 @@ If this appears, then you have run into a limit on the number of resources allow
 
 The following optional arguments are available:
 
-    linode-cli k8s-alpha create example-cluster-2 --node-type g6-standard-1 --nodes 6 --master-type g6-standard-4 --region us-east --ssh-public-key $HOME/.ssh/id_rsa.pub
+```command
+linode-cli k8s-alpha create example-cluster-2 --node-type g6-standard-1 --nodes 6 --master-type g6-standard-4 --region us-east --ssh-public-key $HOME/.ssh/id_rsa.pub
+```
 
-| Argument&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
-|----------|-------------|
-| `--node-type TYPE`         | The Linode Type ID for cluster worker nodes (which you can retrieve by running `linode-cli linodes types`). |
-| `--nodes COUNT`            | The number of Linodes to deploy as Nodes in the cluster (default 3). |
-| `--master-type TYPE`       | The Linode Type ID for cluster master nodes (which you can retrieve by running `linode-cli linodes types`). |
-| `--region REGION`          | The Linode Region ID in which to deploy the cluster (which you can retrieve by running `linode-cli regions list`). |
+| Argument | Description |
+| -- | -- |
+| `--node-type TYPE` | The Linode Type ID for cluster worker nodes (which you can retrieve by running `linode-cli linodes types`). |
+| `--nodes COUNT` | The number of Linodes to deploy as Nodes in the cluster (default 3). |
+| `--master-type TYPE` | The Linode Type ID for cluster master nodes (which you can retrieve by running `linode-cli linodes types`). |
+| `--region REGION` | The Linode Region ID in which to deploy the cluster (which you can retrieve by running `linode-cli regions list`). |
 | `--ssh-public-key KEYPATH` | The path to your public key file which will be used to access Nodes during initial provisioning only! The keypair *must* be added to an ssh-agent (default $HOME/.ssh/id_rsa.pub). |
 
 ## Delete a Cluster
 
 1.  To delete a cluster, run the `delete` command with the name of your cluster:
 
-        linode-cli k8s-alpha delete example-cluster
+    ```command
+    linode-cli k8s-alpha delete example-cluster
+    ```
 
 1.  Your terminal will show output from Terraform that describes the deletion operation. The output will halt with the following messages and prompt:
 
-        Plan: 0 to add, 0 to change, 5 to destroy.
+    ```output
+    Plan: 0 to add, 0 to change, 5 to destroy.
 
-        Do you really want to destroy all resources in workspace "example-cluster"?
-          Terraform will destroy all your managed infrastructure, as shown above.
-          There is no undo. Only 'yes' will be accepted to confirm.
+    Do you really want to destroy all resources in workspace "example-cluster"?
+      Terraform will destroy all your managed infrastructure, as shown above.
+      There is no undo. Only 'yes' will be accepted to confirm.
 
-          Enter a value:
+      Enter a value:
+    ```
 
 1.  Enter `yes` at the `Enter a value:` prompt. The nodes in your cluster will be deleted over the next few minutes.
 
@@ -235,7 +255,9 @@ The k8s-alpha CLI will automatically configure your kubectl client to connect to
 
 Use the kubectl client to interact with your cluster's Kubernetes API. This will work in the same way as with any other cluster. For example, you can get all the pods in your cluster:
 
-    kubectl get pods --all-namespaces
+```command
+kubectl get pods --all-namespaces
+```
 
 Review the [Kubernetes documentation](https://kubernetes.io/docs/reference/kubectl/overview/) for more information about how to use kubectl.
 
@@ -243,17 +265,23 @@ Review the [Kubernetes documentation](https://kubernetes.io/docs/reference/kubec
 
 If you have more than one cluster set up, you can switch your kubectl client between them. To list all of your cluster contexts:
 
-    kubectl config get-contexts
+```command
+kubectl config get-contexts
+```
 
 An asterisk will appear before the current context:
 
-    CURRENT   NAME                                                      CLUSTER                 AUTHINFO                            NAMESPACE
-    *         example-cluster-kat7BqBBgU8@example-cluster               example-cluster         example-cluster-kat7BqBBgU8
-              example-cluster-2-kacDTg9RmZK@example-cluster-2           example-cluster-2       example-cluster-2-kacDTg9RmZK
+```output
+CURRENT   NAME                                                      CLUSTER                 AUTHINFO                            NAMESPACE
+*         example-cluster-kat7BqBBgU8@example-cluster               example-cluster         example-cluster-kat7BqBBgU8
+          example-cluster-2-kacDTg9RmZK@example-cluster-2           example-cluster-2       example-cluster-2-kacDTg9RmZK
+```
 
 To switch to another context, use the `use-context` subcommand and pass the value under the **NAME** column:
 
-    kubectl config use-context example-cluster-2-kacDTg9RmZK@example-cluster-2
+```command
+kubectl config use-context example-cluster-2-kacDTg9RmZK@example-cluster-2
+```
 
 All kubectl commands that you issue will now apply to the cluster you chose.
 
@@ -261,19 +289,21 @@ All kubectl commands that you issue will now apply to the cluster you chose.
 
 When you delete a cluster with the k8s-alpha CLI, its connection information will persist in your local kubeconfig file, and it will still appear when you run `kubectl config get-contexts`. To remove this connection data, run the following commands:
 
-    kubectl config delete-cluster example-cluster
-    kubectl config delete-context example-cluster-kat7BqBBgU8@example-cluster
-    kubectl config unset users.example-cluster-kat7BqBBgU8
+```command
+kubectl config delete-cluster example-cluster
+kubectl config delete-context example-cluster-kat7BqBBgU8@example-cluster
+kubectl config unset users.example-cluster-kat7BqBBgU8
+```
 
--   For the `delete-cluster` subcommand, supply the value that appears under the **CLUSTER** column in the output from `get-contexts`.
+- For the `delete-cluster` subcommand, supply the value that appears under the **CLUSTER** column in the output from `get-contexts`.
 
--   For the `delete-context` subcommand, supply the value that appears under the **NAME** column in the output from `get-contexts`.
+- For the `delete-context` subcommand, supply the value that appears under the **NAME** column in the output from `get-contexts`.
 
--   For the `unset` subcommand, supply `users.<AUTHINFO>`, where `<AUTHINFO>` is the value that appears under the **AUTHINFO** column in the output from `get-contexts`.
+- For the `unset` subcommand, supply `users.<AUTHINFO>`, where `<AUTHINFO>` is the value that appears under the **AUTHINFO** column in the output from `get-contexts`.
 
 ## Next Steps
 
 Now that you have a cluster up and running, you're ready to start deploying apps to it. Review our other Kubernetes guides for help with deploying software and managing your cluster:
 
--   [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/)
--    [Linode Container Storage Interface](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/)
+- [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/)
+- [Linode Container Storage Interface](/docs/guides/deploy-volumes-with-the-linode-block-storage-csi-driver/)

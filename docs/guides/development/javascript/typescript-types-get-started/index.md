@@ -1,7 +1,5 @@
 ---
 slug: typescript-types-get-started
-author:
-  name: Martin Heller
 description: 'TypeScript supports several types, including primitive types, arrays, and objects. This guide provides a brief introduction to TypeScript types with information on how to learn more.'
 keywords: ['typescript types']
 tags: ['typescript']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Getting Started with TypeScript Types"
 title_meta: "TypeScript Types: Get Started"
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 TypeScript supports various types including `string`, `number`, `boolean`, `enum`, `Array`, `tuple`, `void`, `null`, and `undefined`. These are the same types supported by JavaScript, however, TypeScript can also perform type checking. This guide provides an introduction to common TypeScript types with examples on how to create each type.
 

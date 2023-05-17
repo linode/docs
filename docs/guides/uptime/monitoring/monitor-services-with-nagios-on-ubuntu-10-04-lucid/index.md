@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.04 (Lucid) Linode.'
 keywords: ["nagios", "monitoring"]
 tags: ["monitoring","ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
 
 Nagios is a monitoring tool that makes it possible to monitor services on a single server or a pool of servers. It provides the capability to monitor a broad range of network services including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
-Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Additionally, you will need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-10-10-maverick/) in order to use Nagios.
+Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Additionally, you will need to have a functioning [LAMP stack](/docs/guides/lamp-server-on-ubuntu-10-10-maverick/) in order to use Nagios.
 
 ## Prepare for Nagios Installation
 

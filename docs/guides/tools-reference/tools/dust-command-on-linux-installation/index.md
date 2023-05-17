@@ -1,7 +1,5 @@
 ---
 slug: dust-command-on-linux-installation
-author:
-  name: Jeff Novotny
 description: 'Dust is a replacement for the Linux du command. In this guide, you learn how to use dust to view your Linux system''s disk usage.'
 keywords: ['Dust linux', 'linux check disk space','Check disk usage Linux','Du replacement']
 tags: ['linux']
@@ -11,11 +9,9 @@ modified_by:
   name: Linode
 title: "Check Disk Usage on Linux with the dust Command"
 title_meta: "Installing and Using dust on Linux"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Dust page on GitHub](https://github.com/bootandy/dust)'
+authors: ["Jeff Novotny"]
 ---
 
 Hard drive space on a system can fill up quickly, especially when new software is installed. System administrators frequently have to review disk space utilization and see what files or directories are using up the most storage. This can be accomplished using the Linux `du` command, but many users find it cumbersome and awkward to use. The open-source [*dust*](https://github.com/bootandy/dust) program offers a new way of looking at disk space usage more intuitively and straightforwardly. This guide explains how to install and use the dust utility on Linux and how it functions as a du replacement.
@@ -65,9 +61,9 @@ A good strategy is to use dust to get a quick overview of the system's disk spac
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.

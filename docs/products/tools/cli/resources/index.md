@@ -1,5 +1,6 @@
 ---
 title: Resources
+title_meta: "Resources for the Linode CLI"
 description: "Resources and other information related to the Linode CLI including blog posts and community posts."
 tab_group_main:
     weight: 40

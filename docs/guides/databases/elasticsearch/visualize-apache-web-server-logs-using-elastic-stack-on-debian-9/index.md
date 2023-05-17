@@ -1,11 +1,5 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-9
-author:
-  name: Tyler Langlois
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: "This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs."
 og_description: "The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana."
 external_resources:
@@ -26,6 +20,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 9
+authors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.
@@ -54,13 +49,13 @@ This guide shows how to:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and create a Linode to install the Elastic stack on. Then, complete the steps for setting your Linode's hostname and timezone.
 
     {{< note respectIndent=false >}}
 Multiple services are run on a single Linode in this guide. We recommend using at least a 2G (or `g6-standard-1`) sized Linode instance to support these services.
 {{< /note >}}
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< note respectIndent=false >}}
 Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

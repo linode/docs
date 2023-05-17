@@ -1,8 +1,5 @@
 ---
 slug: install-wordpress-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on a Linode.'
 keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to configure WordPress"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
@@ -22,6 +19,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/wordpress/install-wordpress-ubuntu-18-04/','/websites/cms/install-wordpress-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 ## What is WordPress?
@@ -36,7 +34,7 @@ Replace each instance of `example.com` in this guide with the domain name or IP 
 
 ## Before You Begin Installing WordPress
 
--   Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+-   Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and ensure that the Linode's [hostname is set](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
     To check the hostname run:
 

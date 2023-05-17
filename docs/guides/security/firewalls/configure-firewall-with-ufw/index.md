@@ -1,8 +1,5 @@
 ---
 slug: configure-firewall-with-ufw
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'Learn how to use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux.'
 keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tutorial", "ubuntu firewall", "iptables", "networking", "firewalls", "filtering", "firewall setup", "ubuntu", "debian", "arch"]
 bundles: ['debian-security', 'network-security']
@@ -14,6 +11,7 @@ published: 2015-11-17
 title: How to Configure a Firewall with UFW
 tags: ["networking","security"]
 aliases: ['/security/firewalls/configure-firewall-with-ufw/']
+authors: ["Elle Krout"]
 ---
 
 ## What is UFW?
@@ -28,9 +26,9 @@ If you are running Docker, by default Docker directly manipulates iptables. Any 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-1.  Ensure that you complete the sections of [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. When you reach the [Configure a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) section return to this guide.
+1.  Ensure that you complete the sections of [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. When you reach the [Configure a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) section return to this guide.
 
     This guide lists the commands for Arch Linux, Debian or Ubuntu distributions only. However, you can use the relevant commands for the outlined tasks on various Linux distributions.
 

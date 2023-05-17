@@ -1,8 +1,5 @@
 ---
 slug: install-roundcube-on-ubuntu
-author:
-  name: 'Linode Community'
-  email: 'docs@linode.com'
 description: 'This guide shows you how to install the free and open-source web-based IMAP email client with a UI similar to Gmail and Hotmail, on Ubuntu.'
 keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
 aliases: ['/email/clients/install-roundcube-on-ubuntu/','/email/clients/install-roundcube-on-ubuntu-14-04/']
@@ -13,11 +10,9 @@ modified: 2017-12-18
 modified_by:
   name: 'Linode'
 title: 'Install Roundcube on Ubuntu 16.04'
-contributor:
-  name: 'Sean Webber'
-  link: 'https://github.com/seanthewebber'
 external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
+authors: ["Sean Webber"]
 ---
 
 ![Install Roundcube on Ubuntu 16.04 LTS](Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
@@ -30,9 +25,9 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) tutorial, but you **can** use a different mail server.
 

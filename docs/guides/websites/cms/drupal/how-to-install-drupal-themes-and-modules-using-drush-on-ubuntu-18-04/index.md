@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 tags: ["drupal","ubuntu","cms","lamp"]
@@ -24,6 +21,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.
@@ -34,9 +32,9 @@ Linode has another guide for installing Drush and creating a Drupal website, [In
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 
@@ -68,7 +66,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note respectIndent=false >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 

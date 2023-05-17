@@ -1,9 +1,6 @@
 ---
 slug: manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on Ubuntu 10.10 "Maverick".'
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,13 +19,14 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
-We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We also assume that you have installed a working LAMP stack. For guides on installing a LAMP stack for your distribution, please visit the [LAMP guides](/docs/lamp-guides/) section of Linode Guides & Tutorials.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We also assume that you have installed a working LAMP stack. For guides on installing a LAMP stack for your distribution, please visit the [LAMP guides](/docs/lamp-guides/) section of Linode Guides & Tutorials.
 
 Be aware, if you have opted to install the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 

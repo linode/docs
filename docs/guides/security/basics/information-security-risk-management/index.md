@@ -1,7 +1,5 @@
 ---
 slug: information-security-risk-management
-author:
-  name: David Strom
 description: 'This guide discusses information security risk management and how to develop a plan for effectively managing risk and information security.'
 keywords: ['security and risk management','it security risk management','risk management in information technology']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +8,7 @@ modified_by:
   name: Linode
 title: "Build an Information Security Risk Management Program"
 title_meta: "A Guide to Risk Management in Information Technology"
-contributor:
-  name: David Strom
+authors: ["David Strom"]
 ---
 
 Understanding and quantifying information security risks lies at the heart of many security issues. If you can’t quantify risks, you can’t address how to protect your data assets, corporate secrets, and employees’ and customers’ privacy and information. Managing these risks and improving security is everyone’s responsibility, not just the province of the IT department. Businesses are moving in this direction in part because of the Covid pandemic, and also because more companies are becoming dependent on digital technologies, thus increasing their potential attack surface. More sophisticated attack methods make the world of security risk management more complex and important to understand.

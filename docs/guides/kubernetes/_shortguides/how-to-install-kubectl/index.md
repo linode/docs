@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-kubectl
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This short-guide will provide you with step-by-step instructions on how to install kubectl, the Kubernetes command-line utility, using homebrew or your package manager.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,19 +8,20 @@ modified: 2022-08-11
 modified_by:
   name: Linode
 title: "Install kubectl"
-contributor:
-  name: Linode
 headless: true
 show_on_rss_feed: false
 aliases: ['/applications/containers/kubernetes/how-to-install-kubectl/','/kubernetes/how-to-install-kubectl/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 **macOS:**
 
 Install via [Homebrew](https://brew.sh):
 
-    brew install kubectl
+```command
+brew install kubectl
+```
 
 If you don't have Homebrew installed, visit the [Homebrew](https://brew.sh) home page for instructions. Alternatively, you can manually install the binary; visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-macos) for instructions.
 
@@ -31,17 +29,23 @@ If you don't have Homebrew installed, visit the [Homebrew](https://brew.sh) home
 
 1.  Download the latest kubectl release:
 
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    ```command
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    ```
 
 1.  Make the downloaded file executable:
 
-        chmod +x ./kubectl
+    ```command
+    chmod +x ./kubectl
+    ```
 
 1.  Move the command into your PATH:
 
-        sudo mv ./kubectl /usr/local/bin/kubectl
+    ```command
+    sudo mv ./kubectl /usr/local/bin/kubectl
+    ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 You can also install kubectl via your package manager; visit the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-linux) for instructions.
 {{< /note >}}
 
