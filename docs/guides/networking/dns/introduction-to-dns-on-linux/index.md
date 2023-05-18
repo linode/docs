@@ -400,10 +400,7 @@ The server should respond (in the "ANSWER SECTION") with the hostname of your ne
 
 ;; ANSWER SECTION:
 example.com.	3600 IN   NS   ns1.example.com.
-
-;; ADDITIONAL SECTION:
-ns1.example.com. 	300  IN   AAAA 2600:3c01::f03c:93ff:fe01:4070
-ns1.example.com. 	300  IN   A	96.126.102.178
+example.com.	3600 IN   NS   ns2.example.com.
 
 ;; Query time: 0 msec
 ;; SERVER: 2600:3c01::f03c:93ff:fe01:4070#53(ns1.example.com) (UDP)
@@ -419,6 +416,7 @@ dig +short -t NS example.com
 
 ```output
 ns1.example.com.
+ns2.example.com.
 ```
 
 ## Conclusion
