@@ -103,7 +103,7 @@ The above list is enough for a bare-bones setup, but other common RR types inclu
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.example.com`, replacing `example.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file with your external IP addresses (PVv4 and IPv6), domain (`ns1.example.com`), and hostname (`ns1`).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -194,19 +194,23 @@ Since the NSD documentation already includes a fully annotated sample configurat
 
     Since the localhost address is already in use, simply binding to all addresses won’t work. Because NSD is an authoritative-only name server serving external clients, it can bind to external addresses without affecting the system’s ability to resolve addresses on the `localhost` address.
 
-1.  Add some new `ip-address` statements to `server` section of the `nsd.conf` file, substituting your system’s addresses for these examples:
+1.  Uncomment two `ip-address` statements in the `server:` section of the `nsd.conf` file, substituting your system’s addresses for these examples:
 
     ```file
-       ip-address: 45.79.218.211
-       ip-address: 2600:3c02::f03c:93ff:fec7:0cd5
+    server:
+          # ...
+          ip-address: 45.79.218.211
+          ip-address: 2600:3c02::f03c:93ff:fec7:0cd5
+          # ...
     ```
 
-1.  Next, move down to the file’s `remote-control` section. Find the `control-enable` line, uncomment it, and change `no` to `yes`:
+1.  Next, move down to the file’s `remote-control:` section. Find the `control-enable` line, uncomment it, and change `no` to `yes`:
 
     ```file
     remote-control:
-          # ..
+          # ...
           control-enable: yes
+          #...
     ```
 
     This allows you to add, remove, and edit DNS entries using the `nsd-control` utility without having to restart the NSD server every time.
@@ -257,7 +261,7 @@ A functional authoritative name server is now set up, but it’s not yet serving
                               )
     ;; A Records
     ns1        A     96.126.102.178
-    ns2        A     45.79.107.193
+    ns2        A     96.126.102.178
     john       A     96.126.102.179
     paul       A     96.126.102.180
     george     A     96.126.102.181
@@ -265,7 +269,7 @@ A functional authoritative name server is now set up, but it’s not yet serving
     stu        A     96.126.102.180
     ;; AAAA Records
     ns1        AAAA  2600:3c01:0:0:f03c:93ff:fe01:4070
-    ns2        AAAA  2600:3c01::f03c:93ff:fe01:5e5a
+    ns2        AAAA  2600:3c01:0:0:f03c:93ff:fe01:4070
     john       AAAA  2600:3c01:0:1:f03c:93ff:fe01:4071
     paul       AAAA  2600:3c01:0:2:f03c:93ff:fe01:4072
     george     AAAA  2600:3c01:0:3:f03c:93ff:fe01:4073
@@ -278,28 +282,32 @@ A functional authoritative name server is now set up, but it’s not yet serving
     @   IN NS   ns2.example.com.
     ```
 
-    Note that the records for `paul` and `stu` point to the same IP addresses. This underscores an important aspect of DNS: one hostname can refer to many addresses, and vice-versa. It is this capability that makes virtual hosting possible.
+    There are a couple of things to note in the zone file:
 
-    There are two critical aspects of zone file syntax. First, comments always begin with one or more semicolons. Using a hash mark or any other character for comments results in a syntax error when the `nsd-checkzone` utility is run. It also causes the zone not to load.
+    -   First is the zone file syntax. Comments always begin with one or more semicolons. Using a hash mark or any other character for comments results in a syntax error when the `nsd-checkzone` utility is run. It also causes the zone not to load.
 
-    Second, note that fully qualified hostnames always have a period appended, representing the parent zone:
+    -   Second, notice that the records for `paul` and `stu` point to the same IP addresses, as do `ns1` and `ns2`. This underscores an important aspect of DNS: one hostname can refer to many addresses, and vice-versa. It is this capability that makes virtual hosting possible.
 
-    ```file
-    @  	MX  	10  	stu.example.com.
-    ```
+        While `paul` and `stu` only share the same IP address for demonstration purposes, `ns1` and `ns2` sharing an IP address has actual utility. Domain registrars require a minimum of two name servers to utilize custom DNS. Since this guide only sets up a single primary name server, having records for two name servers allows you to proceed with domain delegation. The second part of our series on DNS cover how to set up a secondary name server on a separate Linode instance.
 
-    Omitting that final period, causes the NSD daemon to append the entire domain name, creating a pointer to a nonexistent resource (e.g. `stu.example.com.example.com`). Omitting the final period in zone files is the single most common DNS configuration error.
+    -   Third, note that fully qualified hostnames always have a period appended, representing the parent zone:
 
-    Avoid this issue with the `$ORIGIN example.com.` macro that begins this zone file. This tells the NSD daemon to append "`example.com.`" to any host or domain name not ending with a period. For example, with `$ORIGIN example.com.` applied, these two A records are functionally identical:
+        ```file
+        @  	MX  	10  	stu.example.com.
+        ```
 
-    ```file
-    $ORIGIN example.com.
-    ; ..
-    john                A   	96.126.102.179
-    john.example.com.	  A   	96.126.102.179
-    ```
+        Omitting that final period, causes the NSD daemon to append the entire domain name, creating a pointer to a nonexistent resource (e.g. `stu.example.com.example.com`). Omitting the final period in zone files is the single most common DNS configuration error.
 
-    Again, note the final period when using the full form.
+        Avoid this issue with the `$ORIGIN example.com.` macro that begins this zone file. This tells the NSD daemon to append "`example.com.`" to any host or domain name not ending with a period. For example, with `$ORIGIN example.com.` applied, these two A records are functionally identical:
+
+        ```file
+        $ORIGIN example.com.
+        ; ..
+        john                A   	96.126.102.179
+        john.example.com.	  A   	96.126.102.179
+        ```
+
+        Again, note the final period when using the full form.
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to save and close the file.
 
@@ -362,7 +370,7 @@ The final step is to delegate name service to the new server at your domain regi
 Linode is not a registrar. This step is performed at a third-party registrar such as [Dynadot](https://www.dynadot.com/account/signin.html), [GoDaddy](https://www.godaddy.com/), or [Hover](https://www.hover.com/domains). You must use the registrar where your domain is registered.
 {{< /note >}}
 
-Every registrar’s management tools allow you to delegate DNS to one or more name servers for your domain. Usually, the registrar needs the hostname and IP address(es) for each name server. Be sure to point to the new name server, and double-check its hostname and address(es).
+Every registrar’s management tool allows you to delegate DNS to two or more name servers for your domain. Usually, the registrar needs the hostname and IP addresses for each name server. Be sure to point to the new name server twice, as `ns1.example.com` and as `ns2.example.com`, and provide the same IP address for both.
 
 In theory, delegation changes can take 24-48 hours to propagate through the global Internet. However, in practice propagation usually happens much faster, often in 5 minutes or less.
 
