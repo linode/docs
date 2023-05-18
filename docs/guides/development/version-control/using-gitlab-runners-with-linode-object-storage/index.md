@@ -1,18 +1,11 @@
 ---
 slug: using-gitlab-runners-with-linode-object-storage
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Linode Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up you own in this tutorial."
+description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Linode Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up your own in this tutorial."
 keywords: ['gitlab runner docker','what is gitlab runner','gitlab runner tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-22
-modified_by:
-  name: Nathaniel Stickman
+authors: [Nathaniel Stickman]
 title: "How to Use a GitLab Runner with Linode Object Storage"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[GitLab Docs: GitLab Runner](https://docs.gitlab.com/runner/)'
 - '[GitLab Docs: Docker Machine Executor Autoscale Configuration](https://docs.gitlab.com/runner/configuration/autoscale.html)'
@@ -23,13 +16,13 @@ external_resources:
 
 GitLab Runners runs tasks within your GitLab continuous-integration (CI) pipeline. Runners can clone your project, spin up needed machines, and execute the necessary steps for building, testing, and deployment stages. And GitLab Runners can use autoscaling for provisioning, spinning up servers only when they are needed.
 
-Follow along with this tutorial to learn more about GitLab Runners and how they fit into a GitLab CI/CD infrastructure. See how to set up your GitLab instance for CI/CD and register a GitLab Runner Manager. Learn the steps for effectively configuring your GitLab Runner and executing tasks as part of a GitLab CI pipeline.
+Follow along with this guide to learn more about GitLab Runners and how they fit into a GitLab CI/CD infrastructure. See how to set up your GitLab instance for CI/CD and register a GitLab Runner Manager. Learn the steps for effectively configuring your GitLab Runner and executing tasks as part of a GitLab CI pipeline.
 
-Additionally, this tutorial covers how to integrate your GitLab Runner setup with Linode Object Storage. Doing so gives you a more efficient storage option for caching resources between GitLab jobs.
+Additionally, this guide covers how to integrate your GitLab Runner setup with Linode Object Storage. Doing so gives you a more efficient storage option for caching resources between GitLab jobs.
 
 ## What Are GitLab Runners?
 
-A GiLab Runner performs jobs as part of GitLab CI/CD pipelines. Each runner picks up jobs from the GitLab CI coordinator, according to the runner's scope. The runner then executes the instructions in that job, whether for building a project, testing changes, or deploying a built project.
+A GitLab Runner performs jobs as part of GitLab CI/CD pipelines. Each runner picks up jobs from the GitLab CI coordinator, according to the runner's scope. The runner then executes the instructions in that job, whether for building a project, testing changes, or deploying a built project.
 
 One feature that makes GitLab Runners particularly useful is their ability to spin up machines to run tasks on. At their simplest, runners can simply execute some shell commands and feed the results back to GitHub. But more often runners are used to set up your project on a machine with a Docker container. There, runners can readily build and test projects in a dedicated environment.
 
@@ -39,36 +32,36 @@ GitLab Runners can also implement an *autoscaling* configuration. This uses [Doc
 
 ## How to Create a GitLab Instance and Install a GitLab Runner
 
-To use GitLab Runners, you need a GitLab instance where your project lives and where your pipeline operates out of. This tutorial uses a self-hosted GitLab instance, with a dedicated section on setting up your instance.
+To use GitLab Runners, you need a GitLab instance where your project lives and where your pipeline operates. This guide uses a self-hosted GitLab instance, with a dedicated section on setting up your instance.
 
-You can also uses a GitLab SaaS (GitLab.com) instance. The steps for the GitLab Runner setup should be similar, so skip ahead in that case. You can learn more through the GitLab documentation linked at the end of this tutorial.
+You can also use a GitLab SaaS (GitLab.com) instance. The steps for the GitLab Runner setup should be similar, so skip ahead in that case. You can learn more through the GitLab documentation linked at the end of this guide.
 
-### Creating a GitLab Instance
+### Create a GitLab Instance
 
 With Linode, you have three options effective for creating your own self-hosted GitLab instance.
 
-- Use the Linode Marketplace to deployment a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/products/tools/marketplace/guides/gitlab/) tutorial.
+- Use the Linode Marketplace to deploy a ready instance with GitLab installed. This method requires the fewest manual steps and provides the surest and quickest way to get a GitLab instance running. You can follow along with our [Deploy Gitlab through the Linode Marketplace](/docs/products/tools/marketplace/guides/gitlab/) guide.
 
 - Use the default package manager for your Linux distribution. GitLab maintains official installation packages for CentOS, Debian, Ubuntu, and others, and you can follow the instructions in their [official documentation](https://about.gitlab.com/install/). You may also refer to our [Install GitLab on Ubuntu 18.04](/docs/guides/install-gitlab-on-ubuntu-18-04/) for additional details on the installation process.
 
-- Use Docker to deploy your GiLab instance. This option requires the most effort and set up. But the option can be a boon for those familiar with Docker and wanting the benefits of a containerized instance. You can follow our [Install GitLab with Docker](/docs/guides/install-gitlab-with-docker/) tutorial to set up your GitLab instance with Docker.
+- Use Docker to deploy your GitLab instance. This option requires the most effort and setup. But the option can be a boon for those familiar with Docker and wanting the benefits of a containerized instance. You can follow our [Install GitLab with Docker](/docs/guides/install-gitlab-with-docker/) guide to set up your GitLab instance with Docker.
 
-The rest of the tutorial assumes you have your GitLab instance up and running. This tutorial uses an instance deployed through the Linode Marketplace, but the steps should be compatible with any of the options above.
+The rest of the guide assumes you have your GitLab instance up and running. This guide uses an instance deployed through the Linode Marketplace, but the steps should be compatible with any of the options above.
 
-### Creating an Instance for GitLab Runners
+### Create an Instance for GitLab Runners
 
-GitLab recommends that your run your instance of GitLab and your GitLab Runners on separate machines. This provides better performance and security for your infrastructure.
+GitLab recommends that you run your instance of GitLab and your GitLab Runners on separate machines. This provides better performance and security for your infrastructure.
 
-The dedicated instance you use for your GitLab Runners is referred to as the Runner Manager. All subsequent installations and configuration instructions in this tutorial take place on the Runner Manager unless stated otherwise.
+The dedicated instance you use for your GitLab Runners is referred to as the Runner Manager. All subsequent installations and configuration instructions in this guide take place on the Runner Manager unless stated otherwise.
 
-These next steps refer you to guides for creating, updating, and securing a new Linode Compute Instance, where you can install the GitLab Runners. Follow them before going forward with the rest of this tutorial.
+These next steps refer you to guides for creating, updating, and securing a new Linode Compute Instance, where you can install the GitLab Runners. Follow them before going forward with the rest of this guide.
 
 1. Create a Linode Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update the instance. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-Throughout the rest of this tutorial, commands are provided for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+Throughout the rest of this guide, commands are provided for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ### Install GitLab Runner
@@ -77,21 +70,21 @@ Once you have an instance up and ready, you can follow the steps here to install
 
 1. Add the GitLab repository to your instance's package manager.
 
-    - On Debian and Ubuntu distributions, use the command here.
+    - On **Debian** and **Ubuntu** distributions, use the command below:
 
         ```command
         curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
         ```
 
-    - On CentOS and Fedora distributions, use the command here.
+    - On **CentOS** and **Fedora** distributions, use the command below:
 
         ```command
         curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh" | sudo bash
         ```
 
-1. On Debian distributions, you should additionally pin the GitLab repository for your GitLab Runner installation. This ensures that the APT package manager uses the GitLab Runner version from the GitLab repository.
+1. On **Debian** distributions, you should additionally pin the GitLab repository for your GitLab Runner installation. This ensures that the APT package manager uses the GitLab Runner version from the GitLab repository.
 
-    You can use this command, provided by GitLab, to pin the repository.
+    You can use the command below provided by GitLab to pin the repository.
 
     ```command
     cat <<EOF | sudo tee /etc/apt/preferences.d/pin-gitlab-runner.pref
@@ -104,13 +97,13 @@ Once you have an instance up and ready, you can follow the steps here to install
 
 1. Install the GitLab Runner software from your instance's package manager.
 
-    - On Debian and Ubuntu distributions, use the APT command.
+    - On **Debian** and **Ubuntu** distributions, use the APT command.
 
         ```command
         sudo apt install gitlab-runner
         ```
 
-    - On CentOS and Fedora distributions, use the DNF command.
+    - On **CentOS** and **Fedora** distributions, use the DNF command.
 
         ```command
         sudo dnf install gitlab-runner
@@ -139,9 +132,9 @@ Your runner is ready to use immediately afterward using the default configuratio
 
 The second section below details where you can start configuring your GitLab Runners. The section provides some resources for learning more about possible configurations, and it highlights some useful options for autoscaling setups.
 
-Further on in the tutorial, you can see some example modifications to the default configuration. These specifically cover enabling autoscaling and implementing Linode Object Storage for caching.
+Further on in the guide, you can see some example modifications to the default configuration. These specifically cover enabling autoscaling and implementing Linode Object Storage for caching.
 
-### Registering the Runner
+### Register the Runner
 
 To create a runner, you need to register it with a GitLab instance. This involves getting a GitLab Runner token from your instance and running the `register` command with that token from within your Runner Manager instance.
 
@@ -161,7 +154,7 @@ To create a runner, you need to register it with a GitLab instance. This involve
 
         To get the token for a specific runner, use the menu at the upper left to navigate to the project. You can either navigate directly to the project or find the project on the associated group's page. Then choose **Settings > CI/CD** from the left menu, and go down the page to expand the **Runners** section. There you can find the token under a **Specific runners** subheading.
 
-    This tutorial uses a shared runner and follows the method described above to procure its token.
+    This guide uses a shared runner and follows the method described above to procure its token.
 
 1. Run the command below to start registering the GitLab Runner. The GitLab Runner application gives you a series of prompts, for which you need the URL for your GitLab instance and the runner token you retrieved in the previous step.
 
@@ -189,19 +182,19 @@ To create a runner, you need to register it with a GitLab instance. This involve
     Verifying runner... is alive                        runner=wCG_zeGX
     ```
 
-At this point, you can return to the administrator interface for your GitLab instance and find the new runner listed. Since this tutorial uses a shared runner, you can find the runner listed under **Overview > Runners** from the **Admin** menu.
+At this point, you can return to the administrator interface for your GitLab instance and find the new runner listed. Since this guide uses a shared runner, you can find the runner listed under **Overview > Runners** from the **Admin** menu.
 
 [![A shared runner listed in the GitLab instance administrator interface](gitlab-admin-runner_small.png)](gitlab-admin-runner.png)
 
-### Configuring the Runner
+### Configure the Runner
 
 The `config.toml` file created when you registered the runner in the previous step holds your runner's configuration. Within this file, you have access to global options, outside of any heading, and individual runners, each defined by a `[[runners]]` section heading.
 
 The registration process creates a simple default configuration. And for many use cases that configuration is sufficient. But for some more advanced usages or for adjusting the executor for your runner, you may want to modify these defaults to fit your needs.
 
-The range of options is extensive, allowing you to adapt runners to a wide range of needs. For a full coverage of options, you should refer to GitLab's [advanced configuration guide](https://docs.gitlab.com/runner/configuration/advanced-configuration.html).
+The range of options is extensive, allowing you to adapt runners to a wide range of needs. For full coverage of options, you should refer to GitLab's [advanced configuration guide](https://docs.gitlab.com/runner/configuration/advanced-configuration.html).
 
-The following covers some of the most important configuration options for autoscaling GitLab Runners, which the upcoming sections of this tutorial focus on. You can also learn more about these in GitLab's guide on [autoscaling GitLab Runners](https://docs.gitlab.com/runner/configuration/autoscale.html).
+The following covers some of the most important configuration options for autoscaling GitLab Runners, which the upcoming sections of this guide focus on. You can also learn more about these in GitLab's guide on [autoscaling GitLab Runners](https://docs.gitlab.com/runner/configuration/autoscale.html).
 
 - The global `concurrent` option defines how many jobs the runner can execute simultaneously. For an autoscaling runner, you likely want this at a higher number than the default `1`. GitLab gives an example with `100`.
 
@@ -213,7 +206,7 @@ The following covers some of the most important configuration options for autosc
 
     Setting `IdleCount` to `0` has the runner only create machines on demand, as needed. After the runner is finished using the machine, the machine stands idle for the duration of `IdleTime`, waiting to be picked up by other jobs. Following the `IdleTime`, the machine is removed.
 
-### Testing Your GitLab Runner
+### Test Your GitLab Runner
 
 Even with the default configuration you get from the registration section above, you can already see your GitLab Runner in action. Follow the steps here to set up a simple project and pipeline for the runner to act on.
 
@@ -261,13 +254,13 @@ You now have a working runner, which is actively picking up CI/CD pipeline tasks
 
 One of the GitLab Runners' most compelling offerings is an autoscaling setup, with the runners spinning up machines as needed to run tasks.
 
-To prepare your GitLab Runner Manager for this, you need some additional setup. By the end of this section of the tutorial though your instance can have an autoscaling runner with Docker Machine.
+To prepare your GitLab Runner Manager for this, you need some additional setup. By the end of this section of the guide though your instance can have an autoscaling runner with Docker Machine.
 
 ### Install Docker and Docker Machine
 
 GitLab Runners use Docker Machine to create machines for autoscaling pipeline execution. Docker Machine allows runners to create machines only as needed, making for a more efficient setup. Each machine, in turn, runs the given build, test, and deployment commands from your GitLab CI/CD pipeline.
 
-Your Runner Manager thus needs to have both Docker and Docker Manager installed to support autoscaling. Follow these steps to get these installed and running. Additionally, Docker Machine needs to interface with Linode, so these instruction include installation of the Linode Docker Machine driver.
+Your Runner Manager thus needs to have both Docker and Docker Manager installed to support autoscaling. Follow these steps to get these installed and running. Additionally, Docker Machine needs to interface with Linode, so these instructions include installation of the Linode Docker Machine driver.
 
 {{< note >}}
 Docker Machine has been deprecated by Docker. However, GitLab maintains its own fork of the Docker Machine project to support GitLab Runners, until GitLab can mobilize another solution. The steps here install GitLab's fork of Docker Machine.
@@ -295,7 +288,7 @@ Docker Machine has been deprecated by Docker. However, GitLab maintains its own 
     docker-machine version 0.16.2-gitlab.11, build b09ad09f
     ```
 
-1. Finally, install the Linode Docker Machine driver to support Docker Machine's provisioning of Linode instances. Locate the latest release from the [releases page](https://github.com/linode/docker-machine-driver-linode/releases), then identify the package appropriate for your system.
+1. Finally, install the Linode Docker Machine driver to support the Docker Machine's provisioning of Linode instances. Locate the latest release from the [releases page](https://github.com/linode/docker-machine-driver-linode/releases), then identify the package appropriate for your system.
 
     This example uses version **0.1.9** and the **x86_64** package for Linux. The commands here download that package, unpack its contents, and move those contents onto the path. Just replace the URL and filename with those for the package you identify.
 
@@ -305,9 +298,9 @@ Docker Machine has been deprecated by Docker. However, GitLab maintains its own 
     sudo mv docker-machine-driver-linode /usr/local/bin/
     ```
 
-### Configuring the GitLab Runner for Autoscaling
+### Configure the GitLab Runner for Autoscaling
 
-Your GitLab Runner needs some changes to its configuration now to support the autoscaling. The runner needs to utilize Docker Machine as its executor and to indicate its machine provisioning settings.
+Your GitLab Runner needs some changes to its configuration now to support autoscaling. The runner needs to utilize Docker Machine as its executor and to indicate its machine provisioning settings.
 
 1. Open the `config.toml` file for your GitLab Runners, and locate the `[[runners]]` section corresponding to the runner you want to make autoscaling.
 
@@ -315,13 +308,13 @@ Your GitLab Runner needs some changes to its configuration now to support the au
 
     - Within the main `[[runners]]` section, change the `executor` value to `docker+machine`. This has the runner use Docker Machine to provision servers and execute tasks.
 
-    - Add a `[runners.docker]` subsection to the runner, and give the section the contents shown in the snippet below. This example uses the `alpine` image as default, but you can replace this as fits your needs.
+    - Add a `[runners.docker]` subsection to the runner, and give the section the contents shown in the snippet below. This example uses the `alpine` image as the default, but you can replace this as fits your needs.
 
     - Add a `[runners.machine]` subsection, and give it the contents shown in the snippet. These define how your runner handles provisioning machines.
 
         The configuration here keeps two idle machines at any time, which can be picked up by any jobs needing them.
 
-        The `linode-` options define how the Linode instances should be created. You need to replace `<LINODE_API_TOKEN>` with your actual Linode API token, which you can procure by following our guide on [getting started with the Linode API](/docs/products/tools/api/get-started/).
+        The `linode-` options define how the Linode instances should be created. You need to replace `<LINODE_API_TOKEN>` with your actual Linode API token, which you can procure by following our [Getting Started with Linode API](/docs/products/tools/api/get-started/) guide.
 
         Otherwise, replace the values as desired. You can learn more about the options, along with links to possible values, in the Linode Docker Machine driver [documentation](https://github.com/linode/docker-machine-driver-linode#options)
 
@@ -361,11 +354,11 @@ Your GitLab Runner needs some changes to its configuration now to support the au
     sudo gitlab-runner restart
     ```
 
-### Testing the Autoscaling GitLab Runner
+### Test the Autoscaling GitLab Runner
 
 Verifying your autoscaling setup works similarly to verifying your GitLab Runner setup overall. You can simply commit a change to one of the files in the example project created for the [Testing Your GitLab Runner](/docs/guides/using-gitlab-runners-with-linode-object-storage/#testing-your-gitlab-runner) section above.
 
-The CI/CD pipeline automatically creates new jobs for the runner to pick up. The runner has now been configured to provision machines to fulfill the jobs, but otherwise you can see the results just as before.
+The CI/CD pipeline automatically creates new jobs for the runner to pick up. The runner has now been configured to provision machines to fulfill the jobs, but otherwise, you can see the results just as before.
 
 Here, for instance, is what the results for the `build-job` might look like.
 
@@ -377,7 +370,7 @@ And here is what results for the `test-job-1` might look like.
 
 ## How to Enable Linode Object Storage on a GitLab Runner
 
-GitLab Runners additionally have the ability to cache resources. Caching resources allows your pipelines to share the same files across multiple jobs.
+GitLab Runners additionally can cache resources. Caching resources allows your pipelines to share the same files across multiple jobs.
 
 You can learn more about the role of caching in GitLab CI/CD pipelines through GitLab's [documentation](https://docs.gitlab.com/ee/ci/caching/)
 
@@ -399,39 +392,39 @@ test-job-1:
       - test-content.txt
 ```
 
-By default cached files are stored locally alongside your GitLab Runner Manager. But that option may not be the most efficient, especially as your GitLab pipelines become more complicated and your projects' storage needs expand.
+By default, cached files are stored locally alongside your GitLab Runner Manager. But that option may not be the most efficient, especially as your GitLab pipelines become more complicated and your projects' storage needs expand.
 
 To remedy this, you can adjust your GitLab Runner configuration to use an S3-compatible object storage solution, like [Linode Object Storage](/docs/products/storage/object-storage/get-started/).
 
 These next steps show you how you can integrate a Linode Object Storage bucket with your GitLab Runner to store cached resources from CI/CD jobs.
 
-1. Follow our [Object Storage - Get Started](/docs/products/storage/object-storage/get-started/) guide to enable Linode Object Storage, create a bucket, and get an access key.
+1. Follow our [Getting Started with Object Storage](/docs/products/storage/object-storage/get-started/) guide to enable Linode Object Storage, create a bucket, and get an access key.
 
-    This tutorial uses a bucket named `gitlab-example-bucket` and created in the Atlanta, GA region, designated `us-southeast-1`.
+    This guide uses a bucket named `gitlab-example-bucket` and was created in the Atlanta, GA region, designated `us-southeast-1`.
 
 1. Access your GitLab Runner instance, and open the GitLab Runner configuration file.
 
 1. Replace the placeholder `[runners.cache]` and `[runners.cache.s3]` sections with the lines shown below. These enable S3 storage and provide the credentials for the GitLab Runner to use the Linode Object Storage bucket you created above.
 
-    Replace `<LINODE_S3_ACCESS_KEY>` and `<LINODE_S3_SECRET_KEY>` with the access key and the secret access key, respectively, for your Linode Object Storage instance.
+    - Replace `<LINODE_S3_ACCESS_KEY>` and `<LINODE_S3_SECRET_KEY>` with the access key and the secret access key, respectively, for your Linode Object Storage instance.
 
-    Replace `us-southeast-1` in both the `ServerAddress` and `BucketLocation` fields with the actual designation for your bucket's location.
+    - Replace `us-southeast-1` in both the `ServerAddress` and `BucketLocation` fields with the actual designation for your bucket's location.
 
-    Replace `gitlab-example-bucket` with your bucket's actual name.
+    - Replace `gitlab-example-bucket` with your bucket's actual name.
 
-    ```file {title="/etc/gitlab-runner/config.toml" lang="toml"}
-    # [...]
-      [runners.cache]
-        Type = "s3"
-        Shared = true
-        [runners.cache.s3]
-          ServerAddress = "us-southeast-1.linodeobjects.com"
-          AccessKey = "<LINODE_S3_ACCESS_KEY>"
-          SecretKey = "<LINODE_S3_SECRET_KEY>"
-          BucketName = "gitlab-example-bucket"
-          BucketLocation = "us-southeast-1"
-    # [...]
-    ```
+      ```file {title="/etc/gitlab-runner/config.toml" lang="toml"}
+      # [...]
+        [runners.cache]
+          Type = "s3"
+          Shared = true
+          [runners.cache.s3]
+            ServerAddress = "us-southeast-1.linodeobjects.com"
+            AccessKey = "<LINODE_S3_ACCESS_KEY>"
+            SecretKey = "<LINODE_S3_SECRET_KEY>"
+            BucketName = "gitlab-example-bucket"
+            BucketLocation = "us-southeast-1"
+      # [...]
+      ```
 
 1. Restart the GitLab Runner for the changes to take effect.
 
@@ -441,7 +434,7 @@ These next steps show you how you can integrate a Linode Object Storage bucket w
 
 Now cached files are stored in Linode Object Storage for any GitLab CI/CD pipelines associated with this runner.
 
-Using the pipeline script above and the `example-project` developed earlier in this tutorial, you can see this in action. Just commit a change to one of the project's files. You can see the output on the page for `test-job-1`.
+Using the pipeline script above and the `example-project` developed earlier in this guide, you can see this in action. Just commit a change to one of the project's files. You can see the output on the page for `test-job-1`.
 
 [![Output from a GitLab CI/CD job after caching a file on S3](gitlab-admin-job-cache_small.png)](gitlab-admin-job-cache.png)
 
@@ -449,4 +442,4 @@ Using the pipeline script above and the `example-project` developed earlier in t
 
 With this, your GitLab instance has a GitLab Runner setup ready to handle your CI/CD workloads. Whether you just need a basic runner or you intend to use autoscaling and S3 cache storage, this guide has the steps you need.
 
-Be sure to refer to the GitLab resources provided throughout this tutorial, as well as the GitLab documentation linked at the end of this tutorial. GitLab has much more when it comes to working out the exact setup you need, with pipeline and runner features to fit your process. So keep learning and building on the infrastructure and configuration options this guide has walked you through.
+Be sure to refer to the GitLab resources provided throughout this guide, as well as the GitLab documentation linked at the end of this guide. GitLab has much more when it comes to working out the exact setup you need, with pipeline and runner features to fit your process. So keep learning and building on the infrastructure and configuration options this guide has walked you through.
