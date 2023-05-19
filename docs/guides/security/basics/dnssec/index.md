@@ -83,7 +83,7 @@ The chain of trust is a key concept in DNSSEC. It establishes that each DNSSEC-e
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.example.com`, replacing `example.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
 
-1.  Follow our [Introduction to DNS on Linux](/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
+1.  Follow our Introduction to DNS on Linux (/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -135,7 +135,7 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 example.com`
     ```
 
-1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/security/basics/dnssec#Zone-Maintenance) section.
+1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the Zone Maintenance(/docs/guides/security/basics/dnssec#Zone-Maintenance) section.
 
     ```command
     echo $ZSK > example.com.zsk
@@ -181,7 +181,7 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
 1.  Modify the `zonefile:` value in the `zone:` section to point to the signed zone file:
 
-    ```code
+    ```file {title="/etc/nsd/nsd.conf"}
     zone:
     ..
     zonefile: "zones/master/example.com.zone.signed"
@@ -195,6 +195,12 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     ```command
     nsd-control reconfig
     nsd-control reload example.com
+    ```
+
+    ```output
+    reconfig start, read /etc/nsd/nsd.conf
+    ok
+    ok
     ```
 
 1.  Exit as the root user:
@@ -230,24 +236,24 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     ```
 
     ```output
-    example.com.	3600	IN	DS	6274 13 2 044783c65c032a0ae25a1de626e341c483a89601c766e812a001bc512145fc81
+    example.com.	3600	IN	DS	6274  13 2 044783c65c032a0ae25a1de626e341c483a89601c766e812a001bc512145fc81
     example.com.	3600	IN	DS	55738 13 2 c4dae4d001f8c8f1b4f1adec890eba39010143752e6ce03b6567c85aa7fbde46
     ```
 
 1.  Your server does not return valid responses until these DS records are uploaded at your registrar. For each DS record, add this information at the registrar:
 
     -   **Key Tag**: A number that identifies the DS record. The tags in these examples are `6274` and `55738`.
-    -   **Digest Type**: The hashing function used to create a message digest. SHA-256 was used in the command above (identified as "2" at the registrar)
+    -   **Digest Type**: The hashing function used to create a message digest. SHA-256 was used in the command above (identified as **2** at the registrar)
     -   **Digest**: The message digest (the long string in each record) contained in the `.ds` file.
-    -   **Algorithm**: The method used to produce the message digest. ECDSAP256SHA256 (type 13) was used in the example above.
+    -   **Algorithm**: The method used to produce the message digest. `ECDSA/SHA-256` (identified as **13** at the registrar) was used in the example above.
 
-    Putting this all together, here are the DS fields entered at `dynadot.com`, a domain name registrar:
+    Putting this all together, here are the DS fields entered at domain registrar `dynadot.com`:
 
     ![An example domain name with DNSSEC records](example_configuration.jpg)
 
     Save both DS records at your registrar, and the DNSSEC chain of trust is complete.
 
-1.  Next, verify the configuration with a DNSSEC test site such as dnsviz.net.
+1.  Next, verify the configuration with a DNSSEC test site such as [dnsviz.net](https://dnsviz.net).
 
     In the following test diagram, each rectangle represents a different level in the chain of trust, with one apiece for the root, `.com`, and `linoderocks.com` domains. The green arrows along the path indicate a complete chain of trust extends from the root (`.`) on through to `linoderocks.com`.
 
