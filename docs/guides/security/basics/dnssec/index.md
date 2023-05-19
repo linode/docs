@@ -253,14 +253,13 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
     Save both DS records at your registrar, and the DNSSEC chain of trust is complete.
 
-1.  Next, verify the configuration with a DNSSEC test site such as [dnsviz.net](https://dnsviz.net).
+1.  Next, verify the configuration with a DNSSEC test site such as [dnsviz.net](https://dnsviz.net). The site analyzes a domain and produces a visual "map" of your DNSSEC authentication chain.
 
-    In the following test diagram, each rectangle represents a different level in the chain of trust, with one apiece for the root, `.com`, and `linoderocks.com` domains. The green arrows along the path indicate a complete chain of trust extends from the root (`.`) on through to `linoderocks.com`.
+    The following is an example [dnsviz.net](https://dnsviz.net) diagram for the domain `linoderocks.com`, which has been fully configured for a simple production environment. Each rectangle represents a different level in the chain of trust, with one each for the root (`.`), `.com`, and `linoderocks.com` domains. The green arrows along the path indicate that a complete chain of trust extends from the root (`.`) on through to `linoderocks.com`.
 
     ![A visualization of the chain of trust.](dnsviz_visualization_linoderocks.jpg)
 
-    If any zone is missing valid DS records for the zone under it, or has a corrupt or expired ZSK, the `dnsviz.net` website displays red arrows. If you see red arrows anywhere in your diagram, do not proceed until resolving those. DNSSEC does not work unless the chain of trust is complete.
-
+    If any zone is missing valid DS records for the zone under it, or has a corrupt or expired ZSK, the website displays red arrows. If you see red arrows anywhere in your diagram, do not proceed until resolving those. DNSSEC does not work unless the chain of trust is complete. It may also show warnings, which do not prevent DNSSEC from functioning, but highlight areas to improve.
 
 ## Zone Maintenance
 
@@ -280,7 +279,7 @@ DNSSEC requires extra steps when updating records and keys.
     sudo nsd-control reload example.com
     ```
 
-    Wait for your zone’s default time-to-live (TTL) timer (often, 1 hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches that don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
+    Wait for the zone’s default time-to-live (TTL) timer (typically one hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches that don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
 
 As for key rotation, zone signatures expire after 30 days by default. If not renewed, your zone becomes unreachable on the public Internet. Neither of the two most common DNS server distributions (Bind and NSD) include tools for automated key rollover. The open source [dnssec-reverb](https://github.com/northox/dnssec-reverb) project does automate key rollover, and works with both Bind and NSD.
 
@@ -288,4 +287,4 @@ Whether you use `dnssec-reverb`, some other tool, or write your own shell script
 
 ## Conclusion
 
-DNSSEC corrects a major shortcoming of the original DNS design: it authenticates that every server really is what it claims to be. It verifies that no one has tampered with zone data. It provides affirmative proof of the nonexistence of fraudulent hosts and subdomains. Given the critical role DNS plays in networking, DNSSEC not only protects your name servers but virtually all applications running across all your servers.
+DNSSEC corrects a major shortcoming of the original DNS design: it authenticates that every server really is what it claims to be. It verifies that no one has tampered with zone data. It provides affirmative proof of the nonexistence of fraudulent hosts and subdomains. Given the critical role DNS plays in networking, DNSSEC not only protects your name servers, but virtually all applications running across all your servers.
