@@ -392,7 +392,7 @@ As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows
 
         This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-on-windows).
 
-1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as, and `192.0.2.1` with your instance's IP address.
+1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as and `192.0.2.1` with your instance's IP address.
 
     -   **Linux**
 

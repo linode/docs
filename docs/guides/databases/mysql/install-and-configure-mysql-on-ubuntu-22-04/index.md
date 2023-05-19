@@ -66,7 +66,7 @@ The steps in this installation guide are for Ubuntu 22.04 as described at the be
     sudo apt install mysql-server
     ```
 
-    During the update process, you may be asked questions such as, if you want to use additional disk space. Also, a progress indicator is shown as before.
+    During the update process, you may be asked questions such as if you want to use additional disk space. Also, a progress indicator is shown as before.
 
 1. At this point, you can verify MySQL's running status with the following command.
 
