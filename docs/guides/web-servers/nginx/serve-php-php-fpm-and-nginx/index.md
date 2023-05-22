@@ -128,7 +128,7 @@ server {
     This only applicable if you allow users to upload or submit files to your site. Change the name of the directory from `uploads` to whatever suits your need.
 
     {{< file "/etc/nginx/conf.d/example.com.conf" nginx >}}
-  location ~ /uploads/ {
+  location ~ ^ /uploads/  {
     try_files $uri =404;
     }
     location ~* \.php$ {
