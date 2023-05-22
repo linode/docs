@@ -1,7 +1,7 @@
 ---
 slug: dns-primary-and-secondary-server-setup
 title: "How to Configure DNS Primary and Secondary Servers"
-description: 'Two to three sentences describing your guide.'
+description: 'Enhance website reliability and performance by creating a secondary name server, along with a hidden primary, using NSD on Ubuntu. ✓ Click here!'
 keywords: ['dns primary and secondary server setup','dns primary server','domain name service','linux dns server','dns secondary server','configuring dns','install dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
@@ -13,33 +13,27 @@ external_resources:
 - '[LinuxTeck: How to Install and configure Master /Slave DNS in Centos /RHEL 7.6](https://www.linuxteck.com/how-to-install-and-configure-master-slave-dns-in-centos-rhel-7-6/)'
 ---
 
-A single web server or a database going offline is a pain, but what if all your services became unreachable? That’s exactly what happens when Domain Name System (DNS) servers stop working.
+A single web server or a database going offline is a hassle, but what if all services became unreachable? That’s exactly what happens when Domain Name System (DNS) servers stop working.
 
-Because networked services depend on DNS, it’s critical to add one or more secondary name servers for redundancy. Hardening your DNS servers to protect against rogue updates and hiding your primary name server also helps ensure smooth DNS operation.
+Because networked services depend on DNS, it’s critical to add one or more secondary name servers for redundancy. Hardening DNS servers to protect against rogue updates and hiding the primary name server also helps ensure smooth DNS operation.
 
-The "An Introduction to DNS on Linux” guide explains how DNS works and how to build a primary name server. This guide walks you through configuration of a secondary name server for redundancy, the use of secret keys for authentication, and the use of a hidden primary name server for protection against attack.
+Our guide An Introduction to DNS on Linux(docs/networking/dns/introduction-to-dns-on-linux) explains how DNS works and how to build a primary name server. This guide configures a secondary name server for redundancy, adds secret keys for authentication, and a hidden primary name server for protection against attacks.
 
 ## Before You Begin
 
-1.  Follow our [Introduction to DNS on Linux](/docs/guides/dnssec) guide to set up a functional primary name server (`ns1.example.com`).
+1.  Follow our [Introduction to DNS on Linux](/docs/guides/dnssec) guide to set up a functional primary name server (`ns1`).
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide is for Ubuntu 22.04 LTS instances.
+1.  If you have not already done so, create a Linode account and compute instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. To follow along with this guide, give your server the hostname `ns2.example.com`, replacing `example.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your systems. Also set the timezone, configure your hostnames, and create limited user accounts. To follow along with this guide, give your servers the hostname `ns2` and `ns3`. Make them part of the `yourdomainhere.com` domain (e.g. `ns2.yourdomainhere.com` and `ns3.yourdomainhere.com`, replacing `yourdomainhere.com` with your actual domain name). Also be sure to configure the hosts files with your hostnames and external IP addresses.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
-{{< file "/etc/hosts" aconf >}}
-192.0.2.0/24      # Sample IP addresses
-198.51.100.0/24
-203.0.113.0/24
-{{< /file >}}
-
 ## Prepare the Primary DNS Server
 
-Before building the secondary name server, configure the primary name server to send zone updates to it, and only to it. To do this, configure a secret key that authenticates communications between primary and secondary name servers. The sample `nsd.conf` file includes a comment showing how to generate a random string for use as a key.
+Before building the secondary name server, configure the primary name server to send zone updates to it, and only it. To do this, configure a secret key that authenticates communications between primary and secondary name servers. The sample `nsd.conf` file includes a comment showing how to generate a random string for use as a key.
 
 1.  Run this command on your primary name server:
 
@@ -56,7 +50,7 @@ Before building the secondary name server, configure the primary name server to 
     32 bytes copied, 0.00053066 s, 60.3 kB/s
     ```
 
-    Copy and record the random string (`7Q7K...`).
+    Copy and record the random string (e.g. `7Q7KLOi44zuTjK/RavkFECLgglv6qkwN2y1GOdWFE/A=`).
 
 1.  Open the Name Server Daemon (NSD) configuration file `/etc/nsd/nsd.conf`:
 
@@ -77,11 +71,9 @@ Before building the secondary name server, configure the primary name server to 
 This is not an actual secret key. Never paste secret or private keys into any public posting.
     {{< /note >}}
 
-1.  Next, uncomment the `pattern:` section. A pattern is a macro that stores options for all zones. In this example, only one zone is being set up. However, in production, where an NSD server may handle dozens to thousands of zones, patterns can save much repetitive typing.
+1.  Next, uncomment the `pattern:` section. A pattern is a macro that stores options for all zones. In this example, only one zone is set up. However, in production, where an NSD server may handle dozens to thousands of zones, patterns can save a lot of repetitive typing.
 
-    Before defining a pattern, spin up another Linode as your secondary server. It can be the same size as your primary server. Note the IPv4 address of your secondary server so you can use it in the pattern definition.
-
-    Add these lines to create a pattern. This pattern tells this primary name server to notify a secondary name server of zone updates, and to respond to zone transfer requests from a specific nameserver. Both actions use your secret key.
+    Uncomment these lines to create a pattern, replacing `192.0.2.3` with the external IP address of `ns2`:
 
     ```file {title="/etc/nsd/nsd.conf"}
     pattern:
@@ -90,18 +82,20 @@ This is not an actual secret key. Never paste secret or private keys into any pu
     	    provide-xfr: 192.0.2.3 secretkey0
     ```
 
+    This pattern tells the primary name server to notify a secondary name server of zone updates, and to respond to zone transfer requests from a specific nameserver. Both actions use your secret key.
+
     If you have more secondary name servers, add them here with `notify` and `provide-xfr` statements for each.
 
 1.  Modify any `zone:` statements to use the pattern(s):
 
     ```file {title="/etc/nsd/nsd.conf"}
     zone:
-    	    name: "linoderocks.com"
-    	    zonefile: "zones/master/linoderocks.com.zone"
+    	    name: "yourdomainhere.com"
+    	    zonefile: "zones/master/yourdomainhere.com.zone"
     	    include-pattern: "secondary_outbound"
     ```
 
-    When done, save and close the file.
+    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to save and close the file.
 
 1.  Check the file's syntax with `nsd-checkconf`:
 
@@ -123,19 +117,19 @@ This guide assumes that the Ubuntu 22.04 LTS secondary name server has a hostnam
 
 The new server can be in the same data center as the primary, but it doesn’t have to be. In fact, having name servers in different geographic locations helps protect against disasters in any one area. The tradeoff may be increased latency for some lookups.
 
-1.  On this new server, open an ssh session and install NSD:
+1.  Open an SSH session on the new secondary name server (`ns2`) and install NSD:
 
-    ```command
+    ```command {title="ns2"}
     sudo apt install nsd
     ```
 
 1.  Configure the NSD control utility, `nsd-config`:
 
-    ```command
+    ```command {title="ns2"}
     sudo nsd-control-setup
     ```
 
-    You should see output like this:
+    The output should appear as follows:
 
     ```output
     setup in directory /etc/nsd
@@ -145,34 +139,34 @@ The new server can be in the same data center as the primary, but it doesn’t h
 
     If not, check `/var/log/syslog` for errors.
 
-1.  Copy `nsd.conf` to the secondary name server from the primary nameserver using the `scp` secure-copy utility, substituting your domain name for `linoderocks.com`:
+1.  Copy `nsd.conf` to the secondary name server from the primary nameserver using the `scp` secure-copy utility, substituting your domain name for `yourdomainhere.com`:
 
-    ```command
-    sudo scp root@ns1.linoderocks.com:/etc/nsd/nsd.conf /etc/nsd
+    ```command {title="ns2"}
+    sudo scp root@ns1.yourdomainhere.com:/etc/nsd/nsd.conf /etc/nsd
     ```
 
-1.  Next, note `ns2`’s IP addresses. You don’t need to use `sudo` here.
+1.  Gather `ns2`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
 
-    ```command
+    ```command {title="ns2"}
     ip a
     ```
 
 1.  Open `/etc/nsd/nsd.conf`:
 
-    ```command
+    ```command {title="ns2"}
     sudo nano /etc/nsd/nsd.conf
     ```
 
-1.  Modify the `ip-address` statements to use the secondary server’s addresses. For example, if your primary and secondary servers have IPv6 addresses, you should include the secondary server’s IPv6 address here:
+1.  Modify the `ip-address` statements in the `server:` section to use the secondary server’s (`ns2`) IP addresses, including IPv6 addresses if you’ve configured them:
 
     ```file{title="/etc/nsd/nsd.conf"}
     ip-address: 192.0.2.3
     ip-address: 2001:DB8::3
     ```
 
-    The rest of the `server:`, `remote-control:`, and `key:` sections don’t require any additional changes. However, you do need to modify the `pattern:` and `zone:` sections.
+    The rest of the `server:`, `remote-control:`, and `key:` sections don’t require any additional changes, but the `pattern:` and `zone:` sections do.
 
-1.  All three lines in the `pattern:` section need to be changed. First, change the pattern name using something specific to the secondary name server. Second, change the `notify` statement to `allow-notify`, followed by the primary name server’s IP address. Finally, change `provide-xfr` to `request-xfr` and also add the AXFR transfer type. [AXFR](https://www.rfc-editor.org/rfc/rfc5936) is the DNS zone transfer protocol. Here is the updated pattern section:
+1.  All three lines in the `pattern:` section need to be changed. First, change the pattern `name` to something specific to the secondary name server. Second, change the `notify` statement to `allow-notify`, followed by the primary name server’s (`ns1`) IP address. Finally, change `provide-xfr` to `request-xfr` and add the AXFR transfer type. [AXFR](https://www.rfc-editor.org/rfc/rfc5936) is the DNS zone transfer protocol. Here is the updated pattern section:
 
     ```file{title="/etc/nsd/nsd.conf"}
     pattern:
@@ -181,12 +175,12 @@ The new server can be in the same data center as the primary, but it doesn’t h
     	    request-xfr: AXFR 96.126.102.178 secretkey0
     ```
 
-1.  In the `zone:` section, point to a zone file in the secondary directory, and use the new pattern name you defined for this secondary name server. Here and in all subsequent examples, substitute your domain name for `linoderocks.com`.
+1.  In the `zone:` section, point to a zone file in the `secondary` directory. Use the new pattern name defined above for the secondary name server for `include-pattern`. As usual, substitute your own domain name for `yourdomainhere.com`.
 
     ```file{title="/etc/nsd/nsd.conf"}
     zone:
-    	    name: "linoderocks.com"
-    	    zonefile: "zones/secondary/linoderocks.com.zone"
+    	    name: "yourdomainhere.com"
+    	    zonefile: "zones/secondary/yourdomainhere.com.zone"
     	    include-pattern: "secondary_inbound"
     ```
 
@@ -194,26 +188,26 @@ The new server can be in the same data center as the primary, but it doesn’t h
 
 1.  Check the configuration:
 
-    ```command
+    ```command {title="ns2"}
     nsd-checkconf /etc/nsd/nsd.conf
     ```
 
-1.  If that succeeds, restart NSD:
+1.  If no errors are returned, restart NSD:
 
-    ```command
+    ```command {title="ns2"}
     sudo systemctl restart nsd
     ```
 
 ## Test Both Name Servers
 
-You can verify both name servers work as intended with two tests. First, run queries against both name servers to verify both respond with DNS records. Second, add a new record on the primary name server and verify that it propagates to the secondary name server.
+Two tests can verify if both name servers work as intended. First, run queries against both name servers to verify that both respond with DNS records. Second, add a new record on the primary name server (`ns1`) and check if it propagates to the secondary name server (`ns2`).
 
-For both tests, use the dig utility, which comes included in the Linode distribution of Ubuntu 22 LTS. Since you don’t need the fairly verbose output dig produces by default, use the +short argument in all these commands. Also, you can query a specific name server by prepending the @ character to any hostname.
+For both tests, use the `dig` utility, which comes included in the Linode distribution of Ubuntu 22.04 LTS. The fairly verbose output that`dig` produces by default is not needed here, so use the `+short` argument in all these commands. Also, query a specific name server by prepending the `@` character to any hostname.
 
 1.  Here is a sample query against the primary name server:
 
-    ```command
-    dig john.linoderocks.com +short @ns1.linoderocks.com
+    ```command {title="ns2"}
+    dig john.yourdomainhere.com +short @ns1.yourdomainhere.com
     ```
 
     ```output
@@ -222,31 +216,31 @@ For both tests, use the dig utility, which comes included in the Linode distribu
 
 1.  Now run the same test against the secondary name server:
 
-    ```command
-    dig john.linoderocks.com +short @ns2.linoderocks.com
+    ```command {title="ns1"}
+    dig john.yourdomainhere.com +short @ns2.yourdomainhere.com
     ```
 
     ```output
     192.0.2.10
     ```
 
-    Congratulations! You have a working primary and secondary name server. Next, verify transfers work between the primary and secondary name servers by adding a new resource record on the primary name server.
+    Congratulations! The primary and secondary name servers are now working as intended. Next, verify transfers work between the primary and secondary name servers by adding a new resource record on the primary name server.
 
-1.  On the primary name server, open the zone file for `linoderocks.com` (`/etc/nsd/zones/master/linoderocks.com.zone`):
+1.  On the primary name server, open the zone file for `yourdomainhere.com` (`/etc/nsd/zones/master/yourdomainhere.com.zone`):
 
-    ```command
-    sudo nano /etc/nsd/zones/master/linoderocks.com.zone
+    ```command {title="ns1"}
+    sudo nano /etc/nsd/zones/master/yourdomainhere.com.zone
     ```
 
-1.  Increment the zone file’s serial number. This is very important as NSD does not load changes to your zone unless the zone file’s serial number increments. In this example, simply increment the serial number’s final digit by 1:
+1.  Increment the zone file’s serial number. This is very important as NSD does not load changes to the zone unless the zone file’s serial number increments. In this example, simply increment the serial number’s final digit by 1:
 
-    ```file{title="/etc/nsd/zones/master/linoderocks.com.zone"}
+    ```file{title="/etc/nsd/zones/master/yourdomainhere.com.zone"}
     Old: 2023030800
     New: 2023030801
 
 1.  Then add an A record for a new host:
 
-    ```file{title="/etc/nsd/zones/master/linoderocks.com.zone"}
+    ```file{title="/etc/nsd/zones/master/yourdomainhere.com.zone"}
     brian	        A       96.126.102.183
     ```
 
@@ -254,49 +248,49 @@ For both tests, use the dig utility, which comes included in the Linode distribu
 
 1.  Reload the zone:
 
-    ```command
-    sudo nsd-control reload linoderocks.com
+    ```command {title="ns1"}
+    sudo nsd-control reload yourdomainhere.com
     ```
 
 1.  Run a `dig` query on the secondary name server for the new hostname:
 
-    ```command
-    dig -t a brian.linoderocks.com +short @ns2.linoderocks.com
+    ```command {title="ns2"}
+    dig -t a brian.yourdomainhere.com +short @ns2.yourdomainhere.com
     ```
 
     ```output
     192.0.2.15
     ```
 
-    This validates automatic zone transfers. Even if you have 100 secondary name servers, you would only need to make changes on the primary name server, and you’d still see output like this on every secondary name server.
+    This validates automatic zone transfers. Even if there are 100 secondary name servers, changes would only need to be made on the primary, and every secondary would still produce this output.
 
 ## Hidden Primary Name Server Configuration
 
-A hidden primary name server works the same way as your current primary when it comes to zone transfers: All secondary name servers still get zone updates from it. The only difference is that you never list a hidden primary in the public DNS. It’s neither authoritative for any zone, nor do you delegate any authority to it at your registrar. Instead, all the “authoritative” name servers you list, both in registrar delegations and in each zone’s NS records, are actually secondary name servers that receive updates from the hidden primary.
+A hidden primary name server works the same way as the current primary when it comes to zone transfers. All secondary name servers still get zone updates from it. The only difference is that a hidden primary is never listed in the public DNS. It’s neither authoritative for any zone, nor do you delegate any authority to it at your registrar. Instead, all the “authoritative” name servers you list, both in registrar delegations and in each zone’s NS records, are actually secondary name servers that receive updates from the hidden primary.
 
 Because attackers don’t know the hidden primary exists, they can’t try to compromise your configuration or zone files. Of course, you still need to update Linux and protect access to the hidden primary, as with any system.
 
-Make use of the two name servers you have by converting them to secondaries, and spinning up a third Linode to serve as the new hidden primary, like this:
+Make use of the existing `ns1` and `ns2` by converting them to secondaries, and configuring `ns3` to serve as the new hidden primary, like so:
 
--   ns1.linoderocks.com (secondary)
--   ns2.linoderocks.com (secondary)
--   ns3.linoderocks.com (hidden primary)
+-   `ns1.yourdomainhere.com` (secondary)
+-   `ns2.yourdomainhere.com` (secondary)
+-   `ns3.yourdomainhere.com` (hidden primary)
 
-There is no requirement that the hidden primary reside in the same data center as either of the secondaries. However, if one or more name servers are in the same data center, they can use private addresses (e.g. `192.168.173.25`), which aren’t routable on the public Internet, for zone transfers.
+There is no requirement that the hidden primary reside in the same data center as either of the secondaries. However, if one or more name servers are in the same data center, they can use private addresses (e.g. `192.168.173.25`) for zone transfers. These addresses aren’t routable on the public Internet.
 
-1.  Create a new `ns3.linoderocks.com` Linode, then open an ssh session and install NSD:
+1.  Open an SSH session to the `ns3` instance and install NSD:
 
-    ```command
+    ```command {title="ns3"}
     sudo apt install nsd
     ```
 
 1.  Configure the NSD control utility, `nsd-config`:
 
-    ```command
+    ```command {title="ns3"}
     sudo nsd-control-setup
     ```
 
-    You should see output like this:
+    The output should appear as follows:
 
     ```output
     setup in directory /etc/nsd
@@ -306,42 +300,59 @@ There is no requirement that the hidden primary reside in the same data center a
 
     If not, check `/var/log/syslog` for errors.
 
-1.  Copy `nsd.conf` from `ns1.linoderocks.com` (the original primary name server) using the `scp` secure-copy utility. Also copy the entire zones directory structure:
+1.  Copy `nsd.conf` from `ns1` (the original primary name server) using the `scp` secure-copy utility, and remember to replace ``yourdomainhere.com` with your actual domain name:
 
-    ```command
-    sudo scp root@ns1.linoderocks.com:/etc/nsd/nsd.conf /etc/nsd
-    sudo scp -r root@ns1.linoderocks.com:/etc/nsd/zones /etc/nsd
+    ```command {title="ns3"}
+    sudo scp root@ns1.yourdomainhere.com:/etc/nsd/nsd.conf /etc/nsd
     ```
 
-1.  Note `ns3`’s IP addresses.
+1.  Also copy the entire zones directory structure:
 
-    ```command
+    ```command {title="ns3"}
+    sudo scp -r root@ns1.yourdomainhere.com:/etc/nsd/zones /etc/nsd
+    ```
+
+1.  Gather `ns3`'s external IPv4 and IPv6 addresses. Follow this guide to [Find Your Linode's IP Address](/docs/guides/find-your-linodes-ip-address) or use the following command:
+
+    ```command {title="ns3"}
     ip a
     ```
 
-1.  In `/etc/nsd/nsd.conf`, replace the existing ip-address statements with `ns3`'s addresses, including IPv6 addresses if you’ve configured them:
+1.  Open `/etc/nsd/nsd.conf`:
+
+    ```command {title="ns3"}
+    sudo nano /etc/nsd/nsd.conf
+    ```
+
+1.  Replace the existing `ip-address` statements in the `servers:` section with `ns3`'s addresses, including IPv6 addresses if you’ve configured them:
 
     ```file{title="/etc/nsd/nsd.conf"}
     ip-address: 192.0.2.4
     ip-address: 2001:DB8::4
     ```
 
-1.  Next, update the pattern statement to point to both existing servers as secondaries:
+1.  Next, update the statements in the `pattern:` section to point to both existing servers (`ns1` and `ns2`) as secondaries:
 
     ```file{title="/etc/nsd/nsd.conf"}
     pattern:
             name: "secondary_outbound"
-            # transfers to ns1.linoderocks.com
-       notify: 192.0.2.2 secretkey0
+            # transfers to ns1.yourdomainhere.com
+            notify: 192.0.2.2 secretkey0
             provide-xfr: 192.0.2.2 secretkey0
-            # transfers to ns2.linoderocks.com
+            # transfers to ns2.yourdomainhere.com
             notify: 192.0.2.3 secretkey0
             provide-xfr: 192.0.2.3 secretkey0
     ```
 
-    When done, save and close the file, but don’t restart NSD just yet. First, you need to configure both existing name servers to pull updates from `ns3`, and also change `ns1` from a primary to a secondary name server.
+    When done, save and close the file, but don’t restart NSD just yet. First, configure both existing name servers to pull updates from `ns3`, and change `ns1` from a primary to a secondary name server.
 
-1.  On both `ns1` and `ns2`, edit `/etc/nsd/nsd.conf` so the pattern and zone statements indicate these are now secondary servers, and that they are to get their updates from `ns3`:
+1.  Open `/etc/nsd/nsd.conf` on both `ns1` and `ns2`:
+
+    ```command {title="ns1 and ns2"}
+    sudo nano /etc/nsd/nsd.conf
+    ```
+
+1.  Edit the files so the statements in the `pattern:` and `zone:` sections indicate that these are now secondary servers, and are to get their updates from `ns3`:
 
     ```file{title="/etc/nsd/nsd.conf"}
     pattern:
@@ -350,8 +361,8 @@ There is no requirement that the hidden primary reside in the same data center a
             request-xfr: AXFR 192.0.2.3 secretkey0
 
     zone:
-            name: "linoderocks.com"
-            zonefile: "zones/secondary/linoderocks.com.zone"
+            name: "yourdomainhere.com"
+            zonefile: "zones/secondary/yourdomainhere.com.zone"
             include-pattern: "secondary_inbound"
     ```
 
@@ -359,14 +370,14 @@ There is no requirement that the hidden primary reside in the same data center a
 
 1.  Restart NSD on all three name servers:
 
-    ```command
+    ```command {title="ns1, ns2, and ns3"}
     sudo systemctl restart nsd
     ```
 
-From now on, any changes you make on the hidden primary ()`ns3`) propagate to the secondary name servers (`ns1` and `ns2`). As before, you can verify this by adding a new resource record to the `linoderocks.com` zone file on `ns3`. After reloading the zone, you should be able to query either secondary name server and see the new record.
+From now on, any changes made on the hidden primary (`ns3`) propagate to the secondary name servers (`ns1` and `ns2`). As before, you verify this by adding a new resource record to the `yourdomainhere.com` zone file on `ns3`. After reloading the zone, query either secondary name server to see the new record.
 
-You don’t need to make any changes at your domain registrar. To anyone on the public Internet, the now-secondary name servers at `ns1` and `ns2` are still authoritative for `linoderocks.com`.
+You don’t need to make any changes at your domain registrar. To anyone on the public Internet, the now-secondary name servers at `ns1` and `ns2` are still authoritative for `yourdomainhere.com`.
 
 ## Conclusion
 
-Redundancy is important for any networked service, but none more so than the DNS. Given the dependency of virtually all other services on a functioning DNS infrastructure, it’s important to ensure the loss of any one name server doesn’t affect availability. And given the critical role of the primary name server, security measures such as secret keys and a hidden-primary design maximize uptime not only for your DNS servers but also for all the services that depend on it.
+Redundancy is important for any networked service, but none more so than DNS. Given the dependency of virtually all other services on a functioning DNS infrastructure, it’s important to ensure the loss of any one name server doesn’t affect availability. And given the critical role of the primary name server, security measures such as secret keys and a hidden primary can maximize uptime, not only for your DNS servers, but for all the services that depend on it.
