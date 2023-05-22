@@ -21,7 +21,7 @@ Our guide An Introduction to DNS on Linux(docs/networking/dns/introduction-to-dn
 
 ## Before You Begin
 
-1.  Follow our [Introduction to DNS on Linux](/docs/guides/dnssec) guide to set up a functional primary name server (`ns1`).
+1.  Follow our Introduction to DNS on Linux(/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
 
 1.  If you have not already done so, create a Linode account and compute instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 
@@ -77,9 +77,9 @@ This is not an actual secret key. Never paste secret or private keys into any pu
 
     ```file {title="/etc/nsd/nsd.conf"}
     pattern:
-    	    name: "secondary_outbound"
-    	    notify: 192.0.2.3 secretkey0
-    	    provide-xfr: 192.0.2.3 secretkey0
+            name: "secondary_outbound"
+            notify: 192.0.2.3 secretkey0
+            provide-xfr: 192.0.2.3 secretkey0
     ```
 
     This pattern tells the primary name server to notify a secondary name server of zone updates, and to respond to zone transfer requests from a specific nameserver. Both actions use your secret key.
@@ -90,9 +90,9 @@ This is not an actual secret key. Never paste secret or private keys into any pu
 
     ```file {title="/etc/nsd/nsd.conf"}
     zone:
-    	    name: "yourdomainhere.com"
-    	    zonefile: "zones/master/yourdomainhere.com.zone"
-    	    include-pattern: "secondary_outbound"
+            name: "yourdomainhere.com"
+            zonefile: "zones/master/yourdomainhere.com.zone"
+            include-pattern: "secondary_outbound"
     ```
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to save and close the file.
@@ -170,18 +170,18 @@ The new server can be in the same data center as the primary, but it doesn’t h
 
     ```file{title="/etc/nsd/nsd.conf"}
     pattern:
-    	    name: "secondary_inbound"
-    	    allow-notify: 96.126.102.178 secretkey0
-    	    request-xfr: AXFR 96.126.102.178 secretkey0
+            name: "secondary_inbound"
+            allow-notify: 96.126.102.178 secretkey0
+            request-xfr: AXFR 96.126.102.178 secretkey0
     ```
 
 1.  In the `zone:` section, point to a zone file in the `secondary` directory. Use the new pattern name defined above for the secondary name server for `include-pattern`. As usual, substitute your own domain name for `yourdomainhere.com`.
 
     ```file{title="/etc/nsd/nsd.conf"}
     zone:
-    	    name: "yourdomainhere.com"
-    	    zonefile: "zones/secondary/yourdomainhere.com.zone"
-    	    include-pattern: "secondary_inbound"
+            name: "yourdomainhere.com"
+            zonefile: "zones/secondary/yourdomainhere.com.zone"
+            include-pattern: "secondary_inbound"
     ```
 
     When complete, save and close the file.
