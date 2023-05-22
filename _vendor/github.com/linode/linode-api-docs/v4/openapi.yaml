@@ -7807,7 +7807,11 @@ paths:
                       slaac:
                         $ref: '#/components/schemas/IPAddressV6Slaac'
                       global:
-                        $ref: '#/components/schemas/IPv6Range'
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/IPv6Range'
+                        description: |
+                          A list of IPv6 range objects assigned to this Linode.
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
