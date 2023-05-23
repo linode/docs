@@ -1,7 +1,6 @@
 ---
 description: "Use lifecycle policies to manage deleting objects in Linode Object Storage."
 keywords: ['object','storage','lifecycle','policy','policies','delete','bucket','version','multipart']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-18
 modified: 2022-03-11
 modified_by:

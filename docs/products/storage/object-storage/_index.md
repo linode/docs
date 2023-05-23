@@ -1,5 +1,6 @@
 ---
 title: Object Storage
+title_meta: "Object Storage Product Documentation"
 description: "Linode Object Storage is S3-compatible, doesn't require a Linode, and allows you to host static sites."
 tab_group_main:
     is_root: true
@@ -66,7 +67,7 @@ To increase these limits beyond their default values, [contact the Support team]
 - Metered outbound network transfer, including traffic to other Linode services within the same data center (over both public IPv4 and IPv6 addresses)
 - Includes 1 TB (prorated) of transfer allowance per month
 
-See the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide for additional details, including costs for network transfer overages.
+See the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide for additional details, including costs for network transfer overages.
 
 ### Additional Limits and Specifications
 

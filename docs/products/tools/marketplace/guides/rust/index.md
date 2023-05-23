@@ -1,7 +1,6 @@
 ---
 description: "This guide provides you with instructions for installing Rust, a multiplayer game where you play as a survivor, on a Linode using the One-Click Marketplace App."
 keywords: ['rust','marketplace', 'server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2022-03-08
 modified_by:

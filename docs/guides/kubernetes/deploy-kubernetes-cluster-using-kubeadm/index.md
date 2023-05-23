@@ -209,7 +209,10 @@ Although previously an unnecessary step when using Docker as a container runtime
 1.  Install the `go` programming language to support later commands performed during the installation process:
 
     ```command
-    sudo apt install golang-go
+    sudo wget https://storage.googleapis.com/golang/getgo/installer_linux
+    sudo chmod +x ./installer_linux
+    sudo ./installer_linux
+    source ~/.bash_profile
     ```
 
 1.  Clone the `cri-dockerd` repository and change your working directory into the installation path:
@@ -223,7 +226,7 @@ Although previously an unnecessary step when using Docker as a container runtime
 
     ```command
     sudo mkdir bin
-    cd src && go get && go build -o ../bin/cri-dockerd
+    go build -o ../bin/cri-dockerd
     ```
 
 1.  Configure `cri-dockerd` to work with systemd:
@@ -231,7 +234,7 @@ Although previously an unnecessary step when using Docker as a container runtime
     ```command
     cd .. && mkdir -p /usr/local/bin
     install -o root -g root -m 0755 bin/cri-dockerd /usr/local/bin/cri-dockerd
-    cp -a packaging/systemd/* /etc/systemd/system
+    cp -a /cri-dockerd/packaging/systemd/* /etc/systemd/system
     sed -i -e 's,/usr/bin/cri-dockerd,/usr/local/bin/cri-dockerd,' /etc/systemd/system/cri-docker.service
     ```
 

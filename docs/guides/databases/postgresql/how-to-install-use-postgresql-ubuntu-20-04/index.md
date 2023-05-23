@@ -13,6 +13,7 @@ external_resources:
 - '[PostgreSQL](https://www.postgresql.org/)'
 relations:
     platform:
+        key: use-postrgesql-database
         keywords:
            - distribution: Ubuntu 20.04
 tags: ["ubuntu", "postgresql"]

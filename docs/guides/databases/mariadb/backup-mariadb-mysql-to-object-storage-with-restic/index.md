@@ -15,6 +15,7 @@ external_resources:
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
 authors: ["Andy Heathershaw"]
+tags: ["saas"]
 ---
 
 ## Introduction

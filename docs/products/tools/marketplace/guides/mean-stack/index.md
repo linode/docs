@@ -2,7 +2,6 @@
 description: "Learn how to easily deploy MEAN (MongoDB, Express, Angular, Node.js) using Linode's Marketplace Apps."
 keywords: ['mongodb','mean','angular','express', 'web app', 'node']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
 modified: 2022-03-08
 modified_by:

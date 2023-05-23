@@ -135,10 +135,6 @@
   var mount3 = function() {
     fetch("https://www.linode.com/wp-json/linode/v1/header-featured").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
   };
-  window.siteFeatureClick = function(category, action, label) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ "event": "gaEvent", "eventCategory": category, "eventAction": action, "eventLabel": label });
-  };
   var updateDOM2 = function(data) {
     data.forEach((item) => {
       let $slot = document.querySelector('.c-site-header [data-featured="' + item.slot + '"]');
@@ -173,7 +169,6 @@
     $a.id = `c-featured--${data.slot}`;
     $a.href = data.link_url;
     $a.setAttribute("style", data.wrap_styles);
-    $a.setAttribute("onclick", `siteFeatureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
     $a.setAttribute("data-analytics-event", `${data.ga_category} | ${data.ga_action} | ${data.ga_label}`);
     $text.classList.add("c-featured__text");
     $headline.classList.add("c-featured__headline");

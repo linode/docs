@@ -1,6 +1,5 @@
 ---
 description: "Learn how to create domain zones to manage your DNS records using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-10-28
 modified_by:
   name: Linode

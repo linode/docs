@@ -13,6 +13,7 @@ external_resources:
 - '[Terraform - HashiCorp Learn: Provision Infrastructure with Packer](https://learn.hashicorp.com/tutorials/terraform/packer)'
 - '[Packer - Use Cases: Integrate with Terraform](https://www.packer.io/use-cases/integrate-with-terraform)'
 authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Both the Packer and Terraform tools by HashiCorp stand out for remarkable infrastructure-automating. Despite some overlap, the tools have distinct and complimentary features. This makes them an effective pair, with Packer used to create images that Terraform then deploys as a complete infrastructure.

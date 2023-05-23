@@ -18,6 +18,7 @@ external_resources:
 tags: ["database"]
 aliases: ['/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/']
 authors: ["Florent Houbart"]
+tags: ["saas"]
 ---
 
 

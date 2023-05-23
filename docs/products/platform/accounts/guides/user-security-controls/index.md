@@ -2,7 +2,6 @@
 description: "Learn how to protect your Linode account using security measures and controls built-in to the Linode platform."
 keywords: ["two-factor authentication", "password", "security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/','/guides/linode-manager-security-controls/','/guides/user-security-controls/']
 published: 2022-06-24
 modified: 2022-11-21

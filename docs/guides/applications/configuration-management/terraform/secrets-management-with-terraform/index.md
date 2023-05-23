@@ -19,6 +19,7 @@ external_resources:
 - '[GitHub Discussion - Storing Sensitive Values in State Files](https://github.com/hashicorp/terraform/issues/516)'
 aliases: ['/applications/configuration-management/terraform/secrets-management-with-terraform/','/applications/configuration-management/secrets-management-with-terraform/']
 authors: ["Linode"]
+tags: ["saas"]
 ---
 
 Terraform is an Infrastructure as Code (IaC) tool that allows you to write declarative code to manage your infrastructure. In order to implement IaC with Terraform it is necessary to supply secrets, such as server passwords and API tokens, in the code. This guide discusses methods for securing those secrets within Terraform.

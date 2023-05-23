@@ -13,8 +13,8 @@ external_resources:
 - '[Apache Kafka](https://kafka.apache.org/)'
 - '[Apache Kafka Downloads](https://kafka.apache.org/downloads)'
 - '[Apache Kafka Authentication page](https://www.apache.org/info/verification.html)'
-
 authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 [*Apache Kafka*](https://kafka.apache.org/), often known simply as Kafka, is a popular open-source platform for stream management and processing. Kafka is structured around the concept of an event. External agents, independently and asynchronously, send and receive event notifications to and from Kafka. Kafka accepts a continuous stream of events from multiple clients, stores them, and potentially forwards them to a second set of clients for further processing. It is flexible, robust, reliable, self-contained, and offers low latency along with high throughput. LinkedIn originally developed Kafka, but the Apache Software Foundation offers the current open-source iteration.

@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Custom Images"
 description: "Learn how to create and manage Linode Images and find guides on other related topics."
 tab_group_main:
     weight: 30

@@ -32,6 +32,7 @@ ajp
 Akamai
 Akaunting
 aker
+akr
 alef
 alertmanager
 alex
@@ -66,6 +67,7 @@ apache2
 api
 apis
 apiserver
+apfs
 apk
 apparmor
 appimage
@@ -88,6 +90,7 @@ askbot
 aske
 Astra
 async
+astro
 asynchrony
 atera
 atlanta
@@ -101,6 +104,7 @@ authn
 authomator
 authsocket
 authy
+autoclear
 autocompletion
 autoconfiguration
 autoconfigure
@@ -116,6 +120,7 @@ automator
 automattic
 automations
 automount
+automounting
 automox
 autorelabel
 autorun
@@ -139,6 +144,7 @@ backdooring
 backdoors
 backend
 backends
+backport
 backported
 backporting
 backports
@@ -167,8 +173,10 @@ bernd
 berners
 bgpd
 bialek
+Bigtable
 bin_t
 bing
+binhex
 binlog
 bioinformaticists
 biomes
@@ -202,6 +210,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
@@ -240,6 +249,8 @@ caffe
 cakey
 calc
 campione
+canonicalize
+canonicalization
 captcha
 carootcert
 ccm
@@ -286,6 +297,7 @@ chromecast
 chroot
 chrooting
 chrooted
+CIDRs
 citad
 cjones
 clamav
@@ -321,6 +333,7 @@ Codeone
 codepen
 colab
 collabnet
+Collabora
 colormaps
 com2sec
 commoditization
@@ -348,6 +361,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
@@ -360,6 +374,7 @@ covid
 cpanel
 cpanminus
 cpu
+CPython
 cqlsh
 cqlshrc
 craftbukkit
@@ -419,14 +434,18 @@ dao
 databags
 datacenter
 datadir
-Datadog
+datadog
 dataflow
 datagram
+dataplane
+dataplanes
+datalog
 dataset
 datasets
 datasource
 datastax
 datastore
+datastores
 datetime
 datetimeformat
 dav
@@ -458,6 +477,7 @@ Deno
 denormalized
 deprovision
 deprovisioning
+deque
 descolada
 descr
 deserialize
@@ -469,6 +489,8 @@ desperados
 destructured
 detectify
 dev
+devfs
+devpts
 devel
 devops
 devtmpfs
@@ -479,6 +501,7 @@ dhparams
 dia
 dialogs
 diavel
+dicts
 diffie
 digicert
 digium
@@ -551,6 +574,7 @@ ebtables
 ebuild
 ecommerce
 ecute
+ecto
 edmonds
 edu
 efi
@@ -616,9 +640,11 @@ failback
 failover
 failregex
 failregexs
+failsafe
 failsafes
 falko
 fastcgi
+Fastify
 fastmail
 fastopen
 fauxhai
@@ -656,6 +682,7 @@ filesystem
 filesystems
 filezilla
 filimonov
+filemask
 findtime
 finnix
 firefart
@@ -684,6 +711,8 @@ frakti
 framesets
 freedns
 freeipa
+Freemarker
+freenom
 fremont
 freshclam
 friendica
@@ -698,6 +727,7 @@ fstab
 ftp_client
 fullchain
 func
+fuser
 fzf
 galera
 gamemode
@@ -776,6 +806,7 @@ gpasswd
 gpc
 gpg
 gping
+GPUs
 gradle
 grafana
 graphql
@@ -809,11 +840,14 @@ hackage
 hadoop
 halls3
 Haltdos
+Hanami
+Hansson
 hapis
 haproxy
 hardcoded
 hardcopy
 hardlimit
+hashable
 hashmark
 hashicorp
 hasn
@@ -826,6 +860,7 @@ heartbleed
 hebb
 hebbian
 hebern
+Heinemeier
 heredoc
 heroku
 hexo
@@ -852,6 +887,7 @@ hotlinked
 hotlinking
 hotspot
 hotspots
+Hotwire
 howto
 howtoforge
 howtogeek
@@ -871,6 +907,7 @@ https
 Hubzilla
 huginn
 Hugo
+hugo
 hulu
 husch
 hvc0
@@ -880,6 +917,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -940,6 +978,7 @@ inittab
 injectable
 inkscape
 inode
+inodes
 inotify
 inrupt
 insmod
@@ -953,6 +992,7 @@ intra-application
 introducer
 introducers
 Intune
+Instructure
 invicti
 io
 iodef
@@ -966,6 +1006,7 @@ ipaserver
 ipchains
 ipconfig
 iperf
+ips
 ipsec
 ipset
 ipsets
@@ -989,6 +1030,7 @@ isps
 issuewild
 istioctl
 iterable
+iterables
 itk
 ivanti
 Janca
@@ -1021,6 +1063,7 @@ jpg
 jpetazzo
 jq
 jre
+JRuby
 js
 jshell
 json
@@ -1101,6 +1144,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+Laminas
 LANs
 laravel
 largebiomes
@@ -1212,6 +1256,7 @@ lzma
 lzopio
 macos
 magento
+Mailchimp
 maildir
 maildirs
 maildrop
@@ -1242,7 +1287,10 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matsumoto
 Matthes
+Matz
+Mavan
 mawk
 maxconn
 maxdepth
@@ -1313,6 +1361,7 @@ mixin
 mixins
 mkdir
 mkpasswd
+mktemp
 mktime
 mkv
 mnesia
@@ -1342,8 +1391,10 @@ motd
 mountpoint
 mouseover
 mov
+movr
 mpapis
 mpm
+MRuby
 msfvenom
 msg
 msgid
@@ -1442,6 +1493,7 @@ newtag
 nextcloud
 nexthop
 nfs
+nfsd
 nftables
 ng
 nginx
@@ -1540,6 +1592,7 @@ outputter
 outputters
 overcommit
 overengineer
+overmounting
 overfitted
 overfitting
 overwatch
@@ -1578,6 +1631,7 @@ passwdfile
 passwordless
 patroni
 paypal
+PBCs
 pbr
 pem
 pentest
@@ -1587,6 +1641,8 @@ perceptron
 percona
 performant
 perl
+perlre
+perldoc
 permalink
 permalinks
 Petazzoni
@@ -1595,6 +1651,7 @@ pg_dump
 pg_dumpall
 pg_restore
 pgpass
+Phalcon
 pharmer
 pharo
 phonebook
@@ -1608,12 +1665,16 @@ phusion
 pid
 pidfile
 pingable
+pipefs
 pinterest
 pipfile
 pipenv
 pipelined
 pipelining
+pixid
 piwik
+pixid
+pixelfed
 pki
 plaintext
 platformer
@@ -1677,8 +1738,11 @@ prizm
 processhider
 procfile
 procmail
+promo_codes
 procs
 productpage
+logic-programming-languages
+prolog
 promlens
 promscale
 prosodyctl
@@ -1691,6 +1755,7 @@ proxying
 pscp
 pseudocode
 psexec
+psmisc
 psql
 psudo
 psycop2
@@ -1730,8 +1795,10 @@ quicklisp
 quickstart
 radeon
 rainloop
+Ramaze
 ramdisk
 ransomwhere
+rasa
 rauth
 rbac
 rbenv
@@ -1844,6 +1911,7 @@ rosenblatt
 rossum
 roundcube
 routable
+routings
 rpaf
 rpc
 rpcbind
@@ -1856,6 +1924,7 @@ rsync
 rsyslog
 rtf
 rtt
+Rubinius
 rubocop
 rubydebug
 rubygems
@@ -1864,6 +1933,7 @@ rulesets
 rundir
 runfile
 runlevels
+runpy
 runtime
 runtimes
 rustup
@@ -1909,6 +1979,7 @@ scrapy
 screenrc
 scriptable
 scrollable
+scrollback
 scrollbar
 scrollbars
 scriptfilename
@@ -1975,6 +2046,7 @@ shotcut
 shoutcast
 scikit
 scribus
+scrollable
 sidekiq
 sievers
 signup
@@ -2024,6 +2096,7 @@ spork
 spotify
 sql
 SQLmap
+sqrt_multiply
 sqlplus
 sqreen
 squirrelmail
@@ -2068,6 +2141,7 @@ subcommands
 subfile
 subfiles
 subfolder
+subgoals
 subkey
 subkeys
 sublanguage
@@ -2081,6 +2155,8 @@ subqueries
 subquery
 subreddit
 subreddits
+subshells
+subshell
 substring
 substrings
 subtab
@@ -2117,6 +2193,7 @@ syntaxes
 sys
 sysconfig
 sysdig
+sysfs
 sysctl
 syslog
 sysstat
@@ -2187,6 +2264,7 @@ tls
 tlz
 tmp
 tmux
+tock
 todo
 togami
 tokenize
@@ -2243,6 +2321,7 @@ uber
 Ubiquiti
 ubuntu
 ucd
+udemy
 udp
 UDF
 UDFs
@@ -2282,6 +2361,7 @@ unopinionated
 unmanaged
 unmerged
 unmount
+unmounts
 unmounting
 unoptimized
 unpatched
@@ -2327,7 +2407,9 @@ v1
 v2
 v4
 v6
+Vaadin
 vagrantfile
+valim
 valheim
 validator
 variadic
@@ -2390,6 +2472,7 @@ wasn
 wasm
 wav
 wazuh
+wc
 wchar
 wchar_t
 webadmin
@@ -2424,6 +2507,7 @@ wg
 wget
 whatsmyip
 whatweb
+whitebox
 whitelisted
 whitelisting
 whitespace
@@ -2443,6 +2527,7 @@ windowlist
 wireguard
 wirelessly
 wireshark
+whitebox
 wkhtmltopdf
 wkhtmltox
 wll
@@ -2506,6 +2591,7 @@ yaml
 yellowbrick
 yellowdog
 yesod
+Yii
 yml
 yoast
 yourdomain
@@ -2517,6 +2603,7 @@ youtube
 yubico
 yubikey
 yubikeys
+Yukihiro
 zabbix
 zapier
 zcat

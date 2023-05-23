@@ -130,7 +130,7 @@ The following software versions are compatible with the instructions in this gui
 
 While other versions are possibly fully compatible as well, they may require different commands or additional configuration.
 
-## Setting Up MySQL to Send Email with Postfix and Dovecot
+## Setting Up MySQL to Send Email with Postfix and Dovecot {#set-up-mysql}
 
 Data for the mail server's users (email addresses), domains, and aliases are stored in a MySQL (or MariaDB) database. Both Dovecot and Postfix interact with this data.
 
@@ -253,7 +253,7 @@ An email alias forwards all emails it receives to another email address. While n
 
 1. If needed, repeat this process to add another email alias.
 
-## Postfix MTA Email Server
+## Postfix MTA Email Server {#postfix}
 
 Postfix is a *Mail Transfer Agent* (MTA) that relays mail between the Linode and the internet. It is highly configurable, allowing for great flexibility. This guide maintains many of Posfix's default configuration values.
 

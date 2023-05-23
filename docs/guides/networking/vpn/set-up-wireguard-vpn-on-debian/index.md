@@ -18,6 +18,7 @@ relations:
             - distribution: Debian 9
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
 authors: ["Linode"]
+tags: ["saas"]
 ---
 
 ## What is WireGuard?
