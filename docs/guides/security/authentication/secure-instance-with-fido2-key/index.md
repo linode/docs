@@ -45,7 +45,7 @@ Instructions on installing the akr tool (which includes Akamai's Krypton SSH Age
 {{< tab "macOS 10.15+" >}}
 To start using FIDO2 authentication with Akamai akr, macOS users can install the agent with [Homebrew](https://brew.sh/).
 
-1.  The OpenSSH version include on macOS Ventura (and earlier releases) does not support the necessary security keys features. To overcome this, install OpenSSH through Homebrew and update your PATH variable so that this new version is used instead of the default macOS version.
+1.  The OpenSSH version included on macOS Ventura (and earlier releases) does not support the necessary security keys features. To overcome this, install OpenSSH through Homebrew and update your PATH variable so that this new version is used instead of the default macOS version.
 
     ```command
     brew install openssh
