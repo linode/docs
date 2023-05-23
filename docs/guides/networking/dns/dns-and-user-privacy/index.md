@@ -1,7 +1,7 @@
 ---
 slug: dns-and-user-privacy
 title: "An Introduction to DNS and User Privacy"
-description: 'Two to three sentences describing your guide.'
+description: 'Discover how DNS impacts user privacy and explore solutions such as DNS over HTTPS (DoH) and DNS over TLS (DoT) to enhance security, protect data, and safeguard traffic.'
 keywords: ['dns and user privacy','dns','domain name service','user privacy','dns over tls','dns over http','dot/doh dns server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
@@ -69,12 +69,12 @@ For users, DoT offers greater transparency. Any attempt to block or tamper with 
 
 [Bind 9](https://www.isc.org/bind/), the most widely used DNS server software, natively supports both DoT (starting in version 9.17.7) and DoH (starting in version 9.17.10). This support covers Linodes running Ubuntu 22.04 LTS, since this distribution includes Bind version 9.18.1.
 
-To add DoT support to a recursive server running Bind 9, add these lines to `/etc/bind/named.conf`. This example assumes you’ve used [Let’s Encrypt to generate a TLS certificate and key for your DNS server](https://www.linode.com/docs/guides/install-lets-encrypt-to-create-ssl-certificates/). Substitute the full paths and names of your certificate and key files as appropriate:
+To add DoT support to a recursive server running Bind 9, add these lines to `/etc/bind/named.conf`. This example assumes you’ve used [Let’s Encrypt to generate a TLS certificate and key for your DNS server](/docs/guides/install-lets-encrypt-to-create-ssl-certificates/). Substitute the full paths and names of your certificate and key files as appropriate:
 
 ```file {title="/etc/bind/named.conf" lang="aconf"}
 tls mytls {
- 	cert-file "/path/to/fullchain.pem";
- 	key-file "/path/to/privkey.pem";
+  cert-file "/path/to/fullchain.pem";
+  key-file "/path/to/privkey.pem";
 };
 
 options {
@@ -94,34 +94,34 @@ This configuration listens for DNS requests on any IP address and allows recursi
 
 ```file {title="/etc/bind/named.conf" lang="aconf"}
 tls mytls {
- 	cert-file "/path/to/fullchain.pem";
- 	key-file "/path/to/privkey.pem";
+  cert-file "/path/to/fullchain.pem";
+  key-file "/path/to/privkey.pem";
 };
 
 # HTTP endpoint description
 http local-http-server {
- 	# multiple paths can be specified
- 	endpoints { "/dns-query";  };
+  # multiple paths can be specified
+  endpoints { "/dns-query";  };
 };
 
 options {
-	listen-on port 53 {any;};
-	listen-on-v6 port 53 {any;};
-	allow-recursion {any;};
-	# default ports for HTTP and HTTPS
-	http-port 80;
-	https-port 443;
+  listen-on port 53 {any;};
+  listen-on-v6 port 53 {any;};
+  allow-recursion {any;};
+  # default ports for HTTP and HTTPS
+  http-port 80;
+  https-port 443;
 
-	# example for encrypted and unencrypted DoH
-	# listening on all IPv4 addresses.
-	# port number can be omitted
-	listen-on port 443 tls mytls http local-http-server {any;};
-	listen-on port 80 http local-http-server {any;};
+  # example for encrypted and unencrypted DoH
+  # listening on all IPv4 addresses.
+  # port number can be omitted
+  listen-on port 443 tls mytls http local-http-server {any;};
+  listen-on port 80 http local-http-server {any;};
 
 
-	# the same for IPv6
-	listen-on-v6 port 443 tls mytls http local-http-server {any;};
-	listen-on-v6 port 80 http local-http-server {any;};
+  # the same for IPv6
+  listen-on-v6 port 443 tls mytls http local-http-server {any;};
+  listen-on-v6 port 80 http local-http-server {any;};
 };
 ```
 
@@ -143,12 +143,12 @@ To support DoT in Unbound, point to forwarding servers over UDP port 853. In Ubu
 
 ```file {title="/etc/unbound/unbound.conf" lang="aconf"}
 forward-zone:
-	name: "."
-	forward-tls-upstream: yes		# use DNS-over-TLS forwarder
-	forward-first: no			# do NOT send direct
+  name: "."
+  forward-tls-upstream: yes		# use DNS-over-TLS forwarder
+  forward-first: no			# do NOT send direct
 #	# the hostname after "#" is not a comment, it is used for TLS checks:
-	forward-addr: 9.9.9.9@853#dns9.quad9.net
-	forward-addr: 149.112.112.112@853#dns.quad9.net
+  forward-addr: 9.9.9.9@853#dns9.quad9.net
+  forward-addr: 149.112.112.112@853#dns.quad9.net
 ```
 
 This example forwards encrypted recursive queries to servers at [Quad9](https://www.quad9.net/), a privacy-focused DNS cloud provider.
