@@ -38,40 +38,46 @@ This article covers the basics of connecting to a remote server (such as a Linod
 
 1.  Open Chrome and type the following into the URL/address bar, replacing *[username]* with the username of the remote user and *[ip-address]* with the IP address or domain name of the remote server.
 
-        ssh [username]@[ip-address]
+    ```command
+    ssh [username]@[ip-address]
+    ```
 
     Press enter. The Secure Shell extension attempts to connect to the remote server over port 22 (the default SSH port).
 
     ![Typing in the ssh command within the Chrome address bar](chrome-secure-shell-address-bar.png "Chrome address bar")
 
-    {{< note respectIndent=false >}}
-If the server's SSH port is something other than 22, it needs to be specified in the above command. To do this, append `[:port]` as shown in the example below, replacing *port* with the port number that the remote SSH server is using.
+    {{< note >}}
+    If the server's SSH port is something other than 22, it needs to be specified in the above command. To do this, append `[:port]` as shown in the example below, replacing *port* with the port number that the remote SSH server is using.
 
+    ```command
     ssh user@192.0.2.0[:2022]
-{{< /note >}}
+    ```
+    {{< /note >}}
 
 1.  When you connect with a server for the first time, the SSH client prompts you to check and verify the host key's fingerprint. This is normal, and results in output similar to:
 
-    {{< output >}}
-The authenticity of host ‘example.com (192.0.2.0)’ can't be established.
-ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
-This key is not known by any other names
-Are you sure you want to continue connecting (yes/no/[fingerprint])?
-{{</ output >}}
+    ```output
+    The authenticity of host ‘example.com (192.0.2.0)’ can't be established.
+    ECDSA key fingerprint is SHA256:d029f87e3d80f8fd9b1be67c7426b4cc1ff47b4a9d0a84.
+    This key is not known by any other names
+    Are you sure you want to continue connecting (yes/no/[fingerprint])?
+    ```
 
     You can verify the fingerprint by following the instructions on the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
-    {{< note respectIndent=false >}}
-If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when the remote host key changes. To fix this, revoke the key for that IP address.
+    {{< note >}}
+    If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when the remote host key changes. To fix this, revoke the key for that IP address.
 
+    ```command
     ssh-keygen -R 198.51.100.4
-{{< /note >}}
+    ```
+    {{< /note >}}
 
 1.  Accept the prompt by entering `yes`, which results in a one-time warning that is similar to:
 
-    {{< output >}}
-Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
-{{</ output >}}
+    ```output
+    Warning: Permanently added 'example' (ECDSA) to the list of known hosts.
+    ```
 
 1.  You are then prompted for your password. Type in the correct password for the remote user and press enter.
 
@@ -81,12 +87,12 @@ Once you have successfully connected, the Secure Shell extension displays a term
 
 After you are done, log out of the session by typing `exit`. The terminal then shows something similar to:
 
-{{< output >}}
+```output
 logout
 Connection to 192.0.2.0 closed.
 NaC1 plugin existed with status code 0
 (R)econnect, (C)hoose another connection, or E(x)it?
-{{< /output >}}
+```
 
 Type `x` to close the tab, `r` to reconnect to the same server, or `c` to be presented with the **Connection Dialog** window, allowing you to manually type in the details for a new connection.
 
