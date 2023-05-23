@@ -329,6 +329,7 @@ codebase
 codec
 Codeone
 codepen
+Cognos
 colab
 collabnet
 Collabora
