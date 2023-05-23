@@ -916,6 +916,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -1288,6 +1289,7 @@ matplotlib
 Matsumoto
 Matthes
 Matz
+Mavan
 mawk
 maxconn
 maxdepth

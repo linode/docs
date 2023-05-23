@@ -58,7 +58,7 @@ While PuTTY is compatible with Windows 10, you may want to review the [Connectin
     If you trust this connection, press the **Accept** button to continue connecting to the remote server. You can verify the fingerprint by following the instructions under the [Verifying the Authenticity of a Remote Server](/docs/guides/verifying-the-authenticity-of-remote-host/) guide.
 
     {{< note respectIndent=false >}}
-If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when remote host key changes. To fix this, you must remove the IP addresses manually from the following registry entry:
+If you recently rebuilt your server, you might receive an error message when you try to connect. This happens when the remote host key changes. To fix this, you must remove the IP addresses manually from the following registry entry:
 
     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
 {{< /note >}}
