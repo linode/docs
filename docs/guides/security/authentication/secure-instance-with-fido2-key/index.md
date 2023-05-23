@@ -109,7 +109,7 @@ To start using FIDO2 authentication with Akamai akr, macOS users can install the
     ```
 {{< /tab >}}
 {{< tab "From source" >}}
-You can also build the application with Rust from the repository. You need to make sure Rust (https://rustup.rs) is installed, then you can run `cargo build` to build the application locally.
+You can also build the application with Rust from the repository. First ensure that Rust (https://rustup.rs) is installed, then run `cargo build` to build the application locally.
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -196,7 +196,7 @@ Now that your mobile device has been paired and your Akamai-compatible FIDO2 SSH
     {{< /tab >}}
     {{< /tabs >}}
 
-1.  Create a new Compute Instance, making sure to select your user under SSH Keys. See [Create a Compute Instance](https://www.linode.com/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys) for full instructions.
+1.  Create a new Compute Instance, making sure to select your user under SSH Keys. See [Create a Compute Instance](/docs/products/compute/compute-instances/guides/create/#create-a-password-and-add-ssh-keys) for full instructions.
 
 1.  When the Compute Instance has finished provisioning and is in a running state, you can [connect to it via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). After the host public key fingerprint is validated, you'll receive a push-based prompt on your phone to verify the connection attempt. Once the connect request is approved, you should be successfully logged in to the remote system.
 
@@ -206,7 +206,7 @@ You can also use your FIDO2 SSH key on existing Compute Instances or other Linux
 
 ## Additional SSH Configuration
 
-When akr is initially configured, the akr (Krypton) becomes the default SSH agent used for SSH connections. This behavior may not desired for several reasons, including that akr is a beta product and you may have workflows that depend on other SSH agents. If you do not wish to use Akamai's SSH agent by default, adjust your SSH configuration file by following the instructions below.
+When akr is initially configured, the akr (Krypton) becomes the default SSH agent used for SSH connections. This behavior may not be desired for several reasons, including that akr is a beta product and you may have workflows that depend on other SSH agents. If you do not wish to use Akamai's SSH agent by default, adjust your SSH configuration file by following the instructions below.
 
 1.  Edit your user's SSH configuration file using your preferred text editor.
 
@@ -225,4 +225,4 @@ When akr is initially configured, the akr (Krypton) becomes the default SSH agen
 
     The `Host` keyword is used to identify the hosts while the inner `IdentityAgent` line tells the system which SSH agent should be used for those hosts. In this default configuration, the akr (Krypton) SSH agent is used for *all new connections.*
 
-1.  Adjust the `Host` parameter. Replace the asterisks (`*`) with the specific host names or IP addresses of the systems you'd like to login using akr and Akamai MFA (delimited by a space character).
+1.  Adjust the `Host` parameter. Replace the asterisks (`*`) with the specific host names or IP addresses of the systems you'd like to log in to using akr and Akamai MFA (delimited by a space character).
