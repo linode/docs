@@ -210,6 +210,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
@@ -1797,6 +1798,7 @@ rainloop
 Ramaze
 ramdisk
 ransomwhere
+rasa
 rauth
 rbac
 rbenv
