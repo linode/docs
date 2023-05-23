@@ -5,7 +5,7 @@ description: "Rasa is an open source machine learning framework for automating t
 keywords: ['rasa chatbot tutorial','rasa ai demo','rasa open source']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-01-16
+published: 2023-05-23
 modified_by:
   name: Nathaniel Stickman
 external_resources:

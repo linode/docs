@@ -5,7 +5,7 @@ description: "Socket.IO builds on WebSockets to provide real-time, bidirectional
 keywords: ['what is socket.io','socket.io vs websocket','socket.io node']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-01-13
+published: 2023-05-23
 modified_by:
   name: Nathaniel Stickman
 external_resources:
@@ -49,15 +49,11 @@ You can learn more about WebSockets in our tutorial [Introduction to WebSockets]
 
 ## How to Use Socket.IO
 
-To start using Socket.IO, an application is needed to use with it. This tutorial sets up a simple application to demonstrate Socket.IO's communications.
-
-The example in this guide is a basic chat application, as it's a perfect example of real-time communications. However, the example here expands on that basis by showing how to integrate an AI chatbot into such an application.
-
-Follow along to implement a Socket.IO server and client to see how it works.
+To start using Socket.IO you need an application that features Socket.IO. The example in this guide is a basic chat application, as it's a common example of real-time communications. However, the example here expands on that premise by showing how to integrate an AI chatbot.
 
 ### Setting Up a Server
 
-This tutorial's example application needs a Socket.IO server, as well as a server to host the static files for the chat client. One of the most approachable solutions is using the Node.js package for Socket.IO, alongside Express JS for hosting the static files.
+This tutorial's example application requires a Socket.IO server, as well as a server to host the static files for the chat client. One of the most approachable solutions is using the Node.js package for Socket.IO, alongside Express JS for hosting the static files.
 
 More options exist for Socket.IO, including a Python implementation, [python-socketio](https://github.com/miguelgrinberg/python-socketio). The general approach taken here should be similar regardless of the Socket.IO server implementation.
 
@@ -79,7 +75,7 @@ To learn more about Express JS, reference our [Express JS Tutorial](/docs/guides
     npm init
     ```
 
-    Simply follow through the prompts with the <kbd>Enter</kbd> key to select the default options.
+    Follow through the prompts with the <kbd>Enter</kbd> key to select the default options.
 
 1.  Install the Express and Socket.IO packages:
 
@@ -89,7 +85,7 @@ To learn more about Express JS, reference our [Express JS Tutorial](/docs/guides
 
 ### Developing the Server
 
-Now the project needs some server-side code to implement Socket.IO. The primary component of this is essentially a chat hub for receiving new messages from clients and broadcasting those messages across all connected sockets. While this example does not persist messages, this is where persistence would be implemented if chosen.
+This project needs server-side code to implement Socket.IO. The primary component of this is essentially a chat hub for receiving new messages from clients and broadcasting those messages across all connected sockets. While this example does not persist messages, this is where persistence would be implemented if chosen.
 
 Additionally, this example application needs to integrate with a chatbot. So the chat server needs to pass inbound messages to a chatbot interface, receive any responses from the chatbot, and broadcast those responses.
 
@@ -159,7 +155,7 @@ By abstracting the interface with a chatbot into a separate module, the chat app
 
 ### Implementing a Chatbot
 
-There are many ways and options for implementing a chatbot. Right now, the server above has its integration with the chatbot open-ended. It simply calls to a `getResponse` function in a `chatbot` module and expects a text response back.
+There are many ways and options for implementing a chatbot. Right now, the server code above leaves the chatbot integration open-ended. It simply calls a `getResponse` function in a `chatbot` module and expects a text response back.
 
 This section covers setting up a basic `chatbot` module that can work with the server created above. That basic module can then be modified to integrate with specific chatbot solutions. Further on in this section are examples of those solutions, particularly open source ones.
 
@@ -223,7 +219,7 @@ See how to set up a chatbot using Rasa through our guide [Introduction to the Ra
 
 ### Creating a Client
 
-Finally, the Socket.IO server needs a client interface. This tutorial creates a webpage for that purpose, with a simple interface for users to enter their name and a message. Behind the webpage, the client has the necessary client-side JavaScript to connect to the Socket.IO server.
+Finally, the Socket.IO server needs a client interface. This tutorial provides a webpage with a simple interface for users to enter their name and send a message. Behind the webpage, the client has the necessary client-side JavaScript to connect to the Socket.IO server.
 
 1.  Create a `public` directory within the `socket-example` project directory.
 
@@ -231,7 +227,7 @@ Finally, the Socket.IO server needs a client interface. This tutorial creates a 
     mkdir public
     ```
 
-1.  Create an `index.html` file the `socket-example/public` directory, and give it the contents shown below. This defines the page structure and provides elements to insert chat content into.
+1.  Create an `index.html` file in the `socket-example/public` directory, and give it the contents shown below. This defines the page structure and provides elements to insert chat content into.
 
     ```file {title="socket-example/public/index.html" lang="html"}
     <!doctype html>
@@ -240,7 +236,7 @@ Finally, the Socket.IO server needs a client interface. This tutorial creates a 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Socket.IO Example App</title>
-        <link rel="stylesheet" href="./main.css"
+        <link rel="stylesheet" href="./main.css">
       </head>
       <body>
         <h1>A Chat with Socket.IO</h1>
@@ -272,7 +268,7 @@ Finally, the Socket.IO server needs a client interface. This tutorial creates a 
     </html>
     ```
 
-1.  Create a `main.js` file in the `socket-example/public` directory, and give it the contents below. Here is where the Socket.IO client comes in. Follow along with the comments in the code to see what each part is doing.
+1.  Create a `main.js` file in the `socket-example/public` directory, and give it the contents below. This is where the Socket.IO client is defined. Follow along with the comments in the code to see what each part is doing.
 
     ```file {title="socket-example/public/main.js" lang="js"}
     // Create a socket from the Socket.IO module
@@ -387,6 +383,6 @@ Navigate to `localhost:3000` in a web browser to see the application. To access 
 
 This covers the basics of setting up WebSockets with Socket.IO, from developing a Socket.IO server to composing a client for it.
 
-The example shown here merely touches on Socket.IO's full capabilities. Learn more through the link to the official Socket.IO documentation below to see a wider range of its features.
+The example shown here is a brief example of Socket.IO's capabilities, but you can learn more through the link to the official Socket.IO documentation below.
 
 Interested in the idea of integrating a chatbot with a Socket.IO server? Be sure to check out our [Introduction to the Rasa Framework for Automated Chats](/docs/guides/getting-started-with-rasa/) guide discussed above.
