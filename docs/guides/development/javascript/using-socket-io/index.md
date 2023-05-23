@@ -14,9 +14,8 @@ external_resources:
 - '[Okta Developer: Create a Secure Chat Application with Socket.IO and React](https://developer.okta.com/blog/2021/07/14/socket-io-react-tutorial)'
 ---
 
-Socket.IO provides real-time, bidirectional communications. It is similar to traditional WebSockets, but with added efficiencies and guarantees, making Socket.IO a compelling choice.
+Socket.IO provides applications real-time, bidirectional communications. It is similar to traditional WebSockets, but with added efficiencies and guarantees, making Socket.IO a compelling choice for deployments with real-time requirements.
 
-Continue reading to learn more about what makes Socket.IO stand out and how to start building an application with it.
 
 ## Before You Begin
 
@@ -34,11 +33,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ### Socket.IO vs WebSocket
 
-Socket.IO shares the field of real-time bidirectional communications with WebSockets. In fact, Socket.IO builds on the WebSocket protocol for many of its communications. So what makes Socket.IO a better choice?
+Socket.IO shares the field of real-time bidirectional communications with WebSockets. In fact, Socket.IO builds on the WebSocket protocol for many of its communications. However, Socket.IO is not a WebSockets implementation. Socket.IO utilizes a combination of WebSockets and HTTP long-polling to provide more consistent communications and a better experience.
 
-While Socket.IO builds on WebSockets for some of its communications, it is not a WebSockets implementation. Socket.IO actually utilizes a combination of WebSockets and HTTP long-polling to provide more consistent communications and a better experience.
-
-Essentially, it works like this:
+Essentially, Socket.IO works in the following manner:
 
 -   Socket.IO starts with an HTTP long-polling connection. Should WebSockets not work for whatever reason, starting with long-polling dramatically improves the user experience.
 
@@ -46,7 +43,7 @@ Essentially, it works like this:
 
 Beyond that, Socket.IO provides a set of higher-level APIs over WebSockets. This often makes Socket.IO easier to work with, and it includes a set of guarantees about the consistency of communications.
 
-So, why use WebSockets directly? Socket.IO gives a higher-level interface, but for some use cases that is not wanted. In fact, some use cases specifically call for lower-level control over connections and communications. Such cases likely do better working directly with WebSockets.
+So, why use WebSockets directly? Socket.IO gives a higher-level interface, but for some use cases that is not wanted. In fact, some use cases specifically call for lower-level control over connections and communications. Such cases likely need to work directly with WebSockets.
 
 You can learn more about WebSockets in our tutorial [Introduction to WebSockets](/docs/guides/introduction-to-websockets/).
 
