@@ -32,6 +32,7 @@ ajp
 Akamai
 Akaunting
 aker
+akr
 alef
 alertmanager
 alex
@@ -172,6 +173,7 @@ bernd
 berners
 bgpd
 bialek
+Bigtable
 bin_t
 bing
 binhex
@@ -208,6 +210,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
@@ -371,6 +374,7 @@ covid
 cpanel
 cpanminus
 cpu
+CPython
 cqlsh
 cqlshrc
 craftbukkit
@@ -640,6 +644,7 @@ failsafe
 failsafes
 falko
 fastcgi
+Fastify
 fastmail
 fastopen
 fauxhai
@@ -706,6 +711,7 @@ frakti
 framesets
 freedns
 freeipa
+Freemarker
 freenom
 fremont
 freshclam
@@ -800,6 +806,7 @@ gpasswd
 gpc
 gpg
 gping
+GPUs
 gradle
 grafana
 graphql
@@ -833,6 +840,8 @@ hackage
 hadoop
 halls3
 Haltdos
+Hanami
+Hansson
 hapis
 haproxy
 hardcoded
@@ -851,6 +860,7 @@ heartbleed
 hebb
 hebbian
 hebern
+Heinemeier
 heredoc
 heroku
 hexo
@@ -877,6 +887,7 @@ hotlinked
 hotlinking
 hotspot
 hotspots
+Hotwire
 howto
 howtoforge
 howtogeek
@@ -906,6 +917,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -1051,6 +1063,7 @@ jpg
 jpetazzo
 jq
 jre
+JRuby
 js
 jshell
 json
@@ -1131,6 +1144,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+Laminas
 LANs
 laravel
 largebiomes
@@ -1242,6 +1256,7 @@ lzma
 lzopio
 macos
 magento
+Mailchimp
 maildir
 maildirs
 maildrop
@@ -1272,7 +1287,10 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matsumoto
 Matthes
+Matz
+Mavan
 mawk
 maxconn
 maxdepth
@@ -1376,6 +1394,7 @@ mov
 movr
 mpapis
 mpm
+MRuby
 msfvenom
 msg
 msgid
@@ -1612,6 +1631,7 @@ passwdfile
 passwordless
 patroni
 paypal
+PBCs
 pbr
 pem
 pentest
@@ -1631,6 +1651,7 @@ pg_dump
 pg_dumpall
 pg_restore
 pgpass
+Phalcon
 pharmer
 pharo
 phonebook
@@ -1774,8 +1795,10 @@ quicklisp
 quickstart
 radeon
 rainloop
+Ramaze
 ramdisk
 ransomwhere
+rasa
 rauth
 rbac
 rbenv
@@ -1901,6 +1924,7 @@ rsync
 rsyslog
 rtf
 rtt
+Rubinius
 rubocop
 rubydebug
 rubygems
@@ -2383,6 +2407,7 @@ v1
 v2
 v4
 v6
+Vaadin
 vagrantfile
 valim
 valheim
@@ -2566,6 +2591,7 @@ yaml
 yellowbrick
 yellowdog
 yesod
+Yii
 yml
 yoast
 yourdomain
@@ -2577,6 +2603,7 @@ youtube
 yubico
 yubikey
 yubikeys
+Yukihiro
 zabbix
 zapier
 zcat

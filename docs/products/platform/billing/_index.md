@@ -9,7 +9,7 @@ tab_group_main:
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
 published: 2019-10-25
-modified: 2023-03-03
+modified: 2023-04-25
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -21,7 +21,7 @@ Linode strives to provide transparent and uncomplicated pricing structures and b
 
 Linode uses a hybrid hourly billing model that is simple and flexible. It enables you to continuously add, modify, and remove services throughout the month. After the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. Here are some important billing considerations:
 
-- Every paid service offered by Linode has a predicable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
+- Every paid service offered by Linode has a predictable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
 
 - When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of the Cloud Manager\*. Usage is always rounded up to the nearest hour.
 
@@ -73,4 +73,6 @@ At any time, you can make a manual one-time payment to add funds to your account
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee for any refunds. Only payments made within the last 180 days are eligible.
+A refund can be requested for any *positive account balance* (excluding promotion credits). You can also receive a full refund as part of our cancellation policy if you cancel within the first 7 days. To learn more about this cancellation policy, see the [Cancel Your Account](/docs/products/platform/accounts/guides/cancel-account/) guide.
+
+To request a refund, contact the [Support](https://www.linode.com/support/) team with the reason for your request. Refunds can only be considered for payments made within the last 180 days. Once the request is approved, the refund is issued to the original payment method. A $5 processing fee is deducted from all refunds, with the exception of cancelling an account within the first 7 days.
