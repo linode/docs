@@ -6,7 +6,7 @@ keywords: ["Longview", "MySQL", "statistics"]
 tags: ["cloud manager","statistics","monitoring","linode platform","mysql"]
 aliases: ['/longview/longview-for-mysql/','/platform/longview/longview-app-for-mysql/','/platform/longview/what-is-the-linode-longview-app-for-mysql/','/guides/what-is-the-linode-longview-app-for-mysql/']
 published: 2013-11-06
-modified: 2023-04-25
+modified: 2023-05-24
 modified_by:
   name: Linode
 relations:

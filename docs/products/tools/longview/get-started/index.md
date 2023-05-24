@@ -4,7 +4,7 @@ title_meta: "Getting Started with Longview"
 description: "Learn how to create a Longview Client, install the Longview Agent, and start capturing metrics for your Linux system"
 tab_group_main:
     weight: 20
-published: 2023-04-25
+published: 2023-05-24
 aliases: ['/platform/longview/longview/','/platform/longview/what-is-longview/','/uptime/longview/','/longview/','/guides/what-is-longview/']
 ---
 
@@ -32,10 +32,10 @@ To start using Longview to capture metrics from a Linux server, you need to crea
 
 ## SSH into the Compute Instance {#ssh}
 
-1. Open a terminal on your local computer and log in to your Compute Instance (or other Linux system) over SSH. In the command below, replace the IP address with the IP address of your remote system. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
+1. Open a terminal on your local computer and log in to your Compute Instance (or other Linux system) over SSH. In the command below, replace *[user]* with your remote username and *[ip-address]* with the IP address or fully qualified domain name of your instance. See [Managing IP Addresses on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#viewing-ip-addresses).
 
     ```command
-    ssh user@192.0.2.17
+    ssh [user]@[ip-address]
     ```
 
 1. Switch to the `root` user.

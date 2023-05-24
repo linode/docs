@@ -4,7 +4,7 @@ title_meta: "Guides and Tutorials for Longview"
 description: "A collection of guides to help you use Longview to capture metrics on your Linux system."
 tab_group_main:
     weight: 30
-published: 2023-04-25
+published: 2023-05-24
 ---
 
 ## Basics

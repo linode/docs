@@ -6,7 +6,7 @@ keywords: ["Longview", " Nginx", " statistics", " HttpStubStatusModule"]
 tags: ["cloud manager","statistics","monitoring","linode platform","nginx"]
 aliases: ['/platform/longview/longview-app-for-nginx/','/longview/longview-for-nginx/','/platform/longview/what-is-the-linode-longview-app-for-nginx/','/guides/what-is-the-linode-longview-app-for-nginx/']
 published: 2013-11-05
-modified: 2023-04-25
+modified: 2023-05-24
 modified_by:
   name: Linode
 relations:

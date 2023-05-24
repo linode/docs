@@ -8,7 +8,7 @@ tab_group_main:
     weight: 10
 cascade:
     product_description: "View real-time system metrics and resource utilization to gain insight into your Linux-based cloud workloads."
-published: 2023-04-25
+published: 2023-05-24
 aliases: ['/platform/longview/pricing/','/guides/linode-longview-pricing-and-plans/','/platform/longview/','/guides/platform/monitoring/']
 ---
 
