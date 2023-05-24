@@ -103,7 +103,7 @@ The above list is enough for a bare-bones setup, but other common RR types inclu
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file with your external IP addresses (PVv4 and IPv6), domain (`ns1.example.com`), and hostname (`ns1`).
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file with your external IP addresses (IPv4 and IPv6), domain (`ns1.yourdomainhere.com`), and hostname (`ns1`).
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -231,7 +231,7 @@ Since the NSD documentation already includes a fully annotated sample configurat
 
 ### Creating a Zone File
 
-A functional authoritative name server is now set up, but it’s not yet serving any zones. This example creates a zone file for the domain `example.com`, substitute your domain name as appropriate.
+A functional authoritative name server is now set up, but it’s not yet serving any zones. This example creates a zone file for the domain `yourdomainhere.com`, substitute your domain name as appropriate.
 
 1.  Although this guide only creates an authoritative (master) zone, create directories for master and secondary zone files anyway:
 
@@ -243,16 +243,16 @@ A functional authoritative name server is now set up, but it’s not yet serving
 1.  Now create a zone file. This zone handles all forward queries (those seeking to translate hostnames to IP addresses).
 
     ```command
-    sudo nano /etc/nsd/zones/master/example.com.zone
+    sudo nano /etc/nsd/zones/master/yourdomainhere.com.zone
     ```
 
 1.  Add these contents to the file, substituting your domain name and hostnames as appropriate:
 
-    ```file{title="/etc/nsd/zones/master/example.com.zone" hl_lines="1 4 12 20 28 30 31"}
-    $ORIGIN example.com.
+    ```file{title="/etc/nsd/zones/master/yourdomainhere.com.zone" hl_lines="1 4 12 20 28 30 31"}
+    $ORIGIN yourdomainhere.com.
     $TTL 3600
     ;; SOA Record
-    @   	IN  	SOA ns1.example.com. hostmaster.example.com. (
+    @   	IN  	SOA ns1.yourdomainhere.com. hostmaster.yourdomainhere.com. (
                               2023030701 ; serial
                               3600   	; refresh (1 hour)
                               900    	; retry (15 minutes)
@@ -276,10 +276,10 @@ A functional authoritative name server is now set up, but it’s not yet serving
     ringo      AAAA  2600:3c01:0:4:f03c:93ff:fe01:4074
     stu        AAAA  2600:3c01:0:2:f03c:93ff:fe01:4072
     ;; MX Records
-    @   MX   10   stu.example.com.
+    @   MX   10   stu.yourdomainhere.com.
     ;; NS Records
-    @   IN NS   ns1.example.com.
-    @   IN NS   ns2.example.com.
+    @   IN NS   ns1.yourdomainhere.com.
+    @   IN NS   ns2.yourdomainhere.com.
     ```
 
     There are a couple of things to note in the zone file:
@@ -293,18 +293,18 @@ A functional authoritative name server is now set up, but it’s not yet serving
     -   Third, note that fully qualified hostnames always have a period appended, representing the parent zone:
 
         ```file
-        @  	MX  	10  	stu.example.com.
+        @  	MX  	10  	stu.yourdomainhere.com.
         ```
 
-        Omitting that final period, causes the NSD daemon to append the entire domain name, creating a pointer to a nonexistent resource (e.g. `stu.example.com.example.com`). Omitting the final period in zone files is the single most common DNS configuration error.
+        Omitting that final period, causes the NSD daemon to append the entire domain name, creating a pointer to a nonexistent resource (e.g. `stu.yourdomainhere.com.yourdomainhere.com`). Omitting the final period in zone files is the single most common DNS configuration error.
 
-        Avoid this issue with the `$ORIGIN example.com.` macro that begins this zone file. This tells the NSD daemon to append "`example.com.`" to any host or domain name not ending with a period. For example, with `$ORIGIN example.com.` applied, these two A records are functionally identical:
+        Avoid this issue with the `$ORIGIN yourdomainhere.com.` macro that begins this zone file. This tells the NSD daemon to append "`yourdomainhere.com.`" to any host or domain name not ending with a period. For example, with `$ORIGIN yourdomainhere.com.` applied, these two A records are functionally identical:
 
         ```file
-        $ORIGIN example.com.
+        $ORIGIN yourdomainhere.com.
         ; ..
         john                A   	96.126.102.179
-        john.example.com.	  A   	96.126.102.179
+        john.yourdomainhere.com.	  A   	96.126.102.179
         ```
 
         Again, note the final period when using the full form.
@@ -314,13 +314,13 @@ A functional authoritative name server is now set up, but it’s not yet serving
 1.  Use the `nsd-checkzone` utility to verify the zone file’s syntax:
 
     ```command
-    nsd-checkzone example.com /etc/nsd/zones/master/example.com.zone
+    nsd-checkzone yourdomainhere.com /etc/nsd/zones/master/yourdomainhere.com.zone
     ```
 
     The NSD server should return:
 
     ```output
-    zone example.com is ok
+    zone yourdomainhere.com is ok
     ```
 
     If not, the command outputs the syntax errors causing the error.
@@ -337,12 +337,12 @@ A functional authoritative name server is now set up, but it’s not yet serving
     ```file{title="/etc/nsd/nsd.conf" hl_lines="2 3 8"}
     ...
     zone:
-        name: "example.com""
+        name: "yourdomainhere.com""
         # you can give a pattern here, all the settings from that pattern
         # are then inserted at this point
         # include-pattern: "master"
         # You can also specify (additional) options directly for this zone.
-        zonefile: "zones/master/example.com.zone"
+        zonefile: "zones/master/yourdomainhere.com.zone"
     ...
     ```
 
@@ -370,7 +370,7 @@ The final step is to delegate name service to the new server at your domain regi
 Linode is not a registrar. This step is performed at a third-party registrar such as [Dynadot](https://www.dynadot.com/account/signin.html), [GoDaddy](https://www.godaddy.com/), or [Hover](https://www.hover.com/domains). You must use the registrar where your domain is registered.
 {{< /note >}}
 
-Every registrar’s management tool allows you to delegate DNS to two or more name servers for your domain. Usually, the registrar needs the hostname and IP addresses for each name server. Be sure to point to the new name server twice, as `ns1.example.com` and as `ns2.example.com`, and provide the same IP address for both.
+Every registrar’s management tool allows you to delegate DNS to two or more name servers for your domain. Usually, the registrar needs the hostname and IP addresses for each name server. Be sure to point to the new name server twice, as `ns1.yourdomainhere.com` and as `ns2.yourdomainhere.com`, and provide the same IP address for both.
 
 In theory, delegation changes can take 24-48 hours to propagate through the global Internet. However, in practice propagation usually happens much faster, often in 5 minutes or less.
 
@@ -378,16 +378,16 @@ In theory, delegation changes can take 24-48 hours to propagate through the glob
 
 Test the new setup with queries for DNS resource records. One popular command line tool for this is `dig`, which is already included with Linode’s Ubuntu 22.04 LTS instances.
 
-Use the `-t` switch to specify which RR type you want to query. The following example asks for NS records for `example.com`, replace `example.com` with your own domain name:
+Use the `-t` switch to specify which RR type you want to query. The following example asks for NS records for `yourdomainhere.com`, replace `yourdomainhere.com` with your own domain name:
 
 ```command
-dig -t NS example.com
+dig -t NS yourdomainhere.com
 ```
 
 The server should respond (in the "ANSWER SECTION") with the hostname of your new name server:
 
 ```output
-; <<>> DiG 9.18.1-1ubuntu1.3-Ubuntu <<>> -t NS example.com @ns1.example.com
+; <<>> DiG 9.18.1-1ubuntu1.3-Ubuntu <<>> -t NS yourdomainhere.com @ns1.yourdomainhere.com
 ;; global options: +cmd
 ;; Got answer:
 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 18821
@@ -396,14 +396,14 @@ The server should respond (in the "ANSWER SECTION") with the hostname of your ne
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 1232
 ;; QUESTION SECTION:
-;example.com.    	IN   NS
+;yourdomainhere.com.    	IN   NS
 
 ;; ANSWER SECTION:
-example.com.	3600 IN   NS   ns1.example.com.
-example.com.	3600 IN   NS   ns2.example.com.
+yourdomainhere.com.	3600 IN   NS   ns1.yourdomainhere.com.
+yourdomainhere.com.	3600 IN   NS   ns2.yourdomainhere.com.
 
 ;; Query time: 0 msec
-;; SERVER: 2600:3c01::f03c:93ff:fe01:4070#53(ns1.example.com) (UDP)
+;; SERVER: 2600:3c01::f03c:93ff:fe01:4070#53(ns1.yourdomainhere.com) (UDP)
 ;; WHEN: Wed Mar 08 05:53:39 UTC 2023
 ;; MSG SIZE  rcvd: 168
 ```
@@ -411,12 +411,12 @@ example.com.	3600 IN   NS   ns2.example.com.
 Verbose output can be extremely useful in troubleshooting. However, if you don’t need all that detail, just add the `+short` flag to the query. Here’s the same query again with just the response:
 
 ```command
-dig +short -t NS example.com
+dig +short -t NS yourdomainhere.com
 ```
 
 ```output
-ns1.example.com.
-ns2.example.com.
+ns1.yourdomainhere.com.
+ns2.yourdomainhere.com.
 ```
 
 ## Conclusion
