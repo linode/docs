@@ -20,7 +20,7 @@ The Longview client is [open source](https://github.com/linode/longview) and pro
 
 ## Pro Plan
 
-Longview is free for all customers for up to ten clients. You also have the option to purchase **Longview Pro** which includes additional analytics for an added cost. Longview's free version updates every 5 minutes and provides twelve hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 12 hours.
+Longview is free for all customers for up to ten clients. You also have the option to purchase **Longview Pro** which includes additional analytics for an added cost. Longview's free version updates every 5 minutes and provides 12 hours of data history. Longview Pro gives you data resolution at 60 second intervals, and you can view a complete history of your Linode’s data instead of only the previous 12 hours.
 
 ## Availability
 
@@ -28,7 +28,7 @@ Longview can be installed on Compute Instances across [all regions](https://www.
 
 ## Pricing
 
-There are four different Longview Pro plan tiers you can choose from. Each plan varies in the amount of clients that will be monitored by Longview.
+There are four different Longview Pro plan tiers you can choose from. Each plan varies in the amount of clients that can be monitored by Longview.
 
 | Plan | Number of Clients | Price |
 | -- | -- | -- |
