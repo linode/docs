@@ -144,10 +144,10 @@ surreal start --bind 0.0.0.0:8080 --user root --pass exampleRootPass memory
 
 The `--bind` option also lets you alter the address at which the SurrealDB server can be accessed. By default, the address is `0.0.0.0` as above. The server can thus be accessed from any address that accesses the server machine.
 
-For the examples in this tutorial, you only need to access the SurrealDB server over `localhost`. So a good practice would be to just run the server there for testing purposes.
+For the examples in this tutorial, you only need to access the SurrealDB server over `localhost` (`127.0.0.1`). So a good practice would be to just run the server there for testing purposes.
 
 ```command
-surreal start --bind localhost:8000 --user root --pass exampleRootPass memory
+surreal start --bind 127.0.0.1:8000 --user root --pass exampleRootPass memory
 ```
 
 ### Querying SurrealDB from the CLI
@@ -222,21 +222,21 @@ SELECT id, title, body FROM article;
 
 ```output
 [
-	{
-		body: 'This is the first post.',
-		id: article:first,
-		title: 'First Post'
-	},
-	{
-		body: 'You are reading the second post.',
-		id: article:second,
-		title: 'Second Post'
-	},
-	{
-		body: 'Here, the contents for the third post.',
-		id: article:third,
-		title: 'Third Post'
-	}
+    {
+        body: 'This is the first post.',
+        id: article:first,
+        title: 'First Post'
+    },
+    {
+        body: 'You are reading the second post.',
+        id: article:second,
+        title: 'Second Post'
+    },
+    {
+        body: 'Here, the contents for the third post.',
+        id: article:third,
+        title: 'Third Post'
+    }
 ]
 ```
 
@@ -246,22 +246,22 @@ SELECT id, value FROM tags;
 
 ```output
 [
-	{
-		id: tags:first,
-		value: 'first'
-	},
-	{
-		id: tags:last,
-		value: 'last'
-	},
-	{
-		id: tags:post,
-		value: 'post'
-	},
-	{
-		id: tags:test,
-		value: 'test'
-	}
+    {
+        id: tags:first,
+        value: 'first'
+    },
+    {
+        id: tags:last,
+        value: 'last'
+    },
+    {
+        id: tags:post,
+        value: 'post'
+    },
+    {
+        id: tags:test,
+        value: 'test'
+    }
 ]
 ```
 
@@ -273,38 +273,38 @@ SELECT id, title, body, ->tagged->tags.value AS tags, date FROM article ORDER BY
 
 ``` output
 [
-	{
-		body: 'This is the first post.',
-		date: '2023-01-01T12:01:01Z',
-		id: article:first,
-		tags: [
-			'post',
-			'test',
-			'first'
-		],
-		title: 'First Post'
-	},
-	{
-		body: 'You are reading the second post.',
-		date: '2023-02-01T13:02:02Z',
-		id: article:second,
-		tags: [
-			'post',
-			'test'
-		],
-		title: 'Second Post'
-	},
-	{
-		body: 'Here, the contents for the third post.',
-		date: '2023-03-01T14:03:03Z',
-		id: article:third,
-		tags: [
-			'test',
-			'last',
-			'post'
-		],
-		title: 'Third Post'
-	}
+    {
+        body: 'This is the first post.',
+        date: '2023-01-01T12:01:01Z',
+        id: article:first,
+        tags: [
+            'post',
+            'test',
+            'first'
+        ],
+        title: 'First Post'
+    },
+    {
+        body: 'You are reading the second post.',
+        date: '2023-02-01T13:02:02Z',
+        id: article:second,
+        tags: [
+            'post',
+            'test'
+        ],
+        title: 'Second Post'
+    },
+    {
+        body: 'Here, the contents for the third post.',
+        date: '2023-03-01T14:03:03Z',
+        id: article:third,
+        tags: [
+            'test',
+            'last',
+            'post'
+        ],
+        title: 'Third Post'
+    }
 ]
 ```
 
@@ -329,7 +329,7 @@ And now you can make your first HTTP query to the SurrealDB database. In the com
 Also, for legibility, this and the next example pipe the cURL output through the jq tool to pretty print the JSON. You should be able to install that tool from your system's package manager.
 
 ```command
-curl -X GET -H "@surreal_header_file" --user "root:exampleRootPass" http://localhost:8000/key/article/first | jq "."
+curl -X GET -H "@surreal_header_file" --user "root:exampleRootPass" http://localhost:8000/key/article/first | jq
 ```
 
 ```output
@@ -364,7 +364,7 @@ EOF
 Now you can run the cURL request to fetch the modeled blog post data.
 
 ```command
-curl -X POST -H "@surreal_header_file" --user "root:exampleRootPass" --data-binary "@surreal_query_file" http://localhost:8000/sql | jq "."
+curl -X POST -H "@surreal_header_file" --user "root:exampleRootPass" --data-binary "@surreal_query_file" http://localhost:8000/sql | jq
 ```
 
 ```output
