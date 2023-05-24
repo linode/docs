@@ -63,7 +63,7 @@ In this case, hyperfine helps with features designed specifically for benchmarki
 
 ### hyperfine vs. bench
 
-hyperfine was inspired by [bench](https://github.com/Gabriel439/bench), a similar tool for benchmarking commands. Both tools allow you to benchmark commands and provide readable and exportable results. However, hyperfine provides more rigorous benchmarking features and a higher degree of control of the benchmarking process. Several of hyperfine's performance features — such as, detection of outliers and provision of warm-up runs — are absent in bench. On the other hand, bench prioritizes simple usability and more visually engaging output. bench can, for instance, create HTML output complete with graphs of several commands' performance during benchmarking runs.
+hyperfine was inspired by [bench](https://github.com/Gabriel439/bench), a similar tool for benchmarking commands. Both tools allow you to benchmark commands and provide readable and exportable results. However, hyperfine provides more rigorous benchmarking features and a higher degree of control of the benchmarking process. Several of hyperfine's performance features — such as detection of outliers and provision of warm-up runs — are absent in bench. On the other hand, bench prioritizes simple usability and more visually engaging output. bench can, for instance, create HTML output complete with graphs of several commands' performance during benchmarking runs.
 
 ## How to Install hyperfine
 
