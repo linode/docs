@@ -47,7 +47,7 @@ Because DoH works at the application layer, [it may require more coding and more
 
 DoH traffic uses TCP port 443, the same as other tunneled web traffic. On the wire, a network manager isn’t able to distinguish DoH from any other HTTPS traffic. Neither does any sort of middlebox such as a next-generation firewall or intrusion detection/prevention system.
 
-## DoT Versus DoH Considerations
+## DoT vs. DoH Considerations
 
 In terms of user privacy, DoH may seem preferable because it encrypts all traffic, including DNS, from client to server. If the greatest concern is interception at an airport or coffee shop, either DoT or DoH offer adequate safeguards. In practice, choosing between DoT and DoH is somewhat more complicated. It may involve economic and even political tradeoffs.
 
