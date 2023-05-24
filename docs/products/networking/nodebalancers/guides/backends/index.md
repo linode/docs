@@ -13,7 +13,7 @@ While only a single backend node is required, *at least* two backends need to be
 
 ## Add, Edit, and Remove Backend Nodes
 
-Backends nodes can be defined through a NodeBalancer's [Configurations](/docs/products/networking/nodebalancers/guides/configure/), which contain all the settings and parameters for a particular *inbound* port.
+Backend nodes can be defined through a NodeBalancer's [Configurations](/docs/products/networking/nodebalancers/guides/configure/), which contain all the settings and parameters for a particular *inbound* port.
 
 1. Log in to the [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
 

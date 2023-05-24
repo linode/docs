@@ -295,7 +295,7 @@ You are now ready to run your Flask app locally to view your rendered Stadia Map
 
 ## Next Steps
 
-- Consult the [Prepare Your Production Environment](/docs/guides/flask-and-gunicorn-on-ubuntu/#prepare-your-production-environment) section of our [Deploy A Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide to familiarize yourself with some of the tools you can use to prepare a Flask application for production.
+- Consult the [Prepare Your Production Environment](/docs/guides/flask-and-gunicorn-on-ubuntu/#prepare-the-production-environment) section of our [Deploy A Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide to familiarize yourself with some of the tools you can use to prepare a Flask application for production.
 
 - Adopt the example app to use a different data set. Many cities provide open GIS data that you can easily consume and create your own GIS app. See [Philadelphia's Open Data site](https://www.opendataphilly.org/) for possible sources.
 
