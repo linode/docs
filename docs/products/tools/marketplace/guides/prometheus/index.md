@@ -2,7 +2,6 @@
 description: "Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using Marketplace Apps."
 keywords: ['prometheus','monitoring','time series','metrics']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified: 2022-03-08
 image: Prometheus_oneclickapps.png

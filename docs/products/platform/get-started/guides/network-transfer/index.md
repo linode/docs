@@ -1,7 +1,6 @@
 ---
 description: "Learn how your Linode account's network transfer pool is calculated and billed."
 keywords: ["network","billing","account","transfer", "overage"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-08-21
 modified: 2023-03-31
 modified_by:

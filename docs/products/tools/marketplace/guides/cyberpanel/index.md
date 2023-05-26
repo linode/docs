@@ -2,7 +2,6 @@
 description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps."
 keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified: 2023-02-02
 image: DeployCyberPanel_marketplaceapps.png

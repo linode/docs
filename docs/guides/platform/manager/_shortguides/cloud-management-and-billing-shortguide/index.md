@@ -27,4 +27,4 @@ You can manage the following account and billing settings in the Account section
 - [Enable Backup auto enrollment for all new Linodes on your account](/docs/products/storage/backups/guides/enable/#auto-enroll-new-compute-instances-in-the-backup-service)
 - [Enable Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#global)
 - [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/)
-- [Add the Linode Managed service to your account](/docs/guides/linode-managed/#getting-started)
+- [Add the Linode Managed service to your account](/docs/products/services/managed/get-started/)

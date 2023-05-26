@@ -1,9 +1,11 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Managed Databases"
 description: "A collection of guides on using Linode's Managed Database service"
 tab_group_main:
     weight: 30
-modified: 2022-06-06
+published: 2022-06-06
+modified: 2023-05-02
 ---
 
 ## Basics
@@ -49,17 +51,4 @@ General PostgreSQL guides (not specific to Managed Databases):
 
 - [An Introduction to PostgreSQL](/docs/guides/an-introduction-to-postgresql/)
 - [Backing Up a PostgreSQL Database (Database Dump)](/docs/guides/how-to-back-up-your-postgresql-database/)
-{{< /note >}}
-
-## MongoDB
-
-- [Connect to a MongoDB Managed Database](/docs/products/databases/managed-databases/guides/mongodb-connect/)
-
-- [Migrate a MongoDB Database to a Managed Database](/docs/products/databases/managed-databases/guides/mongodb-migrate/)
-
-{{< note >}}
-General MongoDB guides (not specific to Managed Databases):
-
-- [Introduction To MongoDB And Its Use Cases](/docs/guides/mongodb-introduction/)
-- [How to Install and Use the MongoDB Community Shell](/docs/guides/mongodb-community-shell-installation/)
 {{< /note >}}

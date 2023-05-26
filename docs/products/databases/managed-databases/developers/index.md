@@ -1,6 +1,7 @@
 ---
 title: Developers
-description: "Linode Images are managed easily with developer tools like the Linode API or CLI."
+title_meta: "Developer Resources for Managed Databases"
+description: "Deploy Linode Managed Databases with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
 ---

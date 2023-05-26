@@ -9,6 +9,7 @@ modified_by:
 published: 2010-10-25
 title: 'Use PostgreSQL Relational Databases on Ubuntu 10.10'
 deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 relations:
     platform:
         key: use-postrgesql-database

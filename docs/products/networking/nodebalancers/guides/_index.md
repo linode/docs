@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for NodeBalancers"
 description: "A collection of guides on using NodeBalancers to load balance applications hosted on the Linode platform."
 tab_group_main:
     weight: 30

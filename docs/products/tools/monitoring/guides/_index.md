@@ -13,7 +13,7 @@ These introductory guides help you get up and running with monitoring your Linod
 
 - [Cloud Manager Graphs](/docs/products/tools/monitoring/guides/monitoring-cloud-graphs): Cloud Manager provides several basic graphs to give you a view into the performance of your Linodes.
 
-- [Configure Email Alerts](/docs/products/tools/monitoring/guides/monitoring-email-alerts): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
+- [Configure Email Alerts](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
 
 - [Use Third-Party Tools](/docs/products/tools/monitoring/guides/monitoring-third-party-tools): For a more detailed view of your systems, you can use third-party tools.
 

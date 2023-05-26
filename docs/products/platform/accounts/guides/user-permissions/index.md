@@ -2,7 +2,6 @@
 title: Manage User Permissions
 title_meta: Manage User Permissions for a Linode User Account
 description: "Learn how to manage permissions and restrict user access on a Linode account."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-21
 modified: 2023-01-24
 tags: ["linode platform","users","user permissions"]

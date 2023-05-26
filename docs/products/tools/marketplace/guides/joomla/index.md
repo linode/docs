@@ -2,7 +2,6 @@
 description: "Deploy Joomla on a Linode Compute Instance. A content management system to ease administration overhead for your websites."
 keywords: ['joomla','csm','website']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-29
 modified_by:
   name: Linode

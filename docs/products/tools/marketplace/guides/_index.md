@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Learn how to access and deploy all the Linode Marketplace One-Click Apps."
+title_meta: "Guides and Tutorials for the Linode Marketplace"
+description: "A collection of guides to help you learn how to deploy each Marketplace App that Linode offers."
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
@@ -72,8 +73,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Microweber](/docs/products/tools/marketplace/guides/microweber)
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
 - [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
-- [MongoDB](/docs/products/tools/marketplace/guides/mongodb/)
-- [MongoDB Cluster](/docs/products/tools/marketplace/guides/mongodb-cluster/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)

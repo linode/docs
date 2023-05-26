@@ -1,6 +1,5 @@
 ---
 description: "How to add DNS records using the Linode DNS Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2023-02-09
 modified_by:
   name: KincaidYang

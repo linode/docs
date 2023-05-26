@@ -2,7 +2,6 @@
 description: "Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up."
 keywords: ["reverse", "dns", "PTR"]
 tags: ["dns","networking","cloud manager","linode platform"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2015-07-09
 modified: 2023-01-18
 modified_by:

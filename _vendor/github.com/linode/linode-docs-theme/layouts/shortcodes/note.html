@@ -56,7 +56,7 @@
       <header class="note-title font-bold">
         {{- . -}}
       </header>
-    {{ end }}
+    {{- end -}}
     <div class="note-content {{ if $title }}mt-2{{ end }}">
       {{- if eq $respectIndent true -}}
         {{ .InnerDeindent | .Page.RenderString }}
