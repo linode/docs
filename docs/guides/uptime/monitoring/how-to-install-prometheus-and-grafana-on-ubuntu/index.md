@@ -2,7 +2,8 @@
 slug: how-to-install-prometheus-and-grafana-on-ubuntu
 title: "How to Install and Configure Prometheus and Grafana on Ubuntu"
 description: 'How to Install and Configure Prometheus and Grafana on Ubuntu'
-keywords: ['Install Prometheus','Install Grafana','Install Node Exporter','Integrate Prometheus and Grafana', 'Download Grafana Dashboard for Prometheus']
+keywords: ['Install Prometheus', 'Install Grafana', 'Install Node Exporter', 'Integrate Prometheus and Grafana', 'Download Grafana Dashboard for Prometheus']
+tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
 published: 2023-04-03
@@ -78,12 +79,12 @@ Installing a complete Prometheus and Grafana-based system is a multi-step proces
 To configure the end-to-end solution, the following steps are required.
 
 1.  Download and install Prometheus on the monitoring system.
-2.  Configure Prometheus to run as a service.
-3.  Install Node Exporter on all clients.
-4.  Configure Prometheus to monitor the clients.
-5.  Install and deploy the Grafana server.
-6.  Integrate Grafana and Prometheus.
-7.  Import a Dashboard for the Node Exporter Statistics.
+1.  Configure Prometheus to run as a service.
+1.  Install Node Exporter on all clients.
+1.  Configure Prometheus to monitor the clients.
+1.  Install and deploy the Grafana server.
+1.  Integrate Grafana and Prometheus.
+1.  Import a Dashboard for the Node Exporter Statistics.
 
 This guide is designed for Ubuntu 22.04 LTS users but is generally applicable to the most recent Ubuntu releases.
 
@@ -358,7 +359,7 @@ When Node Exporter is running, its collection of statistics is available on port
 
 ### How to Configure Prometheus to Monitor Client Nodes
 
-The client nodes are now ready for monitoring. To add clients to `prometheus.yml`, follow these steps.
+The client nodes are now ready for monitoring. To add clients to `prometheus.yml`, follow the steps below:
 
 1.  On the monitoring server running Prometheus, open `prometheus.yml` for editing.
 
@@ -389,7 +390,7 @@ The client nodes are now ready for monitoring. To add clients to `prometheus.yml
     sudo systemctl restart prometheus
     ```
 
-1.  Using a web browser, revisit the Prometheus web portal at port `9090` on the monitoring server. Select **Status** and then  **Targets**. A second link for the `remote_collector` job is displayed, leading to port `9100` on the client. Click the link to review the statistics.
+1.  Using a web browser, revisit the Prometheus web portal at port `9090` on the monitoring server. Select **Status** and then **Targets**. A second link for the `remote_collector` job is displayed, leading to port `9100` on the client. Click the link to review the statistics.
 
     ![Prometheus with Second Target Added](Prometheus-Second-Target.png)
 
@@ -462,7 +463,7 @@ Grafana provides an interface for viewing the statistics collected by Prometheus
 
 All system components are now installed, but Grafana and Prometheus are not set up to interact. The remaining configuration tasks, including adding Prometheus as the data source and importing a dashboard panel, can be accomplished using the Grafana web interface.
 
-To integrate Grafana and Prometheus, follow these steps.
+To integrate Grafana and Prometheus, follow the steps below:
 
 1.  Using a web browser, visit port `3000` of the monitoring server. For example, enter `http://local_ip_addr:3000`, replacing `local_ip_addr` with the actual IP address. Grafana displays the login page. Use the user name `admin` and the default password `password`. Change the password to a more secure value when prompted to do so.
 
@@ -500,7 +501,7 @@ To integrate Grafana and Prometheus, follow these steps.
 
 A dashboard displays statistics for the client node using a more effective and standardized layout. It is certainly possible to create a custom dashboard. However, Prometheus has already created a dashboard to support the Node Exporter statistics. The `Node Exporter Full` dashboard neatly graphs most of the values collected from the client nodes. It is much less work to import this premade dashboard than to create a custom one.
 
-To import the Node Exporter dashboard, follow these steps.
+To import the Node Exporter dashboard, follow the steps below:
 
 {{< note >}}
 To create a custom dashboard, click on the **Dashboard** button, which resembles four squares. Then select **+ New Dashboard**. Consult the Grafana guide to [Building a Dashboard](https://grafana.com/docs/grafana/latest/getting-started/build-first-dashboard/) for additional information.
