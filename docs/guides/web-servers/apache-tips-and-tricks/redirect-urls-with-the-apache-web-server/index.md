@@ -35,10 +35,14 @@ Remember to reload Apache configuration after making changes:
 
 {{< tabs >}}
 {{< tab "CentOS 7" >}}
+```command
 sudo systemctl restart httpd
+```
 {{< /tab >}}
 {{< tab "Ubuntu 16.04" >}}
+```command
 sudo systemctl restart apache2
+```
 {{< /tab >}}
 {{< /tabs >}}
 
