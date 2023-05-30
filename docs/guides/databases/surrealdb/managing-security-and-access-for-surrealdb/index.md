@@ -278,7 +278,7 @@ To get started with user accounts, then, you need to define a scope for those ac
     ```command
     DEFINE SCOPE userAccount SESSION 3d
         SIGNUP (CREATE user SET username = $username, pass = crypto::argon2::generate($pass))
-        SIGNIN (SELECT * FROM user WHERE username = $username AND crypto::argon2::compare(pass, $pass))
+        SIGNIN (SELECT * FROM user WHERE username = $username AND crypto::argon2::compare(pass, $pass));
     ```
 
 1. Leverage information about the current user's scope to define fine-grained access to tables and records. What you see below is a simple example. It requires external users to be in the `userAccount` scope to `SELECT` records from the `article` table, and prohibits access to the `CREATE`, `UPDATE`, and `DELETE` type statements.

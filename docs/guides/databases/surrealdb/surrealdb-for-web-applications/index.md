@@ -21,3 +21,27 @@ external_resources:
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
+
+## OUTLINE
+
+- Complete Getting Started and Managing Access guides
+
+    - In this case:
+
+        1. Install SurrealDB
+
+        1. Start it up with a root user and a persistent location
+
+        1. Create a limited user on `exampleDb` in `exampleNs`
+
+        1. Restart SurrealDB without the root user
+
+- Provision base schema and data
+
+    - The example application provides a to-do list, so create a `todo` table with three items
+
+    - Associate each `todo` record with a user via an `assigned` relational table
+
+    - Define a scope for user accounts, `users`
+
+- Create a web application to interface with the to-do list
