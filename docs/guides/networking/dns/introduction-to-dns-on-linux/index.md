@@ -39,7 +39,7 @@ Regardless of level, all DNS name servers provide information about items within
 
 DNS clients use recursion, the concept of repeating a process multiple times using information gleaned from the previous step, to learn how to locate resources.
 
-For example, when visiting [www.linode.com](https://www.linode.com), your system first conduct a series of recursive DNS exchanges to learn the server’s IP address before it can connect with the Linode web server.
+For example, when visiting [www.linode.com](https://www.linode.com), your system first conducts a series of recursive DNS exchanges to learn the server’s IP address before it can connect with the Linode web server.
 
 First, your client checks to see if it has an IP address for the Linode webserver in its local cache. If not, it asks your local DNS server.
 
@@ -47,15 +47,15 @@ If the local DNS server doesn’t have an IP address in its cache, it then asks 
 
 Your local DNS server then repeats its query, this time to a `.com` name server. The `.com` name server replies, "I don’t know, but I can tell you the IP addresses of name servers for [linode.com](https://linode.com)".
 
-Then the local DNS server asks, for the third time, what IP addresses correspond to the hostname [www.linode.com](https://www.linode.com). This time the [linode.com](https://linode.com) name servers are authorized to provide a direct answer to your question.
+The local DNS server then asks, for the third time, what IP addresses correspond to the hostname [www.linode.com](https://www.linode.com). This time, the [linode.com](https://linode.com) name servers are authorized to provide a direct answer to your question.
 
 A Linode name server responds with IP addresses for the Linode web server. Your local DNS server passes along that information to your client, and caches it for future use.
 
 Finally, your system has an IP address for the Linode web server. It can now set up a TCP connection and make an HTTP request.
 
-You see, before you could retrieve the web page your client and the local DNS server had multiple conversations with three outside sets of DNS servers, plus your local DNS server, just to get an IP address.
+Before you could retrieve the web page, your client and the local DNS server had multiple conversations with three outside sets of DNS servers, plus your local DNS server, just to get an IP address.
 
-Believe it or not, that's a relatively simple example. A popular commercial site, such as a news site, has advertising and other third-party embedded content. This could require having these sets of DNS conversations several dozen times, or more, just to load a single page.
+Believe it or not, that's a relatively simple example. A popular commercial site, such as a news site, has advertising and other embedded third-party content. This could require having these sets of DNS conversations several dozen times, or more, just to load a single page.
 
 While all this occurs in milliseconds, it underscores how critical DNS is to a functional Internet. Everything begins with a series of DNS queries.
 
@@ -75,7 +75,7 @@ A forwarding server is one that makes external DNS requests on behalf of clients
 
 A recursive resolver makes DNS queries, either for itself or on behalf of other clients, and optionally caches the replies. As with any type of caching, it’s best to store information as close as possible to your client. While your local client may perform recursion, your local DNS server almost certainly does.
 
-By far the most common DNS server software is [Bind 9](https://www.isc.org/bind/), the open source package maintained by the Internet Systems Consortium. Bind can function as any type of DNS server. It also supports many DNS extensions added over the years that go well beyond it's original design goals.
+By far the most common DNS server software is [Bind 9](https://www.isc.org/bind/), the open source package maintained by the Internet Systems Consortium. Bind can function as any type of DNS server. It also supports many DNS extensions that go well beyond it's original design goals.
 
 Because of Bind’s age and size, some users prefer smaller, more modern DNS implementations. Two of the more popular are [NSD](https://www.nlnetlabs.nl/projects/nsd/about/), an authoritative-only name server, and [Unbound](https://nlnetlabs.nl/projects/unbound/about/), a resolver that also does forwarding and caching. This guide covers authoritative name server setup using NSD.
 
@@ -103,7 +103,15 @@ The above list is enough for a bare-bones setup, but other common RR types inclu
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file with your external IP addresses (IPv4 and IPv6), domain (`ns1.yourdomainhere.com`), and hostname (`ns1`).
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1` and configure the hosts file as follows:
+
+    ```file {title="/etc/hosts"}
+    127.0.0.1 localhost
+    203.0.113.10 ns1.yourdomainhere.com ns1
+    2600:3c01::a123:b456:c789:d012 ns1.yourdomainhere.com ns1
+    ```
+
+    Replace the example IP addresses with your Linode instance's external IPv4 and IPv6 addresses, and `yourdomainhere.com` with your domain name.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -192,25 +200,47 @@ Since the NSD documentation already includes a fully annotated sample configurat
 
     NSD does *not* start unless you explicitly configure your system’s external IP addresses. That’s because Ubuntu’s `systemd-resolved` process already binds to TCP and UDP ports `53` on the `localhost` address.
 
-    Since the localhost address is already in use, simply binding to all addresses won’t work. Because NSD is an authoritative-only name server serving external clients, it can bind to external addresses without affecting the system’s ability to resolve addresses on the `localhost` address.
+    Since the `localhost` address is already in use, simply binding to all addresses won’t work. Because NSD is an authoritative-only name server serving external clients, it can bind to external addresses without affecting the system’s ability to resolve addresses on the `localhost` address.
 
 1.  Uncomment two `ip-address` statements in the `server:` section of the `nsd.conf` file, substituting your system’s addresses for these examples:
 
-    ```file
+    ```file {title="/etc/nsd/nsd.conf" hl_lines="26-27"}
     server:
-          # ...
-          ip-address: 45.79.218.211
-          ip-address: 2600:3c02::f03c:93ff:fec7:0cd5
-          # ...
+            # Number of NSD servers to fork.  Put the number of CPUs to use here.
+            # server-count: 1
+
+            # Set overall CPU affinity for NSD processes on Linux and FreeBSD.
+            # Any server/xfrd CPU affinity value will be masked by this value.
+            # cpu-affinity: 0 1 2 3
+
+            # Bind NSD server(s), configured by server-count (1-based), to a
+            # dedicated core. Single core affinity improves L1/L2 cache hits and
+            # reduces pipeline stalls/flushes.
+            #
+            # server-1-cpu-affinity: 0
+            # server-2-cpu-affinity: 1
+            # ...
+            # server-<N>-cpu-affinity: 2
+
+            # Bind xfrd to a dedicated core.
+            # xfrd-cpu-affinity: 3
+
+            # Specify specific interfaces to bind (default are the wildcard
+            # interfaces 0.0.0.0 and ::0).
+            # For servers with multiple IP addresses, list them one by one,
+            # or the source address of replies could be wrong.
+            # Use ip-transparent to be able to list addresses that turn on later.
+            ip-address: 45.79.218.211
+            ip-address: 2600:3c02::f03c:93ff:fec7:0cd5
     ```
 
 1.  Next, move down to the file’s `remote-control:` section. Find the `control-enable` line, uncomment it, and change `no` to `yes`:
 
-    ```file
+    ```file {title="/etc/nsd/nsd.conf" hl_lines="1,4"}
     remote-control:
-          # ...
-          control-enable: yes
-          #...
+            # Enable remote control with nsd-control(8) here.
+            # set up the keys and certificates with nsd-control-setup.
+            control-enable: yes
     ```
 
     This allows you to add, remove, and edit DNS entries using the `nsd-control` utility without having to restart the NSD server every time.
@@ -246,9 +276,9 @@ A functional authoritative name server is now set up, but it’s not yet serving
     sudo nano /etc/nsd/zones/master/yourdomainhere.com.zone
     ```
 
-1.  Add these contents to the file, substituting your domain name and hostnames as appropriate:
+1.  Add these contents to the file, substituting your domain name and IP addresses as appropriate:
 
-    ```file{title="/etc/nsd/zones/master/yourdomainhere.com.zone" hl_lines="1 4 12 20 28 30 31"}
+    ```file{title="/etc/nsd/zones/master/yourdomainhere.com.zone" hl_lines="1,4,12-18,20-26,28,30-31"}
     $ORIGIN yourdomainhere.com.
     $TTL 3600
     ;; SOA Record
@@ -284,15 +314,15 @@ A functional authoritative name server is now set up, but it’s not yet serving
 
     There are a couple of things to note in the zone file:
 
-    -   First is the zone file syntax. Comments always begin with one or more semicolons. Using a hash mark or any other character for comments results in a syntax error when the `nsd-checkzone` utility is run. It also causes the zone not to load.
+    -   First is the zone file syntax. Comments always begin with one or more semicolons (";"). Using a hash mark ("#") or any other character for comments results in a syntax error when the `nsd-checkzone` utility is run. It also causes the zone not to load.
 
     -   Second, notice that the records for `paul` and `stu` point to the same IP addresses, as do `ns1` and `ns2`. This underscores an important aspect of DNS: one hostname can refer to many addresses, and vice-versa. It is this capability that makes virtual hosting possible.
 
-        While `paul` and `stu` only share the same IP address for demonstration purposes, `ns1` and `ns2` sharing an IP address has actual utility. Domain registrars require a minimum of two name servers to utilize custom DNS. Since this guide only sets up a single primary name server, having records for two name servers allows you to proceed with domain delegation. The second part of our series on DNS cover how to set up a secondary name server on a separate Linode instance.
+        While `paul` and `stu` only share the same IP address for demonstration purposes, `ns1` and `ns2` sharing an IP address has actual utility. Many domain registrars require a minimum of two name servers to utilize custom DNS. Since this guide only sets up a single primary name server, having records for two name servers allows you to proceed with domain delegation. The second part of our series on DNS cover how to set up a secondary name server on a separate Linode instance.
 
     -   Third, note that fully qualified hostnames always have a period appended, representing the parent zone:
 
-        ```file
+        ```
         @  	MX  	10  	stu.yourdomainhere.com.
         ```
 
@@ -300,16 +330,14 @@ A functional authoritative name server is now set up, but it’s not yet serving
 
         Avoid this issue with the `$ORIGIN yourdomainhere.com.` macro that begins this zone file. This tells the NSD daemon to append "`yourdomainhere.com.`" to any host or domain name not ending with a period. For example, with `$ORIGIN yourdomainhere.com.` applied, these two A records are functionally identical:
 
-        ```file
-        $ORIGIN yourdomainhere.com.
-        ; ..
-        john                A   	96.126.102.179
-        john.yourdomainhere.com.	  A   	96.126.102.179
+        ```
+        john                          A   	96.126.102.179
+        john.yourdomainhere.com.      A   	96.126.102.179
         ```
 
         Again, note the final period when using the full form.
 
-    When done, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to save and close the file.
+    When done, save and close the file.
 
 1.  Use the `nsd-checkzone` utility to verify the zone file’s syntax:
 
@@ -325,17 +353,15 @@ A functional authoritative name server is now set up, but it’s not yet serving
 
     If not, the command outputs the syntax errors causing the error.
 
-1.  Next, configure the NSD server so that it responds to queries for the newly created zone. Open the NSD configuration file:
+1.  Next, configure the NSD server so that it responds to queries for the newly created zone. Open the NSD configuration file again:
 
     ```command
-    cd /etc/nsd
-    sudo nano nsd.conf
+    sudo nano /etc/nsd/nsd.conf
     ```
 
-1.  Towards the end of the file, uncomment the `zone:` section and the `name:` and `zonefile:` entries. Add your domain name and zone file as shown below:
+1.  Towards the end of the file, uncomment the `zone:` section along with the `name:` and `zonefile:` entries. Add your domain name and zone file as shown below:
 
-    ```file{title="/etc/nsd/nsd.conf" hl_lines="2 3 8"}
-    ...
+    ```file{title="/etc/nsd/nsd.conf" hl_lines="1,2,7"}
     zone:
         name: "yourdomainhere.com""
         # you can give a pattern here, all the settings from that pattern
@@ -343,12 +369,11 @@ A functional authoritative name server is now set up, but it’s not yet serving
         # include-pattern: "master"
         # You can also specify (additional) options directly for this zone.
         zonefile: "zones/master/yourdomainhere.com.zone"
-    ...
     ```
 
-    Repeat this step, starting with a `zone:` statement, for any additional zones you create in the future. Note that the zone file locations are relative to `/etc/nsd` (i.e. the full pathname is not necessary).
+    For any additional zones you create in the future, simply repeat this step, starting with a `zone:` statement. Note that the zone file locations are relative to `/etc/nsd`, so the full pathname is not necessary.
 
-    Save and close the file.
+    When done, save and close the file.
 
 1.  Validate the configuration file’s syntax:
 
@@ -370,7 +395,11 @@ The final step is to delegate name service to the new server at your domain regi
 Linode is not a registrar. This step is performed at a third-party registrar such as [Dynadot](https://www.dynadot.com/account/signin.html), [GoDaddy](https://www.godaddy.com/), or [Hover](https://www.hover.com/domains). You must use the registrar where your domain is registered.
 {{< /note >}}
 
-Every registrar’s management tool allows you to delegate DNS to two or more name servers for your domain. Usually, the registrar needs the hostname and IP addresses for each name server. Be sure to point to the new name server twice, as `ns1.yourdomainhere.com` and as `ns2.yourdomainhere.com`, and provide the same IP address for both.
+Every registrar’s management tool allows you to delegate DNS to one or more name servers for your domain. Usually, the registrar needs the hostname and IP addresses for each name server. Be sure to point to the new name server's hostname and IP address.
+
+{{< note >}}
+Many domain registrars require a minimum of two name servers for custom DNS. If this is the case, simply add `ns2.yourdomainhere.com` alongside `ns1.yourdomainhere.com`, and provide the same IP address for both.
+{{< /note >}}
 
 In theory, delegation changes can take 24-48 hours to propagate through the global Internet. However, in practice propagation usually happens much faster, often in 5 minutes or less.
 
@@ -421,6 +450,6 @@ ns2.yourdomainhere.com.
 
 ## Conclusion
 
-You now have a working authoritative name server. Other guides cover redundancy with primary and secondary name servers, securing DNS with DNSSEC, and user privacy issues.
+You now have a working authoritative name server. Other DNS guides cover redundancy with primary and secondary name servers, securing DNS with DNSSEC, and user privacy issues.
 
 DNS is the essential glue that ties together the global Internet. You can opt to use Linode’s free DNS service for cloud operations, or set up your own name server as described here. Either way, a solid understanding of the protocol puts you in ultimate charge of your domain and all resources within it.
