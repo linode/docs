@@ -37,12 +37,17 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 ### Kepler Options
 
+- **Webserver Stack** *(required)*: Chose which webserver to use for the Wordpress deployment, Apache2 or NGINX. 
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
-- **Admin Username** *(required)*: Username for your WordPress admin user account.
-- **Admin Password** *(required)*: Password for your WordPress admin user account.
-- **MySQL `root` password** *(required)*: The root password for your MySQL database.
-- **WordPress Database Password** *(required)*: The root password for your WordPress database.
+- **Wordpress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
+- **Wordpress Database Username** *(required)*: MySQL username for the Wordpress database user. Defaults to `wordpress` if no username is entered.
+- **Wordpress Database Name** *(required)*: Name for the Wordpress MySQL database. Defaults to `wordpress` if no database name is defined.
 - **Website Title:** Enter a title for your WordPress site.
+
+    {{< note >}}
+    The passwords for the Wordpress Admin User, Wordpress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the Wordpress deployment completes.
+    {{< /note >}}
+
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 

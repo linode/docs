@@ -3,7 +3,7 @@ description: "WordPress is an industry standard CMS. Follow this guide to deploy
 keywords: ['wordpress','wp cli','marketplace apps', 'cms', 'deploy wordpress with marketplace', 'easy install wordpress']
 tags: ["debian","cloud manager","linode platform","cms","wordpress","marketplace","ssl","web applications"]
 published: 2020-09-28
-modified: 2022-07-28
+modified: 2023-05-31
 modified_by:
   name: Linode
 title: "Deploy WordPress through the Linode Marketplace"
@@ -27,17 +27,21 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:**  Debian 11, Ubuntu 22.04 LTS
-- **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites.
+- **Supported distributions:**  Ubuntu 22.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used, though a minimum of a 4GB Dedicated CPU Compute Instance is recommended for production websites. 
 
 ### WordPress Options
 
+- **Webserver Stack** *(required)*: Chose which webserver to use for the Wordpress deployment, Apache2 or NGINX. 
 - **Email address** *(required)*: Enter the email address you wish to use when configuring the WordPress admin user, generating SSL certificates, and optionally creating DNS records for a custom domain.
-- **Admin Username** *(required)*: Username for your WordPress admin user account.
-- **Admin Password** *(required)*: Password for your WordPress admin user account.
-- **MySQL `root` password** *(required)*: The root password for your MySQL database.
-- **WordPress Database Password** *(required)*: The root password for your WordPress database.
+- **Wordpress Admin Username** *(required)*: Username for your WordPress admin user account. Defaults to `admin` if no username is entered.
+- **Wordpress Database Username** *(required)*: MySQL username for the Wordpress database user. Defaults to `wordpress` if no username is entered.
+- **Wordpress Database Name** *(required)*: Name for the Wordpress MySQL database. Defaults to `wordpress` if no database name is defined.
 - **Website Title:** Enter a title for your WordPress site.
+
+    {{< note >}}
+    The passwords for the Wordpress Admin User, Wordpress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the Wordpress deployment completes.
+    {{< /note >}}
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 

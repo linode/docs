@@ -28,13 +28,16 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 11, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04LTS
 - **Recommended minimum plan:** 1GB Shared Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ### LEMP Stack Options
 
-- **Database Root Password** *(required)*: The root password for your LEMP stack's MySQL database. This is not the same as the Linux root user password.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+    {{< note >}}
+    The passwords for the Wordpress Admin User, Wordpress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the Wordpress deployment completes.
+    {{< /note >}}
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 

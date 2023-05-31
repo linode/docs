@@ -27,13 +27,16 @@ A LAMP (Linux, [Apache](https://www.apache.org), [MySQL](https://www.mysql.com),
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10, Debian 11, Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** 1GB Shared Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ### LAMP Stack Options
 
-- **MySQL Root Password** *(required)*: The root password for your LAMP stack's MySQL database. This is not the same as the Linux root user password.
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
+
+    {{< note >}}
+    The password for the MySQL root user is automatically generated and provided in the file `/root/.linode_credentials.txt` when the LAMP deployment completes.
+    {{< /note >}}
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
 
