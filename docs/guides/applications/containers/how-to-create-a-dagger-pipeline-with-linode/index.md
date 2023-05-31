@@ -59,7 +59,7 @@ For more background on Dagger, see the [Dagger Documentation](https://docs.dagge
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  To publish the container, you must have access to a container registry. This guide uses the open source [Harbor](https://goharbor.io/) registry to publish the container. However, it is possible to push the container to any container repository. For information on how to create a Harbor registry on a Linode, see the guide on [Deploying Harbor through the Linode Marketplace](https://www.linode.com/docs/products/tools/marketplace/guides/harbor/). Before using Harbor, it is necessary to create a project to host the container.
+1.  To publish the container, you must have access to a container registry. This guide uses the open source [Harbor](https://goharbor.io/) registry to publish the container. However, it is possible to push the container to any container repository. For information on how to create a Harbor registry on a Linode, see the guide on [Deploying Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/). Before using Harbor, it is necessary to create a project to host the container.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
