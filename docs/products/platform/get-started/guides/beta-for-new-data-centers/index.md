@@ -19,6 +19,25 @@ Akamai Cloud's newest data centers in Washington, DC (USA) and Paris (France) ar
 These data centers are in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
 {{< /note >}}
 
+## Deploy Services in a Beta Data Center
+
+Follow the instructions below to target one of the new data centers when deploying a service.
+
+-   **Cloud Manager:** Select the name of the data center you wish to use in the region dropdown menu.
+
+    ![Screenshot of the Cloud Manager region selection dropdown menu](select-washington-dc-cloud-manager.png)
+
+-   **Linode CLI and Linode API:** Use one of the following data center region IDs:
+
+    | Data Center | Region ID |
+    | -- | -- |
+    | Paris, France | `fr-par` |
+    | Washington, DC, USA | `us-iad` |
+
+{{< note type="warning" noTitle=true >}}
+If you are a beta participant but are not able to target one of the new data centers, please contact the [Support team](https://www.linode.com/support/) for assistance. You need to request access to *each* data center you wish to use during the beta period.
+{{< /note >}}
+
 ## Pricing
 
 Resources deployed during the beta will be free to users. You will be notified 30 days in advance of billing as we transition to general availability. Select services will not be available at the time of this message but could become available during the beta period.
@@ -73,25 +92,6 @@ The pricing for Premium Compute Instance [Backups](/docs/products/storage/backup
 | Premium 512 GB | $240 |
 
 The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
-
-## Deploy Services in a Beta Data Center
-
-Follow the instructions below to target one of the new data centers when deploying a service.
-
-- **Cloud Manager:** Select the name of the data center you wish to use in the region dropdown menu.
-
-    ![Screenshot of the Cloud Manager region selection dropdown menu](select-washington-dc-cloud-manager.png)
-
-- **Linode CLI and Linode API:** Use one of the following data center region IDs:
-
-    | Data Center | Region ID |
-    | -- | -- |
-    | Paris, France | `fr-par` |
-    | Washington, DC, USA | `us-iad` |
-
-{{< note type="warning" noTitle=true >}}
-If you are a beta participant but are not able to target one of the new data centers, please contact the [Support team](https://www.linode.com/support/) for assistance.
-{{< /note >}}
 
 ## Additional Specifications
 
