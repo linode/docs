@@ -64,7 +64,17 @@ export function newLanguageSwitcherController(weglot_api_key) {
 					return element.lang === this.currentLang;
 				});
 			},
-
+			languageIDs: function (prefix) {
+				//A string of language IDs prefixed with the given prefix separated by spaces.
+				let s = '';
+				for (let i = 0; i < this.languages.length; i++) {
+					s += prefix + this.languages[i].lang;
+					if (i < this.languages.length - 1) {
+						s += ' ';
+					}
+				}
+				return s;
+			},
 			isDefaultLanguage: function () {
 				return this.currentLang === 'en';
 			},
