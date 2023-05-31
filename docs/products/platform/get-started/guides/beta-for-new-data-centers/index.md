@@ -19,6 +19,13 @@ Akamai Cloud's newest data centers in Washington, DC (USA) and Paris (France) ar
 These data centers are in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
 {{< /note >}}
 
+## List of New Data Centers
+
+| Data Center | Status | Region ID |
+| -- | -- | -- |
+| Paris, France | *Closed beta* | `fr-par` |
+| Washington, DC, USA | *Closed beta* | `us-iad` |
+
 ## Deploy Services in a Beta Data Center
 
 Follow the instructions below to target one of the new data centers when deploying a service.
@@ -27,12 +34,7 @@ Follow the instructions below to target one of the new data centers when deployi
 
     ![Screenshot of the Cloud Manager region selection dropdown menu](select-washington-dc-cloud-manager.png)
 
--   **Linode CLI and Linode API:** Use one of the following data center region IDs:
-
-    | Data Center | Region ID |
-    | -- | -- |
-    | Paris, France | `fr-par` |
-    | Washington, DC, USA | `us-iad` |
+-   **Linode CLI and Linode API:** If a command or request requires a region ID, use the one that corresponds to your desired data center in the [table above](#list-of-new-data-centers).
 
 {{< note type="warning" noTitle=true >}}
 If you are a beta participant but are not able to target one of the new data centers, please contact the [Support team](https://www.linode.com/support/) for assistance. You need to request access to *each* data center you wish to use during the beta period.
