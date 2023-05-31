@@ -32,7 +32,7 @@ Kepler requires a valid license to use the software beyond the initial 14 day fr
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 10
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended minimum plan:** All plan types and sizes can be used.
 
 ### Kepler Options
