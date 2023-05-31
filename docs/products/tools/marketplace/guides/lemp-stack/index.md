@@ -36,7 +36,7 @@ The LEMP stack (Linux, [NGINX](https://www.nginx.com/), [MySQL](https://www.mysq
 - **Email address** *(required)*: Enter the email address to use for generating the SSL certificates.
 
     {{< note >}}
-    The passwords for the Wordpress Admin User, Wordpress Database User and MySQL root user are automatically generated and provided in the file `/root/.linode_credentials.txt` when the Wordpress deployment completes.
+    The password for the MySQL root user is automatically generated and provided in the file `/root/.linode_credentials.txt` when the LEMP deployment completes.
     {{< /note >}}
 
 {{< content "marketplace-limited-user-fields-shortguide">}}
