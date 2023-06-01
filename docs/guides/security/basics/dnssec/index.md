@@ -81,7 +81,7 @@ The chain of trust is a key concept in DNSSEC. It establishes that each DNSSEC-e
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides. This guide is for Ubuntu 22.04 LTS instances.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.example.com`, replacing `example.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.yourdomainhere.com`, replacing `yourdomainhere.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
 
 1.  Follow our Introduction to DNS on Linux (/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
 
@@ -91,7 +91,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Enable DNSSEC Using NSD
 
-This guide uses the `example.com` domain as an example. Replace this address with your own domain in the steps that follow. It is authoritative for the zone `example.com`.
+This guide uses the `yourdomianhere.com` domain as an example. Replace this address with your own domain in the steps that follow. It is authoritative for the zone `yourdomainhere.com`.
 
 1.  Remove any previously installed keys and certificates in `/etc/nsd`, then generate new ones:
 
@@ -127,19 +127,19 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     sudo su - root
     ```
 
-1.  Move to the zones directory and generate ZSK and KSK files.
+1.  Move to the `zones` directory and generate ZSK and KSK files.
 
     ```command
     cd /etc/nsd/zones/master
-    export ZSK=`/usr/bin/ldns-keygen -a ECDSAP256SHA256 -b 1024 example.com`
-    export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 example.com`
+    export ZSK=`/usr/bin/ldns-keygen -a ECDSAP256SHA256 -b 1024 yourdomainhere.com`
+    export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 yourdomainehere.com`
     ```
 
 1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the Zone Maintenance(/docs/guides/security/basics/dnssec#Zone-Maintenance) section.
 
     ```command
-    echo $ZSK > example.com.zsk
-    echo $KSK > example.com.ksk
+    echo $ZSK > yourdomainhere.com.zsk
+    echo $KSK > yourdomainhere.com.ksk
     ```
 
     Note the use of the ECDSAP256SHA256 algorithm, also known as algorithm 13. Although DNSSEC accommodates many algorithms, this one is a current best practice. It uses the very strong Elliptic Curve Digital Signal Algorithm (ECDSA) with the P-256 curve and computes hashes with SHA-256. Currently, it is not computationally feasible to defeat this algorithm within a key’s lifetime.
@@ -150,10 +150,10 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     rm *ds
     ````
 
-1.  While still logged in as root, sign the `example.com` zone using the ZSK and KSK variables you previously created:
+1.  While still logged in as root, sign the `yourdomainhere.com` zone using the ZSK and KSK variables you previously created:
 
     ```command
-    ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
+    ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) yourdomainhere.com.zone $ZSK $KSK
     ```
 
 1.  In addition to keys, the zones directory now contains a signed zone file.
@@ -163,14 +163,14 @@ This guide uses the `example.com` domain as an example. Replace this address wit
     ```
 
     ```output
-    Kexample.com.+013+06274.key
-    Kexample.com.+013+06274.private
-    Kexamples.com.+013+55738.key
-    Kexample.com.+013+55738.private
-    example.com.ksk
-    example.com.zone
-    example.com.zone.signed
-    example.com.zsk
+    Kyourdomainhere.com.+013+06274.key
+    Kyourdomainhere.com.+013+06274.private
+    Kyourdomainhere.com.+013+55738.key
+    Kyourdomainhere.com.+013+55738.private
+    yourdomainhere.com.ksk
+    yourdomainhere.com.zone
+    yourdomainhere.com.zone.signed
+    yourdomainhere.com.zsk
     ```
 
 1.  Open the main `/etc/nsd/nsd.conf` configuration file:
@@ -181,11 +181,14 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
 1.  Modify the `zonefile:` value in the `zone:` section to point to the signed zone file:
 
-    ```file {title="/etc/nsd/nsd.conf"}
+    ```file {title="/etc/nsd/nsd.conf" hl_lines="7"}
     zone:
-    ..
-    zonefile: "zones/master/example.com.zone.signed"
-    ..
+            name: "yourdomainhere.com"
+            # you can give a pattern here, all the settings from that pattern
+            # are then inserted at this point
+            # include-pattern: "master"
+            # You can also specify (additional) options directly for this zone.
+            zonefile: "zones/master/yourdomainhere.com.zone.signed"
     ```
 
     When finished, press <kbd>CTRL</kbd>+<kbd>X</kbd> then <kbd>Y</kbd> and <kbd>Enter</kbd> to save and close the file.
@@ -194,7 +197,7 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
     ```command
     nsd-control reconfig
-    nsd-control reload example.com
+    nsd-control reload yourdomainhere.com
     ```
 
     ```output
@@ -212,19 +215,19 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 1.  A `dig` query for the zone using DNSKEY now return records with DNSSEC signatures:
 
     ```command
-    dig DNSKEY @ns1.example.com example.com +multiline +norec
+    dig DNSKEY @ns1.yourdomainhere.com yourdomainhere.com +multiline +norec
     ```
 
     ```output
     ..
-    example.com.	3600 IN	DNSKEY 256 3 13 (
-                    LWaVmaC8mVyGlrU1uF+tOsO8od6HCy21owPW+k5EDUI0
-                    T0MGJietjPQ2akcOuyfixZ3h0DGeCdCByfsrGD4t3w==
-                    ) ; ZSK; alg = ECDSAP256SHA256 ; key id = 6274
-    example.com.	3600 IN	DNSKEY 257 3 13 (
-                    ebKStT/78jf0NVrKm5qVrTrSLWRoGIqmvgNYKgdzTAgv
-                    Wxjfjh4P3JPEgwlMxLHmb3liZd+8De2FwJEWy7m0Yg==
-                    ) ; KSK; alg = ECDSAP256SHA256 ; key id = 55738
+    yourdomainhere.com.	3600 IN	DNSKEY 256 3 13 (
+                        LWaVmaC8mVyGlrU1uF+tOsO8od6HCy21owPW+k5EDUI0
+                        T0MGJietjPQ2akcOuyfixZ3h0DGeCdCByfsrGD4t3w==
+                        ) ; ZSK; alg = ECDSAP256SHA256 ; key id = 6274
+    yourdomainhere.com.	3600 IN	DNSKEY 257 3 13 (
+                        ebKStT/78jf0NVrKm5qVrTrSLWRoGIqmvgNYKgdzTAgv
+                        Wxjfjh4P3JPEgwlMxLHmb3liZd+8De2FwJEWy7m0Yg==
+                        ) ; KSK; alg = ECDSAP256SHA256 ; key id = 55738
     ..
     ```
 
@@ -232,12 +235,12 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
     ```command
     cd /etc/nsd/zones/master
-    sudo ldns-key2ds -n -f -2 example.com.zone.signed
+    sudo ldns-key2ds -n -f -2 yourdomainhere.com.zone.signed
     ```
 
     ```output
-    example.com.	3600	IN	DS	6274  13 2 044783c65c032a0ae25a1de626e341c483a89601c766e812a001bc512145fc81
-    example.com.	3600	IN	DS	55738 13 2 c4dae4d001f8c8f1b4f1adec890eba39010143752e6ce03b6567c85aa7fbde46
+    yourdomainhere.com.	3600	IN	DS	6274  13 2 044783c65c032a0ae25a1de626e341c483a89601c766e812a001bc512145fc81
+    yourdomainhere.com.	3600	IN	DS	55738 13 2 c4dae4d001f8c8f1b4f1adec890eba39010143752e6ce03b6567c85aa7fbde46
     ```
 
 1.  Your server does not return valid responses until these DS records are uploaded at your registrar. For each DS record, add this information at the registrar:
@@ -255,7 +258,7 @@ This guide uses the `example.com` domain as an example. Replace this address wit
 
 1.  Next, verify the configuration with a DNSSEC test site such as [dnsviz.net](https://dnsviz.net). The site analyzes a domain and produces a visual "map" of your DNSSEC authentication chain.
 
-    The following is an example [dnsviz.net](https://dnsviz.net) diagram for the domain `linoderocks.com`, which has been fully configured for a simple production environment. Each rectangle represents a different level in the chain of trust, with one each for the root (`.`), `.com`, and `linoderocks.com` domains. The green arrows along the path indicate that a complete chain of trust extends from the root (`.`) on through to `linoderocks.com`.
+    The following is an example [dnsviz.net](https://dnsviz.net) diagram for the example domain `linoderocks.com`. Each rectangle represents a different level in the chain of trust, with one each for the root (`.`), `.com`, and `linoderocks.com` domains. The green arrows along the path indicate that a complete chain of trust extends from the root (`.`) on through to `linoderocks.com`.
 
     ![A visualization of the chain of trust.](dnsviz_visualization_linoderocks.jpg)
 
@@ -268,7 +271,7 @@ DNSSEC requires extra steps when updating records and keys.
 1.  Anytime changes are made within a zone, the entire zone must be resigned:
 
     ```command
-    ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) example.com.zone $ZSK $KSK
+    ldns-signzone -n -s $(head -n 1000 /dev/urandom | sha256sum | cut -b 1-16) yourdomainhere.com.zone $ZSK $KSK
     ```
 
     For the `$ZSK` and `$KSK` variables in this command, enter the names of your current ZSK and KSK files, without the filename extensions.
@@ -276,10 +279,10 @@ DNSSEC requires extra steps when updating records and keys.
 1.  Then reload the zone:
 
     ```command
-    sudo nsd-control reload example.com
+    sudo nsd-control reload yourdomainhere.com
     ```
 
-    Wait for the zone’s default time-to-live (TTL) timer (typically one hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and other name servers refresh their caches, other name servers may hold old records in their caches that don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
+    Wait for the zone’s default time-to-live (TTL) timer (typically one hour) to expire before testing the zone at [dnsviz.net](https://www.dnsviz.net) or similar sites. Until the TTL expires and name servers refresh their caches, other name servers may hold old records in their caches that don’t match your newly signed zone. After the TTL expires, all sources should agree on your zone’s contents.
 
 As for key rotation, zone signatures expire after 30 days by default. If not renewed, your zone becomes unreachable on the public Internet. Neither of the two most common DNS server distributions (Bind and NSD) include tools for automated key rollover. The open source [dnssec-reverb](https://github.com/northox/dnssec-reverb) project does automate key rollover, and works with both Bind and NSD.
 
