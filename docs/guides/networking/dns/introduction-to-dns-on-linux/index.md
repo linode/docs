@@ -384,7 +384,7 @@ A functional authoritative name server is now set up, but it’s not yet serving
 1.  If the server returns no errors, restart the NSD service:
 
     ```command
-    systemctl restart nsd
+    sudo systemctl restart nsd
     ```
 
 ### Delegation at Your Registrar
