@@ -1,8 +1,5 @@
 ---
 slug: download-files-from-your-linode-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to download files, database dumps, or whole disks from your Linodes."
 keywords: ["download", "files", "disk", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ title: Download Files from your Linode - Shortguide
 headless: true
 tags: ["security"]
 aliases: ['/security/data-portability/download-files-from-your-linode-shortguide/']
+authors: ["Linode"]
 ---
 
 ## Download Specific Files or Directories over SSH

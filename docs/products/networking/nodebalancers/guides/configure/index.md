@@ -1,19 +1,16 @@
 ---
-author:
-  name: Linode Docs
-  email: docs@linode.com
 title: "Configuration Options for NodeBalancers"
 description: "Learn how to create a NodeBalancer, Linode's custom load balancing solution."
 keywords: ["load balancing", "nodebalancer"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode
 tags: ["linode platform","networking"]
 aliases: ['/nodebalancers/reference/','/platform/nodebalancer/nodebalancer-reference-guide-new-manager/','/platform/nodebalancer/nodebalancer-reference-guide/','/linode-platform/nodebalancer-reference/','/platform/nodebalancer/nodebalancer-reference-guide-classic-manager/','/guides/nodebalancer-reference-guide/']
+authors: ["Linode"]
 ---
 
-NodeBalancers, and load balancers in general, operate by taking inbound traffic over certain ports and distributing that traffic to pre-defined backend instances. For NodeBalancers, the settings that accommodate this behavior are all stored within *Configurations*. Each configuration specifies the inbound port, the protocol, the load balancing algorithm, heath checks, and the backend nodes. This guide covers how to add or edit these configurations as well as the options that are available.
+NodeBalancers, and load balancers in general, operate by taking inbound traffic over certain ports and distributing that traffic to pre-defined backend instances. For NodeBalancers, the settings that accommodate this behavior are all stored within *Configurations*. Each configuration specifies the inbound port, the protocol, the load balancing algorithm, health checks, and the backend nodes. This guide covers how to add or edit these configurations as well as the options that are available.
 
 ## Add or Edit Configurations
 
@@ -41,10 +38,10 @@ The protocol can be set to either TCP, HTTP, or HTTPS. While a brief description
 
 - **HTTP:** Unencrypted web traffic using HTTP/1.1. This terminates the HTTP request on the NodeBalancer, allowing the NodeBalancer to create a new HTTP request to the backend machines. This can be used when serving most standard web applications, especially if you intend on configuring the NodeBalancer to use HTTPS mode with TLS/SSL termination.
 
-- **HTTPS:** Encrypted web traffic using HTTP/1.1. Since this terminates the request on the NodeBalancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish configure TLS/SSL certificates on the NodeBalancer and not on individual backend nodes.
+- **HTTPS:** Encrypted web traffic using HTTP/1.1. Since this terminates the request on the NodeBalancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish to configure TLS/SSL certificates on the NodeBalancer and not on individual backend nodes.
 
-    {{< note >}}
-    Since TLS/SSL connections are terminated on the NodeBalancer, all traffic to backend nodes over the private data center network uses the HTTP protocol and is *not* encrypted. The backends should listen to the NodeBalancer over HTTP, not HTTPS.
+    {{< note type="warning" noTitle=true >}}
+    When using the **HTTPS** protocol setting, all traffic is decrypted on the NodeBalancer. Traffic between the NodeBalancer and the backend nodes is sent over the private data center network, is not encrypted, and uses the HTTP protocol.
     {{< /note >}}
 
 ### Proxy Protocol
@@ -74,7 +71,7 @@ This controls how subsequent requests from the same client are routed when selec
 
 - **Table**: This preserves the initial backend selected for an IP address by the chosen algorithm. Subsequent requests by the same client are routed to that backend, when possible. This map is stored within the NodeBalancer and expires after 30 minutes from when it was added. If a backend node goes offline, entries in the table for that backend are removed. When a client sends a new request, it is then rerouted to another backend node (in accordance with the chosen algorithm) and a new entry is created in the table.
 
-- **HTTP Cookie**: *Requires the configuration protocol be set to HTTP or HTTPS.* The NodeBalancer stores a cookie (named `NB_SRVID`) on the client that identifies the backend the client is initially routed to. Subsequent requests by the same client are routed to that backend, when possible. If a backend node goes offline, the request is rerouted to another backend node (in accordance with the chosen algorithm) and the cookie is rewritten with the new backend identifier.
+- **HTTP Cookie**: *Requires the configuration protocol be set to HTTP or HTTPS.* The NodeBalancer stores a cookie (named `NB_SRVID`) on the client that identifies the backend where the client is initially routed to. Subsequent requests by the same client are routed to that backend, when possible. If a backend node goes offline, the request is rerouted to another backend node (in accordance with the chosen algorithm) and the cookie is rewritten with the new backend identifier.
 
     {{< note >}}
     The client must have cookies enabled. If the client has disabled cookies or deletes cookies, session persistence is not preserved and each new request is routed in accordance with the chosen algorithm.
@@ -102,7 +99,7 @@ NodeBalancers perform both passive and active health checks against the backend 
 
 ### Active Health Checks
 
-*Active* health checks proactively query the backend nodes by performing TCP connections or making HTTP requests. To enable an active health check, chose from one of the following types:
+*Active* health checks proactively query the backend nodes by performing TCP connections or making HTTP requests. To enable an active health check, choose from one of the following types:
 
 - **TCP Connection**: Requires a successful TCP handshake with a backend node.
 - **HTTP Valid Status**: Performs an HTTP request on the provided path and requires a 2xx or 3xx response from the backend node.

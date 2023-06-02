@@ -1,10 +1,11 @@
 ---
 title: Get Started
+title_meta: "Getting Started with the Linode Marketplace"
 description: "Learn how to deploy and use One-Click Apps hosted on the Linode Marketplace."
 tab_group_main:
     weight: 20
 published: 2022-03-08
-modified: 2022-09-07
+modified: 2023-03-20
 aliases: ['/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/','/guides/how-to-use-marketplace-apps-at-linode/', '/products/tools/marketplace-one-click-apps/guides/marketplace-deploy-app/', '/products/tools/marketplace-one-click-apps/guides/marketplace-access-app/','/products/tools/marketplace-one-click-apps/guides/marketplace-add-domain-name/']
 image: how-to-use-linode-oneclick-apps.png
 ---
@@ -14,6 +15,10 @@ The Linode Marketplace enables users to quickly deploy software applications to 
 ## Deploy a Marketplace App
 
 When a Marketplace App is deployed, a new Compute Instance is created and the appropriate software is installed with the settings you provide. Marketplace Apps do not install software to already-existing instances in your account.
+
+{{< note >}}
+There are two types of deployments available: single instances and clusters. Most Marketplace Apps that are available in the Linode Marketplace are single instances and, as such, only deploy a single Compute Instance to your account. If an app is marked with the `cluster` label, it instead creates multiple Compute Instances as part of a cluster deployment.
+{{< /note >}}
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and select the **Marketplace** link from the left navigation menu. This displays the Linode **Create** page with the **Marketplace** tab pre-selected.
 

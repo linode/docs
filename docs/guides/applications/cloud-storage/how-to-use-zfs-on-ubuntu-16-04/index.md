@@ -1,10 +1,5 @@
 ---
 slug: how-to-use-zfs-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Alexandru Andrei
 description: 'How to use ZFS to store data redundantly and avoid silent data corruption.'
 og_description: 'The Z File System (ZFS) helps protect against silent data corruption while improving redundancy, read/write speeds, and compression. This guide shows how to use ZFS and configure vdevs on a Linode.'
 keywords: ["zfs", "file system", "volume manager", "redundant", "silent corruption", "mirror", "raid", "pool"]
@@ -19,6 +14,7 @@ external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
 aliases: ['/applications/cloud-storage/how-to-use-zfs-on-ubuntu-16-04/']
+authors: ["Alexandru Andrei"]
 ---
 
 ![How to Use ZFS on Ubuntu 16.04](zfs-on-ubuntu-title.jpg "How to Use ZFS on Ubuntu 16.04 title graphic")

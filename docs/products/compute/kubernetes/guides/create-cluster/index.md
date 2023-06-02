@@ -1,11 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Create a Cluster
 description: "Learn how to create a Kubernetes cluster on the Linode Kubernetes Engine (LKE)."
 aliases: ['/products/compute/kubernetes/guides/create-lke-cluster/']
 published: 2023-02-09
+authors: ["Linode"]
+tags: ["managed hosting"]
 ---
 
 This guide walks you through creating an LKE (Linode Kubernetes Engine) cluster through the Cloud Manager.
@@ -32,7 +31,7 @@ Select the **region** where the LKE cluster will reside. Regions correspond with
 
 - [Global Infrastructure](https://www.linode.com/global-infrastructure/)
 - [Speed Tests for Data Centers](https://www.linode.com/speed-test/)
-- [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/)
+- [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/)
 
 ## Choose a Kubernetes Version
 

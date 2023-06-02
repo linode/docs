@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
 keywords: ["nginx", "nginx ubuntu 10.04", "http", "web servers", "ubuntu", "ubuntu l0.04", "ubuntu lucid"]
 tags: ["web server","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

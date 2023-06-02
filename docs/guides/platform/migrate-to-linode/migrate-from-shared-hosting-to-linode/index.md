@@ -1,8 +1,5 @@
 ---
 slug: migrate-from-shared-hosting-to-linode
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Migrate your website from a shared host to a Linode cloud server running a LAMP stack.'
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2013-10-18
 title: Migrate from Shared Hosting to Linode
 tags: ["linode platform"]
+authors: ["Linode"]
 ---
 
 ![Migrate from Shared Hosting to Linode](migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")
@@ -106,9 +104,9 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
         scp ~/example.com example_user@server_ip_address:/var/www/html/example.com/public_html
 
-    {{< note respectIndent=false >}}
-`example_user` should be the user on your Linode you want to log in as, and `example.com` should be replaced by your domain name.
-{{< /note >}}
+    {{< note >}}
+    Replace `example_user` with your Linode's user and `example.com` with your domain name.
+    {{< /note >}}
 
     If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/guides/install-mysql-phpmyadmin-ubuntu-14-04/) at this point. You can also [restore your database](/docs/guides/mysqldump-backups/#restoring-an-entire-dbms-from-backup) using the command line.
 

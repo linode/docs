@@ -1,8 +1,5 @@
 ---
 slug: manage-distributed-source-branches-with-bazaar
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use the Bazaar version management system to track progress of source code and collaborate on files without the need for a central server.'
 keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
  - '[Official Bazaar User Documentation](http://doc.bazaar.canonical.com/latest/en/user-guide/)'
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
 Bazaar is a distributed version control system similar to [git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Bazaar allows developers to track the progress of source code and collaborate on a single object of work without depending on a centralized server to coordinate their activity. Unlike git, Bazaar's interface will be familiar to users of a centralized version control system like [Subversion](/docs/guides/manage-source-code-versions-with-subversion/).

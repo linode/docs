@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-openjdk-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: Learn what's involved in installing OpenJDK on Debian 10, and how you can test your OpenKDL installation through a simple "Hello World" application.
 keywords: ["java", "openjdk", "jdk", "11", "Debian", "10"]
 tags: ["java","debian"]
@@ -14,8 +11,6 @@ modified_by:
 published: 2020-03-25
 title: Installing Java Development Kit 11 on Debian 10
 title_meta: How To Install Java Development Kit 11 on Debian 10
-contributor:
-  name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 relations:
@@ -24,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/java/how-to-install-openjdk-on-debian-10/']
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 [Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Debian 10.

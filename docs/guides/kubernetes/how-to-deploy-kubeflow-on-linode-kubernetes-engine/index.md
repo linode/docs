@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-kubeflow-on-linode-kubernetes-engine
-author:
-  name: Daniele Polencic
-  email: daniele@learnk8s.io
 description: "In this guide, you'll learn how to deploy Kubeflow and train a model using Kubeflow pipelines on Linode Kubernetes Engine."
 keywords: ['kubernetes','kubeflow','machine learning','containers','tensorflow']
 tags: ["python","kubernetes","linode platform"]
@@ -12,15 +9,13 @@ modified_by:
   name: Linode
 title: "Deploying Kubeflow on Linode Kubernetes Engine"
 title_meta: "How to Deploy Kubeflow on LKE (Linode Kubernetes Engine)"
-contributor:
-  name: Daniele Polencic
-  link: https://github.com/danielepolencic
 image: 'deploying_kubeflow_on_linode_kubernetes_engine.png'
 external_resources:
 - '[Multi-user, auth-enabled Kubeflow installation](https://www.kubeflow.org/docs/started/k8s/kfctl-istio-dex/)'
 - '[Kubeflow Jupyter notebooks](https://www.kubeflow.org/docs/notebooks/)'
 - '[Kubeflow pipelines](https://www.kubeflow.org/docs/pipelines/)'
 aliases: ['/kubernetes/how-to-deploy-kubeflow-on-linode-kubernetes-engine/']
+authors: ["Daniele Polencic"]
 ---
 
 ## What is Kubeflow?

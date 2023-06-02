@@ -1,8 +1,5 @@
 ---
 slug: webpy-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Debian 5 (Lenny).'
 keywords: ["web.py", "web applications", "python", "web frameworks"]
 tags: ["web applications","apache","python","debian"]
@@ -19,6 +16,7 @@ relations:
         key: webpy
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 Web.py is a web application framework that stresses minimalism, flexibility, rapid application development, and straight forward deployment. Originally developed to power the popular news and link aggregation site "Reddit," web.py is a powerful option for developing systems for the web.

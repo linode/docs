@@ -1,8 +1,5 @@
 ---
 slug: email-warning-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays the warning note that email ports are blocked on all new Compute Instances by default.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-31
@@ -14,8 +11,9 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/email-warning-shortguide/']
+authors: ["Linode"]
 ---
 
-{{< note type="warning" title="Spam prevention and email restrictions on the Linode Platform" isCollapsible=true >}}
-This guide may involve sending email from a Compute Instance. In an effort to fight spam, Linode may restrict outbound connections on ports 25, 465, and 587 on Compute Instances for new accounts created after November 5th, 2019. For more information, please see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
+{{< note type="warning" title="Email restrictions on the Linode Platform" >}}
+In an effort to fight spam originating from our platform, outbound connections on ports 25, 465, and 587 are blocked by default on Compute Instances for *some* new accounts. These restrictions prevent applications from sending email. If you intend to send email from a Compute Instance, review the [Send Email on the Linode Platform](/docs/products/platform/get-started/guides/send-email/) guide to learn more about our email policies and to request the removal of these restrictions.
 {{< /note >}}

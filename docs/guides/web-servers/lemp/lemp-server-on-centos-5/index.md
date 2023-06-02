@@ -2,9 +2,6 @@
 slug: lemp-server-on-centos-5
 deprecated: true
 deprecated_link: 'web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi/'
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install web applications with "LEMP," a LAMP-like stack using nginx, PostgreSQL/MySQL, and Perl/Python/PHP.'
 keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 tags: ["lemp","web server","php","mysql","centos","nginx"]
@@ -20,6 +17,7 @@ relations:
         key: install-lemp-stack
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 

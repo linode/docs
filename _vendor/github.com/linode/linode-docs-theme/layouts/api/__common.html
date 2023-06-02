@@ -37,6 +37,62 @@ This template includes common API logic and functions.
   {{ printf "<h%d id='%s'>%s%s</h%d>" .level .id .title $anchor .level | safeHTML }}
 {{ end }}
 
+{{ define "partials/openapi3/algolia-operation-content-plain" }}
+  {{- $m := partial "openapi3/algolia-operation-content"  . -}}
+  {{- $s := newScratch -}}
+  {{- range $k, $v := $m -}}
+    {{- if reflect.IsSlice $v -}}
+      {{ printf "%s: " $k }}
+      {{- range $v -}}
+        {{- printf " %s" (. | plainify) -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $v | plainify -}}
+    {{- end -}}
+  {{- end -}}
+{{ end }}
+
+{{ define "partials/openapi3/algolia-operation-content" }}
+  {{ $ctx := .Values }}
+  {{ $api := $ctx.api }}
+  {{ $p := $ctx.page }}
+  {{ $dot := $ctx.dot }}
+  {{ $op := $dot.o }}
+  {{ $result := newScratch }}
+  {{ with $op }}
+    {{ with .RequestBody }}
+      {{ with .Value }}
+        {{ with index .Content "application/json" }}
+          {{ with .Schema }}
+            {{ $.Set "dot" . }}
+            {{ $.Set "hideReadOnly" true }}
+            {{ $items := partial "openapi3/schema-to-plain-slice" $ }}
+            {{ $result.Set "Request Body" $items }}
+            {{ $.Set "hideReadOnly" false }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ with .Responses }}
+      {{ with .Value }}
+        {{ $items := slice }}
+        {{ range $k, $v := . }}
+          {{ $.Set "dot" .Value }}
+          {{ $.Set "title" $k }}
+          {{ with index .Content "application/json" }}
+            {{ with .Schema }}
+              {{ $.Set "dot" . }}
+              {{ $items = $items | append (partial "openapi3/schema-to-plain-slice" $) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ $result.Set "Response Body" $items }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ return $result.Values }}
+{{ end }}
+
 {{ define "openapi3/print-operation" }}
   {{ $ctx := .Values }}
   {{ $api := $ctx.api }}
@@ -121,16 +177,33 @@ This template includes common API logic and functions.
     {{ end }}
 
     {{/* Code samples */}}
-    {{ with .ExtensionProps.Extensions }}
-      {{ with index . "x-code-samples" }}
-        {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
-        {{ $samples := . | transform.Unmarshal }}
-        {{ $samplesTabs := slice }}
-        {{ range $samples }}
-          {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+    {{ if gt hugo.Version "0.111.3" }}
+      {{/* Hugo 0.112.0 updated kin-openapi, which had a breaking change: */}}
+      {{/* - the ExtensionProps is now just a map. */}}
+      {{/* - the code samples are now just strings, not raw JSON. */}}
+      {{ with .Extensions }}
+        {{ with index . "x-code-samples" }}
+          {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+          {{ $samplesTabs := slice }}
+          {{ range . }}
+            {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+          {{ end }}
+          {{ $.Set "dot" $samplesTabs }}
+          {{ template "openapi3/component-tabs" $ }}
         {{ end }}
-        {{ $.Set "dot" $samplesTabs }}
-        {{ template "openapi3/component-tabs" $ }}
+      {{ end }}
+    {{ else }}
+      {{ with .ExtensionProps.Extensions }}
+        {{ with index . "x-code-samples" }}
+          {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+          {{ $samples := . | transform.Unmarshal }}
+          {{ $samplesTabs := slice }}
+          {{ range $samples }}
+            {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+          {{ end }}
+          {{ $.Set "dot" $samplesTabs }}
+          {{ template "openapi3/component-tabs" $ }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
@@ -192,6 +265,25 @@ This template includes common API logic and functions.
       {{ end }}
     </table>
   {{ end }}
+{{ end }}
+
+{{ define "partials/openapi3/schema-to-plain-slice" }}
+  {{ $items := slice }}
+  {{- $ctx := .Values -}}
+  {{ $s := $ctx.dot }}
+  {{ $p := $ctx.page }}
+  {{ $.Set "oneOfPickFirst" false }}
+  {{ $required := newScratch }}
+  {{ partial "openapi3/schema-to-map-collect-required" (dict "dollar" $required "dot" $s.Value ) }}
+  {{ $.Set "requiredMap" $required.Values }}
+  {{ $m := (partial "openapi3/schema-to-map" (dict "dollar" $ )) }}
+  {{ range $k, $v := $m.Properties }}
+    {{ $items = $items | append (printf "%s: %s" $k ( $v.Description | plainify)) }}
+  {{ end }}
+  {{ if not $m.Properties }}
+    {{ $items = $items | append ( $m.Description | plainify ) }}
+  {{ end }}
+  {{ return $items }}
 {{ end }}
 
 {{ define "partials/openapi3/print-schema" }}

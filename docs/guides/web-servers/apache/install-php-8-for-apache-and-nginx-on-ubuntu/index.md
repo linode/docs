@@ -1,7 +1,5 @@
 ---
 slug: install-php-8-for-apache-and-nginx-on-ubuntu
-author:
-  name: Jeff Novotny
 description: 'This guide shows you how to install PHP 8 and PHP-FPM for use with Apache and NGINX on an Ubuntu system.'
 keywords: ['Nginx PHP-fpm','Apache php','Php 8','Php fpm','What is PHP?']
 tags: ['php', 'nginx', 'apache', 'ubuntu']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Install PHP 8 for Apache and NGINX on Ubuntu"
 title_meta: "How to Install PHP 8 for Apache and NGINX on Ubuntu"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Introductory PHP tutorial](https://www.php.net/)'
 - '[Complete PHP Documentation](https://www.php.net/manual/en/)'
+authors: ["Jeff Novotny"]
 ---
 
 [*PHP*](https://www.php.net/) is one of the building blocks of the modern internet. It is a free, open-source scripting language that typically runs on a web server and can be integrated into regular HTML code. PHP is fast, flexible, and can interact with databases, forms, and file systems. This guide provides a brief introduction to PHP and explains how to install, configure, upgrade, and test it.

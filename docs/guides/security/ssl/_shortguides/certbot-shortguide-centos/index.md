@@ -1,8 +1,5 @@
 ---
 slug: certbot-shortguide-centos
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "Install Certbot to obtain TLS certificates on a CentOS 7 or Red Hat server."
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 title: 'Install Certbot for TLS on CentOS'
 headless: true
+authors: ["Edward Angert"]
 ---
 
 1.  Enable the EPEL repository:

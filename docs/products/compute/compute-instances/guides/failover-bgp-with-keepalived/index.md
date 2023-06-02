@@ -1,18 +1,13 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide covers how to configure Keepalived with a simple health check and enable it to control lelastic, a simple BGP daemon created for the Linode platform."
 keywords: ['IP failover','keepalived','elastic IP']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-19
 modified: 2022-11-28
 modified_by:
   name: Linode
 title: "Use Keepalived Health Checks with BGP-based Failover"
-contributor:
-  name: Linode
 aliases: ['/guides/keepalived-with-bgp-failover/']
+authors: ["Linode"]
 ---
 
 [Keepalived](https://linux.die.net/man/8/keepalived) is one of the most commonly used applications that implements VRRP, a networking protocol that manages IP address assignment and ARP-based failover. It can be configured with additional health checks, such as checking the status of a service or running a custom script. When one of these health checks detects an issue, the instance changes to a fault state and failover is triggered. During these state transitions, additional task can be performed through custom scripts.

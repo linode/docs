@@ -1,10 +1,12 @@
-# Contribute to Linode
+# In this Guide
 
-This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+- [How to download and install the Linode Docs library](#installing-the-docs-library)
 
-## Fixing an issue
+- [How to contribute to the library](#contributing-to-the-docs-library)
 
-If you want to start contributing by helping us correct existing issues, go to our [GitHub issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
+# Installing the Docs Library
+
+Linode's documentation library uses a static site generator, [Hugo](https://gohugo.io/), to build the website from Markdown (`.md`) files. Building the site requires Node.js, NPM, and Go.
 
 ## Install prerequisites
 
@@ -14,7 +16,7 @@ Some parts of the Linode documentation environment require the [GO programming l
 
 #### Install Go on macOS and Windows
 
-The Go package can be found on the [offical downloads page](https://go.dev/dl/). Install the latest package available for your operating system. Since the latest version that is available at the time of this writing is 1.19.1, links to that version are used below:
+The Go package can be found on the [official downloads page](https://go.dev/dl/). Install the latest package available for your operating system. Since the latest version that is available at the time of this writing is 1.19.1, links to that version are used below:
 
 - **macOS (Intel):** Use the x.darwin-amd64.pkg file ([go1.19.1.darwin-amd64.pkg](https://go.dev/dl/go1.19.1.darwin-amd64.pkg))
 - **macOS (Apple Silicon):** Use the x.darwin-arm64.pkg file ([go1.19.1.darwin-arm64.pkg](https://go.dev/dl/go1.19.1.darwin-arm64.pkg))
@@ -68,7 +70,7 @@ To Install the latest Node.js LTS release on Windows, navigate to the [downloads
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.105.0**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.111.3**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
 
 Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
@@ -76,10 +78,10 @@ Note: If you observe any issues on a newer version, please [file an issue](https
 
 To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.111.3 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.111.3) under **Assets**.
 
-    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_darwin-universal.tar.gz
-    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_extended_0.105.0_Linux-64bit.tar.gz
+    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_darwin-universal.tar.gz
+    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_Linux-64bit.tar.gz
 
     You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
@@ -89,7 +91,7 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
         tar -xvzf [file]
 
-    Once extracted, there should be a `hugo` file in the same directory. This is used to run hugo.
+    Once extracted, there should be a `hugo` file in the same directory. This is used to run Hugo.
 
 1.  Move the hugo file to a location within your system's PATH variable. For most systems, the `/usr/local/bin` path can be used.
 
@@ -107,13 +109,13 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
     Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
 
-1. Test hugo by running `hugo version`. This should output a long string indicating that version 0.105.0 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+1. Test Hugo by running `hugo version`. This should output a long string indicating that version 0.111.3 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
 
 #### Windows
 
 While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
 
-1. Download the [hugo_0.105.0_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.105.0/hugo_0.105.0_Windows-64bit.zip) file. Additional files for other operating sytems can be found on the [Hugo v0.105.0 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) under **Assets**.
+1. Download the [hugo_0.111.3_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_0.111.3_Windows-64bit.zip) file. Additional files for other operating systems can be found on the [Hugo v0.111.3 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.111.3) under **Assets**.
 
 1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
 
@@ -129,9 +131,15 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner.
 
-1.  Clone your fork of the repository. Replace `YOUR-USERNAME` with your Github username. This example creates a `linode-docs` directory:
+1.  Clone your fork of the repository using either the [HTTPS URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls) or the [SSH URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls). In the commands below, replace `USERNAME` with your GitHub username.
 
-        git clone https://github.com/YOUR-USERNAME/docs linode-docs
+    -   **HTTPS URL:** When prompted for your password, enter your personal access token from GitHub. For instructions on creating this token, see [Creating a Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token).
+
+            git clone https://github.com/USERNAME/docs linode-docs
+
+    -   **SSH URLs:** Before continuing with SSH URLs, you should first have a public/private key pair installed on your local system. Then, you must upload your public key to your GitHub account. When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt. For further instructions, [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+            git clone git@github.com:USERNAME/docs.git linode-docs
 
     This may take a few minutes to copy all of the files and images to your machine.
 
@@ -152,11 +160,20 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  Add the `linode/docs` repository that you forked from as the `upstream` [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for your local repository:
 
-        git remote add upstream https://github.com/linode/docs.git
+    - **HTTPS URL:** `git remote add upstream https://github.com/linode/docs.git`
+    - **SSH URL:** `git remote add upstream git@github.com:linode/docs.git`
 
 1.  Install the Node dependencies for the repository:
 
         npm install
+
+# Contributing to the Docs Library
+
+This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+
+## Fixing an Issue
+
+If you want to start contributing by helping us correct existing issues, go to our [GitHub Issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
 
 ## Create a New Guide
 

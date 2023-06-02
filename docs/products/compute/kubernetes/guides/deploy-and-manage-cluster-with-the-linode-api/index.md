@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to deploy a cluster on Linode Kubernetes Engine (LKE) through the Linode API."
 og_description: "The Linode Kubernetes Engine (LKE) is a fully-managed container orchestration engine for deploying and managing containerized applications and workloads. This guide shows you how to use the Linode API to Deploy and Manage an LKE Cluster."
 keywords: ["kubernetes", "linode kubernetes engine", "managed kubernetes", "lke", "kubernetes cluster"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-11-11
 modified: 2023-02-09
 modified_by:
@@ -13,10 +9,9 @@ modified_by:
 image: deploy-and-manage-cluster-copy.png
 title: "Deploy and Manage a Linode Kubernetes Engine (LKE) Cluster with the Linode API"
 title_meta: "Deploy and Manage a Kubernetes Cluster with the Linode API"
-contributor:
-  name: Linode
 aliases: ['/applications/containers/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/kubernetes/deploy-and-manage-lke-cluster-with-api-a-tutorial/','/guides/deploy-and-manage-lke-cluster-with-api-a-tutorial/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 An LKE cluster can be deployed in one of several ways:
@@ -101,7 +96,7 @@ The available plan types for LKE worker nodes are [Shared](/docs/products/comput
 1. Make note of your cluster's ID, as you need it to continue to interact with your cluster in the next sections. In the example above, the cluster's ID is `"id": 456`. You can also access your cluster's ID by [listing all LKE Clusters](#list-lke-clusters) on your account.
 
     {{< note >}}
-    Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
+    Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
     {{< /note >}}
 
 ### Connect to your LKE Cluster
@@ -401,7 +396,7 @@ The response body resembles the following:
 ```
 
 {{< note >}}
-Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
+Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
 ### Resize your LKE Node Pool
@@ -434,7 +429,7 @@ curl -H "Content-Type: application/json" \
 ```
 
 {{< note >}}
-Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/guides/support/) if you believe this may be the case.
+Each Linode account has a limit to the number of resources they can deploy. This includes services, like Compute Instances, NodeBalancers, Block Storage, etc. If you run into issues deploying the number of nodes you designate for a given cluster's node pool, you may have run into a limit on the number of resources allowed on your account. Contact [Linode Support](/docs/products/platform/get-started/guides/support/) if you believe this may be the case.
 {{< /note >}}
 
 ### Recycle All Nodes Within a Cluster

@@ -1,9 +1,6 @@
 ---
 slug: ssl-certificates-with-apache-2-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 9.10 (Karmic).'
 keywords: ["ssl", "apache ssl", "ssl on ubuntu", "web sever", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["apache","security","ssl","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

@@ -1,8 +1,5 @@
 ---
 slug: why-learn-julia
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide introduces you to the main features, benefits, and limitations of the Julia language, and includes a brief section on installation and use.'
 keywords: ['data science','julia','python','why learn Julia']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +17,7 @@ concentrations: ["Scientific Computing and Big Data"]
 languages: ["julia"]
 dedicated_cpu_link: true
 aliases: ['/development/julia/why-learn-julia/']
+authors: ["Linode"]
 ---
 ![Why You Should Learn Julia](Why_You_Should_Learn_Julia_smg.jpg)
 

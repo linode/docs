@@ -1,9 +1,6 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install and configure the Postfix MTA to work with Courier and MySQL for virtual domains on Fedora 13.'
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on fedora 13", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["fedora","mysql","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

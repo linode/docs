@@ -1,8 +1,5 @@
 ---
 slug: deploy-container-image-to-kubernetes
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to package a Hugo static site in a Docker container image, host the image on Docker Hub, and deploy it on a Linode Kubernetes cluster."
 keywords: ['kubernetes','docker','docker hub','hugo', 'static site']
 tags: ["docker","kubernetes","container"]
@@ -13,13 +10,12 @@ modified_by:
 title: "Create and Deploy a Docker Container Image to a Kubernetes Cluster"
 title_meta: "Build & Deploy a Docker Image to Kubernetes Cluster"
 aliases: ['/applications/containers/kubernetes/deploy-container-image-to-kubernetes/','/applications/containers/deploy-container-image-to-kubernetes/','/kubernetes/deploy-container-image-to-kubernetes/']
-contributor:
-  name: Linode
 concentrations: ["Kubernetes"]
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Official Hugo Documentation](https://gohugo.io/getting-started/installing/)'
 - '[Official Docker Documentation](https://docs.docker.com/docker-hub/builds/)'
+authors: ["Linode"]
 ---
 
 ## Kubernetes and Docker

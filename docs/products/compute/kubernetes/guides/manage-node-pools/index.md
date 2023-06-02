@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Manage Nodes and Node Pools
 description: "How to add a Node Pool to a Linode Kubernetes Engine (LKE) cluster."
 published: 2023-02-09
 aliases: ['/products/compute/kubernetes/guides/add-node-pool/','/products/compute/kubernetes/guides/edit-remove-node-pools/','/products/compute/kubernetes/guides/enable-cluster-autoscaling/']
+authors: ["Linode"]
 ---
 
 **Nodes**, also known as *worker nodes*, are virtual machines (built on top of Compute Instances) that serve as hosts for your containerized applications (*pods*). A **node pool** is a group of nodes that all run the same applications and configuration. Each LKE cluster has at least one node pool but additional node pools can be deployed as needed.
@@ -26,7 +24,7 @@ Additional node pools can be added to host different applications or services wi
 
 1. Navigate to the **Kubernetes** page in the Cloud Manager and select the cluster you wish to edit. See [View Node Pools](#view-node-pools).
 
-1. Within the **Node Pool** section, click the **Add a Nde Pool** button.
+1. Within the **Node Pool** section, click the **Add a Node Pool** button.
 
 1. In the side panel that opens, locate the plan type you wish to use for your first node pool. Currently, the available plan types for LKE worker nodes include [Shared CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#shared-cpu-instances), [Dedicated CPU](/docs/products/compute/compute-instances/plans/choosing-a-plan/#dedicated-cpu-instances), and [High Memory](/docs/products/compute/compute-instances/plans/choosing-a-plan/#high-memory-instances). 1 GB Shared CPU Compute Instances Nanodes (also known as *nanodes*) are not available.
 

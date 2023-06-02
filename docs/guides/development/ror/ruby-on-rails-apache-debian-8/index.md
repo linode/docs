@@ -1,8 +1,5 @@
 ---
 slug: ruby-on-rails-apache-debian-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Debian 8 Wheezy to serve Ruby on Rails applications.'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
 tags: ["web applications","debian","apache","ruby"]
@@ -27,6 +24,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 8
+authors: ["Linode"]
 ---
 
 Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.

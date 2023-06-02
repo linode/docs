@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: Manage a Cluster with kubectl
 description: "Learn how to install kubectl and use it to manage a Kubernetes cluster hosted through LKE."
 published: 2023-02-09
 aliases: ['/products/compute/kubernetes/guides/download-kubeconfig/','/products/compute/kubernetes/guides/install-kubectl/']
+authors: ["Linode"]
 ---
 
 ## Install kubectl

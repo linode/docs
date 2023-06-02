@@ -1,8 +1,5 @@
 ---
 slug: social-networking-with-elgg-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring Elgg, a open-source social networking tool which enables people to connect.'
 keywords: ["social networking", "lamp", "elgg", "elgg debian lenny"]
 tags: ["debian", "cms", "lamp"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2009-12-08
 title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 ---
 
 Elgg is an open source social networking tool that enables groups of people to create and manage common interest sites that allow users to keep blogs, create profiles, join groups, upload files, and update status messages (known as "microblogs"). Updates are shown in a centralized "information feed" so that users can see updates to their friends' profiles or activities.

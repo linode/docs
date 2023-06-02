@@ -1,8 +1,5 @@
 ---
 slug: java-web-server
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'In Java, web servers are minimal HTTP static file servers storing web content. ✓ Learn the basics of Java HTTP servers and how to make a server in Java.'
 keywords: ['java web server', 'java http server', 'how to make a server in java', 'getting started with java', 'java web hosting', 'java web server tutorial', 'java side projects', 'server side programming java', 'java api server', 'server for java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,22 +8,21 @@ modified_by:
   name: Linode
 title_meta: "The Developer’s Guide to Java: Web Servers"
 title: "How to Make a Server in Java in 5 Easy Steps"
-contributor:
-  name: John Mueller
 external_resources:
 - '[DZone: A Simple HTTP Server in Java](https://dzone.com/articles/simple-http-server-in-java)'
+authors: ["John Mueller"]
 ---
 
 Everyone likes the idea of reducing their workload when possible, yet the need to perform basic functionality arises almost constantly. Often, developers end up doing a lot of work for what seems like little return, especially when it comes to basic web design. You don’t need a full-fledged web server to perform quick checks for things like connectivity or to ensure basic functionality. This is where Java 18’s newfound web functionality comes into play. Java 18 sets up and configures a basic Java web server you can use for simple tasks. It only takes a matter of minutes, rather than hours, and it’s a pretty straightforward process. This guide demonstrates how to work with Java 18’s web functionality to create a server in Java. It also covers how to use the `jwebserver` command line tool.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Getting Started with Java 18 (and above)

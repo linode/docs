@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-wordpress-using-wp-cli-on-ubuntu-18-04
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how to install the popular content management system, WordPress, using the WP-CLI, a command line interface for WordPress, on Ubuntu 18.04.'
 og_description: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
@@ -15,9 +12,6 @@ modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 18.04'
 title_meta: 'How to Install WordPress Using WP-CLI on Ubuntu 18.04'
-contributor:
-    name: Navjot Singh
-    link: https://github.com/navjotjsingh
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -27,6 +21,7 @@ relations:
         key: how-to-install-wordpress-using-wp-cli
         keywords:
            - distribution: Ubuntu 18.04
+authors: ["Navjot Singh"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.

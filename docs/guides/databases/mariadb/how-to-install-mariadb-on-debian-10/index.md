@@ -1,15 +1,10 @@
 ---
 slug: how-to-install-mariadb-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Want to replace MySQL? Read through this guide, which explains how to install MariaDB on Debian 10."
 keywords: ["mariadb", "Debian 10", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/how-to-install-mariadb-on-debian-10/','/databases/mariadb/mariadb-setup-debian-10/']
 modified: 2020-01-31
-contributor:
-    name: Ryan Syracuse
 modified_by:
   name: Linode
 published: 2020-01-31
@@ -26,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 10
 tags: ["debian","mariadb","database"]
+authors: ["Ryan Syracuse"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.

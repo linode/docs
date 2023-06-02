@@ -2,7 +2,6 @@
 title: Manage User Permissions
 title_meta: Manage User Permissions for a Linode User Account
 description: "Learn how to manage permissions and restrict user access on a Linode account."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-21
 modified: 2023-01-24
 tags: ["linode platform","users","user permissions"]
@@ -11,7 +10,7 @@ tags: ["linode platform","users","user permissions"]
 Each user on an account can be given individualized permissions that provides unrestricted access to an account or limits their access to specific information or services. For example, you could give your core team members full unrestricted access, grant your accounts payable team access only to view and modify billing details, and limit an outside developer to only access specific Compute Instances or other services.
 
 {{< note >}}
-The permissions discussed within this guide apply to accessing the Linode platform through the Cloud Manager, Linode API, and Linode CLI. If you wish to only provide someone with direct access to the internal system of a Compute Instance (or revoke their access), that can be accomplished through limited user accounts within your operating system. See [Create an Account for a Developer to Work on Your Compute Instance](/docs/guides/create-limited-developer-account/).
+The permissions discussed within this guide apply to accessing the Linode platform through the Cloud Manager, Linode API, and Linode CLI. If you wish to only provide someone with direct access to the internal system of a Compute Instance (or revoke their access), that can be accomplished through limited user accounts within your operating system. See [Create an Account for a Developer to Work on Your Compute Instance](/docs/products/platform/get-started/guides/developer-access/).
 {{< /note >}}
 
 ## View and Set Permissions for a User

@@ -1,19 +1,14 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Node.js on a Linode Compute Instance. This provides a JavaScript runtime to use with web applications."
 keywords: ['nodejs','development','javascript']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Node.js through the Linode Marketplace"
-contributor:
-  name: Linode
 aliases: ['/guides/nodejs-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Node.js](https://nodejs.org/en/) is a lightweight development platform for building fast and scalable applications using Javascript. Since it's based on Javascript, it's relatively easy to learn and has a large community with lots of resources. Node.js can be used for almost any time of web application, including websites, but its asynchronous nature shines when used to develop real-time data-intensive applications

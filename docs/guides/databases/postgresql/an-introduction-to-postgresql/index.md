@@ -1,7 +1,5 @@
 ---
 slug: an-introduction-to-postgresql
-author:
-  name: Jeff Novotny
 description: 'This guide introduces the PostgreSQL database, outlining how it is different from other SQL databases like MySQL, and describes its benefits along with possible use cases.'
 keywords: ['postgresql vs mysql','what is postgresql?','difference between mysql and postgresql','postgres use cases']
 tags: ['postgresql', 'mysql']
@@ -11,11 +9,10 @@ modified_by:
   name: Linode
 title: "What is PostgreSQL?"
 title_meta: "An Introduction to PostgreSQL"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
 external_resources:
 - '[PostgreSQL website](https://www.postgresql.org/)'
+authors: ["Jeff Novotny"]
+tags: ["saas"]
 ---
 
 [*PostgreSQL*](https://www.postgresql.org/) is an *object-relational database management system* (ORDBMS) that provides a powerful alternative to a traditional *relational database management system* (RDBMS). It combines relational and non-relational models to allow for more user flexibility and can handle more complex scenarios and unstructured data. This guide answers the question "What is PostgreSQL?" and outlines the differences between [MySQL](https://www.mysql.com/) and PostgreSQL. It also explains the different PostgreSQL use cases.

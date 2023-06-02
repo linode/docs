@@ -1,8 +1,5 @@
 ---
 slug: mongodb-shell-shortguide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that provides basic information about MongoDB Shell'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-02-28
@@ -13,6 +10,7 @@ keywords: []
 headless: true
 show_on_rss_feed: false
 aliases: ['/mongodb-shell-shortguide/']
+authors: ["Linode"]
 ---
 
 {{< note >}}

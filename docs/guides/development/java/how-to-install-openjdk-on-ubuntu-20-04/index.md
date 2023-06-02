@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-openjdk-on-ubuntu-20-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on Ubuntu 20.04.'
 og_description:  'This guide will show you how to install the free and open-source Open Java Development Kit (OpenJDK) version of the Java Runtime Environment (JRE) on Ubuntu 20.04.'
 keywords: ["java", "openjdk", "jdk", "11", "Ubuntu", "20.04"]
@@ -15,8 +12,6 @@ published: 2020-03-25
 image: InstallJavaDevKit11_Ubuntu2004.png
 title: Installing Java Development Kit 11 on Ubuntu 20.04
 title_meta: How To Install Java Development Kit 11 on Ubuntu 20.04
-contributor:
-  name: Rajakavitha Kodhandapani
 audiences: ["beginner"]
 languages: ["java"]
 relations:
@@ -25,6 +20,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/development/java/how-to-install-openjdk-on-ubuntu-20-04/']
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 [Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Software written in Java can be compiled and run on any system, making Java a versatile platform that can be used to create anything from software to basic web applications. This guide will show you how to install the Open Java Development Kit (OpenJDK) 11 on Ubuntu 20.04.

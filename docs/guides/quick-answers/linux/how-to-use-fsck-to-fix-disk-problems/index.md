@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-fsck-to-fix-disk-problems
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "Having issues with your Linux installation? fsck might be able to help. This guide will walk you through the entire process involved in doing so."
 og_description: "fsck is the Linux file system consistency check utility. This guide shows how to use fsck to check a system for corrupt files and bad disk sectors, then attempt to repair any errors it finds."
 keywords: ["fsck", "file system", "disk repair", "troubleshoot"]
@@ -17,6 +14,7 @@ external_resources:
 - '[fsck on man7.org](http://man7.org/linux/man-pages/man8/fsck.8.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-fsck-to-fix-disk-problems/']
+authors: ["Edward Angert"]
 ---
 
 ![banner_image](How_to_use_fsck_to_Find_and_Repair_Disk_Errors_and_Bad_Sectors_smg.jpg)
@@ -30,7 +28,7 @@ fsck, short for file system consistency check, is a utility that examines the fi
 On some systems, fsck runs automatically after an unclean shutdown or after a certain number of reboots.
 
 {{< note respectIndent=false >}}
-`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
+`fsck` is not installed by default when using Linode's rescue mode, and instead the `e2fsck` tool, which fsck functions as a frontend for, will need to be called directly for standard `ext` filesystems. Please see our [Troubleshooting Guide: Booting into Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) for guidance.
 {{< /note >}}
 
 ## When to Use fsck
@@ -62,7 +60,7 @@ Unmount the target disk first. You risk corrupting your file system and losing d
 
 ### Boot into Rescue Mode
 
-If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
+If you are using fsck on a Linode, the easiest and safest way to unmount your disk is to use Rescue Mode. Visit our [Rescue and Rebuild](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) guide for instructions on how to boot your Linode into Rescue Mode. If you're working on a local machine, consider using the distribution's recovery mode or a live distribution to avoid working on a mounted disk. fsck should be run only as a user with root permissions.
 
 ### View Mounted Disks and Verify Disk Location
 

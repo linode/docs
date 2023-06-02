@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-pyspark
-author:
-  name: Sam Foo
-  email: docs@linode.com
 description: "In this guide, we'll use an example of counting words in a corpus to learn the PySpark API."
 keywords: ["big data", "spark", "nltk", "mapreduce", "pyspark", "hadoop"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,6 +18,7 @@ languages: ["python"]
 dedicated_cpu_link: true
 tags: ["python"]
 aliases: ['/development/python/introduction-to-pyspark/']
+authors: ["Sam Foo"]
 ---
 
 ![Introduction to PySpark](PySpark.jpg)

@@ -1,8 +1,5 @@
 ---
 slug: apache-2-web-server-on-ubuntu-9-04-jaunty
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu Jaunty.'
 keywords: ["Apache", "web sever", "Ubuntu Jaunty"]
 tags: ["web server","apache","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

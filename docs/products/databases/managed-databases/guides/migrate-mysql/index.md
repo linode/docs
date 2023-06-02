@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Migrate a MySQL or MariaDB Database to a Managed Database"
 description: "Learn how to migrate an existing MySQL database to Linode's Managed Database service."
 published: 2022-02-23
 modified: 2022-06-30
+authors: ["Linode"]
 ---
 
 This guide covers how to migrate an existing MySQL or MariaDB database to a Managed Database. When migrating a database, there are two important terms to keep in mind: the *source* database and the *target* database.
@@ -27,7 +25,9 @@ Export the data from the source database into a `.sql` file. While this file is 
 
 -   **mysqldump:** In most cases, you can export the data using the mysqldump command-line tool. The following command exports the specified databases within the local mysql instance into a file called `db-backup.sql`. Replace *[username]* with the username you use to access the database and *[database-name]* with the name of your database.
 
-        sudo mysqldump -u [user] -p --single-transaction [database-name] > db-backup.sql
+    ```command
+    sudo mysqldump -u [user] -p --single-transaction [database-name] > db-backup.sql
+    ```
 
     **Notes on additional command options:**
 
@@ -41,9 +41,9 @@ Export the data from the source database into a `.sql` file. While this file is 
 
     See [Backing Up MySQL Databases Using mysqldump](/docs/guides/mysqldump-backups/) for more details on running the mysqldump command.
 
-- **cPanel:** See [Backup Wizard > Create a partial backup](https://docs.cpanel.net/cpanel/files/backup-wizard/#create-a-partial-backup) and [How to Back Up and Restore MySQL® Databases in cPanel](https://blog.cpanel.com/how-to-back-up-and-restore-mysql-databases-in-cpanel/).
+-   **cPanel:** See [Backup Wizard > Create a partial backup](https://docs.cpanel.net/cpanel/files/backup-wizard/#create-a-partial-backup) and [How to Back Up and Restore MySQL® Databases in cPanel](https://blog.cpanel.com/how-to-back-up-and-restore-mysql-databases-in-cpanel/).
 
-- **Plesk:** See [Exporting and Importing Database Dumps](https://docs.plesk.com/en-US/obsidian/reseller-guide/website-management/website-databases/exporting-and-importing-database-dumps.69538/#).
+-   **Plesk:** See [Exporting and Importing Database Dumps](https://docs.plesk.com/en-US/obsidian/reseller-guide/website-management/website-databases/exporting-and-importing-database-dumps.69538/#).
 
 ### Preventing Corruption
 
@@ -51,15 +51,21 @@ If data is modified during the export, your dataset may become inconsistent or c
 
 -   **Stop NGINX:**
 
-        sudo systemctl stop nginx
+    ```command
+    sudo systemctl stop nginx
+    ```
 
 -   **Stop Apache on Ubuntu/Debian:**
 
-        sudo systemctl stop apache2
+    ```command
+    sudo systemctl stop apache2
+    ```
 
 -   **Stop Apache on RHEL/CentOS:**
 
-        sudo systemctl stop httpd
+    ```command
+    sudo systemctl stop httpd
+    ```
 
 Alternatively, you can activate a _maintenance mode_ (or whatever it may be called for your application) on any applications or services using your database. This typically disables some of your site's functionality and may present a web page to visitors to notify them of the downtime. The process for this varies greatly depending on the application you may be using.
 
@@ -67,7 +73,9 @@ Alternatively, you can activate a _maintenance mode_ (or whatever it may be call
 
 Next, you'll need to import the `.sql` file to your Managed Database (the target database). This process can be accomplished through the mysql command-line tool. Run the following command on a system that has the MySQL client or server software installed. Replace *[host]* and *[username]* with the appropriate values for your database cluster. See the [Connect to a MySQL Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for additional information and to learn how to view your Managed Database's connection details.
 
-    mysql -h [host] -u [username] -p < db-backup.sql
+```command
+mysql -h [host] -u [username] -p < db-backup.sql
+```
 
 ## Update the Database Connection Details within Your Application
 
@@ -79,12 +87,18 @@ If you turned off your web server or placed your application in a *maintenance m
 
 -   **Start NGINX:**
 
-        sudo systemctl start nginx
+    ```command
+    sudo systemctl start nginx
+    ```
 
 -   **Start Apache on Ubuntu/Debian:**
 
-        sudo systemctl start apache2
+    ```command
+    sudo systemctl start apache2
+    ```
 
 -   **Start Apache on RHEL/CentOS:**
 
-        sudo systemctl start httpd
+    ```command
+    sudo systemctl start httpd
+    ```

@@ -1,8 +1,5 @@
 ---
 slug: backing-up-your-data
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide reviews different methods of backing up your Linode's data."
 og_description: "This guide reviews different methods of backing up your Linode's data. It also demonstrates making manual and automatic backups using rsync."
 keywords: ["backup", "backups", "rsync", "cron", "getting started"]
@@ -17,6 +14,7 @@ external_resources:
  - '[WebGnuru''s rsync Tutorial](http://webgnuru.com/linux/rsync_incremental.php)'
 tags: ["security"]
 aliases: ['/security/backups/backing-up-your-data/']
+authors: ["Linode"]
 ---
 
 ![Backing Up Your Data](Backing_Up_Your_Data_smg.jpg)
