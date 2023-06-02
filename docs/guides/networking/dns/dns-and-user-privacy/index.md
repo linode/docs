@@ -37,7 +37,7 @@ In short, a VPN does not guarantee DNS privacy. Only mechanisms intended to auth
 
 ## What Is DNS over TLS (DoT)?
 
-DoT authenticates and encrypts DNS traffic to protect it from interception or forgery. It uses TLS, the same tunneling method used by HTTPS. DoT sets up TLS tunnels over UDP, just like unencrypted DNS traffic. DoT uses UDP port 853, allowing network managers to identify it distinct from other applications.
+DoT authenticates and encrypts DNS traffic to protect it from interception or forgery. It uses TLS, the same tunneling method used by HTTPS. DoT sets up TLS tunnels over UDP, just like unencrypted DNS traffic. DoT uses UDP port 853, allowing network managers to identify it distinctly from other applications.
 
 ## What Is DNS over HTTP (DoH)?
 
@@ -55,7 +55,7 @@ DoH hides DNS traffic from all intermediary "on-path devices". This includes the
 
 However, DoH’s protection may be illusory. The operator of the DNS server still sees DNS queries. If that operator is an ISP, hosting provider, or cloud-based DNS service, it may be data-mining traffic for monetary or (in the case of state-run ISPs) political gain.
 
-While Google is a major DoH proponent, the company derives most of its revenue from data-mining user traffic for resale to advertisers and other data brokers. This included DNS traffic. In its defense, Google offers opt-out mechanisms and other privacy safeguards. Other actors engaged in customer data-mining do not offer the same protections.
+While Google is a major DoH proponent, the company derives most of its revenue from data-mining user traffic for resale to advertisers and other data brokers. This includes DNS traffic. In its defense, Google offers opt-out mechanisms and other privacy safeguards. Other actors engaged in customer data-mining do not offer the same protections.
 
 In this regard, DoH critics say the technology’s real aim isn’t privacy, but rather disintermediation of all other on-path actors. Paul Vixie, a DNS pioneer and DoT advocate, describes DoH as ["an economic and political project masquerading as a technical project"](https://www.dnsfilter.com/blog/paul-vixie-and-peter-lowe-on-why-doh-is-politically-motivated).
 
@@ -170,15 +170,11 @@ server:
 
 [macOS](https://support.quad9.net/hc/en-us/articles/4814293189773-Setup-MacOS-and-DNS-over-HTTPS-or-DNS-over-TLS) and [Windows 11](https://support.quad9.net/hc/en-us/articles/4409803338765-DNS-over-HTTPS-Windows-11-Native-) also natively support DoH, although neither enables it by default. Other operating systems can use DoT or DoH via add-on resolver software such as Unbound or [Stubby](https://dnsprivacy.org/dns_privacy_daemon_-_stubby/).
 
-So far, no major web browser natively supports DoT. Two of the most popular browsers, [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/browsers/) and [Google Chrome](https://www.google.com/chrome/), natively support DoH by default. Other Chrome-derivative browsers, such as [Brave](https://brave.com/), [Chromium](https://www.chromium.org/Home/), [Microsoft Edge](https://www.microsoft.com/en-us/edge?exp=e00&ch&form=MA13FJ), and [Vivaldi](https://vivaldi.com/), support DoH [by enabling a "Use secure DNS" toggle](https://www.ghacks.net/2021/10/23/how-to-enable-dns-over-https-secure-dns-in-chrome-brave-edge-firefox-and-other-browsers/). Virtually all other major browsers except [Apple Safari](https://www.apple.com/safari/) have [configurable support for DoH](https://dnsleaktest.org/dns-over-https).
+So far, no major web browser natively supports DoT. Two of the most popular browsers, [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/browsers/) and [Google Chrome](https://www.google.com/chrome/), natively support DoH by default. Other Chrome-derivative browsers, such as [Brave](https://brave.com/), [Chromium](https://www.chromium.org/Home/), [Microsoft Edge](https://www.microsoft.com/en-us/edge?exp=e00&ch&form=MA13FJ), and [Vivaldi](https://vivaldi.com/), support DoH [by enabling a **Use secure DNS** toggle](https://www.ghacks.net/2021/10/23/how-to-enable-dns-over-https-secure-dns-in-chrome-brave-edge-firefox-and-other-browsers/). Virtually all other major browsers except [Apple Safari](https://www.apple.com/safari/) have [configurable support for DoH](https://dnsleaktest.org/dns-over-https).
 
 ## Conclusion
 
-Effective DNS security depends on four elements:
--   Hardening of DNS servers
--   Cryptographic signing of DNS zones
--   Protection of DNS queries and responses in flight
--   Use of a trusted DNS server
+Effective DNS security depends on four elements: hardening of DNS servers, cryptographic signing of DNS zones, protection of DNS queries and responses in flight, and use of a trusted DNS server.
 
 DNS server security requires one or more secondary servers, keys to authenticate zone updates, and possibly a hidden primary server (see How to Configure Primary and Secondary Servers(docs/guides/dns-primary-and-secondary-server-setup)). Signing zones with DNSSEC ensures that the sites you visit really are what they claim to be (see How to Secure DNS With DNSSEC(docs/guides/dnssec)).
 
