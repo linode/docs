@@ -24,7 +24,7 @@ Ensure you select the correct file for your system. The above command is correct
 
 1. Extract the downloaded file:
 
-        bzip2 -d restic_0.12.0_linux_amd64.bz2
+        bzip2 -d restic_0.15.2_linux_amd64.bz2
 
 1. Move the extracted file to your system's `$PATH` and make it executable for all users:
 
