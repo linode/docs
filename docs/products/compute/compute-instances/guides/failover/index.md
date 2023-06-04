@@ -87,7 +87,7 @@ To configure failover, complete each section in the order shown:
 
 1. Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide.
 
-1. Add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $2 per month*.
+You may want to add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. Although this is not a requirement for using BGP routing tool. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $2 per month*.
 
 1. On the *other* Compute Instance, add the newly assigned IPv4 address or IPv6 range as a *Shared IP* using Linode's **IP Sharing** feature. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
 
