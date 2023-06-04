@@ -16,7 +16,7 @@ show_on_rss_feed: false
 
 1. Download the latest version of Restic from [the Github Releases page](https://github.com/restic/restic/releases) (version 0.12.0 at the time of writing):
 
-        wget https://github.com/restic/restic/releases/download/v0.12.0/restic_0.12.0_linux_amd64.bz2
+        wget https://github.com/restic/restic/releases/download/v0.15.2/restic_0.15.2_linux_amd64.bz2
 
     {{< note >}}
 Ensure you select the correct file for your system. The above command is correct for most Linux distributions on Linode.
