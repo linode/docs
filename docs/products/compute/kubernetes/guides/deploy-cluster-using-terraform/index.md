@@ -276,7 +276,7 @@ Now that your Kubernetes cluster is deployed, you can use kubectl to connect to 
 1. Use Terraform to access your cluster's kubeconfig, decode its contents, and save them to a file. Terraform returns a [base64](https://en.wikipedia.org/wiki/Base64) encoded string (a useful format for automated pipelines) representing your kubeconfig. Replace `lke-cluster-config.yaml` with your preferred file name.
 
     ```command
-    export KUBE_VAR=`terraform output kubeconfig` && echo $KUBE_VAR | base64 -di > lke-cluster-config.yaml
+    export KUBE_VAR=`terraform output kubeconfig | cut -d \d " -f 2` && echo $KUBE_VAR | base64 -di > lke-cluster-config.yaml
     ```
 
     {{< note >}}
