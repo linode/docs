@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.153.2
+  version: 4.154.0
 
   title: Linode API
   description: |
@@ -18815,7 +18815,10 @@ components:
               example: 11/2022
         company:
           type: string
-          description: The company name associated with this Account.
+          description: |
+            The company name associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 128
           example: Linode LLC
         country:
@@ -18831,13 +18834,19 @@ components:
           x-linode-cli-display: 3
         first_name:
           type: string
-          description: The first name of the person associated with this Account.
+          description: |
+            The first name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: John
           x-linode-cli-display: 1
         last_name:
           type: string
-          description: The last name of the person associated with this Account.
+          description: |
+            The last name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: Smith
           x-linode-cli-display: 2

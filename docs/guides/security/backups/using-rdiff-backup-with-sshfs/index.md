@@ -33,7 +33,7 @@ The machines with data being backed up *to* the backup server, will be referred 
 
 3.  SSH in to your backup server.
 
-4.  Add a user to run rdiff-backup as, and add that user to the system's `fuse` user group. The username `rdbadmin` is used as an example, and backups will be stored in this user's home directory.
+4.  Add a user to run rdiff-backup and add that user to the system's `fuse` user group. The username `rdbadmin` is used as an example, and backups will be stored in this user's home directory.
 
         adduser rdbadmin
         usermod -aG fuse rdbadmin

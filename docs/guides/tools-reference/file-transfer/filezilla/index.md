@@ -40,7 +40,7 @@ authors: ["Linode"]
 
 ## Using FileZilla
 
-1.  Launch FileZilla and enter your Linode's IP address or domain name in the `Host` field. Enter the username and password for the account on the Linode you want to connect as, and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
+1.  Launch FileZilla and enter your Linode's IP address or domain name in the `Host` field. Enter the username and password for the account on the Linode you want to connect as and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
 
     ![FileZilla Quickconnect](filezilla-quick-connect.png "FileZilla Quickconnect")
 

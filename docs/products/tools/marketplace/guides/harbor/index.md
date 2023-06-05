@@ -29,7 +29,7 @@ Harbor is an excellent compliment to the [Linode Kubernetes Engine (LKE)](/docs/
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS, Debian 11
+- **Supported distributions:** Ubuntu 22.04 LTS, Debian 11
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Harbor Options

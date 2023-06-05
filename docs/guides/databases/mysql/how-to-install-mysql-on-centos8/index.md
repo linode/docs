@@ -62,7 +62,7 @@ The steps in this section detail installing MySQL on [CentOS Stream 8](https://l
     sudo dnf upgrade
     ```
 
-    During the update process, you may be asked questions such as, if you want to use additional disk space. Also, a progress indicator is shown anytime the system performs an upgrade. Mostly, you see a message telling you that the upgrades completed at the same time as the updates, so there is nothing to upgrade.
+    During the update process, you may be asked questions such as if you want to use additional disk space. Also, a progress indicator is shown anytime the system performs an upgrade. Mostly, you see a message telling you that the upgrades completed at the same time as the updates, so there is nothing to upgrade.
 
 1.	MySQL 8 is conveniently provided as part of the default repositories for CentOS Stream 8. You can directly run the command for MySQL set up as below.
 
