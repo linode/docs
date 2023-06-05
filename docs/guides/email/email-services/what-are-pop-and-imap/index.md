@@ -9,9 +9,6 @@ authors: ["David Robert Newman"]
 published: 2023-06-05
 modified_by:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 Universal email retrieval is all thanks to open standards. Regardless of the hardware and software used, email is accessed via one of two specifications: Post Office Protocol (POP) or Internet Message Access Protocol (IMAP).
@@ -20,9 +17,7 @@ This guide discusses what POP and IMAP are, how they work, and what commands the
 
 ## What Are POP and IMAP?
 
-POP and IMAP are both message *retrieval* protocols that access and present email messages.
-
-POP is the simpler and more lightweight of the two, while IMAP has many additional functions that manipulate folders and set message attributes.
+POP and IMAP are both message *retrieval* protocols that access and present email messages. POP is the simpler and more lightweight of the two, while IMAP has many additional functions that manipulate folders and set message attributes.
 
 Message retrieval is just one of several functions in a complete email system. Neither POP nor IMAP send email messages. Before delving into each protocol, it’s best to review client and server architecture to see where POP and IMAP fit in.
 
@@ -48,7 +43,7 @@ Although this figure shows only a few servers, the same division of labor betwee
 
 ### POP or IMAP?
 
-POP dates from the 1980s, when many clients connected over dial-up connections, few users had multiple computers, and server storage was expensive. For all those reasons, POP assumes the client’s message store to be the "one source of truth". It also allowed message reading offline, which for many TCP/IP client machines in the 1980s, was most of the time. Importantly, POP only works with one inbox on the server, and doesn’t support multiple server-side folders.
+POP dates from the 1980s, when many clients connected over dial-up connections, few users had multiple computers, and server storage was expensive. For all those reasons, POP assumes the client’s message store to be the "one source of truth". It also allowed message reading offline, which for many TCP/IP client machines in the 1980s, was most of the time. POP only works with one inbox on the server, and doesn’t support multiple server-side folders.
 
 In contrast, IMAP is a server-based protocol, and has more features than POP. These include the ability to download message headers (rather than complete messages), set message flags, and create and manage multiple folders on the server. IMAP makes the server the "one source of truth", so the same email can be viewed from any client device connected to that server. With IMAP, all MUAs on all devices sync with the server, so email folder contents look the same everywhere.
 
@@ -80,7 +75,7 @@ IMAP keeps messages on the server, allowing you to see your mail and sync messag
 
 IMAP sessions run over TCP. Servers listen on port 143 for plaintext connections, and port 993 for connections tunneled through TLS. [RFC 8314](https://www.rfc-editor.org/rfc/rfc8314) deprecates plaintext connections given the risk of password and email interception. Always configure MUAs and IMAP servers to use TLS tunneling wherever possible.
 
-IMAP has four states: not authenticated, authenticated, selected, and logout:
+IMAP has four states: Not Authenticated, Authenticated, Selected, and Logout:
 
 -   **Not Authenticated**: The client must present credentials such as a valid email address and password before the IMAP server can accept most other commands. All IMAP conversations begin here unless the server "pre-authenticates" trusted users.
 
@@ -108,12 +103,14 @@ Here is an example POP session set up through a TLS tunnel:
 openssl s_client -connect imap.networktest.com:995 -crlf -quiet
 ```
 
+Here, the client initiates a secure POP connection through a TLS tunnel using TCP port 995.
+
 ```output
 ...
 +OK Dovecot (Debian) ready.
 ```
 
-Here, the client initiates a secure POP connection through a TLS tunnel using TCP port 995. Since the details of TLS tunnel establishment are unimportant to POP, they’re omitted here. The final line is the beginning of the POP session. It indicates that the server is now in the Authorization state, and ready to receive authentication commands from the client.
+Since the details of TLS tunnel establishment are unimportant to POP, they’re omitted here. The final line is the beginning of the POP session. It indicates that the server is now in the Authorization state, and ready to receive authentication commands from the client.
 
 ```command
 USER someuser@foo.com
@@ -162,7 +159,7 @@ DELE 2
 +OK message deleted
 ```
 
-Here, the client requests a list of available messages and their sizes in bytes (all in a single folder, as POP doesn’t support multiple server-side folders). The second command retrieves the first message. The final command deletes the second message listed.
+Here, the client requests a list of available messages and their sizes in bytes (all in a single folder, as POP doesn’t support multiple server-side folders). The second command retrieves the first listed message. The final command deletes the second listed message.
 
 ```command
 QUIT
@@ -236,37 +233,39 @@ Putting it all together looks like this:
 a001 AUTHENTICATE LOGIN
 ```
 
+This is a base64-encoded representation of `Username:`.
+
 ```output
 + VXNlcm5hbWU6
 ```
 
-This is a base64-encoded representation of `Username:`.
+This is the base64-encoded username obtained above:
 
 ```command
 c29tZXVzZXJAZm9vLmNvbQ==
 ```
 
-This is the base64-encoded username obtained above.
+This is a base64-encoded representation of `Password:`:
 
 ```output
 + UGFzc3dvcmQ6
 ```
 
-This is a base64-encoded representation of `Password:`.
+This is the base64-encoded password obtained above:
 
 ```command
 VGhpc0lzQVRlcnJpYmxlUGFzc3dvcmREb250VXNlSXQ=
 ```
 
-This is the base64-encoded password obtained above.
-
 ```output
 a001 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY STATUS=SIZE SAVEDATE LITERAL+ NOTIFY SPECIAL-USE QUOTA ACL RIGHTS=texk] Logged in
 ```
 
-Note that IMAP client commands begin with an alphanumeric string called a tag, and server responses then include that tag for troubleshooting. The client may increment the tag with each command (`a001`, `a002`, etc.), but the RFC doesn’t require this.
-
 The final response indicates that login was successful (`a001 OK`) and lists all the capabilities the IMAP server supports. The server is now in the Authenticated state, and is ready for the client to select a folder or log out.
+
+{{< note >}}
+IMAP client commands begin with an alphanumeric string called a tag, and server responses then include that tag for troubleshooting. The client may increment the tag with each command (`a001`, `a002`, etc.), but the RFC doesn’t require this.
+{{< /note >}}
 
 ```command
 a002 SELECT Inbox
@@ -319,7 +318,7 @@ Here, the client requests the body of the first message in the `Drafts` folder (
 a341 CLOSE
 ```
 
-```ouptut
+```output
 a341 OK Close completed (0.001 + 0.000 secs).
 ```
 
@@ -327,7 +326,7 @@ a341 OK Close completed (0.001 + 0.000 secs).
 a342 LOGOUT
 ```
 
-```outout
+```output
 * BYE Logging out
 a342 OK Logout completed (0.001 + 0.000 secs).
 ```
@@ -336,4 +335,4 @@ To terminate an IMAP session, the client first closes the current folder. If tha
 
 ## Conclusion
 
-Email is truly the "killer app" of the Internet, and IMAP and POP are the protocols that make it happen. Because both are open standards, these protocols enable the retrieval of email on virtually any hardware and software. Along with SMTP, IMAP and POP are the workhorse protocols that make global email retrieval possible.
+Email is truly the "killer app" of the Internet, and IMAP and POP are the protocols that make it happen. Because both are open standards, these protocols enable the retrieval of email on virtually any hardware and software combination. Along with SMTP, IMAP and POP are the workhorse protocols that make global email retrieval possible.
