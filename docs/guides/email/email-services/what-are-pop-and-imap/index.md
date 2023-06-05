@@ -272,7 +272,7 @@ The final response indicates that login was successful (`a001 OK`) and lists all
 a002 SELECT Inbox
 ```
 
-Here the client selects the Inbox, moving the session into the Selected state. 
+Here the client selects the Inbox, moving the session into the Selected state.
 
 ```output
 * FLAGS (\Answered \Flagged \Deleted \Seen \Draft $label2 $Forwarded $Junk $label1 $label3 $label4 $label5 $MDNSent $NotJunk NonJunk Junk Forwarded $MailFlagBit0)
