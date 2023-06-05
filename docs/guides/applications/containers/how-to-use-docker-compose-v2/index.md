@@ -2,8 +2,8 @@
 slug: how-to-use-docker-compose-v2
 authors: ["Jeff Novotny"]
 description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
-og_description: 'This guide provides a brief introduction to Docker Compose V2 and explains how to install and use it.'
-keywords: ['Docker Compose V2','Install Docker Compose','Use Docker Compose','what is Docker Compose V2']
+keywords: ['Docker Compose V2', 'Install Docker Compose', 'Use Docker Compose', 'what is Docker Compose V2']
+tags: ['dokcer', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-09
 modified_by:
@@ -31,7 +31,7 @@ Docker containers are lightweight, efficient, and can run on many different oper
 
 ## What is Docker Compose?
 
-Docker Compose V2 is part of the Docker software suite. The V2 version of Docker streamlines, expands, and supersedes the original V1 version. It uses configuration files to define and build multi-component applications. A configuration file, written in YAML, typically defines the complete architecture for the system. It specifies the applications to install, along with their configuration and settings. Docker Compose can also provide storage, networking, and configuration settings for the system.
+Docker Compose V2 is part of the Docker software suite. The V2 version of Docker streamlines expands and supersedes the original V1 version. It uses configuration files to define and build multi-component applications. A configuration file, written in YAML, typically defines the complete architecture of the system. It specifies the applications to install, along with their configuration and settings. Docker Compose can also provide storage, networking, and configuration settings for the system.
 
 Docker Compose allows users to simultaneously build, deploy, stop, or delete multiple containers. Additional commands provide access to the service logs or the container statuses. Compose commands apply to all containers and cannot be applied to a single container instance. Docker Compose V2 is available either as part of the Docker Desktop GUI suite or as a plug-in for Docker Engine/CLI.
 
@@ -58,7 +58,7 @@ The Docker Compose architecture allows a system to host multiple projects. Each 
 - **Volumes**: A volume defines a path where the application can store data. While `services` often define their own storage space, a volume can allocate shared storage for multiple services.
 - **Networks**: Networks allow services to communicate with each other or to external networks. By default, Docker Compose creates a single network for use by all services. This section can be used to define connections to other networks or application-specific networks. A network can be accessed using the same hostname as the container name.
 - **Configs**: This defines a permanent storage area for application configurations.
-- **Secrets**: Secrets store sensitive configuration attributes in a more secure manner. They are typically protected through the use of keys or certificates.
+- **Secrets**: Secrets store sensitive configuration attributes more securely. They are typically protected through the use of keys or certificates.
 
 Each component is defined using a set of parameters. For example, each entry in `services` must define an `image` to use. It might also optionally define web parameters, service ports, configuration commands, and environmental variables. For complete information on how to construct a `docker-compose.yml` file, consult the [Docker Compose specification](https://docs.docker.com/compose/compose-file/).
 
@@ -71,24 +71,24 @@ Some applications also require a *Dockerfile*. This file explains how to build a
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Docker Compose and Docker Engine
 
 There are two methods of installing Docker Compose. Docker Compose is usually installed as a plug-in. The Compose plug-in requires Docker Engine and Docker CLI, and is tightly integrated with these components. The second approach is to install Docker Desktop, an integrated GUI interface that includes Docker Compose. Docker Desktop is beyond the scope of this guide. See the [Docker Desktop documentation](https://docs.docker.com/desktop/install/linux-install/) for more information about this option.
 
-This guide focuses on how to install the Docker Compose plug-in. Docker Engine must be installed alongside Docker Compose before the plug-in can be used. This guide is geared towards Ubuntu 22.04 LTS users but is generally applicable for all Linux distributions. Exact instructions for other supported Platforms can be found on the [Docker Engine installation page](https://docs.docker.com/engine/install/).
+This guide focuses on how to install the Docker Compose plug-in. Docker Engine must be installed alongside Docker Compose before the plug-in can be used. This guide is geared toward Ubuntu 22.04 LTS users but is generally applicable to all Linux distributions. Exact instructions for other supported Platforms can be found on the [Docker Engine installation page](https://docs.docker.com/engine/install/).
 
 To install both Docker Engine and Docker Compose, follow these steps.
 
-1.  Ensure the system is up to date. Reboot the system if necessary.
+1.  Ensure the system is up to date using the below. Reboot the system if necessary.
 
     ```command
     sudo apt-get update -y && sudo apt-get upgrade -y
     ```
 
-2.  Remove any old versions of Docker or related components. These might not be compatible with Docker Compose V2.
+1.  Remove any old versions of Docker or related components. These might not be compatible with Docker Compose V2.
 
     {{< note >}}
     If an earlier version of Docker was previously installed on the system, consult the instructions to [Uninstall Docker](https://docs.docker.com/engine/install/ubuntu/#uninstall-docker-engine). It is important to remove any old containers and volumes to avoid future conflicts.
@@ -98,50 +98,52 @@ To install both Docker Engine and Docker Compose, follow these steps.
     sudo apt-get remove docker docker-engine docker.io containerd runc
     ```
 
-3.  To install Docker Engine, some additional components are required. Install them using `apt`. Some of these packages might already be installed on the system.
+1.  To install Docker Engine, some additional components are required. Install them using `apt`. Some of these packages might already be installed on the system.
 
     ```command
     sudo apt-get install ca-certificates curl gnupg lsb-release
     ```
 
-4.  Add the official *GNU Privacy Guard* (GPG) Key to validate the installation.
+1.  Add the official *GNU Privacy Guard* (GPG) Key to validate the installation.
 
     ```command
     sudo mkdir -m 0755 -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     ```
 
-5.  Add the Docker repository to the list of `apt` packages.
+1.  Add the Docker repository to the list of `apt` packages.
 
     ```command
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     ```
 
-6.  Update the list of `apt` packages.
+1.  Update the list of `apt` packages.
 
     ```command
     sudo apt-get update
     ```
 
-7.  Install the latest release of Docker Engine, Docker CLI, `containerd`, and other related components.
+1.  Install the latest release of Docker Engine, Docker CLI, `containerd`, and other related components.
 
     ```command
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     ```
 
-8.  Run the `hello-world` container to ensure Docker is installed correctly. Docker downloads the appropriate container and runs it. If everything is installed correctly, Docker displays the message `Hello from Docker!`.
+1.  Run the `hello-world` container to ensure Docker is installed correctly. Docker downloads the appropriate container and runs it.
 
     ```command
     sudo docker run hello-world
     ```
+
+    If everything is installed correctly, Docker displays the message as as shown in the output below.
 
     ```output
     Hello from Docker!
     This message shows that your installation appears to be working correctly.
     ```
 
-9.  Ensure the Docker Compose plug-in is working properly. Run the command `docker compose version` and verify the release number. If the release begins with `v2`, Docker Compose V2 is correctly installed.
+1.  Ensure the Docker Compose plug-in is working properly. Run the command `docker compose version` and verify the release number. If the release begins with `v2`, Docker Compose V2 is correctly installed.
 
     ```command
     docker compose version
@@ -161,27 +163,27 @@ The following example demonstrates how to build a `docker-compose.yml` file for 
 This example is taken from the [Docker Sample Projects](https://docs.docker.com/compose/samples-for-compose/). It might be helpful to use one of these sample files as a starting point for your own project.
 {{< /note >}}
 
-1.  Create a directory for the new project and change to the directory. For this example, the directory is named `wordpress`.
+1.  Create a directory for the new project and change it to the directory. For this example, the directory is named `wordpress`.
 
     ```command
     mkdir wordpress
     cd wordpress
     ```
 
-2.  Create a file named `docker-compose.yml`.
+1.  Create a file named `docker-compose.yml`.
 
     ```command
     vi docker-compose.yml
     ```
 
-3.  First add the `services` section. Add a service named `mariadb`. This service defines the database container.
+1.  First, add the `services` section. Add a service named `mariadb`. This service defines the database container.
 
     ```file {title="~/wordpress/docker-compose.yml"}
     services:
       mariadb:
     ```
 
-4.  Define the parameters for the `mariadb` service. The following parameters are used:
+1.  Define the parameters for the `mariadb` service. The following parameters are used:
 
     - The `command` parameter supplies command line arguments for the application.
     - The `image` tells Docker Compose which image to pull and use to build the container. The image must already exist, either locally or on Docker Hub.
@@ -211,7 +213,7 @@ This example is taken from the [Docker Sample Projects](https://docs.docker.com/
     ...
     ```
 
-5.  Next add the `wordpress` service. The `WORDPRESS_DB_USER`, `WORDPRESS_DB_PASSWORD`, and `WORDPRESS_DB_NAME` fields must match the corresponding parameters from the `mariadb` section. The `ports` attribute indicates the ports the application should use.
+1.  Add the `wordpress` service. The `WORDPRESS_DB_USER`, `WORDPRESS_DB_PASSWORD`, and `WORDPRESS_DB_NAME` fields must match the corresponding parameters from the `mariadb` section. The `ports` attribute indicates the ports the application should use.
 
     ```file {title="~/wordpress/docker-compose.yml"}
     services:
@@ -231,7 +233,7 @@ This example is taken from the [Docker Sample Projects](https://docs.docker.com/
     ...
     ```
 
-6.  Finally, add the `volumes` section. Add the directory volumes for the `mariadb` and `wordpress` services.
+1.  Finally, add the `volumes` section. Add the directory volumes for the `mariadb` and `wordpress` services.
 
     ```file {title="~/wordpress/docker-compose.yml"}
     ...
@@ -240,7 +242,7 @@ This example is taken from the [Docker Sample Projects](https://docs.docker.com/
       wp_data:
     ```
 
-7.  The entire file should resemble the following example.
+1.  The entire file should resemble the following example.
 
     ```file {title="~/wordpress/docker-compose.yml"}
     services:
@@ -285,7 +287,7 @@ Docker Compose makes it easy to launch a project. Use the `docker compose up` co
     cd wordpress
     ```
 
-2. Use the `docker compose up` command to launch the application. Add the `-d` option to run the containers in background mode. This does not block the current console session and ensures it can be used to test the results. It might take a minute or two to download and start the containers.
+1. Use the `docker compose up` command to launch the application. Add the `-d` option to run the containers in background mode. This does not block the current console session and ensures it can be used to test the results. It might take a minute or two to download and start the containers.
 
     ```command
     sudo docker compose up -d
@@ -304,11 +306,11 @@ Docker Compose makes it easy to launch a project. Use the `docker compose up` co
     ⠿ Container wordpress-wordpress-1  S...                                   3.0s
     ```
 
-3. Test the application to ensure the Docker project is running correctly. Navigate to the IP address of the server, and append the port `:8000`, or alternatively use the address `http://ip_address:8000/wp-admin/install.php`. The WordPress installation page should appear. Choose the appropriate language and continue with the installation. Supply the user credentials and database details when prompted. See the Linode Guide on [How to Install WordPress on Ubuntu 22.04](/docs/guides/how-to-install-wordpress-ubuntu-22-04) for more details.
+1. Test the application to ensure the Docker project is running correctly. Navigate to the IP address of the server, and append the port `:8000`, or alternatively use the address `http://ip_address:8000/wp-admin/install.php`. The WordPress installation page should appear. Choose the appropriate language and continue with the installation. Supply the user credentials and database details when prompted. See the Linode Guide on [How to Install WordPress on Ubuntu 22.04](/docs/guides/how-to-install-wordpress-ubuntu-22-04) for more details.
 
-    ![The WordPress Installation Page](WordPress-Install.png)
+    ![The WordPress Installation Page](Wordpress-Install.png)
 
-4.  To see a list of all Docker containers, run the command `docker compose images`.
+1.  To see a list of all Docker containers, run the command `docker compose images`.
 
     ```command
     sudo docker compose images
@@ -320,7 +322,7 @@ Docker Compose makes it easy to launch a project. Use the `docker compose up` co
     wordpress-wordpress-1   wordpress           latest              8fec96b2307f        615MB
     ```
 
-5.  The `docker compose ps` command provides a list of all active processes associated with the containers.
+1.  The `docker compose ps` command provides a list of all active processes associated with the containers.
 
     ```command
     sudo docker compose ps
@@ -333,7 +335,7 @@ Docker Compose makes it easy to launch a project. Use the `docker compose up` co
 
     ```
 
-6.  Under normal operating conditions, the WordPress site runs continuously. However, to bring the application down and remove the containers, use the command `docker compose down`. This command leaves the database contents undisturbed. However, the command `docker compose down --volumes` removes the containers, the database, and all data.
+1.  Under normal operating conditions, the WordPress site runs continuously. However, to bring the application down and remove the containers, use the command `docker compose down`. This command leaves the database contents undisturbed. However, the command `docker compose down --volumes` removes the containers, the database, and all data.
 
     ```command
     sudo docker compose down
@@ -341,6 +343,6 @@ Docker Compose makes it easy to launch a project. Use the `docker compose up` co
 
 ## Conclusion
 
-Docker Compose V2 helps users build, run, and deploy multi-container Docker solutions. It uses a YAML configuration file to define the services, networks, and volumes for the system. Docker Compose V2 and the `docker compose` command replace Compose V1 and the `docker-compose` directive.
+Docker Compose V2 helps users build, run, and deploy multi-container Docker solutions. It uses a YAML configuration file to define the services, networks, and volumes of the system. Docker Compose V2 and the `docker compose` command replace Compose V1 and the `docker-compose` directive.
 
 To install and use Docker Compose V2, add the Docker repository to the local package manager. Then download and install Docker Engine, Docker CLI, and the Compose plug-in. Construct the `docker-compose.yml` file, adding the services/containers to use, along with any storage space, networking components, and configurations. Then use the `docker compose up` command to build and run the containers. For more information on Docker Compose V2, see the [Docker Compose documentation](https://docs.docker.com/compose/).
