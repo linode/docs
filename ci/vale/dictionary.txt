@@ -1402,6 +1402,7 @@ msgpack
 msmtp
 mtr
 mtu
+MUAs
 multiarch
 multibyte
 multicast
@@ -2345,6 +2346,7 @@ uncommented
 uncommenting
 uncompress
 uncordoned
+undelete
 unencrypted
 unexported
 unformatted
