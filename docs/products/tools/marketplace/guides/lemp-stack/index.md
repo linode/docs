@@ -72,4 +72,8 @@ The LEMP Stack Marketplace App installs the following software on your Compute I
 | [**PHP 7.4**](https://www.php.net) | General purpose programming language. |
 | [**UFW (Uncomplicated Firewall)**](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) | Firewall utility. Ports 22/tcp and 80/tcp for IPv4 and IPv6 will allow outgoing and incoming traffic. |
 
+## Going Further
+
+- [Marketplace Apps Repository](https://github.com/linode-solutions/marketplace-apps): Review the deployment Ansible playbooks.
+
 {{< content "marketplace-update-note-shortguide">}}

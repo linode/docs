@@ -73,4 +73,8 @@ The LAMP Stack Marketplace App installs the following software on your Linode:
 | [**PHP 7**](https://www.php.net) | General purpose programming language. |
 | [**UFW (Uncomplicated Firewall)**](https://en.wikipedia.org/wiki/Uncomplicated_Firewall) | Firewall utility. Ports 22/tcp, 80/tcp, and 443/tcp for IPv4 and IPv6 will allow outgoing and incoming traffic. |
 
+## Going Further
+
+- [Marketplace Apps Repository](https://github.com/linode-solutions/marketplace-apps): Review the deployment Ansible playbooks.
+
 {{< content "marketplace-update-note-shortguide">}}
