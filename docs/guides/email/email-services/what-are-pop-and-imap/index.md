@@ -28,7 +28,7 @@ Message retrieval is just one of several functions in a complete email system. N
 
 Mail clients such as [Mozilla Thunderbird](https://www.thunderbird.net/en-US/), [Evolution](https://wiki.gnome.org/Apps/Evolution), or [Microsoft Outlook](https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook) are known as message user agents (MUAs). Their function is to compose and read email (Outlook runs proprietary protocols internally, but uses connectors to communicate with standards-based servers).
 
-To send messages, MUAs connect to mail servers using either the [Simple Mail Transfer Protocol (SMTP)](https://www.rfc-editor.org/rfc/rfc5321) or the [message submission protocol](https://datatracker.ietf.org/doc/html/rfc6409). For more information on SMTP, read our guide [What Is SMTP?](/docs/guides/email/email-services/what-is-smtp). In TCP/IP email architecture, the server is called a mail transfer agent (MTA).
+To send messages, MUAs connect to mail servers using either the [Simple Mail Transfer Protocol (SMTP)](https://www.rfc-editor.org/rfc/rfc5321) or the [message submission protocol](https://datatracker.ietf.org/doc/html/rfc6409). For more information on SMTP, read our guide What Is SMTP?(/docs/guides/email/email-services/what-is-smtp). In TCP/IP email architecture, the server is called a mail transfer agent (MTA).
 
 Once a message reaches an MTA, it uses SMTP to relay the message to one or more other servers. It’s fair to say that SMTP does the heavy lifting for mail forwarding on the Internet. Meanwhile, POP or IMAP only get involved on the receiving side.
 
@@ -78,7 +78,7 @@ POP cannot show a message on a second client device if you’ve already download
 
 IMAP keeps messages on the server, allowing you to see your mail and sync message and folder state across multiple devices. You need to be connected to your server while working with messages and folders, but you can optionally download and store messages locally if needed. Unlike POP, you can download message headers before deciding to retrieve entire messages containing large attachments. Furthermore, IMAP allows you to maintain multiple folders on the server.
 
-IMAP sessions run over TCP. Servers listen on port 143 for plaintext connections, and port 993 for connections tunneled through TLS. [RFC 8314](https://www.rfc-editor.org/rfc/rfc8314) deprecates plaintext connections given the risk of password and email interception.  Always configure MUAs and IMAP servers to use TLS tunneling wherever possible.
+IMAP sessions run over TCP. Servers listen on port 143 for plaintext connections, and port 993 for connections tunneled through TLS. [RFC 8314](https://www.rfc-editor.org/rfc/rfc8314) deprecates plaintext connections given the risk of password and email interception. Always configure MUAs and IMAP servers to use TLS tunneling wherever possible.
 
 IMAP has four states: not authenticated, authenticated, selected, and logout:
 
