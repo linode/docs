@@ -14,7 +14,7 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-Instant messaging, Slack, and Zoom may get all the attention – but for decades, email has remained the most ubiquitous app of the Internet.
+Instant messaging, Slack, and Zoom may get all the attention lately, yet email has remained the most ubiquitous app of the Internet for decades.
 
 One open standard makes it possible for any user, on any platform, to exchange email with anyone else: the Simple Mail Transfer Protocol (SMTP). SMTP works as a universal mail carrier, connecting users around the world regardless of the hardware and software they use.
 
@@ -22,8 +22,8 @@ This guide explains what SMTP is, what it does, how it works, and what commands 
 
 ## What Is SMTP?
 
-SMTP is a standardized set of commands and replies mail servers use for sending and receiving email. As described by the Internet Engineering Task Force in [RFC 5321](https://www.rfc-editor.org/rfc/rfc5321), SMTP defines procedures for email acceptance, formatting, and forwarding. The RFC also describes how to handle error conditions and return mail if servers are down or recipients don’t exist.
-Although SMTP operates at the application layer, it is a protocol, not a software package. A mail server – usually special software running on a dedicated machine – implements SMTP to communicate with other servers. A mail server may run SMTP processes, but that’s an implementation detail and not a protocol requirement.
+SMTP is a standardized set of commands and replies that mail servers use to send and receive email. As described by the Internet Engineering Task Force in [RFC 5321](https://www.rfc-editor.org/rfc/rfc5321), SMTP defines procedures for email acceptance, formatting, and forwarding. The RFC also describes how to handle error conditions and return mail if servers are down or recipients don’t exist.
+Although SMTP operates at the application layer, it is a protocol, not a software package. A mail server (usually special software running on a dedicated machine) implements SMTP to communicate with other servers. A mail server may run SMTP processes, but that’s an implementation detail and not a protocol requirement.
 
 ## What Does SMTP Do?
 
@@ -31,13 +31,13 @@ Simply put, SMTP’s job is to *send* and *receive* email. While SMTP does most 
 
 Before delving into SMTP and how it relates to other protocols, it’s best to begin with an overview of Internet mail architecture.
 
-When you say "email software", you probably mean an application for writing and reading messages. Software packages like [Microsoft Outlook](https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook) or [Mozilla Thunderbird](https://www.thunderbird.net/en-US/) are called mail user agents (MUAs).
+To most, "email software" probably means an application for reading and writing messages. Software packages like [Microsoft Outlook](https://www.microsoft.com/en-us/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook) or [Mozilla Thunderbird](https://www.thunderbird.net/en-US/) are technically called mail user agents (MUAs).
 
-MUAs don’t actually deliver mail. After you compose a message with an MUA, you then send the message to a mail server running a mail transfer agent (MTA). MTAs communicate via SMTP with one another, and it’s here that mail delivery occurs.
+MUAs don’t actually deliver mail. After composing a message with an MUA, the message is then sent to a mail server running a mail transfer agent (MTA). MTAs communicate via SMTP with one another, and it’s here that mail delivery occurs.
 
-Most mail servers support SMTP. Widely used open-source mail servers include [Sendmail](https://www.proofpoint.com/us/products/email-protection/open-source-email-solution), [Postfix](https://www.postfix.org/), or [exim](https://www.exim.org/). Commercial products such as [Microsoft Exchange](https://www.microsoft.com/en-us/microsoft-365/exchange/email) have proprietary engines but include SMTP connectors to speak with other mail servers. Programming languages such as Perl, Python, and Ruby also include libraries that can act as lightweight SMTP clients and servers.
+Most mail servers support SMTP. Widely used open source mail servers include [Sendmail](https://www.proofpoint.com/us/products/email-protection/open-source-email-solution), [Postfix](https://www.postfix.org/), and [exim](https://www.exim.org/). Commercial products such as [Microsoft Exchange](https://www.microsoft.com/en-us/microsoft-365/exchange/email) have proprietary engines, but include SMTP connectors to speak with other mail servers. Programming languages such as Perl, Python, and Ruby also include libraries that can act as lightweight SMTP clients and servers.
 
-While SMTP describes ways to *send* and *receive* email, it does not retrieve messages. Instead, MUAs use a separate, dedicated protocol such as the [Internet Message Access Protocol (IMAP)](https://www.rfc-editor.org/rfc/rfc9051) or [Post Office Protocol (POP)](https://www.rfc-editor.org/rfc/rfc1939) to pull messages from a mail server. Most modern MUAs use IMAP instead of the older POP.
+While SMTP describes ways to *send* and *receive* email, it does not *retrieve* messages. Instead, MUAs use a separate, dedicated protocol such as the [Internet Message Access Protocol (IMAP)](https://www.rfc-editor.org/rfc/rfc9051) or [Post Office Protocol (POP)](https://www.rfc-editor.org/rfc/rfc1939) to pull messages from a mail server. Most modern MUAs use IMAP instead of the older POP.
 
 Although SMTP can handle both MUA-MTA and MTA-MTA connections, it’s usually preferable to separate message *submission* from message *relay*. Separating these functions allows different security and policy decisions to be applied at each step.
 
@@ -47,9 +47,9 @@ The diagram below provides a simplified overview of Internet email architecture.
 
 [![Email delivery using SMTP](what-is-smtp_small.png "Email delivery using SMTP")](what-is-smtp.png)
 
-When SMTP first appeared in the early 1980s, it lacked security functions such as authentication and encryption. As the Internet grew, it became obvious that SMTP’s lack of security features made it trivially easy for attackers to send spam, spoof legitimate users, steal passwords, and conduct man-in-the-middle attacks.
+When SMTP first appeared in the early 1980s, it lacked security functions such as authentication and encryption. As the Internet grew, it became obvious that SMTP’s lack of security features was an issue. It was trivially easy for attackers to send spam, spoof legitimate users, steal passwords, and conduct man-in-the-middle attacks.
 
-In response, the IETF defined methods to authenticate users and encrypt email traffic in flight. Encryption of SMTP traffic is considered a best practice. [RFC 8314](https://www.rfc-editor.org/rfc/rfc8314) describes the ways encryption should be implemented.
+In response, the IETF defined methods to authenticate users and encrypt email traffic in flight. Encryption of SMTP traffic is considered a best practice. [RFC 8314](https://www.rfc-editor.org/rfc/rfc8314) describes the ways to implement encryption.
 
 ## How Does SMTP Work?
 
@@ -63,23 +63,23 @@ An SMTP session contains at least five steps:
 
 SMTP conversations consist of commands and replies. An SMTP client (which may be an MTA) usually initiates commands, and replies come from the SMTP server. Replies consist of a 3-digit code, usually followed by text. For example, a server replies "250 OK" to acknowledge receipt of the body of an email.
 
-### Session initiation
+### Session Initiation
 
 An SMTP session begins when a client opens a connection to a server. SMTP servers most often listen on [TCP](https://www.rfc-editor.org/rfc/rfc9293) port 25 for incoming connections.
 
-After a connection opens successfully, the client sends a "hello" command identifying itself. In the command’s basic form, the client says "hello, I am <domain name>". In the more modern version, the client sends an extended hello command to say "hello, I am <domain name>, and I would like to know which service extensions you support".
+After a connection opens successfully, the client sends a "hello" command identifying itself. In the command’s basic form, the client essentially says "hello, I am <domain name>". In the more modern version, the client sends an extended hello command to say "hello, I am <domain name>, and I would like to know which service extensions you support".
 
-[SMTP service extensions](https://www.iana.org/assignments/mail-parameters/mail-parameters.txt) support the ability to: include encoded Multipurpose Internet Mail Extensions (MIME) attachments, pipeline multiple commands, request delivery service notifications, and many other options.
+[SMTP service extensions](https://www.iana.org/assignments/mail-parameters/mail-parameters.txt) support the ability to include encoded Multipurpose Internet Mail Extensions (MIME) attachments, pipeline multiple commands, request delivery service notifications, and many other options.
 
 ### Message Transfer
 
-Once a connection is open, a client can then send one or more messages to the server. This is a three-step process. First, the client sends a MAIL FROM: command with the sender’s email address. Second, the client sends one or more RCPT commands, each with the email address of a message recipient. Finally, the client sends a DATA command, followed by the message contents, followed by an end-of-mail indicator.
+Once a connection is open, a client can then send one or more messages to the server. This is a three-step process. First, the client sends a `MAIL FROM:` command with the sender’s email address. Second, the client sends one or more `RCPT` commands, each with the email address of a message recipient. Finally, the client sends a `DATA` command, followed by the message contents, and finished by an end-of-mail indicator.
 
 ### Validation
 
-Next, the SMTP server evaluates whether to accept and process each message. A server may return or discard messages with malformed or unrecognized source or destination addresses. Although you can configure mail servers to silently discard email, the SMTP RFC strongly discourages this unless senders are known to be fraudulent or undesirable. For all other mail, the RFC recommends returning undeliverable mail with an error code.
+Next, the SMTP server evaluates whether to accept and process each message. A server may return or discard messages with malformed or unrecognized source or destination addresses. Although mail servers can be configured to silently discard email, the SMTP RFC strongly discourages this unless senders are known to be fraudulent or undesirable. For all other mail, the RFC recommends returning undeliverable mail with an error code.
 
-Servers also may optionally rewrite source or destination addresses. As an example of the former, if Company B buys Company A, a mail server might rewrite mail from CompanyA.com to appear to originate instead from CompanyB.com. As an example of destination address rewriting, a mail server might expand a mailing list’s address into many recipients who subscribe to that list.
+Servers may also optionally rewrite source or destination addresses. As an example of the former, if Company B buys Company A, a mail server might rewrite mail from CompanyA.com to appear to originate instead from CompanyB.com. As an example of destination address rewriting, a mail server might expand a mailing list’s address into many recipients who subscribe to that list.
 
 ### Routing
 
@@ -87,24 +87,22 @@ Assuming an incoming message has passed all validation tests, the next task for 
 
 Although there are many routing options available, all MTAs perform the same four basic steps:
 
-1.  Perform an address lookup using the Domain Name System (DNS)
-1.  Identify the name and host parts of a recipient’s email address
-1.  If the host isn’t local, forward the message
-1.  If the host is local, store the message
+1.  Perform an address lookup using the Domain Name System (DNS).
+1.  Identify the name and host parts of a recipient’s email address.
+1.  If the host isn’t local, forward the message.
+1.  If the host is local, store the message.
 
-If a recipient’s email address isn’t local, the mail server becomes an SMTP client, handing off email to another SMTP server that can deliver mail for the recipient.
+If a recipient’s email address isn’t local, the mail server becomes an SMTP client. It then hands off email to another SMTP server that can deliver mail for the recipient.
 
-If the recipient is on the same server, routing is easy: The MTA simply puts email in a message store, where it remains until the recipient’s MUA retrieves it using IMAP or POP.
+If the recipient is on the same server, routing is easy. The MTA simply puts email in a message store, where it remains until the recipient’s MUA retrieves it using IMAP or POP.
 
 ### DNS First
 
-Before routing can occur, an MTA server first must query DNS to determine which mail server(s) accept mail for a given domain. For any domain that can receive email, DNS has at least one resource record, called an MX record (for Mail eXchanger), pointing to the mail server(s) for that domain.
+Before routing can occur, an MTA server must first query DNS to determine which mail server(s) accept mail for a given domain. DNS has at least one resource record, called an MX record (for Mail eXchanger), for any domain that can receive email. It points to the mail server(s) for that domain.
 
-SMTP depends on DNS in two critical ways. First, at least one valid MX record must exist for each recipient’s domain, and a DNS client must be able to query that record.
+SMTP depends on DNS in two critical ways. First, at least one valid MX record must exist for each recipient’s domain, and a DNS client must be able to query that record. Simply put, the sender and the recipient *must* have DNS working for mail delivery to work at all. DNS errors are the root cause of many email delivery problems. When troubleshooting mail server problems, it’s best practice to first verify that DNS works correctly.
 
-Simply put, you and your recipient *must* have DNS working for mail delivery to work at all. DNS errors are the root cause of many email delivery problems. When troubleshooting mail server problems, it’s a best practice to first verify DNS works correctly.
-
-Second, you can optionally configure DNS with multiple MX records, one per mail server, to improve the reliability and/or speed of mail delivery. MX records include a preference, with a lower number indicating a higher priority for mail delivery. For example, here are the MX records for gmail.com:
+Second, optionally configure DNS with multiple MX records (one per mail server) to improve the reliability and/or speed of mail delivery. MX records include a preference, with a lower number indicating a higher priority for mail delivery. For example, here are the MX records for gmail.com:
 
 ```output
 5 gmail-smtp-in.l.google.com.
@@ -114,17 +112,17 @@ Second, you can optionally configure DNS with multiple MX records, one per mail 
 40 alt4.gmail-smtp-in.l.google.com.
 ```
 
-An MTA trying to send email to Gmail first tries gmail-smtp-in.l.google.com, since its preference has the lowest value. If that server is unreachable, the MTA then successively tries the other servers with higher preference values until it’s able to make a connection. Having a primary and one or more secondary MX servers makes mail delivery more reliable in case of server or network outages.
+An MTA trying to send email to Gmail first tries `gmail-smtp-in.l.google.com`, since its preference has the lowest value. If that server is unreachable, the MTA then successively tries the other servers with higher preference values until it’s able to make a connection. Having a primary and one or more secondary MX servers makes mail delivery more reliable in case of server or network outages.
 
 You can also configure MX records with identical preferences to load-balance email across two or more servers. For high-volume domains, distributing the mail load across multiple servers may help speed delivery.
 
 Once a DNS query completes, the server opens an SMTP session with the host in the MX record, and begins forwarding messages.
 
-If a destination mail server isn’t available, SMTP keeps retrying delivery for some interval, often 5 days by default. If the destination server is still unavailable after that interval, SMTP returns the message to the sender with an undeliverable reply code.
+If a destination mail server isn’t available, SMTP keeps retrying delivery for some interval (often 5 days by default). If the destination server is still unavailable after that interval, SMTP returns the message to the sender with an undeliverable reply code.
 
 ### Termination
 
-After handing off all messages to a server, the final step for an SMTP client is to close the connection. As with the session initiation, the client always initiates the session close with a QUIT command.
+After handing off all messages to a server, the final step for an SMTP client is to close the connection. As with the session initiation, the client always initiates the session close with a `QUIT` command.
 
 ## Basic SMTP Commands
 
@@ -142,7 +140,7 @@ telnet smtp.foo.com 25
 220 foo.com Simple Mail Transfer Service Ready
 ```
 
-You can instruct a telnet client to connect to any TCP port, including port 25, the standard SMTP port. The server’s 220 reply indicates it’s ready to open a connection. At minimum, SMTP servers also return their domain name and the words "Service ready".
+You can instruct a telnet client to connect to any TCP port, including port 25, the standard SMTP port. The server’s 220 reply indicates it’s ready to open a connection. At minimum, SMTP servers also return their domain name and the words "Service Ready".
 
 ```command
 EHLO bar.com
@@ -156,7 +154,7 @@ EHLO bar.com
 250 HELP
 ```
 
-The client’s EHLO (extended hello) command identifies its domain and indicates it wants to know which SMTP extensions the server supports. For each response, the server issues a 250 reply code, meaning it has successfully completed each action. This particular server supports 8-bit MIME encoding of attachments; a message size declaration; delivery status notifications; and help commands.
+The client’s EHLO (extended hello) command identifies its domain and indicates it wants to know which SMTP extensions the server supports. For each response, the server issues a 250 reply code, meaning it has successfully completed each action. This particular server supports 8-bit MIME encoding of attachments, a message size declaration, delivery status notifications, and help commands.
 
 ```command
 MAIL FROM:<Smith@bar.com>
@@ -192,7 +190,7 @@ RCPT TO:<Green@foo.com>
 550 No such user here
 ```
 
-The client wants to send to three recipients. The server acknowledges Jones and Brown with 250 OK replies, but sends a 550 error reply to indicate it doesn’t recognize Green.
+The client wants to send to three recipients. The server acknowledges Jones and Brown with 250 OK replies, but sends a 550 error reply to indicate that it doesn’t recognize Green.
 
 ```command
 DATA
@@ -224,8 +222,8 @@ QUIT
 
 The final step is for the client to initiate a session close with the `QUIT` command. If successfully received, the server responds with a `221` reply, and terminates the session.
 
-SMTP defines many more commands and reply codes, as discussed in Section 4 of [RFC 5321](https://www.rfc-editor.org/rfc/rfc5321), but these give you an idea of what you can expect to see in any successful SMTP connection. Section 4.1 of the RFC lists all SMTP commands, while Section 4.2.3 lists all reply codes in numerical order.
+SMTP defines many more commands and reply codes, as discussed in Section 4 of [RFC 5321](https://www.rfc-editor.org/rfc/rfc5321), but these provide an idea of what to expect in any successful SMTP connection. Section 4.1 of the RFC lists all SMTP commands, while Section 4.2.3 lists all reply codes in numerical order.
 
 ## Conclusion
 
-The great thing about SMTP is that it’s open. The client and server in this case could be any type of hardware, running any operating system and any SMTP-compatible server software. Truly, SMTP is the means that makes global email communications possible.
+The great thing about SMTP is that it’s an open protocol. The client and server in this case could be any type of hardware, running any operating system, with any SMTP-compatible server software. SMTP is truly the means that makes global email communications possible.
