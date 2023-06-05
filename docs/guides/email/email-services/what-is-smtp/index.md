@@ -10,8 +10,7 @@ published: 2023-05-08
 modified_by:
   name: Linode
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Postmark: Everything you need to know about SMTP (Simple Mail Transfer Protocol)](https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp)'
 ---
 
 Instant messaging, Slack, and Zoom may get all the attention lately, yet email has remained the most ubiquitous app of the Internet for decades.
