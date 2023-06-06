@@ -5,4 +5,5 @@
 {{- $slug := .Page.Slug | default .Page.Title  -}}
 {{- $id = printf "%s-%s" ($slug | anchorize) $id -}}
 {{- end -}}
-{{ partial "heading" (dict "id" $id "level" $level "text" .Text) }}
+{{- $ariaLabel := printf "%s: %s" .Page.LinkTitle .Text  }}
+{{ partial "heading" (dict "id" $id "level" $level "text" .Text "ariaLabel" $ariaLabel) }}

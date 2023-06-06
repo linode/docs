@@ -4,7 +4,7 @@
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0,maximum-scale=5.0" />
-{{ if or site.Params.TestEnv (.Param "noindex") }}
+{{ if or (not hugo.IsProduction) (.Param "noindex") }}
   <meta name="robots" content="noindex" />
 {{ end }}
 
@@ -30,7 +30,7 @@
 */}}<script
   src="{{ site.Params.adobe_launch_script }}"
   async></script>
-{{ if (not site.IsServer) }}
+{{ if (ne hugo.Environment "development") }}
   <!-- Google Tag Manager -->  <script>
     (function (w, d, s, l, i) {
     w[l] = w[l] || []; w[l].push({
