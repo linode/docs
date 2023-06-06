@@ -298,6 +298,7 @@ chroot
 chrooting
 chrooted
 CIDRs
+cifs_utils
 citad
 cjones
 clamav
@@ -1130,6 +1131,7 @@ kotin
 konversation
 krita
 kroll
+ksmbd
 ktor
 kube
 kubeadm
