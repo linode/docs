@@ -1,13 +1,13 @@
 ---
 slug: using-gitlab-runners-with-linode-object-storage
-description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Linode Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up your own in this tutorial."
+description: "GitLab Runners perform CI/CD tasks for your GitLab pipelines. From building to testing to deploying, GitLab Runners can spin up machines and run everything you need. And with Object Storage you have an effective method for caching resources between jobs. Learn more about GitLab Runners and how to set up your own in this tutorial."
 keywords: ['gitlab runner docker','what is gitlab runner','gitlab runner tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-22
 modified_by:
   name: Linode
 authors: [Nathaniel Stickman]
-title: "How to Use a GitLab Runner with Linode Object Storage"
+title: "How to Use a GitLab Runner with Machine Driver and Object Storage"
 external_resources:
 - '[GitLab Docs: GitLab Runner](https://docs.gitlab.com/runner/)'
 - '[GitLab Docs: Docker Machine Executor Autoscale Configuration](https://docs.gitlab.com/runner/configuration/autoscale.html)'
@@ -26,7 +26,7 @@ Additionally, this guide covers how to integrate your GitLab Runner setup with L
 
 A GitLab Runner performs jobs as part of GitLab CI/CD pipelines. Each runner picks up jobs from the GitLab CI coordinator, according to the runner's scope. The runner then executes the instructions in that job, whether for building a project, testing changes, or deploying a built project.
 
-One feature that makes GitLab Runners particularly useful is their ability to spin up machines to run tasks on. At their simplest, runners can simply execute some shell commands and feed the results back to GitHub. But more often runners are used to set up your project on a machine with a Docker container. There, runners can readily build and test projects in a dedicated environment.
+One feature that makes GitLab Runners particularly useful is their ability to spin up machines to run tasks on. At their simplest, runners can execute some shell commands and feed the results back to GitLab. But more often runners are used to set up your project on a machine with a Docker container. There, runners can readily build and test projects in a dedicated environment.
 
 Using Docker to execute jobs makes it relatively easy to have your runners pull down images for dependencies. You can more consistently get the right versions and environment setup to fit your needs.
 
@@ -212,7 +212,7 @@ The following covers some of the most important configuration options for autosc
 
 Even with the default configuration you get from the registration section above, you can already see your GitLab Runner in action. Follow the steps here to set up a simple project and pipeline for the runner to act on.
 
-1. From your GitLab instance interface, create a project. You can do so most simply by selecting **Projects > View all projects** from the upper-left menu and then selecting **New project** at the upper right. You can also similarly create a group first to associate the project with.
+1. From your GitLab instance interface, create a project. You can do so by selecting **Projects > View all projects** from the upper-left menu and then selecting **New project** at the upper right. You can also similarly create a group first to associate the project with.
 
     This example creates a project named `example-project` within an `example-group`. The project is initialized blank.
 
