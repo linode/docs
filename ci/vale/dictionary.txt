@@ -298,6 +298,7 @@ chroot
 chrooting
 chrooted
 CIDRs
+cifs_utils
 citad
 cjones
 clamav
@@ -659,6 +660,7 @@ fd
 fdisk
 fdriver
 fe70
+Feigenbaum
 fedf
 fediverse
 fetchmail
@@ -1129,6 +1131,7 @@ kotin
 konversation
 krita
 kroll
+ksmbd
 ktor
 kube
 kubeadm

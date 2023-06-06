@@ -52,7 +52,7 @@
     }}
   {{ end }}
   {{ $json := ($items | jsonify) |  resources.FromString (printf "%s.json" $key ) }}
-  {{ if hugo.IsProduction }}
+  {{ if (ne hugo.Environment "development") }}
     {{ $json = $json | minify }}
   {{ end }}
 
