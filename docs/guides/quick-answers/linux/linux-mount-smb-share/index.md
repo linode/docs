@@ -13,9 +13,9 @@ external_resources:
 - '[Common Internet File System (CIFS) utils](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/d416ff7c-c536-406e-a951-4f04b2fd1d2b)'
 ---
 
-Sharing files and directories between computers is a common problem --- one that has many different solutions. Some of these solutions include file transfer protocols (like SFTP), cloud storage services, and distributed file system protocols (like NFS and SMB). Figuring out what solution is right for your use case can be confusing, especially if you do not know the correct terminology, techniques, or the tools that are available. Sharing files can be made even more complicated if you intend to do so over the internet or use multiple operating systems (like Linux, Windows, and macOS).
+Determining how to share files and directories between computers is a common problem --- one that has many different solutions. Some of these solutions include file transfer protocols (like SFTP), cloud storage services, and distributed file system protocols (like NFS and SMB). Figuring out what solution is right for your use case can be confusing, especially if you do not know the correct terminology, techniques, or the tools that are available. Sharing files can be made even more complicated if you intend to do so over the internet or use multiple operating systems (like Linux, Windows, and macOS).
 
-This guide discusses using the Server Message Block (SMB) protocol to mount a Windows SMB share (a shared directory) to a Linux system using the LinuxCIFS utils software. For example, you will be able to access all of your files within a Windows folder (such as `C:\My_Files`) on your Linux system at whichever directory you choose as a mount point (such as `/windows/drive_c/my_files`). This method of file sharing is appropriate when you need to access entire Windows directories remotely, commonly through a corporate intranet or the same private network.
+This guide covers the SMB protocol. Specifically, it discusses using the Server Message Block (SMB) protocol to mount a Windows SMB share (a shared directory) to a Linux system using the LinuxCIFS utils software. By following this guide, you will be able to access all of your files within a Windows folder (such as `C:\My_Files`) on your Linux system at whichever directory you choose as a mount point (such as `/mnt/my_files`). This method of file sharing is appropriate when you need to access entire Windows directories remotely as if they were local resources. In most cases, SMB is a native (or easily installed) file sharing solution for users that need access to the same directory and is commonly shared through a corporate intranet or the same private network.
 
 {{< note >}}
 Network File System (NFS) is another distributed file system protocol that's similar to SMB. While SMB is more commonly used in primarily Windows environments and NFS is used in primary Linux environments, both have cross-platform support. This guide does not cover NFS, but you can learn more about it by reading through our [NFS guides](/docs/guides/networking/nfs/). If you are not in a Windows environment and are looking to share directories between Linux systems, consider using NFS.
@@ -129,6 +129,14 @@ The following sections detail how to mount an SMB share on Ubuntu, but the essen
     ```
 
     The command above lists all mounted SMB shares. Among this list, you should see the share you just mounted.
+
+1.  You should now be able to access the files as if they were on a local drive. In the command below, replace *[mount-point]* with the directory you have created (such as `/mnt/smb_share`).
+
+    ```command
+    cd [mount-point]
+    ```
+
+    From here, you can run the `ls` command to view your files and you can interact with the files as you would any other files on your system.
 
 ## Create a Credentials File
 
