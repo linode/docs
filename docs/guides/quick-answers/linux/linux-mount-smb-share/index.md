@@ -13,19 +13,17 @@ external_resources:
 - '[Common Internet File System (CIFS) utils](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-cifs/d416ff7c-c536-406e-a951-4f04b2fd1d2b)'
 ---
 
-Sharing files and directories between computers is a common problem --- one that has many different solutions. Some of these solutions are file transfer protocols (like SFTP), cloud storage services, and distributed file system protocols (like NFS and SMB). Figuring out what solution is right for your use case can be a daunting task, especially if you do not know the correct terminology, techniques, or the tools that are available. Sharing files can be made even more complicated if you intend to do so over the internet or use multiple operating systems (like Linux, Windows, and macOS).
+Sharing files and directories between computers is a common problem --- one that has many different solutions. Some of these solutions include file transfer protocols (like SFTP), cloud storage services, and distributed file system protocols (like NFS and SMB). Figuring out what solution is right for your use case can be confusing, especially if you do not know the correct terminology, techniques, or the tools that are available. Sharing files can be made even more complicated if you intend to do so over the internet or use multiple operating systems (like Linux, Windows, and macOS).
 
-This guide discusses using the Server Message Block (SMB) protocol to mount a Windows SMB share (a shared directory) to a Linux system using the LinuxCIFS utils software. For example, you will be able to access all of your files within a Windows folder (such as `C:\My_Files`) on your Linux system at whichever directory you choose as a mount point (such as `/windows/drive_c/my_files`).
+This guide discusses using the Server Message Block (SMB) protocol to mount a Windows SMB share (a shared directory) to a Linux system using the LinuxCIFS utils software. For example, you will be able to access all of your files within a Windows folder (such as `C:\My_Files`) on your Linux system at whichever directory you choose as a mount point (such as `/windows/drive_c/my_files`). This method of file sharing is appropriate when you need to access entire Windows directories remotely, commonly through a corporate intranet or the same private network.
 
 {{< note >}}
 Network File System (NFS) is another distributed file system protocol that's similar to SMB. While SMB is more commonly used in primarily Windows environments and NFS is used in primary Linux environments, both have cross-platform support. This guide does not cover NFS, but you can learn more about it by reading through our [NFS guides](https://www.linode.com/docs/guides/networking/nfs/). If you are not in a Windows environment and are looking to share directories between Linux systems, consider using NFS.
 {{< /note >}}
 
 {{< note type="warning" >}}
-While security and performance of the SMB protocol has improved over time, it is often still a concern when considering connecting to an SMB share over the internet. This is typically not recommended unless you are using [SMB over QUIC](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic) (recently introduced on Windows 11 and Windows Server 2022), intend to always use the latest protocol version (3.1.1 as of this writing), or are connected through a personal or corporate VPN. If you are not able to implement these recommendations and still wish to share files over the internet, consider if the [SFTP](https://www.linode.com/docs/guides/sftp-linux/) protocol would work for you instead.
+While security and performance of the SMB protocol has improved over time, it is often still a concern when connecting to an SMB share over the internet. This is typically not recommended unless you are using [SMB over QUIC](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic) (recently introduced on Windows 11 and Windows Server 2022), intend to always use the latest protocol version (3.1.1 as of this writing), or are connected through a personal or corporate VPN. If you are not able to implement these recommendations and still wish to share files over the internet, consider if the [SFTP](https://www.linode.com/docs/guides/sftp-linux/) protocol would work for you instead.
 {{< /note >}}
-
-Specifically, it covers how to mount a Windows SMB share in Linux using utilities included in the [cifs-utils](https://packages.debian.org/buster/cifs-utils) package (available on most Linux distributions).
 
 ## Overview of the SMB Protocol
 
@@ -33,13 +31,13 @@ The SMB protocol provides the ability to share entire directories and printers b
 
 ### SMB Versions
 
-To understand SMB and some of the terminology that's also used (specifically CIFS), it's helpful to know a little about the history of the protocol:
+To understand SMB and some of the related terminology (specifically CIFS), it's helpful to know a little about the history of the protocol:
 
-- **SMB1:** (1983+) While Microsoft is the developer and maintainer of SMB, it was originally designed at IBM. Microsoft modified that original design and implemented the "SMB 1.0/CIFS Server" as part of their LAN Manager OS and, eventually, in Windows. Version 1 of the protocol has been discontinued (as of 2013) and is no longer installed on modern Windows systems. There are many security and performance issues with SMBv1 that make it largely unfit for use today.
+- **SMB1:** (1983+) While Microsoft is the developer and maintainer of SMB, it was originally designed at IBM. Microsoft modified that original design and implemented the "SMB 1.0/CIFS Server" as part of their LAN Manager OS and, eventually, in Windows. Version 1 of the protocol has been discontinued (as of 2013) and is no longer installed on modern Windows systems. There are many security and performance issues with SMB1 that make it largely unfit for use today.
 
-- **CIFS:** (1996) Microsoft attempted to rename SMB to CIFS (Common Internet File System) as it continued to develop features for this new implementation, including adding support for the TCP protocol. While the name was retired in subsequent versions, the term still appears in various tooling and documentation as it was in use for over 10 years.
+- **CIFS:** (1996) Microsoft attempted to rename SMB to CIFS (Common Internet File System) as it continued to develop features for it, including adding support for the TCP protocol. While the name was retired in subsequent versions, the term still appears in various tooling and documentation as it was in use for over 10 years.
 
-- **SMB2:** (2006) Version 2 introduced huge performance benefits as it greatly reduced the amount of requests sent between machines and expanding the size of data/storage fields (from 16-bit to 32-bit and 64-bit). It was released alongside Windows Vista. Even though SMB2 (and all SMB versions) remained a proprietary protocol, Microsoft released the specifications for it so that other services (like Linux ports) could provide interoperability with this new version.
+- **SMB2:** (2006) Version 2 introduced huge performance benefits as it greatly reduced the amount of requests sent between machines and expanded the size of data/storage fields (from 16-bit to 32-bit and 64-bit). It was released alongside Windows Vista. Even though SMB2 (and all SMB versions) remained a proprietary protocol, Microsoft released the specifications for it so that other services (like Linux ports) could provide interoperability with this new version.
 
 - **SMB3:** (2012) Version 3 was released alongside Windows 8 and brought extensive updates to security (including end-to-end encryption) and performance. Additional updates were released with Windows 8.1 (SMB 3.0.2) and Windows 10 (3.1.1). When using the SMB protocol today, always use the latest version --- unless you are supporting legacy systems and have no other choice.
 
@@ -47,7 +45,7 @@ For a more comprehensive version history of SMB, review the [Server Message Bloc
 
 ### Linux SMB Support
 
-- **[SAMBA](https://www.samba.org/):** Unix support for the SMB protocol was initially provided by SAMBA. Since Microsoft initially did not release public specifications for their proprietary protocol, the developers of SAMBA had to reverse engineer it. Future versions of SAMBA were able to use the public specifications of later SMB protocols and now SAMBA includes support for SMB3 (3.1.1). SAMBA provides extensive support for all features of the SMB protocol and acts as a stand-alone file and print server. For more background information, see the [SAMBA Wikipedia entry](https://en.wikipedia.org/wiki/Samba_(software)).
+- **[SAMBA](https://www.samba.org/):** Unix support for the SMB protocol was initially provided by SAMBA. Since Microsoft initially did not release public specifications for their proprietary protocol, the developers of SAMBA had to reverse engineer it. Future versions of SAMBA were able to use the public specifications of later SMB protocols. SAMBA includes support for SMB3 (3.1.1) and is actively updated. SAMBA provides extensive support for all features of the SMB protocol and acts as a stand-alone file and print server. For more background information, see the [SAMBA Wikipedia entry](https://en.wikipedia.org/wiki/Samba_(software)).
 
 - **[LinuxCIFS utils](https://wiki.samba.org/index.php/LinuxCIFS_utils):** This in-kernel software acts as an SMB client and is the preferred method of mounting existing SMB shares on Linux. It was originally included as part of the SAMBA software, but is now available on its own. LinuxCIFS utils, available as the cifs_utils package in most Linux distributions, is used within this guide.
 
@@ -61,7 +59,7 @@ For a more comprehensive version history of SMB, review the [Server Message Bloc
 
 ## Installation
 
-The CIFS utility package provides the tools needed to connect to a share and manage mounts on a Linux system. You use it to help create and manage a connection to a Windows, macOS, or Linux share. The following steps show how to install CIFS utilities:
+The LinuxCIFS utils package provides the tools needed to connect to a share and manage mounts on a Linux system. You use it to help create and manage a connection to a Windows, macOS, or Linux share.
 
 1.  Update the list of available packages using the below command:
 
@@ -75,7 +73,7 @@ The CIFS utility package provides the tools needed to connect to a share and man
     sudo apt install cifs-utils psmisc
     ```
 
-1.  Verify that CIFS is available using the following command:
+1.  Verify that LinuxCIFS is available using the following command:
 
     ```command
     mount -t cifs
@@ -97,12 +95,12 @@ The CIFS utility package provides the tools needed to connect to a share and man
 
 ## Mount an SMB Share
 
-All files in Linux are accessible on a single giant hierarchical directory tree, which starts at the root (`/`). The mount command, used in this tutorial, enables you to access other storage devices or file systems from that same tree. These other storage resources do not have to be physical disks and they do not have to be using the same file system. To learn more about the mount command, review the following guides:
+All files in Linux are accessible on a single giant hierarchical directory tree, which starts at the root (`/`). The mount command (used in this tutorial) enables you to access other storage devices or file systems from that same tree. These other storage resources do not have to be physical disks and they do not have to be using the same file system. To learn more about the mount command, review the following guides:
 
 - [Quick Guide to the Linux Mount Command](/docs/guides/linux-mount-command/)
 - [Mount a File System on Linux](/docs/guides/mount-file-system-on-linux/)
 
-The following sections detail specifically how to create a CIFS mount on Ubuntu, but the essential process is the same for other Linux flavors. The only requirement is that you have a share (any kind) to mount using CIFS on Linux.
+The following sections detail how to mount an SMB share on Ubuntu, but the essential process is the same for other Linux distributions.
 
 1.  Create an empty directory to be used as the mount point. This directory can be located wherever you wish, though it's common to use the `/mnt` directory.
 
@@ -110,7 +108,7 @@ The following sections detail specifically how to create a CIFS mount on Ubuntu,
     mkdir /mnt/smb_share
     ```
 
-1.  Enter the following command to mount the CIFS share, replacing *[server-ip]* with the IP address of your SMB server, *[share-path]* with the file path to your SMB share on that server, and *[mount-point]* with the new directory you just created.
+1.  Enter the following command to mount the SMB share, replacing *[server-ip]* with the IP address of your SMB server, *[share-path]* with the file path to your SMB share on that server, and *[mount-point]* with the new directory you just created.
 
     ```command
     mount -t cifs //[server-ip]/[share-path] /[mount-point]
@@ -130,7 +128,7 @@ The following sections detail specifically how to create a CIFS mount on Ubuntu,
     mount -t cifs
     ```
 
-    The command above lists all mounted CIFS shares. Among this list, you should see the share you just mounted.
+    The command above lists all mounted SMB shares. Among this list, you should see the share you just mounted.
 
 ## Create a Credentials File
 
@@ -150,7 +148,7 @@ You don’t want to have to type in your credentials every time you access a sha
     domain=domain
     ```
 
-    If the `domain` is not required (except on Windows systems), you can omit that entry. Replace the `target_user_name` and `target_user_password` with the actual credentials you need to use to access the CIFS share. Save and close the file.
+    If the `domain` is not required (except on Windows systems), you can omit that entry. Replace the `target_user_name` and `target_user_password` with the actual credentials you need to use to access the SMB share. Save and close the file.
 
 1.  Set ownership of the credentials file to the current user by running the following command:
 
@@ -184,7 +182,7 @@ You don’t want to have to type in your credentials every time you access a sha
 
 ## Mount a Share Automatically At Boot
 
-Remounting the CIFS share every time you restart the server would be annoying. You can set your server up to automatically remount the share every time you restart it using the following steps. Make sure that the share is currently unmounted.
+Remounting the SMB share every time you restart the server can be tedious. You can instead set your server up to automatically remount the share every time you restart it using the following steps. Before starting these steps, make sure that the share is currently unmounted.
 
 1.  Open the `/etc/fstab` file in your preferred text editor. This file contains configurations that the server uses on reboot to reconnect to shares (among other things). There are columns for the file system, mount point, type, and options.
 
@@ -205,9 +203,9 @@ Remounting the CIFS share every time you restart the server would be annoying. Y
 
 ## Unmount a Share
 
-You may need to unmount a share at some point. Perhaps the share just isn’t useful any longer or you’ve done something like move the share to a different location. To unmount a CIFS share that has been mounted using the `mount` command, you can use the `umount` command followed by the mount point of the share. The correct command is `umount`, not `unmount`.
+You may need to unmount a share at some point. To unmount an SMB share that has been mounted using the `mount` command, you can use the `umount` command followed by the mount point of the share. The correct command is `umount`, not `unmount`.
 
-So to unmount a CIFS share at the mount point `<Mount Point>`, run the following command:
+So to unmount an SMB share at the mount point `<Mount Point>`, run the following command:
 
 ```command
 umount -t cifs /<Mount Point>
