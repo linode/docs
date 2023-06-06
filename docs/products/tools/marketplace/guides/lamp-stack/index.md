@@ -3,7 +3,7 @@ description: "This guide shows you how to use the Linode Marketplace One-Click A
 keywords: ['LAMP', 'apache', 'web server', 'mysql', 'php']
 tags: ["apache","lamp","cloud-manager","linode platform","php","mysql","marketplace"]
 published: 2019-03-26
-modified: 2022-03-08
+modified: 2023-06-06
 modified_by:
   name: Linode
 title: "Deploy a LAMP Stack through the Linode Marketplace"
