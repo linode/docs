@@ -3,7 +3,7 @@ title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2023-04-27
+modified: 2023-06-06
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
@@ -77,19 +77,19 @@ To configure failover, complete each section in the order shown:
 
 ### Create and Share the Shared IP Address
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com/).
+1.  Log in to the [Cloud Manager](https://cloud.linode.com/).
 
-1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to fully boot up.
+1.  Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. If you need to, create those Compute Instances now and allow them to fully boot up.
 
     {{< note >}}
     To support this new BGP method of IP Sharing and failover, your Compute Instance must be assigned an IPv6 address. This is not an issue for most instances as an IPv6 address is assigned during deployment. If your Compute Instance was created *before* IPv6 addresses were automatically assigned, and you would like to enable IP Sharing within a data center that uses BGP-based failover, contact [Linode Support](https://www.linode.com/support/).
     {{< /note >}}
 
-1. Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide.
+1.  Disable Network Helper on both instances. For instructions, see the [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/#individual-compute-instance-setting) guide.
 
-You may want to add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the Compute Instances. Although this is not a requirement for using BGP routing tool. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for instructions. Make a note of the newly assigned IP address. *Each additional IPv4 address costs $2 per month*.
+1.  Of the IP addresses assigned to your Compute Instances, determine which IP address you wish to use as the shared IP. You may want to add an additional IPv4 address _or_ IPv6 range (/64 or /56) to one of the instances, as this avoids temporary connectivity loss to applications that may be using your existing IP addresses. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) guide for instructions. *Each additional IPv4 address costs $2 per month*.
 
-1. On the *other* Compute Instance, add the newly assigned IPv4 address or IPv6 range as a *Shared IP* using Linode's **IP Sharing** feature. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
+1.  On the Compute Instance that *is not* assigned the IP address you selected in the previous step, add that IPv4 address or IPv6 range as a *Shared IP* using Linode's **IP Sharing** feature. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#configuring-ip-sharing) for instructions on configuring IP sharing.
 
     {{< note type=warning >}}
     When IP Sharing is enabled for an IP address, all connectivity to that IP address is immediately lost *until* it is configured on [Lelastic](#install-and-configure-lelastic), [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/), or another BGP routing tool. This is not an issue when adding a new IP address, but should be considered if you are enabling IP Sharing on an existing IP address that is actively being used.
