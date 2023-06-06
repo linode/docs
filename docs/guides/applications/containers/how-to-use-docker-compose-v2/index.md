@@ -5,7 +5,7 @@ description: 'This guide provides a brief introduction to Docker Compose V2 and 
 keywords: ['Docker Compose V2', 'Install Docker Compose', 'Use Docker Compose', 'what is Docker Compose V2']
 tags: ['dokcer', 'container']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-03-09
+published: 2023-06-06
 modified_by:
   name: Linode
 title: "How to Use Docker Compose V2"
