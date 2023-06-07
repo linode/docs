@@ -1,6 +1,6 @@
 ---
 title: "Closed Beta for Akamai's New Data Centers"
-description: "The specifications for Akamai Cloud Compute's newest data center located in Washington, DC."
+description: "Details for the closed beta of Akamai Cloud Compute's newest data centers, which include the Washington, DC and Paris regions."
 published: 2023-04-17
 modified: 2023-06-07
 modified_by:
