@@ -2,7 +2,7 @@
 title: "Closed Beta for Akamai's New Data Centers"
 description: "The specifications for Akamai Cloud Compute's newest data center located in Washington, DC."
 published: 2023-04-17
-modified: 2023-05-31
+modified: 2023-06-07
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -13,7 +13,7 @@ noindex: true
 aliases: ['/products/platform/get-started/guides/iad/']
 ---
 
-Akamai Cloud's newest data centers in Washington, DC (USA) and Paris (France) are now available in a limited closed beta. Most of our products and services are fully operational in these data centers, including [Premium Plans](#premium-plans), the newest Compute Instance tier (only available as part of this beta). As a beta participants, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
+Akamai Cloud's newest data centers in Washington, DC (USA) and Paris (France) are now available in a limited closed beta. Most of our products and services are fully operational in these data centers, including [Premium Plans](#premium-plans), the newest Compute Instance tier (only available as part of this beta). As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
 
 {{< note type="warning" >}}
 These data centers are in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
@@ -37,20 +37,16 @@ Follow the instructions below to target one of the new data centers when deployi
 -   **Linode CLI and Linode API:** If a command or request requires a region ID, use the one that corresponds to your desired data center in the [table above](#list-of-new-data-centers).
 
 {{< note type="warning" noTitle=true >}}
-If you are a beta participant but are not able to target one of the new data centers, please contact the [Support team](https://www.linode.com/support/) for assistance. You need to request access to *each* data center you wish to use during the beta period.
+You must enrolled in the beta to select one of the new data centers when deploying services. If you are a beta participant but are not able to target one of these data centers, please contact the [Support team](https://www.linode.com/support/) for assistance. You need to request access to *each* data center you wish to use during the beta period.
 {{< /note >}}
 
 ## Pricing
 
-Resources deployed during the beta will be free to users. You will be notified 30 days in advance of billing as we transition to general availability. Select services will not be available at the time of this message but could become available during the beta period.
+Services utilized as part of the beta are free to users. Once the beta period ends for a particular data center, you will start accruing charges for any services that are still deployed to that region. You will receive an email notifying you of the billing start date as we transition each data center to general availability.
 
 ## Product Availability
 
-All products and services are available in the new data centers. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
-
-{{< note >}}
-You must be a part of the limited closed beta in order to select the new data centers when deploying services.
-{{< /note >}}
+Each data center in this beta is slated to have all of Akamai’s cloud computing services available during the beta period. In addition, we are launching a new Premium Plan tier and have made improvements to our Object Storage service.
 
 ### Object Storage
 
