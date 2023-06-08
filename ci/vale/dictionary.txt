@@ -1784,6 +1784,7 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMSs
 rdiff
 reachability
 readcaps

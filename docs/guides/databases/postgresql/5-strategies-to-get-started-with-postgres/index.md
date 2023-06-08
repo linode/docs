@@ -14,25 +14,45 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-Database work typically involves professional database administrators, expensive hardware, and complicated configuration. However, it's possible to launch a proof-of-concept, portable development environment, or low-cost embedded solution while retaining full compatibility with industrial-strength Postgres installations.
+Database work typically involves professional database administrators, expensive hardware, and complicated configuration. However, it is possible to launch a proof-of-concept, portable development environment, or low-cost embedded solution while retaining full compatibility with industrial-strength Postgres installations.
 
-For example, a practice database may be required, but the maintained ones are off-limits as that violates the organization's security policies. In commercial situations, databases are installed and maintained by specialized database administrators, and their priorities do not include setting up practice databases.
+Sometimes a test database may be required, but company-maintained databases are off-limits as that violates the organization's security policies. In commercial situations, databases are installed and maintained by specialized database administrators, and their priorities do not include setting up test databases.
 
-This guide covers different techniques to help create a small, yet fully-capable Postgres database instance on a desktop in just a few minutes.
+This guide covers different techniques to help create a small, yet fully-capable PostgreSQL database instance in just a few minutes.
 
 ## Comparisons to MySQL, Oracle, and DB2
 
-["The world's most valuable resource is … data"](https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data), as The Economist famously put it in 2017. Most organizational data is maintained in a [Relational Database Management System (RDBMS)](https://www.g2.com/articles/relational-databases). Leading RDBMS include [DB2](https://www.ibm.com/db2), [MySQL](https://www.linode.com/docs/guides/databases/mysql/), [Oracle](https://www.linode.com/docs/guides/databases/oracle/), and [PostgreSQL](https://www.linode.com/docs/guides/databases/postgresql/), often abbreviated as "Postgres". DB2 and Oracle are commercially licensed, while MySQL and Postgres are free and [Open Source](https://www.linode.com/docs/blog/open%20source/).
+As The Economist famously wrote in 2017: ["The world's most valuable resource is … data"](https://www.economist.com/leaders/2017/05/06/the-worlds-most-valuable-resource-is-no-longer-oil-but-data). Most organizational data is maintained in a [Relational Database Management System (RDBMS)](https://www.g2.com/articles/relational-databases). Leading RDBMSs include [DB2](https://www.ibm.com/db2), [MySQL](https://www.linode.com/docs/guides/databases/mysql/), [Oracle](https://www.linode.com/docs/guides/databases/oracle/), and [PostgreSQL](https://www.linode.com/docs/guides/databases/postgresql/), often abbreviated as "Postgres". DB2 and Oracle are commercially licensed, while MySQL and Postgres are free and [open source](https://www.linode.com/docs/blog/open%20source/).
 
-The theory and [standards of RDBMS](https://blog.ansi.org/2018/10/sql-standard-iso-iec-9075-2016-ansi-x3-135/#gref) use are large. DB2, MySQL, Oracle, and Postgres all adhere to a large percentage of applicable standards, and all four have small gaps in their coverage. The similarities between them are far greater than the differences. DB2 and Oracle are generally chosen by organizations that put a premium on commercial service contracts. MySQL is widely used by millions of applications worldwide, and is many developers' first RDBMS of choice. Conventional thought is that Postgres databases are larger and arguably more capable, or at least fulfill more complicated requirements than corresponding MySQL ones. Although MySQL is tuned for data **retrieval**, Postgres is better at supporting [high-performance updates](https://www.sumologic.com/blog/postgresql-vs-mysql/) and concurrent write operations.
+The theory and [standards of RDBMS](https://blog.ansi.org/2018/10/sql-standard-iso-iec-9075-2016-ansi-x3-135/#gref) usage are vast. DB2, MySQL, Oracle, and Postgres all adhere to a large percentage of applicable standards, yet all four have small gaps in coverage. However, the similarities between them are far greater than the differences. DB2 and Oracle are generally chosen by organizations that put a premium on commercial service contracts. MySQL is widely used by millions of applications worldwide, and is the first RDBMS of choice for many developers. Conventional thought is that Postgres databases are larger and arguably more capable, or at least fulfill more complicated requirements than corresponding MySQL ones. While MySQL is tuned for data *retrieval*, Postgres is better at supporting [high-performance updates](https://www.sumologic.com/blog/postgresql-vs-mysql/) and concurrent write operations.
 
-## Five Postgres Quick-Starts
+## Before You Begin
 
 First, prepare a couple of preliminaries to reuse for each quick-start:
 
-1.  Establish a working directory for the Postgres examples in this guide. This might have a value such as `/home/example-user/Postgres` in Linux, `/Users/example-user/Postgres` in macOS, or `C:\Users\example-user\Postrges` in Windows.
+1.  Establish a working directory to follow the steps in this guide, for example `/home/example-user/postgres`:
 
-1.  In your working directory, create a small practice script called `example.sql` with the following content:
+    ```command
+    mkdir ~/postgres
+    ```
+
+    {{< note >}}
+    This might have a value such as `/Users/example-user/postgres` in macOS or `C:\Users\example-user\postrges` in Windows.
+    {{< /note >}}
+
+1.  Change into your working directory:
+
+    ```command
+    cd ~/postgres
+    ```
+
+1.  Create a small practice script called `example.sql`:
+
+    ```command
+    nano example.sql
+    ```
+
+1.  Give it the following contents:
 
     ```file{title="example.sql" lang="sql"}
     CREATE DATABASE first_database;
@@ -52,32 +72,48 @@ First, prepare a couple of preliminaries to reuse for each quick-start:
     SELECT * FROM customers ORDER BY last_name;
     ```
 
-    All of the examples below use this same `example.sql` script.
+1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-1.  Open a terminal window and navigate to your working directory. Use the following command to interact with the `example.sql` script through the Postgres interpreter command line interface:
+All of the examples below use this same `example.sql` script.
+
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< /note >}}
+
+## Five Postgres Quick-Starts
+
+### Local Installation
+
+PostgreSQL can be run directly on your local machine.
+
+1.  First, install PostegreSQL:
 
     ```command
-    psql -U postgres
+    sudo apt install postgresql postgresql-contrib
     ```
 
-1.  Enter the quit command to leave the Postgres interpreter and return to the usual terminal shell:
+1.  Open a terminal window and navigate to your working directory:
 
     ```command
-    \q
+    cd ~/postegre
     ```
 
-### Connect to an Organizational Instance
-
-1.  To connect to a company-wide virtual private network (VPN) and invoke Postgres's `psql` command line interface, launch `psql` as follows:
+1.  Use the following command to log in as the `postegre` user:
 
     ```command
-    psql -h $SERVER -U $YOUR_ACCOUNT
+    sudo -i -u postgres
     ```
 
-1.  Once at the `psql` command prompt, run the following request:
+1.  Now enter the Postgres interpreter command line interface:
 
     ```command
-    \i /app/common/example.sql
+    psql
+    ```
+
+1.  Enter the following command to run the `example.sql` script:
+
+    ```command:
+    \i example.sql
     ```
 
     ```output
@@ -94,6 +130,46 @@ First, prepare a couple of preliminaries to reuse for each quick-start:
        (3 rows)
     ```
 
+1.  When done, enter the quit command to leave the Postgres interpreter and return to the terminal shell as the `postegre` user:
+
+    ```command
+    \q
+    ```
+
+1.  Log out as the `postegre` user:
+
+    ```command
+    exit
+    ```
+
+### Connect to an Organizational Instance
+
+1.  Open a terminal window and navigate to your working directory:
+
+    ```command
+    cd ~/postegre
+    ```
+
+1.  Use the following command to log in as the `postegre` user:
+
+    ```command
+    sudo -i -u postgres
+    ```
+
+1.  To connect to a company-wide virtual private network (VPN) and invoke Postgres's `psql` command line interface, launch `psql` as follows:
+
+    ```command
+    psql -h $SERVER -U $YOUR_ACCOUNT
+    ```
+
+    This approach requires working values for `$SERVER`, `$YOUR_ACCOUNT`, and most likely `$YOUR_PASSWORD` before the connection is established.
+
+1.  Once at the `psql` command prompt, run the following request:
+
+    ```command
+    \i /app/common/example.sql
+    ```
+
 At this point, data can be added to and retrieved from the remote database.
 
 This approach requires working values for `$SERVER`, `$YOUR_ACCOUNT`, and most likely `$YOUR_PASSWORD` before the connection is established.
@@ -108,11 +184,15 @@ For quick results when dealing with an unusual platform, work inside a [containe
 
 Containers are generally a good fit for database management systems, and that includes Postgres. Thanks to the PostgreSQL Docker community, the [official Docker image for PostgreSQL](https://hub.docker.com/_/postgres) is a trustworthy, convenient resource for practical Postgres work. Here's how to make the most of it:
 
-1.  Confirm the file `postgres/example.sql` (or `postgres\example.sql`) in the file system of your desktop with content mentioned earlier is still present.
+1.  Confirm that the file `postgres/example.sql` with content mentioned earlier is still present.
 
-1.  Install and launch the Docker engine on your desktop.
+1.  Install and launch the Docker Engine on your desktop.
 
-1.  With the Docker Engine running, launch a standard Postgres container
+1.  With the Docker Engine running, launch a standard Postgres container:
+
+    ```command
+    sudo docker run -d --name postgres1 -p 5432:5432 -e POSTGRES_PASSWORD=my_password -v $(pwd)/postgres:/app/common -v /tmp:/var/lib/postgrespostgresql/data postgres
+    ```
 
     ```
     SOURCE="source=$(pwd)/postgres"
@@ -126,24 +206,22 @@ Containers are generally a good fit for database management systems, and that in
                Postgres
     ```
 
-    Launching this way prints a long hash, something that looks like:
+    {{< note >}}
+    If your desktop is based on Windows, your launch looks more like:
+
+    ```ouput
+    SET SOURCE="source=%cd%\postgres"
+       …
+    ```
+    {{< /note >}}
+
+    This outputs a long hash that resembles the following:
 
     ```output
     2e1abf0b77caaafe54989ebc51db5c36ed2697c55de98ef4af493
     ```
 
-in your terminal, and returns you to your usual command interpreter.
-
-At this point, you're executing at the command prompt as usual, but a Postgres container named `postgres` is running in the background.
-
-{{< note >}}
-If your desktop is based on Windows, your launch looks more like:
-
-```ouput
-SET SOURCE="source=%cd%\postgres"
-   …
-```
-{{< /note >}}
+    At this point a Postgres container named `postgres` is running in the background.
 
 1.  Connect to the postgres instance with:
 
@@ -223,32 +301,3 @@ A small amount of networking configuration and user management can transform man
 ## Conclusion
 
 Postgres is highly portable and easy to set up. Many developers only require small database instances with just a few gigabytes of storage. This requires considerably less infrastructure than a production database that manages many terabytes of data. Because Postgres is consistent across environments, developers can work in their own development-specific instances and simply concentrate on the functions and features. Whatever the circumstances, there's likely an efficient way create a low-cost database server to support programming work.
-
-
-
----
-
-## Before You Begin
-
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
-
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
-{{< /note >}}
-
-
-{{< caution >}}
-Highlight warnings that could adversely affect a user's system with the Caution style.
-{{< /caution >}}
-
-{{< file "/etc/hosts" aconf >}}
-192.0.2.0/24      # Sample IP addresses
-198.51.100.0/24
-203.0.113.0/24
-{{< /file >}}
