@@ -23,7 +23,7 @@ Our guide An Introduction to DNS on Linux(docs/networking/dns/introduction-to-dn
 
 1.  Follow our Introduction to DNS on Linux(/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server (`ns1`).
 
-1.  If you have not already done so, create a Linode account and compute instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
+1. Create two Compute instances for our secondary name servers. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your systems. Also set the timezone, configure your hostnames, and create limited user accounts. To follow along with this guide, give your servers the hostnames `ns2` and `ns3`. Make them part of the `yourdomainhere.com` domain (e.g. `ns2.yourdomainhere.com` and `ns3.yourdomainhere.com`, replacing `yourdomainhere.com` with your actual domain name). Also be sure to configure the hosts files with your hostnames and external IP addresses.
 
