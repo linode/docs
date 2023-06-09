@@ -83,7 +83,7 @@ The chain of trust is a key concept in DNSSEC. It establishes that each DNSSEC-e
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.yourdomainhere.com`, replacing `yourdomainhere.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
 
-1.  Follow our Introduction to [DNS on Linux](/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
+1.  Follow our Introduction to [DNS on Linux](/docs/guides/introduction-to-dns-on-linux) guide to set up a functional primary name server.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
