@@ -5,7 +5,7 @@ description: 'Discover how DNS impacts user privacy and explore solutions such a
 keywords: ['dns and user privacy','dns','domain name service','user privacy','dns over tls','dns over http','dot/doh dns server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-05-22
+published: 2023-06-09
 modified_by:
   name: Linode
 external_resources:
