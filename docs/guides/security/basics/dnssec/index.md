@@ -5,7 +5,7 @@ description: "An explanation of DNSSEC, why it's important, and how to implement
 keywords: ['dns','security','dnssec','domain name','poison','cache']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-05-08
+published: 2023-06-09
 modified_by:
   name: Linode
 external_resources:
