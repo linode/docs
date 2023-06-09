@@ -83,7 +83,7 @@ The chain of trust is a key concept in DNSSEC. It establishes that each DNSSEC-e
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. Set the timezone, configure your hostname, and create a limited user account. To follow along with this guide, give your server the hostname `ns1.yourdomainhere.com`, replacing `yourdomainhere.com` with your own domain name. Also be sure to configure the hosts file with your hostname and external IP addresses.
 
-1.  Follow our Introduction to DNS on Linux (/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
+1.  Follow our Introduction to [DNS on Linux](/docs/netwokring/dns/introduction-to-dns-on-linux) guide to set up a functional primary name server.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -135,7 +135,7 @@ This guide uses the `yourdomianhere.com` domain as an example. Replace this addr
     export KSK=`/usr/bin/ldns-keygen -k -a ECDSAP256SHA256 -b 2048 yourdomainehere.com`
     ```
 
-1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the Zone Maintenance(/docs/guides/security/basics/dnssec#Zone-Maintenance) section.
+1.  **Optional**: Capture the ZSK and KSK variables for later reuse in the [Zone Maintenance](/docs/guides/security/basics/dnssec#Zone-Maintenance) section.
 
     ```command
     echo $ZSK > yourdomainhere.com.zsk

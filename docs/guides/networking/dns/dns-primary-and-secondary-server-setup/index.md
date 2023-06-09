@@ -17,7 +17,7 @@ A single web server or a database going offline is a hassle, but what if all ser
 
 Because networked services depend on DNS, it’s critical to add one or more secondary name servers for redundancy. Hardening DNS servers to protect against rogue updates and hiding the primary name server also helps ensure smooth DNS operation.
 
-Our guide An Introduction to DNS on Linux(docs/networking/dns/introduction-to-dns-on-linux) explains how DNS works and how to build a primary name server. This guide configures a secondary name server for redundancy, adds secret keys for authentication, and a hidden primary name server for protection against attacks.
+Our guide [An Introduction to DNS on Linux](docs/networking/dns/introduction-to-dns-on-linux) explains how DNS works and how to build a primary name server. This guide configures a secondary name server for redundancy, adds secret keys for authentication, and a hidden primary name server for protection against attacks.
 
 ## Before You Begin
 

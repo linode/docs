@@ -318,7 +318,7 @@ A functional authoritative name server is now set up, but it’s not yet serving
 
     -   Second, notice that the records for `paul` and `stu` point to the same IP addresses, as do `ns1` and `ns2`. This underscores an important aspect of DNS: one hostname can refer to many addresses, and vice-versa. It is this capability that makes virtual hosting possible.
 
-        While `paul` and `stu` only share the same IP address for demonstration purposes, `ns1` and `ns2` sharing an IP address has actual utility. Many domain registrars require a minimum of two name servers to utilize custom DNS. Since this guide only sets up a single primary name server, having records for two name servers allows you to proceed with domain delegation. The second part of our series on DNS cover how to set up a secondary name server on a separate Linode instance.
+        While `paul` and `stu` only share the same IP address for demonstration purposes, `ns1` and `ns2` sharing an IP address has actual utility. Many domain registrars require a minimum of two name servers to utilize custom DNS. Since this guide only sets up a single primary name server, having records for two name servers allows you to proceed with domain delegation. The second part of our series on DNS covers how to [set up a secondary name server on a separate Linode instance](/docs/guides/dns-primary-and-secondary-server-setup).
 
     -   Third, note that fully qualified hostnames always have a period appended, representing the parent zone:
 
