@@ -1339,6 +1339,7 @@ microsite
 microsystems
 microweb
 Microweber
+middlebox
 middleware
 mimikatz
 minecraft
@@ -2454,6 +2455,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vixie
 vlan
 vlans
 vlc
