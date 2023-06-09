@@ -5,7 +5,7 @@ description: 'Enhance website reliability and performance by creating a secondar
 keywords: ['dns primary and secondary server setup','dns primary server','domain name service','linux dns server','dns secondary server','configuring dns','install dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-05-17
+published: 2023-06-09
 modified_by:
   name: Linode
 external_resources:
