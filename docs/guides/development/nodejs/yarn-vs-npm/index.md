@@ -43,7 +43,7 @@ While most developers use NPM to install Yarn, the [Yarn development team](https
 
 ## A Side By Side Comparison
 
-Yarn and NPM are both capable, but in different ways. Consequently, they're often used in tandem for some types of [product installations](/docs/guides/websites/lms/install-canvas-lms-on-ubuntu-2204/). This gives developers access to the best features of both. The table below provides a quick side-by-side comparison of their major features:
+Yarn and NPM are both capable, but in different ways. Consequently, they're often used in tandem for some types of [product installations](/docs/guides/install-canvas-lms-on-ubuntu-2204/). This gives developers access to the best features of both. The table below provides a quick side-by-side comparison of their major features:
 
 | Feature | Yarn | NPM |
 | -- | -- | -- |
