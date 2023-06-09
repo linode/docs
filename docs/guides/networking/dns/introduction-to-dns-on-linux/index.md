@@ -5,7 +5,7 @@ description: 'Learn the basics of DNS on Linux by configuting a primary name ser
 keywords: ['introduction to dns on linux','domain name service','linux dns server','dns server','configuring dns','install dns','flush dns']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["David Robert Newman"]
-published: 2023-05-11
+published: 2023-06-09
 modified_by:
   name: Linode
 external_resources:
@@ -15,7 +15,7 @@ external_resources:
 
 The Domain Name System (DNS) is a worldwide directory that maps names to addresses and vice versa. It also provides many other types of information about computing resources. Although the DNS operates largely hidden from view, the global Internet would not work without it.
 
-This guide explains what the DNS is, how it works, and how to build your own authoritative name server.
+This guide explains what DNS is, how it works, and how to build your own authoritative name server.
 
 This is the first in a series of four DNS guides. Future guides cover primary and secondary name server setup, securing DNS with DNSSEC, and other security measures to address user privacy concerns.
 
@@ -122,7 +122,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 After completing the prerequisite steps above, it’s time to build a primary authoritative name server using NSD.
 
 {{< note >}}
-It is far easier to have Linode do DNS hosting for you. Linode provides DNS service via the **Domains** item in its dashboard. The Linode graphical interface offers quick, simple setup. In contrast, running your own DNS server takes some time and regular maintenance. The upsides are more control over your DNS information, and a better understanding of the DNS protocol.
+It is far easier to have Linode do DNS hosting for you. Linode provides DNS service via the **Domains** item in its dashboard. The Linode graphical interface offers quick, simple setup. In contrast, running your own DNS server takes some time and regular maintenance. The benefits are more control over your DNS information, and a better understanding of the DNS protocol.
 {{< /note >}}
 
 ### Install NSD
