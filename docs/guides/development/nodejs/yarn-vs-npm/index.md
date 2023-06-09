@@ -10,8 +10,7 @@ published: 2023-06-08
 modified_by:
   name: Linode
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[SitePoint: Yarn vs npm: Everything You Need to Know](https://www.sitepoint.com/yarn-vs-npm/)'
 ---
 
 [Yarn (Yet Another Resource Negotiator)](https://classic.yarnpkg.com/lang/en/) and [NPM (Node Package Manager)](https://www.npmjs.com/) are both package managers used with [Node.JS](https://nodejs.org/en/). Both provide Node.JS support in running JavaScript code outside of a browser, as is often the case when creating and maintaining server-side applications. Package managers are used to install, remove, update, and manage [libraries (groups of modules) and packages (compiled libraries)](https://www.techighness.com/post/javascript-difference-between-module-library-package-api-sdk-framework-app/). They also handle the dependencies these pieces of software rely upon to function. A package consists of these items:
