@@ -1,20 +1,14 @@
 ---
 slug: {{ path.Base .File.Dir }}
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: 'Two to three sentences describing your guide.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
-title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
-h1_title: "h1 title displayed in the guide."
-contributor:
-  name: Your Name
-  link: Github/Twitter Link
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
@@ -22,15 +16,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server/) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
-
-3.  Update your system:
-
-        sudo apt-get update && sudo apt-get upgrade
-
-<!-- Include one of the following notes if appropriate. --->
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.

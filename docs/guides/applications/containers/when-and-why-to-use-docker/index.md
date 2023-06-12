@@ -1,8 +1,5 @@
 ---
 slug: when-and-why-to-use-docker
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide discusses the pros and cons of using Docker, and when Docker is a good choice for a project.'
 keywords: ['docker','containers','docker hub']
 tags: ["container","docker"]
@@ -20,6 +17,7 @@ external_resources:
 - '[8 Docker Security Rules to Live By](https://www.infoworld.com/article/3154711/security/8-docker-security-rules-to-live-by.html)'
 - '[Your Software is Safer in Docker Containers](https://blog.docker.com/2016/08/software-security-docker-containers/)'
 aliases: ['/applications/containers/when-and-why-to-use-docker/']
+authors: ["Jared Kobos"]
 ---
 
 ![When and Why to Use Docker](when-why-docker.jpg "When and Why to Use Docker")
@@ -28,7 +26,7 @@ aliases: ['/applications/containers/when-and-why-to-use-docker/']
 
 Since its release in 2012, [Docker](https://www.docker.com) has become one of the fastest-growing technologies in devops and web development. Like any new technology, however, it is still under development, has some limitations, and is not right for every project. This guide provides an overview of the pros and cons of Docker so that you can decide whether it would be a good addition to your project.
 
-For a more basic introduction to Docker concepts and terminology, see our [An Introduction to Docker](/docs/applications/containers/introduction-to-docker/) guide.
+For a more basic introduction to Docker concepts and terminology, see our [An Introduction to Docker](/docs/guides/introduction-to-docker/) guide.
 
 ## Benefits of Docker
 

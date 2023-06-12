@@ -1,8 +1,10 @@
 ---
 title: Resources
+title_meta: "Resources for the Linode Managed Service"
 description: "Resources and other information related to the Linode Managed Service including blog posts, community posts, customer stories, and press releases."
 tab_group_main:
     weight: 40
+published: 2023-04-04
 ---
 
 ## Blog Posts
@@ -26,6 +28,8 @@ tab_group_main:
 - [Need to edit Managed monitor](https://www.linode.com/community/questions/19514/need-to-edit-managed-monitor)
 
 - [Linode Managed and CloudFlare](https://www.linode.com/community/questions/19998/linode-managed-and-cloudflare)
+
+- [How do I access cPanel](https://www.linode.com/community/questions/19072/how-do-i-access-cpanel-one-click-app)
 
 Browse our [Linode Community Questions & Answers page](https://www.linode.com/community/questions/) for more [related questions](https://www.linode.com/community/questions/search?query=managed).
 

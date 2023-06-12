@@ -1,9 +1,11 @@
-<div class="flex flex-wrap content-center space-x-1 pt-2" x-data="{}">
+<div class="flex flex-wrap content-center hide-if-no-js" x-data="{}">
   {{ with .Params.Tags }}
     {{ range . }}
-      <a href="#" @click="lnh.SendEvent('search:filter', 'tags={{ . | lower | htmlEscape }}' ); $event.preventDefault()"
-        class="bg-selected cursor-pointer border rounded-sm border-gray-500 text-basicgray text-sm uppercase p-1 mb-2"
-        style="letter-spacing: 1px; line-height: 15px;" data-testid="link-tag-{{ . | lower | htmlEscape }}">
+      <a
+        @click="$store.search.query.addFilter('tags', '{{ . | lower | htmlEscape }}'); $store.nav.openSearchPanel(true);"
+        class="bg-selected cursor-pointer border rounded-sm border-gray-500 text-basicgray text-sm leading-4 uppercase p-1 mb-1 mr-1"
+        style="letter-spacing: .5px;"
+        data-testid="link-tag-{{ . | lower | htmlEscape }}">
         {{ . }}
       </a>
     {{ end }}

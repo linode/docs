@@ -1,21 +1,16 @@
 ---
 slug: introduction-to-awk
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
-description: 'Learn some basics of the AWK programming language.'
+description: 'This guide provides you with an introduction to the Turing-complete pattern matching programming language, AWK, which is great for data reporting and more.'
 keywords: ["UNIX", "shell", "AWK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-07-30
 modified_by:
   name: Linode
 title: 'Learn the AWK Programming Language'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[GNU awk](https://www.gnu.org/software/gawk/)'
 aliases: ['/development/awk/introduction-to-awk/','/development/introduction-to-awk/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## What is AWK?
@@ -24,7 +19,7 @@ AWK is a [*Turing-complete*](https://en.wikipedia.org/wiki/Turing_completeness) 
 
 AWK is great for data reporting, analysis, and extraction and supports arrays, associative arrays, functions, variables, loops, and regular expressions. Current Linux systems use [improved versions](https://en.wikipedia.org/wiki/AWK#Versions_and_implementations) of the original AWK utility. The main enhancement to these AWK variants is support for a larger set of built-in functions and variables. The most widely used variants of AWK are: [Gawk](https://www.gnu.org/software/gawk/), [Mawk](https://invisible-island.net/mawk/), and [Nawk](https://linux.die.net/man/1/nawk).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide uses the Gawk version of AWK.
 {{< /note >}}
 
@@ -46,7 +41,7 @@ In this section you will learn basics of the AWK programming language, including
 * Creating and using variables, arrays, and functions.
 * Special patterns, like `BEGIN` and `END`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A pattern in AWK controls the execution of *rules* and a rule is executed when its pattern is a match for the current [input record](https://www.gnu.org/software/gawk/manual/html_node/Records.html#Records).
 {{< /note >}}
 
@@ -175,7 +170,7 @@ If an AWK program uses only `BEGIN` rules without any other code, the program te
 
 #### BEGINFILE and ENDFILE
 
-{{< note >}}
+{{< note respectIndent=false >}}
 `BEGINFILE` and `ENDFILE` only work with `gawk`.
 {{< /note >}}
 
@@ -334,7 +329,7 @@ Index: 3 with value: 4
 a[1] = a["1"] = 2
   {{</ output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The order of the array indices may be out of order. This is because arrays in AWK are associative and not assigned in blocks of contiguous memory.
   {{< /note >}}
 
@@ -484,11 +479,11 @@ one two three
 one three
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can also execute the contents of `field1and3.awk` on the command line and pass `words.txt` as input:
 
     awk '{print $1, $3}' words.txt
-    {{</ note >}}
+    {{< /note >}}
 
 ### Counting
 #### Counting Lines
@@ -666,7 +661,7 @@ one three five
 
         awk -f wordFreq.awk wordFreq.txt | sort -k3rn
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `sort -k3rn` command is used to sort the output of `wordFreq.awk` based on a numeric sort in reverse order.
     {{< /note >}}
 

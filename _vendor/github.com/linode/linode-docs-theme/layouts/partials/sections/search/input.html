@@ -1,12 +1,38 @@
-<div id="search-input" class="bg-white flex justify-between items-center relative text-textcolor w-full" x-data="lnc.NewSearchInputController()" x-init="init()" @search:results-any.document.debounce.350ms="receiveData($event.detail);"  @turbolinks:before-render.document="onTurbolinksBeforeRender($event.data);" data-turbolinks-permanent>
-  <div autocomplete="off" spellcheck="false" contenteditable="true" x-ref="searchInput" @click="click();" @focusin="setFocus(true);" @focusout="setFocus(false);" @input="dispatch()" name="search"
-        placeholder="Search Linode" class="search-input w-full h-12 px-5 py-3 pl-9 focus:outline-none" data-testid="search-input"></div>
-  <span class="absolute left-0 top-0 mt-4">
-    <svg class="w-4 h-4" :class="{ 'text-brand': focus, 'text-textcolor': !focus }">
+<div
+  id="search-input"
+  class="flex justify-between items-stretch text-textcolor w-full"
+  x-data="lncSearchInput()"
+  @click="click();"
+  @keydown.meta.k.window="open()"
+  @keydown.slash.window="open()"
+  @keydown.escape.window="close()"
+  data-turbo-permanent>
+  <span class="self-center">
+    <svg
+      class="w-4 h-4 hover:text-brand"
+      :class="{ 'text-brand': focus, 'text-textcolor': !focus }">
       <use href="#icon--search"></use>
     </svg>
   </span>
-  <button aria-label="Close search" class="mr-4 hover:text-brand" :class="{ 'hidden': !searchOpen }" @click="close()" data-testid="input-close">
+  <input
+    type="text"
+    autocomplete="off"
+    spellcheck="false"
+    aria-label="search"
+    x-model="$store.search.query.lndq"
+    x-ref="searchinput"
+    placeholder="Search Linode"
+    class="search-input w-full pl-3 focus:outline-none focus:ring-transparent focus:border-red-300 border-none"
+    data-testid="search-input"
+    @focusin="setFocus(true);"
+    @focusout="setFocus(false);"
+    @hashchange.window="$el.blur()" />
+  <button
+    aria-label="Close search"
+    class="mr-4 hover:text-brand"
+    :class="{ 'hidden': !$store.nav.searchResults.open && !$store.search.query.isFiltered() }"
+    @click.stop="close()"
+    data-testid="input-close">
     <svg class="h-5 w-5">
       <use href="#icon--times"></use>
     </svg>

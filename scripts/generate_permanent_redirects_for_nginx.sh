@@ -27,7 +27,7 @@ set -eo pipefail
 
 > ../redirects.conf
 
-egrep -R '<!DOCTYPE html><html><head><title>(https:\/\/.*\/)<\/title><link rel="canonical" href="(https:\/\/.*\/)"\/><meta name="robots" content="noindex"><meta charset="utf-8" \/><meta http-equiv="refresh" content="0; url=(https:\/\/.*\/)" \/><\/head><\/html>' ../public | while read -r line ; do
+egrep -R '<title>(https:\/\/.*\/)<\/title>' ../public | while read -r line ; do
     # Gets the path (relative to the base URL) that the redirect should point to
     # Example: /guides/how-to-install-mariadb-on-centos-7/
     redirect_target_path="/$(echo $line | egrep -o '<title>https:\/\/.*\/<\/title>' | cut -c 36- | rev | cut -c 9- | rev)"

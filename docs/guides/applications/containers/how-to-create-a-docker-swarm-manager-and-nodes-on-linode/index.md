@@ -1,13 +1,6 @@
 ---
 slug: how-to-create-a-docker-swarm-manager-and-nodes-on-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
-description: 'This guide shows you how to use Linode to create a Docker Swarm Manager and deploy a service to several Nodes.'
-og_description: 'Docker Swarm is a software tool by which sysadmins can create and manage a cluster of Docker nodes in a singular, virtualized system. This guide shows how to create and run a Docker Swarm - and thereby manage a Docker cluster - on Linode.'
+description: "In this guide, we'll show you how to create and run a Docker Swarm - and thereby manage a Docker cluster - on Linode."
 keywords: ["docker", "container", "docker swarm", "swarm manager", "swarm nodes"]
 tags: ["ubuntu","container","docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,12 +8,13 @@ modified: 2017-09-28
 modified_by:
   name: Linode
 published: 2017-09-18
-title: 'How to Create a Docker Swarm Manager and Nodes on Linode'
+title: "Create a Docker Swarm Manager and Nodes on Linode"
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/']
+authors: ["Jack Wallen"]
 ---
 
 ![How to Create a Docker Swarm Manager and Nodes on Linode](create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")
@@ -29,12 +23,12 @@ aliases: ['/applications/containers/how-to-create-a-docker-swarm-manager-and-nod
 
 1.  Completing this guide will require at least two Linodes located in the same data center. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
 
-2.  For each Linode, complete the steps in our [Getting Started](/docs/getting-started/) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
+3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/docs/guides/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. You need one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
@@ -47,7 +41,7 @@ The Docker Swarm Manager’s purpose is to receive commands on behalf of the clu
 
 In this guide, we create a single Swarm Manager. If your goal is high-availability, you can create multiple managers.
 
-1.  Log in to the Linode you've chosen for Swarm manager and initialize the manager. Replace `PUBLIC_IP` in this example with your Linode's [public IP address](/docs/networking/linux-static-ip-configuration):
+1.  Log in to the Linode you've chosen for Swarm manager and initialize the manager. Replace `PUBLIC_IP` in this example with your Linode's [public IP address](/docs/products/compute/compute-instances/guides/manual-network-configuration/):
 
         docker swarm init --advertise-addr PUBLIC_IP
 

@@ -1,9 +1,6 @@
 ---
 slug: manipulate-lists-with-sort-and-uniq
-author:
-  name: Linode
-  email: docs@linode.com
-description: Use the sort and uniq Linux utilities to manage and order
+description: "This guide shows how you can use 'sort' and 'uniq', which are utilities built into Linux that you can use to sort or order lists, as well as manipulate them."
 keywords: ["linux", "common commands", "sort", "uniq", "shell", "bash"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/tools/manipulate-lists-with-sort-and-uniq/','/linux-tools/common-commands/sort-uniq/']
@@ -13,6 +10,7 @@ modified_by:
 published: 2010-11-29
 title: 'Manipulate Lists with sort and uniq'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 ![Manipulate Lists with sort and uniq](manipulate_lists_with_sort_and_uniq_smg.png "Manipulate Lists with sort and uniq")
@@ -31,7 +29,7 @@ The `sort` command accepts input from a text file or standard output, sorts the 
 
     grep -i "retired" ~/roster.txt | sort
 
-This uses [grep](/docs/tools-reference/search-and-filter-text-with-grep) to filter the `~/roster.txt` file for the string `retired`, regardless of case. These results are sent to `sort`, which reorders this output alphabetically.
+This uses [grep](/docs/guides/how-to-grep-for-text-in-files/) to filter the `~/roster.txt` file for the string `retired`, regardless of case. These results are sent to `sort`, which reorders this output alphabetically.
 
 In the default configuration, this `sort` prints the output on the terminal. To write this content to a file, redirect the output as in the following example:
 

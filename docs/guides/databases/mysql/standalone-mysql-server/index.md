@@ -1,9 +1,6 @@
 ---
 slug: standalone-mysql-server
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Deploying a standalone MySQL database server on a separate Linode for increased application performance.'
 keywords: ["mysql", "standalone myql", "separate mysql", "wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,24 +8,24 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2009-09-30
-expiryDate: 2013-04-29
 title: Standalone MySQL Server
 tags: ["database","mysql"]
 aliases: ['/databases/mysql/standalone-mysql-server/']
+authors: ["Stan Schwertly"]
 ---
 
 In some kinds of deployments, particularly where rich dynamic applications rely on a large database, separating the database server from the application server can permit your application to scale and accommodate a much larger user base. Designating a separate server to be used solely by MySQL will allow the application's web server to serve content more efficiently, while the database server will be able to respond more quickly.
 
-As a result, these database servers can more effectively support deployments with high traffic loads. This may help you achieve higher performance for a range of applications, from popular packages such as [WordPress](/docs/web-applications/cms-guides/wordpress/) and [Drupal](/docs/web-applications/cms-guides/drupal/) to custom applications written in [Ruby on Rails](/docs/frameworks/) and [Django](/docs/frameworks/).
+As a result, these database servers can more effectively support deployments with high traffic loads. This may help you achieve higher performance for a range of applications, from popular packages such as [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) and [Drupal](/docs/guides/how-to-install-and-configure-drupal-8/) to custom applications written in [Ruby on Rails](/docs/frameworks/) and [Django](/docs/frameworks/).
 
 ## Prerequisites
 
-In this guide we will be using two Linodes. Note that this is different than simply deploying a second configuration profile on your existing Linode account, as both servers will need to be running at the same time. We're assuming you have followed the [getting started](/docs/getting-started/) guide for both Linodes.
+In this guide we will be using two Linodes. Note that this is different than simply deploying a second configuration profile on your existing Linode account, as both servers will need to be running at the same time. We're assuming you have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for both Linodes.
 
 -   For the Linode running the web server, henceforth the application server, you should already have Apache (or your preferred web server) installed. For a fresh install, follow the [LAMP guide](/docs/lamp-guides/) for your distribution. The LAMP guide includes MySQL, which you do not need to install.
 -   The dedicated MySQL Linode should have MySQL installed. Follow the [MySQL database server](/docs/databases/mysql/) installation guide for your distribution. Keep in mind that you do not have to install Apache on the dedicated MySQL server.
 
-Also, you will want to configure aliases for the private IP address of each Linode. You can follow the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces/) guide for assistance with this. **It is important to note that both Linodes should be in the same data center** for private networking to work. This enables the servers to communicate without having the traffic count against your monthly bandwidth quota. It is necessary to reboot both Linodes after configuring the private IP addresses.
+Also, you will want to configure aliases for the private IP address of each Linode. You can follow the [Linux Static IP Configuration](/docs/products/compute/compute-instances/guides/manual-network-configuration/) guide for assistance with this. **It is important to note that both Linodes should be in the same data center** for private networking to work. This enables the servers to communicate without having the traffic count against your monthly bandwidth quota. It is necessary to reboot both Linodes after configuring the private IP addresses.
 
 ## Edit /etc/hosts
 
@@ -36,6 +33,7 @@ You will want to create hostnames for each machine so you can keep track of them
 
 {{< file "/etc/hosts" >}}
 > 127.0.0.1 localhost 192.168.192.168 mysql.example.com mysql 192.168.192.169 app.example.com app
+{{</ file >}}
 
 Remember to replace `192.168.192.168` and `192.168.192.169` with the actual private IP addresses.
 
@@ -73,7 +71,7 @@ From this point on, everything is configured and your database server is ready t
 
 Using MySQL on a separate database server is very similar to running a local database server. Typically, applications require you to specify "database hostname", and conventionally database servers running on the local machine have a hostname of `localhost`. When you separate database and application servers you will need to specify the hostname, as set above, in the application.
 
-For example, in [WordPress](/docs/web-applications/cms-guides/wordpress/) database settings are contained in the `wp-config.php` file, and the hostname is specified in the following format:
+For example, in [WordPress](/docs/guides/how-to-install-and-configure-wordpress/) database settings are contained in the `wp-config.php` file, and the hostname is specified in the following format:
 
 {{< file "wp-config.php" >}}
 /** MySQL hostname */

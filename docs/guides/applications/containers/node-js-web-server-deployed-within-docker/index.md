@@ -1,9 +1,6 @@
 ---
 slug: node-js-web-server-deployed-within-docker
-author:
-  name: Joe D.
-  email: docs@linode.com
-description: 'Deploy a Node.js Server in a Docker Container.'
+description: 'This guide shows you how to deploy a Node.js server inside of a Docker container, which is a technology platform for running containerized applications.'
 keywords: ["docker", "node.js", "node", "debian", "ubuntu", "web server", "javascript", "container"]
 tags: ["container","docker","web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,13 +15,14 @@ external_resources:
 - '[Docker Docs](http://docs.docker.com/)'
 - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
 - '[Docker Hub](https://hub.docker.com/)'
+authors: ["Joe D."]
 ---
 
 Node.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
 
 ## Install Docker
 
-{{< content "install-docker-ce" >}}
+{{< content "installing-docker-shortguide" >}}
 
 ## Download the Docker Node.js Server Image
 The Docker Hub user page for Linode can be accessed [here](https://hub.docker.com/u/linode/). Select the **server-node-js** image for configuration information.
@@ -47,7 +45,7 @@ Docker images made for one operating system can be used on servers running a dif
 
         docker run -d -p 80:3000 linode/server-node-js
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This command runs the docker image as a daemon.
 {{< /note>}}
 

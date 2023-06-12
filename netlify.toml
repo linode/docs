@@ -1,13 +1,14 @@
 [build]
 publish = "public"
-command = "hugo version && hugo --gc --minify -d public/docs;"
+command = "hugo version && hugo config && hugo --gc --minify -d public/docs;"
 
 [context.production.environment]
-HUGO_VERSION = "0.80.0"
+HUGO_VERSION = "0.111.3"
+HUGO_PARAMS_TESTENV="Netlify"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.80.0"
-NODE_VERSION = "13.4.0"
+HUGO_VERSION = "0.111.3"
+HUGO_PARAMS_TESTENV="Netlify"
 
 [[plugins]]
 package = "netlify-plugin-hugo-cache-resources"
@@ -56,14 +57,24 @@ Referrer-Policy = "no-referrer"
 Content-Security-Policy = "script-src 'self' *.googletagmanager.com *.trustarc.com *.weglot.com *.disqus.com 'unsafe-eval' 'unsafe-inline'"
 
 [[redirects]]
-from = "/docs/content/*"
-to = "/docs/content/"
+from = "/docs/blog/*"
+to = "/docs/sections/"
+status = 200
+
+[[redirects]]
+from = "/docs/marketplace/*"
+to = "/docs/sections/"
+status = 200
+
+[[redirects]]
+from = "/docs/resources/*"
+to = "/docs/sections/"
 status = 200
 
 [[redirects]]
 from = "/docs/*"
-to = "/docs/sections/"
-status = 200
+to = "/docs/404.html"
+status = 404
 
 [[redirects]]
 from = "/*"

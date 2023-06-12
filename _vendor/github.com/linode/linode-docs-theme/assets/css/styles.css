@@ -1,4 +1,4 @@
-/* Main colors, these are also referenced in tailwind.config.js. */
+/* Main beps colors, these are also referenced in tailwind.config.js.. */
 :root {
   --color-brand: #02b159;
   --color-brand--decimal: 2, 177, 89;
@@ -21,17 +21,6 @@ html {
   font-size: 16px;
 }
 
-@screen small {
-  html {
-    font-size: 14px;
-  }
-}
-
-/* Hide pre-initialized DOM elements. */
-[x-cloak] {
-  display: none;
-}
-
 body,
 html {
   width: 100vw;
@@ -40,6 +29,18 @@ html {
   margin: 0;
   padding: 0;
   color: var(--color-body-text);
+}
+
+html {
+  /* At least in Chrome on MacOS, using any var calculations here makes it fall back to auto, so be explicit. */
+  scroll-padding-top: 81px;
+}
+
+@screen small {
+  html {
+    font-size: 14px;
+    scroll-padding-top: 68px;
+  }
 }
 
 body {
@@ -52,7 +53,7 @@ body {
   @apply lg:mx-auto;
 }
 
-.turbolinks-progress-bar {
+.turbo-progress-bar {
   @apply bg-brand;
   opacity: 0.35;
   height: 3px;
@@ -94,6 +95,16 @@ body {
   text-overflow: ellipsis;
 }
 
+/* Helper class to limit a text block to three lines. */
+.three-lines-ellipsis {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* 
 These matches the padding elements of the container class (but without the width attributes)
 for the smaller screens.
@@ -122,4 +133,10 @@ for the smaller screens.
 .px-container,
 .mx-container {
   @apply pl-container pr-container;
+}
+
+/* Adjust Tailwind preflight defaults applied in tailwind base. */
+pre {
+  /* Tailwind 2.* is prepending ui-monospace in its preflight pre element, which looks like a bug. This makes sure we use the config settings. */
+  @apply font-mono;
 }

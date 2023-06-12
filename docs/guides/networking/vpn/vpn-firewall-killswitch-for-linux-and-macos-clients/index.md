@@ -1,22 +1,20 @@
 ---
 slug: vpn-firewall-killswitch-for-linux-and-macos-clients
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'How to set up a VPN firewall on OpenVPN clients'
-og_description: 'This guide will show you how to set up a VPN kill switch with iptables on OpenVPN clients.'
+description: "This guide walks you through setting up a VPN kill switch with iptables on OpenVPN clients."
 keywords: ["vpn", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-07-09
 modified_by:
   name: Linode
 published: 2017-09-29
-title: Use iptables to Configure a VPN Kill Switch on OpenVPN Clients
+title: "Configuring a VPN Kill Switch on OpenVPN Clients Using iptables"
+title_meta: "How to Configure a VPN Kill Switch on OpenVPN Clients"
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/vpn-firewall-killswitch-for-linux-and-macos-clients/']
+authors: ["Linode"]
 ---
 
 A virtual private network is often used to evade censorship, surveillance, or geolocation by routing internet traffic from your local device to the remote VPN server through an encrypted tunnel. In this scenario, the VPN server is the internet gateway for all connected client devices, and it forwards traffic from clients out to the internet, then receives and routes the traffic back to the client devices. However, there is always a risk that the VPN connection will unexpectedly drop, which can result in your traffic being communicated over the public internet instead of through the encrypted VPN connection.
@@ -27,11 +25,11 @@ For this reason, VPN clients often use firewall rules to ensure that internet tr
 
 This guide assumes that you already have an OpenVPN server running on your Linode, and have at least one client configured to connect to it. If you need help doing this, see our three-part series on setting up an OpenVPN environment:
 
-1.  [Set Up a Hardened OpenVPN Server with Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server/)
+1.  [Set Up a Hardened OpenVPN Server with Debian](/docs/guides/set-up-a-hardened-openvpn-server/)
 
-2.  [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/)
+2.  [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/)
 
-3.  [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices/)
+3.  [Configuring OpenVPN Client Devices](/docs/guides/configuring-openvpn-client-devices/)
 
 
 ## Gather Client Device Information
@@ -51,7 +49,7 @@ default         gw-li938.linode 0.0.0.0         UG    0      0        0 eth0
 
  The output shows the network interface name under the *Iface* column (eth0), and the LAN's subnet under the *Genmask* (255.255.255.0). These values will be used throughout the remainder of this guide, so replace `wlp6s0` and `198.168.0.1/24` with the interface and IP address/subnet found by running `route` on your client.
 
-For macOS, the commands `networksetup -listallhardwareports` and `ifconfig` will show all your possible network interfaces and associated network information. From that list, you can find your ethernet and WiFi device names and their local subnet.
+For macOS, the commands `networksetup -listallhardwareports` and `ifconfig` will show all your possible network interfaces and associated network information. From that list, you can find your Ethernet and WiFi device names and their local subnet.
 
 ## Configure client.ovpn
 
@@ -79,9 +77,9 @@ The majority of GNU/Linux users use either `iptables` or `ufw` to manage their f
 
 ### VPN firewall using iptables
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You may want to back up your current iptables ruleset with `iptables-save`.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a shell script with the following `iptables` ruleset:
 
@@ -111,13 +109,13 @@ iptables -A OUTPUT -j ACCEPT -o tun0
 
 This ruleset replaces the pre-exiting iptables rules and instructs the firewall to drop every outgoing connection other than loopback traffic, the local network's subnet and UDP traffic to and from your OpenVPN server's IP on port 1194. In addition, all incoming and outgoing connections are allowed over the virtual network interface `tun0`.
 
-Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/security/firewalls/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
+Your VPN firewall is now active, but this ruleset is only temporary and will be cleared when you reboot your Linode. To make the firewall permanent, you can install the `iptables-persistent` package for Debian or Ubuntu-based distributions, or you can see our [iptables](/docs/guides/control-network-traffic-with-iptables/#deploy-your-iptables-rulesets) or [Firewalld](/docs/guides/introduction-to-firewalld-on-centos/#constructing-a-ruleset-with-firewalld) guides to create permanent rulesets and/or profiles.
 
 ### VPN Firewall using ufw
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 You may want to back up your current firewall ruleset.
-{{< /caution >}}
+{{< /note >}}
 
 1.  Create a new shell script containing the following commands:
 

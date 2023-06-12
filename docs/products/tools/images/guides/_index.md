@@ -1,47 +1,43 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Custom Images"
 description: "Learn how to create and manage Linode Images and find guides on other related topics."
 tab_group_main:
     weight: 30
 ---
 
-## Building Blocks
+## Basics
 
-- [Capture an Image](/docs/products/tools/images/guides/capture-an-image/): Create an exact copy of a Linode's disk image.
+### Create an Image
 
-- [Manage Your Images](/docs/products/tools/images/guides/manage-your-images/): Captured images are stored for future use and can be modified or removed at any time.
+- [Capture an Image](/docs/products/tools/images/guides/capture-an-image/): Create an Image from an existing Compute Instance.
 
-- [Deploy From a Saved Image](/docs/products/tools/images/guides/deploy-from-a-saved-image/): Quickly deploy a new Linode from a saved image.
+- [Upload an Image](/docs/products/tools/images/guides/upload-an-image/): Create an Image from an image file.
 
-- [Deploy an Additional Image to an Existing Linode](/docs/products/tools/images/guides/deploy-additional-image-to-existing-linode/): Deploy an additional image to an existing Linode by adding an additional disk.
+### Deploy an Image
 
-## Themes
+- [Deploy an Image to a New Compute Instance](/docs/products/tools/images/guides/deploy-image-to-new-linode/): Create a new Compute Instance using an Image.
 
-These guides help you with topics like deploying custom distributions, migrating to Linode, and using the Linode Packer Builder.
+- [Deploy an Image to an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/): Deploy an Image by either rebuilding an existing Compute Instance or adding a disk.
+
+## Going Further
+
+- [Using the Linode Packer Builder to Create Custom Images](/docs/guides/how-to-use-linode-packer-builder/)
+
+## Related Guides
 
 ### Cloning and Disks
 
-- [Clone Your Linode](https://www.linode.com/docs/platform/disk-images/clone-your-linode/)
-[Disks and Configuration Profiles](https://www.linode.com/docs/platform/disk-images/disk-images-and-configuration-profiles/)
+- [Cloning a Linode](/docs/products/compute/compute-instances/guides/clone-instance/)
+
+- [Linode Disks and Storage](/docs/products/compute/compute-instances/guides/disks-and-storage/)
+
+- [Linode Configuration Profiles](/docs/products/compute/compute-instances/guides/configuration-profiles/)
 
 ### Custom Distributions
 
-- [Install a Custom Distribution on a Linode](https://www.linode.com/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/)
+- [Install a Custom Distribution on a Linode](/docs/products/compute/compute-instances/guides/install-a-custom-distribution/)
 
 ### Migration
 
-- [Migrating a Google Cloud Platform VM Instance to Linode](https://www.linode.com/docs/platform/migrate-to-linode/how-to-migrate-from-gcp-to-linode/)
-
-### Packer
-
-- [Use the Linode Packer Builder to Create Linode Images](https://www.linode.com/docs/applications/configuration-management/how-to-use-linode-packer-builder/)
-
-### Backups
-
-- [The Linode Backup Service](https://www.linode.com/docs/platform/disk-images/linode-backup-service/)
-
-- [Download a Local Copy of your Linode Backup](https://www.linode.com/docs/security/data-portability/download-backups-locally/)
-
-- [Copy a Disk Over SSH](https://www.linode.com/docs/platform/disk-images/copying-a-disk-image-over-ssh/)
-
-- [Download Files from Your Linode](https://www.linode.com/docs/security/data-portability/download-files-from-your-linode/)
+- [Migrating a Google Cloud Platform VM Instance to Linode](/docs/guides/how-to-migrate-from-gcp-to-linode/)

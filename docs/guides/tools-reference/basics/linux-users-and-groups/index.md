@@ -1,23 +1,20 @@
 ---
 slug: linux-users-and-groups
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'In this guide, you learn about Linux users and groups. This guide includes several examples using commands to execute the most common tasks related to user and group management. You also learn about primary and secondary Linux groups.'
-og_description: 'In this guide, you learn about Linux users and groups. This guide includes several examples using commands to execute the most common tasks related to user and group management. You also learn about primary and secondary Linux groups.'
+description: "Want to learn more about Linux users and groups? This guide covers the most common user and group management tasks."
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
+bundles: ['debian-security', 'centos-security']
 modified: 2021-01-07
 modified_by:
   name: Linode
 published: 2009-08-31
 title: Linux Users and Groups
-h1_title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
+authors: ["Linode"]
 ---
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide provides you with an explanation of what permissions are, how they work, and how to manage them. A number of examples are provided to illustrate how to set and change permissions for both users and groups.
@@ -194,17 +191,17 @@ For CentOS, the command is as follows:
 
 In order to provide a user with the `sudo` ability, they need to be added to a `sudo` enabled group, or their username needs to be added to the sudoers file with a set of permissions. This file is sensitive and important as an access and security control, and should not be edited directly with a text editor. If the sudoers file is edited incorrectly it could result in preventing access to the system or other unintended permission changes.
 
-{{< note >}}
-For instructions on adding a user to a default `sudo` enabled group, see our [How to Secure Your Server](/docs/guides/securing-your-server/) guide
+{{< note respectIndent=false >}}
+For instructions on adding a user to a default `sudo` enabled group, see our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide
 {{< /note >}}
 
 The `visudo` command should be used to edit the sudoers file. At a command line, log into your system as `root` and enter the command `visudo`.
 
 The following `sudoers` excerpt allows the listed users to execute any command they'd like by prefixing it with `sudo`, which gives the user full control of a system.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Users should never be added to the `sudoers` file or group with full permission if they are not trusted. You can optionally restrict what users can do with `sudo` as an additional layer of security; refer to the  [Whitelisting Commands With Sudo](#whitelisting-commands-with-sudo) for some examples on restricted usage syntax.
-{{< /caution >}}
+{{< /note >}}
 
 {{< file >}}
 # User privilege specification
@@ -231,10 +228,10 @@ In many cases, while you want users to have elevated sudo permissions, you also 
     %sudo ALL=/usr/bin/less, /usr/bin/ls, /usr/bin/apt
 {{< /file >}}
 
-While the root and `sudousername` users still have full superuser permissions, the user `username` has been limited to only the `top` and `apt-get` commands as a sudo user. Additionally, all users added to the `sudo` group are separately limited only to the `less`, `ls`, and `apt` commands with sudo permissions. If you wanted to give the user `username` sudo access to the additional 3 commands whitelisted for the `sudo` group, you would just need to add them to the `sudo` group and they would still retain their own unique permissions, giving them sudo access to a total of 5 commands. This process can be repeated for as many users and groups as needed.
+While the root and `sudousername` users still have full superuser permissions, the user `username` has been limited to only the `top` and `apt-get` commands as a sudo user. Additionally, all users added to the `sudo` group are separately limited only to the `less`, `ls`, and `apt` commands with sudo permissions. If you wanted to give the user `username` sudo access to the additional 3 commands allowed for the `sudo` group, you would just need to add them to the `sudo` group and they would still retain their own unique permissions, giving them sudo access to a total of 5 commands. This process can be repeated for as many users and groups as needed.
 
-{{< note >}}
-When whitelisting individual commands using the above syntax, it is important to use the absolute path to the command. The `which` command can be used to find this absolute path:
+{{< note respectIndent=false >}}
+When allowing individual commands using the above syntax, it is important to use the absolute path to the command. The `which` command can be used to find this absolute path:
 
     which command-name
 {{< /note >}}
@@ -287,7 +284,7 @@ The first column with the ten letters and dashes shows the permissions of the fi
     `Jan  9 10:11` is the date/time of last access
     `documents` is the directory
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Since a directory itself is a file, any directory shows `4096` as it's size. This does not reflect the size of the contents of the directory.
 {{< /note >}}
 
@@ -398,4 +395,4 @@ In many cases, user permissions are used to provide your system with greater sec
 
 The best practice is to give each user their own login to your system. This protects each user's files from all other users. Furthermore, using specific accounts for users allows more accurate system logging, particularly when combined with tools like `sudo`. We recommend avoiding situations where more than one individual knows the password for a user account for maximum security.
 
-In contrast, groups are useful for allowing multiple independent user accounts to collaborate and share files. If you create groups on a machine for common tasks on a per-task basis (e.g. web editors, contributors, content submitters, support) and add relevant users to the relevant groups, these users can all edit and run the same set of files without sharing these files with the world. Use of the `chown` command with file permissions of 770 and 740 would help accomplish this goal.
+In contrast, groups are useful for allowing multiple independent user accounts to collaborate and share files. If you create groups on a machine for common tasks on a per-task basis (e.g. web editors, contributors, content submitters, support) and add relevant users to the relevant groups, these users can all edit and run the same set of files without sharing these files with the world. Use of the `chmod` command with file permissions of 770 and 740 would help accomplish this goal.

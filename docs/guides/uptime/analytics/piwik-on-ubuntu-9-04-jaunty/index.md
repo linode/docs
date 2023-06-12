@@ -1,8 +1,5 @@
 ---
 slug: piwik-on-ubuntu-9-04-jaunty
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 9.04 (Jaunty).'
 keywords: ["open source analytics", "piwik ubuntu 9.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
@@ -19,13 +16,14 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Stan Schwertly"]
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.
 
-For the purpose of this guide, we assume that you have running and functional server, and have followed the [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+For the purpose of this guide, we assume that you have running and functional server, and have followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
-Beyond the basics, Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 9.04 LAMP guide](/docs/web-servers/lamp/lamp-server-on-ubuntu-9-04-jaunty/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
+Beyond the basics, Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 9.04 LAMP guide](/docs/guides/lamp-server-on-ubuntu-9-04-jaunty/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
 ## Prerequisites
 
@@ -58,7 +56,7 @@ You'll need to restart Apache after installing php5-gd and modifying the PHP set
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/platform/manager/dns-manager/). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/guides/dns-overview/#a-and-aaaa)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/products/networking/dns-manager/). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.com`:
 
@@ -108,7 +106,7 @@ Visit your new Piwik instance in your browser. In our example, this is located a
 
 When Piwik's installation process is complete, you will receive JavaScript snippet that you can insert in every page on your site that you want to track using Piwik.
 
-If you are concerned about the security of the data collected by Piwik, consider limiting access to Piwik's virtual host, using either [rule-based](/docs/web-servers/apache-tips-and-tricks/rulebased-access-control-for-apache/) or [authentication based access control](/docs/web-servers/apache/apache-access-control/).
+If you are concerned about the security of the data collected by Piwik, consider limiting access to Piwik's virtual host, using either [rule-based](/docs/guides/rulebased-access-control-for-apache/) or [authentication based access control](/docs/guides/apache-access-control/).
 
 Congratulations! You now have a fully functional statistics and web traffic analytics package running on your own server.
 
