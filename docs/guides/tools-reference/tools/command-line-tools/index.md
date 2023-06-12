@@ -1,7 +1,7 @@
 ---
 slug: command-line-tools
 title: "Command Line Tools: A Beginner’s Guide"
-meta_title: "The Best Command Line Tools for Windows"
+title_meta: "The Best Command Line Tools for Windows"
 description: 'What are the most useful command line tools you need to know? Find out all you need to know with our beginner’s guide to command line tools.'
 keywords: ['command line tools', 'best command line tools for windows', 'best command line tools linux', 'useful command line tools']
 tags: ['linux']
