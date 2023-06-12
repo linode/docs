@@ -3,7 +3,7 @@ slug: how-to-use-fzf
 description: "Learn how to use fzf, a command-line fuzzy finder that integrates with numerous tools to improve your searches."
 keywords: ['command line search fzf','fzf bash','fzf vim']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-30
+published: 2023-06-12
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install and Use fzf on Linux"
@@ -14,7 +14,7 @@ external_resources:
 - '[GitHub: junegunn/fzf — FZF Vim Integration](https://github.com/junegunn/fzf/blob/master/README-VIM.md)'
 ---
 
-`fzf` is an adaptable command-line fuzzy finder with an interactive interface. Best of all, `fzf` is incredibly flexible. It works seamlessly with many other command-line commands to give you a powerful interface for searching files, navigating processes, autocompleting paths, and more.
+`fzf` is an adaptable command-line fuzzy finder with an interactive interface. `fzf` is flexible and works seamlessly with many other command-line commands to give you a powerful interface for searching files, navigating processes, autocompleting paths, and more.
 
 Learn more about `fzf` in this guide, including how to install and get started using it on your Linux System.
 
@@ -46,11 +46,11 @@ The steps in this guide are written for non-root users. Commands that require el
 
 [`fzf`](https://github.com/junegunn/fzf) is a fuzzy finder for the command line. Your `fzf` searches are conducted in an interactive and dynamic interface that lets you easily navigate and select from matching options. The interface is customizable, too, so you can control the look and feel and even add file previews.
 
-But `fzf` also stands out for its adaptability. It's able to integrate with numerous other commands, and two particular features make that fact especially useful:
+But `fzf` also stands out for its adaptability. It's able to integrate with numerous other commands, and two particular features make that fact useful:
 
-- `fzf` acts as a Unix command-line filter. This means that it can be used in conjunction with many other command-line commands. Whatever list another command pipes into `fzf`, `fzf` can use its fuzzy finder search and pipe your selection to another command. Check out the [How to Use fzf on the Command Line](/docs/guides/how-to-use-fzf/#interactive-searches) section below for some examples of this ability in action.
+- `fzf` acts as a Unix command-line filter. This means that it can be used in conjunction with many other command-line commands. Whatever list another command pipes into `fzf`, `fzf` can then use its fuzzy finder search and pipe your selection to another command. Check out the [How to Use fzf on the Command Line](#interactive-searches) section below for some examples of this ability in action.
 
-- The robust `fzf` search interface, because of the ability of `fzf` to integrate with other commands, can be used directly for a wide array of other commands. In other words, `fzf` allows you to give an interactive interface to many commands that otherwise don't have one. For instance, you can use the `fzf` interface with `cd` to have an interactive search and selection for your directory navigation.
+- Because of the ability of `fzf` to integrate with other commands, it can be used directly for a wide array of other commands. In other words, `fzf` allows you to give an interactive interface to many commands that otherwise don't have one. For instance, you can use the `fzf` interface with `cd` to have an interactive search and selection for your directory navigation.
 
 ## How to Install fzf
 
@@ -70,9 +70,9 @@ You have two options when it comes to installing `fzf`. The main option provides
 
         fzf --version
 
-    {{< output >}}
-0.27.2 (e086f0b)
-{{< /output >}}
+    ```output
+    0.27.2 (e086f0b)
+    ```
 
 ### Vim Plugin
 
@@ -84,17 +84,17 @@ You have two options when it comes to installing `fzf`. The main option provides
 
 1. Add the `Plug` line for `fzf`, as shown below, to the plugin section of your `.vimrc` (or `init.vim`, if you're using NeoVim):
 
-    {{< file "~/.vimrc" vim >}}
-" [...]
+    ```file {title="~/.vimrc" lang="vim"}
+    " [...]
 
-call plug#begin('~/.vim/plugged')
-  " [...]
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  " [...]
-call plug#end()
+    call plug#begin('~/.vim/plugged')
+    " [...]
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    " [...]
+    call plug#end()
 
-" [...]
-    {{< /file >}}
+    " [...]
+    ```
 
 1. Use vim-plug to install the `fzf` plugin by executing the following commands in Vim while you have your `.vimrc` open.
 
@@ -103,19 +103,19 @@ call plug#end()
 
 ## How to Use fzf on the Command Line
 
-There are a few ways of using `fzf`, ranging from default path searches to integration with other command-line tools to auto-completion. All of these, along with how to customize your `fzf` command-line experience are covered in the sections below. There, you can see how to define the default behavior for `fzf` as well as how to control its look and feel.
+There are a few ways of using `fzf` such as default path searches, integration with other command-line tools, and auto-completion. All of these, along with how to customize your `fzf` command-line experience are covered in the sections below. There, you can see how to define the default behavior for `fzf` as well as how to control its look and feel.
 
 ### Interactive Searches
 
-By default, the `fzf` command by itself starts searching a list of file paths under the current directory. Under the covers, this uses the `find` command to pipe a list of files to `fzf`, the equivalent of the command below:
+By default, the `fzf` command by itself starts searching a list of file paths under the current directory. In the background, this uses the `find` command to pipe a list of files to `fzf`, the equivalent of the command below:
 
     find * -type f | fzf
 
-You can quickly run the default `fzf` command with the **Ctrl** + **T** keybinding. Using this method, `fzf` prints the results right to your cursor's current position on the command line. Here's an example that lets you use `fzf` to select a file or directory to open in Vim.
+You can quickly run the default `fzf` command with the <kbd>Ctrl**</kbd> + <kbd>T</kbd> keybinding. Using this method, `fzf` prints the results right to your cursor's current position on the command line. Here's an example that lets you use `fzf` to select a file or directory to open in Vim.
 
     vim <CTRL+T>
 
-But `fzf` shines brightest when you use it with other command-line tools. It allows you to interactively search whatever list you pipe to it via the `|` operator. So, for instance, you can use the following command to select from a list of services and automatically restart the one you select.
+But `fzf` is most useful when you use it with other command-line tools. It allows you to interactively search whatever list you pipe to it via the `|` operator. For instance, you can use the following command to select from a list of services and automatically restart the one you select.
 
     systemctl --no-legend --type=service --state=running | fzf | awk '{print $1}' | xargs sudo systemctl restart
 
@@ -137,15 +137,15 @@ You can similarly use `fzf` directly as an argument by surrounding the `fzf` com
 
 `fzf` comes with two primary configuration options, each of which is controlled by an environment variable.
 
-First, the `FZF_DEFAULT_COMMAND` variable lets you define the default command to pipe into `fzf`. As shown above, the default here is equivalent to `find * -type f`, which has `fzf` search all file paths in the current directory.
+First, the `FZF_DEFAULT_COMMAND` variable lets you define the default command to pipe into `fzf`. As shown above, the default is equivalent to `find * -type f`, which has `fzf` search all file paths in the current directory.
 
 In the example below, the default behavior is modified to use the `~+` path with the `find` command. This makes all paths in the results absolute instead of relative:
 
     export FZF_DEFAULT_COMMAND="find ~+ -type f"
 
-However, this doesn't change the behavior of the **Ctrl**** + **T** keybinding. To change that, you can use the `FZF_CTRL_T_COMMAND` environment variable instead.
+However, this doesn't change the behavior of the <kbd>Ctrl</kbd> + <kbd>T</kbd> keybinding. To change that, you can use the `FZF_CTRL_T_COMMAND` environment variable instead.
 
-Second, the `FZF_DEFAULT_OPTS` lets you define the default command-line options for `fzf`. This allows you to run the command with the behavior you want without having to provide the command-line flags each time.
+Second, the `FZF_DEFAULT_OPTS` variable lets you define the default command-line options for `fzf`. This allows you to run the command with the behavior you want without having to provide the command-line flags each time.
 
 The example below customizes the way `fzf` displays, even adding a preview window.
 
@@ -159,11 +159,11 @@ You can add `export` lines like the ones above to your `~/.bashrc` or `~/.zshrc`
 
     man fzf
 
-As a last note here on command-line options, `fzf` also lets you customize its color theme using the `--color` flag. You can see examples, which include a selection of useful themes, on the `fzf` page for [advanced examples](https://github.com/junegunn/fzf/blob/master/ADVANCED.md#color-themes).
+`fzf` also lets you customize its color theme using the `--color` flag. You can see examples, which include a selection of useful themes, on the `fzf` page for [advanced examples](https://github.com/junegunn/fzf/blob/master/ADVANCED.md#color-themes).
 
 ## How to Use fzf as a Vim Plugin
 
-Once you have the `fzf` plugin installed on Vim, using it is simple. Generally, you just need to use the `:FZF` command in Vim to start searching the current directory. You can also provide a path to that base command to instead start up the search in a particular directory. In the command below, the `fzf` plugin starts up an interactive search in the `/var` directory.
+Once you have the `fzf` plugin installed on Vim, you just need to use the `:FZF` command to start searching the current directory. You can also provide a path to that base command to instead base the search in a particular directory. In the command below, the `fzf` plugin begins an interactive search in the `/var` directory.
 
     :FZF /var
 
@@ -171,11 +171,11 @@ The plugin, additionally, takes most of the options available to the `fzf` comma
 
     :FZF --reverse /var
 
-And the Vim plugin reads the same environment variables used by the command-line tool. You can look through the [Configuration](/docs/guides/how-to-use-fzf/#configuration) section above to see your options for these variables.
+The Vim plugin reads the same environment variables used by the command-line tool. You can look through the [Configuration](#configuration) section above to see your options for these variables.
 
-The `fzf` Vim plugin comes with several configuration options that you can control from within Vim, too. You can review the `fzf` documentation of the [Vim plugin's configuration options](https://github.com/junegunn/fzf/blob/master/README-VIM.md#configuration) to get a full list. But, for an example to get started, here are a couple of useful variables to work within your `.vimrc` file:
+The `fzf` Vim plugin comes with several configuration options that you can control from within Vim, too. You can review the `fzf` documentation of the [Vim plugin's configuration options](https://github.com/junegunn/fzf/blob/master/README-VIM.md#configuration) for a full list. But, for an example to get started, here are a couple of useful variables to work within your `.vimrc` file:
 
-{{< file "~/.vimrc" vim >}}
+```file {title="~/.vimrc" lang="vim"}
 " If using NeoVim, sets fzf to use a popup window in the center of the main Vim window.
 " Otherwise, sets fzf to use a frame in the bottom quarter of the main Vim window.
 if has('nvim')
@@ -199,21 +199,21 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-{{< /file >}}
+```
 
 ## Examples of Other fzf Integrations
 
-`fzf` integrates relatively easily with other tools since it's designed to work well with other commands through piping. For instance, here is an example that integrates with [`ripgrep`](https://github.com/BurntSushi/ripgrep), providing interactive navigation of the results:
+`fzf` integrates relatively easily with other tools since it's designed to work well with other commands through piping. For instance, here is an example that integrates with [ripgrep](/docs/guides/ripgrep-linux-installation/), providing interactive navigation of the results:
 
     rg test | fzf
 
-In the above, `ripgrep` finds all files containing matches for the `test` search pattern in the current directory and pipes the resulting list to `fzf` for you to peruse.
+In the above, `ripgrep` finds all files containing matches for the `test` search pattern in the current directory and pipes the resulting list to `fzf` for you to view.
 
-And here is a more advanced example, integrating `fzf` with both [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) and [`bat`](https://github.com/sharkdp/bat):
+And here is a more advanced example, integrating `fzf` with both [The Silver Searcher](/docs/guides/silver-searcher-on-linux/) and [bat](/docs/guides/how-to-install-and-use-the-bat-command-on-linux/):
 
     ag --count test | fzf --preview "echo {} | cut -d: -f1 | xargs bat --style=numbers --color=always --line-range :100"
 
-To break down what's happening from the command above:
+To explain what's happening from the command above:
 
 - `ag --count test | `: The Silver Searcher finds files containing matches to the `test` pattern. Each file is listed with a count of the number of times the pattern matched in the file.
 
@@ -223,7 +223,7 @@ To break down what's happening from the command above:
 
 As you can see, `fzf` provides you with unlimited possibilities for combinations with other command-line tools. You can learn more about any of the above tools by searching for our guides on them using the search bar at the top of this page.
 
-Additionally, the `zoxide` tool, a fast and intuitive alternative to `cd`, directly integrates with `fzf` to give you an interactive directory selection. Take a look at our guide on [How to Install and Use zoxide](/docs/guides/how-to-use-zoxide/) to learn more.
+Additionally, the `zoxide` tool, a fast and intuitive alternative to `cd`, directly integrates with `fzf` to give you an interactive directory selection. Read our guide on [How to Install and Use zoxide](/docs/guides/how-to-use-zoxide/) to learn more.
 
 ## Conclusion
 

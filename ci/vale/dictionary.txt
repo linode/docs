@@ -2617,6 +2617,7 @@ znc
 zonefiles
 zope
 zorin
+zoxide
 zpool
 zsh
 zshrc

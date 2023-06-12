@@ -3,7 +3,7 @@ slug: how-to-use-zoxide
 description: "Learn how to use zoxide, a smart and fast alternative to cd. It ranks your most frequently used directories and matches them on minimal keywords for more efficient navigating."
 keywords: ['zoxide install','zoxide linux','zoxide rust']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-09-28
+published: 2021-06-12
 modified_by:
   name: Nathaniel Stickman
 title: "How to Install and Use zoxide on Linux"
@@ -13,7 +13,7 @@ external_resources:
 - '[GitHub: junegunn/fzf](https://github.com/junegunn/fzf)'
 ---
 
-`zoxide` is a fast and smart alternative to the `cd` command. Built on Rust, `zoxide` outperforms much of the competition, and its directory ranking algorithm helps you navigate where you need to even faster.
+`zoxide` is a fast and smart alternative to the `cd` command. Built on Rust, `zoxide` outperforms many similar commands, and its directory ranking algorithm helps you navigate quick.
 
 Learn more about `zoxide` in this guide, including how to install and get started using it on your Linux system.
 
@@ -43,19 +43,19 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What is zoxide?
 
-[`zoxide`](https://github.com/ajeetdsouza/zoxide) is an alternative to the `cd` command, offering faster performance and smarter navigating. Like the tools mentioned below, much of the power of `zoxide` is in its ranking of directories based on how recently and frequently you visit them. Its ranking algorithm can quickly match partial paths, even single search terms, with one of your most used directories.
+[`zoxide`](https://github.com/ajeetdsouza/zoxide) is an alternative to the `cd` command, offering faster performance and smarter navigation capabilities. Like the tools mentioned below, much of the power of `zoxide` is in its directory ranking based on your usage. Its ranking algorithm can quickly match partial paths, even single search terms, with one of your most used directories.
 
 ### zoxide vs Similar Tools
 
-Several similar `cd` alternatives are out there. Most notably, you have [`z`](https://github.com/rupa/z), [`autojump`](https://github.com/wting/autojump), and [`fasd`](https://github.com/clvv/fasd).
+Several similar `cd` alternatives exist. Most notably, there is [`z`](https://github.com/rupa/z), [`autojump`](https://github.com/wting/autojump), and [`fasd`](https://github.com/clvv/fasd).
 
 So, what sets `zoxide` apart?
 
-First, `zoxide` boasts speed. This is the case not only compared to `cd` itself but even to the other alternatives. `zoxide` is built on Rust, and, like many tools taking advantage of the Rust environment, `zoxide` gets high performance marks.
+First, `zoxide` is fast. This is the case not only compared to `cd` itself but even to the other alternatives. `zoxide` is built on Rust, and, like many tools taking advantage of the Rust environment, `zoxide` is performant.
 
-Second, `zoxide` aims for a minimal and ergonomic interface rather than an abundance of features. A tool like `autojump` boasts more abilities, but also has more commands to work with. Even more so with `fasd`, which aspires to be a "command-line productivity booster". It includes a suite of methods for short-cutting common navigation and file related commands. In fact, if what you're looking for is a full-featured productivity booster, `fasd` is a tool worth checking out.
+Second, `zoxide` aims for a minimal and ergonomic interface rather than an abundance of features. A tool like `autojump` has more abilities, but a deeper understanding is needed to use it. Even more so with `fasd`, which aspires to be a "command-line productivity booster". It includes a suite of methods for short-cutting common navigation and file related commands. In fact, if what you're looking for is a full-featured productivity booster, `fasd` is a tool worth exploring.
 
-But, again, `zoxide` focuses its features on just providing a handy, fast, and intelligent `cd` alternative. It avoids the other bells and whistles to hone its interface into something sharp and intuitive for the job. So, if what you're looking for is just that — a tight and performant `cd` replacement — `zoxide` is a prime tool for you.
+`zoxide` focuses on providing a handy, fast, and intelligent `cd` alternative. It avoids the other embellishments to hone its interface into something sharp and intuitive. So, if what you're looking for is just that — a tight and performant `cd` replacement — `zoxide` is a good choice.
 
 ## How to Install zoxide
 
@@ -81,11 +81,11 @@ But, again, `zoxide` focuses its features on just providing a handy, fast, and i
 
 1. Have your shell initialize `zoxide` with each shell session. You can do so by adding the following line to the end of your `~/.bashrc` or `~/.zshrc` file, depending on the shell you're using:
 
-    {{< file "~/.bashrc" bash >}}
-# [...]
+    ```file {title="~/.bashrc" lang="bash"}
+    # [...]
 
-eval "$(zoxide init bash)"
-    {{< /file >}}
+    eval "$(zoxide init bash)"
+    ```
 
     If you're using Zsh, replace `bash` with `zsh` in the line shown above.
 
@@ -93,9 +93,9 @@ eval "$(zoxide init bash)"
 
         zoxide --version
 
-    {{< output >}}
-zoxide v0.7.5
-    {{< /output >}}
+    ```output
+    zoxide v0.7.5
+    ```
 
 ### Set Up fzf Integration (Optional)
 
@@ -103,9 +103,9 @@ zoxide v0.7.5
 
 ## How to Use zoxide
 
-As with similar tools, `zoxide` has to first "learn" directories for its ranking algorithm. So, to start off, navigate to some directories, just like you would with `cd`, but using the `z` command instead.
+As with similar tools, `zoxide` has to first "learn" directories for its ranking algorithm. So, to begin, navigate to some directories just like you would with `cd`, but using the `z` command instead.
 
-You can use the following series of commands to do just that. In fact, the examples that follow in this guide use these commands as a baseline to show you how the `zoxide` algorithm operates:
+You can use the following series of commands to do just that. The examples that follow in this guide use these commands as a baseline to show you how the `zoxide` algorithm operates:
 
     z /etc/opt
     z /etc/ssh
@@ -113,7 +113,7 @@ You can use the following series of commands to do just that. In fact, the examp
     z /usr/local/bin
     z /var/log
 
-Once you've taught `zoxide` your frequently visited directories, you can begin using abbreviated directory searches. For instance, to get into the `/etc/ssh` directory after using the above commands, you can just enter `z ssh`.
+Once you've taught `zoxide` your frequently visited directories, you can begin using abbreviated directory searches. For instance, to navigate into the `/etc/ssh` directory after using the above commands, you can enter `z ssh`.
 
 Notice that using `z ssh` command takes you to `/etc/ssh`. However, try using the following command three or four times:
 
@@ -121,7 +121,7 @@ Notice that using `z ssh` command takes you to `/etc/ssh`. However, try using th
 
 After doing that, the next time you use the `z ssh` command, you are taken to the `/etc/ssh/ssh_config.d` directory. Why? Because `zoxide` has ranked it as your most frequent visited directory that matches the search query `ssh`.
 
-But you can use the following command to get back to `/etc/ssh`. This works because the provided search terms more closely match the directory.
+You can use the following command to get back to `/etc/ssh`. This works because the provided search terms more closely match the directory.
 
     z etc ssh
 
