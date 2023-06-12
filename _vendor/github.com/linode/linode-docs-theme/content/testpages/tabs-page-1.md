@@ -8,25 +8,25 @@ Also see [Page 2](../tabs-page-2/) and  [Page 3](../tabs-page-3/).
 ## Tabbed content 1
 
 {{< tabs >}}
-{{% tab "Tab number 1" %}}
+{{< tab "Tab number 1" >}}
 This is **tab 1**.
-{{% /tab %}}
-{{% tab "Tab number 2" %}}
+{{< /tab >}}
+{{< tab "Tab number 2" >}}
 This is **tab 2**.
 
 Another line.
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ## Tabbed content 2
 
 {{< tabs >}}
-{{% tab "Tab number 1" %}}
+{{< tab "Tab number 1" >}}
 This is **tab 1**.
-{{% /tab %}}
-{{% tab "Tab number 2" %}}
+{{< /tab >}}
+{{< tab "Tab number 2" >}}
 This is **tab 2**.
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 Fugiat duis qui tempor esse eiusmod laboris aliquip laboris sint reprehenderit cillum eiusmod sunt. Incididunt cillum laborum elit eiusmod tempor occaecat cillum enim ad occaecat consectetur. Ea id deserunt duis ad.
@@ -38,12 +38,12 @@ Cillum culpa eiusmod dolor nulla. Sunt proident deserunt adipisicing quis incidi
 ## Tabbed content 3
 
 {{< tabs >}}
-{{% tab "Tab number 1" %}}
+{{< tab "Tab number 1" >}}
 This is **tab 1**.
-{{% /tab %}}
-{{% tab "Tab number 2" %}}
+{{< /tab >}}
+{{< tab "Tab number 2" >}}
 This is **tab 2**.
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 ### Tabs issue 577
@@ -53,7 +53,7 @@ This is **tab 2**.
 1. First, add an additional worker node and, if using the Autoscale feature, increase the minimum number of nodes.
 
    {{< tabs >}}
-   {{% tab "Cloud Manager" %}}
+   {{< tab "Cloud Manager" >}}
    Locate the node pool on the details page of your LKE cluster in the Cloud Manager. Click the corresponding **Resize Pool** button. Increase the size of the node pool by 1. For example, if you have 3 nodes in the pool, increase that value to 4. For additional instructions, see [Resize a Node Pool](/docs/products/compute/kubernetes/guides/manage-node-pools/#resize-a-node-pool).
 
    If you are also using the autoscale feature, increase the minimum and maximum nodes by 1. This can be done by clicking the corresponding **Autoscale Pool** button and adjusting the minimum and maximum values. For more details, see [Autoscale](/docs/products/compute/kubernetes/guides/manage-node-pools/#autoscale-automatically-resize-node-pools).
@@ -61,17 +61,17 @@ This is **tab 2**.
    {{< note >}}
    Test
    {{< /note >}}
-   {{% /tab %}}
+   {{< /tab >}}
    {{< /tabs >}}
 
 ### Note shortcode in tab
 
 {{< tabs >}}
-{{% tab "Cloud Manager" %}}
+{{< tab "Cloud Manager" >}}
 {{< note >}}
 Test
 {{< /note >}}
-{{% /tab %}}
+{{< /tab >}}
 {{< /tabs >}}
 
 
@@ -84,6 +84,10 @@ Test **standalone**
 Tempor voluptate quis reprehenderit excepteur fugiat id sit ad ipsum reprehenderit. Dolor veniam occaecat ad cillum occaecat. Minim nisi ut occaecat anim do aute proident ipsum in sunt esse deserunt labore. Eiusmod sunt aliquip aliquip consectetur. Occaecat id exercitation Lorem pariatur aute amet fugiat laborum nisi culpa. Ex fugiat eu excepteur laborum nulla quis laborum pariatur do culpa est commodo excepteur.
 
 Et ad duis ex proident esse eu Lorem quis exercitation magna ad cupidatat cillum dolor. Est consequat dolor incididunt magna reprehenderit culpa in et mollit fugiat fugiat culpa. Proident officia sit sint elit commodo laboris eu occaecat ullamco ex irure non do. Amet in do nostrud mollit tempor est deserunt ut laboris qui anim. Sunt id occaecat est commodo reprehenderit dolore.
+
+{{% note %}}
+This is a note.
+{{% /note %}}
 
 Exercitation voluptate anim mollit elit ipsum enim non proident eu tempor quis veniam fugiat. Occaecat adipisicing aliqua occaecat consequat ullamco do est magna. Aliquip proident veniam quis consequat esse pariatur sint et laboris consectetur mollit. Velit non enim consectetur excepteur. Sunt nulla dolore incididunt id eu nulla ipsum qui sit tempor proident voluptate. Nisi eiusmod quis aliqua minim aliqua. Elit nostrud sint ut nulla et sit aute excepteur dolore irure aliqua.
 

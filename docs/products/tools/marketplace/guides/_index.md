@@ -5,7 +5,7 @@ description: "A collection of guides to help you learn how to deploy each Market
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
-modified: 2023-03-20
+modified: 2023-05-23
 ---
 
 ## Basics
@@ -73,8 +73,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Microweber](/docs/products/tools/marketplace/guides/microweber)
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
 - [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
-- [MongoDB](/docs/products/tools/marketplace/guides/mongodb/)
-- [MongoDB Cluster](/docs/products/tools/marketplace/guides/mongodb-cluster/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)
@@ -115,7 +113,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Superinsight](/docs/products/tools/marketplace/guides/superinsight/)
 - [Team Fortress 2](/docs/products/tools/marketplace/guides/team-fortress-2/)
 - [Terraria](/docs/products/tools/marketplace/guides/terraria/)
-- [UniFi Network Application](/docs/products/tools/marketplace/guides/unifi-network-application)
 - [Uptime Kuma](/docs/products/tools/marketplace/guides/uptime-kuma/)
 - [UTunnel VPN](/docs/products/tools/marketplace/guides/utunnel/)
 - [Valheim](/docs/products/tools/marketplace/guides/valheim/)

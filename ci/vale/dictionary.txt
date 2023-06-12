@@ -32,6 +32,7 @@ ajp
 Akamai
 Akaunting
 aker
+akr
 alef
 alertmanager
 alex
@@ -172,6 +173,7 @@ bernd
 berners
 bgpd
 bialek
+Bigtable
 bin_t
 bing
 binhex
@@ -208,6 +210,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
@@ -295,6 +298,7 @@ chroot
 chrooting
 chrooted
 CIDRs
+cifs_utils
 citad
 cjones
 clamav
@@ -371,6 +375,7 @@ covid
 cpanel
 cpanminus
 cpu
+CPython
 cqlsh
 cqlshrc
 craftbukkit
@@ -562,6 +567,7 @@ ducati
 dumpall
 dust2
 dvcs
+Dynadot
 e2fsck
 ea04
 ead
@@ -640,6 +646,7 @@ failsafe
 failsafes
 falko
 fastcgi
+Fastify
 fastmail
 fastopen
 fauxhai
@@ -654,6 +661,7 @@ fd
 fdisk
 fdriver
 fe70
+Feigenbaum
 fedf
 fediverse
 fetchmail
@@ -706,6 +714,7 @@ frakti
 framesets
 freedns
 freeipa
+Freemarker
 freenom
 fremont
 freshclam
@@ -800,6 +809,7 @@ gpasswd
 gpc
 gpg
 gping
+GPUs
 gradle
 grafana
 graphql
@@ -833,6 +843,8 @@ hackage
 hadoop
 halls3
 Haltdos
+Hanami
+Hansson
 hapis
 haproxy
 hardcoded
@@ -851,6 +863,7 @@ heartbleed
 hebb
 hebbian
 hebern
+Heinemeier
 heredoc
 heroku
 hexo
@@ -877,6 +890,7 @@ hotlinked
 hotlinking
 hotspot
 hotspots
+Hotwire
 howto
 howtoforge
 howtogeek
@@ -906,6 +920,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -1051,6 +1066,7 @@ jpg
 jpetazzo
 jq
 jre
+JRuby
 js
 jshell
 json
@@ -1116,6 +1132,7 @@ kotin
 konversation
 krita
 kroll
+ksmbd
 ktor
 kube
 kubeadm
@@ -1131,6 +1148,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+Laminas
 LANs
 laravel
 largebiomes
@@ -1242,6 +1260,7 @@ lzma
 lzopio
 macos
 magento
+Mailchimp
 maildir
 maildirs
 maildrop
@@ -1272,7 +1291,10 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matsumoto
 Matthes
+Matz
+Mavan
 mawk
 maxconn
 maxdepth
@@ -1317,6 +1339,7 @@ microsite
 microsystems
 microweb
 Microweber
+middlebox
 middleware
 mimikatz
 minecraft
@@ -1376,6 +1399,7 @@ mov
 movr
 mpapis
 mpm
+MRuby
 msfvenom
 msg
 msgid
@@ -1613,6 +1637,7 @@ passwordless
 patroni
 pathnames
 paypal
+PBCs
 pbr
 pem
 pentest
@@ -1632,6 +1657,7 @@ pg_dump
 pg_dumpall
 pg_restore
 pgpass
+Phalcon
 pharmer
 pharo
 phonebook
@@ -1775,8 +1801,10 @@ quicklisp
 quickstart
 radeon
 rainloop
+Ramaze
 ramdisk
 ransomwhere
+rasa
 rauth
 rbac
 rbenv
@@ -1894,6 +1922,10 @@ rpaf
 rpc
 rpcbind
 rpmforge
+rrset
+rrsets
+rrsig
+rrsigs
 rsa
 rspec
 rss
@@ -1902,6 +1934,7 @@ rsync
 rsyslog
 rtf
 rtt
+Rubinius
 rubocop
 rubydebug
 rubygems
@@ -2385,6 +2418,7 @@ v1
 v2
 v4
 v6
+Vaadin
 vagrantfile
 valim
 valheim
@@ -2423,6 +2457,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vixie
 vlan
 vlans
 vlc
@@ -2568,6 +2603,7 @@ yaml
 yellowbrick
 yellowdog
 yesod
+Yii
 yml
 yoast
 yourdomain
@@ -2579,6 +2615,7 @@ youtube
 yubico
 yubikey
 yubikeys
+Yukihiro
 zabbix
 zapier
 zcat
