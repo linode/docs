@@ -25,17 +25,21 @@ Inter-document relations have actually existed as an integral part of document-c
 
 SurrealDB itself has document logic at its core. And it is from that core that SurrealDB draws powerful possibilities for relating documents.
 
-But SurrealDB expands on that core with a versatile, multi-model approach. That approach allows SurrealDB to store data sequentially like SQL relational databases, for efficient and familiar table structures. The approach also grants SurrealDB interconnected structure of NoSQL graph databases, for complex relations.
+But SurrealDB expands on that core with a versatile, multi-model approach. That approach allows SurrealDB to store data sequentially like SQL relational databases, for efficient and familiar table structures. At the same time that approach also grants SurrealDB the interconnected structure of NoSQL graph databases, for complex relations between records.
 
 ## How Do SurrealDB Inter-document Relations Work?
 
 As the description above shows, there are numerous ways to work with inter-document relations in a multi-model database like SurrealDB. Part of SurrealDB's advantage comes in its freedom to store and retrieve data with different models.
 
-But to demonstrate and help you get started working with SurrealDB's inter-document relations, this tutorial breaks these down into two broad categories.
+But to demonstrate and help you get started working with SurrealDB's inter-document relations, this tutorial breaks these down into two broad categories:
+
+- Document, which uses document-database notation to navigate nested and related documents
+
+- Graph, which uses the interconnections of graphs to relate documents
 
 ### Document Notation
 
-SurrealDB supports typical notations for accessing nested fields from documents. This includes dot notation (`.`) and array notation (`[]`).
+SurrealDB supports notations similar to other document databases, like MongoDB, for accessing nested fields from documents. This includes dot notation (`.`) and array notation (`[]`).
 
 To demonstrate, try out this sample data set.
 
@@ -108,7 +112,7 @@ INSERT INTO role [
 ];
 ```
 
-From this, data can be fetched from nested fields using document notation to get to deeper and deeper levels. Record IDs in SurrealDB act as direct references, so having these in the documents above eases relations.
+In such data as this, data can can be fetched from nested fields using document notation, accessing deeper and deeper levels. Additionally, record IDs in SurrealDB act as direct references, so having these in the documents above eases relations.
 
 In this example, dot notation allows for grabbing the `description` from a `role` document based on the ID held in a completely separate document in the `participants` array.
 
@@ -124,9 +128,7 @@ SELECT role.description AS role
 }
 ```
 
-Array notation extends on this behavior, allowing you to select a particular member of an array based on its index (starting at zero).
-
-That is the case in this example, where the query uses the `person` ID in a specific member of the `participants` array.
+Array notation from there allows you to select a particular member of an array based on its index (starting at zero). That is the case in this example, where the query uses the `person` ID in a specific member of the `participants` array.
 
 ```command
 SELECT name FROM department:first.participants[1].ref;
@@ -140,9 +142,9 @@ SELECT name FROM department:first.participants[1].ref;
 
 ### Graph Relations
 
-SurrealDB can build graph edge relations using its `RELATE` statement. Such a statement allows you to create vertex -> edge -> vertex relations between documents. Similar arrow notation can then be used to relate documents in queries.
+SurrealDB can build graph edge relations using its `RELATE` statement. Such a statement allows you to create vertex -> edge -> vertex relations between documents. Afterward, similar arrow notation can be used to leverage the document relations in queries.
 
-You may alternatively think of these relations as noun -> verb -> noun.
+Instead of vertex -> edge -> vertex, you may find it helpful to think of these relations as noun -> verb -> noun. This tends to be how SurrealDB's documentation names these relations, and this tutorial does the same.
 
 Each `RELATE` results in a new table (the edge or verb) that operates to relate documents in a given way.
 
@@ -200,9 +202,9 @@ RELATE person:three->participates->department:second SET role = role:undoer;
 RELATE person:four->participates->department:second SET role = role:redoer;
 ```
 
-Leveraging the graph relations, queries can navigate from vertex to vertex by way of the edges. To do so, recall the arrow notation from the initial `RELATE` statements. These define the direction of graph flow.
+Leveraging the graph relations, queries can navigate from vertex to vertex by way of the edges. To do so, recall the arrow notation from the initial `RELATE` statements. These define the directions for graph flows.
 
-The example here starts with the `department` vertex (because `FROM department`). From there, it works through the `participates` edge using a `WHERE` statement to limit by role. And finally from that it renders the `name` field from the corresponding `person` vertices.
+The example here starts with the `department` vertices (because `FROM department`). From there, it works through the `participates` edge, at the same time using a `WHERE` statement to limit by role. And finally from that it renders the `name` field from the corresponding `person` vertices.
 
 ```command
 SELECT <-(participates WHERE role=role:doer)<-person.name AS name
@@ -228,7 +230,7 @@ SELECT <-(participates WHERE role=role:doer)<-person.name AS name
 
 With the above, you have an overview and a start to exploring inter-document relations in SurrealDB. But to take that further, it can be helpful to see these features used in specific and more practical use cases.
 
-That is what this section walks you through. The data here may not actually distill all of the complexities of real-world data. But by taking a relatable and practical use case, the examples here should help you better navigate SurrealDB relations in all situations.
+That is what this section walks you through. The data here may not actually distill all of the complexities of real-world data. But by taking a relatable and practical use case, the examples can give you a better foothold for navigating SurrealDB relations in all situations.
 
 ### Setting Up the Prerequisites
 
@@ -236,13 +238,13 @@ To get started, you need to have installed SurrealDB on your system and have pla
 
 This tutorial assumes that you have followed that guide up through the *How to Install SurrealDB* section, with SurrealDB installed and accessible via the `surreal` command.
 
-For the examples to follow, you only need to be running your SurrealDB server locally. And to make things easier, you should be running the server with a root user. You can accomplish this with a command like this one.
+For the examples to follow, you only need to be running your SurrealDB server with local access. And to make things easier, you should be running the server with a root user. You can accomplish this with a command like this one.
 
 ```command
 surreal start --bind 127.0.0.1:8000 --user root --pass exampleRootPass
 ```
 
-By using a root user, you also have access to SurrealDB's command-line interface (CLI). This makes setting up data and executing queries significantly smoother, especially early on and when exploring relational queries.
+By using a root user, you also have access to SurrealDB's command-line interface (CLI). This makes setting up data and exploring the effects of different queries significantly smoother.
 
 To start up the SurrealDB CLI, you can use a command like this one. This command assumes you have used the same parameters in starting your SurrealDB server as used in the example command above.
 
@@ -254,13 +256,13 @@ surreal sql --host http://localhost:8000 --user root --pass exampleRootPass --ns
 
 Using the SurrealDB CLI, you can now start populating the database. Throughout the examples that follow, the goal in populating the database is to leverage SurrealDB's multi-model inter-document relations. To that end, the data should be good for demonstrating both document relations and graph relations.
 
-The use case for the examples here is a system for tracking college courses. Such a system needs to be able to catalog courses and list available professors and their departments. (To simplify things, these examples do not venture into adding a student table to the mix.)
+The use case for the examples here is a system for tracking college courses. Such a system needs to be able to catalog courses and list available professors and their departments. (To simplify things, these examples do not venture into adding a student or scheduling data to the mix.)
 
 #### Defining Schemas
 
-To begin, you can define each of the tables. SurrealDB is a document database at core, but one of its features from relational database is its ability to define table schemas.
+To begin, you can define each of the tables. SurrealDB is a document database at core, but one of its features from relational databases is its ability to define table schemas.
 
-Defining the schemas is not required for the data used here. But doing so follows a good practice to make your SurrealDB database more robust.
+Defining a table's schema is not required for the data used here. But doing so follows a good practice to make your SurrealDB database more robust.
 
 The tables for courses and professors in this example are relatively flat, without nested fields to deal with. For that reason, those tables can benefit from SurrealDB's `SCHEMAFULL` designation. With that, SurrealDB provides strict schema enforcement, similar to traditional relational databases.
 
@@ -404,9 +406,9 @@ INSERT INTO department [
 ];
 ```
 
-#### Putting in Graph Relations
-
 Using arrays of objects for the course lists leaves the department more adaptable. More courses can be added, even of the same kind, and more advanced data like scheduling can be manipulated here.
+
+#### Putting in Graph Relations
 
 As a last step for preparing the data, you can add the graph relations between professors and departments. The example here uses the `teaches` verb for the relations.
 
@@ -423,7 +425,7 @@ RELATE professor:etwelve->teaches->department:eng;
 
 One advanced possibility opened up by the setup above is further associating each professor with available schedules, which you could do with the `SET` option. That would also fit well with the more advanced option of adding schedules to department course listings.
 
-Here is a brief snippet that shows how, with a `schedule` table defined and populated, you could start with these advanced options.
+This tutorial does not cover this scenario in full. But if you are interested, here is a brief snippet of what you might do if you wanted to incorporate a `schedule` table.
 
 ```command
 INSERT INTO department [
@@ -454,9 +456,8 @@ RELATE professor:otwo->teaches->department:mat
 ```
 
 ### Querying on Inter-document Relations
-Show example queries demonstrating the flexibility and multi-model capabilities
 
-Having some sample data in place, you can start to work through some practical applications of SurrealDB's inter-document relations. The queries that follow aim to show some particular use cases to help with that.
+Having some sample data in place, you can start to work through some practical applications of SurrealDB's inter-document relations. The queries that follow aim to show some particular use cases, and each gives you practical SurrealQL tools to work with.
 
 - Fetching Mathematics professors and courses. Most SurrealDB queries that seek to model the retrieved data make use of document notation. Here, dot notation gives the query access to the nested `course.name` field associated with each `courses` ID.
 
@@ -484,9 +485,9 @@ Having some sample data in place, you can start to work through some practical a
 
 - Fetching the total number of enrolled students. The goal sounds simple, but actually the initial model — how the data was input — does not make it straightforward to get this total.
 
-    But SurrealDB boasts the ability to remodel data through queries. That means that you should not have to design your tables around how you want to fetch data later. Nor should you have to use a server-side component to perform multiple queries and build up the model manually.
+    But SurrealDB boasts the ability to remodel data *ad hoc* through queries. That means that you should not have to design your tables around how you want to fetch data later. Nor should you have to use a server-side component to perform multiple queries and build up the model manually.
 
-    The most noteworthy document relation feature here is the use of `.enrollment` after the deepest nested `SELECT` statement. You can treat that statement, in parentheses, as a document itself, fetching a nested document within it. The logic here is more akin to JavaScript than traditional SQL.
+    The most noteworthy document relation feature here is the use of `.enrollment` after the deepest nested `SELECT` statement. It treats that statement in parentheses as if it were a document itself, allowing you to fetch a nested document from within it. The logic here is more akin to JavaScript than traditional SQL.
 
     SurrealDB also includes a set of functions for things like working with arrays and applying math operations. The `array::flatten` function combines the multiple returned arrays, and then `math::sum` adds together all of the numbers in that resulting array.
 
@@ -508,7 +509,7 @@ Having some sample data in place, you can start to work through some practical a
 
 - Fetching percentage enrollments for each department. SurrealDB's more advanced queries can leverage nested queries and functions to sleekly perform operations on data to give the resulting model.
 
-    Like in the previous query, this one uses some of SurrealDB's built-in functions. The ones here performs some math operations and cast a value as a specific data type.
+    Like in the previous query, this one uses some of SurrealDB's built-in functions. The ones here perform some math operations and cast a value as a specific data type.
 
     The structure has similarities to traditional SQL queries, but deep inside it leverages the `courses.enrollement` and `courses.course.capacity` relations, similar to the first example query above.
 
