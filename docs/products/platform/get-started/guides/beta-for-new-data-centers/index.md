@@ -2,7 +2,7 @@
 title: "Closed Beta for Akamai's New Data Centers"
 description: "Details for the closed beta of Akamai Cloud Compute's newest data centers, which include the Washington, DC and Paris regions."
 published: 2023-04-17
-modified: 2023-06-07
+modified: 2023-06-12
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -13,7 +13,7 @@ noindex: true
 aliases: ['/products/platform/get-started/guides/iad/']
 ---
 
-Akamai Cloud's newest data centers in Washington, DC (USA) and Paris (France) are now available in a limited closed beta. Most of our products and services are fully operational in these data centers, including [Premium Plans](#premium-plans), the newest Compute Instance tier (only available as part of this beta). As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
+Akamai Cloud's newest data centers in Washington, DC (USA), Chicago, IL (USA), and Paris (France) are now available in a limited closed beta. Most of our products and services are fully operational in these data centers, including [Premium Plans](#premium-plans), the newest Compute Instance tier (only available as part of this beta). As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
 
 {{< note type="warning" >}}
 These data centers are in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
@@ -23,6 +23,7 @@ These data centers are in beta. As such, capacity may be limited as we continue 
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
+| Chicago, IL, USA | *Closed beta* | `us-ord` |
 | Paris, France | *Closed beta* | `fr-par` |
 | Washington, DC, USA | *Closed beta* | `us-iad` |
 
@@ -56,6 +57,7 @@ For the IDs and URLs of the new Object Storage clusters, see below:
 
 | Data Center | Cluster ID | Cluster URL |
 | --| -- | -- |
+| Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
 | Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
@@ -99,6 +101,7 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 
 | Data Center | IP Sharing Support | Failover Method | Software | ID |
 | --- | --- | --- | --- | --- |
+| Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
 | Paris, France | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
 | Washington, DC, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
@@ -106,7 +109,22 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 
 Lish and Glish provide direct access to your Compute Instances, bypassing the need for SSH or a VNC. For more information on Lish, consult our guide on how to [Access Your System Console Using Lish](/docs/products/compute/compute-instances/guides/lish/).
 
-#### **Paris, France**
+#### Chicago, IL, USA
+
+-   **Lish SSH Gateway:** `lish-us-ord.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:rRwktOKfSApeffa+YOVxXXL70Ba1CpTYp/oFywEH2Pc lish-us-ord.linode.com
+    ECDSA 256 SHA256:SV9A/24Jdb++ns/+6Gx7WqZCyN4+0y4ICFsaqK3Rm8s lish-us-ord.linode.com
+    ED25519 256 SHA256:J+yN8rjhr9j27M4zLSF6OX9XmIoipWbPP/J1AGRlRYc lish-us-ord.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish Gateway:** `us-ord.webconsole.linode.com`
+-   **Glish Gateway:** `ord2.glish.linode.com`
+
+#### Paris, France
 
 -   **Lish SSH Gateway:** `lish-fr-par.linode.com`
 
@@ -121,7 +139,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 -   **Weblish Gateway:** `fr-par.webconsole.linode.com`
 -   **Glish Gateway:** `par3.glish.linode.com`
 
-#### **Washington, DC, USA**
+#### Washington, DC, USA
 
 -   **Lish SSH Gateway:** `lish-us-iad.linode.com`
 
