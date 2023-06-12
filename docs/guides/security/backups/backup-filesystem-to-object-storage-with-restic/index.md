@@ -9,7 +9,7 @@ published: 2021-03-23
 modified_by:
   name: Andy Heathershaw
 title: "Backup Your Linode's Filesystem to Linode Object Storage with Restic"
-h1_title: "Backup Your Linode's Filesystem to Linode Object Storage with Restic"
+title_meta: "Backup Your Linode's Filesystem to Linode Object Storage with Restic"
 external_resources:
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
