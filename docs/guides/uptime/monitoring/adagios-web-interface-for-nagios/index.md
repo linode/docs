@@ -7,7 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
 published: 2023-04-15
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 external_resources:
 - '[GitHub: opinkerfi/adagios - Users Guide](https://github.com/opinkerfi/adagios/wiki/Users-guide)'
 - '[GitHub: opinkerfi/adagios - Using Adagios WEB API](https://github.com/opinkerfi/adagios/wiki/Using-Adagios-WEB-API)'
@@ -76,7 +76,7 @@ On most systems, the best way to install Adagios is from source. This approach m
 
 1. Install the Livestatus add-on for Nagios. The add-on provides features to enhance how status information about hosts and services are retrieved.
 
-    Opin Kerfi, the maintainers of Adagios, also maintain a package from which you can conveniently and reliably pull the Livestatus installation files.
+    Opin Kerfi, the maintainers of Adagios, also maintain a package from which you can conveniently pull the Livestatus installation files.
 
     ```command
     cd /tmp
