@@ -6,7 +6,7 @@ description: 'The HTTP GET Request is one of many request methods. Read our guid
 keywords: ['http get request','example http request','http request example','http request format','http request response','http request line','http request headers list','make http request','how to send http request in java','http request structure']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Tom Henderson"]
-published: 2023-04-17
+published: 2023-06-12
 modified_by:
   name: Linode
 external_resources:
@@ -21,9 +21,9 @@ HTTP server messages are structured in a similar way and can have different type
 
 ## What are HTTP requests?
 
-HTTP requests are messages formatted in the HTTP protocol that are sent from a client to a server that is poised to respond to them. The messages are formatted using standardized HTTP protocol syntax. Each request initiates an action on the target server, which gives a response as an answer.
+HTTP requests are messages formatted in the HTTP protocol that are sent from a client to a server that is capable of to responding to them. The messages are formatted using standardized HTTP protocol syntax. Each request initiates an action on the target server, which gives a response as an answer.
 
-In HTTP1.1, requests are formed in ASCII, while HTTP/2 uses binary. Servers that only understand HTTP1.1 may bounce or ignore requests sent in HTTP2. Meanwhile, HTTP/2 servers are backward-compatible and understand HTTP1.1 requests by default.
+In HTTP1.1, requests are formed in ASCII, while HTTP/2 uses binary. Servers that only understand HTTP1.1 may bounce or ignore requests sent in HTTP/2. Meanwhile, HTTP/2 servers are backward-compatible and understand HTTP1.1 requests by default.
 
 HTTP requests can be formed by software, APIs, or libraries within an application (e.g. web browsers and email clients). They target a specific server with a URL/URI. Different HTTP requests produce different server reactions and HTTP responses.
 
@@ -47,7 +47,7 @@ When the target server receives an HTTP request message, it parses the method sp
 
 ## What Is An HTTP POST Request?
 
-An HTTP POST Request is formed by an application, usually a web browser. The HTTP Post request (`http_post_request`) method informs the server to add, delete, or otherwise alter the state of data on the target server. The difference between GET and POST is that the state of the server is not changed with a GET, which is a read-only request. The POST request sends data to the target server in the Body portion of the message. While GET is a read-only request, as its message Body is ignored, the data in the POST message body performs an action that changes the server.
+An HTTP POST Request is formed by an application, usually a web browser. The HTTP Post request (`http_post_request`) method informs the server to add, delete, or otherwise alter the state of data on the target server. The difference between GET and POST is that the state of the server is not changed with a GET, which is a read-only request. The POST request sends data to the target server in the body portion of the message. While GET is a read-only request, as its message body is ignored, the data in the POST message body performs an action that changes the server.
 
 The HTTP Request message interaction between client and server is a series of exchanges involving data and meta-information. The response header information characterizes the body information, which is sent to the client application.
 
