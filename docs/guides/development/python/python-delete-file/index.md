@@ -6,12 +6,12 @@ description: 'In Python, delete file commands use functions from os, pathlib, an
 keywords: ['python delete file', 'python remove file', 'python delete directory', 'python delete file if exists', 'python delete all files in directory']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Stephen Satchell"]
-published: 2023-04-26
+published: 2023-06-12
 modified_by:
   name: Linode
 ---
 
-Many applications use temporary files to hold intermediate results in their execution. A program, for example, may process several gigabytes of data in multiple passes because trying to hold it all in memory can exceed the ability of the system, even with a large swap store. This is true when multiple copies are running. Holding all the data in memory can slow down the application because the virtual memory system has to keep paging data in and out of working memory. When the application is finished with the temporary files, it’s good form to delete that working file, to free up the disk space.
+Many applications use temporary files to hold intermediate results in their execution. A program, for example, may process several gigabytes of data in multiple passes because trying to hold it all in memory can exceed the ability of the system, even with a large swap store. This is true when multiple copies of an application are running. Holding all the data in memory can slow down the application because the virtual memory system has to keep paging data in and out of working memory. When the application is finished with the temporary files, it’s a good idea to delete that working file, to free up the disk space.
 
 Other applications may generate a report or transaction file as part of their work. If the program encounters a fatal problem and does not finish completely, the best practice is to remove the incomplete output.
 
@@ -50,7 +50,7 @@ $ unlink /tmp/example.txt
 
 ### How to Delete a Single File in Python Using the “os” Module
 
-The `os` module in Python provides the functions, `os.remove()` and `os.unlink()` which can be used to delete a single file from the file system. The code below demonstrates how to delete a single file using the `os` module:
+The `os` module in Python provides the functions `os.remove()` and `os.unlink()` which can be used to delete a single file from the file system. The code below demonstrates how to delete a single file using the `os` module:
 
 ```file {title="delete_file.py" lang="python"}
 import os
