@@ -6,7 +6,7 @@ description: 'This guide provides information on how to retrieve the current wor
 keywords: ['python change working directory', 'python get current directory', 'python change directory', 'change directory python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Martin Heller"]
-published: 2023-04-20
+published: 2023-06-12
 modified_by:
   name: Linode
 ---
@@ -15,7 +15,7 @@ Programs often need to look for, read, and write specific files in a special loc
 
 ## What is the Current Working Directory?
 
-You need to understand what directories are and how they relate to files, folders, and paths. In most operating systems, a directory is a container for files, and possibly for other directories, called subdirectories. In Unix-like systems, directories are treated as a special kind of file.
+In most operating systems, a directory is a container for files, and possibly for other directories, called subdirectories. In Unix-like systems, directories are treated as a special kind of file.
 
 Files contain data and/or code. In Unix-like systems, files can have special bits in their permissions that mark them as executable. In Windows systems, the file type determines whether a file is executable.
 
@@ -27,9 +27,9 @@ The current working directory is independent of the executable file’s location
 
 ## How to Get and Change the Current Directory in Python
 
-Python programs share the operating system’s idea of the CWD with all other programs, even though Python as a whole is a system-agnostic language. Python has a module, os, that provides a portable way of using operating system-dependent functionality, and within that module, each system’s version of Python has an appropriate implementation for that system.
+Python programs share the operating system’s idea of the CWD with all other programs, even though Python as a whole is a system-agnostic language. Python has a module, `os`, that provides a portable way of using operating system-dependent functionality, and within that module, each system’s version of Python has an appropriate implementation for that system.
 
-### How to get the current working directory
+### How to Get the Current Working Directory
 
 To get the current working directory in Python, import the `os` module and call the `os.getcwd()` method. Here’s an example:
 
@@ -44,7 +44,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 In the example above, the `os.getcwd()` method returns a string representing the current working directory.
 
-### How to change the current working directory
+### How to Change the Current Working Directory
 
 To change the current working directory in Python, import the `os` module and call the `os.chdir(<path>)` method. Here’s an example:
 
