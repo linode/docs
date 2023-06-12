@@ -1,8 +1,5 @@
 ---
 slug: backup-filesystem-to-object-storage-with-restic
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: "Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your Linode's filesystem onto Linode Object Storage."
 og_description: "Restic is a backup utility written in Go. This guide shows how to configure Restic to backup your Linode's filesystem onto Linode Object Storage."
 keywords: ['filesystem','backup','backups','restic','off-site backups','Object Storage']
@@ -13,13 +10,11 @@ modified_by:
   name: Andy Heathershaw
 title: "Backup Your Linode's Filesystem to Linode Object Storage with Restic"
 h1_title: "Backup Your Linode's Filesystem to Linode Object Storage with Restic"
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
 external_resources:
 - '[Preparing a new Restic repository](https://restic.readthedocs.io/en/stable/030_preparing_a_new_repo.html)'
 - '[Backing up](https://restic.readthedocs.io/en/stable/040_backup.html)'
 - '[Removing snapshots according to a policy](https://restic.readthedocs.io/en/stable/060_forget.html#removing-snapshots-according-to-a-policy)'
+authors: ["Andy Heathershaw"]
 ---
 
 ## Introduction
