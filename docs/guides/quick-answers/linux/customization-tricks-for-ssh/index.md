@@ -5,7 +5,7 @@ description: 'The SSH Secure Shell defaults are good, but there are tricks admin
 keywords: ['passwordless ssh', 'ssh linux', 'customize ssh', 'ssh google authenticator', 'ssh logs']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Tom Henderson"]
-published: 2023-05-18
+published: 2023-06-12
 modified_by:
   name: Linode
 ---
@@ -16,14 +16,13 @@ All SSH connections require authentication. This authentication comes in several
 
 The SSH customizations described work on Windows using PuTTY, macOS, and unmodified Linux.
 
-
 ## Passwordless SSH Login
 
 By default, SSH server hosts require a username and password for authentication when logging into a target server host. It’s also possible to send a host a valid certificate in lieu of a password if the server host target has a configuration file that permits this; the valid certificate sent to the target server host via SSH is stored in the target host server for subsequent authentication login re-use. Subsequent logins to the target server require using only the username and hostname/IP when using the same initiating host, or the same security certificate on another host when initiating an SSH session.
 
-Linodes are created with the SSH server keys generated anew, unless other SSH keys are chosen and added during the Linode creation. Other hosts must have SSH keys generated that can then be used to seed targeted SSH server hosts, including Windows hosts.
+Compute Instances are created with SSH server keys generated anew, unless other SSH keys are chosen and added during the Compute Instance creation. Other hosts must have SSH keys generated that can then be used to seed targeted SSH server hosts, including Windows hosts.
 
-The SSH keys that seed the target host must have already been generated, and have been generated in a Linode Linux instance by logging into the target SSH host. The following steps show you how:
+The SSH keys that seed the target host must have already been generated, and have been generated in a Compute Linux instance by logging into the target SSH host. The following steps show you how:
 
 1. Generate a new key pair on a Linux or Mac host in a terminal session and enter the following command:
 
@@ -84,7 +83,7 @@ The SSH keys that seed the target host must have already been generated, and hav
 1. Add the private key to the local SSH authentication agent on the local server using the following command:
 
     ```command
-    user2@localhost:~$ ssh-add
+    ssh-add
     ```
 
     This command adds the private key to the SSH authentication agent, allowing you to use it for passwordless authentication.
@@ -92,7 +91,7 @@ The SSH keys that seed the target host must have already been generated, and hav
 1. Place the generated key into the target server host key store using `ssh-copy-id`.
 
     ```command
-    user2@localhost:~$ ssh-copy-id <current_username>@<target_server_host>
+    ssh-copy-id <current_username>@<target_server_host>
     ```
 
     In the example above, replace the `current_username` with the current logged-in username and `target_server_host` with the actual IP address or DNS name of the target server.
@@ -100,8 +99,8 @@ The SSH keys that seed the target host must have already been generated, and hav
 1. After successfully logging into the target host server, change the user directory permissions for the `.ssh` directory and the `authorized_keys` file using the following command:
 
     ```command
-    target_server/user2:~$ chmod 600 .ssh/authorized_keys
-    target_server/user2:~$ chmod 700 .ssh
+    chmod 600 .ssh/authorized_keys
+    chmod 700 .ssh
     ```
 
 ## Using Secondary/MFA Authentication For SSH Host Login
@@ -191,7 +190,7 @@ The SSH conversation between hosts takes place at an IP address, and by default,
 
 ## SSH Log Files
 
-The use of SSH logging is set in the ssh_config (user) and sshd_config files located in Linux hosts in the `/etc/ssh/` directories. By default, the log level is INFO. These can be changed to VERBOSE, or for high detail, DEBUG.
+The use of SSH logging is set in the`ssh_config` (user) and `sshd_config` files located in Linux hosts in the `/etc/ssh/` directories. By default, the log level is INFO. These can be changed to VERBOSE, or for high detail, DEBUG.
 
 1. In systems controlled by *systemd* the method to look at the logs comes from *journalctl*. To view SSH logs using the *journalctl* command, use the following command:
 
