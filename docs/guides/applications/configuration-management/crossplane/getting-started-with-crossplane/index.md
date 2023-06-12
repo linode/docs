@@ -1,7 +1,7 @@
 ---
 slug: getting-started-with-crossplane
 title: "How to Use Crossplane"
-description: "Crossplane extends Kubernetes as a universal control plane, meaning that you can use the familiar tools and features of Kubernetes to orchestrate and manage all of your infrastructure needs. Learn more about what Crossplane has to offer and how you can start with it in this tutorial."
+description: "Crossplane extends Kubernetes as a universal control plane. Learn more about what Crossplane has to offer and how you can start with it in this tutorial."
 keywords: ['crossplane kubernetes','crossplane examples','crossplane vs terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
@@ -30,58 +30,62 @@ Kubernetes itself is an example. A Kubernetes setup deploys and monitors resourc
 
 Crossplane takes the Kubernetes control plane and extends it to a wider context. Whereas Kubernetes acts as a control plane for resources on a Kubernetes cluster, Crossplane acts as a *universal control plane*. Crossplane can be the interface for resources on virtually any cloud platform.
 
-### Crossplane vs Terraform: What Are the Differences?
+### Crossplane vs. Terraform: What Are the Differences?
 
 [Terraform](https://www.terraform.io/) stands as perhaps the most popular tool for infrastructure-as-code. Like Crossplane, Terraform lets you manage that infrastructure across a range of services. So what sets Crossplane apart from Terraform, and when should you use Crossplane instead of Terraform?
 
-Fundamentally, the differences come down to the tool's intended uses. Terraform is a command-line tool for deploying infrastructure using declarative configurations. By contrast, Crossplane is a control plane that uses declarative configurations for creating and providing ongoing management of infrastructure.
+Fundamentally, the differences come down to the tool's intended uses. Terraform is a command line tool for deploying infrastructure using declarative configurations. By contrast, Crossplane is a control plane that uses declarative configurations for creating and providing ongoing management of infrastructure.
 
-Additionally, two significant functional differences stand out between the two tools. These differences primarily affect how the tools fit into an organization and team structure.
+Additionally, two significant functional differences stand out between the tools. These differences primarily affect how the tools fit into an organization and team structure.
 
 - Terraform's configurations do not update with changes on the deployed infrastructure. Terraform is oriented around deploying infrastructure, and changes to a Terraform configuration require reapplying the whole deployment.
 
     As a control plane, Crossplane uses its declarative configurations to actively maintain and modify the state of infrastructure. This means that Crossplane is not subject to the configuration "drift" that can occur with Terraform configurations.
 
-- With Terraform, a collaborating developer needing some infrastructure access has to know both Terraform and the underlying API. Not only that, but the developer also needs granular access to the underlying resources.
+-   With Terraform, a collaborating developer needing some infrastructure access has to know both Terraform and the underlying API. Not only that, but the developer also needs granular access to the underlying resources.
 
-    Crossplane can, by contrast, provide self-service interfaces. Crossplane uses operators that handle credentials and expose simple, abstracted interfaces for collaborating developers. That way, developers only need access to and a simple knowledge of the interface itself, rather than the granular aspects.
+    In contrast, Crossplane can provide self-service interfaces. Crossplane uses operators that handle credentials and expose simple, abstracted interfaces for collaborating developers. That way, developers only need access to and knowledge of the interface itself, rather than the granular aspects.
 
-Finally, Crossplane's use of Kubernetes also makes it a favorable solution for teams already using Kubernetes. Crossplane takes advantage both of existing Kubernetes infrastructure as well as familiarity.
+Crossplane's use of Kubernetes also makes it a favorable solution for teams already using Kubernetes. Crossplane takes advantage of the existing Kubernetes infrastructure and familiarity.
 
 ## How to Install Crossplane
 
-Crossplane deploys to a Kubernetes cluster similar to many other Kubernetes applications. Once you have Crossplane installed on your cluster, you can take advantage of your kubectl tool to create and manage Crossplane resources.
+Crossplane deploys to a Kubernetes cluster similar to many other Kubernetes applications. Once you have Crossplane installed on your cluster, you can take advantage of `kubectl` to create and manage Crossplane resources.
 
-Follow along with the steps in this section of the tutorial to set up your Kubernetes cluster and get Crossplane up and running on it.
+Follow along with the steps in this section to set up a Kubernetes cluster and get Crossplane running on it.
 
 ### Setting Up a Kubernetes Cluster
 
 Crossplane runs on a Kubernetes cluster, so you need a running cluster available to get started with it.
 
-With Linode, you can readily deploy a Kubernetes cluster from the Cloud Manager. To do so, follow along with our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/). Within a short while, you can have a fully-operational Kubernetes cluster deployed and configured.
+With Linode, you can quickly deploy a Kubernetes cluster from the Cloud Manager. To do so, follow along with our guide [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/). When done, you should have a fully operational Kubernetes cluster and a `kubectl` instance configured to manage it.
 
 In addition to having an active Kubernetes cluster, you need kubectl configured to manage it. You can find this information covered in the LKE guide linked just above.
 
-Once you have your Kubernetes cluster up and running, you additionally need to install [Helm](https://helm.sh/). Helm is a tool for installing and managing applications on Kubernetes clusters, and it is used to install Crossplane to your cluster.
-
-To install Helm on your system, you can follow the relevant section of our guide [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm).
+To install Helm on your system, follow the relevant section of our guide [Installing Apps on Kubernetes with Helm 3](/docs/guides/how-to-install-apps-on-kubernetes-with-helm-3/#install-helm).
 
 ### Deploying Crossplane with Helm
 
 With Kubernetes running and Helm installed, you can now proceed to install Crossplane.
 
-1. Add the Crossplane repository to your Helm instance.
+1.  Add the Crossplane repository to your Helm instance:
 
     ```command
     helm repo add crossplane-stable https://charts.crossplane.io/stable
     helm repo update
     ```
 
-1. (Optional) Consider whether you want to customize your Crossplane installation. This tutorial does not leverage any custom settings, but you can see configuration options in the [official installation](https://docs.crossplane.io/v1.11/software/install/#installation-options) guide.
+    ```output
+    Hang tight while we grab the latest from your chart repositories...
+    ...Successfully got an update from the "crossplane-stable" chart repository
+    Update Complete. ⎈Happy Helming!⎈
+    ```
 
     Should you want to customize your installation, follow the link above to create a values file with the options and name it `values.yml` for this example. Then add `-f values.yml` to the end of the installation command below to apply your configuration to the installation.
 
-1. Install Crossplane. Following the official recommendations, this command sets up Crossplane in its own Kubernetes namespace.
+    Should you want to customize your installation, follow the link above to create a `values.yaml` file with the options. Then add `-f values.yml` to the end of the installation command below to apply your configuration.
+
+1.  Following the official recommendations, this command installs Crossplane in its own Kubernetes namespace:
 
     ```command
     helm install crossplane --namespace crossplane-system --create-namespace crossplane-stable/crossplane
@@ -101,11 +105,11 @@ With Kubernetes running and Helm installed, you can now proceed to install Cross
 
 ## How to Use Crossplane
 
-Crossplane is now running on your cluster, and you are ready to start using its control planes to deploy your own infrastructure. There are myriad options here — Crossplane is a universal control plane, with the ability to control an almost limitless range of external APIs.
+Crossplane is now running on your cluster, and you are ready to start using its control planes to deploy your own infrastructure. There are myriad options available, as Crossplane is a universal control plane with the ability to control an almost limitless range of external APIs.
 
-To get you started, this section walks you through a fully-functioning example. The example shows you how to use the Linode provider for Crossplane to deploy a new Linode Compute instance.
+To get started, this section walks through a fully-functioning example. The example shows how to use the Linode provider for Crossplane to deploy a new Linode Compute instance.
 
-While relatively simple, the example elaborated here provides a strong base model. You can readily build off of the configurations here to make Crossplane work for a diverse range of infrastructure needs.
+While relatively simple, this example provides a strong base model. You can easily build on the configurations here to make Crossplane work for a diverse range of infrastructure needs.
 
 {{< caution >}}
 The configurations and commands used in this guide add one or more Linode instances to your account. Be sure to monitor your account closely in the Linode Cloud Manager to avoid unwanted charges.
@@ -113,7 +117,7 @@ The configurations and commands used in this guide add one or more Linode instan
 
 1. The provider allows you to deploy Akamai Cloud (formerly Linode) instances with Crossplane.
 
-1. Create a deployment manifest for installing the Linode provider, [provider-linode](https://marketplace.upbound.io/providers/linode/provider-linode/), to your Crossplane instance.
+1.  Create a deployment manifest (e.g. `provider.yml`) for installing the [Linode provider](https://marketplace.upbound.io/providers/linode/provider-linode/) (`provider-linode`) to your Crossplane instance:
 
     ```file{title="provider.yml" lang="yaml"}
     apiVersion: pkg.crossplane.io/v1
@@ -121,20 +125,22 @@ The configurations and commands used in this guide add one or more Linode instan
     metadata:
       name: provider-linode
     spec:
-      package: linode/provider-linode:v0.1.0
+      package: xpkg.upbound.io/linode/provider-linode:v0.0.10
     ```
 
-    *Providers* are Crossplane's tools for interfacing with external APIs. The Linode provider interfaces with the Linode API, allowing Crossplane to create and manage your Linode resources.
+    See the wide range of providers available for Crossplane on the [Upbound Marketplace](https://marketplace.upbound.io/providers). Upbound are the founders of Crossplane, and they maintain this provider repository.
 
-    You can see more of the wide range of providers available for Crossplane on the [Upbound Marketplace](https://marketplace.upbound.io/providers). (Upbound are the founders of Crossplane, and they maintain this provider repository.)
-
-1. Apply the manifest you just created to install `provider-linode` onto the Kubernetes cluster.
+1.  Apply the newly created manifest to install `provider-linode` onto the Kubernetes cluster:
 
     ```command
     kubectl apply -f provider.yml
     ```
 
-    You can verify the installation with a kubectl command to list `provider` resources.
+    ```output
+    provider.pkg.crossplane.io/provider-linode created
+    ```
+
+    Verify the installation with a `kubectl` command to list `provider` resources:
 
     ```command
     kubectl get providers
@@ -145,17 +151,17 @@ The configurations and commands used in this guide add one or more Linode instan
     provider-linode   True        True      xpkg.upbound.io/linode/provider-linode:v0.0.7   15s
     ```
 
-1. Create a Kubernetes manifest for deploying a new Linode Compute instance. This is where you start leveraging Crossplane and the Linode provider to provision resources.
+1.  Create a Kubernetes manifest file (e.g. `deployment.yml`) for deploying a new Linode Compute instance. This is where you start leveraging Crossplane and the Linode provider to provision resources.
 
-    In this example manifest, you need to replace a few values with ones specific to your needs and your Linode account credentials.
+    In this example manifest, you need to replace a few values with ones specific to your needs and your Linode account credentials:
 
-    - Replace `${ROOT_PASSWORD}` with a root password to be used for the new Linode Compute instance
+    -   Replace `${ROOT_PASSWORD}` with a root password to be used for the new Linode Compute instance.
 
     - Replace `${LINODE_API_TOKEN}` with your Linode API personal access token, which you can generate by following the relevant section of our guide on [Getting Started with the Linode API](/docs/products/tools/api/get-started/#get-an-access-token)
 
-    - Replace `${SSH_PUBLIC_KEY}` with an SSH public key to be used to access the Linode Compute instance; learn more about SSH keys in our guide [Using SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/)
+    -   Replace `${SSH_PUBLIC_KEY}` with a public SSH key to access the Linode Compute instance. Learn more about SSH keys in our guide [Using SSH Public Key Authentication](/docs/guides/use-public-key-authentication-with-ssh/).
 
-    ```file{title="deployment.yml" lang="yaml"}
+    ```file{title="deployment.yml" lang="yaml" hl_lines="8,11,37"}
     apiVersion: v1
     kind: Secret
     metadata:
@@ -205,27 +211,33 @@ The configurations and commands used in this guide add one or more Linode instan
 
     This manifest consists of three parts, which perform these functions:
 
-    - The `Secret` resource, `crossplane-secrets`, stores variables for your instance's root password and your Linode API token. Later resources can then use these.
+    -   The `Secret` resource (`crossplane-secrets`) stores variables for your instance's root password and your Linode API token. Later resources can then use these.
 
-    - The `ProviderConfig` resource provides initial configurations to be used by the upcoming resource. For the Linode provider, that just means pointing to the secret value with the Linode API token.
+    -   The `ProviderConfig` resource provides initial configurations to be used by the upcoming resource. For the Linode provider, that simply means pointing to the secret value with the Linode API token.
 
-    - The `Instance` resource, `web`, articulates the details of the new Linode Compute instance to be created. This example creates a *Linode 2GB* instance in Atlanta and running Ubuntu 20.04.
+    -   The `Instance` resource (`web`) articulates the details of the new Linode Compute instance to be created. This example creates a 2GB shared instance in Atlanta running Ubuntu 20.04 LTS.
 
-        You can use the API endpoints to learn more about available instance [types](https://api.linode.com/v4/linode/types), [regions](https://api.linode.com/v4/regions), and [images](https://api.linode.com/v4/images).
+        Use the API endpoints to learn more about available instance [types](https://api.linode.com/v4/linode/types), [regions](https://api.linode.com/v4/regions), and [images](https://api.linode.com/v4/images).
 
-1. Apply the deployment manifest, just as you would for deploying standard resources to a Kubernetes cluster.
+1.  Apply the deployment manifest in the same manner as deploying standard resources to a Kubernetes cluster:
 
     ```command
     kubectl apply -f deployment.yml
     ```
 
-1. Verify that the instance has been deployed by using kubectl to fetch a list of `instance` resources.
+    ```output
+    secret/crossplane-secrets created
+    providerconfig.linode.upbound.io/default created
+    instance.instance.linode.upbound.io/web created
+    ```
+
+1.  Verify that the instance has been deployed by using `kubectl` to fetch a list of `instance` resources:
 
     ```command
     kubectl get instances
     ```
 
-    At first, you should see output like this, indicating that the instance provisioning has not yet completed.
+    At first, you should see output like this, indicating that the instance provisioning has not yet completed:
 
     ```output
     NAME   READY   SYNCED   EXTERNAL-NAME   AGE
@@ -239,9 +251,9 @@ The configurations and commands used in this guide add one or more Linode instan
     web    True    True     45521497        2m46s
     ```
 
-You can further verify the successful deployment through your Linode Cloud Manager. Navigate to the **Linodes** section, and you should see the new Compute instance listed. Using the example `deployment.yml` above, the new instance would be named `crossplane-deployment-example`, as shown here.
+Further verify the successful deployment through the Linode Cloud Manager. Navigate to the **Linodes** section, and you should see the new Compute instance listed. Using the example `deployment.yml` above, the new instance would be named `crossplane-deployment-example`, as shown here:
 
-[![Linode Compute instance deployed with Crossplane](linode-crossplane-compute_small.png)](linode-crossplane-compute.png)
+[![A Linode Compute instance deployed with Crossplane.](linode-crossplane-compute_small.png)](linode-crossplane-compute.png)
 
 ## Conclusion
 
