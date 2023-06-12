@@ -174,7 +174,7 @@ From there, you can start executing queries on your SurrealDB database. These st
         { id: "last", value: "last" },
         { id: "post", value: "post" },
         { id: "test", value: "test" }
-    ]
+    ];
     ```
 
     SurrealDB automatically generates unique IDs, but by entering these manually you can make the records more intuitive to fetch. For instance, you can fetch the `last` tag above with the following command.
