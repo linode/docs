@@ -218,3 +218,4 @@ This section is optional. Follow these steps to configure the VNC server to star
 
 
 3.  Save and exit the file. You can test by rebooting your Linode and connecting to the VNC server.
+    To connect securely to the VNC server see the [secure](#secure-your-vnc-connection) and [connect](#connect-to-vnc-from-your-desktop) sections.
