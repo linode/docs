@@ -74,7 +74,6 @@ You can also install specific components of either version using the packages be
 
 You can choose to install either the main package, the SDK, the .NET runtime, or the ASP.NET runtime (for ASP.NET web applications). If you only intend to run an existing .NET application and wish to conserve disk space (or avoid installing unnecessary software), we recommend just installing the runtime package corresponding with whichever .NET version you want to use.
 
-<<<<<<< HEAD
 To install .NET using APT, open a terminal and run the following command to update local sources and install the desired package:
 
 ```command
@@ -82,23 +81,6 @@ sudo apt update && sudo apt install [package]
 ```
 
 Replace *[package]* with the name of the .NET package you want to install (such as `dotnet7` or `dotnet6`).
-=======
-1.  Open a terminal and run the following command to update local sources and install the desired package:
-
-    ```command
-    sudo apt update && sudo apt install [package]
-    ```
-
-    Replace *[package]* with the name of the .NET package you want to install (such as `dotnet7` or `dotnet6`).
-
-1.  After installation, export the landing directory for the chosen .NET binary by running the following command:
-
-    ```command
-    export DOTNET_ROOT=$(/usr/bin/)/.dotnet
-    ```
-
-    This sets the `DOTNET_ROOT` environment variable to the directory `/usr/bin/.dotnet`.
->>>>>>> upstream/develop
 
 ### Install .NET Using Snap
 
