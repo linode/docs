@@ -1,6 +1,7 @@
 ---
 slug: install-dotnet-on-ubuntu
-title: "How to Install and Run Microsoft .NET on Ubuntu 22.04"
+title: "Install the .NET Runtime (or SDK) on Ubuntu 22.04"
+title_meta: "How to Install the .NET Runtime (or SDK) on Ubuntu 22.04"
 description: 'Learn how to install the .NET 6 SDK or runtime on Ubuntu and understand its limitations, requirements, and security implications.'
 keywords: ['dotnet on Ubuntu 22.04', 'dotnet runtime', 'install dotnet', 'enable dotnet ubuntu 22.04', 'install dotnet server ubuntu']
 tags: ['ubuntu']
@@ -13,7 +14,7 @@ modified_by:
 
 Microsoft [.NET](https://dotnet.microsoft.com/en-us/) (pronounced *dot net* and sometimes written as *dotnet*) is a free and open-source platform for building, distributing, and running software applications. Developers can write code for their applications in multiple languages (including C# and Visual Basic) and target any operating system that supports .NET (including Windows, Linux, and macOS). Using the .NET platform (and it's many available libraries and app models), developers can create command-line apps, web applications (with [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet)), cross-platform mobile and desktop applications (with [.NET MAUI](https://dotnet.microsoft.com/en-us/apps/maui)), and much more.
 
-.NET applications can be distributed as either *self-contained* or *framework-dependent* executables. Self-contained applications already include the necessary .NET runtime files and libraries needed to run the application. When running a framework-dependent application, you first need to install the .NET runtime and any required .NET libraries as these are not included. This guide covers how to install the .NET runtime (or SDK) so that you can run framework-dependent .NET applications on Ubuntu 22.04, provided these apps target the Linux operating system.
+.NET applications can be distributed as either *self-contained* or *framework-dependent* executables. Self-contained applications already include the necessary .NET runtime files and libraries needed to run the application. When running a *framework-dependent* application, you first need to install the .NET runtime and any required .NET libraries as these are not included. This guide covers how to install the .NET runtime (or SDK) so that you can run framework-dependent .NET applications on Ubuntu 22.04, provided these apps target the Linux operating system.
 
 ## Platform Compatibility
 
@@ -27,9 +28,9 @@ When running a framework-dependent .NET application on Linux, you need to first 
 
 ## Installation
 
-Microsoft's .NET runtime does not come pre-installed on most Linux distributions, including Ubuntu 22.04 LTS. Unless you have already installed Visual Studio or another application that's dependent on the same .NET runtime version, you'll need to install the runtime to run the application.
+Microsoft's .NET runtime does not come pre-installed on most Linux distributions, including Ubuntu 22.04 LTS. Unless you have already installed Visual Studio or another application that's dependent on the same .NET runtime version, you'll need to install the runtime before using your .NET app.
 
-The .NET runtime can be installed directly from Ubuntu's package repositories (starting with Ubuntu 22.04), from Microsoft's own repository, or by using the Snap package manager. The default installations under Ubuntu’s APT or Snap packaging services only use stable sources. If nightly builds or other unstable updates are needed, Microsoft’s repository should be used.
+The .NET runtime can be installed directly from Ubuntu's package repositories (starting with Ubuntu 22.04), from Microsoft's own repository, or by using the Snap package manager.
 
 ### Determine if .NET is Already Installed
 
@@ -53,7 +54,7 @@ For a more comprehensive view of .NET on your system, use the `dotnet --info` co
 Starting with Ubuntu 22.04 LTS, .NET is available from Ubuntu's own package repositories and can quickly be installed using the APT package manager. For more details on this installation procedure, review Microsoft's [Install .NET SDK or .NET Runtime on Ubuntu 22.04](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204) guide.
 
 {{< note >}}
-Not all .NET versions are included in Ubuntu's repository. If your application requires a specific .NET version (including nightly versions), you should use Microsoft's own repository instead. For instructions on doing this, review the official [Register the Microsoft package repository](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#register-the-microsoft-package-repository) doc. Using mixed repositories can potentially lead to conflicts, update issues, and asset version conflicts between the repositories. Microsoft provides [detailed information on the current ramifications](https://github.com/dotnet/core/issues/7699) and suggests solutions on resolving repository problems.
+Not all .NET versions are included in Ubuntu's repository. If your application requires a specific .NET version (including nightly versions), you should use Microsoft's own repository instead. For instructions on doing this, review the official [Register the Microsoft package repository](https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#register-the-microsoft-package-repository) guide. Using mixed repositories can potentially lead to conflicts, update issues, and asset version conflicts between the repositories. Microsoft provides [detailed information on the current ramifications](https://github.com/dotnet/core/issues/7699) and suggests solutions on resolving repository problems.
 
 {{< /note >}}
 
@@ -65,29 +66,21 @@ The following .NET packages are available when using the default package reposit
 You can also install specific components of either version using the packages below:
 
 - [dotnet-sdk-7.0](https://packages.ubuntu.com/jammy-updates/dotnet-sdk-6.0): The .NET 7.0 SDK. This includes both the .NET runtime and ASP.NET runtime, among other tools and packages.
-- [dotnet-runtime-7.0](https://packages.ubuntu.com/jammy-updates/dotnet-runtime-6.0): The .NET 7.0 runtime
+- [dotnet-runtime-7.0](https://packages.ubuntu.com/jammy-updates/dotnet-runtime-6.0): The .NET 7.0 runtime.
 - [aspnetcore-runtime-7.0](https://packages.ubuntu.com/jammy-updates/aspnetcore-runtime-6.0): The ASP.NET 7.0 runtime, which also installs the .NET 7.0 runtime.
 - [dotnet-sdk-6.0](https://packages.ubuntu.com/jammy-updates/dotnet-sdk-6.0): The .NET 6.0 SDK. This includes both the .NET runtime and ASP.NET runtime, among other tools and packages.
-- [dotnet-runtime-6.0](https://packages.ubuntu.com/jammy-updates/dotnet-runtime-6.0): The .NET 6.0 runtime
+- [dotnet-runtime-6.0](https://packages.ubuntu.com/jammy-updates/dotnet-runtime-6.0): The .NET 6.0 runtime.
 - [aspnet-runtime-6.0](https://packages.ubuntu.com/jammy-updates/aspnetcore-runtime-6.0): The ASP.NET 6.0 runtime, which also installs the .NET 6.0 runtime.
 
 You can choose to install either the main package, the SDK, the .NET runtime, or the ASP.NET runtime (for ASP.NET web applications). If you only intend to run an existing .NET application and wish to conserve disk space (or avoid installing unnecessary software), we recommend just installing the runtime package corresponding with whichever .NET version you want to use.
 
-1.  Open a terminal and run the following command to update local sources and install the desired package:
+To install .NET using APT, open a terminal and run the following command to update local sources and install the desired package:
 
-    ```command
-    sudo apt update && sudo apt install [package]
-    ```
+```command
+sudo apt update && sudo apt install [package]
+```
 
-    Replace *[package]* with the name of the .NET package you want to install (such as `dotnet7` or `dotnet6`).
-
-1.  After installation, export the landing directory for the chosen .NET binary by running the following command:
-
-    ```command
-    export DOTNET_ROOT=$(/usr/bin/)/.dotnet
-    ```
-
-    This sets the `DOTNET_ROOT` environment variable to the directory `/usr/bin/.dotnet`.
+Replace *[package]* with the name of the .NET package you want to install (such as `dotnet7` or `dotnet6`).
 
 ### Install .NET Using Snap
 
@@ -95,8 +88,8 @@ You can choose to install either the main package, the SDK, the .NET runtime, or
 
 It's worth noting that while snap is the default packaging method for Ubuntu, Microsoft's Visual Studio IDE for Linux does not currently have a snap package available. Therefore, if you are using Microsoft's Visual Studio, you need to install the .NET SDK separately.
 
-{{< note title="Check for incorrectly installed or shared snap package" isCollapsible=true type="secondary" >}}
-To check for the presence of a shared instance of dotnet (SDK or runtime) that is incorrectly installed for sharing, you can follow these steps:
+{{< note title="Check for incorrectly installed or shared snap packages." isCollapsible=true type="secondary" >}}
+To check for the presence of a shared instance of .NET (SDK or runtime) that is incorrectly installed for sharing, you can follow these steps:
 
 1.  Execute the following command to test for the shared instance:
 
@@ -104,7 +97,7 @@ To check for the presence of a shared instance of dotnet (SDK or runtime) that i
     sudo ls /home/user/share/dotnet
     ```
 
-    This command checks if the directory where dotnet shared code is typically stored exists. The `/home/user/share/dotnet` directory is commonly used for storing the shared code. Replace `user` with the actual username of the user account you are using.
+    This command checks if the directory where .NET shared code is typically stored exists. The `/home/user/share/dotnet` directory is commonly used for storing the shared code. Replace `user` with the actual username of the user account you are using.
 
 1.  If the shared instance is found, it needs to be removed or isolated from the desired user. This can be achieved by either:
 
@@ -133,7 +126,7 @@ To install .NET using Snap, follow the steps below:
     sudo snap install dotnet-runtime-60
     ```
 
-    This installs the .NET 6.0 runtime. Other versions are also available, such as for .NET 7.0 (`dotnet-runtime-70`) and 3.1 (`dotnet-runtime-31`). 
+    This installs the .NET 6.0 runtime. Other versions are also available, such as for .NET 7.0 (`dotnet-runtime-70`) and 3.1 (`dotnet-runtime-31`).
 
 For a full list of the available snap packages, run the command below:
 
@@ -145,9 +138,9 @@ This queries the snap repository and displays a list of available .NET SDK and r
 
 ## Server Applications
 
-While many .NET applications are standalone, others connect directly to external systems. If your application connects to other servicves, you may need to adjust your firewall settings so these connections are not blocked. For instructions on using UFW (the default firewall front-end interface for Ubuntu 22.04), see the guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Web services used in .NET applications typically use ports `443`, `80`, and `8080` but are application-specific. You must change the *ufw* firewall to allow port access and use the correct protocol, either TCP or UDP, to communicate across the port(s).
+While many .NET applications are standalone, others connect directly to external systems. If your application connects to other services, you may need to adjust your firewall settings so these connections are not blocked. For instructions on using UFW (the default firewall front-end interface for Ubuntu 22.04), see the guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). Web services typically use ports `443`, `80`, and `8080`, though ports are application-specific. If these ports are blocked, you can adjust the firewall to allow access.
 
-Scripts installing .NET applications may require sudo rights to effectively change the firewall, file, or environmental settings for the user(s) of the runtime application. In addition, you may need to modify user rights and file accessibility so that your .NET-based application can properly run.
+Scripts installing .NET applications may require sudo rights to effectively change the firewall, files, or environmental settings for the user(s) of the runtime application. In addition, you may need to modify user rights and file accessibility so that your .NET-based application can properly run.
 
 ## Limitations of .NET in Ubuntu 22.04
 
@@ -155,7 +148,7 @@ The .NET components in the Ubuntu Repositories (apt and snap) support certain ve
 
 ## Security Implications
 
-Since Ubuntu 22.04 includes support for .NET 6.0 and .NET 7.0, many security risks present in older versions of .NET do not apply. However, older versions of .NET (like version 3.1 and 5.0) can be installed using Snap or other methods. When older versions of .NET are used, consider any security implications before running the software. While stand-alone code that does not access data from external sources is unlikely to present a security risk, applications that do connect to external services should be scrutinized. .NET version 6.0 and later benefits from the enhanced security provided by OpenSSL Version 3. Previous versions rely on the now-deprecated encryption methods of OpenSSL Version 1, which are known to have security vulnerabilities.
+Since Ubuntu 22.04 includes support for .NET 6.0 and .NET 7.0, many security risks present in older versions of .NET do not apply. However, older versions of .NET (like version 3.1 and 5.0) can be installed using Snap or other methods. When older versions of .NET are used, consider any security implications before running the software. While stand-alone code that does not access data from external sources is unlikely to present a security risk, applications that do connect to external services should be scrutinized. Starting with .NET version 6.0, applications benefit from the enhanced security provided by OpenSSL version 3. Previous versions rely on the now-deprecated encryption methods of OpenSSL version 1, which are known to have security vulnerabilities.
 
 ## Conclusion
 
