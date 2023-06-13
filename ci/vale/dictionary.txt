@@ -239,6 +239,7 @@ byrequests
 bzip2
 bzrtools
 c2s
+cas
 cabd
 cacert
 cacheable
@@ -1611,6 +1612,8 @@ packagist
 pagent
 pagespeed
 palo
+pam
+pams
 pandoc
 param
 parameterizing
@@ -1802,6 +1805,7 @@ radeon
 rainloop
 Ramaze
 ramdisk
+randomart
 ransomwhere
 rasa
 rauth
@@ -2276,6 +2280,7 @@ tmux
 tock
 todo
 togami
+tokenization
 tokenize
 tokenized
 tokenizing
