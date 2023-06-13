@@ -88,9 +88,10 @@ Asana
 aspell
 askbot
 aske
+ASPcore
 Astra
-async
 astro
+async
 asynchrony
 atera
 atlanta
@@ -553,6 +554,7 @@ donenfeld
 dotdeb
 dotenv
 dotfiles
+dotnet
 doveadm
 dpkg
 dport
@@ -1180,6 +1182,7 @@ libcontainers
 libcurl
 libev
 libgcc1
+libgdiplus
 libphp
 libpri
 libprocesshider
