@@ -6,7 +6,7 @@ keywords: ['Install Prometheus', 'Install Grafana', 'Install Node Exporter', 'In
 tags: ['ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
-published: 2023-04-03
+published: 2023-06-13
 modified_by:
   name: Linode
 external_resources:
@@ -58,13 +58,16 @@ Grafana supports a wide range of dashboards, including the Prometheus Node Expor
 
 Grafana supports alerts, annotations, dashboard variables, plugins, and authentication. It also provides a range of analytics tools to further deconstruct the data. The Grafana web interface can be accessed using port `3000` of the host server. For best results, run Prometheus and Grafana on the same server. For more background information, see the [Introduction to Grafana](https://grafana.com/docs/grafana/latest/introduction/).
 
+## Marketplace App
+Installing a complete Prometheus and Grafana-based system is a multi-step process. To streamline deployments, you can use the [Prometheus and Grafana Marketplace App](/docs/guides/how-to-install-prometheus-and-grafana-on-ubuntu/). For a more traditional and hands-on deployment, follow the instructions below.
+
 ## Before You Begin
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Prometheus requires 4GB of memory and 20GB of disk space and works best with at least two CPUs.
+1.  Prometheus requires 4GB of memory and 20GB of disk space and works best with at least two CPU cores.
 
 1.  In most cases, Prometheus and Grafana are used to monitor external servers. To duplicate the configuration in this guide, create and set up a second Linode Compute Instance to use as a client.
 
@@ -74,7 +77,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## How to Install and Configure Prometheus, Grafana, and Node Exporter
 
-Installing a complete Prometheus and Grafana-based system is a multi-step process. In these instructions, the system hosting the Prometheus server is referred to as the "monitoring server". The system being monitored is a "client". It is possible to develop very complicated custom exporters and dashboards using Prometheus and Grafana. However, this guide describes a more straightforward solution for monitoring the most critical client details, including CPU, memory, and I/O usage. It does not require any knowledge of PromQL or any low-level details for either Prometheus or Grafana.
+In these instructions, the system hosting the Prometheus server is referred to as the "monitoring server". The system being monitored is a "client". It is possible to develop very complicated custom exporters and dashboards using Prometheus and Grafana. However, this guide describes a more straightforward solution for monitoring the most critical client details, including CPU, memory, and I/O usage. It does not require any knowledge of PromQL or any low-level details for either Prometheus or Grafana.
 
 To configure the end-to-end solution, the following steps are required.
 
