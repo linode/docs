@@ -905,6 +905,7 @@ htmldir
 htop
 htpasswd
 http
+http_get_request
 httpie
 httpchk
 httpd
