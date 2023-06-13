@@ -88,9 +88,10 @@ Asana
 aspell
 askbot
 aske
+ASPcore
 Astra
-async
 astro
+async
 asynchrony
 atera
 atlanta
@@ -239,6 +240,7 @@ byrequests
 bzip2
 bzrtools
 c2s
+cas
 cabd
 cacert
 cacheable
@@ -391,6 +393,7 @@ cronie
 cronjob
 cronjobs
 crontab
+Crossplane
 crosstab
 crowdsourced
 crowdsourcing
@@ -551,6 +554,7 @@ donenfeld
 dotdeb
 dotenv
 dotfiles
+dotnet
 doveadm
 dpkg
 dport
@@ -903,6 +907,7 @@ htmldir
 htop
 htpasswd
 http
+http_get_request
 httpie
 httpchk
 httpd
@@ -1177,6 +1182,7 @@ libcontainers
 libcurl
 libev
 libgcc1
+libgdiplus
 libphp
 libpri
 libprocesshider
@@ -1611,6 +1617,8 @@ packagist
 pagent
 pagespeed
 palo
+pam
+pams
 pandoc
 param
 parameterizing
@@ -1635,6 +1643,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pathnames
 paypal
 PBCs
 pbr
@@ -1802,6 +1811,7 @@ radeon
 rainloop
 Ramaze
 ramdisk
+randomart
 ransomwhere
 rasa
 rauth
@@ -2053,6 +2063,7 @@ shortguides
 shortname
 shotcut
 shoutcast
+shutil
 scikit
 scribus
 scrollable
@@ -2276,6 +2287,7 @@ tmux
 tock
 todo
 togami
+tokenization
 tokenize
 tokenized
 tokenizing
@@ -2386,6 +2398,7 @@ untrust
 untrusted
 unversioned
 unvetted
+upbound
 upserted
 upsize
 uri
@@ -2632,6 +2645,7 @@ znc
 zonefiles
 zope
 zorin
+zoxide
 zpool
 zsh
 zshrc
