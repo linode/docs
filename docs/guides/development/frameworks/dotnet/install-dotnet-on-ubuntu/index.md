@@ -133,7 +133,7 @@ To install .NET using Snap, follow the steps below:
     sudo snap install dotnet-runtime-60
     ```
 
-    This installs the .NET 6.0 runtime. Other versions are also available, such as for .NET 7.0 (`dotnet-runtime-70`) and 3.1 (`dotnet-runtime-31`). 
+    This installs the .NET 6.0 runtime. Other versions are also available, such as for .NET 7.0 (`dotnet-runtime-70`) and 3.1 (`dotnet-runtime-31`).
 
 For a full list of the available snap packages, run the command below:
 
