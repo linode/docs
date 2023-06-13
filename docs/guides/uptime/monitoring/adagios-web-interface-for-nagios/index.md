@@ -15,15 +15,15 @@ external_resources:
 
 Adagios offers a more intuitive interface for observing and configuring your Nagios server-monitoring system. Adagios keeps the key features from Nagios right at your fingertips. At the same time, it keeps the messier details out of your way until you really need them.
 
-Learn in this tutorial how to get started with Adagios on your CentOS 8 or similar system. Follow along to set up your system, install Adagios, and start using it for monitoring your servers.
+In this tutorial, learn how to get started with Adagios on your CentOS 8 or similar system. Follow along to set up your system, install Adagios, and start using it to monitor your servers.
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1. Your Linode Compute Instance needs to be running CentOS 8 or a comparable distribution. The instructions in this tutorial have been specifically tested on CentOS 8, but should be compatible with systems like AlmaLinux 8 and Rocky Linux 8 as well.
+1.  Your Linode Compute Instance needs to be running CentOS 8 or a comparable distribution. The instructions in this tutorial have been specifically tested on CentOS 8, but should be compatible with systems like AlmaLinux 8 and Rocky Linux 8 as well.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -31,50 +31,56 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Getting Started with Nagios
 
-Before diving into Adagios, you should get a base familiarity with Nagios, the tool that Adagios provides an interface for. If you are not familiar, follow along below and check out the links to learn more.
+Before diving into Adagios, you should have a base familiarity with Nagios, the tool that Adagios provides an interface for. If you are not familiar with Nagios, follow along below and check out the links to learn more.
 
-At the least, you should have Nagios installed on your machine. You can get instructions for installing Nagios from the guide linked a little further on.
+To begin, you should have Nagios installed on your machine. You can get instructions for installing Nagios from the guide linked a little further on.
 
 ### What Is Nagios?
 
 [Nagios](https://www.nagios.com/products/nagios-core/) is a widely-used server-monitoring tool. With Nagios, robust server monitoring comes with highly configurable notification and alert options as well as a host of official and community plugins.
 
-You can learn more about what Nagios has to offer in our guide [How to Install Nagios on CentOS 8](/docs/guides/install-nagios-on-centos-8/).
+Learn more about what Nagios has to offer in our guide [How to Install Nagios on CentOS 8](/docs/guides/install-nagios-on-centos-8/).
 
 ### How to Install Nagios
 
-Before getting started with Adagios, you need to have Nagios installed and configured to your liking on your system. To install Nagios, follow our [How to Install Nagios on CentOS 8](/docs/guides/install-nagios-on-centos-8/) guide.
+Before getting started with Adagios, you need to have Nagios installed and configured on your system. To install Nagios, follow our [How to Install Nagios on CentOS 8](/docs/guides/install-nagios-on-centos-8/) guide.
 
-Alternatively, you may refer to the official [installation documentation](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) for Nagios Core. There, you can get details for installing Nagios on other operating systems.
+Alternatively, refer to the official [installation documentation](https://support.nagios.com/kb/article/nagios-core-installing-nagios-core-from-source-96.html) for Nagios Core. There, you can get details for installing Nagios on other operating systems.
 
-Keep in mind that Adagios has been built primarily with CentOS and other RHEL-based systems in mind. For that reason, this tutorial focuses on CentOS 8. The instructions should work similarly for distributions like AlmaLinux 8 and Rocky Linux 8.
+Keep in mind that Adagios has been built primarily with CentOS and other RHEL-based systems in mind. For that reason, this tutorial focuses on CentOS Stream 8. The instructions should work similarly for distributions like AlmaLinux 8 and Rocky Linux 8.
 
 ## How to Start Using Adagios with Nagios
 
-Adagios runs on top of Nagios to give you a cleaner and simpler interface for managing your Nagios server-monitoring instance. Follow along with this section of the tutorial to learn more about Adagios and get a full walkthrough for setting it up.
+Adagios runs on top of Nagios to provide a cleaner and simpler interface for managing a Nagios server-monitoring instance. Follow along with this section of the tutorial to learn more about Adagios and get a full walkthrough for setting it up.
 
 ### Why Use Adagios?
 
-[Adagios](http://adagios.org/) is a web interface for managing Nagios configurations. Nagios comes with its own web interface, but Adagios offers a more approachable dashboard for monitoring performance and managing your Nagios configuration. Adagios hides more of the low-level details, making it easier to get a picture of your system and control your monitoring configuration.
+[Adagios](http://adagios.org/) is a web interface for managing Nagios configurations. Nagios comes with its own web interface, but Adagios offers a more approachable dashboard for monitoring performance and managing a Nagios configuration. Adagios hides more of the low-level details, making it easier to get a picture of a system and control the monitoring configuration.
 
-Additionally, Adagios gives you a RESTful API for accessing and managing your Nagios instance. This makes Adagios a broadly useful enhancement to the default interfaces offered by Nagios.
+Additionally, Adagios provides a RESTful API for accessing and managing a Nagios instance. This makes Adagios a broadly useful enhancement to the default interfaces offered by Nagios.
 
 ### Installing Adagios
 
-On most systems, the best way to install Adagios is from source. This approach makes the Adagios configuration easier to manipulate, which is necessary depending on where Nagios installed. The steps may look like a lot, but the aim is to make each part of the installation clear and manageable.
+On most systems, the best way to install Adagios is from source. This approach makes the Adagios configuration easier to manipulate, which is necessary depending on where Nagios is installed. The steps may seem daunting, but the aim is to make each part of the installation clear and manageable.
 
 #### Setting Up the Prerequisites
 
-1. Install dependencies for Adagios from the package manager. You first need to enable some additional repositories, both accessible from DNF packages or commands.
+1.  Install dependencies for Adagios from the package manager. First, enable some additional repositories, both accessible from DNF packages or commands:
 
     ```command
     sudo dnf install epel-release
+    ```
+
+    ```command
     sudo dnf config-manager --set-enabled powertools
     sudo dnf install git acl mod_ssl python36 python36-devel python3-pip python3-setuptools make gcc-c++
+    ```
+
+    ```command
     sudo pip3 install --upgrade pip
     ```
 
-1. Install the Livestatus add-on for Nagios. The add-on provides features to enhance how status information about hosts and services are retrieved.
+1.  Install the Livestatus add-on for Nagios. The add-on provides features to enhance how status information about hosts and services are retrieved.
 
     Opin Kerfi, the maintainers of Adagios, also maintain a package from which you can conveniently pull the Livestatus installation files.
 
@@ -88,7 +94,7 @@ On most systems, the best way to install Adagios is from source. This approach m
     sudo make install
     ```
 
-1. Complete the Livestatus installation by creating a directory for Nagios to store the Livestatus socket and by putting its information in the Nagios configuration file.
+1.  Complete the Livestatus installation by creating a directory for Nagios to store the Livestatus socket and by putting its information in the Nagios configuration file.
 
     ```command
     sudo mkdir -p /usr/lib/nagios/mk-livestatus
@@ -96,7 +102,7 @@ On most systems, the best way to install Adagios is from source. This approach m
     echo 'broker_module=/usr/local/lib/mk-livestatus/livestatus.o /usr/lib/nagios/mk-livestatus/livestatus' | sudo tee -a /usr/local/nagios/etc/nagios.cfg
     ```
 
-1. Create a user group and user for Adagios, and assign the Nagios user group to that user as well.
+1.  Create a user group and user for Adagios, and assign the Nagios user group to that user as well.
 
     ```command
     sudo groupadd --system adagios
@@ -106,21 +112,21 @@ On most systems, the best way to install Adagios is from source. This approach m
 
 #### Installing and Configuring Adagios
 
-1. Download the Adagios repository and give its ownership to the Adagios user.
+1.  Download the Adagios repository and give its ownership to the Adagios user.
 
     ```command
     sudo git clone -b master --depth 1 https://github.com/opinkerfi/adagios.git /opt/adagios
     sudo chown --recursive adagios:adagios /opt/adagios/
     ```
 
-1. Prepare directories for Adagios, and move its configuration files onto your system.
+1.  Prepare directories for Adagios, and move its configuration files onto your system.
 
     ```command
     sudo mkdir -p /etc/adagios/conf.d /var/lib/adagios /usr/local/nagios/etc/adagios
     sudo cp /opt/adagios/adagios/etc/adagios/adagios.conf /etc/adagios/adagios.conf
     ```
 
-1. Make some changes to the Adagios configuration files. Mostly these adjust the Adagios configuration for the actual location of your Nagios installation.
+1.  Make some changes to the Adagios configuration files. Mostly these adjust the Adagios configuration for the actual location of your Nagios installation.
 
     The changes here assume your `nagios.cfg` file is stored within the `/usr/local/nagios/etc/` directory. That should be the case when following the Nagios installation guide linked earlier in this tutorial.
 
@@ -135,7 +141,7 @@ On most systems, the best way to install Adagios is from source. This approach m
 
     These changes also disable the PNP4Nagios features. PNP4Nagios adds performance graphing features, but the package has been deprecated, and so is not covered here. Should you want to install it, follow [Nagios's instructions](https://support.nagios.com/kb/article/nagios-core-performance-graphs-using-pnp4nagios-801.html#CentOS) and do not execute the `enable_pnp4nagios` command above.
 
-1. Copy remaining Adagios configuration files to the appropriate places on your system, and ensure the Adagios user had the ownership it needs.
+1.  Copy remaining Adagios configuration files to the appropriate places on your system, and ensure the Adagios user had the ownership it needs.
 
     ```command
     sudo cp /opt/adagios/adagios/etc/adagios/conf.d/force_script_name.conf /etc/adagios/conf.d/
@@ -144,7 +150,7 @@ On most systems, the best way to install Adagios is from source. This approach m
     sudo chown --recursive adagios:adagios /etc/adagios /var/lib/adagios
     ```
 
-1. Set up the Adagios service files, and start and enable the Adagios service.
+1.  Set up the Adagios service files, and start and enable the Adagios service.
 
     ```command
     sudo cp /opt/adagios/contrib/gunicorn.py /opt/adagios/gunicorn.py
@@ -154,13 +160,13 @@ On most systems, the best way to install Adagios is from source. This approach m
     sudo systemctl enable adagios
     ```
 
-1. Adagios includes a configuration file for your Apache Web Server instance. Copy that configuration file to the directory for Apache configurations.
+1.  Adagios includes a configuration file for your Apache Web Server instance. Copy that configuration file to the directory for Apache configurations.
 
     ```command
     sudo cp /opt/adagios/contrib/apache_gunicorn_adagios.conf /etc/httpd/conf.d/
     ```
 
-1. Adagios uses a Python virtual environment for orchestrating some of its required features. Execute the included script to set up the necessary virtual environment, then load the environment and run some commands to provide initial configurations.
+1.  Adagios uses a Python virtual environment for orchestrating some of its required features. Execute the included script to set up the necessary virtual environment, then load the environment and run some commands to provide initial configurations.
 
     Again, you need to replace `/usr/local/nagios/` below with the actual location of your installed Nagios files if they differ.
 
@@ -168,13 +174,16 @@ On most systems, the best way to install Adagios is from source. This approach m
     sudo /opt/adagios/upgrade.sh
     sudo chown --recursive adagios:adagios /opt/adagios/
     su -
+    ```
+
+    ```command
     source /opt/adagios/venv/bin/activate
     pynag config --append cfg_dir=/usr/local/nagios/etc/adagios
     pynag config --append "broker_module=/usr/local/lib/mk-livestatus/livestatus.o /usr/lib/nagios/mk-livestatus/livestatus'"
     exit
     ```
 
-1. Restart the Nagios, Adagios, and Apache services for the configuration changes to take effect.
+1.  Restart the Nagios, Adagios, and Apache services for the configuration changes to take effect.
 
     ```command
     sudo systemctl restart nagios adagios httpd
@@ -184,7 +193,7 @@ On most systems, the best way to install Adagios is from source. This approach m
 
 Adagios leverages the [OKConfig](https://github.com/opinkerfi/okconfig) tool for managing Nagios configurations. So though not necessary, you should install and configure OKConfig with Adagios to get the most out of the Adagios.
 
-1. Download the OKConfig repository and deploy its initial configurations.
+1.  Download the OKConfig repository and deploy its initial configurations.
 
     ```command
     sudo git clone -b master --depth 1 https://github.com/opinkerfi/okconfig.git /opt/okconfig
@@ -195,25 +204,25 @@ Adagios leverages the [OKConfig](https://github.com/opinkerfi/okconfig) tool for
     sudo ln -s /opt/okconfig/usr/bin/okconfig /usr/local/bin/
     ```
 
-1. Make some changes to the default OKConfig configuration. As with the Adagios configuration changes above, these primarily concern pointing OKConfig to the actual location of the `nagios.cfg` file. Adjust the directories in these commands to match the location of your Nagios installation if its files are stored elsewhere.
+1.  Make some changes to the default OKConfig configuration. As with the Adagios configuration changes above, these primarily concern pointing OKConfig to the actual location of the `nagios.cfg` file. Adjust the directories in these commands to match the location of your Nagios installation if its files are stored elsewhere.
 
     ```command
     sudo sed -i 's|/etc/nagios/nagios.cfg|/usr/local/nagios/etc/nagios.cfg|g' /etc/okconfig.conf
     sudo sed -i 's|/etc/nagios/okconfig|/usr/local/nagios/etc/okconfig|g' /etc/okconfig.conf
     echo 'cfg_dir=/usr/share/okconfig/templates' | sudo tee -a /usr/local/nagios/etc/nagios.cfg
+    su -
     ```
 
-1. Start up OKConfig by entering into the Adagios virtual environment and running the OKConfig commands.
+1.  Start up OKConfig by entering into the Adagios virtual environment and running the OKConfig commands.
 
     ```command
-    su -
     source /opt/adagios/venv/bin/activate
     okconfig init
     okconfig verify
     exit
     ```
 
-1. Restart the Nagios, Adagios, and Apache services for the changes to take effect.
+1.  Restart the Nagios, Adagios, and Apache services for the changes to take effect.
 
     ```command
     sudo systemctl restart nagios adagios httpd
