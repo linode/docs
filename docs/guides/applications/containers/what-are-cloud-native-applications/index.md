@@ -5,14 +5,12 @@ description: 'Learn what cloud native means, and how cloud-native apps differ fr
 keywords: ['cloud-native applications','cloud native apps','microservices','kubernetes','docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Andy Patrizio"]
-published: 2023-06-08
+published: 2023-06-12
 modified_by:
   name: Linode
 ---
 
-"Cloud-native applications" is one of those terms that has evolved as it has grown. It gets thrown around a lot, especially by cloud providers, but what exactly does that term mean?
-
-While it may be seen as a popular buzzword, it has industry support behind it. The [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) was launched in 2015 by the Linux Foundation. It serves as a vendor-neutral platform for many projects around cloud-native apps, including Kubernetes, Prometheus, and Envoy.
+"Cloud-native applications" is a term that has evolved as it has grown. As part of that growth, the [Cloud Native Computing Foundation](https://www.cncf.io/) (CNCF) was launched in 2015 by the Linux Foundation. It serves as a vendor-neutral platform for many projects around cloud-native apps, including Kubernetes, Prometheus, and Envoy.
 
 Cloud-native is an app modernization technique, usually driven by a business need to modernize applications as much as possible to drastically improve scale. Older, on-premises, monolithic applications are broken up into autonomous subsystems called microservices. These microservices can be deployed and scaled independently from other areas of the application. This allows the components to evolve independently as needed, and scale up more than would be possible in the old design.
 
