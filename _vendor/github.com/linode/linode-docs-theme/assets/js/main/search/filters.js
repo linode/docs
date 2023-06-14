@@ -18,6 +18,27 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		},
 	};
 
+	const filterableCloud = () => {
+		return {
+			open: false,
+			searchString: '', // to filter the tags by.
+			filter: [],
+			filterBySearchString: function () {
+				let tags = this.filter;
+				if (!tags) {
+					return [];
+				}
+				let checkboxes = tags.checkboxes;
+				if (!this.searchString) {
+					return checkboxes;
+				}
+
+				let searchString = this.searchString.toUpperCase();
+				return checkboxes.filter((cb) => cb.title.toUpperCase().includes(searchString));
+			},
+		};
+	};
+
 	// The UI state.
 	ctrl.filters.data = {
 		// Maps a facet name to a filter. The filter maps to the owning section.
@@ -42,24 +63,10 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		},
 
 		// Holds the state for the tags filters.
-		tags: {
-			open: false,
-			searchString: '', // to filter the tags by.
-			filter: [],
-			filterBySearchString: function () {
-				let tags = this.filter;
-				if (!tags) {
-					return [];
-				}
-				let checkboxes = tags.checkboxes;
-				if (!this.searchString) {
-					return checkboxes;
-				}
+		tags: filterableCloud(),
 
-				let searchString = this.searchString.toUpperCase();
-				return checkboxes.filter((cb) => cb.title.toUpperCase().includes(searchString));
-			},
-		},
+		// Holds the state for the authors filters.
+		authors: filterableCloud(),
 	};
 
 	// Navigation.
@@ -224,6 +231,7 @@ export function newSearchFiltersController(searchConfig, queryCallback = functio
 		});
 
 		this.filters.data.tags.filter = this.filters.data.filters.get('tags');
+		this.filters.data.authors.filter = this.filters.data.filters.get('authors');
 	};
 
 	// apply applies the current UI filters. This is invoked on any change.

@@ -1,23 +1,20 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to migrate a Compute Instance across data centers using the Cloud Manager."
 keywords: ["choose", "help", "migration", "data center"]
 tags: ["linode platform","cloud manager"]
-license: "[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)"
 title: Initiate a Cross Data Center Migration for a Compute Instance
 modified: 2023-01-18
 modified_by:
   name: Linode
 published: 2019-02-04
 aliases: ['/platform/disk-images/how-to-initiate-a-cross-data-center-migration-for-your-linode/','/platform/migrating-to-a-different-data-center/','/guides/how-to-initiate-a-cross-data-center-migration-for-your-linode/']
+authors: ["Linode"]
 ---
 
 When a Compute Instance is created, it is stored on whichever data center was selected during the creation process. If you wish to change this data center, you can initiate a cross data center migration at any time. This moves your Compute Instance to whichever data center you wish.
 
 {{< note >}}
-Review the [Choosing a Data Center](/docs/guides/how-to-choose-a-data-center/) guide to learn how to choose and speed test a data center.
+Review the [Choosing a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide to learn how to choose and speed test a data center.
 {{< /note >}}
 
 ## In this Guide:
@@ -37,6 +34,7 @@ Migrating your Compute Instance to a new data center will result in a number of 
 
     {{< note >}}
     If any of these DNS records are in use, the software using them will not be able to connect after the migration is completed *until* the DNS records have been upgraded and the changes have propagated.
+    {{< /note >}}
 
 - Any existing Backups created through our [Linode Backup Service](/docs/products/storage/backups/) will not be migrated. Once the Compute Instance's migration has completed, your backup service will restart on its normal schedule.
 

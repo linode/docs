@@ -1,7 +1,5 @@
 ---
 slug: kotlin-tutorial-learn-the-basics
-author:
-  name: John Mueller
 description: 'This Kotlin tutorial covers variables, functions, string templates, and classes. It uses code examples to cover the basics of the Kotlin programming language syntax.'
 keywords: ['kotlin tutorial','kotlin function','kotlin class']
 tags: ['java']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Kotlin Tutorial: An Introduction to the Basics"
 title_meta: "Kotlin Tutorial: Learn the Basics"
-contributor:
-  name: John Mueller
-  link: http://www.johnmuellerbooks.com/
+authors: ["John Mueller"]
 ---
 
 Kotlin is a new cross-platform, statically typed, general-purpose programming language. It was originally created in 2011 by [JetBrains](https://www.jetbrains.com/) and was initially released in 2016. It relies on the Java Virtual Machine (JVM), just like Java, but there are significant differences that you can learn about in our [Kotlin vs Java guide](/docs/guides/kotlin-vs-java-understanding-their-differences/). One of the most interesting differences is that you can compile Kotlin to output JavaScript, Android, and Native (which runs on iOS). In 2019, Google announced that Kotlin is now the preferred language for all Android development. This Kotlin tutorial provides you basics to help you no matter what type of output you need. You also learn how to work with Kotlin variables, Kotlin strings, Kotlin arrays, Kotlin lists, Kotlin collections, Kotlin functions. And finally, you develop a simple Kotlin class.

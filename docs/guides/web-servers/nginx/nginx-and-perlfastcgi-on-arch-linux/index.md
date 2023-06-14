@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-arch-linux
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Arch Linux.'
 keywords: ["perl fastcgi arch linux", "fastcgi", "nginx arch linux", "nginx arch", "nginx perl"]
 tags: ["web server","perl","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Arch Linux
+authors: ["Linode"]
 ---
 
 

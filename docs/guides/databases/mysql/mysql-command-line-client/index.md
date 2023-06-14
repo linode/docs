@@ -1,7 +1,5 @@
 ---
 slug: mysql-command-line-client
-author:
-  name: Linode
 description: "This guide shows you how to install and use the MySQL command-Line client to connect to a database and run SQL commands."
 keywords: ['mysql connect','remote database','mysql database']
 tags: ['mysql']
@@ -14,6 +12,7 @@ title: "Connect to a MySQL Database Using the mysql Command"
 aliases: ['/guides/connect-to-a-mysql-or-mariadb-database/']
 external_resources:
 - '[MySQL Command-Line Client documentation](https://dev.mysql.com/doc/refman/8.0/en/mysql.html)'
+authors: ["Linode"]
 ---
 
 This guide shows you how to connect to a MySQL database using [mysql](https://dev.mysql.com/doc/refman/8.0/en/mysql.html), the MySQL command-line client. This opens up a simple SQL shell environment, allowing you to perform [SQL queries and commands](/docs/guides/sql-commands/) on your database. If you require more advanced capabilities, consider using the [MySQL Shell](https://dev.mysql.com/doc/mysql-shell/8.0/en/).

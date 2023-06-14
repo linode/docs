@@ -1,9 +1,6 @@
 ---
 slug: use-mongodb-to-store-application-data-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'MongoDB is a database engine that provides access to non-relational key-value databases. This guide provides you instructions for installing it on Fedora 12.'
 keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Fedora 12
 tags: ["nosql","database","fedora"]
+authors: ["Linode"]
 ---
 
 

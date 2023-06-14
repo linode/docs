@@ -1,7 +1,5 @@
 ---
 slug: history-of-machine-learning
-author:
-  name: Pam Baker
 description: 'Want to learn about the history of machine learning? Our comprehensive guide discusses all you need to know, including who invented it and its evolution.'
 keywords: ['machine learning history','when was machine learning invented','who invented machine learning']
 tags: ['python']
@@ -11,8 +9,7 @@ modified_by:
   name: Linode
 title: "The History of Machine Learning: A Comprehensive Overview"
 title_meta: "Machine Learning and Artificial Intelligence Background"
-contributor:
-  name: Pam Baker
+authors: ["Pam Baker"]
 ---
 
 Machine learning (ML) is a subset of artificial intelligence (AI) and it is fast becoming the very backbone of most software today. It exists in several different forms from chatbots on websites and digital assistants like Siri and Alexa, to algorithms driving social media like Facebook, and a variety of office software. Machine learning is so prevalent that it is difficult to list all the places where it digitally resides and all the tasks it performs.
@@ -37,7 +34,7 @@ Machine learning was once a stepping stone on the path to AI’s development, th
 
 However, machine learning is much narrower in its focus and capabilities than general AI. It eventually became apparent that it would be faster and easier (although still not easy) to develop machine learning to more immediate and diverse payloads than to aim it solely at AI’s development.
 
-Machine learning has its own subset, called [deep learning](/docs/guides/deep-learning-frameworks-overview/#what-is-deep-learningv), which is even narrower than ML as it is far more specialized. General AI is a smaller subset of self-aware AI, a truly powerful but wholly futuristic form.
+Machine learning has its own subset, called [deep learning](/docs/guides/deep-learning-frameworks-overview/), which is even narrower than ML as it is far more specialized. General AI is a smaller subset of self-aware AI, a truly powerful but wholly futuristic form.
 
 A tidbit in interesting history in machine learning: Deep learning was invented in 1943, which was nine years before machine learning came along. There is some debate over who invented deep learning as it traces back to Walter Pitts and Warren McCulloch’s model in 1943. It didn't widely go by the name “deep learning” until Gregory Hinton rebranded neural net research by that moniker in 2006.
 
@@ -45,11 +42,11 @@ In the 1970s, machine learning branched out as a discipline on its own and it no
 
 ### Who Invented Machine Learning?
 
-The first and arguably most publicly recognizable person in the history of machine learning and AI is Alan Turing who created the Turing Test to determine if a machine can truly think.  It became a famous benchmark to measure whether a machine possesses sufficient intelligence to not only think like a human, but to fool one into believing it was human too. This definition gave rise to several ways to artificially mimic human thinking and to test the effectiveness of its thoughts and actions as well.
+The first and arguably most publicly recognizable person in the history of machine learning and AI is Alan Turing who created the Turing Test to determine if a machine can truly think. It became a famous benchmark to measure whether a machine possesses sufficient intelligence to not only think like a human, but to fool one into believing it was human too. This definition gave rise to several ways to artificially mimic human thinking and to test the effectiveness of its thoughts and actions as well.
 
 The aforementioned Arthur Samuel who gave this smart technology its name, machine learning, also developed a machine learning-based program that played checkers. As an interesting note in machine learning and artificial intelligence history, it’s thought to be the first, or at least one of the first, games a machine could play.
 
-The game was a simple way to illustrate how the machine could learn and respond to human actions and reactions. It learned the game with practice – much like humans do – using a minimax algorithm.  Even though it is an earlier development in machine learning algorithm history, this type of algorithm is still used in game theory and automated decision-making to select the optimal next move for a player, or user.
+The game was a simple way to illustrate how the machine could learn and respond to human actions and reactions. It learned the game with practice – much like humans do – using a minimax algorithm. Even though it is an earlier development in machine learning algorithm history, this type of algorithm is still used in game theory and automated decision-making to select the optimal next move for a player, or user.
 
 But it was Frank Rosenblatt who is credited with the first design of a neural network for a computer. It was an early attempt at mimicking human thought processes. While a brilliant advancement, it took until 1967 for someone to write an algorithm that could recognize patterns. Machine learning at its core is a pattern detector. It can rapidly find patterns in huge amounts of data, learn from those patterns, and then determine an outcome based on the patterns it finds.
 
@@ -72,7 +69,7 @@ In 1927, AI made its debut in the movies. But Alan Turing didn't conceive his �
 
 And so the history of machine learning continues, built piece by piece over centuries.
 
-In recent times, machine learning is applied to diverse types of data. For example, today it is sometimes paired with other technologies such as computer vision to recognize patterns in images ranging from medical x-rays to facial recognition in videos.  Algorithms now understand natural language queries as well.
+In recent times, machine learning is applied to diverse types of data. For example, today it is sometimes paired with other technologies such as computer vision to recognize patterns in images ranging from medical x-rays to facial recognition in videos. Algorithms now understand natural language queries as well.
 
 It is far more practical to pick up machine learning’s history on something more directly related and found somewhere further along the timeline between the first forms of data and today’s many applications.
 

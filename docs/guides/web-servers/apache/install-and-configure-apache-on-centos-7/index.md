@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-apache-on-centos-7
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
 keywords: ["CentOS", "CentOS 7", "apache", "yum install httpd"]
 tags: ["centos","web server","apache"]
@@ -21,6 +18,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: CentOS 7
+authors: ["Linode"]
 ---
 
 ![How to Install and Configure Apache Web Server on CentOS 7](How_to_Install_Apache_on_CentOS_7_smg.jpg)

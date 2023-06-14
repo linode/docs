@@ -1,9 +1,6 @@
 ---
 slug: manage-content-with-markdown-and-mango-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Mango publishes markdown documents from plain text files in a dynamic website.'
 keywords: ["markdown", "content management systems", "cms", "plain text"]
 tags: ["cms","debian"]
@@ -19,6 +16,7 @@ relations:
         key: manage-content-with-markdown-and-mango
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
@@ -175,7 +173,7 @@ Welcome to Mango. If this page appears in full HTML glory (with **bold** and _em
 
 ## More Details
 
-Learn more about [mango](<http://mango.io>) and [Markdown][]!
+Learn more about [Markdown][]!
 
 [Markdown]:<http://daringfireball.net/projects/markdown/>
 ```
@@ -186,8 +184,6 @@ The first three lines of this file define header values that are processed by th
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Mango Home Page](http://mango.io/)
-- [Mango Documentation](http://mango.io/docs/)
 
 
 

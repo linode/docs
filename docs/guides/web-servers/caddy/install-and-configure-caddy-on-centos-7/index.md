@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-caddy-on-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install and configure Caddy and run it as a systemd service.'
 keywords: ["caddy", "web server"]
 tags: ["centos","web server"]
@@ -12,9 +9,6 @@ modified: 2018-02-02
 modified_by:
   name: Linode
 title: 'Install and Configure Caddy on CentOS 7'
-contributor:
-  name: Konstantin Kuchinin
-  link: https://github.com/coocheenin
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 relations:
@@ -23,6 +17,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/web-servers/caddy/install-and-configure-caddy-on-centos-7/']
+authors: ["Konstantin Kuchinin"]
 ---
 
 

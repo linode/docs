@@ -1,8 +1,5 @@
 ---
 slug: deploy-7-days-to-die-linux-game-server
-author:
-  name: Sandro Villinger
-  email: webmaster@windows-tweaks.info
 description: "This guide shows you how to easily install the popular online game 7 Days to Die using LinuxGSM."
 keywords: ['7 days to die Linux Server']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,7 @@ modified_by:
   name: Linode
 title: "Deploying a 7 Days to Die Server on Linux"
 title_meta: "How to Deploy a 7 Days to Die Server on Linux"
-contributor:
-  name: Sandro Villinger
+authors: ["Sandro Villinger"]
 ---
 
 Even eight years after its release, the Zombie Horde Survival game [7 Days to Die](https://7daystodie.com/) (7DTD) is still going strong. Its community is active and the zombie fun hasn't stopped. The game is even better when you and your friends play on your own server, using your own rules. Plus, when you [host a game server yourself](/docs/guides/get-started-with-linux-game-server-hosting), you don't have to worry about lag time that can interrupt your gameplay. This guide shows you how to set up your own 7DTD server, using LinuxGSM.

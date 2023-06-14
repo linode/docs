@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 10.04 operating system.'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
@@ -19,6 +16,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

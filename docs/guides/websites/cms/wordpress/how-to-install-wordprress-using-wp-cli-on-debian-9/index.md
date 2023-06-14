@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-wordprress-using-wp-cli-on-debian-9
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on Debian 9'
 keywords: ["install WP-CLI", "debian", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
 tags: ["debian","wordpress","cms","lamp"]
@@ -13,8 +10,6 @@ modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on Debian 9'
 title_meta: 'How to Install WordPress Using WP-CLI on Debian 9'
-contributor:
-    name: Linode
 external_resources:
 - '[WP-CLI Handbook](https://make.wordpress.org/cli/handbook/)'
 - '[WP-CLI Commands](https://developer.wordpress.org/cli/commands/)'
@@ -25,6 +20,7 @@ relations:
         keywords:
            - distribution: Debian 9
 aliases: ['/websites/cms/wp-cli/how-to-install-wordprress-using-wp-cli-on-debian-9/','/websites/cms/wordpress/how-to-install-wordprress-using-wp-cli-on-debian-9/']
+authors: ["Linode"]
 ---
 
 WordPress is well-known for its rich content management feature set, ease of use, and quick installation time. The [WordPress command line interface (WP-CLI)](https://wp-cli.org/) provides useful commands and utilities to install, configure, and manage a WordPress site. This guide walks you through some common tasks you can complete using the WP-CLI.
@@ -51,7 +47,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  If you'd like to use your own [Domain Name](/docs/guides/dns-overview/) to host your WordPress installation, ensure that your domain name is [pre-configured](/docs/products/networking/dns-manager/get-started/) to point to your Linode's IP address.
 
-1.  Follow the [Install a LAMP Stack on Debian 10 (Buster)](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. Skip the steps in the [Configure Name-Based Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts), the [Set Up a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#set-up-mariadb-database), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#optional-test-and-troubleshoot-the-lmap-stack) section. Those steps will be covered later on in this guide.
+1.  Follow the [Install a LAMP Stack on Debian 10 (Buster)](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide. Skip the steps in the [Configure Name-Based Virtual Hosts](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#configure-name-based-virtual-hosts), the [Set Up a MariaDB Database](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#mariadb), and the [Optional: Test and Troubleshoot the LAMP Stack](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/#optional-test-and-troubleshoot-the-lamp-stack) section. Those steps will be covered later on in this guide.
 
     When following the steps to [install PHP](#install-php) in the [Install a LAMP Stack on Debian 10 (Buster)](/docs/guides/how-to-install-a-lamp-stack-on-debian-10/) guide, you will need to issue the command included below to install the required PHP packages, as the command in the linked guide does not currently work with Debian 9.
 

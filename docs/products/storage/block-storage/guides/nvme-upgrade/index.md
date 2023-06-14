@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
 modified: 2023-02-10
+authors: ["Linode"]
 ---
 
 ## What is NVMe-backed Block Storage?

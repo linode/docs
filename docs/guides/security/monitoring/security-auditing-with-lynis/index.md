@@ -1,7 +1,5 @@
 ---
 slug: security-auditing-with-lynis
-author:
-  name: Hackersploit
 description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
@@ -13,6 +11,7 @@ modified_by:
 title: 'Security Auditing with Lynis'
 title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png
+authors: ["Hackersploit"]
 ---
 
 ## Before you Begin

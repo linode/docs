@@ -1,8 +1,5 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["ubuntu","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [basic email gateway with Postfix](/docs/guides/basic-postfix-email-gateway-on-ubuntu-10-10-maverick/) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [email server with Postfix, MySQL and Dovecot](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-10-10-maverick/).

@@ -1,7 +1,5 @@
 ---
 slug: using-mcfly-to-search-bash-or-zsh-history
-author:
-  name: Jeff Novotny
 description: 'McFly is an alternative to ctrl-r bash search that uses a context-aware neural network to surface your most important search history. This guide shows you how to install and use the McFly Linux tool.'
 keywords: ['mcfly command','bash search history','terminal history','shell history']
 tags: ['linux']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Install and Use McFly to Search Bash or ZSH History"
 title_meta: "Installing and Using McFly to Search Bash or ZSH History"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[McFly GitHub site](https://github.com/cantino/mcfly)'
 - '[Homebrew](https://brew.sh/)'
+authors: ["Jeff Novotny"]
 ---
 
 Many Linux users run certain commands regularly. Newcomers might resort to retyping the command or using the **up** and **down** keys to scroll through previous commands. More experienced users typically search their terminal history using the built-in `Control-r` command. The free and open-source [*McFly*](https://github.com/cantino/mcfly) application is designed as an alternative to these traditional methods. McFly is a bash search history utility that uses AI techniques to display the most relevant commands. This guide provides a brief introduction to the McFly application and its methodology. It also explains how to install McFly and how to use the `mcfly` command to search through the terminal history.

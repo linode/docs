@@ -1,8 +1,5 @@
 ---
 slug: manipulate-text-from-the-command-line-with-sed
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide contains practical examples for using the sed command to transform text files and streams of text from the command line without using a text editor.'
 keywords: ["sed", "find and replace", "regular expression", "unix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title: Manipulate Text from the Command Line with sed
 external_resources:
  - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 The traditional Unix utility `sed` makes it possible to manipulate strings and streams of text from the command line without using a text editing application. `sed` is useful in a number of different contexts, including finding and replacing strings of text in a large number of files, manipulating text for [Stack Scripts](http://linode.com/stackscripts/) and other kinds of scripts, as well as a component in basic shell scripting.

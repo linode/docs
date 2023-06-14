@@ -1,9 +1,6 @@
 ---
 slug: run-php-applications-under-cgi-with-apache-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Methods for enabling dynamic content run as individual users with PHP on Ubuntu 9.10 (Karmic).'
 keywords: ["php cgi", "php apache", "php scripts", "dynamic apache", "web applications"]
 tags: ["web server","apache","ubuntu","php"]
@@ -19,6 +16,7 @@ relations:
         key: php-cgi-apache
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
@@ -66,7 +64,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure-apache-for-named-based-virtual-hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 

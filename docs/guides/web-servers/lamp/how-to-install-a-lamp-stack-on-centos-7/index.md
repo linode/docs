@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-lamp-stack-on-centos-7
-author:
-    name: Joel Kruger
-    email: docs@linode.com
 description: "Install a LAMP stack on a CentOS 7 Linode. A LAMP stack includes Linux, Apache, MariaDB, and PHP. ✓ Read now!"
 keywords: ["LAMP", "CentOS", "CentOS 7", "apache", "mysql", "php", "centos lamp"]
 tags: ["centos","web server","php","mysql","apache","lamp"]
@@ -25,6 +22,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: CentOS 7
+authors: ["Joel Kruger"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP (LAMP). This guide shows you how to install a LAMP stack on a CentOS 7 Linode.

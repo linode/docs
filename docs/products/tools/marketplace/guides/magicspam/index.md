@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows you how to install and configure MagicSpam, a powerful anti-spam and email security solution using the Linode One-Click App Marketplace."
 keywords: ['cPanel','Plesk','Email','Spam']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 modified: 2022-03-08
 modified_by:
@@ -14,6 +10,7 @@ title: "Deploy MagicSpam through the Linode Marketplace"
 aliases: ['/guides/deploying-magicspam-marketplace-app/','/guides/magicspam-marketplace-app/']
 external_resources:
 - '[MagicSpam](https://magicspam.com/)'
+authors: ["Linode"]
 ---
 
 [MagicSpam](https://magicspam.com/) is a powerful anti-spam and email security solution for Linux systems. It integrates directly with popular control panels, such as cPanel and Plesk. It's primary function is to stop inbound spam from entering your server right at the SMTP layer, which lowers bandwidth and overhead. It also secure mailboxes on your server from being compromised and used to send outbound spam.

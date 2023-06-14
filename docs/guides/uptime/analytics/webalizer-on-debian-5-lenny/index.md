@@ -1,9 +1,6 @@
 ---
 slug: webalizer-on-debian-5-lenny
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide shows you how you can get more detailed website statistics by installing the open-source Webalizer application on Debian 5 "Lenny".'
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
 tags: ["debian","statistics","apache","analytics"]
@@ -19,6 +16,7 @@ relations:
         key: using-webalizer-analytics
         keywords:
             - distribution: Debian 5
+authors: ["Brett Kaplan"]
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.

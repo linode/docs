@@ -1,8 +1,5 @@
 ---
 slug: what-is-code-coverage-analysis
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
 description: 'This guide provides you with an overview of code coverage analysis, a method of exposing untested code which provides a metric that your QA team can use to improve.'
 keywords: ['code coverage analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +9,7 @@ modified_by:
   name: Linode
 title: "What is Code Coverage Analysis?"
 tags: ["automation"]
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 Code coverage is typically part of the [unit testing](/docs/guides/what-is-unit-testing/) phase of the software development lifecycle, although it is often used in other testing phases as well. A code coverage tool watches as the suite of unit tests run; then it reports on which functions, branches, loops, and lines of code have and have not been tested. At the highest level, the reports show the percentage coverage for each category; drilling down often shows untested code.
 

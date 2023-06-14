@@ -1,8 +1,5 @@
 ---
 slug: manage-and-automate-systems-configuration-with-puppet
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use Puppet, an open-source "configuration change management" tool that lets users automate configurations on their infrastructure.'
 keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 tags: ["automation"]
@@ -21,6 +18,7 @@ external_resources:
  - '[Puppet Dashboard Documentation](http://docs.puppetlabs.com/guides/installing_dashboard.html)'
  - '[Puppet Recipe Directory](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Recipes)'
  - '[Puppet Modules](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules)'
+authors: ["Linode"]
 ---
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.

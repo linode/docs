@@ -1,21 +1,18 @@
 ---
 slug: posthog-on-linode-kubernetes-engine-install
-author:
-  name: Jeff Novotny
 description: 'PostHog is an all-in-one analytics tool that rivals Google Analytics. Learn how to self-host PostHog on LKE to measure and track usage and funnel statistics and insights.'
 keywords: ['PostHog','Product analytics','Funnel analysis','Install PostHog LKE','Install PostHog Linode']
 tags: ['kubernetes']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-18
+modified: 2023-03-30
 modified_by:
   name: Linode
 title: "Track Funnel and Product Analytics With PostHog on LKE"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[PostHog site](https://posthog.com/)'
 - '[PostHog user guide](https://posthog.com/docs/user-guides)'
+authors: ["Jeff Novotny"]
 ---
 
 [*PostHog*](https://posthog.com/) is an open-source product analytics tool that can replace Google Analytics. PostHog can be self-hosted on the [Linode Kubernetes Engine](/docs/products/compute/kubernetes/) (LKE) and installed using `kubectl` and [*Helm 3*](https://helm.sh/), a client that acts as a package manager for Kubernetes. PostHog offers a wide variety of features including funnel analysis, product use trends, and session recordings. This guide introduces PostHog and explains how to install and configure it on the LKE.
@@ -59,9 +56,11 @@ Even though Google Analytics is the industry standard, there are many advantages
 
 1. Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+    ```command
+    sudo apt-get update && sudo apt-get upgrade
+    ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -83,32 +82,40 @@ To install Helm, follow the steps below:
 
 1. Download the Helm installation script using `curl`.
 
-        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+    ```command
+    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+    ```
 
 1. Change the permissions on the script.
 
-        chmod 700 get_helm.sh
+    ```command
+    chmod 700 get_helm.sh
+    ```
 
 1. Run the installation script. To install Helm into `/usr/local/bin`, provide the `sudo` password.
 
-        ./get_helm.sh
+    ```command
+    ./get_helm.sh
+    ```
 
-    {{< output >}}
-Downloading https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
-Verifying checksum... Done.
-Preparing to install helm into /usr/local/bin
-helm installed into /usr/local/bin/helm
-    {{< /output >}}
+    ```output
+    Downloading https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
+    Verifying checksum... Done.
+    Preparing to install helm into /usr/local/bin
+    helm installed into /usr/local/bin/helm
+    ```
 
 1. View the release information to confirm Helm is installed correctly.
 
-        helm version
+    ```command
+    helm version
+    ```
 
-    {{< output >}}
-version.BuildInfo{Version:"v3.7.1", GitCommit:"1d11fcb5d3f3bf00dbe6fe31b8412839a96b3dc4", GitTreeState:"clean", GoVersion:"go1.16.9"}
-    {{< /output >}}
+    ```output
+    version.BuildInfo{Version:"v3.7.1", GitCommit:"1d11fcb5d3f3bf00dbe6fe31b8412839a96b3dc4", GitTreeState:"clean", GoVersion:"go1.16.9"}
+    ```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 Do not configure any web servers or load balancers on the Kubernetes cluster before installing PostHog. They might conflict with the new components and cause the installation to fail.
 {{< /note >}}
 
@@ -130,105 +137,117 @@ To install PostHog, follow these steps.
 
 1. Add the following information to the file and save it. Replace `example.com` with the actual domain name.
 
-    {{< file "values.yaml" yaml >}}
-cloud: linode
-ingress:
-  hostname: example.com
-  nginx:
-    enabled: true
-cert-manager:
-  enabled: true
-kafka:
-  persistence:
-    size: 20Gi
-    {{< /file >}}
+    ```file {title="values.yaml" lang=yaml}
+    cloud: linode
+    ingress:
+      hostname: example.com
+      nginx:
+        enabled: true
+    cert-manager:
+      enabled: true
+    kafka:
+      persistence:
+        size: 20Gi
+    ```
 
 1. Add the PostHog repository to Helm.
 
-        helm repo add posthog https://posthog.github.io/charts-clickhouse/
+    ```command
+    helm repo add posthog https://posthog.github.io/charts-clickhouse/
+    ```
 
-    {{< output >}}
-"posthog" has been added to your repositories
-    {{< /output >}}
+    ```output
+    "posthog" has been added to your repositories
+    ```
 
 1. Update the repositories.
 
-        helm repo update
+    ```command
+    helm repo update
+    ```
 
-    {{< output >}}
-Hang tight while we grab the latest from your chart repositories...
-...Successfully got an update from the "posthog" chart repository
-Update Complete. ⎈Happy Helming!⎈
-    {{< /output >}}
+    ```output
+    Hang tight while we grab the latest from your chart repositories...
+    ...Successfully got an update from the "posthog" chart repository
+    Update Complete. ⎈Happy Helming!⎈
+    ```
 
 1. Use the `helm install` command to install and enable PostHog on the cluster.
 
-        helm install -f values.yaml --timeout 20m --create-namespace --namespace posthog posthog posthog/posthog
+    ```command
+    helm install -f values.yaml --timeout 20m --create-namespace --namespace posthog posthog posthog/posthog
+    ```
 
-    {{< output >}}
-NAME: posthog
-LAST DEPLOYED: Mon Nov  1 11:10:55 2021
-NAMESPACE: posthog
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-NOTES:
-** Please be patient while the chart is being deployed **
+    ```output
+    NAME: posthog
+    LAST DEPLOYED: Mon Nov  1 11:10:55 2021
+    NAMESPACE: posthog
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    NOTES:
+    ** Please be patient while the chart is being deployed **
 
-To access your PostHog site from outside the cluster follow the steps below:
+    To access your PostHog site from outside the cluster follow the steps below:
 
-1. Your application will be hosted at https://example.com
+    1. Your application will be hosted at https://example.com
+    ```
 
-    {{< /output >}}
 1. It takes Helm and Kubernetes a few minutes to configure all of the PostHog components. The application is not ready until all components are configured.
 
 1. Verify the Kubernetes pods are all active. When all pods display a `Running` status, the installation is ready and complete.
 
-        kubectl get pods -n posthog
+    ```command
+    kubectl get pods -n posthog
+    ```
 
-    {{< output >}}
-NAME                                                READY   STATUS    RESTARTS   AGE
-chi-posthog-posthog-0-0-0                           1/1     Running   0          163m
-clickhouse-operator-6b54d6b5fb-2sqfp                2/2     Running   0          164m
-posthog-beat-7cfb9bbb59-zn8d7                       1/1     Running   0          73s
-posthog-cert-manager-69f4ff7b57-ggbqf               1/1     Running   0          164m
-posthog-cert-manager-cainjector-6d95d46d98-vhtdf    1/1     Running   2          164m
-posthog-cert-manager-webhook-6469c785fc-2s66n       1/1     Running   0          164m
-posthog-events-85b7c599c4-gzdtx                     0/1     Running   0          55s
-posthog-ingress-nginx-controller-648b4f45ff-949zs   1/1     Running   0          164m
-posthog-pgbouncer-bd7c9d4dd-nmvbx                   1/1     Running   0          6m14s
-posthog-plugins-7b87c94866-cw9lh                    1/1     Running   0          54s
-posthog-posthog-kafka-0                             1/1     Running   1          164m
-posthog-posthog-postgresql-0                        1/1     Running   0          164m
-posthog-posthog-redis-master-0                      1/1     Running   0          164m
-posthog-posthog-zookeeper-0                         1/1     Running   0          164m
-posthog-web-5f7f69cd98-4h4dn                        0/1     Running   0          52s
-posthog-worker-67b8f67b89-xfz8s                     1/1     Running   0          51s
-    {{< /output >}}
+    ```output
+    NAME                                                READY   STATUS    RESTARTS   AGE
+    chi-posthog-posthog-0-0-0                           1/1     Running   0          163m
+    clickhouse-operator-6b54d6b5fb-2sqfp                2/2     Running   0          164m
+    posthog-beat-7cfb9bbb59-zn8d7                       1/1     Running   0          73s
+    posthog-cert-manager-69f4ff7b57-ggbqf               1/1     Running   0          164m
+    posthog-cert-manager-cainjector-6d95d46d98-vhtdf    1/1     Running   2          164m
+    posthog-cert-manager-webhook-6469c785fc-2s66n       1/1     Running   0          164m
+    posthog-events-85b7c599c4-gzdtx                     0/1     Running   0          55s
+    posthog-ingress-nginx-controller-648b4f45ff-949zs   1/1     Running   0          164m
+    posthog-pgbouncer-bd7c9d4dd-nmvbx                   1/1     Running   0          6m14s
+    posthog-plugins-7b87c94866-cw9lh                    1/1     Running   0          54s
+    posthog-posthog-kafka-0                             1/1     Running   1          164m
+    posthog-posthog-postgresql-0                        1/1     Running   0          164m
+    posthog-posthog-redis-master-0                      1/1     Running   0          164m
+    posthog-posthog-zookeeper-0                         1/1     Running   0          164m
+    posthog-web-5f7f69cd98-4h4dn                        0/1     Running   0          52s
+    posthog-worker-67b8f67b89-xfz8s                     1/1     Running   0          51s
+    ```
 
 1. As an additional check, use the `helm status` command to verify PostHog is `deployed`.
 
-        helm status posthog -n posthog
+    ```command
+    helm status posthog -n posthog
+    ```
 
-    {{< output >}}
-NAME: posthog
-LAST DEPLOYED: Mon Nov  1 11:10:55 2021
-NAMESPACE: posthog
-STATUS: deployed
-REVISION: 1
-TEST SUITE: None
-    {{< /output >}}
+    ```output
+    NAME: posthog
+    LAST DEPLOYED: Mon Nov  1 11:10:55 2021
+    NAMESPACE: posthog
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
 
-### Obtain the IP Address of the Node Balancer
+### Obtain the IP Address of the NodeBalancer
 
-The IP address of the node balancer is required to set the DNS records correctly. This is the address PostHog uses to send and receive network traffic. To determine the address of the node balancer, use the command below. The address is shown in the `EXTERNAL-IP` field.
+The IP address of the NodeBalancer is required to set the DNS records correctly. This is the address PostHog uses to send and receive network traffic. To determine the address of the NodeBalancer, use the command below. The address is shown in the `EXTERNAL-IP` field.
 
-    kubectl get svc --namespace posthog posthog-ingress-nginx-controller
+```command
+kubectl get svc --namespace posthog posthog-ingress-nginx-controller
+```
 
-{{< output >}}
+```output
 NAME                               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
 posthog-ingress-nginx-controller   LoadBalancer   ww.xx.yy.zz    ww.xx.yy.zz    80:32387/TCP,443:31676/TCP   6m43s
-{{< /output >}}
+```
 
 ### Set Up DNS
 
@@ -242,7 +261,7 @@ The IP address from the previous section is used to configure the domain's DNS r
 
 A new DNS entry usually takes some time to propagate to the various DNS servers. While this can take up to two days, it usually only takes between three to six hours. You cannot access PostHog until the record has finished propagating.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The IP address of the load balancer cannot be used to access PostHog. The cluster is configured to restrict access to PostHog to the domain name.
 {{< /note >}}
 
@@ -270,51 +289,56 @@ To disable and re-enable HTTPS, follow the steps below:
 
 1. Back up the `values.yaml` file to `backup_values.yaml`. Edit the `values.yaml` file and revise the configuration to allow HTTP access as illustrated below. Save the file when all changes are complete.
 
-    {{< file "values.yaml" yaml >}}
-cloud: linode
-ingress:
-  hostname: example.com
-  nginx:
-    enabled: true
-    redirectToTLS: false
-  letsencrypt: false
-web:
-  secureCookies: false
-kafka:
-  persistence:
-    size: 20Gi
-    {{< /file >}}
+    ```file {title="values.yaml" lang=yaml}
+    cloud: linode
+    ingress:
+      hostname: example.com
+      nginx:
+        enabled: true
+        redirectToTLS: false
+      letsencrypt: false
+    web:
+      secureCookies: false
+    kafka:
+      persistence:
+        size: 20Gi
+    ```
 
 1. Upgrade the PostHog installation using the `helm upgrade` command.
 
-        helm upgrade -f values.yaml --timeout 20m --create-namespace --namespace posthog posthog posthog/posthog
+    ```command
+    helm upgrade -f values.yaml --timeout 20m --create-namespace --namespace posthog posthog posthog/posthog
+    ```
 
-    {{< output >}}
-Release "posthog" has been upgraded. Happy Helming!
-NAME: posthog
-LAST DEPLOYED: Mon Nov  1 13:54:06 2021
-NAMESPACE: posthog
-STATUS: deployed
-REVISION: 3
-TEST SUITE: None
-NOTES:
-** Please be patient while the chart is being deployed **
+    ```output
+    Release "posthog" has been upgraded. Happy Helming!
+    NAME: posthog
+    LAST DEPLOYED: Mon Nov  1 13:54:06 2021
+    NAMESPACE: posthog
+    STATUS: deployed
+    REVISION: 3
+    TEST SUITE: None
+    NOTES:
+    ** Please be patient while the chart is being deployed **
 
-To access your PostHog site from outside the cluster follow the steps below:
+    To access your PostHog site from outside the cluster follow the steps below:
 
-1. Your application will be hosted at https://example.com.
-
-    {{< /output >}}
+    1. Your application will be hosted at https://example.com.
+    ```
 
 1. Attempt to access PostHog again using the domain name. If the HTTPS configuration was the problem, the PostHog "preflight" page should now appear. The page displays a warning that PostHog is not correctly secured.
 
 1. Re-enable HTTPS to restore the encryption settings. Copy the backup file back to `values.yaml`.
 
-        cp backup_values.yaml values.yaml
+    ```command
+    cp backup_values.yaml values.yaml
+    ```
 
 1. Upgrade PostHog again to reconfigure HTTPS.
 
-        helm upgrade -f values.yaml --timeout 20m --create-namespace --namespace posthog posthog posthog/posthog
+    ```command
+    helm upgrade -f values.yaml --timeout 20m --create-namespace --namespace posthog posthog posthog/posthog
+    ```
 
 1. Try accessing the PostHog landing page again using the domain name. The page should now appear without any warnings.
 

@@ -1,8 +1,5 @@
 ---
 slug: manually-upgrading-to-latest-distribution-version
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Outlines options when upgrading a Linux distribution to the next latest version and provides instructions for performing a clean installation."
 keywords: ["upgrading", "ubuntu", "centos","debian"]
 tags: ["security","ubuntu"]
@@ -14,6 +11,7 @@ published: 2021-09-03
 title: "Upgrading to the Latest Distribution (Clean Install)"
 title_meta: "How to Upgrade a Linux System to the Latest Distribution"
 aliases: ['/security/upgrading/manually-upgrading-to-latest-distribution-version/']
+authors: ["Linode"]
 ---
 
 Software updates play a pivotally role in maintaining a Linux system. On a daily or weekly basis, this may involve performing a quick command to upgrade your existing packages (and their dependencies) as well as obtain any minor distribution releases (such as upgrading from Ubuntu 18.04.4 to 18.04.5). Every few years, however, Linux distributions reach their EOL (end of life) and the developers stop releasing regular security patches and software updates. When this happens, its highly recommended to upgrade to the newest major release for your distribution.

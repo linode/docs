@@ -1,8 +1,5 @@
 ---
 slug: terraform-vs-pulumi
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
 og_description: 'TThis guide compares Terraform and Pulumi, with an explanation of how each tool works and what purpose it serves.'
 keywords: ['IaC','Terraform','Pulumi','comparison', 'service orchestration']
@@ -13,12 +10,10 @@ modified_by:
   name: Linode
 title: "Pulumi vs Terraform"
 title_meta: "Comparing Pulumi and Terraform"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Terraform](https://www.terraform.io/)'
 - '[Pulumi](https://www.pulumi.com/)'
+authors: ["Jeff Novotny"]
 ---
 
 *Infrastructure as Code* (IaC) is a modern methodology that provisions and deploys Cloud resources using automation rather than through manual or ad-hoc configuration. Most IaC tools automate infrastructure configuration and management through the use of scripts or configuration files. Numerous solutions have been developed to implement Infrastructure as Code, each with their own strengths and weaknesses. Two IaC tools often used for service orchestration are [*Terraform*](https://www.terraform.io/) from HashiCorp and [*Pulumi*](https://www.pulumi.com/) from a venture-backed start up. This guide analyzes Terraform and Pulumi, explains how both products work, and describes scenarios where each tool might be useful.

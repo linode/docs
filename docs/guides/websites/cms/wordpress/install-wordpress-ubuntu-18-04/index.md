@@ -1,8 +1,5 @@
 ---
 slug: install-wordpress-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on a Linode.'
 keywords: ["WordPress", "wordpress on ubuntu", "WordPress on Linode", "how to configure WordPress"]
 tags: ["ubuntu","lamp","wordpress","cms","lemp","mysql","php", "permalink"]
@@ -22,6 +19,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/wordpress/install-wordpress-ubuntu-18-04/','/websites/cms/install-wordpress-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 ## What is WordPress?

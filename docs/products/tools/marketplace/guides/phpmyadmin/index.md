@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy phpMyAdmin on Linode using Marketplace Apps to administer your MySQL database with a convenient and powerful GUI web application."
 keywords: ['php', 'phpmyadmin', 'mysql', 'mariadb', 'database', 'GUI']
 tags: ["debian","php","mysql","database","marketplace","ssl", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
 modified_by:
@@ -15,6 +11,7 @@ external_resources:
 - '[phpMyAdmin Documentation](https://docs.phpmyadmin.net/en/latest/)'
 - '[MariaDB Documentation](https://mariadb.org/documentation/)'
 aliases: ['/platform/marketplace/deploy-phpmyadmin-with-marketplace-apps/', '/platform/one-click/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-one-click-apps/', '/guides/deploy-phpmyadmin-with-marketplace-apps/','/guides/phpmyadmin-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [phpMyAdmin](https://www.phpmyadmin.net/) is an open source web application that provides a GUI for MySQL database administration, giving you a convenient and powerful alternative to using the MySQL command line client. The phpMyAdmin Marketplace App deploys a Linode with phpMyAdmin installed and ready for you to begin managing a MySQL database.

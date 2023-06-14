@@ -1,21 +1,16 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to use the Drupal Marketplace App to easily install the popular open source content management system."
 keywords: ['drupal','marketplace', 'cms']
 tags: ["cloud-manager","linode platform","drupal","cms","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-25
 modified: 2022-07-11
 modified_by:
   name: Linode
 title: "Deploy Drupal through the Linode Marketplace"
 aliases: ['/platform/marketplace/deploying-drupal-with-marketplace-apps/','/platform/marketplace/how-to-deploy-drupal-with-marketplace-apps/', '/platform/one-click/deploying-drupal-with-one-click-apps/','/guides/deploying-drupal-with-one-click-apps/','/platform/one-click/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-one-click-apps/','/guides/how-to-deploy-drupal-with-marketplace-apps/','/guides/drupal-marketplace-app/']
-contributor:
-  name: Linode
 external_resources:
  - '[Drupal 9 Official Documentation](https://www.drupal.org/docs/understanding-drupal)'
+authors: ["Linode"]
 ---
 
 [Drupal](https://www.drupal.org/) is a content management system (CMS) designed for building custom websites for personal and business use. Built for high performance and scalability, Drupal provides the necessary tools to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal also has support for personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.

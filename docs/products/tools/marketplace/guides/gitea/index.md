@@ -1,21 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This is a step-by-step guide on how to deploy the Gitea application, a community managed, self-hosted Git service, by using the Linode One-Click App Marketplace."
 keywords: ['Gitea','version control','git']
 tags: ["linode platform","version control system","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-01-04
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Gitea through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Gitea Documentation](https://docs.gitea.io/)'
 aliases: ['/guides/deploy-gitea-with-one-click-apps/', '/guides/deploy-gitea-with-marketplace-apps/', '/guides/deploy-Gitea-with-marketplace-apps/','/guides/gitea-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Gitea](https://gitea.io/) is a community managed, painless, self-hosted Git service. Gitea is a complete solution for all aspects of your software development. At its core, Gitea serves as your centralized remote Git repository. Gitea also features built-in tools that represent every task in your development workflow, from planning to testing to releasing.

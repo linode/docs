@@ -1,9 +1,6 @@
 ---
 slug: install-openfire-on-ubuntu-12-04-for-instant-messaging
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide shows how to install the popular collaborative instant messaging app based on the XMPP protocol - Openfire - on a Linode running Ubuntu 12.04.'
 keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire"]
 tags: ["ubuntu"]
@@ -23,6 +20,7 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open-source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nodejs-and-nginx-on-debian
-author:
-    name: Joe D.
-    email: docs@linode.com
 description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a Debian 8 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", " debian", " front-end requests", " back-end requests"]
 tags: ["debian", "nginx", "web server", "proxy"]
@@ -29,6 +26,7 @@ relations:
         key: install-nodejs-nginx
         keywords:
             - distribution: Debian 8
+authors: ["Joe D."]
 ---
 
 ![Install Node.js and NGINX on Debian](How_to_Install_Nodejs_and_Nginx_on_Debian_smg.jpg)

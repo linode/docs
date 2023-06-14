@@ -1,9 +1,6 @@
 ---
 slug: installing-prosody-xmpp-server-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 9.04 (Jaunty).'
 keywords: ["prosody", "prosody ubuntu jaunty", "prosody.im", "xmpp", "real time messaging", "lua"]
 tags: ["ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-prosody
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

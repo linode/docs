@@ -1,24 +1,19 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Use Prometheus to collect metrics and receive alerts with this open-source monitoring tool. Easily deploy Prometheus using Marketplace Apps."
 keywords: ['prometheus','monitoring','time series','metrics']
 tags: ["linode platform","monitoring","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-12
 modified: 2022-03-08
 image: Prometheus_oneclickapps.png
 modified_by:
   name: Linode
 title: "Deploy Prometheus through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Getting Started with Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)'
 - '[Prometheus Configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)'
 - '[Grafana Support for Prometheus](https://prometheus.io/docs/visualization/grafana/)'
 aliases: ['/platform/marketplace/how-to-deploy-prometheus-with-marketplace-apps/', '/platform/one-click/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-one-click-apps/','/guides/how-to-deploy-prometheus-with-marketplace-apps/','/guides/prometheus-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Use [Prometheus](https://prometheus.io/docs/introduction/overview/) to collect metrics and receive alerts with this open-source monitoring tool. Prometheus monitors targets that you define at given intervals by scraping their metrics HTTP endpoints. This tool is particularly well-suited for numeric time series data, which makes it ideal for machine-centric monitoring as well as monitoring of highly dynamic service-oriented architectures.

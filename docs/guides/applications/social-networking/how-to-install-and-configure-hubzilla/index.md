@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-hubzilla
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides an introduction to the federated and decentralized Hubzilla application and explains how to install and configure it.'
 og_description: 'This guide provides an introduction to the distributed and decentralized Hubzilla application and explains how to install and configure it.'
 keywords: ['Hubzilla','install Hubzilla','configure Hubzilla','Hubzilla federated']
@@ -12,13 +9,12 @@ modified_by:
   name: Linode
 title: "Install and Configure Hubzilla"
 title_meta: "How to Install and Configure Hubzilla"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Hubzilla Project page](https://hubzilla.org//page/hubzilla/hubzilla-project)'
 - '[Hubzilla documentation](https://hubzilla.org/help/en/about/about)'
 - '[Hubzilla code base](https://framagit.org/hubzilla/core)'
 - '[Hubzilla user guide](https://hubzilla.org/help/en/member/member_guide#Overview)'
+authors: ["Jeff Novotny"]
 ---
 
 Recent developments have led to a renewed interest in federated web applications. Much of the interest centers around the Twitter alternative *Mastodon*. However, there are many other federated applications worthy of attention. For example, the federated [*Hubzilla*](https://hubzilla.org//page/hubzilla/hubzilla-project) application allows users to create interconnected websites and channels. This guide provides an introduction to the Hubzilla application and explains how to install and configure it.
@@ -92,29 +88,29 @@ Hubzilla relies upon a LAMP stack consisting of the Apache web server, the Maria
 
 1.  Ensure the Ubuntu packages are up to date. Reboot the system if advised to do so.
 
-    ```code
+    ```command
     sudo apt-get update -y && sudo apt-get upgrade -y
     ```
 
 2.  Install the Apache web server and the MariaDB RDBMS.
 
-    ```code
+    ```command
     sudo apt install apache2 mariadb-server -y
     ```
 
 3.  Install PHP, including all required PHP libraries, along with some additional utilities.
 
     {{< note >}}
-Hubzilla requires PHP release 8.0 or higher. The following command installs the current PHP release 8.1. To confirm the release of PHP in use, run the command `php -v`.
+    Hubzilla requires PHP release 8.0 or higher. The following command installs the current PHP release 8.1. To confirm the release of PHP in use, run the command `php -v`.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo apt install openssh-server git php php-fpm php-curl php-gd php-mbstring php-xml php-mysql php-zip php-json php-cli imagemagick fail2ban wget libapache2-mod-fcgid -y
     ```
 
 4.  Use the `systemctl` command to ensure Apache and MariaDB are running and configured to start automatically at boot time.
 
-    ```code
+    ```command
     sudo systemctl start apache2
     sudo systemctl enable apache2
     sudo systemctl start mysql
@@ -123,23 +119,23 @@ Hubzilla requires PHP release 8.0 or higher. The following command installs the 
 
 5.  Verify Apache is running using the `systemctl status` command.
 
-    ```code
+    ```command
     sudo systemctl status apache2
     ```
 
-    {{< output >}}
-apache2.service - The Apache HTTP Server
-    Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
-    Active: active (running) since Wed 2022-11-16 13:38:25 UTC; 10min ago
-    {{< /output >}}
+    ```output
+    apache2.service - The Apache HTTP Server
+        Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+        Active: active (running) since Wed 2022-11-16 13:38:25 UTC; 10min ago
+    ```
 
 6.  Configure the firewall to allow Apache connections. Ensure SSH connections are also allowed.
 
     {{< note >}}
-If you intend to use SSL to secure the Hubzilla installation, use the `Apache Full` profile. Otherwise, enable the `Apache` profile. Hubzilla tests the well-known HTTPS port first, so this port must not be open unless HTTPS is used. HTTPS is highly recommended for enhanced security. For conciseness, this guide does not configure HTTPS. However, the basic Hubzilla installation process is the same in both cases.
+    If you intend to use SSL to secure the Hubzilla installation, use the `Apache Full` profile. Otherwise, enable the `Apache` profile. Hubzilla tests the well-known HTTPS port first, so this port must not be open unless HTTPS is used. HTTPS is highly recommended for enhanced security. For conciseness, this guide does not configure HTTPS. However, the basic Hubzilla installation process is the same in both cases.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo ufw allow OpenSSH
     sudo ufw allow in "Apache"
     sudo ufw enable
@@ -147,20 +143,20 @@ If you intend to use SSL to secure the Hubzilla installation, use the `Apache Fu
 
 7.  Ensure the firewall is enabled.
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
-    {{< output >}}
-Status: active
+    ```output
+    Status: active
 
-To                         Action      From
---                         ------      ----
-OpenSSH                    ALLOW       Anywhere
-Apache                     ALLOW       Anywhere
-OpenSSH (v6)               ALLOW       Anywhere (v6)
-Apache (v6)                ALLOW       Anywhere (v6)
-    {{< /output >}}
+    To                         Action      From
+    --                         ------      ----
+    OpenSSH                    ALLOW       Anywhere
+    Apache                     ALLOW       Anywhere
+    OpenSSH (v6)               ALLOW       Anywhere (v6)
+    Apache (v6)                ALLOW       Anywhere (v6)
+    ```
 
 8.  Visit the IP address or domain name of the server. The `Apache2 Default Page` should be displayed.
 
@@ -172,31 +168,31 @@ Apache (v6)                ALLOW       Anywhere (v6)
     -   For `Switch to unix_socket authentication` and `Change the root password?`, enter `n`.
     -   For `Remove anonymous users?`, `Disallow root login remotely?`, `Remove test database and access to it?` and `Reload privilege tables now?`, enter `Y`.
 
-        ```code
+        ```command
         sudo mysql_secure_installation
         ```
 
 2.  Log in to MariaDB. Provide the root password if necessary.
 
-    ```code
+    ```command
     sudo mysql
     ```
 
 3.  Create a `hubzilla` database for the application to use.
 
-    ```code
+    ```command
     CREATE DATABASE hubzilla;
     ```
 
 4.  Create a user for the new database. Supply a unique password in place of `mypassword`.
 
-    ```code
+    ```command
     CREATE USER 'hubzilla'@'localhost' IDENTIFIED BY 'mypassword';
     ```
 
 5.  Grant all privileges for the `hubzilla` database to the new user. Flush the privileges and exit.
 
-    ```code
+    ```command
     GRANT ALL PRIVILEGES ON hubzilla.* TO 'hubzilla'@'localhost';
     FLUSH PRIVILEGES;
     EXIT;
@@ -205,10 +201,10 @@ Apache (v6)                ALLOW       Anywhere (v6)
 6.  Hubzilla requires the `mpm_event` module. To enable this module, first stop Apache and disable `php-8.1` and `mpm_prefork`.
 
     {{< note >}}
-Disable the `php` module associated with the current PHP release. The format of the module name is `php-releasenumber`, where the release number is the major and minor release of PHP. Use the command `php -v` to find this release information.
+    Disable the `php` module associated with the current PHP release. The format of the module name is `php-releasenumber`, where the release number is the major and minor release of PHP. Use the command `php -v` to find this release information.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo systemctl stop apache2
     sudo a2dismod php8.1
     sudo a2dismod mpm_prefork
@@ -216,14 +212,14 @@ Disable the `php` module associated with the current PHP release. The format of 
 
 7.  Enable the PHP `rewrite` and `mpm_event` modules.
 
-    ```code
+    ```command
     sudo a2enmod rewrite
     sudo a2enmod mpm_event
     ```
 
 8.  Connect Apache to the `fpm` mechanism. Enable the following modules and configurations.
 
-    ```code
+    ```command
     sudo a2enconf php8.1-fpm
     sudo a2enmod proxy
     sudo a2enmod proxy_fcgi
@@ -231,7 +227,7 @@ Disable the `php` module associated with the current PHP release. The format of 
 
 9.  Restart Apache and verify it is `active`. If the restart fails, run the `sudo apachectl configtest` command. Review and correct any errors.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     sudo systemctl status apache2
     ```
@@ -242,7 +238,7 @@ Hubzilla requires its own virtual host to function properly. Create a new `hubzi
 
 1.  Change to the `/etc/apache2/sites-available/` directory and create the new `hubzilla.conf` file.
 
-    ```code
+    ```command
     cd /etc/apache2/sites-available
     sudo nano hubzilla.conf
     ```
@@ -269,19 +265,19 @@ Hubzilla requires its own virtual host to function properly. Create a new `hubzi
 
 3.  Enable the new site.
 
-    ```code
+    ```command
     sudo a2ensite hubzilla
     ```
 
 4.  **Optional** For extra security, disable the default Apache site.
 
-    ```code
+    ```command
     sudo a2dissite 000-default.conf
     ```
 
 5.  Restart Apache and verify its status.
 
-    ```code
+    ```command
     sudo systemctl restart apache2
     sudo systemctl status apache2
     ```
@@ -292,32 +288,32 @@ The LAMP stack is now fully configured and ready for Hubzilla. Use `git` to down
 
 1.  Change directory to `/var/www/html`.
 
-    ```code
+    ```command
     cd /var/www/html
     ````
 
 2.  Use `git` to clone the latest release of Hubzilla from the code base.
 
-    ```code
+    ```command
     sudo git clone https://framagit.org/hubzilla/core.git hubzilla
     ```
 
 3.  Change to the `hubzilla` directory and install the add-ons.
 
-    ```code
+    ```command
     cd hubzilla
     sudo util/add_addon_repo https://framagit.org/hubzilla/addons addons-official
     ```
 
 4.  Create the `store` directory and ensure it is writable.
 
-    ```code
+    ```command
     sudo mkdir -p "store/[data]/smarty3"
     ```
 
 5.  Change ownership and permissions for the `hubzilla` directory.
 
-    ```code
+    ```command
     sudo chown -R www-data:www-data /var/www/html/hubzilla/
     sudo chmod -R 755 /var/www/html/hubzilla/
     ```
@@ -326,13 +322,13 @@ The LAMP stack is now fully configured and ready for Hubzilla. Use `git` to down
 
 6.  Add a `cron` task to update the site every 10 minutes. Run the `crontab -e` command to edit the list of `root` cron jobs.
 
-    ```code
+    ```command
     sudo crontab -e
     ```
 
 7.  Add the following line to the end of the cron file. `usr/bin/php` represents the path to the PHP installation. Before proceeding, confirm the location of PHP using the command `which php`.
 
-    ```code
+    ```command
     */10 * * * *    cd /var/www/html/hubzilla; /usr/bin/php Zotlabs/Daemon/Master.php Cron > /dev/null 2>&1
     ```
 
@@ -353,7 +349,7 @@ To initialize Hubzilla and get it ready for deployment, use the simple web inter
 4.  Hubzilla proceeds to the `Site settings` page. Enter an email address for the site administrator and select the default time zone. The `Website URL` must be set to the domain name for the Hubzilla server. Click **Submit** to continue.
 
     {{< note >}}
-The administration email must contain a valid email address. Hubzilla sends a verification email to the account to confirm the registration.
+    The administration email must contain a valid email address. Hubzilla sends a verification email to the account to confirm the registration.
     {{< /note >}}
 
     ![Hubzilla Site Settings](Hubzilla-Site-Settings.png)
@@ -365,21 +361,21 @@ The administration email must contain a valid email address. Hubzilla sends a ve
 6.  On the `Registration` page, enter an account name, a short nickname to represent the channel on the site, a valid email address, and a password. If registering as an administrator, use the administrator email provided earlier in the Hubzilla site settings. Select the checkbox to agree to the terms of service and click **Register**.
 
     {{< note >}}
-After selecting `Register`, Hubzilla must send an email to the email address of the account. The Linode must have email turned on to complete this process.
+    After selecting `Register`, Hubzilla must send an email to the email address of the account. The Linode must have email turned on to complete this process.
 
-For non-production Hubzilla testing, it is possible to remove the mail server requirements by editing a Hubzilla configuration file. To do so, open the `.htconfig.php` file located at `/var/www/html/hubzilla` and change the `1` in the following line:
+    For non-production Hubzilla testing, it is possible to remove the mail server requirements by editing a Hubzilla configuration file. To do so, open the `.htconfig.php` file located at `/var/www/html/hubzilla` and change the `1` in the following line:
 
-```file {title="/var/www/html/hubzilla/.htconfig.php"}
-App::$config['system']['verify_email'] = 1;
-```
+    ```file {title="/var/www/html/hubzilla/.htconfig.php"}
+    App::$config['system']['verify_email'] = 1;
+    ```
 
-To instead be a `0`:
+    To instead be a `0`:
 
-```file {title="/var/www/html/hubzilla/.htconfig.php"}
-App::$config['system']['verify_email'] = 0;
-```
+    ```file {title="/var/www/html/hubzilla/.htconfig.php"}
+    App::$config['system']['verify_email'] = 0;
+    ```
 
-This configuration change is not recommended on production installations.
+    This configuration change is not recommended on production installations.
     {{< /note >}}
 
     ![Hubzilla Registration](Hubzilla-Registration.png)

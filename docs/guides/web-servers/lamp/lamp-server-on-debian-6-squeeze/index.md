@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 6.0 (Squeeze).'
 keywords: ["debian 6 LAMP server", "debian LAMP guide", "LAMP howto"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

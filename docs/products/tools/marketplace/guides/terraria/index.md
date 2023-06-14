@@ -1,21 +1,16 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide provides you with step-by-step instructions for deploying the two-dimensional sandbox survival game, Terraria, on a Linode using the One-Click Marketplace App."
 keywords: ['terraria','marketplace app', 'game server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-05
 modified: 2022-05-10
 modified_by:
   name: Linode
 title: "Deploy Terraria through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
  - '[The Official Terraria Wiki](https://terraria.gamepedia.com/Terraria_Wiki)'
 tags: ["linode platform","marketplace","cloud-manager"]
 aliases: ['/platform/marketplace/deploying-terraria-with-marketplace-apps/', '/platform/one-click/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-one-click-apps/','/guides/deploying-terraria-with-marketplace-apps/','/guides/terraria-marketplace-app/']
+authors: ["Linode"]
 ---
 
 Terraria is a two-dimensional sandbox game in which players explore the world, collect resources, build structures, and battle enemies in procedurally generated environments. In Terraria a player begins by digging for ore, and the further they dig the more adventure they find. Multiplayer mode can be either cooperative or PvP.

@@ -1,9 +1,6 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-ubuntu-8-04-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Ubuntu 8.04 (Hardy) Linode.'
 keywords: ["zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["ubuntu","email"]
@@ -19,6 +16,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 

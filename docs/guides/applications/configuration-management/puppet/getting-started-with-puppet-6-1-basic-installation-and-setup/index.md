@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-puppet-6-1-basic-installation-and-setup
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
@@ -17,6 +14,7 @@ external_resources:
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
     - '[Configuring Java Arguments](https://puppet.com/docs/pe/2019.0/config_java_args.html)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
+authors: ["Linode"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.

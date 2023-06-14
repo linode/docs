@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
 keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 tags: ["web server","apache","debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

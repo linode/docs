@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Connect to a PostgreSQL Database"
 description: "Learn how to connect to a PostgreSQL Managed Databse through the command line or pgAdmin."
 published: 2022-06-06
 modified: 2022-07-28
+authors: ["Linode"]
 ---
 
 To connect to a PostgreSQL Managed Database, you need to know a few important details, such as the username, password, and host (or IP). You'll also need a PostgreSQL client. This guide details how to access your database using popular tools.
@@ -35,13 +33,17 @@ To connect direct to the database from the command-line, you can use the `psql` 
 
 1.  Verify that the `psql` tool is installed on your system by running the following command:
 
-        psql --version
+    ```command
+    psql --version
+    ```
 
     If it is not installed, follow the steps for your operating system under [Install psql](#install-psql).
 
 1.  Use the `psql` command below to connect to your database, replacing `[host]` and `[username]` with the corresponding values in the [Connection Details](#view-connection-details) section.
 
-        psql --host=[host] --username=[username] --password --dbname=postgres
+    ```command
+    psql --host=[host] --username=[username] --password --dbname=postgres
+    ```
 
     {{< note >}}
     If you are connecting to the *private network host*, ensure your Compute Instance is located within that same data center and you have added a Private IPv4 address to that instance. See [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address).
@@ -61,42 +63,50 @@ If you require a specific version of the PostgreSQL client, it's recommended to 
 
 -   **CentOS Stream 9 (and 8), CentOS/RHEL 8 (including AlmaLinux 8 and RockyLinux 8):**
 
-        sudo dnf install postgresql
+    ```command
+    sudo dnf install postgresql
+    ```
 
 -   **CentOS/RHEL 7:**
 
-        sudo yum install postgresql
+    ```command
+    sudo yum install postgresql
+    ```
 
 -   **Fedora:**
 
-        sudo dnf install postgresql
+    ```command
+    sudo dnf install postgresql
+    ```
 
 -   **Ubuntu and Debian:**
 
-        sudo apt update
-        sudo apt install postgresql-client
+    ```command
+    sudo apt update
+    sudo apt install postgresql-client
+    ```
 
 ## Connect Using pgAdmin (GUI)
 
 pgAdmin is an open-source application that provides you with a graphical interface for interacting with your PostgreSQL database. It can be used on a server (through a web browser) or as a stand-alone desktop application. These instructions cover installing and using the desktop application.
 
-1. Download and install pgAdmin from the [pgAdmin Downloads](https://www.pgadmin.org/download/) page, making sure to select the appropriate file for your local operating system.
+1.  Download and install pgAdmin from the [pgAdmin Downloads](https://www.pgadmin.org/download/) page, making sure to select the appropriate file for your local operating system.
 
-1. The first time the application runs, you are prompted to configure a master password that is used to unlock any saved passwords for database servers you may configure.
+1.  The first time the application runs, you are prompted to configure a master password that is used to unlock any saved passwords for database servers you may configure.
 
-1. Next, you are prompted to register a server (configuring a connection to a server). If you do not see this screen, click Object > Register > Server from the main menu.
+1.  Next, you are prompted to register a server (configuring a connection to a server). If you do not see this screen, click Object > Register > Server from the main menu.
 
-1. Under the *General* tab, set a name for your server.
+1.  Under the *General* tab, set a name for your server.
 
     ![Screenshot of the General tab within the Register Server form](pgadmin-register-server-general.png)
 
-1. Under the *Connection* tab, configure the connection details for this server. To obtain this information, see [View Connection Details](#view-connection-details).
+1.  Under the *Connection* tab, configure the connection details for this server. To obtain this information, see [View Connection Details](#view-connection-details).
 
     ![Screenshot of the Connection tab within the Register Server form](pgadmin-register-server-connection.png)
 
-1. Under the *SSL* tab, you can leave **SSL Mode** as *Prefer* or explicitly set it to *Require*. You may also set it to *Verify-CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from the Cloud Manager and set the **Root Certificate** field to point to that downloaded file.
+1.  Under the *SSL* tab, you can leave **SSL Mode** as *Prefer* or explicitly set it to *Require*. You may also set it to *Verify-CA* if you wish to verify the CA (Certificate Authority) certificate each time you connect. If you choose this option, download the CA certificate from the Cloud Manager and set the **Root Certificate** field to point to that downloaded file.
 
-1. Once all the settings have been appropriately configured, click the **Save** button to save the settings and attempt to connect.
+1.  Once all the settings have been appropriately configured, click the **Save** button to save the settings and attempt to connect.
 
     ![Screenshot of the browser window in pgAdmin 4](pgadmin-browser.png)
 
@@ -106,16 +116,16 @@ pgAdmin is an open-source application that provides you with a graphical interfa
 
 1.  Make sure the IP address assigned to your system is included within your database's access controls. If not, add it now. See [Manage Access Controls](/docs/products/databases/managed-databases/guides/manage-access-controls/).
 
-1. Install the DBeaver Community (or Pro) software from the [DBeaver Downloads](https://dbeaver.io/download/) page. Be sure to select the operating system you're using locally.
+1.  Install the DBeaver Community (or Pro) software from the [DBeaver Downloads](https://dbeaver.io/download/) page. Be sure to select the operating system you're using locally.
 
-1. Open DBeaver, click the **Database** menu dropdown, and select **New Connection**.
+1.  Open DBeaver, click the **Database** menu dropdown, and select **New Connection**.
 
-1. The **Connect to a database** window appears. Select **PostgeSQL** and click **Next** to continue.
+1.  The **Connect to a database** window appears. Select **PostgeSQL** and click **Next** to continue.
 
     ![Screenshot of the DBeaver database selection screen with MySQL highlighted](dbeaver-postgresql-connection-new.png)
 
-1. In the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
+1.  In the *Main* tab, enter the details for your connection, including the **Server Host** (hostname) **Port**, and **Username**. You can optionally store your password by entering your password and clicking the **Save password locally** button. If you do not store your password, you must enter it manually each time you connect. For security reasons, it's typically recommended *not* to store your password.
 
     ![Screenshot of the DBeaver PostgreSQL connection details window](dbeaver-postgresql-connection-details.png)
 
-1. Click the **Test Connection** button to check if the connection is successful.
+1.  Click the **Test Connection** button to check if the connection is successful.

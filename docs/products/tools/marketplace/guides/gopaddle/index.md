@@ -1,17 +1,12 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to deploy gopaddle, a simple low-code platform for Kubernetes developers and operators, on the Linode platform."
 keywords: ['gopaddle','kubernetes','container','low code']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
 title: "Deploy gopaddle through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[GoPaddle](https://gopaddle.io/)'
+authors: ["Linode"]
 ---
 
 [gopaddle](https://gopaddle.io/) is a low-code Internal Developer Platform (IDP) for Kubernetes developers and operators. It provides a self-service portal through which developers can scaffold code to containers, auto-generate YAML files, build Docker images, deploy applications on to Kubernetes, and manage the application life cycle centrally.
@@ -32,12 +27,12 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 22.04 LTS
+- **Supported distributions:** Ubuntu 18.04 LTS
 - **Recommended plan:** A minimum plan size of 8GB Shared CPU Linode is recommended for GoPaddle.
 
 ## Getting Started After Deployment
 
-1. Log into your new Compute Instance through [LISH](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1. Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
 1. Review the installation log.
 
@@ -56,7 +51,7 @@ The gopaddle Marketplace App installs gopaddle lite, which is a free community e
     The gopaddle dashboard is not available until installation has finished. As such, do not continue with this guide until the completion message appears in the log file.
     {{< /note >}}
 
-1. Open your web browser and navigate to the URL provided in the last step. This should be `http://[ip-address]:30003/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS.
+1. Open your web browser and navigate to the URL provided in the last step. This should be `http://[ip-address]:30003/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1. Provided the installation has finished, this URL should display the *gopaddle Evaluation Agreement* page. Review the evaluation agreement and subscribe to the lite edition.
 

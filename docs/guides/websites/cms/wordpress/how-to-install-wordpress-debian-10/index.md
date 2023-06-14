@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-wordpress-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Debian 10.'
 og_description: "This guide will show you how to install WordPress, a free and open-source content management system commonly used for blogs, on Debian 10."
 keywords: ['wordpress blog','wordpress download','what is wordpress','wordpress hosting','content management system','cms','install wordpress on debian 10']
@@ -13,9 +10,6 @@ modified_by:
   name: Nathaniel Stickman
 title: "Install WordPress on Debian 10"
 title_meta: "How to Install WordPress on Debian 10"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 relations:
     platform:
         key: how-to-install-wordpress
@@ -25,6 +19,7 @@ external_resources:
 - '[First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
 - '[WordPress Support: WordPress Widgets](https://wordpress.org/support/article/wordpress-widgets/)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 WordPress is an open-source content management system (CMS), one of the most popular around. WordPress was originally designed for blogging, and it is still one of the most commonly used platforms for that. But its effectiveness as a CMS has also made it useful for an array of websites where strong content management is crucial. WordPress also boasts an extensive library of themes, plug-ins, and widgets to meet your website's needs and make it your own.

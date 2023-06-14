@@ -1,22 +1,18 @@
 ---
 slug: configuring-wordpress
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 og_description:  "This guide shows you how to configure your WordPress site with additional utilities, such as installing PHP GD extensions and prettifying your permalinks."
 keywords: ['wordpress configurations']
-tags: ['wordpress', 'cms']
+tags: ["wordpress", "cms", "digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-16
 image: HowtoConfigureWordpress.jpg
 modified_by:
   name: Nathaniel Stickman
 title: "Best Practices for Configuring WordPress"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[WordPress Support: First Steps with WordPress](https://wordpress.org/support/article/first-steps-with-wordpress/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 WordPress is one of the most popular Content Management Systems (CMSs) around. It is open source and is an outstanding tool for creating your own blog or any content-centered website. This guide walks you through several ways that you can fine-tune your WordPress configuration beyond the basic installation. The steps in this guide should work for most Linux distributions.

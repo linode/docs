@@ -1,7 +1,5 @@
 ---
 slug: open-source-software-benefits
-author:
-  name: Jack Wallen
 description: 'What is open source software and how does it work? We answer these questions, note the advantages and disadvantages of open source software, plus examples.'
 keywords: ['benefits of open source','benefits of open source software','advantages of open source software']
 tags: ['linux', 'apache']
@@ -11,8 +9,7 @@ modified_by:
   name: Linode
 title: "What are the Advantages of Open Source Software?"
 title_meta: "Open Source Software: Benefits Explained"
-contributor:
-  name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 Open-source software and technology is proven within the world of both mid-market and enterprise businesses. Most companies across the globe depend on open-source software at nearly every point in their delivery chain. From the underlying (backend) software that powers business functionality, to the front ends that users interact with, Linux and open-source applications make things happen.

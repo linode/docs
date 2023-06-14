@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-turtl-server-on-ubuntu
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
 description: 'This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.'
 keywords: ["install turtl", " cloud-based storage", " monitor system security", " ubuntu"]
 tags: ["ubuntu"]
@@ -14,6 +11,7 @@ published: 2017-08-14
 title: 'How to Install a Turtl Server on Ubuntu'
 
 aliases: ['/applications/cloud-storage/how-to-install-a-turtl-server-on-ubuntu/']
+authors: ["Angel Guarisma"]
 ---
 
 ![Turtl_Banner](Turtl.jpg)

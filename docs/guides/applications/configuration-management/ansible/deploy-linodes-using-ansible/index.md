@@ -1,8 +1,5 @@
 ---
 slug: deploy-linodes-using-ansible
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "In this guide, learn how to deploy and manage Linodes using Ansible and the linode_v4 module."
 keywords: ['ansible','Linode module','dynamic inventory','configuration management']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,13 +11,13 @@ title: "Using the Linode Ansible Module to Deploy Linodes"
 title_meta: "How to use the Linode Ansible Module to Deploy Linodes"
 deprecated: true
 deprecated_link: 'guides/deploy-linodes-using-linode-ansible-collection/'
-contributor:
-  name: Linode
 external_resources:
 - '[Ansible Best Practices](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html)'
 aliases: ['/applications/configuration-management/ansible/deploy-linodes-using-ansible/','/applications/configuration-management/deploy-linodes-using-ansible/']
 tags: ["automation"]
 image: how-to-use-the-linode-ansible-module-to-deploy-linodes.png
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 {{< note >}}
@@ -344,7 +341,7 @@ A [pull request](https://github.com/ansible/ansible/pull/51196) currently exists
 
     -   Open the `/etc/hosts` file and add your Linode's IPv4 address and label:
 
-        ```file {title=""/etc/hosts"}
+        ```file {title="/etc/hosts"}
         127.0.0.1       localhost
         192.0.2.0 simple-linode-29
         ```

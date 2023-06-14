@@ -1,9 +1,6 @@
 ---
 slug: secure-communications-with-openvpn-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a Debian 5 (Lenny) Linode.'
 keywords: ["openvpn", "networking", "vpn", "debian", "lenny"]
 tags: ["networking","security","vpn","debian"]
@@ -19,6 +16,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
