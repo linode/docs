@@ -31,17 +31,28 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
 {{< tab "Cloud Manager" >}}
 1. Log in to the [Cloud Manager](https://cloud.linode.com), select Load Balancers from the left menu, and click the **Create Global Load Balancer** button. This displays the *Load Balancers Create* form.
 
-1. Enter a **Label** for this Load Balancer. The label can contain ....
+1. Enter a **Label/Name** for this Load Balancer. The label can contain ...and must be unique.
 
-1. Select the **Regions**. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage.
+1. Select the **Regions** where this load balancer processes requests. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage.
 
-1. Within the Configuration area, select the protocol and enter the port number used to process incoming requests.
+1. Within the **Entry Points** Configuration area, select the protocol and enter the port number used to listen to incoming requests. Each Entry Point includes a list of **Routes**. Routes are a set of rules that the load balancer uses to select the target for the incoming request.
 
     The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/loadbalancer-draft/guides/configure/) guide.
 
-    - **Port:** For load balancing a website, configure two ports: port 80 and port 443. For TCP, Each of these ports can be configured separately. See [Configuration Options > Port](/docs/products/networking/loadbalancer-draft/guides/configure/#port).
+    - **Protocol:** The protocol can be set to either TCP, HTTP, or HTTPS. The *TCP* protocol supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the Global Load Balancer, use *HTTP* for port 80 and *HTTPS* for port 443.
 
-    - **Protocol:** The *TCP* protocol supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the Load Balancer, use *HTTP* for port 80 and *HTTPS* for port 443. See [Configuration Options > Protocol](/docs/products/networking/loadbalancer-draft/guides/configure/#protocol).
+        - **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. This should be selected when you want to enable layer 4 load balancing, use TLS/SSL pass-through, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the Global Load Balancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
+
+        - **HTTP:** Unencrypted web traffic using HTTP/1.1 or HTTP/2. This terminates the HTTP request on the Global Load Balancer, allowing the Load Balancer to create a new HTTP request to the backend machines. This can be used when serving most standard web applications, especially if you intend on configuring the Global Load Balancer to use HTTPS mode with TLS/SSL termination.
+
+        - **HTTPS:** Encrypted web traffic using HTTP/1.1 or HTTP/2. Since this terminates the request on the Global Load Balancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish to configure TLS/SSL certificates on the Global Load Balancer and not on individual backend nodes.
+        
+            When using the **HTTPS** protocol setting, all traffic is decrypted on the Global Load Balancer. Traffic between the Global Load Balancer and the backend nodes is sent over the private data center network, is not encrypted, and uses the HTTP protocol.
+
+    - **Port:** This is the *inbound* port that the Global Load Balancer is listening on. This can be any port from 1 through 65534, though it should be set to whichever port the client software will connect to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
+
+
+1.  **Authorization**
 
 1. 
   - **Algorithm:** Controls how new connections are allocated across backend targets. The *Performance* method selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. The *Weighted* method routes requests to backend targets according to the proportion (%) configured. See [Configuration Options > Algorithm](/docs/products/networking/loadbalancer-drafts/guides/configure/#algorithm).

@@ -15,7 +15,7 @@ aliases: ['/platform/loadbalancer/','/loadbalancers/','/guides/platform/loadbala
 
 **Akamai Global Load Balancer**  offers intelligent, scalable distributed compute traffic management across physical, virtual, and cloud-hosted applications with simplicity and affordability. It can automatically detect load conditions and route traffic to the optimal target while maintaining custom routing policies and consistent visitor session behavior.
 
-## Global Load Balancer Workflow
+## Akamai Global Load Balancer Workflow
 
 Here's how Global Load Balancer works:
 
@@ -128,7 +128,7 @@ Each Akamai Global Load Balancer on an account costs $??/mo ($??/hr).
 - **Connections per second:** There are no defined rate limits for the number of connections over a given time period, though certain modes are more performant. A port configured in **TCP** mode allows for the most number of connections. A port configured in **HTTPS** mode is the most resource intensive and accommodates fewer connections.
 - **IP addresses:** A public IPv4 address and IPv6 address are configured on each Akamai Global Load Balancer. Additional addresses are not available.
 - **Private network:** Communication with backend Linodes occurs over a data center's private network. As such, backend Linodes must be located within the same data center as the NodeBalancer.
-- **HTTP support:** HTTP/1.1 (HTTP/2 support is not yet available).
+- **HTTP support:** HTTP/1.1 and HTTP/2.
 - **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Linode on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
 - **TLS termination:** When using a NodeBalancer with an application that requires HTTPS, you can either terminate the TLS connection on the NodeBalancer (**HTTPS** mode) or on the backend Linodes (**TCP** mode). When terminating TLS connections directly on the NodeBalancer, there are a few key considerations:
     - **TLS protocols:** TLS v1.2 and v1.3 are supported in **HTTPS** mode.
