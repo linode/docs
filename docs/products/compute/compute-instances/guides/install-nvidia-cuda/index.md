@@ -1,8 +1,9 @@
 ---
-title: "Installing the NVIDIA CUDA Toolkit"
+title: "Install the NVIDIA CUDA Toolkit"
+meta_title: "Install the NVIDIA CUDA Toolkit on GPU Compute Instances"
 description: "This guide provides step-by-step instructions for installing the NVIDIA CUDA Toolkit and drivers on a GPU Compute Instance at Linode for your workloads."
 published: 2022-01-21
-modified: 2023-01-18
+modified: 2023-06-14
 aliases: ['/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/','/products/compute/gpu/guides/install-nvidia-drivers-manually/','/products/compute/gpu/guides/install-nvidia-driver-dependencies/','/products/compute/gpu/guides/install-nvidia-cuda/']
 authors: ["Linode"]
 ---
