@@ -6,7 +6,7 @@ target = "layouts"
 source = "assets"
 target = "assets"
 [[module.imports]]
-path = "github.com/hotwired/turbo"
+path = "github.com/bep/turbo/v7"
 [[module.imports.mounts]]
 source = "src"
 target = "assets/jslibs/turbo/v7"

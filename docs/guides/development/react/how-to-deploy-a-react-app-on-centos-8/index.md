@@ -1,7 +1,5 @@
 ---
 slug: how-to-deploy-a-react-app-on-centos-8
-author:
-  name: Linode
 description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX.'
 og_description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX'
 keywords: ['react','reactjs','deploy','rsync']
@@ -12,10 +10,8 @@ modified: 2020-04-24
 image: Deploying_a_React_Application_on_Centos_8_1200x631.png
 modified_by:
   name: Linode
-title: "How to Deploy a React Application on CentOS 8"
-h1_title: "Deploying a React Application on CentOS 8"
-contributor:
-  name: Linode
+title: "Deploying a React Application on CentOS 8"
+title_meta: "How to Deploy a React Application on CentOS 8"
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -28,21 +24,22 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/react/how-to-deploy-a-react-app-on-centos-8/']
+authors: ["Linode"]
 ---
 
 ## What is React?
 
 [React](https://reactjs.org/) is a popular JavaScript library for building user interfaces. While React is often used as a frontend for more complex applications, it's also powerful enough to be used for full client-side applications on its own.
 
-Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/tools-reference/tools/introduction-to-rsync/). This guide shows how to set up your CentOS 8 Linode and local machine so that you can easily deploy your app whenever changes are made.
+Since a basic React app is static (it consists of compiled HTML, CSS, and JavaScript files), it is easy to deploy from a local computer to a Linode using [Rsync](/docs/guides/introduction-to-rsync/). This guide shows how to set up your CentOS 8 Linode and local machine so that you can easily deploy your app whenever changes are made.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on CentOS 8](/docs/web-servers/apache/how-to-install-apache-web-server-centos-8/) guide or the [Installing NGINX on CentOS 8](/docs/web-servers/nginx/how-to-install-nginx-centos-8/) guide.
+1.  Install and configure a [web server](/docs/web-servers/) to host a website on your Linode. This guide's examples will use the Apache and NGINX web servers. Complete the steps in the [Installing Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide or the [Installing NGINX on CentOS 8](/docs/guides/how-to-install-nginx-centos-8/) guide.
 
 1.  This guide assumes you already have a React app you'd like to deploy. If you don't have one, you can quickly bootstrap a project following the steps in the [Create an Example React App](#create-an-example-react-app) section of this guide. This step should be completed on your local system.
 
@@ -50,7 +47,7 @@ Since a basic React app is static (it consists of compiled HTML, CSS, and JavaSc
 
         sudo yum install rsync
 
-1.  Install [Git](/docs/development/version-control/how-to-configure-git/) on your local computer if it is not already installed.
+1.  Install [Git](/docs/guides/how-to-configure-git/) on your local computer if it is not already installed.
 
         sudo yum install git
 
@@ -176,9 +173,9 @@ echo "Deployment complete"
 
     This script will check out the `master` branch of your project on Git, build the app using `npm run build`, and then sync the build files to the remote Linode using Rsync. If your React app was not built with `create-react-app`, the build command may be different and the built files may be stored in a different directory (such as `dist`). Modify the script accordingly.
 
-    {{< note >}}
-If your React app's directory is not initialized as a Git repository, the command `git checkout master` will return a `fatal: not a git repository (or any of the parent directories): .git` error. However, the script will continue on to the next commands and the files should still be transferred to your remote Linode server. See our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/#use-git-with-a-local-repository) guide to learn how to initialize a Git repository.
-    {{</ note >}}
+    {{< note respectIndent=false >}}
+If your React app's directory is not initialized as a Git repository, the command `git checkout master` will return a `fatal: not a git repository (or any of the parent directories): .git` error. However, the script will continue on to the next commands and the files should still be transferred to your remote Linode server. See our [Getting Started with Git](/docs/guides/how-to-configure-git/#use-git-with-a-local-repository) guide to learn how to initialize a Git repository.
+    {{< /note >}}
 
 1.  Make the script executable:
 
@@ -198,4 +195,4 @@ If your React app's directory is not initialized as a Git repository, the comman
 
 Deployment can be a complex topic and there are many factors to consider when working with production systems. This guide is meant to be a simple example for personal projects, and isn't necessarily suitable on its own for a large scale production application.
 
-More advanced build and continuous integration tools such as [Travis](https://travis-ci.org/), [Jenkins](https://jenkins.io), and [Wercker](http://www.wercker.com/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guides on [Jenkins](/docs/development/ci/automate-builds-with-jenkins-on-ubuntu/) and [Wercker](/docs/development/ci/how-to-develop-and-deploy-your-applications-using-wercker/) to get started.
+More advanced build and continuous integration tools such as [Jenkins](https://jenkins.io) or [Travis](https://travis-ci.org/) can be used to automate a more complicated deployment workflow. This can include running unit tests before proceeding with the deployment and deploying to multiple servers (such as test and production boxes). See our guide on [Jenkins](/docs/guides/automate-builds-with-jenkins-on-ubuntu/) to get started.

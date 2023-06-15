@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 10.04 operating system.'
 keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
@@ -19,6 +16,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -96,7 +94,7 @@ Run the Phusion Passenger installer for Nginx:
 
 You'll be greeted by the Phusion Passenger nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger nginx installer program running on Ubuntu 10.04 (Lucid).](350-01-passenger-nginx-installer.png)](350-01-passenger-nginx-installer.png)
+![Phusion Passenger nginx installer program running on Ubuntu 10.04 (Lucid).](350-01-passenger-nginx-installer.png)
 
 The installation process will begin an interactive session that will guide you through the process of building Phusion Passenger. When prompted for the nginx installation method, we recommend you choose "1" for both options to allow the installer to automatically download, compile, and install nginx for you. Unless you have specific needs that would necessitate passing custom options to nginx at compile time, this is the safest way to proceed. Accept the default installation location for nginx.
 
@@ -133,7 +131,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
 
 
 

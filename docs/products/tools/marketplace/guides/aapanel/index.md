@@ -1,20 +1,17 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This tutorial will show you how to install and configure the free and open-source server app, aaPanel, using the Linode One-Click Marketplace on CentOS 7."
 keywords: ['control panel', 'web hosting']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying aaPanel through the Linode Marketplace"
+title: "Deploy aaPanel through the Linode Marketplace"
 aliases: ['/guides/deploying-aapanel-marketplace-app/','/guides/aapanel-marketplace-app/']
 external_resources:
 - '[aaPanel](https://www.aapanel.com/)'
 - '[aaPanel Documentation](https://doc.aapanel.com/web)'
+authors: ["Linode"]
 ---
 
 [aaPanel](https://www.aapanel.com/) is a free and open source web hosting control panel. It allows you to manage the server's web server, websites, databases, FTP, and more through a simple web-based interface. Through aaPanel, you can quickly install a LEMP (NGINX) or LAMP (Apache) stack on your server and start hosting your websites.
@@ -25,9 +22,9 @@ external_resources:
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** aaPanel should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -38,7 +35,7 @@ external_resources:
 
 ### Access your aaPanel App
 
-1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+1.  Log in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 2.  Run the following command to obtain your login information for your aaPanel dashboard:
 

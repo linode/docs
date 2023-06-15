@@ -1,19 +1,23 @@
 {{ if not (eq .Params.show_social_image_in_article false) }}
   {{ $img := partial "funcs/get-social-image.html" . }}
-  
+
   {{ if $img.img }}
     {{ $src := $img.img }}
     <div class="marquee-img-container hidden md:block">
       {{ if $img.isResource }}
         {{/* Mark the image as used to prevent double rendering later in the markdown. See the _default/markup/render-image.html.
-            Also, and this is important, make sure that it is the original image's RelPermalink that is stored here and not
-            a resized version.
+          Also, and this is important, make sure that it is the original image's RelPermalink that is stored here and not
+          a resized version.
         */}}
         {{ .Scratch.Set (printf "%s-is-used" $img.img.RelPermalink) true }}
         {{ $title := printf "Marquee image for %s" $.Title }}
-        {{  partial "components/image-srcset.html" (dict "dot" $ "img" $img.img "width1x" 694 "width2x" 1388 "lazy" false "title" $title  "alt" $title "class" "marquee-img"  )}}
+        {{ partial "components/image-srcset.html" (dict "dot" $ "img" $img.img "width1x" 694 "width2x" 1388 "lazy" false "title" $title  "alt" $title "class" "marquee-img"  ) }}
       {{ else }}
-        <img src="{{ $img.img | safeURL}}" class="marquee-img" alt="Marquee image for {{ $.Title }}" title="Marquee image for {{ $.Title }}" />
+        <img
+          src="{{ $img.img | safeURL }}"
+          class="marquee-img"
+          alt="Marquee image for {{ $.Title }}"
+          title="Marquee image for {{ $.Title }}" />
       {{ end }}
     </div>
   {{ end }}

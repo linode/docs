@@ -1,9 +1,6 @@
 ---
 slug: synchronize-files-with-unison
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions on installing and configuring Unison, a file synchronization tool that keeps files in sync between 2 computers.'
 keywords: ["backup", "syncronize files", "unison", "debian", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,17 +13,18 @@ title: Synchronize Files with Unison
 external_resources:
  - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 Unison is a file synchronization tool that allows users to maintain two instances of a given file set on two systems up to date and identical. The tool is designed for maximum usability in a variety of contexts and uses protocols like SSH to securely transfer data between folders. Furthermore, the system is designed to be fault tolerant in the case of interruptions and modifications to both "source" and "remote," and aims to always leave both instances of a file or directory tree in a known working state. Unison can be deployed to synchronize files between systems running disparate operating systems, to backup systems, or as part of a content deployment system, among a plethora of other use cases.
 
-Before beginning this guide, we assume you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/tools-reference/introduction-to-linux-concepts/) guide and the [administration basics](/docs/tools-reference/linux-system-administration-basics/) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/docs/networking/ssh/using-sshfs-on-linux/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
+Before beginning this guide, we assume you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/guides/introduction-to-linux-concepts/) guide and the [administration basics](/docs/guides/linux-system-administration-basics/) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/docs/guides/using-sshfs-on-linux/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
 
 ## Install Unison on a Linode
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Unison is no longer [maintained under active development](https://www.cis.upenn.edu/~bcpierce/unison/status.html).
-{{< /caution >}}
+{{< /note >}}
 
 ### Debian 5 (Lenny)
 

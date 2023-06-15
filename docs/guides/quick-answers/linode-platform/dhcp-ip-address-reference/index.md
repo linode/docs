@@ -1,8 +1,5 @@
 ---
 slug: dhcp-ip-address-reference
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Shortguide that displays a list of all IP addresses used for configurations that rely on DHCP by their datacenter.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2021-09-10
@@ -13,6 +10,7 @@ title: DHCP IP Address Reference
 keywords: [dhcp", "cloud firewall", "firewall", "networking"]
 tags: ["linode platform","cloud manager"]
 aliases: ['/quick-answers/linode-platform/dhcp-ip-address-reference/']
+authors: ["Linode"]
 ---
 
 In some cases, such as when configuring a firewall, you may need to know the IP addresses that Linode uses for our DHCP servers. Below is a list of all DHCP IP addresses categorized by their datacenter, to assist in any configuration you may need.

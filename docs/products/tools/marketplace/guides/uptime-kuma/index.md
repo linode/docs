@@ -1,21 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Uptime Kuma on a Linode Compute Instance. This provides you with an open source monitoring tool like 'Uptime Robot'."
 keywords: ['uptime','monitoring','ping']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-22
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying Uptime Kuma through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy Uptime Kuma through the Linode Marketplace"
 external_resources:
 - '[Uptime Kuma](https://github.com/louislam/uptime-kuma)'
 aliases: ['/guides/uptimekuma-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Uptime Kuma](https://github.com/louislam/uptime-kuma) is an open source monitoring tool. It enables you to monitor services over HTTP/S, TCP, DNS, and other protocols. You can receive notification alerts of downtime and even create custom status pages for your users.
@@ -26,9 +21,9 @@ aliases: ['/guides/uptimekuma-marketplace-app/']
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Uptime Kuma should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,11 +38,13 @@ aliases: ['/guides/uptimekuma-marketplace-app/']
 
 {{< content "marketplace-custom-domain-fields-shortguide">}}
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the Uptime Kuma App
 
-1.  Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing rDNS.
+1.  Open your web browser and navigate to `http://[domain]/`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing rDNS.
 
     ![Screenshot of URL bar](uptimekuma-url.png)
 

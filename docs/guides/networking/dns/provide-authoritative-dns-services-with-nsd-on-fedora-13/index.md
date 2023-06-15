@@ -1,9 +1,6 @@
 ---
 slug: provide-authoritative-dns-services-with-nsd-on-fedora-13
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you to install and configure NSD, a lightweight and open-source name server to handle authoritative DNS queries on Fedora 13.'
 keywords: ["NSD", "DNS", "resolving", "Fedora 13", "networking"]
 tags: ["dns","networking","fedora","resolving"]
@@ -19,13 +16,14 @@ relations:
         key: authoritative-dns-nsd
         keywords:
             - distribution: Fedora 13
+authors: ["Brett Kaplan"]
 ---
 
 
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.
 
-Before beginning, you should be familiar with basic [DNS terminology and records](/docs/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
+Before beginning, you should be familiar with basic [DNS terminology and records](/docs/guides/dns-overview/). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
 
 ## Install Required Software
 
@@ -107,7 +105,7 @@ Rebuild the NSD database and restart the daemon with following command sequence:
     nsdc rebuild
     /etc/init.d/nsd restart
 
-Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/networking/dns/use-dig-to-perform-manual-dns-queries). Issue the following command to test the DNS server:
+Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/guides/use-dig-to-perform-manual-dns-queries/). Issue the following command to test the DNS server:
 
     dig @localhost www.example.org
 

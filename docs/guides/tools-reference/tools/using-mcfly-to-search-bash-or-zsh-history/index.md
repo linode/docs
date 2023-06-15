@@ -1,7 +1,5 @@
 ---
 slug: using-mcfly-to-search-bash-or-zsh-history
-author:
-  name: Jeff Novotny
 description: 'McFly is an alternative to ctrl-r bash search that uses a context-aware neural network to surface your most important search history. This guide shows you how to install and use the McFly Linux tool.'
 keywords: ['mcfly command','bash search history','terminal history','shell history']
 tags: ['linux']
@@ -9,15 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified_by:
   name: Linode
-title: "Installing and Using McFly to Search Bash or ZSH History"
-h1_title: "Install and Use McFly to Search Bash or ZSH History"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Install and Use McFly to Search Bash or ZSH History"
+title_meta: "Installing and Using McFly to Search Bash or ZSH History"
 external_resources:
 - '[McFly GitHub site](https://github.com/cantino/mcfly)'
 - '[Homebrew](https://brew.sh/)'
+authors: ["Jeff Novotny"]
 ---
 
 Many Linux users run certain commands regularly. Newcomers might resort to retyping the command or using the **up** and **down** keys to scroll through previous commands. More experienced users typically search their terminal history using the built-in `Control-r` command. The free and open-source [*McFly*](https://github.com/cantino/mcfly) application is designed as an alternative to these traditional methods. McFly is a bash search history utility that uses AI techniques to display the most relevant commands. This guide provides a brief introduction to the McFly application and its methodology. It also explains how to install McFly and how to use the `mcfly` command to search through the terminal history.
@@ -54,19 +49,19 @@ This works well enough in many cases, but it often forces the user to cycle thro
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
-The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install McFly
 
 You can install McFly using the [*Homebrew*](https://brew.sh/) package manager or via McFly's install script.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 McFly can also be installed from GitHub or manually from the source. In this case, Rust must also be installed. See the [McFly GitHub page](https://github.com/cantino/mcfly#installing-manually-from-github) for more information.
 {{< /note >}}
 
@@ -93,7 +88,7 @@ The Homebrew package manager installs programs into their own directory and adds
 
 1. To verify Homebrew is installed and working properly, run the `brew doctor` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Use the `brew help` command to see a full list of the Homebrew commands.
     {{< /note >}}
 
@@ -234,11 +229,11 @@ To use the `mcfly` command to search the terminal history, follow the steps belo
 
 1. McFly enters full-screen mode. It displays the possible actions at the top along with a list of all items sorted from most to least relevant. Scroll through the items using the **up** and **down** keys.
 
-    [![Example McFly interface displaying file list](mcfly-search-start_small.png)](mcfly-search-start.png)
+    ![Example McFly interface displaying file list](mcfly-search-start.png)
 
 1. When you have located the relevant entry, hit the **return** key to run the command. For example, to run the command `sudo apt-get update -y && sudo apt-get upgrade -y`, select it from the list and then hit the **return** key.
 
-    [![Selecting a file using McFly](mcfly-select-option_small.png)](mcfly-select-option.png)
+    ![Selecting a file using McFly](mcfly-select-option.png)
 
 1. To edit the command before running it, locate the command following the same procedure as in the previous step. Then select it using the **TAB** key. This pastes the selected command into the terminal. You can then edit it on the command line like any other command.
 
@@ -248,17 +243,17 @@ To use the `mcfly` command to search the terminal history, follow the steps belo
 
         mcfly search fd
 
-    [![Deleting a file in McFly](mcfly-delete_small.png)](mcfly-delete.png)
+    ![Deleting a file in McFly](mcfly-delete.png)
 
 1. To launch McFly without any search terms, use the `mcfly search` command without any parameters. You can also use `mcfly search ""`.
 
         mcfly search
 
-    [![McFly interface with no starting search term](mcfly-empty-search_small.png)](mcfly-empty-search.png)
+    ![McFly interface with no starting search term](mcfly-empty-search.png)
 
     You can select an item from the list or start typing to begin a search. McFly updates the results as you type. The display below illustrates how the list is updated after you enter `vi`.
 
-    [![Adding text to refine a McFly search](mcfly-empty-search-updated_small.png)](mcfly-empty-search-updated.png)
+    ![Adding text to refine a McFly search](mcfly-empty-search-updated.png)
 
 ### A Demonstration of McFly's AI Capabilities
 
@@ -268,21 +263,21 @@ Once a command is selected from the McFly interface, it is prioritized in future
 
     mcfly search apt
 
-[![McFly list change with previous search](mcfly-ai-previous_small.png)](mcfly-ai-previous.png)
+![McFly list change with previous search](mcfly-ai-previous.png)
 
 McFly gives lower priority to commands that result in an error. For example, the command `sudo apt instrall nginx` results in an error due to the typo in `instrall`. McFly records the exit status of the command and downgrades it in the results. When `mcfly search apt` is run again, the command `sudo apt instrall nginx` is not near the top of the list, even though it occurred recently.
 
-[![McFly list change with error context](mcfly-ai-error_small.png)](mcfly-ai-error.png)
+![McFly list change with error context](mcfly-ai-error.png)
 
 McFly displays different results depending on the directory. In the example below, `vi countries.txt` is always run from the `accounts` directory. If a user runs `mcfly search vi` from the same directory, `vi countries.txt` appears as one of the top choices.
 
     mcfly search vi
 
-[![McFly list change in subdirectory](mcfly-context-one_small.png)](mcfly-context-one.png)
+![McFly list change in subdirectory](mcfly-context-one.png)
 
 When the user returns to their home directory and runs the same command, `vi countries.txt` command is no longer at the top of the list. Other commands rank higher even though they were not run recently. This is because the `vi countries.txt` command is not typically run from the home directory. These results continue to improve as you use McFly because it learns more about when and where different commands are run.
 
-[![McFly list changes in main directory](mcfly-context-two_small.png)](mcfly-context-two.png)
+![McFly list changes in main directory](mcfly-context-two.png)
 
 ## Conclusion
 

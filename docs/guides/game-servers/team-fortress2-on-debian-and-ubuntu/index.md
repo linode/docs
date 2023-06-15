@@ -1,8 +1,5 @@
 ---
 slug: team-fortress2-on-debian-and-ubuntu
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'A basic Team Fortress 2 server installation guide for Debian and Ubuntu'
 keywords: ["team fortress 2", "team fortress", "steam", "ubuntu", "debian"]
 tags: ["debian", "ubuntu"]
@@ -14,6 +11,7 @@ published: 2015-03-12
 title: 'Team Fortress 2 on Debian and Ubuntu'
 aliases: ['/applications/game-servers/team-fortress2-on-debian-and-ubuntu/','/game-servers/team-fortress2-on-debian-and-ubuntu/']
 dedicated_cpu_link: true
+authors: ["Elle Krout"]
 ---
 
 [Team Fortress 2](http://teamfortress.com/) is a team-based, first-person shooter, where you and a team of fellow players can play a variety of game modes. From capture the flag, to a battle pitting your team against a robotic horde, there are numerous options to choose. Setting up a personal game server puts you in control of what game modes and maps you use, as well as a variety of other settings to customize your experience.
@@ -22,10 +20,10 @@ dedicated_cpu_link: true
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Team Fortress 2](http://store.steampowered.com/app/440/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/game-servers/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/guides/install-steamcmd-for-a-steam-game-server/). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites for Team Fortress 2
@@ -73,7 +71,7 @@ From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
         quit
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 To update TF2, run the above 4 commands again.
 {{< /note >}}
 
@@ -108,7 +106,7 @@ The `motd_default.txt` file can contain HTML and is displayed as a website upon 
 
 The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings you need to customize the loadout of your game. A `server.cfg` file is not needed to run the game but we have a sample config file [here](/docs/assets/team_fortress_2_server_config.cfg) which you can edit for your own use.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For the configuration of this file, `0` means *off* and `1` means *on*.
 {{< /note >}}
 
@@ -125,7 +123,7 @@ screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
 {{< /file >}}
 
 
-    When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
+    When run, the script will change directories to `~/Steam/tf2` and execute TF2 in a [Screen](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) session.
 
     Optionally, replace `cft_2fort.bsp` with the name of your chosen map’s file, or replace `+map ctf_2fort.bsp` with `+randommap` for a randomized map selection.
 
@@ -139,9 +137,9 @@ screen -S "Team Fortress 2 Server" ./srcds_run -game tf +map ctf_2fort.bsp
 
         cd ~/ && ./starttf2.sh
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 From this point, do not press the **Control+C** keys while in the console unless you want to stop TF2.
-{{< /caution >}}
+{{< /note >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 
@@ -160,13 +158,13 @@ RCON allows you to make changes to your server from inside of the game.
 
 1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**
 
-    [![Enable the developer console.](team-fortress-rcon-small.png)](team-fortress-rcon.png)
+    ![Enable the developer console.](team-fortress-rcon.png)
 
 2.  From here, check **Enable developer console** and apply these settings.
 
 3.  To make changes in-game, it is recommended that you switch to spectator mode, and then press the backtick button (<code>`</code>) to access the developer's console.
 
-    [![Press `~` to access the console](team-fortress-rcon-console-small.png)](team-fortress-rcon-console.png)
+    ![Press `~` to access the console](team-fortress-rcon-console.png)
 
 4.  Log in to RCON by typing in `rcon_password` followed by your password.
 

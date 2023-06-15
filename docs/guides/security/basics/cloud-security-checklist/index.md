@@ -1,19 +1,14 @@
 ---
 slug: cloud-security-checklist
-author:
-  name: Andy Patrizio
 description: 'Searching for a cloud security checklist? We have the essential cloud security checklist that will ensure you’re following best practices.'
 keywords: ['it security checklist best practices','it security best practices checklist','cloud assessment checklist']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-04
 modified_by:
   name: Linode
-title: "Cloud Security Best Practices Checklist"
-h1_title: "An Essential Cloud Security Checklist (Plus Best Practices)"
-enable_h1: true
-contributor:
-  name: Andy Patrizio
-  link: https://twitter.com/apatrizio
+title: "An Essential Cloud Security Checklist (Plus Best Practices)"
+title_meta: "Cloud Security Best Practices Checklist"
+authors: ["Andy Patrizio"]
 ---
 
 Cloud security is complex. Some people have admirable recall, but things are bound to be forgotten. A best practices security checklist for cloud security serves as a reminder of every important step and task. Cloud security requirements can cover hardware, software, configurations, physical location of data, and regulatory compliance.
