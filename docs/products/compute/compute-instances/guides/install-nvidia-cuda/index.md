@@ -3,7 +3,7 @@ title: "Install the NVIDIA CUDA Toolkit"
 meta_title: "Install the NVIDIA CUDA Toolkit on GPU Compute Instances"
 description: "This guide provides step-by-step instructions for installing the NVIDIA CUDA Toolkit and drivers on a GPU Compute Instance at Linode for your workloads."
 published: 2022-01-21
-modified: 2023-06-14
+modified: 2023-06-15
 aliases: ['/products/compute/gpu/guides/install-nvidia-drivers-with-cuda/','/products/compute/gpu/guides/install-nvidia-drivers-manually/','/products/compute/gpu/guides/install-nvidia-driver-dependencies/','/products/compute/gpu/guides/install-nvidia-cuda/']
 authors: ["Linode"]
 ---
@@ -55,8 +55,8 @@ To take advantage of the powerful parallel processing capabilities offered by GP
             - **rpm (network)** or **deb (network):** Smaller initial download size as dependencies are managed separately through the package management system. Some distributions may not contain the dependencies needed and you may receive an error when installing the CUDA package.
             - **runfile (local):** Installs the software outside of your package management system, which is typically not desired or recommended.
 
-                {{< note type="warning">}}
-                If you decide to use the runfile installation method, you may need to install gcc and other dependencies before running the installer file. In addition, you also need to disable built in nouveau drivers. The runfile method is not covered in this guide. Instead, reference NVIDIA's runfile installation instructions for [Ubuntu](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id8), [Debian](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id10), [CentOS](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#runfile-installer), [Fedora](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id2), or o[penSUSE](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id6).
+                {{< note type="warning" >}}
+                If you decide to use the runfile installation method, you may need to install gcc and other dependencies before running the installer file. In addition, you also need to disable any existing nouveau drivers that installed on most distributions by default. The runfile method is not covered in this guide. Instead, reference NVIDIA's runfile installation instructions for [Ubuntu](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id8), [Debian](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id10), [CentOS](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#runfile-installer), [Fedora](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id2), or [openSUSE](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#id6).
                 {{< /note >}}
 
         ![Screenshot of the CUDA Toolkit Downloads page](nvidia-cuda-instructions.png)
