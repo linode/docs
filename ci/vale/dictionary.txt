@@ -712,6 +712,7 @@ fordham
 fmt
 fn
 fpm
+fqdns
 fragging
 framebuffer
 frakti
@@ -2476,6 +2477,7 @@ vlogger
 vmail
 vmem
 vmlinuz
+vms
 vmstat
 vmui
 vnc

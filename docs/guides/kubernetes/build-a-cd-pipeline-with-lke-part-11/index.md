@@ -15,6 +15,8 @@ authors: ["Linode"]
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana](cd-presentation-header-11-prometheus-and-grafana.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana")
 
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
+
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Prometheus and Grafana (Slide #163)](https://2021-03-lke.container.training/#163)
 
 ## Prometheus and Grafana

@@ -15,6 +15,8 @@ authors: ["Linode"]
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Our Sample Application](cd-presentation-header-02-sample-application.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Our Sample Application")
 
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
+
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Our Sample Application (Slide #24)](https://2021-03-lke.container.training/#24)
 
 ## Our Sample Application
