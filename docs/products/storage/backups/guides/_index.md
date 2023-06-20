@@ -14,11 +14,11 @@ These introductory guides help get you up and running with Linode's Backup Servi
 
 - [Schedule Backups](/docs/products/storage/backups/guides/schedule/): Configure when automatic backups are initiated.
 
-- [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/): You can make manual backups, or snapshots of your Linode.
+- [Take a Manual Snapshot](/docs/products/storage/backups/guides/take-a-snapshot/): Learn how to make manual backups (snapshots) of your Compute Instance.
 
-- [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/): Restore a backup to a new Linode.
+- [Restore a Backup to a New Compute Instance](/docs/products/storage/backups/guides/restore-to-a-new-instance/): Restore a backup to a new Compute Instance.
 
-- [Restore a Backup to an Existing Linode](/docs/products/storage/backups/guides/restore-to-an-existing-linode/): Restore a backup to an existing Linode.
+- [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/): Restore a backup to an existing Compute Instance.
 
 - [Boot from a Backup](/docs/products/storage/backups/guides/boot-from-a-backup/): After restoring from a backup, boot into the backup restoration disk/configuration.
 
