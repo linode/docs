@@ -4,7 +4,7 @@ title_meta: "FAQs for the Backup Service"
 description: "Find quick answers to some of the most commonly asked questions for Linode's Backup Service."
 tab_group_main:
     weight: 60
-published: 2023-05-25
+published: 2023-06-20
 ---
 
 ## Can I create more than one manual backup?
@@ -27,7 +27,7 @@ Backups created by the Backup service are stored on separate dedicated hardware 
 
 Existing backups are not able to be downloaded directly, though you can restore a backup to a Compute Instance and download any files or disks you require.
 
-- If you need a local backup of your Compute Instance as it exists in that moment, you do not need to restore from a backup. Instead, you can use tools like [rsync](https://www.linode.com/docs/guides/backing-up-your-data/#manual-backup-via-rsync), FTP, and SCP to download files directly from your instance. For more details, see [Download Files from Your Compute Instance](/docs/guides/download-files-from-a-compute-instance/).
+- If you need a local backup of your Compute Instance as it exists in that moment, you do not need to restore from a backup. Instead, you can use tools like [rsync](/docs/guides/backing-up-your-data/#manual-backup-via-rsync), FTP, and SCP to download files directly from your instance. For more details, see [Download Files from Your Compute Instance](/docs/guides/download-files-from-a-compute-instance/).
 
 - If you wish to download files as they were on a previous backup, you can restore that backup to a Compute Instance and then access that instance to download files. For instructions, see [Download a Local Copy of your Linode Backup](/docs/guides/download-backups-locally/).
 
