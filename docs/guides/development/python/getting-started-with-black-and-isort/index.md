@@ -8,12 +8,9 @@ authors: ["Cameron Laird"]
 published: 2023-06-15
 modified_by:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
-[Python](https://www.linode.com/docs/guides/development/python/) is one of the world's most widely used programming languages, with general acceptance in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
+[Python](/docs/guides/development/python/) is one of the world's most widely used programming languages, with general acceptance in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
 
 However, projects spanning larger teams benefit from consistency. While an application written in a number of different styles is no less correct, those different styles becomes a distraction to those maintaining the code. For instance, these two example Python fragments execute indistinguishably:
 
@@ -53,13 +50,13 @@ The simplest possible Python program is "Hello, World":
 print ( 'Hello, World.' )
 ```
 
-When run, it delivers this result:
-
 ```output
 Hello, World.
 ```
 
-Open a web browser and navigate to [this URL](https://black.vercel.app/?version=stable&state=_Td6WFoAAATm1rRGAgAhARYAAAB0L-Wj4AB9AFNdAD2IimZxl1N_WmOQqEcOUg5PabNV_4VCnlTimMkQYl49QWCrlz2TpRZTkGLPX6fSXiLn3AB5RNZFp-lv2yEhf3pqorrWzVuXIUI6dF-MWQb_ELsAAADgXdNgINz_0AABb354nl51H7bzfQEAAAAABFla).
+Open a web browser and navigate to [this URL](https://black.vercel.app/?version=stable&state=_Td6WFoAAATm1rRGAgAhARYAAAB0L-Wj4AB9AFNdAD2IimZxl1N_WmOQqEcOUg5PabNV_4VCnlTimMkQYl49QWCrlz2TpRZTkGLPX6fSXiLn3AB5RNZFp-lv2yEhf3pqorrWzVuXIUI6dF-MWQb_ELsAAADgXdNgINz_0AABb354nl51H7bzfQEAAAAABFla):
+
+[![Python Hello, World in the online Black Playground.](Black-Playground_small.png "Python Hello, World in the online Black Playground.")](Black-Playground.png)
 
 The "Hello, World" Python program from above appears in the left-hand pane. Meanwhile, the right-hand pane displays this subtly transformed version:
 
