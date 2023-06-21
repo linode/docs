@@ -264,7 +264,7 @@ To fully configure a cluster, follow these steps.
     For more information about seeds, see the [Cassandra FAQ](https://cassandra.apache.org/doc/latest/cassandra/faq/index.html).
     {{< /note >}}
 
-5.  On the first node, edit the main Cassandra YAML file:
+1.  On the first node, edit the main Cassandra YAML file:
 
     ```command
     sudo nano /etc/cassandra/cassandra.yaml
@@ -286,8 +286,6 @@ To fully configure a cluster, follow these steps.
 
     -   Set the `endpoint_snitch` field to `GossipingPropertyFileSnitch`.
 
-    -   For a new cluster, set `auto_bootstrap` to `false`.
-
     The following file sample provides a template for the file changes. Follow the system architecture defined earlier and replace parameters like `node1_ip` with the actual IP addresses. Leave the remainder of the file unchanged.
 
     ```file {title="/etc/cassandra/cassandra.yaml"}
@@ -307,13 +305,21 @@ To fully configure a cluster, follow these steps.
     rpc_address: 127.0.0.1
     ...
     endpoint_snitch: GossipingPropertyFileSnitch
-    ...
+    ```
+
+    {{< note >}}
+    If building a much larger cluster than the example in this tutorial, add the following line:
+
+    ```file {title="/etc/cassandra/cassandra.yaml"}
     auto_bootstrap: false
     ```
 
+    It is recommended to ensure an orderly activation when first creating a complex cluster.
+    {{< /note >}}
+
 1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-6.  On the same node, edit the `/etc/cassandra/cassandra-rackdc.properties` file:
+1.  On the same node, edit the `/etc/cassandra/cassandra-rackdc.properties` file:
 
     ```command
     sudo nano /etc/cassandra/cassandra-rackdc.properties
@@ -326,7 +332,7 @@ To fully configure a cluster, follow these steps.
     rack=rack1
     ```
 
-7.  Configure `cassandra.yaml` and `cassandra-rackdc.properties` on the remaining nodes in the first data center.
+1.  Configure `cassandra.yaml` and `cassandra-rackdc.properties` on the remaining nodes in the first data center.
 
     -   Start with the `cassandra.yaml` changes. Each system must have the same value for the `cluster_name` attribute.
     -   `seeds` must have the same value on each node in the same data center. The node addresses must appear in the same order each time.
@@ -352,8 +358,6 @@ To fully configure a cluster, follow these steps.
     rpc_address: 127.0.0.1
     ...
     endpoint_snitch: GossipingPropertyFileSnitch
-    ...
-    auto_bootstrap: false
     ```
 
     ```file {title="/etc/cassandra/cassandra-rackdc.properties"}
@@ -361,9 +365,9 @@ To fully configure a cluster, follow these steps.
     rack=rack2
     ```
 
-8.  Configure each additional node in the first data center in this manner, changing the value of `listen_address` as required.
+1.  Configure each additional node in the first data center in this manner, changing the value of `listen_address` as required.
 
-9.  Now configure the nodes in the second data center.
+1.  Now configure the nodes in the second data center.
 
     -   In `/etc/cassandra/cassandra.yaml`, The `cluster_name` must be the same for all nodes in all data centers.
     -   The `seeds` attribute must list the seed nodes for the local data center first, then the seeds for the remote centers.
@@ -390,13 +394,11 @@ To fully configure a cluster, follow these steps.
     rpc_address: 127.0.0.1
     ...
     endpoint_snitch: GossipingPropertyFileSnitch
-    ...
-    auto_bootstrap: false
     ```
 
     ```file {title="/etc/cassandra/cassandra-rackdc.properties"}
     dc=singapore
-    rack=rack2
+    rack=rack1
     ```
 
 ## How to Activate a Cassandra Cluster
@@ -409,7 +411,7 @@ Nodes must be brought online in a certain order when activating the Cassandra cl
     sudo systemctl start cassandra
     ```
 
-2.  Ensure the Cassandra service is `active`:
+1.  Ensure the Cassandra service is `active`:
 
     ```command
     sudo systemctl status cassandra
@@ -421,11 +423,11 @@ Nodes must be brought online in a certain order when activating the Cassandra cl
          Active: active (running) since Wed 2023-06-21 14:05:57 EDT; 19s ago
     ```
 
-3.  Restart the primary seed nodes in all remaining data centers. Wait for `cassandra` to become `active`.
+1.  Restart the primary seed nodes in all remaining data centers. Wait for `cassandra` to become `active`.
 
-4.  Restart all remaining nodes in the cluster, then wait two or three minutes to allow all systems to synchronize.
+1.  Restart all remaining nodes in the cluster, then wait two or three minutes to allow all systems to synchronize.
 
-5.  Confirm the status of the cluster:
+1.  Confirm the status of the cluster:
 
     ```command
     sudo nodetool status
@@ -467,7 +469,7 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     cqlsh
     ```
 
-2.  Create a keyspace using the `CREATE KEYSPACE` statement and define the replication procedure.
+1.  Create a keyspace using the `CREATE KEYSPACE` statement and define the replication procedure.
 
     -   For a cluster containing multiple data centers, use `NetworkTopologyStrategy` for the `class`.
     -   Specify a replication factor for each data center in the cluster. This indicates how many copies of the data to store in the data center.
@@ -479,7 +481,7 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     CREATE KEYSPACE IF NOT EXISTS store WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'london' : 2, 'singapore' : 2  };
     ```
 
-3.  Confirm the keyspace is successfully created:
+1.  Confirm the keyspace is successfully created:
 
     ```command
     desc keyspaces;
@@ -492,7 +494,7 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     system  system_distributed  system_traces  system_virtual_schema
     ```
 
-4.  Add a table to the keyspace. The table name is indicated using the syntax `keyspacename.tablename`. The definition defines the schema of columns, including the names and data types. Each table in a Cassandra keyspace must have a primary key. This key is used to partition the table entries.
+1.  Add a table to the keyspace. The table name is indicated using the syntax `keyspacename.tablename`. The definition defines the schema of columns, including the names and data types. Each table in a Cassandra keyspace must have a primary key. This key is used to partition the table entries.
 
     ```command
     CREATE TABLE IF NOT EXISTS store.shopping_cart (
@@ -501,13 +503,13 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     );
     ```
 
-5.  Use the `INSERT` command to add an entry to the table.
+1.  Use the `INSERT` command to add an entry to the table.
 
     ```command
     INSERT INTO store.shopping_cart (userid, item_count) VALUES ('59', 12);
     ```
 
-6.  Use the `SELECT * FROM` command to view all data in the table.
+1.  Use the `SELECT * FROM` command to view all data in the table.
 
     ```command
     SELECT * FROM store.shopping_cart;
@@ -520,7 +522,7 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     (1 rows)
     ```
 
-7.  To confirm the data has been replicated correctly, access the CQL shell on another node. Run the same `SELECT` command and ensure the same data is displayed. Validate all data centers to ensure Cassandra correctly adheres to the keyspace replication factor.
+1.  To confirm the data has been replicated correctly, access the CQL shell on another node. Run the same `SELECT` command and ensure the same data is displayed. Validate all data centers to ensure Cassandra correctly adheres to the keyspace replication factor.
 
     {{< note >}}
     Cassandra creates the minimum number of copies to satisfy the keyspace requirements. If the replication factor for a data center is two, only two nodes in the center receive the table data. Depending on the network latency, it might take a second or so for data to appear in a distant data center. This is especially likely for batch reads of data from a file.
