@@ -1,18 +1,18 @@
 ---
 slug: command-line-tools
-title: "Command Line Tools: A Beginner’s Guide"
+title: "Windows Command Line Tools: A Beginner’s Guide"
 title_meta: "The Best Command Line Tools for Windows"
 description: 'What are the most useful command line tools you need to know? Find out all you need to know with our beginner’s guide to command line tools.'
 keywords: ['command line tools', 'best command line tools for windows', 'best command line tools linux', 'useful command line tools']
 tags: ['linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Tom Henderson"]
-published: 2023-06-12
+published: 2023-06-21
 modified_by:
   name: Linode
 ---
 
-## What Are Command-Line Tools?
+## What Are Windows Command-Line Tools?
 
 Command-line tools are a terminal-like shell, separate from Microsoft's PowerShell, with some shared commands and scripting capabilities. While the command line has built-in directives, PowerShell serves as a programming language for accessing APIs and performing communication, modification, and examination tasks.
 
@@ -182,7 +182,7 @@ Other handy arguments that you can use with `powercfg` are:
 
 - `/batteryreport`: Generates a detailed report about your battery's usage and status.
 - `/systemssleepdiagnostics`: Provides information and diagnostics about system sleep transitions.
-`/powerthrottling`: Manages power-throttling settings to optimize power usage for applications and processes.
+- `/powerthrottling`: Manages power-throttling settings to optimize power usage for applications and processes.
 - `/devicequery`: Lists power-related information for devices connected to your system.
 
 ### Windows Command Line systeminfo
