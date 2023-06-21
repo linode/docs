@@ -2,7 +2,6 @@
 slug: how-to-install-cassandra-across-multiple-datacenters
 title: "How to Install Cassandra Across Multiple Datacenters"
 description: 'This guide introduces the Cassandra distributed database and explains how to install, configure, and use it.'
-og_description: 'This guide introduces the Cassandra distributed database and explains how to install, configure, and use it.'
 keywords: ['install Cassandra','configure Cassandra','Cassandra CQL','create keyspace Cassandra']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
@@ -27,24 +26,24 @@ external_resources:
 
 Cassandra is an open source *NoSQL* database originally built by Facebook. NoSQL databases are an alternative to traditional *relational database management systems* (RDBMS) systems. They model data in a simple and flexible style without the rigid tabular constraints of RDBMS applications. NoSQL applications are generally faster than RDBMS systems, with higher throughput. However, they often duplicate data and are less consistent than RDBMS applications. NoSQL databases are designed to work in data centers consisting of distributed data and user sessions. They use the *horizontal scaling* strategy to increase the capacity of the system through the addition of new servers.
 
-Due to its architecture and design, Cassandra minimizes latency and provides true real-time capabilities. Low latency is critical because even small delays can dramatically decrease client satisfaction. Poor performance can also interfere with important tasks such as transaction processing and fraud detection. Cassandra is also highly scalable, robust, and responsive. It quickly replicates data and continues to provide good performance even when handling a large number of user requests.
+Due to its architecture and design, Cassandra minimizes latency and provides true real-time capabilities. Low latency is critical, as even small delays can dramatically decrease client satisfaction. Poor performance can also interfere with important tasks such as transaction processing and fraud detection. Cassandra is highly scalable, robust, and responsive. It quickly replicates data and continues to provide good performance even when handling a large number of user requests.
 
-Cassandra is designed to run on multiple machines in a cluster-based architecture. The cluster can be topologically conceptualized as a ring of individual nodes. Although the nodes are independent of each other, they are also interconnected and share data. Using a hash function, the Cassandra replication process distributes records equally among the different nodes in the cluster. The cluster does not have a master node. Any system can handle read and write requests, and an individual node failure does not affect the rest of the cluster. Cassandra can detect and correct data inconsistencies and automatically manage node additions and removals.
+Cassandra is designed to run on multiple machines in a cluster-based architecture. The cluster can be topologically conceptualized as a ring of individual nodes. Although the nodes are independent of each other, they are also interconnected and share data. Using a hash function, the Cassandra replication process distributes records equally among the different nodes in the cluster. The cluster does not have a master node. Any system can handle read and write requests, and individual node failure does not affect the rest of the cluster. Cassandra can detect and correct data inconsistencies and automatically manage node additions and removals.
 
 The nodes within a Cassandra cluster can be geographically distributed across multiple data centers and around the world. This brings the database closer to the end user, reducing routing delays. Users in Europe can access a data center in London, while American customers use the Chicago data center. Because both data centers are part of the same cluster, the entries are automatically integrated, reconciled, and replicated.
 
-Each Cassandra cluster includes one or more data centers, and each data center contains multiple *racks*. A rack can include multiple servers, but they must share the same IP address. Within a data center, racks might be physically separated, but they are generally in the same vicinity. Some architectures define a logical data center, consisting of two or more data centers or a single geographically-dispersed data center.
+Each Cassandra cluster includes one or more data centers, and each data center contains multiple *racks*. A rack can include multiple servers, but they must share the same IP address. Within a data center, racks might be physically separated, but they are generally in the same vicinity. Some architectures define a logical data center, consisting of two or more data centers or a single geographically dispersed data center.
 
 ### Data Management in Cassandra
 
-Cassandra uses a lightweight variant of SQL called the *Cassandra Query Language* (CQL) as its query language. Like most NoSQL languages, CQL is simpler and easier to use than SQL. The Cassandra CQL shell can be accessed using the `cqlsh` command. The base-level CQL object is a keyspace, which groups related data together. A keyspace is similar to a *database* in an RDBMS application. It defines the replication details for all of its tables. A Cassandra table differs somewhat from its RDBMS equivalent. It stores a list of key-value pairs, which can be nested many levels deep, and is typically not normalized.
+Cassandra uses a lightweight variant of SQL called the *Cassandra Query Language* (CQL). Like most NoSQL languages, CQL is simpler and easier to use than SQL. The Cassandra CQL shell can be accessed using the `cqlsh` command. The base-level CQL object is a keyspace, which groups related data together. A keyspace is similar to a *database* in an RDBMS application. It defines the replication details for all of its tables. A Cassandra table differs somewhat from its RDBMS equivalent. It stores a list of key-value pairs, which can be nested many levels deep, and is typically not normalized.
 
 Cassandra requires a different approach to data modeling compared to an RDBMS application. To efficiently model tables and columns, follow these principles:
 
-- Map each Cassandra table to one or more queries.
-- Inside the table, add all columns required to address the queries.
-- If necessary, include the same information inside different tables, even though this duplicates data. Rapid query processing takes precedence over data normalization.
-- In every table, include a primary key to uniquely identify the entry. This key enables replication, allowing Cassandra to partition the data across multiple nodes.
+-   Map each Cassandra table to one or more queries.
+-   Inside the table, add all columns required to address the queries.
+-   If necessary, include the same information inside different tables, even though this duplicates data. Rapid query processing takes precedence over data normalization.
+-   In every table, include a primary key to uniquely identify the entry. This key enables replication, allowing Cassandra to partition the data across multiple nodes.
 
 Cassandra is a complex application with many options and parameters. It is important to have a basic understanding of its architecture before using it in production. For more information, review the [Cassandra Documentation](https://cassandra.apache.org/doc/latest/). Consult the [Data Modelling Guidelines](https://cassandra.apache.org/doc/latest/cassandra/data_modeling/intro.html) before proceeding with the database design.
 
@@ -52,15 +51,15 @@ Cassandra is a complex application with many options and parameters. It is impor
 
 In addition to data distribution and replication, there are many advantages and use cases for Cassandra:
 
-- It can gracefully handle traffic spikes.
-- It features highly-flexible data management.
-- It is an excellent choice whenever redundancy and enhanced reliability are required.
-- It greatly reduces latency across different geographical regions.
-- It can assist with disaster recovery and unexpected outages of an entire data center.
-- It includes enhanced analytics and logs.
-- It efficiently handles sparse data, in which not all columns appear in all records.
+-   It can gracefully handle traffic spikes.
+-   It features highly flexible data management.
+-   It is an excellent choice whenever redundancy and enhanced reliability are required.
+-   It greatly reduces latency across different geographical regions.
+-   It can assist with disaster recovery and unexpected outages of an entire data center.
+-   It includes enhanced analytics and logs.
+-   It efficiently handles sparse data, in which not all columns appear in all records.
 
-Cassandra is usually not the best choice for small or little-used data sets, or if replication and high availability are not important. In these cases, it introduces unnecessary complexity and overhead. Cassandra does not support table joins, so it is not a good choice for heavily normalized data. Finally, it can be complex and difficult to learn, and might require considerable tuning before it can be put into production.
+Cassandra is usually not the best choice for small or little-used data sets, or if replication and high availability are not important. In these cases, it introduces unnecessary complexity and overhead. Cassandra does not support table joins, so it is not a good choice for heavily normalized data. Finally, it can be complex and difficult to learn, and might require considerable tuning before being put into production.
 
 ## Before You Begin
 
@@ -80,19 +79,19 @@ This guide is intended for Ubuntu 22.04 LTS users but is generally applicable fo
 
 To install Cassandra, follow these steps. Unless otherwise specified, execute the following commands on every node in the Cassandra cluster.
 
-1.  Ensure the system is up to data. Reboot the system if necessary.
+1.  Ensure the system is up to data. Reboot the system if necessary:
 
     ```command
     sudo apt-get update -y && sudo apt-get upgrade -y
     ```
 
-2.  Cassandra requires the use of a Java runtime. There are several different versions of Java to choose from, including OpenJDK and Oracle Java. This guide uses OpenJDK 11. Install OpenJDK using `apt`.
+1.  Cassandra requires the use of a Java runtime. There are several different versions of Java to choose from, including OpenJDK and Oracle Java. This guide uses OpenJDK 11. Install OpenJDK using `apt`:
 
     ```command
     sudo apt install default-jre
     ```
 
-3.  Use the `java -version` command to confirm OpenJDK 11 is installed.
+1.  Use the `java -version` command to confirm that OpenJDK 11 is installed:
 
     {{< note >}}
     Cassandra does not require the Java compiler or JDK, but many administrators choose to install it anyway. Optionally install the default JDK using the command `sudo apt install default-jdk`.
@@ -106,7 +105,7 @@ To install Cassandra, follow these steps. Unless otherwise specified, execute th
     openjdk version "11.0.19" 2023-04-18
     ```
 
-4.  Cassandra supports several installation methods. This guide uses `apt` to install Cassandra. First add the Cassandra repository to the list of packages. The following example adds the package for release 4.1. To install a different release, replace `41x` with the actual major and minor release numbers.
+1.  Cassandra supports several installation methods. This guide uses `apt` to install Cassandra. First add the Cassandra repository to the list of packages. The following example adds the package for release 4.1. To install a different release, replace `41x` with the actual major and minor release numbers.
 
     {{< note >}}
     A Cassandra Docker image and a binary file installation are also available. For information on these approaches, see the [Cassandra Install Documentation](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html).
@@ -116,37 +115,41 @@ To install Cassandra, follow these steps. Unless otherwise specified, execute th
     echo "deb https://debian.cassandra.apache.org 41x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
     ```
 
-5.  Add the repository GPG keys to the list of trusted keys.
+    ```output
+    deb https://debian.cassandra.apache.org 41x main
+    ```
+
+1.  Add the repository GPG keys to the list of trusted keys:
 
     ```command
     curl https://downloads.apache.org/cassandra/KEYS | sudo tee /etc/apt/trusted.gpg.d/cassandra.asc
     ```
 
-6.  Update the list of packages.
+1.  Update the list of packages:
 
     ```command
     sudo apt-get update
     ```
 
-7.  Use `apt` to install the application.
+1.  Use `apt` to install the application:
 
     ```command
     sudo apt-get install cassandra
     ```
 
-8.  Confirm the status of the Cassandra service is `active`.
+1.  Confirm that the status of the Cassandra service is `active`:
 
     ```command
     sudo systemctl status cassandra
     ```
 
     ```output
-    cassandra.service - LSB: distributed storage system for structured data
-    Loaded: loaded (/etc/init.d/cassandra; generated)
-    Active: active (running) since Mon 2023-06-05 11:40:06 UTC; 1min 18s ago
+    ● cassandra.service - LSB: distributed storage system for structured data
+         Loaded: loaded (/etc/init.d/cassandra; generated)
+         Active: active (running) since Wed 2023-06-21 11:43:53 EDT; 41s ago
     ```
 
-9.  Confirm the `cqlsh` command connects to the database and displays the `cqlsh` prompt. Use the `exit` command to quit the CQL shell.
+1.  Confirm that the `cqlsh` command connects to the database and displays the `cqlsh` prompt.
 
     {{< note >}}
     Cassandra takes about a minute to fully initialize. Before it is ready, it rejects any connection attempts.
@@ -155,12 +158,20 @@ To install Cassandra, follow these steps. Unless otherwise specified, execute th
     ```command
     cqlsh
     ```
+
     ```output
     [cqlsh 6.1.0 | Cassandra 4.1.2 | CQL spec 3.4.6 | Native protocol v5]
-    cqlsh
+    Use HELP for help.
+    cqlsh>
     ```
 
-10. Repeat the steps in this section for each node in the cluster.
+1.  Use the `exit` command to quit the CQL shell:
+
+    ```command
+    exit
+    ```
+
+1.  Repeat the steps in this section for each node in the cluster.
 
 ## How to Configure Cassandra to Run in Multiple Data Centers
 
@@ -170,11 +181,7 @@ A Cassandra node derives its configuration from the `cassandra.yaml` file. Altho
 
 To fully configure a cluster, follow these steps.
 
-1.  Configure the `ufw` firewall on each node. Allow SSH connections and open ports `7000`, `9042`, and `9160`. Use `sudo ufw enable` to activate the firewall and `sudo ufw status` to confirm the configuration. Repeat these steps for each node in the cluster.
-
-    {{< note >}}
-    For extra security, only allow connections from the other nodes in the cluster. The format for this command is `sudo ufw allow from remote-IP to local-IP proto tcp port 7000`. Replace `remote-IP` with the IP address of one of the other nodes, and `local-IP` with the IP address of the current node. Add an entry for each of the other nodes in the cluster, changing `remote-IP` to the actual IP address of the remote node. Unfortunately, this can become cumbersome for large clusters, and it is easy to accidentally omit a connection.
-    {{< /note >}}
+1.  Configure the `ufw` firewall on each node to allow SSH connections and open ports `7000`, `9042`, and `9160`:
 
     ```command
     sudo ufw allow OpenSSH
@@ -182,6 +189,40 @@ To fully configure a cluster, follow these steps.
     sudo ufw allow 9042/tcp
     sudo ufw allow 9160/tcp
     sudo ufw enable
+    ```
+
+    ```output
+    Rules updated
+    Rules updated (v6)
+    Rules updated
+    Rules updated (v6)
+    Rules updated
+    Rules updated (v6)
+    Rules updated
+    Rules updated (v6)
+    Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+    Firewall is active and enabled on system startup
+    ```
+
+    {{< note >}}
+    For extra security, only allow connections from the other nodes in the cluster. The format for this command is `sudo ufw allow from remote-IP to local-IP proto tcp port 7000`. Replace `remote-IP` with the IP address of one of the other nodes, and `local-IP` with the IP address of the current node. Add an entry for each of the other nodes in the cluster, changing `remote-IP` to the actual IP address of the remote node. Unfortunately, this can become cumbersome for large clusters, and it is easy to accidentally omit a connection.
+    {{< /note >}}
+
+1.  Activate the firewall:
+
+    ```command
+    sudo ufw enable
+    ```
+
+    ```output
+    Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+    Firewall is active and enabled on system startup
+    ```
+
+1.  Confirm the configuration:
+
+    ```command
+    sudo ufw status
     ```
 
     ```output
@@ -198,39 +239,54 @@ To fully configure a cluster, follow these steps.
     9042/tcp (v6)              ALLOW       Anywhere (v6)
     ```
 
-2.  Shut down all nodes in the cluster to avoid data corruption or connection problems. If one of the nodes is currently used in production, this action should be performed within a maintenance window.
+1.  Repeat the above steps for each node in the cluster.
+
+1.  Shut down all nodes in the cluster to avoid data corruption or connection problems. If one of the nodes is currently used in production, this action should be performed within a maintenance window.
 
     ```command
     sudo systemctl stop cassandra
     ```
 
-3.  Delete the application test data. This avoids any unnecessary data replication.
+1.  Delete the application test data. This avoids any unnecessary data replication.
 
     ```command
     sudo rm -rf /var/lib/cassandra/*
     ```
 
-4.  Determine the architecture for the cluster.
+1.  Determine the architecture for the cluster.
 
-    - Choose a name for the entire cluster.
-    - Divide the nodes into data centers based on their proximity to each other.
-    - Decide on a meaningful name for each data center.
-    - Within each data center, supply a rack name for each system. Finally, determine the seed order within each data center. Seed nodes manage cluster discovery and activation. Choose at least two seeds for the cluster, one of which should be the primary seed.
+    -   Choose a name for the entire cluster.
+    -   Divide the nodes into data centers based on their proximity to each other.
+    -   Decide on a meaningful name for each data center.
+    -   Within each data center, supply a rack name for each system. Finally, determine the seed order within each data center. Seed nodes manage cluster discovery and activation. Choose at least two seeds for the cluster, one of which should be the primary seed.
 
     {{< note >}}
     For more information about seeds, see the [Cassandra FAQ](https://cassandra.apache.org/doc/latest/cassandra/faq/index.html).
     {{< /note >}}
 
-5.  On the first node, edit the main Cassandra YAML file at `/etc/cassandra/cassandra.yaml`, making the following changes.
+5.  On the first node, edit the main Cassandra YAML file:
 
-    - For the `cluster_name` attribute, enter the cluster name. This entry must be the same for every node in the cluster.
-    - Inside the `parameters` record in the `seed_provider` attribute, add a comma-separated list of seeds to the `seeds` variable. Enter the primary seed for the local data center first, followed by the other seed nodes in the data center. Then append any seeds from the other data centers.
-    - For example, data center `dc1` might have the primary seed `node1` and the secondary seed `node2`. Another data center in the cluster has `node3` and `node4` as its seeds. For this cluster, the value of `seeds` should be `node1_ip, node2_ip, node3_ip, node4_ip`.
-    - The `listen_address` field must contain the IP address of the system. For additional security, use the private IP address, if one is configured.
-    - The `rpc_address` can be changed to the `127.0.0.1` loopback address. If the server hostname is configured, it can be left as `localhost`.
-    - Set the `endpoint_snitch` field to `GossipingPropertyFileSnitch`.
-    - For a new cluster, set `auto_bootstrap` to `false`.
-    - Ensure `start_native_transport` is set to `true` and `native_transport_port` is `9042`. Depending on the Cassandra release, these values might already be set correctly.
+    ```command
+    sudo nano /etc/cassandra/cassandra.yaml
+    ```
+
+1.  Make the following changes:
+
+    -   For the `cluster_name` attribute, enter the cluster name. This entry must be the same for every node in the cluster.
+
+    -   Inside the `parameters` record in the `seed_provider` attribute, add a comma-separated list of seeds to the `seeds` variable. Enter the primary seed for the local data center first, followed by the other seed nodes in the data center. Then append any seeds from the other data centers.
+
+        For example, data center `dc1` might have the primary seed `node1` and the secondary seed `node2`. Another data center in the cluster has `node3` and `node4` as its seeds. For this cluster, the value of `seeds` should be `node1_ip, node2_ip, node3_ip, node4_ip`.
+
+    -   The `listen_address` field must contain the IP address of the system. For additional security, use the private IP address, if one is configured.
+
+    -   Ensure `start_native_transport` is set to `true` and `native_transport_port` is `9042`. Depending on the Cassandra release, these values might already be set correctly.
+
+    -   The `rpc_address` can be changed to the `127.0.0.1` loopback address. If the server hostname is configured, it can be left as `localhost`.
+
+    -   Set the `endpoint_snitch` field to `GossipingPropertyFileSnitch`.
+
+    -   For a new cluster, set `auto_bootstrap` to `false`.
 
     The following file sample provides a template for the file changes. Follow the system architecture defined earlier and replace parameters like `node1_ip` with the actual IP addresses. Leave the remainder of the file unchanged.
 
@@ -255,27 +311,27 @@ To fully configure a cluster, follow these steps.
     auto_bootstrap: false
     ```
 
+1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
+6.  On the same node, edit the `/etc/cassandra/cassandra-rackdc.properties` file:
+
     ```command
-    sudo vi /etc/cassandra/cassandra.yaml
+    sudo nano /etc/cassandra/cassandra-rackdc.properties
     ```
 
-6.  On the same node, edit the `/etc/cassandra/cassandra-rackdc.properties` file. Specify the data center and rack name of the system. The following example configures a node inside the `london` data center with the rack name `rack1`.
+1.  Specify the data center and rack name of the system. The following example configures a node inside the `london` data center with the rack name `rack1`:
 
     ```file {title="/etc/cassandra/cassandra-rackdc.properties"}
     dc=london
     rack=rack1
     ```
 
-    ```command
-    sudo vi /etc/cassandra/cassandra-rackdc.properties
-    ```
-
 7.  Configure `cassandra.yaml` and `cassandra-rackdc.properties` on the remaining nodes in the first data center.
 
-    - Start with the `cassandra.yaml` changes. Each system must have the same value for the `cluster_name` attribute.
-    - `seeds` must have the same value on each node in the same data center. The node addresses must appear in the same order each time.
-    - Set `listen_address` to the IP address of the system.
-    - For `cassandra-rackdc.properties`, `dc` remains the same for all nodes in the data center. But each system must have its own unique rack name.
+    -   Start with the `cassandra.yaml` changes. Each system must have the same value for the `cluster_name` attribute.
+    -   `seeds` must have the same value on each node in the same data center. The node addresses must appear in the same order each time.
+    -   Set `listen_address` to the IP address of the system.
+    -   For `cassandra-rackdc.properties`, `dc` remains the same for all nodes in the data center. But each system must have its own unique rack name.
 
     The following example illustrates how to configure the two files on a second node in the `london` data center.
 
@@ -305,15 +361,15 @@ To fully configure a cluster, follow these steps.
     rack=rack2
     ```
 
-8.  Configure each node in the first data center in this manner, changing the value of `listen_address` as required.
+8.  Configure each additional node in the first data center in this manner, changing the value of `listen_address` as required.
 
 9.  Now configure the nodes in the second data center.
 
-    - In `/etc/cassandra/cassandra.yaml`, the `seeds` attribute must list the seed nodes for the local data center first, then the seeds for the remote centers.
-    - The `cluster_name` must be the same for all nodes in all data centers.
-    - Change `listen_address` to the system IP address.
-    - In `/etc/cassandra/cassandra-rackdc.properties`, change the value of `dc` to the name of the second data center.
-    - Ensure each `rack` is unique within the center.
+    -   In `/etc/cassandra/cassandra.yaml`, The `cluster_name` must be the same for all nodes in all data centers.
+    -   The `seeds` attribute must list the seed nodes for the local data center first, then the seeds for the remote centers.
+    -   Change `listen_address` to the system IP address.
+    -   In `/etc/cassandra/cassandra-rackdc.properties`, change the value of `dc` to the name of the second data center.
+    -   Ensure each `rack` is unique within the center.
 
     The following example applies to a node in the `singapore` data center.
 
@@ -345,7 +401,7 @@ To fully configure a cluster, follow these steps.
 
 ## How to Activate a Cassandra Cluster
 
-When activating the Cassandra cluster, the nodes must be brought online in a certain order. To properly activate the cluster, follow these steps.
+Nodes must be brought online in a certain order when activating the Cassandra cluster. Follow these steps to properly activate the cluster.
 
 1.  Restart Cassandra on the primary seed in one of the data centers. This is the node listed first in `seeds`.
 
@@ -353,31 +409,29 @@ When activating the Cassandra cluster, the nodes must be brought online in a cer
     sudo systemctl start cassandra
     ```
 
-2.  Ensure the Cassandra service is `active`.
+2.  Ensure the Cassandra service is `active`:
 
     ```command
     sudo systemctl status cassandra
     ```
 
     ```output
-    cassandra.service - LSB: distributed storage system for structured data
-    Loaded: loaded (/etc/init.d/cassandra; generated)
-    Active: active (running) since Wed 2023-06-07 12:55:58 UTC; 34s ago
+    ● cassandra.service - LSB: distributed storage system for structured data
+         Loaded: loaded (/etc/init.d/cassandra; generated)
+         Active: active (running) since Wed 2023-06-21 14:05:57 EDT; 19s ago
     ```
 
 3.  Restart the primary seed nodes in all remaining data centers. Wait for `cassandra` to become `active`.
 
-4.  Restart all remaining nodes in the cluster.
+4.  Restart all remaining nodes in the cluster, then wait two or three minutes to allow all systems to synchronize.
 
-5.  Wait for two or three minutes to allow all systems to synchronize. Use `sudo nodetool status` to confirm the status of the cluster. Each node appears in the output. The `Status/State` of each node should be `UN`, which stands for `Up` and `Normal`.
-
-    {{< note >}}
-    If a node is not `Up` and `Normal`, ensure the `cassandra` service is stable. Verify the details in `cassandra-rackdc.properties` and confirm the node is part of the correct data center. The rack name must be unique within the data center. After changing any configuration files, stop and restart Cassandra.
-    {{< /note >}}
+5.  Confirm the status of the cluster:
 
     ```command
     sudo nodetool status
     ```
+
+    Each node appears in the output. The `Status/State` of each node should be `UN`, which stands for `Up` and `Normal`:
 
     ```output
     Datacenter: london
@@ -397,9 +451,13 @@ When activating the Cassandra cluster, the nodes must be brought online in a cer
     UN  192.168.2.20  137.83 KiB  16      51.0%             8dd52e5b-4fcb-463f-9c2a-b71158663385  rack1
     ```
 
+    {{< note >}}
+    If a node is not `Up` and `Normal`, ensure the `cassandra` service is stable. Verify the details in `cassandra-rackdc.properties` and confirm the node is part of the correct data center. The rack name must be unique within the data center. After changing any configuration files, stop and restart Cassandra.
+    {{< /note >}}
+
 ## How to Add Tables and Data to Cassandra
 
-Cassandra uses the CQL language to alter the database contents. Cassandra can read data from a file, but users can add entries manually using the `cqlsh` utility. Create a *keyspace* before adding any tables or data. A keyspace defines the replication style, indicating how many times to replicate the data. Database tables are only meaningful within the context of their parent keyspace. For more information on CQL, consult the [Cassandra CQL documentation](https://cassandra.apache.org/doc/latest/cassandra/cql/index.html).
+Cassandra uses the CQL language to alter database contents. Cassandra can read data from a file or users can add entries manually using the `cqlsh` utility. Create a *keyspace* before adding any tables or data. A keyspace defines the replication style, indicating how many times to replicate the data. Database tables are only meaningful within the context of their parent keyspace. For more information on CQL, consult the [Cassandra CQL documentation](https://cassandra.apache.org/doc/latest/cassandra/cql/index.html).
 
 To add a keyspace, table, and data to Cassandra, follow these steps.
 
@@ -411,9 +469,9 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
 
 2.  Create a keyspace using the `CREATE KEYSPACE` statement and define the replication procedure.
 
-    - For a cluster containing multiple data centers, use `NetworkTopologyStrategy` for the `class`.
-    - Specify a replication factor for each data center in the cluster. This indicates how many copies of the data to store in the data center.
-    - The syntax for the statement is `CREATE KEYSPACE IF NOT EXISTS keyspacename WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 2, 'datacenter2' : 2  };`.
+    -   For a cluster containing multiple data centers, use `NetworkTopologyStrategy` for the `class`.
+    -   Specify a replication factor for each data center in the cluster. This indicates how many copies of the data to store in the data center.
+    -   The syntax for the statement is `CREATE KEYSPACE IF NOT EXISTS keyspacename WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 2, 'datacenter2' : 2  };`.
 
     The following example saves two copies of each table entry in the `store` keyspace to the `london` data center, and two to the `singapore` center.
 
@@ -421,11 +479,13 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     CREATE KEYSPACE IF NOT EXISTS store WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'london' : 2, 'singapore' : 2  };
     ```
 
-3.  Confirm the keyspace is successfully created. The new `store` keyspace is listed alongside any existing keyspaces.
+3.  Confirm the keyspace is successfully created:
 
     ```command
     desc keyspaces;
     ```
+
+    The new `store` keyspace is listed alongside any existing keyspaces:
 
     ```output
     store   system_auth         system_schema  system_views
@@ -456,7 +516,7 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     ```output
      userid | item_count
     --------+------------
-     59 |         12
+     59     |         12
     (1 rows)
     ```
 
@@ -473,7 +533,7 @@ To add a keyspace, table, and data to Cassandra, follow these steps.
     ```output
      userid | item_count
     --------+------------
-     59 |         12
+     59     |         12
     (1 rows)
     ```
 
