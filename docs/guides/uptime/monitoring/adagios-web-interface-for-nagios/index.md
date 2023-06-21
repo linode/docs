@@ -5,7 +5,7 @@ description: "Adagios provides a clean and simplified approach to using the Nagi
 keywords: ['adagios tutorial','nagios monitoring','nagios web interface']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2023-04-15
+published: 2023-06-21
 modified_by:
   name: Linode
 external_resources:
@@ -59,7 +59,7 @@ Additionally, Adagios provides a RESTful API for accessing and managing a Nagios
 
 ### Installing Adagios
 
-On most systems, the best way to install Adagios is from source. This approach makes the Adagios configuration easier to manipulate, which is necessary depending on where Nagios is installed. The steps may seem daunting, but the aim is to make each part of the installation clear and manageable.
+On most systems, the best way to install Adagios is from source. This approach makes the Adagios configuration easier to manipulate, which is necessary depending on where Nagios is installed.
 
 #### Setting Up the Prerequisites
 
@@ -126,6 +126,8 @@ On most systems, the best way to install Adagios is from source. This approach m
 
     The changes here assume your `nagios.cfg` file is stored within the `/usr/local/nagios/etc/` directory. That should be the case when following the Nagios installation guide linked earlier in this tutorial. However, replace `/usr/local/nagios/` below with the actual directory containing your installed Nagios files if that directory differs.
 
+    These changes also disable PNP4Nagios, which adds performance graphing features. However PNP4Nagios is now deprecated, so it is not covered here. To install it anyway, follow [Nagios's instructions](https://support.nagios.com/kb/article/nagios-core-performance-graphs-using-pnp4nagios-801.html#CentOS) and do not execute the `enable_pnp4nagios` command below.
+
     ```command
     sudo sed -i 's|/etc/nagios|/usr/local/nagios/etc|g' /etc/adagios/adagios.conf
     sudo sed -i 's|/usr/sbin/nagios|/usr/local/nagios/bin/nagios|g' /etc/adagios/adagios.conf
@@ -133,8 +135,6 @@ On most systems, the best way to install Adagios is from source. This approach m
     sudo sed -i 's|# ALLOWED_HOSTS|ALLOWED_HOSTS|g' /etc/adagios/adagios.conf
     sudo sed -i 's|livestatus_path = None|livestatus_path = "/usr/lib/nagios/mk-livestatus/livestatus"|g' /etc/adagios/adagios.conf
     ```
-
-    These changes also disable PNP4Nagios, which adds performance graphing features. However PNP4Nagios is now deprecated, so is not covered here. To install it anyway, follow [Nagios's instructions](https://support.nagios.com/kb/article/nagios-core-performance-graphs-using-pnp4nagios-801.html#CentOS) and do not execute the `enable_pnp4nagios` command above.
 
 1.  Copy the remaining Adagios configuration files to the appropriate places on your system, and ensure the Adagios user has the ownership it needs:
 

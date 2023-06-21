@@ -5,7 +5,7 @@ description: "Nagios offers a robust server-monitoring system, complete with bui
 keywords: ['install nagios centos','nagios centos tutorial','install nagios on rocky linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2023-04-11
+published: 2023-06-21
 modified_by:
   name: Linode
 external_resources:
@@ -34,9 +34,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Install Nagios
 
-While Nagios is generally available from most system's package managers, the recommended installation is from source. Installations from the package manager tend to have hidden configuration needs, and lack documentation and support.
+While Nagios is generally available from most system's package managers, the recommended installation is from source. Installations from package managers tend to have hidden configuration needs, and lack documentation and support.
 
-This tutorial breaks down the source installation process to make it as clear and straightforward as possible. Follow along and you should have Nagios up and running on your system soon.
+This tutorial outlines the source installation process.
 
 While the steps in this tutorial focus on CentOS Stream 8, they should also work on AlmaLinux and Rocky Linux.
 
@@ -44,7 +44,7 @@ While the steps in this tutorial focus on CentOS Stream 8, they should also work
 
 In addition to the steps in the [Before You Begin](/docs/guides/install-nagios-on-centos-8/#before-you-begin) section above, Nagios has a few more installation prerequisites.
 
-1.  First, set SELinux into permissive mode. This limits SELinux to warnings rather than enforcement.
+1.  First, set SELinux to permissive mode. This limits SELinux to issuing warnings rather than rules enforcement.
 
     ```command
     sudo sed -i 's/SELINUX=.*/SELINUX=permissive/g' /etc/selinux/config
@@ -80,7 +80,7 @@ In addition to the steps in the [Before You Begin](/docs/guides/install-nagios-o
 
 Nagios uses a LAMP stack for its base application and to serve its monitoring interface. Learn more about LAMP stacks, as well as how to set them up, in our guide [Installing a LAMP Stack on CentOS 8](/docs/guides/how-to-install-a-lamp-stack-on-centos-8/).
 
-However, Nagios only need two parts of the LAMP stack: the Apache Web Server and PHP. The following steps just set up these necessary parts.
+However, Nagios only needs to install two parts of the LAMP stack: the Apache Web Server and PHP. The following steps just set up these necessary parts.
 
 1.  Install the Apache Web Server:
 
@@ -159,7 +159,7 @@ However, Nagios only need two parts of the LAMP stack: the Apache Web Server and
     sudo systemctl restart httpd
     ```
 
-1.  Add the `nagiosadmin` user account via `htpasswd`. Running this command prompts you to create a password for the new user account. This is what you use to log into the Nagios interface.
+1.  Add the `nagiosadmin` user account via `htpasswd`. Running this command prompts you to create a password for the new user account. This is the user you use to log into the Nagios interface.
 
     ```command
     sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
