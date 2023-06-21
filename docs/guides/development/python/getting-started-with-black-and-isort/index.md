@@ -12,7 +12,7 @@ modified_by:
 
 [Python](/docs/guides/development/python/) is one of the world's most widely used programming languages, with general acceptance in web development, data science, and embedded systems. Python's formal syntax is somewhat open, as it permits a considerable range of styles. This allows programmers to indent, punctuate, and name according to their personal preferences.
 
-However, projects spanning larger teams benefit from consistency. While an application written in a number of different styles is no less correct, those different styles becomes a distraction to those maintaining the code. For instance, these two example Python fragments execute indistinguishably:
+However, projects spanning larger teams benefit from consistency. While an application written in a number of different styles is no less correct, these different styles becomes a distraction to those maintaining the code. For instance, the following two example Python fragments execute identically:
 
 ```file {lang="python"}
 if is_late :
@@ -38,7 +38,7 @@ Black is more ambitious. It addresses nearly everything about a Python source, s
 
 ## What Do Black and isort Do?
 
-In the simplest terms, Black and isort both *format* Python code. The closest synonyms to "format" would be "prettify" (e.g. CSS) or "standardize". However, Black's inventor [Łukasz Langa](https://lukasz.langa.pl/), the [CPython Developer in Residence](https://realpython.com/podcasts/rpp/82/), consistently describes Black as a "formatter".
+In the simplest terms, Black and isort both *format* Python code. The closest synonyms to "format" would be "prettify" (e.g. JavaScript) or "standardize". However, Black's inventor [Łukasz Langa](https://lukasz.langa.pl/), the [CPython Developer in Residence](https://realpython.com/podcasts/rpp/82/), consistently describes Black as a "formatter".
 
 Black and isort both help Python programs look better and conform to a standard. They restyle Python code that doesn't match that standard. Think of them as spellcheckers for programmers. Like spellcheckers, they don't change the content of what you write, they simply polish its rough edges.
 
@@ -72,9 +72,9 @@ The web application above is able to do much more. Enter any Python code in the 
 
 ### Installing Black and isort Locally
 
-While the web-based tools are great, frequent use of Black and isort deserves local installation. While that demands a little effort, a local installation integrated within your working environment is far more efficient. This might entail configuration of an [Integrated Development Environment (IDE)](https://www.linode.com/docs/guides/development/), a [Continuous Integration (CI)](https://www.linode.com/docs/guides/development/ci/) platform, or other minor complexities.
+While the web-based tools are easily accessible, frequent use of Black and isort deserves local installation. Despite the extra effort involved, a local installation integrated within your working environment is far more efficient. This might entail configuration of an [Integrated Development Environment (IDE)](https://www.linode.com/docs/guides/development/), a [Continuous Integration (CI)](https://www.linode.com/docs/guides/development/ci/) platform, or other minor complexities.
 
-Despite the variations, any environment with [Package Installer for Python (pip)](https://pypi.org/project/pip/) can immediately install Black and isort.
+Any environment with [Package Installer for Python (pip)](https://pypi.org/project/pip/) can immediately install Black and isort.
 
 1.  Use the following command to install both Black and isort:
 
@@ -83,7 +83,7 @@ Despite the variations, any environment with [Package Installer for Python (pip)
     ```
 
     {{< note >}}
-    Some environments require a version number on the `pip` command. You may need to use an alternate form:
+    Some environments require a version number on the `pip` command, so you may need to use an alternate form:
 
     ```command
     pip3 install black isort
@@ -120,11 +120,11 @@ Despite the variations, any environment with [Package Installer for Python (pip)
 
 ## Benefits of Black and isort usage
 
-In broad terms, stylistic standardization is desirable in many programming contexts. Python is a flexible language as many possible variations can end in the same result equally well. However, adopting conventions simplifies programming chores, and allows you to focus on the end result.
+In broad terms, stylistic standardization is desirable in many programming contexts. Python is a flexible language as many possible variations can end in the same result equally well. However, adopting conventions simplifies programming chores, allowing you to focus on the end result.
 
 ### Benefits of Consistent Coding Practices
 
-There is extensive research published on ["Why you should use Black …"](http://www.locallyoptimal.com/blog/2019/08/23/why-you-should-use-black-for-your-python-style-linting/), and the benefits of ["Consistent Python code with Black"](https://www.mattlayman.com/blog/2018/python-code-black/). ["Using Black …"](https://hackernoon.com/using-black-to-auto-format-your-python-8cu338f) even includes the possibility that an employer might choose you for your well-formatted source. If you are ["Tired of Pointless Discussions on Code Formatting …"](https://towardsdatascience.com/tired-of-pointless-discussions-on-code-formatting-a-simple-solution-exists-af11ea442bdc), Black is a simple, low-cost response. ["Why Prettier?"](https://towardsdatascience.com/tired-of-pointless-discussions-on-code-formatting-a-simple-solution-exists-af11ea442bdc) summarizes these arguments concisely, and while it applies to JavaScript, nearly all of the arguments apply equally to Python.
+There is extensive research published on ["Why you should use Black …"](http://www.locallyoptimal.com/blog/2019/08/23/why-you-should-use-black-for-your-python-style-linting/), and the benefits of ["Consistent Python code with Black"](https://www.mattlayman.com/blog/2018/python-code-black/). ["Using Black …"](https://hackernoon.com/using-black-to-auto-format-your-python-8cu338f) even floats the possibility that an employer might choose you for your well-formatted source. If you are ["Tired of Pointless Discussions on Code Formatting …"](https://towardsdatascience.com/tired-of-pointless-discussions-on-code-formatting-a-simple-solution-exists-af11ea442bdc), Black is a simple low-cost response. ["Why Prettier?"](https://towardsdatascience.com/tired-of-pointless-discussions-on-code-formatting-a-simple-solution-exists-af11ea442bdc) summarizes these arguments concisely, and while it applies to JavaScript, nearly all of the arguments apply equally to Python.
 
 For even more from people with real-world experience, study these threads on [HackerNews](https://news.ycombinator.com/item?id=30130315) and [Reddit](https://www.reddit.com/r/Python/comments/8lmnzr/thoughts_on_black/). As one of the contributors declares, ["...Black is truly a huge blessing in the Python ecosystem"](https://news.ycombinator.com/item?id=30131185).
 
@@ -144,7 +144,7 @@ As both Black and isort are Python formatters, their usage is quite similar.
     isort example.py
     ```
 
-Both Black and isort default to action "in place", meaning that they write changes directly to the file. Both also follow similar syntaxes for managing multiple sources.
+By default, both Black and isort write changes directly to the specified file. Both formatters also follow similar syntaxes for managing multiple sources.
 
 Neither changes the function of the code they format. Black takes this so seriously that, by default, it [executes a specific test to confirm "code equivalence"](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#ast-before-and-after-formatting) each time it's invoked.
 
@@ -152,9 +152,9 @@ However, the two utilities assume different responsibilities:
 
 -   Black addresses nearly all stylistic questions, including tabs versus spaces, indentation count, quote characters, lexeme separators, and much more. Black is opinionated. It makes choices, even between close alternatives.
 
--   In contrast, isort only does one thing. As its name implies, isort literally just sorts[`import` statements](https://docs.python.org/3/reference/import.html) (isort = `import` sort).
+-   In contrast, isort only does one thing. As its name implies, isort literally just sorts [`import` statements](https://docs.python.org/3/reference/import.html) ("isort" = "`import` sort").
 
-    Import statements tell Python programs how to use external resources. When first learning Python, `import` has little importance. The focus is on Python's built-in features, and how to use them. However, as Python programs grow, their content increasingly changes from stand-alone algorithms to coordination between external assets. Commercial-grade Python programs often start with a full page of references to other modules. In such situations, sorting and formatting `import` statements is a significant advantage.
+    Import statements tell Python programs how to use external resources. When first learning Python, `import` has little importance, as the focus is on Python's built-in features, and how to use them. However, as Python programs grow, their content increasingly changes from stand-alone algorithms to coordination between external assets. Commercial-grade Python programs often start with a full page of references to other modules. In such situations, sorting and formatting `import` statements is a significant advantage.
 
 ### Who Uses Black and isort?
 
@@ -162,9 +162,9 @@ Many of the most celebrated open source [Python projects use Black](https://gith
 
 ### When to Use Black and isort
 
-If your programming work is [collaborative](https://simpleprogrammer.com/working-on-a-team/), you'll likely benefit from using Black and isort. For example, if you're a member of a larger project, cooperate with others on a common goal, or simply want to [style your work more consistently](https://sunnysingh.io/blog/readable-code).
+If your programming work is [collaborative](https://simpleprogrammer.com/working-on-a-team/), you're likely to benefit from using Black and isort. For example, if you're a member of a larger project, cooperate with others on a common goal, or simply want to [style your work more consistently](https://sunnysingh.io/blog/readable-code).
 
-Black and isort's potential goes far beyond what's been demonstrated so far. Experiment with them both for a few minutes to learn their actions and discover what they can do for your code. You might find why [celebrated Python contributors testify](https://github.com/psf/black#testimonials) that Black is the single greatest productivity tool for their programming.
+Black and isort's potential goes far beyond what's been demonstrated so far. Experiment with them both for a few minutes to learn their actions and discover what they can do for you. You might find why [celebrated Python contributors testify](https://github.com/psf/black#testimonials) that Black is the single greatest productivity tool for their programming.
 
 ### When Not to Use Black and isort
 
@@ -172,7 +172,7 @@ As a Python programmer, Black and isort are entirely optional. If your formattin
 
 ## Black and isort Examples
 
-Black and isort can be used in a number of different ways. Use the following command to invoke both Black and isort as command line utilities on your local desktop or [Linode server](https://www.linode.com/docs/guides/use-a-linode-for-web-development-on-remote-devices/):
+Black and isort can be used in a number of different ways. Use the following command to invoke both Black and isort as command line utilities on your local desktop or [Linode server](/docs/guides/use-a-linode-for-web-development-on-remote-devices/):
 
 ```command
 black example.py; isort example.py
@@ -220,7 +220,7 @@ mylonglist = [
 
 ### Comprehensions
 
-Comprehensions (i.e. [list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions), [set comprehensions](https://docs.python.org/3/tutorial/datastructures.html#sets)) have the reputation of being a difficult part of Python. Black helps by formatting comprehensions in a consistent and relatively understandable way, for example:
+Comprehensions (i.e. [list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) and [set comprehensions](https://docs.python.org/3/tutorial/datastructures.html#sets)) have a reputation of being difficult. Black helps by formatting comprehensions in a consistent and relatively understandable way, for example:
 
 ```file {title="Before" lang="python"}
 return [factory.configuration["private"].decode()[0] for factory in factories if factor.is_active()]
@@ -324,18 +324,18 @@ multi_line_output = 3
 
 ### Choice of Editor
 
-Both Black and isort are compatible with popular [Interactive Development Environments (IDEs)](https://www.linode.com/community/questions/6576/ide-with-linode). A plugin is available for IntelliJ, PyCharm, and VS Studio that allows Black and isort to automatically format source as you type. Search your IDEs plugin catalog for details.
+Both Black and isort are compatible with popular [Interactive Development Environments (IDEs)](https://www.linode.com/community/questions/6576/ide-with-linode). A plugin is available for IntelliJ, PyCharm, and VS Studio that allows Black and isort to automatically format code as you type. Search your IDE's plugin catalog for details.
 
 ### Line Length Configuration
 
 [Black defaults to 88 characters per line](https://test-black.readthedocs.io/en/latest/the_black_code_style.html#line-length). Large organizations are known to use values from 80 to 120, and Black makes it easy to adjust `max-line-length`.
 
-Make sure to align any line length setting for both Black and isort, along with such other tools as Flake8 and Pylint. When not aligned, they attempt to correct each other, causing confusion. Different tools may not have the same default settings for line length, so be sure to configure them appropriately.
+Make sure to align any line length setting for both Black and isort, along with other tools such as Flake8 and Pylint. When not aligned, they attempt to correct each other, causing confusion. Different tools may not have the same default settings for line length, so be sure to configure them appropriately.
 
 ### Black and isort in Continuous Integration (CI)
 
 Part of the enthusiasm for Black and isort has to do with their role in transforming source code reviews. In the absence of automated formatters, human reviewers take responsibility for enforcement of organizational style guides and policies. The conversations which result are a big part of what gives source reviews their [reputation for dysfunction](https://blog.submain.com/code-review-horror-stories/).
 
-Automatic source formatting transforms those conversations. With Black and isort part of [Continuous Integration (CI)](https://www.linode.com/docs/guides/development/ci/) pipelines, automatic processes take care of most formatting matters.
+Automatic source formatting transforms those conversations. When Black and isort are part of [Continuous Integration (CI)](https://www.linode.com/docs/guides/development/ci/) pipelines, automatic processes take care of most formatting matters.
 
 Black and isort are straightforward command line tools that are already widely used in CI. Whether your platform of choice is GitHub, GitLab, or Jenkins, plugins for Black and isort are likely available.
