@@ -709,6 +709,7 @@ fortinet
 fortnite
 fortran
 fordham
+formatters
 fmt
 fn
 fpm
@@ -1155,6 +1156,7 @@ kustomize
 kuznetosv
 lambdabunker
 Laminas
+Langa
 LANs
 laravel
 largebiomes
