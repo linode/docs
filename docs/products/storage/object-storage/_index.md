@@ -36,11 +36,14 @@ Using Object Storage to host your static site files means you do not have to wor
 Object Storage is available within the following data centers:
 
 | Data Center | Cluster ID |
-| ------------| --------------------- |
-| Atlanta, GA, USA | us-southeast-1 |
-| Frankfurt, Germany | eu-central-1 |
-| Newark, NJ, USA | us-east-1 |
-| Singapore | ap-south-1 |
+| -- | -- |
+| Atlanta, GA (USA) | `us-southeast-1` |
+| Chicago, IL (USA) | `us-ord-1` |
+| Frankfurt (Germany) | `eu-central-1` |
+| Newark, NJ (USA) | `us-east-1` |
+| Paris (France) | `fr-par-1` |
+| Singapore | `ap-south-1` |
+| Washington, DC (USA) | `us-iad-1` |
 
 Object Storage deployments in each data center are assigned a cluster ID. These are used when [formatting URLs](/docs/products/storage/object-storage/guides/urls/) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck).
 

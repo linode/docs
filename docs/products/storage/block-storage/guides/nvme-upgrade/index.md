@@ -1,7 +1,7 @@
 ---
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
-modified: 2023-02-10
+modified: 2023-06-21
 authors: ["Linode"]
 ---
 
@@ -13,23 +13,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 
 ## Availability
 
-**NVMe Block Storage** has been deployed to all data centers, with the exception of Fremont, as indicated in the table below.
-
-| Data Center | NVMe Block Storage |
-| -- | -- |
-| **Atlanta (Georgia, USA)** | **Deployed** |
-| **Dallas (Texas, USA)** | **Deployed** |
-| **Frankfurt (Germany)** | **Deployed** |
-| Fremont (California, USA) | *Not yet available* |
-| **London (United Kingdom)** | **Deployed** |
-| **Mumbai (India)** | **Deployed** |
-| **Newark (New Jersey, USA)** | **Deployed** |
-| **Singapore** | **Deployed** |
-| **Sydney (Australia)** | **Deployed** |
-| **Tokyo (Japan)** | **Deployed** |
-| **Toronto (Canada)** | **Deployed** |
-
-Once NVMe Block Storage has been deployed in a data center, all *new* Volumes created after will use the new NVMe architecture.
+**NVMe Block Storage** has been deployed to all data centers except for Fremont, CA (USA).
 
 ## Upgrading a Volume to NVMe Block Storage
 
