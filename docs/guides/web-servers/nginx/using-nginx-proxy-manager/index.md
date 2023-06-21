@@ -5,7 +5,7 @@ description: "The Nginx Proxy Manager conveniently manages proxy hosts for your 
 keywords: ['nginx proxy manager tutorial','nginx proxy manager docker','nginx-proxy-manager github']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2023-02-18
+published: 2023-06-21
 modified_by:
   name: Linode
 external_resources:
@@ -15,7 +15,7 @@ external_resources:
 - '[Grafana Labs: Monitoring a Linux Host with Prometheus, Node Exporter, and Docker Compose](https://grafana.com/docs/grafana-cloud/quickstart/docker-compose-linux/)'
 ---
 
-The Nginx Proxy Manager offers a convenient tool for managing proxy hosting. The proxy manager makes it relatively easy to forward traffic to your services, whether running on your home network or elsewhere.
+The Nginx Proxy Manager offers a convenient tool for managing proxy hosting. The proxy manager makes it relatively easy to forward traffic to your services, whether running on the cloud or your home network.
 
 This tutorial introduces the Nginx Proxy Manager and illustrates how to start using it. Learn how to install the Nginx Proxy Manager and use it to set up proxy hosts for your own services.
 
@@ -31,13 +31,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is the Nginx Proxy Manager?
 
-The [Nginx Proxy Manager](https://nginxproxymanager.com/) allows you to create and manage proxy hosts simply and easily.
+The [Nginx Proxy Manager](https://nginxproxymanager.com/) allows you to create and manage proxy hosts.
 
-With a traditional Nginx setup, creating and maintaining proxies can be tedious, sometimes more so than it is worth in otherwise straightforward setups. The Nginx Proxy Manager takes all of the steps involved and packages them into a convenient web interface. Once your services are running, you can easily create a proxy host within the Nginx Proxy Manager to forward traffic according to your specifications.
+With a traditional Nginx setup, creating and maintaining proxies can be time consuming, and sometimes more effort than it's worth. The Nginx Proxy Manager takes all of the steps involved and packages them into a convenient web interface. Once your services are running, you can easily create a proxy host within the Nginx Proxy Manager to forward traffic according to your specifications.
 
 However, the Nginx Proxy Manager may not be well-suited to more advanced use cases. For instance, the proxy manager does not have load balancing and other more advanced features of standard Nginx.
 
-Nevertheless, the proxy manager can significantly help with many web service setups. It is especially useful for deploying proxies for services running on home networks. The proxy manager can also be a boon for administrator services, from server-monitoring tools to website administration interfaces.
+Nevertheless, the proxy manager can significantly help with many web service setups. It is especially useful for deploying proxies for services running on premise. The proxy manager can also be beneficial for administrator services, offering server-monitoring tools and website administration interfaces.
 
 For most cases, the Nginx Proxy Manager's convenience and ease of use make it a compelling solution.
 
@@ -154,9 +154,9 @@ sudo systemctl start docker
 
 ### Running the Nginx Proxy Manager
 
-With the prerequisites in place, start up the Nginx Proxy Manager. This calls for deploying a straightforward Docker Compose configuration, which is provided in the steps below.
+With the prerequisites in place, start up the Nginx Proxy Manager. This calls for deploying a Docker Compose configuration, which is provided in the steps below.
 
-1.  First, create a directory for the Nginx Proxy Manager's Docker Compose, and change into that directory. This tutorial uses the directory `~/nginx-proxy-manager/`, and the remaining steps assume you are working out of this directory.
+1.  First, create a directory for the Nginx Proxy Manager's Docker Compose files, and change into that directory. This tutorial uses the directory `~/nginx-proxy-manager/`, and the remaining steps assume you are working out of this directory.
 
     ```command
     mkdir ~/nginx-proxy-manager/
@@ -208,11 +208,11 @@ With the prerequisites in place, start up the Nginx Proxy Manager. This calls fo
 
 The Docker Compose configuration above contains an optional feature. The `proxiable` network allows you to run the Nginx Proxy Manager within the same Docker network as other services. This gives you the option of easy and secure communications between the proxy manager and your Docker services.
 
-The example Grafana setup in the [How to Expose a Service through the Nginx Proxy Manager](/docs/guides/using-nginx-proxy-manager/#how-to-expose-a-service-through-the-nginx-proxy-manager) section further on leverages this feature. See the included Docker Compose configuration for how the network is included in the service.
+The example Grafana setup in the [How to Expose a Service through the Nginx Proxy Manager](/docs/guides/using-nginx-proxy-manager/#how-to-expose-a-service-through-the-nginx-proxy-manager) section later in this guide leverages this feature. See the included Docker Compose configuration for how the network is included in the service.
 
 ### Accessing the Nginx Proxy Manager Interface
 
-The Nginx Proxy Manager can now be accessed. Open a web browser and navigate to port `81` on the public IP address of the system that the proxy manager is running on.
+The Nginx Proxy Manager can now accessible. Open a web browser and navigate to port `81` on the public IP address of the system that the proxy manager is running on.
 
 For example, if you are running the Nginx Proxy Manager on a machine with a public IP address of `192.0.2.0`, you would navigate to `192.0.2.0:81`.
 
@@ -235,11 +235,11 @@ To see what the Nginx Proxy Manager is capable of, set it up as a reverse proxy 
 
 This tutorial structures its example around a [Grafana](https://grafana.com/) monitoring service deployed with Docker Compose. However, if you already have your own service, you can easily use that in place of the Grafana service.
 
-The demonstration here also leverages a couple of useful features of the Nginx Proxy Manager. First, it uses a shared Docker network between the proxy manager service and the Grafana service to make connections easier and more secure. Second, it sets up a reverse proxy for the proxy manager's own interface, providing more convenient and secure access to it.
+The demonstration here leverages useful features of the Nginx Proxy Manager. First, it uses a shared Docker network between the proxy manager service and the Grafana service to make connections easier and more secure. Second, it sets up a reverse proxy for the proxy manager's own interface, providing more convenient and secure access to it.
 
 ### Creating the DNS Records
 
-You must create at least one DNS record for a domain name to proxy your service to. The rest of this tutorial uses `example.com` as the domain. Replace that throughout with your actual domain name.
+You must create at least one DNS record for a domain name to proxy your service to. The rest of this tutorial uses `example.com` as the domain, replace that in the example commands with your actual domain name.
 
 While Linode does not provide domain name registration, you can use the Linode DNS manager to manage DNS records for a domain name. Refer to our guide [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) for details on these steps if you are using the Linode DNS Manager.
 
@@ -257,7 +257,7 @@ The rest of this tutorial assumes that you have done the following:
 
 ### Setting Up a Service
 
-The Nginx Proxy Manager can work well with a wide range of services, but it really shines with services deployed via Docker.
+The Nginx Proxy Manager can work well with a wide range of services, but it excels with services deployed via Docker.
 
 To demonstrate, this tutorial provides a Docker Compose configuration to deploy the Grafana service. The deployment includes Prometheus and comes ready to monitor the performance of your server.
 
