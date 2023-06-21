@@ -4,7 +4,7 @@ description: "Understand SSH public key authentication and learn how to generate
 keywords: ["ssh", "public key"]
 tags: ["ssh","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/']
+aliases: ['/security/ssh-keys/','/tools-reference/ssh/use-public-key-authentication-with-ssh/','/security/use-public-key-authentication-with-ssh/','/security/authentication/use-public-key-authentication-with-ssh/','/networking/ssh/use-public-key-authentication-with-ssh/']
 bundles: ['debian-security', 'centos-security', 'network-security']
 modified_by:
   name: Linode
