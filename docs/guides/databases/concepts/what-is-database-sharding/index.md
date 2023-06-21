@@ -5,7 +5,7 @@ description: "Database sharding can be a useful tool to help you scale your data
 keywords: ['database sharding','database sharding vs partitioning','what is database sharding']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
-published: 2022-03-20
+published: 2022-06-21
 modified_by:
   name: Linode
 external_resources:
@@ -23,7 +23,7 @@ This tutorial explains what database sharding is and walks through its pros and 
 
 ## What Is Database Sharding?
 
-Database sharding allows you to distribute a single data set across multiple databases. It is a *horizontal partitioning* database architecture, where databases share a schema, but each holds different rows of data. Think less of database sharding versus partitioning, and more of sharding as a particular kind of partitioning, contrasted to vertical partitioning.
+Database sharding allows you to distribute a single data set across multiple databases. It is a *horizontal partitioning* database architecture, where databases share a schema, but each holds different rows of data. Think less of sharding as a particular kind of partitioning, contrasted to vertical partitioning.
 
 This allows additional server nodes to share in the request load. This distribution of the load simultaneously increases storage capabilities as well as the number of requests that servers can handle.
 
@@ -45,7 +45,7 @@ Sharding fits into horizontal scaling models, also called *scaling out* models. 
 
 Consistent with these horizontal scaling models, database sharding offers performance benefits for growing applications, such as:
 
--   **Increased Storage Capabilities**: Single machines have practical storage limits, but horizontal scaling through sharding outmaneuvers these limits by increasing the number of machines.
+-   **Increased Storage Capabilities**: Single machines have practical storage limits, but horizontal scaling through sharding helps avoid these limits by increasing the number of machines.
 
 -   **Improved Response Time**: Sharded databases often read and write on smaller database instances, which can reduce the time needed to locate data and provide responses.
 
