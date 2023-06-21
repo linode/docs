@@ -322,9 +322,7 @@ This template includes common API logic and functions.
   {{ with $s.Description }}
     {{ $m.Set "Description" . }}
   {{ end }}
-  {{ with $s.Default }}
-    {{ $m.Set "Default" . }}
-  {{ end }}
+  {{ $m.Set "Default" $s.Default }}
   {{ with $s.Enum }}
     {{ $m.Set "Enum" . }}
   {{ end }}
@@ -510,9 +508,9 @@ This template includes common API logic and functions.
 
     {{ end }}
 
-    {{ with .Default }}
+    {{ if or .Default (eq .Default false) }}
       Default:
-      <code>{{ . }}</code>
+      <code>{{ .Default }}</code>
     {{ end }}
   </div>
 {{ end }}
