@@ -16,11 +16,11 @@ modified_by:
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/).
 
-1.  You need to generate an [API Token](https://www.linode.com/docs/products/tools/api/guides/manage-api-tokens/).
+1.  You need to generate an [API Token](/docs/products/tools/api/guides/manage-api-tokens/).
 
 1.  [Deploy a Docker Marketplace App](/docs/products/tools/marketplace/guides/docker/). This includes creating your limited sudo user, your SSH public key, the previously generated API token, the domain you'd like to use and an email address, the preferred image, region, plan, and root password. There are additional options for opening ports to allow email, however this is only needed if you'll be allowing others to register for this Plausible instance. Once ready click on *Create Linode*. The process will take about 5-10 minutes to complete.
 
-1.  You need a domain name configured in the [Akamai Cloud Manager](https://www.linode.com/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
+1.  You need a domain name configured in the [Akamai Cloud Manager](/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
