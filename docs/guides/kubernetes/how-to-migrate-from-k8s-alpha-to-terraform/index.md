@@ -11,6 +11,7 @@ image: L_Migratefromk8s-alphaCLItoTerraform.png
 title: "Migrating from k8s-alpha CLI to Terraform"
 title_meta: "How to Migrate from k8s-alpha CLI to Terraform"
 concentrations: ["Kubernetes"]
+deprecated: true
 external_resources:
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 - '[Beginners Guide to Terraform](/docs/guides/beginners-guide-to-terraform/)'
