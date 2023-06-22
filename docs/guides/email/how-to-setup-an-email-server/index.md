@@ -52,7 +52,7 @@ In system mode, only users with local logins can send and receive emails. They d
 
 1. Use Ubuntu 22 LTS to create the Linode instance. Ubuntu LTS distributions are a good choice for servers because [they are fully supported with security patches for five years following the release date](https://ubuntu.com/about/release-cycle), or longer with an extended service subscription from Canonical, which develops and maintains Ubuntu.
 
-1. You should execute all commands here as a non-privileged user using "sudo" to gain access to privileged commands. It’s much safer to use sudo than execute commands as root since the former gives you an audit trail of each privileged command. [Make sure sudo is properly configured to allow root access before beginning this guide](https://www.linode.com/docs/guides/how-to-add-and-remove-sudo-access-in-ubuntu/).
+1. You should execute all commands here as a non-privileged user using "sudo" to gain access to privileged commands. It’s much safer to use sudo than execute commands as root since the former gives you an audit trail of each privileged command. [Make sure sudo is properly configured to allow root access before beginning this guide](/docs/guides/how-to-add-and-remove-sudo-access-in-ubuntu/).
 
 With those caveats in mind, you can move on to building your email server.
 
@@ -70,7 +70,7 @@ With those caveats in mind, you can move on to building your email server.
 1. For the Linode label, this project uses `mail.linoderocks.com`. Substitute your hostname here.
 
 
-1. Set a strong root password and add an ssh key. [This allows you to log in without a password using key authentication](https://www.linode.com/docs/guides/use-public-key-authentication-with-ssh/).
+1. Set a strong root password and add an ssh key. [This allows you to log in without a password using key authentication](/docs/guides/use-public-key-authentication-with-ssh/).
 
 4. [Set the system's timezone using timedatectl](https://www.hostinger.com/tutorials/how-to-change-timezone-in-ubuntu/) so you can read logs in your local timezone. Without this step, the server timestamps all log entries using UTC.
 
