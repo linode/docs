@@ -1,17 +1,13 @@
 ---
 slug: plausible
 title: "Installing Plausible for Website Analytics"
-description: 'Two to three sentences describing your guide.'
-og_description: 'Two to three sentences describing your guide when shared on social media.'
-keywords: ['list','of','keywords','and key phrases']
+description: 'Learn how to install the analytics tool Plausible that can use to help keep your website analytics private.'
+keywords: ['plausible','analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-authors: ["Linode"]
-published: 2023-06-21
+authors: ["TechHut"]
+published: 2023-06-22
 modified_by:
   name: Linode
-external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
 ---
 
 [Plausible](https://plausible.io/) is a free and open source website analytics tool that does not rely on external services. Plausible allows you to track visitors, demographic data, device data, and much more. Plausible has a graphical interface that provides charts and maps that provide insight into the performance of your website server. Setting Plausible up on Akamai Connected Cloud and integrating it within your application is straightforward.
