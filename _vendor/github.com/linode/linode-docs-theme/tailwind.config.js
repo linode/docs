@@ -93,7 +93,7 @@ const px = (px) => `${px}px`;
 
 module.exports = {
 	purge: {
-		enabled: process.env.HUGO_ENVIRONMENT === 'production',
+		enabled: process.env.HUGO_ENVIRONMENT !== 'development',
 		mode: 'all',
 		preserveHtmlElements: false,
 		// TODO1 form

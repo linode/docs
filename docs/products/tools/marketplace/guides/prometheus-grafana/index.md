@@ -61,7 +61,9 @@ Once the app has been *fully* deployed, you need to obtain the credentials from 
 
 1.  Once logged in, run the following command:
 
-        cat /root/credentials.txt
+    ```command
+    cat /root/credentials.txt
+    ```
 
 1. This displays the credentials and endpoint URL for both Prometheus and Grafana, as shown in the example output below.
 
