@@ -93,8 +93,12 @@ To install Cassandra, follow these steps. Unless otherwise specified, execute th
 
 1.  Use the `java -version` command to confirm that OpenJDK 11 is installed:
 
-    {{< note >}}
-    Cassandra does not require the Java compiler or JDK, but many administrators choose to install it anyway. Optionally install the default JDK using the command `sudo apt install default-jdk`.
+    {{< note type="secondary" title="Optional" >}}
+    Cassandra does not require the Java compiler or JDK, but many administrators choose to install it anyway. Optionally install the default JDK using the following command:
+
+    ```command
+    sudo apt install default-jdk
+    ```
     {{< /note >}}
 
     ```command
@@ -181,7 +185,7 @@ A Cassandra node derives its configuration from the `cassandra.yaml` file. Altho
 
 To fully configure a cluster, follow these steps.
 
-1.  Configure the `ufw` firewall on each node to allow SSH connections and open ports `7000`, `9042`, and `9160`:
+1.  Configure the `ufw` firewall on each node to allow SSH connections, open ports `7000`, `9042`, and `9160`, and activate the firewall:
 
     ```command
     sudo ufw allow OpenSSH
@@ -204,20 +208,21 @@ To fully configure a cluster, follow these steps.
     Firewall is active and enabled on system startup
     ```
 
-    {{< note >}}
-    For extra security, only allow connections from the other nodes in the cluster. The format for this command is `sudo ufw allow from remote-IP to local-IP proto tcp port 7000`. Replace `remote-IP` with the IP address of one of the other nodes, and `local-IP` with the IP address of the current node. Add an entry for each of the other nodes in the cluster, changing `remote-IP` to the actual IP address of the remote node. Unfortunately, this can become cumbersome for large clusters, and it is easy to accidentally omit a connection.
-    {{< /note >}}
-
-1.  Activate the firewall:
+    {{< note type="secondary" title="Optional">}}
+    For extra security, only allow connections from the other nodes in the cluster. The format for these commands is:
 
     ```command
+    sudo ufw allow OpenSSH
+    sudo ufw allow from remote-IP to local-IP proto tcp port 7000
+    sudo ufw allow from remote-IP to local-IP proto tcp port 9042
+    sudo ufw allow from remote-IP to local-IP proto tcp port 9160
     sudo ufw enable
     ```
 
-    ```output
-    Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
-    Firewall is active and enabled on system startup
-    ```
+    Replace `remote-IP` with the IP address of one of the other nodes, and `local-IP` with the IP address of the current node. Add an entry for each of the other nodes in the cluster, changing `remote-IP` to the actual IP address of the remote node.
+
+    Unfortunately, this can become cumbersome for large clusters, and it is easy to accidentally omit a connection.
+    {{< /note >}}
 
 1.  Confirm the configuration:
 
@@ -239,8 +244,6 @@ To fully configure a cluster, follow these steps.
     9042/tcp (v6)              ALLOW       Anywhere (v6)
     ```
 
-1.  Repeat the above steps for each node in the cluster.
-
 1.  Shut down all nodes in the cluster to avoid data corruption or connection problems. If one of the nodes is currently used in production, this action should be performed within a maintenance window.
 
     ```command
@@ -252,6 +255,8 @@ To fully configure a cluster, follow these steps.
     ```command
     sudo rm -rf /var/lib/cassandra/*
     ```
+
+1.  Repeat the above steps for each node in the cluster.
 
 1.  Determine the architecture for the cluster.
 
@@ -280,8 +285,6 @@ To fully configure a cluster, follow these steps.
 
     -   The `listen_address` field must contain the IP address of the system. For additional security, use the private IP address, if one is configured.
 
-    -   Ensure `start_native_transport` is set to `true` and `native_transport_port` is `9042`. Depending on the Cassandra release, these values might already be set correctly.
-
     -   The `rpc_address` can be changed to the `127.0.0.1` loopback address. If the server hostname is configured, it can be left as `localhost`.
 
     -   Set the `endpoint_snitch` field to `GossipingPropertyFileSnitch`.
@@ -298,23 +301,13 @@ To fully configure a cluster, follow these steps.
     ...
     listen_address: node1_ip
     ...
-    start_native_transport: true
-    ...
-    native_transport_port: 9042
-    ...
     rpc_address: 127.0.0.1
     ...
     endpoint_snitch: GossipingPropertyFileSnitch
     ```
 
     {{< note >}}
-    If building a much larger cluster than the example in this tutorial, add the following line:
-
-    ```file {title="/etc/cassandra/cassandra.yaml"}
-    auto_bootstrap: false
-    ```
-
-    It is recommended to ensure an orderly activation when first creating a complex cluster.
+    Ensure `start_native_transport` is set to `true` and `native_transport_port` is `9042`. Depending on the Cassandra release, these values might already be set correctly.
     {{< /note >}}
 
 1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
@@ -351,10 +344,6 @@ To fully configure a cluster, follow these steps.
     ...
     listen_address: node2_ip
     ...
-    start_native_transport: true
-    ...
-    native_transport_port: 9042
-    ...
     rpc_address: 127.0.0.1
     ...
     endpoint_snitch: GossipingPropertyFileSnitch
@@ -386,10 +375,6 @@ To fully configure a cluster, follow these steps.
         - seeds: "node3_ip, node4_ip, node1_ip, node2_ip"
     ...
     listen_address: node3_ip
-    ...
-    start_native_transport: true
-    ...
-    native_transport_port: 9042
     ...
     rpc_address: 127.0.0.1
     ...
