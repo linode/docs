@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.153.2
+  version: 4.155.0
 
   title: Linode API
   description: |
@@ -4792,10 +4792,12 @@ paths:
                   _split:
                     x-linode-cli-display: 2.5
                   engines:
+                    type: object
                     properties:
                        quantity:
                         x-linode-cli-display: 3
                        price:
+                         type: object
                          properties:
                            hourly:
                              x-linode-cli-display: 4
@@ -4858,10 +4860,12 @@ paths:
                   _split:
                     x-linode-cli-display: 2.5
                   engines:
+                    type: object
                     properties:
                        quantity:
                         x-linode-cli-display: 3
                        price:
+                         type: object
                          properties:
                            hourly:
                              x-linode-cli-display: 4
@@ -12143,15 +12147,31 @@ paths:
       tags:
       - Networking
       summary: IP Addresses List
-      description: >
-        Returns a paginated list of IP Addresses on your Account, excluding
-        private addresses.
+      description: |
+        Returns a paginated list of IP Addresses on your Account, excluding private addresses.
+
+        We recommend utilizing the "skip_ipv6_rdns" option to improve performance if your application frequently accesses this command and does not require IPv6 RDNS data.
       operationId: getIPs
       x-linode-cli-action: ips-list
       security:
       - personalAccessToken: []
       - oauth:
         - ips:read_only
+      requestBody:
+        description: Options to request additional data.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                skip_ipv6_rdns:
+                  type: boolean
+                  default: false
+                  description: |
+                    When `true`, the "rdns" property for any "ipv6" type addresses always returns `null` regardless of whether RDNS data exists for the address.
+
+                    The default value is `false`.
       responses:
         '200':
           description: A paginated list of IP Addresses.
@@ -12176,10 +12196,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X GET -d '{
+                "skip_ipv6_rdns": false
+                }' \
               https://api.linode.com/v4/networking/ips
       - lang: CLI
         source: >
-          linode-cli networking ips-list
+          linode-cli networking ips-list --skip_ipv6_rdns false
     post:
       x-linode-grant: read_write
       tags:
@@ -18815,7 +18839,10 @@ components:
               example: 11/2022
         company:
           type: string
-          description: The company name associated with this Account.
+          description: |
+            The company name associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 128
           example: Linode LLC
         country:
@@ -18831,13 +18858,19 @@ components:
           x-linode-cli-display: 3
         first_name:
           type: string
-          description: The first name of the person associated with this Account.
+          description: |
+            The first name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: John
           x-linode-cli-display: 1
         last_name:
           type: string
-          description: The last name of the person associated with this Account.
+          description: |
+            The last name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: Smith
           x-linode-cli-display: 2
