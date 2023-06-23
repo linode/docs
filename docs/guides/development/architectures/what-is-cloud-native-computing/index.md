@@ -3,7 +3,7 @@ slug: what-is-cloud-native-computing
 description: 'Cloud-native computing helps teams and organization develop applications that are dynamic and scaleable on public, private, and hybrid clouds.'
 keywords: ['cloud native computing']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2021-02-13
+published: 2023-06-23
 image: CloudNativeComputing.png
 modified_by:
   name: Linode
@@ -22,7 +22,7 @@ Cloud-native computing requires several modular pieces of code, technology, and 
 
 Although there are many components to the cloud-native computing stack, it is not as complex as it may appear. Cloud native uses an open-source software stack to deploy applications as microservices; package each part into its own container; and dynamically orchestrate those containers to optimize resource utilization.
 
-Cloud-native computing uses containers that run on dynamic clouds. Without containers or the elastic cloud, cloud-native doesn't exist. This on-demand approach enables system administrators and developers to dynamically run applications from components that spring up and fall down as required by application's services.
+Cloud-native computing uses containers that run on dynamic clouds. Without containers or the capacities of cloud, cloud-native doesn't exist. This on-demand approach enables system administrators and developers to dynamically run applications from components that are created and destroyed as required by application's services.
 
 Cloud-native programs are **loosely coupled**. System components are interconnected in such a way that they depend on each other to the least extent practicable; the elements need little direct knowledge of one another. The code isn't hard-wired to any given infrastructure. In the case of cloud-native software, the elements are connected using APIs, service meshes, and networks.
 
@@ -40,4 +40,4 @@ To further those goals, cloud-native computing also makes use of two other conce
 
 In serverless computing, applications don't need to know about the hardware its running on or how it's managed. The software calls on the functions that the serverless platform provides without needing more knowledge of anything else. That means developers can focus on an application's business logic, rather than on architectural issues (for example, whether the server has enough RAM).
 
-Micro-services provides lightweight, loosely coupled services via an API endpoint. These are connected by lightweight protocols such as [Representational State Transfer](https://www.service-architecture.com/articles/web-services/representational_state_transfer_rest.html) (REST) or [gRPC](https://grpc.io/). In cloud-native computing, data tends to be represented by [JavaScript Object Notation](https://www.json.org/) (JSON) or [Protobuf](https://github.com/google/protobuf/). They provide modular and basic services. It may be helpful to think of these as akin to Linux shell programs, which provide single services done well, but for the cloud.
+Micro-services provides lightweight, loosely coupled services via an API endpoint. These are connected by lightweight protocols such as [Representational State Transfer](https://www.service-architecture.com/articles/web-services/representational_state_transfer_rest.html) (REST) or [gRPC](/docs/guides/using-grpc-for-remote-procedural-calls/). In cloud-native computing, data tends to be represented by [JavaScript Object Notation](https://www.json.org/) (JSON) or [Protobuf](https://github.com/google/protobuf/). They provide modular and basic services. It may be helpful to think of these as akin to Linux shell programs, which provide single services done well, but for the cloud.
