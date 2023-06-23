@@ -51,7 +51,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Use a tool such as nano or vim to edit the `plausible-conf.env` file. Add your domain to the `BASE_URL` variable. We can use the HTTP rather than HTTPS for now. In a later section, you will change this after generating the proper SSL certification.
 ​
-![1_config_1.49.1 (2).jpg](.attachments.31444/1_config_1.49.1%20%282%29.jpg)
+![Editing the configuration variables for Plausible](plausible_variables.png)
 
 1.  Once you've added the URL and key, save the file.
 
@@ -147,12 +147,12 @@ Adding an SSL certificate to any website is an important step for both security 
 
     You'll need to enter your email, accept Certbot's terms of service, decide if you'd like to share your email, and then select if you'd like all HTTP traffic redirected to HTTPS. This is optional, but redirecting is generally a good idea.
 
-    ![2_redirect_1.93.1.jpg](.attachments.31444/2_redirect_1.93.1.jpg)
+    ![Certbot configuration](plausible_certbot.png)
 
     If successful, you'll see a "congratulations" message with some additional information. At this point, you should go back into your `plausible-conf.env` from earlier and change your `BASE_URL` so this reflects the domain being served over HTTPS.
 ​
 ## Accessing Plausible and Additional Configuration
 ​
-You're done! You can now create your account, add your website, and retrieve the code snippet you will include on your website. When adding the code to your website make sure it's in a location that is visible on every page. This can be done with a plugin in WordPress or with the code injection on Ghost. It will be slightly different for every platform and service.
+You're done! You can now create your account, add your website, and retrieve the code snippet you will include on your website. When adding the code to your website make sure it's in a location that is visible on every page. This can be done with a plugin in WordPress or with the code injection on Ghost. The inclusion process will be slightly different for every platform and service.
 ​
-There are many more configuration options and changes you can make. For example, in the video I [added the variable to disable registration](https://plausible.io/docs/self-hosting-configuration) on my instance of Plausible. Additionally, setting up email servers and notification was not covered in this article. For more options and advanced configuration please check out [their official documentation](https://plausible.io/docs/self-hosting).
+There are many more configuration options and changes you can make. For example, such as [adding a variable to disable registration](https://plausible.io/docs/self-hosting-configuration). Additionally, setting up email servers and notification was not covered in this article. For more options and advanced configuration please check out [Plausible's official documentation](https://plausible.io/docs/self-hosting).
