@@ -1,14 +1,14 @@
 ---
+title: "Setting Up and Securing a Compute Instance"
+title_meta: "How to Set Up and Secure a Compute Instance"
 description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
-modified: 2022-07-12
+published: 2022-02-25
+modified: 2023-06-23
 modified_by:
   name: Linode
-published: 2012-02-17
-title: "Setting Up and Securing a Compute Instance"
-title_meta: "How to Set Up and Secure a Compute Instance"
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
 authors: ["Linode"]
 ---
@@ -69,8 +69,8 @@ Once the Compute Instance has been created and has finished booting up, you can 
 
 Updating your system frequently is the single biggest security precaution you can take for any operating system. Software updates range from critical vulnerability patches to minor bug fixes and many software vulnerabilities are actually patched by the time they become public. Updating also provides you with the latest software versions available for your distribution.
 
-### Ubuntu, Debian, and Kali Linux
-
+{{< tabs >}}
+{{< tab "Ubuntu, Debian, Kali Linux" >}}
 ```command
 apt update && apt upgrade
 ```
@@ -78,41 +78,38 @@ apt update && apt upgrade
 {{< note >}}
 When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version".
 {{< /note >}}
-
 {{< note >}}
 Linode's Kali Linux distribution image is a [minimum installation](https://www.kali.org/docs/troubleshooting/common-minimum-setup/). You will likely want to install individual [tools](https://www.kali.org/tools/) or [metapackages](https://www.kali.org/tools/kali-meta/), such as the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage.
 {{< /note >}}
-
-### CentOS/RHEL Stream and Fedora
-
+{{< /tab >}}
+{{< tab "CentOS/RHEL 8+, Fedora" >}}
 *This includes CentOS Stream 8 (and above), CentOS 8, other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), and Fedora.*
 
 ```command
 dnf upgrade
 ```
-
-### Other Distributions
-
-#### Alpine
-
-```command
-apk update && apk upgrade
-```
-
-#### Arch Linux
-
-```command
-pacman -Syu
-```
-
-#### CentOS 7
-
+{{< /tab >}}
+{{< tab "CentOS 7" >}}
 ```command
 yum update
 ```
-
-#### Gentoo
-
+{{< /tab >}}
+{{< tab "openSUSE" >}}
+```command
+zypper update
+```
+{{< /tab >}}
+{{< tab "Alpine" >}}
+```command
+apk update && apk upgrade
+```
+{{< /tab >}}
+{{< tab "Arch" >}}
+```command
+pacman -Syu
+```
+{{< /tab >}}
+{{< tab "Gentoo" >}}
 ```command
 emaint sync -a
 ```
@@ -122,26 +119,21 @@ After running a sync, it may end with a message that you should upgrade Portage 
 ```command
 emerge -uDU --keep-going --with-bdeps=y @world
 ```
-
-#### openSUSE
-
-```command
-zypper update
-```
-
-#### Slackware
-
+{{< /tab >}}
+{{< tab "Slackware" >}}
 ```command
 slackpkg update
 slackpkg upgrade-all
 ```
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Set the Timezone
 
 All new Compute Instances are set to UTC time by default. However, you may prefer to use the time zone which you live in so log file timestamps are relative to your local time.
 
-### Most Distributions
-
+{{< tabs >}}
+{{< tab "Most Distributions" >}}
 *This includes CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Fedora, and Arch. These instructions also work for most Ubuntu, Debian, and openSUSE distributions, though other methods may be preferred in those cases.*
 
 1.  Use `timedatectl` to output a list of available timezones.
@@ -157,9 +149,8 @@ All new Compute Instances are set to UTC time by default. However, you may prefe
     ```command
     timedatectl set-timezone 'America/New_York'
     ```
-
-### Ubuntu, Debian, and Kali Linux
-
+{{< /tab >}}
+{{< tab "Ubuntu, Debian, Kali" >}}
 The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. That said, both Ubuntu and Debian come with a more friendly tool called `tzdata`, outlined below.
 
 1.  Open the `tzdata` tool.
@@ -170,11 +161,8 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
 1.  Select the continent of your choice using the arrow keys and press **Enter**.
 1.  Select your region using the arrow keys and press **Enter**.
-
-### Other Distributions
-
-#### Alpine
-
+{{< /tab >}}
+{{< tab "Alpine" >}}
 1.  Use the [setup-timezone](https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-timezone) command to initiate the timezone selection process:
 
     ```command
@@ -184,9 +172,8 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 1.  Enter the timezone you are located within. If you aren't sure of the timezone string to use, enter `?` to display a list of available timezones
 
 1.  If you selected a region with sub-timezones, enter `?` again to see a list of available sub-timezones and then enter the sub-timezone you are located within.
-
-#### Gentoo
-
+{{< /tab >}}
+{{< tab "Gentoo" >}}
 1.  View a list of available time zones.
 
     ```command
@@ -204,9 +191,8 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
     ```command
     emerge --config sys-libs/timezone-data
     ```
-
-#### openSUSE
-
+{{< /tab >}}
+{{< tab "openSUSE" >}}
 The instructions under the [Most Distributions](#most-distributions-1) section above (which outlines the `timedatectl` command) are valid. openSUSE also has a more friendly way to select a timezone, discussed below.
 
 1.  Open the YaST2 timezone selector tool.
@@ -220,9 +206,8 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 1.  Press **tab** to switch to the *Time Zone* pane and then use the arrow keys to select your time zone or sub-region.
 
 1. Press **F10** to save the changes. Alternatively, press **tab** until the `[OK]` text button is highlighted. Then press **enter**.
-
-#### Slackware
-
+{{< /tab >}}
+{{< tab "Slackware" >}}
 1.  Run the `timeconfig` tool.
 
     ```command
@@ -231,6 +216,8 @@ The instructions under the [Most Distributions](#most-distributions-1) section a
 
 1.  Select `NO Hardware clock is set to local time`.
 1.  Select a timezone.
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Check the Time
 
@@ -253,8 +240,8 @@ This hostname can be used as part of a FQDN (fully qualified domain name) for th
 
 After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly. See our guide on using the [hosts file](/docs/guides/using-your-systems-hosts-file/) if you want to configure a fully qualified domain name.
 
-### Most Distributions
-
+{{< tabs >}}
+{{< tab "Most distributions" >}}
 *This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, openSUSE, Kali Linux, and Arch.*
 
 Replace `example-hostname` with one of your choice.
@@ -262,26 +249,23 @@ Replace `example-hostname` with one of your choice.
 ```command
 hostnamectl set-hostname example-hostname
 ```
-
-### Other Distributions
-
-#### Alpine
-
+{{< /tab >}}
+{{< tab "Alpine" >}}
 See [Update Your Systems hosts File](#update-your-systems-hosts-file).
-
-#### Gentoo
-
+{{< /tab >}}
+{{< tab "Gentoo" >}}
 ```command
 echo "HOSTNAME=\"example-hostname\"" > /etc/conf.d/hostname
 /etc/init.d/hostname restart
 ```
-
-#### Slackware
-
+{{< /tab >}}
+{{< tab "Slackware" >}}
 ```command
 echo "example-hostname" > /etc/HOSTNAME
 hostname -F /etc/HOSTNAME
 ```
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Update Your System's `hosts` File
 
@@ -320,8 +304,9 @@ Up to this point, you have accessed your Compute Instance as the `root` user, wh
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 {{< /note >}}
 
-### Ubuntu and Debian
 
+{{< tabs >}}
+{{< tab "Ubuntu, Debian, Kali Linux" >}}
 1.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password:
 
     ```command
@@ -333,9 +318,8 @@ Not all Linux distributions include `sudo` on the system by default, but all the
     ```command
     adduser example_user sudo
     ```
-
-### CentOS/RHEL Stream and Fedora
-
+{{< /tab >}}
+{{< tab "CentOS/RHEL, Fedora" >}}
 1.  Create the user, replacing `example_user` with your desired username, and assign a password:
 
     ```command
@@ -347,6 +331,8 @@ Not all Linux distributions include `sudo` on the system by default, but all the
     ```command
     usermod -aG wheel example_user
     ```
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Log in as the New User
 
@@ -394,61 +380,60 @@ As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows
 
 1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as and `192.0.2.1` with your instance's IP address.
 
-    -   **Linux**
+    {{< tabs >}}
+    {{< tab "Linux" >}}
+    From your local computer:
 
-        From your local computer:
+    ```command
+    ssh-copy-id example_user@192.0.2.1
+    ```
+    {{< /tab >}}
+    {{< tab "macOS" >}}
+    On your Compute Instance (while signed in as your limited user):
+
+    ```command
+    mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
+    ```
+
+    From your local computer:
+
+    ```command
+    scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
+    ```
+
+    {{< note >}}
+    `ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
+    {{< /note >}}
+    {{< /tab >}}
+    {{< tab "Windows 10 or 11" >}}
+    On your Compute Instance (while signed in as your limited user):
+
+    ```command
+    mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
+    ```
+
+    From your local computer:
+
+    ```command
+    scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@192.0.2.1:~/.ssh/authorized_keys
+    ```
+    {{< /tab >}}
+    {{< tab "Earlier Windows Versions" >}}
+    - **Option 1:** This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Compute Instance's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
+
+        Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your instance. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above.
+
+        You'll be prompted to enter a path where you'd like to place the file on your Compute Instance. Upload the file to `/home/example_user/.ssh/authorized_keys`, replacing `example_user` with your username.
+
+    -   **Option 2:** Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Compute Instance (as a non-root user):
 
         ```command
-        ssh-copy-id example_user@192.0.2.1
+        mkdir ~/.ssh; nano ~/.ssh/authorized_keys
         ```
 
-    -   **macOS**
-
-        On your Compute Instance (while signed in as your limited user):
-
-        ```command
-        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
-        ```
-
-        From your local computer:
-
-        ```command
-        scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
-        ```
-
-        {{< note >}}
-        `ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
-        {{< /note >}}
-
-    -  **Windows 10 or 11**
-
-        On your Compute Instance (while signed in as your limited user):
-
-        ```command
-        mkdir -p ~/.ssh && sudo chmod -R 700 ~/.ssh/
-        ```
-
-        From your local computer:
-
-        ```command
-        scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@192.0.2.1:~/.ssh/authorized_keys
-        ```
-
-    -  **Earlier Windows Versions**
-
-        - **Option 1:** This can be done using [WinSCP](http://winscp.net/). In the login window, enter your Compute Instance's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
-
-            Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your instance. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above.
-
-            You'll be prompted to enter a path where you'd like to place the file on your Compute Instance. Upload the file to `/home/example_user/.ssh/authorized_keys`, replacing `example_user` with your username.
-
-        -   **Option 2:** Copy the public key directly from the PuTTY key generator into the terminal emulator connected to your Compute Instance (as a non-root user):
-
-            ```command
-            mkdir ~/.ssh; nano ~/.ssh/authorized_keys
-            ```
-
-            The above command will open a blank file called `authorized_keys` in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press **CTRL+X**, then **Y**, then **Enter** to save the file.
+        The above command will open a blank file called `authorized_keys` in a text editor. Copy the public key into the text file, making sure it is copied as a single line exactly as it was generated by PuTTY. Press **CTRL+X**, then **Y**, then **Enter** to save the file.
+    {{< /tab >}}
+    {{< /tabs >}}
 
 1.  Finally, you'll want to set permissions for the public key directory and the key file itself:
 
