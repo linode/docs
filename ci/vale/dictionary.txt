@@ -78,6 +78,7 @@ appserver
 appsmith
 appwrite
 apxs
+architected
 architecting
 aren
 argv
@@ -466,6 +467,7 @@ dbserver
 dcid
 dcs
 deadman
+deallocated
 deallocation
 deathmatch
 debconf
