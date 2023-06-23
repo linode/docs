@@ -2,31 +2,18 @@
 description: "Deploy SeaTable, a simple database management GUI, on a Linode Compute Instance."
 keywords: ['SeaTable','Database','Web UI']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-05-30
+published: 2023-06-23
 modified_by:
   name: Linode
 title: "Deploy SeaTable through the Linode Marketplace"
 authors: ["Linode"]
 ---
 
-[SeaTable](https://seatable.io/docs/?lang=auto) is a simple and flexible database management interface with native Python automation support.
+[SeaTable](https://seatable.io/) is a simple and flexible database management interface with native Python automation support. It is designed to mimic the user-friendly interfaces of common spreadsheet software (like Microsoft Excel and Google Sheets). SeaTable offers advanced data linking capabilities and allows for custom data organization and visualization.
 
 {{< note type="warning" title="Custom domain required" >}}
 The SeaTable Marketplace app requires the use of a custom domain. Please review the [Configure DNS Records](#configure-dns-records) section for information on registering and configuring your domain name.
 {{< /note >}}
-
-## Before You Begin
-
-When deploying the SeaTable app, you are required to enter a custom domain. This domain must be registered and, once your app instance has been deployed, you must configure your DNS records to point to the IP address of the associated Compute Instance.
-
-1.  If you have not already done so, register your domain using your preferred domain registrar.
-
-1.  Within your domain registrar, make sure the authoritative name servers are configured to use your preferred DNS provider (such as Linode's DNS Manager). If you are not yet using a DNS provider, consider Linode's DNS Manager. For instructions on creating a DNS zone and updating your authoritative name servers, review [Get Started with Linode's DNS Manager](/docs/products/networking/dns-manager/get-started/).
-
-1.  After the 
-
-
-If you would like to automatically configure the domain on the Linode DNS Manager, the authoritative name servers must be set to Linode's name servers: `ns1.linode.com`, `ns2.linode.com`, through to `ns5.linode.com`.
 
 ## Deploying a Marketplace App
 
@@ -79,7 +66,7 @@ Once your DNS records have been updated and have propagated, you can complete th
     cd /opt/seatable/
     ```
 
-1.  While the Docker Compose file has been updated to include the custom domain and other settings provided during deployment, you can adjust this file as needed. To do that, open the file using your preferred text editor and modify any configuration parameters as needed.
+1.  While the Docker Compose file has been updated to include the custom domain and other settings provided during deployment, you can adjust this file as needed. To do that, open the file using your preferred text editor and modify any configuration parameters as needed. *This is an optional step for those that wish to further adjust the configuration for SeaTable*.
 
     ```command
     sudo nano docker-compose.yml
@@ -129,8 +116,8 @@ Once you have completed the final steps to deploy SeaTable, you can access it vi
 
     ![Screenshot of the SeaTable web UI](seatable-ui.png)
 
-    From here, you can create a new *base* (spreadsheet) and start adding data. For further instructions, review the [SeaTable Quick Start Guide](https://seatable.io/en/kurzanleitung/).
+    From here, you can create a new *base* (database) and start adding data. For further instructions, review the [SeaTable Quick Start Guide](https://seatable.io/en/kurzanleitung/).
 
-    ![Screenshot of the SeaTable spreadsheet view](seatable-spreadsheet.png)
+    ![Screenshot of the SeaTable database view](seatable-database-view.png)
 
 {{< content "marketplace-update-note-shortguide">}}
