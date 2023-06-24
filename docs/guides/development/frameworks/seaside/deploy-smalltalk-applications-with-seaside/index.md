@@ -1,8 +1,5 @@
 ---
 slug: deploy-smalltalk-applications-with-seaside
-author:
-  name: Linode
-  email: docs@linode.com
 description: An introductory guide to deploying applications with the Seaside Framework
 keywords: ["seaside", "smalltalk", "pharo", "squeak", "apache", "framework"]
 tags: ["web applications","apache","proxy"]
@@ -12,14 +9,15 @@ modified: 2013-09-27
 modified_by:
   name: Linode
 published: 2010-01-12
-title: Deploy Smalltalk Applications with Seaside
-h1_title: Deploying Smalltalk Apps with Seaside on Debian 5
+title: Deploying Smalltalk Apps with Seaside on Debian 5
+title_meta: Deploy Smalltalk Applications with Seaside
 deprecated: true
 relations:
     platform:
         key: seaside-framework
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 Seaside is a web development framework for the Smalltalk programing language. Seaside offers web developers a number of unique capabilities to create unique applications in an entirely object oriented manner. Seaside also provides helpful abstractions that allow developers to forgo manually generating HTML or managing URL callbacks. This also makes it possible for developers to design applications around user sessions rather than around pages.
@@ -30,7 +28,7 @@ The architecture and scaling of websites developed with Seaside is highly depend
 
 This document provides an overview of getting started with this Smalltalk web development framework. For the purposes of this example we've deployed Seaside and the "Pier" content management system on a Debian 5 (Lenny) system. Because of the image-based nature of Smalltalk environments, the strategies and approaches for running Seaside applications may not vary between distributions much. Nevertheless, there may be some differences regarding the names of packages and configuration details for the web server. Other details should remain the same between various operating system distributions.
 
-Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [getting started guide](/docs/getting-started/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
+Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
 
 ## Installing Smalltalk Environments
 
@@ -49,7 +47,7 @@ First, we need to install the virtual machine to run the Smalltalk images. While
     unzip pharo-vm-0.15.2f-linux.zip
     mv pharo-vm-0.15.2f-linux/ pharo-vm-15-2/
 
-[Upload the image file](/docs/tools-reference/linux-system-administration-basics/#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
+[Upload the image file](/docs/guides/linux-system-administration-basics/#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
 
     cd /srv/www/example.com/
     wget http://pier.googlecode.com/files/Pier-1.2.app.zip
@@ -66,7 +64,7 @@ To test the Seaside application, access your domain in the browser on port `8080
 
     http://example.com:8080/seaside/
 
-In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/tools-reference/ssh/using-the-terminal#gnu-screen). To stop the current instance, simply hit "ctrl-c".
+In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/guides/using-the-terminal/#gnu-screen). To stop the current instance, simply hit "ctrl-c".
 
 The default configuration of the "Pier" image accessed above binds the Smalltalk server on port `8080` on both the local and the public interface. Ensure that both your application and system firewalls are configured to permit proper access prior to deployment. We're now ready to configure Apache to provide public access to your Smalltalk instance.
 
@@ -150,7 +148,7 @@ Reload the web server configuration to create the virtual host:
 
     /etc/init.d/apache2 reload
 
-When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
+When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/guides/dns-overview/#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
 
 ### Configuring Apache to Proxy Dynamic Requests to Seaside
 

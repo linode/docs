@@ -1,10 +1,6 @@
 ---
 slug: how-to-install-the-lemp-stack-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Ubuntu 18.04.'
-og_description: 'This guide will show you how to install the LEMP Stack (Linux, NGINX, MySQL, and PHP) which is a popular alternative to the LAMP stack, on Ubuntu 18.04.'
 keywords: ["nginx", "lemp", "php", "mariadb", "mysql", "ubuntu"]
 tags: ["lemp","web server","php","mysql","ubuntu","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +8,8 @@ modified: 2020-03-18
 modified_by:
   name: Linode
 published: 2018-06-04
-title: 'How to Install the LEMP Stack on Ubuntu 18.04'
-h1_title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title: 'Installing the LEMP Stack on Ubuntu 18.04'
+title_meta: 'How to Install the LEMP Stack on Ubuntu 18.04'
 image: How-to-Install-LEMP-Stack-on-Ubuntu-1804_1200x631.png
 relations:
     platform:
@@ -21,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/web-servers/lemp/how-to-install-a-lemp-server-on-ubuntu-18-04/','/web-servers/lemp/how-to-install-the-lemp-stack-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 <!-- ![LEMP Server on Ubuntu 18.04](lemp-server-on-ubuntu-1804.png "LEMP Server on Ubuntu 18.04") -->
@@ -31,13 +28,11 @@ The LAMP stack (Linux, Apache, MariaDB, and PHP) is a popular server configurati
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides and that the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-    {{< note >}}If you have a registered domain name for your website, then [add the domain](/docs/guides/dns-manager/#add-a-domain) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Update your system:
-
-        sudo apt update && sudo apt upgrade
+{{< note respectIndent=false >}}If you have a registered domain name for your website, then [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) to the Linode server on which you plan to install the LEMP stack. If you do not have a registered domain name, then replace `example.com` with the IP address of the Linode server in the following instructions.{{< /note >}}
 
 ## Installation
 
@@ -88,16 +83,9 @@ GRANT ALL PRIVILEGES ON testdb.* TO 'testuser';
 quit
 {{< /highlight >}}
 
-5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. This tool will ask if you want to set a new password for the MariaDB root user, but you can skip that step:
+5.  Use the *[mysql_secure_installation](https://mariadb.com/kb/en/library/mysql_secure_installation/)* tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -  Remove anonymous users?
-    -  Disallow root login remotely?
-    -  Remove test database and access to it?
-    -  Reload privilege tables now?
 
 ### PHP
 
@@ -180,7 +168,7 @@ If you configured UFW on your server, enable the firewall to allow web traffic.
 
 ## Test the LEMP Stack
 
-1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/guides/dns-manager/) for your domain to point to your Linode's IP address.
+1. To ensure that your web server can be reached with your domain name, configure the [DNS records](/docs/products/networking/dns-manager/) for your domain to point to your Linode's IP address.
 
 2.  Restart PHP and reload the NGINX configuration:
 
@@ -247,5 +235,5 @@ If you configured UFW on your server, enable the firewall to allow web traffic.
 For more on the software in this stack see the following guides:
 
 - [Getting Started with NGINX](/docs/guides/getting-started-with-nginx-part-1-installation-and-basic-setup/)
-- [Set Up MariaDB Clusters with Galera](/docs/databases/mariadb/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
-- [Serve PHP with PHP-FPM and NGINX](/docs/web-servers/nginx/serve-php-php-fpm-and-nginx/)
+- [Set Up MariaDB Clusters with Galera](/docs/guides/set-up-mariadb-clusters-with-galera-debian-and-ubuntu/)
+- [Serve PHP with PHP-FPM and NGINX](/docs/guides/serve-php-php-fpm-and-nginx/)

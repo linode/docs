@@ -1,11 +1,5 @@
 ---
 slug: ossec-ids-debian-7
-author:
-  name: Sunday Ogwu-Chinuwa
-  email: finid@vivaldi.net
-contributor:
-  name: Sunday Ogwu-Chinuwa
-  link: https://github.com/finid
 description: 'This guide shows how to install and configure OSSEC HIDS, an open-source, host-based intrusion detection system which provides advanced monitoring functions, on Debian 7.'
 keywords: ["IDS", " Intrusion Detection System"]
 aliases: ['/security/ossec-ids-debian-7/','/uptime/monitoring/ossec-ids-debian-7/']
@@ -18,6 +12,7 @@ published: 2015-02-05
 title: Install and Configure OSSEC on Debian 7
 external_resources:
  - '[OSSEC](https://ossec.github.io/)'
+authors: ["Sunday Ogwu-Chinuwa"]
 ---
 
 ![Install and Configure OSSEC on Debian 7](Install-and-Configure-OSSEC-on-Debian-7-smg.jpg)
@@ -28,15 +23,15 @@ When installed and configured, OSSEC will provide a real-time view of what's tak
 
 This guide covers how to install and configure OSSEC on a single Linode running Debian 7 in such a manner that if a file is modified, added or deleted, OSSEC will notify you by email in real-time. OSSEC can also provide notifications for other activities.
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
 
-1.  Complete the [Getting Started](/docs/getting-started/) guide.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access. It is especially important to create and enable a firewall. On Linux, OSSEC needs an active iptables firewall for its active response feature to work.
 
 3.  Install `inotify-tools` and `build-essential`. OSSEC needs the first for real-time alerts and alerts on file deletions, while the latter is for compiling OSSEC. You can install both packages using:
 
@@ -73,7 +68,7 @@ Debian 7 does not have an installation candidate for OSSEC in its repository, so
         sha1sum: WARNING: 1 line is improperly formatted
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In both outputs, ignore the **WARNING** line. As long as the first line reads **OK**, the file is good.
 {{< /note >}}
 
@@ -195,7 +190,7 @@ Although you specified an email and OSSEC auto-discovered the SMTP server, there
 {{< /file >}}
 
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `< email_to >` and `< email_from >` values can be the same. If you are running your own mail server and it's on the same server that OSSEC is installed, you may change the `< smtp_server >` value to `localhost`.
 {{< /note >}}
 

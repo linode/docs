@@ -1,97 +1,127 @@
-# Contribute to Linode
+# In this Guide
 
-This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+- [How to download and install the Linode Docs library](#installing-the-docs-library)
 
-## Fixing an issue
+- [How to contribute to the library](#contributing-to-the-docs-library)
 
-If you want to start contributing by helping us correct existing issues, go to our [GitHub issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
+# Installing the Docs Library
+
+Linode's documentation library uses a static site generator, [Hugo](https://gohugo.io/), to build the website from Markdown (`.md`) files. Building the site requires Node.js, NPM, and Go.
 
 ## Install prerequisites
 
 ### Install Go
 
-Some parts of the Linode documentation environment will require the [GO programming language](https://golang.org/). This guide was created using GO 1.15.3, and the install steps included will be for this specific version:
+Some parts of the Linode documentation environment require the [GO programming language](https://golang.org/). In most cases, you should install the latest version of Go.
 
 #### Install Go on macOS and Windows
 
-The GO package can be found on the [GO downloads page](https://golang.org/dl/). On macOS, download the `go1.15.3.darwin-amd64.pkg` installer. On Windows, download the `go1.15.3.windows-amd64.msi` installer. Once the installer is downloaded, open it.
+The Go package can be found on the [official downloads page](https://go.dev/dl/). Install the latest package available for your operating system. Since the latest version that is available at the time of this writing is 1.19.1, links to that version are used below:
 
-The installer prompts you to make changes to your system. Once the installation is complete, enter the following command in your terminal to verify the version of GO that you're currently running:
+- **macOS (Intel):** Use the x.darwin-amd64.pkg file ([go1.19.1.darwin-amd64.pkg](https://go.dev/dl/go1.19.1.darwin-amd64.pkg))
+- **macOS (Apple Silicon):** Use the x.darwin-arm64.pkg file ([go1.19.1.darwin-arm64.pkg](https://go.dev/dl/go1.19.1.darwin-arm64.pkg))
+- **Linux (64-bit):** Use the x.linux-amd64.tar.gz file ([go1.19.1.linux-amd64.tar.gz](https://go.dev/dl/go1.19.1.linux-amd64.tar.gz))
+- **Windows (64-bit):** Use the x.windows-amd64.msi file ([go1.19.1.windows-amd64.msi](https://go.dev/dl/go1.19.1.windows-amd64.msi))
 
-    go version
+**For Windows and macOS** users, click the link above to download the software and run it.
 
-#### Install Go on Linux
+**For Linux** users, run the following commands to download the file, extract it into the `/usr/local` folder, and add the folder to your PATH variable:
 
-Download the Linux binary for GO and extract it into the `/usr/local` folder:
-
-    wget https://golang.org/dl/go1.15.3.linux-amd64.tar.gz
-    tar -C /usr/local -xzf go1.15.3.linux-amd64.tar.gz
-
-Add `/usr/local/go/bin` to the PATH variable:
-
+    wget https://go.dev/dl/go1.19.1.linux-amd64.tar.gz
+    tar -C /usr/local -xzf go1.19.1.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
 
 You can ensure that go has been installed by checking the version currently in use:
 
     go version
 
-### Install Node and NPM
+### Install Node.js
 
-To support the JavaScript runtime environment used by the Linode documentation site, Node v14.18.1 must be installed on your system.
+To support the JavaScript runtime environment used by the Linode documentation site, Node.js must be installed on your system.
 
-#### Install Node on macOS and Linux
+#### Install Node.js on macOS and Linux
 
-In order to install Node on Linux and macOS, we recommend using the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to switch between other versions of Node you may be using now or may use in the future.
+To install Node.js on Linux and macOS, we recommend using the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to switch between other versions of Node you may be using now or may use in the future.
 
-NVM can be installed by entering the following command, which will download and run an install script:
+NVM can be installed by entering the following command, which downloads and runs an install script.
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-You may need to exit and create a new command line session before NVM will work:
+Close out of your terminal session and open up a new one. You may receive a warning similar to the following: `zsh compinit: insecure directories, run compaudit for list. Ignore insecure directories and continue [y] or abort compinit [n]? y`. If you do, enter `y` to access your terminal and then run `compaudit` for a list of affected directories. Likely, the directories are within `/usr/local/share/zsh`. Run the following command against that folder to update the permissions and prevent the same warning message from appearing the next time you open a terminal session.
 
-    exit
+    chmod -R 755 /usr/local/share/zsh
 
-Next, use NVM to both install NVM and set it as the version of Node that you're actively using:
+Using NVM, install the latest Node.js 18.x release and set it as the currently active version.
 
-    nvm install 14.18.1
-    nvm use 14.18.1
+    nvm install 18
+    nvm use 18
 
-#### Install Node on Windows
+You can confirm the version of NVM and Node.js by running the following commands.
 
-To Install Node 14.18.1 on Windows, navigate to the [downloads page for this release](https://nodejs.org/download/release/v14.18.1/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
+    nvm -v
+    node -v
+
+#### Install Node.js on Windows
+
+To Install the latest Node.js LTS release on Windows, navigate to the [downloads page](https://nodejs.org/en/download/) and install the appropriate `.msi` installer file for your type of processor (32-bit or 64-bit). Open the file and follow the prompts to complete the installation process. To confirm that Node and NPM has been installed successfully, open up your command prompt and enter the following command to check your version:
 
     node -v
     npm -v
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. The library is compatible with **Hugo 0.83.1** or newer.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.111.3**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
 
-Note: the site's testing suite has not been run with Hugo versions after 0.83.1, but it will likely build normally with newer versions. If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
+Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
-#### Install Hugo on macOS
+#### macOS and Linux
 
-On macOS, the easiest way to install Hugo is with the [Homebrew](https://brew.sh/) package manager. If you don't have Homebrew installed already, run:
+To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.111.3 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.111.3) under **Assets**.
 
-Then run this command to install Hugo:
+    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_darwin-universal.tar.gz
+    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_extended_0.111.3_Linux-64bit.tar.gz
 
-    brew install hugo
+    You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
-#### Install Hugo on Linux
+        curl -OL [url]
 
-Go to the [Hugo releases page on GitHub](https://github.com/gohugoio/hugo/releases/) and download the most up to date binary for your platform. These commands download the 64 bit binary of Hugo version 0.83.1 for Linux and place it in `/usr/local/bin`:
+1.  Extract the archive file using the `tar` command, replacing *[file]* with the correct filename.
 
-    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.83.1/hugo_0.83.1_Linux-64bit.tar.gz
-    tar -xvzf hugo_0.83.1_Linux-64bit.tar.gz
-    sudo mv hugo /usr/local/bin
+        tar -xvzf [file]
 
-#### Install Hugo on Windows
+    Once extracted, there should be a `hugo` file in the same directory. This is used to run Hugo.
 
-Use [Chocolatey](https://chocolatey.org/) to install Hugo on Windows:
+1.  Move the hugo file to a location within your system's PATH variable. For most systems, the `/usr/local/bin` path can be used.
 
-    choco install hugo
+        mv hugo /usr/local/bin
+
+    You may need to use `sudo` to run this command successfully:
+
+        sudo mv hugo /usr/local/bin
+
+    If you do not have permission to move the file to one of the system folders, you can instead add it to a location in your home directory and then set that location in your PATH:
+
+        mkdir ~/bin
+        mv hugo ~/bin
+        export PATH=$HOME/bin:$PATH
+
+    Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
+
+1. Test Hugo by running `hugo version`. This should output a long string indicating that version 0.111.3 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+
+#### Windows
+
+While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
+
+1. Download the [hugo_0.111.3_Windows-64bit.zip](https://github.com/gohugoio/hugo/releases/download/v0.111.3/hugo_0.111.3_Windows-64bit.zip) file. Additional files for other operating systems can be found on the [Hugo v0.111.3 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.111.3) under **Assets**.
+
+1. Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
+
+1.  Add the directory to your PATH. In powershell, this can be accomplished with the following command:
+
+        set PATH=%PATH%;C:\Hugo\bin
 
 ## Fork and Clone the Linode Library
 
@@ -101,9 +131,15 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  On Github, navigate to the [linode/docs](https://github.com/linode/docs) repository. Click fork on the top right corner.
 
-1.  Clone your fork of the repository. Replace `YOUR-USERNAME` with your Github username. This example creates a `linode-docs` directory:
+1.  Clone your fork of the repository using either the [HTTPS URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls) or the [SSH URL](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls). In the commands below, replace `USERNAME` with your GitHub username.
 
-        git clone https://github.com/YOUR-USERNAME/docs linode-docs
+    -   **HTTPS URL:** When prompted for your password, enter your personal access token from GitHub. For instructions on creating this token, see [Creating a Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-fine-grained-personal-access-token).
+
+            git clone https://github.com/USERNAME/docs linode-docs
+
+    -   **SSH URLs:** Before continuing with SSH URLs, you should first have a public/private key pair installed on your local system. Then, you must upload your public key to your GitHub account. When running the command below, you will be prompted for a password. Enter your SSH passphrase in this prompt. For further instructions, [Adding a new SSH key to your account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
+            git clone git@github.com:USERNAME/docs.git linode-docs
 
     This may take a few minutes to copy all of the files and images to your machine.
 
@@ -124,11 +160,20 @@ For more information about using Git, refer to the [official Git documentation](
 
 1.  Add the `linode/docs` repository that you forked from as the `upstream` [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes) for your local repository:
 
-        git remote add upstream https://github.com/linode/docs.git
+    - **HTTPS URL:** `git remote add upstream https://github.com/linode/docs.git`
+    - **SSH URL:** `git remote add upstream git@github.com:linode/docs.git`
 
 1.  Install the Node dependencies for the repository:
 
         npm install
+
+# Contributing to the Docs Library
+
+This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+
+## Fixing an Issue
+
+If you want to start contributing by helping us correct existing issues, go to our [GitHub Issues page](https://github.com/linode/docs/issues) and look for issues with the label ```help wanted```. Read through the comments and make sure there is not an open pull request against the issue, and that nobody has left a comment stating that they are working on the issue (3 days without activity is a good rule of thumb). Leave a comment stating that you would like to work on the issue.
 
 ## Create a New Guide
 
@@ -154,9 +199,9 @@ This section takes you through the process of creating a new guide, using the to
 
     - The guide itself will later be published under the `/docs/guides/how-to-install-nginx-on-debian/` URL path. Note that the URL for the guide will *not* include the `web-servers/nginx/` section information. This is intentional, as the docs website publishes guides under a flattened URL structure.
 
-    - The `index.md` file will contain the markdown content for your guide.
+    - The `index.md` file will contain the Markdown content for your guide.
 
-    - The `--kind content` option specifies that the `content` archetype will be used to populate the new markdown file with sample content. The archetypes available can be found under the `archetypes/` directory in the repository.
+    - The `--kind content` option specifies that the `content` archetype will be used to populate the new Markdown file with sample content. The archetypes available can be found under the `archetypes/` directory in the repository.
 
 1.  The command will output the location of your new guide on your filesystem:
 
@@ -169,6 +214,8 @@ This section takes you through the process of creating a new guide, using the to
         hugo server
 
     This starts a local server you can use to view the Linode library in your browser on `http://localhost:1313/docs/`.
+
+    Note: The first time Hugo is run on your workstation, it needs to compile a cache of web-optimized images for each guide in the documentation library. This process can take 10-20 minutes. If you run Hugo again in the future, the cache from your first build is reused and the startup time is much faster.
 
 1.  In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/guides/how-to-install-nginx-on-debian/`.
 

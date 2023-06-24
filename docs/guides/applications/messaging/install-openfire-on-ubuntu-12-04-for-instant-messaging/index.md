@@ -1,9 +1,6 @@
 ---
 slug: install-openfire-on-ubuntu-12-04-for-instant-messaging
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide shows how to install the popular collaborative instant messaging app based on the XMPP protocol - Openfire - on a Linode running Ubuntu 12.04.'
 keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire"]
 tags: ["ubuntu"]
@@ -23,11 +20,12 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open-source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as a root user via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as a root user via SSH.
 
 ## Prerequisites
 
@@ -101,7 +99,7 @@ This completes the initial installation steps for Openfire. Next, we'll continue
 
 1.  Direct your browser to your Linode's IP address, or FQDN (fully qualified domain name) if an entry in DNS points to your Linode's IP, on port 9090. As an example, if your Linode's IP address were `198.51.100.0`, you would visit `http://198.51.100.0:9090` in your web browser.
 
-2.  Configure your domain and ports for administration. Use the FQDN you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/guides/dns-manager/).
+2.  Configure your domain and ports for administration. Use the FQDN you have assigned to your Linode in DNS. For more information: [configuring DNS with the Linode Manager](/docs/products/networking/dns-manager/).
 
 3.  You may choose to use Openfire's internal database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
 

@@ -1,8 +1,5 @@
 ---
 slug: multicraft-on-ubuntu
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: "This guide shows how to install and configure MultiCraft, a control panel for single or multiple Minecraft servers, on a Linode running Ubuntu 20.04 LTS."
 keywords: ["minecraft", "ubuntu", "multicraft"]
 tags: ["ubuntu"]
@@ -23,12 +20,13 @@ relations:
         key: how-to-install-multicraft
         keywords:
             - distribution: Ubuntu
+authors: ["Alex Fornuto"]
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers, with free and paid versions available. This guide provides information to install Multicraft on a Linode running Ubuntu 20.04 LTS.
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Prerequisites
@@ -41,8 +39,8 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  Install LAMP server:
 
-        sudo apt install taskel
-        taskel install lamp-server
+        sudo apt install tasksel
+        sudo tasksel install lamp-server
 
 1.  Install PHP, SQLite, Java, and related packages:
 
@@ -112,29 +110,29 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  In your local web browser, navigate to `http://192.0.2.0/multicraft`, replacing `192.0.2.0` with your Linode's IP address or domain name. Click `Start Installation`:
 
-    [![Multicraft Installer.](multicraft-init_small-1804.png)](multicraft-init-1804.png)
+    ![Multicraft Installer.](multicraft-init-1804.png)
 
 1.  Multicraft checks the requirements. If you completed the steps above without issue, the following page appears:
 
-    [![Multicraft Requirements Check.](multicraft-reqs-2004.png)](multicraft-reqs-2004.png)
+    ![Multicraft Requirements Check.](multicraft-reqs-2004.png)
 
     Click `Continue`.
 
 1.  Multicraft checks for the `config.php` file and if it is writeable. If successful, click `Continue`:
 
-    [![Multicraft Configuration File Transfer.](multicraft-config-2004.png)](multicraft-config-2004.png)
+    ![Multicraft Configuration File Transfer.](multicraft-config-2004.png)
 
 1.  On the next page, click `Initialize Database`.
 
-    [![Multicraft Database Initialization.](multicraft-db-initialize_small-1804.png)](multicraft-db-initialize-1804.png)
+    ![Multicraft Database Initialization.](multicraft-db-initialize-1804.png)
 
 1.  Afterward the database is initialized, click `Continue`:
 
-    [![Multicraft Database Creation.](multicraft-db_small-1804.png)](multicraft-db-1804.png)
+    ![Multicraft Database Creation.](multicraft-db-1804.png)
 
 1.  The next page attempts to connect to the panel database. You should see the message `Connection successful`. You can now click on the `Login` button and sign in with the default username and password as **admin**.
 
-    [![Multicraft Panel Database Connection.](multicraft-panel_small-1804.png)](multicraft-panel-1804.png)
+    ![Multicraft Panel Database Connection.](multicraft-panel-1804.png)
 
 1.  After logging in you are directed back to the previous page, where you can now click `Continue`. The next page allows you to configure the basic settings. When done, click `Save`.
 
@@ -149,7 +147,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
 1.  Back in the browser, click  `Refresh`. You should see the daemon in the detected daemons list. Click `Continue`:
 
-    [![Multicraft Daemon Configuration.](multicraft-daemon_small-1804.png)](multicraft-daemon-1804.png)
+    ![Multicraft Daemon Configuration.](multicraft-daemon-1804.png)
 
 1.  Your configuration of the Multicraft control panel is now complete. As per the instructions on the page, delete the `install.php` file from your terminal:
 
@@ -171,10 +169,10 @@ Version 1.17 (minecraft_server.1.17.jar) is downloaded.
 
 1.  At this time you must accept the Multicraft EULA. A pop-up window appears. By clicking Close you are indicating your agreement to the EULA here: `http://www.multicraft.org/eula.txt`. Click Close.
 
-       [![Multicraft EULA.](multicraft-eula-popup.png)](multicraft-eula-popup.png)
+       ![Multicraft EULA.](multicraft-eula-popup.png)
 
 1.  Click `Create Server`. Fill in the options as you see fit, but be sure to add `server.jar` (or the version that you downloaded) in the `JAR File` field:
 
-    [![Multicraft Server Settings.](multicraft-server-settings_small-1804.png)](multicraft-server-settings-1804.png)
+    ![Multicraft Server Settings.](multicraft-server-settings-1804.png)
 
     You can now successfully start and manage your Minecraft server through Multicraft! For more information, see the [Connect to your Minecraft Server](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian/#connect-to-your-minecraft-server) section on the [How to Set Up a Minecraft Server on Ubuntu or Debian](/docs/guides/how-to-set-up-minecraft-server-on-ubuntu-or-debian) guide.

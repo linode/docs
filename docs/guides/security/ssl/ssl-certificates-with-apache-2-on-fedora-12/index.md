@@ -1,9 +1,6 @@
 ---
 slug: ssl-certificates-with-apache-2-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on Fedora 12.'
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 12"]
 tags: ["fedora","apache","security","ssl"]
@@ -19,11 +16,12 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 
 
-This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Fedora 12 guide](/docs/web-servers/apache/installation/fedora-12). These steps should be performed via an SSH session to your Linode as the root user.
+This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Fedora 12 guide](/docs/guides/apache-2-web-server-on-fedora-12/). These steps should be performed via an SSH session to your Linode as the root user.
 
 ## Use a Self-Signed SSL Certificate with Apache
 
@@ -177,7 +175,7 @@ You should now be able to visit your site with SSL enabled. Congratulations, you
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
-- [Hosting Websites with the Apache HTTP Server on Fedora 12](/docs/web-servers/apache/installation/fedora-12)
+- [Hosting Websites with the Apache HTTP Server on Fedora 12](/docs/guides/apache-2-web-server-on-fedora-12/)
 
 
 

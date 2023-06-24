@@ -1,21 +1,19 @@
-{{/*
-The relations are stored in front matter like this:
+{{/* The relations are stored in front matter like this:
 
-relations:
-    relation-key:
-        key: oracle-10g-express
-        keywords:
-            - distribution: Debian 5 Lenny
-            - platform: Platform2
+  relations:
+  relation-key:
+  key: oracle-10g-express
+  keywords:
+  - distribution: Debian 5 Lenny
+  - platform: Platform2
 
 
-This partial is meant to be used with partialCached.
-
+  This partial is meant to be used with partialCached.
 */}}
 
 {{ $path := . }}
 {{ if not $path }}
-  {{ errorf "Must provide the key path as the argument (on the form lvl1/lvl2)"}}
+  {{ errorf "Must provide the key path as the argument (on the form lvl1/lvl2)" }}
 {{ end }}
 
 {{ $keyParts := split $path "/" }}
@@ -29,16 +27,16 @@ This partial is meant to be used with partialCached.
   {{ with $r }}
     {{ $path := "" }}
     {{ range $i, $e := .keywords }}
-      {{ range $k, $v := .  }}
+      {{ range $k, $v := . }}
         {{ if eq $i 0 }}
-          {{ $base = $v}}
+          {{ $base = $v }}
         {{ end }}
         {{ $path = path.Join $path $v }}
       {{ end }}
     {{ end }}
-    
+
     {{ range .keywords }}
-      {{ range $k, $v := .  }}
+      {{ range $k, $v := . }}
         {{ $d := dict "page" $p "value" $v "path" $path "base" $base }}
         {{ if not ($m.Get $k) }}
           {{ $m.Add $k (slice $d) }}

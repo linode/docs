@@ -1,13 +1,10 @@
 ---
 slug: apache-access-control
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
 keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
 tags: ["http","web server","apache","security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/apache-access-control/']
+aliases: ['/web-servers/apache/configuration/http-authentication/','/websites/apache/apache-access-control/','/web-servers/apache/apache-access-control/','/guides/authbased-access-control-with-apache/','/websites/apache/authbased-access-control-with-apache/','/web-servers/apache/authbased-access-control-with-apache/']
 modified: 2015-11-20
 modified_by:
   name: Linode
@@ -18,6 +15,7 @@ external_resources:
  - '[LAMP stack guides](/docs/web-servers/lamp/)'
  - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
  - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
+authors: ["Linode"]
 ---
 
 While most web server content is created to be available to the public, you may want to restrict some or all of a website to specific users or groups. **HTTP Auth** lets you easily create these restrictions.
@@ -26,18 +24,21 @@ This guide provides an overview of both credential-based and rule-based access c
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/) and [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode’s hostname is set.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-2.  Have a working installation of Apache. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/web-servers/lamp/).
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
-3.  Update your system:
+    To check your hostname run:
 
-        sudo apt-get update && sudo apt-get upgrade
+        hostname
+        hostname -f
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+    The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-This guide uses the same example file paths as our [Apache on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8/) guide. Be sure to adjust for your distribution.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+
+This guide uses the same example file paths as our [Apache on Debian 8](/docs/guides/apache-web-server-debian-8/) guide. Be sure to adjust for your distribution.
 {{< /note >}}
 
 ## Apache Access Control

@@ -1,9 +1,6 @@
 ---
 slug: wsgi-using-uwsgi-and-nginx-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the uWSGI server to deploy Python application servers in conjunction with the Nginx web server on Ubuntu 10.04 "Lucid".'
 keywords: ["uwsgi", "wsgi", "nginx", "python"]
 tags: ["web server","python","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: wsgi-uwsgi-nginx
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ The uWSGI server provides a non-FastCGI method for deploying Python applications
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -61,7 +59,7 @@ Send the following sequence of commands to set the required file permissions:
 
 ## Compile nginx with uWSGI Support
 
-Now issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Debian packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/web-servers/nginx/installation/ubuntu-10-04-lucid) for compiling nginx from source:
+Now issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Debian packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/guides/websites-with-nginx-on-ubuntu-10-04-lts-lucid/) for compiling nginx from source:
 
     apt-get install libpcre3-dev build-essential libssl-dev
     cd /opt/
@@ -156,7 +154,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 ## Additional Application Servers
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/) for more information. For a basic example configuration, consider the following example:
 
 {{< file "nginx configuration" nginx >}}
 upstream uwsgicluster {
@@ -193,6 +191,6 @@ In this example we create the `uwsgicluster` upstream, which has five components
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Ubuntu 10.04 (Lucid)](/docs/web-servers/nginx/installation/ubuntu-10-04-lucid)
+- [Installing Nginx on Ubuntu 10.04 (Lucid)](/docs/guides/websites-with-nginx-on-ubuntu-10-04-lts-lucid/)
 - [Deploy a LEMP Server on Ubuntu 10.04 (Lucid)](/docs/lemp-guides/ubuntu-10-04-lucid/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Configure nginx Proxy Servers](/docs/guides/use-nginx-as-a-front-end-proxy-and-software-load-balancer/)

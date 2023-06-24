@@ -1,8 +1,5 @@
 ---
 slug: manage-distributed-source-branches-with-bazaar
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use the Bazaar version management system to track progress of source code and collaborate on files without the need for a central server.'
 keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,13 +14,14 @@ external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
  - '[Official Bazaar User Documentation](http://doc.bazaar.canonical.com/latest/en/user-guide/)'
 tags: ["version control system"]
+authors: ["Linode"]
 ---
 
-Bazaar is a distributed version control system similar to [git](/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/). Bazaar allows developers to track the progress of source code and collaborate on a single object of work without depending on a centralized server to coordinate their activity. Unlike git, Bazaar's interface will be familiar to users of a centralized version control system like [Subversion](/docs/development/version-control/manage-source-code-versions-with-subversion/).
+Bazaar is a distributed version control system similar to [git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/). Bazaar allows developers to track the progress of source code and collaborate on a single object of work without depending on a centralized server to coordinate their activity. Unlike git, Bazaar's interface will be familiar to users of a centralized version control system like [Subversion](/docs/guides/manage-source-code-versions-with-subversion/).
 
 Like all distributed version control systems, Bazaar can work "offline," and does not require a connection to a central repository to perform commits, consult previous versions of the history, or perform other operations on the local "branch" of project. Publishing "branches" is also straightforward.
 
-This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), the [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/).
+This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), the [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Installing Bazaar
 
@@ -61,7 +59,7 @@ The Bazaar developers also provide application builds for [Windows](http://wiki.
 
 ## Using Bazaar to Manage Projects
 
-This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual [Bazaar commands](/docs/development/version-control/manage-distributed-source-branches-with-bazaar/#common-bazaar-commands).
+This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual [Bazaar commands](/docs/guides/manage-distributed-source-branches-with-bazaar/#common-bazaar-commands).
 
 ### Initializing a Project and Creating Commits
 
@@ -135,7 +133,7 @@ Once published you can allow others to create local branches from this centraliz
 
     bzr branch sftp://fore@example.com/srv/bzr/morris-shared
 
-In this case, your system will need a user account for the user `fore` and additional user accounts for whatever users that require access to your project. Be sure to deploy [user groups and permissions](/docs/tools-reference/linux-users-and-groups/) with prudence. You can also offer read only access to a Bazaar repository over HTTP by configuring a [web-server](/docs/web-servers/) to provide access to the Bazaar project. Simply alter the branch command to resemble the following, depending on your web server configuration:
+In this case, your system will need a user account for the user `fore` and additional user accounts for whatever users that require access to your project. Be sure to deploy [user groups and permissions](/docs/guides/linux-users-and-groups/) with prudence. You can also offer read only access to a Bazaar repository over HTTP by configuring a [web-server](/docs/web-servers/) to provide access to the Bazaar project. Simply alter the branch command to resemble the following, depending on your web server configuration:
 
     bzr branch http://bzr.example.com/morris-shared
 

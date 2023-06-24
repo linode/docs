@@ -1,11 +1,9 @@
 {{/* Scripts to be executed as soon as possible. */}}
 {{- $js := resources.Get "js/body-start/index.js" -}}
-{{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" hugo.IsProduction ) ) }}
-
+{{ partial "helpers/script-src.html" (dict "js" $js "nodefer" true "params" (dict "is_production" (ne hugo.Environment "development") ) ) }}
 
 {{ $pageInfo := dict "href" .RelPermalink "permalink" .Permalink "linkTitle" .LinkTitle "title" .Title "sectionsEntries" .SectionsEntries "type" .Type "kind" .Kind }}
-{{ $pageInfoJSON := $pageInfo | jsonify }}
-<script data-cfasync="false">
+{{ $pageInfoJSON := $pageInfo | jsonify }}<script data-cfasync="false">
   {{/* This global is used by the breadcrumbs builder, Disqus and possibly others. */}}
   var lnPageInfo = JSON.parse({{ $pageInfoJSON }});
 </script>

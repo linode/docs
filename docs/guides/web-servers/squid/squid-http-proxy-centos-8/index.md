@@ -1,10 +1,6 @@
 ---
 slug: squid-http-proxy-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
-og_description: This guide shows how to use Squid to create an HTTP proxy server on your Linode running Centos 8.
 keywords: ["squid", "proxy", "centos", "8", "http"]
 tags: ["proxy","web server","centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,8 +9,8 @@ modified: 2020-04-14
 image: Creating_an_HTTP_Proxy_Using_Squid_on_Centos8_1200x631.png
 modified_by:
   name: Rajakavitha Kodhandapani
-title: 'How to Create an HTTP Proxy Using Squid on CentOS 8'
-h1_title: 'Creating an HTTP Proxy Using Squid on CentOS 8'
+title: 'Creating an HTTP Proxy Using Squid on CentOS 8'
+title_meta: 'How to Create an HTTP Proxy Using Squid on CentOS 8'
 external_resources:
  - '[Squid Official Site](http://www.squid-cache.org/)'
  - '[Configure Proxy on Windows](https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)'
@@ -26,6 +22,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/web-servers/squid/squid-http-proxy-centos-8/']
+authors: ["Linode"]
 ---
 
 This guide will show you how to create your own HTTP proxy using Squid, a highly customizable proxy/cache application, on CentOS 8. An HTTP proxy acts as an intermediary between you and the internet. While connected to your Squid HTTP proxy, you will be able to:
@@ -33,16 +30,16 @@ This guide will show you how to create your own HTTP proxy using Squid, a highly
 -   Anonymously access internet services.
 -   Bypass certain regional and local network restrictions.
 
-{{< note >}}
-The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/platform/marketplace/marketplace-openvpn/).
+{{< note respectIndent=false >}}
+The traffic passed from your client to your Squid HTTP proxy will not be encrypted and will still be visible on your local network. If you are looking for a solution that offers greater security, you may want to look at our guides on [Setting up an SSH Tunnel](/docs/guides/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) or [Deploy OpenVPN Access Server with Marketplace Apps](/docs/products/tools/marketplace/guides/openvpn/).
 {{< /note >}}
 
 ## Install Squid
 
-1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](https://www.linode.com/docs/security/securing-your-server/), including adding a limited user account and configuring a firewall.
+1.  Secure your Linode by completing the instructions in our guide on [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/), including adding a limited user account and configuring a firewall.
 
-    {{< note >}}
-This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+    {{< note respectIndent=false >}}
+This guide is written for a limited, non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 1.  Ensure that your system is up-to-date:
@@ -57,7 +54,7 @@ This guide is written for a limited, non-root user. Commands that require elevat
 
         sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.default
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Squid configuration file includes comprehensive documentation in its commented lines, along with several uncommented rules that will remain active. These default rules should not be modified while you are following this guide. To gain a deeper understanding of Squid's options and default settings, you can review the full configuration file.
 {{< /note >}}
 
@@ -124,7 +121,7 @@ Adding password for user user1
 
 1.  Edit the Squid configuration file and add the following lines at the beginning of the file:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Ensure that you update `/usr/lib64/squid/basic_ncsa_auth` below with the location of the `nsca_auth` file that you checked in the previous step.
 {{< /note >}}
 
@@ -162,7 +159,7 @@ acl ncsa_users proxy_auth REQUIRED
 http_access allow client1 client2 ncsa_users
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Take care to avoid using multiple `http_access` rules when combining authentication methods, as Squid will follow the rules in the order that they appear. By using a single `http_access` rule for your `acl` definitions, you will ensure that several authentication methods will apply to each client that attempts to connect to your Squid HTTP proxy.
 {{< /note >}}
 
@@ -220,7 +217,7 @@ Next, you will enable clients to connect to your Squid HTTP proxy.
         sudo firewall-cmd --add-port=3128/tcp --permanent
         sudo firewall-cmd --reload
 
-    You can find more information on configuring firewall rules for CentOS in our guide on [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos/).
+    You can find more information on configuring firewall rules for CentOS in our guide on [Introduction to FirewallD on CentOS](/docs/guides/introduction-to-firewalld-on-centos/).
 
 ## Connect to your Squid HTTP Proxy
 

@@ -1,9 +1,6 @@
 ---
 slug: ruby-on-rails-with-nginx-on-ubuntu-8-04-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 8.04 LTS operating system.'
 keywords: ["ruby on rails", "rails on ubuntu", "ruby on nginx", "rails apps"]
 tags: ["web applications","nginx","ubuntu","ruby"]
@@ -19,6 +16,7 @@ relations:
         key: ruby-on-rails-nginx
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 
@@ -101,7 +99,7 @@ Run the Phusion Passenger installer for Nginx:
 
 You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger Nginx installer program running on Ubuntu 8.04 LTS (Hardy).](465-01-passenger-nginx-installer.png)](465-01-passenger-nginx-installer.png)
+![Phusion Passenger Nginx installer program running on Ubuntu 8.04 LTS (Hardy).](465-01-passenger-nginx-installer.png)
 
 When prompted for the Nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed.
 
@@ -138,7 +136,7 @@ You may wish to consult the following resources for additional information on th
 - [Ruby on Rails Documentation](http://rubyonrails.org/documentation)
 - [Nginx Home Page](http://nginx.org/)
 - [Nginx Documentation](http://nginx.org/en/docs/)
-- [Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Nginx Configuration](/docs/guides/how-to-configure-nginx/)
 
 
 

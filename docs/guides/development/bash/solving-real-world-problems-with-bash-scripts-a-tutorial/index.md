@@ -1,23 +1,17 @@
 ---
 slug: solving-real-world-problems-with-bash-scripts-a-tutorial
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
-og_description: 'This guide presents you with some of the advanced capabilities of the bash shell by giving you practical and fully functional scripts for modifying date and time.'
 keywords: ["UNIX", "shell", "bash", "Linux", "programming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-30
 modified_by:
   name: Linode
-title: 'Solving Real World Problems With Bash Scripts - A Tutorial'
-h1_title: A Tutorial for Solving Real World Problems with Bash Scripts
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
+title: A Tutorial for Solving Real World Problems with Bash Scripts
+title_meta: 'Solving Real World Problems With Bash Scripts - A Tutorial'
 external_resources:
   - '[GNU Bash](https://www.gnu.org/software/bash/)'
 aliases: ['/development/bash/solving-real-world-problems-with-bash-scripts-a-tutorial/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction
@@ -33,8 +27,8 @@ In this guide, you will find the following information about bash scripts:
 - [solving other real world problems](#bash-scripts-for-administrators)
 - [additional examples](#additional-examples)
 
-{{< note >}}
-This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Depending on your configuration, some commands might require the help of `sudo` in order to properly execute. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Functions in bash shell
@@ -79,7 +73,7 @@ mySum = 3
 mySum = 8
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you want to check whether a function parameter exists or not, you can use the statement:
 
     if [ -z "$1" ]
@@ -238,7 +232,7 @@ Threshold = 30
 WARNING: The partition "/dev/root" has used 61% of total available space - Date: Wed Aug 28 21:14:51 EEST 2019
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This script and others like it can be easily executed as cron jobs and automate tasks the UNIX way.
 {{< /note >}}
 
@@ -470,7 +464,7 @@ The output of `freqL.sh` will resemble the following:
    1 a
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The file `text.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `text.txt` file using a text editor of your choice.
 {{< /note >}}
 
@@ -570,7 +564,7 @@ The output of `tabs2spaces.sh` will resemble the following:
 Converting textfile.txt.
 {{< /output >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The file `textfile.txt` will not exist by default. You can use a pre-existing text file to test this script, or you can create the `textfile.txt` file using a text editor of your choice.
 {{< /note >}}
 
@@ -610,7 +604,7 @@ while read -d ':' dir; do
 done <<< "$DIRECTORIES:"
 {{< /file >}}
 
-The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/tools-reference/tools/find-files-in-linux-using-the-command-line/).
+The counting of the files is done with the `find $dir -type f | wc -l` command. You can read more about the find command in [our guide](/docs/guides/find-files-in-linux-using-the-command-line/).
 
 Run the `countFiles` script:
 
