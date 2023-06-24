@@ -4,7 +4,7 @@ deprecated: true
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface on Ubuntu 10.10 "Maverick".'
 keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10-10-maverick/']
+aliases: ['/databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10-10-maverick/','/databases/mysql/phpmyadmin-ubuntu-10.10-maverick/']
 modified: 2013-09-24
 modified_by:
   name: Linode
