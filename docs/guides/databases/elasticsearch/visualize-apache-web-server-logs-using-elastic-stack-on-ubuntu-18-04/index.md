@@ -1,11 +1,5 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-ubuntu-18-04
-author:
-  name: Tyler Langlois
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: "This guide shows how to install all three Elastic Stack components to explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
@@ -18,12 +12,13 @@ modified_by:
   name: Linode
 title: "Visualize Apache Logs With Elastic Stack on Ubuntu 18.04"
 dedicated_cpu_link: true
-tags: ["ubuntu","analytics","database","monitoring","apache"]
+tags: ["ubuntu","analytics","database","monitoring","apache","digital agencies"]
 relations:
     platform:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.

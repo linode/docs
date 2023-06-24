@@ -1,8 +1,5 @@
 ---
 slug: system-design
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'What is system design and why is it important? Read our guide to learn system design basics, as well as how to design a high-level system. ✓ Click here!'
 keywords: ['system design', 'what is system design', 'system design basics', 'systems by design', 'learn system design', 'software system design', 'system design process', 'system design in software engineering', 'steps in system design', 'how to design a system']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,12 @@ modified_by:
   name: Linode
 title: "A Software Engineer’s Guide to System Design"
 title_meta: "System Design 101: How to Design a System"
-contributor:
-  name: John Mueller
 external_resources:
 - '[Educative.io: The complete guide to System Design in 2023](https://www.educative.io/blog/complete-guide-to-system-design)'
 - '[GeeksForGeeks.org: 5 Common System Design Concepts for Interview Preparation](https://www.geeksforgeeks.org/5-common-system-design-concepts-for-interview-preparation/)'
 - '[GitHub.com/donnemartin: The System Design Primer](https://github.com/donnemartin/system-design-primer)'
 
+authors: ["John Mueller"]
 ---
 
 The idea of designing something [is as old as humans](https://bootcamp.uxdesign.cc/design-history-key-moments-you-should-know-d403157a227). To [design something](https://medium.com/@alenaiouguina/the-origin-of-design-designing-the-future-by-understanding-the-past-295045e9384e) means to work out the details before committing to creating the real thing. [Important purposes of design](https://www.expandtheroom.com/insights/the-eight-principles-of-purpose-driven-design/) include ensuring that the resulting object:
@@ -101,7 +97,7 @@ As the demand for an application changes, the underlying hardware must scale to 
     -   Increased complexity due to needed tasks, such as cloning servers.
     -   Added demand on downstream servers to provide caching and database support.
     -   Reduced reliability because a single load balancer can become a single point of failure.
--   **Vertical**: Where the [size of the server changes](/docs/guides/resizing-a-linode/) to meet new needs. This form of scaling is typically used to enhance anticipated changes in application use and is a manual process. It’s also normally used by small-to-medium-sized businesses that don’t want, or need, the complexity of load balancing. Issues with vertical scaling include:
+-   **Vertical**: Where the [size of the server changes](/docs/products/compute/compute-instances/guides/resize/) to meet new needs. This form of scaling is typically used to enhance anticipated changes in application use and is a manual process. It’s also normally used by small-to-medium-sized businesses that don’t want, or need, the complexity of load balancing. Issues with vertical scaling include:
     -   Potential size limitations of the physical server or virtual server instance.
     -   Higher risk of downtime and outages because the load isn’t distributed across multiple, redundant servers.
 

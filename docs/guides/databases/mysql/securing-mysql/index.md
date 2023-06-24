@@ -1,7 +1,5 @@
 ---
 slug: securing-mysql
-author:
-  name: Hackersploit
 description: 'This guide shows how to audit MySQL security, including: using the secure installer, modifying the root user, and adding new users.'
 keywords: ["mysql", "security", "audit", "root", "database", "privilege"]
 aliases: ['/security/auditing/secure-and-audit-mysql-server/','/security/secure-and-audit-mysql-server/','/guides/how-to-secure-mysql-server/']
@@ -10,12 +8,12 @@ tags: ["mysql","security","database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'Securing MySQL Server'
 title_meta: 'How to Secure MySQL Server'
-contributor:
-  name: Hackersploit
 modified_by:
   name: linode
 published: 2021-03-26
 image: SecureMySQLserver.png
+authors: ["Hackersploit"]
+tags: ["saas"]
 ---
 
 ## MySQL

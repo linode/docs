@@ -1,19 +1,14 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how people use Block Storage to expand their persistent storage on the Linode Platform."
 keywords: ['block','storage','use','cases']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-27
 modified: 2022-08-24
 modified_by:
   name: Linode
 title: "Common Use Cases for Block Storage"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/block-storage/block-storage-use-cases/','/guides/block-storage-use-cases/']
+authors: ["Linode"]
 ---
 
 ## What is Block Storage
@@ -83,7 +78,7 @@ Having backups of your data is always a good idea, and Block Storage Volumes mak
 You can boot from disk images installed to a Block Storage Volume. This provides a cost effective means of maintaining an image that can be attached to a new Linode. For example, you could save money by creating and removing on-demand Linode instances that boot from a Volume.  As well, you can boot from a Volume to access and recover an instance whose normal operating system may not be running as expected.
 
 {{< note >}}
-Linode provides a built-in [Rescue Mode](/docs/guides/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
+Linode provides a built-in [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) feature, but maintaining your own rescue Volume can allow you to include the recovery tools you prefer to use.
 {{< /note >}}
 
 ## Next Steps

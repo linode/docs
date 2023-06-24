@@ -1,21 +1,19 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Configuring multiqueue NICs (Network Interface Controllers) on a Linode to improve networking performance."
 keywords: ['networking','multi-queue']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-07-01
-image: NICS.jpg
+modified: 2023-03-03
 modified_by:
   name: Linode
 title: "Configuring Multi-Queue NICs"
 title_meta: "How To Configure Multi-Queue NICs"
+image: NICS.jpg
 external_resources:
  - '[KVM Multi-Queue documentation and performance](https://www.linux-kvm.org/page/Multiqueue)'
  - '[HOWTO for multiqueue network device support](https://www.kernel.org/doc/html/latest/networking/multiqueue.html)'
 tags: ["networking","linode platform"]
 aliases: ['/guides/multiqueue-nic/']
+authors: ["Linode"]
 ---
 
 Multi-queue NICs (network interface cards) are supported on all Compute Instances that have 2 or more CPU cores (vCPUs). This feature provides multiple receive (RX) and transmit (TX) queues, assigns them to different network interrupts, and balances them over multiple vCPUs. Historically, this traffic was all handled by a single vCPU core. Depending on the server's workload and network traffic, multi-queue can dramatically enhance network performance.
@@ -67,17 +65,7 @@ Check if multi-queue is already enabled on your network devices by using the [et
     Combined:       2
     ```
 
-    - **Maximum combined queues/vCPUs:** The value under **Pre-set maximums > Combined** is the maximum number of queues (and therefore vCPUs) supported by the multi-queue feature on our platform. This value should always be 8.
-
-    - **Current combined queues/vCPUs:** The value under **Current hardware settings > Combined** indicates the number of queues that are in effect. This is the number we'll use in the next step
-
-1.  Compare the current combined queues to the total number of vCPUs on your instance.
-
-    - **Multi-queue is not enabled** if the number of current combined queues is 1.
-
-    - **Multi-queue is partially enabled** if the number of current combined queues is between 2 and 7 but is less than number of vCPUs on your Compute Instance.
-
-    - **Multi-queue is fully enabled** if the current combined queues matches the number of vCPUs on your Compute Instance, up to a maximum of 8.
+1.  In the output above, locate the **Combined** value under the **Current hardware settings** section. This indicates the number of queues that are in effect. If multi-queue is fully enabled, this value should equal the number of vCPUs equipped on your Compute Instance (which is determined by your instance plan and type).
 
 ## Enabling Multi-Queue on Network Devices
 

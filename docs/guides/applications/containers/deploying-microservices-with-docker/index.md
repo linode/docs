@@ -1,7 +1,5 @@
 ---
 slug: deploying-microservices-with-docker
-author:
-  name: Bob Strecansky
 description: 'This guide describes how to effectively use Docker in production using a sample NGINX/Flask/Gunicorn/Redis/Postgresql Application Stack.'
 og_description: 'This guide shows how to deploy a simple microservice using Docker. Best practices for using Docker in production are also demonstrated and explained.'
 keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
@@ -12,13 +10,12 @@ modified_by:
   name: Bob Strecansky
 published: 2018-01-04
 title: 'How to Deploy Microservices with Docker'
-contributor:
-  name: Bob Strecansky
-  link: https://twitter.com/bobstrecansky
 external_resources:
 - '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
 - '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 aliases: ['/applications/containers/deploying-microservices-with-docker/']
+authors: ["Bob Strecansky"]
+tags: ["saas"]
 ---
 
 ![Deploying Microservices with Docker](how-to-deploy-microservices-with-docker-smg.jpg)

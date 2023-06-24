@@ -1,9 +1,6 @@
 ---
 slug: email-and-calendars-with-zimbra-6-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your CentOS 5 Linode.'
 keywords: ["zimbra on centos", "zimbra groupware", "zimbra mail server", "linux mail server"]
 tags: ["centos","email"]
@@ -23,6 +20,7 @@ relations:
         key: zimbra-groupware
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get the Open Source Edition installed on your CentOS 5 Linode.

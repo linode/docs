@@ -1,8 +1,5 @@
 ---
 slug: import-existing-infrastructure-to-terraform
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will describe how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.'
 keywords: ['terraform','configuration management','import']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +9,12 @@ modified_by:
   name: Linode
 image: ImportExistingInfrastructuretoTerraform.png
 title: "Import Existing Infrastructure to Terraform"
-contributor:
-  name: Linode
 external_resources:
 - '[Terraform Import Usage](https://www.terraform.io/docs/import/usage.html)'
 - '[Terraform Linode Instance Documentation](https://www.terraform.io/docs/providers/linode/r/instance.html)'
 aliases: ['/applications/configuration-management/import-existing-infrastructure-to-terraform/','/applications/configuration-management/terraform/import-existing-infrastructure-to-terraform/']
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 Terraform is an orchestration tool that uses declarative code to build, change, and version infrastructure that is made up of server instances and services. You can use [Linode's official Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) to interact with Linode services. Existing Linode infrastructure can be imported and brought under Terraform management. This guide describes how to import existing Linode infrastructure into Terraform using the official Linode provider plugin.

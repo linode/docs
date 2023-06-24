@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 14.'
 keywords: ["fedora 14 lamp", "lamp server", "linux lamp", "fedora 14 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

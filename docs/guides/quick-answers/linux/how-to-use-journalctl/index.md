@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-journalctl
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide shows how to use journalctl to view, search, and filter your system's logs.
 keywords: ["systemd","journalctl","logging"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
   - '[journald.conf man page](https://www.freedesktop.org/software/systemd/man/journald.conf.html)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/how-to-use-journalctl/']
+authors: ["Linode"]
 ---
 
 ## What is journalctl?

@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode.'
 keywords: ["fedora 13 lamp", "lamp server", "linux lamp", "fedora 13 apache"]
 tags: ["web server","php","mysql","apache","fedora","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

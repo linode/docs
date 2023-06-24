@@ -1,9 +1,6 @@
 ---
 slug: custom-compiled-kernel-with-pvgrub-centos-7
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB on CentOS 7'
 keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", "centos"]
 tags: ["centos"]
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-centos-7/']
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}

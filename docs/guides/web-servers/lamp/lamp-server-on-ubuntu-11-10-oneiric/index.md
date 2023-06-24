@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-ubuntu-11-10-oneiric
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.10 (Oneiric).'
 keywords: ["ubuntu lamp server", "ubuntu 11.10 lamp", "oneiric lamp", "ubuntu web server", "ubuntu oneiric"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 11.10
+authors: ["Linode"]
 ---
 
 

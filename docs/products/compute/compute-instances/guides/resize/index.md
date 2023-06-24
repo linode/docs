@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A walkthrough on upgrading or downgrading a Compute Instance's plan, including switching to a different plan type."
 keywords: ["upgrading", "resizing", "disk space"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2022-08-25
 modified_by:
   name: Linode
@@ -14,6 +10,7 @@ title: "Change Plans (Resize)"
 title_meta: "How to Resize a Compute Instance"
 image: resizing_a_linode.png
 aliases: ['/platform/disk-images/resizing-a-linode-classic-manager/','/resizing/','/platform/disk-images/resizing-a-linode/','/migrate-to-linode/disk-images/resizing-a-linode/','/guides/resizing-a-linode/']
+authors: ["Linode"]
 ---
 
 Changing a Compute Instances plan (and plan type) is made easy through the Cloud Manger. This includes upgrading to a larger plan or downgrading to a smaller plan. If you're expecting a temporary burst of traffic to your website, or if you're not using your plan's resource allotment as much as you thought, you can temporarily or permanently resize your instance.
@@ -65,7 +62,7 @@ Upgrading to a plan with additional resources and capacity enables you to scale 
 
 - **Resize Disks:** When resizing a Compute Instance to a larger plan, you can (in most cases) opt to automatically resize the disks as well. If your instance does not meet the requirements for this functionality or if you decide not to do this automatically, you can manually resize the disks at any point. See [Resize a Linode's Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 
-- **Optimize Applications:** Many applications can be configured to enhance performance when additional resources become available. This configuration may include increasing the memory limit, enabling multiple threads, and increasing the size maximum size of data, cache, logs, or other files. Review the documentation for your application and any software such as PHP, MySQL, Apache, or NGINX.
+- **Optimize Applications:** Many applications can be configured to enhance performance when additional resources become available. This configuration may include increasing the memory limit, enabling multiple threads, and increasing the maximum size of data, cache, logs, or other files. Review the documentation for your application and any software such as PHP, MySQL, Apache, or NGINX.
 
 - **Enable Multi-Queue NICS:** When upgrading to a plan with two or more vCPU cores, make sure that the multi-queue NICs feature is enabled. In most cases, this feature is already enabled or will be enabled once the Compute Instance reboots during the resize process. However, older distributions may require additional steps. See [Configuring Multi-Queue NICS](/docs/products/compute/compute-instances/guides/multiqueue-nic/).
 

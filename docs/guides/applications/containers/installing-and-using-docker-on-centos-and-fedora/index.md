@@ -1,8 +1,5 @@
 ---
 slug: installing-and-using-docker-on-centos-and-fedora
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A guide on installing Docker Engine on CentOS and Fedora Linux distributions'
 keywords: ['docker','docker engine','containers']
 tags: ["docker","containers","centos","fedora"]
@@ -21,6 +18,7 @@ relations:
         key: installing-and-using-docker
         keywords:
             - distribution: CentOS and Fedora
+authors: ["Linode"]
 ---
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages called *containers*. These containers have the necessary code, libraries, runtime, system settings, and dependencies needed to run an application.

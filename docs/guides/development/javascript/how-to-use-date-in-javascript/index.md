@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-date-in-javascript
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: In this quick overview of JavaScript's Date object, learn how to get dates, set dates, and compare dates using a simple HTML file.
 keywords: ['javascript','js','date','get date in javascript','set date in javascript','compare date in javascript']
 tags: ["web applications"]
@@ -16,6 +13,7 @@ title_meta: "How to Use the Date Object in JavaScript"
 external_resources:
 - '[MDN Web Docs | JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)'
 - '[MDN Web Docs | About JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript)'
+authors: ["Linode"]
 ---
 
 When creating a website or application, JavaScript handles dynamic, interactive, and event-driven behavior on your site. The `Date` object in JS uses a platform-agnostic format to represents a moment in time. This object uses the `Number` type to designate the date in milliseconds. The milliseconds are the time elapsed since January 1, 1970 UTC. This article covers the basics of getting the current year, month, date, and/or time using the JS `Date` object. This guide assumes some familiarity with JavaScript.

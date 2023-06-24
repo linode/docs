@@ -1,8 +1,5 @@
 ---
 slug: garrys-mod-server-on-centos-7
-author:
-  name: Julian Meyer
-  email: --
 description: 'This guide provides you with step-by-step instructions for deploying a Garrys Mod Server, which enables complete control of a video game engine, on CentOS 7.'
 keywords: ["garry''s mod", "centos", "centos 7"]
 tags: ["centos"]
@@ -17,10 +14,8 @@ external_resources:
 - '[SRCDS](http://www.srcds.com/)'
 - '[GMod Forums](http://facepunch.com/forum.php)'
 - '[GMod Wiki](http://wiki.garrysmod.com/page/Main_Page)'
-contributor:
-    name: Julian Meyer
-    link: https://github.com/jmeyer2k
 dedicated_cpu_link: true
+authors: ["Julian Meyer"]
 ---
 
 

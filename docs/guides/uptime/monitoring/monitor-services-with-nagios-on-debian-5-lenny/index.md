@@ -1,9 +1,6 @@
 ---
 slug: monitor-services-with-nagios-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Debian 5 (Lenny).'
 keywords: ["nagios", "monitoring"]
 tags: ["debian","monitoring"]
@@ -19,6 +16,7 @@ relations:
         key: install-nagios-monitoring
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 Nagios is an open source monitoring tool that monitors services within a server cluster. In addition to monitoring services such as SMTP/POP3 and HTTP, Nagios can also be used to check the health of the server itself.

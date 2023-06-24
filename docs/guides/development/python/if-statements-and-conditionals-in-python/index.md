@@ -1,7 +1,5 @@
 ---
 slug: if-statements-and-conditionals-in-python
-author:
-  name: Jeff Novotny
 description: 'This guide provides an introduction to conditional statements in Python 3. It covers how to use if, if else, and elif statements to create simple and complex conditionals.'
 keywords: ['Python conditional','Python if else','Python if statement']
 tags: ['python']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "If Statements and Chained Conditionals in Python 3"
 title_meta: "Using If Statements and Chained Conditionals in Python 3"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Python control flow documentation](https://docs.python.org/3/tutorial/controlflow.html)'
 - '[PEP 8 Style Guidelines](https://www.python.org/dev/peps/pep-0008/)'
+authors: ["Jeff Novotny"]
 ---
 
 [Python](https://www.python.org/) programs must be able to run different branches of code in different situations. This is usually accomplished through the use of *conditional statements*, which determine the *control flow* through a program. Python's `if` statement is used to decide whether or not some code should run. This guide explains the `if` statement and other Python conditionals and demonstrates how to use them.

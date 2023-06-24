@@ -1,8 +1,5 @@
 ---
 slug: a-beginners-guide-to-selinux-on-centos-7
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
 description: 'This guide provides a brief and basic introduction to commonly used commands and practices for SELinux system administration on CentOS 7.'
 keywords: ["Security-enhanced Linux", "secure open source", " SELinux", "CentOS 7"]
 tags: ["centos","security"]
@@ -23,6 +20,7 @@ relations:
         key: get-started-selinux
         keywords:
             - distribution: CentOS 7
+authors: ["Angel Guarisma"]
 ---
 
 ![Getting Started with SELinux](selinux_centos.jpg)

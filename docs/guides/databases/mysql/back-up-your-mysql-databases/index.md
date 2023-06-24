@@ -2,9 +2,6 @@
 slug: back-up-your-mysql-databases
 deprecated: true
 deprecated_link: "guides/use-mysqldump-to-back-up-mysql-or-mariadb/"
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide provides instructions for backing up your MySQL databases for disaster recovery and continuity using a variety of methods, including the command line.'
 keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -20,6 +17,7 @@ external_resources:
  - '[Schedule Tasks With Cron](/docs/guides/schedule-tasks-with-cron/)'
  - '[MySQL''s Grant Statement, Official Documentation](http://dev.mysql.com/doc/refman/5.1/en/grant.html)'
 tags: ["database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the [LAMP Stack](/docs/web-servers/lamp/). The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.
@@ -30,7 +28,7 @@ Before beginning the installation process, we assume you've followed the steps o
 
 ## Backup Methodology
 
-Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/guides/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
+Most backups of MySQL databases in this guide are performed using the `mysqldump` tool, which is distributed with the default MySQL server installation. We recommend that you use `mysqldump` whenever possible because it is often the easiest and most efficient way to take database backups. Other methods detailed in this guide are provided for situations when you do not have access to the `mysqldump` tool, as in a recovery environment like [Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#rescuing) or in situations where the local instance of the MySQL server will not start.
 
 Nevertheless, this guide provides a mere overview of the `mysqldump` tool, as there are many options for and uses of `mysqldump` that fall beyond the scope of this document. We encourage you to become familiar with all of the procedures covered in this document, and to continue your exploration of `mysqldump` beyond the cases described here. Be sure to note the following:
 
@@ -53,7 +51,7 @@ Automate this process by adding a line to `crontab`:
 
     0 1 * * * /usr/bin/mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -pPASSWORD
 
-For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
+For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as and `PASSWORD` with the correct password for that user.
 
 {{< note >}}
 In the crontab example, ensure that there is no space between the -P flag, and your password entry.
@@ -61,7 +59,7 @@ In the crontab example, ensure that there is no space between the -P flag, and y
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 
-While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/guides/rescue-and-rebuild/) with your system's disks mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
+While the `mysqldump` tool is the preferred backup method, there are a couple of cases that require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, we can copy MySQL's database directly. This method is often necessary in situations where you only have access to a recovery environment like [Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/) with your system's disks mounted in that file system. If you're attempting this method on your system itself, ensure that the database is **not** running. Issue a command that resembles the following:
 
     /etc/init.d/mysqld stop
 

@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Find the Canonical User ID for an Account"
 description: "How to cancel the Linode Object Storage service."
 date: 2022-03-11
+authors: ["Linode"]
 ---
 
 Each Object Storage account is given its own *canonical user ID*, which can be used to identify a specific account or share resources between accounts. This ID consists of a long string of letters, dashes, and numbers, such as `a0000000-000a-0000-0000-00d0ff0f0000`.

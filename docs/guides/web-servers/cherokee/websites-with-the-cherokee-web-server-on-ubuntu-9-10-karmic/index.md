@@ -1,9 +1,6 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.10 (Karmic).'
 keywords: ["cherokee", "web sever", "cherokee ubuntu 9.10", "cherokee ubuntu karmic", "ubuntu karmic"]
 tags: ["web server","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

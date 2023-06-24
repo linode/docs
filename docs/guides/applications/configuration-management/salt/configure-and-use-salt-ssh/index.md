@@ -1,8 +1,5 @@
 ---
 slug: configure-and-use-salt-ssh
-author:
-  name: Sergey Bulavintsev
-  email: bulavintsev.sergey@gmail.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring your Linux system to use Salt SSH without installing a salt-minion package.'
 keywords: ["Saltstack", " salt", " salt-ssh"]
 tags: ["automation","salt","ssh"]
@@ -13,9 +10,8 @@ modified_by:
   name: Linode
 image: ConfigureandUseSaltSSHtoManageyourLinodes.png
 title: 'Configure and Use Salt SSH to Manage Your Linodes'
-contributor:
-  name: Sergey Bulavintsev
 aliases: ['/applications/configuration-management/configure-and-use-salt-ssh/','/applications/configuration-management/salt/configure-and-use-salt-ssh/']
+authors: ["Sergey Bulavintsev"]
 ---
 
 ## Introduction to Salt SSH

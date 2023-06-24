@@ -2,9 +2,8 @@
 title: Cancel Your Account
 title_meta: "How to Cancel an Account on the Linode Platform"
 description: "Learn how to cancel a Linode account through the Cloud Manager."
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-25
-modified: 2023-02-09
+modified: 2023-03-02
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -23,7 +22,7 @@ Linode provides a 7-day guarantee for all paid services. If you cancel your acco
 1.  Click the **Account** link in the sidebar.
 1.  Click the **Settings** tab.
 1.  Under the **Close Account** panel, click the **Close Account** button.
-1.  A confirmation form appears. Enter your Linode username in the first field and optionally enter any comments you'd like to leave in the second field.
+1.  A confirmation form appears. Enter your Linode username in the first field and optionally enter any comments you'd like to leave in the second field. Any refund requests can be entered here as well. See the [Refunds](/docs/products/platform/billing/#refunds) section of the Billing guide.
 1.  Click the **Close Account** button to complete your account cancellation. Any past due balance and uninvoiced balance is immediately charged to the credit card on file for your account. After that, you will receive no further charges from Linode regarding this account.
 
 After following these instructions, all of your services are immediately marked for deletion and your account is immediately cancelled. You are no longer able to log in through the Cloud Manager.

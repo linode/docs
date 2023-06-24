@@ -1,8 +1,5 @@
 ---
 slug: host-a-terraria-server-on-your-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'In this guide, you will learn how to install and configure Terraria, a two-dimensional sandbox game similar to Minecraft, on a Linode.'
 keywords: ["terraria", "steam", "minecraft", "gaming"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,15 +8,13 @@ modified: 2021-06-29
 modified_by:
   name: Linode
 title: 'How to Setup a Terraria Linux Server'
-contributor:
-  name: Tyler Langlois
-  link: https://github.com/tylerjl
 external_resources:
  - '[Terraria Wiki](http://terraria.gamepedia.com/Terraria_Wiki)'
  - '[Terraria Wiki: Server](http://terraria.gamepedia.com/Server)'
  - '[Terraria Wiki: Setting up a Terraria Server](http://terraria.gamepedia.com/Guide:Setting_up_a_Terraria_server)'
 aliases: ['/game-servers/host-a-terraria-server-on-your-linode/','/applications/game-servers/host-a-terraria-server-on-your-linode/']
 dedicated_cpu_link: true
+authors: ["Tyler Langlois"]
 ---
 
 ![Hosta a Terraria Server on Your Linode](terraria-server.png "Hosta a Terraria Server on Your Linode")

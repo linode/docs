@@ -1,7 +1,5 @@
 ---
 slug: installing-and-using-bottom-on-linux
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use bottom, a graphical system monitoring and process visualization tool for your Linux terminal."
 keywords: ['bottom command in linux','bottom linux install','system monitor linux terminal']
 tags: ['linux', 'debian', 'ubuntu']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Install and Use bottom on Linux"
 title_meta: "How to Install and Use bottom on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[bottom](https://clementtsang.github.io/bottom/0.6.3/)'
 - '[GitHub: ClementTsang/bottom](https://github.com/ClementTsang/bottom)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Bottom is a terminal-based graphical dashboard for system monitoring. It comes with a range of customization options and display features that set it apart from other system monitoring dashboards.

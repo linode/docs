@@ -1,9 +1,6 @@
 ---
 slug: monitoring-servers-with-munin-on-ubuntu-11-04-natty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 11.04 (Natty'
 keywords: ["munin", "monitoring", "ubuntu", " ubuntu 11.04", "natty", " ubuntu natty"]
 tags: ["monitoring","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: install-munin-monitoring
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 

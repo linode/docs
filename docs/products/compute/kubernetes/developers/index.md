@@ -1,8 +1,11 @@
 ---
 title: Developers
+title_meta: "Developer Resources for LKE (Linode Kubernetes Engine)"
 description: "Linode Kubernetes Engine instances are managed easily with developer tools like the Linode API or CLI as well as third party tools and integrations."
 tab_group_main:
     weight: 50
+published: 2020-06-02
+modified: 2023-02-09
 ---
 
 ## Linode API
@@ -17,4 +20,4 @@ The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the L
 
 ## Third Party Tools & Integrations
 
-**Terraform**: Terraform is an Infrastructure-as-code tool that includes management features for various types of Linode resources. Use Linode’s [official Terraform Provider](https://www.terraform.io/docs/providers/linode/r/volume.html) to [provision Linode Kubernetes Engine Clusters](/docs/guides/how-to-deploy-an-lke-cluster-using-terraform/).
+**Terraform**: Terraform is an Infrastructure-as-code tool that includes management features for various types of Linode resources. Use Linode’s [official Terraform Provider](https://www.terraform.io/docs/providers/linode/r/volume.html) to [provision Linode Kubernetes Engine Clusters](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/).

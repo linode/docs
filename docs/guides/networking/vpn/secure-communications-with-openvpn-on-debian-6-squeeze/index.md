@@ -1,8 +1,5 @@
 ---
 slug: secure-communications-with-openvpn-on-debian-6-squeeze
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a Debian 6 (Squeeze) Linode.'
 keywords: ["openvpn debian 6", "openvpn debian", "debian vpn"]
 tags: ["networking","security","vpn","debian"]
@@ -19,6 +16,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tunnels" between and among groups of computers that are not on the same local network. This is useful if you have services on a local network and need to access them remotely, but don't want these services to be publicly accessible. By integrating with OpenSSL, OpenVPN can encrypt all VPN traffic to provide a secure connection between machines.

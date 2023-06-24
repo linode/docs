@@ -1,7 +1,5 @@
 ---
 slug: tldr-pages-on-linux
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to install tldr pages and use the tldr command-line tool. With tldr pages, you get a more approachable version of traditional man pages, making it easier to get started with new command-line tools."
 keywords: ['install tldr','tldr pages linux','tldr man pages','tldr linux command']
 tags: ['linux']
@@ -11,9 +9,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use tldr pages on Linux"
 title_meta: "How to Use tldr pages on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 The [tldr pages project](https://tldr.sh/) seeks to improve and simplify the well-known man pages. tldr pages provide information on a wide range of Linux commands and include several options to interact with the information. Compared to man pages, each tldr page aims to be more intuitive and readable. When learning new Linux commands, tldr pages are an excellent resource.

@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-ubuntu-8-04-lts-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to install and configure configuring a LAMP stack with the Hardy Heron (8.04 LTS) release of Ubuntu Linux.'
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 

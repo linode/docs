@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-ubuntu-9-04-jaunty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing a fully-featured LAMP (Linux, Apache, MySQL, LInux) stack on a Linode running Ubuntu 9.04 "Jaunty".'
 keywords: ["ubuntu lamp server", "ubuntu web server", "ubuntu jaunty"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 9.04
+authors: ["Linode"]
 ---
 
 

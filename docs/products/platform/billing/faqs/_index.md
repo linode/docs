@@ -1,5 +1,6 @@
 ---
 title: "FAQs"
+title_meta: "FAQs for Billing and Payments on the Linode Platform"
 description: "Find quick answers to some of the most commonly asked billing questions."
 tab_group_main:
     weight: 60

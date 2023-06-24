@@ -1,8 +1,5 @@
 ---
 slug: install-java-on-ubuntu-16-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running Ubuntu version 16.04.'
 keywords: ["oracle", "java", "JDK", "install java", "ubuntu"]
 tags: ["java","ubuntu"]
@@ -13,9 +10,6 @@ modified_by:
   name: Phil Zona
 published: 2017-05-30
 title: 'Install Java on Ubuntu 16.04'
-contributor:
-  name: Phil Zona
-  link: https://github.com/pbzona
 external_resources:
  - '[Oracle Java](https://www.oracle.com/java/index.html)'
  - '[Read the FAQ](https://www.oracle.com/technetwork/java/javase/overview/oracle-jdk-faqs.html)'
@@ -28,6 +22,7 @@ relations:
         key: install-java
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Phil Zona"]
 ---
 
 ![Java](Install_Oracle_Java.jpg)

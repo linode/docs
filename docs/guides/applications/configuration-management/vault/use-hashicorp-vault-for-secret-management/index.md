@@ -1,8 +1,5 @@
 ---
 slug: use-hashicorp-vault-for-secret-management
-author:
-  name: Tyler Langlois
-  email: ty@tjll.net
 description: 'How to configure, deploy, and use HashiCorp Vault to manage application secrets'
 keywords: ['vault','secrets','secrets management','hcl','token','authentication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified: 2019-03-30
 modified_by:
   name: Linode
 title: "Use HashiCorp Vault to Manage Secrets"
-contributor:
-  name: Linode
 external_resources:
 - '[Vault Documentation Overview](https://www.vaultproject.io/docs/)'
 - '[Vault Reference Architecture and Best Practices](https://learn.hashicorp.com/vault/day-one/ops-reference-architecture)'
@@ -20,6 +15,8 @@ external_resources:
 - '[Vault Auth Methods](https://www.vaultproject.io/docs/auth/index.html)'
 aliases: ['/applications/configuration-management/use-hashicorp-vault-for-secret-management/','/applications/configuration-management/vault/use-hashicorp-vault-for-secret-management/']
 tags: ["security","automation"]
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 [HashiCorp Vault](https://www.vaultproject.io/) is a secrets management tool that helps to provide secure, automated access to sensitive data. Vault meets these use cases by coupling authentication methods (such as application tokens) to secret engines (such as simple key/value pairs) using policies to control how access is granted. In this guide, you will install, configure, and access Vault in an example deployment to illustrate Vault's features and API.

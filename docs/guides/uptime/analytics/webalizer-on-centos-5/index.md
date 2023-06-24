@@ -1,9 +1,6 @@
 ---
 slug: webalizer-on-centos-5
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide shows how you can get detailed website statistics, such as visitor counts, page views, and more by installing the open-source Webalizer app on CentOS 5.'
 keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "centos"]
 tags: ["centos","statistics","apache","analytics"]
@@ -21,6 +18,7 @@ relations:
         key: using-webalizer-analytics
         keywords:
             - distribution: CentOS 5
+authors: ["Brett Kaplan"]
 ---
 
 Webalizer is an industry standard statistics generation tool. It is useful to analyze traffic to your web server while still remaining lightweight enough not to hinder performance. Webalizer can even identify your user base using GeoIP services.

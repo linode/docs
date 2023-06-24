@@ -1,9 +1,6 @@
 ---
 slug: build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: "This guide will show you how to use the Mono Project's Apache module to run Microsoft ASP.NET applications on Ubuntu 9.10 (Karmic) similar to Windows Server"
 keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 tags: ["web applications","apache","php","mysql","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key:  asp-mono-apache
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Brett Kaplan"]
 ---
 
 

@@ -1,9 +1,6 @@
 ---
 slug: multiple-web-servers-with-proxypass-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how you can use separate web servers to host multiple websites or applications using ProxyPass with Apache on Fedora 14.'
 keywords: ["apache", "proxypass", "apache on fedora", "multiple web servers"]
 tags: ["proxy","web server","apache","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: multiple-servers-proxypass
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

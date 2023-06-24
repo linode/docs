@@ -1,8 +1,5 @@
 ---
 slug: create-a-python-virtualenv-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: This guide provides a brief introduction to Python virtual environments using the virtualenv tool on Debian 10.
 keywords: ["python", "python virtual environment", "virtualenv", "debian 10"]
 tags: ["python","debian"]
@@ -24,6 +21,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/development/python/create-a-python-virtualenv-on-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What is a Python Virtual Environment?
