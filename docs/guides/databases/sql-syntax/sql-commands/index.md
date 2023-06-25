@@ -1,8 +1,5 @@
 ---
 slug: sql-commands
-author:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  email: docs@linode.com
 description: 'SQL commands can be used across relational database systems like MySQL and PostgreSQL. Learn the fundamental SQL commands used to insert and modify data in a SQL table.'
 keywords: ['create table', 'alter table', 'drop table', 'ddl commands']
 tags: ['MySQL']
@@ -12,9 +9,7 @@ modified_by:
   name: Linode
 title: "Introduction to SQL Commands"
 title_meta: "SQL Commands: Getting Started"
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 In today’s world of increased digitization, big data, and cloud computing, data management is amongst the most important skills a software engineer can have. To this end, one of the most powerful database tools is SQL.

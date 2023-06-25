@@ -1,18 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Attach and Detach a Volume"
 description: "Learn how to attach and detach exsting Volumes to or from Compute Instances."
 aliases: ['/products/storage/block-storage/guides/attach-volume/','/products/storage/block-storage/guides/detach-volume/']
 modified: 2022-08-24
+authors: ["Linode"]
 ---
 
 Each Volume can to be attached to a single Compute Instance within the same data center, which enables that instance to read and write data to that Volume. Volumes can also be detached, and its data cannot be accessed until it is again attached to any Compute Instance within the same data center.
 
 ## Attach a Volume
 
-Follow these steps to attach an existing Block Storage Volume to a Compute Instance.
+Learn how to attach an existing Block Storage Volume to a Compute Instance using these steps:
 
 1.  Log in to the [Cloud Manager](https://cloud.linode.com/linodes) and click on the **Volumes** link in the sidebar.
 

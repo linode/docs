@@ -1,16 +1,14 @@
 ---
 slug: install-vnc-on-ubuntu-20-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to install and connect to a desktop environment on your Linode'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "20.04"]
 tags: ["ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-10-21
+modified: 2023-06-12
 modified_by:
   name: Linode
-published: 2021-10-21
 title: 'Install VNC on Ubuntu 20.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
@@ -21,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-21-04/', '/guides/install-vnc-on-ubuntu-21-04/']
+authors: ["Linode"]
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.
@@ -41,20 +40,25 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Ubuntu has several desktop environments available in its repositories. The following command installs the default desktop, [Unity](https://unity.ubuntu.com/), as well as the dependencies that are required for the graphical interface to work properly:
 
-        sudo apt install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    ```command
+    sudo apt install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    ```
 
-    {{< note respectIndent=false >}}
-This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
+    {{< note >}}
+    This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
 
+    ```command
     sudo apt install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
-
-{{< /note >}}
+    ```
+    {{< /note >}}
 
     During the install process, reply with the defaults to any prompts.
 
-2.  Install the VNC server:
+1.  Install the VNC server:
 
-        sudo apt install tigervnc-standalone-server
+    ```command
+    sudo apt install tigervnc-standalone-server
+    ```
 
 ## Secure your VNC connection
 
@@ -66,13 +70,17 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
 1.  From your desktop, connect to your Linode with the following command. Be sure to replace `user@example.com` with your username and your Linode's hostname or IP address:
 
-        ssh -L 5901:127.0.0.1:5901 user@example.com
+    ```command
+    ssh -L 5901:127.0.0.1:5901 user@example.com
+    ```
 
-2.  From your Linode, launch the VNC server to test your connection. You will be prompted to set a password:
+1.  From your Linode, launch the VNC server to test your connection. You will be prompted to set a password:
 
-        vncserver :1
+    ```command
+    vncserver :1
+    ```
 
-3.  Initiate your connection as per the steps in the [Connect to VNC from your Desktop](#connect-to-vnc-from-your-desktop) section.
+1.  Initiate your connection as per the steps in the [Connect to VNC from your Desktop](#connect-to-vnc-from-your-desktop) section.
 
 ### Windows
 
@@ -80,13 +88,15 @@ The default VNC connection is unencrypted. In order to secure your passwords and
 
     ![Adding a forwarded port to PuTTY.](1648-vnc-putty-1.png)
 
-2.  Click **Add**, then return to the 'Session' screen. Enter your Linode's hostname or IP address and a title for your session. Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
+1.  Click **Add**, then return to the 'Session' screen. Enter your Linode's hostname or IP address and a title for your session. Click save to save your settings for future use, and then click open to initiate your SSH tunnel.
 
-3.  Launch the VNC server to test your connection. You will be prompted to set a password:
+1.  Launch the VNC server to test your connection. You will be prompted to set a password:
 
-        vncserver :1
+    ```command
+    vncserver :1
+    ```
 
-4.  Initiate your connection as per the steps in the [Connect to VNC from your Desktop](#connect-to-vnc-from-your-desktop) section.
+1.  Initiate your connection as per the steps in the [Connect to VNC from your Desktop](#connect-to-vnc-from-your-desktop) section.
 
 ## Connect to VNC from your Desktop
 
@@ -100,11 +110,11 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
     ![Connecting through an SSH tunnel.](vnc_viewer_new_connection.png)
 
-2.  You will be warned that the connection is unencrypted, but if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
+1.  You will be warned that the connection is unencrypted, but if you have followed the steps above for securing your VNC connection, your session will be securely tunneled to your Linode. To proceed, press **Continue**.
 
     ![VNC Security Warning.](1656-vnc-2-2.png)
 
-3.  You will be prompted to enter the password you specified when first launching the VNC Server. See [Secure your VNC Connection](#secure-your-vnc-connection) if you have not yet started a VNC server on your Linode.
+1.  You will be prompted to enter the password you specified when first launching the VNC Server. See [Secure your VNC Connection](#secure-your-vnc-connection) if you have not yet started a VNC server on your Linode.
 
     ![The VNC password prompt.](vnc_viewer_password.png)
 
@@ -118,11 +128,11 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     ![The Remmina Software.](1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter `localhost:1` in the server field. The `:1` in the server field corresponds to the display number. In the password section fill in the password you specified in [Secure your VNC Connection](#secure-your-vnc-connection):
+1.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter `localhost:1` in the server field. The `:1` in the server field corresponds to the display number. In the password section fill in the password you specified in [Secure your VNC Connection](#secure-your-vnc-connection):
 
     ![Settings for a Remmina remote desktop connection.](1641-vnc-ubuntu-2.png)
 
-3.  Press **Connect**.
+1.  Press **Connect**.
 
 You'll see a blank gray screen since the desktop processes have not yet started. In the next section, we will configure your Linode to launch a full desktop.
 
@@ -132,14 +142,19 @@ This section will configure VNC to launch the full Unity desktop when it starts.
 
 1.  After you've successfully connected, exit the connection. Close the VNC server:
 
-        vncserver -kill :1
+    ```command
+    vncserver -kill :1
+    ```
 
-1. Create a new file `~/.vnc/xstartup`:
-        sudo nano ~/.vnc/xstartup
+1.  Create a new file `~/.vnc/xstartup`:
 
-1. Add the following configuration. This starts the desktop dependencies as background processes upon starting the VNC server:
+    ```command
+    sudo nano ~/.vnc/xstartup
+    ```
 
-    {{< file "~/.vnc/xstartup" >}}
+1.  Add the following configuration. This starts the desktop dependencies as background processes upon starting the VNC server:
+
+    ```file {title="~/.vnc/xstartup"}
     #!/bin/sh
 
     # Uncomment the following two lines for normal desktop:
@@ -157,14 +172,21 @@ This section will configure VNC to launch the full Unity desktop when it starts.
     gnome-settings-daemon &
     metacity &
     nautilus &
-    {{< /file >}}
+    ```
 
-1. Save and exit the file.
-1. Make the file executable:
-       sudo chmod +x ~/.vnc/xstartup
+1.  Save and exit the file.
+
+1.  Make the file executable:
+
+    ```command
+    sudo chmod +x ~/.vnc/xstartup
+    ```
+
 1.  Begin another VNC session:
 
-        vncserver :1
+    ```command
+    vncserver :1
+    ```
 
 1.  Connect from your local VNC client using the same steps from the [previous section](#connect-to-vnc-from-your-desktop). You should now see the full Ubuntu Desktop:
 
@@ -176,47 +198,50 @@ This section is optional. Follow these steps to configure the VNC server to star
 
 1.  Open your crontab. If you've never edited it before, you may be prompted to choose a text editor:
 
-        crontab -e
-        no crontab for user - using an empty one
+    ```command
+    crontab -e
+    ```
 
-        Select an editor.  To change later, run 'select-editor'.
-          1. /bin/ed
-          2. /bin/nano        <---- easiest
-          3. /usr/bin/vim.basic
-          4. /usr/bin/vim.tiny
+    ```output
+    no crontab for user - using an empty one
 
-        Choose 1-4 [2]:
+    Select an editor.  To change later, run 'select-editor'.
+      1. /bin/ed
+      2. /bin/nano        <---- easiest
+      3. /usr/bin/vim.basic
+      4. /usr/bin/vim.tiny
 
-2.  Add `@reboot /usr/bin/vncserver :1` to the bottom of the file. Your crontab should look like this:
+    Choose 1-4 [2]:
+    ```
 
-    {{< file "crontab" >}}
-# Edit this file to introduce tasks to be run by cron.
-#
-# Each task to run has to be defined through a single line
-# indicating with different fields when the task will be run
-# and what command to run for the task
-#
-# To define the time you can provide concrete values for
-# minute (m), hour (h), day of month (dom), month (mon),
-# and day of week (dow) or use '*' in these fields (for 'any').
-#
-# Notice that tasks will be started based on the cron's system
-# daemon's notion of time and timezones.
-#
-# Output of the crontab jobs (including errors) is sent through
-# email to the user the crontab file belongs to (unless redirected).
-#
-# For example, you can run a backup of all your user accounts
-# at 5 a.m every week with:
-# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-#
-# For more information see the manual pages of crontab(5) and cron(8)
-#
-# m h dom mon dow command
+1.  Add `@reboot /usr/bin/vncserver :1` to the bottom of the file. Your crontab should look like this:
 
-@reboot /usr/bin/vncserver :1
+    ```file {title="crontab"}
+    # Edit this file to introduce tasks to be run by cron.
+    #
+    # Each task to run has to be defined through a single line
+    # indicating with different fields when the task will be run
+    # and what command to run for the task
+    #
+    # To define the time you can provide concrete values for
+    # minute (m), hour (h), day of month (dom), month (mon),
+    # and day of week (dow) or use '*' in these fields (for 'any').
+    #
+    # Notice that tasks will be started based on the cron's system
+    # daemon's notion of time and timezones.
+    #
+    # Output of the crontab jobs (including errors) is sent through
+    # email to the user the crontab file belongs to (unless redirected).
+    #
+    # For example, you can run a backup of all your user accounts
+    # at 5 a.m every week with:
+    # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+    #
+    # For more information see the manual pages of crontab(5) and cron(8)
+    #
+    # m h dom mon dow command
 
-{{< /file >}}
+    @reboot /usr/bin/vncserver :1
+    ```
 
-
-3.  Save and exit the file. You can test by rebooting your Linode and connecting to the VNC server.
+1.  Save and exit the file. You can test by rebooting your Linode and connecting to the VNC server. To connect securely to the VNC server see the [secure](#secure-your-vnc-connection) and [connect](#connect-to-vnc-from-your-desktop) sections.

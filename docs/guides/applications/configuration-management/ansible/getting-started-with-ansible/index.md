@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-ansible
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: "In this guide, we'll show you how to use Ansible to perform basic configuration tasks on your Linodes as well as set up a simple web server."
 keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,14 +10,12 @@ modified_by:
     name: Ryan Syracuse
 title: "Getting Started With Ansible: Basic Installation and Setup"
 title_meta: "Getting Started with Ansible: Installation and Setup"
-contributor:
-    name: Joshua Lyman
-    link: https://twitter.com/jlyman
 external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
  - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
  - '[Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 tags: ["automation"]
+authors: ["Joshua Lyman"]
 ---
 
 ![Automatically Configure Servers with Ansible and Playbooks](automatically-configure-servers-with-ansible-title.jpg "Automatically Configure Servers with Ansible and Playbooks")

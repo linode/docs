@@ -1,8 +1,5 @@
 ---
 slug: install-vnc-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install and configure VNC enabling you to remotely connect to a live desktop environment on your Linode on Ubuntu 18.04.'
 og_description: "This guide shows how to install a desktop environment on your Linode and connect to it using VNC."
 keywords: ["vnc", "remote desktop", "ubuntu", "18.04"]
@@ -21,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/applications/remote-desktop/install-vnc-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 *Virtual network computing*, or VNC, is a graphical desktop sharing system that allows you to control one computer remotely from another. A VNC server transfers keyboard and mouse events, and displays the remote host's screen via a network connection, which allows you to operate a full desktop environment on your Linode.

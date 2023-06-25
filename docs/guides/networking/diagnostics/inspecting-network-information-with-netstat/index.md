@@ -1,8 +1,5 @@
 ---
 slug: inspecting-network-information-with-netstat
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'A practical introduction to the netstat utility on Linux, including examples of the different options available.'
 keywords: ["UNIX", "shell", "netstat", "TCP/IP", "UDP", "network", "sockets", "unix sockets", "network connections", "network statistics"]
 tags: ["monitoring","networking","statistics","linux"]
@@ -11,12 +8,10 @@ published: 2019-09-02
 modified_by:
   name: Linode
 title: 'Inspecting Network Information with netstat'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[netstat](http://netstat.net/)'
 aliases: ['/networking/diagnostics/inspecting-network-connections-with-netstat/','/networking/diagnostics/inspecting-network-information-with-netstat/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 The `netstat` command line utility shows information about the network status of a workstation or server. `netstat` is available on Unix-like and Windows operating systems, with some differences in its usage between these systems.

@@ -15,7 +15,9 @@
 @import "components/all.css";
 @import "sections/all.css";
 @import "logic/all.css";
+/* purgecss start ignore */
 @import "grids/grid--base.css";
+/* purgecss end ignore */
 
 html {
   font-size: 16px;

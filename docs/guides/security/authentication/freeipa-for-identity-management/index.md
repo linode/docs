@@ -1,7 +1,5 @@
 ---
 slug: freeipa-for-identity-management
-author:
-  name: Hackersploit
 description: "Set up a centralized identity and authentication management server with FreeIPA, the upstream open-source project for Red Hat Identity Management."
 keywords: ["freeipa","identity management", "authentication","security"]
 aliases: ['/security/authentication/free-ipa-for-identity-management/','/security/free-ipa-for-identity-management/']
@@ -17,6 +15,7 @@ modified: 2022-11-29
 modified_by:
   name: Linode
 image: FreeIPA_IDandAuth.png
+authors: ["Hackersploit"]
 ---
 
 ## What is FreeIPA

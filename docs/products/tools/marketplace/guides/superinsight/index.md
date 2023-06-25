@@ -1,17 +1,12 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy Superinsight DB, a relational database for unstructured data, on the Linode platform."
 keywords: ['superinsight','database','relational','unstructured','postgresql']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-01-23
 title: "Deploy Superinsight DB through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Superinsight DB](https://github.com/superinsight/superinsight-db)'
+authors: ["Linode"]
 ---
 
 [Superinsight DB](https://github.com/superinsight/superinsight-db) is a relational database for unstructured data. Its main purpose is to provide a simple SQL interface to store and search unstructured data. Superinsight is built on top of PostgreSQL, which means you can take advantage of PostgreSQL features and the ability to run machine learning operations using SQL statements.
@@ -33,7 +28,7 @@ external_resources:
 
 ## Getting Started after Deployment
 
-1. Log into your new Compute Instance through [LISH](/docs/guides/lish/) or [SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
+1. Log into your new Compute Instance through [LISH](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) using the root user and the password you entered when creating the instance.
 
 1. If you log in on the same day you deployed the app, a message is displayed with the username and password for the new database as well as an example database connection string.
 

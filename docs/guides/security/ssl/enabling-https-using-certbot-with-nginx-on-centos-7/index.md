@@ -1,8 +1,5 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-centos-7
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to install and use Certbot with NGINX on CentOS/RHEL 7, which automates the process adding TLS/SSL to your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
 tags: ['ssl','nginx', 'centos']
@@ -16,6 +13,7 @@ relations:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: CentOS/RHEL 7
+authors: ["Linode"]
 ---
 
 This guide provides instructions on using the open source [Certbot](https://certbot.eff.org/) utility with the NGINX web server on CentOS 7 and RHEL 7. Certbot dramatically reduces the effort (and cost) of securing your websites with HTTPS. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on NGINX (or other web servers).

@@ -1,7 +1,5 @@
 ---
 slug: how-to-deploy-a-react-app-on-centos-8
-author:
-  name: Linode
 description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX.'
 og_description: 'This guide will show you how to deploy a React application you may have written to a CentOS 8 Linode that is running a web serve such as Apache or NGINX'
 keywords: ['react','reactjs','deploy','rsync']
@@ -14,8 +12,6 @@ modified_by:
   name: Linode
 title: "Deploying a React Application on CentOS 8"
 title_meta: "How to Deploy a React Application on CentOS 8"
-contributor:
-  name: Linode
 external_resources:
 - '[React - A JavaScript library for building user interfaces](https://reactjs.org/)'
 - '[Deploy a React App with Sass Using NGINX](https://web.archive.org/web/20191130010415/http://zabana.me/notes/build-deploy-react-app-with-nginx.html)'
@@ -28,6 +24,7 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/react/how-to-deploy-a-react-app-on-centos-8/']
+authors: ["Linode"]
 ---
 
 ## What is React?

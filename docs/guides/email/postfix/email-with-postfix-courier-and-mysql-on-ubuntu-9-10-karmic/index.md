@@ -1,8 +1,5 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 9.10 (Karmic).'
 keywords: ["postfix", "courier", "mail server", "postfix ubuntu karmic", "postfix ubuntu 9.10", "imap", "postfix on ubuntu", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["mysql","postfix","email","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.

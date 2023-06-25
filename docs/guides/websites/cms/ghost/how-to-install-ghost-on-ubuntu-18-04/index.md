@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-ghost-on-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 18.04.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running Ubuntu 18.04 LTS.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 18.04", "ghost cms"]
@@ -25,6 +22,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. Ghost is a robust content management system (CMS) with a Markdown editor, an easy-to-use user interface, and beautiful themes. It is easy to install and update with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI).

@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for StackScripts"
 description: "Linode StackScripts are managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50

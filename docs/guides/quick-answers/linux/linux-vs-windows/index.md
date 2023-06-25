@@ -1,7 +1,5 @@
 ---
 slug: linux-vs-windows
-author:
-  name: Tom Henderson
 description: 'This guide discusses Linux vs. Windows, the difference between Linux and Windows operating systems, and which is best for your needs.'
 keywords: ['windows vs linux ','linux or windows','is linux better than windows']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +8,7 @@ modified_by:
   name: Linode
 title: "Linux vs. Windows: What’s the Difference?"
 title_meta: "What is the Difference Between Linux and Windows?"
-contributor:
-  name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 Users, system administrators, developers, and system architects debate the question of whether Windows or Linux is better for any given purpose. The answers are well-reasoned, full of prejudice, and usually arrive from practical experience. This guide covers the differences between Linux and Windows operating systems and servers. It primarily focuses on the areas of differences between desktops, licensing models, web service technology, developer support, and more.

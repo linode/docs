@@ -1,9 +1,6 @@
 ---
 slug: deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin
 deprecated: true
-author:
-    name: Alex Fornuto
-    email: afornuto@linode.com
 description: 'Get Started with MySQL for Web and Server Applications on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: ["mysql", "ubuntu 12.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
     - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
     - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 tags: ["ubuntu","database","mysql"]
+authors: ["Alex Fornuto"]
 ---
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 12.04 LTS (Precise Pangolin).

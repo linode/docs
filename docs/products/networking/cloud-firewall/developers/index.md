@@ -1,6 +1,7 @@
 ---
 title: Developers
-description: "Linode Cloud Firewall is easily managed with developer tools like the Linode API and CLI."
+title_meta: "Developer Resources for Cloud Firewalls"
+description: "Linode Cloud Firewalls are easily managed with developer tools like the Linode API and CLI."
 tab_group_main:
     weight: 50
 ---

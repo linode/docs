@@ -1,24 +1,22 @@
 ---
 slug: how-to-upgrade-to-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to upgrade inline from Ubuntu 20.04 or 21.04 to Ubuntu 22.04.'
 keywords: ['Upgrade Ubuntu','Upgrade from Ubuntu 20.04','Upgrade to Ubuntu 22.04','Ubuntu inline upgrade']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-11-07
+modified: 2023-03-29
 modified_by:
   name: Linode
 title: "Upgrade to Ubuntu 22.04 LTS"
 title_meta: "How to Upgrade to Ubuntu 22.04 LTS"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Ubuntu 22.04.1 LTS release](https://releases.ubuntu.com/22.04/)'
 - '[Ubuntu server documentation](https://ubuntu.com/server/docs)'
 - '[Ubuntu 22.04 release notes](https://discourse.ubuntu.com/t/jammy-jellyfish-release-notes/24668)'
 - '[Ubuntu Long Term Support Schedule](https://ubuntu.com/about/release-cycle)'
 - '[New features in Ubuntu 22.04](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop)'
+authors: ["Jeff Novotny"]
+aliases: ['/upgrading/upgrade-to-ubuntu-12.04-precise/']
 ---
 
 Although Ubuntu 20.04 LTS (*Long Term Support*) is still supported, users should upgrade Ubuntu to the more recent 22.04 LTS. Upgrading to the new release ensures the system can access the most recent security upgrades and application packages. This guide describes how to perform an inline upgrade from Ubuntu 20.xx or 21.xx to 22.04.
@@ -55,7 +53,7 @@ In an inline upgrade, the primary node is upgraded in place using either the GUI
 -   This method of upgrading tends to retain "digital residue". This includes unnecessary or outdated packages, patches, and data.
 -   This method is recommended if the system is only one release behind and is mainly running a widely used and tested configuration such as a LAMP stack. An inline upgrade might run into more problems when the system configuration is complicated or includes in-house applications.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="warning" >}}
 Although this process upgrades the Ubuntu operating system and most common programs, it does not necessarily upgrade every application. It is difficult to predict how the upgrade might affect these programs.
 {{< /note >}}
 
@@ -80,7 +78,7 @@ For an in-depth explanation of the clean install method, see the [Linode guide t
 
 1.  Ensure there is at least 20 GB of disk space available. Verify the amount of disk space availability using the `df -Th` command.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -90,7 +88,7 @@ This guide is designed for users who want to upgrade from Ubuntu 20.04 LTS to Ub
 
 If the Linode is running Ubuntu 18.xx or any earlier release, first upgrade it to Ubuntu 20.04 LTS. Then perform the steps in this guide to upgrade from Ubuntu 20.04 LTS to the 22.04 LTS. See the [Linode guide to Upgrade to Ubuntu 20.04](/docs/guides/upgrade-to-ubuntu-20-04/) for more information. Alternatively, if the Ubuntu software and applications are very old, it might make more sense to perform a clean install instead.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This operation cannot be canceled after it is started. Ensure there is a stable connection to the Linode and backup power is available.
 {{< /note >}}
 
@@ -102,19 +100,19 @@ To prepare the Ubuntu system for the upgrade, follow these steps.
 
 1.  Upgrade the Linode and ensure it is up to date.
 
-    ```code
+    ```command
     sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y
     ```
 
 2.  To simplify the upgrade, remove unused packages and files.
 
-    ```code
+    ```command
     sudo apt autoremove -y && sudo apt autoclean -y
     ```
 
-3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](/docs/guides/monitor-and-maintain-compute-instance/#apply-kernel-updates).
+3.  Reboot the node to ensure any new kernel upgrades are installed. Linode makes new kernels available through the Linode cloud manager. Any updates are automatically applied to the node upon a reboot. For more information, see the [Linode guide to monitoring and maintaining a system](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#apply-kernel-updates).
 
-    ```code
+    ```command
     sudo reboot
     ```
 
@@ -122,74 +120,74 @@ To prepare the Ubuntu system for the upgrade, follow these steps.
 
 5.  Stop as many non-critical user applications services as possible, including web and database servers. Focus on applications that might be subject to data corruption. To see a list of the active services, use the command `systemctl | grep running`.
 
-    ```code
+    ```command
     sudo systemctl | grep running
     ```
 
-    {{< output >}}
-...
-apache2.service loaded active running The Apache HTTP Server
-...
-mysql.service loaded active running MySQL Community Server
-    {{< /output >}}
+    ```output
+    ...
+    apache2.service loaded active running The Apache HTTP Server
+    ...
+    mysql.service loaded active running MySQL Community Server
+    ```
 
 6.  Use the command `sudo systemctl stop <application_name>` to stop a service. The following example demonstrates how to stop the Apache web server instance.
 
-    {{< note type="alert" respectIndent=false >}}
-Do not stop any essential system services such as `ssh` or any `systemd` entry.
+    {{< note type="alert" >}}
+    Do not stop any essential system services such as `ssh` or any `systemd` entry.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo systemctl stop apache2
     ```
 
 7.  Allow connections on TCP port 1022 through the `ufw` firewall. This permits Ubuntu to use a fallback port if the main connection drops. After adding the rule, reload the firewall.
 
-    ```code
+    ```command
     sudo ufw allow 1022/tcp
     sudo ufw reload
     ```
 
-    {{< output >}}
-Firewall reloaded
-    {{< /output >}}
+    ```output
+    Firewall reloaded
+    ```
 
 8.  Confirm connections on TCP port 1022 are now allowed.
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
-    {{< output >}}
-Status: active
+    ```output
+    Status: active
 
-To                         Action      From
---                         ------      ----
-OpenSSH                    ALLOW       Anywhere
-Apache Full                ALLOW       Anywhere
-1022/tcp                   ALLOW       Anywhere
-OpenSSH (v6)               ALLOW       Anywhere (v6)
-Apache Full (v6)           ALLOW       Anywhere (v6)
-1022/tcp (v6)              ALLOW       Anywhere (v6)
-    {{< /output >}}
+    To                         Action      From
+    --                         ------      ----
+    OpenSSH                    ALLOW       Anywhere
+    Apache Full                ALLOW       Anywhere
+    1022/tcp                   ALLOW       Anywhere
+    OpenSSH (v6)               ALLOW       Anywhere (v6)
+    Apache Full (v6)           ALLOW       Anywhere (v6)
+    1022/tcp (v6)              ALLOW       Anywhere (v6)
+    ```
 
 ### How to Install Ubuntu Release 22.04
 
 The node is now ready for the upgrade. Ensure the update manager is installed, then initiate the upgrade. The upgrade might take some time, depending on the configuration, and must not be interrupted. Ensure there is enough time to complete the entire upgrade before proceeding.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The upgrade operation can be performed using either a LISH session or an SSH connection. A LISH session is safer, but if SSH is used, the upgrade manager opens a second port for redundancy. This guide uses SSH for the procedure to demonstrate the additional steps required.
 {{< /note >}}
 
 1.  Ensure the `update-manager-core` package is installed. On many systems, this package might already be available.
 
-    ```code
+    ```command
     sudo apt install update-manager-core
     ```
 
 2.  Confirm the release-upgrader is set to the correct release update mode. The file `/etc/update-manager/release-upgrades` must include the line `Prompt=lts`.
 
-    ```code
+    ```command
     sudo cat /etc/update-manager/release-upgrades
     ```
 
@@ -214,87 +212,87 @@ The upgrade operation can be performed using either a LISH session or an SSH con
 
 3.  Run the `do-release-upgrade` command to start the upgrade.
 
-    {{< note respectIndent=false >}}
-To force an upgrade from the latest supported release to a development release, use the command `do-release-upgrade -d`. This guide focuses on upgrading to the latest supported release and does not use this flag.
+    {{< note >}}
+    To force an upgrade from the latest supported release to a development release, use the command `do-release-upgrade -d`. This guide focuses on upgrading to the latest supported release and does not use this flag.
     {{< /note >}}
 
-    ```code
+    ```command
     sudo do-release-upgrade
     ```
 
 4.  If the operation is performed using a SSH connection, Ubuntu verifies the SSH connection details and asks whether to continue. Answer `y` to continue.
 
-    {{< output >}}
-Continue running under SSH?
+    ```output
+    Continue running under SSH?
 
-This session appears to be running under ssh. It is not recommended
-to perform a upgrade over ssh currently because in case of failure it
-is harder to recover.
+    This session appears to be running under ssh. It is not recommended
+    to perform a upgrade over ssh currently because in case of failure it
+    is harder to recover.
 
-If you continue, an additional ssh daemon will be started at port
-'1022'.
-Do you want to continue?
-    {{< /output >}}
+    If you continue, an additional ssh daemon will be started at port
+    '1022'.
+    Do you want to continue?
+    ```
 
 5.  Ubuntu asks the user to confirm the new SSH port is allowed through the firewall. The port should already be open. Press the **Enter** key to continue.
 
-    {{< output >}}
-Starting additional sshd
+    ```output
+    Starting additional sshd
 
-To make recovery in case of failure easier, an additional sshd will
-be started on port '1022'. If anything goes wrong with the running
-ssh you can still connect to the additional one.
-If you run a firewall, you may need to temporarily open this port. As
-this is potentially dangerous it's not done automatically. You can
-open the port with e.g.:
-'iptables -I INPUT -p tcp --dport 1022 -j ACCEPT'
+    To make recovery in case of failure easier, an additional sshd will
+    be started on port '1022'. If anything goes wrong with the running
+    ssh you can still connect to the additional one.
+    If you run a firewall, you may need to temporarily open this port. As
+    this is potentially dangerous it's not done automatically. You can
+    open the port with e.g.:
+    'iptables -I INPUT -p tcp --dport 1022 -j ACCEPT'
 
-To continue please press [ENTER]
-    {{< /output >}}
+    To continue please press [ENTER]
+    ```
 
 6.  Ubuntu reads through the list of packages, builds the dependencies, and searches for internal package mirrors. If no mirrors are available, it prompts for approval to rewrite the `sources.list` file. Enter `y` to continue.
 
-    {{< output >}}
-Fetched 336 kB in 0s (0 B/s)
-Reading package lists... Done
-...
-No valid mirror found
+    ```output
+    Fetched 336 kB in 0s (0 B/s)
+    Reading package lists... Done
+    ...
+    No valid mirror found
 
-While scanning your repository information no mirror entry for the
-upgrade was found. This can happen if you run an internal mirror or
-if the mirror information is out of date.
+    While scanning your repository information no mirror entry for the
+    upgrade was found. This can happen if you run an internal mirror or
+    if the mirror information is out of date.
 
-Do you want to rewrite your 'sources.list' file anyway? If you choose
-'Yes' here it will update all 'focal' to 'jammy' entries.
-If you select 'No' the upgrade will cancel.
+    Do you want to rewrite your 'sources.list' file anyway? If you choose
+    'Yes' here it will update all 'focal' to 'jammy' entries.
+    If you select 'No' the upgrade will cancel.
 
-Continue [yN]
-    {{< /output >}}
+    Continue [yN]
+    ```
 
 7.  Ubuntu downloads the new packages and files. It determines which packages are no longer supported and requests approval to proceed. It also calculates how long the upgrade might take. To continue with the upgrade, answer `y`.
 
-    {{< note respectIndent=false >}}
-To see details about the packages to be removed, installed, and upgraded, enter `d`. Enter `q` to exit the details screen. Then enter `y` to continue with the upgrade.
+    {{< note >}}
+    To see details about the packages to be removed, installed, and upgraded, enter `d`. Enter `q` to exit the details screen. Then enter `y` to continue with the upgrade.
     {{< /note >}}
 
-    {{< output >}}
-Do you want to start the upgrade?
+    ```output
+    Do you want to start the upgrade?
 
 
-14 installed packages are no longer supported by Canonical. You can
-still get support from the community.
+    14 installed packages are no longer supported by Canonical. You can
+    still get support from the community.
 
-5 packages are going to be removed. 91 new packages are going to be
-installed. 571 packages are going to be upgraded.
+    5 packages are going to be removed. 91 new packages are going to be
+    installed. 571 packages are going to be upgraded.
 
-You have to download a total of 552 M. This download will take about
-2 minutes with you connection.
+    You have to download a total of 552 M. This download will take about
+    2 minutes with you connection.
 
-Installing the upgrade can take several hours. Once the download has
-finished, the process cannot be canceled.
+    Installing the upgrade can take several hours. Once the download has
+    finished, the process cannot be canceled.
 
-Continue [yN]  Details [d]
-    {{< /output >}}
+    Continue [yN]  Details [d]
+    ```
 
 8.  Ubuntu displays a pop-up asking whether to restart the services after the upgrade. Select either the `<Yes>` button to automatically restart them or `<No>` to restart them manually.
 
@@ -306,30 +304,30 @@ Continue [yN]  Details [d]
 
 10. Ubuntu locates any obsolete packages and asks the user whether to remove them. Enter `y` to delete the outdated packages.
 
-    {{< output >}}
-Searching for obsolete software
-Reading state information... Done
+    ```output
+    Searching for obsolete software
+    Reading state information... Done
 
-Remove obsolete packages?
+    Remove obsolete packages?
 
 
-41 packages are going to be removed.
+    41 packages are going to be removed.
 
-Continue [yN]  Details [d]
-    {{< /output >}}
+    Continue [yN]  Details [d]
+    ```
 
 11. Ubuntu removes the packages and finalizes the upgrade. This stage might also take some length of time. Ubuntu informs the user that the upgrade is complete and prompts them to reboot the system. Select `y` to reboot and finalize the upgrade.
 
-    {{< output >}}
-System upgrade is complete.
+    ```output
+    System upgrade is complete.
 
-Restart required
+    Restart required
 
-To finish the upgrade, a restart is required.
-If you select 'y' the system will be restarted.
+    To finish the upgrade, a restart is required.
+    If you select 'y' the system will be restarted.
 
-Continue [yN]
-    {{< /output >}}
+    Continue [yN]
+    ```
 
 ## How to Perform Post-Upgrade Clean-Up Activities
 
@@ -337,62 +335,62 @@ Ubuntu has now been upgraded to version 22.04 LTS. After the Linode reboots, it 
 
 1.  Use the `lsb_release -a` command to verify the correct release of Ubuntu is now installed. The `Release` attribute should be `22.04`.
 
-    ```code
+    ```command
     lsb_release -a
     ```
 
-    {{< output >}}
-No LSB modules are available.
-Distributor ID: Ubuntu
-Description:    Ubuntu 22.04.1 LTS
-Release:        22.04
-Codename:       jammy
-    {{< /output >}}
+    ```output
+    No LSB modules are available.
+    Distributor ID: Ubuntu
+    Description:    Ubuntu 22.04.1 LTS
+    Release:        22.04
+    Codename:       jammy
+    ```
 
 2.  **Optional:** To validate the kernel version, use the `uname` command.
 
-    ```code
+    ```command
     uname -mrs
     ```
 
-    {{< output >}}
-Linux 5.15.0-53-generic x86_64
-    {{< /output >}}
+    ```output
+    Linux 5.15.0-53-generic x86_64
+    ```
 
 3.  To increase security, close port `1022` in the `ufw` firewall. Reload the firewall.
 
-    ```code
+    ```command
     sudo ufw delete allow 1022/tcp
     sudo ufw reload
     ```
 
 4.  Confirm the firewall rules are updated.
 
-    ```code
+    ```command
     sudo ufw status
     ```
 
-    {{< output >}}
-Status: active
+    ```output
+    Status: active
 
-To                         Action      From
---                         ------      ----
-OpenSSH                    ALLOW       Anywhere
-Apache Full                ALLOW       Anywhere
-OpenSSH (v6)               ALLOW       Anywhere (v6)
-Apache Full (v6)           ALLOW       Anywhere (v6)
-    {{< /output >}}
+    To                         Action      From
+    --                         ------      ----
+    OpenSSH                    ALLOW       Anywhere
+    Apache Full                ALLOW       Anywhere
+    OpenSSH (v6)               ALLOW       Anywhere (v6)
+    Apache Full (v6)           ALLOW       Anywhere (v6)
+    ```
 
 5.  Ubuntu disables any third-party repositories during the upgrade. To search for disabled repositories, switch to the `sources.list.d` directory and list the entries.
 
-    ```code
+    ```command
     cd /etc/apt/sources.list.d
     ls -l
     ```
 
 6.  Edit each list using a text editor. Remove the `#` symbol at the start of the affected entries, and save the file. In the following example, remove the `#` symbol in front of `deb [arch=amd64]`.
 
-    ```code
+    ```command
     nano archive-application.list
     ```
 
@@ -403,7 +401,7 @@ Apache Full (v6)           ALLOW       Anywhere (v6)
 
 7.  Update any third-party repositories and remove unnecessary packages using `apt` commands.
 
-    ```code
+    ```command
     sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
     ```
 

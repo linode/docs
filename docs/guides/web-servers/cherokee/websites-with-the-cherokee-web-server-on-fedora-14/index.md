@@ -1,9 +1,6 @@
 ---
 slug: websites-with-the-cherokee-web-server-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Fedora 14.'
 keywords: ["cherokee fedora 14", "cherokee web sever", "cherokee", "fedora 14"]
 tags: ["web server","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: install-cherokee-server
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

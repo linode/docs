@@ -1,10 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Migrate a MongoDB Database to a Managed Database"
 description: "Learn how to migrate an existing MongoDB database to Linode's Managed Database service."
 published: 2022-06-17
+expiryDate: 2023-05-01
+authors: ["Linode"]
 ---
 
 This guide covers how to migrate an existing MongoDB database to a Managed Database using the `mongodump` and `mongorestore` utilities.
@@ -68,7 +67,7 @@ MongoDB Database Tools can be downloaded directly from the [MongoDB Download](ht
 
 ## Export from the Source Database
 
-Exporting the data from the original database is facilitated through the [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/) utility. The following commands create a BSON export of the contents of a specified database. Replace *[username]* with your database user, *[database-name]* with the name of your database, and *[host]* with the hostname/domain of your source database. For Linode Managed Databases, see [Connect to a MongoDB Database](/docs/products/databases/managed-databases/guides/mongodb-connect/#view-connection-details) for connection details.
+Exporting the data from the original database is facilitated through the [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/) utility. The following commands create a BSON export of the contents of a specified database. Replace *[username]* with your database user, *[database-name]* with the name of your database, and *[host]* with the hostname/domain of your source database.
 
 -   **Standalone cluster (single node)**
 
@@ -81,14 +80,14 @@ Exporting the data from the original database is facilitated through the [mongod
         mongodump --username=[username] --host=[replica-set]/[host1]:27017,[host2]:27017,[host3]:27017 --db=[database-name] --gzip --archive=database.archive
 
 {{< note >}}
-If your source database is also a Linode Managed Database, add the following options to either of the above commands: `--authenticationDatabase=admin --ssl --sslCAFile=[certificate-file]`. Replace *[certificate-file]* with the filename and path of your CA Certificate (see [Connection Details](/docs/products/databases/managed-databases/guides/mongodb-connect/#view-connection-details)).
+If your source database is also a Linode Managed Database, add the following options to either of the above commands: `--authenticationDatabase=admin --ssl --sslCAFile=[certificate-file]`. Replace *[certificate-file]* with the filename and path of your CA Certificate.
 {{< /note >}}
 
 See the [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/) documentation to learn more about the [options](https://www.mongodb.com/docs/database-tools/mongodump/#options) available for this utility and to view common [examples](https://www.mongodb.com/docs/database-tools/mongodump/#examples).
 
 ## Import to the Target Managed Database
 
-Once you've successfully backed up the source database, you can import your data into your Managed Database (the *target* database). To import the database, this guide covers the [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/) utility, which is the counterpart to mongodump. It restores a BSON dump created by mongodump to a MongoDB database instance. In the below commands, replace *[database-name]* with the name of your database and replace *[host]* with the hostname of your Managed Database (see [Connection Details](/docs/products/databases/managed-databases/guides/mongodb-connect/#view-connection-details)).
+Once you've successfully backed up the source database, you can import your data into your Managed Database (the *target* database). To import the database, this guide covers the [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/) utility, which is the counterpart to mongodump. It restores a BSON dump created by mongodump to a MongoDB database instance. In the below commands, replace *[database-name]* with the name of your database and replace *[host]* with the hostname of your Managed Database.
 
 -   **Standalone cluster (single node)**
 
@@ -96,7 +95,7 @@ Once you've successfully backed up the source database, you can import your data
 
 -   **High availability cluster (3 nodes)**
 
-    When restoring to a high availability cluster, input each host (along with the port) separated by a comma. You must also replace *[replica-set]* with the replica set defined for your Managed Database and replace *[host1]*, *[host2]*, and *[host3]* with the hostnames of your Managed Database (see [Connection Details](/docs/products/databases/managed-databases/guides/mongodb-connect/#view-connection-details)).
+    When restoring to a high availability cluster, input each host (along with the port) separated by a comma. You must also replace *[replica-set]* with the replica set defined for your Managed Database and replace *[host1]*, *[host2]*, and *[host3]* with the hostnames of your Managed Database.
 
         mongorestore --username=linroot --host=[replica-set]/[host1]:27017,[host2]:27017,[host3]:27017 --nsInclude="[database-name].*" --ssl --sslCAFile=[certificate-file] --gzip --archive=database.archive
 

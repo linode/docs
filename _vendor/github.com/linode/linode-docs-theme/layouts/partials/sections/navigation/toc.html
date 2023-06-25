@@ -16,7 +16,10 @@
         <li class="cursor-pointer navbar__row bg-white">
           <div class="hide-if-topbar-is-pinned md:hidden h-full pr-container">
             <div class="flex items-center h-full justify-end md:hidden">
-              <button aria-label="open" type="button" class="btn-icon">
+              <button
+                :aria-label="$store.nav.open.toc ? 'close' : 'open'"
+                type="button"
+                class="btn-icon">
                 <svg
                   class="fill-current w-5 h-5"
                   :class="{'text-brand': $store.nav.open.toc, 'text-titlecolor': !$store.nav.open.toc}">
@@ -41,7 +44,7 @@
                   x-html="activeHeading.title"></div>
               </template>
               <button
-                :aria-label="open ? 'close' : 'open'"
+                :aria-label="$store.nav.open.toc ? 'close' : 'open'"
                 type="button"
                 class="btn-icon"
                 data-testid="toc-open">
@@ -82,7 +85,11 @@
       <div
         class="flex justify-between items-center md:hidden px-container mt-4 mb-2">
         <h3 class="letter-spacing: 0.07px;">CONTENTS</h3>
-        <button type="button" class="btn-icon" @click="close()">
+        <button
+          type="button"
+          class="btn-icon"
+          @click="close()"
+          aria-label="close">
           <svg class="fill-current h-5 w-5">
             <use href="#icon--times"></use>
           </svg>

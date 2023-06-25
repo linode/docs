@@ -87,9 +87,7 @@
 {{- $objectID := (partial "funcs/get-objectid.html" . ) -}}
 {{- $keywords := .Params.keywords | default slice }}
 {{- $keywordsAlgolia := .Params.keywordsAlgolia | default slice }}
-{{- with .Params.authors -}}
-{{- $keywords = $keywords | append . -}}
-{{- end -}}
+{{- $authors := .Params.authors | default slice}}
 {{- $weightSearchBoost := .Params.weightSearchBoost | default false }}
 {{- $titleH1 := .Params.h1_title | default "" }}
 {{- $titleMeta := .Params.title_meta | default "" }}
@@ -108,6 +106,7 @@
     "lastUpdatedTime" .Lastmod.Unix
     "firstPublishedTime" .PublishDate.Unix
     "firstPublishedYear" .PublishDate.Year
+    "authors" $authors
     "keywords" $keywords
     "keywordsAlgolia" $keywordsAlgolia
     "weightAge" (.Params.weightAge | default 0)

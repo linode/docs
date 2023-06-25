@@ -1,9 +1,6 @@
 ---
 slug: sinatra-framework-and-nginx-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to deploy simple web applications with the free and open source Sinatra web development framework on Fedora 14.'
 keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 tags: ["web applications","nginx","fedora","ruby"]
@@ -19,6 +16,7 @@ relations:
         key: sinatra-nginx
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

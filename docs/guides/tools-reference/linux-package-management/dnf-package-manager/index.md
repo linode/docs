@@ -1,8 +1,5 @@
 ---
 slug: dnf-package-manager
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "DNF is the default package manager on RHEL 8, CentOS 8, and Fedora 22 (and later). This guide walks you through the core features of DNF and common commands for using DNF to install, upgrade, and remove packages."
 keywords: ['dnf','installing','updating','upgrading','uninstalling','removing','package repositories','fedora']
 tags: ['yum','dnf','centos','fedora']
@@ -13,14 +10,12 @@ modified_by:
   name: Linode
 title: "Using DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
 title_meta: "How to Use DNF to Manage Packages in CentOS/RHEL 8 and Fedora"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 aliases: ['/guides/how-to-use-yum-dnf/','/guides/how-to-use-dnf/']
 external_resources:
 - '[Fedora Wiki: DNF](https://fedoraproject.org/wiki/DNF)'
 - '[DNF Automatic](https://dnf.readthedocs.io/en/latest/automatic.html)'
 - '[DNF Command Reference](https://dnf.readthedocs.io/en/latest/command_ref.html)'
+authors: ["Nathaniel Stickman"]
 ---
 
 *Dandified YUM*, or simply **DNF**, is the successor to the popular *Yellowdog Updater, Modified* package manager, more commonly known as **YUM**. Both DNF and YUM provide a user-friendly interface to the RPM Package Manager (RPM) that comes with CentOS, RHEL, Fedora, and many other Linux distributions. As the successor to YUM, DNF has several enhancements including increased performance, faster dependency resolution, and more complete documentation for its API.

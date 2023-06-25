@@ -1,9 +1,6 @@
 ---
 slug: using-vnc-to-operate-a-desktop-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide shows how to install and connect to a remote GUI-based desktop environment using Remmina VNC Client on a Linode running Ubuntu 12.04.'
 keywords: ["vnc", "remote desktop", "ubuntu", "12.04"]
 tags: ["ubuntu"]
@@ -22,6 +19,7 @@ relations:
         key: install-vnc
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 ![Using VNC to Operate a Desktop on Ubuntu 12.04](using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")

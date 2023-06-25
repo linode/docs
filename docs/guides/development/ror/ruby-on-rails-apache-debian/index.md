@@ -1,14 +1,11 @@
 ---
 slug: ruby-on-rails-apache-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Debian to serve Ruby on Rails applications.'
 og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache", "deploy rails"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/']
+aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/','/frameworks/ruby-on-rails-apache/ubuntu-10.04-lucid/']
 published: 2018-03-12
 modified: 2018-03-12
 modified_by:
@@ -25,6 +22,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 9
+authors: ["Linode"]
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")

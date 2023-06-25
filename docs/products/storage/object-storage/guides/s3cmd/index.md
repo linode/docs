@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Using S3cmd with Object Storage"
 description: "Learn how to use the S3cmd command-line tool with Linode's Object Storage."
 modified: 2023-02-10
+authors: ["Linode"]
 ---
 
 [S3cmd](https://s3tools.org/s3cmd) is a command line utility that you can use for any S3-compatible Object Storage.

@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-on-ubuntu-1604
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Installation and basic usage guide of Mastodon, an open source alternative to Twitter."
 keywords: ["mastodon", "twitter alternative", "micro blog", "fediverse"]
 tags: ["ubuntu"]
@@ -26,6 +23,7 @@ relations:
         keywords:
            - distribution: Ubuntu 16.04
 deprecated: true
+authors: ["Linode"]
 ---
 
 ## What is Mastodon?

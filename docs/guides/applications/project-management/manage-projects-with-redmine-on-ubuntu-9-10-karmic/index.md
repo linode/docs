@@ -1,9 +1,6 @@
 ---
 slug: manage-projects-with-redmine-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["redmine", "redmine ubuntu 9.10", "project management software", "redmine postgresql", "redmine linux"]
 tags: ["ubuntu", "ruby", "nginx", "postgresql"]
@@ -19,6 +16,7 @@ relations:
         key: manage-projects-with-redmine
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

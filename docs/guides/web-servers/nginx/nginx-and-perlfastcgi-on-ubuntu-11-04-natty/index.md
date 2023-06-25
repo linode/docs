@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-11-04-natty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 11.04 (Natty).'
 keywords: ["nginx perl ubuntu 11.04", "nginx perl fastcgi", "nginx ubuntu natty", "fastscgi perl", "nginx ubuntu"]
 tags: ["web server","perl","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 

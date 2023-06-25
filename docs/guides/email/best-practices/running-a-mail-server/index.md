@@ -1,8 +1,5 @@
 ---
 slug: running-a-mail-server
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Take control of your email with your own mail server. Learn how to install and configure it on your Linode."
 keywords: ["mail server", "linode guide", "running a mail server", "Self-host Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,25 +11,16 @@ modified: 2022-12-23
 title: "Running a Mail Server"
 tags: ["email"]
 image: mail_server_tg.png
+authors: ["Linode"]
 ---
 
 This guide offers an overview of installing a mail server on your Linode. It covers mail server configuration, creating mail accounts, and basic overviews of tools relevant to hosting an email webserver.
 
+{{< content "email-warning-shortguide" >}}
+
 ## Should You Run a Mail Server?
 
 If you do, you'll have control over your domain's email, but you'll also have to deal with the hassles associated with setting up a complex environment of software. Using a third-party mail service is easier, but you'll sacrifice control and flexibility. In this section, we consider the benefits and drawbacks to running your own mail server, as well as how to choose an [external mail service](#external-mail-services), if you decide to go that route.
-
-### Sending Email on Linode
-
-In an effort to fight spam, Linode may restrict outbound connections on ports 25, 465, and 587 on Linodes for new accounts created after November 5th, 2019.
-
-To have these restrictions removed, we ask that you first configure (1) [valid DNS A records](/docs/products/networking/dns-manager/guides/manage-dns-records/) and (2) [rDNS records](/docs/products/compute/compute-instances/guides/configure-rdns/) for any Linodes that you plan to use to send mail. Then, [open a Support ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) from the Linode Manager – we’ll ask you to provide the name of the Linode(s) that will be used for mailing.
-
-Once you’ve completed those steps and provided that information, our Support team will be happy to review your request.
-
-{{< note respectIndent=false >}}
-If using multiple domains to send mail from a single Linode, rDNS will only need to be configured for one of the domains actively sending mail.
-{{< /note >}}
 
 ### Benefits
 
@@ -67,7 +55,7 @@ There are several third-party mail services available:
 - [Postmark](https://postmarkapp.com/why?utm_source=linode&utm_medium=referral&utm_campaign=awareness)
 - [Fastmail](https://www.fastmail.com)
 - [Google Workspace](https://workspace.google.com/products/gmail/) uses the familiar Gmail interface. Check out our guide to [Using Google Workspace for Email](/docs/guides/using-google-workspace-for-email/).
-- [Office 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
+- [Mirosoft 365](https://www.office.com) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
 If you decide to use an outside mail service, you will still need to set up [DNS](/docs/products/networking/dns-manager/) for your mail and use the settings provided by the third-party mail service.
 

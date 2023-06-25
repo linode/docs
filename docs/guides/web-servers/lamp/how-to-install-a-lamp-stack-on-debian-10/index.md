@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-lamp-stack-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install a LAMP stack on a Debian 10. A LAMP stack includes Linux, Apache, MariaDB, and PHP.'
 keywords: ["debian 10 LAMP server", "debian LAMP", "LAMP howto", "lamp", "debian", "debian 10", "websites", "apache", "mysql", "php", "apache 2.4", "lamp debian"]
 tags: ["web server","php","mysql","apache","debian","lamp"]
@@ -25,6 +22,7 @@ relations:
         keywords:
             - distribution: Debian 10
 aliases: ['/web-servers/lamp/how-to-install-a-lamp-stack-on-debian-10/']
+authors: ["Linode"]
 ---
 
 A *LAMP stack* is a particular bundle of software packages commonly used for hosting web content. The bundle consists of Linux, Apache, MariaDB, and PHP. This guide shows you how to install a LAMP stack on Debian 10 (Buster).

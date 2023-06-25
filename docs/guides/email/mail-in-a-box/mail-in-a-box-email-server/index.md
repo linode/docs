@@ -1,24 +1,20 @@
 ---
 slug: mail-in-a-box-email-server
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package."
 keywords: ["install mail-in-a-box", "webmail control panel", "caldav", "cardav", " TLS certificate"]
-tags: ["ubuntu","postfix","email"]
+tags: ["ubuntu","postfix","email","digital agencies"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-08-29
 modified: 2022-09-22
 modified_by:
   name: Linode
 title: "Create an Email Server using Mail-in-a-Box"
-contributor:
-  name: Alexandru Andrei
 external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 - '[Mail-in-a-Box Forums](https://discourse.mailinabox.email/)'
 aliases: ['/email/how-to-create-an-email-server-with-mail-in-a-box/','/email/mail-in-a-box/how-to-create-an-email-server-with-mail-in-a-box/','/guides/how-to-create-an-email-server-with-mail-in-a-box/']
 image: Mail_in_a_box.jpg
+authors: ["Alexandru Andrei"]
 ---
 
 When deciding on an email solution, there are a few options to consider. You can utilize an external email service provider, use a transactional or marketing email service, or host your own email server on a Linode Compute Instance. If you wish to host your own email server but want to reduce the complexity of configuring individual components yourself, you can utilize a pre-built solution like [Mail-in-a-Box](https://mailinabox.email/). Mail-in-a-Box is a preconfigured self-hosted email server that includes the following software:
@@ -45,7 +41,7 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
 
 - Have a registered domain name that you wish to use with your email server. Verify that your registrar allows *custom nameservers* and *glue records*.
 
-- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
+- Deploy a new Compute Instance running Ubuntu 22.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
 
     {{< note type="alert" respectIndent=false >}}
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.

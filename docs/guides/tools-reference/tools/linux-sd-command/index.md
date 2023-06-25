@@ -1,7 +1,5 @@
 ---
 slug: linux-sd-command
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use the sd command, an intuitive find-and-replace tool. It uses a standard regex syntax, and this among other features makes it an exceptional alternative to the sed command."
 keywords: ['sd command','sed alternative','sd command linux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,11 +8,9 @@ modified_by:
   name: Nathaniel Stickman
 title: "Use the sd Command for Find and Replace on Linux"
 title_meta: "How to Use the sd Command for Find and Replace on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[GitHub: chmln/sd](https://github.com/chmln/sd)'
+authors: ["Nathaniel Stickman"]
 ---
 
 `sd` is a command-line tool for finding and replacing text, similar to `sed`. But, unlike `sed`, `sd` focuses on substitution only, allowing it to use simpler and easier to read commands. `sd` also uses a common regex syntax, giving you more familiar, well-documented, and powerful search options.

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Use Drush to install and enable themes and modules on your Drupal site running on Ubuntu 18.04.'
 keywords: ["drupal", "cms", "content management system", "content management framework", "ubuntu", "drush"]
 tags: ["drupal","ubuntu","cms","lamp"]
@@ -24,6 +21,7 @@ relations:
         keywords:
            - distribution: Ubuntu 18.04
 aliases: ['/websites/cms/drupal/drush-drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/','/websites/cms/drupal/how-to-install-drupal-themes-and-modules-using-drush-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 Drush is a command line tool, which can be used for various Drupal projects. This tutorial uses Drush to install themes, modules, and covering some basic administration tasks such as backup and migrate for Drupal websites.
@@ -68,7 +66,7 @@ In this section you will download, enable, and set a Drupal theme using Drush.
          composer require drupal/bootstrap
 
     {{< note respectIndent=false >}}
-If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-site-s-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
+If you receive an error related to not being able to write to the `composer.json` file, see the [Setting the Site’s Ownership and Permissions](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/#setting-the-sites-ownership-and-permissions) section of the [Install Drupal using Drush on Ubuntu 18.04](/docs/guides/how-to-install-drupal-using-drush-on-ubuntu-18-04/) guide.
 
 Ensure that your `/var/www/html/example.com/public_html` directory has user and group read, write, and execute permissions.
 

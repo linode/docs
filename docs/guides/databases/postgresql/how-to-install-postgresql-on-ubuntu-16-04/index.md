@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-postgresql-on-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions using Ubuntu 16.04 as an example.'
 keywords: ["postgresql", "ubuntu 16.04", "postgre", "postgresql database", "open source database", "relational database"]
 tags: ["ubuntu","database","postgresql"]
@@ -21,6 +18,7 @@ relations:
         key: install-postrgesql-database
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Linode"]
 ---
 
 ![How to Install PostgreSQL on Ubuntu 16.04](how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")

@@ -1,9 +1,6 @@
 ---
 slug: sendonly-mail-server-with-exim-on-ubuntu-11-04-natty
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 11.04 (Natty).'
 keywords: ["exim ubuntu 11.04", "exim", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
 tags: ["ubuntu","email"]
@@ -19,6 +16,7 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 11.04
+authors: ["Linode"]
 ---
 
 

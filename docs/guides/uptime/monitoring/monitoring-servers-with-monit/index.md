@@ -1,8 +1,5 @@
 ---
 slug: monitoring-servers-with-monit
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how you can improve server uptime by using Monit Server Monitoring, an app that monitors your system 24x7 and recovers processes when there is a problem.'
 keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,12 @@ modified: 2015-10-15
 modified_by:
     name: Linode
 title: 'Installing Monit for Server Monitoring'
-contributor:
-    name: Bill Bardon
-    link:
 external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitoring-servers-with-monit/']
+authors: ["Bill Bardon"]
 ---
 
 

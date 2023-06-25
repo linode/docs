@@ -1,8 +1,5 @@
 ---
 slug: reboot-survival-guide
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: "This guide covers best practices to ensure that your server is prepared to handle an unexpected reboot and provides items to consider for scheduled downtime."
 keywords: ["uptime", "reboot", "downtime", "fault tolerance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ published: 2015-02-27
 title: "Reboot Survival Guide: Recover After an Unexpected Shutdown"
 aliases: ['/uptime/reboot-survival-guide/','/uptime/best-practices/reboot-survival-guide/']
 image: reboot-survival-guide.png
+authors: ["Alex Fornuto"]
 ---
 
 Although constant server uptime is optimal, downtime is inevitable. Cloud infrastructure and RAID arrays offer resilience, but all servers rely on physical hardware, which eventually need maintenance. Hardware aside, kernel updates and other software patches can mean rebooting to ensure your system is secure and up-to-date.

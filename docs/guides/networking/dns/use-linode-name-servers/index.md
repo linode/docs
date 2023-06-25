@@ -1,8 +1,5 @@
 ---
 slug: use-linode-name-servers
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: "Shortguide for setting Linode's nameservers as the authoritative nameservers for a domain"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
@@ -14,6 +11,7 @@ title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']
+authors: ["Nathan Melehan"]
 ---
 
 ### (Optional) Prepare Your Domain Name to Move

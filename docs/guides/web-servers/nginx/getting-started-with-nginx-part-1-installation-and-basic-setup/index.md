@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-nginx-part-1-installation-and-basic-setup
-author:
-  name: Linode
-  email: docs@linode.com
 description: "An in-depth look at the NGINX web server. Includes assessment, installation, and configuration best practices."
 keywords: ["nginx", "web server", "configure nginx", "optimize nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ published: 2018-02-09
 title: "Getting Started with NGINX (Part 1): Installation and Basic Setup"
 title_meta: "Getting Started with NGINX: Installation and Basic Setup"
 tags: ["web server","nginx"]
+authors: ["Linode"]
 ---
 
 ![Getting Started with NGINX - Part 1: Installation and Basic Setup](Getting-Started-with-NGINX-Part-1-smg.jpg)

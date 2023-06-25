@@ -1,8 +1,5 @@
 ---
 slug: configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems
-author:
-  name: Sergey Bulavintsev
-  email: bulavintsev.sergey@gmail.com
 description: "This guide shows how to install, configure, and use Salt Cloud to provision multiple Linodes from the command line."
 og_description: "Salt Cloud is a part of the SaltStack that makes provisioning multiple cloud systems easy. Use our guide to create, manage, and map your own Salt Cloud."
 keywords: ["SaltStack", "Salt", "salt-cloud"]
@@ -13,10 +10,9 @@ modified_by:
   name: Linode
 title: "Using Salt Cloud and Cloud Maps to Provision Systems"
 title_meta: "How to Use Salt Cloud and Cloud Maps to Provision Systems"
-contributor:
-  name: Sergey Bulavintsev
 aliases: ['/applications/configuration-management/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/','/applications/configuration-management/salt/configure-and-use-salt-cloud-and-cloud-maps-to-provision-systems/']
 tags: ["automation","salt"]
+authors: ["Sergey Bulavintsev"]
 ---
 
 ![Salt Cloud](SaltCloud.jpg)
@@ -38,7 +34,7 @@ This guide shows how to install Salt Cloud and configure it to work on a Linode.
 
 2.  This guide assumes that Salt Cloud will be installed together with Salt master server.
 
-3.  Generate an [API key](/docs/products/tools/api/guides/manage-api-tokens/) to access Linode API. Salt Cloud currently requires a v3 key generated from the [Linode Manager](https://manager.linode.com/profile/api) and *not* the new Cloud Manager. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe. Set the environment variable `API_TOKEN` and test your API key is working through the REST interface:
+3.  Generate an [API key](/docs/products/tools/api/guides/manage-api-tokens/) to access Linode API. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe. Set the environment variable `API_TOKEN` and test your API key is working through the REST interface:
 
         curl -H "Authorization:Bearer $API_TOKEN" https://api.linode.com/v4/account | json_pp
 

@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Backend Nodes (Compute Instances)"
 description: "Instructions for adding and configuring backend nodes on a NodeBalancer"
 published: 2022-10-07
+authors: ["Linode"]
 ---
 
 Load balancers work by distributing traffic to a pool of servers. For NodeBalancers, these servers are Linode Compute Instances and they are configured as *backend nodes*. Each Compute Instance operating as a backend node needs to be located within the same data center as the NodeBalancer and be assigned a private IPv4 address. See [Managing IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for instructions on adding a private IP address to an existing Compute Instance.
@@ -15,7 +13,7 @@ While only a single backend node is required, *at least* two backends need to be
 
 ## Add, Edit, and Remove Backend Nodes
 
-Backends nodes can be defined through a NodeBalancer's [Configurations](/docs/products/networking/nodebalancers/guides/configure/), which contain all the settings and parameters for a particular *inbound* port.
+Backend nodes can be defined through a NodeBalancer's [Configurations](/docs/products/networking/nodebalancers/guides/configure/), which contain all the settings and parameters for a particular *inbound* port.
 
 1. Log in to the [Cloud Manager](http://cloud.linode.com), click **NodeBalancers** in the left menu, and select the NodeBalancer you wish to edit. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/).
 
@@ -40,7 +38,7 @@ Removing a backend from the NodeBalancer configuration does not delete the assoc
 Each backend node contains the following configuration parameters.
 
 - **Label**: Sets a label to identify the backend. While any label can be used, it's common to use the label of the associated Compute Instance.
-- **IP Address**: Select the private IPv4 address of the Compute Instance you wish to use as the backend. This field has a dropdown list of all Compute Instances within the same region as the Node Balancer that have a private IPv4 address assigned.
+- **IP Address**: Select the private IPv4 address of the Compute Instance you wish to use as the backend. This field has a dropdown list of all Compute Instances within the same region as the NodeBalancer that have a private IPv4 address assigned.
 - **Port**: Identifies the port that the NodeBalancer should use when sending traffic to the backend. This should be the port that the application is listening on within this backend Compute Instance.
 - **Weight**: Sets the priority of the backend. Backends with a higher weight are allocated more connections than backends with a lower weight.
 - **Mode**: Determines if the backend accepts or rejects traffic and in what circumstances. See [Mode](#mode).

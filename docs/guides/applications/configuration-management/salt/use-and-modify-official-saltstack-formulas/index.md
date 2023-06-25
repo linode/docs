@@ -1,8 +1,5 @@
 ---
 slug: use-and-modify-official-saltstack-formulas
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to use and modify official SaltStack formulas to manage your infrastructure.'
 keywords: ['salt', 'formulas', 'git']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,13 +9,12 @@ modified_by:
   name: Linode
 image: UseandModifyOfficialSaltStackFormulas.png
 title: "Use and Modify Official SaltStack Formulas"
-contributor:
-  name: Linode
 external_resources:
 - '[Salt Formulas](https://docs.saltproject.io/en/latest/topics/development/conventions/formulas.html)'
 - '[Git Fileserver Backend Walkthrough](https://docs.saltproject.io/en/latest/topics/tutorials/gitfs.html)'
 aliases: ['/applications/configuration-management/salt/use-and-modify-official-saltstack-formulas/','/applications/configuration-management/use-and-modify-official-saltstack-formulas/']
 tags: ["automation","salt"]
+authors: ["Linode"]
 ---
 
 ## Salt State Files

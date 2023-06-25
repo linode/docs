@@ -1,7 +1,5 @@
 ---
 slug: check-and-clean-linux-disk-space
-author:
-  name: Nathaniel Stickman
 description: 'This guide will show you how to check the used space and free up additional disk space on your system by using the Linux command line and the df and du commands.'
 keywords: ['linux disk space','linux check disk space','linux free disk space']
 tags: ['linux', 'debian', 'ubuntu']
@@ -12,9 +10,7 @@ modified_by:
   name: Nathaniel Stickman
 title: "Check and Clean a Linux System's Disk Space"
 title_meta: "How to Check and Clean a Linux System's Disk Space"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 Linux provides several built-in commands for analyzing and cleaning up your system's disk space. This guide shows you how to use those commands to get a closer look at your disk usage and start freeing up space.

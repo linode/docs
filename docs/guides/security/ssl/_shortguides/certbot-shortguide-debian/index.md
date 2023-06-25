@@ -1,8 +1,5 @@
 ---
 slug: certbot-shortguide-debian
-author:
-  name: Edward Angert
-  email: docs@linode.com
 description: "Install Certbot to obtain TLS certificates on a Debian server."
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 title: 'Install Certbot for TLS on Debian'
 headless: true
+authors: ["Edward Angert"]
 ---
 
 1.  Install the Certbot and web server-specific packages, then run Certbot:

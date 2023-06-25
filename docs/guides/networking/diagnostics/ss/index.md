@@ -1,8 +1,5 @@
 ---
 slug: ss
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An introduction to the ss utility.'
 keywords: ["UNIX", "shell", "AWK", "ss", "TCP/IP", "network", "socket"]
 tags: ["networking","statistics","linux"]
@@ -12,12 +9,10 @@ modified: 2020-12-03
 modified_by:
   name: Linode
 title: 'Learning to Use the ss Tool to its Full Potential'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[iproute2](https://en.wikipedia.org/wiki/Iproute2)'
 aliases: ['/networking/diagnostics/ss/']
+authors: ["Mihalis Tsoukalos"]
 ---
 
 ## Introduction

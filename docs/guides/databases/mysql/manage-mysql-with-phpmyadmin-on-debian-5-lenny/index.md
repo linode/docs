@@ -1,8 +1,5 @@
 ---
 slug: manage-mysql-with-phpmyadmin-on-debian-5-lenny
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface with a GUI on Debian 5 "Lenny".'
 keywords: ["mysql", "phpmyadmin", "sql", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,6 +19,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.

@@ -1,8 +1,5 @@
 ---
 slug: deploy-packer-image-with-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Packer automates the process of developing machine images, and Terraform automates the provisioning of infrastructure. Not surprisingly, combining the two can give you a full and robust chain for automating deployments, including CI/CD. Through this tutorial, learn what you need to put these tools together for your infrastructure."
 keywords: ['packer terraform provider','terraform packer resource','linode packer']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +9,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Deploy a Packer Image with Terraform"
 title_meta: "How to Deploy a Packer Image with Terraform"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Terraform - HashiCorp Learn: Provision Infrastructure with Packer](https://learn.hashicorp.com/tutorials/terraform/packer)'
 - '[Packer - Use Cases: Integrate with Terraform](https://www.packer.io/use-cases/integrate-with-terraform)'
+authors: ["Nathaniel Stickman"]
+tags: ["saas"]
 ---
 
 Both the Packer and Terraform tools by HashiCorp stand out for remarkable infrastructure-automating. Despite some overlap, the tools have distinct and complimentary features. This makes them an effective pair, with Packer used to create images that Terraform then deploys as a complete infrastructure.

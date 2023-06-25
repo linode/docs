@@ -1,9 +1,6 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Debian 6 (Squeeze).'
 keywords: ["postfix debian 6", "dovecot debian 6", "debian 6 mail server", "dovecot", "email", "debian", "squeeze"]
 tags: ["debian","mysql","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 The Postfix Mail Transfer Agent (MTA) is a high performance open source e-mail server system. This guide will help you get Postfix running on your Debian 6 (Squeeze) Linode, using Dovecot for IMAP/POP3 service and MySQL to store information on virtual domains and users. This guide is largely based on Christoph Haas's great [ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny) and HowtoForge [Groupware Server With Group-Office, Postfix, Dovecot And SpamAssassin On Debian Lenny (5.0)](http://www.howtoforge.com/groupware-server-with-group-office-postfix-dovecot-spamassassin-on-debian-lenny), with some packages omitted.

@@ -1,8 +1,5 @@
 ---
 slug: filezilla
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OS X, and Windows systems.'
 keywords: ["filezilla", "ftp", "scp", "sftp", "transfer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -14,6 +11,7 @@ published: 2014-10-13
 title: 'Transfer Files with FileZilla'
 external_resources:
  - '[FileZilla Documentation](https://wiki.filezilla-project.org/Documentation)'
+authors: ["Linode"]
 ---
 
 ![Transfer Files with FileZilla](transfer-files-with-filezilla.png "Transfer Files with FileZilla")
@@ -42,7 +40,7 @@ external_resources:
 
 ## Using FileZilla
 
-1.  Launch FileZilla and enter your Linode's IP address or domain name in the `Host` field. Enter the username and password for the account on the Linode you want to connect as, and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
+1.  Launch FileZilla and enter your Linode's IP address or domain name in the `Host` field. Enter the username and password for the account on the Linode you want to connect as and enter "22" in the `Port` field. Click **Quickconnect** to initiate the file transfer session.
 
     ![FileZilla Quickconnect](filezilla-quick-connect.png "FileZilla Quickconnect")
 

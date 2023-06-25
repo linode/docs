@@ -1,9 +1,6 @@
 ---
 slug: apache-and-modwsgi-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 10.04 "Lucid".'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
@@ -19,6 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Linode"]
 ---
 
 

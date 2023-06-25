@@ -1,7 +1,5 @@
 ---
 slug: use-dog-linux-dns-client
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use the dog command-line DNS client, a modern and more user-friendly alternative to dig."
 keywords: ['dog dns client','dig alternative linux','dig command examples']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,9 +7,7 @@ published: 2021-12-23
 modified_by:
   name: Nathaniel Stickman
 title: "Use the Linux dog Command to Look Up DNS Records"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 `dog` is a command-line DNS client used for looking up DNS records for domain names. It's an alternative to the popular `dig` command. The `dog` command gives you a simpler interface, more readable results, and additional features like DNS over TLS.

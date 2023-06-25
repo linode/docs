@@ -1,8 +1,5 @@
 ---
 slug: deploy-appsmith-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Use Appsmith to quickly develop web frontends using a visual, drag-and-drop interface. In this tutorial, learn what Appsmith has to offer and how to deploy a self-hosted instance with Docker."
 keywords: ['appsmith tutorial','appsmith examples','install appsmith']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,13 +8,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Self-host Appsmith with Docker Compose"
 title_meta: "How to Self-host Appsmith with Docker Compose"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Appsmith: Setup Appsmith](https://docs.appsmith.com/setup)'
 - '[The New Stack: Appsmith, an Open Source Low-code Framework to Build Internal Apps](https://thenewstack.io/appsmith-an-open-source-low-code-framework-to-build-internal-apps/)'
 - '[Anamika: How to Deploy Appsmith on Private Instance Using Docker](https://dev.to/noviicee/how-to-deploy-appsmith-on-private-instance-using-docker-eig)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Appsmith](https://www.appsmith.com/) is an open source framework for developing internal applications. With Appsmith, developers can quickly develop complex applications using drag-and-drop widgets for user interface design and JavaScript for application logic. Appsmith also simplifies connecting your application to a wide range of data sources, from REST APIs to databases directly.
