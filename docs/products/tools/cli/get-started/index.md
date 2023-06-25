@@ -1,19 +1,41 @@
 ---
 title: Get Started
-description: "Get started with the Linode CLI. Learn to install the CLI and customize output fields."
+title_meta: "Getting Started with the Linode CLI"
+description: "Learn how to run basic commands on the Linode CLI and modify the output to fit your needs."
+keywords: ["linode api", "linode cli", "python cli"]
 tab_group_main:
     weight: 20
+aliases: ['/platform/api/linode-cli/','/cli/','/platform/linode-cli/','/platform/api/using-the-linode-cli/','/guides/using-the-linode-cli/','/guides/linode-cli/']
+published: 2018-06-29
+modified: 2022-05-02
+modified_by:
+  name: Linode
 ---
 
-This guide describes the basics of installing and working with the CLI. It also offers examples illustrating how to complete common tasks using the CLI.
+## Installing the Linode CLI
 
-## Install the CLI
+See the [Install and Configure the Linode CLI](/docs/products/tools/cli/guides/install/) guide for installation instructions and details on performing the initial configuration.
 
-{{< content "linode-cli-install-shortguide" >}}
+## Basic Usage
 
-## Options
+To view a list of all Compute Instances on your account, run the following command:
 
-### Help
+    linode-cli linodes list
+
+This command generates the following output, based on the information within your own account.
+
+```output
+┌──────────┬────────────────────┬────────────┬───────────────┬───────────────────────┬─────────┬───────────────────┐
+│ id       │ label              │ region     │ type          │ image                 │ status  │ ipv4              │
+├──────────┼────────────────────┼────────────┼───────────────┼───────────────────────┼─────────┼───────────────────┤
+│ 00000001 │ example-instance   │ us-east    │ g6-standard-1 │ linode/ubuntu18.04    │ running │ 192.0.2.42         │
+│ 00001111 │ centos-us-east     │ us-east    │ g6-nanode-1   │ linode/centos-stream9 │ running │ 192.0.2.108       │
+└──────────┴────────────────────┴────────────┴───────────────┴───────────────────────┴─────────┴───────────────────┘
+```
+
+See [Using the Linode CLI](/docs/products/tools/cli/guides/#using-the-linode-cli) for additional usage details and examples.
+
+## Help
 
 View information about any part of the CLI, including available actions and required parameters, with the `--help` flag:
 
@@ -21,79 +43,42 @@ View information about any part of the CLI, including available actions and requ
     linode-cli linodes --help
     linode-cli linodes create --help
 
+## Output
 
-### Customize Output Fields
+To make information easy to ready, the Linode CLI outputs responses in a text-based table format. The data is split into rows and columns, with the top row containing the fields.
 
-By default, the CLI displays a set of pre-selected fields for each type of response. If you would like to see all available fields, use the `--all` flag:
+    linode-cli regions list
 
-    linode-cli linodes list --all
+```output
+┌──────────────┬─────────┬─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬────────┐
+│ id           │ country │ capabilities                                                                                                                                            │ status │
+├──────────────┼─────────┼─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┼────────┤
+│ ap-west      │ in      │ Linodes, NodeBalancers, Block Storage, GPU Linodes, Kubernetes, Cloud Firewall, Vlans, Block Storage Migrations, Managed Databases                      │ ok     │
+│ ca-central   │ ca      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Vlans, Block Storage Migrations, Managed Databases                                   │ ok     │
+│ ap-southeast │ au      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Vlans, Block Storage Migrations, Managed Databases                                   │ ok     │
+│ us-central   │ us      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases                                          │ ok     │
+│ us-west      │ us      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases                                          │ ok     │
+│ us-southeast │ us      │ Linodes, NodeBalancers, Block Storage, Object Storage, GPU Linodes, Kubernetes, Cloud Firewall, Vlans, Block Storage Migrations, Managed Databases      │ ok     │
+│ us-east      │ us      │ Linodes, NodeBalancers, Block Storage, Object Storage, GPU Linodes, Kubernetes, Cloud Firewall, Bare Metal, Block Storage Migrations, Managed Databases │ ok     │
+│ eu-west      │ uk      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases                                          │ ok     │
+│ ap-south     │ sg      │ Linodes, NodeBalancers, Block Storage, Object Storage, GPU Linodes, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases             │ ok     │
+│ eu-central   │ de      │ Linodes, NodeBalancers, Block Storage, Object Storage, GPU Linodes, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases             │ ok     │
+│ ap-northeast │ jp      │ Linodes, NodeBalancers, Block Storage, Kubernetes, Cloud Firewall, Block Storage Migrations, Managed Databases                                          │ ok     │
+└──────────────┴─────────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────┘
+```
 
-Specify exactly which fields you would like to receive with the `-format` option:
+### Fields
 
-    linode-cli linodes list --format 'id,region,memory'
+By default, most Linode CLI responses do not contain all the available fields. To keep the information digestible, the Linode CLI outputs a smaller subset of all of available fields. This behavior can be adjusted using the commands below.
 
+- **Limited** (default behavior): Outputs a limited subset of the available fields.
+- **All fields** (`--all`): Output all available fields.
+- **Specific fields** (`--format 'field1,field2'`): Outputs only the fields specified within the given comma separated list.
 
-### JSON Output
+### Output Format
 
-The CLI returns output in tabulated format for easy readability. If you prefer to work with JSON, use the `--json` flag. Adding the `--pretty` flag formats the JSON output to make it more readable:
+The Linode CLI can output data in a variety of formats, as disclosed below:
 
-    linode-cli regions list --json --pretty
-
-{{< highlight json >}}
-[
-  {
-    "country": "us",
-    "id": "us-central"
-  },
-  {
-    "country": "us",
-    "id": "us-west"
-  },
-  {
-    "country": "us",
-    "id": "us-southeast"
-  },
-  {
-    "country": "us",
-    "id": "us-east"
-  },
-  ...
-]
-{{< /highlight >}}
-
-
-### Machine Readable Output
-
-You can also display the output as plain text. By default, tabs are used as a delimiter, but you can specify another character with the `--delimiter` option:
-
-    linode-cli regions list --text
-
-{{< highlight text >}}
-id	country
-us-central	us
-us-west	us
-us-southeast	us
-us-east	us
-eu-west	uk
-ap-south	sg
-eu-central	de
-ap-northeast	jp
-ap-northeast-1a	jp
-ca-east         ca
-{{< /highlight >}}
-
-    linode-cli regions list --text --delimiter ";"
-
-{{< highlight text >}}
-id;country
-us-central;us
-us-west;us
-us-southeast;us
-us-east;us
-eu-west;uk
-ap-south;sg
-eu-central;de
-ap-northeast;jp
-ap-northeast-1a;jp
-ca-east;ca
-{{< /highlight >}}
+- **Tabular** (default): Data is split into rows and columns, with the top row containing the fields.
+- **JSON** (`--json` or `--json --pretty`): Data is structured using JavaScript Object Notation (JSON), typically used for importing into applications that require JSON. The `--pretty` tag is optional and makes the output more human readable.
+- **Plain text** (`--text` or `--text --delimiter ","`): Data is outputted as plain text. By default, it uses a *tab* character as the delimiter, though this can be adjusted by specifying a custom character using the `--delimited ","` option.

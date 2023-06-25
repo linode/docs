@@ -1,22 +1,17 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy WarpSpeed on a Linode Compute Instance. This provides you with one of the fastest, easiest to use, and most secure VPN gateway software."
 keywords: ['vpn','security','tunnel']
 tags: ["marketplace", "linode platform", "cloud manager"]
 bundles: ['network-security']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-12
 modified: 2022-03-08
 modified_by:
   name: Linode
-title: "Deploying WarpSpeed VPN through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy WarpSpeed VPN through the Linode Marketplace"
 external_resources:
 - '[WarpSpeed VPN](https://bunker.services/products/warpspeed)'
 aliases: ['/guides/deploying-warpspeed-marketplace-app/','/guides/warpspeed-marketplace-app/']
+authors: ["Linode"]
 ---
 
 WarpSpeed makes it easy for developers to access cloud infrastructure via the powerful WireGuard® VPN protocol. It can also be used to enable remote workers to access the internet securely while on public WiFi.
@@ -27,9 +22,9 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** WarpSpeed should be fully installed within 10-15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -43,11 +38,13 @@ WarpSpeed makes it easy for developers to access cloud infrastructure via the po
 - **DNS name:** This is the domain you will be using for your WarpSpeed instance.
 - **Data Directory:** This is the directory that your WarpSpeed data will be stored in, default will be `/wirespeed`.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Accessing the WarpSpeed VPN App
 
-1.  Configure your custom domain to point towards the IPv4 (and IPv6) address of the newly created Compute Instance. Review the [DNS Manager](/docs/guides/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager and read through [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) for general information about how DNS works.
+1.  Configure your custom domain to point towards the IPv4 (and IPv6) address of the newly created Compute Instance. Review the [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions on setting up your DNS records in the Cloud Manager and read through [DNS Records: An Introduction](/docs/guides/dns-overview/) for general information about how DNS works.
 
 1.  Once your domain has been configured and has finished propagating, enter the domain within a web browser to access the login page.
 

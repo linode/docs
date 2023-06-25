@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-openfire-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire debian 6", "openfire debian squeeze", "openfire linux", "linux xmpp", "instant messaging", "real-time messaging", "xmpp server", "chat software", "linux jabber server"]
 tags: ["debian"]
@@ -19,15 +16,16 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -106,23 +104,23 @@ This completes the initial installation steps for Openfire. Next, we'll continue
 
 Before proceeding, reboot your Linode. Once it has come back online, direct your browser to its IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were "12.34.56.78", you would visit `http://12.34.56.78:9090` in your web browser. You will be presented with a language selection screen similar to this:
 
-[![Language selection in Openfire setup on Debian 6 (Squeeze).](387-openfire-debian-squeeze-01-language-selection.png)](387-openfire-debian-squeeze-01-language-selection.png)
+![Language selection in Openfire setup on Debian 6 (Squeeze).](387-openfire-debian-squeeze-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/products/networking/dns-manager/guides/common-dns-configurations/)).
 
-[![Domain and admin ports selection in Openfire setup on Debian 6 (Squeeze).](388-openfire-debian-squeeze-02-domain-ports-selection.png)](388-openfire-debian-squeeze-02-domain-ports-selection.png)
+![Domain and admin ports selection in Openfire setup on Debian 6 (Squeeze).](388-openfire-debian-squeeze-02-domain-ports-selection.png)
 
 You may choose to use Openfire's embedded database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
 
-[![Database type selection in Openfire setup on Debian 6 (Squeeze).](389-openfire-debian-squeeze-03-database-selection.png)](389-openfire-debian-squeeze-03-database-selection.png)
+![Database type selection in Openfire setup on Debian 6 (Squeeze).](389-openfire-debian-squeeze-03-database-selection.png)
 
 User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
 
-[![Profile storage selection in Openfire setup on Debian 6 (Squeeze).](390-openfire-debian-squeeze-04-profile-settings.png)](390-openfire-debian-squeeze-04-profile-settings.png)
+![Profile storage selection in Openfire setup on Debian 6 (Squeeze).](390-openfire-debian-squeeze-04-profile-settings.png)
 
 Enter the email address of the default administrative user and select a strong password.
 
-[![Administrator account settings in Openfire setup on Debian 6 (Squeeze).](391-openfire-debian-squeeze-05-admin-account-settings.png)](391-openfire-debian-squeeze-05-admin-account-settings.png)
+![Administrator account settings in Openfire setup on Debian 6 (Squeeze).](391-openfire-debian-squeeze-05-admin-account-settings.png)
 
 After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default "**admin**" user account.
 

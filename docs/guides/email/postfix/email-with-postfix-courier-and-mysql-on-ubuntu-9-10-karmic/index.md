@@ -1,8 +1,5 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 9.10 (Karmic).'
 keywords: ["postfix", "courier", "mail server", "postfix ubuntu karmic", "postfix ubuntu 9.10", "imap", "postfix on ubuntu", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["mysql","postfix","email","ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 
 Secure IMAPS and POP3S services are supported with this configuration, along with support for encrypted SMTP connections. This guide is largely based on Falko Timme's excellent [Postfix and Courier guide](http://www.howtoforge.com/virtual-users-domains-postfix-courier-mysql-squirrelmail-ubuntu9.04), with some packages omitted (such as quota support, as this requires rebuilding Postfix and many organizations have no need for quotas). Other steps have been clarified with additional explanations. This guide does not cover SpamAssassin or webmail software installation, although you may reference other resources to add support for these features.
 
-We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. This tutorial assumes you haven't already installed the MySQL database server; if you have, you will not be required to follow the initial steps related to MySQL installation.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. This tutorial assumes you haven't already installed the MySQL database server; if you have, you will not be required to follow the initial steps related to MySQL installation.
 
 **NOTE: Please read all information presented in this guide carefully.** There are many files and commands that will need to be edited as part of the setup process; please do not simply copy and paste the example blocks.
 
@@ -54,19 +52,19 @@ Issue the following command to get the required packages installed on your Linod
 
 This will install the Postfix mail server, the MySQL database server, the Courier IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
-[![Setting the root password for MySQL on an Ubuntu Linux 9.10 (Karmic) Linode.](439-postfix-courier-mysql-karmic-01-mysql-root-password.png)](439-postfix-courier-mysql-karmic-01-mysql-root-password.png)
+![Setting the root password for MySQL on an Ubuntu Linux 9.10 (Karmic) Linode.](439-postfix-courier-mysql-karmic-01-mysql-root-password.png)
 
 When prompted, select "No" for web-based administration.
 
-[![Declining web-based administration for the Postfix mail server on an Ubuntu Linux 9.10 (Karmic) Linode.](440-postfix-courier-mysql-karmic-02-courier.png)](440-postfix-courier-mysql-karmic-02-courier.png)
+![Declining web-based administration for the Postfix mail server on an Ubuntu Linux 9.10 (Karmic) Linode.](440-postfix-courier-mysql-karmic-02-courier.png)
 
 Next, you'll be prompted to select the type of mail server configuration you want for your Linode. Select "Internet Site" and continue.
 
-[![Selecting the Postfix mail server configuration type on an Ubuntu 9.10 (Karmic) Linode.](441-postfix-courier-mysql-karmic-03-postfix-01.png)](441-postfix-courier-mysql-karmic-03-postfix-01.png)
+![Selecting the Postfix mail server configuration type on an Ubuntu 9.10 (Karmic) Linode.](441-postfix-courier-mysql-karmic-03-postfix-01.png)
 
 Now you'll need to set the system mail name. This should be a fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using an example organization's domain for our mail server. You should set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name, while other domains you wish to host email for will be handled through later virtual domain setup steps.
 
-[![Selecting the Postfix system mail name on an Ubuntu 9.10 (Karmic) Linode.](442-postfix-courier-mysql-karmic-04-postfix-02.png)](442-postfix-courier-mysql-karmic-04-postfix-02.png)
+![Selecting the Postfix system mail name on an Ubuntu 9.10 (Karmic) Linode.](442-postfix-courier-mysql-karmic-04-postfix-02.png)
 
 This completes the initial package configuration steps. Next, we'll set up a MySQL database to handle our virtual domains and users.
 

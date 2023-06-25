@@ -1,8 +1,5 @@
 ---
 slug: set-up-a-zipkin-server
-author:
-  name: Luis Cortes
-  email: docs@linode.com
 description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
 keywords: ["zipkin", "tracking"]
 tags: ["statistics","fedora","analytics"]
@@ -15,6 +12,7 @@ published: 2017-09-28
 title: 'Set Up a Zipkin Server'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
+authors: ["Luis Cortés"]
 ---
 
 ![Set up a Zipkin Server](zipkin_banner.png)
@@ -27,9 +25,9 @@ While the official documentation offers [three different ways of installing Zipk
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
+2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
 3. Create two Linodes and have access to another device:
     1.  One Linode to act as the Zipkin server.

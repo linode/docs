@@ -1,8 +1,5 @@
 ---
 slug: manipulate-text-from-the-command-line-with-sed
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide contains practical examples for using the sed command to transform text files and streams of text from the command line without using a text editor.'
 keywords: ["sed", "find and replace", "regular expression", "unix"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,15 +10,16 @@ modified_by:
 published: 2010-07-01
 title: Manipulate Text from the Command Line with sed
 external_resources:
- - '[Administration Basics](/docs/using-linux/administration-basics/)'
+ - '[Administration Basics](/docs/guides/linux-system-administration-basics/)'
 tags: ["linux"]
+authors: ["Linode"]
 ---
 
 The traditional Unix utility `sed` makes it possible to manipulate strings and streams of text from the command line without using a text editing application. `sed` is useful in a number of different contexts, including finding and replacing strings of text in a large number of files, manipulating text for [Stack Scripts](http://linode.com/stackscripts/) and other kinds of scripts, as well as a component in basic shell scripting.
 
 ![Manipulate Text from the Command Line with sed](manipulate_text_from_the_command_line_with_sed.png "Manipulate Text from the Command Line with sed")
 
-This document provides a gentle overview of `sed` usage, accompanied by a number of practical applications of `sed`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics/) or the rest of the [Tools & Reference section](/docs/tools-reference/).
+This document provides a gentle overview of `sed` usage, accompanied by a number of practical applications of `sed`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/guides/linux-system-administration-basics/) or the rest of the [Tools & Reference section](/docs/tools-reference/).
 
 ## Using Sed
 
