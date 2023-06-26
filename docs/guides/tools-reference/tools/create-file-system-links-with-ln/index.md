@@ -17,7 +17,7 @@ authors: ["Linode"]
 
 ![Create File System Links with ln](create_file_system_links_with_ln_smg.png)
 
-The `ln` command creates **links** which point to other objects in the file system. Links are similar to, but not the same as, **aliases**. Links may point to files, directories, or other links. Although improper use can lead to disorganization and confusion, links are useful for providing access to files and file system organization.
+The `ln` command creates **links** which point to other objects in the file system. Links are similar to (but not the same as) **aliases**. Links may point to files, directories, or other links. Although improper use can lead to disorganization and confusion, links are useful for providing access to files and file system organization.
 
 `ln` can create two different types of links:
 

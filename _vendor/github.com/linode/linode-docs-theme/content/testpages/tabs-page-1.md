@@ -85,6 +85,10 @@ Tempor voluptate quis reprehenderit excepteur fugiat id sit ad ipsum reprehender
 
 Et ad duis ex proident esse eu Lorem quis exercitation magna ad cupidatat cillum dolor. Est consequat dolor incididunt magna reprehenderit culpa in et mollit fugiat fugiat culpa. Proident officia sit sint elit commodo laboris eu occaecat ullamco ex irure non do. Amet in do nostrud mollit tempor est deserunt ut laboris qui anim. Sunt id occaecat est commodo reprehenderit dolore.
 
+{{% note %}}
+This is a note.
+{{% /note %}}
+
 Exercitation voluptate anim mollit elit ipsum enim non proident eu tempor quis veniam fugiat. Occaecat adipisicing aliqua occaecat consequat ullamco do est magna. Aliquip proident veniam quis consequat esse pariatur sint et laboris consectetur mollit. Velit non enim consectetur excepteur. Sunt nulla dolore incididunt id eu nulla ipsum qui sit tempor proident voluptate. Nisi eiusmod quis aliqua minim aliqua. Elit nostrud sint ut nulla et sit aute excepteur dolore irure aliqua.
 
 Nostrud ea minim magna ipsum elit elit ipsum fugiat consequat dolore. Tempor minim proident quis quis sint laborum incididunt Lorem amet. Pariatur est irure id qui do irure ea incididunt commodo eu. Nisi non sunt consectetur nostrud dolore incididunt tempor elit consequat cillum dolore laborum dolore irure. Voluptate ullamco cillum labore commodo sit enim laboris adipisicing voluptate anim nulla. Dolore magna esse tempor aliquip Lorem eu ea in est ad tempor pariatur.

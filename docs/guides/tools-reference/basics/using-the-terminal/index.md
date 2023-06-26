@@ -132,7 +132,7 @@ In the above example we searched a stream with the `grep` tool, which provides a
 
     grep "127.0.0.1" /etc/hosts
 
-Note that `grep` expects the search "patterns" to be basic regular expression (a pattern matching syntax). `grep` is very powerful and its full is beyond the scope of this document. Please refer to the manual page for more information (enter `man grep`.)
+Note that `grep` expects the search "patterns" to be basic regular expression (a pattern matching syntax). `grep` is a very powerful and its full is beyond the scope of this document. Please refer to the manual page for more information (enter `man grep`.)
 
 ### The Echo Command
 

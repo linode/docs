@@ -525,3 +525,4 @@ Now that you have a YARN cluster up and running, you can:
 
 - Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
 - Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/guides/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/).
+- Secure your cluster with [Apache YARN Secure containers](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/SecureContainer.html).
