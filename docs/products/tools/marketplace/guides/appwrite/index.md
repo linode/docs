@@ -1,11 +1,11 @@
 ---
+title: "Deploy Appwrite through the Linode Marketplace"
 description: "Deploy Appwrite, an open-source Firebase alternative for Web, Mobile & Flutter Developers, on a Linode Compute Instance."
 keywords: ['Appwrite','Firebase','backend', 'low-code']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-05-30
+published: 2023-06-26
 modified_by:
   name: Linode
-title: "Deploy Appwrite through the Linode Marketplace"
 authors: ["Linode"]
 ---
 
