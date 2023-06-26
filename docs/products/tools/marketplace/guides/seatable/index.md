@@ -1,11 +1,11 @@
 ---
+title: "Deploy SeaTable through the Linode Marketplace"
 description: "Deploy SeaTable, a simple database management GUI, on a Linode Compute Instance."
 keywords: ['SeaTable','Database','Web UI']
 tags: ["marketplace", "linode platform", "cloud manager"]
-published: 2023-06-23
+published: 2023-06-26
 modified_by:
   name: Linode
-title: "Deploy SeaTable through the Linode Marketplace"
 authors: ["Linode"]
 ---
 
