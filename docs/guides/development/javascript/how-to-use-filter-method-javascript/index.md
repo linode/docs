@@ -1,20 +1,13 @@
 ---
 slug: how-to-use-filter-method-javascript
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Want to know what JavaScript’s filter() array method is and how to use it? This tutorial gives you everything you need to understand what filter() does and how to apply it in your JavaScript development."
-og_description: "Want to know what JavaScript’s filter() array method is and how to use it? This tutorial gives you everything you need to understand what filter() does and how to apply it in your JavaScript development."
-keywords: ['javascript filter array','javascript filter function','javascript filter method']
+title: "How to Use the filter() Method for Arrays in JavaScript"
+description: "Want to know what JavaScript’s filter() array method is and how to use it? This guide gives you everything you need to understand what filter() does and how to apply it in your JavaScript development."
+keywords: ['javascript filter array', 'javascript filter function', 'javascript filter method']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Nathaniel Stickman"]
 published: 2022-03-13
 modified_by:
-  name: Nathaniel Stickman
-title: "How to Use the filter() Method for Arrays in JavaScript"
-h1_title: "How to Use the filter() Method for Arrays in JavaScript"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+  name: Linode
 external_resources:
 - '[DigitalOcean: How To Use the filter() Array Method in JavaScript](https://www.digitalocean.com/community/tutorials/js-filter-array-method)'
 - '[MDN Web Docs: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)'
@@ -22,7 +15,7 @@ external_resources:
 
 JavaScript's arrays include a `filter` method, designed to conveniently create new arrays out of existing ones. So how does it work, and how can you start using it on your arrays?
 
-Find out in this tutorial. It explains JavaScript's `filter` method and how to use it to filter arrays containing numbers, strings, and even objects.
+Find out in this guide. It explains JavaScript's `filter` method and how to use it to filter arrays containing numbers, strings, and even objects.
 
 ## What Is the JavaScript filter Method?
 
@@ -32,7 +25,7 @@ The method accomplishes this by taking a function as an argument and applying th
 
 To break that down, here is an example. Follow along with the comments in the example to see how each part works:
 
-``` javascript
+```file {title="filter_method_example.js" lang="javascript"}
 // Start with an array.
 const exampleArray = [1, 2, 3, 4, 5, 6];
 
@@ -47,13 +40,13 @@ let newExampleArray = exampleArray.filter(function(item) {
     return item % 2 === 0;
 });
 
-// The above results in a new array, `newArrayExample`, with these contents:
+// The above results in a new array, `newExampleArray`, with these contents:
 // [2, 4, 6]
 ```
 
 ## How to Use the filter Method
 
-Above, you can see an example of the filter method in action. The sections that follow elaborate on this, showing you examples for three different kinds of arrays.
+Above, you can see an example of the filter method in action. The sections that follow elaborate on this, showing you examples of three different kinds of arrays.
 
 These are not the only kinds of arrays that the `filter` method works on, however. Any kind of array works. The kinds of arrays selected and shown here are meant to illustrate the `filter` method's capabilities on some of the most common array contents. That way, you have the understanding you need to be able to apply the method for any kind of array you might encounter.
 
@@ -61,13 +54,13 @@ These are not the only kinds of arrays that the `filter` method works on, howeve
 
 The best place to start is the simplest of the arrays: arrays containing only numbers.
 
-The `filter` method lets you create a new number array from an existing array based on criteria you provide. Part of what makes a number array easier to start with is that the criteria typically use frequently-used and widely-known operators.
+The `filter` method lets you create a new number array from an existing array based on the criteria you provide. Part of what makes a number array easier to start with is that the criteria typically use frequently-used and widely-known operators.
 
 For instance, you can create a new array of all numbers below 20 in an existing array by filtering for `< 20`. This is exactly what is done for the `smallNumberArray` in the example below. The example then does the opposite for the `largeNumberArray`, filtering for numbers equal to or greater than 20, using `>= 20`.
 
 You can branch out from there to more advanced operations. The last `filter` in the example below uses the remainder operator — `%` — to get an array of numbers that are multiples of nine.
 
-``` javascript
+```file {title="filter_array_of_numbers.js" lang="javascript"}
 const numberArray = [9, 45, 27, 18, 36, 19];
 
 let smallerNumberArray = numberArray.filter((item) => {
@@ -98,7 +91,7 @@ And there are many more options, like the ability to pick a specific character (
 
 Unless you want your strings to be case-sensitive, you should convert them to lowercase before evaluating them for sub-strings and the like. This is done in the `arrStringArray` example below, allowing the string `Array` to match for including `arr`.
 
-``` javascript
+```file {title="filter_array_of_strings.js" lang="javascript"}
 const stringArray = ["An", "Array", "Of", "Strings"];
 
 let longerStringArray = stringArray.filter((item) => {
@@ -125,9 +118,9 @@ You can see this in the first two examples below. The first, `consoleObjectArray
 
 The last example does a number comparison, but also adds a little more logic. It first checks the `type` attribute to make sure the item is a `console`, returning `false` if it is not. Only then, for the `console` items, does it filter by number. This is a good way to take advantage of objects' properties to apply multiple filters at the same time.
 
-As a side note, you can do something similar on number and string arrays. For instance, on a string array you can check for length and sub-string using a similar approach.
+As a side note, you can do something similar on number and string arrays. For instance, on a string array, you can check for length and sub-string using a similar approach.
 
-``` javascript
+```file {title="filter_array_of_objects.js" lang="javascript"}
 const objectArray = [
     {type: "console", name: "Playstation", year: 2020},
     {type: "console", name: "Switch", year: 2017},
@@ -159,6 +152,6 @@ let newerConsolesArray = objectArray.fitler((item) => {
 
 ## Conclusion
 
-With that, you have the basis you need for starting to use the array `filter` method in your JavaScript code. The above does not cover everything you can do with this versatile method. But it does show the possibilities and gives you a template you can use to explore and adapt.
+With that, you have the basics you need for starting to use the array `filter` method in your JavaScript code. The above does not cover everything you can do with this versatile method. But it does show the possibilities and gives you a template you can use to explore and adapt.
 
 Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
