@@ -1,11 +1,12 @@
 ---
+title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 description: "Deploy Prometheus & Grafana on a Linode Compute Instance. This application provides you with a reliable monitoring solution for all of your infrastructure. "
 keywords: ['monitoring','observability']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2022-03-29
+modified: 2023-06-26
 modified_by:
   name: Linode
-title: "Deploy Prometheus and Grafana through the Linode Marketplace"
 external_resources:
 - '[Prometheus](https://prometheus.io/)'
 - '[Grafana](https://grafana.com/)'
@@ -31,7 +32,7 @@ Grafana is an analytics and monitoring solution with a focus on accessibility fo
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** All plan types and sizes can be used.
 
 ### Prometheus and Grafana Options
