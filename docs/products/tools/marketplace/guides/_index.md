@@ -5,7 +5,7 @@ description: "A collection of guides to help you learn how to deploy each Market
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
-modified: 2023-05-24
+modified: 2023-06-26
 ---
 
 ## Basics

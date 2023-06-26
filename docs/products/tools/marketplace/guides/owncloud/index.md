@@ -1,7 +1,7 @@
 ---
 title: "Deploy ownCloud Server through the Linode Marketplace"
 description: "Learn how to deploy ownCloud Server, a self-hosted file-sharing and collaboration platform on the Linode Marketplace."
-published: 2023-05-24
+published: 2023-06-26
 keywords: ['owncloud','filesharing','collaboration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 external_resources:
@@ -48,7 +48,9 @@ After deployment, follow the instructions below to access your application.
 
 1.  Open a web browser and enter the following URL, where *[domain]* is either your Compute Instance's default rDNS domain or your own domain name (if you entered one during deployment). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing the IP address and rDNS value.
 
-        https://[domain]/
+    ```command
+    https://[domain]/
+    ```
 
     {{< note >}}
     To change this domain, follow the instructions within the [Changing Your ownCloud URL](https://doc.owncloud.com/server/next/admin_manual/installation/changing_the_web_route.html) guide on ownCloud's documentation site.
