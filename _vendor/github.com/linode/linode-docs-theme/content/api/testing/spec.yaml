@@ -21,6 +21,9 @@ paths:
           application/json:
             schema:
               properties:
+                skip_ipv6_rdns:
+                  type: boolean
+                  default: false
                 test:
                   type: array
                   description: Example array. Items should follow.

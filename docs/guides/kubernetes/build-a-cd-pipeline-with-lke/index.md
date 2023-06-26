@@ -20,6 +20,8 @@ This series covers creating a continuous deployment pipeline within the cloud us
 
 ## Presentation
 
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
+
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine](https://2021-03-lke.container.training/)
 
 The contents of the slides and the material discussed within is available within the repository [jpetazzo/container.training](https://github.com/jpetazzo/container.training/tree/2021-03-lke). It was created by Jérôme Petazzoni (contact on [Twitter](https://twitter.com/jpetazzo)) and adapted into this series of guides.

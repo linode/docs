@@ -16,6 +16,7 @@ external_resources:
 - '[Ubuntu Long Term Support Schedule](https://ubuntu.com/about/release-cycle)'
 - '[New features in Ubuntu 22.04](https://ubuntu.com/blog/ubuntu-22-04-lts-whats-new-linux-desktop)'
 authors: ["Jeff Novotny"]
+aliases: ['/upgrading/upgrade-to-ubuntu-12.04-precise/']
 ---
 
 Although Ubuntu 20.04 LTS (*Long Term Support*) is still supported, users should upgrade Ubuntu to the more recent 22.04 LTS. Upgrading to the new release ensures the system can access the most recent security upgrades and application packages. This guide describes how to perform an inline upgrade from Ubuntu 20.xx or 21.xx to 22.04.
