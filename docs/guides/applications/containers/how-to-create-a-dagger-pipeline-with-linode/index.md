@@ -58,7 +58,7 @@ For more background on Dagger, see the [Dagger Documentation](https://docs.dagge
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  To publish the container, you must have access to a container registry. This guide uses the open source [Harbor](https://goharbor.io/) registry to publish the container. However, it is possible to push the container to any container repository. For information on how to create a Harbor registry on a Linode, see the guide on [Deploying Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/). Before using Harbor, it is necessary to create a project to host the container.
+1.  To publish the container, you must have access to a container registry. This guide uses the open source [Harbor](https://goharbor.io/) registry to publish the container. However, it is possible to push the container to any container repository. For information on how to create a Harbor registry on a separate Linode, see the guide on [Deploying Harbor through the Linode Marketplace](/docs/products/tools/marketplace/guides/harbor/). Before using Harbor, it is necessary to create a project named `dagger` to host the example container.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -74,7 +74,7 @@ Dagger requires the use of Docker. This guide uses the Python SDK to compose the
     sudo apt-get update -y && sudo apt-get upgrade -y
     ```
 
-    Reboot the system if advised to do so.
+    Afterward, reboot the system if advised to do so.
 
 1.  Ensure `git` is installed on the system:
 
@@ -82,14 +82,14 @@ Dagger requires the use of Docker. This guide uses the Python SDK to compose the
     sudo apt install git
     ```
 
-1.  Dagger requires the use of Docker. To prepare for the Docker v2 installation, remove any older releases of the application and then install some additional components:
+1.  To prepare for the Docker v2 installation, remove any older releases of the application and then install some additional components:
 
     ```command
     sudo apt-get remove docker docker-engine docker.io containerd runc
     sudo apt-get install ca-certificates curl gnupg lsb-release
     ```
 
-1.  Add the official Docker GPG key. This key helps validate the installation.
+1.  Add the official Docker GPG key to help validate the installation:
 
     ```command
     sudo mkdir -m 0755 -p /etc/apt/keyrings
@@ -125,27 +125,35 @@ Dagger requires the use of Docker. This guide uses the Python SDK to compose the
 
 1.  Install the Dagger SDK for the appropriate programming language. This guide uses Python to create the example application, so the next steps explain how to download the Python SDK. Use `pip` to install the `dagger-io` module. If `pip` is not yet installed, it can be added using the command `sudo apt install python3-pip`. Python release 3.10 is required.
 
-    {{< note >}}
-    Dagger uses Docker to create a container, but `sudo` is normally required to run Docker. This means the Python `dagger-io` package must be accessible to the root user. Unfortunately, Python installs modules locally by default. There are several ways to work around this problem. The simplest method is to install the `dagger-io` package globally using the `pip -H` flag. This ensures it is accessible to all users. Unfortunately, using `pip` globally can lead to complex and confusing permission issues. This technique should be used with great care, especially in a multi-user environment.
+    {{< note type="warning" title="Required Options">}}
+    Dagger uses Docker to create a container, but `sudo` is normally required to run Docker. This means the Python `dagger-io` package must be accessible to the root user. Unfortunately, Python installs modules locally by default. There are a couple of ways to work around this problem:
 
-    Another potential workaround is to add the current user to the `docker` group using the command `sudo usermod -aG docker userid`. This allows the user to access Docker without root access.
+    The quickest method is to install the `dagger-io` package globally using the `pip -H` flag. This ensures it is accessible to all users. Unfortunately, using `pip` globally can lead to complex and confusing permission issues. This technique should be used with great care, especially in a multi-user environment. To install the package globally, use this command instead of the one below:
 
-    This guide proceeds as if the user has been added to the `docker` group and installs `dagger-io` locally. To install the package globally, use the command `sudo -H pip install dagger-io`.
-    {{< /note >}}
+    ```command
+    sudo -H pip install dagger-io
+    ```
 
-    {{< note >}}
-    SDKs are also available for Node.js and Go. To install the Go SDK, use the `go mod init main` and `go get dagger.io/dagger` commands. For the Node.js SDK, use `npm install @dagger.io/dagger --save-dev`.
+    A better workaround is to add the current user to the `docker` group. This allows the user to access Docker without root access, but this requires a reboot to take effect. This guide proceeds as if the user has been added to the `docker` group and installs `dagger-io` locally. To add the current user to the `docker` group, use the following command syntax, replacing `example-username` with your actual username:
+
+    ```command
+    sudo usermod -aG docker example-username
+    ```
     {{< /note >}}
 
     ```command
     pip install dagger-io
     ```
 
+    {{< note >}}
+    SDKs are also available for Node.js and Go. To install the Go SDK, use the `go mod init main` and `go get dagger.io/dagger` commands. For the Node.js SDK, use `npm install @dagger.io/dagger --save-dev`.
+    {{< /note >}}
+
 ## How to Create a Sample Dagger Pipeline
 
 This guide uses the Python SDK to create an example Dagger CI/CD pipeline. To simplify the process, this guide uses the `hello-dagger` demo app to demonstrate the main steps. Dagger recommends using this application when learning how to create a pipeline. However, any application can be used for the demo, provided the appropriate script updates are made.
 
-For more information on the Python SDK or to further customize the application, see the [Dagger Python SDK](https://docs.dagger.io/sdk/python). See the [Dagger Quickstart demo](https://docs.dagger.io/593914/quickstart-hello/) for information on how to create this pipeline using either Go or Node.
+For more information on the Python SDK or to further customize the application, see the [Dagger Python SDK documentation](https://docs.dagger.io/sdk/python). See the [Dagger Quickstart demo](https://docs.dagger.io/593914/quickstart-hello/) for information on how to create this pipeline using either Go or Node.
 
 To create a Dagger pipeline in Python, follow these steps.
 
@@ -168,16 +176,16 @@ Dagger has developed a sample React application named `hello-dagger` as a teachi
 
 ### Create and Test a Dagger Pipeline for the Application
 
-The Dagger client enables users to create a multi-stage Python program to define, test, and build an application. This section of the tutorial does not yet publish the application. It is important to test it first and ensure it builds correctly. To create a new pipeline, follow these steps.
+The Dagger client enables users to create a multi-stage Python program to define, test, and build an application. This section of the tutorial does not yet publish the application. It is important to test it first to ensure it builds correctly. To create a new pipeline, follow these steps.
 
-1.  `cd` to the `hello-dagger/ci` directory, create a new `main.py` Python project file and open it in a text editor:
+1.  `cd` to the `hello-dagger/ci` directory, create a new `main.py` Python project file, and open it in the `nano` text editor:
 
     ```command
     cd ~/hello-dagger/ci
     nano main.py
     ```
 
-1.  At the top of the file, add the required `import` statements. Include a `import dagger` directive to import the Dagger SDK.
+1.  At the top of the file, add the required `import` statements, including an `import dagger` directive to import the Dagger SDK:
 
     ```file {title="~/hello-dagger/ci/main.py" lang="python"}
     import sys
@@ -185,9 +193,9 @@ The Dagger client enables users to create a multi-stage Python program to define
     import dagger
     ```
 
-1.  Define a `main` routine. Create a Dagger configuration object and define `stdout` as the output stream. Add the following lines to the file:
+1.  Define a `main` routine, create a Dagger configuration object, and define `stdout` as the output stream:
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="5"}
     async def main():
         config = dagger.Config(log_output=sys.stdout)
     ```
@@ -202,7 +210,7 @@ The Dagger client enables users to create a multi-stage Python program to define
 
     Add the following lines to the file to mount the source code at the `src` directory of a `node:16-slim` container:
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="8"}
         async with dagger.Connection(config) as client:
             source = (
                 client.container()
@@ -221,12 +229,12 @@ The Dagger client enables users to create a multi-stage Python program to define
 
 1.  The next phase of the pipeline uses `npm install` to install the application dependencies inside the container. The `with_workdir` method tells Dagger where inside the container to run the command. The `with_exec` method tells Dagger to run `npm install` at that location. Add the following lines to the script:
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="19"}
             runner = source.with_workdir("/src").with_exec(["npm", "install"])
     ```
 1.  The final section of the Python script automatically runs a test suite against the application. This command uses the `with_exec` method again, with `npm test --watchAll=false` as the test command. If an error results, details are printed to the console via the `stderr` stream and the pipeline terminates. At the end of the file, add a call to the `main` routine:
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="21"}
             out = await runner.with_exec(["npm", "test", "--", "--watchAll=false"]).stderr()
             print(out)
 
@@ -266,7 +274,7 @@ The Dagger client enables users to create a multi-stage Python program to define
 
     When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
 
-8.  Change back to the main `hello-dagger` project directory and run the Python script using `python3 ci/main.py`:
+1.  Change back to the main `hello-dagger` project directory and run the Python script using `python3 ci/main.py`:
 
     ```command
     cd ~/hello-dagger
@@ -283,7 +291,9 @@ The Dagger client enables users to create a multi-stage Python program to define
     Ran all test suites.
     ```
 
+    {{< note >}}
     Because Dagger first has to ask Docker to download the `node:16-slim` container, it might take a couple minutes before the `npm install` command runs. Subsequent runs of this program take less time.
+    {{< /note >}}
 
 ### Add a Build Stage to the Pipeline
 
@@ -295,25 +305,24 @@ After the main components of the pipeline have been created, as described in the
     nano ~/hello-dagger/ci/main.py
     ```
 
-1.  Make the following changes.
+1.  Make the following changes:
 
     -   The file remains the same up until the `runner.with_exec` command.
     -   Remove the command `out = await runner.with_exec(["npm", "test", "--", "--watchAll=false"]).stderr()` and add the following line. This is the same command except the result is assigned to the `test` object.
-    -   Remove the `print(out)` command. This statement is reintroduced later in the new program.
+    -   Remove the `print(out)` command as this statement is reintroduced later in the new program.
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="21"}
             test = runner.with_exec(["npm", "test", "--", "--watchAll=false"])
     ```
 
-2.  Add new instructions to build the application. Include the following details.
+1.  Add new instructions to build the application to include the following details:
 
     -   Use the `with_exec` method to define `npm run build` as the build command.
     -   Store the outcome in the `/build` directory of the container using the `directory` method. The new directory is assigned to `build_dir`.
     -   The `export` method writes the contents of the directory back to the `./build` directory on the host. The `await` keyword tells the pipeline to wait for the activity to complete before proceeding.
     -   The `entries` method extracts the full list of directories from the `build` directory and writes the list back to the console.
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
-    # build application
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="23"}
             build_dir = (
                 test.with_exec(["npm", "run", "build"])
                 .directory("./build")
@@ -326,7 +335,7 @@ After the main components of the pipeline have been created, as described in the
     anyio.run(main)
     ```
 
-3.  After the new build section is added, the entire file should resemble the following example.
+1.  After the new build section is added, the entire file should resemble the following example:
 
     ```file {title="~/hello-dagger/ci/main.py" lang="python"}
     import sys
@@ -363,21 +372,27 @@ After the main components of the pipeline have been created, as described in the
     anyio.run(main)
     ```
 
-4.  Return to the `hello-dagger` directory and run the Python script again. The script displays the list of directories inside the build directory. The first part of the script should run more quickly because the container does not have to be downloaded. But the build process typically takes about a minute to finish.
+1.  Return to the `hello-dagger` directory and run the Python script again:
 
     ```command
     cd ~/hello-dagger
     python3 ci/main.py
     ```
 
+    The script displays the list of directories inside the build directory:
+
     ```output
     build dir contents:
     ['asset-manifest.json', 'favicon.ico', 'index.html', 'logo192.png', 'logo512.png', 'manifest.json', 'robots.txt', 'static']
     ```
 
+    {{< note >}}
+    The first part of the script should run more quickly because the container does not have to be downloaded. But the build process typically takes about a minute to finish.
+    {{< /note >}}
+
 ### Publish the Container to a Registry
 
-At this point, the Dagger pipeline creates, tests, and builds the application. The pipeline is already very useful and could even be considered complete at this point. However, Dagger can also publish the container to a registry to create an even more optimized workflow.
+At this point, the Dagger pipeline creates, tests, and builds the application. The pipeline is already very useful and could even be considered complete. However, Dagger can also publish the container to a registry to create an even more optimized workflow.
 
 Before publishing the container, the application build is copied into an `nginx` container. Any authentication details must be defined in advance.
 
@@ -393,17 +408,17 @@ To publish the application, follow these steps.
 
 1.  Right beneath the start of the `async with dagger.Connection(config) as client:` block, add the password details. Use the `set_secret` method to provide the registry password. The parameters must be the string `password` in quotes, followed by the actual password for the Harbor account. The string `password` tells Dagger what type of secret is being defined. Assign the result to the `secret` variable.
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="9"}
             secret = client.set_secret("password", "HARBORPASSWORD")
     ```
 
-2.  The next change applies to the build stage. The following changes are required to this section of the pipeline:
+1.  The next change applies to the build stage. The following changes are required to this section of the pipeline:
 
     -   Do not assign the result of the build to the `build_dir` variable. Instead, wait for all build activities, including the directory export back to the host, to complete.
     -   Replace the command assigning the directory to `build_dir` with the following lines.
     -   Remove the remainder of the `main` function, up to the command `anyio.run(main)`. Delete the two asynchronous `await` directives and the `print` command.
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="24"}
             await (
                 test.with_exec(["npm", "run", "build"])
                 .directory("./build")
@@ -411,13 +426,13 @@ To publish the application, follow these steps.
             )
     ```
 
-3.  Define a new container based on the `nginx:1.23-alpine` image and package the application into this container. Add the following details:
+1.  Define a new container based on the `nginx:1.23-alpine` image and package the application into this container. Add the following details:
 
     -   This section creates a new container based on the `nginx:1.23-alpine` image. Use the syntax `client.container().from_("nginx:1.23-alpine")` to instantiate the container.
     -   Use the `.with_directory` method to write the `build` directory to the root `html` NGINX directory inside the container.
     -   Assign the container to the `ctr` variable.
 
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="30"}
             ctr =  (
                 client.container()
                 .from_("nginx:1.23-alpine")
@@ -425,19 +440,15 @@ To publish the application, follow these steps.
             )
     ```
 
-4.  To publish the container to the registry, use the `with_registry_auth` and `publish` methods. This example uses Harbor as the target registry, but the container can be published to any Docker-compatible registry. Add the following section to the file, accounting for the following changes.
+1.  To publish the container to the registry, use the `with_registry_auth` and `publish` methods. This example uses Harbor as the target registry, but the container can be published to any Docker-compatible registry. Add the following section to the file, accounting for the following changes:
 
     -   Enclose the details in an asynchronous `await` call.
     -   For the first parameter of the `with_registry_auth` method, supply the domain name of the registry in the format `registrydomainname/project/repository:tag`. Replace `registrydomainname` with the name of your Harbor domain, `project` with the project name, and `repository` with the name of the repository to publish to. The `tag` field is optional.
     -   For the remaining parameters, append a user name for the Harbor account along with the `secret` variable. In this example, the account name is `admin`.
-    -   In this sample, `example.com/dagger/daggerdemo:main` means the container is published to the `daggerdemo` repository inside the `dagger` project in the `example.com` registry. The container is tagged with the `main` tag.
+    -   In this example, `example.com/dagger/daggerdemo:main` means the container is published to the `daggerdemo` repository inside the `dagger` project in the `example.com` registry. The container is tagged with the `main` tag.
     -   In the `publish` method, indicate where to publish the container. This information follows the same format as the registry information in `with_registry_auth` and should repeat the same details.
 
-    {{< note >}}
-    Before publishing a container to a Harbor registry, you must create a project to contain the container. This example publishes the container to the `daggerdemo` repository inside the `dagger` project. If `dagger` does not already exist, the request fails.
-    {{< /note >}}
-
-    ```file {title="~/hello-dagger/ci/main.py" lang="python"}
+    ```file {title="~/hello-dagger/ci/main.py" lang="python" linenostart="36"}
             addr = await (
                 ctr
                 .with_registry_auth("example.com/dagger/daggerdemo:main", "admin", secret)
@@ -448,7 +459,11 @@ To publish the application, follow these steps.
     anyio.run(main)
     ```
 
-5.  The entire file should be similar to the following example. Replace `example.com` with the domain name of the Harbor registry and `HARBORPASSWORD` with the actual password for the registry.
+    {{< note >}}
+    Before publishing a container to a Harbor registry, you must create a project to contain the container. This example publishes the container to the `daggerdemo` repository inside the `dagger` project. If `dagger` does not already exist, the request fails.
+    {{< /note >}}
+
+1.  The entire file should be similar to the following example. Replace `example.com` with the domain name of the Harbor registry and `HARBORPASSWORD` with the actual password for the registry.
 
     ```file {title="~/hello-dagger/ci/main.py" lang="python"}
     import sys
@@ -498,7 +513,7 @@ To publish the application, follow these steps.
 
     Save the file and exit `nano` when finished.
 
-5.  From the `hello-dagger` directory, run the Python script again. The script builds the container and pushes it out to the registry. The whole process might take a few minutes to complete. When complete, the script displays the name and tag generated for the image. Make note of the full container name and tag for future use.
+1.  From the `hello-dagger` directory, run the Python script again. The script builds the container and pushes it out to the registry. The whole process might take a few minutes to complete. When complete, the script displays the name and tag generated for the image. Make note of the full container name and tag for future use.
 
     ```command
     cd ~/hello-dagger
@@ -509,7 +524,7 @@ To publish the application, follow these steps.
     Published image to: example.com/dagger/daggerdemo:main@sha256:eb8dbf08fb05180ffbf56b602ee320ef5aa89b8f972f553e478f6b64a492dd50
     ```
 
-6.  Confirm the container has been successfully built and uploaded. Use the `docker run` command to pull the container back to the host and run the application. Specify the exact container name and address indicated in the output of the `main.py` script.
+1.  Confirm the container has been successfully built and uploaded. Use the `docker run` command to pull the container back to the host and run the application. Specify the exact container name and address indicated in the output of the `main.py` script.
 
     ```command
     docker run -p 8080:80 example.com/dagger/daggerdemo:main@sha256:eb8dbf08fb05180ffbf56b602ee320ef5aa89b8f972f553e478f6b64a492dd50
