@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-webmin-control-panel-and-modules
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide teaches you how to install and configure a Webmin control panel for system administration.'
 og_description: 'Install the Webmin control panel to manage your Linux system administration from a web browser, without needing to SSH into your machine. This guide shows you how.'
 keywords: ["webmin", "control", "panel", "admin panel"]
@@ -14,12 +11,12 @@ modified_by:
   name: Linode
 published: 2014-10-08
 title: How to Install a Webmin Control Panel and Modules on Ubuntu 16.04
-expiryDate: 2019-11-10
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
  - '[Webmin Documentation](http://www.webmin.com/docs.html)'
  - '[Webmin Modules](http://www.webmin.com/standard.html)'
  - '[Webmin FAQ](http://www.webmin.com/faq.html)'
+authors: ["Linode"]
 ---
 
 ![How to Install a Webmin Control Panel and Modules on Ubuntu](Webmin_Control_Panel_smg.jpg)
@@ -32,9 +29,9 @@ Webmin is a web interface that allows you to manage configuration files and relo
 
 The commands in this guide work with either Debian 8 or Ubuntu 16.04.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. You do not have to complete the Configure a Firewall section. If you choose to set up a firewall, ensure that incoming connections are allowed on port `10000`.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. You do not have to complete the Configure a Firewall section. If you choose to set up a firewall, ensure that incoming connections are allowed on port `10000`.
 
 3.  Update your system:
 
@@ -42,7 +39,7 @@ The commands in this guide work with either Debian 8 or Ubuntu 16.04.
 
 ### Check the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#ubuntu--debian). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#ubuntu--debian). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

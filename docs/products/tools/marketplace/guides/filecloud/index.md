@@ -1,30 +1,19 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide provides you with step-by-step instructions for deploying your own FileCloud Server on a Linode using the One-Click Marketplace Apps."
 keywords: [ 'filecloud','marketplace', 'server']
 tags: ["cloud-manager","linode platform", "marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-18
-modified: 2022-03-08
+modified: 2022-06-03
 modified_by:
   name: Linode
-title: "Deploying FileCloud through the Linode Marketplace"
-contributor:
-  name: Linode
+title: "Deploy FileCloud through the Linode Marketplace"
 external_resources:
 - '[FileCloud Official](https://www.getfilecloud.com/supportdocs/display/cloud/Home)'
 aliases: ['/platform/marketplace/deploy-filecloud-with-marketplace-apps/', '/platform/one-click/deploy-filecloud-with-one-click-apps/', '/guides/deploy-filecloud-with-one-click-apps/','/guides/deploy-filecloud-with-marketplace-apps/','/guides/filecloud-marketplace-app/']
-_build:
-  list: false
+authors: ["Linode"]
 ---
 
-{{<caution>}}
-The FileCloud App has been temporarily removed from the Linode Marketplace due recent breaking changes. Our developers are currently working on implementing a fix. If you wish to deploy FileCloud in the meantime, you can review FileCloud's own manual installation instructions. See [Installing FileCloud Server](https://www.filecloud.com/supportdocs/display/cloud/Installing+FileCloud+Server).
-{{</caution>}}
-
-FileCloud is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
+[FileCloud](https://www.filecloud.com/) is a cloud-based file-sharing application, similar to tools like Dropbox, that allows users to remotely access, upload, and sync hosted files.
 
 ## Deploying a Marketplace App
 
@@ -32,26 +21,23 @@ FileCloud is a cloud-based file-sharing application, similar to tools like Dropb
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** FileCloud should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** Debian 9, Ubuntu 18.04 LTS
-- **Recommended plan:** All plan types and sizes can be used with FileCloud. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.
+- **Supported distributions:** Ubuntu 20.04 LTS
+- **Recommended minimum plan:** All plan types and sizes can be used. The Linode plan that you select should be appropriate for the amount of data transfer, users, storage, and other stress that may affect the performance of server.
 
 ### FileCloud Options
 
-| **Configuration** | **Description** |
-|-------------------|-----------------|
-| **Your Linode API Token** | Your Linode `API Token` is needed to create DNS records. If this is provided along with the `subdomain` and `domain` fields, the installation attempts to create DNS records via the Linode API. If you don't have a token, but you want the installation to create DNS records, you must [create one](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token) before continuing. |
-| **The subdomain for Linode's DNS record** | The subdomain you wish the installer to create a DNS record for during setup. The suggestion given is `www`. The subdomain should only be provided if you also provide a `domain` and `API Token`. |
-| **The domain for the Linode's DNS record** | The domain name where you wish to host your FileCloud server. The installer creates a DNS record for this domain during setup if you provide this field along with your `API Token`. |
-| **Would you like to use a free CertBot SSL certificate?** | Select `Yes` if you would like the install to create an SSL certificate for you, or `No` if you do not. You cannot create secure, encrypted conferences without an SSL certificate. |
-| **E-Mail Address for Let's Encrypt Certificate** |  E-mail address used as the start of authority (SOA) email address for this server and for Let's Encrypt installation. This email address is added to the SOA record for the domain. This is a required field if you want the installer to create DNS records. |
-| **The SSH Public Key that will be used to access the Linode** | If you wish to access [SSH via Public Key](/docs/security/authentication/use-public-key-authentication-with-ssh/) (recommended) rather than by password, enter the public key here. |
-| **Disable root access over SSH?** | Select `Yes` to block the root account from logging into the server via SSH. Select `No` to allow the root account to login via SSH. |
+{{< content "marketplace-custom-domain-fields-shortguide">}}
+- **SOA email address:** Enter the email address that should be used for the domain's SOA DNS record.
+
+{{< content "marketplace-limited-user-fields-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -61,22 +47,20 @@ Once the FileCloud server is up and running, a few additional steps must be comp
 
 A new administrator password must be created to secure the server:
 
-1.  Log in to the FileCloud admin page with the default log-in information at the following URL, replacing `my-ip-or-domain` with the IP address of your Linode or domain you set up on initial installation:
-
-        http://my-ip-or-domain/admin
+1.  Open your web browser and navigate to `http://[domain]/admin`, where *[domain]* can be replaced with the custom domain you entered during deployment or your Compute Instance's rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). You can also use your IPv4 address. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
 1.  In the login fields that appear, enter the default credentials:
 
     - **Username:** admin
     - **Password:** password
 
-    ![Admin Login Page](filecloud-admin-login.png)
+    ![Admin Login Page](filecloud-login.png)
 
 1.  A number of messages and warnings appear. For now, dismiss them to clear your screen.
 
 1.  Navigate to the **Settings** sidebar option, followed by the **Admin** tab. Click on the **Reset Admin Password** to reset your Admin Password to something more secure.
 
-    ![FileCloud Admin Page](filecloud-admin-pass.png)
+    ![FileCloud Admin Page](filecloud-reset-password.png)
 
 1.  Follow the prompts and select the **Reset Password** button to complete the password reset.
 
@@ -86,16 +70,10 @@ A new administrator password must be created to secure the server:
 
 FileCloud by default is inaccessible without either a trial or paid license key provided by FileCloud.
 
-1. To obtain a trial license key, sign on or create an account at [FileCloud's customer portal](https://portal.getfilecloud.com/ui/user/index.html). After logging in to your new account, click on the `Begin Trial` button and follow the prompts to obtain a new trial license key file.See [FileCloud - License Purchase And Renewal](https://www.getfilecloud.com/supportdocs/display/cloud/FileCloud+-+License+Purchase+And+Renewal) for full instructions on obtaining a license.
+1. To obtain a trial license key, sign on or create an account at [FileCloud's customer portal](https://portal.getfilecloud.com/ui/user/index.html). After logging in to your new account, click on the **Begin Trial** button and follow the prompts to obtain a new trial license key file.See [FileCloud - License Purchase And Renewal](https://www.getfilecloud.com/supportdocs/display/cloud/FileCloud+-+License+Purchase+And+Renewal) for full instructions on obtaining a license.
 
-1. Once you have a valid license key, log in to the FileCloud administrator page at the Linode's IP address or the domain you specified during installation. After a new successful login, you will see the `Action Items` popup.
+1. Once you have a valid license key, log in to the FileCloud administrator page. After a new successful login, a message should be displayed notifying you that the license is invalid. If this message is not visible, navigate to **Settings** > **License**.
 
-    {{< note >}}
-New Licenses can also be added at any time by selecting the `Settings` sidebar option followed by and the `License` tab.
-{{< /note >}}
-
-1. Select the `Install License` button, followed by `Choose File` to upload your `license.xlm` file and tie your License Key to the FileCloud installation.
-
-    ![FileCloud License](filecloud-license.png)
+1. Click the **Choose File** button to upload your `license.xlm` file and register your license key with this FileCloud installation.
 
 {{< content "marketplace-update-note-shortguide">}}

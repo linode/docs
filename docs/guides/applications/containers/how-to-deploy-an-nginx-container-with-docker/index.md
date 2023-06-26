@@ -1,11 +1,5 @@
 ---
 slug: how-to-deploy-an-nginx-container-with-docker
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
 description: 'An introduction to deploying and using Docker containers on your Linode.'
 keywords: ["docker", "container", "dockerfile", "nginx container"]
 tags: ["container","docker","nginx"]
@@ -20,6 +14,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-deploy-an-nginx-container-with-docker/']
+authors: ["Jack Wallen"]
 ---
 
 ![How to Deploy Docker Containers](deploy-container.jpg)
@@ -53,7 +48,7 @@ This example will create an nginx container with port 80 exposed, using the offi
 
     ![DockerContainerImages](docker-container-images.png)
 
-2.  Update the original image with `docker pull nginx` as shown in the [How to Install Docker and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) guide. Run `docker images` again to confirm the update:
+2.  Update the original image with `docker pull nginx` as shown in the [How to Install Docker and Pull Images for Container Deployment](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide. Run `docker images` again to confirm the update:
 
     ![Docker Pull New nginx Image](docker-container-pull-new-image.png "Pull newest nginx image and confirm version number.")
 

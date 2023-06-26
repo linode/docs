@@ -1,10 +1,6 @@
 ---
 slug: install-subsonic-media-server-on-ubuntu-or-debian
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Subsonic is a free music streaming application. This guide shows how to install Subsonic media server on a Linode.'
-og_description: 'Subsonic is a free music streaming application. This guide shows how to install Subsonic media server on a Linode.'
 keywords: ["subsonic", "music", "audio", "streaming", "media server"]
 aliases: ['/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian/','/applications/media-servers/subsonic/']
 tags: ["debian", "ubuntu"]
@@ -13,12 +9,12 @@ modified: 2019-01-31
 modified_by:
   name: Linode
 published: 2015-02-02
-title: "How to Install Subsonic Media Server on Ubuntu or Debian"
-h1_title: "Installing Subsonic Media Server on Ubuntu or Debian to Stream Music"
-enable_h1: true
+title: "Installing Subsonic Media Server on Ubuntu or Debian to Stream Music"
+title_meta: "How to Install Subsonic Media Server on Ubuntu or Debian"
 external_resources:
   - '[Subsonic official site](http://www.subsonic.org)'
 dedicated_cpu_link: true
+authors: ["Alex Fornuto"]
 ---
 
 ![Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode](Install_Subsonic_Media_Server_on_Ubuntu_or_Debian_smg.png "Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode")
@@ -27,7 +23,7 @@ dedicated_cpu_link: true
 
 [Subsonic](http://subsonic.org) is an easy-to-use media streaming service with a user-friendly interface and the ability to share music and video with multiple users. It is highly customizable and includes features such as Chromecast support and file conversion.
 
-This guide shows how to set up Subsonic on a Linode running Debian or Ubuntu. If you have a large music library, consider attaching a [Block Storage Volume](/docs/platform/how-to-use-block-storage-with-your-linode/) to your Linode to store your music files.
+This guide shows how to set up Subsonic on a Linode running Debian or Ubuntu. If you have a large music library, consider attaching a [Block Storage Volume](/docs/products/storage/block-storage/) to your Linode to store your music files.
 
 ## Install Java
 
@@ -64,7 +60,7 @@ SUBSONIC_ARGS="--max-memory=150"
 SUBSONIC_USER=subsonic
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have a firewall set up, allow connections from the port Subsonic is listening on.
 {{< /note >}}
 
@@ -91,7 +87,7 @@ If you have a firewall set up, allow connections from the port Subsonic is liste
 
 5. Create a password for your admin account. You can also set up any other accounts at this time.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Passwords in the Subsonic database are stored in hex format, but not encrypted.
 {{< /note >}}
 
@@ -101,8 +97,8 @@ Passwords in the Subsonic database are stored in hex format, but not encrypted.
 
 &nbsp;
 
-[![The Subsonic Interface.](subsonic-setup_small.png)](subsonic-setup.png)
+![The Subsonic Interface.](subsonic-setup.png)
 
 ## Next Steps
 
-Subsonic can be [configured to use SSL](http://www.subsonic.org/pages/getting-started.jsp), or you can use an [NGINX reverse proxy](/docs/web-servers/nginx/use-nginx-reverse-proxy/).
+Subsonic can be [configured to use SSL](http://www.subsonic.org/pages/getting-started.jsp), or you can use an [NGINX reverse proxy](/docs/guides/use-nginx-reverse-proxy/).

@@ -1,22 +1,23 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "cPanel is a leading Linux-based web hosting control panel. Learn how to deploy it using Linode's Marketplace Apps."
 keywords: ['cpanel','whm','hosting','manager']
-tags: ["cpanel","linode platform","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["cpanel","linode platform","marketplace","cloud-manager","managed hosting"]
 published: 2020-03-13
-modified: 2022-03-08
+modified: 2022-05-31
 modified_by:
   name: Linode
-title: "Deploying cPanel through the Linode Marketplace"
+title: "Deploy cPanel through the Linode Marketplace"
 external_resources:
 - '[WHM Feature Documentation](https://documentation.cpanel.net/display/78Docs/WHM+Features+List)'
 aliases: ['/platform/marketplace/how-to-deploy-cpanel-with-marketplace-apps/', '/platform/one-click/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-one-click-apps/','/guides/how-to-deploy-cpanel-with-marketplace-apps/','/guides/cpanel-marketplace-app/']
+authors: ["Linode"]
 ---
 
-The [cPanel & WHM](https://cpanel.net/products/) Marketplace App streamlines publishing and managing a website on your Linode. cPanel & WHM is a Linux based web hosting control panel and platform that helps you create and manage websites, servers, databases, and more, with a suite of hosting automation and optimization tools.
+[cPanel](https://cpanel.net/products/) is a Linux-based server/website administration platform that streamlines publishing and managing websites. It is widely used by individual businesses, web development agencies, and hosting platforms. cPanel (and the included WHM interface) provides an easy and intuitive method for managing all aspects of website administration, including software installation, DNS, databases, email, and *much* more.
+
+{{< note >}}
+cPanel requires a valid license to use the software beyond the initial 15 day [free trial](https://cpanel.net/products/trial/) period. To purchase a license, visit [cPanel’s website](https://cpanel.net/pricing/) and select a plan that fits your needs. Licenses are not available directly through Linode.
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -24,55 +25,65 @@ The [cPanel & WHM](https://cpanel.net/products/) Marketplace App streamlines pub
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
-**Estimated deployment time:** cPanel should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< note >}}
+**Estimated deployment time:** cPanel/WHM should be fully installed within 15 minutes after the Compute Instance has finished provisioning.
+{{< /note >}}
 
 ## Configuration Options
 
-- **Supported distributions:** CentOS 7
-- **Recommended minimum plan:** 2GB Dedicated Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
+- **Supported distributions:** Ubuntu 20.04 LTS, AlmaLinux 8, Rocky Linux 8
+- **Recommended minimum plan:** 2GB Shared CPU Compute Instance or higher, depending on the number of sites and size of the sites you plan on hosting.
 
 ## Getting Started after Deployment
 
-### Access your cPanel Web Hosting Manager
+### Access WHM (Web Host Manager)
 
-1. Once your cPanel app has finished its installation, open a browser and navigate to `http://192.0.2.0:2087/`. Replace `192.0.2.0` with your [Linode's IP address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/).
+WHM is the core interface for managing your server and all websites (also called "accounts").
 
-    This will bring you to the Web Hosting Manager (WHM) login page. WHM is used to configure your cPanel instance, including [creating a new cPanel account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/). Enter `root` as the username and the root password you created when deploying your app. Click the **Log In** button.
+1. Open your web browser and navigate to `http://[ip-address]:2087/`, where *[ip-address]* can be replaced with your Compute Instance's IPv4 address or rDNS domain (such as `192-0-2-1.ip.linodeusercontent.com`). See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS.
 
-    ![Log into your Web Hosting Manager](log-into-whm.png)
+1. The WHM login page should appear. Enter `root` as the username and use the root password you created when deploying this instance. Then click the **Log In** button.
 
-1. You will be presented with cPanel and WHM's terms. Read through the terms and click on **Agree to All** if you agree and would like to continue.
+    ![Screenshot of the WHM login form](cpanel-whm-login.png)
 
-    ![Agree to cPanel and WHM's terms](agree-to-terms.png)
+1. You are then presented with cPanel and WHM's terms. Read through the terms and click on **Agree to All** if you agree and would like to continue.
 
-1. You will be prompted to enter in an email address to receive status and error notifications. Enter in your preferred email address.
+1. Next, enter in the email address where you would prefer to receive notifications and alerts.
 
-    You will also be prompted to provide nameserver's for your cPanel instance to use. By default, cPanel will fill in the values for you. Update the values with the nameservers you would like to use. If you are managing your own nameservers, enter them into the form or, if you will be using [Linode's DNS manager](/docs/guides/dns-manager/), enter in Linode's nameservers into the form. Click **Finish** to complete the initial login process.
+1. On the same page, you must also enter in the nameservers for this server. Nameservers are the underlying servers of the DNS system that map domain names to IP addresses. Managing DNS through cPanel allows you to quickly add sites, configure subdomains, set up email, and more without needing to manually update DNS records. For this step, make sure you have a registered domain name.
+
+    1. Within the nameservers for your domain name, create two [*A records*](/docs/guides/dns-overview/#a-and-aaaa). The *hostname* / *name* field should be *ns1* (for the first record) and *ns2* (for the second). The IP address should be the IPv4 address of your new Compute Instance. If you do not have a nameserver for your registered domain, consider using Linode's [DNS Manager](/docs/products/networking/dns-manager/).
+
+    1. Within the cPanel form, enter the following values into the nameserver fields. Replace *example.com* with the domain name you are using.
+
+        - `ns1.example.com`
+        - `ns2.example.com`
+
+        ![Screenshot of the Nameserver fields in cPanel](cpanel-setup-nameservers.png)
+
+    If you prefer to manually manage your DNS records, you can use Linode's DNS Manager or any other 3rd party service. When doing so, enter the primary two nameservers for your DNS provider. Linode's nameservers are `ns1.linode.com` and `ns2.linode.com`.
+
+1. Click **Next** to continue.
+
+1. The cPanel license screen appears. Click on the **Purchase** button to be taken to cPanel's license management system. From here, you can obtain a trial license (if eligible) or purchase a license.
 
     {{< note >}}
-Linode's nameservers are the following:
+    Provided the IP address hasn't already been registered in cPanel, your cPanel Marketplace App installation automatically receives a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
+    {{< /note >}}
 
-    ns1.linode.com.
-    ns2.linode.com.
-    ns3.linode.com.
-    ns4.linode.com.
-    ns5.linode.com.
+1. After obtaining a license, you are automatically logged in and taken to WHM.
 
-See our [How do I set up DNS on cPanel?](https://www.linode.com/community/questions/19216/how-do-i-set-up-dns-on-cpanel) community question and answer for details related to cPanel and Linode nameservers.
-    {{</ note >}}
+## Going Further
 
-    ![Provide an email address and your Linode nameservers.](email-and-nameservers.png)
+Now that you're able to access WHM, you can manage your server, install software, and create new cPanel accounts. Here are some guides to help you start using your new cPanel/WHM instance.
 
-1. You will be brought to your WHM's home page where you can continue to configure your cPanel instance, such as creating a new cPanel account.
+- [The WHM Interface](https://docs.cpanel.net/whm/the-whm-interface/the-whm-interface/): Learn how to navigate the WHM interface.
+- [Create a New Account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/): A cPanel account can be created for each *website* or each *client*. Once created, you can log in to cPanel directly, which is a streamlined interface for managing each web application, databases, and email accounts for a domain.
+- [The cPanel Interface (Jupiter theme)](https://docs.cpanel.net/cpanel/the-cpanel-interface/the-cpanel-interface-jupiter/): Learn the main functions of the cPanel interface, shown with the default Jupiter theme enabled.
 
-    {{< note >}}
-Your cPanel Marketplace App installation will automatically receive a free 15-day trial license. You must [purchase a new cPanel & WHM license](https://documentation.cpanel.net/display/CKB/How+to+Purchase+a+cPanel+License) before the end of this trial period. At the end of your trial period your license will expire.
-    {{</ note >}}
 
-    ![cPanel home page](cpanel-home-page.png)
-
-    Now that you've accessed your WHM homepage, read [cPanel and WHM's user documentation](https://docs.cpanel.net/) to learn how to further configure your cPanel instance, such as [creating a new cPanel account](https://docs.cpanel.net/whm/account-functions/create-a-new-account/).
+{{< note >}}
+***Sending* email:** Newly created Linode accounts have restrictions on ports `25`, `465`, and `587` applied to Compute Instances, which prevent instances from sending email. If you'd like to send email on a Compute Instance, [open a ticket](https://cloud.linode.com/support/tickets?type=closed&drawerOpen=true) with our Support team.
+{{< /note >}}
 
 {{< content "marketplace-update-note-shortguide">}}

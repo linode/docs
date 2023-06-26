@@ -1,9 +1,6 @@
 ---
 slug: power-team-collaboration-with-egroupware-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can build a collaborative groupware system to share information in your organization with the eGroupware software on Debian 5 "Lenny".'
 keywords: ["groupware", "email", "collaboration", "debian"]
 tags: ["debian", "email", "lamp"]
@@ -19,11 +16,12 @@ relations:
         key: collaborate-with-egroupware
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.
 
-Before installing eGroupware we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/web-servers/lamp/lamp-server-on-debian-5-lenny/) as a prerequisite for installing eGroupware. You may also want to use eGroupware to help manage email, and will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-debian-5-lenny/).
+Before installing eGroupware we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Additionally, you will need install a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) as a prerequisite for installing eGroupware. You may also want to use eGroupware to help manage email, and will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/guides/email-with-postfix-courier-and-mysql-on-debian-5-lenny/).
 
 ## Install eGroupware
 

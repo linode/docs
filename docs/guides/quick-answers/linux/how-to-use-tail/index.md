@@ -1,8 +1,5 @@
 ---
 slug: how-to-use-tail
-author:
-  name: Phil Zona
-  email: docs@linode.com
 description: 'View and follow the end of files with the tail command.'
 keywords: ["linux", "how to", "tail", "last lines", "file"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2017-04-10
 title: How to Use the Tail Command
 tags: ["linux"]
+authors: ["Phil Zona"]
 ---
 
 <div class="wistia_responsive_padding" style="padding:56.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/6ds1r8kveb?videoFoam=true" title="Linode - How to use the tail command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
@@ -44,4 +42,4 @@ In this guide, you'll learn how to use the `tail` command. Using `tail` is a sim
 
     This command would search the last ten lines of your access log and only display those that contain the IP address `198.51.100.1`. You can also apply options to `tail` in order to show more or less lines, view the filtered results in real time, and more.
 
-These are just the basics of how to use `tail`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the tail command](/docs/tools-reference/tools/view-and-follow-the-end-of-text-files-with-tail/).
+These are just the basics of how to use `tail`. It is an incredibly useful tool with many more options than we've listed here. To learn more advanced techniques, please check out our full guide on [the tail command](/docs/guides/view-and-follow-the-end-of-text-files-with-tail/).

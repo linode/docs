@@ -1,17 +1,9 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
 keywords: ['minecraft','marketplace', 'server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01
-modified: 2022-03-08
-modified_by:
-  name: Linode
-title: "Deploying a Minecraft Server through the Linode Marketplace"
-contributor:
-  name: Linode
+modified: 2022-04-01
+title: "Deploy a Minecraft Server through the Linode Marketplace"
 external_resources:
 - '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -19,7 +11,7 @@ aliases: ['/platform/marketplace/deploying-minecraft-with-marketplace-apps/', '/
 image: deploy-a-minecraft-server-with-oneclick-apps.png
 ---
 
-With over 100 million users around the world, [Minecraft](https://www.minecraft.net/en-us/) is the most popular online game of all time. You and other players are free to build and explore in a 3D generated world made up of millions of mineable blocks. Collect resources by leveling mountains, taming forests, and venturing out to sea. Choose a home from the varied list of biomes like ice worlds, flower plains, and jungles. Build ancient castles or modern mega cities, and fill them with redstone circuit contraptions and villagers. Fight off nightly invasions of Skeletons, Zombies, and explosive Creepers, or adventure to the End and the Nether to summon the fabled End Dragon and the chaotic Wither. If that is not enough, Minecraft is also highly moddable and customizable. You decide the rules when hosting your own Minecraft server for you and your friends to play together in this highly addictive game.
+With over 100 million users around the world, [Minecraft](https://www.minecraft.net/en-us/) is the most popular online game of all time. You and other players are free to build and explore in a 3D generated world made up of millions of mineable blocks. Collect resources by leveling mountains, taming forests, and venturing out to sea. Choose a home from the varied list of biomes like ice worlds, flower plains, and jungles. Build ancient castles or modern mega cities and fill them with redstone circuit contraptions and villagers. Fight off nightly invasions of Skeletons, Zombies, and explosive Creepers, or adventure to the End and the Nether to summon the fabled End Dragon and the chaotic Wither. If that is not enough, Minecraft is also highly moddable and customizable. You decide the rules when hosting your own Minecraft server for you and your friends to play together in this highly addictive game.
 
 ## Deploying a Marketplace App
 
@@ -27,9 +19,9 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Minecraft should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -73,35 +65,35 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **Snooper Enabled:** Determines if the server sends stats to [https://snoop.minecraft.net](https://snoop.minecraft.net). *Advanced Configuration*.
 - **Use Native Transport Enabled:** Improve server performance by optimizing sent and received packets. *Advanced Configuration*.
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
-- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/guides/using-the-lish-console/).
+- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
-Ensure that you have [installed Minecraft](https://www.minecraft.net/en-us/get-minecraft) on your personal computer and created a Minecraft user account before getting started with this section.
+### Join Your New Minecraft Server
 
-After Minecraft has finished installing on your Linode, you are able to access your Minecraft server by copying your Linode's IPv4 address and entering it in the Multiplayer menu on your personal computer's Minecraft installation. To find your Linode's IPv4 address:
+1. Open the Minecraft Launcher on your local machine and launch **Minecraft: Java Edition**. If you do not yet have Minecraft, you must obtain a license and install it. See [Minecraft Java Edition](https://www.minecraft.net/en-us/store/minecraft-java-edition) store page for details on purchasing it.
 
-1. Click on the **Linodes** link in the sidebar. You see a list of all your Linodes.
+1. Once Minecraft is running, select the **Multiplayer** option.
 
-1. Find the Linode you just created when deploying your app and select it.
+    ![Screenshot of Minecraft multiplayer game mode](minecraft-multiplayer.png)
 
-1. Navigate to the **Networking** tab.
+1. Within the Mulitiplayer options, select **Add Server**.
 
-1. Under the **IPv4** heading, your IPv4 address are listed under the **Address** column. Copy your IPv4 address.
+    ![Screenshot of Multiplayer game options](minecraft-add-server.png)
 
-1. Open Minecraft on your computer and click on **Multiplayer**, then click **Add Server**.
+1. Create a name for your server and enter the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Click **Done** to add the server.
 
-1. Enter a name for your server in the **Server Name** box. This name is displayed on the *Play Multiplayer* server selection screen.
+    ![Screenshot of Add Server options](minecraft-server-ip.png)
 
-1. Paste your IP address in the **Server Address** field and click **Done**:
+1. Once the server is added and ready to be joined, the status indicators of the server become green and the player count is visible. To join the server, select it and press **Join Server**
 
-    ![Paste your IP address in the Server Address field.](minecraft-marketplace-edit-server-info.png)
+    ![Screenshot of the new Minecraft server](minecraft-server-play.png)
 
-1. Once your server is ready to play on, the status indicator shows a series of green bars.
-
-    ![A Minecraft server that is ready to accept connections](minecraft-marketplace-server-selection-screen.png)
-
-    If there is a red *X* over the status bars, or it says *old*, then your Linode has not finished installing Minecraft. Wait a few minutes, then hit **Refresh**.
+    {{< note >}}
+    If there is a red *X* over the status bars or if the word *old* appears, then your Compute Instance might not have finished installing Minecraft. Please double check your IPv4 address, wait a few minutes,and then hit **Refresh**.
+    {{< /note >}}
 
 ## Customization After Installation
 
@@ -114,16 +106,5 @@ After installation you can change your Minecraft options by customizing the syst
 - **Customize the Minecraft World Options**
 
     The files to configure the world options are also located in your home directory: `~/serverfiles`. Here you find `server.properties`, `banned-ips.json`, and more. The name of the world you created during installation has a folder here as well. Inside this folder are other configuration files for that specific world.
-
-## Software Included
-
-The Minecraft Marketplace App installs the following software on your Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**Minecraft 1.17**](https://www.minecraft.net/en-us/) | Game server. |
-| [**LinuxGSM**](https://linuxgsm.com) | A command line tool for the deployment and management of Linux game servers. |
-| [**UFW**](https://wiki.ubuntu.com/UncomplicatedFirewall) | Firewall utility. Port 25575 allows outgoing and incoming traffic. |
-| [**Fail2ban**](https://www.fail2ban.org/wiki/index.php/Main_Page) | Fail2Ban is an intrusion prevention software framework that protects computer servers from brute-force attacks. |
 
 {{< content "marketplace-update-note-shortguide">}}

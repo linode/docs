@@ -1,0 +1,9 @@
+[params]
+    # GTM container used in development and on Netlify.
+    gtmID = "GTM-TS67W4L"
+
+    # Adobe Analytics script used in development and on Netlify.
+    adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-006d022c8726-development.min.js"
+
+    # Trustarc domain used in development and on Netlify.
+    trustarc_domain = "linode-test.com"

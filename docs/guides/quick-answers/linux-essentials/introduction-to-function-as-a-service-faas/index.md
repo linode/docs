@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-function-as-a-service-faas
-author:
-  name: Tom Henderson
-  email: thenderson@extremelabs.com
 description: "FaaS gets a lot of attention as a way to save money. But what is it, exactly? And how does it work? Read this guide to learn more."
 keywords: ['function as a service']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,17 +8,16 @@ image: IntroFunctionAsAService.png
 modified_by:
   name: Linode
 title: "An Introduction to FaaS (Function as a Service)"
-contributor:
-  name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 Developers are used to breaking business logic into standalone functions that an application can call when necessary. Functions as a Service (FaaS) takes advantage of cloud architectures, spinning up functions (and their system resources) only when needed. Using FaaS has several advantages, not the least of which is affordability, but it can also create more complexity.
 
-Cloud computing's strength comes from an architecture based on composable resources. The cloud infrastructure is built from a programmatic orchestration of many sources and destinations, connected through IP addresses and [DNS](https://www.linode.com/docs/guides/networking/dns/). The architecture's puzzle pieces, sometimes called a *composable disaggregated infrastructure*, include events as well as the network, storage, compute, and communications and authentication fabrics.
+Cloud computing's strength comes from an architecture based on composable resources. The cloud infrastructure is built from a programmatic orchestration of many sources and destinations, connected through IP addresses and [DNS](/docs/guides/networking/dns/). The architecture's puzzle pieces, sometimes called a *composable disaggregated infrastructure*, include events as well as the network, storage, compute, and communications and authentication fabrics.
 
 Composable architectures use resources sparingly, by design. FaaS gets attention as a cost saver, but it's the overall model that is appealing. FaaS is highlighted by scalability, affordability, and its ability to be maintained as a sum of integrated parts, as contrasted to the top-down maintenance of monolithic architectures.
 
-FaaS are functional ad-hoc processing elements as a composable component building block, and are part of a model called [serverless computing](https://www.linode.com/docs/guides/what-is-serverless-computing/). Rather than bearing the costs of having instances ready to handle processing 24/7, FaaS are built once, then used only when needed, as triggered by an event. A FaaS is dormant and stateless, consuming no resources (such as CPU or disk storage). Because they don't exist (until called for), these functions are not-billed-for until they're used, and billed only until their process terminates. This saves money, and allows applications to be rapidly composed, executed, and become dormant (and not billed).
+FaaS are functional ad-hoc processing elements as a composable component building block, and are part of a model called [serverless computing](/docs/guides/what-is-serverless-computing/). Rather than bearing the costs of having instances ready to handle processing 24/7, FaaS are built once, then used only when needed, as triggered by an event. A FaaS is dormant and stateless, consuming no resources (such as CPU or disk storage). Because they don't exist (until called for), these functions are not-billed-for until they're used, and billed only until their process terminates. This saves money, and allows applications to be rapidly composed, executed, and become dormant (and not billed).
 
 FaaS are constantly available, called when needed, and are then terminated/destroyed. Whether publicly available, or functions you've uploaded, FaaS don't exist until your framework calls them. Ultimately, FaaS are an ephemeral tool in the serverless architecture.
 

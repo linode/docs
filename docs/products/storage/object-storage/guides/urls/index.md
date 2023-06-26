@@ -1,19 +1,15 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: ""
+description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
 keywords: ['object','storage','bucket']
 published: 2020-01-22
-modified: 20202-02-011
+modified: 2022-02-24
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
+authors: ["Linode"]
 ---
 
 Linode's Object Storage service gives each bucket and file a unique URL. This URL is managed through the shared domain *\*.linodeobjects.com* and your files are encrypted through the use of HTTPS. By default, files are only visible by you (the owner) through the Cloud Manager or through other tools and applications using an access key with permissions to read (or read/write) the bucket.
@@ -29,7 +25,7 @@ Here are the types of URLs you can use to access buckets and files:
 - [Website URL](#website-urls)
 - [Custom URL](#custom-urls)
 
-## Cluster URL (S3 endpoint)
+## Cluster URL (S3 Endpoint)
 
 The cluster URL for Object Storage is unique to each data center. This URL can be used for accessing all of your Object Storage resources within a certain region. When used with third party tools, this URL might also be referred to as the *S3 endpoint*.
 
@@ -46,7 +42,7 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 
 Each bucket has its own unique URL. This URL is useful when configuring a third party application to use a specific bucket for file storage.
 
-**Bucket URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/`, replacing *[bucket-label]* with the label of your bucket and *[cluster-id]* with the id of your data center (listed in the [Cluster URL](#cluster-url-s3-endpoint) section.
+**Bucket URL:** `https://[bucket-label].[cluster-id].linodeobjects.com/`, replacing *[bucket-label]* with the label of your bucket and *[cluster-id]* with the id of your data center (listed in the [Cluster URL](#cluster-url-s3-endpoint) section).
 
 For example, a bucket labeled *example-bucket* within the Atlanta data center would have the following URL:
 
@@ -96,7 +92,7 @@ You can build this URL manually or you can view the file URL through the Cloud M
 
 ## Signed URLs
 
-A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
+A **signed URL** gives anyone with the URL access to a file for a certain period of time. This is very useful when you want to share a document or file with someone, but don't wish to make the URL permanently accessible or able to be guessed by others. You can generate a signed URL through the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/#create-a-signed-url-with-the-cli) or [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/#create-a-signed-url-with-s3cmd).
 
 Here's an example of a signed URL:
 
@@ -112,7 +108,7 @@ For example, if you have configured a website on a bucket labeled *example-bucke
 
     https://example-bucket.website-us-southeast-1.linodeobjects.com
 
-For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/) guide.
+For more information on hosting a static website with Object Storage, read our [Host a Static Site using Linode Object Storage](/docs/guides/host-static-site-object-storage/) guide.
 
 ## Custom URLs
 
