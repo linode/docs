@@ -112,7 +112,7 @@ If you deployed your Kubernetes cluster following the [How to Install Drupal wit
 Your CronJob file incorporates the `mysqldump` command that you tested in the previous section. It is not recommended to store your database's password in your Kubernetes manifest file. Your MySQL Pod should already have the MySQL database's password stored in its context, so you can alter your `mysqldump` command in the following way:
 
 ```command
-mysqldump drupal-db -p$MYSQL_ROOT_PASSWORD > dump.sql
+mysqldump --host drupal-mysql -p$MYSQL_ROOT_PASSWORD > dump.sql
 ```
 
 {{< note >}}
@@ -139,7 +139,7 @@ spec:
             command:
             - /bin/sh
             - -c
-            - mysqldump drupal-db -p$MYSQL_ROOT_PASSWORD > dump.sql;
+            - mysqldump --host drupal-mysql -p$MYSQL_ROOT_PASSWORD > dump.sql;
             - date; echo Drupal database has been backed up
           restartPolicy: OnFailure
 ```
