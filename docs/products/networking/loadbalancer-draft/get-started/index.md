@@ -11,9 +11,9 @@ published: 2023-05-01
 authors: ["Linode"]
 ---
 
-Enterprise Global Load Balancer offers intelligent, scalable distributed compute traffic management across physical, virtual, and cloud-hosted origins with simplicity and affordability. It can automatically detect load conditions and route traffic to the optimal data source while maintaining consistent visitor session behavior.
+**Akamai Global Load Balancer**  offers global, configurable, scalable, distributed compute traffic management across physical, virtual, and cloud-hosted applications. It can automatically detect load conditions and route traffic to the optimal target while maintaining custom routing policies and consistent visitor session behavior.
 
-## About Enterprise Global Load Balancer
+## About Akamai Global Load Balancer
 
 Nearly every production application can benefit from a load balancing solution like Akamai's Enterprise Global Load Balancer. This guide covers how to get started with Load Balancers, including how to configure the Load Balancer, and update the DNS.
 
@@ -21,9 +21,11 @@ Nearly every production application can benefit from a load balancing solution l
 
 To start using and benefiting from load balancing, your application should be stored on at least two Compute Instances. Each instance of your application should be able to fully serve the needs of your users, including being able to respond to web requests, access all necessary files, and query any databases.
 
-## Create the Enterprise Global Load Balancer
+To redirect all web connections over port 443/HTTPS generate an SSL certificate for your domain name that supports TLS version 1.2 or later.
 
-Once your application has been deployed on multiple Compute Instances, you are ready to create the Enterprise Global Load Balancer. General instructions have been provided below. For detailed instructions, see the [Create a Enterprise Global Load Balancer](/docs/products/networking/loadbalancer-draft/guides/create/) guide.
+## Create the Akamai Global Load Balancer
+
+Once your application has been deployed on multiple Compute Instances, you are ready to create the Akamai Global Load Balancer. General instructions have been provided below. For detailed instructions, see the [Create a Akamai Global Load Balancer](/docs/products/networking/loadbalancer-draft/guides/create/) guide.
 
 To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](/docs/products/platform/get-started/)
 
@@ -35,11 +37,9 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
 
 1. Select the **Regions** where this load balancer processes requests. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage.
 
-1. Within the **Entry Points** Configuration area, select the protocol and enter the port number used to listen to incoming requests. Each Entry Point includes a list of **Routes**. Routes are a set of rules that the load balancer uses to select the target for the incoming request.
+1. Within the **Entry Point Configuration** area, select the protocol and enter the port number used to listen to incoming requests.
 
-    The following recommended parameters can be used for deploying a website. For other applications or to learn more about these settings, see the [Configuration Options](/docs/products/networking/loadbalancer-draft/guides/configure/) guide.
-
-    - **Protocol:** The protocol can be set to either TCP, HTTP, or HTTPS. The *TCP* protocol supports HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the Global Load Balancer, use *HTTP* for port 80 and *HTTPS* for port 443.
+    - **Protocol:** The protocol can be set to either TCP, HTTP, or HTTPS. The *TCP* protocol supports HTTP/1.1 and HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the Global Load Balancer, use *HTTP* for port 80 and *HTTPS* for port 443.
 
         - **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. This should be selected when you want to enable layer 4 load balancing, use TLS/SSL pass-through, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the Global Load Balancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
 
@@ -49,12 +49,17 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
         
             When using the **HTTPS** protocol setting, all traffic is decrypted on the Global Load Balancer. Traffic between the Global Load Balancer and the backend nodes is sent over the private data center network, is not encrypted, and uses the HTTP protocol.
 
-    - **Port:** This is the *inbound* port that the Global Load Balancer is listening on. This can be any port from 1 through 65534, though it should be set to whichever port the client software will connect to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
+    - **Port:** This is the *inbound* port that the Global Load Balancer is listening on. This can be any port from 1 through 65534, though it should be set to whichever port the client software connects to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
 
 
-1.  **Authorization**
+1. Click **Authorization**, to install an SSL certificate on your Global Load Balancer to redirect all web connections over port 443/HTTPS using SSL.
 
-1. 
+    - **SSL Certificate:** Paste the PEM-formatted contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases.
+
+    - **Private Key:** Paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
+
+1. Add the **Entry Point Label**. Each Entry Point includes a list of **Routes**. Routes are the set of rules that the load balancer uses to select the target for the incoming request.
+
   - **Algorithm:** Controls how new connections are allocated across backend targets. The *Performance* method selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. The *Weighted* method routes requests to backend targets according to the proportion (%) configured. See [Configuration Options > Algorithm](/docs/products/networking/loadbalancer-drafts/guides/configure/#algorithm).
 
     - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend target. For testing, consider keeping Session Stickiness off. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
@@ -65,13 +70,15 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
 
         For most web applications that have the *inbound* ports 80 and 443 configured using the *TCP* protocol, you can set the backend nodes to use the same ports. If you are using the *HTTPS* protocol, TLS termination happens on the NodeBalancer and your Compute Instances should only need to listen on port 80 (unencrypted). If that's the case, backend nodes for both *inbound* ports can be configured to use port 80.
 
-1. Review the summary and click the **Create NodeBalancer** button to provision your new NodeBalancer.
+1. Review the summary and click the **Create Global Load Balancer** button to provision your new load balancer.
 {{< /tab >}}
 {{< tab "APIv4" >}}
 1. API Procedure
+1. ...
+1. ...
 {{< /tab >}}
 {{< /tabs >}}
 
 ## Update the DNS
 
-After deploying your NodeBalancer and putting your application behind the NodeBalancer, the application can now be accessed using the NodeBalancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the NodeBalancer's IPv4 address and the *AAAA* record (if you're using one) should use the NodeBalancer's IPv6 address. See [Manage NodeBalancers](/docs/products/networking/nodebalancers/guides/manage/#review-and-edit-a-nodebalancer) to view your NodeBalancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.
+After deploying your load balancer and putting your application behind the load balancer, the application can now be accessed using the load balancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the load balancer's IPv4 address and the *AAAA* record (if you're using one) should use the load balancer's IPv6 address. See [Manage Load Balancers](/docs/products/networking/loadbalancer/guides/manage/#review-and-edit-a-nodebalancer) to view your load balancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.

@@ -8,12 +8,12 @@ tab_group_main:
     weight: 10
 cascade:
     date: 2020-06-02
-    product_description: "Performant, reliable, and scalable Layer 7 load balancer to make smarter, performance, content-based, and custom decisions to manage and accelerate traffic between clients and their distributed applications."
+    product_description: "Scalable and configurable layer 4 and 7 load balancer to manage and accelerate traffic globally between clients and their distributed applications."
 modified: 2023-07-31
 aliases: ['/platform/loadbalancer/','/loadbalancers/','/guides/platform/loadbalancer/']
 ---
 
-**Akamai Global Load Balancer**  offers intelligent, scalable distributed compute traffic management across physical, virtual, and cloud-hosted applications with simplicity and affordability. It can automatically detect load conditions and route traffic to the optimal target while maintaining custom routing policies and consistent visitor session behavior.
+**Akamai Global Load Balancer**  offers global, configurable, scalable, distributed compute traffic management across physical, virtual, and cloud-hosted applications. It can automatically detect load conditions and route traffic to the optimal target while maintaining custom routing policies and consistent visitor session behavior.
 
 ## Akamai Global Load Balancer Workflow
 
@@ -38,11 +38,10 @@ This OSI layer 7 and layer 4 load balancer manages your distributed application 
 - **Layer 4:** load balancing forwards network packets to and from the upstream server without inspecting the content of the packets.
 
 ## Integration With Akamai Products
-The Akamai Global Load Balancer can be used with or without an Akamai delivery property.
-Akamai cloud compute offers seamless integration with Akamai’s suite of security, and compute products to ensure your traffic is secured and optimized for your business needs. Benefits include edge caching with a click-button configuration and seamless integration with Akamai Delivery in the backend.
+The Akamai Global Load Balancer can be used with or without an Akamai delivery property. Akamai cloud compute offers seamless integration with Akamai’s suite of security, and compute products.
 
 ## Operationally simple
-You can create and enable the Akamai Global Load Balancer using Cloud Manager or APIs.  Once Akamai Global Load Balancer is configured, you can start balancing traffic across multiple regions within seconds. Akamai Global Load Balancer requires no infrastructure management and is designed to be maintenance free after initial configuration.
+You can create and enable the Akamai Global Load Balancer using Cloud Manager or APIs. Once Akamai Global Load Balancer is configured, you can start balancing traffic across multiple regions or globally within seconds. Akamai Global Load Balancer requires no infrastructure management and is designed to be maintenance free after initial configuration.
 
 ## Load Balancing Methods
 You can select to route your clients traffic to one of your backends using one or a combination of the following load balancing methods; performance, weighted and content-based.
@@ -66,9 +65,9 @@ You can select to route your clients traffic to one of your backends using one o
 
 **High Availabiltiy:** Akamai Global Load Balancer has built-in failover and customizable failover preferences.
 
-**Performance:** Based on load and distance, Akamai Cloud identifies and selects the fastest routing for best performance. The  Layer 7 Akamai Global Load Balancer offloads connections closer to the end user so that round-trip time and time to first byte is improved when compared to not using the load balancer.
+**Performance:** Based on load and distance, Akamai Cloud identifies and selects the fastest routing for best performance. The Layer 7 Akamai Global Load Balancer offloads connections closer to the end user so that round-trip time and time to first byte is improved when compared to not using the load balancer.
 
-**Scalability:** Load balancers scale applications and add flexibility by allowing you to add or remove machines that are identically configured to serve your application or perform a task. The load balancer will route your traffic to one of the identically configured machines based on the settings that you have configured. Each Layer 7 Akamai Global Load Balancer route up to 1,000,000 concurrent connections
+**Scalability:** Load balancers scale applications and add flexibility by allowing you to add or remove machines that are identically configured to serve your application or perform a task. The load balancer routes your traffic to one of the identically configured machines based on the settings that you have configured. Each Layer 7 Akamai Global Load Balancer route up to 1,000,000 concurrent connections
 
 ## Health Checks
 Traffic is only routed to healthy backends. Passive health checks happen on every request. You can configure active health checks based on your application or service. If the target becomes unfit, the load balancer moves traffic away from the unhealthy target. When a new target is added, Akamai Global Load Balancer tests the fitness of the target to verify the target is active, and ready to support large traffic spikes.
@@ -106,7 +105,19 @@ Akamai Global Load Balancers are available across [all regions](https://www.lino
 
 ## Pricing
 
-Each Akamai Global Load Balancer on an account costs $??/mo ($??/hr).
+**Beta Pricing:** Beta is offered free of charge.
+
+**Pricing:** Billing for Global Load Balancer starts once it is created. Akamai Global Load Balancer pricing is a combination region coverage and usage.
+
+**Region Pricing**
+
+| Regions         | # of Connections| Price/Month   |
+| ----------------| ----------------|---------------|
+| 1-3 regions     | 25 000          |    $50 tbd    |
+| 4-10 regions    | 100 000         |    $25 tbd    |
+| 4-10 regions    | 1 000 000       |    $200 tbd   |
+
+**Usage:** A fee of $0.05/hour-tbd  is charged for every hour that the load balancer is active and has targets. Heath checks are included in this pricing.
 
 ## Technical Specifications
 
@@ -132,6 +143,6 @@ Each Akamai Global Load Balancer on an account costs $??/mo ($??/hr).
 - **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Linode on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
 - **TLS termination:** When using a NodeBalancer with an application that requires HTTPS, you can either terminate the TLS connection on the NodeBalancer (**HTTPS** mode) or on the backend Linodes (**TCP** mode). When terminating TLS connections directly on the NodeBalancer, there are a few key considerations:
     - **TLS protocols:** TLS v1.2 and v1.3 are supported in **HTTPS** mode.
-    - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes will be unencrypted.
+    - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes is unencrypted.
 
     For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Linodes.
