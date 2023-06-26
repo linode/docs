@@ -10,13 +10,12 @@
 {{ if or (not $js) (not $styles) }}
   {{ errorf "linode-website-partials: asset(s) not found" }}
 {{ end }}
-{{ if  (not site.IsServer) }}
+{{ if  (ne hugo.Environment "development") }}
   {{ $styles = $styles | minify | fingerprint }}
 {{ end }}
 <link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
 {{ partial "helpers/script-src.html" $js }}
-{{/* TrustArc for cookie consents. Also see the partial sections/before-body-end.html */}}
-<script
+{{/* TrustArc for cookie consents. Also see the partial sections/before-body-end.html */}}<script
   async
   crossorigin
   src="https://consent.trustarc.com/notice?domain={{ site.Params.trustarc_domain }}&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1"></script>

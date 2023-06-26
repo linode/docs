@@ -19,7 +19,7 @@ relations:
         key: install-apache-server
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/']
+aliases: ['/web-servers/apache/how-to-install-apache-web-server-ubuntu-18-04/','/web-servers/apache/installation/ubuntu-10.10-maverick/','/web-servers/apache/installation/ubuntu-12.04-precise-pangolin/']
 authors: ["Linode"]
 ---
 

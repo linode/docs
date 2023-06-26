@@ -114,7 +114,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Superinsight](/docs/products/tools/marketplace/guides/superinsight/)
 - [Team Fortress 2](/docs/products/tools/marketplace/guides/team-fortress-2/)
 - [Terraria](/docs/products/tools/marketplace/guides/terraria/)
-- [UniFi Network Application](/docs/products/tools/marketplace/guides/unifi-network-application)
 - [Uptime Kuma](/docs/products/tools/marketplace/guides/uptime-kuma/)
 - [UTunnel VPN](/docs/products/tools/marketplace/guides/utunnel/)
 - [Valheim](/docs/products/tools/marketplace/guides/valheim/)
