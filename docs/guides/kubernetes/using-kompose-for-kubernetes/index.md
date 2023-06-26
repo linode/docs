@@ -13,7 +13,7 @@ external_resources:
 - '[Kubernetes: Translate a Docker Compose File to Kubernetes Resources](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)'
 ---
 
-Kompose is a tool to make it easier to move from Docker Compose files to Kubernetes resource deployments. Do you usual development with Docker Compose, and, when you are ready, run Kompose to convert your work to a set of Kubernetes manifests.
+Kompose is a tool that makes it easier to convert Docker Compose files into Kubernetes resource deployments. You do the usual development with Docker Compose, then simply run Kompose to convert your work to a set of Kubernetes manifests.
 
 In this tutorial, learn more about Kompose, how to install it, and how to use it to build resources for your Kubernetes cluster.
 
@@ -23,7 +23,7 @@ In this tutorial, learn more about Kompose, how to install it, and how to use it
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Have an active Kubernetes cluster configured with kubectl or a similar tool. You can follow our [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) guide to deploy an LKE cluster from the Linode Cloud Manager. The guide also includes steps for installing and configuring kubectl to manage the cluster.
+1.  Have an active Kubernetes cluster configured with `kubectl` or a similar tool. You can follow our [Linode Kubernetes Engine - Getting Started](/docs/products/compute/kubernetes/get-started/) guide to deploy an LKE cluster from the Linode Cloud Manager. The guide also includes steps for installing and configuring `kubectl` to manage the cluster.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -31,63 +31,63 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## What Is Kompose?
 
-[Kompose](https://kompose.io/) converts Docker Compose files to Kubernetes resources. Its goal is to provide an easier and more accessible route for users familiar with Docker Compose to start working with Kubernetes resources.
+[Kompose](https://kompose.io/) converts Docker Compose files to Kubernetes resources. It provides an easier and more accessible route for users familiar with Docker Compose to start working with Kubernetes resources.
 
-Kompose works by reading a `docker-compose.yaml` file. Doing so, Kompose is able to parse out each part of the Compose deployment and create a corresponding Kubernetes YAML file.
-
-Once Kompose finishes, you have a set of Kubernetes resource definitions that you can deploy to your Kubernetes cluster using kubectl or a similar tool.
+Kompose works by reading a `docker-compose.yaml` file. It's able to parse out each part of the Compose deployment and create a corresponding Kubernetes YAML file. It outputs a set of Kubernetes resource definitions that are deployable to a Kubernetes cluster using `kubectl` or a similar tool.
 
 ## How to Install Kompose
 
-Kompose has a straightforward installation process. In only a few steps, as shown here, you can have it ready on your system. Then continue on to the next section of the tutorial with an example using your new Kompose installation to convert a Docker Compose file.
+Kompose has a straightforward installation process consisting of only a few steps, shown below. The next section of the tutorial uses the new Kompose installation to convert a sample Docker Compose file.
 
-1.  Download the Kompose binary. Replace the version (`v1.28.0`) in the command below with the latest version you find on the [Kompose releases page](https://github.com/kubernetes/kompose/releases) on GitHub.
+1.  Download the Kompose binary. Replace the version (`v1.28.0`) in the command below with the latest version on the [Kompose releases page](https://github.com/kubernetes/kompose/releases) on GitHub.
 
     ```command
     curl -L https://github.com/kubernetes/kompose/releases/download/v1.28.0/kompose-linux-amd64 -o kompose
     ```
 
-1.  Move the Kompose binary to a location on your shell path. Though optional, this step makes the Kompose binary significantly more convenient to access.
+1.  Move the Kompose binary to a location on your shell path. Although optional, this step makes the Kompose binary significantly more convenient to access.
 
     ```command
     sudo chmod +x kompose
     sudo mv kompose /usr/local/bin/
     ```
 
-1.  Verify that the Kompose binary runs as expected. A simple way to do that is running Kompose with the `version` command to check the binary's version.
+1.  Verify that Kompose is installed and functioning:
 
     ``` command
     kompose version
     ```
 
     ```output
-    1.26.0 (40646f47)
+    1.28.0 (c4137012e)
     ```
 
 ## How to Convert Docker Compose to Kubernetes with Kompose
 
-With Kompose installed, you can start converting your Docker Compose setups for Kubernetes deployments.
+With Kompose installed, you can start converting Docker Compose setups for Kubernetes deployments.
 
-To get you started, the rest of this tutorial walks you through a full example. It includes a simple Docker Compose file for running WordPress with a MariaDB backend. Using Kompose, the example then shows how to convert that Docker Compose file into Kubernetes resource manifests. The last step uses kubectl to deploy those resources to your Kubernetes cluster.
+The rest of this tutorial walks through a full example. It includes a simple Docker Compose file for running WordPress with a MariaDB backend. The example then shows how to convert that Docker Compose file into Kubernetes resource manifests using Kompose. The last step uses `kubectl` to deploy those resources to a Kubernetes cluster.
 
 ### Creating a Docker Compose YAML
 
-Demonstrating Kompose requires an example Docker Compose setup. The best demonstration should use a Docker Compose that defines multiple interconnected containers, but one that also avoids being too complicated.
+Demonstrating Kompose requires an example Docker Compose setup. The best demonstration should use a Docker Compose that defines multiple interconnected containers, but one that also avoids being too complicated. WordPress provides a convenient example. It requires deployment of the WordPress image alongside a supported database, thus interconnection without too much configuration.
 
-WordPress provides a convenient example. It requires deployment of the WordPress image alongside a supported database, so interconnection without too much configuration.
+Below is a Docker Compose file for a basic WordPress instance backed by MariaDB. The model follows Docker's [official example](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/wordpress), which you can reference to learn more.
 
-Below you can find a Docker Compose file for a basic WordPress instance backed by MariaDB. The model follows Docker's [official example](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/wordpress), which you can also reference to learn more.
-
-1.  Make and change into a project directory for the Docker Compose file. The directory later houses the Kubernetes manifests as well.
+1.  Create and change into a project directory for the Docker Compose file. This directory later houses the Kubernetes manifests as well.
 
     ```command
     mkdir ~/wp-manifests/
     cd ~/wp-manifests/
     ```
 
-1.  Create a `docker-compose.yaml` file within that directory. Give the file the contents shown here.
+1.  Create a `docker-compose.yaml` file within that directory:
 
-    The file defines services for WordPress and its MariaDB database, as well as volumes for persisting the data needed by each service.
+    ```command
+    nano docker-compose.yaml
+    ```
+
+1.  This file defines services for WordPress and its MariaDB database, as well as volumes for persisting the data needed by each service. Give it the contents shown here:
 
     ```file {title="docker-compose.yaml" lang="yaml"}
     version: '3'
@@ -126,11 +126,13 @@ Below you can find a Docker Compose file for a basic WordPress instance backed b
       wp_data:
     ```
 
+1.  When done, press <kbd>CTRL</kbd>+<kbd>X</kbd>, followed by <kbd>Y</kbd> then <kbd>Enter</kbd> to save the file and exit `nano`.
+
 ### Converting from Docker Compose to Kubernetes
 
-Kompose needs only now to be run with the `convert` command within the project directory. Kompose automatically finds and reads the `docker-compose.yaml` file within the current directory, and from there it creates the necessary Kubernetes resources.
+Kompose can now be run with the `convert` command within the project directory. Kompose automatically finds and reads the `docker-compose.yaml` file within the current directory to create the necessary Kubernetes resources.
 
-1.  Run the Kompose conversion process. For Kompose to automatically detect the `docker-compose.yaml` file, you need to still be in the project directory.
+1.  Make sure you're still in the directory containing the `docker-compose.yaml` file, then run the Kompose conversion process:
 
     ```command
     kompose convert
@@ -145,13 +147,15 @@ Kompose needs only now to be run with the `convert` command within the project d
     INFO Kubernetes file "wp-data-persistentvolumeclaim.yaml" created
     ```
 
-    Alternatively, you can specify the `docker-compose.yaml` file using the `-f` option with the command.
+    {{< note >}}
+    Alternatively, you can specify the location of the `docker-compose.yaml` file using the `-f` option with the command.
 
     ```command
-    kompose convert -f docker-compose.yaml
+    kompose convert -f /example/directory/tree/docker-compose.yaml
     ```
+    {{< /note >}}
 
-1.  Further verify the Kubernetes manifests files output by the Kompose conversion process. The `-1` option lists the files vertically for easier reading.
+1.  Verify the Kubernetes manifests files output by the Kompose conversion process. The `-1` option lists the files vertically for easier reading.
 
     ```command
     ls -1
@@ -169,21 +173,21 @@ Kompose needs only now to be run with the `convert` command within the project d
 
 ### Deploying the Kubernetes Resource
 
-You now have a set of Kubernetes manifests, ready to deploy to your cluster. Below covers a set of steps using kubectl to do that.
+You now have a set of Kubernetes manifests ready to deploy to a cluster. The steps below cover using `kubectl` to do that.
 
-1.  (Optional) Create a namespace for the WordPress deployment. Doing this makes it easier to review and manage the deployment later. If you choose not to complete this step, remove the `--namespace wordpress` option from the commands in the subsequent steps.
+1.  Create a namespace for the WordPress deployment. While this is entirely optional, it makes it easier to review and manage the deployment later. If you choose not to complete this step, remove the `--namespace wordpress` option from the commands in the subsequent steps.
 
     ```command
     kubectl create namespace wordpress
     ```
 
-1. Move the `docker-compose.yaml` file out of the directory. The simplest way to deploy all of the manifests is by having kubectl deploy everything in the directory, and the `docker-compose.yaml` file might interfere with that.
+1. Move the `docker-compose.yaml` file out of the directory. The simplest way to deploy all of the manifests is by having `kubectl` deploy everything in the directory, and the `docker-compose.yaml` file might interfere with that.
 
     ```command
     mv docker-compose.yaml ../
     ```
 
-1.  Deploy the resources to the Kubernetes cluster. For the `-f` option, you could provide a comma-separated list of the resource files output by Kompose. However, since the directory is clear of any other files, you can use `.` to deploy all files.
+1.  Deploy the resources to the Kubernetes cluster. You could provide a comma-separated list of the resource files output by Kompose with the `-f` option. However, since the directory is clear of any other files, use `.` to deploy all files.
 
     ```command
     kubectl apply -f . --namespace wordpress
@@ -198,7 +202,7 @@ You now have a set of Kubernetes manifests, ready to deploy to your cluster. Bel
     persistentvolumeclaim/wp-data created
     ```
 
-1.  Verify successful deployment. It may take a short time before the deployed pods show the `Running` status.
+1.  Verify successful deployment. It may take a short amount of time before the deployed pods show the `Running` status.
 
     ```command
     kubectl get pods --namespace wordpress
@@ -210,15 +214,15 @@ You now have a set of Kubernetes manifests, ready to deploy to your cluster. Bel
     wordpress-785f8f7d4f-khqmd   1/1     Running   0          59s
     ```
 
-#### Viewing the Deployed Application
+### Viewing the Deployed Application
 
-The resources have been deployed, meaning your Kuberentes cluster should be running a WordPress instance. With a few additional steps, you can verify this by visiting the new WordPress site.
+The resources have been deployed, meaning your Kubernetes cluster should be running a WordPress instance. Verify this by visiting the new WordPress site using the additional steps below.
 
 1.  Open the required port in your system's firewall. The next step uses port `8080` to map the WordPress service to.
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
-    Refer to our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide, and use commands like the following to open the HTTP port.
+    Refer to our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide, and use the following commands to open the HTTP port.
 
     ```command
     sudo ufw allow 8080/tcp
@@ -226,8 +230,8 @@ The resources have been deployed, meaning your Kuberentes cluster should be runn
     ```
 
     {{< /tab >}}
-    {{< tab "CentOS, AlmaLinux, Rocky Linux, and Similar" >}}
-    Refer to our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide, and use commands like the following to open the HTTP port.
+    {{< tab "AlmaLinux, CentOS Stream, and Rocky Linux" >}}
+    Refer to our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide, and use the following commands to open the HTTP port:
 
     ```command
     sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
@@ -237,23 +241,21 @@ The resources have been deployed, meaning your Kuberentes cluster should be runn
     {{< /tab >}}
     {{< /tabs >}}
 
-1.  Initiate port forwarding from the WordPress service. Doing so allows you to connect to the WordPress site using your current machine's single URL.
+1.  Initiate port forwarding from the WordPress service. This allows you to connect to the WordPress site using your current machine's single URL.
 
     ```command
     kubectl port-forward --address 0.0.0.0 svc/wordpress 8080:80 --namespace wordpress
     ```
 
-1.  Navigate in a web browser to port `8080` on your current machine's remote address. Typically, this is an IP address, so you would navigate to something like: `http://192.0.2.0:8080`.
+1.  Open a web browser and navigate to port `8080` on your current machine's remote address. Typically, this is an IP address, so you would navigate to something like: `http://192.0.2.0:8080`.
 
     ![Setup page for a Kubernetes-hosted WordPress site](example-app.png)
 
 ## Conclusion
 
-Kompose grants a powerful tool. Whether you are a Docker Compose aficionado beginning with Kubernetes or looking to use Docker Compose to streamline Kubernetes development, Kompose can help.
+Kompose is a powerful tool. Whether you are a Docker Compose aficionado beginning with Kubernetes, or simply looking to use Docker Compose to streamline Kubernetes development, Kompose can help.
 
-Linked below are helpful resources for learning more about working with Kompose.
-
-Additionally, you may be interested in moving forward with more on Kubernetes and Docker Compose.
+The links below are helpful resources for learning more about working with Kompose. Additionally, you may be interested in moving forward with more on Kubernetes and Docker Compose:
 
 - Refer to our [Beginner's Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/) series to go deeper with Kubernetes, and see our [collection of Kubernetes guides](/docs/guides/kubernetes/) for a range of use cases to build on.
 
