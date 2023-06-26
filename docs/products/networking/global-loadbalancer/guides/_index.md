@@ -6,4 +6,4 @@ tab_group_main:
     weight: 30
 modified: 2022-10-07
 ---
-- [Manage Global Load Balancers](/docs/products/networking/loadbalancer-draft/guides/manage/): View, edit, and manage Global Load Balancers on your account.
+- [Manage Global Load Balancers](/docs/products/networking/global-loadbalancer/guides/manage/): View, edit, and manage Global Load Balancers on your account.

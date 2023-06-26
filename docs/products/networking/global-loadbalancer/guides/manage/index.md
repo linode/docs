@@ -21,7 +21,7 @@ Each Load Balancer in the matrix is displayed alongside the following details:
 
 ## Create a Global Load Balancer
 
-To create a Global Load Balancer, follow the [Get Started](/docs/products/networking/loadbalancer/) instructions.
+To create a Global Load Balancer, follow the [Get Started](/docs/products/networking/global-loadbalancer/) instructions.
 
 ## Review and Edit a Global Load Balancer
 

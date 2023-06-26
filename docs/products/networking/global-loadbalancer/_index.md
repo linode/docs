@@ -7,10 +7,10 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
+    date: 2023-06-26
     product_description: "Scalable and configurable layer 4 and 7 load balancer to manage and accelerate traffic globally between clients and their distributed applications."
 modified: 2023-07-31
-aliases: ['/platform/loadbalancer/','/loadbalancers/','/guides/platform/loadbalancer/']
+aliases: ['/platform/global-loadbalancer/','/loadbalancers/','/guides/platform/global-loadbalancer/']
 ---
 
 **Akamai Global Load Balancer**  offers global, configurable, scalable, distributed compute traffic management across physical, virtual, and cloud-hosted applications. It can automatically detect load conditions and route traffic to the optimal target while maintaining custom routing policies and consistent visitor session behavior.
@@ -27,7 +27,7 @@ Here's how Global Load Balancer works:
 
 Health checks detect if a target is down and routes traffic to an available target or a failover target. Session stickiness routes subsequent requests to the same target as long as it remains healthy.
 
-![This diagram shows how Global Load Balancer works.](beta-nglb-1.jpg)
+![This diagram shows how Global Load Balancer works.](glb-1.jpg)
 
 ## Selecting a Load Balancer and Migration Information
 
@@ -117,7 +117,7 @@ Akamai Global Load Balancers are available across [all regions](https://www.lino
 | 4-10 regions    | 100 000         |    $25 tbd    |
 | 4-10 regions    | 1 000 000       |    $200 tbd   |
 
-**Usage:** A fee of $0.05/hour-tbd  is charged for every hour that the load balancer is active and has targets. Heath checks are included in this pricing.
+**Usage:** A fee of $0.05/hour tbd is charged for every hour that the load balancer is active and has targets. Heath checks are included in this pricing.
 
 ## Technical Specifications
 

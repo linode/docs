@@ -6,8 +6,8 @@ tab_group_main:
     weight: 30
 keywords: ["loadbalancers", "loadbalancer", "load balancers", "load balancer", "load balancing"]
 tags: ["cloud manager","linode platform","networking","web applications"]
-aliases: ['/loadbalancer-draft/getting-started/']
-published: 2023-05-01
+aliases: ['/global-loadbalancer/getting-started/']
+published: 2023-06-26
 authors: ["Linode"]
 ---
 
@@ -25,7 +25,7 @@ To redirect all web connections over port 443/HTTPS generate an SSL certificate 
 
 ## Create the Akamai Global Load Balancer
 
-Once your application has been deployed on multiple Compute Instances, you are ready to create the Akamai Global Load Balancer. General instructions have been provided below. For detailed instructions, see the [Create a Akamai Global Load Balancer](/docs/products/networking/loadbalancer-draft/guides/create/) guide.
+Once your application has been deployed on multiple Compute Instances, you are ready to create the Akamai Global Load Balancer. General instructions have been provided below. For detailed instructions, see the [Create a Akamai Global Load Balancer](/docs/products/networking/global-loadbalancer/guides/create/) guide.
 
 To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](/docs/products/platform/get-started/)
 
@@ -60,11 +60,11 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
 
 1. Add the **Entry Point Label**. Each Entry Point includes a list of **Routes**. Routes are the set of rules that the load balancer uses to select the target for the incoming request.
 
-  - **Algorithm:** Controls how new connections are allocated across backend targets. The *Performance* method selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. The *Weighted* method routes requests to backend targets according to the proportion (%) configured. See [Configuration Options > Algorithm](/docs/products/networking/loadbalancer-drafts/guides/configure/#algorithm).
+  - **Algorithm:** Controls how new connections are allocated across backend targets. The *Performance* method selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. The *Weighted* method routes requests to backend targets according to the proportion (%) configured. See [Configuration Options > Algorithm](/docs/products/networking/global-loadbalancer-drafts/guides/configure/#algorithm).
 
     - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend target. For testing, consider keeping Session Stickiness off. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
 
-    - **Health Checks:** Load Balancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/loadbalancer-draft/guides/configure/#health-checks) for additional information.
+    - **Health Checks:** Load Balancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/global-loadbalancer/guides/configure/#health-checks) for additional information.
 
     - **Backend Targets:** Load balancers work by distributing traffic to a pool of servers. For Enterprise Global Load Balancer, these servers are Linode Compute Instances that can be in different regions. For information on configuring backends, see the Configure Backend Nodes (Compute Instances) guide. Compute Instances can be located in any region. Set a **Label** for each instance, select the corresponding **IP address** from the dropdown menu, and enter the **Port** that the application is using on that instance. See [Backend Targets (Compute Instances)](/docs/products/networking/loabalancer-draft/guides/backends/).
 
@@ -81,4 +81,4 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
 
 ## Update the DNS
 
-After deploying your load balancer and putting your application behind the load balancer, the application can now be accessed using the load balancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the load balancer's IPv4 address and the *AAAA* record (if you're using one) should use the load balancer's IPv6 address. See [Manage Load Balancers](/docs/products/networking/loadbalancer/guides/manage/#review-and-edit-a-nodebalancer) to view your load balancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.
+After deploying your load balancer and putting your application behind the load balancer, the application can now be accessed using the load balancer's public IPv4 and IPv6 addresses. Since most public-facing applications utilize domain names, you need to update any associated DNS records. The *A* record should use the load balancer's IPv4 address and the *AAAA* record (if you're using one) should use the load balancer's IPv6 address. See [Manage Load Balancers](/docs/products/networking/global-loadbalancer/guides/manage/#review-and-edit-a-nodebalancer) to view your load balancer's IP addresses. For help changing the DNS records, consult your DNS provider's documentation. If you are using Linode's DNS Manager, see [Edit DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/). Keep in mind that DNS changes can take up to 24 hours to fully propagate, though that typically happens much faster.
