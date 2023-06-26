@@ -53,10 +53,8 @@ Follow the [Getting Started](/docs/products/platform/get-started/) guide to conf
 
 4.  Start and enable Fail2ban and, if needed, Sendmail:
 
-        systemctl start fail2ban
-        systemctl enable fail2ban
-        systemctl start sendmail
-        systemctl enable sendmail
+        systemctl enable --now fail2ban
+        systemctl enable --now sendmail
 
     {{< note respectIndent=false >}}
 If you encounter the error that there is `no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock`, create the directory manually:
@@ -81,7 +79,7 @@ If you encounter the error that there is `no directory /var/run/fail2ban to cont
         apt-get install sendmail-bin sendmail
 
     {{< note respectIndent=false >}}
-The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation hangs for a minute, but then complete.
+The current version of Sendmail in Debian Jessie has an [upstream bug](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=293017) which causes the following errors when installing `sendmail-bin`. The installation hangs for a minute, but then completes.
 
     Creating /etc/mail/sendmail.cf...
     ERROR: FEATURE() should be before MAILER() MAILER('local') must appear after FEATURE('always_add_domain')
@@ -104,10 +102,8 @@ The current version of Sendmail in Debian Jessie has an [upstream bug](https://b
 
 4.  Start and enable Fail2ban and, if needed, Sendmail:
 
-        systemctl start fail2ban
-        systemctl enable fail2ban
-        systemctl start sendmail
-        systemctl enable sendmail
+        systemctl enable --now fail2ban
+        systemctl enable --now sendmail
 
 ### Ubuntu
 
@@ -159,16 +155,16 @@ This section contains examples of common Fail2ban configurations using `fail2ban
 
 2.  **If using CentOS or Fedora** you need to change the `backend` option in `jail.local` from *auto* to *systemd*. This is not necessary on Debian 8 or Ubuntu 16.04, even though both use systemd as well.
 
-{{< file "/etc/fail2ban/jail.local" aconf >}}
-# "backend" specifies the backend used to get files modification.
-# Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
-# This option can be overridden in each jail as well.
-
-. . .
-
-backend = systemd
-
-{{< /file >}}
+    {{< file "/etc/fail2ban/jail.local" aconf >}}
+    # "backend" specifies the backend used to get files modification.
+    # Available options are "pyinotify", "gamin", "polling", "systemd" and "auto".
+    # This option can be overridden in each jail as well.
+    
+    . . .
+    
+    backend = systemd
+    
+    {{< /file >}}
 
 {{< note respectIndent=false >}}
 If the `backend` configuration is set to `auto`, Fail2ban monitors log files by first using `pyinotify`. Next, it tries `gamin`. If neither are available, a polling algorithm decides what to try next.
