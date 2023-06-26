@@ -5,7 +5,7 @@ description: "A collection of guides to help you learn how to deploy each Market
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
-modified: 2023-05-23
+modified: 2023-06-26
 ---
 
 ## Basics
@@ -87,6 +87,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [OpenLiteSpeed WordPress](/docs/products/tools/marketplace/guides/openlitespeed-wordpress/)
 - [OpenVPN](/docs/products/tools/marketplace/guides/openvpn/)
 - [Owncast](/docs/products/tools/marketplace/guides/owncast/)
+- [Owncloud Server](/docs/products/tools/marketplace/guides/owncloud/)
 - [Passky](/docs/products/tools/marketplace/guides/passky/)
 - [Peppermint](/docs/products/tools/marketplace/guides/peppermint/)
 - [Percona Monitoring and Management (PMM)](/docs/products/tools/marketplace/guides/percona-monitoring-management/)
