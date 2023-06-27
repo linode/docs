@@ -1235,6 +1235,7 @@ localdomain
 localhost
 localuser
 lockdown
+lockfile
 lodash
 logallrefupdates
 logdir
@@ -1433,6 +1434,7 @@ multiplatform
 Multiplo
 multiport
 multiprotocol
+multirepo
 multisite
 multitenant
 multithreading
@@ -1709,10 +1711,12 @@ plex
 plone
 pluggable
 png
+pnpm
 pocketmine
 podman
 poettering
 pokemon
+polyrepo
 popeye
 pop3
 pop3d
@@ -2343,6 +2347,7 @@ tumblr
 tun0
 tune2fs
 tunnelblick
+turborepo
 turtl
 tv
 tw
