@@ -8,7 +8,6 @@ modified: 2020-12-01
 modified_by:
   name: Alex Fornuto
 published: 2015-06-15
-expired:
 title: 'KVM Migration Reference'
 tags: ["linode platform"]
 deprecated: true
