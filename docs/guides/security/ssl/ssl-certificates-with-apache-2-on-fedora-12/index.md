@@ -1,9 +1,6 @@
 ---
 slug: ssl-certificates-with-apache-2-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will assist you with enabling SSL for websites being served by the free and open-source Apache2 web server for better web security on Fedora 12.'
 keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 12"]
 tags: ["fedora","apache","security","ssl"]
@@ -19,6 +16,7 @@ relations:
         key: ssl-certificate-apache
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 

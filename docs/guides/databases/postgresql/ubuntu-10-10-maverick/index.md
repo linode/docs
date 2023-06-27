@@ -1,8 +1,5 @@
 ---
 slug: ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 10.10 (Maverick).'
 keywords: ["postgresql", "postgresql ubuntu 10.10", "postgreql maverick", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,6 +9,7 @@ modified_by:
 published: 2010-10-25
 title: 'Use PostgreSQL Relational Databases on Ubuntu 10.10'
 deprecated: true
+deprecated_link: /docs/guides/how-to-install-use-postgresql-ubuntu-20-04/
 relations:
     platform:
         key: use-postrgesql-database
@@ -19,6 +17,7 @@ relations:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","postgresql"]
 aliases: ['/databases/postgresql/ubuntu-10-10-maverick/']
+authors: ["Linode"]
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 10.10 (Maverick) system. We assume you've followed the steps detailed in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), and that you're logged into your Linode as root via SSH.

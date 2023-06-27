@@ -1,8 +1,5 @@
 ---
 slug: git-based-development-networks-with-girocco-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Girocco engine from repo.or.cz to provide easy access to Git repositories.'
 keywords: ["git", "girocco", "gitweb", "project hosting", "social coding"]
 tags: ["version control system","email","debian"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2010-06-23
 title: 'Git Based Development Networks with Girocco on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 ---
 
 Girocco is the underlying engine created to power one of the first public git hosting services at [repo.or.cz](http://repo.or.cz/), and it allows users an easy to use web-based interface to create and view git repositories. Perhaps most excitingly, Girocco provides the ability to seamlessly "fork" an existing repository on the site and publish those changes without needing "push" access to the original repository, thus enabling a wide rage of distributed workflows and collaborative experiences.

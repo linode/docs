@@ -1,24 +1,19 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Jitsi is an open source suite that helps you host your own virtual video conferences. Follow this guide to deploy Jitsi on Linode using Marketplace Apps."
 keywords: ['jitsi','marketplace', 'server']
-tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["ubuntu","marketplace", "web applications","linode platform", "cloud manager", "ssl", "education"]
 published: 2020-09-28
 modified: 2022-03-08
 image: Deploy_Jitsi_oneclickapps.png
 modified_by:
   name: Linode
 title: "Deploy Jitsi through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[About Jitsi](https://jitsi.org/about/)'
 - '[Jitsi Documentation](https://jitsi.github.io/handbook/docs/intro)'
 - '[Scale Your Jitsi Setup](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-scalable)'
 aliases: ['/platform/marketplace/how-to-deploy-jitsi-with-marketplace-apps/', '/platform/one-click/how-to-deploy-jitsi-with-one-click-apps/','/platform/one-click/deploy-jitsi-with-one-click-apps/','/guides/how-to-deploy-jitsi-with-marketplace-apps/','/guides/jitsi-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Jitsi](https://jitsi.org) is a suite of open source projects that allows you to host your own virtual video conferences.

@@ -1,8 +1,5 @@
 ---
 slug: linux-red-team-privilege-escalation-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
 description: 'This video covers various techniques that can be used to elevate your privileges on Linux systems.'
 keywords: ['security']
 tags: ['security']
@@ -11,8 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Linux Red Team Privilege Escalation Techniques"
-contributor:
-  name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

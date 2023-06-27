@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 9.10 (Karmic)'
 keywords: ["nginx", "http", "web servers", "ubuntu", "ubuntu 9.10", "ubuntu karmic"]
 tags: ["web server","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

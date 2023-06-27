@@ -1,8 +1,5 @@
 ---
 slug: install-black-mesa-on-debian-or-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows you how to install Black Mesa, a third-party reproduction of the epic first-person shooter, Half-Life, on a Linode running Debian or Ubuntu.'
 keywords: ["black mesa", "steam", "steamcmd", "sourcemod", "metamod"]
 tags: ["debian", "ubuntu"]
@@ -12,9 +9,6 @@ modified: 2019-02-01
 modified_by:
   name: Linode
 title: 'Install Black Mesa on Debian or Ubuntu'
-contributor:
-  name: Davide Beatrici
-  link: https://github.com/davidebeatrici
 external_resources:
 - '[BlackMesaSource.com](http://www.blackmesasource.com/)'
 - '[The Official Black Mesa Wiki](http://wiki.blackmesasource.com/)'
@@ -22,6 +16,7 @@ external_resources:
 - '[SourceMod.net](https://www.sourcemod.net)'
 aliases: ['/game-servers/install-black-mesa-on-debian-or-ubuntu/','/applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 dedicated_cpu_link: true
+authors: ["Davide Beatrici"]
 ---
 
 

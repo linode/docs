@@ -1,8 +1,5 @@
 ---
 slug: developing-udp-and-tcp-clients-and-servers-in-go
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'Create a TCP and UDP client and server using the Go programming language.'
 keywords: ["go", "golang", "server", "client", "TCP", "UDP", "programming", "cli"]
 tags: ["networking"]
@@ -11,12 +8,10 @@ published: 2019-06-26
 modified_by:
   name: Linode
 title: 'Create a TCP and UDP Client and Server using Go'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 external_resources:
   - '[Go](https://www.golang.com)'
 aliases: ['/development/go/developing-udp-and-tcp-clients-and-servers-in-go/']
+authors: ["Mihalis Tsoukalos"]
 ---
 Go is a compiled, statically typed programming language developed by Google. Many modern applications, including [Docker](/docs/guides/introduction-to-docker/), [Kubernetes](/docs/guides/beginners-guide-to-kubernetes/), and [Terraform](/docs/guides/beginners-guide-to-terraform/), are written in Go. Go packages allow developers to organize and reuse Go code in a simple and maintainable manner.
 

@@ -1,8 +1,5 @@
 ---
 slug: set-up-wireguard-vpn-on-debian
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'WireGuard encrypts your traffic quickly and safely. This guide will show you how to set up a Wireguard VPN server and client on Debian.'
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn','debian']
@@ -14,14 +11,14 @@ modified: 2021-10-15
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Debian"
-contributor:
-  name: Linode
 relations:
     platform:
         key: setup-wireguard-vpn
         keywords:
             - distribution: Debian 9
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-debian/']
+authors: ["Linode"]
+tags: ["saas"]
 ---
 
 ## What is WireGuard?

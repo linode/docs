@@ -1,8 +1,5 @@
 ---
 slug: migrate-a-wordpressdotcom-site-to-linode
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'Shows how to export posts from a WordPress.com website and import them to WordPress on a Linode.'
 keywords: ["wordpress", "wordpress.com", "migrate", "website migration"]
 tags: ["linode platform","wordpress"]
@@ -15,6 +12,7 @@ title: How to Migrate a WordPress.com Website to Linode
 external_resources:
  - '[WordPress.com: Moving to Self-Hosted WordPress](https://move.wordpress.com/)'
 aliases: ['/platform/migrate-to-linode/migrate-a-wordpressdotcom-site-to-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 This guide describes how to export your content from WordPress.com and self-host your WordPress website on Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.

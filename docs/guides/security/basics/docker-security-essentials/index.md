@@ -1,7 +1,5 @@
 ---
 slug: docker-security-essentials
-author:
-  name: Hackersploit
 description: "This guide will show you the basics of securing Docker containers, including managing user access, preventing privilege escalations, and more."
 keywords: ["docker security", "docker container security", "docker security best practices"]
 tags: ["security", "docker"]
@@ -13,6 +11,7 @@ published: 2021-03-26
 title: "An Overview of Docker Security Essentials"
 aliases: ['/security/basics/docker-security-essentials/']
 image: DockerSecurityEssentials.png
+authors: ["Hackersploit"]
 ---
 
 ## What is Docker?

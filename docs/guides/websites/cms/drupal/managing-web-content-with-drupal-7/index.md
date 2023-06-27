@@ -1,8 +1,5 @@
 ---
 slug: managing-web-content-with-drupal-7
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing, configuring, and optimizing the Drupal content management framework on your Linode.'
 keywords: ["drupal", "cms", "web framework", "web application", "php", "content management system", "content management framework"]
 tags: ["drupal","cms","lamp"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-09-29
 title: Installing Drupal 7
+authors: ["Linode"]
 ---
 
 Drupal is an advanced and powerful content management framework, built on the PHP scripting language and supported by a [database](/docs/databases/) engine like [MySQL](/docs/databases/mysql/). Drupal provides a flexible system that can be used to manage websites of all different types and profiles. Drupal is capable of providing the tools necessary to create rich, interactive "community" websites with forums, user blogs, and private messaging. Drupal can also provide support for multifaceted personal publishing projects and can power podcasts, blogs, and knowledge-based systems, all within a single, unified platform.

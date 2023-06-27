@@ -1,19 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Deploy the open source message broker RabbitMQ to manage sending and receiving data using Marketplace Apps."
 keywords: ['rabbitmq', 'message broker', 'scheduling']
 tags: ["debian", "marketplace", "web applications", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
-modified: 2022-03-08
+modified: 2023-05-31
 modified_by:
   name: Linode
 title: "Deploy RabbitMQ through the Linode Marketplace"
 external_resources:
 - '[RabbitMQ](https://www.rabbitmq.com/)'
 aliases: ['/platform/marketplace/deploy-rabbitmq-with-marketplace-apps/', '/platform/marketplace/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-with-one-click-apps/','/guides/deploy-rabbitmq-server-with-marketplace-apps/','/guides/deploy-rabbitmq-with-marketplace-apps/','/guides/rabbitmq-marketplace-app/']
+authors: ["Linode"]
 ---
 
 RabbitMQ is a popular open source **message broker**, or a tool that enables and empowers components of a system to communicate from a centralized source or application. By "translating" data from a number of different sources into a unified language, RabbitMQ allows component services to interact with each other through a centralized method.
@@ -44,28 +41,18 @@ The RabbitMQ Marketplace App installs a RabbitMQ server and a basic default conf
 
 ## Getting Started After Deployment
 
-After the RabbitMQ Server has been deployed, you can access the management console by entering the [public IPv4 address](/docs/guides/find-your-linodes-ip-address/) of the Linode followed by port `15672`:
+1.  Open your web browser and navigate to the following URL, replacing *[ip-address]* with your Compute Instance's IPv4 address or default rDNS domain. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses.
 
-        https://203.0.113.0:15672
+    ```command
+    http://[ip-address]:15672
+    ```
 
-The following login page appears:
+1.  In the login form that appears, enter the username and password you created during the deployment. Then, click the **Login** button.
 
-![RabbitMQ Login](rabbitmq-login.png "RabbitMQ Login.")
+    ![Screenshot of the RabbitMQ Login page](rabbitmq-login.png)
 
-To log in, enter the `RabbitMQ username` and `RabbitMQ Password` set as a [configuration option](#RabbitMQ-Marketplace-App-Options) before you created the server. After you login successfully, you have full access to the RabbitMQ Management Console.
+1.  After you login successfully, you have full access to the RabbitMQ Management Console. From you, you can start configuring your application. To learn more about using RabbitMQ, visit the official [RabbitMQ Tutorials](https://www.rabbitmq.com/getstarted.html) page.
 
-![RabbitMQ Management Console](rabbitmq-management.png "RabbitMQ Management Console.")
-
-## Software Included
-
-The RabbitMQ Marketplace App installs the following required software on the Linode:
-
-| **Software** | **Description** |
-|:--------------|:------------|
-| [**RabbitMQ Server**](https://www.rabbitmq.com/download.html) | The RabbitMQ server software is an Open Source Message broker, used to assist component services to communicate. |
+    ![Screenshot of the RabbitMQ Management Console](rabbitmq-dashboard.png)
 
 {{< content "marketplace-update-note-shortguide">}}
-
-
-
-

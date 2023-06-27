@@ -1,14 +1,11 @@
 ---
 slug: linode-writers-formatting-guide
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides formatting and style guidelines for documentation and articles submitted to Linode from outside contributors via our Write for Linode program.'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2023-01-20
+modified: 2023-05-02
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
@@ -18,6 +15,7 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 _build:
   list: false
+authors: ["Linode"]
 ---
 
 ![Linode Writer's Formatting Guide](linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
@@ -34,28 +32,40 @@ Through our Write For Linode program, authors can contribute new guides and be p
 
 Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific Markdown formatting notes are given [further below](#markdown-formatting).
 
+Markdown files for guides are stored under the `docs/guides/` content directory. This content directory is then further subdivided into categories for different technical topics. New guides should be placed with a category that they most closely align with. For example, if you are writing a new guide on the Apache web server, it would be placed under `docs/guides/web-servers/apache/`.
+
+A new subdirectory is created for each guide. This subdirectory should contain a file called `index.md`, which will be where the guide's markdown is written to. For example, if your guide's title is `My Apache Guide`, then you would create its Markdown file at `docs/guides/web-servers/apache/my-apache-guide/index.md`.
+
+A [Hugo archetype](https://gohugo.io/content-management/archetypes/) is available to create new Markdown files. For example, if you wanted to create the `My Apache Guide` example guide, you could run this command from inside your cloned docs repository:
+
+```command
+hugo new -k content docs/guides/web-servers/apache/my-apache-guide/index.md
+```
+
 ### Header
 
 Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
+{{< note >}}
+If you use the Hugo archetype command described in the previous section, the created Markdown file will be pre-populated with the frontmatter template below.
+{{< /note >}}
+
 ```file {title="Author Submission" lang="yaml"}
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'Two to three sentences describing the purpose of the guide.'
-keywords: ["list", "of", "keywords", "and key phrases"]
+slug: url-slug-for-your-guide
+title: "Title of Your Guide (appears in H1)"
+title_meta: "Title of Your Guide (appears in meta title tag)"
+description: 'Two to three sentences describing your guide.'
+og_description: 'Two to three sentences describing your guide when shared on social media.'
+keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
+authors: ["Linode"]
+published: 2023-03-07
 modified_by:
   name: Linode
-title: 'Guide Title'
-contributor:
-  name: Your Name
-  link: Github/Twitter/LinkedIn URL
 external_resources:
-  - '[Link Title 1](http://www.example.com)'
-  - '[Link Title 2](http://www.example.net)'
+- '[Link Title 1](http://www.example.com)'
+- '[Link Title 2](http://www.example.net)'
 ---
 ```
 
@@ -102,24 +112,24 @@ For example:
 ```file {lang="md"}
 ## Using MySQL
 
-1. Log in to MySQL as the root user:
+1.  Log in to MySQL as the root user:
 
     ```command
     mysql -u root -p
     ```
 
-1. When prompted, enter the root password.
+1.  When prompted, enter the root password.
 
 ### Create a New MySQL User and Database
 
-1. In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
+1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
 
     ```command
     create database testdb;
     grant all on testdb.* to 'testuser' identified by 'password';
     ```
 
-1. Exit MySQL.
+1.  Exit MySQL.
 
     ```command
     exit
@@ -127,7 +137,7 @@ For example:
 
 ### Create a Sample Table
 
-1. Log back in as `testuser`:
+1.  Log back in as `testuser`:
 
     ```command
     mysql -u testuser -p
@@ -165,7 +175,7 @@ Use a **Bold** font weight for buttons, menu selections and anything that requir
 
 Commands that are not inline with paragraph text should be displayed with the *command shortcode*. This shortcode renders the command in a monospaced font with a light or dark background and a copy-to-clipboard button. Unlike other shortcodes (e.g. `content`, `note`, `caution`, etc), the command shortcode should be referenced with Markdown's *code fence* syntax.
 
-- **Command shortcode example**
+-   **Command shortcode example**
 
     ````file
     ```command
@@ -179,7 +189,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo systemctl restart apache2
     ```
 
-- **Multiline commands**
+-   **Multiline commands**
 
     The command shortcode can accept multiple lines if more than one command needs to be displayed:
 
@@ -197,7 +207,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo journalctl -u apache2
     ```
 
-- **Command with title**
+-   **Command with title**
 
     The `title` parameter can be used to specify a title that displayed above a command shortcode. This can be useful to label the server or workstation that a reader should execute the command on. For example, some guides instruct the reader to set up multiple servers. Specifying a title can disambiguate which server a given command should be run on.
 
@@ -221,7 +231,7 @@ Commands that are not inline with paragraph text should be displayed with the *c
     sudo systemctl restart mysql
     ```
 
-- **Command with dark background**
+-   **Command with dark background**
 
     The `class` parameter can be used to specify that a command should be displayed with a dark background:
 
@@ -300,32 +310,31 @@ The following shortguide describes how to install Python via Miniconda. Create a
 
 ```file {title="install_python_miniconda/index.md" lang="yaml"}
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Install Python with Miniconda"
 description: 'A shortguide that shows how to install Python via Miniconda.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2018-08-23
+authors: ["Author's FirstName LastName`"]
+published: 2023-03-07
+modified: 2023-03-07
 modified_by:
   name: Linode
-title: "Install Python with Miniconda"
 headless: true
 show_on_rss_feed: false
 ---
 
 <!-- Installation instructions for Python 3. -->
 
-1. Download and install Miniconda:
+1.  Download and install Miniconda:
 
     ```command
     curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86.64.sh
     ```
 
-1. You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
+1.  You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
 
-1. Check your Python version:
+1.  Check your Python version:
 
     ```command
     python --version
@@ -346,7 +355,7 @@ Use the *file shortcode* to present code examples, code snippets, and other text
 Exceptionally long files should be shown in parts, if needed. In these cases, you can add the entire file to the same directory as your guide and link to it from within the guide.
 {{< /note >}}
 
-- **File with filepath**
+-   **File with filepath**
 
     ````file
     ```file {title="/path/to/file.html"}
@@ -364,7 +373,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
-- **File with language/syntax highlighting**
+-   **File with language/syntax highlighting**
 
     A code language or syntax can be defined with the `lang` parameter to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
 
@@ -384,7 +393,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
-- **File with starting line specified**
+-   **File with starting line specified**
 
     If your file snippet represents the middle of a file, you can use the `linenostart` to specify that the line numbering to the left of the snippet should start at a number other than 1:
 
@@ -404,7 +413,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     </div>
     ```
 
-- **File with highlighted lines**
+-   **File with highlighted lines**
 
     The `hl_lines` parameter can be used to highlight certain lines within the file. The parameter is a space-separated list of strings. Ranges of lines can also be specified:
 
@@ -436,7 +445,7 @@ Exceptionally long files should be shown in parts, if needed. In these cases, yo
     export default Header;
     ```
 
-- **Using file shortcodes within lists**
+-   **Using file shortcodes within lists**
 
     If using a file shortcode in a list, each line of the shortcode should start at the indentation level of the list. For example:
 
@@ -524,23 +533,72 @@ Internal links to other Linode guides should be relative, starting at `/docs/`, 
 
 #### Ordered Lists
 
-Ordered lists are numbered and should be used for a series of steps. These lists should be formatted by appending a `1. ` to the beginning of each step.
+Ordered lists are numbered and should be used to denote a series of steps or sequential items. Use the following guidance when creating ordered lists:
 
-```file
-1. Step 1
-1. Step 2
-1. Step 3
-```
+-   **Longer lists that may change and where nested content is possible:**
+
+    These lists should use *lazy* numbering (by appending a `1.` to each step regardless of the actual step number). There should also be *two* spaces between the numbering and the text (see [Nested Content Within Lists](#nested-content-within-lists)).
+
+    ```command
+    1.  Step 1
+    1.  Step 2
+    1.  Step 3
+    ```
+
+-   **Short lists that remain static with no nested content:**
+
+    Optionally, you can use *true* numbering when a list is likely to remain short and static during its lifecycle. Provided there is no nested content, use a single space between the number and the text.
+
+    ```command
+    1. Step 1
+    2. Step 2
+    3. Step 3
+    ```
 
 #### Unordered Lists
 
 Unordered lists are bulleted and should be used for any collection of items that do not necessarily need to be ordered. These lists should be formatted by appending a `- ` to the beginning of each step.
 
-```file
-- Item 1
-- Item 2
-- Item 3
-```
+-   **Lists where nested content is possible:**
+
+    Use *three* spaces between the bullet character (`-`) and the text. (see [Nested Content Within Lists](#nested-content-within-lists)).
+
+    ```command
+    -   Item A
+    -   Item B
+    -   Item C
+    ```
+
+-   **Lists with no nested content:**
+
+    Provided there is no nested content, you can use a single space between the bullet character and the text.
+
+    ```command
+    - Item A
+    - Item B
+    - Item C
+    ```
+
+#### Nested Content Within Lists
+
+To remain consistent across all of our guides, nested content should be indented *four* spaces and a blank line should be used above and below the content. Our Markdown processor assumes nested content starts directly below the *first* character in the text of the list item above it. With this in mind, it's important to indent the text portion of the list item to match that four space indent. In practice, there should be *two* spaces after the number (for ordered lists) and *three* spaces after the bullet for unordered lists. If this spacing is not respected, the nested content may not render properly.
+
+- **Ordered list** (`1.`): Use *two* spaces after the number.
+- **Unordered list** (`-`): Use *three* spaces after the bullet.
+
+````command
+-   Item A
+
+    This sentence is nested under *Item A*.
+
+-   Item B
+
+    ```command
+    This command is nested under *Item B*.
+    ```
+
+-   Item C
+````
 
 ### Note Shortcode
 
@@ -576,7 +634,7 @@ The shortcode accepts the following parameters:
 
 There are four unique types of notes:
 
-- **Secondary** (`type="secondary"`, title defaults to "Note")
+-   **Secondary** (`type="secondary"`, title defaults to "Note")
 
     {{< note type="secondary" >}}
     This is an example of a secondary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -586,7 +644,7 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-- **Primary** (type is unset or `type="primary"`, title defaults to "Note")
+-   **Primary** (type is unset or `type="primary"`, title defaults to "Note")
 
     {{< note >}}
     This is an example of a primary note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -596,7 +654,7 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-- **Warning** (`type="warning"`, title defaults to "Warning")
+-   **Warning** (`type="warning"`, title defaults to "Warning")
 
     {{< note type="warning" >}}
     This is an example of a warning note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -606,7 +664,7 @@ There are four unique types of notes:
     ```
     {{< /note >}}
 
-- **Alert** (`type="alert"`, title defaults to "Important")
+-   **Alert** (`type="alert"`, title defaults to "Important")
 
     {{< note type="alert" >}}
     This is an example of an alert note with inline code (`sudo nano`), a link ([Linode Documentation](/docs/)), and a command shortcode:
@@ -658,24 +716,24 @@ This content is hidden until the user expands the note.
 This content is hidden until the user expands the note.
 {{< /note >}}
 
-### Indentation
+#### Indentation
 
 Content within the opening and closing note shortcode tags must respect the expected indentation of any parent elements, such as list items. Since content within a list is indented (using 4 spaces), the content of a note shortcode must be indented by the same number of spaces.
 
 ```file
-- First list item.
+-   First list item.
 
     {{</* note */>}}
     This content appears within the first list item and, as such, respects its indentation.
     {{</* /note */>}}
 
-- Second list item.
+-   Second list item.
 ```
 
 If this indentation is not respected, which should only be the case for older note shortcodes made before this change, the following option is set: `respectIndent=false`. If one of these is encountered when editing an existing guide, remove `respectIndent=false` and properly indent the shortcode.
 
 ```file
-- First list item.
+-   First list item.
 
     {{</* note respectIndent=false */>}}
 This content appears within the first list item but does not respect its indentation.
@@ -717,6 +775,43 @@ Use single spaces between sentences; do not double-space.
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
 | -- | :--: | --:|
 | Example | Example | Example |
+
+### Tabs
+
+Using a tabbed interface allows you to separate content into user-selectable tabs. This can be used to provide specific instructions for different versions of a software application (like MySQL 5.7 or 8), different operating systems (like macOS, Windows, or a Linux distribution), or different user tools (like the Cloud Manager, Linode CLI, or Linode API).
+
+````file
+{{</* tabs */>}}
+{{</* tab "Tab 1" */>}}
+The content only appears when *Tab 1* is selected.
+{{</* /tab */>}}
+{{</* tab "Tab 2" */>}}
+When *Tab 2* is selected, this content appears.
+{{</* /tab */>}}
+{{</* /tabs */>}}
+````
+
+{{< tabs >}}
+{{< tab "Tab 1" >}}
+The content only appears when *Tab 1* is selected.
+{{< /tab >}}
+{{< tab "Tab 2" >}}
+When *Tab 2* is selected, this content appears.
+{{< /tab >}}
+{{< /tabs >}}
+
+When a user selects a tab, the first item in each tab set that has a matching title is also selected. This means that if multiple tab sets are on a page, each with the same items, the user only needs to select an item within one tab set and all tab sets will show that item.
+
+{{< tabs >}}
+{{< tab "Tab 1" >}}
+This is *Tab 1* in the second tab set. When *Tab 1* is selected on any tab set, this content is visible.
+{{< /tab >}}
+{{< tab "Tab 2" >}}
+And here is *Tab 2* in the second tab set. When *Tab 2* is selected on any tab set, this content is visible.
+{{< /tab >}}
+{{< /tabs >}}
+
+When a tab is selected, a `tab` parameter string appears in the URL along with the title of all selected tabs. For instance, if *Tab 2* is selected in the tab sets above, `?tabs=tab-2` is appended to the URL. This allows the URL to be saved or shared, keeping the same tabs selected on the page.
 
 ### Terminal Output
 
@@ -775,6 +870,49 @@ Hello world!
 ````
 
 *The older syntax should not be used for new content.* While they are rendered with the same presentation by Hugo, they are not displayed the same in the GitHub.com UI. When viewing a Markdown file in the library on GitHub, the newer code fence shortcode syntax will have enhanced styling, compared with the older shortcode syntax.
+
+## Author Pages
+
+Profile pages for authors are listed at https://www.linode.com/docs/authors/. These are automatically generated from the `authors` frontmatter of the guides in the library. These pages list all of the guides that an author has published in the docs library.
+
+Docs contributors can create author pages by following these steps:
+
+{{< note >}}
+The second step is optional. If you do not follow this step, a profile page is still automatically generated from the `authors` frontmatter of the guides you have written. The second step shows you how to add custom biographical information to the profile page.
+{{< /note >}}
+
+1.  On the guides you have written, update the `authors` frontmatter to reference your name. This should be formatted like:
+
+    ```file
+    authors: ["FirstName LastName"]
+    ```
+
+1.  (Optional) Create a new directory and Markdown file for your author page under the `docs/authors` directory in the docs repository. The new directory should named after you, with uppercase letters replaced by lower case, and spaces replaced by a dash. For example, an author with the name `Nathan Smith` would have a new profile page created at `docs/authors/nathan-smith/_index.md`.
+
+    {{< note >}}
+    Note that the Markdown file is named `_index.md`, not `index.md`
+    {{< /note >}}
+
+    A [Hugo archetype](https://gohugo.io/content-management/archetypes/) is available to create new author pages. For the example author `Nathan Smith`, you would run this command to create the Markdown file for their profile page:
+
+    ```command
+    hugo new -k authorpage docs/authors/nathan-smith/_index.md
+    ```
+
+    The template that will be created looks like:
+
+    ```file
+    ---
+    title: "Nathan Smith"
+    link: ""
+    email: ""
+    description: "The Linode documentation library's profile page and submission listing for Nathan Smith"
+    ---
+
+    A short biography of the docs author/contributor. This biography text is displayed above a listing of their published docs/content.
+    ```
+
+    You can set an email, website link, and short meta description in the frontmatter of this file. You can also update the body of the file with a biography of the author. This biography will be displayed above the author's published guides listing.
 
 ## Legal Information
 

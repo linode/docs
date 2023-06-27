@@ -1,9 +1,6 @@
 ---
 slug: ikiwiki-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using Ikiwiki on Fedora 12 to power a standard wiki implementation.'
 keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
 tags: ["wiki","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: using-ikiwiki
         keywords:
            - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 

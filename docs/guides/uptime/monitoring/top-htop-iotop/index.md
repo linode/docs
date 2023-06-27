@@ -1,8 +1,5 @@
 ---
 slug: top-htop-iotop
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'This guide provides you with a how-to reference on using top, a Linux process manager and monitoring utilitie included with most distros, to monitor performance.'
 keywords: ["top", "htop", "iotop", "monitoring", "server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +13,7 @@ external_resources:
  - '[iotop](http://guichaz.free.fr/iotop/)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/top-htop-iotop/']
+authors: ["Elle Krout"]
 ---
 
 Viewing a server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage. The `top` command is a Linux process manager that can assist with monitoring.

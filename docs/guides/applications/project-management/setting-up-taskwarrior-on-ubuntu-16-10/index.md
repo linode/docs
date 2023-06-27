@@ -1,9 +1,6 @@
 ---
 slug: setting-up-taskwarrior-on-ubuntu-16-10
 deprecated: true
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
 description: 'This guide provides you with instructions on how to install and configure Taskwarrior, a utility that manages tasks from the command line on Ubuntu 16.10.'
 keywords: ["Install Taskwarrior", "Taskwarrior on Ubuntu", "Taskwarrior server"]
 tags: ["ubuntu"]
@@ -19,6 +16,7 @@ external_resources:
  - '[Taskwarrior Official Repository](https://github.com/taskwarrior)'
  - '[GTD with Taskwarrior, Blog](https://cs-syd.eu/posts/2015-06-14-gtd-with-taskwarrior-part-1-intro.html)'
  - '[Timewarrior](https://taskwarrior.org/docs/timewarrior/what.html)'
+authors: ["Angel Guarisma"]
 ---
 
 

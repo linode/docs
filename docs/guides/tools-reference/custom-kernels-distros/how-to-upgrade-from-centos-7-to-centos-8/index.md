@@ -1,8 +1,5 @@
 ---
 slug: how-to-upgrade-from-centos-7-to-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for upgrading from CentOS 7 to CentOS 8.'
 keywords: ["upgrade", "centos8", "centos7", "upgrade centos", "centos"]
 tags: ["centos"]
@@ -15,6 +12,7 @@ title: "Upgrading from CentOS 7 to CentOS 8"
 title_meta: 'How to Upgrade from CentOS 7 to CentOS 8'
 image: Upgrade_CentOS7_to_8.png
 aliases: ['/tools-reference/custom-kernels-distros/how-to-upgrade-from-centos-7-to-centos-8/']
+authors: ["Linode"]
 ---
 
 [CentOS](https://www.centos.org) is a Linux distribution derived from [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux). Some key features new for [CentOS 8](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS8.1905) are:

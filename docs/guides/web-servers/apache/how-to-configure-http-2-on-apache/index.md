@@ -1,7 +1,5 @@
 ---
 slug: how-to-configure-http-2-on-apache
-author:
-  name: Jeff Novotny
 description: 'In this tutorial, you will learn how to configure HTTP/2, an updated version of the HTTP technology which adds several useful features using Apache on Debian.'
 keywords: ['apache https']
 tags: ['web server', 'apache']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Configure HTTP/2 on Apache"
 title_meta: "How to Configure HTTP/2 on Apache"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+authors: ["Jeff Novotny"]
 ---
 
 [*HTTP/2*](https://en.wikipedia.org/wiki/HTTP/2) is an update to the original [*Hypertext Transfer Protocol*](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) (HTTP) specification offering improvements in efficiency and latency. The new version, which adds several useful features, is compatible with browsers that only support HTTP/1. HTTP/2 has many advantages and no significant drawbacks, so upgrading to the new version is recommended. This guide explains how to configure and use HTTP/2 on an Apache server and how to test it is working.

@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Having problems with your DNS records? This guide to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.'
 keywords: ["dns manager", "linode dns", "Linode Cloud Manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 tags: ["linode platform","resolving","cloud manager","dns"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-07-09
 modified_by:
   name: Linode
@@ -13,6 +9,7 @@ published: 2020-07-09
 title: Diagnose & Resolve DNS Records in DNS Manager
 title_meta: Troubleshooting DNS Records
 aliases: ['/platform/manager/troubleshooting-dns/','/guides/troubleshooting-dns/']
+authors: ["Linode"]
 ---
 
 Having problems with your DNS records? This guide to help get your DNS settings back on track. Follow these tips to troubleshoot DNS issues.

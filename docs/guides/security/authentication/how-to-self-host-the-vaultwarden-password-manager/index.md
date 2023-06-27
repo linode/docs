@@ -1,7 +1,5 @@
 ---
 slug: how-to-self-host-the-vaultwarden-password-manager
-author:
-  name: Tyler Langlois
 description: "Bitwarden is an open source password management application that can be self-hosted. This guide shows how to run an instance of the vaultwarden project."
 keywords: ["bitwarden self hosted", "free self hosted password manager", "self hosted password manager open source"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +9,8 @@ modified_by:
 title: "Self-Hosting the vaultwarden Password Manager"
 title_meta: "How to Self-Host the vaultwarden Password Manager"
 tags: ["ubuntu", "security", "web applications", "docker"]
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 aliases: ["security/authentication/self-hosted-password-management-with-bitwarden-rs/", "/guides/how-to-self-host-the-bitwarden-rs-password-manager/", "security/authentication/how-to-self-host-the-bitwarden-rs-password-manager/"]
+authors: ["Tyler Langlois"]
 ---
 
 The [Vaultwarden](https://github.com/dani-garcia/vaultwarden) project (formerly known as bitwarden_rs) provides a lightweight, single-process, API-compatible service alternative to [Bitwarden](https://bitwarden.com/). [Vaultwarden](https://bitwarden.com/) is an open source password management application that can be self-hosted and run on your infrastructure. By running the vaultwarden service, you can use Bitwarden browser extensions and mobile applications backed by your server.

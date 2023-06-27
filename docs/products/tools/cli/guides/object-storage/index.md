@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Linode CLI Commands for Object Storage"
 description: "How to use the Linode CLI to create and manage Linode Object Storage buckets and objects."
 published: 2020-07-20
 modified: 2022-05-02
+authors: ["Linode"]
 ---
 
 ## Basic Commands

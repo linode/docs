@@ -1,7 +1,5 @@
 ---
 slug: use-linux-choose-command
-author:
-  name: Nathaniel Stickman
 description: "In this guide, learn about the Linux choose command. It’s a fast and intuitive alternative to other command-line tools for text processing like awk and cut."
 keywords: ['awk command unix','linux text processing commands','linux cut command']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -9,9 +7,7 @@ published: 2021-12-30
 modified_by:
   name: Nathaniel Stickman
 title: "Use the choose Command for Text Processing on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 `choose` offers command-line text processing, like `cut` and `awk`, but with an emphasis on making the basics simple and intuitive. This Linux command is built on Rust, so it has fast performance. This guide shows you how to get started using the `choose` command on your Linux system.

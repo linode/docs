@@ -1,5 +1,6 @@
 ---
 title: Block Storage
+title_meta: "Block Storage Product Documentation"
 description: "Linode Block Storage is a scalable, high-speed, resilient and fault tolerant storage service."
 toc: true
 tab_group_main:

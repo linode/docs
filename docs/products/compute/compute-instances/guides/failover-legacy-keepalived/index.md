@@ -1,20 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to use Linode's IP Sharing feature to configure ARP-based IP failover using keepalived"
 keywords: ['networking','IP failover','keepalived']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-19
 modified: 2022-03-23
 modified_by:
   name: Linode
 title: "Configuring IP Failover using keepalived"
-contributor:
-  name: Linode
 external_resources:
 - '[keepalived Documentation](https://keepalived.readthedocs.io/en/latest/index.html)'
 aliases: ['/guides/ip-failover-keepalived/','/guides/ip-failover-legacy-keepalived/']
+authors: ["Linode"]
 ---
 
 {{< note >}}

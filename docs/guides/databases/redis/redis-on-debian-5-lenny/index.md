@@ -1,9 +1,6 @@
 ---
 slug: redis-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how to deploy applications that depend on the high performance and highly flexible key-value store Redis database on Debian 5 "Lenny".'
 keywords: ["redis debian 5", "redis lenny", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["debian","database","nosql"]
+authors: ["Linode"]
 ---
 
 

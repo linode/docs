@@ -1,8 +1,5 @@
 ---
 slug: install-java-on-centos
-author:
-  name: Angel Guarisma
-  email: aguarisma@linode.com
 description: 'This guide shows how to install the OpenJDK 8 runtime environment to support Java app execution and development on a Linode running CentOS 7.'
 keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
 tags: ["java","centos"]
@@ -22,6 +19,7 @@ relations:
         key: install-java
         keywords:
             - distribution: CentOS 7
+authors: ["Angel Guarisma"]
 ---
 
 ![Install Java on CentOS 7](install-java-on-centos-7-title-graphic.jpg "Install Java on CentOS 7")

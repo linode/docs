@@ -1,8 +1,5 @@
 ---
 slug: how-to-build-your-infrastructure-using-terraform-and-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This article gives you step-by-step instructions on how to use Terraform to provision, modify, and destroy infrastructure using only code and simple commands.'
 og_description: 'Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
@@ -13,8 +10,8 @@ aliases: ['/applications/configuration-management/terraform/how-to-build-your-in
 modified_by:
   name: Linode
 title: 'Use Terraform to Provision Linode Environments'
-contributor:
-  name: Damaso Sanoja
+authors: ["Damaso Sanoja"]
+tags: ["saas", "digital agencies"]
 ---
 
 ![Use Terraform to Provision Linode Environments](use-terraform-to-provision-linode-environments.png "Use Terraform to Provision Linode Environments")
@@ -472,7 +469,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = 1.27.1"
+      version = "1.27.1"
     }
   }
 }

@@ -1,11 +1,5 @@
 ---
 slug: how-to-create-a-docker-swarm-manager-and-nodes-on-linode
-author:
-  name: Linode Community
-  email: docs@linode.com
-contributor:
-  name: Jack Wallen
-  link: https://twitter.com/jlwallen
 description: "In this guide, we'll show you how to create and run a Docker Swarm - and thereby manage a Docker cluster - on Linode."
 keywords: ["docker", "container", "docker swarm", "swarm manager", "swarm nodes"]
 tags: ["ubuntu","container","docker"]
@@ -20,6 +14,7 @@ external_resources:
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 aliases: ['/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/']
+authors: ["Jack Wallen"]
 ---
 
 ![How to Create a Docker Swarm Manager and Nodes on Linode](create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")

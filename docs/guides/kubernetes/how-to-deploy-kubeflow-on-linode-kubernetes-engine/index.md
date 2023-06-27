@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-kubeflow-on-linode-kubernetes-engine
-author:
-  name: Daniele Polencic
-  email: daniele@learnk8s.io
 description: "In this guide, you'll learn how to deploy Kubeflow and train a model using Kubeflow pipelines on Linode Kubernetes Engine."
 keywords: ['kubernetes','kubeflow','machine learning','containers','tensorflow']
 tags: ["python","kubernetes","linode platform"]
@@ -12,15 +9,13 @@ modified_by:
   name: Linode
 title: "Deploying Kubeflow on Linode Kubernetes Engine"
 title_meta: "How to Deploy Kubeflow on LKE (Linode Kubernetes Engine)"
-contributor:
-  name: Daniele Polencic
-  link: https://github.com/danielepolencic
 image: 'deploying_kubeflow_on_linode_kubernetes_engine.png'
 external_resources:
 - '[Multi-user, auth-enabled Kubeflow installation](https://www.kubeflow.org/docs/started/k8s/kfctl-istio-dex/)'
 - '[Kubeflow Jupyter notebooks](https://www.kubeflow.org/docs/notebooks/)'
 - '[Kubeflow pipelines](https://www.kubeflow.org/docs/pipelines/)'
 aliases: ['/kubernetes/how-to-deploy-kubeflow-on-linode-kubernetes-engine/']
+authors: ["Daniele Polencic"]
 ---
 
 ## What is Kubeflow?
@@ -41,13 +36,13 @@ _Are you ready to train your model at scale?_
 
 3.  Most Kubeflow pipelines require [Kubernetes Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) that can be attached to several nodes at once (ReadWriteMany). Currently, the only mode supported by the Linode Block Storage CSI driver is ReadWriteOnce, meaning that it can only be connected to one Kubernetes node at a time.
 
-{{< note type="alert" respectIndent=false >}}
+{{< note type="alert" >}}
 This guide's example instructions create several billable resources on your Linode account. If you do not want to keep using the example cluster created with this guide, be sure to delete it when you have finished. If you remove the resources afterward, you will only be billed for the hour(s) that the resources were present on your account. For more information see our [Billing and  Payments](/docs/products/platform/billing/) guide. For a full list of plan prices, visit our [Pricing page](https://www.linode.com/pricing/).
 {{< /note >}}
 
 ## Create an LKE Cluster
 
-Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/) to create and connect to an LKE cluster.
+Follow the instructions in [Deploying and Managing a Cluster with Linode Kubernetes Engine Tutorial](/docs/products/compute/kubernetes/) to create and connect to an LKE cluster.
 
 The [official Kubeflow documentation](https://www.kubeflow.org/docs/started/k8s/overview/) recommends provisioning a cluster with at least 4 CPU cores, 12GB of memory and 50GB of space available. We recommend running three 16GB Linodes — that should give you enough resources to scale your models.
 
@@ -55,16 +50,18 @@ The [official Kubeflow documentation](https://www.kubeflow.org/docs/started/k8s/
 
 You can verify that the installation is successful with:
 
-    kubectl get nodes
+```command
+kubectl get nodes
+```
 
 The output should be similar to:
 
-{{< output >}}
+```output
 NAME                        STATUS   ROLES    AGE   VERSION
 lke7189-9006-5f05145fc9a3   Ready    <none>   8h    v1.17.3
 lke7189-9006-5f051460a1e2   Ready    <none>   8h    v1.17.3
 lke7189-9006-5f0514617a87   Ready    <none>   8h    v1.17.3
-{{</ output>}}
+```
 
 ## Install Kubeflow
 
@@ -82,25 +79,33 @@ You can [download and install `kfctl` from the official repository](https://gith
 
 1. Unpack the tar ball with:
 
-        tar -xvf kfctl_v1.0.2_.tar.gz
+    ```command
+    tar -xvf kfctl_v1.0.2_.tar.gz
+    ```
 
 1. Add the location of `kfctl` binary to the path environment variable. If you don't add the location of the binary to the path variable, you must use the full path to the kfctl binary each time you run it.
 
-        export PATH=$PATH:<path to where kfctl was unpacked>
+    ```command
+    export PATH=$PATH:<path to where kfctl was unpacked>
+    ```
 
 Note, at the time of writing this guide, there is no Windows release available. However, you can use [WSL2](https://docs.microsoft.com/en-us/windows/wsl/wsl2-index) or a [Docker container](https://docs.docker.com/docker-for-windows/) to work around this limitation.
 
 Verify that the binary is installed correctly with:
 
-    kfctl version
+```command
+kfctl version
+```
 
 ### The KfDef file
 
-The last piece of the puzzle is the `KfDef` file. Think of the `KfDef` file as a list of components that should be installed with Kubeflow. As an example, Kubeflow can be configured to use the [Spark operator](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator), [Katib (Hyperparameter Tuning)](https://www.kubeflow.org/docs/components/hyperparameter-tuning/hyperparameter/), [Seldon serving](https://www.kubeflow.org/docs/components/serving/seldon/), etc.
+The last piece of the puzzle is the `KfDef` file. Think of the `KfDef` file as a list of components that should be installed with Kubeflow. As an example, Kubeflow can be configured to use the [Spark operator](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator), [Katib (Hyperparameter Tuning)](https://www.kubeflow.org/docs/components/katib/overview/), [Seldon serving](https://www.kubeflow.org/docs/external-add-ons/serving/seldon/), etc.
 
 1.  You can download the following `KfDef` that includes a lighter version of Kubeflow as well as [Dex — an identity provider](https://github.com/dexidp/dex) useful for managing user access.
 
-        wget https://raw.githubusercontent.com/learnk8s/kubeflow-pipelines-demo/master/kfctl_istio_dex.v1.0.2-pipelines.yaml
+    ```command
+    wget https://raw.githubusercontent.com/learnk8s/kubeflow-pipelines-demo/master/kfctl_istio_dex.v1.0.2-pipelines.yaml
+    ```
 
     If you open the file, you can see the various components that are about to be installed.
 
@@ -108,19 +113,25 @@ The last piece of the puzzle is the `KfDef` file. Think of the `KfDef` file as a
 
 2.  Next, generate the configuration with:
 
-        kfctl build -f kfctl_istio_dex.v1.0.2-pipelines.yaml
+    ```command
+    kfctl build -f kfctl_istio_dex.v1.0.2-pipelines.yaml
+    ```
 
     You should notice that a new folder named `kustomize` was created. If you inspect the folder, you should find a collection of components and configurations.
 
 3.  Apply the configuration with:
 
-        kfctl apply -f kfctl_istio_dex.v1.0.2-pipelines.yaml
+    ```command
+    kfctl apply -f kfctl_istio_dex.v1.0.2-pipelines.yaml
+    ```
 
     The command reads the `KfDef` definition and the kustomize folder, and submits all resources to the cluster.
 
     The process could easily take 15 to 20 minutes, depending on your cluster specs. You can monitor the progress of the installation from another terminal with:
 
-        kubectl get pods --all-namespaces
+    ```command
+    kubectl get pods --all-namespaces
+    ```
 
     As soon as `kfctl` completes the installation, it might take a little longer for all Pods to be in a _Running_ state.
 
@@ -136,7 +147,9 @@ Once the installation is completed, you can decide how you will use Kubeflow. Yo
 
 If you prefer creating a tunnel, execute the following command:
 
-    kubectl port-forward --namespace istio-system service/istio-ingressgateway 8080:80
+```command
+kubectl port-forward --namespace istio-system service/istio-ingressgateway 8080:80
+```
 
 Visit http://localhost:8080 in your browser. Skip to the [Logging In](#logging-in) section.
 
@@ -144,20 +157,24 @@ Visit http://localhost:8080 in your browser. Skip to the [Logging In](#logging-i
 
 If you prefer a more permanent solution, you can expose the login page with a NodeBalancer. Execute the following command:
 
-    kubectl patch service --namespace istio-system istio-ingressgateway -p '{"spec": {"type": "LoadBalancer"}}'
+```command
+kubectl patch service --namespace istio-system istio-ingressgateway -p '{"spec": {"type": "LoadBalancer"}}'
+```
 
 The command exposes the [Istio Ingress Gateway](https://www.kubeflow.org/docs/started/k8s/kfctl-k8s-istio/#access-the-kubeflow-user-interface-ui) to external traffic.
 
 You can obtain the IP address for the load balancer with:
 
-    kubectl get service --namespace istio-system istio-ingressgateway
+```command
+kubectl get service --namespace istio-system istio-ingressgateway
+```
 
 The output should look like:
 
-{{< output >}}
+```output
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                                      AGE
 istio-ingressgateway   LoadBalancer   10.128.29.15   139.999.26.160   15020:31944/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:32622/TCP,15030:31175/TCP,15031:31917/TCP,15032:31997/TCP,15443:30575/TCP   8m2s
-{{</ output >}}
+```
 
 Note the value of the `EXTERNAL-IP` IP address, and open that address in your browser.
 
@@ -211,4 +228,3 @@ You can [explore the Python code using a Jupyter notebook](https://github.com/ku
 Pipelines are written using Python and a Kubeflow domain-specific language (DSL). While you can leverage your existing Python models, there are a small amount of changes necessary to teach Kubeflow how to break your model into smaller parts for distributed processing.
 
 The best resource to [continue learning Kubeflow pipelines](https://www.kubeflow.org/docs/pipelines/sdk/sdk-overview/) is the official documentation.
-

@@ -1,10 +1,7 @@
 ---
 slug: install-mastodon-on-ubuntu-2004
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: 'This guide will show you how to install Mastodon, a open source and decentralized alternative to Twitter also part of the Fediverse, on Ubuntu 20.04.'
-keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','ubuntu 20.04']
+description: 'This guide will show you how to install Mastodon, an open source and decentralized alternative to Twitter also part of the Fediverse, on Ubuntu 20.04.'
+keywords: ['mastodon', 'micro blog', 'microblogging', 'fediverse', 'twitter alternative', 'ubuntu 20.04']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: MASTODON2.jpg
@@ -14,9 +11,7 @@ modified_by:
   name: Linode
 title: "Install a Mastodon Server on Ubuntu 20.04"
 title_meta: "How to Install a Mastodon Server on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -33,6 +28,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Ubuntu 20.04
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}
@@ -41,7 +37,7 @@ relations:
 
 What sets the Mastodon platform apart is its federated approach to social networking. Each Mastodon instance operates independently — anyone can create an instance and build their community. But users from different instances can still follow each other, share content, and communicate.
 
-Mastodon participates in the [Fediverse](https://en.wikipedia.org/wiki/Fediverse), a collection of social networks and other websites that communicate using the [*ActivityPub*](https://en.wikipedia.org/wiki/ActivityPub) protocol. That allows different Mastodon instances to communicate, and also allows other platforms in the Fediverse to communicate with Mastodon.
+Mastodon participates in the [Fediverse](https://en.wikipedia.org/wiki/Fediverse), a collection of social networks and other websites that communicate using the [*ActivityPub*](https://en.wikipedia.org/wiki/ActivityPub) protocol. It allows different Mastodon instances to communicate and also allows other platforms in the Fediverse to communicate with Mastodon.
 
 Mastodon servers range in size from small private instances to massive public instances and typically center on specific interests or shared principles. The biggest Mastodon server is [Mastodon.social](https://mastodon.social/about), a general-interest server created by the developers of the Mastodon platform. It has over 540,000 users and boasts a thorough [Code of Conduct](https://mastodon.social/about/more).
 
@@ -55,10 +51,10 @@ Mastodon servers range in size from small private instances to massive public in
 
 1. Prepare an SMTP server for Mastodon to send email notifications to users when they register for the site, get a follower, receive a message, and for other Mastodon activity.
 
-    - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Email with Postfix, Dovecot, and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
+    - You can create your SMTP server — and even host it on the same machine as your Mastodon server — by following the [Configure an Email Server with Postfix, Dovecot, and MySQL on Debian, and Ubuntu](/docs/guides/email-with-postfix-dovecot-and-mysql/) guide.
 
-        {{< note respectIndent=false >}}
-This guide uses PostgreSQL database as a backend for Mastodon. You can setup the SMTP server with PostgreSQL database instead of MySQL.
+        {{< note >}}
+This guide uses the PostgreSQL database as a backend for Mastodon. You can set up the SMTP server with the PostgreSQL database instead of MySQL.
 {{< /note >}}
 
     - Alternatively, you can use a third-party SMTP service. This guide provides instructions for using [Mailgun](https://www.mailgun.com/) as your SMTP provider.
@@ -66,14 +62,14 @@ This guide uses PostgreSQL database as a backend for Mastodon. You can setup the
 1. Replace occurrences of `example.com` in this guide with the domain name you are using for your Mastodon instance.
 
 {{< note >}}
-This guide is written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Docker and Docker Compose
 
 Mastodon can be installed using its included [Docker Compose](https://docs.docker.com/compose/) file. Docker Compose installs and runs all of the requisites for the Mastodon environment in Docker containers. If you have not used Docker before, it is recommended that you review the following guides:
 
-- [Introduction to Docker](/docs/guides/introduction-to-docker/)
+- [An Introduction to Docker](/docs/guides/introduction-to-docker/)
 - [How to Use Docker Compose](/docs/guides/how-to-use-docker-compose/)
 
 ### Install Docker
@@ -86,32 +82,25 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ## Download Mastodon
 
-1. Clone the Mastodon Git repository into the home directory, and change it into the resulting Mastodon directory.
+1. Clone the Mastodon Git repository into the home directory. Then, change into the resulting Mastodon directory and grab the latest Mastodon release.
 
-    ```command
+    ```code
     cd ~/
-    git clone https://github.com/mastodon/mastodon.git
+    git clone https://github.com/tootsuite/mastodon.git
     cd mastodon
+    git checkout $(git tag -l | grep -v 'rc[0-9]*$' | sort -V | tail -n 1)
     ```
-
-    Unless otherwise stated, all the Docker Compose-related commands to be run in this directory.
+    {{< note >}}
+Unless otherwise stated, all the Docker Compose–related commands are to be run in this directory.
+{{< /note >}}
 
 ## Configure Docker Compose
 
 1. Using your preferred text editor, open the `docker-compose.yml` file located in the `mastodon` directory.
 
-1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line as here: `tootsuite/mastodon:v3.3.0`.
+1. Comment out the `build` lines (adding `#` in front of each), and append a release number to the end of each `image: tootsuite/mastodon` line like: `tootsuite/mastodon:v4.0.2`.
 
     Although you can use `latest` as the release, it is recommended that you select a specific release number. The Mastodon GitHub page provides a chronological [list of Mastodon releases](https://github.com/mastodon/mastodon/releases).
-
-1. In the `db` section, add the following beneath the `image` line. Replace `password` with a password you would like to use for the PostgreSQL database that operates on the Mastodon backend.
-
-    ```file {title="docker-compose.yml"}
-    environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: mastodon_production
-      POSTGRES_USER: mastodon
-    ```
 
 1. The resulting `docker-compose.yml` file should resemble [the example Docker file](docker-compose.yml).
 
@@ -121,41 +110,41 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
     cp .env.production.sample .env.production
     ```
 
-1. Use Docker and Mastodon to generate a new value for the `SECRET_KEY_BASE` setting:
+1. Use Docker and Mastodon to generate a new value for the `SECRET_KEY_BASE` setting.
 
     ```command
-    SECRET_KEY_BASE=$(docker-compose run --rm web bundle exec rake secret)
+    SECRET_KEY_BASE=$(docker compose run --rm web bundle exec rake secret)
     ```
 
     This creates a string of random characters. If you encounter an error in the next step, run the command again to generate another string.
 
-1. Insert the `SECRET_KEY_BASE` setting into `.env.production` using the `sed` command:
+1. Insert the `SECRET_KEY_BASE` setting into `.env.production` using the `sed` command.
 
     ```command
     sed -i -e "s/SECRET_KEY_BASE=/&${SECRET_KEY_BASE}/" .env.production
     ```
 
-1. Combine the previous two actions into one step to set a value for the `OTP_SECRET` setting in `.env.production`:
+1. Combine the previous two actions into one step to set a value for the `OTP_SECRET` setting in `.env.production`.
 
     ```command
-    sed -i "s/OTP_SECRET=$/&$(docker-compose run --rm web bundle exec rake secret)/" .env.production
+    sed -i "s/OTP_SECRET=$/&$(docker compose run --rm web bundle exec rake secret)/" .env.production
     ```
 
-1. Generate values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`settings:
+1. Generate values for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`settings.
 
     ```command
-    docker-compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
+    docker compose run --rm web bundle exec rake mastodon:webpush:generate_vapid_key
     ```
 
 1. Copy the output from the previous command, open `.env.production` in your text editor, and paste the command output into the two lines for `VAPID_PRIVATE_KEY` and `VAPID_PUBLIC_KEY`.
 
 1. Fill out the remaining fields of the `.env.production` file:
 
-    - `LOCAL_DOMAIN`: Enter your Mastodon server's domain name.
+    - `LOCAL_DOMAIN`: Enter your Mastodon server's domain name
 
-    - `DB_PASS`: Enter the password you set for the database in the `docker-compose.yml` file.
+    - `DB_USER`: Change this to `postgres`, and leave the `DB_PASS` field empty
 
-    - Enter `mastodon_db_1` for `DB_HOST` and `mastodon_redis_1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder.
+    - Enter `mastodon-db-1` for `DB_HOST` and `mastodon-redis-1` for `REDIS_HOST`. In both of these values, `mastodon` corresponds to the name of the Mastodon base folder
 
     - Fill out the `SMTP` fields with the information from your SMTP provider. If you set up your SMTP server, use its domain name for `SMTP_SERVER` and add the following lines:
 
@@ -170,10 +159,10 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 ## Complete the Docker Compose Setup
 
-1. Build the Docker Compose environment.
+1. Build the Docker Compose environment using the following command:
 
     ```command
-    docker-compose build
+    docker compose build
     ```
 
 1. Give ownership of the Mastodon `public` directory to user `991`. This is the default user ID for Mastodon, and this command ensures that it has the necessary permissions.
@@ -185,12 +174,12 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Run Mastodon's Docker Compose setup script. You are prompted to enter information about the Docker Compose services and the Mastodon instance.
 
     ```command
-    docker-compose run --rm web bundle exec rake mastodon:setup
+    docker compose run --rm web bundle exec rake mastodon:setup
     ```
 
     - Many prompts repeat fields you completed in the `.env.production` file. Make sure to enter the same information here as you entered in the file.
 
-    - When prompted to create a Mastodon admin user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
+    - When prompted to create a Mastodon administrator user account, choose to do so (`Y`). Enter the username, password, and email address you would like to use to access the account.
 
     - For any other prompts, enter the default values by pressing **Enter**.
 
@@ -199,13 +188,13 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 1. Start the Docker Compose services.
 
     ```command
-    docker-compose up -d
+    docker compose up -d
     ```
 
-1. Unless manually stopped, the Docker Compose services begin running automatically at system startup. Run the following command to manually stop the Docker Compose services:
+1. Unless manually stopped, the Docker Compose services begin running automatically at system startup. Run the following command to manually stop the Docker Compose services.
 
     ```command
-    docker-compose down
+    docker compose down
     ```
 
 ## Setup an HTTP/HTTPS Proxy
@@ -224,7 +213,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
     sudo apt install nginx
     ```
 
-1. Copy the `nginx.conf` file included with the Mastodon installation to the `sites-available` NGINX folder; use your Mastodon domain name instead of `example.com` in the file name:
+1. Copy the `nginx.conf` file included with the Mastodon installation to the `sites-available` NGINX folder; use your Mastodon domain name instead of `example.com` in the file name.
 
     ```command
     sudo cp ~/mastodon/dist/nginx.conf /etc/nginx/sites-available/example.com.conf
@@ -243,7 +232,7 @@ Mastodon can be installed using its included [Docker Compose](https://docs.docke
 
 Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide uses [Certbot](https://certbot.eff.org) to request and downloads a free certificate from [Let's Encrypt](https://letsencrypt.org).
 
-1. Update the [Snap](https://snapcraft.io/docs/getting-started) app store. Snap provides application bundles that work across major Linux distributions and comes by default with all Ubuntu releases since 16.04:
+1. Update the [Snap](https://snapcraft.io/docs/getting-started) app store. Snap provides application bundles that work across major Linux distributions and comes by default with all Ubuntu releases since 16.04.
 
     ```command
     sudo snap install core && sudo snap refresh core
@@ -269,7 +258,7 @@ Mastodon is served over HTTPS, so you need an SSL/TLS certificate. This guide us
 
     Certbot prompts you to select from the NGINX sites configured on your machine. Select the one with the domain name you set up for your Mastodon instance.
 
-1. Certbot includes a chron job that automatically renews your certificate before it expires. You can test the automatic renewal with the following command.
+1. Certbot includes a chron job that automatically renews your certificate before it expires. You can test the automatic renewal with the following command:
 
     ```command
     sudo certbot renew --dry-run

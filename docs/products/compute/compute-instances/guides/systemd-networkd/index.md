@@ -1,10 +1,6 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to configure networking using the systemd-networkd utility on Ubuntu, Arch, and other modern Linux distributions"
 keywords: ["static", "ip address", "systemd-networkd"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-27
 modified: 2022-06-17
 modified_by:
@@ -12,6 +8,7 @@ modified_by:
 title: "Network Configuration Using systemd-networkd"
 tags: ["networking","linode platform"]
 aliases: ['/guides/systemd-networkd/']
+authors: ["Linode"]
 ---
 
 The [systemd-networkd](https://wiki.archlinux.org/title/systemd-networkd) tool is a newer tool developed as part of systemd. Arch and modern versions of Ubuntu (17.10 and above) currently use systemd-networkd as their default network configuration software.

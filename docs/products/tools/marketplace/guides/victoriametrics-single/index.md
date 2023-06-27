@@ -1,18 +1,12 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy VictoriaMetrics Single on a Linode Compute Instance. This provides you with an open source time series database and monitoring solution, designed to collect, store and process real-time metrics."
 keywords: ['victoriametrics','monitoring','metrics','data']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy VictoriaMetrics Single through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Victoriametrics](https://victoriametrics.com/)'
 - '[VictoriaMetrics documentation](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html)'
@@ -20,6 +14,7 @@ external_resources:
 - '[VictoriaMetrics Articles](https://docs.victoriametrics.com/Articles.html)'
 - '[Grafana Dashboards for VictoriaMetrics](https://grafana.com/grafana/dashboards/10229)'
 aliases: ['/guides/deploying-victoriametrics-single-marketplace-app/','/guides/victoriametrics-single-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [VictoriaMetrics](https://victoriametrics.com/) is a free [open source time series database](https://en.wikipedia.org/wiki/Time_series_database) (TSDB) and monitoring solution that is designed to collect, store, and process real-time metrics. It supports the [Prometheus](https://en.wikipedia.org/wiki/Prometheus_(software)) pull model and various push protocols ([Graphite](https://en.wikipedia.org/wiki/Graphite_(software)), [InfluxDB](https://en.wikipedia.org/wiki/InfluxDB), OpenTSDB) for data ingestion. It is optimized for storage with high-latency IO, low IOPS, and time series with [high churn rate](https://docs.victoriametrics.com/FAQ.html#what-is-high-churn-rate). For reading the data and evaluating alerting rules, VictoriaMetrics supports the PromQL, [MetricsQL](https://docs.victoriametrics.com/MetricsQL.html), and Graphite query languages.
