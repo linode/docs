@@ -78,6 +78,7 @@ appserver
 appsmith
 appwrite
 apxs
+architected
 architecting
 aren
 argv
@@ -466,6 +467,7 @@ dbserver
 dcid
 dcs
 deadman
+deallocated
 deallocation
 deathmatch
 debconf
@@ -517,6 +519,7 @@ dired
 direnv
 dirtycow
 discoverability
+diskpart
 disqus
 distro
 distros
@@ -890,6 +893,7 @@ hostname
 hostnames
 hortonworks
 hotfix
+hotfixes
 hotlink
 hotlinked
 hotlinking
@@ -957,6 +961,7 @@ ifup
 ifupdown
 ignoreip
 ignoreregex
+ILLA
 ikiwiki
 im
 imagize
@@ -1496,6 +1501,7 @@ netlink
 netloc
 netmask
 netplan
+netsh
 netstat
 netstumbler
 netuser
@@ -1722,6 +1728,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powercfg
 powershell
 ppa
 pparadis
@@ -1882,6 +1889,7 @@ remediations
 remi
 remmina
 remotehost
+reparse
 replicants
 replicaset
 replicationcontrollers
@@ -2163,6 +2171,8 @@ Stroustrup
 su
 subcommand
 subcommands
+subcontext
+subcontexts
 subfile
 subfiles
 subfolder
@@ -2303,6 +2313,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolkits
 toolset
 toolstrip
 tooltip
