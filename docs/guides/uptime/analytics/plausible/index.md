@@ -5,7 +5,7 @@ description: 'Learn how to install the analytics tool Plausible that can use to 
 keywords: ['plausible','analytics']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["TechHut"]
-published: 2023-06-22
+published: 2023-06-27
 modified_by:
   name: Linode
 ---
@@ -20,7 +20,7 @@ modified_by:
 
 1.  [Deploy a Docker Marketplace App](/docs/products/tools/marketplace/guides/docker/). This includes creating your limited sudo user, your SSH public key, the previously generated API token, the domain you'd like to use and an email address, the preferred image, region, plan, and root password. There are additional options for opening ports to allow email, however this is only needed if you'll be allowing others to register for this Plausible instance. Once ready click on *Create Linode*. The process will take about 5-10 minutes to complete.
 
-1.  You need a domain name configured in the [Akamai Cloud Manager](/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
+1.  You need a domain name configured in the [DNS Manager](/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     sudo apt update && sudo apt upgrade -y
     ```
 
-1.  Now that our system is up to date we need to clone the repository from Plausible containing our Docker compose file and the configuration files.
+1.  Now that your system is up to date, clone the repository from Plausible containing the Docker compose file and the configuration files.
 
     ```command
     git clone https://github.com/plausible/hosting
@@ -43,15 +43,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Adding Required Configurations
 
-1.  Within the hosting folder there is a file called `plausible-conf.env`. This contains the environmental variables for the Docker compose file. The most important variables to configure are the `SECRET_KEY_BASE` and the `BASE_URL` variables. You can generate a security key with the command below.
+1.  There is a file called `plausible-conf.env` within the hosting folder. This contains the environmental variables for the Docker compose file. The most important variables to configure are the `SECRET_KEY_BASE` and the `BASE_URL` variables. You can generate a security key with the command below.
 ​
-    ```
+    ```command
     openssl rand -base64 64 | tr -d '\n' ; echo
     ```
 
-1.  Use a tool such as nano or vim to edit the `plausible-conf.env` file. Add your domain to the `BASE_URL` variable. We can use the HTTP rather than HTTPS for now. In a later section, you will change this after generating the proper SSL certification.
-​
-![Editing the configuration variables for Plausible](plausible_variables.png)
+1.  Use a tool such as nano or vim to edit the `plausible-conf.env` file. Add your domain to the `BASE_URL` variable. For now, use the HTTP protocol rather than HTTPS. In a later section, you will change this after generating the proper SSL certification.
 
 1.  Once you've added the URL and key, save the file.
 
@@ -65,30 +63,32 @@ This guide is written for a non-root user. Commands that require elevated privil
     sudo docker-compose up -d
     ```
 
-1.  With the container running, in your browser navigate to your domain name followed by the port 8000 to ensure that your new Plausible website is up and running. For instance, if you had the domain example.com, you'd enter the following.
+1.  With the container running, navigate to port 8000 on your domain name to ensure that your new Plausible website is up and running. For instance, if you had the domain example.com, you'd enter the following:
 ​
     ```
     http://example.com:8000
     ```
 ​
-    If you see the Plausible website you know that it was deployed successfully.
+    If you see the Plausible website you, Plausible was deployed successfully.
 
 ## Reverse Proxy and Certificate
 
-1.  Now, you need to set up NGINX server software and use Certbot to get an SSL certificate. First, install NGINX with the command below.
+Now, you need to set up NGINX server software and configure it to run your Plausible website.
+
+1.  Install NGINX with the command below.
 ​
     ```
     sudo apt update
     sudo apt install nginx
     ```
 
-  1.  Allow the ports *80* and *443* in NGINX.
+1.  Allow the ports *80* and *443* in NGINX.
 ​
     ```
     sudo ufw allow "Nginx Full"
     ```
 
-1.  Create a configuration profile in the `/etc/nginx/sites-available/` directory. You can call this anything. For this example, we will use the name of the service. The command below uses nano, but feel free to use your preferred editor.
+1.  Create a configuration profile in the `/etc/nginx/sites-available/` directory. You can call this anything. The command below uses nano, but feel free to use your preferred editor.
 ​
     ```
     sudo nano /etc/nginx/sites-available/plausible.conf
@@ -96,7 +96,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 1.  Copy and paste the following configuration text into your empty configuration file. Be sure to change the `example.com` domain to the domain you wish to use. In this case do not include *http* or *https*.
 ​
-    ```code {lang=nginx}
+    ```file {title="/etc/nginx/sites-available/plausible.conf"}
     server {
         listen       80;
         listen       [::]:80;
@@ -129,9 +129,9 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 Now that the service is reloaded, visit your website without the port to ensure the new configuration is working.
 ​
-## Adding an SSL Certification with Certbot
+## Adding a TLS (SSL) Certification with Certbot
 ​
-Adding an SSL certificate to any website is an important step for both security and user confidence. Generating an SSL certificate for our NGINX proxy is straightforward.
+Adding an SSL certificate to any website is an important step for both security and user confidence. Generating a TLS certificate for our NGINX proxy is straightforward.
 
 1.  First, install Certbot.
 ​
@@ -139,7 +139,7 @@ Adding an SSL certificate to any website is an important step for both security 
     sudo apt install certbot python3-certbot-nginx
     ```
 
-1.  With the application installed, run Certbot with the domain name you have chosen. After running this command there will be additional prompts.
+1.  With the application installed, run Certbot with the domain name you have chosen. After running this command, there will be additional prompts.
 
     ```
     sudo certbot --nginx -d your.domain.here
@@ -147,12 +147,10 @@ Adding an SSL certificate to any website is an important step for both security 
 
     You'll need to enter your email, accept Certbot's terms of service, decide if you'd like to share your email, and then select if you'd like all HTTP traffic redirected to HTTPS. This is optional, but redirecting is generally a good idea.
 
-    ![Certbot configuration](plausible_certbot.png)
-
     If successful, you'll see a "congratulations" message with some additional information. At this point, you should go back into your `plausible-conf.env` from earlier and change your `BASE_URL` so this reflects the domain being served over HTTPS.
 ​
 ## Accessing Plausible and Additional Configuration
 ​
-You're done! You can now create your account, add your website, and retrieve the code snippet you will include on your website. When adding the code to your website make sure it's in a location that is visible on every page. This can be done with a plugin in WordPress or with the code injection on Ghost. The inclusion process will be slightly different for every platform and service.
+You're done! You can now create your account, add your website, and retrieve the code snippet you will include on your website. When adding the code to your website, make sure it's in a location that is visible on every page. This can be done with a plugin in WordPress or with the code injection on Ghost. The inclusion process will be slightly different for every platform and service.
 ​
-There are many more configuration options and changes you can make. For example, such as [adding a variable to disable registration](https://plausible.io/docs/self-hosting-configuration). Additionally, setting up email servers and notification was not covered in this article. For more options and advanced configuration please check out [Plausible's official documentation](https://plausible.io/docs/self-hosting).
+There are many more configuration options and changes you can make. For example, such as [adding a variable to disable registration](https://plausible.io/docs/self-hosting-configuration). Additionally, setting up email servers and notification was not covered in this article. For more options and advanced configuration, please check out [Plausible's official documentation](https://plausible.io/docs/self-hosting).
