@@ -246,9 +246,23 @@ Additionally, Tactical also has beta support for Linux agents. These agents are 
 
 1.  On the target machine, navigate in a web browser to the download link for the deployment. Run the executable once the download has finished.
 
+    {{< note >}}
+    Windows may require you to verify that you want to run the executable. Select *More Info*, and select the **Run Anyway** option.
+    {{< /note >}}
+
+    After the executable has run, you should see a message like the one below. Additionally, you should see an entry for the new agent within Tactical RMM.
+
+    ```output
+    Installation was successful! / Allow a few minutes for the agent to properly display in the RMM"
+    ```
+
 #### Deploying an Agent to Linux (Beta)
 
 Tactical's deployment links do not support Linux agents. Instead, a Linux agent should be deployed using a dynamically-generated executable.
+
+{{< note type="warning" >}}
+While Linux agents are in beta, Tactical requires you to be a paid sponsor in order to use these agents. Learn more about this requirement in Tactical's [code-signing](https://docs.tacticalrmm.com/code_signing/) documentation.
+{{< /note >}}
 
 1.  On the target machine, access your Tactical RMM dashboard.
 
