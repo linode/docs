@@ -1,9 +1,6 @@
 ---
 slug: how-to-install-and-use-postal
 title: "How to Install and Use Postal"
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install, configure, and use the self-hosted Postal mail server.'
 keywords: ['what is Postal', 'install Postal', 'configure Postal', 'Postal DNS']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
