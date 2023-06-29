@@ -189,7 +189,7 @@ In addition to the server, the `surreal` binary includes an `sql` command to run
 
     ```output
     {
-	    value: 'last'
+      value: 'last'
     }
     ```
 
