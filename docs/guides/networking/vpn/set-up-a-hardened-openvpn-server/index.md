@@ -1,8 +1,5 @@
 ---
 slug: set-up-a-hardened-openvpn-server
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with instructions on setting up a hardened and secure OpenVPN server so you can securely tunnel your traffic from anywhere on any device.'
 keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 tags: ["networking","security","vpn","ssl"]
@@ -15,6 +12,7 @@ published: 2015-12-09
 title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
+authors: ["Linode"]
 ---
 
 [OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.
@@ -30,9 +28,9 @@ This guide is the first of a three-part series. Part one sets up a VPN server on
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and set your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and set your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
 
 3.  Update the system:
 
@@ -74,13 +72,13 @@ This series assumes your VPN will operate over IPv4 only. If you instead wish to
 
 4. Add IPv4 rules: `iptables-persistent` stores its rulesets in the files `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6`. Open the `rules.v4` file and replace everything in it with the information below:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 By default, Linode distribution images are built with network interfaces renamed to `eth0`. If you are using a custom distribution, verify the name of your network interface, first:
 
     ip link show
 
 Replace any instances of `eth0` with the name of your network interface.
-    {{</ note >}}
+    {{< /note >}}
 
     {{< file "/etc/iptables/rules.v4" >}}
 *filter
@@ -208,7 +206,7 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
         openssl genpkey -genparam -algorithm DH -out /etc/openvpn/server/dhp4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 According to OpenSSL's man page, `genpkey -genparam` supersedes `dhparam`.
 {{< /note >}}
 
@@ -290,7 +288,7 @@ Each client device connecting to the VPN should have its own unique key and iden
 
     cd ~/ca && source ./vars && ./build-key client1
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
 {{< /note >}}
 
@@ -351,7 +349,7 @@ verb 3
 {{< /file >}}
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can extract a server template from OpenVPN's sample configuration files using:
 
 `gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf`
@@ -395,7 +393,7 @@ tls-crypt ta.key
 {{< /file >}}
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You can use a client template from OpenVPN's sample configuration files using the command below. Most clients require a `.ovpn` file format instead of `.conf`.
 
 `cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn`
@@ -418,7 +416,7 @@ Start the OpenVPN daemon and enable it on reboot:
 
     sudo systemctl enable openvpn.* && sudo systemctl start openvpn.*
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will spawn a VPN daemon (server instance) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
 {{< /note >}}
 

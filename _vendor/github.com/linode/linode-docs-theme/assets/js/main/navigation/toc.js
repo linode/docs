@@ -5,8 +5,6 @@ import { isMobile, isScreenLargerThan } from '../helpers/index';
 var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
 var devMode = false;
 
-const headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
-
 const setProgress = function (self, el) {
 	let mainEl = document.querySelector('#main__content');
 	let mainHeight = mainEl.offsetHeight;
@@ -24,9 +22,15 @@ export function newToCController() {
 		},
 		enabled: false,
 		showHeading: true,
-		init: function () {
+		initToC: function (level2Only) {
+			if (level2Only) {
+				this.headerEls = () => document.querySelectorAll('#main__content h2');
+			} else {
+				this.headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
+			}
+
 			this.createTOC();
-			if (devMode || isScreenLargerThan(1711)) {
+			if (devMode || isScreenLargerThan(1527)) {
 				this.$store.nav.open.toc = true;
 			}
 
@@ -43,7 +47,7 @@ export function newToCController() {
 			let row = [];
 			let prevLevel = 0;
 
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				// Skip hidden elements and headers without ID.
 				if (!el || el.offsetParent === null || !el.id) {
 					return;
@@ -155,7 +159,7 @@ export function newToCController() {
 		onHashchange: function () {
 			let id = document.location.hash.slice(1);
 			let self = this;
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				if (el.id === id) {
 					setProgress(self, el);
 				}
@@ -168,7 +172,7 @@ export function newToCController() {
 			let scrollpos = window.scrollY;
 			let self = this;
 
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				let offset = el.offsetTop;
 
 				if (offset > scrollpos && offset < scrollpos + 200) {

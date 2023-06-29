@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.10 (Karmic).'
 keywords: ["ejabberd", "ejabberd ubuntu karmic", "ejabberd ubuntu 9.10", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["ubuntu"]
@@ -19,13 +16,14 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics, because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ejabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 
-This installation process assumes that you have a working installation of Ubuntu 9.10 (Karmic), have followed the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, and now have an up to date instance of the Ubuntu Karmic operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
+This installation process assumes that you have a working installation of Ubuntu 9.10 (Karmic), have followed the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, and now have an up to date instance of the Ubuntu Karmic operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
 
 ## XMPP/Jabber Basics
 

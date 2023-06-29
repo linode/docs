@@ -1,9 +1,6 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Fedora 14 systems.'
 keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Fedora 14
 tags: ["fedora","database","nosql"]
+authors: ["Linode"]
 ---
 
 

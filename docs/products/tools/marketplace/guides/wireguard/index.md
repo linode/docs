@@ -1,24 +1,19 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Deploy a WireGuard Server on Linode with Marketplace Apps.'
 keywords: ['vpn','wireguard','tunnel']
 tags: ["cloud-manager","linode platform","security","marketplace","vpn"]
 bundles: ['network-security']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-03-28
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy WireGuard through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[WireGuard Quick Start](https://www.wireguard.com/quickstart/)'
 - '[WireGuard Conceptual Overview](https://www.wireguard.com/#conceptual-overview)'
 - '[WireGuard man page](https://manpages.debian.org/unstable/wireguard-tools/wg.8.en.html)'
 aliases: ['/platform/marketplace/deploy-wireguard-with-marketplace-apps/', '/platform/one-click/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-one-click-apps/','/guides/deploy-wireguard-with-marketplace-apps/','/guides/wireguard-marketplace-app/']
+authors: ["Linode"]
 ---
 <!-- {{< youtube Q1I6-clkQmQ >}} -->
 
@@ -40,9 +35,9 @@ Your WireGuard configuration can be adjusted after you first set up your Marketp
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** WireGuard should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -76,7 +71,7 @@ If you did not provide a public key for WireGuard when you first set up your Mar
 
 1.   Follow the [WireGuard Client](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#wireguard-client) section of our WireGuard guide to generate a public/private keypair for your client, and to set up the WireGuard network interface configuration on your client.
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Bring down the `wg0` interface on the server:
 
@@ -93,20 +88,20 @@ If you did not provide a public key for WireGuard when you first set up your Mar
         wg-quick up wg0
 
     {{< note >}}
-`wg-quick` is a convenient wrapper for many of the common functions in `wg`. To learn more about all the available commands for each utility, issue the `wg --help` and `wg-quick --help` commands from your Linode's command line.
-{{</ note >}}
+    `wg-quick` is a convenient wrapper for many of the common functions in `wg`. To learn more about all the available commands for each utility, issue the `wg --help` and `wg-quick --help` commands from your Linode's command line.
+    {{< /note >}}
 
 You should now have your server configuration completed. At this point, you still need to complete your client's configuration; specifically, you need to add your server as a peer to the client:
 
-1.  [Connect to your Marketplace App's Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance).
+1.  [Connect to your Marketplace App's Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
 1.  Just like your client, your server also has a public/private keypair of its own. The Marketplace App script leaves a copy of these keys in the root user's home folder:
 
         ls /root
 
-    {{< output >}}
-wg-private.key	wg-public.key
-{{< /output >}}
+    ```output
+    wg-private.key	wg-public.key
+    ```
 
 1.  Use the `cat` command to get the value of the server's WireGuard public key:
 
@@ -114,26 +109,26 @@ wg-private.key	wg-public.key
 
 1.  You should see a random string similar to:
 
-    {{< output >}}
-FngGVypEJ13KU8+OeBGG1sOd2i+aazsj7qPL3ZxacG8=
-{{< /output >}}
+    ```output
+    FngGVypEJ13KU8+OeBGG1sOd2i+aazsj7qPL3ZxacG8=
+    ```
 
 1.  Copy the output of your server's public key, then use it to complete **steps 1 and 2** of the [Connect the Client and Server](/docs/guides/set-up-wireguard-vpn-on-ubuntu/#connect-the-client-and-server) section of our WireGuard guide. These steps will tell you to append `[Peer]` section to your client's existing WireGuard configuration and then how to enable the service on your client.
 
     Enter your server's WireGuard tunnel IP (using the `/24` CIDR notation) as the value for the `AllowedIPs` setting, and set the server's public IP address and WireGuard port to be the Endpoint. Here's an example template for a completed client configuration:
 
-    {{< file >}}
-[Interface]
-PrivateKey = <Your client WireGuard private key>
-Address = 10.0.1.2/24
+    ```file
+    [Interface]
+    PrivateKey = <Your client WireGuard private key>
+    Address = 10.0.1.2/24
 
-[Peer]
-PublicKey = <Your server WireGuard public key>
-AllowedIPs = 10.0.1.1/24
-Endpoint = <Your WireGuard server public IP>:51820
-{{< /file >}}
+    [Peer]
+    PublicKey = <Your server WireGuard public key>
+    AllowedIPs = 10.0.1.1/24
+    Endpoint = <Your WireGuard server public IP>:51820
+    ```
 
-     After you complete steps 1 and 2 from that section, you will have established the server as the client's peer.
+    After you complete steps 1 and 2 from that section, you will have established the server as the client's peer.
 
 ### Test your WireGuard Client's Connection
 
@@ -149,10 +144,10 @@ This test should be performed once you have configured a WireGuard client and up
 
     The last two lines of the output from running the wg command should be similar to:
 
-    {{< output >}}
-latest handshake: 1 minute, 17 seconds ago
-transfer: 98.86 KiB received, 43.08 KiB sent
-{{</ output >}}
+    ```output
+    latest handshake: 1 minute, 17 seconds ago
+    transfer: 98.86 KiB received, 43.08 KiB sent
+    ```
 
 ### Software Included
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-configure-git
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn the basics of distributed version control and source code management tool Git in this guide.'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
 audiences: ["foundational"]
 tags: ["version control system"]
 aliases: ['/development/version-control/how-to-configure-git/']
+authors: ["Linode"]
 ---
 
 ![Git Started Today](git_getting_started.png)
@@ -27,9 +25,9 @@ aliases: ['/development/version-control/how-to-configure-git/']
 
 Git is a distributed version control system. Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system. This guide will walk you through the basics of getting started with Git, from installing the software to using basic commands on both local and remote repositories (repo).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you are new to version control systems (VCS), see our guide [SVN vs Git: Which Version Control System Should You Use?](/docs/guides/svn-vs-git/) to learn more about each VCS.
-{{</ note >}}
+{{< /note >}}
 
 ## Configure Git
 
@@ -77,7 +75,7 @@ After you have added the file, stage a commit and leave a commit message. Commit
 
     git commit -m "Initialized a Git repository for this project. Tracking changes to a file."
 
-{{< note >}}
+{{< note respectIndent=false >}}
 It's good practice to provide clear and descriptive commit messages for every commit you stage, as this helps collaborators to understand what a commit encompasses.
 {{< /note >}}
 
@@ -217,7 +215,7 @@ If you are collaborating with another developer, it is necessary to be able to r
 
 Git will grab the new code from the chosen remote repository branch and merge it into your local branch.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Sometimes two developers will edit the same section of a file at the same time and attempt to merge their changes into the codebase. When this happens, Git will throw an error called a *merge conflict*. Because Git will be unable to determine which set of changes is the correct set of changes, it will prompt you to fix the merge conflict before it moves forward with the merge.
 {{< /note >}}
 

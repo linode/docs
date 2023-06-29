@@ -1,8 +1,5 @@
 ---
 slug: visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to use the Elastic Stack to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection."
 keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 tags: ["monitoring","security","lemp","centos"]
@@ -11,17 +8,14 @@ published: 2017-10-17
 modified: 2019-01-31
 modified_by:
   name: Linode
-title: "How to Visualize Server Security on CentOS 7"
-h1_title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
-enable_h1: true
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
+title: "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh"
+title_meta: "How to Visualize Server Security on CentOS 7"
 external_resources:
   - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
 dedicated_cpu_link: true
 aliases: ['/security/monitoring/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/','/security/visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh/']
+authors: ["Andrew Lescher"]
 ---
 
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
@@ -48,7 +42,7 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
 ## Before You Begin
 
-1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
+1.  Many of the steps in this guide require root privileges. Complete the sections of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services. Use `sudo` wherever necessary.
 
 2. Your Linode should have at least [8GB of RAM](https://www.linode.com/pricing). While an Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
@@ -87,11 +81,11 @@ Wazuh is an open source branch of the original [OSSEC HIDS](https://ossec.github
 
     Your output should be similar to:
 
-      {{< output >}}
-        openjdk version "1.8.0_191"
-        OpenJDK Runtime Environment (build 1.8.0_191-b12)
-        OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
-      {{</ output >}}
+    ```output
+    openjdk version "1.8.0_191"
+    OpenJDK Runtime Environment (build 1.8.0_191-b12)
+    OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
+    ```
 
 1. If your Linode doesn't have curl installed, install curl:
 
@@ -129,11 +123,11 @@ protect=1
 
             yum install wazuh-api
 
-      {{< note >}}
+        {{< note respectIndent=false >}}
   Python >= 2.7 is required in order to run the Wazuh API. To find out which version of Python is running on your Linode, issue the following command:
 
       python --version
-      {{</ note >}}
+{{< /note >}}
 
 ## Install Elasticsearch, Logstash, and Kibana
 
@@ -161,25 +155,25 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
     You should receive a similar response:
 
-      {{< output >}}
-        {
-  "name" : "-7B24Uk",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "UdLfdUOoRH2elGYckoiewQ",
-  "version" : {
-  &emsp;&emsp;"number" : "6.5.2",
-  &emsp;&emsp; "build_flavor" : "default",
-  &emsp;&emsp;"build_type" : "rpm",
-  &emsp;&emsp;"build_hash" : "9434bed",
-  &emsp;&emsp;"build_date" : "2018-11-29T23:58:20.891072Z",
-  &emsp;&emsp;"build_snapshot" : false,
-  &emsp;&emsp;"lucene_version" : "7.5.0",
-  &emsp;&emsp;"minimum_wire_compatibility_version" : "5.6.0",
-  &emsp;&emsp;"minimum_index_compatibility_version" : "5.0.0"
-  &emsp;&emsp;},
-  "tagline" : "You Know, for Search"
-}
-        {{</ output >}}
+    ```output
+    {
+    "name" : "-7B24Uk",
+    "cluster_name" : "elasticsearch",
+    "cluster_uuid" : "UdLfdUOoRH2elGYckoiewQ",
+    "version" : {
+    &emsp;&emsp;"number" : "6.5.2",
+    &emsp;&emsp; "build_flavor" : "default",
+    &emsp;&emsp;"build_type" : "rpm",
+    &emsp;&emsp;"build_hash" : "9434bed",
+    &emsp;&emsp;"build_date" : "2018-11-29T23:58:20.891072Z",
+    &emsp;&emsp;"build_snapshot" : false,
+    &emsp;&emsp;"lucene_version" : "7.5.0",
+    &emsp;&emsp;"minimum_wire_compatibility_version" : "5.6.0",
+    &emsp;&emsp;"minimum_index_compatibility_version" : "5.0.0"
+    &emsp;&emsp;},
+    "tagline" : "You Know, for Search"
+    }
+    ```
 
 1. Load the Wazuh Elasticsearch template. Replace `exampleIP` with your Linode's public IP address:
 
@@ -556,7 +550,7 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
-{{< note >}}
+{{< note respectIndent=false >}}
 To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`.
 {{< /note >}}
 
@@ -587,7 +581,7 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status kibana
         systemctl -l status nginx
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
 {{< /note >}}
 

@@ -1,10 +1,6 @@
 ---
 slug: how-to-set-up-multiple-wordpress-sites-with-lxd-containers
-author:
-  name: Simos Xenitellis
-  email: docs@linode.com
 description: 'This guide will show you how to install multiple WordPress sites using LXD containers, with a containerized reverse proxy server and a MySQL database on Linux.'
-og_description: 'This guide will show you how to install multiple WordPress sites using LXD containers, with a containerized reverse proxy server and a MySQL database on Linux.'
 keywords: ["container", "lxd", "lxc", "apache", "nginx", "reverse proxy", "virtual machine", "virtualization", "letsencrypt", "nginx", "apache2"]
 tags: ["ubuntu", "php", "wordpress", "cms", "container", "nginx", "apache", "database", "mysql", "ssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +8,8 @@ published: 2021-04-16
 image: MultipleWPsites_LXDcont.png
 modified_by:
   name: Linode
-title: "How to Set Up Multiple WordPress Sites with LXD Containers"
-h1_title: "Setting Up Multiple WordPress Sites with LXD Containers"
-enable_h1: true
-contributor:
-  name: Simos Xenitellis
-  link: https://blog.simos.info/
+title: "Setting Up Multiple WordPress Sites with LXD Containers"
+title_meta: "How to Set Up Multiple WordPress Sites with LXD Containers"
 external_resources:
   - '[LXD Introduction](https://linuxcontainers.org/lxd/)'
   - '[LXD support community](https://discuss.linuxcontainers.org/)'
@@ -27,6 +19,7 @@ external_resources:
   - '[Proxy Protocol](https://www.haproxy.com/blog/haproxy/proxy-protocol/)'
   - '[WordPress](https://wordpress.org/)'
   - '[WordPress Administration Over SSL](https://wordpress.org/support/article/administration-over-ssl/)'
+authors: ["Simos Xenitellis"]
 ---
 
 ## Introduction
@@ -41,7 +34,7 @@ However, within a VM we can further install multiple WordPress instances, each i
 
 This guide explains how to set up WordPress in LXD system containers. This demonstration shows how to host multiple and separate WordPress websites on a single server.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A 2GB Linode shared instance running Ubuntu 20.04 was used to test the instructions in this guide. A different server running a different operating system can be used, but you may need to adjust some instructions. In particular, the instructions for installing LXD may be different.
 {{< /note >}}
 
@@ -67,7 +60,7 @@ The guide is ordered as follows:
 
 1. At the end, the guide presents how to [troubleshoot some common errors that you may run into during set up](#troubleshooting).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 For simplicity, the term *container* is used throughout this guide to describe the LXD system containers.
 {{< /note >}}
 
@@ -75,7 +68,7 @@ For simplicity, the term *container* is used throughout this guide to describe t
 
 1.  Follow the [A Beginner's Guide to LXD: Setting Up an Apache Web Server In a Container](/docs/guides/beginners-guide-to-lxd/) guide. Specifically, you only need to follow these sections: the [Before You Begin](/docs/guides/beginners-guide-to-lxd/#before-you-begin) section, and the [Initialize LXD](/docs/guides/beginners-guide-to-lxd/#initialize-lxd) section. The guide instructs you to use Ubuntu 19.04 for your server, but you should select Ubuntu 20.04 instead (unless you prefer a different distribution). LXD 4.0.5 is installed by default on Ubuntu 20.04.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For this guide LXD version 3.3 or later is needed. Check the version with the following command:
 
     lxd --version
@@ -83,7 +76,7 @@ For this guide LXD version 3.3 or later is needed. Check the version with the fo
 If the version is not 3.3 or later, or if your preferred distribution does not have LXD installed by default, update to the latest version. Install the snap package as instructed in [A Beginner's Guide to LXD: Setting Up an Apache Webserver In a Container](/docs/guides/beginners-guide-to-lxd/). Then use the following command:
 
     sudo lxd.migrate
-{{</ note >}}
+{{< /note >}}
 
 1. This guide requires you to own a domain name. This guide uses the hostnames `apache1.example.com` and `nginx1.example.com` for the two example WordPress websites. Throughout this guide, replace these names with subdomains under the domain that you own. Be sure to set up their DNS entries to point them to the IP address of your server. Specifically, create [A records](/docs/guides/dns-overview/#a-and-aaaa) for your subdomains.
 
@@ -114,7 +107,7 @@ WordPress requires a SQL database server such as _MySQL_ or _MariaDB_. In this s
 
         sudo apt install -y mysql-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you prefer to use _MariaDB_, replace `mysql-server` with `mariadb-server`.
 {{< /note >}}
 
@@ -126,7 +119,7 @@ If you prefer to use _MariaDB_, replace `mysql-server` with `mariadb-server`.
 bind-address            = 0.0.0.0
 {{</ file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The containers reside on a NAT network inside the VM. They do not get public IP addresses and they are not accessible from the Internet. The SQL server is only accessible to other containers and to the host server.
 {{< /note >}}
 
@@ -151,7 +144,7 @@ To keep track of the details, a table is shown below for each database and corre
 | wpApache1     | apache1.lxd         | wpUserApache1 | Create a complex and unique password |
 | wpNginx1      | nginx1.lxd          | wpUserNginx1  | Create a complex and unique password |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may also use arbitrary names for the database name and the username. Make sure you have listed the correct container name. Finally, change the password.
 {{< /note >}}
 
@@ -217,7 +210,7 @@ This section shows how to install WordPress inside the container `apache1`. Firs
 
         sudo apt install -y php-mbstring php-gd php-imagick php-xml php-curl php-zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 WordPress has a built-in _Site Health_ feature that checks for a small list of required and optional PHP modules. After the above PHP modules are installed, your WordPress installation passes the check for required and optional modules.
 {{< /note >}}
 
@@ -241,7 +234,7 @@ $_SERVER['HTTPS']='on';
 
     This change ensures that the WordPress admin page will work behind the TLS termination proxy in the `proxy` container.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the lines in the previous two steps are not added, then _mixed content_ errors appear in your browser when the site is loaded. Without them, WordPress serves some content (images, stylesheets, and other assets) with HTTP URLs instead of HTTPS URLs. Modern web browsers refuse to display such content if the website has an HTTPS URL. WordPress does not automatically detect if it is running behind a TLS termination proxy and cannot avoid the case of mixed content by default. The inserted line tells WordPress to serve the content over HTTPS.
 
 Once the WordPress setup wizard completes the configuration, it combines the content of the sample file with the new user configuration. By adding the code in the sample file, we are certain that the handover from the wizard page to the WordPress administration page is uninterrupted.
@@ -283,7 +276,7 @@ This section shows how to install WordPress inside the container `nginx1`. First
 
         sudo apt install -y php-curl php-dom php-mbstring php-gd php-imagick php-xml php-zip
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 WordPress has a built-in _Site Health_ feature that checks for a small list of required and optional PHP modules. After the above PHP modules are installed, your WordPress installation passes the check for required and optional modules.
 {{< /note >}}
 
@@ -348,7 +341,7 @@ $_SERVER['HTTPS']='on';
 
     This change ensures that the WordPress admin page will work behind the TLS termination proxy in the `proxy` container.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the lines in the previous two steps are not added, then _mixed content_ errors appear in your browser when the site is loaded. Without them, WordPress serves some content (images, stylesheets, and other assets) with HTTP URLs instead of HTTPS URLs. Modern web browsers refuse to display such content if the website has an HTTPS URL. WordPress does not automatically detect if it is running behind a TLS termination proxy and cannot avoid the case of mixed content by default. The inserted line tells WordPress to serve the content over HTTPS.
 
 Once the WordPress setup wizard completes the configuration, it combines the content of the sample file with the new user configuration. By adding the code in the sample file, we are certain that the handover from the wizard page to the WordPress administration page is uninterrupted.
@@ -369,7 +362,7 @@ To finish the setup for your WordPress sites, complete the WordPress installatio
 | https://apache1.example.com | wpApache1     | wpUserApache1 | Create a complex and unique password | db.lxd        | wp_          |
 | https://nginx1.example.com  | wpNginx1      | wpUserNginx1  | Create a complex and unique password | db.lxd        | wp_          |
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The passwords that you choose during the installation wizard should be unique and different from the passwords used in the earlier [database setup section](#configure-the-database-for-each-wordpress-installation).
 {{< /note >}}
 
@@ -393,11 +386,11 @@ Visit the URL of each WordPress website (e.g. https://apache1.example.com and ht
 
 1. Finally, you are presented with the main WordPress configuration, including the creation of your WordPress administrative account. You are asked for a Site Title, which can be changed later. Then, you are asked for the username and password details of your first account, an administrative account, on your WordPress website. Make sure you keep a note of this information. Subsequently, add your email address and select whether you want to make your WordPress website immediately accessible to search engines. Finally, click on **Install WordPress**.
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 At this point, your WordPress installation likely isn't able to send emails, such as an email to reset your forgotten password. You would need to use an appropriate plugin in WordPress before you are able to receive emails to reset your password and general email notifications. Therefore, make sure you keep a copy of the username and password that you are putting here.
 {{< /note >}}
 
-   {{< note >}}
+   {{< note respectIndent=false >}}
 If you prefer, you may choose to discourage the search engines from indexing your new site until you add more content. You can then allow search engines to index your site from within the WordPress administrative page, at **Settings**, then **Reading**.
 {{< /note >}}
 
@@ -429,7 +422,7 @@ If your container is `nginx1`, then run the following command to view the curren
 
 The output should be similar the following. The current memory use in this example is 164MB while the peak memory use was a bit over 300MB.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Resources:
   Processes: 30
   Disk usage:

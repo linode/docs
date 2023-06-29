@@ -1,8 +1,5 @@
 ---
 slug: set-up-a-cassandra-node-cluster-on-ubuntu-and-centos
-author:
-  name: Andrew Lescher
-  email: docs@linode.com
 description: "This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster"
 keywords: ["cassandra", " apache-cassandra", " centos 7", " ubuntu 16.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,18 +7,15 @@ published: 2017-06-24
 modified: 2022-05-16
 modified_by:
   name: Linode
-title: "Set Up a Cassandra Node Cluster"
-h1_title: "Setting Up a Cassandra Node Cluster "
-enable_h1: true
+title: "Setting Up a Cassandra Node Cluster "
+title_meta: "Set Up a Cassandra Node Cluster"
 aliases: ['/databases/cassandra/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/','/databases/cassandra/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
-contributor:
-   name: Andrew Lescher
-   link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 tags: ["ubuntu","centos","database","nosql"]
 image: cass.png
+authors: ["Andrew Lescher"]
 ---
 
 ## What is Apache Cassandra

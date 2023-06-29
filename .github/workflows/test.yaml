@@ -73,7 +73,7 @@ jobs:
       with:
         files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
         version: 2.19.0
-        vale_flags: "--minAlertLevel=error"
+        vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
@@ -137,7 +137,7 @@ jobs:
     - name: Set up Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.105.0'
+        hugo-version: '0.111.3'
     - name: Start Hugo server
       run: |
         # Start Hugo in background:

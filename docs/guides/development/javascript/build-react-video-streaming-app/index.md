@@ -1,8 +1,5 @@
 ---
 slug: build-react-video-streaming-app
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to build streaming software with two components: one for streaming videos and generating thumbnails, and the other for listing/playing them."
 og_description: "Learn how to build a video streaming application with two components: a server-side Node.js application that will stream videos and generate video thumbnails, and a client application in React that will list and play the videos."
 keywords: ['React','Nodejs','Video streaming', "video captions", "video thumbnails"]
@@ -10,28 +7,25 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-08-09
 modified_by:
   name: Linode
-title: "How to Build a Video Streaming App with React and Node"
-h1_title: "Building a Video Streaming Application with React and Node"
-enable_h1: true
+title: "How to Build a Node and React Video Streaming App"
+title_meta: "How to Build a Node and React Video Streaming App"
 image: BuildVidStreamApp_React_Node.png
-contributor:
-  name: Deven Rathore
-  link: https://codesource.io/
 external_resources:
 - '[Video Stream With Node.js and HTML5](https://medium.com/better-programming/video-stream-with-node-js-and-html5-320b3191a6b6)'
 - '[Adding captions and subtitles to HTML5 video](https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video)'
 tags: ["web applications"]
 aliases: ['/development/javascript/build-react-video-streaming-app/']
+authors: ["Deven Rathore"]
 ---
 
 ## Introduction
 
-Building a video streaming application might seem daunting at first, but this guide will breakdown how this can be achieved. Specifically, we'll demonstrate how to implement a streaming service with the following components:
+Building a live video streaming application might seem daunting at first, but this guide will breakdown how this can be achieved. Specifically, we'll demonstrate how to implement a streaming service with the following components:
 
-- A server-side *Node.js* application that will handle fetching and streaming videos, generating thumbnails for your videos, and serving captions and subtitles for videos.
-- A client application in *React* that will consume the videos on our server. This application will have two views: a listing of videos that are available, and a player view for each video.
+- A server-side *Node.js* application that handles fetching and streaming videos, generating thumbnails for your videos, and serving captions and subtitles for videos.
+- A client application for the devices in *React* that consumes the videos on our server. This application will have two views: a listing of videos that are available, and a player view for each video.
 
-When completed, your application will look as follows:
+When completed, your application looks as follows:
 
 ![React Video streaming app](Image7.png "React Video streaming app final preview 1")
 
@@ -39,7 +33,7 @@ When completed, your application will look as follows:
 
 ### About Video Streams
 
-Videos work with streams. This means that instead of sending the whole video at once, a video is sent as a set of smaller chunks which make up the full video. This explains why if you are on a slow broadband and watching a video, it buffers because it plays the chunk it has received and tries to load more.
+Videos work with streams. This means that instead of sending the whole video at once, a video is sent as a set of smaller chunks which make up the full video. This explains why if you are on a slow broadband and watching a video, it buffers because it plays the latest chunk it has received and tries to load more.
 
 ## Before You Begin
 
@@ -51,7 +45,7 @@ For this tutorial, you’ll need:
 - [FFmpeg](https://www.ffmpeg.org/download.html) installed on your workstation
 - [Node.js](https://nodejs.org/en/download/). [Node Version Manager (nvm)](https://github.com/nvm-sh/nvm) can be used to install and maintain several versions of Node on your computer.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 When following the tutorial, you can refer to the [project source code](https://github.com/Dunebook/Videostreaming-app) to compare your code with the final result.
 {{< /note >}}
 
@@ -91,7 +85,7 @@ For the purposes of this tutorial, both the server application and the client ap
 
 1. Copy a `.mp4` video file into the new `assets` folder, and make sure it is named `sample.mp4`. For example, you can download one of the videos from the guide's [project source repository](https://github.com/Dunebook/Videostreaming-app/tree/master/server/assets) and rename it to `sample.mp4`.
 
-1. We can start writing code for our server. Create a new file in the root of the `server` directory called `app.js` and add the following snippet:
+1. We can start writing code for React video streaming server. Create a new file in the root of the `server` directory called `app.js` and add the following snippet:
 
     {{< file "server/app.js" js >}}
 const express = require('express');
@@ -142,7 +136,7 @@ app.listen(4000, () => {
 
         npm run dev
 
-    If you see the message `Listening on port 4000!` in the terminal, then the server is working correctly. Navigate to [http://localhost:4000/video](http://localhost:4000/video) in your browser and you should see the video playing.
+    If you see the message `Listening on port 4000!` in the terminal, then the server is working correctly. Navigate to [http://localhost:4000/video](http://localhost:4000/video) in your browser in your local system and you should see the video playing.
 
 ### Scaffolding the Frontend with React
 
@@ -157,7 +151,7 @@ app.listen(4000, () => {
 
     This command generates our application shell and installs the packages required by React. The `.` argument means all this setup happens in the current directory (`client`).
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you don't have `npx` on your workstation, it can be installed globally with:
 
     npm install -g npx
@@ -196,9 +190,9 @@ export default App;
 
 ## Building Out the Frontend
 
-So far, we've set up our server to serve a video file when requested. In reality, our React application will have two views:
+So far, we've set up React video streaming server to serve a video file when requested. In reality, our React application will have two views:
 
-- A **Home** view that will contain a list of videos
+- A **Home** view that contains a list of videos
 - A **Player** view where videos will play
 
 We'll be using Bootstrap to layout our interface, so add the following to the `head` section of `public/index.html` in your `client` project:
@@ -208,7 +202,7 @@ We'll be using Bootstrap to layout our interface, so add the following to the `h
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
 {{< /file >}}
 
-Our application will have two routes to handle the `Home` and `Player` views, so install `react-router-dom` to handle routing of the React application. From the terminal, run the command:
+React video streaming application has two routes to handle the `Home` and `Player` views, so install `react-router-dom` to handle routing of the React application. From the terminal, run the command:
 
 - If you are using yarn:
 
@@ -284,7 +278,7 @@ After fetching the video metadata, we render it as a list of videos (lines 19-40
 
 On line 28, another endpoint request is made to `http://localhost:4000${video.poster}`, which will return a thumbnail of a video in the list. The `video.poster` variable is populated with a value like `/video/0/poster` from the video metadata array, so the request will have the form `http://localhost:4000/video/:id/poster`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We have not created the `/videos` metadata endpoint, or the `/video/:id/poster` video thumbnail endpoint yet. These will be added to the `server` project in the [Handling Requests from the Frontend](#handling-requests-from-the-frontend) section.
 {{< /note >}}
 
@@ -331,7 +325,7 @@ For the player view, we get the video `id` from the URL parameter (line 6):
 - With the `id`, we can make a request to the server to fetch metadata about the video: `http://localhost:4000/video/${this.state.videoId}/data`, on line 12.
 - In the markup for the view, the video element's `src` attribute is a link which appends the `id` to the `/video` route, and the server responds with the actual video: `http://localhost:4000/video/${this.state.videoId}`, on line 24.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 We have not created the `/video/:id/data` metadata endpoint, or the `/video/:id` video streaming endpoint yet. These will be added to the `server` project in the [Handling Requests from the Frontend](#handling-requests-from-the-frontend) section.
 {{< /note >}}
 
@@ -379,7 +373,7 @@ Let's tackle them one after another:
 
 ### Return Metadata for the List of Videos
 
-For this demo application, we'll create an array of objects that will hold the metadata and send that to the frontend when requested. In a real application, you would probably be reading the data from a database, which would then be used to generate an array like this. For simplicity's sake, we won’t be doing that in this tutorial.
+For this demo application, we'll create an array of multiple objects that will hold the metadata and send that to the frontend when requested. In a real application, you would probably be reading the data from a database, which would then be used to generate an array like this. For simplicity's sake, we won’t be doing that in this tutorial.
 
 1. From the `server` directory, open `app.js` and add this array declaration just after the `require()` statements:
 

@@ -1,10 +1,6 @@
 ---
 slug: monitor-your-website-changes-with-huginn-agents
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
-og_description: "This guide shows how to install and configure Huginn, a self-hosted and open-source application for automating online tasks similar to IFTTT, on a Linode."
 keywords: ['huginn website agent']
 tags: ['ubuntu', 'docker']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,22 +8,19 @@ published: 2021-07-09
 modified_by:
   name: Nathaniel Stickman
 title: "Monitor Your Website Changes with Huginn Agents"
-h1_title: "How to Monitor Your Website Changes with Huginn Agents"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title_meta: "How to Monitor Your Website Changes with Huginn Agents"
 external_resources:
 - '[Huginn GitHub](https://github.com/huginn/huginn)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Huginn](https://github.com/huginn/huginn) provides an open-source and self-hosted system for automating online tasks. It is similar to tools like IFTTT and Zapier, but is more customizable. Huginn also gives you greater control by being hosted on your own server. This guide shows you how to set up your own Huginn instance and then provides a deep dive into configuring agents to send you notifications.
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Huginn supports Debian and Ubuntu Linux distributions, and this guide's instructions are intended for these distributions as well.
 

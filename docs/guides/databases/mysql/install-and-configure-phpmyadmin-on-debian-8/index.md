@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-phpmyadmin-on-debian-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install and configure phpMyAdmin to manage MySQL databases and users though a web interface with a GUI on Debian 8.'
 keywords: ["mysql", "phpmyadmin", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin", "sql", "debian", "debian 8", "php", "mysql management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ relations:
         keywords:
             - distribution: Debian 8
 tags: ["debian","database","mysql","php"]
+authors: ["Linode"]
 ---
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
@@ -30,7 +28,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/guides/getting-started/) and [Securing Your Server](/docs/guides/set-up-and-secure/) guides and the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
     To check your hostname run:
 
@@ -45,7 +43,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 3.  Set up a working LAMP stack. Please see the [LAMP on Debian 8](/docs/guides/lamp-on-debian-8-jessie/) guide if needed.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 {{< /note >}}
 

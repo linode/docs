@@ -9,8 +9,9 @@
   role="listbox"
   class="weglot_switcher wg-drop country-selector wg-mouse-click'"
   :class="{'closed': !open, 'weg-openleft': open}"
-  aria-activedescendant="weglot-language-en"
-  aria-label="Language selected: English">
+  :aria-owns="languageIDs('weglot-language-')"
+  :aria-activedescendant="`weglot-language-${currentLanguage().lang}`"
+  :aria-label="`Language selected: ${currentLanguage().name}`">
   <div
     @click="$root.focus(); open = !open"
     @click.away="open = false"
@@ -21,7 +22,7 @@
       tabindex="-1"
       target="_self"
       role="none"
-      :id="`weglot-language-${currentLanguage().lang}`"
+      id="weglot-language-current"
       x-text="currentLanguage().name"></a>
   </div>
   <ul role="none">

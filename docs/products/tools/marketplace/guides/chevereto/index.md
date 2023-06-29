@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide shows you how to install Chevereto, a modern image sharing solution with drag-and-drop upload experience and more, using the Linode One-Click Marketplace."
 keywords: ['photo storage','images','Marketplace']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-13
 modified: 2022-05-17
 modified_by:
@@ -15,13 +11,14 @@ external_resources:
 - '[Chevereto](https://chevereto.com/)'
 - '[Chevereto Documentation](https://chevereto.com/docs)'
 aliases: ['/guides/deploying-chevereto-marketplace-app/','/guides/chevereto-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Chevereto](https://chevereto.com/) is a self-hosted image sharing solution. It can be used to create a myriad of applications or to empower existing systems. Chevereto's features include multi-user support, multi-server support, bulk importing, integration with social media, and more.
 
 {{< note >}}
 Chevereto requires a valid license to use the software. To purchase a license, visit [Chevereto's website](https://chevereto.com/pricing) and select a plan that fits your needs. Licenses are not available directly through Linode.
-{{</ note >}}
+{{< /note >}}
 
 ## Deploying a Marketplace App
 
@@ -29,9 +26,9 @@ Chevereto requires a valid license to use the software. To purchase a license, v
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Chevereto should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 

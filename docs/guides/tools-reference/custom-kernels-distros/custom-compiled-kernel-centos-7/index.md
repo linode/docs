@@ -1,8 +1,5 @@
 ---
 slug: custom-compiled-kernel-centos-7
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 description: 'Instructions for compiling and configuring a custom kernel on your CentOS 7 Linode'
 keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", "centos"]
 tags: ["centos"]
@@ -18,15 +15,16 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/tools-reference/custom-kernels-distros/custom-compiled-kernel-centos-7/']
+authors: ["Alex Fornuto"]
 ---
 
 ![Custom Compiled Kernel on CentOS](custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/guides/managing-the-kernel-on-a-linode/).
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/products/compute/compute-instances/guides/manage-the-kernel/).
 
-Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). Then, log in to your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Then, log in to your Linode as the `root` user.
 
 ## Prepare the System
 
@@ -88,7 +86,7 @@ Once your configuration options are set, exit the configuration interface and an
         make install
         make modules_install
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you're using a Linode with multiple cores, you can use the `j` option to spawn multiple simultaneous jobs to increase speed. For example:
 
 make -j2 bzImage
@@ -129,7 +127,7 @@ GRUB_TERMINAL="serial console"
 
     ![The GRUB2 Option.](custom-kernel-grub2.png)
 
-3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/guides/lish/) or [GLISH](/docs/guides/glish/) session first, so you can monitor the boot process and troubleshoot if necessary.
+3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/products/compute/compute-instances/guides/lish/) or [GLISH](/docs/products/compute/compute-instances/guides/glish/) session first, so you can monitor the boot process and troubleshoot if necessary.
 
 
 Note that if you install an updated kernel, you need to create a new `initrd` file, and update GRUB.
@@ -137,7 +135,7 @@ Note that if you install an updated kernel, you need to create a new `initrd` fi
 Congratulations, you've booted your Linode using a custom-compiled kernel!
 
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
 {{< /note >}}
 

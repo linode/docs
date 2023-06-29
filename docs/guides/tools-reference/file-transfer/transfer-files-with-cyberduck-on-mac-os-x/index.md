@@ -1,8 +1,5 @@
 ---
 slug: transfer-files-with-cyberduck-on-mac-os-x
-author:
-  name: Linode
-  email: docs@linode.com
 deprecated: true
 description: 'Securely copying files to and from your Linode with Cyberduck, a free and open source file transfer client for Mac OS X systems.'
 keywords: ["cyberduck", "ftp", "mac os scp", "sftp", "mac os sftp program", "mac os ftp"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2009-11-13
 title: Transfer Files with Cyberduck on Mac OS X
+authors: ["Linode"]
 ---
 
 Cyberduck is a free, open source file transfer program written for Mac OS X. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. Cyberduck can send both your login credentials and file transfers over the network securely encrypted (provided you're using SFTP), while standard FTP clients send this information as plaintext.

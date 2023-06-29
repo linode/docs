@@ -1,14 +1,11 @@
 ---
 slug: ruby-on-rails-apache-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Using the Apache web server with Debian to serve Ruby on Rails applications.'
 og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache", "deploy rails"]
 tags: ["web applications","debian","apache","ruby"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/']
+aliases: ['/development/ror/ruby-on-rails-apache-debian/','/websites/ror/ruby-on-rails-apache-debian-9/','/frameworks/ruby-on-rails-apache/ubuntu-10.04-lucid/']
 published: 2018-03-12
 modified: 2018-03-12
 modified_by:
@@ -25,6 +22,7 @@ relations:
         key: ruby-on-rails-apache
         keywords:
             - distribution: Debian 9
+authors: ["Linode"]
 ---
 
 ![Ruby on Rails with Apache on Debian](ruby_on_rails_with_apache_debian.jpg "Ruby on Rails with Apache on Debian")
@@ -36,9 +34,9 @@ relations:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -91,7 +89,7 @@ Ruby will be installed with the Ruby Version Manager (RVM), which makes it easy 
 
         sudo passenger-config about ruby-command
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Make sure that Passenger reports the version of Ruby that you installed with RVM. Normally RVM uses paths similar to `~/.rvm/wrappers/ruby-X.X.X/ruby`.
 {{< /note >}}
 

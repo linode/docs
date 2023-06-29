@@ -15,12 +15,13 @@
 @import "components/all.css";
 @import "sections/all.css";
 @import "logic/all.css";
+/* purgecss start ignore */
 @import "grids/grid--base.css";
+/* purgecss end ignore */
 
 html {
   font-size: 16px;
 }
-
 
 body,
 html {
@@ -29,7 +30,7 @@ html {
   line-height: 1.25;
   margin: 0;
   padding: 0;
-  color: var(--color-body-text); 
+  color: var(--color-body-text);
 }
 
 html {

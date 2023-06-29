@@ -1,8 +1,5 @@
 ---
 slug: update-and-secure-drupal-8-on-ubuntu
-author:
-    name: Edward Angert
-    email: docs@linode.com
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
 aliases: ['/websites/cms/drupal/update-and-secure-drupal-8-on-ubuntu/','/websites/cms/update-and-secure-drupal-8-on-ubuntu/']
@@ -15,18 +12,19 @@ modified_by:
 published: 2016-05-11
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 tags: ["drupal","cms"]
+authors: ["Edward Angert"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
 
-<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/w7l9omoxr3?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/w7l9omoxr3?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" title="Update and secure Drupal 8 on Ubuntu or Debian" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
 <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Before You Begin
 
 1.  Ensure that you have completed the following guides:
 
-    -   [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/)
+    -   [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
     -   [Install a LAMP stack](/docs/guides/lamp-on-ubuntu-14-04/)
     -   [Install and Configure Drupal 8](/docs/guides/how-to-install-and-configure-drupal-8/)
 
@@ -38,7 +36,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo apt-get update && sudo apt-get upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 - This guide will use `sudo` wherever possible.
 - You may need additional firewall rules for your specific application.
 - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.
@@ -56,7 +54,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 1.  Log in to your Drupal site and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
 {{< /note >}}
 
@@ -98,7 +96,7 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
 
 3.  From a browser on your local machine, navigate to `example.com/update.php`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
 
     chgrp www-data /var/www/html/example.com/public_html/sites/default/files
@@ -132,7 +130,7 @@ If `update.php` does not load or returns a 403 Forbidden error, you can try to c
 {{< /file >}}
 
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 You may need to add write permission to this file before you can edit it:
 
 chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml

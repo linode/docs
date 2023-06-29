@@ -1,24 +1,18 @@
 ---
 slug: installing-and-importing-modules-in-python-3
-author:
-  name: Jeff Novotny
 description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
-og_description: 'Learn how to install modules in Python 3 and import them using `import`, `from import`, and `import as`.'
 keywords: ['Python import module', 'Python modules', 'Python install module', 'Python math']
 tags: ['python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified_by:
   name: Linode
-title: "Installing and Importing Modules in Python 3"
-h1_title: "How to Install and Import Modules in Python 3"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Install and Import Modules in Python 3"
+title_meta: "How to Install and Import Modules in Python 3"
 external_resources:
 - '[Python Documentation on Modules](https://docs.python.org/3/tutorial/modules.html)'
 - '[List of Python Built-in Modules](https://docs.python.org/3/py-modindex.html)'
+authors: ["Jeff Novotny"]
 ---
 
 Except for very short and simple programs, most [Python](https://www.python.org/) applications contain code from many files, directories, and packages. Related functions and attributes are often grouped together as part of a Python *module*. A programmer can *import* this module and use its functions and variables in their application. This guide provides an introduction to Python modules and explains how to install and import modules in Python.
@@ -31,7 +25,7 @@ Python includes some built-in standard modules. These modules are part of the [*
 
 Python modules are named the same way as other Python files. The filename for a module consists of the module name followed by the `.py` extension, for example, `module_name.py`. A module maintains its own [symbol table](https://docs.python.org/3/library/symtable.html), which serves as the global symbol table inside the module. Each module is also a Python namespace.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A Python namespace is a dictionary of the object names and the actual objects.
 {{< /note >}}
 
@@ -48,13 +42,13 @@ Some of the reasons to use Python modules include the following:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Ensure Python is properly installed on the Linode and you can launch and use the Python programming environment. To run Python on Ubuntu, use the command `python3`. For information on how to use Python, see our guide on [How to Install Python 3 on Ubuntu](/docs/guides/how-to-install-python-on-ubuntu-20-04/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -107,7 +101,7 @@ If a module cannot be installed using `pip`, there is almost always a way to ins
 
 The following example explains how to install the Python [kubernetes-client](https://github.com/kubernetes-client/python) module without using `pip`.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Like most modules nowadays, this module is also available through `pip`. It can be installed using `pip install kubernetes`. It is always worth verifying whether a module is available through `pip` first. The following instructions are provided as a resource for cases where the module can only be installed locally.
 {{< /note >}}
 
@@ -117,14 +111,14 @@ Like most modules nowadays, this module is also available through `pip`. It can 
 
 1. Consult the installation directives for the module to determine the location of the `setup.py` file. In this case, it is located in the `python` directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the module does not have a `setup.py` file, consult the instructions on the Python site. See the sections on [Custom Installation](https://docs.python.org/3/install/#custom-installation) and [Modifying Python’s Search Path](https://docs.python.org/3/install/#modifying-python-s-search-path).
     {{< /note >}}
 
         cd python
 1. Install the module using the `python install` command.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This particular module also requires the `requests` module. It is not uncommon for locally-installed modules to require the installation of other modules before they can be used.
     {{< /note >}}
 

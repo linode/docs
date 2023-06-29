@@ -1,9 +1,11 @@
 ---
 title: Resources
+title_meta: "Resources for Billing and Payments"
 description: "Resources and other information related to the Linode Billing including blog posts, community posts, and customer stories."
 tab_group_main:
     weight: 40
 aliases: ['/products/tools/billing/resources/']
+published: 2022-11-17
 ---
 
 ## Blog Posts

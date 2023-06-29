@@ -1,8 +1,5 @@
 ---
 slug: securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Use the Open-source PgAdmin Program to Securely Manage Remote PostgreSQL Databases from a Mac OS X Workstation."
 keywords: ["pgadmin", "mac os x", "postgresql gui", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,14 +7,14 @@ modified: 2018-11-29
 modified_by:
   name: Linode
 published: 2010-04-30
-h1_title: "Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X"
-title: "Connect to Remote PostgreSQL Servers with pgAdmin on Mac"
-enable_h1: true
+title: "Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X"
+title_meta: "Connect to Remote PostgreSQL Servers with pgAdmin on Mac"
 aliases: ['/databases/postgresql/pgadmin-macos-x/','/databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-macos-x/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 tags: ["database","postgresql"]
+authors: ["Linode"]
 ---
 
 ![Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](Securely_Manage_Remote_PostgreSQL_Servers_with_pgAdmin_on_Mac_OS_X_smg.jpg)

@@ -1,7 +1,5 @@
 ---
 slug: an-overview-of-mysql
-author:
-  name: Jeff Novotny
 description: 'Learn what MySQL is, how it’s commonly used, and how it compares to other databases.'
 keywords: ['what is mysql', 'sql vs mysql','mysql overview']
 tags: ['mysql', 'nosql']
@@ -10,14 +8,11 @@ published: 2022-01-07
 modified: 2022-06-06
 modified_by:
   name: Linode
-title: "An Overview of MySQL"
-h1_title: "What Is MySQL: An Overview"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny/
+title: "What Is MySQL: An Overview"
+title_meta: "An Overview of MySQL"
 external_resources:
 - '[Official MySQL documentation](https://dev.mysql.com/doc/)'
+authors: ["Jeff Novotny"]
 ---
 
 ## What is the MySQL Database?

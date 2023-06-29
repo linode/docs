@@ -1,8 +1,5 @@
 ---
 slug: mysqldump-backups
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to use mysqldump to back up MySQL (and MariaDB) database clusters, individual databases, and tables."
 keywords: ["mysql", "mariadb", "backup", "back up", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,13 +14,14 @@ external_resources:
  - '[MySQL documentation: Database Backup Methods](https://dev.mysql.com/doc/refman/8.0/en/backup-methods.html)'
 tags: ["mariadb","database","mysql"]
 image: mysqldump-backup-title.jpg
+authors: ["Linode"]
 ---
 
 [MySQL](http://www.mysql.com/) (and [MariaDB](https://mariadb.com/)) include the [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility to simplify the process to create a backup of a database or system of databases. Using `mysqldump` creates a *logical backup* and generates the SQL statements needed to reproduce the original database structure and data.
 
 {{< note >}}
 Since the mysqldump utility needs to connect to the database, the database management software must be running and accessible. If the database is not accessible for any reason, you can instead create a [*physical backup*](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/), which is a copy of the file system directory containing your MySQL database.
-{{</ note >}}
+{{< /note >}}
 
 ## Before You Begin
 
@@ -57,13 +55,13 @@ The following list represents mysqldump commands for various scenarios. Within t
 
         mysqldump [options] --all-databases > backup.sql
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 Do not use the `--all-databases` option if you intend on restoring this database to a Linode MySQL Managed Database. It may delete existing users and restrict access to your database.
-{{</ caution >}}
+{{< /note >}}
 
 {{< note >}}
 Depending on the size of the database, it could take a while to complete. For large tables, you may want to use the `--quick` option to receive rows one at a time instead of all at once.
-{{</ note >}}
+{{< /note >}}
 
 ## Common Command Options
 
@@ -71,7 +69,7 @@ The following list is a collection of common options used with the mysqldump com
 
 {{< note >}}
 When backing up a Linode MySQL [Managed Database](/docs/products/databases/managed-databases/) with mysqldump, review the [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
-{{</ note >}}
+{{< /note >}}
 
 - **Username** (`--user=[]` or `-u []`): The username of your MySQL user. This user must have proper grants to access the database.
 

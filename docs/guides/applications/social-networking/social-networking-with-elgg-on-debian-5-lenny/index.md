@@ -1,8 +1,5 @@
 ---
 slug: social-networking-with-elgg-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and configuring Elgg, a open-source social networking tool which enables people to connect.'
 keywords: ["social networking", "lamp", "elgg", "elgg debian lenny"]
 tags: ["debian", "cms", "lamp"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2009-12-08
 title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 deprecated: true
+authors: ["Linode"]
 ---
 
 Elgg is an open source social networking tool that enables groups of people to create and manage common interest sites that allow users to keep blogs, create profiles, join groups, upload files, and update status messages (known as "microblogs"). Updates are shown in a centralized "information feed" so that users can see updates to their friends' profiles or activities.
@@ -22,9 +20,9 @@ The inspiration for Elgg comes from popular "general interest" social networking
 
 Fundamentally, Elgg is a specialized CMS (content management system) designed to power a full-featured social networking site. While a developer familiar with a system like [Drupal](/docs/guides/how-to-install-and-configure-drupal-8/), [Django](/docs/frameworks/), or [Ruby on Rails](/docs/frameworks/) could build a site with all of the features of Elgg, the Elgg package consolidates the core functionality for these kinds of sites into a single application.
 
-Before beginning, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). You will also need to install a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) before installing Elgg.
+Before beginning, we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). You will also need to install a [LAMP stack](/docs/guides/lamp-server-on-debian-5-lenny/) before installing Elgg.
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). You will need to be logged into your Linode as root in order to complete the installation process.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). You will need to be logged into your Linode as root in order to complete the installation process.
 
 ## Prerequisites for Installing Elgg
 
