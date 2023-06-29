@@ -30,7 +30,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Data center | IP Sharing support | Failover method | Software | ID |
 | -- | -- | -- | -- | -- |
 | Atlanta (Georgia, USA) | *Not currently supported* | - | - | 4 |
-| Dallas (Texas, USA) | *Undergoing network upgrades* | - | - | 2 |
+| **Dallas (Texas, USA)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 2 |
 | **Frankfurt (Germany)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 10 |
 | Fremont (California, USA) | *Undergoing network upgrades* | - | - | 3 |
 | **London (United Kingdom)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 7 |
@@ -39,7 +39,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | **Singapore** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 9 |
 | **Sydney (Australia)** | **Supported** | **BGP-based (new)** | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 16 |
 | Tokyo (Japan) | *Undergoing network upgrades* | - | - | 11 |
-| Toronto (Canada) |  *Not currently supported* | - | - | 15 |
+| Toronto (Canada) | *Not currently supported* | - | - | 15 |
 
 {{< note >}}
 If a data center is marked as *undergoing network upgrades*, customers may encounter issues enabling IP Sharing and configuring failover. For Compute Instances that already have IP Sharing enabled, this feature should still function as intended. Once the network upgrades are completed, IP Sharing will be supported through the new method (BGP). Review documentation on our [planned network infrastructure upgrades](/docs/products/compute/compute-instances/guides/network-infrastructure-upgrades/) to learn more about these changes.
