@@ -54,7 +54,7 @@ Each Compute Instance plan includes a certain allowance of outbound network tran
 
 Starting on April 1st 2023, the network transfer (egress) overage fees was cut in half, from $0.01/GB (previous fee) to $0.005/GB (new fee). The table below details this change.
 
-| | Previous Price | <span style="color:#02b159">New Price</span> |
+| Network Transfer Type | Previous Price | <span style="color:#02b159">New Price</span> |
 | -- | -- | -- |
 | Inbound network transfer (Ingress) | Free (no defined limit) | **<span style="color:#02b159">Free (no defined limit)</span>** |
 | Outbound network transfer (Egress) Overage | $0.01/GB | **<span style="color:#02b159">$0.005/GB</span>** |
@@ -63,7 +63,7 @@ Starting on April 1st 2023, the network transfer (egress) overage fees was cut i
 
 Each Compute Instance includes a free IPv4 address and IPv6 address. Additional IPv4 addresses can be purchased for a fee and added to an instance. Starting on April 1st 2023, the cost for each additional IP address increased from $1/mo to $2/mo.
 
-| | Previous Price | <span style="color:#02b159">New Price</span> |
+| IP Address Quantity | Previous Price | <span style="color:#02b159">New Price</span> |
 | -- | -- | -- |
 | First IPv4 Address | Free | **<span style="color:#02b159">Free</span>** |
 | Additional IPv4 Addresses | $1/mo | **<span style="color:#02b159">$2/mo</span>** |

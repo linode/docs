@@ -19,7 +19,7 @@ Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU 
 
 The following chart outlines the key differences between shared CPUs and dedicated CPUs, including maximum allowed utilization, CPU contention, and recommended use cases.
 
-| | Shared CPUs | Dedicated CPUs |
+| Specification | Shared CPUs | Dedicated CPUs |
 | -- | -- | -- |
 | **CPU allocation**  | Physical CPU cores may be shared with other neighboring Compute Instances. | Physical CPU cores are reserved just for this Compute Instance. |
 | **Maximum *sustained* CPU utilization (24/7)** | 80% | 100% |
