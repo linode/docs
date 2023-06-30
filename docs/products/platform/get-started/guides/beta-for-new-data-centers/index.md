@@ -2,7 +2,7 @@
 title: "Closed Beta for Akamai's New Data Centers"
 description: "Details for the closed beta of Akamai Cloud Compute's newest data centers, which include the Washington, DC and Paris regions."
 published: 2023-04-17
-modified: 2023-06-12
+modified: 2023-06-29
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -43,6 +43,10 @@ You must enrolled in the beta to select one of the new data centers when deployi
 
 ## Pricing
 
+{{< note >}}
+Starting July 1st 2023, services deployed in Chicago, Paris, and Washington, DC will no longer be free for beta participants. Charges will start to accrue for any new or existing services on your account. If you do not wish to be charged for a particular service, be sure to delete it prior to this date.
+{{< /note >}}
+
 Services utilized as part of the beta are free to users. Once the beta period ends for a particular data center, you will start accruing charges for any services that are still deployed to that region. You will receive an email notifying you of the billing start date as we transition each data center to general availability.
 
 ## Product Availability
@@ -65,31 +69,33 @@ For the IDs and URLs of the new Object Storage clusters, see below:
 
 A new Premium tier Dedicated CPU plan type for Compute Instances is available only in the new data centers. This is in addition to our standard tier Dedicated CPU, Shared CPU, and High Memory instance types. These Premium tier instances guarantee a baseline hardware class that includes new AMD EPYC CPUs™. These Premium offerings are built for applications with critical performance needs such as enterprise video encoding, AI, CI/CD, build servers, and data analysis. Below are the pricing and hardware specifications for Premium tier Dedicated CPU Instances:
 
-| Plan | $/Mo | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Premium 4 GB   | $43    | 4   | 2  | 80    | 4  | 40/4  |
-| Premium 8 GB   | $86    | 8   | 4  | 160   | 5  | 40/5  |
-| Premium 16 GB  | $173   | 16  | 8  | 320   | 6  | 40/6  |
-| Premium 32 GB  | $346   | 32  | 16 | 640   | 7  | 40/7  |
-| Premium 64 GB  | $892   | 64  | 32 | 1,280 | 8  | 40/8  |
-| Premium 96 GB  | $1,037 | 96  | 48 | 1,920 | 9  | 40/9  |
-| Premium 128 GB | $1,383 | 128 | 50 | 2,500 | 10 | 40/10 |
-| Premium 256 GB | $2,765 | 256 | 56 | 5,000 | 11 | 40/11 |
-| Premium 512 GB | $5,530 | 512 | 64 | 7,200 | 12 | 40/12 |
+| <div class="w-40">Plan</div> | <div class="w-36">Price</div> | RAM (GB) | CPU Cores | Storage (GB) | Transfer (TB) | Network In/Out (Gbps)
+| --- |  --- | --- | --- | --- | --- | --- | --- |
+| Premium 4 GB   | $43/mo ($0.06/hr)    | 4   | 2  | 80    | 4  | 40/4  |
+| Premium 8 GB   | $86/mo ($0.13/hr)    | 8   | 4  | 160   | 5  | 40/5  |
+| Premium 16 GB  | $173/mo ($0.26/hr)   | 16  | 8  | 320   | 6  | 40/6  |
+| Premium 32 GB  | $346/mo ($0.52/hr)   | 32  | 16 | 640   | 7  | 40/7  |
+| Premium 64 GB  | $892/mo ($1.04/hr)   | 64  | 32 | 1,280 | 8  | 40/8  |
+| Premium 96 GB  | $1,037/mo ($1.56/hr) | 96  | 48 | 1,920 | 9  | 40/9  |
+| Premium 128 GB | $1,383/mo ($2.07/hr) | 128 | 50 | 2,500 | 10 | 40/10 |
+| Premium 256 GB | $2,765/mo ($4.15/hr) | 256 | 56 | 5,000 | 11 | 40/11 |
+| Premium 512 GB | $5,530/mo ($8.29/hr) | 512 | 64 | 7,200 | 12 | 40/12 |
 
-The pricing for Premium Compute Instance [Backups](/docs/products/storage/backups/) is as follows:
+The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
 
-| Plan | $/Mo |
+Optionally, you can also add on the [Backup](/docs/products/storage/backups/) service to a Premium instance. The price for this service is outlined below:
+
+| <div class="w-40">Plan</div> | Price for the Backup service |
 | --- | --- |
-| Premium 4 GB  | $5    |
-| Premium 8 GB  | $10   |
-| Premium 16 GB | $20   |
-| Premium 32 GB | $40   |
-| Premium 64 GB | $80   |
-| Premium 96 GB | $120  |
-| Premium 128 GB | $160 |
-| Premium 256 GB | $200 |
-| Premium 512 GB | $240 |
+| Premium 4 GB  | $5/mo ($0.008/hr)    |
+| Premium 8 GB  | $10/mo ($0.015/hr)   |
+| Premium 16 GB | $20/mo ($0.03/hr)   |
+| Premium 32 GB | $40/mo ($0.06/hr)   |
+| Premium 64 GB | $80/mo ($0.12/hr)   |
+| Premium 96 GB | $120/mo ($0.18/hr)  |
+| Premium 128 GB | $160/mo ($0.24/hr) |
+| Premium 256 GB | $200/mo ($0.30/hr) |
+| Premium 512 GB | $240/mo ($0.36/hr) |
 
 The new Premium plans can also be deployed as worker nodes in Linode Kubernetes Engine (LKE) clusters. There is no additional cost for Premium plan LKE worker nodes beyond the price listed in the Premium pricing table above.
 
