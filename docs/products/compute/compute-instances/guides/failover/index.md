@@ -3,7 +3,7 @@ title: "Configure Failover on a Compute Instance"
 description: "This guide discusses how to enable failover on a Linode Compute Instance through using our IP Sharing feature with software such as keepalived or FRR."
 keywords: ['IP failover','IP sharing','elastic IP']
 published: 2022-03-23
-modified: 2023-06-21
+modified: 2023-06-30
 modified_by:
   name: Linode
 aliases: ['/guides/ip-failover/']
@@ -31,7 +31,7 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | -- | -- | -- | -- | -- |
 | Atlanta, GA (USA) | *Undergoing network upgrades* | - | - | 4 |
 | Chicago, IL (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
-| Dallas, TX (USA) | *Undergoing network upgrades* | - | - | 2 |
+| Dallas, TX (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 2 |
 | Frankfurt (Germany) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 10 |
 | Fremont, CA (USA) | *Undergoing network upgrades* | - | - | 3 |
 | London (United Kingdom) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 7 |
@@ -40,8 +40,8 @@ Within Linode's platform, failover is configured by first enabling [IP Sharing](
 | Paris (France) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
 | Singapore | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 9 |
 | Sydney (Australia) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 16 |
-| Tokyo (Japan) | Supported | ARP-based (legacy) | [keepalived](/docs/products/compute/compute-instances/guides/failover-legacy-keepalived/) | 11 |
-| Toronto (Canada) |  *Undergoing network upgrades* | - | - | 15 |
+| Tokyo (Japan) | *Undergoing network upgrades* | - | - | 11 |
+| Toronto (Canada) | *Undergoing network upgrades* | - | - | 15 |
 | Washington, DC (USA) | **Supported** | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
 {{< note >}}
