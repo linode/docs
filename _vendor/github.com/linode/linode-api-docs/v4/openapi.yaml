@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.157.0
+  version: 4.157.1
 
   title: Linode API
   description: |
@@ -24220,25 +24220,48 @@ components:
           properties:
             id:
               type: integer
-              description: >
+              nullable: true
+              description: |
                 The unique ID of the Notification's entity, based on the entity
                 type.
+
+                Returns `null` for the following entity types:
+                * `account`
+                * `promotion`
               example: 3456
             label:
               type: string
-              description: >
+              nullable: true
+              description: |
                 The current label for this Notification's entity.
+
+                Returns `null` for the following entity types:
+                * `entity_transfer`
+                * `promotion`
+                * `region`
               example: Linode not booting.
             type:
               type: string
+              enum:
+              - account
+              - entity_transfer
+              - linode
+              - nodebalancer
+              - promotion
+              - region
+              - ticket
+              - volume
               description: The type of entity this is related to.
               example: ticket
             url:
               type: string
-              description: >
+              nullable: true
+              description: |
                 The URL where you can access the object this Notification is for.
                 If a relative URL, it is relative to the domain you retrieved the
                 Notification from.
+
+                Returns `null` for the `promotion` entity type.
               example: /support/tickets/3456
         label:
           type: string
@@ -24921,6 +24944,7 @@ components:
         verified_phone_number:
           type: string
           format: phone
+          nullable: true
           readOnly: true
           description: |
             The phone number verified for this Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
@@ -25779,6 +25803,7 @@ components:
         verified_phone_number:
           type: string
           format: phone
+          nullable: true
           readOnly: true
           description: |
             The phone number verified for this User Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
