@@ -115,7 +115,7 @@ Appwrite can be installed with a single Docker command. Essentially, this comman
 The command creates a new `appwrite` directory in the current directory, and this new directory becomes the base for your Appwrite instance:
 
 ```command
-sudo docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw --entrypoint="install" appwrite/appwrite:1.2.1
+sudo docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock --volume "$(pwd)"/appwrite:/usr/src/code/appwrite:rw --entrypoint="install" appwrite/appwrite:1.3.7
 ```
 
 Progress through the prompts, which allow you to set the initial configuration options for your Appwrite instance. You can press **Enter** at each prompt to receive the default values.
