@@ -66,7 +66,7 @@ The table below shows Object Storage specifications, including those for the exi
 | Maximum number of objects | *varies by region (see [Availability](#availability))* |
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
-| Rate limiting (per bucket) | 750 requests per second |
+| Rate limit (per bucket) | 750 requests per second |
 
 To increase these limits beyond their default values, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. The capacity of the region is considered when processing a limit increase request, among other factors.
 

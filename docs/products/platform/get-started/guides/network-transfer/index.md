@@ -11,8 +11,6 @@ aliases: ['/platform/billing-and-support/network-transfer-quota/', '/guides/netw
 authors: ["Linode"]
 ---
 
-{{< content "april-price-update-shortguide" >}}
-
 ## Overview
 
 **Network transfer** is the exchange of data between two computers over the public internet or a private network. Other providers and publications may refer to this as data transfer, ingress/egress, and bandwidth, among many other terms. This traffic is broken down into inbound and outbound network transfer. *Inbound network transfer* is data sent *to* your service (such as a file upload). *Outbound network transfer* is data sent *from* your service (such as a web page and its images, stylesheets, and JavaScript files).
