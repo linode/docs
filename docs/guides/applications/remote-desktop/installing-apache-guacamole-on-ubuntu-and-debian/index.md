@@ -1,8 +1,5 @@
 ---
 slug: installing-apache-guacamole-on-ubuntu-and-debian
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to install Apache Guacamole (a remote access gateway for SSH, VNC, and other protocols) natively on Ubuntu and Debian."
 keywords: ["Apache Guacamole", "SSH"]
 tags: ["guacamole"]
@@ -10,18 +7,18 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-13
 modified_by:
   name: Linode
-title: "How to Install Apache Guacamole on Ubuntu and Debian"
-h1_title: "Installing Apache Guacamole on Ubuntu and Debian"
-enable_h1: true
+title: "Installing Apache Guacamole on Ubuntu and Debian"
+title_meta: "How to Install Apache Guacamole on Ubuntu and Debian"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
+authors: ["Linode"]
 ---
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
@@ -29,7 +26,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Guacamole Server
 
-1.  Log in to the Compute Instance over [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/).
+1.  Log in to the Compute Instance over [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Install all required dependencies. For Debian users, replace `libjpeg-turbo8-dev` with `libjpeg62-turbo-dev`.
 

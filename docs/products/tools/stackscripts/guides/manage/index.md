@@ -49,19 +49,19 @@ Making an Account StackScript public allows the rest of the Linode community to 
 
 1. A dialog box appears asking you to confirm that you wish to make the StackScript public.
 
-    {{< caution >}}
-While you can edit a public *Community StackScript*, you cannot delete it or make it private again.
-    {{</ caution >}}
+    {{< note type="alert" >}}
+    While you can edit a public *Community StackScript*, you cannot delete it or make it private again.
+    {{< /note >}}
 
 {{< note >}}
 Your public [Account StackScript](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#account-stackscripts) is available to you for use on the Account StackScripts tab. For users on other accounts, your StackScript is available to them from the [Community StackScripts](/docs/products/tools/stackscripts/guides/deploy-a-compute-instance/#community-stackscripts) tab.
-{{</ note >}}
+{{< /note >}}
 
 ## Delete a StackScript
 
 {{< note >}}
 You cannot delete Account StackScripts that have been made public.
-{{</ note >}}
+{{< /note >}}
 
 1. Navigate to the **StackScripts** page in the Cloud Manager. See [View StackScripts](#view-stackscripts).
 

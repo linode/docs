@@ -1,8 +1,5 @@
 ---
 slug: nodejs-twitter-bot
-author:
-    name: Pj Metz
-    email: metz.pj@gmail.com
 description: "How to make a Twitter bot with Node.js, publish it to GitHub, and then host it on a Linode cloud instance. The guide is intended for people new to coding."
 keywords: ["how to make a twitter bot", "node twitter", "reply bot twitter", "node twitter api tutorial"]
 tags: ["version control system", "javascript"]
@@ -11,9 +8,6 @@ published: 2021-07-23
 modified_by:
     name: Linode
 title: "Make a Twitter Bot and Reply to Tweets in Node.js"
-contributor:
-    name: Pj Metz
-    link: https://www.metzinaround.com
 external_resources:
     - "[Documentation Home | Docs | Twitter Developer Platform](https://developer.twitter.com/en/docs)"
     - "[npm Docs](https://docs.npmjs.com/)"
@@ -24,6 +18,7 @@ external_resources:
     - "[GitHub Desktop](https://desktop.github.com/)"
     - "[Creating a new User in Ubuntu](https://youtu.be/fDHHKR0nVQg)"
     - "[FileZilla](/docs/guides/filezilla/)"
+authors: ["Pj Metz"]
 ---
 
 ## Introduction
@@ -124,7 +119,7 @@ As mentioned in the Before You Begin section, this tutorial records the code for
 
     - The repository can be public or private. If you make it private, *and if you also want to use the Git command line tools*, then you need to authenticate with GitHub inside your terminal. This authentication requires a few extra steps, and these steps are outlined in the note below. For a simpler experience, it's recommended to make the repository public.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 To authenticate with Github inside the terminal, see the [Authenticating with the command line](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line) section of GitHub's [About authentication to GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github) document.
 
 Specifically, [personal access tokens](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) are the recommended method of authenticating for this tutorial. [Working with public keys](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) is not demonstrated.
@@ -136,7 +131,7 @@ Specifically, [personal access tokens](https://docs.github.com/en/github/authent
 
     - Enable the `.gitignore` toggle and choose **Node** from the available options.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 A Git repository's `.gitignore` file allows you to specify certain files or file types that should not be checked into source control. Node.js projects feature some of these files. GitHub's `.gitignore` template for Node.js sets up some appropriate default files to exclude. For more information about `.gitignore` file options, see [this document from git-scm.com](https://git-scm.com/docs/gitignore).
 {{< /note >}}
 
@@ -152,7 +147,7 @@ A Git repository's `.gitignore` file allows you to specify certain files or file
 
         Before running the command, be sure to substitute your own GitHub username in for `your-github-username`. If you chose a different name for your repository, substitute that in for `snes-soundtracks`.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 If you created a private repository, remember to set up a [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for GitHub. When referencing a private repository, the above `git clone` command prompts for a GitHub username and password. You should enter the *personal access token* (**not** your normal GitHub password) when prompted for the password.
 {{< /note >}}
 
@@ -173,7 +168,7 @@ access_token_secret=
 
     Later in this section, the keys that are provided by the Twitter developer portal are recorded in this file. Your `.env` file serves as your one source of truth for these keys. The `.gitignore` for your project excludes the `.env` file from source control, so you won’t accidentally upload your keys to GitHub.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In a later section, a Node.js module named `dotenv` is used by your application code to read the secret keys in the `.env` file.
 {{< /note >}}
 
@@ -185,7 +180,7 @@ In a later section, a Node.js module named `dotenv` is used by your application 
 
     Twitter's developer portal has two concepts that are used to manage your access to the Twitter API: *projects* and *apps*. A project contains an app. For earlier versions of the Twitter API, standalone apps were created, and projects were not required. A project and corresponding app are both required to access the v2 Twitter API, which this tutorial uses.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Review Twitter's [Developer Apps](https://developer.twitter.com/en/docs/apps/overview) documentation for more information about projects and apps.
 {{< /note >}}
 
@@ -204,7 +199,7 @@ Review Twitter's [Developer Apps](https://developer.twitter.com/en/docs/apps/ove
         Because you don't have any apps yet, the dropdown menu on this page is empty. Click the **Create new App instead** button above the dropdown menu.
         A text field appears that allows you to enter an app name. Enter a unique name in this field.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 You may not see the dropdown menu, and the text field might appear right away instead.
 {{< /note >}}
 
@@ -220,7 +215,7 @@ You may not see the dropdown menu, and the text field might appear right away in
 
     - Copy the **API Secret Key** and paste it at the end of the `consumer_secret=` line. As with the previous line, do not add extra spaces or quotes.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This tutorial does not need the Bearer Token, but you can record that somewhere outside of your project if you'd like to. It can also be regenerated from inside the developer portal later if you don't record it.
 {{< /note >}}
 
@@ -260,7 +255,7 @@ Right now, your local repository contains four files: your `.env` secrets, a `.g
 
         cd snes-soundtracks
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you are using VS Code's built-in terminal and have your code repository folder open, then you do not need to run this `cd` command. This is because VS Code's terminal automatically starts inside the folder for your editor's workspace.
 {{< /note >}}
 
@@ -364,7 +359,7 @@ Before we can start adding our code, we should adjust a few parts of the `packag
 
         touch snes.js
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `snes.js` file can be named whatever you want it to be. If you want to use a different name, just make sure that your `package.json` is updated to reference that new name.
 {{< /note >}}
 
@@ -420,7 +415,7 @@ Here's what the code does:
 
 - On lines 11-15, we set up a few variables for the node-schedule package. These variables declare the day and time when the bot should periodically tweet. Specifically, the scheduled time is every Monday at 10 am Eastern Daylight Savings Time. A `RecurrenceRule` is created to facilitate this.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Documentation for this method of scheduling is found in the [Recurrence Rule Scheduling](https://github.com/node-schedule/node-schedule#recurrence-rule-scheduling) section of the node-schedule package's README. Creating the `RecurrenceRule` does not actually schedule the bot's tweeting function. This function is scheduled at the end of the bot's application code, in the [Scheduling Tweets](#scheduling-tweets) section.
 {{< /note >}}
 
@@ -570,7 +565,7 @@ This section of code defines a `pressStart` function that's called when another 
 
     - A `gameOver` callback function is also passed to the `T.post` method, and this function is defined on lines 34-41. This function prints the reply Tweet to your console, or it prints any errors that the Twitter API may have returned from the POST request.
 
-        {{< note >}}
+        {{< note respectIndent=false >}}
 Where the `gameOver` function is passed to `T.post`, you could use an anonymous function instead, and it would do the same thing. The tutorial code defines it separately for better readability.
 {{< /note >}}
 
@@ -624,7 +619,7 @@ This section of code defines a `pressSelect` function that sends new Tweets with
 
 Now that the bot code has been added to your workstation's copy of the repository, we should make a new *commit*. A commit in Git records your file changes in the version control history. After making the new commit, you can then **push** it to your repository on GitHub.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A commit that you make locally is not automatically synced to GitHub. The push operation demonstrated in this tutorial needs to be done manually.
 {{< /note >}}
 
@@ -636,7 +631,7 @@ In the next two sections, this tutorial demonstrates two methods for creating a 
 
     ![GitHub Desktop - Commit to main](github-desktop-commit-to-main.png "GitHub Desktop - Commit to main")
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Not all of the files that are in your Node.js project, like the `node_modules` folder, or the `.env` secrets file, are shown. This is because they are excluded by the `.gitignore` file.
 {{< /note >}}
 
@@ -644,7 +639,7 @@ Not all of the files that are in your Node.js project, like the `node_modules` f
 
 1. Press the **Commit to main** button below the summary and description fields. This creates the new commit on the *main* branch of your repository, which is the default branch name for repositories created on GitHub.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Branches in Git allow you to work on new features for your projects without altering the files in your other branches.
 {{< /note >}}
 
@@ -654,7 +649,7 @@ Branches in Git allow you to work on new features for your projects without alte
 
 1. Click on the **Push origin** that appears in the top navigation. This pushes the new commit to your GitHub repository.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 *Origin* is how Git is referring to the remote repository on GitHub. This is a naming convention for Git.
 {{< /note >}}
 
@@ -682,7 +677,7 @@ Untracked files:
 
     Your new application files are listed under the `Untracked files` line, which means that they don't exist yet in Git's version history.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Not all of the files that are in your Node.js project, like the `node_modules` folder, or the `.env` secrets file, are shown. This is because they are excluded by the `.gitignore` file.
 {{< /note >}}
 
@@ -690,7 +685,7 @@ Not all of the files that are in your Node.js project, like the `node_modules` f
 
         git add .
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The period at the end of this command tells git to add all the files in your current directory to the stage.
 {{< /note >}}
 
@@ -714,7 +709,7 @@ Changes to be committed:
 
     The output above mentions that you are on the `main` branch, which is the default branch name for repositories created on GitHub.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Branches in Git allow you to work on new features for your projects without altering the files in your other branches.
 {{< /note >}}
 
@@ -737,7 +732,7 @@ Branches in Git allow you to work on new features for your projects without alte
 
         git push origin main
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 *Origin* is how Git is referring to the remote repository on GitHub. This is a naming convention for Git.
 {{< /note >}}
 
@@ -803,7 +798,7 @@ SNES Soundtracks booting up
 Tweeted: https://t.co/Y2AOzzkUm0 Here's your soundtrack for Tuesday, June 1, 2021 at 10:59:19 AM UTC
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Note that Twitter has automatically shortened the link to the soundtrack in the Tweet.
 {{< /note >}}
 
@@ -831,7 +826,7 @@ You could certainly let this code run for a long while from your local machine, 
 
     ![Linode home screen](https://lh3.googleusercontent.com/JFNpdFMCe9A37beAwtxazN-zqcSr88Ff457bnQhbQpkQJILfqAv7g0bR_CQ6SxMu8EfKgIcaqTGuZvPTTI2hOb6dYyi3CyLMubEKOwFEZMkCaByjpk83L2o0c4W8GTwE4VPSodE-)
 
-1. Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. When creating your instance, use the following options:
+1. Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. When creating your instance, use the following options:
 
     - Pick Ubuntu 20.04 as your Linux distribution.
 
@@ -847,28 +842,28 @@ You could certainly let this code run for a long while from your local machine, 
 
 ### Log In and Secure the Server
 
-1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/guides/getting-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
+1. To log into the server, follow the [Connect to Your Linode via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance) section of our [Getting Started](/docs/products/platform/get-started/) guide. If you do not have access to an SSH client, or if SSH connections are firewalled on your local network, you can also opt to use [the Lish console](/docs/products/compute/compute-instances/guides/lish/) from the Cloud Manager in your web browser. To do so, follow the [Use a Web Browser](/docs/products/compute/compute-instances/guides/lish/#through-the-cloud-manager-weblish) instructions in our Lish guide.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Our [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) guide series has a few other options for SSH clients, like SSH extension for the Chrome web browser.
 {{< /note >}}
 
     When logging in for the first time, you use the `root` username and the root password that you set when creating the Linode. However, it's important to create a non-root-user with limited permissions to run your programs from.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 If you were to run your programs as root, and if they were to be compromised by someone malicious, then the rest of your server could be compromised. If your server isn't running anything else, then it may not be important to you. However, an attacker could install malicious programs that target other people's servers, like a botnet script that sends denial-of-service attacks.
-{{< /caution >}}
+{{< /note >}}
 
-1. To create a non-root-user, follow the [Add a Limited User Account](/docs/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
+1. To create a non-root-user, follow the [Add a Limited User Account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) section of our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. This guide assumes that the name of the new user is `tutorialbotuser`, but you can name it whatever you'd like. The instructions in this section also show how to give your user `sudo` privileges, so it is still able to perform software updates and other administrative tasks.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Here's a video that also shows how to create a limited user: [Tech Republic: How to create a new user with admin privileges](https://youtu.be/fDHHKR0nVQg).
 {{< /note >}}
 
 1. After you have created the limited user, log out of your current SSH (or Lish) session by running the `exit` command. Then, log back in as the new user.
 
-    {{< note >}}
-The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
+    {{< note respectIndent=false >}}
+The rest of the steps in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide are optional for this tutorial, but they are still recommended if you intend to leave your server running.
 {{< /note >}}
 
 ### Perform Software Updates and Prepare for the Bot
@@ -928,7 +923,7 @@ After finishing the file transfer, proceed to the [run the bot](#run-the-bot-on-
 
         git clone https://github.com/your-github-username/snes-soundtracks.git
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If you previously created a private GitHub repository, then the above command prompts for your password. You should enter the *personal access token* (and not your normal GitHub password) that you created when setting up [command line authentication for GitHub](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line) earlier.
 {{< /note >}}
 

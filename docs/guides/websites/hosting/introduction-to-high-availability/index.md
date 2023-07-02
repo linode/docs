@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-high-availability
-author:
-  name: Phil Zona
-  email: docs@linode.com
 description: 'This guide provides you with an introduction to concepts and terminology relating to high availability, a method of keeping your web servers up with maximum uptime.'
 keywords: ["high availability", "hosting", "website", "failover", "ssd ha"]
 tags: ["web server","monitoring"]
@@ -15,6 +12,7 @@ title: 'Introduction to High Availability'
 external_resources:
 - '[Fault Tolerance](https://en.wikipedia.org/wiki/Fault_tolerance)'
 aliases: ['/websites/introduction-to-high-availability/','/websites/hosting/introduction-to-high-availability/']
+authors: ["Phil Zona"]
 ---
 
 ![Introduction to High Availability](Introduction_to_High_Availability_smg.jpg)

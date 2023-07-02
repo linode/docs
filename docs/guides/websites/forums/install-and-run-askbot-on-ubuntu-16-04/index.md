@@ -1,8 +1,5 @@
 ---
 slug: install-and-run-askbot-on-ubuntu-16-04
-author:
-  name: Gopal Raha
-  email: gopalraha@outlook.com
 description: 'This guide shows how to Install and Deploy an AskBot Question and Answer Forum with LetsEncrypt SSL.'
 keywords: ["askbot", "Gunicorn", "LetsEncrypt", "Python", "WSGI"]
 tags: ["ubuntu"]
@@ -12,14 +9,12 @@ modified_by:
   name: Linode
 published: 2017-08-20
 title: 'How to Install and Run AskBot with LetsEncrypt SSL on Ubuntu 16.04'
-contributor:
-  name: Gopal Raha
-  link: https://github.com/gopalraha
 external_resources:
  - '[AskBot Documentation](https://askbot.org/doc/index.html)'
  - '[AskBot Official Q&A Forum](https://askbot.org)'
  - '[AskBot Official Website](https://askbot.com)'
 aliases: ['/websites/forums/install-and-run-askbot-on-ubuntu-16-04/']
+authors: ["Gopal Raha"]
 ---
 
 ![AskBot with Let's Encrypt on Ubuntu](AskBot.jpg)
@@ -32,13 +27,13 @@ In this guide, you'll install AskBot and deploy with **NGINX** as a web server, 
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager > Get Started](/docs/products/networking/dns-manager/get-started/) guide.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -98,7 +93,7 @@ Throughout this guide, replace `example_user` with a non-root user with `sudo` a
 
         askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more detailed information about the arguments to `askbot-setup`, user the `-h` flag: `askbot-setup –h`.
 {{< /note >}}
 
@@ -121,7 +116,7 @@ For more detailed information about the arguments to `askbot-setup`, user the `-
 
 ## Deploy AskBot with Let's Encrypt SSL
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This section requires that you have a Fully Qualified Domain Name (FQDN) that is configured to point to your Linode. In the examples below, replace `example.com` with your FQDN.
 {{< /note >}}
 
@@ -238,7 +233,7 @@ server {
 
     ![create an askbot admin account](askbot-2.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
 {{< /note >}}
 

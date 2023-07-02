@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Apply Firewall Rules to a Compute Instance"
 description: "Learn how to add and remove Compute Instances from Cloud Firewalls."
 aliases: ['/products/networking/cloud-firewall/guides/assign-firewall/']
+authors: ["Linode"]
 ---
 
 Each Cloud Firewall can be applied to one or more Compute Instances. Use the steps below to view and modify the Compute Instances using this firewall.
@@ -23,11 +21,11 @@ To add a Compute Instance to this firewall, click on the **Add Linodes to Firewa
 
 {{< note >}}
 You can apply the Cloud Firewall to more than one Linode service at a time. Repeat this process to add additional Compute Instances.
-{{</ note >}}
+{{< /note >}}
 
-{{< caution >}}
-If [Network Helper](/docs/guides/network-helper/) has been disabled on this Compute Instance and the internal networking configuration uses DHCP for IPv4 address assignment, some additional firewall rules are necessary. You must edit the Cloud Firewall to allow DHCP traffic through port 67 and 68. If needed, a full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/guides/dhcp-ip-address-reference/).
-{{</ caution >}}
+{{< note type="alert" >}}
+If [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) has been disabled on this Compute Instance and the internal networking configuration uses DHCP for IPv4 address assignment, some additional firewall rules are necessary. You must edit the Cloud Firewall to allow DHCP traffic through port 67 and 68. If needed, a full list of IP addresses for our DHCP servers can be found in our [DHCP IP Address Reference Guide](/docs/guides/dhcp-ip-address-reference/).
+{{< /note >}}
 
 ## Remove Compute Instances
 

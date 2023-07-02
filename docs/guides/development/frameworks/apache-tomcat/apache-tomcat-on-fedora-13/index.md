@@ -1,9 +1,6 @@
 ---
 slug: apache-tomcat-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 13.'
 keywords: ["apache tomcat fedora 13", "java", "java fedora 13", "java servlets fedora 13", "java fedora"]
 tags: ["web applications","java","fedora"]
@@ -19,13 +16,14 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 
 
 Apache Tomcat is a free and open source software implementation for Java Servlets. It provides support for the Java Server Pages (JSP) that power many popular web-based applications.
 
-This guide assumes that you have a working installation of Fedora 13, and that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/guides/linode-beginners-guide/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
+This guide assumes that you have a working installation of Fedora 13, and that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) to get your system working and up to date. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/).
 
 ## Install Apache Tomcat
 

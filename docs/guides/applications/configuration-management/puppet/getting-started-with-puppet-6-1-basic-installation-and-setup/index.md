@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-puppet-6-1-basic-installation-and-setup
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'Basic instructions to set up and configure a Puppet master and agents using Ubuntu and CentOS servers.'
 keywords: ["puppet installation", "configuration change management", "server automation"]
 tags: ["ubuntu","automation","centos"]
@@ -17,6 +14,7 @@ external_resources:
     - '[Puppet Open Source Documentation](https://docs.puppet.com/puppet/)'
     - '[Configuring Java Arguments](https://puppet.com/docs/pe/2019.0/config_java_args.html)'
 aliases: ['/applications/configuration-management/puppet/getting-started-with-puppet-6-1-basic-installation-and-setup/','/applications/configuration-management/getting-started-with-puppet-6-1-basic-installation-and-setup/']
+authors: ["Linode"]
 ---
 
 [Puppet](https://puppet.com/) is a configuration management tool that simplifies system administration. Puppet uses a client/server model in which your managed nodes, running a process called the Puppet *agent*, talk to and pull down configuration profiles from a Puppet *master*.
@@ -36,7 +34,7 @@ Puppet deployments can range from small groups of servers up to enterprise-level
 After installation, the next section will show you how to secure these servers via Puppet. This section will demonstrate core features of the Puppet language.
 
 {{< note >}}
-Most guides will instruct you to follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
+Most guides will instruct you to follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before proceeding. Because Puppet will be used to perform this task, you should begin this guide as the `root` user. A limited user with administrative privileges will be configured via Puppet in later steps.
 {{< /note >}}
 
 ## Before You Begin
@@ -57,42 +55,41 @@ Throughout this guide, commands and code snippets will reference the values disp
 
 1.  Create three Linodes corresponding to the servers listed in the table above. Your Puppet master Linode should have at least four CPU cores; the [Linode 8GB](https://www.linode.com/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-1.  [Configure your timezone](/docs/guides/set-up-and-secure/#set-the-timezone) on your master and agent nodes so that they all have the same time data.
+1.  [Configure your timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone) on your master and agent nodes so that they all have the same time data.
 
-1.  [Set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) for each server.
+1.  [Set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) for each server.
 
 1.  [Set the FQDN](/docs/guides/using-your-systems-hosts-file/) for each Linode by editing the servers' `/etc/hosts` files.
 
-    {{< disclosure-note "Example content for the hosts file" >}}
-You can model the contents of your `/etc/hosts` files on these snippets:
+    {{< note type="secondary" title="Example content for the hosts file" isCollapsible=true >}}
+    You can model the contents of your `/etc/hosts` files on these snippets:
 
-{{< file "Master" >}}
-127.0.0.1	localhost
-192.0.2.2   puppet.example.com puppet
+    ```file {title="Master"}
+    127.0.0.1	localhost
+    192.0.2.2   puppet.example.com puppet
 
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-{{< /file >}}
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    ```
 
-{{< file "Node 1 (Ubuntu)" >}}
-127.0.0.1	localhost
-192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
+    ```file {title="Node 1 (Ubuntu)"}
+    127.0.0.1	localhost
+    192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
 
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-{{< /file >}}
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    ```
 
-{{< file "Node 2 (CentOS)" >}}
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
-{{< /file >}}
-
-{{< /disclosure-note >}}
+    ```file {title="Node 2 (CentOS)"}
+    127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+    ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+    192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
+    ```
+    {{< /note >}}
 
 1.  [Set up DNS records](/docs/products/networking/dns-manager/guides/manage-dns-records/) for your Linodes' FQDNs. For each Linode, create a new *A record* with the name specified by its FQDN and assign it to that Linode's IP address.
 
@@ -136,12 +133,12 @@ dns_alt_names = puppet,puppet.example.com
 {{< /output >}}
 
     {{< note >}}
-The `puppet` command by default is not added to your PATH. Using Puppet's interactive commands requires a full file path. To avoid this, update your PATH for your existing shell session:
+    The `puppet` command by default is not added to your PATH. Using Puppet's interactive commands requires a full file path. To avoid this, update your PATH for your existing shell session:
 
-    export PATH=/opt/puppetlabs/bin:$PATH
+        export PATH=/opt/puppetlabs/bin:$PATH
 
-A more permanent solution would be to add this to your `.profile` or `.bashrc` files.
-{{</ note >}}
+    A more permanent solution would be to add this to your `.profile` or `.bashrc` files.
+    {{< /note >}}
 
 1.  Update your Puppet master's `/etc/hosts` to resolve your managed nodes' IP addresses. For example, your `/etc/hosts` file might look like the following:
 
@@ -158,7 +155,7 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This snippet incorporates the FQDN declaration described in the [Create your Linodes](#create-your-linodes) section.
 {{< /note >}}
 
@@ -195,30 +192,29 @@ This snippet incorporates the FQDN declaration described in the [Create your Lin
 192.0.2.2    puppet.example.com puppet
 {{< /file >}}
 
-    {{< disclosure-note "Example content for the hosts file" >}}
-You can model the contents of your managed nodes' `/etc/hosts` files on the following snippets. These incorporate the FQDN declarations described in the [Create your Linodes](#create-your-linodes) section:
+    {{< note type="secondary" title="Example content for the hosts file" isCollapsible=true >}}
+    You can model the contents of your managed nodes' `/etc/hosts` files on the following snippets. These incorporate the FQDN declarations described in the [Create your Linodes](#create-your-linodes) section:
 
-{{< file "Node 1 (Ubuntu)" >}}
-127.0.0.1	localhost
-192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
+    ```file {title="Node 1 (Ubuntu)"}
+    127.0.0.1	localhost
+    192.0.2.3   puppet-agent-ubuntu.example.com puppet-agent-ubuntu
 
-192.0.2.2   puppet.example.com puppet
+    192.0.2.2   puppet.example.com puppet
 
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-{{< /file >}}
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+    ff02::1 ip6-allnodes
+    ff02::2 ip6-allrouters
+    ```
 
-{{< file "Node 2 (CentOS)" >}}
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
+    ```file {title="Node 2 (CentOS)"}
+    127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+    ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+    192.0.2.4   puppet-agent-centos.example.com puppet-agent-centos
 
-192.0.2.2   puppet.example.com puppet
-{{< /file >}}
-
-{{< /disclosure-note >}}
+    192.0.2.2   puppet.example.com puppet
+    ```
+    {{< /note >}}
 
 1.  On each managed node, use the `puppet config` command to set the value for your `server` setting to the FQDN of the master:
 
@@ -238,7 +234,7 @@ server = puppet.example.com
 
         /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On systemd systems, the above command is equivalent to using these two `systemctl` commands:
 
     systemctl start puppet
@@ -285,7 +281,7 @@ Notice: Applied catalog in 0.02 seconds
 
 ## Add Modules to Configure Agent Nodes
 
-The Puppet master and agent nodes are now functional, but they are not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+The Puppet master and agent nodes are now functional, but they are not secure. Based on concepts from the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.
@@ -317,7 +313,7 @@ To create a new limited user on your nodes, you will create and apply a new modu
     | `templates` | Template files to be copied to managed nodes that can e customized with variables |
     | `examples` | Example code which shows how to use the module |
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Review Puppet's [Module fundamentals](https://puppet.com/docs/puppet/6.1/modules_fundamentals.html#module-structure) article for more information on how a module is structured.
 {{< /note >}}
 
@@ -401,7 +397,7 @@ class accounts {
 
     This code defines the value for the `$rootgroup` variable by checking the value of `$osfamily`, which is one of Puppet's [core facts](https://puppet.com/docs/facter/6.1/core_facts.html). If the value for `$osfamily` does not match Debian or Red Hat, the `default` value will output a warning that the distribution selected is not supported by this module.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The Puppet Configuration Language executes code from top to bottom. Because the `user` resource declaration will reference the `$rootgroup` variable, you must define `$rootgroup` *before* the `user` declaration.
 {{< /note >}}
 
@@ -448,9 +444,9 @@ user { 'username':
 # ...
 {{< /file >}}
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 The hashed password **must** be included in single quotes `' '`.
-{{< /caution >}}
+{{< /note >}}
 
 1.  After saving your changes, use the Puppet parser to ensure that the code is correct:
 
@@ -470,7 +466,7 @@ include accounts
 
         /opt/puppetlabs/bin/puppet apply --noop init.pp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `--noop` parameter prevents Puppet from actually applying the module to your system and making any changes.
 {{< /note >}}
 
@@ -534,7 +530,7 @@ class accounts::ssh {
 }
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `files` directory is omitted from the `source` line because the `files` folder is the default location of files within a module. For more information on the format used to access resources in a module, refer to the [official Puppet module documentation](https://docs.puppet.com/puppet/6.1/modules_fundamentals.html#module-layout).
 {{< /note >}}
 
@@ -563,8 +559,8 @@ class accounts::ssh {
 {{< /file >}}
 
     {{< note >}}
-`notify` is one of Puppet's [relationship metaparameters](https://puppet.com/docs/puppet/6.1/lang_relationships.html).
-{{< /note >}}
+    `notify` is one of Puppet's [relationship metaparameters](https://puppet.com/docs/puppet/6.1/lang_relationships.html).
+    {{< /note >}}
 
 1.  Include the `accounts::ssh` class within the `accounts` class in `init.pp`:
 
@@ -581,10 +577,9 @@ class accounts {
 }
 {{< /file >}}
 
-    {{< disclosure-note "The complete init.pp" >}}
-The contents of your `init.pp` should now look like the following snippet:
+    The contents of your `init.pp` should now look like the following snippet:
 
-{{< file "accounts/manifests/init.pp" puppet >}}
+    {{< file "accounts/manifests/init.pp" puppet >}}
 class accounts {
 
     $rootgroup = $osfamily ? {
@@ -608,7 +603,6 @@ class accounts {
 
 }
 {{< /file >}}
-{{< /disclosure-note >}}
 
 1.  Run the Puppet parser to test the syntax of the new class, then navigate to the `examples` directory to test and run the update to your `accounts` class:
 
@@ -617,7 +611,7 @@ class accounts {
         sudo /opt/puppetlabs/bin/puppet apply --noop init.pp
         sudo /opt/puppetlabs/bin/puppet apply init.pp
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You may see the following line in your output when validating:
 
 {{< output >}}

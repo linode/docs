@@ -1,9 +1,6 @@
 ---
 slug: run-graphic-software-on-your-linode-with-xforwarding-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide shows how to forward the X11 Server through a SSH connection so you can run applications like games and more by using X-Forwarding on Ubuntu 12.04.'
 keywords: ["x11", "x-forwarding", "ssh", "x over ssh", "ubuntu", " ubuntu 12.04"]
 tags: ["ubuntu", "ssh"]
@@ -24,6 +21,7 @@ relations:
         key: forward-x11-gui
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 On occasion you may want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.
@@ -88,6 +86,6 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
     ![Firefox, running on a Linode](1651-xforwarding_3-ubuntu.png)
 
- {{< note >}}
+{{< note >}}
 More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
 {{< /note >}}

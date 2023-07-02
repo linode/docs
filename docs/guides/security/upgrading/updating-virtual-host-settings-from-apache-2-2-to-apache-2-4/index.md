@@ -1,8 +1,5 @@
 ---
 slug: updating-virtual-host-settings-from-apache-2-2-to-apache-2-4
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4"
 keywords: ["Apache 2.2", "Apache 2.4", "Ubuntu", "Debian", "CentOS", "Fedora", "Arch", "Gentoo", "update", "upgrade"]
 tags: ["apache","security"]
@@ -12,14 +9,14 @@ modified: 2014-03-12
 modified_by:
   name: Linode
 published: 2014-03-12
-title: "How to Update Virtual Host Settings For Apache 2.4"
-h1_title: "Updating Virtual Host Settings For Apache 2.4"
-enable_h1: true
+title: "Updating Virtual Host Settings For Apache 2.4"
+title_meta: "How to Update Virtual Host Settings For Apache 2.4"
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
+authors: ["Linode"]
 ---
 
-This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
+This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/guides/hosting-a-website-ubuntu-18-04/#configure-name-based-virtual-hosts-in-apache-web-server), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
 
 ![Updating Virtual Host Settings from Apache 2.2 to Apache 2.4](updating_virtual_host_settings_tg.png "Updating Virtual Host Settings from Apache 2.2 to Apache 2.4")
 
@@ -119,7 +116,7 @@ If you are utilizing access control rules within your virtual host files, you wi
 
         systemctl reload httpd.service
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/docs/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
 {{< /note >}}
 

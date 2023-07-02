@@ -1,9 +1,6 @@
 ---
 slug: apache-and-modwsgi-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Debian 5 "Lenny"."'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","debian","python"]
@@ -19,6 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

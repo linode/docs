@@ -1,8 +1,5 @@
 ---
 slug: using-google-workspace-for-email
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Setting up Google Workspace with the DNS Manager to handle email for your domains.'
 keywords: ["google email", "google apps", "google workspace", "G Suite"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +8,10 @@ modified: 2021-06-22
 modified_by:
   name: Linode
 published: 2014-08-05
-title: "How to Use Google Workspace for Email"
-h1_title: "Using Google Workspace for Email"
-enable_h1: true
+title: "Using Google Workspace for Email"
+title_meta: "How to Use Google Workspace for Email"
 tags: ["email"]
+authors: ["Linode"]
 ---
 
 There are many options for running your own email server, and with applications like [Citadel](/docs/guides/email/citadel/), hosting your own email stack can be quite straightforward. Nevertheless, managing independent email servers can be daunting, given email's importance and potential for complexity. This is particularly true when you have multiple users and/or complex filtering schemes. Many people prefer to delegate their email to a third-party email service like Google so they can better concentrate on the administration of other, more mission critical services.

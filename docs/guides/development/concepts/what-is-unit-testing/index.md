@@ -1,8 +1,5 @@
 ---
 slug: what-is-unit-testing
-author:
-  name: Martin Heller
-  email: docs@linode.com
 description: "earn what unit testing is, why it's important, and why you should be doing it if you aren't already."
 og_description: "Learn what unit testing is, why it's important, and why you should be doing it if you aren't already."
 keywords: ['what is unit testing']
@@ -11,12 +8,9 @@ published: 2021-02-11
 image: UnderstandingUnitTesting.png
 modified_by:
   name: Linode
-title: "What is Unit Testing?"
-h1_title: "Understanding Unit Testing"
-enable_h1: true
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+title: "Understanding Unit Testing"
+title_meta: "What is Unit Testing?"
+authors: ["Martin Heller"]
 ---
 
 Unit testing exercises each function point in a program to make sure it works. Every application needs to be tested to make sure that it meets specifications – and ideally gives users joy from using it. But there are many kinds of software testing. In quite a few organizations, especially those that follow the [ISTQB Certified Test Foundation Level syllabus](https://astqb.org/certifications/foundation-level-certification/), the major testing phases are:

@@ -1,10 +1,6 @@
 ---
 slug: install-and-use-pylint-for-python-3
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
 description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
-og_description: 'Pylint for Python 3 helps raise the code quality of Python programs. Learn how to use Pylint with some real-world examples.'
 keywords: ['install','pylint','python 3']
 tags: ['pylint','python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +8,8 @@ published: 2021-05-21
 image: Pylint.jpg
 modified_by:
   name: Linode
-title: "How to Install and Use Pylint for Python 3"
-h1_title: "Installing and Using Pylint for Python 3"
-enable_h1: true
-contributor:
- name: Cameron Laird
- link: https://twitter.py/Phaseit
+title: "Installing and Using Pylint for Python 3"
+title_meta: "How to Install and Use Pylint for Python 3"
 external_resources:
 - '[PEP8 Style Guide](https://www.python.org/dev/peps/pep-0008/)'
 - '[Pylint](https://www.pylint.org/)'
@@ -27,6 +19,7 @@ external_resources:
 - '[isort](https://pypi.org/project/isort/)'
 - '[mypy](http://mypy-lang.org/)'
 
+authors: ["Cameron Laird"]
 ---
 
 ## What is Pylint?
@@ -97,7 +90,7 @@ my_sum.py:1:0: W0301: Unnecessary semicolon
 {{< /file >}}
 
 With Pylint's help, you have a script with both the correct result and a standard style. Pylint is akin to a spell checker.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Pylint does not produce correct programs; that's still the developer's responsibility. Pylint helps you to beautify the programs, which helps you effectively concentrate on functionality and program correctness.
     {{< /note >}}
 
@@ -155,7 +148,7 @@ Your code has been rated at 4.00/10 (previous run: -5.00/10, +9.00)
 {{< /output >}}
 
 Pylint's right. Once the exception is raised, the control flow passes up and out to an exception handler, and the return result does not affect it. Pylint identifies that the code fragment is syntactically valid, yet it probably represents at least a confusion.
-    {{< note >}}
+    {{< note respectIndent=false >}}
 On Pylint's 0-to-10 quality scale, it is common for the first run against a new project to show a negative score. Do NOT let this discourage you. Keep the long-term goal in mind. Your purpose with Pylint is to ensure that the Python source code scores a 10.
     {{< /note >}}
 
@@ -245,7 +238,7 @@ Pylint complains about several things. You can create a file that allows you to 
       invalid-name
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 One final tip for your initial encounter with Pylint: if you don't understand a Pylint report, or don't agree with it, it's perfectly fine at least temporarily to direct Pylint to ignore that line with an appropriate `# pylint: disable=... directive`.
     {{< /note >}}
 

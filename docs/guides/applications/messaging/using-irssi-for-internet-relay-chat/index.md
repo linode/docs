@@ -1,8 +1,5 @@
 ---
 slug: using-irssi-for-internet-relay-chat
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Use IRC and GNU Screen to maintain persistent connections to IRC networks.'
 keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -21,19 +18,20 @@ external_resources:
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
  - '[Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/)'
+authors: ["Alex Fornuto"]
 ---
 
 ![Using Irssi for Internet Relay Chat](Using-Irssi-for-Internet-Relay-Chat-smg.jpg)
 
 **Irssi** is a terminal-based chat client for real-time conversations over Internet Relay Chat (**IRC**). IRC is the common meeting ground for Linode users to exchange knowledge and troubleshoot issues in our public channel, **#linode** on **OFTC**.
 
-Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/guides/using-the-terminal/) and [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) if you intend to run Irssi on your Linode.
+Irssi can run on Linux or MAC OS X, either from your local workstation or your Linode. If you are unfamiliar with using a Linux terminal, you may want to review the Linode guides [Using the Terminal](/docs/guides/using-the-terminal/) and [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/). Additionally, it is assumed that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) if you intend to run Irssi on your Linode.
 
 ## Prerequisites
 
 Complete these tasks before you start:
 
--   Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+-   Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 -   Make sure **GNU Screen** is installed. It should be by default. See our [Screen Guide](/docs/guides/using-gnu-screen-to-manage-persistent-terminal-sessions/) for information.
 
 ## Installing Irssi
@@ -93,7 +91,7 @@ To disconnect from a channel, run:
 
     /disconnect irc.oftc.net
 
- {{< note >}}
+{{< note >}}
 You can join additional networks by replacing **irc.oftc.net** with a different network.
 {{< /note >}}
 
@@ -151,7 +149,7 @@ To send a private message to just one person on your network, use the `/msg` com
 
     /msg friendnick Hello there!
 
- {{< note >}}
+{{< note >}}
 Please note that if you are in a channel, you can use tab to autocomplete nicks within that channel.
 {{< /note >}}
 
@@ -251,4 +249,4 @@ To remove a `hilight`, use the command:
 
 ## User-friendly Plugins
 
-Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/guides/advanced-irssi-usage/#using-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.
+Enhance your Irssi experience with user-friendly plugins! Add a full list of open windows to the bottom of the screen, colored nicks, and more. Check out the [Using Plugins](/docs/guides/advanced-irssi-usage/#use-plugins) section of the [Advanced Irssi Usage](/docs/guides/advanced-irssi-usage/) guide.

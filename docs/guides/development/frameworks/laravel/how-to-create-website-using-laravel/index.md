@@ -1,25 +1,18 @@
 ---
 slug: how-to-create-website-using-laravel
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
-og_description: 'Learn the basics of building a website with the Laravel framework, including installation, basic coding, and application deployment.'
 keywords: ['laravel','php','web application','web framework','deploy a website','debian','ubuntu','centos']
 tags: ['laravel', 'debian', 'ubuntu', 'centos', 'php']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-06-04
 modified_by:
   name: Nathaniel Stickman
-title: "How to Create a Website Using Laravel"
-h1_title: "Build a Website Using the Laravel Framework"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Build a Website Using the Laravel Framework"
+title_meta: "How to Create a Website Using Laravel"
 external_resources:
 - '[Laravel](https://laravel.com/)'
 - '[Laravels documentation](https://laravel.com/docs/8.x]'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Laravel](https://laravel.com/) is a PHP web application framework boasting an elegant and expressive syntax. With Laravel, you can easily spin up a new website while also having the features and scalability to handle advanced and large-scale applications.
@@ -28,11 +21,11 @@ This guide walks you through the setup process for Laravel, then shows you how t
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
@@ -93,7 +86,7 @@ This guide is written for non-root user. Commands that require elevated privileg
 
         cd example-app
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Unless noted otherwise, all subsequent commands in this guide assume you are still in `example-app` project directory.
 {{< /note >}}
 
@@ -177,7 +170,7 @@ class AboutController extends Controller
 
 1. This example's views share a navigation menu, so the website can use a layout template to reduce duplicate code. Create the layout template as `~/example-app/resources/views/layouts/master.blade.php`, and give it the contents shown in the example below.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Before creating your layout template, you need to create the `layouts` subdirectory.
 
     mkdir ~/example-app/resources/views/layouts

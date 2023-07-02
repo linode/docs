@@ -1,7 +1,5 @@
 ---
 slug: linux-navigation-commands
-author:
-  name: Jeff Novotny
 description: 'Learn how to navigate the Linux terminal and create and remove directories and files.'
 keywords: ['ls command','change directory in linux','cp command in linux']
 tags: ['linux']
@@ -9,12 +7,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-10-08
 modified_by:
   name: Linode
-title: "Linux Navigation Commands: Copy, Move, and Create Files and Directories"
-h1_title: "How to Navigate the Linux Terminal and File System"
-enable_h1: true
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+title: "Navigate the Linux Terminal and File System"
+authors: ["Jeff Novotny"]
 ---
 
 For users more familiar with a graphical user interface (GUI), the Linux command line interface can initially appear daunting. It is not always apparent how to perform common file and directory operations. Fortunately, Linux commands are very powerful and flexible, and with some practice, you can accomplish any file management operation you want. This guide explains how to navigate the Linux file structure and how to perform common management operations on files and directories.
@@ -82,7 +76,7 @@ drwxrwxr-x 2 userid userid 4096 Sep  2 16:51 payroll
 
 1. By default, files starting with `.` are not displayed. Files which have names beginning with `.` are known as *hidden files*. The `ls` command normally hides the links to the current working and parent directories. To include all entries starting with a `.`, use the `-a` option. To include the hidden files, but not the `.` and `..` directories, use the `-A` option, meaning `almost-all`.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The `.` directory refers to the current working directory. The `..` entry is a hard link to the parent directory. This is the directory containing the current directory.
     {{< /note >}}
 
@@ -168,7 +162,7 @@ drwxrwxr-x 3 userid userid 4096 Aug 24 17:08 phpcomposer
 
         ls -lR
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `ls` command has many more options. Consult the [Linux manual page for ls](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/ls.html), also known as the command *man* page, for complete information.
 {{< /note >}}
 
@@ -190,7 +184,7 @@ The `cd` command is used to change directories. This command is very straightfor
 
 1. To navigate to a subdirectory relative to your current working directory, use the `cd` command followed by the target directory.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Most Linux distributions offer an auto-complete function. While typing the name of a file or directory, press the `tab` key. If the name is unambiguous, the system automatically completes the rest of the name. If there are multiple potential options, the system either lists all possible choices or auto-completes the characters common to all alternatives.
     {{< /note >}}
 
@@ -303,7 +297,7 @@ An easy way to create a file is with the `touch` command. This method creates a 
 
         touch newfile2.txt newfile3.txt
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The `touch` command can also be used to modify timestamps on existing files. The options list for this command is fairly extensive. See the [Linux man page](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/touch.html) for more information.
 {{< /note >}}
 
@@ -376,9 +370,9 @@ baseball  basketball  football  hockey  soccer
 
 Remove files using the `rm` command, and remove directories using either `rm` or `rmdir`. Consult the Linux man pages to learn more about the [rm](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/rm.html) or [rmdir](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/rmdir.html) commands.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Recovering files that have been deleted with the `rm` command is somewhere between difficult and impossible. Take great care when using the `rm` or `rmdir` commands.
-{{< /caution >}}
+{{< /note >}}
 
 ### The rm and rmdir Commands
 
@@ -406,9 +400,9 @@ y
 
 1. To remove several files based on the filenames matching a particular string of text, use the wildcard symbol `*`. The command `rm *.txt` removes all text files.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command can be dangerous because it can accidentally delete files that were not intended for deletion. To use this command more securely, specify the `-i` option. This option tells the system to prompt before each deletion.
-    {{< /caution >}}
+    {{< /note >}}
 
         rm *.txt
 
@@ -419,8 +413,8 @@ This command can be dangerous because it can accidentally delete files that were
 
 1. The `-r` option is used to remove non-empty directories along with all their files and subdirectories.
 
-    {{< caution >}}
+    {{< note type="alert" respectIndent=false >}}
 This command can also be very destructive, especially when used with the force `-f` option or with wildcards. To be safe, use the `-i` option when running this command. This option prompts for confirmation.
-    {{< /caution >}}
+    {{< /note >}}
 
         rm -r sports

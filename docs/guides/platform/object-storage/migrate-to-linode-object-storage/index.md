@@ -1,24 +1,18 @@
 ---
 slug: migrate-to-linode-object-storage
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Want to migrate from AWS S3 to Linode Object Storage? This tutorial covers the tools needed to copy and sync objects and buckets from Amazon to Linode."
-og_description: "Want to migrate from AWS S3 to Linode Object Storage? This tutorial covers the tools needed to copy and sync objects and buckets from Amazon to Linode."
 keywords: ['amazon s3 migrate files','aws s3 migrate object','linode object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-08
 modified_by:
   name: Nathaniel Stickman
-title: "How to Migrate to Linode Object Storage"
-h1_title: "How to Migrate to Linode Object Storage"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Migrate to Linode Object Storage"
+title_meta: "How to Migrate to Linode Object Storage"
 external_resources:
 - '[How-to Geek: How to Migrate an AWS S3 Bucket to Another Account or Service](https://www.howtogeek.com/devops/how-to-migrate-an-aws-s3-bucket-to-another-account-or-service/)'
 - '[Google Cloud: Simple migration from Amazon S3 to Cloud Storage](https://cloud.google.com/storage/docs/aws-simple-migration#storage-list-buckets-s3-go)'
 - '[IBM Cloud: Migrating from AWS](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-migrate)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Linode Object Storage](https://www.linode.com/products/object-storage/) is S3-compatible. So it not only offers all the benefits of S3, but can also leverage common S3 tooling. This lets Linode Object Storage instances work with hyper-scale S3s like AWS and Google Cloud.
@@ -31,9 +25,9 @@ This tutorial the tooling needed to make migration from AWS S3 to Linode Object 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started with Linode](/docs/guides/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started with Linode](/docs/products/platform/get-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
 
-1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 1.  Update your system.
 
@@ -45,7 +39,7 @@ This tutorial the tooling needed to make migration from AWS S3 to Linode Object 
 
             sudo dnf upgrade
 
-{{< note >}}
+{{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 

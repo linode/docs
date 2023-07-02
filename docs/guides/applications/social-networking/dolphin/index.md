@@ -1,10 +1,6 @@
 ---
 slug: dolphin
-author:
-  name: Chris Ciufo
-  email: docs@linode.com
 description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
-og_description: Dolphin is an open source software tool for building social networks. This guide will show how to install Dolphin on top of a LAMP stack.
 keywords: ["social network", "dolphin", "boonex"]
 tags: ["lamp", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +15,7 @@ external_resources:
     - '[Boonex Home Page](http://www.boonex.com)'
     - '[Boonex Plug-in Market](http://www.boonex.com/market)'
     - '[Boonex Forums](http://www.boonex.com/forums/)'
+authors: ["Chris Ciufo"]
 ---
 
 [Dolphin](http://www.boonex.com/dolphin) is an open-source software package for building social networks, dating sites and niche communities. Dolphin's features include video chat, video messenger, iPhone app, Android App, Adobe AIR desktop app, groups, events, blogs, files, media sharing, a store, and more. Dolphin also allows developers to create plugins to add additional functionality or features. You can use the [Dolphin Market](http://www.boonex.com/market) to find extensions, design templates, mods, plugins, language packs and third party software integrations.
@@ -86,7 +83,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
         sudo apt-get install openjdk-6-jre
 
-2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
+2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls/).
 
 You have successfully installed JRE on your Linode.
 
@@ -94,7 +91,7 @@ You have successfully installed JRE on your Linode.
 
 Now that you've installed the necessary prerequisites, we can start installing Dolphin. We'll walk you through the process of downloading Dolphin, adding a new MySQL user and database, configuring permissions, running the install script, removing the installation directory, and finally logging in to the Dolphin admin panel.
 
- {{< note >}}
+{{< note >}}
 We assume that you followed the [Hosting a Website guide](/docs/guides/hosting-a-website-ubuntu-18-04/). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 {{< /note >}}
 
@@ -102,7 +99,7 @@ We assume that you followed the [Hosting a Website guide](/docs/guides/hosting-a
 
 First, you need to download the latest Dolphin release. Here's how:
 
- {{< note >}}
+{{< note >}}
 Be sure to check the [Dolphin web site](http://www.boonex.com/dolphin) to verify that you are downloading the latest release.
 {{< /note >}}
 
@@ -265,7 +262,7 @@ Now you can install any of Dolphin's modules in the **Tools** \> **Modules** sec
 
 If you have PHP running as an Apache module, you may need to update permissions to allow installation of some of these modules.
 
- {{< note >}}
+{{< note >}}
 If you are running PHP in CGI mode, you can skip this section.
 {{< /note >}}
 
@@ -367,10 +364,9 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 
 20. If the start was successful, you can use the [Boonex Media Server Tester](http://www.boonex.com/rms.html) to verify that your RMS install is working properly. If you get "NetConnection.Connect.Success", everything is working.
 
- {{< note >}}
-If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
-{{< /note >}}
-
+    {{< note>}}
+    If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+    {{< /note >}}
 
 21. If your test was successful, hold Control and press C to stop `red5.sh`.
 22. Now you can start RMS as a background process by entering the following command:

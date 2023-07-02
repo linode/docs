@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Product guides for Linode Cloud Firewall."
+title_meta: "Guides and Tutorials for Cloud Firewalls"
+description: "A collection of product guides to help you deploy and manage Cloud Firewalls."
 tab_group_main:
     weight: 30
 ---
@@ -23,4 +24,4 @@ tab_group_main:
 
 - [Comparing Cloud Firewalls to Linux Firewall Software](/docs/products/networking/cloud-firewall/guides/comparing-firewalls/): Learn which firewall solution may work best for your use case.
 
-- [Troubleshooting Firewalls](/docs/guides/troubleshooting-firewalls/): Information on troubleshooting any firewall service.
+- [Troubleshooting Firewalls](/docs/products/compute/compute-instances/guides/troubleshooting-firewall-issues/): Information on troubleshooting any firewall service.

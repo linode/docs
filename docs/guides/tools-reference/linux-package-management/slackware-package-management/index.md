@@ -1,10 +1,6 @@
 ---
 slug: slackware-package-management
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide walks you through the core features of tools from Slackware, including pkgtool and slackpkg, which are common commands for managing packages."
-og_description: "This guide walks you through the core features of tools from Slackware, including pkgtool and slackpkg, which are common commands for managing packages."
 keywords: ['slackware', 'slackpkg', 'pkgtool', 'installpkg', 'upgradepkg', 'removepkg']
 tags: ['slackware']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +9,9 @@ image: Managing Packages in Slackware Linux.jpg
 modified: 2021-07-15
 modified_by:
   name: Linode
-title: "How to Manage Packages in Slackware"
-h1_title: "Managing Packages in Slackware"
-enable_h1: true
+title: "Managing Packages in Slackware"
+title_meta: "How to Manage Packages in Slackware"
+authors: ["Linode"]
 ---
 
 Packages in Slackware Linux are distributed as compressed tarballs, generally using gzip or lzma compression. These tarballs can be recognized by their suffixes, `.tgz` or `.txz`. This format includes a complete filesystem layout, as well as additional scripts to be run upon installation or removal of the software. Slackware packages do not offer dependency resolution information; this is generally viewed as allowing more flexibility and control.
@@ -28,11 +24,11 @@ Slackware includes `pkgtool` for local package management and `slackpkg` for rem
 
 Before running the commands within this guide, you will need:
 
-1. **A system running Slackware.** Review the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide if you do not yet have a compatible system.
+1. **A system running Slackware.** Review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide if you do not yet have a compatible system.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 

@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 9.10 (Karmic).'
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 9.10", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
@@ -19,13 +16,14 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with Perl and FastCGI on your Ubuntu 9.10 (Karmic) Linode.
 
-It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). These steps should be performed via a root login to your Linode over SSH.
 
 ## Basic System Configuration
 

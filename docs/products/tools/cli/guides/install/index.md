@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Install and Configure the Linode CLI"
 description: "Learn how to install the Linode CLI on most common operating systems"
-modified: 2022-05-05
+modified: 2023-06-27
+authors: ["Linode"]
 ---
 
 ## Install the Linode CLI
@@ -15,20 +13,28 @@ The [Linode CLI](https://github.com/linode/linode-cli) is officially managed thr
 
 1.  Ensure that Python 3 and `pip3` are both installed. If not, follow the instructions within the [Install Python 3 and pip3](#install-python-3-and-pip3) section.
 
-        python3 --version
-        pip3 --version
+    ```command
+    python3 --version
+    pip3 --version
+    ```
 
 1.  To install or upgrade the Linode CLI, run the following command:
 
-        pip3 install linode-cli --upgrade
+    ```command
+    pip3 install linode-cli --upgrade
+    ```
 
 1.  Install the boto library if you intend to interact with Linode's Object Storage service.
 
-        pip3 install boto
+    ```command
+    pip3 install boto3
+    ```
 
 1.  To confirm that the Linode CLI has been successfully installed, run the help command.
 
-        linode-cli --help
+    ```command
+    linode-cli --help
+    ```
 
 ## Configure the Linode CLI
 
@@ -40,19 +46,25 @@ The first time you interact with the Linode CLI, you need to complete the initia
 
     -   **Web-based authentication:** Prompts you to sign in to your Linode account through a web browser.
 
-            linode-cli configure
+        ```command
+        linode-cli configure
+        ```
 
-    -   **Manually create a personal access token:** Prompts you for a token that you need to manually create. See [Linode API Keys and Tokens](/docs/products/tools/cloud-manager/guides/cloud-api-keys/).
+    -   **Manually create a personal access token:** Prompts you for a token that you need to manually create. See [Linode API Keys and Tokens](/docs/products/tools/api/guides/manage-api-tokens/).
 
-            linode-cli configure --token
+        ```command
+        linode-cli configure --token
+        ```
 
 1.  After authenticating or providing a token, you are presented with a series of prompts to select your preferred defaults, such as the region, Compute Instance type, and distribution. These are optional and can be overridden when running individual commands. Update these defaults at any time by running `linode-cli configure` again or by editing the `.config/linode-cli` configuration file.
 
 ### Non-interactive Configuration
 
-To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/tools/cloud-manager/guides/cloud-api-keys/).
+To configure the CLI without any interactive prompts, you can set the token through the following environment variable, replacing *[token]* with the token you've manually generated. See [Linode API Keys and Tokens](/docs/products/tools/api/guides/manage-api-tokens/).
 
-    export LINODE_CLI_TOKEN="[token]"
+```command
+export LINODE_CLI_TOKEN="[token]"
+```
 
 This allows you to bypass the initial configuration. If this variable is unset, the Linode CLI will stop working until it is set again or until the CLI is reconfigured through the interactive prompts.
 
@@ -96,18 +108,24 @@ On most Linux distributions, you can use the distribution's package manager to i
 
 -   **Ubuntu and Debian:** *Ubuntu 22.04, 20.04, 18.04, and 16.04 | Debian 11, 10, and 9*
 
-        sudo apt update
-        sudo apt install python3 && sudo apt install python3-pip
+    ```command
+    sudo apt update
+    sudo apt install python3 && sudo apt install python3-pip
+    ```
 
 -   **CentOS Stream, RHEL 8, and Fedora:** *CentOS Stream 9 (and 8), CentOS 8, other RHEL derivatives (including AlmaLinux 8, and Rocky Linux 8), and Fedora.*
 
-        sudo dnf upgrade
-        sudo dnf install python3 && sudo dnf install python3-pip
+    ```command
+    sudo dnf upgrade
+    sudo dnf install python3 && sudo dnf install python3-pip
+    ```
 
 -   **CentOS 7**
 
-        sudo yum update
-        sudo yum install python3 && sudo yum install python3-pip
+    ```command
+    sudo yum update
+    sudo yum install python3 && sudo yum install python3-pip
+    ```
 
 ### Confirming Python and Pip Installation
 

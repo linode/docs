@@ -1,8 +1,5 @@
 ---
 slug: use-ansible-to-automate-web-server-infrastructure
-author:
-  name: Nygel Bennett
-  email: nygel.bennett@gmail.com
 description: 'Learn how to use Ansible to deploy two web servers along with a log server and a database server.'
 keywords: ["ansible", "playbook", "bash script", "linode cli", "apache", "mariadb", "rsyslog", "lamp", "python"]
 tags: ['automation']
@@ -10,15 +7,12 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-12-03
 modified_by:
   name: Nygel Bennett
-title: "Use Ansible to Automate Deployment of Web Server Infrastructure"
-h1_title: "How to Use Ansible to Deploy a Web Server, Log Server, and Database Server"
-enable_h1: true
-contributor:
-  name: Nygel Bennett
-  link: https://github.com/bennettnw2
+title: "Use Ansible to Automate Configuration of Web Server, Log Server, and Database Server"
+title_meta: "Automate Configuration of Cloud Servers with Ansible"
 external_resources:
 - '[Ansible User Guide](https://docs.ansible.com/ansible/latest/user_guide/index.html)'
 - '[Introduction to Ansible Playbooks](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html)'
+authors: ["Nygel Bennett"]
 ---
 
 ## What is Ansible?
@@ -30,11 +24,11 @@ In this guide you:
 - Configure and run an Ansible playbook that configures the worker nodes.
 - Test your running web servers and log server.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 The example instructions in this guide create five, [1GB Linodes](https://www.linode.com/pricing). These add billable resources to your Linode account. If you do not want to keep using the Linodes created, be sure to delete them once you have finished this how-to guide.
 
 If you remove these resources afterward, you are only [billed for the time](/docs/products/platform/billing/) the resources were present on your account.
-{{</ caution >}}
+{{< /note >}}
 
 ## Prerequisites
 
@@ -45,7 +39,7 @@ If you remove these resources afterward, you are only [billed for the time](/doc
 
 {{< note >}}
 The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
-{{</ note >}}
+{{< /note >}}
 
 ## Create Five Linodes Using the Linode CLI
 
@@ -53,7 +47,7 @@ The steps in this guide are written for non-root users. Commands that require el
 
 {{< note >}}
 This section requires that you have the [Linode CLI](/docs/products/tools/cli/guides/install/) installed and configured on your computer.
-{{</ note >}}
+{{< /note >}}
 
 On your local machine, set up an environment variable to temporarily store a password. This environment variable will be sued in later steps in a `for` loop to create five Linodes. Substitute `yourrootpassword` for a secure password as this is used as the root password for all your newly created Linodes.
 
@@ -136,7 +130,7 @@ As a shortcut, you can also `wget` the configuration files from [the author's Gi
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleCN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/ansibleMN_setup.sh
     wget https://raw.githubusercontent.com/bennettnw2/Ansible_webserver_infra_files/main/myplaybook.yml
-{{</ note >}}
+{{< /note >}}
 
 {{< file "ansibleCN_setup.sh" bash >}}
 #! /bin/bash
@@ -394,9 +388,9 @@ Using `scp`, the above files are sent to the Ansible control node. You can then 
 Throughout all the steps in this section, replace `VM1_IPADDRESS` with the [IP address](/docs/guides/find-your-linodes-ip-address/) obtained from either the Linode CLI or Cloud Manager.
 {{< /note >}}
 
-{{< caution >}}
+{{< note type="alert" >}}
 Do not forget the colon "**:**" at the end of the command below.
-{{</ caution >}}
+{{< /note >}}
 
     scp ansibleCN_setup.sh ansibleMN_setup.sh myplaybook.yml root@VM1_IPADDRESS:
 
@@ -414,9 +408,9 @@ Do not forget the colon "**:**" at the end of the command below.
 
         ./ansibleCN_setup.sh
 
-    {{<note>}}
+    {{< note respectIndent=false >}}
 The script asks you to enter a username and password for the new user being created.
-{{</note>}}
+{{< /note >}}
 
 ### Reboot and Access your Ansible Linode
 
@@ -426,9 +420,9 @@ Use the command below to reboot the Linode either using the Linode CLI. You can 
 
 Use the command below to SSH into `vm1`.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Be sure to use the new user you created because the setup script disables root logins.
-{{</ caution >}}
+{{< /note >}}
 
     ssh YOUR_USERNAME@VM1_IPADDRESS
 
@@ -458,9 +452,9 @@ Your output should resemble the following example:
 
 Using the text editor of your choice, copy and paste this output to the end of the `/etc/hosts/` file on `vm1`.
 
-{{<note>}}
+{{< note >}}
 Use `sudo` to edit `/etc/hosts` using Vi(m).
-{{</note>}}
+{{< /note >}}
 
 Use the line of code below to ensure you can ping all the hostnames.
 
@@ -556,7 +550,7 @@ From the local computer, open four terminal sessions, and within each session, s
 
 {{< note >}}
 The script asks you to enter a username and password for the new user being created.
-{{</ note >}}
+{{< /note >}}
 
 Once the setup script has been completed for each managed node, reboot all your Ansible infrastructure Linodes with the command below.
 
@@ -570,7 +564,7 @@ Log back into the control node and run the command below. This sends the control
 
 {{< note >}}
 If the limited user's password is different from the root user's password, change the `~/.ssh/file` contents to match the limited user's password.
-{{</ note >}}
+{{< /note >}}
 
 Confirm all hosts can be pinged using Ansible. A successful run of this command indicates the [ssh communication is working.](https://docs.ansible.com/ansible/2.7/user_guide/intro_getting_started.html#remote-connection-information)
 
