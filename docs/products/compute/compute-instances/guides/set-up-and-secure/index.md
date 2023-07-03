@@ -6,7 +6,7 @@ keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
 published: 2022-02-25
-modified: 2023-06-23
+modified: 2023-07-03
 modified_by:
   name: Linode
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
@@ -52,7 +52,7 @@ Once the Compute Instance has been created and has finished booting up, you can 
 -   **SSH:** Copy the command from the *SSH Access* field under the **Access** section on the Compute Instance's detail page (see screenshot above) and paste it into your local computer's terminal. The command should look similar to the following, only with the IP address of your newly created instance.
 
     ```command
-    ssh root@192.0.2.1
+    ssh root@192.0.2.17
     ```
 
     - **Windows:** Windows 10 and 11 users can connect to their Compute Instance using the [Command Prompt (or PowerShell)](/docs/guides/connect-to-server-over-ssh-on-windows/#command-prompt-or-powershell---windows-10-or-11) application, provided their system is fully updated. For users of Windows 8 and earlier, [Secure Shell on Chrome](/docs/guides/connect-to-server-over-ssh-on-chrome/), [PuTTY](/docs/guides/connect-to-server-over-ssh-using-putty/), or many other third party tools can be used instead. See [Connecting to a Remote Server Over SSH on Windows](/docs/guides/connect-to-server-over-ssh-on-windows/).
@@ -345,7 +345,7 @@ Not all Linux distributions include `sudo` on the system by default, but all the
 1.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your instance's IP address:
 
     ```command
-    ssh example_user@192.0.2.1
+    ssh example_user@192.0.2.17
     ```
 
 Now you can administer your Compute Instance from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L -nv`) and those commands will be logged to `/var/log/auth.log`.
@@ -354,38 +354,36 @@ Now you can administer your Compute Instance from your new user account instead 
 
 By default, password authentication is used to connect to your Compute Instance via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to decrypt by brute-force. In this section we'll create a key-pair and configure your system to not accept passwords for SSH logins.
 
-### Create an Authentication Key-pair
+### Upload Your SSH Key {#upload-ssh-key}
 
-{{< note >}}
-As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows 10, simplifying the process for securing SSH. **Windows 10** in this guide assumes OpenSSH has been installed as part of this update, while **Earlier Windows Versions** would apply to earlier versions.
-{{< /note >}}
+1.  Locate your existing SSH public key or, if you don't yet have one, create a new SSH key pair.
 
-1.  This is done on your local computer, **not** your Compute Instance, and will create a 4096-bit RSA key-pair. During creation, you will be given the option to encrypt the private key with a passphrase. This means that it cannot be used without entering the passphrase, unless you save it to your local desktop's keychain manager. We suggest you use the key-pair with a passphrase, but you can leave this field blank if you don't want to use one.
+    -   **If you have an existing SSH key,** find the public key on your local machine. SSH keys are typically stored in a hidden `.ssh` directory within the user's home directory:
 
-    -   **Linux / macOS / Windows 10 or 11**
+        - **Linux:** `/home/username/.ssh/`
+        - **macOS:** `/Users/username/.ssh/`
+        - **Windows:** `C:\Users\Username\.ssh\`
 
-        {{< note type="alert" >}}
-        If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
-        {{< /note >}}
+        Since SSH keys are generated as a private and public key pair, there should be two files for each SSH key. They should have a similar file name, with the public key using a `.pub` extension and the private key using no extension. While SSH keys can have custom file names, many people generate them using their default names. These default file names start with `id_` followed by the type of key, such as `id_rsa`, `id_ed25519`, and `id_ecdsa`.
+
+    -   **If you do not yet have an SSH key pair,** generate one now. We recommend using the Ed25519 algorithm with a secure passphrase. The command below works for Linux, macOS, and most fully updated Windows 10 and 11 machines. Replace `user@domain.tld` with your own email address or whatever custom comment string you wish to use. This helps with differentiate SSH keys and identify the owner.
 
         ```command
-        ssh-keygen -b 4096
+        ssh-keygen -t ed25519 -C "user@domain.tld"
         ```
 
-        Press **Enter** to use the default names `id_rsa` and `id_rsa.pub` before entering your passphrase. On Linux and OS X, these files will be saved in the `/home/your_username/.ssh` directory. On Windows, they will be saved in `C:\Users\MyUserName\.ssh`.
+        When prompted for the filename, you can press <kbd>Enter</kbd> to use the defaults. When prompted for the optional passphrase, we recommend using a string similar to a strong password (with a mix of letters, numbers, and symbols).
 
-    -   **Earlier Windows Versions**
+        For more detailed instructions, on creating an SSH key, review the [Generate an SSH Key Pair](/docs/guides/use-public-key-authentication-with-ssh/#generate-an-ssh-key-pair) guide. Users of Windows 7 and earlier should review the [PuTTY](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-with-putty-on-windows) section.
 
-        This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-on-windows).
-
-1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as and `192.0.2.1` with your instance's IP address.
+1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as and `192.0.2.17` with your instance's IP address.
 
     {{< tabs >}}
     {{< tab "Linux" >}}
     From your local computer:
 
     ```command
-    ssh-copy-id example_user@192.0.2.1
+    ssh-copy-id example_user@192.0.2.17
     ```
     {{< /tab >}}
     {{< tab "macOS" >}}
@@ -415,7 +413,7 @@ As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows
     From your local computer:
 
     ```command
-    scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@192.0.2.1:~/.ssh/authorized_keys
+    scp C:\Users\MyUserName\.ssh/id_rsa.pub example_user@192.0.2.17:~/.ssh/authorized_keys
     ```
     {{< /tab >}}
     {{< tab "Earlier Windows Versions" >}}
