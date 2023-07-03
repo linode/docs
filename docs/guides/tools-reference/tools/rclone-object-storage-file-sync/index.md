@@ -59,9 +59,9 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
 
 1. Use a human-readable name as the configuration name.
 
-1. Then, select your cloud storage service. In this case, select AWS S3 Compliant Storage Provider (option 4), followed by selecting any other S3 compatible provider (option 14).
+1. Then, select your cloud storage service. In this case, select AWS S3 Compliant Storage Provider, followed by selecting any other S3 compatible provider.
 
-1. Get AWS credentials. For this step, type `2` and then type your **Access Key** string (for `access_key_id`) and then paste your Secret Key for `secret_access_key`.
+1. Get AWS credentials. For this step, type the number that corressponds to the option **Get AWS credentials from the environment (env vars or IAM)** and then type your **Access Key** string (for `access_key_id`) and then paste your Secret Key for `secret_access_key`.
 
 1. Leave the `region` section blank.
 
@@ -69,7 +69,8 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
 
 1. Leave `location_constraint` blank.
 
-1. Select the `acl` you'd like to use. If this is a personal bucket, type `1` for private. If this is a team bucket, you might select `public-read` (option 2) or `authentication-read` (option 4).
+1. Select the `acl` you'd like to use. If this is a personal bucket, type the number that corresponds to the option ** No one else has access rights (default).
+   \ (private)**. If this is a team bucket, you might select `public-read` option or `authentication-read` option.
 
 1. Hit **enter** to opt-out of editing the advanced configuration file.
 
