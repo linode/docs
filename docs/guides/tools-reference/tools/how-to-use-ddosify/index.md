@@ -1,18 +1,13 @@
 ---
 slug: how-to-use-ddosify
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "How to Use Ddosify"
 description: 'This guide explains how to install Ddosify and how to use it to test a system response to a denial of service attack.'
-og_description: 'This guide explains how to install Ddosify and how to use it to test a system response to a denial of service attack.'
-keywords: ['Ddosify','install Ddosify','Ddosify test DoS attack','how to use Ddosify']
+keywords: ['Ddosify', 'install Ddosify', 'Ddosify test DoS attack', 'how to use Ddosify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ['Jeff Novotny']
 published: 2023-02-13
 modified_by:
   name: Linode
-title: "How to Use Ddosify"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Ddosify website](https://ddosify.com/)'
 - '[Ddosify GitHub site and documentation](https://github.com/ddosify/ddosify)'
@@ -26,7 +21,7 @@ One of the more serious threats to a website or online application is a *distrib
 
 A distributed denial-of-service attack is a type of distributed cyber-attack originating from multiple sources. When the attack has a single origin, it is usually referred to as a *denial-of-service* (DoS) attack. The purpose of the attack is to slow down the target or exhaust its available bandwidth. This can make it more difficult for users to access the server resources. An attack can even knock an application or website completely offline by exploiting flaws in its design.
 
-The most common DoS technique is to use a *botnet* to flood a connection with traffic. While each request might be legitimate, a large number of repeated or nonsensical requests usually indicates malicious intent. Hackers send a large volume of packets to the target in an attempt to keep it busy receiving and processing packets and transmitting replies. In a cloud computing situation, attackers might force a provider to auto-deploy new servers or increase the available bandwidth, incurring extra costs. DoS attackers often use some of the following techniques.
+The most common DoS technique is to use a *botnet* to flood a connection with traffic. While each request might be legitimate, a large number of repeated or nonsensical requests usually indicate malicious intent. Hackers send a large volume of packets to the target in an attempt to keep it busy receiving and processing packets and transmitting replies. In a cloud computing situation, attackers might force a provider to auto-deploy new servers or increase the available bandwidth, incurring extra costs. DoS attackers often use some of the following techniques.
 
 - The packets used in a DoS attack are often large and complex, with many header options. More complicated packets take more time to parse and process and increase strain on the system.
 - Packets can be sent very slowly to maximize the number of open connections and strain the target system.
@@ -37,18 +32,18 @@ There are many known types of DoD/DDoS attacks. The attack is often combined wit
 
 ## What is Ddosify?
 
-Ddosify is a free open source tool used for testing a system's response to a DoS attack. It is written using Golang for enhanced performance. By adjusting the parameters and rate of the Ddosify test traffic, web administrators can analyze system robustness and resilience. Ddosify supports command line parameters to adjust the traffic rate and test duration, add packet headers, and set the request type, among other attributes. Ddosify can also read test parameters from a `.json` file.
+Ddosify is a free open-source tool used for testing a system's response to a DoS attack. It is written using Golang for enhanced performance. By adjusting the parameters and rate of the Ddosify test traffic, web administrators can analyze system robustness and resilience. Ddosify supports command line parameters to adjust the traffic rate and test duration, add packet headers, and set the request type, among other attributes. Ddosify can also read test parameters from a `.json` file.
 
-There are two different variants of Ddosify. The *Ddosify Engine* command line utility is available as a pre-compiled application or Docker container. It is also possible to download and compile the Golang source code. The web-based *Ddosify Cloud* application provides a GUI, more detailed charts and reports, and additional features. The free version of Ddosify is somewhat limited, while the commercial edition has more features and a higher capacity. However, all instances of the application are straightforward and easy to use. No programming knowledge is required to use Ddosify.
+There are two different variants of Ddosify. The *Ddosify Engine* command line utility is available as a pre-compiled application or Docker container. It is also possible to download and compile the Golang source code. The web-based *Ddosify Cloud* application provides a GUI, more detailed charts and reports, and additional features. The free version of Ddosify is somewhat limited, while the commercial edition has more features and a higher capacity. However, all instances of the application are straightforward to use. No programming knowledge is required to use Ddosify.
 
 Here are some of the advantages and features of Ddosify.
 
-*   HTTP, HTTPS, and HTTP2 support is available.
-*   Users can define their own test cases in a `.json` file.
-*   Different load types are available, including `linear` and `incremental`, which increases throughout the test.
-*   Ddosify displays detailed real-time results. It can save the output in a variety of formats.
-*   Dynamic variables and parameters can be incorporated into test cases.
-*   Test data can be imported from a CSV file and used in the test.
+-   HTTP, HTTPS, and HTTP2 support is available.
+-   Users can define their own test cases in a `.json` file.
+-   Different load types are available, including `linear` and `incremental, which increase throughout the test.
+-   Ddosify displays detailed real-time results. It can save the output in a variety of formats.
+-   Dynamic variables and parameters can be incorporated into test cases.
+-   Test data can be imported from a CSV file and used in the test.
 
 ## How to Stress Test a Web Application Against a DDOS Attack?
 
@@ -56,14 +51,14 @@ Transmitting a large amount of traffic to the root of the domain can help determ
 
 The following list describes some issues to consider when developing the stress test.
 
-*   Sections of the web site or application that accept user data.
-*   Connections to PHP, the database, or third-party modules.
-*   URL-based parameters.
-*   Different types of HTTP requests, for example, `POST` or `PUT`.
-*   Malformed or erroneous packets.
-*   Interior pages of the website, especially those involving additional processing. Examples include the checkout or login page. Pay close attention to user actions such as adding and removing items from a cart or abandoning carts at checkout.
-*   Multi-page processes requiring subsequent user input after an initial request.
-*   Special functionality, including password resets or contact forms.
+-   Sections of the website or application that accept user data.
+-   Connections to PHP, the database, or third-party modules.
+-   URL-based parameters.
+-   Different types of HTTP requests, for example, `POST` or `PUT`.
+-   Malformed or erroneous packets.
+-   Interior pages of the website, especially those involving additional processing. Examples include the checkout or login page. Pay close attention to user actions such as adding and removing items from a cart or abandoning carts at checkout.
+-   Multi-page processes require subsequent user input after an initial request.
+-   Special functionality, including password resets or contact forms.
 
 {{< caution >}}
 Only use Ddosify to test a system under your control. It is unethical and potentially illegal to use it to probe other systems.
@@ -75,17 +70,17 @@ Only use Ddosify to test a system under your control. It is unethical and potent
 
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
-1.  Create and configure a domain name and point it at the Linode under test. It is easier to use Ddosify in conjunction with a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager guide](/docs/guides/dns-manager/).
+1.  Create and configure a domain name and point it at the Linode under test. It is easier to use Ddosify in conjunction with a domain name. For more information on domains and how to create a DNS record, see the [Linode DNS Manager](/docs/guides/dns-manager/) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Ddosify
 
 Select a server to host the Ddosify application. Although Ddosify can be used to test the local system, this does not represent a realistic scenario. Ddosify is typically used to analyze a remote *Device Under Test* (DUT). The DUT represents the server hosting the application to test. Traffic is sent from the server running Ddosify to the DUT, which returns the relevant HTTP response. These responses are used to analyze the performance of the DUT.
 
-This guide explains how to configure the server hosting Ddosify, but does not explain how to configure the DUT. However, the DUT must have an operational web server to receive and respond to the Ddosify requests. This guide is designed for systems running Ubuntu 22.04 LTS, but is generally applicable for all Linux distributions and releases. To install Ddosify, follow these steps.
+This guide explains how to configure the server hosting Ddosify, but does not explain how to configure the DUT. However, the DUT must have an operational web server to receive and respond to the Ddosify requests. This guide is designed for systems running Ubuntu 22.04 LTS but is generally applicable to all Linux distributions and releases. To install Ddosify, follow these steps.
 
 {{< note >}}
 This guide only covers the installation of the precompiled application. To build Ddosify from the source code or install the Docker container, consult the [DDosify documentation](https://github.com/ddosify/ddosify).
@@ -97,7 +92,7 @@ This guide only covers the installation of the precompiled application. To build
     sudo apt-get update -y && sudo apt-get upgrade -y
     ```
 
-2.  Install Ddosify using the installation script. The script automatically selects the latest stable release of the application. Download the script using `curl`.
+1.  Install Ddosify using the installation script. The script automatically selects the latest stable release of the application. Download the script using `curl`.
 
     ```command
     sudo curl -sSfL https://raw.githubusercontent.com/ddosify/ddosify/master/scripts/install.sh | sh
@@ -108,7 +103,7 @@ This guide only covers the installation of the precompiled application. To build
     Installed ddosify to /usr/local/bin/
     ```
 
-3.  Confirm the release of Ddosify using the `-version` option.
+1.  Confirm the release of Ddosify using the `-version` option.
 
     ```command
     ddosify -version
@@ -138,7 +133,7 @@ To conduct a proper test, the remote system must allow all test traffic through 
 ddosify -t http://example.com/ -n 25
 ```
 
-Ddosify updates the results in real time as the test progresses. After the trial is complete, it provides a summary of the results. The following output confirms all responses were received, with some variance in latency.
+Ddosify updates the results in real-time as the test progresses. After the trial is complete, it provides a summary of the results. The following output confirms all responses were received, with some variance in latency.
 
 ```output
 CTRL+C to gracefully stop.
@@ -171,16 +166,16 @@ Status Code (Message) :Count
 
 It is possible to adjust the default test parameters. The most common Ddosify flags are as follows.
 
-* **-a**: Authentication parameters. This value should take the form `username:password`.
-* **-b**: The contents of the body of the packet. This represents the packet payload.
-* **-d**: The test duration in seconds.
-* **-h**: A header for the request. Multiple headers can be specified using multiple `-h` parameters.
-* **-l**: The type of load test. This parameter accepts the values `linear`, `incremental` and `waved`. `linear` transmits packets at the same rate throughout the test. The `incremental` setting increases the packet rate as the test proceeds. The `waved` setting alternates between higher and lower traffic levels.
-* **-m**: Type of HTTP request method to use. Some possible values include `GET`, `PUT`, `POST`, `DELETE`, and `OPTIONS`.
-* **-n**: The total number of packets to transmit.
-* **-P**: A proxy address for the request.
-* **-T**: The timeout to use for each request.
-* **-t**: The URL of the target website. This parameter is mandatory unless a configuration file is used.
+- **-a**: Authentication parameters. This value should take the form `username:password`.
+- **-b**: The contents of the body of the packet. This represents the packet payload.
+- **-d**: The test duration in seconds.
+- **-h**: A header for the request. Multiple headers can be specified using multiple `-h` parameters.
+- **-l**: The type of load test. This parameter accepts the values `linear`, `incremental` and `waved`. `linear` transmit packets at the same rate throughout the test. The `incremental` setting increases the packet rate as the test proceeds. The `waved` setting alternates between higher and lower traffic levels.
+- **-m**: Type of HTTP request method to use. Some possible values include `GET`, `PUT`, `POST`, `DELETE`, and `OPTIONS`.
+- **-n**: The total number of packets to transmit.
+- **-P**: A proxy address for the request.
+- **-T**: The timeout to use for each request.
+- **-t**: The URL of the target website. This parameter is mandatory unless a configuration file is used.
 
 The following example demonstrates how to use multiple parameters in the same test. Even though the request is invalid, the test is considered successful because the expected result is achieved. All requests return the status code `405` because the `POST` method is not allowed on this resource.
 
@@ -266,7 +261,7 @@ Usage of ddosify:
 
 ### Running a Ddosify Test Using a Configuration File
 
-For more complex scenarios, Ddosify allows users to run tests based on the contents of a configuration file. This file must be written in the JSON format. The configuration file allows for greater control over the parameters and can more precisely define the flow of a test case. It permits multiple test stages, each using unique parameters.
+For more complex scenarios, Ddosify allows users to run tests based on the contents of a configuration file. This file must be written in JSON format. The configuration file allows for greater control over the parameters and can more precisely define the flow of a test case. It permits multiple test stages, each using unique parameters.
 
 To set test parameters based on a configuration file, append the `--config` flag to the `ddosify` command. This parameter accepts the location of a `.json` file containing a detailed parameterized description of the test. The configuration file overrides all other settings, including the target, which must be specified in the configuration file.
 
