@@ -2,7 +2,7 @@
 title: "Closed Beta for Akamai's New Data Centers"
 description: "Details for the closed beta of Akamai Cloud Compute's newest data centers, which include the Washington, DC and Paris regions."
 published: 2023-04-17
-modified: 2023-06-30
+modified: 2023-07-05
 modified_by:
   name: Linode
 tags: ["linode platform"]

@@ -11,7 +11,7 @@ tab_group_main:
 cascade:
     date: 2020-10-22
     product_description: "Fully isolated virtual local area networks that enable private communication between cloud-based resources"
-modified: 2023-06-21
+modified: 2023-07-05
 aliases: ['/guides/platform/vlan/']
 ---
 

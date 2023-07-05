@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-06-28
+modified: 2023-07-05
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -57,7 +57,7 @@ Linode Object Storage costs a flat rate of $5 a month, and includes 250 gigabyte
 
 ## Technical Specifications and Considerations {#specifications}
 
-The table below shows Object Storage specifications, including those for the existing clusters as well as the latest upgraded clusters currently available n new data centers. Most of the specifications apply **per region, per account**, unless otherwise specified.
+The table below shows Object Storage specifications, including those for the existing clusters as well as the latest upgraded clusters currently available in new data centers. Most of the specifications apply **per region, per account**, unless otherwise specified.
 
 | Resource | Limit |
 | -- | -- | -- |

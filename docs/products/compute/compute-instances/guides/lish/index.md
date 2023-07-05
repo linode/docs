@@ -4,7 +4,7 @@ title_meta: "Access Your System Console Using Lish"
 description: "Learn how to use Lish as a shell for managing or rescuing your Compute Instances."
 keywords: ["Console", "Shell", "Lish", "rescue", "weblish"]
 published: 2009-08-04
-modified: 2023-06-21
+modified: 2023-07-05
 modified_by:
   name: Linode
 tags: ["linode platform","cloud manager"]
@@ -188,7 +188,7 @@ This command format works for all Lish functionality.
 
 ## Lish Gateways
 
-Each data center has its own gateways, which provides access to Lish, Weblish, and Glish. When connecting through Lish, To connect to one of these services, use the corresponding gateway in any data center, but we recommend using one close to the data center it’s located within. The gateway boxes are available over IPv4 and IPv6.
+Each data center has its own gateways, which provides access to Lish, Weblish, and Glish. When connecting through Lish, you can use the corresponding gateway within any data center, though we recommend choosing the data center the instance is located within. These gateways are accessible over IPv4 and IPv6.
 
 {{< note >}}
 If you are having issues accessing Lish, Weblish, or Glish, you may be blocked by a local firewall. Make sure your firewall allows outbound connections to the following ports and the gateway you wish to access:
@@ -212,7 +212,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `atlanta.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `atlanta.webconsole.linode.com`
 
 #### Chicago, IL (USA)
 
@@ -243,7 +243,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `dallas.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `dallas.webconsole.linode.com`
 
 #### Frankfurt (Germany)
 
@@ -259,7 +259,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `frankfurt.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `frankfurt.webconsole.linode.com`
 
 #### Fremont, CA (USA)
 
@@ -275,7 +275,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `fremont.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `fremont.webconsole.linode.com`
 
 #### London (UK)
 
@@ -291,7 +291,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `london.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `london.webconsole.linode.com`
 
 #### Mumbai (India)
 
@@ -307,7 +307,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `mum1.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `mum1.webconsole.linode.com`
 
 #### Newark, NJ (USA)
 
@@ -323,7 +323,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `newark.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `newark.webconsole.linode.com`
 
 #### Paris, France
 
@@ -354,7 +354,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `singapore.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `singapore.webconsole.linode.com`
 
 #### Sydney (Australia)
 
@@ -370,7 +370,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `syd1.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `syd1.webconsole.linode.com`
 
 #### Tokyo (Japan)
 
@@ -386,7 +386,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `shg1.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `shg1.webconsole.linode.com`
 
 #### Toronto (Canada)
 
@@ -402,7 +402,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     {{< /note >}}
 
 -   **Weblish Gateway:** `tor1.webconsole.linode.com`
--   **Glish Gateway:**
+-   **Glish Gateway:** `tor1.webconsole.linode.com`
 
 #### Washington, DC (USA)
 

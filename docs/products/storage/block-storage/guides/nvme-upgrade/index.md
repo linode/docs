@@ -1,7 +1,7 @@
 ---
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
-modified: 2023-06-21
+modified: 2023-07-05
 authors: ["Linode"]
 ---
 
@@ -41,7 +41,9 @@ If a scheduled upgrade is available for your Volume, follow the steps above in t
 
 1.  Run the following command to copy your data, replacing `[path-to-original-volume]` with the file system path to your original Volume and `[path-to-nvme-volume]` with the path to the new Volume you just created. These paths are likely under the `/mnt/` directory.
 
-        sudo rsync -rah --progress [path-to-original-volume]/* [path-to-nvme-volume]/
+    ```command
+    sudo rsync -rah --progress [path-to-original-volume]/* [path-to-nvme-volume]/
+    ```
 
 1.  After the transfer has completed, you can modify any applications using your original Volume to point to the mount directory of the new NVMe Volume. Then, follow the [Attach and Detach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#detach-a-volume) guide to unmount and detach your original Volume.
 
