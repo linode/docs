@@ -11,6 +11,8 @@ aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data
 authors: ["Linode"]
 ---
 
+{{< content "new-data-center-notice" >}}
+
 Deploying your Compute Instance to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Compute Instance in the data center nearest to you will make it easier to work with than one in a different region or continent.
 
 There are many things can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as the sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.

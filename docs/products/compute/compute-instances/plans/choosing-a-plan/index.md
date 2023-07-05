@@ -2,7 +2,7 @@
 description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
 keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
 published: 2019-02-04
-modified: 2023-03-31
+modified: 2023-07-05
 modified_by:
     name: Linode
 title: "Choosing a Compute Instance Type and Plan"
@@ -13,7 +13,7 @@ aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-lino
 authors: ["Linode"]
 ---
 
-{{< content "april-price-update-shortguide" >}}
+{{< content "new-data-center-notice" >}}
 
 Linode offers multiple Compute Instance types, each of which can be equipped with various amounts of resources. This allows you to create a Compute Instance tailored to the requirements of your application or workload. For example, some applications may need to store a lot of data but require less processing power. Others may need more memory than CPU. Some may be especially CPU-intensive and require more computing power.
 
@@ -29,6 +29,7 @@ These are the instance types offered by Linode:
 
 - [Shared CPU instances](#shared-cpu-instances)
 - [Dedicated CPU instances](#dedicated-cpu-instances)
+- [Premium instances](#premium-instances)
 - [High Memory instances](#high-memory-instances)
 - [GPU instances](#gpu-instances)
 
@@ -62,7 +63,7 @@ Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.
 
 **Recommended Use Cases:**
 
-*Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
+*Best for production websites, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
 
 - [CI/CD](/docs/guides/introduction-ci-cd/) toolchains and build servers
 - [Game servers](/docs/game-servers/) (like Minecraft or Team Fortress)
@@ -72,6 +73,23 @@ Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.
 - [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 - High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
 - Replicated or Distributed Filesystems (GlusterFS, DRBD)
+
+### Premium Instances
+
+**4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
+Starting at $43/mo ($0.06/hr). See [Premium Pricing](https://www.linode.com/pricing/#premium) for a full list of plans, resources, and pricing.
+
+[Premium Instances](/docs/products/compute/compute-instances/plans/premium/) build off our Dedicated CPU instances and guarantee a minimum hardware class utilizing the latest available [AMD Epyc™](https://www.linode.com/amd/) CPUs. This provides consistent performance to your workloads and is suitable for running mission-critical applications. Premium instances are not yet available in all regions. Review [Premium Instance Availability](/docs/products/compute/compute-instances/plans/premium/#availability) for a list of available data centers.
+
+**Recommended Use Cases:**
+
+*Best for enterprise-grade, business-critical, and latency-sensitive applications.*
+
+- Any workload that benefits from consistent performance.
+- [Audio and video transcoding](/docs/applications/media-servers/)
+- [Big data](/docs/applications/big-data/) (and data analysis)
+- Scientific computing
+- [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 
 ### High Memory Instances
 
