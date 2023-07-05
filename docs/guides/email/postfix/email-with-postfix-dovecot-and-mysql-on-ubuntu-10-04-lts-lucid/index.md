@@ -1,9 +1,6 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql-on-ubuntu-10-04-lts-lucid
 deprecated: true
-author:
-  name: Brett Kaplan
-  email: bkaplan@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid).'
 keywords: ["postfix ubuntu 10.04", "dovecot ubuntu 10.04", "ubuntu 10.04 mail server", "dovecot", "email", "ubuntu", "lucid"]
 tags: ["mysql","postfix","email","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Ubuntu 10.04
+authors: ["Brett Kaplan"]
 ---
 
 

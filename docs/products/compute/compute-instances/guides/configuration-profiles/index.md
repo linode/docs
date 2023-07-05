@@ -1,19 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-10-26
+published: 2021-04-30
+modified: 2023-02-09
 modified_by:
   name: Linode
-published: 2021-04-30
 image: Linode-Configuration-Profiles.jpg
 title: "Manage Configuration Profiles on a Compute Instance"
 title_meta: "How to Manage Configuration Profiles on a Compute Instance"
-aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/']
+aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
+authors: ["Linode"]
 ---
 
 A **configuration profile** functions as a boot loader for a Compute Instance. It controls general boot settings, including the disk the instance will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the instance. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Compute Instances (see [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.
@@ -39,7 +36,15 @@ From here, a [configuration profile can be created](#creating-a-configuration-pr
 
 When adding or editing a configuration profile on a Compute Instance, the following settings are available:
 
-- **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Unless there is a specific need to run devices in full virtualization, select *paravirtualization*. This is required for features like Block Storage.
+- **Virtual Machine:** VM mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. Here are the drivers used for various devices in each mode:
+
+    | Device | Paravirtualization | Full virtualization |
+    | -- | -- | -- |
+    | Block | VirtIO SCSI | IDE |
+    | Network | VirtIO Net | e1000 |
+    | Serial | ttyS0 | ttyS0 |
+
+    Since paravirtualization offers more performant networking and disk IO, it is the recommended mode. All Linux distributions provided by Linode support paravirtualization. When installing an operating system not offered by Linode, full virtualization may be required if that OS does not include virtualization-aware drivers.
 
 - **Boot Settings:**
     - **Kernel:** Select the version of the Linux kernel that will be used. The options include Grub 2 (for upstream or custom-compiled kernels), a specific Linode supplied kernel, or Direct Disk. For most distributions, its recommended to set this option to *Grub 2*. See [Manage the Kernel on a Compute Instance](/docs/products/compute/compute-instances/guides/manage-the-kernel/).
@@ -113,7 +118,7 @@ When a Compute Instance is powered on or rebooted, it uses the settings stored w
 
     ![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png)
 
-    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
+    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
 
 ## Clone a Configuration Profile and the Attached Disks
 

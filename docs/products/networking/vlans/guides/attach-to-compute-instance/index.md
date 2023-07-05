@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Attach a VLAN to a Compute Instance"
 description: "Learn how to create a VLAN and attach it to a new or existing Compute Instance"
 modified: 2022-08-23
+authors: ["Linode"]
 ---
 
 Within the Cloud Manager, VLANs are created and managed only by attaching them to Linode Compute Instances. They are not managed independently. You can attach a VLAN when creating a new Compute Instance or when editing an existing instance.

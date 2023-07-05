@@ -1,8 +1,5 @@
 ---
 slug: monitor-filesystem-events-with-pyinotify
-author:
-  name: Md. Sabuj Sarker
-  email: md.sabuj.sarker@gmail.com
 description: 'Pyinotify is a Python library for using inotify, a Linux kernel subsystem for monitoring file system changes.'
 keywords: ["inotify","pyinotify","monitoring","python","async"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,9 +8,6 @@ modified: 2018-09-20
 modified_by:
   name: Md. Sabuj Sarker
 title: 'Monitor Filesystem Events with Pyinotify'
-contributor:
-  name: Md. Sabuj Sarker
-  link: http://sabuj.me
 external_resources:
 - '[Pyinotify on Github](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
@@ -22,6 +16,7 @@ audiences: ["intermediate"]
 languages: ["python"]
 aliases: ['/development/monitor-filesystem-events-with-pyinotify/','/development/python/monitor-filesystem-events-with-pyinotify/']
 tags: ["python"]
+authors: ["Md. Sabuj Sarker"]
 ---
 
 ![banner_image](Monitor_Filesystem_Events_with_Pyinotify_smg.jpg)

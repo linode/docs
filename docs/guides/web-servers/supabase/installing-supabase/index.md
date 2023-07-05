@@ -1,8 +1,5 @@
 ---
 slug: installing-supabase
-author:
-  name: Nathaniel Stickman
-  email: docs@linode.com
 description: "This guide covers setting up a Supabase instance in Docker, accessing it with NGINX, and securing it with a free SSL certificate from Let’s Encrypt via Certbot. ✓ Click here!"
 keywords: ['install supabase','supabase firebase','supabase self host']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,11 @@ modified_by:
   name: Nathaniel Stickman
 title: "Self-host Supabase with Docker"
 title_meta: "How to Self-host Supabase with Docker"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Supabase: Self Hosting](https://supabase.com/docs/guides/hosting/overview)'
 - '[Scott Pritchard: Self-hosting with Supabase](https://dev.to/chronsyn/self-hosting-with-supabase-1aii)'
-- '[Vultr: How to Install Supabase on Ubuntu 20.04](https://www.vultr.com/docs/how-to-install-supabase-on-ubuntu-20-04/)'
 - '[HowtoForge: How to Install Supabase with Docker on Debian 11](https://www.howtoforge.com/how-to-install-supabase-on-debian-11/)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Supabase is an open source Firebase alternative featuring a Postgres database, user authentication, and REST API capabilities. It offers a robust framework for creating the backend to Angular, React, Next.js, and other frontend applications.
@@ -357,5 +351,3 @@ You can optionally also add your server's remote IP address to the NGINX configu
 Now you have your Supabase instance running and configured for your security needs. Take advantage of your instance by reading the [Supabase documentation](https://supabase.com/docs/). There, you can find guides on getting started with the wide range of features Supabase has to offer.
 
 And continue learning with us in our upcoming series of guides on Supabase. These cover everything from setting up your instance, to linking your instance to Linode Object Storage, to building JavaScript applications with Supabase.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.

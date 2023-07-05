@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-hcl
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide provides an introduction to HCL syntax and commonly used HCL terminology.'
 keywords: ["terraform", "hcl", "hashicorp", "orchestration", "HashiCorp Configuration Language"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +13,7 @@ external_resources:
     - '[HCL on GitHub](https://github.com/hashicorp/hcl)'
     - '[Terraform Official Documentation - Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html)'
 aliases: ['/applications/configuration-management/introduction-to-hcl/','/applications/configuration-management/basics/introduction-to-hcl/']
+authors: ["Linode"]
 ---
 
 The HashiCorp Configuration Language (HCL) is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, such as [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.

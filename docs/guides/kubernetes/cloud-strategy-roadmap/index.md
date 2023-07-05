@@ -1,7 +1,5 @@
 ---
 slug: cloud-strategy-roadmap
-author:
-  name: Jack Wallen
 description: 'A cloud strategy roadmap outlines how your cloud adoption process will work. Learn how a roadmap aids in the transition and how to develop one.'
 keywords: ['cloud implementation','cloud planning','cloud computing strategy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,8 +8,7 @@ modified_by:
   name: Linode
 title: "Develop a Cloud Implementation Strategy Roadmap"
 title_meta: "How to Develop a Cloud Implementation Strategy Roadmap"
-contributor:
-  name: Jack Wallen
+authors: ["Jack Wallen"]
 ---
 
 A few years ago the cloud was an idea; one that most pundits and businesses scoffed at. The cloud is now something consumers and businesses fully embrace. Businesses recognize that the cloud is a crucial component for a positive growth trajectory. From data storage, app deployment, and virtual machine management, the cloud is now the data center for the new world order.

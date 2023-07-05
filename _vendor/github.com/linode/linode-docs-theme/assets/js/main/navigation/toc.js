@@ -30,7 +30,7 @@ export function newToCController() {
 			}
 
 			this.createTOC();
-			if (devMode || isScreenLargerThan(1711)) {
+			if (devMode || isScreenLargerThan(1527)) {
 				this.$store.nav.open.toc = true;
 			}
 

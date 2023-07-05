@@ -1,7 +1,6 @@
 ---
 description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
 keywords: ['minecraft','marketplace', 'server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01
 modified: 2022-04-01
 title: "Deploy a Minecraft Server through the Linode Marketplace"

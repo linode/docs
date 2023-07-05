@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-ejabberd-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Debian 5 (Lenny).'
 keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["debian"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-ejabberd
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 Ejabberd, the "Erlang Jabber Daemon," is an extensible, flexible and very high performance XMPP server written in the Erlang programming language. With a web-based interface and broad support for [XMPP standards](http://xmpp.org/), ejabberd is an ideal general-use and multi-purpose XMPP server. Although ejabberd is considered "heavyweight" by some, mostly due to the requirements of the Erlang runtimes, it is incredibly robust and can scale to support heavy loads. It even includes support for hosting multiple domains virtually.

@@ -1,9 +1,6 @@
 ---
 slug: secure-communications-with-openvpn-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 tags: ["ubuntu","networking","security","vpn"]
@@ -19,6 +16,7 @@ relations:
         key: secure-communications-openvpn
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

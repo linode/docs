@@ -1,7 +1,5 @@
 ---
 slug: installing-and-using-httpie-on-linux
-author:
-  name: Nathaniel Stickman
 description: "Learn how to use HTTPie, a modern and user-friendly command-line HTTP client that is designed to be used with web APIs."
 keywords: ['what is httpie','install httpie','using httpie', 'httpie', 'httpie vs curl']
 tags: ['linux']
@@ -11,9 +9,7 @@ modified_by:
   name: Linode
 title: "Install and Use HTTPie on Linux"
 title_meta: "How to Install and Use HTTPie on Linux"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 ---
 
 [HTTPie](https://httpie.io/) is a command-line HTTP client built for modern web APIs. It provides intuitive commands and a user-friendly interface. In this guide, you learn about HTTPie's features and how it compares to cURL. You also learn how to install and start using HTTPie on your Linux system.

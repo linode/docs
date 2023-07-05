@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with Object Storage"
 description: "Get Started with Linode Object Storage. Learn how to enable Object Storage, create an Object Storage key pair, create a bucket, upload an object to a bucket, and cancel Object Storage."
 tab_group_main:
     weight: 20
@@ -50,7 +51,7 @@ The Cloud Manager provides a web interface for creating buckets. To create a buc
 
 1.  The **Create a Bucket** menu appears.
 
-1.  Add a label for your bucket. See the [Bucket Name](#bucket-names) section for rules on naming your bucket.
+1.  Add a label for your bucket. See the [Bucket Name](/docs/products/storage/object-storage/guides/manage-buckets/#create-a-bucket) section for rules on naming your bucket.
 
 1.  Choose a cluster location for the bucket to reside in.
 

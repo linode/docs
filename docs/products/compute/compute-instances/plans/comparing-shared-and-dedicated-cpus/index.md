@@ -1,10 +1,6 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified: 2022-08-12
 modified_by:
@@ -14,6 +10,7 @@ title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
 linkTitle: Choosing Between Shared and Dedicated CPUs
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/','/guides/comparing-shared-and-dedicated-cpus/']
+authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU cores. Understanding the difference between these is key to determining the best plan for your workloads. This guide outlines those differences and aims to help you evaluate your current cloud workloads to determine if plans with dedicated CPU cores would be beneficial.
@@ -22,7 +19,7 @@ Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU 
 
 The following chart outlines the key differences between shared CPUs and dedicated CPUs, including maximum allowed utilization, CPU contention, and recommended use cases.
 
-| | Shared CPUs | Dedicated CPUs |
+| Specification | Shared CPUs | Dedicated CPUs |
 | -- | -- | -- |
 | **CPU allocation**  | Physical CPU cores may be shared with other neighboring Compute Instances. | Physical CPU cores are reserved just for this Compute Instance. |
 | **Maximum *sustained* CPU utilization (24/7)** | 80% | 100% |

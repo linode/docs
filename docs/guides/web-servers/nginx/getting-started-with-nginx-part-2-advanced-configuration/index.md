@@ -1,8 +1,5 @@
 ---
 slug: getting-started-with-nginx-part-2-advanced-configuration
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Configure and optimize NGINX to best suit your web server needs. Host multiple sites, configure caching, disable content sniffing, and more."
 keywords: ["nginx", "web server", "nginx configuration", "multiple sites", "configure caching"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ title: "Getting Started with NGINX (Part 2): Advanced Configuration"
 title_meta: "Getting Started with NGINX: Advanced Configuration"
 tags: ["web server","nginx"]
 image: Getting-Started-with-NGINX-Part-2-smg.jpg
+authors: ["Linode"]
 ---
 
 ![Getting Started with NGINX - Part 2](Getting-Started-with-NGINX-Part-2-smg.jpg)

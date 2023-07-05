@@ -1,8 +1,5 @@
 ---
 slug: configure-a-firewall-with-arno-iptables-in-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Protecting access to your Linode with the arno-iptables-firewall package.'
 keywords: ["arno-iptables-firewall", "Debian firewall", "Linux firewall", "networking"]
 tags: ["networking","security","debian"]
@@ -14,6 +11,7 @@ modified_by:
 published: 2009-08-06
 title: 'Configure a Firewall with Arno Iptables in Debian 5'
 deprecated: true
+authors: ["Linode"]
 ---
 
 Firewall software is designed to limit access to network resources running on your Linode to authorized parties. Some services, such as a public web server, may be accessible to anyone. Others might be more restricted, such as an SSH daemon for remote system administration.

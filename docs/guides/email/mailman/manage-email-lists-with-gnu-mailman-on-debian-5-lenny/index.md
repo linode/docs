@@ -1,9 +1,6 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Debian 5 "Lenny".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["debian","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

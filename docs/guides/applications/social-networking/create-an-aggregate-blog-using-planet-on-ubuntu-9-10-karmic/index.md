@@ -1,9 +1,6 @@
 ---
 slug: create-an-aggregate-blog-using-planet-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Ubuntu 9.10 "Karmic".'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
@@ -22,6 +19,7 @@ relations:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

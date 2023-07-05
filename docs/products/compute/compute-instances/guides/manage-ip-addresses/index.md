@@ -1,18 +1,15 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Managing IP Addresses on a Compute Instance"
 description: "Instructions on viewing, adding, deleting, transferring IP addresses for Linode Compute Instances using the Cloud Manager"
 og_description: "Learn how to manage IP addresses on a Linode Compute Instance"
 keywords: ["ip addresses", "ip failover", "swapping ip addresses", "add ip address", "add additional ip address"]
 tags: ["linode platform","cloud manager","networking"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2021-01-18
+published: 2016-08-23
+modified: 2023-04-27
 modified_by:
   name: Linode
-published: 2016-08-23
-title: "Managing IP Addresses on a Compute Instance"
 aliases: ['/platform/manager/remote-access-classic-manager/','/platform/manager/remote-access/','/remote-access/','/networking/remote-access/', '/guides/remote-access/','/guides/managing-ip-addresses/']
+authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with several IP addresses, which enable it to be accessible over the public Internet and to other Linode services. This guide covers how to manage these IP addresses (including viewing, adding, removing, transferring, or sharing them) through the Cloud Manager.
@@ -27,7 +24,7 @@ Each Linode Compute Instance is equipped with several IP addresses, which enable
 
     ![Summary section with the IP addresses highlighted](compute-ip-addresses-quick.png)
 
-1.  To view all of your IP address for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
+1.  To view all IP addresses for this Instance (along with any associated rDNS values), click the **View all IP Addresses** link or navigate to the **Network** tab and review the **IP Addresses** section.
 
     ![The IP Addresses table on the Network tab](compute-ip-addresses-full.png)
 
@@ -161,13 +158,17 @@ IPv6 SLAAC addresses are not able to be transferred between Compute Instances. I
 Not all data centers currently support IP Sharing. Additionally, some data centers only support IPv4 sharing, while others also support IPv6 routed ranges (/64 and /56). To determine if IP Sharing is supported in a particular data center, see [Configuring IP Failover > IP Sharing Availability](/docs/products/compute/compute-instances/guides/failover/#ip-sharing-availability).
 {{< /note >}}
 
+{{< note type=warning >}}
+When IP Sharing is enabled for an IP address, all connectivity to that IP address is immediately lost *until* it is configured on [Lelastic](/docs/products/compute/compute-instances/guides/failover/#install-and-configure-lelastic), [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/), or another routing software. This is not an issue when adding a new IP address, but should be considered if you are enabling IP Sharing on an existing IP address that is actively being used.
+{{< /note >}}
+
 To learn how to enable IP Sharing within the Cloud Manager, review the following steps.
 
 1. Log in to the [Cloud Manager](https://cloud.linode.com) and click the **Linodes** link in the sidebar.
 
 1. Determine which two Compute Instances are to be used within your failover setup. They both must be located in the same data center. Make sure the IP address you wish to share has been added to one of those instances. If not, add it now. See [Adding an IP Address](#adding-an-ip-address).
 
-1.  Of those two Compute Instance, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
+1.  Of those two Compute Instances, select the one that does not yet have the Shared IP addresses assigned to it. Then, navigate to the **Network** tab.
 1.  Click the **IP Sharing** button under the *IP Addresses* section.
 
     ![Configuring IP sharing](ip-sharing-button.png)

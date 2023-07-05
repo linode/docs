@@ -1,8 +1,5 @@
 ---
 slug: installing-rocketchat-ubuntu-16-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installation and basic usage guide for Rocket.Chat, a lightweight XMPP server on Ubuntu 16.04.'
 keywords: ["rocket.chat", "slack alternative", "chat", "xmpp"]
 tags: ["ubuntu"]
@@ -18,6 +15,7 @@ external_resources:
  - '[Configuring SSL Reversae Proxy](https://rocket.chat/docs/installation/manual-installation/configuring-ssl-reverse-proxy/)'
  - '[Configuring HTTPS Servers](http://nginx.org/en/docs/http/configuring_https_servers.html)'
 aliases: ['/applications/messaging/installing-rocketchat-ubuntu-16-04/']
+authors: ["Linode"]
 ---
 
 **Rocket.Chat** is an open source chat software alternative to Slack that ships with the feature rich components users have come to expect for team productivity. Chat with team members, make video and audio calls with screen sharing, create channels and private groups, upload files and more. With Rocket.Chat's source code hosted on GitHub, you can develop new features and contribute back to the project.

@@ -1,5 +1,6 @@
 ---
 title: Billing
+title_meta: "Understanding How Billing Works on the Linode Platform"
 description: "Learn how Linode makes billing simple and easy so you easily anticipate your cloud infrastructure costs"
 tab_group_main:
     is_root: true
@@ -7,9 +8,8 @@ tab_group_main:
     weight: 10
 keywords: ["billing", "payments"]
 aliases: ['/products/tools/billing/','/platform/billing-and-support/prepaid-billing-and-payments-legacy/','/platform/billing-and-support/how-linode-billing-works/','/platform/billing-and-support/upgrade-to-hourly-billing/','/guides/how-linode-billing-works/','/billing-and-payments/','/platform/billing-and-support/billing-and-payments-classic-manager/','/platform/billing-and-support/billing-and-payments-new-manager/','/platform/billing-and-payments/','/platform/billing-and-support/billing-and-payments/',/guides/billing-and-payments/,'/guides/understanding-billing-and-payments/','/guides/platform/billing-and-support/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-10-25
-modified: 2022-11-17
+modified: 2023-06-23
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -21,31 +21,39 @@ Linode strives to provide transparent and uncomplicated pricing structures and b
 
 Linode uses a hybrid hourly billing model that is simple and flexible. It enables you to continuously add, modify, and remove services throughout the month. After the month is over, you receive an invoice for *the hourly usage of each service **up to the monthly cap***. Here are some important billing considerations:
 
-- Every paid service offered by Linode has a predicable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
+- Every paid service offered by Linode has a predictable monthly rate (also called the monthly cap) in addition to a flexible hourly rate.
 
 - When a service is added, charges accrue on the account at the hourly rate up to the monthly cap. These *accrued charges* are displayed on the **Billing Info** tab within the Account page of the Cloud Manager\*. Usage is always rounded up to the nearest hour.
 
 - Linode uses a monthly billing cycle. An invoice is automatically generated on the first day of each month and includes the previous month's usage.
 
-If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
+If your services stay the same month over month, your bill remains predictable. You are never billed more than the monthly rate for each service, excluding [network transfer overages](/docs/products/platform/get-started/guides/network-transfer/). If you use a service for just part of the month, hourly billing enables you to only be charged for the time the service is present on the account.
 
 \*Review the [Viewing Current Balance](/docs/products/platform/billing/guides/access-billing/) section of the Manage Billing in Cloud Manager guide to monitor your account balance and accrued charges throughout the month.
 
 ### Example Billing Scenarios
 
-Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a 4GB Linode Compute Instance, which has an hourly rate of $0.03/hour and a monthly rate/cap of $20.
+Here are a few examples of common billing scenarios you might encounter. For these examples, we will assume the month is 30 days (720 hours). We will also be using a *4GB Dedicated CPU Compute Instance*, which has an hourly rate of $0.054/hour and a monthly rate/cap of $36.
 
 #### A Service is Present on an Account for the *Entire* Month
 
-You create a 4GB Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $21.60. Since this exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+You create the Compute Instance prior to the start of the month and it remains on your account for the entire month. Calculating the service fees at the hourly rate for 720 hours (again, assuming a 30 day month), the total would have come to $38.88. Since this exceeds the monthly cap for this service, you are instead charged the predictable $36 monthly rate.
 
 #### A Service is Present on an Account for *Almost* the Entire Month
 
-You create a 4GB Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was used for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $20.52. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $20 monthly rate.
+You create the Compute Instance on the second day of the month, half-way through the day. It remains on your account for the remainder of the month and, in total, was used for 684 hours. Calculating the service fees at the hourly rate, the total would have come to $36.94. Since this still exceeds the monthly cap for this service, you are instead charged the predictable $36 monthly rate.
 
 #### A Service is Present on an Account for *Just Some* of the Month
 
-You created a 4GB Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $3.60. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $3.60 for your usage.
+You created the Compute Instance mid-way through the month and deleted it exactly 5 days later. In total, it was used for 120 hours. Calculating the service fees at the hourly rate, the total is $6.48. Since this is less than the monthly cap, you are indeed billed at the hourly rate and charged $6.48 for your usage.
+
+#### A Service is Resized During the Billing Cycle
+
+Resizing a service, such as a Compute Instance, effectively creates a new billable service. Each of these billable services will appear as separate line items on your monthly invoice. For instance, you create a 4GB Compute Instance prior to the start of the month and resize it to an 8GB Compute Instance mid-way through the month. Your invoice will have two services as separate line items corresponding with the two different Compute Instance sizes that existed on your account during the billing cycle. Each line item will reflect the hourly rate for the time the service was active (up to the monthly cap).
+
+{{< note type=warning >}}
+If a service is resized to a new plan and then resized back to the original plan all in a single billing cycle, there will be 3 billable services. The combined hourly rate for these services may exceed the monthly cap of the original service plan.
+{{< /note >}}
 
 ### Mid-Month Billing
 
@@ -65,4 +73,6 @@ At any time, you can make a manual one-time payment to add funds to your account
 
 ### Refunds
 
-If you are unsatisfied with your service for any reason, you can [cancel your account](/docs/products/platform/accounts/guides/cancel-account/) within the first seven days and request a full refund. You are entitled to receive a refund of any positive account balance not added through promotional credits. To request this refund, simply add a note to the cancellation form. When cancelling an account after the first seven days, there is a $5 processing fee. Only payments made within the last 180 days are eligible.
+A refund can be requested for any *positive account balance* (excluding promotion credits). You can also receive a full refund as part of our cancellation policy if you cancel within the first 7 days. To learn more about this cancellation policy, see the [Cancel Your Account](/docs/products/platform/accounts/guides/cancel-account/) guide.
+
+To request a refund, contact the [Support](https://www.linode.com/support/) team with the reason for your request. Refunds can only be considered for payments made within the last 180 days. Once the request is approved, the refund is issued to the original payment method. A $5 processing fee is deducted from all refunds, with the exception of cancelling an account within the first 7 days.

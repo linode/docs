@@ -1,8 +1,5 @@
 ---
 slug: what-is-static-code-analysis
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
 description: 'This guide provides you with an overview of stack code analysis, a method of testing code that helps prevents bugs in your code during your development process.'
 keywords: ['what is static code analysis']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +9,7 @@ modified_by:
   name: Linode
 title: "What is Static Code Analysis?"
 tags: ["automation"]
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 *Static code analysis*, also called *static program analysis*, looks at an application’s source code and issues warnings about potential bugs. This is different from -- and complementary to -- [dynamic analysis](https://en.wikipedia.org/wiki/Dynamic_program_analysis), which examines the behavior of a program while it is running. Static code analysis can sometimes find bugs that are overlooked in human code reviews and aren’t caught by a compiler’s grammar and error checking.

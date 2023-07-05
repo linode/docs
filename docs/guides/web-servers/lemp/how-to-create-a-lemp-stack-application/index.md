@@ -1,8 +1,5 @@
 ---
 slug: how-to-create-a-lemp-stack-application
-author:
-  name: Cameron Laird
-  email: docs@linode.com
 description: 'Learn how to create a LEMP stack application on Linux. Read our guide to learn LEMP stack basics. ✓ Click here!'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,7 @@ modified_by:
   name: Linode
 title: "Create a LEMP Stack Application"
 title_meta: "How to Create a LEMP Stack on Linux"
-contributor:
-  name: Cameron Laird
+authors: ["Cameron Laird"]
 ---
 
 [LEMP stack](/docs/guides/web-servers/lemp/) refers to a development framework for Web and mobile applications based on four open source components:

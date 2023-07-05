@@ -1,16 +1,10 @@
 ---
 slug: how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Unbundle the default NGINX server from Omnibus Gitlab and install and configure your own to enable virtual hosting.'
 keywords: ["version control", "git", "gitlab", "install gitlab on ubuntu", "how to manage repositories with gitlab"]
 tags: ["version control system","email","ruby","nginx","ubuntu"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 aliases: ['/applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/','/development/version-control/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
-contributor:
-    name: Jordi Bassagañas
-    link: https://twitter.com/programarivm
 modified: 2017-06-21
 modified_by:
   name: Phil Zona
@@ -21,6 +15,7 @@ external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
  - '[Installing Passenger + NGINX](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
 audiences: ["intermediate"]
+authors: ["Jordi Bassagañas"]
 ---
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.

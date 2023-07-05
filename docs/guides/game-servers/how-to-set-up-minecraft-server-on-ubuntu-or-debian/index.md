@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-minecraft-server-on-ubuntu-or-debian
-author:
-  name: Alex Fornuto
-  email: docs@linode.com
 keywords: ["minecraft", "ubuntu", "debian"]
 tags: ["ubuntu", "debian"]
 description: "Learn how to set up a Minecraft server on Ubuntu or Debian. This guide shows you how to configure a Minecraft firewall to increase security. ✓ Read now!"
@@ -26,6 +23,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu/Debian
+authors: ["Alex Fornuto"]
 ---
 
 Minecraft is one of the most popular games in the world. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.

@@ -1,8 +1,5 @@
 ---
 slug: yaml-reference
-author:
-  name: Cameron Laird
-  email: claird@phaseit.net
 description: 'This guide provides you with a brief introduction to the YAML programming language and gives you an understanding of the basics so you can work with YAML files.'
 keywords: ['yaml reference']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,11 +10,9 @@ modified_by:
 title: "A YAML Syntax reference."
 title_meta: "A YAML Syntax Reference"
 tags: ["automation"]
-contributor:
-  name: Cameron Laird
-  link: https://twitter.com/Phaseit
 external_resources:
 - '[A brief YAML reference](https://camel.readthedocs.io/en/latest/yamlref.html)'
+authors: ["Cameron Laird"]
 ---
 
 YAML is a data interchange language commonly used in configuration files. It is used with configuration management tools like [Ansible](/docs/guides/applications/configuration-management/ansible/) and container orchestration tools, like [Kubernetes](/docs/guides/beginners-guide-to-kubernetes-part-1-introduction/). YAML 1.2 is a superset of JSON, and is extensible with custom data types. Since YAML is very popular with automated builds and [continuous delivery](/docs/guides/introduction-ci-cd/), you can find YAML files used through many public GitHub repositories. This reference guide serves as an introduction to YAML, and provides examples to clarify the language's characteristics.
@@ -229,7 +224,7 @@ The full YAML 1.2 specification is rather involved. It has 211 grammatical rules
 
 ### YAML Tools
 
-Plenty of tools help YAML newcomers. Among them are several automatic YAML linters, including [YAML Lint](https://yamlvalidator.com/). Other tools likely to interest a newcomer to YAML are:
+Plenty of tools help YAML newcomers. Among them are several automatic YAML linters, including [YAML Lint](https://www.yamllint.com/). Other tools likely to interest a newcomer to YAML are:
 
 - Converters between other formats and YAML. For example, VSCode provides a [YAML to JSON extension](https://marketplace.visualstudio.com/items?itemName=ahebrank.yaml2json).
 - YAML prettifiers. The [VSCode Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) is one popular option.

@@ -1,7 +1,5 @@
 ---
 slug: install-redis-ubuntu
-author:
-  name: Jeff Novotny
 description: 'This guide shows you how to install and configure the open-source database, cache, and message broker application Redis, on Ubuntu 20.04 Server.'
 keywords: ['install redis ubuntu']
 tags: ['ubuntu', 'database']
@@ -12,9 +10,7 @@ modified_by:
   name: Linode
 title: "Install and Configure Redis on Ubuntu 20.04"
 title_meta: "How to Install and Configure Redis on Ubuntu 20.04"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
+aliases: ['/databases/redis/ubuntu-12.04-precise-pangolin/']
 external_resources:
 - '[Redis](https://redis.io/)'
 - '[Redis commands](https://redis.io/commands)'
@@ -23,6 +19,7 @@ relations:
         key: how-to-install-redis
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Jeff Novotny"]
 ---
 
 This guide explains how to install and perform the basic configuration of [*Redis*](https://redis.io/) on Ubuntu version 20.04. Redis is an open-source in-memory data structure store. It can serve as a database cache and message broker and works well with web applications. Redis is an example of a key-value store database. A key is used to retrieve a stored value. A value can contain either a simple data type such as a string, or a complex data structure such as a list, set, or hash.

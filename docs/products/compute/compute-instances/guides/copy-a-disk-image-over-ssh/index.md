@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Create a disk image using dd and download it to another machine over SSH."
 keywords: ["copy", "disk", "ssh", "dd"]
 tags: ["linode platform","ssh"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-12-04
 modified_by:
   name: Linode
@@ -13,6 +9,7 @@ published: 2012-06-04
 title: "Copy a Disk Over SSH"
 image: copying_a_disk_over_ssh_smg.png
 aliases: ['/migration/ssh-copy/','/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/','/platform/disk-images/copying-a-disk-image-over-ssh/','/guides/copying-a-disk-image-over-ssh/']
+authors: ["Linode"]
 ---
 
 Piping SSH commands to utilities such as `dd`, `gzip`, or `rsync` is an easy way to copy a Compute Instance's data into a single file for later extraction. This can effectively back up your Compute Instance's disk or migrate your installed system to other instances.
@@ -31,7 +28,7 @@ While this guide has been written to accommodate computers running Linux as thei
 
 ### Boot into Rescue Mode
 
-1.  Boot the *origin* Compute Instance into [Rescue Mode](/docs/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/products/compute/compute-instances/guides/lish/).
+1.  Boot the *origin* Compute Instance into [Rescue Mode](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#boot-linode-into-rescue-mode) and connect to it using [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
 1.  Set a root password for the rescue system and start the SSH server:
 

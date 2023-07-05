@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Information on finding your Compute Instance's kernel version (and type) as well as changing and updating the kernel."
 keywords: ["kernel", "grub"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 2021-08-13
 modified: 2023-01-18
 modified_by:
@@ -13,6 +9,7 @@ modified_by:
 title: "Manage the Kernel on a Compute Instance"
 title_meta: "How to Manage the Kernel on a Compute Instance"
 aliases: ['/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm/','/platform/how-to-change-your-linodes-kernel/','/run-a-distribution-supplied-kernel-with-kvm/','/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel/','/platform/update-kernel/', '/guides/how-to-change-your-linodes-kernel/', '/guides/update-kernel/','/guides/managing-the-kernel-on-a-linode/']
+authors: ["Linode"]
 ---
 
 The primary component of every Linux system is the *Linux kernel*. The kernel interfaces with the system's hardware and it controls the operating system's core functionality. This guide covers the types of kernels that can be assigned to a Compute Instance and how to view, update, or change the kernel.
@@ -60,7 +57,7 @@ These instructions may not accurately reflect the actual kernel version installe
 1.  Review the **Kernel** dropdown menu selection.
 
     - **Latest 64 bit** and **Latest 32 bit**: Uses one of the latest 64-bit or 32-bit Linode kernels at the time the Compute Instance boots/reboots, depending on which option you selected. Since new kernel releases are rolled out over a short time period, the actual kernel used by your system may be one or two releases behind. This setting was the default for most distributions prior to August 2018.
-    - **Direct Disk**: Instead of a Linux Kernel, this uses the MBE (Master Boot Record) of the primary disk*.
+    - **Direct Disk**: Instead of a Linux Kernel, this uses the MBR (Master Boot Record) of the primary disk*.
     - **GRUB 2**: Uses the upstream distribution-supplied kernel that's installed on the primary disk. If a custom kernel has been installed instead, that is used instead. **This is the most common option and has been the default for most new Compute Instances created after August 2018.**
     - **GRUB (Legacy)**: Uses the upstream distribution-supplied kernel that's installed on the primary disk*. This should only be used on older Linux distributions that have Grub (not Grub 2) installed, like CentOS 6.
     - **Specific Linode Kernel**: Allows you to specify the exact Linode kernel to use. Since this kernel is maintained regardless of reboots or system updates, it may be preferred in some use cases.
@@ -128,9 +125,9 @@ At the time of this writing, if you wish to switch from a Linode kernel to GRUB2
 
 `Failed to mount /dev/sda as root file system`
 
-Users can generally resolve this issue by either using the latest upstream kernel instead, or by adding a kernel parameter to the grub configuration file, usually found in `/etc/default/grub` to disable the asynchronous scanning which causes the issue. To do this, the following line will need to be added to the end of the grub configuration file:
+Users can generally resolve this issue by either using the latest upstream kernel instead, or by adding a kernel parameter to the grub configuration file, usually found in `/etc/default/grub` to disable the asynchronous scanning which causes the issue. To do this, ensure that you do not delete other lines in the grub configuration file and append the following line to the end of the file:
 
-```file {title"/etc/default/grub"}
+```file {title="/etc/default/grub"}
 scsi_mod.scan=sync
 ```
 
@@ -150,7 +147,7 @@ Once completed, the disks should be read by GRUB2 correctly.
 
 ### SELinux
 
-In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
+In older systems created prior to August 2018, CentOS 7 and Fedora ship with [SELinux](/docs/guides/a-beginners-guide-to-selinux-on-centos-7/) running in enforcing mode by default. When switching from the Linode kernel to the upstream kernel, SELinux may need to relabel your filesystem at boot. When the relabeling completes, the Compute Instance will shut down. If you have [Lassie](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) enabled, the instance will automatically boot back up following the shut down. If you do not have Lassie enabled, you will need to manually reboot from the Cloud Manager.
 
 ![SELinux filesystem relabel](selinux-filesystem-relabel.png "SELinux filesystem relabel")
 

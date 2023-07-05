@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-owncloud-on-owncloud-debian-7
-author:
-    name: Alex Fornuto
-    email: afornuto@linode.com
 description: "Installing and Configuring ownCloud on Debian 7.4"
 keywords: ["ownCloud", "Debian", "MySQL", "cloud storage"]
 tags: ["debian", "lamp"]
@@ -20,11 +17,16 @@ relations:
             - distribution: Debian 7
 aliases: ['/applications/cloud-storage/owncloud-debian-7/','/guides/owncloud-debian-7/']
 deprecated: true
+authors: ["Alex Fornuto"]
 ---
 
 ownCloud is an open source platform that allows easy access to files from multiple locations and platforms. It's compatible with most major operating systems and mobile devices. With ownCloud you can store files on your Linode and then access them wherever you go.
 
 Installing ownCloud on your Linode is very simple. The steps outlined below will get you up and running with a drag and drop GUI interface. An ownCloud server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
+
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
 
 ## Installation Prerequisites
 

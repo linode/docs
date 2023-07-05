@@ -1,8 +1,5 @@
 ---
 slug: start-service-at-boot
-author:
-  name: Linode
-  email: docs@linode.com
 description: The systemd daemon allows you to control Linux system services. This guide shows how to configure a custom systemd service and enable it to start at boot.
 keywords: ["systemd","service","enable service","Linux system service"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
   - '[systemd Documentation](https://www.freedesktop.org/wiki/Software/systemd/)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux/start-service-at-boot/']
+authors: ["Linode"]
 ---
 
 ## What is systemd?
@@ -133,6 +131,9 @@ May 02 15:03:07 localhost systemd[1]: Starting Example systemd service....
 May 02 15:03:07 localhost bash[2973]: Looping...
 May 02 15:03:37 localhost bash[2973]: Looping...
 {{< /output >}}
+
+For more information about using `systemctl` commands, see the [systemctl guide](/docs/guides/introduction-to-systemctl).
+
 
 ## Troubleshooting
 

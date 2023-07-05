@@ -1,9 +1,6 @@
 ---
 slug: apache-tomcat-on-ubuntu-12-04-precise-pangolin
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["apache tomcat ubuntu 12.04", "java", "java ubuntu 12.04", "java servlets ubuntu lucid", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
@@ -22,6 +19,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

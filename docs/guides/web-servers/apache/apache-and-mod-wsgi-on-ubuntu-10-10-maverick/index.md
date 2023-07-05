@@ -1,8 +1,5 @@
 ---
 slug: apache-and-mod-wsgi-on-ubuntu-10-10-maverick
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows you how to deploy Python apps, like Django, and more using the Apache Web Server application and mod\_wsgi on Ubuntu 10.10 "Maverick".'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","ubuntu","python"]
@@ -19,6 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. These guides outline this installation and configuration process for deploying WSGI applications.

@@ -1,8 +1,5 @@
 ---
 slug: create-a-self-signed-tls-certificate-ubuntu-18-04
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to create and install a self-signed TLS certificate by using the OpenSSL utility from the command line running on Ubuntu 18.04'
 keywords: ["ubuntu tls certificate", "ubuntu ssl certificate", "ubuntu self certified"]
 tags: ["ubuntu", "security", "ssl"]
@@ -21,6 +18,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

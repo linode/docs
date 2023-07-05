@@ -1,8 +1,5 @@
 ---
 slug: an-overview-of-the-linode-cloud-manager
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide provides you with an overview of the Linode Cloud Manager and covers how to locate features within Cloud Manager, create Linodes and more."
 keywords: ["classic manager","cloud manager","linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +10,8 @@ modified_by:
   name: Linode
 image: AnOverviewoftheLinodeCloudManager.png
 title: "An Overview of the Linode Cloud Manager"
-contributor:
-  name: Linode
 tags: ["linode platform","cloud manager"]
+authors: ["Linode"]
 ---
 
 The [Linode Cloud Manager](https://cloud.linode.com/) provides a user-friendly interface to manage your infrastructure, user accounts, billing and payments, and to open and track support tickets. You can easily create Linode instances, managed Kubernetes clusters, add backups to your Linodes, deploy Marketplace Apps, track event notifications, create Object Storage buckets, and more. The Cloud Manager is implemented solely atop our [public APIv4](/docs/api), which gives you access to all our latest products and services.
@@ -121,7 +117,7 @@ Linode’s Cloud Manager and [API v4](/docs/api) allow you to create tags to hel
 
 Tasks performed using the Linode Cloud Manager or other account specific tools like Linode’s [CLI](/docs/products/tools/cli/get-started/) or [API](https://www.linode.com/products/api/) will be logged to an individual Linode’s activity feed, or on your account’s [Events Page](https://cloud.linode.com/events). The events and activity pages are user accessible logs, or histories of events taking place on your account. They contain details regarding the most notable events affecting your Linodes, like reboots, shutdowns, migrations, and more.
 
-For more details, see the [Understanding Events and Activity Feeds](/docs/guides/cloud-manager-events-and-activity-feeds/) guide.
+For more details, see the [Understanding Events and Activity Feeds](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/) guide.
 
 ## My Profile
 

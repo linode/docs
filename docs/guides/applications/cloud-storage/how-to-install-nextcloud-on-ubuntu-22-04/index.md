@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nextcloud-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide introduces the productivity website Nextcloud and explains how to install and configure it on Ubuntu 22.04.'
 keywords: ['Nextcloud Ubuntu','what is Nextcloud','how to install nextcloud','Ubuntu configure Nextcloud','download Nextcloud Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,8 +9,6 @@ modified_by:
   name: Linode
 title: "Install Nextcloud on Ubuntu 22.04"
 title_meta: "How to Install Nextcloud on Ubuntu 22.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Nextcloud website](https://nextcloud.com/)'
 - '[Nextcloud documentation](https://docs.nextcloud.com/server/24/admin_manual/contents.html)'
@@ -29,8 +24,10 @@ external_resources:
 - '[ISO Alpha-2 country codes](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)'
 relations:
     platform:
+        key: install-nextcloud
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
 ---
 
 [Nextcloud](https://nextcloud.com/) is a free and open source application for storing and sharing files. It allows approved users to access documents and pictures online from a central location. Nextcloud is considered a strong alternative to Dropbox and Google Drive. This guide explains how to download, install, and configure Nextcloud on Ubuntu 22.04 LTS. It also explains how to configure an Ubuntu LAMP stack to support Nextcloud.

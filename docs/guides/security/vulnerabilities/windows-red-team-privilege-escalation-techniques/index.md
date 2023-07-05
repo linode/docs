@@ -1,8 +1,5 @@
 ---
 slug: windows-red-team-privilege-escalation-techniques
-author:
-  name: HackerSploit
-  email: hackersploit@gmail.com
 description: 'This guide covers various techniques that can be used to elevate your privileges on Windows systems.'
 keywords: ['security']
 tags: ['security']
@@ -11,8 +8,7 @@ published: 2021-11-03
 modified_by:
   name: Linode
 title: "Windows Red Team Privilege Escalation Techniques"
-contributor:
-  name: HackerSploit
+authors: ["HackerSploit"]
 ---
 
 {{< content "hackersploit-red-team-series-note-shortguide" >}}

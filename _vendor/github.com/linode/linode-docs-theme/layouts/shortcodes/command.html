@@ -50,7 +50,8 @@
         {{- highlight (trim $.inner "\n" ) $style "linenos=false" -}}
       </div>
       <div
-        class="absolute right-0 top-0 overflow-x-none pt-4 sm:pt-5"
+        class="absolute right-0 top-0 overflow-x-none mt-4 sm:mt-5 pl-3"
+        style="background-color: inherit;"
         @click="$copy($refs.code)">
         {{ $copyIcon }}
       </div>

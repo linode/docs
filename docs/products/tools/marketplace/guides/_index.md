@@ -1,9 +1,11 @@
 ---
 title: Guides
-description: "Learn how to access and deploy all the Linode Marketplace One-Click Apps."
+title_meta: "Guides and Tutorials for the Linode Marketplace"
+description: "A collection of guides to help you learn how to deploy each Marketplace App that Linode offers."
 tab_group_main:
     weight: 30
 aliases: ['/products/tools/marketplace-one-click-apps/guides/']
+modified: 2023-06-26
 ---
 
 ## Basics
@@ -23,6 +25,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Ant Media Server](/docs/products/tools/marketplace/guides/antmediaserver/)
 - [Ant Media Server Enterprise Edition](/docs/products/tools/marketplace/guides/antmediaenterpriseserver/)
 - [Apache Airflow](/docs/products/tools/marketplace/guides/apache-airflow/)
+- [Appwrite](/docs/products/tools/marketplace/guides/appwrite/)
 - [ARK Survival Evolved](/docs/products/tools/marketplace/guides/ark-survival-evolved/)
 - [AzuraCast](/docs/products/tools/marketplace/guides/azuracast/)
 - [BeEF](/docs/products/tools/marketplace/guides/beef/)
@@ -42,6 +45,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [FileCloud](/docs/products/tools/marketplace/guides/filecloud/)
 - [Flask](/docs/products/tools/marketplace/guides/flask/)
 - [Focalboard](/docs/products/tools/marketplace/guides/focalboard/)
+- [Galera Cluster](/docs/products/tools/marketplace/guides/galera-cluster/)
 - [Gitea](/docs/products/tools/marketplace/guides/gitea/)
 - [Gitlab](/docs/products/tools/marketplace/guides/gitlab/)
 - [gopaddle](/docs/products/tools/marketplace/guides/gopaddle/)
@@ -52,6 +56,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Harbor](/docs/products/tools/marketplace/guides/harbor/)
 - [HashiCorp Nomad](/docs/products/tools/marketplace/guides/hashicorp-nomad/)
 - [HashiCorp Vault](/docs/products/tools/marketplace/guides/hashicorp-vault/)
+- [Illa Builder](/docs/products/tools/marketplace/guides/illa-builder/)
 - [Jenkins](/docs/products/tools/marketplace/guides/jenkins/)
 - [JetBackup](/docs/products/tools/marketplace/guides/jetbackup/)
 - [Jitsi](/docs/products/tools/marketplace/guides/jitsi/)
@@ -70,7 +75,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Microweber](/docs/products/tools/marketplace/guides/microweber)
 - [Minecraft ](/docs/products/tools/marketplace/guides/minecraft/)
 - [Mist.io](/docs/products/tools/marketplace/guides/mistio/)
-- [MongoDB](/docs/products/tools/marketplace/guides/mongodb/)
 - [Moodle](/docs/products/tools/marketplace/guides/moodle/)
 - [MySQL/MariaDB](/docs/products/tools/marketplace/guides/mysql/)
 - [Nextcloud](/docs/products/tools/marketplace/guides/nextcloud/)
@@ -84,6 +88,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [OpenLiteSpeed WordPress](/docs/products/tools/marketplace/guides/openlitespeed-wordpress/)
 - [OpenVPN](/docs/products/tools/marketplace/guides/openvpn/)
 - [Owncast](/docs/products/tools/marketplace/guides/owncast/)
+- [Owncloud Server](/docs/products/tools/marketplace/guides/owncloud/)
 - [Passky](/docs/products/tools/marketplace/guides/passky/)
 - [Peppermint](/docs/products/tools/marketplace/guides/peppermint/)
 - [Percona Monitoring and Management (PMM)](/docs/products/tools/marketplace/guides/percona-monitoring-management/)
@@ -92,16 +97,19 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Plesk](/docs/products/tools/marketplace/guides/plesk/)
 - [Plex Media Server](/docs/products/tools/marketplace/guides/plex/)
 - [PostgreSQL](/docs/products/tools/marketplace/guides/postgresql/)
+- [PostgreSQL Cluster](/docs/products/tools/marketplace/guides/postgresql-cluster/)
 - [Pritunl](/docs/products/tools/marketplace/guides/pritunl/)
 - [Prometheus](/docs/products/tools/marketplace/guides/prometheus/)
 - [Prometheus and Grafana](/docs/products/tools/marketplace/guides/prometheus-grafana/)
 - [RabbitMQ](/docs/products/tools/marketplace/guides/rabbitmq/)
 - [Redis](/docs/products/tools/marketplace/guides/redis/)
+- [Redis Sentinel](/docs/products/tools/marketplace/guides/redis-cluster/)
 - [Restyaboard](/docs/products/tools/marketplace/guides/restyaboard/)
 - [Rocket.Chat](/docs/products/tools/marketplace/guides/rocketchat/)
 - [Ruby on Rails](/docs/products/tools/marketplace/guides/ruby-on-rails/)
 - [Rust](/docs/products/tools/marketplace/guides/rust/)
 - [Saltcorn](/docs/products/tools/marketplace/guides/saltcorn/)
+- [Seatable](/docs/products/tools/marketplace/guides/seatable/)
 - [Secure Your Server](/docs/products/tools/marketplace/guides/secure-your-server/)
 - [ServerWand](/docs/products/tools/marketplace/guides/serverwand/)
 - [Shadowsocks](/docs/products/tools/marketplace/guides/shadowsocks/)
@@ -109,7 +117,6 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Superinsight](/docs/products/tools/marketplace/guides/superinsight/)
 - [Team Fortress 2](/docs/products/tools/marketplace/guides/team-fortress-2/)
 - [Terraria](/docs/products/tools/marketplace/guides/terraria/)
-- [UniFi Network Application](/docs/products/tools/marketplace/guides/unifi-network-application)
 - [Uptime Kuma](/docs/products/tools/marketplace/guides/uptime-kuma/)
 - [UTunnel VPN](/docs/products/tools/marketplace/guides/utunnel/)
 - [Valheim](/docs/products/tools/marketplace/guides/valheim/)

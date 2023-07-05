@@ -29,7 +29,6 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   margin-bottom: 0;
 }
 
-
 .content a {
   @apply text-brand hover:text-green-400;
 }
@@ -134,14 +133,35 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   background-color: transparent;
 }
 
+.content div.overflow-table {
+  position: relative;
+  display: block;
+  overflow-x: scroll;
+}
+
+.content table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+}
+
 .content table {
   @apply border-collapse mobile:-mx-4;
+  border-style: hidden;
+}
+
+.content div.overflow-table > table {
+  @apply border-collapse mobile:mx-0;
   border-style: hidden;
 }
 
 @screen mobile {
   .content table {
     width: calc(100% + 2rem);
+  }
+
+  .content div.overflow-table table {
+    width: 100%;
   }
 }
 

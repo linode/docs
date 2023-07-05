@@ -1,8 +1,5 @@
 ---
 slug: install-gitlab-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install GitLab, the free git repository management app based on Ruby on Rails, on a Linode running Ubuntu 18.04, along with SSL.'
 keywords: ['git', 'gitlab', 'version control', 'ubuntu']
 tags: ["ssl","version control system","ubuntu"]
@@ -12,8 +9,6 @@ modified: 2019-01-04
 modified_by:
   name: Linode
 title:  'Install GitLab on Ubuntu 18.04'
-contributor:
-  name: Linode
 external_resources:
 - '[GitLab''s Official Documentation](https://docs.gitlab.com/ee/README.html)'
 - '[GitLab''s NGINX Configurations](https://docs.gitlab.com/omnibus/settings/nginx.html)'
@@ -24,6 +19,7 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/development/version-control/install-gitlab-on-ubuntu-18-04/']
+authors: ["Linode"]
 ---
 
 GitLab is a complete solution for all aspects of your software development life-cycle. At its core, GitLab serves as your centralized Git repository. It also features built-in tools that represent every task in your development workflow, from planning to testing to releasing. You can host your own GitLab instance on a Linode, instead of using third-party hosting. Self-hosting your software development with GitLab offers total control of your codebase while providing an easy to use interface for team members. GitLab is the most popular self-hosted Git repository, so you'll benefit from a robust set of integrated tools and an active community.

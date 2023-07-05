@@ -1,11 +1,8 @@
 ---
 slug: enabling-https-using-certbot-with-nginx-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to install and use Certbot with NGINX on Ubuntu 20.04, which automates the process adding TLS/SSL to your websites."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption', 'NGINX']
-tags: ['ssl','nginx', 'ubuntu']
+tags: ['ssl','nginx', 'ubuntu', "ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-25
 image: SecureWeb.jpg
@@ -13,14 +10,13 @@ modified: 2021-07-01
 modified_by:
   name: Linode
 title: "Use Certbot to Enable HTTPS with NGINX on Ubuntu"
-contributor:
-  name: Jeff Novotny
 aliases: ['/guides/how-to-install-certbot-for-nginx-on-ubuntu-20-04/','/quick-answers/websites/certbot/how-to-install-certbot-on-ubuntu-18-04/','/quick-answers/websites/how-to-install-certbot-on-ubuntu-18-04/','/guides/how-to-install-certbot-on-ubuntu-18-04/']
 relations:
     platform:
         key: how-to-use-certbot-with-nginx
         keywords:
             - distribution: Ubuntu
+authors: ["Jeff Novotny"]
 ---
 
 

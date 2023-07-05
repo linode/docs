@@ -3,6 +3,7 @@ title: "GPU Compute Instances"
 linkTitle: "GPU"
 description: "Virtual machines equipped with NVIDIA Quadro GPUs that are ideal for complex processing and GPU-optimized workloads."
 published: 2023-01-18
+modified: 2023-02-14
 aliases: ['/products/compute/gpu/','/platform/linode-gpu/why-linode-gpu/','/guides/why-linode-gpu/','/products/compute/gpu/guides/use-cases/']
 ---
 
@@ -12,11 +13,11 @@ Scientists, artists, and engineers need access to significant parallel computati
 
 ## On-demand
 
-Between purchasing, installing, and maintaining GPUs, the cost of ownership is often high. Linode GPUs allow you to leverage the power of GPUs while benefiting from the main value proposition of cloud: turning a CapEx into an OpEx.
+Between purchasing, installing, and maintaining GPUs, the cost of ownership is often high. GPU Compute Instances allow you to leverage the power of GPUs while benefiting from the main value proposition of cloud: turning a CapEx into an OpEx.
 
 ## Market Leading Hardware
 
-Linode GPUs are NVIDIA Quadro RTX 6000, currently considered one of the best in market GPUs. With CUDA, Tensor, and RT cores in each unit, these GPUs support any use cases associated with parallel processing, deep learning, or ray tracing.
+Linode uses NVIDIA Quadro RTX 6000 GPUs, currently considered one of the best in market. With CUDA, Tensor, and RT cores in each unit, these GPUs support any use cases associated with parallel processing, deep learning, or ray tracing. See [GPU Specifications](#gpu-specifications) below for more details.
 
 One GPU card isn’t enough for your projected workloads? Not a problem. Linode GPU plans offer up to four cards per instance, depending on how much horsepower you need.
 
@@ -44,8 +45,9 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 | Resource | Available Plans |
 | -- | -- |
 | GPU cards | 1-4 cards |
-| vCPU cores | 8-24 cores |
-| Memory | 32 GB - 128 GB |
+| GPU Memory (VRAM) | 24 GB - 96 GB |
+| vCPU cores | 8-24 cores (dedicated) |
+| Memory (RAM) | 32 GB - 128 GB |
 | Storage | 640 GB - 2560 GB |
 | Outbound Network Transfer | 16 TB - 20 TB |
 | Outbound Network Bandwidth | 10 Gbps |
@@ -53,6 +55,19 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
 
 {{< content "gpu-deposit-shortguide" >}}
+
+## GPU Specifications
+
+Each of the NVIDIA Quadro RTX 6000 GPUs on the Linode Platform are equipped the following specifications:
+
+| Specification | Value |
+| -- | -- |
+| GPU Memory (VRAM) | 24 GB GDDR6 |
+| CUDA Cores (Parallel-Processing) | 4,608 |
+| Tensor Cores (Machine & Deep Learning) | 576 |
+| RT Cores (Ray Tracing) | 72 |
+| RTX-OPS | 84T |
+| FP32 Performance | 16.3 TFLOPS |
 
 ## What are GPUs?
 
@@ -80,26 +95,25 @@ Below is a list of common tools used for machine learning and AI that can be ins
 
 Big data is a discipline that analyzes and extracts meaningful insights from large and complex data sets. These sets are so large and complex that they require specialized software and hardware to appropriately capture, manage, and process the data. When thinking of big data and whether or not the term applies to you, it often helps to visualize the “three Vs”:
 
--   **Volume:** Generally, if you are working with terabytes, exabytes, petabytes, or more amounts of information you are in the realm of big data.
+- **Volume:** Generally, if you are working with terabytes, exabytes, petabytes, or more amounts of information you are in the realm of big data.
 
+- **Velocity:** With Big Data, you’re using data that is being created, called, moved, and interacted with at a high velocity. One example is the real time data generated on social media platforms by its users.
 
--   **Velocity:** With Big Data, you’re using data that is being created, called, moved, and interacted with at a high velocity. One example is the real time data generated on social media platforms by its users.
-
--   **Variety:** Variety refers to the many different types of data formats with which you may need to interact. Photos, video, audio, and documents can all be written and saved in a number of different formats. It is important to consider the variety of data that you will collect in order to appropriately categorize it.
+- **Variety:** Variety refers to the many different types of data formats with which you may need to interact. Photos, video, audio, and documents can all be written and saved in a number of different formats. It is important to consider the variety of data that you will collect in order to appropriately categorize it.
 
 GPUs can help give Big Data systems the additional computational capabilities they need for ideal performance. Below are a few examples of tools which you can use for your own big data solutions:
 
--   [Hadoop](https://hadoop.apache.org/) - an Apache project that allows the creation of parallel processing applications on large data sets, distributed across networked nodes.
+- [Hadoop](https://hadoop.apache.org/) - an Apache project that allows the creation of parallel processing applications on large data sets, distributed across networked nodes.
 
--   [Apache Spark](https://spark.apache.org/) - a unified analytics engine for large-scale data processing designed with speed and ease of use in mind.
+- [Apache Spark](https://spark.apache.org/) - a unified analytics engine for large-scale data processing designed with speed and ease of use in mind.
 
--   [Apache Storm](https://storm.apache.org/) - a distributed computation system that processes streaming data in real time.
+- [Apache Storm](https://storm.apache.org/) - a distributed computation system that processes streaming data in real time.
 
 ### Video Encoding
 
 Video Encoding is the process of taking a video file's original source format and converting it to another format that is viewable on a different device or using a different tool. This resource intensive task can be greatly accelerated using the power of GPUs.
 
- -  [FFmpeg](https://developer.nvidia.com/ffmpeg) - a popular open-source multimedia manipulation framework that supports a large number of video formats.
+- [FFmpeg](https://developer.nvidia.com/ffmpeg) - a popular open-source multimedia manipulation framework that supports a large number of video formats.
 
 ### General Purpose Computing using CUDA
 
@@ -107,11 +121,11 @@ CUDA (Compute Unified Device Architecture) is a parallel computing platform and 
 
 If you're interested in using CUDA on your GPU Linode, see the following resources:
 
- -  [NVIDIA's Library of Documentation](https://docs.nvidia.com/cuda/)
+- [NVIDIA's Library of Documentation](https://docs.nvidia.com/cuda/)
 
- -  [Introduction to CUDA](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/)
+- [Introduction to CUDA](https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/)
 
- -  [NVIDIA's CUDA exercise repository](https://github.com/csc-training/CUDA/tree/master/exercises)
+- [NVIDIA's CUDA exercise repository](https://github.com/csc-training/CUDA/tree/master/exercises)
 
 ### Graphics Processing
 

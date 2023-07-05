@@ -1,8 +1,5 @@
 ---
 slug: discussion-forums-with-fluxbb
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the simple and lightweight Discussion forum FluxBB on your Linode.'
 keywords: ["bulletin board", "forum", "discussion forum", "fluxbb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2010-05-03
 title: Discussion Forums with FluxBB
 deprecated: true
+authors: ["Linode"]
 ---
 
 FluxBB is a web application that powers discussion forums. It strives to be faster and more lightweight than other contenders in this space, and its developers strive for maximum stability and security. Thus, FluxBB is a viable option for those who need a web based discussion forum and require simplicity and stability without an expansive feature set.

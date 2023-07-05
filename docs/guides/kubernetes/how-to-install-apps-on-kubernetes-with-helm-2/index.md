@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-apps-on-kubernetes-with-helm-2
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn how to install apps on your K8s cluster with Helm 2, a popular package management system for Kubernetes.'
 keywords: ["helm", "kubernetes", "container", "k8s"]
 tags: ["kubernetes","cms"]
@@ -19,19 +16,20 @@ concentrations: ["Kubernetes"]
 external_resources:
   - '[Helm 2 Documentation](https://v2.helm.sh/docs/)'
   - '[Helm Security on Bitnami Engineering](https://engineering.bitnami.com/articles/helm-security.html)'
+authors: ["Linode"]
 ---
 
-![How to Install Apps on Kubernetes with Helm](how-to-install-apps-on-kubernetes-with-helm.png "How to Install Apps on Kubernetes with Helm")
+![How to Install Apps on Kubernetes with Helm](how-to-install-apps-on-kubernetes-with-helm.png)
 
 ## What is Helm?
 
 [Helm](https://helm.sh) is a tool that assists with installing and managing applications on Kubernetes clusters. It is often referred to as "the package manager for Kubernetes," and it provides functions that are similar to a package manager for an operating system:
 
--   Helm prescribes a common format and directory structure for packaging your Kubernetes resources, known as a [Helm *chart*](#charts).
+- Helm prescribes a common format and directory structure for packaging your Kubernetes resources, known as a [Helm *chart*](#charts).
 
--   Helm provides a [public repository of charts](https://github.com/helm/charts/) for popular software. You can also retrieve charts from third-party repositories, author and contribute your own charts to someone else's repository, or run your own chart repository.
+- Helm provides a [public repository of charts](https://github.com/helm/charts/) for popular software. You can also retrieve charts from third-party repositories, author and contribute your own charts to someone else's repository, or run your own chart repository.
 
--   The Helm client software offers commands for: listing and searching for charts by keyword, installing applications to your cluster from charts, upgrading those applications, removing applications, and other management functions.
+- The Helm client software offers commands for: listing and searching for charts by keyword, installing applications to your cluster from charts, upgrading those applications, removing applications, and other management functions.
 
 ### Charts
 
@@ -39,18 +37,20 @@ The components of a Kubernetes application--deployments, services, ingresses, an
 
 [Helm *charts*](https://helm.sh/docs/topics/chart_repository/) are the software packaging format for Helm. A chart specifies a file and directory structure that you follow when packaging your manifests. The structure looks as follows:
 
-    chart-name/
-      Chart.yaml
-      LICENSE
-      README.md
-      requirements.yaml
-      values.yaml
-      charts/
-      templates/
-      templates/NOTES.txt
+```output
+chart-name/
+  Chart.yaml
+  LICENSE
+  README.md
+  requirements.yaml
+  values.yaml
+  charts/
+  templates/
+  templates/NOTES.txt
+```
 
-| File or Directory   | Description |
-|---------------------|-------------|
+| File or Directory | Description |
+| -- | -- |
 | [Chart.yaml](https://v2.helm.sh/docs/developing_charts/#the-chart-yaml-file) | General information about the chart, including the chart name, a version number, and a description. |
 | [LICENSE](https://v2.helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A plain-text file with licensing information for the chart and for the applications installed by the chart. *Optional*. |
 | [README.md](https://v2.helm.sh/docs/developing_charts/#chart-license-readme-and-notes) | A Markdown file with instructions that a user of a chart may want to know when installing and using the chart, including a description of the app that the chart installs and the template values that can be set by the user. *Optional*. |
@@ -70,29 +70,33 @@ You can install a chart to the same cluster more than once. Each time you tell H
 
 Helm operates with two components:
 
--   The Helm client software that issues commands to your cluster. You run the client software on your computer, in your CI/CD environment, or anywhere else you'd like
+- The Helm client software that issues commands to your cluster. You run the client software on your computer, in your CI/CD environment, or anywhere else you'd like
 
--   A server component runs on your cluster and receives commands from the Helm client software. This component is called *Tiller*. Tiller is responsible for directly interacting with the Kubernetes API (which the client software does not do). Tiller maintains the state for your Helm releases.
+- A server component runs on your cluster and receives commands from the Helm client software. This component is called *Tiller*. Tiller is responsible for directly interacting with the Kubernetes API (which the client software does not do). Tiller maintains the state for your Helm releases.
 
 ## Before You Begin
 
-1.   [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
+1. [Install the Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`) on your computer, if it is not already.
 
-1.   You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with Linode's [`k8s-alpha` CLI command](https://developers.linode.com/kubernetes/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier or higher.
+1. You should have a Kubernetes cluster running prior to starting this guide. One quick way to get a cluster up is with Linode's [`k8s-alpha` CLI command](https://developers.linode.com/kubernetes/). This guide's examples only require a cluster with one worker node. We recommend that you create cluster nodes that are at the Linode 4GB tier or higher.
 
     This guide also assumes that your cluster has [role-based access control (RBAC)](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) enabled. This feature became available in Kubernetes 1.6. It is enabled on clusters created via the `k8s-alpha` Linode CLI.
 
-    {{< note respectIndent=false >}}
-This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
-{{< /note >}}
+    {{< note >}}
+    This guide's example instructions will also result in the creation of a Block Storage Volume and a NodeBalancer, which are also billable resources. If you do not want to keep using the example application after you finish reviewing your guide, make sure to [delete](#delete-a-release) these resources afterward.
+    {{< /note >}}
 
-1.   You should also make sure that your Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
+1. You should also make sure that your Kubernetes CLI is using the right cluster context. Run the `get-contexts` subcommand to check:
 
-        kubectl config get-contexts
+    ```command
+    kubectl config get-contexts
+    ```
 
-1.   You can set kubectl to use a certain cluster context with the `use-context` subcommand and the cluster name that was previously output from the `get-contexts` subcommand:
+1. You can set kubectl to use a certain cluster context with the `use-context` subcommand and the cluster name that was previously output from the `get-contexts` subcommand:
 
-        kubectl config use-context your-cluster-name
+    ```command
+    kubectl config use-context your-cluster-name
+    ```
 
 1.  It is beneficial to have a registered domain name for this guide's example app, but it is not required.
 
@@ -102,85 +106,102 @@ This guide's example instructions will also result in the creation of a Block St
 
 Install the Helm client software on your computer:
 
--   **Linux**. Run the client installer script that Helm provides:
+- **Linux**. Run the client installer script that Helm provides:
 
-        curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
-        chmod 700 get_helm.sh
-        ./get_helm.sh
+    ```command
+    curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh
+    chmod 700 get_helm.sh
+    ./get_helm.sh
+    ```
 
--   **macOS**. Use [Homebrew](https://brew.sh) to install:
+- **macOS**. Use [Homebrew](https://brew.sh) to install:
 
-        brew install kubernetes-helm
+    ```command
+    brew install kubernetes-helm
+    ```
 
--   **Windows**. Use [Chocolatey](https://chocolatey.org) to install:
+- **Windows**. Use [Chocolatey](https://chocolatey.org) to install:
 
-        choco install kubernetes-helm
+    ```command
+    choco install kubernetes-helm
+    ```
 
 ### Install Tiller on your Cluster
 
 Tiller's default installation instructions will attempt to install it without adequate permissions on a cluster with RBAC enabled, and it will fail. Alternative instructions are available which grant Tiller the appropriate permissions:
 
-{{< note respectIndent=false >}}
+{{< note >}}
 The following instructions provide Tiller to the `cluster-admin` role, which is a privileged Kubernetes API user for your cluster. This is a potential security concern. [Other access levels](https://v2.helm.sh/docs/using_helm/#role-based-access-control) for Tiller are possible, like restricting Tiller and the charts it installs [to a single namespace](https://v2.helm.sh/docs/using_helm/#example-deploy-tiller-in-a-namespace-restricted-to-deploying-resources-only-in-that-namespace). The [Bitnami Engineering blog](https://engineering.bitnami.com/articles/helm-security.html) has an article which further explores security in Helm.
 {{< /note >}}
 
-1.   Create a file on your computer named `rbac-config.yaml` with the following snippet:
+1. Create a file on your computer named `rbac-config.yaml` with the following snippet:
 
-    {{< file "rbac-config.yaml" >}}
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: tiller
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: tiller
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: tiller
-    namespace: kube-system
-{{< /file >}}
+    ```file {title="rbac-config.yaml" lang=yaml}
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: tiller
+      namespace: kube-system
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: tiller
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: cluster-admin
+    subjects:
+      - kind: ServiceAccount
+        name: tiller
+        namespace: kube-system
+    ```
 
     This configuration creates a Kubernetes [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) for Tiller, and then binds it to the `cluster-admin` role.
 
-1.  Apply this configuration to your cluster:
+1. Apply this configuration to your cluster:
 
-        kubectl create -f rbac-config.yaml
+    ```command
+    kubectl create -f rbac-config.yaml
+    ```
 
-    {{< output >}}
-serviceaccount "tiller" created
-clusterrolebinding "tiller" created
-{{< /output >}}
+    ```output
+    serviceaccount "tiller" created
+    clusterrolebinding "tiller" created
+    ```
 
-1.  Initialize Tiller on the cluster:
+1. Initialize Tiller on the cluster:
 
-        helm init --service-account tiller --history-max 200
+    ```command
+    helm init --service-account tiller --history-max 200
+    ```
 
-    {{< note respectIndent=false >}}
-The `--history-max` option prevents Helm's historical record of the objects it tracks from growing too large.
-{{< /note >}}
+    {{< note >}}
+    The `--history-max` option prevents Helm's historical record of the objects it tracks from growing too large.
+    {{< /note >}}
 
-1.  You should see output like:
+1. You should see output like:
 
-        $HELM_HOME has been configured at /Users/your-user/.helm.
+    ```output
+    $HELM_HOME has been configured at /Users/your-user/.helm.
 
-        Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
+    Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
 
-        Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
-        To prevent this, run `helm init` with the --tiller-tls-verify flag.
-        For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
-        Happy Helming!
+    Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
+    To prevent this, run `helm init` with the --tiller-tls-verify flag.
+    For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
+    Happy Helming!
+    ```
 
-1.  The Pod for Tiller will be running in the `kube-system` namespace:
+1. The Pod for Tiller will be running in the `kube-system` namespace:
 
-        kubectl get pods --namespace kube-system | grep tiller
-        tiller-deploy-b6647fc9d-vcdms                1/1       Running   0          1m
+    ```command
+    kubectl get pods --namespace kube-system | grep tiller
+    ```
+
+    ```output
+    tiller-deploy-b6647fc9d-vcdms                1/1       Running   0          1m
+    ```
 
 ## Use Helm Charts to Install Apps
 
@@ -188,26 +209,34 @@ This guide will use the [Ghost](https://ghost.org) publishing platform as the ex
 
 ### Search for a Chart
 
-1.  Run the `repo update` subcommand to make sure you have a full list of available charts:
+1. Run the `repo update` subcommand to make sure you have a full list of available charts:
 
-        helm repo update
+    ```command
+    helm repo update
+    ```
 
-    {{< note respectIndent=false >}}
-Run `helm repo list` to see which repositories are registered with your client.
-{{< /note >}}
+    {{< note >}}
+    Run `helm repo list` to see which repositories are registered with your client.
+    {{< /note >}}
 
-1.  Run the [`search` command](https://v2.helm.sh/docs/using_helm/#helm-search-finding-charts) with a keyword to search for a chart by name:
+1. Run the [`search` command](https://v2.helm.sh/docs/using_helm/#helm-search-finding-charts) with a keyword to search for a chart by name:
 
-        helm search ghost
+    ```command
+    helm search ghost
+    ```
 
     The output will look like:
 
-        NAME        	CHART VERSION	APP VERSION	DESCRIPTION
-        stable/ghost	6.7.7        	2.19.4     	A simple, powerful publishing platform that allows you to...
+    ```output
+    NAME        	CHART VERSION	APP VERSION	DESCRIPTION
+    stable/ghost	6.7.7        	2.19.4     	A simple, powerful publishing platform that allows you to...
+    ```
 
-1.  The full name for the chart is `stable/ghost`. Inspect the chart for more information:
+1. The full name for the chart is `stable/ghost`. Inspect the chart for more information:
 
-        helm inspect stable/ghost
+    ```command
+    helm inspect stable/ghost
+    ```
 
     This command's output will resemble the README text available for the [Ghost chart](https://github.com/helm/charts/tree/master/stable/ghost) in the official Helm chart repository on GitHub.
 
@@ -215,26 +244,29 @@ Run `helm repo list` to see which repositories are registered with your client.
 
 The [`helm install` command](https://v2.helm.sh/docs/using_helm/#helm-install-installing-a-package) is used to install a chart by name. It can be run without any other options, but some charts expect you to pass in configuration values for the chart:
 
-1.  Create a file named `ghost-config.yaml` on your computer from this snippet:
+1. Create a file named `ghost-config.yaml` on your computer from this snippet:
 
-    {{< file "ghost-config.yaml" >}}
-ghostHost: ghost.example.com
-ghostEmail: email@example.com
-{{< /file >}}
+    ```file {title="ghost-config.yaml" lang=yaml}
+    ghostHost: ghost.example.com
+    ghostEmail: email@example.com
+    ```
 
     Replace the value for ghostHost with a domain or subdomain that you own and would like to assign to the app, and the value for ghostEmail with your email.
 
-    {{< note respectIndent=false >}}
-If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.
-{{< /note >}}
+    {{< note >}}
+    If you don't own a domain name and won't continue to use the Ghost website after finishing this guide, you can make up a domain for this configuration file.
+    {{< /note >}}
 
-1.  Run the `install` command and pass in the configuration file:
+1. Run the `install` command and pass in the configuration file:
 
-        helm install -f ghost-config.yaml stable/ghost
+    ```command
+    helm install -f ghost-config.yaml stable/ghost
+    ```
 
-1.  The `install` command returns immediately and does not wait until the app's cluster objects are ready. You will see output like the following snippet, which shows that the app's Pods are still in the "Pending" state. The text displayed is generated from the contents of the chart's `templates/NOTES.txt` file:
+1. The `install` command returns immediately and does not wait until the app's cluster objects are ready. You will see output like the following snippet, which shows that the app's Pods are still in the "Pending" state. The text displayed is generated from the contents of the chart's `templates/NOTES.txt` file:
 
-    {{< disclosure-note "Full output of helm install" >}}
+    {{< note title="Full output of helm install" isCollapsible=true >}}
+    ```output
     NAME:   oldfashioned-cricket
     LAST DEPLOYED: Tue Apr 16 09:15:41 2019
     NAMESPACE: default
@@ -284,101 +316,126 @@ If you don't own a domain name and won't continue to use the Ghost website after
 
       echo Email:    email@example.com
       echo Password: $(kubectl get secret --namespace default oldfashioned-cricket-ghost -o jsonpath="{.data.ghost-password}" | base64 --decode)
-{{< /disclosure-note >}}
+      ```
+    {{< /note >}}
 
-1.  Helm has created a new release and assigned it a random name. Run the `ls` command to get a list of all of your releases:
+1. Helm has created a new release and assigned it a random name. Run the `ls` command to get a list of all of your releases:
 
-        helm ls
+    ```command
+    helm ls
+    ```
 
     The output will look as follows:
 
-        NAME      	REVISION	UPDATED                 	STATUS  	CHART      	APP VERSION	NAMESPACE
-        oldfashioned-cricket	1       	Tue Apr 16 09:15:41 2019	DEPLOYED	ghost-6.7.7	2.19.4     	default
+    ```output
+    NAME      	REVISION	UPDATED                 	STATUS  	CHART      	APP VERSION	NAMESPACE
+    oldfashioned-cricket	1       	Tue Apr 16 09:15:41 2019	DEPLOYED	ghost-6.7.7	2.19.4     	default
+    ```
 
-1.  You can check on the status of the release by running the `status` command:
+1. You can check on the status of the release by running the `status` command:
 
-        helm status oldfashioned-cricket
+    ```command
+    helm status oldfashioned-cricket
+    ```
 
     This command will show the same output that was displayed after the `helm install` command, but the current state of the cluster objects will be updated.
 
 ### Access your App
 
-1.  Run the `helm status` command again and observe the "Service" section:
+1. Run the `helm status` command again and observe the "Service" section:
 
-        ==> v1/Service
-        NAME                TYPE          CLUSTER-IP      EXTERNAL-IP     PORT(S)       AGE
-        oldfashioned-cricket-ghost    LoadBalancer  10.110.3.191    104.237.148.15  80:32658/TCP  11m
-        oldfashioned-cricket-mariadb  ClusterIP     10.107.128.144  <none>          3306/TCP      11m
+    ```output
+    ==> v1/Service
+    NAME                TYPE          CLUSTER-IP      EXTERNAL-IP     PORT(S)       AGE
+    oldfashioned-cricket-ghost    LoadBalancer  10.110.3.191    104.237.148.15  80:32658/TCP  11m
+    oldfashioned-cricket-mariadb  ClusterIP     10.107.128.144  <none>          3306/TCP      11m
+    ```
 
-1.  The LoadBalancer that was created for the app will be displayed. Because this example uses a cluster created with Linode's `k8s-alpha` CLI (which pre-installs the [Linode CCM](https://github.com/linode/linode-cloud-controller-manager)), the LoadBalancer will be implemented as a [Linode NodeBalancer](https://www.linode.com/nodebalancers).
+1. The LoadBalancer that was created for the app will be displayed. Because this example uses a cluster created with Linode's `k8s-alpha` CLI (which pre-installs the [Linode CCM](https://github.com/linode/linode-cloud-controller-manager)), the LoadBalancer will be implemented as a [Linode NodeBalancer](https://www.linode.com/nodebalancers).
 
-1.  Copy the value under the `EXTERNAL-IP` column for the LoadBalancer and then paste it into your web browser. You should see the Ghost website:
+1. Copy the value under the `EXTERNAL-IP` column for the LoadBalancer and then paste it into your web browser. You should see the Ghost website:
 
     ![Ghost home page](ghost-home-page.png "Ghost home page")
 
-1.  Revisit the output from the `status` command. Instructions for logging into your Ghost website will be displayed:
+1. Revisit the output from the `status` command. Instructions for logging into your Ghost website will be displayed:
 
-        1. Get the Ghost URL by running:
+    ```output
+    1. Get the Ghost URL by running:
 
-        echo Blog URL  : http://ghost.example.com/
-        echo Admin URL : http://ghost.example.com/ghost
+    echo Blog URL  : http://ghost.example.com/
+    echo Admin URL : http://ghost.example.com/ghost
 
-        2. Get your Ghost login credentials by running:
+    2. Get your Ghost login credentials by running:
 
-        echo Email:    email@example.com
-        echo Password: $(kubectl get secret --namespace default oldfashioned-cricket-ghost -o jsonpath="{.data.ghost-password}" | base64 --decode)
+    echo Email:    email@example.com
+    echo Password: $(kubectl get secret --namespace default oldfashioned-cricket-ghost -o jsonpath="{.data.ghost-password}" | base64 --decode)
+    ```
 
-1.  Retrieve the auto-generated password for your app:
+1. Retrieve the auto-generated password for your app:
 
-        echo Password: $(kubectl get secret --namespace default oldfashioned-cricket-ghost -o jsonpath="{.data.ghost-password}" | base64 --decode)
+    ```command
+    echo Password: $(kubectl get secret --namespace default oldfashioned-cricket-ghost -o jsonpath="{.data.ghost-password}" | base64 --decode)
+    ```
 
-1.  You haven't set up DNS for your site yet, but you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.15/ghost`). Visit this page in your browser and then enter your email and password. You should be granted access to the administrative interface.
+1. You haven't set up DNS for your site yet, but you can instead access the admin interface by visiting the `ghost` URL on your LoadBalancer IP address (e.g. `http://104.237.148.15/ghost`). Visit this page in your browser and then enter your email and password. You should be granted access to the administrative interface.
 
-1.  Set up DNS for your app. You can do this by creating an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
+1. Set up DNS for your app. You can do this by creating an *A record* for your domain which is assigned to the external IP for your app's LoadBalancer. Review Linode's [DNS Manager](/docs/products/networking/dns-manager/) guide for instructions.
 
 ## Upgrade your App
 
 The `upgrade` command can be used to upgrade an existing release to a new version of a chart, or just to supply new chart values:
 
-1.  In your computer's `ghost-config.yaml` file, add a line for the title of the website:
+1. In your computer's `ghost-config.yaml` file, add a line for the title of the website:
 
-    {{< file "ghost-config.yaml" >}}
-ghostHost: ghost.example.com
-ghostEmail: email@example.com
-ghostBlogTitle: Example Site Name
-{{< /file >}}
+    ```file {title="ghost-config.yaml" lang=yaml}
+    ghostHost: ghost.example.com
+    ghostEmail: email@example.com
+    ghostBlogTitle: Example Site Name
+    ```
 
-1.  Run the upgrade command, specifying the configuration file, release name, and chart name:
+1. Run the upgrade command, specifying the configuration file, release name, and chart name:
 
-        helm upgrade -f ghost-config.yaml oldfashioned-cricket stable/ghost
+    ```command
+    helm upgrade -f ghost-config.yaml oldfashioned-cricket stable/ghost
+    ```
 
 ## Roll Back a Release
 
 Upgrades (and even deletions) can be rolled back if something goes wrong:
 
-1.  Run the `helm ls` command and observe the number under the "REVISION" column for your release:
+1. Run the `helm ls` command and observe the number under the "REVISION" column for your release:
 
-        NAME      	REVISION	UPDATED                 	STATUS  	CHART      	APP VERSION	NAMESPACE
-        oldfashioned-cricket	2       	Tue Apr 16 10:02:58 2019	DEPLOYED	ghost-6.7.7	2.19.4     	default
+    ```output
+    NAME      	REVISION	UPDATED                 	STATUS  	CHART      	APP VERSION	NAMESPACE
+    oldfashioned-cricket	2       	Tue Apr 16 10:02:58 2019	DEPLOYED	ghost-6.7.7	2.19.4     	default
+    ```
 
-1.  Every time you perform an upgrade, the revision count is incremented by 1 (and the counter starts at 1 when you first install a chart). So, your current revision number is 2. To roll back the upgrade you just performed, enter the previous revision number:
+1. Every time you perform an upgrade, the revision count is incremented by 1 (and the counter starts at 1 when you first install a chart). So, your current revision number is 2. To roll back the upgrade you just performed, enter the previous revision number:
 
-        helm rollback oldfashioned-cricket 1
+    ```command
+    helm rollback oldfashioned-cricket 1
+    ```
 
 ## Delete a Release
 
-1.  Use the `delete` command with the name of a release to delete it:
+1. Use the `delete` command with the name of a release to delete it:
 
-        helm delete oldfashioned-cricket
+    ```command
+    helm delete oldfashioned-cricket
+    ```
 
     You should also confirm in the [Linode Cloud Manager](https://cloud.linode.com) that the Volumes and NodeBalancer created for the app are removed as well.
 
-1.  Helm will still save information about the deleted release. You can list deleted releases:
+1. Helm will still save information about the deleted release. You can list deleted releases:
 
-        helm list --deleted
+    ```command
+    helm list --deleted
+    ```
 
     You can use the revision number of a deleted release to roll back the deletion.
 
-1.  To fully remove a release, use the `--purge` option with the `delete` command:
+1. To fully remove a release, use the `--purge` option with the `delete` command:
 
-        helm delete oldfashioned-cricket --purge
+    ```command
+    helm delete oldfashioned-cricket --purge
+    ```

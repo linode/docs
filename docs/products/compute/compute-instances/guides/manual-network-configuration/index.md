@@ -1,19 +1,16 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to manually edit your distribution-specific network configuration files to set static IPs, routes and DNS resolvers."
 keywords: ["static", "ip address", "addresses"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-07-19
 modified_by:
   name: Linode
 title: "Manual Network Configuration on a Compute Instance"
 tags: ["networking","linode platform"]
 aliases: ['/networking/linux-static-ip-configuration/','/networking/configuring-static-ip-interfaces/','/networking/linode-network/linux-static-ip-configuration/','/guides/linux-static-ip-configuration/','/guides/manual-network-configuration/']
+authors: ["Linode"]
 ---
 
-Every Compute Instance is assigned several IP addresses, including a pubic IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
+Every Compute Instance is assigned several IP addresses, including a public IPv4 address and a public IPv6 [SLAAC](https://en.wikipedia.org/wiki/IPv6#Stateless_address_autoconfiguration_.28SLAAC.29) address. By default, a utility called [Network Helper](/docs/products/compute/compute-instances/guides/network-helper/) automatically configures these IP addresses within the network configuration files on the Compute Instance. While this is preferred in most cases, there are some situations which may require you to manually configure networking yourself. These situations include:
 
 - Installing a custom distribution on a Compute Instance
 - Configuring failover (see [Configuring Failover on a Compute Instance](/docs/products/compute/compute-instances/guides/failover/))
@@ -21,7 +18,7 @@ Every Compute Instance is assigned several IP addresses, including a pubic IPv4 
 - Using other DNS resolvers (not Linode’s)
 - Other advanced use cases where custom network configuration is required
 
-The guides in this series walk you through how to manually configure your networking in most common Linux distributions. To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/guides/support/) and detailing your requirements.
+The guides in this series walk you through how to manually configure your networking in most common Linux distributions. To learn more about the types of IP addresses available on a Compute Instance, review the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#types-of-ip-addresses) guide. Additional public IPv4 addresses, private IPv4 addresses, and IPv6 routed ranges (/64 or /56) can be added manually or by opening a [support ticket](/docs/products/platform/get-started/guides/support/) and detailing your requirements.
 
 ## Network Configuration Software in Linux
 

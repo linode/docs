@@ -1,24 +1,23 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to deploy LiveSwitch Server, an enterprise video streaming service, through the Linode Marketplace."
 keywords: ['liveswitch','streaming','video']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-05-31
+modified: 2023-04-18
 title: "Deploy LiveSwitch through the Linode Marketplace"
-contributor:
-  name: Holden Morris
-  link: https://github.com/hmorris3293
 external_resources:
 - '[LiveSwitch](https://www.liveswitch.io/)'
+authors: ["Holden Morris"]
 ---
 
-[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted enterprise video streaming service. It provides high quality and reliable streaming for both audio and video media.
+[LiveSwitch Server](https://www.liveswitch.io/products/liveswitch-server) is a self-hosted WebRTC live video streaming platform. It provides high quality and reliable streaming for both audio and video media. Here's more from the publisher:
+
+> LiveSwitch is the most flexible video and audio WebRTC SDK on the market. Ultra-low latency meets advanced features for engaging with your audience. LiveSwitch offers a complete solution (front-end and back-end) to develop commercial WebRTC applications.
+
+This Marketplace App deploys a back-end demonstration server, running signalling, media, and TURN together on a single server. It is designed to be tested alongside the official client SDKs for .NET, .NET Core, iOS, Android, Xamarin, Maui, Unity and more. To download these SDKs, see the [Client SDK](https://developer.liveswitch.io/liveswitch-server/guides/intro.html) page on the LiveSwitch Developer documentation site.
 
 {{< note >}}
-Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/get-started). Licenses are not available directly through Linode.
+Using LiveSwitch Server may require a paid license. To obtain a license, [contact LiveSwitch](https://www.liveswitch.io/meetings/jake-steele/linode). Licenses are not available directly through Linode.
 {{< /note >}}
 
 ## Deploying a Marketplace App

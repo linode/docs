@@ -1,9 +1,6 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Fedora 14.'
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

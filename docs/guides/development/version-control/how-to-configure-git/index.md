@@ -1,8 +1,5 @@
 ---
 slug: how-to-configure-git
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Learn the basics of distributed version control and source code management tool Git in this guide.'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
 audiences: ["foundational"]
 tags: ["version control system"]
 aliases: ['/development/version-control/how-to-configure-git/']
+authors: ["Linode"]
 ---
 
 ![Git Started Today](git_getting_started.png)

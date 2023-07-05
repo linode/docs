@@ -1,7 +1,5 @@
 ---
 slug: machine-learning-cyber-attacks
-author:
-  name: John Mueller
 description: 'Common machine learning cyber attacks include evasion, poisoning, and inference attacks. In this guide, learn about each attack and the areas of an ML application they target.'
 keywords: ['machine learning cyber attacks','evasion attacks against machine learning']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,9 +8,7 @@ modified_by:
   name: Linode
 title: "The Most Common Cyber Attacks on Machine Learning Applications"
 title_meta: "Common Cyber Attacks on Machine Learning Applications"
-contributor:
-  name: John Mueller
-  link: http://www.johnmuellerbooks.com/
+authors: ["John Mueller"]
 ---
 
 [Machine learning (ML)](/docs/guides/history-of-machine-learning/) algorithms and models ingest large amounts of data and use pattern recognition to make predictions and adjustments based on that data. ML powers chatbots, product recommendation systems, self-driving cars, and assists in decision-making in the health and financial sectors. Due to the prevalence of tools and frameworks like [TensorFlow](/docs/guides/how-to-install-tensorflow/) and [PyTorch](/docs/guides/pytorch-installation-ubuntu-2004/), developers are now able to add ML to their applications with less effort. Before getting started with machine learning, you should be aware of the most common machine learning cyber attacks. When thinking about the security of your ML application, you must consider the following areas:

@@ -1,7 +1,5 @@
 ---
 slug: securing-nginx-with-modsecurity
-author:
-  name: Hackersploit
 description: 'ModSecurity is a free web application firewall that can prevent attacks like XSS and SQL Injection. This guide shows how to install ModSecurity with NGINX.'
 keywords: ["nginx security", "nginx best practices security", "secure nginx config"]
 tags: ["security","web server","nginx"]
@@ -19,6 +17,7 @@ relations:
         key: securing-web-servers-with-modsecurity
         keywords:
             - web server: NGINX
+authors: ["Hackersploit"]
 ---
 
 ## What is ModSecurity?

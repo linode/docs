@@ -1,9 +1,6 @@
 ---
 slug: email-with-citadel-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on a Debian 5 (Lenny) Linode.'
 keywords: ["citadel", "debian mail server", "groupware", "email server", "email howto"]
 tags: ["debian","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-with-citadel
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

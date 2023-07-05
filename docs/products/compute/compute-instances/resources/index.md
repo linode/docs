@@ -1,6 +1,7 @@
 ---
 title: Resources
-description: "Resources and other information related to Shared instances including videos, blog posts, community posts, customer stories, and press releases."
+title_meta: "Resources for Compute Instances"
+description: "Resources and other information related to Compute Instances, including videos, blog posts, community posts, customer stories, and press releases."
 tab_group_main:
     weight: 40
 aliases: ['/products/compute/shared-linodes/resources/','/products/compute/shared-cpu/resources/','/products/compute/gpu/resources/','/products/compute/dedicated-cpu/resources/']
@@ -126,7 +127,7 @@ Browse our [Linode Community Questions & Answers page](https://www.linode.com/co
 
 ## Videos
 
-- [Linode puts powerful Nvidia GPU in its Linux Cloud](https://www.tfir.io/linode-puts-powerful-nvidia-gpus-in-its-linux-cloud/)
+- [Linode puts powerful NVIDIA GPU in its Linux Cloud](https://www.tfir.io/linode-puts-powerful-nvidia-gpus-in-its-linux-cloud/)
 
 ### Blog Posts
 

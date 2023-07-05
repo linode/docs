@@ -1,9 +1,6 @@
 ---
 slug: use-couchdb-for-document-based-data-storage-on-ubuntu-10-04-lucid
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Ubuntu 10.04 (Lucid) systems.'
 keywords: ["couchdb", "nosql", "json", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.04
 tags: ["ubuntu","database","nosql"]
+authors: ["Linode"]
 ---
 
 
