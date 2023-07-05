@@ -1,8 +1,8 @@
 ---
 slug: load-testing-with-locust
 title: "How to Load Test Your Applications with Locust"
-description: "Locust is an open-source tool for running distributed load tests based on plain Python scripts, making an exceptional solution especially for CI/CD integration. Find out more and how to get started with Locus in this tutorial."
-keywords: ['locust load testing tutorial','locust example','locust download']
+description: "Locust is an open-source tool for running distributed load tests based on plain Python scripts, making an exceptional solution, especially for CI/CD integration. Find out more and how to get started with Locus in this tutorial."
+keywords: ['locust load testing tutorial', 'locust example', 'locust download']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
 published: 2023-05-11
@@ -14,7 +14,7 @@ external_resources:
 
 Locust offers scalable load testing using test plans defined in plain Python code. With this open-source tool, take advantage of distributed load tests ideal for CI/CD pipelines, all while keeping your toolset adaptable and developer friendly.
 
-In this tutorial, learn more about Locust's features, how to install it, and how to start using it for your load testing needs.
+In this guide, learn more about Locust's features, how to install it, and how to start using it for your load testing needs.
 
 ## Before You Begin
 
@@ -23,7 +23,7 @@ In this tutorial, learn more about Locust's features, how to install it, and how
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## What Is Load Testing?
@@ -38,84 +38,86 @@ Such load tests can give a range of insights. For instance, they can tell you ho
 
 [Locust](https://locust.io/) provides open-source load testing using Python scripts and a distributed, event-based architecture. These features — Python scripts and an event-based architecture — give Locust several compelling features.
 
-- Accessible. Locust has a convenient web UI for monitoring tests, and the UI even includes some mid-flight control of tests. But Locust's strongest convenience is using plain Python for test scripts. Its scripts thus take advantage of the familiarity and rich language features of Python, without idiosyncrasies. And test scripts can easily by version controlled in this case.
+- Accessibility: Locust has a convenient web UI for monitoring tests, and the UI even includes some mid-flight control of tests. But Locust's strongest convenience is using plain Python for test scripts. Its scripts thus take advantage of the familiarity and rich language features of Python, without idiosyncrasies. And test scripts can easily be version controlled in this case.
 
-- Scalable. Locust uses an event-based architecture designed for running distributed tests. This gives Locust an advantage in setting up robust tests modeling numerous concurrent users. As the Locust documentation itself emphasizes, other tools may be faster in requests per second, but Locust stands out in its ability to run concurrent tasks.
+- Scalability: Locust uses an event-based architecture designed for running distributed tests. This gives Locust an advantage in setting up robust tests modeling numerous concurrent users. As the Locust documentation itself emphasizes, other tools may be faster in requests per second, but Locust stands out in its ability to run concurrent tasks.
 
-- Adaptable. Locust's process is small and light and also readily manipulated for a wider range of use cases than load testing web applications. For instance, you can build clients that enable Locust to test a wider range of applications and system processes.
+- Adaptability: Locust's process is small and light and also readily manipulated for a wider range of use cases than load-testing web applications. For instance, you can build clients that enable Locust to test a wider range of applications and system processes.
 
-One of the best fits for Locust, however, leverages its distributed and script-based approach for integration with CI/CD pipelines. Locust can run without its web UI, and thus fits neatly providing load tests on new deployments.
+One of the best fits for Locust, however, leverages its distributed and script-based approach for integration with CI/CD pipelines. Locust can run without its web UI and thus fits neatly providing load tests on new deployments.
 
 ## How to Install Locust
 
-Locust is built around Python technologies, and its installation follows that. As such, you first need Python 3 and the Python package manager, Pip, installed. Do so using the commands here, depending on your distribution.
+Locust is built around Python technologies, and its installation follows that.
 
-- On Debian and Ubuntu systems, use APT to install Python and Pip.
+1. Install Python 3 and the Python package manager, and Pip using the following commands depending on your distribution.
 
-    ```command
-    sudo apt install python3 python3-pip
-    ```
+    - On **Debian** and **Ubuntu** systems, use APT to install Python and Pip.
 
-- On CentOS and similar distributions (like AlmaLinux and Rocky Linux), use DNF to install Python and Pip.
+        ```command
+        sudo apt install python3 python3-pip
+        ```
 
-    ```command
-    sudo dnf install python3 python3-pip
-    ```
+    - On **CentOS** and similar distributions (like **AlmaLinux** and **Rocky Linux**), use DNF to install Python and Pip.
 
-With Python 3 and Pip on your system, you can install Locust via Pip.
+        ```command
+        sudo dnf install python3 python3-pip
+        ```
 
-```command
-pip3 install locust
-```
-
-Exit and reopen your terminal session, and Locust should be ready and available to start using.
-
-To verify successful installation, try the `locust` command with the flag to check the installed Locust version.
-
-```command
-locust -V
-```
-
-```output
-locust 2.15.1 from /home/example-user/.local/lib/python3.9/site-packages/locust (python 3.9.14)
-```
-
-As a last step, you may want to open the default port for Locust's web UI — `8089` — in your system's firewall. This tutorial later makes use of the web UI and accesses it remotely using this port.
-
-- On Debian and Ubuntu, manage firewall rules using UFW. Learn more about UFW in our guide [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/). With UFW configured and running, you should be able to open the necessary port with the command here.
+1. With Python 3 and Pip on your system, you can install Locust via Pip using the following command:
 
     ```command
-    sudo ufw allow 8089/tcp
+    pip3 install locust
     ```
 
-- On CentOS and similar distributions, manage the firewall rules using Firewalld. Learn more in our guide [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/). With Firewalld configured and running, you should be able to open the necessary port with a set of commands like this.
+1. Exit and reopen your terminal session, and Locust should be ready and available to start using.
+
+1. Verify the successful installation using the `locust` command with the flag to check the installed Locust version.
 
     ```command
-    sudo firewall-cmd --zone=public --add-port=8089/tcp --permanent
-    sudo firewall-cmd --reload
+    locust -V
     ```
+
+    ```output
+    locust 2.15.1 from /home/example-user/.local/lib/python3.9/site-packages/locust (python 3.9.14)
+    ```
+
+1. As a last step, you may want to open the default port for Locust's web UI — `8089` — in your system's firewall. This guide later makes use of the web UI and accesses it remotely using this port.
+
+    - On **Debian** and **Ubuntu**, manage firewall rules using UFW. Learn more about UFW in our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide. With UFW configured and running, you should be able to open the necessary port with the command below.
+
+        ```command
+        sudo ufw allow 8089/tcp
+        ```
+
+    - On **CentOS** and similar distributions, manage the firewall rules using Firewalld. Learn more in our [Configure a Firewall with Firewalld](/docs/guides/introduction-to-firewalld-on-centos/) guide. With Firewalld configured and running, you should be able to open the necessary port with the following set of commands:
+
+        ```command
+        sudo firewall-cmd --zone=public --add-port=8089/tcp --permanent
+        sudo firewall-cmd --reload
+        ```
 
 ## How to Use Locust for Load Testing
 
-Locust is now ready to start load testing your applications. You just need to build a Python script defining a Locust test plan (called a *Locustfile*). From there, Locust can run its load tests against your application.
+Locust is now ready to start load-testing your applications. You just need to build a Python script defining a Locust test plan (called a *Locustfile*). From there, Locust can run its load tests against your application.
 
-The Locust documentation linked at the end of this tutorial provides your most comprehensive resource for working with Locust scripts. However, probably the best way to get started using Locust is with a practical example.
+The Locust documentation linked at the end of this guide provides your most comprehensive resource for working with Locust scripts. However, probably the best way to get started using Locust is with a practical example.
 
-To that end, the rest of this tutorial walk you through using Locust to conduct a relatively simple load test against an example application. After setting up the example application, follow along as the tutorial breaks down a full Locustfile designed to show off some useful features.
+To that end, the rest of this guide walks you through using Locust to conduct a relatively simple load test against an example application. After setting up the example application, follow along as the guide breaks down a full Locustfile designed to show off some useful features.
 
 ### Building an Example Application
 
-You need a web application to run Locust's load testing against for this demonstration. While you could use your own existing application, this tutorial sets up a simple new application. By doing so, it aims to provide a strong base for highlighting Locust's features.
+You need a web application to run Locust's load testing against for this demonstration. While you could use your own existing application, this guide sets up a simple new application. By doing so, it aims to provide a strong base for highlighting Locust's features.
 
 The example application uses Python's [Flask](https://flask.palletsprojects.com/en/) web application framework. Since Locust is already running with Python, using Flask here minimizes other dependencies you need to run the example.
 
-The Linode Marketplace also offers an easy way to start with a fresh and ready Flask application of your own, should you be interested. You can learn more about that in our guide [Deploy Flask through the Linode Marketplace](/docs/products/tools/marketplace/guides/flask/).
+The Linode Marketplace also offers an easy way to start with a fresh and ready Flask application of your own, should you be interested. You can learn more about that in our [Deploy Flask through the Linode Marketplace](/docs/products/tools/marketplace/guides/flask/) guide.
 
 #### Installing and Starting the Example
 
-For the application itself, the tutorial uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide. (But just following in the steps below you do not actually need to be on Ubuntu to run the application.)
+For the application itself, the guide uses the [abalarin/Flask-on-Linode](https://github.com/abalarin/Flask-on-Linode) web application developed for our [Deploying a Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide. (But just following in the steps below you do not actually need to be on Ubuntu to run the application).
 
-1. Install Python's Virtualenv. This tool lets you set up virtual Python environments. For this example and in many other case, it allows you to install project dependencies in an isolated environment, rather than on your system overall.
+1. Install Python's virtualenv. This tool lets you set up virtual Python environments. For this example and in many other cases, it allows you to install project dependencies in an isolated environment, rather than on your system overall.
 
     ```command
     pip3 install virtualenv
@@ -123,22 +125,22 @@ For the application itself, the tutorial uses the [abalarin/Flask-on-Linode](htt
 
 1. Open the application's port (`5000`) in your system's firewall. You could, alternatively, skip this and have Locust access the application on `localhost`. But opening the port lets you treat the application as remote and provides a more representative example.
 
-    - On Debian and Ubuntu, use UFW to open the port.
+    - On **Debian** and **Ubuntu**, use UFW to open the port.
 
         ```command
         sudo ufw allow 5000/tcp
         ```
 
-    - On CentOS and similar distributions, use Firewalld to open the port.
+    - On **CentOS** and similar distributions, use Firewalld to open the port.
 
         ```command
         sudo firewall-cmd --zone=public --add-port=5000/tcp --permanent
         sudo firewall-cmd --reload
         ```
 
-1. Download the example application code from its GitHub repository. This example stores the project in a new directory of `example-flask-app/` within the current user's home directory, then changes into the project directory.
+1. Download the example application code from its GitHub repository. This example stores the project in a new `example-flask-app/` directory within the current user's home directory, then changes into the project directory.
 
-    You may need to install Git before running the commands here. You should be able to do that through your system's package manager.
+    You may need to install Git before running the commands below. You should be able to do that through your system's package manager.
 
     ```command
     cd ~/
@@ -146,14 +148,14 @@ For the application itself, the tutorial uses the [abalarin/Flask-on-Linode](htt
     cd example-flask-app/
     ```
 
-1. Initialize the project's virtual environment, and then activate it. The rest of the project-related commands to follow assume you this virtual environment is active.
+1. Initialize the project's virtual environment, and then activate it. The rest of the project-related commands to follow assume this virtual environment is active.
 
     ```command
     virtualenv venv
     source venv/bin/activate
     ```
 
-    You are now operating within the virtual environment, and you should see a `(venv)` marker at the start of your terminal input line. You can leave the virtual environment at any time with the command here.
+    You are now operating within the virtual environment, and you should see a `(venv)` marker at the start of your terminal input line. You can leave the virtual environment at any time with the following command:
 
     ```command
     deactivate
@@ -167,13 +169,13 @@ For the application itself, the tutorial uses the [abalarin/Flask-on-Linode](htt
     pip install -r flask_app/requirements.txt
     ```
 
-1. Additionally install the `python-dotenv` package. With this, you do not need to manually set environment variables for each shell session before running Flask. Flask can pull the variables from the file created in the next step.
+1. Additionally, install the `python-dotenv` package. With this, you do not need to manually set environment variables for each shell session before running Flask. Flask can pull the variables from the file created in the next step.
 
     ```command
     pip install python-dotenv
     ```
 
-1. Create a `.flaskenv` file in the project's base directory, and give that file the contents shown here. The stores the environment variables needed to run the Flask app, identifying the initial application file and its current environment.
+1. Create a `.flaskenv` file in the project's base directory, and give that file the contents shown below. The stores the environment variables needed to run the Flask app, identifying the initial application file and its current environment.
 
     ```file {title=".flaskenv" lang="sh"}
     FLASK_APP=flask_app/__init__.py
@@ -218,15 +220,15 @@ To demonstrate Locust, it can be helpful to give the example application some co
 
 ### Creating a Test Script
 
-With an application in place to load test, now you can begin crafting a test plan script — your first Locustfile. The steps that follow walk through creating a basic Locustfile. Each step covers one part of the script, keeping things clear as the test plan develops.
+With an application in place to load tests, now you can begin crafting a test plan script — your first Locustfile. The steps that follow walk through creating a basic Locustfile. Each step covers one part of the script, keeping things clear as the test plan develops.
 
-You could, alternatively, use a tool like [har2locust](https://github.com/SvenskaSpel/har2locust) to convert browser recordings — `.har` files — to Locustfiles. But that process is in a beta stage. Additionally, creating scripts manually introduces one of Locust's strongest features — Python scripting — and so makes a better place to start.
+You could, alternatively, use a tool like [har2locust](https://github.com/SvenskaSpel/har2locust) to convert browser recordings — `.har` files — to Locustfiles. But that process is in the beta stage. Additionally, creating scripts manually introduces one of Locust's strongest features — Python scripting — and so makes it a better place to start.
 
 {{< note >}}
 The commands that follow assume you are working in a different shell session than the one running the example Flask application. The Flask virtual environment should not be active in your current session.
 {{< /note >}}
 
-1. Create a `locustfile.py` script. For this tutorial, the script is stored in a `example-locust-testing/` directory in the current user's home directory.
+1. Create a `locustfile.py` script. For this guide, the script is stored in an `example-locust-testing/` directory in the current user's home directory.
 
     ```command
     mkdir ~/example-locust-testing/
@@ -243,9 +245,9 @@ The commands that follow assume you are working in a different shell session tha
 
     This example also imports from two other packages. PyQuery gives JQuery-like functionality to Python, which makes it relatively easy to pick out links from webpage content. The `random` package gives the script access to random decisions.
 
-    Including these additional packages in this example provides a nice illustration. It demonstrates how Locust test scripts can take advantage of all the richness of Python and the Python ecosystem.
+    Including these additional packages in this example provides a nice illustration. It demonstrates how Locust test scripts can take advantage of the richness of Python and the Python ecosystem.
 
-1. The main part of most Locust test scripts is the user class. This is a Python class the extends on the `HttpUser` class imported above.
+1. The main part of most Locust test scripts is the user class. This is a Python class that extends on the `HttpUser` class imported above.
 
     ```file {title="locustfile.py" lang="py"}
     class ExampleFlaskAppUser(HttpUser):
@@ -271,7 +273,7 @@ The commands that follow assume you are working in a different shell session tha
     wait_time = constant(2)
     ```
 
-1. Each task is defined by a method decorated with `@task` within the user class. To start, the method below gives the simulated user a simple task of visiting the website's homepage, giving a baseline.
+1. Each task is defined by a method decorated with `@task` within the user class. To start, the method below gives the simulated user the simple task of visiting the website's homepage, giving a baseline.
 
     ```file {title="locustfile.py" lang="py"}
     @task
@@ -283,7 +285,7 @@ The commands that follow assume you are working in a different shell session tha
 
     - Fetches the applications homepage content and prepares that content for processing with PyQuery (`pq`)
 
-    - Parses the homepage content for the post headings, which are links `a` with the `article-title` class
+    - Parses the homepage content for the post headings, which links `a` with the `article-title` class
 
     - Makes a random choice between the list of posts and navigates to the post URL contained in the post's heading link
 
@@ -301,7 +303,7 @@ The commands that follow assume you are working in a different shell session tha
 
     Using PyQuery to parse links keeps the script abstract enough to be useful even as the application expands — regardless of the number of posts.
 
-Here is the finished product, which you can now use in the next section to load test the example application.
+Following is the finished product, which you can now use in the next section to load-test the example application.
 
 ```file {title="locustfile.py" lang="py"}
 from locust import HttpUser, task, constant
@@ -338,11 +340,11 @@ With an example application running and a test plan prepared, you are ready to e
 
 Locust by default uses its web UI to finalize the test, defining the desired number of simulated users and the host to test against. This lets you readily alter your test configuration as needed, expanding or reducing the number of users.
 
-Follow along with the steps here to start up and access the Locust web UI and from there to start running your load test. Further on, you can see an equivalent "headless" command for running the test without the web UI.
+Follow along with the steps here to start up and access the Locust web UI and from there start running your load test. Further on, you can see an equivalent "headless" command for running the test without the web UI.
 
 The examples here assume that the public IP address for the server running your Locust instance and the example application is `192.0.2.0`. Replace that below with your actual public IP address or domain name.
 
-1. Make sure you are in the directory with your `locustfile.py` file, and start up Locust.
+1. Make sure you are in the directory with your `locustfile.py` file, and start-up Locust.
 
     ```command
     locust
@@ -354,17 +356,17 @@ The examples here assume that the public IP address for the server running your 
 
 1. Complete the fields, providing a number of simultaneous simulated users to be created for the test and a number of seconds to space out the creation of these users.
 
-    For the **Host**, provide the base URL for your example application. Using the configuration for this tutorial, that URL should be `http://192.0.2.0:5000`.
+    For the **Host** field, provide the base URL for your example application. Using the configuration for this guide, that URL should be `http://192.0.2.0:5000`.
 
-1. When you are ready, select the **Start swarming** option to begin the load test. Locust takes you to a monitoring interface, where you can see, in real time, the tests results.
+1. When you are ready, click the **Start swarming** button to begin the load test. Locust takes you to a monitoring interface, where you can see, in real-time, the test results.
 
     [![Main reporting page within the Locust UI](locust-reporting_small.png)](locust-reporting.png)
 
-1. Stop the test using the **Stop** when you are satisfied — you can wait until all of the simulated users have been created and are running.
+1. Stop the test using the **Stop** button when you are satisfied — you can wait until all of the simulated users have been created and are running.
 
 At this point your first Locust load test is complete. Navigate the web UI to get more details on the test results, and even to download reports should you want.
 
-You can also run the test above headlessly with a command like the one here.
+You can also run the test above headlessly using the following command:
 
 ```command
 locust --headless --users 10 --spawn-rate 1 --host http://192.0.2.0:5000
@@ -387,6 +389,6 @@ Locust's command line options include several ways for you to export the results
 
 ## Conclusion
 
-You are all set to start building out Locust load tests for your own applications. Like the example above highlights, Locust's living in Python gives an incredible degree of flexibility and an immense toolset for crafting test scripts. To get some ideas, fitting far more intricate and advanced use cases, you can look into Locust's own [set of example scripts](https://github.com/locustio/locust/tree/master/examples).
+You are all set to start building out Locust load tests for your own applications. As the example above highlights, Locust's living in Python gives an incredible degree of flexibility and an immense toolset for crafting test scripts. To get some ideas, and fit far more intricate and advanced use cases, you can look into Locust's own [set of example scripts](https://github.com/locustio/locust/tree/master/examples).
 
 And to keep learning more about Locust and its capabilities, you can check out the official documentation linked below.
