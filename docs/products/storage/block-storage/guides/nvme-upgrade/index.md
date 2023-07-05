@@ -71,7 +71,7 @@ If a scheduled upgrade is available for your Volume, follow the steps above in t
 
 The table below displays the performance you can expect from NVMe-backed Block Storage. Performance is automatically increased in 60 second bursts for even faster real-world speeds.
 
-| | IOPS | Throughput |
+| Performance Metric | IOPS | Throughput |
 | -- | -- | -- |
 | **Standard** | 8,000 | 350 MB/s |
 | **Burst** | 12,000 | 525 MB/s |

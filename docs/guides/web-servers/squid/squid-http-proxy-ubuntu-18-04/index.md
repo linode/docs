@@ -21,7 +21,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: Ubuntu 18.04
-aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/']
+aliases: ['/web-servers/squid/squid-http-proxy-ubuntu-18-04/','/networking/squid/squid-http-proxy-ubuntu-12-04/']
 authors: ["Linode"]
 ---
 

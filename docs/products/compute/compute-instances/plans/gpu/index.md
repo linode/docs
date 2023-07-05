@@ -60,7 +60,7 @@ Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCP
 
 Each of the NVIDIA Quadro RTX 6000 GPUs on the Linode Platform are equipped the following specifications:
 
-|  |  |
+| Specification | Value |
 | -- | -- |
 | GPU Memory (VRAM) | 24 GB GDDR6 |
 | CUDA Cores (Parallel-Processing) | 4,608 |

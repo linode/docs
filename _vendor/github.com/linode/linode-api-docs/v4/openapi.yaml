@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.152.0
+  version: 4.157.0
 
   title: Linode API
   description: |
@@ -377,6 +377,10 @@ info:
     Creating Linodes has a dedicated rate limit of 10 requests per 30 seconds. That endpoint is:
 
     * [Linode Create](/docs/api/linode-instances/#linode-create)
+
+    Creating Volumes has a dedicated rate limit of 25 requests per minute. That endpoint is:
+
+    * [Volume Create](/docs/api/volumes/#volume-create)
 
     `/stats` endpoints have their own dedicated rate limits of 100 requests per minute. These endpoints are:
 
@@ -4788,10 +4792,12 @@ paths:
                   _split:
                     x-linode-cli-display: 2.5
                   engines:
+                    type: object
                     properties:
                        quantity:
                         x-linode-cli-display: 3
                        price:
+                         type: object
                          properties:
                            hourly:
                              x-linode-cli-display: 4
@@ -4854,10 +4860,12 @@ paths:
                   _split:
                     x-linode-cli-display: 2.5
                   engines:
+                    type: object
                     properties:
                        quantity:
                         x-linode-cli-display: 3
                        price:
+                         type: object
                          properties:
                            hourly:
                              x-linode-cli-display: 4
@@ -6000,7 +6008,7 @@ paths:
 
         In an effort to fight spam, Linode restricts outbound connections on ports 25, 465, and 587
         on all Linodes for new accounts created after November 5th, 2019. For more information,
-        see [Sending Email on Linode](/docs/guides/running-a-mail-server/#sending-email-on-linode).
+        see our guide on [Running a Mail Server](/docs/guides/running-a-mail-server/).
 
         Linodes can be created in a number of ways:
 
@@ -6621,8 +6629,13 @@ paths:
     post:
       x-linode-grant: read_write
       summary: Backup Restore
-      description: >
+      description: |
         Restores a Linode's Backup to the specified Linode.
+
+        The following conditions apply:
+          * Backups may not be restored across Regions.
+          * Only successfully completed Backups that are not undergoing maintenance can be restored.
+          * The Linode that the Backup is being restored to must not itself be in the process of creating a Backup.
       tags:
       - Linode Instances
       operationId: restoreBackup
@@ -7798,13 +7811,17 @@ paths:
                       slaac:
                         $ref: '#/components/schemas/IPAddressV6Slaac'
                       global:
-                        $ref: '#/components/schemas/IPv6Pool'
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/IPv6Range'
+                        description: |
+                          A list of IPv6 range objects assigned to this Linode.
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/linode/instances/123/ips
       - lang: CLI
         source: >
@@ -7916,7 +7933,7 @@ paths:
       x-code-samples:
       - lang: Shell
         source: >
-          curl -H "Content-Type: application/json" \
+          curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/linode/instances/123/ips/97.107.143.141
       - lang: CLI
         source: >
@@ -8426,7 +8443,7 @@ paths:
     post:
       x-linode-grant: read_write
       summary: Linode Rebuild
-      description: >
+      description: |
         Rebuilds a Linode you have the `read_write` permission to modify.
 
         A rebuild will first shut down the Linode, delete all disks and configs
@@ -8437,6 +8454,13 @@ paths:
           * Requires a `root_pass` be supplied to use for the root User's Account.
           * It is recommended to supply SSH keys for the root User using the
             `authorized_keys` field.
+
+        You also have the option to resize the Linode to a different plan by including the `type` parameter with your request. Note that resizing involves migrating the Linode to a new hardware host, while rebuilding without resizing maintains the same hardware host. Resizing also requires significantly more time for completion of this command. The following additional conditions apply:
+
+          * The Linode must not have a pending migration.
+          * Your Account cannot have an outstanding balance.
+          * The Linode must not have more disk allocation than the new Type allows.
+            * In that situation, you must first delete or resize the disk to be smaller.
       tags:
       - Linode Instances
       operationId: rebuildLinodeInstance
@@ -8457,6 +8481,13 @@ paths:
               - root_pass
               allOf:
                 - $ref: '#/components/schemas/LinodeRequest'
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      description: >
+                        The ID of the [Linode Type](/docs/api/linode-types/#types-list) to resize to with this request.
+                      example: g6-standard-2
       responses:
         '200':
           description: Rebuild started.
@@ -8486,6 +8517,7 @@ paths:
                 "stackscript_data": {
                   "gh_username": "linode"
                 }
+                "type": "g6-standard-2"
               }' \
               https://api.linode.com/v4/linode/instances/123/rebuild
       - lang: CLI
@@ -8498,7 +8530,8 @@ paths:
             --authorized_users "secondaryUsername" \
             --booted true \
             --stackscript_id 10079 \
-            --stackscript_data '{"gh_username": "linode"}'
+            --stackscript_data '{"gh_username": "linode"}' \
+            --type "g6-standard-2"
   /linode/instances/{linodeId}/rescue:
     parameters:
     - name: linodeId
@@ -8591,6 +8624,8 @@ paths:
           * Your Account cannot have an outstanding balance.
           * The Linode must not have more disk allocation than the new Type allows.
             * In that situation, you must first delete or resize the disk to be smaller.
+
+        You can also resize a Linode when using the [Linode Rebuild](/docs/api/linode-instances/#linode-rebuild) command.
       tags:
       - Linode Instances
       operationId: resizeLinodeInstance
@@ -11459,7 +11494,7 @@ paths:
       summary: Managed SSH Key View
       description: |
         Returns the unique SSH public key assigned to your Linode account's
-        Managed service. If you [add this public key](/docs/guides/linode-managed/#adding-the-public-key) to a Linode on your account,
+        Managed service. If you [add this public key](/docs/products/services/managed/get-started/#adding-the-public-key) to a Linode on your account,
         Linode special forces will be able to log in to the Linode with this key
         when attempting to resolve issues.
 
@@ -12130,15 +12165,31 @@ paths:
       tags:
       - Networking
       summary: IP Addresses List
-      description: >
-        Returns a paginated list of IP Addresses on your Account, excluding
-        private addresses.
+      description: |
+        Returns a paginated list of IP Addresses on your Account, excluding private addresses.
+
+        We recommend utilizing the "skip_ipv6_rdns" option to improve performance if your application frequently accesses this command and does not require IPv6 RDNS data.
       operationId: getIPs
       x-linode-cli-action: ips-list
       security:
       - personalAccessToken: []
       - oauth:
         - ips:read_only
+      requestBody:
+        description: Options to request additional data.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                skip_ipv6_rdns:
+                  type: boolean
+                  default: false
+                  description: |
+                    When `true`, the "rdns" property for any "ipv6" type addresses always returns `null` regardless of whether RDNS data exists for the address.
+
+                    The default value is `false`.
       responses:
         '200':
           description: A paginated list of IP Addresses.
@@ -12163,10 +12214,14 @@ paths:
       - lang: Shell
         source: >
           curl -H "Authorization: Bearer $TOKEN" \
+              -H "Content-Type: application/json" \
+              -X GET -d '{
+                "skip_ipv6_rdns": false
+                }' \
               https://api.linode.com/v4/networking/ips
       - lang: CLI
         source: >
-          linode-cli networking ips-list
+          linode-cli networking ips-list --skip_ipv6_rdns false
     post:
       x-linode-grant: read_write
       tags:
@@ -18802,7 +18857,10 @@ components:
               example: 11/2022
         company:
           type: string
-          description: The company name associated with this Account.
+          description: |
+            The company name associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 128
           example: Linode LLC
         country:
@@ -18818,13 +18876,19 @@ components:
           x-linode-cli-display: 3
         first_name:
           type: string
-          description: The first name of the person associated with this Account.
+          description: |
+            The first name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: John
           x-linode-cli-display: 1
         last_name:
           type: string
-          description: The last name of the person associated with this Account.
+          description: |
+            The last name of the person associated with this Account.
+
+            Must not include any of the following characters: `<` `>` `(` `)` `"` `=`
           maxLength: 50
           example: Smith
           x-linode-cli-display: 2
@@ -19609,16 +19673,15 @@ components:
           enum:
           - none
           - asynch
-          - semi_synch
-          example: semi_synch
+          example: async
           description: |
             The replication method used for the Managed Database.
 
-            Defaults to `none` for a single cluster and `semi_synch` for a high availability cluster.
+            Defaults to `none` for a single cluster and `asynch` for a high availability cluster.
 
             Must be `none` for a single node cluster.
 
-            Must be `asynch` or `semi_synch` for a high availability cluster.
+            Must be `asynch` for a high availability cluster.
           x-linode-cli-display: 99
         replication_commit_type:
           type: string
@@ -19634,8 +19697,6 @@ components:
             The synchronization level of the replicating server.
 
             Must be `local` or `off` for the `asynch` replication type.
-
-            Must be `on`, `remote_write`, or `remote_apply` for the `semi_synch` replication type.
           x-linode-cli-display: 100
         port:
           type: integer
@@ -19957,7 +20018,7 @@ components:
           example:
             gh_username: linode
           description: |
-            This field is required only if the StackScript being deployed requires input data from the User for successful completion. See [User Defined Fields (UDFs)](/docs/guides/writing-scripts-for-use-with-linode-stackscripts-a-tutorial/#user-defined-fields-udfs) for more details.
+            This field is required only if the StackScript being deployed requires input data from the User for successful completion. See [User Defined Fields (UDFs)](/docs/products/tools/stackscripts/guides/write-a-custom-script/#declare-user-defined-fields-udfs) for more details.
 
             This field is required to be valid JSON.
 
@@ -21732,8 +21793,7 @@ components:
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this pool calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 124
           x-linode-cli-display: 2
         region:
@@ -21758,15 +21818,14 @@ components:
         range:
           type: string
           description: >
-            The IPv6 range of addresses in this pool.
+            The IPv6 address of this range.
           example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 64
           x-linode-cli-display: 2
         region:
@@ -21779,9 +21838,8 @@ components:
         route_target:
           type: string
           description: >
-            The last address in this block of IPv6 addresses.
+            The IPv6 SLAAC address.
           example: '2600:3c01::ffff:ffff:ffff:ffff'
-          nullable: true
     IPv6RangeBGP:
       type: object
       description: >
@@ -21790,15 +21848,14 @@ components:
         range:
           type: string
           description: >
-            The IPv6 range of addresses in this pool.
+            The IPv6 address of this range.
           example: '2600:3c01::'
           readOnly: true
           x-linode-cli-display: 1
         prefix:
           type: integer
           description: >
-            The prefix length of the address, denoting how many addresses can be
-            assigned from this range calculated as 2 <sup>128-prefix</sup>.
+            The prefix length of the address. The total number of addresses that can be assigned from this range is calculated as 2<sup>(128 - prefix length)</sup>.
           example: 64
           x-linode-cli-display: 2
         region:
@@ -25719,6 +25776,27 @@ components:
             A boolean value indicating if the User has Two Factor Authentication (TFA)
             enabled. See the Create Two Factor Secret ([POST /profile/tfa-enable](/docs/api/profile/#two-factor-secret-create))
             endpoint to enable TFA.
+        verified_phone_number:
+          type: string
+          format: phone
+          readOnly: true
+          description: |
+            The phone number verified for this User Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
+
+            `null` if this User Profile has no verified phone number.
+          example: "+5555555555"
+        password_created:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+          description: |
+            The date and time when this User's current password was created.
+
+            User passwords are first created during the Account sign-up process, and updated using the [Reset Password](https://login.linode.com/forgot/password) webpage.
+
+            `null` if this User has not created a password yet.
+          example: "2018-01-01T01:01:01"
     UserDefinedField:
       type: object
       required:

@@ -32,7 +32,8 @@ This template includes common API logic and functions.
 {{ define "openapi3/print-title" }}
   {{ $anchor := "" }}
   {{ if or (eq .level 2) (eq .level 3) }}
-    {{ $anchor = printf "<a class=\"\" href=\"#%s\"><svg class=\"ml-2 inline-block w-5 h-5\"><use href=\"#icon--hashtag\"></use></svg></a>" .id }}
+    {{ $ariaLabel := printf "%s: %s" .section .title }}
+    {{ $anchor = printf "<a class=\"\" href=\"#%s\" aria-label=\"%s\"><svg class=\"ml-2 inline-block w-5 h-5\"><use href=\"#icon--hashtag\"></use></svg></a>" .id $ariaLabel }}
   {{ end }}
   {{ printf "<h%d id='%s'>%s%s</h%d>" .level .id .title $anchor .level | safeHTML }}
 {{ end }}
@@ -104,6 +105,7 @@ This template includes common API logic and functions.
   {{ $op := $dot.o }}
   {{ $server := index $api.Servers 0 }}
   {{ $url := printf "%s%s" $server.URL $pathKey }}
+  {{ $section := $p.LinkTitle }}
 
   {{ with $op }}
     {{ $action := .Summary | anchorize }}
@@ -115,7 +117,7 @@ This template includes common API logic and functions.
     {{ end }}
     {{ $isBeta := strings.Contains $url "beta/" }}
 
-    {{ template "openapi3/print-title" (dict "level" 2 "title" .Summary "id" (.Summary | anchorize) ) }}
+    {{ template "openapi3/print-title" (dict "level" 2 "section" $section "title" .Summary "id" (.Summary | anchorize) ) }}
     <div class="code py-4 px-4 flex content-center justify-between">
       <div>
         <span class="bg-gray-300 font-semibold p-1 mr-2">
@@ -135,14 +137,14 @@ This template includes common API logic and functions.
     </p>
 
     {{/* Authorizations */}}
-    {{ template "openapi3/print-title" (dict "level" 3 "title" "Authorizations" "id" (printf "%s__authorizations" $action ) ) }}
+    {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Authorizations" "id" (printf "%s__authorizations" $action ) ) }}
 
     {{ $.Set "dot" .Security }}
     {{ template "openapi3/print-security" $ }}
 
     {{/* Path parameters */}}
     {{ with $path.Parameters }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Path Parameters" "id" (printf "%s__path-parameters" $action  ) ) }}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Path Parameters" "id" (printf "%s__path-parameters" $action  ) ) }}
       <table>
         {{ range . }}
           {{ $param := .Value }}
@@ -171,22 +173,39 @@ This template includes common API logic and functions.
 
     {{/* Optional parameters. */}}
     {{ with .Parameters }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Query Parameters" "id" ( printf "%s__query-parameters" $action ) ) }}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Query Parameters" "id" ( printf "%s__query-parameters" $action ) ) }}
       {{ $.Set "dot" . }}
       {{ template "openapi3/print-parameters" $ }}
     {{ end }}
 
     {{/* Code samples */}}
-    {{ with .ExtensionProps.Extensions }}
-      {{ with index . "x-code-samples" }}
-        {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
-        {{ $samples := . | transform.Unmarshal }}
-        {{ $samplesTabs := slice }}
-        {{ range $samples }}
-          {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+    {{ if gt hugo.Version "0.111.3" }}
+      {{/* Hugo 0.112.0 updated kin-openapi, which had a breaking change: */}}
+      {{/* - the ExtensionProps is now just a map. */}}
+      {{/* - the code samples are now just strings, not raw JSON. */}}
+      {{ with .Extensions }}
+        {{ with index . "x-code-samples" }}
+          {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+          {{ $samplesTabs := slice }}
+          {{ range . }}
+            {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+          {{ end }}
+          {{ $.Set "dot" $samplesTabs }}
+          {{ template "openapi3/component-tabs" $ }}
         {{ end }}
-        {{ $.Set "dot" $samplesTabs }}
-        {{ template "openapi3/component-tabs" $ }}
+      {{ end }}
+    {{ else }}
+      {{ with .ExtensionProps.Extensions }}
+        {{ with index . "x-code-samples" }}
+          {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Request Samples" "id" (printf "%s__request-samples" $action ) ) }}
+          {{ $samples := . | transform.Unmarshal }}
+          {{ $samplesTabs := slice }}
+          {{ range $samples }}
+            {{ $samplesTabs =  $samplesTabs | append (dict "title" .lang "lang" .lang "body" .source) }}
+          {{ end }}
+          {{ $.Set "dot" $samplesTabs }}
+          {{ template "openapi3/component-tabs" $ }}
+        {{ end }}
       {{ end }}
     {{ end }}
 
@@ -195,7 +214,7 @@ This template includes common API logic and functions.
       {{ with .Value }}
         {{ with index .Content "application/json" }}
           {{ with .Schema }}
-            {{ template "openapi3/print-title" (dict "level" 3 "title" "Request Body Schema" "id" (  printf "%s__request-body-schema" $action ) ) }}
+            {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Request Body Schema" "id" (  printf "%s__request-body-schema" $action ) ) }}
             {{ $.Set "dot" . }}
             {{ $.Set "hideReadOnly" true }}
             {{ partial "openapi3/print-schema" $ }}
@@ -207,7 +226,7 @@ This template includes common API logic and functions.
 
     {{/* Responses */}}
     {{ with .Responses }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Response Samples" "id" (printf "%s__response-samples" $action) ) }}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Response Samples" "id" (printf "%s__response-samples" $action) ) }}
       {{ $responseTabs := slice }}
       {{ range $k, $v := . }}
         {{ $.Set "dot" . }}
@@ -216,7 +235,7 @@ This template includes common API logic and functions.
       {{ end }}
       {{ $.Set "dot" $responseTabs }}
       {{ template "openapi3/component-tabs" $ }}
-      {{ template "openapi3/print-title" (dict "level" 3 "title" "Responses" "id" (printf "%s__responses" $action) ) }}
+      {{ template "openapi3/print-title" (dict "level" 3 "section" $section "title" "Responses" "id" (printf "%s__responses" $action) ) }}
       {{ $responseBodySchemaTabs := slice }}
       {{ range $k, $v := . }}
         {{ $.Set "dot" .Value }}
@@ -303,9 +322,7 @@ This template includes common API logic and functions.
   {{ with $s.Description }}
     {{ $m.Set "Description" . }}
   {{ end }}
-  {{ with $s.Default }}
-    {{ $m.Set "Default" . }}
-  {{ end }}
+  {{ $m.Set "Default" $s.Default }}
   {{ with $s.Enum }}
     {{ $m.Set "Enum" . }}
   {{ end }}
@@ -491,9 +508,9 @@ This template includes common API logic and functions.
 
     {{ end }}
 
-    {{ with .Default }}
+    {{ if or .Default (eq .Default false) }}
       Default:
-      <code>{{ . }}</code>
+      <code>{{ .Default }}</code>
     {{ end }}
   </div>
 {{ end }}

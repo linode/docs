@@ -32,6 +32,7 @@ ajp
 Akamai
 Akaunting
 aker
+akr
 alef
 alertmanager
 alex
@@ -77,6 +78,7 @@ appserver
 appsmith
 appwrite
 apxs
+architected
 architecting
 aren
 argv
@@ -87,9 +89,10 @@ Asana
 aspell
 askbot
 aske
+ASPcore
 Astra
-async
 astro
+async
 asynchrony
 atera
 atlanta
@@ -209,6 +212,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
@@ -237,6 +241,7 @@ byrequests
 bzip2
 bzrtools
 c2s
+cas
 cabd
 cacert
 cacheable
@@ -296,6 +301,7 @@ chroot
 chrooting
 chrooted
 CIDRs
+cifs_utils
 citad
 cjones
 clamav
@@ -388,6 +394,7 @@ cronie
 cronjob
 cronjobs
 crontab
+Crossplane
 crosstab
 crowdsourced
 crowdsourcing
@@ -460,6 +467,7 @@ dbserver
 dcid
 dcs
 deadman
+deallocated
 deallocation
 deathmatch
 debconf
@@ -511,6 +519,7 @@ dired
 direnv
 dirtycow
 discoverability
+diskpart
 disqus
 distro
 distros
@@ -548,6 +557,7 @@ donenfeld
 dotdeb
 dotenv
 dotfiles
+dotnet
 doveadm
 dpkg
 dport
@@ -564,6 +574,7 @@ ducati
 dumpall
 dust2
 dvcs
+Dynadot
 e2fsck
 ea04
 ead
@@ -657,6 +668,7 @@ fd
 fdisk
 fdriver
 fe70
+Feigenbaum
 fedf
 fediverse
 fetchmail
@@ -703,6 +715,7 @@ fordham
 fmt
 fn
 fpm
+fqdns
 fragging
 framebuffer
 frakti
@@ -880,6 +893,7 @@ hostname
 hostnames
 hortonworks
 hotfix
+hotfixes
 hotlink
 hotlinked
 hotlinking
@@ -898,6 +912,7 @@ htmldir
 htop
 htpasswd
 http
+http_get_request
 httpie
 httpchk
 httpd
@@ -915,6 +930,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -945,6 +961,7 @@ ifup
 ifupdown
 ignoreip
 ignoreregex
+ILLA
 ikiwiki
 im
 imagize
@@ -1089,6 +1106,7 @@ keepalived_script
 keras
 kerberos
 kerberos5
+Kerfi
 Kernighan
 keychain
 keyfile
@@ -1126,6 +1144,7 @@ kotin
 konversation
 krita
 kroll
+ksmbd
 ktor
 kube
 kubeadm
@@ -1170,6 +1189,7 @@ libcontainers
 libcurl
 libev
 libgcc1
+libgdiplus
 libphp
 libpri
 libprocesshider
@@ -1201,6 +1221,7 @@ listdir
 listserv
 listservs
 litespeed
+Livestatus
 livigno
 li181
 li263
@@ -1287,6 +1308,7 @@ matplotlib
 Matsumoto
 Matthes
 Matz
+Mavan
 mawk
 maxconn
 maxdepth
@@ -1331,6 +1353,7 @@ microsite
 microsystems
 microweb
 Microweber
+middlebox
 middleware
 mimikatz
 minecraft
@@ -1478,6 +1501,7 @@ netlink
 netloc
 netmask
 netplan
+netsh
 netstat
 netstumbler
 netuser
@@ -1557,6 +1581,7 @@ offboarding
 oftc
 ohai
 ok
+OKConfig
 okta
 oldstable
 oldfashioned
@@ -1578,6 +1603,7 @@ openvassd
 openvpn
 openvz
 openzipkin
+Opin
 ossec
 ostemplate
 osx
@@ -1602,6 +1628,8 @@ packagist
 pagent
 pagespeed
 palo
+pam
+pams
 pandoc
 param
 parameterizing
@@ -1626,6 +1654,7 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pathnames
 paypal
 PBCs
 pbr
@@ -1699,6 +1728,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powercfg
 powershell
 ppa
 pparadis
@@ -1793,7 +1823,9 @@ radeon
 rainloop
 Ramaze
 ramdisk
+randomart
 ransomwhere
+rasa
 rauth
 rbac
 rbenv
@@ -1857,6 +1889,7 @@ remediations
 remi
 remmina
 remotehost
+reparse
 replicants
 replicaset
 replicationcontrollers
@@ -1911,6 +1944,10 @@ rpaf
 rpc
 rpcbind
 rpmforge
+rrset
+rrsets
+rrsig
+rrsigs
 rsa
 rspec
 rss
@@ -2039,6 +2076,7 @@ shortguides
 shortname
 shotcut
 shoutcast
+shutil
 scikit
 scribus
 scrollable
@@ -2133,6 +2171,8 @@ Stroustrup
 su
 subcommand
 subcommands
+subcontext
+subcontexts
 subfile
 subfiles
 subfolder
@@ -2262,6 +2302,7 @@ tmux
 tock
 todo
 togami
+tokenization
 tokenize
 tokenized
 tokenizing
@@ -2272,6 +2313,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolkits
 toolset
 toolstrip
 tooltip
@@ -2372,6 +2414,7 @@ untrust
 untrusted
 unversioned
 unvetted
+upbound
 upserted
 upsize
 uri
@@ -2441,6 +2484,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vixie
 vlan
 vlans
 vlc
@@ -2448,6 +2492,7 @@ vlogger
 vmail
 vmem
 vmlinuz
+vms
 vmstat
 vmui
 vnc
@@ -2617,6 +2662,7 @@ znc
 zonefiles
 zope
 zorin
+zoxide
 zpool
 zsh
 zshrc

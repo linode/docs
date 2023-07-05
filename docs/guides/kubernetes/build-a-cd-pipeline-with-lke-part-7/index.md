@@ -15,6 +15,8 @@ authors: ["Linode"]
 
 ![Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing Stacks with Helm](cd-presentation-header-07-managing-stacks-with-helm.png "Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing Stacks with Helm")
 
+**Watch the Presentation:** Register to [watch this workshop](https://event.on24.com/wcc/r/3121133/FC5BC89B210FAAFFC957E6204E55A228?partnerref=website_docs), free of charge.
+
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Managing stacks with Helm (Slide #107)](https://2021-03-lke.container.training/#107)
 
 ## Managing Stacks with Helm
