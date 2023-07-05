@@ -2,7 +2,7 @@
 title: "Closed Beta for Akamai's New Data Centers"
 description: "Details for the closed beta of Akamai Cloud Compute's newest data centers, which include the Washington, DC and Paris regions."
 published: 2023-04-17
-modified: 2023-06-29
+modified: 2023-07-05
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -13,19 +13,19 @@ noindex: true
 aliases: ['/products/platform/get-started/guides/iad/']
 ---
 
-Akamai Cloud's newest data centers in Washington, DC (USA), Chicago, IL (USA), and Paris (France) are now available in a limited closed beta. Most of our products and services are fully operational in these data centers, including [Premium Plans](#premium-plans), the newest Compute Instance tier (only available as part of this beta). As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
+Akamai is expanding its services to new data centers across the globe. Each new data center will undergo a beta period, where a limited number of interested customers can deploy services in these regions. All Akamai cloud computing services are fully operational in these data centers. In addition, Premium plans and upgraded Object Storage clusters are *currently* only available in these new data centers (though these services will eventually be rolled out to the entire fleet). As a beta participant, please review this guide for additional specifications and details you may need when configuring your workloads in the one of these data centers.
 
 {{< note type="warning" >}}
-These data centers are in beta. As such, capacity may be limited as we continue to scale up resources. Additionally, this beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
+Capacity in beta data centers may be limited as we continue to scale up resources. Additionally, the beta environment is subject to change. We strongly suggest that participants do not run production workloads during the beta.
 {{< /note >}}
 
 ## List of New Data Centers
 
 | Data Center | Status | Region ID |
 | -- | -- | -- |
-| Chicago, IL, USA | *Closed beta* | `us-ord` |
-| Paris, France | *Closed beta* | `fr-par` |
-| Washington, DC, USA | *Closed beta* | `us-iad` |
+| Chicago, IL, USA | Available to all customers | `us-ord` |
+| Paris, France | Available to all customers | `fr-par` |
+| Washington, DC, USA | Available to all customers | `us-iad` |
 
 ## Deploy Services in a Beta Data Center
 
