@@ -27,7 +27,7 @@ authors: ["Linode"]
 
 ## Configuration Options
 
-- **Supported distributions:** Ubuntu 20.04 LTS
+- **Supported distributions:** Ubuntu 22.04 LTS
 - **Recommended plan:** Wazuh recommends a minimum of a 4GB Linode, though an 8-core plan (32GB and up) is recommended for production.
 
 ### Wazuh Options
@@ -46,17 +46,47 @@ authors: ["Linode"]
 
 1.  Open a web browser and navigate to the domain you created in the beginning of your deployment. You can also use your Compute Instance's rDNS, which may look like `203-0-113-0.ip.linodeusercontent.com`. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing and setting the rDNS value.
 
-1.  In the login screen that appears, enter `admin` as the username and `admin` as the password. Since the default admin user is set to read-only, you need to follow the steps below to reset the admin password.
+1. The usernames and passwords have been saved in a `.deployment-secrets.txt` file located in your root directory. You can view this file in your preferred text editor or through the `cat` command.
 
-    1.  Log in to your Compute Instance over SSH. See [Connecting to a Remote Server Over SSH](/docs/guides/connect-to-server-over-ssh/) for assistance.
+    ```command
+    cat /root/.deployment-secrets.txt
+    ```
 
-    1.  Run the Wazuh Password reset tool that has been preloaded onto your instance in the root directory:
+    This file contains all of your Wazuh credentials.
 
-            bash /root/wazuh-passwords-tool.sh -a
+    ```file {title="/root/.deployment-secrets.txt"}
+# Admin user for the web user interface and Wazuh indexer. Use this user to log in to Wazuh dashboard
+  indexer_username: 'admin'
+  indexer_password: '3O*NRpS5B5*sohufTz?TuM.Vef6zoN5d'
 
-    1. After the tool finishes running, it outputs all of the new passwords for each system. Record these credentials.
+# Wazuh dashboard user for establishing the connection with Wazuh indexer
+  indexer_username: 'kibanaserver'
+  indexer_password: 'Z.0M8rorxRS+DQfefe96N?.Cb+?byn7k'
 
-    1. You are now able to log in to your Wazuh instance with your new admin credentials.
+# Regular Dashboard user, only has read permissions to all indices and all permissions on the .kibana index
+  indexer_username: 'kibanaro'
+  indexer_password: 'W?PVE08Pk2AYE8*brrg4Ni+LXAbBKJl++2II'
+
+# Filebeat user for CRUD operations on Wazuh indices
+  indexer_username: 'logstash'
+  indexer_password: 'FGH6rDIgrg.zvXz?qZfQ1dv?2QAAQuiX7'
+
+# User with READ access to all indices
+  indexer_username: 'readall'
+  indexer_password: 'jVVugegfB0ldF+fNN?0bS0iMviFe8RnY'
+
+# User with permissions to perform snapshot and restore operations
+  indexer_username: 'snapshotrestore'
+  indexer_password: 'YN17mfegnWy*efeL30KC1Zz.7yrhCma7'
+
+# Password for wazuh API user
+  api_username: 'wazuh'
+  api_password: 'PtE5y+esjMmB74g4ttjY+ds0lGfP??uk'
+
+# Password for wazuh-wui API user
+  api_username: 'wazuh-wui'
+  api_password: '6?PPR1o0fwfgefLiBjbYxBz+icG0rGojT'
+    ```
 
 Now that you’ve accessed your Wazuh instance, you need to configure a [Wazuh Agent](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/index.html) on the server you'd like to monitor with Wazuh.
 
