@@ -52,17 +52,17 @@ To start with SurrealDB, install a standalone instance on your system. SurrealDB
 SurrealDB can also be [run as a Docker container](https://surrealdb.com/docs/installation/running/docker). This tutorial, however, focuses on a full installation of SurrealDB to provide a more versatile installation to work with.
 {{< /note >}}
 
-1.  Install Tar to extract `tar` packages. This is required for part of the installation script's process.
+1.  Install Tar to extract `tar` packages as this is required for part of the installation script's process. Also install the `jq` tool to "pretty print" JSON outputs for better legibility later on in the tutorial.
 
     {{< tabs >}}
     {{< tab "Debian and Ubuntu" >}}
     ```command
-    sudo apt install tar
+    sudo apt install tar jq
     ```
     {{< /tab >}}
     {{< tab "AlmaLinux, CentOS Stream, and Rocky Linux" >}}
     ```command
-    sudo dnf install tar
+    sudo dnf install tar jq
     ```{{< /tab >}}
     {{< /tabs >}}
 
@@ -93,13 +93,11 @@ SurrealDB can also be [run as a Docker container](https://surrealdb.com/docs/ins
     [...]
     ```
 
-1.  By default, the SurrealDB binary file is stored at `~/.surrealdb/surreal`. For easier access to the `surreal` command, move the binary to a directory on your shell path such as:
+1.  By default, the SurrealDB binary file is stored at `~/.surrealdb/surreal`. For easier access to the `surreal` command, move the binary to a directory on your shell path. Make sure to change `example-user` to your actual username.
 
     ```command
     sudo mv /home/example-user/.surrealdb/surreal /usr/local/bin
     ```
-
-    Make sure to change `example-user` to your actual username.
 
     Leave the `~/.surrealdb/` directory in place. The next section showcases SurrealDB's option to persist a database to a file, and the directory provides a convenient location.
 
@@ -158,7 +156,9 @@ surreal start --bind 127.0.0.1:8000 --user root --pass exampleRootPass memory
 
 In addition to the server, the `surreal` binary includes an `sql` command to run SurrealDB's CLI tool. This provides easy access to the SurrealDB server and is probably the best way to learn SurrealDB queries.
 
-1.  To start a SurrealDB CLI session, use a command like the one below. This connects to a SurrealDB server started with one of the examples commands above (except for the one that changes the default port).
+1.  To begin, open a second terminal for the SurrealDB CLI, as the original is still running the SurrealDB server. The rest of the commands in this tutorial are run from this second terminal.
+
+1.  To start a SurrealDB CLI session, open a second terminal and use a command like the one below. This connects to a SurrealDB server started with one of the examples commands above (except for the one that changes the default port).
 
     ```command
     surreal sql --conn http://localhost:8000 --user root --pass exampleRootPass --ns exampleNs --db exampleDb --pretty
@@ -324,22 +324,7 @@ In addition to the server, the `surreal` binary includes an `sql` command to run
 
 A SurrealDB server instance also maintains a set of HTTP endpoints. With these, a wide range of applications can query the database without needing a separate server-side application.
 
-This section provides some simple demonstrations of SurrealDB's HTTP endpoints using cURL from the command line.
-
-1.  For legibility, the following two examples pipe the cURL output through the `jq` tool to pretty print the JSON. You can install the `jq` tool from your system's package manager:
-
-    {{< tabs >}}
-    {{< tab "Debian and Ubuntu" >}}
-    ```command
-    sudo apt install jq
-    ```
-    {{< /tab >}}
-    {{< tab "AlmaLinux, CentOS Stream, and Rocky Linux" >}}
-    ```command
-    sudo dnf install jq
-    ```
-    {{< /tab >}}
-    {{< /tabs >}}
+This section provides some simple demonstrations of SurrealDB's HTTP endpoints using cURL from the command line. For legibility, the following two examples pipe the cURL output through the `jq` tool to pretty print the JSON.
 
 1.  Just like starting up the SurrealDB CLI, it's best to indicate the namespace and database upfront with HTTP requests. For this, create a file with the header contents for your requests, which makes these easier to input:
 
@@ -380,7 +365,7 @@ This section provides some simple demonstrations of SurrealDB's HTTP endpoints u
 
 1.  These queries are somewhat easier to manage with the query commands held in a dedicated file. Using the modeled query from the previous section, store that query in a file for access by the cURL command:
 
-    ```file
+    ```command
     cat > surreal_query_file <<EOF
     SELECT id, title, body, ->tagged->tags.value AS tags, date FROM article ORDER BY date;
     EOF
