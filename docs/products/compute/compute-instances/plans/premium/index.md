@@ -2,7 +2,7 @@
 title: "Premium Compute Instances"
 linkTitle: "Premium"
 description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD Epyc™ CPUs, providing consistent high-peformance for your workloads."
-published: 2023-07-05
+published: 2023-07-06
 ---
 
 Premium Compute Instances are virtual machines that come equipped with the latest AMD Epyc™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
@@ -10,7 +10,7 @@ Premium Compute Instances are virtual machines that come equipped with the lates
 **Premium plans are ideal for enterprise-grade, business-critical, and latency-sensitive applications, including any workload that benefits from consistent performance with the latest hardware.**
 
 {{< note >}}
-Premium instances are not yet available in all regions. Review the [Availability](#availability) section to learn which data centers can be used to deploy Premium instances..
+Premium instances are not currently available in all regions. Review the [Availability](#availability) section to learn which data centers can be used to deploy Premium instances.
 {{< /note >}}
 
 ## Latest Hardware
@@ -33,23 +33,23 @@ Premium Compute Instances are suitable for workloads that benefit a balanced set
 
 ## Availability
 
-Premium Compute Instances are currently available in our latest data centers. Existing data centers will be upgraded to include Premium instances in the future.
+Premium Compute Instances are currently available in select data centers.
 
 | Data center | Status |
 | -- | -- |
-| Atlanta (Georgia, USA) | Not yet available |
+| Atlanta (Georgia, USA) | *Not available* |
 | **Chicago (Illinois, USA)** | **Available** |
-| Dallas (Texas, USA) | Not yet available |
-| Frankfurt (Germany) | Not yet available |
-| Fremont (California, USA) | Not yet available |
-| London (United Kingdom) | Not yet available |
-| Mumbai (India) | Not yet available |
-| Newark (New Jersey, USA) | Not yet available |
+| Dallas (Texas, USA) | *Not available* |
+| Frankfurt (Germany) | *Not available* |
+| Fremont (California, USA) | *Not available* |
+| London (United Kingdom) | *Not available* |
+| Mumbai (India) | *Not available* |
+| Newark (New Jersey, USA) | *Not available* |
 | **Paris (France)** | **Available** |
-| Singapore | Not yet available |
-| Sydney (Australia) | Not yet available |
-| Tokyo (Japan) | Not yet available |
-| Toronto (Canada) | Not yet available |
+| Singapore | *Not available* |
+| Sydney (Australia) | *Not available* |
+| Tokyo (Japan) | *Not available* |
+| Toronto (Canada) | *Not available* |
 | **Washington, DC (USA)** | **Available** |
 
 ## Plans and Pricing
