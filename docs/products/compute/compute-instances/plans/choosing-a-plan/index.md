@@ -1,13 +1,13 @@
 ---
-description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
-keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
-published: 2019-02-04
-modified: 2023-07-05
-modified_by:
-    name: Linode
 title: "Choosing a Compute Instance Type and Plan"
 title_meta: "How to Choose a Compute Instance Plan"
 linkTitle: "Choosing a Plan"
+description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
+keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
+published: 2019-02-04
+modified: 2023-07-06
+modified_by:
+    name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/','/guides/choosing-a-compute-instance-plan/']
 authors: ["Linode"]
@@ -79,7 +79,7 @@ Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
 Starting at $43/mo ($0.06/hr). See [Premium Pricing](https://www.linode.com/pricing/#premium) for a full list of plans, resources, and pricing.
 
-[Premium Instances](/docs/products/compute/compute-instances/plans/premium/) build off our Dedicated CPU instances and guarantee a minimum hardware class utilizing the latest available [AMD Epyc™](https://www.linode.com/amd/) CPUs. This provides consistent performance to your workloads and is suitable for running mission-critical applications. Premium instances are not yet available in all regions. Review [Premium Instance Availability](/docs/products/compute/compute-instances/plans/premium/#availability) for a list of available data centers.
+[Premium Instances](/docs/products/compute/compute-instances/plans/premium/) build off our Dedicated CPU instances and guarantee a minimum hardware class utilizing the latest available [AMD Epyc™](https://www.linode.com/amd/) CPUs. This provides consistent performance to your workloads and is suitable for running mission-critical applications. Premium instances are available in select data centers (see [Premium Instance Availability](/docs/products/compute/compute-instances/plans/premium/#availability)).
 
 **Recommended Use Cases:**
 
