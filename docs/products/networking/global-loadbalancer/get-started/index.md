@@ -1,9 +1,9 @@
 ---
 title: Get Started
-title_meta: "Getting Started with Enterprise Global Load Balancer"
-description: "Learn how to quickly start using a Enterprise Global Load Balancer, including advice on architecting your application and configuring the Load Balancer"
+title_meta: "Getting Started with Global Load Balancer"
+description: "Learn how to quickly start using a Global Load Balancer, including advice on architecting your application and configuring the Load Balancer"
 tab_group_main:
-    weight: 30
+    weight: 20
 keywords: ["loadbalancers", "loadbalancer", "load balancers", "load balancer", "load balancing"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/global-loadbalancer/getting-started/']
@@ -21,21 +21,35 @@ Nearly every production application can benefit from a load balancing solution l
 
 To start using and benefiting from load balancing, your application should be stored on at least two Compute Instances. Each instance of your application should be able to fully serve the needs of your users, including being able to respond to web requests, access all necessary files, and query any databases.
 
+To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](https://www.linode.com/docs/products/compute/compute-instances/get-started/)
+
 To redirect all web connections over port 443/HTTPS generate an SSL certificate for your domain name that supports TLS version 1.2 or later.
 
 ## Create the Akamai Global Load Balancer
 
-Once your application has been deployed on multiple Compute Instances, you are ready to create the Akamai Global Load Balancer. General instructions have been provided below. For detailed instructions, see the [Create a Akamai Global Load Balancer](/docs/products/networking/global-loadbalancer/guides/create/) guide.
+Once your application has been deployed on multiple Compute Instances, you are ready to create the Akamai Global Load Balancer which includes configuring the following components.
 
-To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](/docs/products/platform/get-started/)
+![This diagram shows the components that a configured when creating a Global Load Balancer.](glb-2.jpg)
+
+1. **Load Balancer:** Label the load balancer and select regions.
+
+1. **Entry Point:** Select the entry point protocol and port the load balancer uses to listen on.
+
+1. **Routes:** Create routes and route rules used to select the service target.
+
+1. **Targets:** Configure the service endpoint (target) and its policy type, certificates and health checks.
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
+### Label the Load Balancer and Select Regions
 1. Log in to the [Cloud Manager](https://cloud.linode.com), select Load Balancers from the left menu, and click the **Create Global Load Balancer** button. This displays the *Load Balancers Create* form.
 
 1. Enter a **Label/Name** for this Load Balancer. The label can contain ...and must be unique.
 
-1. Select the **Regions** where this load balancer processes requests. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage.
+1. Select the **Regions** where this load balancer processes requests. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage. The number of regions selected, is one of the factors that determines the [Pricing](/docs/products/networking/global-loadbalancer/#pricing) for this load balancer.
+
+### Select the Entry Point Protocol and Port
+The Load Balancer Entry Point defines the  
 
 1. Within the **Entry Point Configuration** area, select the protocol and enter the port number used to listen to incoming requests.
 
@@ -58,7 +72,10 @@ To sign up for a Linode account and to start deploying Compute Instances, see [G
 
     - **Private Key:** Paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
 
-1. Add the **Entry Point Label**. Each Entry Point includes a list of **Routes**. Routes are the set of rules that the load balancer uses to select the target for the incoming request.
+1. Add the **Entry Point Label**.
+
+###  Configure Routes
+Each Entry Point includes a list of **Routes**. Routes are the set of rules that the load balancer uses to select the target for the incoming request.
 
   - **Algorithm:** Controls how new connections are allocated across backend targets. The *Performance* method selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. The *Weighted* method routes requests to backend targets according to the proportion (%) configured. See [Configuration Options > Algorithm](/docs/products/networking/global-loadbalancer-drafts/guides/configure/#algorithm).
 
