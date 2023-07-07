@@ -3,7 +3,7 @@ slug: download-files-from-a-compute-instance
 description: "Learn how to download files, database dumps, or whole disks from your Linodes."
 keywords: ["download", "files", "disk", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2023-06-20
+modified: 2023-07-07
 modified_by:
   name: Linode
 published: 2018-09-25

@@ -4,6 +4,7 @@ title_meta: "Guides and Tutorials for the Linode Backup Service"
 description: "A collection of guides to help you learn how to get up and running with Linode's Backup Service, including enabling and scheduling backups."
 tab_group_main:
     weight: 30
+modified: 2023-07-07
 ---
 
 ## Basics
@@ -28,4 +29,4 @@ These introductory guides help get you up and running with Linode's Backup Servi
 
 - [Troubleshooting Backups](/docs/products/storage/backups/guides/troubleshooting/): Get solutions for issues you may encounter when using our Backup service.
 
-- [Download a Local Copy of your Linode Backup](/docs/guides/download-backups-locally/)
+- [Download a Local Copy of your Linode Backup](/docs/products/storage/backups/guides/download-backups-locally/)
