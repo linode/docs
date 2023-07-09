@@ -14,7 +14,7 @@ external_resources:
 - '[Benefits of unit testing](https://dzone.com/articles/top-8-benefits-of-unit-testing)'
 ---
 
-[Go](https://www.linode.com/docs/guides/development/go/?lndq=golang) is a programming language that was developed around 2007 at Google to address many of the "system programming" tasks typically handled by C. While the syntax of Go is familiar to C programmers, it introduces more powerful and rigorous static typing. Additionally, Go offers the readability and memory safety found in languages like JavaScript and Python. The language also places a strong emphasis on performance, particularly in terms of its built-in [concurrency](https://www.golang-book.com/books/intro/10) features. Go provides a [reference compiler, standard library, and a variety of other tools](https://go.dev/), all of which are freely available as open source.
+[Go](/docs/guides/development/go/?lndq=golang) is a programming language that was developed around 2007 at Google to address many of the "system programming" tasks typically handled by C. While the syntax of Go is familiar to C programmers, it introduces more powerful and rigorous static typing. Additionally, Go offers the readability and memory safety found in languages like JavaScript and Python. The language also places a strong emphasis on performance, particularly in terms of its built-in [concurrency](https://www.golang-book.com/books/intro/10) features. Go provides a [reference compiler, standard library, and a variety of other tools](https://go.dev/), all of which are freely available as open source.
 
 ## When You Should Use Go
 
@@ -28,7 +28,7 @@ It's worth noting that Go may not offer the extensive library of extensions, pac
 
 ### The Importance of Unit Tests
 
-As mentioned in the guide, [unit tests](https://www.linode.com/docs/guides/what-is-unit-testing/) provide several benefits to a project. They serve as documentation, ensuring the proper usage of code. Unit tests also help maintain the integrity of the source code, mitigating the risks associated with routine maintenance tasks. Furthermore, when implemented effectively, unit tests support [recognized methodologies for software design](https://www.agilealliance.org/glossary/tdd) and implementation. The productivity of a programming environment heavily relies on the effectiveness of unit tests. Therefore, a good programming language should facilitate the process of writing correct programs and conducting thorough testing concurrently.
+As mentioned in the guide, [unit tests](/docs/guides/what-is-unit-testing/) provide several benefits to a project. They serve as documentation, ensuring the proper usage of code. Unit tests also help maintain the integrity of the source code, mitigating the risks associated with routine maintenance tasks. Furthermore, when implemented effectively, unit tests support [recognized methodologies for software design](https://www.agilealliance.org/glossary/tdd) and implementation. The productivity of a programming environment heavily relies on the effectiveness of unit tests. Therefore, a good programming language should facilitate the process of writing correct programs and conducting thorough testing concurrently.
 
 ### Go’s Special Relationship to Tests
 
