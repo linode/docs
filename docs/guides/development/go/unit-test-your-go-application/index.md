@@ -14,7 +14,7 @@ external_resources:
 - '[Benefits of unit testing](https://dzone.com/articles/top-8-benefits-of-unit-testing)'
 ---
 
-[Go](/docs/guides/development/go/?lndq=golang) is a programming language that was developed around 2007 at Google to address many of the "system programming" tasks typically handled by C. While the syntax of Go is familiar to C programmers, it introduces more powerful and rigorous static typing. Additionally, Go offers the readability and memory safety found in languages like JavaScript and Python. The language also places a strong emphasis on performance, particularly in terms of its built-in [concurrency](https://www.golang-book.com/books/intro/10) features. Go provides a [reference compiler, standard library, and a variety of other tools](https://go.dev/), all of which are freely available as open source.
+[Go](/docs/guides/development/go/) is a programming language that was developed around 2007 at Google to address many of the "system programming" tasks typically handled by C. While the syntax of Go is familiar to C programmers, it introduces more powerful and rigorous static typing. Additionally, Go offers the readability and memory safety found in languages like JavaScript and Python. The language also places a strong emphasis on performance, particularly in terms of its built-in [concurrency](https://www.golang-book.com/books/intro/10) features. Go provides a [reference compiler, standard library, and a variety of other tools](https://go.dev/), all of which are freely available as open source.
 
 ## When You Should Use Go
 
@@ -114,18 +114,18 @@ To focus on the middle operation of formatting a greeting based on the name, cre
     package main
 
     import (
-      "strings"
-      "testing"
+        "strings"
+        "testing"
     )
 
     func Test1(t *testing.T) {
-      testData := []string{"World", "Dylan", "Erin"}
-      for _, name := range testData {
-        message := GetHelloMessage(name)
-        if !strings.Contains(message, name) {
-          t.Errorf("'%s' does not contain '%s'.", message, name)
+        testData := []string{"World", "Dylan", "Erin"}
+        for _, name := range testData {
+          message := GetHelloMessage(name)
+          if !strings.Contains(message, name) {
+            t.Errorf("'%s' does not contain '%s'.", message, name)
+          }
         }
-      }
     }
     ```
 
