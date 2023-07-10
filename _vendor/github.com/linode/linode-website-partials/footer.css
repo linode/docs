@@ -1,83 +1,140 @@
-#consent_blackbar {
-  bottom: 0;
-  left: 0;
-  position: fixed;
-  right: 0;
-  z-index: 999;
+#consent_blackbar,
+#truste-consent-track {
+  background-color: transparent !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: fixed !important;
+  right: 0 !important;
+  z-index: 999 !important;
 }
 
-#consent_blackbar #truste-consent-track {
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-}
-#consent_blackbar #truste-consent-content {
+#truste-consent-content {
   background-color: #ffffff;
   border: none;
   border-top: 1px solid #ededf4;
+  box-shadow: 0 -30px 30px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 32px;
   padding: 16px;
+  position: relative;
 }
-#consent_blackbar #truste-consent-text {
+@media (min-width: 48em) and (max-width: 61.99em) {
+  #truste-consent-content {
+    gap: 16px;
+  }
+}
+@media (max-width: 47.99em) {
+  #truste-consent-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+#truste-consent-header {
+  order: 999;
+}
+#truste-consent-header .truste-icon-box {
+  display: grid;
+  place-items: center;
+}
+#truste-consent-header .truste-icon-box img {
+  aspect-ratio: 1/1;
+  display: block;
+  max-width: unset;
+  padding: 8px;
+  width: 30px;
+}
+@media (max-width: 47.99em) {
+  #truste-consent-header {
+    order: unset;
+  }
+}
+
+@media (max-width: 47.99em) {
+  .truste-icon-box {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    z-index: 999;
+  }
+}
+
+.truste-messageColumn {
+  border-right: 1px solid #d9dbe1;
   color: #32363b;
-  font-family: "Source Sans Pro", sans-serif;
+  flex: 1;
   font-size: 14px;
+  line-height: 20px;
+  padding-right: 16px;
+}
+.truste-messageColumn h2 {
+  font-size: 16px;
+  font-weight: 600;
   letter-spacing: 0;
-  line-height: 1.4285714286;
-  margin-bottom: 8px;
+  line-height: 24px;
+  margin: 0 0 10px;
 }
-#consent_blackbar a {
+.truste-messageColumn a {
   color: #02b159;
+  text-decoration: underline;
 }
-#consent_blackbar #truste-consent-buttons {
-  text-align: right;
+@media (max-width: 47.99em) {
+  .truste-messageColumn {
+    border-right: none;
+    padding-right: 0;
+  }
 }
-#consent_blackbar #truste-consent-buttons button,
-#consent_blackbar #truste-consent-buttons a {
-  border: 0 solid;
+
+.truste-buttonsColumn {
+  align-items: center;
+  display: flex;
+  flex: none;
+  gap: 8px;
+}
+.truste-buttonsColumn button {
+  background-clip: border-box;
+  background-color: #02b159;
+  border: 2px solid transparent;
   border-radius: 4px;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  line-height: 1.307692308;
-  padding: 0.846153846em 20px;
+  line-height: 16px;
+  padding: 12px 24px;
   text-align: center;
   text-decoration: none;
+  white-space: nowrap;
 }
-#consent_blackbar #truste-consent-buttons button, #consent_blackbar #truste-consent-buttons button:visited,
-#consent_blackbar #truste-consent-buttons a,
-#consent_blackbar #truste-consent-buttons a:visited {
-  background-color: transparent;
-  border-color: #d9dbe1;
-  color: #5e6065;
-}
-#consent_blackbar #truste-consent-buttons button:hover,
-#consent_blackbar #truste-consent-buttons a:hover {
-  background-color: transparent;
+.truste-buttonsColumn #truste-show-consent {
+  background-color: #ffffff;
   border-color: #02b159;
   color: #02b159;
 }
-#consent_blackbar #truste-consent-buttons button + button,
-#consent_blackbar #truste-consent-buttons button + a,
-#consent_blackbar #truste-consent-buttons a + button,
-#consent_blackbar #truste-consent-buttons a + a {
-  margin-left: 12px;
+@media (min-width: 48em) and (max-width: 61.99em) {
+  .truste-buttonsColumn {
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
-#consent_blackbar #truste-consent-buttons #truste-consent-button, #consent_blackbar #truste-consent-buttons #truste-consent-button:visited {
-  background-color: #02b159;
-  border-color: #02b159;
-  color: #ffffff;
+@media (max-width: 47.99em) {
+  .truste-buttonsColumn {
+    justify-content: flex-end;
+  }
+  .truste-buttonsColumn :is(button, a) {
+    padding: 8px 16px;
+  }
 }
-#consent_blackbar #truste-consent-buttons #truste-consent-button:hover {
-  background-color: #32363b;
-  border-color: #32363b;
-  color: #ffffff;
-}
+
 button#cookie-prefs-icon {
   background: transparent;
   border: none;
   bottom: 16px;
-  color: #5e6065;
+  color: #494C51;
   cursor: pointer;
   left: 16px;
   padding: 1px 6px;
