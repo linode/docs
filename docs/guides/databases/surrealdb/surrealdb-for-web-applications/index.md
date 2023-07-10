@@ -32,25 +32,25 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## How to Prepare SurrealDB
 
-Before working with SurrealDB as a backend for your web application, you need to have a SurrealDB instance ready for the role. This section of the tutorial provides a full example of how to set up a basic SurrealDB instance to support an example web application.
+Before working with SurrealDB as a backend for your web application, you need to have a SurrealDB instance ready for the role. This section of the tutorial shows how to set up a basic SurrealDB instance to support an example web application.
 
 Many of the steps here build on mechanics covered in our other SurrealDB guides linked below. Refer to those in full when you are ready to learn more and expand on the fundamentals.
 
 ### Setting Up a SurrealDB Instance
 
-The first step is to have a SurrealDB server installed and running on your system. Moreover, you should have this server operating with some basic security considerations, since you intend to start using it in your application right away.
+The first step is to have a SurrealDB server installed and running. Additionally, the server should operate with some basic security considerations, since you intend to start using it in your application right away.
 
-To lay this foundation for using SurrealDB, you can follow two of our previous guides:
+To lay this foundation, follow two of our previous guides:
 
--   Use [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/) to learn how to install and run SurrealDB
+-   Use [Getting Started with SurrealDB](/docs/guides/getting-started-with-surrealdb/) to learn how to install and run SurrealDB.
 
--   Use [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/) to learn about creating limited users and disabling root access
+-   Use [Managing Security and Access Control for SurrealDB](/docs/guides/managing-security-and-access-for-surrealdb/) to learn about creating limited users and disabling root access.
 
-Referencing those two guides, you need to do the following to keep up with the rest of this tutorial.
+Referencing those two guides, you need to do the following to keep up with the rest of this tutorial:
 
-1.  To install SurrealDB on your system, see the relevant section of the **Getting Started** guide linked above.
+1.  See the relevant section of the **Getting Started** guide linked above to install SurrealDB.
 
-1.  Start SurrealDB on `localhost` with an initial root user and using local file storage:
+1.  Start SurrealDB on `localhost` with an initial root user and local file storage:
 
     ```command
     surreal start --bind 127.0.0.1:8000 --user root --pass exampleRootPass file:///home/example-user/.surrealdb/example.db
@@ -62,13 +62,13 @@ Referencing those two guides, you need to do the following to keep up with the r
     surreal sql --conn http://localhost:8000 --user root --pass exampleRootPass --ns application --db todo --pretty
     ```
 
-1.  Create a limited user with database-level access. This example names the user `exampleUser`:
+1.  Create a limited user with database-level access. This example names the user `exampleUser`.
 
     ```command
     DEFINE LOGIN exampleUser ON DATABASE PASSWORD 'examplePass';
     ```
 
-1.  Close the SurrealDB CLI and stop the SurrealDB server. Both of these can be done with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination.
+1.  Close the SurrealDB CLI and stop the SurrealDB server with the <kbd>Ctrl</kbd> + <kbd>C</kbd> key combination.
 
 1.  Open the default port (`8000`) for the SurrealDB server in your system's firewall:
 
@@ -90,7 +90,7 @@ Referencing those two guides, you need to do the following to keep up with the r
     ```{{< /tab >}}
     {{< /tabs >}}
 
-1.  Start up the SurrealDB server using the same local file storage as before, but remove the root user and bind the server to any address:
+1.  Start the SurrealDB server using the same local file storage as before, but remove the root user and bind the server to any address:
 
     ```command
     surreal start --bind 0.0.0.0:8000 file:///home/example-user/.surrealdb/example.db
@@ -100,7 +100,7 @@ Referencing those two guides, you need to do the following to keep up with the r
 
 To prepare the SurrealDB database for the application, you should define the schemas that your application needs. The schemas your application needs vary widely depending on your application, and you need to plan out its features to model your databases effectively.
 
-Since this tutorial has an example to-do list application to demonstrate, the steps here can provide a basic model. Follow along to see how you can use SurrealDB's `DEFINE` commands to craft a database for your application's needs.
+Since this tutorial uses an example to-do list application to demonstrate, the steps here can provide a basic model. Follow along to see how you can use SurrealDB's `DEFINE` commands to craft a database for your own application's needs.
 
 For more on modeling databases in SurrealDB, take a look at the SurrealDB documentation linked at the end of this guide. For more advanced modeling ideas, check out our [Modeling Data with SurrealDB’s Inter-document Relations](/docs/guides/surrealdb-interdocument-modeling/) guide.
 
@@ -161,7 +161,7 @@ For more on modeling databases in SurrealDB, take a look at the SurrealDB docume
 
 The SurrealDB database is now prepared to act as the backend for your application. The SurrealDB server exposes a set of HTTP APIs. Your frontend application can then leverage these APIs. In many cases, this eliminates the need for a separate backend application.
 
-Moreover, the schema setups in the previous section allow you to work with the SurrealDB endpoints more readily. By managing the schemas' default values and restrictions, you can implement logic that distinguishes API access.
+Moreover, the schema setups in the previous section allow you to work with the SurrealDB endpoints more easily. By managing the schemas' default values and restrictions, you can implement logic that distinguishes API access.
 
 All of this makes SurrealDB an excellent backend for Jamstack architectures, which is what the rest of this guide uses. You can learn more about Jamstack through our guide [Getting Started with the Jamstack](/docs/guides/what-is-jamstack/).
 
@@ -186,7 +186,7 @@ Before developing the code for the Gatsby frontend, you need to install some pre
     npm install -g gatsby-cli
     ```
 
-1.  Generate the new Gatsby project from the default starter template, then change into the project directory. The command here create the new project as `surreal-example-app` in the current user's home directory.
+1.  Generate the new Gatsby project from the default starter template, then change into the project directory. The command here creates the new project as `surreal-example-app` in the current user's home directory:
 
     ```command
     cd ~/
@@ -194,13 +194,13 @@ Before developing the code for the Gatsby frontend, you need to install some pre
     cd surreal-example-app/
     ```
 
-1.  Install the SurrealDB JavaScript library to the project. While the project could interact with the SurrealDB server via HTTP, the SurrealDB library gives a much more convenient interface.
+1.  Install the SurrealDB JavaScript library to the project. While the project could interact with the SurrealDB server via HTTP, the SurrealDB library provides a much more convenient interface.
 
     ```command
     npm install surrealdb.js --save
     ```
 
-1.  Customize the project's metadata as you would like. The metadata for the Gatsby application is stored in the `gatsby-config.js` file.
+1.  Customize the project's metadata as you see fit. The metadata for the Gatsby application is stored in the `gatsby-config.js` file.
 
     ```command
     nano gatsby-config.js
@@ -231,7 +231,7 @@ Before developing the code for the Gatsby frontend, you need to install some pre
     ```
     {{< /tab >}}
     {{< tab "RHEL-based" >}}
-    On a CentOS or similar system (like AlmaLinux or Rocky Linux), use commands like the following to open the port:
+    On a CentOS Stream or similar system (e.g. AlmaLinux or Rocky Linux), use commands like the following to open the port:
 
     ```command
     sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
@@ -488,7 +488,7 @@ Throughout the example code that follows, comments are provided to help navigate
     nano src/components/home.js
     ```
 
-1.  Give that file the contents below to create the `Home` component, rendering the to-do list for a logged-in user:
+1.  Give it the contents below to create the `Home` component, rendering the to-do list for a logged-in user:
 
     ```file {title="src/components/home.js" lang="js"}
     // Import modules for rendering the component and for React's state and
@@ -603,7 +603,7 @@ Throughout the example code that follows, comments are provided to help navigate
     nano src/services/auth.js
     ```
 
-1.  Give the file the contents below to create a set of service functions for authenticating SurrealDB user sessions. Make sure to replace `<SurrealDB-Server-IP-Addres-Or-Domain-Name>` with your actual SurrealDB server's IP address or domain name, if configured.
+1.  Give it the contents below to create a set of service functions for authenticating SurrealDB user sessions. Make sure to replace `<SurrealDB-Server-IP-Addres-Or-Domain-Name>` with your actual SurrealDB server's IP address or domain name, if configured.
 
     ```file {title="src/services/auth.js" lang="js" hl_lines="6"}
     // Import the SurrealDB library
@@ -756,25 +756,25 @@ Throughout the example code that follows, comments are provided to help navigate
 
 ## How to Run the Serverless Application with a SurrealDB Backend
 
-Now it's time to see the whole setup in action. With the server configured, running, and the application built, you can start up the Gatsby development server to see the example application.
+Now it's time to see the whole setup in action. With the server configured, running, and the application built, you can start the Gatsby development server to see the example application.
 
 Follow along with the steps here to ensure that everything is in place and start using the application.
 
 Further on you can find a suggestion for how to prepare the application for production deployment. It specifically focuses on using object storage for an efficient Jamstack deployment.
 
-1. Make sure the SurrealDB server is running on the expected address and port and using the database file from before:
+1.  Make sure the SurrealDB server is running on the expected address and port and using the database file from before:
 
     ```command
     surreal start --bind 0.0.0.0:8000 file:///home/example-user/.surrealdb/example.db
     ```
 
-1. Start up the Gatsby development server again using the same address and port as when you initially tested the Gatsby project further above:
+1.  Start the Gatsby development server again using the same address and port as when you initially tested the Gatsby project further above:
 
     ```command
     gatsby develop -H 0.0.0.0 -p 8080
     ```
 
-1. Open a web browser and navigate to port `8080` on your system's public IP address.
+1.  Open a web browser and navigate to port `8080` on your system's public IP address.
 
 You should now see the login page for the example to-do list application:
 
@@ -802,7 +802,7 @@ The steps that follow outline a method for deploying the Gatsby application crea
     gatsby build
     ```
 
-1.  Install `s3cmd` and configure it for your Linode Object Storage instance. See how to do that in our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/).
+1.  Install `s3cmd` and configure it for your Linode Object Storage credentials and settings. See how to do that in our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/).
 
 1.  Use `s3cmd` to create a new bucket, initialize the bucket as a website, and sync the application's static files to the bucket:
 
@@ -812,9 +812,9 @@ The steps that follow outline a method for deploying the Gatsby application crea
     s3cmd --no-mime-magic --acl-public --delete-removed --delete-after sync public/ s3://example-surreal-app
     ```
 
-1.  Create a `CNAME` domain record mapping the object storage bucket's URL to the same domain name as your SurrealDB server. Doing so can help prevent CORS-related difficulties.
+1.  At this point, you can access the application at the Linode Object Storage website URL, such as `example-surreal-app.website-[cluster-id].linodeobjects.com`.
 
-    See how to do this in the *Next Steps* section of the [object storage deployment guide](/docs/guides/host-static-site-object-storage/#optional-next-steps).
+1.  **Optional**: If using a custom domain name, create a `CNAME` domain record mapping the object storage bucket's URL to the same domain name as your SurrealDB server. Doing so can help prevent CORS-related difficulties. See how to do this in the *Next Steps* section of the [object storage deployment guide](/docs/guides/host-static-site-object-storage/#optional-next-steps).
 
 ## Conclusion
 
