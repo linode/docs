@@ -44,24 +44,24 @@ To begin unit testing in Go, start with a small Go program. Once you understand 
     package main
 
     import (
-      "fmt"
-      "os"
+        "fmt"
+        "os"
     )
 
     func main() {
-      var name string
+        var name string
 
-      if len(os.Args) > 1 {
-        name = os.Args[1]
-      } else {
-        name = "World"
-      }
+        if len(os.Args) > 1 {
+            name = os.Args[1]
+        } else {
+            name = "World"
+        }
 
-      fmt.Println(GetHelloMessage(name))
+        fmt.Println(GetHelloMessage(name))
     }
 
     func GetHelloMessage(name string) string {
-      return "Hello, " + name + "."
+        return "Hello, " + name + "."
     }
     ```
 
@@ -114,18 +114,18 @@ To focus on the middle operation of formatting a greeting based on the name, cre
     package main
 
     import (
-      "strings"
-      "testing"
+        "strings"
+        "testing"
     )
 
     func Test1(t *testing.T) {
-      testData := []string{"World", "Dylan", "Erin"}
-      for _, name := range testData {
-        message := GetHelloMessage(name)
-        if !strings.Contains(message, name) {
-          t.Errorf("'%s' does not contain '%s'.", message, name)
+        testData := []string{"World", "Dylan", "Erin"}
+        for _, name := range testData {
+            message := GetHelloMessage(name)
+            if !strings.Contains(message, name) {
+                t.Errorf("'%s' does not contain '%s'.", message, name)
+            }
         }
-      }
     }
 
     ```
@@ -155,22 +155,22 @@ It is important to be familiar with test failures and understand how they are re
 package main
 
 import (
-	"strings"
-	"testing"
+	  "strings"
+	  "testing"
 )
 
 func Test1(t *testing.T) {
-	testData := []string{"World", "Dylan", "Erin"}
-	for _, name := range testData {
-		message := GetHelloMessage(name)
-		if !strings.Contains(message, name) {
-			t.Errorf("'%s' does not contain '%s'.", message, name)
-		}
-	}
+	  testData := []string{"World", "Dylan", "Erin"}
+	  for _, name := range testData {
+		    message := GetHelloMessage(name)
+		    if !strings.Contains(message, name) {
+			      t.Errorf("'%s' does not contain '%s'.", message, name)
+		    }
+    }
 }
 
 func Test2(t *testing.T) {
-	t.Errorf("An example of a failed test.")
+	  t.Errorf("An example of a failed test.")
 }
 ```
 
