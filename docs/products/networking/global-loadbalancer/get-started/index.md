@@ -33,31 +33,35 @@ Once your application has been deployed on multiple Compute Instances, you are r
 
 1. **Load Balancer:** Label the load balancer and select regions.
 
-1. **Entry Point:** Select the entry point protocol and port the load balancer uses to listen on.
+1. **Entry Point:** Select the entry point protocol (TCP or HTTP) and port the load balancer uses to listen on.
+
+1. **Certificates:** Upload your certificate and private key.
 
 1. **Routes:** Create routes and route rules used to select the service target.
 
-1. **Targets:** Configure the service endpoint (target) and its policy type, certificates and health checks.
+1. **Targets:** Configure the service endpoints (targets) and their policy type and health checks.
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
 ### Label the Load Balancer and Select Regions
 1. Log in to the [Cloud Manager](https://cloud.linode.com), select Load Balancers from the left menu, and click the **Create Global Load Balancer** button. This displays the *Load Balancers Create* form.
 
-1. Enter a **Label/Name** for this Load Balancer. The label can contain ...and must be unique.
+1. Enter a **Name** for this Load Balancer that uniquely identifies it from other load balancers. Consider using a name that indicates the load balancers purpose. The **Name** can contain between 3? and 32? alphanumeric characters.
+
+1. Optionally, create tags to help organize and group your load balancers.
 
 1. Select the **Regions** where this load balancer processes requests. If your client traffic and targets are limited to a particular geography, select that region. You can also select multiple regions or `All` for global coverage. The number of regions selected, is one of the factors that determines the [Pricing](/docs/products/networking/global-loadbalancer/#pricing) for this load balancer.
 
 ### Select the Entry Point Protocol and Port
-The Load Balancer Entry Point defines the  
+An Entry Point defines the port the load balancer listens on and the protocol for routing incoming traffic to the service targets. Once the port is selected, the name for the Entry Point is created.
 
 1. Within the **Entry Point Configuration** area, select the protocol and enter the port number used to listen to incoming requests.
 
     - **Protocol:** The protocol can be set to either TCP, HTTP, or HTTPS. The *TCP* protocol supports HTTP/1.1 and HTTP/2, and maintains encrypted connections to the backend Compute Instances. If you intend to manage and terminate the TLS certificate on the Global Load Balancer, use *HTTP* for port 80 and *HTTPS* for port 443.
 
-        - **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. This should be selected when you want to enable layer 4 load balancing, use TLS/SSL pass-through, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the Global Load Balancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
+        - **TCP**: Supports most application-layer protocols, including HTTP and HTTPS. TCP should be selected when you want to enable layer 4 load balancing, use TLS/SSL pass-through, use HTTP/2.0 or higher, balance non-HTTP services, or make use of [Proxy Protocol](#proxy-protocol). Since the Global Load Balancer serves as a pass-through for these TCP packets, any encrypted traffic is preserved and must be decrypted on the backend nodes.
 
-        - **HTTP:** Unencrypted web traffic using HTTP/1.1 or HTTP/2. This terminates the HTTP request on the Global Load Balancer, allowing the Load Balancer to create a new HTTP request to the backend machines. This can be used when serving most standard web applications, especially if you intend on configuring the Global Load Balancer to use HTTPS mode with TLS/SSL termination.
+        - **HTTP:** Unencrypted web traffic using HTTP/1.1 or HTTP/2. When HTTP is selected, the HTTP request is terminated on the Global Load Balancer, allowing the Load Balancer to create a new HTTP request to the backend machines. This can be used when serving most standard web applications, especially if you intend on configuring the Global Load Balancer to use HTTPS mode with TLS/SSL termination.
 
         - **HTTPS:** Encrypted web traffic using HTTP/1.1 or HTTP/2. Since this terminates the request on the Global Load Balancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish to configure TLS/SSL certificates on the Global Load Balancer and not on individual backend nodes.
         
@@ -66,20 +70,44 @@ The Load Balancer Entry Point defines the
     - **Port:** This is the *inbound* port that the Global Load Balancer is listening on. This can be any port from 1 through 65534, though it should be set to whichever port the client software connects to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
 
 
-1. Click **Authorization**, to install an SSL certificate on your Global Load Balancer to redirect all web connections over port 443/HTTPS using SSL.
+1. When the HTTPS protocol is selected, click **Authorization**, you need to install an SSL certificate on your Global Load Balancer to redirect all web connections over port 443/HTTPS using SSL.
 
     - **SSL Certificate:** Paste the PEM-formatted contents of your SSL certificate. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another. The certificate must be signed using the RSA algorithm, which is the default in most cases.
 
     - **Private Key:** Paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
 
-1. Add the **Entry Point Label**.
-
 ###  Configure Routes
-Each Entry Point includes a list of **Routes**. Routes are the set of rules that the load balancer uses to select the target for the incoming request.
+ **Routes** provide the set of traffic routing rules that the load balancer uses to select the target for the incoming request.
 
-  - **Algorithm:** Controls how new connections are allocated across backend targets. The *Performance* method selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. The *Weighted* method routes requests to backend targets according to the proportion (%) configured. See [Configuration Options > Algorithm](/docs/products/networking/global-loadbalancer-drafts/guides/configure/#algorithm).
+1. Enter a **Route Name** for this route that uniquely identifies it from other Routes. The **Route Name** can contain between 3? and 32? alphanumeric characters.
 
-    - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend target. For testing, consider keeping Session Stickiness off. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
+1. Add an optional **Default target** to use if no rule matches. Without a default target, non-matching requests are rejected.
+
+###  Select the Load Balancing Algorithm and Add Match Rules for Each Route
+The load balancing **Algorithm** controls how new connections are allocated across backend targets. Performance and Weighted methods are supported.
+- **Performance:** selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. 
+- **Weighted:** routes requests to backend targets according to the proportion (%) configured.
+
+A match rule consists of a **Match Type**, and a pattern to match. If an optional hostname is specified, the rule applies only to traffic that is directed to that target. If a hostname is not specified, the rule applies to all targets. Rules are evaluated in order, with the first match winning. Each rule can specify only one field/pattern pair (AND/OR logic is not supported). A match rule can also specify a session-affinity cookie to be applied whenever the match applies.
+
+| Match Type     | Description |Examples       |Operators|Wildcards|Case Sensitivity|
+|----------------|-------------|--------------|---------|---------|----------------|
+|**Path Prefix**  | A URL path prefix. The format of the path entry is as follows: /pathprefix1/pathprefix2. The initial slash is required, the trailing slash is not.| /images |is one of |?|?|
+|**Query**        | Exact match based on both the name of the query and the single URL query value to match on. If there is no value, the match is to any request that contains the parameter.|?svc=images| ? | ? | ?|
+|**Header**       | Exact match based on both the name of a request header and its value. If no value is entered, any request containing the header name produces a match.|X-route-header=images|is |?|?|
+|**Method**       |Match based the type of request method.|GET, DELETE, POST, PUT |is|?|?|
+
+1. Enter a **Rule Label**.
+
+1. If this rule applies to a specific target, enter the hostname of the target or select the target. If a hostname or target is not specified, the rule applies to all targets. Wildcards (*) are supported.
+
+1. Select the load balancing **Algorithm**. If Weighted is selected, enter the percentage of traffic that should be routed to the target. All of the percentages must equal 100%. 
+
+1. Select a **Match Type**.
+
+1. Select an operator and enter the Match Value.
+
+   - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend target. For testing, consider keeping Session Stickiness off. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
 
     - **Health Checks:** Load Balancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/global-loadbalancer/guides/configure/#health-checks) for additional information.
 

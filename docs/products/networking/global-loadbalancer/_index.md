@@ -89,6 +89,7 @@ You can select to route your clients traffic to one of your backends using one o
 Traffic is only routed to healthy backends. Passive health checks happen on every request. You can configure active health checks based on your application or service. If the target becomes unfit, the load balancer moves traffic away from the unhealthy target. When a new target is added, Akamai Global Load Balancer tests the fitness of the target to verify the target is active, and ready to support large traffic spikes.
 
 ## Certificate Management
+Global Load Balancer uses a bring-you-own certificate model. Your certificate and it's private key are directly uploaded to a vault using Cloud Manager or APIv4.
 
 ## Observability
 Akamai Global Load Balancer provides real-time metrics, logs and traces through third party observability tools and providers.

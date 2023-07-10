@@ -1,7 +1,7 @@
 ---
 title: "Manage Global Balancer"
 description: "Learn how to view, edit, and delete Global Load Balancer."
-published: 2022-10-07
+published: 2023-07-06
 authors: ["Akamai"]
 ---
 
