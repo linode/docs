@@ -154,22 +154,22 @@ It is important to be familiar with test failures and understand how they are re
 package main
 
 import (
-	  "strings"
-	  "testing"
+    "strings"
+    "testing"
 )
 
 func Test1(t *testing.T) {
-	  testData := []string{"World", "Dylan", "Erin"}
-	  for _, name := range testData {
-		    message := GetHelloMessage(name)
-		    if !strings.Contains(message, name) {
-			      t.Errorf("'%s' does not contain '%s'.", message, name)
-		    }
+    testData := []string{"World", "Dylan", "Erin"}
+    for _, name := range testData {
+        message := GetHelloMessage(name)
+        if !strings.Contains(message, name) {
+            t.Errorf("'%s' does not contain '%s'.", message, name)
+        }
     }
 }
 
 func Test2(t *testing.T) {
-	  t.Errorf("An example of a failed test.")
+    t.Errorf("An example of a failed test.")
 }
 ```
 
@@ -180,7 +180,7 @@ With this updated code in place, run the `go test` command and the result looks 
         hello-world_test.go:19: An example of a failed test.
 FAIL
 exit status 1
-FAIL	hello-world	0.617s
+FAIL  hello-world 0.617s
 
 ```
 
