@@ -52,17 +52,31 @@ To start with SurrealDB, install a standalone instance on your system. SurrealDB
 SurrealDB can also be [run as a Docker container](https://surrealdb.com/docs/installation/running/docker). This tutorial, however, focuses on a full installation of SurrealDB to provide a more versatile installation to work with.
 {{< /note >}}
 
-1.  Install Tar to extract `tar` packages as this is required for part of the installation script's process. Also install the `jq` tool to "pretty print" JSON outputs for better legibility later on in the tutorial.
+1.  Install Tar to extract `tar` packages as this is required for part of the installation script's process:
 
     {{< tabs >}}
-    {{< tab "Debian and Ubuntu" >}}
+    {{< tab "Debian-based" >}}
     ```command
-    sudo apt install tar jq
+    sudo apt install tar
     ```
     {{< /tab >}}
-    {{< tab "AlmaLinux, CentOS Stream, and Rocky Linux" >}}
+    {{< tab "RHEL-based" >}}
     ```command
-    sudo dnf install tar jq
+    sudo dnf install tar
+    ```{{< /tab >}}
+    {{< /tabs >}}
+
+1.  While optional, also install the `jq` tool to more legibly print cURL outputs later on in the tutorial:
+
+    {{< tabs >}}
+    {{< tab "Debian-based" >}}
+    ```command
+    sudo apt install jq
+    ```
+    {{< /tab >}}
+    {{< tab "RHEL-based" >}}
+    ```command
+    sudo dnf install jq
     ```{{< /tab >}}
     {{< /tabs >}}
 
@@ -156,9 +170,9 @@ surreal start --bind 127.0.0.1:8000 --user root --pass exampleRootPass memory
 
 In addition to the server, the `surreal` binary includes an `sql` command to run SurrealDB's CLI tool. This provides easy access to the SurrealDB server and is probably the best way to learn SurrealDB queries.
 
-1.  To begin, open a second terminal for the SurrealDB CLI, as the original is still running the SurrealDB server. The rest of the commands in this tutorial are run from this second terminal.
+1.  First, open a second terminal for the SurrealDB CLI, as the original is still running the SurrealDB server. The rest of the commands in this tutorial are run from this second terminal.
 
-1.  To start a SurrealDB CLI session, open a second terminal and use a command like the one below. This connects to a SurrealDB server started with one of the examples commands above (except for the one that changes the default port).
+1.  To start a SurrealDB CLI session, use a command like the one below. This connects to a SurrealDB server started with one of the examples commands above (except for the one that changes the default port).
 
     ```command
     surreal sql --conn http://localhost:8000 --user root --pass exampleRootPass --ns exampleNs --db exampleDb --pretty
