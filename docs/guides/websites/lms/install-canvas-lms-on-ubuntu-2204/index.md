@@ -150,7 +150,7 @@ The steps in this section explain how to install Ruby using the Ruby Environment
     ```
 
     If you have an old version of Ruby, you can upgrade it using the procedure explained in this section and select the version needed for the Canvas LMS installation.
-   
+
 1. Obtain the Rbenv installation script using the following command:
 
     ```command
@@ -233,7 +233,7 @@ Once you have the above prerequisites installed, follow the steps below to insta
     ```output
     1 gem installed
     ```
-    
+
 1. You can check if the Bundler is installed correctly by running the following command:
 
     ```command
