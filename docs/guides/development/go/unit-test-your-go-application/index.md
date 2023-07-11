@@ -114,18 +114,18 @@ To focus on the middle operation of formatting a greeting based on the name, cre
     package main
 
     import (
-      "strings"
-      "testing"
+        "strings"
+        "testing"
     )
 
     func Test1(t *testing.T) {
-      testData := []string{"World", "Dylan", "Erin"}
-      for _, name := range testData {
-        message := GetHelloMessage(name)
-        if !strings.Contains(message, name) {
-          t.Errorf("'%s' does not contain '%s'.", message, name)
+        testData := []string{"World", "Dylan", "Erin"}
+        for _, name := range testData {
+            message := GetHelloMessage(name)
+            if !strings.Contains(message, name) {
+                t.Errorf("'%s' does not contain '%s'.", message, name)
+            }
         }
-      }
     }
 
     ```
