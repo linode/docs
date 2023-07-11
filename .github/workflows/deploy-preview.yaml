@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - test-gha-cicd
+      - main
 
 env:
   hugo-image-cache-name: hugo-generated-images
@@ -41,7 +42,7 @@ jobs:
         path: 'linode-docs-theme'
         repository: 'linode/linode-docs-theme'
         fetch-depth: 0
-        ssh-key: "${{ secrets.LINODE_DOCS_THEME_REPO_DEPLOY_KEY }}"
+        ssh-key: "${{ secrets.LINODE_DOCS_THEME_DEPLOY_KEY_FOR_DOCS_DEPLOY_GHA }}"
 
     - name: Check out theme repo commit from docs repo go.mod
       working-directory: ./linode-docs-theme
