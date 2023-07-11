@@ -5,21 +5,21 @@
         {{ if not (or .values .deprecatedguides) }}disabled{{ end }}
         type="button"
         @click="open = !open"
-        :class="{ 'bg-gray-300 rounded-tr-md border-opacity-100': open }"
+        :class="{ 'bg-gray-300 rounded-tr-md border-gray-300/100': open }"
         class="flex justify-between w-full px-4 py-3 leading-5 font-bold text-gray-700 focus:outline-none transition ease-in-out duration-100 "
         aria-expanded="true"
         aria-haspopup="true">
-        <div class="flex-grow text-right">
+        <div class="grow text-right">
           {{ with .text }}
             {{ . }}
           {{ end }}
         </div>
-        <div class="flex-grow-0" x-show="open">
+        <div class="grow-0" x-show="open">
           <svg class="fill-current -mr-1 ml-2 h-4 w-5">
             <use href="#icon--arrow-up"></use>
           </svg>
         </div>
-        <div class="flex-grow-0" x-show="!open">
+        <div class="grow-0" x-show="!open">
           <svg class="fill-current -mr-1 ml-2 h-4 w-5">
             <use href="#icon--arrow-down"></use>
           </svg>
