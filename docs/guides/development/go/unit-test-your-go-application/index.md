@@ -127,7 +127,6 @@ To focus on the middle operation of formatting a greeting based on the name, cre
             }
         }
     }
-
     ```
 
     This unit test formats the greeting for the names `World`, `Dylan`, and `Erin` and verifies that each greeting contains the respective name. If any of these confirmations fail, the unit test prints a notice indicating that the expected name was not found in the greeting and exits with an error condition.
