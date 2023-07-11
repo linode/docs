@@ -188,8 +188,10 @@ services.openssh = {
   permitRootLogin = "yes";
 };
 {{< /file >}}
-
-After installation, create a user with limited permissions, then set `permitRootLogin` to `"no"`.
+{{< note type="alert" respectIndent=false >}}
+If you are installing NixOS version 23.x or later set the `services.openssh.settings.PermitRootLogin` option to `"yes"`.
+{{< /note >}}
+After installation, create a user with limited permissions, then set `permitRootLogin` or `services.openssh.settings.PermitRootLogin` to `"no"`.
 
 ### Disable Predictable Interface Names
 
