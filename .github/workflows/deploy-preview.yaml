@@ -1,0 +1,126 @@
+name: CI Tests
+
+on:
+  push:
+    branches:
+      - test-gha-cicd
+
+env:
+  hugo-image-cache-name: hugo-generated-images
+  hugo-repo-path: /home/runner/work/docs/docs/docs/
+  hugo-image-cache-path: /home/runner/work/docs/docs/docs/resources/_gen/images/
+
+jobs:
+  preview-site:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: deploy_to_main_staging_server
+
+    steps:
+    - name: Set up Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.111.3'
+
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+      with:
+        path: 'docs'
+
+    - name: Get linode-docs-theme version
+      id: get-theme-version
+      working-directory: ./docs
+      run: |
+        LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
+        echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
+
+    - name: Checkout docs theme repo
+      uses: actions/checkout@v3
+      with:
+        path: 'linode-docs-theme'
+        repository: 'linode/linode-docs-theme'
+        fetch-depth: 0
+        ssh-key: "${{ secrets.LINODE_DOCS_THEME_REPO_DEPLOY_KEY }}"
+
+    - name: Check out theme repo commit from docs repo go.mod
+      working-directory: ./linode-docs-theme
+      run: |
+        git checkout ${{ steps.get-theme-version.outputs.VERSION }}
+
+    - name: Print Linode Algolia admin tool version
+      working-directory: ./linode-docs-theme
+      run: |
+        cd scripts/linode_algolia_admin/
+        go run main.go version
+
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo-image-cache-path }}
+
+    - name: Restore Hugo generated images cache
+      uses: ylemkimon/cache-restore@v2
+      with:
+        path: ${{ env.hugo-image-cache-path }}
+        key: ${{ env.hugo-image-cache-name }}
+        restore-keys: ${{ env.hugo-image-cache-name }}
+
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo-image-cache-path }}
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Install dependencies (Node)
+      working-directory: ./docs
+      run: npm ci
+
+    - name: Build Hugo
+      env:
+        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+      working-directory: ./docs
+      run: |
+        hugo config
+
+        # TODO: set env variables:
+        # baseURL
+        # ... look up in deploy.sh
+
+        hugo
+
+    - name: List rendered files
+      working-directory: ./docs
+      run: |
+        sudo apt install -y tree
+        tree -L 1 public
+
+    - name: Update Algolia (sandbox)
+      working-directory: ./linode-docs-theme
+      env:
+        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+        ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+      run: |
+        cd scripts/linode_algolia_admin/
+
+        # The testing-docs-prefix-update sequence does the following:
+        # - Downloads data from the starter_ prefixed linode-wp,
+        #   linode-community, and linode-documentation-sections indices to the
+        #   GitHub Action workspace
+        # - Pushes the rendered index JSON files under the public/ folder
+        #   in the docs repo from Hugo to Algolia. These are:
+        #   - public/index.json
+        #   - public/api/index.json
+        #   - public/data/sections/index.json
+        # - Merge the data from the separate indices and push it into the
+        #   PREFIX_linode-merged index in Algolia
+        # - Update the settings and synonyms for the PREFIX_linode-merged index
+        #   in Algolia
+        # - Delete the PREFIX_linode-documentation and
+        #   PREFIX_linode-documentation-api indices in Algolia to save space
+        go run main.go sequence -source-dir ../../../docs/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX
