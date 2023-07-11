@@ -79,18 +79,22 @@ Many users employ provisioning tools like Terraform and configuration management
 
 The [Managed Database](/docs/products/databases/managed-databases/) service is an easy-to-use and fully-managed database solution. When a database is deployed through Managed Databases, the infrastructure, software, firewall, and high availability systems are configured automatically. This saves you time and resources. Once provisioned, you can add your application's IP addresses to allow traffic and then connect to the database directly from your application.
 
-Managed Databases can be deployed with a single node (1 underlying machine) or a cluster of 3 nodes. Using 3 nodes provides you with a highly available database cluster, complete with data redundancy and automatic failover. Further, you can customize the size of the underlying machines and select from [Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/) or [Shared CPU](/docs/products/compute/compute-instances/plans/shared-cpu/) Compute Instance plans. Since the underlying machines are fully-managed, direct root or console access is not provided and there is limited customization options for the database software.
+Managed Databases can be deployed with a single node (1 underlying machine) or a cluster of 3 nodes. Using 3 nodes provides you with a highly available database cluster, complete with data redundancy and automatic failover. Further, you can customize the size of the nodes and select from [Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/) or [Shared CPU](/docs/products/compute/compute-instances/plans/shared-cpu/) Compute Instance plans. Since the underlying machines are fully-managed, direct root or console access is not provided and there is limited customization options for the database software.
 
 Currently, the following databases are supported. Click on each database below to learn more and to view the available software versions.
 
 - [MySQL](/docs/products/databases/managed-databases/guides/database-engines/#mysql)
 - [PostgreSQL](/docs/products/databases/managed-databases/guides/database-engines/#postgresql)
 
+{{< note >}}
+Updates and security patches are automatically applied to the underlying operating system but *not* to the database software. For more details, review the [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/) guide.
+{{< /note >}}
+
 ### Marketplace Apps and Clusters
 
 *Use Marketplace Apps when you want to automatically install popular databases but need to retain full control over the software and underlying system.*
 
-Another solution available on our platform is Marketplace Apps, which can greatly simplify application provisioning. When deploying a Marketplace App, a Compute Instance is created on your account. When the Compute Instance first boots up, a script is run to automatically install and configure the application. Beyond this automatic installation, you have root access and full control over the Compute Instance. This means that you are also responsible for managing, configuring, and updating the application.
+Another solution available on our platform is Marketplace Apps, which can greatly simplify application provisioning. When deploying a Marketplace App, a Compute Instance is created on your account. When the Compute Instance first boots up, a script runs to automatically install and configure the application. Beyond this automatic installation, you have root access and full control over the Compute Instance. This means that you are also responsible for managing and configuring the application, as well as installing updates and security patches.
 
 The following Marketplace Apps (and Clusters) are available on the Akamai cloud computing platform.
 
@@ -112,7 +116,7 @@ Other [database-related Marketplace Apps](https://www.linode.com/marketplace/cat
 
 *Directly provision your databases on Compute Instances to have full control over the installation and configuration, ideal for applications that require extensive database customization or complex configurations.*
 
-Beyond Managed Databases and Marketplace Apps, you can deploy any of your database workloads to the cloud using Compute Instances. Since Compute Instances are Linux-based virtual machines, you can install any database software required by your applications.
+Beyond Managed Databases and Marketplace Apps, you can deploy any of your database workloads to the cloud using Compute Instances. Since Compute Instances are Linux-based virtual machines, any compatible database software packages that are available on your chosen  Linux distribution can be installed. When manually hosting your database workloads, you are responsible for installation, configuration, and all aspects of database management (including applying regular security updates).
 
 There are many installation and configuration guides available on our docs site for the database management system discussed above. Click on the links below to view guides for the corresponding database:
 
