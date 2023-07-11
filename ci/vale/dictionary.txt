@@ -1658,6 +1658,7 @@ pathnames
 paypal
 PBCs
 pbr
+PDFs
 pem
 pentest
 pentesting
