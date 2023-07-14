@@ -31,9 +31,9 @@ Create a Block Storage Volume and attach it to the desired target Compute Instan
 
 1.  Run `fdisk -l` to confirm the Compute Instance's primary disk and Block Storage Volume are available as `dev/sda` and `dev/sdc`, respectively.
 
-1.  Run the following `pv` command to copy the contents of the primary disk to the Block Storage Volume. Respectively, the options `-pte` output a progress meter, the elapsed time, and the estimated time remaining.
+1.  Run the following `dd` command to copy the contents of the primary disk to the Block Storage Volume. Respectively, the option `status` output progress.
 
-        pv -pte < /dev/sda > /dev/sdc
+        dd if=/dev/sda of=/dev/sdc bs=74K conv=noerror,sync status=progress
 
 ## Set the Block Storage Volume as the Primary Disk and Reboot
 
