@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.157.1
+  version: 4.158.1
 
   title: Linode API
   description: |
@@ -12196,18 +12196,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/IPAddress'
-                  page:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/page'
-                  pages:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/pages'
-                  results:
-                    $ref: '#/components/schemas/PaginationEnvelope/properties/results'
+                $ref: '#/components/schemas/IPAddressesListResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
       x-code-samples:
@@ -21505,7 +21494,6 @@ components:
             The Region this IP address resides in.
           example: us-east
           readOnly: true
-          x-linode-filterable: true
           x-linode-cli-display: 5
     IPAddressesAssignRequest:
       type: object
@@ -21550,6 +21538,99 @@ components:
                   with at least one public address and no more than one
                   private address once all assignments have been made.
                 example: 123
+    IPAddressesListResponse:
+      description: The response data for the IP Addresses List (GET /networking/ips) command.
+      allOf:
+        - $ref: '#/components/schemas/PaginationEnvelope'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                description: >
+                  An IP address that exists in Linode's system, either IPv4 or IPv6, specific to the response for the IP Addresses List command.
+                properties:
+                  address:
+                    type: string
+                    format: ip
+                    description: >
+                      The IP address.
+                    example: 192.0.2.141
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 1
+                  gateway:
+                    type: string
+                    nullable: true
+                    format: ip
+                    description: >
+                      The default gateway for this address.
+                    example: 192.0.2.1
+                    readOnly: true
+                  subnet_mask:
+                    type: string
+                    format: ip
+                    description: >
+                      The mask that separates host bits from network bits for this address.
+                    example: 255.255.255.0
+                    readOnly: true
+                  prefix:
+                    type: integer
+                    description: >
+                      The number of bits set in the subnet mask.
+                    example: 24
+                    x-linode-filterable: true
+                    readOnly: true
+                  type:
+                    type: string
+                    enum:
+                    - ipv4
+                    - ipv6
+                    - ipv6/pool
+                    - ipv6/range
+                    description: >
+                      The type of address this is.
+                    example: ipv4
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 2
+                  public:
+                    type: boolean
+                    description: >
+                      Whether this is a public or private IP address.
+                    example: true
+                    readOnly: true
+                    x-linode-cli-display: 3
+                  rdns:
+                    type: string
+                    description: >
+                      The reverse DNS assigned to this address. For public IPv4 addresses,
+                      this will be set to a default value provided by Linode if not
+                      explicitly set.
+                    x-linode-filterable: true
+                    x-linode-cli-display: 4
+                    example: test.example.org
+                    nullable: true
+                  linode_id:
+                    type: integer
+                    description: >
+                      The ID of the Linode this address currently belongs to. For IPv4
+                      addresses, this defaults to the Linode that this address was
+                      assigned to on creation. IPv4 addresses may be moved using the
+                      [/networking/ipv4/assign](/docs/api/networking/#ips-to-linodes-assign)
+                      endpoint. For SLAAC and link-local addresses, this value may not be changed.
+                    example: 123
+                    readOnly: true
+                    x-linode-cli-display: 6
+                  region:
+                    type: string
+                    description: >
+                      The Region this IP address resides in.
+                    example: us-east
+                    readOnly: true
+                    x-linode-filterable: true
+                    x-linode-cli-display: 5
     IPAddressesShareRequest:
       type: object
       description: A request object IP Addresses Share (POST /networking/ips/share)
@@ -21642,7 +21723,6 @@ components:
             The Region this address resides in.
           example: us-east
           readOnly: true
-          x-linode-filterable: true
           x-linode-cli-display: 5
     IPAddressV6LinkLocal:
       type: object
