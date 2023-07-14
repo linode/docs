@@ -13,13 +13,6 @@ external_resources:
 - '[FreePBX Wiki](https://wiki.freepbx.org/)'
 ---
 
-https://www.forbes.com/advisor/business/what-is-pbx/
-
-https://www.linode.com/docs/products/compute/compute-instances/guides/install-a-custom-distribution/
-
-https://www.linode.com/docs/products/tools/images/guides/upload-an-image/
-
-
 FreePBX provides an open-source solution for managing calls and phone networking within your organization. Built on the powerful Asterisk VoIP server, FreePBX uses a convenient web-based graphical interface to manage virtually everything your phone system needs.
 
 The main path for deploying FreePBX is using its custom Linux distribution, saving you from manual set up of the web and VoIP servers.
@@ -86,56 +79,6 @@ To verify that, open the Akamai Cloud Manager, navigate to the page for the Comp
 
 But this is not how you access FreePBX normally. Everything can, instead, be handled from FreePBX's own web interface. Follow along in the next section for everything you need to know to access and use that interface.
 
-### Prepare the FreePBX Image
-
-https://www.linode.com/community/questions/19257/how-to-upload-an-iso-using-virtual-box-to-a-linode
-
-1.  Download the latest FreePBX image from the [official website](https://www.freepbx.org/downloads/).
-
-1.  Open VirtualBox, and select **Machine** -> **New** from the top menu.
-
-1.  Enter a name for the virtual machine, select the downloaded FreePBX image as the ISO image, and continue.
-
-1.  Use the default options, which should have at least 2GB RAM and a 20GB virtual hard drive.
-
-1.  Start up the new virtual machine, and follow the prompts to install the FreePBX distribution. You can use the recommended version option and the **Graphical Installation — Output to VGA** option.
-
-1.  Once the installation is finished, shut down the virtual machine, and use VirtualBox's **Settings** option to unmount the ISO.
-
-1.  Download [Finnix](https://www.finnix.org/Download), a live Linux distribution used as a tool for transferring Linux system images.
-
-
-
-1.  Create a Linode 8GB Compute Instance
-
-1.  Power it down, delete the main disk, and add a blank disk.
-
-1.  Alter the configuration for the instance.
-
-1.  Boot the instance into rescue mode, using the disk for `/dev/sda`, and access the instance using Lish console. Do the following there.
-
-    1.  Set a temporary password with `passwd`
-
-    1.  Start up the SSH service, `service ssh start`
-
-1.  Mount the Finnix image to your FreePBX virtual machine, using an optical drive
-
-1.  Start up the virtual machine, and select **Live Image** to start up Finnix
-
-1.  Run the following command, replacing `192.0.2.0` with your instance's public IP address
-
-    ```command
-    dd if=/dev/sda | pv | gzip -9 | ssh root@192.0.2.0 "gzip -d | dd of=/dev/sda"
-    ```
-
-1.  Wait for the transfer to complete, at which point you should see that 20GB were transferred
-
-1.  Power down your instance, then start it up again
-
-1.  After a short while, when the instance has fully started up, navigate to the GLish console to log in with the root credentials you created for the original FreePBX virtual machine
-
-    Verify that this works
-
 ## Getting Started with FreePBX
 
 With a FreePBX distribution up and running, you are ready to start setting up your PBX and VoIP server. FreePBX comes with a wide range of configuration options and modules for your PBX system. All of these allow you to set up the phone network to your particular needs.
@@ -178,7 +121,7 @@ Your FreePBX instance needs a few more settings to establish its basic setup. So
 
 Completing the initial setup above takes you to the administrator dashboard. From here you can manage your FreePBX instance's configuration and modules. That includes everything from firewall and server networking features to SSL certificate management to modules like caller ID.
 
-![The FreePBX dashboard](freepbx-dashboard.png)
+[![The FreePBX dashboard](freepbx-dashboard_small.png)](freepbx-dashboard.png)
 
 The features available within FreePBX are too numerous to cover completely here. For a more comprehensive coverage, look to the FreePBX Wiki linked at the end of this tutorial.
 
@@ -193,3 +136,7 @@ To supplement that resource, here are a few key places to get started when looki
 -  **Applications**. A menu rather than an option in itself, but, once everything else is ready, this is where you can find a wide array of call-related features. Setting up extensions, callbacks, call parking, and much more are all handled here.
 
 ## Conclusion
+
+This covers deploying, configuring, and starting to run your FreePBX system. FreePBX offers the balance of an incredible range of features with an accessible, manageable interface. So from here you should be able to put together everything you need for your organization's phone system.
+
+To help with that, take a look at the FreePBX links below. All of the "getting started" groundwork has been covered in this tutorial. For all your particular needs beyond that, the thorough and community-engaged Wiki documentation provides a wealth of information and guidance.

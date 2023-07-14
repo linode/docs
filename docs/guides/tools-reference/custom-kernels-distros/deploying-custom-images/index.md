@@ -5,14 +5,18 @@ description: "Many images can be uploaded and run directly from the Akamai Cloud
 keywords: ['custom iso to cloud','linode windows 10 install','virtual machine cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ['Nathaniel Stickman']
-published: 2023-07-13
+published: 2023-07-14
 modified_by:
   name: Nathaniel Stickman
 ---
 
-https://www.linode.com/community/questions/19257/how-to-upload-an-iso-using-virtual-box-to-a-linode
+When you need to run a custom image on Akamai Cloud, most of the time the [image upload](/docs/products/tools/images/guides/upload-an-image/) feature provides a smooth solution. Upload an operating system's disc image, and in many cases Akamai Cloud can handle the deployment from there.
 
-https://www.linode.com/docs/products/tools/images/guides/upload-an-image/
+But in some cases the system image you need to deploy needs some additional help. Whether the system has a complex installation or you need custom software before deployment, these images require more manual intervention.
+
+For such images, you can deploy to Akamai Cloud from a local virtual machine. Get the advantage of fine tuning the set up and configuration while still being able to run your desired system in the cloud.
+
+This tutorial explains more about deploying from virtual machines and shows you everything you need to know to do it yourself. Whatever system you are looking to run — from Windows 10 to a custom Linux distribution — this tutorial's instructions can help you do it.
 
 ## Why Deploy from a Virtual Machine?
 
@@ -74,15 +78,15 @@ As with all of the virtual machine steps, the details vary based on your chosen 
 
 1.  In the prompt, enter a name for the virtual machine, and use the **ISO Image** drop down to select *Other...* and locate your downloaded disc image. Verify that **Type** and **Version** roughly match your downloaded image, then select to **Skip Unattended Installation**.
 
-    ![](virtualbox-setup-image.png)
+    [![Selecting an image for a new VirtualBox VM](virtualbox-setup-image_small.png)](virtualbox-setup-image.png)
 
 1.  Keep the default options for the **Hardware** prompt.
 
-    ![](virtualbox-setup-hardware.png)
+    [![Setting hardware parameters for the new VirtualBox VM](virtualbox-setup-hardware_small.png)](virtualbox-setup-hardware.png)
 
 1.  For the **Virtual Hard Disk** prompt, select **Create a Virtual Hard Disk Now** and set the **Disk Size** to at least 20 GB. Do not pre-allocate, however.
 
-    ![](virtualbox-setup-disk.png)
+    [![Allocated a virtual hard disk for the new VirtualBox VM](virtualbox-setup-disk_small.png)](virtualbox-setup-disk.png)
 
 1.  Review the settings, and complete the virtual machine configuration.
 
@@ -92,7 +96,7 @@ As with all of the virtual machine steps, the details vary based on your chosen 
 
     The required steps for installation vary based on the operating system, so follow the prompts and the appropriate documentation for the system.
 
-    ![](vm-windows-setup.png)
+    [![Installing Windows 10 on the VM](vm-windows-setup_small.png)](vm-windows-setup.png)
 
 1.  Once the installation has finished, you should be taken into the operating system. Consider now how you intend to access the system from the Compute Instance. The Akamai Cloud Manager provides a GLish console, where you can access the system's desktop environment. But if you want remote access otherwise, you should install a VNC server or enable remote desktop on the system.
 
@@ -100,17 +104,13 @@ As with all of the virtual machine steps, the details vary based on your chosen 
 
     -   For Linux, you can install a VNC server, such as [TigerVNC](https://tigervnc.org/). You can refer to our guide [Install VNC on Ubuntu](/docs/guides/install-vnc-on-ubuntu-20-04/) for helpful steps on setting up TigerVNC, including steps for running the VNC server on system start up.
 
-
-
-    DESKTOP-1AV4UPG
-
-
-
 1.  Verify that things are as you expect, and then shut down the system. On Windows, you can shut down from the **Start** menu.
 
-    ![](vm-windows-power.png)
+    ![Powering down the Windows VM](vm-windows-power.png)
 
-1.  In the VirtualBox VM manager, with the virtual machine highlighted, select the **Settings** option. Navigate to the **Storage** tab, and locate the mounted disk image. Right-click the image, and select **Remote Attachment**.
+1.  In the VirtualBox VM manager, with the virtual machine highlighted, select the **Settings** option. Navigate to the **Storage** tab, and locate the mounted disk image. Right-click the image, and select **Remove Attachment**.
+
+    ![List of mounted devices on the VirtualBox VM](virtualbox-storage.png)
 
 Your operating system's image is now ready. Leave the virtual machine powered off for the time being. Later, a special boot process allows you to migrate the operating system to your Compute Instance.
 
@@ -122,15 +122,15 @@ The parallel steps on the cloud side of the process require you to create an emp
 
 1.  Create a new Compute Instance. The distribution image does not matter, but you should select a minimum of a **Linode 8GB** instance. This tutorial used the *Debian 11* image and a **Linode 8GB** instance, named `custom-image-linode`.
 
-    ![](cloud-manager-instance-main.png)
+    ![Landing page for the Compute Instance in the Cloud Manager](cloud-manager-instance-main.png)
 
 1.  Once the instance has a *Running* status, power it down using the **Power Off** option within the Akamai Cloud Manager.
 
-    ![](cloud-manager-instance-menu.png)
+    ![Menu options for the Compute Instance in  the Cloud Manager](cloud-manager-instance-menu.png)
 
 1.  Navigate to the page for the instance, and select the **Storage** tab. Under **Disks**, locate the primary disk, usually with the *ext4* type, and select **Delete** from the disk's menu.
 
-    ![](cloud-manager-instance-storage-menu.png)
+    [![Options for an instance disk in the Cloud Manager](cloud-manager-instance-storage-menu_small.png)](cloud-manager-instance-storage-menu.png)
 
 1.  Afterward, the **Add A Disk** option becomes available. Select that button, and complete the prompt as follows to create a new disk for the instance.
 
@@ -139,6 +139,8 @@ The parallel steps on the cloud side of the process require you to create an emp
     -   Provide a label to describe the disk
 
     -   Ensure that the **Filesystem** is *ext4* and the **Size** is the maximum allowed, both of which should be default
+
+    ![Creating a new disk on an instance in the Cloud Manager](cloud-manager-instance-create-disk.png)
 
 1.  Navigate to the instance's **Configurations** tab, and select **Add Configuration**. In the form, use the options described here.
 
@@ -192,6 +194,8 @@ To receive the virtual machine image from your local system, the Compute Instanc
 
 1. Navigate back to the page for the empty Compute Instance in the Akamai Cloud Manager. Choose the **Rescue** option from the instance menu. This gives you a prompt to boot the instance into rescue mode.
 
+    ![The Cloud Manager prompt for booting an instance into rescue mode](cloud-manager-instance-rescue-mode-prompt.png)
+
 1.  Ensure that **/dev/sda** is the empty disk you created and that **/dev/sdb** is the *Swap Image* disk. The **/dev/sdc** option should be *None*. Then select to **Reboot into Rescue Mode**.
 
 1.  From the instance page again, use the **Launch LISH Console** option. You are taken to a console into the Finnix boot manager on the Compute Instance.
@@ -225,9 +229,9 @@ With the Compute Instance in rescue mode and allowing access to the empty disk, 
 
 1.  In the prompt, select **Add** and locate the downloaded Finnix disk image file. With the Finnix image selected, complete the prompt to mount Finnix to the virtual machine.
 
-    ![](virtualbox-mount.png)
+    ![Selecting a disk image to mount in VirtualBox](virtualbox-mount.png)
 
-    ![](virtualbox-mounted.png)
+    [![A disk image mounted to a VirtualBox VM](virtualbox-mounted_small.png)](virtualbox-mounted.png)
 
 1.  With the virtual machine highlighted, select the **Start** option within the VM manager.
 
