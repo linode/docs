@@ -1,13 +1,14 @@
 [build]
 publish = "public"
-command = "hugo version && hugo --gc --minify -d public/docs;"
+command = "hugo version && hugo config && hugo --gc --minify -d public/docs;"
 
 [context.production.environment]
-HUGO_VERSION = "0.83.1"
+HUGO_VERSION = "0.111.3"
+HUGO_PARAMS_TESTENV="Netlify"
 
 [context.deploy-preview.environment]
-HUGO_VERSION = "0.83.1"
-NODE_VERSION = "14.18.1"
+HUGO_VERSION = "0.111.3"
+HUGO_PARAMS_TESTENV="Netlify"
 
 [[plugins]]
 package = "netlify-plugin-hugo-cache-resources"

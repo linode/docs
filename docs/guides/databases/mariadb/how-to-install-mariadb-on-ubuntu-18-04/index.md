@@ -1,23 +1,16 @@
 ---
 slug: how-to-install-mariadb-on-ubuntu-18-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "MariaDB is a scalable, reliable SQL Server that can serve as a drop-in replacement for MySQL. Here's how to install and configure it on Ubuntu 18.04 LTS."
-og_description: "MariaDB is a scalable, reliable SQL Server that can serve as a drop-in replacement for MySQL. Here's how to install and configure it on Ubuntu 18.04 LTS."
 keywords: ["mariadb", "Ubuntu 18.04", "ubuntu", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/databases/mariadb/mariadb-setup-ubuntu-18.04/','/databases/mariadb/how-to-install-mariadb-on-ubuntu-18-04/']
 modified: 2020-01-31
-contributor:
-    name: Ryan Syracuse
 modified_by:
   name: Linode
 published: 2020-01-31
 image: Installing_MariaDB_on_Ubuntu1804.png
-title: "How to Install MariaDB on Ubuntu 18.04"
-h1_title: "Installing MariaDB on Ubuntu 18.04"
-enable_h1: true
+title: "Installing MariaDB on Ubuntu 18.04"
+title_meta: "How to Install MariaDB on Ubuntu 18.04"
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
@@ -28,17 +21,20 @@ relations:
         keywords:
             - distribution: Ubuntu 18.04
 tags: ["ubuntu","mariadb","database"]
+authors: ["Ryan Syracuse"]
 ---
 
 MariaDB is a fork of the popular cross-platform MySQL database management system and is considered a full [drop-in replacement](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-features/) for MySQL. MariaDB was created by one of MySQL's original developers in 2009 after MySQL was acquired by Oracle during the Sun Microsystems merger. Today MariaDB is maintained and developed by the [MariaDB Foundation](https://mariadb.org/en/foundation/) and community contributors with the intention of it remaining GNU GPL software.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started/), the [Securing Your Server](/docs/security/securing-your-server/) guides, and the Linode's [hostname is set](/docs/getting-started/#set-the-hostname).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
+
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system and configure your hostname. You may also wish to set the timezone, create a limited user account, and harden SSH access.
 
     To check your hostname run:
 
@@ -47,17 +43,13 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN) if you have one assigned.
 
-1.  Update your system:
-
-        sudo apt update
-
 ## Install and Setup MariaDB
 
 Install MariaDB using the package manager.
 
     sudo apt install mariadb-server
 
-MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
+MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/), which also applies to MariaDB.
 
 {{< note >}}
 Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/mysql/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.

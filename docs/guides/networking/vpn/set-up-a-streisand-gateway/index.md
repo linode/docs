@@ -1,8 +1,5 @@
 ---
 slug: set-up-a-streisand-gateway
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'This guide shows how to create a Streisand gateway with automatically configured profiles for OpenVPN, ShadowSocks, WireGuard, Tor, etc.'
 keywords: ["streisand", "vpn", "openvpn", "tor", "wireguard", "L2TP/IPSec", "OpenConnect", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +12,7 @@ external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
 tags: ["networking","security","vpn"]
 aliases: ['/networking/vpn/set-up-a-streisand-gateway/']
+authors: ["Jared Kobos"]
 ---
 
 ![Streisand Gateway](Streisand_Gateway.jpg)
@@ -23,7 +21,7 @@ aliases: ['/networking/vpn/set-up-a-streisand-gateway/']
 
 Setting up a personal Virtual Private Network (VPN) server is a great way to avoid internet censorship, surveillance, or geolocation. Using your own server allows you to choose any protocol you want, and to have full control over the security and privacy of your connection.
 
-However, the configuration process is time-consuming, especially for those with little experience working with remote servers. For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server/) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server/) [series](/docs/networking/vpn/configuring-openvpn-client-devices/).
+However, the configuration process is time-consuming, especially for those with little experience working with remote servers. For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/guides/set-up-a-hardened-openvpn-server/) [part](/docs/guides/tunnel-your-internet-traffic-through-an-openvpn-server/) [series](/docs/guides/configuring-openvpn-client-devices/).
 
 [Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard &#174;, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
 
@@ -44,7 +42,7 @@ Streisand uses open-source platform [Ansible](https://www.ansible.com/) to autom
     ![Select API Tokens tab in My Profile Settings.](get-started-with-linode-api-my-profile-small.png "Select the API Tokens tab in My Profile Settings.")
 
 4.  Click on **Add a Personal Access Token** and choose the access rights you want users authenticated with the new token to have.
-{{< note >}}
+{{< note respectIndent=false >}}
 **Read/Write** access for Linodes and IPs is sufficient to set up a Streisand gateway because you will be creating a new Streisand Linode server.
 {{< /note >}}
 
@@ -54,7 +52,7 @@ Streisand uses open-source platform [Ansible](https://www.ansible.com/) to autom
 
 ## Install Ansible and its Dependencies
 
-{{< note >}}
+{{< note respectIndent=false >}}
 As of this writing, it is not possible to run Streisand on a Windows computer. If you do not have access to a Mac or Linux machine, you can connect to an existing Linode and complete the steps in this guide from your remote server. This will create an additional Linode.
 {{< /note >}}
 
@@ -115,17 +113,17 @@ You are now ready to run Streisand.
 
     ![Streisand API Prompt](api-prompt.png)
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.
 {{< /note >}}
 
 Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time. (The [Streisand docs](https://github.com/jlund/streisand) say about ten minutes, but in some cases it can be longer). You may be prompted for confirmation or to provide additional information during the process.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check the [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
-{{< /caution >}}
+{{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You should not receive any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.
 {{< /note >}}
 

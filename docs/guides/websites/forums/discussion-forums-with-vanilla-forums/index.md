@@ -1,8 +1,5 @@
 ---
 slug: discussion-forums-with-vanilla-forums
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the lightweight Vanilla Forums software to power discussion forums on your Linode.'
 keywords: ["vanilla", "bb", "fourms", "lamp", "discussion forums"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,11 +10,12 @@ modified_by:
 published: 2010-05-03
 title: Discussion Forums with Vanilla Forums
 deprecated: true
+authors: ["Linode"]
 ---
 
 Vanilla is a lightweight and flexible web-based discussion forum engine. Written against the popular LAMP stack, Vanilla combines simplicity and ease of use with a rich and customizable feature set.
 
-Before beginning this guide we assume that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system.
+Before beginning this guide we assume that you have completed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/web-servers/lamp/) for your operating system.
 
 ## Installing Prerequisites
 

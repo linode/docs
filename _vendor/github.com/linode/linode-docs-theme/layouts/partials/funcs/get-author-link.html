@@ -1,24 +1,33 @@
 {{/* Due to legacy, we have front matter values for both author and contributor.
 
   The rules are:
-  
+
   1. Use the author name, if present. However, if the author's name contains Linode, then check to see if a contributor name is set, and use that instead if it is present.
   2. If contributor link is present, set that as a link in the title byline. All links have been set to be HTTPS URLs, so we don't have to try and parse Twitter/Linkedin/etc @usernames.
-  
 */}}
 {{ $p := .Params }}
-{{ $author :=  $p.author }}
-{{ $contributor :=  $p.contributor }}
-{{ $name := $author.name}}
-{{ if and (strings.Contains $name "Linode") $contributor }}
-  {{ with $contributor.name }}
-    {{ $name = . }}
+{{ $link  := "" }}
+{{ if $p.authors }}
+  {{/* author taxonomy set, use that. */}}
+  {{/* we currently only use the first one, but there may be more roles applied later (editors etc.). */}}
+  {{ with (index ($.GetTerms "authors") 0 ) }}
+    {{ $link = printf `<a href="%s">%s</a>` .RelPermalink  .Title }}
   {{ end }}
 {{ end }}
-{{ $link := $name }}
-{{ with $contributor }}
-  {{ with .link }}
-    {{ $link = printf `<a href="%s" target="_blank">%s</a>` . $name }}
+{{ if not $link }}
+  {{ $author :=  $p.author }}
+  {{ $contributor :=  $p.contributor }}
+  {{ $name := $author.name }}
+  {{ if and (strings.Contains $name "Linode") $contributor }}
+    {{ with $contributor.name }}
+      {{ $name = . }}
+    {{ end }}
+  {{ end }}
+  {{ $link = $name }}
+  {{ with $contributor }}
+    {{ with .link }}
+      {{ $link = printf `<a href="%s" target="_blank">%s</a>` . $name }}
+    {{ end }}
   {{ end }}
 {{ end }}
 {{ return ($link | safeHTML) }}

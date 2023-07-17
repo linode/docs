@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for Block Storage"
 description: "Linode Block Storage is managed easily with developer tools like the Linode API or CLI as well as third party tools and integrations."
 tab_group_main:
     weight: 50
@@ -11,11 +12,11 @@ Linode’s [API v4](/docs/api) provides the ability to programmatically manage t
 
 - [Block Storage Endpoint Collection](/docs/api/volumes/)
 
-- [Manage Block Storage Volumes with the Linode API](/docs/platform/api/create-block-storage-volumes-with-the-linode-api/).
+- [Manage Block Storage Volumes with the Linode API](/docs/products/tools/api/guides/block-storage/).
 
 ## Linode CLI
 
-The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [create and manage Block Storage Volumes](/docs/platform/api/linode-cli/#block-storage-volumes).
+The [Linode CLI](https://github.com/linode/linode-cli) is a wrapper around the Linode API v4 that allows you to manage your Linode account and resources from the command line. Learn how to use the Linode CLI to [create and manage Block Storage Volumes](/docs/products/tools/cli/get-started/#block-storage-volumes).
 
 ## Linode Tools
 
