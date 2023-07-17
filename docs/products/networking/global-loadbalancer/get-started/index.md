@@ -77,18 +77,15 @@ An Entry Point defines the port the load balancer listens on and the protocol fo
     - **Private Key:** Paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
 
 ###  Configure Routes
- **Routes** provide the set of traffic routing rules that the load balancer uses to select the target for the incoming request.
+ Routes provide the set of traffic routing rules that the load balancer uses to select the target for the incoming request.
 
 1. Enter a **Route Name** for this route that uniquely identifies it from other Routes. The **Route Name** can contain between 3? and 32? alphanumeric characters.
 
 1. Add an optional **Default target** to use if no rule matches. Without a default target, non-matching requests are rejected.
 
-###  Select the Load Balancing Algorithm and Add Match Rules for Each Route
-The load balancing **Algorithm** controls how new connections are allocated across backend targets. Performance and Weighted methods are supported.
-- **Performance:** selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route. 
-- **Weighted:** routes requests to backend targets according to the proportion (%) configured.
+### Add Match Rules for Each Route
 
-A match rule consists of a **Match Type**, and a pattern to match. If an optional hostname is specified, the rule applies only to traffic that is directed to that target. If a hostname is not specified, the rule applies to all targets. Rules are evaluated in order, with the first match winning. Each rule can specify only one field/pattern pair (AND/OR logic is not supported). A match rule can also specify a session-affinity cookie to be applied whenever the match applies.
+A match rule consists of a **Match Type**, and a pattern to match. Rules are evaluated in order, with the first match winning. Each rule can specify only one field/pattern pair (AND/OR logic is not supported).
 
 | Match Type     | Description |Examples       |Operators|Wildcards|Case Sensitivity|
 |----------------|-------------|--------------|---------|---------|----------------|
@@ -99,15 +96,35 @@ A match rule consists of a **Match Type**, and a pattern to match. If an optiona
 
 1. Enter a **Rule Label**.
 
-1. If this rule applies to a specific target, enter the hostname of the target or select the target. If a hostname or target is not specified, the rule applies to all targets. Wildcards (*) are supported.
-
-1. Select the load balancing **Algorithm**. If Weighted is selected, enter the percentage of traffic that should be routed to the target. All of the percentages must equal 100%. 
-
 1. Select a **Match Type**.
 
-1. Select an operator and enter the Match Value.
+1. Select an operator and enter the **Match Value**.
 
-   - **Session Stickiness:** This controls how subsequent requests from the same client are routed when selecting a backend target. For testing, consider keeping Session Stickiness off. See [Configuration Options > Session Stickiness](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).
+1. If this rule applies to a specific target, enter the **Hostname** of the target or select the target. If a hostname or target is not specified, the rule applies to all targets. Wildcards (*) are supported.
+
+1. Enable **Session Stickiness** if you want to route subsequent requests from the same client to the same backend target when possible. For testing, consider keeping Session Stickiness off.
+
+    **None:** When **Session Stickiness** is disabled, no session information is saved and requests are routed in accordance with the algorithm only.
+
+    **Table:** This preserves the initial backend selected for an IP address by the chosen algorithm. Subsequent requests by the same client are routed to that backend, when possible. This map is stored within the Load Balancer and expires after ?? minutes from when it was added. If a backend target goes offline, entries in the table for that backend are removed. When a client sends a new request, it is then rerouted to another backend target (in accordance with the chosen algorithm) and a new entry is created in the table.
+
+    **HTTP Cookie:** Requires the configuration protocol be set to HTTP or HTTPS. The load balancer stores a cookie (named `LB_SRVID??`) on the client that identifies the backend where the client is initially routed to. Subsequent requests by the same client are routed to that backend, when possible. If a backend node goes offline, the request is rerouted to another backend node (in accordance with the chosen algorithm) and the cookie is rewritten with the new backend identifier.
+
+    {{< note >}}
+    The client must have cookies enabled. If the client has disabled cookies or deletes cookies, session persistence is not preserved and each new request is routed in accordance with the chosen algorithm.
+    {{< /note >}}
+
+### Configure Service Targets
+
+1. Select the load balancing **Algorithm**. 
+
+The load balancing algorithm controls how new connections are allocated across backend targets. Performance and Weighted methods are supported.
+- **Performance:** selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route.
+- **Weighted:** routes requests to backend targets according to the proportion (%) configured.
+
+1. If Weighted is selected, enter the percentage of traffic that should be routed to each selected target. All of the percentages must total 100%.
+
+1. 
 
     - **Health Checks:** Load Balancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/global-loadbalancer/guides/configure/#health-checks) for additional information.
 
