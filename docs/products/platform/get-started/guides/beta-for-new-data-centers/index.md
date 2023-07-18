@@ -57,7 +57,7 @@ Each data center in this beta is slated to have all of Akamai’s cloud computin
 
 ### Object Storage
 
-The new data centers feature enhanced Object Storage, which improves upon the consistency of reliability of the existing service and offers increased capacity (outlined below). Review the [Availability](/docs/products/storage/object-storage/#availability) and [Specifications](/docs/products/storage/object-storage/#specifications) section of the Object Storage documentation for more details.
+The new data centers feature enhanced Object Storage, which improves upon the consistency and reliability of the existing service and offers increased capacity (outlined below). Review the [Availability](/docs/products/storage/object-storage/#availability) and [Specifications](/docs/products/storage/object-storage/#specifications) section of the Object Storage documentation for more details.
 
 - **Max storage** (*per region, per account*): 1 PB (up from 5 TB)
 - **Max # of objects** (*per region, per account*): 1 billion (up from 50 million)
