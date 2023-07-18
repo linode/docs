@@ -620,6 +620,7 @@ etcd
 etcd0
 eth0
 ethtool
+ethernet
 eugen
 eval
 evhost
