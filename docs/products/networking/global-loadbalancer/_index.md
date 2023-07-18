@@ -121,22 +121,26 @@ Akamai Global Load Balancer provides real-time metrics, logs and traces through 
 Akamai Global Load Balancers are available across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Pricing
-
-**Beta Pricing:** Beta is offered free of charge.
-
-**Pricing:** Global Load Balancer pricing is based on a combination of regional coverage, number of connections and usage.
-
-**Region and Number of Connections**
-
-| Regions         | # of Connections| Price/Month   |
-| ----------------| ----------------|---------------|
-| 1-3 regions     | 25 000          |    $50 tbd    |
-| 4-10 regions    | 100 000         |    $25 tbd    |
-| All regions     | 1 000 000       |    $200 tbd   |
-
-**Usage:** A fee of $0.05/hour tbd is charged for every hour that the load balancer is active and has targets.
-
 Billing for each Global Load Balancer starts once it is created. A summary of charges is available from Cloud Manager.
+
+Pricing is based on outbound traffic usage and a base fee. Outbound traffic is the traffic from the load balancer to the client and to the service target. XGB/month of outbound traffic is included with the base fee. If XGB/month of outbound traffic is exceeded, an overage charge of $0.01/GB is added to your bill. The Base Fee is determined by the number of global connections.
+
+    | Base Fee Tier   | # of Connections| Price/Month   |
+    | ----------------| ----------------|---------------|
+    | Small           | upto 25 000     |    $50 tbd    |
+    | Medium          | upto 100 000    |    $25 tbd    |
+    | Large           | upto 1 000 000  |    $200 tbd   |
+
+**Beta Pricing:** Beta is offered free of charge and includes:
+- 4 Gbps of outbound from the load balancer to end-users.
+- Up to 100 000 concurrent connections (with a limit of 4000 requests-per-second).
+- Load balancing in upto 5 regions.
+
+**30 Day Free Trial:** Free trials include;
+- up to 25 000 connections globally
+- up to XGB of outbound traffic.
+
+GB processed traffic is denied if either of these limits are exceeded during the 30 day free trial.
 
 ## Technical Specifications
 
