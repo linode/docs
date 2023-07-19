@@ -1,7 +1,8 @@
 ---
 title: Managed Databases
-linkTitle: Databases
-description: "Learn about Linode's new Managed Database service, currently in beta."
+linkTitle: Managed Databases
+title_meta: "Managed Databases Product Documentation"
+description: "Learn about Linode's Managed Database service, which provides fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 tab_group_main:
     is_root: true
     title: Overview
@@ -10,15 +11,16 @@ cascade:
     date: 2022-02-23
     product_description: "Fully managed cloud database clusters built on top of Linode’s trusted and reliable platform."
 aliases: ['/products/database/']
+modified: 2023-05-02
 ---
 
-{{< content "managed-databases-beta-notice-shortguide" >}}
-
-Linode's Managed Databases combine performance, reliability, and and high availability into a fully managed database solution. Databases are used by most organizations to store their business and operational data, including customer information, financial details, application content, ecommerce transactions, and much more. Managing the database infrastructure to store and safeguard this data can put additional stress on the resources you have available. **Managed Databases** take care of managing this critical infrastructure for you, providing you with an easy to use DBaaS (database-as-a-service) solution built on top of Linode's trusted and reliable platform.
+Linode's Managed Databases combine performance, reliability, and high availability into a fully managed database solution. Databases are used by most organizations to store their business and operational data, including customer information, financial details, application content, ecommerce transactions, and much more. Managing the database infrastructure to store and safeguard this data can put additional stress on the resources you have available. **Managed Databases** take care of managing this critical infrastructure for you, providing you with an easy to use DBaaS (database-as-a-service) solution built on top of Linode's trusted and reliable platform.
 
 ## Simplified deployment and maintenance
 
 - **Automated deployment:** When a database is deployed through Managed Databases, the infrastructure, software, and firewall, and high availability systems are configured automatically. This can save hours of time compared to manually setting up a database.
+
+- **Automatic updates:** Updates to the underlying software of your database cluster are installed automatically using user-configurable maintenance windows. See [Automatic Updates and Maintenance Windows](/docs/products/databases/managed-databases/guides/updates-and-maintenance/).
 
 - **Access controls:** Prevent unauthorized database access by only allowing connections from specific IP addresses (or ranges).
 
@@ -30,20 +32,13 @@ Managed Databases can be configured with either 1 or 3 underlying machines, also
 
 ## Database Engines
 
-The following database management systems (DBMSs) are available (or coming soon) to Managed Databases:
+The following database management systems (DBMSs) are available on Managed Databases:
 
-- **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases. See [An Overview of MySQL](/docs/guides/an-overview-of-mysql/). The following major releases are available (each with one or more available minor releases):
+- **MySQL:** An industry standard relational database management system that uses the SQL query language. Many popular applications (including WordPress) require MySQL or MySQL compatible databases.
 
-    - MySQL 8.0
-    - MySQL 5.7
+- **PostgreSQL:** An object-relational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it.
 
-    *If the applications using your database support it, you may want to select the latest available release of MySQL 8. It's more performant and includes additional features. MySQL 5.7 is available for legacy applications.*
-
-- **PostreSQL** *(Coming soon)*: An object-releational database management system that can use either SQL or JSON queries. It's generally more flexible and feature-rich than MySQL, though it's not a drop-in replacement and applications need to have built-in support for it. See [An Introduction to PostreSQL](/docs/guides/an-introduction-to-postgresql/)
-
-- **MongoDB** *(Coming soon)*: A document-oriented database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible. [MongoDB and Its Use Cases](/docs/guides/mongodb-and-its-use-cases/)
-
-- **Redis** *(Coming soon)*: An in-memory NoSQL database that stores its data as key-value pairs. It's most commonly used as a caching system.
+See [Choosing a Database Engine and Plan](/docs/products/databases/managed-databases/guides/database-engines/) for more details on each of the available database engines.
 
 ## Recommended Workloads
 
@@ -56,22 +51,20 @@ See the [Use Cases for Managed Databases](/docs/products/databases/managed-datab
 
 ## Availability
 
-Managed Databases can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/) as part of a limited closed beta.
+Managed Databases can be created and deployed across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Plans and Pricing
 
 | Resource | Available Plans |
 | -- | -- |
-| Cluster size | 1 or 3 nodes |
+| Cluster size | 1 - 3 nodes |
 | vCPU cores | 1 - 64 cores (shared or dedicated) |
 | Memory | 1 GB - 512 GB |
 | Storage | 25 GB - 7200 GB |
 
-{{<note>}}
-During the beta period, Managed Databases will not incur any costs. If you deploy a Managed Database during this time, you will receive a notice with pricing details in advance of it becoming a paid product.
-{{</note>}}
+Pricing starts at $15/mo for a 1 GB instance with a single node. Review the [pricing page](https://www.linode.com/pricing/#databases) for additional plans and their associated costs. There may be some differences between each available database engine due to licensing costs and other factors.
 
-Managed Databases do not consume [network transfer](/docs/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
+Managed Databases do not consume [network transfer](/docs/products/platform/get-started/guides/network-transfer/) or include a monthly transfer allowance. Transfer is consumed when connecting to a Managed Database from a Compute Instance when that instance is located in a different data center.
 
 ## Additional Technical Specifications
 
@@ -81,7 +74,8 @@ In addition to the resources allocated to each available plan (outlined above), 
 - Multiple database engines and versions
 - Customize access controls to allow connections from trusted sources
 - Automatic backups are taken daily and retained for 7 days
-- Root-level access to the database
+- Administrative access with elevated user permissions
+- Access the database using command-line or desktop applications
 - 100% SSD (Solid State Disk) storage
 - 40 Gbps inbound network bandwidth
 - Free inbound network transfer
@@ -93,6 +87,6 @@ In addition to the resources allocated to each available plan (outlined above), 
 
 - The default user cannot be changed or removed, though the password can be reset at any time.
 
-- You are not able to access the underlying operating system of a database cluster.
+- You are not able to access the underlying operating system of a database cluster. Configuration files (such as `my.cnf` ) cannot be directly edited and configuration changes done through the `SET PERSIST` command do not persist when the cluster is rebooted.
 
-- It is not possible to upgrade the database software or underlying operating system after the Managed Database has been deployed.
+- Live replicas or standby nodes for a high availability Managed Database cluster cannot be created or hosted outside of Linode's Managed Database service.

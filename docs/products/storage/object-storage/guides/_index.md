@@ -1,8 +1,10 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for Object Storage"
 description: "Find guides on Linode Object Storage management, hosting a static site on Object Storage, access and permissions, and other related topics."
 tab_group_main:
     weight: 30
+tags: ["education","media"]
 ---
 
 ## Basics
@@ -11,15 +13,29 @@ tab_group_main:
 
 - [Upload and Manage Files (Objects)](/docs/products/storage/object-storage/guides/manage-files/): Learn how to view, upload, download, and delete objects through the Cloud Manager.
 
-- [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate these in the Cloud Manager.
+- [Manage Access Keys](/docs/products/storage/object-storage/guides/access-keys/): Access keys enable you to access Object Storage through other tools and your own applications. Learn how to generate and manage these in the Cloud Manager.
 
 - [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/): Every bucket and file can be accessed by a unique URL. Learn how to obtain these URLs.
 
 - [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/): Linode's Object Storage supports accessing buckets and objects through a custom domain. Learn how to configure a custom domain with a TLS/SSL certificate.
 
-- [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): To cancel the Object Storage service you must first delete all your buckets. Then you can cancel the service from the Cloud Manager.
+- [Cancel Object Storage](/docs/products/storage/object-storage/guides/cancel/): Learn how to cancel the Object Storage service from the Cloud Manager.
 
 - [Object Storage Use Cases](/docs/products/storage/object-storage/guides/use-cases/): Information on the benefits and common use cases of Linode's Object Storage service.
+
+## Set Permissions and Access Controls
+
+- [ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/): Information on ACLs and how to use them to set permissions on Object Storage resources.
+
+- [Bucket Policies](/docs/products/storage/object-storage/guides/bucket-policies/): Information on bucket policies and how to use them to set permissions on Object Storage resources.
+
+- [Find the Canonical User ID for an Account](/docs/products/storage/object-storage/guides/find-canonical-id/): Learn how to find the canonical user ID for an account.
+
+## Advanced Management
+
+- [Versioning (Retain Object Version History)](/docs/products/storage/object-storage/guides/versioning/): Discover how to enable and manage versioning within Object Storage.
+
+- [Lifecycle Policies](/docs/products/storage/object-storage/guides/lifecycle-policies/): Learn how to define policies to manage the lifecycle and retention history of objects.
 
 ## Clients and Tools
 
@@ -30,10 +46,11 @@ Guides for using Object Storage with various clients and command-line tools:
 - [s4cmd](/docs/products/storage/object-storage/guides/s4cmd): A faster alternative to the s3cmd command-line tool.
 - [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck): A cross-platform graphical interface for interacting with various cloud storage services.
 
-## AWS SDKs
+## AWS Tooling
 
 Guides for using Object Storage with various AWS SDKs:
 
+- [AWS CLI](/docs/products/storage/object-storage/guides/aws-cli/)
 - [AWS SDK for Python (boto3)](/docs/products/storage/object-storage/guides/aws-sdk-for-python/)
 - [AWS SDK for PHP](/docs/products/storage/object-storage/guides/aws-sdk-for-php/)
 
@@ -41,10 +58,4 @@ Guides for using Object Storage with various AWS SDKs:
 
 These additional guides explore targeted topics like setting up a static site and managing access and permissions for your buckets and objects:
 
-- [Host a Static Site using Linode Object Storage](/docs/platform/object-storage/host-static-site-object-storage/)
-
-- [Bucket Versioning with Linode Object Storage](/docs/platform/object-storage/bucket-versioning/)
-
-- [How To Manage Objects with Lifecycle Policies](/docs/platform/object-storage/how-to-manage-objects-with-lifecycle-policies/)
-
-- [How to Enact Access Control Lists (ACLs) and Bucket Policies with Linode Object Storage](/docs/platform/object-storage/how-to-use-object-storage-acls-and-bucket-policies/)
+- [Deploy a Static Site using Hugo and Object Storage](/docs/guides/host-static-site-object-storage/)

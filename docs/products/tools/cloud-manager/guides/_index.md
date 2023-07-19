@@ -1,5 +1,6 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode Cloud Manager"
 description: "These guides show you how to use the Linode Cloud Manager to access and deploy the full range of Linode services and how to complete account and user management tasks."
 tab_group_main:
     weight: 30
@@ -46,11 +47,11 @@ These introductory guides to the Linode Cloud Manager help you get up and runnin
 
 - [Invoices](/docs/products/tools/cloud-manager/guides/cloud-invoices): In the Account section you can print an invoice.
 
-- [Manage Email Notifications](/docs/products/tools/cloud-manager/guides/cloud-email-notifications): Email event notifications alert you when new events such as booting, shutting down, or updates to a Linode occur on your account.
+- [Understanding the Cloud Manager Events and Activity Feeds](/docs/products/tools/cloud-manager/guides/events-and-activity-feeds/)
 
 ### API Access
 
-- [API Keys and Tokens](/docs/products/tools/cloud-manager/guides/cloud-api-keys): You can generate and manage your API Keys and Tokens from the Cloud Manager.
+- [Manage Personal Access Tokens](/docs/products/tools/api/guides/manage-api-tokens/): You can generate and manage your API Keys and Tokens from the Cloud Manager.
 
 - [OAuth Apps](/docs/products/tools/cloud-manager/guides/cloud-oauth): An overview of OAuth 2 support in Cloud Manager.
 
@@ -60,36 +61,37 @@ These additional guides help you with targeted topics like how to manage your ac
 
 ### Manage Your Account
 
-- [An Overview of the Linode Cloud Manager](/docs/platform/manager/an-overview-of-the-linode-cloud-manager/)
+- [An Overview of the Linode Cloud Manager](/docs/guides/an-overview-of-the-linode-cloud-manager/)
 
-- [Understanding Common Cloud Manager Errors](/docs/quick-answers/linode-platform/an-overview-of-common-cloud-manager-errors/)
+- [Understanding Common Cloud Manager Errors](/docs/guides/an-overview-of-common-cloud-manager-errors/)
 
-- [Searching in the Cloud Manager](/docs/quick-answers/linode-platform/how-to-search-in-the-cloud-manager/)
+- [Searching in the Cloud Manager](/docs/guides/how-to-search-in-the-cloud-manager/)
 
-- [Understanding the Cloud Manager Events and Activity Feeds](/docs/platform/manager/what-are-the-cloud-manager-events-and-activity-feeds/)
 
-- [Manage Billing in Cloud Manager](/docs/platform/billing-and-support/manage-billing-in-cloud-manager/)
+- [Manage Billing in Cloud Manager](/docs/products/platform/billing/guides/)
 
-- [Cancelling Your Account](/docs/quick-answers/linode-platform/how-to-cancel-your-account/)
+- [Cancelling Your Account](/docs/products/platform/accounts/guides/cancel-account/)
 
-- [Changing Your Email Address](/docs/quick-answers/linode-platform/how-to-change-your-email/)
+- [Changing Your Email Address](/docs/products/platform/accounts/guides/change-user-email/)
 
-- [Tags and Groups](/docs/quick-answers/linode-platform/tags-and-groups/)
+- [Tags and Groups](/docs/guides/tags-and-groups/)
 
-- [Linode Cloud Manager Security Controls](/docs/security/authentication/linode-manager-security-controls/)
+- [Linode Cloud Manager Security Controls](/docs/products/platform/accounts/guides/user-security-controls/)
+
+- [Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/)
 
 ### Manage Your Linodes
 
-- [Reset the Root Password on your Linode](/docs/quick-answers/linode-platform/reset-the-root-password-on-your-linode/)
+- [Reset the Root Password on your Linode](/docs/products/compute/compute-instances/guides/reset-root-password/)
 
-- [Resize a Linode Disk](/docs/quick-answers/linode-platform/resize-a-linode-disk/)
+- [Resize a Linode Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/)
 
-- [Deploy an Image to a Linode](/docs/quick-answers/linode-platform/deploy-an-image-to-a-linode/)
+- [Deploy an Image to a Linode](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)
 
 ### Networking
 
-- [Find Your Linode’s IP Address](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/)
+- [Find Your Linode’s IP Address](/docs/guides/find-your-linodes-ip-address/)
 
-- [Add CAA Records in the Linode Cloud Manager](/docs/quick-answers/linode-platform/add-caa-dns-records/)
+- [Add CAA Records in the Linode Cloud Manager](/docs/products/networking/dns-manager/guides/caa-record/)
 
-- [Proxy Burp Suite Traffic Through a Linode](/docs/quick-answers/linode-platform/proxy-burp-suite-traffic-through-a-linode/)
+- [Proxy Burp Suite Traffic Through a Linode](/docs/guides/proxy-burp-suite-traffic-through-a-linode/)

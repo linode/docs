@@ -1,33 +1,28 @@
 ---
 slug: how-to-install-bcc
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
-og_description: 'Learn to enhance the security of the server through the use of eBPF tracing tools'
 keywords: ["eBPF", "bcc", "tracing", "tools", "monitoring", "networking", "observability"]
+bundles: ['network-security']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
 modified: 2021-08-27
 modified_by:
   name: Linode
 title: Installing BCC to Use eBPF Tracing Tools
-h1_title: Installing BCC to Use eBPF Tracing Tools
-contributor:
-    name: Linode
 tags: ["networking","security"]
 external_resources:
 - '[iovisor](https://github.com/iovisor/bcc)'
+authors: ["Linode"]
 ---
 ## Before You Begin
 
 You need the following:
 
-1. A system running on a Linux distribution and a Linux kernel version 4.1 or later. Review the Getting Started guide if you do not yet have a compatible system. For more information, review the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide.
+1. A system running on a Linux distribution and a Linux kernel version 4.1 or later. Review the Getting Started guide if you do not yet have a compatible system. For more information, review the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide.
 
-1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/). Review the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
+1. **Login credentials to the system** for either the root user (not recommended) or a standard user account (belonging to the `sudo` group) and the ability to access the system through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/). Review the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide for assistance on creating and securing a standard user account.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Some commands in this guide require elevated privileges and are prefixed with the `sudo` command. If you are logged in as the root use (not recommended), you can omit the `sudo` prefix if desired. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user) guide.
 {{< /note >}}
 
@@ -95,7 +90,7 @@ As of Fedora 30, `bcc` binaries are available in the standard repository.
 
     sudo dnf install bcc
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you keep getting `Failed to load program: Operation not permitted` when you run the `hello_world.py` example as root, then you need to lift the kernel lockdown. For more information, see [FAQ](https://github.com/iovisor/bcc/blob/master/FAQ.txt).
 {{< /note >}}
 

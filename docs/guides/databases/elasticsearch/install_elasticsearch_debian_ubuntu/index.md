@@ -1,8 +1,5 @@
 ---
 slug: install_elasticsearch_debian_ubuntu
-author:
-  name: Jared Kobos
-  email: sfoo@linode.com
 description: 'Shortguide for installing Elasticsearch on Debian systems'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["elasticsearch", "elastic stack"]
@@ -19,6 +16,7 @@ relations:
             - distribution: Debian/Ubuntu
 tags: ["database"]
 aliases: ['/databases/elasticsearch/install_elasticsearch_debian_ubuntu/']
+authors: ["Jared Kobos"]
 ---
 
 1.  Install the official Elastic APT package signing key:

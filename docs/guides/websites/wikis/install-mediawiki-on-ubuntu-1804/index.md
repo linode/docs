@@ -1,8 +1,5 @@
 ---
 slug: install-mediawiki-on-ubuntu-1804
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to get started with the popular MediaWiki engine for powering wiki websites of all types and sizes on Ubuntu 18.04.'
 keywords: ["mediawiki", "wiki", "web-applications"]
 tags: ["wiki","ubuntu"]
@@ -21,12 +18,13 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: Ubuntu 18.04
+authors: ["Linode"]
 ---
 
 
 MediaWiki is a popular, free wiki software package. It's the same software Wikipedia uses. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured, dynamic wiki engine.
 
-This guide assumes that you already have a working [LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-18-04) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
+This guide assumes that you already have a working [LAMP stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
 
 ## Download and Unpack MediaWiki
 
@@ -71,7 +69,7 @@ From the database section above, you will need:
 - DB username
 - DB user's password
 
-Giving MediaWiki superuser access to your MySQL database allows it to create new accounts. If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/databases/mysql/standalone-mysql-server).
+Giving MediaWiki superuser access to your MySQL database allows it to create new accounts. If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/guides/standalone-mysql-server/).
 
  After the installation is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/html/example.com/public_html/mediawiki/` and restrict access to the file:
 
