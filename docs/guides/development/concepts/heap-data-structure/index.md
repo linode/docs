@@ -31,7 +31,7 @@ A heap is a *complete binary tree* data structure in which all elements satisfy 
 
 This is the usefulness of a heap structure. It provides a very efficient means of sorting arrays.
 
-Binary trees themselves are data structures consisting of an expanding set of nodes, each with up to two child nodes attached to it. In a complete binary tree, like a heap, every node has two children except for the nodes at the bottom of the tree. Child nodes are populated from the top layer down and from left to right in each layer.
+Binary trees themselves are data structures consisting of an expanding set of nodes, each with up to two child nodes attached to it. In a complete binary tree, like a heap, every node has two children except for the nodes at the bottom of the tree. Child nodes are populated from the top layer down, and from left to right in each layer.
 
 ![A complete binary tree](complete-binary-tree-example.png)
 
@@ -55,13 +55,13 @@ Here are the typical steps involved in a heap algorithm:
 
 1.  Repeat steps 3–5 for each value in the array.
 
-The next two sections show this in action with full visualizations. Each section dedicated to one of the two types of heaps: the min-heap and the max-heap.
+The next two sections show this in action with full visualizations. Each section is dedicated to one of the two types of heaps: *min-heap* and *max-heap*.
 
 ## What Is the Min-Heap Data Structure?
 
-In a min-heap, each node in the tree is equal to or less than its child nodes. This is the min-heap's heap property. Thus, using the algorithm described in the previous section, nodes would switch so that the lowest value is always the parent node.
+In a *min-heap*, each node in the tree is equal to or less than its child nodes. This method of organization is known as its *heap property*. Thus, using the algorithm described in the previous section, nodes would switch so that the lowest value is always the parent node.
 
-Take an array like this one for example: `[90, 15, 68, 42, 18, 9, 45]`. The steps that follow walk through applying the algorithm to the array. Visualizations are provided for each time the position of nodes are swapped, and again for the completed heap tree.
+Take an array like this for example: `[90, 15, 68, 42, 18, 9, 45]`. The steps that follow walk through applying the algorithm to the array. Visualizations are provided for each time the position of nodes are swapped, and again for the completed heap tree.
 
 1.  Create a node for the first value in the array, `90`.
 
@@ -97,7 +97,7 @@ The above helps to understand min-heap in principle, but what does it look like 
 
 This guide cannot cover every approach, but here are two that can be useful: a min-heap in Python and another in C/C++.
 
-Each example comes with numerous inline comments. These are meant to help break down the various parts and make the role each part plays in putting the heap together clearer.
+Each example comes with numerous inline comments. These are meant to help break down the various parts and make clearer the role each part plays in putting the heap together.
 
 First, the Python example:
 
@@ -254,9 +254,9 @@ int main() {
 
 ## What Is the Max-Heap Data Structure?
 
-In a max-heap, each node in the tree is equal to or greater than its child nodes. That is considered its heap property. Using the heap algorithm described above, nodes would switch to ensure that the parent always has a higher value than its child nodes.
+In a *max-heap*, each node in the tree is equal to or greater than its child nodes. That is considered its heap property. Using the heap algorithm described above, nodes would switch to ensure that the parent always has a higher value than its child nodes.
 
-For example, start with an array like this one: `[39, 111, 4, 98, 247, 62, 14]`. The steps that follow walk through applying the algorithm to the array. Visualizations are provided each time a nodes' position is swapped, and again for the completed heap tree.
+For example, start with an array like this: `[39, 111, 4, 98, 247, 62, 14]`. The steps that follow walk through applying the algorithm to the array. Visualizations are provided each time a nodes' position is swapped, and again for the completed heap tree.
 
 1.  Create a node for the first value in the array, `39`.
 
@@ -290,9 +290,7 @@ For example, start with an array like this one: `[39, 111, 4, 98, 247, 62, 14]`.
 
 With an explanation of max-heap in principle, take a look at what it looks like in code.
 
-While this guide cannot cover every approach, it provides two examples that can be useful: one in Python and another in C/C++.
-
-Each example comes with numerous inline comments. These are meant to help break down the various parts and make the role each part plays in putting the heap together clearer.
+Once again, this guide cannot cover every approach. Nevertheless, useful examples in both Python and C/C++ are provided below.
 
 First, the Python example:
 
