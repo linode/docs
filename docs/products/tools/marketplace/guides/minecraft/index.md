@@ -1,10 +1,9 @@
 ---
 description: "This guide shows you how to deploy a Minecraft Server on a Linode using the One-Click Marketplace App so you can create your own world on your own or with friends."
 keywords: ['minecraft','marketplace', 'server']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-01
 modified: 2022-04-01
-title: "Deploying a Minecraft Server through the Linode Marketplace"
+title: "Deploy a Minecraft Server through the Linode Marketplace"
 external_resources:
 - '[Minecraft Wiki](https://minecraft.fandom.com/wiki/Server)'
 tags: ["linode platform","marketplace","cloud-manager"]
@@ -20,9 +19,9 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Minecraft should be fully installed within 5-10 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -66,7 +65,9 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 - **Snooper Enabled:** Determines if the server sends stats to [https://snoop.minecraft.net](https://snoop.minecraft.net). *Advanced Configuration*.
 - **Use Native Transport Enabled:** Improve server performance by optimizing sent and received packets. *Advanced Configuration*.
 - **SSH public key for the limited user:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
-- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/guides/using-the-lish-console/).
+- **Disable root access over SSH:** To block the root user from logging in over SSH, select *Yes* (recommended). You can still switch to the root user once logged in and you can also log in as root through [Lish](/docs/products/compute/compute-instances/guides/lish/).
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started after Deployment
 
@@ -82,7 +83,7 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
 
     ![Screenshot of Multiplayer game options](minecraft-add-server.png)
 
-1. Create a name for your server and enter the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/guides/managing-ip-addresses/) guide for information on viewing IP addresses and rDNS. Click **Done** to add the server.
+1. Create a name for your server and enter the IPv4 address of your Compute Instance. See the [Managing IP Addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/) guide for information on viewing IP addresses and rDNS. Click **Done** to add the server.
 
     ![Screenshot of Add Server options](minecraft-server-ip.png)
 
@@ -91,8 +92,8 @@ With over 100 million users around the world, [Minecraft](https://www.minecraft.
     ![Screenshot of the new Minecraft server](minecraft-server-play.png)
 
     {{< note >}}
-If there is a red *X* over the status bars or if the word *old* appears, then your Compute Instance might not have finished installing Minecraft. Please double check your IPv4 address, wait a few minutes,and then hit **Refresh**.
-{{</ note >}}
+    If there is a red *X* over the status bars or if the word *old* appears, then your Compute Instance might not have finished installing Minecraft. Please double check your IPv4 address, wait a few minutes,and then hit **Refresh**.
+    {{< /note >}}
 
 ## Customization After Installation
 

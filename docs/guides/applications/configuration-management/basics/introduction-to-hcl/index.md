@@ -1,8 +1,5 @@
 ---
 slug: introduction-to-hcl
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide provides an introduction to HCL syntax and commonly used HCL terminology.'
 keywords: ["terraform", "hcl", "hashicorp", "orchestration", "HashiCorp Configuration Language"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,21 +7,22 @@ modified: 2021-02-22
 modified_by:
     name: Linode
 published: 2018-12-12
-title: Introduction to HashiCorp Configuration Language (HCL)
-h1_title: "An Introduction to HashiCorp Configuration Language (HCL)"
+title: "An Introduction to HashiCorp Configuration Language (HCL)"
+title_meta: Introduction to HashiCorp Configuration Language (HCL)
 external_resources:
     - '[HCL on GitHub](https://github.com/hashicorp/hcl)'
     - '[Terraform Official Documentation - Configuration Syntax](https://www.terraform.io/docs/configuration/syntax.html)'
 aliases: ['/applications/configuration-management/introduction-to-hcl/','/applications/configuration-management/basics/introduction-to-hcl/']
+authors: ["Linode"]
 ---
 
-The HashiCorp Configuration Language (HCL) is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, such as [Terraform](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.
+The HashiCorp Configuration Language (HCL) is a configuration language authored by [HashiCorp](https://www.hashicorp.com/). HCL is used with HashiCorp's cloud infrastructure automation tools, such as [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/). The language was created with the goal of being both human and machine friendly. It is JSON compatible, which means it is interoperable with other systems outside of the Terraform product line.
 
 This guide provides an introduction to HCL syntax, some commonly used HCL terminology, and how it works with Terraform.
 
 {{< note >}}
 [Terraform’s Linode Provider](https://github.com/terraform-providers/terraform-provider-linode) has been updated and now requires Terraform version 0.12 or later.  To learn how to safely upgrade to Terraform version 0.12 or later, see [Terraform’s official documentation](https://www.terraform.io/upgrade-guides/0-12.html). View [Terraform v0.12’s changelog](https://github.com/hashicorp/terraform/blob/v0.12.0/CHANGELOG.md) for a full list of new features and version incompatibility notes. The examples in this guide were written to be compatible with [Terraform version 0.11](https://www.terraform.io/docs/configuration-0-11/terraform.html) and will be updated in the near future.
-{{</ note >}}
+{{< /note >}}
 
 ## HCL Syntax Overview
 
@@ -61,8 +59,8 @@ resource "linode_instance" "example_linode" {
 {{</ file >}}
 
 {{< note >}}
-You should not include sensitive data in the resource declarations. For more information about secrets management, see [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/).
-{{</ note >}}
+You should not include sensitive data in the resource declarations. For more information about secrets management, see [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/).
+{{< /note >}}
 
 ### Key Elements of HCL
 
@@ -88,7 +86,7 @@ See Terraform's [Configuration Syntax](https://www.terraform.io/docs/configurati
 
 ## Terraform Providers and HCL Syntax
 
-In Terraform, a *provider* is used to interact with an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) API, like the [Linode APIv4](https://developers.linode.com/api/v4). The provider determines which [resources](#resources) are exposed and available to create, read, update, and delete. A credentials set or token is usually required to interface with the service account. For example, the [Linode Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) requires your [Linode API access token](/docs/platform/api/getting-started-with-the-linode-api/#get-an-access-token). A list of [all official Terraform providers](https://www.terraform.io/docs/providers/) is available from HashiCorp.
+In Terraform, a *provider* is used to interact with an Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) API, like the [Linode APIv4](/docs/products/tools/api/). The provider determines which [resources](#resources) are exposed and available to create, read, update, and delete. A credentials set or token is usually required to interface with the service account. For example, the [Linode Terraform provider](https://www.terraform.io/docs/providers/linode/index.html) requires your [Linode API access token](/docs/products/tools/api/get-started/#get-an-access-token). A list of [all official Terraform providers](https://www.terraform.io/docs/providers/) is available from HashiCorp.
 
 To configure Linode as the provider, you need to include a block which specifies Linode as the provider and sets your Linode API token in one of the `.tf` files:
 
@@ -102,7 +100,7 @@ After you declare the provider, you can configure resources available from the p
 
 {{< note >}}
 Providers are packaged as plugins for Terraform. Whenever you declare a new provider in the Terraform configuration files, run the `terraform init` command. This command completes several initialization steps that are necessary before you can apply the Terraform configuration, including downloading the plugins for any providers you've specified.
-{{</ note >}}
+{{< /note >}}
 
 ## Terraform Resources and HCL Syntax
 
@@ -143,7 +141,7 @@ module "linode-module-example" {
 }
 {{</ file >}}
 
-Authoring modules involves defining resource requirements and parameterizing configurations using [input variables](#input-variables), variable files, and outputs. To learn how to write Terraform modules, see [Create a Terraform Module](/docs/applications/configuration-management/create-terraform-module/).
+Authoring modules involves defining resource requirements and parameterizing configurations using [input variables](#input-variables), variable files, and outputs. To learn how to write Terraform modules, see [Create a Terraform Module](/docs/guides/create-terraform-module/).
 
 ## Input Variables
 
@@ -163,8 +161,8 @@ variable "token" {
 }
 
 variable "region" {
-    description: "This is the location where the Linode instance is deployed."
-    default = "us-east"
+    description = "This is the location where the Linode instance is deployed."
+    default     = "us-east"
 }
 {{</ file >}}
 
@@ -191,7 +189,7 @@ Values can also be specified in environment variables when running `terraform ap
 
 {{< note >}}
 Environment variables can only assign values to variables of `type = "string"`
-{{</ note >}}
+{{< /note >}}
 
 ### Referencing Variables
 
@@ -210,7 +208,7 @@ resource "linode_instance" "WordPress" {
 
 {{< note >}}
 If a variable value is not provided in any of the ways discussed above, and the variable is called in a resource configuration, Terraform prompts you for the value when you run `terraform apply`.
-{{</ note >}}
+{{< /note >}}
 
 For more information on variables, see Terraform's [Input Variables](https://www.terraform.io/intro/getting-started/variables.html) documentation.
 
@@ -297,4 +295,4 @@ Terraform's official documentation has a list of [all available components](http
 
 ## Next Steps in Terraform
 
-Now that you are familiar with HCL, you can begin creating a Linode instance with Terraform by following the [Use Terraform to Provision Linode Environments](/docs/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.
+Now that you are familiar with HCL, you can begin creating a Linode instance with Terraform by following the [Use Terraform to Provision Linode Environments](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) guide.

@@ -1,8 +1,5 @@
 ---
 slug: set-up-wireguard-vpn-on-ubuntu
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Wireguard encrypts your traffic quickly and safely, this guide will show you how to set up WireGuard VPN server and clients.'
 og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn', 'ubuntu']
@@ -14,14 +11,13 @@ modified: 2019-01-22
 modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Ubuntu"
-contributor:
-  name: Sunit Nandi
 relations:
     platform:
         key: setup-wireguard-vpn
         keywords:
             - distribution: Ubuntu 18.04
 aliases: ['/networking/vpn/set-up-wireguard-vpn-on-ubuntu/']
+authors: ["Sunit Nandi"]
 ---
 
 [WireGuard](https://www.wireguard.com)&#174; is a simple, fast, and secure VPN that utilizes state-of-the-art cryptography. With a small source code footprint, it aims to be faster and leaner than other VPN protocols such as OpenVPN and IPSec. WireGuard is still under development, but even in its unoptimized state it is faster than the popular OpenVPN protocol.
@@ -30,17 +26,17 @@ The WireGuard configuration is as simple as setting up SSH. A connection is esta
 
 This guide will configure a simple peer connection between a Linode running Ubuntu 18.04, and a client. The client can be either your local computer or another Linode.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Do not use WireGuard for critical applications. The project is still undergoing security testing and is likely to receive frequent critical updates in the future.
-{{< /caution >}}
+{{< /note >}}
 
 ## Before You Begin
 
 - You will need root access to your Linode, or a user account with `sudo` privilege.
-- Set your system's [hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname).
+- Set your system's [hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname).
 
-{{< note >}}
-The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/platform/update-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/platform/update-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
+{{< note respectIndent=false >}}
+The `GRUB 2` kernel is required for this guide. All distributions for all new Linodes now boot with the `GRUB 2` kernel by default. However, if you are running an older distribution, you will need to check to see which kernel you are running. You can use the [Update Kernel Guide](/docs/products/compute/compute-instances/guides/manage-the-kernel/) to check your kernel version and change it using the Cloud Manager. Select `GRUB 2` from the *Boot Settings: Select a Kernel* dropdown menu in Step 4 of [Update Your Linode Kernel with Linode's Cloud Manager](/docs/products/compute/compute-instances/guides/manage-the-kernel/#update-your-linode-kernel-with-linode-s-cloud-manager).
 {{< /note >}}
 
 ## Install WireGuard
@@ -78,7 +74,7 @@ Setting up wireguard (0.0.20181218-wg1~bionic) ...
 Processing triggers for libc-bin (2.27-3ubuntu1) ...
 {{< /output >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If the installation completes but the output does not appear, your kernel is most likely not configured correctly. To double check, issue the `lsmod | grep wireguard` command. Its output should not be blank. Refer to the previous section to troubleshoot.
 {{< /note >}}
 
@@ -129,7 +125,7 @@ SaveConfig = true
 
         wg-quick up wg0
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 `wg-quick` is a convenient wrapper for many of the common functions in `wg`. You can turn off the wg0 interface with `wg-quick down wg0`
 {{< /note >}}
 
@@ -172,7 +168,7 @@ wg0: flags=209<UP,POINTOPOINT,RUNNING,NOARP>  mtu 1420
 
 The process for setting up a client is similar to setting up the server. When using Ubuntu as your client's operating system, the only difference between the client and the server is the contents of the configuration file. If your client uses Ubuntu, follow the steps provided in the above sections and in this section. For installation instructions on other operating systems, see the [WireGuard docs](https://www.wireguard.com/install/).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 You also need to install the `openresolv` package on the client to configure DNS server `sudo apt install openresolv`.
 {{< /note >}}
 
@@ -194,7 +190,7 @@ Address = 10.0.0.2/24, fd86:ea04:1115::5/64
 
 There are two ways to add peer information to WireGuard; this guide demonstrates both methods.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Stop the interface with `sudo wg-quick down wg0` on both the client and the server.
 {{< /note >}}
 

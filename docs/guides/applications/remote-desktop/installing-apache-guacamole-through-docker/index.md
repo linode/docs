@@ -1,8 +1,5 @@
 ---
 slug: installing-apache-guacamole-through-docker
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to install Apache Guacamole (a remote access gateway for SSH, VNC, and other protocols) through Docker."
 keywords: ["Apache Guacamole", "Docker", "VNC", "SSH"]
 tags: ["docker", "guacamole"]
@@ -10,21 +7,21 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-09-10
 modified_by:
   name: Linode
-title: "How to Install Apache Guacamole through Docker"
-h1_title: "Installing Apache Guacamole through Docker"
-enable_h1: true
+title: "Installing Apache Guacamole through Docker"
+title_meta: "How to Install Apache Guacamole through Docker"
 external_resources:
  - '[Apache Guacamole](https://guacamole.incubator.apache.org/)'
+authors: ["Linode"]
 ---
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Installing Docker
@@ -39,7 +36,7 @@ After installation, you can pull the following Docker images for use in later st
 
 ## Setting up MySQL for Database Authentication
 
-Apache Guacamole requires a method for user authentication. Database authentication through MySQLis covered in this section, though PostgreSQL and MariaDB are supported supported as well as other non-database methods. To explore additional options, open the [Guacamole Manual](https://guacamole.apache.org/doc/gug/) and review any sections with "authentication" in their headings.
+Apache Guacamole requires a method for user authentication. Database authentication through MySQLis covered in this section, though PostgreSQL and MariaDB are supported as well as other non-database methods. To explore additional options, open the [Guacamole Manual](https://guacamole.apache.org/doc/gug/) and review any sections with "authentication" in their headings.
 
 1.  Create a database initialization script to create a table for authentication:
 

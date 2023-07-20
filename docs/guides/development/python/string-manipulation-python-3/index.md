@@ -1,10 +1,6 @@
 ---
 slug: string-manipulation-python-3
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
-og_description: 'Strings are one of the most commonly used data types in Python. This guide will show how to create, manipulate, and format strings using Python 3.'
 keywords: ["python", "string", "f string", "format string", "python 3"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-04-13
@@ -19,6 +15,7 @@ concentrations: ["Scripting, Automation, and Build Tools"]
 languages: ["python"]
 tags: ["python"]
 aliases: ['/development/python/string-manipulation-python-3/']
+authors: ["Jared Kobos"]
 ---
 
 ## Strings in Python
@@ -129,7 +126,7 @@ The inverse operation of `split` is `join`, which will combine a list of strings
 'one,two,three,four,five'
 {{< /output >}}
 
-For a full list of available string methods, see the [official documentation](https://docs.python.org/3/library/stdtypes.html#string-methods).
+For a full list of available string methods, see the [official documentation](https://docs.python.org/3/library/stdtypes.html#string-methods). Since there is no built-in string method to reverse a string, see our guide [Reversing a String in Python](/docs/guides/how-to-reverse-a-string-in-python/) to learn several ways to do so.
 
 ## String Formatting
 

@@ -1,9 +1,6 @@
 ---
 slug: apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["python", "apache", "mod_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
@@ -16,8 +13,8 @@ published: 2012-10-18
 title: 'Apache and mod_wsgi on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)'
- - '[Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)'
- - '[Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Django Applications with mod\_wsgi](/docs/guides/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin/)'
+ - '[Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)'
  - '[Flask Framework](http://flask.pocoo.org/)'
  - '[Werkzug](http://werkzeug.pocoo.org/)'
  - '[Django](http://www.djangoproject.com/)'
@@ -27,23 +24,24 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. This guides outline this installation and configuration process for WSGI with Apache on Ubuntu 12.04.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/products/platform/get-started/) and [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides, and the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname).
 
-2.  We recommend that you are already familiar with [Apache](/docs/websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) before beginning this guide.
+2.  We recommend that you are already familiar with [Apache](/docs/guides/apache-web-server-ubuntu-12-04/) before beginning this guide.
 
 3.  Update your system:
 
         sudo apt-get update
         sudo apt-get upgrade
 
-{{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Dependencies
@@ -87,7 +85,7 @@ You must append the path of your application to the system path as above. The de
 
 ### Web.py WSGI Configuration
 
-In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
+In this example the Web.py *application* is embedded in a `application.wsgi` file. The [Web.py Framework](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
 {{< file "/var/www/example.com/application/application.wsgi" python >}}
 import web

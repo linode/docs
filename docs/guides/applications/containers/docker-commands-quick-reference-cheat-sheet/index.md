@@ -1,8 +1,5 @@
 ---
 slug: docker-commands-quick-reference-cheat-sheet
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'A quick reference cheat sheet on Docker commands for installation, containers, images and more.'
 keywords: ["docker", "quick reference", "cheat sheet", "commands"]
 aliases: ['/applications/containers/docker-commands-quick-reference-cheat-sheet/','/applications/containers/docker-quick-reference-cheat-sheet/']
@@ -15,6 +12,7 @@ published: 2015-03-30
 title: Docker Commands Quick Reference Cheat Sheet
 external_resources:
   - '[Docker Cheat Sheet (Github)](https://github.com/wsargent/docker-cheat-sheet)'
+authors: ["Linode"]
 ---
 
 ![Docker Commands Quick Reference Cheat Sheet](Docker_Commands_Quick_Reference_Cheat_Sheet_smg.png "Docker Commands Quick Reference Cheat Sheet")
@@ -23,7 +21,7 @@ Docker is becoming increasingly popular among software developers, operators and
 
 Optimizing the platform's functionality begins with mastery of the core Docker commands. This cheat sheet is a reference for the most basic Docker commands that address installation, Hub interaction, and working with containers and images.
 
-As of this writing, the recommended Docker installation is Docker Community Edition ([Docker CE](https://docs.docker.com/engine/installation/)). See the official docs or our [How to Install Docker](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) guide for more details.
+As of this writing, the recommended Docker installation is Docker Community Edition ([Docker CE](https://docs.docker.com/engine/installation/)). See the official docs or our [How to Install Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide for more details.
 
 {{< note >}}
 If you have not added your limited user account to the `docker` group (with `sudo usermod -aG docker username`), all of the commands in this cheatsheet will need to be run with `sudo`.

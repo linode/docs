@@ -1,9 +1,6 @@
 ---
 slug: deploy-exim-as-a-send-only-mail-server-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Lukas Sabota
-  email: docs@linode.com
 description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: ["exim", "ubuntu 12.04", "send-only email", "mail server", "linux mail", "smtp server"]
 tags: ["ubuntu","email"]
@@ -22,17 +19,18 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Lukas Sabota"]
 ---
 
 Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
-We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
+We assume that you've already followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -77,35 +75,35 @@ Now you're ready to configure Exim for local mail service. Here's how:
 
 2.  You'll be presented with a welcome screen, followed by a screen asking what type mail delivery you'd like to support. Select the option for **internet site**, and then select **Ok** to continue.
 
-    [![Exim4 mail delivery type configuration on Ubuntu 12.04 LTS (Precise).](1153-011-exim4-ubuntu-12-04-general.png)](1153-011-exim4-ubuntu-12-04-general.png)
+    ![Exim4 mail delivery type configuration on Ubuntu 12.04 LTS (Precise).](1153-011-exim4-ubuntu-12-04-general.png)
 
 3.  Enter your system's FQDN (fully qualified domain name) in the **mail name** configuration screen.
 
-    [![Exim4 system mail name configuration on Ubuntu 12.04 LTS (Precise).](1154-02-exim4-ubuntu-12-04-mail-name.png)](1154-02-exim4-ubuntu-12-04-mail-name.png)
+    ![Exim4 system mail name configuration on Ubuntu 12.04 LTS (Precise).](1154-02-exim4-ubuntu-12-04-mail-name.png)
 
 4.  Enter `127.0.0.1 ; ::1` when asked which IP address to listen on for SMTP connections.
 
-    [![Exim4 listening IP address configuration on Ubuntu 12.04 LTS (Precise).](1156-03-exim4-ubuntu-12-04-ip-listen.png)](1156-03-exim4-ubuntu-12-04-ip-listen.png)
+    ![Exim4 listening IP address configuration on Ubuntu 12.04 LTS (Precise).](1156-03-exim4-ubuntu-12-04-ip-listen.png)
 
 5.  Make sure you list your FQDN, hostname, and localhost entries when you're asked which destinations mail should be accepted for.
 
-    [![Exim4 mail destination configuration on Ubuntu 12.04 LTS (Precise).](1157-04-exim4-ubuntu-12-04-local-domains.png)](1157-04-exim4-ubuntu-12-04-local-domains.png)
+    ![Exim4 mail destination configuration on Ubuntu 12.04 LTS (Precise).](1157-04-exim4-ubuntu-12-04-local-domains.png)
 
 6.  Leave the relay domains and relay machines fields blank.
 
-    [![Exim4 relay domains configuration on Ubuntu 12.04 LTS (Precise).](1158-05-exim4-ubuntu-12-04-relay-domains.png)](1158-05-exim4-ubuntu-12-04-relay-domains.png)
+    ![Exim4 relay domains configuration on Ubuntu 12.04 LTS (Precise).](1158-05-exim4-ubuntu-12-04-relay-domains.png)
 
 7.  Select **No** when asked whether to keep DNS queries to a minimum.
 
-    [![Exim4 DNS queries configuration on Ubuntu 12.04 LTS (Precise).](1159-06-exim4-ubuntu-12-04-dns-queries.png)](1159-06-exim4-ubuntu-12-04-dns-queries.png)
+    ![Exim4 DNS queries configuration on Ubuntu 12.04 LTS (Precise).](1159-06-exim4-ubuntu-12-04-dns-queries.png)
 
 8.  You may select either **mbox** or **Maildir** when asked about the delivery method used for incoming mail. While many utilities use mbox format, Maildir format can make handling individual locally delivered mail messages easier, and is widely supporting by a range of applications.
 
-    [![Exim4 mail format configuration on Ubuntu 12.04 LTS (Precise).](1160-07-exim4-ubuntu-12-04-mail-format.png)](1160-07-exim4-ubuntu-12-04-mail-format.png)
+    ![Exim4 mail format configuration on Ubuntu 12.04 LTS (Precise).](1160-07-exim4-ubuntu-12-04-mail-format.png)
 
 9. Accept the default **non-split** option for your mail configuration file. Enter at least one external email address (choose one that you check frequently) in addition to `root` when asked to specify postmaster mail recipients.
 
-    [![Exim4 postmaster recipient configuration on Ubuntu 12.04 LTS (Precise).](1161-08-exim4-ubuntu-12-04-postmater-mail.png)](1161-08-exim4-ubuntu-12-04-postmater-mail.png)
+    ![Exim4 postmaster recipient configuration on Ubuntu 12.04 LTS (Precise).](1161-08-exim4-ubuntu-12-04-postmater-mail.png)
 
 ## Test Your Mail Configuration
 

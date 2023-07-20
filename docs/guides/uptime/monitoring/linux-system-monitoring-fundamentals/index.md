@@ -1,8 +1,5 @@
 ---
 slug: linux-system-monitoring-fundamentals
-author:
-  name: Steven J. Vaughan-Nichols
-  email: sjvn@vna1.com
 description: "This guide discusses the system monitoring tools you can use to reassure your server is functioning properly and help you deal with strange behaviors."
 keywords: ['linux system monitoring']
 tags: ["linux","monitoring"]
@@ -12,9 +9,7 @@ image: LinuxSysMonFundamentals.png
 modified_by:
   name: Linode
 title: "Linux System Monitoring Fundamentals"
-contributor:
-  name: Steven J. Vaughan-Nichols
-  link: http://www.twitter.com/sjvn
+authors: ["Steven J. Vaughan-Nichols"]
 ---
 
 The only way to know that your Linux-server-based applications and services are running well is to measure what's going on in the server and its connectivity status. Linux system monitoring tools reassure you when things are working right, and help you recognize odd behavior, performance anomalies, and their source when the server misbehaves. Once you've mastered these dedicated applications – most of which are built into the operating system – you'll be well on your way to Linux system administrator expertise.

@@ -1,25 +1,19 @@
 ---
 slug: secure-website-lets-encrypt-acme-sh
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
-og_description: "acme.sh is an alternative to the popular Certbot. This guide shows you how to secure a website using acme.sh with SSL certificates from Let's Encrypt."
 keywords: ['ssl','lets encrypt','https','website','websites','acme.sh','secure']
 tags: ['http', 'ssl', 'apache', 'nginx', 'security', 'automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-12-03
 modified_by:
   name: Andy Heathershaw
-title: 'Secure a Website or Domain with Let''s Encrypt and acme.sh'
-h1_title: 'Secure a Website or Domain with a Let''s Encrypt SSL Certificate and acme.sh'
-contributor:
-  name: Andy Heathershaw
-  link: https://andysh.uk
+title: 'Secure a Website or Domain with a Let''s Encrypt SSL Certificate and acme.sh'
+title_meta: 'Secure a Website or Domain with Let''s Encrypt and acme.sh'
 external_resources:
 - '[acme.sh](https://acme.sh/)'
 - '[Use Linode domain API (acme.sh wiki)](https://github.com/acmesh-official/acme.sh/wiki/dnsapi#14-use-linode-domain-api)'
 - '[Let''s Encrypt](https://letsencrypt.org/)'
+authors: ["Andy Heathershaw"]
 ---
 [*acme.sh*](https://acme.sh/) is a client application for ACME-compatible services, like those used by [Let's Encrypt](https://letsencrypt.org/). It is an alternative to the popular [Certbot](/docs/guides/quick-answers/websites/) application with two big benefits:
 
@@ -27,13 +21,15 @@ external_resources:
 
 - acme.sh supports [more DNS providers](https://github.com/acmesh-official/acme.sh/wiki/dnsapi) than other similar clients.
 
-If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](https://www.linode.com/docs/guides/dns-manager/) as the domain ownership verification.
+If you use Linode for your website's DNS, you can use acme.sh to obtain both single and wildcard SSL certificates. You can use [Linode DNS](/docs/products/networking/dns-manager/) as the domain ownership verification.
 
 ## Before You Begin
 
-1. Deploy a Linode by following the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guides.
+1. Deploy a Linode by following the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
-1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/guides/getting-started#connect-to-your-linode-via-ssh). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
+1. Ensure that either NGINX or the Apache web server is installed and pre-configured on your distro by following our [web server documentation](/docs/guides/web-servers/). Ensure that port 443 is open on your firewall to allow for SSL/TLS resolution.
+
+1. Decide which system user you want to issue and renew your certificates and [connect to your Linode as this user via SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance). If you want to automatically restart a web server, or write certificates to a restricted folder, you likely want to install acme.sh under root.
 
 ## Install acme.sh
 
@@ -85,17 +81,22 @@ https://github.com/acmesh-official/acme.sh
 v2.8.7
 {{< /output >}}
 
+1. Finally, enter the following command to add an email address to be used with acme.sh to register your certificates with a Certificate Authority, replacing the `<email_address>` field with the e-mail address you will be registering with:
+
+        acme.sh --register-account -m <email_address>
+
+
 ## Create an API token
 
-acme.sh can use the [Linode v4 API](https://www.linode.com/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) product documentation to create a Linode API v4 token.
+acme.sh can use the [Linode v4 API](/docs/api) to create and remove temporary DNS records for a Domain. Follow the steps [Get An API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) product documentation to create a Linode API v4 token.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure the token you create has **Read/Write** access to **Domains**.
-{{</ note >}}
+{{< /note >}}
 
 ## Issue a certificate
 
-1. [Connect to your Linode](/docs/guides/getting-started#connect-to-your-linode-via-ssh) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
+1. [Connect to your Linode](/docs/products/platform/get-started/#connect-to-your-linode-via-ssh) and set an environment variable for the API token you obtained in the previous section. Replace `your-api-token-here` with your own token.
 
         export LINODE_V4_API_KEY="your-api-token-here"
 
@@ -103,7 +104,7 @@ Ensure the token you create has **Read/Write** access to **Domains**.
 
         acme.sh --issue --dns dns_linode_v4 --dnssleep 90 -d example.com -d *.example.com
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 The above command issues a wildcard certificate for `example.com`, which covers `example.com` and any subdomains under it.
 
 If you only need to secure `www.example.com`, you can issue the example command. This command covers the non-www (`example.com`) and www version of the domain (`www.example.com`). Replace `example.com` with your own domain.
@@ -224,13 +225,13 @@ For example, to store your certificates in `/etc/ssl/example.com` and restart Ap
         --fullchain-file /etc/ssl/example.com/fullchain-example.com.cer \
         --reloadcmd "systemctl restart apache2"
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The target directory must exist first. To create it run the following command:
 
     mkdir -p /etc/ssl/example.com
 {{< /note >}}
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The example command uses certificate file system locations (`/etc/ssl/`) that are different from the examples in the [Configure your Web Server](#configure-your-web-server) section (which used the `/root/.acme.sh/` folder). If you want to copy this exact example command, make sure that your web server configurations use the correct locations.
 {{< /note >}}
 

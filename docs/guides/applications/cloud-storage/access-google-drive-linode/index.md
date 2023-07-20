@@ -1,8 +1,5 @@
 ---
 slug: access-google-drive-linode
-author:
-    name: Scott Sumner
-    email: scottinthebooth@gmail.com
 description: 'Access Google Drive from your Linode with Ubuntu 14.04 using OCamlfuse to connect directly with the Google Drive API.'
 keywords: ["google", "drive", "console", "fuse", "apt", "ubuntu"]
 tags: ["ubuntu"]
@@ -12,16 +9,15 @@ modified: 2016-03-17
 modified_by:
     name: Linode
 title: 'Access Google Drive from Linode with Ubuntu 14.04'
-contributor:
-    name: Scott Sumner
 aliases: ['/applications/cloud-storage/access-google-drive-linode/']
+authors: ["Scott Sumner"]
 ---
 
 If you've used Google Drive, you know that it can be an indispensable tool for remote file access. While one of the standard counter-arguments to remote storage is "just carry a flash drive," that only works until you need to add a file to your Linode. This guide will show you how to install and configure a great piece of free software to access your Google Drive from your Linode running Ubuntu version 14.04 or newer.
 
 **Google-drive-ocamlfuse (OCamlfuse)** uses the Drive API to scan and access your Google Drive contents. A majority of the following steps involve authorizing its use and applying that authorization to the copy running on your Linode. Once it has been installed and authorized, you will have real-time access to your Google Drive via Linode.
 
-Before beginning, you should be familiar with our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, particularly if your Google Drive contains sensitive personal information. This guide is intended to be run as a non-root user, with sudo privileges required for some steps.
+Before beginning, you should be familiar with our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, particularly if your Google Drive contains sensitive personal information. This guide is intended to be run as a non-root user, with sudo privileges required for some steps.
 
 ## Install Software
 
@@ -53,11 +49,11 @@ Next, we're going to enable API access to Google Drive and create a set of crede
 
     Google will take a moment to create the project, and when it's complete you'll arrive at the dashboard:
 
-    [![The project "dashboard"](API-dashboard-small.png)](API_dashboard.png)
+    ![The project "dashboard"](API_dashboard.png)
 
 3.  Enable the Google Drive API. Click **APIs & auth**, then **APIs** when the menu expands. You'll see a list like the one below. Click on **Drive API**:
 
-    [![The API list.](google_API_screen-small.png)](google_API_screen.png)
+    ![The API list.](google_API_screen.png)
 
     If you don't see the **Drive API** on the list as pictured, you may need to search for it. After you've selected it, click the blue **Enable** button at the top of the page.
 
@@ -69,7 +65,7 @@ Next, we're going to enable API access to Google Drive and create a set of crede
 
     Click **Configure consent screen**. Google assumes you are writing a piece of software so it wants some information about it.
 
-    [![Creating a client ID.](new_configure_screen_small.jpg)](new_configure_screen.jpg)
+    ![Creating a client ID.](new_configure_screen.jpg)
 
     The product name field is required, but you can leave everything else blank. Then click **Save** at the bottom of the page.
 
