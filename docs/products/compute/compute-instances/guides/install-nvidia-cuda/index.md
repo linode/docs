@@ -15,7 +15,7 @@ To take advantage of the powerful parallel processing capabilities offered by GP
     - [Getting Started with Linode](/docs/products/platform/get-started/)
     - [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
-    Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
+    Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported. To deploy a GPU Compute with a distribution of your choice, see [Choose a Distribution, App, or Image](/docs/products/compute/compute-instances/guides/create/#choose-a-distribution-app-or-image).
 
 1.  Upgrade your system and install the kernel headers and development packages for your distribution. See NVIDIA's [Pre-installation Actions](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions) for additional information.
 
