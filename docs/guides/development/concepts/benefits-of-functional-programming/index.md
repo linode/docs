@@ -17,57 +17,55 @@ external_resources:
 - '[Unthinkable: 7 Unbeatable Advantages of Functional Programming](https://www.unthinkable.co/blog-post/7-unbeatable-advantages-of-functional-programming/)'
 ---
 
-While it's not talked about frequently, functional programming has a lot to offer. It is ideal for program transparency, concurrency, and debugging.
+While not talked about frequently, functional programming has a lot to offer. It is ideal for program transparency, concurrency, and debugging.
 
-So, when should you use functional programming, and what are some specific benefits it offers? Find out in this tutorial. Learn what functional programming is, its benefits, and best use cases.
+So, when should you use functional programming, and what are some specific benefits it offers? Find out in this tutorial. Learn what functional programming is, explore its benefits, and discover its best use cases.
 
-## What is Functional Programming?
+## What Is Functional Programming?
 
 In functional programming, everything is designed around functions and driven by the ideal of avoiding side effects. Functional programming centers on program behavior, rather than on objects and states. Functional programming aims to keep these behaviors as predictable as possible.
 
-Learn more about what makes functional programming what it is, including elaboration of its core principles, in our guide *Functional Programming: Paradigm for Application & Composition*.
-
-To summarize, here is a brief look at functional programming's central concepts for a clearer idea of how it can operate:
+Here is a brief look at functional programming's central concepts for a clearer idea of how it operates:
 
 -   **First-class Functions**: Functions are treated like any other data type, and are capable of being used as arguments. This ties to the idea of *referential transparency*, meaning any expression, including functions, can be replaced with a value and generate the same results.
 
--   **Pure Functions**: A pure function is one in which the only determiner of a function's output is the function's direct input. Such functions are not impacted by and do not generate side effects. They make program behavior much more predictable and easier to reason about.
+-   **Pure Functions**: A pure function is one in which the only determiner of the output is the function's direct input. Such functions are not impacted by, and do not generate, side effects. They make program behavior much more predictable and easier to reason about.
 
 -   **Immutability**: Once set, values should not or cannot be altered. This also makes functional programs much more predictable, with cleaner and more consistent program logic.
 
-## What is Functional Programming Used For?
+## What Is Functional Programming Used For?
 
-Functional programming can operate in many contexts. In most cases, it is just as capable as a paradigm like object-oriented programming. While some applications are not well-suited to functional programming, it mostly just brings a different focus to application design.
+Functional programming can operate in many contexts. In most cases, it is just as capable as paradigms like object-oriented programming. While some applications are not well-suited to functional programming, it mostly just brings a different focus to application design.
 
-One of the big draws of functional programming, however, is concurrency. Because functional programs are designed around predictable functions that avoid side effects, functional programming lends to concurrent operations. Learn more about this further below.
+One of the major advantages of functional programming is concurrency. Because functional programs are designed around predictable functions that avoid side effects, functional programming lends to concurrent operations. Learn more about this further below.
 
-Otherwise, developers tend to use functional programming when they want to focus on making programs:
+Developers tend to use functional programming when they want to focus on making programs:
 
 -   **Testable**: Functional programming makes program behavior more consistent and predictable. This tends to make debugging tasks more straightforward. The design of immutability and pure functions often makes it so functional programming can avoid most or all run-time bugs.
 
 -   **Behavior-oriented**: Functional programming breaks programs down by actions, rather than by objects. This is especially useful in programs that deal with complex operations as opposed to complex objects.
 
--   **Clearer**: Functional programming often results in clearer, more readable code. Predictability and immutability help with this. Together, these features make programs generally clearer for developers.
+-   **Clearer**: Functional programming often results in clearer, more readable code. Predictability and immutability together make programs generally clearer for developers.
 
 ## Benefits of Functional Programming
 
-Functional programming, as mentioned above, can be used in a wide range of contexts. However, it also has particular benefits that set it apart. Knowing these can help you decide when functional programming is the right choice for your needs.
+Functional programming can be used in a wide range of contexts. However, it has particular benefits that set it apart. Knowing these can help to decide when functional programming is the right choice.
 
-This section breaks down some of the key benefits of using functional programming. The list here is not exhaustive, but it covers the biggest draws for functional programming. These benefits have been categorized broadly to show the big picture of what functional programming has to offer.
+This section breaks down some of the key benefits of functional programming. While the list is not exhaustive, it covers the biggest draws for functional programming. These benefits are categorized broadly to show the big picture of what functional programming has to offer.
 
 ### Predictability
 
 Functional programming makes program behaviors more predictable through the elimination of side effects. The use of pure functions, which do not rely on or create side effects, makes anticipating the output of functions easier. It eliminates the need for developers to track external states that might impact various functions.
 
-Often, functional programming's predictability makes functional programs easier to test, since tests can be run on functions independently. Pure functions' outputs are determined solely by their inputs, which makes it possible to test each function independently to ensure accuracy in your program.
+Functional programming's predictability often makes functional programs easier to test, since tests can be run on functions independently. The outputs of pure functions are determined solely by their inputs. This makes it possible to test each function independently to ensure accuracy in a program.
 
 The predictability baked into functional programming tends to reduce the number of bugs. This is not just the case for developers. Compilers, too, are able to leverage the predictability of functional programs to catch would-be bugs at compile time. In fact, many compilers for functional programming languages, like Elm, can boast few-to-no run-time bugs.
 
 ### Reasonability
 
-Functional programming being reasonable does not mean that functional programming is also more rational. It means that functional programs tend to be easier to reason about, which is also tied to predictability and clarity.
+Functional programming being more reasonable does not also mean that functional programming is more rational. It means that functional programs tend to be easier to reason about, which is also tied to predictability and clarity.
 
-Functional programs avoid side effects, meaning that what a function does depends only on that function's input. This facilitates developers' ability to navigate through program logic, since that logic is not affected by states that change in difficult to track ways.
+Functional programs avoid side effects. This means that what a function does depends only on that function's input. This facilitates developers' ability to navigate through program logic, since that logic is not affected by states that change in difficult to track ways.
 
 Instead, developers can focus on specific behaviors or parts of behaviors. They can rigorously test those parts independently with assurance that, if the function behaves as expected independently, it does so in all circumstances.
 
@@ -101,8 +99,8 @@ The following are a few factors that may advise you against functional programmi
 
 -   **Behavior Focus**: Functional programming centers program design on program behavior. Doing so makes sense for programs with complex logic. However, some application contexts strongly favor programs that put objects at the center. This is often the case with business applications and user interfaces, where object-oriented programs are the natural choice. This is not to say that functional programming cannot fit these needs, it certainly has. However, functional programming does not lend itself to these as naturally.
 
--   **Learning Curve:** Functional programming can be clear, predictable, and concise. However, it can also be an uphill battle to learn it well enough to utilize these benefits. Functional programming often makes use of logic that might be unfamiliar to developers used to procedural and object-oriented paradigms.
+-   **Learning Curve**: Functional programming can be clear, predictable, and concise. However, it can also be an uphill battle to learn it well enough to utilize these benefits. Functional programming often makes use of logic that might be unfamiliar to developers used to procedural and object-oriented paradigms.
 
 ## Conclusion
 
-This guide should provide you with a firm grasp on the benefits that functional programming has to offer. It includes what you need to know to decide when to use, and when not to use, functional programming. With this information, you are ready to start learning more about functional programming to get the most out of it.
+This guide should provide you with a firm grasp on the benefits that functional programming has to offer. It includes the knowledge you need to decide when to use, and when not to use, functional programming. With this information, you are ready to start learning more about functional programming and start getting the most out of it.
