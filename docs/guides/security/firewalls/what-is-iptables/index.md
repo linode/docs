@@ -1,20 +1,18 @@
 ---
 slug: what-is-iptables
-author:
-  name: Hackersploit
 description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
-og_description: 'This guide helps you understand iptables and explains what is iptables. It gets you started with examples and an overview of commands.'
 keywords: ['understanding iptables', 'what is iptables']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2020-10-07
 modified_by:
   name: Linode
 published: 2020-10-07
-title: What is iptables
-h1_title: Understanding iptables
+title: Understanding iptables
+title_meta: What is iptables
 tags: ['networking','security']
 image: "Understanding_iptables.png"
 aliases: ['/security/firewalls/what-is-iptables/']
+authors: ["Hackersploit"]
 ---
 
 Implemented as Netfilter modules, iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall. The filters are organized into tables containing chains of rules which govern how to treat network traffic packets.
@@ -47,9 +45,9 @@ There are 5 main chains in iptables:
   - Prerouting: After the packet enters the network interface.
   - Postrouting: Before the packet leaves the network interface after the routing decision has been made.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The filter table is responsible for blocking or allowing connections and is the default filter used in iptables.
-{{</ note >}}
+{{< /note >}}
 
 ### Understanding Packet Flow
 
@@ -139,9 +137,9 @@ This sets the default policy for all chains to `ACCEPT`. You can also change thi
 
 ### Blocking & Allowing Connections From IP Address
 
-{{< note >}}
+{{< note respectIndent=false >}}
 In the following examples, replace the sample 198.168.1.1 IP address with the IP address you wish to block or allow.
-{{</ note >}}
+{{< /note >}}
 
 You can block all incoming requests from an IP address by adding the following rule:
 
@@ -195,4 +193,4 @@ If you want to clear all the rules that you have added to start over, you can us
 
 ## Next Steps
 
-For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/docs/security/firewalls/control-network-traffic-with-iptables/) guide.
+For more detailed information on iptables, including using ip6tables, rulesets, and iptables-persistent, see the [Controlling Network Traffic with iptables - A Tutorial](/docs/guides/control-network-traffic-with-iptables/) guide.

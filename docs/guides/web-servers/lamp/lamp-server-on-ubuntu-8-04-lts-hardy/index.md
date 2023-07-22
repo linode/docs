@@ -1,9 +1,6 @@
 ---
 slug: lamp-server-on-ubuntu-8-04-lts-hardy
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to install and configure configuring a LAMP stack with the Hardy Heron (8.04 LTS) release of Ubuntu Linux.'
 keywords: ["ubuntu 8.04 lamp", "lamp guide", "ubuntu lamp"]
 tags: ["web server","php","mysql","ubuntu","apache","lamp"]
@@ -24,6 +21,7 @@ relations:
         key: install-lamp-stack
         keywords:
             - distribution: Ubuntu 8.04
+authors: ["Linode"]
 ---
 
 
@@ -34,7 +32,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). This guide assumes that you are logged in as the root superuser on your Linode.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). This guide assumes that you are logged in as the root superuser on your Linode.
 
 ## Install and Configure the Apache Web Server
 

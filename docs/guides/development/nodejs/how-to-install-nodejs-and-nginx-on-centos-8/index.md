@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nodejs-and-nginx-on-centos-8
-author:
-    name: Linode
-    email: docs@linode.com
 description: In this guide, you will learn how to install, configure, and test NGINX and Node.js to serve static site content on a CentOS 8 server.
 keywords: ["linode guide", "hosting a website", "website", "linode setup", " install node.js", " install nginx", "centos", " front-end requests", " back-end requests"]
 tags: ["centos", "nginx", "web server", "proxy"]
@@ -11,9 +8,8 @@ modified: 2021-08-11
 modified_by:
     name: Linode
 published: 2020-04-14
-title: Installing Node.js and NGINX on CentOS 8
-h1_title: How to Install Node.js and NGINX on CentOS 8
-enable_h1: true
+title: How to Install Node.js and NGINX on CentOS 8
+title_meta: Installing Node.js and NGINX on CentOS 8
 external_resources:
  - '[Node.js](http://nodejs.org)'
  - '[NGINX](http://nginx.com/)'
@@ -30,19 +26,20 @@ relations:
         keywords:
             - distribution: CentOS 8
 aliases: ['/development/nodejs/how-to-install-nodejs-and-nginx-on-centos-8/']
+authors: ["Linode"]
 ---
 
 Node.js is an open-source JavaScript runtime environment that can serve dynamic and responsive content and is often used to create and serve web applications. When serving Node.js applications, NGINX is commonly used to create a reverse proxy that points at a running Node.js server. In this guide, you will install and configure NGINX on a CentOS 8 Linode. NGINX will handle requests to static files, like `index.html` and also, create a reverse proxy to a Node.js server. You will then create a test JavaScript file in order to test your running Node.js server.
 
 ## Before You Begin
 
-1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/guides/dns-manager/) to [add the domain](/docs/guides/dns-manager/#add-a-domain) and [create a domain record](/docs/guides/dns-manager/#add-dns-records) for it.
+1.  If you want to use a custom domain name for your site, purchase a domain name from a trusted registrar and use Linode's [DNS Manager](/docs/products/networking/dns-manager/) to [add the domain](/docs/products/networking/dns-manager/guides/create-domain/) and [create a domain record](/docs/products/networking/dns-manager/guides/manage-dns-records/) for it.
 
-1.  Set up your Linode using the [Getting Started](/docs/guides/getting-started/) and [Securing your Server](/docs/guides/securing-your-server/) guides.
+1.  Set up your Linode using the [Getting Started](/docs/products/platform/get-started/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
 
-    {{< note >}}
-Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/guides/getting-started/#update-your-system-s-hosts-file) section of the [Getting Started](/docs/guides/getting-started/) guide.
-    {{</ note >}}
+    {{< note respectIndent=false >}}
+Don't forget to update your Linode's `/etc/hosts` file with its public IP address and your site's fully qualified domain name, as explained in the [Update Your System's hosts File](/docs/products/compute/compute-instances/guides/set-up-and-secure/#update-your-systems-hosts-fileupdate-your-system-s-hosts-file) section of the [Getting Started](/docs/products/platform/get-started/) guide.
+    {{< /note >}}
 
 1. Install the SELinux core policy Python utilities. This will give you the ability to manage SELinux settings in a fine-grained way.
 
@@ -131,11 +128,11 @@ http {
         sudo firewall-cmd --zone=public --permanent --add-service=https
         sudo firewall-cmd --reload
 
-      {{< note >}}
+    {{< note respectIndent=false >}}
 If you plan to use any [httpd](https://en.wikipedia.org/wiki/Httpd) scripts and modules on your server, update the corresponding SELinux Boolean variable. To allow HTTPD scripts and modules to connect to the network, use the following command:
 
     sudo setsebool -P httpd_can_network_connect on
-      {{< /note >}}
+    {{< /note >}}
 
     {{< content "cloud-firewall-shortguide" >}}
 
@@ -156,9 +153,9 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 ## Create Your Site's Index File
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
-{{</ note >}}
+{{< /note >}}
 
 1.  Using the text editor of your choice, create your site's index file in the root directory using the example below.
 
@@ -205,9 +202,9 @@ Ensure you replace `example.com` with your own site's name or IP address in all 
 
 1.  Install Node.js:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 As of writing this guide, the latest LTS version of [Node.js](https://nodejs.org/en/download/) is `v12.16.2`. Update this command with the version of Node.js you would like to install.
-    {{</ note >}}
+    {{< /note >}}
 
         nvm install 12.16.2
 
@@ -225,30 +222,30 @@ Now using node v12.16.2 (npm v6.14.4)
 
 In the [Install and Configure NGINX](#install-and-configure-nginx) section you configured NGINX to listen on port `80` to serve its static content. You also configured a reverse proxy to your Linode's `localhost:3000` when a request for the `/test.js` file is made. In this section you will create the `test.js` file to be able to test your Node.js web server that you will create in the [next section](#create-your-the-node-js-web-server-file).
 
-{{< note >}}
+{{< note respectIndent=false >}}
 Ensure you replace `example.com` with your own site's name or IP address in all commands and examples in this section.
-{{</ note >}}
+{{< /note >}}
 
 1. Create the `test.js` file in your site's root directory.
 
-      {{< file "/var/www/example.com/test.js" html >}}
-<!DOCTYPE html>
-<html>
-<body>
+    ```file {title="/var/www/example.com/test.js" lang="html"}
+    <!DOCTYPE html>
+    <html>
+    <body>
 
-<h2>
-Your Node.JS server is working.
-</h2>
+    <h2>
+    Your Node.JS server is working.
+    </h2>
 
-<p>
-The below button is technically dynamic. You are now using Javascript on both the client-side and the server-side.</p>
+    <p>
+    The below button is technically dynamic. You are now using Javascript on both the client-side and the server-side.</p>
 
-<button type="button" onclick="document.getElementById('sample').innerHTML = Date()"> Display the date and time.</button>
-<p id="sample"></p>
+    <button type="button" onclick="document.getElementById('sample').innerHTML = Date()"> Display the date and time.</button>
+    <p id="sample"></p>
 
-</body>
-</html>
-    {{</ file >}}
+    </body>
+    </html>
+    ```
 
 ### Create the Node.js Web Server File
 
@@ -256,32 +253,31 @@ In this section, you will create a file named `server.js` that will use Node.js 
 
 1. In your site's root directory, create the `server.js` file with the following content.
 
-      {{< file "/var/www/example.com/server.js" js >}}
-//nodejs.org/api for API docs
-//Node.js web server
-var http = require("http"),                           //Import Node.js modules
-    url = require("url"),
-    path = require("path"),
-    fs = require("fs");
+    ```file {title="/var/www/example.com/server.js" lang="js"}
+    //nodejs.org/api for API docs
+    //Node.js web server
+    var http = require("http"),                           //Import Node.js modules
+        url = require("url"),
+        path = require("path"),
+        fs = require("fs");
 
-http.createServer(function(request, response) {       //Create server
-var name = url.parse(request.url).pathname;           //Parse URL
-var filename = path.join(process.cwd(), name);        //Create filename
-fs.readFile(filename, "binary", function(err, file) { //Read file
-    if(err) {                                         //Tracking Errors
-        response.writeHead(500, {"Content-Type": "text/plain"});
-        response.write(err + "\n");
-        response.end();
-        return;
-    }
-    response.writeHead(200);                          //Header request response
-    response.write(file, "binary");                   //Sends body response
-    response.end();                                   //Signals to server that
- });                                                  //header and body sent
-}).listen(3000);                                      //Listening port
-console.log("Server is listening on port 3000.")      //Terminal output
-        {{</ file >}}
-
+    http.createServer(function(request, response) {       //Create server
+    var name = url.parse(request.url).pathname;           //Parse URL
+    var filename = path.join(process.cwd(), name);        //Create filename
+    fs.readFile(filename, "binary", function(err, file) { //Read file
+        if(err) {                                         //Tracking Errors
+            response.writeHead(500, {"Content-Type": "text/plain"});
+            response.write(err + "\n");
+            response.end();
+            return;
+        }
+        response.writeHead(200);                          //Header request response
+        response.write(file, "binary");                   //Sends body response
+        response.end();                                   //Signals to server that
+    });                                                  //header and body sent
+    }).listen(3000);                                      //Listening port
+    console.log("Server is listening on port 3000.")      //Terminal output
+    ```
 
 1.  Run a new [tmux](/docs/guides/persistent-terminal-sessions-with-tmux/) session:
 

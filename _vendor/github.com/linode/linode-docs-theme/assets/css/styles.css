@@ -15,16 +15,12 @@
 @import "components/all.css";
 @import "sections/all.css";
 @import "logic/all.css";
+/* purgecss start ignore */
 @import "grids/grid--base.css";
+/* purgecss end ignore */
 
 html {
   font-size: 16px;
-}
-
-@screen small {
-  html {
-    font-size: 14px;
-  }
 }
 
 body,
@@ -35,6 +31,18 @@ html {
   margin: 0;
   padding: 0;
   color: var(--color-body-text);
+}
+
+html {
+  /* At least in Chrome on MacOS, using any var calculations here makes it fall back to auto, so be explicit. */
+  scroll-padding-top: 81px;
+}
+
+@screen small {
+  html {
+    font-size: 14px;
+    scroll-padding-top: 68px;
+  }
 }
 
 body {

@@ -1,10 +1,7 @@
 ---
 slug: manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This guide shows you how to use the GNU Mailman software to manage and moderate email listservs (aka group mailing lists) on Ubuntu 9.10 "Karmic".'
+description: 'This guide shows how you can use GNU Mailman a free and open source Listserv management application for managing discussion lists on Ubuntu 9.10 "Karmic".'
 keywords: ["mailman", "listserv", "email", "postfix"]
 tags: ["ubuntu","postfix","email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,13 +16,14 @@ relations:
         key: use-gnu-mailman
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 
 
 GNU Mailman is a commonly used Listserv Management application that allows users to create and manage discussion and announcement email lists. Mailman includes support for numerous features including a web-based administrative interface, multiple domains, lists, and complex moderation and access control tools. The Mailman software is primarily written in the Python programing language and has been a popular choice for managing email lists for more than a decade.
 
-Before installing Mailman we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Be sure to read this guide in its entirety before continuing. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.
+Before installing Mailman we assume that you have followed our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Be sure to read this guide in its entirety before continuing. If you have an existing mail system configured before you begin this, take special care to ensure that installing Mailman will not conflict with delivery of existing mail.
 
 ## Installing Mailman
 
@@ -46,7 +44,7 @@ During the Mailman installation, you will be required to specify the languages t
 
 ## Configure Mailman
 
-Consider the "[Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the "[Configure Virtual Hosting](/docs/guides/manage-email-lists-with-gnu-mailman-on-ubuntu-9-10-karmic/#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -103,7 +101,7 @@ mailman_destination_recipient_limit = 1
 {{< /file >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/networking/dns/dns-records-an-introduction/#mx) for both domains that you want to receive email with. Additionally, ensure the following lines are included your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/guides/dns-overview/#mx) for both domains that you want to receive email with. Additionally, ensure the following lines are included your `/etc/postfix/master.cf` file:
 
 {{< file "/etc/postfix/master.cf" >}}
 mailman   unix  -       n       n       -       -       pipe
@@ -163,7 +161,7 @@ POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
 {{< /file >}}
 
 
-Ensure that your domains have valid MX and [A Records](/docs/networking/dns/dns-records-an-introduction/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
+Ensure that your domains have valid MX and [A Records](/docs/guides/dns-overview/#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
 
     newlist mailman
     /etc/init.d/postfix restart
@@ -178,7 +176,7 @@ From this point forward, you can create new lists by issuing `newlist` commands 
 
 ## Configuring Mailman with Alternate Mail Configurations
 
-If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Courier and MySQL](/docs/email/postfix/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/) or [Postfix with Dovecot and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/). configurations described in other documents, consider the following recommendations:
+If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Courier and MySQL](/docs/guides/email-with-postfix-courier-and-mysql-on-ubuntu-9-10-karmic/) or [Postfix with Dovecot and MySQL](/docs/guides/email-with-postfix-dovecot-and-mysql-on-ubuntu-9-10-karmic/). configurations described in other documents, consider the following recommendations:
 
 Complete your basic mail configuration according to the appropriate guide before beginning to install and configure Mailman.
 

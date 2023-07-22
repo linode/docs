@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-canvas-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install, configure, and run the popular free and open source learning management system Canvas on Debian 10.'
 og_description: 'This guide will show you how to install the popular learning management system Canvas on Debian 10.'
 keywords: ['canvas','education','training','learning management system','lms','deploy on debian 10']
@@ -12,12 +9,8 @@ published: 2021-05-28
 image: Canvas.jpg
 modified_by:
   name: Nathaniel Stickman
-title: "How to Install Canvas on Debian 10"
-h1_title: "Installing Canvas on Debian 10"
-enable_h1: true
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+title: "Installing Canvas on Debian 10"
+title_meta: "How to Install Canvas on Debian 10"
 external_resources:
 - '[Canvas](https://www.instructure.com/canvas)'
 - '[open source](https://github.com/instructure/canvas-lms)'
@@ -34,6 +27,7 @@ relations:
         key: how-to-install-canvas
         keywords:
             - distribution: Debian 10
+authors: ["Nathaniel Stickman"]
 ---
 
 [Canvas](https://www.instructure.com/canvas) is a popular Learning Management System (LMS) noteworthy for its modern design and ease of use. A Canvas website gives you a comprehensive portal for education and training courses. It can manage both in-person and online courses, as well as hybrid courses that mix the two. Moreover, Canvas is [open source](https://github.com/instructure/canvas-lms). You can freely download and install an instance on your server.
@@ -42,9 +36,9 @@ This guide shows you how to get a Canvas website up and running on a Debian 10 s
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started with Linode](/docs/getting-started/) guide, and complete the steps for setting your Linode's hostname and timezone.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. This guide uses `sudo` wherever possible. Complete the sections of our [How to Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1. Install and configure UFW for managing your machine's firewall rules. Refer to the [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 
@@ -52,18 +46,14 @@ This guide shows you how to get a Canvas website up and running on a Debian 10 s
 
 1. Canvas recommends a minimum of 8 GB of RAM. The website may operate with fewer, but doing so may result in installation and/or runtime issues. This is especially the case when all of the Canvas components are running on a single machine.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 You can run some of the components of your Canvas installation on separate machines to free up memory. Refer to Canvas's [Production Start](https://github.com/instructure/canvas-lms/wiki/Production-Start) guide for more information on what components can be installed independently. This approach requires that each machine is configured to enable communications between the components, and it is considered an advanced setup.
 {{< /note >}}
 
-1. Update your system.
+1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/guides/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
 
-        sudo apt update && sudo apt upgrade
-
-1. Replace `example.com` in this guide with your server's domain name. You can complete the steps mentioned in the [Add DNS Records](/docs/websites/set-up-web-server-host-website/#add-dns-records) section to register a domain name for your Linode server.
-
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Install Apache
@@ -351,7 +341,7 @@ production:
 </IfModule>
     {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Canvas has a relatively long startup time, which can sometimes lead to timeout issues. You can add a version of the following line to the **`passenger.conf`** file to increase the time before Canvas times out at startup. This example increases the amount of time before the Passenger times out from the default 60 seconds up to 180 seconds.
 
     PassengerStartTimeout 180
@@ -462,11 +452,11 @@ production:
 
 Your Canvas website is now up and running. Visit the website by navigating to your server's domain name in a web browser. When you are prompted to log in, you can do using the Canvas administrator credentials you created earlier.
 
-[![Canvas login page](canvas-login_small.png "Canvas login page")](canvas-login.png)
+![Canvas login page](canvas-login.png)
 
 Once you log in, you are taken to your Canvas dashboard from which you can view, create, and manage your Canvas website's content.
 
-[![Canvas dashboard](canvas-dashboard_small.png "Canvas dashboard")](canvas-dashboard.png)
+![Canvas dashboard](canvas-dashboard.png)
 
 - You can learn more about how to get started using your Canvas website and all the features it has to offer on the [Canvas Community](https://community.canvaslms.com/) website.
 

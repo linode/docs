@@ -1,5 +1,6 @@
 {{- $api := resources.Get "api/openapi.yaml" | openapi3.Unmarshal -}}
 {{ $ordinal := 0 }}
+{{ $content := "" }}
 
 {{- $index := slice -}}
 {{- range $k, $v :=  $api.Paths -}}
@@ -7,18 +8,25 @@
 {{ $ops = $ops | append  (dict "o" $v.Patch "m" "Patch") (dict "o" $v.Post "m" "Post")  (dict "o" $v.Put "m" "Put") (dict "o" $v.Trace "m" "Trace")}}
 {{- range $ops -}}
 {{- if .o -}}
+{{ $ctx := newScratch }}
+{{ $ctx.Set "dot" . }}
+{{ $ctx.Set "page" $ }}
+{{ $ctx.Set "pathKey" $k }}
+{{ $ctx.Set "path" $v }}
+{{ $ctx.Set "api" $api }}
+{{ $content = trim (partial "openapi3/algolia-operation-content-plain"  $ctx) " \n" | htmlUnescape | safeHTML }}
 {{ $ordinal = add $ordinal 1 }}
 {{ $tag := partial "openapi3/get-tags-title-op" .o }}
 {{- $baseSection := $tag | anchorize -}}
 {{- $parts := split $k "/" -}}
 {{- $section := printf "api > %s" $baseSection -}}
 {{- $op := .o -}}
-{{- $exerpt := $op.Description -}}
+{{- $excerpt := $op.Description | $.RenderString | plainify -}}
 {{- $httpMethod := .m -}}
 {{- $title := $op.Summary }}
 {{- $href := printf "/docs/api/%s/#%s" $baseSection ($op.Summary | anchorize) -}}
 {{- $objectID := printf "%s: %s" $httpMethod $k }}
-{{- $index = $index | append (dict "objectID" $objectID "ordinal" $ordinal "href" $href "title" $title "section" $section "section.lvl0" "api" "section.lvl1" $section  "exerpt" $exerpt "httpMethod" $httpMethod) -}}
+{{- $index = $index | append (dict "objectID" $objectID "ordinal" $ordinal "href" $href "title" $title "section" $section "section.lvl0" "api" "section.lvl1" $section  "excerpt" $excerpt "content" $content "httpMethod" $httpMethod) -}}
 {{- end -}}
 {{- end -}}
 {{- end  -}}

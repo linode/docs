@@ -1,8 +1,5 @@
 ---
 slug: manage-mysql-with-phpmyadmin-on-debian-5-lenny
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: 'This guide will show you how to use phpMyAdmin to manage and maintain MySQL databases and users though a web interface with a GUI on Debian 5 "Lenny".'
 keywords: ["mysql", "phpmyadmin", "sql", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -22,11 +19,12 @@ relations:
         keywords:
             - distribution: Debian 5
 tags: ["ubuntu","php","database","mysql"]
+authors: ["Brett Kaplan"]
 ---
 
 phpMyAdmin is an open source web application written in PHP that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
-We assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We also assume that you have installed a working LAMP stack. For guides on installing a LAMP stack for your distribution, please visit the [LAMP guides](/docs/lamp-guides/) section of Linode Guides & Tutorials.
+We assume you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. We also assume that you have installed a working LAMP stack. For guides on installing a LAMP stack for your distribution, please visit the [LAMP guides](/docs/lamp-guides/) section of Linode Guides & Tutorials.
 
 Be aware, if you have opted to install the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
 
@@ -39,7 +37,7 @@ Make sure your package repositories and installed programs are up to date by iss
 
 In order to provide better security, this guide will install phpMyAdmin to an SSL secured apache virtual host. While you can use http to access your phpMyAdmin instance, it will send your passwords in plain text over the internet. Since you will most likely be logging in to phpMyAdmin using your MySQL root user, http is definitely not recommended.
 
-If you need to set up SSL for your host, please refer to our [using Apache with SSL guide](/docs/web-servers/apache/ssl-guides/debian-5-lenny). Please ensure SSL is enabled for your virtual host before proceeding.
+If you need to set up SSL for your host, please refer to our [using Apache with SSL guide](/docs/guides/ssl-certificates-with-apache-2-on-debian-5-lenny/). Please ensure SSL is enabled for your virtual host before proceeding.
 
 phpMyAdmin requires the `mcrypt` PHP module. You can install it using the following command:
 

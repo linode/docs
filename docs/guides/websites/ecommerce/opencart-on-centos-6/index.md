@@ -1,10 +1,7 @@
 ---
 slug: opencart-on-centos-6
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'This guide will show you how to install, setup, configure, and manage a online storefront where you can sell anything with OpenCart on CentOS 6.'
+description: 'This guide shows how to install and configure the popular open-source ecommerce application OpenCart to run your own web storefront on CentOS 6,'
 keywords: ["opencart", "ecommerce", "commerce", "store", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/web-applications/e-commerce/opencart/centos-6/','/websites/ecommerce/opencart-on-centos-6/']
@@ -18,9 +15,10 @@ relations:
         key: how-to-install-opencart
         keywords:
            - distribution: CentOS 6
+authors: ["Linode"]
 ---
 
-OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#setting-the-hostname).
+OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
 ## PHP Settings
 

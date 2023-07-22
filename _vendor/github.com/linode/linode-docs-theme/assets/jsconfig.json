@@ -1,10 +1,11 @@
 {
  "compilerOptions": {
- "lib": ["es2015", "dom"],
   "baseUrl": ".",
   "paths": {
    "*": [
-    "*"
+    "*",
+    "../_vendor/github.com/bep/turbo/v7/src/*",
+    "../_vendor/github.com/gohugoio/hugo-mod-jslibs-dist/alpinejs/v3/packages/*"
    ]
   }
  }
