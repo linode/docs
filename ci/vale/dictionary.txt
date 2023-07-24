@@ -462,6 +462,7 @@ dbd
 dbs
 dbdir
 dbfiles
+DBMSs
 dbname
 dbserver
 dcid
@@ -1658,6 +1659,7 @@ pathnames
 paypal
 PBCs
 pbr
+PDFs
 pem
 pentest
 pentesting
@@ -1834,6 +1836,8 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMS
+RDBMSs
 rdiff
 reachability
 readcaps
