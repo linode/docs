@@ -2,10 +2,13 @@
 title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
-published: 2023-06-22
+published: 2023-07-24
 modified_by:
   name: Linode
 authors: ["Linode"]
+_build:
+  list: false
+noindex: true
 ---
 
 {{< content "metadata-beta-notice" >}}
@@ -21,27 +24,30 @@ The Metadata service provides both *instance data* and optional *user data*, bot
 -   **Instance data:** The instance data includes information about the Compute Instance, including its label, plan size, region, host identifier, and more.
 -   **User data:** User data is one of the most powerful features of the Metadata service and allows you to define your desired system configuration, including creating users, installing software, configuring settings, and more. User data is supplied by the user when deploying, rebuilding, or cloning a Compute Instance. This user data can be written as a cloud-config file or any script that can be executed on the target distribution image, such as a bash script.
 
-    While user data can be submitted directly in the Cloud Manager, Linode CLI, or Linode API, it's often programmatically provided through IaC (Infrastructure as Code) or provisioning tools like [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/) and [Ansible](/docs/guides/running-ansible-playbooks/).
+    User data can be submitted directly in the Cloud Manager, Linode CLI, or Linode API. It's also often programmatically provided through IaC (Infrastructure as Code) provisioning tools like [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
-When a Compute Instance first boots up, the cloud-init tool runs locally on the system, accesses the metadata, and then configures your system using that metadata.
+When a Compute Instance first boots up, cloud-init runs locally on the system, accesses the metadata, and then configures your system using that metadata.
 
 ## Comparison to StackScripts
 
 Similar to Metadata, Linode's own [StackScripts](/docs/products/tools/stackscripts/) service can also be used to automate system provisioning. However, the StackScripts service is Linode-specific and does not interface with cloud-init. If you wish to keep your system provisioning tools cloud-agnostic and industry-standard, we recommend using the Metadata service.
 
+## Availability
+
+The Metadata service is currently in a limited beta. As such, only users enrolled in the beta are able to use the service. Additionally, the service is limited to the following distribution images and data centers:
+
+- **Data centers:** Washington, DC (`us-iad`) and Paris (`fr-par`)
+- **Distributions:** Ubuntu 22.04 LTS and Ubuntu 20.04 LTS
+
 ## Add User Data When Deploying a Compute Instance {#add-user-data}
 
-The Metadata service is always active, so there's no need to enable it. That said, you can provide user data to the Metadata service, which is then consumed by cloud-init when your Compute Instance boots up for the first time.
-
-{{< note >}}
-In addition to being used when creating a new Compute Instance, user data can also be added when rebuilding an instance, cloning an instance, and restoring from a backup.
-{{< /note >}}
+The Metadata service is always active, so there's no need to enable it. User data can be provided to the Metadata service, which is then consumed by cloud-init when your Compute Instance boots up for the first time.
 
 {{< tabs >}}
 {{< tab "Cloud Manager" >}}
 1.  Navigate to the **Linodes** page in the [Cloud Manager](http://cloud.linode.com) and click the **Create Linode** button. This opens the **Create Linode** form.
 
-1.  Fill out the form with your desired settings. Be sure to select one of the supported distribution images.
+1.  Fill out the form with your desired settings. Be sure to select one of the supported distribution images and data centers.
 
 1.  Expand the *Add User Data* section and enter your user data into the **User Data** field.
 
@@ -54,15 +60,15 @@ In addition to being used when creating a new Compute Instance, user data can al
 {{< tab "Linode CLI" >}}
 ```command
 linode-cli linodes create \
-  --label linode123 \
-  --region us-east \
+  --label new-instance-with-metadata \
+  --region us-iad \
   --type g6-standard-2 \
   --image linode/ubuntu22.04 \
-  --root_pass aComplex@Password \
+  --root_pass [your-root-password] \
   --metdata.user_data [your-user-data]
 ```
 
-Replace *[your-user-data]* with the Cloud-Config or script file you wish to include. When referencing a script through the API, first save it to a file and encode that file in base64 by running the command:
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a base64-encoded string. You can output your Cloud-config or script file as base64 by running the following command:
 
 ```command
 cat *[file-path]* | base64
@@ -76,10 +82,10 @@ curl -H "Content-Type: application/json" \
     -H "Authorization: Bearer $TOKEN" \
     -X POST -d '{
       "label": "new-instance-with-metadata",
-      "region": "us-iad3",
+      "region": "us-iad",
       "type": "g6-standard-2",
       "image": "linode/ubuntu22.04",
-      "root_pass": "aC0mplexP@ssword",
+      "root_pass": "[your-root-password]",
       "metadata": {
           "user_data": "[your-user-data]"
       }
@@ -87,7 +93,7 @@ curl -H "Content-Type: application/json" \
     https://api.linode.com/v4/linode/instances
 ```
 
-Replace *[your-user-data]* with the Cloud-Config or script file you wish to include. When referencing a script through the API, first save it to a file and encode that file in base64 by running the command below:
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a base64-encoded string. You can output your Cloud-config or script file as base64 by running the following command:
 
 ```command
 cat *[file-path]* | base64
@@ -96,6 +102,10 @@ cat *[file-path]* | base64
 {{< /tabs >}}
 
 When your Compute Instance boots up using a compatible distribution, cloud-init runs. If it detects that this is the first time running on this instance, it connects to the Metadata API and captures the instance data for that instance, including any user data that you added. It then uses that metadata to provision the software on the instance, including setting the hostname to the instance's label and executing the user data script.
+
+{{< note >}}
+User data can be added when creating a new Compute Instance, rebuilding an instance, cloning an instance, and restoring from a backup.
+{{< /note >}}
 
 ### User Data Formats
 
@@ -137,13 +147,51 @@ Our supported distribution images have cloud-init pre-installed and configured t
 
 Now, when you wish to deploy a new Compute Instance, you can select your custom image. During the creation workflow, you can attach any desired user data for that particular instance. When cloud-init runs, your updated configuration settings will be used alongside any user data that you've added.
 
+## Access the Metadata Service API
+
+In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (169.254.169.254 and fd00:a9fe:a9fe::1) and returns only instance data and user data for that Compute Instance.
+
+1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
+
+1.  Generate your API token by running the command below:
+
+    ```command
+    curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token
+    ```
+
+    Instead of receiving the token as an output string, you can save it directly to the $TOKEN environmental variable:
+
+    ```command
+    export TOKEN=$(curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token)
+    ```
+
+1.  Query one of the following API endpoints to receive data from the API. If you did not save the API token to the $TOKEN variable, replace $TOKEN in the commands below with your token.
+
+    -   **/v1/instance**: Output information about your instance, including plan resources.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/instance
+        ```
+
+    -   **/v1/network**: Output information about your instance's IP addresses.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/network
+        ```
+
+    -   **/v1/user-data**: Output your user data.
+
+        ```command
+        curl -H "Metadata-Token: $TOKEN" http://169.254.169.254/v1/user-data | base64 --decode
+        ```
+
 ## Technical Specifications
 
 - The Metadata service is an API designed to be consumed by the cloud-init provisioning tool.
 - All user data is encrypted and the Metadata service is only accessible from within the Compute Instance.
 - Supports custom user data in the form of cloud-config scripts, shell scripts, and more.
 - User data can be added when creating, rebuilding, or cloning a Compute Instance. User data can also be added when performing one of those functions using a custom image created from a compatible distribution image.
-- **Supported distributions:** Ubuntu 22.04 LTS, Ubuntu 20.04 LTS, Debian 11. Support for additional distributions will be added soon.
+- **Supported distributions:** Currently, only Ubuntu 22.04 LTS and Ubuntu 20.04 LTS are supported.
 
 {{< note type="warning" noTitle=true >}}
 The Compute Instance must have a *public* network interface to access the Metadata service.
@@ -164,7 +212,7 @@ If you are not able to access your system through SSH, you can use [Lish](/docs/
 
 ### Run the `cloud-init` Command
 
-The `cloud-init` command-line tool can be run to gather more information or perform certain actions. Here are some commands you can utilize to help troubleshoot cloud-init.
+The `cloud-init` command-line tool can be used to gather more information or perform certain actions. Here are some commands you can utilize to help troubleshoot cloud-init.
 
 - `cloud-init status --long`: This provides information about the status of cloud-init. You will notice different output depending on if it is actively running or if has run in the past. See [cloud-init status](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#status).
 - `cloud-init query v1` and `cloud-init query userdata`: This outputs either the instance data or the user data provided by the Metadata service. Other metadata is also exposed by entering a different query key. See [cloud-init query](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#query).

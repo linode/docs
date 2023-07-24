@@ -2,10 +2,13 @@
 title: "Using Cloud-Config Files to Configure a Server"
 description: "Learn how to create cloud-config files for use with cloud-init and our Metadata service."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
-published: 2023-06-22
+published: 2023-07-24
 modified_by:
   name: Linode
 authors: ["Linode"]
+_build:
+  list: false
+noindex: true
 ---
 
 {{< content "metadata-beta-notice" >}}
@@ -22,10 +25,8 @@ A cloud-config file must contain `#cloud-config` as the first line. Following th
 
 ## Create a New User and Restrict Root Access
 
-One of the most common security tasks for every new system deployment is to create a limited user account and restrict login access to the root user.
+One of the most common security tasks for every new system deployment is configure user accounts. This includes creating a limited user account for the system administrator, adding them to the *sudo* group, and enabling the user to log in over SSH using a public key instead of a password.
 
--   `disable_root` *(boolean)*: If true, prevents logging in as the root user.
--   `ssh_pwauth` *(boolean)*: If false, prevents logging in through SSH with a user password. Use this if you're including SSH keys and do not want to allow password authentication.
 -   `users` *(list)*: Configure user accounts ([Reference](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#users-and-groups) | [Example](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#including-users-and-groups))
     - `name` *(string)*: The name of the user.
     - `passwd` *(string)*: The hash of the password you want to configure for this user.
@@ -36,8 +37,6 @@ One of the most common security tasks for every new system deployment is to crea
 
 ```file {lang=yaml}
 #cloud-config
-disable_root: true
-ssh_pwauth: false
 users:
 - name: example-user
   groups: sudo
