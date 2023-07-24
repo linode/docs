@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.155.0
+  version: 4.157.1
 
   title: Linode API
   description: |
@@ -8443,7 +8443,7 @@ paths:
     post:
       x-linode-grant: read_write
       summary: Linode Rebuild
-      description: >
+      description: |
         Rebuilds a Linode you have the `read_write` permission to modify.
 
         A rebuild will first shut down the Linode, delete all disks and configs
@@ -8454,6 +8454,13 @@ paths:
           * Requires a `root_pass` be supplied to use for the root User's Account.
           * It is recommended to supply SSH keys for the root User using the
             `authorized_keys` field.
+
+        You also have the option to resize the Linode to a different plan by including the `type` parameter with your request. Note that resizing involves migrating the Linode to a new hardware host, while rebuilding without resizing maintains the same hardware host. Resizing also requires significantly more time for completion of this command. The following additional conditions apply:
+
+          * The Linode must not have a pending migration.
+          * Your Account cannot have an outstanding balance.
+          * The Linode must not have more disk allocation than the new Type allows.
+            * In that situation, you must first delete or resize the disk to be smaller.
       tags:
       - Linode Instances
       operationId: rebuildLinodeInstance
@@ -8474,6 +8481,13 @@ paths:
               - root_pass
               allOf:
                 - $ref: '#/components/schemas/LinodeRequest'
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      description: >
+                        The ID of the [Linode Type](/docs/api/linode-types/#types-list) to resize to with this request.
+                      example: g6-standard-2
       responses:
         '200':
           description: Rebuild started.
@@ -8503,6 +8517,7 @@ paths:
                 "stackscript_data": {
                   "gh_username": "linode"
                 }
+                "type": "g6-standard-2"
               }' \
               https://api.linode.com/v4/linode/instances/123/rebuild
       - lang: CLI
@@ -8515,7 +8530,8 @@ paths:
             --authorized_users "secondaryUsername" \
             --booted true \
             --stackscript_id 10079 \
-            --stackscript_data '{"gh_username": "linode"}'
+            --stackscript_data '{"gh_username": "linode"}' \
+            --type "g6-standard-2"
   /linode/instances/{linodeId}/rescue:
     parameters:
     - name: linodeId
@@ -8608,6 +8624,8 @@ paths:
           * Your Account cannot have an outstanding balance.
           * The Linode must not have more disk allocation than the new Type allows.
             * In that situation, you must first delete or resize the disk to be smaller.
+
+        You can also resize a Linode when using the [Linode Rebuild](/docs/api/linode-instances/#linode-rebuild) command.
       tags:
       - Linode Instances
       operationId: resizeLinodeInstance
@@ -24202,25 +24220,48 @@ components:
           properties:
             id:
               type: integer
-              description: >
+              nullable: true
+              description: |
                 The unique ID of the Notification's entity, based on the entity
                 type.
+
+                Returns `null` for the following entity types:
+                * `account`
+                * `promotion`
               example: 3456
             label:
               type: string
-              description: >
+              nullable: true
+              description: |
                 The current label for this Notification's entity.
+
+                Returns `null` for the following entity types:
+                * `entity_transfer`
+                * `promotion`
+                * `region`
               example: Linode not booting.
             type:
               type: string
+              enum:
+              - account
+              - entity_transfer
+              - linode
+              - nodebalancer
+              - promotion
+              - region
+              - ticket
+              - volume
               description: The type of entity this is related to.
               example: ticket
             url:
               type: string
-              description: >
+              nullable: true
+              description: |
                 The URL where you can access the object this Notification is for.
                 If a relative URL, it is relative to the domain you retrieved the
                 Notification from.
+
+                Returns `null` for the `promotion` entity type.
               example: /support/tickets/3456
         label:
           type: string
@@ -24903,6 +24944,7 @@ components:
         verified_phone_number:
           type: string
           format: phone
+          nullable: true
           readOnly: true
           description: |
             The phone number verified for this Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.
@@ -25761,6 +25803,7 @@ components:
         verified_phone_number:
           type: string
           format: phone
+          nullable: true
           readOnly: true
           description: |
             The phone number verified for this User Profile with the **Phone Number Verify** ([POST /profile/phone-number/verify](/docs/api/profile/#phone-number-verify)) command.

@@ -66,6 +66,10 @@ Appwrite, on the other hand, uses a NoSQL approach to its database interface, an
 
 These steps take you through everything from installing the prerequisites to starting-up and running your own Appwrite instance.
 
+{{< note >}}
+To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/docs/products/tools/marketplace/guides/appwrite/).
+{{< /note >}}
+
 ### Installing Docker
 
 The first step is to install Docker, which is used to both install and run your Appwrite instance. This installation process also uses Docker Compose, which organizes and coordinates the Appwrite services.
