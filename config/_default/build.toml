@@ -1,0 +1,17 @@
+# Writes the hugo_stats.json file used for CSS pruning.
+writeStats = true
+
+# For development.
+# This is needed for Tawilwind to work and needs Hugo >= 0.112.0 to work.
+[[cachebusters]]
+    source = "assets/watching/hugo_stats\\.json"
+    target = "styles\\.css"
+[[cachebusters]]
+    source = "(postcss|tailwind)\\.config\\.js"
+    target = "css"
+[[cachebusters]]
+    source = "assets/.*\\.(js|ts|jsx|tsx)"
+    target = "js"
+[[cachebusters]]
+    source = "assets/.*\\.(.*)$"
+    target = "$1"
