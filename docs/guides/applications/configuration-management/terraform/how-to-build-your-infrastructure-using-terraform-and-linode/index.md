@@ -5,7 +5,7 @@ og_description: 'Use Terraform to provision Linode environments.'
 keywords: ["terraform", "infrastructure", "IaC"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-06
-modified: 2020-12-03
+modified: 2023-07-24
 aliases: ['/applications/configuration-management/terraform/how-to-build-your-infrastructure-using-terraform-and-linode/','/applications/configuration-management/how-to-build-your-infrastructure-using-terraform-and-linode/','/platform/how-to-build-your-infrastructure-using-terraform-and-linode/']
 modified_by:
   name: Linode
@@ -41,94 +41,29 @@ Any Personal Access Tokens generated from the previous Linode Manager are API v3
 {{< /note >}}
 
 ## Install Terraform
+1. To install the latest version of Terraform on various distributions of Linux and macOS use the following commands:
+   * Ubuntu/Debian:
 
-The installation steps in this section are for Linux operating systems. To install Terraform on a different operating system, like macOS, see [Terraform's downloads](https://www.terraform.io/downloads.html) page. Once installed, skip to [Building with the Terraform Provider](#building-with-the-linode-provider).
+      wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+      sudo apt update && sudo apt install terraform
 
-{{< note >}}
-The Terraform Provider for Linode requires [Terraform version 1.1+](https://www.hashicorp.com/blog/terraform-1-1-improves-refactoring-and-the-cloud-cli-experience). The examples in this guide were written to be compatible with [Terraform version 1.1](https://www.terraform.io/docs/configuration-0-11/terraform.html) and may be updated in the near future.
-{{< /note >}}
+  * CentOS/RHEL:
 
-1.  Make a Terraform project directory in your home directory and then navigate to it:
+      sudo yum install -y yum-utils
+      sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+      sudo yum -y install terraform
 
-        mkdir ~/terraform
-        cd ~/terraform
+  * Fedora:
 
-2.  Download the following files from [Terraform's website](https://www.terraform.io/downloads.html), ensuring that the latest version available is being installed. Example `wget` commands are listed using the latest version available at time of publishing (1.1.9). You should inspect the links on the download page to see if a newer version is available and update the `wget` commands to use those URLs instead:
+     sudo dnf install -y dnf-plugins-core
+     sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+     sudo dnf -y install terraform
 
-    -   The 64-bit Linux `.zip` archive
+  * macOS:
 
-            wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_linux_amd64.zip
-
-    -   The SHA256 checksums file
-
-            wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_SHA256SUMS
-
-    -   The checksum signature file
-
-            wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_SHA256SUMS.sig
-
-
-### Verify the Download
-
-1.  Import the HashiCorp Security GPG key (listed on the [HashiCorp Security](https://www.hashicorp.com/security) page under *Secure Communications*):
-
-        gpg --recv-keys 34365D9472D7468F
-
-    The output should show that the key was imported:
-
-    {{< output >}}
-gpg: /home/user/.gnupg/trustdb.gpg: trustdb created
-gpg: key 34365D9472D7468F: public key "HashiCorp Security <security@hashicorp.com>" imported
-gpg: no ultimately trusted keys found
-gpg: Total number processed: 1
-gpg:               imported: 1
-{{</ output >}}
-
-    {{< note respectIndent=false >}}
-If you receive errors that indicate the `dirmngr` software is missing or inaccessible, install `dirmngr` using your package manager and run the GPG command again.
-{{< /note >}}
-
-1.  Verify the checksum file's GPG signature:
-
-        gpg --verify terraform*.sig terraform*SHA256SUMS
-
-    The output should contain the `Good signature from "HashiCorp Security <security@hashicorp.com>"` confirmation message:
-
-    {{< output >}}
-gpg: Signature made Wed 15 Aug 2018 10:07:05 PM UTC
-gpg:                using RSA key 34365D9472D7468F
-gpg: Good signature from "HashiCorp Security <security@hashicorp.com>" [unknown]
-gpg: WARNING: This key is not certified with a trusted signature!
-gpg:          There is no indication that the signature belongs to the owner.
-Primary key fingerprint: C874 011F 0AB4 0511 0D02 1055 3436 5D94 72D7 468F
-{{</ output >}}
-
-1.  Verify that the fingerprint output matches the fingerprint listed in the *Secure Communications* section of the [HashiCorp Security](https://www.hashicorp.com/security.html) page.
-
-1.  Verify the `.zip` archive's checksum:
-
-        sha256sum -c terraform*SHA256SUMS 2>&1 | grep OK
-
-    The output should show the file's name as given in the `terraform*SHA256SUMS` file:
-
-    {{< output >}}
-terraform_1.1.9_linux_amd64.zip: OK
-{{< /output >}}
-
-### Configure the Terraform Environment
-
-1.  Unzip `terraform_*_linux_amd64.zip` to your `~/terraform` directory:
-
-        unzip terraform_*_linux_amd64.zip
-
-    {{< note respectIndent=false >}}
-If you receive an error that indicates `unzip` is missing from your system, install the `unzip` package and try again.
-{{< /note >}}
-
-1.  Edit your `~./profile` to include the `~/terraform` directory in your PATH. Then, reload the Bash profile:
-
-        echo 'export PATH="$PATH:$HOME/terraform"' >> ~/.profile
-        source ~/.profile
+      brew tap hashicorp/tap
+      brew install hashicorp/tap/terraform
 
 1.  Verify Terraform can run by simply calling it with no options or arguments:
 
@@ -179,7 +114,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.27.1"
+      version = "2.5.2"
     }
   }
 }
@@ -469,7 +404,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.27.1"
+      version = "2.5.2"
     }
   }
 }
@@ -660,7 +595,7 @@ terraform {
   required_providers {
     linode = {
       source = "linode/linode"
-      version = "1.27.1"
+      version = "2.5.2"
     }
   }
 }
