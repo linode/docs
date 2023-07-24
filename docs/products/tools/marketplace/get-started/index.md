@@ -42,7 +42,7 @@ Since software for a Marketplace App is installed *after* a Linode Compute Insta
 
 -   **Log file:** The same *"Installation Complete!"* notice should also appear at the end of the installation's log file, which you can view by logging in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and running:
 
-        grep 'Installation complete!' /var/log/stackscript.log
+        grep -i 'installation complete' /var/log/stackscript.log
 
     If you receive output matching that string, the Marketplace App has finished installing.
 
