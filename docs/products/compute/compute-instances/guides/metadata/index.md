@@ -13,7 +13,7 @@ noindex: true
 
 {{< content "metadata-beta-notice" >}}
 
-When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide) and StackScripts.
+When deploying Compute Instances, it's almost always necessary to perform additional configuration before you can host your website or run your workloads. This configuration might include creating a new user, adding an SSH key, or installing software. It could also include more complex tasks like configuring a web server or other software that runs on the instance. Performing these tasks manually can be tedious and is not ideal at larger scales. To automate this configuration, Linode offers two provisioning automation tools: Metadata (covered in this guide), and [StackScripts](/docs/products/tools/stackscripts/).
 
 ## Overview
 
@@ -22,7 +22,7 @@ Linode's Metadata service provides a convenient method to automate software conf
 The Metadata service provides both *instance data* and optional *user data*, both of which are explained below:
 
 -   **Instance data:** The instance data includes information about the Compute Instance, including its label, plan size, region, host identifier, and more.
--   **User data:** User data is one of the most powerful features of the Metadata service and allows you to define your desired system configuration, including creating users, installing software, configuring settings, and more. User data is supplied by the user when deploying, rebuilding, or cloning a Compute Instance. This user data can be written as a cloud-config file or any script that can be executed on the target distribution image, such as a bash script.
+-   **User data:** User data is one of the most powerful features of the Metadata service and allows you to define your desired system configuration, including creating users, installing software, configuring settings, and more. User data is supplied by the user when deploying, rebuilding, or cloning a Compute Instance. This user data can be written as a cloud-config file, or it can be any script that can be executed on the target distribution image, such as a bash script.
 
     User data can be submitted directly in the Cloud Manager, Linode CLI, or Linode API. It's also often programmatically provided through IaC (Infrastructure as Code) provisioning tools like [Terraform](/docs/guides/how-to-build-your-infrastructure-using-terraform-and-linode/).
 
@@ -30,7 +30,7 @@ When a Compute Instance first boots up, cloud-init runs locally on the system, a
 
 ## Comparison to StackScripts
 
-Similar to Metadata, Linode's own [StackScripts](/docs/products/tools/stackscripts/) service can also be used to automate system provisioning. However, the StackScripts service is Linode-specific and does not interface with cloud-init. If you wish to keep your system provisioning tools cloud-agnostic and industry-standard, we recommend using the Metadata service.
+Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/) service can be used to automate system provisioning. However, the StackScripts service is Linode-specific and does not interface with cloud-init. If you wish to keep your system provisioning tools cloud-agnostic and industry-standard, we recommend using the Metadata service.
 
 ## Availability
 
@@ -68,7 +68,7 @@ linode-cli linodes create \
   --metdata.user_data [your-user-data]
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a base64-encoded string. You can output your Cloud-config or script file as base64 by running the following command:
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your Cloud-config or script file as base64 by running the following command:
 
 ```command
 cat *[file-path]* | base64
@@ -93,7 +93,7 @@ curl -H "Content-Type: application/json" \
     https://api.linode.com/v4/linode/instances
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a base64-encoded string. You can output your Cloud-config or script file as base64 by running the following command:
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your Cloud-config or script file as base64 by running the following command:
 
 ```command
 cat *[file-path]* | base64
@@ -143,13 +143,13 @@ Our supported distribution images have cloud-init pre-installed and configured t
     - `/etc/cloud/cloud.cfg.d/`: A directory containing other configuration files that are processed by cloud-init.
     - `/etc/cloud/cloud.cfg.d/99-linode.cfg`: The Linode-provided cloud-init configuration file. Since this is processed *after* the other configuration files, the settings here override any of the same settings that exist in those other configuration files.
 
-1.  Once you have configured cloud-init with your desired settings, create a custom image from that Compute Instance.
+1.  Once you have configured cloud-init with your desired settings, [create a custom image from that Compute Instance](/docs/products/tools/images/guides/capture-an-image/).
 
 Now, when you wish to deploy a new Compute Instance, you can select your custom image. During the creation workflow, you can attach any desired user data for that particular instance. When cloud-init runs, your updated configuration settings will be used alongside any user data that you've added.
 
 ## Access the Metadata Service API
 
-In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (169.254.169.254 and fd00:a9fe:a9fe::1) and returns only instance data and user data for that Compute Instance.
+In addition to being consumed by cloud-init, the Metadata service can also be accessed through an API. The API is available on industry standard link-local IP addresses (`169.254.169.254` and `fd00:a9fe:a9fe::1`) and returns only instance data and user data for that Compute Instance.
 
 1.  Log in to a Compute Instance that has been deployed in a supported data center using a supported distribution image.
 
@@ -159,13 +159,13 @@ In addition to being consumed by cloud-init, the Metadata service can also be ac
     curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token
     ```
 
-    Instead of receiving the token as an output string, you can save it directly to the $TOKEN environmental variable:
+    Instead of receiving the token as an output string, you can save it directly to the `$TOKEN` environmental variable:
 
     ```command
     export TOKEN=$(curl -X PUT -H "Metadata-Token-Expiry-Seconds: 3600" http://169.254.169.254/v1/token)
     ```
 
-1.  Query one of the following API endpoints to receive data from the API. If you did not save the API token to the $TOKEN variable, replace $TOKEN in the commands below with your token.
+1.  Query one of the following API endpoints to receive data from the API. If you did not save the API token to the `$TOKEN` variable, replace `$TOKEN` in the commands below with your token.
 
     -   **/v1/instance**: Output information about your instance, including plan resources.
 

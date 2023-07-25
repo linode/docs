@@ -17,7 +17,7 @@ noindex: true
 
 ## Syntax
 
-Cloud-config data is written using the YAML syntax, a commonly used data serialization format that's more user-friendly and human-readable than alternatives (like JSON). YAML consists of key value pairs. Each key is entered on its own line and a colon (`:`) is used to separate the key from its value. The scope of the key is defined by its indentation. To learn more about YAML, review the [latest YAML specification](https://yaml.org/spec/1.2.2/#chapter-2-language-overview).
+Cloud-config data is written using the YAML syntax, a commonly used data serialization format that's more user-friendly and human-readable than alternatives (like JSON). YAML consists of key-value pairs. Each key is entered on its own line and a colon (`:`) is used to separate the key from its value. The scope of the key is defined by its indentation. To learn more about YAML, review the [latest YAML specification](https://yaml.org/spec/1.2.2/#chapter-2-language-overview).
 
 ## Cloud-Config Modules
 
@@ -25,7 +25,7 @@ A cloud-config file must contain `#cloud-config` as the first line. Following th
 
 ## Create a New User and Restrict Root Access
 
-One of the most common security tasks for every new system deployment is configure user accounts. This includes creating a limited user account for the system administrator, adding them to the *sudo* group, and enabling the user to log in over SSH using a public key instead of a password.
+One of the most common security tasks for every new system deployment is configuring user accounts. This includes creating a limited user account for the system administrator, adding them to the *sudo* group, and enabling the user to log in over SSH using a public key instead of a password.
 
 -   `users` *(list)*: Configure user accounts ([Reference](https://cloudinit.readthedocs.io/en/latest/reference/modules.html#users-and-groups) | [Example](https://cloudinit.readthedocs.io/en/latest/reference/examples.html#including-users-and-groups))
     - `name` *(string)*: The name of the user.
