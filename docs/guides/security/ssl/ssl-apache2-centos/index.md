@@ -1,8 +1,5 @@
 ---
 slug: ssl-apache2-centos
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions on how to enable SSL to secure websites served through the Apache web server on Fedora or CentOS.'
 keywords: ["apache SSL", "ssl on centos", "ssl on fedora", "ssl", "contos", "fedora", "apache", "httpd"]
 tags: ["fedora","lamp","centos","apache","security","ssl"]
@@ -21,6 +18,7 @@ relations:
         keywords:
             - distribution: CentOS 7
 aliases: ['/security/ssl/ssl-apache2-centos/']
+authors: ["Linode"]
 ---
 
 ![SSL Certificates with Apache on CentOS](SSL_Certificates_with_Apache_on_CentOS_7_smg.jpg)

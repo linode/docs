@@ -1,7 +1,7 @@
 ---
 title: "Manage Payment Methods"
 description: "Learn what payment methods Linode accepts and how to view, add, and remove them."
-date: 2022-11-17
+published: 2022-11-17
 ---
 
 ## Payment Methods

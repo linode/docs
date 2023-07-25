@@ -1,9 +1,6 @@
 ---
 slug: launch-discussion-forums-with-phpbb-on-ubuntu-12-04
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configure the PhpBB System for Hosting Web-based Discussion Forums on Ubuntu 12.04 (Precise Pangolin).'
 keywords: ["phpBB", "forum software", "web applications", "PHP", "Ubuntu 12.04", "precise pangolin"]
 tags: ["ubuntu"]
@@ -24,6 +21,7 @@ relations:
         key: how-to-install-phpbb
         keywords:
            - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 phpBB is one of the most widely used open source forum solutions. It is easy to install and free to use, along with being fully customizable. If you don't want to spend money on other forum software like vBulletin, consider using phpBB.

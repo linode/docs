@@ -9,7 +9,7 @@ var debug = 0 ? console.log.bind(console, '[list]') : function () {};
 const searchName = 'search:data-categories-filtered';
 const designMode = false;
 
-export function newSectionsController(searchConfig) {
+export function newSectionsController(searchConfig, params) {
 	if (!searchConfig) {
 		throw 'newSectionsController: must provide searchConfig';
 	}
@@ -241,7 +241,7 @@ export function newSectionsController(searchConfig) {
 
 			// Update <head>
 			setDocumentMeta({
-				title: seoTitle,
+				title: seoTitle + ' | ' + params.page_title_suffix,
 			});
 
 			let facets = this.data.result.facets;

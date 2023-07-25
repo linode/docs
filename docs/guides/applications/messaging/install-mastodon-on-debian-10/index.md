@@ -1,8 +1,5 @@
 ---
 slug: install-mastodon-on-debian-10
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to install the open-source, self-hosted microblogging platform Mastodon on Debian 10 Linux."
 keywords: ['mastodon','micro blog','microblogging','fediverse','twitter alternative','debian 10']
 tags: ['docker', 'debian']
@@ -14,9 +11,6 @@ modified_by:
 image: MASTODON3.jpg
 title: "Install a Mastodon Server on Debian 10"
 title_meta: "How to Install a Mastodon Server on Debian 10"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Mastodon](https://docs.joinmastodon.org/)'
 - '[Fediverse](https://en.wikipedia.org/wiki/Fediverse)'
@@ -33,6 +27,7 @@ relations:
         key: install-mastodon
         keywords:
            - distribution: Debian 10
+authors: ["Nathaniel Stickman"]
 ---
 
 {{< youtube "IPSbNdBmWKE" >}}

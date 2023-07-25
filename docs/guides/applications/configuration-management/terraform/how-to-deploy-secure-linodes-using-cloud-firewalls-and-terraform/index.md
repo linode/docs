@@ -1,8 +1,5 @@
 ---
 slug: how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to use the Terraform application to deploy Linode instances with pre-configured Cloud Firewalls assigned to them.'
 keywords: ['terraform','infrastructure','firewalls','orchestration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,12 +9,11 @@ modified_by:
   name: Linode
 title: "Deploy Secure Linodes using Cloud Firewalls and Terraform"
 image: feature.png
-contributor:
-  name: Leslie Salazar
-  link: https://github.com/leslitagordita/
 external_resources:
 - '[Terraform Linode Provider Official Documentation](https://registry.terraform.io/providers/linode/linode/latest/docs)'
 aliases: ['/applications/configuration-management/terraform/how-to-deploy-secure-linodes-using-cloud-firewalls-and-terraform/']
+authors: ["Leslie Salazar"]
+tags: ["saas"]
 ---
 
 Terraform modules allow you to better organize your configuration code and to distribute and reuse it. You can host your Terraform modules on remote version control services, like GitHub, for others to use. The Terraform Module Registry hosts community modules that you can reuse for your own Terraform configurations, or you can publish your own modules for consumption by the Terraform community.

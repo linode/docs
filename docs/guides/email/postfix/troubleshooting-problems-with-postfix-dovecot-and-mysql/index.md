@@ -1,8 +1,5 @@
 ---
 slug: troubleshooting-problems-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This is a reference guide for testing and troubleshooting a email server running Postfix as it''s MTA, Dovecot as a POP3/IMAP server, and MySQL for database.'
 keywords: ["postfix", "dovecot", "mysql"]
 tags: ["mysql","postfix","email","resolving"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 published: 2013-07-22
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
+authors: ["Linode"]
 ---
 
 ![Troubleshooting Problems with Postfix, Dovecot, and MySQL](troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")
@@ -29,7 +27,7 @@ Correctly diagnosing a problem is the first step in solving it. At first glance,
 
 ### Are Postfix and Dovecot Running?
 
-Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/guides/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
+Sometimes your mail server is not functioning correctly because the needed services are not running. For a mail server that has been running for a long time, [resource overuse](/docs/products/compute/compute-instances/guides/troubleshooting-memory-issues/#diagnosing-and-fixing-memory-issues) is the most likely cause of stopped services. It doesn't hurt to check your resource use to rule out that problem. However, when you're just setting up a new mail server, it's more likely that your service startup problems are being caused by configuration errors. Some configuration errors - particularly syntax errors - are serious enough that they can prevent a service from starting.
 
 To check that Postfix and Dovecot are running and to find startup errors, follow these steps:
 
@@ -279,7 +277,7 @@ Next we'll focus on your login credentials. If they aren't configured properly, 
 
 The first and easiest step is re-entering your username and password in your mail client. Make sure you use the full username, including the `@example.com` part. Usernames and passwords are case-sensitive. If you're sure that you've entered the information correctly in your mail client, authorization may not be configured properly on the server side.
 
-The next thing to check is that your username and password are entered properly in the correct MySQL table. You can run the [MySQL tests](/docs/guides/email-with-postfix-dovecot-and-mysql/#testing) from the main setup article to make sure your tables are set up appropriately. You can also delete and re-add the appropriate row from the **mailserver.virtual\_users** table to make sure the password was entered correctly. If the information is correct in the MySQL table, it may be that Dovecot is not configured to look up authorization credentials in the right location.
+The next thing to check is that your username and password are entered properly in the correct MySQL table. You can run the [MySQL tests](/docs/guides/email-with-postfix-dovecot-and-mysql/#testing-the-email-server-with-mailutils) from the main setup article to make sure your tables are set up appropriately. You can also delete and re-add the appropriate row from the **mailserver.virtual\_users** table to make sure the password was entered correctly. If the information is correct in the MySQL table, it may be that Dovecot is not configured to look up authorization credentials in the right location.
 
 Dovecot includes an administrative tool which is very helpful in troubleshooting issues with login credentials. The `doveadm user` command lets you see the user database result for the username, user ID, group ID, and mailbox location for each email user. Reading the output from this tool tells you the database where Dovecot is looking for authorized users. If Dovecot is not looking for the expected database, you'll need to change the authorization-related settings in Dovecot so that it is using MySQL to look up users, and not some other user database.
 
@@ -344,7 +342,7 @@ In this section, you'll install Postfix and configure it to deliver mail for you
 
         apt-get install postfix
 
-2.  When prompted, select **Internet Site** for the configuration. (See Steps 6 & 7 from the [Installing Packages](/docs/guides/email-with-postfix-dovecot-and-mysql/#installing-packages) section of the primary guide, for this step and the next.)
+2.  When prompted, select **Internet Site** for the configuration. (See Steps 6 & 7 from the [Installing Packages](/docs/guides/email-with-postfix-dovecot-and-mysql/#install-packages) section of the primary guide, for this step and the next.)
 3.  Enter your fully-qualified domain name or any domain name that resolves to the server.
 4.  Open `/etc/postfix/main.cf` for editing, and add your domain(s) to the `mydestination` line. If your hostname and hosts files were set up correctly before installing Postfix, this list should already include your full-qualified domain name and several references to localhost, which you can leave as they are.
 
@@ -859,7 +857,7 @@ The final step in getting your mail server up to speed is to make it compatible 
 
         apt-get install mysql-server postfix-mysql dovecot-mysql
 
-2.  Create the three MySQL tables `virtual_domains`, `virtual_users`, and `virtual_aliases` and populate them with your data, by following the entire [MySQL section](/docs/guides/email-with-postfix-dovecot-and-mysql/#mysql) in the main setup guide. If you prefer not to use the MySQL command line, you can install phpMyAdmin and use that instead.
+2.  Create the three MySQL tables `virtual_domains`, `virtual_users`, and `virtual_aliases` and populate them with your data, by following the entire [MySQL section](/docs/guides/email-with-postfix-dovecot-and-mysql/#set-up-mysql) in the main setup guide. If you prefer not to use the MySQL command line, you can install phpMyAdmin and use that instead.
 3.  Open `/etc/postfix/main.cf` for editing. Comment out the existing `virtual_mailbox_domains` and `virtual_mailbox_maps` lines and add these instead:
 
     {{< file "/etc/postfix/main.cf" >}}
@@ -871,7 +869,7 @@ virtual_alias_maps = mysql:/etc/postfix/mysql-virtual-alias-maps.cf
 {{< /file >}}
 
 
-4.  Follow Steps 11-25 in the [Postfix section](/docs/guides/email-with-postfix-dovecot-and-mysql/#mysql) of the main setup guide to create the `/etc/postfix/mysql-virtual-mailbox-domains.cf`, `/etc/postfix/mysql-virtual-mailbox-maps.cf`, and `/etc/postfix/mysql-virtual-alias-maps.cf` files. You will also test that Postfix can find all of this information, using the `postmap` commands.
+4.  Follow Steps 11-25 in the [Postfix section](/docs/guides/email-with-postfix-dovecot-and-mysql/#set-up-mysql) of the main setup guide to create the `/etc/postfix/mysql-virtual-mailbox-domains.cf`, `/etc/postfix/mysql-virtual-mailbox-maps.cf`, and `/etc/postfix/mysql-virtual-alias-maps.cf` files. You will also test that Postfix can find all of this information, using the `postmap` commands.
 5.  Now for Dovecot. Create the file `/etc/dovecot/conf.d/auth-sql.conf.ext`. You will make a new `passdb` section that directs Dovecot to use MySQL for authentication. The `userdb` section will be identical to the one we had before, since the mailboxes aren't moving.
 
     {{< file "/etc/dovecot/conf.d/auth-sql.conf.ext" >}}

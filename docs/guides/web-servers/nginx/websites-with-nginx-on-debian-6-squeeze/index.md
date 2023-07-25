@@ -1,9 +1,6 @@
 ---
 slug: websites-with-nginx-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Nginx is a lightweight and high performance web server designed to deliver large amounts of content with efficiency. This guide shows how to install it on Debian 6 "Squeeze".'
 keywords: ["nginx", "http", "web servers", "debian", "debian squeeze", "debian 6"]
 tags: ["web server","debian","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: websites-with-nginx
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 

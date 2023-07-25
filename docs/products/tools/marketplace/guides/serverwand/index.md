@@ -1,23 +1,18 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "ServerWand is a magical control panel for managing websites and servers. Learn how to deploy ServerWand on Linode using Marketplace Apps."
 keywords: [ 'serverwand','marketplace','control panel','hosting']
 tags: ["cloud manager","linode platform", "marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy ServerWand through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[ServerWand Pricing](https://serverwand.com/pricing)'
 - '[ServerWand Documentation](https://serverwand.com/docs/)'
 - '[ServerWand Blog](https://serverwand.com/blog/)'
 aliases: ['/platform/marketplace/deploy-serverwand-with-marketplace-apps/', '/platform/one-click/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-one-click-apps/','/guides/deploy-serverwand-with-marketplace-apps/','/guides/serverwand-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [ServerWand](https://serverwand.com) is a magical control panel for managing websites and servers. Host multiple sites on a single server, manage apps, firewall, databases, backups, system users, cron jobs, SSL, and email with an intuitive interface.

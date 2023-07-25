@@ -1,8 +1,5 @@
 ---
 slug: wordpress-with-docker-compose
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 keywords: ["Docker", "Docker Compose", "WordPress"]
 tags: ["wordpress","docker","linux"]
 description: 'This guide shows how to use Docker and Docker Compose to host a WordPress website using a LAMP stack configured in Docker and linked with Compose.'
@@ -17,6 +14,7 @@ external_resources:
   - '[Overview of Docker Compose | Docker Documentation](https://docs.docker.com/compose/overview/)'
   - '[Quickstart: Compose and Wordpress | Docker Documentation](https://docs.docker.com/compose/wordpress/)'
 aliases: ['/quick-answers/linux/wordpress-with-docker-compose/']
+authors: ["Nathan Melehan"]
 ---
 
 ![Install WordPress with Docker Compose](install-wordpress-with-docker-compose.png "Install WordPress with Docker Compose")
@@ -73,6 +71,7 @@ services:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: my_wordpress_db_password
+       WORDPRESS_DB_NAME: wordpress
 
    db:
      image: mysql:5.7

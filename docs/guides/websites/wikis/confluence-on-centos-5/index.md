@@ -1,9 +1,6 @@
 ---
 slug: confluence-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and using Confluence on CentOS 5 to power a fully-featured Wiki for your organization.'
 keywords: ["confluence centos 5", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","centos"]
@@ -22,6 +19,7 @@ relations:
         key: using-confluence
         keywords:
            - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 [Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your CentOS 5 Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluence; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.

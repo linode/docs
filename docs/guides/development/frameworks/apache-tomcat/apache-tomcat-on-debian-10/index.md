@@ -1,8 +1,5 @@
 ---
 slug: apache-tomcat-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install the Apache Tomcat Java servlet engine on Debian 10 by following this guide.'
 keywords: ["apache tomcat debian 10", "tomcat java", "java debian 10", "tomcat debian"]
 tags: ["web applications","java","debian"]
@@ -27,6 +24,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Debian 10
+authors: ["Linode"]
 ---
 
 Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.

@@ -1,7 +1,5 @@
 ---
 slug: ssh-key-authentication-how-to-troubleshoot-permission-issues
-author:
-  name: Jeff Novotny
 description: 'Learn the basics of SSH keys and how to troubleshoot the most common SSH permission issues in this short guide.'
 keywords: ['ssh key authentication', 'what is ssh', 'ssh keys']
 tags: ['ssh', 'web server', 'cloud manager', 'linode platform']
@@ -10,13 +8,11 @@ published: 2021-06-17
 modified_by:
   name: Linode
 title: "Troubleshoot SSH Key Authentication Issues"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[SSH Protocol](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)'
 - '[SSH Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell_Protocol)'
 
+authors: ["Jeff Novotny"]
 ---
 
 ## What is SSH (Secure Shell Protocol)?

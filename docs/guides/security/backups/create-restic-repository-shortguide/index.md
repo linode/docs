@@ -1,8 +1,5 @@
 ---
 slug: create-restic-repository-shortguide
-author:
-  name: Andy Heathershaw
-  email: andy@andysh.uk
 description: 'A shortguide that shows how to install Restic backup.'
 keywords: []
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,10 +9,11 @@ modified_by:
 title: "Install Restic backup"
 headless: true
 show_on_rss_feed: false
+authors: ["Andy Heathershaw"]
 ---
 
-{{< note respectIndent=false >}}
-[Create an Object Storage access key pair](/docs/products/storage/object-storage/guides/access-keys/) if you have not done so already.
+{{< note >}}
+[Create an Object Storage access key pair](/docs/platform/object-storage/how-to-use-object-storage/#generate-a-key-pair) if you have not done so already. Should you choose to restrict the access key's permissions, it will require "Read/Write" permission to the bucket you will use to store your Restic repository.
 {{< /note >}}
 
 1. Configure Restic to use your Object Storage access key pair and to use the bucket you created in the [Before You Begin](#before-you-begin) section of this guide. Replace `your-key`, `your-secret`, and `us-east-1.linodeobjects.com/your-bucket-name` with your own values.
@@ -34,7 +32,7 @@ For example, for the Frankfurt, DE cluster region the command is:
 Ensure the name of your bucket is correct. If the bucket does not exist, Restic creates a new bucket for you in the cluster region you designate.
 {{< /note >}}
 
-2. Following the prompt, set a password to encrypt your repository's data. Enter your desired password twice, and you see an output confirming that your repository has been created:
+2. Following the prompt, set a password to encrypt your repository's data. Enter your desired password twice, and you will see a similar output confirming that your repository has been created:
 
     {{< output >}}
 enter password for new repository:

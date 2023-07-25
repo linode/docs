@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 10.10 (Maverick).'
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 10.10", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

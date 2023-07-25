@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to set up and secure a new Compute Instance, including updating your software, creating a user account, and hardening SSH."
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 bundles: ['centos-security', 'debian-security']
 modified: 2022-07-12
 modified_by:
@@ -14,6 +10,7 @@ published: 2012-02-17
 title: "Setting Up and Securing a Compute Instance"
 title_meta: "How to Set Up and Secure a Compute Instance"
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
+authors: ["Linode"]
 ---
 
 After you have successfully created a Compute Instance, there are a few initial configuration steps you should perform within your new Linux system. This includes updating your system, setting the timezone, configuring a custom hostname, adding a limited user, hardening SSH to prevent unauthorized access, and configuring a firewall. These steps ensure your instance is up to date, secure, and ready for use.
@@ -42,7 +39,7 @@ If you haven't done so already, review the following guides to learn more about 
 
 ## View your Instance in the Cloud Manager
 
-Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which allows you to view key information and further configure it to your meet your needs.
+Log in to the [Cloud Manager](https://cloud.linode.com/), click the **Linodes** link in the left menu, and select your Compute Instance from the list. This opens the details page for that instance, which allows you to view key information and further configure it to meet your needs.
 
 ![Details page in Cloud Manager](create-instance-details.png)
 
@@ -303,7 +300,7 @@ The `hosts` file creates static associations between IP addresses and hostnames 
     203.0.113.10 example-hostname.example.com example-hostname
     ```
 
-1.  Add a line for your ompute Instance's IPv6 address. Applications requiring IPv6 will not work without this entry:
+1.  Add a line for your Compute Instance's IPv6 address. Applications requiring IPv6 will not work without this entry:
 
     ```file {title="/etc/hosts"}
     127.0.0.1 localhost.localdomain localhost
@@ -311,13 +308,13 @@ The `hosts` file creates static associations between IP addresses and hostnames 
     2600:3c01::a123:b456:c789:d012 example-hostname.example.com example-hostname
     ```
 
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your ompute Instance's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your instance's IPv6 address.
+The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Compute Instance's IPv4 address. For IPv6, you should also set up a DNS "AAAA" record pointing to your instance's IPv6 address.
 
 See our guide to [Adding DNS Records](/docs/products/networking/dns-manager/) for more information on configuring DNS. For more information about the `hosts` file, see [Using your System's hosts File](/docs/guides/using-your-systems-hosts-file/)
 
 ## Add a Limited User Account
 
-Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
+Up to this point, you have accessed your Compute Instance as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server. Later, when you want to restrict sudo access for users, see [Linux Users and Groups](/docs/guides/linux-users-and-groups/#understanding-sudo).
 
 {{< note >}}
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
@@ -395,7 +392,7 @@ As of Autumn 2018, [OpenSSH](https://www.openssh.com/) has been added to Windows
 
         This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/guides/use-public-key-authentication-with-ssh/#public-key-authentication-on-windows).
 
-1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as, and `192.0.2.1` with your instance's IP address.
+1.  Upload the public key to your Compute Instance. Replace `example_user` with the name of the user you plan to administer the server as and `192.0.2.1` with your instance's IP address.
 
     -   **Linux**
 
@@ -579,3 +576,5 @@ If for whatever reason you find yourself locked out of your Compute Instance aft
 These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](/docs/guides/ossec-ids-debian-7/), installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control), [fine tuning sudo access](/docs/guides/linux-users-and-groups/#understanding-the-sudo-linux-group-and-user), [removing exposed services](/docs/guides/remove-unused-network-facing-services), and [more](/docs/security/).
 
 Now you can begin setting up your Compute Instance for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/guides/migrate-from-shared-hosting-to-linode/) to [enabling two-factor authentication](/docs/products/platform/accounts/guides/user-security-controls/) to [hosting a website](/docs/guides/hosting-a-website-ubuntu-18-04/).
+
+{{< content "email-warning-shortguide" >}}

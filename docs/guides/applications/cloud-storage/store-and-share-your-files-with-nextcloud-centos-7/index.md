@@ -1,8 +1,5 @@
 ---
 slug: store-and-share-your-files-with-nextcloud-centos-7
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Nextcloud is an open content hosting tool built for customization and security. We'll walk you through installing it on CentOS 7."
 keywords: ["nextcloud", "cloud", "open source hosting"]
 tags: ["centos", "lamp"]
@@ -11,15 +8,18 @@ published: 2017-12-15
 modified: 2018-12-18
 modified_by:
   name: Linode
-title: "Store and Share your Files with Nextcloud on Centos 7"
-contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
+title: "Store and Share your Files with Nextcloud on CentOS 7"
 external_resources:
   - '[Using the occ command](https://docs.nextcloud.com/server/12/admin_manual/configuration_server/occ_command.html#http-user-label)'
   - '[nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html)'
   - '[Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl)'
 aliases: ['/applications/cloud-storage/store-and-share-your-files-with-nextcloud-centos-7/']
+authors: ["Andrew Lescher"]
+relations:
+    platform:
+        key: install-nextcloud
+        keywords:
+           - distribution: CentOS 7
 ---
 
 ![Store and Share your Files with Nextcloud on CentOS](Store_and_Share_your_Files_with_Nextcloud_on_Centos_smg.png "Store and Share your Files with Nextcloud on CentOS")

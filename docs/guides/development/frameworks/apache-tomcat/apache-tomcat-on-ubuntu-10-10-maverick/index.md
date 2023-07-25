@@ -1,9 +1,6 @@
 ---
 slug: apache-tomcat-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.10 (Maverick).'
 keywords: ["apache tomcat ubuntu 10.10", "java", "java ubuntu 10.10", "java servlets ubuntu maverick", "java ubuntu"]
 tags: ["web applications","java","ubuntu"]
@@ -19,6 +16,7 @@ relations:
         key:  apache-tomcat
         keywords:
             - distribution: Ubuntu 10.10
+authors: ["Linode"]
 ---
 
 

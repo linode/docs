@@ -1,9 +1,6 @@
 ---
 slug: use-mongodb-to-store-application-data-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'MongoDB is a database engine that provides access to non-relational key-value databases. This guide provides you instructions for installing it on CentOS 5.'
 keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: CentOS 5
 tags: ["nosql","database","centos"]
+authors: ["Linode"]
 ---
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".

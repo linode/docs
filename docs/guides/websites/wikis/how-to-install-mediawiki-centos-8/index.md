@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-mediawiki-centos-8
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide will show you how to install MediaWiki, a versatile, free and open-source application powering knowledge websites similar to Wikipedia, on CentOS 8.'
 keywords: ["mediawiki", "install mediawiki", "deploy mediawiki on centos 8"]
 tags: ["centos", "wiki"]
@@ -12,9 +9,6 @@ modified_by:
   name: Nathaniel Stickman
 title: "Installing Mediawiki on CentOS 8"
 title_meta: "How to Install Mediawiki on CentOS 8"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[MediaWiki Installation Guide](https://www.mediawiki.org/wiki/Manual:Installation_guide)'
 relations:
@@ -22,6 +16,7 @@ relations:
         key: install-mediawiki
         keywords:
            - distribution: CentOS 8
+authors: ["Nathaniel Stickman"]
 ---
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software behind Wikipedia and many of the wikis deployed by communities and companies around the world. It provides a versatile, open, and free tool for making knowledge easily accessible and navigable. This guide explains how to install MediaWiki on CentOS 8.

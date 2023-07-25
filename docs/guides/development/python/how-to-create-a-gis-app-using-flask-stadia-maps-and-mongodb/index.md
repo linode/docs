@@ -1,8 +1,5 @@
 ---
 slug: how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide will use the Stadia Maps free tier plan and hosted vector map tiles to create a GIS web app using Flask."
 keywords: ['maps','GIS','flask','mongodb', 'python']
 tags: ["web applications","python"]
@@ -13,10 +10,8 @@ modified_by:
 image: L_CreateGISapp.png
 title: "Creating a GIS Application using Flask, Stadia Maps, and MongoDB"
 title_meta: "Creating a GIS App Using Flask, Stadia Maps, and MongoDB"
-contributor:
-  name: Leslie Salazar
-  link: https://twitter.com/leslitasalazar?s=03
 aliases: ['/development/python/how-to-create-a-gis-app-using-flask-stadia-maps-and-mongodb/']
+authors: ["Leslie Salazar"]
 ---
 Geographic Information system (GIS) based applications require a beautiful mapping experience for users. [Stadia Maps](https://stadiamaps.com/) provides digital mapping that you can easily and affordably integrate into your web or mobile applications. They offer hosted map tiles, offline map tiles, static maps, and a few other [core products](https://stadiamaps.com/products/). If you would like to test their services, you can use a local development environment along with their free tier plan. For more details on pricing and service limits, see their [pricing plans](https://stadiamaps.com/pricing/).
 
@@ -300,7 +295,7 @@ You are now ready to run your Flask app locally to view your rendered Stadia Map
 
 ## Next Steps
 
-- Consult the [Prepare Your Production Environment](/docs/guides/flask-and-gunicorn-on-ubuntu/#prepare-your-production-environment) section of our [Deploy A Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide to familiarize yourself with some of the tools you can use to prepare a Flask application for production.
+- Consult the [Prepare Your Production Environment](/docs/guides/flask-and-gunicorn-on-ubuntu/#prepare-the-production-environment) section of our [Deploy A Flask Application on Ubuntu](/docs/guides/flask-and-gunicorn-on-ubuntu/) guide to familiarize yourself with some of the tools you can use to prepare a Flask application for production.
 
 - Adopt the example app to use a different data set. Many cities provide open GIS data that you can easily consume and create your own GIS app. See [Philadelphia's Open Data site](https://www.opendataphilly.org/) for possible sources.
 

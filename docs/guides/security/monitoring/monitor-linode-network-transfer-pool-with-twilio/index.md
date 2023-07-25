@@ -1,7 +1,5 @@
 ---
 slug: monitor-linode-network-transfer-pool-with-twilio
-author:
-  name: John Mueller
 description: "This guide shows you how to use Twilio and Linode's Python Library to receive alerts about your Linode's network transfer usage."
 keywords: ['twilio notifications']
 tags: ['python', 'monitoring']
@@ -11,23 +9,22 @@ modified_by:
   name: Linode
 title: "Twilio Notifications: Use Twilio and the Linode API to Monitor your Linode's Network Transfer Pool"
 title_meta: "Monitor your Linode's Network Transfer Pool"
-contributor:
-  name: John Mueller
+authors: ["John Mueller"]
 ---
 
 Each Linode account has a monthly *outbound* network transfer pool. The network transfer pool is the total amount of free outbound bandwidth that is shared between all the Linode services in your account.
 
 {{< note respectIndent=false >}}
-For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/guides/network-transfer/) guide.
+For more information on how your network transfer pool's size is computed, and which services can consume your outbound network transfer pool, review the [Transfer Allowance](/docs/products/platform/get-started/guides/network-transfer/#transfer-allowance) section of the [Network Transfer Usage and Costs](/docs/products/platform/get-started/guides/network-transfer/) guide.
 {{< /note >}}
 
 It's important to keep track of how much bandwidth your account has. If you use more than your pool size in a given month, then you are billed an overage fee for that month. If you observe that you have used a high percentage of your transfer pool, then you can start to plan or budget for a possible transfer overage. Linode provides a few ways to monitor your transfer usage:
 
-- The [Cloud Manager](/docs/guides/network-transfer/#cloud-manager) displays your current transfer usage.
+- The [Cloud Manager](/docs/products/platform/get-started/guides/network-transfer/#cloud-manager) displays your current transfer usage.
 
-- The [Linode CLI](/docs/guides/network-transfer/#linode-cli) can report your current transfer usage.
+- The [Linode CLI](/docs/products/platform/get-started/guides/network-transfer/#linode-cli) can report your current transfer usage.
 
-- Linode sends [email alerts](/docs/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
+- Linode sends [email alerts](/docs/products/platform/get-started/guides/network-transfer/#email-alerts) at 80%, 90%, and 100% of your transfer usage.
 
 Using Twilio, you can also build a custom text message notification system for your transfer usage. Such a system would periodically send notifications to help you be aware of your transfer usage without manually checking on it. You can also configure the system to send notifications at custom transfer usage percents, instead of the standard 80%, 90%, and 100% Linode email alerts. This custom notification system relies on the [Network Transfer View endpoint](/docs/api/linode-instances/#network-transfer-view) of the Linode API.
 
@@ -157,7 +154,7 @@ summary_text = "Linode network transfer pool statistics"
 transfer_statistics_text = 'Used: %sGB\n' \
     'Transfer pool size: %sGB\n' \
     'Percent of pool used: %s%%\n\n' \
-    'https://www.linode.com/docs/guides/network-transfer/' % \
+    'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
     (account_network_transfer.used,
     account_network_transfer.quota,
     round(pool_used_ratio * 100, 4))
@@ -260,7 +257,7 @@ Used: 100GB
 Transfer pool size: 1000GB
 Percent of pool used: 10.0%
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
     If you receive an error message when you run the script, review the [Troubleshooting](#troubleshooting) section.
@@ -333,7 +330,7 @@ The cron job sends you a periodic message with your network transfer statistics,
 # transfer_statistics_text = 'Used: %sGB\n' \
 #     'Transfer pool size: %sGB\n' \
 #     'Percent of pool used: %s%%\n\n' \
-#     'https://www.linode.com/docs/guides/network-transfer/' % \
+#     'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
 #     (account_network_transfer.used,
 #     account_network_transfer.quota,
 #     round(pool_used_ratio * 100, 4))
@@ -372,7 +369,7 @@ if pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     transfer_statistics_text = 'Used: %sGB\n' \
         'Transfer pool size: %sGB\n' \
         'Percent of pool used: %s%%\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4))
@@ -409,7 +406,7 @@ Used: 800GB
 Transfer pool size: 1000GB
 Percent of pool used: 80.0%
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
 1. Your account may not have used more network transfer than the notification threshold. If you want to test the new code to make sure it works, you could temporarily change the value of the `USAGE_NOTIFICATION_THRESHOLD_RATIO` variable in the script to a lower number.
@@ -440,7 +437,7 @@ The cron job now uses a threshold ratio and only sends a text message if you hav
 #     transfer_statistics_text = 'Used: %sGB\n' \
 #         'Transfer pool size: %sGB\n' \
 #         'Percent of pool used: %s%%\n\n' \
-#         'https://www.linode.com/docs/guides/network-transfer/' % \
+#         'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
 #         (account_network_transfer.used,
 #         account_network_transfer.quota,
 #         round(pool_used_ratio * 100, 4))
@@ -467,7 +464,7 @@ if pool_used_ratio > OVERAGE_NOTIFICATION_THRESHOLD_RATIO:
         'Percent of pool used: %s%%\n' \
         'Overage amount: %sGB\n' \
         'Overage amount cost: $%s\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4),
@@ -485,7 +482,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     transfer_statistics_text = 'Used: %sGB\n' \
         'Transfer pool size: %sGB\n' \
         'Percent of pool used: %s%%\n\n' \
-        'https://www.linode.com/docs/guides/network-transfer/' % \
+        'https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/' % \
         (account_network_transfer.used,
         account_network_transfer.quota,
         round(pool_used_ratio * 100, 4))
@@ -498,7 +495,7 @@ elif pool_used_ratio > USAGE_NOTIFICATION_THRESHOLD_RATIO:
     {{< disclosure-note "About the code" >}}
 - Line 3 defines a new overage notification threshold ratio and sets it to `1` (representing 100% of your transfer pool size).
 
-- Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/guides/network-transfer/#usage-costs).
+- Line 4 defines a variable to store the cost of network transfer overage, which is [$.01 per GB](/docs/products/platform/get-started/guides/network-transfer/#usage-costs).
 
 - On line 6, the computed `pool_used_ratio` is compared with the overage threshold ratio number.
 
@@ -528,7 +525,7 @@ Percent of pool used: 150.0%
 Overage amount: 500GB
 Overage amount cost: $5.0
 
-https://www.linode.com/docs/guides/network-transfer/
+https://www.linode.com/docs/products/platform/get-started/guides/network-transfer/
 {{< /output >}}
 
 1. Your account may not have used more than 100% of your network transfer pool. If you want to test the new code to make sure it works, you could temporarily change the value of the `OVERAGE_NOTIFICATION_THRESHOLD_RATIO` variable in the script to a lower number.

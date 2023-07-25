@@ -1,19 +1,15 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to obtain URLs to objects within Linode's Object Storage service."
 keywords: ['object','storage','bucket']
 published: 2020-01-22
-modified: 2022-02-24
+modified: 2023-07-05
 modified_by:
   name: Linode
 image: AccessingObjectswithLinodeObjectStorage.png
 title: "Access Buckets and Files through URLs"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/how-to-access-objects-with-linode-object-storage/','/guides/how-to-access-objects-with-linode-object-storage/','/products/storage/object-storage/guides/access-objects/']
+authors: ["Linode"]
 ---
 
 Linode's Object Storage service gives each bucket and file a unique URL. This URL is managed through the shared domain *\*.linodeobjects.com* and your files are encrypted through the use of HTTPS. By default, files are only visible by you (the owner) through the Cloud Manager or through other tools and applications using an access key with permissions to read (or read/write) the bucket.
@@ -36,11 +32,14 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 **Cluster URL:** `https://[cluster-id].linodeobjects.com/`, replacing *[cluster-id]* with the id of your data center. The cluster URLs for each of the available data centers are listed below:
 
 | Data Center | Cluster ID | Cluster URL |
-| --| -- | -- |
-| Atlanta, GA, USA | us-southeast-1 | https://us-southeast-1.linodeobjects.com |
-| Frankfurt, Germany | eu-central-1 | https://eu-central-1.linodeobjects.com |
-| Newark, NJ, USA | us-east-1 | https://us-east-1.linodeobjects.com |
-| Singapore | ap-south-1 | https://ap-south-1.linodeobjects.com |
+| -- | -- | -- |
+| Atlanta, GA (USA) | `us-southeast-1` | `https://us-southeast-1.linodeobjects.com` |
+| Chicago, IL (USA) | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
+| Frankfurt (Germany) | `eu-central-1` | `https://eu-central-1.linodeobjects.com` |
+| Newark, NJ (USA) | `us-east-1` | `https://us-east-1.linodeobjects.com` |
+| Paris (France) | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
+| Singapore | `ap-south-1` | `https://ap-south-1.linodeobjects.com` |
+| Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ## Bucket URL
 

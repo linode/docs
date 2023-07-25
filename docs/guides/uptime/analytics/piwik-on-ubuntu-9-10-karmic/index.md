@@ -1,9 +1,6 @@
 ---
 slug: piwik-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Stan Schwertly
-  email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 9.10 (Karmic).'
 keywords: ["open source analytics", "piwik ubuntu 9.10", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 tags: ["statistics","ubuntu","analytics"]
@@ -19,6 +16,7 @@ relations:
         key: using-piwik-analytics
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Stan Schwertly"]
 ---
 
 

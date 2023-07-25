@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "NVMe Block Storage Upgrade"
 description: "Information about the new NVMe Block Storage product and how to upgrade a Volume."
-modified: 2023-02-10
+modified: 2023-07-05
+authors: ["Linode"]
 ---
 
 ## What is NVMe-backed Block Storage?
@@ -15,23 +13,7 @@ To learn more about Block Storage, visit the [Block Storage Overview](/docs/prod
 
 ## Availability
 
-**NVMe Block Storage** has been deployed to all data centers, with the exception of Fremont, as indicated in the table below.
-
-| Data Center | NVMe Block Storage |
-| -- | -- |
-| **Atlanta (Georgia, USA)** | **Deployed** |
-| **Dallas (Texas, USA)** | **Deployed** |
-| **Frankfurt (Germany)** | **Deployed** |
-| Fremont (California, USA) | *Not yet available* |
-| **London (United Kingdom)** | **Deployed** |
-| **Mumbai (India)** | **Deployed** |
-| **Newark (New Jersey, USA)** | **Deployed** |
-| **Singapore** | **Deployed** |
-| **Sydney (Australia)** | **Deployed** |
-| **Tokyo (Japan)** | **Deployed** |
-| **Toronto (Canada)** | **Deployed** |
-
-Once NVMe Block Storage has been deployed in a data center, all *new* Volumes created after will use the new NVMe architecture.
+**NVMe Block Storage** has been deployed to all data centers except for Fremont, CA (USA).
 
 ## Upgrading a Volume to NVMe Block Storage
 
@@ -59,7 +41,9 @@ If a scheduled upgrade is available for your Volume, follow the steps above in t
 
 1.  Run the following command to copy your data, replacing `[path-to-original-volume]` with the file system path to your original Volume and `[path-to-nvme-volume]` with the path to the new Volume you just created. These paths are likely under the `/mnt/` directory.
 
-        sudo rsync -rah --progress [path-to-original-volume]/* [path-to-nvme-volume]/
+    ```command
+    sudo rsync -rah --progress [path-to-original-volume]/* [path-to-nvme-volume]/
+    ```
 
 1.  After the transfer has completed, you can modify any applications using your original Volume to point to the mount directory of the new NVMe Volume. Then, follow the [Attach and Detach a Volume](/docs/products/storage/block-storage/guides/attach-and-detach/#detach-a-volume) guide to unmount and detach your original Volume.
 
@@ -73,7 +57,7 @@ If a scheduled upgrade is available for your Volume, follow the steps above in t
 
 The table below displays the performance you can expect from NVMe-backed Block Storage. Performance is automatically increased in 60 second bursts for even faster real-world speeds.
 
-| | IOPS | Throughput |
+| Performance Metric | IOPS | Throughput |
 | -- | -- | -- |
 | **Standard** | 8,000 | 350 MB/s |
 | **Burst** | 12,000 | 525 MB/s |

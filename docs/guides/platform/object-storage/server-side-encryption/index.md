@@ -1,8 +1,5 @@
 ---
 slug: server-side-encryption
-author:
-  name: Ben Bigger
-  email: docs@linode.com
 description: 'This guide teaches you how to secure your Linode Object Storage data with server-side encryption using an example script written in Python.'
 og_description: 'Learn how to secure your Linode Object Storage data with server-side encryption.'
 keywords: ['object','storage','security', 'sse-c', 'aes-256', 'terraform']
@@ -15,6 +12,7 @@ modified_by:
 title: "Using Server-Side Encryption with Linode Object Storage"
 title_meta: "How to Use Server-Side Encryption with Linode Object Storage"
 aliases: ['/platform/object-storage/server-side-encryption/']
+authors: ["Ben Bigger"]
 ---
 
 {{< content "object-storage-ga-shortguide" >}}

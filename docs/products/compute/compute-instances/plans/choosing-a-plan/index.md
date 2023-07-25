@@ -1,20 +1,19 @@
 ---
-author:
-    name: Linode
-    email: docs@linode.com
-description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
-keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2019-02-04
-modified: 2022-08-10
-modified_by:
-    name: Linode
 title: "Choosing a Compute Instance Type and Plan"
 title_meta: "How to Choose a Compute Instance Plan"
 linkTitle: "Choosing a Plan"
+description: "Get help deciding which Compute Instance type is right for your use case and learn how to select the most appropriate plan"
+keywords: ["choose", "help", "plan", "size", "shared", "high memory", "dedicated", "dedicated CPU", "GPU instance"]
+published: 2019-02-04
+modified: 2023-07-06
+modified_by:
+    name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/how-to-choose-a-linode-plan/','/guides/how-to-choose-a-linode-plan/','/guides/choosing-a-compute-instance-plan/']
+authors: ["Linode"]
 ---
+
+{{< content "new-data-center-notice" >}}
 
 Linode offers multiple Compute Instance types, each of which can be equipped with various amounts of resources. This allows you to create a Compute Instance tailored to the requirements of your application or workload. For example, some applications may need to store a lot of data but require less processing power. Others may need more memory than CPU. Some may be especially CPU-intensive and require more computing power.
 
@@ -30,6 +29,7 @@ These are the instance types offered by Linode:
 
 - [Shared CPU instances](#shared-cpu-instances)
 - [Dedicated CPU instances](#dedicated-cpu-instances)
+- [Premium instances](#premium-instances)
 - [High Memory instances](#high-memory-instances)
 - [GPU instances](#gpu-instances)
 
@@ -57,13 +57,13 @@ Starting at $5/mo ($0.0075/hour). See [Shared CPU Pricing](https://www.linode.co
 ### Dedicated CPU Instances
 
 **4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
-Starting at $30/mo ($0.045/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
+Starting at $36/mo ($0.05/hour). See [Dedicated CPU Pricing](https://www.linode.com/pricing/#compute-dedicated) for a full list of plans, resources, and pricing.
 
 [Dedicated CPU Instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/) reserve physical CPU cores that you can utilize at 100% load 24/7 for as long as you need. This provides competition free guaranteed CPU resources and ensures your software can run at peak speed and efficiency. With Dedicated CPU instances, you can run your software for prolonged periods of maximum CPU usage, and you can ensure the lowest latency possible for latency-sensitive operations. These instances offer a perfectly balanced set of resources for most production applications.
 
 **Recommended Use Cases:**
 
-*Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
+*Best for production websites, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention.*
 
 - [CI/CD](/docs/guides/introduction-ci-cd/) toolchains and build servers
 - [Game servers](/docs/game-servers/) (like Minecraft or Team Fortress)
@@ -73,6 +73,23 @@ Starting at $30/mo ($0.045/hour). See [Dedicated CPU Pricing](https://www.linode
 - [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 - High Traffic Databases (Galera, PostgreSQL with Replication Manager, MongoDB using Replication Sets)
 - Replicated or Distributed Filesystems (GlusterFS, DRBD)
+
+### Premium Instances
+
+**4 GB - 512 GB Memory, 2 - 64 Dedicated vCPUs, 80 GB - 7200 GB Storage**<br>
+Starting at $43/mo ($0.06/hr). See [Premium Pricing](https://www.linode.com/pricing/#premium) for a full list of plans, resources, and pricing.
+
+[Premium Instances](/docs/products/compute/compute-instances/plans/premium/) build off our Dedicated CPU instances and guarantee a minimum hardware class utilizing the latest available [AMD Epyc™](https://www.linode.com/amd/) CPUs. This provides consistent performance to your workloads and is suitable for running mission-critical applications. Premium instances are available in select data centers (see [Premium Instance Availability](/docs/products/compute/compute-instances/plans/premium/#availability)).
+
+**Recommended Use Cases:**
+
+*Best for enterprise-grade, business-critical, and latency-sensitive applications.*
+
+- Any workload that benefits from consistent performance.
+- [Audio and video transcoding](/docs/applications/media-servers/)
+- [Big data](/docs/applications/big-data/) (and data analysis)
+- Scientific computing
+- [Machine learning](/docs/guides/how-to-move-machine-learning-model-to-production/) and AI
 
 ### High Memory Instances
 
@@ -116,9 +133,9 @@ When selecting a plan, it is important to understand the hardware resources allo
 | Memory (RAM) | The working memory available for your server's processes. Your server stores information in memory that is needed to carry out its functions. Or, it caches data in memory for fast retrieval in the future, if it is likely that the data will be needed. Data stored in RAM is accessed faster than data stored in your Linode's disks, but it is not persistent storage. |
 | vCPU Cores | The number of virtual CPUs (vCPUs) available to your server. Your software is often designed to execute its tasks across multiple CPUs in parallel. The higher your vCPU count, the more work you can perform simultaneously. Plans are also equipped with either shared CPU cores or dedicated CPU cores. Dedicated CPU cores allow your system to utilize 100% of your CPU resources at all times, while shared CPU cores require a lower sustained usage and may be affected by resource contention. See [Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)](/docs/guides/comparing-shared-and-dedicated-cpus/). |
 | Storage | Your server's built-in persistent storage. Large databases, media libraries, and other stores of files will require more storage space. Your Compute Instance's storage is maintained on high-performance SSDs for fast access. You can also supplement your disks with extra [Block Storage Volumes](https://www.linode.com/blockstorage). |
-| Transfer | The total amount of traffic your server can emit over the course of a month. Inbound traffic sent to your Compute Instance does not count against your transfer quota. If you exceed your quota, your service will not be shut off; instead, an overage will be billed. Review the [Network Transfer Quota](/docs/guides/network-transfer/) guide for more information about how transfer works. |
-| Network In | The maximum bandwidth for inbound traffic sent to your Compute Instance. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your instance and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide. |
-| Network Out | The maximum bandwidth for outbound traffic emitted by your Compute Instance. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your instance and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/guides/how-to-choose-a-data-center/) guide.
+| Transfer | The total amount of traffic your server can emit over the course of a month. Inbound traffic sent to your Compute Instance does not count against your transfer quota. If you exceed your quota, your service will not be shut off; instead, an overage will be billed. Review the [Network Transfer Quota](/docs/products/platform/get-started/guides/network-transfer/) guide for more information about how transfer works. |
+| Network In | The maximum bandwidth for inbound traffic sent to your Compute Instance. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your instance and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide. |
+| Network Out | The maximum bandwidth for outbound traffic emitted by your Compute Instance. The bandwidth you observe will also depend on other factors, like the geographical distance between you and your instance and the bandwidth of your local ISP. For help with choosing a data center that will feature the lowest latency and best bandwidth, review the [How to Choose a Data Center](/docs/products/platform/get-started/guides/choose-a-data-center/) guide.
 | GPU | GPU's, or Graphical Processing Units are specialized hardware units only available on our GPU instances. Originally designed to manipulate computer graphics and handle image processing, GPUs are now commonly also used for many compute intensive tasks that require thousands of simultaneous threads and the higher number of logical cores that a CPU can not provide alone.
 
 ## Pricing

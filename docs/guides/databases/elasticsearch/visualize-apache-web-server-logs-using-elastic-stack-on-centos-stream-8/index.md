@@ -1,11 +1,5 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-centos-stream-8
-author:
-  name: Tyler Langlois
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: "This guide shows how to install all three components of Elastic Stack on CentOS to explore Apache web server logs in Kibana."
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
@@ -25,6 +19,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: CentOS Stream 8
+authors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.
@@ -248,7 +243,7 @@ output {
     {{< note respectIndent=false >}}
 This example configuration assumes that your website logs are stored in the `/var/www/*/logs/access.log` file path.
 
-If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-centos-8/#configure-apache-for-virtual-hosting) section of the [Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
+If your site was set up by following the [Configure Apache for Virtual Hosting](/docs/guides/how-to-install-apache-web-server-centos-8/#configure-virtual-hosting) section of the [Apache Web Server on CentOS 8](/docs/guides/how-to-install-apache-web-server-centos-8/) guide, then your logs are stored in this location. If you website logs are stored in another location, update the file path in the configuration file before proceeding.
 {{< /note >}}
 
 1.  Start and enable `logstash`:

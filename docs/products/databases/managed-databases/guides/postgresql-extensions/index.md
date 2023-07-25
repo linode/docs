@@ -1,11 +1,10 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "PostgreSQL Extensions"
+title_meta: "Using PostgreSQL Extensions with Managed Databases"
 description: "Learn which PostgreSQL extensions are supported by Linode's Managed Database service and how to install them."
 published: 2022-06-06
-modified: 2022-08-23
+modified: 2023-04-27
+authors: ["Linode"]
 ---
 
 The functionality of PostgreSQL can be enhanced through the use of [extensions](https://wiki.postgresql.org/wiki/Extensions). Linode's PostgreSQL Managed Database service supports many of these extensions.
@@ -28,7 +27,9 @@ To view the extensions that are currently installed on your PostgreSQL Managed D
 
 To see a full list of all the extensions available for your version of PostgreSQL, run the following query. You can also review the [List of Available Extensions](#list-of-available-extensions) below.
 
-    SELECT * FROM pg_available_extensions;
+```command
+SELECT * FROM pg_available_extensions;
+```
 
 {{< note type="alert" >}}
 Linode does not provide superuser access to PostgreSQL Managed Databases. As such, some extensions may not function properly or may otherwise encounter permissions issues.
@@ -38,7 +39,9 @@ Linode does not provide superuser access to PostgreSQL Managed Databases. As suc
 
 To install one of the available extensions on your database, use the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
-    CREATE EXTENSION IF NOT EXISTS [extension_name];
+```command
+CREATE EXTENSION IF NOT EXISTS [extension_name];
+```
 
 If this command does not work, the extension may either not be compatible or it may need to be manually enabled on your Managed Database by our team. Review the [extensions list](#list-of-available-extensions) below.
 
@@ -46,7 +49,9 @@ If this command does not work, the extension may either not be compatible or it 
 
 To remove an extension, use the [DROP EXTENSION](https://www.postgresql.org/docs/current/sql-dropextension.html) command, replacing *[extension_name]* with the name of the extension you wish to install.
 
-    DROP EXTENSION [extension_name];
+```command
+DROP EXTENSION [extension_name];
+```
 
 ## List of Available Extensions
 
@@ -101,7 +106,7 @@ Linode does not provide superuser access to PostgreSQL Managed Databases. As suc
 | `pg_stat_statements` | 10, 11, 12, 13 | Track execution statistics of all SQL statements executed |
 | `pg_trgm` | 10, 11, 12, 13 | Text similarity measurement and index searching based on trigrams |
 | `pg_visibility` | 10, 11, 12, 13 | Examine the visibility map (VM) and page-level visibility info |
-| `pgaudit` | 10, 11, 12, 13 | Provides auditing functionality |
+| `pgaudit` (**incompatible**) | 10, 11, 12, 13 | Provides auditing functionality |
 | `pgcrypto` | 10, 11, 12, 13 | Cryptographic functions |
 | `pglogical` | 10, 11, 12, 13 | PostgreSQL Logical Replication |
 | `pglogical_origin` | 10, 11, 12, 13 | Dummy extension for compatibility when upgrading from Postgres 9.4 |

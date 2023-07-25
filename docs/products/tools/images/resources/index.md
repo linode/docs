@@ -1,11 +1,14 @@
 ---
 title: Resources
+title_meta: "Resources for Custom Images"
 description: "Resources and other information related to Linode Images including blog posts and community posts."
 tab_group_main:
     weight: 40
 ---
 
 ## Blog Posts
+
+Some of the blog posts about custom images:
 
 - [Resize Disk Images](https://www.linode.com/blog/linode/resize-disk-images/)
 
@@ -16,6 +19,8 @@ tab_group_main:
 - [Clone a Linode to another Linode](https://www.linode.com/blog/linode/clone-a-linode-to-another-linode/)
 
 ## Community Posts
+
+Some of the community posts that answer questions related to custom images:
 
 - [What’s the deal with Linode Images?](https://www.linode.com/community/questions/17805/whats-the-deal-with-linode-images)
 

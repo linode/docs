@@ -1,9 +1,6 @@
 ---
 slug: full-disk-encryption-xen
 deprecated: true
-author:
-  name: Quintin Riis
-  email: docs@linode.com
 description: Full disk encryption helps you to protect the information stored on your Linode's disk. This guide shows how to implement full disk encryption on Debian.
 keywords: ['full disk encryption', 'debian', 'wheezy', 'security', 'cryptsetup']
 aliases: ['/security/full-disk-encryption-xen/','/security/encryption/full-disk-encryption-xen/']
@@ -14,6 +11,7 @@ modified_by:
   name: Linode
 published: 2013-07-05
 title: Full Disk Encryption
+authors: ["Quintin Riis"]
 ---
 
 Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered by authorized individuals. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will help you implement full disk encryption on a Linode running Debian 7 (Wheezy). You'll learn how to:
@@ -40,7 +38,7 @@ Ready to encrypt your Linode's disks? Here's how to prepare a Linode for full di
     - A swap image. You'll need to choose an appropriate swap size based your particular needs.
     - A `root` image to store the files in the root of your filesystem.
 
-3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode). Ensure that your disks are attached as follows:
+3.  After you have created these disks, you'll want to [boot into Finnix from the Rescue tab](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode). Ensure that your disks are attached as follows:
 
     - /boot xvda
     - swap xvdb
@@ -64,7 +62,7 @@ Congratulations! You're now ready to set up full disk encryption on your Linode.
 
 Now you're ready to enable full disk encryption on your Linode running Debian 7 (Wheezy). Here's how to do it:
 
-1.  [Reboot into Finnix](/docs/guides/rescue-and-rebuild/#booting-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
+1.  [Reboot into Finnix](/docs/products/compute/compute-instances/guides/rescue-and-rebuild/#booting-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
 2.  [Connect to LISH](/docs/products/compute/compute-instances/guides/lish/), which will allow you to access the Linode's virtual console.
 3.  Enter the following command to create an encrypted volume. You'll be prompted for a passphrase. Make sure that you enter a very strong passphrase, and that you store the passphrase in a physically secure location. Or better yet, memorize the passphrase and don't store it anywhere! :
 

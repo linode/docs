@@ -1,8 +1,5 @@
 ---
 slug: beginners-guide-chef
-author:
-  name: Elle Krout
-  email: ekrout@linode.com
 description: 'A look into Chef''s primary components, features, and configurations for the new Chef user'
 keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -17,6 +14,7 @@ external_resources:
  - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 18.04](/docs/guides/install-a-chef-server-workstation-on-ubuntu-18-04/)'
  - '[Creating Your First Chef Cookbook](/docs/guides/creating-your-first-chef-cookbook/)'
 tags: ["automation"]
+authors: ["Elle Krout"]
 ---
 
 

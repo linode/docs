@@ -1,9 +1,6 @@
 ---
 slug: minecraft-on-linode-with-ubuntu-12-04
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'This guide shows how you can install and configure Minecraft, a online game where everything is built from mineable blocks, on a Linode running Ubuntu 12.04.'
 keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
 tags: ["ubuntu"]
@@ -20,6 +17,7 @@ relations:
         key: install-minecraft-server
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Alex Fornuto"]
 ---
 
 This guide shows you how to set up a personal Minecraft server on a Linode running Ubuntu 12.04 LTS (64 bit).

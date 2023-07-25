@@ -1,8 +1,5 @@
 ---
 slug: a-primer-on-sql-transactions
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'SQL transactions help maintain database integrity. This guide outlines some transaction benefits and how to use the delimiter, commit, and rollback syntax.'
 keywords: ['sql transactions', 'commit transaction', 'rollback transaction', 'SQL transaction delimiter']
 tags: ['mysql', 'database']
@@ -12,9 +9,7 @@ modified_by:
   name: Linode
 title: "SQL Transactions: An Introduction"
 title_meta: "A Primer on SQL Transactions"
-contributor:
-  name: Doug Hayman for NanoHertz Solutions Inc.
-  link: http://nhzsolutions.com/
+authors: ["Doug Hayman for NanoHertz Solutions Inc."]
 ---
 
 ## What are SQL Transactions?

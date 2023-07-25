@@ -10,6 +10,9 @@
     setActiveMenuItem();
   };
   var bindEvents = function() {
+    window.addEventListener("scroll", function() {
+      document.documentElement.style.setProperty("--site-scroll-y", window.scrollY + "px");
+    });
     $header.addEventListener("toggle:on", function(event) {
       setHtmlScrollState(false);
     });
@@ -104,10 +107,12 @@
   var mount2 = function() {
     $notification = document.querySelector(".c-site-header .c-notification");
     if ($notification) {
+      let prefix = "";
+      let api_url = `https://www.linode.com/${prefix}wp-json/linode/v1/header-notification`;
       $notification_link = $notification.querySelector(".c-notification__link");
       $notification_tag = $notification.querySelector(".c-notification__tag");
       $notification_message = $notification.querySelector(".c-notification__message");
-      fetch("https://www.linode.com/wp-json/linode/v1/header-notification").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
+      fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
     }
   };
   var updateDOM = function(data) {
@@ -133,11 +138,9 @@
   // src/js/Main/header-featured.js
   var $html3;
   var mount3 = function() {
-    fetch("https://www.linode.com/wp-json/linode/v1/header-featured").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
-  };
-  window.siteFeatureClick = function(category, action, label) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ "event": "gaEvent", "eventCategory": category, "eventAction": action, "eventLabel": label });
+    let prefix = "";
+    let api_url = `https://www.linode.com/${prefix}wp-json/linode/v1/header-featured`;
+    fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
   };
   var updateDOM2 = function(data) {
     data.forEach((item) => {
@@ -173,7 +176,6 @@
     $a.id = `c-featured--${data.slot}`;
     $a.href = data.link_url;
     $a.setAttribute("style", data.wrap_styles);
-    $a.setAttribute("onclick", `siteFeatureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
     $a.setAttribute("data-analytics-event", `${data.ga_category} | ${data.ga_action} | ${data.ga_label}`);
     $text.classList.add("c-featured__text");
     $headline.classList.add("c-featured__headline");

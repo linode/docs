@@ -1,12 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "A collection of diagnostic tasks that identify the potential for benefits from dedicated CPU cores."
 keywords: ["dedicated cpu", "use cases", "linode cpu", "machine learning", "big data"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-08-27
-modified: 2022-08-12
+modified: 2023-07-05
 modified_by:
   name: Linode
 title: "Choosing Between Shared and Dedicated CPUs (and Determining When to Upgrade)"
@@ -14,6 +10,7 @@ title_meta: "Choosing Between Shared and Dedicated CPUs on the Linode Platform"
 linkTitle: Choosing Between Shared and Dedicated CPUs
 tags: ["linode platform"]
 aliases: ['/platform/dedicated-cpu/when-to-upgrade-to-dedicated-cpu/','/guides/when-to-upgrade-to-dedicated-cpu/','/guides/comparing-shared-and-dedicated-cpus/']
+authors: ["Linode"]
 ---
 
 Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU cores. Understanding the difference between these is key to determining the best plan for your workloads. This guide outlines those differences and aims to help you evaluate your current cloud workloads to determine if plans with dedicated CPU cores would be beneficial.
@@ -22,14 +19,14 @@ Each Linode Compute Instance is equipped with shared CPU cores or dedicated CPU 
 
 The following chart outlines the key differences between shared CPUs and dedicated CPUs, including maximum allowed utilization, CPU contention, and recommended use cases.
 
-| | Shared CPUs | Dedicated CPUs |
+| Specification | Shared CPUs | Dedicated CPUs |
 | -- | -- | -- |
 | **CPU allocation**  | Physical CPU cores may be shared with other neighboring Compute Instances. | Physical CPU cores are reserved just for this Compute Instance. |
 | **Maximum *sustained* CPU utilization (24/7)** | 80% | 100% |
 | **Maximum *burst* CPU utilization** | 100% | 100% |
 | **CPU contention** | Can be expected during peak usage. | No. |
 | **Recommended Use Cases** | Best for development servers, staging servers, low traffic websites, personal blogs, and production applications that may not be affected by resource contention. | Best for production websites, enterprise applications, high traffic databases, and any application that requires 100% sustained CPU usage or may be impacted by resource contention. |
-| **Plans** | [Shared CPU](/docs/products/compute/compute-instances/plans/shared-cpu/) | [Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/), [High Memory](/docs/products/compute/compute-instances/plans/high-memory/), [GPU](/docs/products/compute/compute-instances/plans/gpu/) |
+| **Plans** | [Shared CPU](/docs/products/compute/compute-instances/plans/shared-cpu/) | [Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/), [Premium](/docs/products/compute/compute-instances/plans/premium/), [High Memory](/docs/products/compute/compute-instances/plans/high-memory/), [GPU](/docs/products/compute/compute-instances/plans/gpu/) |
 
 ## How Physical CPU Cores Are Managed on Virtual Machines
 
@@ -109,13 +106,11 @@ Generally, when observing the CPU graph, good candidates for an upgrade to a Ded
 
 ![Dedicated CPU Candidate Graph](cpuusagethrottle.png "Create a Dedicated CPU instance in the Cloud Manager")
 
-## What If I Need More Specialized Resources Than a Dedicated CPU?
+## What If I Need More Specialized Resources?
 
-If you find that a Dedicated CPU alone is not enough for your workload and you may benefit from something more specialized, then you may be interested in service offerings that come with more or different resources than a Dedicated CPU alone can provide. [High Memory](/docs/products/compute/compute-instances/plans/high-memory/) plans feature higher RAM allocations than a standard plan with relatively fewer vCPUs and less storage. This can help to keep your costs down and provide power to memory-intensive applications.
+Dedicated CPU cores are equipped on all of our Compute Instance plans, except for Shared instances. This means that you can select the plan type that provides the resources to make your workloads run at peak performance. [Dedicated CPU](/docs/products/compute/compute-instances/plans/dedicated-cpu/) plans provide a balanced set of resources for general purpose workloads. [Premium](/docs/products/compute/compute-instances/plans/premium/) plans provide a balanced set of resources utilizing the latest AMD Epyc™ CPUs for enterprise-grade general purpose workloads. [High Memory](/docs/products/compute/compute-instances/plans/high-memory/) plans feature higher RAM allocations than a standard plan with relatively fewer vCPUs and less storage. This can help to keep your costs down and provide power to memory-intensive applications.
 
 Additionally, [GPU instances](/docs/products/compute/compute-instances/plans/gpu/) provide access to NVIDIA Quadro RTX 6000 GPU cards with Tensor, ray tracing (RT), and CUDA cores. GPUs are designed to process large blocks of data in parallel, meaning that they are an excellent choice for any workload requiring thousands of simultaneous threads. With significantly more logical cores than a standard CPU alone, GPUs can perform computations that process large amounts of data in parallel more efficiently.
-
-As of June 16, 2020, all High Memory and GPU plans utilize dedicated CPU cores by default, as part of the package including the specialized resources they provide.
 
 ## How to Upgrade Your Shared Instance
 

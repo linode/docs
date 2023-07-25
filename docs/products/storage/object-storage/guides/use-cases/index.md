@@ -1,19 +1,15 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide provides you with an introduction to Linode Object Storage and also offers you several practical use cases, as well as benefits and limitations."
 image: use-cases-for-linode-obj-storage.png
 keywords: ['object','storage','s3','use','case']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-08-26
+modified: 2023-03-31
 modified_by:
   name: Linode
 title: "Use Cases for Object Storage"
-contributor:
-  name: Linode
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/object-storage-use-cases/','/guides/object-storage-use-cases/']
+authors: ["Linode"]
 ---
 
 ## What is Object Storage?
@@ -67,7 +63,7 @@ Object Storage is, in the majority of cases, significantly cheaper than Block St
 Similarly, Object Storage has benefits over [tape storage](https://en.wikipedia.org/wiki/Tape_drive). Tape storage is frequently used for archival purposes, but the read times that come with tape storage are many times more than what you'll find with Object Storage. Special considerations have to be made when transferring tape drive data, such as the ability to ship drives safely across long distances. With Object Storage, this data is available through HTTP from anywhere in the world.
 
 {{< note >}}
-The outbound data transfer for Linode Object Storage is part of your Linode account's [total transfer pool](/docs/guides/network-transfer/), which will reduce or completely eliminate transfer costs for Object Storage if you are also running Linode instances. If you expend your allotted transfer pool, you will be billed at a rate of $0.01 per GB for outbound transfers.
+The outbound data transfer for Linode Object Storage is part of your Linode account's [total transfer pool](/docs/products/platform/get-started/guides/network-transfer/), which reduces or completely eliminate transfer costs for Object Storage if you are also running Linode Compute Instances. If you expend your allotted transfer pool, you are billed at a rate of $0.005 per GB for outbound transfers.
 {{< /note >}}
 
 ### Backups

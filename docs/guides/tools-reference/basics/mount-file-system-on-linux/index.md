@@ -1,8 +1,5 @@
 ---
 slug: mount-file-system-on-linux
-author:
-  name: Martin Heller
-  email: docs@linode.com
 description: "Do you need to learn how to mount a file system on Linux? Read our guide to learn Linux file system basics. ✓ Click here!"
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,10 @@ modified_by:
   name: Linode
 title: "Mount a File System on Linux"
 title_meta: "How to Mount a File System on Linux"
-contributor:
-  name: Martin Heller
 external_resources:
 - '[An introduction to Linux filesystems](https://opensource.com/life/16/10/introduction-linux-filesystems)'
 - '[RHEL 8: Chapter 28. Mounting file systems](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/assembly_mounting-file-systems_managing-file-systems)'
+authors: ["Martin Heller"]
 ---
 
 Mounting or unmounting a file system on Linux is usually straightforward, except when it isn’t. This article teaches you how to mount and unmount file systems, as well as list available and currently mounted file systems. It also explains how to handle the case where file systems won’t unmount because they are in use.

@@ -1,8 +1,5 @@
 ---
 slug: run-a-distributionsupplied-kernel-with-pvgrub
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a native distribution-supplied kernel with PV-GRUB.'
 keywords: ["pv-grub", "pvgrub", "custom linux kernel", "custom linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,6 +10,7 @@ modified_by:
 published: 2009-09-09
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true
+authors: ["Linode"]
 ---
 
 {{< content "all-linodes-kvm-shortguide" >}}
