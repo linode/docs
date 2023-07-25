@@ -144,7 +144,7 @@ To create a base web application to test with JMeter, follow the steps here on a
 
 1.  To verify that the example application is running, open a web browser and navigate to port `3000` on your system's public IP address. For example, if your system's public IP address is `192.0.2.0`, you would navigate to `http://192.0.2.0:3000`.
 
-    ![The Next.js welcome page.](example-nextjs-app.png)
+    [![The Next.js welcome page.](example-nextjs-app_small.png "The Next.js welcome page.")](example-nextjs-app.png)
 
 ### Creating a JMeter Test Plan
 
