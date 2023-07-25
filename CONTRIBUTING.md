@@ -169,7 +169,7 @@ For more information about using Git, refer to the [official Git documentation](
 
 ## Tailwind v3 upgrade
 
-This section is only relevant to contributions who have previously worked on the docs repo prior to the Tailwind v3 upgrade (which occurred on July 6th, 2023 in docs release v1.252.0). After you merge in changes from this release onward, you will likely notice display issues when previewing the site locally. This is due to Tailwind v3 and the way it integrates with Hugo (and our implementation). To complete the upgrade locally and fix any display issues, follow the steps below.
+This section is only relevant to contributors who have previously worked on the docs repo prior to the Tailwind v3 upgrade (which occurred on July 6th, 2023 in docs release v1.252.0). After you merge in changes from this release (and onward), you will likely notice display issues when previewing the site locally. This is due to Tailwind v3 and the way it integrates with Hugo (and our theme). To complete the upgrade locally and fix any display issues, follow the steps below.
 
 1.  Upgrade Hugo to v0.115.4. On macOS, run the following commands in a temporary folder (not in your docs repo):
 
