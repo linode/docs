@@ -30,11 +30,11 @@ This guide does not cover how to handle CPanel deployments that are part of a DN
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose CentOS 7 as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu, AlmaLinux, Rocky, or CentOS as your Linux image. Choose a Linode plan with enough storage capacity to accommodate the data within the CPanel accounts on your current host.
 
 1.  Use the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user with `sudo` privileges.
 
-1.  Stand up a new WHM/CPanel installation by following the [Install CPanel on Linode](/docs/guides/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the **Networking** tab for your Linode in the Linode Cloud Manager, and it will have the form `203-0-113-0.ip.linodeusercontent.com`.
+1. You can [deploy cPanel through the Linode Marketplace](/docs/products/tools/marketplace/guides/cpanel/) on Ubuntu, AlmaLinux, Rocky Linux or install cPanel on CentOS by following the [Install CPanel on Linode](/docs/guides/install-cpanel-on-centos/) guide. Use the Linode's generic domain name for WHM's **Hostname** setting. This generic domain will be listed under the **Networking** tab for your Linode in the Linode Cloud Manager, and it will have the form `203-0-113-0.ip.linodeusercontent.com`.
 
     {{< note respectIndent=false >}}
 You will set the Hostname to be your actual domain name later on in this guide. If you set the Hostname setting as your domain name now, the WHM and CPanel dashboards on your new Linode will redirect to your current host, and you will not be able to access the settings for your new Linode.
