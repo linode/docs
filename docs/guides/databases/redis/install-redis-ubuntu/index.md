@@ -10,6 +10,7 @@ modified_by:
   name: Linode
 title: "Install and Configure Redis on Ubuntu 20.04"
 title_meta: "How to Install and Configure Redis on Ubuntu 20.04"
+aliases: ['/databases/redis/ubuntu-12.04-precise-pangolin/']
 external_resources:
 - '[Redis](https://redis.io/)'
 - '[Redis commands](https://redis.io/commands)'

@@ -64,7 +64,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/guides/apache-2-web-server-on-ubuntu-9-10-karmic/#configure-apache-for-named-based-virtual-hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 

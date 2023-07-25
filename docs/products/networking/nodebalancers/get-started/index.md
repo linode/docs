@@ -1,5 +1,6 @@
 ---
 title: Get Started
+title_meta: "Getting Started with NodeBalancers"
 description: "Learn how to quickly start using a NodeBalancer, including advice on architecting your application and configuring the NodeBalancer"
 tab_group_main:
     weight: 30
@@ -38,7 +39,7 @@ Once your application has been deployed on multiple Compute Instances, you are r
 
 1. Enter a **Label** for the NodeBalancer, as well as any **Tags** that may help you organize this new NodeBalancer with other services on your account.
 
-1. Select a **Region** for this NodeBalancer. The NodeBalancer needs to located in the same data center as your application's Compute Instances.
+1. Select a **Region** for this NodeBalancer. The NodeBalancer needs to be located in the same data center as your application's Compute Instances.
 
 1. Within the *NodeBalancer Settings* area, there is a single configuration block with sections for configuring the port, defining health checks, and attaching backend nodes. Additional ports can be added using the **Add another Configuration** button.
 

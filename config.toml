@@ -28,7 +28,7 @@ lastmod = [":git", "lastmod", "date", "publishDate"]
 publishDate = ["published", "publishDate", "date"]
 
 [params]
-page_title_suffix = "Linode"
+page_title_suffix = "Linode Docs"
 description = "Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration."
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"

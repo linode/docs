@@ -5,7 +5,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2009-09-13
 title: Zimbra Groupware
 show_in_lists: true
-aliases: ['/email/zimbra/']
+aliases: ['/email/zimbra/','/email/zimbra/install-zimbra-ubuntu-10.04-lucid/']
 authors: ["Linode"]
 ---
 

@@ -25,7 +25,7 @@ If the process name is known, `pgrep` will search currently running processes fo
     pgrep firefox
 
 {{< note respectIndent=false >}}
-`pgrep` is not installed by default on MacOS. This can be installed along with `pkill` and `pfind` with [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) via:
+`pgrep` is not installed by default on MacOS. This can be installed along with `pkill` and `pfind` with [Homebrew](https://brew.sh/) via:
 
     brew install proctools
 

@@ -46,12 +46,12 @@
         aria-haspopup="true"
         @click="open = !open">
         {{ .text }}
-        <div class="flex-grow-0" x-show="open">
+        <div class="grow-0" x-show="open">
           <svg class="fill-current -mr-1 ml-2 h-4 w-5">
             <use href="#icon--arrow-up"></use>
           </svg>
         </div>
-        <div class="flex-grow-0" x-show="!open">
+        <div class="grow-0" x-show="!open">
           <svg class="fill-current -mr-1 ml-2 h-4 w-5">
             <use href="#icon--arrow-down"></use>
           </svg>

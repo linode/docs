@@ -32,6 +32,7 @@ ajp
 Akamai
 Akaunting
 aker
+akr
 alef
 alertmanager
 alex
@@ -77,6 +78,7 @@ appserver
 appsmith
 appwrite
 apxs
+architected
 architecting
 aren
 argv
@@ -87,9 +89,10 @@ Asana
 aspell
 askbot
 aske
+ASPcore
 Astra
-async
 astro
+async
 asynchrony
 atera
 atlanta
@@ -172,6 +175,7 @@ bernd
 berners
 bgpd
 bialek
+Bigtable
 bin_t
 bing
 binhex
@@ -208,6 +212,7 @@ bookmarkable
 bootup
 bootups
 boto
+botpress
 bounceback
 brackley
 bram
@@ -236,6 +241,7 @@ byrequests
 bzip2
 bzrtools
 c2s
+cas
 cabd
 cacert
 cacheable
@@ -294,6 +300,8 @@ chromecast
 chroot
 chrooting
 chrooted
+CIDRs
+cifs_utils
 citad
 cjones
 clamav
@@ -357,6 +365,7 @@ coose
 copr
 copyfrom
 copyto
+corepack
 coreutils
 coroutine
 coroutines
@@ -369,6 +378,7 @@ covid
 cpanel
 cpanminus
 cpu
+CPython
 cqlsh
 cqlshrc
 craftbukkit
@@ -384,6 +394,7 @@ cronie
 cronjob
 cronjobs
 crontab
+Crossplane
 crosstab
 crowdsourced
 crowdsourcing
@@ -431,12 +442,15 @@ datadir
 datadog
 dataflow
 datagram
+dataplane
+dataplanes
 datalog
 dataset
 datasets
 datasource
 datastax
 datastore
+datastores
 datetime
 datetimeformat
 dav
@@ -448,11 +462,13 @@ dbd
 dbs
 dbdir
 dbfiles
+DBMSs
 dbname
 dbserver
 dcid
 dcs
 deadman
+deallocated
 deallocation
 deathmatch
 debconf
@@ -504,6 +520,7 @@ dired
 direnv
 dirtycow
 discoverability
+diskpart
 disqus
 distro
 distros
@@ -541,6 +558,7 @@ donenfeld
 dotdeb
 dotenv
 dotfiles
+dotnet
 doveadm
 dpkg
 dport
@@ -557,6 +575,7 @@ ducati
 dumpall
 dust2
 dvcs
+Dynadot
 e2fsck
 ea04
 ead
@@ -631,9 +650,11 @@ failback
 failover
 failregex
 failregexs
+failsafe
 failsafes
 falko
 fastcgi
+Fastify
 fastmail
 fastopen
 fauxhai
@@ -648,6 +669,7 @@ fd
 fdisk
 fdriver
 fe70
+Feigenbaum
 fedf
 fediverse
 fetchmail
@@ -694,12 +716,15 @@ fordham
 fmt
 fn
 fpm
+fqdns
 fragging
 framebuffer
 frakti
 framesets
 freedns
 freeipa
+Freemarker
+freenom
 fremont
 freshclam
 friendica
@@ -793,6 +818,7 @@ gpasswd
 gpc
 gpg
 gping
+GPUs
 gradle
 grafana
 graphql
@@ -826,11 +852,14 @@ hackage
 hadoop
 halls3
 Haltdos
+Hanami
+Hansson
 hapis
 haproxy
 hardcoded
 hardcopy
 hardlimit
+hashable
 hashmark
 hashicorp
 hasn
@@ -843,6 +872,7 @@ heartbleed
 hebb
 hebbian
 hebern
+Heinemeier
 heredoc
 heroku
 hexo
@@ -864,11 +894,13 @@ hostname
 hostnames
 hortonworks
 hotfix
+hotfixes
 hotlink
 hotlinked
 hotlinking
 hotspot
 hotspots
+Hotwire
 howto
 howtoforge
 howtogeek
@@ -881,6 +913,7 @@ htmldir
 htop
 htpasswd
 http
+http_get_request
 httpie
 httpchk
 httpd
@@ -898,6 +931,7 @@ hypercorn
 hyperefficient
 HyperLogLog
 hyperparameter
+hyperscaler
 hypervisor
 hypervisors
 IaC
@@ -928,6 +962,7 @@ ifup
 ifupdown
 ignoreip
 ignoreregex
+ILLA
 ikiwiki
 im
 imagize
@@ -972,6 +1007,7 @@ intra-application
 introducer
 introducers
 Intune
+Instructure
 invicti
 io
 iodef
@@ -985,6 +1021,7 @@ ipaserver
 ipchains
 ipconfig
 iperf
+ips
 ipsec
 ipset
 ipsets
@@ -1008,6 +1045,7 @@ isps
 issuewild
 istioctl
 iterable
+iterables
 itk
 ivanti
 Janca
@@ -1041,6 +1079,7 @@ jpg
 jpetazzo
 jq
 jre
+JRuby
 js
 jshell
 json
@@ -1069,6 +1108,7 @@ keepalived_script
 keras
 kerberos
 kerberos5
+Kerfi
 Kernighan
 keychain
 keyfile
@@ -1106,6 +1146,7 @@ kotin
 konversation
 krita
 kroll
+ksmbd
 ktor
 kube
 kubeadm
@@ -1121,6 +1162,7 @@ Kuma
 kustomize
 kuznetosv
 lambdabunker
+Laminas
 LANs
 laravel
 largebiomes
@@ -1149,6 +1191,7 @@ libcontainers
 libcurl
 libev
 libgcc1
+libgdiplus
 libphp
 libpri
 libprocesshider
@@ -1180,6 +1223,7 @@ listdir
 listserv
 listservs
 litespeed
+Livestatus
 livigno
 li181
 li263
@@ -1232,6 +1276,7 @@ lzma
 lzopio
 macos
 magento
+Mailchimp
 maildir
 maildirs
 maildrop
@@ -1262,7 +1307,10 @@ masterless
 mathematica
 mathjax
 matplotlib
+Matsumoto
 Matthes
+Matz
+Mavan
 mawk
 maxconn
 maxdepth
@@ -1307,6 +1355,7 @@ microsite
 microsystems
 microweb
 Microweber
+middlebox
 middleware
 mimikatz
 minecraft
@@ -1366,6 +1415,7 @@ mov
 movr
 mpapis
 mpm
+MRuby
 msfvenom
 msg
 msgid
@@ -1453,6 +1503,7 @@ netlink
 netloc
 netmask
 netplan
+netsh
 netstat
 netstumbler
 netuser
@@ -1532,6 +1583,7 @@ offboarding
 oftc
 ohai
 ok
+OKConfig
 okta
 oldstable
 oldfashioned
@@ -1553,6 +1605,7 @@ openvassd
 openvpn
 openvz
 openzipkin
+Opin
 ossec
 ostemplate
 osx
@@ -1577,6 +1630,8 @@ packagist
 pagent
 pagespeed
 palo
+pam
+pams
 pandoc
 param
 parameterizing
@@ -1601,8 +1656,11 @@ passwdcolumn
 passwdfile
 passwordless
 patroni
+pathnames
 paypal
+PBCs
 pbr
+PDFs
 pem
 pentest
 pentesting
@@ -1621,6 +1679,7 @@ pg_dump
 pg_dumpall
 pg_restore
 pgpass
+Phalcon
 pharmer
 pharo
 phonebook
@@ -1672,6 +1731,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powercfg
 powershell
 ppa
 pparadis
@@ -1764,8 +1824,11 @@ quicklisp
 quickstart
 radeon
 rainloop
+Ramaze
 ramdisk
+randomart
 ransomwhere
+rasa
 rauth
 rbac
 rbenv
@@ -1774,6 +1837,8 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMS
+RDBMSs
 rdiff
 reachability
 readcaps
@@ -1829,6 +1894,7 @@ remediations
 remi
 remmina
 remotehost
+reparse
 replicants
 replicaset
 replicationcontrollers
@@ -1878,10 +1944,15 @@ rosenblatt
 rossum
 roundcube
 routable
+routings
 rpaf
 rpc
 rpcbind
 rpmforge
+rrset
+rrsets
+rrsig
+rrsigs
 rsa
 rspec
 rss
@@ -1890,6 +1961,7 @@ rsync
 rsyslog
 rtf
 rtt
+Rubinius
 rubocop
 rubydebug
 rubygems
@@ -2009,6 +2081,7 @@ shortguides
 shortname
 shotcut
 shoutcast
+shutil
 scikit
 scribus
 scrollable
@@ -2103,6 +2176,8 @@ Stroustrup
 su
 subcommand
 subcommands
+subcontext
+subcontexts
 subfile
 subfiles
 subfolder
@@ -2232,6 +2307,7 @@ tmux
 tock
 todo
 togami
+tokenization
 tokenize
 tokenized
 tokenizing
@@ -2242,6 +2318,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolkits
 toolset
 toolstrip
 tooltip
@@ -2342,6 +2419,7 @@ untrust
 untrusted
 unversioned
 unvetted
+upbound
 upserted
 upsize
 uri
@@ -2372,6 +2450,7 @@ v1
 v2
 v4
 v6
+Vaadin
 vagrantfile
 valim
 valheim
@@ -2410,6 +2489,7 @@ virtualizing
 virtualmin
 Virustotal
 vishing
+Vixie
 vlan
 vlans
 vlc
@@ -2417,6 +2497,7 @@ vlogger
 vmail
 vmem
 vmlinuz
+vms
 vmstat
 vmui
 vnc
@@ -2555,6 +2636,7 @@ yaml
 yellowbrick
 yellowdog
 yesod
+Yii
 yml
 yoast
 yourdomain
@@ -2566,6 +2648,7 @@ youtube
 yubico
 yubikey
 yubikeys
+Yukihiro
 zabbix
 zapier
 zcat
@@ -2584,6 +2667,7 @@ znc
 zonefiles
 zope
 zorin
+zoxide
 zpool
 zsh
 zshrc

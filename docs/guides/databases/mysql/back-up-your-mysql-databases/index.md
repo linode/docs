@@ -51,7 +51,7 @@ Automate this process by adding a line to `crontab`:
 
     0 1 * * * /usr/bin/mysqldump --all-databases > dump-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -pPASSWORD
 
-For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
+For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as and `PASSWORD` with the correct password for that user.
 
 {{< note >}}
 In the crontab example, ensure that there is no space between the -P flag, and your password entry.
