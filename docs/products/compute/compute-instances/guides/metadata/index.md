@@ -2,7 +2,7 @@
 title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
-published: 2023-07-24
+published: 2023-07-25
 modified_by:
   name: Linode
 authors: ["Linode"]
@@ -68,7 +68,7 @@ linode-cli linodes create \
   --metdata.user_data [your-user-data]
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your Cloud-config or script file as base64 by running the following command:
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
 
 ```command
 cat *[file-path]* | base64
@@ -93,7 +93,7 @@ curl -H "Content-Type: application/json" \
     https://api.linode.com/v4/linode/instances
 ```
 
-Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the Cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your Cloud-config or script file as base64 by running the following command:
+Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
 
 ```command
 cat *[file-path]* | base64
@@ -109,9 +109,9 @@ User data can be added when creating a new Compute Instance, rebuilding an insta
 
 ### User Data Formats
 
-User data can be provided in many different formats, with the most common being [Cloud-config](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#cloud-config-data).
+User data can be provided in many different formats, with the most common being [cloud-config](https://cloudinit.readthedocs.io/en/latest/explanation/format.html#cloud-config-data).
 
--   **Cloud-config script:** Cloud-config is the default syntax for cloud-init and can be used on any Linux distribution. It contains a list of directives formatted using YAML. Review the [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) guide for more details.
+-   **Cloud-config script:** cloud-config is the default syntax for cloud-init and can be used on any Linux distribution. It contains a list of directives formatted using YAML. Review the [Cloud-Config Usage and Examples](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) guide for more details.
 
     ```command
     #cloud-config

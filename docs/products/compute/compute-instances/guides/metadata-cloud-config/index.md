@@ -2,7 +2,7 @@
 title: "Using Cloud-Config Files to Configure a Server"
 description: "Learn how to create cloud-config files for use with cloud-init and our Metadata service."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
-published: 2023-07-24
+published: 2023-07-25
 modified_by:
   name: Linode
 authors: ["Linode"]
