@@ -31,7 +31,7 @@ This guide does not cover how to handle cPanel deployments that are part of a DN
 
 The first step is to deploy cPanel on the Linode platform. cPanel can be installed and configured on a Linode Compute Instance using one of the following methods:
 
--   **Linode Marketplace:** Deploy the [cPanel App](https://www.linode.com/marketplace/apps/cpanel/cpanel/) through the Linode Marketplace to automatically install cPanel/WHM. This is the easiest method and enables you to quickly get up and running without needing to install cPanel manually. Please review the [Deploy cPanel through the Linode Marketplace](/docs/products/tools/marketplace/guides/cpanel/)
+-   **Linode Marketplace:** Deploy the [cPanel App](https://www.linode.com/marketplace/apps/cpanel/cpanel/) through the Linode Marketplace to automatically install cPanel/WHM. This is the easiest method and enables you to quickly get up and running without needing to install cPanel manually. Review the [Deploy cPanel through the Linode Marketplace](/docs/products/tools/marketplace/guides/cpanel/) guide for more details.
 
 -   **Manual Installation:** For more control over every step of the installation process, cPanel can be manually installed on a new Compute Instance. If choosing this method, review [Install cPanel on CentOS](/docs/guides/install-cpanel-on-centos/) or reference cPanel's official [Installation Guide](https://docs.cpanel.net/installation-guide/install/).
 
