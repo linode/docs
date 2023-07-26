@@ -1,11 +1,11 @@
 ---
 slug: terraform-vs-helm
-title: "Comparing Terraform and Helm: When to Use Each Tool"
+title: "Comparing Terraform vs Helm: When to Use Each Tool"
 title_meta: "Terraform vs Helm (Comparison Guide): When to Use Each Tool"
-published: 2023-07-25
+published: 2023-07-26
 modified_by:
   name: Linode
-description: "Comparing terraform vs. helm? Get information on each application, including pros, cons, key features, and similarities. Find your best option here!"
+description: "Learn how Terraform and Helm can be used to manage your Kubernetes clusters, including the benefits (and downsides) of each and when to use each tool."
 keywords: ['terraform vs helm', 'helm charts vs terraform', 'kubernetes helm vs terraform']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
@@ -57,7 +57,7 @@ Helm uses a client-server architecture. A *Tiller* server lives on the Kubernete
 
 Helm stands out for letting developers deploy and manage Kubernetes manifests across multiple environments. It makes it possible to deploy Kubernetes packages to multiple Kubernetes environments simultaneously, from a single command.
 
-Pairing that with Helm's ability to package even complex applications for ready deployment, Helm comes out as an excellent choice for continuous integration/continuous deployment (CI/CD).
+Pairing that with its ability to package even complex applications for deployment, Helm is an excellent choice for continuous integration/continuous deployment (CI/CD).
 
 ### Key Features
 
@@ -77,7 +77,7 @@ Pairing that with Helm's ability to package even complex applications for ready 
 
 ### Downsides
 
--   Additional, and relatively complex, tool for working with Kubernetes clusters.
+-   Adds an additional (and relatively complex) tool to your current workflows.
 
 -   Helm's dependence on the Tiller server can pose security risks if not properly configured, potentially granting unauthorized access to the Kubernetes API.
 
@@ -87,17 +87,13 @@ Both Terraform and Helm can be used to make life easier when working with Kubern
 
 ### When to Use Terraform
 
-Terraform, being an IaC tool, can be used to stand up Kubernetes clusters. Its recent addition of a Kubernetes provider gives Terraform an added edge in putting together and managing a Kubernetes cluster.
-
-But Terraform does not operate inside the cluster. Recall that Terraform is all about managing infrastructure. So, it can create and manage Kubernetes clusters, but it does not interact with anything that goes on within these clusters.
+Terraform, being an IaC tool, can be used to stand up the infrastructure for Kubernetes clusters through the use of its Kubernetes provider. However, Terraform does not operate inside the cluster. It can create and manage Kubernetes clusters, but it does not interact with anything that goes on within these clusters.
 
 *Use Terraform if you need a tool for putting infrastructure in the hands of developers and lowering the effort for provisioning environments. Terraform should be your tool of choice for standing up Kubernetes clusters and preparing and managing environments.*
 
 ### When to Use Helm
 
-Helm, on the other hand, is a Kubernetes package manager. It gives you tools for deploying manifests and managing Kubernetes resources on Kubernetes clusters. Helm Charts allow you to craft Kubernetes packages that can then be deployed as applications and services on a cluster.
-
-As such, Helm's purview ends at the boundaries of the cluster. It operates entirely within Kubernetes clusters, and it cannot manage the setup and management of the clusters themselves.
+Helm, on the other hand, is a Kubernetes package manager. It gives you tools for deploying manifests and managing Kubernetes resources on Kubernetes clusters. Helm Charts allow you to craft Kubernetes packages that can then be deployed as applications and services on a cluster. As such, Helm's purview ends at the boundaries of the cluster. It operates entirely within Kubernetes clusters and it cannot manage the setup and management of the cluster's infrastructure.
 
 *Use Helm when you need a tool for deploying and managing Kubernetes resources or when you need to be able to package complex Kubernetes applications. Helm helps you when it comes to creating, deploying, and managing Kubernetes applications and services. It is especially useful when these applications and services get complex.*
 
