@@ -341,7 +341,6 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
       hosts:
         - registry.example.com
       annotations:
-        kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt-prod
         nginx.ingress.kubernetes.io/proxy-body-size: "0"
         nginx.ingress.kubernetes.io/proxy-read-timeout: "6000"
@@ -369,7 +368,9 @@ If you have not yet [generated an Object Storage key pair](/docs/products/storag
 1.  Deploy your Docker registry using the configurations you created in the previous step:
 
     ```command
-    helm install docker-registry stable/docker-registry -f docker-configs.yaml
+    helm repo add twuni https://helm.twun.io
+    helm repo update
+    helm install twuni/docker-registry -f docker-configs.yaml
     ```
 
     {{< note >}}
@@ -443,22 +444,25 @@ In this section, you will create a test deployment using the image that you push
 1.  Using a text editor, create the `static-site-test.yaml` file with the example configurations. This file will create a deployment, service, and an ingress.
 
     ```file {title="~/registry/staic-site-test.yaml" lang=yaml}
-    apiVersion: extensions/v1beta1
+    apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
       name: static-site-ingress
       annotations:
-        kubernetes.io/ingress.class: nginx
         nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     spec:
+      ingressClassName: nginx
       rules:
       - host: static.example.com
         http:
           paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: static-site
-              servicePort: 80
+              service:
+               name: static-site
+               port:
+                number:80
     ---
     apiVersion: v1
     kind: Service
