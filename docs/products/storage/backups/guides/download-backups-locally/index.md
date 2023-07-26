@@ -56,4 +56,4 @@ Alternatively, you may wish to [capture an image](/docs/products/tools/images/gu
 
 ## Delete Services That Are No Longer Needed
 
-After you've finished downloading your files or disks, you should consider deleting the Compute Instance (if you restored to a new instance) or [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) (if you restored to an existing instance). [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk).
+After you've finished downloading your files or disks, you should consider deleting the Compute Instance (if you restored to a new instance) or [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) (if you restored to an existing instance).
