@@ -34,7 +34,7 @@ Health checks detect if a target is down and routes traffic to an available targ
 | Feature               | Global Load Balancer         | NodeBalancer           |
 | ----------------------| -----------------------------|------------------------|
 |Load Balancer Location |Supports both regional and global load balancing. The load balancer does not need to be situated in the same data center as your target endpoints.                  |Must be situated in the same data center as your target endpoints IPs.|
-|Hosting Environments for End Points/Service Targets|Cloud (Google Cloud Platform (GCP), Microsoft Azure, or Amazon Web Services (AWS)), Akamai Delivery Property, Cloud Compute Instance|Cloud Compute Instance|
+|Hosting environments for target services and applications| Multi-Cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instance|Cloud Compute Instance|
 |Layer 7 Application Layer/Path based (HTTP/HTTPS) Load Balancing|Supported            |Partially Supported     |
 |Layer 4 Network Layer/Transport (TCP/SSL) Load Balancing|Supported                |Supported               |
 |Load Balancing Methods |Performance, Weighted, Content-based|Performance, Weighted|
@@ -42,7 +42,7 @@ Health checks detect if a target is down and routes traffic to an available targ
 |Session Stickiness     |Supported                     |Supported               |
 |Metrics, Logs and Traces|Supported                    |-                       |
 |Interops with...       |                              |                        |
-|Pricing                |TBD                           |Each NodeBalancer on an account costs $10/mo ($0.015/hr).                                                             |
+|Pricing                |Beta is offered free of charge for the duration of the Beta trial and includes; 4 Gbps of outbound from the load balancer to end-users. Up to 100 000 concurrent connections (with a limit of 4000 requests-per-second). Load balancing in upto 5 regions. |Each NodeBalancer on an account costs $10/mo ($0.015/hr).                                                             |
 
 
 ## Migration
@@ -58,6 +58,9 @@ The Akamai Global Load Balancer can be used with or without an Akamai delivery p
 
 ## Operationally Simple
 You can create and enable the Akamai Global Load Balancer using Cloud Manager or APIs. Once Akamai Global Load Balancer is configured, you can start balancing traffic across multiple regions or globally within seconds. Akamai Global Load Balancer requires no infrastructure management and is designed to be maintenance free after initial configuration.
+
+## Available Protocols
+
 
 ## Load Balancing Methods
 You can select to route your clients traffic to one of your backends using one or a combination of the following load balancing methods; performance, weighted and content-based.
@@ -131,7 +134,7 @@ Pricing is based on outbound traffic usage and a base fee. Outbound traffic is t
     | Medium          | upto 100 000    |    $25 tbd    |
     | Large           | upto 1 000 000  |    $200 tbd   |
 
-**Beta Pricing:** Beta is offered free of charge and includes:
+**Beta Pricing:** Beta is offered free of charge for the duration of the Beta trial and includes:
 - 4 Gbps of outbound from the load balancer to end-users.
 - Up to 100 000 concurrent connections (with a limit of 4000 requests-per-second).
 - Load balancing in upto 5 regions.
