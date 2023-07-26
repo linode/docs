@@ -7,7 +7,7 @@ tags: ["docker","kubernetes","container","nginx","linode platform"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 image: PrivateDockerReg.png
 published: 2020-03-26
-modified: 2022-08-05
+modified: 2023-07-26
 modified_by:
   name: Linode
 title: "Setting Up a Private Docker Registry with LKE and Object Storage"
