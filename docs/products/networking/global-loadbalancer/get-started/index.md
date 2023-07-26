@@ -76,6 +76,8 @@ An Entry Point defines the port the load balancer listens on and the protocol fo
 
     - **Private Key:** Paste the PEM-formatted contents of your private key. Your private key must not have a passphrase.
 
+    - **SNI Hostnames:**
+
 ###  Configure Routes
  Routes provide the set of traffic routing rules that the load balancer uses to select the target for the incoming request.
 
@@ -116,7 +118,7 @@ A match rule consists of a **Match Type**, and a pattern to match. Rules are eva
 
 ### Configure Service Targets
 
-1. Select the load balancing **Algorithm**. 
+1. Select the load balancing **Algorithm**.
 
 The load balancing algorithm controls how new connections are allocated across backend targets. Performance and Weighted methods are supported.
 - **Performance:** selects the backend target by evaluating routes using real-time load feedback and the shortest geographic route.
