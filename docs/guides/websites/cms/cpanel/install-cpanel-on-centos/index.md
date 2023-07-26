@@ -25,7 +25,7 @@ image: Install_cPanel_smg.jpg
 You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed CentOS Linode. These instructions should be performed as the `root` user via SSH.
 {{< /note >}}
 
-### Before You Begin
+## Before You Begin
 
 1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide, selecting a Linux distribution that's supported by cPanel. This guide covers AlmaLinux 8, Rocky Linux 8, and CentOS 7 (though cPanel does not recommend using CentOS 7 for new installations). While Ubuntu 20.04 LTS is also supported, it is outside the scope of this guide. Review the [System Requirements](https://docs.cpanel.net/installation-guide/system-requirements/) page within cPanel's documentation for a current list of supported operating systems.
 
