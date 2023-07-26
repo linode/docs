@@ -34,14 +34,13 @@ Health checks detect if a target is down and routes traffic to an available targ
 | Feature               | Global Load Balancer         | NodeBalancer           |
 | ----------------------| -----------------------------|------------------------|
 |Load Balancer Location |Supports both regional and global load balancing. The load balancer does not need to be situated in the same data center as your target endpoints.                  |Must be situated in the same data center as your target endpoints IPs.|
-|Hosting environments for target services and applications| Multi-Cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instance|Cloud Compute Instance|
-|Layer 7 Application Layer/Path based (HTTP/HTTPS) Load Balancing|Supported            |Partially Supported     |
-|Layer 4 Network Layer/Transport (TCP/SSL) Load Balancing|Supported                |Supported               |
+|Hosting environments for target services and applications| Multi-Cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instances|Cloud Compute Instance|
+|Layer 7 (Application Layer) |Supported            |Partially Supported     |
+|Layer 4 (Network Layer/Transport)|Supported                |Supported               |
 |Load Balancing Methods |Performance, Weighted, Content-based|Performance, Weighted|
 |Health Checks          |Liveness and Load-based|Liveness|
 |Session Stickiness     |Supported                     |Supported               |
 |Metrics, Logs and Traces|Supported                    |-                       |
-|Interops with...       |                              |                        |
 |Pricing                |Beta is offered free of charge for the duration of the Beta trial and includes; 4 Gbps of outbound from the load balancer to end-users. Up to 100 000 concurrent connections (with a limit of 4000 requests-per-second). Load balancing in upto 5 regions. |Each NodeBalancer on an account costs $10/mo ($0.015/hr).                                                             |
 
 
