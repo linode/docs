@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-07-18
+modified: 2023-07-27
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -27,6 +27,7 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
 | Paris, France | **Now available to all customers** | `fr-par` |
 | Seattle, WA, USA | Not yet available | - |
+| Stockholm, Sweden | *Limited beta* | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |
 
 ## Deploy Services in a Beta Data Center
@@ -69,6 +70,7 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 | Chennai, India | `us-maa-1` | `https://us-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
+| Stockholm, Sweden | `se-sto-1` | `https://se-sto-1.linodeobjects.com	` |
 | Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ### Premium Plans
@@ -116,6 +118,7 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 | Chennai, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
 | Paris, France | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
+| Stockholm, Sweden | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 23 |
 | Washington, DC, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
 ### Lish Gateways
@@ -166,6 +169,21 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 
 -   **Weblish Gateway:** `fr-par.webconsole.linode.com`
 -   **Glish Gateway:** `par3.glish.linode.com`
+
+#### Stockholm, Sweden
+
+-   **Lish SSH Gateway:** `lish-se-sto.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    3072 SHA256:oC6WZwUMm+S/myz7aEBP6YsAUXss7csmWzJRlwDfpyw lish-se-sto.linode.com (RSA)
+    256 SHA256:lr6m6BKQBqFW/iw/WDq2QQqh5kUlMjidawEEKv9lNRg lish-se-sto.linode.com (ECDSA)
+    256 SHA256:phubC9JMR6DNal0BIvu2ESvmDfs2rSquBrhKdr0IbmU lish-se-sto.linode.com (ED25519)
+    ```
+    {{< /note >}}
+
+-   **Weblish Gateway:** `se-sto.webconsole.linode.com`
+-   **Glish Gateway:** `sto2.glish.linode.com`
 
 #### Washington, DC, USA
 
