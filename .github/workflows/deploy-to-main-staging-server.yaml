@@ -1,0 +1,157 @@
+name: Deploy to main staging server
+
+on:
+  push:
+    branches:
+      - 'main'
+
+env:
+  hugo_image_cache_name: hugo-generated-images
+  hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
+
+jobs:
+  deploy-to-main-staging-server:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: deploy_to_main_staging_server
+
+    steps:
+    - name: Set up Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.115.4'
+
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+      with:
+        path: 'docs-repo'
+
+    - name: Print current docs repo branch/ref/commit
+      working-directory: ./docs-repo
+      run: |
+        git status
+        git log -1
+
+    - name: Get linode-docs-theme version
+      id: get-theme-version
+      working-directory: ./docs-repo
+      run: |
+        LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
+        echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
+
+    - name: Set up SSH agent (linode-docs-theme repo deploy key)
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.LINODE_DOCS_THEME_DEPLOY_KEY_FOR_DOCS_DEPLOY_GHA }}
+
+    - name: Checkout docs theme repo
+      run: |
+        git clone git@github.com:linode/linode-docs-theme linode-docs-theme-repo
+
+    - name: Check out theme repo commit from docs repo go.mod
+      working-directory: ./linode-docs-theme-repo
+      run: |
+        git checkout ${{ steps.get-theme-version.outputs.VERSION }}
+
+    - name: Print Linode Algolia admin tool version
+      working-directory: ./linode-docs-theme-repo
+      run: |
+        cd scripts/linode_algolia_admin/
+        go run main.go version
+
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo_image_cache_path }}
+
+    - name: Restore Hugo generated images cache
+      uses: ylemkimon/cache-restore@v2
+      with:
+        path: ${{ env.hugo_image_cache_path }}
+        key: ${{ env.hugo_image_cache_name }}
+        restore-keys: ${{ env.hugo_image_cache_name }}
+
+    - name: List contents of images dir
+      continue-on-error: true
+      run: ls -al ${{ env.hugo_image_cache_path }}
+
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+
+    - name: Install dependencies (Node)
+      working-directory: ./docs-repo
+      run: npm ci
+
+    - name: Build Hugo
+      env:
+        HUGOxPARAMSxSEARCH_CONFIG2xAPP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        HUGOxPARAMSxSEARCH_CONFIG2xAPI_KEY: ${{ vars.ALGOLIA_SEARCH_KEY }}
+        HUGOxPARAMSxSEARCH_CONFIG2xINDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+        HUGO_ENVIRONMENT: ${{ vars.HUGO_ENVIRONMENT }}
+      working-directory: ./docs-repo
+      run: |
+        hugo config
+        hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
+
+    - name: List rendered files
+      working-directory: ./docs-repo
+      run: |
+        sudo apt install -y tree
+        tree -L 1 public
+
+    - name: Set up SSH agent (docs webserver key)
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.DOCS_WEBSITE_RSYNC_PRIVATE_KEY }}
+
+    - name: Rsync site to webserver
+      run: |
+        echo "${{ secrets.DOCS_WEBSITE_RSYNC_HOST_VERIFICATION }}" > rsync_known_hosts
+
+        rsync -r -e "ssh -o UserKnownHostsFile=rsync_known_hosts" \
+          docs-repo/public/css \
+          docs-repo/public/images \
+          docs-repo/public/js \
+          docs-repo/public/jslibs \
+          docs-repo/public/linode \
+          ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_RSYNC_DESTINATION }}:${{ secrets.DOCS_WEBSITE_RSYNC_DIR }}
+
+        rsync -r -e "ssh -o UserKnownHostsFile=rsync_known_hosts" \
+          --exclude="/css/" \
+          --exclude="/images/" \
+          --exclude="/js/" \
+          --exclude="/jslibs/" \
+          --exclude="/linode/" \
+          --delete \
+          docs-repo/public/ \
+          ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_RSYNC_DESTINATION }}:${{ secrets.DOCS_WEBSITE_RSYNC_DIR }}
+
+        rm rsync_known_hosts
+
+    - name: Update Algolia (sandbox)
+      working-directory: ./linode-docs-theme-repo
+      env:
+        ALGOLIA_APP_ID: ${{ vars.ALGOLIA_APP_ID }}
+        ALGOLIA_ADMIN_API_KEY: ${{ secrets.ALGOLIA_WRITE_KEY }}
+        ALGOLIA_INDEX_PREFIX: ${{ vars.ALGOLIA_INDEX_PREFIX }}
+      run: |
+        cd scripts/linode_algolia_admin/
+
+        # The testing-docs-prefix-update sequence does the following:
+        # - Downloads data from the starter_ prefixed linode-wp,
+        #   linode-community, and linode-documentation-sections indices to the
+        #   GitHub Action workspace
+        # - Pushes the rendered index JSON files under the public/ folder
+        #   in the docs repo from Hugo to Algolia. These are:
+        #   - public/index.json
+        #   - public/api/index.json
+        #   - public/data/sections/index.json
+        # - Merge the data from the separate indices and push it into the
+        #   PREFIX_linode-merged index in Algolia
+        # - Update the settings and synonyms for the PREFIX_linode-merged index
+        #   in Algolia
+        # - Delete the PREFIX_linode-documentation and
+        #   PREFIX_linode-documentation-api indices in Algolia to save space
+        go run main.go sequence -source-dir ../../../docs-repo/public testing-docs-prefix-update $ALGOLIA_INDEX_PREFIX
