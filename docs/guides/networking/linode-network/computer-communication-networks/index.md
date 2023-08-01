@@ -1,8 +1,5 @@
 ---
 slug: computer-communication-networks
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'Computers need this hardware to connect to a network. Can you guess what it is? ✓ Read our guide for information about computer communication networks today!'
 keywords: ['computers need this hardware to connect to a network', 'which of the following would not be a benefit of networking computers', 'which of the following are advantages of computer networks', 'is there a good reason to set up a network for two computers', 'define some advantages of computer networking', 'the most basic computer network can be described as', 'computer communication networks', 'is computer networking hard', 'what are at least four essential components of a computer network']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,12 +8,11 @@ modified_by:
   name: Linode
 title: "Everything You Need to Know about Computer Communication Networks"
 title_meta: "Quick Guide to Computer Communication Networks"
-contributor:
-  name: Tom Henderson
 external_resources:
 - '[Quizlet.com: IT110- 51 Chapter 7](https://quizlet.com/246864820/it110-51-chapter-7-flash-cards/)'
 - '[GCFGlobal.org: How do I connect to the Internet?](https://edu.gcfglobal.org/en/computerbasics/connecting-to-the-internet/1/)'
 - '[TutorialsPoint.com: Computer Network Components](https://www.tutorialspoint.com/Computer-Network-Components#:~:text=Computer%20networks%20components%20comprise%20both,are%20operating%20system%20and%20protocols.)'
+authors: ["Tom Henderson"]
 ---
 
 Connecting computers to a network is simple, once the hardware components are in place. This guide identifies the hardware that connects computers together in local networks, and local networks to the Internet. Several combinations of hardware that link computers are possible. Connecting systems allows users to share media, files, participate in gaming, and other activities. Computer networking hardware also facilitates access to the Internet, and the wide resources it offers.

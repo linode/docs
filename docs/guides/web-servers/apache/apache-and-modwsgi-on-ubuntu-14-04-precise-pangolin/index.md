@@ -1,9 +1,6 @@
 ---
 slug: apache-and-modwsgi-on-ubuntu-14-04-precise-pangolin
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'In this tutorial, you will learn how to configure and deploy Python WSGI Applications with the Apache web server and mod_wsgi on Ubuntu 14.04 "Trusty Tahr".'
 keywords: ["python", "apache", "mod\\_wsgi", "django"]
 tags: ["web server","apache","ubuntu","python"]
@@ -27,6 +24,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Ubuntu 14.04
+authors: ["Linode"]
 ---
 
 ![Apache and mod_wsgi on Ubuntu](Apache_and_mod_wsgi_on_Ubuntu_1404_Trusty_Tahr_smg.png)

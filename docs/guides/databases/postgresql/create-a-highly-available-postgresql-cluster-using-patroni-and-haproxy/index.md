@@ -1,8 +1,5 @@
 ---
 slug: create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy
-author:
-  name: Kulshekhar Kabra
-  email: docs@linode.com
 description: "This guide shows you how to set up a highly available PostgreSQL cluster using Patroni and HA Proxy on your Linode."
 keywords: ["postgresql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ external_resources:
 tags: ["database","postgresql"]
 aliases: ['/databases/postgresql/create-a-highly-available-postgresql-cluster-using-patroni-and-haproxy/']
 image: postgresql-cluster-patroni.jpg
+authors: ["Kulshekhar Kabra"]
 ---
 
 ![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](postgresql-cluster-patroni.jpg)

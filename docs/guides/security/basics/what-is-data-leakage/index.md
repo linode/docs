@@ -1,7 +1,5 @@
 ---
 slug: what-is-data-leakage
-author:
-  name: Wayne Rash
 description: 'Data leakage detection in machine learning involves leaking information results in overestimation of scores. Get examples plus detection and prevention tips.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['what is data leak','dta leakage','data leakage machine learning']
@@ -11,11 +9,10 @@ modified_by:
   name: Linode
 title: "What is Data Leakage? (Plus Detection and Protection Tips)"
 title_meta: "Data Leakage: Definition, Examples, & Protection Tips"
-contributor:
-  name: Wayne Rash
 external_resources:
 - '[Cybersecurity & Infrastructure Security Agency](https://www.cisa.gov/defining-insider-threats)'
 - '[Enterprise Data Loss Prevention (DLP) Reviews and Ratings](https://www.gartner.com/reviews/market/enterprise-data-loss-prevention)'
+authors: ["Wayne Rash"]
 ---
 
 Despite what many may think, a data leak isn’t the result of a cyber-attack. In fact, it’s the opposite. A data leak is the unplanned or unauthorized release of data outside of where it’s supposed to be in an organization. This can mean that payroll data is leaked outside of the accounting department. Or, it can mean that your customer list is exposed to the public through an oversight or due to the intentional actions of a disgruntled employee. In a machine learning environment, a different type of data leakage occurs when data is shared between test and training data sets skewing performance in the test set. Regardless of the source, data leaks cause serious problems for an organization, either because of the security issues or the unreliable performance results.

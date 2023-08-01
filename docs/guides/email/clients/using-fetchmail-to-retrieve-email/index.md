@@ -1,8 +1,5 @@
 ---
 slug: using-fetchmail-to-retrieve-email
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Fetchmail is a classic Linux utility used to fetch email from a remote server. This guide shows how to use this with multiple mail protocols, such as IMAP.'
 keywords: ["mail", "fetchmail", "unix", "esr", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ external_resources:
  - '[Maildrop MDA](http://www.courier-mta.org/maildrop/)'
  - '[Procmail MDA](http://www.procmail.org/)'
 tags: ["email"]
+authors: ["Linode"]
 ---
 
 ![Using Fetchmail to Retrieve Email](using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")

@@ -1,11 +1,5 @@
 ---
 slug: visualize-apache-web-server-logs-using-elastic-stack-on-debian-9
-author:
-  name: Tyler Langlois
-  email: docs@linode.com
-contributor:
-  name: Tyler Langlois
-  link: https://tjll.net
 description: "This guide will demonstrate how to use Elasticsearch, Logstash, and Kibana to collect and visualize web server logs."
 og_description: "The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana."
 external_resources:
@@ -26,6 +20,7 @@ relations:
         key: visualize-apache-logs-using-elastic-stack
         keywords:
             - distribution: Debian 9
+authors: ["Tyler Langlois"]
 ---
 
 The [Elastic](https://www.elastic.co/) stack is a troika of tools that includes Elasticsearch, Logstash, and Kibana. These tools provide a free and open-source solution that searches, collects, and analyzes data. This data can be from any source and in any format. They also visualize the data in real time.

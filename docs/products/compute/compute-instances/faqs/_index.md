@@ -1,5 +1,6 @@
 ---
 title: "FAQs"
+title_meta: "FAQs for Compute Instances"
 description: "Find quick answers to some of the most commonly asked questions about Compute Instances."
 tab_group_main:
     weight: 60
@@ -81,7 +82,7 @@ If an application is crashing, be sure to check its error logs. These are typica
 
 ## Why is my connection to my Compute Instance slow or broken?
 
-First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Compute Instance runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Compute Instance, and [submit them](/docs/guides/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) if you're having problems reaching your Compute Instance via normal networking.
+First, check to be sure that the service (SSH, HTTP, etc.) you're trying to access is running. If your Compute Instance runs a firewall, [check your firewall rules](/docs/guides/control-network-traffic-with-iptables/#view-your-current-iptables-rules) to ensure that you're allowing traffic to the desired destination. If this doesn't help, generate [MTR reports](/docs/guides/diagnosing-network-issues-with-mtr/) to and from your Compute Instance, and [submit them](/docs/products/platform/get-started/guides/support/#contacting-linode-support) via the  [Support Tickets](https://cloud.linode.com/support/tickets)  section in the Cloud Manager. You may need to use [Lish](/docs/products/compute/compute-instances/guides/lish/) if you're having problems reaching your Compute Instance via normal networking.
 
 ## How can I upgrade or downgrade my Compute Instance?
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-drupal-with-docker-compose-debian-10
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install Drupal 8, a popular free and open-source content management system, with Docker Compose on Debian.'
 keywords: ["cms", "apache", "php", "content management system", "drupal 8", "debian 10", "docker compose"]
 tags: ["drupal","docker","container","lamp","cms","debian"]
@@ -19,6 +16,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/docker-drupal/how-to-install-drupal-with-docker-compose-debian-10/','/websites/cms/drupal/how-to-install-drupal-with-docker-compose-debian-10/']
+authors: ["Linode"]
 ---
 
 ## What Are Docker and Docker Compose?

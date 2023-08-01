@@ -1,9 +1,6 @@
 ---
 slug: sendonly-mail-server-with-exim-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Debian Linux.'
 keywords: ["exim", "mail server", "linux mail", "smtp server", "debian exim", "debian lenny"]
 tags: ["debian","email"]
@@ -19,6 +16,7 @@ relations:
         key: deploy-exim-sendonly-email
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

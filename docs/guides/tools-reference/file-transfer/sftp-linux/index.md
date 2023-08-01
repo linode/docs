@@ -1,7 +1,5 @@
 ---
 slug: sftp-linux
-author:
-  name: Jeff Novotny
 description: 'Learn how to use SFTP commands to transfer files to and from Linux servers.'
 keywords: ['what is sftp','SFTP commands','Sftp server','sftp vs ftps', 'scp vs sftp']
 tags: ['linux', 'ssh']
@@ -11,12 +9,10 @@ modified_by:
   name: Linode
 title: "Transfer Files with SFTP"
 title_meta: "How to Transfer Files with SFTP"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[Wikipedia SFTP Page](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)'
 - '[IETF Draft for SSH File Transfer Protocol](https://datatracker.ietf.org/doc/html/draft-ietf-secsh-filexfer-13)'
+authors: ["Jeff Novotny"]
 ---
 
 *SSH File Transfer Protocol* (SFTP) provides a mechanism for transferring, accessing, and managing files more securely compared to earlier protocols. It is a free and open-source utility that is available on all Linux systems. SFTP extends version 2.0 of the *Secure Shell* (SSH) protocol to provide greater security. This guide provides some background information about SFTP and explains how to use it to transfer files.

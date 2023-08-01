@@ -1,8 +1,5 @@
 ---
 slug: use-unicorn-and-nginx-on-ubuntu-18-04
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Use Unicorn and Nginx to Configure a Ruby on Rails Stack on Ubuntu 18.04 '
 keywords: ["ruby on rails", "unicorn rails", "ruby on rails ubuntu 18.04", " nginx", "reverse proxy", "ubuntu 18.04"]
 tags: ["web applications","proxy","ruby","nginx","ubuntu"]
@@ -25,6 +22,7 @@ relations:
         key: unicorn-nginx
         keywords:
             - distribution: Ubuntu 18.04
+authors: ["Linode"]
 ---
 
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 18.04.

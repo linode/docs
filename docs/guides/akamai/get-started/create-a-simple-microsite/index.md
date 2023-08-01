@@ -1,8 +1,5 @@
 ---
 slug: create-a-simple-microsite
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Combine the capabilities of the Akamai and Linode platforms to create a complete end-to-end solution for a simple microsite.'
 keywords: ["microsite", "cdn", "high availability"]
 tags: ["linode platform","akamai platform","web server","cdn"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2022-10-13
 title: Create a Simple Microsite
 aliases: ['/guides/akamai/get-started/create-a-simple-microsite/']
+authors: ["Linode"]
 ---
 
 This use case combines Linode's and Akamai's capabilities to create a complete end-to-end solution for a simple microsite. To build this application we'll use Linode origin servers and an Akamai delivery product.
@@ -85,7 +83,7 @@ If you plan to utilize Linode DNS Manager, we recommend taking steps now familia
 
 1.  Enter a root password.
 
-1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/tools/cloud-manager/guides/manage-ssh-keys/).
+1.  Select any SSH keys for root access. For more information, refer to the [Cloud Manager guide: Manage SSH Keys](/docs/products/platform/accounts/guides/manage-ssh-keys/).
 
 1.  Select **Private IP** under **Add-ons**.
 

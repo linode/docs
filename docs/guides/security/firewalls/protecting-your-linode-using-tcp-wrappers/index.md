@@ -1,8 +1,5 @@
 ---
 slug: protecting-your-linode-using-tcp-wrappers
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how you can enhance the security of your server by using TCP Wrappers, a host-based access control system that prevents unauthorized access.'
 keywords: ["tcp wrappers", "security", "firewall", "acl", "access control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,10 +8,9 @@ modified: 2015-04-30
 modified_by:
   name: Elle Krout
 title: Protecting Your Linode with TCP Wrappers
-contributor:
-    name: Francis McNamee
 tags: ["networking","security"]
 aliases: ['/security/firewalls/protecting-your-linode-using-tcp-wrappers/']
+authors: ["Francis McNamee"]
 ---
 
 

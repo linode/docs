@@ -1,21 +1,16 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Deploy Restyaboard on a Linode Compute Instance. This provides you with an open source alternative to the popular project management tool Trello."
 keywords: ['restyaboard','project','productivity','kanban']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-25
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy Restyaboard through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[Restyaboard](https://restya.com/board)'
 aliases: ['/guides/deploying-restyaboard-marketplace-app/','/guides/restyaboard-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Restyaboard](https://restya.com/board) is an open-source alternative to Trello, but with smart additional features like offline sync, revisions, diff, nested comments, multiple view layouts, chat, and more. And since it is self-hosted, data, privacy, and IP security are under your full control.

@@ -1,8 +1,5 @@
 ---
 slug: deploy-just-cause-2-multiplayer-server-on-ubuntu
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'Install and configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04.'
 keywords: ["just cause 2", "game servers", "ubuntu", "ubuntu 14.04", "steamcmd", "steam", "multiplayer game server"]
 tags: ["ubuntu"]
@@ -13,10 +10,8 @@ modified_by:
     name: Linode
 title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
 aliases: ['/applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/','/applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
-contributor:
-    name: Andrew Gottschling
-    link: https://github.com/agottschling
 dedicated_cpu_link: true
+authors: ["Andrew Gottschling"]
 ---
 
 

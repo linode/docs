@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modwsgi-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Fedora 14.'
 keywords: ["django", "python", "apache", "mod_wsgi"]
 tags: ["web applications","django","apache","python","cms","fedora","database"]
@@ -19,6 +16,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 

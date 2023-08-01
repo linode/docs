@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modwsgi-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the Django web application development framework for Apache on Debian 5 so you can run Django Applications.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","debian","django","apache","python","cms","database"]
@@ -19,6 +16,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 

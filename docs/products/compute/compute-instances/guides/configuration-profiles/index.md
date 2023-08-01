@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to create and manage configuration profiles for a Compute Instance, including details on each setting and its recommended value."
 keywords: ["configuration profiles"]
 tags: ["linode platform","cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-04-30
 modified: 2023-02-09
 modified_by:
@@ -13,7 +9,8 @@ modified_by:
 image: Linode-Configuration-Profiles.jpg
 title: "Manage Configuration Profiles on a Compute Instance"
 title_meta: "How to Manage Configuration Profiles on a Compute Instance"
-aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/']
+aliases: ['/platform/disk-images/disk-images-and-configuration-profiles-classic-manager/','/disk-images-config-profiles/','/platform/disk-images/disk-images-and-configuration-profiles/','/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/','/guides/linode-configuration-profiles/','/guides/disk-images-and-configuration-profiles/']
+authors: ["Linode"]
 ---
 
 A **configuration profile** functions as a boot loader for a Compute Instance. It controls general boot settings, including the disk the instance will boot from, the disks that will be mounted, the kernel that will be used, and the network interfaces on the instance. Multiple configuration profiles can be created, each one booting from different disks with different settings. This can allow you to try out new Linux distributions without paying for additional Compute Instances (see [Deploy an Image to a Disk on an Existing Compute Instance](/docs/products/tools/images/guides/deploy-image-to-existing-linode/)) or to create custom software testing environments.
@@ -121,7 +118,7 @@ When a Compute Instance is powered on or rebooted, it uses the settings stored w
 
     ![Viewing the boot history within the Activity Feed](activity-feed-booted-configuration-profile.png)
 
-    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/guides/monitor-and-maintain-compute-instance/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
+    Sometimes the boot or reboot event doesn't list a configuration profile, such as when the [Lassie Shutdown Watchdog](/docs/products/compute/compute-instances/guides/monitor-and-maintain/#configure-shutdown-watchdog) initiates the event. In this case, look at the most recent reboot or boot event which does include the configuration profile that was used.
 
 ## Clone a Configuration Profile and the Attached Disks
 

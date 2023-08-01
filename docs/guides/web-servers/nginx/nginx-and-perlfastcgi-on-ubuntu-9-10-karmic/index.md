@@ -1,9 +1,6 @@
 ---
 slug: nginx-and-perlfastcgi-on-ubuntu-9-10-karmic
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 9.10 (Karmic).'
 keywords: ["nginx", "fastscgi perl", "nginx ubuntu 9.10", "nginx fastcgi", "nginx perl"]
 tags: ["web server","perl","ubuntu","nginx"]
@@ -19,6 +16,7 @@ relations:
         key: nginx-perl-fastcgi
         keywords:
             - distribution: Ubuntu 9.10
+authors: ["Linode"]
 ---
 
 

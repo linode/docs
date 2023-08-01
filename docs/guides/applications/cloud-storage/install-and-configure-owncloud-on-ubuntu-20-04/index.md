@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-owncloud-on-ubuntu-20-04
-author:
-  name: Jack Wallen
-  email: jlwallen@monkeypantz.net
 description: "We'll walk you through the step-by-step process for setting up ownCloud, including installing Apache, PHP packages, and Apache domain name configuration."
 keywords: ['ownCloud on Ubuntu']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,14 +10,13 @@ modified_by:
 title: "Installing and Configuring ownCloud on Ubuntu 20.04"
 title_meta: "How to Install and Configure ownCloud on Ubuntu 20.04"
 tags: ["ubuntu"]
-contributor:
-  name: Jack Wallen
 aliases: ['/guides/how-to-install-owncloud-ubuntu-20-04/']
 relations:
     platform:
         key: how-to-install-owncloud
         keywords:
             - distribution: Ubuntu 20.04
+authors: ["Jack Wallen"]
 ---
 
 ## What is ownCloud?
@@ -45,6 +41,10 @@ Why would you want to host your own cloud? Some common reasons are:
 - You need an expandable storage solution.
 
 This tutorial walks you through the steps to install ownCloud on Ubuntu 20.04, one of the most user-friendly server operating systems available. There are only a few steps to install ownCloud on Ubuntu 20.04. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
+
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
 
 ## Before You Begin
 

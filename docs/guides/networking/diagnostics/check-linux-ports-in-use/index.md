@@ -1,8 +1,5 @@
 ---
 slug: check-linux-ports-in-use
-author:
-  name: Martin Heller
-  email: martin.heller@gmail.com
 description: "Tools like netstat, ss, & lsof can help you find which ports are in use on your Linux system. Use this guide for an introduction to Linux tools. ✓ Read now!"
 keywords: ['linux ports in use']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -13,9 +10,7 @@ modified_by:
   name: Linode
 title: "Checking Open and Listening Ports on Linux Using netstat and ss"
 title_meta: "Check Open and Listening Ports on Linux Using netstat and ss"
-contributor:
-  name: Martin Heller
-  link: https://twitter.com/meheller
+authors: ["Martin Heller"]
 ---
 
 One step in securing a Linux computer system is identifying which ports are active. Your system's active ports give you information about which outside applications may be connected to your system. You can also discover if you are unintentionally exposing an application or service to the internet, like a MySQL database. There are several Linux tools that help you discover which ports are in use and identify both ends of active communications. This guide introduces three common tools you can use with links to guides that dive deeper into each tool.

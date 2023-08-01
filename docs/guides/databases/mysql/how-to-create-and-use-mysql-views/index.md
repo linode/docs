@@ -1,8 +1,5 @@
 ---
 slug: how-to-create-and-use-mysql-views
-author:
-  name: Francis Ndungu
-  email: francisndungu83@gmail.com
 description: 'A view in MySQL is a named query that can be triggered to display data stored in other tables. This guide shows how to create, invoke, and delete views.'
 keywords: ['mysql','database','views']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,11 +8,9 @@ modified_by:
   name: Linode
 title: "Using Views in a MySQL Database"
 title_meta: "How to Use Views in a MySQL Database"
-contributor:
-  name: Francis Ndungu
-  link: https://twitter.com/francisndungu83
 external_resources:
 - '[MySQL - Using Views](https://dev.mysql.com/doc/refman/8.0/en/views.html)'
+authors: ["Francis Ndungu"]
 ---
 
 A *view* in MySQL is a named query that can be triggered to display data stored in other tables. In other words, views are user-defined virtual tables. Views can be used to:

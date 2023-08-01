@@ -1,24 +1,19 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This guide shows you how to install and configure a MERN (MongoDB, Express, React, Node.js) stack on a Linode using our One-Click Marketplace App."
 keywords: ['mongodb','mern','react','express', 'web app']
 tags: ["web server","database","cloud-manager","linode platform","web applications","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-02
 modified: 2022-03-08
 modified_by:
   name: Linode
 title: "Deploy a MERN Stack through the Linode Marketplace"
-contributor:
-  name: Linode
 external_resources:
 - '[MongoDB Getting Started](https://docs.mongodb.com/manual/tutorial/getting-started/)'
 - '[Express Hello World Example](https://expressjs.com/en/starter/hello-world.html)'
 - '[React Getting Started](https://reactjs.org/docs/getting-started.html)'
 - '[Node.js Getting Started](https://nodejs.org/es/docs/guides/getting-started-guide/)'
 aliases: ['/platform/marketplace/deploy-mern-with-marketplace-apps/', '/platform/one-click/deploy-mern-with-one-click-apps/', '/guides/deploy-mern-with-one-click-apps/','/guides/deploy-mern-with-marketplace-apps/','/guides/mern-stack-marketplace-app/']
+authors: ["Linode"]
 ---
 
 A MERN (MongoDB, Express, React, Node.js) stack is a free and open-source web software bundle used to build modern web applications:

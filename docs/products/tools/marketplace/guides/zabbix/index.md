@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Zabbix is an enterprise-class, open source, distributed monitoring solution. Learn how to deploy Zabbix on Linode using Marketplace Apps."
 keywords: ['monitoring','networking','incident response']
 tags: ["marketplace", "networking", "linode platform", "cloud manager", "monitoring"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
 modified: 2022-08-23
 image: DeployZabbix_marketplaceapps.png
@@ -17,6 +13,7 @@ external_resources:
 - '[Purchase Technical Support contract](https://www.zabbix.com/support)'
 - '[Zabbix official Forum](https://www.zabbix.com/forum)'
 aliases: ['/platform/marketplace/deploy-zabbix-with-marketplace-apps/', '/platform/one-click/deploy-zabbix-with-marketplace-apps/', '/guides/deploy-zabbix-with-marketplace-apps/','/guides/zabbix-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Zabbix](https://www.zabbix.com/) is an enterprise-class, open-source, distributed monitoring solution. Designed as an all-in-one monitoring solution, Zabbix can track performance and availability of network servers, devices, services, and other IT resources. Zabbix empowers administrators to quickly respond to incidents with on-screen display capabilities and alerts by email, SMS, or Jabber. Users can also collect, store, manage, and analyze information received from IT infrastructure. Actively used by SMBs and large enterprises across all industries and in almost every country, Zabbix has a robust community driving its continued development.

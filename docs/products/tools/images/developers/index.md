@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for Custom Images"
 description: "Linode Images are managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50

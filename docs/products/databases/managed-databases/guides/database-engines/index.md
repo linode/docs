@@ -1,11 +1,9 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Database Engines and Plans"
 description: "Learn the differences between the database engines offered by Linode's Managed Database service."
 published: 2022-06-06
-modified: 2022-08-09
+modified: 2023-05-02
+authors: ["Linode"]
 ---
 
 When deploying a Managed Database, you are able to select from a variety of database engines and plans. While each database engine enables you to store data, application compatibility and the way in which they store and access data can vary greatly. This guide aims to provide more information on each database engine, the reasons you might choose one over the other, and advice on selecting an appropriate plan size.
@@ -16,7 +14,6 @@ The following database engines are available on Linode's platform:
 
 - [MySQL](#mysql)
 - [PostgreSQL](#postgresql)
-- [MongoDB](#mongodb)
 
 ### MySQL
 
@@ -41,25 +38,11 @@ PostgreSQL is an object-relational database management system (ORDBMS) that can 
 
 **Available versions:**
 
-- PostgreSQL 13.2
-- PostgreSQL 12.6
-- PostgreSQL 11.11
-- PostgreSQL 10.14
-
-### MongoDB
-
-**Starting at $15 ($0.0225/hr) for a single node and $45 ($0.0675/hr) for a 3 node high availability cluster.**
-
-MongoDB is a document-oriented *NoSQL* database software that uses JSON files to store data. It is one of the most popular NoSQL databases and, as such, it is *unstructured* and very flexible.
-
-*Best for caching systems, log storage, and for storing data that is too complex, too large, or too variable to be used within a traditional relational database*
-
-**Available versions:**
-
-- MongoDB 4.4
-- MongoDB 4.2
-- MongoDB 4.0
-- MongoDB 3.6
+- PostgreSQL 14
+- PostgreSQL 13
+- PostgreSQL 12
+- PostgreSQL 11
+- PostgreSQL 10
 
 ## Database Plans
 

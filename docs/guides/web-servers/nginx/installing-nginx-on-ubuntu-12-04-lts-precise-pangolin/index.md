@@ -1,9 +1,6 @@
 ---
 slug: installing-nginx-on-ubuntu-12-04-lts-precise-pangolin
 deprecated: true
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
 keywords: ["nginx", "nginx ubuntu 12.04", "http", "web servers", "ubuntu", "ubuntu l2.04", "ubuntu precise pangolin"]
 tags: ["web server","ubuntu","nginx"]
@@ -24,6 +21,7 @@ relations:
         key: how-to-install-nginx
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.

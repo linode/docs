@@ -1,9 +1,6 @@
 ---
 slug: confluence-on-fedora-13
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide provides you with step-by-step instructions for installing and using Confluence on Fedora 13 to power a fully-featured Wiki for your organization.'
 keywords: ["confluence fedora 13", "confluence", "confluence wiki", "confluence linux"]
 tags: ["wiki","fedora"]
@@ -19,6 +16,7 @@ relations:
         key: using-confluence
         keywords:
            - distribution: Fedora 13
+authors: ["Linode"]
 ---
 
 

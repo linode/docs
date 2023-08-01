@@ -1,8 +1,5 @@
 ---
 slug: create-a-pop-email-notification-system-using-twilio
-author:
-  name: John Mueller
-  email: john@johnmuellerbooks.com
 description: "Linode sends system notifications via email. This guide shows how to use the Python imaplib module to intercept those emails and forward them to text messages with the Twilio API."
 keywords: ['twilio notify']
 tags: ['email']
@@ -11,9 +8,6 @@ published: 2022-02-25
 modified_by:
   name: Linode
 title: "Create an Email Notification System Using Twilio (POP)"
-contributor:
-  name: John Mueller
-  link:
 relations:
   platform:
     key: twilio-email-notifications
@@ -23,6 +17,7 @@ external_resources:
 - '[poplib — POP3 protocol client — Python 3.10.2 documentation](https://docs.python.org/3/library/poplib.html)'
 - '[email — An email and MIME handling package — Python 3.10.2 documentation](https://docs.python.org/3/library/email.html)'
 aliases: ['/guides/create-a-pop-email-notification-system-using-twilio/']
+authors: ["John Mueller"]
 ---
 
 By default, Linode sends system notifications via email. For example, email notifications are delivered when Linode Compute Instances are rebooted, when they receive hardware maintenance, and when they exceed a CPU usage threshold. You may also want to receive these notifications via text message. This guide shows how to set up a custom script that auto-forwards email notifications to text message.
@@ -705,11 +700,11 @@ Your script should now look like the code in [this file](autoforward-email-with-
 
 1. The updated script is automatically run by the cron job. CPU usage alerts are sent when a Linode on your account exceeds a threshold percentage. The Linodes on your account may or may not currently this threshold, so you may not receive any notifications.
 
-    You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
+    You can test that the update code works by temporarily [lowering the CPU usage alert threshold](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/) for one of your Linodes. By default, this value is set to 90%.
 
 ## Next Steps
 
-The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](/docs/products/tools/monitoring/guides/monitoring-email-alerts/) for different resources in the Cloud Manager.
+The auto-forwarding system is now complete, and it includes email filtering by subject keyword. You can make adjustments to the search criterion to change this filtering behavior. For example, you could search for the string `traffic rate` to only forward notifications about spikes in your Linodes' networking. You can also tweak the [alert threshold values](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/) for different resources in the Cloud Manager.
 
 In addition to forwarding emails to text, you may want to forward information from the Linode API to text. The [Using the Linode API with Twilio](/docs/guides/how-to-use-the-linode-api-with-twilio/) and [Monitor your Linode's Network Transfer Pool with Twilio](/docs/guides/monitor-linode-network-transfer-pool-with-twilio/) guides show how to combine the Linode and Twilio APIs.
 
@@ -723,7 +718,7 @@ When troubleshooting email forwarding, remember that you can trigger new Linode 
 
 - Rebooting a Linode in the Cloud Manager.
 
-- Temporarily lowering [alert threshold values](/docs/products/tools/monitoring/guides/monitoring-email-alerts/).
+- Temporarily lowering [alert threshold values](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/).
 
 As well, the following possible solutions may help:
 

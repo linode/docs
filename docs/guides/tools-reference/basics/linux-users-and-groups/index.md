@@ -1,13 +1,10 @@
 ---
 slug: linux-users-and-groups
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Want to learn more about Linux users and groups? This guide covers the most common user and group management tasks."
 keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 tags: ["security","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/']
+aliases: ['/tools-reference/linux-users-and-groups/','/tools-reference/basics/linux-users-and-groups/','/docs/using-linux/users-and-groups/','/using-linux/users-and-groups/']
 bundles: ['debian-security', 'centos-security']
 modified: 2021-01-07
 modified_by:
@@ -17,6 +14,7 @@ title: Linux Users and Groups
 external_resources:
  - '[Users and Groups Administration in Linux @ DebianAdmin](http://www.debianadmin.com/users-and-groups-administration-in-linux.html)'
  - '[Online Chmod Calculator](http://www.onlineconversion.com/html_chmod_calculator.htm)'
+authors: ["Linode"]
 ---
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide provides you with an explanation of what permissions are, how they work, and how to manage them. A number of examples are provided to illustrate how to set and change permissions for both users and groups.

@@ -1,20 +1,16 @@
 ---
-slug: glish
-author:
-  name: Linode
-  email: docs@linode.com
+title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
+title_meta: "Access Your Desktop Environment Using Glish"
 description: "Use Glish (the Linode Graphical Shell) to access a desktop environment, like Xfce or Gnome, on your web browser."
 keywords: ["Console", "Shell", "glish", "desktop environment", "display manager"]
-aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2015-08-28
 modified: 2022-10-12
 modified_by:
   name: Linode
-published: 2015-08-28
-title: "Access Your Desktop Environment Using Glish (Linode Graphical Shell)"
-title_meta: "Access Your Desktop Environment Using Glish"
 tags: ["linode platform","cloud manager"]
 image: using-linode-glish-title.jpg
+authors: ["Linode"]
+aliases: ['/platform/manager/using-the-linode-graphical-shell-glish-classic-manager/','/networking/using-the-graphic-shell-glish/','/networking/using-the-linode-graphical-shell-glish/','/platform/manager/using-the-linode-graphical-shell-glish/','/platform/using-the-linode-graphical-shell-glish/','/networking/use-the-graphic-shell-glish/','/guides/using-the-linode-graphical-shell-glish/','/guides/glish/']
 ---
 
 Glish is the graphical version of [Lish](/docs/products/compute/compute-instances/guides/lish/) (the Linode Shell). It allows you to run a desktop environment on your Compute Instance and access it through the Cloud Manager.
@@ -45,27 +41,27 @@ Before using Glish, a display manager and desktop environment must be installed 
 The instructions below install Xfce4 and LightDM on Debian 11. You are not limited to using these applications or this distribution. If you wish to use other software, follow the instructions for that application.
 {{< /note >}}
 
-1. Log in to your Compute Instance using [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
+1.  Log in to your Compute Instance using [Lish](/docs/products/compute/compute-instances/guides/lish/) or [SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#connect-to-the-instance).
 
-1. Follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
+1.  Follow all of the instructions within the [Set Up and Secure a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, including updating your system, setting the timezone, and adding a limited user account. Most display managers do not allow root login by default.
 
     ```command
     sudo apt update && sudo apt upgrade
     ```
 
-1. Install your preferred desktop environment. The command below installs Xfce, along with the optional enhancements package and a web browser.
+1.  Install your preferred desktop environment. The command below installs Xfce, along with the optional enhancements package and a web browser.
 
     ```command
     sudo apt install xfce4 xfce4-goodies dbus-x11 firefox-esr
     ```
 
-1. Install a display manager, which provides a graphical login screen. This allows you to log in as your desired user and with your preferred desktop environment. There are many display managers available, including [LightDM](https://wiki.debian.org/LightDM), [GDM](https://wiki.debian.org/GDM) (Gnome Desktop Manager), [SDDM](https://wiki.debian.org/SDDM), and [Ly](https://github.com/fairyglade/ly). This guide uses LightDM.
+1.  Install a display manager, which provides a graphical login screen. This allows you to log in as your desired user and with your preferred desktop environment. There are many display managers available, including [LightDM](https://wiki.debian.org/LightDM), [GDM](https://wiki.debian.org/GDM) (Gnome Desktop Manager), [SDDM](https://wiki.debian.org/SDDM), and [Ly](https://github.com/fairyglade/ly). This guide uses LightDM.
 
     ```command
     sudo install lightdm
     ```
 
-1. Set your new display manager as the system default. The command below opens up a prompt that allows you to select your preference from all display manager's that are currently installed.
+1.  Set your new display manager as the system default. The command below opens up a prompt that allows you to select your preference from all display manager's that are currently installed.
 
     ```command
     sudo dpkg-reconfigure lightdm
@@ -73,23 +69,23 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
 ## Access Glish and the Linux Desktop
 
-1. Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select your desired Compute Instance from the list.
+1.  Log in to the [Cloud Manager](https://cloud.linode.com), click the **Linodes** link in the sidebar, and select your desired Compute Instance from the list.
 
-1. To open the console, click on the **Launch Console** button in the top right corner of the summary page.
+1.  To open the console, click on the **Launch Console** button in the top right corner of the summary page.
 
     ![Launch the Console](launch-console-button.png)
 
-1. Log in to the *Weblish* prompt (or use SSH) and start the display manager. The example below is for LightDM.
+1.  Log in to the *Weblish* prompt (or use SSH) and start the display manager. The example below is for LightDM.
 
     ```command
     sudo systemctl start lightdm
     ```
 
-1. Once the display manager has started, select the **Glish** tab.
+1.  Once the display manager has started, select the **Glish** tab.
 
     ![Screenshot of the Lish Console with the Glish button](switch-to-glish.png)
 
-1. The display manager's login prompt should appear within the Glish tab. If you are using LightDM, it should look similar to the screenshot below. Enter your username and password. Since the root user is likely disabled by default, use a limited user account on your system.
+1.  The display manager's login prompt should appear within the Glish tab. If you are using LightDM, it should look similar to the screenshot below. Enter your username and password. Since the root user is likely disabled by default, use a limited user account on your system.
 
     ![Screenshot of LightDM in Glish](glish-login-lightdm.png)
 
@@ -101,7 +97,7 @@ The instructions below install Xfce4 and LightDM on Debian 11. You are not limit
 
     ![Screenshot of tty in Glish](glish-tty1.png)
 
-1. Once you are successfully logged in, your desktop environment should be visible. From here, you can use your mouse and keyboard to control your desktop.
+1.  Once you are successfully logged in, your desktop environment should be visible. From here, you can use your mouse and keyboard to control your desktop.
 
     ![Screenshot of Xfce4 in Glish](glish-xfce-desktop.png)
 

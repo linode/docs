@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-htaccess-on-apache
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use the Apache .htaccess file to configure a website on a per-directory basis. This guide shows you how to create and enable an .htaccess file and more.'
 keywords: ["htaccess", " apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,14 +9,12 @@ modified_by:
   name: Linode
 title: 'Enable and Set Up the .htaccess File on Apache'
 title_meta: 'How to Set Up the htaccess File on Apache'
-contributor:
-  name: Christopher Piccini
-  link: https://twitter.com/chrispiccini11
 external_resources:
 - '[HTTP Error and Status Codes](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)'
 - '[Apache .htaccess Documentation](https://httpd.apache.org/docs/current/howto/htaccess.html)'
 tags: ["web server","apache"]
 aliases: ['/web-servers/apache/how-to-set-up-htaccess-on-apache/']
+authors: ["Christopher Piccini"]
 ---
 
 ![How to Set Up the htaccess File on Apache](how-to-set-up-the-htaccess-file-on-apache-smg.jpg)

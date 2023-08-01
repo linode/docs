@@ -1,9 +1,6 @@
 ---
 slug: oracle-10g-express-edition-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Install Oracle 10g to power server-side applications and web apps on Ubuntu 10.10 (Maverick).'
 keywords: ["oracle ubuntu maverick", "oracle 10g ubuntu 10.10", "oracle ubuntu 10.10", "oracle ubuntu", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,6 +16,7 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database"]
+authors: ["Linode"]
 ---
 
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
 keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified_by:
   name: Linode
 title: "Install a LAMP Stack on Ubuntu 22.04"
 title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[LAMP Stack Wikipedia page](https://en.wikipedia.org/wiki/LAMP_(software_bundle))'
 - '[MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)'
@@ -23,8 +18,11 @@ external_resources:
 - '[PHP Documentation](https://www.php.net/docs.php)'
 relations:
     platform:
+        key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
+aliases: ['/lamp-guides/ubuntu-11.04-natty/']
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.

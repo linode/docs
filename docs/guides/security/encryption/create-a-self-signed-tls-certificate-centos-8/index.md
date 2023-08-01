@@ -1,8 +1,5 @@
 ---
 slug: create-a-self-signed-tls-certificate-centos-8
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Self-signed TLS certificates are suitable for internal use within an organization. This guide shows how to create a certificate with OpenSSL on CentOS 8.'
 keywords: ["centos tls certificate", "centos ssl certificate", "centos self certified"]
 tags: ["centos", "security", "ssl"]
@@ -21,6 +18,7 @@ relations:
         key: create-a-self-signed-tls-certificate
         keywords:
             - distribution: CentOS 8
+authors: ["Linode"]
 ---
 
 ## What is a Self-Signed TLS Certificate?

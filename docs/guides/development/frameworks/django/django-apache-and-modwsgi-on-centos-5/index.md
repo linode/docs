@@ -1,9 +1,6 @@
 ---
 slug: django-apache-and-modwsgi-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to configure the Django web application development framework for Apache on CentOS 5 so you can run Django Applications.'
 keywords: ["django", "python", "apache", "mod\\_wsgi"]
 tags: ["web applications","django","apache","python","centos","cms","database"]
@@ -26,6 +23,7 @@ relations:
         key: django-apache-modwsgi
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.

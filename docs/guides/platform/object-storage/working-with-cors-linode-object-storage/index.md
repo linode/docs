@@ -1,8 +1,5 @@
 ---
 slug: working-with-cors-linode-object-storage
-author:
-  name: Nathaniel Stickman
-  email: docs@linode.com
 description: "Linode Object Storage provides efficient S3-compatible storage. Cross-origin resource sharing policies can make accessing storage across domains more difficult. But you can learn everything you need to make it easier in this tutorial on CORS and Linode Object Storage."
 keywords: ['enable cors s3','allow cors s3 bucket','cors policy']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,13 +7,11 @@ published: 2022-09-25
 modified_by:
   name: Nathaniel Stickman
 title: "Working with CORS Policies on Linode Object Storage"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[AWS Documentation - Amazon Simple Storage Service: Using Cross-origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors.html)'
 - '[AWS Documentation - Amazon Simple Storage Service: Troubleshooting CORS](https://docs.aws.amazon.com/AmazonS3/latest/userguide/cors-troubleshooting.html)'
 - '[DreamHost Knowledge Base: Configuring (CORS) on a DreamObjects Bucket](https://help.dreamhost.com/hc/en-us/articles/216201557-How-to-setup-Cross-Origin-Resource-Sharing-CORS-on-DreamObjects)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [Linode Object Storage](/docs/products/storage/object-storage/) offers a globally-available, S3-compatible storage solution. Whether you are storing critical backup files or data for a static website, S3 object storage can efficiently answer the call.
@@ -241,6 +236,3 @@ Having CORS-related issues on your S3 instance? Take these steps to help narrow 
 This covers the tools and approaches you need to start managing CORS for your Linode Object Storage or other S3 instance. Once you have these, addressing CORS issues is a matter of reviewing and adjusting policies against desired origins and request types.
 
 Keep improving your resources for managing your S3 through our collection of [object storage guides](/docs/products/storage/object-storage/guides/). These cover a range of topics to help you with S3 generally, and Linode Object Storage in particular.
-
-Have more questions or want some help getting started? Feel free to reach out to our [Support](https://www.linode.com/support/) team.
-

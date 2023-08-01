@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-centos-5
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
 keywords: ["Apache", "web sever", "CentOS 5"]
 tags: ["centos","web server","apache"]
@@ -19,6 +16,7 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: CentOS 5
+authors: ["Linode"]
 ---
 
 

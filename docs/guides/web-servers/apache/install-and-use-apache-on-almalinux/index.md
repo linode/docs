@@ -1,8 +1,5 @@
 ---
 slug: install-and-use-apache-on-almalinux
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install, configure, and use Apache on AlmaLinux, a relatively new open source Linux distribution intended to replace CentOS.'
 keywords: ['AlmaLinux','Apache','installation','configuration']
 tags: ['apache', 'linux', 'centos']
@@ -12,9 +9,6 @@ modified_by:
   name: Linode
 title: "Install and Use Apache on AlmaLinux"
 title_meta: "How to Install and Use Apache on AlmaLinux"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[AlmaLinux OS](https://almalinux.org/)'
 - '[Apache web server](https://www.apache.org/)'
@@ -22,6 +16,7 @@ external_resources:
 - '[AlmaLinux Wiki](https://wiki.almalinux.org/#about)'
 - '[AlmaLinux Forum](https://almalinux.discourse.group/)'
 - '[AlmaLinux GitHub Page](https://github.com/AlmaLinux)'
+authors: ["Jeff Novotny"]
 ---
 
 [*AlmaLinux OS*](https://almalinux.org/) is a stable open-source Linux distribution that provides a new alternative to CentOS. As a downstream fork of the *Red Hat Enterprise Linux* (RHEL) codebase, AlmaLinux guarantees ongoing free availability. CloudLinux experts originally built and designed AlmaLinux, but it is now a community-led project. AlmaLinux supports the same software applications that CentOS does, including the [*Apache web server*](https://www.apache.org/). This guide explains how to install, configure, and use Apache on AlmaLinux.

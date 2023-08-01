@@ -1,7 +1,5 @@
 ---
 slug: play-framework-build-a-website
-author:
-  name: Nathaniel Stickman
 description: "Learn how to get started creating Java and Scala web applications in this guide to the Play framework, complete with examples."
 keywords: ['play framework']
 tags: ['java']
@@ -11,14 +9,12 @@ modified_by:
   name: Nathaniel Stickman
 title: "Get Started Building a Website with the Play Framework"
 title_meta: "How to Build a Website using the Play Framework"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Play 2.8.x documentation](https://www.playframework.com/documentation/2.8.x/Home)'
 - '[Play official site](https://www.playframework.com/)'
 - '[Play framework example projects](https://developer.lightbend.com/start/?group=play)'
 
+authors: ["Nathaniel Stickman"]
 ---
 
 [Play](https://www.playframework.com/) is a lightweight framework for Java and Scala web applications. Play's conciseness makes it easy to develop modern and efficient web applications.

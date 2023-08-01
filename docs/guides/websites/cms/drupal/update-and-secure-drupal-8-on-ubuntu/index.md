@@ -1,8 +1,5 @@
 ---
 slug: update-and-secure-drupal-8-on-ubuntu
-author:
-    name: Edward Angert
-    email: docs@linode.com
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
 aliases: ['/websites/cms/drupal/update-and-secure-drupal-8-on-ubuntu/','/websites/cms/update-and-secure-drupal-8-on-ubuntu/']
@@ -15,11 +12,12 @@ modified_by:
 published: 2016-05-11
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 tags: ["drupal","cms"]
+authors: ["Edward Angert"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. While a simple incremental update feature is included in version 8.1, manual core updates are required for all preceding versions. This guide demonstrates how to manually install an incremental Drupal 8 update on your Linode. This guide assumes you have a functional Drupal 8 installation running on Apache and Debian or Ubuntu.
 
-<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/w7l9omoxr3?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/w7l9omoxr3?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" title="Update and secure Drupal 8 on Ubuntu or Debian" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
 <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Before You Begin

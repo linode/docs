@@ -1,11 +1,7 @@
 ---
-author:
-  name: Rajakavitha Kodhandapani
-  email: docs@linode.com
 description: "PostgreSQL is a powerful, scalable, and standards-compliant open-source database. Here''s how to easily deploy PostgreSQL using Marketplace Apps."
 keywords: ['database','postgresql','rdbms','relational database']
 tags: ["linode platform","postgresql","marketplace","cloud-manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-03-17
 modified: 2022-03-08
 modified_by:
@@ -15,6 +11,7 @@ external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 aliases: ['/platform/marketplace/deploy-postresql-with-marketplace-apps/', '/platform/one-click/deploy-postresql-with-one-click-apps/', '/guides/deploy-postresql-with-one-click-apps/','/guides/deploy-postresql-with-marketplace-apps/','/guides/postgresql-marketplace-app/']
+authors: ["Rajakavitha Kodhandapani"]
 ---
 
 The PostgreSQL relational database system is a powerful, scalable, and standards-compliant open-source database platform. It is designed to handle a range of workloads, from single machines to data warehouses or Web services with many concurrent users.

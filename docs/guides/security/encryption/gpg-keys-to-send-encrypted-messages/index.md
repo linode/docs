@@ -1,7 +1,5 @@
 ---
 slug: gpg-keys-to-send-encrypted-messages
-author:
-  name: Linode
 description: 'This article shows you how you can use GPG, also known as GNU Privacy Guard, keys to send and receive encrypted messages with friends and colleagues.'
 keywords: ['gpg','security','cryptography','encrypt', 'decrypt']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -16,6 +14,7 @@ external_resources:
 - '[The Mathematics of the RSA Public-Key Cryptosystem ](http://www.mathaware.org/mam/06/Kaliski.pdf)'
 tags: ["security"]
 aliases: ['/security/encryption/gpg-keys-to-send-encrypted-messages/']
+authors: ["Linode"]
 ---
 
 ## What is GnuPG?

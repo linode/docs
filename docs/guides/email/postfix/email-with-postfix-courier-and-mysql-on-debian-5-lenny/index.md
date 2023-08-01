@@ -1,8 +1,5 @@
 ---
 slug: email-with-postfix-courier-and-mysql-on-debian-5-lenny
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Debian 5.0 (Lenny).'
 keywords: ["postfix", "courier", "mail server", "imap", "postfix on debian", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 tags: ["debian","mysql","postfix","email"]
@@ -19,6 +16,7 @@ relations:
         key: email-postfix-courier-mysql
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.

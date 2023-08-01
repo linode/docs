@@ -1,7 +1,5 @@
 ---
 slug: tutorial-host-asp-net-core-on-linux
-author:
-  name: Nathaniel Stickman
 description: "This guide shows you how to install and get started with the .NET Core for building and hosting ASP.NET applications on Linux using NGINX as a web server and reverse proxy."
 keywords: ['asp net core tutorial']
 tags: ['web applications', 'nginx']
@@ -12,12 +10,10 @@ modified_by:
 title: "Tutorial: Hosting ASP.NET Core on Linux"
 title_meta: "An ASP.NET Core on Linux Tutorial"
 image: ASPNET.jpg
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[Tutorial: Get Started with ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0)'
 - '[Microsofts ASP.NET Core Recommended Learning Path](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0#recommended-learning-path)'
+authors: ["Nathaniel Stickman"]
 ---
 
 [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-5.0) is Microsoft's cross-platform and open-source redesign of its original ASP.NET framework. With ASP.NET Core, you can build and run .NET applications not only on Windows but also macOS and Linux.

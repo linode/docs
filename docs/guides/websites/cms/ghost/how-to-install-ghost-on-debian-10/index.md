@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-ghost-on-debian-10
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Debian 10.'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode running Debian 10.'
 keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on debian 10", "ghost cms"]
@@ -25,6 +22,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/ghost/how-to-install-ghost-on-debian-10/']
+authors: ["Linode"]
 ---
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. Ghost is a robust content management system (CMS) with a Markdown editor, an easy-to-use user interface, and beautiful themes. It is easy to install and update with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI).
