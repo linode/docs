@@ -34,7 +34,7 @@ Health checks detect if a target is down and routes traffic to an available targ
 | Feature               | Global Load Balancer         | NodeBalancer           |
 | ----------------------| -----------------------------|------------------------|
 |Load Balancer Location |Supports both regional and global load balancing. The load balancer does not need to be situated in the same data center as your target endpoints.                  |Must be situated in the same data center as your target endpoints IPs.|
-|Hosting environments for target services and applications| Multi-Cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instances|Cloud Compute Instance|
+|Hosting environments for target services and applications| Multi-Cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instances. |Cloud Compute Instance|
 |Layer 7 (Application Layer) |Supported            |Partially Supported     |
 |Layer 4 (Network Layer/Transport)|Supported                |Supported               |
 |Load Balancing Methods |Performance, Weighted, Content-based|Performance, Weighted|
