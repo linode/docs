@@ -1,18 +1,13 @@
 ---
 slug: getting-started-with-carbonio
-author:
-  name: Linode Community
-  email: docs@linode.com
-description: "Carbonio is an open-source collaboration platform by Zextras. With Carbonio, you get a collaboration suite with email, contacts, calendar, and collaborative file-management. All with the flexibility and freedom of open source. In this tutorial, learn everything you need to get started with Carbonio on your system."
-keywords: ['carbonio community edition','carbonio collaboration','self host collaboration']
+description: "Carbonio is an open-source collaboration platform by Zextras. With Carbonio, you get a collaboration suite with email, contacts, calendar, and collaborative file management. All with the flexibility and freedom of open source. In this guide, learn everything you need to get started with Carbonio on your system."
+keywords: ['carbonio community edition', 'carbonio collaboration', 'self-host collaboration']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2023-03-03
 modified_by:
-  name: Nathaniel Stickman
+  name: Linode
 title: "Getting Started with the Carbonio Collaboration System on Ubuntu 20.04"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
+authors: ["Nathaniel Stickman"]
 external_resources:
 - '[Carbonio Community Edition Documentation](https://docs.zextras.com/carbonio-ce/html/index.html)'
 - '[Opensource.com: Get Started with Carbonio, an Open Source Collaboration Platform](https://opensource.com/article/22/3/open-source-collaboration-carbonio)'
@@ -22,7 +17,7 @@ external_resources:
 
 Carbonio Community Edition (CE) offers an open-source collaboration solution, complete with email, contacts, calendar, and even a collaborative file management system. Most collaboration platforms' proprietary design leaves them difficult and/or inflexible to implement. Zextras's Carbonio brings the freedom of open source along with the wide array of features you would expect from other collaboration platforms.
 
-Learn through this tutorial how to get started using Carbonio. The tutorial covers installing your own Carbonio CE instance and accessing the instance for day-to-day use and administration.
+Learn through this guide how to get started using Carbonio. The guide covers installing your own Carbonio CE instance and accessing the instance for day-to-day use and administration.
 
 ## Before You Begin
 
@@ -31,26 +26,26 @@ Learn through this tutorial how to get started using Carbonio. The tutorial cove
 1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
+The steps in this guide are written for non-root users. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## How to Install Carbonio CE
 
-Carbonio CE comes free and open source. You only need a server instance — or several — to run it on. Follow along here to set up your server instance for running Carbonio, including deploying SSL certification through Let's Encrypt.
+Carbonio CE comes free and open source. You only need a server instance — or several — to run it on. Follow along here to set up your server instance for running Carbonio, including deploying an SSL certificate through Let's Encrypt.
 
 {{< note >}}
 In order to prevent spam from being sent from the platform, Linode restricts outbound emails for newer Linode accounts. Learn more, including how to have the restriction removed, in our blog post [A New Policy to Help Fight Spam](https://www.linode.com/blog/linode/a-new-policy-to-help-fight-spam/).
 {{< /note >}}
 
-### Preparing the Prerequisites
+### Preparing Prerequisites
 
 Before installing Carbonio, you need to prepare your server. Most of these preparations involve setting up DNS records, configuring a hostname, and aligning your network settings with Carbonio's communication needs.
 
 1. Set up a domain name and DNS records for your machine. Carbonio requires a domain name along with a corresponding **A/AAAA** record and **MX** record.
 
-    Refer to our [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) guide for information on setting up a domain and DNS records. You have numerous options for setting these up, but with Linode you can do so readily with the Linode DNS Manager.
+    Refer to our [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) guide for information on setting up a domain and DNS records. You have numerous options for setting these up, but with Linode, you can do so readily with the Linode DNS Manager.
 
-    Whatever your approach, this tutorial assumes you have the following.
+    Whatever your approach, this guide assumes you have the following.
 
     - A domain name.
 
@@ -58,19 +53,19 @@ Before installing Carbonio, you need to prepare your server. Most of these prepa
 
     - An **MX** record pointing to your A-record domain or a subdomain. If a subdomain, you need a matching A record for that.
 
-    This tutorial uses some example values throughout. It uses `example.com` as its domain and `192.0.2.0` as the public IP address for the Carbonio system. For the A/AAAA record, the tutorial directs the `mail.example.com` host to that IP address. The MX record then points to the domain name, `example.com`, and the subdomain, `mail`.
+    This guide uses some example values throughout. It uses `example.com` as its domain and `192.0.2.0` as the public IP address for the Carbonio system. For the A/AAAA record, the guide directs the `mail.example.com` host to that IP address. The MX record then points to the domain name, `example.com`, and the subdomain, `mail`.
 
     Here is an example of what that setup might look like in the Linode DNS Manager.
 
     ![An example DNS configuration for Carbonio](dns-example-1.png)
 
-    And here is a common alternative setup. This one has an additional A record pointing to the base domain, giving you access to Carbonio from there as well.
+    And here is a common alternative setup. This one has an additional **A** record pointing to the base domain, giving you access to Carbonio from there as well.
 
     ![Another example DNS configuration for Carbonio](dns-example-2.png)
 
 1. Create a hostname entry with the fully-qualified domain name (FQDN) for the mail server.
 
-    This assumes that your FQDN is `mail.example.com`, as created in the example above. Match the value to your actual MX record. Replace `192.0.2.0` with your system's public IP address.
+    This assumes that your FQDN is `mail.example.com`, as created in the example above. Match the value to your actual **MX** record. Replace `192.0.2.0` with your system's public IP address.
 
     ```command
     sudo hostnamectl set-hostname mail.example.com
@@ -104,7 +99,7 @@ Before installing Carbonio, you need to prepare your server. Most of these prepa
 
     You may also want to check the `/etc/hosts` file to ensure no other IPv6 addresses are used there.
 
-1. Install Python 3 and Perl. Both should be installed by default, but you can run the command here to grab the latest available version of each.
+1. Install Python 3 and Perl. Both should be installed by default, but you can run the following command to grab the latest available version of each.
 
     ```command
     sudo apt upgrade python3 perl
@@ -112,9 +107,9 @@ Before installing Carbonio, you need to prepare your server. Most of these prepa
 
 1. Carbonio uses several ports for external network communications. You can review them on the Carbonio [requirements page](https://docs.zextras.com/carbonio-ce/html/requirements.html#firewall-ports).
 
-    By default, Ubuntu uses UFW for managing the system's firewall. You can learn more in our guide on [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/)
+    By default, Ubuntu uses UFW for managing the system's firewall. You can learn more in our [How to Configure a Firewall with UFW](/docs/guides/configure-firewall-with-ufw/) guide.
 
-    For this tutorial, only the Postfix, HTTP, HTTPS, and Carbonio administrator (`6071`) ports are leveraged. Assuming you have enabled the firewall via UFW, you can open these ports with the commands here. Open other ports as needed.
+    For this guide, only the Postfix, HTTP, HTTPS, and Carbonio administrator (`6071`) ports are leveraged. Assuming you have enabled the firewall via UFW, you can open these ports with the commands here. Open other ports as needed.
 
     ```command
     sudo ufw allow http
@@ -126,7 +121,7 @@ Before installing Carbonio, you need to prepare your server. Most of these prepa
 
 ### Installing Carbonio
 
-With the above in place, you are ready to install Carbonio CE. These steps walk you through everything you need to do. By the end you should have a Carbonio instance ready for you to start exploring.
+With the above in place, you are ready to install Carbonio CE. These steps walk you through everything you need to do. By the end, you should have a Carbonio instance ready for you to start exploring.
 
 1. Request access to the Carbonio CE repository. You can do this by completing the form on the [Carbonio Community Edition](https://www.zextras.com/carbonio-community-edition/#discoverproduct) page.
 
@@ -158,26 +153,26 @@ With the above in place, you are ready to install Carbonio CE. These steps walk 
     sudo carbonio-bootstrap
     ```
 
-    The process prepares the default configurations and prompts you when they are ready. You can accept the prompt and proceed with the set up by inputting `y`. From there, the set up may take several minutes to complete as it installs necessary resources for Carbonio and enables required services.
+    The process prepares the default configurations and prompts you when they are ready. You can accept the prompt and proceed with the setup by inputting `y`. From there, the setup may take several minutes to complete as it installs necessary resources for Carbonio and enables required services.
 
 ### Creating an Administrator User
 
 Carbonio is now installed, but you need an initial user before you can start using the platform. These steps walk you through configuring credentials for your administrative user, which can also act as your initial user within the Carbonio interface.
 
-1. Change into the `zextras` user, created during the Carbonio setup. To do so, you first need to change into the root user.
+1. Change into the `zextras` user, created during the Carbonio setup. To do so, you first need to switch to the root user and then switch to the `zextras` user.
 
     ```command
     su -
     su - zextras
     ```
 
-1. Run a variant of the `carbonio` command shown below. Replace `example.com` with your relevant domain name, and replace `examplepass` with a password for your administrator user.
+1. Run the following command to set the password for your administrator user.  Replace `example.com` with your relevant domain name, and replace `examplepass` with a password for your administrator user.
 
     ```command
     carbonio prov setpassword zextras@example.com examplepass
     ```
 
-And that is all. Both the user and administrator interface portions of the [How to Use Carbonio CE](/docs/guides/getting-started-with-carbonio/#how-to-use-carbonio-ce) section below have you first access Carbonio with this user.
+With the above steps completed, you can now access Carbonio using your newly created administrator user. Proceed to the [How to Use Carbonio CE](/docs/guides/getting-started-with-carbonio/#how-to-use-carbonio-ce) section below for further instructions on using Carbonio with this user.
 
 ### Setting Up SSL
 
@@ -185,9 +180,10 @@ While the Carbonio instance is ready to use after the installation, its SSL cert
 
 To remedy this, follow along here. These steps show you how to install [Certbot](https://certbot.eff.org/) and use it to procure SSL certificates for Carbonio from [Let's Encrypt](https://letsencrypt.org/).
 
-1. Update the [Snap](https://snapcraft.io/docs/getting-started) application store. Snap provides application bundles that work across major Linux distributions, and it comes by default on Ubuntu releases since 16.04.
+1. Ensure that `snapd`(the [Snap](https://snapcraft.io/docs/getting-started) application store) is installed and up to date. Snap provides application bundles that work across major Linux distributions, and it comes by default on Ubuntu releases since 16.04.
 
     ```command
+    sudo apt install snapd
     sudo snap install core && sudo snap refresh core
     ```
 
@@ -222,7 +218,7 @@ To remedy this, follow along here. These steps show you how to install [Certbot]
     sudo cp /etc/letsencrypt/live/mail.example.com/chain.pem /opt/zextras/ssl/carbonio/commercial/
     ```
 
-1. Fetch the ISRG Root X1 chain file, and add its contents to the end of the `chain.pem` file.
+1. Fetch the ISRG Root X1 chain file, and append its contents to the end of the `chain.pem` file using the following command:
 
     ```command
     sudo wget -O /opt/zextras/ssl/carbonio/commercial/ISRG-X1.pem https://letsencrypt.org/certs/isrgrootx1.pem.txt
@@ -270,15 +266,15 @@ To remedy this, follow along here. These steps show you how to install [Certbot]
 
 ## How to Use Carbonio CE
 
-With your own Carbonio CE instance running, you can login and start navigating the interface. Actually, Carbonio has two interfaces: one for users and one for administration.
+With your own Carbonio CE instance running, you can log in and start navigating the interface. Actually, Carbonio has two interfaces: one for users and one for administration.
 
-Below, check out coverage of each of these interfaces. This includes steps to access and log into each interface and an overview of what you can expect to find and do in each.
+Below, check out the coverage of each of these interfaces. This includes steps to access and log into each interface and an overview of what you can expect to find and do in each.
 
 ### User Interface
 
-Carbonio's user interface covers day-to-day usage of Carbonio. This is where users go to check email, access their contacts, manage calendar schedules, and collaborate on documents.
+Carbonio's user interface covers the day-to-day usage of Carbonio. This is where users go to check email, access their contacts, manage calendar schedules, and collaborate on documents.
 
-To access the user interface, navigate to the HTTPS address for your Carbonio instance. Follow the example domain setup covered further above, this would be `https://mail.example.com.` Doing so takes you to the Carbonio login page.
+To access the user interface, navigate to the HTTPS address for your Carbonio instance. Follow the example domain setup covered further above, this would be `https://mail.example.com`. Doing so takes you to the Carbonio login page.
 
 ![The Carbonio user login page](carbonio-user-login.png)
 
@@ -292,7 +288,7 @@ Logging in directs you to the Carbonio user dashboard, where you can see the use
 
 Carbonio includes an administrator interface. It is from this interface that you can manage resources and settings on your Carbonio instance.
 
-To access the administrator interface, navigate to port `6071` of your Carbonio domain using HTTPS. For instance, using the domain setup given further above, this would mean navigating to the address `https://mail.example.com:6071`. This takes you to the administrator login page.
+To access the administrator interface, navigate to port `6071` of your Carbonio domain using HTTPS. For instance, using the domain setup given further above would mean navigating to the address `https://mail.example.com:6071`. This takes you to the administrator login page.
 
 ![The Carbonio login page for administrators](carbonio-admin-login.png)
 
@@ -314,6 +310,6 @@ The administrator interface divides largely into four menu categories, all acces
 
 ## Conclusion
 
-With that, the tutorial has walked you through everything you need to get started using Carbonio for collaboration. Even without further fine-tuning, the Carbonio instance created above is ready to add users and let them start working.
+With that, the guide has walked you through everything you need to get started using Carbonio for collaboration. Even without further fine-tuning, the Carbonio instance created above is ready to add users and let them start working.
 
 Of course, Carbonio offers more features and customization to fit your particular needs. Be sure to review the links included below, particularly the Zextras documentation for Carbonio Community Edition, to continue learning.
