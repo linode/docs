@@ -21,7 +21,7 @@ Nearly every production application can benefit from a load balancing solution l
 
 To start using and benefiting from load balancing, your application should be deployed on at least two Compute Instances. Each instance of your application should be able to fully serve the needs of your users, including being able to respond to web requests, access all necessary files, and query any databases.
 
-To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](https://www.linode.com/docs/products/compute/compute-instances/get-started/)
+To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](/docs/products/compute/compute-instances/get-started/)
 
 To redirect all web connections over port 443/HTTPS generate an SSL certificate for your domain name that supports TLS version 1.2 or later.
 
