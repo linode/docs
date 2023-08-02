@@ -111,6 +111,7 @@ module.exports = {
 		'transition-opacity',
 		'transition-transform',
 		'x-cloak',
+		'hover:border-b-gray-500',
 	],
 	corePlugins: {
 		container: false,

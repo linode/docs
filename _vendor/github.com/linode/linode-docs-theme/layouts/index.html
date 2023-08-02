@@ -101,7 +101,10 @@
     {{/* Carousels showing recent content in the different sections. */}}
 
 
-    <section class="mb-10" x-intersect.once="initCarousels()">
+    <section
+      class="mb-10"
+      x-intersect.once="initCarousels()"
+      data-testid="content-carousels">
       {{ template "home/section/carousel" (dict "section" "guides" "title" "Guides") }}
     </section>
     <section class="mb-10">
