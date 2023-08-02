@@ -19,7 +19,7 @@ Nearly every production application can benefit from a load balancing solution l
 
 ## Prepare the Application
 
-To start using and benefiting from load balancing, your application should be stored on at least two Compute Instances. Each instance of your application should be able to fully serve the needs of your users, including being able to respond to web requests, access all necessary files, and query any databases.
+To start using and benefiting from load balancing, your application should be deployed on at least two Compute Instances. Each instance of your application should be able to fully serve the needs of your users, including being able to respond to web requests, access all necessary files, and query any databases.
 
 To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](https://www.linode.com/docs/products/compute/compute-instances/get-started/)
 
@@ -64,8 +64,7 @@ An Entry Point defines the port the load balancer listens on and the protocol fo
         - **HTTP:** Unencrypted web traffic using HTTP/1.1 or HTTP/2. When HTTP is selected, the HTTP request is terminated on the Global Load Balancer, allowing the Load Balancer to create a new HTTP request to the backend machines. This can be used when serving most standard web applications, especially if you intend on configuring the Global Load Balancer to use HTTPS mode with TLS/SSL termination.
 
         - **HTTPS:** Encrypted web traffic using HTTP/1.1 or HTTP/2. Since this terminates the request on the Global Load Balancer, it also terminates the TLS/SSL connection to decrypt the traffic. Use this if you wish to configure TLS/SSL certificates on the Global Load Balancer and not on individual backend nodes.
-        
-            When using the **HTTPS** protocol setting, all traffic is decrypted on the Global Load Balancer. Traffic between the Global Load Balancer and the backend nodes is sent over the private data center network, is not encrypted, and uses the HTTP protocol.
+                When using the **HTTPS** protocol setting, all traffic is decrypted on the Global Load Balancer. Traffic between the Global Load Balancer and the backend nodes is sent over the private data center network, is not encrypted, and uses the HTTP protocol.
 
     - **Port:** This is the *inbound* port that the Global Load Balancer is listening on. This can be any port from 1 through 65534, though it should be set to whichever port the client software connects to. For instance, web browsers use port 80 for HTTP traffic and port 443 for HTTPS traffic, though a client can change the port by specifying it as part of the URL.
 
@@ -125,8 +124,6 @@ The load balancing algorithm controls how new connections are allocated across b
 - **Weighted:** routes requests to backend targets according to the proportion (%) configured.
 
 1. If Weighted is selected, enter the percentage of traffic that should be routed to each selected target. All of the percentages must total 100%.
-
-1. 
 
     - **Health Checks:** Load Balancers have both *active* and *passive* health checks available. These health checks help take unresponsive or problematic backend Compute Instances out of the rotation so that no connections are routed to them. These settings can be left at the default for most applications. Review [Configuration Options > Health Checks](/docs/products/networking/global-loadbalancer/guides/configure/#health-checks) for additional information.
 

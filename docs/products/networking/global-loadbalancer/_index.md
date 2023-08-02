@@ -34,7 +34,7 @@ Health checks detect if a target is down and routes traffic to an available targ
 | Feature               | Global Load Balancer         | NodeBalancer           |
 | ----------------------| -----------------------------|------------------------|
 |Load Balancer Location |Supports both regional and global load balancing. The load balancer does not need to be situated in the same data center as your target endpoints.                  |Must be situated in the same data center as your target endpoints IPs.|
-|Hosting environments for target services and applications| Multi-Cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instances. |Cloud Compute Instance|
+|Hosting environments for target services and applications| Multi-cloud, can be used with or with Akamai Delivery Properties or Cloud Compute Instances. |Cloud Compute Instance|
 |Layer 7 (Application Layer) |Supported            |Partially Supported     |
 |Layer 4 (Network Layer/Transport)|Supported                |Supported               |
 |Load Balancing Methods |Performance, Weighted, Content-based|Performance, Weighted|
@@ -56,7 +56,7 @@ This OSI layer 7 and layer 4 load balancer manages your distributed application 
 The Akamai Global Load Balancer can be used with or without an Akamai delivery property. Akamai cloud compute offers seamless integration with Akamai’s suite of security, and compute products.
 
 ## Operationally Simple
-You can create and enable the Akamai Global Load Balancer using Cloud Manager or APIs. Once Akamai Global Load Balancer is configured, you can start balancing traffic across multiple regions or globally within seconds. Akamai Global Load Balancer requires no infrastructure management and is designed to be maintenance free after initial configuration.
+You can create and enable the Akamai Global Load Balancer using Cloud Manager or APIs. Once Akamai Global Load Balancer is configured, you can start balancing traffic across multiple regions or globally. Akamai Global Load Balancer requires no infrastructure management and is designed to be maintenance free after initial configuration.
 
 ## Available Protocols
 
@@ -123,14 +123,14 @@ Akamai Global Load Balancer provides real-time metrics, logs and traces through 
 Akamai Global Load Balancers are available across [all regions](https://www.linode.com/global-infrastructure/).
 
 ## Pricing
-Billing for each Global Load Balancer starts once it is created. A summary of charges is available from Cloud Manager.
+Billing for each Global Load Balancer starts once it is created. You can get a summary of your charges from Cloud Manager.
 
-Pricing is based on outbound traffic usage and a base fee. Outbound traffic is the traffic from the load balancer to the client and to the service target. XGB/month of outbound traffic is included with the base fee. If XGB/month of outbound traffic is exceeded, an overage charge of $0.01/GB is added to your bill. The Base Fee is determined by the number of global connections.
+Pricing is based on outbound traffic monthly usage and a base fee. Outbound traffic is the traffic from the load balancer to the client and to the service target. XGB/month of outbound traffic is included with the base fee. If XGB/month of outbound traffic is exceeded, an overage charge of $0.01/GB is added to your bill. The base fee is determined by the number of global connections.
 
     | Base Fee Tier   | # of Connections| Price/Month   |
     | ----------------| ----------------|---------------|
-    | Small           | upto 25 000     |    $50 tbd    |
-    | Medium          | upto 100 000    |    $25 tbd    |
+    | Small           | upto 25 000     |    $25 tbd    |
+    | Medium          | upto 100 000    |    $50 tbd    |
     | Large           | upto 1 000 000  |    $200 tbd   |
 
 **Beta Pricing:** Beta is offered free of charge for the duration of the Beta trial and includes:
@@ -138,11 +138,13 @@ Pricing is based on outbound traffic usage and a base fee. Outbound traffic is t
 - Up to 100 000 concurrent connections (with a limit of 4000 requests-per-second).
 - Load balancing in upto 5 regions.
 
+Once the Beta period is over, billing for each Global Load Balancer begins based on monthly outbound traffic usage and number of connections.
+
 **30 Day Free Trial:** Free trials include;
 - up to 25 000 connections globally
 - up to XGB of outbound traffic.
 
-GB processed traffic is denied if either of these limits are exceeded during the 30 day free trial.
+GB+ processed traffic is denied if either of these limits are exceeded during the 30 day free trial.
 
 ## Technical Specifications
 
@@ -156,18 +158,17 @@ GB processed traffic is denied if either of these limits are exceeded during the
 - Fully customizable health checks to ensure traffic lands on a functioning backend
 - Free inbound network transfer
 - Outbound network transfer usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/)
-- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [Linode CLI](https://www.linode.com/products/cli/), or programmatically through the [Linode API](https://www.linode.com/products/linode-api/)
+- Provisioning and management through the [Cloud Manager](https://cloud.linode.com/), [CLI](https://www.linode.com/products/cli/), or programmatically through the [API](https://www.linode.com/products/linode-api/)
 
 ## Limits and Considerations
 
 - **Maximum number of concurrent connections:** Akamai Global Load Balancers each support up to 1,000,000 concurrent connections. If your application needs to support more than that, [contact support](https://www.linode.com/support/) to determine additional options or consider using multiple Akamai Global Load Balancers behind a DNS load balancing solution such as [Round-Robin DNS](/docs/guides/setting-up-round-robin-dns/).
 - **Connections per second:** There are no defined rate limits for the number of connections over a given time period, though certain modes are more performant. A port configured in **TCP** mode allows for the most number of connections. A port configured in **HTTPS** mode is the most resource intensive and accommodates fewer connections.
 - **IP addresses:** A public IPv4 address and IPv6 address are configured on each Akamai Global Load Balancer. Additional addresses are not available.
-- **Private network:** Communication with backend Linodes occurs over a data center's private network. As such, backend Linodes must be located within the same data center as the NodeBalancer.
 - **HTTP support:** HTTP/1.1 and HTTP/2.
-- **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Linode on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
-- **TLS termination:** When using a NodeBalancer with an application that requires HTTPS, you can either terminate the TLS connection on the NodeBalancer (**HTTPS** mode) or on the backend Linodes (**TCP** mode). When terminating TLS connections directly on the NodeBalancer, there are a few key considerations:
+- **Network transfer:** *Outbound transfer* usage is counted towards the account-wide [monthly network transfer pool](/docs/products/platform/get-started/guides/network-transfer/). This pool is the combined total of the network transfer allowance of each Compute Instance on the account. Both *Incoming transfer* and transfer over the private network are provided at no cost.
+- **TLS termination:** When using a Global Load Balancer with an application that requires HTTPS, you can either terminate the TLS connection on the Global Load Balancer (**HTTPS** mode) or on the backend Compute Instances (**TCP** mode). When terminating TLS connections directly on the Global Load Balancer, there are a few key considerations:
     - **TLS protocols:** TLS v1.2 and v1.3 are supported in **HTTPS** mode.
-    - While operating in **HTTPS** mode, internal traffic sent to the backend Linodes is unencrypted.
+    - While operating in **HTTPS** mode, internal traffic sent to the backend Compute Instances is unencrypted.
 
-    For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Linodes.
+    For applications that require a very high connection rate or otherwise need to overcome the above considerations present in **HTTPS** mode, consider operating in **TCP** mode and terminating TLS on the backend Compute Instances.
