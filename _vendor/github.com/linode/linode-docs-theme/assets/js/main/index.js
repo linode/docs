@@ -33,6 +33,15 @@ const searchConfig = getSearchConfig(params);
 
 // Set up and start Alpine.
 (function () {
+	// For integration tests.
+	if (window.Cypress) {
+		window.truste = {};
+		window.addEventListener('unhandledrejection', function (e) {
+			console.error(e);
+			return false;
+		});
+	}
+
 	// Register AlpineJS plugins.
 	{
 		Alpine.plugin(intersect);
@@ -179,12 +188,4 @@ const searchConfig = getSearchConfig(params);
 
 		pushGTag('docs_navigate');
 	});
-
-	// For integration tests. Cypress doesn't catch these (smells like a bug).
-	if (window.Cypress) {
-		window.addEventListener('unhandledrejection', function (e) {
-			console.error(e);
-			return false;
-		});
-	}
 })();
