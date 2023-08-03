@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-07-27
+modified: 2023-08-03
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -25,8 +25,9 @@ Capacity in beta data centers may be limited as we continue to scale up resource
 | -- | -- | -- |
 | Chennai, India | *Limited beta* | `in-maa` |
 | Chicago, IL, USA | **Now available to all customers** | `us-ord` |
+| Milan, Italy | *Limited beta* | `it-mil` |
 | Paris, France | **Now available to all customers** | `fr-par` |
-| Seattle, WA, USA | Not yet available | - |
+| Seattle, WA, USA | *Limited beta* | `us-sea` |
 | Stockholm, Sweden | *Limited beta* | `se-sto` |
 | Washington, DC, USA | **Now available to all customers** | `us-iad` |
 
@@ -67,9 +68,11 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 
 | Data Center | Cluster ID | Cluster URL |
 | --| -- | -- |
-| Chennai, India | `us-maa-1` | `https://us-maa-1.linodeobjects.com` |
+| Chennai, India | `us-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
+| Milan, Italy | `it-mil-1` | `https://it-mil-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
+| Seattle, WA, USA | `us-sea-1` | `https://us-sea-1.linodeobjects.com` |
 | Stockholm, Sweden | `se-sto-1` | `https://se-sto-1.linodeobjects.com	` |
 | Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
@@ -117,7 +120,9 @@ All new data centers support IP sharing and BGP-based failover, which can be con
 | --- | --- | --- | --- | --- |
 | Chennai, India | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 25 |
 | Chicago, IL, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 18 |
+| Milan, Italy | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 27 |
 | Paris, France | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 19 |
+| Seattle, WA, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 20 |
 | Stockholm, Sweden | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 23 |
 | Washington, DC, USA | Supported | BGP-based (new) | [lelastic](/docs/products/compute/compute-instances/guides/failover/#configure-failover) / [FRR](/docs/products/compute/compute-instances/guides/failover-bgp-frr/) | 17 |
 
@@ -155,6 +160,21 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 -   **Weblish Gateway:** `us-ord.webconsole.linode.com`
 -   **Glish Gateway:** `ord2.glish.linode.com`
 
+#### Milan, Italy
+
+-   **Lish SSH Gateway:** `lish-it-mil.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:toVfir7U8Ixg0wELAx0qCC91ld+HIxmTwggUP/+itkU lish-it-mil.linode.com
+    ECDSA 256 SHA256:XQDX+diXFBAT8OjpN+zwZN5sukTAQwtqe+i89Kh6gXQ lish-it-mil.linode.com
+    ED25519 256 SHA256:Uxw1KbWQVz5QYHHfUzFJcZM+HLbdu6vJ/R3ksEv2k3M lish-it-mil.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish Gateway:** `it-mil.webconsole.linode.com`
+-   **Glish Gateway:** `mil1.glish.linode.com`
+
 #### Paris, France
 
 -   **Lish SSH Gateway:** `lish-fr-par.linode.com`
@@ -169,6 +189,21 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
 
 -   **Weblish Gateway:** `fr-par.webconsole.linode.com`
 -   **Glish Gateway:** `par3.glish.linode.com`
+
+#### Seattle, WA, USA
+
+-   **Lish SSH Gateway:** `lish-us-sea.linode.com`
+
+    {{< note type="secondary" title="Lish SSH Gateway Fingerprints" isCollapsible=true >}}
+    ```command
+    RSA 3072 SHA256:XqkskcFrRzZbMU/XeR1diiNM6zCsWs2wL4pmTvBLNII lish-us-sea.linode.com
+    ECDSA 256 SHA256:FEqVGwuv/BgbLtNkcfFg7Lgm0R6KQVUnPY+wIoimrrA lish-us-sea.linode.com
+    ED25519 256 SHA256:6R7iWvSe7OQSDcVmhwrH/EJiE51+ntiub3CPXfzupDA lish-us-sea.linode.com
+    ```
+    {{< /note >}}
+
+-   **Weblish Gateway:** `us-sea.webconsole.linode.com`
+-   **Glish Gateway:** `sea1.glish.linode.com`
 
 #### Stockholm, Sweden
 
