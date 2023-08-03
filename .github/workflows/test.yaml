@@ -1,6 +1,6 @@
 name: CI Tests
 
-on: [pull_request]
+on: [pull_request_target]
 
 env:
   hugo-image-cache-name: hugo-generated-images
