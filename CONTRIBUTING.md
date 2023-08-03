@@ -70,7 +70,7 @@ To Install the latest Node.js LTS release on Windows, navigate to the [downloads
 
 ### Install Hugo
 
-The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.115.4**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
+The Linode documentation library is built using [Hugo](http://gohugo.io), an open-source static site generator. In order to preview your guide before submission, you need to install Hugo on your local computer. This site currently uses **Hugo v0.116.1**. To remain consistent in the testing and development process, it's recommended to install this version instead of using a newer version.
 
 Note: If you observe any issues on a newer version, please [file an issue](https://github.com/linode/docs/issues) in the docs GitHub repository.
 
@@ -78,10 +78,10 @@ Note: If you observe any issues on a newer version, please [file an issue](https
 
 To install Hugo, download the appropriate binary for your system, extract it, and move it to a directory within your PATH.
 
-1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.115.4 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.115.4) under **Assets**.
+1.  Download the file below that corresponds with the OS and platform on your local system. If you don't see your system on this list, you can find additional files on the [Hugo v0.116.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.116.1) under **Assets**.
 
-    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.115.4/hugo_extended_0.115.4_darwin-universal.tar.gz
-    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.115.4/hugo_extended_0.115.4_Linux-64bit.tar.gz
+    - **macOS:** https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_darwin-universal.tar.gz
+    - **Linux:** https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_Linux-64bit.tar.gz
 
     You can download this file through a terminal using the curl command, replacing [url] with the URL for your platform:
 
@@ -109,13 +109,13 @@ To install Hugo, download the appropriate binary for your system, extract it, an
 
     Make sure to also add the final `export PATH` line in the above snippet to your terminal's configuration file, like `~/.zshrc` on macOS.
 
-1.  Test Hugo by running `hugo version`. This should output a long string indicating that version 0.115.4 is being used. If not, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
+1.  Test Hugo by running `hugo version`. This should output a long string indicating the version. If the correct version is not used, review the prior steps and the [Install Hugo from Tarball](https://gohugo.io/getting-started/installing/#install-hugo-from-tarball) section of the Hugo documentation.
 
 #### Windows
 
 While macOS and Linux are preferred by most of the core Linode Docs team, it's also possible to use Hugo on Windows.
 
-1.  Download the [hugo_extended_0.115.4_windows-amd64.zip](https://github.com/gohugoio/hugo/releases/download/v0.115.4/hugo_extended_0.115.4_windows-amd64.zip) file. Additional files for other operating systems can be found on the [Hugo v0.115.4 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.115.4) under **Assets**.
+1.  Download the [hugo_extended_0.116.1_windows-amd64.zip](https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_windows-amd64.zip) file. Additional files for other operating systems can be found on the [Hugo v0.116.1 GitHub release page](https://github.com/gohugoio/hugo/releases/tag/v0.116.1) under **Assets**.
 
 1.  Extract the file to the directory you'd like to install Hugo under, such as `C:\Hugo\bin`.
 
@@ -171,10 +171,10 @@ For more information about using Git, refer to the [official Git documentation](
 
 This section is only relevant to contributors who have previously worked on the docs repo prior to the Tailwind v3 upgrade (which occurred on July 6th, 2023 in docs release v1.252.0). After you merge in changes from this release (and onward), you will likely notice display issues when previewing the site locally. This is due to Tailwind v3 and the way it integrates with Hugo (and our theme). To complete the upgrade locally and fix any display issues, follow the steps below.
 
-1.  Upgrade Hugo to v0.115.4. On macOS, run the following commands in a temporary folder (not in your docs repo):
+1.  Upgrade Hugo to v0.116.1. On macOS, run the following commands in a temporary folder (not in your docs repo):
 
-        curl -OL https://github.com/gohugoio/hugo/releases/download/v0.115.4/hugo_extended_0.115.4_darwin-universal.tar.gz
-        tar -xvzf hugo_extended_0.115.4_darwin-universal.tar.gz
+        curl -OL https://github.com/gohugoio/hugo/releases/download/v0.116.1/hugo_extended_0.116.1_darwin-universal.tar.gz
+        tar -xvzf hugo_extended_0.116.1_darwin-universal.tar.gz
         mv hugo /usr/local/bin
 
     If you are using a different operating system, refer to the [Install Hugo](#install-hugo) section above.
