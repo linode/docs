@@ -10,6 +10,13 @@ env:
   hugo_image_cache_name: hugo-generated-images
   hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
 
+# This workflow builds the site with Hugo, syncs it over to a staging web
+# server, and updates the sandbox Algolia app to reflect the content in the
+# staging version of the site. This happens whenever the `main` branch is
+# updated. We inspect this staging site before cutting a release tag, to make
+# sure the site renders as expected before cutting a release tag/updating
+# production.
+#
 # The working directory for this GitHub Action is under:
 # /home/runner/work/docs/docs/
 

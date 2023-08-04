@@ -10,9 +10,16 @@ env:
   hugo_image_cache_name: hugo-generated-images
   hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
 
+# This workflow builds the site with Hugo, syncs it over to a testing web
+# server, and updates the sandbox Algolia app to reflect the content in the
+# testing version of the site. This happens whenever the
+# `feature/testing-linodedocs` branch is updated. We use this testing workflow
+# to test new website features, especially docs theme updates that might have
+# unexpected interactions with the CDN.
+#
 # The working directory for this GitHub Action is under:
 # /home/runner/work/docs/docs/
-
+#
 # For this workflow, two repos are checked out:
 # - The github.com/linode/docs repo is checked out into the `docs-repo` folder
 # - The github.com/linode/linode-docs-theme repo is checked out into the

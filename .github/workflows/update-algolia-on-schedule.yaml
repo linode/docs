@@ -1,8 +1,41 @@
 name: Update Algolia on schedule
 
+# Update Algolia once an hour at the beginning of the hour
 on:
   schedule:
     - cron:  '0 * * * *'
+
+
+# This workflow downloads the data from the documentation indices in Algolia as
+# well as the latest data from the wordpress content indices in Algolia. It
+# then merges that data together and pushes it to the linode-merged index.
+#
+# The working directory for this GitHub Action is under:
+# /home/runner/work/docs/docs/
+
+# For this workflow, two repos are checked out:
+# - The github.com/linode/docs repo is checked out into the `docs-repo` folder
+# - The github.com/linode/linode-docs-theme repo is checked out into the
+#   `linode-docs-theme` folder.
+#
+# We check out the linode-docs-theme repo because it contains a
+# `linode_algolia_admin` tool that we use to update the Algolia search indices.
+#
+# Inside the docs repo, the go.mod file contains a reference to which git
+# commit of the linode-docs-theme is associated with the docs repo.
+# We inspect this file to get that commit hash before checking out the
+# linode-docs-theme repo.
+#
+# The following is a diagram of the above-mentioned repos and files. It does not
+# show all the files within those repositories:
+#
+# .
+#
+# ├── docs-repo
+# │   └── go.mod
+# └── linode-docs-theme-repo
+#     └── scripts
+#         └── linode_algolia_admin
 
 jobs:
   update-algolia-on-schedule:
