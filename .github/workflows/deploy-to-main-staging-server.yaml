@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'test-gha-cicd'
 
 env:
   hugo_image_cache_name: hugo-generated-images
