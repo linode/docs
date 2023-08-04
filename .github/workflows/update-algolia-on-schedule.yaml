@@ -2,7 +2,7 @@ name: Update Algolia on schedule
 
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '0 * * * *'
 
 jobs:
   update-algolia-on-schedule:
