@@ -10,6 +10,38 @@ env:
   hugo_image_cache_name: hugo-generated-images
   hugo_image_cache_path: /home/runner/work/docs/docs/docs-repo/resources/_gen/images/
 
+# The working directory for this GitHub Action is under:
+# /home/runner/work/docs/docs/
+
+# For this workflow, two repos are checked out:
+# - The github.com/linode/docs repo is checked out into the `docs-repo` folder
+# - The github.com/linode/linode-docs-theme repo is checked out into the
+#   `linode-docs-theme` folder.
+#
+# This workflow runs `hugo` to build the site inside the `docs-repo` folder.
+# The site is rendered into the `docs-repo/public/` directory. The workflow
+# rsyncs this folder is over to the destination web server.
+#
+# We check out the linode-docs-theme repo because it contains a
+# `linode_algolia_admin` tool that we use to update the Algolia search indices.
+#
+# Inside the docs repo, the go.mod file contains a reference to which git
+# commit of the linode-docs-theme is associated with the docs repo.
+# We inspect this file to get that commit hash before checking out the
+# linode-docs-theme repo.
+#
+# The following is a diagram of the above-mentioned repos and files. It does not
+# show all the files within those repositories:
+#
+# .
+#
+# ├── docs-repo
+# │   ├── go.mod
+# │   └── public
+# └── linode-docs-theme-repo
+#     └── scripts
+#         └── linode_algolia_admin
+
 jobs:
   deploy-to-feature-testing-server:
     runs-on: ubuntu-latest
@@ -28,6 +60,8 @@ jobs:
       with:
         path: 'docs-repo'
 
+      # Debugging step so we can check if the right version
+      # of the docs repo is checked out
     - name: Print current docs repo branch/ref/commit
       working-directory: ./docs-repo
       run: |
@@ -38,6 +72,12 @@ jobs:
       id: get-theme-version
       working-directory: ./docs-repo
       run: |
+        # `hugo mod graph` prints output that looks like:
+        # project github.com/linode/linode-docs-theme@v0.0.0-20230706164309-cc2dbdeb7143+vendor
+        # In this example, cc2dbdeb7143 is the relevant commit hash for the
+        # linode-docs-theme repo. The following commands grab the commit hash
+        # from the `hugo mod graph` string
+
         LINODE_DOCS_THEME_VERSION=$(hugo mod graph | grep linode-docs-theme | cut -d '+' -f 1 | grep -o '[^-]*$')
         echo "VERSION=$LINODE_DOCS_THEME_VERSION" >> $GITHUB_OUTPUT
 
@@ -55,12 +95,16 @@ jobs:
       run: |
         git checkout ${{ steps.get-theme-version.outputs.VERSION }}
 
+      # Debugging step so we can check if the right version
+      # of the Algolia admin tool is checked out
     - name: Print Linode Algolia admin tool version
       working-directory: ./linode-docs-theme-repo
       run: |
         cd scripts/linode_algolia_admin/
         go run main.go version
 
+      # Debugging step that lists the Hugo-generated images
+      # directory *before* the imache cache restore step
     - name: List contents of images dir
       continue-on-error: true
       run: ls -al ${{ env.hugo_image_cache_path }}
@@ -72,6 +116,9 @@ jobs:
         key: ${{ env.hugo_image_cache_name }}
         restore-keys: ${{ env.hugo_image_cache_name }}
 
+      # Debugging step that lists the Hugo-generated images
+      # directory *after* the imache cache restore step,
+      # to make sure that the restore happened successfully
     - name: List contents of images dir
       continue-on-error: true
       run: ls -al ${{ env.hugo_image_cache_path }}
@@ -96,6 +143,8 @@ jobs:
         hugo config
         hugo -b "${{ secrets.DOCS_WEBSITE_URL }}" --gc --minify -d public
 
+      # Debugging step that lists the Hugo-rendered files
+      # to make sure the site was built
     - name: List rendered files
       working-directory: ./docs-repo
       run: |
@@ -111,6 +160,9 @@ jobs:
       run: |
         echo "${{ secrets.DOCS_WEBSITE_RSYNC_HOST_VERIFICATION }}" > rsync_known_hosts
 
+        # Sync these assets without the --delete flag. These
+        # assets' filenames are fingerprinted, so they will not
+        # conflict with old versions that remain on the server.
         rsync -r -e "ssh -o UserKnownHostsFile=rsync_known_hosts" \
           docs-repo/public/css \
           docs-repo/public/images \
@@ -119,6 +171,9 @@ jobs:
           docs-repo/public/linode \
           ${{ secrets.DOCS_WEBSITE_USER }}@${{ secrets.DOCS_WEBSITE_RSYNC_DESTINATION }}:${{ secrets.DOCS_WEBSITE_RSYNC_DIR }}
 
+        # Sync everything else, and delete files in the destination
+        # rsync dir that do not exist in the source docs-repo/public/
+        # folder
         rsync -r -e "ssh -o UserKnownHostsFile=rsync_known_hosts" \
           --exclude="/css/" \
           --exclude="/images/" \
