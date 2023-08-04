@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - develop
-      - fix-image-cache
 
 env:
   repo_name: docs
