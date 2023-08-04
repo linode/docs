@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          path: docs
+          path: docs-repo
 
       - name: Print current docs repo branch/ref/commit
         working-directory: ./docs-repo
