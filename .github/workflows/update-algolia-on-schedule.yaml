@@ -5,7 +5,6 @@ on:
   schedule:
     - cron:  '0 * * * *'
 
-
 # This workflow downloads the data from the documentation indices in Algolia as
 # well as the latest data from the wordpress content indices in Algolia. It
 # then merges that data together and pushes it to the linode-merged index.
