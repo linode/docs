@@ -167,7 +167,7 @@ You can now test your Postfix Configurations by using your system's `mail` utili
 
 1. Compose an email to verify that your system is able to successfully send it. Replace the email address with your own and your intended recipient's email address.
 
-        echo  "body of your email" | mail -s "This is a subject" -a "From:you@example.com" recipient@elsewhere.com
+        echo  "body of your email" | mail -s "This is a subject" -A "From:you@example.com" recipient@elsewhere.com
 
     {{< note respectIndent=false >}}
 
