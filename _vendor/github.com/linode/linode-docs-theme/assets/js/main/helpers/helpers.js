@@ -117,16 +117,6 @@ export function getOffsetTop(container, el) {
 	return distance < 0 ? 0 : distance;
 }
 
-// withBoundingClientRect calls the callback with the boundingClientRect of the element.
-export function withBoundingClientRect(el, callback) {
-	const observer = new IntersectionObserver((entries) => {
-		bounds = entries[0].boundingClientRect;
-		callback(bounds);
-		observer.disconnect();
-	});
-	observer.observe(el);
-}
-
 export function setIsTranslating(el, timeout = 1000) {
 	let currentLang = getCurrentLang();
 	if (!currentLang || currentLang == 'en') {
@@ -174,6 +164,10 @@ export function isIterable(obj) {
 
 export function isMobile() {
 	return document.documentElement.clientWidth < 768;
+}
+
+export function isDesktop() {
+	return isScreenLargerThan(1279); // xl in Tailwind config.
 }
 
 export function isScreenLargerThan(px) {
