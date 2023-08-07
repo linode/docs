@@ -210,8 +210,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-southeast.webconsole.linode.com`
--   **Glish Gateway:** `us-southeast.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `us-southeast.webconsole.linode.com`
 
 #### Chicago, IL (USA)
 
@@ -225,8 +224,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-ord.webconsole.linode.com`
--   **Glish Gateway:** `us-ord.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
 
 #### Dallas, TX (USA)
 
@@ -240,8 +238,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-central.webconsole.linode.com`
--   **Glish Gateway:** `us-central.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `us-central.webconsole.linode.com`
 
 #### Frankfurt (Germany)
 
@@ -255,8 +252,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `eu-central.webconsole.linode.com`
--   **Glish Gateway:** `eu-central.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `eu-central.webconsole.linode.com`
 
 #### Fremont, CA (USA)
 
@@ -270,8 +266,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-west.webconsole.linode.com`
--   **Glish Gateway:** `us-west.webconsole.linode.com`
+-   **Weblish/Glish Gateway:**`us-west.webconsole.linode.com`
 
 #### London (UK)
 
@@ -285,8 +280,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `eu-west.webconsole.linode.com`
--   **Glish Gateway:** `eu-west.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `eu-west.webconsole.linode.com`
 
 #### Mumbai (India)
 
@@ -300,8 +294,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `ap-west.webconsole.linode.com`
--   **Glish Gateway:** `ap-west.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `ap-west.webconsole.linode.com`
 
 #### Newark, NJ (USA)
 
@@ -315,8 +308,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-east.webconsole.linode.com`
--   **Glish Gateway:** `us-east.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `us-east.webconsole.linode.com`
 
 #### Paris, France
 
@@ -330,8 +322,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `fr-par.webconsole.linode.com`
--   **Glish Gateway:** `fr-par.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
 
 #### Singapore
 
@@ -345,8 +336,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `ap-south.webconsole.linode.com`
--   **Glish Gateway:** `ap-south.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `ap-south.webconsole.linode.com`
 
 #### Sydney (Australia)
 
@@ -360,8 +350,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `ap-southeast.webconsole.linode.com`
--   **Glish Gateway:** `ap-southeast.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `ap-southeast.webconsole.linode.com`
 
 #### Tokyo (Japan)
 
@@ -375,8 +364,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `ap-northeast.webconsole.linode.com`
--   **Glish Gateway:** `ap-northeast.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `ap-northeast.webconsole.linode.com`
 
 #### Toronto (Canada)
 
@@ -390,8 +378,7 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `ca-central.webconsole.linode.com`
--   **Glish Gateway:** `ca-central.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `ca-central.webconsole.linode.com`
 
 #### Washington, DC (USA)
 
@@ -405,5 +392,4 @@ If you are having issues accessing Lish, Weblish, or Glish, you may be blocked b
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-iad.webconsole.linode.com`
--   **Glish Gateway:** `us-iad.webconsole.linode.com`
+-   **Weblish/Glish Gateway:** `us-iad.webconsole.linode.com`
