@@ -75,9 +75,9 @@ To boot a Compute Instance into Rescue Mode, follow the instructions below.
     {{< note >}}
     You can assign up to 7 disks in Rescue Mode. `/dev/sdh` is always assigned to the Finnix recovery distribution.
 
-    For best results, you should review the names that your Compute Instance's disks are using in your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
+    When you assign additional disks, these disks are not mounted by default. It is important that you review the names that your Compute Instance's disks are using in your [configuration profile](/docs/products/compute/compute-instances/guides/configuration-profiles/) (`/dev/sda`, `/dev/sdb`, etc.) and match those names to the device assignments you specify in the Rescue form before starting Rescue Mode.
 
-    Matching these names will be especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Compute Instance's `/etc/fstab` file, which defines where and how your instance mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
+    Matching these names is especially important if you need to [change root](#change-root) within Rescue Mode. The chroot will be able to read your Compute Instance's `/etc/fstab` file, which defines where and how your instance mounts its disks when booting up, to automatically apply the correct mount options and mount directories to your disks.
 
     A mismatch in the names of your disks between your Compute Instance's configuration profile and your Rescue Mode environment may cause the chroot to mount these disks in the wrong location or with the wrong mount options. As a result, it is important to ensure that these names match.
     {{< /note >}}
