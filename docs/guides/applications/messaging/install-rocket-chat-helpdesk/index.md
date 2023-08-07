@@ -14,37 +14,35 @@ external_resources:
 
 ## What is Rocket.Chat?
 
-[Rocket.Chat](https://www.rocket.chat/) offers an open-source communications platform with enterprise-grade features. With Rocket.Chat, you get a communication and collaboration platform coupled with a robust help desk toolset. And throughout Rocket.Chat boasts a high degree of customization and an emphasis on data security.
+[Rocket.Chat](https://www.rocket.chat/) offers an open-source communications platform with enterprise-grade features. Rocket.Chat combines a robust platform for communication and collaboration with a toolset for help desk and support operations.
 
-At the center of Rocket.Chat is a secure and adaptable platform for real-time communication and collaboration. Similar to platforms like Slack and Microsoft Teams, Rocket.Chat supports conversations across your organization, with other companies, and with your wider customer base. And Rocket.Chat leverages federated communications to expand its connections even further.
+At its center Rocket.Chat is a platform for real-time communications with an emphasis on security. Similar to platforms like Slack and Microsoft Teams, Rocket.Chat can manage conversations across your organization. But Rocket.Chat also supports federation, letting you talk with other companies and with your wider customer base.
 
-In addition to being a communication platform, Rocket.Chat features a slew of help desk tools for effective customer and support communications. In this way, you can also compare Rocket.Chat services like Zendesk and Freshdesk.
-
-And Rocket.Chat's emphasis on data security ensures that all your communications — internal and external — are protected with end-to-end encryption.
+It is Rocket.Chat's omnichannel features — for integration and cross-channel communications — that reach effectively into help desk and custom support use cases. In this way, you can also compare Rocket.Chat to services like Zendesk and Freshdesk.
 
 ## Why Choose Rocket.Chat Over Hosted SaaS Applications?
 
 Rocket.Chat competes with tools like Slack and Microsoft Teams, with one of the major differences being that Rocket.Chat can be self-hosted and the latter are software-as-a-service (SaaS).
 
-What does this mean for you, and why would you would to choose Rocket.Chat over alternatives like Slack and Microsoft Teams?
+What does this mean for you, and why would you choose Rocket.Chat over alternatives like Slack and Microsoft Teams?
 
 -   Rocket.Chat Community Edition is free and can be readily self-hosted. That makes it both accessible and gives you an option for a high degree of control around your collaboration platform.
 
 -   Rocket.Chat prioritizes security, implementing some of the highest standards in the field. Rocket.Chat uses end-to-end encryption for communications and provides fine-grained, role-based permission control.
 
--   Rocket.Chat comes with omnichannel support, expanding the reach of your collaboration beyond the platform itself. For instance, you can configure Rocket.Chat to integrate with your website and other applications via a live-chat pop-up. You can also set up integration with other messaging services, like SMS, email, and WhatsApp, allowing you to effectively engage with clients through a wider range of services.
+-   Rocket.Chat comes with omnichannel support, expanding the reach of your collaboration beyond the platform itself. Integrate a Rocket.Chat live-chat pop-up on your website. Or connect your workspace with other messaging services, like SMS, email, and WhatsApp to engage with external clients.
 
--   Rocket.Chat's omnichannel support opens it up as an effective help-desk. Using live-chat integration and cross-media messaging, you can provide support to your customers on the same platform you collaborate on internally.
+-   Rocket.Chat's omnichannel support also opens it up as an effective help-desk. Using live-chat integration and cross-channel messaging, you can integrate external customer support into the same platform you collaborate on internally.
 
 -   Rocket.Chat is open source, so you can ultimately access the code and make of the platform what you want. Moreover, open-source software gets the benefits of community support and ongoing development.
 
 ## Choosing Between Rocket.Chat Community and Enterprise Editions
 
-Rocket.Chat offers both a Community Edition and an Enterprise Edition. For this tutorial, the steps follow the Community Edition. But at any time you can upgrade your Community Edition to the Enterprise Edition to get the added benefits of premium features when you need them.
+Rocket.Chat offers both a Community Edition and an Enterprise Edition. For this tutorial, the steps concern the Community Edition. But at any time you can upgrade your Community Edition to a self-hosted Enterprise Edition.
 
-But when ultimately sets the Community and Enterprise Editions apart? Why might you, now or later, want to consider adopting Enterprise's premium features?
+So then ultimately sets the Community and Enterprise Editions apart? Why might you, now or later, want to consider adopting Enterprise's premium features?
 
--   Support. Rocket.Chat's Enterprise includes access to Rocket.Chat's official support web portal, bringing professional assistance to managing your instance. Community is not without support, but that support is peer, from the open-source community.
+-   Support. Rocket.Chat's Enterprise includes access to Rocket.Chat's official support web portal, bringing professional assistance to managing your instance. Community is not without support, but that support is peer-to-peer, from the open-source community.
 
 -   Limitations. Community instances are limited in both scaling and integration. For instance, a Community instance can only make 10,000 push notifications per month and has access to only five marketplace applications at a time.
 
@@ -52,7 +50,7 @@ But when ultimately sets the Community and Enterprise Editions apart? Why might 
 
 -   Hosting options. Community supports self-hosting, which is what this tutorial demonstrates. However, with Enterprise you have access to Rocket.Chat's cloud-hosted deployment. That can be useful when getting started, though it does limit your control of the platform.
 
-Along with these, the Enterprise Edition brings a range of other features and enhancements to basic tools. You can learn more from the Rocket.Chat [Enterprise page](https://www.rocket.chat/enterprise).
+Along with these, the Enterprise Edition brings a range of other features and enhancements to Rocket.Chat's range of tools. You can learn more from the Rocket.Chat [Enterprise page](https://www.rocket.chat/enterprise).
 
 ## Deploy Rocket.Chat on the Akamai Cloud Computing Platform
 
@@ -68,7 +66,7 @@ Learn more, and see the steps for the Marketplace deployment, in our guide on ho
 
 Rocket.Chat can be deployed manually to an Akamai Cloud Compute Instance. The process uses the [Snap](https://snapcraft.io) package manager, which bundles applications for Linux systems.
 
-Follow the steps here to deploy Rocket.Chat to a fresh Compute Instance. The steps include not only installation of Rocket.Chat, but also the configuration of a reverse proxy and SSL certification.
+Follow the steps here to deploy Rocket.Chat to a fresh Compute Instance. The steps include not only installation of Rocket.Chat, but also the configuration of a reverse proxy server with optional SSL certification.
 
 #### Before You Begin
 
@@ -96,7 +94,7 @@ Once the installation has finished, the Rocket.Chat server starts up on your sys
 
 You can access your Rocket.Chat instance right after installation, but usually it is better practice to set up a reverse proxy server for access. This lets you forward the default port to the HTTP and HTTPS ports and more easily and securely leverage a domain name.
 
-Should you want SSL encryption for your instance, the reverse proxy also provides the basis for setting that up. The steps in the next section show you how.
+Should you want SSL encryption for your instance, the reverse proxy also provides a basis for setting that up. The steps in the next section show you how.
 
 1.  Install NGINX to act as the reverse proxy server. You can install NGINX by following the appropriate section in our guide [Installing and Using NGINX](/docs/guides/how-to-install-and-use-nginx-on-ubuntu-20-04/). Select your system's distribution from the drop down at the top of the page.
 
@@ -186,10 +184,9 @@ Should you want SSL encryption for your instance, the reverse proxy also provide
 
 #### (Optional) Get an SSL Certificate
 
-With a reverse proxy in place, you can readily enable SSL encryption for your Rocket.Chat instance. Typically, doing so is good practice. It further secures the traffic on your server and plays better with modern browsers.
+With a reverse proxy in place, you can readily enable SSL encryption for your Rocket.Chat instance using [Certbot](https://certbot.eff.org/). Enabling SSL encryption further secures the traffic on your server and plays better with modern browsers.
 
 1.  Install Cerbot and use it to procure an SSL certificate for NGINX. Follow along with our guide [Use Certbot to Enable HTTPS with NGINX](/docs/guides/enabling-https-using-certbot-with-nginx-on-ubuntu/), selecting your system's distribution from the drop down menu at the top of the page.
-
 
     {{< note >}}
     Completing these steps requires your system's public IP address to be associated with a domain name. The guide linked above includes a link with more information on this requirement.
@@ -235,11 +232,11 @@ With a reverse proxy in place, you can readily enable SSL encryption for your Ro
 
 ### Deploying to a Kubernetes Cluster
 
-For a more scalable solution, Rocket.Chat supports Kubernetes deployments. Provision a Linode Kubernetes Engine (LKE) cluster on Akamai cloud, and you can use [Helm](https://helm.sh/) to have a distributed Rocket.Chat instance running in only a few steps.
+For a more scalable solution, Rocket.Chat supports Kubernetes deployments. With a Linode Kubernetes Engine (LKE) cluster on Akamai cloud and using [Helm](https://helm.sh/), you can have a distributed Rocket.Chat instance running in only a few steps.
 
 1.  Create an LKE cluster, and add its configuration to a local kubectl tool. All the steps for doing so are covered in our guide  [Linode Kubernetes Engine - Get Started](/docs/products/compute/kubernetes/get-started/).
 
-1.  Set kubectl to be using the LKE cluster context. Replace `lke-example-ctx` with the cluster's context name provided from the output of the `get-contexts` command.
+1.  Set kubectl to be using the LKE cluster context. Replace `lke-example-ctx` below with the cluster's context name provided from the output of the `get-contexts` command.
 
     ```command
     kubectl config get-contexts
@@ -254,7 +251,7 @@ For a more scalable solution, Rocket.Chat supports Kubernetes deployments. Provi
     helm repo add rocketchat https://rocketchat.github.io/helm-charts
     ```
 
-1.  Create a Helm chart configuration for the Rocket.Chat deployment. The example that follows provides the minimum necessary settings. You can reference the range of options in the [official documentation](https://docs.rocket.chat/deploy/prepare-for-your-deployment/rapid-deployment-methods/helm#configuration).
+1.  Create a Helm chart configuration for the Rocket.Chat deployment. The example that follows provides the minimum necessary settings. You can reference the full range of options in the [official documentation](https://docs.rocket.chat/deploy/prepare-for-your-deployment/rapid-deployment-methods/helm#configuration).
 
     Replace the passwords here with actual passwords you intend to use to secure Rocket.Chat's database.
 
@@ -274,7 +271,7 @@ For a more scalable solution, Rocket.Chat supports Kubernetes deployments. Provi
 
 #### Forwarding to the Rocket.Chat Cluster
 
-To access the Rocket.Chat instance from the Kubernetes cluster, you have a few options. Below you can see probably the most useful options for getting started.
+To access the Rocket.Chat instance from the Kubernetes cluster, you have a few options. Below you can see two useful options for getting started.
 
 -   Forward the port. This option on its own is only viable for testing. It uses kubectl to forward the Kubernetes service to a local port.
 
@@ -290,17 +287,15 @@ To access the Rocket.Chat instance from the Kubernetes cluster, you have a few o
 
 ## Access Rocket.Chat After Deployment
 
-With your own Rocket.Chat instance up and running, you can now access the workspace and begin setting it up to meet your needs.
-
-These next sections show you how to start using your instance, from completing the set up, to navigating the interface, to using the mobile application. Throughout, the examples use `example.com` as the instance domain. You need to use your own domain in place of that.
+With your own Rocket.Chat instance up and running, you can now access the workspace and begin setting it up to meet your needs. These next sections show you how to start using your instance, from completing the set up, to navigating the interface, to using the mobile application.
 
 ### Completing the Rocket.Chat Setup
 
 On first accessing your instance, you are prompted to complete the setup. That means creating an administrator user, entering some information about your organization, and registering your instance.
 
-1.  Navigate in a web browser to the Rocket.Chat instance's address. For these examples, assuming SSL certificates were set up: `https://example.com`.
+1.  Navigate in a web browser to the Rocket.Chat instance's address. For example, assuming your domain name is `example.com` and that you set up SSL: `https://example.com`.
 
-1.  Follow along with the prompts to complete your instance setup. Keep track of the credentials you use to create the administrator user. When prompted, enter your email, and use the provided code to verify the address.
+1.  Follow along with the prompts to complete your instance setup. Keep track of the credentials you use to create the administrator user. When prompted, enter your email, and use the provided code to verify the email address.
 
     ![Rocket.Chat initial set up prompt](rocketchat-initial-set-up.png)
 
@@ -310,13 +305,13 @@ Afterward, you are taken to the dashboard for your Rocket.Chat workspace.
 
 ### Overview of the Rocket.Chat Web Interface
 
-Each time you log in after the initial setup, you should see the dashboard for your Rocket.Chat workspace. The left pane shows the workspace channels, and this is where you and all of the workspace users can start collaborating.
+Each time you log in after the initial setup, you should see the dashboard for your Rocket.Chat workspace. The left pane shows the workspace channels, where the workspace users can start collaborating, and the middle gives quick access for administrator tools.
 
 [![Rocket.Chat dashboard](rocketchat-dashboard_small.png)](rocketchat-dashboard.png)
 
-As an administrator user, from the dashboard you can also add users, create channels, build rooms, and more. Other user roles can be given access to these functions as needed.
+In addition to these quick tools, administrator users have access to the **Administration** menu. Access this from the top of the left pane, using the three dots.
 
-Additionally, administrator users have access to the **Administration** menu. Access this from the top of the left pane, using the three dots. Most useful from there, navigate to the **Workspace** option, and select **Settings** from the next menu. The resulting **Settings** menu provides a host of options for customizing and fine-tuning your workspace.
+Most useful from there, navigate to the **Workspace** option, and select **Settings** from the next menu. The resulting **Settings** menu provides a wide range of options for customizing and fine-tuning your workspace.
 
 ![Rocket.Chat settings page](rocketchat-settings.png)
 
@@ -328,41 +323,35 @@ Rocket.Chat has an official mobile application for both iOS and Android devices.
 
 Learn more about the Rocket.Chat mobile application and how to use it in the [official documentation](https://docs.rocket.chat/use-rocket.chat/rocket.chat-mobile).
 
-For now, here are the general steps for getting started. With your Rocket.Chat instance up and running, you have everything you need for users to start connecting their mobile devices.
+For now, here are the general steps for getting started on a mobile device.
 
-1.  From a mobile device, download the Rocket.Chat application. You can get it from the Apple App Store or from the Google Play Store.
+1.  Download the Rocket.Chat application to the mobile device. You can get the application from the Apple App Store or from the Google Play Store.
 
 1.  Open the application, and, when prompted, enter your Rocket.Chat instance's domain as the workspace. For instance: `example.com`.
 
-1.  The application then prompts you for user credentials. Use the same credentials you would to log into the Rocket.Chat workspace from your web browser.
+1.  Use your Rocket.Chat user credentials to log in when prompted, just as you would in the web browser.
 
 ## Configure Rocket.Chat as a Business Communication and Collaboration Tool
 
 Already your Rocket.Chat workspace is ready for all the communication and collaboration you would expect. Use the existing *#general* channel, or create a channel of your own, and start talking.
 
-Creating new users and channels gives you finer control of access, and users with access to channels can start talking in them right away.
-
-To get you started, here are some things you can do to make sure your Rocket.Chat workspace has a stronger foundation for effective communication and collaboration.
+But beyond that, here are some additional things you can do to make sure your Rocket.Chat workspace has a stronger foundation for effective and engaging collaboration.
 
 ### Customize the Workspace
 
 Make your Rocket.Chat workspace stand out as your own by adding organizational branding and styling. Within the Rocket.Chat documentation, this process is known as **white-labeling**.
 
-Most of these customizations are handled oh the **Layout** screen, which you can reach from your Rocket.Chat dashboard using one of these methods.
+Most of these customizations are handled from the **Layout** page, which you can reach from your Rocket.Chat dashboard using one of these methods.
 
 - Click the **Customize** button in the upper right of the **Home** page.
 
-- Access the **Administration** menu using the three dots at the top of the channel pane, on the left. Select the **Workspace** option, then use the menu on the left to access the **Settings**. Search the options until you find **Layout**, and click the **Open** button for it.
-
-The advantage of the second option is that it brings you through the administrator settings menu. There, you can find myriad other ways of customizing and fine-tuning your Rocket.Chat instance.
+- Access **Administration** > **Workspace** > **Settings** > **Layout** starting from the three dots at the top of the channel pane.
 
 For more on customizing your workspace, see the [Basic White-labeling](https://docs.rocket.chat/setup-and-configure/accessing-your-workspace/basic-white-labeling) page within Rocket.Chat's official documentation.
 
 ### Inviting Users
 
-Now your workspace is ready for other users to start logging on and having conversations. To do this, you can use the **User** section of the workspace.
-
-You can find that section from either the **Administration** menu or from the **Add User** button on the dashboard.
+The Rocket.Chat workspace needs users to start conversations. Use either the **Administration** menu or the **Add User** button on the dashboard to access the **Users** page, where you can add and manage users.
 
 From there, you have two options for adding new users.
 
@@ -370,31 +359,25 @@ From there, you have two options for adding new users.
 
     {{< content "email-warning-shortguide" >}}
 
--   Manual entry. Use the **New** button, and enter the details of a new user you want to create. The form includes a *Require password change* option that can be useful for forcing new users to change temporary passwords.
+-   Manual entry. Use the **New** button, and enter the details of a new user you want to create. The form includes a *Require password change* option that can be useful for forcing new users to change temporary passwords when they first log in.
 
-Find out more about user-related administration in Rocket.Chat via the [official documentation](https://docs.rocket.chat/use-rocket.chat/workspace-administration/users).
+Find out more about user-related administration in Rocket.Chat from the [official documentation](https://docs.rocket.chat/use-rocket.chat/workspace-administration/users).
 
 ## Configure Rocket.Chat as a Customer Service Helpdesk Platform
 
-One of Rocket.Chat's advantages over other collaboration solutions is its ability to serve effectively in a customer support and helpdesk role. With Rocket.Chat's omnichannel feature, your workspace opens up to the wider world of communications.
+One of Rocket.Chat's advantages over other collaboration solutions is its ability to operate as a customer support and help desk platform as well. With Rocket.Chat's omnichannel feature, your workspace opens up to the wider world, allowing you to communicate with other companies and with your customers.
 
-Omnichannel focuses on integration with your organization's other media. For instance, you can use omnichannel support to embed a Rocket.Chat pop-up client on your website.
-
-Moreover, Rocket.Chat's omnichannel support allows you to send and receive messages from a wide range of external communication platforms. Whether your clients are using SMS, WhatsApp, Twitter, or any other of a range of messaging platforms, Rocket.Chat likely has an omnichannel application to support them.
+Using Rocket.Chat's omnichannel support, you can connect your workspace to your other media and to other communication platforms. For instance, embed a Rocket.Chat live-chat pop-up for customer support on your website. Or enable SMS communications to support clients via text messaging.
 
 ### Enabling Omnichannel in Rocket.Chat
 
-1.  Log into your Rocket.Chat instance as an administrator.
-
-1.  From the **Administration** menu, select **Workspace**, and then select **Settings** from the resulting menu.
-
-1.  Search the available options for **Omnichannel**, and select **Open** for that option.
+1.  Access the **Settings** page, via **Administration** > **Workspace** > **Settings**, and open the **Omnichannel** option.
 
 1.  Ensure that **Omnichannel enabled** is toggled on, and save the changes.
 
 ### Managing Omnichannel Features in Rocket.Chat
 
-Once Omnichannel has been enabled, you can manage your instance's Omnichannel setup from within the same omnichannel settings page — **Administration** > **Workspace** > **Settings** > **Omnichannel**.
+Once Omnichannel has been enabled, you can manage your instance's omnichannel setup from within the same omnichannel settings page — **Administration** > **Workspace** > **Settings** > **Omnichannel**.
 
 To learn more about how you can start configuring your workspace's omnichannel support for your needs, take a look through the [official documentation for omnichannel support](https://docs.rocket.chat/use-rocket.chat/omnichannel).
 
