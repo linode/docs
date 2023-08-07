@@ -15,7 +15,7 @@ To take advantage of the powerful parallel processing capabilities offered by GP
     - [Getting Started with Linode](/docs/products/platform/get-started/)
     - [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/)
 
-    Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported. To deploy a GPU Compute with a distribution of your choice, see [Choose a Distribution, App, or Image](/docs/products/compute/compute-instances/guides/create/#choose-a-distribution-app-or-image).
+    Be sure to select a distribution that's compatible with the NVIDIA CUDA Toolkit. Review NVIDIA's [System Requirements](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements) to learn which distributions are supported.
 
 1.  Upgrade your system and install the kernel headers and development packages for your distribution. See NVIDIA's [Pre-installation Actions](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions) for additional information.
 
@@ -68,3 +68,5 @@ To take advantage of the powerful parallel processing capabilities offered by GP
     1.  Run `nvidia-smi` to verify that the NVIDIA drivers and CUDA Toolkit are installed successfully. This command should output details about the driver version, CUDA version, and the GPU itself.
 
 1.  You should now be ready to run your CUDA-optimized workloads. You can optionally download NVIDIA's [CUDA code samples](https://github.com/nvidia/cuda-samples) and review CUDA's [Programming Guide](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html) to learn more about developing software to take advantage of a GPU instance.
+
+**Optional**: After you have completed the installation you can [capture this custom image of the Linode](/docs/products/tools/images/guides/capture-an-image/) and use it the next time to spin up a gpu instance with this image.  
