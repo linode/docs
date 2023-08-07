@@ -130,6 +130,19 @@
   }
 }
 
+#truste-consent-content {
+  overflow: visible !important;
+}
+
+#truste-repop-msg {
+  font-size: 14px !important;
+  inset: auto 0 100% !important;
+  line-height: 20px !important;
+  margin: 0 !important;
+  padding: 16px !important;
+  position: absolute !important;
+}
+
 button#cookie-prefs-icon {
   background: transparent;
   border: none;
