@@ -5,7 +5,7 @@
     {{ template "maintenance/brokenlinks"  (dict "reason" "Not found") }}
     {{ template "maintenance/brokenlinks" (dict "reason" "Fragment not found" "showFragment" true) }}
   </div>
-  <div class="content prose prose-sm md:prose-lg max-w-none my-8">
+  <div class="content prose prose-sm md:prose-lg max-w-content my-8">
     {{ .Content }}
   </div>
 {{ end }}

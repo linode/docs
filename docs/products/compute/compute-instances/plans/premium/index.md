@@ -1,11 +1,11 @@
 ---
 title: "Premium Compute Instances"
 linkTitle: "Premium"
-description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD Epyc™ CPUs, providing consistent high-peformance for your workloads."
+description: "Premium instances guarantee a minimum hardware class utilizing the latest available AMD EPYC™ CPUs, providing consistent high-peformance for your workloads."
 published: 2023-07-06
 ---
 
-Premium Compute Instances are virtual machines that come equipped with the latest AMD Epyc™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
+Premium Compute Instances are virtual machines that come equipped with the latest AMD EPYC™ CPUs, ensuring your applications are running on the latest hardware with consistent high-peformance. Premium instances build off of our [Dedicated CPU instances](/docs/products/compute/compute-instances/plans/dedicated-cpu/), offering similar plan resources but with a guaranteed minimum hardware model.
 
 **Premium plans are ideal for enterprise-grade, business-critical, and latency-sensitive applications, including any workload that benefits from consistent performance with the latest hardware.**
 
@@ -15,7 +15,7 @@ Premium instances are not currently available in all regions. Review the [Availa
 
 ## Latest Hardware
 
-The key differentiator for Premium instances is its guaranteed minimum hardware class, which ensures your workloads run on the latest AMD Epyc™ CPUs. To learn more about AMD CPUs on the Linode platform, review the [AMD page](https://www.linode.com/amd/). This outlines CPU models, benefits of AMD processors, and the CPU models that are available across our fleet.
+The key differentiator for Premium instances is its guaranteed minimum hardware class, which ensures your workloads run on the latest AMD EPYC™ CPUs. To learn more about AMD CPUs on the Linode platform, review the [AMD page](https://www.linode.com/amd/). This outlines CPU models, benefits of AMD processors, and the CPU models that are available across our fleet.
 
 ## Dedicated Competition-Free Resources
 

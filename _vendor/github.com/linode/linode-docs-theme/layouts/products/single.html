@@ -1,10 +1,17 @@
-{{ define "main" }}
-  <div class="content">
-    {{ partial "sections/content/products/title-byline.html" . }}
-    <div class="mt-4">
-      {{ partial "sections/content/navbar.html" (dict "page" . "mainNavPartial" "sections/content/tab-main.html") }}
-    </div>
+{{ define "_baseof_start" }}
+  {{- .Page.Store.Set "_baseof_main_layout" "content_toc" -}}
+{{ end }}
 
+{{ define "content_header" }}
+  {{ partial "sections/content/products/title-byline.html" . }}
+  <div class="mt-4">
+    {{ partial "sections/content/navbar.html" (dict "page" . "mainNavPartial" "sections/content/tab-main.html") }}
+  </div>
+{{ end }}
+
+{{ define "content_main" }}
+
+  <div class="content__main">
     {{ if .Params.deprecated }}
       {{ partial "sections/content/deprecated" . }}
     {{ end }}
@@ -16,7 +23,7 @@
     {{ end }}
 
 
-    <div class="content prose prose-sm md:prose-lg max-w-none mt-8">
+    <div class="content prose prose-sm md:prose-lg max-w-content mt-8">
       {{ .Content }}
       {{ partial "sections/content/more.html" . }}
     </div>
@@ -27,20 +34,19 @@
         {{ .PublishDate.Format site.Params.time_format_default }}.
       </time>
     </p>
+
+    <div class="block mt-8">
+      {{ partial "sections/content/tags.html" . }}
+    </div>
+
+    {{ if ne $.Site.Params.feedback_survey_display false }}
+      <div class="hide-if-no-js">
+        <hr class="my-8" />
+
+        {{/* Add feedback links via Delighted. */}}
+        {{ partial "components/delighted/form.html" . }}
+        <hr class="mt-8" />
+      </div>
+    {{ end }}
   </div>
-
-  <div class="block mt-8">
-    {{ partial "sections/content/tags.html" . }}
-  </div>
-
-
-  {{ if ne $.Site.Params.feedback_survey_display false }}
-  <div class="hide-if-no-js">
-    <hr class="my-8" />
-
-    {{/* Add feedback links via Delighted. */}}
-    {{ partial "components/delighted/form.html" . }}
-    <hr class="mt-8" />
-  </div>
-  {{ end }}
 {{ end }}
