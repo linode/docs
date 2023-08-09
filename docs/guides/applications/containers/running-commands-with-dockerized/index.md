@@ -1,18 +1,22 @@
 ---
 slug: running-commands-with-dockerized
+title: "How to Use Dockerized to Run Commands"
 description: "Dockerized packages together a set of useful command-line tools, allowing you to run commands without installing additional software. Learn more about Dockerized, including how to set up and start using it, in this guide."
-keywords: ['docker run command', 'dockerized application', 'docker containerize command']
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2023-02-22
+published: 2023-08-08
 modified_by:
   name: Linode
-title: "How to Use Dockerized to Run Commands"
+keywords: ['docker run command', 'dockerized application', 'docker containerize command']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Nathaniel Stickman"]
 ---
 
-Dockerized lets you run useful command-line tools without having to install them or their dependencies on your system. Dockerized gives an easier and cleaner method to try out a tool or to leverage a tool for a one-off task.
+[Dockerized](https://github.com/datastack-net/dockerized) is a utility that runs common commands, interpreters, and other applications within a Docker container. This saves you from manually installing each command (and its dependencies) to your local system. Using Dockerized allows you to try out a new tool, leverage a tool for a one-off task, or ensure your team is using the same version of a tool.
 
 In this guide, learn more about what Dockerized is and how to install it. Additionally, you can follow along with some example scenarios to start seeing how Dockerized might be useful to you.
+
+{{< note >}}
+There are multiple separate applications that are named *Dockerized*, *Dockerize*, or something very similar. This guide discusses the tool hosted on the [datastack-net/dockerized](https://github.com/datastack-net/dockerized) GitHub repository.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -26,43 +30,35 @@ The steps in this guide are written for non-root users. Commands that require el
 
 ## What Is Dockerized?
 
-[Dockerized](https://github.com/datastack-net/dockerized) packages are a set of useful command-line tools for you to run without further installation. The included commands range from popular cloud and development tools to database and networking tools. And you can even expand Dockerized with additional commands, so you are not limited to only the ones it comes packaged with.
+Dockerized packages a set of useful command-line tools, allowing you to use those tools without further installation. Out of the box, Dockerized includes many popular development tools (like git, npm, and pip), database CLIs (like mysql and postgres), networking (like wget and telnet), and many others. For a list, review the [Supported Commands](https://github.com/datastack-net/dockerized#supported-commands) section on the GitHub readme page. You can even expand Dockerized with additional commands, so you are not limited to only the ones included by default.
 
-Dockerized accomplishes all of this by leveraging Docker and Docker Compose. Each Dockerized command creates a temporary Docker container with the given tool. These containers let you run each software setup without adding installations or dependencies to your wider system.
+Dockerized accomplishes all of this by leveraging Docker and Docker Compose. Each Dockerized command creates a temporary Docker container with the given tool. These containers let you run each software setup without adding installations or dependencies to your system.
 
-Dockerized has a wide range of use cases, and you may already have some of your own in mind. But two categories, in particular, stand out.
+Dockerized has a wide range of use cases and you may already have some of your own in mind. But two categories, in particular, stand out.
 
-- Trying out new tools. Dockerized lets you test a range of tools without having to first install each. This lets you compare and explore tools' capabilities without the tedium of installation and the clutter of numerous applications that you may never use again.
+- **Trying out new tools.** Dockerized lets you test a range of tools without having to install each one. This allows you to compare and explore a tool's capabilities without the tedium of installation and the clutter of numerous applications that you may never use again.
 
-- Running one-off tasks. Scripting languages excel at running single-use tasks, but typically they require you to have installed an interpreter and its dependencies. Dockerized includes numerous script interpreters, meaning that you can create and run scripts without further installations on your system.
+- **Running one-off tasks.** Scripting languages excel at running single-use tasks, but typically they require you to have installed an interpreter and its dependencies. Dockerized includes numerous script interpreters, meaning that you can create and run scripts without further installations on your system.
 
 ## How to Install Dockerized
 
-Dockerized is distributed as a precompiled binary, and its only external dependency is Docker. Once you have those set up, you are able to run all of the included commands with Dockerized — and any additional commands you add.
+Dockerized is distributed as a precompiled binary and its only external dependency is Docker. Once you have those set up, you are able to run all of the included commands with Dockerized — as well as any additional commands you add.
 
-Follow along here to set up everything you need to start using Dockerized on your system.
+{{< note >}}
+These installation instructions should work for most Linux distributions and macOS. Dockerized also supports Windows, but that is outside the scope of this guide. To view official instructions for all supported operating systems, see the [Installation](https://github.com/datastack-net/dockerized#installation) section found in the Dockerized GitHub readme file.
+{{< /note >}}
 
-### Installing Docker
+### Install Docker
 
 Dockerized runs commands through Docker containers, so you need to have Docker installed to be able to use Dockerized.
 
-On **Debian**, **Ubuntu**, **CentOS**, and **Fedora** systems, you can install the Docker Engine by following our [Installing and Using Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide.
+On most Linux systems, you can install the Docker Engine by following our [Installing and Using Docker](/docs/guides/installing-and-using-docker-on-ubuntu-and-debian/) guide. Additionally, you need to add any non-root users you want to run Dockerized with to the `docker` user group. Follow the section on running Docker as a non-root user in the guide linked above to see the appropriate command to do so.
 
-Use the drop-down at the top of the page to select the distribution for you. Then, follow along with the sections of the guide on installing and starting Docker.
+### Download and Install Dockerized
 
-Additionally, you need to add any non-root users you want to run Dockerized with to the `docker` user group. Follow the section on running Docker as a non-root user in the guide linked above to see the appropriate command to do so.
+To install Dockerized, download the latest zip file corresponding with your operating system, extract the zip file, and add the Dockerized `bin` directory to your PATH variable.
 
-### Downloading Dockerized
-
-Dockerized is distributed as a package with the precompiled binary and its dependencies. To install Dockerized, you need to download and extract this package and place its binary in your user's shell path.
-
-1. Create a directory to house the Dockerized project, and change into that directory. This guide uses a directory in the current user's home directory.
-
-    ```command
-    mkdir ~/dockerized
-    cd ~/dockerized
-    ```
-1. Download the Dockerized package. The quickest way to do so is by using a single command like the one shown here. This command fetches information about the latest release, parses the Linux download URL from it, and downloads the package.
+1.  Download the Dockerized package for your operating system from the [Releases](https://github.com/datastack-net/dockerized/releases) page on GitHub. The quickest way to do so is by using a single command like the one shown below. This command fetches information about the latest release, finds the download URL for the specified operating system, and downloads the package.
 
     ```command
     curl -s https://api.github.com/repos/datastack-net/dockerized/releases/latest \
@@ -73,62 +69,79 @@ Dockerized is distributed as a package with the precompiled binary and its depen
     | wget -O dockerized.zip -qi -
     ```
 
-1. Unzip the package. You may need to install the `unzip` utility first, which you can typically do through your system's package manager.
+    If you are using macOS, replace `linux-x86_64.zip` in the command above with one of the following strings:
+
+    - **Apple Silicon:** `mac-arm64.zip`
+    - **Intel:** `mac-x86_64.zip`
+
+1.  Since Dockerized is packaged as a zip file, you need a way to extract the file. This guide uses the [unzip](https://linux.die.net/man/1/unzip) command, which comes with macOS but not most Linux distributions. Linux users should first install unzip through their package manager:
+
+    -   **Ubuntu, Debian, and many other distributions using the APT package manager:**
+
+        ```command
+        sudo apt install unzip
+        ```
+
+    -   **CentOS/RHEL, AlmaLinux, Rocky Linux 8 (and above) and Fedora:**
+
+        ```command
+        sudo dnf install unzip
+        ```
+
+1.  Unzip the Dockerized package to a new directory in your home folder (`~/dockerized/`).
 
     ```command
-    unzip dockerized.zip
+    unzip dockerized.zip -d ~/dockerized/
     ```
 
-1. Now you need to add the Dockerized binary to your shell path. There are several ways of doing this, the simplest of which is to add the Dockerized `bin/` directory directly to your shell path, as shown below.
+1.  Modify your PATH environmental variable to include the Dockerized binary. There are many methods of doing this, though this guide covers two common ways.
 
-    ```command
-    export PATH="$PATH:$HOME/dockerized/bin"
-    ```
+    -   **Install just for current user:** Add the `dockerzied/bin` folder to the PATH variable.
 
-    But that approach limits the Dockerized application to the current user. This guide, instead, recommends adding a symbolic link of the Dockerized binary into a directory on your system's shell path. To do so:
+        ```command
+        export PATH="$PATH:$HOME/dockerized/bin"
+        ```
 
-    -   Move the `dockerized/` directory to a more centralized location.
+    -   **Install for all users:** Add a symlink of the Dockerized binary file to an existing directory accessible to all users and make sure that directory is on your system's PATH variable.
+
+        First, move the `dockerized/` directory to a more centralized location.
 
         ```command
         sudo mv ~/dockerized/ /usr/local/lib/dockerized/
         ```
 
-    -   Create a symbolic link within a directory on your system's shell path. Typically, `/usr/local/bin/` is on that path, but change that in this example as needed.
+        Then, create a symbolic link within a directory on your system's shell path. Typically, `/usr/local/bin/` is on that path, but change that in this example as needed.
 
         ```command
         sudo ln -s /usr/local/lib/dockerized/bin/dockerized /usr/local/bin/dockerized
         ```
 
-    -   Verify the setup by checking the version for one of the Dockerized commands.
+1.  Verify the setup by checking running a command from Dockerized. For instructions, review the [Run Commands with Dockerized](#run-commands) section below.
 
-        For instance, run this command to check the version of NPM within Dockerized.
+## Run Commands with Dockerized {#run-commands}
 
-        ```command
-        dockerized npm --version
-        ```
+To start using Dockerized to run one of the included command-line tools, enter the following command. Replace *COMMAND* with the command you wish to run.
 
-        Dockerized pulls the appropriate image or images the first time a command is run, then you should see the command's output — `8.5.2` in this example.
+```command
+dockerized COMMAND
+```
 
-        ```output
-        [+] Running 10/10
-        ⠿ npm Pulled
-        [...]
-        8.5.2
-        ```
+For instance, you can use the npm utility (included with Dockerized). As a basic example, run the command below to check the version of npm that is used:
 
-1. Contrast this with the output without Dockerized. In this example, NPM is not installed on the system itself.
+```command
+dockerized npm --version
+```
 
-    ```command
-    npm --version
-    ```
+The first time a command is run, Dockerized downloads the appropriate image(s) needed for the associated tool. You should then see the command's output.
 
-    ```output
-    -bash: npm: command not found
-    ```
+```output
+[+] Running 10/10
+⠿ npm Pulled
+[...]
+8.5.2
+```
 
-## How to Run Commands with Dockerized
-
-You can already see the most basic execution of a Dockerized command above. Dockerized takes the command followed by any input you want to provide to the command.
+If you run the command outside of Dockerized, you may notice different output or receive a command not found error. This is because your system either is running a different version of the utility used by Dockerized or, more likely, the utility isn't installed locally on your system.
 
 To demonstrate further, the following is a simple `Hello, world!` execution using one of the interpreters included with Dockerized, *Lua*.
 
@@ -270,51 +283,38 @@ Python provides an easy way to see this in action through its `http.server` modu
 
 ## How to Add More Commands to Dockerized
 
-Dockerized comes with a useful set of commands and tools, but you may want to expand on it. And Dockerized can readily accommodate this through simple Docker Compose additions.
+While Dockerized comes with a useful set of commands, you may want to expand the existing functionality and add new commands. As Dockerized uses [Docker Compose](https://docs.docker.com/compose/), you can create additional [Compose files](https://docs.docker.com/compose/compose-file/) to define new commands. Then you can specify the location of the Compose file(s) through the use of Dockerized environment variables.
 
-Essentially, Dockerized needs two kinds of files to direct it on adding additional commands.
+1.  **Define the new command(s) within Docker Compose files:** [Compose files](https://docs.docker.com/compose/compose-file/) are used to define additional commands for use with Dockerized. A single file can store multiple commands or you can create a file for each command. If you wish for the commands to be used by other users, make sure the corresponding Compose file is accessible by those users. Otherwise, if your current user is the only intended user, it can be stored within your home directory.
 
-- A `dockerized.env` file provides a `COMPOSE_FILE` variable with the location or locations of Docker Compose files.
+    As an example, create a new file called `new-command.yml` with the following contents:
 
-    This file needs to be in either the current user's home directory or the current working directory. Dockerized in this way allows you to apply a scope to additional commands, fitting them to specific users and project directories.
-
-    Dockerized gives you two variables to help with specifying `docker-compose.yml` file locations within the `docker.env` file. The first is `${HOME}`, corresponding to the current user's home directory. The second is `${DOCKERIZED_PROJECT_ROOT}`, corresponding to the current working directory.
-
-- A `docker-compose.yml` defines the additional service or services to add to Dockerized.
-
-    You have more control of the location of this file, since you define its location using the `COMPOSE_FILE` environment variable.
-
-All of this becomes clearer with an example. Follow along with the steps here to add a simple cURL command utility to Dockerized. These steps add the command for the current user.
-
-1. Create a `dockerized.env` file in the current user's home directory, and give that file the contents shown below.
-
-    ```file {title="~/dockerized.env" lang="env"}
-    COMPOSE_FILE="${COMPOSE_FILE};${HOME}/dockerized-additions/docker-compose.yml"
-    ```
-
-    This sets the `COMPOSE_FILE` environment variable, which gives Dockerized the locations of Docker Compose configurations to derive commands from.`${COMPOSE_FILE}` and ensures that the default `docker-compose.yml` remains included. `${HOME}` points to the current user's home directory, which then gets expanded on with a specific location for the new `docker-compose.yml` file to be included.
-
-1. Create the new `docker-compose.yml` file at the location indicated above — `~/dockerized-additions/docker-compose.yml`. Give that file the contents shown here.
-
-    ```file {title="~/dockerized-additions/docker-compose.yml" lang="yml"}
+    ```file {title="~/new-command.yml" lang="yml"}
     version: "3"
     services:
-      curl:
+      example:
         image: curlimages/curl:latest
         entrypoint: ["curl"]
     ```
 
-    This creates a `curl` service, which provides a `curl` command to Dockerized. The service uses the [curlimages/curl](https://hub.docker.com/r/curlimages/curl) Docker image, and the `entrypoint` tells Dockerized to run the `curl` command within the container immediately whenever the service is called.
+    This creates a new service named `example`. This service name defines the Dockerized command, so a service named `example` is called by running `dockerized example`. The service uses the [curlimages/curl](https://hub.docker.com/r/curlimages/curl) Docker image and the `entrypoint` tells Dockerized to run the `curl` command within the container immediately whenever the service is called.
 
-You can test out this example setup by running the new command. This example only configures the new command for the current user, so be sure to use the same user when testing the command.
+1.  **Specifiy the location of the Compose file(s) within Dockerized:** Once you have created your Compose files, you need to tell Dockerized where to look. This is accomplished through the use of environment configuration files (`dockerized.env`), which can be stored within your home directory (so you can access the new command globally) or within a specific project directory (so you can access the command from within a certain project folder). In this way, Dockerized allows you to apply a scope to additional commands, fitting them to specific users and project directories. There are two variables that can be used to specify the relative location of the Compose file(s): `${HOME}` (which corresponds to the user's home directory) and `${DOCKERIZED_PROJECT_ROOT}` (which corresponds to the current working directory).
+
+    To continue with the example in the previous step, create a new file in your home directory called `dockerized.env` with the following contents:
+
+    ```file {title="~/dockerized.env" lang="env"}
+    COMPOSE_FILE="${COMPOSE_FILE};${HOME}/new-command.yml"
+    ```
+
+    This updates the `COMPOSE_FILE` setting to include both the existing built-in commands (`${COMPOSE_FILE}` variable) and the new command(s) (`${HOME}/new-command.yml`). Additional locations can be added using a semicolon (`;`) as the delimiter.
+
+You can test out this example by running the newly defined command as shown below, replacing example.com with the URL of any web page or API endpoint you would like to output.
 
 ```command
-dockerized curl eth0.me
+dockerized example example.com
 ```
 
-```output
-192.0.2.0
-```
-## Conclusion
+Since the Dockerized `example` service name is mapped to the curl command, running the command actually runs `curl` from within the Docker container and displays the contents of the web page provided.
 
-With that, you have a ready Dockerized setup and some understanding of how you can start effectively making use of it. Dockerized provides a strong addition to your toolkit. Now that you have it, you are likely to quickly start seeing a multitude of places to use it.
+For additional instructions on defining new commands or adjusting Dockerized settings, review the [Customization](https://github.com/datastack-net/dockerized#customization) section of the readme file on GitHub.
