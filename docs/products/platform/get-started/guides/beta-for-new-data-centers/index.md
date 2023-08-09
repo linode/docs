@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-07-27
+modified: 2023-08-09
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -67,7 +67,7 @@ The following table includes the IDs and URLs of each new Object Storage cluster
 
 | Data Center | Cluster ID | Cluster URL |
 | --| -- | -- |
-| Chennai, India | `us-maa-1` | `https://us-maa-1.linodeobjects.com` |
+| Chennai, India | `in-maa-1` | `https://in-maa-1.linodeobjects.com` |
 | Chicago, IL, USA | `us-ord-1` | `https://us-ord-1.linodeobjects.com` |
 | Paris, France | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
 | Stockholm, Sweden | `se-sto-1` | `https://se-sto-1.linodeobjects.com	` |
