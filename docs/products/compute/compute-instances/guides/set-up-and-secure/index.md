@@ -6,7 +6,7 @@ keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 tags: ["ssh","security"]
 bundles: ['centos-security', 'debian-security']
 published: 2022-02-25
-modified: 2023-07-03
+modified: 2023-08-08
 modified_by:
   name: Linode
 aliases: ['/securing-your-server/','/security/linux-security-basics/','/security/securing-your-server/index.cfm/','/security/basics/securing-your-server/','/security/securing-your-server/','/guides/securing-your-server/','/guides/set-up-and-secure/']
@@ -76,7 +76,7 @@ apt update && apt upgrade
 ```
 
 {{< note >}}
-When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version".
+When updating some packages, you may be prompted to use updated configuration files. If prompted, it is typically safer to keep the locally installed version.
 {{< /note >}}
 {{< note >}}
 Linode's Kali Linux distribution image is a [minimum installation](https://www.kali.org/docs/troubleshooting/common-minimum-setup/). You will likely want to install individual [tools](https://www.kali.org/tools/) or [metapackages](https://www.kali.org/tools/kali-meta/), such as the [kali-linux-headless](https://www.kali.org/tools/kali-meta/#kali-linux-headless) metapackage.
@@ -238,8 +238,6 @@ A hostname is used to identify your Compute Instance using an easy-to-remember n
 
 This hostname can be used as part of a FQDN (fully qualified domain name) for the system (ex: `web-01-prod.example.com`).
 
-After you've made the change below, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly. See our guide on using the [hosts file](/docs/guides/using-your-systems-hosts-file/) if you want to configure a fully qualified domain name.
-
 {{< tabs >}}
 {{< tab "Most distributions" >}}
 *This includes Ubuntu 16.04 (and newer), CentOS Stream 8 (and newer), CentOS 7 (and newer), other RHEL derivatives (including AlmaLinux 8 and Rocky Linux 8), Debian 8 (and newer), Fedora, openSUSE, Kali Linux, and Arch.*
@@ -266,6 +264,8 @@ hostname -F /etc/HOSTNAME
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+After you've made the changes above, you may need to log out and log back in again to see the terminal prompt change from `localhost` to your new hostname. The command `hostname` should also show it correctly. See our guide on using the [hosts file](/docs/guides/using-your-systems-hosts-file/) if you want to configure a fully qualified domain name.
 
 ### Update Your System's `hosts` File
 
@@ -354,7 +354,9 @@ Now you can administer your Compute Instance from your new user account instead 
 
 By default, password authentication is used to connect to your Compute Instance via SSH. A cryptographic key-pair is more secure because a private key takes the place of a password, which is generally much more difficult to decrypt by brute-force. In this section we'll create a key-pair and configure your system to not accept passwords for SSH logins.
 
-### Upload Your SSH Key {#upload-ssh-key}
+### Create and Upload Your SSH Key {#upload-ssh-key}
+
+To protect your user account with public key authentication, you first need to create an SSH key pair and upload the public key to your server.
 
 1.  Locate your existing SSH public key or, if you don't yet have one, create a new SSH key pair.
 
@@ -433,17 +435,21 @@ By default, password authentication is used to connect to your Compute Instance 
     {{< /tab >}}
     {{< /tabs >}}
 
-1.  Finally, you'll want to set permissions for the public key directory and the key file itself:
+1.  Finally, you'll want to set permissions for the public key directory and the key file itself. On your Compute Instance, run the following command:
 
     ```command
     sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
     ```
 
-    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/guides/modify-file-permissions-with-chmod/).
+    This provides an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/guides/modify-file-permissions-with-chmod/).
 
-1.  Now exit and log back into your Compute Instance. If you specified a passphrase for your private key, you'll need to enter it.
+1.  Now exit and log back in to your Compute Instance. In most cases, the first authentication method attempted will be public key authentication. If you've successfully uploaded a public key for your user, you should be logged in without entering your user's password (though you will need to enter the passphrase for the SSH key).
+
+This should trigger If you specified a passphrase for your private key, you'll need to enter it.
 
 ### SSH Daemon Options
+
+Lastly, edit the SSH configuration file to disallow root login and disable password authentication over SSH.
 
 1.  Open the SSH configuration file on your Compute Instance using a Linux text editor, such as nano or vim:
 
