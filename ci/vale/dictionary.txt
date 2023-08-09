@@ -1139,6 +1139,7 @@ kloxo
 knockpy
 knowledgebase
 Kodu
+Kompose
 Konqueror
 konsole
 kotin
