@@ -42,6 +42,10 @@ Why would you want to host your own cloud? Some common reasons are:
 
 This tutorial walks you through the steps to install ownCloud on Ubuntu 20.04, one of the most user-friendly server operating systems available. There are only a few steps to install ownCloud on Ubuntu 20.04. You [install the LAMP (Linux Apache MySQL/MariaDB PHP) stack](/docs/guides/how-to-install-a-lamp-stack-on-ubuntu-18-04/); create a database and database user; configure Apache; and set up ownCloud using its graphical user interface.
 
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
+
 ## Before You Begin
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.

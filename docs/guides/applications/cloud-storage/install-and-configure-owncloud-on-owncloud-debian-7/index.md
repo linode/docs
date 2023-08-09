@@ -24,6 +24,10 @@ ownCloud is an open source platform that allows easy access to files from multip
 
 Installing ownCloud on your Linode is very simple. The steps outlined below will get you up and running with a drag and drop GUI interface. An ownCloud server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this setup.
 
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
+
 ## Installation Prerequisites
 
 Before you can use your Linode with ownCloud you will need to have a working LAMP (Linux, Apache, MySQL, and PHP) stack. For more information on how to create a LAMP stack on your Linode consult our [LAMP Guides](/docs/websites/lamp/).

@@ -6,4 +6,4 @@
     adobe_launch_script = "https://assets.adobedtm.com/fcfd3580c848/f9e7661907ee/launch-006d022c8726-development.min.js"
 
     # Trustarc domain used in development and on Netlify.
-    trustarc_domain = "linode-test.com"
+    trustarc_domain = "linode_test.com"

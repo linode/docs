@@ -78,6 +78,7 @@ appserver
 appsmith
 appwrite
 apxs
+architected
 architecting
 aren
 argv
@@ -461,11 +462,13 @@ dbd
 dbs
 dbdir
 dbfiles
+DBMSs
 dbname
 dbserver
 dcid
 dcs
 deadman
+deallocated
 deallocation
 deathmatch
 debconf
@@ -517,6 +520,7 @@ dired
 direnv
 dirtycow
 discoverability
+diskpart
 disqus
 distro
 distros
@@ -712,6 +716,7 @@ fordham
 fmt
 fn
 fpm
+fqdns
 fragging
 framebuffer
 frakti
@@ -889,6 +894,7 @@ hostname
 hostnames
 hortonworks
 hotfix
+hotfixes
 hotlink
 hotlinked
 hotlinking
@@ -956,6 +962,7 @@ ifup
 ifupdown
 ignoreip
 ignoreregex
+ILLA
 ikiwiki
 im
 imagize
@@ -1100,6 +1107,7 @@ keepalived_script
 keras
 kerberos
 kerberos5
+Kerfi
 Kernighan
 keychain
 keyfile
@@ -1215,6 +1223,7 @@ listdir
 listserv
 listservs
 litespeed
+Livestatus
 livigno
 li181
 li263
@@ -1494,6 +1503,7 @@ netlink
 netloc
 netmask
 netplan
+netsh
 netstat
 netstumbler
 netuser
@@ -1573,6 +1583,7 @@ offboarding
 oftc
 ohai
 ok
+OKConfig
 okta
 oldstable
 oldfashioned
@@ -1594,6 +1605,7 @@ openvassd
 openvpn
 openvz
 openzipkin
+Opin
 ossec
 ostemplate
 osx
@@ -1648,6 +1660,7 @@ pathnames
 paypal
 PBCs
 pbr
+PDFs
 pem
 pentest
 pentesting
@@ -1718,6 +1731,7 @@ postgresql0
 postmap
 postrotate
 postrouting
+powercfg
 powershell
 ppa
 pparadis
@@ -1823,6 +1837,8 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMS
+RDBMSs
 rdiff
 reachability
 readcaps
@@ -1878,6 +1894,7 @@ remediations
 remi
 remmina
 remotehost
+reparse
 replicants
 replicaset
 replicationcontrollers
@@ -2159,6 +2176,8 @@ Stroustrup
 su
 subcommand
 subcommands
+subcontext
+subcontexts
 subfile
 subfiles
 subfolder
@@ -2299,6 +2318,7 @@ tomcat6
 torvalds
 toolchain
 toolchains
+toolkits
 toolset
 toolstrip
 tooltip
@@ -2477,6 +2497,7 @@ vlogger
 vmail
 vmem
 vmlinuz
+vms
 vmstat
 vmui
 vnc

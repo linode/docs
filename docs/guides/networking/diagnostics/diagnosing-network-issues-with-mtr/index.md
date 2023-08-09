@@ -4,7 +4,7 @@ description: MTR is a network diagnostic tool similar to ping and traceroute. Th
 keywords: ["mtr", "traceroute", "latency", "loss"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/']
+aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/','/troubleshooting/interpreting-mtr-reports/']
 modified: 2018-05-10
 modified_by:
   name: Linode

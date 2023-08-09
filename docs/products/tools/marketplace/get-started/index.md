@@ -5,7 +5,7 @@ description: "Learn how to deploy and use One-Click Apps hosted on the Linode Ma
 tab_group_main:
     weight: 20
 published: 2022-03-08
-modified: 2023-03-20
+modified: 2023-07-24
 aliases: ['/platform/marketplace/how-to-use-marketplace-apps-at-linode/', '/platform/one-click/how-to-use-one-click-apps-at-linode/','/guides/how-to-use-marketplace-apps-at-linode/', '/products/tools/marketplace-one-click-apps/guides/marketplace-deploy-app/', '/products/tools/marketplace-one-click-apps/guides/marketplace-access-app/','/products/tools/marketplace-one-click-apps/guides/marketplace-add-domain-name/']
 image: how-to-use-linode-oneclick-apps.png
 ---
@@ -42,7 +42,9 @@ Since software for a Marketplace App is installed *after* a Linode Compute Insta
 
 -   **Log file:** The same *"Installation Complete!"* notice should also appear at the end of the installation's log file, which you can view by logging in to your instance through [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/) and running:
 
-        grep 'Installation complete!' /var/log/stackscript.log
+    ```command
+    grep -i 'installation complete' /var/log/stackscript.log
+    ```
 
     If you receive output matching that string, the Marketplace App has finished installing.
 
