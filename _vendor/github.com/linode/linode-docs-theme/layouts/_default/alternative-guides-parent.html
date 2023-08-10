@@ -1,7 +1,7 @@
 {{ define "main" }}
   <div class="">
     {{ partial "sections/content/title-byline.html" . }}
-    <div x-ignore class="content prose prose-sm md:prose-lg max-w-none my-8">
+    <div x-ignore class="content prose prose-sm md:prose-lg max-w-content my-8">
       {{ .Content }}
       {{ partial "sections/content/more.html" . }}
     </div>
