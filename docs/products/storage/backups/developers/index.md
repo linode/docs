@@ -4,6 +4,7 @@ title_meta: "Developer Resources for the Linode Backup Service"
 description: "The Linode Backup Service is managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
+published: 2021-11-12
 ---
 
 ## Linode API
