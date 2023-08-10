@@ -81,11 +81,11 @@ Before you configure Rclone, [create a new Linode bucket](/docs/products/storage
       \ (s3)
     ```
 
-1.  Then, select the option that corresponds to **Other** (*"Any other S3 compatible provider"*) when choosing your provider.
+1.  Then, select the option that corresponds to **Ceph** when choosing your provider.
 
     ```output
-    / Any other S3 compatible provider
-       \ (Other)
+    / Ceph Object Storage
+   \ (Ceph)
     ```
 
 1.  You are then asked how you'd like to provide your AWS credentials. For this, select the option that corresponds to **false** to manually enter your access key and secret.
