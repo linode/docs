@@ -137,8 +137,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `in-maa.webconsole.linode.com`
--   **Glish Gateway:** `maa1.glish.linode.com`
+-   **Weblish/Glish Gateway:** `in-maa.webconsole.linode.com`
 
 #### Chicago, IL, USA
 
@@ -152,8 +151,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-ord.webconsole.linode.com`
--   **Glish Gateway:** `ord2.glish.linode.com`
+-   **Weblish/Glish Gateway:** `us-ord.webconsole.linode.com`
 
 #### Paris, France
 
@@ -167,8 +165,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `fr-par.webconsole.linode.com`
--   **Glish Gateway:** `par3.glish.linode.com`
+-   **Weblish/Glish Gateway:** `fr-par.webconsole.linode.com`
 
 #### Stockholm, Sweden
 
@@ -182,8 +179,7 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `se-sto.webconsole.linode.com`
--   **Glish Gateway:** `sto2.glish.linode.com`
+-   **Weblish/Glish Gateway:** `se-sto.webconsole.linode.com`
 
 #### Washington, DC, USA
 
@@ -197,5 +193,4 @@ Lish and Glish provide direct access to your Compute Instances, bypassing the ne
     ```
     {{< /note >}}
 
--   **Weblish Gateway:** `us-iad.webconsole.linode.com`
--   **Glish Gateway:** `iad3.glish.linode.com`
+-   **Weblish/Glish Gateway:** `us-iad.webconsole.linode.com`
