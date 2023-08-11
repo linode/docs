@@ -1,5 +1,6 @@
 ---
 title: Linode API
+title_meta: "Linode API Product Documentation"
 description: "The Linode API allows you to build the apps you want and programmitically manage your account. It offers secure authentication and third-party integrations and plugins."
 tab_group_main:
     is_root: true

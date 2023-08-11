@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Product guides for Linode Cloud Firewall."
+title_meta: "Guides and Tutorials for Cloud Firewalls"
+description: "A collection of product guides to help you deploy and manage Cloud Firewalls."
 tab_group_main:
     weight: 30
 ---

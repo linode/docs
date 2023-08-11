@@ -23,7 +23,6 @@ authors: ["Damaso Sanoja"]
 
 This guide will walk you through the necessary steps to configure your Linode to be an efficient remote development environment. You will then connect to this environment using a tablet and edit a simple web application using `ssh` and a text editor.
 
-
 ## Development Environments
 
 ### Local Development Environment

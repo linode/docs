@@ -155,7 +155,7 @@ If this conditional evaluates to `True`, the script calls the "real" `main()` fu
 
 Following is an example demonstrating how to implement this technique.
 
-```file {title="program.py" python"}
+```file {title="program.py" lang="python"}
 def main():
 # Main body of code. Other functions and class methods are called from main.
 

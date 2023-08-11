@@ -52,7 +52,7 @@ Dedicated CPU instances are available across [all regions](https://www.linode.co
 | Outbound Network Transfer | 4 TB - 12 TB |
 | Outbound Network Bandwidth | 4 Gbps - 12 Gbps |
 
-Pricing starts at $36 for a Dedicated CPU Compute Instance with 2 vCPU cores, 4GB memory, and 80GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-dedicated) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
+Pricing starts at $36 for a Dedicated CPU Compute Instance with 2 vCPU cores, 4GB memory, and 80GB SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#compute-dedicated) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
 
 ## Dedicated CPU Use Cases
 

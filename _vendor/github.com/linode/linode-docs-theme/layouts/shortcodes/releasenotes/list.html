@@ -25,7 +25,7 @@
       <time datetime="{{ $date }}" class="text-gray-400">
         {{ $date.Format site.Params.time_format_default }}
       </time>
-      <div class="content prose prose-sm md:prose-lg max-w-none">
+      <div class="content prose prose-sm md:prose-lg max-w-content">
         {{ .Content }}
       </div>
     </div>
@@ -52,7 +52,7 @@
     }}
   {{ end }}
   {{ $json := ($items | jsonify) |  resources.FromString (printf "%s.json" $key ) }}
-  {{ if hugo.IsProduction }}
+  {{ if (ne hugo.Environment "development") }}
     {{ $json = $json | minify }}
   {{ end }}
 
@@ -79,7 +79,7 @@
         <time :datetime="item.date" class="text-gray-400" x-text="item.dateStr">
         </time>
         <div
-          class="content prose prose-sm md:prose-lg max-w-none"
+          class="content prose prose-sm md:prose-lg max-w-content"
           x-html="item.content"></div>
       </div>
     </template>

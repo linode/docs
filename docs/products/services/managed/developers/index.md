@@ -1,5 +1,6 @@
 ---
 title: Developers
+title_meta: "Developer Resources for the Linode Managed Service"
 description: "Use the Linode API and CLI to enabled and configure the Linode Managed Service."
 tab_group_main:
     weight: 50

@@ -41,7 +41,7 @@ Email security should also a primary concern for most users and Mail-in-a-Box ha
 
 - Have a registered domain name that you wish to use with your email server. Verify that your registrar allows *custom nameservers* and *glue records*.
 
-- Deploy a new Compute Instance running Ubuntu 18.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
+- Deploy a new Compute Instance running Ubuntu 22.04 LTS, making sure to update the system, create a limited user account, and harden SSH. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/). Do not yet configure a firewall or fail2ban as that might interfere with how Mail-in-a-Box configures the firewall.
 
     {{< note type="alert" respectIndent=false >}}
 Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.

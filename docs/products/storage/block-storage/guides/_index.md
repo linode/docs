@@ -1,6 +1,7 @@
 ---
 title: Guides
-description: "Find guides on Block Storage basics, Volume management, and other related Block Storage topics."
+title_meta: "Guides and Tutorials for Block Storage"
+description: "A collection of product documentation for Block Storage, including how to manage volumes, attach volumes to Compute Instances, and more."
 tab_group_main:
     weight: 30
 ---

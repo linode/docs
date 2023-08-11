@@ -1,5 +1,6 @@
 ---
 title: Block Storage
+title_meta: "Block Storage Product Documentation"
 description: "Linode Block Storage is a scalable, high-speed, resilient and fault tolerant storage service."
 toc: true
 tab_group_main:
@@ -27,7 +28,7 @@ Block Storage Volumes are configured to be durable and fault tolerant using eras
 
 Block Storage is powered entirely by NVMe SSD storage devices (except within the Fremont data center). NVMe storage offers dramatically increased performance over standard SATA SSDs, HDDs, or hybrid storage solutions. Additionally, performance is automatically increased in 60 second bursts for even faster real-world speeds. See the table below for both sustained and burst performance limits on NVMe-only Block Storage:
 
-| | IOPS | Throughput |
+| Performance Metric | IOPS | Throughput |
 | -- | -- | -- |
 | **Sustained** | 8,000 | 350 MB/s |
 | **Burst** | 12,000 | 525 MB/s |
