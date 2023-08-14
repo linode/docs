@@ -78,11 +78,10 @@ Now that there is an application running on our Kubernetes cluster, the next ste
 (derived from the official installation instructions)
 - We're going to use Helm one more time:
 
-      helm upgrade --install metrics-server bitnami/metrics-server \
+      helm upgrade --install metrics-server metrics-server/metrics-server \
         --create-namespace --namespace metrics-server \
         --set apiService.create=true \
-        --set extraArgs.kubelet-insecure-tls=true \
-        --set extraArgs.kubelet-preferred-address-types=InternalIP
+        --set "args={--kubelet-insecure-tls=true,--kubelet-preferred-address-types=InternalIP}"
 
 - What are these options for?
 
@@ -94,13 +93,13 @@ Now that there is an application running on our Kubernetes cluster, the next ste
 
     (create an entry that will show up in `kubectl get apiservices`)
 
-- `extraArgs.kubelet-insecure-tls=true`
+- `kubelet-insecure-tls=true`
 
     when connecting to nodes to collect their metrics, don't check kubelet TLS certs
 
     (because most kubelet certs include the node name, but not its IP address)
 
-- `extraArgs.kubelet-preferred-address-types=InternalIP`
+- `kubelet-preferred-address-types=InternalIP`
 
     when connecting to nodes, use their internal IP address instead of node name
 
