@@ -4,7 +4,7 @@ keywords: ["two-factor authentication", "password", "security", "Linode Cloud Ma
 tags: ["security","cloud manager"]
 aliases: ['/linode-manager-security/','/security/authentication/linode-manager-security-controls/','/security/linode-manager-security-controls-new-manager/','/platform/manager/keep-your-linode-account-safe/','/security/linode-manager-security-controls/','/security/authentication/two-factor-authentication/linode-manager-security-controls/','/guides/linode-manager-security-controls/','/guides/user-security-controls/']
 published: 2022-06-24
-modified: 2022-11-21
+modified: 2023-08-14
 modified_by:
   name: Linode
 title: "Security Controls for User Accounts"
