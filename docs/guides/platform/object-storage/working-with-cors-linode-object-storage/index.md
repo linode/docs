@@ -34,7 +34,7 @@ This is where managing CORS policies on your object storage service becomes impe
 
 ## Working with CORS Policies on Linode Object Storage
 
-One of the best tools for managing policies on your S3, including Linode Object Storage, is `s3cmd`. Follow along with our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd) to:
+One of the best tools for managing policies on your S3, including Linode Object Storage, is `s3cmd`. Follow along with our guide [Using S3cmd with Object Storage](/docs/products/storage/object-storage/guides/s3cmd/) to:
 
 1.  Install `s3cmd` on your system. The installation takes place on the system from which you intend to manage your S3 instance.
 
