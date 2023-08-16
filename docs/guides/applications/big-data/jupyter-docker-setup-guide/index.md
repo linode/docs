@@ -598,4 +598,4 @@ This section relies on previous knowledge to build images with pre-load requirem
 
 You should now be able to set up Jupyter in conjunction with Docker in a variety of ways. Using the base image or pre-existing images is quick and easy, but lacks customization. Building your own image allows you to have packages preinstalled, and pre-load requirements allow you to include content.
 
-This article is the first installment in a series of guides that cover using Jupyter and Docker together. To expand on the knowledge gained here, check out the second article in our series [Managing Jupyter Data in Docker Images and Containers](/docs/guides/application/big-data/manage-jupyter-data-docker/).
+This article is the first installment in a series of guides that cover using Jupyter and Docker together. To expand on the knowledge gained here, check out the second article in our series [Managing Jupyter Data in Docker Images and Containers](/docs/guides/applications/big-data/manage-jupyter-data-docker/).

@@ -26,9 +26,9 @@ Using the example of a Jupyter/MySQL workflow, learn how Docker Compose can quic
 
 1.  To better understand Jupyter/Docker workflows, read the previous articles in our series:
 
-    -   [How to Set Up Jupyter with Docker](/docs/guides/application/big-data/jupyter-docker-setup-guide/)
-    -   [Managing Jupyter Data in Docker Images and Containers](/docs/guides/application/big-data/manage-jupyter-data-docker/)
-    -   [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/application/big-data/persist-jupyter-data-mysql-docker/)
+    -   [How to Set Up Jupyter with Docker](/docs/guides/applications/big-data/jupyter-docker-setup-guide/)
+    -   [Managing Jupyter Data in Docker Images and Containers](/docs/guides/applications/big-data/manage-jupyter-data-docker/)
+    -   [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/applications/big-data/persist-jupyter-data-mysql-docker/)
 
     {{< note >}}
     If you followed the previous articles, you must first clear out all previous examples:
@@ -254,7 +254,7 @@ Since login credentials are stored in the `docker-compose.yaml` file, having thi
 
     Voila! You now have a running containerized Jupyter environment persisting data to a containerized MySQL database.
 
-1.  From here, you can open the `computation.ipynb` notebook and run the python commands in our previous Jupyter/Docker workflows article [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/application/big-data/persist-jupyter-data-mysql-docker/).
+1.  From here, you can open the `computation.ipynb` notebook and run the python commands in our previous Jupyter/Docker workflows article [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/applications/big-data/persist-jupyter-data-mysql-docker/).
 
 ## Stop Services with Docker Compose
 

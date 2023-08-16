@@ -46,8 +46,8 @@ This article covers both strategies as they further drive understanding of conta
 
 1.  To better understand Jupyter/Docker workflows, read the previous articles in our series:
 
-    -   [How to Set Up Jupyter with Docker](/docs/guides/application/big-data/jupyter-docker-setup-guide/)
-    -   [Managing Jupyter Data in Docker Images and Containers](/docs/guides/application/big-data/manage-jupyter-data-docker/)
+    -   [How to Set Up Jupyter with Docker](/docs/guides/applications/big-data/jupyter-docker-setup-guide/)
+    -   [Managing Jupyter Data in Docker Images and Containers](/docs/guides/applications/big-data/manage-jupyter-data-docker/)
 
     Alternatively, follow the steps below to quickly set up the example project:
 
@@ -746,4 +746,4 @@ This article utilizes the Docker network to make this container-to-container com
 
 Jupyter, MySQL, and Docker is a winning combination for data professionals who require collaboration. This article has shown various routes to persist Jupyter data to a MySQL database. From a fully local setup, to a containerized Jupyter instance and a local MySQL instance, to having both instances containerized.
 
-To learn more, check out the next article in our series on Jupyter/Docker workflows [Simplify Multi-Container Orchestration with Docker Compose](/docs/guides/application/big-data/multi-container-orchestration-docker-compose/).
+To learn more, check out the next article in our series on Jupyter/Docker workflows [Simplify Multi-Container Orchestration with Docker Compose](/docs/guides/applications/big-data/multi-container-orchestration-docker-compose/).

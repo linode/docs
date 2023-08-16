@@ -23,7 +23,7 @@ The previous article in our series on Jupyter/Docker workflows covered how to pr
 
 1.  To follow the steps below you need to install Docker. The easiest way to do accomplish this is via the Docker Desktop package. Download the appropriate package for your operating system and follow the installation guide [here](https://docs.docker.com/engine/install/) to ensure that Docker is installed.
 
-1.  To better understand Jupyter Docker workflows, read the previous article in our Jupyter series, [How to Set Up Jupyter with Docker](/docs/guides/application/big-data/jupyter-docker-setup-guide/), and follow the steps therein. Alternatively, follow the steps below to quickly set up the example project:
+1.  To better understand Jupyter Docker workflows, read the previous article in our Jupyter series, [How to Set Up Jupyter with Docker](/docs/guides/applications/big-data/jupyter-docker-setup-guide/), and follow the steps therein. Alternatively, follow the steps below to quickly set up the example project:
 
     ```command {title="Local Machine Terminal"}
     cd ~
@@ -623,4 +623,4 @@ At the development phase's conclusion, containers are not run with bind mounts. 
 
 You should now have a better idea of how to manage Jupyter data using Docker containers and volumes. With anonymous volumes, named volumes, and bind mounts, Docker offers plenty of options to containerize Jupyter data. These techniques provide developers, data scientists, and researchers different ways to save, store, and share data.
 
-To learn more, check out the next article in our Jupuyter/Docker workflow series [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/application/big-data/persist-jupyter-data-mysql-docker/).
+To learn more, check out the next article in our Jupuyter/Docker workflow series [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/applications/big-data/persist-jupyter-data-mysql-docker/).
