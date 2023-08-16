@@ -1,9 +1,6 @@
 ---
 slug: zimbra-on-ubuntu-14-04
 deprecated: true
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how to install Zimbra, a complete self-hosted mail application, pre-configured with Postfix, OpenDKIM, Amavis, ClamAV and running on NGINX.'
 keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 tags: ["ubuntu","postfix","email"]
@@ -13,8 +10,6 @@ modified: 2015-10-01
 modified_by:
     name: Linode
 title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
-contributor:
-    name: Bill Bardon
 external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 relations:
@@ -23,6 +18,7 @@ relations:
         keywords:
             - distribution: Ubuntu 14.04
 aliases: ['/email/zimbra/zimbra-on-ubuntu-14-04/']
+authors: ["Bill Bardon"]
 ---
 
 ![Install Zimbra on Ubuntu](Install_Zimbra_Open_Source_Edition_on_Ubuntu_1404_smg.jpg)
@@ -37,11 +33,11 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 ## Set up Your Linode
 
-1.  Create a Linode with a minimum of 4 GB of RAM. See [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) for help setting up your host.
+1.  Create a Linode with a minimum of 4 GB of RAM. See [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) for help setting up your host.
 
 2.  Deploy an Ubuntu 14.04 LTS image to your Linode. Consider using slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host. SSH into the terminal using the command shown on the **Networking** tab in the Linode Cloud Manager and the password you entered when you created the Linode.
 
-3.  You must [set the hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/guides/using-your-systems-hosts-file/) prior to installing Zimbra.
+3.  You must [set the hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and fully qualified domain name (FQDN), and [update /etc/hosts](/docs/guides/using-your-systems-hosts-file/) prior to installing Zimbra.
 
 4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/guides/running-a-mail-server/#dns-records) for details on setting up DNS.
 

@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-and-configure-drupal-on-debian-10
-author:
-    name: Linode
-    email: docs@linode.com
 description: 'This guide will show you how to install and configure the very popular content management system, Drupal 8, on your Linode running Debian 10.'
 keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "debian 10"]
 tags: ["drupal","apache","lamp","php","cms","debian"]
@@ -19,6 +16,7 @@ relations:
         keywords:
            - distribution: Debian 10
 aliases: ['/websites/cms/drupal/how-to-install-and-configure-drupal-on-debian-10/']
+authors: ["Linode"]
 ---
 
 Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian 10.
@@ -29,9 +27,9 @@ If you are not using Debian 10, you can view different Linux distribution versio
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/guides/getting-started/) guide and complete the steps for [setting your Linode's hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/guides/set-up-and-secure/#set-the-timezone).
+1.  Familiarize yourself with our [Getting Started](/docs/products/platform/get-started/) guide and complete the steps for [setting your Linode's hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname) and [timezone](/docs/products/compute/compute-instances/guides/set-up-and-secure/#set-the-timezone).
 
-1. Follow our [Securing Your Server](/docs/guides/set-up-and-secure/) guide to [create a standard user account](/docs/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
+1. Follow our [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to [create a standard user account](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account), [harden SSH access](/docs/products/compute/compute-instances/guides/set-up-and-secure/#harden-ssh-access), [remove unnecessary network services](/docs/products/compute/compute-instances/guides/set-up-and-secure/#remove-unused-network-facing-services) and [create firewall rules](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) for your web server; you may need to make additional firewall exceptions for your specific application.
 
     {{< content "limited-user-note-shortguide" >}}
 

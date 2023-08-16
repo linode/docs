@@ -11,7 +11,8 @@
 {{ if $limit -}}
   {{ $pages = $pages | first $limit }}
 {{ end -}}
-{{ partial "releasenotes/list-pages.html" $pages }}
+{{ $jsonPath := printf "%sindex.json" .Page.RelPermalink }}
+{{ partial "releasenotes/list-pages-paginated.html" (dict "pages" $pages  "key"  $jsonPath ) }}
 {{ define "partials/releasenotes/list-pages.html" }}
   {{ range . }}
     <div class="mb-8">
@@ -24,9 +25,116 @@
       <time datetime="{{ $date }}" class="text-gray-400">
         {{ $date.Format site.Params.time_format_default }}
       </time>
-      <div class="content prose prose-sm md:prose-lg max-w-none">
+      <div class="content prose prose-sm md:prose-lg max-w-content">
         {{ .Content }}
       </div>
     </div>
   {{ end }}
+{{ end }}
+{{ define "partials/releasenotes/list-pages-paginated.html" }}
+  {{ $pages := .pages }}
+  {{ $key := .key }}
+  {{ $items := slice }}
+  {{ range $pages }}
+    {{ $id :=  (.Slug | default .Title) | anchorize }}
+    {{ $version :=  .Params.version }}
+    {{ $date := .Date }}
+    {{ $dateStr :=  $date.Format site.Params.time_format_default }}
+    {{ $content := .Content }}
+    {{ $title := .Title }}
+    {{ $items = $items | append (dict
+      "id" $id
+      "version" $version
+      "date"  $date
+      "dateStr" $dateStr
+      "title" $title
+      "content" $content )
+    }}
+  {{ end }}
+  {{ $json := ($items | jsonify) |  resources.FromString (printf "%s.json" $key ) }}
+  {{ if (ne hugo.Environment "development") }}
+    {{ $json = $json | minify }}
+  {{ end }}
+
+
+  <div
+    x-data="lncPaginator()"
+    x-query-string="currentPage"
+    x-init="initPaginator('{{ $json.RelPermalink }}', 10)">
+    {{ partial "releasenotes/list-pages-paginated-nav.html" (dict "class" "border-b border-divider mb-8") }}
+    <template x-for="item in current()">
+      <div class="mb-8">
+        <a :href="`#${item.id}`" class="group" class="text-2xl"
+          ><h2 :id="item.id" class="mb-2">
+            <span x-text="item.title"></span>
+            <svg
+              class="ml-2 inline-block w-5 h-5 text-brand group-hover:text-green-400">
+              <use href="#icon--hashtag"></use>
+            </svg>
+          </h2>
+        </a>
+        <span
+          class="text-gray-400 inline-block mb-4"
+          x-text="item.version + ', '"
+          x-show="item.version"></span>
+        <time :datetime="item.date" class="text-gray-400" x-text="item.dateStr">
+        </time>
+        <div
+          class="content prose prose-sm md:prose-lg max-w-content"
+          x-html="item.content"></div>
+      </div>
+    </template>
+    {{ partial "releasenotes/list-pages-paginated-nav.html" (dict "class" "border-t border-divider") }}
+  </div>
+{{ end }}
+
+{{ define "partials/releasenotes/list-pages-paginated-nav.html" }}
+  <nav
+    x-show="pages.length > 1"
+    class="py-3 flex items-center justify-between {{ .class }}"
+    aria-label="Pagination">
+    <div class="hidden sm:block">
+      <p class="text-sm text-textcolor font-medium" x-text="statusText()"></p>
+    </div>
+    <div class="flex-1 flex justify-end">
+      <button
+        x-show="!showAll"
+        :disabled="currentPage() == 1"
+        type="button"
+        @click="first()"
+        class="relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+        First
+      </button>
+      <button
+        x-show="!showAll"
+        :disabled="currentPage() == 1"
+        type="button"
+        @click="prev()"
+        class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+        Previous
+      </button>
+      <button
+        x-show="!showAll"
+        :disabled="currentPage() == pages.length"
+        type="button"
+        @click="next()"
+        class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+        Next
+      </button>
+      <button
+        x-show="!showAll"
+        :disabled="currentPage() == pages.length"
+        type="button"
+        @click="last()"
+        class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none">
+        Last
+      </button>
+      <button
+        :disabled="false"
+        type="button"
+        @click="toggleAll()"
+        x-text="showAll ? 'Less' : 'All'"
+        class="ml-3 relative inline-flex items-center px-4 py-2 rounded-md border-2 border-divider bg-white text-sm font-medium hover:bg-gray-200 focus:z-10 focus:outline-none"></button>
+    </div>
+  </nav>
 {{ end }}

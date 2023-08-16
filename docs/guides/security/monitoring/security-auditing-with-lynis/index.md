@@ -1,7 +1,5 @@
 ---
 slug: security-auditing-with-lynis
-author:
-  name: Hackersploit
 description: 'Learn to perform a security audit on your system using Lynis, an extensible security audit tool.'
 keywords: ["linux log monitor", "linux system monitoring tools", "system monitor linux"]
 tags: ["monitoring","security"]
@@ -13,13 +11,14 @@ modified_by:
 title: 'Security Auditing with Lynis'
 title_meta: 'Automated Security Auditing with Lynis'
 image: Security_auditing_with_Lynis.png
+authors: ["Hackersploit"]
 ---
 
 ## Before you Begin
 
 This guide was written specifically for Debian and Ubuntu operating systems, however can be adapted to apply to all other operating systems that [Lynis currently supports](https://cisofy.com/documentation/lynis/get-started/).
 
-Ensure that you have followed our [Getting Started](/docs/guides/getting-started/) guide before proceeding.
+Ensure that you have followed our [Getting Started](/docs/products/platform/get-started/) guide before proceeding.
 
 ## Installing Lynis
 

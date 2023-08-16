@@ -1,7 +1,5 @@
 ---
 slug: using-jq-to-process-json-on-the-command-line
-author:
-  name: Jeff Novotny
 description: 'This guide shows you how to use the JQ command and includes installation instructions and examples.'
 keywords: ['jq command','linux jq','jq examples','jq filter']
 tags: ['linux', 'debian', 'ubuntu']
@@ -9,20 +7,18 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-11-05
 modified_by:
   name: Linode
-title: "Use JQ to Process JSON on the Command Line"
+title: "Using the JQ Command to Process JSON on the Command Line"
 title_meta: "How to Use JQ to Process JSON on the Command Line"
-contributor:
-  name: Jeff Novotny
-  link: https://github.com/JeffreyNovotny
 external_resources:
 - '[The jq GitHub page](https://github.com/stedolan/jq)'
+authors: ["Jeff Novotny"]
 ---
 
-[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. This guide introduces the jq application and explains how to install and use it.
+[*jq*](https://github.com/stedolan/jq) is a free open source [JSON](https://www.json.org/json-en.html) processor that is flexible and straightforward to use. It allows users to display a JSON file using standard formatting, or to retrieve certain records or attribute-value pairs from it. It features a powerful set of filters and functions that can manipulate, analyze and transform JSON data. Because this tool is advanced, it is important to become familiar with how JQ works before implementing it. This JQ tutorial introduces the jq application, explains how to install and use it, and shows JQ examples in order to understand its functionality. Continue reading to learn all about how to use jg!
 
 ## An Introduction to JSON and jq
 
-jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become one of the most widely used standards for exchanging data due to its flexibility and intuitive, human-readable structure. JSON is derived from JavaScript and is designed as an open standard to be both language-independent and self-describing. This makes it a useful mechanism for data exchange, especially between web applications and servers. The data in a JSON file can usually be understood even without an API. All JSON files have the extension `.json`.
+jq is used to process *JavaScript Object Notation* (JSON) data. JSON has become one of the most widely used standards for exchanging data due to its flexibility and intuitive, human-readable structure. JSON is derived from JavaScript and is designed as an open standard to be both language-independent and self-describing. This makes it a useful mechanism for data exchange, especially between web applications and servers. The data in a JSON file can usually be understood even without an API. All JSON files have the file extension `.json`.
 
 JSON files share a common format. Here are some highlights of the JSON specification.
 
@@ -51,7 +47,7 @@ JSON lacks error handling and is not completely secure from hostile services or 
 
 jq was developed specifically to address the need for a JSON processor. Traditionally, there were few good tools for working with JSON data. Users had to rely on `grep`, `sed`, and other Linux commands, or write their own functions. jq is available for most systems and can be installed using a variety of package managers or directly as a binary. It is written in the C programming language and is completely portable to other systems, with no runtime dependencies.
 
-jq is a command-line utility that can slice, filter, and transform the components of a JSON file. Many users rely on jq to properly format JSON files because it always displays JSON information in a "pretty" format. jq aligns brackets, applies proper spacing and indentation rules, and displays each property on its own line.
+jq is a lightweight, flexible, command-line JSON processor that can slice, filter, and transform the components of a JSON file. Many users rely on jq to properly format JSON files because it always displays JSON information in a "pretty" format. jq aligns brackets, applies proper spacing and indentation rules, and displays each property on its own line.
 
 A large number of built-in functions are used to extract certain values or array entries. jq greatly simplifies array processing because it can iterate through an entire array and display a particular entry. Standard mathematical and logical operators allow users to parse a file for entries satisfying a boolean expression.
 
@@ -65,7 +61,7 @@ jq is well documented. Here are some of the available resources.
 
 ## A Comparison Between jq and sed
 
-jq is often compared to the standard Linux `sed` command. Both commands can parse text and filter and transform it. However, there are significant differences between the two applications. Here is an analysis of the similarities and differences between the applications and their relative strengths.
+jq is often compared to the standard Linux `sed` command. Both commands are useful for parsing, filtering, and transforming text. However, there are significant differences between the two applications. Here is an analysis of the similarities and differences between the applications and their relative strengths.
 
 - jq expects JSON data and is not used with other types of data. `sed` can process a variety of text-based file formats.
 - `sed` expects to receive lines of data separated by new lines. It reads text line by line and re-evaluates the script each time. It is not designed for structured data and does not interpret nested braces properly. jq is specifically designed for JSON files and can understand all JSON formatting conventions.
@@ -127,7 +123,7 @@ To install jq manually, follow these instructions.
 1. Download the binary from the [jq Downloads page](https://stedolan.github.io/jq/download/).
 1. Transfer the file to the Linode using `scp` or another method.
 1. Copy the application to a folder that is included in the `$PATH` variable, such as `/usr/local/bin`, or append the install directory to the `$PATH` variable. The application is ready to run, and no further installation is required.
-1. If the system displays a permissions error when running `jq` commands, change the permissions using `chmod +x jq`.
+1. If the system displays a permissions error when running a `jq` command, change the permissions using `chmod +x jq`.
 
 ## How to Use jq
 
@@ -135,7 +131,7 @@ It is fairly easy to use jq to perform basic operations on JSON files. However, 
 
 ### How to ‘Pretty Print’ JSON Files
 
-A commonly-used jq feature is the "prettify" function. This operation takes a JSON file and formats it into easy-to-read output, with proper line spacing, standard indentation, and perfectly aligned braces. To prettify a JSON file, use the `jq '.'` command. The `.` symbol is known as the *identity* command. It takes any input and reproduces it in standard JSON formatting. You can pipe JSON-formatted input to this command, or specify an input file as an argument.
+A commonly-used jq command is the "prettify" function. This operation takes a JSON file and formats it into easy-to-read output, with proper line spacing, standard indentation, and perfectly aligned braces. To prettify a JSON file, use the `jq '.'` command. The `.` symbol is known as the *identity* command. It takes any input and reproduces it in standard JSON formatting. You can pipe JSON-formatted input to this command, or specify an input file as an argument.
 
 The following command pipes a JSON message to the `prettify` command using the `echo` command. The output of the `echo` command serves as input for the `jq` command.
 
@@ -515,4 +511,4 @@ The `map` function can output the same information as an array.
 
 jq is a handy and lightweight open-source utility designed to display, filter, process, and transform the contents of JSON files. It is particularly useful for iterating through JSON array objects. jq is easy to install and is often part of the default package on many systems. It can also be installed using a package manager.
 
-jq is frequently used to display the contents of JSON files in a nicely-formatted manner. However, it can also filter the file contents to display only certain values and iterate through all items in an array. It features support for comparisons, conditional, and regular expressions, along with some functions for transforming data. jq is thoroughly documented. See the [jq GitHub page](https://github.com/stedolan/jq) for more information, including a language description and installation instructions for all systems.
+jq is frequently used to display the contents of JSON files in a nicely-formatted manner. However, it can also filter the file contents to display only certain values and iterate through all items in an array. It features support for comparisons, conditional, and regular expressions, along with some functions for transforming data. jq is thoroughly documented. See the [jq GitHub page](https://github.com/stedolan/jq) for more information, including a language description and installation instructions for all systems. Start using the jq command today!

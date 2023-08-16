@@ -1,8 +1,5 @@
 ---
 slug: enabling-https-using-certbot
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide contains a list of tutorials which outline different ways to install and use the Certbot utility with Apache web server on Linux."
 keywords: ['Certbot','SSL Certificates','HTTPS','Encryption']
 tags: ["ssl", "security", "web server"]
@@ -13,6 +10,7 @@ modified_by:
   name: Linode
 title: "Securing Web Traffic Using Certbot"
 title_meta: "Enabling HTTPS Using Certbot"
+authors: ["Linode"]
 ---
 
 The [Certbot](https://certbot.eff.org/) utility automates all processes involved in obtaining and installing a TLS/SSL certificate. It works directly with the free [Let's Encrypt](https://letsencrypt.org/) certificate authority to request (or renew) a certificate, prove ownership of the domain, and install the certificate on Apache, NGINX, or other web servers. This allows Certbot to dramatically reduce the effort (and cost) of securing your websites with HTTPS.

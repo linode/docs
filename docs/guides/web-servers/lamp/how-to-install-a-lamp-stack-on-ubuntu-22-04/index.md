@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-a-lamp-stack-on-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides some background about a Linux LAMP stack and explains how to install a LAMP stack on Ubuntu 22.04.'
 keywords: ['Ubuntu LAMP stack','LAMP stack Ubuntu','install LAMP stack','how to install a LAMP Stack on Ubuntu 22.04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified_by:
   name: Linode
 title: "Install a LAMP Stack on Ubuntu 22.04"
 title_meta: "How to Install a LAMP Stack on Ubuntu 22.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[LAMP Stack Wikipedia page](https://en.wikipedia.org/wiki/LAMP_(software_bundle))'
 - '[MySQL 8.0 Reference Manual](https://dev.mysql.com/doc/refman/8.0/en/)'
@@ -23,8 +18,11 @@ external_resources:
 - '[PHP Documentation](https://www.php.net/docs.php)'
 relations:
     platform:
+        key: install-lamp-stack
         keywords:
            - distribution: Ubuntu 22.04
+authors: ["Jeff Novotny"]
+aliases: ['/lamp-guides/ubuntu-11.04-natty/']
 ---
 
 The [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) includes an operating system, web server, programming language, and database. These applications are collectively able to implement web applications and other computing solutions. This guide provides some background about the LAMP stack and explains how to install and configure it on Ubuntu 22.04 LTS. It also explains how to quickly test interactions between the applications.
@@ -42,9 +40,9 @@ The LAMP Stack is sufficient to host web applications and implement a modern com
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note respectIndent=false >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

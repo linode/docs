@@ -1,8 +1,5 @@
 ---
 slug: migrate-a-wordpressdotcom-site-to-linode
-author:
-  name: Nathan Melehan
-  email: docs@linode.com
 description: 'Shows how to export posts from a WordPress.com website and import them to WordPress on a Linode.'
 keywords: ["wordpress", "wordpress.com", "migrate", "website migration"]
 tags: ["linode platform","wordpress"]
@@ -15,6 +12,7 @@ title: How to Migrate a WordPress.com Website to Linode
 external_resources:
  - '[WordPress.com: Moving to Self-Hosted WordPress](https://move.wordpress.com/)'
 aliases: ['/platform/migrate-to-linode/migrate-a-wordpressdotcom-site-to-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 This guide describes how to export your content from WordPress.com and self-host your WordPress website on Linode. Read the [Best Practices when Migrating to Linode](/docs/guides/best-practices-when-migrating-to-linode/) guide prior to following this guide for more information about migrating your site.
@@ -29,9 +27,9 @@ WordPress.com's export feature will export pages, posts, and comments from your 
 
 ### Deploy Your Linode
 
-1.  Follow Linode's [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
+1.  Follow Linode's [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and choose Ubuntu 18.04 as your Linux image when deploying. Choose a Linode plan with enough storage space to accommodate the website data from your current host.
 
-1.  Follow the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges.
+1.  Follow the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide and create a limited Linux user with `sudo` privileges.
 
 1.  Follow the [Install WordPress on Ubuntu 18.04](/docs/guides/install-wordpress-ubuntu-18-04/) guide to stand up a new web server and WordPress installation. Later in this guide you will use the WordPress credentials you create during the installation, so be sure to record them.
 

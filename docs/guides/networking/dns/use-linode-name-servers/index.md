@@ -1,8 +1,5 @@
 ---
 slug: use-linode-name-servers
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: "Shortguide for setting Linode's nameservers as the authoritative nameservers for a domain"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["nameserver", "authoritative nameserver", "DNS", "DNS Manager"]
@@ -14,6 +11,7 @@ title: "Use Linode's Nameservers"
 published: 2018-07-19
 headless: true
 aliases: ['/networking/dns/use-linode-name-servers/']
+authors: ["Nathan Melehan"]
 ---
 
 ### (Optional) Prepare Your Domain Name to Move
@@ -90,7 +88,7 @@ The following support documents describe how to update the authoritative nameser
 
 1.  Navigate to your domain in a web browser. It should now show the website from Linode, rather than your old host. If you can't tell the difference, use the [DIG utility](http://www.kloth.net/services/dig.php). It should show the IP address for your Linode.
 
-1.  [Set reverse DNS](/docs/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
+1.  [Set reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) for your domain. This is especially important if you are running a mail server.
 
     {{< note respectIndent=false >}}
 If you're having trouble seeing your site at the new IP address, try visiting it in a different browser or in a private browsing session. Sometimes your browser will cache old DNS data, even if it has updated everywhere else.

@@ -102,7 +102,15 @@
             <h4
               class="uppercase font-semibold text-xs pb-4"
               x-html="filters.data.filters.get('tags').title"></h4>
-            {{ partial "sections/search/filters__tags.html" . }}
+            {{ partial "sections/search/filters__tags.html" (dict "facet" "tags" "singular" "tag") }}
+          </div>
+        </template>
+        <template x-if="filters.data.filters.get('authors')">
+          <div class="mb-8" data-testid="search-filter-authors">
+            <h4
+              class="uppercase font-semibold text-xs pb-4"
+              x-html="filters.data.filters.get('authors').title"></h4>
+            {{ partial "sections/search/filters__tags.html" (dict "facet" "authors" "singular" "author") }}
           </div>
         </template>
       </div>

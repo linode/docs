@@ -1,13 +1,9 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "CyberPanel is a next-generation control panel, which provides a friendly user interface. Learn how to deploy CyberPanel on Linode using Marketplace Apps."
 keywords: ['cyberpanel','marketplace','server']
 tags: ["marketplace", "linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-02-23
-modified: 2022-03-08
+modified: 2023-02-02
 image: DeployCyberPanel_marketplaceapps.png
 modified_by:
   name: Linode
@@ -15,6 +11,7 @@ title: "Deploy CyberPanel through the Linode Marketplace"
 external_resources:
 - '[CyberPanel](https://docs.litespeedtech.com/cloud/images/cyberpanel/)'
 aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel-marketplace-app']
+authors: ["Linode"]
 ---
 
 [CyberPanel](https://cyberpanel.net/) is a next-generation hosting control panel, which provides a friendly user interface. The CyberPanel app provides a One-Click installer for OpenLiteSpeed, LSCache, WordPress, Prestashop, Joomla, Magento, and Git. It also automates the initial setup for components like mail service and DNS to reduce the time it takes to get set up.
@@ -38,11 +35,13 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
 ### Access your CyberPanel App
 
-1.  When the installation completes, log into your Linode via SSH, replacing `192.0.2.0` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
+1. When the installation completes, log into your Linode via SSH, replacing `192.0.2.1` with your [Linode's IP address](/docs/guides/find-your-linodes-ip-address/), and entering your Linode's root password when prompted:
 
-         ssh root@192.0.2.0
+    ```command
+    ssh root@192.0.2.1
+    ```
 
-1.  You should see the CyberPanel welcome messsage when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and RainLoop in your web browser. Replace `192.0.2.0` with your Linode's IP address.
+1. You should see the CyberPanel welcome message when logging into the Linode. This will include instructions for accessing CyberPanel, phpMyAdmin, and RainLoop in your web browser. Replace `192.0.2.1` with your Linode's IP address.
 
     ```output
     Welcome to LiteSpeed One-Click CyberPanel Server.
@@ -51,9 +50,9 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
     * https://docs.litespeedtech.com/cloud/images/cyberpanel/
 
     In a web browser, you can view:
-    * CyberPanel: https://192.0.2.0:8090
-    * phpMyAdmin: https://192.0.2.0:8090/phpmyadmin
-    * RainLoop:   https://192.0.2.0:8090/rainloop
+    * CyberPanel: https://192.0.2.1:8090
+    * phpMyAdmin: https://192.0.2.1:8090/phpmyadmin
+    * RainLoop:   https://192.0.2.1:8090/rainloop
 
     On the server:
     * You can get the CyberPanel admin password with the following command:
@@ -73,9 +72,11 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
     Do you wish to update the system now? This will update the web server as well. [Y/n]?
     ```
 
-1.  Obtain your CyberPanel administrator password from the command line.
+1. Obtain your CyberPanel administrator password from the command line.
 
-        cat .litespeed_password
+    ```command
+    cat .litespeed_password
+    ```
 
      You should see output similar to the following:
 
@@ -85,17 +86,17 @@ aliases: ['/guides/deploy-cyberpanel-with-marketplace-apps/','/guides/cyberpanel
 
     In the above example, the password is `qN1Jo7XKCekN8ZAV`.
 
-1.  Visit the CyberPanel administration panel by visiting your Linode's IP in a web browser on port 8090. For example, if your IP address is `192.0.2.0`, you would visit `https://192.0.20:8090`.
+1. Visit the CyberPanel administration panel by visiting your Linode's IP in a web browser on port 8090. For example, if your IP address is `192.0.2.1`, you would visit `https://192.0.2.1:8090`.
 
-    {{< note >}}
+    {{< note type="warning">}}
     CyberPanel uses a self-signed certificate issued by LiteSpeedCommunity. Because it is not signed by a common Certificate Authority, your browser may warn about the security of the connection and require you to add a security exception.
     {{< /note >}}
 
-1.  Log in to the administration panel using the username `admin` and the password you obtained in step three.
+1. Log in to the administration panel using the username `admin` and the password you obtained in step three.
 
     ![Log into your CyberPanel](log-into-cyberpanel.png)
 
-1.  You should now see the administration panel.
+1. You should now see the administration panel.
 
     ![CyberPanel Dashboard](cyberpanel-dashboard.png)
 

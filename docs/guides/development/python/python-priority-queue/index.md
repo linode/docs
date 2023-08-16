@@ -1,7 +1,5 @@
 ---
 slug: python-priority-queue
-author:
-  name: Jeff Novotny
 description: 'This guide discusses priority queues and the PriorityQueue class in Python 3. This data structure allows you to sort items in a queue and return them in a desired order.'
 keywords: ['python queue','python priority queue','queue in python','get size of priority queue python']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,14 +8,13 @@ modified_by:
   name: Linode
 title: "The Priority Queue in Python 3"
 title_meta: "What is the Python Priority Queue?"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[Wikipedia page on priority queues](https://en.wikipedia.org/wiki/Priority_queue)'
 - '[Big O notation explanation](https://en.wikipedia.org/wiki/Big_O_notation)'
 - '[Python queue documentation](https://docs.python.org/3/library/queue.html)'
 - '[Python PriorityQueue documentation](https://docs.python.org/3/library/queue.html?highlight=priorityqueue#queue.PriorityQueue)'
 - '[Python heapq documentation](https://docs.python.org/3/library/heapq.html#priority-queue-implementation-notes)'
+authors: ["Jeff Novotny"]
 ---
 
 In Python, queues are frequently used to process items using a *first in first out* (FIFO) strategy. However, it is often necessary to account for the priority of each item when determining processing order. A queue that retrieves and removes items based on their priority as well as their arrival time is called a [*priority queue*](https://en.wikipedia.org/wiki/Priority_queue). Prioritization can be complicated, but fortunately Python priority queues can be easily and efficiently implemented using a built-in module. This guide introduces the Python priority queue and explains how to implement it in Python 3.

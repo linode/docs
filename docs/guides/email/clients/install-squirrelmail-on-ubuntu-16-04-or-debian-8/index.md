@@ -1,8 +1,5 @@
 ---
 slug: install-squirrelmail-on-ubuntu-16-04-or-debian-8
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu or Debian 8.'
 keywords: ["squirrelmail", " squirrel mail", " debian", " debian 8", " mail client", " ubuntu", " ubuntu 16"]
 tags: ["debian","ubuntu","email","lamp"]
@@ -20,6 +17,7 @@ relations:
         keywords:
             - distribution: Debian 8
 aliases: ['/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8/']
+authors: ["Alex Fornuto"]
 ---
 
 ![Install SquirrelMail on Ubuntu or Debian](Install_SquirrelMail_smg.jpg)

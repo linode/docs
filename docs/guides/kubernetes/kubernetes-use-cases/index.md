@@ -1,8 +1,5 @@
 ---
 slug: kubernetes-use-cases
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide provides you with some use cases as well as advantages of using Kubernetes, the container and infrastructure orchestration technology.'
 keywords: ['kubernets', 'k8s', 'use','cases','advantages']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,10 +7,9 @@ published: 2019-09-04
 modified_by:
   name: Linode
 title: "Advantages of Using Kubernetes"
-contributor:
-  name: Linode
 aliases: ['/applications/containers/kubernetes/kubernetes-use-cases/','/kubernetes/kubernetes-use-cases/']
 tags: ["kubernetes"]
+authors: ["Linode"]
 ---
 
 ## What is Kubernetes
@@ -28,7 +24,7 @@ For a more in-depth explanation of Kubernetes concepts, see our five-part [Begin
 
 *Managed Kubernetes* solutions are concerned with the management of one or more parts of a Kubernetes cluster. Because a cluster is formed from a number of different components, there are many different kinds of managed Kubernetes products, and each will solve a different set of problems.
 
-{{< disclosure-note "Why use a managed Kubernetes solution?" >}}
+{{< note title="Why use a managed Kubernetes solution?" isCollapsible=true >}}
 Kubernetes can make managing containers and microservices easier, but Kubernetes itself also requires some administrative overhead. This includes:
 
 - Performing updates to the Kubernetes control plane and agent software,
@@ -36,7 +32,7 @@ Kubernetes can make managing containers and microservices easier, but Kubernetes
 - Monitoring the health of the underlying hardware systems.
 
 Managed Kubernetes solutions will help offload some or all of this work.
-{{< /disclosure-note >}}
+{{< /note >}}
 
 Here's a few common categories:
 
@@ -48,9 +44,9 @@ Here's a few common categories:
 
     The customer generally assumes responsibility for deploying and maintaining their applications on the cluster. The Master Nodes are often provided at no cost, and the customer only pays for the Worker Nodes they provision.
 
-    {{< note respectIndent=false >}}
-The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an example of this category.
-{{< /note >}}
+    {{< note >}}
+    The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an example of this category.
+    {{< /note >}}
 
 -   **Software-as-a-Service Kubernetes**
 
@@ -78,9 +74,9 @@ The [Linode Kubernetes Engine (LKE)](/docs/products/compute/kubernetes/) is an e
 
     While a customer will install and run these management applications on their own servers, the companies that author these applications may also offer support similar to cloud KaaS offerings.
 
-    {{< note respectIndent=false >}}
-An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
-{{< /note >}}
+    {{< note >}}
+    An example application in this category is [Rancher](https://rancher.com) from Rancher Labs.
+    {{< /note >}}
 
 ## Advantages
 
@@ -100,7 +96,7 @@ Kubernetes is declarative: describe to Kubernetes the desired state of the clust
 
 Kubernetes can run on virtually any public cloud, on-premise hardware, or even bare metal. Developing applications for Kubernetes means that code can be redeployed multiple times, allowing you to select the infrastructure of your choosing.
 
-{{< note respectIndent=false >}}
+{{< note >}}
 There are some caveats to this point. Many cloud infrastructure providers support Kubernetes, but there is no guarantee that they support all of the features of Kubernetes. For example, not every cloud provider offers [load balancing](https://en.wikipedia.org/wiki/Load_balancing_(computing)) as a feature, so a Kubernetes cluster on those providers will not support [Services of the type `LoadBalancer`](https://kubernetes.io/docs/concepts/services-networking/#loadbalancer).
 {{< /note >}}
 

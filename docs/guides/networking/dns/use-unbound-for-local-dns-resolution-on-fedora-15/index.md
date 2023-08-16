@@ -1,9 +1,6 @@
 ---
 slug: use-unbound-for-local-dns-resolution-on-fedora-15
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu Fedora 15.'
 keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 tags: ["dns","networking","fedora","resolving"]
@@ -19,6 +16,7 @@ relations:
         key: unbound-local-dns-resolution
         keywords:
             - distribution: Fedora 15
+authors: ["Linode"]
 ---
 
 
@@ -29,7 +27,7 @@ If you are unfamiliar with DNS, you may want to consider our [introduction to th
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/getting-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -102,7 +100,7 @@ Before you can begin using your Unbound instance to resolve DNS queries, you nee
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/guides/linux-static-ip-configuration/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/products/compute/compute-instances/guides/manual-network-configuration/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 {{< file "/etc/resolve.conf" conf >}}
 nameserver 127.0.0.1

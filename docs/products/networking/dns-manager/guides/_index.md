@@ -1,9 +1,10 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode DNS Manager"
 description: "Learn the basics of adding and managing Domains and DNS records using the DNS manager. You can also find guides that take a deep dive into DNS records, common DNS configurations, and other more advanced topics."
 tab_group_main:
     weight: 30
-modified: 2022-10-28
+modified: 2023-02-09
 ---
 
 ## Basics
@@ -24,7 +25,7 @@ modified: 2022-10-28
 
 ## DNS Record Types
 
-- [A and AAA Records](/docs/products/networking/dns-manager/guides/a-record/)
+- [A and AAAA Records](/docs/products/networking/dns-manager/guides/a-record/)
 
 - [CNAME Records](/docs/products/networking/dns-manager/guides/cname-record/)
 
@@ -44,7 +45,7 @@ modified: 2022-10-28
 
 - [Overview of DNS and DNS Records](/docs/guides/dns-overview/)
 
-- [Troubleshooting DNS Records](/docs/guides/troubleshooting-dns/)
+- [Troubleshooting DNS Records](/docs/products/networking/dns-manager/guides/troubleshooting-dns/)
 
 - [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
 

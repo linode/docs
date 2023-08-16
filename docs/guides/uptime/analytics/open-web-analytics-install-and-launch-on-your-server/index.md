@@ -1,8 +1,5 @@
 ---
 slug: open-web-analytics-install-and-launch-on-your-server
-author:
-    name: Linode Community
-    email: contribute@linode.com
 description: This guide will show how to install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu.
 keywords: ['open web analytics','owa','mysql','analytics']
 tags: ["centos","debian","ubuntu","analytics","statistics","mysql"]
@@ -12,12 +9,11 @@ modified: 2016-01-05
 modified_by:
     name: Alex Fornuto
 title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
-contributor:
-    name: Douglas Colby
 external_resources:
  - '[OWA Website](http://www.openwebanalytics.com)'
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 aliases: ['/uptime/analytics/open-web-analytics-install-and-launch-on-your-server/']
+authors: ["Douglas Colby"]
 ---
 
 
@@ -27,9 +23,9 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 1.  This guide assumes that you have your Linode already set up and running, that you have followed:
 
-     - The [Getting Started](/docs/guides/getting-started/) guide.
-     - The [Securing Your Server](/docs/guides/set-up-and-secure/) guides.
-     - That the Linode's [hostname is set](/docs/guides/getting-started/#setting-the-hostname) and has a FQDN.
+     - The [Getting Started](/docs/products/platform/get-started/) guide.
+     - The [Securing Your Server](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guides.
+     - That the Linode's [hostname is set](/docs/products/platform/get-started/#setting-the-hostname) and has a FQDN.
 
 
     {{< note respectIndent=false >}}

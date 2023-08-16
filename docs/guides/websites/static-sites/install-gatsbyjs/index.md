@@ -1,8 +1,5 @@
 ---
 slug: install-gatsbyjs
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to create a CI/CD pipeline using the static-site generator Gatsby.js, Netlify to edit and preview, and Travis CI to deploy. '
 keywords: ['gatsbyjs','gatsby','ssg','static site generator', 'travis', 'netlify']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,9 +9,8 @@ modified_by:
   name: Linode
 title: "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI"
 title_meta: 'CI/CD Pipeline with Gatsby.js, Netlify and Travis CI'
-contributor:
-  name: Linode
 aliases: ['/websites/static-sites/install-gatsbyjs/']
+authors: ["Linode"]
 ---
 
 ![Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI](create-a-ci-cd-pipeline.png "Create a CI/CD Pipeline with Gatsby.js, Netlify and Travis CI")
@@ -55,17 +51,17 @@ This guide sets up the following flow of events:
 
 ## Before You Begin
 
-1.  Follow the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide and deploy a Linode running Ubuntu 18.04.
+1.  Follow the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide and deploy a Linode running Ubuntu 18.04.
 
-1.  Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
+1.  Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to create a limited Linux user account with `sudo` privileges, harden SSH access, and remove unnecessary network services.
 
     {{< content "limited-user-note-shortguide" >}}
 
-1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/guides/configure-rdns/) on your Linode's IP.
+1.  Configure DNS for your site by adding a [domain zone](/docs/products/networking/dns-manager/guides/create-domain/) and setting up [reverse DNS](/docs/products/compute/compute-instances/guides/configure-rdns/) on your Linode's IP.
 
 1.  Create a [GitHub](https://github.com/) account if you don't already have one. GitHub is free for open source projects.
 
-1.  [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-via-homebrew) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
+1.  [Install Git](/docs/guides/how-to-install-git-on-linux-mac-and-windows/) on your local computer. Later in this guide, [Homebrew](/docs/guides/how-to-install-git-on-linux-mac-and-windows/#install-git-using-homebrew-on-macos) will be used to install Gatsby on a Mac, so it's recommended that you also use Homebrew to install Git if you're using a Mac.
 
 ## Prepare Your Production Linode
 

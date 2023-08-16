@@ -1,13 +1,10 @@
 ---
 slug: diagnosing-network-issues-with-mtr
-author:
-  name: Brett Kaplan
-  email: docs@linode.com
 description: MTR is a network diagnostic tool similar to ping and traceroute. This guide shows how to create and interpret MTR reports on your Linode or home computer.
 keywords: ["mtr", "traceroute", "latency", "loss"]
 tags: ["monitoring","resolving","networking","linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/']
+aliases: ['/networking/diagnostics/diagnosing-network-issues-with-mtr/','/linux-tools/mtr/','/networking/diagnosing-network-issues-with-mtr/','/troubleshooting/interpreting-mtr-reports/']
 modified: 2018-05-10
 modified_by:
   name: Linode
@@ -17,6 +14,7 @@ external_resources:
  - '[Understanding the Traceroute Command - Cisco Systems](http://www.cisco.com/en/US/products/sw/iosswrel/ps1831/products_tech_note09186a00800a6057.shtml#traceroute)'
  - '[Wikipedia article on traceroute](http://en.wikipedia.org/wiki/Trace_route)'
  - '[Traceroute by Exit109.com](http://www.exit109.com/~jeremy/news/providers/traceroute.html)'
+authors: ["Brett Kaplan"]
 ---
 
 ![Diagnosing Network Issues with MTR](diagnosing-network-issues-with-mtr.png)

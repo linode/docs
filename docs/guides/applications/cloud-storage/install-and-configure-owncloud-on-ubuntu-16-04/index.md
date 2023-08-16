@@ -1,8 +1,5 @@
 ---
 slug: install-and-configure-owncloud-on-ubuntu-16-04
-author:
-  name: Angel Guarisma
-  email: docs@linode.com
 description: "This guide shows how to securely setup ownCloud, a file-hosting service that facilitates file sharing across multiple devices, on Ubuntu 16.04."
 keywords: ["owncloud", "install owncloud", "cloud storage ubuntu"]
 tags: ["ubuntu"]
@@ -22,17 +19,22 @@ relations:
         keywords:
             - distribution: Ubuntu 16.04
 aliases: ['/applications/cloud-storage/install-and-configure-owncloud-on-ubuntu-16-04/']
+authors: ["Angel Guarisma"]
 ---
 
 OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices.
 
 ![ownCloud](owncloud_ubuntu.jpg)
 
+{{< note >}}
+To automatically install ownCloud on a Compute Instance, consider deploying [ownCloud Server through the Linode Marketplace](/docs/products/tools/marketplace/guides/owncloud/).
+{{< /note >}}
+
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 3.  [Install and configure a LAMP stack](/docs/guides/install-lamp-stack-on-ubuntu-16-04/).
 

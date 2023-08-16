@@ -1,19 +1,14 @@
 ---
 slug: {{ path.Base .File.Dir }}
-author:
-  name: Linode Community
-  email: docs@linode.com
+title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
 description: 'Two to three sentences describing your guide.'
 og_description: 'Two to three sentences describing your guide when shared on social media.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+authors: ["Linode"]
 published: {{ now.Format "2006-01-02" }}
 modified_by:
   name: Linode
-title: "{{ replace (path.Base .File.Dir) "-" " " | title }}"
-contributor:
-  name: Your Name
-  link: Github/Twitter Link
 external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'

@@ -10,6 +10,9 @@
     setActiveMenuItem();
   };
   var bindEvents = function() {
+    window.addEventListener("scroll", function() {
+      document.documentElement.style.setProperty("--site-scroll-y", window.scrollY + "px");
+    });
     $header.addEventListener("toggle:on", function(event) {
       setHtmlScrollState(false);
     });
@@ -28,7 +31,7 @@
   };
   var setActiveMenuItem = function() {
     var current_path = window.location.pathname;
-    if (current_path === "/") {
+    if ("/" === current_path) {
       return;
     } else if (current_path.match(/^\/community\/questions\/.+/)) {
       current_path = "/community/questions/";
@@ -51,9 +54,11 @@
         return;
       $link.classList.add("current");
       const $sub_menu = $link.closest(".c-submenu");
-      if ($sub_menu === null)
+      if (null === $sub_menu)
         return;
-      const $trigger_links = $header.querySelectorAll(`:scope [data-toggle="#${$sub_menu.id}"]`);
+      const $trigger_links = $header.querySelectorAll(
+        `:scope [data-toggle="#${$sub_menu.id}"]`
+      );
       Array.from($trigger_links).forEach(($trigger) => $trigger.classList.add("current"));
     });
   };
@@ -83,8 +88,19 @@
     return response;
   }
 
+  // src/js/Main/i18n.js
+  var languages = ["de", "es", "fr", "it", "ja", "ko", "pt-br", "pt", "zh"];
+  function getLanguageString() {
+    let lang = document.documentElement.lang;
+    if (lang && languages.includes(lang)) {
+      return lang;
+    } else {
+      return "";
+    }
+  }
+
   // src/js/Main/safe-html.js
-  function safeHTML(input, allow_tags = ["b", "br", "em", "i", "strong"]) {
+  function safeHTML(input, allow_tags = ["b", "br", "em", "i", "span", "strong", "u"]) {
     let tmp = document.createElement("div");
     tmp.textContent = input;
     let output = tmp.innerHTML;
@@ -102,10 +118,14 @@
   var mount2 = function() {
     $notification = document.querySelector(".c-site-header .c-notification");
     if ($notification) {
+      let api_url = "https://www.linode.com/wp-json/linode/v1/header-notification", lang = getLanguageString();
+      if (lang) {
+        api_url = `https://www.linode.com/${lang}/wp-json/linode/v1/header-notification?lang=${lang}`;
+      }
       $notification_link = $notification.querySelector(".c-notification__link");
       $notification_tag = $notification.querySelector(".c-notification__tag");
       $notification_message = $notification.querySelector(".c-notification__message");
-      fetch("https://www.linode.com/wp-json/linode/v1/header-notification").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
+      fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM(data)).catch((error) => console.log(error));
     }
   };
   var updateDOM = function(data) {
@@ -131,11 +151,11 @@
   // src/js/Main/header-featured.js
   var $html3;
   var mount3 = function() {
-    fetch("https://www.linode.com/wp-json/linode/v1/header-featured").then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
-  };
-  window.siteFeatureClick = function(category, action, label) {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ "event": "gaEvent", "eventCategory": category, "eventAction": action, "eventLabel": label });
+    let api_url = "https://www.linode.com/wp-json/linode/v1/header-featured", lang = getLanguageString();
+    if (lang) {
+      api_url = `https://www.linode.com/${lang}/wp-json/linode/v1/header-featured?lang=${lang}`;
+    }
+    fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
   };
   var updateDOM2 = function(data) {
     data.forEach((item) => {
@@ -171,7 +191,7 @@
     $a.id = `c-featured--${data.slot}`;
     $a.href = data.link_url;
     $a.setAttribute("style", data.wrap_styles);
-    $a.setAttribute("onclick", `siteFeatureClick( '${data.ga_category}', '${data.ga_action}', '${data.ga_label}')`);
+    $a.setAttribute("data-analytics-event", `${data.ga_category} | ${data.ga_action} | ${data.ga_label}`);
     $text.classList.add("c-featured__text");
     $headline.classList.add("c-featured__headline");
     $headline.innerHTML = safeHTML(data.headline);
@@ -218,12 +238,12 @@
   };
   var handleClick = function(e) {
     const $trigger = e.target.closest("[data-toggle]");
-    if ($trigger === null)
+    if (null === $trigger)
       return;
-    if (e.target.closest("form") !== null)
+    if (null !== e.target.closest("form"))
       return;
     const $target = $trigger.dataset.toggle ? $html4.querySelector($trigger.dataset.toggle) : $trigger;
-    if ($target === null)
+    if (null === $target)
       return;
     const $anchor = e.target.closest("a");
     if ($anchor) {
@@ -239,9 +259,12 @@
     toggle($target, $trigger);
   };
   var toggle = function($target, $trigger) {
-    const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html4.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent("toggle:" + (target_active ? "off" : "on"), {
-      bubbles: true
-    });
+    const target_active = $target.classList.contains("active"), group = $target.dataset.group, $active = group ? $html4.querySelectorAll('[data-group="' + group + '"].active') : null, toggle_event = new CustomEvent(
+      "toggle:" + (target_active ? "off" : "on"),
+      {
+        bubbles: true
+      }
+    );
     if ($active) {
       $active.forEach(($item) => $item.classList.remove("active"));
     }

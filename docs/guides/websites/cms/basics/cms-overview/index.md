@@ -1,8 +1,5 @@
 ---
 slug: cms-overview
-author:
-  name: Linode
-  email: docs@linode.com
 description: "An overview of the three content management systems that Linode supports"
 keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framwork"]
 tags: ["drupal","wordpress","cms","lamp"]
@@ -13,6 +10,7 @@ modified_by:
 published: 2014-10-17
 title: "Content Management Systems: An Overview"
 aliases: ['/websites/cms/cms-overview/','/websites/cms/basics/cms-overview/']
+authors: ["Linode"]
 ---
 
 A content management system, or CMS, creates and manages websites. CMS applications eliminate the need for programming. Once running, they enable non-technical professionals to upload and administer their own content. Any coding is replaced with a user-friendly, point-and-click interface. There are dozens of popular CMS apps available, and many are free. Every CMS has a different design with particular web functionalities, aimed at specific users. CMS applications have been around since the late 1990s, and they continue to reach larger and larger audiences.
@@ -23,7 +21,7 @@ Even experienced programmers often choose using a CMS over coding a website. Con
 
 ## Content Management Systems on a Linode
 
-Linode has installation guides for [Drupal](/docs/guides/managing-web-content-with-drupal-7/), [WordPress](/docs/guides/how-to-install-and-configure-wordpress/), and [Joomla](/docs/guides/manage-web-content-with-joomla/). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guide. For security, work through the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
+Linode has installation guides for [Drupal](/docs/guides/managing-web-content-with-drupal-7/), [WordPress](/docs/guides/how-to-install-and-configure-wordpress/), and [Joomla](/docs/guides/manage-web-content-with-joomla/). Together, they are the most popular CMS apps on the web. However, before you install, you'll need a running Linode, so see the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guide. For security, work through the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. And, finally for server configuration, create a LAMP stack with the [Hosting a Website](/docs/guides/hosting-a-website-ubuntu-18-04/) guide.
 
 {{< note respectIndent=false >}}
 A LAMP stack is a System Admin term for a web server using Linux, Apache, MySQL, and PHP. Linux is an operating system, Apache is web-server software, MySQL is a database, and PHP is a programming language. This is a common stack combination and supports many CMS applications.

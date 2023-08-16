@@ -1,9 +1,6 @@
 ---
 slug: squid-http-proxy-centos-6-4
 deprecated: true
-author:
-  name: Alex Fornuto
-  email: afornuto@linode.com
 description: 'Use Squid to create an HTTP proxy server on your Linode running Centos 6.4'
 keywords: ["squid", "proxy", "centos", "6.4", "http"]
 tags: ["proxy","web server","centos"]
@@ -21,6 +18,7 @@ relations:
         key: install-squid-proxy
         keywords:
             - distribution: CentOS 6
+authors: ["Alex Fornuto"]
 ---
 
 ![HTTP Proxy Using Squid on CentOS](Creating_an_HTTP_Proxy_Using_Squid_on_CentOS_64_smg.jpg)

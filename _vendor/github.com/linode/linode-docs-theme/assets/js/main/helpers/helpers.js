@@ -88,6 +88,19 @@ export function isElementInViewport(el) {
 	);
 }
 
+// getScrollLeft returns the scrollLeft value needed to make the child element visible.
+export function getScrollLeft(parent, child) {
+	const parentRect = parent.getBoundingClientRect();
+	const childRect = child.getBoundingClientRect();
+
+	// If the child is already visible, return 0.
+	if (childRect.left >= parentRect.left && childRect.right <= parentRect.right) {
+		return 0;
+	}
+
+	return childRect.left - parentRect.left;
+}
+
 // getOffsetTop returns the distance from container down to el.
 export function getOffsetTop(container, el) {
 	var distance = 0;
@@ -151,6 +164,10 @@ export function isIterable(obj) {
 
 export function isMobile() {
 	return document.documentElement.clientWidth < 768;
+}
+
+export function isDesktop() {
+	return isScreenLargerThan(1279); // xl in Tailwind config.
 }
 
 export function isScreenLargerThan(px) {

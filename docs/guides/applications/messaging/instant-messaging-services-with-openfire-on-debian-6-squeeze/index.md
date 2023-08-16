@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-openfire-on-debian-6-squeeze
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire debian 6", "openfire debian squeeze", "openfire linux", "linux xmpp", "instant messaging", "real-time messaging", "xmpp server", "chat software", "linux jabber server"]
 tags: ["debian"]
@@ -19,15 +16,16 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-custom-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

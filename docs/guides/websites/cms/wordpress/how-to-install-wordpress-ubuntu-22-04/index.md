@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-wordpress-ubuntu-22-04
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide explains how to install and configure WordPress on Ubuntu 22.04.'
 keywords: ['wordpress ubuntu','wordpress download','what is wordpress','how to install wordpress', 'ubuntu wordpress install']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,8 +8,6 @@ modified_by:
   name: Linode
 title: "Install WordPress on Ubuntu 22.04"
 title_meta: "How to Install WordPress on Ubuntu 22.04"
-contributor:
-  name: Jeff Novotny
 external_resources:
 - '[WordPress](https://wordpress.org/)'
 - '[WordPress documentation](https://wordpress.org/support/)'
@@ -30,6 +25,7 @@ relations:
         key: how-to-install-wordpress
         keywords:
            - distribution: Ubuntu 22.04 LTS
+authors: ["Jeff Novotny"]
 ---
 
 [WordPress](https://wordpress.org/) is one of the most common *content management systems* (CMS) in use today. WordPress allows [Ubuntu](https://ubuntu.com/server) and other Linux users to design a website and add content using its intuitive GUI. WordPress also allows site owners to install a diverse selection of themes and plug-ins to further customize their site. This guide explains how to install WordPress on Ubuntu 22.04 LTS. It also describes how to configure and start using WordPress after installation.
@@ -52,9 +48,9 @@ WordPress sites are almost always accessed using a domain name. For more informa
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Fully configure a LAMP or LEMP stack on the Linode and confirm it is working properly.
 

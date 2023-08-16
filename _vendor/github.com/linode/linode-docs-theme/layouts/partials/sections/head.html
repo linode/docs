@@ -4,20 +4,33 @@
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0,maximum-scale=5.0" />
-{{ if .Param "noindex" }}
+{{ if or (not hugo.IsProduction) (.Param "noindex") }}
   <meta name="robots" content="noindex" />
 {{ end }}
-<link
-  rel="shortcut icon"
-  href="{{ "favicon.ico" | relURL }}"
-  type="image/x-icon" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="https://assets.linode.com/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://assets.linode.com/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://assets.linode.com/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://assets.linode.com/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://assets.linode.com/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://assets.linode.com/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://assets.linode.com/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://assets.linode.com/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://assets.linode.com/icons/apple-touch-icon-180x180.png">
+<link rel="mask-icon" href="https://assets.linode.com/icons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="icon" type="image/png" sizes="32x32" href="https://assets.linode.com/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="194x194" href="https://assets.linode.com/icons/favicon-194x194.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://assets.linode.com/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="https://assets.linode.com/icons/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://assets.linode.com/icons/favicon-16x16.png">
+<link rel="shortcut icon" href="https://assets.linode.com/icons/favicon.ico">
 
 {{/* Adobe Analytics.
   This is configured for the environments production, development (Netlify and local) and staging.
 */}}<script
   src="{{ site.Params.adobe_launch_script }}"
   async></script>
-{{ if (not site.IsServer) }}
+{{ if (ne hugo.Environment "development") }}
   <!-- Google Tag Manager -->  <script>
     (function (w, d, s, l, i) {
     w[l] = w[l] || []; w[l].push({

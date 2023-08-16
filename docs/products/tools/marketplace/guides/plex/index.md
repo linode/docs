@@ -1,11 +1,7 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Stream your personal media collection to nearly any device with your own Plex Media Server using Linode Marketplace Apps."
 keywords: ['streaming','plex','video','media server']
 tags: ["debian","docker","marketplace", "web applications","linode platform", "cloud manager"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-09-28
 modified: 2022-03-08
 image: Deploy_Plex_oneclickapps.png
@@ -15,6 +11,7 @@ title: "Deploy Plex Media Server through the Linode Marketplace"
 external_resources:
 - '[Plex Support Articles](https://support.plex.tv/articles/)'
 aliases: ['/platform/marketplace/deploy-plex-with-marketplace-apps/', '/platform/marketplace/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-one-click-apps/', '/guides/deploy-plex-with-marketplace-apps/','/platform/one-click/deploy-plex-with-one-click-apps/','/guides/plex-marketplace-app/']
+authors: ["Linode"]
 ---
 
 [Plex](https://www.plex.tv/) is a feature-rich streaming platform that allows you to organize and stream your own digital video and audio to your devices. This guide shows you how to deploy the [**Plex Media Server**](https://hub.docker.com/r/plexinc/pms-docker/) using Linode's Plex Marketplace App, upload media to your Plex Server, and connect to it from a Plex client application. Your Plex Media Server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/products/storage/block-storage/) service with this app.
@@ -40,16 +37,18 @@ Owning a Plex Media Server enables you to maintain a personal media library in a
 
 ### Plex Options
 
-The following configuration options create a secure [Limited User](/docs/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
+The following configuration options create a secure [Limited User](/docs/products/compute/compute-instances/guides/set-up-and-secure/#add-a-limited-user-account) to run your Plex Media Server.
 
 {{< note >}}
-- As a security measure, [root login over SSH](/docs/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
+- As a security measure, [root login over SSH](/docs/products/compute/compute-instances/guides/set-up-and-secure/#ssh-daemon-options) is disabled for this App. Use your Limited User credentials to access your Linode via SSH instead.
 - The Limited User configurations below are for your Linode's [Linux user](/docs/guides/linux-users-and-groups/), which is distinct from your [Plex account user](https://www.plex.tv/sign-up/).
 {{< /note >}}
 
 - **Limited User Name** *(required)*: Enter your preferred username for the limited user. If the username `root` is specified, a limited user is not be created and extra security features are not configured.
 - **Limited User Password** *(required)*: Enter a *strong* password for the new user.
 - **Limited User SSH Key:** If you wish to login as the limited user through public key authentication (without entering a password), enter your public key here. See [Creating an SSH Key Pair and Configuring Public Key Authentication on a Server](/docs/guides/use-public-key-authentication-with-ssh/) for instructions on generating a key pair.
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
 
 ## Getting Started After Deployment
 

@@ -57,11 +57,12 @@ export function newSearchStore(searchConfig, Alpine) {
 		},
 
 		updateLocationWithQuery() {
-			let href = window.location.pathname + window.location.hash;
 			let search = queryHandler.queryAndLocationToQueryString(this.query);
+			let href = window.location.pathname;
 			if (search) {
 				href += '?' + search;
 			}
+			href += window.location.hash;
 
 			// See https://github.com/hotwired/turbo/issues/163#issuecomment-933691878
 			history.replaceState({ turbo: {} }, null, href);
@@ -110,7 +111,7 @@ export function newSearchStore(searchConfig, Alpine) {
 					m = this.metaResult.get(key);
 					if (!m && sectionConfigIdx !== -1) {
 						let index = searchConfig.sectionsSorted[sectionConfigIdx];
-						m = { title: index.title, linkTitle: index.title };
+						m = { title: index.title, linkTitle: index.title, excerpt: '' };
 					}
 				}
 
@@ -242,6 +243,7 @@ export function newSearchStore(searchConfig, Alpine) {
 		let filters = sectionConfig.filters || '';
 		let facetFilters = [];
 		let attributesToHighlight = [];
+		let analyticsTags = [];
 		let page = 0;
 
 		if (query) {
@@ -250,11 +252,15 @@ export function newSearchStore(searchConfig, Alpine) {
 			facetFilters = query.toFacetFilters();
 			attributesToHighlight = ['title', 'excerpt', ...filteringFacetNames];
 			page = query.p;
+			if (query.isFiltered()) {
+				analyticsTags.push('active');
+			}
 		}
 
 		return {
 			indexName: searchConfig.indexName(sectionConfig.index),
 			clickAnalytics: searchConfig.click_analytics,
+			analyticsTags: analyticsTags,
 			filters: filters,
 			facetFilters: facetFilters,
 			facets: facets,

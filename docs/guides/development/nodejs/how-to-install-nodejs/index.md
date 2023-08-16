@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-nodejs
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to install Node.js, a cross-platform runtime environment that can power server-side JavaScript applications, on Linux.'
 keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +15,7 @@ external_resources:
  - '[npm](https://www.npmjs.com/)'
 audiences: ["beginner"]
 languages: ["javascript"]
+authors: ["Linode"]
 ---
 
 [Node.js](https://nodejs.org/) is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses [V8](https://v8.dev/), Google's JavaScript engine, which is also found in Chromium and Chrome. Depending on the use case, Node.js can supplement or replace traditional web servers and tools such as Apache, nginx, or PHP.

@@ -1,8 +1,5 @@
 ---
 slug: monitoring-servers-with-monit
-author:
-    name: Linode Community
-    email: docs@linode.com
 description: 'This guide shows how you can improve server uptime by using Monit Server Monitoring, an app that monitors your system 24x7 and recovers processes when there is a problem.'
 keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,12 @@ modified: 2015-10-15
 modified_by:
     name: Linode
 title: 'Installing Monit for Server Monitoring'
-contributor:
-    name: Bill Bardon
-    link:
 external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
 tags: ["monitoring"]
 aliases: ['/uptime/monitoring/monitoring-servers-with-monit/']
+authors: ["Bill Bardon"]
 ---
 
 
@@ -164,7 +159,7 @@ You can optionally restrict web interface access to just your IP address.
         allow 10.0.0.1 (your ip address)
 
 {{< note respectIndent=false >}}
-If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/guides/set-up-and-secure/#configure-a-firewall).
+If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall).
 {{< /note >}}
 
 ## Configure Monit's Checking Actions

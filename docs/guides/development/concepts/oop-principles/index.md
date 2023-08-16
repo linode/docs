@@ -1,7 +1,5 @@
 ---
 slug: oop-principles
-author:
-  name: Nathaniel Stickman
 description: "What are the four major OOP principles? This guide will discuss object-oriented programming concepts and provide real-world examples."
 keywords: ['oop principles','oop concepts','oop concepts in java']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,14 +8,12 @@ modified_by:
   name: Linode
 title: "A Guide to OOP Principles in Java"
 title_meta: "Object-Oriented Programming Concepts, Explained"
-contributor:
-  name: Nathaniel Stickman
-  link: https://github.com/nasanos
 external_resources:
 - '[GeeksforGeeks: Object Oriented Programming (OOPs) Concept in Java](https://www.geeksforgeeks.org/object-oriented-programming-oops-concept-in-java/)'
 - '[ParTech: Basic Principles of Object-oriented Programming](https://www.partech.nl/en/publications/2020/10/basic-principles-of-object-oriented-programming#:~:text=The%20basic%20principles%20of%20OOP,any%20object%2Doriented%20programming%20language.)'
 - '[Munish Chandel: What are Four Basic Principles of Object Oriented Programming?](https://medium.com/@cancerian0684/what-are-four-basic-principles-of-object-oriented-programming-645af8b43727)'
 - '[Key Lime Interactive: The Four Pillars of Object Oriented Programming](https://info.keylimeinteractive.com/the-four-pillars-of-object-oriented-programming)'
+authors: ["Nathaniel Stickman"]
 ---
 
 Object-oriented programming gives you a set of programming principles to make your code more compartmentalized and reusable. Object-oriented programming accomplishes this by structuring programs around objects. This tutorial covers the core principles of object-oriented programming and provides examples of these concepts written in Java.

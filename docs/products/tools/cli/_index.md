@@ -1,5 +1,6 @@
 ---
 title: Linode CLI
+title_meta: "Linode CLI Product Documentation"
 description: "The Linode CLI allows you to accelerate common tasks with customizable output and easy scripting."
 tab_group_main:
     is_root: true

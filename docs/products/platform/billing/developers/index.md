@@ -1,9 +1,11 @@
 ---
 title: Developers
+title_meta: "Developer Resources for Billing and Payments"
 description: "Linode Billing is managed easily with developer tools like the Linode API or CLI."
 tab_group_main:
     weight: 50
 aliases: ['/products/tools/billing/developers/']
+published: 2022-11-17
 ---
 
 ## Linode API

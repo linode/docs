@@ -20,20 +20,22 @@ home = ["HTML", "JSON", "RSS"]
 
 [taxonomies]
 bundle = "bundles"
+tags = "tags"
+authors = "authors"
 
 [frontmatter]
 lastmod = [":git", "lastmod", "date", "publishDate"]
 publishDate = ["published", "publishDate", "date"]
 
 [params]
-page_title_suffix = "Linode"
+page_title_suffix = "Linode Docs"
 description = "Guides and tutorials on the Linode platform, Linux basics, and software installation and configuration."
 # Date and time formatting, see https://gohugo.io/functions/format/
 time_format_RFC3339 = "2006-01-02T15:04:05Z07:00"
 time_format_default = "Monday, January 2, 2006"
 
 # Promo code
-promo_code = "docs1000822"
+promo_code = "docs032323"
 promo_code_amount = 100
 promo_code_disclaimer = "This credit will be applied to any valid services used during your first 60 days."
 

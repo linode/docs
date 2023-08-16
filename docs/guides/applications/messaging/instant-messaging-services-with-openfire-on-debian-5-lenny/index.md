@@ -1,9 +1,6 @@
 ---
 slug: instant-messaging-services-with-openfire-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with Openfire on Debian 5 (Lenny), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: ["openfire", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 tags: ["debian"]
@@ -19,13 +16,14 @@ relations:
         key: how-to-install-openfire
         keywords:
             - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 5 (Lenny) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 ## Install Prerequisites
 
