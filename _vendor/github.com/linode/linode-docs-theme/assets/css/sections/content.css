@@ -158,7 +158,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 .content div.overflow-table {
   position: relative;
   display: block;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .content table {
