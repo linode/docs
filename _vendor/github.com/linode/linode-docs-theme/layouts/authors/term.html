@@ -1,0 +1,57 @@
+{{ define "body-class" }}
+  fullwidth
+{{ end }}
+
+{{ define "main" }}
+  {{ $isLinodeAuthor := (or (eq .Title "Linode") (eq .Title "Linode Community")) }}
+  <h1
+    class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+    {{ .Title }}
+  </h1>
+  {{ if $isLinodeAuthor }}
+    <div
+      class="flex justify-between bg-brand pull-out items-center rounded-none md:rounded-md px-4 md:px-8 py-4 mt-8">
+      <div
+        class="text-white text-md md:text-lg font-regular tracking-normal w-3/4">
+        <p>“{{ .Title }}” is a collective author attribution.</p>
+      </div>
+    </div>
+  {{ else }}
+    {{ if or .Params.link .Params.email }}
+      <div class="mt-3 flex space-x-2">
+        {{ $url := urls.Parse .Params.link }}
+        {{ $host := $url.Host | strings.TrimPrefix "www." }}
+        {{ with .Params.link }}
+          <a
+            class="text-brand hover:text-gray-600"
+            href="{{ . }}"
+            target="_blank"
+            >{{ $host | upper }}</a
+          >
+        {{ end }}
+        {{ with .Params.email }}
+          <a
+            class="text-brand hover:text-gray-600"
+            href="mailto:{{ . }}"
+            target="_blank"
+            >EMAIL</a
+          >
+        {{ end }}
+      </div>
+    {{ end }}
+    {{ with .Content }}
+      <div class="content prose prose-sm md:prose-lg max-w-content mt-6">
+        {{ . }}
+      </div>
+    {{ end }}
+  {{ end }}
+
+  {{ if not $isLinodeAuthor }}
+    <h2 class="my-6">Contributions</h2>
+    <div class="grid mobile:grid-cols-1 grid-cols-2 lg:grid-cols-4 gap-4">
+      {{ range .Pages }}
+        {{ partial "components/card.html" (dict "page" .) }}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

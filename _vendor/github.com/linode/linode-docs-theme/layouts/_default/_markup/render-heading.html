@@ -1,0 +1,9 @@
+{{- $id := .Anchor -}}
+{{- $level := .Level -}}
+{{ if eq .Page.Section "release-notes" }}
+{{- $level = add $level 1 -}}
+{{- $slug := .Page.Slug | default .Page.Title  -}}
+{{- $id = printf "%s-%s" ($slug | anchorize) $id -}}
+{{- end -}}
+{{- $ariaLabel := printf "%s: %s" .Page.LinkTitle .Text  }}
+{{ partial "heading" (dict "id" $id "level" $level "text" .Text "ariaLabel" $ariaLabel) }}

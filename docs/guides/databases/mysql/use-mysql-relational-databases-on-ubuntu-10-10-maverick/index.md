@@ -1,9 +1,6 @@
 ---
 slug: use-mysql-relational-databases-on-ubuntu-10-10-maverick
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
 keywords: ["mysql ubuntu 10.10", "mysql maverick", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -19,11 +16,12 @@ relations:
         keywords:
             - distribution: Ubuntu 10.10
 tags: ["ubuntu","database","mysql"]
+authors: ["Linode"]
 ---
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 ## Basic System Configuration
 
@@ -54,7 +52,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 10.10 (Maverick)](359-maverick-01-mysql-root-password.png)](359-maverick-01-mysql-root-password.png)
+![Setting the MySQL root password in Ubuntu 10.10 (Maverick)](359-maverick-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. It is recommended that you accept the program's default answers. If you are prompted to reload privileges, select "yes." Run the following command to execute the program:
 
@@ -83,7 +81,7 @@ If you made any changes to MySQL's configuration, restart it by issuing the foll
 
     restart mysql
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel/) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/) for information on connecting to your databases with local clients.
 
 Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
@@ -160,7 +158,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records and used as the primary key), as well as two fields for storing the customer's name.
 
-By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/mysql-ssh-tunnel/). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
+By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/guides/create-an-ssh-tunnel-for-mysql-remote-access/). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
 
 ## More Information
 

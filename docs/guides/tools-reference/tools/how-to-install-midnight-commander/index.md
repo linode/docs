@@ -1,8 +1,5 @@
 ---
 slug: how-to-install-midnight-commander
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: 'This guide shows how to install and use Midnight Commander, a text user-interface file manager.'
 keywords: ["midnight commander", "file manager", "text user interface", "TUI"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -11,14 +8,12 @@ modified: 2017-09-12
 modified_by:
   name: Linode
 title: 'How to Use Midnight Commander, a Visual File Manager'
-contributor:
-  name: Alexandru Andrei
 external_resources:
  - '[Midnight Commander](https://midnight-commander.org/)'
 tags: ["linux"]
 aliases: ['/tools-reference/tools/how-to-install-midnight-commander/']
+authors: ["Alexandru Andrei"]
 ---
-
 
 ![Midnight Commander](midnight_commander.jpg)
 
@@ -31,8 +26,8 @@ A TUI facilitates interaction between users and their systems in a visually orie
 
 ## Before You Begin
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 The methods in this tutorial have been tested on Debian 9. There is no special requirement to install Midnight Commander, and it works on all Linux distributions. While this file manager should work in almost identically on all Linux distributions, a particular distro may not package the exact same Midnight Commander version (4.8.18, in this case). This may result in small behavioral differences on other operating systems.
@@ -121,7 +116,7 @@ First, install the utility:
     - `-` to deselect all objects that match a pattern (e.g., typing `f*` will deselect every file or directory whose names start with "f")
     - `+` to select by pattern
 
-    In these patterns, `*` stands for zero or more characters while `?` stands for one character. So "f*e" would match "fe", "file", "fiiiile" or anything else starting with "f" and ending with "e". "a?c" would match "abc", "adc", "azc" but will not match "ac". There needs to be exactly one character between "a" and "c."
+    In these patterns, `*` stands for zero or more characters while `?` stands for one character. So `f*e` would match `fe`, `file`, `fiiiile` or anything else starting with "f" and ending with "e". `a?c` would match `abc`, `adc`, `azc` but will not match `ac`. There needs to be exactly one character between "a" and "c."
 
     If you prefer to use the mouse, then right clicking will make individual selections. Holding down the right click and dragging will select multiple entries.
 
@@ -141,7 +136,7 @@ Choose 1-4 [1]:
 
     ![Midnight Commander's Editor mcedit with Syntax Highlighting Active](midnight-commander-mcedit.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Actions can be cancelled in MC by pressing the **ESC** key twice.
 {{< /note >}}
 

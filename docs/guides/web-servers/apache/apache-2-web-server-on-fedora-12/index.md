@@ -1,9 +1,6 @@
 ---
 slug: apache-2-web-server-on-fedora-12
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 12.'
 keywords: ["Apache", "web sever", "Fedora 12"]
 tags: ["web server","apache","fedora"]
@@ -19,11 +16,12 @@ relations:
         key: how-to-install-apache2
         keywords:
             - distribution: Fedora 12
+authors: ["Linode"]
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Fedora 12. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 12](/docs/web-servers/lamp/lamp-server-on-fedora-12/).
+This tutorial explains how to install and configure the Apache web server on Fedora 12. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 12](/docs/guides/lamp-server-on-fedora-12/).
 
 ## Install Apache HTTP Server
 
@@ -152,7 +150,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for Fedora 12](/docs/lamp-guides/fedora-12) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for Fedora 12](/docs/guides/lamp-server-on-fedora-12/) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 ## Install Apache Modules
 
@@ -165,7 +163,7 @@ To see if a module is enabled, look in "conf" files for lines beginning with `Lo
 
 To disable an existing module (at your own risk) edit the file in question, and comment out the `LoadModule` statement by prefixing the line with a hash (e.g. `#`).
 
-To get a list of available Apache modules modules in the Fedora repository use the following commands:
+To get a list of available Apache modules in the Fedora repository use the following commands:
 
     yum search mod_
 

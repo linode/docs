@@ -1,37 +1,46 @@
-{{ define "main"}}
-  <div class="">
-    {{ partial "sections/content/products/title-byline.html" . }}
-    <div class="mt-4">
-      {{ partial "sections/content/navbar.html" (dict "page" . "mainNavPartial" "sections/content/tab-main.html") }}
-    </div>
+{{ define "_baseof_start" }}
+  {{- .Page.Store.Set "_baseof_main_layout" "content_toc" -}}
+{{ end }}
 
+{{ define "content_header" }}
+  {{ partial "sections/content/products/title-byline.html" . }}
+  <div class="mt-4">
+    {{ partial "sections/content/navbar.html" (dict "page" . "mainNavPartial" "sections/content/tab-main.html") }}
+  </div>
+{{ end }}
+
+{{ define "content_main" }}
+
+  <div class="content__main">
     {{ if ne .Params.promo_default false }}
-    <div class="mt-8">
-      {{ partial "sections/content/promo_code.html" . }}
-    </div>
+      <div class="mt-8">
+        {{ partial "sections/content/promo_code.html" . }}
+      </div>
     {{ end }}
 
-    <div class="content prose prose-sm md:prose-lg max-w-none mt-8">
+
+    <div class="content prose prose-sm md:prose-lg max-w-content mt-8">
       {{ .Content }}
     </div>
     <p class="pt-2 md:pt-6 text-basicgray">
       This page was originally published on
-      <time datetime="{{ .PublishDate }}">
+      <time
+        datetime="{{ .PublishDate.Format site.Params.time_format_iso8601 }}">
         {{ .PublishDate.Format site.Params.time_format_default }}.
       </time>
     </p>
+
+    <div class="block mt-8">
+      {{ partial "sections/content/tags.html" . }}
+    </div>
+
+    {{ if ne $.Site.Params.feedback_survey_display false }}
+      <div class="hide-if-no-js">
+        <hr class="my-8" />
+        {{/* Add feedback links via Delighted. */}}
+        {{ partial "components/delighted/form.html" . }}
+        <hr class="mt-8" />
+      </div>
+    {{ end }}
   </div>
-
-  <div class="block mt-8">
-    {{ partial "sections/content/tags.html" . }}
-  </div>
-
-  <div class="hide-if-no-js">
-    <hr class="my-8">
-
-    {{/* Add feedback links via Delighted. */}}
-    {{ partial "components/delighted/form.html" . }}
-    <hr class="mt-8">
-  </div>
-
 {{ end }}

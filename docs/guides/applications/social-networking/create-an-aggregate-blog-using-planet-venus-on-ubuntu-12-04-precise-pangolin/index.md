@@ -1,8 +1,5 @@
 ---
 slug: create-an-aggregate-blog-using-planet-venus-on-ubuntu-12-04-precise-pangolin
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide will show you how to use The Planet feed aggregator to provide overviews of a community by collecting community feeds on Ubuntu 12.04 "Precise Pangolin".'
 keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 tags: ["ubuntu"]
@@ -12,21 +9,22 @@ modified: 2013-10-04
 modified_by:
   name: Linode
 published: 2012-10-22
-title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 12.04 (Precise Pangolin)'
+title: "Aggregate Content Using Planet Venus on Ubuntu 12.04"
 deprecated: true
 external_resources:
-    - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
-    - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
+    - '[Planet Venus GitHub Repo](https://github.com/rubys/venus)'
+    - '[Using Cron to Schedule Tasks](/docs/guides/schedule-tasks-with-cron/)'
 relations:
     platform:
         key: aggregate-blog-planet
         keywords:
             - distribution: Ubuntu 12.04
+authors: ["Linode"]
 ---
 
 The Planet (Venus) Feed Aggregator takes a collection of RSS feeds and generates what its founders call a "River of News" feed that combines posts from all sources into a single coherent stream. Thus, this software is useful for providing a simple and consolidated overview of ongoing output from selected blogs. Written and configured in Python and run regularly using cron, Planet Venus is an updated variant of the popular Planet software.
 
-Before beginning to follow this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/billing-and-support/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/docs/web-servers/) software.
+Before beginning to follow this guide, we assume that you have completed the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/guides/introduction-to-linux-concepts/), [beginner's guide](/docs/products/compute/compute-instances/faqs/) and [administration basics guide](/docs/guides/linux-system-administration-basics/). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/docs/web-servers/) software.
 
 ## Installing Software
 
@@ -39,7 +37,7 @@ Install the Planet and other required software by issuing the following command:
 
     apt-get install apache2 planet-venus
 
-This will also install the Apache HTTP server if you have not already installed this software. Be sure to [configure a name-based virtual host](/docs/web-servers/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin#apache) if you haven't already. You may now begin the configuration of Planet Venus.
+This will also install the Apache HTTP server if you have not already installed this software. Be sure to [configure a name-based virtual host](/docs/guides/lamp-server-on-ubuntu-12-04-precise-pangolin/#apache) if you haven't already. You may now begin the configuration of Planet Venus.
 
 ## Configure Planet
 

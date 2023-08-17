@@ -1,13 +1,31 @@
-<div id="leak-checker" :class="{ 'bg-gray-100': status == 0, 'bg-blue-100': status == 1, 'bg-red-300': status == 2}" class="pl-6 pt-4 m-2 w-full max-w-lg mb-4 p-2 rounded-lg shadow-lg" x-data="lncLeakChecker" data-turbo-permanent>
+<div
+  id="leak-checker"
+  :class="{ 'bg-gray-100': status == 0, 'bg-blue-100': status == 1, 'bg-red-300': status == 2}"
+  class="pl-6 pt-4 m-2 w-full max-w-lg mb-4 p-2 rounded-lg shadow-lg"
+  x-data="lncLeakChecker"
+  data-turbo-permanent>
   <div class="flex items-center py-2 space-x-2">
-    <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" aria-label="Selector"  x-model="selector">
-    <button @click="trackComponents(selector);" class="flex-shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+    <input
+      class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+      type="text"
+      aria-label="Selector"
+      x-model="selector" />
+    <button
+      @click="trackComponents(selector);"
+      class="shrink-0 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded"
+      type="button">
       Track Components
     </button>
-    <button @click="replaceBody();" class="flex-shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+    <button
+      @click="replaceBody();"
+      class="shrink-0 bg-green-500 hover:bg-green-700 border-green-500 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded"
+      type="button">
       Replace Body
     </button>
-    <button @click="runGC()" class="flex-shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+    <button
+      @click="runGC()"
+      class="shrink-0 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded"
+      type="button">
       GC
     </button>
   </div>
