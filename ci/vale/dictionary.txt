@@ -378,6 +378,7 @@ covid
 cpanel
 cpanminus
 cpu
+cpus
 CPython
 cqlsh
 cqlshrc
