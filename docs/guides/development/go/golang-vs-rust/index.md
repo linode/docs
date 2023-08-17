@@ -51,11 +51,11 @@ How do Rust and Go stack up when it comes to features and usage? The following s
 
 The choice between Rust and Go often comes down to the application you're working on and the particular problems you want to solve.
 
-Go excels at compiling code, as [the Performance section below](/docs/golang-vs-rust/#performance) explains. This makes Go a good choice when you expect to have a large codebase and a large team working on it. In these cases, Go's quick compilation time saves time and vastly improves developer experience over languages that compile more slowly.
+Go excels at compiling code, as [the Performance section below](/docs/guides/golang-vs-rust/#performance) explains. This makes Go a good choice when you expect to have a large codebase and a large team working on it. In these cases, Go's quick compilation time saves time and vastly improves developer experience over languages that compile more slowly.
 
 Go also features top-notch, built-in support for HTTP. This and Go's general orientation toward web development make it a strong choice for web applications. In fact, you might consider using Go where you might normally find something like Node.js. Because Go is a compiled language, it has a higher level of performance than many other web-oriented languages.
 
-Rust prioritizes secure performance over everything else, which is elaborated in [the Performance section below](/docs/golang-vs-rust/#performance). This makes Rust a compelling choice when it comes to applications with complex algorithms and large amounts of data to process. In tests, Rust tends to hold its remarkable performance through complex operations and high levels of abstraction. Few other languages compare when speed is the premium.
+Rust prioritizes secure performance over everything else, which is elaborated in [the Performance section below](/docs/guides/golang-vs-rust/#performance). This makes Rust a compelling choice when it comes to applications with complex algorithms and large amounts of data to process. In tests, Rust tends to hold its remarkable performance through complex operations and high levels of abstraction. Few other languages compare when speed is the premium.
 
 Rust also performs close to "the metal", or the machine components. Its low-level efficiencies and fine-grained control make it an outstanding option for systems programming. It may even outshine C/C++ in this field due to its modern sensibilities and ability to guarantee memory safety without performance compromises.
 
