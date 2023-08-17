@@ -124,6 +124,7 @@ See the [Marketplace](/docs/marketplace/) listing page for a full list of all Ma
 - [Virtualmin](/docs/products/tools/marketplace/guides/virtualmin/)
 - [VS Code](/docs/products/tools/marketplace/guides/vscode/)
 - [WarpSpeed VPN](/docs/products/tools/marketplace/guides/warpspeed/)
+- [Wazuh](/docs/products/tools/marketplace/guides/wazuh/)
 - [Webmin](/docs/products/tools/marketplace/guides/webmin/)
 - [Webuzo](/docs/products/tools/marketplace/guides/webuzo/)
 - [WireGuard](/docs/products/tools/marketplace/guides/wireguard/)
