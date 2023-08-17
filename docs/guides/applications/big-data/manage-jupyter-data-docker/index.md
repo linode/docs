@@ -23,7 +23,7 @@ The previous article in our series on Jupyter/Docker workflows covered how to pr
 
 1.  To follow the steps below you need to install Docker. The easiest way to do accomplish this is via the Docker Desktop package. Download the appropriate package for your operating system and follow the installation guide [here](https://docs.docker.com/engine/install/) to ensure that Docker is installed.
 
-1.  To better understand Jupyter Docker workflows, read the previous article in our Jupyter series, [How to Set Up Jupyter with Docker](/docs/guides/applications/big-data/jupyter-docker-setup-guide/), and follow the steps therein. Alternatively, follow the steps below to quickly set up the example project:
+1.  To better understand Jupyter Docker workflows, read the previous article in our Jupyter series, [How to Set Up Jupyter with Docker](/docs/guides/jupyter-docker-setup-guide/), and follow the steps therein. Alternatively, follow the steps below to quickly set up the example project:
 
     ```command {title="Local Machine Terminal"}
     cd ~
@@ -431,7 +431,7 @@ In order to fix the file permissions, you need to update the `Dockerfile`.
     docker run -d -v /project/outputs -it -p 8888:8888 --name custom-jupyter-container custom-jupyter-image:anon-volume
     ```
 
-1.  Locate the JupyterLab UI URL using the instructions in the [Using the Detached Flag](/docs/guides/jupyter-docker-workflows#using-the-detached-flag) section and open it in a Web browser.
+1.  Locate the JupyterLab UI URL using the instructions in the [Using the Detached Flag](/docs/guides/manage-jupyter-data-docker/#using-the-detached-flag) section and open it in a Web browser.
 
 1.  Once in the JupyterLab UI Launcher screen, select **Terminal** from the **Other** section and re-check the permissions:
 
@@ -498,7 +498,7 @@ In order to fix the file permissions, you need to update the `Dockerfile`.
 
     However, this volume only exists as long as the container exists, as anonymous volumes are container-specific. Anonymous volumes are best suited for temporary files in containers. Outsourcing to host machine storage yields better container performance and efficiency. It can also be used to avoid specific files being overwritten by other mounted external storage. However, this could be improved for persisting data across containers to the host machine via named volumes.
 
-1.  When done, close the Web browser, then manually stop and remove both the container and volume using the instructions in the [Manually Removing Containers](/docs/guides/jupyter-docker-workflows#manually-removing-volumes) and [Removing Volumes](/docs/guides/jupyter-docker-workflows#removing-volumes) sections, respectively.
+1.  When done, close the Web browser, then manually stop and remove both the container and volume using the instructions in the [Manually Removing Containers](/docs/guides/manage-jupyter-data-docker/#removing-containers) and [Removing Volumes](/docs/guides/manage-jupyter-data-docker/#removing-volumes) sections, respectively.
 
 ### Named Volumes
 
@@ -554,9 +554,9 @@ Docker manages the location of both named and anonymous volumes on the host mach
     docker run -d -v named-data-volume:/project/outputs -it -p 8888:8888 --name custom-jupyter-container custom-jupyter-image:named-volume
     ```
 
-1.  Locate the JupyterLab UI URL using the instructions in the [Using the Detached Flag](/docs/guides/jupyter-docker-workflows#using-the-detached-flag) section.
+1.  Locate the JupyterLab UI URL using the instructions in the [Using the Detached Flag](/docs/guides/manage-jupyter-data-docker/#using-the-detached-flag) section.
 
-1.  Test the volume by again attempting to download the geospatial data and write it to the `output` folder as in the [Writing Data](/docs/guides/jupyter-docker-workflows#writing-data) section. This should produce an `Motorized-Foot-Scooter-Trips-2020.csv` file in the `outputs` folder.
+1.  Test the volume by again attempting to download the geospatial data and write it to the `output` folder as in the [Writing Data](/docs/guides/manage-jupyter-data-docker/#writing-data) section. This should produce an `Motorized-Foot-Scooter-Trips-2020.csv` file in the `outputs` folder.
 
     With named volumes, the `outputs` data is persistent. Recall that anonymous volumes only exist as the container exists. When outputs are created from computation in the container, the data doesn't persist when the container is removed or shut down. This particular external data storage mechanism is helpful to persist data outside of containers even when the containers are removed.
 
@@ -566,7 +566,7 @@ Docker manages the location of both named and anonymous volumes on the host mach
     Docker volumes may look similar to the `COPY` instruction in the `Dockerfile`. However, the `COPY` instruction creates a one-time snapshot of the host machine file system where the `Dockerfile` is located. It then adds it to the image during the build phase.
     {{< /note >}}
 
-1.  When done, close the Web browser and return to the local machine terminal. Manually stop and remove the container using the instructions in the [Manually Removing Containers](/docs/guides/jupyter-docker-workflows#manually-removing-volumes) sections.
+1.  When done, close the Web browser and return to the local machine terminal. Manually stop and remove the container using the instructions in the [Manually Removing Containers](/docs/guides/manage-jupyter-data-docker/#writing-data) sections.
 
 ## Bind Mounts
 
@@ -607,7 +607,7 @@ When using the `--mount` command, avoid whitespaces after the comma of key-value
 
     Resolve this issue by adding a restriction to Docker's writing functionality on the host machine. This is done using the `readonly` flag in the `--mount` command.
 
-1.  First, stop and remove the container using the instructions in the [Manually Removing Containers](/docs/guides/jupyter-docker-workflows#manually-removing-volumes) sections.
+1.  First, stop and remove the container using the instructions in the [Manually Removing Containers](/docs/guides/manage-jupyter-data-docker/#writing-data) sections.
 
 1.  Now re-run the `docker run` command as follows:
 
@@ -623,4 +623,4 @@ At the development phase's conclusion, containers are not run with bind mounts. 
 
 You should now have a better idea of how to manage Jupyter data using Docker containers and volumes. With anonymous volumes, named volumes, and bind mounts, Docker offers plenty of options to containerize Jupyter data. These techniques provide developers, data scientists, and researchers different ways to save, store, and share data.
 
-To learn more, check out the next article in our Jupuyter/Docker workflow series [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/applications/big-data/persist-jupyter-data-mysql-docker/).
+To learn more, check out the next article in our Jupuyter/Docker workflow series [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/persist-jupyter-data-mysql-docker/).

@@ -30,11 +30,11 @@ Docker Hub serves as a community of repositories where Docker users create, test
 
 1.  To better understand Jupyter/Docker workflows, read the rest of the articles in this series:
 
-    -   [How to Set Up Jupyter with Docker](/docs/guides/applications/big-data/jupyter-docker-setup-guide/)
-    -   [Managing Jupyter Data in Docker Images and Containers](/docs/guides/applications/big-data/manage-jupyter-data-docker/)
-    -   [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/applications/big-data/persist-jupyter-data-mysql-docker/)
+    -   [How to Set Up Jupyter with Docker](/docs/guides/jupyter-docker-setup-guide/)
+    -   [Managing Jupyter Data in Docker Images and Containers](/docs/guides/manage-jupyter-data-docker/)
+    -   [Advanced Jupyter Data Persistence with MySQL and Docker](/docs/guides/persist-jupyter-data-mysql-docker/)
 
-1.  Follow the instructions in our previous guide on Jupyter/Docker workflows, [Simplify Multi-Container Orchestration with Docker Compose](/docs/guides/applications/big-data/multi-container-orchestration-docker-compose/) to set up the required examples.
+1.  Follow the instructions in our previous guide on Jupyter/Docker workflows, [Simplify Multi-Container Orchestration with Docker Compose](/docs/guides/multi-container-orchestration-docker-compose/) to set up the required examples.
 
 ## Configure Docker Hub
 
