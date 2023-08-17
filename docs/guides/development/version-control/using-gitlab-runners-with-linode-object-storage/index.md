@@ -58,9 +58,9 @@ The dedicated instance you use for your GitLab Runners is referred to as the Run
 
 These next steps refer you to guides for creating, updating, and securing a new Linode Compute Instance, where you can install the GitLab Runners. Follow them before going forward with the rest of this guide.
 
-1. Create a Linode Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. Create a Linode Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1. Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update the instance. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1. Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update the instance. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 {{< note >}}
 Throughout the rest of this guide, commands are provided for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
