@@ -19,6 +19,10 @@ authors: ["Linode"]
 
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server (Slide #152)](https://2021-03-lke.container.training/#152)
 
+{{< note >}}
+Since this slide deck originally became available, Linode has edited various Helm commands in this guide for updated functionality.
+{{< /note >}}
+
 ## Installing metrics-server
 
 Now that there is an application running on our Kubernetes cluster, the next step is to collect metrics on the resources being used. This part covers installing and using metrics-server as a basic data collection tool.
@@ -84,6 +88,13 @@ Now that there is an application running on our Kubernetes cluster, the next ste
         --set "args={--kubelet-insecure-tls=true,--kubelet-preferred-address-types=InternalIP}"
 
 - What are these options for?
+
+{{< note >}}
+Per the instructions provided by [ArtifactHub](https://artifacthub.io/packages/helm/metrics-server/metrics-server), you may need to add the `metrics-server` repository to Helm prior to installation:
+```command
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+```
+{{< /note >}}
 
 ### Installation options
 
