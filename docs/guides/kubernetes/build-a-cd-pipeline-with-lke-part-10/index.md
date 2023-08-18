@@ -5,7 +5,7 @@ title: "Building a CD Pipeline Using LKE (Part 10): Installing metrics-server"
 keywords: ['kubernets', 'k8s', 'lke', 'helm', 'gitlab']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2021-05-06
-modified: 2022-12-14
+modified: 2023-08-18
 modified_by:
   name: Linode
 tags: ["kubernetes", "lke"]
@@ -20,7 +20,7 @@ authors: ["Linode"]
 **Slide deck:** [Cloud Native Continuous Deployment with GitLab, Helm, and Linode Kubernetes Engine: Installing metrics-server (Slide #152)](https://2021-03-lke.container.training/#152)
 
 {{< note >}}
-Since this slide deck originally became available, Linode has edited various Helm commands in this guide for updated functionality.
+Linode has updated various Helm commands in this guide since the above slide deck's original publication. Commands may differ between those in this guide and the slide deck.
 {{< /note >}}
 
 ## Installing metrics-server
