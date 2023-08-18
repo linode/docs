@@ -17,6 +17,7 @@ relations:
         keywords:
             - distribution: Ubuntu 20.04
 authors: ["Nathaniel Stickman"]
+aliases: ['/web-servers/nginx/installation/ubuntu-10.04-lucid/','/web-servers/nginx/installation/ubuntu-12.04-precise-pangolin/']
 ---
 
 [NGINX](https://nginx.org/) (pronounced "engine-X") is an open-source web server that excels at load balancing, caching, and acting as a reverse proxy. NGINX was developed with efficiency and concurrency in mind, seeking to address the scalability and performance issues in other popular web servers. Its event-driven architecture continues to set it apart as one of the highest-performing web servers available. This guide aims to show you how to install NGINX on your Ubuntu 20.04 server and how to get started using it.

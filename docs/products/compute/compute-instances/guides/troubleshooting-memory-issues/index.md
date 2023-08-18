@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting Memory Issues on Compute Instances
 description: 'Many common issues with Compute Instances are caused by excessive memory consumption or errors. This guide provides suggestions for resolving this.'
-keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
+keywords: ["Linode troubleshooting", "Linux configuration","troubleshoot"]
 tags: ["networking", "mysql", "apache"]
 published: 2009-08-05
 modified: 2023-03-14

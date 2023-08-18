@@ -5,8 +5,13 @@ keywords: ['rclone vs rsync', 'install rclone', 'configure rclone', 'rlone sync'
 tags: ['ubuntu', 'cloud manager']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-03-18
+modified: 2023-07-27
 modified_by:
   name: Linode
+external_resources:
+   - '[Rclone mount command Documentation](https://rclone.org/commands/rclone_mount/)'
+   - '[Rclone copy command Documentation](https://rclone.org/commands/rclone_copy/)'
+   - '[Rclone sync command Documentation](https://rclone.org/commands/rclone_sync/)'
 title: "Use Rclone to Sync Files to Linode Object Storage"
 title_meta: "How to Use Rclone to Sync Files to Linode Object Storage"
 authors: ["Jack Wallen"]
@@ -28,22 +33,30 @@ For years, [rsync](/docs/guides/introduction-to-rsync/) has been the go-to backu
 
 The Rclone installation process is the same on Linux and macOS. Log into either platform and open a terminal window. From the terminal, issue the following command:
 
-    curl https://rclone.org/install.sh | sudo bash
+```command
+curl https://rclone.org/install.sh | sudo bash
+```
 
-{{< note respectIndent=false >}}
+{{< note >}}
 To install cURL on an Ubuntu system, use the following command:
 
-    sudo apt-get install curl -y
+```command
+sudo apt-get install curl -y
+```
 
 To install cURL on a macOS system use the following command:
 
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
-    brew install curl
+```command
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+brew install curl
+```
 {{< /note >}}
 
 Verify the Rclone installation.
 
-    rclone --version
+```command
+rclone --version
+```
 
 You should see the version of Rclone installed, as well as some information about the platform on which it was installed.
 
@@ -51,43 +64,68 @@ You should see the version of Rclone installed, as well as some information abou
 
 Before you configure Rclone, [create a new Linode bucket](/docs/products/storage/object-storage/guides/manage-buckets/) and then [generate an associated Access Key](/docs/products/storage/object-storage/guides/access-keys/) for that bucket. You can also create a new access key for an existing bucket. When you create an access key, you are given the **Access Key** and the **Secret Key**. Make sure to copy both of those strings, because you need them when configuring Rclone.
 
-1. Once you have created the Linode bucket and have the access keys, set up a new configuration with the following command:
+1.  Once you have created the Linode bucket and have the access keys, set up a new configuration with the following command:
 
-        rclone config
+    ```command
+    rclone config
+    ```
 
-1. When prompted, configure a **New Remote** by typing **n**.
+1.  Configure a **New Remote** by typing `n`.
 
-1. Use a human-readable name as the configuration name.
+1.  Next, enter a name to use your new remote.
 
-1. Then, select your cloud storage service. In this case, select AWS S3 Compliant Storage Provider (option 4), followed by selecting any other S3 compatible provider (option 14).
+1.  When prompted for the type of storage, select the option that corresponds with **S3** (*"AWS S3 Compliant Storage Providers including..."*).
 
-1. Get AWS credentials. For this step, type `2` and then type your **Access Key** string (for `access_key_id`) and then paste your Secret Key for `secret_access_key`.
+    ```output
+    / Amazon S3 Compliant Storage Providers including AWS, Alibaba, ArvanCloud, Ceph, China Mobile, Cloudflare, GCS, DigitalOcean, Dreamhost, Huawei OBS, IBM COS, IDrive e2, IONOS Cloud, Liara, Lyve Cloud, Minio, Netease, Petabox, RackCorp, Scaleway, SeaweedFS, StackPath, Storj, Tencent COS, Qiniu and Wasabi
+      \ (s3)
+    ```
 
-1. Leave the `region` section blank.
+1.  Then, select the option that corresponds to **Ceph** when choosing your provider.
 
-1. For the endpoint, type the address for your Linode bucket, such as `rclone.us-east-1.linodeobjects.com`.
+    ```output
+    / Ceph Object Storage
+   \ (Ceph)
+    ```
 
-1. Leave `location_constraint` blank.
+1.  You are then asked how you'd like to provide your AWS credentials. For this, select the option that corresponds to **false** to manually enter your access key and secret.
 
-1. Select the `acl` you'd like to use. If this is a personal bucket, type `1` for private. If this is a team bucket, you might select `public-read` (option 2) or `authentication-read` (option 4).
+    ```output
+    / Enter AWS credentials in the next step.
+      \ (false)
+    ```
 
-1. Hit **enter** to opt-out of editing the advanced configuration file.
+    As part of this step, you'll be requested to enter an access key and secret key for our Object Storage service. If you do not have this information, you can [generate a new access key](/docs/products/storage/object-storage/guides/access-keys/#create-an-access-key).
 
-1. Verify the configuration and, if it is correct, type **y** to save the options.
+1.  When prompted, leave the `region` section blank.
 
-1. Type **q** to quit the configuration tool.
+1.  For the endpoint, type the URL that corresponds with the region your buckets are located within. Review [Cluster URL (S3 Endpoint)](/docs/products/storage/object-storage/guides/urls/#cluster-url-s3-endpoint) for a full list.
+
+1.  Leave `location_constraint` blank.
+
+1.  Next, you are requested to enter the Access Control List (ACL) to use when creating buckets and objects. This is based on your preferences and how you intend to use your buckets. Review [Define Access and Permissions using ACLs (Access Control Lists)](/docs/products/storage/object-storage/guides/acls/) for more details about ACLs and the various permission levels. For a personal bucket (or if you are unsure), you may want to enter *private*.
+
+1.  You are then given the option for advanced configuration. For this tutorial, select *no* or just hit enter.
+
+1.  Finally, an output containing your configuration is displayed. Verify that this information looks correct and enter **y** to save it.
+
+1.  To finish and exit the configuration tool, enter **q** at the last prompt.
 
 ## Rclone Sync
 
 You can sync a local directory to your Linode storage bucket. To do that, create a new bucket using the command below. The example command names the bucket `test` and the remote is named `Linode`. Replace these names with your own.
 
-    rclone mkdir Linode:test
+```command
+rclone mkdir Linode:test
+```
 
 When you open your Linode cloud manager, you now see a `test` object in your bucket.
 
 When you want to sync your local `Documents` directory to that remote test object use the following command:
 
-    rclone sync Documents Linode:test
+```command
+rclone sync Documents Linode:test
+```
 
 Once the sync is complete, you now see all of the files in the local `Documents` directory, in your Linode Object Storage bucket.
 
@@ -95,15 +133,19 @@ Once the sync is complete, you now see all of the files in the local `Documents`
 
 The `rclone copy` command copies the source to the destination but does not copy files from the destination to the source. Say you have a file named `testing.txt` and you want to copy it to the `test` bucket on your Linode Object Storage "remote". You can use the following command to accomplish this:
 
-    rclone copy testing Linode:test
+```command
+rclone copy testing Linode:test
+```
 
 Check out your `test` bucket and you now see the `testing.txt` file added.
 
 ## Rclone Mount
 
-You can also mount a local directory to a Linode Object Storage bucket. The one caveat to this is that the local directory must be empty. You should also know that the `rclone mount` command does take a long time to complete. It's a known issue that writes to `rclone mount` are extremely slow. Because of this, your best bet is to use the `rclone sync` command instead. However, if you still want to mount a directory, the command is straightforward. To mount the local directory, `/home/example-user/LINODE` to a bucket named `DATA` on the Linode remote, use the following command:
+You can also mount a local directory to a Linode Object Storage bucket. The one caveat to this is that the local directory must be empty. You should also know that the `rclone mount` command does take a long time to complete. You can run mount in either foreground or background or daemon mode. Mount runs in foreground mode by default. Use the `--daemon` flag to force background mode. To mount the local directory, `/home/example-user/LINODE` to a bucket named `DATA` on the Linode remote, use the following command:
 
-    rclone mount Linode:DATA /home/example-user/LINODE
+```command
+rclone mount Linode:DATA /home/example-user/LINODE --daemon
+```
 
 Once the directory is mounted, dump all of the necessary files into the local source and they are synced with the remote destination.
 
