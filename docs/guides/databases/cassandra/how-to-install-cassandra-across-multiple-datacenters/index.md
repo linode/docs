@@ -5,7 +5,7 @@ description: 'This guide introduces the Cassandra distributed database and expla
 keywords: ['install Cassandra','configure Cassandra','Cassandra CQL','create keyspace Cassandra']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
-published: 2023-06-01
+published: 2023-08-18
 modified_by:
   name: Linode
 external_resources:
@@ -36,7 +36,7 @@ Each Cassandra cluster includes one or more data centers, and each data center c
 
 ### Data Management in Cassandra
 
-Cassandra uses a lightweight variant of SQL called the *Cassandra Query Language* (CQL). Like most NoSQL languages, CQL is simpler and easier to use than SQL. The Cassandra CQL shell can be accessed using the `cqlsh` command. The base-level CQL object is a keyspace, which groups related data together. A keyspace is similar to a *database* in an RDBMS application. It defines the replication details for all of its tables. A Cassandra table differs somewhat from its RDBMS equivalent. It stores a list of key-value pairs, which can be nested many levels deep, and is typically not normalized.
+Cassandra uses a lightweight variant of SQL called the *Cassandra Query Language* (CQL). Like most NoSQL languages, CQL is simpler and easier to use than SQL. The Cassandra CQL shell can be accessed using the `cqlsh` command. The base-level CQL object is a keyspace, which groups related data together. A keyspace is similar to a *database* in an RDBMS application. It defines the replication details for all of its tables. A Cassandra table differs somewhat from its RDBMS equivalent. It stores a list of key-value pairs (which can be nested many levels deep) and is typically not normalized.
 
 Cassandra requires a different approach to data modeling compared to an RDBMS application. To efficiently model tables and columns, follow these principles:
 
@@ -59,7 +59,7 @@ In addition to data distribution and replication, there are many advantages and 
 -   It includes enhanced analytics and logs.
 -   It efficiently handles sparse data, in which not all columns appear in all records.
 
-Cassandra is usually not the best choice for small or little-used data sets, or if replication and high availability are not important. In these cases, it introduces unnecessary complexity and overhead. Cassandra does not support table joins, so it is not a good choice for heavily normalized data. Finally, it can be complex and difficult to learn, and might require considerable tuning before being put into production.
+Cassandra is usually not the best choice for small or little-used data sets, or if replication and high availability are not important. In these cases, it introduces unnecessary complexity and overhead. Cassandra does not support table joins, so it is not a good choice for heavily normalized data. Finally, it can be complex and difficult to learn, and it might require considerable tuning before being put into production.
 
 ## Before You Begin
 
@@ -79,10 +79,10 @@ This guide is intended for Ubuntu 22.04 LTS users but is generally applicable fo
 
 To install Cassandra, follow these steps. Unless otherwise specified, execute the following commands on every node in the Cassandra cluster.
 
-1.  Ensure the system is up to data. Reboot the system if necessary:
+1.  Ensure the system is up to date. Reboot the system if necessary:
 
     ```command
-    sudo apt-get update -y && sudo apt-get upgrade -y
+    sudo apt- update -y && sudo apt upgrade -y
     ```
 
 1.  Cassandra requires the use of a Java runtime. There are several different versions of Java to choose from, including OpenJDK and Oracle Java. This guide uses OpenJDK 11. Install OpenJDK using `apt`:
@@ -289,17 +289,17 @@ To fully configure a cluster, follow these steps.
 
     -   Set the `endpoint_snitch` field to `GossipingPropertyFileSnitch`.
 
-    The following file sample provides a template for the file changes. Follow the system architecture defined earlier and replace parameters like `node1_ip` with the actual IP addresses. Leave the remainder of the file unchanged.
+    The following file sample provides a template for the file changes. Follow the system architecture defined earlier and replace placeholder values (such as `NODE1_IP`) with the IP addresses corresponding to the associated node. Leave the remainder of the file unchanged.
 
-    ```file {title="/etc/cassandra/cassandra.yaml"}
+    ```file {title="/etc/cassandra/cassandra.yaml" lang="yaml"}
     cluster_name: 'Main Cluster'
     ...
     seed_provider:
       - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
-        - seeds: "node1_ip, node2_ip, node3_ip, node4_ip"
+        - seeds: "NODE1_IP, NODE2_IP, NODE3_IP, NODE4_IP"
     ...
-    listen_address: node1_ip
+    listen_address: NODE1_IP
     ...
     rpc_address: 127.0.0.1
     ...
@@ -334,15 +334,15 @@ To fully configure a cluster, follow these steps.
 
     The following example illustrates how to configure the two files on a second node in the `london` data center.
 
-    ```file {title="/etc/cassandra/cassandra.yaml"}
+    ```file {title="/etc/cassandra/cassandra.yaml" lang="yaml"}
     cluster_name: 'Main Cluster'
     ...
     seed_provider:
       - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
-        - seeds: "node1_ip, node2_ip, node3_ip, node4_ip"
+        - seeds: "NODE1_IP, NODE2_IP, NODE3_IP, NODE4_IP"
     ...
-    listen_address: node2_ip
+    listen_address: NODE2_IP
     ...
     rpc_address: 127.0.0.1
     ...
@@ -366,15 +366,15 @@ To fully configure a cluster, follow these steps.
 
     The following example applies to a node in the `singapore` data center.
 
-    ```file {title="/etc/cassandra/cassandra.yaml"}
+    ```file {title="/etc/cassandra/cassandra.yaml" lang="yaml"}
     cluster_name: 'Main Cluster'
     ...
     seed_provider:
       - class_name: org.apache.cassandra.locator.SimpleSeedProvider
       parameters:
-        - seeds: "node3_ip, node4_ip, node1_ip, node2_ip"
+        - seeds: "NODE3_IP, NODE4_IP, NODE1_IP, NODE2_IP"
     ...
-    listen_address: node3_ip
+    listen_address: NODE3_IP
     ...
     rpc_address: 127.0.0.1
     ...
