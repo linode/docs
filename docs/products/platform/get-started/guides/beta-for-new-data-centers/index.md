@@ -2,7 +2,7 @@
 title: "Limited Beta for Akamai's New Data Centers"
 description: "This document provides details for the limited availability beta of Akamai Cloud Compute's latest data centers."
 published: 2023-04-17
-modified: 2023-08-09
+modified: 2023-08-18
 modified_by:
   name: Linode
 tags: ["linode platform"]
@@ -60,8 +60,8 @@ Each data center in this beta is slated to have all of Akamai’s cloud computin
 
 The new data centers feature enhanced Object Storage, which improves upon the consistency and reliability of the existing service and offers increased capacity (outlined below). Review the [Availability](/docs/products/storage/object-storage/#availability) and [Specifications](/docs/products/storage/object-storage/#specifications) section of the Object Storage documentation for more details.
 
-- **Max storage** (*per region, per account*): 1 PB (up from 5 TB)
-- **Max # of objects** (*per region, per account*): 1 billion (up from 50 million)
+- **Max storage** (*per region, per account*): 5 TB (up to 1,000 TB by request)
+- **Max # of objects** (*per region, per account*): 50 million (up to 1 billion by request)
 
 The following table includes the IDs and URLs of each new Object Storage cluster:
 

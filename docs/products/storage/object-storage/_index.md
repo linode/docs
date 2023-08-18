@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-07-05
+modified: 2023-08-18
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
@@ -40,12 +40,16 @@ Object Storage is available within the following data centers. The table below a
 | Data Center | Max Storage<br><small>per account, per region</small> | Max # of objects<br><small>per account, per region</small> | Cluster ID |
 | -- | -- | -- | -- |
 | Atlanta, GA (USA) | 5 TB | 50 million | `us-southeast-1` |
-| Chicago, IL (USA) | 1,000 TB (1 PB) | 1 billion | `us-ord-1` |
+| Chicago, IL (USA)\* | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> | `us-ord-1` |
 | Frankfurt (Germany) | 5 TB | 50 million | `eu-central-1` |
 | Newark, NJ (USA) | 5 TB | 50 million | `us-east-1` |
-| Paris (France) | 1,000 TB (1 PB) | 1 billion | `fr-par-1` |
+| Paris (France)\* | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> | `fr-par-1` |
 | Singapore | 5 TB | 50 million | `ap-south-1` |
-| Washington, DC (USA) | 1,000 TB (1 PB) | 1 billion | `us-iad-1` |
+| Washington, DC (USA)\* | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> | `us-iad-1` |
+
+\**High capacity. These data centers offer increased capacity and are ideal for large enterprise workloads.*
+
+If your workloads require additional storage or need to accommodate more objects, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. Among other factors, the total capacity of the region is considered when processing a limit increase request. For workloads requiring higher capacity, consider using one of the data centers designated as *high capacity* in the table above.
 
 Object Storage deployments in each data center are assigned a cluster ID. These are used when [formatting URLs](/docs/products/storage/object-storage/guides/urls/) and integrating Object Storage with tools such as the [Linode CLI](/docs/products/storage/object-storage/guides/linode-cli/), [s3cmd](/docs/products/storage/object-storage/guides/s3cmd/), [s4cmd](/docs/products/storage/object-storage/guides/s4cmd/), and [Cyberduck](/docs/products/storage/object-storage/guides/cyberduck/).
 
@@ -61,14 +65,14 @@ The table below shows Object Storage specifications, including those for the exi
 
 | Resource | Limit |
 | -- | -- | -- |
-| Minimum storage | 250 GB |
-| Maximum storage | *varies by region (see [Availability](#availability))* |
-| Maximum number of objects | *varies by region (see [Availability](#availability))* |
+| Storage | 250 GB - 5 TB |
+| Maximum number of objects | 50 million |
 | Maximum number of buckets | 1,000 buckets |
 | Maximum file upload size | 5 GB (5 TB with multipart uploads) |
 | Rate limit (per bucket) | 750 requests per second |
+| Rate limit (per bucket) | 750 requests per second |
 
-To increase these limits beyond their default values, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. The capacity of the region is considered when processing a limit increase request, among other factors.
+To increase these limits beyond their default values, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. As capacity of the region is considered when processing a limit increase request, select a data center designated as *high capacity* for larger workloads (see [Availability](#availability)).
 
 ### Network Transfer
 
