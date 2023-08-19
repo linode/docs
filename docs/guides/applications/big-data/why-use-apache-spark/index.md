@@ -1,5 +1,5 @@
 ---
-slug: why-to-use-apache-spark
+slug: why-use-apache-spark
 title: "Why You Should Use Apache Spark for Data Analytics"
 description: 'This guide provides an introduction to the Apache Spark analytics engine and explains its advantages.'
 keywords: ['apache spark analytics','what is apache spark','apache spark advantages']
