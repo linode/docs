@@ -9,7 +9,7 @@ modified_by:
 title: "A Beginner's Guide to Kubernetes (Part 2): Master, Nodes, and the Control Plane"
 concentrations: ["Kubernetes"]
 external_resources:
-- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/)'
+- '[Kubernetes API Documentation](https://kubernetes.io/docs/reference/kubernetes-api/)'
 - '[Kubernetes Concepts Documentation](https://kubernetes.io/docs/concepts/)'
 aliases: ['/applications/containers/kubernetes/beginners-guide-to-kubernetes-master-nodes-control-plane/','/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/','/applications/containers/kubernetes/beginners-guide-to-kubernetes-part-2-master-nodes-control-plane/']
 tags: ["kubernetes"]

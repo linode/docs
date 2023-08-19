@@ -490,13 +490,16 @@ body.om-position-floating-top {
 }
 
 .c-submenu {
+  --max-submenu-padding: calc( var( --site-top-offset ) + var( --site-banner-height ) + var( --site-topbar-height ) + var( --site-header-height ) );
+  --scroll-adjusted-padding: calc( var( --max-submenu-padding ) - var( --site-scroll-y, 0px ) );
+  --min-submenu-padding: calc( var( --site-top-offset ) + var( --site-header-height ) );
   background-color: #ffffff;
   display: initial;
   left: -9999px;
   opacity: 0;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding-top: calc(var(--site-top-offset) + var(--site-banner-height) + var(--site-topbar-height) + var(--site-header-height));
+  padding-top: clamp(var(--min-submenu-padding), var(--scroll-adjusted-padding), var(--max-submenu-padding));
   position: absolute;
   top: -9999px;
   transform: translateY(-100px);
@@ -962,6 +965,19 @@ body.om-position-floating-top {
   height: 16px;
   vertical-align: middle;
   width: 16px;
+}
+.c-site-header__topbar .o-menu__item--search .o-menu__title {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+          clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 1px !important;
 }
 .c-site-header__topbar .c-weglot-nav {
   margin-left: -8px;

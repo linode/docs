@@ -42,7 +42,9 @@ The following is a list of command-line tools included with each DBMS. These too
 
 The [mysqldump](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html) utility captures *logical* backups of MySQL databases and is included as part of the MySQL software. The following command exports a database called *Example* within the MySQL Managed Database cluster and saves it as an `.sql` file. Replace the host and database name with your own values. See [Connect to a MySQL Managed Database](/docs/products/databases/managed-databases/guides/mysql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
 
-    mysqldump -h lin-1111-1111-mysql-primary.servers.linodedb.net -u linroot -p --single-transaction --set-gtid-purged=OFF Example > backup-$(date +%F-%H.%M.%S).sql
+```command
+mysqldump -h lin-1111-1111-mysql-primary.servers.linodedb.net -u linroot -p --single-transaction --set-gtid-purged=OFF Example > backup-$(date +%F-%H.%M.%S).sql
+```
 
 For more instructions, see [Backing Up MySQL Databases Using mysqldump](/docs/guides/mysqldump-backups/).
 
@@ -50,6 +52,8 @@ For more instructions, see [Backing Up MySQL Databases Using mysqldump](/docs/gu
 
 [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), included with PostgreSQL, captures logical backups of PostgreSQL databases. The following command exports the database called *Example* within the given PostgreSQL Managed Database cluster and saves it as a file. Replace the host and database name with your own values. See [Connect to a PostgreSQL Managed Database](/docs/products/databases/managed-databases/guides/postgresql-connect/) guide for instructions on viewing the connection details (including the username, password, host, and port).
 
-    pg_dump -Fd --host lin-1111-1111-pgsql-primary.servers.linodedb.net --dbname Example --quote-all-identifiers --verbose --lock-wait-timeout=480000 --no-unlogged-table-data --serializable-deferrable --jobs=1 --username linpostgres --file database.backup
+```command
+pg_dump -Fd --host lin-1111-1111-pgsql-primary.servers.linodedb.net --dbname Example --quote-all-identifiers --verbose --lock-wait-timeout=480000 --no-unlogged-table-data --serializable-deferrable --jobs=1 --username linpostgres --file database.backup
+```
 
 For more information, review the [Backing Up a PostgreSQL Database (Database Dump)](/docs/guides/how-to-back-up-your-postgresql-database/) guide.
