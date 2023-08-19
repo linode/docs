@@ -5,6 +5,7 @@ description: "Get Started with the Linode Backup Service. Learn how to enable th
 tab_group_main:
     weight: 20
 aliases: ['/products/storage/backups/guides/manage/']
+published: 2021-11-12
 ---
 
 ## Enabling the Backup Service

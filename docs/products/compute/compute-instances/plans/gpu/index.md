@@ -52,7 +52,7 @@ Atlanta, GA, United States; Frankfurt, Germany; Newark, NJ, United States; Mumba
 | Outbound Network Transfer | 16 TB - 20 TB |
 | Outbound Network Bandwidth | 10 Gbps |
 
-Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. See the [Comparison of Compute Instances](#comparison-of-compute-instances) section below to learn more about other Instance types.
+Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCPU cores, 32 GB of memory, and 640 GB of SSD storage. Review the [Pricing page](https://www.linode.com/pricing/#row--compute) for additional plans and their associated costs. Review the [Compute Instance Plan Types](/docs/products/compute/compute-instances/plans/) page below to learn more about other instance types.
 
 {{< content "gpu-deposit-shortguide" >}}
 
@@ -60,7 +60,7 @@ Pricing starts at $1,000/mo ($1.50/hr) for a GPU Instance with 1 GPU card, 8 vCP
 
 Each of the NVIDIA Quadro RTX 6000 GPUs on the Linode Platform are equipped the following specifications:
 
-|  |  |
+| Specification | Value |
 | -- | -- |
 | GPU Memory (VRAM) | 24 GB GDDR6 |
 | CUDA Cores (Parallel-Processing) | 4,608 |

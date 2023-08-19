@@ -23,6 +23,7 @@ relations:
         keywords:
             - distribution: Ubuntu 22.04 LTS
 authors: ["Jeff Novotny"]
+aliases: ['/lemp-guides/ubuntu-12.04-precise-pangolin/']
 ---
 
 Many [Ubuntu](https://ubuntu.com/server) systems use the well-known [LAMP Stack](https://en.wikipedia.org/wiki/LAMP_(software_bundle)) installation. However, many people consider the *LEMP Stack* to be an even better alternative. A LEMP stack uses the [NGINX web server](https://www.nginx.com/) instead of Apache. This guide explains how to install and configure a LEMP stack on Ubuntu 22.04 LTS. It also provides some background about the LEMP stack and how it contrasts with a LAMP stack.

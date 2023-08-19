@@ -20,7 +20,7 @@ This guide presents a collection of common issues and useful tips for Linux syst
 ## What is Linux Administration?
 Linux administration is about setting up disaster recovery, managing new system builds, creating a backup to restore data, Linux hardware management, managing storage,  handling file systems, and managing the security of Linux systems. A big part of Linux administration is ensuring that Linux powered systems are stable and secure.
 
-## What Should a Linux Administrator Should Know?
+## What Should a Linux Administrator Know?
 
 Typically Linux system administrators are expected to handle Linux file systems, manage the root user, have a working knowledge of bash commands, and an ability to manage users.
 
