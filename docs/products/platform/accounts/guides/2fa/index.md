@@ -3,7 +3,7 @@ description: "Secure your Linode user account from unauthorized access by enable
 keywords: ["security", "Linode Cloud Manager", "token"]
 tags: ["security","cloud manager"]
 published: 2022-06-27
-modified: 2023-03-14
+modified: 2023-08-15
 modified_by:
   name: Linode
 title: "Manage Two-Factor Authentication (2FA) on a User Account"
@@ -14,13 +14,17 @@ authors: ["Linode"]
 
 2FA (*two-factor authentication*) increases the security of your Linode account by requiring two forms of authentication: your password and an expiring token, also called an OTP (one-time passcode) or 2FA code. This follows the security principle of authenticating with something you *know* (a password) and something you *have* (the device used to generate the token). This additional layer of security reduces the risk that an unauthorized individual can gain access to your Linode account. **Linode highly recommends enabling 2FA**.
 
-{{< note >}}
+{{< note type=warning noTitle=true >}}
 Managing 2FA through Linode is only available if *Linode* is selected as the **Login Method**. If you select a third-party authentication provider (such as Google or GitHub), 2FA is managed directly through that provider and not through Linode.
+{{< /note >}}
+
+{{< note title="Account protection for users without 2FA enabled" >}}
+If you *do not* have 2FA enabled and it has been 90 days or more since your last login, you are required to enter a unique one-time passcode (OTP). This passcode is sent to the email address on your user account and is valid for 60 minutes. If the passcode expires before you enter it, attempt another login to generate a new passcode.
 {{< /note >}}
 
 ## Choosing a 2FA Provider
 
-Before enabling 2FA on your user account, you need to determine which application you wish to use for managing your authentication and generating the expiring tokens (OTPs). You may want to consider using your existing password manager or using a using dedicated authenticator app.
+Before enabling 2FA on your user account, you need to determine which application you wish to use for managing your authentication and generating the expiring tokens (OTPs). You may want to consider using your existing password manager or using a dedicated authenticator app.
 
 ### Use Your Password Manager
 
@@ -71,7 +75,7 @@ Enable two-factor authentication to start using it with your Linode account.
 
     ![Enter the 2FA token](confirm-2fa-token.png)
 
-1. Once the token is successfully confirmed, a scratch code appears. Save this code to a secure place, such as a password manager. If you ever lose access to your authenticator app, this scratch code can be used once in place of the OTP token. is enabled on your account.
+1. Once the token is successfully confirmed, a scratch code appears. Save this code to a secure place, such as a password manager. If you ever lose access to your authenticator app, this scratch code can be used once in place of the OTP token. Two-factor authentication is enabled on your account.
 
 ## Logging in When 2FA Is Enabled
 

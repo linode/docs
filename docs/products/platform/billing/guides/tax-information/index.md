@@ -1,7 +1,7 @@
 ---
 description: "Learn which taxes are collected by Linode and how to add a tax identification number to your account."
 keywords: ["accounts", "vat", "linode manager", "linode cloud manager", "manager", "tax", "taxes", "tax information", "usd", "vat id", "eu", "european union", "value added tax", "gst", "goods and services tax", "gst id", "tax id"]
-modified: 2023-04-19
+modified: 2023-07-24
 modified_by:
   name: Linode
 published: 2019-04-09
@@ -56,15 +56,18 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Romania | 19% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Russian Federation | 20% | [VAT](https://www.nalog.gov.ru/rn77/TAXATION/TAXES/NDS/) | December 15th, 2022 |
-| Singapore | 7% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1st, 2020 |
+| Singapore | 8% | [GST](https://www.iras.gov.sg/irashome/GST/GST-registered-businesses/Learning-the-basics/How-to-implement-GST/Current-GST-Rates/) | September 1st, 2020 |
 | Slovakia | 20% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Slovenia | 22% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Spain | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Sweden | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Switzerland | 7.7% | [VAT](https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-rates-switzerland.html) | December 15th, 2022 |
+| Thailand\* | 7% | [VAT](https://www.rd.go.th/english/6043.html) | September 1st, 2023 |
 | United Arab Emirates | 5% | [VAT](https://u.ae/en/information-and-services/finance-and-investment/taxation/valueaddedtaxvat) | December 15th, 2022 |
 | United Kingdom | 20% | [VAT](https://www.gov.uk/vat-rates) | July 1st, 2019 |
 | [United States](#united-states) (see below) | | | |
+
+\**The tax rate for Thailand increases to 10% (from 7%) on October 1st, 2023.*
 
 ### Canada
 
@@ -181,6 +184,6 @@ To keep our pricing stable and consistent, rather than fluctuating with exchange
 | Saskatchewan PST | 759622 | 7648249 |
 | Singapore GST | M90373465T | M90374823J |
 | Switzerland VAT | N/A | CHE-115.356.067 MWST |
-| United Kingdom VAT | GB383720095 | *Pending* |
+| United Kingdom VAT | GB383720095 | 434006338 |
 | United Arab Emirates | N/A | 104038424800003 |
-| United States EIN | 20-2647179 | - |
+| United States EIN | 20-2647179 | 04-3432319 |
