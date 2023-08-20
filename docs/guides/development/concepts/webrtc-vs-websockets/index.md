@@ -40,21 +40,21 @@ For more in-depth information about WebRTC, see the [Linode introduction to WebR
 
 Because it has several pros and comparatively few cons, WebRTC has been widely adopted. Some of its main advantages are:
 
--   It is an open-source standard that is free to use and has high interoperability.
--   It supports high-quality audio and video, with advanced features including noise reduction and echo cancellation.
--   It features very high performance and low latency. This means it is suitable for real-time applications.
--   It is easy to implement and can simplify development work.
--   It is very widely supported on different platforms and browsers.
--   It does not require the user to install plug-ins or other software.
--   It supports bandwidth management and can adjust transmission quality on low-speed or low-quality connections.
--   It prioritizes security and includes an encryption feature.
+- It is an open-source standard that is free to use and has high interoperability.
+- It supports high-quality audio and video, with advanced features including noise reduction and echo cancellation.
+- It features very high performance and low latency. This means it is suitable for real-time applications.
+- It is easy to implement and can simplify development work.
+- It is very widely supported on different platforms and browsers.
+- It does not require the user to install plug-ins or other software.
+- It supports bandwidth management and can adjust transmission quality on low-speed or low-quality connections.
+- It prioritizes security and includes an encryption feature.
 
 However, WebRTC also has some disadvantages:
 
--   Browsers might not always follow the official specification.
--   The technology involves several interrelated components and can be complex and difficult to understand.
--   It does not have a quality of service component, and cannot always guarantee real-time transmission at high resolution or frame rates.
--   It is more suited for one-to-one transmission than multi-user scenarios. Many-to-many applications typically require the use of a multi-media server.
+- Browsers might not always follow the official specification.
+- The technology involves several interrelated components and can be complex and difficult to understand.
+- It does not have a quality of service component, and cannot always guarantee real-time transmission at high resolution or frame rates.
+- It is more suited for one-to-one transmission than multi-user scenarios. Many-to-many applications typically require the use of a multi-media server.
 
 ## What are WebSockets?
 
@@ -72,19 +72,19 @@ The WebSocket protocol offers an event-based API for incorporation into JavaScri
 
 There are many reasons why WebSockets are widely used in web applications. Some of its main advantages are as follows:
 
--   It allows for ongoing bidirectional communication between a client and a server. The connection is full-duplex, so both the client and server can simultaneously send messages.
--   It sends updates very quickly with low latency and overhead.
--   It does not force the client to send repeated HTTP requests.
--   It maintains the same session instead of creating new connections. This reduces the load on the web server.
--   It is widely supported. Because it works seamlessly with HTTP, it is available on all modern platforms and browsers.
+- It allows for ongoing bidirectional communication between a client and a server. The connection is full-duplex, so both the client and server can simultaneously send messages.
+- It sends updates very quickly with low latency and overhead.
+- It does not force the client to send repeated HTTP requests.
+- It maintains the same session instead of creating new connections. This reduces the load on the web server.
+- It is widely supported. Because it works seamlessly with HTTP, it is available on all modern platforms and browsers.
 
 WebSockets also carries a few drawbacks:
 
--   It carries a few security risks. It is particularly vulnerable to cross-site scripting and hijacking attempts unless extra protection is added.
--   It is meant for sending self-contained messages, not for streaming.
--   A WebSocket session does not automatically reconnect after an error. Some WebSocket-based applications suffer from reliability problems.
--   It is more complex to use than traditional HTTP polling.
--   It lacks a caching mechanism.
+- It carries a few security risks. It is particularly vulnerable to cross-site scripting and hijacking attempts unless extra protection is added.
+- It is meant for sending self-contained messages, not for streaming.
+- A WebSocket session does not automatically reconnect after an error. Some WebSocket-based applications suffer from reliability problems.
+- It is more complex to use than traditional HTTP polling.
+- It lacks a caching mechanism.
 
 ## Predecessors to Both WebRTC and WebSockets
 
@@ -96,23 +96,23 @@ Before WebSockets and WebRTC became commonplace, *polling* was frequently used f
 
 On the surface, WebRTC and WebSockets are more alike than they are different. In many cases, developers could build a workable application on top of either technology. Here is a list of some of the main similarities between the two frameworks.
 
--   **Main purpose and use case**: WebRTC and WebSockets are both useful for ongoing two-way communications and are both widely used in web applications.
--   **Standardization**: Both features are open-source technologies and follow an official standard. They are free to use and do not require any license, add-ons, plug-ins, or supporting applications.
--   **Latency and performance**: Both are low-latency applications with little overhead. They are designed for efficiency.
--   **Interoperability**: Both frameworks are largely browser, server, and platform independent.
--   **API**: Both WebRTC and WebSockets include a web API for inclusion in JavaScript code or other web programming languages.
+- **Main purpose and use case**: WebRTC and WebSockets are both useful for ongoing two-way communications and are both widely used in web applications.
+- **Standardization**: Both features are open-source technologies and follow an official standard. They are free to use and do not require any license, add-ons, plug-ins, or supporting applications.
+- **Latency and performance**: Both are low-latency applications with little overhead. They are designed for efficiency.
+- **Interoperability**: Both frameworks are largely browser, server, and platform independent.
+- **API**: Both WebRTC and WebSockets include a web API for inclusion in JavaScript code or other web programming languages.
 
 WebRTC and WebSockets can even be used together in one situation. WebRTC requires assistance with signaling and session creation. WebSockets can establish this connection using an intermediate server. WebRTC does not specify how to handle signaling, so it can work with a variety of technologies, including WebRTC.
 
 However, the differences between WebRTC and WebSockets are even more significant. They follow different architectural models and have different strengths and weaknesses. Here are some of the main distinctions.
 
--   **Architectural model**: WebSockets is only designed for client-server communications. Two peers can not communicate directly without passing messages through an intermediate server. WebRTC is a true peer-to-peer protocol. It requires help with signaling, but after the connection is established, the peers can talk directly to each other. Data does not have to pass through a central server.
--   **Transport layer protocols**: WebSockets and WebRTC use different transport layer protocols. WebSockets uses TCP to guarantee reliable in-sequence delivery and data integrity. WebRTC transmits real-time media using Secure RTP over UDP. UDP is fast but does not guarantee delivery of all packets and it does not retransmit lost packets.
--   **Speed vs. reliability**: Both applications are fairly fast, but WebRTC explicitly prioritizes speed and low latency. It does not guarantee the delivery of all packets and is tolerant of some data loss. WebSockets attempts to deliver all packets in order. It is a good choice for transmitting text and binary files where packet loss is unacceptable.
--   **Media processing and peripherals**: WebRTC provides direct access to devices, including the screen, microphone, video camera, and tablet. The WebSockets API is not capable of handling device inputs directly. WebRTC has very sophisticated media processing and codec features, which WebSockets largely lacks. For instance, WebRTC can adjust transmission quality based on the speed and congestion rate of the connection. It also includes features for noise reduction and echo cancellation.
--   **Security**: WebRTC is more secure than WebSockets. WebRTC messages are encrypted and authenticated. WebSocket messages are vulnerable to certain attacks and hijacking attempts.
--   **Integration and Ease of Use**: WebSockets integrate better with HTTP and are generally easier to understand. It uses fewer resources and does not require assistance with signaling as WebRTC does. For a widely-used WebRTC application, it might be necessary to pay for one or more signaling servers to initiate and manage the connections. Smaller sites might be able to manage using free STUN/TURN servers.
--   **Maturity**: WebSockets is more mature and is used by more applications than WebRTC is. The WebRTC framework is still evolving in some aspects.
+- **Architectural model**: WebSockets is only designed for client-server communications. Two peers can not communicate directly without passing messages through an intermediate server. WebRTC is a true peer-to-peer protocol. It requires help with signaling, but after the connection is established, the peers can talk directly to each other. Data does not have to pass through a central server.
+- **Transport layer protocols**: WebSockets and WebRTC use different transport layer protocols. WebSockets uses TCP to guarantee reliable in-sequence delivery and data integrity. WebRTC transmits real-time media using Secure RTP over UDP. UDP is fast but does not guarantee delivery of all packets and it does not retransmit lost packets.
+- **Speed vs. reliability**: Both applications are fairly fast, but WebRTC explicitly prioritizes speed and low latency. It does not guarantee the delivery of all packets and is tolerant of some data loss. WebSockets attempts to deliver all packets in order. It is a good choice for transmitting text and binary files where packet loss is unacceptable.
+- **Media processing and peripherals**: WebRTC provides direct access to devices, including the screen, microphone, video camera, and tablet. The WebSockets API is not capable of handling device inputs directly. WebRTC has very sophisticated media processing and codec features, which WebSockets largely lacks. For instance, WebRTC can adjust transmission quality based on the speed and congestion rate of the connection. It also includes features for noise reduction and echo cancellation.
+- **Security**: WebRTC is more secure than WebSockets. WebRTC messages are encrypted and authenticated. WebSocket messages are vulnerable to certain attacks and hijacking attempts.
+- **Integration and Ease of Use**: WebSockets integrate better with HTTP and are generally easier to understand. It uses fewer resources and does not require assistance with signaling as WebRTC does. For a widely-used WebRTC application, it might be necessary to pay for one or more signaling servers to initiate and manage the connections. Smaller sites might be able to manage using free STUN/TURN servers.
+- **Maturity**: WebSockets is more mature and is used by more applications than WebRTC is. The WebRTC framework is still evolving in some aspects.
 
 ## How to Choose Between WebRTC vs WebSockets
 
@@ -120,24 +120,24 @@ Due to their differences, WebRTC and WebSockets have different optimal use cases
 
 The following guidelines can help determine when to use WebSockets and when to avoid it.
 
--   WebSockets is the best framework for sending unidirectional real-time updates and notifications. It works especially well in conjunction with the JSON format to define a custom API for use by the server and its users. Updates should be presented as separate stand-alone messages.
--   It is a good choice for message-based applications, including chats, online quizzes, and dashboards. It is recommended for event-driven environments that must react to certain notifications and alerts.
--   WebSockets is particularly good for live feeds, such as stock tickers, sports scoreboards, and social media feeds. Use WebSockets when the information updates frequently, but not constantly.
--   Because WebSockets sends asynchronous updates, it is the better option for collaborative document editing or coding. Updates are ordered events with timestamps, so conflicts can be easily resolved.
--   It has some limited multimedia capabilities. Along with text and binary files, WebSockets can handle images and short videos.
--   WebSockets is better for low-quality or unstable connections. The TCP connection retransmits packets and does not time out immediately.
--   WebSockets is not optimized for streaming media like movies, music, and webcams.
+- WebSockets is the best framework for sending unidirectional real-time updates and notifications. It works especially well in conjunction with the JSON format to define a custom API for use by the server and its users. Updates should be presented as separate stand-alone messages.
+- It is a good choice for message-based applications, including chats, online quizzes, and dashboards. It is recommended for event-driven environments that must react to certain notifications and alerts.
+- WebSockets is particularly good for live feeds, such as stock tickers, sports scoreboards, and social media feeds. Use WebSockets when the information updates frequently, but not constantly.
+- Because WebSockets sends asynchronous updates, it is the better option for collaborative document editing or coding. Updates are ordered events with timestamps, so conflicts can be easily resolved.
+- It has some limited multimedia capabilities. Along with text and binary files, WebSockets can handle images and short videos.
+- WebSockets is better for low-quality or unstable connections. The TCP connection retransmits packets and does not time out immediately.
+- WebSockets is not optimized for streaming media like movies, music, and webcams.
 
 WebRTC is designed for a very different type of application. Here are some of the situations where it is the better choice.
 
--   WebRTC is far superior for all audio or video communications and for streaming real-time media. It is the natural choice for movies and music and can handle specialty applications such as screen sharing, live broadcasting, or bidirectional live feeds. WebSockets is not designed for these tasks.
--   Because WebRTC has very low latency and minimizes jitter, it is the best choice for applications like VoIP that cannot handle any delay.
--   WebRTC is a good technology for bidirectional video applications, including e-learning, telehealth, and video calls.
--   WebRTC maintains two data channels, so it is particularly good for applications that want to send media alongside meta-information. One example might be a music streaming site where song lyrics and production information are sent alongside the audio track.
--   Although WebRTC can send text and files using the data channel, this is not what it is really intended for. It is not as reliable a choice for text and binary files as WebSockets.
--   In collaborative editing, WebRTC is more susceptible to editing conflicts than WebSockets.
--   WebRTC is recommended whenever security is very important, like in telehealth or sensitive exchanges.
--   WebRTC does not treat updates as events and it does not guarantee reliable delivery. So it is not the right choice for any monitoring or dashboard application designed to respond to critical events.
+- WebRTC is far superior for all audio or video communications and for streaming real-time media. It is the natural choice for movies and music and can handle specialty applications such as screen sharing, live broadcasting, or bidirectional live feeds. WebSockets is not designed for these tasks.
+- Because WebRTC has very low latency and minimizes jitter, it is the best choice for applications like VoIP that cannot handle any delay.
+- WebRTC is a good technology for bidirectional video applications, including e-learning, telehealth, and video calls.
+- WebRTC maintains two data channels, so it is particularly good for applications that want to send media alongside meta-information. One example might be a music streaming site where song lyrics and production information are sent alongside the audio track.
+- Although WebRTC can send text and files using the data channel, this is not what it is really intended for. It is not as reliable a choice for text and binary files as WebSockets.
+- In collaborative editing, WebRTC is more susceptible to editing conflicts than WebSockets.
+- WebRTC is recommended whenever security is very important, like in telehealth or sensitive exchanges.
+- WebRTC does not treat updates as events and it does not guarantee reliable delivery. So it is not the right choice for any monitoring or dashboard application designed to respond to critical events.
 
 Neither application handles one-to-many broadcast or many-to-many multicast scenarios very well on its own. Many-to-many applications require a dedicated multimedia server to assemble the streams. WebRTC can be used as a building block alongside a media server.
 
