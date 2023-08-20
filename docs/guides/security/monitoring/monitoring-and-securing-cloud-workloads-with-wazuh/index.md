@@ -55,7 +55,7 @@ Wazuh also features dashboards for exploring the MITRE ATT&CK framework and asso
 
 ## How to Install and Configure Wazuh
 
-There are a number of ways to install Wazuh, depending on where you want it to run, what other services you want to use with Wazuh, and the amount of traffic you need to handle. The simplest option for [deploying Wazuh in a Linode is to use the Marketplace installer](https://www.linode.com/docs/products/tools/marketplace/guides/wazuh/). This takes about 15 minutes and requires minimal information from you. You can also [download and run the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh), which creates a Wazuh deployment on a single server that is good for monitoring up to 100 endpoints. The table below shows the recommended instance sizes to support various numbers of agents.
+There are a number of ways to install Wazuh, depending on where you want it to run, what other services you want to use with Wazuh, and the amount of traffic you need to handle. The simplest option for [deploying Wazuh in a Linode is to use the Marketplace installer](/docs/products/tools/marketplace/guides/wazuh/). This takes about 15 minutes and requires minimal information from you. You can also [download and run the Wazuh installation assistant](https://documentation.wazuh.com/current/quickstart.html#installing-wazuh), which creates a Wazuh deployment on a single server that is good for monitoring up to 100 endpoints. The table below shows the recommended instance sizes to support various numbers of agents.
 
 | Agents       | CPU     | RAM    | Storage (90 days) |
 | ------------ |---------|--------| ----------------- |
