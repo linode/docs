@@ -6,6 +6,7 @@ keywords: ['list','of','keywords','and key phrases']
 tags: ["web server","apache","ubuntu","php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2020-02-27
+modified: 2023-08-21
 modified_by:
   name: Linode
 title: "Installing and Configuring FastCGI and PHP-FPM on Ubuntu 18.04"
@@ -15,6 +16,7 @@ relations:
         key: install-fastcgi-php-fpm
         keywords:
             - distribution: Ubuntu 18.04
+deprecated: true
 aliases: ['/web-servers/apache/how-to-install-and-configure-fastcgi-and-php-fpm-on-ubuntu-18-04/']
 authors: ["Linode"]
 ---
@@ -45,7 +47,7 @@ In this section, you will install the `mod_fcgid` and `PHP-FPM` modules on your 
 
         sudo apt-get install libapache2-mod-fcgid php-fpm htop
 
-1. Load the `mod_proxy` and `mod_proxy_fcgi` modules by editing your main Apache configuration to add the lines included in the example. Both these modules are included by default in your Apache installation, but the must be explicitly loaded in order to use them. You will need these modules to proxy requests through `mod_fcgid` to your socket.
+1. Load the `mod_proxy` and `mod_proxy_fcgi` modules by editing your main Apache configuration to add the lines included in the example. Both these modules are included by default in your Apache installation, but they must be explicitly loaded in order to use them. You will need these modules to proxy requests through `mod_fcgid` to your socket.
 
     {{< file "/etc/apache2/apache2.conf" >}}
 LoadModule proxy_module /usr/lib/apache2/modules/mod_proxy.so
