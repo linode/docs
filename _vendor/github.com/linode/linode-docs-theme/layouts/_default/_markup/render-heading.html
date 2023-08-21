@@ -1,1 +1,9 @@
-<a href="#{{ .Anchor | safeURL }}" class="group"><h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .Text | safeHTML }}<svg class="ml-2 inline-block w-5 h-5 text-brand group-hover:text-green-400"><use href="#icon--hashtag"></use></svg></h{{ .Level }}></a>
+{{- $id := .Anchor -}}
+{{- $level := .Level -}}
+{{ if eq .Page.Section "release-notes" }}
+{{- $level = add $level 1 -}}
+{{- $slug := .Page.Slug | default .Page.Title  -}}
+{{- $id = printf "%s-%s" ($slug | anchorize) $id -}}
+{{- end -}}
+{{- $ariaLabel := printf "%s: %s" .Page.LinkTitle .Text  }}
+{{ partial "heading" (dict "id" $id "level" $level "text" .Text "ariaLabel" $ariaLabel) }}

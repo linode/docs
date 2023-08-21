@@ -1,10 +1,8 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Resize a Volume"
 description: "Learn how to resize an existing Block Storage Volume on the Linode Platform"
 modified: 2022-08-24
+authors: ["Linode"]
 ---
 
 At any time after the Block Storage Volume has been created, it can be increased to a larger size.
@@ -29,7 +27,7 @@ At this time, the size of Volumes are only able to be increased (not decreased),
 
 1.  Once your Compute Instance has fully booted up, you need to run the previously mentioned commands to resize the file system within your Volume.
 
-    1. Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/guides/using-the-lish-console/).
+    1. Login to your Compute Instance using [SSH](/docs/guides/connect-to-server-over-ssh/) or [Lish](/docs/products/compute/compute-instances/guides/lish/).
 
     1.  Unmount the Volume, making sure to use the unique path for your own Volume:
 

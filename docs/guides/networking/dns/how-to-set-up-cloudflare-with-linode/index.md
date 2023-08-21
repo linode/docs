@@ -1,8 +1,5 @@
 ---
 slug: how-to-set-up-cloudflare-with-linode
-author:
-  name: Nathan Melehan
-  email: nmelehan@linode.com
 description: 'Learn how to use Cloudflare with a website running on Linode.'
 keywords: ["cloudflare", "dns"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,12 +7,14 @@ modified: 2018-06-26
 modified_by:
   name: Nathan Melehan
 published: 2018-06-26
-title: "How to Set Up Cloudflare with Linode"
+title: "Set Up Cloudflare with Linode"
+title_meta: "How to Set Up Cloudflare with Linode"
 external_resources:
   - '[Cloudflare Support](https://support.cloudflare.com/hc/en-us)'
-  - '[DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/)'
+  - '[DNS Records: An Introduction](/docs/guides/dns-overview/)'
 tags: ["dns","networking"]
 aliases: ['/networking/dns/how-to-set-up-cloudflare-with-linode/']
+authors: ["Nathan Melehan"]
 ---
 
 [Cloudflare](https://www.cloudflare.com) provides a *content delivery network* (CDN) for websites, APIs, and other applications hosted on the web. The Linode platform is compatible with Cloudflare. If you run a web application on a Linode, you can enroll it in Cloudflare's CDN. Using the Cloudflare network can speed up your application's response time and protect your Linode from denial-of-service attacks (DoS).
@@ -48,7 +47,7 @@ In addition to caching content, Cloudflare's network is engineered to absorb and
 
 When you set up Cloudflare, you should keep your Linode's IP address secret from everyone except for Cloudflare. This is because if an attacker were able to discover the IP, they could direct a DDoS towards it. To keep the address hidden, make sure that none of your domains and DNS records reference it.
 
-If you were previously attacked and are setting up Cloudflare to protect yourself from continued attacks, [contact Linode Support](/docs/platform/support/#contacting-linode-support) and request a new IP address for your Linode for use with Cloudflare.
+If you were previously attacked and are setting up Cloudflare to protect yourself from continued attacks, [contact Linode Support](/docs/products/platform/get-started/guides/support/#contacting-linode-support) and request a new IP address for your Linode for use with Cloudflare.
 
 If you're not sure if your Linode's IP is still directly referenced by any of your DNS records, you can run `nmap` with [the following options](https://nmap.org/nsedoc/scripts/dns-brute.html) to check for possible references. `nmap` will try to resolve a set of common subdomains on your domain:
 
@@ -58,7 +57,7 @@ A frequent source of accidental IP exposure is when [your MX records directly re
 
 ## Set Up Cloudflare
 
-Cloudflare offers a free tier of service which enables the benefits described in this guide. This free tier is used to explore how to sign up for the service. You will need a registered domain and [DNS record](/docs/networking/dns/dns-manager-overview/#dns-set-up-checklist) set up on your Linode before proceeding with these steps.
+Cloudflare offers a free tier of service which enables the benefits described in this guide. This free tier is used to explore how to sign up for the service. You will need a registered domain and [DNS record](/docs/products/networking/dns-manager/get-started/) set up on your Linode before proceeding with these steps.
 
 1.  Create an account on [Cloudflare.com](https://dash.cloudflare.com/sign-up).
 
@@ -80,7 +79,7 @@ Cloudflare offers a free tier of service which enables the benefits described in
 
     The table displays an *orange cloud* icon for hostnames that will be routed through Cloudflare's network. A *gray cloud* denotes hostnames which bypass Cloudflare's network. You can toggle between these two options. Consult [Cloudflare's documentation](https://support.cloudflare.com/hc/en-us/articles/200169626-What-subdomains-are-appropriate-for-orange-gray-clouds-) to determine which services you should route through their network.
 
-1.  Change the [name servers](/docs/guides/dns-records-an-introduction/#name-servers) configured with your domain registrar to the ones listed under the *To* heading. This sets Cloudflare's nameservers as the [*authoritative name servers*](https://en.wikipedia.org/wiki/Name_server#Authoritative_name_server) for your domain:
+1.  Change the [name servers](/docs/guides/dns-overview/#name-servers) configured with your domain registrar to the ones listed under the *To* heading. This sets Cloudflare's nameservers as the [*authoritative name servers*](https://en.wikipedia.org/wiki/Name_server#Authoritative_name_server) for your domain:
 
     ![Cloudflare setup - authoritative name servers](cloudflare-setup-name-servers.png "Cloudflare setup - authoritative name servers")
 
@@ -114,7 +113,7 @@ In total, there are four different SSL modes:
 
 -   **Flexible SSL**: Edge servers will respond to HTTPS requests. Edge servers will make connections to your origin server over HTTP. This option is not recommended by Cloudflare and should only be used if you are unable to set up SSL on your origin server.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your web server is configured to redirect all HTTP requests to HTTPS while using Cloudflare's Flexible SSL mode, visitors may encounter a redirect loop when attempting to view your site.
 {{< /note >}}
 
@@ -128,9 +127,9 @@ Setting up SSL on your origin server will enable you to use Cloudflare's *Full S
 
 If you do not have a certificate for your origin server, Cloudflare provides an easy way of getting one via their own [*Origin CA*](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/) (Certificate Authority). This certificate can be used with *Full SSL (strict)* mode.
 
-{{< caution >}}
+{{< note type="alert" respectIndent=false >}}
 Certificates from Cloudflare's Origin CA are only trusted within the Cloudflare network. You will need to obtain and install a new certificate if you stop using Cloudflare and have one of their certificate's installed on your origin server.
-{{< /caution >}}
+{{< /note >}}
 
 1.  From the Crypto tab of the Cloudflare dashboard, scroll to the *Origin Certificates* panel and click the *Create Certificate* button:
 
@@ -184,9 +183,9 @@ These certificates can be entirely administered through the Cloudflare website. 
 
 1. Cloudflare will validate the domain before ordering the certificate for your domain. When the validation is complete, click **Next** and provide a payment type to complete the purchase.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If you would like to upload your own SSL certificate from another authority, click the **Upload Custom SSL Certificate** button in the Edge Certificates panel. This functionality requires that you subscribe to the Business Website Cloudflare tier.
-{{</ note >}}
+{{< /note >}}
 
 ## Next Steps
 

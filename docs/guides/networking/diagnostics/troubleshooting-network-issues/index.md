@@ -1,20 +1,13 @@
 ---
 slug: troubleshooting-network-issues
-author:
-  name: Tom Henderson
-  email: docs@linode.com
 description: 'Learn the basic differences between IPv4 & IPv6, and how to map IPv4 troubleshooting skills to IPv6 with the addition of IPv4-IPv6 example translation.'
-og_description: 'Learn the basic differences between IPv4 & IPv6, and how to map IPv4 troubleshooting skills to IPv6 with the addition of IPv4-IPv6 example translation.'
 keywords: ['networking','troubleshooting','ipv4','ipv6']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-09-09
 modified_by:
   name: Linode
 title: "Troubleshooting Network Issues - IPv4 and IPv6"
-h1_title: "Troubleshooting Network Issues - IPv4 and IPv6"
-enable_h1: true
-contributor:
-  name: Tom Henderson
+authors: ["Tom Henderson"]
 ---
 
 A successful internet circuit from host-to-host usually involves many components: from an application in one host, to an application in the desired target host. This tutorial covers troubleshooting connectivity between apps, and their hosts, whether over IPv4, IPv6, or an IPv6 tunnel over IPv4.
@@ -53,7 +46,7 @@ DHCP clients are configured to receive their IPv4/IPv6-compliant address through
 
 The DHCP address must be delivered within an IPv4/IPv6 range that permits the host address to be routed through the next gateway/switch/router to other downstream gateways, then on to the Internet (or the target host if on a local or private network). Many hosts substitute an IPv4 address if they fail to procure a DHCP address in the `169.XXX.XXX.XXX` range, which is a point-to-point protocol for machine-to-machine connections not involving gateways.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 A DHCP server may also consult a RADIUS server for information, but become unusable if the RADIUS server cannot be found. DHCP and RADIUS servers can be combined in the same device, and serve as combined proxy authentication (RADIUS) and supplicant provider (DHCP) when confirming network addresses and credentials.
 {{< /note >}}
 
@@ -158,7 +151,7 @@ Successful proxy control requires a working network path to the proxy controller
 
 Troubleshooting network control proxy software and its agent/linkage software requires the removal of proxy control. Test whether the proxy stack is delivering incorrect blocks or presenting problems to desired and permitted target sites. If the proxy can be removed, and communication is successful, then troubleshooting points to problems in the network control proxy software stack. Troubleshooting the network control proxy stack is usually performed by a trained administrator or network engineer familiar with the specific software stack.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 If a proxy control is in the network circuit/stack, standard troubleshooting methods may fail. Only the proxy control vendor’s troubleshooting methods are successful in this case because the proxy controls the network circuits in non-standard ways.
 {{< /note >}}
 

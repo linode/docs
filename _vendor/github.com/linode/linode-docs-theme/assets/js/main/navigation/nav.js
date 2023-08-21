@@ -16,6 +16,10 @@ export const getScrollPosNavbar = function () {
 // Called when the search main results panel opens or closes.
 const onNavSearchResults = function (self, val, oldVal) {
 	if (val.open === oldVal.open) {
+		if (!val.open && val.userChange) {
+			// Clicking the x when the panel is already closed.
+			self.$store.search.clearQuery();
+		}
 		return;
 	}
 	if (!val.userChange) {
@@ -34,7 +38,7 @@ const onNavSearchResults = function (self, val, oldVal) {
 			if (queryString) {
 				queryString = '?' + queryString;
 			}
-			self.$store.nav.pushState('/docs/topresults/' + queryString);
+			self.$store.nav.pushTopResults(queryString);
 		}
 	}
 };
@@ -95,6 +99,7 @@ export function newNavController(weglot_api_key) {
 
 		onPopState: function (event) {
 			if (isTopResultsPage()) {
+				this.$store.search.query = queryHandler.queryFromLocation();
 				this.$store.nav.searchResults.open = true;
 			} else if (this.$store.nav.searchResults.open) {
 				this.$store.nav.searchResults.open = false;
@@ -124,6 +129,7 @@ export function newNavController(weglot_api_key) {
 					eventName: 'DOCS: Guide Navigate',
 				};
 				this.$store.nav.analytics.handler.pushItem(analyticsItem);
+				this.$store.nav.analytics.handler.startNewPage();
 			}
 
 			/*
@@ -138,7 +144,8 @@ export function newNavController(weglot_api_key) {
 			}*/
 		},
 
-		onScroll: function () {
+		onScroll: function (e) {
+			this.$store.nav.analytics.onScroll();
 			let scrollpos = window.scrollY;
 			let scrollPosNavbar = getScrollPosNavbar();
 			if (scrollpos >= scrollPosNavbar) {

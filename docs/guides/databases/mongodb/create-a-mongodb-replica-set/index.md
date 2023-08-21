@@ -1,23 +1,20 @@
 ---
 slug: create-a-mongodb-replica-set
-author:
-  name: Linode
-  email: docs@linode.com
 description: "This guide will show you how to configure a MongoDB replicat set on Ubuntu 16.04 and CentOS 7."
 keywords: ["mongodb", "nosql", "clusters", "replica set"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Linode
 published: 2016-12-02
-title: "How To Create a MongoDB Replica Set"
-h1_title: "Creating a MongoDB Replica Set"
-enable_h1: true
+title: "Creating a MongoDB Replica Set"
+title_meta: "How To Create a MongoDB Replica Set"
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
  - '[Replication Introduction](https://docs.mongodb.com/manual/replication/)'
  - '[Geographically Distributed Replica Sets](https://docs.mongodb.com/manual/tutorial/deploy-geographically-distributed-replica-set/)'
 tags: ["ubuntu","database","nosql","centos"]
 aliases: ['/databases/mongodb/create-a-mongodb-replica-set/','/databases/mongodb/creating-a-mongodb-replication-set-on-centos-7/','/guides/creating-a-mongodb-replication-set-on-centos-7/','/databases/mongodb/creating-a-mongodb-replication-set-on-ubuntu-16-04/','/guides/creating-a-mongodb-replication-set-on-ubuntu-16-04/']
+authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.
@@ -28,9 +25,9 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1.  If you have not already done so, create a Linode account and *at least 3* Compute Instances. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Follow the guide on how to install MongoDB for your distribution. See [MongoDB guides](/docs/databases/mongodb/)
 
@@ -46,7 +43,7 @@ To allow for consistent replication, each node will need to communicate with all
 
 There are two major ways to allow the members of your replica set to communicate.
 
-The first method is to use [private IP addresses](/docs/guides/managing-ip-addresses/#adding-an-ip-address) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
+The first method is to use [private IP addresses](/docs/products/compute/compute-instances/guides/manage-ip-addresses/#adding-an-ip-address) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same data center.
 
 The second method is to simply use the public IP address assigned to each Linode. You'll need to use this method if your Linodes are located in different data centers, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should [configure SSL/TLS encryption](https://docs.mongodb.com/manual/tutorial/configure-ssl/) for data sent between your hosts, or configure them to communicate over a VPN.
 
@@ -80,8 +77,6 @@ In this section you'll create a key file that will be used to secure authenticat
 
         openssl rand -base64 756 > mongo-keyfile
 
-    Once you've generated the key, copy it to each member of your replica set.
-
 2.  The rest of the steps in this section should be performed on each member of the replica set, so that they all have the key file located in the same directory, with identical permissions. Create the `/opt/mongo` directory to store your key file:
 
         sudo mkdir /opt/mongo
@@ -90,6 +85,9 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo mv ~/mongo-keyfile /opt/mongo
         sudo chmod 400 /opt/mongo/mongo-keyfile
+
+        {{< note >}} Ensure that you copy the same generated key, to each member of your replica set in the `mongo-keyfile` file under `/opt/mongo`.
+        {{< /note >}}
 
 4.  Update the ownership of your key file, so that it belongs to the MongoDB user. Use the appropriate command for your distribution:
 
@@ -105,7 +103,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
 1.  On the Linode that you intend to use as the *primary* member of your replication set, log in to the `mongo` shell:
 
-        mongo
+        mongosh
 
 2.  Connect to the `admin` database:
 
@@ -135,7 +133,7 @@ replication:
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
 
-Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them privileges to access specific databases.
+Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/docs/guides/install-mongodb-on-ubuntu-16-04/#create-database-users) and assign them privileges to access specific databases.
 
 The `replication` section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value `rs0` is the name we're using for our replica set; you can use a different naming convention if you like, but we'll be using `rs0` throughout this guide.
 
@@ -147,9 +145,9 @@ Once you've made these changes, restart the `mongod` service:
 
 1.  Connect via SSH to the Linode that you intend to use as your *primary*. Once you're logged in, connect to the MongoDB shell using the [administrative user](#create-an-administrative-user) you created previously:
 
-        mongo -u mongo-admin -p --authenticationDatabase admin
+        mongosh -u mongo-admin -p --authenticationDatabase admin
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.
 {{< /note >}}
 

@@ -1,10 +1,6 @@
 ---
 slug: introduction-to-linux-administration
-author:
-  name: Jared Kobos
-  email: docs@linode.com
 description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
-og_description: This guide introduces important sysadmin concepts and tools for new users who are managing a project on a Linode.
 keywords: ["linux", "sysadmin", "administration"]
 tags: ["linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,8 +11,9 @@ published: 2018-05-31
 title: Introduction to Linux Administration
 external_resources:
   - '[Linux System Administration Basics](/docs/guides/linux-system-administration-basics/)'
-  - '[Linode API Documentation](https://developers.linode.com/)'
+  - '[Linode API Documentation](/docs/api/)'
 aliases: ['/quick-answers/linux-essentials/introduction-to-linux-administration/']
+authors: ["Jared Kobos"]
 ---
 
 Linode offers a flexible and customizable cloud platform for your applications. This has advantages in terms of cost and control, but also means that many services which are included in shared hosting need to be manually deployed and configured for your needs. If you are new to self-hosting, you may not know everything that needs to be done. This guide introduces the concepts and tools that you will need to be familiar with when hosting your own applications on a Linode.
@@ -67,8 +64,8 @@ For larger-scale projects, orchestration tools can be very helpful. These tools 
 
 ### Load Balancing
 
-In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](/docs/guides/getting-started-with-nodebalancers/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/) guide.
+In a larger application with many users, it often becomes important to distribute the requests received across multiple web servers. Typically, a single server, known as a *load balancer*, will listen for requests on your IP address or domain name. The balancer then forwards the requests to backend servers. Linode includes a [NodeBalancer](/docs/products/networking/nodebalancers/get-started/) service that will automatically balance load between attached backend nodes, and also includes monitoring and other features. If you would prefer to configure your own load balancers, start with our [HAProxy](/docs/guides/how-to-use-haproxy-for-load-balancing/) guide.
 
 ### Set Up an Email Server
 
-With a Linode and a fully-qualified domain name (FQDN), you can set up a private email server with @your-domain.com addresses. Email server configuration can be quite complex, but fortunately there are free third-party solutions that can simplify the process. Start with our [Running a Mail Server](/docs/guides/running-a-mail-server/) guide, or consider [Mail-in-a-Box](/docs/guides/how-to-create-an-email-server-with-mail-in-a-box/) for an all-in-one solution.
+With a Linode and a fully-qualified domain name (FQDN), you can set up a private email server with @your-domain.com addresses. Email server configuration can be quite complex, but fortunately there are free third-party solutions that can simplify the process. Start with our [Running a Mail Server](/docs/guides/running-a-mail-server/) guide, or consider [Mail-in-a-Box](/docs/guides/mail-in-a-box-email-server/) for an all-in-one solution.

@@ -1,18 +1,13 @@
 ---
 slug: host-static-site-object-storage
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "This article shows you how you can host a static website from Linode's object storage by creating your site in markdown and using a static site generator."
 keywords: ['hugo','static site','object storage']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2019-04-09
-modified: 2022-02-04
+modified: 2023-08-15
 modified_by:
   name: Linode
 title: "Deploy a Static Site using Hugo and Object Storage"
-contributor:
-  name: Linode
 external_resources:
 - '[Hugo Documentation](https://gohugo.io/documentation/)'
 - '[s3cmd Options and Commands](https://s3tools.org/usage)'
@@ -20,11 +15,8 @@ external_resources:
 tags: ["linode platform"]
 aliases: ['/platform/object-storage/host-static-site-object-storage/']
 image: host-a-static-site-using-linode-object-storage.png
+authors: ["Linode"]
 ---
-
-{{< content "object-storage-ga-shortguide" >}}
-
-{{< content "object-storage-cancellation-shortguide" >}}
 
 ## Why Host a Static Site on Object Storage?
 
@@ -111,7 +103,7 @@ In this section, you use the [Hugo CLI](https://gohugo.io/commands/) (command li
 
         cd example-site
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 All commands in this section of the guide should be issued from your site's root directory.
 {{< /note >}}
 
@@ -123,7 +115,7 @@ All commands in this section of the guide should be issued from your site's root
 
         git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Hugo has many [available themes](https://themes.gohugo.io/) that can be installed as a submodule of your Hugo site's directory.
 {{< /note >}}
 
@@ -240,9 +232,9 @@ Before proceeding with this section ensure that you have already created your Ob
 
         s3cmd mb s3://my-bucket
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Buckets names must be unique within the Object Storage cluster. You might find the bucket name `my-bucket` is already in use by another Linode customer, in which case you need to choose a new bucket name.
-{{</ note >}}
+{{< /note >}}
 
     {{< content "object-storage-cluster-shortguide" >}}
 
@@ -281,9 +273,9 @@ website_endpoint = http://%(bucket)s.website-us-east-1.linodeobjects.com
 
     - Change `us-east-1` to match the region where your bucket is hosted.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Linode Object Storage provides SSL enabled by default. This means you can access your Object Storage bucket using `https`, as well.
-{{</ note >}}
+{{< /note >}}
 
 
 
@@ -302,7 +294,7 @@ Linode Object Storage provides SSL enabled by default. This means you can access
 
       ![Hugo Index Page](hugo-index.png)
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 It may take a minute or two after your s3cmd sync completes for the page to appear at your bucket's website URL.
 {{< /note >}}
 
@@ -318,7 +310,7 @@ Alternatively, you can freely create a custom subdomain that does not need to ma
 
     subdomain.mydomain.tld    CNAME	my-new-bucket.us-east-1.linodeobjects.com
 
-To learn about managing DNS records on Linode, see the [DNS Manager](/docs/guides/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/) guides.
+To learn about managing DNS records on Linode, see the [DNS Manager](/docs/products/networking/dns-manager/) and [DNS Records: An Introduction](/docs/guides/dns-overview/) guides.
 
 For instructions on how to set up `https` access for your custom domain, see the  [Configure a Custom Domain (with a TLS/SSL Certificate)](/docs/products/storage/object-storage/guides/custom-domain/) guide.
 

@@ -1,10 +1,9 @@
 'use strict';
 
-import { isMobile, isScreenLargerThan } from '../helpers/index';
+import { isDesktop, isMobile } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
-
-const headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
+var devMode = false;
 
 const setProgress = function (self, el) {
 	let mainEl = document.querySelector('#main__content');
@@ -15,7 +14,13 @@ const setProgress = function (self, el) {
 	self.activeHeading.progress = progress;
 };
 
-export function newToCController() {
+export function newToCController(
+	opts = {
+		level2Only: false,
+		setProgress: true,
+		desktopOnly: false,
+	}
+) {
 	return {
 		activeHeading: {
 			title: '',
@@ -23,9 +28,23 @@ export function newToCController() {
 		},
 		enabled: false,
 		showHeading: true,
-		init: function () {
+		opts: opts,
+		isActive: function () {
+			if (this.opts.desktopOnly && !isDesktop()) {
+				return false;
+			}
+			return true;
+		},
+		initToC: function () {
+			let { level2Only } = this.opts;
+			if (level2Only) {
+				this.headerEls = () => document.querySelectorAll('#main__content h2');
+			} else {
+				this.headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3');
+			}
+
 			this.createTOC();
-			if (isScreenLargerThan(1711)) {
+			if (devMode) {
 				this.$store.nav.open.toc = true;
 			}
 
@@ -36,12 +55,15 @@ export function newToCController() {
 		createTOC: function () {
 			let self = this;
 			self.activeHeading.title = '';
-			let nav = this.$el.querySelector('.toc__inner');
-			nav.innerHTML = '';
-			let ol = document.createElement('ol');
+			let ol = this.$refs.ol;
+			let olFragment = document.createDocumentFragment();
 			let row = [];
+			let prevLevel = 0;
 
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
+				if (el.hasAttribute('data-toc-ignore')) {
+					return;
+				}
 				// Skip hidden elements and headers without ID.
 				if (!el || el.offsetParent === null || !el.id) {
 					return;
@@ -50,10 +72,15 @@ export function newToCController() {
 				let id = el.id;
 				let level = parseInt(el.nodeName.substring(1), 10);
 
+				// We need to start out with a level 2 header for the logic
+				// below to work.
+				if (prevLevel === 0 && level != 2) {
+					return;
+				}
+
 				let li = document.createElement('li');
 
 				li.classList.add(`level-${level}`);
-				li.classList.add('truncate');
 
 				let a = document.createElement('a');
 
@@ -65,11 +92,11 @@ export function newToCController() {
 					self.closeIfMobile();
 					if (heading) {
 						e.preventDefault();
-            // 24 px whitespace
-            // + 56 px for pinned topbar
-            // OR
-            // + 97 px for unpinned topbar
-            let spaceAbove = 24 + ( document.body.classList.contains('is-topbar-pinned') ? 56 : 97 );
+						// 24 px whitespace
+						// + 56 px for pinned topbar
+						// OR
+						// + 97 px for unpinned topbar
+						let spaceAbove = 24 + (document.body.classList.contains('is-topbar-pinned') ? 56 : 97);
 						window.scrollTo({
 							left: 0,
 							top: heading.offsetTop - spaceAbove,
@@ -89,31 +116,36 @@ export function newToCController() {
 
 				li.appendChild(a);
 
-				let ol2 = document.createElement('ol');
-				li.appendChild(ol2);
 				if (level == 2) {
 					row.length = 0;
-					row.push(ol2);
+					row.push(olFragment);
+					olFragment.appendChild(li);
+				} else if (level === prevLevel) {
+					let ol = row[row.length - 1];
 					ol.appendChild(li);
-				} else {
-					// Attach it to the closest parent.
-					let relativeLevel = level - 2;
-					let rowIdx = Math.min(relativeLevel - 1, row.length - 1);
-					let ol3 = row[rowIdx];
-					ol3.appendChild(li);
-					if (rowIdx > 1) {
-						row[rowIdx - 1] = ol2;
-					}
+				} else if (level > prevLevel) {
+					let ol = document.createElement('ol');
+					let li2 = row[row.length - 1].lastChild;
+					li2.appendChild(ol);
+					ol.appendChild(li);
+					row.push(ol);
+				} else if (level < prevLevel) {
+					let diff = prevLevel - level;
+					row.length = row.length - diff;
+					let ol = row[row.length - 1];
+					ol.appendChild(li);
 				}
+				prevLevel = level;
 			});
+
 			if (!this.enabled) {
 				this.$store.nav.open.toc = false;
 				return;
 			}
 
 			// On mobile, add close/open to h2 headers with descendants.
-			if (isMobile()) {
-				ol.querySelectorAll('.level-2').forEach((li) => {
+			if (isMobile() && this.$refs.headerCloseButton) {
+				olFragment.querySelectorAll('.level-2').forEach((li) => {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
 						let ol = li.querySelector('ol');
@@ -124,7 +156,7 @@ export function newToCController() {
 					}
 				});
 			}
-			nav.appendChild(ol);
+			ol.replaceChildren(olFragment);
 		},
 		toggleOpen: function () {
 			this.$store.nav.open.toc = !this.$store.nav.open.toc;
@@ -142,7 +174,7 @@ export function newToCController() {
 		onHashchange: function () {
 			let id = document.location.hash.slice(1);
 			let self = this;
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				if (el.id === id) {
 					setProgress(self, el);
 				}
@@ -152,15 +184,19 @@ export function newToCController() {
 			if (!this.enabled) {
 				return;
 			}
+			if (!this.isActive()) {
+				return;
+			}
 			let scrollpos = window.scrollY;
 			let self = this;
+			document.activeElement.blur();
 
-			headerEls().forEach((el) => {
+			this.headerEls().forEach((el) => {
 				let offset = el.offsetTop;
 
 				if (offset > scrollpos && offset < scrollpos + 200) {
-					let toc = self.$el.querySelector('.toc__inner');
-					toc.querySelectorAll('li').forEach((liEl) => {
+					let ol = this.$refs.ol;
+					ol.querySelectorAll('li').forEach((liEl) => {
 						let a = liEl.querySelector('a');
 						if (!a.attributes || !a.attributes.href) {
 							return;

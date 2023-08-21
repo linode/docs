@@ -1,8 +1,5 @@
 ---
 slug: postfix-dovecot-and-system-user-accounts-on-debian-6-squeeze
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
 keywords: ["postfix", "dovecot", "system users", "email"]
 tags: ["debian","postfix","email"]
@@ -19,13 +16,14 @@ relations:
         key: postfix-dovecot-user-accounts
         keywords:
             - distribution: Debian 6
+authors: ["Linode"]
 ---
 
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-debian-6-squeeze) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/).
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/guides/basic-postfix-email-gateway-on-debian-6-squeeze/) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/products/platform/get-started/#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -95,7 +93,7 @@ When all modifications to the Postfix configuration are complete, issue the foll
 
 At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/guides/linux-users-and-groups/).
 
-Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-6-squeeze) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
+Consider the [basic email gateway guide](/docs/guides/basic-postfix-email-gateway-on-debian-6-squeeze/) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 
 ### Configure Mail Delivery
 
@@ -180,7 +178,7 @@ Remember that system user accounts may provide access to other services on the s
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic Email Gateway with Postfix on Debian 6 (Squeeze)](/docs/email/postfix/gateway-debian-6-squeeze)
+- [Basic Email Gateway with Postfix on Debian 6 (Squeeze)](/docs/guides/basic-postfix-email-gateway-on-debian-6-squeeze/)
 
 
 

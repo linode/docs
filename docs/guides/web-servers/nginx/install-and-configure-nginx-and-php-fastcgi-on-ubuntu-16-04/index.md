@@ -1,9 +1,6 @@
 ---
 slug: install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
 keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
 tags: ["web server","ubuntu","php","nginx"]
@@ -23,19 +20,20 @@ relations:
         key: nginx-php-fastcgi
         keywords:
             - distribution: Ubuntu 16.04
+authors: ["Linode"]
 ---
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low- and high-traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you install and run nginx with PHP via FastCGI on your Ubuntu 16.04 Linode.
 
 ![Install and configure nginx and PHP-FastCGI on Ubuntu 16.04](nginx-php-fcgi-tg.png "Install and configure nginx and PHP-FastCGI on Ubuntu 16.04")
 
-{{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note respectIndent=false >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-- Complete the [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/getting-started#setting-the-hostname).
+- Complete the [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide, specifically [setting the hostname](/docs/products/platform/get-started/#setting-the-hostname).
 
 - To confirm your hostname, issue the following commands on your Linode:
 
@@ -44,7 +42,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     The first command shows your short hostname, and the second shows your fully qualified domain name (FQDN).
 
-- If you are new to Linux systems administration, you may want to consider the [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [Linux Administration Basics](/docs/using-linux/administration-basics) guide.
+- If you are new to Linux systems administration, you may want to consider the [Introduction to Linux Concepts](/docs/guides/introduction-to-linux-concepts/) guide and the [Linux Administration Basics](/docs/guides/linux-system-administration-basics/) guide.
 
 - Update your system:
 

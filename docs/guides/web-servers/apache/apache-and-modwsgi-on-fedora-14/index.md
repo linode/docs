@@ -1,9 +1,6 @@
 ---
 slug: apache-and-modwsgi-on-fedora-14
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'This guide shows you how to deploy Python apps, like Django, Web.py, Werkzug, and more using the Apache Web Server application and mod\_wsgi on Fedora 14.'
 keywords: ["python", "apache", "mod\\_wsgi"]
 tags: ["web server","apache","fedora","python"]
@@ -19,6 +16,7 @@ relations:
         key: apache-mod-wsgi
         keywords:
             - distribution: Fedora 14
+authors: ["Linode"]
 ---
 
 
@@ -27,7 +25,7 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/web-servers/apache/apache-and-modwsgi-on-fedora-14). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/guides/apache-and-modwsgi-on-fedora-14/). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -162,7 +160,7 @@ You will need to restart the web server every time the `application.wsgi` file c
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
-- [Deploy Django Applications with mod\_wsgi](/docs/development/frameworks/django-apache-and-modwsgi-on-fedora-14)
+- [Deploy Django Applications with mod\_wsgi](/docs/guides/django-apache-and-modwsgi-on-fedora-14/)
 - [Deploy Web.py Applications with mod\_wsgi](/docs/guides/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)

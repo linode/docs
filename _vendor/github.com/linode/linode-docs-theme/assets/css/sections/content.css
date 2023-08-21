@@ -91,6 +91,45 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   overflow: inherit;
 }
 
+.max-w-content {
+  @apply max-w-none;
+}
+
+@media screen and (min-width: 1279px) {
+  .max-w-content {
+    @apply max-w-xl;
+  }
+}
+
+@media screen and (min-width: 1356px) {
+  .max-w-content {
+    @apply max-w-2xl;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .max-w-content {
+    @apply max-w-3xl;
+  }
+}
+
+/*  Chroma overrides. Keep them here as chroma.css is auto generated.  */
+.chroma .lntd:first-of-type {
+  border-right: 1px #dedee3 solid;
+  text-align: center;
+  margin: 0;
+}
+
+.chroma .lnt {
+  height: 100%;
+  display: block;
+}
+
+.chroma .hl {
+  display: block;
+  width: 100%;
+}
+
 .content .file tbody tr:first-child {
   border: none;
 }
@@ -116,14 +155,35 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   background-color: transparent;
 }
 
+.content div.overflow-table {
+  position: relative;
+  display: block;
+  overflow-x: auto;
+}
+
+.content table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+}
+
 .content table {
   @apply border-collapse mobile:-mx-4;
+  border-style: hidden;
+}
+
+.content div.overflow-table > table {
+  @apply border-collapse mobile:mx-0;
   border-style: hidden;
 }
 
 @screen mobile {
   .content table {
     width: calc(100% + 2rem);
+  }
+
+  .content div.overflow-table table {
+    width: 100%;
   }
 }
 
@@ -155,8 +215,17 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   @apply bg-gray-300;
 }
 
-.chroma .lntable tbody td:first-child {
-  padding-left: 0;
+.content .chroma .lntable {
+  @apply w-full;
+}
+
+.chroma .lntd pre {
+  @apply px-0;
+}
+
+.chroma .line,
+.chroma .lnt {
+  @apply px-5;
 }
 
 .content img.marquee-img {
@@ -196,7 +265,6 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
     @apply rounded-lg;
   }
 }
-
 
 /*
 Styles for use with API documentation

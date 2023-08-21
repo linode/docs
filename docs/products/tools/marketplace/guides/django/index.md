@@ -1,21 +1,18 @@
 ---
-author:
-  name: Linode Community
-  email: docs@linode.com
 description: "Learn how to deploy Django, a web framework that provides much of the core functionality required in modern web development, through the Linode Marketpplace"
 keywords: ['django','marketplace', 'cms']
-tags: ["cloud-manager","linode platform","cms","django","marketplace"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+tags: ["cloud-manager","linode platform","cms","django","marketplace","digital agencies"]
 published: 2020-03-11
 modified: 2022-03-08
 image: Django_oneclickapps.png
 modified_by:
   name: Linode
-title: "Deploying Django through the Linode Marketplace"
+title: "Deploy Django through the Linode Marketplace"
 aliases: ['/platform/marketplace/how-to-deploy-django-with-marketplace-apps/','/platform/marketplace/deploying-django-with-marketplace-apps/', '/platform/one-click/how-to-deploy-django-with-one-click-apps/', '/platform/one-click/deploying-django-with-one-click-apps/','/guides/how-to-deploy-django-with-one-click-apps/','/guides/how-to-deploy-django-with-marketplace-apps/','/guides/django-marketplace-app/']
 external_resources:
  - '[The Django Project](https://www.djangoproject.com/)'
  - '[Django Documentation](https://docs.djangoproject.com/en/2.2/releases/)'
+authors: ["Linode"]
 ---
 
 [Django](https://www.djangoproject.com/) is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications. It's also very flexible in its ability to facilitate many complex content management operations.
@@ -26,9 +23,9 @@ external_resources:
 
 {{< content "marketplace-verify-standard-shortguide">}}
 
-{{<note>}}
+{{< note >}}
 **Estimated deployment time:** Django should be fully installed within 2-5 minutes after the Compute Instance has finished provisioning.
-{{</note>}}
+{{< /note >}}
 
 ## Configuration Options
 
@@ -41,13 +38,17 @@ external_resources:
 - **Django password** *(required)*: Enter a *strong* password for your Django user.
 - **Django user email** *(required)*: The email address you wish to use for your Django user.
 
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
+{{< content "marketplace-special-character-limitations-shortguide">}}
+
 ## Getting Started after Deployment
 
 ### Access Django
 
 {{< note >}}
 The Django Marketplace App will assign `DjangoApp` as the [Django project name](https://docs.djangoproject.com/en/3.0/intro/tutorial01/#creating-a-project).
-{{</ note >}}
+{{< /note >}}
 
 After Django has finished installing, you will be able to access your Django site at your Linode's IPv4 address, for instance: `http://yourlinodeip:8000`.
 

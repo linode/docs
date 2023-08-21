@@ -1,23 +1,20 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
 title: "Introduction to Load Balancing"
-description: "This guide shows you how to use Linode Node Balancers, which are services built for high availability and designed to be maintenance free once deployed."
+description: "This guide shows you how to use Linode NodeBalancers, which are services built for high availability and designed to be maintenance free once deployed."
 keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-10-07
 modified_by:
   name: Linode
 tags: ["linode platform","networking"]
 aliases: ['/platform/nodebalancer/what-are-nodebalancers/','/guides/what-are-nodebalancers/']
+authors: ["Linode"]
 ---
 
 Load balancing allows you to distribute incoming network traffic across multiple servers so that no one server takes on all the demand. This allows high traffic sites and applications to field a large number of users without performance degradation. It also allows you to scale a site or application by adding more servers as your need grows, or remove them if your need diminishes.
 
 Linode offers load balancers as a service (LBaaS) called NodeBalancers. NodeBalancers are built for high availability and designed to be maintenance free after initial configuration.
 
-This guide provides a high-level overview of NodeBalancers. To set-up a NodeBalancer, see the [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers) guide.
+This guide provides a high-level overview of NodeBalancers. To set-up a NodeBalancer, see the [Getting Started with NodeBalancers](/docs/products/networking/nodebalancers/get-started/) guide.
 
 ## Overview
 
@@ -41,6 +38,6 @@ When using a load balancer, like a NodeBalancer, traffic comes to the site throu
 
 The optimal solution for a highly available site or application is to have multiple Linodes behind a NodeBalancer. Now when traffic comes into the NodeBalancer it can be routed to any one of the Linodes available.
 
-- [Health checks](/docs/platform/nodebalancer/nodebalancer-reference-guide/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
+- [Health checks](/docs/products/networking/nodebalancers/guides/configure/#health-checks) are performed to make sure that requests are only routed to healthy Linodes.
 - Backend Linodes can be added or removed seamlessly without end users noticing any downtime.
-- Client requests can be routed to the same backend Linode through [sticky sessions](/docs/platform/nodebalancer/nodebalancer-reference-guide/#session-stickiness).
+- Client requests can be routed to the same backend Linode through [sticky sessions](/docs/products/networking/nodebalancers/guides/configure/#session-stickiness).

@@ -1,11 +1,7 @@
 ---
 slug: introduction-to-backups
-author:
-  name: Linode
-  email: docs@linode.com
 keywords: ["backups", "snapshot", "Linode backup", "beginners"]
 description: This guide explains to new users why and how they should back up data on their Linodes.
-og_description: This guide explains to new users why and how they should back up data on their Linodes.
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2018-05-18
 modified_by:
@@ -16,6 +12,7 @@ external_resources:
   - '[Backing Up Your Data](/docs/guides/backing-up-your-data/)'
 tags: ["linux"]
 aliases: ['/quick-answers/linux-essentials/introduction-to-backups/']
+authors: ["Linode"]
 ---
 
 ![Introduction to Backups](introduction-to-backups.png "Introduction to Backups")
@@ -65,7 +62,7 @@ Many applications, including common CMS platforms like WordPress, store their da
 
 If you are using MySQL or MariaDB, read more about  `mysqldump` in our [mysqldump](/docs/guides/mysqldump-backups/) guide, or try making [physical backups](/docs/guides/create-physical-backups-of-your-mariadb-or-mysql-databases/).
 
-If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/how-to-back-up-your-postgresql-database/).
+If your application uses PostgreSQL, read our guide on [How to Back Up Your PostgreSQL Database](/docs/guides/back-up-a-postgresql-database/).
 
 ## Third-Party Tools
 

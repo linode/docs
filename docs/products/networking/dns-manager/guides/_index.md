@@ -1,43 +1,57 @@
 ---
 title: Guides
+title_meta: "Guides and Tutorials for the Linode DNS Manager"
 description: "Learn the basics of adding and managing Domains and DNS records using the DNS manager. You can also find guides that take a deep dive into DNS records, common DNS configurations, and other more advanced topics."
 tab_group_main:
     weight: 30
+modified: 2023-02-09
 ---
 
-## Building Blocks
+## Basics
 
-These introductory guides to Linode DNS Manager will get you up and running with this service.
+- [Create a Domain](/docs/products/networking/dns-manager/guides/create-domain/): Instructions for adding your domain to Linode's DNS Manager.
 
-- [Add Domains](/docs/products/networking/dns-manager/guides/add-domains/): You can add a domain in the Domains section of the Cloud Manager.
+- [Manage Domains](/docs/products/networking/dns-manager/guides/manage-domains/): View, edit, and manage domains on your account.
 
-- [Add DNS Records](/docs/products/networking/dns-manager/guides/add-dns-records/): After you add a domain, you want to add some DNS records.
+- [Manage DNS Records](/docs/products/networking/dns-manager/guides/manage-dns-records/): View, edit, and manage DNS records on your domains.
 
-- [Edit DNS Records](/docs/products/networking/dns-manager/guides/edit-dns-records/): You can modify DNS records easily after they’ve been added from the Domains section of the Cloud Manager.
+- [Configure Your Domain's Authoritative Name Servers](/docs/products/networking/dns-manager/guides/authoritative-name-servers/): To use Linode's DNS Manager for your domain, you must configure the authoritative name server's on your domain's registrar.
 
-- [Remove Domains](/docs/products/networking/dns-manager/guides/remove-domains/): Removing Domains can also be done easily from the Cloud Manager in the Domains section.
+## Additional Management
 
-- [Transfer Domain Zones](/docs/products/networking/dns-manager/guides/transfer-domain-zones/): You can transfer a Domain zone to a non-Linode DNS server that you designate and trust.
+- [Incoming DNS Zone Transfers (Import a Domain)](/docs/products/networking/dns-manager/guides/incoming-dns-zone-transfers/): Transfer DNS records from an external DNS service to the Linode DNS Manager, including how to operate a *secondary* DNS service on Linode through AXFR transfers from an external *primary* DNS service.
 
-## Themes
+- [Outgoing DNS Zone Transfers Domain](/docs/products/networking/dns-manager/guides/outgoing-dns-zone-transfers/): Transfer DNS records to another DNS service, including how to maintain a *primary* DNS service on Linode while supporting AXFR transfers to an external *secondary* DNS service.
 
-These additional guides will help you with targeted topics like DNS basics and more advanced subjects.
+## DNS Record Types
 
-### DNS Basics
+- [A and AAAA Records](/docs/products/networking/dns-manager/guides/a-record/)
 
-- [DNS Records: An Introduction](/docs/guides/dns-records-an-introduction/)
+- [CNAME Records](/docs/products/networking/dns-manager/guides/cname-record/)
 
-- [DNS Manager](/docs/guides/dns-manager/)
+- [MX Records](/docs/products/networking/dns-manager/guides/mx-record/)
 
-- [Diagnose & Resolve DNS Records in DNS Manager](/docs/guides/troubleshooting-dns/)
+- [TXT Records](/docs/products/networking/dns-manager/guides/txt-record/)
 
-- [Common DNS Configurations](/docs/guides/common-dns-configurations/)
+- [NS Records](/docs/products/networking/dns-manager/guides/ns-record/)
 
-- [Using Your System’s Hosts File](/docs/guides/using-your-systems-hosts-file/)
+- [SOA Record](/docs/products/networking/dns-manager/guides/soa-record/)
 
-- [Configure Your Linode for Reverse DNS (rDNS)](/docs/networking/dns/configure-your-linode-for-reverse-dns/)
+- [SRV Records](/docs/products/networking/dns-manager/guides/srv-record/)
 
-### Advanced Topics
+- [CAA Records](/docs/products/networking/dns-manager/guides/caa-record/)
+
+## Going Further
+
+- [Overview of DNS and DNS Records](/docs/guides/dns-overview/)
+
+- [Troubleshooting DNS Records](/docs/products/networking/dns-manager/guides/troubleshooting-dns/)
+
+- [Common DNS Configurations](/docs/products/networking/dns-manager/guides/common-dns-configurations/)
+
+- [Configure rDNS (Reverse DNS) on a Compute Instance](/docs/guides/configure-rdns/)
+
+## Advanced Topics
 
 - [Previewing Websites Without DNS](/docs/guides/previewing-websites-without-dns/)
 

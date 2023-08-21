@@ -1,8 +1,5 @@
 ---
 slug: visualize-history
-author:
-  name: Mihalis Tsoukalos
-  email: mihalistsoukalos@gmail.com
 description: 'An overview of popular open source data visualization packages for R, Python, and JavaScript.'
 keywords: ["Visualization", "R", "Python", "Perl", "pandas"]
 tags: ["python", "perl"]
@@ -11,10 +8,8 @@ published: 2019-09-27
 modified_by:
   name: Linode
 title: 'An Overview of Open Source Data Visualization Tools'
-contributor:
-  name: Mihalis Tsoukalos
-  link: https://www.mtsoukalos.eu/
 aliases: ['/development/data-visualization/visualize-history/','/development/visualize-history/']
+authors: ["Mihalis Tsoukalos"]
 ---
 Creating graphic visualizations for a data set is a powerful way to derive meaning from vast amounts of information. It provides a way to extract meaningful relationships between different aspects of your data depending on how the data is mapped and which graphic representations are chosen. Data visualization is a common practice in many sectors, including various scientific disciplines, business settings, the government sector, and education.
 
@@ -22,10 +17,10 @@ There are many open source tools available to create sophisticated data visualiz
 
 In this guide you will complete the following steps:
 
-* [Create three different data sets to use for your visualizations](/docs/development/visualize-history/#create-your-data-sets).
-* [Visualize your data using R and RStudio as a pie chart](/docs/development/visualize-history/#visualize-your-data-with-rstudio).
-* [Create a word cloud using Python and the pandas library](/docs/development/visualize-history/#create-a-word-cloud-using-python).
-* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/development/visualize-history/#visualize-data-using-d3-js).
+* [Create three different data sets to use for your visualizations](/docs/guides/visualize-history/#create-your-data-sets).
+* [Visualize your data using R and RStudio as a pie chart](/docs/guides/visualize-history/#visualize-your-data-with-rstudio).
+* [Create a word cloud using Python and the pandas library](/docs/guides/visualize-history/#create-a-word-cloud-using-python).
+* [Develop a web browser based pie chart visualization using JavaScript and the D3.js package](/docs/guides/visualize-history/#visualize-data-using-d3-js).
 
 ## Before You Begin
 
@@ -48,7 +43,7 @@ This guide assumes you have some basic familiarity with the following concepts a
 
 ## Create Your Data Sets
 
-In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then create a third data set using a Perl script that will extract information from the first two data sets. In the [Create Visualizations for your Data](/docs/development/visualize-history/#create-visualizations-for-your-data) section of the guide, you will use these various data sets to create corresponding visualizations.
+In this section, you will create a data set using the contents of your [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) history file and optionally, your [Zsh](https://en.wikipedia.org/wiki/Z_shell) history file. You will then create a third data set using a Perl script that will extract information from the first two data sets. In the [Create Visualizations for your Data](/docs/guides/visualize-history/#create-visualizations-for-your-data) section of the guide, you will use these various data sets to create corresponding visualizations.
 
 ### Data Set 1 - Bash History File
 A Bash history file stores all commands executed in your command line interpreter. View your 10 most recently executed commands with the following command:
@@ -155,11 +150,11 @@ sub check_category {
 
         ./command_length.pl data-sets > ~/command_categories.txt
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 Your Perl script must be executable in order to run. To add these permissions, execute the following command:
 
     chmod +x command_length.pl
-    {{</ note >}}
+    {{< /note >}}
 
     Open the `.command_categories.txt` file to view the categorizations created by your Perl script. Your file should resemble the following example:
 
@@ -186,13 +181,13 @@ In this section you will use the data sets you created in the previous section t
 
 [R](https://www.r-project.org/about.html) is a specialized programming language used for statistical computing and graphics. It is especially good for  creating high quality graphs, like [density plots](https://en.wikipedia.org/wiki/Density_estimation), [line charts](https://en.wikipedia.org/wiki/Line_chart), [pie charts](https://en.wikipedia.org/wiki/Pie_chart), and [scatter plots](https://en.wikipedia.org/wiki/Scatter_plot). [RStudio](https://rstudio.com/) is an integrated development environment (IDE) for R that includes debugging and plotting tools that make it easy to write, debug, and run R scripts.
 
-In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/development/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
+In this section, you will use the `command_categories.txt` file created in the [Data Set 3 - Perl Script](/docs/guides/visualize-history/#data-set-3-perl-script) section and RStudio to create a pie chart and simple spreadsheet of your data.
 
 1. Open RStudio Desktop and create a data frame. In R, a data frame is a table similar to a two-dimensional array.
 
         DATA <- read.table("~/command_categories.txt", header=TRUE)
 
-    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/development/visualize-history/#data-set-3-perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
+    - This command will read the `command_categories.txt` file that was created in the [Data Set 3 - Perl Script](/docs/guides/visualize-history/#data-set-3-perl-script) section of the guide and create a data frame from it that is stored in the `DATA` variable.
 
     - The `header=TRUE` argument indicates that the file's first row contains variable names for column values. This means that `Category Name` and `Number of Times` will be used as variable names for the two columns of values in `command_categories.txt`.
 
@@ -415,9 +410,9 @@ func main() {
 
 1. Create an HTML file named `pieChart.html` and copy and paste the following content. The `DATA` variable on line 31 contains the JSON data that was created by the `cToJSON.go` script in the previous step. Remove the JSON data in the example and replace it with your own JSON data.
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 In this example, your JSON data is hardcoded in `pieChart.html` for simplicity. Web browser security constraints restrict how a document or script loaded from one origin can interact with a resource from another origin. However, you may consider using the [d3-fetch module](https://github.com/d3/d3-fetch/blob/v1.1.2/README.md#json) to fetch your JSON data from a specific URL.
-    {{</ note >}}
+    {{< /note >}}
 
       {{< file "~/pieChart.html" javascript >}}
 <!DOCTYPE html>

@@ -1,41 +1,50 @@
 ---
 title: Guides
-description: 'This short-guide will provide you with step-by-step instructions on how to enable cluster auto-scaling in your Linode Kubernetes Engine (LKE) Clsuter.'
+title_meta: "Guides and Tutorials for LKE (Linode Kubernetes Engine)"
+description: "A collection of guides to help you start deploying LKE clusters and using them to host your web applications and Cloud workloads"
 tab_group_main:
     weight: 30
+published: 2020-06-02
+modified: 2023-02-09
 ---
 
-## Building Blocks
+## Basics
 
-- [Install kubectl](/docs/products/compute/kubernetes/guides/install-kubectl): Before you create a cluster with LKE, you need to install kubectl on your local machine.
+- [Create a Cluster](/docs/products/compute/kubernetes/guides/create-cluster/)
 
-- [Create an LKE Cluster](/docs/products/compute/kubernetes/guides/create-lke-cluster): Quickly and easily create an LKE cluster from the Cloud Manager with a just a few clicks.
+- [Manage Kubernetes Clusters](/docs/products/compute/kubernetes/guides/manage-clusters/)
 
-- [Download Your kubeconfig](/docs/products/compute/kubernetes/guides/download-kubeconfig): Download the kubeconfig file so you can interact with your cluster with kubectl from the command line.
+- [Manage Node Pools](/docs/products/compute/kubernetes/guides/manage-node-pools/)
 
-- [Delete an LKE Cluster](/docs/products/compute/kubernetes/guides/delete-cluster): You can delete an entire cluster from the Cloud Manager.
+- [High Availability Control Plane](/docs/products/compute/kubernetes/guides/high-availability-control-plane/)
 
-- [Add a Node Pool](/docs/products/compute/kubernetes/guides/add-node-pool): You can add a Node Pool to your cluster from the Cloud Manager.
+- [Upgrade a Cluster to a Newer Kubernetes Version](/docs/products/compute/kubernetes/guides/upgrade-kubernetes-version/)
 
-- [Edit or Remove Node Pools](/docs/products/compute/kubernetes/guides/edit-remove-node-pools): You can easily edit or remove existing Node Pools from the Cloud Manager.
+## Additional Management Options
 
-- [Configure Cluster Autoscaling](/docs/products/compute/kubernetes/guides/enable-cluster-autoscaling): Enable, edit, or disable the LKE autoscaling feature to automatically scale nodes as the needs of Kubernetes pods change.
+- [Manage a Cluster with kubectl](/docs/products/compute/kubernetes/guides/kubectl/)
 
-- [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig): Reset an LKE cluster's kubeconfig from the Cloud Manager.
+- [Manage an LKE Cluster Using the Kubernetes Dashboard](/docs/products/compute/kubernetes/guides/kubernetes-dashboard/)
 
-- [Enable High Availability](/docs/products/compute/kubernetes/guides/enable-high-availability): Enable High availability for your LKE cluster, creating additional replicas of your control plane components directly through the Cloud Manager.
+- [Deploy and Manage a Kubernetes Cluster with the Linode API](/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/)
 
-## Themes
+- [Deploy an LKE Cluster Using Terraform](/docs/products/compute/kubernetes/guides/deploy-cluster-using-terraform/)
 
-These guides explore topics such as using Docker, networking, deploying websites, and using LKE with third-party tools.
+- [Reset Kubeconfig](/docs/products/compute/kubernetes/guides/reset-kubeconfig/)
+
+## Additional Guides
+
+- [Load Balancing on an LKE Cluster](/docs/products/compute/kubernetes/guides/load-balancing/)
+
+- [Secure a Cluster with User Permissions and RBAC](/docs/products/compute/kubernetes/guides/secure-a-cluster-with-rbac/)
+
+- [Drain Node Pools with kubectl](/docs/products/compute/kubernetes/guides/drain-node-pools/)
+
+## Going Further
 
 ### Kubernetes Basics
 
 - [A Beginners Guide to Kubernetes](/docs/guides/beginners-guide-to-kubernetes/)
-
-- [Deploy and Manage a Cluster with Linode Kubernetes Engine - A Tutorial](/docs/guides/deploy-and-manage-a-cluster-with-linode-kubernetes-engine-a-tutorial/)
-
-### Kubernetes Reference and Troubleshooting
 
 - [Advantages of Using Kubernetes](/docs/guides/kubernetes-use-cases/)
 
@@ -53,9 +62,9 @@ These guides explore topics such as using Docker, networking, deploying websites
 
 ### Networking and Web
 
-- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/guides/getting-started-with-load-balancing-on-a-lke-cluster/)
+- [Deploy NodeBalancers with the Linode Cloud Controller Manager](/docs/products/compute/kubernetes/guides/load-balancing/)
 
-- [How to Deploy NGINX Ingress on Linode Kubernetes Engine](/docs/guides/how-to-deploy-nginx-ingress-on-linode-kubernetes-engine/)
+- [How to Deploy NGINX Ingress on Linode Kubernetes Engine](/docs/guides/deploy-nginx-ingress-on-lke/)
 
 - [How to Deploy a Static Site on Linode Kubernetes Engine](/docs/guides/how-to-deploy-a-static-site-on-linode-kubernetes-engine/)
 

@@ -9,15 +9,15 @@ tab_group_main:
 
 These introductory guides help you get up and running with monitoring your Linode services.
 
-- [Configure Shutdown Watchdog](/docs/products/tools/monitoring/guides/monitoring-configure-watchdog): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
+- [Configure Shutdown Watchdog](/docs/products/compute/compute-instances/guides/lassie-shutdown-watchdog/): "Lassie" the Shutdown Watchdog can monitor your Linodes and automatically restart them if they are shutdown unexpectedly.
 
 - [Cloud Manager Graphs](/docs/products/tools/monitoring/guides/monitoring-cloud-graphs): Cloud Manager provides several basic graphs to give you a view into the performance of your Linodes.
 
-- [Configure Email Alerts](/docs/products/tools/monitoring/guides/monitoring-email-alerts): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
+- [Configure Email Alerts](/docs/products/compute/compute-instances/guides/resource-usage-email-alerts/): In Cloud Manager, you can configure several server alerts to automatically email you when certain thresholds are met.
 
 - [Use Third-Party Tools](/docs/products/tools/monitoring/guides/monitoring-third-party-tools): For a more detailed view of your systems, you can use third-party tools.
 
-For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/guides/monitoring-and-maintaining-your-server/).
+For more basics, see the full guide on [Monitoring and Maintaining Your Server](/docs/products/compute/compute-instances/guides/monitor-and-maintain/).
 
 ## Themes
 
@@ -29,7 +29,7 @@ These additional guides help you with targeted topics like how to use command li
 
 - [Using top to Monitor Server Performance](/docs/guides/top-htop-iotop/)
 
-- [Monitor System Logs with Logwatch](/docs/guides/monitor-systems-logwatch/)
+- [Monitor System Logs with Logwatch](/docs/guides/logwatch-monitor-system-logs/)
 
 - [Installing Monit for Server Monitoring](/docs/guides/monitoring-servers-with-monit/)
 

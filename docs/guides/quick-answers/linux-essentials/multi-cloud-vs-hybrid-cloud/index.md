@@ -1,18 +1,14 @@
 ---
 slug: multi-cloud-vs-hybrid-cloud
-author:
-  name: Jack Wallen
 description: 'Comparing multicloud vs hybrid cloud? Discover their similarities, differences, and the pros and cons of each approach. Find the right one for you by reading this guide.'
 keywords: ['hybrid cloud vs multi cloud','hybrid vs multi cloud','multi-cloud vs hybrid cloud']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-01-28
 modified_by:
   name: Linode
-title: "What is the Difference Between Hybrid Cloud and Multicloud?"
-h1_title: "Multicloud vs. Hybrid Cloud: Differences Explained"
-enable_h1: true
-contributor:
-  name: Jack Wallen
+title: "Multicloud vs. Hybrid Cloud: Differences Explained"
+title_meta: "What is the Difference Between Hybrid Cloud and Multicloud?"
+authors: ["Jack Wallen"]
 ---
 
 In the last couple of years, *the cloud* has become a ubiquitous term and piece of technology. But depending on who you ask, what is meant by "the cloud" can vary dramatically. For some, the cloud is only a way to store files and photos on a third-party service. For others, the cloud is a means to sync data between phones and desktops. Others look at the cloud as a method of serving applications to consumers and customers. As you keep climbing up the IT ladder, the definition gets more granular and more complicated.

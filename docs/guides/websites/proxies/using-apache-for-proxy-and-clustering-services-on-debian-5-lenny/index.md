@@ -1,9 +1,6 @@
 ---
 slug: using-apache-for-proxy-and-clustering-services-on-debian-5-lenny
 deprecated: true
-author:
-  name: Linode
-  email: docs@linode.com
 description: 'How to cluster Apache web servers and proxy requests for content to external servers on Debian 5 (Lenny).'
 keywords: ["clusters", "proxy", "proxy pass", "apache", "httpd"]
 tags: ["proxy","apache","debian"]
@@ -19,11 +16,12 @@ relations:
         key: using-apache-for-proxy-and-clustering
         keywords:
            - distribution: Debian 5
+authors: ["Linode"]
 ---
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/guides/apache-configuration-basics/), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to manage clusters of web servers.
 
-This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/guides/apache-2-web-server-on-debian-5-lenny/) before continuing with this guide. Additionally, consider our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) and [beginner's guide](/docs/guides/linode-beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/guides/linux-system-administration-basics/) guide if you are new to Linux server administration.
+This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/guides/apache-2-web-server-on-debian-5-lenny/) before continuing with this guide. Additionally, consider our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) and [beginner's guide](/docs/products/compute/compute-instances/faqs/) documents if you are new to Linode, and our [administration basics](/docs/guides/linux-system-administration-basics/) guide if you are new to Linux server administration.
 
 ## Case One: Separating Static Content from Dynamic Content
 
@@ -52,7 +50,7 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/guides/dns-overview/#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
@@ -225,7 +223,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
-- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
+- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/guides/multiple-web-servers-with-proxypass-on-debian-5-lenny/)
 
 
 

@@ -1,8 +1,5 @@
 ---
 slug: email-with-postfix-dovecot-and-mysql
-author:
-  name: Linode
-  email: docs@linode.com
 description: "Learn how to set up an email server with Postfix, Dovecot and MySQL/MariaDB. Your step by step guide towards setting up a secure Postfix email server."
 keywords: ["email", "mail", "server", "postfix", "dovecot", "mysql", "mariadb", "debian", "ubuntu", "dovecot 2"]
 tags: ["debian","email","ubuntu","mysql","postfix", "mariadb"]
@@ -11,9 +8,8 @@ modified: 2022-09-29
 modified_by:
   name: Linode
 published: 2013-05-13
-title: "Set up an Email Server with Postfix, Dovecot, and MySQL"
-h1_title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
-enable_h1: true
+title: "Configure an Email Server with Postfix, Dovecot, and MySQL on Debian and Ubuntu"
+title_meta: "Set up an Email Server with Postfix, Dovecot, and MySQL"
 external_resources:
  - '[Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/guides/troubleshooting-problems-with-postfix-dovecot-and-mysql/)'
  - '[Postfix Basic Configuration](http://www.postfix.org/BASIC_CONFIGURATION_README.html)'
@@ -24,7 +20,8 @@ relations:
         key: email-postfix-dovecot-mysql
         keywords:
             - distribution: Debian and Ubuntu
-aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/']
+aliases: ['/email/postfix/email-with-postfix-dovecot-and-mysql/','/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/']
+authors: ["Linode"]
 ---
 
 In this guide, you'll learn how to set up a secure email server with Postfix, Dovecot, and MySQL (or its near drop-in replacement MariaDB). It covers how to set up user email accounts in MySQL and configure Postfix/Dovecot to send and receive email.
@@ -60,9 +57,9 @@ Next, we will go through each step and set up our email server with Postfix, Dov
 
 ## Setting Up Your Linode
 
-1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) and [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide.
+1.  Set up the Linode as specified in the [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) and [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide.
 
-1.  Verify that the iptables [firewall](/docs/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
+1.  Verify that the iptables [firewall](/docs/products/compute/compute-instances/guides/set-up-and-secure/#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports.
 
 ## Configure DNS for Your Email Server
 
@@ -111,7 +108,7 @@ You can also reference the [Install an SSL Certificate with Certbot](/docs/guide
         sudo apt-get update && sudo apt-get upgrade
         sudo apt-get install postfix postfix-mysql dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-mysql mysql-server
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 This will install the **mysql-server** package, which isn't available by default on some newer versions of Debian. If you receive a message stating that the package is not available, install **mariadb-server** instead. MariaDB is a drop-in MySQL replacement.
 {{< /note >}}
 
@@ -133,7 +130,7 @@ The following software versions are compatible with the instructions in this gui
 
 While other versions are possibly fully compatible as well, they may require different commands or additional configuration.
 
-## Setting Up MySQL to Send Email with Postfix and Dovecot
+## Setting Up MySQL to Send Email with Postfix and Dovecot {#set-up-mysql}
 
 Data for the mail server's users (email addresses), domains, and aliases are stored in a MySQL (or MariaDB) database. Both Dovecot and Postfix interact with this data.
 
@@ -141,16 +138,9 @@ Data for the mail server's users (email addresses), domains, and aliases are sto
 
 Follow the steps below to create the database and add tables for virtual users, domains and aliases:
 
-1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. This tool will ask if you want to set a new password for the MySQL root user, but you can skip that step:
+1.  Use the [*mysql_secure_installation*](https://mariadb.com/kb/en/library/mysql_secure_installation/) tool to configure additional security options. You will be given the choice to change the MariaDB root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MariaDB Knowledge Base](https://mariadb.com/kb/en/mariadb/mysql_secure_installation/).
 
         sudo mysql_secure_installation
-
-    Answer **Y** at the following prompts:
-
-    -   Remove anonymous users?
-    -   Disallow root login remotely?
-    -   Remove test database and access to it?
-    -   Reload privilege tables now?
 
 1.  Log in to MySQL as a root user:
 
@@ -263,7 +253,7 @@ An email alias forwards all emails it receives to another email address. While n
 
 1. If needed, repeat this process to add another email alias.
 
-## Postfix MTA Email Server
+## Postfix MTA Email Server {#postfix}
 
 Postfix is a *Mail Transfer Agent* (MTA) that relays mail between the Linode and the internet. It is highly configurable, allowing for great flexibility. This guide maintains many of Posfix's default configuration values.
 
@@ -593,7 +583,7 @@ auth_mechanisms = plain login
 
 {{< /file >}}
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For reference, [view a complete `10-auth.conf` file](/docs/assets/1238-dovecot_10-auth.conf.txt).
 {{< /note >}}
 
@@ -640,7 +630,7 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
     1.  Add the alias as the `source` and `destination` email address to the `virtual_aliases` table.
     1.  Change the `/etc/dovecot/dovecot-sql.conf.ext` file's `password_query` value to `password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');`
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a complete `dovecot-sql.conf.ext`file.
 {{< /note >}}
 
@@ -654,7 +644,7 @@ For reference, [view](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) a com
 
 1. Edit the service settings file `/etc/dovecot/conf.d/10-master.conf`:
 
-    {{< note >}}
+    {{< note respectIndent=false >}}
 When editing the file, be careful not to remove any opening or closing curly braces. If there's a syntax error, Dovecot will crash silently. You can check `/var/log/upstart/dovecot.log` to debug the error.
 
 Here is [an example of a complete `10-master.conf`](/docs/assets/1240-dovecot_10-master.conf.txt) file.
@@ -802,7 +792,7 @@ You can set up an email client to connect to your mail server. Many clients dete
 
 See [Install SquirrelMail on Ubuntu 16.04](/docs/guides/install-squirrelmail-on-ubuntu-16-04-or-debian-8/) for details on installing an email client.
 
-{{< note >}}
+{{< note respectIndent=false >}}
 The Thunderbird email client will sometimes have trouble automatically detecting account settings when using Dovecot. After it fails to detect the appropriate account settings, you can set up your email account manually. Add in the appropriate information for each setting, using the above values, leaving no setting on **Auto** or **Autodetect**. Once you have entered all the information about your mail server and account, press **Done** rather **Re-Test** and Thunderbird should accept the settings and retrieve your mail.
 {{< /note >}}
 
