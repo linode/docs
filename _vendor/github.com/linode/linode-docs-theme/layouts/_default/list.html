@@ -24,8 +24,8 @@
           <div
             class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
             <h1
-              class="font-bold tracking-tighter pb-4 lg:pb-0 pr-4"
-              x-text="data.meta.title"></h1>
+              class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4"
+              x-html="data.meta.title"></h1>
             <div x-show="!uiState.noToggleGuidesLink">
               <button
                 @click="toggleShowGuides();"
@@ -262,7 +262,7 @@
     <div class="mb-8">
       <div
         class="flex flex-col lg:flex-row lg:items-center flex-wrap space-y-2 mb-8">
-        <h1 class="font-bold tracking-tighter pb-4 lg:pb-0 pr-4">
+        <h1 class="font-semibold tracking-tighter pb-4 lg:pb-0 pr-4">
           {{ .Title }}
           {{ if .Sections }}
             Categories
