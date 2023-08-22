@@ -51,7 +51,7 @@ Learn how to deploy an LKE cluster through our guide [Linode Kubernetes Engine -
 
 The present tutorial assumes you followed the guide above to create an LKE cluster with three nodes. The tutorial has been tested with Dedicated 4GB nodes, but that can be adjusted to fit your needs.
 
-For an alternative method to deploy a Kubernetes cluster onto Linode, see our guide [Using kubeadm to Deploy a Kubernetes Cluster](/docs/guides/getting-started-with-kubernetes/). The guide covers using the `kubeadm` tool to set up a cluster, but the guide also highlights and links to further options for Kubernetes deployments.
+For an alternative method to deploy a Kubernetes cluster onto Linode, see our guide [Using kubeadm to Deploy a Kubernetes Cluster](/docs/guides/deploy-kubernetes-cluster-using-kubeadm/). The guide covers using the `kubeadm` tool to set up a cluster, but the guide also highlights and links to further options for Kubernetes deployments.
 
 This tutorial additionally requires that `kubectl` is installed locally and set up with the `kubeconfig` file to connect to your LKE cluster. Learn more about this in the guides linked above, depending on your method for setting up the Kubernetes cluster.
 

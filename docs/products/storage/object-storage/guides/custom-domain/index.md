@@ -1,12 +1,12 @@
 ---
+title: "Configure a Custom Domain (with a TLS/SSL Certificate)"
 description: "Learn how to upload a custom SSL/TLS certificate to enable SSL on a bucket on Linode Object Storage."
 keywords: ['object','storage','object storage','s3','bucket']
 tags: ["linode platform","cloud manager"]
 published: 2022-02-07
-modified: 2022-02-07
+modified: 2023-08-22
 modified_by:
   name: Linode
-title: "Configure a Custom Domain (with a TLS/SSL Certificate)"
 aliases: ['/platform/object-storage/enable-ssl-for-object-storage/','/guides/enable-ssl-for-object-storage/']
 authors: ["Linode"]
 ---
@@ -15,7 +15,11 @@ Linode's Object Storage service supports both shared and custom domain names. By
 
 ## Before you Begin
 
-- **Obtain a domain name:** Before starting this guide, consider what domain name you'd like to use with your Object Storage bucket. It should be a fully qualified domain name (FQDN), such as *assets.example.com* or any subdomain of *\*.your-domain.tld*. If you do not already own the domain, purchase it from a trusted registrar.
+**Obtain a domain name:** Before starting this guide, consider what domain name you'd like to use with your Object Storage bucket. If you do not already own the domain, purchase it from a trusted registrar.
+
+{{< note >}}
+When configuring Object Storage with a custom domain, you must use a fully qualified domain name (FQDN), such as *assets.example.com* or any subdomain of *\*.your-domain.tld*. Apex (root) domains, such as *example.tld*, are not supported at this time.
+{{< /note >}}
 
 ## Create a Bucket
 
@@ -25,8 +29,9 @@ If you have not already done so, [create a bucket](/docs/products/storage/object
 
 To connect your custom domain, you must create a CNAME DNS record within the name server for the domain you intend to use. This can be done through your DNS provider, such as one operated by your domain registrar or a service like Linode's Domain Manager. The CNAME record should be created using the following values:
 
-- **Hostname/Name:** This is the custom domain you wish to use. Each DNS provider may require slightly different formatting. In many cases, enter just the *subdomain* value. For example, if you plan to use *assets.example.com*, enter `assets`. Some DNS providers support CNAME flattening, which allows you to enter `@` to simply use *example.com* with no subdomain.
-- **Alias To/Target:** This is the full URL on the shared domain (excluding the `https://` part of the URL) for your object storage bucket. See [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/#bucket-url) for details on obtaining the bucket's URL. The URL can either be for the default file host functionality of Object Storage or the URL used to host a static website.
+-   **Hostname/Name:** This is the custom domain you wish to use. Each DNS provider may require slightly different formatting. In many cases, enter just the *subdomain* value. For example, if you plan to use *assets.example.com*, enter `assets`.
+
+-   **Alias To/Target:** This is the full URL on the shared domain (excluding the `https://` part of the URL) for your object storage bucket. See [Access Buckets and Files through URLs](/docs/products/storage/object-storage/guides/urls/#bucket-url) for details on obtaining the bucket's URL. The URL can either be for the default file host functionality of Object Storage or the URL used to host a static website.
 
     - File URL: `[bucket-label].[cluster-id].linodeobjects.com`
     - Website URL: `[bucket-label].website-[cluster-id].linodeobjects.com`
