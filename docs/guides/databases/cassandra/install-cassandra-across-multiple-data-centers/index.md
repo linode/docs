@@ -1,5 +1,5 @@
 ---
-slug: how-to-install-cassandra-across-multiple-data-centers
+slug: install-cassandra-across-multiple-data-centers
 title: "How to Install Cassandra Across Multiple Data Centers"
 description: 'This guide introduces the Cassandra distributed database and explains how to install, configure, and use it.'
 keywords: ['install Cassandra','configure Cassandra','Cassandra CQL','create keyspace Cassandra']
