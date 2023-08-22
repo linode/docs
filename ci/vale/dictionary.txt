@@ -1121,6 +1121,7 @@ keypair
 keypairs
 keysize
 keyspace
+keyspaces
 keystore
 kfctl
 khanaser
