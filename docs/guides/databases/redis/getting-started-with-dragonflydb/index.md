@@ -32,12 +32,12 @@ Overall, DragonflyDB focuses on maximizing CPU usage (e.g. engaging all cores) a
 
 In speed tests, DragonflyDB and Redis advertise similar results. The best way to test database speed is to apply your own software and system configurations to gather real-world ideas about their performance. With that said, the following benchmark results are from a single Dedicated, 4 GB, 2-core, Ubuntu 22.04 LTS Linode. The tests use the free version of each product, don’t include any special addons, and use the vendor-suggested installation technique. In addition, each test was performed on a clean and updated installation to prevent any problems with old software.
 
-The test relies on the [Redis `memtier_benchmark`](https://github.com/RedisLabs/memtier_benchmark), which must be installed separately.
+The test relies on the [Redis memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark), which must be installed separately.
 
 Run the following command to install the benchmark using Docker and display help information on its usage:
 
 ```command
-docker run --rm redislabs/memtier_benchmark:latest --help
+sudo docker run --rm redislabs/memtier_benchmark:latest --help
 ```
 
 {{< note type="secondary" >}}
@@ -392,7 +392,7 @@ With Docker and Docker Compose installed, use the following steps to install Dra
 1.  To install DragonflyDB, bring the container up:
 
     ```command {title="Linode Terminal"}
-    docker-compose up -d
+    sudo docker-compose up -d
     ```
 
     ```output
