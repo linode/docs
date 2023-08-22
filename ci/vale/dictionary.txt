@@ -1329,8 +1329,9 @@ mdev
 mediawiki
 megatrends
 melilla
-memcached
 memcrashed
+Memtier
+memtier_benchmark
 menuentry
 Merkle
 mesos
