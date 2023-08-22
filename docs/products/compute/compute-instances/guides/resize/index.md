@@ -82,7 +82,7 @@ Downgrading to a plan with less resources may be helpful when looking to reduce 
 
     - If you're using less space than your intended plan requires, you can move onto the next step without any further action.
 
-    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide.
+    - If you're using more space than your intended plan allows, you need to remove some files to free up some space before moving onto the next step. See the options for doing this in the [Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) guide.
 
 1.  Resize the Compute Instance's disks to fit within the storage space of the new plan. See [Resizing a Disk](/docs/products/compute/compute-instances/guides/disks-and-storage/).
 

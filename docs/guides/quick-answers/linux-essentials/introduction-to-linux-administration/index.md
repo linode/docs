@@ -34,7 +34,7 @@ Making sure that all important data is backed up is one of a system administrato
 
 ## Monitoring and Diagnostic Tools
 
-The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/guides/what-is-longview/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
+The dashboard in the Linode Manager provides basic information about your Linode's status, CPU and memory usage, and network traffic. Linode also offers the [Longview](/docs/products/tools/longview/get-started/) service, which provides much more detailed insight into your Linode. Sometimes, however, issues will occur on your system and you will have to investigate to determine their cause.
 
 Simple tools like `ping` and [MTR](/docs/guides/diagnosing-network-issues-with-mtr/), which are available on most Linux distributions, are helpful in diagnosing network issues. There are also [shell commands](/docs/guides/linux-system-administration-basics/#system-diagnostics) used for checking memory usage, disk allocation, and running processes.
 

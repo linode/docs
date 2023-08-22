@@ -14,7 +14,7 @@ modified_by:
 
 ## Before You Begin
 
-1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/guides/getting-started/).
+1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/).
 
 1.  You need to generate an [API Token](/docs/products/tools/api/guides/manage-api-tokens/).
 
@@ -23,7 +23,7 @@ modified_by:
 1.  You need a domain name configured in the [DNS Manager](/docs/products/networking/dns-manager/get-started/). Create A/AAAA records pointing to the server hosting Docker.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Cloning the Plausible Repository
