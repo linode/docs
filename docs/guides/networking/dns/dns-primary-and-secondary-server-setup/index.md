@@ -25,7 +25,7 @@ Our guide [An Introduction to DNS on Linux](/docs/guides/introduction-to-dns-on-
 
 1. Create two Compute instances for our secondary name servers. This guide requires two new Ubuntu 22.04 LTS instances (`ns2` and `ns3`) in addition to the primary name server (`ns1`).
 
-1.  Follow our [Setting Up and Securing a Compute Instance](/docs/guides/set-up-and-secure/) guide to update your systems. Also set the timezone, configure your hostnames, and create limited user accounts. To follow along with this guide, give your servers the hostnames `ns2` and `ns3`. Make them part of the `yourdomainhere.com` domain (e.g. `ns2.yourdomainhere.com` and `ns3.yourdomainhere.com`, replacing `yourdomainhere.com` with your actual domain name). Also be sure to configure the hosts files with your hostnames and external IP addresses.
+1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your systems. Also set the timezone, configure your hostnames, and create limited user accounts. To follow along with this guide, give your servers the hostnames `ns2` and `ns3`. Make them part of the `yourdomainhere.com` domain (e.g. `ns2.yourdomainhere.com` and `ns3.yourdomainhere.com`, replacing `yourdomainhere.com` with your actual domain name). Also be sure to configure the hosts files with your hostnames and external IP addresses.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/guides/linux-users-and-groups/) guide.

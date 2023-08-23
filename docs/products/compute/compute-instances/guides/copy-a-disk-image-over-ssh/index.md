@@ -17,7 +17,7 @@ Piping SSH commands to utilities such as `dd`, `gzip`, or `rsync` is an easy way
 This guide demonstrates how to download a `.img` file to your computer over SSH containing a block-level copy of your Compute Instance's disk device created with `dd`.
 
 {{< note >}}
-If the amount of data on your disk is much less than the size of the disk, then downloading a copy with `dd` can take longer than just downloading your files. If you're interested in downloading individual files or directories, review the options listed in our [Download Files from Your Compute Instance](/docs/guides/download-files-from-your-linode/) and [Backing Up Your Data](/docs/guides/backing-up-your-data/) guides.
+If the amount of data on your disk is much less than the size of the disk, then downloading a copy with `dd` can take longer than just downloading your files. If you're interested in downloading individual files or directories, review the options listed in our [Download Files from Your Compute Instance](/docs/guides/download-files-from-a-compute-instance/) and [Backing Up Your Data](/docs/guides/backing-up-your-data/) guides.
 {{< /note >}}
 
 ## Download a Disk over SSH

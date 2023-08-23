@@ -247,7 +247,7 @@ The configurations and commands used in this guide add multiple Linode instances
 
 1.  Open the `terraform.tfvars` file, and configure the variables there. Here is a breakdown of the variables and how to set them:
 
-    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/tools/linode-api/guides/get-access-token/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
+    -   `token` needs your Linode API token. Terraform uses this to provision Linode instances. Follow our [Get an API Access Token](/docs/products/tools/api/guides/manage-api-tokens/) guide to generate a personal access token. Be sure to give the token "Read/Write" permissions.
 
     -   `ssh_keys` takes a list of SSH public keys. These keys are added to the known hosts on each node, allowing SSH access to the nodes. Enter the full public key for your local machine in one line.
 
@@ -262,7 +262,7 @@ The configurations and commands used in this guide add multiple Linode instances
     -   `server_type` and `client_type` indicate the Linode instance types to use for the server and client nodes, respectively. The default provides a Dedicated 4GB instance for each Nomad server, as recommended, and a Linode (shared) 4GB instance for each Nomad client. Find a full list of the instance type designations via the [Linode types API](https://api.linode.com/v4/linode/types).
 
     {{< caution >}}
-Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/applications/configuration-management/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
+Sensitive infrastructure data, such as passwords and tokens, are visible in plain text within the `terraform.tfvars` file. Review [Secrets Management with Terraform](/docs/guides/secrets-management-with-terraform/#how-to-manage-your-state-file) for guidance on how to secure these secrets.
     {{< /caution >}}
 
 1.  Initialize the Terraform script, which installs the required provisioners, then apply the script to start the provisioning process:

@@ -28,7 +28,7 @@ Your Apache configuration settings have a major effect on your Linode's performa
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/guides/linux-users-and-groups/) guide.
 {{< /note >}}
 
-There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/guides/top-htop-iotop/) and the load-testing program [Siege](/docs/guides/load-testing-with-siege/). Linode's own [Longview](/docs/guides/what-is-longview/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
+There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/guides/top-htop-iotop/) and the load-testing program [Siege](/docs/guides/load-testing-with-siege/). Linode's own [Longview](/docs/products/tools/longview/get-started/) service can also help with server monitoring. A good place to start is to familiarize yourself with the RAM and CPU usage of your server.
 
 Discover usage statistics with the following variations of the `ps` command. The `ps` command is used to generate a report of the running processes on your Linode:
 
