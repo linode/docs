@@ -28,21 +28,19 @@ When changing servers, however, make the TTL shorter to make sure that when you 
 
 1.  Contact your nameserver authority for details on how to shorten the TTL for your domain. Every provider is a little different, so you may have to ask for instructions.
 
-    {{< disclosure-note "Updating TTL at common nameserver authorities" >}}
+    {{< note type="secondary" title="Updating TTL at common nameserver authorities" isCollapsible=true >}}
+    Most nameserver authorities will allow you to set the TTL on your domain or on individual records, but some do not allow this setting to be edited. Here are support documents from some common authorities that mention how they manage TTL:
 
-Most nameserver authorities will allow you to set the TTL on your domain or on individual records, but some do not allow this setting to be edited. Here are support documents from some common authorities that mention how they manage TTL:
-
--   [GoDaddy](https://www.godaddy.com/help/change-the-ttl-value-for-your-dns-records-20238)
--   [DreamHost](https://help.dreamhost.com/hc/en-us/articles/215840248-DNS-propagation-overview)
--   [Gandi](http://wiki.gandi.net/en/dns/zone/expert)
--   [1&1](https://www.1and1.com/help/domains/general-information-about-dns-settings/time-required-for-dns-changes/)
--   [Network Solutions](http://www.networksolutions.com/support/how-to-manage-advanced-dns-records/)
--   [Bluehost](https://my.bluehost.com/hosting/help/559)
--   [HostGator](https://support.hostgator.com/articles/when-will-my-domain-start-working-propagation#ttl)
--   [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain)
--   [Hover](https://help.hover.com/hc/en-us/articles/217282457-How-to-Edit-DNS-records-A-AAAA-CNAME-MX-TXT-SRV)
-
-{{< /disclosure-note >}}
+    -   [GoDaddy](https://www.godaddy.com/help/change-the-ttl-value-for-your-dns-records-20238)
+    -   [DreamHost](https://help.dreamhost.com/hc/en-us/articles/215840248-DNS-propagation-overview)
+    -   [Gandi](http://wiki.gandi.net/en/dns/zone/expert)
+    -   [1&1](https://www.1and1.com/help/domains/general-information-about-dns-settings/time-required-for-dns-changes/)
+    -   [Network Solutions](http://www.networksolutions.com/support/how-to-manage-advanced-dns-records/)
+    -   [Bluehost](https://my.bluehost.com/hosting/help/559)
+    -   [HostGator](https://support.hostgator.com/articles/when-will-my-domain-start-working-propagation#ttl)
+    -   [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain)
+    -   [Hover](https://help.hover.com/hc/en-us/articles/217282457-How-to-Edit-DNS-records-A-AAAA-CNAME-MX-TXT-SRV)
+    {{< /note >}}
 
 1.  Make a note of your current TTL. It will be listed in seconds, so you need to divide by 3600 to get the number of hours (e.g. 86,400 seconds = 24 hours). This is the amount of time that you need to wait between now and when you actually move your domain.
 
@@ -68,21 +66,19 @@ Most nameserver authorities will allow you to set the TTL on your domain or on i
     *  `ns4.linode.com`
     *  `ns5.linode.com`
 
-    {{< disclosure-note "Updating authoritative nameservers at common registrars" >}}
+    {{< note type="secondary" title="Updating authoritative nameservers at common registrars" isCollapsible=true >}}
+    The following support documents describe how to update the authoritative nameservers of common registrars:
 
-The following support documents describe how to update the authoritative nameservers of common registrars:
-
--   [GoDaddy](https://support.hostgator.com/articles/how-to-change-godaddy-name-servers)
--   [DreamHost](https://help.dreamhost.com/hc/en-us/articles/216385417-How-do-I-change-my-nameservers-at-DreamHost)
--   [Gandi](https://doc.gandi.net/en/dns/change/)
--   [1&1](https://www.1and1.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/)
--   [Network Solutions](http://www.networksolutions.com/support/move-dns-to-a-new-server/)
--   [Bluehost](https://my.bluehost.com/hosting/help/transfer_client_start)
--   [HostGator](https://support.hostgator.com/articles/how-do-i-manage-the-domain-i-bought-from-hostgator)
--   [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain)
--   [Hover](https://help.hover.com/hc/en-us/articles/217282477-How-to-Change-your-domain-nameservers-DNS-servers-)
-
-{{< /disclosure-note >}}
+    -   [GoDaddy](https://support.hostgator.com/articles/how-to-change-godaddy-name-servers)
+    -   [DreamHost](https://help.dreamhost.com/hc/en-us/articles/216385417-How-do-I-change-my-nameservers-at-DreamHost)
+    -   [Gandi](https://doc.gandi.net/en/dns/change/)
+    -   [1&1](https://www.1and1.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/)
+    -   [Network Solutions](http://www.networksolutions.com/support/move-dns-to-a-new-server/)
+    -   [Bluehost](https://my.bluehost.com/hosting/help/transfer_client_start)
+    -   [HostGator](https://support.hostgator.com/articles/how-do-i-manage-the-domain-i-bought-from-hostgator)
+    -   [Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain)
+    -   [Hover](https://help.hover.com/hc/en-us/articles/217282477-How-to-Change-your-domain-nameservers-DNS-servers-)
+    {{< /note >}}
 
 1.  Wait the amount of time you set for your TTL for the domain to propagate. If you did not shorten your TTL, this may take up to 48 hours.
 

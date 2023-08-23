@@ -34,12 +34,12 @@ Ensure you have the following programs and packages installed on your computer:
     1. [wordcloud](https://pypi.org/project/wordcloud/) Python package
 1. The [Golang](https://golang.org/doc/install) programming language
 
-{{< disclosure-note "Assumptions">}}
+{{< note >}}
 This guide assumes you have some basic familiarity with the following concepts and skills:
 
 1. Basic programming principles and data structures
 1. Are able to read code written in Go, Python, HTML, CSS, and JavaScript
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ## Create Your Data Sets
 

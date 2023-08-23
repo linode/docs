@@ -98,7 +98,7 @@ The Apache2Buddy script, similar to [MySQLTuner](/docs/guides/how-to-optimize-my
 
 Apache version 2.4 offers three Multi Processing Modules (MPM) for managing your settings. Each module creates child processes, but differs in how they handle threads.
 
-{{< disclosure-note "Back up your Apache configuration file">}}
+{{< note type="warning" >}}
 Before making any changes to your Apache configuration, be sure to back up the configuration file:
 
  - On Debian/Ubuntu:
@@ -108,7 +108,7 @@ Before making any changes to your Apache configuration, be sure to back up the c
 - On CentOS/Fedora:
 
         cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
-{{</ disclosure-note >}}
+{{< /note >}}
 
 ### Prefork
 The prefork module creates a number of child processes at launch, each child handles only one thread. Since these processes deal solely with one thread at a time, request speed can suffer should there be too many concurrent requests. When this occurs, some requests essentially have to wait in line to be acted upon. To handle this, you can increase the number of child processes that are spawned, however, this increases the amount of RAM being used. Prefork is the safest module, and should be used when using non-thread-safe libraries.
