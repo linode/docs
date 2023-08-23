@@ -11,7 +11,11 @@ authors: ["Linode"]
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.
 
-{{< note type="warning" title="Marketplace App Cluster Notice" >}} This Marketplace App deploys 6, 8 or 10 Compute Instances to create a highly available and redundant Hashicorp Nomad cluster, each with the plan type and size that you select. Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy Hashicorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad through the Linode Marketplace](https://www.linode.com/docs/products/tools/marketplace/guides/hashicorp-nomad/). {{< /note >}}
+{{< note type="warning" title="Marketplace App Cluster Notice" >}} This Marketplace App deploys 6, 8 or 10 Compute Instances to create a highly available and redundant Hashicorp Nomad cluster, each with the plan type and size that you select. 
+
+_There can only be one Nomad One-Click Cluster per datacenter._
+
+Please be aware that each of these Compute Instances will appear on your invoice as separate items. To instead deploy Hashicorp Nomad on a single Compute Instance, see [Deploy Hashicorp Nomad through the Linode Marketplace](https://www.linode.com/docs/products/tools/marketplace/guides/hashicorp-nomad/). {{< /note >}}
 
 ## Deploying a Marketplace App
 
