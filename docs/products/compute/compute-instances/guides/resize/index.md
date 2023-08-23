@@ -98,7 +98,7 @@ See below for the different Compute Instance plan types available:
 
 - **Shared CPU:** Balancing performance with value. This plan type is a solid foundation for many common use cases, including development, low-traffic websites, or any workload that doesn't require consistent 100% CPU usage. See [Shared CPU Compute Instances](https://www.linode.com/products/shared/).
 
-- **Premium CPU:** Guaranteed hardware for CPU-intensive workloads. Built off of our Dedicated CPU offering, this plan comes equipped with the latest AMD EPYC CPUs to make sure your applications are running on the best available hardware with consistent high performance. Use cases include enterprise-grade production applications, video transcoding, and more. See [Premium CPU Compute Instances](https://www.linode.com/products/premium-cpu/).
+- **Premium CPU:** Guaranteed hardware for CPU-intensive workloads. Built off of our Dedicated CPU offering, this plan comes equipped with the latest AMD EPYC™ CPUs to make sure your applications are running on the best available hardware with consistent high performance. Use cases include enterprise-grade production applications, video transcoding, and more. See [Premium CPU Compute Instances](https://www.linode.com/products/premium-cpu/).
 
 - **High Memory:** Optimized for memory-intensive applications. This plan type is also equipped with dedicated vCPU cores, though they contain more memory than other similarly priced plans. Use cases include large or high-traffic databases, caching servers, and more. See [High Memory Compute Instances](https://www.linode.com/products/high-memory/).
 
