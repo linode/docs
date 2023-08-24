@@ -3,7 +3,7 @@ description: "Deploy Wazuh on a Linode Compute Instance. This provides you with 
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2023-07-24
+modified: 2023-08-16
 modified_by:
   name: Linode
 title: "Deploy Wazuh through the Linode Marketplace"
@@ -11,14 +11,7 @@ external_resources:
 - '[Wazuh](https://wazuh.com/)'
 aliases: ['/guides/deploying-wazuh-marketplace-app/','/guides/wazuh-marketplace-app/']
 authors: ["Linode"]
-_build:
-  list: false
-noindex: true
 ---
-
-{{< note type="warning" >}}
-As of July 24th 2023, Wazuh is no longer available on the Linode Marketplace and the instructions within this guide no longer work as intended. For assistance deploying Wazuh on a Compute Instance, review the [official Wazuh installation guide for Linux](https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html).
-{{< /note >}}
 
 [Wazuh](https://wazuh.com/) provides a security solution for monitoring your infrastructure and detecting threats, intrusion attempts, system anomalies, poorly configured applications, and unauthorized user actions. It also provides a framework for incident response and regulatory compliance.
 

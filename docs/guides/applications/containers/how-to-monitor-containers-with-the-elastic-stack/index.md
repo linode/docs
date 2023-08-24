@@ -243,11 +243,11 @@ The following example demonstrates how Filebeat and Metricbeat automatically cap
 
 1.  Index Patterns dictate how Kibana understands indices that are present in Elasticsearch. In order for some visualizations to display properly, a default index pattern must first be configured. Select **filebeat-\*** on the left side of the page to configure the filebeat-* index pattern.
 
-    ![Kibana 6 Index Patterns](./kibana-filebeat-index.png "Kibana 6 Index Patterns")
+    ![Kibana 6 Index Patterns](kibana-filebeat-index.png "Kibana 6 Index Patterns")
 
 1.  Click the **star icon** in the upper right corner of the page to set this index pattern as the default in Kibana.
 
-    ![Kibana 6 Default Index Pattern](./kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
+    ![Kibana 6 Default Index Pattern](kibana-filebeat-default.png "Kibana 6 Default Index Pattern")
 
     Kibana is now properly configured with a default index pattern.
 

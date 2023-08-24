@@ -58,11 +58,13 @@ By default, [Python 3.7.3](https://docs.python.org/3.6/whatsnew/3.6.html) and [P
 
         virtualenv env
 
-    {{< disclosure-note "Change the Python Interpreter Version">}}
+    {{< note type="secondary" title="Change the Python Interpreter Version" isCollapsible=true >}}
 If you would like to create a virtual environment using Python3, use the `--python` option to pass the Python version you'd like to use.
 
+    ```command
     virtualenv --python=python3 env
-    {{</ disclosure-note >}}
+    ```
+    {{< /note >}}
 
     The command creates a new directory with the name you assigned to your virtual environment. This directory contains all of the isolated files, packages, modules, and executables that is used by your new environment.
 

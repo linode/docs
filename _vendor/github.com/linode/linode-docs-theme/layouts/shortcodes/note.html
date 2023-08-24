@@ -19,11 +19,11 @@
     x-data="{ open: false }"
     class="note-collapsible note note-{{ $type }} leading-snug">
     {{- with $title -}}
-      <header class="note-title font-bold">
+      <header class="note-title font-semibold">
         <button
           type="button"
           @click="open = !open"
-          class="flex justify-between w-full leading-5 font-bold hover:text-black focus:outline-none active:bg-gray-50 active:text-titlecolor">
+          class="flex justify-between w-full leading-5 font-semibold hover:text-black focus:outline-none active:bg-gray-50 active:text-titlecolor">
           {{- . -}}
           <div class="h-6 w-6 btn-icon flex items-center justify-center mr-2">
             <template x-if="open">
@@ -53,7 +53,7 @@
 {{- else -}}
   <div class="note note-{{ $type }} leading-snug">
     {{- with $title -}}
-      <header class="note-title font-bold">
+      <header class="note-title font-semibold">
         {{- . -}}
       </header>
     {{- end -}}
