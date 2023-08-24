@@ -11,7 +11,7 @@ authors: ["Linode"]
 
 [HashiCorp Nomad](https://www.nomadproject.io/) is a simple and flexible scheduler and orchestrator to deploy and manage containers and non-containerized applications across cloud platforms (and on-premises servers) at scale.
 
-{{< note type="warning" title="Marketplace App Cluster Notice" >}} This Marketplace App deploys 6, 8 or 10 Compute Instances to create a highly available and redundant Hashicorp Nomad cluster, each with the plan type and size that you select. 
+{{< note type="warning" title="Marketplace App Cluster Notice" >}} This Marketplace App deploys 6 Compute Instances to create a highly available and redundant Hashicorp Nomad cluster, each with the plan type and size that you select. 
 
 _There can only be one Nomad One-Click Cluster per datacenter._
 
@@ -44,14 +44,11 @@ Please be aware that each of these Compute Instances will appear on your invoice
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
-- **Nomad cluster size:** Select the preferred size of your cluster from the available options (6, 8 or 10).
+- **Nomad cluster size:** The Nomad One-Click Cluster will deploy 6 Linodes.
 
 |  Servers |  Clients | Total  Linodes |
 | ---- | ---- | ---- |
 | 3  | 3  | 6 Linodes |
-| 5  | 3  | 8 Linodes |
-| 7  | 3  | 10 Linodes |
-Please be aware that this creates the corresponding number of Compute Instances.
 
 ## Getting Started after Deployment
 
