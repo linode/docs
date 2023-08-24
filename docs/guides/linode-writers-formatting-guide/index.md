@@ -754,10 +754,22 @@ Use single spaces between sentences; do not double-space.
 
 ### Tables
 
+You can create tables using standard Markdown syntax or by using the **table** shortcode. See below for additional table shortcode functionality.
+
+**Markdown:**
 ```file {lang="md"}
 | Column Header 1 | Column Header 2|
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
+```
+
+**Table shortcode:**
+```file {lang="text"}
+{{</* table */>}}
+| Column Header 1 | Column Header 2|
+| -- | -- |
+| **Example** | This is an example of text in the second column. |
+{{</* /table */>}}
 ```
 
 | Column Header 1 | Column Header 2|
@@ -775,6 +787,46 @@ Use single spaces between sentences; do not double-space.
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
 | -- | :--: | --:|
 | Example | Example | Example |
+
+#### Table with Alternating Row Shading
+
+Use the table shortcode to create a table with automatic alternating row shading.
+
+```file {lang="text"}
+{{</* table */>}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table >}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{< /table >}}
+
+#### Wide Table with First Column Anchor
+
+If you are creating a wide table and need to anchor the first column when scrolling, use the **"first-sticky"** class.
+
+```file {lang="text"}
+{{</* table class="first-sticky" */>}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **First Column** | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table class="first-sticky" >}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **First Column** | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{< /table >}}
 
 ### Tabs
 
