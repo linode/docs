@@ -5,4 +5,4 @@
 # github.com/bep/turbo/v7 v7.20001.20100
 # github.com/gohugoio/hugo-mod-jslibs/instantpage v0.5.1
 # github.com/instantpage/instant.page v5.1.1+incompatible
-# github.com/linode/linode-api-docs/v4 v4.159.0
+# github.com/linode/linode-api-docs/v4 v4.161.0
