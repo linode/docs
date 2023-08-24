@@ -6,5 +6,5 @@ show_on_rss_feed: false
 ---
 
 {{< note type="warning" title="Beta Notice" >}}
-The Metadata service is currently available as part of a closed beta in the Washington DC and Paris data centers. You must be enrolled in the Metadata beta to utilize this service. If you are a beta participant but are not able to access the Metadata service, please contact the [Support team](https://www.linode.com/support/) for assistance.
+Akamai's Metadata service is available in beta within select data centers. Add user data when deploying Compute Instances, which can then be consumed by cloud-init, an industry standard system initialization tool. See [Metadata Availability](/docs/products/compute/compute-instances/guides/metadata/#availability) for a list of supported regions and distributions.
 {{< /note >}}

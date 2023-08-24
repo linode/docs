@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  version: 4.159.0
+  version: 4.161.0
 
   title: Linode API
   description: |
@@ -6046,6 +6046,12 @@ paths:
           * Disks and Configs must be created manually.
           * This is only recommended for advanced use cases.
 
+        * **BETA** Using cloud-init with [Metadata](/docs/products/compute/compute-instances/guides/metadata/).
+          * Automate system configuration and software installation by providing a base-64 encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) file.
+          * Requires a compatible Image. You can determine compatible Images by checking for `cloud-init` under `capabilities` when using Images List ([GET /images](/docs/api/images/#images-list)).
+          * Requires a compatible Region.  You can determine compatible Regions by checking for `Metadata` under `capabilities` when using Regions List ([GET /regions](/docs/api/regions/#regions-list)).
+          * This feature is in beta and is currently limited to certain Regions and distributions. Please be aware that this feature may receive breaking updates in the future. This notice will be removed when this feature is out of beta.
+
         **Important**: You must be an unrestricted User in order to add or modify
         tags on Linodes.
       tags:
@@ -6148,7 +6154,7 @@ paths:
                 "backup_id": 1234,
                 "backups_enabled": true,
                 "swap_size": 512,
-                "image": "linode/debian9",
+                "image": "linode/ubuntu22.04",
                 "root_pass": "aComplexP@ssword",
                 "stackscript_id": 10079,
                 "stackscript_data": {
@@ -6177,7 +6183,10 @@ paths:
                 "label": "linode123",
                 "type": "g6-standard-2",
                 "region": "us-east",
-                "group": "Linode-Group"
+                "group": "Linode-Group",
+                "metadata": {
+                  "user_data": "I2Nsb3VkLWNvbmZpZw=="
+                }
               }' \
               https://api.linode.com/v4/linode/instances
       - lang: CLI
@@ -6190,9 +6199,10 @@ paths:
             --stackscript_data '{"gh_username": "linode"}' \
             --region us-east \
             --type g6-standard-2 \
-            --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer"
-            --authorized_users "myUser"
-            --authorized_users "secondaryUser"
+            --authorized_keys "ssh-rsa AAAA_valid_public_ssh_key_123456785== user@their-computer" \
+            --authorized_users "myUser" \
+            --authorized_users "secondaryUser" \
+            --metadata.user_data "I2Nsb3VkLWNvbmZpZw==)"
   /linode/instances/{linodeId}:
     parameters:
     - name: linodeId
@@ -6336,6 +6346,7 @@ paths:
 
           * Gives up any IP addresses the Linode was assigned.
           * Deletes all Disks, Backups, Configs, etc.
+          * Detaches any Volumes associated with the Linode.
           * Stops billing for the Linode and its associated services. You will be billed for time used
             within the billing period the Linode was active.
 
@@ -8033,6 +8044,8 @@ paths:
       summary: Kernels List
       description: |
         Lists available Kernels.
+
+        Due to the extensive list of available kernels, please keep [pagination](/docs/api/#pagination) controls in mind when managing responses to this command.
       operationId: getKernels
       x-linode-cli-action:
         - list
@@ -13760,6 +13773,15 @@ paths:
                   $ref: '#/components/schemas/NodeBalancer/properties/label'
                 client_conn_throttle:
                   $ref: '#/components/schemas/NodeBalancer/properties/client_conn_throttle'
+                tags:
+                  description: |
+                    An array of Tags applied to this object. Tags are for organizational purposes only.
+                  type: array
+                  items:
+                    type: string
+                  example:
+                  - test
+                  - web-dev-team
                 configs:
                   type: array
                   description: |
@@ -17446,6 +17468,73 @@ paths:
       - lang: CLI
         source: >
           linode-cli regions view us-east
+  /regions/{regionId}/availability:
+    x-linode-cli-command: regions
+    parameters:
+    - name: regionId
+      in: path
+      description: ID of the Region to look up.
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Regions
+      summary: Region Availability View
+      description: >
+        Returns availability data for a single Region.
+      operationId: getRegionAvailability
+      x-linode-cli-action: view-avail
+      responses:
+        '200':
+          description: A single Region object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegionAvailability'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/regions/us-east/availability
+      - lang: CLI
+        source: >
+          linode-cli regions view-avail us-east
+  /regions/availability:
+    x-linode-cli-command: regions
+    get:
+      tags:
+      - Regions
+      summary: Regions Availability List
+      description: |
+        Returns availability data for all Regions.
+
+        Currently, this command returns availability of select premium and GPU plans for select regions.
+      operationId: getRegionsAvailability
+      x-linode-cli-action: list-avail
+      responses:
+        '200':
+          description: Returns a Region Availability object.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginationEnvelope'
+                - properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RegionAvailability'
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+      x-code-samples:
+      - lang: Shell
+        source: >
+          curl https://api.linode.com/v4/regions/availability
+      - lang: CLI
+        source: >
+          linode-cli regions list-avail
   /support/tickets:
     x-linode-cli-command: tickets
     get:
@@ -17800,20 +17889,20 @@ paths:
   /tags:
     x-linode-cli-command: tags
     get:
-      x-linode-grant: read_only
+      x-linode-grant: unrestricted only
       parameters:
       - $ref: '#/components/parameters/pageOffset'
       - $ref: '#/components/parameters/pageSize'
       tags:
       - Tags
       summary: Tags List
-      description: >
-        Tags are User-defined labels attached to objects in your Account, such
-        as Linodes. They are used for specifying and grouping attributes of
-        objects that are relevant to the User.
-
+      description: |
+        Tags are User-defined labels attached to objects in your Account, such as Linodes. They are used for specifying and grouping attributes of objects that are relevant to the User.
 
         This endpoint returns a paginated list of Tags on your account.
+
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       operationId: getTags
       x-linode-cli-action:
         - list
@@ -17848,16 +17937,15 @@ paths:
           curl -H "Authorization: Bearer $TOKEN" \
               https://api.linode.com/v4/tags
     post:
+      x-linode-grant: unrestricted only
       tags:
       - Tags
       summary: New Tag Create
-      description: >
-        Creates a new Tag and optionally tags requested objects with it
-        immediately.
+      description: |
+        Creates a new Tag and optionally tags requested objects with it immediately.
 
-
-        **Important**: You must be an unrestricted User in order to add or modify
-        Tags.
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       operationId: createTag
       x-linode-cli-action: create
       security:
@@ -17963,9 +18051,11 @@ paths:
       required: true
     get:
       summary: Tagged Objects List
-      description: >
-        Returns a paginated list of all objects you've tagged with the requested
-        Tag. This is a mixed collection of all object types.
+      description: |
+        Returns a paginated list of all objects you've tagged with the requested Tag. This is a mixed collection of all object types.
+
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       tags:
       - Tags
       operationId: getTaggedObjects
@@ -18026,8 +18116,8 @@ paths:
         Remove a Tag from all objects and delete it.
 
 
-        **Important**: You must be an unrestricted User in order to add or modify
-        Tags.
+        **Important**: You must be an unrestricted User in order to access, add, or modify
+        Tags information.
       tags:
       - Tags
       operationId: deleteTag
@@ -18364,7 +18454,7 @@ paths:
       description: >
         Attaches a Volume on your Account
         to an existing Linode on your Account. In order for this request to
-        complete successfully, your User must have `read_only` or `read_write`
+        complete successfully, your User must have `read_write`
         permission to the Volume and `read_write` permission to the Linode.
         Additionally, the Volume and Linode must be located in the same Region.
       tags:
@@ -18506,11 +18596,10 @@ paths:
     x-linode-cli-command: volumes
     post:
       summary: Volume Detach
-      description: >
-        Detaches a Volume on your Account
-        from a Linode on your Account. In order for this request to
-        complete successfully, your User must have `read_write` access to the
-        Volume and `read_write` access to the Linode.
+      description: |
+        Detaches a Volume on your Account from a Linode on your Account. In order for this request to complete successfully, your User must have `read_write` access to the Volume and `read_write` access to the Linode.
+
+        Volumes are automatically detached from deleted Linodes.
       tags:
       - Volumes
       operationId: detachVolume
@@ -21297,6 +21386,18 @@ components:
 
             The "+order_by" and "+order" operators are not available for [filtering](/docs/api/#filtering-and-sorting) on this key.
           example: available
+        capabilities:
+          x-linode-cli-display: 8
+          type: array
+          readOnly: true
+          description: |
+            A list containing the following possible capabilities of this Image:
+
+            `cloud-init`: This Image supports cloud-init with [Metadata](/docs/products/compute/compute-instances/guides/metadata/). Only applies to public Images.
+          items:
+            type: string
+          example:
+          - cloud-init
     Invoice:
       type: object
       description: Account Invoice object
@@ -21989,12 +22090,6 @@ components:
           description: If this Kernel is suitable for KVM Linodes.
           example: true
           readOnly: true
-        xen:
-          x-linode-filterable: true
-          type: boolean
-          description: If this Kernel is suitable for Xen Linodes.
-          example: false
-          readOnly: true
         architecture:
           x-linode-filterable: true
           type: string
@@ -22362,6 +22457,11 @@ components:
           description: The Linode's host machine, as a UUID.
           readOnly: true
           example: 3a3ddd59d9a78bb8de041391075df44de62bfec8
+        has_user_data:
+          type: boolean
+          description: Whether this compute instance was provisioned utilizing `user_data` provided via the Metadata service. See the [Linode Create](/docs/api/linode-instances/#linode-create) description for more information on Metadata.
+          readOnly: true
+          example: true
     LinodeConfig:
       type: object
       properties:
@@ -22373,7 +22473,15 @@ components:
           x-linode-cli-display: 1
         kernel:
           type: string
-          description: A Kernel ID to boot a Linode with. Defaults to "linode/latest-64bit".
+          default: linode/latest-64bit
+          description: |
+            A Kernel ID to boot a Linode with. Here are examples of commonly-used kernels:
+
+            * `linode/latest-64bit` (default): Our latest kernel at the time of instance boot/reboot.
+            * `linode/grub2`: The upstream distribution-supplied kernel that is installed on the primary disk, or a custom kernel if installed.
+            * `linode/direct-disk`: The MBR (Master Boot Record) of the primary disk/root device, used instead of a Linux kernel.
+
+            For a complete list of options, use the [Kernels List](/docs/api/linode-instances/#kernels-list) command.
           example: linode/latest-64bit
           x-linode-cli-display: 3
         comments:
@@ -22565,6 +22673,22 @@ components:
             If it is deployed from an Image or a Backup and you wish it to remain `offline`
             after deployment, set this to `false`.
           default: true
+        metadata:
+          type: object
+          writeOnly: true
+          description: |
+            An object containing user-defined data relevant to the creation of Linodes.
+          properties:
+            user_data:
+              type: string
+              format: byte
+              description: |
+                Base64-encoded [cloud-config](/docs/products/compute/compute-instances/guides/metadata-cloud-config/) data.
+
+                Must not be included when cloning to an existing Linode.
+
+                Unencoded data must not exceed 65535 bytes, or about 16kb encoded.
+              example: I2Nsb3VkLWNvbmZpZwpwYWNrYWdlX3VwZGF0ZTogdHJ1ZQpwYWNrYWdlX3VwZ3JhZGU6IHRydWU=
     LinodeStats:
       type: object
       description: >
@@ -22735,28 +22859,22 @@ components:
           x-linode-filterable: true
           type: string
           readOnly: true
-          description: >
-            The class of the Linode Type. We currently offer five classes of Linodes:
+          description: |
+            The class of the Linode Type.
 
-              * nanode - Nanode instances are good for low-duty workloads,
-                where performance isn't critical. **Note:** As of June 16th, 2020, Nanodes became
-                1 GB Linodes in the Cloud Manager, however, the API, the CLI, and billing will
-                continue to refer to these instances as Nanodes.
-              * standard - Standard Shared instances are good for medium-duty workloads and
-                are a good mix of performance, resources, and price. **Note:** As of June 16th, 2020,
-                Standard Linodes in the Cloud Manager became Shared Linodes, however, the API, the CLI, and
-                billing will continue to refer to these instances as Standard Linodes.
-              * dedicated - Dedicated CPU instances are good for full-duty workloads
-                where consistent performance is important.
-              * gpu - Linodes with dedicated NVIDIA Quadro &reg; RTX 6000 GPUs accelerate highly
-                specialized applications such as machine learning, AI, and video transcoding.
-              * highmem - High Memory instances favor RAM over other resources, and can be
-                good for memory hungry use cases like caching and in-memory databases.
-                All High Memory plans contain dedicated CPU cores.
+            We currently offer six classes of compute instances:
+
+              * `nanode` - Nanode instances are good for low-duty workloads, where performance isn't critical. **Note:** As of June 16th, 2020, Nanodes became 1 GB Linodes in the Cloud Manager, however, the API, the CLI, and billing will continue to refer to these instances as Nanodes.
+              * `standard` - Standard Shared instances are good for medium-duty workloads and are a good mix of performance, resources, and price. **Note:** As of June 16th, 2020, Standard Linodes in the Cloud Manager became Shared Linodes, however, the API, the CLI, and billing will continue to refer to these instances as Standard Linodes.
+              * `dedicated` - Dedicated CPU instances are good for full-duty workloads where consistent performance is important.
+              * `premium` (limited Regions) - In addition to the features of Dedicated instances, Premium instances come equipped with the latest AMD EPYC&trade; CPUs, ensuring your applications are running on the latest hardware with consistently high performance. Only available in [Regions](/docs/api/regions/#regions-list) with "Premium Plans" in their `capabilities`
+              * `gpu` (limited Regions) - Linodes with dedicated NVIDIA Quadro&reg; RTX 6000 GPUs accelerate highly specialized applications such as machine learning, AI, and video transcoding. Only available in [Regions](/docs/api/regions/#regions-list) with "GPU Linodes" in their `capabilities`
+              * `highmem` - High Memory instances favor RAM over other resources, and can be good for memory hungry use cases like caching and in-memory databases. All High Memory plans contain dedicated CPU cores.
           enum:
           - nanode
           - standard
           - dedicated
+          - premium
           - gpu
           - highmem
           example: standard
@@ -25297,6 +25415,28 @@ components:
                 The IPv6 addresses for this region's DNS resolvers, separated by commas.
               example: "2001:0db8::,2001:0db8::1"
               readOnly: true
+    RegionAvailability:
+      type: object
+      description: Compute instance availability information by [Type](/docs/api/linode-types/) and [Region](/docs/api/regions/).
+      properties:
+        region:
+          x-linode-cli-display: 1
+          x-linode-filterable: true
+          type: string
+          example: us-east
+          description: The [Region](/docs/api/regions/) ID.
+        plan:
+          x-linode-cli-display: 2
+          x-linode-filterable: true
+          type: string
+          example: gpu-rtx6000-1.1
+          description: The compute instance [Type](/docs/api/linode-types/) ID.
+        available:
+          x-linode-cli-display: 3
+          x-linode-filterable: true
+          type: boolean
+          example: true
+          description: Whether the compute instance type is available in the region.
     RescueDevices:
       type: object
       properties:

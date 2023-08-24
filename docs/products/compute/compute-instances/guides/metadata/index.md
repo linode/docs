@@ -3,12 +3,10 @@ title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
+modified: 2023-08-24
 modified_by:
   name: Linode
 authors: ["Linode"]
-_build:
-  list: false
-noindex: true
 ---
 
 {{< content "metadata-beta-notice" >}}
@@ -34,10 +32,18 @@ Similar to Metadata, Linode's [StackScripts](/docs/products/tools/stackscripts/)
 
 ## Availability
 
-The Metadata service is currently in a limited beta. As such, only users enrolled in the beta are able to use the service. Additionally, the service is limited to the following distribution images and data centers:
+Akamai's Metadata service is available in beta and limited to select data centers. Additionally, user-submitted user data and cloud-init integration is currently only supported in a few distribution images. Supported data centers and distributions are listed below:
 
 - **Data centers:** Washington, DC (`us-iad`) and Paris (`fr-par`)
 - **Distributions:** Ubuntu 22.04 LTS and Ubuntu 20.04 LTS
+
+Additional regions and distributions may be added throughout the beta period. When selecting a distribution in the Cloud Manager, the following icon designates distributions that *do not* yet have cloud-init support:
+
+![Icon that means a distribution does not support user data and cloud-init](cloud-init-not-supported.png)
+
+{{< note >}}
+Compute Instances deployed in a supported region can always access the [Metadata Service API](#access-the-metadata-service-api) to obtain instance data, regardless of the distribution. However, user data cannot be submitted for distributions that do not yet have cloud-init support.
+{{< /note >}}
 
 ## Add User Data When Deploying a Compute Instance {#add-user-data}
 
@@ -191,7 +197,6 @@ In addition to being consumed by cloud-init, the Metadata service can also be ac
 - All user data is encrypted and the Metadata service is only accessible from within the Compute Instance.
 - Supports custom user data in the form of cloud-config scripts, shell scripts, and more.
 - User data can be added when creating, rebuilding, or cloning a Compute Instance. User data can also be added when performing one of those functions using a custom image created from a compatible distribution image.
-- **Supported distributions:** Currently, only Ubuntu 22.04 LTS and Ubuntu 20.04 LTS are supported.
 
 {{< note type="warning" noTitle=true >}}
 The Compute Instance must have a *public* network interface to access the Metadata service.
