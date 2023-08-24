@@ -104,9 +104,9 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
         scp ~/example.com example_user@server_ip_address:/var/www/html/example.com/public_html
 
-    {{< note respectIndent=false >}}
-`example_user` should be the user on your Linode you want to log in as, and `example.com` should be replaced by your domain name.
-{{< /note >}}
+    {{< note >}}
+    Replace `example_user` with your Linode's user and `example.com` with your domain name.
+    {{< /note >}}
 
     If you have a database, you'll need to upload it to your Linode. If you're more comfortable using a control panel, you may want to [install phpMyAdmin](/docs/guides/install-mysql-phpmyadmin-ubuntu-14-04/) at this point. You can also [restore your database](/docs/guides/mysqldump-backups/#restoring-an-entire-dbms-from-backup) using the command line.
 

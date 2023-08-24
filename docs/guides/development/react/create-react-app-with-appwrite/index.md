@@ -28,6 +28,10 @@ This tutorial gets you started making your own application using Appwrite and Re
 
 1.  If you have not already done so, create a Linode account and Compute Instance. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
+    {{< note >}}
+    To automatically install Appwrite on a Compute Instance, consider deploying [Appwrite through the Linode Marketplace](/docs/products/tools/marketplace/guides/appwrite/).
+    {{< /note >}}
+
 1.  Follow our [Setting Up and Securing a Compute Instance](/docs/products/compute/compute-instances/guides/set-up-and-secure/) guide to update your system. You may also wish to set the timezone, configure your hostname, create a limited user account, and harden SSH access.
 
 1.  Update your system.

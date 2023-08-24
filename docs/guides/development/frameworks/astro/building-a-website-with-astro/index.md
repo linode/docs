@@ -215,7 +215,7 @@ Typically, layouts are stored in the `src/layouts/` directory, and the default A
     </html>
     ```
 
-    The layout makes use of the `NavMenu` component you will develop in the next section. The layout also uses a `props` (short for properpties) value. This allows pages to pass a variable into the layout — in this case, a title for the page.
+    The layout makes use of the `NavMenu` component you will develop in the next section. The layout also uses a `props` (short for properties) value. This allows pages to pass a variable into the layout — in this case, a title for the page.
 
 1. Create another file in the `layouts/` directory, this one titled `BlogPostLayout.astro`. Give the file the contents shown below.
 
@@ -234,11 +234,7 @@ Typically, layouts are stored in the `src/layouts/` directory, and the default A
     </BaseLayout>
     ```
 
-<<<<<<< HEAD
     This layout includes the `BaseLayout` as a nested layout. This allows you to build on to existing layouts and further reduce repeated code.
-=======
-    This layout includes the `BaseLayout` as a nested layout. Doing this allows you to build on layouts and further reduce repeated code.
->>>>>>> e52554ad969319ee4092faa13eda9abd5c8b8f1f
 
     Like the previous layout, this one accepts variable data. Here, that data is the frontmatter from Markdown files, which we will explore later on.
 
