@@ -95,7 +95,7 @@ Several storage profiles work for the needs of modeling research, including:
 
 -   **External URL Code Calls**: External networked data sources are subject to the data flow charges associated with the Linode GPU or other instance cost.
 
-PyTorch Lightning can take inputs from static training model file sources or streams. Static data set models represent files, objects, or data flows (e.g. IoT data feeds). Streams can be inputs from periodic, non-file data such as video, IoT, and audio sources. Optimal retrieval time performance for static data sets is achieved by pre-loading them into Linode storage as objects or logical disk volumes.
+PyTorch Lightning can take inputs from static training model file sources or streams. Static data set models represent files, objects, or data flows (e.g. IoT data feeds). Streams can be inputs from periodic, non-file data such as video, IoT, and audio sources. Optimal retrieval time performance for static data sets is achieved by pre-loading them into Linode object storage or logical disk volumes.
 
 ### Instance Time Optimization
 
