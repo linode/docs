@@ -49,6 +49,7 @@ Since VLANs operate on layer 2 of the OSI networking stack, you can use is as pa
 | **Newark (New Jersey, USA)** | **Available** |
 | **Paris (France)** | **Available** |
 | **Singapore** | **Available** |
+| **Stockholm (Sweden)** | **Available** |
 | **Sydney (Australia)** | **Available** |
 | Tokyo (Japan) | Not yet available |
 | **Toronto (Canada)** | **Available** |
