@@ -1,10 +1,10 @@
 ---
 title: Get Started
 title_meta: "Getting Started with Global Load Balancer"
-description: "Learn how to quickly start using a Global Load Balancer, including advice on architecting your application and configuring the Load Balancer"
+description: "Learn how to start using a Global Load Balancer."
 tab_group_main:
     weight: 20
-keywords: ["loadbalancers", "loadbalancer", "load balancers", "load balancer", "load balancing"]
+keywords: ["loadbalancers", "loadbalancer", "load balancers", "load balancer", "load balancing", "glb" global load balancer", "global loadbalancer"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/global-loadbalancer/getting-started/']
 published: 2023-06-26
@@ -23,7 +23,7 @@ To start using and benefiting from load balancing, your application should be de
 
 To sign up for a Linode account and to start deploying Compute Instances, see [Getting Started on the Linode Platform](/docs/products/compute/compute-instances/get-started/)
 
-To redirect all web connections over port 443/HTTPS generate an SSL certificate for your domain name that supports TLS version 1.2 or later.
+To redirect all web connections over port 443/HTTPS generate an TLS certificate for your domain name that supports TLS version 1.2 or later.
 
 ## Create the Akamai Global Load Balancer
 
