@@ -4,7 +4,7 @@ title_meta: "Getting Started with Global Load Balancer"
 description: "Learn how to start using a Global Load Balancer."
 tab_group_main:
     weight: 20
-keywords: ["loadbalancers", "loadbalancer", "load balancers", "load balancer", "load balancing", "glb" global load balancer", "global loadbalancer"]
+keywords: ["loadbalancers", "loadbalancer", "load balancers", "load balancer", "load balancing", "glb", "global load balancer", "global loadbalancer"]
 tags: ["cloud manager","linode platform","networking","web applications"]
 aliases: ['/global-loadbalancer/getting-started/']
 published: 2023-06-26
