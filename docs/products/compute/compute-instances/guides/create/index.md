@@ -2,7 +2,7 @@
 keywords: ["getting started", "deploy", "linode", "linux"]
 description: "Learn how to create a new Compute Instance, including choosing a distribution, region, and plan size."
 published: 2022-04-19
-modified: 2023-05-04
+modified: 2023-08-23
 modified_by:
   name: Linode
 title: "Create a Compute Instance"
@@ -20,6 +20,7 @@ This guide walks you through creating a Compute Instance (also frequently called
 1. [Set the Label and Add Tags](#set-the-label-and-add-tags)
 1. [Create a Password and Add SSH Keys](#create-a-password-and-add-ssh-keys)
 1. [Configure Additional Options](#configure-additional-options)
+1. [Add User Data](#add-user-data)
 1. [Deploy the Instance](#deploy-the-instance)
 1. [Getting Started After Deployment](#getting-started-after-deployment)
 
@@ -43,7 +44,7 @@ One of the first steps to deploy a Compute Instance is to decide *what* you actu
 
 - **Images:** Select from any Custom Image or Recovery Image stored on your account. *Recovery Images* are generated after a Compute Instance has been deleted and *Custom Images* can be created based on existing instances or image files. See [Images - Get Started](/docs/products/tools/images/get-started/).
 
-- **Backups:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
+- **Backups:** If you have the Backups service enabled on an existing Compute Instance, you can select any available backup snapshot to deploy from. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-instance/).
 
 - **Clone Linode:** Creates a new Compute Instance from the disks and configuration on an existing instance. See [Cloning a Linode](/docs/products/compute/compute-instances/guides/clone-instance/).
 
@@ -98,6 +99,12 @@ The following features and services can be configured during the Compute Instanc
 - **Add the Backups service:** Safeguard your data with Linode’s Backups service, enabling automatic backups of the disks on your Compute Instances. Up to four backups are stored as part of this service, including automated daily, weekly, and biweekly backups in addition to a manual backup snapshot. See [Backups](/docs/products/storage/backups/) to learn more and view pricing.
 
 - **Add a private IP:** A private IP gives you access to the data center's private network. This enables you to communicate over a non-public channel with other Compute Instances in the same region. Private IPs are needed to configure this instance as a NodeBalancer backend.
+
+## Add User Data
+
+User data can be provided to the Metadata service, which is then consumed by cloud-init when your Compute Instance boots up for the first time. For information on the Metadata service, user data formats, and our cloud-init integration, review [Overview of the Metadata Service](/docs/products/compute/compute-instances/guides/metadata/).
+
+{{< content "metadata-beta-notice" >}}
 
 ## Deploy the Instance
 

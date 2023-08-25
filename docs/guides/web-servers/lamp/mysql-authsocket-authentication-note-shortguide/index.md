@@ -15,8 +15,7 @@ aliases: ['/web-servers/lamp/mysql-authsocket-authentication-note-shortguide/']
 authors: ["Linode"]
 ---
 
-{{< disclosure-note "About MySQL authentication" >}}
-
+{{< note type="secondary" title="About MySQL authentication" isCollapsible=true >}}
 By default, MySQL is configured to use the `auth_socket` authorization plugin. This authorization scheme allows you to log in to the database's root user as long as you are connecting from the Linux root user on localhost, or as a user with sudo privileges (i.e. with `sudo mysql -u root`). In this scheme, no password is assigned to MySQL's root user:
 
 {{< highlight sql >}}
@@ -40,4 +39,4 @@ After making this change, you should pass the `-p` option when invoking the MySQ
 
     mysql -u root -p
 
-{{< /disclosure-note >}}
+{{< /note >}}

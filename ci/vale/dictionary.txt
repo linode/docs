@@ -462,6 +462,7 @@ dbd
 dbs
 dbdir
 dbfiles
+DBMSs
 dbname
 dbserver
 dcid
@@ -1120,6 +1121,7 @@ keypair
 keypairs
 keysize
 keyspace
+keyspaces
 keystore
 kfctl
 khanaser
@@ -1138,6 +1140,7 @@ kloxo
 knockpy
 knowledgebase
 Kodu
+Kompose
 Konqueror
 konsole
 kotin
@@ -1383,6 +1386,7 @@ mkpasswd
 mktemp
 mktime
 mkv
+MLlib
 mnesia
 mngtmpaddr
 moby
@@ -1433,6 +1437,7 @@ multiplatform
 Multiplo
 multiport
 multiprotocol
+multiset
 multisite
 multitenant
 multithreading
@@ -1658,6 +1663,7 @@ pathnames
 paypal
 PBCs
 pbr
+PDFs
 pem
 pentest
 pentesting
@@ -1834,6 +1840,8 @@ rce
 rclone
 rcon
 rdbadmin
+RDBMS
+RDBMSs
 rdiff
 reachability
 readcaps

@@ -12,7 +12,7 @@ cascade:
 modified: 2023-03-22
 ---
 
-{{< content "april-price-update-shortguide" >}}
+{{< content "new-data-center-notice" >}}
 
 Compute Instances are virtual machines that run on Linode's secure and reliable cloud infrastructure. To support a variety of workloads, Compute Instance plans are organized under several basic plan types, each with their own set of resources, unique value propositions, and technical specifications (see [Plan Types](/docs/products/compute/compute-instances/plans/)). Each Compute Instance can run a variety of [supported Linux distributions](/docs/products/compute/compute-instances/guides/distributions/), including the latest versions of Ubuntu, CentOS Stream, Debian, and more.
 
@@ -49,7 +49,7 @@ Linode bundles the following services with all Compute Instances:
 - Domain management through our [DNS Manager](https://www.linode.com/products/dns-manager/)
 - Seamless firewall management with [Cloud Firewalls](https://www.linode.com/products/cloud-firewall/)
 - Private Layer 2 networks with [VLANs](https://www.linode.com/products/vlan/)
-- Metrics and monitoring through the [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/guides/linode-longview-pricing-and-plans/) (free plan)
+- Metrics and monitoring through the [Cloud Manager](https://www.linode.com/products/monitoring/) and [Longview](/docs/products/tools/longview/) (free plan)
 - Reusable deployment scripts through [StackScripts](https://www.linode.com/products/stackscripts/)
 
 ## Complementary Paid Services
@@ -59,7 +59,7 @@ To help build and manage your applications, consider complementing your Compute 
 - Automated daily and weekly backups with our [Backups service](https://www.linode.com/products/backups/)
 - Add additional storage drives with [Block Storage](https://www.linode.com/products/block-storage/)
 - Create and store reusable images with [Custom Images](https://www.linode.com/products/images/)
-- Advanced metrics and monitoring through [Longview Pro](/docs/guides/what-is-longview/)
+- Advanced metrics and monitoring through [Longview Pro](/docs/products/tools/longview/get-started/)
 - Automated service deployments with [LKE (Linode Kubernetes Engine)](https://www.linode.com/products/kubernetes/)
 - Incident response (and more) with [Managed Services](https://www.linode.com/products/managed/)
 - Enable load balancing and horizontal scaling with [NodeBalancers](https://www.linode.com/products/nodebalancers/)

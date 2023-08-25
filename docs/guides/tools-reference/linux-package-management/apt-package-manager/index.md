@@ -208,7 +208,7 @@ If you wish to replicate the currently installed packages to another system with
 
     This command creates a new file using the name provided in the last step and appending `.apt-clone.tar.gz`.
 
-1.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-your-linode/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
+1.  Copy the file to your new system. See the [Download Files from Your Linode](/docs/guides/download-files-from-a-compute-instance/) guide or the [File Transfer](/docs/guides/tools-reference/file-transfer/) section for more information.
 
 1.  Install apt-clone on the new system (see Step 1).
 
