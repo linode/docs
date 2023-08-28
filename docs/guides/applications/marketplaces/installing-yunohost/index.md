@@ -19,7 +19,7 @@ This tutorial walks through installing YunoHost on a base Debian server and outl
 
 ## Before You Begin
 
-1. If you have not already done so, create a Linode account and Compute Instance running Debian 11 or higher. See our [Getting Started with Linode](/docs/guides/getting-started/) and [Creating a Compute Instance](/docs/guides/creating-a-compute-instance/) guides.
+1. If you have not already done so, create a Linode account and Compute Instance running Debian 11 or higher. See our [Getting Started with Linode](/docs/products/platform/get-started/) and [Creating a Compute Instance](/docs/products/compute/compute-instances/guides/create/) guides.
 
 1. Optionally, create a domain name and configure it with the Linode DNS Manager. See our [DNS Manager - Get Started](/docs/products/networking/dns-manager/get-started/) guide for instructions on adding a domain to Linode and using the Linode name servers with the domain registrar.
 

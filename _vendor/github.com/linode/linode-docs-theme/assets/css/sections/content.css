@@ -92,25 +92,7 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 }
 
 .max-w-content {
-  @apply max-w-none;
-}
-
-@media screen and (min-width: 1279px) {
-  .max-w-content {
-    @apply max-w-xl;
-  }
-}
-
-@media screen and (min-width: 1356px) {
-  .max-w-content {
-    @apply max-w-2xl;
-  }
-}
-
-@media screen and (min-width: 1536px) {
-  .max-w-content {
-    @apply max-w-3xl;
-  }
+  @apply max-w-4xl;
 }
 
 /*  Chroma overrides. Keep them here as chroma.css is auto generated.  */
@@ -158,7 +140,19 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
 .content div.overflow-table {
   position: relative;
   display: block;
-  overflow-x: scroll;
+  overflow-x: auto;
+}
+
+.content div.overflow-table.first-sticky {
+}
+
+.content div.overflow-table.first-sticky table th:first-child,
+.content div.overflow-table.first-sticky table td:first-child {
+  @apply sticky left-0 z-auto bg-white;
+}
+
+.content div.overflow-table tbody tr {
+  @apply even:bg-opacity-50;
 }
 
 .content table {
@@ -207,8 +201,12 @@ Note that this is usually used in combination with Tailwind's Typography plugin 
   border-bottom-right-radius: 10px;
 }
 
+.content tbody tr {
+  @apply bg-selected;
+}
+
 .content tbody tr td {
-  @apply bg-selected border-b;
+  @apply border-b border-selected;
 }
 
 .content tbody td code {

@@ -1121,6 +1121,7 @@ keypair
 keypairs
 keysize
 keyspace
+keyspaces
 keystore
 kfctl
 khanaser
@@ -1139,6 +1140,7 @@ kloxo
 knockpy
 knowledgebase
 Kodu
+Kompose
 Konqueror
 konsole
 kotin
@@ -1384,6 +1386,7 @@ mkpasswd
 mktemp
 mktime
 mkv
+MLlib
 mnesia
 mngtmpaddr
 moby
@@ -1434,6 +1437,7 @@ multiplatform
 Multiplo
 multiport
 multiprotocol
+multiset
 multisite
 multitenant
 multithreading

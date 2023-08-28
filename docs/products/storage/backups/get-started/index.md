@@ -5,6 +5,7 @@ description: "Get Started with the Linode Backup Service. Learn how to enable th
 tab_group_main:
     weight: 20
 aliases: ['/products/storage/backups/guides/manage/']
+published: 2021-11-12
 ---
 
 ## Enabling the Backup Service
@@ -46,6 +47,6 @@ This page also provides a few other options, detailed below:
 
 To restore from a backup, locate the backup within the **Backups** tab of the Compute Instance and click the corresponding **ellipsis** menu. From here, there are a few options that can be selected:
 
-- **Restore to Existing Linode:** Restore the backup disks to an existing Compute Instance. [Restore a Backup to an Existing Linode](/docs/products/storage/backups/guides/restore-to-an-existing-linode/)
+- **Restore to Existing Linode:** Restore the backup disks to an existing Compute Instance. [Restore a Backup to an Existing Linode](/docs/products/storage/backups/guides/restore-to-an-existing-instance/)
 
-- **Deploy New Linode:** Restore the backup disks to a new Compute Instance. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-linode/).
+- **Deploy New Linode:** Restore the backup disks to a new Compute Instance. See [Restore a Backup to a New Linode](/docs/products/storage/backups/guides/restore-to-a-new-instance/).

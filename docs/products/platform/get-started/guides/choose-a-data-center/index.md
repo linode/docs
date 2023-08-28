@@ -4,20 +4,43 @@ description: 'This article gives you information to help you determine which dat
 keywords: ["data center", "datacenter", "dc", "speed"]
 tags: ["linode platform"]
 published: 2018-10-31
-modified: 2023-03-14
+modified: 2023-08-15
 modified_by:
   name: Linode
 aliases: ['/platform/how-to-choose-a-data-center/','/guides/how-to-choose-a-data-center/']
 authors: ["Linode"]
 ---
 
-{{< content "new-data-center-notice" >}}
-
 Deploying your Compute Instance to a geographically advantageous data center can make a big difference in connection speeds to your server. Ideally, your site or application should be served from multiple points around the world, with requests sent to the appropriate region based on client geolocation. On a smaller scale, deploying a Compute Instance in the data center nearest to you will make it easier to work with than one in a different region or continent.
 
-There are many things can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as the sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.
+There are many things that can affect network congestion, connection speeds, and throughput, so you should never interpret one reading as the sole data point. Always perform tests in multiples of three or five for an average, and on both weekend and weekdays for the most accurate information.
 
 This page is a quick guide for choosing and speed testing a data center (DC). Start by creating a Compute Instance in the data center in or near your region, or several instances in multiple regions if you're close to more than one DC. From there, use Linode's [Facilities Speedtest](https://www.linode.com/speedtest) page for test domains to ping and files to download.
+
+## Product Availability
+
+An important consideration when choosing a data center is the availability of specific features and services, as well as regional support. Below is table displaying a matrix of which services Linode offers in each particular region.
+
+{{< table class="first-sticky" >}}
+| Region | [Dedicated Compute](/docs/products/compute/compute-instances/plans/dedicated-cpu/) | [Shared Compute](/docs/products/compute/compute-instances/plans/shared-cpu/) | [GPUs](/docs/products/compute/compute-instances/plans/gpu/) | [Premium Compute](/docs/products/compute/compute-instances/plans/premium/) | [Kubernetes](/docs/products/compute/kubernetes/) | [Managed DB](/docs/products/databases/managed-databases/) | [Cloud Firewall](/docs/products/networking/cloud-firewall/) | [DDoS Protection](/docs/products/networking/ddos-protection/) | [NodeBalancers](/docs/products/networking/nodebalancers/) | [VLANs](/docs/products/networking/vlans/) | [Backups](/docs/products/storage/backups/) | [Block Storage](/docs/products/storage/block-storage/) | [Object Storage](/docs/products/storage/object-storage/) | [Images](/docs/products/tools/images/) |
+| --- | :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:| :---:|
+| Atlanta        | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Chicago        | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Dallas         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Frankfurt      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Fremont        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| London         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Mumbai         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Newark         | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Paris          | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+| Singapore      | ✔ | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| Sydney         | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Tokyo          | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ | ✔ |   | ✔ |
+| Toronto        | ✔ | ✔ |   |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |   | ✔ |
+| Washington, DC | ✔ | ✔ |   | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ | ✔† | ✔ |
+{{< /table >}}
+
+†Denotes higher capacity Object Storage availability.
 
 ## Network Latency
 
