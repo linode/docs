@@ -43,7 +43,7 @@ authors: ["Linode"]
 
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
-- **Nomad cluster size:** Select the preferred number of clients from the available options (6, 8 or 10)
+- **Nomad cluster size:** Select the preferred number of clients from the available options (3, 5 or 7)
 
 ## Getting Started after Deployment
 
