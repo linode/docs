@@ -42,6 +42,8 @@ Please be aware that each of these Compute Instances will appear on your invoice
 
 - **Limited sudo user** *(required)*: A limited user account with sudo access is created as part of this cluster deployment. Enter your preferred username for this limited user. Please note that the password is automatically created. See [Obtaining Usernames and Passwords](#obtaining-usernames-and-passwords).
 
+- **Email Address** *(required)*: A valid SOA email address for auto-generated LetsEncrypt SSL.
+
 - **Add SSH Keys to all nodes?** If you select *yes*, any SSH Keys that are added to the root user account (in the **SSH Keys** section), are also added to your limited user account on all deployed Compute Instances.
 
 - **Nomad cluster size:** The Nomad One-Click Cluster will deploy 6 Linodes.
@@ -49,6 +51,10 @@ Please be aware that each of these Compute Instances will appear on your invoice
 |  Servers |  Clients | Total  Linodes |
 | ---- | ---- | ---- |
 | 3  | 3  | 6 Linodes |
+
+- **Nomad Server Count**: The Nomad One-Click Cluster will deploy 3 Nomad servers.
+
+- **Nomad Client Count**: The Nomad One-Click Cluster will deploy 3 Nomad clients.
 
 ## Getting Started after Deployment
 
