@@ -8,7 +8,7 @@
 
   <!-- If there's any other related guides (such as other distributions), show the "alternative guide" notice -->
   {{ if .Params.relations.platform }}
-    <div class="mt-6 mb-6">
+    <div class="mt-6">
       {{ partial "sections/content/alternative-guides.html" (dict "page" .) }}
     </div>
   {{ end }}
@@ -42,7 +42,7 @@
   {{ end }}
 
   {{ if ne .Params.promo_default false }}
-    <div class="mt-8">
+    <div class="mt-6">
       {{ partial "sections/content/promo_code.html" . }}
     </div>
   {{ end }}

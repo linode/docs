@@ -82,7 +82,7 @@ To install Cassandra, follow these steps. Unless otherwise specified, execute th
 1.  Ensure the system is up to date. Reboot the system if necessary:
 
     ```command
-    sudo apt- update -y && sudo apt upgrade -y
+    sudo apt update -y && sudo apt upgrade -y
     ```
 
 1.  Cassandra requires the use of a Java runtime. There are several different versions of Java to choose from, including OpenJDK and Oracle Java. This guide uses OpenJDK 11. Install OpenJDK using `apt`:
