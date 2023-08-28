@@ -1,13 +1,12 @@
 ---
 slug: list-of-databases
-description: 'Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage.'
+title: "Comparing DBMSs: The 8 Most Popular Databases"
+description: "Searching for a list of the most popular databases? Our article covers what to look for in a database and top options for data storage."
 keywords: ['database',database lists'','best database']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2022-02-25
 modified_by:
   name: Linode
-title: "The 8 Most Popular Databases"
-title_meta: "List of Databases - Most Popular"
 authors: ["Jack Wallen"]
 ---
 
@@ -36,7 +35,7 @@ One crucial aspect of the DBMS is the query language. This is the special langua
 
 ## Relational and Non-Relational Databases
 
-DBMS’ use two primary types of database: Relational and Non-Relational. The distinction between these two is important, as they help define the best use case for a database.
+DBMSs use two primary types of database: Relational and Non-Relational. The distinction between these two is important, as they help define the best use case for a database.
 
 A relational database is one that stores information in tables containing related data. What gives a relational database its name is that relationships can be made between two or more tables. The relationships correlate rows belonging to two different tables into a third table. Relational databases are best used when the data they contain doesn't often change and when the accuracy of the data is crucial.
 
@@ -114,12 +113,12 @@ MySQL is a relational database and does not scale to the extent of a non-relatio
 
 Some of the standout features of MySQL include:
 
-**Security** - Uses a solid data security layer to protect sensitive data and all passwords are encrypted.
-**Roll-Back** - Allows transactions to be rolled back.
-**Memory Efficient** - Has very low memory leakage.
-**Productive** - Uses Triggers, Stored Procedures, and Views for higher productivity.
-**Partitioning** - Supports partitioning to improve the performance of very large databases.
-**GUIs** - MySQL Workbench GUI manages the database.
+- **Security** - Uses a solid data security layer to protect sensitive data and all passwords are encrypted.
+- **Roll-Back** - Allows transactions to be rolled back.
+- **Memory Efficient** - Has very low memory leakage.
+- **Productive** - Uses Triggers, Stored Procedures, and Views for higher productivity.
+- **Partitioning** - Supports partitioning to improve the performance of very large databases.
+- **GUIs** - MySQL Workbench GUI manages the database.
 
 The Advantages of using MySQL include:
 
