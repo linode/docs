@@ -3,7 +3,7 @@ title: "Overview of the Metadata Service"
 description: "Learn how to automate server provisioning on the Linode platform through the new Metadata service and cloud-init."
 keywords: ["user data", "metadata", "cloud-init", "cloudinit"]
 published: 2023-07-25
-modified: 2023-08-24
+modified: 2023-08-29
 modified_by:
   name: Linode
 authors: ["Linode"]
@@ -71,7 +71,7 @@ linode-cli linodes create \
   --type g6-standard-2 \
   --image linode/ubuntu22.04 \
   --root_pass [your-root-password] \
-  --metdata.user_data [your-user-data]
+  --metadata.user_data [your-user-data]
 ```
 
 Replace *[your-root-password]* with a strong root password and *[your-user-data]* with the cloud-config data or script you wish to use. When using the API or CLI, user data must be a [base64-encoded string](https://en.wikipedia.org/wiki/Base64). You can output your cloud-config or script file as base64 by running the following command:
