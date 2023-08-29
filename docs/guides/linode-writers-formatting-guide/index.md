@@ -5,7 +5,7 @@ keywords: ["style guide", "format", "formatting", "how to write", "write for us"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2023-05-02
+modified: 2023-08-29
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
