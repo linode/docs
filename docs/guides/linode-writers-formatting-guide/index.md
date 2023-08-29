@@ -5,7 +5,7 @@ keywords: ["style guide", "format", "formatting", "how to write", "write for us"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['/linode-writers-formatting-guide/','/linode-writers-guide/','/style-guide/']
 published: 2014-01-15
-modified: 2023-05-02
+modified: 2023-08-29
 modified_by:
   name: Linode
 title: Linode Writer's Formatting Guide
@@ -791,27 +791,80 @@ Use single spaces between sentences; do not double-space.
 
 ### Tables
 
+You can create tables using standard Markdown syntax. Additionally, you can embed a Markdown table within the [table shortcode](#table-shortcode) for additional functionality.
+
 ```file {lang="md"}
-| Column Header 1 | Column Header 2|
+| Column Header 1 | Column Header 2 |
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 ```
 
-| Column Header 1 | Column Header 2|
+| Column Header 1 | Column Header 2 |
 | -- | -- |
 | **Example** | This is an example of text in the second column. |
 
-#### Table Alignment
+#### Column Text Alignment
+
+To align text within a table, modify the second row. This row separates the header from the body of the table and can be used for additional metadata, like text alignment.
+
+- Left aligned: Default behavior (if there is a need to be explicit, use `| :-- |`)
+- Center aligned: `| :--: |`
+- Right aligned: `| --: |`
+
 
 ```file {lang="md"}
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
-| -- |:--:| --:|
+| -- | :--: | --: |
 | Example | Example | Example |
 ```
 
 | Left-Aligned Text | Center-Aligned Text | Right-Aligned Text |
-| -- | :--: | --:|
+| -- | :--: | --: |
 | Example | Example | Example |
+
+#### Table Shortcode
+
+The table shortcode can be used to add additional functionality to Markdown tables. By default, it adds a scrollbar when the table width is larger than the content area. This means that it can accommodate wide tables with lots of columns. It also adds alternating row background colors so that tables are easier to parse.
+
+```file {lang="md"}
+{{</* table */>}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table >}}
+| Column Header | Column Header | Column Header |
+| -- | -- | -- |
+| **Row 1** | Example | Example |
+| **Row 2** | Example | Example |
+| **Row 3** | Example | Example |
+{{< /table >}}
+
+#### Fixed First Column
+
+If you are creating a wide table and need the first column to be fixed when scrolling, use the **"first-sticky"** class.
+
+```file {lang="text"}
+{{</* table class="first-sticky" */>}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **Row1**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row2**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row3**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{</* /table */>}}
+```
+
+{{< table class="first-sticky" >}}
+| Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header | Column Header |
+| -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
+| **Row1**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row2**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+| **Row3**| Example | Example | Example | Example | Example | Example | Example | Example | Example | Example | Example |
+{{< /table >}}
 
 ### Tabs
 
