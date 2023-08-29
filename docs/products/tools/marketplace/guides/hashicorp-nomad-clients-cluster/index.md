@@ -1,11 +1,11 @@
 ---
-description: "Deploy HashiCorp Nomad Cluster, a flexible scheduling and orchestration for diverse workloads, on Linode Compute Instances.'"
+description: "Deploy HashiCorp Nomad Clients Cluster, a flexible scheduling and orchestration for diverse workloads, on Linode Compute Instances.'"
 keywords: ['HashiCorp','Nomad','Scheduling', 'orchestration']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2023-08-01
 modified_by:
   name: Linode
-title: "Deploy HashiCorp Nomad Cluster through the Linode Marketplace"
+title: "Deploy HashiCorp Nomad Clients Cluster through the Linode Marketplace"
 authors: ["Linode"]
 ---
 
