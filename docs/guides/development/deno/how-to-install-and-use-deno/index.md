@@ -1,11 +1,11 @@
 ---
 slug: how-to-install-and-use-deno
-title: "How to Install and Use Deno"
+title: "Install and Use the Deno Javascript Runtime (Node.JS Alternative)"
 description: 'This guide introduces the Deno JavaScript runtime and compares it to Node.js. It also explains how to install and use Deno.'
 keywords: ['what is Deno', 'Deno vs Node.js', 'install Deno', 'how to use Deno']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 authors: ["Jeff Novotny"]
-published: 2022-12-15
+published: 2023-08-29
 modified_by:
   name: Linode
 external_resources:
@@ -32,7 +32,7 @@ In addition to providing a runtime environment, Deno is also its own package man
 
 Deno is a fully-featured environment. Some of its main highlights are as follows.
 
-- It is easy to use and has a small learning curve.
+- It is easy to use and has a relatively small learning curve.
 - In addition to JavaScript capabilities, it includes native TypeScript support, a TypeScript compiler, and a caching mechanism. There is no requirement for additional modules or compilers. It also supports JavaScript XML and the TypeScript equivalent TSX.
 - It is designed to avoid dependencies through the incorporation of a large [standard library of modules](https://deno.land/std@0.170.0). These modules include support for working with the file and network system, formatting output, benchmarking code, and processing different file formats. The library also includes a compatibility layer for importing Node.js libraries.
 - It imports modules using URLs. The URL can specify either an absolute or relative path, and both Deno and third-party modules can be imported. Many modules are hosted on the [Deno Third Party Modules archive](https://deno.land/x). These modules have been analyzed for potential performance and security issues.
