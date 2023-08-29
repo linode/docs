@@ -2096,6 +2096,7 @@ singapore
 sintra
 siri
 sitename
+Skitch
 sklearn
 slackpkg
 slackware
