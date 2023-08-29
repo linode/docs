@@ -51,6 +51,7 @@ The following table lists each country that requires us to collect taxes. Alongs
 | Malaysia | 6% | [SST](https://mysst.customs.gov.my/AboutBackground) | December 15th, 2022 |
 | Malta | 18% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Netherlands | 21% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
+| New Zealand | 15% | [GST](https://www.ird.govt.nz/gst) | October 1st, 2023 |
 | Norway | 25% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | May 1st, 2022 |
 | Poland | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
 | Portugal | 23% | [EU VAT](https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm) | July 1st, 2019 |
