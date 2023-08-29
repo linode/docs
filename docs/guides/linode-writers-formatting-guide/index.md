@@ -810,9 +810,9 @@ Use the table shortcode to create a table with automatic alternating row shading
 | **Row 3** | Example | Example |
 {{< /table >}}
 
-#### Wide Table with First Column Anchor
+#### Wide Table with Fixed First Column
 
-If you are creating a wide table and need to anchor the first column when scrolling, use the **"first-sticky"** class.
+If you are creating a wide table and need the first column to be fixed when scrolling, use the **"first-sticky"** class.
 
 ```file {lang="text"}
 {{</* table class="first-sticky" */>}}
