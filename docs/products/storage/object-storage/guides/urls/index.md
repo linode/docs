@@ -39,6 +39,7 @@ The cluster URL for Object Storage is unique to each data center. This URL can b
 | Newark, NJ (USA) | `us-east-1` | `https://us-east-1.linodeobjects.com` |
 | Paris (France) | `fr-par-1` | `https://fr-par-1.linodeobjects.com` |
 | Singapore | `ap-south-1` | `https://ap-south-1.linodeobjects.com` |
+| Stockholm (Sweden) | `se-sto-1` | `https://se-sto-1.linodeobjects.com` |
 | Washington, DC, USA | `us-iad-1` | `https://us-iad-1.linodeobjects.com` |
 
 ## Bucket URL
