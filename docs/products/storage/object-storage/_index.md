@@ -9,7 +9,7 @@ tab_group_main:
 cascade:
     date: 2020-06-02
     product_description: "An S3-compatible object storage solution designed to store, manage, and access unstructured data in the cloud."
-modified: 2023-08-21
+modified: 2023-08-30
 aliases: ['/platform/object-storage/pricing-and-limitations/', '/guides/pricing-and-limitations','/products/storage/object-storage/guides/enable/']
 ---
 
