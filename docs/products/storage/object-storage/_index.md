@@ -79,6 +79,7 @@ The tables below outline Object Storage limits. Most of the limits apply **per r
 | Newark, NJ (USA) | 5 TB | 50 million |
 | Paris (France) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Singapore | 5 TB | 50 million |
+| Stockholm (Sweden) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 | Washington, DC (USA) | 5 TB<br><small>Up to 1,000 TB by request</small> | 50 million<br><small>Up to 1 billion by request</small> |
 
 If your workloads require additional storage or need to accommodate more objects, [contact the Support team](https://www.linode.com/support/) with your request. Be sure to include any details related to your application and requirements. Among other factors, the total capacity of the region is considered when processing a limit increase request. For larger enterprise workloads, consider using one of the data centers designated as *higher capacity* (see [Availability](#availability)).
