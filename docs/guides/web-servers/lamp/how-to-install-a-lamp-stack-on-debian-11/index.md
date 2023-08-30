@@ -331,7 +331,7 @@ In this section, you'll create a test page that shows whether Apache can render 
     </head>
         <body>
         <?php echo '<p>Hello World</p>';
-    
+
         // In the variables section below, replace user and password with your own MariaDB credentials as created on your server
         $servername = "localhost";
         $username = "webuser";
