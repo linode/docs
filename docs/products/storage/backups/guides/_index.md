@@ -4,6 +4,7 @@ title_meta: "Guides and Tutorials for the Linode Backup Service"
 description: "A collection of guides to help you learn how to get up and running with Linode's Backup Service, including enabling and scheduling backups."
 tab_group_main:
     weight: 30
+published: 2021-11-12
 modified: 2023-07-07
 ---
 
@@ -20,8 +21,6 @@ These introductory guides help get you up and running with Linode's Backup Servi
 - [Restore a Backup to a New Compute Instance](/docs/products/storage/backups/guides/restore-to-a-new-instance/): Restore a backup to a new Compute Instance.
 
 - [Restore a Backup to an Existing Compute Instance](/docs/products/storage/backups/guides/restore-to-an-existing-instance/): Restore a backup to an existing Compute Instance.
-
-- [Boot from a Backup](/docs/products/storage/backups/guides/boot-from-a-backup/): After restoring from a backup, boot into the backup restoration disk/configuration.
 
 - [Cancel the Backup Service](/docs/products/storage/backups/guides/cancel/): Cancel the Backups Service through the Cloud Manager.
 

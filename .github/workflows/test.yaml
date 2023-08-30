@@ -3,33 +3,23 @@ name: CI Tests
 on: [pull_request]
 
 env:
-  hugo-image-cache-name: hugo-generated-images
-  hugo-image-cache-path: /home/runner/work/docs/docs/resources/_gen/images/
+  hugo_image_cache_name: hugo-generated-images
+  hugo_image_cache_path: /home/runner/work/docs-publishing/docs-publishing/docs-repo/resources/_gen/images/
 
 jobs:
   blueberry:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10.x'
         architecture: 'x64'
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        # Look to see if there is a cache hit for the corresponding requirements file
-        key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-          ${{ runner.os }}-
-    - name: Install dependencies
+        cache: pip
+    - name: Install dependencies (Python)
       run: |
-        python -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt
     - name: blueberry
       run: |
@@ -38,8 +28,8 @@ jobs:
   vale:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
     - name: Get Changed Files
       id: get_changed_files
       uses: jitterbit/get-changed-files@v1
@@ -54,7 +44,8 @@ jobs:
       run: sudo apt-get install moreutils
     - name: Select Files in Docs Dir
       # This action filters the list of added and modified
-      # files to only the files that are in the docs/ directory
+      # files to only the files that are in the docs/ subdirectory
+      # of the docs repo
       id: select_docs_dir_files
       run: |
         docs_dir_files=$(echo $added_modified |  jq -c '[.[] | select(.|test("^docs/"))]')
@@ -71,7 +62,6 @@ jobs:
       # completes when it is passed the empty array.
       if: ${{ '[]' != steps.select_docs_dir_files.outputs.added_modified }}
       with:
-        files: '${{ steps.select_docs_dir_files.outputs.added_modified }}'
         version: 2.19.0
         vale_flags: "--minAlertLevel=error --glob='!docs/authors/*'"
       env:
@@ -81,64 +71,62 @@ jobs:
     name: Check Links (Markdown)
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.11.x'
+        python-version: '3.10.x'
         architecture: 'x64'
-    - name: Install dependencies
+        cache: pip
+    - name: Install dependencies (Python)
       run: |
-        python -m pip install --upgrade pip
-        pip install python-frontmatter
+        pip install -r ./ci/requirements.txt
     - name: Run tests
       run: python ./ci/check-links.py ${{ steps.files.outputs.all }}
 
   docs404:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout docs repo
+      uses: actions/checkout@v3
+      with:
+        path: 'docs-repo'
     - name: List contents of images dir
       continue-on-error: true
-      run: ls -al ${{ env.hugo-image-cache-path }}
+      run: ls -al ${{ env.hugo_image_cache_path }}
     - name: Restore Hugo generated images cache
       uses: ylemkimon/cache-restore@v2
       with:
-        path: ${{ env.hugo-image-cache-path }}
-        key: ${{ env.hugo-image-cache-name }}
-        restore-keys: ${{ env.hugo-image-cache-name }}
+        path: ${{ env.hugo_image_cache_path }}
+        key: ${{ env.hugo_image_cache_name }}
+        restore-keys: ${{ env.hugo_image_cache_name }}
     - name: List contents of images dir
       continue-on-error: true
-      run: ls -al ${{ env.hugo-image-cache-path }}
+      run: ls -al ${{ env.hugo_image_cache_path }}
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10.x'
         architecture: 'x64'
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        # Look to see if there is a cache hit for the corresponding requirements file
-        key: ${{ runner.os }}-pip-${{ hashFiles('./ci/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-          ${{ runner.os }}-
-    - name: Install dependencies
+        cache: pip
+    - name: Install dependencies (Python)
+      working-directory: ./docs-repo
       run: |
-        python -m pip install --upgrade pip
         pip install -r ./ci/requirements.txt
     - name: Use Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
         node-version: '14.x'
     - name: Install dependencies (Node)
-      run: npm install
+      working-directory: ./docs-repo
+      run: npm ci
     - name: Set up Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.111.3'
+        hugo-version: '0.116.1'
     - name: Start Hugo server
+      working-directory: ./docs-repo
       run: |
         # Start Hugo in background:
         hugo server &
@@ -164,4 +152,5 @@ jobs:
             sleep 1
         done
     - name: Run tests
+      working-directory: ./docs-repo
       run: python ./ci/docs404.py

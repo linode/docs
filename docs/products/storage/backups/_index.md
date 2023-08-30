@@ -7,7 +7,6 @@ tab_group_main:
     title: Overview
     weight: 10
 cascade:
-    date: 2020-06-02
     product_description: "Fully managed automatic daily, weekly, and biweekly backups of your Linode Compute Instances."
 toc: true
 aliases: ['/security/backups/linode-backup-service/','/platform/disk-images/linode-backup-service-classic-manager/','/platform/backup-service/','/platform/linode-backup-service/','/platform/disk-images/linode-backup-service/','/platform/disk-images/linode-backup-service-new-manager/','/backup-service/','/guides/linode-backup-service/']

@@ -5,7 +5,7 @@
 {{ define "main" }}
   {{ $isLinodeAuthor := (or (eq .Title "Linode") (eq .Title "Linode Community")) }}
   <h1
-    class="font-bold leading-tight tracking-tight text-4xl text-titlecolor w-full">
+    class="font-semibold leading-tight tracking-tight text-4xl text-titlecolor w-full">
     {{ .Title }}
   </h1>
   {{ if $isLinodeAuthor }}
@@ -40,7 +40,7 @@
       </div>
     {{ end }}
     {{ with .Content }}
-      <div class="content prose prose-sm md:prose-lg max-w-none mt-6">
+      <div class="content prose prose-sm md:prose-lg max-w-content mt-6">
         {{ . }}
       </div>
     {{ end }}

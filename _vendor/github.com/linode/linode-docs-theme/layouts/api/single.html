@@ -1,12 +1,17 @@
-{{ define "main" }}
+{{ define "_baseof_start" }}
+  {{- .Page.Store.Set "_baseof_main_layout" "content_toc" -}}
+{{ end }}
+
+{{ define "content_main" }}
   {{/* See https://godoc.org/github.com/getkin/kin-openapi/openapi3#Swagger */}}
   {{ $api := partial "openapi3/get" . }}
   {{ $p := . }}
   {{/* A test page */}}
   {{ $spec := .Params.spec }}
   {{ $slug := .Slug }}
-  <div class="api-documentation content prose prose-sm md:prose-lg max-w-none">
-    <h1 class="font-bold">
+  <div
+    class="api-documentation content content__main prose prose-sm md:prose-lg max-w-content">
+    <h1 class="font-semibold">
       {{ .Title }}
       <small class="pl-3 text-sm text-gray-600 align-baseline">
         v{{ $api.Info.Version }}

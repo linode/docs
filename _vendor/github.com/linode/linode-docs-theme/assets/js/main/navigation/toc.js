@@ -1,6 +1,6 @@
 'use strict';
 
-import { isMobile, isScreenLargerThan } from '../helpers/index';
+import { isDesktop, isMobile } from '../helpers/index';
 
 var debug = 0 ? console.log.bind(console, '[toc]') : function () {};
 var devMode = false;
@@ -14,7 +14,13 @@ const setProgress = function (self, el) {
 	self.activeHeading.progress = progress;
 };
 
-export function newToCController() {
+export function newToCController(
+	opts = {
+		level2Only: false,
+		setProgress: true,
+		desktopOnly: false,
+	}
+) {
 	return {
 		activeHeading: {
 			title: '',
@@ -22,15 +28,23 @@ export function newToCController() {
 		},
 		enabled: false,
 		showHeading: true,
-		initToC: function (level2Only) {
+		opts: opts,
+		isActive: function () {
+			if (this.opts.desktopOnly && !isDesktop()) {
+				return false;
+			}
+			return true;
+		},
+		initToC: function () {
+			let { level2Only } = this.opts;
 			if (level2Only) {
 				this.headerEls = () => document.querySelectorAll('#main__content h2');
 			} else {
-				this.headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3, #main__content h4');
+				this.headerEls = () => document.querySelectorAll('#main__content h2, #main__content h3');
 			}
 
 			this.createTOC();
-			if (devMode || isScreenLargerThan(1527)) {
+			if (devMode) {
 				this.$store.nav.open.toc = true;
 			}
 
@@ -41,13 +55,15 @@ export function newToCController() {
 		createTOC: function () {
 			let self = this;
 			self.activeHeading.title = '';
-			let nav = this.$el.querySelector('.toc__inner');
-			nav.innerHTML = '';
-			let ol = document.createElement('ol');
+			let ol = this.$refs.ol;
+			let olFragment = document.createDocumentFragment();
 			let row = [];
 			let prevLevel = 0;
 
 			this.headerEls().forEach((el) => {
+				if (el.hasAttribute('data-toc-ignore')) {
+					return;
+				}
 				// Skip hidden elements and headers without ID.
 				if (!el || el.offsetParent === null || !el.id) {
 					return;
@@ -65,7 +81,6 @@ export function newToCController() {
 				let li = document.createElement('li');
 
 				li.classList.add(`level-${level}`);
-				li.classList.add('truncate');
 
 				let a = document.createElement('a');
 
@@ -103,8 +118,8 @@ export function newToCController() {
 
 				if (level == 2) {
 					row.length = 0;
-					row.push(ol);
-					ol.appendChild(li);
+					row.push(olFragment);
+					olFragment.appendChild(li);
 				} else if (level === prevLevel) {
 					let ol = row[row.length - 1];
 					ol.appendChild(li);
@@ -129,8 +144,8 @@ export function newToCController() {
 			}
 
 			// On mobile, add close/open to h2 headers with descendants.
-			if (isMobile()) {
-				ol.querySelectorAll('.level-2').forEach((li) => {
+			if (isMobile() && this.$refs.headerCloseButton) {
+				olFragment.querySelectorAll('.level-2').forEach((li) => {
 					if (li.querySelector('li') !== null) {
 						li.setAttribute('x-data', '{ open: false }');
 						let ol = li.querySelector('ol');
@@ -141,7 +156,7 @@ export function newToCController() {
 					}
 				});
 			}
-			nav.appendChild(ol);
+			ol.replaceChildren(olFragment);
 		},
 		toggleOpen: function () {
 			this.$store.nav.open.toc = !this.$store.nav.open.toc;
@@ -169,15 +184,19 @@ export function newToCController() {
 			if (!this.enabled) {
 				return;
 			}
+			if (!this.isActive()) {
+				return;
+			}
 			let scrollpos = window.scrollY;
 			let self = this;
+			document.activeElement.blur();
 
 			this.headerEls().forEach((el) => {
 				let offset = el.offsetTop;
 
 				if (offset > scrollpos && offset < scrollpos + 200) {
-					let toc = self.$el.querySelector('.toc__inner');
-					toc.querySelectorAll('li').forEach((liEl) => {
+					let ol = this.$refs.ol;
+					ol.querySelectorAll('li').forEach((liEl) => {
 						let a = liEl.querySelector('a');
 						if (!a.attributes || !a.attributes.href) {
 							return;

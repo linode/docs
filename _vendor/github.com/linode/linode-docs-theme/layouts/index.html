@@ -101,7 +101,10 @@
     {{/* Carousels showing recent content in the different sections. */}}
 
 
-    <section class="mb-10" x-intersect.once="initCarousels()">
+    <section
+      class="mb-10"
+      x-intersect.once="initCarousels()"
+      data-testid="content-carousels">
       {{ template "home/section/carousel" (dict "section" "guides" "title" "Guides") }}
     </section>
     <section class="mb-10">
@@ -157,7 +160,7 @@
     class="mb-5 md:mb-10 pt-7 pb-10  kind-home__hero full-width bg-brand">
     {{ partial "sections/navigation/breadcrumbs.html"  (dict "page" . "wrap" true) }}
     <div class="mt-4" style="max-width: 864px;">
-      <h1 class="font-bold text-4xl text-white">
+      <h1 class="font-semibold text-4xl text-white">
         {{ .Params.h1_title | default .Title }}
       </h1>
       {{ with .Summary }}

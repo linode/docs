@@ -4,10 +4,10 @@ slug: download-backups-locally
 description: "This guide provides you with step-by-step instructions for downloading files (or entire disks) from backups stored within Backup service."
 keywords: ["backup", "backups", "rsync", "restore", "local"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2021-11-12
 modified: 2023-07-07
 modified_by:
   name: Linode
-published: 2018-08-08
 tags: ["security"]
 aliases: ['/security/data-portability/download-backups-locally/','/guides/download-backups-locally/']
 image: download-a-local-copy-of-your-linode-backup.png
@@ -56,4 +56,4 @@ Alternatively, you may wish to [capture an image](/docs/products/tools/images/gu
 
 ## Delete Services That Are No Longer Needed
 
-After you've finished downloading your files or disks, you should consider deleting the Compute Instance (if you restored to a new instance) or [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) (if you restored to an existing instance). [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk).
+After you've finished downloading your files or disks, you should consider deleting the Compute Instance (if you restored to a new instance) or [delete the restored disks](/docs/products/compute/compute-instances/guides/disks-and-storage/#deleting-a-disk) (if you restored to an existing instance).

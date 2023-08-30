@@ -88,6 +88,17 @@
     return response;
   }
 
+  // src/js/Main/i18n.js
+  var languages = ["de", "es", "fr", "it", "ja", "ko", "pt-br", "pt", "zh"];
+  function getLanguageString() {
+    let lang = document.documentElement.lang;
+    if (lang && languages.includes(lang)) {
+      return lang;
+    } else {
+      return "";
+    }
+  }
+
   // src/js/Main/safe-html.js
   function safeHTML(input, allow_tags = ["b", "br", "em", "i", "span", "strong", "u"]) {
     let tmp = document.createElement("div");
@@ -107,8 +118,10 @@
   var mount2 = function() {
     $notification = document.querySelector(".c-site-header .c-notification");
     if ($notification) {
-      let prefix = "";
-      let api_url = `https://www.linode.com/${prefix}wp-json/linode/v1/header-notification`;
+      let api_url = "https://www.linode.com/wp-json/linode/v1/header-notification", lang = getLanguageString();
+      if (lang) {
+        api_url = `https://www.linode.com/${lang}/wp-json/linode/v1/header-notification?lang=${lang}`;
+      }
       $notification_link = $notification.querySelector(".c-notification__link");
       $notification_tag = $notification.querySelector(".c-notification__tag");
       $notification_message = $notification.querySelector(".c-notification__message");
@@ -138,8 +151,10 @@
   // src/js/Main/header-featured.js
   var $html3;
   var mount3 = function() {
-    let prefix = "";
-    let api_url = `https://www.linode.com/${prefix}wp-json/linode/v1/header-featured`;
+    let api_url = "https://www.linode.com/wp-json/linode/v1/header-featured", lang = getLanguageString();
+    if (lang) {
+      api_url = `https://www.linode.com/${lang}/wp-json/linode/v1/header-featured?lang=${lang}`;
+    }
     fetch(api_url).then(handleFetchErrors).then((response) => response.json()).then((data) => updateDOM2(data)).catch((error) => console.log(error));
   };
   var updateDOM2 = function(data) {

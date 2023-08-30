@@ -3,7 +3,7 @@ description: "Deploy Wazuh on a Linode Compute Instance. This provides you with 
 keywords: ['security','vulnerability','monitoring']
 tags: ["marketplace", "linode platform", "cloud manager"]
 published: 2021-11-12
-modified: 2023-07-05
+modified: 2023-08-16
 modified_by:
   name: Linode
 title: "Deploy Wazuh through the Linode Marketplace"

@@ -38,7 +38,7 @@ const onNavSearchResults = function (self, val, oldVal) {
 			if (queryString) {
 				queryString = '?' + queryString;
 			}
-			self.$store.nav.pushState('/docs/topresults/' + queryString);
+			self.$store.nav.pushTopResults(queryString);
 		}
 	}
 };
