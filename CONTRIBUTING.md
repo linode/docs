@@ -191,7 +191,7 @@ This section is only relevant to contributors who have previously worked on the 
 
             git merge upstream/develop
 
-1.  Within the docs repo, remove the current `nod_modules` directory and then reinstall dependencies.
+1.  Within the docs repo, remove the current `node_modules` directory and then reinstall dependencies.
 
         rm -rf node_modules
         npm i
